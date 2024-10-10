@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CcjlkQH8yX4sw9YAqmaax/c054db3c6fea3bae9ae23f8cff9e0e50/a-post-mortem-on-this-mornings-incident.gif" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CcjlkQH8yX4sw9YAqmaax/76d88893ee2425fc760d34d26b833101/a-post-mortem-on-this-mornings-incident.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We would like to share more details with our customers and readers on the internet outages that occurred this morning and earlier in the week, and what we are doing to prevent these from happening again.</p>
 	<div class="flex anchor relative">
@@ -12,7 +12,7 @@
 	<p>On June 17, at 08:32 UTC, our systems detected a significant packet loss between multiple destinations on one of our major transit provider backbone networks, <a href="http://www.teliacarrier.com">Telia Carrier</a>.In the timeframe where the incident was being analysed by our engineers, the loss became intermittent and finally disappeared.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rEfi2Ivn585mb9vkdDIr2/0ed2210f604c31f5cd0e46bbb48bc12f/Screenshot-2016-06-20-14-16-27.png" alt="alt" class="kg-image" width="882" height="311" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rEfi2Ivn585mb9vkdDIr2/d17ee4d712e40f77a6e70ab27fc9996e/Screenshot-2016-06-20-14-16-27.png" alt="alt" class="kg-image" width="882" height="311" loading="lazy">
 
 	</figure>
 	<p><i>Packet loss on Telia Carrier (AS1299)</i></p>
@@ -27,7 +27,7 @@
 	<p>Today, Jun 20, at 12:10 UTC, our systems again detected massive packet loss on one of our major transit provider backbone networks: Telia Carrier.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oh5nRVKJXMRIQPqKCguNE/16e8728ccc59eca1069d9710111b7a9b/Screenshot-2016-06-20-13-07-33.png" alt="alt" class="kg-image" width="550" height="223" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oh5nRVKJXMRIQPqKCguNE/5e6d09d61d915c795eaafc816e487779/Screenshot-2016-06-20-13-07-33.png" alt="alt" class="kg-image" width="550" height="223" loading="lazy">
 
 	</figure>
 	<p><i>Packet loss on Telia Carrier (AS1299)</i></p>
@@ -36,7 +36,7 @@
 	<p>Our systems caught the problem instantly and recorded it. Here is an animated map of the packet loss being detected during the event:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5t6Age3Kz1x46V9DhMR6VK/7ebfddf0eb909cfaea519828fb84a172/telia-outage-6-20-2016--1-.gif" alt="alt" class="kg-image" width="945" height="366" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5t6Age3Kz1x46V9DhMR6VK/2ce8890115631935d749a75ca4a43d0a/telia-outage-6-20-2016--1-.gif" alt="alt" class="kg-image" width="945" height="366" loading="lazy">
 
 	</figure>
 	<p><i>CloudFlare detects packet loss (denoted by thickness)</i></p>
@@ -52,7 +52,7 @@
 	<p>We saw a big increase in our 522s errors. A 522 HTTP error indicates that our servers are unable to reach the origin servers of our customers. You can see the spike and the breakdown here:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UWZh0zq7omcnrnrm3zOdI/ef0e92922b7ea9d6689c65c57aa1ef0a/Screen-Shot-2016-06-20-at-15-36-32.png" alt="alt" class="kg-image" width="1136" height="736" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UWZh0zq7omcnrnrm3zOdI/f8eb778a679ad8129834a2fa4053fe13/Screen-Shot-2016-06-20-at-15-36-32.png" alt="alt" class="kg-image" width="1136" height="736" loading="lazy">
 
 	</figure>
 	<p><i>Spike in 522 errors across PoPs (in reaching origin servers)</i></p>
@@ -79,7 +79,7 @@
 	<p>We fill our cache from the public Internet using multiple transit providers (such as Telia), and deliver traffic to local eyeball networks using transit providers and multiple peering relationships. To the extent possible, we maintain buffer capacity with our providers to allow them to bear the impact of potential failures on multiple other networks. Spreading out traffic across providers allows for diversity and reduces the impact of potential outages from our upstream providers. Even so, today’s incident impacted a significant fraction of traffic that relied on the Telia backbone.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46TEFOaWNqhcniJqK8W80J/ffbdc148b0d89a5ee0a8ac8c8382c1b6/Screenshot-2016-06-20-22-28-05.png" alt="alt" class="kg-image" width="199" height="238" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46TEFOaWNqhcniJqK8W80J/83a0cd7620a024c0bc3aa9151057b4df/Screenshot-2016-06-20-22-28-05.png" alt="alt" class="kg-image" width="199" height="238" loading="lazy">
 
 	</figure>
 	<p>_Traffic switching from one provider to the other after we reroute_</p>
@@ -88,13 +88,13 @@
 	<p>We have been working on building a mechanism (which augments BGP) to proactively detect packet loss and move traffic away from providers experiencing packet loss. Because this system is currently activated only for our most remote and smallest locations, it didn't trigger in this morning’s incident. We plan to extend the capability in the next 2 weeks to switch from a manual reaction to an automatic one in all our POPs. For example, in this screenshot, you can see our POP in Johannesburg being automatically removed from our network because of problems detected when connecting to origin servers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5k9ZgDYRcM1DDlK8Pl9Mpa/3cd9d1ac35d0226d392ade6a75929195/Screenshot-2016-06-20-13-50-03.png" alt="alt" class="kg-image" width="245" height="349" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5k9ZgDYRcM1DDlK8Pl9Mpa/a55d73164c5bab3ab0c5b46d366feef7/Screenshot-2016-06-20-13-50-03.png" alt="alt" class="kg-image" width="245" height="349" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35qNsGHp1t145O9KH3uimH/aced785dc684e46a83d7e1d29ca67278/Screenshot-2016-06-20-14-09-57.png" alt="alt" class="kg-image" width="272" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35qNsGHp1t145O9KH3uimH/f7409776a680dad20c0adc733781e036/Screenshot-2016-06-20-14-09-57.png" alt="alt" class="kg-image" width="272" height="290" loading="lazy">
 
 	</figure>
 	<p><i>Johannesburg PoP gracefully fails over to nearest PoP</i></p>

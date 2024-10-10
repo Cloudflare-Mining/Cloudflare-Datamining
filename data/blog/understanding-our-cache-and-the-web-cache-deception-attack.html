@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IUnaw1pw2LBCYW75IBVm7/00cbf720db23e2d565e597b40822d4ad/understanding-our-cache-and-the-web-cache-deception-attack.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IUnaw1pw2LBCYW75IBVm7/96ca34d590246a0646e0f2a2524e5fdf/understanding-our-cache-and-the-web-cache-deception-attack.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>About a month ago, security researcher <a href="https://twitter.com/omer_gil">Omer Gil</a> published <a href="https://omergil.blogspot.co.il/2017/02/web-cache-deception-attack.html">the details</a> of an attack that he calls the Web Cache Deception attack. It works against sites that sit behind a reverse proxy (like Cloudflare) and are misconfigured in a particular way. Unfortunately, the definition of "misconfigured" for the purposes of this attack changes depending on how the cache works. In this post, we're going to explain the attack and then describe the algorithm that our cache uses to decide whether or not to cache a given piece of content so that customers can be sure that they are secure against this attack.</p>
 	<div class="flex anchor relative">
@@ -12,7 +12,7 @@
 	<p>First, we'll explain the basics of the Web Cache Deception attack. For those who want a more in-depth explanation, Omer's <a href="https://omergil.blogspot.co.il/2017/02/web-cache-deception-attack.html">original post</a> is a great resource.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Wy262IiC2ykqjHqHRbOwk/47d8332bbd458bfaa68f40a27763da21/one-way.jpg" alt="" class="kg-image" width="465" height="653" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Wy262IiC2ykqjHqHRbOwk/ac8fc41024662ee444219734662f9f9b/one-way.jpg" alt="" class="kg-image" width="465" height="653" loading="lazy">
 
 	</figure>
 	<p>CC <a href="https://creativecommons.org/licenses/by-sa/2.0">BY-SA 2.0</a> - <a href="https://www.flickr.com/photos/shelleygibb/2700437267/in/photolist-57CrVe-i4jqNw-gmjSdW-b4eUjD-gmk8in-cFq3pN-2uVYE-2juSjD-d7gDoh-7ac96c-ytw77e-6k2Mw-9NnUjX-6oC4tp-9wFsmg-dsd8bt-bDTPG3-co2zqU-jFdVgc-5DHRZA-66H4P6-7jaCZF-848i8G-9aUjGk-bWVLYW-aCJNHD-buaVVA-nGA4V-soHrms-9quZAv-6MsSqe-nBG2bz-dsd7HT-d7gyTS-9kCfi-4F5xjK-cYYz9N-fFUYF-fQuqJw-dQZTkX-cNMqMJ-qrNmAB-aCJPui-dQXj68-87UrJH-phtpFE-997rCh-oA1ezU-nwpSdp-kswDL6">image</a> by <a href="https://www.flickr.com/photos/shelleygibb">shelleygibb</a></p>
@@ -42,7 +42,7 @@ patterns = [url(r'^newsfeed/', ...)]</code></pre>
 	<p>The best way to defend against this attack is to ensure that your website isn't so permissive, and never treats requests to nonexistent paths (say, <code>/x/y/z</code>) as equivalent to requests to valid parent paths (say, <code>/x</code>). In the example above, that would mean that requests to <code>/newsfeed/foo</code> or <code>/newsfeed/foo.jpg</code> wouldn't be treated as equivalent to requests to <code>/newsfeed</code>, but would instead result in some kind of error or a redirect to a legitimate page. If we wanted to modify the Django example from above, we could add a <code>$</code> to the end of the regular expression to ensure only exact matches (in this case, a request to <code>/newsfeed/foo</code> will <a href="https://docs.djangoproject.com/en/1.10/topics/http/urls/#error-handling">result in a 404</a>):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EctCR6DDUYFIWG9EatWeC/52274b8a49ac7a8c7a9cb15921f9fe45/Screen-Shot-2018-01-19-at-10.23.10-AM.png" alt="Screen-Shot-2018-01-19-at-10.23.10-AM" class="kg-image" width="711" height="80" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EctCR6DDUYFIWG9EatWeC/be0902c6bc2d5e558554c3e31c63ec43/Screen-Shot-2018-01-19-at-10.23.10-AM.png" alt="Screen-Shot-2018-01-19-at-10.23.10-AM" class="kg-image" width="711" height="80" loading="lazy">
 
 	</figure>
 	<p>We provide many settings that allow you to customize the way our cache will treat requests to your website. For example, if you have a Page Rule enabled for <code>/newsfeed</code> with the Cache Everything setting enabled (it's off by default), then we'll cache requests to <code>/newsfeed</code>, which could be bad. Thus, the best way to ensure that your website is secure is to understand the rules that our cache uses to determine whether or not a request should be cached.</p>
@@ -65,7 +65,7 @@ patterns = [url(r'^newsfeed/', ...)]</code></pre>
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TLTgYd4yL4nBAkczqkQHn/7013cba8117f2dd83e68cd6eeddf8b29/page-rule-modal.png" alt="" class="kg-image" width="1600" height="918" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TLTgYd4yL4nBAkczqkQHn/c90ac4770733d951a17a54c815516693/page-rule-modal.png" alt="" class="kg-image" width="1600" height="918" loading="lazy">
 
 	</figure>
 	<p>_Configuring caching via a Page Rule_</p>

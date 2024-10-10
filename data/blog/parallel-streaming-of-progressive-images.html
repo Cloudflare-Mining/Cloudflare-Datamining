@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/277BtPJSXREVafvPqyX3ZH/cd867ef1cbb43ea0e771a32d5d487d05/880BAE29-39B3-4733-96DA-735FE76443D5.png" alt="" class="kg-image" width="1523" height="621" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/277BtPJSXREVafvPqyX3ZH/60d4273f08458c42a0190203a4bf9b7b/880BAE29-39B3-4733-96DA-735FE76443D5.png" alt="" class="kg-image" width="1523" height="621" loading="lazy">
 
 	</figure>
 	<p>Progressive image rendering and HTTP/2 multiplexing technologies have existed for a while, but now we've combined them in a new way that makes them much more powerful. With Cloudflare progressive streaming <b>images appear to load in half of the time, and browsers can start rendering pages sooner</b>.</p><!--kg-card-begin: html-->
@@ -20,7 +20,7 @@
 	<p>Basic images load strictly from top to bottom. If a browser has received only half of an image file, it can show only the top half of the image. Progressive images have their content arranged not from top to bottom, but from a low level of detail to a high level of detail. Receiving a fraction of image data allows browsers to show the entire image, only with a lower fidelity. As more data arrives, the image becomes clearer and sharper.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Mlb3C96uo4KLWgNe835l2/5fc39ca32588829059da60a806b8e770/image6.jpg" alt="" class="kg-image" width="700" height="606" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Mlb3C96uo4KLWgNe835l2/31ccbe118c20ce15f4c35c5ceb0cd377/image6.jpg" alt="" class="kg-image" width="700" height="606" loading="lazy">
 
 	</figure>
 	<p>This works great in the JPEG format, where only about 10-15% of the data is needed to display a preview of the image, and at 50% of the data the image looks almost as good as when the whole file is delivered. Progressive JPEG images contain exactly the same data as baseline images, merely reshuffled in a more useful order, so progressive rendering doesn’t add any cost to the file size. This is possible, because JPEG doesn't store the image as pixels. Instead, it represents the image as frequency coefficients, which are like a set of predefined patterns that can be blended together, in any order, to reconstruct the original image. The inner workings of JPEG are really fascinating, and you can learn more about them from my recent <a href="https://www.youtube.com/watch?v=jTXhYj2aCDU">performance.now() conference talk</a>.</p>
@@ -36,7 +36,7 @@
 	<p>But there's a catch. Websites have more than one image (sometimes even hundreds of images). When the server sends image files naïvely, one after another, the progressive rendering doesn’t help that much, because overall the images still load sequentially:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KLYwVqXQSyp0QjnTTbCX4/0af3d7e9764a8b6b36adfc9958db404a/image5.gif" alt="" class="kg-image" width="1241" height="522" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KLYwVqXQSyp0QjnTTbCX4/b70c3a915dd7afaf7b0beec2aedf9f1d/image5.gif" alt="" class="kg-image" width="1241" height="522" loading="lazy">
 
 	</figure>
 	<p>Having complete data for half of the images (and no data for the other half) doesn't look as good as having half of the data for all images.</p>
@@ -49,7 +49,7 @@
 			<p>The image header that contains the image size is very high priority, because the browser needs to know the size as soon as possible to do page layout. The image header is small, so it doesn't hurt to send it ahead of other data.</p>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qRxoj4KuoVnSD7nEpWbMe/9fdf30f0955999b07c67bb98cd252cc6/image7.jpg" alt="Known image sizes make layout stable" class="kg-image" width="1304" height="498" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qRxoj4KuoVnSD7nEpWbMe/6bd553099bbb167660c6a65fb782ea7c/image7.jpg" alt="Known image sizes make layout stable" class="kg-image" width="1304" height="498" loading="lazy">
 
 			</figure>
 		</li>
@@ -57,7 +57,7 @@
 			<p>The minimum amount of data in the image required to show a preview of the image has a medium priority (we'd like to plug "holes" left for unloaded images as soon as possible, but also leave some bandwidth available for scripts, fonts and other resources)</p>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Cm6w0yIFtMJctt42maKMF/a4ca4b7845b83cc6eb8029bcc06595da/secondhalf.png" alt="Half of the data looks good enough" class="kg-image" width="1304" height="406" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Cm6w0yIFtMJctt42maKMF/f585afb934ef9e1f98ecd4d3750e7b09/secondhalf.png" alt="Half of the data looks good enough" class="kg-image" width="1304" height="406" loading="lazy">
 
 			</figure>
 		</li>
@@ -78,7 +78,7 @@
 	<p>Here are waterfall charts from <a href="https://webpagetest.org">WebPageTest</a> showing comparison of regular HTTP/2 responses and progressive streaming. In both cases the files were exactly the same, the amount of data transferred was the same, and the overall page loading time was the same (within measurement noise). In the charts, blue segments show when data was transferred, and green shows when each request was idle.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gWR5w8eEc3VASAU81KwBS/9f39c3ff94fa6d76c5d94593fcd1b737/image8.png" alt="" class="kg-image" width="1613" height="763" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gWR5w8eEc3VASAU81KwBS/986a63df2f51f9f88237bc1bc74d5273/image8.png" alt="" class="kg-image" width="1613" height="763" loading="lazy">
 
 	</figure>
 	<p>The first chart shows a typical server behavior that makes images load mostly sequentially. The chart itself looks neat, but the actual experience of loading that page was not great — the last image didn't start loading until almost the end.</p>
@@ -106,12 +106,12 @@
 	<p>The improvement in user experience is reflected in performance metrics such as <b>SpeedIndex</b> metric and and time to visually complete. Notice that with regular image loading the visual progress is linear, but with the progressive streaming it quickly jumps to mostly complete:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lKfDWRojqzIpdPg7MwFGj/e3a29dc7553107ee8266bc27f1806073/image1-5.png" alt="" class="kg-image" width="1142" height="851" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lKfDWRojqzIpdPg7MwFGj/70c9f7df2546b5ea50d69e4bbafde7cc/image1-5.png" alt="" class="kg-image" width="1142" height="851" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/n9HPq3RQ8Ew4CTxAf8NP4/692c5d3e3cdac80389065b5b04110232/image4.png" alt="" class="kg-image" width="1184" height="431" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/n9HPq3RQ8Ew4CTxAf8NP4/7ed0c32f1592de89fd2f3a95b18d74e4/image4.png" alt="" class="kg-image" width="1184" height="431" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

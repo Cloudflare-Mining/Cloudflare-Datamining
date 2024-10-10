@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KOBB47tj8hTpVCzm46UJr/73a9869002ce62cbc3d5f1260d93e781/image1-2.png" alt="Defending against future threats: Cloudflare goes post-quantum" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KOBB47tj8hTpVCzm46UJr/1800d66047abc6959a389911e11ecb54/image1-2.png" alt="Defending against future threats: Cloudflare goes post-quantum" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>There is an expiration date on the cryptography we use every day. It’s not easy to read, but somewhere <a href="https://globalriskinstitute.org/download/quantum-threat-timeline-report-2021-full-report">between 15 or 40 years</a>, a sufficiently powerful quantum computer is expected to be built that will be <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm">able to decrypt</a> essentially any encrypted data on the Internet today.</p>
@@ -64,7 +64,7 @@
 	<p>A TLS connection starts with a <b>handshake</b> which is used to authenticate the server and derive a shared key. The browser (client) starts by sending a <i>ClientHello</i> message that contains a list of the AEADs, signature algorithms, and key agreement methods it supports. To remove a roundtrip, the client is allowed to make a guess of what the server supports and start the key agreement by sending one or more <i>client keyshares</i>. That guess might be correct (on the left in the diagram below) or the client has to retry (on the right).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jeNtG1jP4LRmICiNeBUIG/9441fb0834b590250b8a4fb680088f3e/image4.png" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right." class="kg-image" width="1726" height="1346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jeNtG1jP4LRmICiNeBUIG/87c30c89aeef2ce319bb25c0c5cddc2d/image4.png" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right." class="kg-image" width="1726" height="1346" loading="lazy">
 
 	</figure>
 	<p>Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.</p>
@@ -72,7 +72,7 @@
 	<p>Before we explain the rest of this interaction, let’s dig into the key agreement: what is a keyshare? The way the key agreement for Kyber and X25519 work <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/#kem-versus-diffie-hellman">is different</a>: the first is a Key Encapsulation Mechanism (KEM), while the latter is a Diffie–Hellman (DH) style agreement. The latter is more flexible, but for TLS it doesn’t make a difference.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25zN3n7EymPx0ZLTOKBEO6/7ebf8a49b26d2cfa0d029c9ffc0510ca/image3.png" alt="The shape of a KEM and Diffie–Hellman key agreement in TLS-compatible handshake is the same." class="kg-image" width="1779" height="1028" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25zN3n7EymPx0ZLTOKBEO6/71928fb621191c1de4883f77b1e9cae5/image3.png" alt="The shape of a KEM and Diffie–Hellman key agreement in TLS-compatible handshake is the same." class="kg-image" width="1779" height="1028" loading="lazy">
 
 	</figure>
 	<p>The shape of a KEM and Diffie–Hellman key agreement in TLS-compatible handshake is the same.</p>
@@ -269,7 +269,7 @@
 	<p>Back in 2019 in a joint experiment with Google, we deployed two post-quantum key agreements: CECPQ2, based on NTRU-HRSS, and CECPQ2b, based on SIKE. NTRU-HRSS is very similar to Kyber: it’s a bit larger and slower. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">Results from 2019</a> are very promising: X25519+NTRU-HRSS (orange line) is hard to distinguish from X25519 on its own (blue line).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aqgMsHQUv4sMeIF3eHDOK/0eedef7e4da8e7ea55bd9545cd0b2886/image2-2.png" alt="Diagrams of performance of CECPQ2 based on NTRU-HRSS and CECPQ2b based on SIKE compared to X25519." class="kg-image" width="2000" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aqgMsHQUv4sMeIF3eHDOK/ac2d93d5156efd813d007997eb712c5f/image2-2.png" alt="Diagrams of performance of CECPQ2 based on NTRU-HRSS and CECPQ2b based on SIKE compared to X25519." class="kg-image" width="2000" height="1063" loading="lazy">
 
 	</figure>
 	<p>We will continue to keep a close eye on performance, especially on the tail performance: we want a smooth transition for everyone, from the fastest to the slowest clients on the Internet.</p>

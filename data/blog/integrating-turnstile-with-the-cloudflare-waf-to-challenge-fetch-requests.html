@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UV6CnIMI92jBmCr4VeqCU/35b9931e7f48af049965e12b29cc8482/image8.png" alt="Integrating Turnstile with the Cloudflare WAF to challenge fetch requests" class="kg-image" width="1999" height="1126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UV6CnIMI92jBmCr4VeqCU/98b0de9d9ca221f3d60bc7d02213264c/image8.png" alt="Integrating Turnstile with the Cloudflare WAF to challenge fetch requests" class="kg-image" width="1999" height="1126" loading="lazy">
 
 	</figure>
 	<p>Two months ago, we made Cloudflare Turnstile <a href="https://blog.cloudflare.com/turnstile-ga">generally available</a> — giving website owners everywhere an easy way to fend off bots, without ever issuing a CAPTCHA. Turnstile allows any website owner to embed a frustration-free Cloudflare challenge on their website with a simple code snippet, making it easy to help ensure that only human traffic makes it through. In addition to protecting a website’s frontend, Turnstile also empowers web administrators to harden browser-initiated (AJAX) API calls running under the hood. These APIs are commonly used by dynamic single-page web apps, like those created with React, Angular, Vue.js.</p>
@@ -22,7 +22,7 @@
 	<p>As an example, let’s imagine a pizzeria owner who built an online ordering form in React with a payment page that submits data to an API endpoint that processes payments. When a user views the web form to add their credit card details they can pass a Managed Challenge, but when the user submits their credit card details by making a fetch request, the browser won’t execute the code necessary for a challenge to run. The pizzeria owner’s only option for handling suspicious (but potentially legitimate) requests is to block them, which runs the risk of false positives that could cause the restaurant to lose a sale.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fOg2KPmEgB5nyeywCc0X0/bf0ae0f2149c12f678ebb8bed5380ad0/Group-3955.png" alt="" class="kg-image" width="1048" height="515" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fOg2KPmEgB5nyeywCc0X0/8ddf84d382f902ad633fb30a3f8226a2/Group-3955.png" alt="" class="kg-image" width="1048" height="515" loading="lazy">
 
 	</figure>
 	<p>This is where Turnstile can help. Turnstile allows anyone on the Internet to embed a Cloudflare challenge anywhere on their website. Before today, the output of Turnstile was only a one-time use token. To enable customers to issue challenges for these fetch requests, Turnstile can now issue a clearance cookie for the domain that it's embedded on. Customers can issue their challenge within the HTML page before a fetch request, <i>pre-clearing</i> the visitor to interact with the Payment API.</p>
@@ -48,7 +48,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Er3Qa9TvxheeCOxbYeCQh/7a2f95836994c8830ce870973e6b74a1/Pre-clearance.png" alt="" class="kg-image" width="1059" height="582" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Er3Qa9TvxheeCOxbYeCQh/50afffa59cef839aba3a256484ea6ea5/Pre-clearance.png" alt="" class="kg-image" width="1059" height="582" loading="lazy">
 
 	</figure>
 	<p>A Turnstile widget with Pre-Clearance enabled will still issue turnstile tokens, which gives customers the flexibility to decide if an endpoint is critical enough to require a security check on every request to it, or just once a session. Clearance cookies issued by a Turnstile widget are automatically applied to the Cloudflare zone the Turnstile widget is embedded on, with no configuration necessary. The clearance time the token is valid for is still controlled by the zone specific “Challenge Passage” time.</p>
@@ -95,31 +95,31 @@
 	<p>Now let’s consider that we have a Cloudflare WAF rule set up that protects the <code>/your-api</code> endpoint with a Managed Challenge.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sjpmlJe4atSe3ztUjbL2M/513cacf5100e03c9dff2e81bd87a3585/pasted-image-0-3.png" alt="" class="kg-image" width="1237" height="975" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sjpmlJe4atSe3ztUjbL2M/99335880b870554a9c1dd3e5c8d70614/pasted-image-0-3.png" alt="" class="kg-image" width="1237" height="975" loading="lazy">
 
 	</figure>
 	<p>Due to this rule, the app that we just wrote is going to fail for the reason described earlier (the browser is expecting a JSON response, but instead receives the challenge page as HTML).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HJrHiNoxjmSdRwEcZrYuA/e5893feb434ed26a740792a5c779c6df/Screenshot-2023-12-18-at-12.00.16.png" alt="" class="kg-image" width="704" height="132" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HJrHiNoxjmSdRwEcZrYuA/a62895eaa382e160eb17fce51acde32c/Screenshot-2023-12-18-at-12.00.16.png" alt="" class="kg-image" width="704" height="132" loading="lazy">
 
 	</figure>
 	<p>If we inspect the Network Tab, we can see that the request to <code>/your-api</code> has been given a 403 response.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DiC7Lus2CVxUJKw5pr7mi/91744379c49646587e8f3284405d44a2/image10.png" alt="" class="kg-image" width="928" height="54" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DiC7Lus2CVxUJKw5pr7mi/ab45a3af70f411998ebb4892977a255d/image10.png" alt="" class="kg-image" width="928" height="54" loading="lazy">
 
 	</figure>
 	<p>Upon inspection, the Cf-Mitigated header shows that the response was challenged by Cloudflare’s firewall, as the visitor has not solved a challenge before.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2D81qpEEa60G1W1pZMUr2U/9e1771c463916ae6ba8424af762c5908/image6.png" alt="" class="kg-image" width="1658" height="381" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2D81qpEEa60G1W1pZMUr2U/f04a2571ed6f52a16f6bf28adaee9ee4/image6.png" alt="" class="kg-image" width="1658" height="381" loading="lazy">
 
 	</figure>
 	<p>To address this problem in our app, we set up a Turnstile Widget in Pre-Clearance mode for the Turnstile sitekey that we want to use.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xLOm4TvNFK32gEf45I1XF/260135c61cdc264d8330be232dc76704/image2-4.png" alt="" class="kg-image" width="858" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xLOm4TvNFK32gEf45I1XF/7e04c0a1fdc746a64dc8cf1e08ec3bf1/image2-4.png" alt="" class="kg-image" width="858" height="504" loading="lazy">
 
 	</figure>
 	<p>In our application, we override the <code>fetch()</code> function to invoke Turnstile once a Cf-Mitigated response has been received.</p>
@@ -181,13 +181,13 @@ turnstileLoad = function () {
 	<p>There is a lot going on in the snippet above: First, we create a hidden overlay element and override the browser’s <code>fetch()</code> function. The <code>fetch()</code> function is changed to introspect the Cf-Mitigated header for ‘challenge’. If a challenge is issued, the initial result will be unsuccessful; instead, a Turnstile overlay (with Pre-Clearance enabled) will appear in our web application. Once the Turnstile challenge has been completed we will retry the previous request after Turnstile has obtained the cf_clearance cookie to get through the Cloudflare WAF.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HNSoEaOmTMmQFuc8kKY2p/ad8378fa9ab1eb9f5005f1811380bfb8/image1-2.png" alt="" class="kg-image" width="749" height="582" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HNSoEaOmTMmQFuc8kKY2p/1877b884856e092cfc51637f3f050c2c/image1-2.png" alt="" class="kg-image" width="749" height="582" loading="lazy">
 
 	</figure>
 	<p>Upon solving the Turnstile widget, the overlay disappears, and the requested API result is shown successfully:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aPtaSfD7JdV0jYb1iDX50/cb945e847ebc6997ca63784f6003b025/Screenshot-2023-12-18-at-12.02.56.png" alt="" class="kg-image" width="892" height="186" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aPtaSfD7JdV0jYb1iDX50/dd9807c4807f6234dcb453471f43db99/Screenshot-2023-12-18-at-12.02.56.png" alt="" class="kg-image" width="892" height="186" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

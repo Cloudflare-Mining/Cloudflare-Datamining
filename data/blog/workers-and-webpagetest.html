@@ -1,10 +1,10 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jQij9GpVmsJnXneAvwCdA/0711ee664d33eae35994346e3098e122/workers-and-webpagetest.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jQij9GpVmsJnXneAvwCdA/89979c6965a975850a49f2b72adc3083/workers-and-webpagetest.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This article was originally published as part of &nbsp;</i><a href="https://calendar.perfplanet.com/2019"><i>Perf Planet's 2019 Web Performance Calendar</i></a><i>.</i></p>
 	<p>Have you ever wanted to quickly test a new performance idea, or see if the latest performance wisdom is beneficial to your site? As web performance appears to be a stochastic process, it is really important to be able to iterate quickly and review the effects of different experiments. The challenge is to be able to arbitrarily change requests and responses without the overhead of setting up another internet facing server. This can be straightforward to implement by combining two of my favourite technologies : <a href="https://webpagetest.org">WebPageTest</a> and <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. Pat Meenan sums this up with the following slide from a recent <a href="https://www.slideshare.net/patrickmeenan/getting-the-most-out-of-webpagetest">getting the most of WebPageTest</a> presentation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63FuSzxUDPepqCC577lP24/995cb14280f2153df231f99e76fe46d9/magic.jpg" alt="With the OverrideHost script command WebPageTest + Cloudflare Workers = magic" class="kg-image" width="1024" height="576" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63FuSzxUDPepqCC577lP24/0e40f5e48ed07432017fe9bdf4abef6b/magic.jpg" alt="With the OverrideHost script command WebPageTest + Cloudflare Workers = magic" class="kg-image" width="1024" height="576" loading="lazy">
 
 	</figure>
 	<p>So what is Cloudflare Workers and why is it ideally suited to easy prototyping of optimizations?</p>
@@ -22,7 +22,7 @@
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3y9pmmtBYue73BYEUOHtpN/4efc8c7e6950ca3c1453f08088bd6ecb/worker-4.svg" alt="worker-4" class="kg-image" width="671" height="268" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3y9pmmtBYue73BYEUOHtpN/74e7e29b940d04cebe403e8cdacb26b5/worker-4.svg" alt="worker-4" class="kg-image" width="671" height="268" loading="lazy">
 
 	</figure>
 	<p>With the Service Worker API you can add an <code>EventListener</code> to any fetch event that is routed through the worker script and modify the request to come from a different origin.</p>
@@ -54,7 +54,7 @@
 	<p>Now that your worker is configured, the next step is to configure WebPageTest to redirect requests through the worker. WebPageTest has a feature where it can re-point arbitrary origins to a different domain. To access the feature in WebPageTest, you need to use the WebPageTest scripting language "overrideHost" command, as shown:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3obNudq5ry3Gg8kYI0basR/9139737937c698b6a15152790e068cca/samplescript.png" alt="Override the bbc.co.uk domain to wpt-proxy.prf.workers.dev" class="kg-image" width="944" height="368" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3obNudq5ry3Gg8kYI0basR/5ca5e9269e797c9d05cc46baf66bc534/samplescript.png" alt="Override the bbc.co.uk domain to wpt-proxy.prf.workers.dev" class="kg-image" width="944" height="368" loading="lazy">
 
 	</figure>
 	<p>This example will redirect all network requests to <a href="http://www.bbc.co.uk">www.bbc.co.uk</a> to wpt-proxy.prf.workers.dev instead. WebPageTest also adds an <code>x-host</code> header to each redirected request so that the destination can determine for which host the request was originally intended: &nbsp; &nbsp;</p>
@@ -122,7 +122,7 @@ navigate    https://www.bbc.co.uk</code></pre>
 	<p>configured to a 3G Fast setting from a UK test location.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6y7lIsq1654FwvbSlcpBvh/f80891358f32d3bef569eee3c5b0cf01/simpleworkercompare.png" alt="" class="kg-image" width="2000" height="268" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y7lIsq1654FwvbSlcpBvh/68324705a4c88d6ae450da4e1e405e17/simpleworkercompare.png" alt="" class="kg-image" width="2000" height="268" loading="lazy">
 
 	</figure>
 	<p>Comparison of BBC website if when using a single connection.&nbsp;</p>
@@ -130,12 +130,12 @@ navigate    https://www.bbc.co.uk</code></pre>
 	<p>After</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pwdrZ0TRNcU2x2AosI09b/227f0ed6ae9837ed08b33c5e5db6abaf/beforeBBC2-1.png" alt="beforeBBC2-1" class="kg-image" width="1073" height="1126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pwdrZ0TRNcU2x2AosI09b/7ee354130eab1e1a05d0f74e93bf85c7/beforeBBC2-1.png" alt="beforeBBC2-1" class="kg-image" width="1073" height="1126" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DE8XJvQoNTKguQR4Y9a9J/0c1c8e60df5872145dc1416a2e7a6a0f/afterBBC2.png" alt="afterBBC2" class="kg-image" width="1012" height="1127" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DE8XJvQoNTKguQR4Y9a9J/3a588557c9048328de75816bd666c07a/afterBBC2.png" alt="afterBBC2" class="kg-image" width="1012" height="1127" loading="lazy">
 
 	</figure>
 	<p>The potential performance improvement of loading a page over a single connection, eliminating the additional DNS lookup, TCP connection and TLS handshakes, can be seen &nbsp;by comparing the filmstrips and waterfalls. There are several reasons why you may not want or be able to move everything to a single domain, but at least it is now easy to see what the performance difference would be. &nbsp;</p>

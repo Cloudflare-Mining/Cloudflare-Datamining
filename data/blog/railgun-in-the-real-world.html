@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L5v7Qlhoszm7lz0XhnpaU/0bba58d87596f3a796d19fed626ca0e7/railgun-in-the-real-world.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6L5v7Qlhoszm7lz0XhnpaU/d98d32cc44c7be1d5a2268918aebdca1/railgun-in-the-real-world.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In past blog posts I've described <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">CloudFlare's Railgun technology</a> that is designed to greatly speed up the delivery of non-cached pages. Although CloudFlare caches about 65% of the resources needed to make up a page, something like 35% can't be cached because they are dynamically generated or marked as 'do not cache'. And those 35% are often the initial HTML of the page that must be downloaded before anything else.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bDwufBiCCxIajC6vbarF6/cdbbf9e66b7e8af3f91c43c882347d7a/cacheing-the-uncacheable-cloudflares-railgun-73454.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="286" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bDwufBiCCxIajC6vbarF6/e91397b76b20571087dd7f030e5cbe63/cacheing-the-uncacheable-cloudflares-railgun-73454.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="286" loading="lazy">
 
 	</figure>
 	<p>To solve that problem CloudFlare came up with a <a href="https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805">delta compression</a> technique that recognizes that even dynamically-generated or personalized pages change only a little over time or between users. Railgun uses that compression technique to greatly reduce the amount of data that is sent over the Internet to CloudFlare's data centers from backend web servers. The result is faster delivery of the critical HTML that the browser must receive before it can download the rest of the page.</p>
@@ -22,21 +22,21 @@
 	<p>Of the 51 sites 11 saw a speedup up of greater than 2x (i.e. the time to download the HTML of the web page more than halved) and for 8 of the sites the speedup was greater than 3x (i.e. the time to download the HTML of the web page was cut to a third of the original).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MQ3rn7thf0tato2wYYS2j/d7f1efd61a437495581e627169a93777/median_change_HTML_download.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="324" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MQ3rn7thf0tato2wYYS2j/83ea53412903b1e0fad2f850bccd830b/median_change_HTML_download.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="324" loading="lazy">
 
 	</figure>
 	<p>The median compression ratio achieved by Railgun was 0.65% (i.e. the page was reduced to 0.65% of its size). Of the 51 sites, only 9 saw a compression ratio greater than 3% (i.e. most of the pages were reduced to just a tiny percentage of their original size).</p>
 	<p>It's this huge compression that enables Railgun to speedup HTML delivery dramatically. </p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jhggDoUwn7vTEhM8tMuBm/71c879b21ee5c99b068b18f0c393f5e2/median_compression.png.scaled500.png" alt="Railgun in the real world: faster web page load
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jhggDoUwn7vTEhM8tMuBm/f2b8a7c1766606dc5d880062f8c8b266/median_compression.png.scaled500.png" alt="Railgun in the real world: faster web page load
 times" class="kg-image" width="500" height="320" loading="lazy">
 
 	</figure>
 	<p>Another measurement to look at is Time To First Byte (how long it takes for the first byte of a page to be delivered to the browser). This is measured as the time from starting the TCP connection to the server to the moment the first byte is received from the server. Railgun has an effect on TTFB as well. The median improvement in TTFB was to drop it to 90% of the non-Railgun-accelerated value.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/p2DGpvW8pGa63vMrZwbvC/d0789f1a0985e48e55976ae716b022ac/ttfb.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="307" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/p2DGpvW8pGa63vMrZwbvC/1f223fcc38ed6a14d478f4430f42b9f1/ttfb.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="307" loading="lazy">
 
 	</figure>
 	<p>But HTML delivery is one thing, what's the real end-user visible effect? i.e. how does this translate to a difference in page load time.</p>
@@ -51,14 +51,14 @@ times" class="kg-image" width="500" height="320" loading="lazy">
 	<p>Railgun makes a difference to page load time because it accelerates the download of the initial HTML which has to occur before the rest of the page downloads. Downloading the HTML faster helps the entire page download more quickly. Here's an example of the effect of Railgun on <a href="https://www.cloudflare.com/plans">CloudFlare's Plans page</a>. This small test was done from the same machine in London as all the other tests. First here's the waterfall for that page without Railgun enabled.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k6Dw7GEhdhSycyruHRDVk/5f0d36d89c1ef188bf44a8c4e1b3fad1/Screen_Shot_2012-12-20_at_2.17.18_PM.png.scaled500.png" alt="Railgun in the real world: faster web page load
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3k6Dw7GEhdhSycyruHRDVk/6b554bd3d2daa916d360a82a5fd1ef0e/Screen_Shot_2012-12-20_at_2.17.18_PM.png.scaled500.png" alt="Railgun in the real world: faster web page load
 times" class="kg-image" width="500" height="358" loading="lazy">
 
 	</figure>
 	<p>The page load time was 1.83s. Now with Railgun enabled the page load time dropped to 1.15s because the time to download the initial HTML dropped.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HCJCFM1TJgM56tNXctx1s/e72148ee6fd70fe650a54411868225b9/Screen_Shot_2012-12-20_at_2.17.53_PM.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HCJCFM1TJgM56tNXctx1s/e997ed15376b6a1a3b743d5244e59b4c/Screen_Shot_2012-12-20_at_2.17.53_PM.png.scaled500.png" alt="Railgun in the real world: faster web page load times" class="kg-image" width="500" height="358" loading="lazy">
 
 	</figure>
 	<p>Of course, that's just one test. Repeating the test 10 times with and without Railgun saw a median page load time of 1.59s with Railgun and 2.59s without (making the Railgun accelerated time 61% of the non-accelerated page load time). A similar test with CloudFlare's home page showed a median Railgun-accelerated page load time of 2.56s and without Railgun of 3.2s (i.e. Railgun makes the page load time drop to 83% of what it was).</p>
@@ -67,14 +67,14 @@ times" class="kg-image" width="500" height="358" loading="lazy">
 	<p>A comparison of the same site downloaded via Railgun and not can be seen in these two images. The decrease in page load time is due to the decrease in time to get the initial HTML. Here's the page loading without Railgun:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7w4NDY7JoN3cWm0ZG6dcAE/a72b16961a7c7ac810a684157d5ae5ab/Screen_Shot_2012-12-21_at_10.31.15_AM.png.scaled500.png" alt="Railgun in the real world: faster web page load
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7w4NDY7JoN3cWm0ZG6dcAE/bd02063a0b68b8de7b4c7432a6b45993/Screen_Shot_2012-12-21_at_10.31.15_AM.png.scaled500.png" alt="Railgun in the real world: faster web page load
 times" class="kg-image" width="500" height="347" loading="lazy">
 
 	</figure>
 	<p>And with Railgun the intial HTML load is accelerated resulting in a faster overall load time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bbkZfYgfvsoONBUafyb0M/70e0d86556ea5d995357c07de91241e1/Screen_Shot_2012-12-21_at_10.31.20_AM.png.scaled500.png" alt="Railgun in the real world: faster web page
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bbkZfYgfvsoONBUafyb0M/4e9c59d8b560340916ba8a995c30f555/Screen_Shot_2012-12-21_at_10.31.20_AM.png.scaled500.png" alt="Railgun in the real world: faster web page
 load
 times" class="kg-image" width="500" height="343" loading="lazy">
 

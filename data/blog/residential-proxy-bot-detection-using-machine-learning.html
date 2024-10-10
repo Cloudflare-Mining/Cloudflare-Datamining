@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iBWRGAnL6CiArPgL8NhcU/7f6b27a52740f80c3bd1e4bb9572a814/image1-10.png" alt="Using machine learning to detect bot attacks that leverage residential proxies" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iBWRGAnL6CiArPgL8NhcU/10594ea2bf62b599a6846df9e4ffb7e9/image1-10.png" alt="Using machine learning to detect bot attacks that leverage residential proxies" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Bots using residential proxies are a major source of frustration for security engineers trying to fight online abuse. These engineers often see a similar pattern of abuse when well-funded, modern botnets target their applications. Advanced bots bypass country blocks, <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system">ASN</a> blocks, and rate-limiting. Every time, the bot operator moves to a new IP address space until they blend in perfectly with the “good” traffic, mimicking real users’ behavior and request patterns. Our new Bot Management machine learning model (v8) identifies residential proxy abuse without resorting to IP blocking, which can cause false positives for legitimate users. &nbsp;</p>
@@ -28,7 +28,7 @@
 	<p>However, in the past few years, bot operators have started favoring proxies operating in residential network IP address space. By using residential IP proxies, attackers can masquerade as legitimate users by sending their traffic through residential networks. Nowadays, residential IP proxies are offered by companies that facilitate access to large pools of IP addresses for attackers. Residential proxy providers claim to offer 30-100 million IPs belonging to residential and mobile networks across the world. Most commonly, these IPs are sourced by partnering with free VPN providers, as well as including the proxy SDKs into popular browser extensions and mobile applications. This allows residential proxy providers to gain a foothold on victims’ devices and abuse their residential network connections.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Oob9FiycD6yIfYf8Xtdny/2c29c70e140524b4ba61fb2f2bfd5ca1/residential-proxy-architecture.jpg" alt="" class="kg-image" width="1572" height="1547" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Oob9FiycD6yIfYf8Xtdny/06e74f2dd0032ea4610dcab55b0ec38a/residential-proxy-architecture.jpg" alt="" class="kg-image" width="1572" height="1547" loading="lazy">
 
 	</figure>
 	<p>Figure 1: Architecture of a residential proxy network</p>
@@ -46,7 +46,7 @@
 	<p>The first step of training a new model is fetching labeled training data from our data store. Under the hood, our dataset definitions are SQL queries that will materialize by fetching data from our Clickhouse cluster where we store feature values and calculate aggregates from the traffic on our network. Figure 2 depicts these steps as train and validation dataset fetch operations. Introducing new datasets can be as straightforward as writing the SQL queries to filter the desired subset of requests.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xmgPc689UWAHZi29CfIrp/0ad4b55f987c6fd27e7f7b117696ea8e/airflow-dag.jpg" alt="" class="kg-image" width="2000" height="429" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xmgPc689UWAHZi29CfIrp/c0d5dca3b3a497423b00c9456ea5dc7c/airflow-dag.jpg" alt="" class="kg-image" width="2000" height="429" loading="lazy">
 
 	</figure>
 	<p>Figure 2: Airflow DAG for model training and validation</p>
@@ -105,7 +105,7 @@
 	<p>These periods of inactivity can be attributed to the temporary nature of residential proxy exit nodes. For instance, when the client software (i.e., browser or mobile application) that runs the exit nodes of these proxies is closed, the node leaves the residential proxy network. One way to filter out periods of inactivity is to increase the monitoring time and punish each IP address that exhibits residential proxy behavior for a period of time. This block-listing approach, however, has certain limitations. Most importantly, by relying only on IP-based behavioral signals, we would block traffic from legitimate users that may unknowingly run mobile applications or browser extensions that turn their devices into proxies. This is further detrimental for mobile networks where many users share their IPs behind <a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT">CGNATs</a>. Figure 3 demonstrates this by comparing the share of direct vs proxied requests that we received from active residential proxy IPs over a 24-hour period. Overall, we see that 4 out of 5 requests from these networks belong to direct and benign connections from residential devices.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vdkbz94Am2EHlL7tu9t3t/921c0a2f2467852ba74aea3336a7b88d/mlv8-blog-proxy-vs-direct.jpg" alt="Figure 3: Percentage of direct vs proxied requests from residential proxy IPs." class="kg-image" width="1528" height="655" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vdkbz94Am2EHlL7tu9t3t/3256ae94bfee66c60ad71c6a6dbc7fc0/mlv8-blog-proxy-vs-direct.jpg" alt="Figure 3: Percentage of direct vs proxied requests from residential proxy IPs." class="kg-image" width="1528" height="655" loading="lazy">
 
 	</figure>
 	<p>Figure 3: Percentage of direct vs proxied requests from residential proxy IPs.</p>
@@ -121,14 +121,14 @@
 	<p>We started testing v8 in shadow mode in March 2024. Every hour, v8 is classifying more than 17 million unique IPs that participate in residential proxy attacks. Figure 4 shows the geographic distribution of IPs with residential proxy activity belonging to more than 45 thousand ASNs in 237 countries/regions. Among the most commonly requested endpoints from residential proxies, we observe patterns of account takeover attempts, such as requests to /login, /auth/login, and /api/login. &nbsp;</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gGGhqngSzEkThZUoV3Fiw/b6c81ab83272d93dbe8ee141ca9e6070/mlv8-blog-map-1.jpg" alt="Figure 4: Countries and regions with residential network activity. Size of markers are proportionate to the number of IPs with residential proxy activity." class="kg-image" width="1929" height="1166" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gGGhqngSzEkThZUoV3Fiw/d807f5456e3277e4aa24972588c59cf7/mlv8-blog-map-1.jpg" alt="Figure 4: Countries and regions with residential network activity. Size of markers are proportionate to the number of IPs with residential proxy activity." class="kg-image" width="1929" height="1166" loading="lazy">
 
 	</figure>
 	<p>Figure 4: Countries and regions with residential network activity. Size of markers are proportionate to the number of IPs with residential proxy activity.</p>
 	<p>Furthermore, we see significant improvements when evaluating our new machine learning model on previously missed attacks reported by our customers. In one case, v8 was able to correctly classify 95% of requests from distributed residential proxy attacks targeting the voucher redemption endpoint of the customer’s website. In another case, our new model successfully detected a previously missed <a href="https://www.cloudflare.com/learning/bots/what-is-content-scraping">content scraping attack</a> evident by increased detection during traffic spikes depicted in Figure 5. We are continuing to monitor the behavior of residential proxy attacks in the wild and work with our customers to ensure that we can provide robust detection against these distributed attacks.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jstvGe6HudxtAS54UJPW6/c7e4b03a61cbf4d7f75b42e3e5d3804a/shadowmode-v8.jpg" alt="" class="kg-image" width="2000" height="1042" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jstvGe6HudxtAS54UJPW6/9bde592cb0efc64fb7a86ba33bb25047/shadowmode-v8.jpg" alt="" class="kg-image" width="2000" height="1042" loading="lazy">
 
 	</figure>
 	<p>Figure 5: Spikes in bot requests from residential proxies detected by ML v8</p>

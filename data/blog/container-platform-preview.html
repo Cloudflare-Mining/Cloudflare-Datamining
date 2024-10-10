@@ -1,4 +1,4 @@
-<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uXyuXT5ofnG9x4JGrR7jv/75c65f8e5c12f0913c0bed09416f2c1b/BLOG-2573_1.png" alt="">
+<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uXyuXT5ofnG9x4JGrR7jv/5d9436ce5da24f51f3d19387e0850957/BLOG-2573_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We’ve been working on something new —&nbsp;a platform for running containers across Cloudflare’s network. We already use it in production for <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a>, <a href="https://developers.cloudflare.com/workers/ci-cd"><u>Workers Builds</u></a>, <a href="https://www.cloudflare.com/zero-trust/products/browser-isolation"><u>Remote Browsing Isolation</u></a>, and the <a href="https://developers.cloudflare.com/browser-rendering"><u>Browser Rendering API</u></a>. Today, we want to share an early look at how it’s built, why we built it, and how we use it ourselves.</p>
 	<p>In 2024, Cloudflare Workers celebrates its 7th birthday. <a href="https://blog.cloudflare.com/introducing-cloudflare-workers"><u>When we first announced Workers</u></a>, it was a completely new model for running compute in a multi-tenant way —&nbsp;on isolates, as opposed to containers. While, at the time, Workers was a pretty bare-bones functions-as-a-service product, we took a big bet that this was going to become the way software was going to be written going forward. Since introducing Workers, in addition to expanding our developer products in general to include storage and AI, we have been steadily adding more compute capabilities to Workers:</p>
@@ -85,7 +85,7 @@
 	<p>We needed something that would allow us to still take advantage of the full capacity of Cloudflare’s entire network, not just the capacity of individual machines. And ideally not put that burden on the developer.</p>
 	<p>The answer: we built a control plane on our own Developer Platform that lets us schedule a container anywhere on <a href="https://www.cloudflare.com/en-gb/network"><u>Cloudflare’s Network</u></a>:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63nPDnWzVLvx2OB9ZPZXM5/3c0b8d46258be3bc3263db271a3dc73a/BLOG-2573_2.png" alt="BLOG-2573 2" class="kg-image" width="1999" height="1277" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63nPDnWzVLvx2OB9ZPZXM5/d08be3dd36fbd08bb7205a82b20bf90e/BLOG-2573_2.png" alt="BLOG-2573 2" class="kg-image" width="1999" height="1277" loading="lazy">
 	</figure>
 	<p>The global scheduler is built on Cloudflare <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>, and <a href="https://developers.cloudflare.com/kv"><u>KV</u></a>, and decides which Cloudflare location to schedule the container to run in. Each location then runs <i>its own</i> scheduler, which decides which metals within that location to schedule the container to run on. Location schedulers monitor compute capacity, and expose this to the global scheduler. This allows Cloudflare to dynamically place workloads based on capacity and hardware availability (e.g. multiple types of GPUs) across our network.</p>
 	<div class="flex anchor relative">
@@ -99,7 +99,7 @@
 	<p>When you run compute on a first generation cloud, the “contract” between the developer and the platform is that the developer must specify what runs where. This is regional scheduling, the status quo.</p>
 	<p>Let’s imagine for a second if we applied regional scheduling to running compute on Cloudflare’s network, with locations in <a href="https://www.cloudflare.com/en-gb/network"><u>330+ cities, across 120+ countries</u></a>. One of the obvious reasons people tell us they want to run on Cloudflare is because we have compute in places where others don’t, within 50ms of 95% of the world’s Internet-connected population. In South America, other clouds have one region in one city. Cloudflare has 19:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53Ba51lqKDRNQPbEBselC3/541a92d1e2702cc61d3e6c2f97d48c4d/BLOG-2573_3.png" alt="BLOG-2573 3" class="kg-image" width="1044" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53Ba51lqKDRNQPbEBselC3/0b9cd69b4f9fa29dad355df0076d05b9/BLOG-2573_3.png" alt="BLOG-2573 3" class="kg-image" width="1044" height="492" loading="lazy">
 	</figure>
 	<p>Running anywhere means you can be faster, highly available, and have more control over data location. But with regional scheduling, the more locations you run in, the more work you have to do. You configure and manage load balancing, routing, auto-scaling policies and more. Balancing performance and cost in a multi-region setup is literally a full-time job (or more) at most companies who have reached meaningful scale on traditional clouds.</p>
 	<p>But most importantly, no matter what tools you bring, you were the one who told the cloud provider, “run this container over here”. The cloud platform can’t move it for you, even if moving it would make your workload faster. This prevents the platform from adding locations, because for each location, it has to convince developers to take action themselves to move their compute workloads to the new location. Each new location carries a risk that developers won’t migrate workloads to it, or migrate too slowly, delaying the return on investment.</p>
@@ -148,7 +148,7 @@
 	<p>The resource footprint of a containerized application running on gVisor is lower than a VM because it does not require managing virtualized hardware and booting up a kernel instance. However, this comes at the price of reduced application compatibility and higher per-system call overhead.</p>
 	<p>To add GPU support, the Google team introduced <a href="https://gvisor.dev/docs/user_guide/gpu"><u>nvproxy</u></a> which works using the same principles as described above for syscalls: it intercepts <a href="https://en.wikipedia.org/wiki/Ioctl"><u>ioctls</u></a> destined to the GPU and proxies a subset to the GPU kernel module.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jqt4l5joKUkPNek1xACaM/0eb2e4546ac21b2d6da502919cd759a1/image__19_.png" alt="BLOG-2573 4" class="kg-image" width="1256" height="1428" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jqt4l5joKUkPNek1xACaM/64df1f3dcab2cae7d9ecf05deb407242/image__19_.png" alt="BLOG-2573 4" class="kg-image" width="1256" height="1428" loading="lazy">
 	</figure>
 	<p>To solve the third challenge, and make scheduling fast with large models, we weren’t satisfied with the status quo. So we did something about it.</p>
 	<div class="flex anchor relative">
@@ -210,7 +210,7 @@
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8ZICyfggbTEpkxki0OnYd/a35b43368b4db49699c0ee3a576619f2/BLOG-2573_5.png" alt="BLOG-2573 5" class="kg-image" width="1970" height="1286" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8ZICyfggbTEpkxki0OnYd/13a427a65b1e9d0c5d591468e3f10612/BLOG-2573_5.png" alt="BLOG-2573 5" class="kg-image" width="1970" height="1286" loading="lazy">
 	</figure>
 	<p>This might sound like just a lower level networking detail, disconnected from developer experience. But by integrating directly with Unimog, we can let developers:</p>
 	<ol>
@@ -251,11 +251,11 @@
 	<p>At any hour of the day, Cloudflare has many CPU cores that sit idle. This is compute power that could be used for something else.</p>
 	<p>Via anycast, most of Cloudflare’s traffic is handled as close as possible to the eyeball (person) that requested it. Most of our traffic originates from eyeballs. And the eyeballs of (most) people are closed and asleep between midnight and 5:00 AM local time. While we use our compute capacity very efficiently during the daytime in any part of the world, overnight we have spare cycles. Consider what a map of the world looks like at nighttime in Europe and Africa:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CtkNFxhvusjLx1khXh9gs/e79ee41386f2ac057888d2293b06bb59/BLOG-2573_6.png" alt="BLOG-2573 6" class="kg-image" width="1044" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CtkNFxhvusjLx1khXh9gs/25b5a6579d8abd47bcaa15ba28eddc61/BLOG-2573_6.png" alt="BLOG-2573 6" class="kg-image" width="1044" height="492" loading="lazy">
 	</figure>
 	<p>As shown above, we can run containers during “off-peak” in Cloudflare locations receiving low traffic at night. During this time, the CPU utilization of a typical Cloudflare metal looks something like this:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sXsQ3p19bFecokbR0X1yj/417881810f5de4e88fa9a9af8496f83c/Screenshot_2024-09-27_at_2.20.50_PM.png" alt="BLOG-2573 7" class="kg-image" width="2040" height="1128" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sXsQ3p19bFecokbR0X1yj/04419589e4f6796fe297435cd1029b5a/Screenshot_2024-09-27_at_2.20.50_PM.png" alt="BLOG-2573 7" class="kg-image" width="2040" height="1128" loading="lazy">
 	</figure>
 	<p>We have many “background” compute workloads at Cloudflare. These are workloads that don’t actually need to run close to the eyeball because there is no eyeball waiting on the request. The challenge is that many of these workloads require running untrusted code — either a dependency on open-source code that we don’t trust enough to run outside of a sandboxed environment, or untrusted code that customers deploy themselves. And unlike <a href="https://developers.cloudflare.com/workers/configuration/cron-triggers"><u>Cron Triggers</u></a>, which already make a best-effort attempt to use off-peak compute, these other workloads can’t run in <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates"><u>v8 isolates</u></a>.</p>
 	<p>On Builder Day 2024, we <a href="https://blog.cloudflare.com/builder-day-2024-announcements"><u>announced Workers Builds in open beta</u></a>. You connect your Worker to a git repository, and Cloudflare builds and deploys your Worker each time you merge a pull request. Workers Builds run on our containers platform, using otherwise idle “off-peak” compute, allowing us to offer lower pricing, and hold more capacity for unexpected spikes in traffic in Cloudflare locations during daytime hours when load is highest. We preserve our ability to serve requests as close to the eyeball as possible where it matters, while using the full compute capacity of our network.</p>
@@ -290,7 +290,7 @@
 	<p>We’re still exploring many different ideas and API designs, and we want your feedback. But let’s imagine what it might look like to use Workers, Durable Objects and Containers together.</p>
 	<p>In this case, an outer layer of Workers handles most business logic and ingress, a specialized Durable Object is configured to run alongside our new container, and the platform ensures the image is loaded on the right metals and can scale to meet demand.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GsXRuYvVELJY1syOmfq3z/c451ea0686d2d44e4460ec97dbaf2cfe/BLOG-2573_8.png" alt="BLOG-2573 8" class="kg-image" width="1162" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GsXRuYvVELJY1syOmfq3z/47d3481116670de291be86438777fbc0/BLOG-2573_8.png" alt="BLOG-2573 8" class="kg-image" width="1162" height="550" loading="lazy">
 	</figure>
 	<p>I add a containerized app to the <a href="https://developers.cloudflare.com/workers/wrangler/configuration"><code><u>wrangler.toml </u></code><u>configuration file</u></a> of my Worker (or <a href="https://blog.cloudflare.com/automatically-generating-cloudflares-terraform-provider"><u>Terraform</u></a>):</p>
 	<pre class="language-javascript"><code class="language-javascript">[[container-app]]

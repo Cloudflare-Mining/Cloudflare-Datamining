@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZZfhNmWbjSrKRbn7DQKbN/856343c90bb9636762a1ae140cb5f33e/7654121138_8f2e988436_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZZfhNmWbjSrKRbn7DQKbN/5e52b20e74312180800b2e9fe89561f3/7654121138_8f2e988436_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/29233640@N07/7654121138/in/photolist-e9kv19-9j6qxa-cEnnxQ-4fU67j-9GNLLu-4sbEbM-9GNLLo-9Gt7pW-8eWNET-v493-4bjmAN-32Gptn-fEBKM-87B9g9">image</a> by <a href="https://www.flickr.com/photos/29233640@N07">Robert Couse-Baker</a></p>
@@ -22,7 +22,7 @@
 	<p>With elliptic curve cryptography in the ECDSA signature algorithm, we can use smaller keys with the same level of security as a larger RSA key. Our elliptic curve keys are 256 bits long, equivalent in strength to a 3100 bit RSA key (most RSA keys are only 1024 or 2048 bits). You can compare below two signed DNSKEY sets, an RSA implementation against our ECDSA one. Ours is one quarter of the size of the matching RSA keys and signature.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XxfFSJnCzBJdOyaEz0kxs/643839575cea30225504d8c316e3f81a/dnskey.png" alt="" class="kg-image" width="1610" height="1434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XxfFSJnCzBJdOyaEz0kxs/0f045ffcf4aed84d1fda230b72a19037/dnskey.png" alt="" class="kg-image" width="1610" height="1434" loading="lazy">
 
 	</figure>
 	<p>As a side benefit, ECDSA is lightning fast, and our engineer Vlad Krasnov actually helped make it even faster. By implementing ECDSA natively in assembler, he was able to <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">speed up signing</a> by 21x. His optimizations are <a href="https://go-review.googlesource.com/#/c/8968">now part of the standard Go crypto library</a> as of Go version 1.6. It now only takes us a split of a second, 0.0001 of a second, to sign records for a DNS answer.</p>
@@ -39,7 +39,7 @@
 	<p>An ANY query for DNSSEC-enabled cloudflare.com returns an answer that is 231 bytes. The alleged domain in Akamai’s paper, for comparison, returns an ANY query almost 18 times larger, at a whopping 4016 bytes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Zz0xBeAhnXnLUl8gm7LwP/983842eba37091a2b4cee4636ea49cb7/any-1.png" alt="" class="kg-image" width="1610" height="3718" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Zz0xBeAhnXnLUl8gm7LwP/9649ded69ee63e23918e94847b0aaec9/any-1.png" alt="" class="kg-image" width="1610" height="3718" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

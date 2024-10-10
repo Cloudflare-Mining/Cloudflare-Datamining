@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fqItMkTAlZO6puAqbY0Wp/2ee2cf4228c102728e9c35b6a8ae5487/tanium-cloudflare-teams.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fqItMkTAlZO6puAqbY0Wp/ef4cf59ce570e3fecbb0c1e3632ef442/tanium-cloudflare-teams.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When Cloudflare first launched in 2010, <a href="https://www.cloudflare.com/network-security">network security</a> still relied heavily on physical security. To connect to a private network, most users simply needed to be inside the walls of the office. Once on that network, users could connect to corporate applications and infrastructure.</p>
 	<p>When users left the office, a Virtual Private Network (VPN) became a bandaid to let users connect back into that office network. Administrators poked holes in their firewall that allowed traffic to route back through headquarters. The backhaul degraded user experience and organizations had no visibility into patterns and events that occurred once users were on the network.</p>
@@ -17,7 +17,7 @@
 	<p>Cloudflare Access secures applications by applying zero-trust enforcement to every request. Rather than trusting any users on a private network who logged into a VPN client, Access checks for identity any time someone attempts to reach the application. With Cloudflare’s global network, that check takes place in a data center in over 200 cities around the world to avoid compromising performance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oFKXesp3AfaafjTuyAz7D/bce0da6d57e9fab892f273f9cea6d6e8/image2-11.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oFKXesp3AfaafjTuyAz7D/29bb643f71d98e4fcafdf324febdb479/image2-11.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
 
 	</figure>
 	<p>Behind the scenes, administrators build rules to decide who should be able to reach the tools protected by Access. In turn, when users need to connect to those tools, they are prompted to authenticate with one of the identity provider options. Cloudflare Access checks their login against the list of allowed users and, if permitted, allows the request to proceed.</p>
@@ -44,20 +44,20 @@
 	<p>Integrating Tanium and Cloudflare for Teams takes 10 minutes. Once configured, administrators can build rules that require users connecting to applications to both login with their SSO and use a device managed by Tanium.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BcxMT1iIosZNtZ5C5lxNN/7e02152345a32aa3c15ea6707dc4ce05/image4-6.png" alt="" class="kg-image" width="1999" height="1114" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BcxMT1iIosZNtZ5C5lxNN/e9a6da2c5327f55a9f50905057645e43/image4-6.png" alt="" class="kg-image" width="1999" height="1114" loading="lazy">
 
 	</figure>
 	<p>In the <a href="https://blog.cloudflare.com/a-single-dashboard-for-cloudflare-for-teams">new Cloudflare for Teams UI</a>, administrators can add Tanium as an authentication mechanism. The UI will prompt them to add their Tanium public certificate and the endpoint used to validate the connecting device. With that information, Cloudflare Access can query the device’s health when evaluating a connection without the risk that the device could be impersonated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uJOPnlL8Jc2EwPMs7MrP8/636594575d685f4a8dcced35f0fbba68/image1-11.png" alt="" class="kg-image" width="965" height="632" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uJOPnlL8Jc2EwPMs7MrP8/263b319971192336ad3212d8624c0828/image1-11.png" alt="" class="kg-image" width="965" height="632" loading="lazy">
 
 	</figure>
 	<p>Administrators can then copy their Cloudflare for Teams public certificate and add it into their Tanium deployment. With that certificate, Tanium administrators can ensure that the only service that can query for data from the endpoint is their unique Cloudflare for Teams account.</p>
 	<p>Finally, administrators can add new rules into their Cloudflare Access policies that <a href="https://www.cloudflare.com/cybersecurity-risk-management">evaluate device posture</a>. When users connect to resources secured by Access, Cloudflare’s network will check that the user authenticates with their identity provider and is connecting from a healthy, Tanium-monitored, device.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Lv4NrzSAtLZzEADd948AJ/4b9a73dc9f1f61d707e6c7c6c843e210/image3-10.png" alt="" class="kg-image" width="1246" height="786" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Lv4NrzSAtLZzEADd948AJ/035bfefe6178df7cba5196e2e2a404ab/image3-10.png" alt="" class="kg-image" width="1246" height="786" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s network and Tanium’s distribution makes that check seamless for the end user. Cloudflare Access runs in all of Cloudflare’s data centers in 200 cities around the world; putting enforcement decisions within 100ms of 99% of the world’s Internet connected population. By integrating directly with the Tanium agent, the evaluation can also occur without a connection back to the Tanium administrative layer.</p>

@@ -2,18 +2,18 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54VFTzFRRuTnCohpxnbJXx/175362322fb2b3e8df5a1a321f89cdef/unnamed-1.png" alt="The day my ping took countermeasures" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54VFTzFRRuTnCohpxnbJXx/72a29d0a708199a1d430fdbb03acddc5/unnamed-1.png" alt="The day my ping took countermeasures" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n0xGuyOEFmzVNvoE2XTh0/a1513016c594f4e0f09486856b29ee43/Screenshot-2023-07-11-at-13.30.23.png" alt="" class="kg-image" width="1620" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3n0xGuyOEFmzVNvoE2XTh0/d14bafdc7ac93fbc0bb1f9d3d790240e/Screenshot-2023-07-11-at-13.30.23.png" alt="" class="kg-image" width="1620" height="802" loading="lazy">
 
 	</figure>
 	<p>Once my holidays had passed, I found myself reluctantly reemerging into the world of the living. I powered on a corporate laptop, scared to check on my email inbox. However, before turning on the browser, obviously, I had to run a ping. Debugging the network is a mandatory first step after a boot, right? As expected, the network was perfectly healthy but what caught me off guard was this message:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bipMZ0BFtWHz9fK7eNo3Q/926adb311ec4bb42cbe034b965d3bb44/image6.png" alt="" class="kg-image" width="1548" height="449" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bipMZ0BFtWHz9fK7eNo3Q/13a2d4930b304d293727af404c798c8e/image6.png" alt="" class="kg-image" width="1548" height="449" loading="lazy">
 
 	</figure>
 	<p>I was not expecting <b>ping</b> to <b>take countermeasures</b> that early on in a day. Gosh, I wasn't expecting any countermeasures that Monday!</p>
@@ -42,7 +42,7 @@
 	<p><b>Ping</b> goes back a long way. It was originally written by <a href="https://en.wikipedia.org/wiki/Mike_Muuss">Mike Muuss</a> while at the U. S. Army Ballistic Research Laboratory, in 1983, before I was born. The code we're looking for is under <a href="https://github.com/iputils/iputils/blob/ee0a515e74b8d39fbe9b68f3309f0cb2586ccdd4/ping/ping_common.c#L746">iputils/ping/ping_common.c</a> gather_statistics() function:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FJGGtP0ecs0zhiBKsyfxx/5dcc2a77279c253b02cff15e2046e07e/image5.png" alt="" class="kg-image" width="1175" height="253" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FJGGtP0ecs0zhiBKsyfxx/224080cf97fc53fa3fb83c59a86e43c9/image5.png" alt="" class="kg-image" width="1175" height="253" loading="lazy">
 
 	</figure>
 	<p>The code is straightforward: the message in question is printed when the measured <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a> is negative. In this case ping resets the latency measurement to zero. Here you are: "taking countermeasures" is nothing more than just marking an erroneous measurement as if it was 0ms.</p>
@@ -185,7 +185,7 @@ recvmsg(3, { ... cmsg_level=SOL_SOCKET,
 	<p>With <b>strace</b> up and running we can finally do something interesting. You see, <b>strace</b> has a little known fault injection feature, named <a href="https://man7.org/linux/man-pages/man1/strace.1.html">"tampering" in the manual</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EpzqSkXe9BCttqJajgXpi/6f5c31fba29e8968a58741f177f72fc8/image3.png" alt="" class="kg-image" width="1305" height="391" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EpzqSkXe9BCttqJajgXpi/79d3f4051066ab7e8fa88795c2c33e58/image3.png" alt="" class="kg-image" width="1305" height="391" loading="lazy">
 
 	</figure>
 	<p>With a couple of command line parameters we can overwrite the result of the <b>gettimeofday</b> call. I want to set it forward to confuse ping into thinking the SO_TIMESTAMP time is in the past:</p>
@@ -308,7 +308,7 @@ scapy.sniff(filter="icmp and icmp[0] = 8", iface=iface, prn=custom_action)</code
 	<p>One notable case that affects all computers is a coordinated clock adjustment called a <a href="https://en.wikipedia.org/wiki/Leap_second">leap second</a>. It causes the clock to move backwards, which is particularly troublesome. An issue with handling leap second <a href="https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns">caused our engineers a headache in late 2016</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4iGPlBeYYXm0RYyxhEmOMQ/59202590d520304e71088ec89e143281/Screenshot-2023-07-11-at-13.33.02.png" alt="" class="kg-image" width="1614" height="648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iGPlBeYYXm0RYyxhEmOMQ/20b49ba0ad47eeb0404610e710bd4226/Screenshot-2023-07-11-at-13.33.02.png" alt="" class="kg-image" width="1614" height="648" loading="lazy">
 
 	</figure>
 	<p>Leap seconds often cause issues, so the current consensus is to <a href="https://www.nytimes.com/2022/11/19/science/time-leap-second-bipm.html">deprecate them by 2035</a>. However, <a href="https://en.wikipedia.org/wiki/Leap_second#International_proposals_for_elimination_of_leap_seconds">according to Wikipedia</a> the solution seem to be to just kick the can down the road:</p>

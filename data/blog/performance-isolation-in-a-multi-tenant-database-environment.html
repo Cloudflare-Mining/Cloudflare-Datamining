@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/looJPdLd0quZjC5W1ef4W/101a4c4727666337d3d25ffa5f41524a/1.png" alt="" class="kg-image" width="1600" height="830" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/looJPdLd0quZjC5W1ef4W/a13075baf1094cc3bb91824f6e24d87f/1.png" alt="" class="kg-image" width="1600" height="830" loading="lazy">
 
 	</figure>
 	<p>Operating at Cloudflare scale means that across the technology stack we spend a great deal of time handling different load conditions. In this blog post we talk about how we solved performance difficulties with our Postgres clusters. These clusters support a large number of tenants and highly variable load conditions leading to the need to isolate activity to prevent tenants taking too much time from others. Welcome to real-world, large database cluster management!</p>
@@ -51,7 +51,7 @@
 	<p>Manual concurrency (connection) throttling has shown improvements in shedding load in Postgres during high production workloads:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/W3HCXcAwPCBrsjKXc6eF6/1c2081a5e745925cb6aa2f8a86f45dce/2.png" alt="" class="kg-image" width="1186" height="434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/W3HCXcAwPCBrsjKXc6eF6/612ff61445829d5f6f5bf9034ac1f869/2.png" alt="" class="kg-image" width="1186" height="434" loading="lazy">
 
 	</figure>
 	<p>While we have seen success with this approach, it is not perfect and is horribly manual. It also suffers from the following:</p>
@@ -127,13 +127,13 @@ SET POOL dns_service_user.dns_db = ‘pool_size=30’;</code></pre>
 	<p>Traditionally, TCP Vegas converges to the initially unknown and optimal congestion window (max packets that can be sent concurrently). In the same spirit, we can treat the unknown congestion window as the optimal concurrency or connection pool size for database queries. At the gateway layer, PgBouncer, each tenant will begin with a small connection pool size, while we dynamically sample each tenant’s transaction’s <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a> against Postgres. We gradually increase the connection pool size (congestion window) of a tenant so long as their transaction RTTs do not deteriorate.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AnIgPtx8mcQHSs2YTXji9/242354384830864aae2292d24692eada/3.png" alt="" class="kg-image" width="863" height="93" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AnIgPtx8mcQHSs2YTXji9/c1ef3fe2dbf6e15fb45f056c579b7974/3.png" alt="" class="kg-image" width="863" height="93" loading="lazy">
 
 	</figure>
 	<p>When a tenant's sampled transaction latency increases, the formula's minimum by sampled request latency ratio will decrease, naturally reducing the tenant's available concurrency which reduces database load.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zAs4XrTUxebX1K8TnngYX/13a8fb558a5c44beffdacde82bce1742/4.png" alt="" class="kg-image" width="1476" height="906" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zAs4XrTUxebX1K8TnngYX/928836fda5fc65505d26ebe248de38e3/4.png" alt="" class="kg-image" width="1476" height="906" loading="lazy">
 
 	</figure>
 	<p>Essentially, this algorithm will "back off" when observing high query latencies as the indicator of high database load, regardless of whether the latency is due to CPU time or disk/network IO blocking, etc. This formula will converge to find the optimal concurrency limit (connection pool size) since the latency ratio always converges to 0 with sufficiently large sample request latencies. The square root of the current tenant pool size is chosen as a constant request "burst" headroom because of its fast growth and being relatively large for small pool sizes (when latencies are low) but converges when the pool size is reduced (when latencies are high).</p>
@@ -165,7 +165,7 @@ SET POOL dns_service_user.dns_db = ‘pool_size=30’;</code></pre>
 	<p>To prevent priority queue starvation (one tenant’s query is at the end of the queue and is never executed), the gateway level query queuing can be configured to only enable when there is peak load/traffic against the Postgres instance. Or, the time of enqueueing a query can be factored into the priority ordering.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7twYWGaewKPLe7xRCpnIBG/66a00bc1380abbad5cae6b30cae25d0f/6.png" alt="" class="kg-image" width="1592" height="1088" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7twYWGaewKPLe7xRCpnIBG/f47ea6a51eaf09d7e44982a9128365a0/6.png" alt="" class="kg-image" width="1592" height="1088" loading="lazy">
 
 	</figure>
 	<p>This approach would isolate tenant performance by allowing non-offending tenants to continue reserving connections and executing queries (such as critical health monitoring queries). <b>Higher latency would only be observed from the tenants that are utilizing more resources</b> (from many/expensive transactions). This approach is straightforward to understand, generic in application (can queue transactions based on other input metrics), and <b>non-destructive</b> as it does not kill client/server connections, and should only drop queries when the in-memory priority queue reaches capacity.</p>

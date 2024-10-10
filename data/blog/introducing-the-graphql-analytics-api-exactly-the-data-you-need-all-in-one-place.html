@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YxXsuUFirzatEJfVPxplB/d8d33b9e77c622567ce06fc4ac3453c2/image4-4.png" alt="" class="kg-image" width="1999" height="1244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YxXsuUFirzatEJfVPxplB/4d7bff07cba60785b1dde4ff6a056b05/image4-4.png" alt="" class="kg-image" width="1999" height="1244" loading="lazy">
 
 	</figure>
 	<p>Today we’re excited to announce a powerful and flexible new way to explore your Cloudflare metrics and logs, with an API conforming to the industry-standard <a href="https://graphql.org">GraphQL specification</a>. With our new GraphQL Analytics API, all of your performance, security, and reliability data is available from one endpoint, and you can select exactly what you need, whether it’s one metric for one domain or multiple metrics aggregated for all of your domains. You can ask questions like <i>“How many cached bytes have been returned for these three domains?”</i> Or, <i>“How many requests have all the domains under my account received?”</i> Or even, <i>“What effect did changing my firewall rule an hour ago have on the responses my users were seeing?”</i></p>
@@ -47,13 +47,13 @@
 	<p>The first thing you may be wondering: if the GraphQL Analytics API offers access to so much data, how do I figure out what exactly is available, and how I can ask for it? GraphQL makes this easy by offering “introspection,” meaning you can query the API itself to see the available data sets, the fields and their types, and the operations you can perform. <i>GraphiQL</i> uses this functionality to provide a “Documentation Explorer,” query auto-completion, and syntax validation. For example, here is how I can see all the data sets available for a zone (domain):</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v9HqDr6UGaifduopecAMw/938d337c9c755c657b010676cc352f26/image1.gif" alt="" class="kg-image" width="640" height="283" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v9HqDr6UGaifduopecAMw/6f89f52d3ca080c7385710598bd8b26e/image1.gif" alt="" class="kg-image" width="640" height="283" loading="lazy">
 
 	</figure>
 	<p>If I’m writing a query, and I’m interested in data on firewall events, auto-complete will help me quickly find relevant data sets and fields:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RSkIKlSwBMy7BVZWPWp0q/78707d2d1cb9f894e17b10a99f68203c/image6.gif" alt="" class="kg-image" width="640" height="181" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RSkIKlSwBMy7BVZWPWp0q/c605fa07bb8997758e2e84cbb47406f9/image6.gif" alt="" class="kg-image" width="640" height="181" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -82,7 +82,7 @@
 	<p>Here is the first part of the response, showing requests for your account, by the minute:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hsWUNy86iymsBlbiOfjL5/3df5d3197830fd11ffd749864be46d5b/Screen-Shot-2019-09-17-at-2.21.41-PM.png" alt="" class="kg-image" width="1120" height="756" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hsWUNy86iymsBlbiOfjL5/054c2bce4d1fef4090e56f264fee7aec/Screen-Shot-2019-09-17-at-2.21.41-PM.png" alt="" class="kg-image" width="1120" height="756" loading="lazy">
 
 	</figure>
 	<p>Now, let’s say you want to compare the traffic coming to your blog versus your marketing site over the last hour. You can do this in one query, asking for the number of requests to each zone:</p>
@@ -101,7 +101,7 @@ datetime_lt: "2019-09-16T21:00:00Z"}) {
 	<p>Here is the response:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1piQ5uNUOVcsX3AqEADplu/e742f55e98dcb76fe8540cefed0ebd21/Screen-Shot-2019-12-11-at-4.04.37-PM.png" alt="" class="kg-image" width="2000" height="1270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1piQ5uNUOVcsX3AqEADplu/08f469a6a92b8df8a2e59e523aa497b0/Screen-Shot-2019-12-11-at-4.04.37-PM.png" alt="" class="kg-image" width="2000" height="1270" loading="lazy">
 
 	</figure>
 	<p>Finally, let’s say you’re seeing an increase in error responses. Could this be correlated to an attack? You can look at error codes and firewall events over the last 15 minutes, for example:</p>
@@ -132,7 +132,7 @@ datetime_lt: "2019-09-16T21:15:00Z"}) {
 	<p>Notice that, in this query, we’re looking at multiple datasets at once, using a common zone identifier to “join” them. Here are the results:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G5to39LSIQSOtv9KgIzIL/c2e0f56125a556cf20ac09a1388f3906/Screen-Shot-2019-12-11-at-4.28.28-PM.png" alt="" class="kg-image" width="776" height="1310" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7G5to39LSIQSOtv9KgIzIL/78f15ef423f901c4e027ef7cb67cddd8/Screen-Shot-2019-12-11-at-4.28.28-PM.png" alt="" class="kg-image" width="776" height="1310" loading="lazy">
 
 	</figure>
 	<p>By examining both data sets in parallel, we can see a correlation: 31 requests were “dropped” or blocked by the Firewall, which is exactly the same as the number of “403” responses. So, the 403 responses were a result of Firewall actions.</p>

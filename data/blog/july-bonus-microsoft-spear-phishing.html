@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-tw/july-bonus-microsoft-spear-phishing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56IRqOR1NRlSmFopeAYs2D/13a521486726adadf88e1c42ce74bd60/july-bonus-microsoft-spear-phishing.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-tw/july-bonus-microsoft-spear-phishing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56IRqOR1NRlSmFopeAYs2D/71c2ab752a3e1a7c125ef65173eacc4f/july-bonus-microsoft-spear-phishing.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in August 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>Isn’t it great that some companies are <a href="https://www.msn.com/en-us/money/companies/these-30-companies-are-giving-bonuses-and-raises-to-their-essential-workers/ss-BB179W66?li=BBnb7Kz">giving out bonuses</a> to their front-line workers amidst the pandemic? That’s precisely what the creators of two new Microsoft phishing campaigns, that Area 1 has dubbed “Summer Bonus”, are using to lure unsuspecting employees into divulging their Microsoft credentials. Few companies are doing well enough to give out bonuses these days, making an unexpected notification from your employer on a paycheck increase all the more enticing. Area 1 Security suspects that this attack is inspired by all the media buzz around unprecedented bonuses to essential workers. No good deed goes unpunished.</p>
@@ -15,7 +15,7 @@
 	<p>Targeted victims receive an email similar to the one below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6J93NgwSIi1hCq5Iq05VOd/6b1aad3d5f8db50fdc4edc561f3437de/image1-13.png" alt="" class="kg-image" width="1604" height="1384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6J93NgwSIi1hCq5Iq05VOd/f04d7a9b87707add1bed71b5b9f9baaa/image1-13.png" alt="" class="kg-image" width="1604" height="1384" loading="lazy">
 
 	</figure>
 	<p>The email is crafted well enough to pass for a legitimate file share request that most employees wouldn’t think twice about clicking. (Who would pass up a bonus, especially in the COVID-era?) The FROM address is spoofed to look like it’s coming from an automated service within the targeted company, i.e. noreply@&lt;company.com&gt;. A careful analysis of the email headers indicates the first Mail Transfer Agent is a Russian-based server farm hosted at mgn-host[.]ru, which is where the bulk of the emails originated before August 1st.</p>
@@ -91,7 +91,7 @@ source:        TCI</code></pre>
 	<p>Appspot.com is a cloud computing platform for developing and hosting web applications in Google-managed data centers. Despite its legitimate uses, AppSpot is a commonly abused platform, offering attackers a clever way to bypass traditional spam and phish filters. When clicked, this AppSpot link reveals a very convincing Microsoft login portal as shown below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QSONLnMKwpJLOs9FcyTaQ/5f74a399250d7d106fb13b9bfd3a6eaa/image3-10.png" alt="" class="kg-image" width="806" height="630" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QSONLnMKwpJLOs9FcyTaQ/9430d1a2ddaaa31d066f05e5d740e08c/image3-10.png" alt="" class="kg-image" width="806" height="630" loading="lazy">
 
 	</figure>
 	<p>The success of these campaigns is a result of the infamous Layer 8 error (user error, <a href="https://www.lifewire.com/have-you-been-the-butt-of-a-tech-joke-2619218">for the non-technicals</a>). Among other techniques, an easy way to spot if a login portal is being spoofed is to simply verify the URL. If the site is a login for Microsoft then the corresponding link should direct your browser to a legitimate Microsoft domain, not appspot.com. The adage “if it seems too good to be true” also rings true for most phishing schemes. It’s always good practice to check with a supervisor before responding to unsolicited requests for credentials or logins, especially as they pertain to company financial matters.</p>
@@ -147,7 +147,7 @@ $('.ldsddddd').hide();
 	<p>This spear phish is another great example of how attackers are skillfully crafting phishing messages to lure their targets. The text, images, and formatting are an almost identical match to the real Microsoft Planner notifications. This demonstrates how even employee cybersecurity training is not enough for a company to effectively mitigate their threat surface.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dtvUOc5mUtcREXOjXBzeL/23582f8363ff9f96a7790d27bae1c658/image2-15.png" alt="" class="kg-image" width="1718" height="1474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dtvUOc5mUtcREXOjXBzeL/fa1428f3a6c1848a044f713c99eb96bf/image2-15.png" alt="" class="kg-image" width="1718" height="1474" loading="lazy">
 
 	</figure>
 	<p>The most glaring evidence that this is a phishing email can be found in the sender field. The attacker created a display name that makes it appear as if the true sender address was one belonging to the targeted company (i.e., noreply@sharepoint[.]com <b>@&lt;targeted_company.com&gt;</b>). The most scrupulous users might easily dismiss such a sender as benign. However, a closer look at the email headers exposes the true sender address, root@hwsrv-757045[.]hostwindsdns[.]com. Based on the sender domain, the attacker is using a VPS provider to launch their phishing campaign. Threat actors commonly rely on VPS services not only for their scalability and ease of use but also for their ability to obscure the attacker’s true location.</p>

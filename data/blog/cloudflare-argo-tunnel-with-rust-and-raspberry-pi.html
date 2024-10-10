@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64D2oSodAjCSr4ZsFdqza7/ce36ebcd5d2c0c14b9336846bfb447bf/cloudflare-argo-tunnel-with-rust-and-raspberry-pi.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64D2oSodAjCSr4ZsFdqza7/ed56e59a206a6ba9ca6dc8b09aff39c2/cloudflare-argo-tunnel-with-rust-and-raspberry-pi.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Yesterday Cloudflare launched <a href="https://developers.cloudflare.com/argo-tunnel">Argo Tunnel</a>. In the words of the product team:</p>
 	<blockquote>
@@ -28,13 +28,13 @@
 	<p>I'll assume you already have a Raspberry Pi with Raspbian on it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yhfAIyjzM1fchLSHmBBLg/ac040f6acd3bac41e08890ab4767334c/rig.JPG.jpeg" alt="My rig" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yhfAIyjzM1fchLSHmBBLg/f32e891d40339d5d66139573d9c0e17b/rig.JPG.jpeg" alt="My rig" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p>Plug the Pi into your router. It should now have an IP address. Look that up in your router’s admin UI:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nD8bAb7meAZ3X44R4o8YJ/c236ae7fc77317e0b8ed8cfe43ce0421/devices.png" alt="Attached devices" class="kg-image" width="747" height="518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nD8bAb7meAZ3X44R4o8YJ/632c6a588761b86e7c7be9f9e87f8c0e/devices.png" alt="Attached devices" class="kg-image" width="747" height="518" loading="lazy">
 
 	</figure>
 	<p>OK, that's promising. Let's connect to that IP using the default pi/raspberry credentials:</p>
@@ -108,7 +108,7 @@ cloudflared version 2018.3.0 (built 2018-03-02-1820 UTC)</code></pre>
 	<p>Seems unlikely, but let’s have faith. Here is my mental model of what's happening:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yhnPd0ciTQSUCgu03CHu7/86a730e6b41d1895dae580adac76859a/Argo-Tunnel-Diagram.png" alt="My mental model of Argo Tunnel" class="kg-image" width="1563" height="857" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yhnPd0ciTQSUCgu03CHu7/b5360d9194e28944ed230e6cb5e19fc2/Argo-Tunnel-Diagram.png" alt="My mental model of Argo Tunnel" class="kg-image" width="1563" height="857" loading="lazy">
 
 	</figure>
 	<p>So let's create that secure tunnel. I guess we need some sort of certificate or credentials...</p>
@@ -123,18 +123,18 @@ If the browser failed to open, open it yourself and visit the URL above.</code><
 	<p>This part assumes you already have a domain on Cloudflare If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164">setup guide</a> to get started.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NdfPejq5R5wFIBaw6fjmx/2ebc83eb0f134c0a1aa486cedf52c373/authorize-choose-domain.png" alt="authorize-choose-domain" class="kg-image" width="1550" height="560" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NdfPejq5R5wFIBaw6fjmx/04998230fa9a9fae7cef05e0f282cc43/authorize-choose-domain.png" alt="authorize-choose-domain" class="kg-image" width="1550" height="560" loading="lazy">
 
 	</figure>
 	<p>We're being asked which domain we want this tunnel to sit behind. I've chosen <b>pacman.wiki</b>. Click Authorize.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2e3js21yw4OkiapEadWalz/522843f09882eb4fc909bd40e970ddca/authorize-confirm.png" alt="authorize-confirm" class="kg-image" width="854" height="237" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2e3js21yw4OkiapEadWalz/bbe4e38f7dcffae2b6f3a98395d5ba9b/authorize-confirm.png" alt="authorize-confirm" class="kg-image" width="854" height="237" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49TShvgc3EHdZ9O1a8s1Be/4732c73d87a7068ba10c74a182408967/authorize-complete.png" alt="authorize-complete" class="kg-image" width="848" height="217" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49TShvgc3EHdZ9O1a8s1Be/2a346df5abf86d07f15e2f8f271a2619/authorize-complete.png" alt="authorize-complete" class="kg-image" width="848" height="217" loading="lazy">
 
 	</figure>
 	<p>You should now see this back on your pi:</p>
@@ -155,7 +155,7 @@ INFO[0012] Connected to SFO-DOG  </code></pre>
 	<p>Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HzTsm0DkHPzZSQ527zAYb/44527109212b0634373a4994e314b37b/success-1.png" alt="Success!" class="kg-image" width="1160" height="701" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HzTsm0DkHPzZSQ527zAYb/1dec3343ed9ec63465c60fb28dbe60ed/success-1.png" alt="Success!" class="kg-image" width="1160" height="701" loading="lazy">
 
 	</figure>
 	<p>And back on the Pi</p>
@@ -238,7 +238,7 @@ Listening for requests at http://127.0.0.1:7878</code></pre>
 	<p><code>$ ./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2O0v47vQuYvFKKPsCY134y/8a1652adde160edc3b58575b70234829/pacman-2.gif" alt="pacman" class="kg-image" width="2316" height="450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O0v47vQuYvFKKPsCY134y/22c094cfb746e462c6433e6db493794d/pacman-2.gif" alt="pacman" class="kg-image" width="2316" height="450" loading="lazy">
 
 	</figure>
 	<p>And now we have some unicode served from our Pi at home over the Internet by a highly asynchronous web server written in a fast, safe, high-level language. Cool.</p>

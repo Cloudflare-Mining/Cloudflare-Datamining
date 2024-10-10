@@ -1,41 +1,41 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Gq42P5vXhq3do2nWvdwd2/758f04d809e1dd9a7349e7d23be2c7a0/why-mobile-performance-is-difficult.jpg" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Gq42P5vXhq3do2nWvdwd2/c0316a0637333d1ef595cd53d14fc6a3/why-mobile-performance-is-difficult.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Mobile web browsing is very different, at the network level, to browsing on a desktop machine connected to the Internet. Yet both use the very same protocols, and although TCP was designed to perform well on the fixed-line Internet, it doesn't perform as well on mobile networks. This post looks at why and how CloudFlare is helping.</p>
 	<p>We start with a simple ping. Here's a ping from my laptop machine (which is connected via 802.11g WiFi to a 20Mbps broadband connection) to a machine at Google. Looks like I'm getting a roundtrip time of about 20ms.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SPeLtpDF4TnhjvUGYVQjI/de6953fb2b10b016174e583104656d07/Screen_Shot_2012-06-27_at_4.22.50_PM.png.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="493" height="199" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SPeLtpDF4TnhjvUGYVQjI/7d91273e0b26466302edeeba9a2a155e/Screen_Shot_2012-06-27_at_4.22.50_PM.png.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="493" height="199" loading="lazy">
 
 	</figure>
 	<p>Here's the same ping done from my iPhone on the same WiFi network at the same location in the house. The ping time has gone up to about 60ms. So, in this instance, the round trip time had tripled just from going from laptop to phone.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JLqXO7BfXiHbgvw3UugBE/0bb8b31cdbe5239cddbdba53679fb128/IMG_3783.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JLqXO7BfXiHbgvw3UugBE/066ea75ff0c3e6097c7c64fe8283136a/IMG_3783.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="384" loading="lazy">
 
 	</figure>
 	<p>But to see the real cost of mobile it's necessary to switch off WiFi and onto 3G. Here's the ping time on 3G to the same machine. Here's it's both much higher (we're now into 1/10 to 1/5 of a second territory) but it's also variable:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ndn2280K7W1PByFoFpGLW/dcbf8f4861eae713818a4ab2827a2fc9/IMG_3777.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="379" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ndn2280K7W1PByFoFpGLW/92fa0ee7f48ee38ea3e26d87bb99928a/IMG_3777.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="379" loading="lazy">
 
 	</figure>
 	<p>And then I get up and move to the front of the house and try again. The ping time has changed completely (the number of bars didn't) and I'm seeing between 0.5s and 1s of round trip time. That will have a serious effect on web browsing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Gi1744fWZEvvbYSMDifD0/7a1ba22f1fac3135d7a31ac1c415da20/IMG_3778.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="380" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Gi1744fWZEvvbYSMDifD0/8d44a485457558e4678b85750459e8f4/IMG_3778.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="380" loading="lazy">
 
 	</figure>
 	<p>And for a final test I return to my original location and grip the iPhone firmly in my hand. The number of bars falls away and the round trip time becomes infinite! Pings simply aren't working any more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dzdtT2vNyMnykyPsFSqM5/94d0f22ac1e07afaf00a489badfd8042/IMG_3781.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="379" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dzdtT2vNyMnykyPsFSqM5/aabcce5584a061aecc511d0830c85d22/IMG_3781.PNG.scaled500.png" alt="Why mobile performance is difficult" class="kg-image" width="500" height="379" loading="lazy">
 
 	</figure>
 	<p>What this illustrates is something that any smartphone user knows instinctively: network performance on phone is very variable and susceptible to location and environment. TCP would actually work just fine on a phone except for one small detail: phones don't stay in one location. Because they move around (while using the Internet) the parameters of the network (such as the latency) between the phone and the web server are changing and TCP wasn't designed to detect the sort of change that's happening.</p>
 	<p>In past posts I've looked at the effect of <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">high latency on web browsing</a> and <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">TCP's connection and slow start cost</a>. One of the fundamental parts of the TCP specification covers congestion avoidance: the <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Congestion_control">detection and avoidance of congestion</a> on the Internet. At the start of a connection TCP's slow start prevents it from blasting out packets until it's detected the maximum possible speed it can transmit at, and during a connection TCP actively watches for signs of congestion. The smooth running of the Internet as a whole relies on protocols like TCP being able to detect congestion and slow down. If not there'd likely be a <a href="https://en.wikipedia.org/wiki/Congestive_collapse#Congestive_collapse">congestion collapse</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VrcDARG9qzMgNjzXE0bsS/69ac55effe432476765e8f9bb4d9c014/7454479488_9cf64433d6.jpeg.scaled500.jpg" alt="Why mobile performance is difficult" class="kg-image" width="500" height="363" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VrcDARG9qzMgNjzXE0bsS/b37ca6778d6044db491d102e60667c4a/7454479488_9cf64433d6.jpeg.scaled500.jpg" alt="Why mobile performance is difficult" class="kg-image" width="500" height="363" loading="lazy">
 
 	</figure>
 	<p>Image credit: <a href="http://www.parliamentlive.tv/Main/Player.aspx?meetingId=10948&amp;wfs=true">joiseyshowaa</a></p>
@@ -44,7 +44,7 @@
 	<p>It seems like it might be a simple matter to change the congestion avoidance algorithm in TCP to take into account the challenges of mobile networks, but it's actually an area of <a href="https://en.wikipedia.org/wiki/TCP_congestion_avoidance_algorithm">active research</a> with many different possible replacements for the existing basic algorithm. It's hard because trying to balance maximizing throughput, preventing congestion on the Internet, dealing with actual congestion, and spotting phony congestion is complex.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Pbjdr8LCoKszcWmPWU6uF/ba0fed5ec0a565864379dccfe1c46fd9/6031969871_19086b6f70.jpeg.scaled500.jpg" alt="Why mobile performance is difficult" class="kg-image" width="492" height="369" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Pbjdr8LCoKszcWmPWU6uF/4da4d491fb6c86da01303f01390fa0c1/6031969871_19086b6f70.jpeg.scaled500.jpg" alt="Why mobile performance is difficult" class="kg-image" width="492" height="369" loading="lazy">
 
 	</figure>
 	<p>Image credit: <a href="http://www.flickr.com/photos/mikecogh">mikecogh</a></p>

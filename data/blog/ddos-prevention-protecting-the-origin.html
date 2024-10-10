@@ -1,22 +1,22 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sNHpO90eVf0GlbnVrkQZF/de926d6f0d5f17d2aeb3f4769ad9e9c9/ddos-prevention-protecting-the-origin.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sNHpO90eVf0GlbnVrkQZF/eb1aa85cbbfe08de98e506c914c7a12a/ddos-prevention-protecting-the-origin.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>One of the many great features that CloudFlare provides is protection from Distributed Denial of Service (DDoS) attacks. A malicious party who wants to make your website or web service unavailable could try to overwhelm it with requests from compromised machines (or bots) all around the world. With a large enough volume of requests, your server may become overloaded and not be able to provide its services to legitimate clients. This is the typical scenario in a denial of service attack.</p>
 	<p>The attacking machines use the public domain name service (DNS) to look up the IP address that hosts your domain (<a href="http://www.sample.com">www.sample.com</a>) and send their traffic to that machine hoping to shut it down.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fVd553julXuB9kmooRfPG/af55f8278d1048a98b627b7d1d04ba23/ddos-illustrations-1.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fVd553julXuB9kmooRfPG/6edf028d118563e27071f1d658f1e307/ddos-illustrations-1.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
 
 	</figure>
 	<p>Signing up for CloudFlare is like taking your number out of the phone book, and putting in CloudFlare’s number under your name. When someone attempts to look up who hosts your domain, DNS will return an IP address in the CloudFlare network. If an attacker tries to take down your site, their traffic will go to CloudFlare machines around the world instead of directly to your web server. The CloudFlare network acts as a filter to block bad traffic and only send legitimate traffic through to your origin server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oj0yH5BAuEHugMapuqEae/3ffa251b641efa8741504eab10ad10a6/ddos-illustrations-2.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oj0yH5BAuEHugMapuqEae/3b68a811a2520710a3609be3a862064b/ddos-illustrations-2.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
 
 	</figure>
 	<p>Just as removing your phone number from the phone book won't stop telemarketers from calling it, enabling CloudFlare doesn't stop clever attackers who know your IP address from sending traffic to it directly. Just because your origin server's IP address is no longer advertised over DNS, it's still connected to the internet. If your IP address is not kept secret, attackers can bypass the CloudFlare network and attack your servers directly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HC0BFpxlmKQ3ULa6yYdQH/67f2dcbdfa0930914fe1e601ba89bf36/ddos-illustrations-3.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HC0BFpxlmKQ3ULa6yYdQH/19b9b55af2f32e51354ee1ef437bf628/ddos-illustrations-3.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
 
 	</figure>
 	<p>Here are some helpful tips to help keep your origin IP secure to protect against clever attackers who want to bypass CloudFlare’s <a href="https://www.cloudflare.com/ddos">DDoS protection</a>:</p>

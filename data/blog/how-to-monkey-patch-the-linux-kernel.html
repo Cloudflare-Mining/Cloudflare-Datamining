@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Y9Zq45i2hI0yXQvw8MwTt/7f8d67c960c25f299003fa5e9eb7ca0a/how-to-monkey-patch-the-linux-kernel.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y9Zq45i2hI0yXQvw8MwTt/f2b05c7b1b3545bc1828236589016eef/how-to-monkey-patch-the-linux-kernel.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>I have a weird setup. I type in Dvorak. But, when I hold ctrl or alt, my keyboard reverts to Qwerty.</p>
 	<p>You see, the classic text-editing hotkeys, ctrl+Z, ctrl+X, ctrl+C, and ctrl+V are all located optimally for a Qwerty layout: next to the control key, easy to reach with your left hand while mousing with your right. In Dvorak, unfortunately, these hotkeys are scattered around mostly on the right half of the keyboard, making them much less convenient. Using Dvorak for typing but Qwerty for hotkeys turns out to be a nice compromise.</p>
@@ -6,7 +6,7 @@
 	<p>Yes, that's right, I'm that guy:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ffvMlsnnxSWwVHiNIsgj8/c400a84f471e2bc59005fb5bb8e07e33/workflow.png" alt="comic: xkcd 1172" class="kg-image" width="278" height="386" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ffvMlsnnxSWwVHiNIsgj8/9d45189d5b725626f00a5f1f56b78ea1/workflow.png" alt="comic: xkcd 1172" class="kg-image" width="278" height="386" loading="lazy">
 
 	</figure>
 	<p>Source: <a href="https://xkcd.com/1172">xkcd 1172</a></p>
@@ -14,7 +14,7 @@
 	<p>Desperate, I asked the Cloudflare Engineering chat channel if anyone knew a better way. That's when Marek Kroemeke came to the rescue:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://sourceware.org/systemtap/examples/general/keyhack.stp">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DPnIgdkERgExwaoI3VQjq/c528cb1b8ff402e7815a04fbc41f0deb/a-good-way.png" alt="Screenshot of chat log with Marek Kroemeke. He links to keyhack.stp, then comments: " oh,="" you="" said="" 'good="" way' ,="" missed="" that.""="" class="kg-image" width="444" height="60" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DPnIgdkERgExwaoI3VQjq/697b1dcddd133aebc28bd85cb04f7832/a-good-way.png" alt="Screenshot of chat log with Marek Kroemeke. He links to keyhack.stp, then comments: " oh,="" you="" said="" 'good="" way' ,="" missed="" that.""="" class="kg-image" width="444" height="60" loading="lazy">
 		</a>
 	</figure>
 	<p>Following <a href="https://sourceware.org/systemtap/examples/general/keyhack.stp">Marek's link</a>, I found:</p>
@@ -122,7 +122,7 @@ probe module("evdev").function("__pass_event") {
 	<p>From here, implementing the Dvorak-Qwerty key-remapping behavior I wanted was a simple matter of writing some code to track modifier key state and remap keys. <a href="https://github.com/kentonv/dvorak-qwerty/blob/master/unix/dvorak-qwerty.stp">You can find my full script on GitHub.</a></p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://github.com/kentonv/dvorak-qwerty/blob/master/unix/dvorak-qwerty.stp">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EhZxOXAn8Vuq1pAzJdQq5/4fd483d99056b5240e9721377287c1ec/os-level-monkeypatch.png" alt="Screenshot of chat log between Kenton Varda and Alexander Huynh. Kenton says " it="" works"="" and="" links="" to="" dvorak-qwerty.stp.="" "systemtap="" is="" amazing"="" alexander="" replies:="" "dear="" lord,="" i="" never="" thought="" i'd="" see="" an="" os-level="" monkeypatch""="" class=" kg-image" width="615" height="162" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EhZxOXAn8Vuq1pAzJdQq5/bd011d215808d369acc310bd301f30fe/os-level-monkeypatch.png" alt="Screenshot of chat log between Kenton Varda and Alexander Huynh. Kenton says " it="" works"="" and="" links="" to="" dvorak-qwerty.stp.="" "systemtap="" is="" amazing"="" alexander="" replies:="" "dear="" lord,="" i="" never="" thought="" i'd="" see="" an="" os-level="" monkeypatch""="" class=" kg-image" width="615" height="162" loading="lazy">
 		</a>
 	</figure>
 </div>

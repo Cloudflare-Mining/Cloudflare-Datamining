@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/improving-html-time-to-first-byte">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/improving-html-time-to-first-byte">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/improving-html-time-to-first-byte">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ceYP69KY1Ios4gGTdayyi/c7d45f9653dd94c3ad2847e720c9c2b5/improving-html-time-to-first-byte.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/improving-html-time-to-first-byte">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/improving-html-time-to-first-byte">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/improving-html-time-to-first-byte">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ceYP69KY1Ios4gGTdayyi/2c3be9ae84adc028d1c0c37cf5c36331/improving-html-time-to-first-byte.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The Time to First Byte (TTFB) of a site is the time from when the user starts navigating until the HTML for the page they requested starts to arrive. A slow TTFB has been the bane of my existence for more than the ten years I have been running <a href="https://www.webpagetest.org">WebPageTest</a>.</p>
 	<blockquote>
@@ -11,7 +11,7 @@
 	<p>There is a reason why TTFB appears as one of the few “grades” that WebPageTest scores a site on and, specifically, why it is the first grade in the list.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHQ0NllN5RpGlBfhbLVlf/601e0cc452e8906e2aedbb8ada12c96e/grades.png" alt="WebPageTest optimization grades." class="kg-image" width="421" height="109" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iHQ0NllN5RpGlBfhbLVlf/8c2533c93b2b31493ffb242d9eb3d39c/grades.png" alt="WebPageTest optimization grades." class="kg-image" width="421" height="109" loading="lazy">
 
 	</figure>
 	<p>If the first byte is slow, <b>EVERY</b> other metric will also be slow. Improving it is one of the few cases where you can predict what the impact will be on every other measurement. Every millisecond improvement in the TTFB translates directly into a millisecond of savings in every other measurement (i.e. first paint will be 500ms faster if TTFB improves by 500ms). That said, a fast ttfb doesn't guarantee a fast experience but a slow ttfb does guarantee a slow experience. I’d estimate that roughly 50% of all requests for help with WebPageTest results come from site owners struggling with a slow TTFB.</p>
@@ -19,7 +19,7 @@
 	<p>The waterfall diagram below shows the server response time as a light blue bar on the first request and it can be painfully obvious when it is slow. Under optimal conditions, the server response time would be no longer than the orange socket connect bar right before it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d4Qf5SYp9fq9xwMqDz0X7/46950f7b35161bb54eab17db940301c7/waterfall.png" alt="Waterfall diagram showing a 3 second TTFB." class="kg-image" width="930" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1d4Qf5SYp9fq9xwMqDz0X7/c8c271c1bd0b9067a8b5dd38fe7272cb/waterfall.png" alt="Waterfall diagram showing a 3 second TTFB." class="kg-image" width="930" height="488" loading="lazy">
 
 	</figure>
 	<p>Over three seconds for the server to respond.</p>
@@ -37,7 +37,7 @@
 	<p>There are special cases like when a user is logged-in (as the admin or otherwise) where the content needs to differ but the vast majority of visits are of anonymous users. If the HTML can be cached and served directly from the edge then the performance gains can be substantial (over 3 seconds faster on all metrics in this case).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/R2m58YwFuerJYN12M3hUB/30a6ba23c0c6e1fe5f128e10a2a90fca/waterfall-fast.png" alt="Waterfall diagram showing a fast TTFB." class="kg-image" width="930" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/R2m58YwFuerJYN12M3hUB/37d378173e889283fea9dc67877a2258/waterfall-fast.png" alt="Waterfall diagram showing a fast TTFB." class="kg-image" width="930" height="471" loading="lazy">
 
 	</figure>
 	<p>Much faster server response time.</p>
@@ -70,7 +70,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tfQw4SOOYyLEH9A5vh2r4/c3c613a9c8f9e2d447a6554250fd0dab/get.png" alt="Fetch from origin." class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tfQw4SOOYyLEH9A5vh2r4/3649c6ed8e6bbdb820c177578918df50/get.png" alt="Fetch from origin." class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>2 - When the origin responds with a cacheable page it adds a HTTP header on the response to indicate that it should be cached and any rules for when the cached version shouldn’t be used (to allow for bypassing the cache for logged-in users):</p>
@@ -78,7 +78,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HwyqHZHGiPJ2j0gWUfJ53/06c28d1af0ca87a9120267da1910f8ce/get-response.png" alt="Response with cache instructions." class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HwyqHZHGiPJ2j0gWUfJ53/5180629ff2eb00c82d818d5a2b586185/get-response.png" alt="Response with cache instructions." class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>In this case the HTML will be cached but any requests that have cookies that start with “wordpress” or “wp-” for the cookie name will bypass the cache and go to the origin.</p>
@@ -87,19 +87,19 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NILAqCLxBNnIwqCTjsouk/74187b2d0a73e4ce0a4ebb440b6eb945/update.png" alt="Content Update." class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NILAqCLxBNnIwqCTjsouk/f5c48495f50802834141c14439bcaa64/update.png" alt="Content Update." class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50w7jP4OiHH0qUlhpDZ5cq/441f8208d28c94c1b45f25b999d19986/update-response.png" alt="Response with purge command." class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50w7jP4OiHH0qUlhpDZ5cq/8fb6d2b42e2520cd56a9f3a12fc0b553/update-response.png" alt="Response with purge command." class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>The only tricky part to deal with is that the purge needs to clear the cache from ALL of the edges, not just the one edge that the request went through.</p>
 	<p>4 - When a new request comes in for HTML that is in the edge cache, the request cookies are checked against the rules for the cached response. If the cookies are not present then the cached version is served; otherwise, the request is passed through to the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bp0DE4i5Kk8CvfGirSeF/314e6626737d576b118c72ccdb60d242/cached.png" alt="Served from edge cache." class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bp0DE4i5Kk8CvfGirSeF/4dc1163e293679930e6e2459c4d1769e/cached.png" alt="Served from edge cache." class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>With this simple header-based command and control interface we can eliminate the need for an origin to talk to an API and for any explicit configuration. It also makes the logic on the origin significantly easier to implement as there is no configuration (or UI) and no need to make any outbound requests to a vendor-specific API. The <a href="https://github.com/cloudflare/worker-examples/blob/master/examples/edge-cache-html/WordPress%20Plugin/cloudflare-page-cache/cloudflare-page-cache.php">example WordPress plugin</a> is less than 50 lines of code and the vast majority of that is hooking up callbacks for all of the events that change content.</p>

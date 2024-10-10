@@ -2,26 +2,26 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MvEr8NRxmXMiIngRB6MIh/143468e9cd96501b87f54bc13315fa2d/image5-3.png" alt="" class="kg-image" width="1582" height="732" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MvEr8NRxmXMiIngRB6MIh/6ff76c2c27a77fa73333f9cf4c298a80/image5-3.png" alt="" class="kg-image" width="1582" height="732" loading="lazy">
 
 	</figure>
 	<p>Since the Workers Unbound beta announcement last year, we’ve been hard at work tuning our systems to prepare for the public launch for Workers Unbound. We’ve seen enormous demand from developers, customers, and the Cloudflare community at large. We’ve been inspired to see our users develop a wide range of use cases, from enterprise features to entirely new applications and unlock creativity with personal projects.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gNJxq5oKyyLQxsiWDTzLe/c38c55afe3e89ad90b3360bbad443951/image4-2.png" alt="" class="kg-image" width="1999" height="336" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gNJxq5oKyyLQxsiWDTzLe/abe5bfdd4de49ceadca64e6185c38b46/image4-2.png" alt="" class="kg-image" width="1999" height="336" loading="lazy">
 
 	</figure>
 	<p>Workers Unbound is intended for applications that need long execution times. Today, we are making our extended CPU limits of up to 30 seconds for HTTP requests generally available to customers on the Workers Paid plan. Please note that you will still be able to access Bundled Workers, which are capped at 50 milliseconds, by toggling your Workers at a per script level.</p>
 	<p>In addition, we are offering a <a href="https://www.cloudflare.com/workers-unbound-beta">private beta</a> for Cron Triggers of up to 15 minutes for those who need even longer execution times. HTTP Workers are triggered by HTTP requests as part of the Fetch API, whereas Cron Workers are scheduled jobs invoked by <a href="https://developers.cloudflare.com/workers/platform/cron-triggers#:~:text=Cron%20Triggers%20allow%20users%20to,up%2Dto%2Ddate%20data.">Cron Triggers</a>. Our aim with this release is to allow customers to bring all of their intensive workloads to Workers and access the benefits of our edge network, without having to worry about computation limits.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NhHiWWU9dlJSIAl6LITEg/2a37c32751dcedd48e0cd8c7d5dc9f63/unnamed--2-.gif" alt="" class="kg-image" width="512" height="385" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NhHiWWU9dlJSIAl6LITEg/10dd6e99b7239cf208fd0c79e847ed1b/unnamed--2-.gif" alt="" class="kg-image" width="512" height="385" loading="lazy">
 
 	</figure>
 	<p>The feedback has been fantastic and we’re excited to see that our work to extend compute limits to unlock new use cases is resonating with our community (please join our Discord server <a href="https://discord.gg/c2eACA4qXA">here</a>)! &nbsp;We want Workers Unbound to be the choice that developers turn to for any workload that might otherwise be run on traditional serverless platforms like AWS Lambda &nbsp;— and we’re thrilled to see that the message is resonating.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XkkETlZ6pn1p60dxcjczh/34226493c7680b9f70af51952699f4c2/image6-3.png" alt="" class="kg-image" width="1999" height="182" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XkkETlZ6pn1p60dxcjczh/99ecda993c55c35f4600811793eb3602/image6-3.png" alt="" class="kg-image" width="1999" height="182" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -38,7 +38,7 @@
 	<p>We know that cost can be a major pain point for other serverless providers, and we want to make sure that developers using Workers Unbound can spend more time building applications with cutting edge technologies and less time worrying about their bill. You can read more about our pricing in these <a href="https://developers.cloudflare.com/workers/platform/limits">docs</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/745kDWgFXRQRJz1HQDTtBV/8240f2c49c59848a513fc7f7fa7f37f0/image2-8.png" alt="" class="kg-image" width="1838" height="522" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/745kDWgFXRQRJz1HQDTtBV/6a9917b166351ce46d1a1b7d0c006ed4/image2-8.png" alt="" class="kg-image" width="1838" height="522" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -53,7 +53,7 @@
 	<p>We’ve seen some of our early access Unbound testers use the platform for more complex compute use cases like genomic analysis. Dr. Robert Aboukhalil, a software engineer and bioinformatics specialist, used Workers Unbound to build an API that simulates DNA sequencing data, requesting subsets of a reference genome and streaming it back to the user. To power those simulations, he compiled wgsim, an open source genomics tool for simulating sequence reads from a reference genome, from C to WebAssembly using biowasm. Next, he used the human genome referenced hosted on the public repo of the <a href="https://www.internationalgenome.org">1,000 Genomes Project</a> as a starting point to apply random modifications to simulate errors introduced during the experiment. You can read more about his explorations in this <a href="https://robaboukhalil.medium.com/serverless-genomics-c412f4bed726">blog</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KTRC1CfbklEdFLt6DMVFD/ec7196b0d15b27f03b01da57fc53bb6b/image1-15.png" alt="" class="kg-image" width="1407" height="577" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KTRC1CfbklEdFLt6DMVFD/1fc51c483890926fd6d8734e66cc0b9d/image1-15.png" alt="" class="kg-image" width="1407" height="577" loading="lazy">
 
 	</figure>
 	<blockquote>

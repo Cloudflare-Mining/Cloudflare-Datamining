@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30jkHPpVT3WDwbmxy2U4P4/df9992eae3981d75f32b8b9fedcc2737/HTML-rewrriter_1_3x.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30jkHPpVT3WDwbmxy2U4P4/b7c107bdf8240fa50da653f3eed806bd/HTML-rewrriter_1_3x.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
 
 	</figure>
 	<p>To coincide with the launch of streaming HTML rewriting functionality for <a href="https://workers.cloudflare.com">Cloudflare Workers</a> we are open sourcing the Rust HTML rewriter (<a href="https://github.com/cloudflare/lol-html">LOL HTML</a>) used to back the Workers <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter API</a>. We also thought it was about time to review the history of HTML rewriting at Cloudflare.</p>
@@ -19,7 +19,7 @@
 	<p>A streaming HTML rewriter takes either a HTML string or byte stream input, parses it into tokens or any other structured <a href="https://en.wikipedia.org/wiki/Intermediate_representation">intermediate representation</a> (IR) - such as an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> (AST). It then performs transformations on the tokens before converting back to HTML. This provides the ability to modify, extract or add to an existing HTML document as the bytes are being processed. Compare this with a standard HTML tree parser which needs to retrieve the entire file to generate a full DOM tree. The tree-based rewriter will both take longer to deliver the first processed bytes and require significantly more memory.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/REe13uX61XBtlevdzEg50/98d8d3d0ac38689f9250cfdc7797f905/image8.png" alt="" class="kg-image" width="922" height="61" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/REe13uX61XBtlevdzEg50/b1398b68b2024b5a5c65f5c84d2c8589/image8.png" alt="" class="kg-image" width="922" height="61" loading="lazy">
 
 	</figure>
 	<p>HTML rewriter</p>
@@ -71,7 +71,7 @@
 	<p>Let’s say we decided to go with a simple regex like `[\w.]+@[\w.]+`. If the content that comes through contains the email “<a href="mailto:test@example.org">test@example.org</a>”, it might be split in the following chunks:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SbMCSfBNwSI7ctqCY8ko0/a2b25e6faf357e57a64a38a3e09b6af8/image3.png" alt="" class="kg-image" width="422" height="507" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SbMCSfBNwSI7ctqCY8ko0/ffd823fb60c086753d7d0c34f0c16a1e/image3.png" alt="" class="kg-image" width="422" height="507" loading="lazy">
 
 	</figure>
 	<p>In order to keep good Time To First Byte (TTFB) and consistent speed, we want to ensure that the preceding chunk is emitted as soon as we determine that it’s not interesting for replacement purposes.</p>
@@ -100,7 +100,7 @@
 	<p>The <a href="https://html.spec.whatwg.org/multipage/parsing.html">HTML5 parsing specification</a> defines basic HTML syntax in the form of a state machine. We already had experience with <a href="http://www.colm.net/open-source/ragel">Ragel</a> for similar use cases, so there was no question about what to use for the new streaming parser. Despite the complexity of the grammar, the translation of the specification to Ragel syntax was straightforward. The code looks simpler than the formal description of the state machine, thanks to the ability to mix regex syntax with explicit transitions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lfOyfSPrShxKNNEw5OoF1/f9b0f4dc871597d09fadca0d4e0dc0f4/image6-1.png" alt="" class="kg-image" width="1200" height="872" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lfOyfSPrShxKNNEw5OoF1/7c70383207caeb3741f265725bc5bbf1/image6-1.png" alt="" class="kg-image" width="1200" height="872" loading="lazy">
 
 	</figure>
 	<p>A visualisation of a small fraction of the HTML state machine. Source: <a href="https://twitter.com/RReverser/status/715937136520916992">https://twitter.com/RReverser/status/715937136520916992</a></p>
@@ -115,7 +115,7 @@
 	<p>However, HTML has a history. To not break existing implementations HTML5 is specified with recovery procedures for incorrect tag nesting, ordering, unclosed tags, missing attributes and all the other possible quirks that used to work in older browsers. In order to resolve these issues, the specification expects a tree builder to drive the lexer, essentially meaning you can’t correctly tokenize HTML (split into separate tags) without a DOM.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WiV28d2K2jxXL3TbpNJJk/d8ba784f3fa81fe74800e5c016c61b20/image2-2.png" alt="" class="kg-image" width="601" height="551" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WiV28d2K2jxXL3TbpNJJk/2468b04ab896d5ab46721b3446ac8680/image2-2.png" alt="" class="kg-image" width="601" height="551" loading="lazy">
 
 	</figure>
 	<p>HTML parsing flow as defined by the specification</p>
@@ -126,7 +126,7 @@
 	<p>After rigorous testing and upstreaming a test runner to parse5, we found this technique to be suitable for the majority of even poorly written pages on the Internet, and employed it in LazyHTML.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7156cYXNTDlDNGfLV8YCrq/7db4d830d57efc9883b0b00c4c0f6755/image7-1.png" alt="" class="kg-image" width="762" height="321" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7156cYXNTDlDNGfLV8YCrq/7edc57eb142f4daded43a653d66460fa/image7-1.png" alt="" class="kg-image" width="762" height="321" loading="lazy">
 
 	</figure>
 	<p>LazyHTML architecture</p>
@@ -186,14 +186,14 @@ is still better than the opposite situation.
 	<p>The reader might think that it’s a rare edge case, however, our observations show that almost 25% of the traffic served through Cloudflare with the “text/html” content type is unlikely to be HTML.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/a7BORxQP4K6bUBa06Mr4z/3158b89e6ae1debbb3091041433d1b60/image9-1.png" alt="" class="kg-image" width="1516" height="534" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/a7BORxQP4K6bUBa06Mr4z/fc6f1596815a90154d35f4d2bcc6b958/image9-1.png" alt="" class="kg-image" width="1516" height="534" loading="lazy">
 
 	</figure>
 	<p>The trouble doesn’t end there: it turns out that there is a considerable amount of XML content served with the “text/html” content type which can’t be always processed correctly when treated as HTML.</p>
 	<p>Over time bailouts for binary data, JSON, AMP and correctly identifying HTML fragments leads to the content sniffing logic which can be described by the following diagram:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aEUXB2iTqRDZIlMxwBZKQ/831127325aaebf8126827d66bbdbde05/image4-1.png" alt="" class="kg-image" width="1132" height="825" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aEUXB2iTqRDZIlMxwBZKQ/12b43668197625afce880c56603a7516/image4-1.png" alt="" class="kg-image" width="1132" height="825" loading="lazy">
 
 	</figure>
 	<p>This is a good example of divergence between formal specifications and reality.</p>
@@ -276,7 +276,7 @@ static void token_handler(lhtml_token_t *token, void *extra /* this can be your 
 	<p>As for the benchmarks, In September 2016 using an example which transforms the HTML spec itself (7.9 MB HTML file) by replacing every (only that property only in those tags) to a static value. It was compared against the few existing and popular HTML parsers (only tokenization mode was used for the fair comparison, so that they don't need to build AST and so on), and timings in milliseconds for 100 iterations are the following (lazy mode means that we're using raw strings whenever possible, the other one serializes each token just for comparison):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BUi5lG0xlZjW0jjZuSL6S/b408bcefb30d6b2977056e6d14456611/image5-1.png" alt="" class="kg-image" width="1292" height="798" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BUi5lG0xlZjW0jjZuSL6S/68b1cccd68c8fe5fec844de53e80dbee/image5-1.png" alt="" class="kg-image" width="1292" height="798" loading="lazy">
 
 	</figure>
 	<p>The results show that LazyHTML parser speeds are around an order of magnitude faster.</p>

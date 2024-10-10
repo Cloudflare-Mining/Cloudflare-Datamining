@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zkpN5uwphjJCBQPthlDGt/3184c59f98ec9cb62f189f462f94ee89/xIRzQzY5oV76YW-9BT0XgH75tyP5ERyfkvNfNNbbD2fJjkfJeCad-eeyqugGULMrWUQQ-R6bDm1VYqdh-DRryDWwBoIyfIZ4bf0LJII22r55dD8SZO9QGLahQ6yC.png" alt="Modifying HTTP response headers with Transform Rules" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zkpN5uwphjJCBQPthlDGt/e5fac509b1eea1da3ffa5b3c95b51a9d/xIRzQzY5oV76YW-9BT0XgH75tyP5ERyfkvNfNNbbD2fJjkfJeCad-eeyqugGULMrWUQQ-R6bDm1VYqdh-DRryDWwBoIyfIZ4bf0LJII22r55dD8SZO9QGLahQ6yC.png" alt="Modifying HTTP response headers with Transform Rules" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>HTTP headers are central to how the web works. They are used for passing additional information between the client and server, such as which security permissions to apply and information about the client, allowing the correct content to be served.</p>
@@ -20,7 +20,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12mADL32rqDAMHBIglhf3u/f1f00444520346d6d5dc1a4ce78b7243/image4-14.png" alt="" class="kg-image" width="1057" height="699" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12mADL32rqDAMHBIglhf3u/4c7f369ab4ffc00390d455f672332a9b/image4-14.png" alt="" class="kg-image" width="1057" height="699" loading="lazy">
 
 	</figure>
 	<p>Think of HTTP headers as the “luggage tag” attached to your bags when you check in at the airport.</p>
@@ -59,27 +59,27 @@
 	<p>Transform Rules allows users to modify up to ten HTTP response headers per rule using one of three options:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28zIXSp655L8kcqJTB5beQ/d6ccaba048352deafe1571ea133d4ae1/image5-8.png" alt="" class="kg-image" width="1524" height="472" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28zIXSp655L8kcqJTB5beQ/dd5b8e529123ab1facc2f0c18779936f/image5-8.png" alt="" class="kg-image" width="1524" height="472" loading="lazy">
 
 	</figure>
 	<p>‘Set dynamic’ should be used when the value of a HTTP response header needs to be populated dynamically for each HTTP response. Examples include adding the Cloudflare Bot Management ‘bot score’ to each HTTP response, or the visitor’s country:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pCHrt1SktfeuMFoUBA9yL/1914336b97429ccf43f2e11db50422ad/image3-26.png" alt="" class="kg-image" width="1066" height="105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pCHrt1SktfeuMFoUBA9yL/2cfe53ce00d331cbda4b4a1627df3699/image3-26.png" alt="" class="kg-image" width="1066" height="105" loading="lazy">
 
 	</figure>
 	<p><b>Note</b>: These values are calculated using the corresponding HTTP request, meaning the bot score returned in the response header will be calculated based upon the HTTP request. Similarly, the ‘ip.src.country value will be the country of the website visitor, not the origin where the response was sent from.</p>
 	<p>‘Set static’ should be used to populate the value of a header with a static, literal string. This option should be used for simple header creation such as setting the CORS or CSP policies:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nEUjorNMt9crmydMSdRbk/afab0321f1346fd567a42359bb532d1d/image1-46.png" alt="" class="kg-image" width="1932" height="170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nEUjorNMt9crmydMSdRbk/75563e9f0c0844003bc1a1b15be70441/image1-46.png" alt="" class="kg-image" width="1932" height="170" loading="lazy">
 
 	</figure>
 	<p>In both ‘set’ examples, if a header with the specified name already exists in the HTTP response, its value will be removed and replaced with the given value.</p>
 	<p>‘Remove’ is the final option, which should be used to remove all HTTP response headers with the specified name. For example, if you wanted to ensure the ‘Link’ HTTP response header was removed, you would use a rule similar to the following one:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76oRwPpelCvA5iVFoiL0AL/fcc9077b724df4a0eaabffbdd3f66e9a/image6-10.png" alt="" class="kg-image" width="1204" height="154" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76oRwPpelCvA5iVFoiL0AL/aec056fa3e8a6467f139b6c2e74221fc/image6-10.png" alt="" class="kg-image" width="1204" height="154" loading="lazy">
 
 	</figure>
 	<p>Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/functions">functions</a> can be used within ‘set dynamic’ header modifications. These functions include:</p>

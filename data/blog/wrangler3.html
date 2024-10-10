@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iSHHNyNYsb21AEw80h3lW/a1279a97c266bbd308eba9c57baf517b/image5-7.png" alt="Improved local development with wrangler and workerd, Developer Week" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iSHHNyNYsb21AEw80h3lW/953b982411c18fcb0721afc8dd83ac7e/image5-7.png" alt="Improved local development with wrangler and workerd, Developer Week" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>For over a year now, we’ve been working to improve the Workers local development experience. Our goal has been to improve parity between users' local and production environments. This is important because it provides developers with a fully-controllable and easy-to-debug local testing environment, which leads to increased developer efficiency and confidence.</p>
@@ -21,7 +21,7 @@
 	<p>In addition to a more accurate developer experience, you should notice performance differences. Compared to remote mode, we’re seeing a 10x reduction to startup times and 60x reduction to script reload times with the new local-first implementation. This massive reduction in reload times drastically improves developer velocity!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iwuiO3yvOuQQLFa9DbQZU/ce7a898e12b98c580e991dafe2ee45e4/image4-12.png" alt="lower is better, startup: time until HTTP response received containing expected body, reload: time from writing file until HTTP response received containing new body, mean average over 13 runs discarding first 3 plotted, tested on MacBook Pro 14-inch 2021" class="kg-image" width="1420" height="580" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iwuiO3yvOuQQLFa9DbQZU/21379c38d9ce9a73e0f7a1c6eb8fbfb4/image4-12.png" alt="lower is better, startup: time until HTTP response received containing expected body, reload: time from writing file until HTTP response received containing new body, mean average over 13 runs discarding first 3 plotted, tested on MacBook Pro 14-inch 2021" class="kg-image" width="1420" height="580" loading="lazy">
 
 	</figure>
 	<p>Remote development isn’t going anywhere. We recognise many developers still prefer to test against real data, or want to test Cloudflare services like <a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers">image resizing</a> that aren’t implemented locally yet. To run <code>wrangler dev</code> on Cloudflare’s network, just like previous versions, use the new <code>--remote</code> flag.</p>
@@ -72,7 +72,7 @@ const helloWorker :Workerd.Worker = (
 	<p>If you’re interested in what else <code>workerd</code> can do, check out the <a href="https://github.com/cloudflare/workerd/tree/main/samples">other samples</a>. Whilst <code>workerd</code> provides the runtime and bindings, it doesn’t provide the underlying implementations for the other products in the Developer Platform. This is where Miniflare comes in! It provides simulators for KV, R2, D1, Queues and the Cache API.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44vdcPO7sdaTtBi0u0HMgE/012af10a590fc10cf968110df4074d5b/image1-43.png" alt="overview of Miniflare v3’s architecture, workerd handles incoming requests directly, routing all binding requests to a Node.js server implementing simulators for the Developer Platform" class="kg-image" width="1999" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44vdcPO7sdaTtBi0u0HMgE/85e6510a0f8689284add4318e09c4c2c/image1-43.png" alt="overview of Miniflare v3’s architecture, workerd handles incoming requests directly, routing all binding requests to a Node.js server implementing simulators for the Developer Platform" class="kg-image" width="1999" height="1013" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -97,25 +97,25 @@ const helloWorker :Workerd.Worker = (
 	<p>In Miniflare v2, these environments were relatively simple to implement. We’d already reimplemented Workers Runtime APIs in a Node.js environment, and could inject them using Jest and Vitest’s APIs into the global scope.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UrAr6zl1SsIbG2Qyvq1p2/3af0733c4562b61a0df99582664b8ad8/image3-13.png" alt="overview of Miniflare v2’s test environments, the runtime APIs and testing environments are defined in the same process" class="kg-image" width="1550" height="532" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6UrAr6zl1SsIbG2Qyvq1p2/40113914d049e7ad928c16373dab7fa7/image3-13.png" alt="overview of Miniflare v2’s test environments, the runtime APIs and testing environments are defined in the same process" class="kg-image" width="1550" height="532" loading="lazy">
 
 	</figure>
 	<p>For Miniflare v3, this is much trickier. The runtime APIs are implemented in a separate <code>workerd</code> process, and you can’t reference JavaScript classes across a process boundary. So we needed a new approach…</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44s7Z0ZD3r5hQpdCxr1atZ/bd5b6a9816b7da274d77eff2b479e515/image7-7.png" alt="problem with Miniflare v3, the runtime APIs are defined in a separate process to the test environments, and JavaScript objects cannot cross process boundaries" class="kg-image" width="1802" height="564" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44s7Z0ZD3r5hQpdCxr1atZ/8b1d395872b13a1123cf77e25ab07533/image7-7.png" alt="problem with Miniflare v3, the runtime APIs are defined in a separate process to the test environments, and JavaScript objects cannot cross process boundaries" class="kg-image" width="1802" height="564" loading="lazy">
 
 	</figure>
 	<p>Many test frameworks like Vitest use Node’s built-in <a href="https://nodejs.org/api/worker_threads.html"><code>worker_threads</code></a> module for running tests in parallel. This module spawns new operating system threads running Node.js and provides a <code>MessageChannel</code> interface for communicating between them. What if instead of spawning a new OS thread, we spawned a new <code>workerd</code> process, and used WebSockets for communication between the Node.js host process and the <code>workerd</code> “thread”?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jGThLJfIpVq47I9KaxaS3/5db21e5dc3d45b4c114649144ce29f10/image8-8.png" alt="our solution for Miniflare v3, make the tests run in workerd, and replace calls to the worker_threads built-in Node.js module with WebSocket messages" class="kg-image" width="1999" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jGThLJfIpVq47I9KaxaS3/86a1ff8b9739f21e6629eb8f8b793ffa/image8-8.png" alt="our solution for Miniflare v3, make the tests run in workerd, and replace calls to the worker_threads built-in Node.js module with WebSocket messages" class="kg-image" width="1999" height="504" loading="lazy">
 
 	</figure>
 	<p>We have a proof of concept using Vitest showing this approach can work in practice. Existing Vitest IDE integrations and the Vitest UI continue to work without any additional work. We aren’t quite ready to release this yet, but will be working on improving it over the next few months. Importantly, the <code>workerd</code> “thread” needs access to Node.js built-in modules, which we recently started <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage">rolling out support for</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HqXRYKmlaionjMJK7PW6i/edfb54efdffa75025ae147d2310494fa/image2-23.png" alt="running Worker unit tests using Vitest and Miniflare 3, note we’re just importing functions from our Worker, and have access to Worker’s runtime APIs in tests" class="kg-image" width="1999" height="1301" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HqXRYKmlaionjMJK7PW6i/974cb97c5b694db5c3f567f628d861ed/image2-23.png" alt="running Worker unit tests using Vitest and Miniflare 3, note we’re just importing functions from our Worker, and have access to Worker’s runtime APIs in tests" class="kg-image" width="1999" height="1301" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

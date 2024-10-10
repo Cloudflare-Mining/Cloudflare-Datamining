@@ -1,10 +1,10 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bRdCswtLjBJq8kr1Z2jzK/7170ee5412f53391b8a9d3f961d8528e/BLOG-2518_1.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bRdCswtLjBJq8kr1Z2jzK/0da3542bd0d598974de1cf9ab09d9c77/BLOG-2518_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Speed is a critical factor that dictates Internet behavior. Every additional millisecond a user spends waiting for your web page to load results in them abandoning your website. The old adage remains as true as ever: <a href="https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates"><u>faster websites result in higher conversion rates</u></a>. And with such outcomes tied to Internet speed, we believe a faster Internet is a better Internet.</p>
 	<p>Customers often use <a href="https://developers.cloudflare.com/kv"><u>Workers KV</u></a> to provide <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a> with key-value data for configuration, routing, personalization, experimentation, or serving assets. Many of Cloudflare’s own products rely on KV for just this purpose: <a href="https://developers.cloudflare.com/pages"><u>Pages</u></a> stores static assets, <a href="https://developers.cloudflare.com/cloudflare-one/policies/access"><u>Access</u></a> stores authentication credentials, <a href="https://developers.cloudflare.com/ai-gateway"><u>AI Gateway</u></a> stores routing configuration, and <a href="https://developers.cloudflare.com/images"><u>Images</u></a> stores configuration and assets, among others. So KV’s speed affects the latency of every request to an application, throughout the entire lifecycle of a user session.&nbsp;</p>
 	<p>Today, we’re announcing up to 3x faster KV hot reads, with all KV operations faster by up to 20ms. And we want to pull back the curtain and show you how we did it.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67VzWOTRpMd9Dbc6ZM7M4M/7322595ea48f7cff0bacc1db41f49597/BLOG-2518_2.png" alt="BLOG-2518 2" class="kg-image" width="1683" height="966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67VzWOTRpMd9Dbc6ZM7M4M/cefb1d856344d9c963d4adfbe1b32fba/BLOG-2518_2.png" alt="BLOG-2518 2" class="kg-image" width="1683" height="966" loading="lazy">
 	</figure>
 	<p><sup><i>Workers KV read latency (ms) by percentile measured from Pages</i></sup></p>
 	<div class="flex anchor relative">
@@ -17,13 +17,13 @@
 	</div>
 	<p>At a high level, Workers KV is itself a Worker that makes requests to central storage backends, with many layers in between to properly cache and route requests across Cloudflare’s network. You can rely on Workers KV to support operations made by your Workers at any scale, and KV’s architecture will seamlessly handle your required throughput.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pcw5pO2eeGJ1RriESJFSB/00e5a7627904a522b8fe7098f0de0945/BLOG-2518_3.png" alt="BLOG-2518 3" class="kg-image" width="732" height="437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pcw5pO2eeGJ1RriESJFSB/651fe26718f981eb741ad2ffb2f288c9/BLOG-2518_3.png" alt="BLOG-2518 3" class="kg-image" width="732" height="437" loading="lazy">
 	</figure>
 	<p><sup><i>Sequence diagram of a Workers KV operation</i></sup></p>
 	<p>When your Worker makes a read operation to Workers KV, your Worker establishes a network connection within its Cloudflare region to KV’s Worker. The KV Worker then accesses the <a href="https://developers.cloudflare.com/workers/runtime-apis/cache"><u>Cache API</u></a>, and in the event of a cache miss, retrieves the value from the storage backends.&nbsp;</p>
 	<p>Let’s look one level deeper at a simplified trace:&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mCpF8NRgSg70p8VNTFXu8/b3407b4385ece34d72ac957e846185b1/BLOG-2518_4.png" alt="BLOG-2518 4" class="kg-image" width="986" height="476" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mCpF8NRgSg70p8VNTFXu8/4cabdae18285575891f49a5cd34c9ab8/BLOG-2518_4.png" alt="BLOG-2518 4" class="kg-image" width="986" height="476" loading="lazy">
 	</figure>
 	<p><sup><i>Simplified trace of a Workers KV operation</i></sup></p>
 	<p>From the top, here are the operations completed for a KV read operation from your Worker:</p>
@@ -71,7 +71,7 @@
 	</div>
 	<p>We also optimized KV’s architecture to reduce the amount of requests that need to reach our centralized storage backends. These storage backends are further away and incur network latency, so improving the cache hit rate in regions close to your Workers significantly improves read latency.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1791aSxXPH1lgOIr3RQrLz/282215437513f13e65ba1a79d98dae0c/BLOG-2518_5.png" alt="BLOG-2518 5" class="kg-image" width="1999" height="1527" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1791aSxXPH1lgOIr3RQrLz/1685f6a57d627194e76cb657cd22ddd8/BLOG-2518_5.png" alt="BLOG-2518 5" class="kg-image" width="1999" height="1527" loading="lazy">
 	</figure>
 	<p><sup><i>Workers KV uses Tiered Cache to resolve operations closer to your users</i></sup></p>
 	<p>To accomplish this, we used <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache/#custom-tiered-cache"><u>Tiered Cache</u></a>, and implemented a cache topology that is fine-tuned to the usage patterns of KV. With a tiered cache, requests to KV’s storage backends are cached in regional tiers in addition to local (lower) tiers. With this architecture, KV operations that may be cache misses locally may be resolved regionally, which is especially significant if you have traffic across an entire region spanning multiple Cloudflare data centers.&nbsp;</p>
@@ -97,34 +97,34 @@
 		</li>
 	</ol>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cW0MsOH120GKUAlIUvDR4/fe1e59d69c4d234265e7fba9559e52f0/BLOG-2518_6.png" alt="BLOG-2518 6" class="kg-image" width="732" height="437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cW0MsOH120GKUAlIUvDR4/7f574632ee81d3b955ed99bf87d86fa2/BLOG-2518_6.png" alt="BLOG-2518 6" class="kg-image" width="732" height="437" loading="lazy">
 	</figure>
 	<p><sup><i>Sequence diagram of KV operations with new architecture</i></sup></p>
 	<p>In aggregate, these changes significantly reduced KV’s latency.
 
 		The impact of the direct binding to cache is clearly seen in the wall time of the KV Worker, given this value measures the duration of a retrieval of a key-value pair from cache. The 90th percentile of all KV Worker invocations now resolve in less than 12 ms — before the direct binding to cache, that was 22 ms. That’s a 10 ms decrease in latency.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UmcRB0Afk8mHig2DrThsh/e8e3c77e4545b80f97390b2117921e64/BLOG-2518_7.png" alt="BLOG-2518 7" class="kg-image" width="1683" height="970" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UmcRB0Afk8mHig2DrThsh/d913cd33a28c1c2b093379238a90551c/BLOG-2518_7.png" alt="BLOG-2518 7" class="kg-image" width="1683" height="970" loading="lazy">
 	</figure>
 	<p><sup><i>Wall time (ms) within the KV Worker by percentile</i></sup></p>
 	<p>These KV read operations resolve quickly because the data is cached locally in the same Cloudflare location. But what about reads that aren’t resolved locally? ~30% of these resolve regionally within the tiered cache. Reads from tiered cache are up to 100 ms faster than when resolved at central storage backends, once again contributing to making KV reads faster in aggregate.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Gz2IxlcNuDDRp3MhC4m40/8bb3daae68620ed1e2087d1812b7e00d/BLOG-2518_8.png" alt="BLOG-2518 8" class="kg-image" width="1747" height="966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gz2IxlcNuDDRp3MhC4m40/ee364b710cec4332a5c307a784f34fa4/BLOG-2518_8.png" alt="BLOG-2518 8" class="kg-image" width="1747" height="966" loading="lazy">
 	</figure>
 	<p><sup><i>Wall time (ms) within the KV Worker for tiered cache vs. storage backends reads</i></sup></p>
 	<p>These graphs demonstrate the impact of direct binding from the KV binding to cache, and tiered cache. To see the impact of the direct binding from a Worker to the KV Worker, we need to look at the latencies reported by Cloudflare products that use KV.</p>
 	<p><a href="https://developers.cloudflare.com/pages"><u>Cloudflare Pages</u></a>, which serves static assets like HTML, CSS, and scripts from KV, saw load times for fetching assets improve by up to 68%. Workers asset hosting, which we also announced as part of today’s <a href="https://blog.cloudflare.com/builder-day-2024-announcements"><u>Builder Day announcements</u></a>, gets this improved performance from day 1.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67VzWOTRpMd9Dbc6ZM7M4M/7322595ea48f7cff0bacc1db41f49597/BLOG-2518_2.png" alt="BLOG-2518 2" class="kg-image" width="1683" height="966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67VzWOTRpMd9Dbc6ZM7M4M/cefb1d856344d9c963d4adfbe1b32fba/BLOG-2518_2.png" alt="BLOG-2518 2" class="kg-image" width="1683" height="966" loading="lazy">
 	</figure>
 	<p><sup><i>Workers KV read operation latency measured within Cloudflare Pages by percentile</i></sup></p>
 	<p><a href="https://developers.cloudflare.com/queues"><u>Queues</u></a> and <a href="https://developers.cloudflare.com/cloudflare-one/applications"><u>Access</u></a> also saw their latencies for KV operations drop, with their KV read operations now 2-5x faster. These services rely on Workers KV data for configuration and routing data, so KV’s performance improvement directly contributes to making them faster on each request.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Gz2IxlcNuDDRp3MhC4m40/8bb3daae68620ed1e2087d1812b7e00d/BLOG-2518_8.png" alt="BLOG-2518 8" class="kg-image" width="1747" height="966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gz2IxlcNuDDRp3MhC4m40/ee364b710cec4332a5c307a784f34fa4/BLOG-2518_8.png" alt="BLOG-2518 8" class="kg-image" width="1747" height="966" loading="lazy">
 	</figure>
 	<p><sup><i>Workers KV read operation latency measured within Cloudflare Queues by percentile</i></sup></p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HFapaO1Gv09g9VlODrLAu/d5b27e8ae55dc1b72e77c7c9bce44f6a/BLOG-2518_10.png" alt="BLOG-2518 10" class="kg-image" width="1681" height="926" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HFapaO1Gv09g9VlODrLAu/56d39207fb3dfefe258fa5e8cb8bd67b/BLOG-2518_10.png" alt="BLOG-2518 10" class="kg-image" width="1681" height="926" loading="lazy">
 	</figure>
 	<p><sup><i>Workers KV read operation latency measured within Cloudflare Access by percentile</i></sup></p>
 	<p>These are just some of the direct effects that a faster KV has had on other services. Across the board, requests are resolving faster thanks to KV’s faster response times.&nbsp;</p>

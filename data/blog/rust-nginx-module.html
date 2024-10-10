@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FA5J1NlU3N4hakq0et4EV/b50c1771828bacdaaf2938b6ed3557cb/ROFL-with-a-LOL--rewriting-an-NGINX-module-in-Rust-OG.png" alt="ROFL with a LOL: rewriting an NGINX module in Rust" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FA5J1NlU3N4hakq0et4EV/fb8b0e76f2f2ee79ae0f2f73205c053a/ROFL-with-a-LOL--rewriting-an-NGINX-module-in-Rust-OG.png" alt="ROFL with a LOL: rewriting an NGINX module in Rust" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, engineers spend a great deal of time refactoring or rewriting existing functionality. When your company doubles the amount of traffic it handles every year, what was once an elegant solution to a problem can quickly become outdated as the engineering constraints change. Not only that, but when you're averaging 40 million requests a second, issues that might affect 0.001% of requests flowing through our network are big incidents which may impact millions of users, and one-in-a-trillion events happen several times a day.</p>
@@ -23,7 +23,7 @@
 	<p>Fast-forward to 2022 into 2023, and the FL Platform team have been getting more and more requests for a system they can easily use to look at and rewrite response body data. At the same time, another team has been working on a new response body parsing and rewriting framework for Workers called <a href="https://github.com/cloudflare/lol-html">lol-html</a> or Low Output Latency HTML. Not only is lol-html faster and more efficient than Lazy HTML, but it’s also currently in full production use as part of the Worker interface, and written in Rust, which is much safer than C in terms of its handling of memory. It’s ideal, therefore, as a replacement for the ancient and creaking HTML parser we’ve been using in FL up until now.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EU3AILSqI8QLOqouiXA9z/1be49b1b87ff36a6c6d23300936bf7fa/image1-8.png" alt="" class="kg-image" width="1999" height="1138" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EU3AILSqI8QLOqouiXA9z/2f768777177f833da1fa212ccb045689/image1-8.png" alt="" class="kg-image" width="1999" height="1138" loading="lazy">
 
 	</figure>
 	<p>So we started working on a new framework, written in Rust, that would incorporate lol-html and allow other teams to write response body parsing features without the threat of causing massive security issues. The new system is called ROFL or Response Overseer for FL, and it’s a brand-new NGINX module written completely in Rust. As of now, ROFL is running in production on millions of responses a second, with comparable performance to cf-html. In building ROFL, we’ve been able to deprecate one of the scariest bits of code in Cloudflare’s entire codebase, while providing teams at Cloudflare with a robust system they can use to write features which need to parse and rewrite response body data.</p>
@@ -96,7 +96,7 @@ include!(concat!(env!("OUT_DIR"), "/bindings.rs"));</code></pre>
 	<p>Once the Rust library has been built, the next step is to hook it into NGINX. Most NGINX modules are compiled statically. That is, the module is compiled as part of the compilation of NGINX as a whole. However, since NGINX 1.9.11, it has supported dynamic modules, which are compiled separately and then loaded using the <code>load_module</code> directive in the <code>nginx.conf</code> file. This is what we needed to use to build ROFL, so that the library could be compiled separately and loaded-in at the time NGINX starts up. Finding the right format so that the necessary symbols could be found from the documentation was tricky, though, and although it is possible to use a separate config file to set some of this metadata, it’s better if we can load it as part of the module, to keep things neat. Luckily, it doesn’t take much spelunking through the NGINX codebase to find where <code>dlopen</code> is called.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RGvw7xRYp02IHS5CZyjPh/53e5c17efacc568daa7185e6294ac1b4/image2-3.png" alt="" class="kg-image" width="1246" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RGvw7xRYp02IHS5CZyjPh/b0275bf87343972eb353abd85ab949e5/image2-3.png" alt="" class="kg-image" width="1246" height="1999" loading="lazy">
 
 	</figure>
 	<p>So after that it’s just a case of making sure the relevant symbols exist.</p>

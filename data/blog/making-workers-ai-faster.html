@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dfJo73P9gUCVLL1TxXoH7/532ed0a203a94ff024d0b3c053361521/BLOG-2571_1.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dfJo73P9gUCVLL1TxXoH7/b74d6a660d72b28803806c736ca0e084/BLOG-2571_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>During Birthday Week 2023, <a href="https://blog.cloudflare.com/workers-ai"><u>we launched Workers AI</u></a>. Since then, we have been listening to your feedback, and one thing we’ve heard consistently is that our customers want Workers AI to be faster. In particular, we hear that large language model (LLM) generation needs to be faster. Users want their interactive chat and agents to go faster, developers want faster help, and users do not want to wait for applications and generated website content to load. Today, we’re announcing three upgrades we’ve made to Workers AI to bring faster and more efficient inference to our customers: upgraded hardware, KV cache compression, and speculative decoding.</p>
 	<div class="flex anchor relative">
@@ -42,7 +42,7 @@
 	<p>LLMs are made up of layers, with an <a href="https://en.wikipedia.org/wiki/Attention_(machine_learning)"><u>attention</u></a> operation occurring in each layer. Within each layer’s attention operation, information is collected from the representations of all previous tokens that are stored in cache. This means that vectors in the KV cache are organized into layers, so that the active layer’s attention operation can only query vectors from the corresponding layer of KV cache. Furthermore, since attention within each layer is parallelized across multiple attention “heads”, the KV cache vectors of a specific layer are further subdivided into groups corresponding to each attention head of that layer.</p>
 	<p>The diagram below shows the structure of an LLM’s KV cache for a single sequence being generated. Each cell represents a KV and the model’s representation for a token consists of all KV vectors for that token across all attention heads and layers. As you can see, the KV cache for a single layer is allocated as an M x N matrix of KV vectors where M is the number of attention heads and N is the sequence length. This will be important later!</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZagFp9yy3E55SR8GKRBvh/de68e2211f5013e666dbe7376bb9ae07/BLOG-2571_2.png" alt="BLOG-2571 2" class="kg-image" width="1528" height="876" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZagFp9yy3E55SR8GKRBvh/9e37f5890165e758ccaebf77464be483/BLOG-2571_2.png" alt="BLOG-2571 2" class="kg-image" width="1528" height="876" loading="lazy">
 	</figure>
 	<p>For a deeper look at attention, see the original “<a href="https://arxiv.org/abs/1706.03762"><u>Attention is All You Need</u></a>” paper.&nbsp;</p>
 	<div class="flex anchor relative">
@@ -66,7 +66,7 @@
 	<p>As we saw earlier, the KV cache for each sequence in a particular layer is allocated on the GPU as a <i># attention heads X sequence length</i> tensor. This means that the total memory allocation scales with the <i>maximum</i> sequence length for all attention heads of the KV cache. Usually this is not a problem, since each sequence generates the same number of KVs per attention head.</p>
 	<p>When we consider the problem of eviction-based KV cache compression, however, this forces us to remove an equal number of KVs from each attention head when doing the compression. If we remove more KVs from one attention head alone, those removed KVs won’t actually contribute to lowering the memory footprint of the KV cache on GPU, but will just add more empty “padding” to the corresponding rows of the tensor. You can see this in the diagram below (note the empty cells in the second row below):</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68Q5hVbfRF1vhqyeGNzB1Q/9d98ae026d041f529784461faa4d2d2d/BLOG-2571_3.png" alt="BLOG-2571 3" class="kg-image" width="1452" height="808" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68Q5hVbfRF1vhqyeGNzB1Q/91056db8208c5e74be00e0add147b3e9/BLOG-2571_3.png" alt="BLOG-2571 3" class="kg-image" width="1452" height="808" loading="lazy">
 	</figure>
 	<p>The extra compression along the second head frees slots for two KVs, but the cache’s shape (and memory footprint) remains the same.</p>
 	<p>This forces us to use a fixed compression rate for all attention heads of KV cache, which is very limiting on the compression rates we can achieve before compromising performance.</p>
@@ -80,7 +80,7 @@
 	</div>
 	<p>The solution to this problem is to change how our KV cache is represented in physical memory. <a href="https://arxiv.org/abs/2309.06180"><u>PagedAttention</u></a> can represent N x M tensors with padding efficiently by using an N x M block table to index into a series of “blocks”.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Sia3ZKKzBaHEfI8qLYr8o/d05d641f289ef39222081a0413bbc8c5/BLOG-2571_4.png" alt="BLOG-2571 4" class="kg-image" width="1512" height="722" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Sia3ZKKzBaHEfI8qLYr8o/57edb68d61ff916d322502aeb406c88c/BLOG-2571_4.png" alt="BLOG-2571 4" class="kg-image" width="1512" height="722" loading="lazy">
 	</figure>
 	<p>This lets us retrieve the i<sup>th</sup> element of a row by taking the i<sup>th</sup> block number from that row in the block table and using the block number to lookup the corresponding block, so we avoid allocating space to padding elements in our physical memory representation. In our case, the elements in physical memory are the KV cache vectors, and the <i>M </i>and <i>N</i> that define the shape of our block table are the number of attention heads and sequence length, respectively. Since the block table is only storing integer indices (rather than high-dimensional KV vectors), its memory footprint is negligible in most cases.</p>
 	<div class="flex anchor relative">
@@ -93,7 +93,7 @@
 	</div>
 	<p>Using paged attention lets us apply different rates of compression to different heads in our KV cache, giving our compression strategy more flexibility than other methods. We tested our compression algorithm on <a href="https://arxiv.org/abs/2308.14508"><u>LongBench</u></a> (a collection of long-context LLM benchmarks) with Llama-3.1-8B and found that for most tasks we can retain over 95% task performance while reducing cache size by up to 8x (left figure below). Over 90% task performance can be retained while further compressing up to 64x. That means you have room in memory for 64 times as many tokens!</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pdz5rPhYdfnMmn6cxhczo/3d79734d538c1f2a950110f9b9ca9296/BLOG-2571_5.png" alt="BLOG-2571 5" class="kg-image" width="1758" height="652" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pdz5rPhYdfnMmn6cxhczo/29b69bb65aea8989fc1f50283e8ecbc5/BLOG-2571_5.png" alt="BLOG-2571 5" class="kg-image" width="1758" height="652" loading="lazy">
 	</figure>
 	<p>This lets us increase the number of requests we can process in parallel, increasing the total throughput (total tokens generated per second) by 3.44x and 5.18x for compression rates of 8x and 64x, respectively (right figure above).</p>
 	<div class="flex anchor relative">

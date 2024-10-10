@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vY2Vvi6IjwzDvdWCt6u1L/7a833b9e9cd48e3ae1102a15787fa894/dnssec-complexities-and-considerations.jpg" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vY2Vvi6IjwzDvdWCt6u1L/bc15737fc06bc4ef3f61ced5e6e8a874/dnssec-complexities-and-considerations.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog post is a follow-up to our previous </i><a href="https://blog.cloudflare.com/dnssec-an-introduction"><i>introduction to DNSSEC</i></a><i>. Read that first if you are not familiar with DNSSEC.</i></p>
 	<p>DNSSEC is an extension to DNS: it provides a system of trust for DNS records. It’s a major change to one of the core components of the Internet. In this post we examine some of the complications of DNSSEC, and what CloudFlare plans to do to reduce any negative impact they might have. The main issues are zone content exposure, key management, and the impact on DNS reflection/amplification attacks.</p>
@@ -14,7 +14,7 @@
 	<p>There is no directory service for subdomains in DNS so if you want to know if api.cloudflare.com exists, you have to ask a DNS server and that DNS server will end up asking cloudflare.com whether api.cloudflare.com exists. This is not true with DNSSEC. In some cases, enabling DNSSEC may expose otherwise obscured zone content. Not everyone cares about the secrecy of subdomains, and zone content may already be easily guessable because most sites have a ‘www’ subdomain; however, subdomains are sometimes used as login portals or other services that the site owner wants to keep private. A site owner may not want to reveal that “secretbackdoor.example.com” exists in order to protect that site from attackers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70515kXx5jQKNOoSIaHgTW/80aef15b291471affd53b775f61eaab0/x-ray_specs.jpg" alt="" class="kg-image" width="800" height="857" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70515kXx5jQKNOoSIaHgTW/a545b4f7c5b4d48d1b5bf7ad8fbc02a0/x-ray_specs.jpg" alt="" class="kg-image" width="800" height="857" loading="lazy">
 
 	</figure>
 	<p>The reason DNSSEC can expose subdomains has to do with how zones are signed. Historically, DNSSEC is used to sign static zones. A static zone is a complete set of records for a given domain. The DNSSEC signature records are created using the Key Signing Key (KSK) and Zone Signing Key (ZSK) in a central location and sent to the authoritative server to be published. This set of records allows an authoritative server to answer any question it is asked, including questions about subdomains that don’t exist.</p>
@@ -32,7 +32,7 @@
 	<p>Before DNSSEC the only way to discover the contents of names in a zone was to either query for them, or attempt to perform a transfer of the zone from one of the authoritative servers. Zone Transfers (AXFR) are frequently blocked. NSEC’s alternatative, NSEC3, was introduced to fight zone enumeration concerns, but even NSEC3 can be used to reveal the existence of subdomains.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5G9hHvkwGCjvyGbRWTQmsd/1a0ac1ec215f93bfdcb1f71e7cdfed09/dnssec_nsec_stat.png" alt="" class="kg-image" width="347" height="334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5G9hHvkwGCjvyGbRWTQmsd/aec1d348a3977ac627c08e39fb4c8e0d/dnssec_nsec_stat.png" alt="" class="kg-image" width="347" height="334" loading="lazy">
 
 	</figure>
 	<p><a href="http://securityblog.switch.ch/2013/02/19/dnssec-deployment-in-ch"><i>Most domains under .ch use NSEC3</i></a></p>
@@ -50,7 +50,7 @@
 	<p>With the hashes that correspond to all the valid names in the zone, a dictionary attack can be used to figure out the real names. Short names are easily guessed, and by using a dictionary, longer names can be revealed as existing without having to flood the authoritative nameservers with guesses. Tools like <a href="https://hashcat.net/oclhashcat">HashCat</a> make this easy to do in software, and the popularity of bitcoin has dramatically lowered the price of hashing-specific hardware. There is a burgeoning cottage industry of devices built to compute cryptographic hashes. The Tesla Password cracker (below) is just one example of these off-the shelf devices.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gsig6X5hT2Ke0PzKMBVgv/f6a106591e679ced99d5942366120f08/Tesla-cracker.jpg" alt="" class="kg-image" width="524" height="365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gsig6X5hT2Ke0PzKMBVgv/24f738923ef83e3a307e05c41370961d/Tesla-cracker.jpg" alt="" class="kg-image" width="524" height="365" loading="lazy">
 
 	</figure>
 	<p><i>The Tesla Password Cracker</i></p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xxrYk5PzHSV412hdlqi9k/ea3cf1f4a05cf614b46fe36e0d3f9a8c/image3-10.png" alt="How we built Instant Logs" class="kg-image" width="1235" height="639" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xxrYk5PzHSV412hdlqi9k/a303ed70dd110581d25e60a6fda01f38/image3-10.png" alt="How we built Instant Logs" class="kg-image" width="1235" height="639" loading="lazy">
 
 	</figure>
 	<p>As a developer, you may be all too familiar with the stress of responding to a major service outage, becoming aware of an ongoing security breach, or simply dealing with the frustration of setting up a new service for the first time. When confronted with these situations, you want a real-time view into the events flowing through your network, so you can receive, process, and act on information as quickly as possible.</p>
@@ -55,13 +55,13 @@
 	<p>Imagine a simple scenario in which we have a single web server which produces log messages, and a single client which wants to consume them. This can be implemented by creating a Durable Object, which we will refer to as a Durable Session, that serves as the point of coordination between the server and client. In this case, the client initiates a WebSocket connection with the Durable Object, and the server sends messages to the Durable Object over HTTP, which are then forwarded directly to the client.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5PuK0M59DUIxyde5IrIU78/7dac13c964ef1f053cf9e7725fbcf58a/image1-9.png" alt="a Web Server sends messages via HTTP POST request to the Durable Session, which forwards messages to the Client via a WebSocket." class="kg-image" width="1040" height="122" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PuK0M59DUIxyde5IrIU78/ac2650b42242101e40872e0b503e7e85/image1-9.png" alt="a Web Server sends messages via HTTP POST request to the Durable Session, which forwards messages to the Client via a WebSocket." class="kg-image" width="1040" height="122" loading="lazy">
 
 	</figure>
 	<p>This model is quite quick and introduces very little additional latency other than what would be required to send a payload directly from the web server to the client. This is thanks to the fact that Durable Objects are generally located at or near the data center where they are first requested. At least in human terms, it’s instant. Adding more servers to our model is also trivial. As the additional servers produce events, they will all be routed to the same Durable Object, which merges them into a single stream, and sends them to the client over the same WebSocket.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TEHgyNF7oP8le25gvViNY/047412f067ef94e5645e2bb0751b1ea2/image5-7.png" alt="" class="kg-image" width="1068" height="474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TEHgyNF7oP8le25gvViNY/fce6b70f34f617de00673332929d6dd8/image5-7.png" alt="" class="kg-image" width="1068" height="474" loading="lazy">
 
 	</figure>
 	<p>Durable Objects are inherently single threaded. As the number of servers in our simple example increases, the Durable Object will eventually saturate its CPU time and will eventually start to reject incoming requests. And even if it didn’t, as data volumes increase, we risk overwhelming a client’s ability to download and render log lines. We’ll handle this in a few different ways.</p>
@@ -76,7 +76,7 @@
 	<p>Filtering is the most simple and obvious way to reduce data volume before it reaches the client. If we can filter out the noise, and stream only the events of interest, we can substantially reduce volume. Performing this transformation in the Durable Object itself will provide no relief from CPU saturation concerns. Instead, we can push this filtering out to an invoking Worker, which will run many filter operations in parallel, as it elastically scales to process all the incoming requests to the Durable Object. At this point, our architecture starts to look a lot like the MapReduce pattern!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k0GQ5U5eqoppXsxYR15km/53fef238bef5a9a150926bbbfbbdda2d/image6-2.png" alt="Multiple Web Servers can send messages to an equal number of Filter Workers. The Filters Workers reduce the log volume before sending messages to a single Durable Session, which maintains a single WebSocket with the Client" class="kg-image" width="1372" height="478" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7k0GQ5U5eqoppXsxYR15km/489e51991c8867fd0cc58236d7dc25e9/image6-2.png" alt="Multiple Web Servers can send messages to an equal number of Filter Workers. The Filters Workers reduce the log volume before sending messages to a single Durable Session, which maintains a single WebSocket with the Client" class="kg-image" width="1372" height="478" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -90,7 +90,7 @@
 	<p>Ok, so filtering may be great in some situations, but it’s not going to save us under all scenarios. We still need a solution to help us coordinate between potentially thousands of servers that are sending events every single second. Durable Objects will come to the rescue, yet again. We can implement a sharding layer consisting of Durable Objects, we will call them Durable Shards, that effectively allow us to reduce the number of requests being sent to our primary object.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pKCBGb5Wrs9tMLxhzbcKo/1e68eba1452327487bb8de0684ab02f3/image4-10.png" alt="Multiple Web Servers can send messages in an HTTP POST to multiple Filter Workers, which reduces the log volume. These Filter Workers send messages to a small number of Durable Shards. Finally, the Durable Shards send messages to a single Durable Session, which maintains a single WebSocket with the Client" class="kg-image" width="1710" height="466" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pKCBGb5Wrs9tMLxhzbcKo/479394e5ea9256996cdf462d1c9d00e6/image4-10.png" alt="Multiple Web Servers can send messages in an HTTP POST to multiple Filter Workers, which reduces the log volume. These Filter Workers send messages to a small number of Durable Shards. Finally, the Durable Shards send messages to a single Durable Session, which maintains a single WebSocket with the Client" class="kg-image" width="1710" height="466" loading="lazy">
 
 	</figure>
 	<p>But how do we implement this layer if Durable Objects are globally unique? We first need to decide on a shard key, which is used to determine which Durable Object a given message should first be routed to. When the Worker processes a message, the key will be added to the name of the downstream Durable Object. Assuming our keys are well-balanced, this should effectively reduce the load on the primary Durable Object by approximately 1/N.</p>
@@ -108,7 +108,7 @@
 	<p>For Instant Logs, we implement a sampling technique called <a href="https://en.wikipedia.org/wiki/Reservoir_sampling">Reservoir Sampling</a>. Reservoir sampling is a form of dynamic sampling that has this amazing property of letting us pick a specific <i>k</i> number of items from a stream of unknown length <i>n</i>, with a single pass through the data. By buffering data in the reservoir, and flushing it on a short (sub second) time interval, we can output random samples to the client at the maximum data rate of our choosing. Sampling is implemented in both layers of Durable Objects.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HCrDDvKaIjouZLIBfsqAA/815dccabad91cdead0cd76c8070ac343/image2-15.png" alt="We have four Durable Shard input layers with three different events each. The Durable Shards merge these inputs together, using the reservoir sampling process, taking a maximum of four samples each. The outputs of the Durable Shards are then merged again, forming the final stream which is sent to the client" class="kg-image" width="1999" height="756" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HCrDDvKaIjouZLIBfsqAA/cc071a45d07036cb64bb9e8470fb7083/image2-15.png" alt="We have four Durable Shard input layers with three different events each. The Durable Shards merge these inputs together, using the reservoir sampling process, taking a maximum of four samples each. The outputs of the Durable Shards are then merged again, forming the final stream which is sent to the client" class="kg-image" width="1999" height="756" loading="lazy">
 
 	</figure>
 	<p>Information about the original traffic shape is preserved by assigning a sample interval to each line, which is equivalent to the number of samples that were dropped for this given sample to make it through, or 1/probability. The actual number of requests can then be calculated by taking the sum of all sample intervals within a time window. This technique adds a slight amount of latency to the pipeline to account for buffering, but enables us to point an event source of nearly any size at the pipeline, and we can expect it will be handled in a sensible, controlled way.</p>

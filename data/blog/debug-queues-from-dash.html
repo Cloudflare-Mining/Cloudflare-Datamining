@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AI08WiMPWo4ApOmViaI7B/9f2d2435097ad06ad17b9aa9854cf29f/image3-1.png" alt="Debug Queues from the dash: Send, list, and ack messages" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AI08WiMPWo4ApOmViaI7B/6ce3c621400658b0fbf1caa73ea1df35/image3-1.png" alt="Debug Queues from the dash: Send, list, and ack messages" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today, August 11, 2023, we are excited to announce a new debugging workflow for Cloudflare Queues. Customers using Cloudflare Queues can now send, list, and acknowledge messages directly from the Cloudflare dashboard, enabling a more user-friendly way to interact with Queues. Though it can be difficult to debug asynchronous systems, it’s now easy to examine a queue’s state and test the full flow of information through a queue.</p>
@@ -10,14 +10,14 @@
 	<p>We’ve received feedback that while Queues are effective and performant, customers find it hard to debug them. After a message is sent to a queue from a producer worker, there’s no way to inspect the queue’s contents without a consumer worker. The limited transparency was frustrating, and the need to write a skeleton worker just to debug a queue was high-friction.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zNFeogvcAV8R2ErH6SUg9/44946ec3809826f77e550faf52388e6d/image7.png" alt="" class="kg-image" width="1764" height="336" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zNFeogvcAV8R2ErH6SUg9/2c26577d3665a795f5973bf126990728/image7.png" alt="" class="kg-image" width="1764" height="336" loading="lazy">
 
 	</figure>
 	<p>Now, with the addition of new features to send, list, and acknowledge messages in the Cloudflare dashboard, we’ve unlocked a much simpler debugging workflow. You can send messages from the Cloudflare dashboard to check if their consumer worker is processing messages as expected, and verify their producer worker’s output by previewing messages from the Cloudflare dashboard.</p>
 	<p>The pipeline of messages through a queue is now more open and easily examined. Users just getting started with Cloudflare Queues also no longer have to write code to send their first message: it’s as easy as clicking a button in the Cloudflare dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZBzVg52jwP0bmfPVpQ6ix/44574cd1a9e236ad16992976d1a11814/image6.png" alt="" class="kg-image" width="976" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZBzVg52jwP0bmfPVpQ6ix/09b46e8e51c4cfa88c14db169b97d7a7/image6.png" alt="" class="kg-image" width="976" height="768" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -31,7 +31,7 @@
 	<p>Both features are located in a new <b><b>Messages</b></b> tab on any queue’s page. Scroll to <b><b>Send message</b></b> to open the message editor.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UFuyA4fJD8kmg0yxK9Y3n/e6eb96cd7c8bfbc033cfe305d8a78936/image1-4.png" alt="" class="kg-image" width="1360" height="564" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UFuyA4fJD8kmg0yxK9Y3n/ec6aa19f26c5be9924ef23a55f270530/image1-4.png" alt="" class="kg-image" width="1360" height="564" loading="lazy">
 
 	</figure>
 	<p>From here, you can write a message and click <b>Send message</b> to send it to your queue. You can also choose to send JSON, which opens a JSON editor with syntax highlighting and formatting. If you’ve saved your message as a file locally, you can drag-and-drop the file over the textbox or click <b>Upload a file</b> to send it as well.</p>
@@ -50,7 +50,7 @@
 	<p>After fetching a batch of messages, you can preview the message’s body, even if you’ve sent raw bytes or a JavaScript object supported by the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm">structured clone</a> algorithm. You can also check the message’s timestamp; number of retries; producer source, such as a Worker or the Cloudflare dashboard; and type, such as text or JSON. This information can help you debug the queue’s current state and inspect where and when messages originated from.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/359eKsDTJEyl5nhFaKi7ZT/38d433d3413f160ac77508f317587f23/image5-2.png" alt="" class="kg-image" width="1326" height="564" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/359eKsDTJEyl5nhFaKi7ZT/3d9a43b9de9a2f7bd94694f3bde18791/image5-2.png" alt="" class="kg-image" width="1326" height="564" loading="lazy">
 
 	</figure>
 	<p>The batch of messages that’s returned is the same batch that would be sent to your consumer Worker on its next run. Messages are even guaranteed to be in the same order on the UI as sent to your consumer. This feature grants you a looking glass view into your queue, matching the exact behavior of a consumer worker. This works especially well for debugging messages sent by producer workers and verifying queue consumer settings.</p>
@@ -59,12 +59,12 @@
 	<p>As well, you can now remove messages from your queue from the Cloudflare dashboard. If you’d like to remove a message or clear the full batch from the queue, you can select messages to acknowledge. This is useful for preventing buggy messages from being repeatedly retried without having to write a dummy consumer.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jJBUVFIiKOQu3yVKb8wA8/44f26a9a42d3851af0931fc62388de4d/image4-1.png" alt="" class="kg-image" width="1326" height="297" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jJBUVFIiKOQu3yVKb8wA8/d5aff1ecba3687cdb1ab89812e507524/image4-1.png" alt="" class="kg-image" width="1326" height="297" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/slOwPKMoZM7VaEhodubH2/31fd548afe359e1406b38a40cce5fdc6/image2-3.png" alt="" class="kg-image" width="709" height="296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/slOwPKMoZM7VaEhodubH2/a1a7c32768cd3d3bb5abd248b277a6e3/image2-3.png" alt="" class="kg-image" width="709" height="296" loading="lazy">
 
 	</figure>
 	<p>You might have noticed that this message preview feature operates similarly to another popular feature request for an HTTP API to pull batches of messages from a queue. Customers will be able to make a request to the API endpoint to receive a batch of messages, then acknowledge the batch to remove the messages from the queue. Under the hood, both listing messages from the Cloudflare dashboard and HTTP Pull/Ack use a common infrastructure, and HTTP Pull/Ack is coming very soon!</p>

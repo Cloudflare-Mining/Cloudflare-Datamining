@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Yld72RZV077SDlS9w3sTs/80034fc86eab3659a0e065e28cc9b8e2/gen-x-color-Wednesday_2x.png" alt="" class="kg-image" width="1662" height="703" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Yld72RZV077SDlS9w3sTs/cf19db8c449b3088d9504af9d5d30938/gen-x-color-Wednesday_2x.png" alt="" class="kg-image" width="1662" height="703" loading="lazy">
 
 	</figure>
 	<p>In the past, we didn't have the opportunity to evaluate as many CPUs as we do today. The hardware ecosystem was simple – Intel had consistently delivered industry leading processors. Other vendors could not compete with them on both performance and cost. Recently it all changed: AMD has been challenging the status quo with their 2nd Gen EPYC processors.</p>
@@ -24,38 +24,38 @@
 	<p>CPU Specifications</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42MpuiHDcFmNWT8c5GOh96/f549a8ef6deb8f2a718a2dc2dece4e1f/image-3.png" alt="" class="kg-image" width="1242" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42MpuiHDcFmNWT8c5GOh96/3666d84667b56b645e29aec5cfafdfdd/image-3.png" alt="" class="kg-image" width="1242" height="452" loading="lazy">
 
 	</figure>
 	<p>We evaluated several Intel Cascade Lake and AMD 2nd Gen EPYC processors, trading off various factors between power and performance; the AMD EPYC 7642 CPU came out on top. The majority of Cascade Lake processors have 1.375 MiB L3 cache per core shared across all cores, a common theme that started with Skylake. On the other hand, the 2nd Gen EPYC processors start at 4 MiB per core. The AMD EPYC 7642 is a unique SKU since it has 256 MiB of L3 cache. Having a cache this large or approximately 5.33 MiB sitting right next to each core means that a program will spend fewer cycles fetching data from RAM with the capability to have more data readily available in the L3 cache.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FVYxpe6TeVh26fV12eeBw/b5ac624ef8fbf70e25d3170dc9932b92/Infrastructure-before_2x.png" alt="" class="kg-image" width="3191" height="1296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FVYxpe6TeVh26fV12eeBw/a285e437f90b2ac809811bb3645b1130/Infrastructure-before_2x.png" alt="" class="kg-image" width="3191" height="1296" loading="lazy">
 
 	</figure>
 	<p><i>Before (Intel)</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zMlvsRWnuL6SwUUPyLHBu/1f38e661b94a14898096155cf2d5cd64/Infrastructure-after-_2x--1-.png" alt="" class="kg-image" width="3191" height="1297" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zMlvsRWnuL6SwUUPyLHBu/13d459bee2cf7d0c195bb74b18c49555/Infrastructure-after-_2x--1-.png" alt="" class="kg-image" width="3191" height="1297" loading="lazy">
 
 	</figure>
 	<p><i>After (AMD)</i></p>
 	<p>Traditional cache layout has also changed with the introduction of 2nd Gen EPYC, a byproduct of AMD using a multi-chip module (MCM) design. The 256 MiB L3 cache is formed by 8 individual dies or Core Complex Die (CCD) that is formed by 2 Core Complexes (CCX) with each CCX containing 16 MiB of L3 cache.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oqKl2iToZamCbBNQBH2uj/ae244a5497fc71b2a8aacca6bd133603/image6.png" alt="" class="kg-image" width="1999" height="575" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oqKl2iToZamCbBNQBH2uj/ba9b72846f7f81c92e0ccf705f3be9c1/image6.png" alt="" class="kg-image" width="1999" height="575" loading="lazy">
 
 	</figure>
 	<p><i>Core Complex (CCX) - Up to four cores</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6p5FRRU9VZTMWhkdNH7g4/d8490fa598f639721885be69a93c621e/image9.png" alt="" class="kg-image" width="1946" height="1242" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6p5FRRU9VZTMWhkdNH7g4/acb4ff79d8916a20278f8c50e21c53bb/image9.png" alt="" class="kg-image" width="1946" height="1242" loading="lazy">
 
 	</figure>
 	<p><b>Core Complex Die (CCD) - Created by combining two CCXs</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IyMxh74THzCubUs6H3SY1/bfbd7b0b0c90903bdbb0a0b6b6ef0035/image1-2.png" alt="" class="kg-image" width="1430" height="1096" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IyMxh74THzCubUs6H3SY1/a031494b9f0783406ef653b3e99ad598/image1-2.png" alt="" class="kg-image" width="1430" height="1096" loading="lazy">
 
 	</figure>
 	<p><i>AMD 2nd Gen EPYC 7642 - Created with 8x CCDs plus an I/O die in the center</i></p>
@@ -90,7 +90,7 @@
 	<p>CPU Specifications</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lji8wRNR827IKHgDE3asr/cde9b52f4d08a68d4f24091baa4ccca7/image-2.png" alt="" class="kg-image" width="1254" height="404" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lji8wRNR827IKHgDE3asr/3180fa701066cee223dde822b313d8ec/image-2.png" alt="" class="kg-image" width="1254" height="404" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -105,13 +105,13 @@
 	<p>We put the 2nd Gen EPYC-based Gen X into production with hopes that the results would mirror closely to what we have previously seen in the lab. We found that the requests per second did not quite align with the results we had hoped, but the AMD EPYC server still outperformed all previous generations including outperforming the Intel Gen 9 server by 36%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V8uzcFfnFwUIH0leecLnm/94332f6736e871ef5a49bf2e599552ce/image8.png" alt="" class="kg-image" width="590" height="337" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4V8uzcFfnFwUIH0leecLnm/232bd88ceb2216efa4fae242a085a140/image8.png" alt="" class="kg-image" width="590" height="337" loading="lazy">
 
 	</figure>
 	<p>Sustained operating frequency was nearly identical to what we have seen back in the lab.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DhckmjQqo7b9JtllouvVL/541044b52dc2017524f7e9e4302a117c/image10.png" alt="" class="kg-image" width="591" height="322" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DhckmjQqo7b9JtllouvVL/19b3fda2e8a5a277c511269f4bc7a148/image10.png" alt="" class="kg-image" width="591" height="322" loading="lazy">
 
 	</figure>
 	<p>Due to the lower than expected requests per second, we also saw lower instructions retired over time and higher L3 cache miss rate but maintained a lead over Gen 9, with 29% better performance.</p>

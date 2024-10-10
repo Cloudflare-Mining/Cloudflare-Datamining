@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/customers-get-increased-integration-with-cloudflare-email-security-and-zero-trust">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/customers-get-increased-integration-with-cloudflare-email-security-and-zero-trust">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QchhuiBpH2stv3DfpsRFe/21a63a2f2f425da1091356ab78ff1952/image4.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/customers-get-increased-integration-with-cloudflare-email-security-and-zero-trust">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/customers-get-increased-integration-with-cloudflare-email-security-and-zero-trust">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QchhuiBpH2stv3DfpsRFe/d7f214617dcef103ddbb3feb9efeac95/image4.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today, we’re excited to expand <a href="https://blog.cloudflare.com/unified-risk-posture"><u>our recent Unified Risk Posture announcement</u></a> with more information on our latest integrations with <a href="https://www.crowdstrike.com"><u>CrowdStrike</u></a>. We <a href="https://blog.cloudflare.com/unified-risk-posture"><u>previously shared</u></a> that our CrowdStrike Falcon Next-Gen SIEM integration allows for deeper analysis and further investigations by unifying first- and third-party data, native threat intelligence, AI, and workflow automation to allow your security teams to focus on work that matters.</p>
 	<p>This post explains how Falcon Next-Gen SIEM allows customers to identify and investigate risky user behavior and analyze data combined with other log sources to uncover hidden threats. By combining Cloudflare and CrowdStrike, organizations are better equipped to manage risk and decisively take action to stop cyberattacks.</p>
@@ -35,11 +35,11 @@
 	</div>
 	<p>To connect Cloudflare Zero Trust logs, start with the Falcon Next-Gen SIEM module. Navigate to the Data Connectors tab of your Falcon Next-Gen SIEM dashboard and select the Cloudflare Data Connector.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68WBQjl9Y4v8FFZQ8GD7gd/3398db8df35df7d01cdb7a5e1c777380/image3.png" alt="" class="kg-image" width="1999" height="818" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68WBQjl9Y4v8FFZQ8GD7gd/9e2bfa370303f1a3ccfe7a858089b195/image3.png" alt="" class="kg-image" width="1999" height="818" loading="lazy">
 	</figure>
 	<p>Give the connector a name and select “Save”, and you will receive two pieces of information: an API key and an API URL. Be sure to make note of the key, as it will only be shown once.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VqTqVgB9mf3CHeYomnfkP/0418a892000285ba9e4f75525dc72347/image1.png" alt="" class="kg-image" width="1698" height="636" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VqTqVgB9mf3CHeYomnfkP/6ae503472ca78969f2a8e26201b5b276/image1.png" alt="" class="kg-image" width="1698" height="636" loading="lazy">
 	</figure>
 	<p>Next, in Cloudflare, create an <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/http"><u>HTTP logpush job via API</u></a>, and format the "destination_conf" field as follows:</p>
 	<p><code>"destination_conf": "&lt;API URL&gt;?header_Authorization=Bearer%20&lt;API KEY&gt;&amp;tags=&lt;ZONE&gt;,dataset:&lt;DATASET&gt;"</code></p>
@@ -53,11 +53,11 @@
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hWaxWcelja9tY4q6ZSRwT/745e69856b5116e35df791a42d997244/image2.png" alt="" class="kg-image" width="1999" height="716" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hWaxWcelja9tY4q6ZSRwT/659bd80980cba2b5988279209fe6fdff/image2.png" alt="" class="kg-image" width="1999" height="716" loading="lazy">
 	</figure>
 	<p>Once the job is created and active, you will start to see events populating in the My Connectors section of your Falcon dashboard. Once Cloudflare data is populated in Falcon Next-Gen SIEM, you can now search events and create Falcon Fusion SOAR automation workflows and correlation rules, all based on Cloudflare log events.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7g7PFWfKkHyT8gtKjROCbB/b443b6d26714b3c3451386b61ecd4478/image5.png" alt="" class="kg-image" width="1999" height="898" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7g7PFWfKkHyT8gtKjROCbB/7a09065ff88e2cae7b905b8cc30f6442/image5.png" alt="" class="kg-image" width="1999" height="898" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="in-summary">In Summary</h3>

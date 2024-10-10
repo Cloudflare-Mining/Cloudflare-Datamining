@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3s6lNptpVhi1lQgOpG9ARA/3fb645e53f993ef77e60e24ecf66ee95/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3s6lNptpVhi1lQgOpG9ARA/9118ee3de1b00404f81d66068f206458/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The last few weeks have seen several high-profile outages in legacy <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> and DDoS-mitigation services due to large scale attacks. Cloudflare's customers have, understandably, asked how we are positioned to handle similar attacks.</p>
 	<p>While there are limits to any service, including Cloudflare, we are well architected to withstand these recent attacks and continue to scale to stop the larger attacks that will inevitably come. We are, <a href="https://twitter.com/MiraiAttacks">multiple times per day</a>, mitigating the very botnets that have been in the news. Based on the attack data that has been released publicly, and what has been shared with us privately, we have been successfully mitigating attacks of a similar scale and type without customer outages.</p>
@@ -14,7 +14,7 @@
 	<p>Before delving into our architecture, it's worth taking a second to think about another analogous technology problem that is better understood: scaling databases. From the mid-1980s, when relational databases started taking off, through the early 2000s the way companies thought of scaling their database was by buying bigger hardware. The game was: buy the biggest database server you could afford, start filling it with data, and then hope a newer, bigger server you could afford was released before you ran out of room. Hardware companies responded with more and more exotic, database-specific hardware.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37mOkqUk3hRkHBk6ftT82w/9cb5bf77f330a5210a57e80d21551937/IBM-z13-Mainframe-1.png" alt="" class="kg-image" width="640" height="724" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37mOkqUk3hRkHBk6ftT82w/8482b91de1486fc610c94a2053e5fe43/IBM-z13-Mainframe-1.png" alt="" class="kg-image" width="640" height="724" loading="lazy">
 
 	</figure>
 	<p>Meet the IBM z13 mainframe (source: IBM)</p>
@@ -31,7 +31,7 @@
 	<p>Compare this with the way legacy DNS and DDoS mitigation services mitigate attacks. Traditionally, the way to stop an attack was to buy or build a big box and use it to filter incoming traffic. If you were to dig into the technical details of most legacy DDoS mitigation service vendors you'd find hardware from companies like Cisco, Arbor Networks, and Radware clustered together into so-called "scrubbing centers."</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ze9dBcN6b89VeM2HRFy16/6e83f34cbcb55a966053db93c394805a/1280px-WWTP_Antwerpen-Zuid.jpg" alt="" class="kg-image" width="800" height="594" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ze9dBcN6b89VeM2HRFy16/b1d09c73edfec469752f05eccce30b95/1280px-WWTP_Antwerpen-Zuid.jpg" alt="" class="kg-image" width="800" height="594" loading="lazy">
 
 	</figure>
 	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> sewage treatment <a href="https://en.wikipedia.org/wiki/Wastewater_treatment#/media/File:WWTP_Antwerpen-Zuid.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Annabel">Annabel</a></p>
@@ -50,7 +50,7 @@
 	<p>Rather than using load balancers or dedicated mitigation hardware, which could become bottlenecks in an attack, we wrote software that uses BGP, the fundamental routing protocol of the Internet, to <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">distribute load geographically and also within each data center in our network</a>. Critical to our model: every server in every rack is able to answer every type of request. Our software dynamically allocates load based on what is needed for a particular customer at a particular time. That means that we automatically spread load across literally tens of thousands of servers during large attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/372zDV5K3g5yUvtfcSmrPv/8cc9d39de52a11ea9627e696b14528b6/Graphen.jpg" alt="" class="kg-image" width="1280" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/372zDV5K3g5yUvtfcSmrPv/e74c8e3abf85557d3c71ac35d4ca1d74/Graphen.jpg" alt="" class="kg-image" width="1280" height="1024" loading="lazy">
 
 	</figure>
 	<p>Graphene: a simple architecture that’s 100 times stronger than the best steel (credit: <a href="https://commons.wikimedia.org/wiki/File:Graphen.jpg">Wikipedia</a>)</p>

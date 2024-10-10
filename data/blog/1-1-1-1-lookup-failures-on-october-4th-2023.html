@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5S774vlQ0Giaa7OrRw5WpA/9984bb314ed0de76ac33ef7b2ded6ad8/DNS-Incident-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S774vlQ0Giaa7OrRw5WpA/429311dc4a79f8e088291906058eb206/DNS-Incident-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>On 4 October 2023, Cloudflare experienced DNS resolution problems starting at 07:00 UTC and ending at 11:00 UTC. Some users of 1.1.1.1 or products like WARP, Zero Trust, or third party DNS resolvers which use 1.1.1.1 may have received SERVFAIL DNS responses to valid queries. We’re very sorry for this outage. This outage was an internal software error and not the result of an attack. In this blog, we’re going to talk about what the failure was, why it occurred, and what we’re doing to make sure this doesn’t happen again.</p>
@@ -20,7 +20,7 @@
 	<p>The root zone is published on <a href="https://root-servers.org">the root servers</a>, but it is also common for DNS operators to <a href="https://www.rfc-editor.org/rfc/rfc8806">retrieve and retain a copy of the root zone automatically</a> so that in the event that the root servers cannot be reached, the information in the root zone is still available. Cloudflare’s recursive DNS infrastructure takes this approach as it also makes the resolution process faster. New versions of the root zone are normally published twice a day. 1.1.1.1 has a <a href="https://blog.cloudflare.com/big-pineapple-intro">WebAssembly app</a> called static_zone running on top of the main DNS logic that serves those new versions when they are available.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tgd6rlFY7udR3qnaykmLu/9b810768001ac87be63b2dd9fd6c997a/image2-1.png" alt="" class="kg-image" width="951" height="604" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tgd6rlFY7udR3qnaykmLu/b3256f48a8d2aa87e51de7da96bdfa4b/image2-1.png" alt="" class="kg-image" width="951" height="604" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -36,7 +36,7 @@
 	<p>On 4 October 2023 at 07:00 UTC, the DNSSEC signatures in the version of the root zone from 21 September expired. Because there was no newer version that the Cloudflare resolver systems were able to use, some of Cloudflare’s resolver systems stopped being able to validate DNSSEC signatures and as a result started sending error responses (SERVFAIL). The rate at which Cloudflare resolvers generated SERVFAIL responses grew by 12%. The diagrams below illustrate the progression of the failure and how it became visible to users.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XAzPsw7SXN9MWtsdfATWP/3e56d4612154b2a1a1f7a516cf3946f7/image3-1.png" alt="" class="kg-image" width="1337" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XAzPsw7SXN9MWtsdfATWP/6df4fb0f70eddd8d5a7b92ae242cb0f5/image3-1.png" alt="" class="kg-image" width="1337" height="1999" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -51,7 +51,7 @@
 	<p>This below chart shows the timeline of impact along with the percentage of DNS queries that returned with a SERVFAIL error:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Wfn8yZCTZqq1AcB8EjQ4L/5515a149b0bee2c99f8c6d64bdda4005/image1-3.png" alt="" class="kg-image" width="1431" height="414" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Wfn8yZCTZqq1AcB8EjQ4L/fe78cafa32baa2553bdba082c61e9dca/image1-3.png" alt="" class="kg-image" width="1431" height="414" loading="lazy">
 
 	</figure>
 	<p>We expect a baseline volume of SERVFAIL errors for regular traffic during normal operation. Usually that percentage sits at around 3%. These SERVFAILs can be caused by legitimate issues in the DNSSEC chain, failures to connect to authoritative servers, authoritative servers taking too long to respond, <a href="https://blog.cloudflare.com/unwrap-the-servfail">and many others</a>. During the incident the amount of SERVFAILs peaked at 15% of total queries, although the impact was not evenly distributed around the world and was mainly concentrated in our larger data centers like Ashburn, Virginia; Frankfurt, Germany; and Singapore.</p>
@@ -104,7 +104,7 @@
 	<p>The static_zone app, tasked with loading and parsing the root zone for the purpose of serving the root zone locally (<a href="https://datatracker.ietf.org/doc/html/rfc7706">RFC 7706</a>), stores the latest version in memory. When a new version is published it parses it and, when successfully done so, drops the old version. However, as parsing failed the static_zone app never switched to a newer version, and instead continued using the old version indefinitely. When the 1.1.1.1 service is first started the static_zone app does not have an existing version in memory. When it tries to parse the root zone it fails in doing so, but because it does not have an older version of the root zone to fall back on, it falls back on querying the root servers directly for incoming requests.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CnsfVerlBEVukAWjtcK0B/4f6fb46d37057aef66ee71becd86e1ef/image5.png" alt="" class="kg-image" width="1999" height="1417" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CnsfVerlBEVukAWjtcK0B/2bdf1562912f7694fe4c65f73e8a9810/image5.png" alt="" class="kg-image" width="1999" height="1417" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

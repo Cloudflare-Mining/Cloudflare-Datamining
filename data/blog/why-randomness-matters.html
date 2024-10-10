@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lE44XwKD8pgusOBwD6Z5g/94107d18770c9f2d4c005c3dc5170840/why-randomness-matters.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lE44XwKD8pgusOBwD6Z5g/0821056bce68715e2fa62cf343683a26/why-randomness-matters.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you've been following recent news about technical spying by the US National Security Agency and the UK's Government Communications Headquarters you may have come across a claim that the NSA was involved in weakening a random number generator. The obvious question to ask is... why mess with random number generation?</p>
 	<p>The answer is rather simple: good random numbers are fundemental to almost all secure computer systems. Without them everything from Second World War ciphers like <a href="https://en.wikipedia.org/wiki/Lorenz_cipher">Lorenz</a> to the SSL your browser uses to secure web traffic are in serious trouble.</p>
@@ -14,7 +14,7 @@
 	<p>As an example of how random numbers go wrong I'll begin with a hack of the popular programming and technology web site <a href="http://news.ycombinator.com">Hacker News</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40au0pGr0v0dOjBGBAZqQ9/98ebe84031360717a67f6dfa7ee1068f/hn.png" alt="Hacker News" class="kg-image" width="716" height="33" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40au0pGr0v0dOjBGBAZqQ9/8b92c59dfae298a6686300d8a789d858/hn.png" alt="Hacker News" class="kg-image" width="716" height="33" loading="lazy">
 
 	</figure>
 	<p>Four years ago I <a href="https://news.ycombinator.com/item?id=596126">mentioned</a> on the site that its random number generator was vulnerable to being used to attack the site. Not long after, and entirely independently, another contributor to the site actually <a href="https://news.ycombinator.com/item?id=639976">carried out the attack</a> with the permission of the site owner.</p>
@@ -32,7 +32,7 @@
 	<p>Although pseudo-random number generators can generate a sequence of apparently random numbers they have weaknesses.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZlscOxjB28S7q5DKywhvn/a8479800fae1f79c9c2147dc13a5e26e/vonneumann.jpg" alt="The Three" class="kg-image" width="480" height="352" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZlscOxjB28S7q5DKywhvn/5c9eb81d09d2712185e682beb76d4dd6/vonneumann.jpg" alt="The Three" class="kg-image" width="480" height="352" loading="lazy">
 
 	</figure>
 	<p>von Neumann used a simple pseudo-random number generator called the<a href="https://en.wikipedia.org/wiki/Middle-square_method">middle square</a> that works as follows. You start with some number (called a seed) and square it. You take the four middle digits as your random number and square them to get the next random number, and so on.</p>
@@ -95,7 +95,7 @@
 	<p>Similarly, random numbers turn up when logging into web sites (and other systems), creating secure connections to servers using <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a>, holding Skype video chats, sending encrypted email and more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KwL1vFVT6Od93yDW5X3vv/3a3ff46afeb4c5b469f6089a0f9537d1/otp.jpg" alt="Soviet one-time pad" class="kg-image" width="410" height="586" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KwL1vFVT6Od93yDW5X3vv/37a6f61e89ffc32942f61bfb8e501571/otp.jpg" alt="Soviet one-time pad" class="kg-image" width="410" height="586" loading="lazy">
 
 	</figure>
 	<p>And the Achilles' Heel of the only completely secure cryptosystem, the <a href="https://en.wikipedia.org/wiki/One_time_pad">one-time pad</a> is that the pad itself must be completely randomly generated. Any predictability or non-uniformity in the random numbers used can lead to breaking of a one-time pad. (The other problem with one-time pads is reuse: they must be used <a href="https://en.wikipedia.org/wiki/VENONA#Breakthrough">only once</a>.)</p>
@@ -111,7 +111,7 @@
 	<p>We currently obtain most of our random numbers from either OpenSSL's random number generation system or from the Linux kernel. Both seed their random number generators from a variety of sources to make them as unpredictable as possible. Sources include things like network data, or the seek time of disks. But we think we can improve on them by adding some truly random data into the system, and, as a result, improve security for our customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Bo57TId78978Kd8s8Dgjz/3a7610396816c48153238008f7d09d8b/neuromancer.jpg" alt="The sky above the port was the color of television, tuned to a dead channel" class="kg-image" width="796" height="574" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Bo57TId78978Kd8s8Dgjz/51a3193b9f1c5744f46b4ca9e20a5b0a/neuromancer.jpg" alt="The sky above the port was the color of television, tuned to a dead channel" class="kg-image" width="796" height="574" loading="lazy">
 
 	</figure>
 	<p>We've embarked on a project to further improve our random numbers by providing a source of truly random numbers that don't come from a mathematical process. That can be done using things like <a href="http://www.fourmilab.ch/hotbits">radioactive decay</a>, the <a href="https://en.wikipedia.org/wiki/Lavarand">motion of fluids</a>, <a href="https://www.random.org">atmospheric noise</a>, or <a href="http://www.lavarnd.org/what/process.html">other chaos</a>.</p>

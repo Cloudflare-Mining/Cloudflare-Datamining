@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56gEEDPmOntJoXI16u8qU5/cd237d0f32307c671cd39b7c5d2abf52/image2-15.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56gEEDPmOntJoXI16u8qU5/0ed51f115308dc4941b6553fbdaed0f0/image2-15.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Being able to get real-time information from applications in production is extremely important. Many times software passes local testing and automation, but then users report that something isn’t working correctly. Being able to quickly see what is happening, and how often, is critical to debugging.</p>
@@ -42,13 +42,13 @@
 	<p>We created a simple controller to track the RPS hitting a Durable Object and sample messages until the desired volume of 100 RPS is reached. As shown below, sampling keeps the Tail Durable Object RPS below the target of 100.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7a0f6KNAQCBfodwsGwzlEs/21e7ff669c586b4a763ec2a67b754cb7/image4-12.png" alt="" class="kg-image" width="601" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7a0f6KNAQCBfodwsGwzlEs/340c5f194ea626f41552f090787257a0/image4-12.png" alt="" class="kg-image" width="601" height="371" loading="lazy">
 
 	</figure>
 	<p>When messages are sampled, the following message appears every five seconds to let the user know that they are in sampling mode:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jSffNOJOWuhVam9g2kjo2/2d5ccd2f591dde11de27d4e59b245611/image3-9.png" alt="" class="kg-image" width="948" height="243" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jSffNOJOWuhVam9g2kjo2/daafee133ea30515a5b1ca30fbe559e7/image3-9.png" alt="" class="kg-image" width="948" height="243" loading="lazy">
 
 	</figure>
 	<p>This message goes away once the Tail is stopped or filters are applied that drop the RPS below 100.</p>
@@ -64,7 +64,7 @@
 	<p>In the case that an overload is detected, all messages forwarded to the Durable Object are stopped periodically to prevent any issues with Workers infrastructure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FXCXIYrmzHVJHFlRF1wXQ/8c8a037108234b5398ea02465cd5bc98/image1-24.png" alt="" class="kg-image" width="924" height="301" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FXCXIYrmzHVJHFlRF1wXQ/d454b9bffab6eeddb19ec5718636113e/image1-24.png" alt="" class="kg-image" width="924" height="301" loading="lazy">
 
 	</figure>
 	<p>Here we can see a user who had a large amount of traffic that started to become sampled. As the traffic increased, the number of sampled messages grew. Since the traffic was too fast for the sampling mechanism to handle, the Durable Object got overloaded. However, soon excess messages were blocked and the overload stopped.</p>
@@ -80,7 +80,7 @@
 	<p>To Tail Workers via the Dashboard, log in, navigate to your Worker, and click on the Logs tab. You can then start a log stream via the default view.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/F5Z80VaPFuPW71NWvfA3g/73777b6b5b8a4b086dcf335ddf5e73c0/image5-9.png" alt="" class="kg-image" width="1276" height="544" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/F5Z80VaPFuPW71NWvfA3g/27e7fb654ac3eac556611c81a2ad0a1d/image5-9.png" alt="" class="kg-image" width="1276" height="544" loading="lazy">
 
 	</figure>
 	<p>If you’re using the Wrangler CLI, you can start a new Tail by running <code>wrangler tail</code>.</p>

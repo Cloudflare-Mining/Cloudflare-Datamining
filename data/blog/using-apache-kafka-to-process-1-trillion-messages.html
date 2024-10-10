@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RvfaKNjkQcCDhobJWvu7o/e92009bd3df416c4b2a921bbaa5203d9/image3-8.png" alt="Using Apache Kafka to process 1 trillion messages" class="kg-image" width="1999" height="942" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RvfaKNjkQcCDhobJWvu7o/e6fa0460c33b0250ceb61458d2d4bd8d/image3-8.png" alt="Using Apache Kafka to process 1 trillion messages" class="kg-image" width="1999" height="942" loading="lazy">
 
 	</figure>
 	<p>Cloudflare has been using Kafka in production since 2014. We have come a long way since then, and currently run 14 distinct Kafka clusters, across multiple data centers, with roughly 330 nodes. Between them, over a trillion messages have been processed over the last eight years.</p>
@@ -32,7 +32,7 @@
 	<p>To make it as easy to use as possible and to encourage adoption, the Application Services team created two internal projects. The first is unimaginatively named Messagebus-Client. Messagebus-Client is a Go library that wraps the fantastic <a href="https://github.com/Shopify/sarama">Shopify Sarama</a> library with an opinionated set of configuration options and the ability to manage the rotation of mTLS certificates.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oHafIQiSG7GPT5Vy4NK2o/4ffe60e01206bcf5f121ab7231c1d9e7/unnamed1-2.png" alt="" class="kg-image" width="1290" height="1163" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oHafIQiSG7GPT5Vy4NK2o/fccef1fe85ff5d635975d7397a5d6299/unnamed1-2.png" alt="" class="kg-image" width="1290" height="1163" loading="lazy">
 
 	</figure>
 	<p>The success of this project is also somewhat its downfall. By providing a ready-to-go Kafka client, we ensured teams got up and running quickly, but we also abstracted some core concepts of Kafka a little too much, meaning that small unassuming configuration changes could have a big impact.</p>
@@ -40,7 +40,7 @@
 	<p>That also means before your service hits production it is wise to do some back of the napkin math to figure out what throughput might look like, otherwise you will need to add partitions later. We have since amended our library to make events like the below less likely.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZGNKq4vOi5vzkHe5FWqsV/4ef3cea4ec83617c72267c15c46e0fad/image2-14.png" alt="" class="kg-image" width="1999" height="665" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZGNKq4vOi5vzkHe5FWqsV/f36dac854e7c8e67b5f66a75f16ddeda/image2-14.png" alt="" class="kg-image" width="1999" height="665" loading="lazy">
 
 	</figure>
 	<p>The reception for the Messagebus-Client has been largely positive. We spent time as a team to understand what the predominant use cases were, and took the concept one step further to build out what we call the connector framework.</p>
@@ -55,7 +55,7 @@
 	<p>The connector framework is based on Kafka-connectors and allows our engineers to easily spin up a service that can read from a system of record and push it somewhere else (such as Kafka, or even Cloudflare’s own <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>). To make this as easy as possible, we use Cookiecutter templating to allow engineers to enter a few parameters into a CLI and in return receive a ready to deploy service.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zcySLWw14zCys58e2yJfn/8d919fd76aeaadc0e6c9c4cccf0fb006/unnamed2-3.png" alt="" class="kg-image" width="1375" height="629" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zcySLWw14zCys58e2yJfn/5f0c05b47e424f5a9f3448fca01be0a1/unnamed2-3.png" alt="" class="kg-image" width="1375" height="629" loading="lazy">
 
 	</figure>
 	<p>We provide the ability to configure data pipelines via environment variables. For simple use cases, we provide the functionality out of the box. However, extending the readers, writers and transformations is as simple as satisfying an interface and “registering” the new entry.</p>
@@ -79,7 +79,7 @@ WRITER=quicksilver</code></pre>
 	<p>Below is a diagram of how one team used our connector framework to read from the Messagebus cluster and write to various other systems. This is orchestrated by a system the Application Service team runs called Communication Preferences Service (CPS). Whenever a user opts in/out of marketing emails or changes their language preferences on cloudflare.com, they are calling CPS which ensures those settings are reflected in all the relevant systems.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73VDgC81vyvClHrzGhC3ks/822db1ceb3773f978814ba3a5f7a2eec/unnamed3-2.png" alt="" class="kg-image" width="1316" height="1133" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73VDgC81vyvClHrzGhC3ks/51f86d58fd8b9477c33a6d2808663d62/unnamed3-2.png" alt="" class="kg-image" width="1316" height="1133" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -94,7 +94,7 @@ WRITER=quicksilver</code></pre>
 	<p>We encourage heavy commentary before approving a merge. Once merged, we use prototool to do breaking change detection, enforce some stylistic rules and to generate code for various languages (at time of writing it's just Go and Rust, but it is trivial to add more).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gukMjNyXSWw57NnycOs7U/4f1b9783337c45dc03df9afb0ff1877d/image6-8.png" alt="An example Protobuf message in our schema" class="kg-image" width="1648" height="1326" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gukMjNyXSWw57NnycOs7U/7137d7d445fd0e0980406cce99b7cb80/image6-8.png" alt="An example Protobuf message in our schema" class="kg-image" width="1648" height="1326" loading="lazy">
 
 	</figure>
 	<p><i>An example Protobuf message in our schema</i></p>
@@ -124,7 +124,7 @@ WRITER=quicksilver</code></pre>
 	<p>For metrics, we use Prometheus and display them with Grafana. For each new topic created, we automatically provide a view into production rate, consumption rate and partition skew by producer/consumer. If an engineering team is called out, within the alert message is a link to this Grafana view.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IVbiHGj7DRPdVUXorpOEQ/eaab55eebb5d44de42f647fe9a3101f8/image7-cropped.png" alt="" class="kg-image" width="1999" height="327" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IVbiHGj7DRPdVUXorpOEQ/1be04566221051b8ec499ae265f083fb/image7-cropped.png" alt="" class="kg-image" width="1999" height="327" loading="lazy">
 
 	</figure>
 	<p>In our Messagebus-Client, we expose some metrics automatically and users get the ability to extend them further. The metrics we expose by default are:</p>
@@ -171,7 +171,7 @@ WRITER=quicksilver</code></pre>
 	<p>That’s it! The producer team now has a means for customers to configure granular alerting policies for their new alert that includes being able to dispatch them via Slack, Google Chat or a custom webhook, PagerDuty or email (by both API and dashboard). Retrying and dead letter messages are managed for them, and a whole host of metrics are made available, all by making some very small changes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4csJmS7UJAwNtrWvV0WKwx/6016926845447337851ef74b92319cad/unnamed4.png" alt="" class="kg-image" width="1600" height="555" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4csJmS7UJAwNtrWvV0WKwx/73d4fd1ff6528c14d3ec42b9237f00a4/unnamed4.png" alt="" class="kg-image" width="1600" height="555" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

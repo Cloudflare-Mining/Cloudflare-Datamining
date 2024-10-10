@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6I4BBledz67I4KtQOQo0Yf/594dd2e3a3b9c9bce30788ce491043d5/js-attack-blog-1.png" alt="War browsers" class="kg-image" width="900" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6I4BBledz67I4KtQOQo0Yf/b1da439d18ee71645446b31d06e83903/js-attack-blog-1.png" alt="War browsers" class="kg-image" width="900" height="300" loading="lazy">
 
 	</figure>
 	<p>CloudFlare protects millions of websites from online threats. One of the oldest and most pervasive attacks launched against websites is the <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service (DDoS) attack</a>. In a typical DDoS attack, an attacker causes a large number of computers to send data to a server, overwhelming its capacity and preventing legitimate users from accessing it.</p>
@@ -31,7 +31,7 @@ setInterval(imgflood, 10)</code></pre>
 	<p>This script creates an image tag on the page 100 times per second. That image points to “victim-website.com” with randomized query parameters. Every visitor to a site that contains this script becomes an unwitting participant in a DDoS attack against “victim-website.com”. The messages sent by the browser are valid HTTP requests, making this a <a href="https://blog.cloudflare.com/saturday-night-fever-layer-7-attacks-against">Layer 7 attack</a>. Such attacks can be more dangerous than network-based attacks like NTP and <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack">DNS reflection</a>. Rather than just “clogging up the pipes” with a lot of data, <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack">Layer 7 attacks</a> cause the web server and backend to do work, overloading the website’s resources and causing it to be unresponsive.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4avBSoWxchzo85d09PrHxW/ff6b9558d58d87ede4504e6bc1c97196/illustration-js-ddos-blog-1.png" alt="Server Compromise JavaScript DDoS" class="kg-image" width="900" height="420" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4avBSoWxchzo85d09PrHxW/eb3bf034d432f83ec3df77c4595c2187/illustration-js-ddos-blog-1.png" alt="Server Compromise JavaScript DDoS" class="kg-image" width="900" height="420" loading="lazy">
 
 	</figure>
 	<p>If an attacker sets up a site with this JavaScript embedded in the page, site visitors become DDoS participants. The higher-traffic the site, the bigger the DDoS. Since purpose-built attack sites typically don’t have many visitors, the attack volume is typically low. Performing a truly massive DDoS attack with this technique requires some more creativity.</p>
@@ -47,7 +47,7 @@ setInterval(imgflood, 10)</code></pre>
 	<p>If a website has a script tag that points to a third-party hosted JavaScript file, all visitors to that site will download the JavaScript and execute it. If an attacker is able to compromise a server that is hosting a popular JavaScript file and add DDoS code to it, the visitors of all the sites that reference that script become part of the DDoS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39yssGwXblvehHimJ2pDJI/8c6b6a917c8bbfc480c70630ba35939c/illustration-js-ddos-blog-2-2.png" alt="Shared JavaScript compromise DDoS" class="kg-image" width="900" height="586" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39yssGwXblvehHimJ2pDJI/aed6c98bb76e14613541ba4705d26135/illustration-js-ddos-blog-2-2.png" alt="Shared JavaScript compromise DDoS" class="kg-image" width="900" height="586" loading="lazy">
 
 	</figure>
 	<p>In September 2014, RiskIQ reported that <a href="http://www.riskiq.com/blog/business#/post/jquerycom-malware-attack-puts-privileged-enterprise-it-accounts-at-risk">jQuery.com’s website was compromised</a>, which hosts a very popular JavaScript library that could have easily been replaced with a malicious one. The threat of attackers injecting malicious JavaScript into millions of sites is no longer theoretical.</p>
@@ -84,13 +84,13 @@ setInterval(imgflood, 10)</code></pre>
 	<p>To make things worse, if the path to popular JavaScript file happens to go through the attacker’s network, the number of browsers participating in the attack can increase dramatically.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vbPbniRLmI8xwt2wgSuRf/3876703d82921efeb14b53277fa78c2a/illustration-js-ddos-blog-3.png" alt="Man-in-the-middle JavaScript DDoS" class="kg-image" width="900" height="771" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vbPbniRLmI8xwt2wgSuRf/9b123b23d5a78f71f6d2c76add854a0f/illustration-js-ddos-blog-3.png" alt="Man-in-the-middle JavaScript DDoS" class="kg-image" width="900" height="771" loading="lazy">
 
 	</figure>
 	<p>The technique that fully stops this sort of code injection is encryption. With HTTPS, all communication between a browser and a web server is encrypted and authenticated, preventing intermediate parties from modifying it. Making your site HTTPS-only prevents your site from being modified in transit. This not only prevents ISPs and WiFi providers from injecting ads and tracking cookies, but it <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">prevents</a> your site from being used in a JavaScript DDoS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eE12jqnY1u955nYNqhmuN/54fffee532eae96ba3afc83f97512596/illustration-js-ddos-blog-4.png" alt="Protection from man-in-the-middle using HTTPS" class="kg-image" width="900" height="769" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eE12jqnY1u955nYNqhmuN/1b0944f5326662ca6fc3d747c747b03c/illustration-js-ddos-blog-4.png" alt="Protection from man-in-the-middle using HTTPS" class="kg-image" width="900" height="769" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

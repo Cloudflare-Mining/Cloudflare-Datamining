@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dNmUrWsfdFF3cK59ZDND4/63624350564a7716bee0265595b237f8/the-effect-of-switching-to-tcmalloc-on-rocksdb-memory-use.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dNmUrWsfdFF3cK59ZDND4/f4ebb780c46451d054e7a86ce764999f/the-effect-of-switching-to-tcmalloc-on-rocksdb-memory-use.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In previous posts we wrote about our configuration distribution system <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> and the story of <a href="https://blog.cloudflare.com/moving-quicksilver-into-production">migrating its storage engine to RocksDB</a>. This solution proved to be fast, resilient and stable. During the migration process, we noticed that <a href="https://blog.cloudflare.com/tag/quicksilver">Quicksilver</a> memory consumption was unexpectedly high. After our investigation we found out that the root cause was a default memory allocator that we used. Switching memory allocator improved service memory consumption by almost three times.</p>
 	<div class="flex anchor relative">
@@ -12,7 +12,7 @@
 	<p>After migrating to RocksDB, the memory used by the application increased significantly. Also, the way memory was growing over time looked suspicious. It was around 15GB immediately after start and then was steadily growing for multiple days, until stabilizing at around 30GB. &nbsp;Below, you can see a memory consumption increase after migrating one of our test instances to RocksDB.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48oOnjn1zTcqYyKtQBeW0b/6c5a886562307f1a4ef67b8b5797554d/image5-1.png" alt="" class="kg-image" width="1125" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48oOnjn1zTcqYyKtQBeW0b/563b4460a530049d6879373a37ccfa11/image5-1.png" alt="" class="kg-image" width="1125" height="410" loading="lazy">
 
 	</figure>
 	<p>We started our investigation with heap profiling with the assumption that we had a memory leak somewhere and found that heap size was almost three times less than the RSS value reported by the operating system. So, if our application does not actually use all this memory, it means that memory is ‘lost’ somewhere between the system and our application, which points to possible problems with the memory allocator.</p>
@@ -28,13 +28,13 @@
 	<p>Let’s begin with a high level view of glibc’s malloc design. malloc uses a concept called an <code>arena</code>. An arena is a contiguous block of memory obtained from the system. An important part of glibc malloc design is that it expects developers to free memory in a reverse order of allocation, otherwise a lot of memory will be ‘locked’, and never returned to the system. Let’s see what it means on practise:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qbJXbtLNpoYVJltXOwZ5l/c8735d45e558ec51e6bec10bd3764f89/image3-2.png" alt="" class="kg-image" width="672" height="263" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qbJXbtLNpoYVJltXOwZ5l/db3a7af30b7530c4d306aab178054dc3/image3-2.png" alt="" class="kg-image" width="672" height="263" loading="lazy">
 
 	</figure>
 	<p>In the picture, you can see an arena, from which we allocated three chunks of memory: 100kb, 40kb, 1kb. Next, the application frees the chunks with sizes of 40kb and 100kb:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lc8IZCllTHUWs8tt5yYKY/3b4b57e3097ae25ad7ff09fedcdb3ecc/image7.png" alt="" class="kg-image" width="676" height="270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lc8IZCllTHUWs8tt5yYKY/6216c5ccd1210e6c9c4e0f6f565e9761/image7.png" alt="" class="kg-image" width="676" height="270" loading="lazy">
 
 	</figure>
 	<p>Before we go further, let me explain the terminology I use here and what each type of memory means:</p>
@@ -53,7 +53,7 @@
 	<p>Let’s go further with our simple example, if our application allocates/frees memory without keeping malloc’s design in mind, after a while we will see roughly following picture:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29qGxcTcszscPid2itjZdv/44c7755dc5c9b7e16af2172d9ef193a4/image6.png" alt="" class="kg-image" width="648" height="240" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29qGxcTcszscPid2itjZdv/088280e8b87b336723239a315a425be5/image6.png" alt="" class="kg-image" width="648" height="240" loading="lazy">
 
 	</figure>
 	<p>Here we see one of the main problems that all allocators try to solve: memory fragmentation. We have some chunks used by the application, but a lot of the memory is not used at the moment. And since it’s not returned to the system, other services can’t use this memory either. Malloc implements several mechanisms to decrease memory fragmentation, but it’s a problem that all allocators have, and how bad this problem is depends on a lot of factors: allocator design, workload, settings, etc.</p>
@@ -77,7 +77,7 @@
 	<p>And this is a place where the fragmentation problem magnifies and leads to huge memory waste. All arenas are independent of each other and memory can never move from one arena to another. Why is that bad? Let’s take a look at the following example:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jS0cCTFnudbPUHycTaXjB/f5e5208e647d00d92f6d910ee5e563de/image4.png" alt="" class="kg-image" width="1113" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jS0cCTFnudbPUHycTaXjB/18d99cf95cfdf8045a207f40292fc2dd/image4.png" alt="" class="kg-image" width="1113" height="504" loading="lazy">
 
 	</figure>
 	<p>Here, we can see that Thread 1 requests 20kb of memory from Arena 1; as I’ve written before, malloc tries to allocate memory from the same arena it’s used before. Since Arena 1 still has enough free memory, Thread 1 will get a block from it, which at the end will increase memory that the process takes from the system. Ideally, in this scenario, we would prefer to get this block of memory from Arena 2, since it has a chunk of that size available. However, due to the design this won’t happen.</p>
@@ -107,7 +107,7 @@
 	<p>While glibc malloc was designed for single-threaded applications and later optimized for multithreaded services, TCMalloc was built for multithreading at the beginning. Let’s take a look at how it tries to solve the problems we just talked about. The TCMalloc design is more complex, so if you want to understand the details I recommend reading the official design <a href="https://google.github.io/tcmalloc/design.html">page</a>. Here is a high level view of its design:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rECXU30tUMO67GFrvNkAl/c0a7d60722fbd95f4912c18dd59e713b/image1-1.png" alt="" class="kg-image" width="841" height="707" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rECXU30tUMO67GFrvNkAl/e14a5671d673d7814bfeee6aabe20d10/image1-1.png" alt="" class="kg-image" width="841" height="707" loading="lazy">
 
 	</figure>
 	<p>Here we can see 3 main parts of TCMalloc design:</p>
@@ -125,7 +125,7 @@
 	<p>Let's look how it works on the example that we showed for malloc:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pKqecbbqmOGXr6ze3lcTj/fe984d87cc6a0127106e9dc32e45aa40/image2-3.png" alt="" class="kg-image" width="837" height="815" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pKqecbbqmOGXr6ze3lcTj/89b5c985510fbbeee702645443034ce6/image2-3.png" alt="" class="kg-image" width="837" height="815" loading="lazy">
 
 	</figure>
 	<p>Here we see the following:</p>
@@ -152,7 +152,7 @@
 	<p>The main goal of this post is to make people aware of the importance of the choice of memory allocator. After deploying TCMalloc, we decreased memory usage by 2.5 times.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57QSNKEwjnx9XL1rSiQIhN/f2f69cb7ff1e05bd62248e02c86dfe8e/image8.png" alt="" class="kg-image" width="624" height="211" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57QSNKEwjnx9XL1rSiQIhN/10445087ef19eb588637bbc8010268b4/image8.png" alt="" class="kg-image" width="624" height="211" loading="lazy">
 
 	</figure>
 	<p>Usage of an allocator which is not optimal for a workload can cause a huge waste of memory. If you have a long-running application with a lot of threads and care about memory usage then glibc malloc is probably not your choice. Allocators that are designed for multithreaded services, like TCMalloc, jemalloc and others can provide much better memory utilization. So be conscious of this factor and go and check how much memory your application wastes.</p>

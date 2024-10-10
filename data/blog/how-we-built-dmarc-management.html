@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3P7EqcZydcPUKVhQNdVwkr/5f9643103acaa16f43c0bdff9a600910/How-we-built-DMARC-Management.png" alt="How we built DMARC Management" class="kg-image" width="1201" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3P7EqcZydcPUKVhQNdVwkr/55e20a63d7ae1ce2ff638c2818d7da58/How-we-built-DMARC-Management.png" alt="How we built DMARC Management" class="kg-image" width="1201" height="676" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -90,13 +90,13 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d55aU3WlGrgQcuc1TKPAF/1b29dc8ee1a2e4fc26bc227d8b351444/Screenshot-2023-03-16-at-4.18.08-PM.png" alt="" class="kg-image" width="2000" height="1146" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3d55aU3WlGrgQcuc1TKPAF/a02a34f819174b82e768b0aed5053708/Screenshot-2023-03-16-at-4.18.08-PM.png" alt="" class="kg-image" width="2000" height="1146" loading="lazy">
 
 	</figure>
 	<p><a href="https://developers.cloudflare.com/email-routing/email-workers">Email Workers</a> is a feature of our Email Routing product. The Email Routing component runs in all our nodes, so any one of them is able to process incoming mail, which is important because we announce the Email ingress BGP prefix from all our datacenters. Sending emails to an Email Worker is as easy as setting a rule in the Email Routing dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tgjcPuXeJ3lJ9yLxQoPxz/0371e98e65cb08c8f103144dbb511c69/pasted-image-0--4--3.png" alt="" class="kg-image" width="1600" height="312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tgjcPuXeJ3lJ9yLxQoPxz/7c9f34dd7ae03aeb2293e64df9ebf8e6/pasted-image-0--4--3.png" alt="" class="kg-image" width="1600" height="312" loading="lazy">
 
 	</figure>
 	<p>When the Email Routing component receives an email that matches a rule to be delivered to a Worker, it will contact our internal version of the recently open-sourced <a href="https://github.com/cloudflare/workerd">workerd</a> runtime, which also runs on all nodes. The RPC schema that governs this interaction is defined in a <a href="https://github.com/capnproto/capnproto">Capnproto</a> schema, and allows the body of the email to be streamed to Edgeworker as it’s read. If the worker script decides to forward this email, Edgeworker will contact Email Routing using a capability sent in the original request.</p>

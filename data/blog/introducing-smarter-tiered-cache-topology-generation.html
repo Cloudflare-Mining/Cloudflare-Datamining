@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xhrqeLbpFrRRfakfwEt9g/7a1919a8fb6afd52021058246487b5a1/image3.png" alt="" class="kg-image" width="1200" height="619" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xhrqeLbpFrRRfakfwEt9g/bd5587b9a9be5f3c7a000d75fa4f873d/image3.png" alt="" class="kg-image" width="1200" height="619" loading="lazy">
 
 	</figure>
 	<p>Caching is a magic trick. Instead of a customer’s origin responding to every request, Cloudflare’s 200+ data centers around the world respond with content that is cached geographically close to visitors. This dramatically improves the load performance for web pages while decreasing the bandwidth costs by having Cloudflare respond to a request with cached content.</p>
@@ -30,7 +30,7 @@
 	<p>Taking one step back, tiered caching is a practice where Cloudflare’s network of global data centers are subdivided into a hierarchy of upper tiers and lower tiers. In order to control bandwidth and number of connections between an origin and Cloudflare, only upper tiers are permitted to request content from an origin and must propagate that information to the lower tiers. In this way, Cloudflare data centers first talk to each other to find content before asking the origin. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, reduces origin load, and makes websites more cost-effective to operate. Argo Tiered Cache customers only pay for data transfer between the client and edge, and we take care of the rest. Tiered caching also allows for improved performance for visitors, because distances and links traversed between Cloudflare data centers are generally shorter and faster than the links between data centers and origins.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QDxHRN0EK06gPXmgCImTV/bf9fb33bb78b5e5e4d51ac09ecc26281/image5-7.png" alt="" class="kg-image" width="1999" height="723" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QDxHRN0EK06gPXmgCImTV/df986528a51c74220820cd96aca2651f/image5-7.png" alt="" class="kg-image" width="1999" height="723" loading="lazy">
 
 	</figure>
 	<p>Previously, when Argo Tiered Cache was enabled for a website, several of Cloudflare’s largest and most-connected data centers were determined to be upper tiers and could pull content from an origin on a cache MISS. While utilizing a topology consisting of numerous upper-tier data centers may be globally performant, we found that cost-sensitive customers generally wanted to find the single best upper tier for their origin to ensure efficient data transfer of their content to Cloudflare’s network. We built Smart Tiered Cache Topology for this reason.</p>
@@ -60,13 +60,13 @@
 	<p>Enterprise customers can select the type of topology they’d like to generate.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oh6DzpSOiNYBZAoGnrMpp/1846329f507edf8ee09df31776240f3b/image2-14.png" alt="" class="kg-image" width="1999" height="656" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oh6DzpSOiNYBZAoGnrMpp/dbd1c241eb5c3e79d671aa8e053cb0a9/image2-14.png" alt="" class="kg-image" width="1999" height="656" loading="lazy">
 
 	</figure>
 	<p>Self-serve Argo customers are automatically enrolled in Smart Tiered Cache Topology</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24hbML02D31EjENDUdc8cs/d0826600ef792651bcabb4a2950aa300/image3-9.png" alt="" class="kg-image" width="1670" height="736" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24hbML02D31EjENDUdc8cs/61630f9cef8aa4a963b409987ce11bb7/image3-9.png" alt="" class="kg-image" width="1670" height="736" loading="lazy">
 
 	</figure>
 	<p>Enterprise customers can determine the tiered cache topology that works best for them.</p>
@@ -81,7 +81,7 @@
 	<p>Once enabled, in addition to performance and cost improvements, Smart Tiered Cache Topology also delivers summary analytics for how the upper tiers are performing so that you can monitor the cost and performance benefits your website is receiving. These analytics are available in the Cache Tab of the dashboard in the Tiered Cache section. The “Primary Data Center” and “Secondary Data Center” fields show you which data centers were determined to be the best upper tier and failover for your origin. “Cached Hits” and the “Hit Ratio” shows you the proportion of requests that were served by the upper tier and how many needed to be forwarded on to the origin for a response. “Bytes Saved” indicates the total transfer from the upper-tier data center to the lower tiers, showing the total bandwidth saved by having Cloudflare’s lower tier data centers ask the upper tiers for the content instead of the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vCbtYf2piNcIAYCXl5FwH/fc849035c1ee329163fbb2f3aa89fa66/image4-4.png" alt="" class="kg-image" width="1498" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vCbtYf2piNcIAYCXl5FwH/2c5b98c4e4765b6e120575c17b81c4dd/image4-4.png" alt="" class="kg-image" width="1498" height="550" loading="lazy">
 
 	</figure>
 	<p>Smart Tiered Cache Topology works with Cloudflare’s existing products to deliver you a seamless, easy, and performant experience that saves you money and provides you useful information about how your upper tiers are working with your origins. Smart Tiered Cache Topology stands on the shoulders of some of the most resilient and useful products at Cloudflare to provide even more benefits to webmasters.</p>

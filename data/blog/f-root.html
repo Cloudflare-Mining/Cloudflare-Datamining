@@ -1,4 +1,4 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16GAQng8eO44HGjManvLnR/c785193151a714f831803d9f332d05a6/f-root.png" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16GAQng8eO44HGjManvLnR/19b5bf26121682a19bcf8a8a2e1a7df1/f-root.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Since March 30, 2017, Cloudflare has been providing DNS Anycast service as additional F-Root instances under contract with ISC (the F-Root operator).</p>
 	<p>F-Root is a single IPv4 address plus a single IPv6 address which both ISC and Cloudflare announce to the global Internet as a shared Anycast. This document reviews how F-Root has performed since that date in March 2017.</p>
@@ -8,31 +8,31 @@
 	<p>Using <a href="https://atlas.ripe.net">RIPE atlas probe measurements</a>, we can see an immediate performance benefit to the F-Root server, from 8.24 median RTT to 4.24 median RTT.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13L4zY61yMlB1DhhOhsUZk/95ed95228ab740b661e937779806a32b/Screen-Shot-2017-03-30-at-5.03.20-PM.png" alt="" class="kg-image" width="1184" height="393" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13L4zY61yMlB1DhhOhsUZk/f0ad9663fd5784f54d843cf7f0f5dfd1/Screen-Shot-2017-03-30-at-5.03.20-PM.png" alt="" class="kg-image" width="1184" height="393" loading="lazy">
 
 	</figure>
 	<p>F-Root actually became one of the fastest performing root servers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RcvHB8xBIzPqC6ImemPj2/8cda46f22d1781ce8f248e1d48433be0/Screen-Shot-2017-03-30-at-4.54.03-PM.png" alt="" class="kg-image" width="1202" height="703" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RcvHB8xBIzPqC6ImemPj2/170f12f49f51779083c0fa174d26efb6/Screen-Shot-2017-03-30-at-4.54.03-PM.png" alt="" class="kg-image" width="1202" height="703" loading="lazy">
 
 	</figure>
 	<p>The biggest performance improvement was in the 90th percentile, or what are the top 10% of queries that received the slowest replies. This graph below shows the 90th percentile response time for any given RIPE atlas probe. Each probe is represented by two markers, a red X for before Cloudflare enabled transit and a blue X for after Cloudflare began announcing. You can see a drop in 90th percentile response times, the blue X’s are much lower than the red X’s.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PtFnGp2WgTaocUCbcGDsT/e9109cb28c1054f2441cdced9bb853e8/image2017-4-4-14-11-9.png" alt="" class="kg-image" width="857" height="284" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PtFnGp2WgTaocUCbcGDsT/b4bf46ac1949b419db1c6902045e4cde/image2017-4-4-14-11-9.png" alt="" class="kg-image" width="857" height="284" loading="lazy">
 
 	</figure>
 	<p>One of the optimizations that DNS resolvers do is preferring the faster root servers. As F-Root picked up speed, DNS resolvers also started sending it more traffic. Here you can see the aggregate number of queries received by each root letter per day, with an increase to F starting on March 30th.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g8Idpfyj3eTGjHg6oICIo/58464a9e8c2fe98d241ce3145b612f01/root-servers---stacked.png" alt="" class="kg-image" width="833" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g8Idpfyj3eTGjHg6oICIo/037be9c789d68d5c5d9c199618b239bf/root-servers---stacked.png" alt="" class="kg-image" width="833" height="375" loading="lazy">
 
 	</figure>
 	<p>One large public DNS resolver shared with us their internal metrics, where you can also see a large shift of traffic to F-Root as F-Root increased in speed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KpIbZqEsaMnJReKarZRs3/0a6d86dacf56e2fe28206a35f6e32415/resolver-traffictocfroot.png" alt="" class="kg-image" width="2098" height="514" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KpIbZqEsaMnJReKarZRs3/bd29090c946e5f274fe9121f104816a8/resolver-traffictocfroot.png" alt="" class="kg-image" width="2098" height="514" loading="lazy">
 
 	</figure>
 	<p>When one external DNS monitor published their <a href="https://blog.thousandeyes.com/2017-update-comparing-root-server-performance-globally">Root Server measurement report</a> in June 2017, they mentioned F-Root’s increased performance. “9 more countries than in 2015 observed F-Root as the fastest — this is the biggest change across all of the root servers, so in this sense F-Root is “most improved.” F-Root has increasingly become the fastest root server in significant portions of Asia Pacific, Latin America and Eastern Europe.” They noted that “F-Root is now the fastest for roughly one quarter of the countries we tested from.”</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Grcs0D3SWn2QqZ6Clo5ua/56bc246917b8e5516da6a2f5b9e0850a/image2-27.png" alt="From IP packets to HTTP: the many faces of our Oxy framework" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Grcs0D3SWn2QqZ6Clo5ua/4c71120829ce6d992a02faab0119b20c/image2-27.png" alt="From IP packets to HTTP: the many faces of our Oxy framework" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>We have recently <a href="https://blog.cloudflare.com/introducing-oxy">introduced Oxy</a>, our Rust-based framework for proxies powering many Cloudflare services and products. Today, we will explain why and how it spans various layers of the <a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a>, by handling directly raw IP packets, TCP connections and UDP payloads, all the way up to application protocols such as HTTP and <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a>.</p>
@@ -82,7 +82,7 @@
 	<p>We write the IP packets — meant to be <i>upgraded</i> to a TCP stream — to the file descriptor backing the TUN interface. However, that’s not enough, as the kernel in our machines will drop those packets since customer’s IP addresses only make sense in their infrastructure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tFfWzjpKd9CB0An7BwDY5/d4132f1bc9a07155da99ef960c466eec/From-IP-flow-to-TCP-stream.png" alt="This diagram illustrates a TCP IP Flow, represented by its stream of raw IP packets, being processed to obtain a TCP stream of data. To do so, an anonymous Linux network namespace is used together with address translation." class="kg-image" width="2561" height="3293" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tFfWzjpKd9CB0An7BwDY5/e77a2dd9597c5a26bded5b251c66ab40/From-IP-flow-to-TCP-stream.png" alt="This diagram illustrates a TCP IP Flow, represented by its stream of raw IP packets, being processed to obtain a TCP stream of data. To do so, an anonymous Linux network namespace is used together with address translation." class="kg-image" width="2561" height="3293" loading="lazy">
 
 	</figure>
 	<p>Transforming raw IP packets into a TCP stream</p>
@@ -192,7 +192,7 @@
 	<p>In the sections above we have covered the life of an IP packet entering Oxy and what happens to it until exiting towards its upstream destination. This is summarized in the following diagram illustrating the life cycle of such packets.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PQ1zLHMeqHLCiTaLfdDXT/14a4501c2e222f667597488a1b8fcc51/The-overall-picture.png" alt="This diagram illustrates the different ways IP packets can enter and exit an Oxy instance. It shows the possible ways they can be processed inside Oxy, by being upgraded to higher OSI layers, or remaining treated as raw IP packets." class="kg-image" width="3009" height="5625" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PQ1zLHMeqHLCiTaLfdDXT/e68ba49b2f7015e0e31bb173cc8ac54a/The-overall-picture.png" alt="This diagram illustrates the different ways IP packets can enter and exit an Oxy instance. It shows the possible ways they can be processed inside Oxy, by being upgraded to higher OSI layers, or remaining treated as raw IP packets." class="kg-image" width="3009" height="5625" loading="lazy">
 
 	</figure>
 	<p>Life cycle of IP packets in and out of an Oxy instance</p>

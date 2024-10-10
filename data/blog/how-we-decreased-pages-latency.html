@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fbgX6uRfDH3FZWY0wpbaN/94a6e32d6962d44f3dbf221217fd09c6/image2-37.png" alt="Making Cloudflare Pages the fastest way to serve your sites" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fbgX6uRfDH3FZWY0wpbaN/5952ce77a14fc570256db04c5e6cec06/image2-37.png" alt="Making Cloudflare Pages the fastest way to serve your sites" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>In an era where visitors expect instant gratification and content on-demand, every millisecond counts. If you’re a web application developer, it’s an excellent time to be in this line of business, but with great power comes great responsibility. You’re tasked with creating an experience that is not only intuitive and delightful but also quick, reactive and responsive – sometimes with the two sides being at odds with each other. To add to this, if your business completely runs on the internet (say ecommerce), then your site’s Core Web Vitals could make or break your bottom line.</p>
@@ -66,7 +66,7 @@
 	<p>We launched <a href="https://blog.cloudflare.com/workers-for-platforms">Workers for Platforms</a> last year as a way to build ambitious platforms on top of Workers. Workers for Platforms lets one build complex pipelines where a request may be served by a Worker built and maintained by you but could then dispatch to a Worker written by a user of your platform. This allows your platform’s users to write their own Worker like they’ve been used to but while you control how and when they are executed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27P8dholN414dEiSnVKtUb/c3fa98034c83342ab94c1e8bf1132851/image4-23.png" alt="" class="kg-image" width="1366" height="711" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27P8dholN414dEiSnVKtUb/87156e682888a0a329799a756e0578ef/image4-23.png" alt="" class="kg-image" width="1366" height="711" loading="lazy">
 
 	</figure>
 	<p>This isn’t very different from what we do with Pages. Users write their Pages functions which compile into a Worker. Users also upload their own static assets which are then bound to our special Asset Server Worker in unique pipelines for each of their deployments. And we control how and when which Worker gets executed based on a hostname in their URL.</p>
@@ -86,13 +86,13 @@
 	<p>After opting them in, TTFB is now 60ms. <a href="https://developers.cloudflare.com/analytics/web-analytics">Web Analytics</a> shows a noticeable drop in entire page load time as a result.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hOpJu5iOcgDj5g7A9MR6W/2c5287961c39b7dedadaa923f165e71c/Untitled.png" alt="Web Analytics showing Page Load going from averaging roughly 3 seconds to 1.5 seconds" class="kg-image" width="1600" height="1203" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hOpJu5iOcgDj5g7A9MR6W/690f8c5c96c4cc9a07f17d0a5d784472/Untitled.png" alt="Web Analytics showing Page Load going from averaging roughly 3 seconds to 1.5 seconds" class="kg-image" width="1600" height="1203" loading="lazy">
 
 	</figure>
 	<p>This improvement was also visible through <a href="https://developer.chrome.com/en/docs/lighthouse/performance/performance-scoring">Lighthouse scores</a> now approaching a perfect score of 100 instead of 78 which was the average we saw previously.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DOMSoGft9tLCzg68wtXSN/f3b7acca4d16c4fbde0f8dc15efdb4a6/Untitled--1-.png" alt="" class="kg-image" width="1600" height="649" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DOMSoGft9tLCzg68wtXSN/bb3440d4f5e0c82a906dfb9793d71cfd/Untitled--1-.png" alt="" class="kg-image" width="1600" height="649" loading="lazy">
 
 	</figure>
 	<p>The team was ecstatic about this especially given all of this happened under the hood with no downtime or required engineering team on their end. Not only is <a href="https://developers.cloudflare.com">https://developers.cloudflare.com/</a> faster, we’re using less compute to serve it to all of you.</p>
@@ -126,14 +126,14 @@
 	<p>With this setup, we started running our long running migration behind the scenes that duplicated every single deployment to the new Workers for Platforms enabled pipelines.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cH3RPk39q50jgPD42nDej/3ddfce13d6bcb87f1d31422a46d64491/unnamed--1-.png" alt="" class="kg-image" width="1600" height="474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cH3RPk39q50jgPD42nDej/d1ef38c399ffe3a8bb9a2e889863f267/unnamed--1-.png" alt="" class="kg-image" width="1600" height="474" loading="lazy">
 
 	</figure>
 	<p>Duplicating them instead of replacing them meant that risk was low and A/B would be possible with the tradeoff of more cleanup after we finished but we picked that with reliability for users in mind.</p>
 	<p>A few days in after all 14 million deployments had finished migrating over, we started rollout to the new infrastructure with a percentage based rollout. This was a great way for us to find issues and ensure we were ready to serve all runtime traffic for Pages without the risk of an incident.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UKjjt2upheD8aALjmDMT4/8b3187022b3704e4ada8f99e7ccec09b/image--2-.png" alt="" class="kg-image" width="1368" height="608" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UKjjt2upheD8aALjmDMT4/9634075b6f2d3d823ff7e257ed1e1f98/image--2-.png" alt="" class="kg-image" width="1368" height="608" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

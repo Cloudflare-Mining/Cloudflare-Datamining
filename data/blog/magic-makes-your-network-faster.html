@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IONO8okJsdqj30CWEyVNh/8185ce5873a0e9600db65c0e50edab9f/Magic-Network.png" alt="" class="kg-image" width="1095" height="616" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IONO8okJsdqj30CWEyVNh/77ad69cac278724ac852bf14a48c3aa8/Magic-Network.png" alt="" class="kg-image" width="1095" height="616" loading="lazy">
 
 	</figure>
 	<p>We <a href="https://blog.cloudflare.com/magic-transit">launched Magic Transit</a> two years ago, followed more recently by its siblings <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN</a> and <a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall</a>, and have talked at length about how this suite of products helps security teams sleep better at night by protecting entire networks from malicious traffic. Today, as part of <a href="https://blog.cloudflare.com/fastest-internet">Speed Week</a>, we’ll break down the other side of the Magic: how using Cloudflare can automatically make your entire network faster. Our scale and interconnectivity, use of data to make more intelligent routing decisions, and inherent architecture differences versus traditional networks all contribute to performance improvements across all IP traffic.</p>
@@ -26,7 +26,7 @@
 	<p>In contrast to traditional “point-to-point” architecture, Cloudflare uses Anycast GRE or IPsec (coming soon) tunnels to send and receive traffic for customer networks. This means that customers can set up a single tunnel to Cloudflare, but effectively get connected to every single Cloudflare location, dramatically simplifying the process to configure and maintain network connectivity.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4y0u7nLWoslE47axWaq81g/584cd95995b5f710ac1a6887bbc3d4e7/D1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4y0u7nLWoslE47axWaq81g/cd10c416b9795196f6f6bd42df1934ff/D1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -93,7 +93,7 @@
 	<p>Now, networks using hub and spoke architecture are often backhauling traffic thousands of miles, between continents and across oceans, just to apply security policies before packets are dispatched to their final destination, which is often physically closer to where they started! This creates a “trombone” effect, where precious seconds are wasted bouncing traffic back and forth across the globe, and performance problems are amplified by packet loss and instability along the way.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1M54AiCAu5Ph3fGu9Yp5at/bd3c4d25cdd3563562f6255a52bce7bb/D2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1M54AiCAu5Ph3fGu9Yp5at/609d30e5e2cc4fbdb6327e0fd64bc8cc/D2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Network and security teams have tried to combat this issue by installing hardware at more locations to establish smaller, regional hubs, but this quickly becomes prohibitively expensive and hard to manage. The price of purchasing multiple hardware boxes and dedicated private links adds up quickly, both in network gear and connectivity itself as well as the effort required to maintain additional infrastructure. Ultimately, this cost usually outweighs the benefit of the seconds regained with shorter network paths.</p>
@@ -110,7 +110,7 @@
 	<p>In our alternative setup, we’ve connected each customer network location to Cloudflare with an Anycast GRE tunnel, simplifying configuration and removing the South Carolina trombone. We can also enforce network and application-layer filtering on all of this traffic, ensuring that the faster network path doesn’t compromise security.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CowxWFJxc3QGwM1mauUi6/c8d31796c6c6d621963ac8a37172b444/D4.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CowxWFJxc3QGwM1mauUi6/5494d0358d312c6556e746ec3b81d5a4/D4.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Here’s a summary of results from performance tests on this example network demonstrating the difference between the traditional hub and spoke setup and the Magic “global hub” — we saw up to 70% improvement in these tests, demonstrating the dramatic impact this architecture shift can make.</p>

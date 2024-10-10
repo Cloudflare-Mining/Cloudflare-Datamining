@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MGNW5e5iG2NeZB4GHLUBq/9f6490630da294c6e751d9a303548fd0/image5-11.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MGNW5e5iG2NeZB4GHLUBq/b87c4b96375c1324842b4c7109054cde/image5-11.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>Starting today, your team can create a private network on Cloudflare’s network. Team members click a single button to connect to private IPs in environments that you control. Cloudflare’s network routes their connection through a data center in one of over 200 cities around the world. On the other side, administrators deploy a lightweight software connector that replaces traditional VPN appliances.</p>
@@ -21,13 +21,13 @@
 	<p>Web applications make that flow easier thanks to client software that already runs on every device: the browser. Browsers send HTTP requests over the public Internet to the application. Cloudflare’s network checks every request against the Zero Trust rules configured for that application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VFpLsnlg33lc1tMecCMtA/24dd2f51322d578605869257971fc352/DES-3300-1.png" alt="Cloudflare’s network checks every request against the Zero Trust rules configured for that application." class="kg-image" width="2054" height="1035" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VFpLsnlg33lc1tMecCMtA/ccde00124bab294c7e14c1de77bdf283/DES-3300-1.png" alt="Cloudflare’s network checks every request against the Zero Trust rules configured for that application." class="kg-image" width="2054" height="1035" loading="lazy">
 
 	</figure>
 	<p>Users are prompted to authenticate and, in some cases, present additional signals like <a href="https://blog.cloudflare.com/zero-trust-with-managed-devices">device posture</a>. If the user should be able to reach the application, Cloudflare issues a JSON Web Token (JWT) that the browser stores in the form of a cookie. That token allows for <a href="https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch">seamless authentication</a> to other applications because they all are available inside of the same web browser.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RN10OWEzq5DyjW8cOP2ln/22cc1de720dd09b1129fd276ce875059/2-17.png" alt="" class="kg-image" width="2131" height="1153" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6RN10OWEzq5DyjW8cOP2ln/37efefd1269078b20dce7eb5537e47d9/2-17.png" alt="" class="kg-image" width="2131" height="1153" loading="lazy">
 
 	</figure>
 	<p>Cloudflare's network accelerates traffic to the applications and evaluates every request. Meanwhile, the browser handles authentication storage and HTTP requests trigger Zero Trust checks. No additional client software is required.</p>
@@ -46,7 +46,7 @@
 	<p>The instance of <code>cloudflared</code> running in the data center or cloud environment created a WebSocket connection between the connector and Cloudflare’s edge. End users ran the same connector on their own devices. <code>cloudflared</code> running on the client device exposed a local port which could receive traffic from services like an SMB or RDP client and send it over WebSocket to the corresponding <code>cloudflared</code> in the data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BTV6gVP4eBgYTgpyFl6Gn/0fff078c4a3ea00288901bcd205a45b1/3-13.png" alt="" class="kg-image" width="1664" height="789" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BTV6gVP4eBgYTgpyFl6Gn/5ae0a76e1c522adf1d2cbffe3cdbb75d/3-13.png" alt="" class="kg-image" width="1664" height="789" loading="lazy">
 
 	</figure>
 	<p>This option was functional, but not viable for small teams without dedicated IT staff or enterprises who do not want to retrain tens of thousands of users. End users had to run a manual command for each service and change the configuration for every client. We had offered full Zero Trust control at the expense of usability.</p>
@@ -62,14 +62,14 @@
 	<p>The architecture starts with Cloudflare Tunnel (<a href="https://blog.cloudflare.com/tunnel-for-everyone">previously called Argo Tunnel</a>). Cloudflare Tunnel uses the same connector, <code>cloudflared</code>, to create an outbound-only TCP connection from your data center or public cloud environment to two nearby Cloudflare data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ECB9LuW8KEP4G7ViWUk3y/f8f393374c4c1f47689e61986ef20938/1-33.png" alt="" class="kg-image" width="2401" height="1142" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ECB9LuW8KEP4G7ViWUk3y/00ba18d6ae37873758cfeb2aecf37273/1-33.png" alt="" class="kg-image" width="2401" height="1142" loading="lazy">
 
 	</figure>
 	<p>Administrators configure the tunnel to represent a range of IP addresses where applications run in their environment. Those IPs can be RFC 1918 ranges or any IP addresses that <code>cloudflared</code> can address. Teams can also run redundant Tunnels for availability and separate Tunnels in different environments to connect other IP ranges.</p>
 	<p>Cloudflare’s edge then maps each Tunnel in the organization’s account to the IP range represented. Administrators can review the mapping from any active instance of <code>cloudflared</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Y2xjLrghGXN0mCXv3OYdM/2ed034027df134409d21143d887856a2/image9-1.png" alt="" class="kg-image" width="903" height="373" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y2xjLrghGXN0mCXv3OYdM/08c6a107c69026a38394d90298d12483/image9-1.png" alt="" class="kg-image" width="903" height="373" loading="lazy">
 
 	</figure>
 	<p>On the client side, end users run an agent, Cloudflare WARP, and authenticate with their <a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">identity provider</a> into the same Cloudflare account that administers the Tunnels. They can then click a single button to connect and the WARP agent creates a Wireguard tunnel from the device to Cloudflare’s network.</p>
@@ -103,14 +103,14 @@
 	<p><code>cloudflared tunnel create grafana</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7E2AGQMxYQXGDC3kne4IWw/c925342cb2c9deebeedcfccdff3ece8a/image6-6.png" alt="" class="kg-image" width="901" height="373" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7E2AGQMxYQXGDC3kne4IWw/53b94cb57f907c31bbb24796e3ecd728/image6-6.png" alt="" class="kg-image" width="901" height="373" loading="lazy">
 
 	</figure>
 	<p>Next, configure <code>cloudflared</code> to represent the IP address range in your environment. The command below will tell Cloudflare to send traffic from your users to that IP range to this Tunnel.</p>
 	<p><code>cloudflared tunnel route ip add 100.64.0/10</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CQw5brWUtTDVX0FPoIqkj/5770c62fb9a562b684b34254f4d6f560/image1-31.png" alt="" class="kg-image" width="902" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CQw5brWUtTDVX0FPoIqkj/31a314b062cdeb817d7fcc8b8831b8ce/image1-31.png" alt="" class="kg-image" width="902" height="375" loading="lazy">
 
 	</figure>
 	<p>Once configured, you can start the tunnel with a single command or run it as a service.</p>
@@ -125,7 +125,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MhBwLmP8odlu8blEBE6Oj/3caf9afe8a4dae918b02f5732e233ac6/image4-11.png" alt="" class="kg-image" width="500" height="581" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MhBwLmP8odlu8blEBE6Oj/026acfa8b2d223c1b346c363ed477ffa/image4-11.png" alt="" class="kg-image" width="500" height="581" loading="lazy">
 
 	</figure>
 	<p>We've provided a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/warp-to-tunnel">step-by-step tutorial</a> as well to help your team get started.</p>

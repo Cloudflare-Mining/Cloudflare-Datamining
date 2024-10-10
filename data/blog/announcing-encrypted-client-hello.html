@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tab7Qbtn2MGjXuTbcAsux/2c52dd94739e6fd2fc6c00fbcb088f85/image2-29.png" alt="Encrypted Client Hello - the last puzzle piece to privacy" class="kg-image" width="1201" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tab7Qbtn2MGjXuTbcAsux/c40ac1cfda644402d4022573129a588b/image2-29.png" alt="Encrypted Client Hello - the last puzzle piece to privacy" class="kg-image" width="1201" height="675" loading="lazy">
 
 	</figure>
 	<p>Today we are excited to announce a contribution to improving privacy for everyone on the Internet. Encrypted Client Hello, a <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni">new proposed standard</a> that prevents networks from snooping on which websites a user is visiting, is now available on all Cloudflare plans. &nbsp;</p>
@@ -25,7 +25,7 @@
 	<p>Due to the fact that the session is not encrypted yet, and the server doesn't know which certificate to use, the browser must transmit this information in plain text. Sending the SNI in plaintext means that any intermediary can view which website you’re visiting simply by checking the first packet for a connection:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74acW9qWQyuJFltzJagc2S/9d3efad24f8630c7dfed08dc1cb6e069/pasted-image-0--8--2.png" alt="" class="kg-image" width="1574" height="1321" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74acW9qWQyuJFltzJagc2S/5693f381e386d44283121cdd9dd65106/pasted-image-0--8--2.png" alt="" class="kg-image" width="1574" height="1321" loading="lazy">
 
 	</figure>
 	<p>This means that despite the amazing efforts of TLS and DoH, which websites you’re visiting on the Internet still isn't truly private. Today, we are adding the final missing piece of the puzzle with ECH. With ECH, the browser performs a TLS handshake with Cloudflare, but not a customer-specific hostname. This means that although intermediaries will be able to see that you are visiting <i>a</i> website on Cloudflare, they will never be able to determine which one.</p>
@@ -43,7 +43,7 @@
 	<p>The inner SNI contains the actual server name that the user is trying to visit. This is encrypted using a public key and can only be read by Cloudflare. Once the handshake completes the web page is loaded as normal, just like any other website loaded over TLS.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MOw4dKZFQbisxTiD3PIrD/dc652f6f35dc7c595f9e50862ad849cb/pasted-image-0-8.png" alt="" class="kg-image" width="1574" height="1437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MOw4dKZFQbisxTiD3PIrD/6b173801a10ece203e82d8bf3ed28c0b/pasted-image-0-8.png" alt="" class="kg-image" width="1574" height="1437" loading="lazy">
 
 	</figure>
 	<p>In practice, this means that any intermediary that is trying to establish which website you’re visiting will simply see normal TLS handshakes with one caveat: any time you visit an ECH enabled website on Cloudflare the server name will look the same. Every TLS handshake will appear identical in that it looks like it's trying to load a website for cloudflare-ech.com, as opposed to the actual website. We've solved the last puzzle-piece in preserving privacy for users that don't like intermediaries seeing which websites they are visiting.</p>

@@ -1,10 +1,10 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58jgOele2MGrEkh1uH2taD/0e74c47c006e189ddb30cf83f480ff1b/ios-9-how-did-the-launch-really-go.jpg" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58jgOele2MGrEkh1uH2taD/d7e1d0472c7451d5b82510210acf9d7e/ios-9-how-did-the-launch-really-go.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On September 16 2015 at 10:00AM PST, Apple released their latest update to the iPhone: iOS 9. For several days after the announcement, ISPs and customers reported problems downloading iOS 9 due to overloaded servers. Obviously, the demand for iOS 9 was higher than even Apple anticipated, but how much higher? Few organizations outside of Apple have any idea what the actual iOS 9 adoption rates look like.</p>
 	<p>By analyzing the user agent strings of requests passing through the CloudFlare network, we were able to piece together a pretty good picture of iOS 9 uptake. Here’s an hour-by-hour look at requests from iOS 8 devices (blue) and iOS 9 devices (orange) for the first 24 hours after the announcement.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2evKuvfY86P7afmY5e1I1/01dfafd7398d70dc5a6ab689f5ca9042/image_0-1.jpg" alt="iOS 9 vs iOS 8 traffic during official launch" class="kg-image" width="900" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2evKuvfY86P7afmY5e1I1/305d979b400f4d66f3fee1aed100b63f/image_0-1.jpg" alt="iOS 9 vs iOS 8 traffic during official launch" class="kg-image" width="900" height="400" loading="lazy">
 
 	</figure>
 	<p>We started seeing small amounts of iOS 9 usage <i>before</i> it was officially released, followed by a spike immediately after the launch (times are shown in UTC, so the 10:00AM announcement shows up as hour 18). You can also see a second spike at 10:00 UTC when Europe started waking up.</p>
@@ -19,7 +19,7 @@
 	<p>Even though the official release was for iOS 9.0, we also found beta iOS 9.1 in the wild. Curious about the comparative traffic between the two?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6k72S5uVWVMg9eFUOPbRE/d04cb5e20562ad2c54c67fe83c97ba8a/image_1.jpg" alt="iOS 9.1 beta traffic during launch" class="kg-image" width="900" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k72S5uVWVMg9eFUOPbRE/34a49bebad7df0c18e97953f1361b724/image_1.jpg" alt="iOS 9.1 beta traffic during launch" class="kg-image" width="900" height="525" loading="lazy">
 
 	</figure>
 	<p>iOS 9.0 is shown in blue, while 9.1 is shown in orange. As you can see, 9.0 adoption exploded after Apple’s official launch, while the 9.1 beta requests remained steady.</p>
@@ -34,7 +34,7 @@
 	<p>Fast-forward five days, and it’s clear that iOS 9 adoption didn’t slow down after the launch. As of September 21st, the relative traffic of iOS 9 (orange) to iOS 8 (blue) on the CloudFlare network is around 30-35%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mPQ7f7gXseuluOTyxNdIa/29482c0ee5c18b9ce22a4e085507b20e/image_2-2.png" alt="current iOS9 adoption rate" class="kg-image" width="900" height="207" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mPQ7f7gXseuluOTyxNdIa/01eb29509017d42b9fb9c5557e4efc28/image_2-2.png" alt="current iOS9 adoption rate" class="kg-image" width="900" height="207" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -50,7 +50,7 @@
 	<p>Although it’s still pretty early, we can already see an uptick in IPv6 requests due to iOS 9:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CUgWWvcpZYinzb6e4h4ds/5e5557f7195d25fd3f68693d8c08fc3d/image_3.png" alt="iOS 9 vs iOS 8 IPv6 traffic" class="kg-image" width="900" height="493" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CUgWWvcpZYinzb6e4h4ds/ff46afadf69fac1dea24d2421c7828ea/image_3.png" alt="iOS 9 vs iOS 8 IPv6 traffic" class="kg-image" width="900" height="493" loading="lazy">
 
 	</figure>
 	<p>The first chart shows the number of IPv4 vs. IPv6 requests for iOS 8, while the second shows iOS 9. Even after only a few days, we’re seeing a 1.07% increase in IPv6 requests thanks to iOS 9.</p>

@@ -1,12 +1,12 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/26m-rps-ddos">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/26m-rps-ddos">Français</a>, <a href="https://blog.cloudflare.com/de-de/26m-rps-ddos">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/26m-rps-ddos">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/26m-rps-ddos">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/26m-rps-ddos">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/26m-rps-ddos">Português</a>, <a href="https://blog.cloudflare.com/es-es/26m-rps-ddos">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/26m-rps-ddos">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/26m-rps-ddos">Polski</a> and <a href="https://blog.cloudflare.com/zh-tw/26m-rps-ddos">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tIo7Rn2tIuxK5w9xHo38K/119ea1aa2a2f024bbf7688326fbcfece/26m-rps-ddos.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/26m-rps-ddos">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/26m-rps-ddos">Français</a>, <a href="https://blog.cloudflare.com/de-de/26m-rps-ddos">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/26m-rps-ddos">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/26m-rps-ddos">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/26m-rps-ddos">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/26m-rps-ddos">Português</a>, <a href="https://blog.cloudflare.com/es-es/26m-rps-ddos">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/26m-rps-ddos">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/26m-rps-ddos">Polski</a> and <a href="https://blog.cloudflare.com/zh-tw/26m-rps-ddos">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tIo7Rn2tIuxK5w9xHo38K/6c6ff738b56ecea63d58d76c0be4605e/26m-rps-ddos.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><b><i>Update from June 24, 2022</i></b><i>: &nbsp;We have named the botnet that launched the 26M rps DDoS attack "</i><b><i>Mantis</i></b><i>" as it is also like the </i><a href="https://en.wikipedia.org/wiki/Mantis_shrimp"><i>Mantis Shrimp</i></a><i> small but very powerful. Mantis has been especially active in the past week, targeting VoIP and Cryptocurrency Internet properties with HTTP DDoS attacks as large as 9M requests per second.</i></p>
 	<p>Last week, Cloudflare automatically detected and mitigated a 26 million request per second <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attack</a> — the largest HTTPS DDoS attack on record.</p>
 	<p>The attack targeted a customer website using Cloudflare’s Free plan. Similar to the previous <a href="https://blog.cloudflare.com/15m-rps-ddos-attack">15M rps attack</a>, this attack also originated mostly from Cloud Service Providers as opposed to Residential Internet Service Providers, indicating the use of hijacked virtual machines and powerful servers to generate the attack — as opposed to much weaker Internet of Things (IoT) devices.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NOKvQqeXwENOCj0UOeRAI/b5c385edf91bc1e53981a677e3db713b/image1-7.png" alt="Graph of the 26 million request per second DDoS attack" class="kg-image" width="1438" height="660" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NOKvQqeXwENOCj0UOeRAI/04fbae8288e3f3f43130d34fa1b3e66f/image1-7.png" alt="Graph of the 26 million request per second DDoS attack" class="kg-image" width="1438" height="660" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -23,13 +23,13 @@
 	<p>Within less than 30 seconds, this botnet generated more than 212 million HTTPS requests from over 1,500 networks in 121 countries. The top countries were Indonesia, the United States, Brazil and Russia. About 3% of the attack came through Tor nodes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RSu52jA2eDtgH45ptbUIM/359c33a40516130ed14b15a71f88e4f5/image3-9.png" alt="Chart of the top source countries of the attack" class="kg-image" width="1600" height="989" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RSu52jA2eDtgH45ptbUIM/634d8cc9c991825d4962ec0c89528837/image3-9.png" alt="Chart of the top source countries of the attack" class="kg-image" width="1600" height="989" loading="lazy">
 
 	</figure>
 	<p>The top source networks were the French-based OVH (Autonomous System Number 16276), the Indonesian Telkomnet (ASN 7713), the US-based iboss (ASN 137922) and the Libyan Ajeel (ASN 37284).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11wUFtITwfTlMcGO6mf7RX/bd61e1ab5c6a3b600bfe132bb4be5cb2/image3-8.png" alt="Chart of the top source networks of the attack" class="kg-image" width="1654" height="1022" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11wUFtITwfTlMcGO6mf7RX/ebae8a2ff45ba6ac2b932d11795745a0/image3-8.png" alt="Chart of the top source networks of the attack" class="kg-image" width="1654" height="1022" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

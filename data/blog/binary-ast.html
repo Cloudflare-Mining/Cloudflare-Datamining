@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/727G0893W2KHaVXQ5CIp8M/b99fd585717ae6a496c6550bfef491cd/binary-ast.png" alt="" class="kg-image" width="1432" height="1468" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/727G0893W2KHaVXQ5CIp8M/35498fca8cc55f8827369ac2b2771498/binary-ast.png" alt="" class="kg-image" width="1432" height="1468" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -18,12 +18,12 @@
 	<p>Usually, when talking about the cold start performance, the primary factor considered is a raw download speed. However, on modern interactive pages one of the other big contributors to cold starts is JavaScript parsing time. This might seem surprising at first, but makes sense - before starting to execute the code, the engine has to first parse the fetched JavaScript, make sure it doesn’t contain any syntax errors and then compile it to the initial bytecode. As networks become faster, parsing and compilation of JavaScript could become the dominant factor.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CNQyY1zmsuXVJTSwcPTWp/2fd96f562e47c03fcbbe263957e2e768/desktop-without-BinJS.png" alt="" class="kg-image" width="2000" height="588" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CNQyY1zmsuXVJTSwcPTWp/29c4b25ac370568c9946dfb03be196b4/desktop-without-BinJS.png" alt="" class="kg-image" width="2000" height="588" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7u0b1HDtALk80vk2bAnizO/376505069a7d1b1c9c703b6ff8f1f876/LowEnd-device-without-BinJS.png" alt="" class="kg-image" width="2000" height="546" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7u0b1HDtALk80vk2bAnizO/b633b495ee777e1107a2a34fe62ad6d5/LowEnd-device-without-BinJS.png" alt="" class="kg-image" width="2000" height="546" loading="lazy">
 
 	</figure>
 	<p>The device capability (CPU or memory performance) is the most important factor in the variance of JavaScript parsing times and correspondingly the time to application start. A 1MB JavaScript file <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization">will take an order</a> of a 100 ms to parse on a modern desktop or high-end mobile device but can take over a second on an average phone &nbsp;(Moto G4).</p>
@@ -54,13 +54,13 @@
 	<p>For regular JavaScript code to execute in a browser the source is parsed into an intermediate representation known as an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a> that describes the syntactic structure of the code. This representation can then be compiled into a byte code or a native machine code for execution.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DIWPcDgNpOEH6BhW3GrO5/d479cfd9f88a78e00feeed02b2445532/without-binAST.png" alt="" class="kg-image" width="2857" height="778" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DIWPcDgNpOEH6BhW3GrO5/487a787830d0b3fb4017a72a1135aaba/without-binAST.png" alt="" class="kg-image" width="2857" height="778" loading="lazy">
 
 	</figure>
 	<p>A simple example of adding two numbers can be represented in an AST as:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EIAsDST7S6TpVAT8F4WFU/1b35e268d58d1af880f703cabfb39238/orpmdqtF-udYY2MUOSzd8gJdsSxdABJMSubMUMfTtI47GMBNFYayHWBZH3gKf70ElJPGXBkDvIQOCmcJbGvrbsD4YKDxa8bsonVFpVOJxMZC6w0noCDH82pCMyjq.jpg" alt="" class="kg-image" width="1026" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EIAsDST7S6TpVAT8F4WFU/c0d3acf3dc8971dbd3607f95329d37ce/orpmdqtF-udYY2MUOSzd8gJdsSxdABJMSubMUMfTtI47GMBNFYayHWBZH3gKf70ElJPGXBkDvIQOCmcJbGvrbsD4YKDxa8bsonVFpVOJxMZC6w0noCDH82pCMyjq.jpg" alt="" class="kg-image" width="1026" height="488" loading="lazy">
 
 	</figure>
 	<p>Parsing JavaScript is not an easy task; no matter which optimisations you apply, it still requires reading the entire text file char by char, while tracking extra context for syntactic analysis.</p>
@@ -68,28 +68,28 @@
 	<p>To execute JavaScript delivered as BinaryAST the only steps required are:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eomG3q2K9lSST6Hzsxq2R/937bfa59e7f499c14890639695bcb85a/With-BinAST.png" alt="" class="kg-image" width="2857" height="818" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eomG3q2K9lSST6Hzsxq2R/870db1cfa20c98105a04ee4dc222e313/With-BinAST.png" alt="" class="kg-image" width="2857" height="818" loading="lazy">
 
 	</figure>
 	<p>Another benefit of BinaryAST is that it makes possible to only parse the critical code necessary for start-up, completely skipping over the unused bits. This can dramatically improve the initial loading time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1b2b1rL6qXh2czmgHxaxR3/4b76123e1fbb39541193b097f0709f4d/desktop-without-BinJS-1.png" alt="" class="kg-image" width="2000" height="588" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1b2b1rL6qXh2czmgHxaxR3/06b3936abfb6b8c4b94068349d4ed131/desktop-without-BinJS-1.png" alt="" class="kg-image" width="2000" height="588" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3h7xWlH4bIj2DEcG9EXKSO/1fa32fd2d99f1b68c1cf1acf7dbb91f6/desktop-with-BinJS.png" alt="" class="kg-image" width="2000" height="602" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3h7xWlH4bIj2DEcG9EXKSO/fd214ce71f10e2591e82d5dbc2b32af9/desktop-with-BinJS.png" alt="" class="kg-image" width="2000" height="602" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QU4tWZEOZIhC534xVp9Bs/5d5c6847802d035fb18fd197a5919f22/LowEnd-device-without-BinJS-1.png" alt="" class="kg-image" width="2000" height="546" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QU4tWZEOZIhC534xVp9Bs/a69c99362a2881857e3a2689f0394961/LowEnd-device-without-BinJS-1.png" alt="" class="kg-image" width="2000" height="546" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/x0v3uvopVvmibsIJVBTXJ/89b29439d14111ece3aec9fed6e0f080/LowEnd-device-with-BinJS-1.png" alt="" class="kg-image" width="2000" height="602" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/x0v3uvopVvmibsIJVBTXJ/5500ef41ad596746da51c2e5c6c2aabb/LowEnd-device-with-BinJS-1.png" alt="" class="kg-image" width="2000" height="602" loading="lazy">
 
 	</figure>
 	<p>This post will now describe some of the challenges of parsing JavaScript in more detail, explain how the proposed format addressed them, and how we made it possible to run its encoder in Workers.</p>
@@ -114,13 +114,13 @@ function g() {
 	<p>BinaryAST fixes this by storing all the scope information and making it available upfront before the actual expressions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Gfo2bgKDwFzYt4UDUAEbn/cdb33924c76293c977d291f0d4e0eec3/global-scope_2x-1.png" alt="" class="kg-image" width="3368" height="1522" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gfo2bgKDwFzYt4UDUAEbn/f91e9b797c2e5c8b16546e4d8fa79d73/global-scope_2x-1.png" alt="" class="kg-image" width="3368" height="1522" loading="lazy">
 
 	</figure>
 	<p>As shown by the difference between the initial AST and the enhanced AST in a JSON representation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73zazZkCUkmjWppTBdWMIq/488a214a5b20900ee9132ed3fdd9dcb4/1T5U7zKHwc_PuZ7heYpDuQ5HMTQpFiqO-wmz6Vncm7ycWNe65Xvm3PvlFKAtj89vqesgymqj-H9_6-kohc6TLrRkyLwJ5PNIAEOIZSypZpQGAFWFpAIHjsAhLegG.png" alt="" class="kg-image" width="1459" height="601" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73zazZkCUkmjWppTBdWMIq/00cb51447f344a037eb44cefcbc89e87/1T5U7zKHwc_PuZ7heYpDuQ5HMTQpFiqO-wmz6Vncm7ycWNe65Xvm3PvlFKAtj89vqesgymqj-H9_6-kohc6TLrRkyLwJ5PNIAEOIZSypZpQGAFWFpAIHjsAhLegG.png" alt="" class="kg-image" width="1459" height="601" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -178,7 +178,7 @@ function g() {
 	<p>If you dig into the codebase, you will notice that it currently consists of two parts.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hO4rh3KiWnZt9MSyLXmqU/7311d5d8c2ec2ea7063451b0f2e46aa9/cf-implementation.png" alt="" class="kg-image" width="3167" height="787" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hO4rh3KiWnZt9MSyLXmqU/2755ce821df08853758c8e8e34cc7b35/cf-implementation.png" alt="" class="kg-image" width="3167" height="787" loading="lazy">
 
 	</figure>
 	<p>One is the encoder itself, which is responsible for taking a parsed AST, annotating it with scope and other relevant information, and writing out the result in one of the currently supported formats. This part is written in Rust and is fully native.</p>
@@ -200,7 +200,7 @@ function g() {
 	<p>This doesn’t scale well when parsing lots of JavaScript files, so the first thing we did is transformed the Node.js side into a long-living daemon. Now Rust could spawn a required Node.js process just once and keep passing inputs into it and getting responses back as individual messages.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rCs07kw5ldmfRx8zpvgHM/505cbfc1886cbbf99fac449ac7557bb5/Connecting-rust-java_2x.png" alt="" class="kg-image" width="2560" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rCs07kw5ldmfRx8zpvgHM/d1f258228fb9e1e6e7e4a57bdf4e47a2/Connecting-rust-java_2x.png" alt="" class="kg-image" width="2560" height="668" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -215,7 +215,7 @@ function g() {
 	<p>On the other hand, the only thing we needed from Node.js is the ability to run the JavaScript parser code. And we already have an isolated JavaScript engine running in the cloud - <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a>! By additionally compiling the native Rust encoder to Wasm (which is quite easy with the native toolchain and <a href="https://rustwasm.github.io/docs/wasm-bindgen">wasm-bindgen</a>), we can even run both parts of the code in the same process, making cold starts and communication much faster than in a previous model.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dMlhjj8rPxs3pjUScdbFJ/991829d5f26f58e56fa6f88cb3fb4f7e/V8-isolate-01_2x.png" alt="" class="kg-image" width="2560" height="1460" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dMlhjj8rPxs3pjUScdbFJ/59d8373896f17b68c628416ddfa15741/V8-isolate-01_2x.png" alt="" class="kg-image" width="2560" height="1460" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -235,7 +235,7 @@ function g() {
 	<p>By reusing this mechanism, we could implement a Serde deserializer that requests only the required values from the JS side and immediately converts them to their native representation. It’s now open-sourced under <a href="https://github.com/cloudflare/serde-wasm-bindgen">https://github.com/cloudflare/serde-wasm-bindgen</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KCuxugOCOU8NjfZopkygl/3d295f38d7bcd2f95b195db126bd2bba/V8-isolate-01-copy_2x.png" alt="" class="kg-image" width="2560" height="1332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KCuxugOCOU8NjfZopkygl/3933c96b0b558b48bd90bcc368f20c7b/V8-isolate-01-copy_2x.png" alt="" class="kg-image" width="2560" height="1332" loading="lazy">
 
 	</figure>
 	<p>At first, we got a much worse performance out of this due to the overhead of more frequent calls between 1) Wasm and JavaScript - SpiderMonkey has improved these recently, but other engines still lag behind and 2) JavaScript and C++, which also can’t be optimised well in most engines.</p>
@@ -352,7 +352,7 @@ function g() {
 	<p>Here is a video that will give you an idea of the improvement as seen by a user on mobile Firefox (in this case showing the entire page startup time):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EpLne9c9yziJOCzYLUAe6/5e261f58354fc5de9f3f2c744331ed7e/binast.gif" alt="" class="kg-image" width="1200" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EpLne9c9yziJOCzYLUAe6/e2e1f52cece43d6557d4728a17463a2e/binast.gif" alt="" class="kg-image" width="1200" height="1080" loading="lazy">
 
 	</figure>
 	<p>Next step is to start gathering data on real-world websites, while improving the underlying format.</p>
@@ -370,7 +370,7 @@ function g() {
 	<p>On the client side, you’ll currently need to download <a href="https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly">Firefox Nightly</a>, go to <code>about:config</code> and enable unrestricted BinaryAST support via the following options:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HbSv4S41klPC6XblrjxEd/6f429cfe3571da260e97f18f129804a1/sFlcLvgSb04T7bAtR8cF7Blnkn7pvQhswCjynrLIpUDtVBBnY0VVg3Bu5v1CCWG_dvjHcGXUvMyJpGr2Nf4wag1Kd381l1OQbZpQmFZmvNq15vsieMC4m5ShEZU8.png" alt="" class="kg-image" width="1600" height="666" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HbSv4S41klPC6XblrjxEd/cb9d147f349a29cd84e9d6127327efb2/sFlcLvgSb04T7bAtR8cF7Blnkn7pvQhswCjynrLIpUDtVBBnY0VVg3Bu5v1CCWG_dvjHcGXUvMyJpGr2Nf4wag1Kd381l1OQbZpQmFZmvNq15vsieMC4m5ShEZU8.png" alt="" class="kg-image" width="1600" height="666" loading="lazy">
 
 	</figure>
 	<p>Now, when opening a website with either of the Workers installed, Firefox will get BinaryAST instead of JavaScript automatically.</p>

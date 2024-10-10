@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qmShlW12Dgyv2u8U1AVir/4c2df9cb7a2d1cdd70ca98a7ff18cabe/building-a-serverless-slack-bot-using-cloudflare-workers.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qmShlW12Dgyv2u8U1AVir/52b761d5aa3ba51054d5aef992b77d5d/building-a-serverless-slack-bot-using-cloudflare-workers.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Our <a href="https://www.cloudflare.com/products/cloudflare-workers">Workers platform</a> can be used for a ton of useful purposes: for A/B (multivariate) testing, storage bucket authentication, coalescing responses from multiple APIs, and more. But Workers can also be put to use beyond "HTTP middleware": a Worker can effectively be a web application in its own right. Given the rise of 'chatbots', we can also build a <a href="https://api.slack.com/slack-apps">Slack app</a> using Cloudflare Workers, with no servers required (well, at least not yours!).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yecvBDkVigJV3qqH9PlBt/be43926c471f913c9e677b88721daade/workers_slack_bot2-1.jpg" alt="workers_slack_bot2-1" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yecvBDkVigJV3qqH9PlBt/1678a848896b754a217fbff8d04cd4ee/workers_slack_bot2-1.jpg" alt="workers_slack_bot2-1" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -341,25 +341,25 @@ function slackResponse(text) {
 	<p>You'll then want to click "Create an App" and fill in the fields, including nominating which workspace to attach it to:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VE4olWjCuDfwSOFxFTqgT/027fdf0e2095ac09c3c67cdb4bac6208/slack-create-app.png" alt="Slack: Create App modal" class="kg-image" width="575" height="580" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VE4olWjCuDfwSOFxFTqgT/0f0eb19bef1f4bcdf54705b1fb0fedae/slack-create-app.png" alt="Slack: Create App modal" class="kg-image" width="575" height="580" loading="lazy">
 
 	</figure>
 	<p>We'll then want to set it up as a Slash Command:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KEutAW7lNa4DjpnH3h4kx/50762f59e1510eec6a2bb05b52d93254/slack-select-slash-command.png" alt="Slack: Select Slash Command" class="kg-image" width="249" height="409" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KEutAW7lNa4DjpnH3h4kx/5dc0e293ad6e5fed96bcf814195d3c7f/slack-select-slash-command.png" alt="Slack: Select Slash Command" class="kg-image" width="249" height="409" loading="lazy">
 
 	</figure>
 	<p>Fill in the details: the request URL is the most important, and will reflect the route you've attached your Worker to. In our case, that's <code>https://bots.example.com/stockbot/stocks</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73TBhPo3y11RaQ9WnFF3Vk/1a093c31289e03c66f745fb7fbae7299/create-new-command.png" alt="Slack: Create New Command" class="kg-image" width="550" height="359" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73TBhPo3y11RaQ9WnFF3Vk/9c81ab528f0cb664f81d82899f6e63e9/create-new-command.png" alt="Slack: Create New Command" class="kg-image" width="550" height="359" loading="lazy">
 
 	</figure>
 	<p>Fetch your App Credentials from the <i>Basic Information</i> tab: specifically, the <i>Verification Token</i>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IpKhmxkCOFGtxCxTxi9Iy/c577cda47d430683c30a878b95a6f084/app_credentials.png" alt="Slack: Fetch App Credentials" class="kg-image" width="747" height="556" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IpKhmxkCOFGtxCxTxi9Iy/515ff13bb4eaca92c35c537ea159d334/app_credentials.png" alt="Slack: Fetch App Credentials" class="kg-image" width="747" height="556" loading="lazy">
 
 	</figure>
 	<p>Paste that value into our Worker bot as the value of our <code>SLACK_TOKEN</code> variable:</p>
@@ -380,13 +380,13 @@ let SLACK_TOKEN = "PUTYOURTOKENHERE"</code></pre>
 	<p>If you're running into issues, make sure your token is correct (case-sensitive), and that the stock you're after exists on Alpha Vantage. Beyond that however, we can now install the app to our Workspace (Slack will ask you to authorize the bot):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qEWN5DgAFzgGpuCza3Yla/0bcbdd4a3325525dc0ab79c48173db47/workspace.png" alt="Slack: Add to Workspace" class="kg-image" width="758" height="380" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qEWN5DgAFzgGpuCza3Yla/991db3108fe381dd28319fee4c635881/workspace.png" alt="Slack: Add to Workspace" class="kg-image" width="758" height="380" loading="lazy">
 
 	</figure>
 	<p>We can now call our bot via the slash command we assigned to it!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AGoqklcB6HEwY3DWNuOhr/b1d3d5105fc6f703c97800326274524e/stockbot.gif" alt="stockbot" class="kg-image" width="742" height="242" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AGoqklcB6HEwY3DWNuOhr/c2d92488c95b0cdd50553e2eff3562aa/stockbot.gif" alt="stockbot" class="kg-image" width="742" height="242" loading="lazy">
 
 	</figure>
 	<h4>Wrap</h4>

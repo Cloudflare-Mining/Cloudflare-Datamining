@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EL1K1PkflEKz4BN5RvvVl/2a00ad2ab87c9d617b46d08851f8a756/image3-27.png" alt="How we scaled and protected Eurovision 2023 voting with Pages and Turnstile" class="kg-image" width="1200" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EL1K1PkflEKz4BN5RvvVl/9caa639fcc20faba71edc840a70a6ad6/image3-27.png" alt="How we scaled and protected Eurovision 2023 voting with Pages and Turnstile" class="kg-image" width="1200" height="676" loading="lazy">
 
 	</figure>
 	<p>2023 was the first year that non-participating countries could vote for their favorites during the Eurovision Song Contest, adding millions of additional viewers and voters to an already impressive 162 million tuning in from the participating countries. It became a truly global event with a potential for disruption from multiple sources. To prepare for anything, Cloudflare helped scale and protect the voting application, used by millions of dedicated fans around the world to choose the winner.</p>
@@ -30,7 +30,7 @@
 	<p>The Eurovision Song Contest is one of the world’s most popular broadcasted contests, and this year it reached 162 million people across 38 broadcasting countries. In addition, on TikTok the three live shows were viewed 4.8 million times, while 7.6 million people watched the Grand Final live on YouTube. With such an audience, it is no surprise that Cloudflare sees the impact of it on the Internet. Last year, we wrote <a href="https://blog.cloudflare.com/eurovision-2022-internet-trends">a blog post</a> where we showed lower than average traffic during, and higher than average traffic after the grand final. This year, the traffic from participating countries showed an even more remarkable surge:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gO2U4Z3Qg4GOcNKZ6MIwe/0906c985f6c4cef04a34f7ba7ae8df30/image1-39.png" alt="" class="kg-image" width="1999" height="694" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gO2U4Z3Qg4GOcNKZ6MIwe/d4fbd14cabdefb4e3764d7f4bc70c893/image1-39.png" alt="" class="kg-image" width="1999" height="694" loading="lazy">
 
 	</figure>
 	<p>HTTP Requests per Second from Norway, with a similar pattern visible in countries such as the UK, Sweden and France. Internet traffic spiked at 21:20 UTC, when voting started.</p>
@@ -38,7 +38,7 @@
 	<p>Since then the contest itself has also evolved – sometimes by choice, sometimes by force. During the COVID-19 pandemic in-person cheering became impossible for many people due to a reduced live audience, resulting in the Eurovision Song Contest asking once.net to build a new iOS and Android application in which fans could cheer virtually. The feature was an instant hit, and it was clear that it would become part of this year’s contest as well.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3r33qBRnXFsgoKlqwH8Hly/4a6d13f46dd5980acef1da5e947e33f6/Screenshot-2023-06-23-at-12.05.08.png" alt="" class="kg-image" width="2110" height="1350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3r33qBRnXFsgoKlqwH8Hly/5a087ff5295ac331344e548f2f7bd0ee/Screenshot-2023-06-23-at-12.05.08.png" alt="" class="kg-image" width="2110" height="1350" loading="lazy">
 
 	</figure>
 	<p>A screenshot of the official Eurovision Song Contest application showing the real-time number of connected fans (1) and allowing them to cheer (2) for their favorites.</p>
@@ -60,7 +60,7 @@
 	<p>Scaling up the platform happens automatically under load by deploying additional machines that can each handle 40,000 connected users. These are spun up in batches of a couple of hundred and as each machine spins up, it reaches out directly to the Cloudflare API to configure its own <a href="https://www.cloudflare.com/learning/dns/dns-records">DNS record</a> and proxy status. Thanks to <a href="https://blog.cloudflare.com/dns-build-improvement">Cloudflare’s high speed DNS system</a>, these changes are then propagated globally within seconds, resulting in a total machine turn-up time of around three seconds. This means faster discovery of new servers and faster dynamic rebalancing from the clients. And since the voting window of the Eurovision Song Contest is only 45 minutes, with the main peak within minutes after the window opens, every second counts!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Q8phs7FFGD11xvymotWjf/745a8dd4640a2e041189af3b14ae9300/image4-22.png" alt="" class="kg-image" width="1778" height="1046" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Q8phs7FFGD11xvymotWjf/d911f35b6d8521dbad6f0e5fb27b6adb/image4-22.png" alt="" class="kg-image" width="1778" height="1046" loading="lazy">
 
 	</figure>
 	<p>High level architecture of the based.io platform used for the 2023 Eurovision Song Contest‌ ‌</p>
@@ -79,7 +79,7 @@
 	<p>When the curtains finally closed, 1.3 million concurrent users connected to the based.io platform at peak. The based.io platform handled a total of 350 million events and served seven million unique users in three hours. The voting landing page hosted by Cloudflare Pages served 2.3 million requests per second at peak, and made sure that the voting payments were by real human fans using Turnstile. Although the Cloudflare platform didn’t blink for such a flood of traffic, it is no surprise that it shows up as a short crescendo in our traffic statistics:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5huk3IzNOj2l5bBB9gyPJK/e0d1115a2e9324d35c080d39be3ba6a7/image5-15.png" alt="" class="kg-image" width="591" height="238" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5huk3IzNOj2l5bBB9gyPJK/adbabc5972b3d2e713de82b42ab26803/image5-15.png" alt="" class="kg-image" width="591" height="238" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

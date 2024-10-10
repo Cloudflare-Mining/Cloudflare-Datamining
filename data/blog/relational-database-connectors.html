@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aASf4t6cXxxhIENZeWlQZ/bc1ff432e59e128991b290a91567c64e/image1-14.png" alt="Introducing Relational Database Connectors" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aASf4t6cXxxhIENZeWlQZ/94a0835d4d8e53cd36e2aacb513b33b7/image1-14.png" alt="Introducing Relational Database Connectors" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we’re building the best compute platform in the world. We want to make it easy, seamless, and obvious to build your applications with us. But simply making the best compute platform is not enough — at the heart of your applications are the data they interact with.</p>
@@ -36,7 +36,7 @@
 	<p>First, we’re leveraging <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup">cloudflared</a> to create a secure tunnel between Cloudflare and a private network within your existing infrastructure. Cloudflared already supports proxying HTTP to TCP over WebSockets — Our challenge is providing interfaces that look like the socket interfaces existing libraries expect, while rewiring the implementations to redirect reads and writes to our websocket. This method is fast, safe, and secure; but limiting in that we lack control of where to direct the final connections. This is a problem we will solve soon, but until then our approach is essential to gathering latency and performance data to see where else we need to improve.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vVs0KefQQxbNEt3VsNHHj/551d4be2bfb3d9d6c6c2a4c2a7f81d61/unnamed-10.png" alt="Leveraging Cloudflare Tunnels, we’re able to connect to a relational database" class="kg-image" width="1416" height="611" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vVs0KefQQxbNEt3VsNHHj/41225487a689b82c04c9ef7beb7d8ae2/unnamed-10.png" alt="Leveraging Cloudflare Tunnels, we’re able to connect to a relational database" class="kg-image" width="1416" height="611" loading="lazy">
 
 	</figure>
 	<p>Next, we’ve created a shim-layer that adapts the socket API from a popular runtime to connect directly to databases using a WebSocket. This allows us to bundle code as-is, without forking or otherwise making significant changes to the database library. As part of this announcement, we’ve published a <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors">tutorial</a> on how to connect to and query a Postgres database from your Workers, using existing Cloudflare technology and a driver from the growing community at Deno. We’re excited to work with the upstream maintainers, on expanding support.</p>

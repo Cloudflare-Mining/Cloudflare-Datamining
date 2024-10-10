@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zG8VVHghZLep9r3jyuiHS/958172fbf7962867b86bbc4301efb3b9/image11-1.png" alt="Cloudflare is faster than Zscaler" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zG8VVHghZLep9r3jyuiHS/d15541cf92c99ee50be847737ad40f35/image11-1.png" alt="Cloudflare is faster than Zscaler" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Every Innovation Week, Cloudflare looks at our network’s performance versus our competitors. In past weeks, we’ve focused on how much faster we are <a href="https://www.cloudflare.com/cloudflare-vs-akamai">compared to reverse proxies like Akamai</a>, or platforms that sell edge compute that compares to our Supercloud, like Fastly and AWS. For CIO Week, we want to show you <a href="https://www.cloudflare.com/cio">how our network stacks up</a> against competitors that offer forward proxy services. These products are part of our Zero Trust platform, which helps <a href="https://www.cloudflare.com/application-services/solutions">secure applications</a> and Internet experiences out to the public Internet, as opposed to our reverse proxy which protects your websites from outside users.</p>
@@ -36,7 +36,7 @@
 	<p>When comparing secure web gateway products, we pitted the Cloudflare Gateway and WARP client against Zscaler Internet Access (ZIA), which performs the same functions. Fortunately for Cloudflare users, Gateway and Cloudflare’s network is not only embedded deep into last mile networks close to users, but is also one of the most well peered networks in the world. We use our most peered network to be 55% faster than ZIA for Gateway user scenarios. Below is a box plot showing the 95th percentile response time for Cloudflare, Zscaler, and a control set that didn’t use a gateway at all:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qpPM98J0vbcqzZQHSu7zf/d527f5e50ed063c5f029d6b441b1177c/1-2.png" alt="" class="kg-image" width="1308" height="786" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qpPM98J0vbcqzZQHSu7zf/e2f01f3f8de9376a2f98d4f253051798/1-2.png" alt="" class="kg-image" width="1308" height="786" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<table width="100%">
@@ -70,7 +70,7 @@
 	<p>When we measured against Zscaler, we had our end user client try to access five different websites: a website hosted in Azure, a Cloudflare-protected Worker, Google, Slack, and Zoom: websites that users would connect to on a regular basis. In each of those instances, Cloudflare outperformed Zscaler, and in the case of the Cloudflare-protected Worker, Gateway even outperformed the control for 95th percentile Response time. Here is a box plot showing the 95th percentile responses broken down by the different endpoints we queried as a part of our tests:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5taVshZgfWnMS3a1EVvK3l/3e23c7263a90742634dfb6900ebc8fa7/2-1.png" alt="" class="kg-image" width="1228" height="1222" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5taVshZgfWnMS3a1EVvK3l/7081ceee8ac20f86c87658e5b01616ae/2-1.png" alt="" class="kg-image" width="1228" height="1222" loading="lazy">
 
 	</figure>
 	<p>No matter where you go on the Internet, Cloudflare’s Gateway outperforms Zscaler Internet Access (ZIA) when you look at end-to-end response times. But why are we so much faster than Zscaler? The answer has to do with something that Zscaler calls proxy latency.</p>
@@ -206,7 +206,7 @@
 	<p>Getting this view of data was not easy. Existing testing frameworks like Catchpoint are unsuitable for this task because performance testing requires that you run the ZIA client or the WARP client on the testing endpoint. We also needed to make sure that the Cloudflare test and the Zscaler test are running on similar machines in the same place to measure performance as good as possible. This allows us to measure the end-to-end responses coming from the same location where both test environments are running:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GJPRWDlZDHcUT1AiEMlIA/bda8413fe2804da5bc001f02048b74a6/image7.png" alt="" class="kg-image" width="1600" height="894" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GJPRWDlZDHcUT1AiEMlIA/4bf29f5963c3565e0b6dab5a2b2b9b40/image7.png" alt="" class="kg-image" width="1600" height="894" loading="lazy">
 
 	</figure>
 	<p>In our setup, we put three VMs in the cloud side by side: one running Cloudflare WARP connecting to our Gateway, one running ZIA, and one running no proxy at all as a control. These VMs made requests every three minutes to the five different endpoints mentioned above and logged the HTTP browser timings for how long each request took. Based on this, we are able to get a user-facing view of performance that is meaningful.</p>
@@ -223,7 +223,7 @@
 	<p>Cloudflare Access does all that 38% faster than Zscaler Private Access (ZPA), ensuring that no matter where you are in the world, you’ll get a fast, secure application experience:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/718vm9moY0WSbW5mjVkWHT/d20b0c2705bb6890fd3b4fd0b815a98e/4-1.png" alt="" class="kg-image" width="1308" height="786" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/718vm9moY0WSbW5mjVkWHT/2f449498faa08de2eed0c1cd9a1e1c69/4-1.png" alt="" class="kg-image" width="1308" height="786" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<table width="100%">
@@ -251,7 +251,7 @@
 	<p>When we drill into the data, we see that Cloudflare is consistently faster everywhere around the world. For example, take Tokyo, where Cloudflare’s 95th percentile time to first byte times are 22% faster than Zscaler:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aF4xPH0Xf6KWrIQEQhhIi/cd6893650326bad370c53288d5d44f92/5.png" alt="" class="kg-image" width="1534" height="780" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aF4xPH0Xf6KWrIQEQhhIi/61eaaa0e582f423c92ae4ac7f5fbf1a9/5.png" alt="" class="kg-image" width="1534" height="780" loading="lazy">
 
 	</figure>
 	<p>When we evaluate Cloudflare against Zscaler for application access scenarios, we are looking at two distinct scenarios that need to be measured individually. The first scenario is when a user logs into their application and has to authenticate. In this case, the Zero Trust Access service will direct the user to a login page, the user will authenticate, and then be redirected to their application.</p>
@@ -259,7 +259,7 @@
 	<p>We like to measure these scenarios separately, because when we look at 95th percentile values, we would almost always be looking at new sessions if we combined new and existing sessions together. But across both scenarios, Cloudflare is consistently faster in every region. Here’s how this data looks when you take a location Zscaler is more likely to have good peering in: users in Chicago, IL connecting to an application hosted in US-Central.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14UmY46stGtBj3935PzhtK/43e4219ef2fe14a6d5dfb2e4cffb6e08/6-1.png" alt="" class="kg-image" width="1508" height="816" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14UmY46stGtBj3935PzhtK/f7c928bb7912d1b09539dc94b41e09e7/6-1.png" alt="" class="kg-image" width="1508" height="816" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<table width="100%">
@@ -290,13 +290,13 @@
 	<p>Cloudflare is faster overall there as well. Here’s a histogram of 95th percentile response times for new connections overall:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mq9OsekTqklfYf5FEWjre/3c07cd2dc7319cc6f9d2ab1f8cf52983/7.png" alt="" class="kg-image" width="1600" height="984" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mq9OsekTqklfYf5FEWjre/7cec04492ce7ec7577e54d4bc8fabd0a/7.png" alt="" class="kg-image" width="1600" height="984" loading="lazy">
 
 	</figure>
 	<p>You’ll see that Cloudflare’s network really gives a performance boost on login, helping find optimal paths back to authentication providers to retrieve login details. In this test, Cloudflare never takes more than 2.5 seconds to return a login response, but half of Zscaler’s 95th percentile responses are almost double that, at around four seconds. This would suggest that Zscaler’s network isn’t peered as well, which causes latency early on. But it may also suggest that Zscaler may do better when the connection is established and everything is cached. But on an existing connection, Cloudflare still comes out ahead:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7m7cdZSA4HeVNVnMOtVffn/e7c8a60aa43929c02cc13d7f3cc5f47a/8.png" alt="" class="kg-image" width="1600" height="987" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7m7cdZSA4HeVNVnMOtVffn/c3efaf8c24c5d1e9f3acbb4d95a68a3a/8.png" alt="" class="kg-image" width="1600" height="987" loading="lazy">
 
 	</figure>
 	<p>Zscaler and Cloudflare do match up more evenly at lower latency buckets, but Cloudflare’s response times are much more consistent, and you can see that Zscaler has half of their responses which take almost a second to load. This further highlights how well-connected we are: because we’re in more places, we provide a better application experience, and we don’t have as many edge cases with high latency and poor application performance.</p>
@@ -330,7 +330,7 @@
 	<p>Cloudflare once again is faster than Zscaler for remote browser isolation performance. Comparing 95th percentile time to first byte, Cloudflare is 45% faster than Zscaler across all regions:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aNqY2zci3dx50EjSISlty/88e1bbbaf9054c83271eb7cff938020b/9.png" alt="" class="kg-image" width="1230" height="736" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aNqY2zci3dx50EjSISlty/5571bddfc19cf19dbb51ae909879c9bf/9.png" alt="" class="kg-image" width="1230" height="736" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<table width="100%">
@@ -358,7 +358,7 @@
 	<p>When you compare the total response time or the ability for a browser isolation product to deliver a full response back to a user, Cloudflare is still 39% faster than Zscaler:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nEf8b0LPQtMUDZk5fG7E1/d81d1635485cd6cecfeabca67d762158/10.png" alt="" class="kg-image" width="1240" height="738" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nEf8b0LPQtMUDZk5fG7E1/9a95d008e5ea96fd8a3d31917dd34e57/10.png" alt="" class="kg-image" width="1240" height="738" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<table width="100%">

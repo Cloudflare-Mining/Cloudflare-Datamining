@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zAphdeHNCvCgl7b0j8TsK/88ef49ca1be0dc866d0a18783a6dd932/the-deep-dive-into-how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-monday.png" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zAphdeHNCvCgl7b0j8TsK/ccd12199410a7a70c0fe627aec8ed2e6/the-deep-dive-into-how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-monday.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="a-recap-on-what-happened-monday">A recap on what happened Monday</h3>
@@ -26,7 +26,7 @@
 	<p>The RIPE NCC operates a very useful archive of BGP routing. It runs collectors globally and provides an API for querying the data. More can be seen at <a href="https://stat.ripe.net">https://stat.ripe.net/</a>. In the world of BGP all routing is public (within the ability of anyone collecting data to have enough collections points). The archived data is very valuable for research and that’s what we will do in this blog. The site can create some very useful data visualizations.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GNF7gEDv0Q7yA6eYomf00/328fd663523f7a3a6acd603d942f1a23/396531-bgplay-3.png" alt="" class="kg-image" width="1386" height="1043" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GNF7gEDv0Q7yA6eYomf00/ab625e1fc607841d1c4579030199d083/396531-bgplay-3.png" alt="" class="kg-image" width="1386" height="1043" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -178,13 +178,13 @@ $</code></pre>
 	<p>Now we know the times. The route leak started at 10:34:25 UTC (just before lunchtime London time) on 2019-06-24 and ended at 12:38:54 UTC. That’s a hair over two hours. Here’s that same time data in a graphical form showing the near-instant start of the event and the duration of each route leaked:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mbErnzz2kF06AyBXG5cOH/e4116af8dbac3a030e3ac531331fe4f1/cloudflare-via-verizon-leak-timing-1.png" alt="" class="kg-image" width="2684" height="1224" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2mbErnzz2kF06AyBXG5cOH/9dea0b05a69f217477af11332e15c8d5/cloudflare-via-verizon-leak-timing-1.png" alt="" class="kg-image" width="2684" height="1224" loading="lazy">
 
 	</figure>
 	<p>We can also go back to RIPEstat and look at the activity graph for Cloudflare’s AS13335 network:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18U3ID2tpK3ThuEKMvAgcF/d0e639c4142044325f1d8da98d577d83/cloudflare-route-activity.png" alt="" class="kg-image" width="1600" height="771" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18U3ID2tpK3ThuEKMvAgcF/3f26bc9f080c7a1be0c509e91bffdd02/cloudflare-route-activity.png" alt="" class="kg-image" width="1600" height="771" loading="lazy">
 
 	</figure>
 	<p>Clearly between 10:30 UTC and 12:40 UTC there’s a lot of route activity - far more than normal.</p>
@@ -286,13 +286,13 @@ $</code></pre>
 	<p>It’s worth doing a secondary search to see if any as-set object exists with 33154 or 396531 included. We turned to the most excellent <a href="http://irrexplorer.nlnog.net">IRR Explorer</a> website run by NLNOG. It provides deep insight into the routing registry data. We did a simple search for 33154 using <a href="http://irrexplorer.nlnog.net/search/33154">http://irrexplorer.nlnog.net/search/33154</a> and we found these as-set objects.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EYvX8VV7OrqAymwSwjOdl/9b68c78e55bd6cc1980f0f8af7f8a142/as-set-containing-as33154.png" alt="" class="kg-image" width="1308" height="534" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EYvX8VV7OrqAymwSwjOdl/6bc48a047ddf172b54b9bef773e3f488/as-set-containing-as33154.png" alt="" class="kg-image" width="1308" height="534" loading="lazy">
 
 	</figure>
 	<p>It’s interesting to see this ASN listed in other as-set’s but none are important or related to Monday’s route-leak. Next we looked at 396531</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pbNB1leCKaQmKCWAwBs2W/cb4d8f169feb6d53a29b4f304ca6eb09/as-set-containing-as396531.png" alt="" class="kg-image" width="1274" height="247" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pbNB1leCKaQmKCWAwBs2W/71b235476f02b24adc80457c9cfefaad/as-set-containing-as396531.png" alt="" class="kg-image" width="1274" height="247" loading="lazy">
 
 	</figure>
 	<p>This shows that there’s nowhere else we need to check. AS-DQECUST is the as-set macro that controls (or should control) filtering for any transit provider of their network.</p>
@@ -310,7 +310,7 @@ $</code></pre>
 	<p>Yet that’s not really the whole story. Let’s look at the percentage of traffic Cloudflare sends Verizon that’s IPv6 (vs IPv4). Normally the IPv4/IPv6 percentage holds steady.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63WaYJLNsBep3X6n5GRQ1n/b7313a44aaccbef988957564659ad44e/verizon-ipv6-percentage.png" alt="" class="kg-image" width="1600" height="397" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63WaYJLNsBep3X6n5GRQ1n/502818a8188dae908bd1e6bf1dbd60bc/verizon-ipv6-percentage.png" alt="" class="kg-image" width="1600" height="397" loading="lazy">
 
 	</figure>
 	<p>This uptick in IPv6 traffic could be the direct result of Happy Eyeballs on mobile handsets picking a working IPv6 path into Cloudflare vs a non-working IPv4 path. Happy Eyeballs is meant to protect against IPv6 failure, however in this case it’s doing a wonderful job in protecting from an IPv4 failure. Yet we have to be careful with this graph because after further thought and investigation the percentage only increased because IPv4 reduces. Sometimes graphs can be misinterpreted, yet Happy Eyeballs still did a good job even as end users were being affected.</p>
@@ -327,21 +327,21 @@ $</code></pre>
 	<p>As we have already stated,Verizon had impacted their own users/customers. Let’s start with their bandwidth graph:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LsOAJ3xaEuv3Mg63gxn6V/fc331623d22147b3beee7bb0037f71ff/verizon-bandwidth.png" alt="" class="kg-image" width="1600" height="642" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LsOAJ3xaEuv3Mg63gxn6V/035da03ad0895a84ada37b676cb890b1/verizon-bandwidth.png" alt="" class="kg-image" width="1600" height="642" loading="lazy">
 
 	</figure>
 	<p>The red line is 24 June 2019 (00:00 UTC to 00:00 UTC the next day). The gray lines are previous days for comparison. This graph includes both Verizon fixed-line services like FiOS along with mobile.</p>
 	<p>The AT&amp;T graph is quite different.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ez4gwmnd5nOXv7Mdj3M63/ca618778e9dc5731cd0ec824176ff629/att-bandwidth.png" alt="" class="kg-image" width="1600" height="637" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ez4gwmnd5nOXv7Mdj3M63/1dbad80ddfe70d34e79c9922cfa6d04e/att-bandwidth.png" alt="" class="kg-image" width="1600" height="637" loading="lazy">
 
 	</figure>
 	<p>There’s no perturbation. This, along with some direct confirmation, shows that 7018 (AT&amp;T) was not affected. This is an important point.</p>
 	<p>Going back and looking at a third tier 1 network, we can see 6762 (Telecom Italia) affected by this route leak and yet Cloudflare has a direct interconnect with them.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yOXzYla3Wj5fmY8I6I4dy/ea4cedc3569bee5c5f011e0322d8e40a/telecomitalia-bandwidth.png" alt="" class="kg-image" width="1919" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yOXzYla3Wj5fmY8I6I4dy/2e507a5c4919877b6b4964aba80bd6ab/telecomitalia-bandwidth.png" alt="" class="kg-image" width="1919" height="768" loading="lazy">
 
 	</figure>
 	<p>We will be asking Telecom Italia to improve their route filtering as we now have this data.</p>

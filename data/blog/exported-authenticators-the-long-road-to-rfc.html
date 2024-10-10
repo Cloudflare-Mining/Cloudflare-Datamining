@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5m9ffXbFd7tncHGVqZhPb1/82a8e2179cd2c8c870010a13ae846f58/image3-22.png" alt="" class="kg-image" width="1803" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m9ffXbFd7tncHGVqZhPb1/3cc9de4feae682a5e87102dad47f99b8/image3-22.png" alt="" class="kg-image" width="1803" height="1013" loading="lazy">
 
 	</figure>
 	<p>Our earlier <a href="https://blog.cloudflare.com/cloudflare-and-the-ietf">blog post</a> talked in general terms about how we work with the IETF. In this post we’re going to talk about a particular IETF project we’ve been working on, Exported Authenticators (EAs). Exported Authenticators is a new extension to TLS that we think will prove really exciting. It unlocks all sorts of fancy new authentication possibilities, from TLS connections with multiple certificates attached, to logging in to a website without ever revealing your password.</p>
@@ -25,7 +25,7 @@
 	<p>The application layer is the top of the OSI stack, and contains things like HTTP. Because the TLS handshake is lower in the stack, the application is oblivious to this process. So, what Exported Authenticators give us is the ability for the very top of the stack to reliably authenticate their partner.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gnmKyKSeUeRR2kNpasByF/c5b0f134c281672728766f9ffe015a88/osi-model-7-layers-1.png" alt="The seven-layered OSI model" class="kg-image" width="766" height="522" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gnmKyKSeUeRR2kNpasByF/ce60689aede76d539b46a440ac9c87f8/osi-model-7-layers-1.png" alt="The seven-layered OSI model" class="kg-image" width="766" height="522" loading="lazy">
 
 	</figure>
 	<p>The seven-layered OSI model</p>
@@ -36,14 +36,14 @@
 	<p>The final piece of unpacking we need to do is explaining what we mean by tying the authentication to the TLS channel. Because EAs are an application layer construct they don’t provide any transport mechanism. So, whilst I know that the EA was created by the server I want to talk to, without binding the EA to a TLS connection I can’t be sure that I’m talking <i>directly</i> to the server I want.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TE1tNAHGeIgpWWXLSo6d4/93176b0295b0319c64eaa518299c4cb0/image5-16.png" alt="An EA without channel bindings, leading to an attack." class="kg-image" width="1999" height="225" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TE1tNAHGeIgpWWXLSo6d4/73aab69ccbfdcb00ba7819d8936df1d7/image5-16.png" alt="An EA without channel bindings, leading to an attack." class="kg-image" width="1999" height="225" loading="lazy">
 
 	</figure>
 	<p>Without protection, a malicious server can move Exported Authenticators from one connection to another.</p>
 	<p>For all I know, the TLS server I’m talking to is creating a new TLS connection to the EA Server, and relaying my request, and then returning the response. This would be very bad, because it would allow a malicious server to impersonate any server that supports EAs.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zeVsOVQkSEccH77eRqMQb/e0c3bd446968ab679668b0810564353f/image2-23.png" alt="An EA protected by channel bindings." class="kg-image" width="1999" height="202" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zeVsOVQkSEccH77eRqMQb/0868ebd0c27b34da59f32fa0837e3b29/image2-23.png" alt="An EA protected by channel bindings." class="kg-image" width="1999" height="202" loading="lazy">
 
 	</figure>
 	<p>Because EAs are bound to a single TLS connection, if a malicious server copies an EA from one connection to another it will fail to verify.</p>
@@ -82,7 +82,7 @@
 	<p>Once the EA I-D becomes an RFC, then all sorts of cool stuff gets unlocked — for example <a href="https://datatracker.ietf.org/doc/html/draft-sullivan-tls-opaque-01">OPAQUE-EA</a>s, which will allow us to do password-based login on the web without the server ever seeing the password! Watch this space.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QK1yWnP1qWPVURzf9ZlIk/fe5158b54367902a2afec747dda57bb2/image4-22.png" alt="" class="kg-image" width="1446" height="749" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QK1yWnP1qWPVURzf9ZlIk/63325574b90a74a60ed147994cc197fc/image4-22.png" alt="" class="kg-image" width="1446" height="749" loading="lazy">
 
 	</figure>
 </div>

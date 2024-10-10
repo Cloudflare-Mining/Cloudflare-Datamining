@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WL1V7ZuPLdXFnkGjYOJyL/f86138bd1ceaeac97b117b940ceb00c5/image2-18.png" alt="No, AI did not break post-quantum cryptography" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WL1V7ZuPLdXFnkGjYOJyL/349a07946aff4103d2cd8c9abcb88475/image2-18.png" alt="No, AI did not break post-quantum cryptography" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.securityweek.com/ai-helps-crack-a-nist-recommended-post-quantum-encryption-algorithm">News coverage</a> of a recent paper caused a bit of a stir with this headline: “<a href="https://www.securityweek.com/ai-helps-crack-a-nist-recommended-post-quantum-encryption-algorithm">AI Helps Crack NIST-Recommended Post-Quantum Encryption Algorithm</a>”. The news article claimed that <a href="https://pq-crystals.org/kyber/index.shtml">Kyber</a>, the encryption algorithm in question, <a href="https://blog.cloudflare.com/post-quantum-for-all">which we have deployed world-wide</a>, had been “broken.” Even more dramatically, the news article claimed that “the revolutionary aspect of the research was to apply deep learning analysis to side-channel differential analysis”, which seems aimed to scare the reader into wondering what will <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">Artificial Intelligence (AI)</a> break next?</p>
@@ -19,7 +19,7 @@
 	<p>When one thinks of breaking cryptography, one imagines a room full of mathematicians puzzling over minute patterns in intercepted messages, aided by giant computers, until they figure out the key. Famously in World War II, the Nazis’ Enigma cipher machine code was completely broken in this way, allowing the Allied forces to read along with their communications.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oJxQ8srTTh2HafYmNbKaP/e04f81af2c43c055568e6a9ed4f00a14/image7-5.png" alt="image of the Bombe — an early computer used to crack the enigma code.Souce: https://en.wikipedia.org/wiki/Bombe#/media/File:'bombe'.jpg, public domain." class="kg-image" width="440" height="352" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oJxQ8srTTh2HafYmNbKaP/c07d942fdda653c963fd047756e8b6f4/image7-5.png" alt="image of the Bombe — an early computer used to crack the enigma code.Souce: https://en.wikipedia.org/wiki/Bombe#/media/File:'bombe'.jpg, public domain." class="kg-image" width="440" height="352" loading="lazy">
 
 	</figure>
 	<p>It’s exceedingly rare for modern established cryptography to get broken head-on in this way. The last catastrophically broken cipher was RC4, designed in 1987, while AES, designed in 1998, stands proud with barely a scratch. The last big break of a cryptographic hash was on SHA-1, designed in 1995, while SHA-2, published in 2001, remains untouched in practice.</p>
@@ -35,7 +35,7 @@
 	<p>Can you guess the pin code for this gate?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UhJuQgQaoWjZ4JHSAHff6/21c2c1fe186690a2192ed72c1c1dc680/image4-1.jpg" alt="a numeric access keypad of which the paint on the numbers 1, 5, 8 and 0 are worn off.  Source." class="kg-image" width="1999" height="1095" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UhJuQgQaoWjZ4JHSAHff6/0bebc7553f411c4246a750e39b1f627f/image4-1.jpg" alt="a numeric access keypad of which the paint on the numbers 1, 5, 8 and 0 are worn off.  Source." class="kg-image" width="1999" height="1095" loading="lazy">
 
 	</figure>
 	<p>You can clearly see that some of the keys are more worn than the others, suggesting heavy use. This observation gives us some insight into the correct pin, namely the digits. But the correct order is not immediately clear. It might be 1580, 8510, or even 115085, but it’s a lot easier than trying every possible pin code. This is an example of a <i>side-channel attack</i>. Using the security feature (entering the PIN) had some unintended consequences (abrading the paint), which leaks information.</p>
@@ -51,7 +51,7 @@
 	<p>When writing cryptography in software, one of the best known side channels is the time it takes for an algorithm to run. For example, let’s take the classic example of creating an RSA signature. Grossly simplified, to sign a message <i>m</i> with private key <i>d</i>, we compute the signature <i>s</i> as m<sup>d</sup> (mod n). Computing the exponent of a big number is hard, but luckily, because we’re doing modular arithmetic, there is the <a href="https://youtu.be/cbGB__V8MNk">square-and-multiply</a> trick. Here is a naive implementation in pseudocode:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ugGnB4EmViLt8e9E97YyJ/b75e401745bfd7aa80fa4b036f09ace3/Screenshot-2023-03-16-at-12.35.40.png" alt="" class="kg-image" width="1618" height="310" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ugGnB4EmViLt8e9E97YyJ/d204b867a50f5470d0ae680f4eea47fd/Screenshot-2023-03-16-at-12.35.40.png" alt="" class="kg-image" width="1618" height="310" loading="lazy">
 
 	</figure>
 	<p>The algorithm loops over the bits of the secret key, and does a <i>multiply</i> step if the current bit is a 1. Clearly, the runtime depends on the secret key. Not great, but if the attacker can only time the full run, then they only learn the number of 1s in the secret key. The typical catastrophic timing attack against RSA instead is hidden behind the “<b>mod</b> n”. In a naive implementation this modular reduction is slower if the number being reduced is larger or equal <i>n</i>. This <a href="https://www.cs.sjsu.edu/faculty/stamp/students/article.html#:~:text=Timing%20attacks%20are%20a%20form,performed%20or%20the%20media%20used.">allows</a> an attacker to send specially crafted messages to tease out the secret key bit-by-bit and similar attacks are <a href="https://crypto.stanford.edu/~dabo/papers/ssl-timing.pdf">surprisingly practical</a>.</p>
@@ -69,13 +69,13 @@
 	<p>The story is quite different for power side-channel attacks. Again, the classic example is RSA signatures. If we hook up an oscilloscope to a smartcard that uses the naive algorithm from before, and measure the power usage while it signs, we can read off the private key by eye:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BgQG934ghuxV9D6JoSF0H/d41e9cab57d77c4fbfd4c95cb4e7df69/image1-33.png" alt="" class="kg-image" width="717" height="401" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BgQG934ghuxV9D6JoSF0H/14c882de669ff23990f96a1281304e3f/image1-33.png" alt="" class="kg-image" width="717" height="401" loading="lazy">
 
 	</figure>
 	<p>Even if we use a constant-time implementation, there are still minute changes in power usage that can be detected. The underlying issue is that hardware gates that switch use more power than those that don’t. For instance, computing 127 + 64 takes more energy than 64 + 64.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3U58Xc7isXGpdg2bHxhTRA/2f90a6cafbfefdddfc9a2a86a419b0a7/image3-25.png" alt="127+64 and 64+64 in binary. There are more switched bits in the first." class="kg-image" width="791" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3U58Xc7isXGpdg2bHxhTRA/c8b3ea9d01d38f9af644a2cd51079caf/image3-25.png" alt="127+64 and 64+64 in binary. There are more switched bits in the first." class="kg-image" width="791" height="206" loading="lazy">
 
 	</figure>
 	<p><i>127+64 and 64+64 in binary. There are more switched bits in the first.</i></p>
@@ -94,7 +94,7 @@
 	<p><a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">Machine learning</a>, of which deep learning is a part, represents the capability of a system to acquire its knowledge by extracting patterns from data — &nbsp;in this case, the secrets from the power traces. Machine learning algorithms can be divided into several categories based on their learning style. The most popular machine learning algorithms in side-channel attacks follow the supervised learning approach. In supervised learning, there are two phases: 1) training, where a machine learning model is trained based on known labeled examples (e.g., side-channel measurements where we know the key) and 2) testing, where, based on the trained model and additional side-channel measurements (now, with an unknown key), the attacker guesses the secret key. A common depiction of such attacks is given in the figure below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V2bcSsbSJtCmorq8HaUzc/ac12df648f8aa28ff907b7753a7e48d5/image5-3.png" alt="setup of a side-channel attack." class="kg-image" width="694" height="653" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4V2bcSsbSJtCmorq8HaUzc/1545a94c79aef5d72b6acd8573cf5f07/image5-3.png" alt="setup of a side-channel attack." class="kg-image" width="694" height="653" loading="lazy">
 
 	</figure>
 	<p>While the threat model may sound counterintuitive, it is actually not difficult to imagine that the attacker will have access (and control) of a device similar to the one being attacked.</p>
@@ -113,7 +113,7 @@
 	<p>Kyber is a <a href="https://blog.cloudflare.com/the-quantum-menace">post-quantum</a> (PQ) key encapsulation method (KEM). After a six-year worldwide competition, the <a href="https://www.nist.gov">National Institute of Standards and Technology</a> (NIST) <a href="https://blog.cloudflare.com/nist-post-quantum-surprise">selected</a> Kyber as the post-quantum key agreement they will standardize. The goal of a key agreement is for two parties that haven’t talked to each other before to agree securely on a <i>shared key</i> they can use for symmetric encryption (such as <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">Chacha20Poly1305</a>). As a KEM, it works slightly different with different terminology than a traditional <a href="https://developers.cloudflare.com/internet/protocols/tls#ephemeral-diffie-hellman-handshake">Diffie–Hellman</a> key agreement (such as X25519):</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Dbor76rFhzvg1PhuCI0xT/3d14096c239d1634dd39346dfa4fb215/image9-3.png" alt="" class="kg-image" width="1779" height="1028" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Dbor76rFhzvg1PhuCI0xT/9bbd95bd542a065a679b5b27e2c188cb/image9-3.png" alt="" class="kg-image" width="1779" height="1028" loading="lazy">
 
 	</figure>
 	<p>When connecting to a website the client first generates a new <i>ephemeral</i> keypair that consists of a <i>private</i> and <i>public key</i>. It sends the public key to the server. The server then <i>encapsulates</i> &nbsp;a shared key with that public key, which gives it a random <i>shared key</i>, which it keeps, and a ciphertext (in which the shared key is hidden), which the server returns to the client. The client can then use its private key to <i>decapsulate</i> the shared key from the ciphertext. Now the server and client can communicate with each other using the shared key.</p>
@@ -140,7 +140,7 @@
 	<p>This is the two-shares implementation of the conversion that the DNG paper attacks:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GjnFQyhXsLRqHJqgypOpx/9f34cf23c0118b0ba04fdfae7667efa0/image8.png" alt="Source-code of the masked implementation of Kyber the DNG paper attacks." class="kg-image" width="946" height="548" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GjnFQyhXsLRqHJqgypOpx/c93d159488b4ba8ef043e1049eb21649/image8.png" alt="Source-code of the masked implementation of Kyber the DNG paper attacks." class="kg-image" width="946" height="548" loading="lazy">
 
 	</figure>
 	<p>The code loops over the bits of the two shares. For each bit, it creates a mask, that’s <code>0xffff</code> if the bit was 1 and 0 otherwise. Then this mask is used to add (q+1)/2 to the polynomial share if appropriate. Processing a 1 will use a bit more power. It doesn’t take an AI to figure out that this will be a leaky function. In fact, this pattern was pointed out to be weak <a href="https://eprint.iacr.org/2016/923">back in 2016</a>, and explicitly mentioned to be a risk for masked Kyber <a href="https://eprint.iacr.org/2016/923">in 2020</a>. Apropos, one way to mitigate this, is to process multiple bits at once — for the state of the art, tune into <a href="https://csrc.nist.gov/Projects/post-quantum-cryptography/workshops-and-timeline/pqc-seminars">April 2023’s NIST PQC seminar</a>. For the moment, let’s allow the paper its weak target.</p>
@@ -156,7 +156,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nVauArEr9f940eJstkDu5/2ead2c1f0b38be838ef8dacda69a7936/image6-7.png" alt="Board on which the attack was tested. Source: NewAE Technology Inc." class="kg-image" width="1668" height="838" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nVauArEr9f940eJstkDu5/8c793320acb617a3ae0436908196e546/image6-7.png" alt="Board on which the attack was tested. Source: NewAE Technology Inc." class="kg-image" width="1668" height="838" loading="lazy">
 
 	</figure>
 	<p>To test the attack, they use a <a href="https://www.newae.com/products/NAE-CW1173#:~:text=The%20ChipWhisperer%2DLite%20integrates%20hardware,all%20into%20a%20single%20board.">Chipwhisperer-lite</a> board, which has a Cortex M4 CPU, which they downclock to 24Mhz. Power usage is sampled at 24Mhz, with high 10-bit precision.</p>

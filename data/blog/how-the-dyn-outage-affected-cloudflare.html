@@ -1,11 +1,11 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5P4ljllujkLO3PxcyjPpz0/f7f08a8b29176c4f5972e038b558d827/how-the-dyn-outage-affected-cloudflare.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5P4ljllujkLO3PxcyjPpz0/b1a59a361fdd176b1c9b34a297e9ffd3/how-the-dyn-outage-affected-cloudflare.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last Friday the popular <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> service Dyn suffered three waves of DDoS attacks that affected users first on the East Coast of the US, and later users worldwide. Popular websites, some of which are also Cloudflare customers, were inaccessible. Although Cloudflare was not attacked, joint Dyn/Cloudflare customers were affected.</p>
 	<p>Almost as soon as Dyn came under attack we noticed a sudden jump in DNS errors on our edge machines and alerted our SRE and support teams that Dyn was in trouble. Support was ready to help joint customers and we began looking in detail at the effect the Dyn outage was having on our systems.</p>
 	<p>An immediate concern internally was that since our DNS servers were unable to reach Dyn they would be consuming resources waiting on timeouts and retrying. The first question I asked the DNS team was: “<i>Are we seeing increased DNS response latency?</i>” rapidly followed by “<i>If this gets worse are we likely to?</i>”. Happily, the response to both those questions (after the team analyzed the situation) was no.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12gWRrFmU4M0R7VB6b3pVL/3af115359ae98d5ce72d8209b3e982d5/3685880130_c6d9102cba_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12gWRrFmU4M0R7VB6b3pVL/2687fac9b1156b1670408fa4c5911c7b/3685880130_c6d9102cba_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/tracyshaun/3685880130/in/photolist-6BH6Kq-6yxLDk-tC1Ht-66MpR2-3UL31-6BS7Ct-4DZJzU-oD5tjD-bwGbQX-bWXcoF-61hvET-psP6eu-4bnRok-HGSYas-7Qux27-a3WiTz-d6Fkjh-eiri25-76nJsM-br9u74-2QzcZR-aeha3e-eJmrLV-r1Se4g-eiU2Li-bzyzvF-qJrsCd-9G8ERM-fHXd1V-oSYEya-8wTQRv-q51NKb-eNqZvX-5tKLeC-r1Sd3P-puYv44-dExeSy-7hp4tS-cg2YbU-7hk7tc-qurGx4-q5ejnH-5PGmi-7CuWcv-qd67mo-r1WtnQ-q51SkN-7z6H4R-qJsP79-qYJda5">image</a> by <a href="https://www.flickr.com/photos/tracyshaun">tracyshaun</a></p>
@@ -38,7 +38,7 @@ www.cloudflare.com.	10	IN	A	198.41.214.162</code></pre>
 	<p>The other is to use a CNAME, which is a pointer to another DNS name.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lUs1tS77EwOoJX8vlJxgr/98461cfc8c400d30a1499fc691ec15e4/a-aaaa-cname-1.png" alt="" class="kg-image" width="1687" height="1662" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lUs1tS77EwOoJX8vlJxgr/ee85582f977cefa8b547140c9f1f71d2/a-aaaa-cname-1.png" alt="" class="kg-image" width="1687" height="1662" loading="lazy">
 
 	</figure>
 	<p>When our servers receive a request with the origin configured using a CNAME, we have to perform an external DNS lookup to resolve the target of the CNAME to IP addresses. This information is cached, based on the TTL defined on the CNAME record. In this case, our ability to serve content (that is not in the cache) entirely depends on an external DNS lookup to resolve the CNAME to IPs.</p>
@@ -57,14 +57,14 @@ www.cloudflare.com.	10	IN	A	198.41.214.162</code></pre>
 	<p>The green dots on the map are Cloudflare data centers that were unaffected by the Dyn DDoS. The largest effect was on the US East Coast, although the attack had a knock-on effect in Singapore and some parts of Europe. This is most likely because the architecture of the Internet does not directly line up with geography. Locations that are physically disparate can sometimes appear ‘close’ on the Internet because of undersea cables or decisions on how to route traffic.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2016/10/First-Attack-21st--1-.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CcCuvJVJf3wCR03wUSLH3/a2aeb1ffc4de20b639d672c80f4603f2/First-Attack-21st--1-.png" alt="" class="kg-image" width="3878" height="3116" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CcCuvJVJf3wCR03wUSLH3/b80ef4c03453b86b2298b4e2962f9655/First-Attack-21st--1-.png" alt="" class="kg-image" width="3878" height="3116" loading="lazy">
 		</a>
 	</figure>
 	<p>The chart shows the DNS error rate in each Cloudflare data center affected by the outage. It’s possible to see the attack ramp up rapidly and then remained sustained until Dyn was able to tackle it.</p>
 	<p>Later in the day the attackers returned with greater force and had a worldwide impact. This map shows the Cloudflare data centers seeing errors because Dyn was inaccessible. As you can see almost the entire planet was affected (with the exception of our China locations; we’ll return to why below).</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2016/10/Second-Attack-21st.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6U8jwhb6FxP9aXmMg4JXpH/db4ff001d0699cd0600eb746893c85e2/Second-Attack-21st.png" alt="" class="kg-image" width="3871" height="3108" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6U8jwhb6FxP9aXmMg4JXpH/157f14a27bfb5fb0a71df8b06e590057/Second-Attack-21st.png" alt="" class="kg-image" width="3871" height="3108" loading="lazy">
 		</a>
 	</figure>
 	<p>Once again it’s possible to see the attack ramping up at 1550 UTC and continuing for some time. Dyn reports that the attack was fully mitigated at 1700 UTC.</p>

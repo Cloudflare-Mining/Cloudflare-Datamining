@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/O4mCKw9fBP5rNhxrGj3NP/d98e99bf3edfa7355e12c835b548f4af/image6-6.png" alt="Automatically discovering API endpoints and generating schemas using machine learning" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/O4mCKw9fBP5rNhxrGj3NP/e4439b1f3cfd0f4b0674c8be82e494e3/image6-6.png" alt="Automatically discovering API endpoints and generating schemas using machine learning" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Cloudflare now automatically discovers all API endpoints and learns API schemas for all of our <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a> customers. Customers can use these new features to enforce a positive security model on their API endpoints even if they have little-to-no information about their existing APIs today.</p>
@@ -49,7 +49,7 @@
 	<p>So we decided to close that gap. We found that the same learning process we used to discover API endpoints could then be applied to endpoints once they were discovered in order to automatically learn a schema. Using this method <b><i>we can now generate an OpenAPI formatted schema for every single endpoint we discover, in real time</i></b>. We call this new feature Schema Learning. Customers can then upload that Cloudflare-generated schema into Schema Validation to enforce a positive security model.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VpHCVozyIsmpo7qSr6mTq/8824caea1c01b2a0a7b52a3d124d8cb2/Schema-Learning-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VpHCVozyIsmpo7qSr6mTq/6193978955979c057b25a8f42b9d67d6/Schema-Learning-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -79,7 +79,7 @@
 	<p>Input to the training are features of HTTP request/response samples such as the content-type or file extension that we collected through the session identifiers-based Discovery mentioned earlier. Unfortunately, not everything that we have in this data is clearly an API. Additionally, we also need samples that represent non-API traffic. As such, we started out with the session-identifier Discovery data, manually cleaned it up and derived further samples of non-API traffic. We took great care in trying to not overfit the model to the data. That is, we want that the model generalizes beyond the training data.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/360Ff2sU2vH0xHRTwQ1a1i/741995aca85e062f89fd82277ca7e5c2/ML-Discovery-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/360Ff2sU2vH0xHRTwQ1a1i/9acd901bac12dd2e228f123904e1322d/ML-Discovery-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
 
 	</figure>
 	<p>To train the model, we’ve used the <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">CatBoost library</a> for which we already have a good chunk of expertise as it also powers our <a href="https://blog.cloudflare.com/machine-learning-mobile-traffic-bots">Bot Management ML-models</a>. In a simplification, one can regard the resulting model as a flow chart that tells us which conditions we should check after another, for example: if the path contains “api” then also check if there is no file extension and so forth. At the end of this flowchart is a score that tells us the likelihood that a HTTP transaction belongs to an API.</p>
@@ -100,13 +100,13 @@
 	<p>The following graph shows a histogram of the number of endpoints detected on customer domains for both discovery variants.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2B3SRaTlzY9IeP14TiJmJt/18348f59d24e406c943ddff240391c1a/imageLikeEmbed.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2B3SRaTlzY9IeP14TiJmJt/ec42e3ecc5072fc6bd6f839ea6414a18/imageLikeEmbed.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
 
 	</figure>
 	<p>From a bird's eye perspective, the results look very similar, which is a good indicator that ML Discovery performs as it is supposed to. There are some differences already visible in this plot, which is also expected since we’ll also discover endpoints that are conceptually not discoverable with just a session identifier. In fact, if we take a closer look at a domain-by-domain comparison we see that there is no change for roughly ~46% of the domains. The next graph compares the difference (by percent of endpoints) between session-based and ML-based discovery:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xgilUYXsRSsK0szWTUE4Y/49ceb9e4488787befc57b3f674b9005a/imageLikeEmbed--1-.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xgilUYXsRSsK0szWTUE4Y/663978d4aa8a919010c024b5d2bea3bb/imageLikeEmbed--1-.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
 
 	</figure>
 	<p>For ~15% of the domains, we see an increase in endpoints between 1 and 50, and for ~9%, we see a similar reduction. For ~28% of the domains, we find more than 50 additional endpoints.</p>
@@ -127,19 +127,19 @@
 	<p>So how well does it work? Below are some statistics about the parameter types and values we see:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76Sum5LAwABwVzNQqAjyIZ/edf319641fb032730aa40a59400ddb5c/imageLikeEmbed--2-.png" alt="" class="kg-image" width="1600" height="462" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76Sum5LAwABwVzNQqAjyIZ/8dfa9adfce34f3d7bdb871d4e17b9fc8/imageLikeEmbed--2-.png" alt="" class="kg-image" width="1600" height="462" loading="lazy">
 
 	</figure>
 	<p>Parameter learning classifies slightly more than half of all parameters as strings, followed by integers which make up almost a third. The remaining 17% are made up of arrays, booleans, and number (float) parameters, while object parameters are seen more rarely in the path and query.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4F7YFE3mJGLcJnFo2crtSU/5a02dc6da409d7a0a5833d79d2a73e28/imageLikeEmbed--3-.png" alt="" class="kg-image" width="1600" height="517" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4F7YFE3mJGLcJnFo2crtSU/6fba9b4f4cdf54bc17f659e3f2978aa7/imageLikeEmbed--3-.png" alt="" class="kg-image" width="1600" height="517" loading="lazy">
 
 	</figure>
 	<p>The number of parameters in the path is usually very low, with 94% of all endpoints seeing at most one parameter in their path.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4z6BUn5ZAabsQqscDeHaUx/7631091b5ae8d705bcb1f1a5d105364f/imageLikeEmbed--4-.png" alt="" class="kg-image" width="1600" height="585" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4z6BUn5ZAabsQqscDeHaUx/d2a883f1eb8255deee3c459d7a5c3891/imageLikeEmbed--4-.png" alt="" class="kg-image" width="1600" height="585" loading="lazy">
 
 	</figure>
 	<p>For the query, we do see a lot more parameters, sometimes reaching 50 different parameters for one endpoint!</p>

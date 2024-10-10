@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kwlBcLNOsHG83pL9uGYXs/c35777eb0b975652781e02089bef5110/httpprioritization-copy_2x-4_bg.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kwlBcLNOsHG83pL9uGYXs/8ba7780faf1af38dee61e9cc95c64817/httpprioritization-copy_2x-4_bg.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
 
 	</figure>
 	<p>Friday the 13th is a lucky day for Cloudflare for <a href="https://twitter.com/eastdakota/status/566276309433602048">many reasons</a>. On December 13, 2019 Tommy Pauly, co-chair of the IETF HTTP Working Group, <a href="https://lists.w3.org/Archives/Public/ietf-http-wg/2019OctDec/0181.html">announced</a> the adoption of the "Extensible Prioritization Scheme for HTTP" - a new approach to HTTP prioritization.</p>
@@ -23,7 +23,7 @@
 	<p>To illustrate, imagine a client that makes three simple GET requests that all depend on root. As the server receives each request it grows its view of the priority tree:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2eAdxmuUQxOJLbtqnmP0BS/6307ddfa987690eccbf7028d208ca780/treebuilding1.png" alt="" class="kg-image" width="1498" height="345" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2eAdxmuUQxOJLbtqnmP0BS/2379ea92642242d027465218bc39d0bc/treebuilding1.png" alt="" class="kg-image" width="1498" height="345" loading="lazy">
 
 	</figure>
 	<p>The server starts with only the root node of the priority tree. As requests arrive, the tree grows. In this case all requests depend on the root, so the requests are priority siblings.</p>
@@ -31,7 +31,7 @@
 	<p>A single HTTP/2 request-response exchange is made up of frames that are sent on a stream. A simple GET request would be sent using a single <a href="https://tools.ietf.org/html/rfc7540#section-6.2">HEADERS</a> frame:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76uj7WpKKMF0lczd3FfkSY/be3e88f3b93ebeae9d493934eb8b4214/H2_HEADERS_frame.png" alt="" class="kg-image" width="1378" height="483" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76uj7WpKKMF0lczd3FfkSY/b49c96761908edf66d482859b3cfa62f/H2_HEADERS_frame.png" alt="" class="kg-image" width="1378" height="483" loading="lazy">
 
 	</figure>
 	<p>HTTP/2 HEADERS frame, Each region of a frame is a named field</p>
@@ -39,13 +39,13 @@
 	<p>The <i>Stream Dependency</i> and <i>Weight</i> fields are optional but their absence is interpreted as a signal to use the default values; dependency on the root with a weight of 16 meaning that the default priority scheduling strategy is round-robin . However, this is often a bad choice because important resources like HTML, CSS and JavaScript are tied up with things like large images. The following animation demonstrates this in the Edge browser, causing the page to be blank for 19 seconds. Our <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">deep dive blog post</a> explains the problem further.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WHsjjksenLoE7ocl8SgRI/2ccef4a5ae9dea0349bbfeeee4baf255/Edge_loading-1.gif" alt="" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WHsjjksenLoE7ocl8SgRI/d2f8dab33a3688f4357b12b6646cb593/Edge_loading-1.gif" alt="" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<p>The HEADERS frame <i>E</i> field is the interesting bit (pun intended). A request with the field set to 1 (true) means that the dependency is exclusive and nothing else can depend on the indicated node. To illustrate, imagine a client that sends three requests which set the <i>E</i> field to 1. As the server receives each request, it interprets this as an exclusive dependency on the root node. Because all requests have the same dependency on root, the tree has to be shuffled around to satisfy the exclusivity rules.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/i6NA77FtHzckq638a42kh/2f6214cd5b4f8776fddf2505562ecba8/treebuilding2.png" alt="" class="kg-image" width="824" height="586" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/i6NA77FtHzckq638a42kh/25013c743bff2c0279d4324f69ee9a64/treebuilding2.png" alt="" class="kg-image" width="824" height="586" loading="lazy">
 
 	</figure>
 	<p>Each request has an exclusive dependency on the root node. The tree is shuffled as each request is received by the server.</p>
@@ -80,7 +80,7 @@
 	<p>One of the key benefits of HTTP/3 is that it is more resilient to the effect of lossy network conditions on performance; head-of-line blocking is limited because requests and responses can progress independently. This is, however, a double-edged sword because sometimes ordering is important. In HTTP/3 there is no guarantee that the requests are received in the same order that they were sent, so the priority tree can get out of sync between client and server. Imagine a client that makes two requests that include priority signals stating request 1 depends on root, request 2 depends on request 1. If request 2 arrives before request 1, the dependency cannot be resolved and becomes dangling. In such a case what is the best thing for a server to do? Ambiguity in behaviour leads to assumptions and disappointment. We should try to avoid that.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68BpLWmGQLImEc9Bj4BczY/0f057b18ff286c3d7bd8f0fdcddcabe1/h3tree.png" alt="" class="kg-image" width="500" height="581" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68BpLWmGQLImEc9Bj4BczY/d37a2841eca4bb18f80c473db2e7440f/h3tree.png" alt="" class="kg-image" width="500" height="581" loading="lazy">
 
 	</figure>
 	<p>Request 1 depends on root and request 2 depends on request 1. If an HTTP/3 server receives request 2 first, the dependency cannot be resolved.</p>
@@ -136,7 +136,7 @@
 	<p>Mike, the editor of the HTTP/3 specification <a href="https://github.com/quicwg/wg-materials/blob/master/interim-19-05/h3issues.pdf">presented some of the issues</a> with prioritization and we attempted to solve them with the conventional tree-based scheme. Ian, with contribution from Robin Marx (UHasselt), also <a href="https://github.com/quicwg/wg-materials/blob/master/interim-19-05/priorities.pdf">presented</a> an explanation about his "Strict Priorities" proposal. I recommend taking a look at Robin's priority tree visualisations which do a great job of explaining things. From that presentation I particularly liked "The prioritization spectrum", it's a concise snapshot of the state of things at that time:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JveyeZmmt60QOPXKbnZym/4fa16582726df5794f11f0136afc2907/priotizationspectrum.png" alt="" class="kg-image" width="1303" height="630" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JveyeZmmt60QOPXKbnZym/dc50d185e0c9f3afc0e077961050b1ae/priotizationspectrum.png" alt="" class="kg-image" width="1303" height="630" loading="lazy">
 
 	</figure>
 	<p>An overview of HTTP/3 prioritization issues, fixes and possible alternatives. Presented by Ian Swett at the QUIC Interim Meeting May 2019.</p>

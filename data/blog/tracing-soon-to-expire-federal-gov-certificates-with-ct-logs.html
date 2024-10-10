@@ -1,11 +1,11 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28uRYoQ606AbWa9WAHdDNN/cfbfd8536d5236f4c4c42a80613999da/tracing-soon-to-expire-federal-gov-certificates-with-ct-logs.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28uRYoQ606AbWa9WAHdDNN/f71b182a19e0edcc0d0add79cf6db034/tracing-soon-to-expire-federal-gov-certificates-with-ct-logs.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As of December 22, 2018, parts of the US Government have “shut down” because of a lapse in appropriation. The shutdown has caused the furlough of employees across the government and has affected federal contracts. An unexpected side-effect of this shutdown has been the expiration of TLS certificates on some .gov websites. This side-effect has emphasized a common issue on the Internet: the usage of expired certificates and their erosion of trust.</p>
 	<p>For an entity to provide a secure website, it needs a valid TLS certificate attached to the website server. These TLS certificates have both start dates and expiry dates. Normally certificates are renewed prior to their expiration. However, if there’s no one to execute this process, then websites serve expired certificates--a poor security practice.</p>
 	<p>This means that people looking for government information or resources may encounter alarming error messages when visiting important .gov websites:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JWkU4QPny2yCHCF0ddOvo/9303bd3e3735324a8b94788f58adb6ef/cert_expired.png" alt="" class="kg-image" width="921" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JWkU4QPny2yCHCF0ddOvo/36f3a3cc60f50843456a51f1256f079c/cert_expired.png" alt="" class="kg-image" width="921" height="668" loading="lazy">
 
 	</figure>
 	<p>The content of the website hasn’t changed; it’s just the cryptographic exchange that’s invalid (an expired certificate can’t be validated). These expired certificates present a trust problem. Certificate errors often dissuade people from accessing a website, and imply that the site is not to be trusted. Browsers purposefully make it difficult to continue to an insecure website by hiding the “proceed” option under an “Advanced Settings/Actions” button. In the example above, people seeking aid in the wake of a natural disaster may not be able to access government websites with crucial information.</p>

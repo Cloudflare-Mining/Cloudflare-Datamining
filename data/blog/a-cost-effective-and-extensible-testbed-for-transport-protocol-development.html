@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4khOJHYkLJ6DdDgVwmTC6i/707e0a851704be2ee44fc13933fc548b/a-cost-effective-and-extensible-testbed-for-transport-protocol-development.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4khOJHYkLJ6DdDgVwmTC6i/ff200d9059ceeb7c0914619f5fe498a5/a-cost-effective-and-extensible-testbed-for-transport-protocol-development.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This was originally published on </i><a href="https://calendar.perfplanet.com/2019/how-to-develop-a-practical-transport-protocol"><i>Perf Planet's 2019 Web Performance Calendar</i></a><i>.</i></p>
 	<p>At Cloudflare, we develop protocols at multiple layers of the network stack. In the past, we focused on HTTP/1.1, HTTP/2, and TLS 1.3. Now, we are working on <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">QUIC and HTTP/3</a>, which are still in IETF draft, but gaining a lot of interest.</p>
@@ -56,7 +56,7 @@
 	<p>Here is a diagram of our QUIC Protocol Testing Lab:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1O1CdD682XoQE9Q68bPVkh/0317f3f8bf59b0e7dbec2aaefbb1a7f2/Screenshot-2019-07-01-00.35.06.png" alt="" class="kg-image" width="1600" height="592" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1O1CdD682XoQE9Q68bPVkh/a63bd6b8a1bafa516719cfcf0a82c033/Screenshot-2019-07-01-00.35.06.png" alt="" class="kg-image" width="1600" height="592" loading="lazy">
 
 	</figure>
 	<p>This is a conceptual diagram and we need to configure a switch for connecting each machine. Currently, we have Raspberry Pis (2 and 3) as an Origin and a Client. And small Intel x86 boxes for the Traffic Shaper and Edge server plus Ethernet switches for interconnectivity.</p>
@@ -116,7 +116,7 @@ $ tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 22mbit buffer 68750 limit
 	<p>The following comparison chart shows the total transfer time in msec for TCP vs QUIC for different network conditions. The QUIC protocol used here is a development version one.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2umJkG3YBHNnxyD2tJRHQA/678a4796b3c5314dd0a21f84b1dad77d/Screen-Shot-2020-01-13-at-3.09.41-PM.png" alt="" class="kg-image" width="718" height="549" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2umJkG3YBHNnxyD2tJRHQA/c96ef4601d8d20c9760b45ad321e6135/Screen-Shot-2020-01-13-at-3.09.41-PM.png" alt="" class="kg-image" width="718" height="549" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -131,7 +131,7 @@ $ tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 22mbit buffer 68750 limit
 	<p>Adding a smartphone to the testbed mentioned above gives an advantage in terms of understanding real performance issues. The major smartphone operating systems, iOS and Android, have quite different networking stack. Adding a smartphone to testbed gives the ability to understand these operating system network stacks in depth which aides new protocol designs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RLA6wO7vjRol9o6nlzj34/46fc60a79d31c96317211062d7e99bc5/Screen-Shot-2020-01-13-at-3.52.03-PM.png" alt="" class="kg-image" width="1712" height="992" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RLA6wO7vjRol9o6nlzj34/7c1a7904a379b1e8079853c35597173c/Screen-Shot-2020-01-13-at-3.52.03-PM.png" alt="" class="kg-image" width="1712" height="992" loading="lazy">
 
 	</figure>
 	<p>The above figure shows the network block diagram of another similar lab testbed used for protocol testing where a smartphone is connected both wired and wirelessly. A Linux netem based traffic shaper sits in-between the client and server shaping the traffic. Various networking profiles are fed to the traffic shaper to mimic real world scenarios. The client can be either an Android or iOS based smartphone, the server is a vanilla web server serving static files. Client, server and traffic shaper are all connected to the Internet along with the private lab network for management purposes.</p>
@@ -139,7 +139,7 @@ $ tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 22mbit buffer 68750 limit
 	<p>The Android or iOS test app can be used to issue multiple HTTPS requests of different object sizes sequentially and concurrently using TCP and QUIC as underlying transport protocol. Later, TTOTAL (total transfer time) of each HTTPS request is used to compare TCP and QUIC performance over different network conditions. One such comparison is shown below,</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Eh2Kl4C9RI40oKf8Z3CJY/fa02aecfe6ec1ef78509659374c13c76/Screen-Shot-2020-01-13-at-4.08.23-PM.png" alt="" class="kg-image" width="414" height="219" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Eh2Kl4C9RI40oKf8Z3CJY/a318afd23e177895137ff481bba2dfe1/Screen-Shot-2020-01-13-at-4.08.23-PM.png" alt="" class="kg-image" width="414" height="219" loading="lazy">
 
 	</figure>
 	<p>The table above shows the total transfer time taken for TCP and QUIC requests over an LTE network profile fetching different objects with different concurrency levels using the test app. Here TCP goes over native OS network stack and QUIC goes over Cloudflare QUIC stack.</p>

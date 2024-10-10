@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VDPUUYhG7ru1WvkSMQjEI/406d21376804bba30ed3f64195eaeb3b/Security-Center-now-includes-ZT--DLP-and-email-.png" alt="Stop brand impersonation with Cloudflare DMARC Management." class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4VDPUUYhG7ru1WvkSMQjEI/dc8c4470547b35874809bbc1c0486c07/Security-Center-now-includes-ZT--DLP-and-email-.png" alt="Stop brand impersonation with Cloudflare DMARC Management." class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>At the end of 2021 Cloudflare <a href="https://blog.cloudflare.com/security-center">launched Security Center</a>, a unified solution that brings together our suite of security products and unique Internet intelligence. It enables security teams to quickly identify potential security risks and threats to their organizations, map their <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a> and mitigate these risks with just a few clicks. While Security Center initially focused on <a href="https://www.cloudflare.com/application-services/solutions">application security</a>, we are now adding crucial <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">zero trust</a> insights to further enhance its capabilities.</p>
@@ -14,7 +14,7 @@
 	<p>With DMARC Management you have full insight on who is sending emails on your behalf. You can one-click approve each source that is a legitimate sender for your domain, and then set your <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf">DMARC</a> policy to reject any emails sent from unapproved clients.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5V4jHlhrGCxkmpTmaEwd7Y/a998ea8045eef6b8a54f31928b0cdcdc/DMARC-1.jpg" alt="On the DMARC Management one can see trends of messages passing or failing DMARC, and a breakdown by sending client (source)" class="kg-image" width="1419" height="1600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5V4jHlhrGCxkmpTmaEwd7Y/486d9851a7ad4ded33940bee10638200/DMARC-1.jpg" alt="On the DMARC Management one can see trends of messages passing or failing DMARC, and a breakdown by sending client (source)" class="kg-image" width="1419" height="1600" loading="lazy">
 
 	</figure>
 	<p>When the survey platform your company uses is sending emails from your domain, there’s nothing to worry about - you configured it that way. But if an unknown mail service from a remote country is sending emails using your domain that can be quite scary, and something you’ll want to address. Let’s see how.</p>
@@ -54,7 +54,7 @@
 	<p>All DMARC-compliant mailbox providers support sending DMARC aggregated reports to an email address of your choice. Those reports list the services that have sent emails from your domain and the percentage of messages that passed DMARC, SPF and DKIM. They are extremely important because they give administrators the information they need to decide how to adjust their DMARC policies — for instance, that’s how administrators know if their legitimate emails are failing SPF and DKIM, or if a spammer is trying to send illegitimate emails.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rbeRaBvxsO0xRukkFLRHs/8b71ebdfdbc43aecd8b460a735fed0df/pasted-image-0--1--7.png" alt="Email messages reach their destination, and an action is taken by the server according to the DMARC policies published in our DNS records. Then, the receiver sends a report back to the source." class="kg-image" width="1600" height="1085" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rbeRaBvxsO0xRukkFLRHs/4a648e0386f5568f0a83b55222d318c7/pasted-image-0--1--7.png" alt="Email messages reach their destination, and an action is taken by the server according to the DMARC policies published in our DNS records. Then, the receiver sends a report back to the source." class="kg-image" width="1600" height="1085" loading="lazy">
 
 	</figure>
 	<p>But beware, you probably don’t want to send DMARC reports to a human-monitored email address, as these come in fast and furious from virtually every email provider your organization sends messages to, and are delivered in XML format. Typically, administrators set up reports to be sent to a service like our DMARC Management, that boils them down to a more digestible form. <i>Note: These reports do not contain personal identifiable information (PII).</i></p>
@@ -62,7 +62,7 @@
 	<p><i>Note: Today, Cloudflare DNS is a requirement for DMARC Management.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CQaK1cwJWRVbNseX4W5TV/7c210c8aad38a58e622ec65d52bab607/DMARC--1--1.jpg" alt="There is a preview of the DMARC record being created with this RUA" class="kg-image" width="1600" height="684" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CQaK1cwJWRVbNseX4W5TV/9167d60ea6753e64eb00000abe42f49a/DMARC--1--1.jpg" alt="There is a preview of the DMARC record being created with this RUA" class="kg-image" width="1600" height="684" loading="lazy">
 
 	</figure>
 	<p>As reports are received in this dedicated email address, they are processed by a <a href="https://workers.cloudflare.com">Worker</a> that extracts the relevant data, parses it and sends it over to our analytics solution. And you guessed again, that’s implemented using <a href="https://developers.cloudflare.com/email-routing/email-workers">Email Workers</a>. You can read more about the technical implementation <a href="https://blog.cloudflare.com/how-we-built-dmarc-management">here</a>.</p>
@@ -79,25 +79,25 @@
 	<p>At the top of DMARC Management you have an at-a-glance view of the outbound security configuration for your domain, more specifically DMARC, DKIM, and SPF. DMARC Management will soon start reporting on inbound email security as well, which includes STARTTLS, MTA-STS, DANE, and TLS reporting.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XFAP5YG8knRRkIj50zkJ8/4505398711329c3f854ab94bb9154c35/1.jpg" alt="Banner showing the DMARC, SPF and DKIM configuration status for this domain." class="kg-image" width="1600" height="213" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XFAP5YG8knRRkIj50zkJ8/00ef5789a08c69c3103b672b7521a9b4/1.jpg" alt="Banner showing the DMARC, SPF and DKIM configuration status for this domain." class="kg-image" width="1600" height="213" loading="lazy">
 
 	</figure>
 	<p>The middle section shows the email volume over time, with individual lines showing those that pass DMARC and those that fail.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uciHpDAy18iUp1stqQugo/ceb45ee190657f98357341b76037fabe/1--1-.jpg" alt="Email volume accounted for in DMARC reports, over time, and separated between DMARC pass and fail." class="kg-image" width="1600" height="562" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uciHpDAy18iUp1stqQugo/721ebb2f2f365220a86943e56ea4535a/1--1-.jpg" alt="Email volume accounted for in DMARC reports, over time, and separated between DMARC pass and fail." class="kg-image" width="1600" height="562" loading="lazy">
 
 	</figure>
 	<p>Below, you have additional details that include the number of email messages sent by each source (per the DMARC reports), and the corresponding DMARC, SPF and DKIM statistics. You can approve (that is, include in SPF) any of these sources by clicking on “…”, and you can easily spot applications that may not have DKIM correctly configured.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rO4J9bwiA9m0tHupExWhk/14afe6c489d7ff343559a9c74d580012/Frame-4121.png" alt="Volume of emails sent by each source, and the corresponding DMARC, SPF and DKIM statistics." class="kg-image" width="1600" height="1133" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rO4J9bwiA9m0tHupExWhk/0ad0478984602bd8fcace328bdfe2681/Frame-4121.png" alt="Volume of emails sent by each source, and the corresponding DMARC, SPF and DKIM statistics." class="kg-image" width="1600" height="1133" loading="lazy">
 
 	</figure>
 	<p>Clicking on any source gives you the same DMARC, SPF and DKIM statistics per IP address of that source. This is how you identify if there’s an additional IP address you might need to include in your SPF record, for example.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/aItdZkn7WlVOiNtCQsXAp/0196496c5fd431dc0d3d7cceead074cb/DMARC--2-.jpg" alt="Source view shows each individual IP address that was identified for that source, and the corresponding DMARC, SPF and DKIM statistics." class="kg-image" width="1600" height="1034" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aItdZkn7WlVOiNtCQsXAp/9b6484590faa502e884308d2a6a65c11/DMARC--2-.jpg" alt="Source view shows each individual IP address that was identified for that source, and the corresponding DMARC, SPF and DKIM statistics." class="kg-image" width="1600" height="1034" loading="lazy">
 
 	</figure>
 	<p>The ones that fail are the ones you’ll want to take action on, as they will need to either be approved (which technically means including in the <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf">SPF</a> record) if legitimate, or stay unapproved and be rejected by the receiving server when the DMARC policy is configured with p=reject.</p>
@@ -114,7 +114,7 @@
 	<p>But even if you don’t, you will find new unapproved senders notices on your Security Center, under the Security Insights tab, alongside other important security issues you can review and manage.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WUjs0E5i27cLGp1USdAgw/d0aa5a138b7f78edb6f95a405d725f06/Screenshot-with-unapproved-senders.jpg" alt="The Insights Overview section of Cloudflare Security Center will show a notice when you have new unapproved senders" class="kg-image" width="1277" height="1600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WUjs0E5i27cLGp1USdAgw/d12e33553da78ba00802dda73c6a610b/Screenshot-with-unapproved-senders.jpg" alt="The Insights Overview section of Cloudflare Security Center will show a notice when you have new unapproved senders" class="kg-image" width="1277" height="1600" loading="lazy">
 
 	</figure>
 	<p>Or you can check the unapproved list on DMARC Management every few weeks.</p>
@@ -131,7 +131,7 @@
 	<p>We’re excited to demonstrate our investments in features that provide customers even more insight into their security. Up next we’ll be connecting security analytics from Cloudflare’s <a href="https://www.cloudflare.com/products/zero-trust/casb">Cloud Access Security Broker</a> (CASB) into the <a href="https://www.cloudflare.com/securitycenter">Security Center</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61fj6NVQkeRVMDzJYl0SmR/0d927064e54cbc7efd8d5f0a1081b31f/pasted-image-0--2--4.png" alt="" class="kg-image" width="1342" height="336" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61fj6NVQkeRVMDzJYl0SmR/b632b4000dd7a47769a91d0fe5e025fe/pasted-image-0--2--4.png" alt="" class="kg-image" width="1342" height="336" loading="lazy">
 
 	</figure>
 	<p>This product integration will provide customers a way to understand the status of their wider <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">SaaS security</a> at a glance. By surfacing the makeup of CASB Findings (or security issues identified in popular SaaS apps) by severity, health of the SaaS integration, and the number of hidden issues, IT and security administrators will have a way to understand the status of their wider security surface area from a single source.</p>

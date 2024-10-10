@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xCFSw8e6btXmsOV5ReU1Z/d00ee968b7d8fd30527f8dd9ec93d4a2/cumulus_cloud.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to failure" class="kg-image" width="400" height="267" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xCFSw8e6btXmsOV5ReU1Z/4df562f59d89c2fecee49b9fa41f6a76/cumulus_cloud.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to failure" class="kg-image" width="400" height="267" loading="lazy">
 
 	</figure>
 	<p>A huge storm rolled across the eastern United States last night, topping trees and knocking out power. Amazon Web Services (AWS) had one of their primary data centers in Virginia lose power. While data centers typically have backup generators for when they lose power from the grid, it appears something in the backup systems failed and AWS's EC2 Northern Virginia region went offline. That took down much of Netflix, Pinterest, Instagram, and other services that rely on Amazon's cloud hosting service.</p>
@@ -33,7 +33,7 @@
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7M1uT1Jsdz95kM0AUmobfX/d14371e8889705e37606c3b829b3d0ee/turtles_all_the_way_down.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to failure" class="kg-image" width="392" height="401" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7M1uT1Jsdz95kM0AUmobfX/917e5f6275ed0630eae7a5c43fa85e4b/turtles_all_the_way_down.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to failure" class="kg-image" width="392" height="401" loading="lazy">
 
 	</figure>
 	<p>While it's easy to forget with the abstractions provided by these services, under all these clouds are servers, switches, and routers. If you're using Salesforce.com for CRM and your company adds a large number of new customers, you don't need to think about adding more drives or servers to scale up. Instead, Salesforce.com handles the process of adding capacity across its hardware. If you're developing on top of a cloud service like AWS's EC2, as your application scales you can "spin up" new instances to provide more computational power. These instances are fractions of the capacity on a physical server which may be shared with other EC2 users. Because each EC2 customer only uses whatever isnecessary for their application, the utilization rates across the servers is very high.</p>
@@ -48,7 +48,7 @@
 	<p>It is inevitable that the hardware that makes up these clouds will, from time to time, fail. Spinning hard drives crash, memory goes bad, CPUs overheat, routers flake out, or someone disconnects the wrong power circuit bringing a whole rack of equipment offline. When those pieces of hardware fail, different cloud services will react in different ways.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lvOuxWUqg5Bc6J47J6750/8790b6c7e96bc026a84e42a791df13e1/storm_clouds.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lvOuxWUqg5Bc6J47J6750/b4cd4f1406591adb8cfa42eda702cf42/storm_clouds.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to
 failure" class="kg-image" width="500" height="333" loading="lazy">
 
 	</figure>
@@ -65,7 +65,7 @@ failure" class="kg-image" width="500" height="333" loading="lazy">
 	<p>For certain systems, replicating data is easier than others. Compare Google and Twitter. If you're running a search on Google you'll hit one of the company's many geographically distributed data centers and get aset of results. Someone else running a different search hitting adifferent data center may get slightly different results. Google doesn't promise that everyone will see the same search results. As a result, they have a relatively straight forward data replication problem. The data that makes up Google's index will be "eventually consistent" across all their facilities, but that doesn't harm the underlying application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hihBJTyiNu2ODfGzMinRy/72e9dcc84286a1f419eb30595e832e93/nsync.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to failure" class="kg-image" width="270" height="180" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hihBJTyiNu2ODfGzMinRy/438f863b2bafacbf155f87372e8f728d/nsync.jpg.scaled500.jpg" alt="Thoughts on the AWS outage: making the cloud more resilient to failure" class="kg-image" width="270" height="180" loading="lazy">
 
 	</figure>
 	<p>Twitter, on the other hand, promises that you'll see real time updates from the people you follow. This creates a much more difficult data replication problem and explains why Twitter has a much more centralized infrastructure and continues to experience many more scaling pains. Facebook provides an interesting case study as well. As Facebook has scaled, they have deemphasized real time updates to timeline in order to make it easier to scale their infrastructure.</p>
@@ -92,7 +92,7 @@ failure" class="kg-image" width="500" height="333" loading="lazy">
 	<p>While there remains hesitation in some quarters to turn over the Data &amp; Application layer to the cloud, moving the Front End layer to the cloud is a no-brainer. That, of course, is exactly what we've built at CloudFlare: a scalable front end layer that can run in front of any web application to help it better scale. What's powerful is that any web site or application can provision CloudFlare simply by making a DNS change. Since the Front End layer doesn't need to synchronize data, CloudFlare can begin working to accelerate and protect web traffic immediately and without any changes to the Data &amp; Application layer.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Vrt4GyaYpuCEoicyecNL8/8b399933c7f00b63b9d6fb50f05824b3/cloudflare_literally.png.scaled500.png" alt="Thoughts on the AWS outage: making the cloud more resilient to
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Vrt4GyaYpuCEoicyecNL8/a1fd6f89e1fa768b383e24d64f1322e5/cloudflare_literally.png.scaled500.png" alt="Thoughts on the AWS outage: making the cloud more resilient to
 failure" class="kg-image" width="500" height="343" loading="lazy">
 
 	</figure>

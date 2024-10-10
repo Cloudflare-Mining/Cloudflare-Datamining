@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fGsSPUCSxABWlwpC5HfdV/0548b99f8e6d40a3052e515a04860991/image11-1.png" alt="Examining HTTP/3 usage one year on" class="kg-image" width="1999" height="1103" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fGsSPUCSxABWlwpC5HfdV/ca7cf03337e600bd768b8acc7d06de36/image11-1.png" alt="Examining HTTP/3 usage one year on" class="kg-image" width="1999" height="1103" loading="lazy">
 
 	</figure>
 	<p>In June 2022, after the publication of a set of HTTP-related Internet standards, including the <a href="https://www.rfc-editor.org/rfc/rfc9114.html">RFC that formally defined HTTP/3</a>, we published <a href="https://blog.cloudflare.com/cloudflare-view-http3-usage"><i>HTTP RFCs have evolved: A Cloudflare view of HTTP usage trends</i></a>. One year on, as the RFC reaches its first birthday, we thought it would be interesting to look back at how these trends have evolved over the last year.</p>
@@ -23,7 +23,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BD7nhUhMqEAKHE3lw7Ucs/f8309b3f4d28bd3f4b5d571d9053ca2a/download-3.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BD7nhUhMqEAKHE3lw7Ucs/1230d8393a90c5a431398edccac2b6c2/download-3.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Aggregating global web traffic to Cloudflare on a daily basis, we can observe usage trends for HTTP/1.1, HTTP/2, and HTTP/3 across the surveyed one year period. The share of traffic over HTTP/1.1 declined from 8% to 7% between May and the end of September, but grew rapidly to over 11% through October. It stayed elevated into the new year and through January, dropping back down to 9% by May 2023. Interestingly, the weekday/weekend traffic pattern became more pronounced after the October increase, and remained for the subsequent six months. HTTP/2 request share saw nominal change over the year, beginning around 68% in May 2022, but then starting to decline slightly in June. After that, its share didn’t see a significant amount of change, ending the period just shy of 64%. No clear weekday/weekend pattern was visible for HTTP/2. Starting with just over 23% share in May 2022, the percentage of requests over HTTP/3 grew to just over 30% by August and into September, but dropped to around 26% by November. After some nominal loss and growth, it ended the surveyed time period at 28% share. (Note that this graph begins in late May due to data retention limitations encountered when generating the graph in early June.)</p>
@@ -38,7 +38,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iKB6A5jGKVMBcaRAYckjv/8e6ec564b8b00572dac76f610d2b7249/download--1--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iKB6A5jGKVMBcaRAYckjv/47b7777093a2cad492060224a8257601/download--1--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Although <a href="https://blog.cloudflare.com/application-security-2023">API traffic</a> makes up a significant amount of Cloudflare’s request volume, only a small fraction of those requests are made over HTTP/3. Approximately half of such requests are made over HTTP/1.1, with another third over HTTP/2. However, HTTP/3 usage for APIs grew from around 6% in May 2022 to over 12% by May 2023. HTTP/3’s smaller share of traffic is likely due in part to support for HTTP/3 in key tools like <a href="https://curl.se/docs/http3.html">curl</a> still being considered as “experimental”. Should this change in the future, with HTTP/3 gaining first-class support in such tools, we expect that this will accelerate growth in HTTP/3 usage, both for <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> and overall as well.</p>
@@ -53,7 +53,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4J6wSXALudeaeZNzxvgRBo/bd61e5165ed0dd03840115674a95e668/download--2--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4J6wSXALudeaeZNzxvgRBo/6614895278f32528664d3f1444402350/download--2--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>The analyses presented above consider all HTTP requests made to Cloudflare, but we also thought that it would be interesting to look at HTTP version usage by potentially malicious traffic, so we broke out just those requests that were mitigated by one of Cloudflare’s application security solutions. The graph above shows that the vast majority of mitigated requests are made over HTTP/1.1 and HTTP/2, with generally less than 5% made over HTTP/3. Mitigated requests appear to be most frequently made over HTTP/1.1, although HTTP/2 accounted for a larger share between early August and late November. These observations suggest that attackers don’t appear to be investing the effort to upgrade their tools to take advantage of the newest version of HTTP, finding the older versions of the protocol sufficient for their needs. (Note that this graph begins in late May 2022 due to data retention limitations encountered when generating the graph in early June 2023.)</p>
@@ -68,35 +68,35 @@
 	<p>As we noted last year, <a href="https://caniuse.com/http3">support for HTTP/3 in the stable release channels of major browsers</a> came in November 2020 for Google Chrome and Microsoft Edge, and April 2021 for Mozilla Firefox. We also noted that in Apple Safari, HTTP/3 support needed to be <a href="https://developer.apple.com/forums/thread/660516">enabled</a> in the “Experimental Features” developer menu in production releases. However, in the most recent releases of Safari, it appears that this step is no longer necessary, and that HTTP/3 is now natively supported.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46nLEn3t41yyWfhZkznaEa/20f098f5b181bfc20641569aa5214a54/download--3--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46nLEn3t41yyWfhZkznaEa/29c5b7bfa59b34f55977cc65ad67c2bf/download--3--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Looking at request shares by browser, Chrome started the period responsible for approximately 80% of HTTP/3 request volume, but the continued growth of Safari dropped it to around 74% by May 2023. A year ago, Safari represented less than 1% of HTTP/3 traffic on Cloudflare, but grew to nearly 7% by May 2023, likely as a result of support graduating from experimental to production.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7L26q8bA4sjcNlx7Vh0ohL/ed3ca632148c9cef6631226f504f495d/download--4--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7L26q8bA4sjcNlx7Vh0ohL/667061d148ccbaa0043cd3fd1e38a879/download--4--2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Removing Chrome from the graph again makes trends across the other browsers more visible. As noted above, Safari experienced significant growth over the last year, while Edge saw a bump from just under 10% to just over 11% in June 2022. It stayed around that level through the new year, and then gradually dropped below 10% over the next several months. Firefox dropped slightly, from around 10% to just under 9%, while reported HTTP/3 traffic from Internet Explorer was near zero.</p>
 	<p>As we did in last year’s post, we also wanted to look at how the share of HTTP versions has changed over the last year across each of the leading browsers. The relative stability of HTTP/2 and HTTP/3 seen over the last year is in some contrast to the observations made in last year’s post, which saw some noticeable shifts during the May 2021 - May 2022 timeframe.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bt30ch54tIJHXIcA4xzNo/96c12dc9132bf8cc96789cb15fbd6e44/download--5--1.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bt30ch54tIJHXIcA4xzNo/ae9bf1593781da888f4c4843ac379465/download--5--1.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CRgOGynraOznE7gu7AFjM/bde84c136697e799aab607555e8d237b/download--6--1.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CRgOGynraOznE7gu7AFjM/ec94e0c8be1b4ec2fb4f9f8f0a715cb0/download--6--1.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AbRtdFXbJ43Xli6w0jVJN/9361be66e970055c68336d38aff0c849/download--7-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AbRtdFXbJ43Xli6w0jVJN/ad597050da4a948d41a9b275c3752d96/download--7-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/GgWSo7NP45FZffpsqScv1/6832c6d76be0742013d31e6c58c36c35/download--8-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GgWSo7NP45FZffpsqScv1/e269f55f5b59402ad771a065196b3d59/download--8-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>In looking at request share by protocol version across the major desktop browser families, we see that across all of them, HTTP/1.1 share grows in late October. Further analysis indicates that this growth was due to significantly higher HTTP/1.1 request volume across several large customer zones, but it isn’t clear <b>why</b> this influx of traffic using an older version of HTTP occurred. It is clear that HTTP/2 remains the dominant protocol used for content requests by the major browsers, consistently accounting for 50-55% of request volume for Chrome and Edge, and ~60% for Firefox. However, for Safari, HTTP/2’s share dropped from nearly 95% in May 2022 to around 75% a year later, thanks to the growth in HTTP/3 usage.</p>
@@ -112,12 +112,12 @@
 	<p>Mobile devices are responsible for <a href="https://radar.cloudflare.com/traffic?range=28d">over half</a> of request volume to Cloudflare, with Chrome Mobile <a href="https://radar.cloudflare.com/adoption-and-usage?range=28d">generating</a> more than 25% of all requests, and Mobile Safari more than 10%. Given this, we decided to explore HTTP/3 usage across these two key mobile platforms.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gEIDgm3aTtDYNZj0GD5bS/21338fc7a489353df68e5594f2af382b/download--9-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gEIDgm3aTtDYNZj0GD5bS/3728f1ff9a6790b44f66deec6101871c/download--9-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6a0By0cXENGpNbqV1BQB7G/9963db26ff94fecadb07877f220cf9e3/download--10-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6a0By0cXENGpNbqV1BQB7G/5ddbdae331642235f4395c0972e8121e/download--10-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Looking at Chrome Mobile and Chrome Mobile Webview (an embeddable version of Chrome that applications can use to display Web content), we find HTTP/1.1 usage to be minimal, topping out at under 5% of requests. HTTP/2 usage dropped from 60% to just under 55% between May and mid-September, but then bumped back up to near 60%, remaining essentially flat to slightly lower through the rest of the period. In a complementary fashion, HTTP/3 traffic increased from 37% to 45%, before falling just below 40% in mid-September, hovering there through May. The usage patterns ultimately look very similar to those seen with desktop Chrome, albeit without the latter’s clear weekday/weekend traffic pattern.</p>
@@ -133,24 +133,24 @@
 	<p>Exploring usage of the various versions of HTTP by <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler">search engine crawlers/bots</a>, we find that last year’s trend continues, and that there remains little-to-no usage of HTTP/3. (As mentioned above, this is somewhat expected, as HTTP/3 is optimized for browser use cases.) Graphs for Bing &amp; Baidu here are trimmed to a period ending April 1, 2023 due to anomalous data during April that is being investigated.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zpXgMRgxrsctpJHrIShZC/efc3f3032990067fed2acbfee3633a8c/download--11-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zpXgMRgxrsctpJHrIShZC/ca5830878f4a328f0ee98ea5afdd883b/download--11-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>GoogleBot continues to rely primarily on HTTP/1.1, which generally comprises 55-60% of request volume. The balance is nearly all HTTP/2, although some nominal growth in HTTP/3 usage sees it peaking at just under 2% in March.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/415sWhtv1TxuyQJgW95wq4/0b18425774dc5f19d59c28a0c03b3686/download--12-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/415sWhtv1TxuyQJgW95wq4/a4340af637f9dbc42f25b3d81f61f356/download--12-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Through January 2023, around 85% of requests from Microsoft’s BingBot were made via HTTP/2, but dropped to closer to 80% in late January. The balance of the requests were made via HTTP/1.1, as HTTP/3 usage was negligible.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EP2wiznT1eIlRB7rwDQZB/f38f48dfaafa5a9408b7fc0e7d20feeb/download--13-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EP2wiznT1eIlRB7rwDQZB/6a2ffcda96dbc4a77f85d4866453aea0/download--13-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BxyzvnZnL8rWgIpIcEh9D/c76af2804e9b6582f2bdb9fee71966dc/download--14-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BxyzvnZnL8rWgIpIcEh9D/63cd123faeb6e9795b3766082b918b1a/download--14-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Looking at indexing bots from search engines based outside of the United States, Russia’s YandexBot appears to use HTTP/1.1 almost exclusively, with HTTP/2 usage generally around 1%, although there was a period of increased usage between late August and mid-November. It isn’t clear what ultimately caused this increase. There was no meaningful request volume seen over HTTP/3. The indexing bot used by Chinese search engine Baidu also appears to strongly prefer HTTP/1.1, generally used for over 85% of requests. However, the percentage of requests over HTTP/2 saw a number of spikes, briefly reaching over 60% on days in July, November, and December 2022, as well as January 2023, with several additional spikes in the 30% range. Again, it isn’t clear what caused this spiky behavior. HTTP/3 usage by BaiduBot is effectively non-existent as well.</p>
@@ -165,19 +165,19 @@
 	<p>Similar to Bing &amp; Baidu above, the graphs below are also trimmed to a period ending April 1.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JuMhjbBKR1azrJ0zgZfeM/a3ecd21e9456a432db77ca92dcc13337/download--15-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JuMhjbBKR1azrJ0zgZfeM/7c765cdc40f70ddbdec16aa447585e0f/download--15-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>Facebook’s use of HTTP/3 for site crawling and indexing over the last year remained near zero, similar to what we observed over the previous year. HTTP/1.1 started the period accounting for under 60% of requests, and except for a brief peak above it in late May, usage of HTTP/1.1 steadily declined over the course of the year, dropping to around 30% by April 2023. As such, use of HTTP/2 increased from just over 40% in May 2022 to over 70% in April 2023. Meta engineers confirmed that this shift away from HTTP/1.1 usage is an expected gradual change in their infrastructure's use of HTTP, and that they are slowly working towards removing HTTP/1.1 from their infrastructure entirely.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Gq43pPPIHZuV6L8gqwHCv/3cf335725c62dff59a3c71716ff0624c/download--16-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Gq43pPPIHZuV6L8gqwHCv/1bb85f1d4eb42551a64e41e943678e7f/download--16-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>In last year’s blog post, we noted that “TwitterBot clearly has a strong and consistent preference for HTTP/2, accounting for 75-80% of its requests, with the balance over HTTP/1.1.” This preference generally remained the case through early October, at which point HTTP/2 usage began a gradual decline to just above 60% by April 2023. It isn’t clear what drove the week-long HTTP/2 drop and HTTP/1.1 spike in late May 2022. And as we noted last year, TwitterBot’s use of HTTP/3 remains non-existent.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fb6YfpvO1LgDfHmQ9ExXh/7bd21361c26d8878df99214f97d9e236/download--17-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fb6YfpvO1LgDfHmQ9ExXh/5c999b0cf8ced8ca0c7a64b9788c3fb5/download--17-.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>In contrast to Facebook’s and Twitter’s site crawling bots, HTTP/3 actually accounts for a noticeable, and growing, volume of requests made by LinkedIn’s bot, increasing from just under 1% in May 2022 to just over 10% in April 2023. We noted last year that LinkedIn’s use of HTTP/2 began to take off in March 2022, growing to approximately 5% of requests. Usage of this version gradually increased over this year’s surveyed period to 15%, although the growth was particularly erratic and spiky, as opposed to a smooth, consistent increase. HTTP/1.1 remained the dominant protocol used by LinkedIn’s bots, although its share dropped from around 95% in May 2022 to 75% in April 2023.</p>

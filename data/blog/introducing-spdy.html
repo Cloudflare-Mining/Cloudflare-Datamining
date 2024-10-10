@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AZCzUbATK5mT2XB0KgOaQ/ae8b646090f23bc745af1a6e554dbc16/introducing-spdy.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AZCzUbATK5mT2XB0KgOaQ/a122fac2f07401df31b145336c5096cf/introducing-spdy.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>We want to acknowledge and thank the amazing team of engineers at NGINX. They have been working on a SPDY implementation for quite some time and their work made it possible for us to roll out SPDY across our network. CloudFlare's core is built on top of the NGINX platform and we recommend it highly for anyone looking for a fast, secure, scalable web server. You can read more about their SPDY extension on their </i><a href="http://mailman.nginx.org/pipermail/nginx/2012-June/034233.html"><i>mailing list</i></a><i>.</i></p>
 	<hr>
@@ -37,7 +37,7 @@
 	<p>The good news is CloudFlare is making SPDY extremely easy and features like Rocket Loader remove some of the biggest SPDY caveats, making the protocol even speedier. For SPDY support, CloudFlare acts as a gateway. Similar to how CloudFlare's Automatic IPv6 Gateway works, an origin server doesn't need to support SPDY. Instead, visitors with browsers that support SPDY connect to CloudFlare over the protocol. We handle the multiplexing and begin sending down objects we already have in our cache. The request to the origin server for non-cached objects is sent over standard HTTP/S. As a result, CloudFlare customers can implement SPDY support with a single click.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IlJHp4Rg949qPVHmFIS7Y/812c0dff1e7ab92635d304415d63616c/rocket_loader_diagram.png.scaled500.png" alt="Introducing SPDY" class="kg-image" width="500" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IlJHp4Rg949qPVHmFIS7Y/e87bd484784cec7e7f18a70e02b673ab/rocket_loader_diagram.png.scaled500.png" alt="Introducing SPDY" class="kg-image" width="500" height="216" loading="lazy">
 
 	</figure>
 	<p>CloudFlare's Rocket Loader also helps with <a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">some of the multiplexing limitations</a>. Rocket Loader was built to provide multiplex-like support over a standard HTTP connection. By gathering all scripts, regardless of where they're hosted, into a single HTTP request, Rocket Loader limits the number of HTTP connections that are needed. This also means that even third party scripts that appear on your page are requested under your site's domain. As a result, if you enable SPDY and Rocket Loader together then you will be able to get the benefits of multiplexing even for many of the object that make up your site even if they are hosted outside of your domain.</p>

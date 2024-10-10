@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5USergrSDpcFLIbQLpj4Bx/a2141d8fb9b1a8df576ad5411e8fd65b/image3-14.png" alt="Cloudflare Fonts: enhancing website font privacy and speed" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5USergrSDpcFLIbQLpj4Bx/4c6bcb1404446355f566a207da90eecf/image3-14.png" alt="Cloudflare Fonts: enhancing website font privacy and speed" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>We are thrilled to introduce Cloudflare Fonts! In the coming weeks sites that use Google Fonts will be able to effortlessly load their fonts from the site’s own domain rather than from Google. All at a click of a button. This enhances both privacy and performance. It enhances users' privacy by eliminating the need to load fonts from Google’s third-party servers. It boosts a site's performance by bringing fonts closer to end users, reducing the time spent on DNS lookups and <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS connections</a>.</p>
@@ -46,13 +46,13 @@
 	<p>Users can see this. If they are using Google Fonts they can open their network tab and filter for these Google domains.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6takKzyxbtqTtdIuU9utYg/bce22efa1b425e022483b044697cc515/pasted-image-0-3.png" alt="" class="kg-image" width="1600" height="367" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6takKzyxbtqTtdIuU9utYg/ff5954918c62e80d0477ad57e89fc947/pasted-image-0-3.png" alt="" class="kg-image" width="1600" height="367" loading="lazy">
 
 	</figure>
 	<p>You can visually see the impact of the extra DNS request and TLS connection that these requests add to your website experience. For example on my WordPress site that natively uses Google Fonts as part of the theme adds an extra ~150ms.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QUqTuUzaTJBg7MF7xjTAX/0804f595340b7caa686cffece336b9d1/pasted-image-0--1--3.png" alt="" class="kg-image" width="1600" height="566" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QUqTuUzaTJBg7MF7xjTAX/66e67fb48f236a27b97848099406d6b9/pasted-image-0--1--3.png" alt="" class="kg-image" width="1600" height="566" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -70,19 +70,19 @@
 	<p>With Cloudflare Fonts enabled, you are able to see within your Network Tab that font files are now loaded from your own hostname from the <code>/cf-fonts</code> path and served from Cloudflare’s closest cache to the user, as indicated by the <code>cf-cache-status: HIT</code>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ChFfq4QVnM2vd1orK4QGb/5914e994ee3308de860c2229433cad97/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ChFfq4QVnM2vd1orK4QGb/2be3188dbf296453fd2f6cb00b812b0c/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="486" loading="lazy">
 
 	</figure>
 	<p>Additionally, you can notice that the timings section in the browser no longer needs an extra DNS lookup for the hostname or the setup of a TLS connection. This happens because the content is served from your hostname, and the browser has already cached the DNS response and has an open TLS connection.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UriVTiW5L6OjCUkkTYNp9/e6fef742ed2cef38e559944a5054737a/pasted-image-0--3--3.png" alt="" class="kg-image" width="1600" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UriVTiW5L6OjCUkkTYNp9/7dbf897131f46dcf0042822baa61547f/pasted-image-0--3--3.png" alt="" class="kg-image" width="1600" height="486" loading="lazy">
 
 	</figure>
 	<p>Finally, you can see the real-world performance benefits of Cloudflare Fonts. We conducted synthetic <a href="https://developers.cloudflare.com/speed/speed-test/run-speed-test">Google Lighthouse</a> tests before enabling Cloudflare Fonts on a straightforward page that displays text. <a href="https://www.cloudflare.com/learning/performance/how-dcl-and-fcp-affect-seo">First Contentful Paint (FCP)</a>, which represents the time it takes for the first content element to appear on the page, was measured at 0.9 seconds in the Google fonts tests. After enabling Cloudflare Fonts, the First Contentful Paint (FCP) was reduced to 0.3 seconds, and our overall Lighthouse performance score improved from 98 to a perfect 100 out of 100.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k4uqNrLxNX6ibT49BFuDT/218c70057e3b31b7828719ffc5f24e4d/image6-1.png" alt="" class="kg-image" width="1507" height="980" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1k4uqNrLxNX6ibT49BFuDT/f8d59a6e5b03d5be792dd0b2cf6bbfe5/image6-1.png" alt="" class="kg-image" width="1507" height="980" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

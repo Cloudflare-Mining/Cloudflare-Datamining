@@ -1,9 +1,9 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lvkA4iYSwJOxeROzA6S5L/cbe3da846e88b2480bf40d7cd0426aa1/two-weeks-later-finding-and-eliminating-long-tail-latencies.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lvkA4iYSwJOxeROzA6S5L/49fbfbe858bb0319c846a6b0e710ab31/two-weeks-later-finding-and-eliminating-long-tail-latencies.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog was published on 2 October, 2021. As we continue to optimize our network we're publishing regular updates, which are available </i><a href="https://blog.cloudflare.com/tag/network-performance-update"><i>here</i></a><i>.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j8el9UlTTSiqyD4LBGxkr/7bf74ce742072fb057219733d5aa7999/image8-4.png" alt="Two Weeks Later: Finding and Eliminating Long Tail Latencies" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j8el9UlTTSiqyD4LBGxkr/8641f8f594b14e9387a1b5e6c8965e61/image8-4.png" alt="Two Weeks Later: Finding and Eliminating Long Tail Latencies" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>A little over two weeks ago, <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">we shared extensive benchmarking results</a> of edge networks all around the world. &nbsp;It showed that on a range of tests (TCP connection time, time to first byte, time to last byte), and on a range of measurements (p95, mean), that Cloudflare had some impressive network performance. But we weren't the fastest everywhere. So we made a commitment: <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">we would improve in at least 10%</a> of networks where we were not #1.</p>
@@ -19,20 +19,20 @@
 	<p>In the process of quantifying network performance, it became clear where we were not the fastest everywhere. There were 61 country/network pairs where we more than 100ms behind the leading provider:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jiNczP9zuLey1Aa4pjtIC/94bce68aff9892ee7973d8262d122922/image3-4.png" alt="" class="kg-image" width="1530" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jiNczP9zuLey1Aa4pjtIC/209df9bd09b0f9881892bc8072244ffe/image3-4.png" alt="" class="kg-image" width="1530" height="936" loading="lazy">
 
 	</figure>
 	<p>Once that was done, the fun began: we needed to go through the process of figuring out <i>why</i> we were slow — and then improve. The challenges we faced were unique to each network and highlighted a variety of different issues that are prevalent on the Internet. We’re going to deep dive into a couple of networks, and show how we diagnosed and then improved performance.</p>
 	<p>But before we do, here are the results of our efforts in the past two weeks: of the 61 networks where our performance was over 100ms behind the leader, we are now the #1 network in 29 of them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7z0tWvvIzmh1iRiOdcxlZY/b943cc6a30add5850a25fde2b3b72649/image2-5.png" alt="" class="kg-image" width="1530" height="940" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7z0tWvvIzmh1iRiOdcxlZY/b327b3e3fec502258da4679687ad6043/image2-5.png" alt="" class="kg-image" width="1530" height="940" loading="lazy">
 
 	</figure>
 	<p>And it’s not that we just focused on those 29 networks, either. We’ve dramatically improved our performance in almost all the networks where we were over 100ms behind the leader.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67Ne7rTbMeVI2wY6LdmDLI/bd7d1f095c3462d4e9bbaa4554474a15/image7-1.png" alt="" class="kg-image" width="976" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67Ne7rTbMeVI2wY6LdmDLI/e136718302a8b8eb6dfe2af7070b19e3/image7-1.png" alt="" class="kg-image" width="976" height="371" loading="lazy">
 
 	</figure>
 	<p>With the results out of the way, let’s share the story of chasing peak performance in three very different geographies — each with three very different sets of challenges. Before we begin: a lot of Cloudflare’s internal network performance is automatically tuned. However, by its very nature, the Internet is a network of networks — and that inherently relies on us talking to other network operators to maximize performance. That’s often what we had to do here.</p>
@@ -50,21 +50,21 @@
 	<p>We then started to take a more in-depth look at the path from this particular transit provider and identified that traffic was routed all the way to the USA before coming back to Brazil. The transit provider was exhibiting behavior known as tromboning: traffic from one location destined to a network in the same location travels vast distances only to be exchanged and then returns again. Tromboning typically occurs as a result of networks preferring paths that are farther away from the best possible path. This can happen due to peering preferences, BGP configurations, or the presence of direct interconnection farther away from end users. This explained the higher <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> on this network we saw during Speed Week.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4E1eWRehe2YDxQ56OnIi6M/dd20b6a50c951670dd33bd1e4473c1ab/image9-1.png" alt="" class="kg-image" width="1836" height="1698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4E1eWRehe2YDxQ56OnIi6M/d3aaaf93190ee251696d6c2559e8cdbc/image9-1.png" alt="" class="kg-image" width="1836" height="1698" loading="lazy">
 
 	</figure>
 	<p>The next step we took was to look into alternatives to this transit connection. We have a nearby data center in Rio de Janeiro — where we also had a PNI with Network-A. Moreover, São Paulo and Rio de Janeiro are connected via our <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">backbone</a> network. After making the necessary checks to ensure we had room to carry traffic towards Network-A through our backbone and out through the PNI in Rio, we proceeded to prepare the network configuration changes.</p>
 	<p>We first started announcing Network-A IP addresses out of our backbone in Rio and then accepting them into São Paulo. We then ensured we preferred the path via our backbone over the PNI by changing the BGP behavior through the LOCAL_PREF path attribute. We then removed all the configuration specifying that transit provider as the preferred route for the previously identified traffic from Network-A.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wA5qDrCMk3jp5kuEBTvcc/a838d53134e03808c820fff3bb4286e2/1EF832A7-05BF-4D6D-8828-A24EC4CBE445.png" alt="" class="kg-image" width="1598" height="1456" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wA5qDrCMk3jp5kuEBTvcc/a8984b9d5eb49299320976d7fbdd2895/1EF832A7-05BF-4D6D-8828-A24EC4CBE445.png" alt="" class="kg-image" width="1598" height="1456" loading="lazy">
 
 	</figure>
 	<p>The result was as expected. Traffic moved away from the transit provider onto our backbone network. We confirmed we achieved a decrease in latency by monitoring our p95 TCP <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTTs</a>, which went from 175ms to 90ms.</p>
 	<p>We currently rank #1 with Network-A, moving up from #5 during Speed Week, as seen in the chart below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mgJnmGVrbvhJZ0NnEBHQF/d91d5d72f6ef373dd42c151f88d2939a/image6-3.png" alt="" class="kg-image" width="1542" height="940" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mgJnmGVrbvhJZ0NnEBHQF/540b9632f5756a746deff45ccc04e1e7/image6-3.png" alt="" class="kg-image" width="1542" height="940" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -83,7 +83,7 @@
 	<p>These changes pushed us up from ranking #2 during Speed Week to #1, as shown by the graph below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G2dx8I8rTRD6iviYmZy2s/7e5257090d9052ee557f473bc9d6f747/image4-5.png" alt="" class="kg-image" width="1190" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G2dx8I8rTRD6iviYmZy2s/4e5f8e2988f8191ab21f469fa92853db/image4-5.png" alt="" class="kg-image" width="1190" height="728" loading="lazy">
 
 	</figure>
 	<p>You may notice that going from #2 to #1 still means we have a latency of about 300ms. &nbsp;We want to ensure that every network has amazing performance, but we <a href="https://blog.cloudflare.com/last-mile-insights">can’t control all network providers</a> and how they connect with the rest of the Internet. We’re constantly working to ensure that end users see the best experience possible.</p>
@@ -103,7 +103,7 @@
 	<p>This change produced better results in terms of latency. We were #2 during Speed Week. We are now #1, as seen by this chart:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41Llttys5yJZtpvroQMbFz/edd8088b968c11d3892f3027a477795a/image5-4.png" alt="" class="kg-image" width="1322" height="804" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41Llttys5yJZtpvroQMbFz/5834bbedb2499080e1eb857d08691795/image5-4.png" alt="" class="kg-image" width="1322" height="804" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -118,13 +118,13 @@
 	<p>The first was the mean TCP connection time in the top 1,000 networks by number of IP addresses. Since then, we’ve been optimizing and have measured our performance again, and we’ve now moved into the #1 spot.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4N2FWAq1EzQlOAM5YoUghZ/c124997f5c802b3dee1bf9c1421874e0/image4-6.png" alt="" class="kg-image" width="1068" height="822" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4N2FWAq1EzQlOAM5YoUghZ/0bfce26db75f18ea55701621a73646ba/image4-6.png" alt="" class="kg-image" width="1068" height="822" loading="lazy">
 
 	</figure>
 	<p>The other measurement where we were #2 was mean TTLB in the top 1,000 networks by IP count. We’ve moved into the #1 spot, but there’s still work to do. Which makes sense because the work we’ve been doing over the last two weeks optimized network performance and not our software platform. Hence, connection times got a lot better while TTLB improved less dramatically.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4y2K8NiG4zsWGkL6D26AX/19e35d4629c808e99d19504c5df5a7b8/image9-2.png" alt="" class="kg-image" width="1068" height="822" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4y2K8NiG4zsWGkL6D26AX/445590856dedcac113251ef80506184e/image9-2.png" alt="" class="kg-image" width="1068" height="822" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -1,10 +1,10 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Tv4hu3OoyIYJUwmeMutpy/3293e65f234430a50459189085dd6f0a/end-of-the-road-for-rc4.jpg" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Tv4hu3OoyIYJUwmeMutpy/88e235486dce5c9a6f3955b739bb3bce/end-of-the-road-for-rc4.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today, we completely disabled the RC4 encryption algorithm for all SSL/TLS connections to CloudFlare sites. It's no longer possible to connect to any site that uses CloudFlare using RC4.</p>
 	<p>Over a year ago, we <a href="https://blog.cloudflare.com/killing-rc4">disabled RC4 for connections for TLS 1.1 and above</a> because there were more secure algorithms available. In May 2014, we <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">deprecated RC4</a> by moving it to the lowest priority in our list of cipher suites. That forced any browser that had a good alternative to RC4 to use it. Those two changes meant that almost everyone who was using RC4 to connect to CloudFlare sites switched to a more secure protocol.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9UpKzGh7EBXIKuhQGtKDb/6a65d102bec74ddb3046c3b51f3afd69/593px-Nokia_6120_Classic_alga_01.jpg" alt="" class="kg-image" width="593" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9UpKzGh7EBXIKuhQGtKDb/52af7b5b35a730a947da13b44764ebe5/593px-Nokia_6120_Classic_alga_01.jpg" alt="" class="kg-image" width="593" height="480" loading="lazy">
 
 	</figure>
 	<p>Back in May, we noted that <a href="https://blog.cloudflare.com/the-web-is-world-wide-or-who-still-needs-rc4">some people still needed RC4</a>, particularly people using old mobile phones and some Windows XP users. At the time, 4% of requests using RC4 came from a single phone type: the <a href="https://en.wikipedia.org/wiki/Nokia_6120_classic">Nokia 6120</a>.</p>
@@ -19,14 +19,14 @@
 	<p>Since May, that situation has remained largely unchanged: there are some institutions doing SSL-interception (probably for IDS or policy enforcement reasons) that use RC4 for outbound connections, and many apparent individuals running software that does the same.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xWjjFUCTekWvJbZpTot18/5f1f222f199066c5044851956a9f2792/Screen-Shot-2015-02-23-at-10-50-04-1.png" alt="" class="kg-image" width="800" height="593" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xWjjFUCTekWvJbZpTot18/62dc3ba44ff81c03e22b74248ae13dfa/Screen-Shot-2015-02-23-at-10-50-04-1.png" alt="" class="kg-image" width="800" height="593" loading="lazy">
 
 	</figure>
 	<p>We've been continually tracking what's happening in the academic community around RC4 attacks and the slow death of RC4 as people switch from old devices to newer ones.</p>
 	<p>With both a decline in RC4 connections to CloudFlare and whispers of another, easier attack on RC4 in the academic community, we've decided the time is right to disable RC4 completely.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ToJQPuD7viATrLnNh4076/0f204c23a57b9676b51f1d3730c18f5a/cloudflare_ssl-week-1.png" alt="CloudFlare SSL Week" class="kg-image" width="1000" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ToJQPuD7viATrLnNh4076/0797e22b1191fb6b8ad1db46ca1c0180/cloudflare_ssl-week-1.png" alt="CloudFlare SSL Week" class="kg-image" width="1000" height="375" loading="lazy">
 
 	</figure>
 </div>

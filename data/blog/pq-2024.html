@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BKVR39WPLlSHQWF3IjrsO/1d07f34102efe37483a659217fcc1790/image10-1.png" alt="The state of the post-quantum Internet" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BKVR39WPLlSHQWF3IjrsO/4c21d8896236cea627ce794206137d31/image10-1.png" alt="The state of the post-quantum Internet" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today, nearly <b>two percent</b> of all TLS 1.3 connections established with Cloudflare are secured with <b>post-quantum cryptography.</b> We expect to see double-digit adoption by the end of 2024. Apple <a href="https://security.apple.com/blog/imessage-pq3">announced</a> in February 2024 that it will secure iMessage with post-quantum cryptography before the end of the year, and <a href="https://signal.org">Signal</a> chats are <a href="https://signal.org/blog/pqxdh">already secured</a>. What once was the topic of futuristic tech demos will soon be the new security baseline for the Internet.</p>
 	<p>A lot has been happening in the field over the last few years, from mundane name changes (ML-KEM is the new name for Kyber), to new proposed algorithms in the <a href="https://csrc.nist.gov/projects/pqc-dig-sig">signatures onramp</a>, to the catastrophic <a href="https://eprint.iacr.org/2022/975.pdf">attack on SIKE</a>. Plenty that has been written merely three years ago now feels quite out of date. Thus, it is high time for an update: in this blog post we’ll take measure of where we are now in early 2024, what to expect for the coming years, and what you can do today.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rJBlfZsFpgggNh7HoiSC7/b63a7247b009cacd1f213dce6b740652/graph.png" alt="Fraction of TLS 1.3 connections established with Cloudflare that are secured with post-quantum cryptography." class="kg-image" width="1600" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rJBlfZsFpgggNh7HoiSC7/9016d555b9e30dfe492db6cba85d31b3/graph.png" alt="Fraction of TLS 1.3 connections established with Cloudflare that are secured with post-quantum cryptography." class="kg-image" width="1600" height="1200" loading="lazy">
 
 	</figure>
 	<p>Fraction of TLS 1.3 connections established with Cloudflare that are secured with post-quantum cryptography.</p>
@@ -37,7 +37,7 @@
 	<p>There are big differences between the different types of technology used to build quantum computers: silicon-based quantum computers seem to scale well, are quick to execute instructions, but have very noisy qubits. This does not mean they’re useless: with <a href="https://en.wikipedia.org/wiki/Quantum_error_correction">quantum error correcting codes</a> one can effectively turn tens of millions of noisy silicon qubits into a few thousand high-fidelity ones, which could be enough to <a href="https://quantum-journal.org/papers/q-2021-04-15-433">break RSA</a>. Trapped-ion quantum computers, on the other hand, have much less noise, but have been harder to scale. Only a few hundred-thousand trapped-ion qubits could potentially draw the curtain on RSA.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2O3l7xYEj4myLC4C9NLuDC/cd4f646a030e90304e867c65e752379e/Screenshot-2024-03-05-at-11.53.49.png" alt="State-of-art in quantum computing measured by qubit count and noise in 2021, 2022, and 2023. Once the shaded gray area hits the left-most red line, we’re in trouble. Red line is expected to move to the left. Compiled by Samuel Jaques of the University of Waterloo." class="kg-image" width="1222" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O3l7xYEj4myLC4C9NLuDC/4e49bc0d454bc5ffb8d3a4a5e4aa3300/Screenshot-2024-03-05-at-11.53.49.png" alt="State-of-art in quantum computing measured by qubit count and noise in 2021, 2022, and 2023. Once the shaded gray area hits the left-most red line, we’re in trouble. Red line is expected to move to the left. Compiled by Samuel Jaques of the University of Waterloo." class="kg-image" width="1222" height="332" loading="lazy">
 
 	</figure>
 	<p>State-of-art in quantum computing measured by qubit count and noise in <a href="https://sam-jaques.appspot.com/quantum_landscape">2021</a>, <a href="https://sam-jaques.appspot.com/quantum_landscape_2022">2022</a>, and <a href="https://sam-jaques.appspot.com/quantum_landscape_2023">2023</a>. Once the shaded gray area hits the left-most red line, we’re in trouble. Red line is expected to move to the left. Compiled by <a href="https://sam-jaques.appspot.com">Samuel Jaques</a> of the University of Waterloo.</p>
@@ -54,7 +54,7 @@
 	<p>We can also look at the US government’s timeline for the migration to post-quantum cryptography. The National Security Agency (NSA) aims to finish its migration before <a href="https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS_.PDF">2033</a>, and will start to prefer post-quantum ready vendors for many products in 2025. The US government has a similarly ambitious timeline for the country as a whole: the aim is to be done <a href="https://www.whitehouse.gov/briefing-room/statements-releases/2022/05/04/national-security-memorandum-on-promoting-united-states-leadership-in-quantum-computing-while-mitigating-risks-to-vulnerable-cryptographic-systems">by 2035</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50GUlzarTvWmpbkxZtourY/393b57d33979aa8cd0424b60f004edd4/image7.png" alt="NSA timeline for migrating third-party software to post-quantum cryptography." class="kg-image" width="1999" height="1118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50GUlzarTvWmpbkxZtourY/add63399c2f3804a98dc184f0fd8e9db/image7.png" alt="NSA timeline for migrating third-party software to post-quantum cryptography." class="kg-image" width="1999" height="1118" loading="lazy">
 
 	</figure>
 	<p><a href="https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS_.PDF">NSA timeline</a> for migrating third-party software to post-quantum cryptography.</p>
@@ -320,7 +320,7 @@
 	<p>The followup blog in December 2017 had a rather different tone: “<a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">Why TLS 1.3 isn’t in browsers yet</a>”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15iyL3KO6ap7JYKFyNcyeP/ed6b9f9a79992b83f20a825dcfd7ebdd/image3-7.png" alt="Adoption of TLS 1.3 in December 2017: less than 0.06%." class="kg-image" width="1498" height="1072" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15iyL3KO6ap7JYKFyNcyeP/9ea326e694601026cebcbbe889485683/image3-7.png" alt="Adoption of TLS 1.3 in December 2017: less than 0.06%." class="kg-image" width="1498" height="1072" loading="lazy">
 
 	</figure>
 	<p>Adoption of TLS 1.3 in December 2017: less than 0.06%.</p>
@@ -329,7 +329,7 @@
 	<p>Today TLS 1.3 is a huge success, and is used by more than 93% of the connections.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hsRBAdJf6bdmg1w0i9JXh/17202de4fefc795ebaeb2669bb5604e6/image4-8.png" alt="TLS 1.3 adoption in February 2024. QUIC uses TLS 1.3 under the hood." class="kg-image" width="906" height="624" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hsRBAdJf6bdmg1w0i9JXh/3d7fb9047b740eb5697b746c74143a28/image4-8.png" alt="TLS 1.3 adoption in February 2024. QUIC uses TLS 1.3 under the hood." class="kg-image" width="906" height="624" loading="lazy">
 
 	</figure>
 	<p>TLS 1.3 adoption in February 2024. QUIC uses TLS 1.3 under the hood.</p>
@@ -536,7 +536,7 @@
 	<p>Being well aware of potential compatibility and performance issues, Google started <a href="https://security.googleblog.com/2016/07/experimenting-with-post-quantum.html">a first experiment</a> with post-quantum cryptography back in 2016, the same year NIST started their competition. This was followed up by a second larger joint experiment by <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-tls">Cloudflare</a> and <a href="https://www.imperialviolet.org/2018/12/12/cecpq2.html">Google</a> in 2018. We tested two different hybrid post-quantum key agreements: CECPQ2, which is a combination of the lattice-based NTRU-HRSS and X25519, and CECPQ2b, a combination of the isogeny-based SIKE and again X25519. NTRU-HRSS is very similar to ML-KEM in size, but is computationally somewhat more taxing on the client-side. SIKE on the other hand, has very small keys, is computationally very expensive, and was <a href="https://eprint.iacr.org/2022/975.pdf">completely broken</a> in 2022. With respect to TLS handshake times, X25519+NTRU-HRSS performed very well, being hard to distinguish by eye from the control connections.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WPFvf7wEyiXYx1xYTBCAj/10503b7129062c33b9cdc0066d40a104/image5-2.png" alt="Handshake times compared between X25519 (blue), X25519+SIKE (green) and X25519+NTRU-HRSS (orange). " class="kg-image" width="2000" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WPFvf7wEyiXYx1xYTBCAj/c207f16128331f55043551c6738b9dd4/image5-2.png" alt="Handshake times compared between X25519 (blue), X25519+SIKE (green) and X25519+NTRU-HRSS (orange). " class="kg-image" width="2000" height="1063" loading="lazy">
 
 	</figure>
 	<p>Handshake times compared between X25519 (blue), X25519+SIKE (green) and X25519+NTRU-HRSS (orange).&nbsp;</p>
@@ -545,7 +545,7 @@
 	<p>Today the situation looks better. At the time of writing, Chrome has enabled post-quantum key-agreement for 10% of all users. That accounts for about 1.8% of all our TLS 1.3 connections, as shown in the figure below. That’s a lot, but we’re not out of the woods yet. There could well be performance and compatibility issues that prevent a further rollout.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fnypmfnBMi2AR0lvSq4Zb/b63ad87c5935e326095d20e49810608e/graph--1-.png" alt="Fraction of TLS 1.3 connections established with Cloudflare that are secured with post-quantum cryptography. At the moment, it’s more than 99% from Chrome. " class="kg-image" width="1600" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fnypmfnBMi2AR0lvSq4Zb/3e5660bfb014452e84a3d3e26f1f733b/graph--1-.png" alt="Fraction of TLS 1.3 connections established with Cloudflare that are secured with post-quantum cryptography. At the moment, it’s more than 99% from Chrome. " class="kg-image" width="1600" height="1200" loading="lazy">
 
 	</figure>
 	<p>Fraction of TLS 1.3 connections established with Cloudflare that are secured with post-quantum cryptography. At the moment, it’s more than 99% from Chrome.&nbsp;</p>
@@ -571,7 +571,7 @@
 	<p>In <a href="https://blog.cloudflare.com/post-quantum-to-origins">September 2023,</a> we added support for our customers to enable post-quantum key agreement on connections from Cloudflare to their origins. That’s connection (3) in the following diagram. This can be done in two ways: the fast way, and the slow but safer way. In both cases, if the origin does not support it, we fall back to traditional key-agreement. We explain the details of these in the blog post on <a href="https://blog.cloudflare.com/post-quantum-to-origins">post-quantum cryptography</a>, but in short, in the fast way we send the post-quantum keyshare immediately, and in the slow but safe way we let the origin ask for post-quantum using a <i>HelloRetryRequest</i> message. Chrome, by the way, is deploying post-quantum key agreement the fast way.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/THODVUtVIIyGgACaPDZa5/41b49472160246cb844599da66d7552a/image11.png" alt="Typical connection flow when a visitor requests an uncached page." class="kg-image" width="1600" height="417" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/THODVUtVIIyGgACaPDZa5/7ca19e62617a241d44dda67ec6200a58/image11.png" alt="Typical connection flow when a visitor requests an uncached page." class="kg-image" width="1600" height="417" loading="lazy">
 
 	</figure>
 	<p>Typical connection flow when a visitor requests an uncached page.</p>
@@ -916,7 +916,7 @@
 	<p>Initially, we wanted to run the experiment on a small sample of regular traffic, in order to get unbiased data. Unfortunately, we found that large certificate chains broke some connections. Thus, to avoid breaking customer connections, we set up the experiment to use background connections launched from our challenge pages. For each participant, we launched two background connections: one with a larger certificate chain (live) and one with a normal chain(control). The graph on the right shows the number of control connections that are missing a corresponding live connection. There are jumps around 10kB and 30kB, suggesting that there are clients or middleboxes &nbsp;that break when certificate chains grow by more than 10kB or 30kB.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sU1gCujSAuhaRfScGhoS1/07dbfbb83e23c207c71775034e65b648/image9.png" alt="Missing requests when artificially inflating certificate chain size to simulate post-quantum certificates." class="kg-image" width="1999" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sU1gCujSAuhaRfScGhoS1/18569ea438ffb0c029f8bcd2b1a53650/image9.png" alt="Missing requests when artificially inflating certificate chain size to simulate post-quantum certificates." class="kg-image" width="1999" height="1000" loading="lazy">
 
 	</figure>
 	<p>Missing requests when artificially inflating certificate chain size to simulate post-quantum certificates.</p>
@@ -925,7 +925,7 @@
 	<p>What about performance? We saw the following impact on TLS handshake time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66AlqTNxx8h6oKMZSBqqsD/07651914f2613c4acbe30ce2ab65b398/image13.png" alt="Performance when artificially inflating certificate chain size to simulate post-quantum certificates." class="kg-image" width="1999" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66AlqTNxx8h6oKMZSBqqsD/53e71fcf675af6818fc63eb7ab40a339/image13.png" alt="Performance when artificially inflating certificate chain size to simulate post-quantum certificates." class="kg-image" width="1999" height="1000" loading="lazy">
 
 	</figure>
 	<p>Performance when artificially inflating certificate chain size to simulate post-quantum certificates.</p>
@@ -1006,7 +1006,7 @@
 	<p>So, how does it actually work? I’ll try to give a short summary — for a longer introduction check out <a href="https://youtu.be/u_sFyz4F7dc?si=inG4bgBwKLzrBuvY&amp;t=2566">David Benjamin’s IETF presentation</a>, or get your hands dirty by <a href="https://github.com/bwesterb/mtc">setting up your own MTC CA</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pAmfsKWArXUPEZtgXezao/872c5341bb399f0e138cb45c2427ef5c/image1-9.png" alt="An overview of a Merkle Tree certificate deployment" class="kg-image" width="1156" height="740" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pAmfsKWArXUPEZtgXezao/f40906c5f85ec7a141920b3d49fba0af/image1-9.png" alt="An overview of a Merkle Tree certificate deployment" class="kg-image" width="1156" height="740" loading="lazy">
 
 	</figure>
 	<p>An overview of a Merkle Tree certificate deployment</p>

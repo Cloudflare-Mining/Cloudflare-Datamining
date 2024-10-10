@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hnzkTCPSRcLACUURaaSch/92158887f9c82dc67cf3d2b37dc58296/Screen-Shot-2022-03-08-at-11.36.08-AM-1.png" alt="" class="kg-image" width="2000" height="961" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hnzkTCPSRcLACUURaaSch/33641c6e3b9380597a8289612e092c6f/Screen-Shot-2022-03-08-at-11.36.08-AM-1.png" alt="" class="kg-image" width="2000" height="961" loading="lazy">
 
 	</figure>
 	<p><a href="https://1.1.1.1">1.1.1.1</a> sees approximately 600 billion queries per day. However, proportionally, most queries sent to this resolver are over cleartext: 89% over UDP and TCP combined, and the remaining 11% are encrypted. We care about end-user privacy and would prefer to see all of these queries sent to us over an encrypted transport using DNS-over-TLS or DNS-over-HTTPS. Having a mechanism by which clients could discover support for encrypted protocols such as DoH or DoT will help drive this number up and lead to more name encryption on the Internet. That’s where <a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-03">DDR</a> – or Discovery of Designated Resolvers – comes into play. As of today, 1.1.1.1 supports the latest version of <a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-03">DDR</a> so clients can automatically upgrade non-secure UDP and TCP connections to secure connections. In this post, we’ll describe the motivations for DDR, how the mechanism works, and, importantly, how you can test it out as a client.</p>
@@ -46,7 +46,7 @@
 	<p>But what exactly is the network here? In practice, the topology typically looks like the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qHMZ4CvT0Euxi1wDGFkHu/ce3b7492232192c5ffb8473616efb649/pasted-image-0-1.png" alt="Typical DNS configuration from DHCP" class="kg-image" width="1600" height="440" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qHMZ4CvT0Euxi1wDGFkHu/d9f623761c5fadfb8a68c70af71fcda2/pasted-image-0-1.png" alt="Typical DNS configuration from DHCP" class="kg-image" width="1600" height="440" loading="lazy">
 
 	</figure>
 	<p><b><i>Typical DNS configuration from DHCP</i></b></p>
@@ -54,7 +54,7 @@
 	<p>This question also makes one important assumption: clients know the <i>desired</i> recursive resolver address. Why is this important? Typically, the IP address of a DNS recursive resolver is provided via Dynamic Host Configuration Protocol (DHCP). When a client joins a network, it uses DHCP to learn information about the network, including the default DNS recursive resolver. However, DHCP is a famously unauthenticated protocol, which means that any active attacker on the network can spoof the information, as shown below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BuMpxFkvg4F0gu2aLOuLj/031ba4ce56effecd568b1d947e263544/pasted-image-0--1-.png" alt="Unauthenticated DHCP discovery" class="kg-image" width="1266" height="1178" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BuMpxFkvg4F0gu2aLOuLj/3a4830c3edbcc3544933572e53a67397/pasted-image-0--1-.png" alt="Unauthenticated DHCP discovery" class="kg-image" width="1266" height="1178" loading="lazy">
 
 	</figure>
 	<p><b><i>Unauthenticated DHCP discovery</i></b></p>
@@ -82,7 +82,7 @@
 	<p>Certificates allow resolvers to prove authority for IP addresses. For example, if you view the certificate for one.one.one.one, you’ll see several IP addresses listed under the SubjectAlternativeName extension, including 1.1.1.1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iHNu6ZzbrIbR3B7BYHPKw/7a536efc66106d74ce375029ded93124/Screen-Shot-2022-03-01-at-12.35.13-PM.png" alt="SubjectAltName list of the one.one.one.one certificate" class="kg-image" width="930" height="376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iHNu6ZzbrIbR3B7BYHPKw/2f4e46032588fe6c2cd306fe16314b41/Screen-Shot-2022-03-01-at-12.35.13-PM.png" alt="SubjectAltName list of the one.one.one.one certificate" class="kg-image" width="930" height="376" loading="lazy">
 
 	</figure>
 	<p><b><i>SubjectAltName list of the one.one.one.one certificate</i></b></p>
@@ -102,7 +102,7 @@
 	<p>If this validation completes, clients can then use the secure connection to the designated resolver. In pictures, this is as follows:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NRBefhy1aJpJqkr98mSFZ/3cc858bdd3858e26d4185aa93a405bb8/pasted-image-0--2-.png" alt="DDR discovery process" class="kg-image" width="926" height="964" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NRBefhy1aJpJqkr98mSFZ/3fdbeff3c5af631c8e278d1639e54166/pasted-image-0--2-.png" alt="DDR discovery process" class="kg-image" width="926" height="964" loading="lazy">
 
 	</figure>
 	<p><b><i>DDR discovery process</i></b></p>

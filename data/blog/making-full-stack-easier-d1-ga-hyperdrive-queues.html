@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BKrpfqvHnl6yaHdXXsCoc/6991c92463ae0f7c92560def10489389/image4-31.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BKrpfqvHnl6yaHdXXsCoc/70280206c43fc4ecfa026968440f52f0/image4-31.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -20,7 +20,7 @@
 	<p>We’ve been on a mission to allow developers to bring their entire stack to Cloudflare for some time, but what might an application built on Cloudflare look like?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5D3F21rYXhLv0bI6FID3Kc/1bccebd185eccc49f69c0f69ba62704e/image6-11.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5D3F21rYXhLv0bI6FID3Kc/4b0ca6dfc52e168a852599345e111a02/image6-11.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
 
 	</figure>
 	<p>The diagram itself shouldn’t look too different from the tools you’re already familiar with: you want a <a href="https://developers.cloudflare.com/d1">database</a> for your core user data. <a href="https://developers.cloudflare.com/r2">Object storage</a> for assets and user content. Maybe a <a href="https://developers.cloudflare.com/queues">queue</a> for background tasks, like email or upload processing. A <a href="https://developers.cloudflare.com/kv">fast key-value store</a> for runtime configuration. Maybe even a <a href="https://developers.cloudflare.com/analytics/analytics-engine">time-series database</a> for aggregating user events and/or performance data. And that’s before we get to <a href="https://developers.cloudflare.com/workers-ai">AI</a>, which is increasingly becoming a core part of many applications in search, recommendation and/or image analysis tasks (at the very least!).</p>
@@ -36,7 +36,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FBwcKFjSHTCL2LcJRtNCo/ca9cd4412a6ce99af058b6baa1f836db/image2-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FBwcKFjSHTCL2LcJRtNCo/46c6a403e7f8c743ac8a4dff252d85e4/image2-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
 
 	</figure>
 	<p>Your core database is one of the most critical pieces of your infrastructure. It needs to be ultra-reliable. It can’t lose data. It needs to scale. And so we’ve been heads down over the last year getting the pieces into place to make sure D1 is production-ready, and we’re extremely excited to say that D1 — <a href="https://developers.cloudflare.com/d1">our global, serverless SQL database</a> — is now Generally Available.</p>
@@ -160,7 +160,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/47WBGHvqFpRkza2ldA5RBi/4ab4df903b00471b22c949ed8d7be8d8/image1-37.png" alt="" class="kg-image" width="1800" height="647" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47WBGHvqFpRkza2ldA5RBi/7f7f47055e1f4f066e213b88e9e98737/image1-37.png" alt="" class="kg-image" width="1800" height="647" loading="lazy">
 
 	</figure>
 	<p>We launched Hyperdrive into open beta <a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed">last September during Birthday Week</a>, and it’s now Generally Available — or in other words, battle-tested and production-ready.</p>
@@ -233,7 +233,7 @@ $ curl "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${
 	<p>A pull-based consumer can run anywhere, allowing you to run queue consumers alongside your existing legacy cloud infrastructure. Teams inside Cloudflare adopted this early on, with one use-case focused on writing device telemetry to a queue from our <a href="https://www.cloudflare.com/network">310+ data centers</a> and consuming within some of our back-of-house infrastructure running on Kubernetes. Importantly, our globally distributed queue infrastructure means that messages are retained within the queue until the consumer is ready to process them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UUkrE3bqqIdQiemV49Hal/f6b22175a4e62e0e972856e456d41721/image5-19.png" alt="" class="kg-image" width="1800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UUkrE3bqqIdQiemV49Hal/496c2d539b366a794d58479c99b1c9ec/image5-19.png" alt="" class="kg-image" width="1800" height="600" loading="lazy">
 
 	</figure>
 	<p>Queues also <a href="https://developers.cloudflare.com/queues/reference/batching-retries/#delay-messages">now supports delaying messages</a>, both when sending to a queue, as well as when marking a message for retry. This can be useful to queue (pun intended) tasks for the future, as well apply a backoff mechanism if an upstream API or infrastructure has rate limits that require you to pace how quickly you are processing messages.</p>
@@ -247,7 +247,7 @@ for (const msg of batch.messages) {
 	<p>We’ll also be bringing substantially increased per-queue throughput over the coming months on the path to getting Queues to GA. It’s important to us that Queues is <i>extremely</i> reliable: lost or dropped messages means that a user doesn’t get their order confirmation email, that password reset notification, and/or their uploads processed — each of those are user-impacting and hard to recover from.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RhxWjKGRmoJtgQ4toybvY/414c5fd87486b7d4172e63f1788c62c3/image3-35.png" alt="" class="kg-image" width="1800" height="405" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RhxWjKGRmoJtgQ4toybvY/57469d1ee721096a3c2b7551bbd277a4/image3-35.png" alt="" class="kg-image" width="1800" height="405" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

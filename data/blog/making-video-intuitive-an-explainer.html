@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Zjq5yjSg74JORpJCNfzTV/039c863817aeb07357a05be022265876/making-video-intuitive-an-explainer.png" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Zjq5yjSg74JORpJCNfzTV/7278b243e7151c1c3b32e33fc51974ac/making-video-intuitive-an-explainer.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On the Stream team at Cloudflare, we work to provide a great viewing experience while keeping our service affordable. That involves a lot of small tweaks to our video pipeline that can be difficult to discern by most people. And that makes the results of those tweaks less intuitive.</p>
 	<p>In this post, let's have some fun. Instead of fine-grained optimization work, we’ll do the opposite. Today we’ll make it easy to see changes between different versions of a video: we’ll start with a high-quality video and ruin it. Instead of aiming for perfection, let’s see the impact of various video coding settings. We’ll go on a deep dive on how to make some victim video look gloriously bad and learn on the way.</p>
@@ -12,7 +12,7 @@
 	<p>It’s worth mentioning that video is a hack of your brain. Every video is just an optimized series of pictures— a very sophisticated flipbook. Display those pictures quickly enough and you can fool the brain into interpreting motion. If you show enough points of light close together, they meld into a continuous image. Then, change the color of those lights frequently enough and you end up with smooth motion.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EMewvsE1wQR8Zb7UuuY7f/0e8ad6c56bfbffa699e8ce3fe859983f/flipbook_2x.png" alt="" class="kg-image" width="593" height="530" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EMewvsE1wQR8Zb7UuuY7f/5618cf12979c1fe4806202d17c190115/flipbook_2x.png" alt="" class="kg-image" width="593" height="530" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -41,7 +41,7 @@
 	<p>Let’s figure out exactly what we want to change about the video to make it a bad experience.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MjHU6o5w4TzXr7hmENL1a/9c14f0af0b69e259ae8b3d154b60fd2a/gradient-bucket-_2x.png" alt="" class="kg-image" width="1600" height="339" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MjHU6o5w4TzXr7hmENL1a/695ffd6e6fdf7158b3e48ced2795d241/gradient-bucket-_2x.png" alt="" class="kg-image" width="1600" height="339" loading="lazy">
 
 	</figure>
 	<p>You may have heard about resolution and bitrate. To explain them, let’s use an analogy. Resolution provides pixels. Pixels are buckets for information. Bitrate is the information that fills those buckets. How full a given bucket is determines how well a pixel can represent content. With too few bits of information for a bucket, the pixel will get less and less accurate to the original source. In practice, their numerical relationship is complicated. These are what we’ll be varying.</p>
@@ -92,7 +92,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fYct9qhwwZwDraTn29gB7/4f03f852a8ee5fbe60df7c4dc7f67ee9/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="552" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fYct9qhwwZwDraTn29gB7/219e49f4c51ed757ae259b3925e20c9e/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="552" loading="lazy">
 
 	</figure>
 	<p>There are different ways a frame can be encoded. It doesn’t make sense to use the same technique for a sequence of frames of a single color and most of the sequences in Big Buck Bunny. There’s differing information density and distribution between those sequences. Different ways of representing frames take advantage of those differing patterns. As a result, the 312Kb average for each frame is both lower than the size of the larger frames and greater than the size of the smallest frames. Some frames contain just changes relative to other frames – these are P or B frames – those could be far smaller than 312Kb. However, some frames contain full images – these are I frames – and tend to be far larger than 312Kb. Since we’re viewing the video holistically as multiple seconds, we don’t need to worry about them since we’re concerned with the overall experience. Knowing about frames is useful for their impact on bitrate for different types of content, which we’ll discuss later.</p>
@@ -119,13 +119,13 @@
 	<p>When you take a look at the video, fur and grass become blobs. There’s just not enough information to accurately represent the fine details.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SgHZxPmzWOK6cXxmfwK6D/063b96e1f54c87472c39583c5019c52e/VFLXlL9wI-cBWPlqs7dIfTOnSotYY7asU1lneWr3CW4gdF6S2fY9zVkgnOddmXKgbaYcpt4qhik-8PHogyj1MYAM9S8dag-ww76rRUCR7dVaJCiznUNDbGVYrBiS.png" alt="" class="kg-image" width="436" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SgHZxPmzWOK6cXxmfwK6D/cec712f07e0d7d18c51197a64d2f856f/VFLXlL9wI-cBWPlqs7dIfTOnSotYY7asU1lneWr3CW4gdF6S2fY9zVkgnOddmXKgbaYcpt4qhik-8PHogyj1MYAM9S8dag-ww76rRUCR7dVaJCiznUNDbGVYrBiS.png" alt="" class="kg-image" width="436" height="384" loading="lazy">
 
 	</figure>
 	<p>Source Video</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2c67nPJ71w1tnhfcz1sMsQ/9c0220bb2635a8af4c06dce8de0e7ec7/KBvYhdIEKc49weV-tPJkCt2BxVvUVccQpNx6zIjU2I5vPnmnBO6ORBBjrwSy4a2JBbq0o_RQ79s3DhGYL9YIbVPBmnKtQNfojO-WBY_OTd0uPlKbU-oT5lK-a7HW.png" alt="" class="kg-image" width="436" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2c67nPJ71w1tnhfcz1sMsQ/e0cc89170bea7e8b307c09a5e960e98e/KBvYhdIEKc49weV-tPJkCt2BxVvUVccQpNx6zIjU2I5vPnmnBO6ORBBjrwSy4a2JBbq0o_RQ79s3DhGYL9YIbVPBmnKtQNfojO-WBY_OTd0uPlKbU-oT5lK-a7HW.png" alt="" class="kg-image" width="436" height="384" loading="lazy">
 
 	</figure>
 	<p>100 Kbps budget</p>
@@ -200,7 +200,7 @@
 	<p>This isn’t going to be a fun experience on a 4k display but it is fine enough for an iPod Nano from 2007. A 3rd generation iPod Nano has a 320x240 display spread across a 2in screen. Our 140p video will be nearly indistinguishable from a much higher quality video. Even more, 48KB for 17 seconds of video makes fantastic use of the limited storage – 4GB on some models. In a resource-constrained environment, this low video quality can be a large quality of experience improvement.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lffrqtLboX9DPq5hTlmwa/59b851e34176f83bfff20f83f32033aa/iPod-Nano-3rd-Gen.jpg" alt="" class="kg-image" width="800" height="543" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lffrqtLboX9DPq5hTlmwa/e93dde9c71e8c7f48a6789ae5c3d8f77/iPod-Nano-3rd-Gen.jpg" alt="" class="kg-image" width="800" height="543" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> - <a href="https://www.flickr.com/photos/nez/1346068786/in/photostream">image</a> by <a href="https://www.flickr.com/photos/nez">nez</a></p>

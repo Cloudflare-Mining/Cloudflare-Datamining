@@ -1,12 +1,12 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mBvG9w7P6znNLc9gd8gZH/38dab84bb495593e5116dc3dc46f2ea9/even-faster-connection-establishment-with-quic-0-rtt-resumption.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mBvG9w7P6znNLc9gd8gZH/6b0542b88db49f74cf0a0097bf85dfd7/even-faster-connection-establishment-with-quic-0-rtt-resumption.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>One of the more interesting features introduced by <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">TLS 1.3</a>, the latest revision of the TLS protocol, was the so called “zero <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">roundtrip time</a> connection resumption”, a mode of operation that allows a client to start sending application data, such as HTTP requests, without having to wait for the TLS handshake to complete, thus reducing the latency penalty incurred in establishing a new connection.</p>
 	<p>The basic idea behind 0-RTT connection resumption is that if the client and server had previously established a TLS connection between each other, they can use information cached from that session to establish a new one without having to negotiate the connection’s parameters from scratch. Notably this allows the client to compute the private encryption keys required to protect application data before even talking to the server.</p>
 	<p>However, in the case of TLS, “zero roundtrip” only refers to the TLS handshake itself: the client and server are still required to first establish a TCP connection in order to be able to exchange TLS data.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ni3h0ZnlDFEvNicARvJmV/47c9e02192ed7447144cdc45340aacd7/HTTP-request-over-TCP-_3x.png" alt="" class="kg-image" width="1569" height="1782" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ni3h0ZnlDFEvNicARvJmV/061a4032d80cbf5c030feeecf890fcf9/HTTP-request-over-TCP-_3x.png" alt="" class="kg-image" width="1569" height="1782" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -20,7 +20,7 @@
 	<p><a href="https://blog.cloudflare.com/the-road-to-quic">QUIC</a> goes a step further, and allows clients to send application data in the very first roundtrip of the connection, without requiring any other handshake to be completed beforehand.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DCnCIKcCkYFvfHbx66Sxg/c52d8cfec5b72abab16f7b3a7f59cb9d/request-over-quic-0-RTT_3x.png" alt="" class="kg-image" width="1492" height="1326" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5DCnCIKcCkYFvfHbx66Sxg/c620d9e4586b0a3d461ba4f9cf294e66/request-over-quic-0-RTT_3x.png" alt="" class="kg-image" width="1492" height="1326" loading="lazy">
 
 	</figure>
 	<p>After all, QUIC already <a href="https://blog.cloudflare.com/the-road-to-quic/#builtinsecurityandperformance">shaved a full round-trip off of a typical connection’s handshake</a> by merging the transport and cryptographic handshakes into one. By reducing the handshake by an additional roundtrip, QUIC achieves real 0-RTT connection establishment.</p>
@@ -39,7 +39,7 @@
 	<p>For example, imagine a bank that allows an authenticated user (e.g. using HTTP cookies, or other HTTP authentication mechanisms) to send money from their account to another user by making an HTTP request to a specific API endpoint. If an attacker was able to capture that request when 0-RTT connection resumption was used, they wouldn’t be able to see the plaintext and get the user’s credentials, because they wouldn’t know the secret key used to encrypt the data; however they could still potentially drain that user’s bank account by replaying the same request over and over:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5z9QMHK9VzFVOtVATVvE7B/bd918a55db2d2b706eec63e638809742/Bank-API-replay-attack-_3x.png" alt="" class="kg-image" width="1968" height="2029" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5z9QMHK9VzFVOtVATVvE7B/b63202a2de73e6517ad493639b7d0ed2/Bank-API-replay-attack-_3x.png" alt="" class="kg-image" width="1968" height="2029" loading="lazy">
 
 	</figure>
 	<p>Of course this problem is not specific to banking APIs: any non-<a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a> request has the potential to cause undesired side effects, ranging from slight malfunctions to serious security breaches.</p>
@@ -48,7 +48,7 @@
 	<p>Origins able to understand this header can then decide to answer the request with the <a href="https://tools.ietf.org/html/rfc8470#section-5.2">425 (Too Early)</a> HTTP status code, which will instruct the client that originated the request to retry sending the same request but only after the TLS or QUIC handshake have fully completed, at which point there is no longer any risk of replay attacks. This could even be implemented as part of a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HFpNn8buQqXN5RiCVMgfD/1275608243794a9ae5cf364548085474/425-too-early-_3x.png" alt="" class="kg-image" width="2955" height="2165" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HFpNn8buQqXN5RiCVMgfD/5b6adf72a5d14f3a7772b4ae197e6950/425-too-early-_3x.png" alt="" class="kg-image" width="2955" height="2165" loading="lazy">
 
 	</figure>
 	<p>This makes it possible for origins to allow 0-RTT requests for endpoints that are safe, such as a website’s index page which is where 0-RTT is most useful, as that is typically the first request a browser makes after establishing a connection, while still protecting other endpoints such as APIs and form submissions. But if an origin does not provide any of those non-idempotent endpoints, no action is required.</p>
@@ -63,7 +63,7 @@
 	<p>Just like we previously did for TLS 1.3, we now support 0-RTT resumption for QUIC as well. In honor of this event, we have dusted off the user-interface controls that allow Cloudflare users to enable this feature for their websites, and introduced a dedicated toggle to control whether 0-RTT connection resumption is enabled or not, which can be found under the “Network” tab on the Cloudflare dashboard:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sYNvqFyRCrc88Esrkm3A/3d9a07b253c8155d7b81af031f542214/2019-11-07-133312_3087x508_scrot.png" alt="" class="kg-image" width="1600" height="263" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sYNvqFyRCrc88Esrkm3A/971767abe13746b70754b8b17f1dad18/2019-11-07-133312_3087x508_scrot.png" alt="" class="kg-image" width="1600" height="263" loading="lazy">
 
 	</figure>
 	<p>When TLS 1.3 and/or QUIC (via the HTTP/3 toggle) are enabled, 0-RTT connection resumption will be automatically offered to clients that support it, and the replay mitigation mentioned above will also be applied to the connections making use of this feature.</p>

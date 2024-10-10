@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IrtkqyFpUjeirogWGjzrr/cef22380b1665222186cbe429724002a/image3-45.png" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IrtkqyFpUjeirogWGjzrr/b65d3ae9873c84dcdf983f8bec182379/image3-45.png" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s security architecture a few years ago was a classic “castle and moat” VPN architecture. Our employees would use our corporate VPN to connect to all the internal applications and servers to do their jobs. We enforced two-factor authentication with time-based one-time passcodes (TOTP), using an authenticator app like Google Authenticator or Authy when logging into the VPN but only a few internal applications had a second layer of auth. That architecture has a strong looking exterior, but the security model is weak. We recently detailed <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">the mechanics of a phishing attack we prevented</a>, which walks through how attackers can phish applications that are “secured” with second factor authentication methods like TOTP. Happily, we had long done away with TOTP and replaced it with hardware security keys and Cloudflare Access. This blog details how we did that.</p>
@@ -35,20 +35,20 @@
 	<p>We have thousands of applications and servers we are responsible for maintaining, which were protected by our VPN. We started <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">migrating</a> all of these applications to our Zero Trust access proxy at the same time that we issued our employees their set of security keys.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7z0izoSKAEICEWz1ExjagE/5305bc5b947f7537a7753fb6de50ff14/image4-24.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7z0izoSKAEICEWz1ExjagE/759d732a44cd0d0a4e3558ea29703405/image4-24.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Access allowed our employees to securely access sites that were once protected by the VPN. Each internal service would validate a signed credential to authenticate a user and ensure the user had signed in with our identity provider. Cloudflare Access <i>was necessary</i> for our rollout of security keys because it gave us a tool to selectively enforce the first few internal applications that would require authenticating with a security key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NfwXv0gUUeZvJ8MyCQnMb/186adc302539b67e2024e50bc0ba28fc/image6-13.png" alt="" class="kg-image" width="624" height="325" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NfwXv0gUUeZvJ8MyCQnMb/e71d44fb185a171800ce164dcf1849ff/image6-13.png" alt="" class="kg-image" width="624" height="325" loading="lazy">
 
 	</figure>
 	<p>We used Terraform when onboarding our applications to our <a href="https://www.cloudflare.com/zero-trust/solutions">Zero Trust products</a> and this is the Cloudflare Access policy where we first enforced security keys. We set up Cloudflare Access to use OAuth2 when integrating with our identity provider and the identity provider informs Access about which type of second factor was used as part of the OAuth flow.</p>
 	<p>In our case, <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-amr-values-04">swk</a> is a proof of possession of a security key. If someone logged in and didn’t use their security key they would be shown a helpful error message instructing them to log in again and press on their security key when prompted.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72cbptDgJcHyaqg8MVsJrU/f7d398e160a04ce4ec1b854958785a15/image2-62.png" alt="" class="kg-image" width="1999" height="539" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72cbptDgJcHyaqg8MVsJrU/f231888bb983e593e265e2cf32a96704/image2-62.png" alt="" class="kg-image" width="1999" height="539" loading="lazy">
 
 	</figure>
 	<p>Selective enforcement instantly changed the trajectory of our security key rollout. We began enforcement on a single service on July 29, 2020, and authentication with security keys massively increased over the following two months. This step was critical to give our employees an opportunity to familiarize themselves with the new technology. A window of selective enforcement should be at least a month to account for people on vacation, but in hindsight it doesn’t need to be much longer than that.</p>
@@ -56,7 +56,7 @@
 	<p>When we onboarded to Cloudflare Access we created groups to enforce <a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac">RBAC</a> and tell our applications what permission level each person should have.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EZfrzqPeyfD7TUf39kdao/067e50a89825d3ab710479b483c18a02/image5-23.png" alt="" class="kg-image" width="1318" height="1390" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EZfrzqPeyfD7TUf39kdao/663301d89fe227e8f8208398eb049347/image5-23.png" alt="" class="kg-image" width="1318" height="1390" loading="lazy">
 
 	</figure>
 	<p>Here’s a site where only members of the ACL-CFA-CFDATA-argo-config-admin-svc group have access. It enforces that the employee used their security key when logging in, and no complicated OAuth or SAML integration was needed for this. We have over 600 internal sites using this same pattern and all of them enforce security keys.</p>
@@ -71,7 +71,7 @@
 	<p>In February 2021, our employees started to report social engineering attempts to our security team. They were receiving phone calls from someone claiming to be in our IT department, and we were alarmed. We decided to begin requiring security keys to be used for all authentication to prevent any employees from being victims of the social engineering attack.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mQQiEEno9jPICKiUCm3kk/3471329981920e136bcb3c9d017a62a5/image1-74.png" alt="" class="kg-image" width="1620" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mQQiEEno9jPICKiUCm3kk/0d2179a903c2e60f7d8cf0feb8471493/image1-74.png" alt="" class="kg-image" width="1620" height="668" loading="lazy">
 
 	</figure>
 	<p>After disabling all other forms of MFA (SMS, TOTP etc.), except for WebAuthn, we were officially FIDO2 only. “Soft token” (TOTP) isn’t perfectly at zero on this graph though. This is caused because those who lose their security keys or become locked out of their accounts need to go through a secure offline recovery process where logging in is facilitated through an alternate method. Best practice is to distribute multiple security keys for employees to allow for a back-up, in case this situation arises.</p>

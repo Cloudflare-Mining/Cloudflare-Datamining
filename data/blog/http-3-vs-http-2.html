@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DYRyVS2hTPpMi7P7t7WlI/f52086be276817b8fb9bc80da1b84e8f/image8-3.png" alt="" class="kg-image" width="1999" height="1085" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DYRyVS2hTPpMi7P7t7WlI/7280b5e28b065d9eb4ca5d30205ed9b7/image8-3.png" alt="" class="kg-image" width="1999" height="1085" loading="lazy">
 
 	</figure>
 	<p>We announced <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">support for HTTP/3</a>, the successor to HTTP/2 during Cloudflare’s <a href="https://blog.cloudflare.com/birthday-week-2019">birthday week</a> last year. Our goal is and has always been to help build a better Internet. Collaborating on standards is a big part of that, and we're very fortunate to do that here.</p>
@@ -30,19 +30,19 @@
 	<p>The following illustrates the packet loss and its impact: HTTP/2 multiplexing two requests . A request comes over HTTP/2 from the client to the server requesting two resources (we’ve colored the requests and their associated responses green and yellow). The responses are broken up into multiple packets and, alas, a packet is lost so both requests are held up.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MQCKq4WKwM4fCqDGYJ8Ui/2d85b970fff4a02370897eb76f2a0601/image1-1.gif" alt="" class="kg-image" width="720" height="520" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MQCKq4WKwM4fCqDGYJ8Ui/1f9306b608618fe78e3e57a1392a9b11/image1-1.gif" alt="" class="kg-image" width="720" height="520" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DSF88gTgVSsmiVExIa3Ry/0e6ad25c1b64bed5ba0fe21886e70182/image4-1.gif" alt="" class="kg-image" width="720" height="520" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DSF88gTgVSsmiVExIa3Ry/5e26b2b32f6bd00dda851caa4c9c46e6/image4-1.gif" alt="" class="kg-image" width="720" height="520" loading="lazy">
 
 	</figure>
 	<p>The above shows HTTP/3 multiplexing 2 requests. A packet is lost that affects the yellow response but the green one proceeds just fine.</p>
 	<p>Improvements in session startup mean that ‘connections’ to servers start much faster, which means the browser starts to see data more quickly. We were curious to see how much of an improvement, so we ran some tests. To measure the improvement resulting from 0-RTT support, we ran some benchmarks measuring <i>time to first byte</i> (TTFB). On average, with HTTP/3 we see the first byte appearing after 176ms. With HTTP/2 we see 201ms, meaning HTTP/3 is already performing 12.4% better!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5slXFJulfUbmW5NsZqm8r/af36f0f9bccfea0d97f022dc2e51a34e/image5-6.png" alt="" class="kg-image" width="1999" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5slXFJulfUbmW5NsZqm8r/f7087c07f55ab903735524e70dd04bb0/image5-6.png" alt="" class="kg-image" width="1999" height="384" loading="lazy">
 
 	</figure>
 	<p>Interestingly, not every aspect of the protocol is governed by the drafts or RFC. Implementation choices can affect performance, such as efficient <a href="https://blog.cloudflare.com/accelerating-udp-packet-transmission-for-quic">packet transmission</a> and choice of congestion control algorithm. Congestion control is a technique your computer and server use to adapt to overloaded networks: by dropping packets, transmission is subsequently throttled. Because QUIC is a new protocol, getting the congestion control design and implementation right requires experimentation and tuning.</p>
@@ -51,17 +51,17 @@
 	<p>For a small test page of 15KB, HTTP/3 takes an average of 443ms to load compared to 458ms for HTTP/2. However, once we increase the page size to 1MB that advantage disappears: HTTP/3 is just slightly slower than HTTP/2 on our network today, taking 2.33s to load versus 2.30s.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UrCQVwplKQxT7aSzqwMl6/c8b35bb65aa25c97c820e9226d057412/image2-11.png" alt="" class="kg-image" width="1999" height="366" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UrCQVwplKQxT7aSzqwMl6/4ff62d1bdb67e54c29b553d260f11aa8/image2-11.png" alt="" class="kg-image" width="1999" height="366" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KPuZxBl9m6TOyvrGZfMFw/39323cf6aed9b47c3be7ffe7834dfab7/image6-4.png" alt="" class="kg-image" width="1999" height="385" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KPuZxBl9m6TOyvrGZfMFw/5d22e954c62325af32c99c5783f62560/image6-4.png" alt="" class="kg-image" width="1999" height="385" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JDw2bdaT0Vcmd4Jyg7Yhl/d9ac15fafcdc9a25dc0da1f3daca6189/image3-11.png" alt="" class="kg-image" width="1999" height="394" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JDw2bdaT0Vcmd4Jyg7Yhl/af2af92b3bdc2dd1891062844027fe70/image3-11.png" alt="" class="kg-image" width="1999" height="394" loading="lazy">
 
 	</figure>
 	<p>Synthetic benchmarks are interesting, but we wanted to know how HTTP/3 would perform in the real world.</p>
@@ -70,7 +70,7 @@
 	<p>The following graph shows the page load time for a real world page -- <a href="https://blog.cloudflare.com">blog.cloudflare.com</a>, to compare the performance of HTTP/3 and HTTP/2. We have these performance measurements running from different geographical locations.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Xwp5YGAE5hCP7m0TQeGeE/5f3470cf35e360a8334446a3a8c46e29/image7-5.png" alt="" class="kg-image" width="1999" height="380" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Xwp5YGAE5hCP7m0TQeGeE/52a42c9ad4a53be01e22fba4888c27de/image7-5.png" alt="" class="kg-image" width="1999" height="380" loading="lazy">
 
 	</figure>
 	<p>As you can see, HTTP/3 performance still trails HTTP/2 performance, by about 1-4% on average in North America and similar results are seen in Europe, Asia and South America. We suspect this could be due to the difference in congestion algorithms: HTTP/2 on BBR v1 vs. HTTP/3 on CUBIC. In the future, we’ll work to support the same congestion algorithm on both to get a more accurate apples-to-apples comparison.</p>

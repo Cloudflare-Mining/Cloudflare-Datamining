@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xf3pw9gUCzsu7j4CxkBLH/97aa186553f99eaf6a6b9d3a6ef18f74/Cloudflare-access_3x.png" alt="" class="kg-image" width="1600" height="1262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xf3pw9gUCzsu7j4CxkBLH/c48dfd20ca99d564fb6dcaa6a037376f/Cloudflare-access_3x.png" alt="" class="kg-image" width="1600" height="1262" loading="lazy">
 
 	</figure>
 	<p>Every person joining your team has the same question on Day One: how do I find and connect to the applications I need to do my job?</p>
@@ -23,13 +23,13 @@
 	<p>To check identity, Access relies on the identity provider that the team already uses. Access integrates with providers like OneLogin, Okta, AzureAD, G Suite and others to determine who a user is. If the user has not logged in yet, Access will prompt them to do so at the identity provider configured.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yNiimYXl24VVzkJCVTJRc/65f0e3ab8a3b3a885a7c1e8c5ea35cad/access-solution-diagram_3x-1.png" alt="" class="kg-image" width="1600" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yNiimYXl24VVzkJCVTJRc/ac405b8050df3eb754b3fb73098f320f/access-solution-diagram_3x-1.png" alt="" class="kg-image" width="1600" height="860" loading="lazy">
 
 	</figure>
 	<p>When the user logs in, they are redirected through a subdomain unique to each Access account. Access assigns that subdomain based on a hostname already active in the account. For example, an account with the hostname “widgetcorp.tech” will be assigned “widgetcorp.cloudflareaccess.com”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dofxJ68JdSDrFj4o7VBwg/9b5a1ebf87074ae3007b4413f3af2289/app-launch-1.gif" alt="" class="kg-image" width="2080" height="1512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dofxJ68JdSDrFj4o7VBwg/928a8605a2c3153fb5bf32ad6c539bd9/app-launch-1.gif" alt="" class="kg-image" width="2080" height="1512" loading="lazy">
 
 	</figure>
 	<p>The Access App Launch uses the unique subdomain assigned to each Access account. Now, when users visit that URL directly, Cloudflare Access checks their identity and displays only the applications that the user has permission to reach. When a user clicks on an application, they are redirected to the application behind it. Since they are already authenticated, they do not need to login again.</p>
@@ -45,7 +45,7 @@
 	<p>The Access App Launch can be configured in the Cloudflare dashboard in three steps. First, navigate to the Access tab in the dashboard. Next, enable the feature in the “App Launch Portal” card. Finally, define who should be able to use the Access App Launch in the modal that appears and click “Save”. Permissions to use the Access App Launch portal do not impact existing Access policies for who can reach protected applications.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62ACS4wHPyldfWY95GEgKC/4879dd598568a8c8d39aefb7d47709ce/pasted-image-0-2.png" alt="" class="kg-image" width="1558" height="684" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62ACS4wHPyldfWY95GEgKC/f291c90f79fc8b8ce068bb8aa3bbffd0/pasted-image-0-2.png" alt="" class="kg-image" width="1558" height="684" loading="lazy">
 
 	</figure>
 	<p>Administrators do not need to manually configure each application that appears in the portal. Access App Launch uses the policies already created in the account to generate a page unique to each individual user, automatically.</p>
@@ -61,7 +61,7 @@
 	<p>Take “example.com” vs “examрle.com” - they look identical, but one uses the Cyrillic “р” and becomes an entirely different hostname. If an attacker can lure a user to visit “examрle.com”, and make the site look like the real thing, that user could accidentally leak credentials or information.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JyDTPAA98ZB0Bc0Qs4v10/716783ca356b85d2e26dac81397b05f7/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="834" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JyDTPAA98ZB0Bc0Qs4v10/cee7a5b88d02a2b6b2057b35314b1188/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="834" loading="lazy">
 
 	</figure>
 	<p>To be successful, the attacker needs to get the victim to visit that fraudulent URL. That frequently happens via <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud">email from untrusted senders</a>.</p>

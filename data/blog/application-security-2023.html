@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GRJDQ6QM2YpuKYXI37zWr/d83339d81fdb331e248c806c6defe1ea/image13-1.png" alt="The state of application security in 2023" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GRJDQ6QM2YpuKYXI37zWr/08e76c72a478028a390db8d262ca1d36/image13-1.png" alt="The state of application security in 2023" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>One year ago we published our <a href="https://blog.cloudflare.com/application-security">first Application Security Report</a>. For Security Week 2023, we are providing updated insights and trends around mitigated traffic, bot and API traffic, and <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">account takeover attacks</a>.</p>
@@ -54,12 +54,12 @@
 	<p>In looking at all HTTP requests proxied by the Cloudflare network, we find that the share of requests that are mitigated has dropped to 6%, down two percentage points compared to last year. Looking at 2023 to date, we see that mitigated request share has fallen even further, to between 4-5%. Large spikes visible in the chart below, such as those seen in June and October, often correlate with large DDoS attacks mitigated by Cloudflare. It is interesting to note that although the percentage of mitigated traffic has decreased over time, the total mitigated request volume has been relatively stable as shown in the second chart below, indicating an increase in overall clean traffic globally rather than an absolute decrease in malicious traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eiU8dDdgzilfy1QDkz444/cd031659ee2f93035a106a089632b5ee/Screenshot-2023-03-06-at-23.00.01.png" alt="Percentage of mitigated HTTP requests over the last 12 months" class="kg-image" width="1600" height="816" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eiU8dDdgzilfy1QDkz444/b3e287f663e473138259bac7c2dea4f3/Screenshot-2023-03-06-at-23.00.01.png" alt="Percentage of mitigated HTTP requests over the last 12 months" class="kg-image" width="1600" height="816" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ObkNfvMZcTPPxXnDjhgfe/a7e17a8ddbbf28bceb479b787526bab0/pasted-image-0-7.png" alt="Daily total and mitigated HTTP requests over the last 12 months" class="kg-image" width="983" height="255" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ObkNfvMZcTPPxXnDjhgfe/e5a9c47dbdd1ff43a53119f6e0013041/pasted-image-0-7.png" alt="Daily total and mitigated HTTP requests over the last 12 months" class="kg-image" width="983" height="255" loading="lazy">
 
 	</figure>
 	<p>81% of mitigated HTTP requests were outright <code>BLOCK</code>ed, with mitigations for the remaining set split across the various <code>CHALLENGE</code> type actions.</p>
@@ -75,7 +75,7 @@
 	<p>Compared to last year, however, mitigation by the Cloudflare WAF has grown significantly, and now accounts for nearly 41% of mitigated requests. This can be partially attributed to <a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">advances in our WAF technology</a> that enables it to detect and block a larger range of attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pdhwKY0jThTj1OiHqL4vB/9daa000185fc0a4b3cfd7cc3013653f9/out.png" alt="Product group corresponding to the last mitigated action on a HTTP request" class="kg-image" width="563" height="551" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pdhwKY0jThTj1OiHqL4vB/e94c2be1c4750b148718970118673938/out.png" alt="Product group corresponding to the last mitigated action on a HTTP request" class="kg-image" width="563" height="551" loading="lazy">
 
 	</figure>
 	<p>Tabular format for reference:</p><!--kg-card-begin: html-->
@@ -159,7 +159,7 @@
 	<p>To understand the growth in WAF mitigated requests over time, we can look one level deeper where it becomes clear that Cloudflare customers are increasingly relying on WAF Custom Rules (historically referred to as Firewall Rules) to mitigate malicious traffic or implement business logic blocks. Observe how the orange line (<code>firewallrules</code>) in the chart below shows a gradual increase over time while the blue line (<code>l7ddos</code>) clearly trends lower.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZcNrwcUi33RFZZd8zgg67/a94dd913e39af9f94cf242a2e9b541e8/pasted-image-0--1--3.png" alt="Daily mitigated requests over the last 12 months: DDoS vs WAF Custom Rules" class="kg-image" width="983" height="271" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZcNrwcUi33RFZZd8zgg67/ecf460086091b5ba9e081940a6931426/pasted-image-0--1--3.png" alt="Daily mitigated requests over the last 12 months: DDoS vs WAF Custom Rules" class="kg-image" width="983" height="271" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -173,13 +173,13 @@
 	<p>Contributing 30% of WAF Managed Rules mitigated traffic overall in March 2023, HTTP Anomaly’s share has decreased by nearly 25 percentage points as compared to the same time last year. Examples of HTTP anomalies include malformed method names, null byte characters in headers, non-standard ports or content length of zero with a <code>POST</code> request. This can be attributed to botnets matching HTTP anomaly signatures slowly changing their traffic patterns.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35U8ZjXfZTDdpRQ59xV3w9/5e4f39a3d490b607a2486e1c208875fb/pasted-image-0--2--1.png" alt="WAF Managed Rule category matching HTTP requests over the last 12 months" class="kg-image" width="1231" height="412" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35U8ZjXfZTDdpRQ59xV3w9/3e533f90eb2f42a067edd7b7ad086231/pasted-image-0--2--1.png" alt="WAF Managed Rule category matching HTTP requests over the last 12 months" class="kg-image" width="1231" height="412" loading="lazy">
 
 	</figure>
 	<p>Removing the HTTP anomaly line from the graph, we can see that in early 2023, the attack vector distribution looks a lot more balanced.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rluFF9pSRJLaGItGsxfCT/b043abe1f7892435a3b1aa8bda64b4bd/pasted-image-0--3--1.png" alt="WAF Managed Rule category matching HTTP requests w/o HTTP Anomaly over the last 12 months" class="kg-image" width="1299" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rluFF9pSRJLaGItGsxfCT/7706f922a43159a25aa44154a3b0a0dc/pasted-image-0--3--1.png" alt="WAF Managed Rule category matching HTTP requests w/o HTTP Anomaly over the last 12 months" class="kg-image" width="1299" height="406" loading="lazy">
 
 	</figure>
 	<p>Tabular format for reference (top 10 categories):</p><!--kg-card-begin: html-->
@@ -301,7 +301,7 @@
 	<p>Our confidence in the classification output is very high. If we plot the bot scores across the traffic from the last week of February 2023, we find a very clear distribution, with most requests either being classified as definitely bot (less than 30) or definitely human (greater than 80) with most requests actually scoring less than 2 or greater than 95.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KD5WOxYsgKxjXru5Y92q3/462d5b083ec8f4d6ff2b36ea9d4676b5/pasted-image-0--4--1.png" alt="Bot score distribution of eyeball traffic" class="kg-image" width="923" height="270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KD5WOxYsgKxjXru5Y92q3/7e214da58227bcb5bea9de2a1b8a5b4e/pasted-image-0--4--1.png" alt="Bot score distribution of eyeball traffic" class="kg-image" width="923" height="270" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -316,7 +316,7 @@
 	<p>Looking at bot traffic only, we find that only 8% is generated by verified bots, comprising 2% of total traffic. Cloudflare maintains a list of known good (verified) bots to allow customers to easily distinguish between well-behaved bot providers like Google and Facebook and potentially lesser known or unwanted bots. There are currently <a href="https://radar.cloudflare.com/traffic/verified-bots">171 bots in the list</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NGH6G5AdgzABSAo6ItxhD/d605d3c08b2c7ab504cc9c8761914532/pasted-image-0--5-.png" alt="HTTP Traffic percentage classified as bot over the last 12 months" class="kg-image" width="1229" height="421" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NGH6G5AdgzABSAo6ItxhD/40429c8382f4ea3db4327f6bbcfca7ca/pasted-image-0--5-.png" alt="HTTP Traffic percentage classified as bot over the last 12 months" class="kg-image" width="1229" height="421" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -333,7 +333,7 @@
 	<p>On a similar note, it is also interesting that nearly 80% of all mitigated traffic is classified as a bot, as illustrated in the figure below. Some may note that 20% of mitigated traffic being classified as human is still extremely high, but most mitigations of human traffic are generated by WAF Custom Rules, and are frequently due to customers implementing country-level or other related legal blocks on their applications. This is common, for example, in the context of US-based companies blocking access to European users for GDPR compliance reasons.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LUr8AfDJrf4U5IfRLFnC6/26c8a680ebbc3d667079d0ae0b740275/Ms7yLEMZH9YTC2GfsGffgbk4rQwzHfpIwPlVe1dy7ZkNxLKe49WZHfope9X9Z-x9BZ0ygFBqay5NV5ipMU42-7uNt5QTYkv8VryoXr5QaJp4-ystQ7I7x6WIa2-c.png" alt="Bot score distribution of mitigated HTTP traffic" class="kg-image" width="936" height="276" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LUr8AfDJrf4U5IfRLFnC6/41af48de35fac34e053f9ef256bc9e1b/Ms7yLEMZH9YTC2GfsGffgbk4rQwzHfpIwPlVe1dy7ZkNxLKe49WZHfope9X9Z-x9BZ0ygFBqay5NV5ipMU42-7uNt5QTYkv8VryoXr5QaJp4-ystQ7I7x6WIa2-c.png" alt="Bot score distribution of mitigated HTTP traffic" class="kg-image" width="936" height="276" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -366,7 +366,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sBxmFpYbAGXEFqoJnr2SS/9e71d3e2fd561953b1987851adeb31c1/pasted-image-0--6-.png" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" class="kg-image" width="1600" height="539" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sBxmFpYbAGXEFqoJnr2SS/5518e387d93644a48d2a6cefc721d834/pasted-image-0--6-.png" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" class="kg-image" width="1600" height="539" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -380,7 +380,7 @@
 	<p>A growing number of web applications nowadays are built “API first”. This means that the initial HTML page load only provides the skeleton layout, and most dynamic components and data are loaded via separate API calls (for example, via <a href="https://en.wikipedia.org/wiki/Ajax_(programming)">AJAX</a>). This is the case for Cloudflare’s own dashboard. This growing implementation paradigm is visible when analyzing the bot scores for API traffic. We can see in the figure below that a large amount of API traffic is generated by user-driven browsers classified as “human” by our system, with nearly two-thirds of it clustered at the high end of the “human” range.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49vmou2pqy4n6RMVyZp0rf/2071243680c7cc6809630d9b656286e2/pasted-image-0--7--2.png" alt="Bot score distribution of API traffic" class="kg-image" width="934" height="276" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49vmou2pqy4n6RMVyZp0rf/60feafffa33b03318e80a3f210bbed1a/pasted-image-0--7--2.png" alt="Bot score distribution of API traffic" class="kg-image" width="934" height="276" loading="lazy">
 
 	</figure>
 	<p>Calculating mitigated API traffic is challenging, as we don’t forward the request to origin servers, and therefore cannot rely on the response content type. Applying the same calculation that was used last year, a little more than 2% of API traffic is mitigated, down from 10.2% last year.</p>
@@ -395,7 +395,7 @@
 	<p>Compared to last year, HTTP anomalies now surpass SQLi as the most popular attack vector attempted against API endpoints (note the blue line being higher at the start of the graph just when last year's report was published). Attack vectors on API traffic are not consistent throughout the year and show more variation as compared to global HTTP traffic. For example, note the spike in file inclusion attack attempts in early 2023.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jHOBvqPAy11orLuscByY0/a45d20141d752085ff65fa44e9ce49f1/pasted-image-0--8-.png" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last 12 months" class="kg-image" width="1600" height="527" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jHOBvqPAy11orLuscByY0/4422fa5b78e4cd1ec2e3a455231bd3a5/pasted-image-0--8-.png" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last 12 months" class="kg-image" width="1600" height="527" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -419,7 +419,7 @@
 	<p>If we look at the trend of matched requests over the past 12 months, an increase is noticeable starting in the latter half of 2022, indicating growing fraudulent activity against login endpoints. During large brute force attacks we have observed matches against HTTP requests with leaked credentials at a rate higher than 12k per minute.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uTR3ZU85pPkHG6xtlAicC/daa6410c75af9947ab5b44a31cebd663/pasted-image-0--9-.png" alt="Daily account takeover HTTP requests over the last 12 months" class="kg-image" width="1600" height="548" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uTR3ZU85pPkHG6xtlAicC/707ddc37a95b5a7ec113e7d710bc3b52/pasted-image-0--9-.png" alt="Daily account takeover HTTP requests over the last 12 months" class="kg-image" width="1600" height="548" loading="lazy">
 
 	</figure>
 	<p>Our leaked credential check feature has rules matching authentication requests for the following systems:</p>
@@ -463,7 +463,7 @@
 	<p>If we look at leaked credential match traffic by source country, the United States leads by a fair margin. Potentially notable is the absence of China in top contenders given network size. The only exception is Ukraine leading during the first half of 2022 towards the start of the war — the yellow line seen in the figure below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XiIU19alI12sLDxm3SDS8/7fc0cc6c215080b8b35d7d1bf4e9272c/pasted-image-0--10-.png" alt="Daily account takeover HTTP requests by country over the last 12 months" class="kg-image" width="1600" height="548" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XiIU19alI12sLDxm3SDS8/d0bafef4317e397c62b5eafa093d7e54/pasted-image-0--10-.png" alt="Daily account takeover HTTP requests by country over the last 12 months" class="kg-image" width="1600" height="548" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

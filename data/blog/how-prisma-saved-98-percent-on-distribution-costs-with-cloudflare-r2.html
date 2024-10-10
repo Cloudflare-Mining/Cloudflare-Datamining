@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IuHdtPrHS6VVomwYLYA9Z/1487a95fc08d5307ca25e47a897da29d/Prisma-Partnership-1.png" alt="How Prisma saved 98% on distribution costs with Cloudflare R2" class="kg-image" width="2400" height="1350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IuHdtPrHS6VVomwYLYA9Z/8d0e03257559b9c7959e94057225f77b/Prisma-Partnership-1.png" alt="How Prisma saved 98% on distribution costs with Cloudflare R2" class="kg-image" width="2400" height="1350" loading="lazy">
 
 	</figure>
 	<p><i>The following is a guest post written by Pierre-Antoine Mills, Miguel Fernández, and Petra Donka of Prisma. Prisma provides a server-side library that helps developers read and write data to the database in an intuitive, efficient and safe way.</i></p>
@@ -21,7 +21,7 @@
 	<p>Both the Prisma Client and the Prisma CLI rely on the <a href="https://www.prisma.io/docs/concepts/components/prisma-engines#prisma-engines">Prisma Engines</a>, which are implemented in Rust and distributed as platform-specific compiled binaries. The Prisma Engines perform a variety of tasks ranging from providing information about the schema for type generation, or migrating the database, to transforming Prisma queries into SQL, and executing those queries against the database. Think of the engines as the layer in the Prisma ORM that talks to the database.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75H4s6HbCbgdXyq8Am9t4z/3b8efa137c0d9075f799534d1d6a3849/1-.png" alt="" class="kg-image" width="1600" height="806" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75H4s6HbCbgdXyq8Am9t4z/70f6f162434b453a9bb5354076b7c56a/1-.png" alt="" class="kg-image" width="1600" height="806" loading="lazy">
 
 	</figure>
 	<p>As a developer, one of the first steps to <a href="https://www.prisma.io/docs/getting-started/quickstart">get started</a> with Prisma is to install <a href="https://www.prisma.io/docs/concepts/components/prisma-client">Prisma Client</a> and the <a href="https://www.prisma.io/docs/concepts/components/prisma-cli">Prisma CLI</a> from npm. Once installed, these packages need the Prisma Engines to be able to function. These engines have complex target-platform rules and were originally envisioned to be distributed separately from the npm package, so they can be used outside of the Node.js ecosystem. As a result, they are downloaded on demand by the Prisma CLI, only downloading what is strictly required for a given project.</p>
@@ -37,7 +37,7 @@
 	<p>During the early development of the Prisma ORM, our engineering team looked for tools to build the CDN for engine distribution. With extensive AWS experience, we went with the obvious: S3 blob storage for the engine files and CloudFront to cache contents closer to the user.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7b5cB00Ar3wfYEfe00TcEQ/1ddb2f2b42da05464331e6c0bb7e5dd8/2-.png" alt="" class="kg-image" width="1600" height="806" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7b5cB00Ar3wfYEfe00TcEQ/e1f283485c0c2a7b13d9ae4171d4d06d/2-.png" alt="" class="kg-image" width="1600" height="806" loading="lazy">
 
 	</figure>
 	<p><i>A simplified representation of how the Prisma Engines flow from our CI where they are built and uploaded, to the Prisma CLI downloading the correct engine for a given environment when installing Prisma, all the way to the user being able to use it.</i></p>
@@ -88,7 +88,7 @@
 	<p>At this point, everything was in place and we could start the rollout.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2O4inKFtr4vG45Z9I85MhS/e10b15ed4f160b3472a8d55bf08cf7f0/3-.png" alt="" class="kg-image" width="1600" height="607" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O4inKFtr4vG45Z9I85MhS/8e3e7e292a13c725bd21e54925717ac4/3-.png" alt="" class="kg-image" width="1600" height="607" loading="lazy">
 
 	</figure>
 	<p><b>Our DNS load balancing setup during the rollout. We assigned increasing weights to route traffic to Cloudflare R2. The health check that would fail over to AWS CloudFront never fired.</b></p>

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">11 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45eBWLkPaFFlbeBbPSSyuR/1408f26a417d950f18a128d8e7a3e228/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45eBWLkPaFFlbeBbPSSyuR/932091efb293f6e5e9b91f81e9ea1e85/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the years I've been lurking around the Linux kernel and have investigated the TCP code many times. But when recently we were working on <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">Optimizing TCP for high WAN throughput while preserving low latency</a>, I realized I have gaps in my knowledge about how Linux manages TCP receive buffers and windows. As I dug deeper I found the subject complex and certainly non-obvious.</p>
 	<p>In this blog post I'll share my journey deep into the Linux networking stack, trying to understand the memory and window management of the receiving side of a TCP connection. Specifically, looking for answers to seemingly trivial questions:</p>
@@ -78,7 +78,7 @@ net.core.wmem_max = 212992</code></pre>
 	<p>Here’s a diagram showing how <b>skmem_rb</b> budget is being divided:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EEuOnbl8CKYCv4oWj5Ejw/a957b08f6e45e7f3502fd5e839770c00/image2-17.png" alt="" class="kg-image" width="1498" height="585" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EEuOnbl8CKYCv4oWj5Ejw/4a0bf778f484bbddebfac4099d8e21f4/image2-17.png" alt="" class="kg-image" width="1498" height="585" loading="lazy">
 
 	</figure>
 	<p>In any given moment, we can think of the budget as being divided into four parts:</p>
@@ -130,7 +130,7 @@ net.core.wmem_max = 212992</code></pre>
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44j6HUJ496dIXVMkltUe4O/5b72e2ed32b676eafa434eded9869a10/image6-10.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44j6HUJ496dIXVMkltUe4O/1765b3f25ef767dfcb23d3c079f7e8cb/image6-10.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>There are so many things here! Let's try to digest it. First, the X axis is an ingress packet number (we saw about 65). The Y axis shows the buffer sizes as seen on the receive path for every packet.</p>
@@ -173,13 +173,13 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 	<p>The root of the problem is straightforward - Linux kernel <b>skmem_rb</b> sets a memory budget for both the <b>data</b> and <b>metadata</b> which reside on the socket. In a pessimistic case each packet might incur a cost of a <b>struct sk_buff</b> + <b>struct skb_shared_info</b>, which on my system is 576 bytes, above the actual payload size, plus memory waste due to network card buffer alignment:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nJyE7p1rtHK9SvSTDnZoj/05965d4af5c8a2ab77e2e917be80a802/image7-10.png" alt="" class="kg-image" width="1442" height="180" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nJyE7p1rtHK9SvSTDnZoj/c02019aeed1e3b17f24b506b4eeaef36/image7-10.png" alt="" class="kg-image" width="1442" height="180" loading="lazy">
 
 	</figure>
 	<p>We now understand that Linux can't just advertise 100% of the memory budget as an advertised window. Some budget must be reserved for metadata and such. The upper limit of window size is expressed as a fraction of the "free" socket budget. It is controlled by <code>tcp_adv_win_scale</code>, with the following values:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZfsgDbgLiLQ0HXUV5mVeK/7e0f558e5b32c2452021e8224635aaf0/image9-5.png" alt="" class="kg-image" width="658" height="302" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZfsgDbgLiLQ0HXUV5mVeK/31e596946e101fef2443896f9db8fcdb/image9-5.png" alt="" class="kg-image" width="658" height="302" loading="lazy">
 
 	</figure>
 	<p>By default, Linux sets the advertised window at most at 50% of the remaining buffer space.</p>
@@ -195,7 +195,7 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 	<p>Here's an extension to our previous chart showing these mechanisms in action:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KhHEeAUvJ6rinNLoRBwd1/1cb2fdb90174f3a5956c3b2fabb7d55c/image3-10.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KhHEeAUvJ6rinNLoRBwd1/36b733fddcbb885d8db5b076602ca168/image3-10.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p><b>TCP Coalesce</b> is a very effective measure and works behind the scenes at all times. In the bottom chart, the packets where the coalesce was engaged are shown with a pink line. You can see - the <b>skmem_r</b> bumps (blue line) are clearly correlated with a <b>lack</b> of coalesce (pink line)! The nstat TcpExtTCPRcvCoalesce counter might be helpful in debugging coalesce issues.</p>
@@ -233,7 +233,7 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 	<p>The first two factors are the most important. Here's a run when the sender was specially configured to make the metadata cost bad and the coalesce ineffective (the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py#L90">details of the setup are messy</a>):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Oo38G0pRDoxfqkcIE7D9Y/ba979dfe1d406aa487994acac258963f/image1-10.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Oo38G0pRDoxfqkcIE7D9Y/c372a9cba2402cee11c14fc815875ea3/image1-10.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>You can see the kernel hitting TCP collapse multiple times, which is totally undesired. Each time a collapse kernel is likely to rewrite the full receive buffer. This whole kernel machinery, from reserving some space for metadata with tcp_adv_win_scale, via using coalesce to reduce the memory cost of each packet, up to the rcv_ssthresh limit, exists to avoid this very case of hitting collapse too often.</p>
@@ -253,7 +253,7 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 	<p>Finally, here's a chart from a normal run of a connection. Here, we use the default <code>tcp_adv_win_wcale=1 (50%)</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZlSO1vQxnHim1D8dav4Aa/2458c498acf89e70fddf15a6bc4da847/image5-13.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZlSO1vQxnHim1D8dav4Aa/5ce538b22b546d194df83130d9f39bc9/image5-13.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>Early in the connection you can see <b>rcv_win</b> being continuously updated with each received packet. This makes sense: while the <b>rcv_ssthresh</b> and <b>tcp_adv_win_scale</b> restrict the advertised window to never exceed 32KiB, the window is sliding nicely as long as there is enough space. At packet 18 the receiver stops updating the window and waits a bit. At packet 32 the receiver decides there still is some space and updates the window again, and so on. At the end of the flow the socket has 56KiB of data. This 56KiB of data was received over a sliding window reaching at most 32KiB .</p>
@@ -270,7 +270,7 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 	<p>For large bandwidth transfers over big latency links - big BDP case - it's beneficial to have a very wide advertised window. However, Linux takes a while to fully open large receive windows:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UL4j5NH62FE1350yWnTcP/e1d10183417307e1891c2570b9e8e496/image8-4.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6UL4j5NH62FE1350yWnTcP/e257d2160e41a3f71aa3b727debc44fc/image8-4.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>In this run, the <b>skmem_rb</b> is set to 2MiB. As opposed to previous runs, the buffer budget is large and the receive window doesn't start with 50% of the skmem_rb! Instead it starts from 64KiB and grows linearly. It takes a while for Linux to ramp up the receive window to full size - ~800KiB in this case. The window is clamped by <b>rcv_ssthresh</b>. This variable starts at 64KiB and then grows at a rate of two full-MSS packets per each packet which has a "good" ratio of total size (truesize) to payload size.</p>
@@ -283,7 +283,7 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 	<p>With the patch and the route change deployed, this is how the buffers look:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YE7Oolhn4ZQ9ihNi11HEL/fe8f501081a48bf7fa46a40033be0bb4/image4-12.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YE7Oolhn4ZQ9ihNi11HEL/af8c492bc03243e12b54541e954a3061/image4-12.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>The advertised window is limited to 64KiB during the TCP handshake, but with our kernel patch enabled it's quickly bumped up to 1MiB in the first ACK packet afterwards. In both runs it took ~1800 packets to fill the receive buffer, however it took different time. In the first run the sender could push only 64KiB onto the wire in the second RTT. In the second run it could immediately push full 1MiB of data.</p>

@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XRACdiQPkFV0MKk9xyFbT/382c3487a5128dd2d29cec8e1730885c/wquTgdlhBHsbaIK8TN2eUkzbK0rpMy9ooj1-26Cym2ONr8zkDq-nIza4tToroP29dbAx6fgXjEvvNzffboF_HJwp4rou7uqv8gsivOQz1sO7N3p6tUMGjSslfm29.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XRACdiQPkFV0MKk9xyFbT/25327227c2b9ef659a923cacbd72d3b4/wquTgdlhBHsbaIK8TN2eUkzbK0rpMy9ooj1-26Cym2ONr8zkDq-nIza4tToroP29dbAx6fgXjEvvNzffboF_HJwp4rou7uqv8gsivOQz1sO7N3p6tUMGjSslfm29.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH (Secure Shell Protocol)</a> is an important protocol for managing remote machines. It provides a way for infrastructure teams to remotely and securely manage their fleet of machines. SSH was a step-up in security from other protocols like telnet. It ensures encrypted traffic and enforces per user controls over access to a particular machine. However, it can still introduce a significant security risk. SSH, especially root access, is destructive in the wrong hands (think <code>rm -r *</code>) and can be difficult to track. Logging and securing user actions via SSH typically requires custom development or restrictive software deployments. We’re excited to announce SSH command logging as part of Cloudflare Zero Trust.</p>
@@ -29,7 +29,7 @@
 	<p>SSH command logging was built as an extension of Cloudflare’s Secure Web Gateway. The <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> already performs secure TLS inspection of all traffic from a user device. Now, it also supports SSH inspection by bootstrapping a proxy server upon new connections. Administrators are able to configure <i>network policies</i> to allow SSH access and audit the specific commands run.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hBeFNbgv24vOQOOGmHBoG/c785e6d1f3c8c19218a7ddd5337c3be0/image1-75.png" alt="Command logging configuration" class="kg-image" width="840" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hBeFNbgv24vOQOOGmHBoG/8b8547ddb74390c46625a2d7b930c4a6/image1-75.png" alt="Command logging configuration" class="kg-image" width="840" height="550" loading="lazy">
 
 	</figure>
 	<p>This then exposes that machine for SSH access and proxies all SSH commands via Cloudflare’s global edge network. All commands are automatically captured without complex logging software installed on the machine and across all hosts. TTY traffic can also be recorded for a later full session replay.</p>

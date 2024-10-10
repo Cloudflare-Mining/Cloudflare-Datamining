@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SAwlpnTxKcG0U0x0QHSFA/86db3da754031cdbe32c75566a788c66/image3.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SAwlpnTxKcG0U0x0QHSFA/d26f4cdd3319e73bc26220fcd299aa69/image3.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Chances are good that today you’ve sent a message through an <a href="https://www.cloudflare.com/learning/privacy/what-is-end-to-end-encryption"><u>end-to-end encrypted (E2EE)</u></a> messaging app such as WhatsApp, Signal, or iMessage. While we often take the privacy of these conversations for granted, they in fact rely on decades of research, testing, and standardization efforts, the foundation of which is a <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work"><u>public-private key exchange</u></a>. There is, however, an oft-overlooked implicit trust inherent in this model: that the messaging app infrastructure is distributing the public keys of all of its users correctly.</p>
 	<p>Here’s an example: if Joe and Alice are messaging each other on WhatsApp, Joe uses Alice’s phone number to retrieve Alice’s public key from the WhatsApp database, and Alice receives Joe’s public key. Their messages are then encrypted using this key exchange, so that no one — even WhatsApp&nbsp;— can see the contents of their messages besides Alice and Joe themselves. However, in the unlikely situation where an attacker, Bob, manages to register a different public key in WhatsApp’s database, Joe would try to message Alice but unknowingly be messaging Bob instead. And while this threat is most salient for journalists, activists, and those most vulnerable to cyber attacks<i>, </i>we believe that protecting the privacy and integrity of end-to-end encrypted conversations is for everyone.</p>
@@ -17,7 +17,7 @@
 	<p>We’ve also done this before — in 2022, Cloudflare announced <a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users"><u>Code Verify</u></a>, a partnership in which we verify that the code delivered in the browser for <a href="https://web.whatsapp.com"><u>WhatsApp Web</u></a> has not been tampered with. When users run WhatsApp in their browser, the <a href="https://faq.whatsapp.com/639766781216714?cms_platform=web&amp;helpref=faq_content"><u>WhatsApp Code Verify extension</u></a> compares a hash of the code that is executing in the browser with the hash that Cloudflare has of the codebase, enabling WhatsApp web users to easily see whether the code that is executing is the code that was publicly committed to.&nbsp;</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/451BUpYOdkMZ9KqtGKBbFQ/56f97fef32e1ed0970ddb668aba4fc02/Code_Verify_-_Blog.png" alt="" class="kg-image" width="1192" height="598" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/451BUpYOdkMZ9KqtGKBbFQ/69edee8fe9e64d124b16908a95bf0933/Code_Verify_-_Blog.png" alt="" class="kg-image" width="1192" height="598" loading="lazy">
 
 	</figure>
 	<p><sup><i>In Code Verify, Cloudflare builds a non-mutable chain associating the WhatsApp version with the hash of its code.</i></sup></p>
@@ -34,14 +34,14 @@
 	<p>The AKD tree is constructed by building a binary tree, each parent node of which is a hash of each of its left and right child nodes:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Dl16PIqBNBiKn6qhzanCU/1d553ca430dda866d049478fd461f14a/Mini_tree_-_Blog.png" alt="" class="kg-image" width="770" height="568" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Dl16PIqBNBiKn6qhzanCU/b67a1128bef4ab8733337f720c53f160/Mini_tree_-_Blog.png" alt="" class="kg-image" width="770" height="568" loading="lazy">
 
 	</figure>
 	<p><sup><i>Each child node on the tree contains contact and public key details for a user (shown here for illustrative purposes). In reality, Cloudflare only sees a hash of each node rather than Alice and Bob’s contact info in plaintext.</i></sup></p>
 	<p>An epoch describes a specific version of the tree at a given moment in time, identified by its root node. Using a structure similar to Code Verify, the WhatsApp Log stores each root node hash as part of an append-only time structure of updates.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43FGTWfTV2aIaaMkfyplY2/4819cda0a4e8fe3384d7c86ccd959c7e/Key_Transparency_combined_tree_-_Blog.png" alt="" class="kg-image" width="1518" height="1094" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43FGTWfTV2aIaaMkfyplY2/8576b9c096bead64ede52a034481149b/Key_Transparency_combined_tree_-_Blog.png" alt="" class="kg-image" width="1518" height="1094" loading="lazy">
 
 	</figure>
 	<p>What kind of changes are valid to be included in a given epoch? When a new person, Brian, joins WhatsApp, WhatsApp inserts a new “B” node in the AKD tree, and a new epoch. If Alice loses her phone and rotates her key, her “version” is updated to <code>v1</code> in the next update.&nbsp;&nbsp;</p>
@@ -65,7 +65,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QHtfUaKoIBcIcK5o6H53j/72bda52b51b8695f5cf6fd38eae6f1c1/Key_Transparency_Auditor_3_.png" alt="" class="kg-image" width="2400" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QHtfUaKoIBcIcK5o6H53j/ebaa147f3b22de32a29754d3cd7e73bd/Key_Transparency_Auditor_3_.png" alt="" class="kg-image" width="2400" height="768" loading="lazy">
 
 	</figure>
 	<p><sup><i>Timestamping service architecture (Cloudflare Workers in Rust, using a Durable Object for storage)</i></sup></p>
@@ -87,7 +87,7 @@
 	<p>Epochs and their digests are only representations of their underlying key directory. To fully audit the directory, the transition from the previous digest to a current digest has to be validated. To perform validation, we need to run the epoch validation method. Specifically, we want to run <a href="https://github.com/facebook/akd/blob/fcd665aa20f829cd9e06cb3d70cbe0c32ffe6b67/akd/src/auditor.rs#L56"><u>verify_consecutive_append_only</u></a> on every epoch constructed by the Log. The size of an epoch varies with the number of updates it contains, and therefore the number of associated nodes in the tree to construct as well. While Workers are able to run such validation for a small number of updates, this is a compute-intensive task. Therefore, still leveraging the same Rust codebase, the Auditor leverages a container that only performs the tree construction and validation. The Auditor retrieves the updates for a given epoch, copies them into its own R2 bucket, and delegates the validation to a <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/src/cloudchamber"><u>container</u></a> running on Cloudflare. Once validated, the epoch is marked as verified.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fNbebayPfLZPn4pEIoWpP/f97fec479668764c550f116e6f3acfcc/Key_Transparency_Auditor_4_.png" alt="" class="kg-image" width="2400" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fNbebayPfLZPn4pEIoWpP/b8d2da4ac9867aeb44e9e1ff52405be9/Key_Transparency_Auditor_4_.png" alt="" class="kg-image" width="2400" height="768" loading="lazy">
 
 	</figure>
 	<p><sup><i>Architecture for Cloudflare’s Plexi Auditor. The proof verification and signatures stored do not contain personally identifiable information such as your phone number, public key, or other metadata tied to your WhatsApp account.</i></sup></p>

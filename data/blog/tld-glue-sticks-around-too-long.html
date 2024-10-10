@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zpynga8050ZbuClWEraW2/d95b9662cd806d0781316670617d9dc2/tld-glue-sticks-around-too-long.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zpynga8050ZbuClWEraW2/cf2f6cb84e51e25ce0b44b4d70bcdb1e/tld-glue-sticks-around-too-long.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recent <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack">headline grabbing DDoS attacks</a> provoked heated debates in the DNS community. Everyone has strong opinions on how to harden DNS to avoid downtime in the future. Is it better to use a single DNS provider or multiple? What DNS TTL values are best? Does DNSSEC make you more or less exposed?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1chXWEgO8xyyBw5R2bGrSE/b69d571b76cee19eeb0f95241f204cfb/4536619509_0a576921df_z.jpg" alt="" class="kg-image" width="512" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1chXWEgO8xyyBw5R2bGrSE/4d34c63a6d0ca9fa3efdc8d9e5c1a72f/4536619509_0a576921df_z.jpg" alt="" class="kg-image" width="512" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/07anycolouryoulike/4536619509">image</a> by <a href="https://www.flickr.com/photos/07anycolouryoulike">Leticia Chamorro</a></p>
@@ -13,7 +13,7 @@
 	<p>But first: what is glue anyway?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pD5DVcAtxcliRRVaWJRDI/25b18c1405c58212f1fcde904c18bd5b/7230017432_fd71ce6a85_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pD5DVcAtxcliRRVaWJRDI/1ca9f529ea8ea349fcdc9662f05eac3c/7230017432_fd71ce6a85_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/armydre2008/7230017432">image</a> by <a href="https://www.flickr.com/photos/armydre2008">Frankieleon</a></p>
@@ -54,7 +54,7 @@ cloudflare.net.         172800  IN      NS      ns1.cloudflare.net.
 	<p>As you can see, here is a chicken and egg problem. To resolve <code>cloudflare.net</code> we need to resolve <code>ns1.cloudflare.net</code>. To resolve <code>ns1.cloudflare.net</code> we need to resolve <code>ns1.cloudflare.net</code>, and so on.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64Z4EPs4mJr6qPSfUClSPP/5d85798206b2ba62399d490f07ec5aaf/3326878608_c7d9273897_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64Z4EPs4mJr6qPSfUClSPP/c7a63b0bad1370f9da14de9a948a4505/3326878608_c7d9273897_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/samcatchesides/3326878608">image</a> by <a href="https://www.flickr.com/photos/samcatchesides">Sam-Cat</a></p>
@@ -108,7 +108,7 @@ ns1.cloudflare.net.	900	IN	A	173.245.59.31</code></pre>
 	<p>I strongly believe this is way too long and hurts aggressive DDoS mitigation techniques.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jYEpkWvqgpjjZiMAo627k/9cf1c7346f1434d992d7746e76a58f23/Screen-Shot-2016-11-30-at-15.13.24.png" alt="" class="kg-image" width="1402" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jYEpkWvqgpjjZiMAo627k/ca2cbe040679767c24436f6fcb691f62/Screen-Shot-2016-11-30-at-15.13.24.png" alt="" class="kg-image" width="1402" height="1080" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -149,7 +149,7 @@ ns1.cloudflare.net.	900	IN	A	173.245.59.31</code></pre>
 	<p>We performed the experiment on the <code>cloudflare.com</code> domain. Here is a chart of traffic levels to two Cloudflare nameservers with glue already present: ns3 and ns6, and new one we just added glue for: ns6-bis.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3q0XigdePAvaAsytEhDxqI/c0492472143001876baa19b05268b03d/39eed057d05d258e59750143378f3e3d.png" alt="" class="kg-image" width="500" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3q0XigdePAvaAsytEhDxqI/52a7586410e26c5e72ed57dfbd67dec0/39eed057d05d258e59750143378f3e3d.png" alt="" class="kg-image" width="500" height="350" loading="lazy">
 
 	</figure>
 	<p>We added glue at 2200 UTC one day. It is nicely visible that the traffic on this IP address gradually increased as the caches on recursors worldwide expired. The traffic seem to have reached levels comparable with other glue nameservers at about 1600 to 1800 the next day - around 8 hours later.</p>

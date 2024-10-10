@@ -1,9 +1,9 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ikLLdm8NOhGXyWPPn6RJ7/152a76a9ff4840a5c34fc73be487900c/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ikLLdm8NOhGXyWPPn6RJ7/dde81719bf022e8a3a41175e9656911f/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>For a quick primer on </i><a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus"><i>Certificate Transparency</i></a><i>, please read my colleague Nick Sullivan’s post from earlier today. The discussion below expands on that post and details how Cloudflare monitors the health and performance of Certificate Transparency (CT) logs.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vH4aWBui9mA6DKcTeR4YA/b0bbfd858a19672297bab4b4777d8278/merkle-town.png" alt="merkle-town" class="kg-image" width="935" height="444" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vH4aWBui9mA6DKcTeR4YA/39761d996b3838dc4b66aafce0c9b25e/merkle-town.png" alt="merkle-town" class="kg-image" width="935" height="444" loading="lazy">
 
 	</figure>
 	<p>The success of Certificate Transparency rests on the existence of a robust ecosystem of logs and log operators. Without logs that CAs can depend on, it’s not practical for browsers to require that SSL certificates have been logged to be trusted—as Chrome <a href="https://groups.google.com/a/chromium.org/forum/#!topic/ct-policy/wHILiYf31DE">plans to do</a> on April 30. With this deadline fast approaching and others browsers likely to follow suit, it’s critical that the CT ecosystem continues to strengthen and expand with new log operators.</p>
@@ -48,7 +48,7 @@
 	<p>On this page we list all of the logs that we’re actively monitoring. The set is currently comprised of all logs trusted by Chrome, with one exception: WoSign has <a href="https://groups.google.com/a/chromium.org/forum/#!topic/ct-policy/UcCqlxuz_1c">recently been distrusted</a> and will be removed soon. We also plan to expand our list once Mozilla, Apple, and others (finally) codify their CT policies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GTCbLzGoF22QFyZ1udbJj/8dc341b40f8be92a1ec847d7a28e199f/log-list.png" alt="log-list" class="kg-image" width="2380" height="1444" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GTCbLzGoF22QFyZ1udbJj/0bee1e2ea6cc6b3dadeb391d83b9eb02/log-list.png" alt="log-list" class="kg-image" width="2380" height="1444" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -73,7 +73,7 @@
 	<p>On this section of the dashboard we group all certificates found across CT logs we monitor into the following categories: Validation Level; Public Key Algorithm; Signature Algorithm; Entry Type; and Expired v. Current. Selecting one slice of a chart will filter the other charts by this selection, as well as the Root Certificate Authorities section below the pie charts.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45obK1BTk6zdZRV7k5aCwZ/b43975ce7a50f790a0dc1efc60f72c97/ev-gif.gif" alt="ev-gif" class="kg-image" width="800" height="727" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45obK1BTk6zdZRV7k5aCwZ/262a3892ad692265de67589b1242860d/ev-gif.gif" alt="ev-gif" class="kg-image" width="800" height="727" loading="lazy">
 
 	</figure>
 	<p>In the example shown above, I start by clicking “Other” in the Validation Level chart to discard the 315 million DV certs found. Then, I click on “Extended” to show only EV certificates and “Current” in the Expired v. Current chart to filter out expired certificates. From here I hover over the Root Certificate Authorities horizontal bar chart to see the distribution of unexpired EVs across roots. Note that we don’t (yet) group roots by owner, e.g., GeoTrust is listed separately rather than part of DigiCert, who purchased the brand along with the rest of Symantec’s CA business.</p>
@@ -90,7 +90,7 @@
 	<p>Here we break down certificate count based on the root to which it chains. The animation below has been filtered to show only current certificates, across all validation types. Note also that the roots displayed have not been grouped by owner.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66hNPZ3bTZtXWzhB3pXi5m/2e0a6f876741c5ec20aecf9674a6746a/root-gif.gif" alt="root-gif" class="kg-image" width="740" height="102" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66hNPZ3bTZtXWzhB3pXi5m/4dbe773525d76709b4ea327f27fbb7c2/root-gif.gif" alt="root-gif" class="kg-image" width="740" height="102" loading="lazy">
 
 	</figure>
 	<p>As can be seen as I continuously drill into the “Other” category, there is a long tail of browser-trusted CAs with very few unexpired certificates. Certificate Transparency and policy enforcement does not discriminate based on issuer size: soon any certificate issued worldwide must be logged or risk not being trusted.</p>
@@ -125,7 +125,7 @@
 	<p>Chrome’s upcoming "not secure" labeling of HTTP sites has been driving intense adoption of HTTPS using Cloudflare's <a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS provider offering</a>. Our customers are moving tens of thousands of sites per day from HTTP to HTTPS using our custom hostnames API.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vDFSsmdRVETZsmOqw3Att/8cd1ce89dadc0c6784abbb3d6593a295/issuance-by-day.png" alt="issuance-by-day" class="kg-image" width="2288" height="824" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vDFSsmdRVETZsmOqw3Att/16bd01e3516f94dbfbf92970bae81225/issuance-by-day.png" alt="issuance-by-day" class="kg-image" width="2288" height="824" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -140,7 +140,7 @@
 	<p>The chart below shows that CAs typically obtain their SCTs from the same set of logs, operated by other CAs. In some cases, CAs will allow other CAs to log for free, while in other cases they may charge a modest sum to offset the cost of operating the log. Cloudflare has been working with CAs to help them streamline this process, by providing APIs that (in parallel) acquire SCTs in accordance with browsers’ CT policies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3M9WKOeTgDUwLMqIaio23K/00ec15533dfb8e09a624263bc3f8a600/ca-interdependencies.png" alt="ca-interdependencies" class="kg-image" width="1986" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3M9WKOeTgDUwLMqIaio23K/8e32fc0ac92cf192db5dba88c793408d/ca-interdependencies.png" alt="ca-interdependencies" class="kg-image" width="1986" height="860" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

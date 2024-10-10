@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16Q4cxV2IcM6peqmR9uf5M/ed19c065a314e3a377531de61923753c/image4-2-1.png" alt="How Oxy uses hooks for maximum extensibility" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16Q4cxV2IcM6peqmR9uf5M/2fe5cd98d2fcc1043c96c1ccd011f2d0/image4-2-1.png" alt="How Oxy uses hooks for maximum extensibility" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>We recently <a href="https://blog.cloudflare.com/introducing-oxy">introduced Oxy</a>, our Rust framework for building proxies. Through a YAML file, Oxy allows applications to easily configure listeners (e.g. IP, <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">MASQUE</a>, HTTP/1), telemetry, and much more. However, when it comes to application logic, a programming language is often a better tool for the job. That’s why in this post we’re introducing Oxy’s rich <a href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> capabilities for programmatically modifying all aspects of a proxy.</p>
@@ -72,7 +72,7 @@ where
 	<p>To do this, we need to attach some state to the connection as it passes through Oxy. Client headers only exist in the HTTP CONNECT phase, but we need access to the PSK during the egress phase. With Oxy, this can be done by leveraging its Opaque Extensions to attach arbitrary (yet fully typed) context data to a connection. Oxy initializes the data and passes it to each hook. We can mutate this data when we read headers from the client, and read it later during egress.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bUwt3l14VvDFGgFI2WK31/d641094ef1590e2c742ab75f0bb62c33/download-18.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bUwt3l14VvDFGgFI2WK31/a6271793d05dad32e990564c817dd821/download-18.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<pre class="language-rust"><code class="language-rust">#[derive(Default)]
@@ -137,7 +137,7 @@ where
 	<p>A real world example would be implementing the RFC 9209 <a href="https://www.rfc-editor.org/rfc/rfc9209.html#name-next-hop">next-hop</a> Proxy-Status header. This involves setting a header containing the IP address we connected to on behalf of the client. We can do this with two pre-existing callbacks and a little bit of state: first we save the upstream passed to <code>EgressHook::handle_connection_established</code> and then read the value in the <code>HttpRequestHook:handle_proxy_connect_response</code> in order to set the header on the CONNECT response.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PMF1dZjgYHNplkhvsVLvv/20cad90615c9b5ef6e70c2fbd9ae3a94/download--1--12.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PMF1dZjgYHNplkhvsVLvv/e6cf3f5a89e242e0232eb1edf4be23f1/download--1--12.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<pre class="language-rust"><code class="language-rust">#[derive(Default)]
@@ -226,7 +226,7 @@ where
 	<p>Only a subset of callbacks will be invoked for a given packet: applications operating purely at L3 will see different hook callbacks fired compared to one operating at L7. This again is customizable – if desired, <a href="https://blog.cloudflare.com/introducing-oxy/#on-ramps">Oxy’s design</a> allows connections to be upgraded (or downgraded) &nbsp;which would cause a different set of callbacks to be invoked.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gEBrgeFRuB3Nz5D78E1yJ/9caa1d5b8f0433959ee58e54a7e19755/download--2--10.png" alt="" class="kg-image" width="1070" height="1600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gEBrgeFRuB3Nz5D78E1yJ/a78077d87e712c9c01e88deddf6f69c0/download--2--10.png" alt="" class="kg-image" width="1070" height="1600" loading="lazy">
 
 	</figure>
 	<p>The ingress phase is where the hooks controlling the upgrading of L3 and decapsulation of specific L4 protocols reside. For our L3 IP Tunnel, Oxy has powerful callbacks like <code>IpFlowHook::handle_flow</code> which allow applications to drop, upgrade or redirect flows. <code>IpFlowHook::handle_packet</code> gives that same level of control at the packet level – even allowing us to modify the byte array as it passes through.</p>

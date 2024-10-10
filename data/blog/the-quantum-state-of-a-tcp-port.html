@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jtTk2dCNu3WzoL9bLxFHA/5f8216b7c8c3b567cb22a33237d300f0/image6-14.png" alt="The quantum state of a TCP port" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jtTk2dCNu3WzoL9bLxFHA/4dae6095af8553a7571a4fb9411358ff/image6-14.png" alt="The quantum state of a TCP port" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Have you noticed how simple questions sometimes lead to complex answers? Today we will tackle one such question. Category: our favorite - Linux networking.</p>
@@ -19,7 +19,7 @@
 	<p>Questions are split into two groups by test scenario:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Fu0occJtMgjz3Rd7xGJCo/415fb6cd96d6265d5a533269c4f7aa0e/image4-15.png" alt="image" class="kg-image" width="881" height="461" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Fu0occJtMgjz3Rd7xGJCo/9bf63f71e754ccbcf47c1fdd801d8f8f/image4-15.png" alt="image" class="kg-image" width="881" height="461" loading="lazy">
 
 	</figure>
 	<p>In the first test scenario, two sockets connect from the same local port to the same remote IP and port. However, the local IP is different for each socket.</p>
@@ -358,7 +358,7 @@ s2.getsockname(), s2.getpeername()</code></pre>
 	<p>Linux tracks all TCP <b>ports</b> in use in a hash table named <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L166">bhash</a>. Not to be confused with with <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L156">ehash</a> table, which tracks <b>sockets</b> with both local and remote address already assigned.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OJ1M8Zu9lgEZoEJdJCNgr/9a7b060c02b468c2d84910ead24aa88d/Untitled.png" alt="image" class="kg-image" width="1600" height="585" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OJ1M8Zu9lgEZoEJdJCNgr/d50e8f331dc994366b2ff749ed10b519/Untitled.png" alt="image" class="kg-image" width="1600" height="585" loading="lazy">
 
 	</figure>
 	<p>Each hash table entry points to a chain of so-called bind buckets, which group together sockets which share a local port. To be precise, sockets are grouped into buckets by:</p>
@@ -416,7 +416,7 @@ s2.getsockname(), s2.getpeername()</code></pre>
 	<p>Whenever the Linux kernel needs to bind a socket to a local port, it first has to look for the bind bucket for that port. What makes life a bit more complicated is the fact that the search for a TCP bind bucket exists in two places in the kernel. The bind bucket lookup can happen early - <code>at bind()</code> time - or late - <code>at connect()</code> - time. Which one gets called depends on how the connected socket has been set up:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KOEGkTF7HEH7qku86bufY/7586451996b53e4317fdce0356f1ccfa/image5-5.png" alt="image" class="kg-image" width="711" height="481" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KOEGkTF7HEH7qku86bufY/8560316429d383b25add8c9f0b2bab3b/image5-5.png" alt="image" class="kg-image" width="711" height="481" loading="lazy">
 
 	</figure>
 	<p>However, whether we land in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L486"><code>inet_csk_get_port</code></a> or <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L992"><code>__inet_hash_connect</code></a>, we always end up walking the bucket chain in the bhash looking for the bucket with a matching port number. The bucket might already exist or we might have to create it first. But once it exists, its fastreuse field is in one of three possible states: <code>-1</code>, <code>0</code>, or <code>+1</code>. As if Linux developers were inspired by <a href="https://en.wikipedia.org/wiki/Triplet_state">quantum mechanics</a>.</p>
@@ -718,7 +718,7 @@ TCP-PORT  FASTREUSE  #OWNERS
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7awSZQJp00EDbGbvcpBNv9/2ced446902f2c53a78db6009cf0e84d0/Untitled--1-.png" alt="image" class="kg-image" width="731" height="681" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7awSZQJp00EDbGbvcpBNv9/cca9b2c49a3db5f3d1db62ce142ac46a/Untitled--1-.png" alt="image" class="kg-image" width="731" height="681" loading="lazy">
 
 	</figure>
 	<p>And while we could have figured it all out by carefully reading the code in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L431"><code>inet_csk_get_port → inet_csk_update_fastreuse</code></a>, it certainly doesn't hurt to confirm our understanding with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse_states.py">a few more tests</a>.</p>

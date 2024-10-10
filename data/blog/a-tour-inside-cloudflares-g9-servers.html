@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UOINNtssbCufnJFP05XZF/303e36102655c8d7872729fa6e748673/a-tour-inside-cloudflares-g9-servers.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UOINNtssbCufnJFP05XZF/eb264cdef3ce4066f2deb86d6023f2a2/a-tour-inside-cloudflares-g9-servers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare operates at a significant scale, handling nearly 10% of the Internet HTTP requests that is at peak more than 25 trillion requests through our network every month. To ensure this is as efficient as possible, we own and operate all the equipment in our <a href="https://www.cloudflare.com/network-map">154 locations around the world</a> in order to process the volume of traffic that flows through our network. We spend a significant amount of time specing and designing servers that makes up our network to meet our ever changing and growing demands. On regular intervals, we will take everything we've learned about our last generation of hardware and refresh each component with the next generation…</p>
 	<p>If the above paragraph sounds familiar, it’s a reflecting glance to where we were <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">5 years ago</a> using today’s numbers. We’ve done so much progress engineering and developing our tools with the latest tech through the years by pushing ourselves at getting smarter in what we do.</p>
@@ -6,7 +6,7 @@
 	<p>Since the last time we blogged about our G4 servers, we’ve iterated one generation each of the past 5 years. Our latest generation is now the G9 server. From a G4 server comprising 12 Intel Sandybridge CPU cores, our G9 server has 192 Intel Skylake CPU cores ready to handle today’s load across Cloudflare’s network. This server is <a href="https://www.qct.io/product/index/Server/rackmount-server/Multi-node-Server/QuantaPlex-T42S-2U-4Node">QCT’s T42S-2U multi-node server</a> where we have 4 nodes per chassis, therefore each node has 48 cores. Maximizing compute density is the primary goal since rental colocation space and power are costly. This 2U4N chassis form factor has served us well for the past 3 generations, we’re revisiting this option once more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IL5Zupe1s0pPvlWHoaB6E/7ac79582b11ccd3f13743c1e997df544/MSUVbbiNbqCozo5hb0cnaWlQeUUxq3JdbJoZvUrGnY0ly9unm8JfFMKeTcKHp0P49HmMHdJ8f1Fvw7lHu8R1FmEQKKpbUjtP4qdkWMviOf0-NKmksk_Uy_7rFEh.jpeg" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IL5Zupe1s0pPvlWHoaB6E/e3fcd9a2ba9447a0ec093e1ebb1d6488/MSUVbbiNbqCozo5hb0cnaWlQeUUxq3JdbJoZvUrGnY0ly9unm8JfFMKeTcKHp0P49HmMHdJ8f1Fvw7lHu8R1FmEQKKpbUjtP4qdkWMviOf0-NKmksk_Uy_7rFEh.jpeg" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
 
 	</figure>
 	<p><i>Exploded picture of the G9 server’s main components. 4 sleds represent 4 nodes, each with 2 24-core Intel CPUs</i></p>
@@ -68,13 +68,13 @@
 	<p>Another change is the adapter’s form factor itself being an OCP mezzanine instead of the more conventional Low Profile sized card. QCT is a server system integrator participating in the <a href="https://www.opencompute.org">Open Compute Project</a>, a non-profit organization establishing an open source hardware ecosystem founded by Facebook, Intel, and Rackspace. Their T42S-2U motherboards each include 2 PCIe x16 Gen3 expansion slots: 1 fit for a regular I/O card and 1 for an OCP mezzanine. The form factor change allows us to occupy the OCP slot leaving the regular slot free to integrate something else that may not be offered with an OCP form factor like a high capacity NVMe SSD or a GPU. We like that our server has the room for upgrades if needed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VEGuLvx4UBK3DSKxOvhWC/33f96990c813dd2262894b1e5fa92814/image3.png" alt="" class="kg-image" width="1091" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VEGuLvx4UBK3DSKxOvhWC/fbf6c16637f5f5d534d5f7cbfc0a4048/image3.png" alt="" class="kg-image" width="1091" height="441" loading="lazy">
 
 	</figure>
 	<p><i>Both Low Profile and OCP adapters offer the same throughput and features</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64VwKTV9M42lnWZEmdsymo/64c2735edbf9fe8e9d6a24c82a72ed7c/qncCFb7XX0ZvJyvXxWcJdv6rJ_6Yqs_BYRj5xZokMll0d3sFgJX5eBqi1N8KUIuqyBV_niKttp0PsYgkDsnpQsQBOmXGEYPCkgANeTldyf-75KjYkR3DpueCUK2h.png" alt="" class="kg-image" width="1128" height="224" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64VwKTV9M42lnWZEmdsymo/ab9cd751bf6836b818fc4c58cdf5c35b/qncCFb7XX0ZvJyvXxWcJdv6rJ_6Yqs_BYRj5xZokMll0d3sFgJX5eBqi1N8KUIuqyBV_niKttp0PsYgkDsnpQsQBOmXGEYPCkgANeTldyf-75KjYkR3DpueCUK2h.png" alt="" class="kg-image" width="1128" height="224" loading="lazy">
 
 	</figure>
 	<p><i>Rear side of G9 chassis showing all 4 sled nodes, each leaving room to add on a PCI card</i></p>
@@ -100,24 +100,24 @@
 	<p>Temperature readings were recorded off of <i>ipmitool sdr list</i>, then graphed showing socket and motherboard temperature. For 2U4N being such a compact form factor, it’s worth monitoring that a server running hot isn’t <i>literally</i> running hot. The red lines represent the 4 nodes that compose the whole G9 server under test; blue lines represent G8 nodes (we didn’t stress the G8’s so their temperature readings are constant).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LhJHUDripavgzh5htsLtC/885dd0ce4f2e53ad13fa5746f70340c0/ddFg5dcptq_R6eQp6I6X2RqrzzPCDL1OWBN1qb0KBGSixf-oJaDxnnC1gjtownqAaru6WyexTLpubnapjdKhE8CB3BXrVIZa6tnOy86CX6JrtPOXUAtvFGBtT4dv.png" alt="" class="kg-image" width="1301" height="626" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LhJHUDripavgzh5htsLtC/43748096e2380de60cbbb3efe76891d8/ddFg5dcptq_R6eQp6I6X2RqrzzPCDL1OWBN1qb0KBGSixf-oJaDxnnC1gjtownqAaru6WyexTLpubnapjdKhE8CB3BXrVIZa6tnOy86CX6JrtPOXUAtvFGBtT4dv.png" alt="" class="kg-image" width="1301" height="626" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zhx6iZsGzDgGAP5jrOYYj/1b349ca9e04641ebb62ad7c70df8c261/Xchiev2ccIEYdrFIiB2dpF1SI1rbOIz24S0o_mTJklyy--Pjcz8LWPrxhEIXX3zg-0b9VEEHA2V5v-SzQPV4_F4i6NOBofxl8j7SS0qa_6FVqdmzezaYGXXA39Oz.png" alt="" class="kg-image" width="1301" height="625" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zhx6iZsGzDgGAP5jrOYYj/3c38aba998d3308dd20e643e2d139833/Xchiev2ccIEYdrFIiB2dpF1SI1rbOIz24S0o_mTJklyy--Pjcz8LWPrxhEIXX3zg-0b9VEEHA2V5v-SzQPV4_F4i6NOBofxl8j7SS0qa_6FVqdmzezaYGXXA39Oz.png" alt="" class="kg-image" width="1301" height="625" loading="lazy">
 
 	</figure>
 	<p>Both graphs are looking fine and not out of control mostly thanks to the T42S-2U’s 4 80mm x 80mm fans capable of blowing over 90CFM; which we managed to reach their max spec RPM.</p>
 	<p>Recording the new system’s max power consumption is critical information we need to properly design our rack stack choosing the right Power Distribution Unit and ensuring we’re below the budgeted power while keeping adequate phase balancing. For example, a typical 3-phase US-rated 24-Amp PDU gives you a max power rating of 8.6 kilowatts. We wouldn’t be able to fit 9 servers powered by that same PDU if each were running at 1kW without any way to cap them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XzW1YCfCUohp7dzwmAuEw/da28367e83d4a0f3e0201242aa911127/pirTvrYl4aQuSd575px16hVHA55qFKhqTDzan9mn6HCz9G1Z83CjXO_y9z50wjgveFP07rQFfAlMK3h7ts8e85zgMYXcy1OiVh0bLdbQx8pORSNkZr7MOCtBDqLb.png" alt="" class="kg-image" width="1288" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XzW1YCfCUohp7dzwmAuEw/00278a8993faa08dffe588720ef93ad3/pirTvrYl4aQuSd575px16hVHA55qFKhqTDzan9mn6HCz9G1Z83CjXO_y9z50wjgveFP07rQFfAlMK3h7ts8e85zgMYXcy1OiVh0bLdbQx8pORSNkZr7MOCtBDqLb.png" alt="" class="kg-image" width="1288" height="1000" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lYbqk8qyPWJa6GF4t5CnG/a1c9d849e1409a7e83655a33a7c548ec/GujZRUCJu-WHNb4H8K-D16X7kyCBd_-Wqg18shh4_4nFAES6uhYu4CpR1fESeL4wUT_rhy1-WOsLVzP5lW-3gekMqJzrCjKSteBm_99OLWu_edtJplUQgNAo6cke.png" alt="" class="kg-image" width="1308" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lYbqk8qyPWJa6GF4t5CnG/1c523b77c0a71336acee7e829cf5e9d0/GujZRUCJu-WHNb4H8K-D16X7kyCBd_-Wqg18shh4_4nFAES6uhYu4CpR1fESeL4wUT_rhy1-WOsLVzP5lW-3gekMqJzrCjKSteBm_99OLWu_edtJplUQgNAo6cke.png" alt="" class="kg-image" width="1308" height="1000" loading="lazy">
 
 	</figure>
 	<p>Above right graph shows our max power to be 1.9kW as the red line, or crudely 475W per node which is excellent in a modern server. Notice the blue and yellow lines representing the G9’s 2 power supplies summing the total power. The yellow line PSU appearing off is intentional as part of our testing procedure to show the PSU’s resilience in abrupt power changes.</p>
@@ -133,20 +133,20 @@
 	<p>We increased capacity to one of our most loaded PoPs by adding G9 servers. The following time graphs represent a 24 hour range with how G9 performance compares with G8 in a live PoP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ZqA2VbWMkEsK4jUkj7wb/ec8e49d60bbe582cd495402dd4a121ca/Screen-Shot-2018-10-03-at-6.44.41-PM-1.png" alt="" class="kg-image" width="2000" height="889" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17ZqA2VbWMkEsK4jUkj7wb/a1932b12e697992c0ccd918486b69a6d/Screen-Shot-2018-10-03-at-6.44.41-PM-1.png" alt="" class="kg-image" width="2000" height="889" loading="lazy">
 
 	</figure>
 	<p>Great! They're doing over 2x the requests compared to G8 with about 10% less CPU usage. Note that all results here are based from non-optimized systems, so we could add more load on the G9 and have their CPU usage comparable to the G8. Additionally, they're doing that amount with better CPU processing time shown as nginx execution time. You can see the latency gap between generations widening as we go towards the 99.9th percentile:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fAxaonFhRQRydhYQXErzS/98c08a99f41bd9fe23656ad50f1a6959/Screen-Shot-2018-10-03-at-6.53.13-PM-1.png" alt="" class="kg-image" width="2000" height="435" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fAxaonFhRQRydhYQXErzS/6f31936f98783eb59358101aff4f707e/Screen-Shot-2018-10-03-at-6.53.13-PM-1.png" alt="" class="kg-image" width="2000" height="435" loading="lazy">
 
 	</figure>
 	<p><i>Long-tail latencies for NGINX CPU processing time (lower is better)</i></p>
 	<p>Talking about latency, let’s check how our new SSDs are doing on that front:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GzzQt3teUZbjXAuJvW9Cj/e3c1ce8ae0a977a04bb6028a887db625/Screen-Shot-2018-10-04-at-4.59.41-PM.png" alt="" class="kg-image" width="2000" height="886" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GzzQt3teUZbjXAuJvW9Cj/cec3aac363553d3b1b23acfb3cb3638f/Screen-Shot-2018-10-04-at-4.59.41-PM.png" alt="" class="kg-image" width="2000" height="886" loading="lazy">
 
 	</figure>
 	<p><i>Cache disk IOPS and latency (lower is better)</i></p>
@@ -154,7 +154,7 @@
 	<p>Another metric that G9 does more is power consumption, doing about 55% more than the G8. While it’s not a piece of information to brag about, it is expected when older CPUs were once rated at 85W TDP to now using ones with 150W TDP; and when considering how much work the G9 servers do:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Kzoz5pwmyzAPfHZRPPcGu/2e82efbde8e2ea31ee8a45b100f26e51/Screen-Shot-2018-10-03-at-7.12.17-PM-1.png" alt="" class="kg-image" width="2000" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Kzoz5pwmyzAPfHZRPPcGu/44145ef50ae1385f85ab0a605d14e57e/Screen-Shot-2018-10-03-at-7.12.17-PM-1.png" alt="" class="kg-image" width="2000" height="486" loading="lazy">
 
 	</figure>
 	<p>G9 is actually 1.5x more power efficient than G8. Temperature readings were checked as well. Inlet and outlet chassis temps, as well as CPU temps, are well within operating temperatures.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4slvDmPx8XeZ41YDuvTeNX/bcf2f33c095309708addde45de87a4ca/why-iot-is-insecure.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4slvDmPx8XeZ41YDuvTeNX/68866463882f63d17d021e0ae43d3919/why-iot-is-insecure.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As I’m writing this, four DDoS attacks are ongoing and being automatically mitigated by <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a>. Cloudflare’s job is to get attacked. Our network gets attacked constantly.</p>
 	<p>Around the fall of 2016, we started seeing DDoS attacks that looked a little <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras">different than usual</a>. One attack we saw around that time had traffic coming from 52,467 unique IP addresses. The clients weren’t servers or desktop computers; when we tried to connect to the clients over port 80, we got the login pages to CCTV cameras.</p>
@@ -42,26 +42,26 @@
 	<p>Here’s an HTTP POST to do that:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10XN1xsCbML3sq6IUtHQlk/6cc27cb85f5409f727464002dd9336f4/Screen-Shot-2017-12-23-at-8.39.11-PM.png" alt="" class="kg-image" width="872" height="311" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10XN1xsCbML3sq6IUtHQlk/dd09f91c6593270de299f38e9490caad/Screen-Shot-2017-12-23-at-8.39.11-PM.png" alt="" class="kg-image" width="872" height="311" loading="lazy">
 
 	</figure>
 	<p>But let’s say the same device is going to use TLS. Here’s what the same POST looks like with the TLS handshake — this is with TLS 1.2:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XYspSKePX6SnuugQdO58g/68c54f8f8dbf0755d494b61fdcff917b/Screen-Shot-2017-12-23-at-8.40.00-PM.png" alt="" class="kg-image" width="876" height="481" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XYspSKePX6SnuugQdO58g/89efbf761a75c8a90df6d4627dc5439d/Screen-Shot-2017-12-23-at-8.40.00-PM.png" alt="" class="kg-image" width="876" height="481" loading="lazy">
 
 	</figure>
 	<p>Depending on distance between the device and the application server and the latency of the server, this can be hundreds of milliseconds added. The solution is likely the newest version of TLS, TLS 1.3.</p>
 	<p>TLS 1.3 eliminates a complete round trip in the TLS handshake, which makes TLS much lighter and faster. It cuts the number of round trips in the handshake by half by predicting what key agreement protocol and algorithm the server will decide to use and sends those guessed parameters and the key share directly in the client hello. And if the server likes that, it sends back its own key share for the same algorithm, and the whole handshake is done.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LB8N0MKT0QFOFfZL3S91v/ddd43f973adeaa8e59bfd570cd0a8589/Screen-Shot-2017-12-23-at-8.50.04-PM.png" alt="" class="kg-image" width="857" height="370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LB8N0MKT0QFOFfZL3S91v/240f1a0436802f14c6c736f558b5f9f6/Screen-Shot-2017-12-23-at-8.50.04-PM.png" alt="" class="kg-image" width="857" height="370" loading="lazy">
 
 	</figure>
 	<p>If the same IoT device talks to the same server again, there’s actually <a href="https://blog.cloudflare.com/introducing-0-rtt">no round trip at all</a>. The parameters chosen in the initial handshake are sent alongside application data in the first packet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BVBCXVFfkOtvxxvXO0M1Y/dda47c80c1599a615e46f02971be4a0b/Screen-Shot-2017-12-24-at-8.23.08-AM.png" alt="" class="kg-image" width="867" height="331" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BVBCXVFfkOtvxxvXO0M1Y/1b850b51f228b6d70540a4fbea3f3aa8/Screen-Shot-2017-12-24-at-8.23.08-AM.png" alt="" class="kg-image" width="867" height="331" loading="lazy">
 
 	</figure>
 	<p>Why isn’t every IoT device using 1.3 today? TLS 1.3 is still actively being developed in the IETF standards track and while Chrome as of version 56 in January and Firefox as of version 52 in March support 1.3, not everything does. The biggest problem today are middleboxes that are used by ISP’s and enterprises that panic when they see a 1.3 handshake and close the connection. This also happened when the world was upgrading to TLS 1.2 and middleboxes only understood TLS 1.1, so it’s just a matter of time.</p>
@@ -87,20 +87,20 @@
 	<p>MQTT is a pub/sub protocol that has been around almost 20 years. In MQTT, a proxy server acts as a broker. An IoT device or web app publishes a message to the broker, and the broker distributes those messages to all the other IoT devices that need to receive that message.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/E4huJmd0Qc5gRa4N5kuxH/4c349a0ac9beb9c59cce9d580b23605c/Screen-Shot-2017-12-23-at-8.52.51-PM.png" alt="" class="kg-image" width="861" height="516" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/E4huJmd0Qc5gRa4N5kuxH/1116aa56a7893b95bd62909c577d525b/Screen-Shot-2017-12-23-at-8.52.51-PM.png" alt="" class="kg-image" width="861" height="516" loading="lazy">
 
 	</figure>
 	<p>When MQTT was written almost 20 years ago, it was written without security by intention. It was written for oil and gas companies and they were just sending sensor data and no one thought it needed to be encrypted.</p>
 	<p>CoAP was standardized just three years ago. It has all the same methods as HTTP, but it’s over UDP so it’s really light.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PLPc3UEGFJ8RVGsEWpGpk/acfde92b542ccd30536f0aa9598e300d/Screen-Shot-2017-12-23-at-8.53.03-PM.png" alt="" class="kg-image" width="866" height="314" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2PLPc3UEGFJ8RVGsEWpGpk/e073dc56e23e24c449aa96f97e1f9fa8/Screen-Shot-2017-12-23-at-8.53.03-PM.png" alt="" class="kg-image" width="866" height="314" loading="lazy">
 
 	</figure>
 	<p>The problem is, if you want to add TLS (DTLS really because CoAP is over UDP), it no longer is light anymore.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Ih9SbeRbtRJk4OqCZGXgx/afd5753aace9ab445652d757bd805c4e/Screen-Shot-2017-12-23-at-8.53.41-PM.png" alt="" class="kg-image" width="861" height="568" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ih9SbeRbtRJk4OqCZGXgx/698e1d764c758df0cebcd832c5aefa63/Screen-Shot-2017-12-23-at-8.53.41-PM.png" alt="" class="kg-image" width="861" height="568" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

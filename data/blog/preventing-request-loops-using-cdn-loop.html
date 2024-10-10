@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nINEXnGDtOgpoNNkZ99Ch/18ca879e66cb0b6feb1355a9be1001c7/preventing-request-loops-using-cdn-loop.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nINEXnGDtOgpoNNkZ99Ch/3404b7c73f156513726ea27bcbb7b13c/preventing-request-loops-using-cdn-loop.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>HTTP requests typically originate with a client, and end at a web server that processes the request and returns some response. Such requests may pass through multiple proxies before they arrive at the requested resource. If one of these proxies is configured badly (for instance, back to a proxy that had already processed it) then the request may be caught in a loop.</p>
 	<p>Request loops, accidental or malicious, can consume resources and degrade user's Internet performance. Such loops can even be <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">observed at the CDN-level</a>. Such a wide-scale attack would affect all customers of that CDN. It's been over <a href="https://blog.cloudflare.com/preventing-malicious-request-loops">three years</a> since Cloudflare acknowledged the power of such non-compliant or malicious request loops. The proposed solution in that blog post was quickly found to be flawed and loop protection has since been implemented in an <i>ad-hoc</i> manner that is specific to each individual provider. This lack of cohesion and co-operation has led to a fragmented set of protection mechanisms.</p>
@@ -16,7 +16,7 @@
 	<p>This is where things can sometimes get messy, either through misconfiguration or deliberately. It's possible to configure multiple proxy services for a given origin in a <i>loop</i>. For example, an origin website could configure proxy <b>A</b> so that proxy <b>B</b> is the origin, and <b>B</b> such that <b>A</b> is the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59Hrtvc3DZHWSzpQUqeKvd/2e2d4f8efca687f0189cf132ea40ac0b/Loop1.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59Hrtvc3DZHWSzpQUqeKvd/cd385c46d8d1bde51b162c561dd9585f/Loop1.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
 
 	</figure>
 	<p>Then any request sent to the origin would get caught in a loop between the two Proxies (see above). If such a loop goes undetected, then this can quickly eat the computing resources of the two proxies, especially if the request requires a lot of processing at the edge. In these cases, it is conceivable that such an attack could lead to a DoS on one or both of the proxy services. Indeed, a <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">research paper from NDSS 2016</a> showed that such an attack was practical when leveraging multiple CDN providers (including Cloudflare) in the way method shown above.</p>
@@ -79,7 +79,7 @@ CDN-Loop: cdn-info(A)</code></pre>
 	<p>The IETF standardisation process welcomes running code and implementation experience in the real world. Cloudflare recently added support for the CDN-Loop header to requests that pass through the Cloudflare edge. This replaces the <code>CF-Connecting-IP</code> and <code>X-Forwarded-For</code> headers as the primary means for establishing loop protection. The structure that Cloudflare uses is similar to the examples above, where <code>cdn-info = cloudflare</code>. Extra parameters can be added to the header to determine how many times a request has been processed and in what manner.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pUAuvQrFWUQ0KIcMZW97p/aa17246ac03385e13f9c92514d434a5f/loop2.png" alt="" class="kg-image" width="905" height="554" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pUAuvQrFWUQ0KIcMZW97p/81878c177780d661c3a9277473595c88/loop2.png" alt="" class="kg-image" width="905" height="554" loading="lazy">
 
 	</figure>
 	<p>The Cloudflare edge drops any requests that have been processed multiple times to prevent malicious loop attacks. In the diagram above, requests that have looped more times than is allowed by a given CDN (red arrows) are dropped and an error is returned to the client. The edge can decide to allow requests to loop more than once in certain situations, rather than dropping immediately after the first loop.</p>

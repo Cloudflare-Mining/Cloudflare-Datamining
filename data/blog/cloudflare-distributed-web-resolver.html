@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hv5ifu0ovKTGJqKuOAgRc/fe5bbb53696b8573ac7200b84937fe0f/image4-2.png" alt="A Name Resolver for the Distributed Web" class="kg-image" width="1999" height="1142" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hv5ifu0ovKTGJqKuOAgRc/e70e4f8630354081347d7c80cc4557c6/image4-2.png" alt="A Name Resolver for the Distributed Web" class="kg-image" width="1999" height="1142" loading="lazy">
 
 	</figure>
 	<p>The Domain Name System (DNS) matches names to resources. Instead of typing 104.18.26.46 to access the Cloudflare Blog, you type blog.cloudflare.com and, using DNS, the domain name resolves to 104.18.26.46, the Cloudflare Blog IP address.</p>
@@ -31,7 +31,7 @@
 	<p>To understand why a CID is defined as self-describing, we can look at its binary representation. For QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco, the CID looks like the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2A7q58l0WReM66ndaxQmms/6eed3d698ff27bf395a4567c31baf72e/image2-1.png" alt="" class="kg-image" width="786" height="175" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2A7q58l0WReM66ndaxQmms/fc93187cd6f358d2291944cd57cbc419/image2-1.png" alt="" class="kg-image" width="786" height="175" loading="lazy">
 
 	</figure>
 	<p>The first is the algorithm used to generate the CID (sha2-256 in this case); then comes the length of the encoded content (32 for a sha2-256 hash), and finally the content itself. When referring to the <a href="https://github.com/multiformats/multicodec/blob/master/table.csv">multicodec table</a>, it is possible to understand how the content is encoded.</p>
@@ -110,13 +110,13 @@
 	<p>Consider a user, Alice, who has direct access to the Ethereum state. The flow goes as follows: Alice would like to get Privacy Pass’s Ethereum address, for which the domain is privacy-pass.eth. She looks for privacy-pass.eth in the ENS Registry and figures out the resolver for privacy-pass.eth is at 0x1234... . She now looks for the address of privacy-pass.eth at the resolver address, which turns out to be 0xf10326c....</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yVOgswqi6HQ38qlhTaTdK/99df8f46a8934ad5bf6f48d2e0c9d663/image1-3.png" alt="" class="kg-image" width="1064" height="531" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yVOgswqi6HQ38qlhTaTdK/0956f47fa306bebb2233e9601d0b430c/image1-3.png" alt="" class="kg-image" width="1064" height="531" loading="lazy">
 
 	</figure>
 	<p>Accessing the IPFS content identifier for privacy-pass.eth works in a similar way. The resolver is the same, only the accessed data is different — Alice calls a different method from the smart contract.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CjIbo1euB3DG5EZgnL3Bm/4e018fc52957cbc5d5ea155d8613b5fc/image5.png" alt="" class="kg-image" width="1027" height="531" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CjIbo1euB3DG5EZgnL3Bm/9b59d7bd3c7fa63870238274ef5a0200/image5.png" alt="" class="kg-image" width="1027" height="531" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -142,7 +142,7 @@
 	<p>To do this, we setup a wildcard DNS record for *.eth.link to be proxied through Cloudflare and handled by a Cloudflare Worker. &nbsp;When a user Alice accesses <a href="https://privacy-pass.eth.link">privacy-pass.eth.link</a>, the worker first gets the CID of the CID to be retrieved from Ethereum. Then, it requests the content matching this CID to IPFS, and returns it to Alice.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WivGoQhRDcSaDh99sVdNI/4a8d8b5edb41ff8b90f7bb179dc87f51/image3.png" alt="" class="kg-image" width="1458" height="670" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WivGoQhRDcSaDh99sVdNI/0e9bca31a378146d49d92c3af71180e8/image3.png" alt="" class="kg-image" width="1458" height="670" loading="lazy">
 
 	</figure>
 	<p>All parts can be run locally. The worker can be run in a service Worker, and the Ethereum Gateway can point to both a local Ethereum node and the IPFS gateway provided by IPFS Companion. It means that while Cloudflare provides resolution-as-a-service, none of the components has to be trusted.</p>

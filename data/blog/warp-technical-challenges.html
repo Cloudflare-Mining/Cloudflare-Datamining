@@ -1,5 +1,5 @@
 <div class="mb2 gray5">18 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/warp-technical-challenges">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/warp-technical-challenges">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/warp-technical-challenges">日本語</a>, <a href="https://blog.cloudflare.com/es-es/warp-technical-challenges">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/warp-technical-challenges">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tC8Umnv2viF8mp31mIfSC/7fc2bd69cc7586016e0eca10144edce3/warp-technical-challenges.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/warp-technical-challenges">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/warp-technical-challenges">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/warp-technical-challenges">日本語</a>, <a href="https://blog.cloudflare.com/es-es/warp-technical-challenges">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/warp-technical-challenges">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tC8Umnv2viF8mp31mIfSC/580009d7e79eb2666804b72ea60a2297/warp-technical-challenges.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you have seen our other post you know that <a href="https://blog.cloudflare.com/announcing-warp-plus">we released WARP</a> to the last members of our waiting list today. With WARP our goal was to secure and improve the connection between your mobile devices and the Internet. Along the way we ran into problems with phone and operating system versions, diverse networks, and our own infrastructure, all while working to meet the pent up demand of a waiting list nearly two million people long.</p>
 	<p>To understand all these problems and how we solved them we first need to give you some background on how the Cloudflare network works:</p>
@@ -14,7 +14,7 @@
 	<p>The Cloudflare network is composed of data centers located in 194 cities and in more than 90 countries. Every Cloudflare data center is composed of many servers that receive a continual flood of requests and has to distribute those requests between the servers that handle them. We use a set of routers to perform that operation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BAFvTCIPxCRil8uxiehAK/d1a2c425ef1d1462e08606a2ed68f7c3/image2.png" alt="" class="kg-image" width="1308" height="1182" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BAFvTCIPxCRil8uxiehAK/90845270ea91db273740c49bf33ec0ff/image2.png" alt="" class="kg-image" width="1308" height="1182" loading="lazy">
 
 	</figure>
 	<p>Our routers listen on Anycast IP addresses which are advertised over the public Internet. If you have a site on Cloudflare, your site is available via two of these addresses. In this case, I am doing a DNS query for “workers.dev”, a site which is powered by Cloudflare:</p>
@@ -32,7 +32,7 @@ workers.dev.    161  IN  A  198.41.214.162
 	<p>Once a packet hits our data center it is processed by a router. That router sends the traffic to one of a set of servers responsible for handling that address using a routing strategy called ECMP (Equal-Cost Multi-Path). ECMP refers to the situation where the router doesn’t have a clear ‘winner’ between multiple routes, it has multiple good next hops, all to the same ultimate destination. In our case we hack that concept a bit, rather than using ECMP to balance across multiple intermediary links, we make the intermediary link addresses the final destination of our traffic: our servers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TjR9o86JEQWIhtJcHx3Sw/4e58faa4463dc70363eec22d21ce216f/image6.png" alt="" class="kg-image" width="1980" height="1006" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TjR9o86JEQWIhtJcHx3Sw/5ee5b811230dbfe5ab7144ee04d4e239/image6.png" alt="" class="kg-image" width="1980" height="1006" loading="lazy">
 
 	</figure>
 	<p>Here's the configuration of a Juniper-brand router of the type which might be in one of our data centers, and which is configured to balance traffic across three destinations:</p>
@@ -97,7 +97,7 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>An IPv4 address is composed of 32 bits (often written as four eight-bit numbers). If you exclude the reserved addresses which can’t be used, you are left with <a href="https://stackoverflow.com/questions/2437169/what-is-the-total-amount-of-public-ipv4-addresses">3,706,452,992 possible addresses</a>. This number has remained constant since IPv4 was deployed on the ARPANET in 1983, even as the number of devices has exploded (although it might go up a bit soon <a href="https://hub.packtpub.com/linux-kernel-announces-a-patch-to-allow-0-0-0-0-8-as-a-valid-address-range">if the 0.0.0.0/8 becomes available</a>). This data is based on Gartner Research predictions and estimates:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zV3LvQWzrMt4m2wqnFFMy/0c3cbdc497d9c989f5b4ced7f6bbf28f/image3-1.png" alt="" class="kg-image" width="1588" height="884" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zV3LvQWzrMt4m2wqnFFMy/bd57462ae1a4e5e3419fb35f5924f852/image3-1.png" alt="" class="kg-image" width="1588" height="884" loading="lazy">
 
 	</figure>
 	<p>IPv6 is the definitive solution to this problem. It expands the length of an address from 32 to 128 bits, with 125 available in a valid Internet address at the moment (all public IPv6 addresses have the first three bits set to 001, the remaining 87.5% of the IPv6 address space is not considered necessary yet). 2^125 is an impossibly large number and would be more than enough for every device on Earth to have its own address. Unfortunately, 21 years after it was published, IPv6 still remains unsupported on many networks. Much of the Internet still relies on IPv4, and as seen above, there aren’t enough IPv4 addresses for every device to have their own.</p>
@@ -105,7 +105,7 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>When your devices send a packet destined for the Internet your router intercepts it. The router then <i>rewrites</i> the source address to the single public Internet address allocated for you, and the source port to a port which is unique for all the messages being sent across all the Internet-connected devices on your network. Just as your computer chooses a random source port for your messages which was unique between all the different processes on your computer, your router chooses a random source port which is unique for all the Internet connections across your entire network. It remembers the port it is selecting for you as belonging to your connection, and allows the message to continue over the Internet.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UdLWGld4orhLYwzPeP6EU/d97fa708e31f79f5ebcc29d4b84c6937/image4.png" alt="" class="kg-image" width="1999" height="1021" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UdLWGld4orhLYwzPeP6EU/3ba875ff546c4fbc1c3844e574995d40/image4.png" alt="" class="kg-image" width="1999" height="1021" loading="lazy">
 
 	</figure>
 	<p>When a response arrives destined for the port it has allocated to you, it matches it to your connection and again rewrites it, this time replacing the destination address with your address on the local network, and the destination port with the original source port you specified. It has transparently allowed all the devices on your network to act as if they were one big computer with a single Internet-connected IP address.</p>
@@ -117,7 +117,7 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>After considering and testing several more modern options, we landed on <a href="https://www.wireguard.com">WireGuard</a>®. WireGuard is a modern, high performance, and most importantly, simple, protocol created by Jason Donenfeld to solve the same problem. Its original code-base is less than 1% the size of a popular IPsec implementation, making it easy for us to understand and secure. We chose Rust as the language most likely to give us the performance and safety we needed and implemented WireGuard while optimizing the code heavily to run quickly on the platforms we were targeting. Then we <a href="https://github.com/cloudflare/boringtun/tree/master/src">open sourced</a> the project.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ki9IeWSMkzflbpz89G6UQ/c53946af7166f3b759d8f1050e5ce256/image-12.png" alt="" class="kg-image" width="1675" height="402" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ki9IeWSMkzflbpz89G6UQ/e4162225aede280baeeb4098e4bb267f/image-12.png" alt="" class="kg-image" width="1675" height="402" loading="lazy">
 
 	</figure>
 	<p>WireGuard changes two very relevant things about the traffic you send over the Internet. The first is it uses UDP not TCP. The second is it uses a session key negotiated with public-key encryption to secure the contents of that UDP packet.</p>
@@ -128,20 +128,20 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>Returning to our load balancing issue, you can see that only three things are accessible to us before we can decrypt the message: The IP Header, the UDP Header, and the WireGuard header. Neither the IP Header or UDP Header include the information we need, as we have already failed with the four pieces of information they contain (source IP, source port, destination IP, destination port). That leaves the WireGuard header as the one location where we can find an identifier which can be used to keep track of who the client was before decrypting the message. Unfortunately, there isn’t one. This is the format of the message used to initiate a connection:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RndDTS7fcqidQ8bOr6dTw/58976f97f9fc12e5f5399667969bc25a/image7.png" alt="" class="kg-image" width="638" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RndDTS7fcqidQ8bOr6dTw/e5cf93b4e127c37566b7d27e3a72cb69/image7.png" alt="" class="kg-image" width="638" height="308" loading="lazy">
 
 	</figure>
 	<p><code>sender</code> looks temptingly like a client id, but it’s randomly assigned every handshake. Handshakes have to be performed every two minutes to rotate keys making them insufficiently persistent. We could have forked the protocol to add any number of additional fields, but it is important to us to remain wire-compatible with other WireGuard clients. Fortunately, WireGuard has a three byte block in its header which is not currently used by other clients. We decided to put our identifier in this region and still support messages from other WireGuard clients (albeit with less reliable routing than we can offer). If this reserved section is used for other purposes we can ignore those bits or work with the WireGuard team to extend the protocol in another suitable way.</p>
 	<p>When we begin a WireGuard session we include our <code>clientid</code> field which is provided by our authentication server which has to be communicated with to begin a WARP session:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SDLUnz5eOxlxGFKfPWm0f/692c02c29e370f8b9a46dbaeedccab56/image5-1.png" alt="" class="kg-image" width="842" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SDLUnz5eOxlxGFKfPWm0f/234cb2417f1dd9a6f573c78a336bb7f0/image5-1.png" alt="" class="kg-image" width="842" height="400" loading="lazy">
 
 	</figure>
 	<p>Data messages similarly include the same field:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2i0qSvIzDEm36DhP5qcSvr/9387fadbf97fd2fef7dfa8f262971efd/image9.png" alt="" class="kg-image" width="852" height="278" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2i0qSvIzDEm36DhP5qcSvr/a0aa37496d61cff694b48a575595447d/image9.png" alt="" class="kg-image" width="852" height="278" loading="lazy">
 
 	</figure>
 	<p>It's important to note that the <code>clientid</code> is only 24 bits long. That means there are less possible <code>clientid</code> values than the current number of users waiting to use WARP. This suits us well as we don't need or want the ability to track individual WARP users. <code>clientid</code> is only necessary for load balancing, once it serves its purpose we get it expunged from our systems as quickly as we can.</p>
@@ -175,14 +175,14 @@ v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</code></pr
 	<p>In fact, NWUDPSession does not handle many of the more tricky elements of creating connections over the Internet. For example, the Network framework will automatically determine whether a connection should be made over IPv4 or 6:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wK9VwgsUFSNwIwJj449Vw/0003316f7999de4c3c817ed423386f38/image8.png" alt="" class="kg-image" width="1999" height="1095" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wK9VwgsUFSNwIwJj449Vw/a91ae176b91f38d9bf7548ab4bdca191/image8.png" alt="" class="kg-image" width="1999" height="1095" loading="lazy">
 
 	</figure>
 	<p>NWUDPSession does not do this for you, so we began creating our own logic to determine which type of connection should be used. Once we began to experiment, it quickly became clear that they are not created equal. It’s fairly common for a route to the same destination to have very different performance based on whether you use its IPv4 or IPv6 address. Often this is because there are simply fewer IPv4 addresses which have been around for longer, making it possible for those routes to be better optimized by the Internet’s infrastructure.</p>
 	<p>Every Cloudflare product has to support IPv6 as a rule. In 2016, we <a href="https://blog.cloudflare.com/98-percent-ipv6">enabled</a> IPv6 for over 98% of our network, over four million sites, and made a pretty big dent in <a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=legacy&amp;pct=y">IPv6 adoption on the web</a>:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KGXlrpxftKslZ7DHj3wqV/fdafa3cd8f0e04c8d8f172b9fa1c727e/image11.png" alt="" class="kg-image" width="1024" height="700" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KGXlrpxftKslZ7DHj3wqV/be76797e10e98703d707135aece7a73e/image11.png" alt="" class="kg-image" width="1024" height="700" loading="lazy">
 
 	</figure>
 	<p>We couldn’t release WARP without IPv6 support. We needed to ensure that we were always using the fastest possible connection while still supporting both protocols with equal measure. To solve that we turned to a technology we have used with DNS for years: Happy Eyeballs. As codified in <a href="https://tools.ietf.org/html/rfc6555">RFC 6555</a> Happy Eyeballs is the idea that you should try to look for both an IPv4 and IPv6 address when doing a DNS lookup. Whichever returns first, wins. That way you can allow IPv6 websites to load quickly even in a world which does not fully support it.</p>
@@ -248,12 +248,12 @@ let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
 	<p>This test shows my phone’s IPv6 support before and after enabling WARP:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VIeZPLDovesElknyqJ7dE/b0a525f9fa394368ed97c5dbba9d327a/IMG_2029.PNG.png" alt="" class="kg-image" width="1125" height="1059" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VIeZPLDovesElknyqJ7dE/fca43d25b218efa2ccc15d0f0d468dfb/IMG_2029.PNG.png" alt="" class="kg-image" width="1125" height="1059" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fdq6gNKm10Dnla1jUQaIt/3d4bf80910796152839610f66a241456/IMG_2028-2.PNG.png" alt="" class="kg-image" width="1125" height="1019" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fdq6gNKm10Dnla1jUQaIt/a337cc2196130376fb3c20932206c931/IMG_2028-2.PNG.png" alt="" class="kg-image" width="1125" height="1019" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -267,7 +267,7 @@ let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
 	<p>Nothing is simple however, with iOS 12.2 NWUDPSession began to trigger errors which terminated connections. These errors were only identified with a code ‘55’. After some research it appears 55 has referred to the same error since the early foundations of the FreeBSD operating system OS X was originally built upon. In FreeBSD it’s commonly referred to as ENOBUFS, and it’s returned when the operating system does not have sufficient BUFfer Space to handle the operation being completed. For example, looking at the source of a FreeBSD today, you see <a href="https://github.com/freebsd/freebsd/blob/a6605d2938cce3ab84122eb8f7e12469b7d3356f/sys/netinet6/send.c#L127">this code</a> in its IPv6 implementation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1azNX082c28klDv82mREmY/4f6ffeda905f1668cac4956deed73be2/image12.png" alt="" class="kg-image" width="744" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1azNX082c28klDv82mREmY/a564bd2ce3f8a656033fc4447740a0b1/image12.png" alt="" class="kg-image" width="744" height="300" loading="lazy">
 
 	</figure>
 	<p>In this example, if enough memory cannot be allocated to accommodate the size of an IPv6 and ICMP6 header, the error ENOBUFS (which is <a href="https://www.freebsd.org/cgi/man.cgi?query=errno&amp;sektion=2&amp;manpath=freebsd-release-ports">mapped</a> to the number 55) will be returned. Unfortunately, Apple’s take on FreeBSD is not open source however: how, when, and why they might be returning the error is a mystery. This error has been experienced by <a href="https://github.com/passepartoutvpn/tunnelkit/issues/104">other</a> UDP-based projects, but a resolution is not forthcoming.</p>
@@ -338,7 +338,7 @@ Application: warp\r\n
 	<p>Once the message arrives at the destination data center it is either forwarded to another data center (if that is best for performance), or directed directly to the origin which is awaiting the traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2H9ZJic7qvv1S5qjhyxl0v/f31cf9773ca2a950f7c59ab0e98c9b47/image1-5.png" alt="" class="kg-image" width="1999" height="595" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2H9ZJic7qvv1S5qjhyxl0v/28196f08ba8fb03ab9829b0c81ca9daa/image1-5.png" alt="" class="kg-image" width="1999" height="595" loading="lazy">
 
 	</figure>
 	<p>Smart routing is just the beginning of WARP+; We have a long list of projects and plans which are all aimed at making your Internet faster, and couldn’t be more thrilled to finally have a platform to test them with.</p>

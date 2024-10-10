@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZeufDAuFMyCOX6dVV01DB/f494639959dd99b4c0ea2811ea4d075f/high-reliability-ocsp-stapling.jpg" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZeufDAuFMyCOX6dVV01DB/3e74831e88719ef03a7f2ea1efc1f94b/high-reliability-ocsp-stapling.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare our focus is making the Internet faster and more secure. Today we are announcing a new enhancement to our HTTPS service: High-Reliability OCSP stapling. This feature is a step towards enabling an important security feature on the web: certificate revocation checking. Reliable OCSP stapling also improves connection times by up to 30% in some cases. In this post, we’ll explore the importance of certificate revocation checking in HTTPS, the challenges involved in making it reliable, and how we built a robust OCSP stapling service.</p>
 	<div class="flex anchor relative">
@@ -23,13 +23,13 @@
 	<p>There are several ways a web browser can check whether a site’s certificate is revoked or not. The most well-known mechanisms are Certificate Revocation Lists (CRL) and Online Certificate Status Protocol (OCSP). A CRL is a signed list of serial numbers of certificates revoked by a CA. OCSP is a protocol that can be used to query a CA about the revocation status of a given certificate. An OCSP response contains signed assertions that a certificate is not revoked.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lGxsndXR5EF4yGX4thxuq/bc56a833b225f33b213092c06c6bf756/image1-1.jpg" alt="CRL" class="kg-image" width="1862" height="1304" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lGxsndXR5EF4yGX4thxuq/6c0e5a895ae6674e8d783aa5d6cef071/image1-1.jpg" alt="CRL" class="kg-image" width="1862" height="1304" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ovTuDaVKP72LIddkcRGIE/4b3dbc767a07f15f70665fb10b57f532/Frame-658.png" alt="OCSP" class="kg-image" width="1851" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ovTuDaVKP72LIddkcRGIE/cf81791b20b77dfbd5dbf4c0221926fa/Frame-658.png" alt="OCSP" class="kg-image" width="1851" height="1000" loading="lazy">
 
 	</figure>
 	<p>Certificates that support OCSP contain the responder's URL and those that support CRLs contain a URLs where the CRL can be obtained. When a browser is served a certificate as part of an HTTPS connection, it can use the embedded URL to download a CRL or an OCSP response and check that the certificate hasn't been revoked before rendering the web page. The question then becomes: what should the browser do if the request for a CRL or OCSP response fails? As it turns out, both answers to that question are problematic.</p>
@@ -45,7 +45,7 @@
 	<p>In the real world, false positives are unavoidable. OCSP and CRL endpoints subject to service outages and network errors. There are also common situations where these endpoints are completely inaccessible to the browser, such as when the browser is behind a captive portal. For some access points used in hotels and airplanes, unencrypted traffic (like OCSP endpoints) are blocked. A hard-fail strategy force users behind captive portals and other networks that block OCSP requests to click through unnecessary security warnings. This reality is unpalatable to browser vendors.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X32ji9gvjXGc5BGcrw6TH/e2b93e2773f55c9731cb45f19392f0b4/image3-1.png" alt="" class="kg-image" width="1314" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X32ji9gvjXGc5BGcrw6TH/e25942fb12b7844085fbb40c6cf811bd/image3-1.png" alt="" class="kg-image" width="1314" height="768" loading="lazy">
 
 	</figure>
 	<p>Another drawback to a hard-fail strategy is that it puts an increased burden on certificate authorities to keep OCSP and CRL endpoints available and online. A broken OCSP or CRL server becomes a central point of failure for all certificates issued by a certificate authority. If browsers followed a hard-fail strategy, an OCSP outage would be an Internet outage. Certificate authorities are organizations optimized to provide trust and accountability, not necessarily resilient infrastructure. In a hard-fail world, the availability of the web as a whole would be limited by the ability for CAs to keep their OCSP services online at all times; a dangerous systemic risk to the internet as a whole.</p>
@@ -102,13 +102,13 @@
 	<p>In Cloudflare’s original implementation of OCSP stapling, OCSP responses were fetched opportunistically. Given a connection that required a certificate, Cloudflare would check to see if there was a fresh OCSP response to staple. If there was, it would be included in the connection. If not, then the client would not be sent an OCSP response, and Cloudflare would send a request to refresh the OCSP response in the cache in preparation for the next request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/695TLaZM0gWEN9q339DdiE/90e459e4ee4beaf7debf0edc4b5e015a/image2-1.jpg" alt="" class="kg-image" width="1999" height="827" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/695TLaZM0gWEN9q339DdiE/1a275ed24ab629605b3881660fe036e5/image2-1.jpg" alt="" class="kg-image" width="1999" height="827" loading="lazy">
 
 	</figure>
 	<p>If a fresh OCSP response wasn’t cached, the connection wouldn’t get an OCSP staple. The next connection for that same certificate would get a OCSP staple, because the cache will have been populated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26xAQKhW2tBTI9uwb1R3OD/7b9517404ece852ab2ac0a2fc128087a/image7.jpg" alt="" class="kg-image" width="1678" height="970" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26xAQKhW2tBTI9uwb1R3OD/2095dd4e959366e8c4ddcf7f8bfe337a/image7.jpg" alt="" class="kg-image" width="1678" height="970" loading="lazy">
 
 	</figure>
 	<p>This architecture was elegant, but not robust. First, there are several situations in which the client is guaranteed to not get an OCSP response. For example, the first request in every cache region and the first request after an OCSP response expires are guaranteed to not have an OCSP response stapled. With Cloudflare’s expansion to more locations, these failures were more common. Less popular sites would have their OCSP responses fetched less often resulting in an even lower ratio of stapled connections. Another reason that connections could be missing OCSP responses is if the OCSP request from Cloudflare to fill the cache failed. There was a lot of room for improvement.</p>
@@ -123,7 +123,7 @@
 	<p>In order to be able to reliably include OCSP staples in all connection, we decided to change the model. Instead of fetching the OCSP response when a request came in, we would fetch it in a centralized location and distribute valid responses to all our servers. When a response started getting close to expiration, we’d fetch a new one. If the OCSP request fails, we put it into a queue to re-fetch at a later time. Since most OCSP staples are valid for around 7 days, there is a lot of flexibility in term of refreshing expiring responses.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VtZ72GF4qvtDLHF4YwnhS/cef4b95ab542cb10e3c32629194dc670/image5.jpg" alt="" class="kg-image" width="1999" height="828" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VtZ72GF4qvtDLHF4YwnhS/0e788290c059f675821c94ba04194032/image5.jpg" alt="" class="kg-image" width="1999" height="828" loading="lazy">
 
 	</figure>
 	<p>To keep our cache of OCSP responses fresh, we created an OCSP fetching service. This service ensures that there is a valid OCSP response for every certificate managed by Cloudflare. We constantly crawl our cache of OCSP responses and refresh those that are close to expiring. We also make sure to never cache invalid OCSP responses, as this can have <a href="https://www.theregister.co.uk/2017/05/29/certificate_snafu_sees_azure_portal_reject_firefox">bad consequences</a>. This system has been running for several months now, and we are now reliably including OCSP staples for almost every HTTPS request.</p>
@@ -140,7 +140,7 @@
 	<p>In the OCSP fetching case, a soft-fail approach makes sense. There many reasons the browser would not be able to obtain an OCSP: captive portals, broken OCSP servers, network unreliability and more. However, as we have shown with our high-reliability OCSP fetching service, it is possible for a server to fetch OCSP responses without any of these problems. OCSP responses are re-usable and are valid for several days. When one is close to expiring, the server can fetch a new one out-of-band and be able to reliably serve OCSP staples for all connections.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DwccMgq7pMKrCnU5S7Ivj/40f999d47f060ba6946bf9658e09b8e7/Swingline-stapler.jpg" alt="" class="kg-image" width="2820" height="2080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DwccMgq7pMKrCnU5S7Ivj/fb5bbe40027ccf2d34f9cddb24f076cb/Swingline-stapler.jpg" alt="" class="kg-image" width="2820" height="2080" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Swingline-stapler.jpg">Public Domain</a></p>
@@ -149,7 +149,7 @@
 	<p>Firefox enforces OCSP must-staple, returning the following error if such a certificate is presented without a stapled OCSP response.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qH0Q1eryXiXZ2yLcNKS6o/05b79f251b9a75c1e5cbe7b035e85fdb/image4.jpg" alt="" class="kg-image" width="1999" height="1123" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qH0Q1eryXiXZ2yLcNKS6o/3fa23feece99f107ffc5c58a1d0d249a/image4.jpg" alt="" class="kg-image" width="1999" height="1123" loading="lazy">
 
 	</figure>
 	<p>Chrome provides the ability to mark a domain as “Expect-Staple”. If Chrome sees a certificate for the domain without a staple, it will send a report to a pre-configured report endpoint.</p>
@@ -164,7 +164,7 @@
 	<p>As a part of our push to provide reliable OCSP stapling, we put our money where our mouths are and put an OCSP must-staple certificate on blog.cloudflare.com. Now if we ever don’t serve an OCSP staple, this page will fail to load on browsers like Firefox that enforce must-staple. You can identify a certificate by looking at the certificate details for the “1.3.6.1.5.5.7.1.24” OID.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HdZil165qgzzMx4Cvnm8K/6f715f4d3586e948b3cc26b389cb7a96/image6.jpg" alt="" class="kg-image" width="1418" height="1696" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HdZil165qgzzMx4Cvnm8K/f36c26003ee86ab25888fa1af9ca6f37/image6.jpg" alt="" class="kg-image" width="1418" height="1696" loading="lazy">
 
 	</figure>
 	<p>Cloudflare customers can choose to upload must-staple custom certificates, but we encourage them not to do so yet because there may be a multi-second delay between the certificate being installed and our ability to populate the OCSP response cache. This will be fixed in the coming months. Other than the first few seconds after uploading the certificate, Cloudflare’s new OCSP fetching is robust enough to offer OCSP staples for every connection thereafter.</p>

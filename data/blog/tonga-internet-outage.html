@@ -1,23 +1,23 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/351aD0VXXDqd66EP4pnxDl/db7101b32304516683ec0df0908b7daf/tonga-internet-outage.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/351aD0VXXDqd66EP4pnxDl/6f3cf68e6957bb50bc37698a86fe648d/tonga-internet-outage.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>2022 only has 19 days of existence but so far this January, there have already been four significant Internet disruptions:</p>
 	<p>1. An Internet outage in <a href="https://blog.cloudflare.com/the-gambia-without-internet">The Gambia</a> because of a cable problem.2. An Internet shutdown in <a href="https://blog.cloudflare.com/internet-shut-down-in-kazakhstan-amid-unrest">Kazakhstan</a> because of unrest.3. A <a href="https://afriksoir.net/actualite/burkina-faso-internet-encore-coupe-au-lendemain-sommet-cedeao">mobile</a> Internet shutdown in <a href="https://radar.cloudflare.com/bf?date_filter=last_30_days">Burkina Faso</a> because of a coup plot.4. An Internet outage in <a href="https://radar.cloudflare.com/to">Tonga</a> because of a volcanic eruption.</p>
 	<p>The latest Internet outage, in the South Pacific country of Tonga (with 169 islands), is still ongoing. It started with the <a href="https://en.wikipedia.org/wiki/2022_Hunga_Tonga_eruption_and_tsunami">large eruption</a> of Hunga Tonga–Hunga Haʻapai, an uninhabited volcanic island of the Tongan archipelago on Friday, January 14, 2022. The next day, <a href="https://radar.cloudflare.com/to">Cloudflare Radar</a> shows that the Internet outage started at around 03:00 UTC (16:00 local time) — Saturday, January 15, 2022 — and is ongoing for more than four days. Tonga’s 105,000 residents are almost entirely unreachable, according to the <a href="https://www.bbc.com/news/world-asia-60021759">BBC</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ejiuzG6C2sBi9zrhdqvit/aba18d23e1d3590b8f8c1db4800e88a7/image4-14.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ejiuzG6C2sBi9zrhdqvit/8b50418c143f5ce9138bbb91bfe96f6d/image4-14.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<p>When we focus on the number of requests by <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, the country’s main ISPs Digicel and Kalianet started to lose traffic after 03:00 UTC and by 05:30 UTC January 15, 2022, Cloudflare saw close to no traffic at all from them, as shown in the graph below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kRAzkLFb6xPCQnVAW7HwY/1f9e80bd17dac6a74cb3489cf90489e2/image2-21.png" alt="" class="kg-image" width="1999" height="801" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kRAzkLFb6xPCQnVAW7HwY/6928dd077fede1f06796f0908af3d221/image2-21.png" alt="" class="kg-image" width="1999" height="801" loading="lazy">
 
 	</figure>
 	<p>Looking at the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> (Border Gateway Protocol) updates from Tonga’s ASNs around the time of the outage, we see a clear spike at 05:35 UTC (18:35 local time). These update messages are BGP signalling that the Tongan ASNs are no longer routable. We saw the same trend in <a href="https://blog.cloudflare.com/the-gambia-without-internet">The Gambia outage</a> of January 4, 2022 — there you can read about the importance of BGP as a mechanism to exchange routing information between autonomous systems on the Internet, something that was also seen in the <a href="https://blog.cloudflare.com/october-2021-facebook-outage">2021 Facebook outage</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gjx0TG6yHpB7sQAGnEtPu/0df7077314e9be192651e0a47b6eed61/image7-11.png" alt="BGP updates from Tongan ASNs around the time of the outage." class="kg-image" width="1999" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gjx0TG6yHpB7sQAGnEtPu/356e68fabd980ff6faa40e19c3d67221/image7-11.png" alt="BGP updates from Tongan ASNs around the time of the outage." class="kg-image" width="1999" height="820" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> updates from Tongan ASNs around the time of the outage.</p>
@@ -56,7 +56,7 @@
 	<p>A significant amount of Internet traffic is carried by a complex network of undersea fiber-optic cables that connect countries and continents. The full <a href="https://en.wikipedia.org/wiki/Submarine_communications_cable">submarine cable system</a> (the first communications cables laid were from the 1850s and carried telegraphy traffic) is what makes most of the world’s Internet function between countries and <a href="https://en.wikipedia.org/wiki/List_of_international_submarine_communications_cables">continents</a>. There are <a href="https://submarine-cable-map-2021.telegeography.com">428 active submarine cables</a> (36 are planned), running in an estimate of 1.3 million km around the globe.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/mlnwZGxuZUXium8PQx91l/c7d4e1d7d5c50b3dc815a11e9f3a24aa/image3-24.png" alt="" class="kg-image" width="1999" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mlnwZGxuZUXium8PQx91l/efe203522fdd364eb7b76d03a894ad88/image3-24.png" alt="" class="kg-image" width="1999" height="1200" loading="lazy">
 
 	</figure>
 	<p>World map of submarine cables. Antarctica is the only continent not yet reached by a submarine telecommunications cable. Source: TeleGeography (<a href="http://www.submarinecablemap.com">www.submarinecablemap.com</a>)</p>
@@ -64,7 +64,7 @@
 	<p>The reliability of submarine cables is high, especially when multiple paths are available in the event of a cable break. That’s not the case for the Tonga outage, given that the 827 km submarine cable only connects Fiji to the Tonga archipelago — Fiji is connected to the main Southern Cross Cable, as the next image illustrates.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20jF3qNI0V4otBKtPinybv/a19d1d6d43924aee831f019cd59694b9/image5-14.png" alt="" class="kg-image" width="1999" height="1122" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20jF3qNI0V4otBKtPinybv/bc8ec7a51da9989538a0e176e30d79f1/image5-14.png" alt="" class="kg-image" width="1999" height="1122" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.submarinecablemap.com">Submarine Cable Map</a> shows the undersea cables that connect Australia to Fiji and the following connections to other archipelagos like Tonga. Source: TeleGeography (<a href="http://www.submarinecablemap.com">www.submarinecablemap.com</a>)&nbsp;</p>

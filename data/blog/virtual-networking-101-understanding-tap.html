@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5K0iKrieDwp0YkLViNDJKB/bee8946b438d7fda830598daf6972cac/image1-5.png" alt="Virtual networking 101: bridging the gap to understanding TAP" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5K0iKrieDwp0YkLViNDJKB/1c655399c5c70fe75c8f56f3294266a9/image1-5.png" alt="Virtual networking 101: bridging the gap to understanding TAP" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>It's a never-ending effort to improve the performance of our infrastructure. As part of that quest, we wanted to squeeze as much network oomph as possible from our virtual machines. Internally for some projects we use <a href="https://firecracker-microvm.github.io">Firecracker</a>, which is a KVM-based virtual machine manager (VMM) that runs light-weight “Micro-VM”s. Each Firecracker instance uses a tap device to communicate with a host system. Not knowing much about tap, I had to up my game, however, it wasn't easy — the documentation is messy and spread across the Internet.</p>
@@ -19,7 +19,7 @@ CloudflareWARP: tun multi_queue</code></pre>
 	<p>A Linux tap device is a <b>mean creature</b>. It looks trivial — a virtual network interface, with a file descriptor behind it. However, it's <b>surprisingly hard</b> to get it to perform well. The Linux networking stack is optimized for packets handled by a physical network card, not a userspace application. However, over the years the Linux tap interface grew in features and nowadays, it's possible to get good performance out of it. Later I'll explain how to use the Linux tap API in a modern way.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79hvP3TXwPib9DE9leEJbE/9b09d2af2f3a90999a1de7e6e49e0bdc/Screenshot-2023-10-05-at-2.42.49-PM.png" alt="" class="kg-image" width="2000" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79hvP3TXwPib9DE9leEJbE/7f81ee55560cfdff5b7df7419adc91c5/Screenshot-2023-10-05-at-2.42.49-PM.png" alt="" class="kg-image" width="2000" height="1080" loading="lazy">
 
 	</figure>
 	<p>Source: DALL-E</p>
@@ -291,7 +291,7 @@ $ ip -s link show dev tap0
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QEojUsAvj7VueXmGRSexc/99417d2a51f92193352bfa76705ab6b0/image4.jpg" alt="" class="kg-image" width="1167" height="1019" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QEojUsAvj7VueXmGRSexc/37671b9c92dcc7f6c40bf572cd6e73dc/image4.jpg" alt="" class="kg-image" width="1167" height="1019" loading="lazy">
 
 	</figure>
 	<p>Structure of a typical UDP packet received over tap.</p>
@@ -336,7 +336,7 @@ s.sendto(b"x", ("10.0.0.2", 5201))     # Would you expect EIO ?</code></pre>
 	<p>We wrote about <a href="https://blog.cloudflare.com/accelerating-udp-packet-transmission-for-quic">UDP_SEGMENT</a> in the past. In short: on Linux an application can handle many packets with a single send/recv, as long as they have identical length.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31mztfk8fZtP46WzeFrcID/827b4395ab2584ae478140f884e01acf/image2-4.png" alt="" class="kg-image" width="1920" height="1040" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31mztfk8fZtP46WzeFrcID/4dd98352343ffafd1cf7d62847c06904/image2-4.png" alt="" class="kg-image" width="1920" height="1040" loading="lazy">
 
 	</figure>
 	<p>With UDP_SEGMENT a single send() can transfer multiple packets.</p>
@@ -552,7 +552,7 @@ rx-udp-gro-forwarding: off</code></pre>
 	<p>The Linux kernel is just not capable of forwarding millions of packets per second for a single flow or on a single CPU. The best possible solution is to scale vertically for elephant flows with TSO/USO (packet trains) offloads, and scale horizontally for multiple concurrent flows with multi queue.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Mfbelr6xUN4bGLTPAFLHr/bd4321694215d73d3cdffd2f05e6bbcf/image5-1.png" alt="" class="kg-image" width="799" height="493" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Mfbelr6xUN4bGLTPAFLHr/945a18d93d8bce312e7205bdb5911b16/image5-1.png" alt="" class="kg-image" width="799" height="493" loading="lazy">
 
 	</figure>
 	<p>In this chart you can see how dramatic the performance gain of offloads is. Without them, a sample "echo" tap application can process between 320 and 500 thousand packets per second on a single core. MTU being 1500. When the offloads are enabled it jumps to 2.7Mpps, while keeping the number of received "packet trains" to just 56 thousand per second. Of course not every traffic pattern can fully utilize GRO/GSO. However, to get decent performance from tap, and from Linux in general, offloads are absolutely critical.</p>

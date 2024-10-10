@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S8Y3r3u8JOU0j94W4InMI/648a99fb95966ccdce6a17cb7ff79a61/improving-compression-with-preset-deflate-dictionary.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/S8Y3r3u8JOU0j94W4InMI/d473a075101e483c1eb3925513061672/improving-compression-with-preset-deflate-dictionary.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A few years ago Google made a proposal for a new HTTP compression method, called SDCH (SanDwiCH). The idea behind the method is to create a dictionary of long strings that appear throughout many pages of the same domain (or popular search results). The compression is then simply searching for the appearance of the long strings in a dictionary and replacing them with references to the aforementioned dictionary. Afterwards the output is further compressed with <a href="https://en.wikipedia.org/wiki/DEFLATE">DEFLATE</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DlU37lpBE25TGdgfyM43y/a6e653abec6b0df6ab455bf31af7153d/15585984911_6a6bff8f30_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DlU37lpBE25TGdgfyM43y/495a90025471558e0ccb4978a8043ee1/15585984911_6a6bff8f30_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY SA 2.0</a> <a href="https://www.flickr.com/photos/quinnanya/15585984911/in/photolist-pKhfiM-52LCYm-abTcAV-9eBXNP-9EQsPE-k2zt7W-3wGhDE-8FHYSs-4H94jD-8FFL2G-4U8deD-8FHZ7h-9zxQ3Q-96AfdV-8F5h1w-8FjCSW-8FeYBM-RbMqS-8FgTbT-8FjUvd-8FgF7T-8FjM4E-8Fgwtt-8Fjvxf-8FjtpU-8FjpUm-8Fjn3u-8Fjiv9-8Ff5ex-8Fid39-8FeTN6-8Fi3KW-8F29dP-8FhaH2-8FkcNm-8Fk8Kw-6DASnR-3T6V24-7PMw1h-7PJhZ8-uMSAt-cUzN8q-4fjD2P-eRviNL-BZg6b-qz5e4C-cqkfc-4szYvT-u1RCZ-ctvmWW">image</a> by <a href="https://www.flickr.com/photos/quinnanya">Quinn Dombrowski</a></p>
@@ -23,7 +23,7 @@
 	<p>Usually the servers opt to compress with gzip, however its cousin DEFLATE supports a neat feature called "Preset Dictionary". This dictionary is not like the dictionary used by SDCH, in fact it is not a real dictionary. To understand how this "dictionary" can be used to our advantage, it is important to understand how the DEFLATE algorithm works.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15p0MSMrIz6i5jMxj6DmrP/68e026ee870f27826e3b8e53d589934e/5510506796_dff8c07b64_z.jpg" alt="" class="kg-image" width="640" height="603" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15p0MSMrIz6i5jMxj6DmrP/191d330fe298e473be033432d5136dff/5510506796_dff8c07b64_z.jpg" alt="" class="kg-image" width="640" height="603" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/crdot/5510506796/in/photolist-9oWMFS-5ZetrG-aB6EXd-7BFq6C-8bfuDz-8a7u13-8bfv1z-89PDmK-8a7uvj-8a4fbn-89STbj-5U3gbF-8a4fPH-8a7qPA-89PADp-7BFqLU-8a4fha-7A9GMJ-89SQaN-8biMCh-89PASH-89PCRT-8biMuU-8biM8j-89PCgx-8a7unY-89SSf3-49Vg4c-89PzPn-8a4e4B-89PziH-8biMRU-8a7uHq-ngPPhQ-nkCZTe-7TQ4Yj-8a7qhy-8biLH7-8a7rCW-8a4fp4-76ixPX-8a4fiH-7BFqow-eijkuy-8a7uDY-8a4aat-89Pzv8-89SQdU-nkDdYH-89Pzsp">image</a> by <a href="https://www.flickr.com/photos/crdot">Caleb Roenigk</a></p>

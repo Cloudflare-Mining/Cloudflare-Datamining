@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rnESTI6DroFsObYb3rBMU/aeafc2b7d70bb7541dccc2f8e18b1d44/1-31.png" alt="" class="kg-image" width="980" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rnESTI6DroFsObYb3rBMU/78e6aefa1e8a59318b03db913a353c7f/1-31.png" alt="" class="kg-image" width="980" height="486" loading="lazy">
 
 	</figure>
 	<p>Something that comes up a lot at Cloudflare is how well our network and systems are performing. Like many service providers, we need to be engaged in a constant process of introspection to evaluate aspects of Cloudflare’s service with respect to customers, within our own network and systems and, as was the case in a recent <a href="https://blog.cloudflare.com/last-mile-insights">blog post</a>, the clients (such as web browsers). Many of these questions are obvious, but answering them is decisive in opening paths to new and improved services. The important point here is that it’s relatively straightforward to monitor and assess aspects of our service we can see or measure directly.</p>
@@ -31,7 +31,7 @@
 	<p>Similarly, data from third party Real User Measurements (RUM) services have weaknesses too. RUM platforms compare CDNs by embedding JavaScript request probes in websites visited by users all over the world. This sounds great, except the data cannot be validated by outside parties, which is an important aspect of measurement. For example, consider the following chart that shows Cloudfront’s median <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">Round-Trip Time (RTT)</a> in Greece as measured by the two leading RUM platforms, <a href="https://www.cedexis.com">Cedexis</a> and <a href="https://perfops.net">Perfops</a>. While both platforms follow the same measurement method, their results for the same time period and the same networks differ considerably. If the two sets of measurements for the same thing differ, then neither can be relied upon.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nP0ZN4fYPeYJG8XwvFKvb/8cc2e0d712bec25400da6bae1a12d639/2-14.png" alt="Barplot that compares the Real User Measurements collected by two platforms, Cedexis and Perfops for the same time period and location of clients. The two platforms have apparent disparities." class="kg-image" width="1352" height="732" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nP0ZN4fYPeYJG8XwvFKvb/680b0d37a7568b803169e8f3cd9b0584/2-14.png" alt="Barplot that compares the Real User Measurements collected by two platforms, Cedexis and Perfops for the same time period and location of clients. The two platforms have apparent disparities." class="kg-image" width="1352" height="732" loading="lazy">
 
 	</figure>
 	<p>Comparison of Real User Measurements (RUM) from two leading RUM providers, Cedexis and Perfops. While both RUM datasets were collected during the same period for the same location, there is a pronounced disparity between the two measurements which highlights the sensitivity of RUM data on specific deployment details.</p>
@@ -71,7 +71,7 @@
 	<p>The figure below shows the IXP connections for nine CDNs, according to the above-mentioned datasets. Cloudflare is present in 258 IXPs, which is 56 IXPs more than Google, the second CDN in the list.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tpNEGB2VefICSiApc6Lm5/ff7e37f99324f41e18dbf1a0d60b9a80/4-6.png" alt="Heatmap of IXP connections per country for 9 major service providers, according to data from PeeringDB, Euro-IX and Packet Clearing House (PCH) for October 2021." class="kg-image" width="1600" height="700" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tpNEGB2VefICSiApc6Lm5/21ab3ee5dfd9b520078021344fe15304/4-6.png" alt="Heatmap of IXP connections per country for 9 major service providers, according to data from PeeringDB, Euro-IX and Packet Clearing House (PCH) for October 2021." class="kg-image" width="1600" height="700" loading="lazy">
 
 	</figure>
 	<p>Heatmap of IXP connections per country for 9 major service providers, according to data from PeeringDB, Euro-IX and Packet Clearing House (PCH) for October 2021.</p>
@@ -81,7 +81,7 @@
 	<p>First, assume that an ISP has two potential paths to a CDN: one over a transit provider and one through a direct peering connection over an IXP, and each path terminates at a different data center, as shown in the figure below. In the example below, routing through a transit AS incurs a cost, while IXP peering links do not incur transit exchange costs. Therefore, we would predict that the client ISP would use the path to data center 2 through the IXP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/p3RWX3R79ZtqBSiNWZDJr/1fce36cba534422b7c3e2c3054769192/5-4.png" alt="A toy topology of the connectivity between a client ISP and two data centers of a CDN" class="kg-image" width="1380" height="490" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/p3RWX3R79ZtqBSiNWZDJr/6a626e30dfc0dec4e27c26cce8684740/5-4.png" alt="A toy topology of the connectivity between a client ISP and two data centers of a CDN" class="kg-image" width="1380" height="490" loading="lazy">
 
 	</figure>
 	<p>A client ISP may have paths to multiple data centers of a CDN. The prediction of which data center will eventually be used by the client, the so-called anycast catchment, combines both topological and routing policy data.</p>
@@ -121,7 +121,7 @@
 	<p>To validate the above measurement, we run a global campaign of traceroute and ping measurements from 9,990 Atlas probes in 161 different countries (see the <a href="https://atlas.ripe.net/results/maps/network-coverage">interactive map</a> for real-time data on the geographical distribution of probes).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jnCkRq97yrEyP7vKSBxwO/9bdfea784240ce31fbc7aaabb6efa839/6-2.png" alt="Geographical map of the distribution of the RIPE Atlas probes used for the validation of our predictions" class="kg-image" width="2018" height="1096" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jnCkRq97yrEyP7vKSBxwO/1e547add88b468e4aa4063592919cd74/6-2.png" alt="Geographical map of the distribution of the RIPE Atlas probes used for the validation of our predictions" class="kg-image" width="2018" height="1096" loading="lazy">
 
 	</figure>
 	<p>Geographical distribution of the RIPE Atlas probes used for the validation of our predictions</p>
@@ -130,7 +130,7 @@
 	<p>We also validated our RTT predictions. The figure below shows the absolute difference between the measured RTT and the predicted RTT in milliseconds, across all data centers. More than 50% of the predictions have an RTT difference of 3 ms or less, while almost 95% of the predictions have an RTT difference of at most 10 ms.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xXmpUGVi1i36sQ7ZGaIdE/823bb2294c5c25919057fce06a1d3494/7-1.png" alt="Histogram of the absolute difference in milliseconds between the predicted RTT and the RTT measured through the RIPE Atlas measurement campaign." class="kg-image" width="750" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xXmpUGVi1i36sQ7ZGaIdE/28181ad1e302fd49d43bced21d36492e/7-1.png" alt="Histogram of the absolute difference in milliseconds between the predicted RTT and the RTT measured through the RIPE Atlas measurement campaign." class="kg-image" width="750" height="350" loading="lazy">
 
 	</figure>
 	<p>Histogram of the absolute difference in milliseconds between the predicted RTT and the RTT measured through the RIPE Atlas measurement campaign.</p>
@@ -145,7 +145,7 @@
 	<p>We applied our methodology on nine major CDNs, including Cloudflare, in September 2021. As shown in the boxplot below, Cloudflare exhibits the lowest median RTT across all observed clients, with a median RTT close to 10 ms.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OsQkNEDKMD6Zgkw6ioRQi/c82020c3cb800b5965eb020d23946c5c/8-1.png" alt="Boxplot of the global RTT distributions for each of the 9 networks we considered in our experiments." class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OsQkNEDKMD6Zgkw6ioRQi/ed28acf0524ec0338216e521c1f9f551/8-1.png" alt="Boxplot of the global RTT distributions for each of the 9 networks we considered in our experiments." class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p>Boxplot of the global RTT distributions for each of the 9 networks we considered in our experiments. We anonymize the rest of the networks since the focus on this measurement is not to provide a ranking of content providers but to contextualize the performance of Cloudflare’s network compared to other comparable networks.&nbsp;</p>

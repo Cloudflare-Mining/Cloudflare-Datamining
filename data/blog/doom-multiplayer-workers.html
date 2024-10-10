@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16RPVD3fcKFokPCTcXiIH5/94bfb663b5c0b2e58589373077495439/image4-7.png" alt="" class="kg-image" width="1531" height="796" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16RPVD3fcKFokPCTcXiIH5/98959b2e3cca9afc9d7fe387587129d2/image4-7.png" alt="" class="kg-image" width="1531" height="796" loading="lazy">
 
 	</figure>
 	<p>There are halls and corridors in Cloudflare engineering, dangerous places for innocent wanderers, filled with wild project ideas, experiments that we should do, and extremely convincing proponents. A couple of months ago, John Graham-Cumming, our CTO, bumped into me in one of those places and asked: "What if we ported Doom multiplayer to work with our edge network?". He fatally <a href="https://xkcd.com/356">nerd-sniped</a> me.</p>
 	<p><i>Aside by John: I nerd-sniped him because I wanted to show how Cloudflare Workers and Durable Objects are a new architectural paradigm where, rather than choosing between two places to write code (the client, the browser or app, and the server, perhaps in a cloud provider availability zone), there’s a third way: put code on the edge.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1flL8m65cCzhna5RnwQN1N/0e1d3a49ea469ab04fa1767eecc48c24/image9.png" alt="" class="kg-image" width="1112" height="828" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1flL8m65cCzhna5RnwQN1N/38078a929a2aa4582fe5a151b5cf2474/image9.png" alt="" class="kg-image" width="1112" height="828" loading="lazy">
 
 	</figure>
 	<p><i>Writing code that runs on a client (such as JavaScript that runs in a browser or a native app on a phone) has advantages. Because the code runs close to the end-user it can be highly interactive, there’s almost no latency since it’s literally running on the device. But client-side code has security problems: it’s literally in the hands of the end-user and thus can be reverse engineered or modified. And client-side code can be slow to update as it depends on the end-user. If the client is actually an IoT device then updates can be even slower or essentially never.</i></p>
@@ -17,7 +17,7 @@
 	<p><i>The edge offers advantages from both worlds: the code is secured and can contain secrets since it runs in a controlled environment and not on the end-user device, the code can be updated quickly since it doesn’t depend on the end-user and the edge is close to end-users meaning low latency and opportunity for high interactivity.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1R6ugEyfhCTweXRvKsl1UO/97f7f77bb53de281cfa7421669e1752b/image5-4.png" alt="" class="kg-image" width="1480" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1R6ugEyfhCTweXRvKsl1UO/85065f2e6974beade37ca9a9501d6532/image5-4.png" alt="" class="kg-image" width="1480" height="504" loading="lazy">
 
 	</figure>
 	<p><i>Games are fun, interactive and tend to stress systems. Doom Multiplayer was the perfect example because it demonstrates the power of WebAssembly to run code in the browser and the power of Durable Objects to provide the backend for multiplayer games with low latency.</i></p>
@@ -33,7 +33,7 @@
 	<p>...and read it to find out how we did it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ocpe3WmkxWK6eBo7I4yov/ecd5343aede14fce514ffbfae08b50b0/image8-1.png" alt="" class="kg-image" width="1502" height="591" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ocpe3WmkxWK6eBo7I4yov/a7d4d210ef5e1c28bfc032b011d8c23c/image8-1.png" alt="" class="kg-image" width="1502" height="591" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -51,7 +51,7 @@
 	<p>Long story short, we got Emscripten to compile Chocolate Doom a few days later. It felt like magic when we saw Doom running in a browser window for the first time. The magic is WebAssembly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OV1anLelzHYNVKTgAwfc3/3724412e9cd29357a81e93a5e8e59cb8/image3-5.png" alt="" class="kg-image" width="1791" height="1628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OV1anLelzHYNVKTgAwfc3/fac1572446e3c3eaaf9d6f2f3d3ffd4a/image3-5.png" alt="" class="kg-image" width="1791" height="1628" loading="lazy">
 
 	</figure>
 	<p>It cost us a few head bangs on the wall, but we learned a lot in the process. Here's a few things I think you’ll find interesting:</p>
@@ -95,7 +95,7 @@
 	<p>We had to deal with a few challenges to make the WebSockets module work the way we wanted. The first was the network topology:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KhI6dUsDJDbyuDs07Pe4R/b251b2bfe66c1d3cebc432beef215442/image7-1.png" alt="" class="kg-image" width="1999" height="816" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KhI6dUsDJDbyuDs07Pe4R/741a10bc959348602510442094d24de8/image7-1.png" alt="" class="kg-image" width="1999" height="816" loading="lazy">
 
 	</figure>
 	<p>On the left, let’s imagine there are four players in the original LAN topology: the server (the one who starts the game) and the other three players who connect to the server via UDP. If you wanted to play Doom over the Internet, you'd have to make sure all players had public IP addresses and specific firewall and forwarding rules configured. Chocolate Doom even has some <a href="https://en.wikipedia.org/wiki/Hole_punching_(networking)">hole punching</a> code in it. We don't want to deal with any of this.</p>
@@ -170,7 +170,7 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 	<p>The message router in Cloudflare Workers, explained below, then keeps its own table of connections and uses the address headers to, well, route the incoming messages to the correspondent client.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OwE9gWdMhH3joECmbiI6i/b38c2caa44f5a8984176e336ffc18dfb/image1-6.png" alt="" class="kg-image" width="1999" height="506" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OwE9gWdMhH3joECmbiI6i/99a576343d5731818d5b808879eef925/image1-6.png" alt="" class="kg-image" width="1999" height="506" loading="lazy">
 
 	</figure>
 	<p>We also added a few options to the original Chocolate Doom code base, like choosing your name from the command line, and support for multiple keys for the same action.</p>
@@ -302,7 +302,7 @@ if (i != -1) this.sessions[i].ws.send(data.slice(4))</code></pre>
 	<p>This is what the user sees:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yTo8A9oUj2WdisykWhw5C/22715a0b4f256b8676b38a0c92fa387b/image2-4.png" alt="" class="kg-image" width="1812" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yTo8A9oUj2WdisykWhw5C/e7df39c5c0d59c696d8c45c9ea3691c9/image2-4.png" alt="" class="kg-image" width="1812" height="308" loading="lazy">
 
 	</figure>
 	<p>This is our <i>stdout</i> based <a href="https://github.com/cloudflare/doom-wasm#stdout-procotol">protocol</a>:</p>
@@ -324,7 +324,7 @@ doom: 3, we're out of client addresses</code></pre>
 	<p>If you receive one of these permalink invites, all you need to do is click on it, choose your name, wait for your host to start the game, and that's it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CvLSy0XDL9vz5NATbJEHz/185c0e8b8e6ac7cb91321b599d8cbf3e/image6.gif" alt="" class="kg-image" width="480" height="431" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CvLSy0XDL9vz5NATbJEHz/ce2f22698f2b746ab46489f4e9988b9b/image6.gif" alt="" class="kg-image" width="480" height="431" loading="lazy">
 
 	</figure>
 	<p>The source and Worker Pages wrangler configuration for the <a href="https://silentspacemarine.com">silentspacemarine.com</a> website can be found in this <a href="https://github.com/cloudflare/doom-workers">repo</a>.</p>

@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vLGpnj5frsUOqDOTSbbmY/cfc60fc069d9b4160ec6ab27fb185272/Traffic-anomalies-1.png" alt="Introducing notifications for HTTP Traffic Anomalies" class="kg-image" width="2401" height="1350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vLGpnj5frsUOqDOTSbbmY/d1b29458a05d13a8b1d1727d08a25592/Traffic-anomalies-1.png" alt="Introducing notifications for HTTP Traffic Anomalies" class="kg-image" width="2401" height="1350" loading="lazy">
 
 	</figure>
 	<p>When it comes to managing Internet properties, the difference between a small technical hiccup and major incident is often a matter of speed. Proactive alerting plays a crucial role, which is why we were excited when we released <a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">HTTP Error Rate notifications</a> — giving administrators visibility into when end users are experiencing errors.</p>
@@ -25,14 +25,14 @@
 	<p>However, analyzing overall HTTP traffic behaves more similarly to <a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">Cloudflare Security Events</a>: there’s some general baseline of events that is computed from historical trends. Any deviation from that baseline is alertable. Because of those similarities, we decided to use the same calculations for Traffic Anomalies notifications as we have previously used for Security Event notifications: <a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">z-scores</a>. This involves comparing the current value to the average over a period of time. However, many standard deviations away from the average the current value is, is the z-score.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WyyibpRN80C7w0WSsG3OL/2b2b5a24b2a5188d0a14dd1678a3752a/image4-6.png" alt="" class="kg-image" width="1292" height="898" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WyyibpRN80C7w0WSsG3OL/a7153af760800ba681676c21c3db9159/image4-6.png" alt="" class="kg-image" width="1292" height="898" loading="lazy">
 
 	</figure>
 	<p><i>Plot of HTTP traffic against z-scores. The blue is the HTTP traffic, purple is the positive z-score bound of the traffic, and green is the negative z-score bound of the traffic</i></p>
 	<p>For Traffic Anomalies notifications, we’re comparing the traffic over the past 5 minutes (the short window) to the average of the traffic over the past 4 hours (the long window). Positive z-scores indicate a spike, and negative z-scores indicate a drop. If the current value is more than 3.5 standard deviations away from the average, we alert. We measure every 5 minutes, so we can alert on any traffic spike or drop in a timely fashion.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6A3BnkHW9bCc9JUuq2aOW7/05d1be5b4b4f4c1b068a29ebe89cbdb9/image2-9.png" alt="" class="kg-image" width="1375" height="125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6A3BnkHW9bCc9JUuq2aOW7/40964ec23fd85153ae48dcdfa117f38a/image2-9.png" alt="" class="kg-image" width="1375" height="125" loading="lazy">
 
 	</figure>
 	<p><i>Green bucket is the long window and the red bucket is the short window</i></p>
@@ -51,7 +51,7 @@
 	<p>Once we have data in VictoriaMetrics, we can run queries against it and determine whether we need to alert our customers or not, based on notification configurations they have created ahead of time. To do this we leverage our existing Alert Notification System, <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">which we blogged about initially in 2019</a>. We know we can count on our current notification system for the last mile to deliver these critical notifications to our customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Hu0yJDBmf67PqYc7JsAjw/806a691049b66bc2ee13b2056619d623/image1-9.png" alt="" class="kg-image" width="1999" height="387" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Hu0yJDBmf67PqYc7JsAjw/3986029c7ad8e59f91f3f689a9c7a489/image1-9.png" alt="" class="kg-image" width="1999" height="387" loading="lazy">
 
 	</figure>
 	<p><i>Data flow from HTTP request to notification</i></p>
@@ -59,7 +59,7 @@
 	<p>To configure this notification, navigate to the “Notifications” tab of the dashboard. Select Traffic Anomalies as your notification type. As with all Cloudflare notifications, you’re able to name and describe your notification, and choose how you want to be notified.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ggeccGOgR8LCHrwXVIOxe/2cbfa63e0b579cebd5ea2417bed77314/image5-3.png" alt="" class="kg-image" width="1999" height="482" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ggeccGOgR8LCHrwXVIOxe/0bc0ec47154d63112398588b25040879/image5-3.png" alt="" class="kg-image" width="1999" height="482" loading="lazy">
 
 	</figure>
 	<p><i>Traffic Anomalies notification in the Dashboard</i></p>

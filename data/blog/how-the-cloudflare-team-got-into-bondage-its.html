@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k97Hf1ry6V6WIxDhGj94K/9cc12614d6ebba74a5fd5d3d1ba6fe7e/cat5-o-nine-tails.png.scaled500.png" alt="How the CloudFlare Team Got Into Bondage (It's Not What You
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7k97Hf1ry6V6WIxDhGj94K/ff15e53d6df0d70e4f7fb1cce1b949db/cat5-o-nine-tails.png.scaled500.png" alt="How the CloudFlare Team Got Into Bondage (It's Not What You
 Think)" class="kg-image" width="500" height="336" loading="lazy">
 
 	</figure>
@@ -19,7 +19,7 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 	<p>Most of the equipment in our network today is based on our Generation 3 (G3) spec, which we deployed throughout 2012. Focusing just on the network connectivity for our G3 gear, our routers have multiple 10Gbps ports which connect out to the Internet as well as in to our switches. Our switches have a handful of 10Gbps ports that we use to connect to our routers and then 48 1Gbps ports that connect to the servers. Finally, our servers have 6 1Gbps ports, two on the motherboard (using Intel's chipset) and four on an Intel PCI network card. (There's an additional IPMI management port as well, but it doesn't figure into this discussion.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45d2KU77a3AmxdK67bKfQf/ba6e34e31f7fd4c731d24c03f1b5dfe0/cloudflare_servers.jpg.scaled500.jpg" alt="How the CloudFlare Team Got Into Bondage (It's Not  What You Think)" class="kg-image" width="480" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45d2KU77a3AmxdK67bKfQf/c89532e9a3fe07c03c9d97ef58e28b97/cloudflare_servers.jpg.scaled500.jpg" alt="How the CloudFlare Team Got Into Bondage (It's Not  What You Think)" class="kg-image" width="480" height="640" loading="lazy">
 
 	</figure>
 	<p>To get high levels of utilization and keep our server spec consistent and flexible, each of the servers in our network can perform any of the key CloudFlare functions: DNS, front-line, caching, and logging. Cache, for example, is spread across multiple machines in a facility. This means if we add another drive to one of the servers in a data center, then the total available storage space for the cache increases for all the servers in that data center. What's good about this is that, as we need to, we can add more servers and linearly scale capacity across storage, CPU, and, in some applications, RAM. The challenge is that in order to pull this off there needs to be a significant amount of communication between servers across our local area network (LAN).</p>
@@ -35,7 +35,7 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 	<p>The goal of a denial of service attack is to find a bottleneck and then send enough garbage requests to fill it up and prevent legitimate requests from getting through. At the same time, our goal when mitigating such an attack is first to ensure the attack doesn't harm other customers and then to stop the attack from hurting the actual target.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nK3bhH8RhZTplMpH38xhS/9b8220a7298115bf0681e04198cd6aa4/tumblr_m54e8tjzdQ1qfj10wo1_500.gif" alt="Devo Whip It" class="kg-image" width="500" height="391" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nK3bhH8RhZTplMpH38xhS/a350c165fa9650f1ed579f1bd5519824/tumblr_m54e8tjzdQ1qfj10wo1_500.gif" alt="Devo Whip It" class="kg-image" width="500" height="391" loading="lazy">
 
 	</figure>
 	<p>For the most part, the biggest attacks by volume we see are Layer 3 attacks. In these, packets are stopped at the edge of our network and never reach our server infrastructure. As the <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">very large attack against Spamhaus</a>showed, we have a significant amount of network capacity at our edge and are therefore able to stop these Layer 3 attacks very effectively.</p>
@@ -124,7 +124,7 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 	<p>Instead, we explicitly setup IRQ handling to isolate our external and internal (LAN) networks. Each of our servers has two physical CPUs (G3 hardware uses a low-watt version of Intel Westmere line of CPUs) with six physical cores each. We use Intel's hyperthreading technology which effectively doubles the number of logical CPU cores: 12 per CPU or 24 per server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18d512HGibCntbj2ic5VsL/aa0af3764c76f1905ecbf2cf67f127bf/intel_x5645e.jpg.scaled500.jpg" alt="How the CloudFlare Team Got Into Bondage (It's Not What You Think)" class="kg-image" width="250" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18d512HGibCntbj2ic5VsL/c0639e640d7a45e8b1285e2f87089679/intel_x5645e.jpg.scaled500.jpg" alt="How the CloudFlare Team Got Into Bondage (It's Not What You Think)" class="kg-image" width="250" height="250" loading="lazy">
 
 	</figure>
 	<p>Each port on our NICs has a number of queues to handle incoming requests. These are known as RSS (Receive Side Scaling) queues. Each port has 8 RSS queues, we have 6 1Gbps NIC ports per server, so a total of 48 RSS queues. These 48 RSS queues are allocated to the 24 cores, with 2 RSS queues per core. We divide the RSS queues between internal (LAN) traffic and external traffic and bind each type of traffic to one of the two server CPUs. This ensures that even large SYN floods that may affect a machine's ability to handle more external requests won't keep it from handling requests from other servers in the data center.</p>
@@ -140,7 +140,7 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 	<p>Near the end of 2012, our ops and networking teams sat down to spec our next generation of gear, incorporating everything we've learned over the previous year. One of the biggest changes we're making with G4 is the jump from 1Gbps network interfaces up to 10Gbps network interfaces on our switches and servers. Even without bonding, our tests of the new G4 gear show that it significantly increases both maximum throughput and IRQ handling. Or, put more succinctly: this next generation of servers is smokin' fast.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZEiqmp0eo4Ac5dOIUGm6I/e7d3ccc37072d5a4d5f86d49d9d69d29/next-generation.jpg.scaled500.jpg" alt="How the CloudFlare Team Got Into Bondage (It's Not What You
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZEiqmp0eo4Ac5dOIUGm6I/eb5daef87ff3901a85cb0c9d91a71aca/next-generation.jpg.scaled500.jpg" alt="How the CloudFlare Team Got Into Bondage (It's Not What You
 Think)" class="kg-image" width="500" height="335" loading="lazy">
 
 	</figure>

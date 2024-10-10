@@ -1,4 +1,4 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LonPfY9LQx1R82foR7fnk/cb952b73c7fc792dfd4036dc1b6c1648/image8.png" alt="">
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LonPfY9LQx1R82foR7fnk/82a2f9bab7e67caa1d479778cd35935a/image8.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Birthday Week 2024 marks our first anniversary of Cloudflare’s AI developer products — <a href="https://blog.cloudflare.com/workers-ai"><u>Workers AI</u></a>, <a href="https://blog.cloudflare.com/announcing-ai-gateway"><u>AI Gateway</u></a>, and <a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta"><u>Vectorize</u></a>. For our first birthday this year, we’re excited to announce powerful new features to elevate the way you build with AI on Cloudflare.</p>
 	<p>Workers AI is getting a big upgrade, with more powerful GPUs that enable faster inference and bigger models. We’re also expanding our model catalog to be able to dynamically support models that you want to run on us. Finally, we’re saying goodbye to neurons and revamping our pricing model to be simpler and cheaper. On AI Gateway, we’re moving forward on our vision of becoming an ML Ops platform by introducing more powerful logs and human evaluations. Lastly, Vectorize is going GA, with expanded index sizes and faster queries.</p>
@@ -24,7 +24,7 @@
 	</div>
 
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56ofEZRtFHhkrfMaGC4RUb/f893e6fd7ab45a5a00dbbbfcce95ecd4/image9.png" alt="" class="kg-image" width="1800" height="1098" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56ofEZRtFHhkrfMaGC4RUb/3f69a2fc3722f67218297c65bd510941/image9.png" alt="" class="kg-image" width="1800" height="1098" loading="lazy">
 	</figure>
 	<p>The first thing that you notice about an application is how fast, or in many cases, how slow it is. This is especially true of AI applications, where the standard today is to wait for a response to be generated.</p>
 	<p>At Cloudflare, we’re obsessed with improving the performance of applications, and have been doubling down on our commitment to make AI fast. To live up to that commitment, we’re excited to announce that we’ve added even more powerful GPUs across our network to accelerate LLM performance.</p>
@@ -412,14 +412,14 @@
 	</div>
 
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sLY6zUP6vDdnk1FNJfBBe/75e1a05d5b3a85ced497b1cc2e9e398d/image7.png" alt="" class="kg-image" width="1999" height="601" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sLY6zUP6vDdnk1FNJfBBe/9a9e8df1f608b1540175302300ae9bc0/image7.png" alt="" class="kg-image" width="1999" height="601" loading="lazy">
 	</figure>
 	<p><a href="https://developers.cloudflare.com/ai-gateway"><u>AI Gateway</u></a> is designed to help developers and organizations building AI applications better monitor, control, and optimize their AI usage, and thanks to our users, AI Gateway has reached an incredible milestone — over 2 billion requests proxied by September 2024, less than a year after its inception. But we are not stopping there.</p>
 	<p><b>Persistent logs (open beta)</b></p>
 	<p><a href="https://developers.cloudflare.com/ai-gateway/observability/logging"><u>Persistent logs</u></a> allow developers to store and analyze user prompts and model responses for extended periods, up to 10 million logs per gateway. Each request made through AI Gateway will create a log. With a log, you can see details of a request, including timestamp, request status, model, and provider.</p>
 	<p>We have revamped our logging interface to offer more detailed insights, including cost and duration. Users can now annotate logs with human feedback using thumbs up and thumbs down. Lastly, you can now filter, search, and tag logs with <a href="https://developers.cloudflare.com/ai-gateway/configuration/custom-metadata"><u>custom metadata</u></a> to further streamline analysis directly within AI Gateway.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18OovOZzlAkoKvMIgFJ1kR/1f493adc14d9f121311f02e5dc426290/image1.png" alt="" class="kg-image" width="1936" height="1608" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18OovOZzlAkoKvMIgFJ1kR/dbb6b809fb063b2d918b2355cbf11ea3/image1.png" alt="" class="kg-image" width="1936" height="1608" loading="lazy">
 	</figure>
 	<p>Persistent logs are available to use on <a href="https://developers.cloudflare.com/ai-gateway/pricing"><u>all plans</u></a>, with a free allocation for both free and paid plans. On the Workers Free plan, users can store up to 100,000 logs total across all gateways at no charge. For those needing more storage, upgrading to the Workers Paid plan will give you a higher free allocation — 200,000 logs stored total. Any additional logs beyond those limits will be available at $8 per 100,000 logs stored per month, giving you the flexibility to store logs for your preferred duration and do more with valuable data. Billing for this feature will be implemented when the feature reaches General Availability, and we’ll provide plenty of advance notice.</p>
 	<div style="margin-left:0pt;" dir="ltr" align="left">
@@ -473,15 +473,15 @@
 	<p><b>Export logs with Logpush</b></p>
 	<p>For users looking to export their logs, AI Gateway now supports log export via <a href="https://developers.cloudflare.com/ai-gateway/observability/logging/logpush"><u>Logpush</u></a>. With Logpush, you can automatically push logs out of AI Gateway into your preferred storage provider, including Cloudflare R2, Amazon S3, Google Cloud Storage, and more. This can be especially useful for compliance or advanced analysis outside the platform. Logpush follows its <a href="https://developers.cloudflare.com/workers/observability/logging/logpush"><u>existing pricing model</u></a> and will be available to all users on a paid plan.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uazGQNezknc5P9kVyr9gr/1901c151ac43da5fde9cdc50fd80fea5/image2.png" alt="" class="kg-image" width="1930" height="254" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uazGQNezknc5P9kVyr9gr/1da3b3897c9f6376ea4983b2d267b405/image2.png" alt="" class="kg-image" width="1930" height="254" loading="lazy">
 	</figure>
 	<p><b>AI evaluations</b></p>
 	<p>We are also taking our first step towards comprehensive <a href="https://developers.cloudflare.com/ai-gateway/evaluations"><u>AI evaluations</u></a>, starting with evaluation using human in the loop feedback (this is now in open beta). Users can create datasets from logs to score and evaluate model performance, speed, and cost, initially focused on LLMs. Evaluations will allow developers to gain a better understanding of how their application is performing, ensuring better accuracy, reliability, and customer satisfaction. We’ve added support for <a href="https://developers.cloudflare.com/ai-gateway/observability/costs"><u>cost analysis</u></a> across many new models and providers to enable developers to make informed decisions, including the ability to add <a href="https://developers.cloudflare.com/ai-gateway/configuration/custom-costs"><u>custom costs</u></a>. Future enhancements will include automated scoring using LLMs, comparing performance of multiple models, and prompt evaluations, helping developers make decisions on what is best for their use case and ensuring their applications are both efficient and cost-effective.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dyhxoR6KEsM8uh371XnDN/dcb6bbd68867ccb5b86fd6c7d39f3dc8/image3.png" alt="" class="kg-image" width="1999" height="710" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dyhxoR6KEsM8uh371XnDN/5eab93923157fd59112ffdea14b3bb2f/image3.png" alt="" class="kg-image" width="1999" height="710" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/21DCTbhFEh7u4m1d0Tfgmn/69a46de4a6ff64ef77ef3547720a7df4/image6.png" alt="" class="kg-image" width="1999" height="1376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21DCTbhFEh7u4m1d0Tfgmn/2839e2ae7d226fdcc4086f108f5c9612/image6.png" alt="" class="kg-image" width="1999" height="1376" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="vectorize-ga">Vectorize GA</h3>
@@ -493,7 +493,7 @@
 	</div>
 
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DjhP2xqOhPMP7oQK5Mdpa/879ecada6b80fbbfc21cceac8d63004a/image4.png" alt="" class="kg-image" width="1999" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DjhP2xqOhPMP7oQK5Mdpa/c216167d0a204f344afd2ff7393d97f9/image4.png" alt="" class="kg-image" width="1999" height="600" loading="lazy">
 	</figure>
 	<p>We've completely redesigned Vectorize since our <a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta"><u>initial announcement </u></a>in 2023 to better serve customer needs. Vectorize (v2) now supports<b> indexes of up to 5 million vectors</b> (up from 200,000), <b>delivers faster queries</b> (median latency is down 95% from 500 ms to 30 ms), and <b>returns up to 100 results per query</b> (increased from 20). These improvements significantly enhance Vectorize's capacity, speed, and depth of results.</p>
 	<p>Note: if you got started on Vectorize before GA, to ease the move from v1 to v2, a migration solution will be available in early Q4 — stay tuned!</p>
@@ -734,7 +734,7 @@
 	<p>If we put the three products together, we imagine a world where you can build AI apps with full observability (traces with AI Gateway) and see how the retrieval (Vectorize) and generation (Workers AI) components are working together, enabling you to diagnose issues and improve performance.</p>
 	<p>This Birthday Week, we’ve been focused on making sure our individual products are best-in-class, but we’re continuing to invest in building a holistic AI platform within our AI portfolio, but also with the larger Developer Platform Products. Our goal is to make sure that Cloudflare is the simplest, fastest, more powerful place for you to build full-stack AI experiences with all the batteries included.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nXZn8qwK1tCVVMFbYFf7n/28b108b0601f6b04a104c93c5e67363d/image5.png" alt="" class="kg-image" width="1800" height="716" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nXZn8qwK1tCVVMFbYFf7n/fe538bed97b00ef1b74a05dfd86eb496/image5.png" alt="" class="kg-image" width="1800" height="716" loading="lazy">
 	</figure>
 	<p>We’re excited for you to try out all these new features! Take a look at our <a href="https://developers.cloudflare.com/products/?product-group=AI"><u>updated developer docs </u></a>on how to get started and the Cloudflare dashboard to interact with your account.</p>
 </div>

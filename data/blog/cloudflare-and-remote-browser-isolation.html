@@ -1,5 +1,5 @@
 <div class="mb2 gray5">10 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-and-remote-browser-isolation">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-and-remote-browser-isolation">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-and-remote-browser-isolation">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-and-remote-browser-isolation">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-and-remote-browser-isolation">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F3rZ8Vcs15ea9FAmuzrb2/efce20bcfd22bc6566567d1c607b4871/cloudflare-and-remote-browser-isolation.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-and-remote-browser-isolation">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-and-remote-browser-isolation">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-and-remote-browser-isolation">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-and-remote-browser-isolation">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-and-remote-browser-isolation">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6F3rZ8Vcs15ea9FAmuzrb2/2a275a57a62c6c57876acc1220e5512b/cloudflare-and-remote-browser-isolation.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare announced today that it has purchased S2 Systems Corporation, a Seattle-area startup that has built an innovative remote browser isolation solution unlike any other currently in the market. The majority of endpoint compromises involve web browsers — by putting space between users’ devices and where web code executes, browser isolation makes endpoints substantially more <a href="https://www.cloudflare.com/network-services/solutions/enterprise-network-security">secure</a>. In this blog post, I’ll discuss what browser isolation is, why it is important, how the S2 Systems cloud browser works, and how it fits with Cloudflare’s mission to help build a better Internet.</p>
 	<div class="flex anchor relative">
@@ -72,7 +72,7 @@
 	<p>In a typical cloud-based RBI system (the blue-dashed box ❶ below), individual remote browsers ❷ are run in the cloud as disposable containerized instances – typically, one instance per user. The remote browser sends the rendered contents of a web page to the user endpoint device ❹ using a specific protocol and data format ❸. Actions by the user, such as keystrokes, mouse and scroll commands, are sent back to the isolation service over a secure encrypted channel where they are processed by the remote browser and any resulting changes to the remote browser webpage are sent back to the endpoint device.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5l1yyuFXw1RmZwr1K4hP7R/e1d8ed33662dee5d520f1b82fd914c98/image3-2.png" alt="" class="kg-image" width="1682" height="1145" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5l1yyuFXw1RmZwr1K4hP7R/bb18c2acb117429473fb08e32015fbf8/image3-2.png" alt="" class="kg-image" width="1682" height="1145" loading="lazy">
 
 	</figure>
 	<p>In effect, the endpoint device is “remote controlling” the cloud browser. Some RBI systems use proprietary clients installed on the local endpoint while others leverage existing HTML5-compatible browsers on the endpoint and are considered ‘clientless.’</p>
@@ -108,7 +108,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3074OF2d8kfVti4LDhE8n/1b0349e5e20ab1a8f1aea86bdd93a244/image2-4.png" alt="" class="kg-image" width="1999" height="1271" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3074OF2d8kfVti4LDhE8n/44951340e82764f4296ba2718f982993/image2-4.png" alt="" class="kg-image" width="1999" height="1271" loading="lazy">
 
 	</figure>
 	<p>Customers are left to choose between a secure solution with a bad user experience and high operating costs, or a faster, much less secure solution that breaks websites. These tradeoffs have driven some RBI providers to implement both remoting technologies into their products. However, this leaves customers to pick their poison without addressing the fundamental issues.</p>
@@ -127,14 +127,14 @@
 	<p>A key architectural feature of the Chromium browser is its use of the <a href="https://skia.org">Skia</a> graphics library. Skia is a widely-used cross-platform graphics engine for Android, Google Chrome, Chrome OS, Mozilla Firefox, Firefox OS, FitbitOS, Flutter, the <a href="https://electronjs.org">Electron</a> application framework and many other products. Like Chromium, the pervasiveness of Skia ensures ongoing broad hardware and platform support.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lYcOcL5Qe2u4bRnOWsyvK/6ac6d007da53971f225dff48e1e16a60/image1-1.png" alt="" class="kg-image" width="221" height="69" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lYcOcL5Qe2u4bRnOWsyvK/66ebf8f94ed8bd9ba7e20ad023484ee2/image1-1.png" alt="" class="kg-image" width="221" height="69" loading="lazy">
 
 	</figure>
 	<p><i>Skia code fragment</i></p>
 	<p>Everything visible in a Chromium browser window is rendered through the Skia rendering layer. This includes application window UI such as menus, but more importantly, the entire contents of the webpage window are rendered through Skia. Chromium compositing, layout and rendering are extremely complex with multiple parallel paths optimized for different content types, device contexts, etc. The following figure is an egregious simplification for illustration purposes of how S2 works (apologies to Chromium experts):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1aNyrGQsHYeXIbfxArYYEI/077db02c530ebe945610b5edaf0c9f3c/image4-2.png" alt="" class="kg-image" width="1168" height="1047" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aNyrGQsHYeXIbfxArYYEI/2bccc8b326b6b82b8af56bfb92e9a14c/image4-2.png" alt="" class="kg-image" width="1168" height="1047" loading="lazy">
 
 	</figure>
 	<p>S2 Systems NVR technology intercepts the remote Chromium browser’s Skia draw commands ❶, tokenizes and compresses them, then encrypts and transmits them across the wire ❷ to any HTML5 compliant web browser ❸ (Chrome, Firefox, Safari, etc.) running locally on the user endpoint desktop or mobile device. The Skia API commands captured by NVR are pre-rasterization which means they are highly compact.</p>

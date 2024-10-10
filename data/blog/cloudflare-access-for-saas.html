@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/J2gwvS7B7LcOGJLm4cyHG/542aa2056729e236094de3bf1acd65ea/Teams-for-SAAS-thumb.png" alt="" class="kg-image" width="1854" height="1059" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/J2gwvS7B7LcOGJLm4cyHG/71a6b6a57db1739be9b7330ccdffedd5/Teams-for-SAAS-thumb.png" alt="" class="kg-image" width="1854" height="1059" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%">
@@ -14,7 +14,7 @@
 	<p>That VPN added friction to how we work. We had to dedicate part of Cloudflare’s onboarding just to teaching users how to connect. If someone received a PagerDuty alert, they had to rush to their laptop and sit and wait while the VPN connected. Team members struggled to work while mobile. New offices had to backhaul their traffic. In 2017 and early 2018, our IT team triaged hundreds of help desk tickets with titles like these:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wxEscGECJL0EvhQW4N6Ot/f1b2966948da9aa138e5b58b00e98cb3/image4-4.png" alt="" class="kg-image" width="516" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wxEscGECJL0EvhQW4N6Ot/17e8c65c7de912c0d90309f0b6c8824d/image4-4.png" alt="" class="kg-image" width="516" height="206" loading="lazy">
 
 	</figure>
 	<p>While our IT team wrestled with usability issues, our Security team decided that poking holes in our private network was too much of a risk to maintain. Once on the VPN, users almost always had too much access. We had limited visibility into what happened on the private network. We tried to <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">segment the network</a>, but that was error-prone.</p>
@@ -38,7 +38,7 @@
 	<p>A username is just one part of a Zero Trust decision. We consider additional rules, like country restrictions or device posture via partners like Tanium or, soon, additional partners CrowdStrike and VMware Carbon Black. If the user meets all of those criteria, Cloudflare Access summarizes those variables into a standard proof of identity that our network trusts: a JSON Web Token (JWT).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aupuEmhR8lgWRZjvdfqlN/56b89fca6388f68dc82f187181f51eb0/image5-4.png" alt="" class="kg-image" width="1639" height="822" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aupuEmhR8lgWRZjvdfqlN/0c7e0f8b95d5c2f589e18eadeca17cb0/image5-4.png" alt="" class="kg-image" width="1639" height="822" loading="lazy">
 
 	</figure>
 	<p>A JWT is a secure, information-dense way to share information. Most importantly, JWTs <a href="https://tools.ietf.org/html/rfc7519">follow a standard</a>, so that different systems can trust one another. When users login to Cloudflare Access, we generate and sign a JWT that contains the decision and information about the user. We store that information in the user’s browser and treat that as proof of identity for the duration of their session.</p>
@@ -90,7 +90,7 @@
 	<p>That said, Cloudflare Access is not an identity provider - it’s an identity aggregator. When the user reaches Access, we will redirect them to the identity provider in the same way that we do today when users request a site that uses Cloudflare’s reverse proxy. By adding that hop through Access, though, we can layer the additional contextual rules and log the event.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yv8hYAwCeV36Hhu6of08T/46bec9f67ee2b4b57e6533ecfbad779a/image6-4.png" alt="" class="kg-image" width="1638" height="599" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yv8hYAwCeV36Hhu6of08T/b7ba08f4b379b7f8028c3168d86c561c/image6-4.png" alt="" class="kg-image" width="1638" height="599" loading="lazy">
 
 	</figure>
 	<p>We still generate a JWT for every login providing a standard proof of identity. Integrating with SaaS applications required us to convert that JWT into a SAML assertion that we can send to the SaaS application. Cloudflare Access runs in every one of Cloudflare’s data centers around the world to improve availability and avoid slowing down users. We did not want to lose those advantages for this flow. To solve that, we turned to Cloudflare Workers.</p>
@@ -132,7 +132,7 @@
 	<p>Cloudflare Access can connect to multiple identity providers simultaneously, including multiple instances of the same provider. When users are prompted to login, they can choose the option that their particular team uses.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fmJ0nY6O5wSBvOfQdg3NX/c8fc26cef2e4fbc0a7a2467139d63d14/image2-11.png" alt="" class="kg-image" width="1294" height="1316" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fmJ0nY6O5wSBvOfQdg3NX/0b76c98cf6de4cccf76a76d40be9d0e4/image2-11.png" alt="" class="kg-image" width="1294" height="1316" loading="lazy">
 
 	</figure>
 	<p>We’ve taken that ability and extended it into the Access for SaaS feature. Access generates a consistent identity from any provider, which we can now extend for SSO purposes to a SaaS application. Even if the application only supports a single identity provider, you can still integrate Cloudflare Access and merge identities across multiple sources. Now, team members who use your Okta instance and contractors who use LinkedIn can both SSO into your Atlassian suite.</p>
@@ -147,7 +147,7 @@
 	<p>Cloudflare Access released the <a href="https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch">Access App Launch</a> as a single destination for all of your internal applications. Your team members visit a URL that is unique to your organization and the App Launch displays all of the applications they can reach. The feature requires no additional administrative configuration; Cloudflare Access reads the user’s JWT and returns only the applications they are allowed to reach.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tIwkxCD532J0fTugVeAmE/a52330647dcda5ef33c21a3b7da8bc7b/image1-14.png" alt="" class="kg-image" width="1425" height="693" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tIwkxCD532J0fTugVeAmE/dd689ea011733577061226a597d926ae/image1-14.png" alt="" class="kg-image" width="1425" height="693" loading="lazy">
 
 	</figure>
 	<p>That experience now extends to all applications in your organization. When you integrate SaaS applications with Cloudflare Access, your users will be able to discover them in the App Launch. Like the flow for internal applications, this requires no additional configuration.</p>
@@ -162,7 +162,7 @@
 	<p>To get started, you’ll need a Cloudflare Access account and a SaaS application that supports SAML SSO. Navigate to the Cloudflare for Teams dashboard and choose the “SaaS” application option to start integrating your applications. Cloudflare Access will walk through the steps to configure the application to trust Cloudflare Access as the SSO option.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Sc3CA1krWC7UPnvrdwxQ0/4dcc832f1a07bd33f4142fd284e81f93/image7-2.png" alt="" class="kg-image" width="1999" height="1223" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Sc3CA1krWC7UPnvrdwxQ0/0aebf47c33e0aa152757820d78feb3ab/image7-2.png" alt="" class="kg-image" width="1999" height="1223" loading="lazy">
 
 	</figure>
 	<p>Do you have an application that needs additional configuration? Please let us know.</p>

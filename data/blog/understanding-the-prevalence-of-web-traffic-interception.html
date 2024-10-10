@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ENPfn6X2mzj55FqEXLKMj/beed1c8c44bcfddc6824d8c0bab9e5bd/Artboard-3-2.png" alt="" class="kg-image" width="7681" height="4321" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ENPfn6X2mzj55FqEXLKMj/1330a50564537a895c8edcd9152a0048/Artboard-3-2.png" alt="" class="kg-image" width="7681" height="4321" loading="lazy">
 
 	</figure>
 	<p><i>This is a guest post by Elie Bursztein who writes about security and anti-abuse research. It was first published on </i><a href="https://www.elie.net/blog/security/understanding-the-prevalence-of-web-traffic-interception"><i>his blog</i></a><i> and has been lightly edited.</i></p>
@@ -35,7 +35,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eUq8UG8YmvyI7upBvIGPD/6bf0ec806ea17547cd75bf65ff358593/Artboard-9.png" alt="" class="kg-image" width="8870" height="1596" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eUq8UG8YmvyI7upBvIGPD/e22a8dab8694b1cea30be37288848e44/Artboard-9.png" alt="" class="kg-image" width="8870" height="1596" loading="lazy">
 
 	</figure>
 	<p>As shown in the diagram above, products intercept traffic by performing an on-path attack (often referred to as a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">man-in-the-middle attack</a>). In essence, the software redirects the encrypted connection to itself and pretends to be the requested website. The interceptor then opens a new encrypted connection to the destination website and proxies the data back and forth between the two connections, making the interception mostly “invisible.” Because the interceptor has access to the unencrypted data in the connection, it can read, change, and block any of the content sent or received by the client.</p>
@@ -50,13 +50,13 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AEM8LwWuBZaXd0MTir2YR/692510f1f0c961b398e49946d0dc4df2/Artboard-13.png" alt="" class="kg-image" width="3533" height="2617" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AEM8LwWuBZaXd0MTir2YR/39947818d86bc10cf64267fdcaf3da5f/Artboard-13.png" alt="" class="kg-image" width="3533" height="2617" loading="lazy">
 
 	</figure>
 	<p>An important aspect of interception, is how the software is able to impersonate websites without the user’s browser detecting it. Usually, when an HTTPS connection is established, the browser confirms the identity of the website by verifying the authenticity of the certificate presented by the web server. If the certificate fails the verification, the browser will issue a warning, as illustrated above, that warns the user that the connection is potentially insecure. This is why the “unforgeability” of TLS certificates is the cornerstone of online security; it is the technical means that allows you to know you are talking to the right site, not an impostor.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wRlMbZrs0sa6Ee3L1rm8y/42f1cba0be73ab44fbc4a6b261363c54/Artboard-14.png" alt="" class="kg-image" width="3701" height="2377" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wRlMbZrs0sa6Ee3L1rm8y/c605ce1cc2df55fd93ac67e352f0927c/Artboard-14.png" alt="" class="kg-image" width="3701" height="2377" loading="lazy">
 
 	</figure>
 	<p>This raises the question of how HTTPS interceptors are able to produce valid certificates for all websites if they are designed to be unforgeable. The answer to this question lies in how browsers determine whether a certificate is valid. At a high level, this determination is made by checking whether the certificate was signed by a CA (certificate authority). When a new connection is established, the browser verifies whether the certificate presented by the server is valid by checking if is signed by one of these CAs. CA certificates are stored locally on the computer in a <a href="https://technet.microsoft.com/en-us/library/cc754841.aspx">trusted store</a>, which means that any CA certificate added to this store can be used to issue a valid certificate for any website.</p>
@@ -72,19 +72,19 @@
 	<p>Measuring interception is not an easy task, as interceptors don’t advertise themselves (obviously). This is why, to detect whether a connection was intercepted, we used a refined version of the network fingerprint technique known as TLS fingerprinting, which allows us to determine which software is making the connection (interceptor or browser). This technique works by looking at how the TLS client’s hello packet is constructed (e.g., ciphersuites and TLS options) and comparing it to a database of known fingerprints. These fingerprints proved very reliable in particular when contrasted with the user-agent advertised in the HTTP request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KklZqm3aPBrJRB3rWJOBi/af8e0ba152b4aca7682cb7a5822ac3c1/Artboard-8-copy-4.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KklZqm3aPBrJRB3rWJOBi/be8bedc5a7eeea9d46f6d8428b417159/Artboard-8-copy-4.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
 
 	</figure>
 	<p>Working with a large e-commerce site, Firefox, and Cloudflare, we looked at what fraction of browser traffic to their services is intercepted. Having multiple vantage points is important, as the results greatly vary depending on where you look from. For example, overall, we observe that between 4% and 10% of the HTTPS connections are intercepted, as reported in the chart above. While these numbers are high, it is important to keep in mind that not all these interceptions are malicious.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wjLIQrNP1HadZaUCm4izO/dbb39f58e8790b4fc5b4c7b9046f631d/interception-by-OS-.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wjLIQrNP1HadZaUCm4izO/ee46281960e5ae73535709ae8592fa60/interception-by-OS-.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
 
 	</figure>
 	<p>Breaking down the Cloudflare and e-commerce site traffic by OS reveals that Windows is intercepted far more often than MacOS, as reported in the chart above. This breakdown also highlights that the mobile OSes Android and iOS are significantly less often intercepted than desktop OSes. The full breakdown as well as a breakdown by browser is reported in our paper in Figure 13.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68hscEU9tDmj0xRqiQ7Fs4/fb53dfb7ae939d18a62df9c3171f4c9e/Copy-of-firefox-update-carrier-with-the-most-interceptions.png" alt="" class="kg-image" width="1425" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68hscEU9tDmj0xRqiQ7Fs4/78da319ad454f4aa6c2be9258d1308ec/Copy-of-firefox-update-carrier-with-the-most-interceptions.png" alt="" class="kg-image" width="1425" height="734" loading="lazy">
 
 	</figure>
 	<p>The Firefox interception breakdown exhibits a completely different distribution, with most of the interceptions coming from mobile carrier providers, as shown in the chart above. A partial explanation for such a drastic difference is that Firefox on desktop uses a separate store for its SSL root certificates, which makes it less likely to be intercepted than other browsers.</p>
@@ -107,7 +107,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mfo4IFsm8ylXZehLyYoHY/ebad24c5d086549b0ef86f47c6d02a92/Artboard-8-copy-2.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mfo4IFsm8ylXZehLyYoHY/878385e564c2373a8299d7e21f296fdc/Artboard-8-copy-2.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
 
 	</figure>
 	<p>By fingerprinting known security products, we were able to attribute quite a few interceptions to them, as reported in the chart above. For example, Avast is responsible for 9.1% of Cloudflare interceptions and 10.8% of e-commerce interceptions. That being said, we have quite a few unknown fingerprints, which are likely a result of malware.</p>
@@ -122,19 +122,19 @@
 	<p>If the interception is not malicious in itself, then one may wonder why intercepting traffic most often weakens online security.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/47RbWB2OtB6K17Kd4oOwQY/b1c63506dc8d77ca421730e903375031/Artboard-10.png" alt="" class="kg-image" width="5426" height="1536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47RbWB2OtB6K17Kd4oOwQY/5d1124732770322f4f02e58a1c4f170c/Artboard-10.png" alt="" class="kg-image" width="5426" height="1536" loading="lazy">
 
 	</figure>
 	<p>The underlying reason is that most interception products use cryptography in an insecure way. Therefore, as shown in the diagram above, when the interception takes place, the connection from the interceptor to the website uses insecure cryptography to encrypt user data instead of the safe cryptography that is offered by modern browsers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z0hFSnUVtmjHXKF5dt8Cy/eaf6edc987687a67f30334d494e56528/Artboard-11.png" alt="" class="kg-image" width="6503" height="1620" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Z0hFSnUVtmjHXKF5dt8Cy/dfaa2f0912e731a42a9b1750e4a5c1d9/Artboard-11.png" alt="" class="kg-image" width="6503" height="1620" loading="lazy">
 
 	</figure>
 	<p>The net result of using bad crypto, illustrated below, is that it opens up weaker connections to attacks. Hackers could also intercept encrypted connections and steal confidential data such as credentials, instant messages, and emails. In certain cases, like Komodia, <a href="https://www.eff.org/deeplinks/2015/02/dear-software-vendors-please-stop-trying-intercept-your-customers-encrypted">the cryptographic implementation is so broken</a> that an attacker can intercept any encrypted communication with little effort.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tk7qeuyuPIA0zAMVtETD5/b87c6d2d54e978b542db6ea27ee0b495/Artboard-8-copy-3.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tk7qeuyuPIA0zAMVtETD5/3267c0ac3d906695f8b065e0a18cf542/Artboard-8-copy-3.png" alt="" class="kg-image" width="4800" height="3000" loading="lazy">
 
 	</figure>
 	<p>To quantify how HTTPS interception affects connection security, we analyzed the security of the cryptographic stacks used by these interceptors. Overall, we found that 65% of the intercepted connections going to the Firefox update server have reduced security, and a staggering 37% are easily vulnerable to on-path attacks due to blatant cryptographic mistakes (e.g., certificates are not validated). As reported in the chart above, while a little better, the numbers for Cloudflare are still concerning: 45% of the intercepted connections to Cloudflare have decreased security, and 16% are severely broken. Finally, the numbers for the e-commerce website sit in between: 62.3% have reduced security and 18% are severely broken.</p>

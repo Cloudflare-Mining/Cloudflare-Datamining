@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ynzyor1E1toSPGs3zYf4P/5d1c05f3dd13a4c9d8a5e827d3b0a044/SEO_keywords.png" alt="How we built an open-source SEO tool using Workers, D1, and Queues." class="kg-image" width="2400" height="1351" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ynzyor1E1toSPGs3zYf4P/72bd8f267e019d0a0659ade30dbd3776/SEO_keywords.png" alt="How we built an open-source SEO tool using Workers, D1, and Queues." class="kg-image" width="2400" height="1351" loading="lazy">
 
 	</figure>
 	<p>Building applications on Cloudflare Workers has always been fun. Workers applications have low latency response times by default, and easy developer ergonomics thanks to Wrangler. It's no surprise that for years now, developers have been going from idea to production with Workers in just a few minutes.</p>
@@ -11,7 +11,7 @@
 	<p>In this blog post, I’m excited to show off some of the new tools in Cloudflare’s developer arsenal, <a href="https://blog.cloudflare.com/introducing-d1">D1</a> and <a href="https://blog.cloudflare.com/introducing-cloudflare-queues">Queues</a>, to prototype and ship an internal tool for our SEO experts at Cloudflare. We've made this project, which we're calling Prospector, open-source too - check it out in our <code>[cloudflare/templates](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-prospector)</code> repo on GitHub. Whether you're a developer looking to understand how to use multiple parts of Cloudflare's developer stack together, or an SEO specialist who may want to deploy the tool in production, we've made it incredibly easy to get up and running.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AbvyVpEkBfnOITizlfkhT/8b48bf2e7cdd3c4d356b0c30071ad16c/image1.png" alt="" class="kg-image" width="1376" height="714" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AbvyVpEkBfnOITizlfkhT/73156db0a0fe274ead622a677b6eb959/image1.png" alt="" class="kg-image" width="1376" height="714" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -27,7 +27,7 @@
 	<p>Prospector uses Cloudflare Workers as the user-facing API for the application. It uses D1 to store and retrieve data in real-time, and Queues to handle the fetching of all URLs and the notification process. We've also included an intuitive user interface for the application, which is built with HTML, CSS, and JavaScript.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/339I5LA7CAciIdEOyfKkl3/2d68b19cd3341469ae4b92415dab7a42/image3-1.png" alt="" class="kg-image" width="1493" height="762" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/339I5LA7CAciIdEOyfKkl3/fc05a5f4b5d41ef794d638df5e41d1fb/image3-1.png" alt="" class="kg-image" width="1493" height="762" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -145,7 +145,7 @@ app.get('/sitemaps', async (context) =&gt; {
 	<p>Notice the types of the <code>DB</code> and <code>QUEUE</code> bindings - <code>D1Database</code> and <code>Queue</code>, respectively. These types are automatically generated, complete with type signatures for each method inside of the D1 and Queue APIs. This means that we can be sure that we're using the correct methods, and that we're passing the correct arguments to them, directly from our text editor - without having to refer to the documentation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uqW1v9MEpdsEMieihxKFk/52fdce489c069656b8b35d8610d8e2e8/image4.png" alt="" class="kg-image" width="920" height="389" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uqW1v9MEpdsEMieihxKFk/e865da1397167301f051616d61f83a1a/image4.png" alt="" class="kg-image" width="920" height="389" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -191,7 +191,7 @@ preview_database_id = "8a77a074-8631-48ca-ba41-a00d0206de32"
 	<p>With a deployed application, you can visit your Workers URL to see the user interface. From there, you can add new notifiers and URLs, and see the results of your scraping process. When a new keyword match is found, you’ll receive an email with the details of the match instantly:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2P59U5wQRoysgE8nWLbwLD/89a50548ed93463ae834a93f56eea45e/image2-1.png" alt="" class="kg-image" width="623" height="208" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2P59U5wQRoysgE8nWLbwLD/b1e7240ddd90dd36676163b201998cb3/image2-1.png" alt="" class="kg-image" width="623" height="208" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

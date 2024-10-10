@@ -1,5 +1,5 @@
 <div class="mb2 gray5">17 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/tcp-resets-timeouts">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/tcp-resets-timeouts">日本語</a> and <a href="https://blog.cloudflare.com/zh-tw/tcp-resets-timeouts">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WNpBsAcAwehplOT4Hiuub/39aea7528abc818c4d792a523c8f8652/1622-1-Hero.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/tcp-resets-timeouts">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/tcp-resets-timeouts">日本語</a> and <a href="https://blog.cloudflare.com/zh-tw/tcp-resets-timeouts">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WNpBsAcAwehplOT4Hiuub/f5c72ee392929ba21f053fdb52acdf32/1622-1-Hero.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare handles over 60 million HTTP requests per second globally, with <a href="https://radar.cloudflare.com/adoption-and-usage"><u>approximately 70%</u></a> received over <a href="https://datatracker.ietf.org/doc/html/rfc9293"><u>TCP</u></a> connections (the remaining are <a href="https://datatracker.ietf.org/doc/html/rfc9000"><u>QUIC</u></a>/<a href="https://datatracker.ietf.org/doc/html/rfc768"><u>UDP</u></a>). Ideally, every new TCP connection to Cloudflare would carry at least one request that results in a successful data exchange, but that is far from the truth. In reality, we find that, globally, <a href="https://radar.cloudflare.com/security-and-attacks/#tcp-resets-and-timeouts"><u>approximately 20%</u></a> of new TCP connections to Cloudflare’s servers time out or are closed with a TCP “abort” message either before any request can be completed or immediately after an initial request.</p>
 	<p>This post explores those connections that, for various reasons, appear to our servers to have been halted unexpectedly before any useful data exchange occurs. Our work reveals that while connections are normally ended by clients, they can also be closed due to third-party interference. Today we’re excited to launch a new <a href="https://radar.cloudflare.com/security-and-attacks#tcp-resets-and-timeouts"><u>dashboard</u></a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-tcp-resets-timeouts-summary"><u>API endpoint</u></a> on Cloudflare Radar that shows a near real-time view of TCP connections to Cloudflare’s network that terminate within the first 10 ingress packets due to resets or timeouts, which we’ll refer to as <i>anomalous</i> TCP connections in this post. Analyzing this anomalous behavior provides insights into scanning, connection tampering, DoS attacks, connectivity issues, and other behaviors.</p>
@@ -28,7 +28,7 @@
 	<p>The full lifetime of a connection that closes gracefully with a FIN is captured in the following sequence diagram.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eh8fIM3Ei3Y9WapGgRuhC/7368c0c590846a42822b930958d4ddae/1622-2.png" alt="1622-2" class="kg-image" width="1060" height="1064" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eh8fIM3Ei3Y9WapGgRuhC/995421abee0d6aeb257e2700db9759ee/1622-2.png" alt="1622-2" class="kg-image" width="1060" height="1064" loading="lazy">
 
 	</figure>
 	<p><i><sub>A normal TCP connection starts with a 3-way handshake and ends with a FIN handshake</sub></i></p>
@@ -81,32 +81,32 @@
 	<p>To start, we encourage readers to visit the <a href="https://radar.cloudflare.com/security-and-attacks#tcp-resets-and-timeouts"><u>dashboard on Radar</u></a> to view the results worldwide, and for their own country and ISP.</p>
 	<p>Globally, as shown below, about 20% of new TCP connections to Cloudflare’s network are closed by a reset or timeout within the first 10 packets from the client. While this number seems astonishingly high, it is in-line with prior studies. As we’ll see, rates of resets and timeouts vary widely by country and network, and this variation is lost in the global averages.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cR6Nfm1H3juXU6oB9RS9o/50826cdcb0babc77f5abcdf41b5126c4/1622-3.png" alt="1622-3" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cR6Nfm1H3juXU6oB9RS9o/6f53f4295f3ce98b8dd32c4b28aba847/1622-3.png" alt="1622-3" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><i><sub>via </sub></i><a href="https://radar.cloudflare.com/security-and-attacks?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><i><sub>Cloudflare Radar</sub></i></a></p>
 	<p>The <a href="https://radar.cloudflare.com/us"><u>United States</u></a>, my home country, shows anomalous connection rates slightly lower than the worldwide averages, largely due to lower rates for connections closing in the Post-ACK and Post-PSH stages (those stages are more reflective of middlebox <a href="https://blog.cloudflare.com/connection-tampering"><u>tampering</u></a> behavior). The elevated rates of Post-SYN are typical in most networks due to scanning, but may include packets that spoof the true client’s IP address. Similarly, high rates of connection resets in the Later connection stage (after the initial data exchange, but still within the first 10 packets) might be applications responding to human actions, such as browsers using RSTs to close unwanted TCP connections after a tab is closed.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hRm0W9UEhzZ9olt89yvgx/18be0248bfd1b95da6159a9887dd0f81/1622-4.png" alt="1622-4" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hRm0W9UEhzZ9olt89yvgx/0dd609db5d9808869e73c10d7f2c628e/1622-4.png" alt="1622-4" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/us?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>My home ISP <a href="https://radar.cloudflare.com/as22773"><u>AS22773 (Cox Communications)</u></a> shows rates comparable to the US as a whole. This is typical of most residential ISPs operating in the United States.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SYQfFbeBYgrlv4p6q75l8/54fa5ecc6aad1c7fdf4942896cba4092/1622-5.png" alt="1622-5" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SYQfFbeBYgrlv4p6q75l8/09773b7cb9de8facaaa96c1609480d81/1622-5.png" alt="1622-5" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS22773?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Contrast this against <a href="https://radar.cloudflare.com/as15169"><u>AS15169 (Google LLC)</u></a>, which originates many of Google’s <a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers"><u>crawlers and fetchers</u></a>. This network shows significantly lower rates of resets in the “Later" connection stage, which may be explained by the larger proportion of automated traffic, not driven by human user actions (such as closing browser tabs).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CXdHL80q8qjJ3zbQUOJXT/490310bf5d656feeb753bb28fe9ab408/1622-6.png" alt="1622-6" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CXdHL80q8qjJ3zbQUOJXT/2acb5e977b689ba201b8afe664795067/1622-6.png" alt="1622-6" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS15169?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Indeed, our <a href="https://radar.cloudflare.com/traffic"><u>bot detection system</u></a> classifies over 99% of HTTP requests from AS15169 as automated. This shows the value of collating different types of data on Radar.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/cTokDpCivHG1RLV2vHZaj/ea32037b7a74a7a77685713a06d54e23/1622-7.png" alt="1622-7" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cTokDpCivHG1RLV2vHZaj/4c57daf869ad01c21edf6c306b016f5d/1622-7.png" alt="1622-7" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/traffic/AS15169?dateStart=2024-07-28&amp;dateEnd=2024-08-26#bot-vs-human"><sub><i>Cloudflare Radar</i></sub></a></p>
@@ -132,14 +132,14 @@
 	<p>Looking at <a href="https://radar.cloudflare.com/as398324"><u>AS398324</u></a> would suggest something terribly wrong, with more than half of connections showing up as anomalous in the Post-SYN stage. However, this network turns out to be CENSYS-ARIN-01, from Internet scanning company <a href="https://censys.com"><u>Censys</u></a>. Post-SYN anomalies can be the result of network-layer scanning, where the scanner sends a single SYN packet to probe the server, but does not complete the TCP handshake. There are also high rates of Later anomalies, which could be indicative of application-layer scanning, as indicated by the near 100% proportion of connections being classified as automated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2D4kF4Uphgq33pPsjEHbwS/afdd7f0b55d1f8d42a615f86cb36933f/1622-8.png" alt="1622-8" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2D4kF4Uphgq33pPsjEHbwS/a3796c3c0bee6dfa71ea33e2f6ab9d26/1622-8.png" alt="1622-8" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS398324?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Indeed, similar to AS15169, we classify over 99% of requests from AS398324 as automated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hmzGC09VELKJpeX5tx7Eq/ea9b6c54ab27e46452037e6028b3923d/1622-9.png" alt="1622-9" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hmzGC09VELKJpeX5tx7Eq/3bfe704f0eb0613f31606bfe72782137/1622-9.png" alt="1622-9" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/traffic/AS398324?dateStart=2024-07-28&amp;dateEnd=2024-08-26#bot-vs-human"><sub><i>Cloudflare Radar</i></sub></a></p>
@@ -158,27 +158,27 @@
 	<p>As an example, the reset injection technique is <a href="https://go.gale.com/ps/anonymous?id=GALE%7CA175630128&amp;it=r&amp;linkaccess=abs&amp;issn=10727825"><u>known</u></a> and commonly associated with the so-called Great Firewall of China (GFW). Indeed, looking at Post-PSH anomalies in connections originating from IPs geolocated to <a href="https://radar.cloudflare.com/cn"><u>China</u></a>, we see higher rates than the worldwide average. However, looking at individual networks in China, the Post-PSH rates vary widely, perhaps due to the types of traffic carried or different implementations of the technique. In contrast, rates of Post-SYN anomalies are consistently high across most major Chinese ASes; this may be scanners, spoofed SYN flood attacks, or <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/wu-mingshi"><u>residual</u></a> <a href="https://gfw.report/publications/usenixsecurity23/en"><u>blocking</u></a> with <a href="https://blog.cloudflare.com/consequences-of-ip-blocking"><u>collateral impact</u></a>.&nbsp;</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ICLRlfg97CA9e716TJSwE/9627f83f37b994d30cc495e63e7567bd/1622-10.png" alt="1622-10" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ICLRlfg97CA9e716TJSwE/6333b5d2975ab139adfc0f7ede9abf6b/1622-10.png" alt="1622-10" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/cn?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p><a href="https://radar.cloudflare.com/as4134"><u>AS4134 (CHINANET-BACKBONE)</u></a> shows lower rates of Post-PSH anomalies than other Chinese ASes, but still well above the worldwide average.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NL6vTD9cXtVxQYfp3OvHT/cf05e079d33d47fe16e26b8dbc90adb0/1622-11.png" alt="1622-11" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NL6vTD9cXtVxQYfp3OvHT/dbb713b97a7690e45a0bedb22efa1cb1/1622-11.png" alt="1622-11" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS4134?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Networks <a href="https://radar.cloudflare.com/as9808"><u>AS9808 (CHINAMOBILE-CN)</u></a> and <a href="https://radar.cloudflare.com/as56046"><u>AS56046 (CMNET-Jiangsu-AP)</u></a> both show double-digit percentages of connections matching Post-PSH anomalies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jQVLR8Shiz0NsMJuUhG4N/cb4ee2c55aac3f8a4fcc95dc62a47476/1622-12.png" alt="1622-12" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jQVLR8Shiz0NsMJuUhG4N/60b56c012e01d9aeea61447aa4a3f7fc/1622-12.png" alt="1622-12" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS9808?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fSHO4hANqymOvbjSIL6Uw/3e3d087f0ffa74b88f98efa3d7858ff4/1622-13.png" alt="1622-13" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fSHO4hANqymOvbjSIL6Uw/497a02d5f1496202f7a2d5a04043c54e/1622-13.png" alt="1622-13" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS56046?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
@@ -203,14 +203,14 @@
 	<p>Here is one we’re unable to explain: Every day during the same 18-hour interval, over 10% of connections from UK clients never progress past the initial SYN packets, and just time out.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qPaXL6ViEyuJ3UhUi0kpG/4d52b3b9e37ad76890b7e48835810efd/1622-14.png" alt="1622-14" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qPaXL6ViEyuJ3UhUi0kpG/26060221486166d782977014511d2b83/1622-14.png" alt="1622-14" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/gb?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Internal inspection revealed that almost all of the Post-SYN anomalies come from a scanner using <a href="https://zmap.io"><u>ZMap</u></a> at <a href="https://radar.cloudflare.com/as396982"><u>AS396982 (GOOGLE-CLOUD-PLATFORM)</u></a>, in what appears to be a full port scan across all IP address ranges. (The ZMap client responsibly self-identifies, based on ZMap’s responsible self-identification as discussed later.) We see a similar level of scan traffic from IP prefixes in AS396982 geolocated to the United States.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/756bijZU4xJpMvc78ZdbYl/a2e156e2159f8870acf90e34f7940134/1622-15.png" alt="1622-15" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/756bijZU4xJpMvc78ZdbYl/370d1b939bf2023bb2fee550df7b492c/1622-15.png" alt="1622-15" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS396982?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
@@ -225,7 +225,7 @@
 	<p>A cursory look at anomaly rates at the country level reveals some interesting findings. For instance, looking at connections from <a href="https://radar.cloudflare.com/mx"><u>Mexico</u></a>, the rates of Post-ACK and Post-PSH anomalies often associated with connection tampering are higher than the global average. The profile for Mexico connections is also similar to others in the region. However, Mexico is a country with “<a href="https://freedomhouse.org/country/mexico/freedom-net/2023"><u>no documented evidence that the government or other actors block or filter internet content.</u></a>”</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bZjzlkqtRzmB5097m6z6S/0132e0b929aa0ca77a2041fb62ea914c/1622-16.png" alt="1622-16" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bZjzlkqtRzmB5097m6z6S/e2e07a884a510d963b97c5e6ffd00ee2/1622-16.png" alt="1622-16" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/mx?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
@@ -234,28 +234,28 @@
 	<p>To enforce a zero-rating policy, an ISP might use the <a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-sni"><u>TLS Server Name Indication (SNI)</u></a> to determine whether to block or allow connections. The SNI is sent in a data-containing packet immediately following the TCP handshake. Thus, if an ISP drops the packet containing the SNI, the server would still see the SYN and ACK packets from the client but no subsequent packets, which is consistent with a Post-ACK connection anomaly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KUfARxvDEogTFeh7PL4n5/ce6f43a2812055ae67962b886328272b/1622-17.png" alt="1622-17" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KUfARxvDEogTFeh7PL4n5/68dc237c07a60e431cc2d2654cade2f7/1622-17.png" alt="1622-17" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS28403?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Turning to <a href="https://radar.cloudflare.com/pe"><u>Peru</u></a>, another country with a similar profile in the dataset, there are even higher rates of Post-ACK and Post-PSH anomalies compared to Mexico.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vLO0sP2Ap3206PX4Ysdim/c9721d8bfbf859275351dba077fdf785/1622-18.png" alt="1622-18" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vLO0sP2Ap3206PX4Ysdim/a4f0274b4d884703ff4b4d879a667d90/1622-18.png" alt="1622-18" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/pe?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Focusing on specific ASes, we see that <a href="https://radar.cloudflare.com/as12252"><u>AS12252 (Claro Peru)</u></a> shows high rates of Post-ACK anomalies similar to AS28403 in Mexico. Both networks are operated by the same parent company, <a href="https://www.americamovil.com/English/overview/default.aspx"><u>América Móvil</u></a>, so one might expect similar network policies and network management techniques to be employed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1doJKHsOHyYlY6t3LLVmdm/d04626dac5e5bb13f66e681769fb8e7a/1622-19.png" alt="1622-19" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1doJKHsOHyYlY6t3LLVmdm/147d8239981bc580b9fd53cf2b7b4d89/1622-19.png" alt="1622-19" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS12252?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Interestingly, <a href="https://radar.cloudflare.com/as6147"><u>AS6147 (Telefónica Del Perú)</u></a> instead shows high rates of Post-PSH connection anomalies. This could indicate that this network uses different techniques at the network layer to enforce its policies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44i6wdU8oWl8CTl1YDZVES/890339f85f9a18a5ab80c38b350a314a/1622-20.png" alt="1622-20" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44i6wdU8oWl8CTl1YDZVES/7ac4728c15e4a0627f262f8dcd791be2/1622-20.png" alt="1622-20" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/dz?dateStart=2024-06-06&amp;dateEnd=2024-06-19#tcp-resets-and-attacks"><sub><i>Cloudflare Radar</i></sub></a></p>
@@ -280,7 +280,7 @@
 	<p>As examples of changing behavior, we can go “back in time” to observe exam-related blocking as it happened. In <a href="https://radar.cloudflare.com/sy"><u>Syria</u></a>, during the exam-related shutdowns we see spikes in the rate of Post-SYN anomalies. In reality, we see a <a href="https://radar.cloudflare.com/traffic/sy?dateStart=2024-05-20&amp;dateEnd=2024-06-19"><u>near-total drop in traffic</u></a> (including SYN packets) during these periods.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3K5o8qI2wzozKrFlSm9x9S/a4cd6ff63a28b75f8d1970e5d1cb78ba/1622-21.png" alt="1622-21" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3K5o8qI2wzozKrFlSm9x9S/d7778ba433055988ead0726ede69423c/1622-21.png" alt="1622-21" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/sy?dateStart=2024-05-20&amp;dateEnd=2024-06-19#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
@@ -288,21 +288,21 @@
 		A <a href="https://x.com/CloudflareRadar/status/1816438072768078078"><u>second round</u></a> of shutdowns starting the last week of July are quite prominent as well.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YJVpto9QJBCkDm5DVLiVN/08e9a80ab9ec4a22fd069112f1db2b35/1622-22.png" alt="1622-21" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YJVpto9QJBCkDm5DVLiVN/23a4b168065ebf47a062f89fc98d5048/1622-22.png" alt="1622-21" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/sy?dateStart=2024-07-20&amp;dateEnd=2024-08-19#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>Looking at connections from <a href="https://radar.cloudflare.com/iq"><u>Iraq</u></a>, Cloudflare’s view of exam-related shutdowns appears similar to those in Syria, with multiple Post-SYN spikes, albeit much less pronounced.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KZyGLIOyoEFH3sYTiuHzK/bdfd431785ee8859e309ada8bceb15f1/1622-23.png" alt="1622-23" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KZyGLIOyoEFH3sYTiuHzK/5539aba3877760e90bacf6889e51e0ad/1622-23.png" alt="1622-23" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/iq?dateStart=2024-05-17&amp;dateEnd=2024-06-10#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>The <a href="https://blog.cloudflare.com/syria-iraq-algeria-exam-internet-shutdown"><u>exams shutdown blog</u></a> also describes how <a href="https://radar.cloudflare.com/dz"><u>Algeria</u></a> took a more nuanced approach for restricting access to content during exam times: instead of full Internet shutdowns, evidence suggests that Algeria instead targeted specific connections. Indeed, during exam periods we see an increase in Post-ACK connection anomalies. This behavior would be expected if a middlebox selectively drops packets that contain forbidden content, while leaving other packets alone (like the initial SYN and ACK).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67LrJ8cb1XpYsEpzENs54M/6e7581713541cbd94f68230dc2256848/1622-24.png" alt="1622-24" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67LrJ8cb1XpYsEpzENs54M/775ee5671ef738a0afd93fc0a55b289a/1622-24.png" alt="1622-24" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/dz?dateStart=2024-06-06&amp;dateEnd=2024-06-19#tcp-resets-and-attacks"><sub><i>Cloudflare Radar</i></sub></a></p>

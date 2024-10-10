@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eit9rMZCFT8TJ1eXjggf6/86b03dfd0e799a4179b2d2895d073991/the-root-cause-of-large-ddos-ip-spoofing.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eit9rMZCFT8TJ1eXjggf6/beaa2c22c263e2e80ab862623ef0698f/the-root-cause-of-large-ddos-ip-spoofing.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A week ago we published a story about new amplification attacks using <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">memcached protocol on UDP port 11211</a>. A few things happened since then:</p>
 	<ul>
@@ -21,7 +21,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3b8jURO2bONlcO2WGnhlMM/f375e70491260d88ea4cc95e2dd69c29/8426525097_cf3ed2db55_z.jpg" alt="8426525097_cf3ed2db55_z" class="kg-image" width="640" height="538" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3b8jURO2bONlcO2WGnhlMM/29f11f4659fcb6b32a270af731e8e774/8426525097_cf3ed2db55_z.jpg" alt="8426525097_cf3ed2db55_z" class="kg-image" width="640" height="538" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/dapuglet/8426525097">image</a> by <a href="https://www.flickr.com/photos/dapuglet">DaPuglet</a></p>
@@ -38,13 +38,13 @@
 	<p>Both of these types of attack require the attacker to do IP spoofing<a href="https://blog.cloudflare.com/#fn2">[2]</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69j7sPB842FEqIYqTZarM1/5f354ba472dfb70817213a7fc79e6e03/sp-spoofing.png" alt="all" class="kg-image" width="1534" height="778" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69j7sPB842FEqIYqTZarM1/f7b98bfaa5ade81c371a7fa6cf64ae27/sp-spoofing.png" alt="all" class="kg-image" width="1534" height="778" loading="lazy">
 
 	</figure>
 	<p>IP Spoofing happens when the attacker sends IP packets with a fake source IP address. It's like forging a return address on a letter and pretending to be someone else.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Zk2SmjPo99V5u14YGPg6A/96881feb64bde84c98cdd581d2e6de28/sp-impersonation.png" alt="all" class="kg-image" width="1514" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Zk2SmjPo99V5u14YGPg6A/bf570c97e7d2833effdc73af40eb4e2a/sp-impersonation.png" alt="all" class="kg-image" width="1514" height="734" loading="lazy">
 
 	</figure>
 	<p>Spoofing source IP addresses is not technically challenging. Every machine connected to the internet can transmit any bytes of their choosing - including setting arbitrary values in the source IP address field. It's just that such packets can do a great deal of damage when they are permitted onto the wide internet.</p>
@@ -59,46 +59,46 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RLRuWep9G88grfxQjIZQ/2920f2fd0fcba400d2b79c7394105abe/sp-direct2.png" alt="sp-direct2" class="kg-image" width="1498" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RLRuWep9G88grfxQjIZQ/7c02ea21f031cab4659a1ac9ea3968f6/sp-direct2.png" alt="sp-direct2" class="kg-image" width="1498" height="410" loading="lazy">
 
 	</figure>
 	<p>In direct attacks the traffic is sent directly towards the victim. There is a bright side of this - the target can investigate the source IPs! Since Cloudflare is often a target of such attacks, occasionally we look at the data and have some fun.</p>
 	<p>To visualize the source IPs of the attacks, it's best to use <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert Curves</a>. Randall Munroe popularized this technique <a href="https://www.xkcd.com/195">in this famous XKCD</a>. The general idea is great - draw all 2**32 IPs on a two dimensional map by employing fancy math.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://www.xkcd.com/195">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nQ7gTMuhRfQSSaz9HrHMZ/9b5203ad9eb3c1c6323f812d5cd2e583/map_of_the_internet.jpg" alt="" class="kg-image" width="740" height="1076" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nQ7gTMuhRfQSSaz9HrHMZ/34b01e314f77554fa5afb53738b2f107/map_of_the_internet.jpg" alt="" class="kg-image" width="740" height="1076" loading="lazy">
 		</a>
 	</figure>
 	<p>Here are a couple of direct attacks doing IP spoofing that we saw in past.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-all.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ejCnyqbR5n6vIVLbU991f/a53811878e10d5ee58a3d62bb271cb28/sp-all.png" alt="all" class="kg-image" width="768" height="768" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ejCnyqbR5n6vIVLbU991f/306fc6d6e76d9c9c81b030fbd9db3f15/sp-all.png" alt="all" class="kg-image" width="768" height="768" loading="lazy">
 		</a>
 	</figure>
 	<p>In the first one, the attacker was spoofing indiscriminately all over the IP space, including multicast IP ranges, reserved blocks, and military prefixes.</p>
 	<p>What's even more funny, the attacker even spoofed the 127.0.0.0/8 range. Indeed, we can confirm the dreadful source of attacks - 127.0.0.1 - hits on regular basis.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://www.xkcd.com/742">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CnFZIPisaECgB70GVPlSi/5727cfb1a22680463a78278c3feedc62/campfire.png" alt="" class="kg-image" width="273" height="276" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CnFZIPisaECgB70GVPlSi/17da870c6a4c8e38dd8dc08fea968721/campfire.png" alt="" class="kg-image" width="273" height="276" loading="lazy">
 		</a>
 	</figure>
 	<p>Here is another example. During this one some IP ranges - reserved multicast and 127.0.0.0/8 - were not used:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-almost-all.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SnANgChNGXCkiPkCD9KRk/f6927a420ba36867b0d5c40b43c95dce/sp-almost-all.png" alt="Almost all" class="kg-image" width="768" height="768" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SnANgChNGXCkiPkCD9KRk/a539fea1e075ead111d02e8f527874f1/sp-almost-all.png" alt="Almost all" class="kg-image" width="768" height="768" loading="lazy">
 		</a>
 	</figure>
 	<p>Were attackers smart enough to skip the reserved source IPs? Unlikely. A plausible interpretation is that the traffic flows through a router that filters these obviously wrong sources.</p>
 	<p>We've also seen attackers that prefer left:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-left.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YF0qGWVqxGymlFeHnlTT9/68c3dd992945c30515d66c7618df77f5/sp-left.png" alt="Left" class="kg-image" width="1067" height="1067" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YF0qGWVqxGymlFeHnlTT9/09385bfd28bda562cdc58d7084d076ca/sp-left.png" alt="Left" class="kg-image" width="1067" height="1067" loading="lazy">
 		</a>
 	</figure>
 	<p>Or right side of the internet:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/03/sp-right.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77B2PZlTqFiIYfpYtiYmQj/72c0b6145858a59813e085afd4063548/sp-right.png" alt="Right" class="kg-image" width="768" height="768" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77B2PZlTqFiIYfpYtiYmQj/6e93a61e4aebd0b542a30dd69e25c079/sp-right.png" alt="Right" class="kg-image" width="768" height="768" loading="lazy">
 		</a>
 	</figure>
 	<p>We've seen many more exciting spoofed IP source patterns. The take away is: during direct attacks, you can't trust the source IPs! Attackers can set them to values of their choosing. Using source IPs in mitigations might not work, drawing them on geographical map makes no sense.</p>
@@ -113,7 +113,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77rMR7zOrvsFO2P0PudoH7/7997f1c154b10917f87400ee6d7cdb6b/sp-amplification.png" alt="all" class="kg-image" width="1508" height="870" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77rMR7zOrvsFO2P0PudoH7/c0082b6ac84c93f07ff0a611e849c178/sp-amplification.png" alt="all" class="kg-image" width="1508" height="870" loading="lazy">
 
 	</figure>
 	<p>In amplification attacks the traffic sent by the attacker has different characteristics .</p>
@@ -128,7 +128,7 @@
 	<p>The victim can only see the IPs of the vulnerable servers. Most common visualizations show them on a globe somehow. For example in the recent memcached-based attacks here is the map of abused servers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5V6l37ozbptHDZ9qin6CSB/3a06f419fa8d5c2cc91699e723cfa1ab/sp-ips-per-pop.png" alt="sp-ips-per-pop" class="kg-image" width="2056" height="1118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5V6l37ozbptHDZ9qin6CSB/e00d027c1d4a208f4f2d5499bca8747d/sp-ips-per-pop.png" alt="sp-ips-per-pop" class="kg-image" width="2056" height="1118" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -165,7 +165,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pbmNmF6McJmL1eSuqZzwd/fe8baab616a312c5023a153ed008ae4a/sp-foocorp-a.png" alt="sp-foocorp-a" class="kg-image" width="763" height="230" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pbmNmF6McJmL1eSuqZzwd/2e37237bbe525acc6fbea0a504dfd537/sp-foocorp-a.png" alt="sp-foocorp-a" class="kg-image" width="763" height="230" loading="lazy">
 
 	</figure>
 	<p>Let me introduce an example company, FooCorp which owns the IP ranges: 192.0.2.0/24 and 2001:db8::/48.</p>
@@ -175,7 +175,7 @@
 	<p>Unfortunately, this is not how the internet works.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Wo6CKRNDb90Tu9T0Q8L82/d8cbfa9698b5e98d92c482fd22109d65/sp-foocorp-b-1.png" alt="sp-foocorp-b-1" class="kg-image" width="760" height="318" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Wo6CKRNDb90Tu9T0Q8L82/0a78d6a7793bd0cf1f8289ff32fe7ac3/sp-foocorp-b-1.png" alt="sp-foocorp-b-1" class="kg-image" width="760" height="318" loading="lazy">
 
 	</figure>
 	<p>One day FooCorp decided to get a second internet connection, from say IdahoCom. Cloudflare is also connected to IdahoCom and...</p>
@@ -183,7 +183,7 @@
 	<p>Moreover, even if we saw packets from FooCorp IPs, sent from, say IndonesiaCom, we still can't really filter them. It is very possible that FooCorp just got yet more internet connectivity ... with a satelite connection I guess ... from Indonesia. Unlikely as it sounds, this is totally plasuible.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15ruqBn2p1MjUuHDRqqY3L/5af9673a889788838b3e0a7886a373f9/sp-foocorp-c.png" alt="sp-foocorp-c" class="kg-image" width="761" height="314" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15ruqBn2p1MjUuHDRqqY3L/1074c95ae283de0d99015147cd431aba/sp-foocorp-c.png" alt="sp-foocorp-c" class="kg-image" width="761" height="314" loading="lazy">
 
 	</figure>
 	<p>To add insult to injury, UtahCom's IP filtering logic is also not banal. While it definitely should not allow FooCorp to send traffic from arbitary source IPs, it can't really filter the packets from IPs 192.0.2.0/24, 2001:db8::/48 coming from other providers. For example, what if UtahCom and IdahoCom are interconnected, they could totally exchange 192.0.2.0/24, 2001:db8::/48 traffic between themselves!</p>

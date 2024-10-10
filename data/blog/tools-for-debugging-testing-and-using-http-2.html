@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Ivp262lsHhESGeTQ4ydEz/1a0224a377101ecef44367fd03d90b9d/tools-for-debugging-testing-and-using-http-2.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Ivp262lsHhESGeTQ4ydEz/f0f699dc52b2dd19f43b5466af029925/tools-for-debugging-testing-and-using-http-2.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>With CloudFlare's release of HTTP/2 for all our customers the web suddenly has a lot of HTTP/2 connections. To get the most out of HTTP/2 you'll want to be using an up to date web browser (all the major browsers support HTTP/2).</p>
 	<p>But there are some non-browser tools that come in handy when working with HTTP/2. This blog post starts with a useful browser add-on, and then delves into command-line tools, load testing, conformance verification, development libraries and packet decoding for HTTP/2.</p>
@@ -15,19 +15,19 @@
 	<p>The blue lightning bolt shown here indicates that the CloudFlare home page was served using HTTP/2:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oLd6mBoInw37IHY1A2EuQ/e99e7380c5b070696beb8582d3cb7084/Screen-Shot-2015-12-03-at-12-08-25.png" alt="" class="kg-image" width="1590" height="321" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oLd6mBoInw37IHY1A2EuQ/82331d2180273d64fa55a756b757c0f8/Screen-Shot-2015-12-03-at-12-08-25.png" alt="" class="kg-image" width="1590" height="321" loading="lazy">
 
 	</figure>
 	<p>A green lightning bolt indicates the site was served using SPDY and gives the SPDY version number. In this case SPDY/3.1:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mis7IT15cGk32zcQAl73M/228179d2d1da3ed0ba2608dffb229ba3/Screen-Shot-2015-12-03-at-12-15-10.png" alt="" class="kg-image" width="1604" height="355" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mis7IT15cGk32zcQAl73M/9747e4c2afc6d1a891e9b75ee6249895/Screen-Shot-2015-12-03-at-12-15-10.png" alt="" class="kg-image" width="1604" height="355" loading="lazy">
 
 	</figure>
 	<p>A grey lightning bolt indicates that neither HTTP/2 no SPDY were used. Here the web page was served using HTTP/1.1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30VuLV8Q9qqPC2hpvtkU3l/5d30b3468a84679cb0847dea0aa982f3/Screen-Shot-2015-12-03-at-12-10-18.png" alt="" class="kg-image" width="1618" height="363" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30VuLV8Q9qqPC2hpvtkU3l/3440efe822df32649b80a2547de2252c/Screen-Shot-2015-12-03-at-12-10-18.png" alt="" class="kg-image" width="1618" height="363" loading="lazy">
 
 	</figure>
 	<p>There's a similar extension for <a href="https://addons.mozilla.org/en-GB/firefox/addon/spdy-indicator">Firefox</a>.</p>
@@ -35,14 +35,14 @@
 	<p>There's also a handy <a href="https://tools.keycdn.com/http2-test">online tool</a> to check any individual web site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DwWwyYZflqaees6W4aJaw/aeb08a02f63b31d7c9b37f0cb607547e/Screen-Shot-2015-12-03-at-12-22-11.png" alt="" class="kg-image" width="1746" height="592" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DwWwyYZflqaees6W4aJaw/fea382962f1dbb50827f29b480cb72a8/Screen-Shot-2015-12-03-at-12-22-11.png" alt="" class="kg-image" width="1746" height="592" loading="lazy">
 
 	</figure>
 	<h4>Claire</h4>
 	<p>CloudFlare also has a Google Chrome extension called <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl">Claire</a> that gives information about how a web page was loaded. For example here's the information that Claire shows for a site using CloudFlare that uses <a href="https://www.cloudflare.com/ipv6">IPv6</a>, <a href="https://www.cloudflare.com/railgun">Railgun</a>, and HTTP/2.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xZKZgNYat4xEKVCyzYhn4/5fd9ee2db87d1a011235aeb6e1c3e633/Screen-Shot-2015-12-03-at-17-12-50.png" alt="" class="kg-image" width="717" height="762" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xZKZgNYat4xEKVCyzYhn4/c4db4e2c32cccd4e78b8361fddb4ebcf/Screen-Shot-2015-12-03-at-17-12-50.png" alt="" class="kg-image" width="717" height="762" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -115,7 +115,7 @@ $ sudo ldconfig</code></pre>
 	<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading <a href="https://www.cloudflare.com">www.cloudflare.com</a> using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XhV2QcvnnoVSUERRpyGgP/05fb4d767bf861026b4d3b84063f78b6/Screen-Shot-2015-12-03-at-13-24-46.png" alt="" class="kg-image" width="1265" height="1259" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XhV2QcvnnoVSUERRpyGgP/d204e9ebeaff7da0cac4ead13aa053a5/Screen-Shot-2015-12-03-at-13-24-46.png" alt="" class="kg-image" width="1265" height="1259" loading="lazy">
 
 	</figure>
 	<h4>h2c</h4>
@@ -132,7 +132,7 @@ $ go get github.com/fstab/h2c</code></pre>
 	<p>You will then get detailed output dumped by that process, in color, of the HTTP/2 frames being used.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QvyA73OaYNPT3ZJSOHay/12abdb848eddd06cddb0e26132a66e40/Screen-Shot-2015-12-03-at-13-11-19.png" alt="" class="kg-image" width="811" height="1151" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QvyA73OaYNPT3ZJSOHay/ca5212fabad813467a33235b4653affd/Screen-Shot-2015-12-03-at-13-11-19.png" alt="" class="kg-image" width="811" height="1151" loading="lazy">
 
 	</figure>
 	<p>Details of the wiretap feature are in [this blog post](<a href="http://unrestful.io/2015/08/28/wiretap.html">http://unrestful.io/2015/08/28/wiretap.html</a>).</p>
@@ -193,7 +193,7 @@ h2i&gt; headers
 	<p>I ran it against the CloudFlare test server like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hWDbuK231mcZwO1JOKtvo/d3b3a2c9eb24d5ef91fb5b67ad8383b4/Screen-Shot-2015-12-03-at-16-02-50.png" alt="" class="kg-image" width="1778" height="940" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hWDbuK231mcZwO1JOKtvo/b012e7a9e6863bd360992858f0e24b8d/Screen-Shot-2015-12-03-at-16-02-50.png" alt="" class="kg-image" width="1778" height="940" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -212,7 +212,7 @@ $ h2spec -p 8888</code></pre>
 	<p><code>h2spec</code> will run a battery of tests against the server and output conformance information with a reference to the relevant part of <a href="https://tools.ietf.org/html/rfc7540">RFC7540</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fHO4ABgKvK4LFEnRKf3sT/ecf336e7cc7b0c130f21f5aa473d5e0e/Screen-Shot-2015-12-03-at-14-49-07.png" alt="" class="kg-image" width="1667" height="1269" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fHO4ABgKvK4LFEnRKf3sT/5613c3aafbdefdeae8584f09d476b9ae/Screen-Shot-2015-12-03-at-14-49-07.png" alt="" class="kg-image" width="1667" height="1269" loading="lazy">
 
 	</figure>
 	<p>If you need to test a number of web sites to see which support HTTP/2 there's a tool called <a href="https://github.com/jgrahamc/h2scan">h2scan</a>. Feed it a list of web sites and it will check to see if they support HTTPS, SPDY/3.1 and HTTP/2.</p>
@@ -254,19 +254,19 @@ www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0</code></pre>
 	<p>Google Chrome will then write session keys to that file. In Wireshark I configure it to read the file by going to Preferences, expanding the Protocols list.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VtO5XasCO2zeTqVfoTSPw/7453418ee55325036d2689b592102f9e/Screen-Shot-2015-12-03-at-15-48-59.png" alt="" class="kg-image" width="1766" height="1218" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VtO5XasCO2zeTqVfoTSPw/bc93d70e94487845510f5a8bbb4a0b06/Screen-Shot-2015-12-03-at-15-48-59.png" alt="" class="kg-image" width="1766" height="1218" loading="lazy">
 
 	</figure>
 	<p>Then I find SSL and set the Pre-Main-Secret log filename to point to the same file.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MluGb7E88xSg352ummOYT/b3e7b7f63d1c84c17d2dcee3a01be48f/Screen-Shot-2015-12-03-at-15-49-44.png" alt="" class="kg-image" width="1766" height="1218" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MluGb7E88xSg352ummOYT/7bd9b00a4580287fe629502873e5c81e/Screen-Shot-2015-12-03-at-15-49-44.png" alt="" class="kg-image" width="1766" height="1218" loading="lazy">
 
 	</figure>
 	<p>Then Wireshark can decode the TLS connections made by that browser. Here's the beginning of a connection between Google Chrome Canary and the experimental server <a href="https://http2.cloudflare.com">https://http2.cloudflare.com/</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g7dIhFoqbTfoj24iX4Yu/882407188b150041eec291c98ad7cf00/Screen-Shot-2015-12-03-at-15-51-04.png" alt="" class="kg-image" width="2956" height="1814" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g7dIhFoqbTfoj24iX4Yu/535556886753cc531e686595f96004c4/Screen-Shot-2015-12-03-at-15-51-04.png" alt="" class="kg-image" width="2956" height="1814" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -280,13 +280,13 @@ www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0</code></pre>
 	<p>Finally, if you are looking at the performance of your own web site it can be handy to understand which parts of the page were downloaded using HTTP/2 and which were not. You can do that pretty easily using the Developer view in Google Chrome. Here's a shot of the CloudFlare blog loaded in Chrome. There's an additional Protocol fields available on the pop-up menu.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KIWDKeDrHOsJYLQxKDFcT/387006871abe3ac1a3da8b1848abe3af/Screen-Shot-2015-12-04-at-10-46-21.png" alt="" class="kg-image" width="2682" height="1511" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KIWDKeDrHOsJYLQxKDFcT/f28684e2e951ad03a2d3db3db5075ee6/Screen-Shot-2015-12-04-at-10-46-21.png" alt="" class="kg-image" width="2682" height="1511" loading="lazy">
 
 	</figure>
 	<p>Once added you can sort by protocol to see which parts were HTTP/2 (the h2) and which were other protocols.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yftvuhcm97tnJvQJou28Z/b3db3e86521d78ebc9fa60920ce6daa9/Screen-Shot-2015-12-04-at-10-46-29.png" alt="" class="kg-image" width="2681" height="1512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yftvuhcm97tnJvQJou28Z/53e7051e0112f8c01ac7edb1d6d0d96d/Screen-Shot-2015-12-04-at-10-46-29.png" alt="" class="kg-image" width="2681" height="1512" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Qnu9ruGfkm1MwQ4Vmc160/c0258b8ab7c18e8d15522943f5db2d68/phoenix.jpg" alt="" class="kg-image" width="640" height="246" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Qnu9ruGfkm1MwQ4Vmc160/729cc888a432d893fa8ae0d961e02420/phoenix.jpg" alt="" class="kg-image" width="640" height="246" loading="lazy">
 
 	</figure>
 	<p>Three years and 46 data centers later our expansion returns to the United States. Phoenix, the latest addition to the <a href="https://www.cloudflare.com/network-map">CloudFlare network</a>, is our 11th point of presence in North America, and the start of our effort to further regionalize traffic across the continent. This means faster page loads and transaction speeds for your sites and applications, as well as for the 6 million Internet users throughout the Southwestern US that use them.</p>
@@ -17,14 +17,14 @@
 	<p>The vast majority of Internet traffic in the US is exchanged in only a small handful of cities: Los Angeles, the San Francisco Bay Area, Dallas, Chicago, Miami, Ashburn (Virginia) and New York. These locations evolved into key interconnection points largely as a result of their status as population and economic centers. However, if you're one of the 236 million Americans that live <i>outside</i> of these metro areas, you have to hike quite a bit further to access your favorite content on the Internet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VESknZAy9kibAbezZGteX/818cf9b6d2bd15af0a88f003d8528b86/surflocal.jpg" alt="" class="kg-image" width="418" height="418" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VESknZAy9kibAbezZGteX/3a56dd78c13d9efd7cef866463b4e62b/surflocal.jpg" alt="" class="kg-image" width="418" height="418" loading="lazy">
 
 	</figure>
 	<p>To illustrate this, we measured the level of local interconnection between a handful of our Tier 1 Internet providers—NTT, TeliaSonera, Tata Communications and Cogent—in different metro areas. For the uninitiated, <a href="https://en.wikipedia.org/wiki/Tier_1_network">Tier 1 networks</a> are the group of networks that connect with one another to form the core backbone of the Internet. In Internet routing jargon, Tier 1s are networks whose routes are not transited by any other network. Rather, each Tier 1 is directly connected <i>(i.e. peered)</i> with every other Tier 1. By looking at a combination of our providers' <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol">Border Gateway Protocol</a> (BGP) community tags, some of which include location, we determined the number of routes locally exchanged between each Tier 1 network in a given metro area.</p>
 	<p>Unsurprisingly, in a densely interconnected area like the San Francisco Bay Area, the level of interconnection is high. For example, we started by measuring the number of routes Japan-based NTT receives <i>globally</i> from its peers by looking at BGP community 2914:420 (the "420" portion of the tag denotes peers only, and 2914 is NTT's <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">autonomous system</a> number). The answer? NTT received 372,244 routes from its peers at the time of measurement. Next we looked at the number of these routes that were also present in the BGP community for NTT's Bay Area nodes (2914:1008). Of the 372,244 routes NTT receives from peers globally, 361,043 (or ~97%) of the routes were seen in the Bay Area. In other words, the vast majority of Tier 1s peered with NTT are able to reach NTT locally in the Bay Area. This is a key component in what is referred to as "<a href="https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing">hot potato routing</a>."</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ucI2N8mciJYfMqKDNNo2j/26543cdcc49bcc63f6ce47681d742327/HotPotato2.jpg" alt="" class="kg-image" width="203" height="253" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ucI2N8mciJYfMqKDNNo2j/0d8bc29fc97a6f037bd5ddf63c36e591/HotPotato2.jpg" alt="" class="kg-image" width="203" height="253" loading="lazy">
 
 	</figure>
 	<p>Taking the same measurements for Tata and Cogent in the Bay Area resulted in a similar degree of traffic localization (96% and 97%, respectively). The faster the potato (i.e., <i>Internet traffic</i>) is tossed, the hotter (i.e., <i>better</i>) is the performance of the Internet. You'll never look at a hot potato in the same way again.</p>

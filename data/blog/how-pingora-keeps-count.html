@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SXVdoukjYf7lxtyQLYY6p/6f73e29d27c9fcd39fc9ffd1c420d3cd/image1-13.png" alt="How Pingora keeps count" class="kg-image" width="1999" height="1126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SXVdoukjYf7lxtyQLYY6p/03cb231617194c7d8c8bb13557988ad3/image1-13.png" alt="How Pingora keeps count" class="kg-image" width="1999" height="1126" loading="lazy">
 
 	</figure>
 	<p>A while ago we shared how we replaced NGINX with our in-house proxy, <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">Pingora</a>. We promised to share more technical details as well as our open sourcing plan. This blog post will be the first of a series that shares both the code libraries that power Pingora and the ideas behind them.</p>
@@ -554,7 +554,7 @@ impl Estimator {
 	<p>In production, pingora uses this library in a few places. The most common one is the connection limit feature. When our servers try to establish too many connections to a single origin server, in order to protect the server and our infrastructure from becoming overloaded, this feature will start rejecting new requests with <a href="https://developers.cloudflare.com/support/troubleshooting/cloudflare-errors/troubleshooting-cloudflare-5xx-errors/#error-503-service-temporarily-unavailable">503 errors</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WEm9dkrBXLof8baG7ph9e/ba4a01ee3b64571866911134a414fce8/image2-4.png" alt="" class="kg-image" width="1999" height="919" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WEm9dkrBXLof8baG7ph9e/8ac9205ac8c47ec1a89fabbab848f2ae/image2-4.png" alt="" class="kg-image" width="1999" height="919" loading="lazy">
 
 	</figure>
 	<p>In this feature every incoming request increases a counter, shared by all other requests with the same customer ID, server IP and the server hostname. When the request finishes, the counter decreases accordingly. If the value of the counter is beyond a certain threshold, the request is rejected with a 503 error response. In our production environment we choose the parameters of the library so that a theoretical collision chance between two unrelated customers is about 1 / 2 ^ 52. Additionally, the rejection threshold is significantly higher than what a healthy customer’s traffic would reach. Therefore, even if multiple customers’ counters collide, it is not likely that the overestimated value would reach the threshold. So a false positive on the connection limit is not likely to happen.</p>

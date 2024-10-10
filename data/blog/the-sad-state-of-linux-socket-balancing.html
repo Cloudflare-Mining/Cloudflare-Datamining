@@ -1,9 +1,9 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68PjZCIcE81b67peknf4n4/d8e2f3333b80a856688949f35aed12e5/the-sad-state-of-linux-socket-balancing.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68PjZCIcE81b67peknf4n4/9ecd378ae7c13ff67f0a71ca817d5899/the-sad-state-of-linux-socket-balancing.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Scaling up TCP servers is usually straightforward. Most deployments start by using a single process setup. When the need arises more worker processes are added. This is a scalability model for many applications, including HTTP servers like Apache, NGINX or Lighttpd.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nJQZt9rw38jtA65oSJL2M/e344a6c8b5887183bc4fd407d058e9cf/37470469351_49281d8b66_b.jpg" alt="" class="kg-image" width="1024" height="740" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nJQZt9rw38jtA65oSJL2M/35021ac4d6ba6b0e7dac0881e9e70eb1/37470469351_49281d8b66_b.jpg" alt="" class="kg-image" width="1024" height="740" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/brizzlebornandbred/37470469351/in/photolist-WWESK-arHswn-YCzFLW-Z68X62-Ys7F95-5PkLkJ-7WevtH-reYKNA-bHdogM-PQtEbn-PrTv2Q-PQtEG2-P39C9u-P39CCL-X1waW-ynbVS2-27aa3n-7qy2iy-47YUTQ-u6Su9-Py1w8y-Py4WNE-PzgZY7-PnSq1A-PquMda-P39D4f-NnLGfG-Pssk7K-9qPn21">image</a> by <a href="https://www.flickr.com/photos/brizzlebornandbred">Paul Townsend</a></p>
@@ -14,19 +14,19 @@
 	<p>(c) Multiple worker processes, each with separate listen socket.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3V8kyqCxWxtkfmGRx8crj1/ec33d93cab0a8676ba848df627aa8668/worker1.png" alt="" class="kg-image" width="640" height="102" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3V8kyqCxWxtkfmGRx8crj1/772a19786cfddd5c111ba868b5470522/worker1.png" alt="" class="kg-image" width="640" height="102" loading="lazy">
 
 	</figure>
 	<p>(a) <b>Single listen socket, single worker process</b> This is the simplest model, where processing is limited to a single CPU. A single worker process is doing both accept() calls to receive the new connections and processing of the requests themselves. This model is the preferred Lighttpd setup.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AyXvT4YAP3TExZCEHVIs2/ffe2dae07fdf1180ddf5bd1e77d0083c/worker2.png" alt="" class="kg-image" width="640" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AyXvT4YAP3TExZCEHVIs2/5c25d8c269437f9936b5591a59a53644/worker2.png" alt="" class="kg-image" width="640" height="250" loading="lazy">
 
 	</figure>
 	<p>(b) <b>Single listen socket, multiple worker process</b> The new connections sit in a single kernel data structure (the listen socket). Multiple worker processes are doing both the accept() calls and processing of the requests. This model enables some spreading of the inbound connections across multiple CPUs. This is the standard model for NGINX.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7g6h7dlOAQpesnC2hmTotP/1f90d85f6d7b68aee54cb1bbc36d396e/worker3.png" alt="" class="kg-image" width="640" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7g6h7dlOAQpesnC2hmTotP/fe587e2b60bb8c77b4bd0f638f7e290a/worker3.png" alt="" class="kg-image" width="640" height="250" loading="lazy">
 
 	</figure>
 	<p>(c) <b>Separate listen socket for each worker process</b> By using <a href="https://lwn.net/Articles/542629">the SO_REUSEPORT socket option</a> it's possible to create a dedicated kernel data structure (the listen socket) for each worker process. This can avoid listen socket contention, which isn't really an issue unless you run at Google scale. It can also help in better balancing the load. More on that later.</p>
@@ -87,7 +87,7 @@ worker 0</code></pre>
 	<p>In fact, this is what we see in NGINX. Here's a dump of one of our synthetic tests where one worker is taking most of the load, while others are relatively underutilized:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48ZLQMh607BBPPkosXK1fL/19a48775269adce1d9e090e458aeee1c/sharedqueue.png" alt="" class="kg-image" width="640" height="207" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48ZLQMh607BBPPkosXK1fL/517efe3c29ce4e152a6150b0fbd25c51/sharedqueue.png" alt="" class="kg-image" width="640" height="207" loading="lazy">
 
 	</figure>
 	<p>Notice the last worker got almost no load, while the busiest is using 30% of CPU.</p>
@@ -103,7 +103,7 @@ worker 0</code></pre>
 	<p>Since the accept queues are not shared, and Linux spreads the load by a simple hashing logic, each worker will get statistically the same number of incoming connections. This results in much better <a href="https://www.cloudflare.com/application-services/products/load-balancing">balancing of the load</a>. Each worker gets roughly a similar amount of traffic to handle:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qhELjLr86d9VIXg7LoFge/dc71b942316fa64c313fc68a6982b32a/reuseport.png" alt="" class="kg-image" width="640" height="207" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qhELjLr86d9VIXg7LoFge/03244209b07489c2d9b6134da0651b69/reuseport.png" alt="" class="kg-image" width="640" height="207" loading="lazy">
 
 	</figure>
 	<p>Here all the workers are handling the work, with the busiest at 13.2% CPU while the least busy uses 9.3%. Much better load distribution than before.</p>

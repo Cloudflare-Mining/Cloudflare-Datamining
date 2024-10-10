@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vT9LK3aFSbp1OCvaKNrO2/ec26e1e6bf551603028870ca0545feef/image4.png" alt="" class="kg-image" width="1800" height="942" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vT9LK3aFSbp1OCvaKNrO2/2a5b5e05203eb7076d73f2bc0fcc9168/image4.png" alt="" class="kg-image" width="1800" height="942" loading="lazy">
 
 	</figure>
 	<p>Starting today, we’re thrilled to announce you can run the same tunnel from multiple instances of cloudflared simultaneously. This enables graceful restarts, elastic auto-scaling, easier Kubernetes integration, and more reliable tunnels.</p>
@@ -20,7 +20,7 @@
 	<p>This creates a tunnel called “mytunnel”, and configures your DNS to map <i>example.com</i> to that tunnel. Then cloudflared connects to the Cloudflare network. When the Cloudflare network receives an incoming request for example.com, it looks up the cloudflared running <i>mytunnel</i> and proxies the request there. Then cloudflared proxies those requests to localhost:8080.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6erzY2OSqCDSQsWzUnPaDy/84263eb11d2234d4be65bd025cf0825d/image1.png" alt="" class="kg-image" width="1999" height="1247" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6erzY2OSqCDSQsWzUnPaDy/9e9fa48823ff4cf42f7e65e3375e234c/image1.png" alt="" class="kg-image" width="1999" height="1247" loading="lazy">
 
 	</figure>
 	<p>With Tunnel, your origin server no longer needs to allow any incoming traffic. In fact, it doesn’t even need a publicly reachable IP address. This is significant because that means that no one can simply bypass Cloudflare to reach your resource either.</p>
@@ -39,7 +39,7 @@
 	<p>Well, ideally, we would be able to scale or replicate cloudflared itself.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HbFUcYomom2pfzgsUceHS/f41b77e8152f85704fb6e7876eb38ec0/image2.png" alt="" class="kg-image" width="1923" height="633" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HbFUcYomom2pfzgsUceHS/9244a5ee9c45629988b9cfc33dac7041/image2.png" alt="" class="kg-image" width="1923" height="633" loading="lazy">
 
 	</figure>
 	<p>Previously, scaling cloudflared required using Cloudflare Load Balancer to spread traffic across multiple unique tunnels. Each tunnel then had to be manually authenticated, configured, and connected. That poses a challenge for teams who need to autoscale instances, like the resources in a Kubernetes cluster, without manual intervention.</p>
@@ -47,7 +47,7 @@
 	<p>You can still point a DNS record or Cloudflare Load Balancer to a tunnel using its unique ID, but that tunnel is now represented by one or more identical instances of <code>cloudflared</code> - each with a unique connector ID.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XV8XW1BSnFxCuU3wiUt7P/9e9bf848e74514b6703413f2a3fb11e4/image3.png" alt="" class="kg-image" width="1923" height="633" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XV8XW1BSnFxCuU3wiUt7P/4e5cdc3693fcb9f1562ec19ae13a9aa8/image3.png" alt="" class="kg-image" width="1923" height="633" loading="lazy">
 
 	</figure>
 	<p>When you run your tunnel, cloudflared will log its <i>connector ID</i>.</p>

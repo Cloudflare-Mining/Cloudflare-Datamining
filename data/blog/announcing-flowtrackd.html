@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18JouwRZ6Ypm7MBBK0jQ4i/00c97aab78fe26e1298787028cddcc3d/image5-2.png" alt="" class="kg-image" width="1999" height="1268" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18JouwRZ6Ypm7MBBK0jQ4i/a938fa88390adb79ed4dfb6218d404b2/image5-2.png" alt="" class="kg-image" width="1999" height="1268" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> is Cloudflare’s L3 DDoS Scrubbing service for protecting network infrastructure. As part of our ongoing investment in Magic Transit and our <a href="https://www.cloudflare.com/ddos">DDoS protection</a> capabilities, we’re excited to talk about a new piece of software helping to protect Magic Transit customers: <b><i>flowtrackd</i></b><i>.</i> flowtrackd is a software-defined DDoS protection system that significantly improves our ability to automatically detect and mitigate even the most complex TCP-based DDoS attacks. If you are a Magic Transit customer, this feature will be enabled by default at no additional cost on July 30, 2020.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cB4AX4qGrbT7hbc2AH2fP/e0166125a582e515fe929634af6377a3/Social---Case-Study-Quote-template-2.png" alt="" i="" know="" you="" call="" this="" service="" magic="" transit,="" but="" now="" why."="" -="" webhost="" limited,="" when="" first="" hearing="" about="" flowtrackd"="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cB4AX4qGrbT7hbc2AH2fP/f4927a9879bade2ea0e21824dc724d89/Social---Case-Study-Quote-template-2.png" alt="" i="" know="" you="" call="" this="" service="" magic="" transit,="" but="" now="" why."="" -="" webhost="" limited,="" when="" first="" hearing="" about="" flowtrackd"="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -33,7 +33,7 @@
 	<p>Using Cloudflare's traditional products, HTTP applications can be protected by the <a href="https://www.cloudflare.com/waf">WAF</a> service, and TCP/UDP applications can be protected by <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a>. These services are "<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy">reverse proxies</a>", meaning that traffic passes through Cloudflare in both directions. In this bidirectional topology, we see the entire TCP flow (i.e., segments sent by both the client and the server) and can therefore track the state of the underlying TCP connection. This way, we know if a TCP packet belongs to an existing flow or if it is an “out of state” TCP packet. Out of state TCP packets look just like regular TCP packets, but they don’t belong to any real connection between a client and a server. These packets are most likely part of an attack and are therefore dropped.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/190bHsEl8drp7r686sUlCi/a568946519b839f0de60b734e82b5b95/image2-4.png" alt="" class="kg-image" width="335" height="329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/190bHsEl8drp7r686sUlCi/04efd3f411afac52d87b9072c7f43f73/image2-4.png" alt="" class="kg-image" width="335" height="329" loading="lazy">
 
 	</figure>
 	<p><b>Reverse Proxy: What Cloudflare Sees</b></p>
@@ -49,14 +49,14 @@
 	<p>With Magic Transit, Cloudflare receives inbound internet traffic on behalf of the customer, scrubs DDoS attacks, and routes the clean traffic to the customer’s data center over a tunnel. The data center then responds directly to the eyeball client using a technique known as Direct Server Return (DSR).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sYZnV8m6FNZoMw0TQBxxZ/7918d8f33da3dee5bb8773293dee4155/image6.png" alt="" class="kg-image" width="1312" height="710" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sYZnV8m6FNZoMw0TQBxxZ/18566279daa78e35189982a018809526/image6.png" alt="" class="kg-image" width="1312" height="710" loading="lazy">
 
 	</figure>
 	<p>Magic Transit: Asymmetric L3 Routing</p>
 	<p>Using DSR, when a TCP handshake is initiated by an eyeball client, it sends a SYN packet that gets routed via Cloudflare to the origin data center. The origin then responds with a SYN-ACK directly to the client, bypassing Cloudflare. Finally, the client responds with an ACK that once again routes to the origin via Cloudflare and the connection is then considered established.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dPx4Zrjj0SAppPOL9Nx7v/1ad862941528ae5b1194eb687ef6734c/image3-6.png" alt="" class="kg-image" width="322" height="323" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dPx4Zrjj0SAppPOL9Nx7v/ee17d72aceb74493eafd9197c4918dd9/image3-6.png" alt="" class="kg-image" width="322" height="323" loading="lazy">
 
 	</figure>
 	<p><b>L3 Routing: What Cloudflare Sees</b></p>
@@ -82,7 +82,7 @@
 	<p>And it works! Less than a day after releasing flowtrackd to an early access customer, flowtrackd automatically detected and mitigated an ACK flood that peaked at 6 million packets per second. No downtime, service disruption, or false positives were reported.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ns2NsGj3FiUSTaIB55aSv/57ac73f6d832fdc2da3d834708b4d8dc/image4-2.png" alt="" class="kg-image" width="1600" height="833" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ns2NsGj3FiUSTaIB55aSv/4e6ad11d086cd6d605e96897dcaecbe8/image4-2.png" alt="" class="kg-image" width="1600" height="833" loading="lazy">
 
 	</figure>
 	<p>flowtrackd Mitigates 6M pps Flood</p>

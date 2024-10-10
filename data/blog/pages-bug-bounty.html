@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DKsynePRbtLe90pZOXo28/8cb999bb14b55d5f4c9f8b1fd9bf7695/image6-3.png" alt="The Cloudflare Bug Bounty program and Cloudflare Pages" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DKsynePRbtLe90pZOXo28/d7e996c7841047138b4549fda964c731/image6-3.png" alt="The Cloudflare Bug Bounty program and Cloudflare Pages" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p><i>The Cloudflare Pages team recently collaborated closely with security researchers at</i> <a href="https://assetnote.io"><i>Assetnote</i></a> <i>through our</i> <a href="https://hackerone.com/cloudflare"><i>Public Bug Bounty</i></a><i>. Throughout the process we found and have fully patched vulnerabilities discovered in Cloudflare Pages. You can read their detailed</i> <a href="https://blog.assetnote.io/2022/05/06/cloudflare-pages-pt1"><i>write-up here</i></a><i>. There is no outstanding risk to Pages customers. In this post we share information about the research that could help others make their infrastructure more secure, and also highlight our bug bounty program that helps to make our product more secure.</i></p>
@@ -54,13 +54,13 @@
 	<p>With a flaw in our logic during build initialization, it was possible to execute arbitrary code, echo environment variables to a file and then read the contents of that file.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xCsRLGOMLRsVRAAbQBjXM/9819dbcdfdfa12fc18a98aa8d855d036/image2-1.png" alt="" class="kg-image" width="1066" height="46" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xCsRLGOMLRsVRAAbQBjXM/98cc4254afa79a1e21b503f2a3cb94a4/image2-1.png" alt="" class="kg-image" width="1066" height="46" loading="lazy">
 
 	</figure>
 	<p>The crux of the bug was that <code>root_dir</code> in this line of code was attacker controlled. After gaining control the researcher was able to specially craft a malicious <code>root_dir</code> to dump the environment variables of the process to a file. Those environment variables contained our GitHub bot’s authorization key. This would have allowed the attacker to read the repositories of other Pages' customers, and many of those repositories are private.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61X1OXGLWGeBCkSmeQb8nj/ac07d42c01ae740990a6bc27566d6b3a/image1-6.png" alt="Dumping the contents of the environment to a file
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61X1OXGLWGeBCkSmeQb8nj/275441334f56e028dd27971b642a2317/image1-6.png" alt="Dumping the contents of the environment to a file
 " class="kg-image" width="740" height="172" loading="lazy">
 
 	</figure>

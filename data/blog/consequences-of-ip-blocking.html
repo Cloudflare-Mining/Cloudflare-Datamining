@@ -4,7 +4,7 @@
 	<p><i></i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XRs4hep0bF2DPlSc0NJPe/67a5aa86e852a29bc1ce3253b0933111/image1-53.png" alt="The unintended consequences of blocking IP addresses" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XRs4hep0bF2DPlSc0NJPe/9c4f7666cc9570882d0b18fea2823124/image1-53.png" alt="The unintended consequences of blocking IP addresses" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>In late August 2022, Cloudflare’s customer support team began to receive complaints about sites on our network being down in Austria. Our team immediately went into action to try to identify the source of what looked from the outside like a partial Internet outage in Austria. We quickly realized that it was an issue with local Austrian Internet Service Providers.</p>
@@ -116,7 +116,7 @@
 	<p>The difference in magnitude between names and addresses is also codified in the specifications. IPv4 addresses are 32 bits, and IPv6 addresses are 128 bits. The size of a domain name that can be queried by DNS is as many as 253 octets, or 2,024 bits (from Section 2.3.4 in <a href="https://datatracker.ietf.org/doc/rfc1035">RFC 1035</a>, published 1987). The table below helps to put those differences into perspective:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6owhjh505J8A9SrL5gznHG/60c252f26d296088b1c05a507bcc3d76/Screenshot-2022-12-16-at-13.02.04.png" alt="" class="kg-image" width="1498" height="866" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6owhjh505J8A9SrL5gznHG/499625dd20a849da4d72727fedd2da8d/Screenshot-2022-12-16-at-13.02.04.png" alt="" class="kg-image" width="1498" height="866" loading="lazy">
 
 	</figure>
 	<p>On November 15, 2022, the United Nations announced the population of the Earth surpassed eight billion people. Intuitively, we know that there cannot be anywhere near as many postal addresses. The difference between the number of possible names on the planet, and similarly on the Internet, does and must exceed the number of available addresses.</p>
@@ -132,7 +132,7 @@
 	<p>Analogies and international standards may explain the reasons that IP blocking should be avoided, but we can see the scale of the problem by looking at Internet-scale data. To better understand and explain the severity of IP blocking, we decided to generate a global view of domain names and IP addresses (thanks are due to a PhD research intern, Sudheesh Singanamalla, for the effort). In September 2022, we used the authoritative zone files for the top-level domains (TLDs) .com, .net, .info, and .org, together with top-1M website lists, to find a total of 255,315,270 unique names. We then queried DNS from each of five regions and recorded the set of IP addresses returned. The table below summarizes our findings:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YeOt63WPvv2WY1hYcyNWt/ea65357640f888090ccf9cde8abba0bc/image3-23.png" alt="" class="kg-image" width="1999" height="796" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5YeOt63WPvv2WY1hYcyNWt/15fad8223e223da6ea17157ad335294f/image3-23.png" alt="" class="kg-image" width="1999" height="796" loading="lazy">
 
 	</figure>
 	<p>The table above makes clear that it takes no more than 10.7 million addresses to reach 255,315,270 names from any region on the planet, and the total set of IP addresses for those names from everywhere is about 16 million -- the ratio of names to IP addresses is nearly 24x in Europe and 16x globally.</p>
@@ -140,7 +140,7 @@
 	<p>We’ve also inspected the data a few different ways to find some interesting observations. For example, the figure below shows the cumulative distribution (CDF) of the proportion of websites that can be visited with each additional IP address. On the y-axis is the proportion of websites that can be reached given some number of IP addresses. On the x-axis, the 16M IP addresses are ranked from the most domains on the left, to the least domains on the right. Note that any IP address in this set is a response from DNS and so it must have at least one domain name, but the highest numbers of domains on IP addresses in the set number are in the 8-digit millions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7r9Dj9LCN9K2w3vWyqRTKR/eba16c791e4b1ab8080331920cd2ff9a/image2-37.png" alt="" class="kg-image" width="1999" height="832" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7r9Dj9LCN9K2w3vWyqRTKR/efef1916d727b42ab0baa6ff772b6ada/image2-37.png" alt="" class="kg-image" width="1999" height="832" loading="lazy">
 
 	</figure>
 	<p>By looking at the CDF there are a few eye-watering observations:</p>

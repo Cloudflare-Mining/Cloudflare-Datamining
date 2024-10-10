@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dXWn6X484N097KdayIhuk/7cf131939f86686862c9555508815e0b/image6.png" alt="" class="kg-image" width="1842" height="890" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dXWn6X484N097KdayIhuk/04f7ea0504be4c6091bc27e4a9e0f47d/image6.png" alt="" class="kg-image" width="1842" height="890" loading="lazy">
 
 	</figure>
 	<p>URLs are ugly. They are hard to read, difficult to memorise and often auto-generated for the benefit of the origin server - not the user.</p>
@@ -41,7 +41,7 @@
 	<p>Transform Rules allow the creation of traffic modification rules using URL rewrites, with plans to support additional rule types in the near future (such as HTTP request header modification).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BTu2jN8BY6XUIQVKCAAwL/cab3a89f5e324e702031c91fad4b2afc/image3-1.png" alt="" class="kg-image" width="1999" height="655" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BTu2jN8BY6XUIQVKCAAwL/48c2acf88915373fb0adab88625e320b/image3-1.png" alt="" class="kg-image" width="1999" height="655" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -56,25 +56,25 @@
 	<p>A static rewrite changes a specified URI Path/Query to another. For example, users may want to transform all traffic addressed at the URI Path <code>/index.php</code> to <code>/landing.php</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SWuZGRHOXH3NbHtz7xh4f/01ed02aeaef10ecc21238f6ff3df4a76/image1-1.png" alt="" class="kg-image" width="1999" height="1320" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SWuZGRHOXH3NbHtz7xh4f/dec4543e6dc67042fd22a94bae12d9e3/image1-1.png" alt="" class="kg-image" width="1999" height="1320" loading="lazy">
 
 	</figure>
 	<p>With a dynamic rewrite you can use <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/fields-and-expressions">expressions</a> within the filter to transform traffic based on the specified pattern. For example, you might want to modify HTTP requests addressed from <code>www.example.com/assets/*</code> to <code>www.example.com/internal/files/assets/*</code> using a single dynamic rewrite rule. In this case, you would need to modify the first component of the path using the regex_replace() function. This function allows replacing parts of the value, based on an RE-2 compatible regular expression:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kU2ux2DmabnnaeOebjkqF/d24b22143fec8f6e6e26342723769be6/image7-1.png" alt="" class="kg-image" width="894" height="604" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kU2ux2DmabnnaeOebjkqF/6d4d8ffa206a14f288e5ccbe01618544/image7-1.png" alt="" class="kg-image" width="894" height="604" loading="lazy">
 
 	</figure>
 	<p>Another function is concat(). For example, if you wanted to change all requests with a URI Path of <code>/news/2012/*</code> to <code>/archive/news/2012/*</code>, you could use the concat() function in the dynamic rewrite expression. In our example, this would become:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Wt5iH1vxDtv86H4IpN7UQ/06ac1b0248ccdcb9004670f9ee321dd4/image5-2.png" alt="" class="kg-image" width="888" height="615" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Wt5iH1vxDtv86H4IpN7UQ/770c60958c7ae7be648f71d011c4758e/image5-2.png" alt="" class="kg-image" width="888" height="615" loading="lazy">
 
 	</figure>
 	<p>You can use rewrite rules, both static and dynamic, to modify both the URI Path and URI Query, either in conjunction or independently. For example, you could use a URI rewrite to strip the URI Query value from matching HTTP requests by setting up a static rewrite and leaving the field blank:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EajPgJ0yuQ0Mlam4KuUaL/ed893ee9f7bebdece05f844f6b075cf4/image4-1.png" alt="" class="kg-image" width="1610" height="396" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EajPgJ0yuQ0Mlam4KuUaL/6282a92e8befc1a71c657c673c13f795/image4-1.png" alt="" class="kg-image" width="1610" height="396" loading="lazy">
 
 	</figure>
 	<p>This kind of rewrite can be used for SEO purposes and to prevent cache poisoning.</p>
@@ -101,7 +101,7 @@
 	<p>Firstly, there is a <i>URL redirect</i>, also known as ‘forwarding’. This is a server-side response that tells the client to go to another URL. This means that the URL displayed in the browser’s address bar gets updated to the new URL:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6T4NLF1BLJz44gB9yLMQwP/67c33eb16e8fa0501d4efcbede6a1d2e/image2.gif" alt="" class="kg-image" width="1114" height="614" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6T4NLF1BLJz44gB9yLMQwP/73619231537ac12d2f6db1b9d748f0d8/image2.gif" alt="" class="kg-image" width="1114" height="614" loading="lazy">
 
 	</figure>
 	<p>Secondly, there is a <i>URL rewrite</i>. This is a server-side modification of the URL before it is fully processed by the web server. This will not change what is seen in the user’s browser.</p>
@@ -129,7 +129,7 @@
 	<p>You may have noticed that Page Rules has been renamed to “Rules” in the top-level navigation in the UI. You can now find Page Rules under ‘Rules’, alongside Transform Rules:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/cBiUpGgd2Mj6FqoGr5mz9/5a5a8cf11ce1b063d0c24d096cb4ccb6/image8-1.png" alt="" class="kg-image" width="1999" height="317" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cBiUpGgd2Mj6FqoGr5mz9/9d9be6bb2e36582f5152bb87f59869a1/image8-1.png" alt="" class="kg-image" width="1999" height="317" loading="lazy">
 
 	</figure>
 	<p>This move allows us to add new rule categories such as Transform Rules. All API endpoints remain unchanged.</p>

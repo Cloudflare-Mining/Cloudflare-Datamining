@@ -1,5 +1,5 @@
 <div class="mb2 gray5">18 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/http-3-from-root-to-tip">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/http-3-from-root-to-tip">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/http-3-from-root-to-tip">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/http-3-from-root-to-tip">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sHg74EBOhB89AyctJUIOV/73f2aa2958cb3f11a5c1ba4e454f8293/http-3-from-root-to-tip.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/http-3-from-root-to-tip">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/http-3-from-root-to-tip">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/http-3-from-root-to-tip">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/http-3-from-root-to-tip">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sHg74EBOhB89AyctJUIOV/0147d90b72529c6e60c6b345dd194c83/http-3-from-root-to-tip.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>HTTP is the application protocol that powers the Web. It began life as the so-called HTTP/0.9 protocol in 1991, and by 1999 had evolved to HTTP/1.1, which was standardised within the IETF (Internet Engineering Task Force). HTTP/1.1 was good enough for a long time but the ever changing needs of the Web called for a better suited protocol, and HTTP/2 emerged in 2015. More recently it was announced that the IETF is intending to deliver a new version - <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a>. To some people this is a surprise and has caused a bit of confusion. If you don't track IETF work closely it might seem that HTTP/3 has come out of the blue. However, &nbsp;we can trace its origins through a lineage of experiments and evolution of Web protocols; specifically the QUIC transport protocol.</p>
 	<p>If you're not familiar with QUIC, my colleagues have done a great job of tackling different angles. John's <a href="https://blog.cloudflare.com/the-quicening">blog</a> describes some of the real-world annoyances of today's HTTP, Alessandro's <a href="https://blog.cloudflare.com/the-road-to-quic">blog</a> tackles the nitty-gritty transport layer details, and Nick's blog covers <a href="https://blog.cloudflare.com/head-start-with-quic">how to get hands on</a> with some testing. We've collected these and more at <a href="https://cloudflare-quic.com">https://cloudflare-quic.com</a>. And if that tickles your fancy, be sure to check out <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">quiche</a>, our own open-source implementation of the QUIC protocol written in Rust.</p>
@@ -7,7 +7,7 @@
 	<p>In this blog post we'll explore the history behind some of HTTP/3's previous names and present the motivation behind the most recent name change. We'll go back to the early days of HTTP and touch on all the good work that has happened along the way. If you're keen to get the full picture you can jump to the end of the article or open this <a href="https://blog.cloudflare.com/content/images/2019/01/web_timeline_large1.svg">highly detailed SVG version</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rKByCE0o19Q1zSD9Huliu/690e43f22af075414274363aa52028e2/http3-stack.png" alt="" class="kg-image" width="1028" height="787" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rKByCE0o19Q1zSD9Huliu/7f3540be1ff8f02da311c4df909def42/http3-stack.png" alt="" class="kg-image" width="1028" height="787" loading="lazy">
 
 	</figure>
 	<p>An HTTP/3 layer cake</p>
@@ -46,7 +46,7 @@
 	<p>Below is an example that shows the development of <a href="https://tools.ietf.org/html/rfc1945">RFC 1945</a> - HTTP/1.0 and it is a clear source of inspiration for the Secure Web Timeline.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SlEeIaoaU7r9PkklUSIOj/dfe65ef498ac6873ec3129cbd2776b66/RFC-1945-datatracker.png" alt="" class="kg-image" width="522" height="197" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SlEeIaoaU7r9PkklUSIOj/c24f0ba70885244920a29bea1daffd68/RFC-1945-datatracker.png" alt="" class="kg-image" width="522" height="197" loading="lazy">
 
 	</figure>
 	<p>IETF Datatracker view of RFC 1945</p>
@@ -63,7 +63,7 @@
 	<p>HTTP began life as the so-called HTTP/0.9 protocol in 1991, and in 1994 the I-D <a href="https://tools.ietf.org/html/draft-fielding-http-spec-00">draft-fielding-http-spec-00</a> was published. This was adopted by the IETF soon after, causing the name change to <a href="https://tools.ietf.org/html/draft-ietf-http-v10-spec-00">draft-ietf-http-v10-spec-00</a>. The I-D went through 6 draft versions before being published as <a href="https://tools.ietf.org/html/rfc1945">RFC 1945</a> - HTTP/1.0 in 1996.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fSsHSEtXc1HA38jJorxhO/cfe40b9d52e5410e4b144f082a39dfa5/http11-standardisation.png" alt="" class="kg-image" width="504" height="317" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fSsHSEtXc1HA38jJorxhO/d1a86966735f27d3b2ccfbcc1c8ec38d/http11-standardisation.png" alt="" class="kg-image" width="504" height="317" loading="lazy">
 
 	</figure>
 	<p>However, even before the HTTP/1.0 work completed, a separate activity started on HTTP/1.1. The I-D <a href="https://tools.ietf.org/html/draft-ietf-http-v11-spec-00">draft-ietf-http-v11-spec-00</a> was published in November 1995 and was formally published as <a href="https://tools.ietf.org/html/rfc2068">RFC 2068</a> in 1997. The keen eyed will spot that the Secure Web Timeline doesn't quite capture that sequence of events, this is an unfortunate side effect of the tooling used to generate the visualisation. I tried to minimise such problems where possible.</p>
@@ -79,7 +79,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pnAQiXiXCFpQpSkznYI1T/bad9001675ad3560acab3fbf8d695d03/ssl-tls-standardisation.png" alt="" class="kg-image" width="1215" height="420" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pnAQiXiXCFpQpSkznYI1T/80a5516f4dafa64d1a5b60733b14c913/ssl-tls-standardisation.png" alt="" class="kg-image" width="1215" height="420" loading="lazy">
 
 	</figure>
 	<p>Switching tracks to SSL. We see that the SSL 2.0 specification was released sometime around 1995, and that SSL 3.0 was released in November 1996. Interestingly, SSL 3.0 is described by <a href="https://tools.ietf.org/html/rfc6101">RFC 6101</a>, which was released in August 2011. This sits in <b>Historic</b> category, which "is usually done to document ideas that were considered and discarded, or protocols that were already historic when it was decided to document them." according to the <a href="https://www.ietf.org/blog/iesg-statement-designating-rfcs-historic/?primary_topic=7">IETF</a>. In this case it is advantageous to have an IETF-owned document that describes SSL 3.0 because it can be used as a canonical reference elsewhere.</p>
@@ -112,7 +112,7 @@
 	<p>The introduction and deprecation of relevant protocols are represented on the Secure Web Timeline as <b>orange lines</b>. Dotted vertical lines help correlate Cloudflare events to relevant IETF documents. For example, Cloudflare introduced TLS 1.3 support in September 2016, with the final document, <a href="https://tools.ietf.org/html/rfc8446">RFC 8446</a>, being published almost two years later in August 2018.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ptcxVRf8P4wmKMz6uSzAk/8bc97ef7de6ff00009aaba23657e5971/cf-events.png" alt="" class="kg-image" width="623" height="463" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ptcxVRf8P4wmKMz6uSzAk/4d37f0581a865bc4f120282e7d9d5ebf/cf-events.png" alt="" class="kg-image" width="623" height="463" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -147,7 +147,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cCDzKbc2DBLJgD1cdLCor/52dd909760e1ac107667e0673f03dbb4/http11-refactor.png" alt="" class="kg-image" width="730" height="531" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cCDzKbc2DBLJgD1cdLCor/c928470939df5acd6112503c41c78db3/http11-refactor.png" alt="" class="kg-image" width="730" height="531" loading="lazy">
 
 	</figure>
 	<p>The diagram shows how this work progressed through a lengthy drafting process of 7 years, with 27 draft versions being released, before final standardisation. In June 2014, the so-called RFC 723x series was released (where x ranges from 0 to 5). The Chair of the HTTPbis WG celebrated this achievement with the acclimation "<a href="https://www.mnot.net/blog/2014/06/07/rfc2616_is_dead">RFC2616 is Dead</a>". If it wasn't clear, these new documents obsoleted the older <a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a>.</p>
@@ -166,7 +166,7 @@
 	<p>Having seen some of the positive outcomes, the IETF decided it was time to consider what HTTP/2.0 might look like. The <a href="https://github.com/httpwg/wg-materials/blob/gh-pages/ietf83/HTTP2.pdf">slides</a> from the HTTPbis session held during IETF 83 in March 2012 show the requirements, goals and measures of success that were set out. It is also clearly states that "HTTP/2.0 only signifies that the wire format isn't compatible with that of HTTP/1.x".</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EQMui9QKRGR8Vzcu5wMZA/3eaf4d590547d1b96669dadd8018cd27/http2-standardisation.png" alt="" class="kg-image" width="489" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EQMui9QKRGR8Vzcu5wMZA/229e6a1cb1cc1fa78da96dc34f59c220/http2-standardisation.png" alt="" class="kg-image" width="489" height="382" loading="lazy">
 
 	</figure>
 	<p>During that meeting the community was invited to share proposals. I-Ds that were submitted for consideration included <a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00">draft-mbelshe-httpbis-spdy-00</a>, <a href="https://tools.ietf.org/html/draft-montenegro-httpbis-speed-mobility-00">draft-montenegro-httpbis-speed-mobility-00</a> and <a href="https://tools.ietf.org/html/draft-tarreau-httpbis-network-friendly-00">draft-tarreau-httpbis-network-friendly-00</a>. Ultimately, the SPDY draft was adopted and in November 2012 work began on <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-00">draft-ietf-httpbis-http2-00</a>. After 18 drafts across a period of just over 2 years, <a href="https://tools.ietf.org/html/rfc7540">RFC 7540</a> - HTTP/2 was published in 2015. During this specification period, the precise syntax of HTTP/2 diverged just enough to make HTTP/2 and SPDY incompatible.</p>
@@ -185,7 +185,7 @@
 	<p>The early versions of gQUIC made use of the SPDY v3 form of HTTP syntax. This choice made sense because HTTP/2 was not yet finished. The SPDY binary syntax was packaged into QUIC packets that could sent in UDP datagrams. This was a departure from the TCP transport that HTTP traditionally relied on. When stacked up all together this looked like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40oAdMSmePG37lMEb8Odfi/8a60ce7ac85bf8f1eaa8eddc94f2f721/gquic-stack.png" alt="" class="kg-image" width="1028" height="753" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40oAdMSmePG37lMEb8Odfi/b5cf02bbe9256889bd0cc103a34484a9/gquic-stack.png" alt="" class="kg-image" width="1028" height="753" loading="lazy">
 
 	</figure>
 	<p>SPDY over gQUIC layer cake</p>
@@ -205,7 +205,7 @@
 	<p>Google <a href="https://groups.google.com/a/chromium.org/forum/#!topic/proto-quic/otGKB4ytAyc">announced</a> that a Bar BoF would be held at IETF 93 in Prague. For those curious about what a "Bar BoF" is, please consult <a href="https://tools.ietf.org/html/rfc6771">RFC 6771</a>. Hint: BoF stands for Birds of a Feather.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/364tlrFLOtgAYBYxHrOXy8/a1702f7c5ddf38011f623413aca4a34e/quic-standardisation.png" alt="" class="kg-image" width="560" height="515" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/364tlrFLOtgAYBYxHrOXy8/18f5cebace8c29778e06109fe878c3b8/quic-standardisation.png" alt="" class="kg-image" width="560" height="515" loading="lazy">
 
 	</figure>
 	<p>The outcome of this engagement with the IETF was, in a nutshell, that QUIC seemed to offer many advantages at the transport layer and that it should be decoupled from HTTP. The clear separation between layers should be re-introduced. Furthermore, there was a preference for returning back to a TLS-based handshake (which wasn't so bad since TLS 1.3 was underway at this stage, and it was incorporating 0-RTT handshakes).</p>
@@ -271,7 +271,7 @@
 	<p>In the course of this post, we explored important chapters in the development of HTTP and TLS but did so in isolation. We close out the blog by pulling them all together into the complete Secure Web Timeline presented below. You can use this to investigate the detailed history at your own comfort. And for the super sleuths, be sure to check out the <a href="https://blog.cloudflare.com/content/images/2019/01/web_timeline_large1.svg">full version including draft numbers</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eL8vJkYylVmR4T5Aa1Zdf/2ea5cac42be2038ad1b7065726430327/cf-secure-web-timeline-1.png" alt="" class="kg-image" width="1303" height="2444" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eL8vJkYylVmR4T5Aa1Zdf/2f2929308ee42e450917639874835c1d/cf-secure-web-timeline-1.png" alt="" class="kg-image" width="1303" height="2444" loading="lazy">
 
 	</figure>
 </div>

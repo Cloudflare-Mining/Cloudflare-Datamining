@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TlF3dN51Im2Zyzwy04oyr/87d8e39fb3b663e2981ee92dc5f12168/BLOG-1707-header-1.png" alt="How Cloudflare erroneously throttled a customer’s web traffic" class="kg-image" width="2400" height="1350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TlF3dN51Im2Zyzwy04oyr/8fbcd20d22abe9ba7b78dd673e9f04a1/BLOG-1707-header-1.png" alt="How Cloudflare erroneously throttled a customer’s web traffic" class="kg-image" width="2400" height="1350" loading="lazy">
 
 	</figure>
 	<p>Over the years when Cloudflare has had an <a href="https://blog.cloudflare.com/tag/outage">outage</a> that affected our customers we have very quickly blogged about what happened, why, and what we are doing to address the causes of the outage. Today’s post is a little different. It’s about a single customer’s website <a href="https://news.ycombinator.com/item?id=34639212">not working correctly</a> because of incorrect action taken by Cloudflare.</p>
@@ -24,14 +24,14 @@
 	<p>On February 2, an on-call network engineer received an alert for a congesting interface with Equinix IX in our Ashburn data center. While this is not an unusual alert, this one stood out for two reasons. First, it was the second day in a row that it happened, and second, the congestion was due to a sudden and extreme spike of traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BHPQTMGbXizjZHfUEwf7S/5b98b49d92bb2a1693182be26f0d47c6/image2-1.png" alt="" class="kg-image" width="918" height="263" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BHPQTMGbXizjZHfUEwf7S/7b9665371ed4e291c5df992066bc3c82/image2-1.png" alt="" class="kg-image" width="918" height="263" loading="lazy">
 
 	</figure>
 	<p>The engineer in charge identified the customer’s domain, tardis.dev, as being responsible for this sudden spike of traffic between Cloudflare and their origin network, a storage provider. Because this congestion happens on a physical interface connected to external peers, there was an immediate impact to many of our customers and peers. A port congestion like this one typically incurs packet loss, slow throughput and higher than usual latency. While we have automatic mitigation in place for congesting interfaces, in this case the mitigation was unable to resolve the impact completely.</p>
 	<p>The traffic from this customer went suddenly from an average of 1,500 requests per second, and a 0.5 MB payload per request, to 3,000 requests per second (2x) and more than 12 MB payload per request (25x).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ROLTRXsuoeYEpw0ewWDFX/97aa82beda829fe9dc958b909f118956/image1-4.png" alt="" class="kg-image" width="1999" height="1209" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ROLTRXsuoeYEpw0ewWDFX/c4af0bfaf7ef4c3c3966058153416209/image1-4.png" alt="" class="kg-image" width="1999" height="1209" loading="lazy">
 
 	</figure>
 	<p>The congestion happened between Cloudflare and the origin network. Caching did not happen because the requests were all unique URLs going to the origin, and therefore we had no ability to serve from cache.</p>

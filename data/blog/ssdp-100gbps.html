@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lnctTxBH0EoaZjuMiuCyf/93f4652f349844b759d7ce83a2a34429/ssdp-100gbps.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lnctTxBH0EoaZjuMiuCyf/0623eaa36e871d8e2086e5bd1667bf4f/ssdp-100gbps.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last month we <a href="https://blog.cloudflare.com/reflections-on-reflections">shared statistics on some popular reflection</a> attacks. Back then the average SSDP attack size was ~12 Gbps and largest SSDP reflection we recorded was:</p>
 	<ul>
@@ -16,13 +16,13 @@
 	<p>The packets per second chart during the attack looked like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GPd738jNjjbpCqukAPD9A/7e6d5e971b4c4cb63b19c66f7ab15c30/7a9f87325c0e3921-qps-1.png" alt="" class="kg-image" width="800" height="257" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GPd738jNjjbpCqukAPD9A/c58213ae079f7e12c20debf25e3c2d22/7a9f87325c0e3921-qps-1.png" alt="" class="kg-image" width="800" height="257" loading="lazy">
 
 	</figure>
 	<p>The bandwidth usage:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kePNxdtoDtGkdJPms4FJF/0820283730b96ec2b3689fe26b2d0082/7a9f87325c0e3921-bps-2.png" alt="" class="kg-image" width="800" height="266" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kePNxdtoDtGkdJPms4FJF/5e1b9bfab4163e71b4d4c93773b3e1d1/7a9f87325c0e3921-bps-2.png" alt="" class="kg-image" width="800" height="266" loading="lazy">
 
 	</figure>
 	<p>This packet flood lasted 38 minutes. According to our sampled netflow data it utilized 930k reflector servers. We estimate that the during 38 minutes of the attack each reflector sent 112k packets to Cloudflare.</p>

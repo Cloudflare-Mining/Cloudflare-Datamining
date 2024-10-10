@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aBKnrrV2Crr7lywo98G0h/323466934489c315c9fe65b60a7ca378/image2-1.jpg" alt="Keeping the Cloudflare API 'all green' using Python-based testing" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aBKnrrV2Crr7lywo98G0h/2a7ae39e7393e05cc5aa369ea8f10ea4/image2-1.jpg" alt="Keeping the Cloudflare API 'all green' using Python-based testing" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we reuse existing core systems to power multiple products and testing of these core systems is essential. In particular, we require being able to have a wide and thorough visibility of our live APIs’ behaviors. We want to be able to detect regressions, prevent incidents and maintain healthy APIs. That is why we built Scout.</p>
@@ -104,7 +104,7 @@ class TestZone:
 	<p>Once a test suite run is complete, the results are pushed by the service and stored using Cloudflare Workers KV. They are displayed via a Cloudflare Worker.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iDExs9LHFvCjTMC12zsSp/64f2d5b6e2e9e49a28ba85f5a4d7d1d8/image6-2.png" alt="" class="kg-image" width="804" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2iDExs9LHFvCjTMC12zsSp/f7fcbbf636cb5a959981fbdfad3fb94f/image6-2.png" alt="" class="kg-image" width="804" height="400" loading="lazy">
 
 	</figure>
 	<p>Scout is run in separate environments such as production-like and production environments. It is part of our deployment process to verify Scout is <i>green</i> in our production-like environment prior to deploying to production where Scout is also used for monitoring purposes.</p>
@@ -119,7 +119,7 @@ class TestZone:
 	<p>The core of Scout is written in Python and it is a combination of three components interacting together:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WgzfD8Wk6Vyd0uTE7hfNk/012dcb3ff0041bb665ebbaf23880aab3/image4-3.png" alt="" class="kg-image" width="1250" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WgzfD8Wk6Vyd0uTE7hfNk/ccea6ac729b0e35906088af25b601cb9/image4-3.png" alt="" class="kg-image" width="1250" height="900" loading="lazy">
 
 	</figure>
 	<ul>
@@ -144,7 +144,7 @@ class TestZone:
 	<p>This is the core component of the Scout system. It allows us to write self explanatory tests while ensuring a high level of compliance against OpenAPI schemas and verifying the APIs’ behaviors.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IAEu33ULvtQorn3fZWBrn/d630ef53264038e8ccacfd26b7d65210/image1-2.png" alt="" class="kg-image" width="1700" height="1030" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IAEu33ULvtQorn3fZWBrn/0ce45e8506e6b37293cdd90ac68da651/image1-2.png" alt="" class="kg-image" width="1700" height="1030" loading="lazy">
 
 	</figure>
 	<p>The Scout plugin architecture can be split into three components: setup, resource allocator, and runners. Setup is a conjunction of multiple sub components in charge of setting up the plugin.</p>
@@ -172,7 +172,7 @@ class TestZone:
 	<p>We wanted to be aware of any scheduling issue as well as run issues. For this we used Prometheus metrics. The problem is that the Prometheus default configuration is to scrape metrics advertised by services. This scraping happens periodically and we were concerned about the eventuality of missing metrics if a cron job was to finish prior to the next Prometheus metrics scraping. As such we decided a small scheduler was better suited for overall observability of the test runs. Among the metrics the Scout service provides are network failures, general test failures, reporting failures, tests lagging and more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42kpAT26a338B07zUR59ke/0ba6d1a9741fc13b11f7feb1bd42cf66/image3-3.png" alt="" class="kg-image" width="1520" height="1031" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42kpAT26a338B07zUR59ke/ff248a59d66687ac0d31ef7c4d2544a9/image3-3.png" alt="" class="kg-image" width="1520" height="1031" loading="lazy">
 
 	</figure>
 	<p>The Scout service runs threads on configured periods. Each thread is a test suite run as a separate Pytest with Scout plugin process followed by a reporting execution consuming the results and publishing them to the relevant parties.</p>
@@ -192,7 +192,7 @@ class TestZone:
 	<p>For example, we present below an authentication failure during a test which resulted in such a display in the worker:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42dMShTD7SrsgASIKbpCcZ/43cef5d1d45aefa38d271261e3e79563/image5.png" alt="" class="kg-image" width="1380" height="1654" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42dMShTD7SrsgASIKbpCcZ/71e84ef0e898fcad0327d495aeb8cfe5/image5.png" alt="" class="kg-image" width="1380" height="1654" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

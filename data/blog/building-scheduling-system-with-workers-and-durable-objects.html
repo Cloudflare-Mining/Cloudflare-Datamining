@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fjdl7kWRa7MwLUn86agFI/1bde209e98a5d7d521dee4ff69224edf/Scheduling-system-with-Workers-and-Durable-Objects.png" alt="Building a scheduling system with Workers and Durable Objects" class="kg-image" width="1600" height="901" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fjdl7kWRa7MwLUn86agFI/c0523af4c465553a7152ba2d9cf483f9/Scheduling-system-with-Workers-and-Durable-Objects.png" alt="Building a scheduling system with Workers and Durable Objects" class="kg-image" width="1600" height="901" loading="lazy">
 
 	</figure>
 	<p>We rely on technology to help us on a daily basis – if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening.</p>
@@ -12,7 +12,7 @@
 	<p>Today, we're going to show you how to build a scalable service that will schedule HTTP requests on a specific schedule or as one-off at a specific time as a way to guide you through any use case that requires scheduled events.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QsLhy4QmfImRWULDDCpRx/05aaf1afaa7a53ab787f2c1175240429/Scheduling-system-with-Workers-and-Durable-Objects---Diagram.png" alt="" class="kg-image" width="1531" height="871" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QsLhy4QmfImRWULDDCpRx/07a879528b6632d850fda9c141ba8707/Scheduling-system-with-Workers-and-Durable-Objects---Diagram.png" alt="" class="kg-image" width="1531" height="871" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -63,7 +63,7 @@
 	<p><b>wrangler init -y durable-objects-requests-scheduler</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vgw0sXTG850ifbluBAbEy/e33f15332517f6fa6f71125bb65f1914/pasted-image-0.png" alt="" class="kg-image" width="1600" height="562" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vgw0sXTG850ifbluBAbEy/57b6965270f884980aa64ebd4d90a914/pasted-image-0.png" alt="" class="kg-image" width="1600" height="562" loading="lazy">
 
 	</figure>
 	<p>For more information on how to install, authenticate, or update Wrangler, check out <a href="https://developers.cloudflare.com/workers/wrangler/get-started">https://developers.cloudflare.com/workers/wrangler/get-started</a></p>
@@ -215,7 +215,7 @@ export default {
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2O2DcPjirepk7sgbtlMpbn/35be0f148eddc05146ac04d87466de26/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="614" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O2DcPjirepk7sgbtlMpbn/7cef2cc7d230dc4c0010ceb08c84da06/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="614" loading="lazy">
 
 	</figure>
 	<p>The development server is listening on localhost:8787, which we will use for scheduling our first request. The JSON request payload should match the TypeScript schema we defined in the beginning – required URL, and optional <code>triggerEverySeconds</code> number or <code>triggerAt</code> unix timestamp. When only the required URL is passed, the request will be dispatched right away.</p>
@@ -230,7 +230,7 @@ export default {
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74kGUzg7MYccSbLySud2e5/a56ab1a77e2319c32ee01a8ff4a21cd5/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="998" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74kGUzg7MYccSbLySud2e5/a7cdb2781a32c2b95953d25109f3bcce/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="998" loading="lazy">
 
 	</figure>
 	<p>From the wrangler logs we can see the scheduled request ID <code>000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f</code> is being triggered in 30s intervals.</p>
@@ -251,7 +251,7 @@ export default {
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3p4tcXHgshwEhYihU8blKm/2fac3745ae4aec6de1eac3ecab6f69d1/pasted-image-0--3-.png" alt="" class="kg-image" width="1190" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3p4tcXHgshwEhYihU8blKm/2dd1a3d76fcb72e056e94540228c2c3a/pasted-image-0--3-.png" alt="" class="kg-image" width="1190" height="500" loading="lazy">
 
 	</figure>
 	<p>That's it, we are live! ? The URL of your deployment is shown in the Workers logs. In a reasonably short period of time we managed to write our own scheduling system that is ready to handle requests at scale.</p>

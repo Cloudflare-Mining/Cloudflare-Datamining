@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3olzQeX6mSefAgNG66NjUu/ef92cc4af11a82d97c9c62c9f17cf7d7/image3-4.png" alt="" class="kg-image" width="1461" height="743" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3olzQeX6mSefAgNG66NjUu/ac3d55c3589260fc3a11d5a2dc3023b0/image3-4.png" alt="" class="kg-image" width="1461" height="743" loading="lazy">
 
 	</figure>
 	<p>We use <a href="https://kubernetes.io">Kubernetes</a> to run many of the diverse services that help us control Cloudflare’s edge. We have five geographically diverse clusters, with hundreds of nodes in our largest cluster. These clusters are self-managed on bare-metal machines which gives us a good amount of power and flexibility in the software and integrations with Kubernetes. However, it also means we don’t have a cloud provider to rely on for virtualizing or managing the nodes. This distinction becomes even more prominent when considering all the different reasons that nodes degrade. With self-managed bare-metal machines, the list of reasons that cause a node to become unhealthy include:</p>
@@ -28,7 +28,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59IDEspjCRavbrtH1Rtu4r/f769bba8ac05062eb94ce068dc2d7ede/image2-5.png" alt="" class="kg-image" width="1482" height="879" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59IDEspjCRavbrtH1Rtu4r/a5f057aa79b2aae10fc0073b8f3b5573/image2-5.png" alt="" class="kg-image" width="1482" height="879" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -221,13 +221,13 @@ data:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Hx2xX6FXjjTsCdZZFmn7O/e961a674329ab3494de25ab047136249/image1-6.png" alt="" class="kg-image" width="805" height="253" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Hx2xX6FXjjTsCdZZFmn7O/1e8be40972f81d59b9be18a1e60c68c4/image1-6.png" alt="" class="kg-image" width="805" height="253" loading="lazy">
 
 	</figure>
 	<p>Sciuro is our open-source replacement of node-problem-detector that has one simple job: synchronize Kubernetes node conditions with currently firing alerts in Alertmanager. Node problems can be defined with a more holistic view and using already existing exporters such as <a href="https://github.com/prometheus/node_exporter">node exporter</a>, <a href="https://github.com/google/cadvisor">cadvisor</a> or <a href="https://github.com/google/mtail">mtail</a>. It also doesn’t run on affected nodes which allows us to rely on out-of-band remediation techniques. Here is a high level diagram of how Sciuro works:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TF20JXIsXxWApKN9yyEcy/e30df7be3cfa43b8a90d6706822659df/image4-3.png" alt="" class="kg-image" width="1554" height="1983" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TF20JXIsXxWApKN9yyEcy/fe4d2244e860fe8e0c1477e06ae24c30/image4-3.png" alt="" class="kg-image" width="1554" height="1983" loading="lazy">
 
 	</figure>
 	<p>Starting from the top, nodes are scraped by Prometheus, which collects those metrics and fires relevant alerts to Alertmanager. Sciuro polls Alertmanager for alerts with a matching receiver, matches them with a corresponding node resource in the Kubernetes API and updates that node’s conditions accordingly.</p>

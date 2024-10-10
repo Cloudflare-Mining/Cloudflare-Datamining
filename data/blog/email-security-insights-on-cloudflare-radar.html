@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67tt8jiqO9RDouWNc2IuIg/03b5d99927971de344f448a2954c0112/image2-28.png" alt="Launching email security insights on Cloudflare Radar" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67tt8jiqO9RDouWNc2IuIg/97e9e9233a7b20d7e134c0bc8083a014/image2-28.png" alt="Launching email security insights on Cloudflare Radar" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>During 2021's Birthday Week, we <a href="https://blog.cloudflare.com/introducing-email-routing">announced</a> our <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">Email Routing</a> service, which allows users to direct different types of email messages (such as marketing, transactional, or administrative) to separate accounts based on criteria such as the recipient’s address or department. Its capabilities and the volume of messages routed have <a href="https://blog.cloudflare.com/email-routing-subdomains">grown significantly</a> since launch.</p>
@@ -21,7 +21,7 @@
 	<p>As Cloudflare’s <a href="https://www.cloudflare.com/zero-trust/products/email-security">email security</a> service processes email messages on behalf of customers, we are able to identify and classify offending messages as malicious. As examples, malicious emails may attempt to trick recipients into sharing personal information like login details, or the messages could attempt to spread malware through embedded images, links, or attachments. The new Email Security section on Cloudflare Radar now <a href="https://radar.cloudflare.com/email-security">provides insight</a> at a global level into the aggregate share of processed messages that we have classified as malicious over the selected timeframe. During <a href="https://radar.cloudflare.com/email-security?dateStart=2024-02-01&amp;dateEnd=2024-02-29">February 2024</a>, as shown in the figure below, we found that an average of 2.1% of messages were classified as being malicious. Spikes in malicious email volume were seen on February 10 and 11, accounting for as much as 29% of messages. These spikes occurred just ahead of the Super Bowl, in line with <a href="https://blog.cloudflare.com/super-bowl-lviii">previous observations</a> of increases in malicious email volume in the week ahead of the game. Other notable (but lower) spikes were seen on February 13, 15, 17, 24, and 25. The <a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-summary-by-malicious">summary</a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-timeseries-group-by-malicious">time series</a> data for malicious email share are available through the Radar API.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39j34s8TPPt3cQj6j2ZTsF/17b8e298126af0f6f898f84faa1d5619/pasted-image-0-6.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39j34s8TPPt3cQj6j2ZTsF/73ec05c40f900a2c6f6ca37817fc2574/pasted-image-0-6.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -37,25 +37,25 @@
 	<p>During February 2024 for the “Link” grouping, as the figure below illustrates, link-based threats were unsurprisingly the most common, and were found in 58% of malicious emails. Since the display text for a link (i.e., hypertext) in HTML can be arbitrarily set, attackers can make a URL appear as if it links to a benign site when, in fact, it is actually malicious. Nearly a third of malicious emails linked to something designed to harvest user credentials. The <a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-summary-by-threat-category">summary</a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-timeseries-group-by-threat-category">time series</a> data for these threat categories are available through the Radar API.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZVsVPQccuYKQjUpKcOoEq/238c03bf9a393ba394f9e0d5607f62a6/pasted-image-0--1--3.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZVsVPQccuYKQjUpKcOoEq/88456640a317da1779b6867a77acdc64/pasted-image-0--1--3.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
 
 	</figure>
 	<p>For the “Attachment” grouping, during February 2024, nearly 13% of messages were found to have a malicious attachment that when opened or executed in the context of an attack, includes a call-to-action (e.g. lures target to click a link) or performs a series of actions set by an attacker. The share spiked several times throughout the month, reaching as high as 70%. The attachments in nearly 6% of messages attempted to download additional software (presumably malware) once opened.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Akp5aqpIDDj99BdAsZ82C/e8a299b2dc499fd305976978837a532a/pasted-image-0--2--2.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Akp5aqpIDDj99BdAsZ82C/f6dcf92dde82ff1fc72d58788b11240d/pasted-image-0--2--2.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
 
 	</figure>
 	<p>If an email message appears to be coming from a trusted brand, users may be more likely to open it and take action, like checking the shipping status of a package or reviewing a financial transaction. During February 2024, on average, over a quarter of malicious emails were sent by attackers attempting to impersonate well-known brands. Similar to other threat categories, this one also saw a number of significant spikes, reaching as high as 88% of February 17. Just over 18% of messages were found to be trying to extort users in some fashion. It appears that such campaigns were very active in the week ahead of Valentine's Day (February 14), although the peak was seen on February 15, at over 95% of messages.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7H5mYJCU0Z2mWmY2zOoH7b/f293fbec1e2e26f0265f5df87abd28fd/Impersonation.png" alt="" class="kg-image" width="1600" height="745" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7H5mYJCU0Z2mWmY2zOoH7b/448feba0321f99e1079dc24db24e7911/Impersonation.png" alt="" class="kg-image" width="1600" height="745" loading="lazy">
 
 	</figure>
 	<p>Identity deception occurs when an attacker or someone with malicious intent sends an email claiming to be someone else, whether through use of a similar-looking domain or display name manipulation. This was the top threat category for the “Other” grouping, seen in over 36% of malicious emails during February 2024. The figure below shows three apparent “waves” of the use of this technique — the first began at the start of the month, the second around February 9, and the third around February 20. Over 11% of messages were categorized as malicious because of the reputation of the network (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">autonomous system</a>) that they were sent from; some network providers are well-known sources of malicious and unwanted email.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YFNUNtGqXHm2ORhNgIS0e/d47924aeb70038839b6a5f1954abd02c/pasted-image-0--3--1.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YFNUNtGqXHm2ORhNgIS0e/be2f047756c5bd6766c9336cb101d259/pasted-image-0--3--1.png" alt="" class="kg-image" width="901" height="415" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -71,27 +71,27 @@
 	<p>Looking back across February 2024, we found that new gTLD <code>associates</code> and the ccTLD <code>zw</code> (Zimbabwe) were the TLDs with domains originating the largest shares of malicious email, at over 85% each. New TLDs <code>academy</code>, <code>directory</code>, and <code>bar</code> had the largest shares of spam in email sent by associated domains, at upwards of 95%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tvfVUvg028MjExbUn6DuB/76d1ffea1e2cd3b00991675de0ea45c6/pasted-image-0--4-.png" alt="TLDs with the highest percentage of malicious email in February 2024" class="kg-image" width="904" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tvfVUvg028MjExbUn6DuB/bbe1206da0ba754aa03a41fcc87ab7f8/pasted-image-0--4-.png" alt="TLDs with the highest percentage of malicious email in February 2024" class="kg-image" width="904" height="471" loading="lazy">
 
 	</figure>
 	<p><i>TLDs with the highest percentage of malicious email in February 2024</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VeBDm1f5fYRJqZdq0ho3b/be740ca10d613e3e6d4b7581206ffe6f/pasted-image-0--5-.png" alt="TLDs with the highest percentage of spam email in February 2024" class="kg-image" width="904" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VeBDm1f5fYRJqZdq0ho3b/fa692e8a0ec2d3ec8970d838fdd7b0c0/pasted-image-0--5-.png" alt="TLDs with the highest percentage of spam email in February 2024" class="kg-image" width="904" height="471" loading="lazy">
 
 	</figure>
 	<p><i>TLDs with the highest percentage of spam email in February 2024</i></p>
 	<p>The figure below breaks out ccTLDs, where we found that at least half of the messages coming from domains in <code>zw</code> (Zimbabwe, at 85%) and <code>bd</code> (Bangladesh, at 50%) were classified as malicious. While the share of malicious email vastly outweighed the share of spam seen from <code>zw</code> domains, it was much more balanced in <code>bd</code> and <code>pw</code> (Palau). A total of 80 ccTLDs saw fewer than 1% of messages classified as malicious in February 2024.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ngA84qYZiS1djPnyAN9K9/fa34902ff6ac7564d8b9a4f4b9a5417b/pasted-image-0--6-.png" alt="ccTLDs with the highest percentage of malicious email in February 2024" class="kg-image" width="904" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ngA84qYZiS1djPnyAN9K9/e7ddc092a349634b6a934ee4b8a5755e/pasted-image-0--6-.png" alt="ccTLDs with the highest percentage of malicious email in February 2024" class="kg-image" width="904" height="471" loading="lazy">
 
 	</figure>
 	<p><i>ccTLDs with the highest percentage of malicious email in February 2024</i></p>
 	<p>Among the “classic” TLDs, we can see that the shares of both malicious emails and spam are relatively low. Perhaps unsurprisingly, as the largest TLD, <code>com</code> has the largest shares of both in February 2024. Given the restrictions around registering <a href="https://www.iana.org/domains/int"><code>int</code></a> and <a href="https://get.gov/domains/requirements"><code>gov</code></a> domains, it is interesting to see that even 2% of the messages from associated domains are classified as malicious.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iWhtYDtbuSikcDtmgGtn4/60cdae6954e57bc3e53936bf191b7f12/pasted-image-0--7-.png" alt="Classic TLDs with the highest percentage of malicious email in February 2024." class="kg-image" width="904" height="302" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2iWhtYDtbuSikcDtmgGtn4/9c370938fe219018a75c13380ecb7ec7/pasted-image-0--7-.png" alt="Classic TLDs with the highest percentage of malicious email in February 2024." class="kg-image" width="904" height="302" loading="lazy">
 
 	</figure>
 	<p><i>Classic TLDs with the highest percentage of malicious email in February 2024.</i></p>
@@ -110,7 +110,7 @@
 	<p>Reviewing the average shares across February 2024, we find that over 93% of messages passed SPF authentication, while just 2.7% failed. When considering this metric, FAIL is the outcome of greater interest because SPF is easier to spoof than DKIM, and also because failure may be driven by “shadow IT” situations, such as when a company’s Marketing department uses a third party to send email on behalf of the company, but fails to add that third party to the associated SPF records. An average of 88.5% of messages passed DKIM evaluation in February, while just 2.1% failed. For DKIM, the focus should be on PASS, as there are potential non-malicious reasons that a given signature may fail to verify. For DMARC, 86.5% of messages passed authentication, while 4.2% failed, and the combination of PASS and FAIL is the focus, as the presence of an associated policy is of greatest interest for this metric, and whether the message passed or failed less so. For all three methods in this section, NONE indicates the lack of an associated policy. SPF (<a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-summary-by-spf">summary</a>, <a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-timeseries-group-by-spf">time series</a>), DKIM (<a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-summary-by-dkim">summary</a>, <a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-timeseries-group-by-dkim">time series</a>), and DMARC (<a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-summary-by-dmarc">summary</a>, <a href="https://developers.cloudflare.com/api/operations/radar-get-email-security-timeseries-group-by-dmarc">time series</a>) data is available through the Radar API.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7D1Kfig1lHwIgoEJ3XGx8i/57228f60b47ed93aba559d30a2f6ae00/Screenshot-2024-03-08-at-12.51.49.png" alt="" class="kg-image" width="2000" height="1097" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7D1Kfig1lHwIgoEJ3XGx8i/9ceba12b2bff559d648382e53e0412d2/Screenshot-2024-03-08-at-12.51.49.png" alt="" class="kg-image" width="2000" height="1097" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -125,7 +125,7 @@
 	<p>Through analysis of inbound connections from senders’ mail servers to Cloudflare’s email servers, we can gain insight into the distribution of these connections across IPv4 and IPv6. Looking at this distribution for February 2024, we find that 95% of connections were made over IPv4, while only 5% used IPv6. This distribution is in sharp contrast to the share of IPv6 requests for IPv6-capable (dual stacked) Web content, which was 37% <a href="https://radar.cloudflare.com/adoption-and-usage?dateStart=2024-02-01&amp;dateEnd=2024-02-29#i-pv4-vs-i-pv6">for the same time period</a>. The <a href="https://developers.cloudflare.com/api/operations/radar-get-email-routing-summary-by-ip-version">summary</a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-email-routing-timeseries-group-by-ip-version">time series</a> data for IPv4/v6 distribution are available through the Radar API.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BLLzGXJ18q7LFhuRteSmG/79905c46609216a0c62a576497b9daca/Screenshot-2024-03-08-at-12.52.26.png" alt="" class="kg-image" width="2000" height="794" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BLLzGXJ18q7LFhuRteSmG/762a81b2a5a590a69c6efd6cf0e02f02/Screenshot-2024-03-08-at-12.52.26.png" alt="" class="kg-image" width="2000" height="794" loading="lazy">
 
 	</figure>
 	<p>Cloudflare has also been a long-time advocate for secure connections, launching <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a> during 2014’s Birthday Week, to enable secure connections between end users and Cloudflare for all of our customers’ sites (which numbered ~2 million at the time). Over the last 10 years, SSL has completed its evolution to <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS</a>, and although many think of TLS as only being relevant for Web content, possibly due to years of being told to look for the 🔒 padlock in our browser’s address bar, TLS is also used to encrypt client/server connections across other protocols including SMTP (email), FTP (file transfer), and XMPP (messaging).</p>

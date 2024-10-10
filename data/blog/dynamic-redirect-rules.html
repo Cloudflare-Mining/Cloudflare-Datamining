@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OtZJno32ySI8NPIN3LEzd/b4ffe4bb485cc537efc953886bf85fb4/image2-54.png" alt="Dynamic URL redirects: 301 to the future" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OtZJno32ySI8NPIN3LEzd/ee3eadd786a2a91212dc0dde8c6543c0/image2-54.png" alt="Dynamic URL redirects: 301 to the future" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>The Internet is a dynamic place. Websites are constantly changing as technologies and business practices evolve. What was front-page news is quickly moved into a sub-directory. To ensure website visitors continue to see the correct webpage even if it has been moved, administrators often implement URL redirects.</p>
@@ -47,7 +47,7 @@
 	<p>This dynamic action frees the user from having to define explicitly what the target URL should look like, and instead provides them with a full gamut of fields and functions to custom generate the target URL based upon the parameters of the request. For example, rather than redirecting all traffic for <a href="http://www.example.com/shop"><code>www.example.com/shop</code></a> to <a href="http://www.example.com/en/shop"><code>www.example.com/en/shop</code></a>, users can conceptually redirect the traffic to <a href="http://www.example.com/%7BPREFERRED_LANGUAGE%7D/shop"><code>www.example.com/{PREFERRED_LANGUAGE}/shop</code></a> (not actual syntax!). With this, traffic from a browser with a preferred language of French will be redirected to <a href="http://www.example.com/fr/shop"><code>www.example.com/fr/shop</code></a>, likewise those with a preferred language of German will be redirected to <a href="http://www.example.com/de/shop"><code>www.example.com/de/shop</code></a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KSMb1ZP3E4N1nFuUPDFde/ba3dd64c5a8c055bc2dabce97b3be3c4/image3-38.png" alt="" class="kg-image" width="1930" height="1220" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KSMb1ZP3E4N1nFuUPDFde/34686a5ace57a0d4922a2a0d01befd35/image3-38.png" alt="" class="kg-image" width="1930" height="1220" loading="lazy">
 
 	</figure>
 	<p>The other big difference between Dynamic Redirects and &nbsp;Page Rules is in the filtering. Page Rules are limited to filtering on a URL, or a URL with asterisks as wildcards. Dynamic Redirects is built atop our lightning-fast <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets">Rulesets Engine</a>, which also runs products such as Transform Rules, Custom Rules (WAF), Bulk Redirects and API Shield.</p>
@@ -127,7 +127,7 @@
 	<p>With this information, we can create a dynamic redirect using the action:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ffOgGltGbr8MSOJW90DP7/e02b082d405167ddce9f38cc29131fcc/image1-62.png" alt="" class="kg-image" width="1081" height="520" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ffOgGltGbr8MSOJW90DP7/10d53bb20a79d263460ec13cff47a110/image1-62.png" alt="" class="kg-image" width="1081" height="520" loading="lazy">
 
 	</figure>
 	<p>With this rule in place, traffic from visitors with a preferred language of English (en) will be redirected to <a href="http://www.example.com/en/shop"><code>www.example.com/en/shop</code></a>. The rule can be duplicated for other languages also, ensuring those with a preferred language of French (fr) will be redirected to <a href="http://www.example.com/fr/shop"><code>www.example.com/fr/shop</code></a>.</p>

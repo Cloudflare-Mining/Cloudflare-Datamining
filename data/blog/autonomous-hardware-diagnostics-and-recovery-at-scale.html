@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HHG8n0DWNsSYLCQ1i43YJ/08b5f7b325e186331457d90230bdb5ca/image3-32.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HHG8n0DWNsSYLCQ1i43YJ/7e74f6e0fdb8dfc20d511b57653dff33/image3-32.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s global network spans more than 310 cities in over 120 countries. That means thousands of servers geographically spread across different data centers, running services that protect and accelerate our customer’s Internet applications. Operating hardware at such a scale means that hardware can break anywhere and at any time. In such cases, our systems are engineered such that these failures cause little to no impact. However, detecting and managing server failure at scale requires automation. This blog aims to provide insights into the difficulties involved in handling broken servers and how we were able to simplify the process through automation.</p>
@@ -39,7 +39,7 @@
 	<p>The image below illustrates the whole process:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qVvRJpQWUcF6rAMlVLbmO/4c0cff7962da156842a2eb7fac819e3f/image1-34.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qVvRJpQWUcF6rAMlVLbmO/df9ced60e39057106e8a17f06d682990/image1-34.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
 
 	</figure>
 	<p>To better understand exactly how Phoenix works, let’s dive into some details about its core functionality.</p>
@@ -107,7 +107,7 @@
 	<p>The Error Budget is the amount of error that automation can accumulate over a certain period of time before our SRE’s start being unhappy due to the excessive server failures or unreliability of the system. It is empathy embedded in automation.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xHmNRRtlbEbe3um2Cof6C/ebf68e517ebfe09e5fe60f9c1c28a600/image2-32.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xHmNRRtlbEbe3um2Cof6C/c8d88078be39d761074d85272e16b3b7/image2-32.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
 
 	</figure>
 	<p>In the figure above, the y-axis represents the error budget. In this context, the error budget applies to the number of recovered servers that failed and were moved back to Repair state again. The x-axis represents the time unit allocated to the error budget – in this case, 24 hours. To ensure that Phoenix is strict enough in mitigating possible issues, we divide the time unit into three consecutive buckets of the same duration – representing the three “follow the sun” SRE shifts in a day. With this, Phoenix can only execute recoveries if the number of server failures is no more than 2. Additionally, Phoenix will also have to compensate succeeding time buckets by deducting the error budget of any excess failures in a given time bucket.</p>

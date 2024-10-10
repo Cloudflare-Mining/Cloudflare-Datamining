@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ilsdLNU2wlhvQ9utQhk4R/e1aa54596afb1414a075367cfb765b38/D1-Open-Beta-dark-1.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ilsdLNU2wlhvQ9utQhk4R/4c9f1f4783df118264e53f21f801d189/D1-Open-Beta-dark-1.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>When we announced D1 in May of this year, we knew it would be the start of something new – our first SQL database with Cloudflare Workers. Prior to D1 we’ve announced storage options like KV (key-value store), Durable Objects (single location, strongly consistent data storage) and <a href="https://www.cloudflare.com/learning/cloud/what-is-blob-storage">R2 (blob storage)</a>. But the question always remained “How can I store and query relational data without latency concerns and an easy API?”</p>
@@ -51,14 +51,14 @@
 	<p>With all the improvements we’ve made to Wrangler since version 2 launched <a href="https://blog.cloudflare.com/wrangler-v2-beta">a few months ago</a>, we’re pleased to report that D1 has full remote &amp; local wrangler dev support:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JRGM62yWrL3h7BKLhj5Jf/706a0d2b9789357ccd5808cf41f968a0/image2-43.png" alt="" class="kg-image" width="1756" height="1300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JRGM62yWrL3h7BKLhj5Jf/6d324ce4a2b19691ef4ec39095d2e43b/image2-43.png" alt="" class="kg-image" width="1756" height="1300" loading="lazy">
 
 	</figure>
 	<p>When running <code>wrangler dev -–local -–persist</code>, an SQLite file will be created inside <code>.wrangler/state</code>. You can then use a local GUI program for managing it, like SQLiteFlow (<a href="https://www.sqliteflow.com">https://www.sqliteflow.com/</a>) or Beekeeper (<a href="https://www.beekeeperstudio.io">https://www.beekeeperstudio.io/</a>).</p>
 	<p>Or you can simply use SQLite directly with the SQLite command line by running <code>sqlite3 .wrangler/state/d1/DB.sqlite3</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wSVzsxnFxKpJDbF5pO4hs/4edec912ff26346e0890143a4888019d/image6-8.png" alt="" class="kg-image" width="1756" height="1140" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wSVzsxnFxKpJDbF5pO4hs/89aab6231071b6cd8cc657a9fd2bd24b/image6-8.png" alt="" class="kg-image" width="1756" height="1140" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -72,20 +72,20 @@
 	<p>No matter how much you test your changes, sometimes things don’t always go according to plan. But with Wrangler you can create a backup of your data, view your list of backups or restore your database from an existing backup. In fact, during the beta, we’re taking backups of your data every hour automatically and storing them in R2, so you will have the option to rollback if needed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BgC81NRBtxLJAl4Gf09oz/d1973efa7a7105951c528d11d0139483/image1-53.png" alt="" class="kg-image" width="1756" height="884" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BgC81NRBtxLJAl4Gf09oz/03084ab36894c484675f0ec7e58e9462/image1-53.png" alt="" class="kg-image" width="1756" height="884" loading="lazy">
 
 	</figure>
 	<p>And the best part – if you want to use a production snapshot for local development or to reproduce a bug, simply copy it into the .wrangler/state directory and <code>wrangler dev –-local –-persist</code> will pick it up!</p>
 	<p>Let’s download a D1 backup to our local disk. It’s SQLite compatible.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lGMre56aSosKozuHmITRD/1e6e952c2d2163972c271cffde49ad90/image4-14.png" alt="" class="kg-image" width="1756" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lGMre56aSosKozuHmITRD/51b282602897ed9af9d0813461f81732/image4-14.png" alt="" class="kg-image" width="1756" height="820" loading="lazy">
 
 	</figure>
 	<p>Now let’s run our D1 worker locally, from the backup.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4t10c5k7VKcT2tF4CjW9Dw/20a786cba04d8caa920f91ab71e0a831/image5-16.png" alt="" class="kg-image" width="1756" height="1140" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4t10c5k7VKcT2tF4CjW9Dw/eb5ba21817f6a38b1d1f450d6e2e2c3a/image5-16.png" alt="" class="kg-image" width="1756" height="1140" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -99,7 +99,7 @@
 	<p>However, we realize that CLIs are not everyone’s jam. In fact, we believe databases should be accessible to every kind of developer – even those without much database experience! D1 is available right from the Cloudflare dashboard giving you near total command parity with Wrangler in just a few clicks. Bootstrapping your database, creating tables, updating your database, viewing tables and triggering backups are all accessible right at your fingertips.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mXkO7uRDs4lVvgjm8VC4r/840840aef70802339ea685f9958b0f1a/image3-32.png" alt="" class="kg-image" width="1999" height="883" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2mXkO7uRDs4lVvgjm8VC4r/c32f96a738980294dfea5db7f2ea8794/image3-32.png" alt="" class="kg-image" width="1999" height="883" loading="lazy">
 
 	</figure>
 	<p>Changes made in the UI are instantly available to your Worker — no deploy required!</p>

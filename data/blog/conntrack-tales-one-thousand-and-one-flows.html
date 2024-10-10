@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1exWkAQcRhm4LLeCXaTweQ/d24ae67f895f871e554efb8657c5dc15/conntrack-tales-one-thousand-and-one-flows.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1exWkAQcRhm4LLeCXaTweQ/7fab121cabbc032119e44f2030f06b66/conntrack-tales-one-thousand-and-one-flows.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we develop new products at a great pace. Their needs often challenge the architectural assumptions we made in the past. For example, years ago we decided to avoid using Linux's "conntrack" - stateful firewall facility. This brought great benefits - it simplified our iptables firewall setup, sped up the system a bit and made the inbound packet path easier to understand.</p>
 	<p>But eventually our needs changed. One of our new products had a reasonable need for it. But we weren't confident - can we just enable conntrack and move on? How does it actually work? I volunteered to help the team understand the dark corners of the "conntrack" subsystem.</p>
@@ -15,7 +15,7 @@
 	<p>To fill such gaps all the operating systems implemented connection tracking inside their firewalls. This tracking is usually implemented as a big table, with at least 6 columns: protocol (usually TCP or UDP), source IP, source port, destination IP, destination port and connection state. On Linux this subsystem is called "conntrack" and is often enabled by default. Here's how the table looks on my laptop inspected with "conntrack -L" command:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57PxFTDUBFZqODrE5OrOul/2d3734caa701c61d88c3bea48fc6bb5b/image5-2.png" alt="" class="kg-image" width="1140" height="470" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57PxFTDUBFZqODrE5OrOul/a9d34a54bf247021ba000b15119461bc/image5-2.png" alt="" class="kg-image" width="1140" height="470" loading="lazy">
 
 	</figure>
 	<p>The obvious question is how large this state tracking table can be. This setting is under "/proc/sys/net/nf_conntrack_max":</p>
@@ -71,7 +71,7 @@ for i in range(10000,10000+10):
 	<p>Let's run this script in action. Remember to run it under networking namespace as fake root with "unshare -Ur -n":</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xUiZXoGQrhYU3Lugqbx97/05e03f21dccef9938d4b1576546d20e4/image6.png" alt="" class="kg-image" width="1846" height="822" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xUiZXoGQrhYU3Lugqbx97/9db644c8c56f944445fc7ebb559d6d95/image6.png" alt="" class="kg-image" width="1846" height="822" loading="lazy">
 
 	</figure>
 	<p>This is all nice. First we see a "tcpdump" listing showing 10 SYN packets. Then we see the conntrack table state, showing 10 created flows. Finally, we see iptables counters in two rules we created, each showing 10 packets processed.</p>
@@ -86,20 +86,20 @@ for i in range(10000,10000+10):
 	<p>Given that the conntrack table is size constrained, what exactly happens when it fills up? Let's check it out. First, we need to drop the conntrack size. As mentioned it's controlled by a global toggle - it's necessary to tune it on the host side. Let's reduce the table size to 7 entries, and repeat our test:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iH78254UDI6cAFqqiAWcy/8f6eebdeeaee9df88bd0715ef1e87040/image4-3.png" alt="" class="kg-image" width="1828" height="850" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2iH78254UDI6cAFqqiAWcy/92aafe709b997fcc234279d2966077c1/image4-3.png" alt="" class="kg-image" width="1828" height="850" loading="lazy">
 
 	</figure>
 	<p>This is getting interesting. We still see the 10 inbound SYN packets. We still see that the "-t raw PREROUTING" table received 10 packets, but this is where similarities end. The "-t mangle PREROUTING" table saw only 7 packets. Where did the three missing SYN packets go?</p>
 	<p>It turns out they went where all the dead packets go. They were hard dropped. Conntrack on overfill does exactly that. It even complains in the "dmesg":</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Gtrs2Na2a4NKQbNllKw8w/5804a130368a00ad6f269ae77b2e8c06/image1-1.png" alt="image1-1" class="kg-image" width="1220" height="74" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Gtrs2Na2a4NKQbNllKw8w/ddf3755fff4e9b89dc455260b8a14107/image1-1.png" alt="image1-1" class="kg-image" width="1220" height="74" loading="lazy">
 
 	</figure>
 	<p>This is confirmed by our iptables counters. Let's review the <a href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg">famous iptables</a> diagram:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wBlH7JteM8K0KVBp6P6CG/f61b41e9e1194dcf28d7e3ebaa5ebb02/image7.png" alt="" class="kg-image" width="812" height="276" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wBlH7JteM8K0KVBp6P6CG/c1d17141b74544ca9809714354bf05ca/image7.png" alt="" class="kg-image" width="812" height="276" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg">image</a> by <a href="https://commons.wikimedia.org/wiki/User_talk:Jengelh">Jan Engelhardt</a> CC BY-SA 3.0</p>
@@ -146,7 +146,7 @@ iptables -A INPUT -j DROP</code></pre>
 	<p>Recently we hit a case when a "sendto()" syscall on UDP socket from one of our applications was erroring with EPERM. This is pretty weird, and not documented in the man page. My colleague had no doubts:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qoszkkHAOaErPNjv6cwPZ/d57621bf4eecac06caa526033523ba22/image9-1.png" alt="image9-1" class="kg-image" width="540" height="116" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qoszkkHAOaErPNjv6cwPZ/c22d83083c706014dff1c47dd3beb517/image9-1.png" alt="image9-1" class="kg-image" width="540" height="116" loading="lazy">
 
 	</figure>
 	<p>I'll save you the gruesome details, but indeed, the full conntrack table will do that to your new UDP flows - you will get EPERM. Beware. Funnily enough, it's possible to get EPERM if an outbound packet is dropped on OUTPUT firewall in other ways. For example:</p>
@@ -171,7 +171,7 @@ HPING 192.0.2.1 (lo 192.0.2.1): S set, 40 headers + 0 data bytes
 	<p>There is one more caveat. During a SYN flood, the conntrack entries will totally be created for the spoofed flows. Take a look at second test case we prepared, this time correctly listening on port 80, and sending SYN+ACK:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vNW5JQuRFZyumzKOrIQVW/257ddf381d4740a53359086a919e3ed3/image8.png" alt="" class="kg-image" width="1678" height="798" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vNW5JQuRFZyumzKOrIQVW/ea983dcbf2e8a876a8f3264b3104d4d4/image8.png" alt="" class="kg-image" width="1678" height="798" loading="lazy">
 
 	</figure>
 	<p>We can see 7 SYN+ACK's flying out of the port 80 listening socket. The final three SYN's go nowhere as they are dropped by conntrack.</p>

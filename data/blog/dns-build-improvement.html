@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jqaMJiSXIu9Z45Qy7H084/e74f98612346e7243b35c6acd1456824/image5-20.png" alt="How we improved DNS record build speed by more than 4,000x" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jqaMJiSXIu9Z45Qy7H084/54af8973c079db64aff4484713002aec/image5-20.png" alt="How we improved DNS record build speed by more than 4,000x" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Since my previous blog about <a href="https://blog.cloudflare.com/secondary-dns-deep-dive">Secondary DNS</a>, <a href="https://www.cloudflare.com/dns">Cloudflare's DNS</a> traffic has more than doubled from 15.8 trillion DNS queries per month to 38.7 trillion. Our network now spans over 270 cities in over 100 countries, interconnecting with more than 10,000 networks globally. According to <a href="https://w3techs.com/technologies/overview/dns_server">w3 stats</a>, “Cloudflare is used as a DNS server provider by 15.3% of all the websites.” This means we have an enormous responsibility to serve <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> in the fastest and most reliable way possible.</p>
@@ -19,7 +19,7 @@
 	<p>Cloudflare uses a multi-stage pipeline that takes our customers’ DNS record changes and pushes them to our global network, so they are available all over the world.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/621S7OYC5i9VEHUMnpruti/597a1fc3e2c4ea1c13b5bafbc71e01c4/image3-37.png" alt="" class="kg-image" width="1999" height="440" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/621S7OYC5i9VEHUMnpruti/322ede366828e0669c16443d861608f8/image3-37.png" alt="" class="kg-image" width="1999" height="440" loading="lazy">
 
 	</figure>
 	<p>The steps shown in the diagram above are:</p>
@@ -53,7 +53,7 @@
 	<p>When the pipeline shown above was <a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster">first announced</a>, the Zone Builder received somewhere between 5 and 10 DNS record changes per second. Although the Zone Builder at the time was a massive improvement on the previous system, it was not going to last long given the growth that Cloudflare was and still is experiencing. Fast-forward to today, we receive on average 250 DNS record changes per second, a staggering 25x growth from when the Zone Builder was first announced.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MlSZs6szqObivtM8cC1rV/1e1f2f6071eaa7d6e71ce267f9f96b0b/image4-30.png" alt="" class="kg-image" width="1606" height="686" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MlSZs6szqObivtM8cC1rV/3b50129c5d7a2691e893242d1b683a0a/image4-30.png" alt="" class="kg-image" width="1606" height="686" loading="lazy">
 
 	</figure>
 	<p>The way that the Zone Builder was initially designed was quite simple. When a zone changed, the Zone Builder would grab all the records from the database for that zone and compare them with the records stored in Quicksilver. Any differences were fixed to maintain consistency between the database and Quicksilver.</p>
@@ -90,7 +90,7 @@
 	<p>Below is a high level diagram of how the new Zone Builder looks internally with the new scheduler types.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23Y8EYi1qubiNN16dVq62j/1395d17865805e3bbfa86a9da6e6d4a8/image6-20.png" alt="" class="kg-image" width="1224" height="1569" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23Y8EYi1qubiNN16dVq62j/338ca37bd56d92d157eb09c016841f9c/image6-20.png" alt="" class="kg-image" width="1224" height="1569" loading="lazy">
 
 	</figure>
 	<p>It is critically important that we lock between these two schedulers because it would otherwise be possible for the full build scheduler to overwrite the per-record scheduler’s changes with stale data.</p>
@@ -118,13 +118,13 @@
 	<p>Today, all DNS Records API record changes are treated as per-record builds by the Zone Builder. As I previously mentioned, we have not been able to get rid of full builds entirely; however, they now represent about 13% of total DNS builds. This 13% corresponds to changes made to DNS settings that require knowledge of the entire zone's contents.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mmDhQTWMR03iIWHL5oRNB/c26eb2b18f59a046daf1ba8baaf36475/image1-56.png" alt="" class="kg-image" width="1832" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mmDhQTWMR03iIWHL5oRNB/e953a2be78239e765d8986ecfa7fdf47/image1-56.png" alt="" class="kg-image" width="1832" height="902" loading="lazy">
 
 	</figure>
 	<p>When we compare the two build types as shown below we can see that per-record builds are on average <b>150x</b> faster than full builds. The build time below includes both database query time and Quicksilver write time.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48Umk7PrqhCT7J1kBSjXCg/2208cb90006c76e609f7e4f1673d4131/image2-51.png" alt="" class="kg-image" width="1840" height="1134" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48Umk7PrqhCT7J1kBSjXCg/6adab8baa50d861e5852d841357f31eb/image2-51.png" alt="" class="kg-image" width="1840" height="1134" loading="lazy">
 
 	</figure>
 	<p>From there, our records are propagated to our global network through Quicksilver.</p>

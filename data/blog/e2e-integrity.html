@@ -1,15 +1,15 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZCc9oFJnvGwjmVM43YHew/c94082b997ea407188682444ae8b9aba/e2e-integrity.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZCc9oFJnvGwjmVM43YHew/047818fb0e3cf9b12b674d68ea7d58ca/e2e-integrity.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This post describes how to use Cloudflare's IPFS gateway to set up a website which is end-to-end secure, while maintaining the performance and reliability benefits of being served from Cloudflare’s edge network. If you'd rather read an introduction to the concepts behind IPFS first, you can find that in <a href="https://blog.cloudflare.com/distributed-web-gateway">our announcement</a>. Alternatively, you could skip straight to the <a href="https://developers.cloudflare.com/distributed-web">developer docs</a> to learn how to set up your own website.</p>
 	<p>By 'end-to-end security', I mean that neither the site owner nor users have to trust Cloudflare to serve the correct documents, like they do now. This is similar to how using HTTPS means you don't have to trust your ISP to not modify or inspect traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TAh0shMDYcLioHSrr05YS/797984b92fdd96e6a6c1b486eedd125e/ipfs-blog-post-image-1-copy_3.5x--1-.png" alt="" class="kg-image" width="2000" height="562" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TAh0shMDYcLioHSrr05YS/9df521abdbf0ddc64596066f864466a4/ipfs-blog-post-image-1-copy_3.5x--1-.png" alt="" class="kg-image" width="2000" height="562" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75MIGMU5KJSYIZudpdJcNM/88f11cb5c113918731021b39755d96f4/ipfs-blog-post-image-2-copy_3.5x--1-.png" alt="" class="kg-image" width="2000" height="554" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75MIGMU5KJSYIZudpdJcNM/666111e79475ef39ca6701ad7e0cc27e/ipfs-blog-post-image-2-copy_3.5x--1-.png" alt="" class="kg-image" width="2000" height="554" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -40,7 +40,7 @@
 	<p>It works the same way as certificate validation in HTTPS: we start at the bottom, with a signature from some authority claiming to be example.com over the DNS records they want us to serve. We then lookup a delegation (DS record) from an authority claiming to be .com, that says "example.com is the authority with these public keys" which is in turn signed by the .com authority's private key. And finally, we lookup a delegation from the root authority, ICANN (whose public keys we already have), attesting to the public keys used by the .com authority. All of these lookups bundled together form an authenticated chain starting at ICANN and ending at the exact records we want to serve. These constitute the proof.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qVP41QjM9flXihnLEj4CH/c890307ca466ab158eabda65fa32dec9/IPFS-tech-post-_3.5x.png" alt="" class="kg-image" width="1600" height="691" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qVP41QjM9flXihnLEj4CH/441ee5dd840fbac451e12854248da9cd/IPFS-tech-post-_3.5x.png" alt="" class="kg-image" width="1600" height="691" loading="lazy">
 
 	</figure>
 	<p><i>Chain of trust in DNSSEC.</i></p><!--kg-card-begin: html--><br><!--kg-card-end: html-->
@@ -93,7 +93,7 @@
 	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on our announcements.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Zg5pDJxaCCTQXzqquORuu/fc8a78b05a6b074cd86421d9f042b2bd/CRYPTO-WEEK-banner-plus-logo_2x.png" alt="" class="kg-image" width="1600" height="819" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Zg5pDJxaCCTQXzqquORuu/1a2f514eff601ee0f88f245945a3ea54/CRYPTO-WEEK-banner-plus-logo_2x.png" alt="" class="kg-image" width="1600" height="819" loading="lazy">
 
 	</figure>
 </div>

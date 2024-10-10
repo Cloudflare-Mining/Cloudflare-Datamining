@@ -1,5 +1,5 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/http-requests-on-cloudflare-radar">Français</a>, <a href="https://blog.cloudflare.com/es-es/http-requests-on-cloudflare-radar">Español</a> and <a href="https://blog.cloudflare.com/de-de/http-requests-on-cloudflare-radar">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28siGr0WLWBSbkK11cLwBU/43bb6f82802a29211b3987e780cac960/2493-1.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/http-requests-on-cloudflare-radar">Français</a>, <a href="https://blog.cloudflare.com/es-es/http-requests-on-cloudflare-radar">Español</a> and <a href="https://blog.cloudflare.com/de-de/http-requests-on-cloudflare-radar">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28siGr0WLWBSbkK11cLwBU/7d707fc390f5ec29c783dcce453ac7d7/2493-1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Historically, <a href="https://radar.cloudflare.com/traffic"><u>traffic graphs on Cloudflare Radar</u></a> have displayed two metrics: total traffic and <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http"><u>HTTP</u></a> traffic. These graphs show normalized traffic volumes measured in bytes, derived from aggregated<a href="https://www.kentik.com/kentipedia/what-is-netflow-overview"><u> NetFlow</u></a> data. (NetFlow is a protocol used to collect metadata about IP traffic flows traversing network devices.) Today, we’re adding an additional metric that reflects the number of HTTP requests, normalized over the same time period. By comparing bytes with requests, readers can gain additional insights into traffic patterns and user behavior. Below, we review how this new data has been incorporated into Radar, and explore HTTP request traffic in more detail.</p>
 	<p>Note that while we refer to “HTTP request traffic” in this post and on Radar, the term encompasses requests made in the clear over HTTP <b>and</b> over encrypted connections using HTTPS – the latter accounts for <a href="https://radar.cloudflare.com/adoption-and-usage?dateStart=2024-07-01&amp;dateEnd=2024-07-31"><u>~95% of all requests to Cloudflare during July 2024</u></a>.</p>
@@ -13,33 +13,33 @@
 	</div>
 	<p>Graphs including HTTP request-based traffic data have been added to the Overview and Traffic sections on Cloudflare Radar. On the <a href="https://radar.cloudflare.com"><u>Overview</u></a> page, the “Traffic trends” graph now includes a drop-down selector at the upper right, where you can choose between “Total &amp; HTTP bytes” and “HTTP requests &amp; bytes”. We explore the distinction between these further in the following sections.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JcsgZtjziThbeKMxSUWrT/832e7e83530d2ec396e00ef1624eae63/Screenshot_2024-08-09_at_11.04.05_AM.png" alt="2493-2" class="kg-image" width="936" height="223" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JcsgZtjziThbeKMxSUWrT/2abd7b9aee9920c6f2b58e675254f1b7/Screenshot_2024-08-09_at_11.04.05_AM.png" alt="2493-2" class="kg-image" width="936" height="223" loading="lazy">
 	</figure>
 	<p></p>
 	<p>The default “Total &amp; HTTP bytes” selection displays a time series graph, showing total bytes and HTTP bytes traffic over time, as Radar has done for several years now.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4scdHiTWAUgBgF0mfibZ8c/0f48baa6f660ff5398240356e4563e6b/2493-3.png" alt="2493-3" class="kg-image" width="732" height="309" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4scdHiTWAUgBgF0mfibZ8c/2f82024f4e8b5a96f9795839b5e7e492/2493-3.png" alt="2493-3" class="kg-image" width="732" height="309" loading="lazy">
 	</figure>
 	<p>
 	</p>
 	<p>Selecting “HTTP requests &amp; bytes” from the dropdown switches the view to a time series graph that HTTP requests traffic and HTTP bytes traffic over time. In both graphs, users can click on a metric in the legend to deselect it and remove it from the graph. These (de)selections are maintained when a user chooses to download or save a graph.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oQim0jPqAIzfmPZC1ASOB/724bd201f186dd638d0eaddad3492aeb/2493-4.png" alt="2493-4" class="kg-image" width="732" height="309" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oQim0jPqAIzfmPZC1ASOB/12fc22dfc52a12b0c362df98f44451d6/2493-4.png" alt="2493-4" class="kg-image" width="732" height="309" loading="lazy">
 	</figure>
 	<p></p>
 	<p>In addition, we’ve added a “Protocols” summary next to the graph that shows the share of bytes over the selected time period that HTTP accounts for, and the remaining aggregate share associated with the protocols used by other non-HTTP Cloudflare services (such as DNS, WARP, etc.). For most locations or ASNs, HTTP traffic will comprise the majority share of bytes-based traffic.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4k0EgZW5fnUpOuEdIt0BE/2ec45de4ba47deca9c722d01d2fef79e/Screenshot_2024-08-09_at_11.03.48_AM.png" alt="2493-5" class="kg-image" width="937" height="457" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4k0EgZW5fnUpOuEdIt0BE/4cfd8bd682a11ada069008c541aca07e/Screenshot_2024-08-09_at_11.03.48_AM.png" alt="2493-5" class="kg-image" width="937" height="457" loading="lazy">
 	</figure>
 	<p></p>
 	<p>On Radar’s <a href="https://radar.cloudflare.com/traffic"><u>Traffic</u></a> page, we have added the HTTP requests metric to the “Traffic volume” graph at the top of the page, allowing you to see how request volume has changed during the selected time period as compared to the previous period, in addition to the changes in the bytes-based metrics.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AMP7mv3K6Zk1DooGateDx/1fa8c122ce462a31cd014a3e5711c077/2493-6.png" alt="2493-6" class="kg-image" width="574" height="251" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AMP7mv3K6Zk1DooGateDx/af663823183a0d06c676a873cdfbf59e/2493-6.png" alt="2493-6" class="kg-image" width="574" height="251" loading="lazy">
 	</figure>
 	<p></p>
 	<p>A new standalone request-based “HTTP traffic” graph was also added to the Traffic page, just below the bytes-based “Traffic trends” graph. This new graph shows normalized HTTP request traffic volume across the selected time period, and by default, also compares it with the previous time period.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xVJOTfmnBtYJPzFuvi3iY/b8086f83eb881287f28cb6f05a3af66c/2493-7.png" alt="2493-7" class="kg-image" width="1341" height="374" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xVJOTfmnBtYJPzFuvi3iY/0a179dc7b6a8924efc5f2ece94690535/2493-7.png" alt="2493-7" class="kg-image" width="1341" height="374" loading="lazy">
 	</figure>
 	<p></p>
 	<p>Similar to other Radar graphs, these new HTTP request-based graphs can also be downloaded, copied to the clipboard, or embedded in other websites – just click on the share icon.</p>
@@ -78,7 +78,7 @@
 	<p>The bytes associated with a given request include the size of the request, the size of the headers associated with the response, and the size of the response itself. As noted above, the size of a file returned in response to a request can vary widely, depending on what was requested. The shape of the HTTP requests and HTTP bytes lines may be quite similar, but the potential variability in response sizes (in aggregate) can cause the lines to diverge, sometimes significantly so. For example, if an application regularly makes background requests to check for updates, the availability and subsequent download of a large file containing a software update would cause a spike in the HTTP bytes line, while the HTTP requests pattern remained consistent.&nbsp;</p>
 	<p>As another example, consider the graph below, capturing HTTP requests and bytes traffic trends for Portugal during the first week of August. HTTP bytes traffic initially grows each day between 06:00 and 09:00 UTC (07:00 - 10:00 local summer time), increases much more slowly until around 19:00 UTC (20:00 local summer time), and then increases rapidly before peaking around 21:00 UTC (22:00 local time). This suggests that content consumed during the workday is lighter in terms of bytes (such as API traffic, as discussed above), while evening traffic is more byte-heavy (possibly due to increased consumption of media content). In contrast, after starting to increase around 06:00 UTC (07:00 local summer time), request traffic generally sees three successively higher peaks each day – occurring around 10:00, 14:00, and 21:00 UTC respectively (11:00, 15:00, and 22:00 local summer time). These peaks are most pronounced on weekdays, but are still apparent on weekend days as well, suggesting regular patterns of user activity at those times.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LSadrlwBTmm091qayB6sS/85bc62ecc3007caa6bd52f24850454e6/2493-8.png" alt="2493-8" class="kg-image" width="1494" height="660" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LSadrlwBTmm091qayB6sS/2dc5afb1ce0470f50cfc81325e729100/2493-8.png" alt="2493-8" class="kg-image" width="1494" height="660" loading="lazy">
 	</figure>
 	<p></p>
 	<p>It is important to remember that in looking at the “HTTP requests &amp; bytes” graphs on Radar that they are showing two different metrics, and as such, only their shape over time is comparable, not their relative sizes. (As both metrics are normalized on a 0 to 1 (Max) scale, the lines on the graph are scaled relative to the maximum normalized value of each metric, including the previous period.)</p>

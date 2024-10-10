@@ -1,9 +1,9 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lPFIU0wOHgiyCqlZOljer/b8b581df829f5441a35d7936071a067c/how-replicated-secured-our-remote-dev-environment-with-cloudflare-access.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lPFIU0wOHgiyCqlZOljer/45e5bd71865498977d79f09d26b333c1/how-replicated-secured-our-remote-dev-environment-with-cloudflare-access.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is a guest post by </i><a href="https://www.linkedin.com/in/campbe79"><i>Marc Campbell</i></a><i> and </i><a href="https://www.linkedin.com/in/grantlmiller"><i>Grant Miller</i></a><i>, co-founders of </i><a href="https://www.replicated.com"><i>Replicated</i></a><i>.</i></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59tDCgf4qQsApNapuOKDTx/2e5092738641146d484a2bb2c18882ae/BDES-429_Replicated-Guest-Blog-Post-_2x.png" alt="" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59tDCgf4qQsApNapuOKDTx/e70a691ccf5af8ecff9e4847a2956c25/BDES-429_Replicated-Guest-Blog-Post-_2x.png" alt="" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>Replicated is a 5-year old infrastructure software company with a focus on enabling a new model of enterprise software delivery that we call Kubernetes Off-The-Shelf (KOTS) Software. Our team of 22 is largely technical with a geographic focus on Los Angeles and a few remote team members throughout the US. Our goal is to make it easy to install and operate third party software, so that sending your data to multi-tenant SaaS providers isn’t the only way to use their services. We think that it’s possible and easy to bring the applications to your data, securely and without a lot of operational overhead. While building Replicated, we began using Cloudflare first for DNS and DDoS protection, and over time started to use other Cloudflare services to help keep our services available and secure.</p>
@@ -34,7 +34,7 @@
 	<p>‌‌This configuration has several advantages over a traditional deployment. For one, the server does not have a public IP and we don’t need to have any ports open in the Google Load Balancer, including for SSH. The only way to connect to these servers is through the Argo Tunnel, secured by Cloudflare Access. Access provides a <a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn">BeyondCorp-style</a> method of authentication, this ensures that the environment can be reached from anywhere in the world without the use of a VPN.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yTvHLFlopPBrpiKavwp9M/0c9b06fb175472bf20f7310a67e1bdcd/access-replicated_2x--1-.png" alt="" class="kg-image" width="1638" height="809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yTvHLFlopPBrpiKavwp9M/20930601bc80ab1c00700271c8df8a70/access-replicated_2x--1-.png" alt="" class="kg-image" width="1638" height="809" loading="lazy">
 
 	</figure>
 	<p>BeyondCorp is an elaborate way of saying that all our authentication is managed in a single place. We can write a policy which defines which machines a user should have access to and trust it will be applied everywhere. This means rather than managing SSH certificates which are hard to revoke and long-living, we can allow developers to login with the same Google credentials we use everywhere else! Should, knock on wood, a developer leave, we can revoke those credentials instantly; no more worrying what public keys they still might have lying around.</p>
@@ -108,7 +108,7 @@ sudo cloudflared service install</code></pre>
 	<p>3. &nbsp;Write an Access policy to allow only you to access your machine‌‌</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4k99GpxptgqdnQe90zpZPe/9c0e46714e1d2f663fb75be7f310adf0/AccessPolicy.png" alt="" class="kg-image" width="1460" height="1334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4k99GpxptgqdnQe90zpZPe/9d2eaadfd89f8539345f7aa8e9ddc781/AccessPolicy.png" alt="" class="kg-image" width="1460" height="1334" loading="lazy">
 
 	</figure>
 	<p>‌4. Configure your local machine to SSH via Cloudflare:‌‌</p>

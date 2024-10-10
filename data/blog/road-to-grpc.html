@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8yumfi3N8b2OaUtMbTeLj/5a0411fc8ffb30e9eb38bf5d1649ed7d/image1-38.png" alt="" class="kg-image" width="2000" height="950" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8yumfi3N8b2OaUtMbTeLj/fa69604b79cf96671d6f1d798fba8621/image1-38.png" alt="" class="kg-image" width="2000" height="950" loading="lazy">
 
 	</figure>
 	<p>Cloudflare launched support for <a href="https://blog.cloudflare.com/announcing-grpc">gRPC</a>® during our 2020 Birthday Week. We’ve been humbled by the immense interest in the beta, and we’d like to thank everyone that has applied and tried out gRPC! In this post we’ll do a deep-dive into the technical details on how we implemented support.</p>
@@ -37,7 +37,7 @@
 	<p>Here is a simple example of a gRPC request and response in HTTP/2 frames:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MTBNtDhBqIvqND3l0Fv1w/6307b312552e255040c74c8655737287/image3-24.png" alt="" class="kg-image" width="1080" height="579" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MTBNtDhBqIvqND3l0Fv1w/95fdfb416852a592ce0b05d66dec5865/image3-24.png" alt="" class="kg-image" width="1080" height="579" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -63,7 +63,7 @@
 	<p>Due to these reasons, gRPC requests would break when proxied through our network. To overcome these limitations, we looked at various solutions. For example, NGINX has <a href="https://www.nginx.com/blog/nginx-1-13-10-grpc">a gRPC upstream module</a> to support HTTP/2 gRPC origin, but it’s a separate module, and it also requires HTTP/2 downstream, which cannot be used for our service, as requests cascade through multiple HTTP proxies in some cases. Using HTTP/2 everywhere in the pipeline is not realistic, because of the characteristics of <a href="https://blog.cloudflare.com/keepalives-considered-harmful">our internal load balancing architecture</a>, and because it would have taken too much effort to make sure all internal traffic uses HTTP/2.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3p9teukTmZfs4wcyWggUZr/e738ee5e0dfa6a6582bbe25eb4b20295/image2-25.png" alt="" class="kg-image" width="2000" height="451" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3p9teukTmZfs4wcyWggUZr/07ab8bf40f0bfe57338d3ae770a8bb93/image2-25.png" alt="" class="kg-image" width="2000" height="451" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

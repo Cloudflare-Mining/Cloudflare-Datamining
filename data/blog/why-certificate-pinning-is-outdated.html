@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53OxQEDIwH8W1WEf7Gpeej/02d1d7653bdb34da9f44b8a6a2cb0a08/image1-11.png" alt="Avoiding downtime: modern alternatives to outdated certificate pinning practices" class="kg-image" width="766" height="465" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53OxQEDIwH8W1WEf7Gpeej/750904f31665823959ba414038bb154a/image1-11.png" alt="Avoiding downtime: modern alternatives to outdated certificate pinning practices" class="kg-image" width="766" height="465" loading="lazy">
 
 	</figure>
 	<p>In today’s world, technology is quickly evolving and some practices that were once considered the gold standard are quickly becoming outdated. At Cloudflare, we stay close to industry changes to ensure that we can provide the best solutions to our customers. One practice that we’re continuing to see in use that no longer serves its original purpose is certificate pinning. In this post, we’ll dive into certificate pinning, the consequences of using it in today’s <a href="https://www.cloudflare.com/en-gb/learning/ssl/how-does-public-key-encryption-work">Public Key Infrastructure (PKI)</a> world, and alternatives to pinning that offer the same level of security without the management overhead. &nbsp;</p>
@@ -20,14 +20,14 @@
 	<p>Certificate pinning is not a new practice, so why are we emphasizing the need to stop using it <i>now</i>? The reason is that the PKI ecosystem is moving towards becoming more agile, flexible, and secure. As a part of this change, <a href="https://www.ssl.com/article/what-is-a-certificate-authority-ca">certificate authorities (CAs)</a> are starting to rotate certificates and their intermediates, certificates that bridge the root certificate and the domain certificate, more frequently to improve security and encourage automation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bcPbw10tESD1qHK6cP9yE/811019c7797012cb5da6f7a16da75ba9/image3-12.png" alt="" class="kg-image" width="678" height="738" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bcPbw10tESD1qHK6cP9yE/ac3f3df18f10a8a4595386a49a7ecd07/image3-12.png" alt="" class="kg-image" width="678" height="738" loading="lazy">
 
 	</figure>
 	<p>These more frequent certificate rotations are problematic from a pinning perspective because certificate pinning relies on the exact matching of certificates. When a certificate is rotated, the new certificate might not match the pinned certificate on the client side. If the pinned certificate is not updated to reflect the contents of the rotated certificate, the client will reject the new certificate, even if it’s valid and issued by the same CA. This mismatch leads to a failure in establishing a secure connection, causing the domain or application to become inaccessible until the pinned certificate is updated.</p>
 	<p>Since the start of 2024, we have seen the number of customer reported outages caused by certificate pinning significantly increase. (As of this writing, we are part way through July and Q3 has already seen as many outages as the last three quarters of 2023 combined.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1U4AFw29oL1GCcen93rnYr/fb57f9acb44b5ca82dac0f1a6291b154/image4-4.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1U4AFw29oL1GCcen93rnYr/5dea495d82170011725de472cfd7f98a/image4-4.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>We can attribute this rise to two major events: Cloudflare migrating away from using DigiCert as a certificate authority and Google and Let’s Encrypt intermediate CA rotations.</p>
@@ -65,7 +65,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38pDF476Nnjx7acXBN5eTM/2dc003db045d9e371331dfefdb1dbe9a/image2-8.png" alt="" class="kg-image" width="512" height="288" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38pDF476Nnjx7acXBN5eTM/ece6376485bb5232e4574d05c7294564/image2-8.png" alt="" class="kg-image" width="512" height="288" loading="lazy">
 
 	</figure>
 	<p>The CAs that Cloudflare partners with, <a href="https://letsencrypt.org">Let’s Encrypt</a> and <a href="https://pki.goog">Google Trust Services</a>, are starting to rotate their intermediate CAs more frequently. This increased rotation is beneficial from a security perspective because it limits the lifespan of intermediate certificates, reducing the window of opportunity for attackers to exploit a compromised intermediate. Additionally, regular rotations make it easier to revoke an intermediate certificate if it becomes compromised, enhancing the overall security and resiliency of the PKI ecosystem.</p>

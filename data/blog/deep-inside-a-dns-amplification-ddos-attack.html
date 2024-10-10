@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FYBrVa8C0gIUsmIX7c2id/ab6e20e98fada3fe11712627ef684c2c/amplification.gif.scaled500.gif" alt="Deep Inside a DNS Amplification DDoS
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FYBrVa8C0gIUsmIX7c2id/887acb7e433a3f965a88d2c2425bb593/amplification.gif.scaled500.gif" alt="Deep Inside a DNS Amplification DDoS
 Attack" class="kg-image" width="271" height="258" loading="lazy">
 
 	</figure>
@@ -21,13 +21,13 @@ Attack" class="kg-image" width="271" height="258" loading="lazy">
 	<p><a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack">DNS Amplification Attacks</a> are a way for an attacker to magnify the amount of bandwidth they can target at a potential victim. Imagine you are an attacker and you control a botnet capable of sending out 100Mbps of traffic. While that may be sufficient to knock some sites offline, it is a relatively trivial amount of traffic in the world of DDoS. In order to increase your attack's volume, you could try and add more compromised machines to your botnet. That is becoming increasingly difficult. Alternatively, you could find a way to amplify your 100Mbps into something much bigger.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KWlUrWlV2lKDfXcF659H8/0fd177d8fa4ac37557beea9f44681ecc/jokey_smurf_attack.jpg.scaled500.jpg" alt="Deep Inside a DNS Amplification DDoS Attack" class="kg-image" width="300" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KWlUrWlV2lKDfXcF659H8/2759a9835a5bf0b3882751920828f741/jokey_smurf_attack.jpg.scaled500.jpg" alt="Deep Inside a DNS Amplification DDoS Attack" class="kg-image" width="300" height="300" loading="lazy">
 
 	</figure>
 	<p>The original amplification attack was known as a <a href="https://www.cloudflare.com/learning/ddos/smurf-ddos-attack">SMURF attack</a>. A SMURF attack involves an attacker sending <a href="https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp">ICMP</a> requests (i.e., ping requests) to the network's broadcast address (i.e., X.X.X.255) of a router configured to relay ICMP to all devices behind the router. The attacker spoofs the source of the ICMP request to be the IP address of the intended victim. Since ICMP does not include a handshake, the destination has no way of verifying if the source IP is legitimate. The router receives the request and passes it on to all the devices that sit behind it. All those devices then respond back to the ping. The attacker is able to amplify the attack by a multiple of how ever many devices are behind the router (i.e., if you have 5 devices behind the router then the attacker is able to amplify the attack 5x, see the diagram below).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3O75rdntqtBWfPBJewha1g/28625f3614343d3940564a863cc86c67/smurf_attack_diagram.png.scaled500.png" alt="Deep Inside a DNS Amplification DDoS Attack" class="kg-image" width="500" height="276" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3O75rdntqtBWfPBJewha1g/3ca0a6429d9e614604aef7947d69d8f2/smurf_attack_diagram.png.scaled500.png" alt="Deep Inside a DNS Amplification DDoS Attack" class="kg-image" width="500" height="276" loading="lazy">
 
 	</figure>
 	<p>SMURF attacks are largely a thing of the past. For the most part, network operators have configured their routers to not relay ICMP requests sent to a network's broadcast address. However, even as that amplification attack vector has closed, others remain wide open.</p>

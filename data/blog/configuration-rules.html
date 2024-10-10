@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kV3fUHE104APTLu7AmFm8/7eab1445aa7a811f1fc244ea56cc955a/image5-18.png" alt="Introducing Configuration Rules" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2kV3fUHE104APTLu7AmFm8/884e866bad3ecdaeb4287f5fc94ba4e5/image5-18.png" alt="Introducing Configuration Rules" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -32,7 +32,7 @@
 	<p>The issue arises when users want to enable these features, such as Polish or Auto Minify, only on a subset of the traffic to their website. For example, users may want to disable Email Obfuscation but only for a specific page on their website so that contact information is shown correctly to visitors. To do this, they can deploy a <b>Configuration Rule.</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lCHWaSYhQ6dCCY4l7auNM/f7b065ee08efb92384b151d815320162/image6-9.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lCHWaSYhQ6dCCY4l7auNM/d937ed4b350a30d95f54e7fec70e46dc/image6-9.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
 
 	</figure>
 	<p>Configuration Rules lets users selectively enable or disable features based on one or more ruleset engine <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a>.</p>
@@ -40,13 +40,13 @@
 	<p>These actions effectively ‘override’ the corresponding zone-wide setting for matching traffic. For example, Rocket Loader may be enabled for the zone <code>example.com</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pDnBa8tNufAha85zYcwuV/2bed0f190d8f19f73470c9e8265b7401/image1-60.png" alt="" class="kg-image" width="1058" height="219" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pDnBa8tNufAha85zYcwuV/db55216d9fd961bacd1b2939c0253471/image1-60.png" alt="" class="kg-image" width="1058" height="219" loading="lazy">
 
 	</figure>
 	<p>If the user, however, does not want Rocket Loader to be enabled on their checkout page due to an issue it causes with a specific JavaScript element, they could create a Configuration Rule to selectively disable Rocket Loader:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VekSaqhCwY7LzR1X5fzxl/a9aee5a8a61f61d10826a4f492b8a8b8/image7-6.png" alt="" class="kg-image" width="1107" height="195" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VekSaqhCwY7LzR1X5fzxl/486a347031c530961a7e22e0796fdf00/image7-6.png" alt="" class="kg-image" width="1107" height="195" loading="lazy">
 
 	</figure>
 	<p>This interplay between zone level settings and Configuration Rules allows users to selectively enable features, allowing them to test Rocket Loader on <code>staging.example.com</code> prior to flipping the zone-level toggle.</p>
@@ -67,14 +67,14 @@
 	<p>In a Cloudflare context, users might want to A/B test the effect of features such as Mirage or Polish prior to enabling them for all traffic to the website. With Page Rules, this was impractical. Users would have to create Page Rules matching on specific URI query strings and A/B test by appending those query strings to every HTTP request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sDX4fz5R0yYVwYjGOHqIR/468dc79ccaed0e6046b1fc0bd7639cdd/image2-51.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sDX4fz5R0yYVwYjGOHqIR/b3c74589103361deb70e6b41d03c4b5d/image2-51.png" alt="" class="kg-image" width="1084" height="389" loading="lazy">
 
 	</figure>
 	<p>With Configuration Rules, this task is much simpler. Leveraging one or more <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a>, users can filter on other parameters of a HTTP request to define which features and products to enable.</p>
 	<p>For example, by using the expression <code>any(http.request.cookies["app"][*] == "test")</code> a user can ensure that Auto Minify, Mirage and Polish are enabled only when this cookie is present on the HTTP request. This allows comparison testing to happen before enabling these products either globally, or on a wider set of traffic. All without impacting existing production traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xSw4yjv18WugHyW3FFUBD/ef6dd08c031e8524080b6ced7b170125/image4-18.png" alt="" class="kg-image" width="1999" height="1083" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xSw4yjv18WugHyW3FFUBD/0a8cd5a53cbef56107e4d1b33fdff2d6/image4-18.png" alt="" class="kg-image" width="1999" height="1083" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -90,7 +90,7 @@
 	<p>Configuration Rules can take this use case and augment it with additional fields, such as whether the source IP address is in a Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists/#managed-ip-lists">Managed IP List</a>. This allows users to be more specific about when the security level is changed to ‘High’, such as only when the request <i>also</i> is marged as coming from an open HTTP and SOCKS proxy endpoints, which are frequently used to launch attacks and hide attackers identity:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gTfYrqfIMypitpU8oxngo/98399f56267f10f7502fe809a3688fe3/image3-35.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gTfYrqfIMypitpU8oxngo/ac7f71dd2ad2bac606b87635efd9158f/image3-35.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
 
 	</figure>
 	<p>This reduces the chance of a false positive, and a genuine visitor to the contact form being served with a challenge.</p>

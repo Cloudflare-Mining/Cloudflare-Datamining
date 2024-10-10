@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vts7EELfGtvXeEkzKzM3B/4d2de66e62ff002fa8e45816daa553de/image3-14.png" alt="Building Cloudflare Images in Rust and Cloudflare Workers" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vts7EELfGtvXeEkzKzM3B/0bed2d7c96c8cdb043a810e2c64c96e9/image3-14.png" alt="Building Cloudflare Images in Rust and Cloudflare Workers" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>This post explains how we implemented the Cloudflare Images product with reusable Rust libraries and Cloudflare Workers. It covers the technical design of <a href="https://developers.cloudflare.com/image-resizing">Cloudflare Image Resizing</a> and Cloudflare Images. Using Rust and Cloudflare Workers helps us quickly iterate and deliver product improvements over the coming weeks and months.</p>
@@ -30,7 +30,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LlxMguVop5gSnpNNOszTn/aec1fab20dd5052d7fa48bad0edd38fb/image-resizing-diagram.png" alt="Image Resizing request flow" class="kg-image" width="921" height="752" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LlxMguVop5gSnpNNOszTn/b14d2635eabab9622b6b7dcbada2f408/image-resizing-diagram.png" alt="Image Resizing request flow" class="kg-image" width="921" height="752" loading="lazy">
 
 	</figure>
 	<p>The Image Resizing service runs at the edge and is deployed on every server of the Cloudflare global network. Thanks to Cloudflare's global Anycast network, the closest Cloudflare data center will handle eyeball image resizing requests. Image Resizing is tightly integrated with the Cloudflare cache and handles eyeball requests only on a cache miss.</p>
@@ -46,7 +46,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uCiQpHMXkjdKzBhvIruxh/4b49ad0bdfc5886cd74641c5e1bc01cc/DES-3375-2.png" alt="How Cloudflare Images work" class="kg-image" width="1130" height="787" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uCiQpHMXkjdKzBhvIruxh/1c1930777fee1539e201b30eb9bf530a/DES-3375-2.png" alt="How Cloudflare Images work" class="kg-image" width="1130" height="787" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Images consists of the following components:</p>
@@ -161,25 +161,25 @@
 	<p>A signed URL looks like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5M87aEfnYeWRuAJk9MJaI0/ed1669cc90395cb8c2401fb4e277ccc2/signed-1.png" alt="example of signed URL" class="kg-image" width="2048" height="143" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5M87aEfnYeWRuAJk9MJaI0/c8d289f755d39a2885fc247358f9a32a/signed-1.png" alt="example of signed URL" class="kg-image" width="2048" height="143" loading="lazy">
 
 	</figure>
 	<p>A signed URL with an expiration timestamp looks like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cVOACVdzpkmfB6BHXsxk/a9200fd34c88c83a9d892cbe014164c3/signed-2.png" alt="example of signed URL with expiration" class="kg-image" width="2048" height="115" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cVOACVdzpkmfB6BHXsxk/23c586690ee6d72a0460f866b8f7bcdf/signed-2.png" alt="example of signed URL with expiration" class="kg-image" width="2048" height="115" loading="lazy">
 
 	</figure>
 	<p>Signature of /hello/world URL with a secret ‘this is a secret’ is <code>6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34</code>.</p>
 	<p><code>https://imagedelivery.net/hello/world?sig=6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SZF6WjgpV8GjeqEFbT9Yk/9019b903301df7ec332238c066c87a74/JS.png" alt="example of signature generation in JavaScript" class="kg-image" width="1428" height="422" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SZF6WjgpV8GjeqEFbT9Yk/516d7148a25154db914bd6f41f685a3b/JS.png" alt="example of signature generation in JavaScript" class="kg-image" width="1428" height="422" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nkNNkzLLNwZAYLSzt6NPI/309076f840fb29d3961565beed5d4a22/Rust.png" alt="example of signature generation in Rust" class="kg-image" width="1420" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nkNNkzLLNwZAYLSzt6NPI/3696a549ae7cee402d4d335419b88c19/Rust.png" alt="example of signature generation in Rust" class="kg-image" width="1420" height="500" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

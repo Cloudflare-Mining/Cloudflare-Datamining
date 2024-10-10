@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3y5ATrfMtMfpdbyB9kJlz8/ddb46643d0df836f170f1c65ec6779e2/download--1--3.png" alt="" class="kg-image" width="868" height="448" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3y5ATrfMtMfpdbyB9kJlz8/bb381e09b5d22635ecf09255a37d9041/download--1--3.png" alt="" class="kg-image" width="868" height="448" loading="lazy">
 
 	</figure>
 	<p>In January 2021, we gave you a behind-the-scenes look at how we built <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects">Waiting Room on Cloudflare’s Durable Objects</a>. Today, we are thrilled to announce the launch of Waiting Room Analytics and tell you more about how we built this feature. Waiting Room Analytics offers insights into end-user experience and provides visualizations of your waiting room traffic. These new metrics enable you to make well-informed configuration decisions, ensuring an optimal end-user experience while protecting your site from overwhelming traffic spikes.</p>
@@ -11,7 +11,7 @@
 	<p>Up until now, customers could only monitor their waiting room's status endpoint to get a general idea of waiting room traffic. This endpoint displays the current number of queued users, active users on the site, and the estimated wait time shown to the last user in line.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fOglidb4tQ5LGfkrUOPu4/cebf4f697d95e0fde594fffb76254504/a1.png" alt="" class="kg-image" width="1600" height="266" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fOglidb4tQ5LGfkrUOPu4/f085a0622740f08ca10a6483d950c1ed/a1.png" alt="" class="kg-image" width="1600" height="266" loading="lazy">
 
 	</figure>
 	<p>The status endpoint is still a great tool for at a glance understanding of the near real-time status of a waiting room. However, there were many questions customers had about their waiting room that were either difficult or impossible to answer using the status endpoint, such as:</p>
@@ -53,21 +53,21 @@
 	<p>To access metrics for a waiting room, navigate to the Waiting Room dashboard, where you can find pre-built visualizations of your waiting room traffic. The dashboard offers at-a-glance metrics for the peak waiting room traffic over the last 24 hours.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TCj0fwsD4c8wpZ5dhHuw1/4a6cb69865e2aa8b083e0720bfd81155/a2.png" alt="Get at-a-glance metrics of the last 24 hours of Waiting Room traffic." class="kg-image" width="1600" height="990" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TCj0fwsD4c8wpZ5dhHuw1/4cf9ab0f5845ee600e919b2b11ce78ba/a2.png" alt="Get at-a-glance metrics of the last 24 hours of Waiting Room traffic." class="kg-image" width="1600" height="990" loading="lazy">
 
 	</figure>
 	<p>Get at-a-glance metrics of the last 24 hours of Waiting Room traffic.</p>
 	<p>To dig deeper and analyze up to 30 days of historical data, open your waiting room's analytics by selecting View more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nveI9Qo2i6q2dS8evggsm/557a98a792caab2f7cdb7502eaa21882/a3.gif" alt="Review up to 30 days of waiting room metrics by selecting View more." class="kg-image" width="600" height="338" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nveI9Qo2i6q2dS8evggsm/33bbb59edda0ce303b75c3fb5602e682/a3.gif" alt="Review up to 30 days of waiting room metrics by selecting View more." class="kg-image" width="600" height="338" loading="lazy">
 
 	</figure>
 	<p>Review up to 30 days of waiting room metrics by selecting View more.</p>
 	<p>Alternatively, we've made it easy to hone in on analytics for a past <a href="https://blog.cloudflare.com/waiting-room-event-scheduling">waiting room event</a> (within the last 30 days). You can automatically open the analytics dashboard to a past event's exact start and end time, including the pre-queueing period by selecting the blue link in the events table.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Kexln2cQOSi7n27rMgR8V/47595acd8a7ce410c2d31ca4bb622d2f/a4.png" alt="To get data tied to a past event, simply select the link in the Waiting Room Events table." class="kg-image" width="1600" height="990" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Kexln2cQOSi7n27rMgR8V/47445b0c5f1ba495588cc3aa91acf9f2/a4.png" alt="To get data tied to a past event, simply select the link in the Waiting Room Events table." class="kg-image" width="1600" height="990" loading="lazy">
 
 	</figure>
 	<p>To get data tied to a past event, simply select the link in the Waiting Room Events table.</p>
@@ -75,7 +75,7 @@
 	<p>The first two metrics–Time in queue and Time on origin–provide insights into your end-users' experience and behavior. &nbsp;The <i>time in queue</i> values help you understand how long queued users waited before accessing your site over the time period selected. The <i>time on origin</i> values shed light on end-user behavior by displaying an estimate of the range of time users spend on your site before leaving. If session renewal is disabled, this time will max out at session_duration and reflect the time at which users are issued a new waiting room cookie. For both metrics, we provide time for both the typical user, represented by a range of the 50th and 75th percentile of users, as well as for the top 5% of users who spend the longest in the queue or on your site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xYxDmpcV3mPLEuhtz3ukJ/95cda7209ea2c154eee2db8cd2c3d6e6/a5.png" alt="The Time in queue and Time on origin are given for the typical user as well as for the 95th percentile of users." class="kg-image" width="1412" height="696" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xYxDmpcV3mPLEuhtz3ukJ/cca9e9d5f5f82179d5dc8aea74ef0b82/a5.png" alt="The Time in queue and Time on origin are given for the typical user as well as for the 95th percentile of users." class="kg-image" width="1412" height="696" loading="lazy">
 
 	</figure>
 	<p>The Time in queue and Time on origin are given for the typical user as well as for the 95th percentile of users.</p>
@@ -84,27 +84,27 @@
 	<p>Scrolling down the page, you will find visualizations of your user traffic compared to your waiting room's target thresholds for Total active users and New users per minute. These two settings determine when your waiting room will start queueing as traffic increases. The Total active users setting controls the number of concurrent users on your site, while the New users per minute threshold restricts the flow rate of users onto your site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15dYn07CaChldpZOoTqLvq/c63a1f7e271ce3aa79a72cb8ab1a8ce5/a6.gif" alt="" class="kg-image" width="600" height="338" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15dYn07CaChldpZOoTqLvq/3fc7a2f9c653e44dbca630ff0cddaf4b/a6.gif" alt="" class="kg-image" width="600" height="338" loading="lazy">
 
 	</figure>
 	<p><i>To zoom in on a time period, you can drag your cursor from the left to the right of the time period you are interested in and the other graphs, in addition to the insights will update to reflect this time period.</i></p>
 	<p>On the Active users graph, each bar represents the maximum number of queued users stacked on top of the maximum number of users on your site at that point in time. The example below shows how the waiting room kicked in at different times with respect to the active user threshold. The total length of the bar illustrates how many total users were either on the site or waiting to enter the site at that point in time, with a clear divide between those two values where the active user threshold kicked in. Hover over any bar to display a tooltip with the exact values for the period you are interested in.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GGSRvWJYGx6KxOTALOxZU/20e879643a9f9bda21906edcb7fc81cd/a7.png" alt="" class="kg-image" width="1600" height="993" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GGSRvWJYGx6KxOTALOxZU/e9a95d8519905c2d96855a18a96363df/a7.png" alt="" class="kg-image" width="1600" height="993" loading="lazy">
 
 	</figure>
 	<p>Easily identify peak traffic and when waiting room started queuing to protect your site from a traffic surge.</p>
 	<p>Below the Active users chart is the New users per minute graph, which shows the rate of users entering your application per minute compared to your configured threshold. Make sure to review this graph to identify any surges in the rate of users to your application that may have caused queueing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18ARuNhm8JUrclAZ1qzxHj/92b7e37c984138ac43ce126477eb1bfd/a8.png" alt="" class="kg-image" width="1600" height="767" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18ARuNhm8JUrclAZ1qzxHj/be86627ff03979b62b71ef6946114b43/a8.png" alt="" class="kg-image" width="1600" height="767" loading="lazy">
 
 	</figure>
 	<p>The New users per minute graph helps you identify peaks in the rate of users entering your site which triggered queueing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L7rMLgDdWh4rbyfAwGMdW/3272368879ab31f18c79c7c79192dc0b/a9.png" alt="" class="kg-image" width="1600" height="909" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6L7rMLgDdWh4rbyfAwGMdW/1f8f6f3156c988bc2fa93c7f0f0f3c64/a9.png" alt="" class="kg-image" width="1600" height="909" loading="lazy">
 
 	</figure>
 	<p>This graph shows queued user and active user data from the same time period as the spike seen in New users per minute graph above. When analyzing your waiting room’s metrics, be sure to review both graphs to understand which Waiting Room traffic setting triggered queueing and to what extent.</p>
@@ -124,7 +124,7 @@
 	<p>The Time on origin values will give you an idea of how long users need before leaving your site. In the example below, the session duration is set to 10 minutes but even the users who spend the longest only spend around 5 minutes on the site. With the session renewal disabled, this customer could reduce wait times by decreasing the session duration to 5 minutes without disruption to most users, allowing for more users to get access.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74sEnoEXPq6KHfToDvxG3G/2b7695de173df3756a2fec70f3c2a127/a10.png" alt="" class="kg-image" width="1498" height="394" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74sEnoEXPq6KHfToDvxG3G/abaa9a81a20dbf326f2cf0b358b639df/a10.png" alt="" class="kg-image" width="1498" height="394" loading="lazy">
 
 	</figure>
 	<p><b>Adjust Total active users or New users per minute settings.</b> Lastly, you can decrease wait times by increasing your waiting room’s traffic limits–Total active users or New users per minute. This is the most sure-fire way to reduce wait times but it also requires more consideration. Before increasing either limit, you will need to evaluate if it is safe to do so and make small, iterative adjustments to these limits, monitoring certain signals to ensure your origin is still able to handle the load. A few things to consider monitoring as you adjust settings are origin CPU usage and memory utilization, and increases in 5xx errors which can be reviewed in Cloudflare’s Web Analytics tab. Analyze historical traffic patterns during similar events or periods of high demand. If you observe that previous traffic surges were successfully managed without site instability or crashes, it provides a strong signal that you can consider increasing waiting room limits.</p>
@@ -142,7 +142,7 @@
 	<h4>Collection of metrics in a distributed environment</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5PhNDWwGlL9HyuZhyh5zSK/4f661e3b49de84e6d25795f7e4366fbb/a11.png" alt="The Waiting Room is a distributed system that receives requests from multiple locations around the globe" class="kg-image" width="1600" height="992" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PhNDWwGlL9HyuZhyh5zSK/2efde37fe13c8293cb4d99fd636ec73d/a11.png" alt="The Waiting Room is a distributed system that receives requests from multiple locations around the globe" class="kg-image" width="1600" height="992" loading="lazy">
 
 	</figure>
 	<p>The Waiting Room is a distributed system that receives requests from multiple locations around the globe</p>
@@ -152,7 +152,7 @@
 	<p>We decided to use the existing pipeline that is used for Waiting Room routing for analytics. Data aggregated this way provides more value to customers as it matches the model we use for routing decisions. Therefore, customers can see directly how changing their settings affects waiting room behavior. Also, it is an optimization in terms of space. Instead of writing analytics data per request, we are writing a pre-processed and aggregated analytics log every minute. This way the data is much less noisy.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yadAlbwltDgqZeYQwN4nf/ea10ae76561ec673cb0a61c8a9fe7e63/a12.png" alt="" class="kg-image" width="1600" height="991" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yadAlbwltDgqZeYQwN4nf/ac4e6782682ea83e94e0f171d1b8bf25/a12.png" alt="" class="kg-image" width="1600" height="991" loading="lazy">
 
 	</figure>
 	<p>This diagram depicts that multiple workers from different locations receive requests and talk to the data center coordinators respectively which aggregate data and report the aggregated keys upstream to the Global Durable Object. The Global Durable Objects further aggregate all the keys received from the data center coordinators to compute a global aggregate key.</p>

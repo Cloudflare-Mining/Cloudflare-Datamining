@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gNQvxZ6I9cTwFSRjR5MUY/684b62f3d694c4d0380693d89cf3f0c1/edge-side-includes-with-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gNQvxZ6I9cTwFSRjR5MUY/1a76149a8917e75e5bcac5d5608b0859/edge-side-includes-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we’re accelerating web assets in a number of different ways. Part of this is <a href="https://www.cloudflare.com/cdn">caching</a>, by storing the response given by the origin server directly within our <a href="https://www.cloudflare.com/network">151+ global data centers</a>. This will dramatically improve the delivery of the resources as the visitor will directly get them from the data center closest to them, instead of waiting for us to fetch the request from the origin web server.</p>
 	<div class="flex anchor relative">
@@ -24,7 +24,7 @@
 	<p>The Edge-Side-Includes standard has been submitted to the W3C (<a href="https://www.w3.org/TR/esi-lang">https://www.w3.org/TR/esi-lang</a>) in August 2001 and defines an XML markup language that can be inserted in HTML or other text based contents which defines how interstitial proxies/CDNs need to combine static and dynamic portion and were to get them. The result is that it’s possible to keep those 99% in cache and for the remaining 1%, the interstitial cache proxy will fetch directly from the destination defined in the Edge-Side-Include block for finally combining both static and dynamic parts and sending the final webpage to the visitor.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31aYZUXaOHwqH6Aw2OQVqn/eae0f89120c79b5486c6fb0557263598/static-and-dynamic-content-diagram-blog-post-edge-side-workers_2x-1.png" alt="static-and-dynamic-content-diagram-blog-post-edge-side-workers@2x-1" class="kg-image" width="1474" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31aYZUXaOHwqH6Aw2OQVqn/a89c67de77722e00e6c27173d03a8bea/static-and-dynamic-content-diagram-blog-post-edge-side-workers_2x-1.png" alt="static-and-dynamic-content-diagram-blog-post-edge-side-workers@2x-1" class="kg-image" width="1474" height="480" loading="lazy">
 
 	</figure>
 	<p>ESI block example:</p>
@@ -315,7 +315,7 @@ async function translate(chunks) {
 	<p>and the page looks like this</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tCYMjbCNgA3iSj8ys9n2x/896c3857eaa97048225d090e1ca23259/ESI_Demonstration.jpg" alt="ESI_Demonstration" class="kg-image" width="768" height="576" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tCYMjbCNgA3iSj8ys9n2x/5ceaf30d5b3399e2c11eba854fe5f5a7/ESI_Demonstration.jpg" alt="ESI_Demonstration" class="kg-image" width="768" height="576" loading="lazy">
 
 	</figure>
 	<p>The most interesting comes from the cf-cache-status where we can see that the page is actually coming from our cache but the worker modified the payload as he detected an ESI block.</p>

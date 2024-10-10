@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vy7jqCfIMxTuvDhya2fKs/59cd3be6332ed34f65ab94c025533b77/unnamed-1.png" alt="The mechanics of a sophisticated phishing scam and how we stopped it" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vy7jqCfIMxTuvDhya2fKs/a453ffa6dc931126a0e1a8c536608596/unnamed-1.png" alt="The mechanics of a sophisticated phishing scam and how we stopped it" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Yesterday, August 8, 2022, Twilio shared that they’d been <a href="https://www.twilio.com/blog/august-2022-social-engineering-attack">compromised by a targeted phishing attack</a>. Around the same time as Twilio was attacked, we saw an attack with very similar characteristics also targeting Cloudflare’s employees. While individual employees did fall for the phishing messages, we were able to thwart the attack through our own use of <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One products</a>, and physical security keys issued to every employee that are required to access all our applications.</p>
@@ -22,7 +22,7 @@
 	<p>The text messages received by employees looked like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NzSGBSGfCogIk4BXWmXND/76382ee75c3872d29c6c2b023a283c90/image3-5.png" alt="" class="kg-image" width="1125" height="945" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NzSGBSGfCogIk4BXWmXND/cb4bc7d2f174f8b360b7c51664e71f66/image3-5.png" alt="" class="kg-image" width="1125" height="945" loading="lazy">
 
 	</figure>
 	<p>They came from four phone numbers associated with T-Mobile-issued SIM cards: (754) 268-9387, (205) 946-7573, (754) 364-6683 and (561) 524-5989. They pointed to an official-looking domain: cloudflare-okta.com. That domain had been registered via Porkbun, a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">domain registrar</a>, at 2022-07-20 22:13:04 UTC — less than 40 minutes before the phishing campaign began.</p>
@@ -30,7 +30,7 @@
 	<p>If you clicked on the link it took you to a phishing page. The phishing page was hosted on DigitalOcean and looked like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32GWziRZv7ijycvETvNHny/4b035b835266f98a7dcc201792477f3b/image1-13.png" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32GWziRZv7ijycvETvNHny/58f811265c86872398b876d64f65a55d/image1-13.png" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
 
 	</figure>
 	<p>Cloudflare uses Okta as our identity provider. The phishing page was designed to look identical to a legitimate Okta login page. The phishing page prompted anyone who visited it for their username and password.</p>
@@ -46,7 +46,7 @@
 	<p>Presumably, the attacker would receive the credentials in real-time, enter them in a victim company’s actual login page, and, for many organizations that would generate a code sent to the employee via SMS or displayed on a password generator. The employee would then enter the TOTP code on the phishing site, and it too would be relayed to the attacker. The attacker could then, before the TOTP code expired, use it to access the company’s actual login page — defeating most two-factor authentication implementations.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kHLCU7dpKptSuJXwOy39X/619ad28ead023a2ee8d9de9952ee62e2/image2-6.png" alt="" class="kg-image" width="951" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kHLCU7dpKptSuJXwOy39X/0da593615149665ba8f7360e4232a996/image2-6.png" alt="" class="kg-image" width="951" height="332" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

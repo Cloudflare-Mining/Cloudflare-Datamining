@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RIG87YLutsk2XgorZiRtJ/6b2cf5d55d467393976bee25dd747fcd/Grant_mechanical_calculating_machine_1877-1.jpg" alt="" class="kg-image" width="1401" height="897" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RIG87YLutsk2XgorZiRtJ/ce6be7acbcfd1f3e216fee12c0553999/Grant_mechanical_calculating_machine_1877-1.jpg" alt="" class="kg-image" width="1401" height="897" loading="lazy">
 
 	</figure>
 	<p>Grant mechanical calculating machine, public domain <a href="https://en.wikipedia.org/wiki/File:Grant_mechanical_calculating_machine_1877.jpg">image</a></p>
@@ -11,7 +11,7 @@
 	<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe this… tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04">Marek Majkowski</a> after what I heard was a long night:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2z8UE9I87Kpw8ONzxBH3WW/f0b53a3e98de0679961d4cb25f3bf05d/ebpf_bug_email_netdev.png" alt="" class="kg-image" width="1486" height="710" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2z8UE9I87Kpw8ONzxBH3WW/96500c2ee678248af9c22936bb49cdee/ebpf_bug_email_netdev.png" alt="" class="kg-image" width="1486" height="710" loading="lazy">
 
 	</figure>
 	<p>Marek's findings were quite shocking - if you subtract two 64-bit timestamps in eBPF, the result is garbage. But only when running as an unprivileged user. From root all works fine. Huh.</p>
@@ -91,7 +91,7 @@ $ sudo bpftool prog dump xlated id 659
 	<p>To mitigate it the eBPF verifier rewrites any arithmetic operations on pointer values in such a way the result is always a memory location within bounds. The patch demonstrates how arithmetic operations on pointers get rewritten and we can spot a familiar pattern there</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8irnzqpgIARBl3UdtS30S/769b1b7c997b9b0ab889784bb5f6e671/bpf_commit.png" alt="" class="kg-image" width="1585" height="1026" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8irnzqpgIARBl3UdtS30S/5e885701ef2fe3a9426b1e960e48f0d1/bpf_commit.png" alt="" class="kg-image" width="1585" height="1026" loading="lazy">
 
 	</figure>
 	<p>Wait a minute… What pointer arithmetic? We are just trying to subtract two scalar values. How come the mitigation kicks in?</p>
@@ -190,7 +190,7 @@ diff           4294967295 0x00000000ffffffff</code></pre>
 	<p>Actually using this hand-written IR function from C is tricky. See <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/build.ninja#L27">our code on GitHub</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zQLSvXLH19lXCjYnstl2a/df8305bdaa6564042ab453c0aed77fd3/LED_DISP-1.JPG.jpeg" alt="" class="kg-image" width="1280" height="385" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zQLSvXLH19lXCjYnstl2a/f8fb73710fc8e5eda96476006974eea5/LED_DISP-1.JPG.jpeg" alt="" class="kg-image" width="1280" height="385" loading="lazy">
 
 	</figure>
 	<p>public domain <a href="https://en.wikipedia.org/wiki/File:LED_DISP.JPG">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Sergei_Frolov">Sergei Frolov</a></p>
@@ -206,14 +206,14 @@ diff           4294967295 0x00000000ffffffff</code></pre>
 	<p>We've already seen the problem. To recap, if we ask Clang to subtract 32-bit integers, it will operate on 64-bit values and throw away the top 32-bits. Putting C, IR, and eBPF side-by-side helps visualize this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33bbylbcFR7zuF7NwxHcTs/db4601a655f51b4f1caa2f76e15aa52a/sub32_v1.png" alt="" class="kg-image" width="1224" height="362" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33bbylbcFR7zuF7NwxHcTs/fa9f110a71ab6e5f5cf8f7d70aadd587/sub32_v1.png" alt="" class="kg-image" width="1224" height="362" loading="lazy">
 
 	</figure>
 	<p>The trick to get around it is to declare the 32-bit variable that holds the result as <code>volatile</code>. You might already know the <a href="https://en.wikipedia.org/wiki/Volatile_(computer_programming)"><code>volatile</code> keyword</a> if you've written Unix signal handlers. It basically tells the compiler that the value of the variable may change under its feet so it should refrain from reorganizing loads (reads) from it, as well as that stores (writes) to it might have side-effects so changing the order or eliminating them, by skipping writing it to the memory, is not allowed either.</p>
 	<p>Using <code>volatile</code> makes Clang emit <a href="https://llvm.org/docs/LangRef.html#volatile-memory-accesses">special loads and/or stores</a> at the IR level, which then on eBPF level translates to writing/reading the value from memory (stack) on every access. While this sounds not related to the problem at hand, there is a surprising side-effect to it:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fEaCu15LmmeauGv7Vh1Wb/9c88d48aec30a92c58b872bece04a290/sub32_v2.png" alt="" class="kg-image" width="1386" height="324" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fEaCu15LmmeauGv7Vh1Wb/354c4a8aa60da7a7e5797fe0f951508d/sub32_v2.png" alt="" class="kg-image" width="1386" height="324" loading="lazy">
 
 	</figure>
 	<p>With volatile access compiler doesn't promote the subtraction to 64 bits! Don't ask me why, although I would love to hear an explanation. For now, consider this a hack. One that does not come for free - there is the overhead of going through the stack on each read/write.</p>
@@ -223,13 +223,13 @@ diff           4294967295 0x00000000ffffffff</code></pre>
 	<p>If this macro looks strangely familiar, it's because it does the same thing as <a href="https://elixir.bootlin.com/linux/v5.1-rc5/source/include/linux/compiler.h#L214"><code>WRITE_ONCE()</code> macro</a> in the Linux kernel. Applying it to our example:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qQ1CrUvUBsJJE09xVqzA1/b54a6ee30aaabb74fb6cb9c21001c99b/sub32_v3.png" alt="" class="kg-image" width="1424" height="304" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qQ1CrUvUBsJJE09xVqzA1/bc84a1c3fdd5a855c505c56c2273e664/sub32_v3.png" alt="" class="kg-image" width="1424" height="304" loading="lazy">
 
 	</figure>
 	<p>That's another <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L143">hacky but working solution</a>. Pick your poison.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28GXw3wm8YlUgg9nvnBwEx/622d035d7c8e40a23ce0ccf5fd4990c9/poison_bottles-2.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28GXw3wm8YlUgg9nvnBwEx/2939bf7b36758a66685385e16a48cc5f/poison_bottles-2.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg">image</a> by ANKAWÜ</p>

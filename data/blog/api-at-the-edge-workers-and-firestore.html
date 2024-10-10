@@ -102,25 +102,25 @@
 	<p>While Cloud Firestore is excellent for handling requests from many users, in this case we want to restrict access to just our worker instances, and for that we need to create a Service Account. You can do this from the IAM console for your Google Cloud project. We’ll build one with the role “Cloud Datastore User”, which is the role recommended for our use case.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r2uRna3dKkKS6Nvl80tgc/30c1a3bb7c32b4dd1229b2fcdf51e8fa/serviceaccount.png" alt="" class="kg-image" width="1732" height="1220" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5r2uRna3dKkKS6Nvl80tgc/69b46d1d04d677417df1a66038310bf3/serviceaccount.png" alt="" class="kg-image" width="1732" height="1220" loading="lazy">
 
 	</figure>
 	<p>I used a service account for making API calls from a Worker</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OheId26j2uftzDzzjdZG8/d6dc8056c35e06a13f2edecf886b48f9/serviceaccount2.png" alt="" class="kg-image" width="1646" height="1217" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OheId26j2uftzDzzjdZG8/cf0a1ba880c118ec1334506c81d9e676/serviceaccount2.png" alt="" class="kg-image" width="1646" height="1217" loading="lazy">
 
 	</figure>
 	<p>Adding a name and description helps track users of the project</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yXA0Uux7VfoZF1hyJ1fRr/bca77d607a86555cade88f6de461e1fb/serviceaccount3.png" alt="" class="kg-image" width="1792" height="1366" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yXA0Uux7VfoZF1hyJ1fRr/7d2d84d78ffa9eb45a64d43cd6c43615/serviceaccount3.png" alt="" class="kg-image" width="1792" height="1366" loading="lazy">
 
 	</figure>
 	<p>'Cloud Datastore User' is the appropriate Role for Service Accounts</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DofJvrlAkH8EZk7o3ryCn/c127b55f5d1e90a396e25798aa01827f/serviceaccount4.png" alt="" class="kg-image" width="1865" height="1504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DofJvrlAkH8EZk7o3ryCn/747cd1a94d040105b1e1bdfa80c976f8/serviceaccount4.png" alt="" class="kg-image" width="1865" height="1504" loading="lazy">
 
 	</figure>
 	<p>I then saved my key as a JSON file for use in building JWTs for authenticating requests</p>

@@ -1,11 +1,11 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lvHstwJ5eqI3HtZNBz1aJ/b013b16dd1120fedf05b7b0e1135b959/radius-udp-vulnerable-md5-attack.png" alt="">
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lvHstwJ5eqI3HtZNBz1aJ/8abb1c5a0d95d6a1a2f0017c78fc0fda/radius-udp-vulnerable-md5-attack.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The MD5 cryptographic hash function was first broken in 2004, when <a href="https://iacr.org/archive/eurocrypt2005/34940019/34940019.pdf">researchers</a> demonstrated the first MD5 collision, namely two different messages X1 and X2 where MD5(X1) = MD5 (X2). Over the years, attacks on MD5 have only <a href="https://www.iacr.org/archive/eurocrypt2007/45150001/45150001.pdf">continued</a> to <a href="https://eprint.iacr.org/2009/111.pdf">improve</a>, getting faster and more effective <a href="https://en.wikipedia.org/wiki/Flame_(malware)">against</a> <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/transcript-collision-attacks-breaking-authentication-tls-ike-ssh.pdf">real</a> <a href="https://www.akamai.com/blog/security-research/exploiting-critical-spoofing-vulnerability-microsoft-cryptoapi">protocols</a>. But despite continuous advancements in cryptography, MD5 has lurked in network protocols for years, and is still playing a critical role in some protocols even today.</p>
 	<p>One such protocol is <a href="https://en.wikipedia.org/wiki/RADIUS">RADIUS (Remote Authentication Dial-In User Service)</a>. RADIUS was first designed in 1991 – during the era of dial-up Internet – but it remains an important authentication protocol used for remote access to routers, switches, and other networking gear by users and administrators. In addition to being used in networking environments, RADIUS is sometimes also used in industrial control systems. &nbsp;RADIUS traffic is still <a href="https://datatracker.ietf.org/doc/draft-ietf-radext-deprecating-radius">commonly transported over UDP</a> in the clear, protected only by outdated cryptographic constructions based on MD5.</p>
 	<p>In this post, we present an improved attack against MD5 and use it to exploit all authentication modes of RADIUS/UDP apart from those that use EAP (<a href="https://datatracker.ietf.org/doc/html/rfc3748">Extensible Authentication Protocol</a>). The attack allows a Monster-in-the-Middle (MitM) with access to RADIUS traffic to gain unauthorized administrative access to devices using RADIUS for authentication, without needing to brute force or steal passwords or shared secrets. This post discusses the attack and provides an overview of mitigations that network operators can use to improve the security of their RADIUS deployments.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/128HlLk4YY6iwwDQl2naHy/216993d7fbe95012c9e115fc9aab81f4/image9-1.png" alt="RADIUS/UDP in Password Authentication Protocol (PAP) mode.  Our attack also applies to RADIUS/UDP CHAP and RADIUS/UDP MS-CHAP authentication modes as well." class="kg-image" width="1371" height="537" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/128HlLk4YY6iwwDQl2naHy/527eb41a400396e915ed805292de1fe4/image9-1.png" alt="RADIUS/UDP in Password Authentication Protocol (PAP) mode.  Our attack also applies to RADIUS/UDP CHAP and RADIUS/UDP MS-CHAP authentication modes as well." class="kg-image" width="1371" height="537" loading="lazy">
 
 	</figure>
 	<p>RADIUS/UDP in Password Authentication Protocol (PAP) mode. Our attack also applies to RADIUS/UDP CHAP and RADIUS/UDP MS-CHAP authentication modes as well.</p>
@@ -14,7 +14,7 @@
 	<p>RADIUS traffic is commonly sent over internal networks, and in our research we did not broadly measure how organizations configure it internally. &nbsp;Anecdotal evidence suggests that RADIUS/UDP remains popular. (<a href="https://www.blastradius.fail/pdf/radius.pdf">See our paper for some case studies of large organizations using RADIUS/UDP</a>). While it is possible to send <a href="https://datatracker.ietf.org/doc/html/rfc6614">RADIUS over TLS</a> (sometimes also called RADSEC), the Internet Engineering Task Force (IETF) still considers the <a href="https://datatracker.ietf.org/doc/html/rfc6614">specification for RADIUS/TLS</a> to be “<a href="https://www.ietf.org/process/process/informational-vs-experimental/#:~:text=in%20any%20sense.-,4.2.1%20Experimental,-The%20%22Experimental%22%20designation">experimental</a>”, and is currently still in the process of specifying <a href="https://datatracker.ietf.org/doc/draft-ietf-radext-radiusdtls-bis/01">RADIUS over TLS or DLTS</a> as “<a href="https://www.ietf.org/process/informal/#:~:text=2.3.%20Standards%20track%20documents">standards track</a>”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vh2ZZQu14kW1ipbQVsGGb/985140799a73b2d4b66406e98dcb5943/image8-1.png" alt="RADIUS/TLS, also sometimes known as RADSEC" class="kg-image" width="1371" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vh2ZZQu14kW1ipbQVsGGb/30189350ae37c12c076805d3520637dd/image8-1.png" alt="RADIUS/TLS, also sometimes known as RADSEC" class="kg-image" width="1371" height="540" loading="lazy">
 
 	</figure>
 	<p>RADIUS/TLS, also sometimes known as RADSEC</p>
@@ -22,7 +22,7 @@
 	<p>In our attack, a MitM gains unauthorized access to a networked device by violating the integrity of communications between the device’s RADIUS client and its RADIUS server. In other words, our MitM attacker has access to RADIUS traffic and uses it to pivot into unauthorized access to the devices hosting the RADIUS clients that generated this RADIUS traffic. From there, the attacker can gain administrative access to the networking device and thus control the Internet traffic that flows through the network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LYE2xhdiZ3y9kPzsvdXvq/e5d72abbf104461ff7ddebcf30fa280e/unnamed-2.png" alt="Overview of the Blast-RADIUS attack on RADIUS/UDP in PAP mode" class="kg-image" width="1600" height="537" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LYE2xhdiZ3y9kPzsvdXvq/e70d9c9f0e0e94291f5ddbb16df43c62/unnamed-2.png" alt="Overview of the Blast-RADIUS attack on RADIUS/UDP in PAP mode" class="kg-image" width="1600" height="537" loading="lazy">
 
 	</figure>
 	<p>Overview of the Blast-RADIUS attack on RADIUS/UDP in PAP mode</p>
@@ -82,14 +82,14 @@
 	<p>Given that the ad hoc MD5 construction in the <i>Response Authenticator</i> is usually the only thing protecting the integrity of the RADIUS/UDP message, can we exploit it to break the security of the RADIUS/UDP protocol? Yes, we can.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5j93fliyvr8dbiYEzC4UAG/a0894a8209cb758a1da6fb0503ab905c/AD_4nXei5_IU_xNU4pWzH-3M9XOKZGXH78BzN8OTsDh4KZ_YopiWvctzhZs3uG33f1SMU7gNE_MWvmsXrH1zyA5ziN0BH2D4FoYbC9OaVSlT5LR9STkGScd03q-XAUQe" alt="" class="kg-image" width="1600" height="314" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j93fliyvr8dbiYEzC4UAG/4029c0b402fce7c1fe9c2ead3537b0e6/AD_4nXei5_IU_xNU4pWzH-3M9XOKZGXH78BzN8OTsDh4KZ_YopiWvctzhZs3uG33f1SMU7gNE_MWvmsXrH1zyA5ziN0BH2D4FoYbC9OaVSlT5LR9STkGScd03q-XAUQe" alt="" class="kg-image" width="1600" height="314" loading="lazy">
 
 	</figure>
 	<p>But it wasn’t that easy. We needed to optimize and improve existing chosen-prefix collision attacks on MD5 to (a) make them fast enough to work on packets in flight, (b) respect the limitations imposed by the RADIUS protocol and (c) the RADIUS/UDP packet format.</p>
 	<p>Here is how we did it. The attacker uses a MitM between a RADIUS client (e.g. a router) and RADIUS server to change an <i>Access-Reject</i> packet into an <i>Access-Accept</i> packet by exploiting weaknesses in MD5, thus gaining unauthorized access (to the router). The detailed flow of the attack is in the diagram below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YqtRYeDSSaP7Z54HjX4zz/e349e512627ace8cfcc2449b0e1d314f/unnamed--7--1.png" alt="Details of the Blast-RADIUS attack" class="kg-image" width="1600" height="636" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YqtRYeDSSaP7Z54HjX4zz/d673f089cd9d6eb1635a91c6e8d1a1ff/unnamed--7--1.png" alt="Details of the Blast-RADIUS attack" class="kg-image" width="1600" height="636" loading="lazy">
 
 	</figure>
 	<p>Details of the Blast-RADIUS attack</p>
@@ -172,7 +172,7 @@
 	<p>EAP-TLS only uses the TLS handshake to authenticate the user; the TLS handshake is executed between the user and the RADIUS server. &nbsp;However, TLS is not used to encrypt or authenticate the RADIUS packets; the RADIUS client and RADIUS still communicate in the clear over UDP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77YFHepvxIYqZoQuMisPC3/3822f22a8994a2498a669bb04e6d24a0/unnamed--1--2.png" alt="" class="kg-image" width="1371" height="566" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77YFHepvxIYqZoQuMisPC3/b0f8a1ab74d2a3233d393e4dcd7b6680/unnamed--1--2.png" alt="" class="kg-image" width="1371" height="566" loading="lazy">
 
 	</figure>
 	<ol>

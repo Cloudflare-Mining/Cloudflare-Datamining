@@ -1,10 +1,10 @@
 <div class="mb2 gray5">10 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/benchmarking-edge-network-performance">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SrplKtAnPSu0U0Db2Ekc0/7952d68bebd30ac99b59498783681b6d/benchmarking-edge-network-performance.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/benchmarking-edge-network-performance">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SrplKtAnPSu0U0Db2Ekc0/b0c86a78283f8585b585b0023427d077/benchmarking-edge-network-performance.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog was published on 17 September, 2021. As we continue to optimize our network we're publishing regular updates, which are available </i><a href="https://blog.cloudflare.com/tag/network-performance-update"><i>here</i></a><i>.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kNRveYzvIdeJ67Hy4de5F/fcd74adfc9f7aa0d2538001ad8219dc0/image20.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kNRveYzvIdeJ67Hy4de5F/3b40761ca133d10897ab6f1d2874f746/image20.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>During Speed Week we’ve talked a lot about services that make the web faster. <a href="https://blog.cloudflare.com/argo-v2">Argo 2.0</a> for better routing around bad Internet weather, <a href="https://blog.cloudflare.com/orpheus">Orpheus</a> to ensure that origins are reachable from anywhere, <a href="https://www.cloudflare.com/developer-platform/cloudflare-images">image optimization</a> to send just the right bits to the client, <a href="https://blog.cloudflare.com/orpheus">Tiered Cache</a> to maximize cache hit rates and get the most out of Cloudflare’s new 25% bigger network, our expanded <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">fiber backbone</a> and <a href="https://blog.cloudflare.com/tag/speed-week">more</a>.</p>
@@ -53,7 +53,7 @@
 	<p>The point of this API is to get timing information that shows how a real end-user experiences the Internet (and not a synthetic test that might measure a single component of all the things that happen when a user browses the web).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fN6tLv58jaS0qhhrQWakh/16c95f0c5d899fade830a0a607cfbaf9/image16.png" alt="" class="kg-image" width="1773" height="512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fN6tLv58jaS0qhhrQWakh/789d201a0441a744db55d4a99fe0d555/image16.png" alt="" class="kg-image" width="1773" height="512" loading="lazy">
 
 	</figure>
 	<p>The Resource Timing API is supported by pretty <a href="https://caniuse.com/resource-timing">much every browser</a> enabling measurement on everything from old versions of Internet Explorer, to mobile browsers on iOS and Android to the latest version of Chrome. Using this API gives us a view of real world use on real world browsers.</p>
@@ -119,7 +119,7 @@ performance.getEntriesByType("resource");
 	<p>In these charts, longer bars are better; the bars indicate the number of networks for which that CDN had the lowest TTFB at p95.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pL6HFQCpsTlMxqJpGW3ZO/99b84c57f551077d9b157898c68d6355/image6-12.png" alt="" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pL6HFQCpsTlMxqJpGW3ZO/1b318a9482d9c8f269e134ded4dd1b60/image6-12.png" alt="" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<p>This shows that Cloudflare had the lowest time to first byte (the TTFB, or the time it took the first byte of content to reach their browser) at the 95th percentile for the largest number of networks in the top 1,000 (based on the number IPv4 addresses they advertise). Google was next, then Fastly followed by Amazon CloudFront and Akamai.</p>
@@ -153,32 +153,32 @@ performance.getEntriesByType("resource");
 	<p>Let’s start with TCP connection time to get a sense of how well-connected the five companies we’ve measured. Recall that longer bars are better here, they indicate that the particular CDN was the highest performance for that many networks: more networks is better.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QguCRrAEnO67ERcxRs9TO/8ccf37afac3e1597aa21273ad4cafb7a/image1-21.png" alt="image1-18" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QguCRrAEnO67ERcxRs9TO/7e54b9d95945df8245ed06d68d189b3f/image1-21.png" alt="image1-18" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UVflzEE8XMOTB2dnK3Ajk/9e7c0b32feaeaab7d44330116c6d2588/image21-3.png" alt="image4-17" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UVflzEE8XMOTB2dnK3Ajk/6581e53c9979aeb2c2b12c963bd9ed95/image21-3.png" alt="image4-17" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S0gQFxfg15eRgBqMbKVKI/f993e3d0b52f4432853fcd6afe719ba7/image7-6.png" alt="image7-3" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1S0gQFxfg15eRgBqMbKVKI/78c7802ac0ccc3cb23729ad048da3f66/image7-6.png" alt="image7-3" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ubS7knCK9QfOhR0ljFKvc/29e471e36bf51380507cae3d2bba9b92/image14-3.png" alt="image11" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ubS7knCK9QfOhR0ljFKvc/ec8a9b06fafc491496bf3cb62b3d68ab/image14-3.png" alt="image11" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wAFt0fPIp5UgKoVdZVRT8/d9bd521d2f001a9f0126bb31933cb3b1/image11-3.png" alt="image14" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wAFt0fPIp5UgKoVdZVRT8/04a27e756d3296094a2d5b4ddb5fb913/image11-3.png" alt="image14" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kSILNzTnA9SuJdNcQSjRT/8c5843ec5e9bc89f119f8562e1c4ba34/image4-20.png" alt="image21" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kSILNzTnA9SuJdNcQSjRT/859eb95f61041d110e8c06039d396938/image4-20.png" alt="image21" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -192,32 +192,32 @@ performance.getEntriesByType("resource");
 	<p>Next up is TTFB for the five companies. Once again, longer bars is better means more networks where that CDN had the lowest TTFB.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30Q7f5HOY9lC0Xskkop3y1/824c8935dffc31a2e63f1b8b4cf85ab5/image2-26.png" alt="image2-23" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30Q7f5HOY9lC0Xskkop3y1/a0f81b3cbdfdca0bde6883a4ae5a00b3/image2-26.png" alt="image2-23" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4blPfzmJ0xsEvoPNHT6erW/b33f209bcfa55bab84c37220527be45e/image6-11.png" alt="image6-7" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4blPfzmJ0xsEvoPNHT6erW/796d37ad9196c565034b6a761e160da2/image6-11.png" alt="image6-7" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UD9AcLtsQoOYseVcib59M/46c89f9064f210ce99cb57bbf5343385/image5-18.png" alt="image5-15" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6UD9AcLtsQoOYseVcib59M/b98add4f6f4651943cb2f9b604ed4b3b/image5-18.png" alt="image5-15" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/347rQICdjdYyLop9MmzPoM/e508b1360d2e8bb0a24e46800d4e0254/image9-3.png" alt="image15-1" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/347rQICdjdYyLop9MmzPoM/0877f2cb39552733484cf8e8211d15ac/image9-3.png" alt="image15-1" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Qtv5TDMKl81V8nu66NKAq/c98f48f591b9647f9b20d53b90a844c7/image10-3.png" alt="image12-1" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Qtv5TDMKl81V8nu66NKAq/26c4ba4429187794f284dcb79bc48bc4/image10-3.png" alt="image12-1" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3vxM6xlmF1WUiyoqYX6tSu/8367c39f08a72d472f161c8c35ae6899/image12-4.png" alt="image10" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vxM6xlmF1WUiyoqYX6tSu/e5bce59729bef596cd53bd14dfe93c31/image12-4.png" alt="image10" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -231,32 +231,32 @@ performance.getEntriesByType("resource");
 	<p>And finally the TTLB measurements. Once again, longer bars is better means more networks where that CDN had the lowest TTLB.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oSgZwwvRQDyNeYJGCt1kb/f4747dee19e783928317a8e51d6aa082/image18-3.png" alt="image18" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oSgZwwvRQDyNeYJGCt1kb/89631c7f2e9a6b38c649d83bada4e5a6/image18-3.png" alt="image18" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CMUraZRpMHebETVnctzEH/64a3f2d02bcf9409d4a0128bff13a4bb/image8-5.png" alt="image3-21" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CMUraZRpMHebETVnctzEH/260f11a25983efb22d6cfdbdee682abf/image8-5.png" alt="image3-21" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3unpLISlQOuu9EIht40nke/69716b9135c53f4291fef35b2e730170/image3-24.png" alt="image8-2" class="kg-image" width="1042" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3unpLISlQOuu9EIht40nke/6d9b236150ae898746f6a49a703bf0b3/image3-24.png" alt="image8-2" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72L0GJTxxBwmDjb0JMreis/ae9a5686abc31cea85033aaf2169c287/image9-3.png" alt="image13" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72L0GJTxxBwmDjb0JMreis/3e311b2c3636a5b048cd34a32bf1e55a/image9-3.png" alt="image13" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ORMPwn3VUmAiwk8ztT0nW/213c98dec9b27f94c6a8d4aba6834aac/image17-3.png" alt="image17" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ORMPwn3VUmAiwk8ztT0nW/13bd53d42b25207f9d700aef679a2a0b/image17-3.png" alt="image17" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kNrXkn4FsOhKOyh2X7ZoQ/b4a90a0261f9122e36f0b538a5925dd9/image13-3.png" alt="image9" class="kg-image" width="1042" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kNrXkn4FsOhKOyh2X7ZoQ/0e71fc4bd9da8a0a6f8138d47235b26a/image13-3.png" alt="image9" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -282,7 +282,7 @@ performance.getEntriesByType("resource");
 	<p>Here’s an example world map with countries colored by who had the lowest TTLB at p95. Cloudflare is in orange, Amazon CloudFront in yellow, Google in purple, Akamai in red and Fastly in blue.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44fmLQNlpYO7qUlPs5nI1C/557334276b63eee8cedf8fc6f243d451/image19.png" alt="" class="kg-image" width="1999" height="994" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44fmLQNlpYO7qUlPs5nI1C/c9f8ff7ba3dd63f42ae928080b57ebb9/image19.png" alt="" class="kg-image" width="1999" height="994" loading="lazy">
 
 	</figure>
 	<p>What that doesn’t show is population. And Cloudflare is interested in how well we perform for people. Consider Russia and Indonesia. Indonesia has double the population of Russia and about 1/10th of the land.</p>

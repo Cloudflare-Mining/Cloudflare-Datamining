@@ -4,7 +4,7 @@
 	<p>In this post we will review <a href="https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html">Linux seccomp</a> and learn how to sandbox any (even a proprietary) application without writing a single line of code.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4I6LYA0Qq7KBBc5vj9LDV0/300e61632f3969156de1197c2c046419/linux-sandbox-1.jpg" alt="linux-sandbox-1" class="kg-image" width="1500" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I6LYA0Qq7KBBc5vj9LDV0/eb6f886ee659efc0b3abd38b39024e2f/linux-sandbox-1.jpg" alt="linux-sandbox-1" class="kg-image" width="1500" height="800" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.deviantart.com/qubodup/art/Tux-Flat-SVG-607655623">Tux by Iwan Gabovitch, GPL</a><a href="https://pixabay.com/vectors/sandpit-sandbox-container-sand-35536">Sandbox, Simplified Pixabay License</a></p>
@@ -19,7 +19,7 @@
 	<p>System calls (syscalls) is a well-defined interface between <a href="https://en.wikipedia.org/wiki/User_space">userspace applications</a> and the <a href="https://en.wikipedia.org/wiki/Kernel_(operating_system)">operating system (OS) kernel</a>. On modern operating systems most applications provide only application-specific logic as code. Applications do not, and most of the time cannot, directly access low-level hardware or networking, when they need to store data or send something over the wire. Instead they use system calls to ask the OS kernel to do specific hardware and networking tasks on their behalf:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2t6kOXlTPfyGwZ5IEPq07g/79b1d35aa376c4cc03e9b8fc7b497b4b/image2-2.png" alt="image2-2" class="kg-image" width="1280" height="772" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2t6kOXlTPfyGwZ5IEPq07g/03b56292c1136c5fb3f7694e3e44fcdd/image2-2.png" alt="image2-2" class="kg-image" width="1280" height="772" loading="lazy">
 
 	</figure>
 	<p>Apart from providing a generic high level way for applications to interact with the low level hardware, the system call architecture allows the OS kernel to manage available resources between applications as well as enforce policies, like application permissions, networking access control lists etc.</p>
@@ -34,7 +34,7 @@
 	<p>Linux seccomp is <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">yet another syscall</a> on Linux, but it is a bit special, because it influences how the OS kernel will behave when the application uses other system calls. By default, the OS kernel has almost no insight into userspace application logic, so it provides all the possible services it can. But not all applications require all services. Consider an application which converts image formats: it needs the ability to read and write data from disk, but in its simplest form probably does not need any network access. Using seccomp an application can declare its intentions in advance to the Linux kernel. For this particular case it can notify the kernel that it will be using the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html">read</a> and <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write</a> system calls, but never the <a href="https://www.man7.org/linux/man-pages/man2/send.2.html">send</a> and <a href="https://www.man7.org/linux/man-pages/man2/recv.2.html">recv</a> system calls (because its intent is to work with local files and never with the network). It’s like establishing a contract between the application and the OS kernel:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6X06iaPGGtyi9O1geWqZq8/458dd8f61e10791cdc46c4f1eb19f8f7/image1-4.png" alt="image1-4" class="kg-image" width="1602" height="752" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X06iaPGGtyi9O1geWqZq8/8bb6c0006df4e30c5d5de2ccd31ecf5f/image1-4.png" alt="image1-4" class="kg-image" width="1602" height="752" loading="lazy">
 
 	</figure>
 	<p>But what happens if the application later breaks the contract and tries to use one of the system calls it promised not to use? The kernel will “penalise” the application, usually by immediately terminating it. Linux seccomp also <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">allows less restrictive actions</a> for the kernel to take:</p>
@@ -421,7 +421,7 @@ adding write to the process seccomp filter</code></pre>
 	<p>The reason is <code>sandboxify</code> and <code>libsandbox.so</code> inject seccomp rules at different stages of the process lifecycle. Consider the following very high level diagram of a process startup:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gnqXj5b3tLBdG5pG9b9yH/282855c2bce863e295f96429e21c736a/image3-2.png" alt="image3-2" class="kg-image" width="1646" height="774" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gnqXj5b3tLBdG5pG9b9yH/ff6fb1ab546047ed8fabb610bee2c1df/image3-2.png" alt="image3-2" class="kg-image" width="1646" height="774" loading="lazy">
 
 	</figure>
 	<p>

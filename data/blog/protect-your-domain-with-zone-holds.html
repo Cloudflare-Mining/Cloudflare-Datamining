@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/473c1btS6iVaePEPi8kIwW/49cc68a6fb1dcda12d6b60d6c37e55b8/Protect-your-domain-with-Zone-Holds-1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/473c1btS6iVaePEPi8kIwW/a409b87106e4a2d6d2143704514c221c/Protect-your-domain-with-Zone-Holds-1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Today, we are announcing Zone Holds, a new capability for enterprise customers that gives them control of if and when someone else can add the same zone to another Cloudflare account. When multiple teams at a company want to use Cloudflare, one team might accidentally step on another’s toes and try to manage the same zone in two accounts. Zone Holds ensure that this cannot happen by enforcing that only one account can contain a given domain, optionally inclusive of subdomains or custom hostnames, unless explicit permission is granted by the account owner of the zone.</p>
@@ -28,7 +28,7 @@
 	<p>With Zone Holds, any attempt to add a domain that is being held will return an error letting the person know that they need to contact the domain owner first. Zone Holds are enabled by default for all enterprise zones. The holds can be managed from the Zone Overview screen. Optionally, the hold can be extended to apply to subdomains and custom hostnames. When disabling a hold, you can set the hold to re-enable after a set amount of time. This ensures you don’t accidentally leave a hold perpetually disabled. Let’s dig into an example to understand how Zone Holds help customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53LWcBYYwA88TNpSzqAsrp/88b38dd504941039ad5c1d26ce5ca127/image2-5.png" alt="" class="kg-image" width="711" height="244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53LWcBYYwA88TNpSzqAsrp/125314c04d1e876edf2e6d3530b4b8ef/image2-5.png" alt="" class="kg-image" width="711" height="244" loading="lazy">
 
 	</figure>
 	<p>An active zone hold not including protection of subdomains</p>
@@ -53,19 +53,19 @@
 	<p>Example Corp signs up for Cloudflare and adds example.com to their account as an ENT zone. Automatically a Zone Hold is enabled on the domain which will prevent any other Cloudflare account from adding example.com. They also enable a hold on any subdomains or custom hostnames under the domain of example.com.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vOx5b4qJtcGshW7ZuLVOk/97e8357447e7218255402085a09ac0e0/image3-3.png" alt="" class="kg-image" width="1999" height="1369" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vOx5b4qJtcGshW7ZuLVOk/c3bf36c35bde72044367a3a484f448e2/image3-3.png" alt="" class="kg-image" width="1999" height="1369" loading="lazy">
 
 	</figure>
 	<p>Later ACME’s marketing department wants to start using Cloudflare for <a href="http://www.example.com">www.example.com</a>. When they attempt to add that domain to Cloudflare they get an error informing them that they need to reach out to the domain owner.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zs5qEaFPmWuyyXoMQEx1j/a053bfe1b1ffee57295168860e82958e/image4-3.png" alt="" class="kg-image" width="1999" height="1374" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zs5qEaFPmWuyyXoMQEx1j/0b2d4cac2f0ee8ed6353225bec8b17fb/image4-3.png" alt="" class="kg-image" width="1999" height="1374" loading="lazy">
 
 	</figure>
 	<p>ACME’s marketing department reaches out internally and learns that the infrastructure team manages this domain and that activating this zone would have caused an incident! Instead, both teams decide that the marketing team should add the subdomain of <a href="http://www.example.com">www.example.com</a> so they can control the marketing site. The infrastructure team lifts the subdomain hold on acme.com and the marketing team adds <a href="http://www.example.com">www.example.com</a> to their own account.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fWD0fdAJzRFIVWweFvBsb/569c1541b464ca68ef43b17e83306721/image1-7.png" alt="" class="kg-image" width="1002" height="576" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fWD0fdAJzRFIVWweFvBsb/d999ee91da29e18410bbf04af30034f8/image1-7.png" alt="" class="kg-image" width="1002" height="576" loading="lazy">
 
 	</figure>
 	<p>Once set up and activated they can now begin to leverage bot management to protect their marketing site and no unexpected impact occurs.</p>

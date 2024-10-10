@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KFns2uEG4opcoBG9bj1bX/acc5c40ba2eec08e4acd2079015798ba/how-to-receive-a-million-packets.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KFns2uEG4opcoBG9bj1bX/ea4a10c82154bcf280d3cecd89455851/how-to-receive-a-million-packets.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last week during a casual conversation I overheard a colleague saying: "The Linux network stack is slow! You can't expect it to do more than 50 thousand packets per second per core!"</p>
 	<p>That got me thinking. While I agree that 50kpps per core is probably the limit for any practical application, what <i>is</i> the Linux networking stack capable of? Let's rephrase that to make it more fun:</p>
@@ -6,7 +6,7 @@
 	<p>Hopefully, answering this question will be a good lesson about the design of a modern networking stack.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TxTgfzBLcWrVIiBMzzmQu/f55af8a01a87dfc46b74e0f1b7ce7dda/3208129302_7e14f00492_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TxTgfzBLcWrVIiBMzzmQu/db363b43ce3424121e5e76f7121518c5/3208129302_7e14f00492_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/mccaffrey_uk/3208129302">image</a> by <a href="https://www.flickr.com/photos/mccaffrey_uk">Bob McCaffrey</a></p>
@@ -118,7 +118,7 @@ receiver$ taskset -c 1 ./udpreceiver1 0.0.0.0:4321
 	<p>Sometimes it's not obvious why the packets weren't delivered. In our case though, it's very clear: the RX queue #4 delivers packets to CPU #4. And CPU #4 can't do any more work - it's totally busy just reading the 350kpps. Here's how that looks in <code>htop</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5I5jyc0W0N38xUaZAvFH1C/f5f8f8474bab1c1a7cd056ace6da43d7/htop-onecpu.png" alt="htop one cpu" class="kg-image" width="366" height="365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5I5jyc0W0N38xUaZAvFH1C/d4801ac32042da1179e32efca1dd6de9/htop-onecpu.png" alt="htop one cpu" class="kg-image" width="366" height="365" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -133,7 +133,7 @@ receiver$ taskset -c 1 ./udpreceiver1 0.0.0.0:4321
 	<p>To utilize multicore systems, NICs began to support multiple RX queues. The design is simple: each RX queue is pinned to a separate CPU, therefore, by delivering packets to all the RX queues a NIC can utilize all CPUs. But it raises a question: given a packet, how does the NIC decide to which RX queue to push it?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FixwaNWSVfaIRCp02g76q/3467d21b62ee20ab729892a29fcfed82/multiqueue.png" alt="multiqueue nic" class="kg-image" width="1850" height="704" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FixwaNWSVfaIRCp02g76q/8ddf9aad161b4f23572f52b9534f4654/multiqueue.png" alt="multiqueue nic" class="kg-image" width="1850" height="704" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/dns/glossary/round-robin-dns">Round-robin balancing</a> is not acceptable, as it might introduce reordering of packets within a single connection. An alternative is to use a hash from packet to decide the RX queue number. The hash is usually counted from a tuple (src IP, dst IP, src port, dst port). This guarantees that packets for a single flow will always end up on exactly the same RX queue, and reordering of packets within a single flow can't happen.</p>
@@ -253,7 +253,7 @@ receiver$ taskset -c 1,2 ./udpreceiver1 0.0.0.0:4321 2
 	<p>More investigation will reveal further room for improvement. Even though we started four receiving threads, the load is not being spread evenly across them:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oGZaWKk0wzDkBTilJrIbb/f94176b42d79eadb3ba8cfa7ae2cdbf2/port-uneven.png" alt="port uneven" class="kg-image" width="647" height="82" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oGZaWKk0wzDkBTilJrIbb/1b4b3a3bb3c8755fd132b0201771eeda/port-uneven.png" alt="port uneven" class="kg-image" width="647" height="82" loading="lazy">
 
 	</figure>
 	<p>Two threads received all the work and the other two got no packets at all. This is caused by a hashing collision, but this time it is at the <code>SO_REUSEPORT</code> layer.</p>

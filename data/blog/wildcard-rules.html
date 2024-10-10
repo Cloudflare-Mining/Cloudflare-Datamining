@@ -1,7 +1,7 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SVubtrh9iaqDDQSnA60Me/2c160707e3fed1791f01c5471da25ac6/2478-1-hero.png" alt="2478-1-hero" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SVubtrh9iaqDDQSnA60Me/b511db040441d802b147cb838448ab26/2478-1-hero.png" alt="2478-1-hero" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p>Back in 2012, we <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co"><u>introduced</u></a> <a href="https://developers.cloudflare.com/rules/page-rules"><u>Page Rules</u></a>, a pioneering feature that gave Cloudflare users unprecedented control over how their web traffic was managed. At the time, this was a significant leap forward, enabling users to define <a href="https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching"><u>patterns</u></a> for specific URLs and adjust Cloudflare <a href="https://developers.cloudflare.com/rules/page-rules/reference/settings"><u>features</u></a> on a page-by-page basis. The ability to apply such precise configurations through a simple, user-friendly interface was a major advancement, establishing Page Rules as a cornerstone of our platform.</p>
 	<p>Page Rules allowed users to implement a variety of actions, including <a href="https://developers.cloudflare.com/rules/url-forwarding/#redirects"><u>redirects</u></a>, which automatically send visitors from one URL to another. Redirects are crucial for maintaining a seamless user experience on the Internet, whether it's guiding users <a href="https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-new-url"><u>from outdated links to new content</u></a> or managing traffic during <a href="https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-hostname"><u>site migrations</u></a>.</p>
@@ -74,21 +74,21 @@
 	</ul>
 	<p>Both operators <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching"><u>can be applied</u></a> to any string field available in the Ruleset Engine, including full URI, host, headers, cookies, user-agent, country, and more.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46A6KAfGTCGykWIGiSLItF/d0846e7a84e39dad7a5403a606acfd34/2478-2.png" alt="2478-2" class="kg-image" width="1068" height="632" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46A6KAfGTCGykWIGiSLItF/c2b0743622244de48369da29fc7c4093/2478-2.png" alt="2478-2" class="kg-image" width="1068" height="632" loading="lazy">
 	</figure>
 	<p></p>
 	<p>This example demonstrates the use of the "wildcard" operator in a <a href="https://developers.cloudflare.com/waf"><u>Web Application Firewall (WAF)</u></a> rule applied to the User Agent field. This rule matches any incoming request where the User Agent string contains patterns starting with "Mozilla/" and includes specific elements like "Macintosh; Intel Mac OS ", "Gecko/", and "Firefox/". Importantly, the wildcard operator is case insensitive, so it captures variations like "mozilla" and "Mozilla" without requiring exact matches.</p>
 	<h4>2) Function <code>wildcard_replace()</code> in Single Redirects:</h4>
 	<p>In <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects"><u>Single Redirects</u></a>, the <code>wildcard_replace()</code> <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace"><u>function</u></a> allows you to use matched segments in redirect URL targets.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5s2Y9zPgK4AqzD24DNSGU1/107c67066d66b448005d90c9194b668c/2478-3.png" alt="2478-3" class="kg-image" width="1176" height="726" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5s2Y9zPgK4AqzD24DNSGU1/e8c456882160ad62b339888d05545f0d/2478-3.png" alt="2478-3" class="kg-image" width="1176" height="726" loading="lazy">
 	</figure>
 	<p></p>
 	<p>Consider the URL pattern <code>https://example.com/*/t*st</code> mentioned earlier. Using <code>wildcard_replace()</code>, you can now set the target URL to <code>https://${1}.example.com/t${2}st</code> and dynamically redirect URLs like <code>https://example.com/uk/test</code> to <code>https://uk.example.com/test</code> and <code>https://example.com/images/toast</code> to <code>https://images.example.com/toast</code>.</p>
 	<h4>3) Simplified UI in Single Redirects:</h4>
 	<p>We understand that not everyone wants to use advanced Ruleset Engine <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions"><u>functions</u></a>, especially for simple URL patterns. That’s why we’ve introduced an easy and intuitive UI for <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects"><u>Single Redirects</u></a> called “wildcard pattern”. This new interface, available under the Rules &gt; Redirect Rules tab of the zone dashboard, lets you specify request and target URL wildcard patterns in seconds without needing to delve into complex functions, much like Page Rules.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1y72vKTVFZjDUglnTpC2Nl/126b0ae9d210f1a15da56bbb689496d8/2478-4.png" alt="2478-4" class="kg-image" width="1060" height="932" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y72vKTVFZjDUglnTpC2Nl/3da615997c9e245858356e79dfbbd3ec/2478-4.png" alt="2478-4" class="kg-image" width="1060" height="932" loading="lazy">
 	</figure>
 	<p></p>
 	<div class="flex anchor relative">

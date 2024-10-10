@@ -1,11 +1,11 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tiVTrx38FP4aC2EkPvGY3/be5005f6c396f4f55a57b48e9e9d0c3a/dnssec-an-introduction.jpg" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tiVTrx38FP4aC2EkPvGY3/d6caaf39492857e59d93347d1202d261/dnssec-an-introduction.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At CloudFlare our mission is to help build a better Internet. Part of this effort includes making web sites faster, more reliable, and more trustworthy. The obvious first choice in protocols to help make websites more secure is HTTPS. CloudFlare’s latest product—<a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>—helps web site operators provide a trustworthy browsing experience for their site visitors by giving their site HTTPS support for free. In this blog post we look at another protocol, DNS, and explore one proposal to improve its trustworthiness: <a href="https://www.cloudflare.com/dns/dnssec">DNSSEC</a>.</p>
 	<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> is one of the pillars of authority on the Internet. DNS is used to translate domain names (like <a href="https://www.cloudflare.com">www.cloudflare.com</a>) to numeric Internet addresses (like 198.41.214.163)—it’s often referred to as the “phone book of the Internet”.</p>
 	<p>DNSSEC is a set of security extensions to DNS that provides the means for authenticating DNS records. CloudFlare is planning to introduce DNSSEC in the next six months, and has brought <a href="https://twitter.com/OGudm">Olafur Gudmundsson</a>, one of the inventors of DNSSEC, on board to help lead the project.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zkxemCDLDPoVFeuGIKDZ9/bd72c4b008a2a0ed3d6190b38f081076/4607090398_3621af5fdc_z.jpg" alt="" class="kg-image" width="479" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zkxemCDLDPoVFeuGIKDZ9/c66039fd818dc902175cdcb15aacf695/4607090398_3621af5fdc_z.jpg" alt="" class="kg-image" width="479" height="640" loading="lazy">
 
 	</figure>
 	<p>CC BY 2.0 by <a href="https://www.flickr.com/photos/walkingsf">Eric Fischer</a></p>
@@ -27,7 +27,7 @@
 	<p>Wireshark’s interpretation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GURnhrRCCEuvIerGPboU6/fcb3fce5611583a6d8c130211345fd35/image06.jpg" alt="" class="kg-image" width="1098" height="710" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GURnhrRCCEuvIerGPboU6/816c892cf68e11f43b75ac0bbb3d9510/image06.jpg" alt="" class="kg-image" width="1098" height="710" loading="lazy">
 
 	</figure>
 	<p>Raw DNS Response:</p>
@@ -37,7 +37,7 @@
 	<p>Wireshark’s interpretation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AbDNKjACFw1vhVp8Jd8tR/97c6ea9e39967eb0714c518f3c4d95b8/image04.jpg" alt="" class="kg-image" width="1600" height="984" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AbDNKjACFw1vhVp8Jd8tR/c83ced528e19c0892a0cc1f4663fe24e/image04.jpg" alt="" class="kg-image" width="1600" height="984" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -52,7 +52,7 @@
 	<p>Web-enabled applications like browsers use something called a Stub Resolver to interact with the DNS. Once the application or browser has obtained the IP address of the website, they can access it using the HTTP or HTTPS protocols.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CG63VKliGOBNhLXn5iXKu/0dc502d69ddddfdb209384b64b898657/image02.jpg" alt="" class="kg-image" width="1600" height="911" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CG63VKliGOBNhLXn5iXKu/0f45bac0d4efcf308ba15e44de9504ab/image02.jpg" alt="" class="kg-image" width="1600" height="911" loading="lazy">
 
 	</figure>
 	<h4>The DNS Namespace</h4>
@@ -64,13 +64,13 @@
 	<p>In March of 2014, the government of Turkey decided to <a href="https://www.theguardian.com/world/2014/mar/21/turkey-blocks-twitter-prime-minister">block Twitter</a> inside the country. They did so at the DNS level by instructing Turkish ISP’s to return specified records for twitter.com and send them to a Turkish government web site. People quickly realized what was happening, and, by using foreign recursive resolvers, they could bypass the restrictions and get continue to get Twitter’s true address. This inspired citizens to spray paint Google’s public DNS server address on buildings and public spaces.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hopT72do5czRnY9Z9ofEy/68d44b0d43d845c4fa130ad2afe3f607/image05.jpg" alt="" class="kg-image" width="624" height="351" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hopT72do5czRnY9Z9ofEy/3151895b36ce307268fce78e9127c6a1/image05.jpg" alt="" class="kg-image" width="624" height="351" loading="lazy">
 
 	</figure>
 	<p>This incident in Turkey illustrates the first major security problem with DNS: there is no authentication. Any party with a privileged network position (e.g. they control a router that sits between two sides of a connection) is able to modify DNS records to point to wherever they choose. This is the so-called “on-path attacker attack”, and DNS is vulnerable.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53udd7AkzbcE2s62nABtIl/95678e7d8d3b6b7cf92d1c8d3a568103/image01.jpg" alt="" class="kg-image" width="1438" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53udd7AkzbcE2s62nABtIl/aa3fc9315cbcd7a6a8a68f487c51bd0a/image01.jpg" alt="" class="kg-image" width="1438" height="216" loading="lazy">
 
 	</figure>
 	<h4>Kaminsky’s Attack</h4>
@@ -106,7 +106,7 @@
 	<p>If one of your malicious—acceptable—responses arrives ahead of the real response, the recursive resolver will believe your record and cache it for as long as the TTL is set. Then any other clients asking for the poisoned record will be directed to your malicious servers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QX9I12HqudIEAUiZ6Cs3x/073a21d078b704254c545228bdaf3982/image03.jpg" alt="" class="kg-image" width="1528" height="656" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QX9I12HqudIEAUiZ6Cs3x/f03567659e8f8955504454cef6be5f13/image03.jpg" alt="" class="kg-image" width="1528" height="656" loading="lazy">
 
 	</figure>
 	<p>There are some complications that make this harder than it sounds in practice. For example, you have to guess:</p>
@@ -160,7 +160,7 @@ cloudflare.com.            285    IN    A    198.41.213.157</code></pre>
 	<p>The ultimate root of trust is the KSK DNSKEY for the DNS root. This key is universally known and published.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/220BuUdKXB1gpWKEHjffBo/08e2792a2bb89c44672ef53df6f4bb01/image00.jpg" alt="" class="kg-image" width="1600" height="699" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/220BuUdKXB1gpWKEHjffBo/eabdf58eadc38ca739ed4a39c1b11399/image00.jpg" alt="" class="kg-image" width="1600" height="699" loading="lazy">
 
 	</figure>
 	<p>Here is the DNSKEY root KSK that was published in August 2010 and will be used until sometime in 2015 or 2016 (encoded in base64):</p>

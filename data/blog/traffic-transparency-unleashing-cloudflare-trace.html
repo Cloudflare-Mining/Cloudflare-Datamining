@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2J88VmYRVXO9QM3BotXBnu/c9ae31ac9edb952fef2f8f9efea9c09e/image7-9.png" alt="Traffic Transparency: Unleashing the Power of Cloudflare Trace" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2J88VmYRVXO9QM3BotXBnu/51d14bf8d677eb859d0f7a8c78adb78e/image7-9.png" alt="Traffic Transparency: Unleashing the Power of Cloudflare Trace" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today, we are excited to announce Cloudflare Trace! Cloudflare Trace is available to all our customers. Cloudflare Trace enables you to understand how HTTP requests traverse your zone's configuration and what <a href="https://developers.cloudflare.com/ruleset-engine">Cloudflare Rules</a> are being applied to the request.</p>
@@ -34,7 +34,7 @@
 	<p>Understanding the intricate journey that your traffic embarks on within Cloudflare can be a challenging task for many of our customers and even for Cloudflare employees. This complexity often leads to questions within our Cloudflare Community or direct inquiries to our support team. Internally, over the past 13 years at Cloudflare, numerous individuals have attempted to explain this journey through diagrams. We maintain an internal Wiki page titled 'Life of a Request Museum.' This page archives all the attempts made over the years by some of the first Cloudflare engineers, heads of product, and our marketing team, where the following image was used in our 2018 marketing slides.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LRSWk7IMZI9xmvCVnjtD6/0ef20152585984891f81e5021b345aa8/pasted-image-0-4.png" alt="A picture showing the lift of a request that marketing created. it shows a simple flow through DNS, DOS, SSL, Security, Performance, Argo then insights." class="kg-image" width="1600" height="973" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LRSWk7IMZI9xmvCVnjtD6/c28df74bc721e5df7f3e0b5035c09ee2/pasted-image-0-4.png" alt="A picture showing the lift of a request that marketing created. it shows a simple flow through DNS, DOS, SSL, Security, Performance, Argo then insights." class="kg-image" width="1600" height="973" loading="lazy">
 
 	</figure>
 	<p>The "problem" (a rather positive one) is that Cloudflare is innovating so rapidly. New products are being added, code is removed, and existing products are continually enhanced. As a result, a diagram created just a few weeks ago can quickly become outdated and challenging to keep up to date.</p>
@@ -49,13 +49,13 @@
 	<p>However, customers still want to understand, “The life of a request.” Striking the ideal balance between providing just enough detail without overwhelming our users posed a problem akin to the <a href="https://en.wikipedia.org/wiki/Goldilocks_principle">Goldilocks principle</a>. One of our first attempts to detail the ordering of Cloudflare products was <a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first">Traffic Sequence</a>, a straightforward dashboard illustration that provides a basic, high-level overview of the interactions between Cloudflare products. While it does not detail every intricacy, it helps our customers understand the order and flow of products that interacted with an HTTP request and was a welcome addition to the Cloudflare dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ftsR4V5sUdLgn3bfgW1YC/aecd77f84238da709ffc049498da4f2f/Screenshot-2023-09-22-at-13.28.24.png" alt="Flow diagram in the UI showing cloudflare flow of a request." class="kg-image" width="1564" height="698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ftsR4V5sUdLgn3bfgW1YC/11b51954378a85bc684d785789ad1ad6/Screenshot-2023-09-22-at-13.28.24.png" alt="Flow diagram in the UI showing cloudflare flow of a request." class="kg-image" width="1564" height="698" loading="lazy">
 
 	</figure>
 	<p>However, customers still requested further insights and details. Especially around debugging issues. Internally Cloudflare teams utilize a number of self created products to trace a request. One of these products is Flute. This product gives a verbose output of all rules, Cloudflare features and codepaths a request undertakes. This allows our engineers and support teams to investigate an issue and identify if something is awry. For example in the following Flute trace image you can see how a request for my domain is evaluated against <a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects">Single Redirects</a>, <a href="https://developers.cloudflare.com/waiting-room">Waiting Room</a>, <a href="https://developers.cloudflare.com/rules/configuration-rules">Configuration Settings</a>, <a href="https://blog.cloudflare.com/cloudflare-snippets-alpha">Snippets</a> and <a href="https://developers.cloudflare.com/rules/origin-rules">Origin Rules</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QXCW7GoFpXIZG53yI1M7C/5ba0a007d44734be35a23c0f8323f26b/image9-1.png" alt="Output of Flute Trace output showing the zone and the phases that were matched." class="kg-image" width="1999" height="912" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QXCW7GoFpXIZG53yI1M7C/0eaf4f704ad28ec6892bc290553a9a96/image9-1.png" alt="Output of Flute Trace output showing the zone and the phases that were matched." class="kg-image" width="1999" height="912" loading="lazy">
 
 	</figure>
 	<p>The Flute tool became one of the key focal points in the development of Cloudflare Trace. However, it can be quite intricate and packed with extensive details, potentially leading to more questions than solutions if copied verbatim and exposed to our customers.</p>
@@ -81,7 +81,7 @@
 	<p>A customer encountered an issue while attempting to rewrite a URL to their origin for specific paths using Transform rules. The Cloudflare account created a filter that employed regex to match against a specific path.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SENnJ2f4USZc1zKatiulw/cefa68863cc0fb2d71693328753dde53/pasted-image-0--1--4.png" alt="" class="kg-image" width="1600" height="910" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SENnJ2f4USZc1zKatiulw/f19b98e52ecc8e49a3355b70e19ef5e2/pasted-image-0--1--4.png" alt="" class="kg-image" width="1600" height="910" loading="lazy">
 
 	</figure>
 	<p>A systems administrator monitoring their web server observed in their logs that the URLs for a small percentage of requests were not transforming correctly, causing disruptions to the application. They decided to investigate by comparing a correctly functioning request with one that was not, and subsequently conducted traces.</p>

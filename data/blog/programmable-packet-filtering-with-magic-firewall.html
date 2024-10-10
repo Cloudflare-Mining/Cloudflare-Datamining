@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26IsAivdt2Ph7Gc2D1Qq1n/bd5ce90a6b28807f235acd1344a7ec0b/FgvF8-vX8HpqkNa8E4GPasHe8hB3KCwhHNINcnghfnvvPQtInchmOHQtRwpV-row5l5r6fDuFRn1l1DfyOXbLGH1Qu5RzZdaGEWvPyAQ44Gv4TGwFRs5NUxK26LX.png" alt="Programmable Packet Filtering with Magic Firewall" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26IsAivdt2Ph7Gc2D1Qq1n/4ce92a9d80ecb8c48827d0f8b0835256/FgvF8-vX8HpqkNa8E4GPasHe8hB3KCwhHNINcnghfnvvPQtInchmOHQtRwpV-row5l5r6fDuFRn1l1DfyOXbLGH1Qu5RzZdaGEWvPyAQ44Gv4TGwFRs5NUxK26LX.png" alt="Programmable Packet Filtering with Magic Firewall" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Cloudflare actively protects services from sophisticated attacks day after day. For users of Magic Transit, <a href="https://www.cloudflare.com/ddos">DDoS protection</a> detects and drops attacks, while <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a> allows custom packet-level rules, enabling customers to deprecate hardware firewall appliances and block malicious traffic at Cloudflare’s network. The types of attacks and sophistication of attacks continue to evolve, as recent DDoS and reflection <a href="https://blog.cloudflare.com/attacks-on-voip-providers">attacks</a> <a href="https://blog.cloudflare.com/update-on-voip-attacks">against</a> VoIP services targeting protocols such as <a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol">Session Initiation Protocol</a> (SIP) have shown. Fighting these attacks requires pushing the limits of packet filtering beyond what traditional firewalls are capable of. We did this by taking best of class technologies and combining them in new ways to turn Magic Firewall into a blazing fast, fully programmable firewall that can stand up to even the most sophisticated of attacks.</p>
@@ -18,7 +18,7 @@
 	<p><a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall</a> is a distributed stateless packet firewall built on Linux nftables. It runs on every server, in every Cloudflare data center around the world. To provide isolation and flexibility, each customer’s nftables rules are configured within their own Linux network namespace.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IjaJVGQWr5ssJPteOj4DR/1caac22318caa70006e45e94b72bb09f/image1-20.png" alt="This diagram shows how packets are processed by Magic Firewall on a Cloudflare server." class="kg-image" width="1379" height="718" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IjaJVGQWr5ssJPteOj4DR/2a0a310c33b86840a752386253f555b9/image1-20.png" alt="This diagram shows how packets are processed by Magic Firewall on a Cloudflare server." class="kg-image" width="1379" height="718" loading="lazy">
 
 	</figure>
 	<p>This diagram shows the life of an example packet when using <a href="https://blog.cloudflare.com/magic-transit-network-functions">Magic Transit</a>, which has Magic Firewall built in. First, packets go into the server and DDoS protections are applied, which drops attacks as early as possible. Next, the packet is routed into a customer-specific network namespace, which applies the nftables rules to the packets. After this, packets are routed back to the origin via a GRE tunnel. Magic Firewall users can construct firewall statements from a <a href="https://developers.cloudflare.com/magic-firewall">single API</a>, using a flexible <a href="https://github.com/cloudflare/wirefilter">Wirefilter syntax</a>. In addition, rules can be configured via the Cloudflare dashboard, using friendly UI drag and drop elements.</p>
@@ -38,7 +38,7 @@
 	<p>Since we know iptables can use eBPF, why not just use that? Magic Firewall currently leverages nftables, which is a great choice for our use case due to its flexibility in syntax and programmable interface. Thus, we need to find a way to use the xt_bpf extension with nftables.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EnxwNmNsjU68l44Mf0M3J/a7076623c14e4a1880afc159cc9200c2/image2-13.png" alt="" class="kg-image" width="882" height="661" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EnxwNmNsjU68l44Mf0M3J/8d5f3b9cfc9f74f1d398c2955925e0c0/image2-13.png" alt="" class="kg-image" width="882" height="661" loading="lazy">
 
 	</figure>
 	<p>This <a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft">diagram</a> helps explain the relationship between iptables, nftables and the kernel. The nftables API can be used by both the iptables and nft userspace programs, and can configure both xtables matches (including xt_bpf) and normal nftables matches.</p>

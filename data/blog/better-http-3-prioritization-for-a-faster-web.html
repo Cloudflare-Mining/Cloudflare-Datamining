@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WMquEFDro1TjSvsKvdb2X/5569c6182d9b46a43b8191870a61a70c/image4-9.png" alt="Introducing HTTP/3 Prioritization" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WMquEFDro1TjSvsKvdb2X/1ebf5bacb443b2c7c611b2600cfe1352/image4-9.png" alt="Introducing HTTP/3 Prioritization" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today, Cloudflare is very excited to announce full support for HTTP/3 Extensible Priorities, a new standard that speeds the loading of webpages by up to 37%. Cloudflare worked closely with standards builders to help form the specification for HTTP/3 priorities and is excited to help push the web forward. HTTP/3 Extensible Priorities is available on all plans on Cloudflare. For paid users, there is an enhanced version available that improves performance even more.</p>
@@ -24,13 +24,13 @@
 	<p>As a film strip, this is what it looks like:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nUzro5TRNUdT66D48SAX9/c5d7990c325d9fed30f154fd44676639/unnamed.png" alt="" class="kg-image" width="1379" height="349" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nUzro5TRNUdT66D48SAX9/eea3706754ab1adcdcf2de1520b4e8b2/unnamed.png" alt="" class="kg-image" width="1379" height="349" loading="lazy">
 
 	</figure>
 	<p>In terms of actual numbers, we see Largest Contentful Paint drop from 2.06 seconds down to 1.29 seconds. Let’s look at why that is. To analyze exactly what’s going on we have to look at a waterfall diagram of how this web page is loading. A waterfall diagram is a way of visualizing how assets are loading. Some may be loaded in parallel whilst some might be loaded sequentially. Without smart prioritization, the waterfall for loading assets for this web page looks as follows:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GEe1xRnxvauMVfOKy5KH2/21de0c81356b29eb8b5a7a69186a35e2/BLOG-1879-waterfall-analysis-2.png" alt="" class="kg-image" width="1600" height="795" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GEe1xRnxvauMVfOKy5KH2/ab43c1561d3d512589a6de0b063419a1/BLOG-1879-waterfall-analysis-2.png" alt="" class="kg-image" width="1600" height="795" loading="lazy">
 
 	</figure>
 	<p>There are several interesting things going on here so let's break it down. The LCP image at request 21 is for 1937-1.png, weighing 30.4 KB. Although it is the LCP image, the browser requests it as priority u=3,i, which informs the server to put it in the same round-robin bandwidth-sharing bucket with all of the other images. Ahead of the LCP image is index.js, a JavaScript file that is loaded with a "defer" attribute. This JavaScript is non-blocking and shouldn't affect key aspects of page layout.</p>
@@ -38,7 +38,7 @@
 	<p>The waterfall with prioritization looks much better:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y2mU3vMrf4DVgI6Cq7CSv/cb2a5b346214d44db3ee95daf5ab6eff/BLOG-1879-waterfall-analysis-1.png" alt="" class="kg-image" width="1186" height="518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Y2mU3vMrf4DVgI6Cq7CSv/980f93870fee27984d40dd310ee38c8d/BLOG-1879-waterfall-analysis-1.png" alt="" class="kg-image" width="1186" height="518" loading="lazy">
 
 	</figure>
 	<p>We used a server-side override to promote the priority of the LCP image 1937-1.png from u=3,i to u=2,i. This has the effect of making it leapfrog the "defer" JavaScript. We can see at around 1.2 seconds, transmission of index.js is halted while the image is delivered in full. And because it takes another couple of hundred milliseconds to receive the remaining JavaScript, there is no CPU competition for the LCP image paint. These factors combine together to drastically improve LCP times.</p>
@@ -92,19 +92,19 @@
 	<p>Example 1: all streams have the same urgency and are non-incremental so get served in serial order of stream ID.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mzTrM4iI9h7uEJXa2TOuT/247bdcfe05a184a4405356450ab37982/u-same.png" alt="" class="kg-image" width="1110" height="103" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2mzTrM4iI9h7uEJXa2TOuT/40d1ba7c1d13949107d68a2e1fb5398f/u-same.png" alt="" class="kg-image" width="1110" height="103" loading="lazy">
 
 	</figure>
 	<p>Example 2: the streams have the same urgency and are incremental so get served in round-robin fashion.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1V44aLuoHvqxR4gpETKJ2x/0272df7ccbfcee97a62f61afb5009e1c/u-same-i.png" alt="" class="kg-image" width="1103" height="100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1V44aLuoHvqxR4gpETKJ2x/fdb8ddb148353333b4aaceff11858ff6/u-same-i.png" alt="" class="kg-image" width="1103" height="100" loading="lazy">
 
 	</figure>
 	<p>Example 3: the streams have all different urgency, with later streams being more important than earlier streams. The data is received serially but in a reverse order compared to example 1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2koT4ij8bzGMc06OVNIFGZ/696bebc6896f29b14577f3a44c48430a/u-reversed.png" alt="" class="kg-image" width="1115" height="105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2koT4ij8bzGMc06OVNIFGZ/26572e5bffa63b588860050e005fe64e/u-reversed.png" alt="" class="kg-image" width="1115" height="105" loading="lazy">
 
 	</figure>
 	<p>Beyond the Extensible Priority signals, a server might consider other things when scheduling, such as file size, content encoding, how the application vs content origins are configured etc.. This was true for HTTP/2 priorities but Extensible Priorities introduces a new neat trick, a priority signal can also be sent as a response header to override the client signal.</p>

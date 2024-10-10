@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/unwSE3x740YVfOMvsByBK/dbf2872de2f37589ec8d04d30ae79a60/rocket.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="500" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/unwSE3x740YVfOMvsByBK/cfa26395a096476510b34f97b3d96ee9/rocket.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="500" height="500" loading="lazy">
 
 	</figure>
 	<p>At CloudFlare, we built our own CDN from the ground up. We used the latest technologies like solid state drives for screaming I/O and Anycast routing and geo load balancing to make it as fast and efficient as possible. But we didn't want our efforts to make the web faster to stop with the traditional CDN. There were two core problems we wanted to address. The first was that a website can no longer be thought of as served from a single web server in a single location. Websites are collections of multiple apps, widgets, and tags that include everything from the ad network code inserted on a page to include advertising to the Facebook Like button.</p>
@@ -27,13 +27,13 @@
 	<p>At a high level, here's a diagram that outlines a way to think about it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CX9nZWG8T9M0yRyZdPfks/1345f37e4cf816542e5e5b02da2b566b/rocket_loader_diagram.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="500" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CX9nZWG8T9M0yRyZdPfks/ef7f68eee37eab16f52452e2baf816e7/rocket_loader_diagram.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="500" height="216" loading="lazy">
 
 	</figure>
 	<p>CloudFlare adds two layers of cache for third party scripts that don't change often. First, we can store the scripts on our global CDN, so they are close to all your visitors and get the benefits of our extensive network (and an already-open HTTP connection). Second, on most modern browsers and smartphones, we use the browser's LocalStorage cache to intelligently store the resources that the site needs in order to avoid round trips to the server. Here's the Firebug waterfall chart of two pages loading before/after Rocket Loader is applied:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7J3XtLTx00KNP6Tz4M1m5r/bfa547130a1a25326ae9d26642c094a2/before_after_HAR.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="492" height="476" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7J3XtLTx00KNP6Tz4M1m5r/51a9d0a3142b18d7f3665ec4073ef034/before_after_HAR.png.scaled500.png" alt="How CloudFlare Rocket Loader Redefines the Modern CDN" class="kg-image" width="492" height="476" loading="lazy">
 
 	</figure>
 	<p>Google has done great work in this space, creating a protocol called <a href="https://en.wikipedia.org/wiki/SPDY">SPDY</a>. It is great, does many of the same performance optimizations and some others as well, but unfortunately only works with the Chrome browser. Rocket Loader will bring many of the same performance benefits promised by SPDY, but works on most browsers and all smart phones, whether your visitors are surfing your site from an iPhone, Android, or Windows device.</p>

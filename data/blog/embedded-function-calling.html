@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6s64pzMizJT22AKVCpeYu2/cb2005fd5dfa2624b75e77365d25d114/image2-14.png" alt="Embedded function calling in Workers AI: easier, smarter, faster" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6s64pzMizJT22AKVCpeYu2/1db371bffec9a960c8f59c69330970bb/image2-14.png" alt="Embedded function calling in Workers AI: easier, smarter, faster" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -38,7 +38,7 @@
 	<p>Traditional LLM function calling allows customers to specify a set of function names and required arguments along with a prompt when running inference on an LLM. The LLM returns the names and arguments for the functions that the customer can then make to perform actions. These actions give LLMs the ability to do things like fetch fresh data not present in the training dataset and "perform actions" based on user intent.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vZ1PHwC5e6RUkxQRKfBW0/41a5e55429ef1241fb87622041d14dac/image3-15.png" alt="" class="kg-image" width="1786" height="990" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vZ1PHwC5e6RUkxQRKfBW0/1812907a22283b5eef02e92c747e8a73/image3-15.png" alt="" class="kg-image" width="1786" height="990" loading="lazy">
 
 	</figure>
 	<p>Traditional function calling requires multiple back-and-forth requests passing through the network in order to get to the final output. This includes requests to your origin server, an inference provider, and external APIs. As a developer, you have to orchestrate all the back-and-forths and handle all the requests and responses. If you were building complex agents with multi-tool calls or recursive tool calls, it gets infinitely harder. Fortunately, this doesn’t have to be the case, and we’ve solved it for you.</p>
@@ -53,7 +53,7 @@
 	<p>With Workers AI, our inference runtime is the Workers platform, and the Workers platform can be seen as a global compute network of distributed functions (RPCs). With this model, we can run inference using Workers AI, and supply not only the function names and arguments, but also the runtime function code to be executed. Rather than performing multiple round-trips across networks, the LLM inference and function can run in the same execution environment, cutting out all the unnecessary requests.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15yHmiG9OmRj9KkuLHteRm/accc0e929bad546679df1cbc41a34c6e/image1-23.png" alt="" class="kg-image" width="1996" height="690" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15yHmiG9OmRj9KkuLHteRm/2c50ad90b4736fbc7496a8495d58e1fe/image1-23.png" alt="" class="kg-image" width="1996" height="690" loading="lazy">
 
 	</figure>
 	<p>Cloudflare is one of the few inference providers that is able to do this because we offer more than just inference – our developer platform has compute, storage, inference, and more, all within the same Workers runtime.</p>

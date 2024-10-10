@@ -1,10 +1,10 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bc96QolRgTyiGIBViiBQW/a0822dac339c3aa1bea2b54d58055c62/test-all-the-things-ipv6-http2-sha-2.jpg" alt="">
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bc96QolRgTyiGIBViiBQW/da2fa970edfab1af84af908cce3d9e2a/test-all-the-things-ipv6-http2-sha-2.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><b>NOTE: The </b><a href="https://http2.cloudflare.com"><b>https://http2.cloudflare.com</b></a><b> site has been shut down. This blog was posted in 2015 and subsequently we took all the technologies here and made them part of our core product.</b></p>
 	<p>CloudFlare constantly tries to stay on the leading edge of Internet technologies so that our customers' web sites use the latest, fastest, most secure protocols. For example, in the past we've enabled <a href="https://www.cloudflare.com/ipv6">IPv6</a> and <a href="https://blog.cloudflare.com/staying-up-to-date-with-the-latest-protocols-spdy-3-1">SPDY/3.1</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mXGypzyBdMO90CpkHFyIr/e206dd0bcff3843c01e868d8e4c0aa0f/1490956.jpg" alt="" class="kg-image" width="400" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mXGypzyBdMO90CpkHFyIr/c72a20a0df3300f5be24b4a41eca0492/1490956.jpg" alt="" class="kg-image" width="400" height="300" loading="lazy">
 
 	</figure>
 	<p>Today we've switched on a test server that is open for people to test compatibility of web clients. It's a mirror of this blog and is served from <a href="https://http2.cloudflare.com">https://http2.cloudflare.com/</a>. The server uses three technologies that it may be helpful to test with: IPv4/IPv6, HTTP/2 and an SSL certificate that uses SHA-2 for its signature.</p>
@@ -16,20 +16,20 @@ $ dig +short http2.cloudflare.com AAAA
 	<p>The certificate is based on SHA-2 (in this case SHA-256). This is important because SHA-1 is being deprecated by some browsers <a href="https://blog.filippo.io/the-unofficial-chrome-sha1-faq">very soon</a>. On a recent browser the connection will also be secured using ECDHE (for <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ln91gm5eQAL1msGVkURHp/08cf692853c2a36c28a96360e9239b1b/Screen-Shot-2015-08-21-at-16-24-37.png" alt="" class="kg-image" width="616" height="762" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ln91gm5eQAL1msGVkURHp/906918fabce930d0f9d0db264b49770d/Screen-Shot-2015-08-21-at-16-24-37.png" alt="" class="kg-image" width="616" height="762" loading="lazy">
 
 	</figure>
 	<p>And, finally, the server uses HTTP/2 if the browser is capable. For example, in Google Chrome, with the <a href="https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin">HTTP/2 and SPDY indicator</a> extension the blue lightning bolt indicates that the page was served using HTTP/2:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n6g7gcgyLEALV7dx3ZqTd/2cf6c849705ab9f9d3ae4448b5dace5d/Screen-Shot-2015-08-21-at-16-23-11.png" alt="" class="kg-image" width="1336" height="744" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3n6g7gcgyLEALV7dx3ZqTd/631eae6397babc849ce829457405c675/Screen-Shot-2015-08-21-at-16-23-11.png" alt="" class="kg-image" width="1336" height="744" loading="lazy">
 
 	</figure>
 	<p>This server isn't on the normal CloudFlare network and is intended for testing purposes only. We'll endeavor to keep it online so that people have an HTTP/2 endpoint to test clients against.</p>
 	<p>In Google Chrome's <a href="chrome://net-internals/#events">net-internals</a> view you can see the HTTP/2 session in use when connecting to the site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A2LQeZ6ZGPQSXQ93XcsBG/e763398d1273e022bb3be6e99dc752fe/Screen-Shot-2015-09-02-at-09-35-51.png" alt="" class="kg-image" width="2303" height="562" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7A2LQeZ6ZGPQSXQ93XcsBG/3930ce4e4410c5d23198b30e37b7e302/Screen-Shot-2015-09-02-at-09-35-51.png" alt="" class="kg-image" width="2303" height="562" loading="lazy">
 
 	</figure>
 	<p>We hope that this will prove useful for people tests HTTP/2 compatible client software. Let us know how it goes.</p>

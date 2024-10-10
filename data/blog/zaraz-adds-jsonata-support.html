@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KHrDvLnG9ZIhs7000zsYn/61ad1ce6f6eb5dc4e4167428ea2a2c02/image1-44.png" alt="Cloudflare Zaraz supports JSONata" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KHrDvLnG9ZIhs7000zsYn/8f4b9332b54b5612fc6e47d93f440d9a/image1-44.png" alt="Cloudflare Zaraz supports JSONata" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Cloudflare users leverage Zaraz for loading their third-party JavaScript tools. Tools like analytics, conversion pixels, widgets and alike, <a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools">load faster and safer when loaded through Zaraz</a>.</p>
@@ -53,7 +53,7 @@ pets[type="parrot"].name // ["Alfie", "Milo"]</code></pre>
 	<p>Let's explore two examples from our documentation. Often, there's a need to convert a string to lowercase, such as when comparing it to another value in a regular expression. Suppose the original string is derived from a cookie named <code>loggedIn</code>, that specifies if the current user is logged in. In that case, we can use JSONata to transform the value to lowercase using the expression $lowercase(system.cookies.loggedIn). If we want to use this expression within a trigger, we navigate to the Zaraz dashboard and choose our trigger, locate the relevant match rule, and enter {{ $lowercase(system.cookies.loggedIn) }} as the value. Now, the cookie value will be compared in its lowercase format.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FgInwKRsFuMNM0YpjuVbn/4d8c18d561e9753edf6753eb33165f6f/image2-39.png" alt="" class="kg-image" width="1999" height="840" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FgInwKRsFuMNM0YpjuVbn/a950020e078337522054865116403418/image2-39.png" alt="" class="kg-image" width="1999" height="840" loading="lazy">
 
 	</figure>
 	<p>You can also run simple calculations. Assuming you are using <code>zaraz.track()</code> to send the cart content like this:</p>
@@ -77,7 +77,7 @@ pets[type="parrot"].name // ["Alfie", "Milo"]</code></pre>
 	<p>If the field in which you want to include the total sum of all products, you will enter {{ $sum(client.products.(price * quantity)) }}. This will multiply the price of each product by its quantity, and then sum up the total.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nbdz3jTkzgSojEw0MhXqU/171f8c64ca65968f809dd9395a723e90/image3-31.png" alt="" class="kg-image" width="1950" height="1102" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nbdz3jTkzgSojEw0MhXqU/694840931e008023c4508c0ac5088458/image3-31.png" alt="" class="kg-image" width="1950" height="1102" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

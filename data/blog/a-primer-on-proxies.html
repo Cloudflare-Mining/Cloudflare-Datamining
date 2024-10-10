@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4icLjzJ8inC97t9zh3LiWw/9831e875ac4be8d58910a9a7071eb516/image2-73.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4icLjzJ8inC97t9zh3LiWw/e0e75625752de444e0fd2a32f627112e/image2-73.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Traffic proxying, the act of encapsulating one flow of data inside another, is a valuable privacy tool for establishing boundaries on the Internet. Encapsulation has an overhead, Cloudflare and our Internet peers strive to avoid turning it into a performance cost. MASQUE is the latest collaboration effort to design efficient proxy protocols based on IETF standards. We're already running these at scale in production; see our recent blog post about Cloudflare's role in <a href="https://blog.cloudflare.com/icloud-private-relay">iCloud Private Relay</a> for an example.</p>
@@ -21,7 +21,7 @@
 	<p>The one problem with TCP is that when a lost packet is detected at a receiver, the sender needs to retransmit it. This takes time to happen and can mean that the byte stream reconstruction gets delayed. This is known as TCP head-of-line blocking. Applications regularly use TCP via a socket API that abstracts away protocol details; they often can't tell if there are delays because the other end is slow at sending or if the network is slowing things down via packet loss.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xnUbBQnb4droA0xmJMJ69/491ab53e02f2da99f8ea8e0d11998e82/image1-84.png" alt="Magic shredders for HTTP/1.1." class="kg-image" width="957" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xnUbBQnb4droA0xmJMJ69/c07b46a941cdc3a7cbb75dc696050f38/image1-84.png" alt="Magic shredders for HTTP/1.1." class="kg-image" width="957" height="492" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -65,7 +65,7 @@ Host: target.example.com</code></pre>
 	<p>HTTP CONNECT proxies forward data between the client and the target server. The TCP packets themselves are not tunneled, only the data on the logical byte stream. Although the proxy is supposed to forward data and not process it, if the data is plaintext there would be nothing to stop it. In practice, CONNECT is often used to create an end-to-end TLS connection where only the client and target server have access to the protected content; the proxy sees only TLS records and can't read their content because it doesn't have access to the keys.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ParPDOxCyJFT2m3UYsLtR/ac5905921b29870824ca95769dffc1eb/image8-1.png" alt="Magic shredders with end-to-end TLS connection." class="kg-image" width="602" height="254" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ParPDOxCyJFT2m3UYsLtR/d76fbce62a99c53fa68bc86773c231bd/image8-1.png" alt="Magic shredders with end-to-end TLS connection." class="kg-image" width="602" height="254" loading="lazy">
 
 	</figure>
 	<p>Finally, it's worth noting that after a successful CONNECT request, the HTTP connection (and the TCP connection underpinning it) has been converted into a tunnel. There is no more possibility of issuing other HTTP messages, to the proxy itself, on the connection.</p>
@@ -80,7 +80,7 @@ Host: target.example.com</code></pre>
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7540.html">HTTP/2</a> adds logical streams above the TCP layer in order to support concurrent requests and responses on a single connection. Streams are also reliable and ordered byte streams, operating on top of TCP. Returning to our magic shredder analogy: imagine you wanted to send a book. Shredding each page one after another and rebuilding the book one page at a time is slow, but handling multiple pages at the same time might be faster. HTTP/2 streams allow us to do that. But, as we all know, trying to put too much into a shredder can sometimes cause it to jam.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37F1LF53K2Plk0vYbcdmgg/e4f30bd9fb0adca059ed6dc4c03646d7/image3-33.png" alt="Magic shredders for HTTP/2." class="kg-image" width="983" height="487" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37F1LF53K2Plk0vYbcdmgg/d7d57e19b13ebce0aabb910568f4d9f6/image3-33.png" alt="Magic shredders for HTTP/2." class="kg-image" width="983" height="487" loading="lazy">
 
 	</figure>
 	<p>In HTTP/2, each request and response is sent on a different stream. To support this, HTTP/2 defines frames that contain the stream identifier that they are associated with. Requests and responses are composed of HEADERS and DATA frames which contain HTTP header fields and HTTP content, respectively. Frames can be large. When they are sent on the wire they might span multiple TLS records or TCP segments. Side note: the HTTP WG has been working on a new revision of the document that defines HTTP semantics that are common to all HTTP versions. The terms message, header fields, and content all come from <a href="https://www.ietf.org/archive/id/draft-ietf-httpbis-semantics-19.html#name-message-abstraction">this description</a>.</p>
@@ -92,7 +92,7 @@ Host: target.example.com</code></pre>
 	<p>By using HTTP/2, a client can create multiple CONNECT tunnels in a single connection. This can help reduce resource usage (saving the global count of TCP connections) and allows related tunnels to be logically grouped together, ensuring that they "share fate" when either client or proxy need to gracefully close. On the proxy-to-server side there are still multiple independent TCP connections.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zNstK2cYrqJKofOIiOeII/3eb267c8d52998be086f5cb0666a4baf/image7.png" alt="Magic shredders for HTTP/2 CONNECT." class="kg-image" width="606" height="255" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zNstK2cYrqJKofOIiOeII/2c4bda54b181ce6c171b264589511421/image7.png" alt="Magic shredders for HTTP/2 CONNECT." class="kg-image" width="606" height="255" loading="lazy">
 
 	</figure>
 	<p>One challenge of multiplexing tunnels on concurrent streams is how to effectively prioritize them. We've talked in the past about <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">prioritization for web pages</a>, but the story is a bit different for CONNECT. We've been thinking about this and captured <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-priority.html#name-scheduling-and-the-connect-">considerations</a> in the new <a href="https://blog.cloudflare.com/adopting-a-new-approach-to-http-prioritization">Extensible Priorities</a> draft.</p>
@@ -108,7 +108,7 @@ Host: target.example.com</code></pre>
 	<p>QUIC is composed of several foundational features. You can think of these like individual puzzle pieces that interlink to form a transport service. This service needs one more piece, an application mapping, to bring it all together.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gGK0LOkLSU64zmxkd9gVd/733af4ca334beae4517d4d7944c8b732/image4-15.png" alt="Four puzzle pieces arranged into a whole: Recovery, Transport, Security, and Application Mapping." class="kg-image" width="1273" height="685" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gGK0LOkLSU64zmxkd9gVd/d02d3a3f1f7e13d7c2819342f61f6a4a/image4-15.png" alt="Four puzzle pieces arranged into a whole: Recovery, Transport, Security, and Application Mapping." class="kg-image" width="1273" height="685" loading="lazy">
 
 	</figure>
 	<p>Similar to HTTP/2, QUIC version 1 provides reliable and ordered streams. But QUIC streams live at the transport layer and they are the only type of QUIC primitive that can carry application data. QUIC has no opinion on how streams get used. Applications that wish to use QUIC must define that themselves.</p>
@@ -117,7 +117,7 @@ Host: target.example.com</code></pre>
 	<p>To use our magic shredder analogy one more time: we're sending a book again, but this time we parallelise our task by using independent shredders. We need to logically associate them together so that the receiver knows the pages and shreds are all for the same book, but otherwise they can progress with less chance of jamming.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KPS4I6E6zvfPnrY4zNlxB/5a6aeb28e776e7b8642248518f400f58/image6-5.png" alt="Magic shredders for HTTP/3." class="kg-image" width="980" height="495" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KPS4I6E6zvfPnrY4zNlxB/912d09cf787fa46d6dc77140919ba607/image6-5.png" alt="Magic shredders for HTTP/3." class="kg-image" width="980" height="495" loading="lazy">
 
 	</figure>
 	<p><a href="https://datatracker.ietf.org/doc/draft-ietf-quic-http">HTTP/3</a> is an example of an application mapping that describes how streams are used to exchange: HTTP settings, <a href="https://datatracker.ietf.org/doc/html/draft-ietf-quic-qpack-21">QPACK</a> state, and request and response messages. HTTP/3 still defines its own frames like HEADERS and DATA, but it is overall simpler than HTTP/2 because QUIC deals with the hard stuff. Since HTTP/3 just sees a logical byte stream, its frames can be arbitrarily sized. The QUIC layer handles segmenting HTTP/3 frames over STREAM frames for sending in packets. HTTP/3 <a href="https://datatracker.ietf.org/doc/html/draft-ietf-quic-http-34#section-4.2">also supports the CONNECT method</a>. It functions identically to CONNECT in HTTP/2, each request stream converting to an end-to-end tunnel.</p>
@@ -132,7 +132,7 @@ Host: target.example.com</code></pre>
 	<p>We've talked about HTTP/1.1, HTTP/2 and HTTP/3. The diagram below is a convenient way to summarize how HTTP requests and responses get serialized for transmission over a secure transport. The main difference is that with TLS, protected records are split across several TCP segments. While with QUIC there is no record layer, each packet has its own protection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ixri8ytJ113sldUVNplLm/b96a30c1cb949b556cc51548aeb99439/image5-18.png" alt="Side-by-side comparison of HTTP/1.1, HTTP/2 and HTTP/3 framing and packet structures." class="kg-image" width="1430" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ixri8ytJ113sldUVNplLm/47ffbc388a4a45ae481a78e39b2986a0/image5-18.png" alt="Side-by-side comparison of HTTP/1.1, HTTP/2 and HTTP/3 framing and packet structures." class="kg-image" width="1430" height="504" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

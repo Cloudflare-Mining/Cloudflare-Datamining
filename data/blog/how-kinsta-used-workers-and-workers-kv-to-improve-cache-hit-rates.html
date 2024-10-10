@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QtEG4SPpBvhhQRrOHLmMt/65a4c0570a97e01edc59c82a8d051b15/how-kinsta-used-workers-and-workers-kv-to-improve-cache-hit-rates.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QtEG4SPpBvhhQRrOHLmMt/ff56c77652452c22b0ff7c73949cf718/how-kinsta-used-workers-and-workers-kv-to-improve-cache-hit-rates.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This is a guest post by Kinsta about their use of our platform.</p>
 	<p>At <a href="https://kinsta.com">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
@@ -6,7 +6,7 @@
 	<p>In early 2023, we doubled down on Cloudflare cache wrangling, making caches more responsive to client-side configuration changes while also shifting the heavy lifting behind broadcasting feature updates away from our admins on the backend and into Cloudflare Workers. A key result was a dramatic increase in the share of customer data successfully cached, increasing 56.3% between October 2022 and March 2023.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jl0A69n6LwaP2LfqmiFAh/134c220da27758e5af365dc68921f0e8/image5-10.png" alt="" class="kg-image" width="1053" height="160" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jl0A69n6LwaP2LfqmiFAh/41eaf7bfd0e23a139a27f0fef3218992/image5-10.png" alt="" class="kg-image" width="1053" height="160" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Workers and Workers KV allow us to programmatically customize every request and response with minimal effort and lower latency. We no longer need to deploy changes to hundreds of thousands of containers when we want to implement new features; we can replicate or implement the feature with Workers and deploy it everywhere with a few commands and clicks, saving us days of work and maintenance.</p>
@@ -51,12 +51,12 @@ cf.resolveOverride = customBackend;</code></pre>
 	<p>Thanks to our cache key customization, we realized we could cache the Workers KV data with Cache API, saving on reading operations and possibly lowering the latency by avoiding multiple Workers KV GET requests per visitor. Since the cached response is now based on the request's URL combined with KV data, we no longer need to worry about caching stale content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rBZU50BbZo9KghOLn8061/0009bee56c4f4897735ab73d704d6733/image3-16.png" alt="" class="kg-image" width="381" height="301" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rBZU50BbZo9KghOLn8061/472a03792013dbe143c59d215de1b996/image3-16.png" alt="" class="kg-image" width="381" height="301" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ep6zAMholFQw5kxOZuvxn/78d49c7ddea9bd826f0f3f4b0e4f6bd8/image1-23.png" alt="" class="kg-image" width="562" height="381" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ep6zAMholFQw5kxOZuvxn/eaeadc260624177796e47390447b857d/image1-23.png" alt="" class="kg-image" width="562" height="381" loading="lazy">
 
 	</figure>
 	<p>However, unlike many applications, we can't cache Workers KV for extended periods. Kinsta's customers are constantly trying new features, changing Polish and Auto Minify settings, sometimes excluding pages or extensions from being cached, and they want to see their changes in production as soon as possible.</p>
@@ -89,7 +89,7 @@ cf.resolveOverride = customBackend;</code></pre>
 	<p>At Kinsta, we implemented a 30-second cache TTL for Workers KV data, decreasing read operations by about 80%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55WQ6ntmTVnTWEhzV8sRL1/cd489fa59c2821a93fc5abff9ec168b5/image4-14.png" alt="" class="kg-image" width="875" height="363" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55WQ6ntmTVnTWEhzV8sRL1/1a0489491415f34164cfcda505fb0ee0/image4-14.png" alt="" class="kg-image" width="875" height="363" loading="lazy">
 
 	</figure>
 	<p>Read operations</p>

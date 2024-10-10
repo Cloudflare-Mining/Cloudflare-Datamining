@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77iwaoCtPCaTit1OPSmWHU/385cbbc29bfd195d75f4dfb9b9bef024/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77iwaoCtPCaTit1OPSmWHU/70b5ad49e43f005568c3dc8d59711e38/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="massive-route-leak-impacts-major-parts-of-the-internet-including-cloudflare">Massive route leak impacts major parts of the Internet, including Cloudflare</h3>
@@ -20,14 +20,14 @@
 	<p>What this means is that suddenly Verizon, Allegheny, and DQE had to deal with a stampede of Internet users trying to access those services through their network. None of these networks were suitably equipped to deal with this drastic increase in traffic, causing disruption in service. Even if they had sufficient capacity DQE, Allegheny and Verizon were <b>not</b> allowed to say they had the best route to Cloudflare, Amazon, Linode, etc...</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pCvQ96MWTmJVVbpqquR2b/59e176463cb7d0c8c2bce38ac05a2cc5/leak2-2.png" alt="" class="kg-image" width="1600" height="939" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pCvQ96MWTmJVVbpqquR2b/4be9ff9aceb6dccf8cd0c889d898c24f/leak2-2.png" alt="" class="kg-image" width="1600" height="939" loading="lazy">
 
 	</figure>
 	<p>BGP leak process with a BGP optimizer</p>
 	<p>During the incident, we observed a loss, at the worst of the incident, of about 15% of our global traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65rX7ImarUptmbURA6PAw3/87a30b4aa4bd409de0d56b2249790167/Screenshot-2019-06-24-at-19.22.34.png" alt="" class="kg-image" width="1600" height="282" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65rX7ImarUptmbURA6PAw3/e8e8d45f09a411bd4ae2f31b8cc23a0d/Screenshot-2019-06-24-at-19.22.34.png" alt="" class="kg-image" width="1600" height="282" loading="lazy">
 
 	</figure>
 	<p>Traffic levels at Cloudflare during the incident.</p>
@@ -40,7 +40,7 @@
 	<p>Cloudflare encourages all network operators to <a href="https://blog.cloudflare.com/rpki-details">deploy RPKI</a> now!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6opKKqqitidaqudxSRi9iP/d815a8737ea9c135491b130d17e5c39e/leak3-2.png" alt="" class="kg-image" width="1600" height="664" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6opKKqqitidaqudxSRi9iP/1c808d3a2552e50a22ff4fe693717438/leak3-2.png" alt="" class="kg-image" width="1600" height="664" loading="lazy">
 
 	</figure>
 	<p>Route leak prevention using IRR, RPKI, and prefix limits</p>
@@ -49,14 +49,14 @@
 	<p>The network team at Cloudflare reached out to the networks involved, AS33154 (DQE Communications) and AS701 (Verizon). We had difficulties reaching either network, this may have been due to the time of the incident as it was still early on the East Coast of the US when the route leak started.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xvqzVNjFcIjQenw3ima8a/45b6337237eb2517a95778f168778a6d/mail-1.png" alt="" class="kg-image" width="1656" height="202" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xvqzVNjFcIjQenw3ima8a/0bc1ca2958b2920d390dcd5114749372/mail-1.png" alt="" class="kg-image" width="1656" height="202" loading="lazy">
 
 	</figure>
 	<p>Screenshot of the email sent to Verizon</p>
 	<p>One of our network engineers made contact with DQE Communications quickly and after a little delay they were able to put us in contact with someone who could fix the problem. DQE worked with us on the phone to stop advertising these “optimized” routes to Allegheny Technologies Inc. We're grateful for their help. Once this was done, the Internet stabilized, and things went back to normal.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ltEfbM6zsVNot3T29wYQK/87fe9000d401bdef0772e6cb73298384/phonelog.png" alt="" class="kg-image" width="778" height="1556" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ltEfbM6zsVNot3T29wYQK/457f91c3c3b846c82a3e004cce6f0895/phonelog.png" alt="" class="kg-image" width="778" height="1556" loading="lazy">
 
 	</figure>
 	<p>Screenshot of attempts to communicate with the support for DQE and Verizon</p>

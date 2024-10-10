@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kSXFj0Tgq1mTPHL6Bdpbd/d065d0b4dc9fdb8285400606d763d254/unnamed--1--1.png" alt="Need to Keep Analytics Data in the EU? Cloudflare Zaraz Can Offer a Solution" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kSXFj0Tgq1mTPHL6Bdpbd/14567e87448e778cedfb1270a6945642/unnamed--1--1.png" alt="Need to Keep Analytics Data in the EU? Cloudflare Zaraz Can Offer a Solution" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>A recent decision from the Austrian Data Protection Authority (<a href="https://www.dsb.gv.at">the Datenschutzbehörde</a>) has network engineers scratching their heads and EU companies that use Google Analytics scrambling. The Datenschutzbehörde found that an Austrian website’s use of Google Analytics violates the EU General Data Protection Regulation (GDPR) as interpreted by the “Schrems II” case because Google Analytics can involve sending full or truncated IP addresses to the United States.</p>
@@ -45,21 +45,21 @@
 	<p>Zaraz loads third party tools on the cloud, using Cloudflare Workers. There are multiple reasons why we chose to build on Workers, and you can read more about it in this <a href="https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast">blog post</a>. By using Workers to offload third-party tools to the cloud and away from the browser, Zaraz creates an extra layer of security and control over Personal Identifiable Information (PII), Protected Health Information (PHI), or other sensitive pieces of information that are often unintentionally passed to third-party vendors.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mxi46XGo4i072f0ftw7yC/3a125037431aa187dad4cc7b6f93ad24/image1-2.png" alt="" class="kg-image" width="1800" height="1640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mxi46XGo4i072f0ftw7yC/6af1062eac8638bcd713178b619022df/image1-2.png" alt="" class="kg-image" width="1800" height="1640" loading="lazy">
 
 	</figure>
 	<p>In the <i>traditional</i> way of loading third-party tools, either via a Tag Management Software (TMS), a Customer Data Platform (CDP) or by including JavaScript snippets directly in the HTML, the browser always sends requests to the third-party domain. This is problematic for a bunch of reasons, but mainly because even if you wanted to, you can’t hide the user’s IP address. It is revealed with every HTTP request. It is also problematic because those tools execute remote JavaScript resources, and you have almost no visibility over the actions they take in the browser or the data they transmit.</p>
 	<p>We can use the Google Analytics example to illustrate the difference. When a website is loading Google Analytics either via Google Tag Manager or directly from the HTML, the browser downloads the <code>analytics.js</code> file that loads Google Analytics. It then sends an HTTP POST request from the browser to Google’s endpoint: <code>https://www.google-analytics.com/collect</code>. Both of these requests reveal the end-user’s IP address and might append to the URL some personal data, such as the Google Client ID, as query parameters for example.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bWZxnvgilvw6PrUNsmkuq/28e4004b46ae37774289c50414d70540/image3-3.png" alt="" class="kg-image" width="1999" height="573" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bWZxnvgilvw6PrUNsmkuq/943310f8ccc5e32d6b4ab3649bb96d3e/image3-3.png" alt="" class="kg-image" width="1999" height="573" loading="lazy">
 
 	</figure>
 	<p>In comparison, when you use Zaraz to load Google Analytics, there’s simply no communication at all between the browser and Google’s endpoint. Instead, Zaraz works as an intermediary, and the entire communication is between Zaraz (which runs on Workers servers, isolated from the browser) and the third party. You can think of Zaraz as an extra protection layer between the browser and the third-party endpoint, and this extra layer allows us to include some powerful privacy features.</p>
 	<p>For example, Zaraz allows customers to decide whether to transfer an end user's IP address to Google Analytics or not. As simple as that. When configuring a new third-party tool like Google Analytics, you can choose in the tools settings page to hide IP addresses.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nA1w99BBqIpf1NXlrBhHx/0ef1aff7e8ee4b7f2268348ffc3325f1/image2-1.png" alt="" class="kg-image" width="1999" height="1014" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nA1w99BBqIpf1NXlrBhHx/a43c97b468b46674b2059b1e79a9ffc9/image2-1.png" alt="" class="kg-image" width="1999" height="1014" loading="lazy">
 
 	</figure>
 	<p>You can use this feature currently with Google Analytics and the Facebook Pixel/Conversion API. But with more and more tools opening up their API and allowing server-to-server integrations, we expect the number of tools you can apply this on to grow rapidly.</p>

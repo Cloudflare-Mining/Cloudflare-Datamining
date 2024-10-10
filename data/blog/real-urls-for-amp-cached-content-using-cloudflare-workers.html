@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zK61KytdjS5NqmHTcWfrX/cb09f427ea27181e0311b2f5473dafde/amp-share-copy_4x.png" alt="" class="kg-image" width="2000" height="1140" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zK61KytdjS5NqmHTcWfrX/25a160e62d1bf1058ef6b61558fe9f60/amp-share-copy_4x.png" alt="" class="kg-image" width="2000" height="1140" loading="lazy">
 
 	</figure>
 	<p>Today, we’re excited to announce our solution for arguably the biggest issue affecting Accelerated Mobile Pages (AMP): the inability to use real origin URLs when serving AMP-cached content. To allow AMP caches to serve content under its origin URL, we implemented HTTP signed exchanges, which extend authenticity and integrity to content cached and served on behalf of a publisher. This logic lives on <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>, meaning that adding HTTP signed exchanges to your content is just a simple Workers application away. Publishers on Cloudflare can now take advantage of AMP performance and have AMP caches serve content with their origin URLs. We're thrilled to use Workers as a core component of this solution.</p>
@@ -18,7 +18,7 @@
 	<p>You may already see the need for Web Packaging on a daily basis. On your smartphone, perhaps you’ve searched for Christmas greens, visited 1-800-Flowers directly from Google, and have been surprised to see content served under the URL <a href="https://google.com/amp/1800flowers.com/blog/flower-facts/types-of-christmas-greens/amp">https://google.com/amp/1800flowers.com/blog/flower-facts/types-of-christmas-greens/amp</a>. This is an instance of AMP in action, where Google serves cached content so your desired web page loads faster.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kgYK09foa4H185JC2AaO4/7fd902e0361824ee1ba4f378e5232649/ezgif-noAMP.gif" alt="" class="kg-image" width="360" height="573" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kgYK09foa4H185JC2AaO4/26c0a7ef1039fd33516c1653bb7d2f70/ezgif-noAMP.gif" alt="" class="kg-image" width="360" height="573" loading="lazy">
 
 	</figure>
 	<p>Visiting 1-800 Flowers through AMP without HTTP signed exchange</p>
@@ -37,31 +37,31 @@
 	<p>In the pre-AMP days, people expected to find a webpage’s content at one definitive URL. The publisher, who owns the domain of the definitive URL, would present a visitor with a certificate that corresponds to this domain and contains a public key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GeUoh4OBPc3gUuywTcGAE/46533dce746af81cb1afb13b36b2176f/step-one_4x.png" alt="" class="kg-image" width="1600" height="712" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GeUoh4OBPc3gUuywTcGAE/651a5a6638d6eef794fc9bf6462983db/step-one_4x.png" alt="" class="kg-image" width="1600" height="712" loading="lazy">
 
 	</figure>
 	<p>The publisher would use the corresponding private key to sign a cryptographic handshake, which is used to derive shared symmetric keys that are used to encrypt the content and protect its integrity.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39tMMzRKPaWwXidW4fxyDw/1af1e2b5d88f15757461032d1e4d88f6/step-2_4x.png" alt="" class="kg-image" width="1600" height="712" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39tMMzRKPaWwXidW4fxyDw/edaf20ec675376ec08c0a9069a794d02/step-2_4x.png" alt="" class="kg-image" width="1600" height="712" loading="lazy">
 
 	</figure>
 	<p>The visitor would then receive content encrypted and signed by the shared key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rOJWcnNjs0ps5CFQIDvZI/8076d0197232f4cce7ece1a8b4ae6d8e/step-3_4x.png" alt="" class="kg-image" width="1600" height="712" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rOJWcnNjs0ps5CFQIDvZI/60fb1846557c2f9587e4d555ce03151a/step-3_4x.png" alt="" class="kg-image" width="1600" height="712" loading="lazy">
 
 	</figure>
 	<p>The visitor’s browser then uses the shared key to verify the response’s signature and, in turn, the authenticity and integrity of the content received.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17OtcMYs9DYkDblDZVcQj5/854c77404f387e3e2c669e9c4960951f/step-4_4x.png" alt="" class="kg-image" width="1600" height="793" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17OtcMYs9DYkDblDZVcQj5/54cda01c719370ebf2546ca0d3652f2d/step-4_4x.png" alt="" class="kg-image" width="1600" height="793" loading="lazy">
 
 	</figure>
 	<p>With services like AMP, however, online content may correspond to more than one URL. This introduces a problem: while only one domain actually corresponds to the webpage’s publisher, multiple domains can be responsible for serving a webpage. If a publisher allows AMP services to cache and serve their webpages, they must be able to sign their content even when AMP caches serve it for them. Only then can AMP-cached content prove its legitimacy.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70Tx1Lvaj6AIDzjWUJPuXi/c4f564d1fc7e86d92c88c6a91c0bbcc5/step-4-copy-4_4x.png" alt="" class="kg-image" width="1600" height="846" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70Tx1Lvaj6AIDzjWUJPuXi/c1d9d474af8f2e1bb50aa0a6a145a9c5/step-4-copy-4_4x.png" alt="" class="kg-image" width="1600" height="846" loading="lazy">
 
 	</figure>
 	<p>HTTP signed exchanges directly address the problem of extending publisher signatures to services like AMP. This <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html">IETF draft</a> specifies how publishers may sign an HTTP request/response pair (an exchange). With a signed exchange, the publisher can assure the integrity and authenticity of a response to a specific request even before the client makes the request. Given a signed exchange, the publisher authorizes intermediates (like Google’s AMP Cache) to forward the exchanges; the intermediate responds to a given request with the corresponding response in the signed HTTP request/response pair. A browser can then verify the exchange signature to assert the intermediate response’s integrity and authenticity.</p>
@@ -110,7 +110,7 @@ date=1511128380; expires=1511733180</code></pre>
 	<p>Services like AMP can send signed exchanges by using a new HTTP response format that includes the signature above in addition to the original response.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30wTgi8lZo4TnZN0nsg73U/4d8ec0892c1d6355dad7ce6a04766761/step-4-copy-3_4x.png" alt="" class="kg-image" width="1600" height="937" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30wTgi8lZo4TnZN0nsg73U/6de57d124bdd34b656633929962221b0/step-4-copy-3_4x.png" alt="" class="kg-image" width="1600" height="937" loading="lazy">
 
 	</figure>
 	<p>When this signature is included in an AMP-cached response, a browser can verify the legitimacy of this response. First, the browser confirms that the certificate provided in cert-url corresponds to the request’s domain and is still valid. It next uses the certificate’s public key, as well as the headers and body values of request/response pair, to check the authenticity of the signature, sig. The browser then checks the integrity of the response using the given integrity algorithm, digest/mi-sha256 (aka MICE), and the contents of the Digest header. Now the browser can confirm that a response provided by a third party has the integrity and authenticity of the content’s original publisher.</p>
@@ -147,7 +147,7 @@ Accept: application/signed-exchange;v=b2</code></pre>
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5j6PfikkSSKXgrgSRmvYFh/6b80db76e4b62e9fefd6f558ccf8a6de/ezgif-w-amp.gif" alt="" class="kg-image" width="400" height="711" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j6PfikkSSKXgrgSRmvYFh/9af3b955be231c64435517d2466af692/ezgif-w-amp.gif" alt="" class="kg-image" width="400" height="711" loading="lazy">
 
 	</figure>
 	<p>Visiting 1-800 Flowers through AMP with HTTP signed exchange</p>

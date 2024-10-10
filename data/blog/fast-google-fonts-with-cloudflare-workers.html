@@ -1,4 +1,4 @@
-<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zhd3A5qtNhaEWrx0iWSay/35fb948205de00c273e3e2384ad73d8c/fast-google-fonts-with-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zhd3A5qtNhaEWrx0iWSay/40348618878f9075ea46594d0309807d/fast-google-fonts-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Google Fonts is one of the most common third-party resources on the web, but carries with it significant user-facing performance issues. Cloudflare Workers running at the edge is a great solution for fixing these performance issues, without having to modify the publishing system for every site using Google Fonts.</p>
 	<p>This post walks through the implementation details for how to fix the performance of Google Fonts with Cloudflare Workers. More importantly, it also provides code for doing high-performance content modification at the edge using Cloudflare Workers.</p>
@@ -24,7 +24,7 @@ h1 {
 	<p>The way Google fonts are served, the CSS is on one domain (fonts.googleapis.com) and the font files are on a different domain (fonts.gstatic.com). Since they are on separate domains, the fetch for each resource takes a minimum of four round trips back and forth to the server: One each for the DNS lookup, establishing the socket connection, negotiating TLS encryption (for https) and a final round trip for the request itself.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2emQRH8SC0mYJpSOJ58FUK/e53bfaa32032af25c456b3119bf3df54/before-round-trips.png" alt="Network waterfall diagram showing 4 round trips each for the font css and font file." class="kg-image" width="933" height="199" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2emQRH8SC0mYJpSOJ58FUK/34a15d2f34fe2782706f04d3ecc78d98/before-round-trips.png" alt="Network waterfall diagram showing 4 round trips each for the font css and font file." class="kg-image" width="933" height="199" loading="lazy">
 
 	</figure>
 	<p>4 round trips each for the font css and font file.</p>
@@ -32,20 +32,20 @@ h1 {
 	<p>There is also a problem with resource prioritization. When you have all of the requests coming from the same domain on the same HTTP/2 connection they can be scheduled against each other. Critical resources (like CSS and fonts) can be pushed ahead in the queue and delivered before lower priority resources (like images). Since Google Fonts (and most third-party resources) are served from a different domain than the main page resources, they cannot be prioritized and end up competing with each other for download bandwidth. This can cause the actual fetch times to be much longer than the best-case of 8 round trips.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hYNUX0ngMLAKMUqN8jQhj/ce2c683c1be9f5a4f8b00e608710c67d/before-competing.png" alt="Network waterfall showing CSS and font download competing with low-priority images for bandwidth." class="kg-image" width="934" height="404" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hYNUX0ngMLAKMUqN8jQhj/de35321957316e751a8411df7068f851/before-competing.png" alt="Network waterfall showing CSS and font download competing with low-priority images for bandwidth." class="kg-image" width="934" height="404" loading="lazy">
 
 	</figure>
 	<p>CSS and font download competing with low-priority images for bandwidth.</p>
 	<p>Users will see the images and skeleton for the page <a href="https://www.webpagetest.org/video/view.php?id=181016_befafeb79a563c08a7c4012ec10379ccb1c2f755">long before</a> the actual text is displayed:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tAfGVsUZxzYE99QUHQTlr/abfc5c236e3c1037acf0977aa0d6af07/b1-image-paint.png" alt="The page starts painting at 3.3 seconds with partial images and no text." class="kg-image" width="408" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tAfGVsUZxzYE99QUHQTlr/44bfe9947e72383443afb6f29b88e343/b1-image-paint.png" alt="The page starts painting at 3.3 seconds with partial images and no text." class="kg-image" width="408" height="384" loading="lazy">
 
 	</figure>
 	<p>The page starts painting at 3.3 seconds with partial images and no text.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1c2TrfVScCtSgq6uAquxOC/5a64a057a550347ed2984244957c462d/b2-text.png" alt="The text finally displays at 6.2 seconds into the page load." class="kg-image" width="408" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1c2TrfVScCtSgq6uAquxOC/242f0831bdc00aebaca98af15e1f285e/b2-text.png" alt="The text finally displays at 6.2 seconds into the page load." class="kg-image" width="408" height="384" loading="lazy">
 
 	</figure>
 	<p>The text finally displays at 6.2 seconds into the page load.</p>
@@ -68,7 +68,7 @@ h1 {
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ImYCsOuIuMBm24oD75ZfA/5e9e5c29c710c805bef54c59668a4348/Fonts.png" alt="Before and after diagram showing the embedded CSS loading immediately as part of the HTML and the fonts loading before the images." class="kg-image" width="944" height="704" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ImYCsOuIuMBm24oD75ZfA/89877f802875de7e320691f7464125eb/Fonts.png" alt="Before and after diagram showing the embedded CSS loading immediately as part of the HTML and the fonts loading before the images." class="kg-image" width="944" height="704" loading="lazy">
 
 	</figure>
 	<p>The embedded CSS loads immediately as part of the HTML and the fonts load before the images.</p>
@@ -86,32 +86,32 @@ h1 {
 	<p>In practice, the results can be quite dramatic. On <a href="https://www.perftests.com/googlefonts">this test page</a> for example, the wait time for fonts to become available dropped from 5.5 seconds to 1 second (an 81% improvement!):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6c3mWxyg3E5LclNnSBxdCy/cb7a95a0798c15b070822cbeec511c3f/after.png" alt="Network waterfall diagram showing the fonts loading immediately after the HTML." class="kg-image" width="932" height="365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6c3mWxyg3E5LclNnSBxdCy/6c0aea538a3c2b7d7c5ecb383ec5bfe0/after.png" alt="Network waterfall diagram showing the fonts loading immediately after the HTML." class="kg-image" width="932" height="365" loading="lazy">
 
 	</figure>
 	<p>The fonts load immediately after the HTML.</p>
 	<p>Visually, the improvement to the user experience is also <a href="https://www.webpagetest.org/video/view.php?id=181016_040e1e2365d95c4c7836281c9cf713ccc8aed3f5">quite dramatic</a>. Instead of seeing a skeleton page of images followed by the text eventually appearing, the text is available (and correctly styled) immediately and the user can start consuming the content right away:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kWjTwTLDvAES4n8TJg2IH/3d8609ec9571a609b902f2cbf4f93008/1-initial-text.png" alt="The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kWjTwTLDvAES4n8TJg2IH/e94c6635c0ba15d43b61a1a17f249efc/1-initial-text.png" alt="The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56RnWXmU9RV9zXzpCFn97p/ebc47a59efa0794ea24901fda5834491/2-image-paint.png" alt="At 3.3 seconds the original page finally starts to paint, displaying part of the images and no text." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56RnWXmU9RV9zXzpCFn97p/abaf9c451e0adcec1dfdb6d2cafcefce/2-image-paint.png" alt="At 3.3 seconds the original page finally starts to paint, displaying part of the images and no text." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>At 3.3 seconds the original page finally starts to paint, displaying part of the images and no text.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A9zYZNkzElNgOPRuxYkXe/57698d9147a5df6315267e974f68462e/2.5-text.png" alt="At 4.4 seconds the optimized page is visibly complete while the original page still has not displayed any text." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7A9zYZNkzElNgOPRuxYkXe/8751b7c01ef3861c72f12aefe8df056e/2.5-text.png" alt="At 4.4 seconds the optimized page is visibly complete while the original page still has not displayed any text." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>At 4.4 seconds the optimized page is visibly complete while the original page still has not displayed any text.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qfU3rpfQedLhVuUjE4QTg/404fb791ddc60288ecffd317bcc1ae23/3-text-complete.png" alt="At 6.2 seconds the original page finally displays the text content." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qfU3rpfQedLhVuUjE4QTg/68190f6af1b60232997dced05a70d955/3-text-complete.png" alt="At 6.2 seconds the original page finally displays the text content." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>At 6.2 seconds the original page finally displays the text content.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Z7sgjsNqckT7LKWGOlrj/1f9c753cdbfebb428d4bbf074481fc9c/image5-3.png" alt="" class="kg-image" width="822" height="708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10Z7sgjsNqckT7LKWGOlrj/17a047802c33f32bd5ecd1cd01ed0f8d/image5-3.png" alt="" class="kg-image" width="822" height="708" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -18,7 +18,7 @@
 	<p>Now imagine you have another DNS server that has a replica of your DNS records. Wouldn’t it be great to have it as a back-up if your primary nameserver went down? Or better yet, what if both served your DNS records at all times— this could help decrease the latency of DNS requests, distribute the load between DNS servers, and add resiliency to your infrastructure! And that’s precisely what Secondary DNS nameservers were built for.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eKpwiNc5lpg1AOMrydWd2/e0895a596916fab7665e4a1cfeb455e4/image3-7.png" alt="" class="kg-image" width="1999" height="1262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eKpwiNc5lpg1AOMrydWd2/aa25c756136fa8cb825c4eb460e656bb/image3-7.png" alt="" class="kg-image" width="1999" height="1262" loading="lazy">
 
 	</figure>
 	<p>As businesses grow, they often scale their DNS infrastructure. We’re seeing more customers move away from two or three on-premise DNS servers to using a managed DNS provider to having multiple DNS vendors—all to increase redundancy against the possibility of a DDoS attack taking down one of their providers. Cloudflare has data centers in over 200 cities, all of which run our DNS software allowing our authoritative DNS customers to benefit from DNS lookups averaging around 11ms globally. So we decided to expand this functionality to customers who want to use more than one DNS provider, or for those that find it too complicated to move away from their on-premise DNS server.</p>
@@ -34,7 +34,7 @@
 	<p>Previously, setting up secondary DNS on a zone required a series of API calls: one for creating the zone, one for defining the IP address and settings of the primary server, one for linking the primary server(s) to the zone, and one for initiating a zone transfer.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zQ3JsrrG9pB51AVdAyRyS/41e8a5ed477da664a1ec438864b1ad13/image1-7.png" alt="" class="kg-image" width="802" height="602" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zQ3JsrrG9pB51AVdAyRyS/2d730b74f3d5eb029c8548d60270e937/image1-7.png" alt="" class="kg-image" width="802" height="602" loading="lazy">
 
 	</figure>
 	<p>We heard from customers that this experience was frustrating. There were also a lot of places where the setup could go wrong: some customers would forget to link a primary server to their zone, others would forget a step when adding subsequent zones, and still others would have to spend hours debugging a typo in their API call. We believe secondary DNS customers should have as seamless an experience as our authoritative DNS customers, and shouldn’t be treated as secondary (pun intended) class citizens. When creating the onboarding UI, we asked ourselves, how can we simplify the experience to just a few input fields? How do we prevent customers from making easy, potentially messy mistakes, like forgetting to attach a primary server?</p>
@@ -58,7 +58,7 @@
 	<p>The “Add Site” flow in the Cloudflare Dashboard gives customers two options: Authoritative or Secondary DNS. Next, they will need to fill out the IP address of their primary server, attach a TSIG (Transactional Signature) to authenticate zone transfers, and voila! In just a few clicks, records populate to your DNS table.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5w4vL0T1NJMvuTHTNx7Ffq/0ba24c8d2e6ffec58233d0d2d782e562/image4-4.png" alt="" class="kg-image" width="1772" height="1560" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5w4vL0T1NJMvuTHTNx7Ffq/13effdb3d28340a0109055643ab547cb/image4-4.png" alt="" class="kg-image" width="1772" height="1560" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -74,7 +74,7 @@
 	<p>Primary servers can send a NOTIFY message to a secondary server to signal a zone file change. Once the secondary receives the NOTIFY, it will do an SOA smoke test against the primary server and perform a zone transfer if it sees that the SOA value has increased. An AXFR or IXFR query can initiate the zone transfer. An AXFR query initiates a full zone transfer and is usually requested the very first time a zone is transferred. But AXFR transfers are not always necessary as most zone file changes are minute. This is why IXFR (incremental zone transfer) requests were created — they tell a primary server which version of the zone a secondary currently holds and the primary server sends the difference between the new version and the one the secondary has — this way only the new changes are transferred.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6i8vtY3IURtM2Dm8jomHFr/424393ef4bd84805a2e9be0ebf4a714f/image2-7.png" alt="" class="kg-image" width="946" height="1088" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6i8vtY3IURtM2Dm8jomHFr/97faf810499a8477edea4867c97350db/image2-7.png" alt="" class="kg-image" width="946" height="1088" loading="lazy">
 
 	</figure>
 	<p>Some primary servers, unfortunately, do not support NOTIFY queries. This means that instead of the primary notifying the secondary of zone updates, the secondary needs to periodically check the SOA of the primary server to see if the value has changed.</p>
@@ -89,7 +89,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wCCMxuY3jWAKlXGG5qATY/0e883d2d0f8f76fcaa69a1b35d5d98a3/image6-3.png" alt="" class="kg-image" width="1999" height="1209" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wCCMxuY3jWAKlXGG5qATY/17cea255c4a2e404c5ab652ec19e073b/image6-3.png" alt="" class="kg-image" width="1999" height="1209" loading="lazy">
 
 	</figure>
 	<p>Zone transfers between a primary and secondary server are unauthenticated on their own. TSIGs (Transactional Signatures) were developed as a means to add authentication to the DNS protocol, and have mostly been used for zone transfers. They provide mutual authentication between a client and a server by using a shared secret between the two parties and a one-way keyed hash function, which is attached as a TSIG record to a DNS message. The TSIG record guarantees that only secondary nameservers with the TSIG can pull zone transfers from a primary server. And vice versa, secondary servers will only accept zone transfers from primary servers that have the proper TSIG attached. Additionally, TSIGs provide data integrity and ensure that the DNS message was not modified en route.</p>

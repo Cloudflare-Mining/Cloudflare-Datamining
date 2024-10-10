@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57peNgJsMAErOUPAG2ysuY/205bdc7eb351b7824e215ad8db6b8493/introducing-cfssl.jpg" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57peNgJsMAErOUPAG2ysuY/b1546360a08749f210cb16051d6126df/introducing-cfssl.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today we’re proud to introduce CFSSL—our open source toolkit for everything TLS/SSL. CFSSL is used internally by CloudFlare for bundling TLS/SSL certificates chains, and for our internal Certificate Authority infrastructure. We use this tool for all our TLS certificates.</p>
 	<p>Creating a certificate bundle is a common pain point for website operators, and doing it right is important for <a href="https://www.cloudflare.com/learning/security/how-to-secure-a-website">website security</a> AND speed (CloudFlare does both). Getting the correct bundle together is a black art, and can quickly become a debugging nightmare if it's not done correctly. We wrote CFSSL to make bundling easier. By picking the right chain of certificates, CFSSL solves the balancing act between performance, security, and compatibility.</p>
@@ -6,7 +6,7 @@
 	<p>CFSSL is the result of real-world expertise about how the TLS ecosystem on the Web works that you can gain by working at CloudFlare’s scale. These are hard-won lessons, applied in code. The rest of this blog post serves as an under-the-hood look at how and why CFSSL works, and how you can use it as a certificate bundler or as a lightweight CA.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8WQQFZJ2zXV0Z0syJB0W4/c7b3d81d3313ccc49b3a9848d63782a4/image02_2.png" alt="" class="kg-image" width="450" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8WQQFZJ2zXV0Z0syJB0W4/b8552d223bc0632d986a4f5f7630c3cf/image02_2.png" alt="" class="kg-image" width="450" height="452" loading="lazy">
 
 	</figure>
 	<p>As you can see in the above image, the key is owned by CloudFlare, Inc., and the issuer is GlobalSign (a well-known CA). GlobalSign has issued a certificate named “GlobalSign Extended Validation CA - SHA256 - G2”; this G2 certificate is signed by another certificate called “GlobalSign Root CA - R2”. Note that the root certificate does not have an issuer—it is signed by its own private key. In other words, the root vouches for itself.</p>
@@ -24,13 +24,13 @@
 	<p>A certificate is associated with a private key that corresponds to the certificate's public key, which is stored separately. The certificate comes with a digital signature from a trusted third-party called a certificate authority or CA. Let's examine the <a href="https://www.cloudflare.com">cloudflare.com</a> certificate.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1u6Z00nvpHwI1E8dSWPeey/c09df8380edbabc33083552d6e2ee6d7/image00_2.jpg" alt="" class="kg-image" width="426" height="282" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1u6Z00nvpHwI1E8dSWPeey/7e2c6d3406cda89d35c8a487122c5399/image00_2.jpg" alt="" class="kg-image" width="426" height="282" loading="lazy">
 
 	</figure>
 	<p>The length of intermediate certificates in a chain can vary, but chains will always have one leaf and one root.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/NRD5jcwOz6WLiDesX2QS6/1edfe07aaa6b9657fb009043959349b4/image01_4.png" alt="" class="kg-image" width="960" height="815" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NRD5jcwOz6WLiDesX2QS6/4a2ade24a1ed76028ceabfc3d7e9940a/image01_4.png" alt="" class="kg-image" width="960" height="815" loading="lazy">
 
 	</figure>
 	<p>Unfortunately, there is a catch for the owner of the leaf certificate: presenting only the leaf certificate to the browser is usually not enough. The intermediate certificates are not always known to the browser, requiring the website to include them with the leaf certificate. The list of certificates that the browser needs to validate a certificate is called a certificate bundle. It should contain all the certificates in the chain up to the first certificate known to the browser. In the case of the CloudFlare website, this bundle contains both the cloudflare.com certificate and the GlobalSign G2 intermediate.</p>
@@ -94,7 +94,7 @@
 	<p>The chain of trust works by following the keys used to sign certificates, and there can be multiple chains of trust for the same keys.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sn8stqKCF4WIYBx0FQYXX/3ba2e65672b51df5bc3ea912d1f74687/image03_4.png" alt="" class="kg-image" width="960" height="815" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Sn8stqKCF4WIYBx0FQYXX/3f8fa1869553c4430e1506b3fbef5bda/image03_4.png" alt="" class="kg-image" width="960" height="815" loading="lazy">
 
 	</figure>
 	<p>In this diagram, all of the intermediates have the same public key and represent the same identity (GlobalSign's intermediate signing certificate), and they are signed by the GlobalSign root key; however, the issuance date for each chain and signature type are different.</p>

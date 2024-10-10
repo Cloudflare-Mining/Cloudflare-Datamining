@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7v6vcpBs9iDewJJksZuaqX/f8abafa21da019f1869b1d73f779b99f/image1.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7v6vcpBs9iDewJJksZuaqX/445edc7c7c28d06f1170f049ec8bf086/image1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Cloudflare runs several <a href="https://kubernetes.io/docs/concepts/security/multi-tenancy"><u>multi-tenant</u></a> <a href="https://kubernetes.io"><u>Kubernetes</u></a> clusters across our core data centers. These general-purpose clusters run on bare metal and power our <a href="https://www.cloudflare.com/learning/network-layer/what-is-the-control-plane"><u>control plane</u></a>, analytics, and various engineering tools such as build infrastructure and continuous integration.</p>
@@ -164,7 +164,7 @@ spec:
         bootFileName: http://httpboot.u-$K8S_USER.svc.cluster.local/boot.ipxe</code></pre>
 	<p>When the virtual machine boots, it will get an IP address on the default interface behind <a href="https://en.wikipedia.org/wiki/Network_address_translation"><u>NAT</u></a> due to our <a href="https://kubevirt.io/user-guide/network/interfaces_and_networks/#masquerade"><u>masquerade</u></a> setting. Then it will download boot.ipxe, which describes what additional files should be downloaded to start the system. In this case, the kernel (<code>vmlinuz-amd64</code>), Debian (<code>baseimg-amd64.img</code>) and additional kernel modules (<code>modules-amd64.img</code>) are downloaded.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74Pndk3FS6TVPACarSKD4N/a9a2d7bbb881b3997e7ada0b86c03cb1/image2.png" alt="" class="kg-image" width="862" height="484" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74Pndk3FS6TVPACarSKD4N/fc7c3add6bae3c2c8b5e086ef9061872/image2.png" alt="" class="kg-image" width="862" height="484" loading="lazy">
 	</figure>
 	<p><sup><i>UEFI iPXE boot connecting and downloading files from nginx pod in user’s namespace</i></sup></p>
 	<p>Once the system is booted, a developer can log in to the system for testing:</p>

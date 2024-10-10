@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2w30t1BpnZmqGvMwu2UqDA/c5a76b0640164eea6ac3e6cf0e2daa5d/being-proactive.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2w30t1BpnZmqGvMwu2UqDA/33404c7fa5408cffad640034321998fd/being-proactive.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It's no secret that Cloudflare operates at a huge scale. Cloudflare provides security and performance to over 9 million websites all around the world, from small businesses and WordPress blogs to Fortune 500 companies. That means one in every 10 web requests goes through our network.</p>
 	<p>However, hidden behind the scenes, we offer support in using our platform to all our customers - whether they're on our free plan or on our Enterprise offering. This blog post dives into some of the technology that helps make this possible and how we're using it to drive encryption and build a better web.</p>
@@ -13,7 +13,7 @@
 	<p>Recently web browser vendors have been working on extending encryption on the internet. Traditionally they would use positive indicators to mark encrypted traffic as secure; when traffic was served securely over HTTPS, a green padlock would indicate in your browser that this was the case. In moving to standardise encryption online, Google Chrome have been leading the charge in marking insecure page loads as "Not Secure". Today, this UI change has been pushed out to all Google Chrome users globally for all websites: any website loaded over HTTP will be marked as insecure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kSP68dcfVP7ZePmZVcX5m/13080697f432871f8c418b5f5c85122a/chrome68.png" alt="chrome68" class="kg-image" width="640" height="231" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kSP68dcfVP7ZePmZVcX5m/52364a548f6f0540eb2b39d04edc41ac/chrome68.png" alt="chrome68" class="kg-image" width="640" height="231" loading="lazy">
 
 	</figure>
 	<p>That's not all though; all resources loaded by a website need to be loaded over HTTPS and such sites need to be configured properly to avoid mixed-content warnings, not to mention correctly configuring secure cryptography at the web server. Cloudflare helped bring widespread adoption of HTTPS to the internet by offering free of charge SSL certificates; in doing so we've become experts at knowing where web developers trip up in configuring HTTPS on their websites. HTTPS is now important for everyone who builds on the web, not just those with an interest in cryptography.</p>
@@ -30,19 +30,19 @@
 	<p>Here's an example of a piece of the information we present upfront:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NpVZj6VaEibiI2EjHoWwE/46964d0df174b7e46180aea2ce771fd7/Screen-Shot-2018-07-20-at-22.32.15.png" alt="SSL HelperBot Test" class="kg-image" width="1564" height="1118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NpVZj6VaEibiI2EjHoWwE/e0d7c8520532f96ff1770fb7a928f58a/Screen-Shot-2018-07-20-at-22.32.15.png" alt="SSL HelperBot Test" class="kg-image" width="1564" height="1118" loading="lazy">
 
 	</figure>
 	<p>Whilst we initially manually built automated debugging tests, we soon used Search Based Software Engineering strategies to self-write debugging automations based on various data points (such as the underlying technologies powering a site, their configuration or their error rates). When we detect anomalies, we are able to present this information upfront to our support agents to reduce the manual debugging they must conduct. In essence, we are able to get the software to write itself from test behaviour, within reason.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DyM6G9zIBhPfuHQKGLrYV/b476968ba920e907acd2456deca7eda9/Screen-Shot-2018-07-20-at-22.32.26.png" alt="Generated HelperBot Test" class="kg-image" width="1834" height="1118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DyM6G9zIBhPfuHQKGLrYV/700d3be7e165f2bb67f111e786aca410/Screen-Shot-2018-07-20-at-22.32.26.png" alt="Generated HelperBot Test" class="kg-image" width="1834" height="1118" loading="lazy">
 
 	</figure>
 	<p>Whilst this data is largely mostly internally used; we are starting to A/B test new versions of our support ticket submission form which present a subset of this information upfront to users before they write into us - allowing them to the answers to their problem quicker.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ai05dz42OOzBvTPyZbKCB/df7cacd1723bda0399cd5a1590e6567e/Screen-Shot-2018-07-20-at-22.42.01.png" alt="New Ticket Form" class="kg-image" width="1494" height="1110" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ai05dz42OOzBvTPyZbKCB/f5a3457bf73ef074f847680ab19c31e3/Screen-Shot-2018-07-20-at-22.42.01.png" alt="New Ticket Form" class="kg-image" width="1494" height="1110" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -57,7 +57,7 @@
 	<p>By joining forces with our Marketing team, we were able to run an ongoing campaign of testing user behaviour to proactive security advice. Users receive messages similar to the one below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iIYIvaExMtNBkBPxwqdyU/8de39e437f860d6ce8f0604f8f9c770a/Screen-Shot-2018-07-20-at-22.49.18.png" alt="Proactive Support Email" class="kg-image" width="1450" height="1524" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iIYIvaExMtNBkBPxwqdyU/b432461153c27b5dead0a9773320d300/Screen-Shot-2018-07-20-at-22.49.18.png" alt="Proactive Support Email" class="kg-image" width="1450" height="1524" loading="lazy">
 
 	</figure>
 	<p>With this capability, we decided to expose the functionality to a wider audience, including those not already using Cloudflare.</p>
@@ -72,7 +72,7 @@
 
 	<figure class="kg-card kg-image-card ">
 		<a href="https://www.cloudflare.com/lp/ssl-test?utm_medium=website&amp;utm_source=blog&amp;utm_campaign=chrome68">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3z3r2uTJBYPDFo2AXJ2Lla/5bbbd2fdf98c9e02ae8b872279df83ea/Screen-Shot-2018-07-21-at-00.53.26.png" alt="SSL Test Tool" class="kg-image" width="2068" height="824" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3z3r2uTJBYPDFo2AXJ2Lla/bcdc986185ffaff6959524f32943e3b0/Screen-Shot-2018-07-21-at-00.53.26.png" alt="SSL Test Tool" class="kg-image" width="2068" height="824" loading="lazy">
 		</a>
 	</figure>
 	<p>To help website owners make the transition to HTTPS, we've launched <a href="https://www.cloudflare.com/lp/ssl-test?utm_medium=website&amp;utm_source=blog&amp;utm_campaign=chrome68">the SSL Test Tool</a>. We internally codenamed the backend as HelperBot-External, after the internal HelperBot service. We decided to take a subset of the SSL tests we use internally and allow someone to run a basic version of the scan on their own site. This helps users understand what they need to do to move their site to HTTPS by detecting the most common issues. By doing so, we seek to help users who are struggling to get over the line in enabling HTTPS on their sites by providing them some dynamic guidance in a plain-English fashion.</p>

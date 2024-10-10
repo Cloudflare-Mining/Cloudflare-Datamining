@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AWxNi1yGIeoLAAXvNwGwA/bf50970ac604239e0a863fc649703e68/image1-25.png" alt="A deep-dive into Cloudflare’s autonomous edge DDoS protection" class="kg-image" width="1572" height="839" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AWxNi1yGIeoLAAXvNwGwA/4febbd2b4e84a8e9ea78f6f4cf316366/image1-25.png" alt="A deep-dive into Cloudflare’s autonomous edge DDoS protection" class="kg-image" width="1572" height="839" loading="lazy">
 
 	</figure>
 	<p>Today, I’m excited to talk about our autonomous DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service</a>) protection system. This system has been deployed globally to all of our 200+ data centers and actively protects all our customers against DDoS attacks across layers 3 to 7 (in the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi">OSI model</a>) without requiring any human intervention. As part of our <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered DDoS protection commitment</a>, we won’t charge a customer more just because they got hit by a DDoS.</p>
@@ -19,7 +19,7 @@
 	<p>This system runs on every single server in all our edge data centers. It constantly analyzes packets and HTTP requests, scanning for DDoS attacks. Upon detection, it immediately pushes a mitigation rule with a real-time generated signature to the most optimal location in the Linux stack where the most cost-efficient mitigation can be applied.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15Hk0Q8gqqwu4pkZXq4foF/2ca22457f3f8c29250c0f2e531a80e6c/DDoS-mitigation-diagram_2x-1.png" alt="A conceptual diagram of Cloudflare DDoS mitigation systems" class="kg-image" width="2237" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15Hk0Q8gqqwu4pkZXq4foF/c97de51639de77feb3dc93486a2ad8c5/DDoS-mitigation-diagram_2x-1.png" alt="A conceptual diagram of Cloudflare DDoS mitigation systems" class="kg-image" width="2237" height="1067" loading="lazy">
 
 	</figure>
 	<p>A conceptual diagram of Cloudflare DDoS mitigation systems</p>
@@ -46,7 +46,7 @@
 	<p>If a packet is not dropped as malicious, it’s then passed to <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a>, our proprietary L4 load balancer. Using server health and performance metrics, Unimog decides whether it should keep the packet in the same server or pass it on to another server in the data center better able to handle it. After Unimog, it is passed through the iptables firewall and then, if targeting an L7 application, e.g., a service protected by the <a href="https://www.cloudflare.com/application-services/products/waf">Cloudflare WAF</a>, to our HTTP reverse proxy. The reverse-proxy runs in userspace and HTTP requests go through our <a href="https://www.cloudflare.com/waf">Web Application Firewall</a>, application Firewall rules, and additional customer configurations. If the packet is instead destined for a TCP/UDP application (<a href="https://www.cloudflare.com/application-services/products/cloudflare-spectrum">Spectrum</a>) or an IP destination that is routed rather than proxied (<a href="https://www.cloudflare.com/network-services/products/magic-transit">Magic Transit</a>), it would pass through those systems rather than our HTTP proxy.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66UlMrtt1qMkZIKeHkiSF1/bdcfef8b50c8f6555a2b132895653972/L7-ddos-diagram_2x-1-1.png" alt="Life of a packet" class="kg-image" width="2572" height="1976" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66UlMrtt1qMkZIKeHkiSF1/dc76094ef0551319f1509063b9d8d4e1/L7-ddos-diagram_2x-1-1.png" alt="Life of a packet" class="kg-image" width="2572" height="1976" loading="lazy">
 
 	</figure>
 	<p>Life of a packet</p>

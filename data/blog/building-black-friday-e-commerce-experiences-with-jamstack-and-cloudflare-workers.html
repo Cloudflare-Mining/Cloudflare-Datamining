@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76cgIR2sMWLAXkGDeQtCbS/035a2d1c2a4c0416a4fc4c251e6945cd/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76cgIR2sMWLAXkGDeQtCbS/243a4ec67e606d69aaabc8bf14512ecd/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The idea of serverless is to allow developers to focus on writing code rather than operations — the hardest of which is scaling applications. A predictably great deal of traffic that flows through Cloudflare's network every year is Black Friday. As John wrote at the end of last year, <a href="https://blog.cloudflare.com/this-holidays-biggest-online-shopping-day-was-black-friday">Black Friday is the Internet's biggest online shopping day</a>. In a past <a href="https://www.cloudflare.com/case-studies/cordial-workers-black-friday">case study</a>, we talked about how Cordial, a marketing automation platform, used Cloudflare Workers to <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">reduce their API server latency</a> and handle the busiest shopping day of the year without breaking a sweat.</p>
 	<p>The ability to handle immense scale is well-trodden territory for us on the Cloudflare blog, but scale is not always the first thing developers think about when building an application — developer experience is likely to come first. And developer experience is something Workers does just as well; through Wrangler and APIs like Workers KV, Workers is an awesome place to hack on new projects.</p>
@@ -7,7 +7,7 @@
 	<p>If you want to see a deployed version of this template, check out <a href="https://ecommerce-example.signalnerve.workers.dev">ecommerce-example.signalnerve.workers.dev</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74ASlUQIruTiQ3vb7IofzP/1a6d548b0a698c1f0113a7efe3fa7c80/image2-14.png" alt="" class="kg-image" width="1999" height="1201" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74ASlUQIruTiQ3vb7IofzP/d92115dd93a237a2a383c7ec4df6a31e/image2-14.png" alt="" class="kg-image" width="1999" height="1201" loading="lazy">
 
 	</figure>
 	<p><i>The frontend of the e-commerce Workers template.</i></p>
@@ -25,7 +25,7 @@
 	<p>Using Sanity.io, the data representing the bundles (and the products inside of those bundles) is stored on Sanity.io's own CDN, and retrieved client-side by the Nuxt.js application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hCZNF9X1W2MNRgsSEJMbl/8707161745594a2ddeff8c91e34e2a36/image3-18.png" alt="" class="kg-image" width="1999" height="1154" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hCZNF9X1W2MNRgsSEJMbl/524eaed1ef2c971d9d5486227a9fc74b/image3-18.png" alt="" class="kg-image" width="1999" height="1154" loading="lazy">
 
 	</figure>
 	<p><i>Managing data inside Sanity.io’s headless CMS interface.</i></p>
@@ -81,7 +81,7 @@ export default async (request) =&gt; {
 	<p>By the time the purchase is complete, the Workers serverless API will have interfaced with four distinct APIs, persisting records, sending emails, and handling and distributing payments to everyone involved in the e-commerce transaction. With Workers, this all happens in a single codebase, with low latency and a superb developer experience. The entire API is type-checked and validated before it ever gets shipped to production, thanks to our <a href="https://github.com/cloudflare/worker-typescript-template">TypeScript template</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28P0T9V4Vr2rUjFGafTKbg/5bd206cbbaa6bf3ea280e898094113f6/image1-19.png" alt="" class="kg-image" width="958" height="1018" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28P0T9V4Vr2rUjFGafTKbg/8f3cca1ca86cd49a0e4360cbfb52af79/image1-19.png" alt="" class="kg-image" width="958" height="1018" loading="lazy">
 
 	</figure>
 	<p>Each of these tasks involves a pretty serious level of complexity, but by using Workers, we can abstract each of them into smaller pieces of functionality, and compose powerful, on-demand, and infinitely scalable webhooks directly on the serverless edge.</p>

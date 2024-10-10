@@ -1,11 +1,11 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WRqZCAljphRjSx1MRJZQI/c750906abff94a8ed619ac3729dfa937/using-cloudflare-to-mix-domain-sharding-and-spdy.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WRqZCAljphRjSx1MRJZQI/98d3c80ccbb100b7328e49756e37e39b/using-cloudflare-to-mix-domain-sharding-and-spdy.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>Note: this post originally appeared as part of the </i><a href="http://calendar.perfplanet.com/2013"><i>2013 PerfPlanet Calendar</i></a></p>
 	<p>It’s common knowledge that domain sharding, where the resources in a web page are shared across different domains (or subdomains), is a good thing. It’s a good thing because browsers limit the number of connections per domain: splitting a web page across domains means more connections and hence faster page downloads. Overall domain sharding results in a better end-user experience, and can be a useful way of sharing load across web servers.</p>
 	<p>But with the adoption of Google’s SPDY protocol the domain sharding situation is totally different. In fact, domain sharding can hurt performance when SPDY is in use and isn’t <a href="http://www.chromium.org/spdy/spdy-best-practices">recommended</a>. To understand why, here’s the popular 4chan.org web site downloaded without SPDY but using SSL (it’s possible to do this comparison without SSL, but less interesting because the timings are very different).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ujkST6m884tzfzwb11KJx/279d692fd79b6cd7b0a0954234509680/jgc6.png" alt="" class="kg-image" width="941" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ujkST6m884tzfzwb11KJx/1fb5571fe8c36739468aa4f3332374e3/jgc6.png" alt="" class="kg-image" width="941" height="426" loading="lazy">
 
 	</figure>
 	<p>You can see that there are three domains involved: <a href="http://www.4chan.org">www.4chan.org</a> (from which the initial HTML is downloaded), s.4cdn.org and t.4cdn.org. 4chan is using two domains to shard resources like JavaScript, CSS and images. After the initial HTML is downloaded on line 1, the browser (I used IE 10 here) looks up the DNS entry for s.4cdn.org and t.4cdn.org and opens three connections to each (lines 2 to 7).</p>
@@ -13,7 +13,7 @@
 	<p>Now take a look at the same site downloaded using SPDY/2 via Google Chrome.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6quofHrSSDVAzXegbsAY5a/ca61b9a566829ec3763dc91541494972/jgc8.png" alt="" class="kg-image" width="940" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6quofHrSSDVAzXegbsAY5a/97b9764e6e898b42e0e57eb112de849f/jgc8.png" alt="" class="kg-image" width="940" height="410" loading="lazy">
 
 	</figure>
 	<p>Line 1 shows the same sort of connection, SSL negotiation and download of the page (here it took 591ms to complete vs. 549 ms above). But then the behaviour is totally different. Line 2 shows a single TCP connection and single SSL negotiation to s.4cdn.org. That connection is then used to download all the resources for s.4cdn.org and t.4cdn.org in parallel. Finally, there’s the same, separate Google Analytics connection. What you’re seeing there is SPDY in action.</p>
@@ -65,13 +65,13 @@
 	<p>The question then becomes, can you have the best of both worlds? With a little DNS trickery it’s possible to set up a site that works well whether SPDY is available or not. Since I don’t have access to 4chan to do live experiments, I copied the <a href="http://www.4chan.org">www.4chan.org</a> home page and all the included resources to my own web server and set up three domains: r.jgc.org (the root domain), s.jgc.org (equivalent to s.4cdn.org) and t.jgc.org (equivalent to t.4cdn.org). I then manually edited the HTML and CSS so that all the linked resources pointed to either s.jgc.org and t.jgc.org in the same manner as the original 4chan site. But, critically, I used a single certificate for all three domains. Here’s the site being loaded using IE 10 over SSL.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36hLzFeZOJ8i7mdm7MP6Hf/566a8d9469b90708d341fa81323055c4/jgc2.png" alt="" class="kg-image" width="937" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36hLzFeZOJ8i7mdm7MP6Hf/33556c46922a0a2e7a649c6c64893fe7/jgc2.png" alt="" class="kg-image" width="937" height="441" loading="lazy">
 
 	</figure>
 	<p>And here’s the site loaded using Chrome with SPDY.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gD8cltZjtCKvomgdCgtF1/22910b85de6c7364e51367f7be90195d/jgc4.png" alt="" class="kg-image" width="939" height="423" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gD8cltZjtCKvomgdCgtF1/8e19d99bada976cf600b34cf849b641d/jgc4.png" alt="" class="kg-image" width="939" height="423" loading="lazy">
 
 	</figure>
 	<p>As you can see, the domain sharding worked in IE 10. There are multiple connections to the s.jgc.org and t.jgc.org domains downloading resources in parallel. And the same configuration worked for Chrome with SPDY because it detected that these shared a certificate and used a single SPDY connection for everything (including the initial page download).</p>

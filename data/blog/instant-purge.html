@@ -1,4 +1,4 @@
-<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59kdx20ZFbCY9AqWfUCsew/feb52e2791c11583c6eaf1f06176f366/image4.png" alt="">
+<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59kdx20ZFbCY9AqWfUCsew/d06d6b1e998e56e616690ce8a77c62bf/image4.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><sup>(part 3 of the Coreless Purge </sup><a href="https://blog.cloudflare.com/rethinking-cache-purge-architecture"><sup>series</sup></a><sup>)</sup></p>
 	<p>Over the past 14 years, Cloudflare has evolved far beyond a Content Delivery Network (CDN), expanding its offerings to include a comprehensive <a href="https://developers.cloudflare.com/cloudflare-one"><u>Zero Trust</u></a> security portfolio, network security &amp; performance <a href="https://www.cloudflare.com/network-services/products"><u>services</u></a>, application security &amp; performance <a href="https://www.cloudflare.com/application-services/products"><u>optimizations</u></a>, and a powerful <a href="https://www.cloudflare.com/developer-platform/products"><u>developer platform</u></a>. But customers also continue to rely on Cloudflare for caching and delivering static website content. CDNs are often judged on their ability to return content to visitors as quickly as possible. However, the speed at which content is removed from a CDN's global cache is just as crucial.</p>
@@ -41,7 +41,7 @@
 	<p>Purging content based on response properties has a different hardest part. If a customer wants to purge all content with the cache-tag “foo”, for example, there’s no way for us to generate all the cache keys that will point to the files with that cache-tag at request time. Cache-tags are response headers, and the decision of where to store a file is based on request attributes only. To find all files with matching cache-tags, we would need to look at every file in every cache disk on every machine in every data center. That’s thousands upon thousands of machines we would be scanning for each purge-by-tag request. There are ways to avoid actually continuously scanning all disks worldwide (foreshadowing!) but for our first implementation of our flexible purge system, we hoped to avoid the problem space altogether.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n56ZDJwdBbaTNPJII6s2S/df6b4cc6e82be3452805f7f01e9f4f54/image5.png" alt="" class="kg-image" width="1228" height="1020" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7n56ZDJwdBbaTNPJII6s2S/db998973efdca121536a932bc50dd842/image5.png" alt="" class="kg-image" width="1228" height="1020" loading="lazy">
 
 	</figure>
 	<p>An alternative approach to going to every machine and looking for all files that match some criteria to actively delete from disk was something we affectionately referred to as “lazy purge”. Instead of deleting all matching files as soon as we process a purge request, we wait to do so when we get an end user request for one of those files. Whenever a request comes in, and we have the file in cache, we can compare the timestamp of any recent purge requests from the file owner to the insertion timestamp of the file we have on disk. If the purge timestamp is fresher than the insertion timestamp, we pretend we didn’t find the file on disk. For this to work, we needed to keep track of purge requests going back further than a data center’s maximum cache eviction age to be sure that any file a customer sends a matching flex purge to clear from cache will either be <a href="https://developers.cloudflare.com/cache/concepts/retention-vs-freshness/#retention"><u>naturally evicted</u></a>, or forced to cache MISS and get refreshed from the origin. With this approach, we just needed a distribution and storage system for keeping track of flexible purges.</p>
@@ -56,7 +56,7 @@
 	<p>At Cloudflare there is a lot of configuration data that needs to go “everywhere”: cache configuration, load balancer settings, firewall rules, host metadata — countless products, features, and services that depend on configuration data that’s managed through Cloudflare’s control plane APIs. This data needs to be accessible by every machine in every datacenter in our network. The vast majority of that data is distributed via <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>a system introduced several years ago called Quicksilver</u></a>. The system works <i>very, very well</i> (sub-second p99 replication lag, globally). It’s extremely flexible and reliable, and reads are lightning fast. The team responsible for the system has done such a good job that Quicksilver has become a hammer that when wielded, makes everything look like a nail… like flexible purges.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BFntOlvapsYYjYTcxMs7o/c94376022a8f0e15ad5ec1262e185c25/image2.png" alt="" class="kg-image" width="1999" height="841" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BFntOlvapsYYjYTcxMs7o/d73ad47b63b9d4893b46aeddc28a8698/image2.png" alt="" class="kg-image" width="1999" height="841" loading="lazy">
 
 	</figure>
 	<p><sup><i>Core-based purge request entering a data center and getting backhauled to a core data center where Quicksilver distributes the request to all network data centers (hub and spoke).</i></sup><sup>&nbsp;</sup></p>
@@ -129,7 +129,7 @@
 	<p>To further optimize the speed of purges taking effect, the cache proxy was updated to check with CacheDB — similar to the previous lazy purge approach — when a cache HIT occurs before returning the asset. CacheDB does a quick scan of its local queue to see if there are any pending purge operations that match the asset in question, dictating whether the cache proxy should respond with the cached file or fetch a new copy. This means purges will prevent the cache proxy from returning a matching cached file as soon as a purge reaches the machine, even if there are millions of files that correspond to a purge key, and it takes a while to actually delete them all from disk.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5W0ZIGBBbG5Cnc3DSbCPGT/4858b89f13f4c1912e7f29026a678bff/image3.png" alt="" class="kg-image" width="1999" height="884" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5W0ZIGBBbG5Cnc3DSbCPGT/a1572b0b67d844d4e5b7cc7899d320b1/image3.png" alt="" class="kg-image" width="1999" height="884" loading="lazy">
 
 	</figure>
 	<p><sup><i>Coreless purge using CacheDB and Durable Objects to distribute purges without needing to first stop at a core data center.</i></sup></p>
@@ -145,7 +145,7 @@
 	<p>Our new approach reduced the long tail of the lazy purge, saving 10x storage. Better yet, we can now delete purged content immediately instead of waiting for the lazy purge to happen or expire. This new-found storage will improve cache retention on disk for all users, leading to improved cache HIT ratios and reduced egress from your origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6B0kVX9Q6qA2JshmcTZSrt/bf74ba1901efbb8ae92e2295b216e762/image1.png" alt="" class="kg-image" width="1554" height="423" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6B0kVX9Q6qA2JshmcTZSrt/80a845904adf8ba69c121bb54923959e/image1.png" alt="" class="kg-image" width="1554" height="423" loading="lazy">
 
 	</figure>
 	<p><sup><i>The shift from lazy content purging (</i></sup><sup><i><u>left</u></i></sup><sup><i>) to the new Coreless Purge architecture allows us to actively delete content (</i></sup><sup><i><u>right</u></i></sup><sup><i>). This helps reduce storage needs and increase cache retention times across our service.</i></sup></p>

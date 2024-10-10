@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40sSc6VikabsV34fFE8iCD/0f70a40f463cb0b7528df6d7cb7a61c9/image4.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40sSc6VikabsV34fFE8iCD/1d1d18614bbc689136a7c48944daded9/image4.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A <a href="https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT"><u>TURN server</u></a> helps maintain connections during video calls when local networking conditions prevent participants from connecting directly to other participants. It acts as an intermediary, passing data between users when their networks block direct communication. TURN servers ensure that peer-to-peer calls go smoothly, even in less-than-ideal network conditions.</p>
 	<p>When building their own TURN infrastructure, developers often have to answer a few critical questions:</p>
@@ -47,7 +47,7 @@
 	<p>The <a href="https://datatracker.ietf.org/doc/html/rfc8445"><u>ICE (Interactive Connectivity Establishment) protocol</u></a> was designed to find the fastest communication path between devices. It works by testing multiple routes and choosing the one with the least delay. ICE determines whether a TURN server is needed to relay the connection when a direct peer-to-peer path cannot be established or is not performant enough.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71IX3n5RLM24rwRhwrpM2E/b35fb4a181edd72f00b1d6b9c49a6858/image3.png" alt="" class="kg-image" width="1999" height="1015" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71IX3n5RLM24rwRhwrpM2E/1ef5ecbf98cc85a46e385f333d6cb90c/image3.png" alt="" class="kg-image" width="1999" height="1015" loading="lazy">
 
 	</figure>
 	<p><sup><i>How two peers (A and B) try to connect directly by sharing their public and local IP addresses using the ICE protocol. If the direct connection fails, both peers use the TURN server to relay their connection and communicate with each other.</i></sup></p>
@@ -114,13 +114,13 @@
 	<p>This approach not only resolves routing issues but also improves TURN connection speed. Packets meant for the relay address enter the Cloudflare network as close to the sender as possible, optimizing the routing process.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JxesKGit6hdK0NzaEduEk/b6b6af2146872ac7c95deac0d5674bf2/image1.png" alt="" class="kg-image" width="1999" height="1014" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JxesKGit6hdK0NzaEduEk/5b248cbc27293b9dc1ccb1a5b5f7b615/image1.png" alt="" class="kg-image" width="1999" height="1014" loading="lazy">
 
 	</figure>
 	<p><sup><i>In this non-ideal setup, a TURN client connects to Cloudflare using Anycast, while a direct client uses Unicast, which would expose the TURN server to potential DDoS attacks.</i></sup></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CI9Q5qMDC7xXcifH5l898/e8dcb96f0ae9dce528540ee50968cbae/image2.png" alt="" class="kg-image" width="1999" height="1015" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CI9Q5qMDC7xXcifH5l898/975e7f52416e0b737c250433aa68ee82/image2.png" alt="" class="kg-image" width="1999" height="1015" loading="lazy">
 
 	</figure>
 	<p><sup><i>The optimized setup uses Anycast for all TURN clients, allowing for dynamic load distribution across Cloudflare's globally distributed TURN servers.</i></sup></p>

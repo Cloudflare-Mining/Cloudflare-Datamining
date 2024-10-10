@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oZb5XmFmVDXrMyYlu3rdo/402d4321ebad2e7d84c538011fcc8203/scaling-geo-key-manager.png" alt="">
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oZb5XmFmVDXrMyYlu3rdo/cfd3fbfecf06e95ed10fa0b6ac8db80a/scaling-geo-key-manager.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In 2017, we launched <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, a service that allows Cloudflare customers to choose where they store their TLS certificate private keys. For example, if a US customer only wants its private keys stored in US data centers, we can make that happen. When a user from Tokyo makes a request to this website or API, it first hits the Tokyo data center. As the Tokyo data center lacks access to the private key, it contacts a data center in the US to terminate the TLS request. Once the TLS session is established, the Tokyo data center can serve future requests. For a detailed description of how this works, refer to <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">this post</a> on Geo Key Manager.</p>
 	<p>This is a story about the evolution of systems in response to increase in scale and scope. Geo Key Manager started off as a small research project and, as it got used more and more, wasn’t scaling as well as we wanted it to. This post describes the challenges Geo Key Manager is facing today, particularly from a networking standpoint, and some of the steps along its way to a truly scalable service.</p>
@@ -16,14 +16,14 @@
 	<p>In late March, we started seeing an increase in TLS handshake failures in Melbourne, Australia. When we start observing failures in a specific data center, depending on the affected service, we have several options to mitigate impact. For critical systems like TLS termination, one approach is to reroute all traffic using anycast to neighboring data centers. But when we rerouted traffic away from the Melbourne data center, the same failures moved to the nearby data centers of Adelaide and Perth. As we were investigating the issue, we noticed a large spike in timeouts.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VlV2pxdr4qXHfvrBWWUBd/a0967874f1365888308dc60e00107050/Screen-Shot-2021-10-14-at-2.46.04-PM.png" alt="timeouts went to more than 15k/s" class="kg-image" width="1822" height="752" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VlV2pxdr4qXHfvrBWWUBd/beea304a119dcbc635558d90ee17506b/Screen-Shot-2021-10-14-at-2.46.04-PM.png" alt="timeouts went to more than 15k/s" class="kg-image" width="1822" height="752" loading="lazy">
 
 	</figure>
 	<p>The service that is first in line in the system that makes up TLS termination at Cloudflare performs all the parts of TLS termination that do not require access to the customers’ private keys. Since it is an Internet-facing process, we try to <a href="https://blog.cloudflare.com/going-keyless-everywhere">keep sensitive information out of this process as much as possible</a>, in case of memory disclosure bugs. So it forwards the key signing request to <b>keynotto</b>, a service written in Rust that performs RSA and ECDSA key signatures.</p>
 	<p>We continued our investigation. This service was timing out on the requests it sent to keynotto. Next, we looked into the requests itself. We observed that there was an increase in total requests, but not by a very large factor. You can see a large drop in traffic in the Melbourne data center below. That indicates the time where we dropped traffic from Melbourne and rerouted it to other nearby data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6toOjSsopFl2OWYeXafHSi/72c44148e6bfc94ab27e09f87c9316d8/Screen-Shot-2021-10-14-at-2.45.46-PM.png" alt="more than 15k rps failing" class="kg-image" width="1922" height="630" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6toOjSsopFl2OWYeXafHSi/778760240e8b82f2a44961720cb65cc3/Screen-Shot-2021-10-14-at-2.45.46-PM.png" alt="more than 15k rps failing" class="kg-image" width="1922" height="630" loading="lazy">
 
 	</figure>
 	<p>We decided to track one of these timed-out requests using our distributed tracing infrastructure. The <a href="https://github.com/jaegertracing/jaeger-ui">Jaeger UI</a> allows you to chart traces that take the longest. Thanks to this, we quickly figured out that most of these failures were being caused by a single, new zone that was getting a large amount of API traffic. And interestingly, this zone also had Geo Key Manager enabled, with a policy set to US-only data centers.</p>
@@ -31,18 +31,18 @@
 	<p>Below are graphs depicting the increase by quantile in RSA key signatures latencies in Melbourne. Plotting them all on the same graph didn’t work right with the scale, so the p50 is shown separately from p70 and p90.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44WdZpzJwaVTc2ak7QzSAF/8116782b8b827319a93488619e60f84d/Screen-Shot-2021-10-14-at-2.45.26-PM.png" alt="p50 usually under 3ms, during this period went to 8ms" class="kg-image" width="1930" height="714" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44WdZpzJwaVTc2ak7QzSAF/fa0ab0504f4908167dee48a62a50e8f5/Screen-Shot-2021-10-14-at-2.45.26-PM.png" alt="p50 usually under 3ms, during this period went to 8ms" class="kg-image" width="1930" height="714" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZMbHtiMTsGTxrbtwGqpFs/d5cd3fffbc1691090a32b0a0403e25fd/Screen-Shot-2021-10-14-at-2.45.35-PM.png" alt="p70 and p90 are usually sub 1 second, during this period went to 1.5s and 5s" class="kg-image" width="1930" height="674" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZMbHtiMTsGTxrbtwGqpFs/9770215564b1f8c6d0f5ae32b3561517/Screen-Shot-2021-10-14-at-2.45.35-PM.png" alt="p70 and p90 are usually sub 1 second, during this period went to 1.5s and 5s" class="kg-image" width="1930" height="674" loading="lazy">
 
 	</figure>
 	<p>To answer why unrelated zones had timeouts and performance degradation, we have to understand the architecture of the three services involved in terminating TLS.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yRyhm74oiKeGjB3w9xVdJ/3123a84a6f208eabf62c3812fed4e8ec/Screen-Shot-2021-10-14-at-2.32.02-PM.png" alt="" class="kg-image" width="1874" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yRyhm74oiKeGjB3w9xVdJ/004b342516c02def6e04e0d4513e3e17/Screen-Shot-2021-10-14-at-2.32.02-PM.png" alt="" class="kg-image" width="1874" height="902" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -69,7 +69,7 @@
 	<p>Turning off keynotto resulted in an average 26% increase in maximum memory consumed and 71% increase in maximum CPU consumed. In the case of all quantiles, we observed a significant increase in latency for both RSA and ECDSA. ECDSA as measured across four different large data centers (each is a different color) is shown:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/571DWzRlgGGwyPvsG9KQWd/7a12a281bf9931598a0a9af540810167/Screen-Shot-2021-10-14-at-2.44.56-PM.png" alt="more than 50% increase in latency on average across colos and percentiles" class="kg-image" width="1918" height="1084" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/571DWzRlgGGwyPvsG9KQWd/1daf8751dfe7e04f77dceadf5c7200e1/Screen-Shot-2021-10-14-at-2.44.56-PM.png" alt="more than 50% increase in latency on average across colos and percentiles" class="kg-image" width="1918" height="1084" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -86,7 +86,7 @@
 	<p>Let’s do some napkin math now to prove that bumping it by 10x could not have possibly helped. We were receiving five thousand requests per second in addition to the usual traffic in Melbourne. 200 were remote requests. Melbourne has 60 servers. Looking at a breakdown of remote requests by server, the <b>maximum remote requests</b> one server had was ten requests per second (rps). The graph below shows the percentage of workers in gokeyless actually performing operations, “other” is the remote workers. We can see that while Melbourne worker utilization peaked at 47%, that is still not 100%. And we see that the utilization in San Francisco was much lower, so it couldn’t be SF that was slowing things down.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qxLCoDPpRoPaHar6H3p1D/d4dcc175067be042618b8adbaca9f675/Screen-Shot-2021-10-14-at-2.44.50-PM.png" alt="47% worker utilization" class="kg-image" width="2000" height="863" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qxLCoDPpRoPaHar6H3p1D/cd1d0509138c565c79655722f1f17e40/Screen-Shot-2021-10-14-at-2.44.50-PM.png" alt="47% worker utilization" class="kg-image" width="2000" height="863" loading="lazy">
 
 	</figure>
 	<p>Given that we had 200 workers per server and at most ten requests per second, even if they took 200 ms each, gokeyless was not the bottleneck. We had no reason to increase the number of remote workers. The culprit here was keynotto’s serial queue.</p>
@@ -104,7 +104,7 @@
 	<p>Then in early June, we started seeing TLS termination timeouts in a large data center In the Midwest. This time, there were timeouts across the first service, keynotto, and gokeyless. We had on our hands a zone with Geo Key Manager policy set to the EU that had suddenly started receiving around 80 thousand remote rps, which was significantly more than the 200 remote rps in Australia. This time, keynotto was not responsible since its <a href="https://en.wikipedia.org/wiki/Head-of-line_blocking">head of line</a> blocking issues had been fixed. It was timing out waiting for gokeyless to perform the remote key signatures. A quick glance at the maximum worker utilization of gokeyless for the entire data center revealed that it was maxed out. To counteract the issue, we increased the remote workers from 200 to 20,000, and then to 200,000. It wasn’t enough. Requests were still timing out and worker utilization was squarely at 100% until we rate limited the traffic to that zone.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lmXmv2k1KoKH2P98S0WgP/cb998d5cfebda1453142a066c55a4d78/Screen-Shot-2021-10-14-at-2.44.39-PM.png" alt="" class="kg-image" width="1924" height="606" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lmXmv2k1KoKH2P98S0WgP/3a1eb7f8ffcb5965eee5c855e1018bf5/Screen-Shot-2021-10-14-at-2.44.39-PM.png" alt="" class="kg-image" width="1924" height="606" loading="lazy">
 
 	</figure>
 	<p>Why didn’t increasing the number of workers by a factor of 1,000 times help?</p>
@@ -120,7 +120,7 @@
 	<p>An example will illustrate this better. In a data center with 100 servers, there would be four pods: three with 32 servers each and one with four servers. If there were a total of 65 data centers in the world, then each server in a pod of 32 will be responsible for maintaining connections to two data centers, and each server in the pod of four will handle 16 servers. Remote requests are routed to the data center with the shortest latency. So in a pod of 32 servers, the server that maintains the connection with the closest data center will be responsible for sending remote requests from every member of the pod to the target data center. In case of failure or timeout, the data center which is second closest (and then the third closest) will be responsible. If all three closest data centers return failures, we give up and return a failure. So this means if a data center with 100 servers is receiving 100k remote rps, which is 590 rps/server, then there will be approximately four servers that are actually responsible for routing all remote traffic at any given time, and will each be handling ~20k rps. This was approximately the situation in the Midwest data center we were seeing issues. Requests were being routed to a data center in Germany and there could be a maximum of four connections at the same time between the Midwest location and Germany.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zFkNbouURVZZgmWl6dJZ9/4e7a691777a7aa68f2be13e7e289a05f/Screen-Shot-2021-10-14-at-2.33.05-PM.png" alt="pods architecture image" class="kg-image" width="1656" height="918" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zFkNbouURVZZgmWl6dJZ9/50402b3d5c98ec00786c202505e08054/Screen-Shot-2021-10-14-at-2.33.05-PM.png" alt="pods architecture image" class="kg-image" width="1656" height="918" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -135,7 +135,7 @@
 	<p>Consider the queue in the German data center. We hadn’t bumped the number of remote workers there, so only 200 remote workers were available. Assuming 20k rps arrived to one server in Germany and each took ~5 ms to process, the necessary concurrency in the system should be 100 workers. We had 200 workers. Even without a queue, the German data center should’ve been easily able to handle the 20k rps thrown at it. We investigated how many remote rps were actually processed per server:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pCfNMetb3tjyyY8EqMjjb/7f279ca3a3d070757e59197b2a7b5223/Screen-Shot-2021-10-14-at-2.42.00-PM.png" alt="max 700 rps being handled in Germany" class="kg-image" width="1980" height="842" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pCfNMetb3tjyyY8EqMjjb/bfe6b77cce4aac2b6d8f2dea90eebcad/Screen-Shot-2021-10-14-at-2.42.00-PM.png" alt="max 700 rps being handled in Germany" class="kg-image" width="1980" height="842" loading="lazy">
 
 	</figure>
 	<p>These numbers didn’t make any sense! The maximum number at any time was a little over 700. We should’ve been able to process orders of magnitude more requests. By the time we investigated this, the incident had ended. We had no visibility into the size of the service level queue — or the size of the TCP queue — to understand what could have caused the timeouts. We speculated that while p50 for the population of all RSA key signatures might be 4 ms, perhaps for the specific population of Geo Key Manager RSA signatures, things took a whole lot longer. With 200 workers, we processed ~500 rps, which meant each operation would have to take 400 ms. p99.9 for signatures can be around this much, so it is possible that was how long things took.</p>

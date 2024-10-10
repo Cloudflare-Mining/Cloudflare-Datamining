@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IQCjE7zjY6zXdnpOznkCD/195a59d82b8318d7c8eb46ea6ecf43f6/image1-35.png" alt="Super Bot Fight Mode is now configurable!" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IQCjE7zjY6zXdnpOznkCD/29afb85d78d8b6e9cf361cd9b4d7c1c6/image1-35.png" alt="Super Bot Fight Mode is now configurable!" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Millions of customers around the world use Cloudflare to keep their applications safe by blocking bot traffic to their website. We block an average of 336 million requests per day for self-service customers using a service called <a href="https://blog.cloudflare.com/super-bot-fight-mode">Super Bot Fight Mode</a>. It is a crucial part of how customers keep their websites online.</p>
@@ -19,13 +19,13 @@
 	<p>As we speak, the WAF team is carefully <a href="https://developers.cloudflare.com/waf/reference/migration-guides/firewall-rules-to-custom-rules">migrating all self-serve customers from our old Firewall Rules system to a new system</a>. This new system, called Custom Rules, simplifies the exception process in the rules you write with no other changes or loss of functionality. In the old system we had two separate actions, “allow” and “bypass”. In the new Custom Rules, there’s only one action called “skip”. Rules that “skip” traffic can skip the rest of your custom rules (just like an “allow” rule would) <i>and</i> other Cloudflare services. As Cloudflare customers are given the “Skip” action, you will be able to see the option available to “skip” Super Bot Fight Mode. Here’s an example:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NAxkGqQh2afrqcmqdKKAd/f18a3fd499106cd985f861d83f0616f6/image3-26.png" alt="" class="kg-image" width="1999" height="1382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NAxkGqQh2afrqcmqdKKAd/0b39961bf89323382c5a4544a9a7a9bf/image3-26.png" alt="" class="kg-image" width="1999" height="1382" loading="lazy">
 
 	</figure>
 	<p>While we spoke to customers about their use cases for skipping Super Bot Fight Mode, one use-case kept popping up that didn’t quite fit the rest: WordPress Loopback requests. As many people know, as part of WordPress’ self-diagnostic capabilities, a WordPress site will make automated requests back to itself over the Internet to confirm its reachability and functionality. These loopback diagnostics can come from dozens of different community developed plugins, each implementing loopback requests slightly differently. To help accommodate an ever-growing diversity in diagnostic tools used in WordPress, we have added a simple configuration option to securely allow these loop-back requests.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wELIm0qRkZ8VxlRnOa6PK/2dc86ef23ab6070803b8ec64018f6ab3/image2-19.png" alt="" class="kg-image" width="983" height="673" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wELIm0qRkZ8VxlRnOa6PK/364901a384a8e8967ac0c9888cf380c1/image2-19.png" alt="" class="kg-image" width="983" height="673" loading="lazy">
 
 	</figure>
 	<p>In the future, we will be integrating this feature with the Cloudflare WordPress plugin to make it even easier to use WordPress with Cloudflare.</p>

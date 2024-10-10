@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KiVSk77axvMmgv3UKTyIC/83f066d10b94f840efb08ca6401ccdf8/building-fast-interpreters-in-rust.png" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KiVSk77axvMmgv3UKTyIC/d3844f6471553d176c53f10b1cfe3c9e/building-fast-interpreters-in-rust.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In the <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">previous post</a> we described the Firewall Rules architecture and how the different components are integrated together. We also mentioned that we created a configurable Rust library for writing and executing <a href="https://www.wireshark.org">Wireshark</a>®-like filters in different parts of our stack written in Go, Lua, C, C++ and JavaScript Workers.</p>
 	<blockquote>
@@ -6,7 +6,7 @@
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3emjeRzzAw9z6ipj1FIjoD/7a3f3f8ad9c94767c97b53451f1e0351/Langs.png" alt="" class="kg-image" width="1330" height="723" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3emjeRzzAw9z6ipj1FIjoD/fbfb5538cf10d6a5f0c096676dabfa63/Langs.png" alt="" class="kg-image" width="1330" height="723" loading="lazy">
 
 	</figure>
 	<p>We have now open-sourced this library under our Github account: <a href="https://github.com/cloudflare/wirefilter">https://github.com/cloudflare/wirefilter</a>. This post will dive into its design, explain why we didn’t use a parser generator and how our execution engine balances security, runtime performance and compilation cost for the generated filters.</p>
@@ -104,7 +104,7 @@ pub trait LexWith&lt;'i, E&gt;: Sized {
 	<p>The <code>lex</code> method or its contextual variant <code>lex_with</code> can either return a successful pair of <code>(instance of the type, rest of input)</code> or a pair of <code>(error kind, relevant input span)</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5L9MIL21iug4jVm8Eo1bGM/dc54ca4bba45b19af1a5fae8dcbc59e3/parse.png" alt="" class="kg-image" width="996" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5L9MIL21iug4jVm8Eo1bGM/a4996c058b046ea785ff40d315772c53/parse.png" alt="" class="kg-image" width="996" height="486" loading="lazy">
 
 	</figure>
 	<p>The <code>Lex</code> trait is used for target types that can be parsed independently of the context (like field names or literals), while <code>LexWith</code> is used for types that need a <code>Scheme</code> or a part of it to be parsed unambiguously.</p>
@@ -151,7 +151,7 @@ let input = expect(input, ")")?;</code></pre>
 	<p>If we look at the data structures involved, we can see that the scheme is always well-defined in advance, and all our runtime values in the execution engine are expected to eventually match it, even if the order or a precise set of fields is not guaranteed:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/mMOLvyXxOj9FxO3dIbYwr/1692c785dd6fc2b6b6b23fb33904fdfa/fieldaccess.png" alt="" class="kg-image" width="1506" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mMOLvyXxOj9FxO3dIbYwr/6b308db1a7860c67f52209a689226b56/fieldaccess.png" alt="" class="kg-image" width="1506" height="480" loading="lazy">
 
 	</figure>
 	<p>So what if we ditch the second map altogether and instead use a fixed-size array of values? Array indexing should be much cheaper than looking up in a map, so it might be well worth the effort.</p>
@@ -257,7 +257,7 @@ impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
 	<p>The closure (an <code>Fn</code> box) will also automatically include the environment data it needs for the execution.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7x17xAapCcN3PjapVfoIyh/6e408e8a569ae134f9c9ace4403f8122/box.png" alt="" class="kg-image" width="1600" height="1057" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7x17xAapCcN3PjapVfoIyh/89ca29faa4b157fc2dcd7af0179eacb6/box.png" alt="" class="kg-image" width="1600" height="1057" loading="lazy">
 
 	</figure>
 	<p>This means that we can optimise the runtime data representation as part of the “compile” process without changing the AST or the parser. For example, when we wanted to optimise IP range checks by splitting them for different IP types, we could do that without having to modify any existing structures:</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7neqtAWMmcouQeF04fhwrW/10a9b3f34e8bdb3ca341188ec0f169d3/image3-16.png" alt="Using Cloudflare Access with CNI" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7neqtAWMmcouQeF04fhwrW/1da3b487a339c95e622598ab720f25d8/image3-16.png" alt="Using Cloudflare Access with CNI" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>We are thrilled to introduce an innovative new approach to secure hosted applications via <a href="https://www.cloudflare.com/products/zero-trust/access">Cloudflare Access</a> without the need for any installed software or custom code on your application server. But before we dive into how this is possible, let's review why Access previously required installed software or custom code on your application server.</p>
@@ -99,20 +99,20 @@
 	<p>An application can be secured behind Access if its hostname is configured in Cloudflare. That hostname can be pointed to either a Cloudflare Tunnel, Load Balancer or direct IP Address. An application can then be configured to enforce specific security policies like identity provider group, hard key MFA, device posture and more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8emNtTNyRNtdYBM69HBh9/1e4034ef74fcbcfb1d0c22588b046e6b/image1-19.png" alt="" class="kg-image" width="935" height="609" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8emNtTNyRNtdYBM69HBh9/fb4c3ec2acfc7d586acf4552d5be546e/image1-19.png" alt="" class="kg-image" width="935" height="609" loading="lazy">
 
 	</figure>
 	<p>However, the network path that the application takes can be different and Cloudflare Network Interconnect allows for a completely private path from Cloudflare to your application. For example, Cloudflare Tunnel implicitly assumes that the network path between Cloudflare and your application is using the public Internet. Cloudflare Tunnel encrypts your traffic over the public Internet and ensures that your connection to Cloudflare is secure. But the public Internet is still a concern for a lot of people, who don’t want to harden their service to the public Internet at all.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22LDH8UFB8wdr2QrefGTtv/c869bad93d80bf1790dc3981724c1970/pasted-image-0-6.png" alt="" class="kg-image" width="1530" height="894" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22LDH8UFB8wdr2QrefGTtv/9a57d848ddb57eb42f75c4302c7de3e1/pasted-image-0-6.png" alt="" class="kg-image" width="1530" height="894" loading="lazy">
 
 	</figure>
 	<p>What if you implicitly knew that your connection was secure because nobody else was using it? That’s what Cloudflare Network Interconnect allows you to guarantee: private, performant connectivity back to Cloudflare.</p>
 	<p>By configuring Access and CNI together, you get protected application access over a private link. Cloudflare Aegis provides a dedicated IP that allows you to apply network-level firewall policies to ensure that your solution is completely airgapped: no one can access your application but Cloudflare-protected Access calls that come from their own dedicated IP address.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ckxEDcHts2Ui6RsEBDyUH/5211b67288b8830871e1fbc3c8e2da8e/pasted-image-0--4-.png" alt="" class="kg-image" width="1530" height="894" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ckxEDcHts2Ui6RsEBDyUH/500ea5bac401cb9f60afed1622e7958b/pasted-image-0--4-.png" alt="" class="kg-image" width="1530" height="894" loading="lazy">
 
 	</figure>
 	<p>Even if somebody could access your application over the CNI, they would get blocked by your firewall because they didn’t go through Access. This provides security at Layer 7 and Layer 3: at the application and the network.</p>

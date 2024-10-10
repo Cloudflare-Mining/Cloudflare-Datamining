@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1b4sXoTzoaOFV9Z9CDmlsa/abd294e240ae4944a4817dd2c896f20a/diving-into-technical-seo-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1b4sXoTzoaOFV9Z9CDmlsa/bd321c32e4db349cfe3da533a1f79902/diving-into-technical-seo-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is a guest post by Igor Krestov and Dan Taylor. Igor is a lead software developer at SALT.agency, and Dan a lead technical SEO consultant, and has also been credited with </i><a href="https://searchengineland.com/service-workers-and-seo-seo-for-developers-311292"><i>coining the term “edge SEO”</i></a><i>. </i><a href="https://salt.agency"><i>SALT.agency</i></a><i> is a technical SEO agency with offices in London, Leeds, and Boston, offering bespoke consultancy to brands around the world. You can reach them both via </i><a href="https://twitter.com/salt_agency"><i>Twitter</i></a><i>.</i></p>
 	<p>With this post we illustrate the potential applications of <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> in relation to search engine optimization, which is more commonly referred to as ‘SEO’ using our research and testing over the past year making Sloth.</p>
@@ -40,7 +40,7 @@
 	<p>We wanted to generate lean Worker code, which would enable us to keep each functionality contained and independent of another, and went with an idea of filter chains, which can be used to compose fairly complex request processing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XNqSuHWNflu8gXityDn7E/fe95a32adc255d8fa2200fb3e14c0694/request-filter-chain.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XNqSuHWNflu8gXityDn7E/71deac0da1e6aa40f55fb22e387e3ffd/request-filter-chain.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>A request chain depicting the path of a request as it is transformed while moving from client to origin server and back again.</p>
@@ -126,7 +126,7 @@ requestFilterHandle.append(new RedirectRequestFilter({
 	<p>The one implemented in Sloth supports basic path matching, hostname matching and query string matching, as well as wildcards.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bOFFqK57Xr5IsGHGsxCyd/1009d5d6ff7b139611a3e9abd922b677/sloth-redirect-manager.png" alt="" class="kg-image" width="939" height="343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bOFFqK57Xr5IsGHGsxCyd/683f3bb5a86104abf6112949e4ddcb6d/sloth-redirect-manager.png" alt="" class="kg-image" width="939" height="343" loading="lazy">
 
 	</figure>
 	<p>The Sloth dashboard for visually creating and modifying redirects.&nbsp;</p>

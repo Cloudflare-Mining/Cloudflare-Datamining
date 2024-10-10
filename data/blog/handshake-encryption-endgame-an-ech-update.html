@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IdpRFD18ADERM709mvFJP/95474c84cc9d7428941ca411b30ead4b/Enrypted-Client-Hello-1.png" alt="Handshake Encryption: Endgame (an ECH update)" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IdpRFD18ADERM709mvFJP/c498ccf42bf923584851dd68d006352c/Enrypted-Client-Hello-1.png" alt="Handshake Encryption: Endgame (an ECH update)" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Privacy and security are fundamental to Cloudflare, and we believe in and champion the use of cryptography to help provide these fundamentals for customers, end-users, and the Internet at large. In the past, we helped <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">specify, implement, and ship TLS 1.3</a>, the latest version of the transport security protocol underlying the web, to all of our users. TLS 1.3 vastly improved upon prior versions of the protocol with respect to security, privacy, and performance: simpler cryptographic algorithms, more handshake encryption, and fewer round trips are just a few of the many great features of this protocol.</p>
@@ -25,20 +25,20 @@
 	<p>The TLS handshake begins when the client sends a ClientHello message to the server over a TCP connection (or, in the context of <a href="https://datatracker.ietf.org/doc/html/rfc9000">QUIC</a>, over UDP) with relevant parameters, including those that are sensitive. The server responds with a ServerHello, encrypted parameters, and all that’s needed to finish the handshake.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6B6iYtQ5u2IZkww1qmL2SP/7471ba683abccee1491fc37213b58be1/image1-28.png" alt="Overview of TLS 1.3" class="kg-image" width="1574" height="1321" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6B6iYtQ5u2IZkww1qmL2SP/5d8eccfa2749e6907d2c4851bd741a9d/image1-28.png" alt="Overview of TLS 1.3" class="kg-image" width="1574" height="1321" loading="lazy">
 
 	</figure>
 	<p>The goal of ECH is as simple as its name suggests: to encrypt the ClientHello so that privacy-sensitive parameters, such as the service name, are unintelligible to anyone listening on the network. The client encrypts this message using a public key it learns by making a DNS query for a special record known as the <a href="https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-svcb-https-07">HTTPS resource record</a>. This record advertises the server's various TLS and HTTPS capabilities, including ECH support. The server decrypts the encrypted ClientHello using the corresponding secret key.</p>
 	<p>Conceptually, DoH and ECH are somewhat similar. With DoH, clients establish an encrypted connection (HTTPS) to a DNS recursive resolver such as 1.1.1.1 and, within that connection, perform DNS transactions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uBrhlpXqeiYY1TVOxo6Wb/4d439f30117e8527fe52597666a43e97/image3-18.png" alt="Encrypted queries using DNS-over-HTTPS" class="kg-image" width="1428" height="460" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uBrhlpXqeiYY1TVOxo6Wb/d1c4048e7fabb347af1e0e18e862ab06/image3-18.png" alt="Encrypted queries using DNS-over-HTTPS" class="kg-image" width="1428" height="460" loading="lazy">
 
 	</figure>
 	<p>With ECH, clients establish an encrypted connection to a TLS-terminating server such as crypto.cloudflare.com, and within that connection, request resources for an authorized domain such as cloudflareresearch.com.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EIiZ1q7pBHrnNXSMHy5NJ/da73911c39703ca3fe637ac3e356b71d/image5-14.png" alt="Encrypted connections using TLS Encrypted Client Hello" class="kg-image" width="1428" height="572" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EIiZ1q7pBHrnNXSMHy5NJ/273f38bb845b3c6546bf71a6f8b6b80f/image5-14.png" alt="Encrypted connections using TLS Encrypted Client Hello" class="kg-image" width="1428" height="572" loading="lazy">
 
 	</figure>
 	<p>There is one very important difference between DoH and ECH that is worth highlighting. Whereas a DoH recursive resolver is specifically designed to allow queries for any domain, a TLS server is configured to allow connections for a select set of authorized domains. Typically, the set of authorized domains for a TLS server are those which appear on its certificate, as these constitute the set of names for which the server is authorized to terminate a connection.</p>
@@ -57,14 +57,14 @@
 	<p>The threat model for ECH is somewhat stronger than considered in previous work. Not only should it be hard to derive the session key, it should also be hard for the attacker to determine the identity of the server from a <i>known anonymity set</i>. That is, ideally, it should have no more advantage in identifying the server than if it simply guessed from the set of servers in the anonymity set. And recall that the attacker is free to read, write, and modify any packet as part of the TLS connection. This means, for example, that an attacker can replay a ClientHello and observe the server’s response. It can also extract pieces of the ClientHello — including the ECH extension — and use them in its own modified ClientHello.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UDOt4nL1dZujWFI6uVzLI/c248c4025f384bf4634db45f06efb612/image2-20.png" alt="Active cut-and-paste attack on ECH" class="kg-image" width="1258" height="1496" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UDOt4nL1dZujWFI6uVzLI/c17e28d83342592427b17ad55e208d61/image2-20.png" alt="Active cut-and-paste attack on ECH" class="kg-image" width="1258" height="1496" loading="lazy">
 
 	</figure>
 	<p>The design of ECH ensures that this sort of attack is virtually impossible by ensuring the server certificate can only be decrypted by either the client or client-facing server.</p>
 	<p>Something else an attacker might try is masquerade as the server and actively interfere with the client to observe its behavior. If the client reacted differently based on whether the server-provided certificate was correct, this would allow the attacker to test whether a given connection using ECH was for a particular name.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BSHqa7Vz8fRJqffZTtKht/61c9e5b3cc27d6c74699cbc45d98d2ef/image4-18.png" alt="Active client reaction attack on ECH" class="kg-image" width="1266" height="1520" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BSHqa7Vz8fRJqffZTtKht/efeb05714d785273db9571c73160b1a4/image4-18.png" alt="Active client reaction attack on ECH" class="kg-image" width="1266" height="1520" loading="lazy">
 
 	</figure>
 	<p>ECH also defends against this attack by ensuring that an attacker without access to the private ECH key material cannot actively inject anything into the connection.</p>

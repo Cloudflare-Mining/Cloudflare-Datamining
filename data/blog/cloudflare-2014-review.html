@@ -1,10 +1,10 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LevX8s5ke3HdQuAtBNhAu/1e72be870cd555e48b63952d29622e19/cloudflare-2014-review.jpg" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LevX8s5ke3HdQuAtBNhAu/69acb25d63b2fc30ff6e222563d52add/cloudflare-2014-review.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At the end of 2013 we posted a blog article titled <a href="https://blog.cloudflare.com/2013-refactoring-2014-stepping-on-the-gas">2013: Rebuild the Engine; 2014: Step on the Gas</a> which explained how in 2013 we had been rebuilding the engine that powers CloudFlare and how we expected 2014 to be when we stepped on the gas.</p>
 	<p>In that blog post, we said that we'd be expanding our network to betters serve customers in China and Latin America (as well as continuing other global expansions), and that we'd be making a big announcement around SSL.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FrgUPWQnT2IFGWHgQ9UBO/cf4b1b80009cea3d37f4be955013e0c7/7491816206_1978c48c89_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FrgUPWQnT2IFGWHgQ9UBO/7340092d942012653525c6afde2bd98b/7491816206_1978c48c89_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-nd/2.0">CC BY-ND 2.0</a> <a href="https://www.flickr.com/photos/stickkim/7491816206">image</a> by <a href="https://www.flickr.com/photos/stickkim">Do Hyun-Kim</a></p>
@@ -20,21 +20,21 @@
 	<p>Four days later, we set up the <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">Heartbleed Challenge</a> to determine if private keys were obtainable using Heartbleed. Nine hours after the start of our challange, we had the definitive bad news: yes, private keys could be obtained.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xXqlOdHgCMZddhZ6KCk9t/56ab9c31b7612a79542f77005eac62f4/Screen_Shot_2014-04-17_at_10.53.46.png" alt="" class="kg-image" width="1110" height="842" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xXqlOdHgCMZddhZ6KCk9t/d409d17c0c4b40e12f0aa5106baf185f/Screen_Shot_2014-04-17_at_10.53.46.png" alt="" class="kg-image" width="1110" height="842" loading="lazy">
 
 	</figure>
 	<p>Because private keys could have been vulnerable, CloudFlare then <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">revoked every SSL certificate</a> that we'd issued and caused the CRL to grow massively in an unprecedented fashion. Later, we gave a detailed analysis of <a href="https://blog.cloudflare.com/searching-for-the-prime-suspect-how-heartbleed-leaked-private-keys">how the private keys could leak</a> with Heartbleed.</p>
 	<p><b>May 3</b>: we began publishing our <a href="https://blog.cloudflare.com/tracking-our-ssl-configuration">SSL configuration</a> so that others could use it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wyCWsZq7yP7N2HkYyRlI4/58957c13927e834f432a6778c47f7908/RC4_chart.png" alt="" class="kg-image" width="1934" height="830" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wyCWsZq7yP7N2HkYyRlI4/ad62ecf7e3e5dfb6b6eacc6d9854a59f/RC4_chart.png" alt="" class="kg-image" width="1934" height="830" loading="lazy">
 
 	</figure>
 	<p><b>May 7</b>: faced with the fact that RC4 looked more and more vulnerable, we <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">removed RC4 as a preferred cipher</a> and saw an instant drop in the number of connections using it. We also followed up with an <a href="https://blog.cloudflare.com/the-web-is-world-wide-or-who-still-needs-rc4">analysis of who still uses RC4</a></p>
 	<p><b>June 4</b>: a big announcement for us and for anyone who wants to use CloudFlare for business: we're <a href="https://blog.cloudflare.com/cloudflare-is-pci-certified">PCI Certified</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lB2AnxYX4x8RLmmSnuvEm/478d309c9243685fbbfc53d273c5a8c8/ipv6-1.png" alt="" class="kg-image" width="645" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lB2AnxYX4x8RLmmSnuvEm/e0b0f33292e74936000baddcc3610769/ipv6-1.png" alt="" class="kg-image" width="645" height="400" loading="lazy">
 
 	</figure>
 	<p><b>June 5</b>: even more OpenSSL problems, and we <a href="https://blog.cloudflare.com/new-openssl-vulnerabilities-cloudflare-systems-patch">patched them all</a> to protect our systems and out customers' sites. The same day was <a href="https://blog.cloudflare.com/three-years-after-world-ipv6-day">World IPv6 Day</a> when it became clear that 20% of the IPv6 is on CloudFlare (we also added special headers to <a href="https://blog.cloudflare.com/eliminating-the-last-reasons-to-not-enable-ipv6">ease the transition</a> from IPv4 to IPv6)</p>
@@ -42,7 +42,7 @@
 	<p><b>June 13/16</b>: two new CloudFlare data centers come online: first <a href="https://blog.cloudflare.com/madrid-spain-cloudflares-25th-data">Madrid, Spain</a> then <a href="https://blog.cloudflare.com/buongiorno-milano-cloudflares-26th-data-center-now-live">Milan, Italy</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5daHNxnIv1zX99wJsXkbpJ/fcd237d0354d9d06ef651a5b64a5f3ce/cloudflare-illustration-map-upcoming.png" alt="" class="kg-image" width="1920" height="814" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5daHNxnIv1zX99wJsXkbpJ/580cb3dc8abb79e84ac06e667f752ee3/cloudflare-illustration-map-upcoming.png" alt="" class="kg-image" width="1920" height="814" loading="lazy">
 
 	</figure>
 	<p><b>July 7/22</b>: CloudFlare's new data center in <a href="https://blog.cloudflare.com/parabens-brasil-cloudflares-27th-data-center-now-live">São Paulo, Brazil</a> comes online, followed two weeks later by <a href="https://blog.cloudflare.com/listo-medellin-colombia-cloudflares-28th-data-center">Medellin, Colombia</a>.</p>
@@ -50,13 +50,13 @@
 	<p><b>September 18</b>: we rolled out <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys">Keyless SSL</a> and went deep into <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">the details</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41FjOJWk8tgCH9R9p7N1Qn/6a1d1f559cb5c8f85819670385e87b02/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41FjOJWk8tgCH9R9p7N1Qn/dc1bfab841b03c40fc9a3350999c4f60/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
 
 	</figure>
 	<p><b>September 24</b>: the ShellShock bug hit. We <a href="https://blog.cloudflare.com/bash-vulnerability-cve-2014-6271-patched">patched our systems</a> and rolled out <a href="https://blog.cloudflare.com/shellshock-protection-enabled-for-all-customers">firewall rules</a> for all customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NIQLqbpNp4BysziejMitS/735f36ddcb7380618728c9a5b6882f6f/cloudflare-illustration-universal-ssl--1-.png" alt="" class="kg-image" width="645" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NIQLqbpNp4BysziejMitS/f181911f341140661f41b155cdfd9421/cloudflare-illustration-universal-ssl--1-.png" alt="" class="kg-image" width="645" height="645" loading="lazy">
 
 	</figure>
 	<p><b>September 29</b>: we made SSL free for everyone with the announcement of <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>, fulfilling the promise we made at the start of the year.</p>

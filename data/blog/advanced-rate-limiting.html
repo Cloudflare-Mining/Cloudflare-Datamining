@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43T1fJkAF9JSpsY8iBa0wZ/b85c716fe8e1b37fc1862f9bf1e70894/image1-51.png" alt="Introducing Advanced Rate Limiting" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43T1fJkAF9JSpsY8iBa0wZ/29f800f45689bbae9b536babe19cc565/image1-51.png" alt="Introducing Advanced Rate Limiting" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Still relying solely on IP firewalling? It’s time to change that.</p>
@@ -51,19 +51,19 @@
 	<p><b>Flexible filters.</b> You can now write rate limiting rules using all the fields of the HTTP request. For example, you can trigger a rule for requests with specific headers (such as User Agent) or throttle traffic from bots sharing the same ASN.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jlTSXDikimPc7kIb8Yj5z/014a07ea8d968fc69c45bb4c16b37d25/image3-19.png" alt="With Advanced Rate Limiting you get access to all HTTP request fields available in the rule builder." class="kg-image" width="879" height="1192" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jlTSXDikimPc7kIb8Yj5z/1e8498567d467a2310891306ffef1d4f/image3-19.png" alt="With Advanced Rate Limiting you get access to all HTTP request fields available in the rule builder." class="kg-image" width="879" height="1192" loading="lazy">
 
 	</figure>
 	<p><b>Separate mitigation expression.</b> You can now separate the mitigation expression from the counting expression. This allows you to define on what part of your website you want to block users once the threshold is reached, and what conditions the request (and response) needs to meet in order to increase the counter. For example, you can count requests to your <code>/login</code> endpoint and then block the same user on the whole site. This is especially useful when you want to include response fields in your counting expression, for example, by counting only requests that return a specific response code but then block a larger portion of traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/p43VNOCn2MV2I1xJmOAM2/1eaf2a802d464ebbcdcd60dd38d81d88/image2-40.png" alt="With Advanced Rate Limiting you can count on a path and block across your whole website." class="kg-image" width="1651" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/p43VNOCn2MV2I1xJmOAM2/69dc9fbf784c1bc33a76fc3ff79e686c/image2-40.png" alt="With Advanced Rate Limiting you can count on a path and block across your whole website." class="kg-image" width="1651" height="1999" loading="lazy">
 
 	</figure>
 	<p><b>Use dynamic fields.</b> Customers can now combine Rate Limiting with rules detecting known vulnerabilities, such as <a href="https://blog.cloudflare.com/waf-ml">WAF machine learning score</a>. For example, you can block eyeballs after a number of consecutive requests flagged as SQLi have hit your site. Another use case is to trigger a throttling rule only for requests likely originated from bots (by using the bot score in the rule filter) or after a number of login attempts with stolen credentials have been performed (<a href="https://developers.cloudflare.com/waf/managed-rulesets/exposed-credentials-check">link</a>). You can also use the JA3 fingerprint as a counting dimension, so that you leverage our Bot Machine Learning algorithm to bucket traffic from bots with the same fingerprint.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28PgBzrw0RSnTEBdPRazR8/fa3c7b2ef3ff3fa4aa72613c797cf4e4/image4-4.png" alt="With Advanced Rate Limiting you can use dynamic fields in the rule filter." class="kg-image" width="1780" height="674" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28PgBzrw0RSnTEBdPRazR8/ed289896eccaf20b68385208081ae528/image4-4.png" alt="With Advanced Rate Limiting you can use dynamic fields in the rule filter." class="kg-image" width="1780" height="674" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -77,13 +77,13 @@
 	<p><b>Count requests based on session ID.</b> API traffic is often authenticated, and the session can be tracked with a cookie, header (such as <code>x-api-key</code>) or query value. Advanced Rate Limiting allows you to define where the ID is in the request and track the number of requests relative to the same session, regardless of the IP. This can be an effective way to fend off distributed bot attacks that scrape sensitive data, such as product prices or airline passenger data.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TWf8VzKMQTdl3DIQvCbpw/e569f010c5e5cf76c22f395fb9ff16d0/image5-5.png" alt="You can group requests based on cookie, header, query and other characteristics." class="kg-image" width="1999" height="1313" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TWf8VzKMQTdl3DIQvCbpw/3505e5b768af0506ffc0a30028dcfc32/image5-5.png" alt="You can group requests based on cookie, header, query and other characteristics." class="kg-image" width="1999" height="1313" loading="lazy">
 
 	</figure>
 	<p><b>Trigger rule based on a request body content.</b> The rule filter gives access to the raw body and the JSON-parsed body. You can count requests where a body JSON field has a specific value using the function <code>lookup_json_string</code> available in the rule filter. This can be useful for GraphQL APIs, where different calls (or mutations) can be performed through the same endpoint but specifying different operations in the request body.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1R8vFFvmCerK66QUvqq5ti/89de707f081698566b3dfc461c56b03b/image6-1.png" alt="You can trigger rules based on request body content." class="kg-image" width="1964" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1R8vFFvmCerK66QUvqq5ti/f7c7c139682643a175157078ea0dafdc/image6-1.png" alt="You can trigger rules based on request body content." class="kg-image" width="1964" height="1999" loading="lazy">
 
 	</figure>
 	<p><b>Rate Limiting based on complexity (coming soon in beta available now via API)</b>. Some API calls are more complex to serve than others, so counting on the number of requests doesn’t really reflect the actual cost to serve. GraphQL APIs are an example: each call complexity can vary widely based on how much processing the server needs to carry out to serve the request. Your origin can estimate the complexity of each request and return it along with the response, and rate limiting can increment the counter by the complexity estimate provided by the origin. You can then set a complexity threshold in the rule and, when it’s exceeded, subsequent requests will trigger an action, such as block.</p>

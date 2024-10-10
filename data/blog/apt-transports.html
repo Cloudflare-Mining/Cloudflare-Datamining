@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LSfhF9x8vaCV5UGQqvvvz/a5c726e5acca048f194f8536ff2d2484/apt-transports.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LSfhF9x8vaCV5UGQqvvvz/75943a55814bdcd9fb003376e8dd5762/apt-transports.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Securing access to your APT repositories is critical. At Cloudflare, like in most organizations, we used a legacy VPN to lock down who could reach our internal software repositories. However, a network perimeter model lacks a number of features that we consider critical to a team’s security.</p>
 	<p>As a company, we’ve been moving our internal infrastructure to our own zero-trust platform, Cloudflare Access. Access added SaaS-like convenience to the on-premise tools we managed. We started with web applications and then moved resources we need to reach over SSH behind the Access gateway, for example Git or user-SSH access. However, we still needed to handle how services communicate with our internal APT repository.</p>
@@ -60,7 +60,7 @@ sudo dpkg -i apt-transport-https.deb</code></pre>
 	<p>Examples of input message include “600 URI Acquire”, and examples of output messages include “200 URI Start” and “201 URI Done”:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NUk7sB64WQWZJS3G4m3MS/14cd20096b78d0594ae08ec696a7b129/apt-transport-internals-1.png" alt="" class="kg-image" width="2005" height="1047" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NUk7sB64WQWZJS3G4m3MS/dee24a134a4372b36837f54b46772500/apt-transport-internals-1.png" alt="" class="kg-image" width="2005" height="1047" loading="lazy">
 
 	</figure>
 	<p>If you’re interested in building your own transport, check out the <a href="http://www.fifi.org/doc/libapt-pkg-doc/method.html/ch2.html">APT method interface spec</a> for more implementation details.</p>

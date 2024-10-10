@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FV8I2AuSRIkDmf5CUaniX/3d64d29036477bf7b082788043399945/IMG_4277.jpg" alt="GL.iNet GL-AR750S" class="kg-image" width="750" height="563" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FV8I2AuSRIkDmf5CUaniX/fff2a8b9611681a41464d0f47adb2872/IMG_4277.jpg" alt="GL.iNet GL-AR750S" class="kg-image" width="750" height="563" loading="lazy">
 
 	</figure>
 	<p>GL.iNet GL-AR750S in black, same form-factor as the prior white GL.iNet GL-AR750. Credit card for comparison.</p>
 	<p>Back in April, I wrote about how it was possible to <a href="https://blog.cloudflare.com/dns-over-tls-for-openwrt">modify a router to encrypt DNS queries over TLS</a> using Cloudflare's 1.1.1.1 DNS Resolver. For this, I used the GL.iNet GL-AR750 because it was pre-installed with OpenWRT (LEDE). The folks at GL.iNet read that blog post and decided to bake DNS-Over-TLS support into their new router using the 1.1.1.1 resolver, they sent me one to take a look at before it's available for pre-release. Their new router can also be configured to force DNS traffic to be encrypted before leaving your local network, which is particularly useful for any IoT or mobile device with hard-coded DNS settings that would ordinarily ignore your routers DNS settings and send <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS queries</a> in plain-text.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20ZCmvqywZDLMhksEzdyXC/e1b2b5caf31a16b9b2999a9985e26ea0/Screen-Shot-2018-07-14-at-04.36.11.png" alt="DNS over TLS from Cloudflare enabled" class="kg-image" width="1252" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20ZCmvqywZDLMhksEzdyXC/1339330e29fe38bb61f4d61aba058a0a/Screen-Shot-2018-07-14-at-04.36.11.png" alt="DNS over TLS from Cloudflare enabled" class="kg-image" width="1252" height="550" loading="lazy">
 
 	</figure>
 	<p>In <a href="https://blog.cloudflare.com/dns-over-tls-for-openwrt">my previous blog post</a> I discussed how DNS was often the weakest link in the chain when it came to browsing privacy; whilst HTTP traffic is increasingly encrypted, this is seldom the case for DNS traffic. This makes it relatively trivial for an intermediary to work out what site you're sending traffic to. In that post, I went through the technical steps required to modify a router using OpenWRT to support DNS Privacy using the DNS-Over-TLS protocol.</p>
@@ -18,13 +18,13 @@
 	<p>Below you can see the white AR750 and the new black AR750S router together for comparison. Both have a WAN ethernet port, 2 LAN ethernet ports, a USB port for external storage (plus a micro SD port) and a micro USB power port.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xi7DHkcKlmlyhATCPwXY5/a82076b200401a9fe30a6c349f281c88/IMG_4222-COLLAGE--1-.jpg" alt="GL.iNet GL-AR750S" class="kg-image" width="1535" height="2046" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xi7DHkcKlmlyhATCPwXY5/ff76634b1660bd6273c04d551b057a39/IMG_4222-COLLAGE--1-.jpg" alt="GL.iNet GL-AR750S" class="kg-image" width="1535" height="2046" loading="lazy">
 
 	</figure>
 	<p>The UI is where the real changes come. In the <i>More Settings</i> tab, there's an option to configure DNS with some nice options.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44yMMCQEQYU0gwF2Mw7sJy/398c301dc854533ee1f8f07b5bf15ef3/Screen-Shot-2018-07-14-at-03.46.56.png" alt="GL.iNet GL-AR750S DNS" class="kg-image" width="750" height="605" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44yMMCQEQYU0gwF2Mw7sJy/a1541ecc5226bd91ff4a0b4371234e3c/Screen-Shot-2018-07-14-at-03.46.56.png" alt="GL.iNet GL-AR750S DNS" class="kg-image" width="750" height="605" loading="lazy">
 
 	</figure>
 	<p>One notable option is the <i>DNS over TLS from Cloudflare</i> toggle. This option uses the TLS security protocol for encrypting DNS queries, helping increase privacy and prevent eavesdropping.</p>
@@ -35,7 +35,7 @@
 	<p>For example; after installing TCPDump on the router, I am able to run <code>tcpdump -n -i wlan-sta 'port 853'</code> to see encrypted DNS traffic leaving the router. When I run a DNS query over an unencrypted resolver (using <code>dig A junade.com</code> on my local computer), I can see the outgoing DNS traffic upgraded to encrypted queries on 1.1.1.1 and 1.0.0.1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xYgg1X0pt0JApfVWfLNo2/517324cc34e85986269b4773093188f9/Screen-Shot-2018-07-14-at-17.21.37.png" alt="TCPDump on Encrypted DNS" class="kg-image" width="1000" height="706" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1xYgg1X0pt0JApfVWfLNo2/d7273e83795f4640db9903809b025233/Screen-Shot-2018-07-14-at-17.21.37.png" alt="TCPDump on Encrypted DNS" class="kg-image" width="1000" height="706" loading="lazy">
 
 	</figure>
 	<p>If you're interested in learning how to configure 1.1.1.1 on other routers, your computer or your phone - check out the project landing page at <a href="https://1.1.1.1">https://1.1.1.1/</a>. If you're a developer and want to learn about how you can integrate 1.1.1.1 into your project with either DNS-Over-TLS or DNS-Over-HTTPS, checkout the <a href="https://developers.cloudflare.com/1.1.1.1">1.1.1.1 Developer Documentation</a>.</p>

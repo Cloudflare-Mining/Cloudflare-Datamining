@@ -1,16 +1,16 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BnnPcN4mjx0IdmudqzUP3/164dcd7ec192b70999197e8e93722d34/cloudworker-a-local-cloudflare-worker-runner.png" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BnnPcN4mjx0IdmudqzUP3/b62ff0a783880a87ba80fa18105ddf7d/cloudworker-a-local-cloudflare-worker-runner.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i><b><i>This is a guest post b__y </i></b></i><a href="https://www.linkedin.com/in/hajacobs"><i><b><i>Hank Jacobs</i></b></i></a><i><b><i>, </i></b></i><b><i><b><i>who is</i></b></i></b><b><i> the _</i></b><b><i>Lead Software Engineer for Platform Services &amp; Tools at </i></b><a href="https://www.dollarshaveclub.com"><b><i>Dollar Shave Club</i></b></a><b><i>. This post originally appeared on the </i></b><a href="https://engineering.dollarshaveclub.com/cloudworker-a-local-cloudflare-worker-runner-5a04e48731a5"><b><i>DSC Engineering blog</i></b></a><i>.</i>___</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lqGO5nUh68VvcZfWXqyrJ/d2a0b6f91bbc7297220745e7624b52bc/local-worker_2x-1.png" alt="" class="kg-image" width="1632" height="868" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lqGO5nUh68VvcZfWXqyrJ/fbd1acc2b35ab16c71f5fa035ada26c9/local-worker_2x-1.png" alt="" class="kg-image" width="1632" height="868" loading="lazy">
 
 	</figure>
 	<p>At Dollar Shave Club, we continuously look for ways to improve how we build and ship code. Improving the time it takes for engineers to ship code is key. Providing engineers with a development environment that closely mirrors production really helps.</p>
 	<p>Earlier this year, we began evaluating Cloudflare Workers as a replacement for our legacy edge routing and caching layers. Cloudflare Workers brings the power of Javascript to Cloudflare’s Edge. Developers can write and deploy Javacript that gets executed for every HTTP request that passes through Cloudflare. This capability excited us but a critical thing was missing — a way to run Worker code locally. We couldn’t find a suitable solution, so we started to build our own. Luckily, Workers uses the open <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Workers API</a> so we had documentation to consult. Within a few weeks, <a href="https://github.com/dollarshaveclub/cloudworker">Cloudworker</a> was born.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KAjedX2yltNd2BMOJ55Lk/2a8136e70a62234e3a415519a815754f/1_YEL9Jja5BmeS0mUrQyzsEQ.png" alt="" class="kg-image" width="1600" height="344" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KAjedX2yltNd2BMOJ55Lk/113213d7b48a67afdb230a2e1ea1dbe8/1_YEL9Jja5BmeS0mUrQyzsEQ.png" alt="" class="kg-image" width="1600" height="344" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

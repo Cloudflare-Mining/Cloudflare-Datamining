@@ -1,9 +1,9 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xvVSKXCSW6aiPLS4IJYcR/5d0a5c91ea94c7060de56ac5203e797e/mmproxy-creative-way-of-preserving-client-ips-in-spectrum.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xvVSKXCSW6aiPLS4IJYcR/b14a2b23dcd48c12ae4b010c13d132ae/mmproxy-creative-way-of-preserving-client-ips-in-spectrum.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In previous blog post we discussed <a href="https://blog.cloudflare.com/how-we-built-spectrum">how we use the <code>TPROXY</code> iptables module</a> to power <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Cloudflare Spectrum</a>. With <code>TPROXY</code> we solved a major technical issue on the server side, and we thought we might find another use for it on the client side of our product.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bo1gYWkQihp0vs8Nk10Xr/a5a1594aeac2d4f92f98504d4758797d/Address-machine-1_-ru-tech-enc-.png" alt="Address-machine-1_-ru-tech-enc-" class="kg-image" width="1049" height="648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bo1gYWkQihp0vs8Nk10Xr/5fc224388fa52c30a2f25e982178b5d3/Address-machine-1_-ru-tech-enc-.png" alt="Address-machine-1_-ru-tech-enc-" class="kg-image" width="1049" height="648" loading="lazy">
 
 	</figure>
 	<p>This is <a href="https://en.wikipedia.org/wiki/Addressograph">Addressograph</a>. Source <a href="https://upload.wikimedia.org/wikipedia/commons/b/b0/Address-machine-1_%28ru-tech-enc%29.png">Wikipedia</a></p>
@@ -12,7 +12,7 @@
 	<h4>(1) Ignore the client IP</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zazUmVWQqBmngOT2c0nro/4c6f767143b3af0c84521f4fd8796fef/Screen-Shot-2018-04-15-at-12.26.16-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.16-PM" class="kg-image" width="1522" height="456" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zazUmVWQqBmngOT2c0nro/bcb758fa95b1439b28c41ee2257b18e8/Screen-Shot-2018-04-15-at-12.26.16-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.16-PM" class="kg-image" width="1522" height="456" loading="lazy">
 
 	</figure>
 	<p>For certain applications it may be okay to ignore the real client IP address. For example, sometimes the client needs to identify itself with a username and password anyway, so the source IP doesn't really matter. In general, it's not a good practice because...</p>
@@ -32,7 +32,7 @@
 	<h4>(3) Use the PROXY protocol</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1o8aOHx1OoHCBYvExEoE7S/276707a6712f0d0da5690476dc7473a6/Screen-Shot-2018-04-15-at-12.26.04-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.04-PM" class="kg-image" width="1524" height="462" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1o8aOHx1OoHCBYvExEoE7S/e81802cb18ce686ad50071d3cc4a1de0/Screen-Shot-2018-04-15-at-12.26.04-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.04-PM" class="kg-image" width="1524" height="462" loading="lazy">
 
 	</figure>
 	<p>Finally, there is the last method. HAProxy developers, faced with this problem developed <a href="http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt">the "PROXY protocol"</a>. The premise of this protocol is to prepend client metadata in front of the original data stream. For example, this string could be sent to the origin server in front of proxied data:</p>
@@ -50,7 +50,7 @@
 	<p>Fortunately we think we found a workaround.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24geDq3Y5M6aq37IdIW5oA/fca7b514bc0e986a6e408a6dc6a83132/Screen-Shot-2018-04-15-at-12.26.28-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.28-PM-1" class="kg-image" width="1526" height="608" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24geDq3Y5M6aq37IdIW5oA/aa1c73aeaf35267720d2b395763730c8/Screen-Shot-2018-04-15-at-12.26.28-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.28-PM-1" class="kg-image" width="1526" height="608" loading="lazy">
 
 	</figure>
 	<p>Allow me to present <code>mmproxy</code>, a PROXY protocol gateway. <code>mmproxy</code> listens for remote connections coming from an application level load balancer, like Spectrum. It then reads a PROXY protocol header, opens a localhost connection to the target application, and duly proxies data in and out.</p>
@@ -132,7 +132,7 @@ ip -6 route add local ::/0 dev lo table 100     # [+] VERIFIED
 	<p>We're almost ready to go! The last step is to create a Spectrum application that sends PROXY protocol traffic to <code>mmproxy</code>, port 2222. Here is an example configuration<a href="https://blog.cloudflare.com/#fn2">[2]</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dCc5n5QPZDEHlGMDd5jL2/33d12818628ff192e05b68df3528fbe9/Screen-Shot-2018-04-15-at-4.06.17-PM.png" alt="Screen-Shot-2018-04-15-at-4.06.17-PM" class="kg-image" width="2598" height="1450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dCc5n5QPZDEHlGMDd5jL2/a2c48e81f2519be09ce8a8ad379b23f9/Screen-Shot-2018-04-15-at-4.06.17-PM.png" alt="Screen-Shot-2018-04-15-at-4.06.17-PM" class="kg-image" width="2598" height="1450" loading="lazy">
 
 	</figure>
 	<p>With Spectrum we are forwarding TCP/22 on domain "ssh.example.org", to our origin at 192.0.2.1, port 2222. We’ve enabled the PROXY protocol toggle.</p>
@@ -166,7 +166,7 @@ Apr 15 14:39:09 ubuntu sshd[7703]: Did not receive identification
 	<p>Under the hood <code>mmproxy</code> relies on two hacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55C3wnXIZ6x95nvIFJZZcu/0880eefa1d69a9341caadc7f83170e33/Screen-Shot-2018-04-15-at-12.26.44-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.44-PM-1" class="kg-image" width="1530" height="606" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55C3wnXIZ6x95nvIFJZZcu/c7bfeb61122486e53231927cfa464e44/Screen-Shot-2018-04-15-at-12.26.44-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.44-PM-1" class="kg-image" width="1530" height="606" loading="lazy">
 
 	</figure>
 	<p>The first hack is about setting source IP on outgoing connections. We are using the well known <a href="https://idea.popcount.org/2014-04-03-bind-before-connect">bind-before-connect</a> technique to do this.</p>

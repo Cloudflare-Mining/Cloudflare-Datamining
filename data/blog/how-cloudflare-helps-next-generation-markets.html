@@ -4,7 +4,7 @@
 	<p><i></i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uwX8siasukZBh2d8X1RgI/b8b96699a0f11be68f44a89707bd204b/image12-1.png" alt="How Cloudflare helps next-generation markets" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uwX8siasukZBh2d8X1RgI/67a6609dff48594af6a09bd58bbd7ed4/image12-1.png" alt="How Cloudflare helps next-generation markets" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>One of the many magical things about the Internet is that it doesn’t have a country. The Internet doesn’t go through customs, it doesn’t need a visa, and it doesn’t speak any one language. To reach the world’s greatest information innovation, a user – no matter what country they’re in – only needs a device with a connection. The Internet will take care of the rest. At Cloudflare, part of our role is to make sure every person on the planet with an Internet connection has a good experience, whether they’re in a next-generation market or a current-gen market. In this blog we’re going to talk about how we define next-generation markets, how we help people in these markets get faster access to the websites and applications they use on a daily basis, and how we make it easy for developers to deploy services geographically close to users in next-generation markets.</p>
@@ -19,7 +19,7 @@
 	<p>Next-generation markets are the future of the Internet. Not only are there billions of people who will use the Internet more, as affordable access increases, but the trends in application development already point towards the mobile-first, sometimes mobile-only, way of providing content and services. The Internet may look different (more desktop-centric) in the so-called Global North or countries the <a href="https://www.imf.org/external/datamapper/FMEconGroup.xlsx">IMF defines as Advanced Economies</a>, but those differences will shrink as application developers build products for all markets, not just current-generation markets. We call these markets next-generation markets as opposed to using the IMF or World Bank definitions because we want to classify markets by how users interact with the Internet as opposed to how their governments interact with the global economy. Compared to North America and Europe, where users access the Internet through a combination of desktop computers and mobile devices, users in next-generation markets access the Internet via <a href="https://blog.cloudflare.com/where-mobile-traffic-more-and-less-popular">mobile devices</a> 50% of the time or more, sometimes even as high as 80%. Some examples of these markets are China, India, Indonesia, Thailand, and countries in Africa and the Middle East.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/154gW3qDB6hOxuG62d2sqK/e2ef0c4c2379795d5043699d7d695fc5/image4.jpg" alt="" class="kg-image" width="1999" height="1129" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/154gW3qDB6hOxuG62d2sqK/9d73b873cf9703a3a4d54f8842467eac/image4.jpg" alt="" class="kg-image" width="1999" height="1129" loading="lazy">
 
 	</figure>
 	<p>Most of this traffic is also using HTTP/S, which is the industry standard for secure, performant, reliable communication on the Internet. HTTP/S is used broadly across the Internet about 88% of the time. Countries and regions that have a higher percentage of mobile users will also have a higher percentage of traffic over HTTP/S, as shown in the table below. For example, countries in Africa and APJC use HTTP/S more than any other protocol, beating all other regions. By contrast, in North America, more traffic uses older protocols like SMTP, FTP, or RTMP.</p><!--kg-card-begin: html-->
@@ -83,13 +83,13 @@
 	<p>Another challenge in next-generation markets is, roughly speaking, how geographically dispersed Internet connectivity is. Imagine you are sending a message to someone on the other side of a park, but you have to play telephone: the only way you can send the message is by telling someone next to you, and they tell it to the person next to them, and so on and so forth until the message reaches the other side of the park. That may look a little something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OFcwoCNmnX1Myg2a0mr22/8b52d0e37a61ed26f79a90220fff3c55/image10.png" alt="" class="kg-image" width="1422" height="376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OFcwoCNmnX1Myg2a0mr22/037dc0ccb2a8e9ce6457d931eaebdae6/image10.png" alt="" class="kg-image" width="1422" height="376" loading="lazy">
 
 	</figure>
 	<p>If you’ve ever played Telephone, you know that this is optimistic: even when someone is right next to you, it’s unlikely that they’ll be able to get all the message you’re trying to send. But let’s say that the optimistic case is real: in this above scenario, you’re able to transmit the message between people end-to-end across the park. Now let’s say you take half of those people away, meaning that everyone who’s sending the message needs to shout twice as far. That’s when things can start to get a little more garbled:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52cCAJlSYnlZ9kk2PteQ5x/964ed320e52df12bf147b59bd82e3c15/image1-38.png" alt="" class="kg-image" width="1422" height="376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52cCAJlSYnlZ9kk2PteQ5x/39c4291685e2c765f126522dd6f927bb/image1-38.png" alt="" class="kg-image" width="1422" height="376" loading="lazy">
 
 	</figure>
 	<p>In this case, the receiver of the message didn’t hear the message properly the first time, and asked for the sender to yell it again. This process, called retransmission, reduces the amount of data that can be sent at once over the Internet. Retransmission rates depend on the cellular density of wireless networks, the light signal of fiber optic cables, and on the broader Internet, the number of hops between the end user and the website or receiver of the connection.</p>
@@ -108,14 +108,14 @@
 	<p>One area where we see latency directly impact Internet performance is in TLS, or Transport Layer Security. TLS ensures that an end-user interaction with an application is private. When TLS is established, it performs a three-way handshake that requires the end user to initiate a connection, the server to respond, and the end-user to acknowledge the response before any data can be sent. The farther away an end-user is from a website or CDN that performs this handshake, the longer it will take, and the worse performance will be:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZQcIiSt7HTeBIXQe3P4Qv/08e9c8b332a0a1da895e923779b3f587/image11.png" alt="" class="kg-image" width="1656" height="402" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZQcIiSt7HTeBIXQe3P4Qv/2bd0b1362fe30a3fd9d56c3d1fa4988e/image11.png" alt="" class="kg-image" width="1656" height="402" loading="lazy">
 
 	</figure>
 	<p>Getting close to users often improves not just end-user performance, but the basic stability of an Internet experience on the network. Cloudflare helps solve this through our Edge Partner Program (EPP), which allows ISPs to integrate their networks physically and locally with Cloudflare, bringing us as close as possible to their users. When we embed a Cloudflare node in an ISP, we shorten the physical distance between end-users and Cloudflare, and by extension, the amount of time end-users’ data requests spend on the backbone of the Internet. Over the past four years, 80% of our 107 new cities have been in next-generation markets to help improve our cached and dynamic performance.</p>
 	<p>Another additional benefit of having the content and services delivered close to end users: we can use our network intelligence to route traffic out of your last mile network and where it needs to go, helping improve the user experience out to the rest of the Internet as well. On average, <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo Smart Routing</a> helps improve dynamic and uncached content performance by over 30%, which is especially valuable if the content users need to fetch is far away from their devices.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PIELe5QNoDpyCCEDQFDUl/9ba8cce1da5ffb015f7e22fc75e6d2f3/image13-1.png" alt="" class="kg-image" width="1656" height="402" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PIELe5QNoDpyCCEDQFDUl/7b02f99596a64805f2574628ede89c5a/image13-1.png" alt="" class="kg-image" width="1656" height="402" loading="lazy">
 
 	</figure>
 	<p>Now that we’ve talked about why the Edge Partner Program is important and how it can theoretically help users, let’s talk about one set of those deployments in Saudi Arabia to show you how it actually helps users.</p>
@@ -131,19 +131,19 @@
 	<p>But by landing Cloudflare network hardware in the mobile network Mobily, we were able to improve median <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a> by over 50% for their users. Before our deployment, end users on Mobily had a median RTT of 131ms via Frankfurt. Once we added three sites in Dammam, Riyadh, and Jeddah on this network, Mobily users saw a huge decrease in latency, to the point where the <i>median</i> RTT (131ms) before these deployments now became around the 85th percentile afterwards. Before, one out of every two requests took longer than 131ms, while afterward almost every request (85% of them) took less than that time. So users in Saudi Arabia get a faster path to the sites and services they care about through their ISP and Cloudflare. Everyone wins.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wW7ITL8bKZtYwyfvwkwm0/27ec1eef5c5241fbfad9a42a3b606d1d/image9-1.png" alt="" class="kg-image" width="946" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wW7ITL8bKZtYwyfvwkwm0/b83068c727ee79adc31eca10b4789034/image9-1.png" alt="" class="kg-image" width="946" height="360" loading="lazy">
 
 	</figure>
 	<p>Staying local also helps reduce retransmission and the amount of data that has to be sent over these networks. Consider two data centers: one of our largest data centers in Los Angeles, California, and one of those new data centers in Jeddah, Saudi Arabia. Los Angeles takes traffic from all over the world: from places like China, Indonesia, Australia, as well as locally in the Los Angeles area. Take a look at the average retransmission rate for connections coming into Los Angeles from all over the world:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25b0fB2iGvJEanL4FQfZv1/1606c93dfccef07238bdcd52e995e23b/image6-2.png" alt="" class="kg-image" width="1706" height="766" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25b0fB2iGvJEanL4FQfZv1/ec3d6826fe153a84c0ae3c3aab65b6fe/image6-2.png" alt="" class="kg-image" width="1706" height="766" loading="lazy">
 
 	</figure>
 	<p>The average rate is quite high for Los Angeles, mostly due to users from all places like China, Indonesia, Taiwan, South Korea, and Japan coming to Los Angeles for their websites. But if you take a look at Jeddah, you’ll see a different story:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Ak5bnu4IjpaQeIsN2X9xd/c9537fb469da77676441177f3aef94e8/image5-5.png" alt="" class="kg-image" width="1710" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ak5bnu4IjpaQeIsN2X9xd/09a7c285102ca9f4e972982689e72526/image5-5.png" alt="" class="kg-image" width="1710" height="768" loading="lazy">
 
 	</figure>
 	<p>Users in Jeddah have a much lower, more constant retransmission rate because users on Mobily are terminating their connections closer to their devices. By being embedded in Mobily’s network, we decrease the number of hops that are needed and also make the hops that travel over less reliable paths shorter. Initial requests are more likely to succeed the first time and don’t need multiple tries to succeed.</p>
@@ -158,7 +158,7 @@
 	<p>Cloudflare WARP is a great privacy-preserving tool for users in any market to help ensure a privacy-first, performant path to the Internet. While users around the world can use WARP, users in next-generation markets are ahead of the curve when it comes to WARP adoption. Here are the total year-to-date WARP downloads from the Apple App Store:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/475KbWtIfC9IeXEgsApte5/9d0e1b1754a151f440584594439e120a/image7-5.png" alt="" class="kg-image" width="1768" height="1244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/475KbWtIfC9IeXEgsApte5/45b9528199d7e67a1d5f278ea61722bd/image7-5.png" alt="" class="kg-image" width="1768" height="1244" loading="lazy">
 
 	</figure>
 	<p>We’ve recently made changes to <a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">add WARP support to more Edge Partner locations</a>, which provides a faster, more private experience to these locations. Now even more WARP users can see better performance in more locations.</p>
@@ -187,7 +187,7 @@
 	<p>By moving applications to Cloudflare, you can push more and more of your applications to these data centers in next-generation markets, ensuring that users get a better experience in-country. For example, let’s consider the <a href="https://blog.cloudflare.com/network-performance-update-developer-week">same comparison data</a> we used to evaluate ourselves versus Lambda@Edge during our Developer Week performance tests. The purpose of this comparison is to show how far your users have to travel if you’re hosting application compute on Cloudflare versus on AWS. When you compare us versus Lambda@Edge, we have a significant advantage for P95 TCP Connection time in next-generation markets. &nbsp;This chart and table below show that in Africa and Asia Cloudflare Workers is about 3x as fast as Lambda@Edge from AWS:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Cj1aHCiLD4RuRCOeUlpIu/a6c49fe54bbcb63bf438d94411ad1f01/image2-33.png" alt="" class="kg-image" width="1999" height="1082" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Cj1aHCiLD4RuRCOeUlpIu/ff8c428f8802ac74e61bfbadb2399e0c/image2-33.png" alt="" class="kg-image" width="1999" height="1082" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<table width="100%">
@@ -228,7 +228,7 @@
 	<p>Users in next-generation markets are the future of the Internet: they are how we expect most people on the Internet to act in the future. Cloudflare is uniquely positioned to ensure that all of these users and developers can have the Internet experience they expect.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NJDfIoPt1uln8AQaHPiT6/37e54720758bf7e265221d40a5f2b8a7/image8-3.png" alt="" class="kg-image" width="1800" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NJDfIoPt1uln8AQaHPiT6/0526e242077af1032968d9b7ef6e68ca/image8-3.png" alt="" class="kg-image" width="1800" height="668" loading="lazy">
 
 	</figure>
 	<p></p>

@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mdKeVmzje1ODkKc6cWrgX/02be8deed05a04c47a76f0c148cb5748/image1.png" alt="The end of the road for Cloudflare CAPTCHAs" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4mdKeVmzje1ODkKc6cWrgX/234569fa058a6048f67e6c92eb5471f6/image1.png" alt="The end of the road for Cloudflare CAPTCHAs" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>There is no point in rehashing the fact that <a href="https://www.cloudflare.com/learning/bots/how-captchas-work">CAPTCHA</a> provides a terrible user experience. It's been discussed in detail before <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">on this blog</a>, and countless times elsewhere. One of the creators of the CAPTCHA has publicly lamented that he “unwittingly created a system that was <a href="https://thewalrus.ca/human-resources">frittering away, in ten-second increments, millions of hours</a> of a most precious resource: human brain cycles.” We don’t like them, and you don’t like them.</p>
@@ -33,7 +33,7 @@
 	<p>Rather than try to unilaterally deprecate and replace CAPTCHA with a single alternative, we built a platform to test many alternatives and see which had the best potential to replace CAPTCHA. We call this Cloudflare Managed Challenge.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bea8fFfhozl0zs4YaANEV/ba21fbb190d737d3a203fbd92d12c76a/image3.png" alt="" class="kg-image" width="1796" height="752" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bea8fFfhozl0zs4YaANEV/b993fdc8ae1922c672464db938c5b984/image3.png" alt="" class="kg-image" width="1796" height="752" loading="lazy">
 
 	</figure>
 	<p>Managed Challenge is a smarter solution than CAPTCHA. It defers the decision about whether to serve a visual puzzle to a later point in the flow after more information is available from the browser. Previously, a Cloudflare customer could only choose between either a CAPTCHA or JavaScript Challenge as the action of a security or firewall rule. Now, the Managed Challenge option will decide to show a visual puzzle or other means of proving humanness to visitors based on the client behavior exhibited <i>during</i> a challenge and based on the telemetry we receive from the visitor. A customer simply tells us, "<i>I want you (Cloudflare) to take appropriate actions to challenge this type of traffic as you see necessary.</i>"</p>
@@ -53,7 +53,7 @@
 	<p>The Challenge Platform now has the same stable solve rate as previously used CAPTCHAs.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OBYoKWypTH4XZbBFzKWdS/0534864998fa3dc287535db483da254e/image4.png" alt="" class="kg-image" width="1200" height="642" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OBYoKWypTH4XZbBFzKWdS/1385d0b02278881fcacb3caeac86e447/image4.png" alt="" class="kg-image" width="1200" height="642" loading="lazy">
 
 	</figure>
 	<p>Using an iterative platform approach, <b>we have reduced the number of CAPTCHAs we serve by 91%</b>. This is only the start. By the end of the year, we will reduce our use of CAPTCHA as a challenge to less than 1%. By skipping the visual puzzle step for almost all visitors, we are able to reduce the visitor time spent in a challenge from an average of 32 seconds to an average of just one second to run our non-interactive challenges. We also see churn improvements: our telemetry indicates that visitors with human properties are <b>31% less likely to abandon</b> a Managed Challenge than on the traditional CAPTCHA action.</p>
@@ -70,19 +70,19 @@
 	<p>All Cloudflare customers can now <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions">choose Managed Challenge</a> as a response option to any Firewall rule instead of CAPTCHA. We’ve also updated our dashboard to encourage all Cloudflare customers to make this choice.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DuK6g4cLulBlDRNGQIbDb/cd36ac1de71a807ee7e0393a5203c806/image5.png" alt="" class="kg-image" width="1834" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DuK6g4cLulBlDRNGQIbDb/0be6f7f969b976731333449a4df6bea0/image5.png" alt="" class="kg-image" width="1834" height="1024" loading="lazy">
 
 	</figure>
 	<p>You’ll notice that we changed the name of the CAPTCHA option to ‘Legacy CAPTCHA’. This more accurately describes what CAPTCHA is: an outdated tool that we don’t think people should use. As a result, the usage of CAPTCHA across the Cloudflare network has dropped significantly, and usage of managed challenge has increased dramatically.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TZAEqYf9KGS3YrrFZAcec/8481b6271ee5a25479e8f7c4bfbc9e1f/image2-1.png" alt="" class="kg-image" width="1200" height="740" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TZAEqYf9KGS3YrrFZAcec/e9b5173caedfae16fcc1362629de437d/image2-1.png" alt="" class="kg-image" width="1200" height="740" loading="lazy">
 
 	</figure>
 	<p>As noted above, today CAPTCHA represents 9% of Managed Challenge solves (light blue), but that number will decrease to less than 1% by the end of the year. You’ll also see the gray bar above, which shows when our customers have chosen to show a CAPTCHA as a response to a Firewall rule triggering. We want that number to go to zero, but the good news is that 63% of customers now choose Managed Challenge rather than CAPTCHA when they create a Firewall rule with a challenge response action.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3esUPPcHGlKTY5oYoatGHK/558379c48b1d4b9fb283640656d101f0/image6.png" alt="" class="kg-image" width="1999" height="1081" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3esUPPcHGlKTY5oYoatGHK/c6c5063878186c2ed55320799458d3d0/image6.png" alt="" class="kg-image" width="1999" height="1081" loading="lazy">
 
 	</figure>
 	<p>We expect this number to increase further over time.</p>

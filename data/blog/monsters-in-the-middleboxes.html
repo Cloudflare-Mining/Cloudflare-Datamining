@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26A8k4T3d82CwCl4b3j6k2/d22dd365c5e0f172ada5ef71e17306a2/monsters-in-the-middleware_2x.png" alt="" class="kg-image" width="2000" height="1118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26A8k4T3d82CwCl4b3j6k2/f9c7467617a1ff83b8cb2e87072d4f4a/monsters-in-the-middleware_2x.png" alt="" class="kg-image" width="2000" height="1118" loading="lazy">
 
 	</figure>
 	<p>The practice of HTTPS interception continues to be commonplace on the Internet. HTTPS interception has encountered scrutiny, most notably in the 2017 study “<a href="https://jhalderm.com/pub/papers/interception-ndss17.pdf">The Security Impact of HTTPS Interception</a>” and the United States Computer Emergency Readiness Team (US-CERT) &nbsp;<a href="https://www.us-cert.gov/ncas/alerts/TA17-075A">warning</a> that the technique weakens security. In this blog post, we provide a brief recap of HTTPS interception and introduce two new tools:</p>
@@ -35,7 +35,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lQlpoDWmUQ7mvaOQjOCzR/4ff6cc2121821667f1d48564656f3b3c/my-stapler-_2x.png" alt="" class="kg-image" width="2904" height="1536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lQlpoDWmUQ7mvaOQjOCzR/cf1df0af814a7ba373072b727102c5dd/my-stapler-_2x.png" alt="" class="kg-image" width="2904" height="1536" loading="lazy">
 
 	</figure>
 	<p>Some legitimate reasons for a client to connect through a forward proxy would be to allow antivirus software or a corporate proxy to inspect otherwise encrypted data entering and leaving a local network in order to detect inappropriate content, malware, and data breaches. The Blue Coat data loss prevention tools offered by Symantec are one example. In this case, HTTPS interception occurs to check if an employee is leaking sensitive information before sending the request to the intended destination.</p>
@@ -50,7 +50,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VTM6e5HggvoJsREQ4t2BX/d42992e1c9a487a12e7f6fb0dda494a7/business-sasquatch_2x.png" alt="" class="kg-image" width="2578" height="2149" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VTM6e5HggvoJsREQ4t2BX/3670abf896ee660c9aef85f658346fff/business-sasquatch_2x.png" alt="" class="kg-image" width="2578" height="2149" loading="lazy">
 
 	</figure>
 	<p>Malicious forward proxies, however, might insert advertisements into web pages or exfiltrate private user information. Malware like <a href="https://www.us-cert.gov/ncas/alerts/TA15-051A">Superfish</a> insert targeted ads into encrypted traffic, which requires intercepting HTTPS traffic and modifying the content in the response given to a client.</p>
@@ -65,7 +65,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sW8l4AlgtkLvFVsF0RiYe/e60c22883ebbba3330a5ad970c078fdd/blabbermouth_2x.png" alt="" class="kg-image" width="3516" height="1966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sW8l4AlgtkLvFVsF0RiYe/94b9c16eb8fc3ad8bf47596c4817dbc7/blabbermouth_2x.png" alt="" class="kg-image" width="3516" height="1966" loading="lazy">
 
 	</figure>
 	<p>Any TLS-terminating forward proxy--whether it’s well-intentioned or not--also risks exposing private information and opens the door to spoofing. When a proxy root certificate is installed, Internet browsers lose the ability to validate the connection end-to-end, and must trust the proxy to maintain the security of the connection to ensure that sensitive data is protected. Some proxies re-encrypt and forward traffic to destinations using less secure TLS parameters.</p>
@@ -82,7 +82,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10jWDwqO36EovaMh7yezP0/2eab9a042352b916a4e0f4e27c1ecb74/speedy-_2x.png" alt="" class="kg-image" width="3360" height="1553" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10jWDwqO36EovaMh7yezP0/8cbc6e9d12d744f1e6f294944ce788a0/speedy-_2x.png" alt="" class="kg-image" width="3360" height="1553" loading="lazy">
 
 	</figure>
 	<p>Reverse proxies also sit between users and origin servers. Reverse proxies (such as Cloudflare and <a href="https://www.cloudflare.com/cloudflare-vs-akamai">Akamai</a>) act on behalf of origin servers, caching static data to improve the speed of content delivery and offering security services such as DDoS mitigation. Critically, reverse proxies do not require special root certificates to be installed on user devices, since browsers establish connections directly to the reverse proxy to download content that is hosted at the origin server. Reverse proxies are often used by origin servers to improve the security of client HTTPS connections (for example, by enforcing strict security policies and using the <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">newest security protocols like TLS 1.3</a>). In this case, reverse proxies are intermediaries that provide better performance and security to TLS connections.</p>
@@ -180,40 +180,40 @@ TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc13)</code></pre>
 	<p>The 2017 study found that 10.9% of Cloudflare-bound TLS Client Hellos had been intercepted. MALCOLM shows that the number of interceptions has increased by a substantial amount, to 18.6%:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/308RiVWeL9fqieIEzt7DsR/3ab48f53723bf3bc2adcc05083cf0fc5/1.png" alt="" class="kg-image" width="1600" height="172" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/308RiVWeL9fqieIEzt7DsR/1de5978ad5319a33e0f6d670a2fbf69c/1.png" alt="" class="kg-image" width="1600" height="172" loading="lazy">
 
 	</figure>
 	<p>This result, however, is likely inflated compared to the results of the 2017 study. The 2017 study considered all traffic that went through Cloudflare, regardless of whether it had a recognizable User Agent or not. MALCOLM only considers results with recognizable User Agents that could be identified by <a href="https://github.com/avct/uasurfer">uasurfer</a>, a Golang library for parsing User Agent strings. Indeed, when we don’t screen out TLS Client Hellos with unidentified User Agents, we see that 11.3% of requests are considered intercepted--an increase of 0.4%. Overall, the prevalence of HTTPS interception activity does not seem to have changed much over the past two years.</p>
 	<p>Next, we examine the prevalence of HTTPS interception by browser and operating system. The paper presented the following table. We’re interested in finding the most popular browsers and most frequently intercepted browsers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HJcWioFHJY1gSjUGbM0Fo/3582414da3a4393b6dfe150703e08bd4/2-1.png" alt="" class="kg-image" width="365" height="289" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HJcWioFHJY1gSjUGbM0Fo/aa06678c9b4cac6d7c4a71b4a601c39c/2-1.png" alt="" class="kg-image" width="365" height="289" loading="lazy">
 
 	</figure>
 	<p>MALCOLM yields the following statistics for all traffic by browsers. MALCOLM presents mobile and desktop browsers as a single item. This can be broken into separate views for desktop and mobile using the filters on the dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ueWD4onXq5T1fTh2ZULTt/6b9b78b6c2eb00cf353adc58f5be36f1/3.png" alt="" class="kg-image" width="554" height="378" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ueWD4onXq5T1fTh2ZULTt/746be2f8618fe4c3979ba6f8bc4ac61c/3.png" alt="" class="kg-image" width="554" height="378" loading="lazy">
 
 	</figure>
 	<p>Chrome usage has expanded substantially since 2017, while usage of Safari, IE, and Firefox has fallen somewhat (here, IE includes Edge). Examining the most frequently intercepted browsers, we see the following results:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DoOG6gtyJKloQ6f7N2YM/a43a69d9fc82df8c22cd7b781f4e87da/NC5wbmc-.png" alt="" class="kg-image" width="558" height="359" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DoOG6gtyJKloQ6f7N2YM/a7259a93ac04c0a687cc6c9865dbefa1/NC5wbmc-.png" alt="" class="kg-image" width="558" height="359" loading="lazy">
 
 	</figure>
 	<p>We see above that Chrome again accounts for a larger percentage of intercepted traffic, likely given growth in Chrome’s general popularity. As a result, HTTPS interception rates for other browsers, like Internet Explorer, have fallen as IE is less frequently used. MALCOLM also highlights the prevalence of other browsers that have their traffic intercepted--namely, UCBrowser, a browser common in China.</p>
 	<p>Now, we examine the most common operating systems observed in Cloudflare’s traffic:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33AywIjUylFoFgSgdXG0LX/36dd8a4445eba1f591e9e3ec2d41e2e8/6.png" alt="" class="kg-image" width="555" height="353" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33AywIjUylFoFgSgdXG0LX/97790997880300e3cd9ed30a0101c0d1/6.png" alt="" class="kg-image" width="555" height="353" loading="lazy">
 
 	</figure>
 	<p>Android use has clearly increased over the past two years as smartphones become peoples’ primary device for accessing the Internet. Windows also remains a common operating system.</p>
 	<p>As Android becomes more popular, the likelihood of HTTPS interception occurring on Android devices also has increased substantially:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7D4pH8O2VNOUfPZLiV6bV9/9b2f5082b3f84dc8005799940e22cf3a/aW1hZ2UucG5n.png" alt="" class="kg-image" width="560" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7D4pH8O2VNOUfPZLiV6bV9/1ea61b5d21caa3d35b65ab5f0dcf33af/aW1hZ2UucG5n.png" alt="" class="kg-image" width="560" height="350" loading="lazy">
 
 	</figure>
 	<p>Since 2017, Android devices have overtaken those of Windows as the most intercepted.</p>

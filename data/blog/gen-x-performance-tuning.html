@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TT8W5Et00ZvvobGvrgMEY/cda51a39f08f51f84e8333b45ed8616e/image7-3.png" alt="" class="kg-image" width="1251" height="703" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TT8W5Et00ZvvobGvrgMEY/1424f7ef2b4d6cc216b4a7ababc750ee/image7-3.png" alt="" class="kg-image" width="1251" height="703" loading="lazy">
 
 	</figure>
 	<p>We are using AMD 2nd Gen EPYC 7642 for our <a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">tenth generation “Gen X” servers</a>. We found <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">many aspects of this processor compelling</a> such as its <a href="https://blog.cloudflare.com/impact-of-cache-locality">increase in performance due to its frequency bump and cache-to-core ratio</a>. We have partnered with AMD to get the best performance out of this processor and today, we are highlighting our tuning efforts that led to an additional 6% performance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/616TtlNrwVkyeHby6ReKSD/5c0bd9047b44745b4d6f82fedff3a3cf/image14.png" alt="" class="kg-image" width="937" height="754" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/616TtlNrwVkyeHby6ReKSD/8127c8a658986889c1d54810ecd9433f/image14.png" alt="" class="kg-image" width="937" height="754" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -22,7 +22,7 @@
 	<p>Thermal design power (TDP) and dynamic power, amongst others, play a critical role when tuning a system. Many share a common belief that thermal design power is the maximum or average power drawn by the processor. The 48-core <a href="https://www.amd.com/en/products/cpu/amd-epyc-7642">AMD EPYC 7642</a> has a TDP rating of 225W which is just as high as the 64-core <a href="https://www.amd.com/en/products/cpu/amd-epyc-7742">AMD EPYC 7742</a>. It comes to mind that fewer cores should translate into lower power consumption, so why is the AMD EPYC 7642 expected to draw just as much power as the AMD EPYC 7742?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/420qeX6xoS09gLZaWH9F8p/cbcc20367f2b0f9a4faaab54bdc66806/image10-2.png" alt="" class="kg-image" width="775" height="479" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/420qeX6xoS09gLZaWH9F8p/051cc471d235fce238703d227f65a5f7/image10-2.png" alt="" class="kg-image" width="775" height="479" loading="lazy">
 
 	</figure>
 	<p><i>TDP Comparison between the EPYC 7642, EPYC 7742 and top-end EPYC 7H12</i></p>
@@ -30,7 +30,7 @@
 	<p>The overall power drawn by the processor depends on many different factors; dynamic or active power establishes the relationship between power and frequency. Dynamic power is a function of capacitance - the chip itself, supply voltage, frequency of the processor, and activity factor. The activity factor is dependent on the characteristics of the workloads running on the processor. Different workloads will have different characteristics. Some examples include <a href="https://blog.cloudflare.com/cloudflare-workers-unleashed">Cloudflare Workers</a> or <a href="https://blog.cloudflare.com/seamless-remote-work-with-cloudflare-access">Cloudflare for Teams</a>, the hotspots in these or any other particular programs will utilize different parts of the processor, affecting the activity factor.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12AEwpVHIGoT9XGcqHo83V/27e7644fa1e3e21324efcb766b076279/image-7.png" alt="" class="kg-image" width="1162" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12AEwpVHIGoT9XGcqHo83V/319acd3abb48e14d48d5defd4dc8a0c4/image-7.png" alt="" class="kg-image" width="1162" height="206" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -50,30 +50,30 @@
 	<p>Performance determinism clearly emphasized stabilizing operating frequency by matching its frequency to its lowest performing core over time. This mode appears to be ideal for tuners that emphasizes predictability over maximizing the processor’s operating frequency. In other words, the number of cycles that the processor has at its disposal every second should be predictable. This is useful if two or more cores share data dependencies. By allowing the cores to work in unison; this can prevent one core stalling another. Power determinism on the other hand, maximized its power and frequency as much as it can.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yiJbib8HJNMkMZc7On1K4/32dfcee225d91ad82f827b81f7894e2a/image12.png" alt="" class="kg-image" width="1296" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yiJbib8HJNMkMZc7On1K4/19411800792deb9713cc65c943fc232c/image12.png" alt="" class="kg-image" width="1296" height="504" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KXAIrxO2pCwpDAMlHyKW/585b13ccde6a9f174f23e5bc28dbaf72/image11-2.png" alt="" class="kg-image" width="1294" height="502" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KXAIrxO2pCwpDAMlHyKW/49769b6a78d78577c13ea0109d4410ac/image11-2.png" alt="" class="kg-image" width="1294" height="502" loading="lazy">
 
 	</figure>
 	<p>Heat generated by power can be compounded even further by ambient temperature. All components should stay within safe operating temperature at all times as specified by the vendor’s datasheet. If unsure, please reach out to your vendor as soon as possible. We put the AMD EPYC 7642 through several thermal tests and determined that it will operate within safe operating temperatures. Before diving into the figure below, it is important to mention that our fan speed ramped up over time, preventing the processor from reaching critical temperature; nevertheless, this meant that our cooling solution worked as intended - a combination of fans and a heatsink rated for 240W. We have yet to see the processors throttle in production. The figure below shows the highest temperature of the 8 dies laid out on the AMD EPYC 7642.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S2zzgzeBBeyhzBXxkU1Zz/00e7334c735a55809200dd8fa558005a/image8-3.png" alt="" class="kg-image" width="1296" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/S2zzgzeBBeyhzBXxkU1Zz/8c7880845e49ceec2cf761265724d046/image8-3.png" alt="" class="kg-image" width="1296" height="500" loading="lazy">
 
 	</figure>
 	<p>An unexpected byproduct of performance determinism was frequency jitter. It took a longer time for performance determinism to achieve steady-state frequency, which contradicted predictable performance that performance determinism mode was meant to achieve.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LK2tZgnsa8m86vPQYdjrS/3a9b95e06b9456c0f140aa78fa9e92ba/image9-1.png" alt="" class="kg-image" width="1292" height="494" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LK2tZgnsa8m86vPQYdjrS/87474e0b887e438d97254fde28b2f8ac/image9-1.png" alt="" class="kg-image" width="1292" height="494" loading="lazy">
 
 	</figure>
 	<p>Finally, here are the deltas out from the real world with performance determinism and TDP set to factory default of 225W as the baseline. Deltas under 10% can be influenced by a wide variety of factors especially in production, however, none of our data showed a negative trend. Here are the averages.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZT2L9MokepRw2GmZbKuxE/a9d375df783d8eb4fc048bcdbb8e9f62/image-5.png" alt="" class="kg-image" width="1270" height="198" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZT2L9MokepRw2GmZbKuxE/f3facacec8efefc02cf704137f09930e/image-5.png" alt="" class="kg-image" width="1270" height="198" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -87,12 +87,12 @@
 	<p>The AMD EPYC 7642 <a href="https://blog.cloudflare.com/impact-of-cache-locality">physically lays out its 8 dies across 4 different quadrants on a single package</a>. By having such a layout, AMD supports dividing its dies into NUMA domains and this feature is called Nodes Per Socket or NPS. Available NPS options differ model-to-model, the AMD EPYC 7642 supports 4, 2, and 1 node(s) per socket. We thought it might be worth our time exploring this option despite the fact that none of these choices will end up yielding a shared last level cache. We did not observe any significant deltas from the NPS options in terms of performance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aTakzcywLXCq9cVbJUapE/becc0b7b5b44881e7e31bcf89e2ec879/image15.png" alt="" class="kg-image" width="1294" height="498" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aTakzcywLXCq9cVbJUapE/99073a5a3e205037b7561c641258091f/image15.png" alt="" class="kg-image" width="1294" height="498" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26jjqqzj8LFJecjFpq8ucU/390beafbda64148e5cbb4c2c92465fe3/image13-1.png" alt="" class="kg-image" width="1298" height="502" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26jjqqzj8LFJecjFpq8ucU/4306eb572afd428965162fbe454172c4/image13-1.png" alt="" class="kg-image" width="1298" height="502" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

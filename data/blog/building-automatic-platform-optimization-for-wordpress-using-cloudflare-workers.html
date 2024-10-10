@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BSCa4pGfBRBRcApwBkzQL/b54e96a2ffda0a6f3dfe33a0341bb3a0/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BSCa4pGfBRBRcApwBkzQL/7e13bd04e8f10af27519946724c8cd5b/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This post explains how we implemented the <a href="https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress">Automatic Platform Optimization</a> for WordPress. In doing so, we have defined a new place to run WordPress plugins, at the edge written with Cloudflare Workers. We provide the feature as a Cloudflare service but what’s exciting is that anyone could build this using the Workers platform.</p>
 	<p>The service is an evolution of the ideas explained in an earlier <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">zero-config edge caching of HTML</a> blog post. The post will explain how Automatic Platform Optimization combines the best qualities of the regular Cloudflare cache with Workers KV to improve cache cold starts globally.</p>
@@ -25,7 +25,7 @@
 	<p>By default Cloudflare CDN caches assets based on <a href="https://support.cloudflare.com/hc/en-us/articles/200172516#h_a01982d4-d5b6-4744-bb9b-a71da62c160a">file extension</a> and doesn’t cache HTML content. It is possible to configure HTML caching with a <a href="https://support.cloudflare.com/hc/en-us/articles/202775670#3SVKvGhbS9BNT34zRCsPJ7">Cache Everything Page</a> rule but it is a manual process and often requires additional features only available on the Business and Enterprise plans. So for the majority of the WordPress websites even with a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> in front them, HTML content is not cached. Requests for a HTML document have to go all the way to the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14SelFUXAc9SBPwqea8OUD/a3781f1d4785062ed876fc503c5dd9c1/image3-2.png" alt="" class="kg-image" width="1536" height="649" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14SelFUXAc9SBPwqea8OUD/92f9e753055a0759bc0f87ef7c021bca/image3-2.png" alt="" class="kg-image" width="1536" height="649" loading="lazy">
 
 	</figure>
 	<p>Even if a CDN optimizes the connection between the closest edge and the website’s origin, the origin could be located far away and also be slow to respond, especially under load.</p>
@@ -40,7 +40,7 @@
 	<p>One of the primary recommendations for speeding up websites is to move content closer to the end-user. This reduces the amount of time it takes for packets to travel between the end-user and the web server - the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trip time (RTT)</a>. This improves the speed of establishing a connection as well as serving content from a closer location.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VJdt6X0xF6xuDyMI0CHXu/98f063583848eae1fd7dc24b33a14b17/image6-1.png" alt="" class="kg-image" width="1297" height="514" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VJdt6X0xF6xuDyMI0CHXu/4e17456b4b864eb1b5eabc08713a4438/image6-1.png" alt="" class="kg-image" width="1297" height="514" loading="lazy">
 
 	</figure>
 	<p>We have previously blogged about the <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">benefits of edge caching HTML</a>. Caching and serving from HTML from the Cloudflare edge will greatly improve the time to first byte (TTFB) by optimizing DNS, connection setup, SSL negotiation, and removing the origin server response time.If your origin is slow in generating HTML and/or your user is far from the origin server then all your performance metrics will be affected.</p>
@@ -137,7 +137,7 @@
 	<p>When an eyeball requests a page from a website and Cloudflare doesn’t have a copy of the content it will be fetched from the origin. As the response is sent from the origin and goes through Cloudflare’s edge, Cloudflare for WordPress plugin adds a custom header: <code>cf-edge-cache</code>. It allows an origin to configure caching rules applied on responses.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6COdQPrdIxdu1UiJgsdyVd/c6594f2dfc0c277e4a30e4439c0e3f39/image4-1.png" alt="" class="kg-image" width="1610" height="772" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6COdQPrdIxdu1UiJgsdyVd/015cf3f6aa598f70cfe089d74292a1b9/image4-1.png" alt="" class="kg-image" width="1610" height="772" loading="lazy">
 
 	</figure>
 	<p>Based on the <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">X-HTML-Edge-Cache</a> proposal the plugin adds a cf-edge-cache header to every origin response. There are 2 possible values:</p>
@@ -213,7 +213,7 @@
 	<p>We serve the stale copy of the content still present in KV and asynchronously fetch new content from the origin, apply possible optimizations and then cache it (both regular local CDN cache and globally in KV).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UGnbwtDfcNEmZXwV12urw/56773eecd9f346daa597b93fbe33976b/image5-2.png" alt="" class="kg-image" width="1316" height="732" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UGnbwtDfcNEmZXwV12urw/b1b58beeb7a4c5fee4ad8d5a8d755035/image5-2.png" alt="" class="kg-image" width="1316" height="732" loading="lazy">
 
 	</figure>
 	<p>To store the content in KV we use a single namespace. It’s keyed with a combination of a zone identifier and the URL. For instance:</p>
@@ -260,7 +260,7 @@
 	<p>The HTML transformation doesn’t block the response to the user. It’s running as a background task which when complete will update kv and replace the global cached version.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ShahwSObRage83CdWSfD0/0eb4cb92f59889beb9f06512e341dbf0/image1-6.png" alt="" class="kg-image" width="1348" height="694" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ShahwSObRage83CdWSfD0/528448594de96d64c0bb442f7e2db875/image1-6.png" alt="" class="kg-image" width="1348" height="694" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

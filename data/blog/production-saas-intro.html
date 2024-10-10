@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vFnWyzNerO5eQlVSkfymM/59aec3d97e836c16100d1b278910ee61/image3-31.png" alt="An Open-Source CMS on the Cloudflare Stack: Introductory Post" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vFnWyzNerO5eQlVSkfymM/e44c3663b464e9f7ee25f3d82749b5b4/image3-31.png" alt="An Open-Source CMS on the Cloudflare Stack: Introductory Post" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>The <a href="https://developers.cloudflare.com">Cloudflare documentation</a> is a great resource when learning concepts, reviewing API usage notes, or when you’re in need of a concise snippet to illustrate those APIs or concepts. But, as comprehensive as it is, new users to the Cloudflare Workers platform must bridge a large gap to go from the introductory example snippets to a real, production-ready application. While some of this may be specific to Workers (as with any platform), developers <i>everywhere</i> are figuring out how applications should be built in a serverless world. Building large serverless applications entails a learning curve journey, regardless of a developer’s experience level.</p>
@@ -60,7 +60,7 @@
 	<p>A number of other features are planned — subscription management and invoicing through <a href="https://stripe.com">Stripe</a>, sending transactional emails through <a href="https://sendgrid.com">SendGrid</a>, and assigning vanity domains to workspaces through <a href="https://blog.cloudflare.com/cloudflare-for-saas-for-all-now-generally-available">Cloudflare for SaaS</a>. Finally, of course, the standard house-keeping tasks will be set up. This includes continuous integration (CI) with API testing and automated, continuous deployments (CD).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50epXtqsrSebofS2ulnpsu/93c63a1e10c03caa14528709a538f984/image2-20.png" alt="" class="kg-image" width="1156" height="698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50epXtqsrSebofS2ulnpsu/124d13127e4db7bd3fe160db00b563b0/image2-20.png" alt="" class="kg-image" width="1156" height="698" loading="lazy">
 
 	</figure>
 	<p>By the end of this phase, the project will exist as a collection of API endpoints that, on its own, is a complete application. While it may only be accessible through <code>curl</code> commands — or any other preferred method for manually constructing HTTP requests, the completion of <b>Phase 1</b> already qualifies the project as a full-stack application and <i>could</i> serve a real-world SaaS product.</p>
@@ -79,7 +79,7 @@
 	<p>The result will be a single-page application (SPA) and will be hosted on Cloudflare Pages. This means that, out of the box, the dashboard will be able to take advantage of <a href="https://developers.cloudflare.com/pages/platform/preview-deployments#customizing-preview-deployments-access">Access-protected preview deployments</a>, <a href="https://developers.cloudflare.com/pages/platform/rollbacks">instant rollbacks</a>, automated deployments, comprehensive analytics, and more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tr1PMuybglLESZjeCxqvS/a70bcb61404070f60a1a93fb83ab1039/image1-53.png" alt="" class="kg-image" width="1156" height="698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tr1PMuybglLESZjeCxqvS/621ceb9d180069a2d499c94d870257d4/image1-53.png" alt="" class="kg-image" width="1156" height="698" loading="lazy">
 
 	</figure>
 	<p>Finally, <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">now that Pages integrates with Workers directly</a>, the JSON API from <b>Phase 1</b> will migrate into a new repository structure. While this may seem like an innocent refactor, it actually unlocks an incredible set of features for the JSON API: <a href="https://developers.cloudflare.com/pages/platform/preview-deployments#customizing-preview-deployments-access">Access-protected preview deployments</a>, <a href="https://developers.cloudflare.com/pages/platform/rollbacks">instant rollbacks</a>, and automated deployments. Yes — these are the same Pages features mentioned above! This is amazing because it means that our API is continuously and atomically versioned, allowing its development to continue safely <i>alongside</i> the client dashboard that depends on it. In other words, there is zero risk of the API and the dashboard diverging, which would have allowed their expectations of one another to misalign. Instant rollbacks will also apply to the API since the <i>entire</i> application operates as a single Pages unit.</p>

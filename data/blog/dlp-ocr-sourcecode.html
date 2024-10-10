@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4o83pdK9B9Xo9dC7G8y3H6/80d1ae733dcea5fa9de8fec3005229a0/image3-3.png" alt="Announcing two highly requested DLP enhancements: Optical Character Recognition (OCR) and Source Code Detections" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4o83pdK9B9Xo9dC7G8y3H6/c4f6fcaa7049b0bbfff6dc9638dd2905/image3-3.png" alt="Announcing two highly requested DLP enhancements: Optical Character Recognition (OCR) and Source Code Detections" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>We are excited to announce two enhancements to Cloudflare’s Data Loss Prevention (DLP) service: support for Optical Character Recognition (OCR) and predefined source code detections. These two highly requested DLP features make it easier for organizations to protect their sensitive data with granularity and reduce the risks of breaches, regulatory non-compliance, and reputational damage:</p>
@@ -50,25 +50,25 @@
 	<p>To implement inline blocking of source code, simply select the DLP profiles for the languages you want to detect. For example, if my organization uses Rust, Go, and JavaScript, I would turn on those detections:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V2WLxpyTJ1MBCVs9hDZo6/e7a35a10e600632be5a0e1ac36403006/image4-6.png" alt="" class="kg-image" width="1999" height="799" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4V2WLxpyTJ1MBCVs9hDZo6/51ab4e1789fc640cad05e002846d60e9/image4-6.png" alt="" class="kg-image" width="1999" height="799" loading="lazy">
 
 	</figure>
 	<p>I would then create a blocking policy via our secure web gateway to prevent traffic containing source code**.** Here, we block source code from being uploaded to ChatGPT:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xnJNBdZUZl6H13PW0VlhI/ce28eb4b6ebef43fd6814ed65b9c2798/image2-3.png" alt="" class="kg-image" width="1382" height="810" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xnJNBdZUZl6H13PW0VlhI/e7fb96119fa5e92c69d9bd94c89f1a5d/image2-3.png" alt="" class="kg-image" width="1382" height="810" loading="lazy">
 
 	</figure>
 	<p>Adding OCR to any detection is similarly easy. Below is a profile looking for sensitive data that could be stored in scanned documents.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HLCEY3pPWi3hpeN6OVKhd/7585bb3f748e67e57b0f4b7a71017f29/image5.png" alt="" class="kg-image" width="1999" height="363" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HLCEY3pPWi3hpeN6OVKhd/93fc2c1daa68f9a6c0731af83e4a8a12/image5.png" alt="" class="kg-image" width="1999" height="363" loading="lazy">
 
 	</figure>
 	<p>With the detections selected, simply enable the OCR toggle, and wherever you are applying DLP inspections, images in your content will be scanned for sensitive data. The detections work the same in images as they do in the text, including Match Counts and Context Analysis, so no additional logic or settings are needed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AzZy9wouLp9pIgkb15IIF/00fb8205e3a966e6902c5c657507aa39/image1-3.png" alt="" class="kg-image" width="1494" height="663" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AzZy9wouLp9pIgkb15IIF/7470ee7f7489d6e70100e384e6abf789/image1-3.png" alt="" class="kg-image" width="1494" height="663" loading="lazy">
 
 	</figure>
 	<p>Consistency across use cases is a core principle of our DLP solution, so as always, this feature is available for both data at rest, <a href="https://blog.cloudflare.com/casb-dlp">available via CASB</a>, and data in transit, <a href="https://blog.cloudflare.com/inline-dlp-ga">available via Gateway</a>.</p>

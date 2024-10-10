@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xvE3QI2mq7xUFDuyvIHbN/fc30a4c768f0022a50fc37fd876d6ec0/killing-rc4-the-long-goodbye.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xvE3QI2mq7xUFDuyvIHbN/68c9c3a1ca8895b491e4510e3d6026f1/killing-rc4-the-long-goodbye.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At CloudFlare we spend a lot of time thinking about the best way to keep our customers’ data safe. Despite <a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities">recent</a> <a href="http://arstechnica.com/security/2014/02/four-days-in-and-still-no-patch-for-os-x-critical-goto-fail-bug">troubles</a>, HTTPS is still the best way to deliver encrypted content for the web. As the threat landscape changes we try to keep up with best practices with respect to which cryptographic primitives we use.</p>
 	<p>We <a href="https://blog.cloudflare.com/killing-rc4">recently</a> removed support for RC4 for browsers using TLS 1.1+. Now we are removing RC4 as the preferred cipher. Servers behind CloudFlare will prefer AES-based cipher suites for all HTTPS connections and only use RC4 as a cipher as a last resort. We believe this is the right choice for the safety and security of our customers.</p>
@@ -13,7 +13,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7L3AkZuQtlWy70oo6O7gaY/62c2808fb89b9e780405ea8b680a1723/timetraveltuesdays.jpg" alt="" class="kg-image" width="1200" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7L3AkZuQtlWy70oo6O7gaY/0b29a1b8349b32bd44350113e8fd9956/timetraveltuesdays.jpg" alt="" class="kg-image" width="1200" height="400" loading="lazy">
 
 	</figure>
 	<p>Let’s go back to 2011; most browsers supported the TLS 1.0 protocol and the preferred cipher was AES-CBC. Servers and consumer computers running the Intel Sandy Bridge chipset with hardware AES support were just being rolled out. RC4 was an old cipher in its twilight. Little did we know, RC4 would soon return to prominence.</p>
@@ -44,7 +44,7 @@
 	<p>Instead of just removing RC4 altogether, we decided first to lower the priority of the RC4 cipher suites on our servers. Typically in HTTPS, the client lets the server know which cipher suites it supports, from which the server picks their favorite. By putting RC4 last in terms of server preference, we will only choose RC4 if it the client does not support anything else. The following chart shows what happened when we changed our cipher preferences.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58Tlpzx6sFhHgConoqwPmE/836b74102d37e4137e4a6cd95b45d7b2/RC4_chart.png" alt="" class="kg-image" width="1934" height="830" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58Tlpzx6sFhHgConoqwPmE/9552365851bfcc088e767898f0b50397/RC4_chart.png" alt="" class="kg-image" width="1934" height="830" loading="lazy">
 
 	</figure>
 	<p>The purple and brown lines show the percentage of connections to one of our servers using RC4 cipher suites. When we changed our cipher preferences (around 18:00 on this chart), these two lines went down to nearly zero. The green and red lines show the replacement AES cipher suites. The blue line at the bottom mostly represents visitors using Internet Explorer on old versions of Windows XP, which does not support AES.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pVVnPbefiJuZhkvsVLLhM/57a45db59c9f76ea8ee8dd419ae4c092/image5-25-2.png" alt="Investigation into SolarWinds Orion compromise" class="kg-image" width="2000" height="949" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pVVnPbefiJuZhkvsVLLhM/3d6ca91de10b453190dc842acd3d936f/image5-25-2.png" alt="Investigation into SolarWinds Orion compromise" class="kg-image" width="2000" height="949" loading="lazy">
 
 	</figure>
 	<p>On Sunday, December 13, <a href="https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html">FireEye released a report</a> on a sophisticated supply chain attack leveraging SolarWinds' Orion IT monitoring software. The malware was distributed as part of regular updates to Orion and had a valid digital signature.</p>
@@ -24,25 +24,25 @@
 	<p>We first noticed a spike in DNS traffic through Cloudflare’s 1.1.1.1 resolver to avsvmcloud[.]com starting in April 2020:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZWBXX6eLKIO4Of4Kg39Uv/7ffb1a1fd843bdc00ced06cbf3902a60/image2-38.png" alt="We first noticed a spike in DNS traffic through Cloudflare’s 1.1.1.1 resolver to avsvmcloud[.]com starting in April 2020" class="kg-image" width="1999" height="1523" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZWBXX6eLKIO4Of4Kg39Uv/d67581bab72556724dc9124bfcad9765/image2-38.png" alt="We first noticed a spike in DNS traffic through Cloudflare’s 1.1.1.1 resolver to avsvmcloud[.]com starting in April 2020" class="kg-image" width="1999" height="1523" loading="lazy">
 
 	</figure>
 	<p>Reviewing the subdomain data, a specific pattern of DGA domains emerged as early as April. These subdomains followed a format, (e.g. {dga-string}[.]appsync-api[.]{region}[.]avsvmcloud[.]com). As time went on, the attackers added more unique subdomains. The graph below depicts the unique newly observed subdomains of avsvmcloud[.]com on a weekly basis.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1D3doHZQGkyshB57sqmSco/806695ac75df561650a6b8a498e6f986/image1-60.png" alt="" class="kg-image" width="1999" height="1421" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1D3doHZQGkyshB57sqmSco/85272385a5a21be1cf94d22c046e2c79/image1-60.png" alt="" class="kg-image" width="1999" height="1421" loading="lazy">
 
 	</figure>
 	<p>As illustrated in the graphs, we noticed a major rise in activity over the summer, with total subdomains observed reaching steady state in September.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AABBhH8eD4LqWDdLRFW1S/e48e3f7c2403fe44382e261474ebb6ed/image4-23.png" alt="" class="kg-image" width="1999" height="1377" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AABBhH8eD4LqWDdLRFW1S/9c60e34e2eba12abc3171cc5d600b97e/image4-23.png" alt="" class="kg-image" width="1999" height="1377" loading="lazy">
 
 	</figure>
 	<p>While the growth of unique names slowed down starting in October, the geographic distribution continued to change during the entire course of the attack. During the first few weeks of the attack, queries originated almost entirely from clients in North America and Europe. In May, the source of queries began to spread across the globe. By July, the queries began to cluster again, this time in South America, before returning to originate primarily from North America in November.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4j9ld3C9PcQdXv1Whn9Ir2/1a02c40272456cc474627dd5c8f50349/image3.gif" alt="" class="kg-image" width="1200" height="657" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4j9ld3C9PcQdXv1Whn9Ir2/22021d3d41a25fedeb497a89fa2412bb/image3.gif" alt="" class="kg-image" width="1200" height="657" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

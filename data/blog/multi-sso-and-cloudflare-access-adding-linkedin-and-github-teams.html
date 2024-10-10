@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79RitoXKGS9s30N5Rwoxvv/d5f1a88a77e80ad3f9842c046755ef86/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79RitoXKGS9s30N5Rwoxvv/cbd3ccd5dc7cad36ff6afa4c18c86c7b/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare Access secures internal applications without the hassle, slowness or user headache of a corporate VPN. Access brings the experience we all cherish, of being able to access web sites anywhere, any time from any device, to the sometimes dreary world of corporate applications. Teams can integrate the single sign-on (SSO) option, like Okta or AzureAD, that they’ve chosen to use and in doing so make on-premise or self-managed cloud applications feel like SaaS apps.</p>
 	<p>However, teams consist of more than just the internal employees that share an identity provider. Organizations work with partners, freelancers, and contractors. Extending access to external users becomes a constant chore for IT and security departments and is a source of security problems.</p>
@@ -17,13 +17,13 @@
 	<p>This option gives an organization control of identity, but adds overhead in terms of time and cost. The project owner also needs to pay for new SSO seat licenses, even if those seats are temporary. The IT department must spend time onboarding, helping, and then offboarding those user accounts. And the users themselves need to learn a new system and manage yet another password - this one with permission to your internal resources.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ehj44dRmO4l4iCBUZ64GV/cf1f2dcdb01bd99b912a975900148dec/onboard-overload-_2x.png" alt="" class="kg-image" width="2052" height="1908" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ehj44dRmO4l4iCBUZ64GV/ba061349ad9f98d643d1823c294751b6/onboard-overload-_2x.png" alt="" class="kg-image" width="2052" height="1908" loading="lazy">
 
 	</figure>
 	<p>Alternatively, other groups decide to “federate” identity. In this flow, an organization will connect their own directory service to their partner’s equivalent service. External users login with their own credentials, but administrators do the work to merge the two services to trust one another.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GeghsR5LjsPpSBmI026tu/9b69cd8ff7c9b7ceb833e7eb693be9e3/plug-this-into-that-_2x.png" alt="" class="kg-image" width="3266" height="1809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GeghsR5LjsPpSBmI026tu/d68879601e720c6a727fe0b97e3accda/plug-this-into-that-_2x.png" alt="" class="kg-image" width="3266" height="1809" loading="lazy">
 
 	</figure>
 	<p>While this method avoids introducing new passwords, both organizations need to agree to dedicate time to integrate their identity providers - assuming that those providers can integrate. Businesses then need to configure this setup with each contractor or partner group. This model also requires that external users be part of a larger organization, making it unavailable to single users or freelancers.</p>
@@ -41,13 +41,13 @@
 	<p>Administrators build rules to decide who should be able to reach the tools protected by Access. In turn, when users need to connect to those tools, they are prompted to authenticate with their team’s identity provider. Cloudflare Access checks their login against the list of allowed users and, if permitted, allows the request to proceed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fuVikI9ANFUHPUhlxqTM4/4632b3058aa0b43bbe609d5166d9fddd/image.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fuVikI9ANFUHPUhlxqTM4/071abde71c91dcdbeb1c883ecb8c9098/image.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
 
 	</figure>
 	<p>With Multi-SSO, this model works the same way but extends that login flow to other sign-in options. When users visit a protected application, they are presented with the identity provider options your team configures. They select their SSO, authenticate, and are redirected to the resource if they are allowed to reach it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zNHUSccfcA4kIiJ78hS8G/6347e4fc8ff3213eb810383beffa5b51/multi-sso-login-2.png" alt="" class="kg-image" width="400" height="690" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zNHUSccfcA4kIiJ78hS8G/457f5f2d51d2a09bc3bcd76ab7f9b95d/multi-sso-login-2.png" alt="" class="kg-image" width="400" height="690" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Access can also help standardize identity across multiple providers. When users login, from any provider, Cloudflare Access generates a signed JSON Web Token that contains that user’s identity. That token can then be used to authorize the user to the application itself. Cloudflare has open sourced an example of using this token for authorization with our <a href="https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian">Atlassian SSO plugin</a>.</p>
@@ -64,14 +64,14 @@
 	<p>Organizations can integrate LinkedIn, GitHub, or Google accounts like Gmail alongside their own corporate identity provider. As new partners join a project, administrators can add single users or groups of users to their Access policy. Contractors and partners can then login with their own accounts while internal employees continue to use the SSO provider already in place.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24H69R2M9lGexb3ujjLTc5/7b480230de7befe4c1d88e9d23901eec/policy.png" alt="" class="kg-image" width="1666" height="1124" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24H69R2M9lGexb3ujjLTc5/7d8b20ce17247e7ef8953d7b342076c1/policy.png" alt="" class="kg-image" width="1666" height="1124" loading="lazy">
 
 	</figure>
 	<p>With the <a href="https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch">Access App Launch</a>, administrators can also skip sending custom emails or lists of links to new contractors and replace them with a single URL. When external users login with LinkedIn, GitHub, or any other provider, the Access App Launch will display only the applications they can reach. In a single view, users can find and launch the tools that they need.</p>
 	<p>The Access App Launch automatically generates this view for each user without any additional configuration from administrators. The list of apps also updates as permissions are added or removed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uSD0wu6Ud4WLH65Bf2aqd/802a698f90302e6f4dcff0882c7d9806/app-launch.png" alt="" class="kg-image" width="2000" height="1253" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uSD0wu6Ud4WLH65Bf2aqd/473a622e8e8834437211789bfe0d4ae8/app-launch.png" alt="" class="kg-image" width="2000" height="1253" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

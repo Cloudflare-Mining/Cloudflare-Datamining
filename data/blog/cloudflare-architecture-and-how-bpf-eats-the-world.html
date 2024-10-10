@@ -1,12 +1,12 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-architecture-and-how-bpf-eats-the-world">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-architecture-and-how-bpf-eats-the-world">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-architecture-and-how-bpf-eats-the-world">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-architecture-and-how-bpf-eats-the-world">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3U9o2wDqtM0igvB2yasO3s/8bf47b4b069283f1bbede68c2444c7a9/cloudflare-architecture-and-how-bpf-eats-the-world.jpg" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-architecture-and-how-bpf-eats-the-world">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-architecture-and-how-bpf-eats-the-world">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-architecture-and-how-bpf-eats-the-world">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-architecture-and-how-bpf-eats-the-world">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3U9o2wDqtM0igvB2yasO3s/5f9173ea6599de3db0c7823da7391990/cloudflare-architecture-and-how-bpf-eats-the-world.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently at <a href="https://www.netdevconf.org/0x13/schedule.html">Netdev 0x13</a>, the Conference on Linux Networking in Prague, I gave <a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives=">a short talk titled "Linux at Cloudflare"</a>. The <a href="https://speakerdeck.com/majek04/linux-at-cloudflare">talk</a> ended up being mostly about BPF. It seems, no matter the question - BPF is the answer.</p>
 	<p>Here is a transcript of a slightly adjusted version of that talk.</p>
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jvISZgDDA9AnXaBAJzYys/71549a17fa8fbde5d78be4f57be45bf7/01_edge-network-locations-100.jpg" alt="" class="kg-image" width="1281" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jvISZgDDA9AnXaBAJzYys/13b124e1f305c9ab4594db66f9123789/01_edge-network-locations-100.jpg" alt="" class="kg-image" width="1281" height="820" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare we run Linux on our servers. We operate two categories of data centers: large "Core" data centers, processing logs, analyzing attacks, computing analytics, and the "Edge" server fleet, delivering customer content from 180 locations across the world.</p>
@@ -14,7 +14,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2L3Wbz94VfdflLpsTuIp9D/770bc7609860db44f3d44332045a6ffa/image-9.png" alt="" class="kg-image" width="1281" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2L3Wbz94VfdflLpsTuIp9D/8b11fa614a4cc1134e4d4df466464425/image-9.png" alt="" class="kg-image" width="1281" height="820" loading="lazy">
 
 	</figure>
 	<p>Our edge service is special due to our network configuration - we are extensively using anycast routing. Anycast means that the same set of IP addresses are announced by all our data centers.</p>
@@ -22,7 +22,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xiYwbjJRCpt76iDITKowY/bb5a01766fee7bc870ea49523f75c403/03_edge-network-uniform-software-100-1.jpg" alt="" class="kg-image" width="1280" height="521" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xiYwbjJRCpt76iDITKowY/9800bb2637bb3f601ccbc7c6eedb6b36/03_edge-network-uniform-software-100-1.jpg" alt="" class="kg-image" width="1280" height="521" loading="lazy">
 
 	</figure>
 	<p>Anycast allows us to keep the networking setup uniform across all edge data centers. We applied the same design inside our data centers - our software stack is uniform across the edge servers. All software pieces are running on all the servers.</p>
@@ -31,7 +31,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/268deIgT4XLrgXfhRXxfx1/f6e5dd5537d7efedfbf8906e890164fa/image-23.png" alt="" class="kg-image" width="1281" height="664" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/268deIgT4XLrgXfhRXxfx1/a5ced85738359d15ee16f9238ac759d8/image-23.png" alt="" class="kg-image" width="1281" height="664" loading="lazy">
 
 	</figure>
 	<p>Let me walk you through the early stages of inbound packet processing:</p>
@@ -55,7 +55,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IlhL5q8CplwN5H1BY0ZZo/757587ed9f507115acfb799cf42a6df8/image-25.png" alt="" class="kg-image" width="1281" height="457" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IlhL5q8CplwN5H1BY0ZZo/7f73d7d4c662113fac18404bcfac96c4/image-25.png" alt="" class="kg-image" width="1281" height="457" loading="lazy">
 
 	</figure>
 	<p>Let's discuss DoS handling in more detail. As mentioned earlier, the first step after ECMP routing is Linux's XDP stack where, among other things, we run DoS mitigations.</p>
@@ -78,7 +78,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LAXf4Ayxh2sRR3hIsbBja/7aed686c167609b595f51927e6c1d3ca/image-26.png" alt="" class="kg-image" width="1281" height="450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LAXf4Ayxh2sRR3hIsbBja/f8be1df5b19b10954b6a4ad092a177f7/image-26.png" alt="" class="kg-image" width="1281" height="450" loading="lazy">
 
 	</figure>
 	<p>While our modern volumetric DoS defenses are done in XDP layer, we still rely on <code>iptables</code> for application layer 7 mitigations. Here, a higher level firewall’s features are useful: connlimit, hashlimits and ipsets. We also use the <code>xt_bpf</code> iptables module to run cBPF in iptables to match on packet payloads. We talked about this in the past:</p>
@@ -93,7 +93,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MhIUEVsoocz1OSd8FKeYZ/c4b30ab7539909be6703e24487ff70af/image-34.png" alt="" class="kg-image" width="1281" height="663" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MhIUEVsoocz1OSd8FKeYZ/a9e4321a070cd2d49800e978eb50b2d7/image-34.png" alt="" class="kg-image" width="1281" height="663" loading="lazy">
 
 	</figure>
 	<p>After XDP and iptables, we have one final kernel side DoS defense layer.</p>
@@ -117,7 +117,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79bzCglYGH8Vb2hH6R9j39/9561a4d431c9055af10fd7d7ec8770a9/image-27.png" alt="" class="kg-image" width="1281" height="402" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79bzCglYGH8Vb2hH6R9j39/39aa41a6e11b5cb0dc7f640cd7d7aa72/image-27.png" alt="" class="kg-image" width="1281" height="402" loading="lazy">
 
 	</figure>
 	<p>Apart from the DoS, in XDP we also run a layer 4 load balancer layer. This is a new project, and we haven't talked much about it yet. Without getting into many details: in certain situations we need to perform a socket lookup from XDP.</p>
@@ -125,7 +125,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6j7ypFSgorN0lWBNY6Nc2m/8034f3900934fbc71e767e292a811b10/image-28.png" alt="" class="kg-image" width="1281" height="415" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6j7ypFSgorN0lWBNY6Nc2m/b0ca29a08e3a1623a5f8c06c213f8d97/image-28.png" alt="" class="kg-image" width="1281" height="415" loading="lazy">
 
 	</figure>
 	<p>After DoS and the load balancing layers, the packets are passed onto the usual Linux TCP / UDP stack. Here we do a socket dispatch - for example packets going to port 53 are passed onto a socket belonging to our DNS server.</p>
@@ -134,7 +134,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ERTm7jhXbKKfdo3CVmV81/8af3b33101de00805ff7efa886148f21/image-29.png" alt="" class="kg-image" width="1281" height="466" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ERTm7jhXbKKfdo3CVmV81/2c8b5986539832c73971269a6bcf0964/image-29.png" alt="" class="kg-image" width="1281" height="466" loading="lazy">
 
 	</figure>
 	<p>In order to fix this, we developed a custom kernel patch which adds <a href="http://patchwork.ozlabs.org/patch/602916">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
@@ -148,7 +148,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eEog6Kt512U7uVmD5DVt8/0fdb89f8f5ea71d34a3e938003e57b88/image-32.png" alt="" class="kg-image" width="1281" height="662" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eEog6Kt512U7uVmD5DVt8/d8216cc24e674f5f86b1d385bf93dfc5/image-32.png" alt="" class="kg-image" width="1281" height="662" loading="lazy">
 
 	</figure>
 	<p>Then there is a way to use eBPF to improve applications. Recently we got excited about doing TCP splicing with SOCKMAP:</p>
@@ -162,7 +162,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MC8LLNDHLZ4wDYLcbbCHQ/c1f2749d6e547327a94f5f8dd2141308/12_prometheus-ebpf_exporter-100.jpg" alt="" class="kg-image" width="1281" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MC8LLNDHLZ4wDYLcbbCHQ/3491b09f9b5eaf796457eb06781f8b98/12_prometheus-ebpf_exporter-100.jpg" alt="" class="kg-image" width="1281" height="820" loading="lazy">
 
 	</figure>
 	<p>Some Linux features didn't age well and we need to work around them. For example, we are hitting limitations of networking metrics. Don't get me wrong - the networking metrics are awesome, but sadly they are not granular enough. Things like <code>TcpExtListenDrops</code> and <code>TcpExtListenOverflows</code> are reported as global counters, while we need to know it on a per-application basis.</p>
@@ -179,7 +179,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1obSUWhzzUQxg8cmDqQ0Lr/27bf55fae99ccd48a09f3d906bca8e54/image-33.png" alt="" class="kg-image" width="1281" height="502" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1obSUWhzzUQxg8cmDqQ0Lr/15e6419a78802c4d19fc4d21bf161738/image-33.png" alt="" class="kg-image" width="1281" height="502" loading="lazy">
 
 	</figure>
 	<p>In this talk we discussed 6 layers of BPFs running on our edge servers:</p>

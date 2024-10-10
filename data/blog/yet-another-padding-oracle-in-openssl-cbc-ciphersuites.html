@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nUf0sdRuBcvc3KlZjC1G7/3e93f597b0159ec13589f12557f3da9c/yet-another-padding-oracle-in-openssl-cbc-ciphersuites.jpg" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nUf0sdRuBcvc3KlZjC1G7/37129ec57be84829f3e57c5b7db9ce9f/yet-another-padding-oracle-in-openssl-cbc-ciphersuites.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Yesterday a new vulnerability <a href="https://www.openssl.org/news/secadv/20160503.txt">has been announced</a> in OpenSSL/LibreSSL. A <i>padding oracle in CBC mode decryption</i>, to be precise. Just like <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack">Lucky13</a>. Actually, it’s in the code that fixes Lucky13.</p>
 	<p>It was found by <a href="http://web-in-security.blogspot.co.uk/2016/05/curious-padding-oracle-in-openssl-cve.html">Juraj Somorovsky</a> using a tool he developed called <a href="https://github.com/RUB-NDS/TLS-Attacker">TLS-Attacker</a>. Like in the “old days”, it has no name except CVE-2016-2107. (I call it LuckyNegative20[^1])</p>
@@ -15,7 +15,7 @@
 	<p>Very long story short, the CBC cipher suites in TLS have a design flaw: they first compute the HMAC of the plaintext, then encrypt <code>plaintext || HMAC || padding || padding length</code> using CBC mode. The receiving end is then left with the uncomfortable task of decrypting the message and checking HMAC and padding <i>without revealing the padding length in any way</i>. If they do, we call that a <b>padding oracle</b>, and a MitM can use it to learn the value of the last byte of any block, and by iteration often the entire message.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44IkC1Y8GbkE4EY00AfCBO/e8d7c25a03498a79558eb7fd46cc5d08/S22C-6e16050319300-1.jpg" alt="S22C-6e16050319300-1" class="kg-image" width="2000" height="576" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44IkC1Y8GbkE4EY00AfCBO/2bf4bf76ebbc1f91d4e060b66d7e4c7d/S22C-6e16050319300-1.jpg" alt="S22C-6e16050319300-1" class="kg-image" width="2000" height="576" loading="lazy">
 		</a>
 	</figure>
 	<p>In other words, the CBC mode cipher suites are doomed by <a href="https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html">The Cryptographic Doom Principle</a>. Sadly though, they are the only “safe” cipher suites to use with TLS prior to version 1.2, and they account for <b>26% of connections to the CloudFlare edge</b>, so attacks against them like this one are still very relevant.</p>
@@ -33,7 +33,7 @@
 	<p>Not only that, but loop iterations can only depend on public data: if for example the message is 32 bytes long then the padding can be at most 32-1-20=11 bytes, so you have to check 20 (HMAC-SHA1) + 11 bytes. To ignore the bytes you don’t actually have to check, you use a <b>mask</b>: a value generated with constant time operations that will be <code>0xff</code> when the bytes are supposed to match and <code>0x00</code> when they are not. By <code>AND</code>ing the mask to the bitwise difference you get a value which is 0 when the values either match, or are not supposed to match.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nbnTmVholEmauPKBYPl35/b01510663bba0c47013fe5fa6ab8eb5a/S22C-6e16050319300.jpg" alt="S22C-6e16050319300" class="kg-image" width="2000" height="664" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nbnTmVholEmauPKBYPl35/c36b1fa43df1459a31146c16ad3be0cc/S22C-6e16050319300.jpg" alt="S22C-6e16050319300" class="kg-image" width="2000" height="664" loading="lazy">
 
 	</figure>
 	<p>This technique is crucial to this vulnerability, as it’s exactly its constant time, no-complaints nature that made the mistake possible.</p>
@@ -63,19 +63,19 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4W0sqfy51XUKtMKyALPyKz/58036f65b3ba1923fb1ae3c107760580/S22C-6e16050319300-2.jpg" alt="S22C-6e16050319300-2" class="kg-image" width="2000" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4W0sqfy51XUKtMKyALPyKz/17d959f7ca4aaf9be1a460f3edbbd910/S22C-6e16050319300-2.jpg" alt="S22C-6e16050319300-2" class="kg-image" width="2000" height="426" loading="lazy">
 
 	</figure>
 	<p>Uh oh. What happened there!? One byte of the HMAC checking mask fell out of the range we are actually checking! Nothing crashes because this is constant time code and it must tolerate these cases without any external hint. So, what if we push a little further…</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Dnjxv3GwsnYb0Mlmd90mi/22738745f34821c065bf2504e1c05407/S22C-6e16050319300-3.jpg" alt="S22C-6e16050319300-3" class="kg-image" width="2000" height="411" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Dnjxv3GwsnYb0Mlmd90mi/7e4acf897a76a897eef7fe38e33a662c/S22C-6e16050319300-3.jpg" alt="S22C-6e16050319300-3" class="kg-image" width="2000" height="411" loading="lazy">
 
 	</figure>
 	<p>There. The HMAC mask is now 0 for all checking loop iterations, so we don’t have to worry about having a valid signature at all anymore, and we’ll pass the MAC/padding check unconditionally if all bytes in the message are valid padding bytes—that is, equal to the padding length byte.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BpDOnIA9ejgpYAYSnK56r/0bf8769f3254905d56733ec1355f39da/S22C-6e16050319300-4.jpg" alt="S22C-6e16050319300-4" class="kg-image" width="2000" height="476" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BpDOnIA9ejgpYAYSnK56r/79b181746f24dce28a72d156fc520780/S22C-6e16050319300-4.jpg" alt="S22C-6e16050319300-4" class="kg-image" width="2000" height="476" loading="lazy">
 
 	</figure>
 	<p>I like to box and label these kinds of “cryptanalytic functions” and call them capabilities. Here’s our capability:</p>
@@ -99,7 +99,7 @@
 	<p>However, this approach doesn’t work in this case because we need <i>two</i> blocks of consecutive equal plaintext bytes, and if we touch the ciphertext in block <code>x</code> to help decrypt block <code>x + 1</code>, we mangle the plaintext of block <code>x</code> irreparably.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oMUox1ZJxyFNdezDD7N4v/c2562df904dc5f0b33f04281aa15b881/S22C-6e16050401360-1-1.jpg" alt="S22C-6e16050401360-1-1" class="kg-image" width="2000" height="808" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oMUox1ZJxyFNdezDD7N4v/124e57480a63374e9bd064608a0fd298/S22C-6e16050401360-1-1.jpg" alt="S22C-6e16050401360-1-1" class="kg-image" width="2000" height="808" loading="lazy">
 
 	</figure>
 	<p>I’d like you to pause for a minute to realize that this is at all possible only because we:</p>
@@ -114,7 +114,7 @@
 	<p>Back to our oracle, we can make it work the other way around: we align an unknown byte at the beginning of two blocks made of <code>31</code> (which we can send as POST body) and we XOR our <code>n</code> values with the first byte in the IV. Again, when the MAC check passes, we know that the target byte is <code>31 XOR n</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tda3NbvCPrDOYBmz6fWbm/580dcc83a06caf499422d3d1881e9402/S22C-6e16050401360-2.jpg" alt="S22C-6e16050401360-2" class="kg-image" width="2000" height="650" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tda3NbvCPrDOYBmz6fWbm/8b5091edfc56ab0cf9bc23495b6eba3e/S22C-6e16050401360-2.jpg" alt="S22C-6e16050401360-2" class="kg-image" width="2000" height="650" loading="lazy">
 
 	</figure>
 	<p>We iterate this process, moving all bytes one position to the right (for example by making the POST path one character longer), and XOR’ing the first byte of the IV with our <code>n</code> guesses, and the second byte with the number we now know will turn it into a <code>31</code>.</p>

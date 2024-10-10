@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39ooRb2ZxPCSsok7SokSV3/6a7cdd839bdac521c4967a789c9182bb/upgrading-cloud-infrastructure-with-workers-kv.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39ooRb2ZxPCSsok7SokSV3/85772b454e8a51be1add9d9f3cdc4753/upgrading-cloud-infrastructure-with-workers-kv.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is a guest post by</i> <a href="https://twitter.com/bcnzer"><i>Ben Chartrand</i></a><i>, who is a Development Manager at</i> <a href="https://www.gettimely.com"><i>Timely</i></a><i>. You can check out some of Ben's other Workers projects on his</i> <a href="https://github.com/bcnzer"><i>GitHub</i></a> <i>and his</i> <a href="https://liftcodeplay.com"><i>blog</i></a><i>.</i></p>
 	<p>At <a href="https://www.gettimely.com">Timely</a> we started a project to migrate our web applications from legacy Azure services to a modern PaaS offering. In theory it meant no code changes.</p>
@@ -197,14 +197,14 @@ async function handleRequest(event) {
 	<p>We went live with our first endpoint. The Workers script and KV worked fine but I noticed a small number of exceptions were being reported in Workers &gt; Worker Status.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pnhZSWVA4UMBnF0X7njDy/43293e899e2d49c2d81d16a2abdc19a8/Chart1.png" alt="" class="kg-image" width="447" height="324" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pnhZSWVA4UMBnF0X7njDy/fedf6fe02f350fd29a453ae91818f53f/Chart1.png" alt="" class="kg-image" width="447" height="324" loading="lazy">
 
 	</figure>
 	<p>Cloudflare provides <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fworkers%2Fwriting-workers%2Fdebugging-tips%2F&amp;sa=D&amp;ust=1547151883991000">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.loggly.com%2F&amp;sa=D&amp;ust=1547151883991000">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
 	<p>Another problem that came up was a plethora of 403s. This was highly visible in the Workers &gt; Status Code graph (the green).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Uhf1vQOMhOASqnneZ2doB/2dd733babfcd4c6e3d6e71f876961d4c/Chart2.png" alt="" class="kg-image" width="422" height="445" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Uhf1vQOMhOASqnneZ2doB/0bd76855ec86210022fd39a2285138e2/Chart2.png" alt="" class="kg-image" width="422" height="445" loading="lazy">
 
 	</figure>
 	<p>Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasn’t an issue with my Worker or the new infrastructure!</p>

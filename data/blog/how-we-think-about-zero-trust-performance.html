@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XDMAogeh906iHvwtNmw7o/f19e9e8bd1a21e96d530abcba4494217/image1-27.png" alt="How we think about Zero Trust Performance" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XDMAogeh906iHvwtNmw7o/d141a0bc6a1c250d48e55beffe42a2ce/image1-27.png" alt="How we think about Zero Trust Performance" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Cloudflare has done several deep dives into Zero Trust performance in 2023 alone: <a href="https://blog.cloudflare.com/network-performance-update-cio-edition">one in January</a>, <a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">one in March</a>, and one for Speed Week. In each of them, we outline a series of tests we perform and then show that we’re the fastest. While some may think that this is a marketing stunt, it’s not: the tests we devised aren’t necessarily built to make us look the best, our network makes us look the best when we run the tests.</p>
@@ -55,7 +55,7 @@
 	<p>We’ve talked before about how <a href="https://blog.cloudflare.com/last-mile-insights">getting closer to users is critical to increase performance</a>, but here’s a quick summary: Having a Zero Trust provider that receives your packets physically close to you straightens the path your packets take between your device and what applications you’re trying to access. Because Zero Trust networking will always incur an additional hop, if that hop is inline with the path your requests to your website would normally take, the overhead your Zero Trust network incurs is minimal.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xmFKq2Ys0Ha1yEQfHOHQL/d87047747365dec7b042a0fbe267970a/image2-23.png" alt="" class="kg-image" width="1999" height="1454" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xmFKq2Ys0Ha1yEQfHOHQL/3ea25fa675d93caa836575d6f825c61d/image2-23.png" alt="" class="kg-image" width="1999" height="1454" loading="lazy">
 
 	</figure>
 	<p>In the diagram above, you can see three connectivity models: one from a user straight to a website, one going through a generic forward proxy, and one going through Cloudflare. The length of each line is representative of the point to point latency. Based on that, you can see that the forward proxy path is longer because the two segments add up to be longer than the direct connection is. This additional travel path is referred to as a hairpin in the networking world. The goal is to keep the line between user and website as straight as possible, because that’s the shortest distance between the two.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tokKH49S2rHSl2HiAEeHl/9f822e144bfca9d2571a4ef2f0b7660f/image3-29.png" alt="Lost in transit: debugging dropped packets from negative header lengths." class="kg-image" width="1921" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tokKH49S2rHSl2HiAEeHl/080a08f57d2ad3af60d1f3a477d95818/image3-29.png" alt="Lost in transit: debugging dropped packets from negative header lengths." class="kg-image" width="1921" height="1080" loading="lazy">
 
 	</figure>
 	<p>Previously, I wrote about building <a href="https://blog.cloudflare.com/high-availability-load-balancers-with-maglev">network load balancers with the maglev scheduler</a>, which we use for ingress into our Kubernetes clusters. At the time of that post we were using Foo-over-UDP encapsulation with virtual interfaces, one for each Internet Protocol version for each worker node.</p>
@@ -18,7 +18,7 @@
 	<p>To support our requirements we've been creating virtual interfaces on our traffic directors configured to encapsulate traffic with Foo-Over-UDP (FOU). In this encapsulation new UDP and IP headers are added to the original packet. When the worker node receives this packet, the kernel removes the outer headers and injects the inner packet back into the network stack. Each virtual interface would be assigned a private IP, which would be configured to send traffic to these private IPs in "direct" mode.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/166RG9mgcpaP80xGDieN46/faa8855a23e4ccc115f96613ad4a358d/image4-24.png" alt="" class="kg-image" width="590" height="512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/166RG9mgcpaP80xGDieN46/a25fe61233073af4b3132591bb379353/image4-24.png" alt="" class="kg-image" width="590" height="512" loading="lazy">
 
 	</figure>
 	<p>This configuration presents several problems for our operations teams.</p>
@@ -26,7 +26,7 @@
 	<p>In the time since we had originally implemented this system, IPVS has added native support for encapsulation. This would allow us to eliminate provisioning virtual interfaces (and their corresponding private IPs), and be able to use newly provisioned workers without delay.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CLprcnKtcCYzpCCnDkjl2/55c2f94d5c6a4edb01f1d3e288807e7b/image1-40.png" alt="" class="kg-image" width="590" height="512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CLprcnKtcCYzpCCnDkjl2/97ba996da2c9ee81c95ec2e97ed08ff9/image1-40.png" alt="" class="kg-image" width="590" height="512" loading="lazy">
 
 	</figure>
 	<p>IPVS doesn't support Foo-over-UDP as an encapsulation type. As part of this project we switched to a similar option, <a href="https://datatracker.ietf.org/doc/html/draft-ietf-intarea-gue-09">Generic UDP Encapsulation</a> (GUE). This encapsulation option does include the "next protocol", allowing one listener on the worker nodes to support both IPv4 and IPv6.</p>
@@ -42,7 +42,7 @@
 	<p>We began a slow rollout of this change to one production cluster, and after a few hours we began observing issues reaching services behind Kubernetes Load Balancers. The behavior observed was very interesting: the vast majority of requests had no issues, but a small percentage of requests corresponding to large HTTP request payloads or gRPC had significant latency. However, large responses had no corresponding latency increase. There was no corresponding increase in latency seen to any requests to our ingress controllers, though we could observe a small drop in overall requests per second.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LhkHSdh6ronJadcny3OGI/1ce6d785ab3783926dec79f62e5debcc/image6-9.png" alt="" class="kg-image" width="1908" height="296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LhkHSdh6ronJadcny3OGI/6a5d6ab9108296646e70932763e423af/image6-9.png" alt="" class="kg-image" width="1908" height="296" loading="lazy">
 
 	</figure>
 	<p>Through debugging after the incident, we discovered that the traffic directors were dropping packets that exceeded the Internet maximum transmission unit (MTU) of 1500 bytes, despite the packets being smaller than the actual MTU configured in our internal networks. Once dropped, the original host would fragment and resend packets until they were small enough to pass through the traffic directors. Dropping one packet is inconvenient, but unlikely to be noticed. However, when making a request with large payloads it is very likely that all packets would be dropped and need to be individually fragmented and resent.</p>
@@ -73,7 +73,7 @@
 	<p>We can visualize this change by applying this information to our GUE encapsulation diagram shown earlier. The byte totals of the encapsulated packet is 1544, matching the length <code>pwru</code> logged entering <code>inet_gso_segment</code> above.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oBm7taQSl2U4UH3reulvJ/bb92576e1ad92ea2d91e6b80926fbb3f/image2-38.png" alt="" class="kg-image" width="631" height="845" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oBm7taQSl2U4UH3reulvJ/c0a00891b2e1e7c3228e3c13ab7546ac/image2-38.png" alt="" class="kg-image" width="631" height="845" loading="lazy">
 
 	</figure>
 	<p>The trace above tells us what kernel functions are entered, but does not tell us if or how the program flow left. This means we don't know in which function kfree_skb_reason was called. Fortunately <code>pwru</code> can print a stacktrace when functions are entered.</p>
@@ -109,7 +109,7 @@ entry_SYSCALL_64_after_hwframe</code></pre>
 	<p>In addition to the eBPF support used by pwru, Linux has support for attaching dynamic tracepoints using <code>perf-probe</code>. After installing the kernel source code and debugging symbols, we can ask the <code>kprobe</code> mechanism what lines of <code>validate_xmit_skb</code> we can create a dynamic tracepoint. It prints the line numbers for the line we can attach a tracepoint onto.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ddSe06sv8S2w4lAXfZGFi/5e200ead8487644f7aa4572fb9f6ef98/image5-16.png" alt="" class="kg-image" width="870" height="966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ddSe06sv8S2w4lAXfZGFi/729a4c2bfb990122bc8287005117c97a/image5-16.png" alt="" class="kg-image" width="870" height="966" loading="lazy">
 
 	</figure>
 	<p>Unfortunately, we can't create a tracepoint on the goto lines, but we can attach tracepoints around them, using the context to determine how control flowed through this function. In addition to specifying a line number, additional arguments can be specified to include local variables. The skb variable is a pointer to a structure that represents this packet, which can be logged to separate packets in case more than one is being processed at a time.</p>
@@ -195,7 +195,7 @@ index c7652da78c88..9193e109e6b3 100644
 	<p>When the patch was included in our kernel and deployed the difference in end-to-end request latency was immediately noticeable. We also no longer observed packet drops for requests with large payloads.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SVrX3EiwZFhiRRkN1BMar/ebde4d7e548dadf33369d92c94cf1efc/image7-8.png" alt="" class="kg-image" width="775" height="450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SVrX3EiwZFhiRRkN1BMar/0f450c536cc0e2f3f6535dc23eb0b37e/image7-8.png" alt="" class="kg-image" width="775" height="450" loading="lazy">
 
 	</figure>
 	<p>I've <a href="https://lore.kernel.org/all/20230609205842.2333727-1-terin@cloudflare.com/T/#u">submitted the Linux kernel patch upstream</a>, which is currently queued for inclusion in future releases of the kernel.</p>

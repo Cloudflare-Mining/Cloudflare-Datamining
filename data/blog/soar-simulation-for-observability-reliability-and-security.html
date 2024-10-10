@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10R6u81WLsb5Zch9fZvTdT/a9392df2619a9c64d7b52209578830fe/Soar-1.png" alt="" class="kg-image" width="1224" height="622" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10R6u81WLsb5Zch9fZvTdT/499b9644dbe8d908cfc051bf8bf5308e/Soar-1.png" alt="" class="kg-image" width="1224" height="622" loading="lazy">
 
 	</figure>
 	<p>Serving more than approximately 25 million Internet properties is not an easy thing, and neither is serving 20 million requests per second on average. At Cloudflare, we achieve this by running a homogeneous edge environment: almost every Cloudflare server runs all Cloudflare products.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mK5DnfRzmZ6cLXBUCAxPm/3d89f5cec54aafe9dab2ecfe3a86f636/image3-2.png" alt="Typical Cloudflare service model: when an eyeball (a browser/mobile/etc) visits an origin (a cloudflare customer), traffic are routed via Internet to Cloudflare edge network first, and Cloudflare handles communication with the origin server from there." class="kg-image" width="526" height="151" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4mK5DnfRzmZ6cLXBUCAxPm/b8d1c5b1a466b1efb0a1c821ebae51fb/image3-2.png" alt="Typical Cloudflare service model: when an eyeball (a browser/mobile/etc) visits an origin (a cloudflare customer), traffic are routed via Internet to Cloudflare edge network first, and Cloudflare handles communication with the origin server from there." class="kg-image" width="526" height="151" loading="lazy">
 
 	</figure>
 	<p>Figure 1. Typical Cloudflare service model: when an end-user (a browser/mobile/etc) visits an origin (a Cloudflare customer), traffic is routed via the Internet to the Cloudflare edge network, and Cloudflare communicates with the origin servers from that point.</p>
@@ -18,7 +18,7 @@
 	<p>What is SOAR? Simply put, it’s a data center built specifically for simulations. It runs the same software stack as our production data centers, but without any production traffic. Within SOAR, there are end-user servers, product servers, and origin servers (Figure 2). The product servers behave exactly the same as servers in our production edge network, and they are the targets that we want to test. End-user servers and origin servers run applications that try to simulate customer behaviors. The simplest case is to run network benchmarks through product servers, in order to evaluate how effective the corresponding products are. Instead of sending test traffic over the Internet, everything happens in the LAN environment that Cloudflare tightly controls. This gives us great flexibility in testing network features such as bring-your-own-IP (BYOIP) products.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3h4OZxnBtAiC8ZTN5YRbaI/bf26acaaecbac4f669d831c317d62be9/image5-1.png" alt="" class="kg-image" width="545" height="409" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3h4OZxnBtAiC8ZTN5YRbaI/e67049ce7ebdb68b3724bc0e2a3903d0/image5-1.png" alt="" class="kg-image" width="545" height="409" loading="lazy">
 
 	</figure>
 	<p>Figure 2. SOAR architectural view: by simulating the end users and origin on Cloudflare servers in the same VLAN, we can focus on examining the problems occurring in our edge network.</p>
@@ -26,7 +26,7 @@
 	<p><a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> is a product that provides IP layer protection and acceleration. One of the main functions of Magic Transit is to shield customers from DDoS attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tEzWft9k3pSOjMFuI19Pu/d395fb3e07134baeda73a1822fbc266e/image1-4.png" alt="" class="kg-image" width="631" height="191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tEzWft9k3pSOjMFuI19Pu/812c03938859f751957ceb4a077ed4e9/image1-4.png" alt="" class="kg-image" width="631" height="191" loading="lazy">
 
 	</figure>
 	<p>Figure 3. Magic Transit workflow in a nutshell</p>
@@ -80,7 +80,7 @@
 	<p>In our previous example of Magic Transit, customers can configure complicated network topology. Figure 4 is one simplified case. Let’s say Alice establishes four GRE tunnels with Cloudflare; two connect to her data center 1, and traffic will be ECMP hashed between these two tunnels. Similarly, she also establishes another two tunnels to her data center 2 with similar ECMP settings. She would like to see traffic hit data center 1 normally and fail over to data center 2 when tunnels 1 and 2 are both down.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AMPDDJYHhwhKDMopAN1Ek/618e06f515cb4f70beab7ce088b0147d/image7.png" alt="" class="kg-image" width="625" height="251" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AMPDDJYHhwhKDMopAN1Ek/a9da8d83fdec73c7e00f8afd9b9c9dc8/image7.png" alt="" class="kg-image" width="625" height="251" loading="lazy">
 
 	</figure>
 	<p>Figure 4. The customer configured Magic Transit to establish four tunnels to her two data centers. Traffic to data center 1 is hashed between tunnel 1 and 2 using ECMP, and traffic to data center 2 is hashed between tunnel 3 and 4. Data center 1 is the primary one, and traffic should failover to data center 2 if tunnels 1 and 2 are both down. Note the number “2” is purely symbolic, as real customers can have more than just 2 data centers, or 2 paths per ECMP route.</p>
@@ -105,7 +105,7 @@
 	<p>To address the above limitations, we designed SOAR.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fbCpF5WSWm0quf4paQUv6/cb57632b3ce69baf225e9a0dec745bd3/image8.png" alt="" class="kg-image" width="571" height="418" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fbCpF5WSWm0quf4paQUv6/582ce75160c4d4f9bc31fed0a5a02ad7/image8.png" alt="" class="kg-image" width="571" height="418" loading="lazy">
 
 	</figure>
 	<p>Figure 5. The Architecture of SOAR</p>
@@ -165,13 +165,13 @@
 	<p>In our Magic Transit example, the engineering team was about to release physical network interconnect (PNI) support. With PNI, customer data centers physically peer with Cloudflare routers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CGGm79waYwSswyZgBOI8q/d17b1682ce2d7b941a6378501cabbb24/service---3-.png" alt="Figure 6. The Magic Transit service flow for a customer without PNI support. Any Cloudflare data center can receive eyeball traffic. After mitigating a DoS attack traffic, valid traffic is encapsulated to the customer data center from any of the handling Cloudflare data centers." class="kg-image" width="580" height="242" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CGGm79waYwSswyZgBOI8q/98be9fdd333b02e35feb211b8c72bfb2/service---3-.png" alt="Figure 6. The Magic Transit service flow for a customer without PNI support. Any Cloudflare data center can receive eyeball traffic. After mitigating a DoS attack traffic, valid traffic is encapsulated to the customer data center from any of the handling Cloudflare data centers." class="kg-image" width="580" height="242" loading="lazy">
 
 	</figure>
 	<p>Figure 6. The Magic Transit service flow for a customer without PNI support. Any Cloudflare data center can receive eyeball traffic. After mitigating a DoS attack traffic, valid traffic is encapsulated to the customer data center from any of the handling Cloudflare data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cOrt8HDF3v551i4digjDS/9921be001d1ceafda9e4422140dcf35f/image6.png" alt="Figure 7. Magic Transit with PNI support. Traffic received from any data center will be moved to the PNI data center that the customer connects to. The PNI data center becomes a choke point." class="kg-image" width="792" height="242" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cOrt8HDF3v551i4digjDS/2530583007d9932e6f5aef9d83388e3c/image6.png" alt="Figure 7. Magic Transit with PNI support. Traffic received from any data center will be moved to the PNI data center that the customer connects to. The PNI data center becomes a choke point." class="kg-image" width="792" height="242" loading="lazy">
 
 	</figure>
 	<p>Figure 7. Magic Transit with PNI support. Traffic received from any data center will be moved to the PNI data center that the customer connects to. The PNI data center becomes a choke point.‌‌</p>
@@ -179,7 +179,7 @@
 	<p>SOAR in this case is an important utility to help. The basic idea is to configure a server with PNI information. This server will act as if it runs in a PNI data center. Then we run simulated eyeball and origin to examine if there is any functional breakage:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lzWSFrQPQMkzRODGuqHtV/8e66552d97c5dbd103f42ca7b6a17dc8/image4-3.png" alt="Figure 8. SOAR configures a server with PNI information and runs simulated eyeball and origin on this server. If a PNI related code release has a problem, then with proper simulation traffic it will be caught before rolling into production." class="kg-image" width="383" height="95" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lzWSFrQPQMkzRODGuqHtV/e3fadbafd4bbf78a953192bb78567e2d/image4-3.png" alt="Figure 8. SOAR configures a server with PNI information and runs simulated eyeball and origin on this server. If a PNI related code release has a problem, then with proper simulation traffic it will be caught before rolling into production." class="kg-image" width="383" height="95" loading="lazy">
 
 	</figure>
 	<p>Figure 8. SOAR configures a server with PNI information and runs simulated eyeball and origin on this server. If a PNI related code release has a problem, then with proper simulation traffic it will be caught before rolling into production.</p>

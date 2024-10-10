@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/A8lQLOj0zrB1oUjv2YTtX/c2ac8adbddbaeda8b96581c2d995fb3e/image5-14.png" alt="Today we’re excited to announce an update to our Tiered Cache offering: Regional Tiered Cache." class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/A8lQLOj0zrB1oUjv2YTtX/c7982b28eb35d74286e2ca4e130ae1e7/image5-14.png" alt="Today we’re excited to announce an update to our Tiered Cache offering: Regional Tiered Cache." class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today we’re excited to announce an update to our <a href="https://developers.cloudflare.com/cache/about/tiered-cache">Tiered Cache</a> offering: Regional Tiered Cache.</p>
@@ -38,7 +38,7 @@
 	<p>Even when using a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a>, many different visitors can be interacting with different data centers around the world and each data center, without the content visitors are requesting, will need to reach out to the origin for a copy. This can cost customers money because of egress fees origins charge for sending traffic to Cloudflare, and it places needless load on the origin by opening multiple connections for the same content, just headed to different data centers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5E2xM6zZw1uUJld0wbCn97/f9e25dda9c13ed529dc8d744e8aa00e5/download-19.png" alt="" class="kg-image" width="1420" height="572" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5E2xM6zZw1uUJld0wbCn97/b7c2e5723ad36fe15e538aaa89dec94d/download-19.png" alt="" class="kg-image" width="1420" height="572" loading="lazy">
 
 	</figure>
 	<p>When Tiered Cache is not enabled, all data centers in Cloudflare’s network can reach out to the origin in the event of a cache miss.</p>
@@ -56,14 +56,14 @@
 	<p>In <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">2021,</a> we announced that we’d allow all plans to access Smart Tiered Cache. Smart Tiered Cache dynamically finds the single closest data center to a customer’s origin server and chooses that as the upper-tier that all lower-tier data centers reach out to in the event of a cache miss. All other data centers go through that single upper-tier for content and that data center is the only one that can reach out to the origin. This helps to drastically boost cache hit ratios and reduces the connections to the origin. However, this topology can come at the cost of increased latency for visitors that are farther away from that single upper-tier.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GmpStKUSWMPfYBgk2dAvb/5b7f889b821bc0f436bdfd33f2041222/download--1--13.png" alt="" class="kg-image" width="1454" height="572" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GmpStKUSWMPfYBgk2dAvb/976cee64422a296ed1e776557fe087cc/download--1--13.png" alt="" class="kg-image" width="1454" height="572" loading="lazy">
 
 	</figure>
 	<p>When Smart Tiered Cache is enabled, a single upper tier data center can communicate with the origin, helping to conserve origin resources**.**</p>
 	<p>Enterprise customers may select additional tiered cache topologies like the Generic Global topology which allows all of Cloudflare’s large data centers on our network (about 40 data centers) to serve as upper-tiers. While this topology may help reduce the long tail latencies for far-away visitors, it does so at the cost of increased connections and load on a customer's origin.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PMcMuw7DkwI0GxxtLSzYF/cf4170fa9217da36bdf761b5617e1a82/download--2--11.png" alt="" class="kg-image" width="1446" height="572" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2PMcMuw7DkwI0GxxtLSzYF/616a53624e1392129f2716d40fb2a48a/download--2--11.png" alt="" class="kg-image" width="1446" height="572" loading="lazy">
 
 	</figure>
 	<p>When Generic Global Tiered Cache is enabled, lower-tier data centers are mapped to all upper-tier data centers in Cloudflare’s network which can all reach out to the origin in the event of a cache miss.&nbsp;</p>
@@ -80,7 +80,7 @@
 	<p>By putting an additional tier in the same region as the lower-tier, there’s an increased chance that the content will be available in the region before heading to a far-away upper-tier. This can drastically improve the performance of assets while still reducing the number of connections that will eventually need to be made to the customer’s origin.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MIfujQ3l4iMBIQ5ZWdQiU/2396220bff0d34a96fe5a0942296d804/download--3--7.png" alt="" class="kg-image" width="1600" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MIfujQ3l4iMBIQ5ZWdQiU/b8d70abe5ee256c4d95311665b840aca/download--3--7.png" alt="" class="kg-image" width="1600" height="550" loading="lazy">
 
 	</figure>
 	<p>When Regional Tiered Cache is enabled, all lower-tier data centers will reach out to a regional tier close to them in the event of a cache miss. If the regional tier doesn’t have the content, the regional tier will then ask an upper-tier out of region for the content. This can help improve latency for Smart and Custom Tiered Cache topologies.</p>
@@ -123,7 +123,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wj1OVOGbTWsvDy1rHavci/dd6844fc98253919318f4b64206f9a1f/download--4--7.png" alt="" class="kg-image" width="1600" height="1166" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wj1OVOGbTWsvDy1rHavci/783d587871b8e0dc423e4f23bf18cb02/download--4--7.png" alt="" class="kg-image" width="1600" height="1166" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

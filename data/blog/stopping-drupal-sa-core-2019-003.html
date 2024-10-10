@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nNINh3XsTGMn2l5jdzrb7/a40cfd690867721f8f84210199a6114a/stopping-drupal-sa-core-2019-003.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nNINh3XsTGMn2l5jdzrb7/86b37ec5cecc43359c2d4ecf47f32a4e/stopping-drupal-sa-core-2019-003.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On the 20th February 2019, Drupal <a href="https://www.drupal.org/psa-2019-02-19">announced</a> that they had discovered a severe vulnerability and that they would be releasing a patch for it the next day. Drupal is a Content Management System used by many of our customers, which made it important that our WAF protect against the vulnerability as quickly as possible.</p>
 	<p>As soon as Drupal released their patch, we analysed it to establish what kind of payloads could be used against it and created rules to mitigate these. By analysing the patch we were able to put together WAF rules to protect cloudflare customers running Drupal.</p>
@@ -37,7 +37,7 @@
 	<p>This culminated in the deploy of rule D0020, which has blocked a number of attackers as shown in the graph below. The rule was already deployed in ‘drop’ mode by the time our first attack was observed at around 7pm UTC on Friday the 22nd of February 2019, and to date it has matched zero false positives. This is less than 48 hours from the announcement from Drupal.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UGyxkHL7SuJOy3M65Kf1u/e2f335754bcf641c64a6cd4f11a6180e/D0020.png" alt="" class="kg-image" width="1712" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UGyxkHL7SuJOy3M65Kf1u/7b062c8713332ad618aea8e0e2169e47/D0020.png" alt="" class="kg-image" width="1712" height="645" loading="lazy">
 
 	</figure>
 	<p>Figure 1: Hits on rule D0020, with the first attack seen on the 22th February 2019.</p>

@@ -1,10 +1,10 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53XiYfVmW5RNhmEbI6v3mf/7cb40adf6e5d9efb3febc8f478980aaa/introducing-ebpf_exporter.jpeg" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53XiYfVmW5RNhmEbI6v3mf/3eb751478a9994826ff4df4e25d27b96/introducing-ebpf_exporter.jpeg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is an adapted transcript of a talk I gave at Promcon 2018. You can find slides with additional information on our Prometheus deployment and presenter notes </i><a href="https://docs.google.com/presentation/d/1420m05QANTxrCPvwsLZSHWRTvqOsxCVRzJsVp9awoFg/edit?usp=sharing"><i>here</i></a><i>. There's also a </i><a href="https://www.youtube.com/watch?v=VvJx0WTiGcA&amp;feature=youtu.be&amp;t=1h15m40s"><i>video</i></a><i>.</i></p>
 	<p><i>Tip: you can click on the image to see the original large version.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18mND4203diqo8PdjA7mRW/ef7c68d70594b74ec1e26dd04529423d/1-1.jpeg.jpeg" alt="1-1" class="kg-image" width="2000" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18mND4203diqo8PdjA7mRW/3da65a7279fc7f0d8a172a7b59f9d7c1/1-1.jpeg.jpeg" alt="1-1" class="kg-image" width="2000" height="1125" loading="lazy">
 
 	</figure>
 	<p>Here at Cloudflare we use <a href="https://prometheus.io">Prometheus</a> to collect operational metrics. We run it on hundreds of servers and ingest millions of metrics per second to get insight into our network and provide the best possible service to our customers.</p>
@@ -12,7 +12,7 @@
 	<p>In this blog post we'll talk about how we measure low level metrics and share a tool that can help you to get similar understanding of your systems.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T3BNATGvX6eNAUsUKkIPZ/0233874edcd8f22ec4bd451f364a58ca/2.jpg" alt="2" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3T3BNATGvX6eNAUsUKkIPZ/284180e45e5a01a38ab1f0ba3724180d/2.jpg" alt="2" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>There are two main exporters one can use to get some insight into a Linux system performance.</p>
@@ -22,21 +22,21 @@
 	<p>Let’s look at the graphs you can get out of this.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mGAxXcMQepPR40GK4F89O/7ffe929565d0e1b82bb0de98b74f03a0/3.jpg" alt="3" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mGAxXcMQepPR40GK4F89O/a0eed601cd7899c5cd6ca16691676d30/3.jpg" alt="3" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>I should mention that every screenshot in this post is from a real production machine doing something useful. We have different generations of hardware, so don’t try to draw any conclusions.</p>
 	<p>Here you can see the basics you get from <code>node_exporter</code> for CPU and memory. You can see the utilization and how much slack resources you have.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MqpWuek8lQlFfLsT6pft9/74b36c70208414fe120e4b1d3bd50620/4.jpg" alt="4" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MqpWuek8lQlFfLsT6pft9/f13a1444f393e1d3836539c3bbe49f05/4.jpg" alt="4" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Some more metrics from <code>node_exporter</code>, this time for disk IO. There are similar panels for network as well.</p>
 	<p>At the basic level you can do some correlation to explain why CPU went up if you see higher network and disk activity.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eZyn1IguxbhJje2vUCnnr/71e2b67a43656109a503e3e44aa93d17/5.jpg" alt="5" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eZyn1IguxbhJje2vUCnnr/5b6b77671ffdeb8baba4ee9b196e32ca/5.jpg" alt="5" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>With <code>cAdvisor</code> this gets more interesting, since you can now see how global resources like CPU are sliced between services. If CPU or memory usage grows, you can pinpoint exact service that is responsible and you can also see how it affects other services.</p>
@@ -44,35 +44,35 @@
 	<p>All of this information comes from the simplest counters and first derivatives (rates) on them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MQ3kdmLlcoNM7cmHewIAK/f4f40b0179b2597f4319905aaa626bb8/6.jpg" alt="6" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MQ3kdmLlcoNM7cmHewIAK/ce9f27bc965f08b46409d84a8b6e1eb8/6.jpg" alt="6" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Counters are great, but they lack detail about individual events. Let’s take disk io for example. We get device io time from <code>node_exporter</code> and the derivative of that cannot go beyond one second per one second of real time, which means we can draw a bold red line at 1s and see what kind of utilization we get from our disks.</p>
 	<p>We get one number that characterizes out workload, but that’s simply not enough to understand it. Are we doing many fast IO operations? Are we doing few slow ones? What kind of mix of slow vs fast do we get? How are writes and reads different?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YIVj2gffdTs2JG1SSFX3R/3abc6538834cd5bb068bdb6a4573a6aa/7.jpg" alt="7" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YIVj2gffdTs2JG1SSFX3R/719fd6f86f9b25305f19769add917873/7.jpg" alt="7" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>These questions beg for a histogram. What we have is a counter above, but what we want is a histogram below.</p>
 	<p>Keep in mind that Prometheus histograms are cumulative and <code>le</code> label counts all events lower than or equal to the value of the label.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1t0yc5ybRD1PQG0tjchlIA/8018097172ffdd449bd768144180da63/8.jpg" alt="8" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1t0yc5ybRD1PQG0tjchlIA/73b00b5fc13ab7892c32fcc4ad0e605d/8.jpg" alt="8" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Okay, so imagine we have that histogram. To visualize the difference you get between the two types of metrics here are two screenshots of the same event, which is an SSD replacement in production. We replaced a disk and this is how it affected the line and the histogram. In the new Grafana 5 you can plot histograms as heatmaps and it gives you a lot more detail than just one line.</p>
 	<p>The next slide has a bigger screenshot, on this slide you should just see the shift in detail.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Zz5RAoWPkT1BrcHHuW01k/50f479509398c176d7fcb220abf5dc3c/9.jpg" alt="9" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Zz5RAoWPkT1BrcHHuW01k/447effb0dbd21c298b3c590997778a84/9.jpg" alt="9" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Here you can see buckets color coded and each timeslot has its own distribution in a tooltip. It can definitely get easier to understand with bar highlights and double Y axis, but it’s a big step forward from just one line nonetheless.</p>
 	<p>In addition to nice visualizations, you can also plot number of events above Xms and have alerts and SLOs on that. For example, you can alert if your read latency for block devices exceeds 10ms.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45nmrTPwGnckajjF5H0aul/250eab9f9c6ae8fbbd0b73666c3d2583/10.jpg" alt="10" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45nmrTPwGnckajjF5H0aul/3fb2dee2217f4c4b10a79bc6723db492/10.jpg" alt="10" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>And if you were looking closely at these histograms, you may have noticed values on the Y axis are kind of high. Before the replacement you can see values in 0.5s to 1.0s bucket.</p>
@@ -81,7 +81,7 @@
 	<p>By now you should be convinced that histograms are clearly superior for events where you care about timings of individual events.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18YOVcmR0ijgFssnU0OkjL/77a8fb99e5f00929321d3e6766bfe6ae/11.jpg" alt="11" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18YOVcmR0ijgFssnU0OkjL/5db42ab73a2fbced8042aa3fb5ab4caa/11.jpg" alt="11" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>And if you wanted to switch all your storage latency measurements to histograms, I have tough news for you: Linux kernel only provides counters for <code>node_exporter</code>.</p>
@@ -89,7 +89,7 @@
 	<p>Let’s switch gears a little and see how summary stats from counters can be deceiving.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CUg2pMqu8tqkMyAKZ7gcz/866ae6cbcf7d7b54c95aa2a3e248d5d5/12.gif" alt="12" class="kg-image" width="1422" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CUg2pMqu8tqkMyAKZ7gcz/faad533c3b378a1b83b23fae6dc48065/12.gif" alt="12" class="kg-image" width="1422" height="540" loading="lazy">
 
 	</figure>
 	<p>This is a <a href="https://www.autodeskresearch.com/publications/samestats">research from Autodesk</a>. The creature on the left is called Datasaurus. Then there are target figures in the middle and animations on the right.</p>
@@ -97,12 +97,12 @@
 	<p>From summary statistic’s point of view every box on the right is same, but if you plot individual events, a very different picture emerges.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CH5ajyCIJd50LBZcm3rbi/6886821288d879eee8773128765d5a72/13.gif" alt="13" class="kg-image" width="1200" height="254" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CH5ajyCIJd50LBZcm3rbi/b66fcdace86472d4e19dd7a182c6f82b/13.gif" alt="13" class="kg-image" width="1200" height="254" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZHKVCNSAcWE98AHBHyWiq/688cee44f21d80f1866ac124ca1af987/14.gif" alt="14" class="kg-image" width="1143" height="379" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZHKVCNSAcWE98AHBHyWiq/2f510c3ac23236bcb170576feafa88a2/14.gif" alt="14" class="kg-image" width="1143" height="379" loading="lazy">
 
 	</figure>
 	<p>These animations are from the same research, here you can clearly see how box plots (mean + stddev) are non-representative of the raw events.</p>
@@ -124,20 +124,20 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LXeOhEUMR6KeP1lBkP0vy/4dcc4bd79446eb9af55cee0edc6bfde4/16.jpg" alt="16" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LXeOhEUMR6KeP1lBkP0vy/1ef1af93f93773f486b1fca187f05165/16.jpg" alt="16" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>And it turns out, there’s a solution called eBPF. It’s a low overhead sandboxed user-defined bytecode running in the kernel. It can never crash, hang or interfere with the kernel negatively. That sounds kind of vague, but here are <a href="http://www.brendangregg.com/ebpf.html">two</a> <a href="https://cilium.readthedocs.io/en/v1.1/bpf">links</a> that dive into the details explaining how this works.</p>
 	<p>The main part is that it’s already included with the Linux kernel. It’s used in networking subsystem and things like seccomp rules, but as a general “run safe code in the kernel” it has many uses beyond that.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IJuUL6fQtULz0BDkn8G9q/e49270e26864d51a20eafda948da302d/17.jpg" alt="17" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IJuUL6fQtULz0BDkn8G9q/002a9dd408b3709441004a34682fa3ba/17.jpg" alt="17" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>We said it’s a bytecode and this is how it looks. The good part is that you never have to write this by hand.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fsvOUVCsMd6akmeoJXxQM/e3d4bb7530844d0f516d056cd0011eab/18.jpg" alt="18" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fsvOUVCsMd6akmeoJXxQM/645d06bfd40b00a1e36f63f3f47e035d/18.jpg" alt="18" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>To use eBPF you write small C programs that attach to kernel functions and run before or after them. Your C code is then compiled into bytecode, verified and loaded into kernel to run with JIT compiler for translation into native opcodes. The constraints on the code are enforced by verifier and you are guaranteed to not be able to write an infinite loop or allocate tons of memory.</p>
@@ -147,14 +147,14 @@
 	<p>Having to write C is not an eBPF constraint, you can produce bytecode in any way you want. There are other alternatives like lua and ply, and sysdig is adding a backed to run via eBPF too. Maybe someday people will be writing <i>safe javacript</i> that runs in the kernel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sHoct70uBGUaPjVewdhbe/305687fc470b61868e2f311f07a3d45d/19.jpg" alt="19" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sHoct70uBGUaPjVewdhbe/6e6caadf654056ff64fb32f4d4d69248/19.jpg" alt="19" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Just like GCC compiles C code into machine code, BCC compiles C code into eBPF opcodes. BCC is a rewriter plus LLVM compiler and you can use it as a library in your code. There are bindings for C, C++, Python and Go.</p>
 	<p>In this example we have a simple function that runs after <code>d_lookup</code> kernel function that is responsible for directory cache lookups. It doesn’t look complicated and the basics should be understandable for people familiar with C-like languages.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HWxAcgNhOgNZOHMHpfUnE/da20998a0513c3d49f3457e108898e84/20.jpg" alt="20" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HWxAcgNhOgNZOHMHpfUnE/2bbf6966e5cd15a5d75a22a187cd535d/20.jpg" alt="20" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>In addition to a compiler, BCC includes some tools that can be used for debugging production systems with low overhead eBPF provides.</p>
@@ -162,13 +162,13 @@
 	<p>The one above is <code>biolatency</code>, which shows you a histogram of disk io operations. That’s exactly what we started with and it’s already available, just as a script instead of an exporter for Prometheus.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zNgKf8E4AYTGH037ukLtv/00bba1754fef4b1eac20e3e9ed5a8f15/21.jpg" alt="21" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zNgKf8E4AYTGH037ukLtv/5e519a923f5b6dbb3d011cd8f3ed4420/21.jpg" alt="21" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Here’s <code>execsnoop</code>, that allows you to see which commands are being launched in the system. This is often useful if you want to catch quickly terminating programs that do not hang around long enough to be observed in ps output.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YYpWFjqFQ7VfdIz7QnD63/c95dd941ad17d309c1088eaf3ef3f28b/22.jpg" alt="22" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YYpWFjqFQ7VfdIz7QnD63/f4a8a5955b95ea121a2b644f57bcee1e/22.jpg" alt="22" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>There’s also <code>ext4slower</code> that instead of showing slow IO operations, shows slow ext4 filesystem operations. One might think these two map fairly closely, but one filesystem operation does not necessarily map to one disk IO operation:</p>
@@ -186,13 +186,13 @@
 	<p>The more you know about disk io, the more you want to run stateless, really. Sadly, RAM prices are not going down.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1aeArzz4a7mCh4YCzdFyLe/abce56134cfb7e924c92ff2b70d7eee4/23.jpg" alt="23" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aeArzz4a7mCh4YCzdFyLe/f7fbc1fcd278cd33367a3b69287df44d/23.jpg" alt="23" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Okay, now to the main idea of this post. We have all these primitives, now we should be able to tie them all together and get an <a href="https://github.com/cloudflare/ebpf_exporter">ebpf_exporter</a> on our hands to get metrics in Prometheus where they belong. Many BCC tools already have kernel side ready, reviewed and battle tested, so the hardest part is covered.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xt1nT5FC3EUK1vwQrd81d/10fb379ff1eba69da99e62c4c295a62a/24.jpg" alt="24" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xt1nT5FC3EUK1vwQrd81d/6dcc656a8629685a5e38e8947c85f6e5/24.jpg" alt="24" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Let’s look at a simple example to get counters for timers fired in the kernel. This example is from the <code>ebpf_exporter</code> repo, where you can find a few more complex ones.</p>
@@ -201,7 +201,7 @@
 	<p>This is objectively quite verbose and perhaps some things can be inferred instead of being explicit.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26VdDuQstj0hI5fnTpGyJV/b03210197950839554fdf3cd01caab6e/25.jpg" alt="25" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26VdDuQstj0hI5fnTpGyJV/e76c62c263fa228444ff5f596d7c155d/25.jpg" alt="25" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>This is an example graph we can get out of this exporter config.</p>
@@ -210,7 +210,7 @@
 	<p>If we had timer metrics enabled, we would have seen the clear change in metrics sooner.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1etzKv3o5BpyvcStqvPthZ/cc70ba52ca4d1c4529ff3ffd0c0409b8/27.jpg" alt="27" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1etzKv3o5BpyvcStqvPthZ/b84a5cf27397dbb82bbb98f861b971e8/27.jpg" alt="27" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Another bundled example can give you IPC or instruction per cycle metrics for each CPU. On this production system we can see a few interesting things:</p>
@@ -227,14 +227,14 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KvhwqZATxvQzEmG4gL92j/a2593a5d9c06a31abef6779ed8c9e5c5/28.jpg" alt="28" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KvhwqZATxvQzEmG4gL92j/1d6870183040fb7e23b280d1875f6fac/28.jpg" alt="28" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Why can this be useful? Check out <a href="http://www.brendangregg.com/blog/2017-05-09/cpu-utilization-is-wrong.html">Brendan Gregg’s somewhat controversial blog post about CPU utilization</a>.</p>
 	<p>TL;DR is that CPU% does not include memory stalls that do not perform any useful compute work. IPC helps to understand that factor better.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Qr8BgK8JBbfpt0LaEjFHt/e5682b6ad765c04b691e952be1e76905/29.jpg" alt="29" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Qr8BgK8JBbfpt0LaEjFHt/ecaaca96e411f8c32f0cd9bba3ec0dde/29.jpg" alt="29" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Another bundled example is LLC or L3 CPU cache hit rate. This is from the same machine as IPC metrics and you can see some major affecting not just IPC, but also the hit rate.</p>
@@ -242,7 +242,7 @@
 	<p>LLC hit rate usually goes hand in hand with IPC patterns as well.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QoFIgsgz0EfXBDqdQdK5E/787aedadfbfe13948d00c8f1a3506149/31.jpg" alt="31" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QoFIgsgz0EfXBDqdQdK5E/7f5b29176f3271b693e9bf95f9f4d84a/31.jpg" alt="31" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Now to the fun part. We started with IO latency histograms and they are bundled with <code>ebpf_exporter</code> examples.</p>
@@ -254,7 +254,7 @@
 	<p>Things like pinning processes to CPUs also affects scheduling, so this metric is invaluable for such experiments.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HUpT97jGZskdDVvit0v9/8fd31dbc33a4dfa1ae6cc8c4d080be4a/33.jpg" alt="33" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HUpT97jGZskdDVvit0v9/618108b4c883b925232342200d99d88d/33.jpg" alt="33" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>The examples we gave are not the only ones possible. In addition to IPC and LLC metrics there are around 500 hardware metrics you can get on a typical server.</p>
@@ -263,13 +263,13 @@
 	<p>We don’t have support for user statically defined tracepoints or uprobes, which means you cannot trace userspace applications. This is something we can reconsider in the future, but in the meantime you can always add metrics to your apps by regular means.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gux5cEXorn2uWkSHRVJNU/2e076fc9aa387923852e027cb82f4417/34.jpg" alt="34" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gux5cEXorn2uWkSHRVJNU/a85579d75fe935fb68b322d1d7984cf4/34.jpg" alt="34" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>This image shows tools that BCC provides, you can see it covers many aspects.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BfGSsDTA2kyslIA1E6Nef/9b795bc4405e9c852b8eb0443bf2d056/35.jpg" alt="35" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BfGSsDTA2kyslIA1E6Nef/9b6092913c922a6427e86848a07c2491/35.jpg" alt="35" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>Nothing in this life is free and even low overhead still means some overhead. You should measure this in your own environment, but this is <a href="https://github.com/cloudflare/ebpf_exporter/tree/master/benchmark">what we’ve seen</a>.</p>
@@ -279,7 +279,7 @@
 	<p>Your mileage may vary.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hrJTvorfU26Ee1sLmPByS/d747f142073e56dfce8e30fb55cccffd/36.jpg" alt="36" class="kg-image" width="2500" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hrJTvorfU26Ee1sLmPByS/0b468fc0f031055d0871fae1f13e7e68/36.jpg" alt="36" class="kg-image" width="2500" height="1406" loading="lazy">
 
 	</figure>
 	<p>So where should you run the exporter then? The answer is anywhere you feel comfortable.</p>

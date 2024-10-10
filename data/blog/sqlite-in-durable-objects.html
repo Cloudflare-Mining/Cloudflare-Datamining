@@ -1,14 +1,14 @@
-<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Nrfj970STQQqJd9TFBTfX/9c745fbc5bb30c1bd471f8c726bf282f/BLOG-2536_1.png" alt="">
+<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Nrfj970STQQqJd9TFBTfX/5c9f2098d8cae3a17244f5772bcac9f4/BLOG-2536_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Traditional cloud storage is inherently slow, because it is normally accessed over a network and must carefully synchronize across many clients that could be accessing the same data. But what if we could instead put your application code deep into the storage layer, such that your code runs directly on the machine where the data is stored, and the database itself executes as a local library embedded inside your application?</p>
 	<p><a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects (DO)</u></a> are a novel approach to cloud computing which accomplishes just that: Your application code runs exactly where the data is stored. Not just on the same machine: your storage lives in the same thread as the application, requiring not even a context switch to access. With proper use of caching, storage latency is essentially zero, while nevertheless being durable and consistent.</p>
 	<p>Until today, DOs only offered key/value oriented storage. But now, they support a full SQL query interface with tables and indexes, through the power of SQLite.</p>
 	<p><a href="https://www.sqlite.org"><u>SQLite</u></a> is the most-used SQL database implementation in the world, with billions of installations. It’s on practically every phone and desktop computer, and many embedded devices use it as well. It's known to be blazingly fast and rock solid. But it's been less common on the server. This is because traditional cloud architecture favors large distributed databases that live separately from application servers, while SQLite is designed to run as an embedded library. In this post, we'll show you how Durable Objects turn this architecture on its head and unlock the full power of SQLite in the cloud.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3epYvfKAWLT38mjUPsnMCj/bbfd90d89a91392febc66d51422f0ff8/BLOG-2536_2.png" alt="BLOG-2536 2" class="kg-image" width="1999" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3epYvfKAWLT38mjUPsnMCj/d6566573e999ea874fc713cf31c65d62/BLOG-2536_2.png" alt="BLOG-2536 2" class="kg-image" width="1999" height="900" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7c3of8FUDi3R4HC18qo2iP/4c9f90801c4dabc14bb6bf3139b9f002/BLOG-2536_3.png" alt="BLOG-2536 3" class="kg-image" width="1999" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7c3of8FUDi3R4HC18qo2iP/9a372797b67d1e33075b9c1ef0780762/BLOG-2536_3.png" alt="BLOG-2536 3" class="kg-image" width="1999" height="1000" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="refresher-what-are-durable-objects">Refresher: what are Durable Objects?</h2>
@@ -49,20 +49,20 @@ for (let user of cursor) {
 	<p>Database experts might have a deeper objection to synchronous queries: Yes, caching may mean we can perform reads and writes very fast. However, in the case of a write, just writing to cache isn't good enough. Before we return success to our client, we must <i>confirm</i> that the write is actually <i>durable</i>, that is, it has actually made it onto disk or network storage such that it cannot be lost if the power suddenly goes out.</p>
 	<p>Normally, a database would confirm all writes before returning to the application. So if the query is successful, it is confirmed. But confirming writes can be slow, because it requires waiting for the underlying storage medium to respond. Normally, this is OK because the write is performed asynchronously, so the program can go on and work on other things while it waits for the write to finish. It looks kind of like this:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vuBOUXdFxUKM5gTyhKvx5/78c75e4c1a9c699c4de5b3fa26e65c69/BLOG-2536_4.png" alt="BLOG-2536 4" class="kg-image" width="732" height="817" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vuBOUXdFxUKM5gTyhKvx5/4e55fa2d8fb5a68af8a84453cf2b5d14/BLOG-2536_4.png" alt="BLOG-2536 4" class="kg-image" width="732" height="817" loading="lazy">
 	</figure>
 	<p>But I just told you that in Durable Objects, writes are synchronous. While a synchronous call is running, no other code in the program can run (because JavaScript does not have threads). This is convenient, as mentioned above, because it means you don't need to worry that the state of the world may have changed while you were waiting. However, if write queries have to wait a while, and the whole program must pause and wait for them, then throughput will suffer.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35QfJmRKIo763Sv3EU0tAv/cf9b66b5fcc732c4c007a86f217fbbdb/BLOG-2536_5.png" alt="BLOG-2536 5" class="kg-image" width="732" height="817" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35QfJmRKIo763Sv3EU0tAv/96e6819df3504d9d893557f43cc30fab/BLOG-2536_5.png" alt="BLOG-2536 5" class="kg-image" width="732" height="817" loading="lazy">
 	</figure>
 	<p>Luckily, in Durable Objects, writes do not have to wait, due to a little trick we call "Output Gates".</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UhnMY6J6QrjWAAYH1rgTq/d44c801c51d39d6aa00c12ca9b5b14a6/BLOG-2536_6.png" alt="BLOG-2536 6" class="kg-image" width="732" height="482" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UhnMY6J6QrjWAAYH1rgTq/39532506841293c1a5c41d9843df1037/BLOG-2536_6.png" alt="BLOG-2536 6" class="kg-image" width="732" height="482" loading="lazy">
 	</figure>
 	<p>In DOs, when the application issues a write, it continues executing without waiting for confirmation. However, when the DO then responds to the client, the response is blocked by the "Output Gate". This system holds the response until all storage writes relevant to the response have been confirmed, then sends the response on its way. In the rare case that the write fails, the response will be replaced with an error and the Durable Object itself will restart. So, even though the application constructed a "success" response, nobody can ever see that this happened, and thus nobody can be misled into believing that the data was stored.</p>
 	<p>Let's see what this looks like with multiple requests:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nwypzObwvZ73JJ4Ho2VkS/ad593c4be290277e425cae1d840c82c8/BLOG-2536_7.png" alt="BLOG-2536 7" class="kg-image" width="732" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nwypzObwvZ73JJ4Ho2VkS/5bd72d9c80944eb47c43b0b202cb3f86/BLOG-2536_7.png" alt="BLOG-2536 7" class="kg-image" width="732" height="734" loading="lazy">
 	</figure>
 	<p>If you compare this against the first diagram above, you should notice a few things:</p>
 	<ul>
@@ -322,7 +322,7 @@ new_sqlite_classes = ["FlightSeating"]
 	<p>Credit where credit is due: This idea — uploading WAL batches and snapshots to object storage — was inspired by <a href="https://litestream.io"><u>Litestream</u></a>, although our implementation is different.</p>
 	<h4>Trick two: Relay through other servers in our global network</h4>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/D6uKAW3oEkzgAMKwYmQwr/be5202fa86a9b36744a83422a4bd5445/BLOG-2536_8.png" alt="BLOG-2536 8" class="kg-image" width="1200" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/D6uKAW3oEkzgAMKwYmQwr/453ce6d752339fb73022eb32e0e7b792/BLOG-2536_8.png" alt="BLOG-2536 8" class="kg-image" width="1200" height="452" loading="lazy">
 	</figure>
 	<p>Batches are only uploaded to object storage every 10 seconds. But obviously, we cannot make the application wait for 10 whole seconds just to confirm a write. So what happens if the application writes some data, returns a success message to the user, and then the machine fails 9 seconds later, losing the data?</p>
 	<p>To solve this problem, we take advantage of our global network. Every time SQLite commits a transaction, SRS will immediately forward the change log to five "follower" machines across our network. Once at least three of these followers respond that they have received the change, SRS informs the application that the write is confirmed. (As discussed earlier, the write confirmation opens the Durable Object's "output gate", unblocking network communications to the rest of the world.)</p>

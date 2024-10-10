@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eEdi7ZPTUw4y4u3OdPNl1/6b132284079a7767efb60ee95f492640/Post-Quantum-no-text_2x.png" alt="" class="kg-image" width="2000" height="1194" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eEdi7ZPTUw4y4u3OdPNl1/5e23d6300db0403ff913506063d13f23/Post-Quantum-no-text_2x.png" alt="" class="kg-image" width="2000" height="1194" loading="lazy">
 
 	</figure>
 	<p>In June, we <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-tls">announced</a> a wide-scale post-quantum experiment with Google. We implemented two post-quantum (i.e., not yet known to be broken by quantum computers) key exchanges, integrated them into our TLS stack and deployed the implementation on our edge servers and in Chrome Canary clients. The goal of the experiment was to evaluate the performance and feasibility of deployment in TLS of two post-quantum key agreement ciphers.</p>
@@ -10,7 +10,7 @@
 	<p>During NIST’s <i>Second PQC Standardization Conference</i>, Nick Sullivan <a href="https://csrc.nist.gov/CSRC/media/Presentations/measuring-tls-key-exchange-with-post-quantum-kem/images-media/sullivan-session-1-paper-pqc2019.pdf">presented</a> our approach to this experiment and some initial results. Quite accurately, he compared NTRU-HRSS to an ostrich and SIKE to a turkey—one is big and fast and the other is small and slow.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5600IZEbaJcZ2V0k94geH3/1fb977e9bd053d6801d3cdb2c1c2c58d/Screen-Shot-2019-10-29-at-1.33.21-PM.png" alt="" class="kg-image" width="858" height="598" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5600IZEbaJcZ2V0k94geH3/ab7f92737bba59c2ca9f53484bcbeba8/Screen-Shot-2019-10-29-at-1.33.21-PM.png" alt="" class="kg-image" width="858" height="598" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -27,7 +27,7 @@
 	<p>For each connection, we collected telemetry metrics. The most important metric was a TLS server-side handshake duration defined as the time between receiving the Client Hello and Client Finished messages. The diagram below shows details of what was measured and how post-quantum key exchange was integrated with TLS 1.3.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/k6tBsggyYQ4ZSdjewV5kh/4ae3a2b910554735495958ba107650d1/image1.png" alt="" class="kg-image" width="1112" height="751" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/k6tBsggyYQ4ZSdjewV5kh/fe555ffe2b4fbf517cd88167416ee9b0/image1.png" alt="" class="kg-image" width="1112" height="751" loading="lazy">
 
 	</figure>
 	<p>The experiment ran for 53 days in total, between August and October. During this time we collected millions of data samples, representing 5% of (anonymized) TLS connections that contained the extension signaling that the client was part of the experiment. We carried out the experiment in two phases.</p>
@@ -53,7 +53,7 @@
 	<p>The primary metric we collected for each connection was the server-side handshake duration. The below histograms show handshake duration timings for all client measurements gathered in the first phase of the experiment, as well as breakdowns into the top five operating systems. The operating system breakdowns shown are restricted to only desktop/laptop devices except for Android, which consists of only mobile devices.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DhkWkx8LGaOZpiziA6cWv/748bdc92029c385d53958730c8e57a8b/Screen-Shot-2019-10-29-at-2.04.13-PM.png" alt="" class="kg-image" width="2000" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DhkWkx8LGaOZpiziA6cWv/850d3d3fbd38bfd8b80c0550158af323/Screen-Shot-2019-10-29-at-2.04.13-PM.png" alt="" class="kg-image" width="2000" height="1063" loading="lazy">
 
 	</figure>
 	<p>It’s clear from the above plots that for most clients, CECPQ2b performs worse than CECPQ2 and CONTROL. Thus, the small key size of CECPQ2b does not make up for its large computational cost—the ostrich outpaces the turkey.</p>
@@ -68,14 +68,14 @@
 	<p>This means we’re done, right? Not quite. We are interested in determining if there are <i>any</i> populations of TLS clients for which CECPQ2b consistency outperforms CECPQ2. This requires taking a closer look at the long tail of handshake durations. The below plots show <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function">cumulative distribution functions</a> (CDFs) of handshake timings zoomed in on the 80th percentile (e.g., showing the top 20% of slowest handshakes).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZK481qKXDJSN9exzz2DnN/da296e77dafa7b7a5b9af334df520282/Screen-Shot-2019-10-29-at-2.04.33-PM-4.png" alt="" class="kg-image" width="2000" height="998" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZK481qKXDJSN9exzz2DnN/eca75f3df9dadc29c41416632395a0a5/Screen-Shot-2019-10-29-at-2.04.33-PM-4.png" alt="" class="kg-image" width="2000" height="998" loading="lazy">
 
 	</figure>
 	<p>Here, we start to see something interesting. For Android, Linux, and Windows devices, there is a <i>crossover</i> point where CECPQ2b actually starts to outperform CECPQ2 (Android: ~94th percentile, Linux: ~92nd percentile, Windows: ~95th percentile). macOS and ChromeOS do not appear to have these crossover points.</p>
 	<p>These effects are small but statistically significant in some cases. The below table shows approximate 95% <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence intervals</a> for the 50th (median), 95th, and 99th percentiles of handshake durations for each key exchange group and device type, calculated using <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mstats.mquantiles_cimj.html">Maritz-Jarrett estimators</a>. The numbers within square brackets give the lower and upper bounds on our estimates for each percentile of the “true” distribution of handshake durations based on the samples collected in the experiment. For example, with a 95% confidence level we can say that the 99th percentile of handshake durations for CECPQ2 on Android devices lies between 4057ms and 4478ms, while the 99th percentile for CECPQ2b lies between 3276ms and 3646ms. Since the intervals do not overlap, we say that with <i>statistical significance</i>, the experiment indicates that CECPQ2b performs better than CECPQ2 for the slowest 1% of Android connections. Configurations where CECPQ2 or CECPQ2b outperforms the other with statistical significance are marked with green in the table.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QEGlVhyK9fxu4gFAlhIq8/b3cccf40f529df273c55e67b7a1e21c7/Screen-Shot-2019-10-29-at-2.23.52-PM.png" alt="" class="kg-image" width="1068" height="1060" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QEGlVhyK9fxu4gFAlhIq8/a8e8271d4965d40ce64b55ed634e06be/Screen-Shot-2019-10-29-at-2.23.52-PM.png" alt="" class="kg-image" width="1068" height="1060" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -90,7 +90,7 @@
 	<p>The plot below shows for each of these clients the difference in latency between CECPQ2 and CECPQ2b, taking the minimum latency sample for each key exchange group as the representative value. The CDF plot shows that for 80% of clients, CECPQ2 outperformed or matched CECPQ2b, and for 99% of clients, the latency gap remained within 70ms. At a high level, this indicates that very few clients performed significantly worse with CECPQ2 over CECPQ2b.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FdAbGJuJBIDIjT0zExyvF/1b1232686869851961cbc99cba822ea9/TLS-handshake-latency-gap-per-client--All-_logspace_symlog_randomconfig.png" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FdAbGJuJBIDIjT0zExyvF/2a4cbf6befc35e6faa50492ca34d1dc0/TLS-handshake-latency-gap-per-client--All-_logspace_symlog_randomconfig.png" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -120,7 +120,7 @@
 	<p>A somewhat surprising result of this experiment is just how fast HRSS performs for the majority of connections. Recall that the CECPQ2 cipher performs key exchange operations for both X25519 and HRSS, but the additional overhead of HRSS is barely noticeable. Comparing benchmark results, we can see that HRSS will be faster than X25519 on the server side and slower on the client side.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fH5vILIYldcwbFurzWlt5/af2050c564274b8353cc3751173c8734/Screen-Shot-2019-10-29-at-2.24.57-PM.png" alt="" class="kg-image" width="1068" height="172" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fH5vILIYldcwbFurzWlt5/05136ac598d8255bf108138854d88c0e/Screen-Shot-2019-10-29-at-2.24.57-PM.png" alt="" class="kg-image" width="1068" height="172" loading="lazy">
 
 	</figure>
 	<p>In our design, the client side performs two operations—key generation and KEM decapsulation. Looking at those two operations we can see that the key generation is a bottleneck here.</p>
@@ -130,7 +130,7 @@ KEM decapsulation: 	17186.7 [ops/sec]</code></pre>
 	<p>In the case of SIKE, we <a href="https://github.com/post-quantum-cryptography/c-sike">implemented</a> the most recent version of the algorithm, and instantiated it with the most performance-efficient parameter set for our experiment. The algorithm is computationally expensive, so we were required to use assembly to optimize it. In order to ensure best performance on Intel, most performance-critical operations have two different implementations; the library detects CPU capabilities and uses <a href="https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/ia-large-integer-arithmetic-paper.pdf">faster instructions</a> if available, but otherwise falls back to a slightly slower generic implementation. We developed our own optimizations for 64-bit ARM CPUs. Nevertheless, our results show that SIKE incurred a significant overhead for every connection, especially on devices with weaker processors. It must be noted that high-performance isogeny-based public key cryptography is arguably much less developed than its lattice-based counterparts. Some ideas to develop this are <a href="https://www.youtube.com/watch?v=UfF3_YtYzPA">floating around</a>, and we expect to see performance improvements in the future.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nRjTCxKGIX2eghIjIGTXb/f84162ef9c52ad9ca901f6fbd03ddb6a/tales-from-the-crypto-team_2x-6.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nRjTCxKGIX2eghIjIGTXb/9cfaf88594f50d09738177372fefb4d0/tales-from-the-crypto-team_2x-6.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
 
 	</figure>
 </div>

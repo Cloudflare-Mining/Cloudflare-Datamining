@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2K7WFOjmj3tTCZ2C90XOzp/f81063ce75e0d3fcc7fa913e2017ba33/image1-26.png" alt="Building secure websites: a guide to Cloudflare Pages and Turnstile Plugin" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2K7WFOjmj3tTCZ2C90XOzp/1fd9487aaaf44a7b6f853f82f9e2be5f/image1-26.png" alt="Building secure websites: a guide to Cloudflare Pages and Turnstile Plugin" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Balancing developer velocity and security against bots is a constant challenge. Deploying your changes as quickly and easily as possible is essential to stay ahead of your (or your customers’) needs and wants. Ensuring your website is safe from malicious bots — without degrading user experience with alien hieroglyphics to decipher just to prove that you are a human — is no small feat. With <a href="https://pages.cloudflare.com">Pages</a> and <a href="https://developers.cloudflare.com/turnstile">Turnstile</a>, we'll walk you through just how easy it is to have the best of both worlds!</p>
@@ -19,7 +19,7 @@
 	<p>In this tutorial, we'll walk you through integrating Cloudflare Pages with Turnstile to secure your website against bots. You'll learn how to deploy Pages, embed the Turnstile widget, validate the token on the server side, and monitor Turnstile analytics. Let’s build upon <a href="https://developers.cloudflare.com/pages/tutorials/forms">this tutorial</a> from Cloudflare’s developer docs, which outlines how to create an HTML form with Pages and Functions. We’ll also show you how to secure it by integrating with Turnstile, complete with client-side rendering and server-side validation, using the <a href="https://developers.cloudflare.com/pages/functions/plugins/turnstile">Turnstile Pages Plugin</a>!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DaVCMwbVOKW17aOgthwZh/90e9ffd754b5d70873ac37c33021990e/Screenshot-2024-03-07-at-11.52.43.png" alt="" class="kg-image" width="2000" height="1425" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DaVCMwbVOKW17aOgthwZh/f756f3466f64bc4f889a5b9ea497b910/Screenshot-2024-03-07-at-11.52.43.png" alt="" class="kg-image" width="2000" height="1425" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -33,7 +33,7 @@
 	<p>On the Cloudflare Dashboard, select your account and go to Workers &amp; Pages to create a new Pages application with your git provider. Choose the repository where you cloned the tutorial project or any other repository that you want to use for this walkthrough.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kZP90IyFiaZzl7fX608Dl/bb1d5f35ac0aaf12d5bde6dc0c00e3d2/image2-23.png" alt="" class="kg-image" width="1999" height="1135" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kZP90IyFiaZzl7fX608Dl/355af9d8c998c19e0c032df65d14c324/image2-23.png" alt="" class="kg-image" width="1999" height="1135" loading="lazy">
 
 	</figure>
 	<p>The Build settings for this project is simple:</p>
@@ -51,7 +51,7 @@
 	<p>Once you select “Save and Deploy”, all the magic happens under the hood and voilà! The form is already deployed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6I301dY7rRKreWxUwEuHs/f619f68d4a7bd10a9f5d0ef618c1680f/image8-3.png" alt="" class="kg-image" width="883" height="363" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6I301dY7rRKreWxUwEuHs/7ea859c666d3c04b39c139c47d3b1c7f/image8-3.png" alt="" class="kg-image" width="883" height="363" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -65,7 +65,7 @@
 	<p>Now, let’s navigate to Turnstile and add the newly created Pages site.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BadX97G4W7s5FUuMx82MV/26d797ac03c21641f0380631e5fb2759/image5-14.png" alt="" class="kg-image" width="1999" height="1134" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BadX97G4W7s5FUuMx82MV/891f196d7f6840d7773684c13d9173ab/image5-14.png" alt="" class="kg-image" width="1999" height="1134" loading="lazy">
 
 	</figure>
 	<p>Here are the widget configuration options:</p>
@@ -82,7 +82,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78AnsttFltsSDTWMXxFjnH/c249cdd5b15dddc3c5744db766d52f6f/Screenshot-2024-03-07-at-11.54.30.png" alt="" class="kg-image" width="2000" height="288" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78AnsttFltsSDTWMXxFjnH/d1ee443938d095a4d44874607c046760/Screenshot-2024-03-07-at-11.54.30.png" alt="" class="kg-image" width="2000" height="288" loading="lazy">
 
 	</figure>
 	<ul>
@@ -92,7 +92,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EAIzU3P7JhQKFteYXb4Hq/6225806b82399320193802f1d6d166e9/Screenshot-2024-03-07-at-11.55.00.png" alt="" class="kg-image" width="2000" height="279" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EAIzU3P7JhQKFteYXb4Hq/1b39212a5393124a081bef94c7d9a07d/Screenshot-2024-03-07-at-11.55.00.png" alt="" class="kg-image" width="2000" height="279" loading="lazy">
 
 	</figure>
 	<ul>
@@ -288,12 +288,12 @@ export const onRequestPost = [
 	<p>Now that we've set up Turnstile, we can head to Turnstile analytics in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">Cloudflare Dashboard</a> to monitor the <a href="https://developers.cloudflare.com/turnstile/reference/tooltips">solve rate</a> and widget traffic. Visitor Solve Rate indicates the percentage of visitors who successfully completed the Turnstile widget. A sudden drop in the Visitor Solve Rate could indicate an increase in bot traffic, as bots may fail to complete the challenge presented by the widget. API Solve Rate measures the percentage of visitors who successfully validated their token against the <code>/siteverify</code> API. Similar to the Visitor Solve Rate, a significant drop in the API Solve Rate may indicate an increase in bot activity, as bots may fail to validate their tokens. Widget Traffic provides insights into the nature of the traffic hitting your website. A high number of challenges requiring interaction may suggest that bots are attempting to access your site, while a high number of unsolved challenges could indicate that the Turnstile widget is effectively blocking suspicious traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LS7efg5RG5VVEE9VVh41n/3bf382065618ebed0d397f564eb450c8/image6-4.png" alt="" class="kg-image" width="1012" height="494" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LS7efg5RG5VVEE9VVh41n/0c4f7feaeb2c693ea47df2229efa2091/image6-4.png" alt="" class="kg-image" width="1012" height="494" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rZfKrfY91tTRuCvJgFFHU/bf8bc8149e7bdda743e6daf36388cb3c/image9-1.png" alt="" class="kg-image" width="1013" height="533" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rZfKrfY91tTRuCvJgFFHU/3a689f0b7a066d2d85fb09725859bd20/image9-1.png" alt="" class="kg-image" width="1013" height="533" loading="lazy">
 
 	</figure>
 	<p>And that’s it! We’ve walked you through how to easily secure your Pages with Turnstile. Pages and Turnstile are currently available for free for every Cloudflare user to get started right away. If you are looking for a seamless and speedy developer experience to get a secure website up and running, protected by Turnstile, head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">Cloudflare Dashboard</a> today!</p>

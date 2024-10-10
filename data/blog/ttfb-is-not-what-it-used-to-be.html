@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DDRz6sPcW8kWs2Xw8iDv4/fe3de56eb3c414c05e56a09eb93716e8/image1-18.png" alt="Are you measuring what matters? A fresh look at Time To First Byte." class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DDRz6sPcW8kWs2Xw8iDv4/f99afbb10dad72d9d1f28855a71edb49/image1-18.png" alt="Are you measuring what matters? A fresh look at Time To First Byte." class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today, we’re making the case for why Time To First Byte (TTFB) is not a good metric for evaluating how fast web pages load. There are better metrics out there that give a more accurate representation of how well a server or <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">content delivery network</a> performs for end users. In this blog, we’ll go over the ambiguity of measuring TTFB, touch on more meaningful metrics such as <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals">Core Web Vitals</a> that should be used instead, and finish on scenarios where TTFB still makes sense to measure.</p>
@@ -34,7 +34,7 @@
 	<p>The loading of a web page in a browser is a very complex process. Almost all of this process happens after TTFB is reported. After the first byte has been received, the browser still has to load the main HTML file. It also has to load fonts, stylesheets, javascript, images and other resources. Often these resources link to other resources that also must be downloaded. Often these resources entirely block the rendering of the page. Alongside all these downloads, the browser is also parsing the HTML, CSS and JavaScript. It is building data structures that represent the content of the web page as well as how it is styled. All of this is in preparation to start rendering the final page onto the screen for the user.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CEjRuDYe3eMAChrWxwmoC/b6ee8abffdd4bd208e22d015463848ee/image2-12.png" alt="" class="kg-image" width="1443" height="873" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CEjRuDYe3eMAChrWxwmoC/29a7e28b2c9b961cb2bf0297edacffca/image2-12.png" alt="" class="kg-image" width="1443" height="873" loading="lazy">
 
 	</figure>
 	<p>When the user starts seeing the web page actually rendered on the screen, TTFB has become a distant memory for the browser. For a metric that signals the loading speed as perceived by the user, TTFB falls dramatically short.</p>
@@ -43,7 +43,7 @@
 	<p>There have been a number of attempts over the years to benefit from this “think time”. First came Server Push, which was superseded last year by <b>Early Hints</b>. Early Hints take advantage of “server think time” to asynchronously send instructions to the browser to begin loading resources while the origin server is compiling the full response. By sending these hints to a browser before the full response is prepared, the browser can figure out what it needs to do to load the webpage faster for the end user. It also stops the TTFB clock, meaning a lower TTFB. This helps ensure the browser gets the critical files sooner to begin loading the webpage, and it also means the first byte is delivered sooner as there is no waiting on the server for the whole dataset to be prepared and ready to send. Even with Early Hints, though, TTFB doesn’t accurately define how long it took the web page to be in a usable state.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HWEDVlv82i1e7QA4M9MHO/fbd16e229e2fcdb56900facb8b89f68a/image3-10.png" alt="" class="kg-image" width="1652" height="760" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HWEDVlv82i1e7QA4M9MHO/f7847d5bc8b344c6f2131ed9451ece9c/image3-10.png" alt="" class="kg-image" width="1652" height="760" loading="lazy">
 
 	</figure>
 	<p>TTFB also does not take into account multiplexing benefits of <a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1">HTTP/2</a> and <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> which allow browsers to load files in parallel. It also doesn't take into account compression on the origin, which would result in a higher TTFB but a quicker page load overall due to the time the server took to compress the assets and send them in a small format over the network.</p>
@@ -52,7 +52,7 @@
 	<p>For those unfamiliar with RUM, we typically optimize websites for three main metrics - known as the “Core Web Vitals”. This is a set of key metrics which are believed to be the best and most accurate representation of a poorly performing website vs a well performing one. These key metrics are Largest Contentful Paint, First Input Delay and Cumulative Layout Shift.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWYD1VyB6OkS1avUesrta/8d4934316cac9a899888e94f79dbe2a4/image4-10.png" alt="" class="kg-image" width="1280" height="735" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5sWYD1VyB6OkS1avUesrta/d6ddf78c645c6175987cbbaf1df9a029/image4-10.png" alt="" class="kg-image" width="1280" height="735" loading="lazy">
 
 	</figure>
 	<p>Source: <a href="https://addyosmani.com/blog/web-vitals-extension">https://addyosmani.com/blog/web-vitals-extension/</a>&nbsp;</p>
@@ -92,7 +92,7 @@
 	<p>To help you understand the real user experience of your website we have today launched <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available"><b>Cloudflare Observatory</b></a> <b>-</b> the new home of performance at Cloudflare.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UbKEuzHKLSwcjmGfQIrfW/479a6da7a7c93cf5503c26e26cfe832e/image5-2-1.png" alt="" class="kg-image" width="1600" height="1045" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UbKEuzHKLSwcjmGfQIrfW/bcbbdb8272fbbbdf17a7f5238fad0812/image5-2-1.png" alt="" class="kg-image" width="1600" height="1045" loading="lazy">
 
 	</figure>
 	<p>Cloudflare users can now easily <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">monitor website performance</a> using Real User Monitoring (RUM) data along with scheduled synthetic tests from different regions in a single dashboard. This will identify any performance issues your website may have. The best bit? Once we’ve identified any issues, Observatory will highlight customized recommendations to resolve these issues, all with a single click.</p>

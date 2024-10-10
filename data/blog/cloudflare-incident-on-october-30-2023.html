@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fuf2Zu6hQEVim57ZP2cze/1c13d7f37e1ffcaef4e8462a65b5e4e7/Vulnerabilitiy-1.png" alt="" class="kg-image" width="2401" height="1350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fuf2Zu6hQEVim57ZP2cze/0c4311c85148c448749069bf6cb900a4/Vulnerabilitiy-1.png" alt="" class="kg-image" width="2401" height="1350" loading="lazy">
 
 	</figure>
 	<p>Multiple Cloudflare services were unavailable for 37 minutes on October 30, 2023. This was due to the misconfiguration of a deployment tool used by Workers KV. This was a frustrating incident, made more difficult by Cloudflare’s reliance on our own suite of products. We are deeply sorry for the impact it had on customers. What follows is a discussion of what went wrong, how the incident was resolved, and the work we are undertaking to ensure it does not happen again.</p>
@@ -239,7 +239,7 @@
 	<p>In this incident, the service was deployed and tested in staging. But because of the deployment automation bug, when promoting to production, a script that had been deployed to the staging account was incorrectly referenced instead of the pre-production version on the production account. As a result, the deployment mechanism pointed the production environment to a version that was not running anywhere in the production environment, effectively black-holing traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YKI1LYglUMvikcDlkZF41/bd956e807b7821b8e784308708f9dcc9/image1.png" alt="" class="kg-image" width="1749" height="894" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YKI1LYglUMvikcDlkZF41/ff8ba4a17059a4139884ee71524a8209/image1.png" alt="" class="kg-image" width="1749" height="894" loading="lazy">
 
 	</figure>
 	<p>When this happened, Workers KV became unreachable in production, as calls to the product were directed to a version that was not authorized for production access, returning a HTTP 401 error code. This caused dependent products which stored key-value pairs in KV to fail, regardless of whether the key-value pair was cached locally or not.</p>

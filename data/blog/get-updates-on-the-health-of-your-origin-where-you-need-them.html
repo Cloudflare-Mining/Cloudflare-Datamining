@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FlITSSU8qAu3Or3AhD2Lm/bd5cb47a358457f3ab43448004ee6055/image12-1.png" alt="Get updates on the health of your origin where you need them" class="kg-image" width="1620" height="1262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FlITSSU8qAu3Or3AhD2Lm/8bacf6b7dc447cf9d56781e58818d109/image12-1.png" alt="Get updates on the health of your origin where you need them" class="kg-image" width="1620" height="1262" loading="lazy">
 
 	</figure>
 	<p>We are thrilled to announce the availability of Health Checks in the Cloudflare Dashboard’s Notifications tab, available to all Pro, Business, and Enterprise customers. Now, you can get critical alerts on the health of your origin without checking your inbox! Keep reading to learn more about how this update streamlines notification management and unlocks countless ways to stay informed on the health of your servers.</p>
@@ -26,7 +26,7 @@
 	<p>Health Checks email alerts have allowed customers to respond quickly to incidents and guarantee minimum disruption for their users. As before, Health Checks users can still select up to 20 email recipients to notify if a Health Check finds their site to be unhealthy. And if email is the right tool for your team, we’re excited to share that we have jazzed up our notification emails and added details on which Health Check triggered the notification, as well as the status of the Health Check:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wQaM5dANtGNveurNe8YL8/d434cccbdc1d10ac58372616797710c5/image9-1.png" alt="New Health Checks email format with Time, Health Status, and Health Check details" class="kg-image" width="952" height="584" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wQaM5dANtGNveurNe8YL8/ff5aba1af881fa0fcde15b0067cde725/image9-1.png" alt="New Health Checks email format with Time, Health Status, and Health Check details" class="kg-image" width="952" height="584" loading="lazy">
 
 	</figure>
 	<p><i>New Health Checks email format with Time, Health Status, and Health Check details</i></p>
@@ -37,7 +37,7 @@
 	<p>Additionally, configuring notifications for multiple Health Checks is now simplified. Instead of configuring notifications one Health Check at a time, users can now set up notifications for multiple or even all Health Checks from a single workflow.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KkiuxbDOJYQxkDjWPkkeu/2dc8a98cdcdf92a5fa2c924a8fd9ecf7/image6-8.png" alt="Notification creation workflow:  Tie one or multiple Health Checks to the same notification and select notification trigger–Becomes unhealthy, Becomes healthy, or both." class="kg-image" width="1844" height="1194" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KkiuxbDOJYQxkDjWPkkeu/74d1bfbb4303e7f4cab1b656721a392e/image6-8.png" alt="Notification creation workflow:  Tie one or multiple Health Checks to the same notification and select notification trigger–Becomes unhealthy, Becomes healthy, or both." class="kg-image" width="1844" height="1194" loading="lazy">
 
 	</figure>
 	<p>Also, users can now access Health Checks notification history, and Enterprise customers can integrate Health Checks <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/create-pagerduty">directly with PagerDuty</a>. Last but certainly not least, as Cloudflare’s Notifications infrastructure grows in capabilities, Health Checks will be able to leverage all of these improvements. This guarantees Health Checks users the most timely and versatile notification capabilities that Cloudflare offers now and into the future.</p>
@@ -52,7 +52,7 @@
 	<p>To get notifications for health changes at an origin, <a href="https://support.cloudflare.com/hc/en-us/articles/4404867308429-About-Health-Checks">we first need to set up a Health Check for it.</a> In this example, we'll monitor HTTP responses: leave the Type and adjacent fields to their defaults. We will also monitor HTTP response codes: add `200` as an expected code, which will cause any other HTTP response code to trigger an unhealthy status.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6x9auU4cTDBaE0jmDBrhxZ/593f0742e4530dedea0f9491a5819913/image13.png" alt="Health Check creation page set to monitor HTTP response codes with 200 as expected code." class="kg-image" width="1708" height="1458" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6x9auU4cTDBaE0jmDBrhxZ/3aa5c3f88ab7ea8914e83c770b19c548/image13.png" alt="Health Check creation page set to monitor HTTP response codes with 200 as expected code." class="kg-image" width="1708" height="1458" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -66,21 +66,21 @@
 	<p>Once we’ve got our Health Check set up, we can create a webhook to link it to. Let’s start with a popular use case and send our Health Checks to a Slack channel. Before creating the webhook in the Cloudflare Notifications dashboard, we <a href="https://api.slack.com/messaging/webhooks">enable webhooks in our Slack workspace and retrieve the webhook URL of the Slack channel we want to send notifications to.</a> Next, we navigate to our account’s Notifications tab to add the Slack webhook as a Destination, entering the name and URL of our webhook — the secret will populate automatically.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/tZHXzAsptIeB2zPRASSXc/c7ae7b3ee4471e36113b60e1743910e6/image2-91.png" alt="Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret" class="kg-image" width="1999" height="964" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tZHXzAsptIeB2zPRASSXc/2d98e2b05b16508f8a5942bf090214e9/image2-91.png" alt="Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret" class="kg-image" width="1999" height="964" loading="lazy">
 
 	</figure>
 	<p><i>Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret</i></p>
 	<p>Once we hit <b>Save and Test</b>, we will receive a message in the designated Slack channel verifying that our webhook is working.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Is2c2YurjdOtduCuqNJB1/8b4c8199314396485674e502bae18c7a/image5-23.png" alt="Message sent in Slack via the configured webhook, verifying the webhook is working" class="kg-image" width="1999" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Is2c2YurjdOtduCuqNJB1/b50c6e395d4407023a1484945e1751f7/image5-23.png" alt="Message sent in Slack via the configured webhook, verifying the webhook is working" class="kg-image" width="1999" height="500" loading="lazy">
 
 	</figure>
 	<p><i>Message sent in Slack via the configured webhook, verifying the webhook is working</i></p>
 	<p>This webhook can now be used for any notification type available in the Notifications dashboard. To have a Health Check notification sent to this Slack channel, simply add a new Health Check notification from the Notifications dashboard, selecting the Health Check(s) to tie to this webhook and the Slack webhook we just created. And, voilà! Anytime our Health Check detects a response status code other than 200 or goes from unhealthy to healthy, this Slack channel will be notified.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vlEAwkWNFpTbQBd3h8nj3/bb461b703393a9e9a2d0a6f3d1d12856/image10-1.png" alt="Health Check notification sent to Slack, indicating our server is online and Healthy." class="kg-image" width="1999" height="574" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vlEAwkWNFpTbQBd3h8nj3/a9ed32ad15594f48f9b0b49059223053/image10-1.png" alt="Health Check notification sent to Slack, indicating our server is online and Healthy." class="kg-image" width="1999" height="574" loading="lazy">
 
 	</figure>
 	<p><i>Health Check notification sent to Slack, indicating our server is online and Healthy.</i></p>
@@ -229,35 +229,35 @@ async function handleRequest(request, env) {
 	<p>To test the change, we create a webhook pointing to the path the worker was deployed to. On the Cloudflare account dashboard, navigate to Notifications &gt; Destinations, and create a webhook.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DXxm3RcVgUe1EWhozBBqR/8ea22d753d3778acbe7a55512bce93e9/image11.png" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank." class="kg-image" width="1999" height="1066" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DXxm3RcVgUe1EWhozBBqR/8d1436e9588ce2de2967b150ea8a2f08/image11.png" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank." class="kg-image" width="1999" height="1066" loading="lazy">
 
 	</figure>
 	<p><i>Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank.</i></p>
 	<p>Then, while still in the Notifications dashboard, create a Health Check notification tied to the status page webhook and Health Check.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ltPFjk9hURZNEk1DfzXSm/9ba7b60afbdc86be6784522d9dd57c15/image4-26.png" alt="Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added." class="kg-image" width="1322" height="673" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ltPFjk9hURZNEk1DfzXSm/d2432cc32fb4cf5a9c1294a3673a4a38/image4-26.png" alt="Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added." class="kg-image" width="1322" height="673" loading="lazy">
 
 	</figure>
 	<p><i>Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added.</i></p>
 	<p>Before getting any updates the <code>status-page</code> worker should look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vSrpTmAC3habEEBTyvuzu/57bb18442df809e8606c89cb378e36ca/image1-103.png" alt="Status page without updates reads: “Status of Production Servers”" class="kg-image" width="864" height="376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vSrpTmAC3habEEBTyvuzu/437509c50d8649a232e4cf4e05aff26e/image1-103.png" alt="Status page without updates reads: “Status of Production Servers”" class="kg-image" width="864" height="376" loading="lazy">
 
 	</figure>
 	<p><i>Status page without updates reads: “Status of Production Servers”</i></p>
 	<p>Webhooks get triggered when the Health Check status changes. To simulate the change of Health Check status we take the origin down, which will send an update to the worker through the webhook. This causes the status page to get updated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Bv5XIq7lDRy5KdGMNxs9i/067a22bbb3a350a06cf70ca0d8dc17e3/image8-3.png" alt="Status page showing the name of the Health Check as " configuration-service",="" status="" as="" "unhealthy" ,="" and="" the="" failure="" reason="" "tcp="" connection="" failed" .="" "="" class=" kg-image" width="529" height="263" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Bv5XIq7lDRy5KdGMNxs9i/5422ab4e4091c0237c76dc445cd3e823/image8-3.png" alt="Status page showing the name of the Health Check as " configuration-service",="" status="" as="" "unhealthy" ,="" and="" the="" failure="" reason="" "tcp="" connection="" failed" .="" "="" class=" kg-image" width="529" height="263" loading="lazy">
 
 	</figure>
 	<p><i>Status page showing the name of the Health Check as "configuration-service", Status as "Unhealthy", and the failure reason as "TCP connection failed".</i>&nbsp;</p>
 	<p>Next, we simulate a return to normal by changing the Health Check expected status back to 200. This will make the status page show the origin as healthy.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lyFS1mDPReF5CPG4ZU6jK/0f5cc96b99e82e8775eda87bdda98f87/image7-3.png" alt="Status page showing the name of the Health Check as " configuration-service",="" status="" as="" "healthy" ,="" and="" the="" failure="" reason="" "no="" failures" .="" "="" class=" kg-image" width="455" height="231" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lyFS1mDPReF5CPG4ZU6jK/1b07d824de54eebce83879300820ccb0/image7-3.png" alt="Status page showing the name of the Health Check as " configuration-service",="" status="" as="" "healthy" ,="" and="" the="" failure="" reason="" "no="" failures" .="" "="" class=" kg-image" width="455" height="231" loading="lazy">
 
 	</figure>
 	<p><i>Status page showing the name of the Health Check as "configuration-service", Status as "Healthy", and the failure reason as "No failures".</i>&nbsp;</p>
@@ -278,7 +278,7 @@ UUID('4de28cf2-4a1f-4abd-b62e-c8d69569a4d2')</code></pre>
 	<p>Now we create a new webhook with the secret.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DvDHuoGw8qliF2bsYP7rZ/abb33648da7c964d423b5972ec1ea478/image3-42.png" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added." class="kg-image" width="1999" height="1032" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DvDHuoGw8qliF2bsYP7rZ/38e29d91df8569ded442bd7bd4bb95b8/image3-42.png" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added." class="kg-image" width="1999" height="1032" loading="lazy">
 
 	</figure>
 	<p><i>Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added.</i></p>

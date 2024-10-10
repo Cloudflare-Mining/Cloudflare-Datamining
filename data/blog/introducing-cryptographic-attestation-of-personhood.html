@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HOCl1YQQdhbTVCJC9VVBA/f5e2b55ed5477c0a66586751644f3b1e/image2-36.png" alt="" class="kg-image" width="1999" height="963" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HOCl1YQQdhbTVCJC9VVBA/6d74a3fdec078206bc8494b6bb1d5ca6/image2-36.png" alt="" class="kg-image" width="1999" height="963" loading="lazy">
 
 	</figure>
 	<p>Select all the buses. Click on bikes. Does this photo have traffic lights? As ridiculous as these questions are, you’re almost guaranteed to have seen one recently. They are a way for online services to separate humans from bots, and they’re called <a href="https://en.wikipedia.org/wiki/CAPTCHA">CAPTCHAs</a>. CAPTCHAs strengthen the security of online services. But while they do that, there’s a very real cost associated with them.</p>
@@ -60,7 +60,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WeboSgc6BWaS2HxVOGRcb/030fce4dead22f8e1ac732495a4a47df/image4-4.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WeboSgc6BWaS2HxVOGRcb/590fba693766943506c4587a3172ed15/image4-4.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
 
 	</figure>
 	<p>Hardware security keys are devices with an embedded secret that can connect to your computer or your phone</p>
@@ -125,7 +125,7 @@
 	<p>The short version is that your device has an embedded secure module containing a unique secret sealed by your manufacturer. The security module is capable of proving it owns such a secret without revealing it. Cloudflare asks you for proof and checks that your manufacturer is legitimate.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5msss4WaXkkCMEgBwldIwi/a42b2863a35d76a12e806eb91d88bd85/image7.png" alt="" class="kg-image" width="1230" height="482" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5msss4WaXkkCMEgBwldIwi/196f2f1e6caec88053f575f4c3e342c8/image7.png" alt="" class="kg-image" width="1230" height="482" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -142,20 +142,20 @@
 	<p>Let's take another example. Alice owns a laptop with a secure module embedded. This module holds a signing key, sk_a. Alice says she sent a love letter to Bob yesterday. However, Bob is suspicious. Despite the letter stating "Hi Bob, it's Alice", Bob would like to be sure this letter comes from Alice. To do so, Bob asks Alice to provide her signature for the following message "musical-laboratory-ground". Since Bob chooses the message, if Alice can provide a signature associated with her verification key (pk_a), Bob would be convinced the love letter is from Alice. Alice does provide the signature, sk_a(“musical-laboratory-ground”). Bob confirms sk_a(“musical-laboratory-ground”) is associated with pk_a. He can now securely engage in their cryptographer relationship.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2az1pFbAuzJIcBMppOa1YC/95fbc949ab0acfb8e419cadaa9ab42ab/image1-4.png" alt="" class="kg-image" width="1216" height="1632" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2az1pFbAuzJIcBMppOa1YC/19a6ebd82f20d88e7db696b42182025e/image1-4.png" alt="" class="kg-image" width="1216" height="1632" loading="lazy">
 
 	</figure>
 	<p>Thinking back to the Cryptographic Attestation of Personhood, you now know that your hardware key embeds a signing key. However, Cloudflare does not and cannot know the signing keys of all users of the Internet. To alleviate this problem, Cloudflare requests a different kind of proof. When asked if you are a human, we ask you to prove you are in control of a public key signed by a trusted manufacturer. When shipping devices with a secure module, <a href="https://fidoalliance.org/specs/fido-security-requirements/fido-authenticator-security-requirements-v1.4-fd-20201102.html">manufacturers sign</a> the associated attestation public key with a digital certificate.</p>
 	<p>Digital certificates usually contain a public key, information about the organization they are provisioned for, a validity period, the allowed usage, and a signature from a Certificate Authority making sure the certificate is legitimate. They allow metadata to be associated with a public key and therefore provide information about the issuer of a signature.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zLUNHHDgaWpnCniSwkThu/45729e2c686fc07a75a204266a7316e7/image6-1.png" alt="" class="kg-image" width="1170" height="594" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zLUNHHDgaWpnCniSwkThu/3236b7b22b54c8319e30aa17c78937a3/image6-1.png" alt="" class="kg-image" width="1170" height="594" loading="lazy">
 
 	</figure>
 	<p>So when Cloudflare asks you to provide a signature, it verifies your public key has been signed by the public key of a manufacturer. Since manufacturers have multiple levels of certificates, your device provides a chain of certificates that Cloudflare is able to verify. Each link in the chain is signed by its predecessor and signs its successor. Cloudflare trusts the root certificate of manufacturers. Because their numbers are limited, we have the capacity to verify them manually.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/O9TXLinQvwKA19xqCzcGb/d2957a21054b9a7091cc6305aa60c139/image5-3.png" alt="" class="kg-image" width="1030" height="534" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/O9TXLinQvwKA19xqCzcGb/332b024322a0ea832073e7e3ef98bfd7/image5-3.png" alt="" class="kg-image" width="1030" height="534" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -227,7 +227,7 @@
 	<p>Another issue that we keep a close eye on is security. The security of this challenge depends on the underlying hardware provided by trusted manufacturers. We have confidence they are secured. If any breach were to occur, we would be able to quickly deauthorize manufacturers’ public keys at various levels of granularity.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hbowSpXCTcXvLzs9vgpGV/8eebfb4e2d22dd1235851efabfcc94b4/image3-3.png" alt="" class="kg-image" width="1999" height="572" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hbowSpXCTcXvLzs9vgpGV/8b46a33594c8b7f70f268dff8d05d44a/image3-3.png" alt="" class="kg-image" width="1999" height="572" loading="lazy">
 
 	</figure>
 	<p>We also have to consider the possibility of facing automated button-pressing systems. A <a href="https://en.wikipedia.org/wiki/Drinking_bird">drinking bird</a> able to press the capacitive touch sensor could pass the Cryptographic Attestation of Personhood. At best, the bird solving rate matches the time it takes for the hardware to generate an attestation. With our current set of trusted manufacturers, this would be slower than the solving rate of professional CAPTCHA-solving services, while allowing legitimate users to pass through with certainty. In addition, existing Cloudflare mitigations would remain in place, efficiently protecting Internet properties.</p>
@@ -254,7 +254,7 @@
 	<p>As this is currently an experimental project from the Cloudflare Research Team only USB or NFC security keys work today. We’re happy for the feedback and will look into adding other authenticators as soon as possible. If you use a non-supported device then you’re likely to get a somewhat difficult to understand error message from your browser. On Google Chrome you would see:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DhXRbBd40SKy0GhKMfMXT/ead3f3bfe259916d00ea028c1d1b5291/Chrome-WebAuth-Fail-Screenshot.png" alt="" class="kg-image" width="896" height="508" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DhXRbBd40SKy0GhKMfMXT/73a01215e4eaf839fce6e8bf73598d4a/Chrome-WebAuth-Fail-Screenshot.png" alt="" class="kg-image" width="896" height="508" loading="lazy">
 
 	</figure>
 	<p>If you would like to give us feedback on the Cryptographic Attestation of Personhood please fill out our <a href="https://forms.gle/HQxJtXgryg4oRL3e8">Google Form</a>.</p>

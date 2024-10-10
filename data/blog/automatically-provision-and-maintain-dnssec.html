@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3l4KpASzsILdAr3Ou3jZWO/26431610435c83bfded0b6d5b220150b/DNSSEC.png" alt="" class="kg-image" width="1408" height="1232" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3l4KpASzsILdAr3Ou3jZWO/e390d13348ff6feac3c9ffb514494e74/DNSSEC.png" alt="" class="kg-image" width="1408" height="1232" loading="lazy">
 
 	</figure>
 	<p>Cloudflare first started talking about <a href="https://www.cloudflare.com/dns/dnssec/universal-dnssec">DNSSEC</a> in <a href="https://blog.cloudflare.com/dnssec-an-introduction">2014</a> and at the time, <a href="https://twitter.com/grittygrease">Nick Sullivan</a> wrote: “DNSSEC is a valuable tool for improving the trust and integrity of <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>, the backbone of the modern Internet.”</p>
@@ -40,14 +40,14 @@
 	<p>In December of 2017, APNIC wrote about <a href="https://blog.apnic.net/2017/12/06/dnssec-deployment-remains-low">why DNSSEC deployment remains so low</a> and that remains largely true today. One key point was that the number of domain owners who attempt DNSSEC activation but do not complete it is very high. Using Cloudflare as an example, APNIC measured that 40% of those who enabled DNSSEC in the Cloudflare Dash (evidenced by the presence of a DNSKEY record) were actually successful in serving a DS key from the registry. Current data over a recent 90 day period is slightly better: we are seeing just over 50% of all zones which attempted to enable DNSSEC were able to complete the process with the registry (Note: these domains still resolve, they are just still not secured). Of our most popular TLDs, .be and .nl have success rates of over 70%, but these numbers are still not where we would want them to be in an ideal world. The graph below shows the specific rates for the most popular TLDs (most popular from left to right).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XNgbCpC85y8X91Bpo7zS/aa18e99523d1d7e1a10f8430aa62840d/Graph.png" alt="" class="kg-image" width="1600" height="797" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20XNgbCpC85y8X91Bpo7zS/2e85b5a9563fbe1d9e726141989d01df/Graph.png" alt="" class="kg-image" width="1600" height="797" loading="lazy">
 
 	</figure>
 	<p>This end result is likely not surprising to anyone who has tried to add a DS record to their registrar. Locating the part of the registrar UI that houses DNSSEC can be problematic, as can the UI of adding the record itself. Additional factors such as varying degrees of technical knowledge amongst users and simply having to manage multiple logins and roles can also explain the lack of completion in the process. Finally, varying levels of DNSSEC compatibility amongst registrars may prevent even knowledgeable users from creating DS records in the parent.</p>
 	<p>As an example, at Cloudflare, we took a minimalist UX approach for adding DS records for delegated child domains. A novice user may not understand the fields and requirements for the DS record:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uBtcWkLicobwesLsEJ1MF/ee8e83866fa2b4db49f5bb4946869b44/pasted-image-0.png" alt="" class="kg-image" width="892" height="958" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uBtcWkLicobwesLsEJ1MF/68a4051c4b0746cfafb08fc93c4c0f0a/pasted-image-0.png" alt="" class="kg-image" width="892" height="958" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -72,7 +72,7 @@
 	<p>Cloudflare will publish CDS and CDNSKEY records for all domains who enable DNSSEC. Parent registries should scan the nameservers of the &nbsp;domains under their purview and check for these rrsets. The presence of a CDS key for a domain delegated to Cloudflare indicates that a verified Cloudflare user has enabled DNSSEC within their dash and that the parent operator (a registrar or the registry itself) should take the CDS record content and create the requisite DS record to start signing the domain. TLDs .ch and .cz already support this automated method through Cloudflare and any other DNS operators that choose to support RFC8078. The registrar <a href="https://www.gandi.net">Gandi</a> and a number of TLDs have indicated support in the near future.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NWwLVYnosedEpsDH0NNQS/51334ef6d9cd6e980dfdae2caec1a3a2/Flow.png" alt="" class="kg-image" width="1600" height="793" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NWwLVYnosedEpsDH0NNQS/36198c65294dbdcce40045262c5f61a9/Flow.png" alt="" class="kg-image" width="1600" height="793" loading="lazy">
 
 	</figure>
 	<p>Cloudflare also supports CDS0 for the removal of the DS record in the case that the user transfers their domain off of Cloudflare or otherwise disables DNSSEC.</p>
@@ -114,7 +114,7 @@
 	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on our announcements.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SOBfg9SIxbV23r9vS1Vlt/0ed31713a21c6ad7dd30024e7ddfd92a/Crypto-Week-1-1-1.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SOBfg9SIxbV23r9vS1Vlt/072c7daa0d365194497c3c11f0d6c807/Crypto-Week-1-1-1.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
 
 	</figure>
 </div>

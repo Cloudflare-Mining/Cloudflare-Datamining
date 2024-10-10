@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GvjtY1dTv1z9QsDBcP5q9/62b26d15bbdf3521ae24bb2fe7e919c9/image1.png" alt="ML Ops Platform at Cloudflare" class="kg-image" width="1999" height="1126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GvjtY1dTv1z9QsDBcP5q9/9430817e4123b426b6e26b1ef02d361a/image1.png" alt="ML Ops Platform at Cloudflare" class="kg-image" width="1999" height="1126" loading="lazy">
 
 	</figure>
 	<p>We've been relying on ML and AI for our core services like Web Application Firewall (WAF) since the early days of Cloudflare. Through this journey, we've learned many lessons about running AI deployments at scale, and all the tooling and processes necessary. We recently launched <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> to help abstract a lot of that away for inference, giving developers an easy way to leverage powerful models with just a few lines of code. In this post, we’re going to explore some of the lessons we’ve learned on the other side of the ML equation: <i>training</i>.</p>
@@ -43,7 +43,7 @@
 	<p>A data scientist needs to define the desired state of infrastructure and applications. This usually takes a lot of custom work, but with <a href="https://argo-cd.readthedocs.io/en/stable">ArgoCD</a> and model templates, all it takes is a simple pull request to add new applications. Helm charts and Kustomize are both supported to allow for configuration for different environments and jobs. With ArgoCD, declarative GitOps will then start the Continuous Delivery process. ArgoCD will continuously check the desired state of the infrastructure and applications to ensure that they are synched with the Git repository.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46I2rJ6bnhsXmVC8f7sK3i/ac3d754e97f936948571ad2578f15339/image2.png" alt="" class="kg-image" width="960" height="464" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46I2rJ6bnhsXmVC8f7sK3i/7b47bc18341611aad94ebbb81cb30be3/image2.png" alt="" class="kg-image" width="960" height="464" loading="lazy">
 
 	</figure>
 	<p>In the future, we plan to migrate our platform (including Jupyterhub) to <a href="https://www.kubeflow.org">Kubeflow</a>, a machine learning workflow platform on Kubernetes that simplifies the development, deployment, and management of notebooks and end-to-end pipelines. This is best deployed using a new project, <a href="https://www.deploykf.org">deployKF</a>, which allows for distributed configuration management across multiple components available with Kubeflow, and others that extend beyond what is offered within Kubeflow.</p>

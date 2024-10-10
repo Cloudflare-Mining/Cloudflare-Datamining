@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1K9ML9RdjOIFgWZdFdrLg7/d515aaf494cbe9bc4d4c64c4eafbc320/image6-10.png" alt="blog post about the services at Cloudflare that are migrating to post-quantum." class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1K9ML9RdjOIFgWZdFdrLg7/35b77f333580363855da9235ca3b46ce/image6-10.png" alt="blog post about the services at Cloudflare that are migrating to post-quantum." class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Theoretically, there is no impediment to adding <a href="https://blog.cloudflare.com/post-quantum-taxonomy">post-quantum cryptography</a> to any system. But the reality is harder. In the middle of last year, we posed ourselves a big challenge: <b>to change all</b> <b><i>internal connections</i></b> <b>at Cloudflare to use post-quantum cryptography</b>. We call this, in a cheeky way, “post-quantum-ifying” our services. Theoretically, this should be simple: swap algorithms for post-quantum ones and move along. But with dozens of different services in various programming languages (as we have at Cloudflare), it is not so simple. The challenge is big but we are here and up for the task! In this blog post, we will look at what our plan was, where we are now, and what we have learned so far. Welcome to the first announcement of a post-quantum future at Cloudflare: our connections are going to be quantum-secure!</p>
@@ -53,14 +53,14 @@
 	<p>At Cloudflare, to protect many of our connections, we use TLS. We mainly use the latest version of the protocol, TLS 1.3, but we do sometimes still use TLS 1.2 (as seen in the image, though, it only shows the connections between websites to our network). &nbsp;As we are a company that pushes for innovation, this means that we are intent on using this time of migration to post-quantum cryptography as an opportunity to also update TLS handshakes to 1.3 and be assured that we are using TLS in the right way (by, for example, ensuring that we are not using deprecated features of TLS).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5toLKjOnOcTdY4jkqTodFb/e136d7743d253c738f23429680f01b21/image2-24.png" alt="Image of Cloudflare’s TLS and QUIC usage taken on the 17/02/2022 and showing the last 7 days." class="kg-image" width="1224" height="482" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5toLKjOnOcTdY4jkqTodFb/80452cac0010e2311e76e31c0a138820/image2-24.png" alt="Image of Cloudflare’s TLS and QUIC usage taken on the 17/02/2022 and showing the last 7 days." class="kg-image" width="1224" height="482" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s TLS and QUIC usage <a href="https://radar.cloudflare.com/#anchor-tls-versions-vs">taken on</a> the 17/02/2022 and showing the last 7 days.</p>
 	<p>Changing TLS 1.3 to provide quantum-resistant security for its confidentiality means changing the ‘key exchange’ phase of the TLS handshake. Let’s briefly look at how the TLS 1.3 handshake works.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qFzOkZw6F47b7q1FeoJrf/84b345d0b76ab3b7d07180c3dd4f19dc/image3-26.png" alt="Image showing a TLS 1.3 handshake" class="kg-image" width="740" height="652" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qFzOkZw6F47b7q1FeoJrf/c781aa2f7621d61664b7f7efafe3927e/image3-26.png" alt="Image showing a TLS 1.3 handshake" class="kg-image" width="740" height="652" loading="lazy">
 
 	</figure>
 	<p>The TLS 1.3 handshake</p>
@@ -116,7 +116,7 @@
 	<p>This service seemed an ideal candidate for migrating to post-quantum cryptography as its architecture is simple, it has long-lived connections, and it handles a lot of traffic. In order to first test the viability of using post-quantum cryptography, we created our own instance of Logreceiver and deployed it. We also created our own stream (the “pq-stream”), which is basically a copy of a HTTP stream (which was remarkably easy to add). We then compiled these services with the modified TLS library and we got a post-quantum protected Logfwdr.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YlRJqczYHpPshoEZzpu9b/6771b21c02ac82ad80863988957b261c/image7-5.png" alt="Graph showing the TLS latency of Logfwdr for selected servers." class="kg-image" width="517" height="343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YlRJqczYHpPshoEZzpu9b/160d794b37b407bb09fd345b889101c7/image7-5.png" alt="Graph showing the TLS latency of Logfwdr for selected servers." class="kg-image" width="517" height="343" loading="lazy">
 
 	</figure>
 	<p>Figure 1: TLS latency of Logfwdr for selected metals. Notice how post-quantum cryptography is faster than non-post-quantum one (it is labeled with a “PQ” acronym).</p>
@@ -125,7 +125,7 @@
 	<p>As shown in Figure 2, the average batch duration of the post-quantum stream is lower than when not using post-quantum cryptography. This may be in part due to the fact that we are not sending the quantum-protected data all the way to Kafka (as the non-post-quantum stream is doing). We didn’t yet change the connection to Kafka post-quantum.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7s0OprfksLusP0685ydiYl/43f87439ff4a12ab13bd5de6068ac404/image8-3.png" alt="Graph comparing the average batch send duration of post-quantum (orange) and non-post-quantum streams (green)." class="kg-image" width="1620" height="580" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7s0OprfksLusP0685ydiYl/69af1192a703c1224f746673d83c44d2/image8-3.png" alt="Graph comparing the average batch send duration of post-quantum (orange) and non-post-quantum streams (green)." class="kg-image" width="1620" height="580" loading="lazy">
 
 	</figure>
 	<p>Figure 2: Average batch send duration: post-quantum (orange) and non-post-quantum streams (green).</p>
@@ -143,7 +143,7 @@
 	<p>How does the overall architecture of gokeyless work? Let’s start with a request. The request arrives at the Cloudflare network and we perform TLS termination. Any signing request is forwarded to Keynotto. A small portion of requests (specifically from GeoKDL or external gokeyless) cannot be handled by Keynotto directly, and are instead forwarded to gokeyless-internal. gokeyless-internal also acts as a key server proxy, as it redirects connections to the customer’s keyservers (external gokeyless). <a href="https://github.com/cloudflare/gokeyless">External gokeyless</a> is both the server that a customer runs and the client that will be used to contact it. The architecture can be seen in Figure 3.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5c2XtFKTmHLgy9XNmAfJsh/b14f712bb352525be14d1ee0dc3fd2f2/image5-10.png" alt="Diagram of the life of a gokeyless request." class="kg-image" width="1801" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c2XtFKTmHLgy9XNmAfJsh/496e49511e6aea34309abbae92b846f5/image5-10.png" alt="Diagram of the life of a gokeyless request." class="kg-image" width="1801" height="525" loading="lazy">
 
 	</figure>
 	<p>Figure 3: The life of a gokeyless request.</p>
@@ -151,13 +151,13 @@
 	<p>Adding post-quantum cryptography to the <a href="https://github.com/rustls/rustls">rustls codebase</a> was a straightforward exercise and we exposed an easy-to-use API call to signal the usage of post-quantum cryptography (as seen in Figure 4 and Figure 5). One thing that we noted when reviewing the TLS usage in several Cloudflare services is that giving the option to choose the algorithms for a ciphersuite, key share, and authentication in the TLS handshake confuses users. It seemed more straightforward to define the algorithm at the library level, and have a boolean or API call signal the need for this post-quantum algorithm.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4i2qzprdHeQ5F7Y9CLn1S2/afc90fe78e4701907de45d6f7fc551bb/image9-3.png" alt="post-Quantum API for rustls." class="kg-image" width="1320" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4i2qzprdHeQ5F7Y9CLn1S2/354947695ac81ead9fd7e414a562bc37/image9-3.png" alt="post-Quantum API for rustls." class="kg-image" width="1320" height="290" loading="lazy">
 
 	</figure>
 	<p>Figure 4: post-Quantum API for rustls.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rk2okKUdjZmpisim3f5bk/5bebe93de0fe6645e0302ec69d44b385/image4-16.png" alt="usage post-quantum API for rustls." class="kg-image" width="970" height="442" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rk2okKUdjZmpisim3f5bk/bd2b2bec41309221236591c53b071d6d/image4-16.png" alt="usage post-quantum API for rustls." class="kg-image" width="970" height="442" loading="lazy">
 
 	</figure>
 	<p>Figure 5: usage of the post-quantum API for rustls.</p>
@@ -175,7 +175,7 @@
 	<p>The <a href="https://blog.cloudflare.com/cloudflare-ingress-controller">Kubernetes ingress</a> we use at Cloudflare is made of <a href="https://www.envoyproxy.io">Envoy</a> and <a href="https://projectcontour.io">Contour</a>. The latter configures the former depending on Kubernetes resources. Envoy uses the <a href="https://www.envoyproxy.io/docs/envoy/latest/faq/build/boringssl">BoringSSL library</a> for TLS. Switching TLS libraries in Envoy seemed difficult: there are <a href="https://github.com/envoyproxy/envoy-openssl">thoughts</a> on how to integrate OpenSSL to it (and <a href="https://github.com/open-quantum-safe/oqs-demos/issues/79">even some thoughts</a> on adding post-quantum cryptography) and <a href="https://github.com/envoyproxy/envoy/pull/7377">ways to switch TLS libraries</a>. Adding post-quantum cryptography to a modified version of BoringSSL, and then specifying <a href="https://github.com/google/boringssl/blob/master/INCORPORATING.md">that dependency</a> in the <a href="https://github.com/envoyproxy/envoy/blob/main/bazel/repository_locations.bzl#L74">Bazel file of Envoy</a> seems to be the path to go for, as our internal test has confirmed (as seen in Figure 6). As for Contour, for many years, Cloudflare has been running their own patched version of it: we will have to again patch this version with our Golang library to provide post-quantum cryptography. We will make these libraries (and the TLS ones) available for usage.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/itO6WZ2vhxBBR8Jy8iWRp/3335fccc887c709f95fa38daaec96491/image1-27.png" alt="Image displaying an option to allow post-quantum cryptography in Envoy." class="kg-image" width="1862" height="316" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/itO6WZ2vhxBBR8Jy8iWRp/5c435ec9ccac61b74fe0f9499b171011/image1-27.png" alt="Image displaying an option to allow post-quantum cryptography in Envoy." class="kg-image" width="1862" height="316" loading="lazy">
 
 	</figure>
 	<p>Figure 6: Option to allow post-quantum cryptography in Envoy.</p>

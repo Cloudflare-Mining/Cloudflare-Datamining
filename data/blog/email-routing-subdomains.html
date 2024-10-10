@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CQZeq4fA43VsgiIpBptsZ/8f932435529e21b06b91602097095fa7/Email-Routing.png" alt="Email Routing subdomain support, new APIs and security protocols" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CQZeq4fA43VsgiIpBptsZ/62e004ae87408ffc1966f27f82decc6d/Email-Routing.png" alt="Email Routing subdomain support, new APIs and security protocols" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>It's been two years since we announced Email Routing, our solution to create custom email addresses for your domains and route incoming emails to your preferred mailbox. Since then, the team has worked hard to evolve the product and add more powerful features to meet our users' expectations. Examples include <a href="https://blog.cloudflare.com/announcing-route-to-workers">Route to Workers</a>, which allows you to <a href="https://developers.cloudflare.com/email-routing/email-workers">process your Emails programmatically</a> using Workers scripts, <a href="https://blog.cloudflare.com/email-routing-leaves-beta">Public APIs</a>, Audit Logs, or <a href="https://blog.cloudflare.com/dmarc-management">DMARC Management</a>.</p>
@@ -29,7 +29,7 @@
 	<p>We began rolling out ARC support to Email Routing a few weeks ago. Here’s how it works:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67xk7IFzgYjOSwQEqUSbY/30e7a894a2bdfe5566f4729745ca0035/pasted-image-0--1--2.png" alt="" class="kg-image" width="1600" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67xk7IFzgYjOSwQEqUSbY/d48e08b735580f20fcafca988bb43748/pasted-image-0--1--2.png" alt="" class="kg-image" width="1600" height="734" loading="lazy">
 
 	</figure>
 	<p>As you can see, <code>joe@example.com</code> sends an Email to <code>henry@domain.example</code>, an Email Routing address, which in turn is forwarded to the final address, <code>example@gmail.com</code>.</p>
@@ -56,7 +56,7 @@
 	<p>First, log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> and select your account and zone. Then go to <b>DNS</b> &gt; <b>Records</b> and create a new CNAME record with the name “<code>_mta-sts</code>” that points to Cloudflare’s record “<code>_mta-sts.mx.cloudflare.net</code>”. Make sure to disable the proxy mode.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4czTYhSi9X5kPU3TZ0m861/5ea71915974c2bbd3ec076f1187efaa0/pasted-image-0-2.png" alt="" class="kg-image" width="1600" height="261" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4czTYhSi9X5kPU3TZ0m861/e7d8162ff6f40494ce6d11fbf5899dad/pasted-image-0-2.png" alt="" class="kg-image" width="1600" height="261" loading="lazy">
 
 	</figure>
 	<p>Confirm that the record was created:</p>
@@ -68,13 +68,13 @@ _mta-sts.mx.cloudflare.net. 300	IN	TXT	"v=STSv1; id=20230615T153000;"</code></pr
 	<p>To do this you need to deploy a very simple Worker that allows Email clients to pull Cloudflare’s Email Routing <a href="https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt">policy</a> file using the <a href="https://en.wikipedia.org/wiki/Well-known_URI">“well-known” URI</a> convention. Go to your <b>Account</b> &gt; <b>Workers &amp; Pages</b> and press <b>Create Application</b>. Pick the “MTA-STS” template from the list.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BBFtG8hiHehJw74L2DbHX/ecd9631608152439b137b24cb5a7203e/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="910" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6BBFtG8hiHehJw74L2DbHX/d2afee1d61f266382082c08681e05e1a/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="910" loading="lazy">
 
 	</figure>
 	<p>This Worker simply proxies <code>https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt</code> to your own domain. After deploying it, go to the Worker configuration, then <b>Triggers</b> &gt; <b>Custom Domains</b> and <b>Add Custom Domain</b>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MWHc7AuevDzxafJ0gfaFb/81fbe5baf08cca92d2d57ff4b9ea8fe9/customdomains.png" alt="" class="kg-image" width="1600" height="919" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MWHc7AuevDzxafJ0gfaFb/f659d8c0ae8c30f9a1457bc4b20f3535/customdomains.png" alt="" class="kg-image" width="1600" height="919" loading="lazy">
 
 	</figure>
 	<p>You can then confirm that your policy file is working:</p>
@@ -174,7 +174,7 @@ export default {
 	<p>As of today, you can now truly reply to incoming emails with another new message and implement smart auto-responders programmatically, adding any content and context in the main body of the message. Think of a customer support email automatically generating a ticket and returning the link to the sender, an out-of-office reply with instructions when you're on vacation, or a detailed explanation of why you rejected an email. Here’s a code example:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NgbXFwy3Xw0VHLemZ4smZ/832756e7ffeaccf8aa967e1a854c7683/Screenshot-2023-10-26-at-12.05.33.png" alt="" class="kg-image" width="1198" height="1122" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NgbXFwy3Xw0VHLemZ4smZ/682a581c21af850880fada5bbc17e99f/Screenshot-2023-10-26-at-12.05.33.png" alt="" class="kg-image" width="1198" height="1122" loading="lazy">
 
 	</figure>
 	<p>To mitigate security risks and abuse, replying to incoming emails has a few requirements:</p>
@@ -211,25 +211,25 @@ export default {
 	<p>To add Email Routing features to a new subdomain, log in to the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> and select your account and zone. Then go to <b>Email</b> &gt; <b>Email Routing</b> &gt; <b>Settings</b> and click “Add subdomain”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WwS0LP1o8Ijlk0IzcqzCE/70fd19de70b0586d6b0def81f18795d7/prev-req-rec.png" alt="" class="kg-image" width="1600" height="1093" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WwS0LP1o8Ijlk0IzcqzCE/8528ed0f90a34029777d66b411d9e696/prev-req-rec.png" alt="" class="kg-image" width="1600" height="1093" loading="lazy">
 
 	</figure>
 	<p>Once the subdomain is added and the DNS records are configured, you can see it in the <b>Settings</b> list under the <b>Subdomains</b> section:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gwBTgYQ36QxcvCGHfBqEd/9e1f83627a538d92538872dbfb85d0ea/Domain.png" alt="" class="kg-image" width="1600" height="787" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gwBTgYQ36QxcvCGHfBqEd/450707647df2a8277eb0dc66e966088e/Domain.png" alt="" class="kg-image" width="1600" height="787" loading="lazy">
 
 	</figure>
 	<p>Now you can go to <b>Email</b> &gt; <b>Email Routing</b> &gt; <b>Routing rules</b> and create new custom addresses that will show you the option of using either the top domain of the zone or any other configured subdomain.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KJ9AIM6MpcaYeV5IrVZQw/a4a728fb41952d7261ed051a4455d3ad/Screenshot-2023-10-25-at-11.55.31-AM.png" alt="" class="kg-image" width="1047" height="383" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KJ9AIM6MpcaYeV5IrVZQw/1e306de0bd46177eb2601e8e4e600930/Screenshot-2023-10-25-at-11.55.31-AM.png" alt="" class="kg-image" width="1047" height="383" loading="lazy">
 
 	</figure>
 	<p>After the new custom address for the subdomain is created you can see it in the list with all the other addresses, and manage it from there.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vEJFroWoVivSr9n6SwPVl/f89365dbf653b554d0e1d2d6dd9ed51e/custom-addresses.png" alt="" class="kg-image" width="1600" height="562" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vEJFroWoVivSr9n6SwPVl/28a4938f201e4153c964895d4687f1b2/custom-addresses.png" alt="" class="kg-image" width="1600" height="562" loading="lazy">
 
 	</figure>
 	<p>It’s this easy.</p>
@@ -247,7 +247,7 @@ export default {
 	<p>If you have any questions or feedback about Email Routing, please come see us in the <a href="https://community.cloudflare.com/new-topic?category=Feedback%2FPreviews+%26+Betas&amp;tags=email">Cloudflare Community</a> and the <a href="https://discord.gg/cloudflaredev">Cloudflare Discord</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OKqc3VieWKGRFBDtPU7io/6ed11beb434ce21009019384af85d8cc/Email-Routing-spot.png" alt="" class="kg-image" width="1600" height="408" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OKqc3VieWKGRFBDtPU7io/18e8d2db548d341b0cb78a111aaa8480/Email-Routing-spot.png" alt="" class="kg-image" width="1600" height="408" loading="lazy">
 
 	</figure>
 </div>

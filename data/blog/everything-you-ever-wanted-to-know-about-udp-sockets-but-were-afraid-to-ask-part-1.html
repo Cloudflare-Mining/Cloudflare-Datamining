@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WOLE3yKPbPvRX9rQLYZEA/5f3b01621024d44b81230784d6e301d2/Spectrum-Data-Plane-Internals-1.png" alt="Snippet from internal presentation about UDP inner workings in Spectrum. Who said UDP is simple!" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WOLE3yKPbPvRX9rQLYZEA/180626d9b9d5fd202bfbc5854a1928ea/Spectrum-Data-Plane-Internals-1.png" alt="Snippet from internal presentation about UDP inner workings in Spectrum. Who said UDP is simple!" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>Snippet from internal presentation about UDP inner workings in Spectrum. Who said UDP is simple!</p>
@@ -34,13 +34,13 @@
 	<p>As we'll learn today, these can be mixed. It is possible to use connected sockets for ingress handling, and unconnected for egress. To illustrate the latter, consider these two snippets. They do the same thing — send a packet to the DNS resolver. First snippet is using a connected socket:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nLimg1UkSX4TIIYTaxASJ/6975d6f47ce56c0b361dfc00389cee35/image4-20.png" alt="" class="kg-image" width="925" height="125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nLimg1UkSX4TIIYTaxASJ/630c7f32c10868d6cccee7736d5c713c/image4-20.png" alt="" class="kg-image" width="925" height="125" loading="lazy">
 
 	</figure>
 	<p>Second, using unconnected one:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Iq69Z2Nrk00zNeTvJyrVU/6255d2675d66adc6f9c93e3ab05924f8/image7-14.png" alt="" class="kg-image" width="929" height="126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Iq69Z2Nrk00zNeTvJyrVU/6cb272253a0906191cb6aabf6b2e7b3d/image7-14.png" alt="" class="kg-image" width="929" height="126" loading="lazy">
 
 	</figure>
 	<p>Which one is better? In the second case, when receiving, the programmer should verify the source IP of the packet. Otherwise, the program can get confused by some random inbound internet junk — like port scanning. It is tempting to reuse the socket descriptor and query another DNS server afterwards, but this would be a bad idea, particularly when dealing with DNS. For security, DNS assumes the client source port is unpredictable and short-lived.</p>
@@ -58,7 +58,7 @@
 	<p>Traditionally on the server side UDP requires unconnected sockets. Using them requires a bit of finesse. To illustrate this, let's write an UDP echo server. In practice, you probably shouldn't write such a server, due to a risk of becoming a DoS reflection vector. <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">Among other protections</a>, like rate limiting, UDP services should always respond with a strictly smaller amount of data than was sent in the initial packet. But let's not digress, the naive UDP echo server might look like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/se9nCWduF9hcK8K1XwiWW/a8c7052acb56fad92c9eeda17c54a204/image6-14.png" alt="" class="kg-image" width="936" height="208" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/se9nCWduF9hcK8K1XwiWW/9c9625acfd065d3a66a2b98b99e15708/image6-14.png" alt="" class="kg-image" width="936" height="208" loading="lazy">
 
 	</figure>
 	<p>This code begs questions:</p>
@@ -88,14 +88,14 @@ IP6 ::1.1234 &gt; ::1.41879: UDP, length 2</code></pre>
 	<p>An improved server loop might look like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52toeTH5ZY1aD3bOSry6Do/5e7417957ebc6ae708419bea4f1f864e/image2-30.png" alt="" class="kg-image" width="930" height="191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52toeTH5ZY1aD3bOSry6Do/88b7b0e90c7802ae513ef2f5f2ade5f5/image2-30.png" alt="" class="kg-image" width="930" height="191" loading="lazy">
 
 	</figure>
 	<p>The <code>recvmsg</code> and <code>sendmsg</code> syscalls, as opposed to <code>recvfrom</code> / <code>sendto</code> allow the programmer to request and set extra CMSG metadata, which is very handy when dealing with UDP.</p>
 	<p>The IPV6_PKTINFO CMSG contains this data structure:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JvR29xOL5YVQj4GvhudPL/3b823052ef7d73df593182865c402d50/image1-71.png" alt="" class="kg-image" width="924" height="131" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JvR29xOL5YVQj4GvhudPL/c92277cd5b15270a2053663dc7412057/image1-71.png" alt="" class="kg-image" width="924" height="131" loading="lazy">
 
 	</figure>
 	<p>We can find here the IP address and interface number of the packet target. Notice, there's no place for a port number.</p>
@@ -121,7 +121,7 @@ IP6 ::1.1234 &gt; ::1.41879: UDP, length 2</code></pre>
 	<p>For some services we are using a technique which we call "established-over-unconnected". This comes from a realization that on Linux it's possible to create a connected socket *over* an unconnected one. Consider this code:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78wXvRtNNnQFwlqfS7EYd5/51cbbabcc7d4c857f19e53b1eda3ece0/image3-37.png" alt="" class="kg-image" width="928" height="271" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78wXvRtNNnQFwlqfS7EYd5/bf3224997d0169e26c402d909b1c2012/image3-37.png" alt="" class="kg-image" width="928" height="271" loading="lazy">
 
 	</figure>
 	<p>Does this look hacky? Well, it should. What we do here is:</p>

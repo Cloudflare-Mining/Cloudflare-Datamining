@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VAXGAjHjvvY5IAEG63gPu/854439e27b9bd77d7b7df54ffe4162d8/image12-1.png" alt="Harnessing chaos in Cloudflare offices" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VAXGAjHjvvY5IAEG63gPu/4c199f8bb127b03fe613ab8dc6c0016f/image12-1.png" alt="Harnessing chaos in Cloudflare offices" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>In the children’s book <a href="https://en.wikipedia.org/wiki/The_Snail_and_the_Whale">The Snail and Whale</a>, after an unexpectedly far-flung adventure, the principal character returns to declarations of “How time’s flown” and “Haven’t you grown?” It has been about four years since we last wrote about LavaRand and during that time the story of how Cloudflare uses physical sources of entropy to add to the security of the Internet has continued to travel and be a source of interest to many. What was initially just a single species of physical entropy source – lava lamps – has grown and diversified. We want to catch you up a little on the story of LavaRand. This blog post will cover the new sources of “chaos” that have been added to LavaRand and how you can make use of that harnessed chaos in your next application. We’ll cover how public randomness can open up uses of publicly trusted randomness — imagine not needing to take the holders of a “random draw” at their word when they claim the outcome is not manipulated in some way. And finally we’ll discuss timelock encryption which is a way to ensure that a message cannot be decrypted until some chosen time in the future.</p>
@@ -19,7 +19,7 @@
 	<p>The entropy sourced from our wall of lava lamps in San Francisco has long played its part in the randomness that secures connections made through Cloudflare.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XdIuQkEWKat2c9YanaCY0/51536150e4010884debccb7e67472a6d/image11-3.png" alt="Lava lamps with flowing wax." class="kg-image" width="1612" height="381" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XdIuQkEWKat2c9YanaCY0/aa873b127b5eea8cea19982f3552ccc2/image11-3.png" alt="Lava lamps with flowing wax." class="kg-image" width="1612" height="381" loading="lazy">
 
 	</figure>
 	<p>Lava lamps with flowing wax.</p>
@@ -29,7 +29,7 @@
 	<p>That brings us to LavaRand. “Lavarand” has long been the name given to <a href="https://en.wikipedia.org/wiki/Lavarand">systems used for the generation of randomness</a> (first by Silicon Graphics in 1997). Cloudflare <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production">launched its instantiation of a LavaRand</a> system in 2017 as a system that collects entropy from the wall of lava lamps in our San Francisco office and makes it available via an internal API. Our servers then periodically query the API to retrieve fresh randomness from LavaRand and incorporate it into their entropy pools. The contributions made by LavaRand can be considered spice added to the entropy pool mix! (For more technical details on <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">contributions made by LavaRand</a>, read our previous blog post.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IPp9Lizp0pL83clLWGGNa/001684d015b639e1187df8b330b961a8/image10.jpg" alt="Lava lamps in Cloudflare’s San Francisco office." class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IPp9Lizp0pL83clLWGGNa/19d397787b5a5adbb337f581d9639fce/image10.jpg" alt="Lava lamps in Cloudflare’s San Francisco office." class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Lava lamps in Cloudflare’s San Francisco office.</p>
@@ -53,14 +53,14 @@
 	<p>Visible to visitors of our London office is a wall of double pendulums whose beautiful swings translate to another source of entropy to LavaRand and to the pool of randomness that Cloudflare’s servers pull from.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JjgKso6GgfvLX74LEyYsE/227905bb1a173e6e3b7d79d5584b0ebd/image8.jpg" alt="Close-up of double pendulum display in Cloudflare’s London office." class="kg-image" width="512" height="341" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JjgKso6GgfvLX74LEyYsE/7688dcdd10f3f3219f0c569724cb42ab/image8.jpg" alt="Close-up of double pendulum display in Cloudflare’s London office." class="kg-image" width="512" height="341" loading="lazy">
 
 	</figure>
 	<p>Close-up of double pendulum display in Cloudflare’s London office.</p>
 	<p>To the untrained eye the shadows of the pendulum stands and those cast by the rotating arms on the rear wall might seem chaotic. If so, then this installation should be labeled a success! Different light conditions and those shadows add to the chaos that is captured from this entropy source.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JWrKSqoaPJQC2VSbHygj/a125d28522ede42f7919bf34d548473e/Screenshot-2024-03-08-at-13.13.12.png" alt="Double pendulum display in Cloudflare’s London office with changing light conditions." class="kg-image" width="1616" height="408" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JWrKSqoaPJQC2VSbHygj/e87c2936282e55730a1db4af7d4f7e7f/Screenshot-2024-03-08-at-13.13.12.png" alt="Double pendulum display in Cloudflare’s London office with changing light conditions." class="kg-image" width="1616" height="408" loading="lazy">
 
 	</figure>
 	<p>Double pendulum display in Cloudflare’s London office with changing light conditions.</p>
@@ -76,7 +76,7 @@
 	<p>The beautiful new Cloudflare office in Austin, Texas recently celebrated its first year since opening. This office contributes its own spin on physical entropy: suspended above the entrance of the Cloudflare office in downtown Austin is an installation of translucent rainbow mobiles. These twirl, reflecting the changing light, and cast coloured patterns on the enclosing walls. The display of hanging mobiles and their shadows are very sensitive to a physical environment which includes the opening and closing of doors, HVAC changes, and ambient light. This chaotic system’s mesmerizing and changing scene is captured periodically and fed into the stream of LavaRand randomness.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mfXP2V8pX0C0CoheE369Q/4ae8ea6bb2cfa33f1f5988168437f04c/Screenshot-2024-03-08-at-13.14.22.png" alt="Hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1594" height="1568" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mfXP2V8pX0C0CoheE369Q/83fe1b4bdba232b8c8c722bc49987bfe/Screenshot-2024-03-08-at-13.14.22.png" alt="Hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1594" height="1568" loading="lazy">
 
 	</figure>
 	<p>Hanging rainbow mobiles in Cloudflare’s Austin office.</p>
@@ -92,14 +92,14 @@
 	<p>To recap, at repeated intervals, a camera captures an image of the current state of the randomness display. Since the underlying system is truly random, the produced image contains true randomness. Even shadows and changing light conditions play a part in producing something unique and unpredictable! There is another secret that we should share: at a base level, image sensors in the real world are often a source of sufficient noise that even images taken without the lens cap removed could work well as a source of entropy! We consider this added noise to be a serendipitous addition to the beautiful chaotic motion of these installations.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zrgpZA2xosqvTzU6dk8V/8320b79fd0ddf5b438ea149fe07f0747/Screenshot-2024-03-08-at-13.16.23.png" alt="Close-up of hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1624" height="786" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zrgpZA2xosqvTzU6dk8V/6e1f061640192f7de4585d7f2959f4a7/Screenshot-2024-03-08-at-13.16.23.png" alt="Close-up of hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1624" height="786" loading="lazy">
 
 	</figure>
 	<p>Close-up of hanging rainbow mobiles in Cloudflare’s Austin office.</p>
 	<p>Once we have a still image that captures the state of the randomness display at a particular point in time, we compute a compact representation – a hash – of the image to derive a fixed-sized output of truly random bytes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VjuWFkK83t3EkTjPxYGc6/fbb3e05cc5c2644a125cc606bb7ebe1e/image4-26.png" alt="Process of converting physical entropy displays into random byte strings." class="kg-image" width="1491" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VjuWFkK83t3EkTjPxYGc6/2ddc9da8c2553a8a1dbb04513de6acbd/image4-26.png" alt="Process of converting physical entropy displays into random byte strings." class="kg-image" width="1491" height="400" loading="lazy">
 
 	</figure>
 	<p>Process of converting physical entropy displays into random byte strings.</p>
@@ -184,7 +184,7 @@ signature = group_sign(round)</code></pre>
 	<p>Since the messages to be signed are known in advance (since they’re just the round number), unchained randomness also unlocks a powerful new property: timelock encryption.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5PVw1hyLALNYG3p20U2f2D/c8bcb541b93bca2e3338e4f0f7b1ce16/image7-7.png" alt="Rotating double pendulums." class="kg-image" width="1999" height="381" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PVw1hyLALNYG3p20U2f2D/eeac0fd2fe805cabc1b75055cc0b0076/image7-7.png" alt="Rotating double pendulums." class="kg-image" width="1999" height="381" loading="lazy">
 
 	</figure>
 	<p>Rotating double pendulums.</p>
@@ -244,7 +244,7 @@ curl -X POST --data-binary @encrypted.pem --fail --show-error https://tlock-work
 	<p>And she gazed at the sky, the sea, the landThe waves and the caves and the golden sand.She gazed and gazed, amazed by it all,And she said to the whale, “I feel so small.”</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/aUx8oEz7t6W649nYlAmzD/8c97752f8cc25668a31116185abc01f1/image1-30.png" alt="A snail on a whale." class="kg-image" width="1999" height="381" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aUx8oEz7t6W649nYlAmzD/f4658fe8a6b467804f2e6c21c9dec2cb/image1-30.png" alt="A snail on a whale." class="kg-image" width="1999" height="381" loading="lazy">
 
 	</figure>
 	<p>A snail on a whale.</p><!--kg-card-begin: html-->

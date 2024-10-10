@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5do9zHtgVCZfCILMjoXAmV/08e1beffdd2bb6b730103fd4f1a9f18d/Mitigating-a-Token-Length-Side-Channel-attack-in-our-AI-products.png" alt="Mitigating a token-length side-channel attack in our AI products" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5do9zHtgVCZfCILMjoXAmV/0f7e2e3b4bdb298d7fd8c0a97d3b2a19/Mitigating-a-Token-Length-Side-Channel-attack-in-our-AI-products.png" alt="Mitigating a token-length side-channel attack in our AI products" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Since the discovery of <a href="https://en.wikipedia.org/wiki/CRIME">CRIME</a>, <a href="https://breachattack.com">BREACH</a>, <a href="https://media.blackhat.com/eu-13/briefings/Beery/bh-eu-13-a-perfect-crime-beery-wp.pdf">TIME</a>, <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack">LUCKY-13</a> etc., length-based side-channel attacks have been considered practical. Even though packets were encrypted, attackers were able to infer information about the underlying plaintext by analyzing metadata like the packet length or timing information.</p>
@@ -22,7 +22,7 @@
 	<p>In the paper, the authors describe a method in which they intercept the stream of a chat session with an LLM provider, use the network packet headers to infer the length of each token, extract and segment their sequence, and then use their own dedicated LLMs to infer the response.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EeuXpPSqqvqIZKZUFPKEY/b24b41e4779e5866e2b9038883064697/pasted-image-0--2--3.png" alt="" class="kg-image" width="1600" height="1045" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EeuXpPSqqvqIZKZUFPKEY/951a777d273caf172933639d9f5d6f12/pasted-image-0--2--3.png" alt="" class="kg-image" width="1600" height="1045" loading="lazy">
 
 	</figure>
 	<p>The two main requirements for a successful attack are an AI chat client running in <b>streaming</b> mode and a malicious actor capable of capturing network traffic between the client and the AI chat service. In streaming mode, the LLM tokens are emitted sequentially, introducing a token-length side-channel. Malicious actors could eavesdrop on packets via public networks or within an ISP.</p>
@@ -34,7 +34,7 @@ https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta
 	<p>Let’s use <a href="https://www.wireshark.org">Wireshark</a> to inspect the network packets on the LLM chat session while streaming:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sII07hkJGaVXBKlWoBoEW/b688daa6d6ec530152da6cd63d87febe/media.png" alt="" class="kg-image" width="1600" height="770" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sII07hkJGaVXBKlWoBoEW/a1c3be395e0bee3ec5ed690947737d51/media.png" alt="" class="kg-image" width="1600" height="770" loading="lazy">
 
 	</figure>
 	<p>The first packet has a length of 95 and corresponds to the token "Port" which has a length of four. The second packet has a length of 93 and corresponds to the token "ug" which has a length of two, and so on. By removing the likely token envelope from the network packet length, it is easy to infer how many tokens were transmitted and their sequence and individual length just by sniffing encrypted network data.</p>

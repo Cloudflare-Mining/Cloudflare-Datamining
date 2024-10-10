@@ -1,10 +1,10 @@
 <div class="mb2 gray5">13 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/when-tcp-sockets-refuse-to-die">简体中文</a> and <a href="https://blog.cloudflare.com/ko-kr/when-tcp-sockets-refuse-to-die">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jngEokSW0B3fkcnXiXP0x/308adfcb050567c85e238e9140e20a3c/when-tcp-sockets-refuse-to-die.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/when-tcp-sockets-refuse-to-die">简体中文</a> and <a href="https://blog.cloudflare.com/ko-kr/when-tcp-sockets-refuse-to-die">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jngEokSW0B3fkcnXiXP0x/b76883548bfb4a1132a5b3e4e9ebfeb4/when-tcp-sockets-refuse-to-die.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>While working on our <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum server</a>, we noticed something weird: the TCP sockets which we thought should have been closed were lingering around. We realized we don't really understand when TCP sockets are supposed to time out!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4J7NyByY5rLMwGCjildxuX/a9a9df26a82aa43e231c0bc1f74ca047/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga" class="kg-image" width="1000" height="754" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4J7NyByY5rLMwGCjildxuX/a80e344de39529860fe89230fff4259c/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga" class="kg-image" width="1000" height="754" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg">Image</a> by Sergiodc2 CC BY SA 3.0</p>

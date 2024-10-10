@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j4rvXLTKgqCZFp2iPVXbe/d6f49b678a341be94f5f9767bb88a1ca/http2-prioritization.png" alt="HTTP/2 Prioritization" class="kg-image" width="1600" height="1122" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j4rvXLTKgqCZFp2iPVXbe/e233c11eda52783682410685cb492308/http2-prioritization.png" alt="HTTP/2 Prioritization" class="kg-image" width="1600" height="1122" loading="lazy">
 
 	</figure>
 	<p>HTTP/2 promised a much faster web and Cloudflare rolled out HTTP/2 access for all our customers long, long ago. But one feature of HTTP/2, Prioritization, didn’t live up to the hype. Not because it was fundamentally broken but because of the way browsers implemented it.</p>
@@ -33,7 +33,7 @@
 	<p>As described above, early in the page load cycle before the browser can render any content it is blocked on the CSS and blocking JavaScript in the <code>&lt;head&gt;</code> section of the HTML. During that part of the loading cycle it is best for 100% of the connection bandwidth to be used to download the blocking resources and for them to be downloaded one at a time in the order they are defined in the HTML. That lets the browser parse and execute each item while it is downloading the next blocking resource, allowing the download and execution to be pipelined.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/s20F4kV70i7sqhrMifCLU/4d974c5427c1427d3ec83bbb7f52c4ba/pipeline-1.png" alt="JavaScript Loading and Execution Pipelined" class="kg-image" width="800" height="555" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s20F4kV70i7sqhrMifCLU/588f1954891895eedbc46df730d8afdc/pipeline-1.png" alt="JavaScript Loading and Execution Pipelined" class="kg-image" width="800" height="555" loading="lazy">
 
 	</figure>
 	<p>The scripts take the same amount of time to download when downloaded in parallel or one after the other but by downloading them sequentially the first script can be processed and execute while the second script is downloading.</p>
@@ -84,7 +84,7 @@
 		<li>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OIMMAGl8LZikj4It8RAYg/c48facfdf9f96d69aae5b50e67d01ae3/html-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OIMMAGl8LZikj4It8RAYg/96a1907773267633865d327e62dea3e7/html-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
 
 			</figure>
 			<p> The HTML file for the page itself, represented by a blue box.</p>
@@ -92,7 +92,7 @@
 		<li>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BP5CWQGXtZ8sWj4SJlyVf/90b8ed7bf3e9b6863518f62676cb2495/css-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BP5CWQGXtZ8sWj4SJlyVf/dd3304c7a9ae5d21ad1f84880fb2d41c/css-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
 
 			</figure>
 			<p> 1 external stylesheet (CSS file), represented by a green box.</p>
@@ -100,7 +100,7 @@
 		<li>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3noRXnXFonNFph0rYzLvPv/b265f5c04746b2895f655557e56aab71/script-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3noRXnXFonNFph0rYzLvPv/4cb372a4e370eaf1e4dfd28eac5d5d51/script-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
 
 			</figure>
 			<p> 4 external scripts (JavaScript), represented by orange boxes. 2 of the scripts are blocking at the beginning of the page and 2 are asynchronous. The blocking script boxes use a darker shade of orange.</p>
@@ -108,7 +108,7 @@
 		<li>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GtlFz84dSeXdWAUCu9ROy/5b83c865ac15203536c24ef8426b1aa4/font-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GtlFz84dSeXdWAUCu9ROy/307487b2d0c4ed24439246f7056cc136/font-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
 
 			</figure>
 			<p> 1 custom web font, represented by a red box.</p>
@@ -116,7 +116,7 @@
 		<li>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4iuJKYAeJY7Ls3eet2ugyn/5ae9327a000a3bced36f85029db2c8ad/image-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iuJKYAeJY7Ls3eet2ugyn/ff630135ca693a8a37f2181a88a82888/image-1.png" alt="" class="kg-image" width="237" height="190" loading="lazy">
 
 			</figure>
 			<p> 13 images, represented by purple boxes. The page logo and 4 of the product images are visible in the viewport and 8 of the product images require scrolling to see. The 5 visible images use a darker shade of purple.</p>
@@ -125,13 +125,13 @@
 	<p>For simplicity, we will assume that all of the resources are the same size and each takes 1 second to download on the visitor’s connection. Loading everything takes a total of 20 seconds, but HOW it is loaded can have a huge <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">impact</a> to the experience.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZDzhZm88h13LKAQAlmJ3W/02a017af64d49c67dead21bfeded6109/optimal-1.png" alt="Optimal Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZDzhZm88h13LKAQAlmJ3W/0283bd74ba6c85042717a096a1aa00ba/optimal-1.png" alt="Optimal Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
 
 	</figure>
 	<p>This is what the described optimal loading would look like in the browser as the resources load:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VglYMpZ814iSoMmiDEoLz/448bf3ea56d9c824266f04d2440a7992/Optimal_loading-1.gif" alt="Optimal Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VglYMpZ814iSoMmiDEoLz/a5e4849cf69b7adeb7be5bba7cb863cd/Optimal_loading-1.gif" alt="Optimal Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<ul>
@@ -169,25 +169,25 @@
 	<p><b>Microsoft Edge and Internet Explorer</b> <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#microsoft_edge_internet_explorer">do not support prioritization</a> so everything falls back to the HTTP/2 default which is to load everything in parallel, splitting the bandwidth evenly among everything. Microsoft Edge is moving to use the Chromium browser engine in future Windows releases which will help improve the situation. In our example page this means that the browser is stuck in the head for the majority of the loading time since the images are slowing down the transfer of the blocking scripts and stylesheets.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ERv7hb1NYBHy60aJuy5jD/1f63f02b2853157cba059b6c561ba380/edge-1.png" alt="Microsoft Edge Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ERv7hb1NYBHy60aJuy5jD/04cd8f5947317252fa17648d4d227216/edge-1.png" alt="Microsoft Edge Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
 
 	</figure>
 	<p>Visually that results in a pretty painful experience of staring at a blank screen for 19 seconds before most of the content displays, followed by a 1-second delay for the text to display. Be patient when watching the animated progress because for the 19 seconds of blank screen it may feel like nothing is happening (even though it is):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UcgquIFWREMgbBsEJNQk2/ecd62101dd854795abe9aec774f759d3/Edge_loading-1.gif" alt="Microsoft Edge Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UcgquIFWREMgbBsEJNQk2/5caa49f6d98a28bc407bd1d6773670f8/Edge_loading-1.gif" alt="Microsoft Edge Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<p><b>Safari</b> <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#safari">loads all resources in parallel</a>, splitting the bandwidth between them based on how important Safari believes they are (with render-blocking resources like scripts and stylesheets being more important than images). Images load in parallel but also load at the same time as the render-blocking content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2L8xcpZEdYQJstyuI5ORRR/b273bbdc0df8146ec267f563bca72443/safari-1.png" alt="Safari Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2L8xcpZEdYQJstyuI5ORRR/45220b046032cb8ffd1f2ce85cc1f0cd/safari-1.png" alt="Safari Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
 
 	</figure>
 	<p>While similar to Edge in that everything downloads at the same time, by allocating more bandwidth to the render-blocking resources Safari can display the content much sooner:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bN7ouLtrKcl2dWQ2fESJ5/51bd2d99a1a8ba5971b6007b63e21814/Safari_loading-1.gif" alt="Safari Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bN7ouLtrKcl2dWQ2fESJ5/f7fd9768b20b76deb0dcee3488fa0296/Safari_loading-1.gif" alt="Safari Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<ul>
@@ -204,13 +204,13 @@
 	<p><b>Firefox</b> builds a dependency tree that <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#firefox">groups resources</a> and then schedules the groups to either load one after another or to share bandwidth between the groups. Within a given group the resources share bandwidth and download concurrently. The images are scheduled to load after the render-blocking stylesheets and to load in parallel but the render-blocking scripts and stylesheets also load in parallel and do not get the benefits of pipelining.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mnypoOho1hKfUiSl834Cf/02979dea36acf5834bf86f6dc0f90b34/firefox-1.png" alt="Firefox Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mnypoOho1hKfUiSl834Cf/7aeef99c40884ea1c4807f7ba3cfdbc3/firefox-1.png" alt="Firefox Scheduling" class="kg-image" width="1080" height="170" loading="lazy">
 
 	</figure>
 	<p>In our example case this ends up being a slightly faster experience than with Safari since the images are delayed until after the stylesheets complete:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yjKwptC34WE2GigxNdo0R/35af024762536eec81566c542b246cab/Firefox_loading-1.gif" alt="Firefox Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yjKwptC34WE2GigxNdo0R/7a7616f2c1876d62765649bd768b698a/Firefox_loading-1.gif" alt="Firefox Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<ul>
@@ -227,13 +227,13 @@
 	<p><b>Chrome</b> (and all Chromium-based browsers) prioritizes resources into a <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#chrome">list</a>. This works really well for the render-blocking content that benefits from loading in order but works less well for images. Each image loads to 100% completion before starting the next image.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VAHVWx6bngx7CK2px6qAe/85f53184dd5609912fa27037ee73dfd2/chrome-1.png" alt="Chrome Scheduling" class="kg-image" width="1080" height="171" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4VAHVWx6bngx7CK2px6qAe/08da953608a3d887b8ae59d68db633be/chrome-1.png" alt="Chrome Scheduling" class="kg-image" width="1080" height="171" loading="lazy">
 
 	</figure>
 	<p>In practice this is almost as good as the optimal loading case with the only difference being that the images load one at a time instead of in parallel:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WxB31Ov3jzmpNmPRjH0A5/5511074064fce26e86328904ffdefd9d/Chrome_loading-1.gif" alt="Chrome Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WxB31Ov3jzmpNmPRjH0A5/8e23e517276c6a13e7c7f0087f23bd65/Chrome_loading-1.gif" alt="Chrome Loading Animation" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<ul>
@@ -258,7 +258,7 @@
 	<p>Visually, the impact can be quite dramatic, even though they all take the same amount of time to technically load all of the content:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67CSkIvoirmEfMIUAo4y07/5fbb6cb80d263106f157e27bdd53bd83/compare.gif" alt="Visual Comparison" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67CSkIvoirmEfMIUAo4y07/ed87a8f8ce29a212c1cd09c2c69ec95a/compare.gif" alt="Visual Comparison" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -274,7 +274,7 @@
 	<p>The Cloudflare prioritization scheme consists of 64 priority “levels” and within each priority level there are groups of resources that determine how the connection is shared between them:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/245bFqwfOBgQvwwRLWGNGE/aaaa1d5815f3519bd78f7ff804536dc9/priorities.png" alt="Prioritization Model" class="kg-image" width="700" height="589" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/245bFqwfOBgQvwwRLWGNGE/6898590819dedda5cf30444e7014c059/priorities.png" alt="Prioritization Model" class="kg-image" width="700" height="589" loading="lazy">
 
 	</figure>
 	<p>All of the resources at a higher priority level are transferred before moving on to the next lower priority level.</p>
@@ -302,13 +302,13 @@
 	<p>When enabled, the enhanced prioritization implements the “optimal” scheduling of resources described above. The specific prioritizations applied look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36JhpUvPcpYATKuUcb0HQm/54eb9c5f9e0fb30bd626ec7c3a7336d2/defaults.png" alt="Default Prioritization Scheme" class="kg-image" width="665" height="538" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36JhpUvPcpYATKuUcb0HQm/5588ef0b814df225b2f1d934f34c4638/defaults.png" alt="Default Prioritization Scheme" class="kg-image" width="665" height="538" loading="lazy">
 
 	</figure>
 	<p>This prioritization scheme allows sending the render-blocking content serially, followed by the visible images in parallel and then the rest of the page content with some level of sharing to balance application and content loading. The “* If Detectable” caveat is that not all browsers differentiate between the different types of stylesheets and scripts but it will still be significantly faster in all cases. 50% faster by default, particularly for Edge and Safari visitors is not unusual:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3br9uRCejjByZGW4mVxQyp/d32952b72cbdea6a675acbf4a5a9e100/filmstrip2.png" alt="Filmstrip Comparison" class="kg-image" width="1462" height="316" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3br9uRCejjByZGW4mVxQyp/d4755f71f3b5432373244dbe1ac7e89d/filmstrip2.png" alt="Filmstrip Comparison" class="kg-image" width="1462" height="316" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -349,7 +349,7 @@
 	<p>If you are on a <a href="https://www.cloudflare.com/plans/pro">Pro plan</a> or above, head over to the speed tab in the Cloudflare dashboard and turn on “Enhanced HTTP/2 Prioritization” to accelerate your site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36yaMZfdrrrZlYjivB5xnY/0f7959c4a9ce4770e6c8a1dcb29be830/speed-week-copy-2_2x.png" alt="Cloudflare Speed Week" class="kg-image" width="1500" height="708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36yaMZfdrrrZlYjivB5xnY/8730346008c9a991586a91b61754fd1c/speed-week-copy-2_2x.png" alt="Cloudflare Speed Week" class="kg-image" width="1500" height="708" loading="lazy">
 
 	</figure>
 </div>

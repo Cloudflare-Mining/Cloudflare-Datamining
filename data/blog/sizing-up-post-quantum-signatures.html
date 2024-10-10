@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3vOvxNmO1CVHGmn09PDspE/28e7bcf0acd089fb63dbe3f70dbb1885/image4-6.png" alt="Sizing Up Post-Quantum Signatures" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vOvxNmO1CVHGmn09PDspE/af86df23efd588e9bfed5df9e178a49b/image4-6.png" alt="Sizing Up Post-Quantum Signatures" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Quantum computers are a boon and a bane. Originally <a href="https://link.springer.com/chapter/10.1007%2F978-3-030-23922-0_2">conceived</a> by Manin and Feynman to simulate nature efficiently, large-scale quantum computers will speed-up innovation in material sciences by orders of magnitude. Consider the technical advances enabled by the discovery of new materials (with bronze, iron, steel and silicon each ascribed their own age!); quantum computers could help to unlock the next age of innovation. Unfortunately, they will also break the majority of the cryptography that’s currently used in TLS to protect our web browsing. They fall in two categories:</p>
@@ -49,7 +49,7 @@
 	<p>The three finalists of the NIST competition are <a href="https://pq-crystals.org/dilithium/index.shtml">Dilithium</a>, <a href="https://falcon-sign.info">Falcon</a> and <a href="https://www.pqcrainbow.org">Rainbow</a>. In the table below we compare them against RSA and ECDSA, both of which are in common use today, and a selection of other PQ schemes that might see standardisation in the future.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jWjoMzawYpHGELyZHZYxl/2420cbd2ae3c7309f8369c10cb12f982/Screenshot-2021-11-22-at-13.17.20.png" alt="(* There are many caveats to this table. We compare instances of PQC security level 1. Signing and verification times vary considerably by hardware platform and implementation constraints. They should be taken as a rough indication only. The signing time of Falcon512 is discussed later on. We do not list all relevant variants of the NIST alternates or promising schemes. This instance of XMSS can only sign a million messages, is stateful, requires quite a bit of storage for quick signing, is not standardised and thus far from a drop-in replacement. Rainbow has one other variant, which has smaller private keys.)" class="kg-image" width="1616" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jWjoMzawYpHGELyZHZYxl/23d58d97907d027f97bc49a9343e459b/Screenshot-2021-11-22-at-13.17.20.png" alt="(* There are many caveats to this table. We compare instances of PQC security level 1. Signing and verification times vary considerably by hardware platform and implementation constraints. They should be taken as a rough indication only. The signing time of Falcon512 is discussed later on. We do not list all relevant variants of the NIST alternates or promising schemes. This instance of XMSS can only sign a million messages, is stateful, requires quite a bit of storage for quick signing, is not standardised and thus far from a drop-in replacement. Rainbow has one other variant, which has smaller private keys.)" class="kg-image" width="1616" height="936" loading="lazy">
 
 	</figure>
 	<p>(* There are many caveats to this table. We compare instances of PQC security level 1. Signing and verification times vary considerably by hardware platform and implementation constraints. They should be taken as a rough indication only. The signing time of Falcon512 is discussed later on. We do not list all relevant variants of the NIST alternates or promising schemes. This instance of XMSS can only sign a million messages, is stateful, requires quite a bit of storage for quick signing, is not standardised and thus far from a drop-in replacement. Rainbow has one other variant, which has smaller private keys.)</p>
@@ -189,7 +189,7 @@
 	<p>The strength of the two effects can differ. With a fast connection and high RTT we expect to see the graph below on the left. With a slow connection and low RTT, we expect the one on the right.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jCdECcIdSmu6J04h85L0Y/69a737b1c3aab7e360b659a905d141dd/image2.jpg" alt="illustration of the gentle slope and cwnd wall with different strengths." class="kg-image" width="1999" height="782" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jCdECcIdSmu6J04h85L0Y/20f4c11f1f366c1ff98fd7a405ab0dec/image2.jpg" alt="illustration of the gentle slope and cwnd wall with different strengths." class="kg-image" width="1999" height="782" loading="lazy">
 
 	</figure>
 	<p>There might be other unknown effects. The best thing is to have a look.</p>
@@ -215,7 +215,7 @@
 	<p>In the graph below on the left we break the number of received live connections down by the number of dummy certificates added. Because we pick the number of certificates randomly, the graph is noisy. To get a clearer picture, we started storing the number of certificates added in the corresponding control request, which gives us the graph on the right. The bumps at 10kB and 30kB suggest that there are clients or middleboxes that cannot handle these handshake sizes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AIbHQImRIWL8z1KMW8h05/78a11d4673c0a4f4b7d50a92cc4da82b/image3-13.png" alt="a graph of missing live connections against dummy data added" class="kg-image" width="1999" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AIbHQImRIWL8z1KMW8h05/640c8c357daf5493a0eae88258b7529d/image3-13.png" alt="a graph of missing live connections against dummy data added" class="kg-image" width="1999" height="1000" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -229,7 +229,7 @@
 	<p>What is the effect on the handshake time? The graph on the left shows the <a href="https://en.wikipedia.org/wiki/Weighted_median">weighted</a> median and 75th percentile TLS handshake times for different amounts of dummy data added. We use the weight so that every truncated IP contributes equally. On the right we show the slowdowns for each size, relative to the handshake time of the control connection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1boFkI4HQ2uOqmp3yb0gL5/ab9cd7c3ced910b55d0434e5c3c5c3d7/image1-8.png" alt="A graph of TLS handshake time against kB of dummy data added." class="kg-image" width="1999" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1boFkI4HQ2uOqmp3yb0gL5/cdecd307ee2017a5b0e4d922bfd846ba/image1-8.png" alt="A graph of TLS handshake time against kB of dummy data added." class="kg-image" width="1999" height="1000" loading="lazy">
 
 	</figure>
 	<p>We can see the <i>not-so-gentle slope</i> until 40kB, where we hit a <i>little</i> <i>wall</i> that corresponds to Cloudflare’s default initial congestion window of 30 packets.</p>

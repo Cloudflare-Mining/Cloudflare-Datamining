@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dIaTbP5C8HqI6HXO1qCmq/8cdeb32e7e95f04f34a1139a8b064a62/introducing-ssl-for-saas.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dIaTbP5C8HqI6HXO1qCmq/f6668c86834cdb288d144c3c7ffb815d/introducing-ssl-for-saas.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you’re running a SaaS company, you know how important it is that your application is performant, highly available, and hardened against attack. Your customers—and your revenue stream—depend on it. Putting your app behind a solution such as Cloudflare is an obvious move for your own infrastructure, but how do you securely (and easily) extend these benefits to your customers?</p>
 	<p>If your customers interact with your app on your domain and don’t care about branding under their custom or “vanity” domain (or aren’t paying you for the ability to do so), the solution is straightforward: onboard your domain to Cloudflare and serve the app at either <code>https://app.yourcompany.ltd</code> or <code>https://yourcustomer.yourcompany.ltd</code>. But if your customers want to host your application, portal, content management solution, etc. on their own domain for improved SEO and discoverability, e.g., <code>https://app.yourcustomer.site</code> the solution is not so easy.</p>
@@ -13,7 +13,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qDp3DNp7jaQsIs7WEtlSh/7f33f87cf3020d39edeab11531aa567d/Overview-Diagram.png" alt="SSL for SaaS - Process Overview" class="kg-image" width="1768" height="2857" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qDp3DNp7jaQsIs7WEtlSh/5d05b77519b2eadac23ad6da3d34d93b/Overview-Diagram.png" alt="SSL for SaaS - Process Overview" class="kg-image" width="1768" height="2857" loading="lazy">
 
 	</figure>
 	<p>Until today, your best bet was to ask them to CNAME over to your infrastructure, have them generate a private key and CSR, send the latter to a CA for signing, and then securely provide you with the key material (and again upon renewal). Or maybe you have engineering resources to spend and can build and maintain a solution to generate and securely store private keys, acquire and renew certificates, and push them to a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> so TLS can be terminated in a performant manner (i.e., as close to your customers’ users as possible). Whichever route you choose, the technical complexity and burden of maintenance is high—either for your customers or your engineering and support teams.</p>
@@ -58,7 +58,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	<p>Your customer’s customers can now securely access their white labeled version of your application over HTTPS and take advantage of all the benefits it enables, such as <a href="https://blog.cloudflare.com/introducing-http2">the HTTP/2 protocol</a>. These certificates and their keys are issued uniquely to your customer’s hostname (i.e., not co-located with any other customers), and served globally from a PoP close to your customer’s visitors.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kAhHG3mjyN5eL77YwkBaC/e5bfb1e945f69a05a5b653dbd622fad7/app-yourcustomer-site.png" alt="Screenshot of https://app.yourcustomer.site and certificate" class="kg-image" width="1662" height="1342" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kAhHG3mjyN5eL77YwkBaC/cb7aabcc89aff99c3695b77927408d2a/app-yourcustomer-site.png" alt="Screenshot of https://app.yourcustomer.site and certificate" class="kg-image" width="1662" height="1342" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

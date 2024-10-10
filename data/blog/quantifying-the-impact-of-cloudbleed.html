@@ -1,4 +1,4 @@
-<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ksR5VcO0OYSbhXfOzGh8k/3ae66d71b58c705694f57581f560bfbd/quantifying-the-impact-of-cloudbleed.png" alt="">
+<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ksR5VcO0OYSbhXfOzGh8k/aca744ddb43483b527b73def46a95b2a/quantifying-the-impact-of-cloudbleed.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last Thursday we <a href="https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug">released details</a> on a bug in Cloudflare's parser impacting our customers. It was an extremely serious bug that caused data flowing through Cloudflare's network to be leaked onto the Internet. We fully patched the bug within hours of being notified. However, given the scale of Cloudflare, the impact was potentially massive.</p>
 	<p>The bug has been dubbed “Cloudbleed.” Because of its potential impact, the bug has been written about extensively and generated a lot of uncertainty. The burden of that uncertainty has been felt by our partners, customers, and our customers’ customers. The question we’ve been asked the most often is: what risk does Cloudbleed pose to me?</p>
@@ -21,7 +21,7 @@
 	<p>The bug caused the parser, when it encountered unterminated attribute at the end of a page, to not stop when it reached the end of the portion of memory for the particular page being parsed. Instead, the parser continued to read from adjacent memory, which contained data from other customers' requests. The contents of that adjacent memory was then dumped onto the page with the flawed HTML.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yvI4wl7lorT0A9EMcML1J/dd9f251a6688ca4bba1259ceec965255/example-leak.png" alt="" class="kg-image" width="1021" height="871" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yvI4wl7lorT0A9EMcML1J/d568d31dd873504853c484f1aacf269e/example-leak.png" alt="" class="kg-image" width="1021" height="871" loading="lazy">
 
 	</figure>
 	<p>The screenshot above is an example of how data was dumped on pages. Most of the data was random binary data which the browser is trying to interpret as largely Asian characters. That is followed by a number of internal Cloudflare headers.</p>

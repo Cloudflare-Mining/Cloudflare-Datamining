@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16jjPVsiGz8fzNxVYIgsbR/780e70110e7dca28d496c0562907dcc8/image1-62.png" alt="How Cloudflare instruments services using Workers Analytics Engine" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16jjPVsiGz8fzNxVYIgsbR/8c4c93497cd82108d0d74efaf52a96ad/image1-62.png" alt="How Cloudflare instruments services using Workers Analytics Engine" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Workers Analytics Engine is a new tool, <a href="https://blog.cloudflare.com/workers-analytics-engine">announced earlier this year</a>, that enables developers and product teams to build time series analytics about anything, with high dimensionality, high cardinality, and effortless scaling. We built Analytics Engine for teams to gain insights into their code running in Workers, provide analytics to end customers, or even build usage based billing.</p>
@@ -34,7 +34,7 @@
 	<p>Our SQL API parses user SQL queries, transforms and validates them, and then executes them against backend database servers. We then write information about the query back into Analytics Engine so that we can run our own analytics.Writing data into Analytics Engine from a Cloudflare Worker is very simple and <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started">explained in our documentation</a>. We instrument our SQL API in the same way our users do, and this code excerpt shows the data we write into Analytics Engine:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/L30suydy27OFKzv6ua9ML/f2f768f956c2150a89fb7804888e00ef/carbon--3--1.png" alt="" class="kg-image" width="2000" height="1347" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/L30suydy27OFKzv6ua9ML/c49d03afbb62a1e3df7229e6c30e087c/carbon--3--1.png" alt="" class="kg-image" width="2000" height="1347" loading="lazy">
 
 	</figure>
 	<p>With that data now being stored in Analytics Engine, we can then pull out insights about every field we’re reporting.</p>
@@ -60,14 +60,14 @@
 	<p>One query we pay attention to gives us information about the performance of our backend database clusters:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/q8KADDDRyASR7nWPQHoKc/9022e77a2acf9be358c209eca46053e8/image2-45.png" alt="" class="kg-image" width="782" height="301" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/q8KADDDRyASR7nWPQHoKc/c633325aca2b64e464fc820abfd5e653/image2-45.png" alt="" class="kg-image" width="782" height="301" loading="lazy">
 
 	</figure>
 	<p>As you can see, the 99% percentile (corresponding to the 1% most complex queries to execute) sometimes spikes up to about 300ms. But on average our backend responds to queries within 100ms.</p>
 	<p>This visualization is itself generated from an SQL query:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UchtUYBtnDuXwKO7afWUc/f5e25e6059b2b411fa83f66ca7fc04d0/carbon--2-.png" alt="" class="kg-image" width="2000" height="1277" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6UchtUYBtnDuXwKO7afWUc/1a584c18a7ce7fb74bcc2599756ed6f7/carbon--2-.png" alt="" class="kg-image" width="2000" height="1277" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -82,20 +82,20 @@
 	<p>We use this ability to help prioritize improvements to Analytics Engine. Our SQL API supports a fairly standard dialect of SQL but isn’t feature-complete yet. If a user tries to do something unsupported in an SQL query, they get back a structured error message. Those error messages are reported into Analytics Engine. We’re able to aggregate the kinds of errors that our customers encounter, which helps inform which features to prioritize next.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AmDjwutzQH089GhoJHvzw/605d72e3e72b632453f9749e2521bac1/image3-36.png" alt="" class="kg-image" width="795" height="249" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AmDjwutzQH089GhoJHvzw/b734eaa557a88f2d513968f20f10f28a/image3-36.png" alt="" class="kg-image" width="795" height="249" loading="lazy">
 
 	</figure>
 	<p>The SQL API returns errors in the format of <code>type of error: more details</code>, and so we can take the first portion before the colon to give us the type of error. We group by that, and get a count of how many times that error happened and how many users it affected:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z1KYNLPlcb3rYTPJ9Fi8f/ce55340043878cd06d260b6e77fe85b2/Screenshot-2022-11-18-at-08.33.57.png" alt="" class="kg-image" width="1426" height="776" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Z1KYNLPlcb3rYTPJ9Fi8f/78ac0462fa7b5b1ae2db27d1dfd67d2b/Screenshot-2022-11-18-at-08.33.57.png" alt="" class="kg-image" width="1426" height="776" loading="lazy">
 
 	</figure>
 	<p>To perform the above query using an ordinary metrics system, we would need to represent each error type with a different metric. Reporting that many metrics from each microservice creates scalability challenges. That problem doesn’t happen with Analytics Engine, because it’s designed to handle high-cardinality data.</p>
 	<p>Another big advantage of a high-cardinality store like Analytics Engine is that you can dig into specifics. If there’s a large spike in SQL errors, we may want to find which customers are having a problem in order to help them or identify what function they want to use. That’s easy to do with another SQL query:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZghZO2Jyk153qPnvS13Mk/3814dd0a446ff5db06f72b0fe05a4667/carbon-3.png" alt="" class="kg-image" width="2000" height="579" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZghZO2Jyk153qPnvS13Mk/05891f4f5db7f1b3247e615c7d2373e1/carbon-3.png" alt="" class="kg-image" width="2000" height="579" loading="lazy">
 
 	</figure>
 	<p>Inside Cloudflare, we have historically relied on querying our backend database servers for this type of information. Analytics Engine’s SQL API now enables us to open up our technology to our customers, so they can easily gather insights about their services at any scale!</p>

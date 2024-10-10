@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3axBr3KhM3lpCwdtHMpi1U/9469fef2f0dddc898c2b701a2b5d02e3/microsoft-tls-downgrade-schannel-bug.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3axBr3KhM3lpCwdtHMpi1U/aaa4b6a3b4e5e8e858eac21ec7e69cb8/microsoft-tls-downgrade-schannel-bug.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="initial-problem-report">Initial Problem Report</h3>
@@ -35,7 +35,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VAT8f6rBufmgbfy91WOGY/0982f6da7f028d24b4a8cc39fc57cb87/without-with-resume-2.png" alt="Figure 1 - Full TLS handshake vs. abbreviated TLS handshake" class="kg-image" width="3683" height="1921" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VAT8f6rBufmgbfy91WOGY/9b9c41d4907e3b5837b61519c45d57af/without-with-resume-2.png" alt="Figure 1 - Full TLS handshake vs. abbreviated TLS handshake" class="kg-image" width="3683" height="1921" loading="lazy">
 
 	</figure>
 	<h5>Figure 1 - Full TLS handshake vs. abbreviated TLS handshake</h5>
@@ -65,7 +65,7 @@
 	<p>According to session ticket specification, the server can, for any reason, reject the session ticket presented to it in an abbreviated handshake and force a full negotiation. When it does this, it simply sends the <code>NewSessionTicket</code> message immediately after receiving the <code>Finished</code> message from the client. The client then saves the new ticket and uses it for subsequent requests. This message flow is documented below in Figure 2, and does not present any problems for our customers’ .NET and IE visitors. That is to say, it’s not part of the bug we uncovered.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PhOpxocO0n4roYPOHxXKh/d61d860040f562302879042b2c4e9237/new-ticket.png" alt="Figure 2 - Server Rejecting Ticket, Performing Full Handshake, and Issuing New Session Ticket" class="kg-image" width="1903" height="1667" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PhOpxocO0n4roYPOHxXKh/e38041b8b0b061aab4b7dfb597072ba4/new-ticket.png" alt="Figure 2 - Server Rejecting Ticket, Performing Full Handshake, and Issuing New Session Ticket" class="kg-image" width="1903" height="1667" loading="lazy">
 
 	</figure>
 	<p>* <i>Indicates optional message</i></p>
@@ -78,7 +78,7 @@
 	<p>This use case is illustrated below, in Figure 3, with <b>emphasis added</b> on the <code>NewSessionTicket</code> message that was problematic for Microsoft:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7s0wxkvufPUGaHuMdBVPME/5d55e22ccf8d1ede5439797946bf05e5/new-ticket-abbreviated.png" alt="Figure 3 - Server Issuing New Session Ticket during Abbreviated Handshake" class="kg-image" width="1903" height="1328" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7s0wxkvufPUGaHuMdBVPME/1d1de1840be5d57e096b15732b36f729/new-ticket-abbreviated.png" alt="Figure 3 - Server Issuing New Session Ticket during Abbreviated Handshake" class="kg-image" width="1903" height="1328" loading="lazy">
 
 	</figure>
 	<h5>Figure 3 - Server Issuing New Session Ticket during Abbreviated Handshake</h5>
@@ -113,14 +113,14 @@
 	<p>Recall that these 192 bytes represent an encrypted data structure that contains, among other details, the lifetime of the session and the cipher suite originally negotiated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uQPZ2zgdUe1lCagw2KI1D/9a00541d2ab7afa55932154370639096/cap1.png" alt="" class="kg-image" width="1280" height="1061" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uQPZ2zgdUe1lCagw2KI1D/6cad3ded61d84eda8e4c2f88be5770de/cap1.png" alt="" class="kg-image" width="1280" height="1061" loading="lazy">
 
 	</figure>
 	<h5>Part 2: Turning Over The Key</h5>
 	<p>Upon receipt of the session ticket from the client, our edge decrypts it and checks to see if the current key is still valid. After determining that the key has expired and should not be used again (other than to decrypt old tickets), it substitutes in a new key that’s used to re-encrypt the ticket and returns it to the client as part of a <code>NewSessionTicket</code> message. All of these steps take place as part of the same abbreviated handshake.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46VNgizFMZHlfZ3oTg1cYI/56436ab31e538de804eb83ebb3de1bed/cap2.png" alt="" class="kg-image" width="1280" height="1062" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46VNgizFMZHlfZ3oTg1cYI/9ef6d7a36ef08bc18f93efd0bc4c9675/cap2.png" alt="" class="kg-image" width="1280" height="1062" loading="lazy">
 
 	</figure>
 	<h5>Part 3: Aborting The Connection</h5>
@@ -129,14 +129,14 @@
 	<p>Another difference is that the TLS 1.0 handshake does not support the <code>signature_algorithm</code> extension (<code>0x00d</code>). Included in the TLS 1.2 specification (see <a href="https://www.ietf.org/rfc/rfc5246.txt">RFC 5246</a>), this extension specifies preference-ordered pairs of signature hash algorithms (e.g., SHA-256/RSA, SHA-256/ECDSA) that the user agent can validate. In fact, this is the primary data point that CloudFlare looks at when <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">determining whether to serve a SHA-2 or SHA-1</a> certificate to the client.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hrWoDcov1QRLrRQMAo3Wy/b0f7a48f3488176757903cf4154f392d/cap3.png" alt="" class="kg-image" width="1280" height="1061" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hrWoDcov1QRLrRQMAo3Wy/d35b6c32930867c2a850955899ab4a04/cap3.png" alt="" class="kg-image" width="1280" height="1061" loading="lazy">
 
 	</figure>
 	<h5>Part 4: Completing a Downgraded Connection</h5>
 	<p>Finally, the TLS 1.0 handshake completes, during which a new session ticket is sent back to the browser—this time as part of a full handshake. SChannel has no issue with full handshakes, so it commences sending application data (e.g., GET and POST requests).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40cjuNR3tFjQ6VX1A35Yjx/35538701f52dd4718d9913ad1f715911/cap4-1.png" alt="" class="kg-image" width="1280" height="1118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40cjuNR3tFjQ6VX1A35Yjx/0431fa73d976338f9fa761ae7646cffb/cap4-1.png" alt="" class="kg-image" width="1280" height="1118" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

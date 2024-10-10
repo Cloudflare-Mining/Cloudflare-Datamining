@@ -1,10 +1,10 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TSi6QesWGg8xsGPNpl3X6/76dd04afc96a3e41d8f111aaedc5478b/the-making-of-cloudflare-warp.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TSi6QesWGg8xsGPNpl3X6/34e8e182917fe5f6b9cdf49d361283a0/the-making-of-cloudflare-warp.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>NOTE: Prior to launch, this product was renamed Argo Tunnel. Read more in the </i><a href="https://blog.cloudflare.com/argo-tunnel"><i>launch announcement</i></a><i>.</i></p>
 	<p>In the real world, tunnels are often carved out from the mass of something bigger - a hill, the ground, but also man-made structures.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OsNZgEQM7Ug8rMo9Wotdb/b74e0f678b8014e53ff2ddd2e99906b7/11421362975_6f97cac5dc_o.jpg" alt="" class="kg-image" width="2304" height="1728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OsNZgEQM7Ug8rMo9Wotdb/8d136c38e13ea7d387816d847115be9e/11421362975_6f97cac5dc_o.jpg" alt="" class="kg-image" width="2304" height="1728" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/57868312@N00/11421362975">image</a> by <a href="https://www.flickr.com/photos/londonmatt">Matt Brown</a></p>
@@ -46,13 +46,13 @@
 	<p>Cloudflare’s anycast network is great for users of the Internet; lower round-trip times mean faster TLS connections and cached content can be served at lightning speeds. But there was no corresponding benefit for the path to the unicast origin, until the introduction of <a href="https://blog.cloudflare.com/argo">Argo</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/o4GDzVjQLGQoWgfFfWDQb/a7fe9a09c71f7d091deb56c61f66a373/Argo_horizontal.png" alt="" class="kg-image" width="623" height="221" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/o4GDzVjQLGQoWgfFfWDQb/aca5a8a5752048bc0b9dd2a5ee297818/Argo_horizontal.png" alt="" class="kg-image" width="623" height="221" loading="lazy">
 
 	</figure>
 	<p>Argo provides the “virtual backbone” necessary for our anycast network to work as effectively for customers’ origins as it does for their visitors. Using anycast, Warp connects to a nearby Cloudflare PoP. But depending on your server’s location, the route between your visitor’s closest Cloudflare PoP and the one Warp is connected to may not be as fast as if you had connected directly to the origin. Argo levels the playing field by optimising the route within the Cloudflare network. That’s why Argo is enabled for all requests to a Warp-enabled origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aRZ64o1U0oipPLsCaL3BA/5e83662d638e9c835035e4c0d2addb09/argo_animation.gif" alt="" class="kg-image" width="960" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aRZ64o1U0oipPLsCaL3BA/765c1dff494c55c2ae142d319a4b2334/argo_animation.gif" alt="" class="kg-image" width="960" height="375" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

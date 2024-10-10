@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BBORwUyQVDvbxRVyTmzPW/9bfeb776cc2b309d2b1294366d109899/seamless-remote-work-with-cloudflare-access.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BBORwUyQVDvbxRVyTmzPW/f334618816c8f9b66ee77ef8a9658950/seamless-remote-work-with-cloudflare-access.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The novel coronavirus is actively changing how organizations work in real-time. <a href="https://fortune.com/2020/02/03/coronavirus-offices-closed-work-from-home">According</a> to Fortune, the virus has led to the “world’s largest work-from-home experiment.” As the epidemic crosses borders, employees are staying home and <a href="https://www.wsj.com/articles/coronavirus-cabin-fever-working-from-home-tests-employees-endurance-11581965410?ns=prod%2Faccounts-wsj">putting new stress</a> on how companies manage remote work.</p>
 	<p>This is only accelerating an existing trend, however. Remote work has gained <a href="https://www.techrepublic.com/article/how-remote-work-rose-by-400-in-the-past-decade">real traction</a> in the last decade and Gartner <a href="https://www.gartner.com/en/newsroom/press-releases/2020-02-05-gartner-identifies-six-trends-for-chief-human-resourc">projects</a> that it will only continue. However, teams which are moving to a distributed model tend to do so slowly. When those timelines are accelerated, IT and security administrators need to be able to help their workforce respond without disrupting their team members.</p>
@@ -14,13 +14,13 @@
 	<p>When users share a physical space, working on a private network is easy. Users do not need clunky VPN clients to connect to the resources they need. Team members physically sit close to the origin servers and code repositories that power their corporate apps.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vb3IxNBaaz58vi5ZdG7ZQ/65e05ed752a42043b82cb0fb257c91f2/castle.png" alt="" class="kg-image" width="1999" height="1269" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vb3IxNBaaz58vi5ZdG7ZQ/2f758d1ae9964e73bedefd0c47565aee/castle.png" alt="" class="kg-image" width="1999" height="1269" loading="lazy">
 
 	</figure>
 	<p>In this castle-and-moat model, every team member is assumed to be trusted simply by their presence inside of the walls of the office. They can silently attempt to connect to any resource without any default checks. Administrators must build complex <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">network segmentation</a> to avoid breaches and logging is mostly absent.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7w8rQ7XkrR7OMlgYnOsCYY/12febc7162c2059f4d0b8d5125d86d85/new-trend.png" alt="" class="kg-image" width="1999" height="853" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7w8rQ7XkrR7OMlgYnOsCYY/ed017c7dbade801f7980c58f60de56c7/new-trend.png" alt="" class="kg-image" width="1999" height="853" loading="lazy">
 
 	</figure>
 	<p>This model has begun to fall apart for two reasons: the shift to cloud-hosted applications and the distribution of employees around the world.</p>
@@ -40,7 +40,7 @@
 	<p>Administrators build rules to decide who should be able to reach the tools protected by Access. In turn, when users need to connect to those tools, they are prompted to authenticate with their team’s identity provider. Cloudflare Access checks their login against the list of allowed users and, if permitted, allows the request to proceed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Ua0D0p1gHjBwCzHIMUL64/2d142a3c6f4df45c9ef145e9dc21deea/access-diagram.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Ua0D0p1gHjBwCzHIMUL64/8e805da7dcff9b70fc046a64dba99ab1/access-diagram.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
 
 	</figure>
 	<p>Deploying Access does not require exposing new holes in corporate firewalls. Teams connect their resources through a secure outbound connection, Argo Tunnel, which runs in your infrastructure to connect the applications and machines to Cloudflare. That tunnel makes outbound-only calls to the Cloudflare network and organizations can replace complex firewall rules with just one: disable all inbound connections.</p>
@@ -72,7 +72,7 @@
 	<p>Cloudflare Access also includes <a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage">support</a> for native SSH workflows. With Access, developers and engineers can connect over SSH to the code repositories or build systems they need to stay productive. Users can connect remotely, from low-end devices, to powerful servers and machines hosted in cloud environments.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZPbmgm5NxNPDj9npCUDUE/f258cab11b8929900f36bf172f254920/access-ssh.png" alt="" class="kg-image" width="1638" height="809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZPbmgm5NxNPDj9npCUDUE/340e061053114ae628da01adb9d11a6a/access-ssh.png" alt="" class="kg-image" width="1638" height="809" loading="lazy">
 
 	</figure>
 	<p>Additionally, with the SSH feature in Cloudflare Access, organizations can <a href="https://blog.cloudflare.com/public-keys-are-not-enough-for-ssh-security">replace the static SSH keys</a> that live on user devices with short-lived certificates generated when a user logs in to Okta, AzureAD, or any other supported identity provider. If team members working from home are using personal devices, organizations can prevent those devices from ever storing long-lived keys that can reach production systems or code repositories.</p>
@@ -100,7 +100,7 @@
 	<p>Whether those users are employees or contractors and partners, every team member can quickly find the tools they need to avoid losing a step as they shift from working on a private network to a model built on Cloudflare’s global network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NFANT6KtmN8N1VvYgp2FD/8cf6ebd3f461ea54dd1ace2291d82f9e/app-launch-1.png" alt="" class="kg-image" width="2000" height="1253" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NFANT6KtmN8N1VvYgp2FD/d6bda3515e3a3708ab05ead906e0b3a3/app-launch-1.png" alt="" class="kg-image" width="2000" height="1253" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

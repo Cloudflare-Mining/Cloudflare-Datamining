@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TMGu5wPy8iJt7VUIUVChX/c95f07424c5b79c05e28a4a17dce61bf/Argo-2.0.png" alt="" class="kg-image" width="1891" height="1043" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TMGu5wPy8iJt7VUIUVChX/4802c8fdae0cefe9c84ad08059842664/Argo-2.0.png" alt="" class="kg-image" width="1891" height="1043" loading="lazy">
 
 	</figure>
 	<p>We launched Argo in 2017 to improve performance on the Internet. Argo uses real-time global network information to route around brownouts, cable cuts, packet loss, and other problems on the Internet. Argo makes the network that Cloudflare relies on—the Internet—faster, more reliable, and more secure on every hop around the world.</p>
@@ -44,13 +44,13 @@
 	<p>Running benchmarks against an origin server in the central United States, with visitors coming from around the world, Argo delivered the following results:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QhmKy3QxqX1bVS0ocSBEv/5a19761d912c36801fe65d3159fd550c/imageLikeEmbed.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QhmKy3QxqX1bVS0ocSBEv/d99552b53695ddf774047a51b168b1c7/imageLikeEmbed.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>The Argo improvements on the last mile reduced overall time to first byte by 39%, and reduced end-to-end latencies by 5% overall:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KTqyWDQYEei9EdJEtcqyP/e23c34073c81041f9e39fc16e67bdd83/Argo-Latency.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KTqyWDQYEei9EdJEtcqyP/f3979e9eb5e4dd948fb71593787e20a2/Argo-Latency.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -97,7 +97,7 @@
 	<p>To help bridge the gap, Cloudflare makes use of an existing data source that already exists for every Magic Transit customer today: health check probes. Every Magic Transit customer leverages existing health check probes from every single Cloudflare data center back to the customer origin. These probes are used to determine tunnel health for Magic Transit, so that Cloudflare knows which paths back to origin are healthy. These probes contain a variety of information that can also be used to improve performance as well. By examining health check probes and adding them to existing Layer 4 data, Cloudflare can get a better understanding of one-way latencies and can construct a map that allows us to see all the interconnected data centers and how fast they are to each other. Once this customer gets a Cloudflare Network Interconnect, Argo can use the data center-to-data center probes to create an alternate path for the customer that’s different from the public Internet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kkxgXreHeVPEFAl9evYK3/bff88a8ba0c95f4a0d2a1954310c9631/Screen-Shot-2021-09-12-at-10.39.58-AM.png" alt="" class="kg-image" width="2048" height="1045" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kkxgXreHeVPEFAl9evYK3/f3f995b39d3ee24645c68228f398bcdc/Screen-Shot-2021-09-12-at-10.39.58-AM.png" alt="" class="kg-image" width="2048" height="1045" loading="lazy">
 
 	</figure>
 	<p>Using this map, Cloudflare can construct dynamic routes for each customer based on where their traffic enters Cloudflare’s network and where they need to go. This allows us to find the optimal route for Jason Financial and allows us to always pick the fastest path.</p>
@@ -112,7 +112,7 @@
 	<p>We’ve kind of buried the lede here! We’ve talked about how hard it is to optimize performance for IP traffic. The important bit: despite all these difficulties, Argo Smart Routing for Packets is <b>able to provide a 10% average latency improvement worldwide</b> in our internal testing!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yXerXCL7gctXSGJNrllV9/841dba1e04b9dd1ed793ce7852d68a81/Argo-for-Packets.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yXerXCL7gctXSGJNrllV9/88288281b1f29c98d5e1a03551f97cff/Argo-for-Packets.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>Depending on your network topology, you may see latency reductions that are even higher!</p>

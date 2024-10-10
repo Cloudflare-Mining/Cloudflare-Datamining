@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LkGR7C3vqnJCAudl3sGpL/c87afebfc69acc6660c1ba605cdce29b/image1-49.png" alt="Inside Geo Key Manager v2: re-imagining access control for distributed systems" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LkGR7C3vqnJCAudl3sGpL/ecbf276116cffbcaac0c3548d955510d/image1-49.png" alt="Inside Geo Key Manager v2: re-imagining access control for distributed systems" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>In December 2022 we announced the closed beta of the new version of <a href="https://blog.cloudflare.com/configurable-and-scalable-geo-key-manager-closed-beta">Geo Key Manager</a>. Geo Key Manager v2 (GeoV2) is the next step in our journey to provide customers with a secure and flexible way to control the distribution of their private keys by geographic location. Our original system, <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager v1</a>, was launched as a research project in 2017, but as customer needs evolved and our scale increased, we realized that we needed to make significant improvements to provide a better user experience.</p>
@@ -24,7 +24,7 @@
 	<p>In order to terminate TLS, we need to have access to their TLS private keys<sup>1</sup>. The control plane, which handles API traffic, encrypts the customer’s uploaded private key with a master public key shared amongst all machines globally. It then puts the key into a globally distributed KV store, <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>. This means every machine in every data center around the world has a local copy of this customer’s TLS private key. Consequently, every machine in each data center has a copy of every customer’s private key.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45KOue4Z7Pqt5PT5yUSVqw/f55797d78ee3703b6a401bda80d2c750/Customer-uploading-their-TLS-certificate-and-private-key-to-be-stored-in-all-datacenters.png" alt="Customer uploading their TLS certificate and private key to be stored in all data centers" class="kg-image" width="1600" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45KOue4Z7Pqt5PT5yUSVqw/1478d3b8a9bce8d50eab6f22b321bbbf/Customer-uploading-their-TLS-certificate-and-private-key-to-be-stored-in-all-datacenters.png" alt="Customer uploading their TLS certificate and private key to be stored in all data centers" class="kg-image" width="1600" height="730" loading="lazy">
 
 	</figure>
 	<p>Customer uploading their TLS certificate and private key to be stored in all data centers</p>
@@ -32,21 +32,21 @@
 	<p>The first option is to ensure that only EU data centers can receive this key and terminate the handshake. All other machines proxy TLS requests to an EU server for processing. This would require giving each machine only a subset of the entire keyset stored in Quicksilver, which challenges core design decisions Cloudflare has made over the years that assume the entire dataset is replicated on every machine.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6se4wT6SdniH54NPfm18mS/cf20057de77b3b0c256e261f12e88148/Restricting-customer-keys-to-EU-datacenters.png" alt="Restricting customer keys to EU data centers" class="kg-image" width="1600" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6se4wT6SdniH54NPfm18mS/81a94976157a104513106e2e3ff426f8/Restricting-customer-keys-to-EU-datacenters.png" alt="Restricting customer keys to EU data centers" class="kg-image" width="1600" height="730" loading="lazy">
 
 	</figure>
 	<p>Restricting customer keys to EU data centers</p>
 	<p>Another option is to store the keys in the core data center instead of Quicksilver. This would allow us to enforce the proper access control policy every time, ensuring that only certain machines can access certain keys. However, this would defeat the purpose of having a global network in the first place: to reduce latency and avoid a single point of failure at the core.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2f1eETLrGxbeaXVif6AMeT/84281d48caa577af74c67e24788fb0cf/Storing-keys-in-core-datacenter-where-complicated-business-logic-runs-to-enforce-policies.png" alt="Storing keys in core data center where complicated business logic runs to enforce policies" class="kg-image" width="1600" height="692" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2f1eETLrGxbeaXVif6AMeT/e254472211468e843c88ef4993d66477/Storing-keys-in-core-datacenter-where-complicated-business-logic-runs-to-enforce-policies.png" alt="Storing keys in core data center where complicated business logic runs to enforce policies" class="kg-image" width="1600" height="692" loading="lazy">
 
 	</figure>
 	<p>Storing keys in core data center where complicated business logic runs to enforce policies</p>
 	<p>A third option is to use public key cryptography. Instead of having a master key pair, every data center is issued its own key pair. The core encrypts the customer's private key with the keys of every data center allowed to use it. Only machines in the EU will be able to access the key in this example. Let’s assume there are 500 data centers, with 50 machines each. Of these 500 data centers, let’s say 200 are in the EU. Where 100 keys of 1kB consumed a total of 100 x 500 x 50 x 1 kB (globally), now they will consume 200 times that, and in the worst case, up to 500 times. This increases the space it takes to store the keys on each machine by a whole new factor - before, the storage space was purely a function of how many customer keys are registered; now, the storage space is still a function of the number of customer keys, but also multiplied by the number of data centers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LjmrV6IchJV7XMwBrLh3P/cd9ffda143dc89b4011df0bf750e5a49/Assigning-unique-keys-to-each-data-center.png" alt="Assigning unique keys to each data center and wrapping customer key with EU data center keys" class="kg-image" width="1600" height="747" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LjmrV6IchJV7XMwBrLh3P/f20b5c276ed32ba768c35a27fcfd42cc/Assigning-unique-keys-to-each-data-center.png" alt="Assigning unique keys to each data center and wrapping customer key with EU data center keys" class="kg-image" width="1600" height="747" loading="lazy">
 
 	</figure>
 	<p>Assigning unique keys to each data center and wrapping customer key with EU data center keys</p>
@@ -54,7 +54,7 @@
 	<p>A deeper look at the third option reveals – why not create two key pairs instead of a unique one for each data center? One pair would be common among all EU data centers, and one for all non-EU data centers. This way, the core only needs to encrypt the customer’s key twice instead of for each EU data center. This is a good solution for the EU bank, but it doesn’t scale once we start adding additional policies. Consider the example: a data center in New York City could have a key for the policy “<code>country: US</code>”, another one for “<code>country: US or region: EU</code>”, another one for “<code>not country: RU</code>”, and so on… You can already see this getting rather unwieldy. And every time a new data center is provisioned, all policies must be re-evaluated and the appropriate keys assigned.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZU5iEwhfO1EJ16MHNTov8/4e80c8656d27bee9fbfccf108f6ecffb/A-key-for-a-each-policy-and-its-negation.png" alt="A key for each policy and its negation" class="kg-image" width="1600" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZU5iEwhfO1EJ16MHNTov8/cbf855da065b17fbd258fef678100116/A-key-for-a-each-policy-and-its-negation.png" alt="A key for each policy and its negation" class="kg-image" width="1600" height="730" loading="lazy">
 
 	</figure>
 	<p>A key for each policy and its negation</p>
@@ -81,7 +81,7 @@
 	<p>In 2004, Amit Sahai and Brent Waters proposed a new cryptosystem based on access policies, known as attribute-based encryption (ABE). Essentially, a message is encrypted under an access policy rather than an identity. Users are issued a private key based on their attributes, and they can only decrypt the message if their attributes satisfy the policy. This allows for more flexible and fine-grained access control than traditional methods of encryption.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18dR8oSxVPuawAc3180G0h/83612a94e94edb8cccd9370538302127/Group-4899-1.png" alt="Brief timeline of Public Key Encryption" class="kg-image" width="969" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18dR8oSxVPuawAc3180G0h/97bfa963a7638667b85d468e5dcc5ae6/Group-4899-1.png" alt="Brief timeline of Public Key Encryption" class="kg-image" width="969" height="216" loading="lazy">
 
 	</figure>
 	<p>Brief timeline of Public Key Encryption</p>
@@ -184,21 +184,21 @@ assertEquals(plaintext, "secret message")</code></pre>
 	<p>Crucially, this solution can seamlessly scale and respond to changes to machines. If a new machine is added, the central authority can simply issue it a secret key since the participants of the scheme don’t have to be predetermined at setup, unlike our previous identity-broadcast scheme.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GTPTWKh3s1zmc4VdZqePQ/9355feb24519d48d876d1e01c64e1518/Key-Distribution.png" alt="Image: Key Distribution" class="kg-image" width="1600" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GTPTWKh3s1zmc4VdZqePQ/e64697fee21cbbf6271b2e2a6c0f0021/Key-Distribution.png" alt="Image: Key Distribution" class="kg-image" width="1600" height="730" loading="lazy">
 
 	</figure>
 	<p>Key Distribution</p>
 	<p>When a customer uploads their TLS certificate, they can specify a policy, and the central authority will encrypt their private key with the master public key under the specified policy. The encrypted customer key then gets written to Quicksilver, to be distributed to all data centers. In practice, there is a layer of indirection here that we will discuss in a later section.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4q8tdE0dcq932Wf6YOkkmq/9725617bc4ffe9d2e20f12bdc4217496/Encryption-using-Master-Public-Key.png" alt="Encryption using Master Public Key" class="kg-image" width="1600" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4q8tdE0dcq932Wf6YOkkmq/67d3cc560610e82696d01aee83f67443/Encryption-using-Master-Public-Key.png" alt="Encryption using Master Public Key" class="kg-image" width="1600" height="730" loading="lazy">
 
 	</figure>
 	<p>Encryption using Master Public Key</p>
 	<p>When a user visits the customer’s website, the TLS termination service at the data center that first receives the request, fetches the customer’s encrypted private key from Quicksilver. If the service's attributes do not satisfy the policy, decryption fails and the request is proxied to the closest data center that satisfies the policy. Whichever data center can successfully decrypt the key performs the signature to complete the TLS handshake.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7id4cGjSPw6lO8QJR0OJU1/f1a1d303e32582f831bb75589341515a/Decryption-using-Attribute-based-Secret-Key.png" alt="Decryption using Attribute-based Secret Key (Simplified)" class="kg-image" width="1600" height="859" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7id4cGjSPw6lO8QJR0OJU1/012337eb76f55a9e1d39bcca4bcdc76f/Decryption-using-Attribute-based-Secret-Key.png" alt="Decryption using Attribute-based Secret Key (Simplified)" class="kg-image" width="1600" height="859" loading="lazy">
 
 	</figure>
 	<p>Decryption using Attribute-based Secret Key (Simplified)</p>
@@ -576,7 +576,7 @@ assertEquals(plaintext, "secret message")</code></pre>
 	<p>However, policy keys are not generated for every customer’s certificate upload. As shown in the figure below, if a customer requests a policy that already exists in the system and thus has an associated policy key, the policy key will get re-used. Since most customers use the same few policies, such as restricting to one country, or restricting to the EU, the number of policy keys is orders of magnitude smaller compared to the number of customer keys.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5p1FE2hanxyCKNkkOAeJ1n/a686cecaef1184dd3dde248c7f8efc4c/Policy-Keys.png" alt="Policy Keys" class="kg-image" width="1600" height="804" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5p1FE2hanxyCKNkkOAeJ1n/58831f6155a861c2fe004ea2a026f3b0/Policy-Keys.png" alt="Policy Keys" class="kg-image" width="1600" height="804" loading="lazy">
 
 	</figure>
 	<p>Policy Keys</p>
@@ -598,7 +598,7 @@ assertEquals(plaintext, "secret message")</code></pre>
 	<p>Our solution was to use channels for coordination, letting multiple requests execute while we waited for the responses to arrive. When we rolled it out we saw dramatic decreases in tail latency.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/z3qVC6TmrFhWrVyJDS2Am/0c26981c606fe1926b6b2580021d88ab/Untitled-4.png" alt="The results of fixing RPC failures in remote colo in Australia" class="kg-image" width="666" height="514" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/z3qVC6TmrFhWrVyJDS2Am/19e394a04c4b0c30e8fc4d04cb34fa86/Untitled-4.png" alt="The results of fixing RPC failures in remote colo in Australia" class="kg-image" width="666" height="514" loading="lazy">
 
 	</figure>
 	<p>The results of fixing RPC failures in remote colo in Australia</p>
@@ -607,7 +607,7 @@ assertEquals(plaintext, "secret message")</code></pre>
 	<p>Uptime was also significantly improved. Data centers provisioned after cryptographic initiation could now participate in the system, which also implies that data centers that did not satisfy a certain policy had a broader range of satisfying neighbors to which they could forward the signing request to. This increased redundancy in the system, and particularly benefited data centers in regions without the best internet connectivity. The graph below represents successful probes spanning every machine globally over a two-day period. For GeoV1, we see websites with policies for US and EU regions falling to under 98% at one point, while for GeoV2, uptime rarely drops below 4 9s of availability.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69GPaZv0uid2bQK8sc9NPL/077d6b4336e90e9803b23134f61c371c/ss.png" alt="Graph: Uptime by Key Profile across US and EU for GeoV1 and GeoV2, and IN for GeoV2" class="kg-image" width="876" height="369" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69GPaZv0uid2bQK8sc9NPL/d55819c043a0cc35bd6596e7fcf5ab8d/ss.png" alt="Graph: Uptime by Key Profile across US and EU for GeoV1 and GeoV2, and IN for GeoV2" class="kg-image" width="876" height="369" loading="lazy">
 
 	</figure>
 	<p>Uptime by Key Profile across US and EU for GeoV1 and GeoV2, and IN for GeoV2</p>

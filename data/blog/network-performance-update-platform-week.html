@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ETCalDqRtqSwvqO3RMMpp/89f173adfd0b62f6c38bfb7757f23630/eIfTjNuUKg-8rExJ4HVS_B6y05ghflIbY54vI4Y4JORGrrCvhd0G1CkUcw4DAkJK2dT0P5t2MEgzv2K-cxjmhn9MzEujUVP041FqwasJ3ZLCjBrzbQDV7hV7QAbG.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ETCalDqRtqSwvqO3RMMpp/fad2639204cf3b0a1ef7db02ae85b70b/eIfTjNuUKg-8rExJ4HVS_B6y05ghflIbY54vI4Y4JORGrrCvhd0G1CkUcw4DAkJK2dT0P5t2MEgzv2K-cxjmhn9MzEujUVP041FqwasJ3ZLCjBrzbQDV7hV7QAbG.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>In September 2021, we <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">shared extensive benchmarking results</a> of 1,000 networks all around the world. The results showed that on a range of tests (TCP connection time, time to first byte, time to last byte), and on different measures (p95, mean), Cloudflare was the fastest provider in 49% of networks around the world. Since then, we’ve worked to continuously improve performance, with the ultimate goal of being the fastest everywhere and an intermediate goal to grow the number of networks where we’re the fastest by at least 10% every Innovation Week. We met that goal during <a href="https://blog.cloudflare.com/network-performance-update-security-week">Security Week</a> (March 2022), and we’re carrying the work over to Platform Week (May 2022).</p>
@@ -65,7 +65,7 @@
 	<p>For this new test, we decided to look at Wait time in addition to Time to First Byte. <a href="https://www.catchpoint.com/blog/http-request-anatomy">Time to First Byte</a> is the time it takes for a web server to establish a connection, fetch the content, and deliver the first byte of a response to a user, and Wait time is the time the client spends waiting for the server to send back that first byte after the connection is established. We are using this particular measurement to look at the actual time it takes for the server to compute the request on the machine. <a href="https://blog.catchpoint.com/2010/09/17/anatomyhttp/?_ga=2.244682437.1326161414.1652456190-846434697.1631231609">Wait time</a> is a subcomponent of TTFB, and contains the machine processing time, the time it takes the server to give the response to the socket to be sent back to the user, and the time it takes the response to reach the user. There could be latency in passing the request to the socket on the machine, but we measured the actual time it took the server to send the request for all tests and found it to be zero:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eXmohXQvNpex5OqjBXq1u/ce22f5f108c524f5057a092ba3e89b07/image2-39.png" alt="" class="kg-image" width="1974" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eXmohXQvNpex5OqjBXq1u/22d996b996ac35b865ec5d3d7e2e4f78/image2-39.png" alt="" class="kg-image" width="1974" height="486" loading="lazy">
 
 	</figure>
 	<p>So we would calculate the wait time as the amount of time spent on the box plus the time it took the server to send the packet over the wire to the client.</p>
@@ -119,26 +119,26 @@
 	<p>At Security Week (March 2022), we shared that we were faster in more of the most reported networks than our competitors. Out of the top 1,000 networks in the world (by number of IPv4 addresses advertised), here’s a breakdown of how many providers are number one in p95 TCP Connection Time, which represents the time it takes for a user to connect to the provider. This data is from Security Week (March 2022):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27GOQxEzoC8xxd4ENFU4Cm/53d37b3d7c6c859aba3d0e26b8addbac/image5-15.png" alt="" class="kg-image" width="1204" height="516" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27GOQxEzoC8xxd4ENFU4Cm/af66bf107106b32c1dd9dbdfd3d782a5/image5-15.png" alt="" class="kg-image" width="1204" height="516" loading="lazy">
 
 	</figure>
 	<p>Recognizing that we are now looking at different numbers of networks, here is what the distribution looks like for the top 3,000 networks for Platform Week (May 2022):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LmzCwB1Y3BbyJJ1z8v7Yd/3cc1dcda809b5127f0da30f391336d6c/image8-3.png" alt="" class="kg-image" width="1176" height="496" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LmzCwB1Y3BbyJJ1z8v7Yd/7a53c4eb537c6ecf1ea2f675f5d58d68/image8-3.png" alt="" class="kg-image" width="1176" height="496" loading="lazy">
 
 	</figure>
 	<p>In addition to being the fastest across popular <i>networks</i>, Cloudflare is also committed to being the fastest provider in every country.</p>
 	<p>Using data on the top 1,000 networks from Full Stack Week (March 2022), here’s what the world map looks like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zThyt1MKYzfdikI7hkgMV/a6a0b9167d2e95cd9d53482201097c80/image9-2.png" alt="" class="kg-image" width="1999" height="1025" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zThyt1MKYzfdikI7hkgMV/6d77078ebedb85cd2864f4b15d99125c/image9-2.png" alt="" class="kg-image" width="1999" height="1025" loading="lazy">
 
 	</figure>
 	<p>And here’s what the world looks like while looking at the top 3,000 networks:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/47bQqlUVtvF5kNq36qb358/12d7cb8f4a673786b56e8eef087b59d0/image11.png" alt="" class="kg-image" width="1999" height="1007" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47bQqlUVtvF5kNq36qb358/f330ff35feb4f99fa5f9b82101a13cfd/image11.png" alt="" class="kg-image" width="1999" height="1007" loading="lazy">
 
 	</figure>
 	<p>Cloudflare became #1 in more countries in Africa and Europe, some of which previously did not have enough samples to officially be counted to one provider or another.</p>
@@ -153,7 +153,7 @@
 	<p>Moving on from general network results, what does performance look like when comparing serverless compute products across providers — in this case, Cloudflare Workers performance to Compute@Edge? Looking at the Catchpoint data, the first thing we noticed was Cloudflare is faster than Fastly in all tests at the 95th percentile for Time to First Byte:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wL9DyjkpfxlbYQIsPcEKw/38c13f06efdd53e7686361040f2f2008/image3-30.png" alt="" class="kg-image" width="1998" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wL9DyjkpfxlbYQIsPcEKw/d26c3f5e67165cdee85aa69e42e5aec5/image3-30.png" alt="" class="kg-image" width="1998" height="900" loading="lazy">
 
 	</figure>
 	<p>Test</p>
@@ -173,7 +173,7 @@
 	<p>Cloudflare is significantly faster at all tests compared to Fastly. But let’s dig into why that is. Looking at p95 Wait, we can see that Cloudflare does have an edge in most tests related to compute on-box:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qBIGm4DLEPbKZU6MgeFI/85b6173907b68b8aca29a52cce05ed92/image10-1.png" alt="" class="kg-image" width="1982" height="912" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qBIGm4DLEPbKZU6MgeFI/2b927f1f93cfa81a32829063736a8820/image10-1.png" alt="" class="kg-image" width="1982" height="912" loading="lazy">
 
 	</figure>
 	<p>Test</p>
@@ -193,7 +193,7 @@
 	<p>Looking at the Wait times, you can see that Cloudflare does have a significant edge in on-box performance, except in Rust, where Fastly claims their workloads are the most optimized. This data backs up that claim. But why is Fastly so much slower on Time to First Byte? The answer lies in the rest of the request. While latency spent in compute matters, it only matters in conjunction with the rest of the network performance. And Cloudflare has an advantage over Fastly in Connect times and SSL establishment times:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fC76Hvccza62kgiuAQLJI/228bfa3e766cbbce69b22136198b02d0/image4-24.png" alt="" class="kg-image" width="1982" height="1370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fC76Hvccza62kgiuAQLJI/c0b14e9db28a17b38c0477cd132895eb/image4-24.png" alt="" class="kg-image" width="1982" height="1370" loading="lazy">
 
 	</figure>
 	<p>Test</p>
@@ -221,13 +221,13 @@
 	<p>To verify these results, we compared the Catchpoint results to our own data set. Here is the p95 TTFB for the JavaScript and Rust hard loops for both Fastly and Cloudflare from our data:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6d2NTigMxkcPtya4OYoL29/ca1579442e07b98564017325b6e9734b/image1-43.png" alt="" class="kg-image" width="1999" height="657" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6d2NTigMxkcPtya4OYoL29/6e867e20d4437d2e2574bce7b3d8c577/image1-43.png" alt="" class="kg-image" width="1999" height="657" loading="lazy">
 
 	</figure>
 	<p>As you can see, Cloudflare is faster on JavaScript and Rust calls. And when you look at wait time, you will see that outside of Catchpoint results, Cloudflare even beats Fastly in the Rust hard tests:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gMdeYBHGrgSPR4psKORBU/f5138ac4f42f3e9ad8db665046b4dfbe/image6-15.png" alt="" class="kg-image" width="1999" height="661" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gMdeYBHGrgSPR4psKORBU/9ca7b3ee2f89fc050c53e6895eecdabf/image6-15.png" alt="" class="kg-image" width="1999" height="661" loading="lazy">
 
 	</figure>
 	<p>The big takeaway from this is that in addition to Cloudflare being faster for the time spent processing requests, Cloudflare’s network and performance optimizations as a whole set us apart and make our Workers platform even faster.</p>

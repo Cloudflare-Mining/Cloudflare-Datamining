@@ -1,10 +1,10 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YIIWbNBJF290mAtPKef8T/3c5274a6eb037efccdf3dad2dead8f4a/wrangler-oauth.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YIIWbNBJF290mAtPKef8T/9dc6d3a8dcf198fbaadf64080f3a0e92/wrangler-oauth.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the course of this summer, I had the incredible opportunity to join the Workers Developer Productivity team and help improve the developer experience of Workers. Today, I’ll talk about my project to implement the OAuth 2.0 login protocol for <a href="https://github.com/cloudflare/wrangler">Wrangler</a>, the Workers command line interface (CLI).</p>
 	<p>Wrangler needs to be authorized in order to carry out its job. API tokens are one way to authorize Wrangler, but they do not provide the best user experience as the user needs to manually copy and paste their tokens. This is where the OAuth 2.0 protocol comes into play.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6prT6vWuey4xFTsR91Z1ue/2c25e7f6028621a11bcadf49c9e12c36/image2-32.png" alt="" class="kg-image" width="1618" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6prT6vWuey4xFTsR91Z1ue/87ec6eae381905664e37e8991a7da7f5/image2-32.png" alt="" class="kg-image" width="1618" height="800" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -43,7 +43,7 @@
 	<p>Among the different types of flows that make up the OAuth 2.0 protocol, Wrangler implements the Authorization Code Flow with PKCE challenges. Let’s take a look at what this entails!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vlJMwWGD9MD4xuLYUBiLi/7ce444e3f1ac7b35236f1624cafa24cd/image1-28.png" alt="Successful interaction from User to Wrangler and OAuth service provider using the wrangler login command." class="kg-image" width="1284" height="824" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vlJMwWGD9MD4xuLYUBiLi/f4a044f5e8e8086ef605a2afa032ce58/image1-28.png" alt="Successful interaction from User to Wrangler and OAuth service provider using the wrangler login command." class="kg-image" width="1284" height="824" loading="lazy">
 
 	</figure>
 	<p>When running <code>wrangler login</code>, the user is first prompted to log in to the Cloudflare dashboard. Once they are logged in, they are redirected to an authorization page, where they can decide to grant or deny authorization to Wrangler. If authorization is granted, Wrangler receives an authorization grant from the OAuth service provider. Once received, Wrangler exchanges the authorization grant for an access token and a refresh token. At this point, Wrangler stores both of these tokens on disk and uses the access token to make authorized API calls. Since the access token is short-lived, refresh tokens are used to update an expired access token. Throughout this flow, Wrangler and the OAuth service provider also use additional measures to verify the identity of each other, as later described in the Security section of this blog.</p><!--kg-card-begin: html-->

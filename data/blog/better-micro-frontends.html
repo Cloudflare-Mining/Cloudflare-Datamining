@@ -1,5 +1,5 @@
 <div class="mb2 gray5">9 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/better-micro-frontends">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dPHHzMPJqeW0UcKQi6DMo/bcb54871fead5f1bfade139e1fd2f063/better-micro-frontends.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/better-micro-frontends">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dPHHzMPJqeW0UcKQi6DMo/5586560322add26b921a31d0810b47d2/better-micro-frontends.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>To help developers build better web applications we researched and devised a fragments architecture to build <a href="https://martinfowler.com/articles/micro-frontends.html">micro-frontends</a> using <a href="https://workers.cloudflare.com">Cloudflare Workers</a> that is lightning fast, cost-effective to develop and operate, and scales to the needs of the largest enterprise teams without compromising release velocity or user experience.</p>
 	<p>Here we share a technical overview and a proof of concept of this architecture.</p>
@@ -16,7 +16,7 @@
 	<p>Drawing on ideas from <a href="https://en.wikipedia.org/wiki/Microservices">microservices</a>, the frontend community has started to advocate for <a href="https://micro-frontends.org">micro-frontends</a> to enable teams to develop and deploy their features independently of other teams. Each micro-frontend is a self-contained mini-application, that can be developed and released independently, and is responsible for rendering a “fragment” of the page. The application then combines these fragments together so that from the user's perspective it feels like a single application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78VTFfttaimJC7Son9VcYZ/668c91e42f3c88873a142d97ae048625/image3.jpg" alt="" class="kg-image" width="1999" height="1975" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78VTFfttaimJC7Son9VcYZ/652e6f47dd6354864fd99102307659ba/image3.jpg" alt="" class="kg-image" width="1999" height="1975" loading="lazy">
 
 	</figure>
 	<p>An application consisting of multiple micro-frontends</p>
@@ -55,7 +55,7 @@
 	<p>In this architecture the application consists of a tree of “fragments” each deployed to Cloudflare Workers that collaborate to server-side render the overall response. The browser makes a request to a “root fragment”, which will communicate with “child fragments” to generate the final response. Since Cloudflare Workers can communicate with each other <a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings">with almost no overhead</a>, applications can be server-side rendered quickly by child fragments, all working in parallel to render their own HTML, streaming their results to the parent fragment, which combines them into the final response stream delivered to the browser.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43AlwyalVCD1CfOm31lNiX/406c6038ce4b2a99b03ba5c56a2c8b3b/blog-1447.png" alt="" class="kg-image" width="1644" height="916" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43AlwyalVCD1CfOm31lNiX/f740b01c554b0f574267cf8c4dfe245c/blog-1447.png" alt="" class="kg-image" width="1644" height="916" loading="lazy">
 
 	</figure>
 	<p>A high-level overview of a fragments architecture</p>
@@ -80,7 +80,7 @@
 	<p>The application is composed of a tree of six collaborating but independently deployable Cloudflare Workers, each rendering their own fragment of the screen and providing their own client-side logic, and assets such as CSS stylesheets and images.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xfKbBmdC16pAkNbdCjOz7/609029c98ed6bba952874582ea2b78ee/image6-4.png" alt="" class="kg-image" width="990" height="417" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xfKbBmdC16pAkNbdCjOz7/0a3e7eebadd5272421fe10dbbb594d76/image6-4.png" alt="" class="kg-image" width="990" height="417" loading="lazy">
 
 	</figure>
 	<p>Architectural overview of the Cloud Gallery app</p>
@@ -128,7 +128,7 @@
 	<p>Streaming server-rendered HTML results in great user experiences and <a href="https://developer.chrome.com/docs/lighthouse/overview">Lighthouse</a> scores, which in practice means happier users and higher chance of conversions for your business.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GNNIIhE13dbX7EwfTUoQ8/6dc3eccb0770c3e9fdcaab92dc670907/image7-2.png" alt="" class="kg-image" width="1552" height="330" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GNNIIhE13dbX7EwfTUoQ8/47168493eec000d1df7eb71db56bf271/image7-2.png" alt="" class="kg-image" width="1552" height="330" loading="lazy">
 
 	</figure>
 	<p>Lighthouse scores for the Cloud Gallery app</p>
@@ -166,7 +166,7 @@
 	<p>Each fragment is a server-side rendered Qwik application deployed to its own Cloudflare Worker. This means that you can even browse to these fragments directly. For example, the “header” fragment is deployed to <a href="https://cloud-gallery-header.web-experiments.workers.dev">https://cloud-gallery-header.web-experiments.workers.dev/</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24SSUszIf2fbUphL5lsfr9/f74a593ce1b91c5fae0b8c2d08e7dd44/image8-2.png" alt="" class="kg-image" width="1732" height="318" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24SSUszIf2fbUphL5lsfr9/756d04fc6bc455f3845b45bf1ff592c0/image8-2.png" alt="" class="kg-image" width="1732" height="318" loading="lazy">
 
 	</figure>
 	<p>A screenshot of the self-hosted “header” fragment</p>
@@ -306,7 +306,7 @@
 	<p>Each micro-frontend fragment can be cached independently of the others based on how static its content is. When requesting the full page, the fragments only need to run server-side rendering for micro-frontends that have changed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PxpkF17fG0fMqBX0nhT6n/ba80cb082afdf030d20918f5ff530cc8/image2.jpg" alt="" class="kg-image" width="1548" height="661" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PxpkF17fG0fMqBX0nhT6n/1789385a464d8908f7646a1570c6314d/image2.jpg" alt="" class="kg-image" width="1548" height="661" loading="lazy">
 
 	</figure>
 	<p>An application where the output of some fragments are cached</p>
@@ -322,7 +322,7 @@
 	<p>Our demo application used micro-frontend fragments to compose a single page. We could however use this approach to implement page routing as well. When server-side rendering, the main fragment could insert the appropriate “page” fragment based on the visited URL. When navigating, client-side, within the app, the main fragment would remain the same while the displayed “page” fragment would change.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31uGNgOqJccEZXHRfrK7Fw/1275bcc50b789cdda974d1d16c3f9cbc/image5-1.jpg" alt="" class="kg-image" width="1685" height="690" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31uGNgOqJccEZXHRfrK7Fw/a69dd9152b184802d07c437347560251/image5-1.jpg" alt="" class="kg-image" width="1685" height="690" loading="lazy">
 
 	</figure>
 	<p>An application where each route is delegated to a different fragment</p>
@@ -339,7 +339,7 @@
 	<p>To achieve good results, the framework of choice should be capable of server-side rendering, and should have a small client-side JavaScript footprint. HTML streaming capabilities, while not required, can significantly improve performance of large applications.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AkgbhioqHBaKtvZxVTIsp/476650ecc343f925c17e993bd7702cda/image1-15.png" alt="" class="kg-image" width="1685" height="690" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AkgbhioqHBaKtvZxVTIsp/6a818eeb06c4ad842886e81f9d0f477a/image1-15.png" alt="" class="kg-image" width="1685" height="690" loading="lazy">
 
 	</figure>
 	<p>An application using different frontend frameworks</p>

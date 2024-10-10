@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/429Qzp84RNkyFJVB1EnLFv/e17ae7ca923db280673d09bd8284f917/image3-33.png" alt="Maximum redirects, minimum effort: Announcing Bulk Redirects" class="kg-image" width="921" height="445" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/429Qzp84RNkyFJVB1EnLFv/63fc511608830c8739fdb240da8d564d/image3-33.png" alt="Maximum redirects, minimum effort: Announcing Bulk Redirects" class="kg-image" width="921" height="445" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -29,7 +29,7 @@
 	<p>The postal services achieve this by effectively maintaining a register of your new location and your old location. This allows the systems to detect ‘<i>this letter is for Sam Marsh at address A, but he now lives at address B, therefore send the mail there’</i>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44gSIkRcm0aLeOwYo9Kcs5/6029d326be84cf8e928decb128030a32/image1-41.png" alt="" class="kg-image" width="901" height="870" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44gSIkRcm0aLeOwYo9Kcs5/72d8227f42e64d348220f36033e31008/image1-41.png" alt="" class="kg-image" width="901" height="870" loading="lazy">
 
 	</figure>
 	<p>Photo by <a href="https://unsplash.com/@christianlue?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Christian Lue</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
@@ -49,7 +49,7 @@
 	<p>URL redirects are also used for <b>vanity domains and hyperlinks.</b> In these scenarios, URL redirects are deployed to provide a mapping of short, user-friendly URLs to long, server-friendly URLs. &nbsp;Not only are shorter URLs more memorable, but they are better scoring from an SEO perspective. According to <a href="https://backlinko.com/google-ranking-factors">Backlinko</a>, ‘<i>Excessively long URLs may hurt a page’s search engine visibility. In fact, several industry studies have found that short URLs tend to have a slight edge in Google’s search results.</i>’.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QGzJwjtfAK6IVmMfY6nc5/93c081389f24b587dc3b1f0fc351ab4c/image5-17.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QGzJwjtfAK6IVmMfY6nc5/9e96cf71234fe4aba303dce6a1b36577/image5-17.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
 
 	</figure>
 	<p>Photo by <a href="https://unsplash.com/@halacious?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Hal Gatewood</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
@@ -73,7 +73,7 @@
 	<p>The first way to implement a URL Redirect in Cloudflare is via a <a href="https://support.cloudflare.com/hc/en-us/articles/200172286-Configuring-URL-forwarding-or-redirects-with-Cloudflare-Page-Rules">Forwarding URL</a> Page Rule. Users can create a Page Rule which matches on a specific URL and redirects matching traffic to another specific URL, along with a status code — either a permanent redirect (301) or a temporary redirect (302):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rj1gaWkXtETmH8rMMMHWN/db5915737e7f57b926608594bcd87174/image6-10.png" alt="" class="kg-image" width="702" height="440" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rj1gaWkXtETmH8rMMMHWN/ebeb1b15c2d448fcd56bf41b708e5394/image6-10.png" alt="" class="kg-image" width="702" height="440" loading="lazy">
 
 	</figure>
 	<p>Another method is to use Cloudflare Workers to implement URL redirects, either individually or as a map. For example, the code below is used to create a URL redirect map which runs when the Worker is invoked:</p>
@@ -97,7 +97,7 @@
 	<p>The system is implemented in two parts. The first part is the Bulk Redirect <i>List</i>. This is effectively the redirect map, or ‘edge dictionary’, where users can upload their URL redirects:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QhgGqiHUqVRe2VSia5EKD/1fdca33b06cbb839c71d06a20fb1a36c/image7-4.png" alt="" class="kg-image" width="1658" height="1194" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QhgGqiHUqVRe2VSia5EKD/a70f6b3b570fe5918b7d3edbd89dccbb/image7-4.png" alt="" class="kg-image" width="1658" height="1194" loading="lazy">
 
 	</figure>
 	<p>Each URL redirect within the list contains three main elements. The first two elements are <b>Source URL</b> (the URL we are looking for) and <b>Target</b> <b>URL</b> (the URL we are going to redirect matching traffic to).</p>
@@ -114,13 +114,13 @@
 	<p>The rules themselves are very simple. By default, the user experience is to provide a name for the rule, a description, and select the Bulk Redirect List that should be invoked.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ba3Bql0mmmXQJZuq0t7r1/a179c6e99284a2c48569cf4f1321519c/image2-23.png" alt="" class="kg-image" width="1962" height="1162" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ba3Bql0mmmXQJZuq0t7r1/b8b62726e855550a48f3ab50b77d1401/image2-23.png" alt="" class="kg-image" width="1962" height="1162" loading="lazy">
 
 	</figure>
 	<p>For users who require more granularity and control there are additional settings available under the <b>Advanced options</b> toggle. Within this section there are two editable sections: &nbsp;<b>Expression</b> and <b>Key</b>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PmH9DnTDGhYp5RHFwHRkZ/9946a6f1653395d29e72e85e341c0726/unnamed-9.png" alt="" class="kg-image" width="1018" height="700" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2PmH9DnTDGhYp5RHFwHRkZ/fd9409755f3c6b8197eeab0f9870eacd/unnamed-9.png" alt="" class="kg-image" width="1018" height="700" loading="lazy">
 
 	</figure>
 	<p>The first field, <b>Expression</b>, specifies the conditions that must be met in order for the rule to run. By default, all URL redirects of the specified list will apply.</p>

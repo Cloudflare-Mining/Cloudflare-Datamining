@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jyNoJdHbEYVJ8GCTVYH15/83f9152700809de653442bbf81637ed2/asics-at-the-edge.png" alt="">
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jyNoJdHbEYVJ8GCTVYH15/72276d0b57a7e45b1b6a60a5bd65cb17/asics-at-the-edge.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we pride ourselves in our global network that spans more than 200 cities in over 100 countries. To handle all the traffic passing through our network, there are multiple technologies at play. So let’s have a look at one of the cornerstones that makes all of this work… ASICs. No, not the running shoes.</p>
 	<div class="flex anchor relative">
@@ -49,7 +49,7 @@
 	<p>In networking, these sequential data words are IP prefixes. So for the previous example, if we wanted to store the collection of that IP address, and the 254 IPs following it, in TCAM it would as follows: 11001011.00000000.01110001.XXXXXXXX (203.0.113.0/24). This storage method means we can ask questions of the ASIC such as “where should I send packets with the destination IP address of 203.0.113.19”, to which the ASIC can have a reply ready in a single clock cycle, as it does not need to run through all memory, but instead can directly reference the key. This reply will usually be a reference to a memory address in traditional RAM, where more data can be stored, such as output port, or firewall requirements for the packet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UPnZE6h192rIcDFS8dDGY/a1e52d787b8209d7edbba8fb6deded42/TCAM_Lookup_Table.png" alt="TCAM_Lookup_Table" class="kg-image" width="1995" height="873" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UPnZE6h192rIcDFS8dDGY/8419e7d58f0540745e74d480a7903a6d/TCAM_Lookup_Table.png" alt="TCAM_Lookup_Table" class="kg-image" width="1995" height="873" loading="lazy">
 
 	</figure>
 	<p>To dig a bit deeper into what ASICs do in network equipment, let's briefly go over some fundamentals.</p>
@@ -65,7 +65,7 @@
 			<p>FIB install: Once the router has calculated its FIB, it's important the router can access this as quickly as possible. To do so, the ASIC will install (write) this calculated FIB into the TCAM, so any lookups can happen as quickly as possible.</p>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ymlFMx628N3OqLyOg5a4S/1fccb59c23dd9717833bff941c83f48e/BGP_RIB_to_FIB.png" alt="BGP_RIB_to_FIB" class="kg-image" width="3009" height="760" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ymlFMx628N3OqLyOg5a4S/63ddcbf7a3c78c2f26f9fcd600ffda6a/BGP_RIB_to_FIB.png" alt="BGP_RIB_to_FIB" class="kg-image" width="3009" height="760" loading="lazy">
 
 			</figure>
 		</li>
@@ -121,7 +121,7 @@
 	<p>The Tofino<a href="https://blog.cloudflare.com/#fn12">[12]</a> is built using a PISA (Protocol Independent Switch Architecture), and using P4 (Programming Protocol-Independent Packet Processors)<a href="https://blog.cloudflare.com/#fn13">[13]</a>, you can program the data-plane (packet forwarding) as you see fit. It's a drastic move away from the traditional method of networking, in which direct programming of the ASIC isn't easily possible, and definitely not through a standard programming language. As an added benefit, P4 also allows you to perform a formal verification of your forwarding program, and be sure that it will do what you expect it to. Caveat: OpenFlow tried this, but unfortunately never really got much traction.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5joEqLM5xofTPILTkjUsTT/f477bd1546aa09f05cd72733486ed901/p4_switch_model-600px.png" alt="p4_switch_model-600px" class="kg-image" width="610" height="191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5joEqLM5xofTPILTkjUsTT/143ad9d4f606541100ddb805ff7719b5/p4_switch_model-600px.png" alt="p4_switch_model-600px" class="kg-image" width="610" height="191" loading="lazy">
 
 	</figure>
 	<p><a href="https://blog.cloudflare.com/#fn14">[14]</a></p>
@@ -160,7 +160,7 @@
 	<p>The Trio family of chips are primarily used in the feature-heavy MX routing platform, and is currently at its 5th generation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ahV83lGRr8PKjCCbX471Z/87ae50f632d8089bfa4052061b9faded/MPC4E-3D-32XGE.jpg" alt="MPC4E-3D-32XGE" class="kg-image" width="1300" height="1729" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ahV83lGRr8PKjCCbX471Z/6d4c2694c9e479edd392ea410b1a08fa/MPC4E-3D-32XGE.jpg" alt="MPC4E-3D-32XGE" class="kg-image" width="1300" height="1729" loading="lazy">
 
 	</figure>
 	<p>A Juniper MPC4E-3D-32XGE line card</p>

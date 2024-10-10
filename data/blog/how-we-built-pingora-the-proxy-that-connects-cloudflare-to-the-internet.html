@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tJhN1giv0YfzKPCyAsdbm/b227fc9b3d850be9a9a0dff7e1723397/image1-4.png" alt="How we built Pingora, the proxy that connects Cloudflare to the Internet" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tJhN1giv0YfzKPCyAsdbm/be2e7b2b4fa1598b0da55366434bc758/image1-4.png" alt="How we built Pingora, the proxy that connects Cloudflare to the Internet" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -43,7 +43,7 @@
 	<p>However, the <a href="https://www.nginx.com/blog/load-balancing-with-nginx-plus-part-2">NGINX connection pool</a> is per worker. When a request lands on a certain worker, it can only reuse the connections within that worker. When we add more NGINX workers to scale up, our connection reuse ratio gets worse because the connections are scattered across more isolated pools of all the processes. This results in slower TTFB and more connections to maintain, which consumes resources (and money) for both us and our customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3a7AeWb20XQpmYKyQpv5fb/90934fddf8e9b08412ef38604e0d0c3a/image2-4.png" alt="" class="kg-image" width="1636" height="695" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3a7AeWb20XQpmYKyQpv5fb/351efd47c3e67ab6e2d814007c10fad5/image2-4.png" alt="" class="kg-image" width="1636" height="695" loading="lazy">
 
 	</figure>
 	<p>As mentioned in past blog posts, we have workarounds for some of these issues. But if we can address the fundamental issue: the worker/process model, we will resolve all these problems naturally.</p>
@@ -119,7 +119,7 @@
 	<p>The savings come from our new architecture which can share connections across all threads. This means a better connection reuse ratio, which spends less time on TCP and TLS handshakes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pLeU6tqq4NDdGqPRWBm7r/f6afd596955fefbcf9ba7023449d4746/image3-3.png" alt="" class="kg-image" width="1636" height="695" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pLeU6tqq4NDdGqPRWBm7r/3e05c76314b83f174beebbc6b3263ae8/image3-3.png" alt="" class="kg-image" width="1636" height="695" loading="lazy">
 
 	</figure>
 	<p>Across all customers, Pingora makes only a third as many new connections per second compared to the old service. For one major customer, it increased the connection reuse ratio from 87.1% to 99.92%, which reduced new connections to their origins by 160x. To present the number more intuitively, by switching to Pingora, we save our customers and users 434 years of handshake time every day.</p>

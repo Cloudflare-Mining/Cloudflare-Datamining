@@ -1,17 +1,17 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79iaQL2jb34HPkDNgOKlXj/c36bfefb59b5df54bbb0a5b7332386b5/on-the-dangers-of-intels-frequency-scaling.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79iaQL2jb34HPkDNgOKlXj/bb0fff15527b009b3dfd6056b84c1efc/on-the-dangers-of-intels-frequency-scaling.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>While I was writing the post <a href="https://blog.cloudflare.com/arm-takes-wing">comparing the new Qualcomm server chip, Centriq, to our current stock of Intel Skylake-based Xeons</a>, I noticed a disturbing phenomena.</p>
 	<p>When benchmarking OpenSSL 1.1.1dev, I discovered that the performance of the cipher <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305</a> does not scale very well. On a single thread, it performed at the speed of approximately 2.89GB/s, whereas on 24 cores, and 48 threads it performed at just over 35 GB/s.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jlnzEn5W40VfjAjikYdYW/3f76cc5a8ea1a03ac0cc588efe4e920b/3618979283_5d117e956f_o.jpg" alt="" class="kg-image" width="3648" height="2736" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jlnzEn5W40VfjAjikYdYW/1de112201351e15272d2005504081f9a/3618979283_5d117e956f_o.jpg" alt="" class="kg-image" width="3648" height="2736" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/blumblaum/3618979283/in/photolist-6vNdsx-oqxCB4-VPRfyG-93tyBR-F8JBFo-qiRno8-dPuTWR-823ZS4-9hqkuL-9mFdCJ-nho2bN-8SooRN-bEYfa2-VpkZWA-diuHi4-daq1Zg-qiThYa-o9Pnb2-b8G3ND-dPotf8-yEgMt-7GMuJQ-dc3AXG-WqA4iw-fokagU-qTcnqd-csBTnw-efpWJk-e8UN3x-e8UMye-e8UMEe-dgeUKv-54A2Ve-8kh2we-54A2Pa-e91rzh-q7baBG-54A2Kv-umff5-7LUaZQ-ntyDPD-bPcRhV-e8UMKT-e8UMwR-athi9i-8aKsm6-oWFjAF-e4Uvop-69kwK4-e4UvCH">image</a> by <a href="https://www.flickr.com/photos/blumblaum">blumblaum</a></p>
 	<p>Now this is a very high number, but I would like to see something closer to 69GB/s. 35GB/s is just 1.46GB/s/core, or roughly 50% of the single core performance. AES-GCM scales much better, to 80% of single core performance, which is understandable, because the CPU can sustain higher frequency turbo on a single core, but not all cores.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/V6Oda0nbgjQEdLGhXue4A/916f8c92def52f19a1f772b885f6e5e2/gcm-chacha-core.png" alt="alt" class="kg-image" width="1665" height="819" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/V6Oda0nbgjQEdLGhXue4A/09c9be06c793682fc218c046974a0b1b/gcm-chacha-core.png" alt="alt" class="kg-image" width="1665" height="819" loading="lazy">
 
 	</figure>
 	<p>Why is the scaling of ChaCha20-Poly1305 so poor? Meet AVX-512. AVX-512 is a new Intel instruction set that adds many new 512-bit wide SIMD instructions and promotes most of the existing ones to 512-bit. The problem with such wide instructions is that they consume power. A lot of power. Imagine a single instruction that does the work of 64 regular byte instructions, or 8 full blown 64-bit instructions.</p>
@@ -26,7 +26,7 @@
 	<p>I then monitored the number of requests per second served under full load. This is what I got:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/stzkAbRIIvTH3SI7jw8Cv/71a99ad94c5e50475775bc288dd78716/gcm-chacha-1.png" alt="alt" class="kg-image" width="1658" height="864" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/stzkAbRIIvTH3SI7jw8Cv/40b2d9d0fc3c16717b58066fea0cb824/gcm-chacha-1.png" alt="alt" class="kg-image" width="1658" height="864" loading="lazy">
 
 	</figure>
 	<p>By using ChaCha20-Poly1305 over AES-128-GCM, the server that uses OpenSSL serves 10% fewer requests per second. And that is a huge number! It is equivalent to giving up on two cores, for nothing. One might think that this is due to ChaCha20-Poly1305 being inherently slower. But that is not the case.</p>

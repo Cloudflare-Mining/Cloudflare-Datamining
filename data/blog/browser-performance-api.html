@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4X2mv6pmDT872tF6tBXAq0/747c535bc67aeaa32526d540df19ca20/browser-performance-api.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4X2mv6pmDT872tF6tBXAq0/6f6d9f7f31886d67fd5e44c3f58c423c/browser-performance-api.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Building a beautiful, feature-rich website is easier than ever before. Not long ago, you’d have to fire up a text editor and hand-craft a lot of HTML, CSS, and JavaScript. Today, you can use WYSIWYG tools and third-party libraries that make development much simpler. The flip side of this is that it can be hard to see everything that’s going into your website — and the performance can suffer.</p>
 	<p>The good news is that modern web browsers expose lots of performance data that can help you understand how your web page performs. With the launch of Browser Insights today, we can analyze the performance from the perspective of the web browser and what the end user actually experiences. In this post, we’ll dive into how we think about performance and utilize the timing APIs in the web browser.</p>
@@ -36,14 +36,14 @@
 	<p>Try expanding the Performance object by clicking on the arrow before the label and again expand the ‘timing’. This is called PerformanceTiming, which includes all the timings that relate to the current page load as UNIX epoch timestamp (milliseconds). The timing attributes shown are not in the order of the load. So for better understanding, let’s look at the illustration provided by the W3C.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SxJcGlceESK5UT2nX0U5V/070541af4023a9bfb56a4eec8b80283e/pasted-image-0--4-.png" alt="" class="kg-image" width="1473" height="879" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SxJcGlceESK5UT2nX0U5V/0ed2588c98bdf4aa3c87db723243e380/pasted-image-0--4-.png" alt="" class="kg-image" width="1473" height="879" loading="lazy">
 
 	</figure>
 	<p>Image from <a href="https://www.w3.org/TR/navigation-timing">https://www.w3.org/TR/navigation-timing/</a></p>
 	<p>As we can see from the diagram shown, each element (represented as a box above) in the order from left-to-right, represents the navigation flow of the page load. Each element has an attribute from the starting point to the end (and some have multiple attributes!) so that we can measure the elapsed time for each element. For example, to get the Request Time, you could type in the command like shown below in the console which appears to be 60 milliseconds.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78quzSc6wQq5sPuMzvaIS1/0ade103b5bd8e2f535db426f5f5a3784/pasted-image-0--5-.png" alt="" class="kg-image" width="894" height="118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78quzSc6wQq5sPuMzvaIS1/8bab59c4ec25aecd37e5e4291cf26c30/pasted-image-0--5-.png" alt="" class="kg-image" width="894" height="118" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -57,7 +57,7 @@
 	<p>Once your website is proxied through Cloudflare and Browser Insights is enabled, we write and inject a JavaScript beacon into the web page. Our beacon collects metrics from the Performance API to send to our edge, where it can be used to understand where your website is slowing down or having any network problems. The reported data is shown in the Cloudflare dashboard on the Speed Page showing as averages of each timing metric:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pm9xxGJkm9EfsuszWBOzv/9cf2ac2f8241146f000e57105e726d77/pasted-image-0--6-.png" alt="" class="kg-image" width="983" height="958" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pm9xxGJkm9EfsuszWBOzv/79ca3b20f20398a17fa59676c54f9185/pasted-image-0--6-.png" alt="" class="kg-image" width="983" height="958" loading="lazy">
 
 	</figure>
 	<p>The metrics we surface are:</p>

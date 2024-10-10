@@ -1,9 +1,9 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MTBi3ZP8GhmGn8ZYrRvMP/f53c2f4131e5211ca0fb41d513b7c85c/cloudflare-repositories-ftw.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MTBi3ZP8GhmGn8ZYrRvMP/034c1f14e92e79473d13ff38106bb968/cloudflare-repositories-ftw.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is a guest post by </i><a href="https://twitter.com/kalilinux"><i>Jim “Elwood” O’Gorman</i></a><i>, one of the maintainers of </i><a href="https://www.kali.org"><i>Kali Linux</i></a><i>. Kali Linux is a Debian based GNU/Linux distribution popular amongst the security research communities.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1X8bsOBR1p27T0JYTdHcHo/5870aa9edd2b3d4237044852b79a78d6/1200px-Kali_Linux_2.0_wordmark.svg.png" alt="" class="kg-image" width="1200" height="705" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1X8bsOBR1p27T0JYTdHcHo/5a1c10c7ef8faf5ddfa84dde413e7745/1200px-Kali_Linux_2.0_wordmark.svg.png" alt="" class="kg-image" width="1200" height="705" loading="lazy">
 
 	</figure>
 	<p>Kali Linux turned six years old this year!</p>
@@ -53,24 +53,24 @@ curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/xxxxxxxxxxx/purge_c
 	<p>To show an example of what this translated into, let’s look at some graphs. Once the very large file support was added and we started to push out our images through Cloudflare, you could see that there is not a real increase in requests:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bhZs8Ewipr2DpEbTC3IWU/df1e37a0364f0e69a5f84e74cd4a7802/Initial-Request-Long-view.png" alt="" class="kg-image" width="1996" height="1006" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bhZs8Ewipr2DpEbTC3IWU/9b04b8ca9ae662ddd0911a1e3ff37803/Initial-Request-Long-view.png" alt="" class="kg-image" width="1996" height="1006" loading="lazy">
 
 	</figure>
 	<p>However, looking at Bandwidth there is a clear increase:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/s1AfdE6BReJywalltbTt5/496c6ff30164e219544eb8c0b66e1746/Initial-Bandwidth-long-view.png" alt="" class="kg-image" width="2038" height="1034" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s1AfdE6BReJywalltbTt5/1339d9c7c4224ca2cd7c19bff5a69db1/Initial-Bandwidth-long-view.png" alt="" class="kg-image" width="2038" height="1034" loading="lazy">
 
 	</figure>
 	<p>After it had been implemented for a while, we see a clear pattern.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6R6OtPNSQa95hRpEPDGtCq/a0070ab8c1b8426db5da252a70bbd6d0/Initial-Request.png" alt="" class="kg-image" width="2008" height="1002" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6R6OtPNSQa95hRpEPDGtCq/4f816f9c4b4beafc05e90436857be0c5/Initial-Request.png" alt="" class="kg-image" width="2008" height="1002" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kaU7xAAEN8tUIKykDXNPp/af0933725455a6734d772a88e766f1e3/Initial-Bandwidth.png" alt="" class="kg-image" width="1986" height="984" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kaU7xAAEN8tUIKykDXNPp/86851feca68c5ee025ed95e514680554/Initial-Bandwidth.png" alt="" class="kg-image" width="1986" height="984" loading="lazy">
 
 	</figure>
 	<p>This pushed us from around 80 TB a week when we had just the repo, to now around 430TB a month when its repo and images. As you can imagine, that's an amazing bandwidth savings for an open source project such as ours.</p>

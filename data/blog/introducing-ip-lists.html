@@ -1,15 +1,15 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5azkcAUSqMQaOGgtPxjiSO/4f44a5e11abbd27a767431ca8a0d9780/introducing-ip-lists.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5azkcAUSqMQaOGgtPxjiSO/6832feed2b7d193748f24c0c4115a2c5/introducing-ip-lists.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Authentication on the web has been steadily moving to the application layer using services such as <a href="https://teams.cloudflare.com/access">Cloudflare Access</a> to establish and enforce software-controlled, zero trust <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeters</a>. However, there are still several important use cases for restricting access at the network-level by source IP address, autonomous system number (ASN), or country. For example, some businesses are prohibited from doing business with customers in certain countries, while others maintain a blocklist of problematic IPs that have previously attacked them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WwZQK2xtLJoOp4nK348uT/bb7416f64e80eb1cd213ea56c5d2ddf7/Firewall-rule--blocklist_2x.png" alt="" class="kg-image" width="1817" height="1107" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WwZQK2xtLJoOp4nK348uT/f3d0810488ea7663c44586eb10a7514a/Firewall-rule--blocklist_2x.png" alt="" class="kg-image" width="1817" height="1107" loading="lazy">
 
 	</figure>
 	<p>Enforcing these network restrictions at centralized chokepoints using appliances—hardware or virtualized—adds unacceptable latency and complexity, but doing so performantly for individual IPs at the Cloudflare edge is easy. Today we’re making it just as easy to manage tens of thousands of IPs across all of your zones by grouping them in data structures known as IP Lists. Lists can be stored with metadata at the Cloudflare edge, replicated within seconds to our data centers in 200+ cities, and used as part of our powerful, expressive <a href="https://developers.cloudflare.com/firewall/cf-firewall-language">Firewall Rules</a> engine to take action on incoming requests.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/B85CzFvmD1zrWCa5OiBJd/b44ea41e787de00589d6ac8b017af6f7/ip_lists.gif" alt="" class="kg-image" width="1276" height="1203" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/B85CzFvmD1zrWCa5OiBJd/7141825d16ec657d5bde2066ce84ba19/ip_lists.gif" alt="" class="kg-image" width="1276" height="1203" loading="lazy">
 
 	</figure>
 	<p>Creating and using an IP List</p>
@@ -24,7 +24,7 @@
 	<p>Below is a rule that blocks requests to <code>/login</code> with a bot score below 30, unless it is coming from the <a href="https://help.pingdom.com/hc/en-us/articles/203682601-Pingdom-probe-servers-IP-addresses">probe servers of Pingdom</a>, an external monitoring solution.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YitvsSjxDlGtapDCs4Zo9/3fb123ecc5a151ec9e6db6cdf2e088c8/pingdom_probes_bots.png" alt="" class="kg-image" width="1918" height="2200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YitvsSjxDlGtapDCs4Zo9/ef3a5eb82ae120f33dd6e6d2214ed2cf/pingdom_probes_bots.png" alt="" class="kg-image" width="1918" height="2200" loading="lazy">
 
 	</figure>
 	<h4>Shared use across zones</h4>
@@ -35,7 +35,7 @@
 	<p>In the clip below, the contents of Pingdom's IPv4 list are copied to the clipboard and then pasted into the Lists UI. Multiple rows will automatically be created as shown:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zjihhMH1GFF9FuMcEK8aL/b96c3befe682b1bae6bcd62f9cae4b9b/pingdom_probe_paste.gif" alt="" class="kg-image" width="2552" height="2836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zjihhMH1GFF9FuMcEK8aL/ea51d8d5523fd29293839814751905c9/pingdom_probe_paste.gif" alt="" class="kg-image" width="2552" height="2836" loading="lazy">
 
 	</figure>
 	<h4>Actions available for use in rules</h4>

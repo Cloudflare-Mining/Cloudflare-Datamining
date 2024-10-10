@@ -1,4 +1,4 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36xQggu1S0XWrH9UMDLkds/eab56248f19c18bbd08eec4c4a656c50/missing-manuals-io_uring-worker-pool.png" alt="">
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36xQggu1S0XWrH9UMDLkds/5bc4d65f41f9871f7da4a6074bfaefa5/missing-manuals-io_uring-worker-pool.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Chances are you might have heard of <code>io_uring</code>. It first appeared in <a href="https://kernelnewbies.org/Linux_5.1#High-performance_asynchronous_I.2FO_with_io_uring">Linux 5.1</a>, back in 2019, and was <a href="https://lwn.net/Articles/776703">advertised as the new API for asynchronous I/O</a>. Its goal was to be an alternative to the deemed-to-be-broken-beyond-repair <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">AIO</a>, the “old” asynchronous I/O API.</p>
 	<p>Calling <code>io_uring</code> just an asynchronous I/O API doesn’t do it justice, though. Underneath the API calls, io_uring is a full-blown runtime for processing I/O requests. One that spawns threads, sets up work queues, and dispatches requests for processing. All this happens “in the background” so that the user space process doesn’t have to, but can, block while waiting for its I/O requests to complete.</p>
@@ -88,7 +88,7 @@ List of pre-defined events (to be used in -e):
 	<p>Judging by the number of tracepoints to choose from, <code>io_uring</code> takes visibility seriously. To help us get our bearings, here is a diagram that maps out paths an I/O request can take inside io_uring code annotated with tracepoint names – not all of them, just those which will be useful to us.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MeUxepPVh1riK3jpiWQ0m/b6a83dcab374768617c82078ba2f60c3/image3-8.png" alt="Missing Manuals - io_uring worker pool" class="kg-image" width="1999" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MeUxepPVh1riK3jpiWQ0m/e29927eafad9fc96d30473af1f637f5b/image3-8.png" alt="Missing Manuals - io_uring worker pool" class="kg-image" width="1999" height="820" loading="lazy">
 
 	</figure>
 	<p>Starting on the left, we expect our toy workload to push entries onto the submission queue. When we publish submitted entries by calling <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_enter.2.en.html"><code>io_uring_enter()</code></a>, the kernel consumes the submission queue and constructs internal request objects. A side effect we can observe is a hit on the <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L7193"><code>io_uring:io_uring_submit_sqe</code></a> tracepoint.</p>
@@ -327,7 +327,7 @@ $</code></pre>
 	<p>Your process is not limited to one instance of io_uring, naturally. In the case of a network proxy, where we push data from one socket to another, we could have one instance of io_uring servicing each half of the proxy.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TXCzhgUiUGocx8WP9rJ8B/97ae6d76ca304a98b0023c94eeb755c4/image2-3.png" alt="" class="kg-image" width="1999" height="539" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TXCzhgUiUGocx8WP9rJ8B/b77b4b9d89414398674d069dd80ae749/image2-3.png" alt="" class="kg-image" width="1999" height="539" loading="lazy">
 
 	</figure>
 	<p>How many worker threads will be created in the presence of multiple <code>io_urings</code>? That depends on whether your program is single- or multithreaded.</p>
@@ -371,14 +371,14 @@ lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 6 -&gt; 'anon_inode:[io_uring]'</co
 	<p>Moving down to the work queue entry, we arrive at the work queue accounting table (<code>struct io_wqe_acct [2]</code>), with one record for each type of work – bounded and unbounded. This is where <code>io_uring</code> keeps track of the worker pool limit (<code>max_workers</code>) the number of existing workers (<code>nr_workers</code>).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5czT5432CY7bwHC2jznios/706248960f63ead2d36469d16ea13c62/image4-3.png" alt="" class="kg-image" width="1562" height="1004" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5czT5432CY7bwHC2jznios/dc8672e1c4ed4d215e5b4d659988806b/image4-3.png" alt="" class="kg-image" width="1562" height="1004" loading="lazy">
 
 	</figure>
 	<p>The perhaps not-so-obvious consequence of this arrangement is that setting just the <code>RLIMIT_NPROC</code> limit, without touching <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code>, can backfire for multi-threaded programs.</p>
 	<p>See, when the maximum number of workers for an io_uring instance is not configured, <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io-wq.c#L1162">it defaults to <code>RLIMIT_NPROC</code></a>. This means that <code>io_uring</code> will try to scale the unbounded worker pool to <code>RLIMIT_NPROC</code> for each thread that operates on an <code>io_uring</code> instance.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42pJE30GsrNspCHfDzq5xa/bb293ded76000eea2a5547bd410acd9d/io_uring_workers_multi_threaded.png" alt="" class="kg-image" width="677" height="288" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42pJE30GsrNspCHfDzq5xa/08dadfaa1120aaca648d8cb2ebbb1fc1/io_uring_workers_multi_threaded.png" alt="" class="kg-image" width="677" height="288" loading="lazy">
 
 	</figure>
 	<p>A multi-threaded process, by definition, creates threads. Now recall that the process management in the kernel tracks the number of tasks <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=21d1c5e386bc751f1953b371d72cd5b7d9c9e270">per UID within the user namespace</a>. Each spawned thread depletes the quota set by <code>RLIMIT_NPROC</code>. As a consequence, <code>io_uring</code> will never be able to fully scale up the worker pool, and will burn the CPU trying to do so.</p>

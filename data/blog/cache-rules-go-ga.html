@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23yqkja301zV4TfUtTrL0D/f79835efa6ece91453d6612fe0e3a6c2/Cache-Rules-GA-1.png" alt="Cache Rules go GA: precision control over every part of your cache" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23yqkja301zV4TfUtTrL0D/1619ec8778be0841f28ddd0fc07a03ba/Cache-Rules-GA-1.png" alt="Cache Rules go GA: precision control over every part of your cache" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>One year ago we introduced Cache Rules, a new way to customize cache settings on Cloudflare. Cache Rules provide greater flexibility for how users cache content, offering precise controls, a user-friendly API, and seamless Terraform integrations. Since it was released in late September 2022, over 100,000 websites have used Cache Rules to fine-tune their cache settings.</p>
@@ -38,7 +38,7 @@
 	<p>As an example, let’s say that Acme Corp wants to update their caching strategy. They want to customize their cache to take advantage of certain request headers and use the presence of those request headers to be the criteria that decides when to apply different cache rules. The first thing they’d need to decide is what information should be used to trigger the specific rule. This is defined in the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/expressions">expression</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kfN0DJOJ9myEPesXCu6fw/b9d5e569071769bb09fdefca259a767b/Screenshot-2023-10-18-at-6.27.59-PM.png" alt="" class="kg-image" width="1600" height="685" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2kfN0DJOJ9myEPesXCu6fw/7218e39e9ffbaa96d6ae0e96e6a4862d/Screenshot-2023-10-18-at-6.27.59-PM.png" alt="" class="kg-image" width="1600" height="685" loading="lazy">
 
 	</figure>
 	<p>Once the triggering criteria is defined Acme Corp should next determine how they want to customize their cache.</p>
@@ -46,7 +46,7 @@
 	<p>The most common cache strategy is to update the <a href="https://developers.cloudflare.com/cache/how-to/cache-rules/#create-cache-rules-in-the-dashboard">Edge Cache TTL</a>. If Acme Corp thinks a particular piece of content on their website might change quickly, they can alter the time Cloudflare should consider a resource eligible to be served from cache to be shorter. This way Cloudflare would go back to the origin more frequently to <a href="https://developers.cloudflare.com/cache/concepts/cache-control/#:~:text=If%20the%20content%20is%20stale%20in%20Cloudflare%E2%80%99s%20cache%2C%20Cloudflare%20attempts%20to%20revalidate%20the%20content%20with%20the%20origin%20before%20serving%20the%20response%20to%20the%20client.">revalidate and update the content</a>. The Edge Cache TTL section is also where Acme Corp can define a resource’s TTL based on the status code Cloudflare gets back from their origin, and what Cloudflare should cache if there aren’t any cache-control instructions sent from Acme’s origin server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2swqQzRX7v3UropZSNRbjH/dd3141e6ae31da599cea40040c6f95b4/Screenshot-2023-10-08-at-4.14.17-PM.png" alt="" class="kg-image" width="1600" height="955" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2swqQzRX7v3UropZSNRbjH/86bac883296e8c5502e6b5a08e5b5df9/Screenshot-2023-10-08-at-4.14.17-PM.png" alt="" class="kg-image" width="1600" height="955" loading="lazy">
 
 	</figure>
 	<h4>Content changing slowly</h4>
@@ -54,7 +54,7 @@
 	<p>Traditionally when a user would enable Cache Reserve, their entire zone would be eligible to be written to Cache Reserve. For customers that care about saving origin <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a> on all resources on their website, this is still the best path forward. But for customers that want to have additional control over precisely what assets should be part of their Cache Reserve or even what size of assets should be eligible, the Cache Reserve Eligibility Rule provides additional knobs so that customers can precisely increase their cache hits and reduce origin egress in a customized manner. Note that this rule requires a Cache Reserve subscription.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7b22znoAtsYBjMbufZhP9q/f0d83cf18b08fd9323d3d7f425d7ae37/Screenshot-2023-10-08-at-4.14.48-PM.png" alt="" class="kg-image" width="1600" height="353" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7b22znoAtsYBjMbufZhP9q/04b5ab28becee5d25d87f558efc1cb44/Screenshot-2023-10-08-at-4.14.48-PM.png" alt="" class="kg-image" width="1600" height="353" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -69,7 +69,7 @@
 	<p>Acme has plans to improve this by scaling their origin infrastructure but it’s taking a long time to deploy. In the meantime, they can turn to Cache Rules to configure a timeout to be longer. Historically the timeout value between Cloudflare and two successive origin reads was 100 seconds, which meant that if an origin didn't successfully send a response for a period lasting longer than 100 seconds, it could lead to a 524 error. By using a Cache Rule to extend this timeout, Acme Corp can rely more heavily on Cloudflare's cache.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XqipB1JsifcQLUyGn40BB/515c7cc0712dc14fa3ac94ecec9280ae/Screenshot-2023-10-18-at-6.21.32-PM.png" alt="" class="kg-image" width="1600" height="203" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XqipB1JsifcQLUyGn40BB/5bc7e324c62ab607e2c30c665849f67b/Screenshot-2023-10-18-at-6.21.32-PM.png" alt="" class="kg-image" width="1600" height="203" loading="lazy">
 
 	</figure>
 	<p>The above cache strategies focus on how often a resource is changed on an origin, and the origin’s performance. But there are numerous other rules that allow for other strategies, like <a href="https://developers.cloudflare.com/cache/how-to/cache-keys">custom cache keys</a> which allow for customers to determine how their cache should be defined on Cloudflare, respecting <a href="https://developers.cloudflare.com/cache/reference/etag-headers">strong ETags</a> which help customers determine when Cloudflare should revalidate particular cached assets, and custom ports which allow for customers to define <a href="https://developers.cloudflare.com/fundamentals/reference/network-ports/#network-ports-compatible-with-cloudflares-proxy">non-standard ports</a> that Cloudflare should use when making caching decisions about content.</p>

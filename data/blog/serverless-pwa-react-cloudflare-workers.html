@@ -109,7 +109,7 @@ async function handleRequest(event) {
 	<p>Then I pulled up the network tab and reloaded the page:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EEipczCnsXYR4G4tzTbqs/809dad22c9a015c882f106ae0025d8ae/networktab.png" alt="" class="kg-image" width="826" height="282" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EEipczCnsXYR4G4tzTbqs/af61e885ec97d28f34dc88570ced5557/networktab.png" alt="" class="kg-image" width="826" height="282" loading="lazy">
 
 	</figure>
 	<p>I continued to explain: every request except for the buzzwords.app request is repeated. That's because a Service Worker basically acts as a proxy, grabbing requests preventing the browser default load behaviour, allowing you to define how a request should be fetched. Since the first thing we have done was to add a call back for the fetch event (both on Cloudflare Workers, and Service Workers) it will call that function for each fetch event. “But wait there's more!”, I should have exclaimed, but I didn't. But they knew what was up, they could tell by how intensely I was staring at the code. &nbsp;</p>
@@ -135,7 +135,7 @@ async function handleRequest(event) {
 	<p>This code works both on Cloudflare Workers and for Service Workers. If the page requested is not available on the Worker, it will check the cache, if it's not available in the cache, it will fetch it from the origin, making not only the code but also the behaviours truly isomorphic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ctZ9ye3RDUd6gQUuD62XX/7e1aeec9517fb5c7c68909d63ea41bd1/networktab-2.png" alt="" class="kg-image" width="823" height="173" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ctZ9ye3RDUd6gQUuD62XX/3ecd703851c1d90dceb256b45dfc5a91/networktab-2.png" alt="" class="kg-image" width="823" height="173" loading="lazy">
 
 	</figure>
 	<p>I pulled up the network tab again, reloaded the page and showed them all the repeated requests had now disappeared. I then turned off the WiFi and hit reload to show that the application was in fact still working offline.</p>

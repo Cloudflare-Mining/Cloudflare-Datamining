@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xLEZHTIoo7Jt24CSWtqk8/ca7d7704b9c9006409ce6f2e2fd354d3/image2-4.png" alt="Experiment with post-quantum cryptography today" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xLEZHTIoo7Jt24CSWtqk8/81b1027fb5e30641b556d830b191e1e2/image2-4.png" alt="Experiment with post-quantum cryptography today" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Practically all data sent over the Internet today is at <a href="https://blog.cloudflare.com/the-quantum-menace">risk</a> in the future if a sufficiently large and stable quantum computer is created. Anyone who captures data now could decrypt it.</p>
@@ -190,14 +190,14 @@ Used X25519Kyber512Draft00</code></pre>
 	<p>So what does this look like on the wire? With <a href="https://www.wireshark.org">Wireshark</a> we can capture the packet flow. First a non-post quantum HTTP/2 connection with X25519:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xAkcteIQZp4rEkXNhJpEb/ae34924fccaa74cd1da8d82a541a23d4/image1-8.png" alt="" class="kg-image" width="1999" height="1694" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xAkcteIQZp4rEkXNhJpEb/537b6cfe73ad478336fdc74d14dda0cd/image1-8.png" alt="" class="kg-image" width="1999" height="1694" loading="lazy">
 
 	</figure>
 	<p>This is a normal <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS 1.3 handshake</a>: the client sends a ClientHello with an X25519 keyshare, which fits in a single packet. In return, the server sends its own 32 byte X25519 keyshare. It also sends various other messages, such as the certificate chain, which requires two packets in total.</p>
 	<p>Let’s check out Kyber:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tczvgQiEaYXtanEjGy6Wb/dacfafd93383dd227c4d61fe41e8ddb6/image3-2.png" alt="" class="kg-image" width="1999" height="1694" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tczvgQiEaYXtanEjGy6Wb/466ef092c38058c34c7370770a126d17/image3-2.png" alt="" class="kg-image" width="1999" height="1694" loading="lazy">
 
 	</figure>
 	<p>As you can see the ClientHello is a bit bigger, but still fits within a single packet. The response takes three packets now, instead of two, because of the larger server keyshare.</p>

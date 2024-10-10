@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ctu3t2Tz3RpukXRXzfjoj/41f4ed454f592946331be17d69bc75a1/image2-8.png" alt="Cloudflare Calls: millions of cascading trees all the way down" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ctu3t2Tz3RpukXRXzfjoj/2e480e9fc1c7ec037bbfd08f0ad8af30/image2-8.png" alt="Cloudflare Calls: millions of cascading trees all the way down" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Following its initial <a href="https://blog.cloudflare.com/announcing-cloudflare-calls">announcement</a> in September 2022, Cloudflare Calls is now in open beta and available in your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fcalls">Cloudflare Dashboard</a>. Cloudflare Calls lets developers build real-time audio/video apps using <a href="https://webrtc.org">WebRTC</a>, and it abstracts away the complexity by turning the Cloudflare network into a singular SFU. In this post, we dig into how we make this possible.</p>
@@ -20,7 +20,7 @@
 	<p>Selective Forwarding Units (SFUs) play pivotal roles in scaling WebRTC applications. An SFU functions by receiving multiple media or data flows from participants and deciding which streams should be forwarded to other participants, thus acting as a media stream routing hub. This mechanism significantly reduces bandwidth requirements and improves scalability by managing stream distribution based on network conditions and participant needs. Even though <a href="https://arstechnica.com/information-technology/2012/05/skype-replaces-p2p-supernodes-with-linux-boxes-hosted-by-microsoft">it hasn’t always been this way</a> from when video calling on computers first became popular, SFUs are often found in the cloud, rather than home computers of clients, because of superior connectivity offered in a data center.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eHksyrQ7iybPx8c9iTqOq/d2fa8de0169a89ac22188da04f3cb517/P2P-vs.-SFU.png" alt="" class="kg-image" width="2400" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eHksyrQ7iybPx8c9iTqOq/f795cf163c06ea3cd89a74f82fc50f7d/P2P-vs.-SFU.png" alt="" class="kg-image" width="2400" height="860" loading="lazy">
 
 	</figure>
 	<p>A modern audio/video application thus quickly becomes complicated with the addition of this server side element. Since all clients connect to this central SFU server, there are numerous things to consider when you’re architecting and scaling a real-time application:</p>
@@ -72,7 +72,7 @@
 	<p>It’s good to minimize last mile latency because after the data enters Cloudflare’s control, the underlying media can be managed carefully and routed through the Cloudflare <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">backbone</a>. This is crucial for WebRTC applications where millisecond delays can significantly impact user experience. To give you a sense about latency between Cloudflare’s data centers and end-users, about 95% of the Internet connected population is within 50ms of a Cloudflare data center. As I write this, I am about 20ms away, but in the past, I have been lucky enough to be connected to a **great** home Wi-Fi network less than 1ms away in Manhattan. “But you are just one user!” you might be thinking, so here is a chart from <a href="https://radar.cloudflare.com/quality">Cloudflare Radar</a> showing recent global latency measurements:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r4NGPsXDGl4e0FdhghTzC/b7dc061fc1525d28233401a08a3a990b/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="521" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5r4NGPsXDGl4e0FdhghTzC/533446ea771a5a0d0436c7646282fead/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="521" loading="lazy">
 
 	</figure>
 	<p>This setup allows more opportunities for packets lost to be replied with retransmissions closer to users, more opportunities for bandwidth adjustments.</p>
@@ -101,7 +101,7 @@
 	<p>The HTTPS API for Calls also lands on a different server than DTLS and ICE connectivity checks. Since DTLS packets need information from the SDP exchanged using the HTTPS API, and ICE connectivity checks depend on the HTTPS API for userFragment and password fields in the connectivity check packets, it would be very useful for all of these to be available in one server. Yet in our setup, they’re not.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44z2v70arwk48CPkKgJXKq/1f7c159f22235f9dd8a8fa3f6075eed0/Signaling.png" alt="" class="kg-image" width="2400" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44z2v70arwk48CPkKgJXKq/bd7611bc51a989c0662665e374ed9a50/Signaling.png" alt="" class="kg-image" width="2400" height="860" loading="lazy">
 
 	</figure>
 	<p>Fippo and Gustavo of WebRTCHacks <a href="https://webrtchacks.com/how-cloudflare-glares-at-webrtc-with-whip-and-whep">complained (gracefully noted)</a> about slow replies to ICE connectivity checks in their great article as they were digging into our WHIP implementation right around our announcement in 2022:</p>
@@ -123,13 +123,13 @@
 	<p>A connectivity check packet delayed by a few hundred milliseconds signals to Chrome that this is a high latency network, even though every other STUN message after that was replied to in less than 5-10ms. Chrome thus delays sending a USE-CANDIDATE attribute in the responses for a few seconds, degrading the user experience.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sRoG86lCdvzcKJKEQof4D/1e996e004c7792709a9029ad3abafc17/image4-8.png" alt="Chrome sending DTLS ClientHello before USE-CANDIDATE, and retrying it with delay after USE-CANDIDATE, which was a cause of slow PeerConnection establishment on Cloudflare Calls" class="kg-image" width="1999" height="566" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sRoG86lCdvzcKJKEQof4D/8fa91aa893417bd1876d71fef8b52db7/image4-8.png" alt="Chrome sending DTLS ClientHello before USE-CANDIDATE, and retrying it with delay after USE-CANDIDATE, which was a cause of slow PeerConnection establishment on Cloudflare Calls" class="kg-image" width="1999" height="566" loading="lazy">
 
 	</figure>
 	<p>Fortunately, Chrome also <a href="https://bugs.chromium.org/p/webrtc/issues/detail?id=3661">sends</a> DTLS ClientHello before USE-CANDIDATE (behavior we’ve seen only on Chrome), so to help speed up Chrome, Calls uses DTLS packets in place of STUN packets with USE-CANDIDATE attributes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Xhno0lLZDftcAHXLz9Btj/e28aa5402adcda75c2b4e85a1529d21b/image1-5.png" alt="A heatmap showing Cloudflare Calls PeerConnections usually take between 100 and 250ms to be connected" class="kg-image" width="1924" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xhno0lLZDftcAHXLz9Btj/c5b7fad53f9bd3005b5f759067b4847c/image1-5.png" alt="A heatmap showing Cloudflare Calls PeerConnections usually take between 100 and 250ms to be connected" class="kg-image" width="1924" height="480" loading="lazy">
 
 	</figure>
 	<p>After solving this issue with Chrome, PeerConnections globally now take about 100-250ms to get connected. This includes all consensus management, STUN packets, and a complete DTLS handshake.</p>
@@ -145,7 +145,7 @@
 	<p>In the background, Cloudflare takes care of scaling through a fan-out architecture with cascading trees that are unique per track. This structure works by creating a hierarchy of nodes where the root node distributes the stream to intermediate nodes, which then fan out to end-users. This significantly reduces the bandwidth required at the source and ensures scalability by distributing the load across the network. This simple but powerful architecture allows developers to build anything from 1:1 video calls to large 1:many or many:many broadcasting scenarios with Calls.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yHByC3CWSsXH4ljdDsFqH/a66ee0b65608c34015cb61c82a01b9fd/Fan-out-architecutre.png" alt="" class="kg-image" width="2400" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yHByC3CWSsXH4ljdDsFqH/6f1d625c9e6b4e921b8fdb54a30cf843/Fan-out-architecutre.png" alt="" class="kg-image" width="2400" height="860" loading="lazy">
 
 	</figure>
 	<p>There is no “room” concept in Cloudflare Calls. Each client can add as many tracks into a PeerConnection as they’d like. The limit is the bandwidth available between Cloudflare and the client, which is practically limited by the client side every time. The signaling or the concept of a “room” is left to the application developer, who can choose to pull as many tracks as they’d like from the tracks they have pushed elsewhere into a PeerConnection. This allows developers to move participants into breakout rooms and then back into a plenary room, and then 1:1 rooms while keeping the same PeerConnection and MediaTracks active.</p>
@@ -199,13 +199,13 @@
 	<p>Cloudflare Calls is ideal if you are building new WebRTC apps. If you have existing SFUs or TURN infrastructure, you may still consider using Calls alongside your existing infrastructure. Building a bridge to Calls from other places is not difficult as Cloudflare Calls supports standard WebRTC APIs and acts like just another WebRTC peer.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aUAwCF6AWChLdjGL00wno/43a9e7702524aa99bf3c5811a6fd9b93/image6-2.png" alt="" class="kg-image" width="1994" height="1140" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aUAwCF6AWChLdjGL00wno/5cb404a2ebb199ea980fba92e0a57298/image6-2.png" alt="" class="kg-image" width="1994" height="1140" loading="lazy">
 
 	</figure>
 	<p>We understand that getting started with a new platform is difficult, so we’re also open sourcing our internal video conferencing app, Orange Meets. Orange Meets supports small and large conference calls by maintaining room state in Workers Durable Objects. It has screen sharing, client-side noise-canceling, and background blur. It is written with TypeScript and React and is <a href="https://github.com/cloudflare/orange">available on GitHub</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k2EN8juPmF4nzC090wEiP/cdcc0705770675ca1398c7f9ea70b337/image5-3.png" alt="" class="kg-image" width="1999" height="1624" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7k2EN8juPmF4nzC090wEiP/85261afe40dd5695165729525bf2824a/image5-3.png" alt="" class="kg-image" width="1999" height="1624" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

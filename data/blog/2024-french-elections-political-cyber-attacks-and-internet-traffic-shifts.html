@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KsxKvcICbZUDvcC3VXPbO/5523658f5f18c1b2d344a22ee4e4d796/image3-8.png" alt="French elections: political cyber attacks and Internet traffic shifts" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KsxKvcICbZUDvcC3VXPbO/8ea52921f9df4b5b546369afda2b304d/image3-8.png" alt="French elections: political cyber attacks and Internet traffic shifts" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>The <a href="https://en.wikipedia.org/wiki/2024_French_legislative_election">2024 French legislative election</a> runoff on July 7 yielded surprising results compared to the first round on June 30, with the New Popular Front (NPF) gaining the most seats, followed by French President Macron’s Ensemble, and the National Rally. Coalition negotiations will follow. In this post, we examine the ongoing online attacks against French political parties and how initial election predictions at 20:00 local time led to a noticeable drop in France’s Internet traffic.</p>
@@ -22,14 +22,14 @@
 	<p>Two French political parties were attacked shortly before the first round of elections, and a third party was targeted on June 30. This third party, indicated in green on the chart below, faced attacks on the evening of June 29. Several attempts were thwarted by Cloudflare throughout election day, from 10:00 to 23:00 UTC (12:00 to 01:00 local time). The most intense attack occurred at 19:00 UTC (21:00 local time), reaching nearly 40,000 requests per second, with a total of 620 million DDoS requests recorded on that day (June 29).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1y46oB0jIcckK4ICs2LlKN/7c0594ad9719be686bb6ad7f307ae608/unnamed--1--1.png" alt="" class="kg-image" width="1600" height="673" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y46oB0jIcckK4ICs2LlKN/f60adecd41a1942702f2db4b39f711fa/unnamed--1--1.png" alt="" class="kg-image" width="1600" height="673" loading="lazy">
 
 	</figure>
 	<p>Our data indicates that the most significant attack Cloudflare intercepted targeted a party shown in yellow on the chart above. The party had already been attacked on June 23, 2024, and this subsequent attack happened on July 3 at 21:36 UTC (23:36 local time), lasting four minutes and peaking at 151,000 requests per second (rps), making it the second-largest attack we’ve observed on political parties recently. This was comparable in intensity and duration to another attack on a <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties">UK political party</a> right after their election.</p>
 	<p>On the runoff election day, July 7, the party represented by the blue line was again a target, having been attacked previously on June 24, 27, and 29. The most severe of these occurred on June 27, with attacks reaching 118,000 rps during a day that totaled 610 million daily DDoS requests. On July 7, the attacks resumed, with the first starting at 09:55 UTC (11:55 local time) and continuing sporadically until 23:18 UTC (01:18 local time on July 8). The peak of these attacks came at 11:40 UTC (13:40 local time), reaching 96,000 rps.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72FT5qz48qec9PmecY1pTL/760c94d3d21a2f0a19760005313d4477/unnamed-3.png" alt="" class="kg-image" width="1600" height="666" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72FT5qz48qec9PmecY1pTL/bee98a12bb07d64931200391b4c70e20/unnamed-3.png" alt="" class="kg-image" width="1600" height="666" loading="lazy">
 
 	</figure>
 	<p>While these rates may seem small to Cloudflare, they can be devastating for websites not well-protected against such high levels of traffic. DDoS attacks not only overwhelm systems but also serve, if successful, as a <a href="https://cloudflare.tv/shows/this-week-in-net/d-do-s-report-certificate-changes-qr-phishing-and-more/oZK6nra4">distraction for IT teams</a> while attackers attempt other types of breaches.</p>
@@ -45,13 +45,13 @@
 	<p>During the first round of the French elections on June 30, morning traffic was lower than the previous week and rose in the afternoon. The runoff, a week later, displayed a different pattern. Morning traffic remained stable compared to June 30, but it saw a significant decrease in the afternoon, especially after 17:30 local time. Polling stations in major cities closed at 20:00. At this time, TV media began broadcasting the first results, causing a 16% drop in traffic compared to the previous week. This trend, where traffic dips as initial results are announced, is also seen in other elections, like the <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties">UK’s</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v5m4DQEz5o8jcnnpaWNx6/5576427c7bf3a061c228b1043c92df3c/unnamed--2--1.png" alt="" class="kg-image" width="1600" height="414" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v5m4DQEz5o8jcnnpaWNx6/ca81699e98aa58d093af743b1bf3afba/unnamed--2--1.png" alt="" class="kg-image" width="1600" height="414" loading="lazy">
 
 	</figure>
 	<p>Traffic shifts during voting day, compared to the previous week, are more revealing when viewed in detail. The map and table below summarize the traffic changes observed at the state level within France, when voting closed and initial results predictions were revealed on TV at around 20:00 local time. This was the moment when, from Cloudflare’s data perspective, attention was diverted from online use.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x6P9SdJCaTGo9P725cd5X/aef668387bf5b24173fb3984b73b2b01/image5-2.png" alt="(Source: Cloudflare; created with Datawrapper)" class="kg-image" width="1999" height="1748" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2x6P9SdJCaTGo9P725cd5X/35e75dea02ea4dd6462486868f281f7c/image5-2.png" alt="(Source: Cloudflare; created with Datawrapper)" class="kg-image" width="1999" height="1748" loading="lazy">
 
 	</figure>
 	<p>(Source: Cloudflare; created with Datawrapper)</p>
@@ -180,7 +180,7 @@
 	<p>Also notable was the increase in mobile device request traffic share during both election days, driving the share to levels higher than usual. Over the past month, mobile device traffic share on Sundays typically ranged from 53% to 54%. However, it rose to 57% on the first election day, June 30, and increased further to 58% on the runoff day, July 7, 2024. Mobile device traffic share was especially elevated from 11:00 to 22:00 local time on these days.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OIoWCtqHI7Th1MOztHjQs/61404e93db6af34bb0ce8f771e467c49/unnamed--3--1.png" alt="" class="kg-image" width="1600" height="398" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OIoWCtqHI7Th1MOztHjQs/b45a08bdfbe7ef1870c55e227a357776/unnamed--3--1.png" alt="" class="kg-image" width="1600" height="398" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -194,19 +194,19 @@
 	<p>Switching focus to domain trends, our <a href="http://1.1.1.1">1.1.1.1</a> resolver DNS data reveals a targeted impact from the French elections, allowing for a comparison between the two election days. Analyzing French news media outlets, DNS traffic in France was significantly higher on the first election day, June 30, with a 250% increase at 20:00 local time compared to the previous week. This was 6% higher than on the runoff day, July 7.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fp35VD76a7PzLHQKJq638/6f9479ba00f3d96e26a54c8df2c47d43/unnamed--4--1.png" alt="" class="kg-image" width="1600" height="395" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fp35VD76a7PzLHQKJq638/b3175a621d1d9ea668c895950ba6acdf/unnamed--4--1.png" alt="" class="kg-image" width="1600" height="395" loading="lazy">
 
 	</figure>
 	<p>For French TV domains, the situation reversed during the runoff on July 7, showing 31% more DNS traffic at 20:00 local time than in the first round. On June 30, DNS traffic at that time was already 274% higher than the previous week, but the increase on July 7 was even more significant, at 391% compared to June 23, 2024—the Sunday before the two election days.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4stAz2OutDjqRW2d2qog30/ade5ca23b7aa6533b02b15208b5a4a5c/unnamed--5--1.png" alt="" class="kg-image" width="1600" height="397" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4stAz2OutDjqRW2d2qog30/2545d2d21dd82f0249c393b0996e6433/unnamed--5--1.png" alt="" class="kg-image" width="1600" height="397" loading="lazy">
 
 	</figure>
 	<p>For microblogging social media in France, traffic was higher during the two election days, peaking on the first round. At the close of voting polls at 20:00 local time on June 30, traffic surged 38% compared to June 23, 2024. On July 7, runoff day, traffic increased by 32% at 20:00 local time compared to June 23, but was 4% lower than on June 30.​</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OnmQkCY4ejYaFbRuFmwVs/f4a921287b49384160f5cb050f215322/unnamed--6--1.png" alt="" class="kg-image" width="1600" height="398" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OnmQkCY4ejYaFbRuFmwVs/8bb316c54657df186b2a91b45ee46270/unnamed--6--1.png" alt="" class="kg-image" width="1600" height="398" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

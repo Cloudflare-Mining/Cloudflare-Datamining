@@ -1,5 +1,5 @@
 <div class="mb2 gray5">19 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/connection-tampering">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/connection-tampering">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25gh0YtlMKeoZPrXPocdbF/a037644634dd8509c8e7d36522b6689c/2544-1-Hero.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/connection-tampering">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/connection-tampering">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25gh0YtlMKeoZPrXPocdbF/1086704243bdd200d84824411f2acc53/2544-1-Hero.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Have you ever made a phone call, only to have the call cut as soon as it is answered, with no obvious reason or explanation? This analogy is the starting point for understanding connection tampering on the Internet and its impact.&nbsp;</p>
 	<p>We have <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>found</u></a> that 20 percent of all Internet connections are abruptly closed before any useful data can be exchanged. Essentially, every fifth call is cut before being used. As with a phone call, it can be challenging for one or both parties to know what happened. Was it a faulty connection? Did the person on the other end of the line hang up? Did a third party intervene to stop the call?&nbsp;&nbsp;</p>
@@ -18,7 +18,7 @@
 	</div>
 	<p>Evidence of connection tampering is visible in networks all around the world. We were initially shocked that, globally, about 20% of all connections to Cloudflare close unexpectedly before any useful data exchange occurs — consistent with connection tampering. Here is a snapshot of these anomalous connections seen by Cloudflare that, as of today, <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>we’re sharing on Radar</u></a>.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nPz5Ulu2YS7eV6Hpmniwg/ddc879a6068d720576f5431dc9455606/2544-2.png" alt="2544-2" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nPz5Ulu2YS7eV6Hpmniwg/fa2537c949602d057dfa83a6a599f553/2544-2.png" alt="2544-2" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><i><sub>via </sub></i><a href="https://radar.cloudflare.com/security-and-attacks?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><i><sub>Cloudflare Radar</sub></i></a></p>
 	<p>It’s not all tampering, but some of it clearly is, as we describe in more detail below. The challenge is filtering through the noise to determine which anomalous connections can confidently be attributed to tampering.</p>
@@ -34,7 +34,7 @@
 	<p>Taking that approach, the figure below, taken from our peer-review <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>study</u></a>, is a visual side-by-side comparison of each of the 19 signatures. The data is taken from a two-week interval starting January 26, 2023. Within each signature column is the proportion of matching connections broken down by the country where the connection originated. For example, the column third from the right labeled with ⟨PSH → RST;RST<sub>0</sub>⟩ indicates that we almost exclusively observed that signature on connections from China. Overall, what we find is a mirror of known cases from public and prior reports, which is an indication that our methodology works.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4w1iJCVyRwZdgblT7uk2tZ/5fe4d154b6268b17af840b7952b51143/2544-3.png" alt="2544-3" class="kg-image" width="1999" height="1028" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4w1iJCVyRwZdgblT7uk2tZ/53a3201f13cf1b4994db8f8a43b9d64b/2544-3.png" alt="2544-3" class="kg-image" width="1999" height="1028" loading="lazy">
 
 	</figure>
 	<p><i><sub></sub></i><a href="https://research.cloudflare.com/publications/SundaraRaman2023"><i><sub><u>Figure 1</u></sub></i></a><i><sub>: Signature matching across countries: Each column is the total global number of connections matching a specific signature. Within each column is the proportion of connections initiations from individual countries matching that signature.</sub></i></p>
@@ -42,7 +42,7 @@
 	<p>A snapshot of signature distributions per-country, also taken from the peer-review <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>study</u></a>, appears below for a select set of countries. The global distribution is included for comparison. The dark gray portions marked ⟨SYN → ∅⟩ are included for completeness, but have more non-tampering alternative explanations than the others (for example, as result of a low-rate <a href="https://blog.cloudflare.com/the-rise-of-multivector-amplifications"><u>SYN flood</u></a>).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57Dip4I995kVVjXAhQxMrH/1a43c41084b8cb7d517d12ae995cbe8c/2544-4.png" alt="2544-4" class="kg-image" width="1999" height="690" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57Dip4I995kVVjXAhQxMrH/da5414d088777c000551a66589b80c3f/2544-4.png" alt="2544-4" class="kg-image" width="1999" height="690" loading="lazy">
 
 	</figure>
 	<p><a href="https://research.cloudflare.com/publications/SundaraRaman2023"><sub><i><u>Figure 4</u></i></sub></a><sub><i>: Signature distribution per country: The percentage of connections originating from select countries (and globally) that match a particular signature, or are not tampered with.</i></sub></p>
@@ -62,7 +62,7 @@
 	<p>In the telephone system, a person first dials a phone number, <i>not</i> a name. The call is <code>connected</code> and usable only after the other side answers, and the caller hears a voice.&nbsp; The caller asks for a name only <i>after</i> the call is connected. The call manifests in the system as energy signals that do not identify the communicating parties. Finally, after the call ends, a new call is required to communicate again.</p>
 	<p>On the Internet, a client such as a browser “establishes a connection.” Much like a telephone caller, it initiates a connection request to a server’s <code>number</code>, which is an IP address. The longest-standing “connection-oriented” protocol to connect two devices is called the <a href="https://cloudflare.tv/shows/this-week-in-net/this-week-in-net-50th-anniversary-of-the-tcp-paper/oZKEA4v4"><u>Transmission Control Protocol</u></a>, or TCP. The domain name is transmitted in isolation from the connection establishment, much like asking for a name once the phone is answered. The connections are “logical” identified by metadata that does not identify communicating parties. Finally, a new connection is established with each new visit to a website.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BzA3XvqopuaP1WSg0rK6X/ea247bded376cf834656c56933c35cff/2544-5.png" alt="2544-5" class="kg-image" width="1746" height="794" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BzA3XvqopuaP1WSg0rK6X/fe39d77acdc14c1d984512dfdb01279c/2544-5.png" alt="2544-5" class="kg-image" width="1746" height="794" loading="lazy">
 	</figure>
 	<p><sub><i>Comparison between a TCP connection and a telephone call</i></sub></p>
 	<p>What happens if a telephone company is required to prevent a call to some party? One option is to modify or manipulate phone directories so a caller can’t get the phone number they need to dial the phone that makes the call; this is the essence of <a href="https://www.cloudflare.com/en-gb/learning/access-management/what-is-dns-filtering"><u>DNS filtering</u></a>. A second option is to block all calls to the phone number, but this inadvertently affects others, just like <a href="https://blog.cloudflare.com/consequences-of-ip-blocking"><u>IP blocking</u></a> does.</p>
@@ -83,7 +83,7 @@
 	<p>The figure below is for connections from Iran during 17 days overlapping the protests. The plot-lines track individual signals of anomalous connections, including signatures of <a href="https://blog.cloudflare.com/passive-detection-of-connection-tampering"><u>different types</u></a> of connection tampering. This data pre-dates the Radar service, so we have elected to share this representation from the <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>peer-reviewed paper</u></a>. It was also the first visual example of the value of the data if it could be shared via Radar.&nbsp;
 	</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IKNhC2gLo7CeUQclssiuM/0cf30c0b2eef1fd7008276fcb4be9fd2/2544-6.png" alt="2544-6" class="kg-image" width="726" height="620" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IKNhC2gLo7CeUQclssiuM/58300eccf981f132689ee75b57db8cb2/2544-6.png" alt="2544-6" class="kg-image" width="726" height="620" loading="lazy">
 	</figure>
 	<p><sub><i></i></sub><a href="https://research.cloudflare.com/publications/SundaraRaman2023"><sub><i><u>Figure 8</u></i></sub></a><sub><i>: Signature match rates longitudinally in Iran during a period of nation-wide protests. (𝑥-axis is local time.)</i></sub></p>
 	<p></p>
@@ -91,7 +91,7 @@
 	<p>We emphasize that a signature match, alone, does not in itself mean there is tampering. However, in the case of Iran in 2022 there were public reports of blocking of various forms. The methods in use at the time, specifically <a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-sni"><u>Server Name Indication (SNI)</u></a>-based blocking of access to content, had also previously been <a href="https://ooni.org/post/2020-iran-sni-blocking"><u>well-documented</u></a>, and matched with our observations represented by the figure above.</p>
 	<p>What about today? Below we see the Radar view of the twelve months from August 2023 to August 2024. Each color represents a different stage of the connection where tampering might happen. In the previous 12 months, TCP connection anomalies in Iran are lower than the <a href="https://radar.cloudflare.com/security-and-attacks?dateStart=2024-08-01&amp;dateEnd=2024-08-08"><u>worldwide averages</u></a>, overall, but appear significantly higher in the portion of anomalies represented by the light-blue region. This “Post ACK” phase of communication is often associated with SNI-based blocking. (In the graph above, the relevant signatures are represented by the dark purple and dark green lines.) Alongside, the changing proportions of the different plot-lines since mid-December 2023 suggest that techniques have been changing over time.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qhesraWkFdNPbWgx2x0xX/e980324e5edd412d44e1bd83afae943b/2544-7.png" alt="2544-7" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qhesraWkFdNPbWgx2x0xX/1a72a1707e768270c29d570b5bd35545/2544-7.png" alt="2544-7" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><i><sub>via </sub></i><a href="https://radar.cloudflare.com/security-and-attacks/ir?dateStart=2023-08-26&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><i><sub>Cloudflare Radar</sub></i></a></p>
 	<div class="flex anchor relative">
@@ -145,16 +145,16 @@
 	</div>
 	<p>Our detection mechanism evaluates sets of packets in a connection against a set of <i>signatures</i> for connection tampering. The signatures are hand-crafted from signatures identified in prior work, and by analyzing samples of connections to Cloudflare’s network that we classify as <i>anomalous </i>– connections that close early, and ungracefully by way of a RST packet or timeout within the first 10 packets from the client. We analyzed the samples and found that 19 patterns accounted for 86.9% of all possibly tampered connections in the samples, shown in the table below.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LssSxT9SkDpXzMXtPmtZ1/d84fc29e5e5972d5837b8affeb72a03a/2544-8.png" alt="2544-8" class="kg-image" width="1888" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LssSxT9SkDpXzMXtPmtZ1/a18e564cf39613bb7fe7569337d91b65/2544-8.png" alt="2544-8" class="kg-image" width="1888" height="844" loading="lazy">
 	</figure>
 	<p><sub></sub><a href="https://research.cloudflare.com/publications/SundaraRaman2023"><sub><u>Table 1</u></sub></a><sub>: The comprehensive set of tampering signatures we identify through global passive measurements.</sub></p>
 	<p></p>
 	<p>To help reason about tampering, we also classed the 19 signatures above according to the stage of the connection lifetime in which they appear. Each stage implies something about the middlebox, as described below alongside corresponding sequence diagrams:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49GKWrmtfdg9Xpk0K2RiGJ/0e4e87314e21392ef31c00968013b666/Screenshot_2024-09-04_at_2.57.52_PM.png" alt="2544-9" class="kg-image" width="1071" height="482" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49GKWrmtfdg9Xpk0K2RiGJ/f0e755a2ba1fcac763a44185bf566f61/Screenshot_2024-09-04_at_2.57.52_PM.png" alt="2544-9" class="kg-image" width="1071" height="482" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xZbuENcYfkucNmVUJmwQv/d20ec4202b8b1365bb394f9a9a56805a/Screenshot_2024-09-04_at_2.58.00_PM.png" alt="2544-10" class="kg-image" width="1057" height="621" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xZbuENcYfkucNmVUJmwQv/b1f69b105c2e19eb9f5ef583d50416b8/Screenshot_2024-09-04_at_2.58.00_PM.png" alt="2544-10" class="kg-image" width="1057" height="621" loading="lazy">
 	</figure>
 	<p></p>
 	<ul>
@@ -207,7 +207,7 @@
 	<p>Signature matches in isolation are insufficient to make good determinations. Alongside, we can find further supporting evidence of their accuracy by examining connections in aggregate – if the cause is tampering, and tampering is targeted, then there must be other patterns or markers in common. For example, we expect browser behavior to appear worldwide; however, as we showed above, signatures that match on connections in only some places or some time intervals stick out.&nbsp;</p>
 	<p>Similarly, we expect certain characteristics in contiguous packets within a connection to also stick out, and indeed they do, namely in the <a href="https://datatracker.ietf.org/doc/html/rfc6864"><u>IP-ID</u></a> and <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl"><u>TTL</u></a> fields in the IP header.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CVNobND5JzSYY4rszgem9/36d5500f0ff8c41c56c1def969f7d571/Screenshot_2024-09-04_at_2.57.36_PM.png" alt="2544-11" class="kg-image" width="1191" height="571" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CVNobND5JzSYY4rszgem9/6b533f5a3681cf8c4f05d6a6179c0630/Screenshot_2024-09-04_at_2.57.36_PM.png" alt="2544-11" class="kg-image" width="1191" height="571" loading="lazy">
 	</figure>
 	<p><b>The IP-ID (IP identification) field</b> in the IPv4 packet header is usually a fixed per-connection value, often incremented by the client for each subsequent packet it sends. In other words, we expect the change in IP-ID value in subsequent packets sent from the same client to be small. Thus, large changes in IP-ID value between subsequent packets are unexpected in normal connections, and could be used as an indicator of packet injection. This is exactly what we see in the figure above, marked (a), for a select set of signatures.</p>
 	<p><b>The Time-to-Live (TTL) field </b>offers another clue for detecting injected packets. Here, too, most client implementations use the same <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl"><u>TTL</u></a> for each packet sent on a connection, usually set initially to either 64 or 128 and decremented by every router along the packet’s route. If a RST packet does not have the same TTL as other packets in a connection, it’s a strong signal that it was injected. Looking at the figure above, marked (b), we can see marked differences in TTLs, indicating the presence of a third party.&nbsp;</p>
@@ -233,16 +233,16 @@
 	</div>
 	<p>Reporting from <a href="https://tribune.com.pk/story/2491142/pakistan-should-be-transparent-about-internet-disruptions-surveillance-amnesty-international"><u>inside</u></a> Pakistan suggests changes in users’ Internet experience throughout August 2024. Taking a look at a two-week interval in early August, there is a significant shift in Post-ACK connection anomalies starting on August 9, 2024.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38SPF52mjzVCDvEnO63hhu/40013024b9d46b083147911cebe04017/2544-12.png" alt="2544-12" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38SPF52mjzVCDvEnO63hhu/c1a5e7b57d3f63bcf12349dbe7e1b377/2544-12.png" alt="2544-12" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/pk?dateStart=2024-08-03&amp;dateEnd=2024-08-17#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>The August 9 Post-ACK spike can be almost entirely attributed to <a href="https://radar.cloudflare.com/as56167"><u>AS56167 (Pak Telecom Mobile Limited)</u></a>, shown below in the first image, where Post-ACK anomalies jumped from under 5% to upwards of 70% of all connections, and has remained high since. Correspondingly, we see a significant reduction in the number of successful HTTP requests reaching Cloudflare’s network from clients in AS56167, below in the second image, which provides evidence that connections are being disrupted. This Pakistan example reinforces the importance of corroborating reports and observations, discussed in more detail in the <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>Radar dataset release</u></a>.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6y0WGCYjlvOhOurny2rN7p/11e01392c341f3a5f083d0f064b2507e/2544-13.png" alt="2544-13" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y0WGCYjlvOhOurny2rN7p/6afbbd35e037beac32728f0e93b1fe17/2544-13.png" alt="2544-13" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS56167?dateStart=2024-08-03&amp;dateEnd=2024-08-17#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aFE80hJQ5f6uJprUYFmEt/7cbef59280afe60dff88209e82aaab82/2544-14.png" alt="2544-14" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aFE80hJQ5f6uJprUYFmEt/b79ffa0e1c8e30fcb57d9a8bb97c41b3/2544-14.png" alt="2544-14" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/traffic/AS56167?dateStart=2024-08-03&amp;dateEnd=2024-08-17#http-traffic"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<div class="flex anchor relative">
@@ -256,7 +256,7 @@
 	<p>A <a href="https://ooni.org/post/2024-tanzania-lgbtiq-censorship-and-other-targeted-blocks"><u>OONI report</u></a> from April 2024 discusses targeted connection tampering in <a href="https://radar.cloudflare.com/tz"><u>Tanzania</u></a>. The report states that this blocking is observed on the client side as connection timeouts after the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><u>Client Hello</u></a> message during the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><u>TLS handshake</u></a>, indicating that a middlebox is dropping the packet containing the Client Hello message. On the server side, connections tampered with in this way would appear as Post-ACK timeouts as the PSH packet containing the Client Hello message never reaches the server.</p>
 	<p>Looking at the Post-ACK data represented in the light-blue portion, below, we find matching evidence: close to 30% of all new TCP connections from Tanzania appear as Post-ACK anomalies. Breaking this down further (not shown in the plots below), approximately one third is due to timeouts, consistent with the OONI report above. The remainder is due to RSTs.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IVvmuECBkPhL8xS7fdOcV/38759c2445b7408bb00772e9fba67acd/2544-15.png" alt="2544-15" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IVvmuECBkPhL8xS7fdOcV/203ca4916a474d2c06f02d6a3f04d006/2544-15.png" alt="2544-15" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/tz?dateStart=2024-07-24&amp;dateEnd=2024-08-20#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p></p>
@@ -270,16 +270,16 @@
 	</div>
 	<p><a href="https://radar.cloudflare.com/et"><u>Ethiopia</u></a> is another location with <a href="https://ooni.org/post/2023-ethiopia-blocks-social-media"><u>previously-reported</u></a> connection tampering. Consistent with this, we see elevated rates of Post-PSH TCP anomalies across networks in Ethiopia. Our internal data shows that the majority of Post-PSH anomalies in this case are due to RSTs, although timeouts are also prevalent.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YTj7Kypiu0nSjmvZ00Jjo/0ee5074f71c27c6d117c28dc082e5de5/2544-16.png" alt="2544-16" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YTj7Kypiu0nSjmvZ00Jjo/b3306284a04a67d91351da645b6332f7/2544-16.png" alt="2544-16" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/et?dateStart=2024-07-24&amp;dateEnd=2024-08-20#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>The majority of traffic arriving to Cloudflare’s servers from IP addresses geolocated in Ethiopia is from <a href="https://radar.cloudflare.com/as24757"><u>AS24757 (Ethio Telecom)</u></a>, shown below in the first image, so it is perhaps unsurprising that its data closely matches the country-wide distribution of connection anomalies. The number of Post-PSH connections originating from <a href="https://radar.cloudflare.com/as328988"><u>AS328988 (SAFARICOM TELECOMMUNICATIONS ETHIOPIA PLC)</u></a>, shown below in the second image, are higher in proportion and account for over 33% of all connections from that network.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43sDPBfmz2u2JIRIPN0htd/82d3a202f2910d23efd65ebdce35dfe9/2544-17.png" alt="2544-17" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43sDPBfmz2u2JIRIPN0htd/6e0825edaef48ba73df9180a30411231/2544-17.png" alt="2544-17" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub>via </sub><a href="https://radar.cloudflare.com/security-and-attacks/AS24757?dateStart=2024-07-24&amp;dateEnd=2024-08-20#tcp-resets-and-timeouts"><sub>Cloudflare Radar</sub></a></p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fyguCauAPqdXYXkCvhjAl/34ed3b562667051b5ec74df9076c7b58/2544-18.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fyguCauAPqdXYXkCvhjAl/7e86f97f2b71a73cbf3d8c95d27a92b1/2544-18.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub>via </sub><a href="https://radar.cloudflare.com/security-and-attacks/AS328988?dateStart=2024-07-24&amp;dateEnd=2024-08-20#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<div class="flex anchor relative">

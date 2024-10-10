@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iPuvq238von3vtCh1gd0d/61ecc8a2651263449beb6389e188b85c/how-we-use-hashicorp-nomad.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2iPuvq238von3vtCh1gd0d/54cc1a490299c097b6718539c4f9ad7d/how-we-use-hashicorp-nomad.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In this blog post, we will walk you through the reliability model of services running in our more than 200 edge cities worldwide. Then, we will go over how deploying a new dynamic task scheduling system, HashiCorp Nomad, helped us improve the availability of services in each of those data centers, covering how we deployed Nomad and the challenges we overcame along the way. Finally, we will show you both how we currently use Nomad and how we are planning on using it in the future.</p>
 	<div class="flex anchor relative">
@@ -31,7 +31,7 @@
 	<p>As an example, here is the CPU usage over a day in one of our data centers where each time series represents one machine and the different colors represent different generations of hardware. Unimog keeps all machines processing traffic and at roughly the same CPU utilization.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zlf1rrhRjEVE9t65RwNsR/474b5fe9a5a1264dd38d545472e83937/image2-1.png" alt="" class="kg-image" width="872" height="186" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zlf1rrhRjEVE9t65RwNsR/0b44268763f3527aac3cdda245c412c2/image2-1.png" alt="" class="kg-image" width="872" height="186" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -119,7 +119,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bD7wQ3kcMFYwDyGWzH1Jp/6328d4d458ac1bd99c74cc0121c57183/image3.png" alt="" class="kg-image" width="622" height="433" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bD7wQ3kcMFYwDyGWzH1Jp/a70cbcd42ca55f92643aafeecc16046b/image3.png" alt="" class="kg-image" width="622" height="433" loading="lazy">
 
 	</figure>
 	<p>Nomad is split in two different pieces:</p>
@@ -183,7 +183,7 @@
 	<p>We use Prometheus to scrape Nomad Server and Client instances running in each data center and Alertmanager to alert on key metrics. Using Prometheus metrics, we built a Grafana dashboard to provide visibility on each cluster.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Y0I7dOMGQEs3TbRNyxbKF/ff758041090dfe472a5d4f24d9811813/image1-1.png" alt="" class="kg-image" width="1909" height="948" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Y0I7dOMGQEs3TbRNyxbKF/17511a97b13b895e14424e80b0716fb2/image1-1.png" alt="" class="kg-image" width="1909" height="948" loading="lazy">
 
 	</figure>
 	<p>We <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#consul_sd_config">set up</a> our Prometheus instances to discover services running on Nomad by querying the Consul Service Directory and scraping their metrics periodically using the following Prometheus configuration:</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50XQVPRCziIjoYNbefzUTS/573af1f466d1148a78a0ffef6480f685/1.png" alt="" class="kg-image" width="469" height="264" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50XQVPRCziIjoYNbefzUTS/7eccf7a2173fb568838236da20265eac/1.png" alt="" class="kg-image" width="469" height="264" loading="lazy">
 
 	</figure>
 	<p>A quick followup to our <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">last blog post</a> on our decision to reissue and revoke all of CloudFlare's customers' SSL certificates. One question we've received is why we didn't just reissue and revoke all SSL certificates as soon as we got word about the Heartbleed vulnerability? The answer is that the revocation process for SSL certificates is far from perfect and imposes a significant cost on the Internet's infrastructure.</p>
@@ -14,14 +14,14 @@
 	<p>Yesterday, CloudFlare completed the process of reissuing all the SSL certificates we manage for our customers. Once that was complete, we revoked all previously used certificates. You can see the <a href="https://isc.sans.edu/crls.html">spike in global CRL activity we generated:</a></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CNjOM7MCaMDYxuCGiSmWL/1e6d77f66c0a72b8a31d1cb859d964ba/2.png" alt="" class="kg-image" width="469" height="356" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CNjOM7MCaMDYxuCGiSmWL/84c419b302d21af761426202bb4904fa/2.png" alt="" class="kg-image" width="469" height="356" loading="lazy">
 
 	</figure>
 	<p>What you can't see is the spike in bandwidth that imposed. Globalsign, who is CloudFlare's primary CA partner, saw their CRL grow to approximately 4.7MB in size from approximately 22KB on Monday. The activity of browsers downloading the Globalsign CRL generated around 40Gbps of net new traffic across the Internet. If you assume that the global average price for bandwidth is around \$10/Mbps, just supporting the traffic to deliver the CRL would have added \$400,000USD to Globalsign's monthly bandwidth bill.</p>
 	<p>Lest you think that’s an overestimate, to make the total costs more accurate, we ran the numbers using AWS’s CloudFront price calculator using a mix of traffic across regions that approximates what we see at CloudFlare. The total cost to Globalsign if they were using AWS’s infrastructure, would be at least \$952,992.40/month. Undoubtedly they’d give some additional discounts above the pricing they list publicly, but any way you slice it the costs are significant.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YmAaiDr57652FzPmoRra9/d44f73b54e2b4fec53cebcce06caa319/3.png" alt="" class="kg-image" width="469" height="262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5YmAaiDr57652FzPmoRra9/f5569bf2ee96800507060561c2c59897/3.png" alt="" class="kg-image" width="469" height="262" loading="lazy">
 
 	</figure>
 	<p>Beyond the cost, many CAs are not setup to be able to handle this increased load. Revoking SSL certificates threatens to create a sort of denial of service attack on their own infrastructures. Thankfully, CloudFlare helps <a href="https://blog.cloudflare.com/cloudflare-works-with-globalsign-to-make-ssl">power Globalsign's OCSP and CRL infrastructure</a>. We were able to bear the brunt of the load, allowing us to move forward with revocation as quickly as we did. And, no, we didn’t charge them anything extra.</p>

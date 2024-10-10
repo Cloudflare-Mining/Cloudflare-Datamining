@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uqKpwdJzm6ovJSTjbsxnm/1515320e892225c13dddccb8f0c4bb10/image4-12.png" alt="Guest Blog: k8s tunnels with kudelski security" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uqKpwdJzm6ovJSTjbsxnm/4ee162c0476b393344d5c051f7c7433a/image4-12.png" alt="Guest Blog: k8s tunnels with kudelski security" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p><i>Today, we’re excited to publish a blog post written by our friends at Kudelski Security, a managed security services provider. A few weeks back, Romain Aviolat, the Principal Cloud and Security Engineer at Kudelski Security approached our Zero Trust team with a unique solution to a difficult problem that was powered by Cloudflare’s Identity-aware Proxy, which we call Cloudflare Tunnel, to ensure secure application access in remote working environments.</i></p>
@@ -47,7 +47,7 @@
 	<p>In our setup, Kudelski Security is using Cloudflare’s IAPs as a component of Cloudflare Access -- a ZTNA solution and one of several security services unified by Cloudflare’s Zero Trust platform.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qcVhWCQ9738SLDgAWt1fL/e3201120485b385d66d864ef461cc7fc/image1-39.png" alt="" class="kg-image" width="1211" height="753" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qcVhWCQ9738SLDgAWt1fL/0e6e328791b8d4c0c51deecd4a76ba43/image1-39.png" alt="" class="kg-image" width="1211" height="753" loading="lazy">
 
 	</figure>
 	<p>For many web-based apps, IAPs help create a frictionless experience for end users requesting access via a browser. Users authenticate via their corporate SSO or identity provider before reaching the secured app, while the IAP works in the background.</p>
@@ -56,7 +56,7 @@
 	<p>Without any automation, however, Kudelski Security’s infrastructure team would need to distribute the daemon on end user devices, provide guidance on how to set up those encrypted connections, and take other manual, hands-on configuration steps and maintain them over time. Plus, developers would still lack a single pane of visibility across the different K8s clusters that they would need to access in their regular work.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GgyiIhSs1biHl2F16tpVf/72fe82acec0a4b4b99dbe84fadd26323/image3-14.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GgyiIhSs1biHl2F16tpVf/8290e0e8c79254bc85493ec24ff88ad6/image3-14.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -70,14 +70,14 @@
 	<p>To solve these challenges, our infrastructure engineering team developed an internal tool — called ‘k8s-tunnels’ — that embeds complex configuration steps which make life easier for our developers. Moreover, this tool automatically discovers all the K8s clusters that a given user has access to based on the Zero Trust policies created. To enable this functionality, we embedded the SDKs of some major public cloud providers that Kudelski Security uses. The tool also embeds the <i>cloudflared</i> daemon_,_ meaning that we only need to distribute a single tool to our users.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZQvU7tCb7pVwuA4XxkEFs/3728f9c6501ffc27b697d55d14f883cd/image7-3.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZQvU7tCb7pVwuA4XxkEFs/2f73cfaf44a385c1ec12f8042292ddb4/image7-3.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>All together, a developer who launches the tool goes through the following workflow: (we assume that the user already has valid credentials otherwise the tool would open a browser on our IDP to obtain them)</p>
 	<p>1. The user selects one or more cluster to</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FRjPPfs08sQT8liAnUYJx/866742ef466c1d3788f2516069bbdfcf/image2-22.png" alt="" class="kg-image" width="1472" height="438" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FRjPPfs08sQT8liAnUYJx/6985e5ee3b7c6f44de8911f9cd000ffe/image2-22.png" alt="" class="kg-image" width="1472" height="438" loading="lazy">
 
 	</figure>
 	<p>2. k8s-tunnel will automatically open the connection with Cloudflare and expose a local SOCKS5 proxy on the developer machine</p>
@@ -85,7 +85,7 @@
 	<p>4. k8s-tunnel switches the Kubernetes client context to the current connection</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5c4A7fNyziO8je6kIFL2yl/5db43fef32d9e7cdba7ff2c262e0255e/image6-8.png" alt="" class="kg-image" width="1473" height="388" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c4A7fNyziO8je6kIFL2yl/f89cd117fc0ac71a2d21a59faca9e44c/image6-8.png" alt="" class="kg-image" width="1473" height="388" loading="lazy">
 
 	</figure>
 	<p>5. The user can now use his/her favorite CLI client to access the K8s cluster</p>
@@ -101,7 +101,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cjUsp5ExD6qFFwAKHfpF6/df832759b6414bde6150cea417b14c05/image5-6.png" alt="" class="kg-image" width="1600" height="594" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cjUsp5ExD6qFFwAKHfpF6/b3a91c280d4cdfa0782e4d90ef133d59/image5-6.png" alt="" class="kg-image" width="1600" height="594" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

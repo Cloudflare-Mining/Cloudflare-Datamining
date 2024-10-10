@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1srGMDoFK9nOQ0rfS7XabP/03714dbc9f0b9dc8d3ef73d97dab6795/explaining-cloudflares-abr-analytics.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1srGMDoFK9nOQ0rfS7XabP/200bcbce442357149b070f080908cd70/explaining-cloudflares-abr-analytics.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare’s analytics products help customers answer questions about their traffic by analyzing the mind-boggling, ever-increasing number of events (HTTP requests, Workers requests, Spectrum events) logged by Cloudflare products every day. &nbsp;The answers to these questions depend on the point of view of the question being asked, and we’ve come up with a way to exploit this fact to improve the quality and responsiveness of our analytics.</p>
 	<div class="flex anchor relative">
@@ -19,14 +19,14 @@
 	<p>Useful answers do not benefit from being overly exact. &nbsp;For large quantities, knowing the correct order of magnitude and a few significant digits gives the most useful answer. &nbsp;At Cloudflare, the difference in traffic between different sites or when a single site is under attack can cross nine <a href="https://en.wikipedia.org/wiki/Orders_of_magnitude_(numbers)">orders of magnitude</a> and, in general, all our traffic follows a <a href="https://en.wikipedia.org/wiki/Pareto_distribution">Pareto distribution</a>, meaning that what’s appropriate for one site or one moment in time might not work for another.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sJsqh0fC8scFltxrCftPD/6d49ef24c707ebc698116c7029ace438/abr_pareto2.png" alt="" class="kg-image" width="1600" height="827" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sJsqh0fC8scFltxrCftPD/4ecb77ab450979eb6bc600b206358ffb/abr_pareto2.png" alt="" class="kg-image" width="1600" height="827" loading="lazy">
 
 	</figure>
 	<p>Because of this distribution, a query that scans a few hundred records for one customer will need to scan billions for another. &nbsp;A report that needs to load a handful of rows under normal operation might need to load millions when a site is under attack.</p>
 	<p>To get a sense of the relative difference of each of these numbers, remember “<a href="https://www.youtube.com/watch?v=0fKBhvDjuy0">Powers of Ten</a>”, an amazing visualization that Ray and Charles Eames produced in 1977. &nbsp;Notice that the scale of an image determines what resolution is practical for recording and displaying it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pkc5ucF10g2Y3IsffEsTS/2eb2167f555107d1879092df753216ff/pasted-image-0.png" alt="" class="kg-image" width="1600" height="1152" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pkc5ucF10g2Y3IsffEsTS/a56468a902ee6e5b17d6bb96ecc5d0d1/pasted-image-0.png" alt="" class="kg-image" width="1600" height="1152" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -42,7 +42,7 @@
 	<p>You might be aware that we <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">use a columnar store called ClickHouse</a> to store and process our analytics data. &nbsp;When using ABR with ClickHouse, we write the same data at multiple resolutions into separate tables. &nbsp;Usually, we cover seven orders of magnitude – from 100% to 0.0001% of the original events. &nbsp;We wind up using an additional 12% of disk storage but enable very fast ad hoc queries on the reduced resolution tables.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HKrBQ950HetBHxqHDgHUl/84e0aa527c7e5e72c3c4ec893ffabdc2/abr_storage--1-.png" alt="" class="kg-image" width="720" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HKrBQ950HetBHxqHDgHUl/95051dc10f00da3e1c8cafee0d26084a/abr_storage--1-.png" alt="" class="kg-image" width="720" height="360" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -84,12 +84,12 @@
 	<p>For example, compare this chart showing Cache Performance for a site under attack with the same chart generated a moment later while we simulate a failure of some of the servers in our cluster. &nbsp;In the days before ABR, your Cloudflare dashboard would fail to load in this scenario. &nbsp;Now, with ABR analytics, you won’t see significant degradation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ueUzoxEaJ1GPvTOLkBX8v/f88a4153d7db31e9ddcce013b5231c70/24_request_traffic_normal.png" alt="" class="kg-image" width="1600" height="542" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ueUzoxEaJ1GPvTOLkBX8v/4d511659d5593ab7565e2345ebaefd48/24_request_traffic_normal.png" alt="" class="kg-image" width="1600" height="542" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CRayU1gtFi6dv835RjKED/27ec05558527c257b60454a8b3f96f30/24_request_traffic_degraded.png" alt="" class="kg-image" width="1600" height="533" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CRayU1gtFi6dv835RjKED/6e2eaf5a4f2a6263206cb1be01e9db6d/24_request_traffic_degraded.png" alt="" class="kg-image" width="1600" height="533" loading="lazy">
 
 	</figure>
 	<p>Stretching the analogy to ABR in video streaming, we want you to be able to enjoy your analytics dashboard without being bothered by issues related to faulty servers, or network latency, or long running queries. &nbsp;With ABR you can get appropriate answers to your questions reliably and within a predictable amount of time.</p>

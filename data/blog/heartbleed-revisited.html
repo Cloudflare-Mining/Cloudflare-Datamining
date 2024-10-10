@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cy9wQeZ4nZNu6gjukc5jh/cb8b40aaecadc2fb3add8b2e21baa27c/image4-48.png" alt="Preventable hack #6: TLS private key compromises" class="kg-image" width="1513" height="708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cy9wQeZ4nZNu6gjukc5jh/250cf16d8a12867765cca6b434f3adfb/image4-48.png" alt="Preventable hack #6: TLS private key compromises" class="kg-image" width="1513" height="708" loading="lazy">
 
 	</figure>
 	<p>In 2014, a bug was found in OpenSSL, a popular encryption library used to secure the majority of servers on the Internet. This bug allowed attackers to abuse an obscure feature called TLS heartbeats to read memory from affected servers. Heartbleed was big news because it allowed attackers to extract the most important secret on a server: its TLS/SSL certificate private key. After confirming that the bug was <a href="https://blog.cloudflare.com/the-results-of-the-cloudflare-challenge">easy to exploit</a>, we revoked and reissued over <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">100,000 certificates</a>, which highlighted some major issues with how the Internet is secured.</p>
@@ -19,21 +19,21 @@
 	<p>An important tenet of security system design is defense-in-depth. Important things should be protected with multiple layers of defense. This is why security-conscious people keep spare house keys in a secure lockbox rather than under the mat. For cryptographic systems that face the Internet, defense-in-depth means designing your systems so that keys are not one exploit away from being stolen. This wasn’t the case for OpenSSL and Heartbleed. Private keys were loaded into memory into a memory-unsafe Internet-facing process, so only a single memory disclosure bug was needed to exfiltrate them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4utbSsV9R3VODJsjcgNPGb/14bff71e00d4a38beb9d54b63402e57e/image6-22.png" alt="Keyless SSL: keeping the server separate from the key" class="kg-image" width="840" height="348" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4utbSsV9R3VODJsjcgNPGb/6844289c0ab586527f721c9772af4202/image6-22.png" alt="Keyless SSL: keeping the server separate from the key" class="kg-image" width="840" height="348" loading="lazy">
 
 	</figure>
 	<p>Keyless SSL: keeping the server separate from the key</p>
 	<p>An effective defense-in-depth strategy for protecting TLS/SSL private keys is splitting the process into two parts: the private key/authentication part, and the encryption/decryption part. This is exactly why we developed Keyless SSL, to allow customers to keep full control over their private keys while allowing Cloudflare to handle the rest of the connection details. <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> provides physical separation between where a key is being used and where it is stored. We support Keyless SSL for both software and hardware security modules (HSMs), and today we’re announcing that we now support <a href="https://blog.cloudflare.com/keyless-ssl-supports-fips-140-2-l3-hsm">multiple cloud-based HSMs</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Bndw9miSZSb1LZhH9bPoT/ecc965a61d27a291ce547e20af9118d0/image1-1.gif" alt="Geo Key Manager: configurable key management by geography" class="kg-image" width="1999" height="997" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Bndw9miSZSb1LZhH9bPoT/f9ba0c1e2d7ae1055f7f23cb7d65e534/image1-1.gif" alt="Geo Key Manager: configurable key management by geography" class="kg-image" width="1999" height="997" loading="lazy">
 
 	</figure>
 	<p>Geo Key Manager: configurable key management by geography</p>
 	<p>Heartbleed showed us that this strategy could also be useful to add an extra layer of security for private keys that we manage for our customers. In 2017, we launched <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">Geo Key Manager</a>, a feature that allows customers to select which locations in the world they want their keys to be stored. Geo Key Manager protects keys against physical compromise of servers in different geographies. In 2019, we took this even further by implementing a strategy called <a href="https://blog.cloudflare.com/going-keyless-everywhere">Keyless Everywhere</a>, moving all managed keys onto a system that provides logical separation between the Internet and the private keys.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qPpBQgpHNVn59GIVqCD0h/b2eff6118ee6c26438da23f536111a59/image2-1.jpg" alt="Delegated Credentials: key separation with no latency" class="kg-image" width="512" height="292" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qPpBQgpHNVn59GIVqCD0h/4c6bfa78273296fe75e34325bb2c0119/image2-1.jpg" alt="Delegated Credentials: key separation with no latency" class="kg-image" width="512" height="292" loading="lazy">
 
 	</figure>
 	<p>Delegated Credentials: key separation with no latency</p>
@@ -56,7 +56,7 @@
 					<p>A list of revoked serial numbers for a given certificate authority</p>
 					<figure class="kg-card kg-image-card ">
 
-						<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k5nVuOjuLVYHHODuRVunR/4a3197b0f28d680d4ae28f26acaee809/image3.jpg" alt="image3" class="kg-image" width="1862" height="1304" loading="lazy">
+						<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7k5nVuOjuLVYHHODuRVunR/97784bde40fad5bbf527f1e406c02cea/image3.jpg" alt="image3" class="kg-image" width="1862" height="1304" loading="lazy">
 
 					</figure>
 				</li>
@@ -69,7 +69,7 @@
 					<p>A protocol to query a certificate authority about the revocation status of a certificate</p>
 					<figure class="kg-card kg-image-card ">
 
-						<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QEflfTvpxn0peLcEXrC9R/e07e68e8554e26be729bda7e91f184e0/image5.jpg" alt="image5" class="kg-image" width="1999" height="966" loading="lazy">
+						<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QEflfTvpxn0peLcEXrC9R/e95fef4f9811c8ffb211f44776df06b5/image5.jpg" alt="image5" class="kg-image" width="1999" height="966" loading="lazy">
 
 					</figure>
 				</li>
@@ -92,7 +92,7 @@
 	<p>The situation in Chrome is even worse from a security perspective. Since neither OCSP nor CRLs are checked for the majority of certificates (CRLSets only contain revoked “Extended Validation” certificates), most certificates are trusted without checking revocation status. The solution to revoking the set of Cloudflare-managed certificates in Chrome for Heartbleed was actually a short patch to the Chromium codebase. Clearly not a scalable solution!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XZmNGWOhzhZBL19rynmUH/922e5712819642c81397d32287bec80b/image7-11.png" alt="" class="kg-image" width="1999" height="637" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XZmNGWOhzhZBL19rynmUH/49eb85d1d327415ee10ea49670b5b9c2/image7-11.png" alt="" class="kg-image" width="1999" height="637" loading="lazy">
 
 	</figure>
 	<p>Mass revocation of certificates back in 2014 plainly didn’t work. Some of the certificates at the time were valid for up to five years, so a compromised key was a problem for a long time.</p>

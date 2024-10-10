@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3G4Qm0YC0j3hmsdHGwKldT/e24aa4409e7933ef0a762d4a47a3cc53/ipv6-plate.png" alt="IPv6 Plate" class="kg-image" width="1250" height="1206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3G4Qm0YC0j3hmsdHGwKldT/6f05b7388a351c1f87406644b82f72aa/ipv6-plate.png" alt="IPv6 Plate" class="kg-image" width="1250" height="1206" loading="lazy">
 
 	</figure>
 	<p>Early last month Apple announced that all apps submitted to the Apple Store June 1 forward would need to support IPv6-only networking as they transition to IPv6-only network services in iOS 9. <a href="https://developer.apple.com/news/?id=05042016a">Apple reports</a> that “Most apps will not require any changes”, as these existing apps support IPv6 through Apple's <a href="https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class">NSURLSession</a> and <a href="https://developer.apple.com/library/mac/documentation/Networking/Conceptual/CFNetwork/Introduction/Introduction.html">CFNetwork</a> APIs.</p>
@@ -20,7 +20,7 @@
 	<p>So here we are nearly 20 years since IPv6 and… we’re at a little over <a href="https://www.google.com/intl/en/ipv6/statistics.html">10% IPv6 adoption</a>. :/</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7auUBz1f5QI5zQ6RshjzIQ/dafa292af6e81176bf639c031ba109a7/ipv6-adoption.png" alt="IPv6 adoption" class="kg-image" width="1586" height="1048" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7auUBz1f5QI5zQ6RshjzIQ/bc922b95265c50403926469f23493fcf/ipv6-adoption.png" alt="IPv6 adoption" class="kg-image" width="1586" height="1048" loading="lazy">
 
 	</figure>
 	<p>(<a href="https://www.google.com/intl/en/ipv6/statistics.html">source</a>)</p>
@@ -36,19 +36,19 @@
 	<p>Transitioning from IPv4 to IPv6 is a complex thing to execute on a global scale. When data gets sent through the Internet, packets of data are sent using the IP protocol. Within each packet you have a number of elements besides the payload (the actual data you’re sending), including the source and destination.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QaaHehStrAqmqeUfDkgdF/1c4e415e886f9b80143866256c236072/IPv4-Header.png" alt="IPv4 Header" class="kg-image" width="1252" height="702" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QaaHehStrAqmqeUfDkgdF/23ebb39301d30906d76a564757e031e0/IPv4-Header.png" alt="IPv4 Header" class="kg-image" width="1252" height="702" loading="lazy">
 
 	</figure>
 	<p>In order for the transmission to get to its destination, each device passing it along (clients/servers, routers, firewalls, load balancers, etc) needs to be able to communicate with the other. Traditionally, these devices communicate with IPv4, the universal language on the Internet. IPv6 represents an entirely new language. In order for all of these devices to be able to communicate, they all need to talk IPv6 or have some sort of translator involved.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ldIqoD4iT6MrFRJEUVMaP/14563efd369b2d036f3d5650f0abd87d/IPv6-Header.png" alt="IPv6 Header" class="kg-image" width="1538" height="554" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ldIqoD4iT6MrFRJEUVMaP/75e3c62e41ded36b7271ddcea3e55a9c/IPv6-Header.png" alt="IPv6 Header" class="kg-image" width="1538" height="554" loading="lazy">
 
 	</figure>
 	<p>Translation requires technologies such as NAT64 and DNS64. NAT64 allow IPv6 hosts to communicate with IPv4 servers by creating a NAT-mapping between the IPv6 and the IPv4 address. DNS64 will synthesize AAAA records from A records. DNS64 has some known issues like DNSSEC validation failure (because the DNS server doing the translation is not the owner’s domain server). For service providers, supporting IPv4/IPv6 translation means providing separate IPv4 and IPv6 connectivity thus incurring additional complexity as well as <a href="https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying">additional operational and administrative costs</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6n6te48e8rLh9NVwIdUqS1/0546eb4b03f6f4130682c00d748d29fd/IPv6.png" alt="IPv6 access" class="kg-image" width="1290" height="658" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6n6te48e8rLh9NVwIdUqS1/fdc1bd1eb37eb8bfc7d73811e3038a31/IPv6.png" alt="IPv6 access" class="kg-image" width="1290" height="658" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -65,14 +65,14 @@
 	<p>CloudFlare offers a number of IPv6 features that developers can take advantage of during their migration. If your domain is running through CloudFlare, enabling IPv6 support is as simple as enabling IPv6 Compatibility in the dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4T5GBCooyN3nfHgu3lfLvM/476424f41996af261654678140b37033/turning-on-ipv6.png" alt="Turning on IPv6" class="kg-image" width="1600" height="338" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4T5GBCooyN3nfHgu3lfLvM/c033cbedb4f3f4f497fcd2f60811ebf9/turning-on-ipv6.png" alt="Turning on IPv6" class="kg-image" width="1600" height="338" loading="lazy">
 
 	</figure>
 	<p>Certain legacy IPv4 applications may be able to take advantage of CloudFlare's Pseudo IPv4. Pseudo IPv4 works by adding an HTTP header to requests established over IPv6 with a "pseudo" IPv4 address. Using a hashing algorithm, Pseudo IPv4 will create a <a href="https://en.wikipedia.org/wiki/Classful_network">Class E</a> IPv4 address which always produces the same output for the same input; the same IPv6 address will always result in the same Pseudo IPv4 address. Using the Class E IP space, we have access to 268,435,456 possible unique IPv4 addresses.</p>
 	<p>Pseudo IPv4 offers 2 options: Add Header or Overwrite Headers. Add Header will automatically add a header (Cf-Pseudo-IPv4), that can be parsed by software as needed. Overwrite Headers will overwrite the existing Cf-Connecting-IP and X-Forwarded-For headers with a Pseudo IPv4 address. The overwrite option has the advantage (in most cases), of not requiring any software changes. If you choose the overwrite option, we'll append a new header (Cf-Connecting-IPv6) in order to ensure you can still find the actual connecting IP address for debugging.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mrxwvi0fTQXYOvzaOSddj/dbfc8b392dd210247743ba8fe83c12d7/pseudo-ipv4.png" alt="Pseudo IPv6" class="kg-image" width="1600" height="351" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mrxwvi0fTQXYOvzaOSddj/30e338e4a96449dc6b8f0311f6170b98/pseudo-ipv4.png" alt="Pseudo IPv6" class="kg-image" width="1600" height="351" loading="lazy">
 
 	</figure>
 	<p>For iOS developers under the gun to make the transition to IPv6, there are benefits to the move apart from compliance with Apple’s policy. Beyond the inherent security benefits of IPv6 like mandatory IPSec, many companies have seen performance gains as well. Real User Measurement studies conducted by <a href="https://code.facebook.com/posts/1192894270727351/ipv6-it-s-time-to-get-on-board">Facebook</a> show IPv6 made their site 10-15 percent faster and <a href="https://www.youtube.com/watch?v=FUtG89C8h_A">LinkedIn</a> realized 40 percent gains on select mobile networks in Europe.</p>

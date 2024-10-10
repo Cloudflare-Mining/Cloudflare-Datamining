@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/the-csam-scanning-tool">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/the-csam-scanning-tool">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/the-csam-scanning-tool">日本語</a>, <a href="https://blog.cloudflare.com/es-es/the-csam-scanning-tool">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/the-csam-scanning-tool">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UpsMlTB0qGXDXox9ce7Tb/32c1f27f063a93eb6954fed15922a543/the-csam-scanning-tool.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/the-csam-scanning-tool">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/the-csam-scanning-tool">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/the-csam-scanning-tool">日本語</a>, <a href="https://blog.cloudflare.com/es-es/the-csam-scanning-tool">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/the-csam-scanning-tool">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UpsMlTB0qGXDXox9ce7Tb/cd06cf483c86230f76252d987e98d49f/the-csam-scanning-tool.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Two weeks ago we wrote about <a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online">Cloudflare's approach to dealing with child sexual abuse material (CSAM)</a>. We first began working with the National Center for Missing and Exploited Children (NCMEC), the US-based organization that acts as a clearinghouse for removing this abhorrent content, within months of our public launch in 2010. Over the last nine years, our Trust &amp; Safety team has worked with <a href="http://www.missingkids.com">NCMEC</a>, <a href="https://www.interpol.int/en/Crimes/Crimes-against-children">Interpol</a>, and nearly 60 other public and private agencies around the world to design our program. And we are proud of the work we've done to remove CSAM from the Internet.</p>
 	<p>The most repugnant cases, in some ways, are the easiest for us to address. While Cloudflare is not able to remove content hosted by others, we will take steps to terminate services to a website when it becomes clear that the site is dedicated to sharing CSAM or if the operators of the website and its host fail to take appropriate steps to take down CSAM content. When we terminate websites, we purge our caches — something that takes effect within seconds globally — and we block the website from ever being able to use Cloudflare's network again.</p>
@@ -15,7 +15,7 @@
 	<p>Today we're proud to take a step to help deal with those hard cases. Beginning today, every Cloudflare customer can login to their dashboard and enable access to the CSAM Scanning Tool. As the CSAM Scanning Tool moves through development to production, the tool will check all Internet properties that have enabled CSAM Scanning for this illegal content. Cloudflare will automatically send a notice to you when it flags CSAM material, block that content from being accessed (with a 451 “blocked for legal reasons” status code), and take steps to support proper reporting of that content in compliance with legal obligations.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AbFvKTllB8PtLhuXka8Cd/62e896a58c0b201191b8a237907721af/csam-tool.png" alt="" class="kg-image" width="1650" height="659" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AbFvKTllB8PtLhuXka8Cd/83db523c6bab38856bdf3c8aa757c39e/csam-tool.png" alt="" class="kg-image" width="1650" height="659" loading="lazy">
 
 	</figure>
 	<p>CSAM Scanning will be available via the Cloudflare dashboard at no cost for all customers regardless of their plan level. You can find this tool under the “Caching” tab in your dashboard. We're hopeful that by opening this tool to all our customers for free we can help do even more to counter CSAM online and help protect our customers from the legal and reputational risk that CSAM can pose to their businesses.</p>
@@ -33,14 +33,14 @@
 	<p>The process is known as a fuzzy hash. Traditional hash algorithms like MD5, SHA1, and SHA256 take a file (such as an image or document) of arbitrary length and output a fixed length number that is, effectively, the file’s digital fingerprint. For instance, if you take the MD5 of this picture then the resulting fingerprint is <b>605c83bf1bba62e85f4f5fccc56bc128</b>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56l9Sl2FmrYei4gHB1ejSi/518a2a2270924793568a8cfb2ccd183b/base-image.jpg" alt="" class="kg-image" width="2000" height="1335" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56l9Sl2FmrYei4gHB1ejSi/edb419fe336a2f3b81dcd7964f93bf3f/base-image.jpg" alt="" class="kg-image" width="2000" height="1335" loading="lazy">
 
 	</figure>
 	<p>The base image</p>
 	<p>If we change a single pixel in the picture to be slightly off white rather than pure white, it's visually identical but the fingerprint changes completely to <b>42ea4fb30a440d8787477c6c37b9daed</b>. As you can see from the two fingerprints, a small change to the image results in a massive and unpredictable change to the output of a traditional hash.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dbf5FVy09FFVrTDvhTbkm/fb8965ec2cadfc6919ce9a7584fcd23b/base-image-pixel-changed.jpg" alt="" class="kg-image" width="2000" height="1335" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dbf5FVy09FFVrTDvhTbkm/9a64cea0427199fe630f212da2c53dd2/base-image-pixel-changed.jpg" alt="" class="kg-image" width="2000" height="1335" loading="lazy">
 
 	</figure>
 	<p>The base image with a single pixel changed</p>
@@ -70,7 +70,7 @@
 	<p>There's only a slight difference between the two in terms of pixels and the fuzzy hashes are identical.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XABj7ngnOZ2SrnRyOl3mI/f7cbdbfe82ed65bc8d50827af0ced241/base-image-altered-2.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1335" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XABj7ngnOZ2SrnRyOl3mI/1adc7f88b188d15057b155b006d686b8/base-image-altered-2.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1335" loading="lazy">
 
 	</figure>
 	<p>The base image after increasing the saturation, changing to sepia, adding a border and then adding random noise.</p>
@@ -91,7 +91,7 @@ d36fff4561aebb2f088a891208134202
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59LaVGZVc82yuxKulGMcWM/4bc8d1f87b8ee30ceb330644255aae02/image-1.jpg" alt="" class="kg-image" width="2000" height="1333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59LaVGZVc82yuxKulGMcWM/7e8064c951ef89935735b82048761440/image-1.jpg" alt="" class="kg-image" width="2000" height="1333" loading="lazy">
 
 	</figure>
 	<p>The photograph below has a fuzzy hash of</p>
@@ -103,7 +103,7 @@ d36fff4561aebb2f088a891208134202
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67Np3uJW3La9k5dzGJ3tEC/bfa229fee2f5ef74f2f9f79cbbb14d86/D18OTNFaeIrwcpN2MmNhljU9mau-GND77Cu9qV8lWo8Na3ciZlQ7pTg-wP9bqDK4ILo5-6yCM96uVlvKkDnrxbOCK3-XhlAQx-ln7AJp-k6_5YClzo9jXvkCzRb.jpeg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67Np3uJW3La9k5dzGJ3tEC/b896e80908d3c9079bf9e3320724b040/D18OTNFaeIrwcpN2MmNhljU9mau-GND77Cu9qV8lWo8Na3ciZlQ7pTg-wP9bqDK4ILo5-6yCM96uVlvKkDnrxbOCK3-XhlAQx-ln7AJp-k6_5YClzo9jXvkCzRb.jpeg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
 	<p>The distance between the two hashes is calculated as 713,061. Through experimentation, it's possible to set a distance threshold under which you can consider two photographs to be likely related.</p>

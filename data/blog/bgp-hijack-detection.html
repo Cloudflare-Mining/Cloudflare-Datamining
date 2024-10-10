@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2C1TQmCTMu8ztsxeIn7h10/e63b5d921aa152d775c8fda3269d4e4e/Cloudflare-Radar-s-new-BGP-origin-hijack-detection-system.png" alt="Cloudflare Radar's new BGP origin hijack detection system" class="kg-image" width="1801" height="1019" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2C1TQmCTMu8ztsxeIn7h10/bc700d86601d3fc411bbff9c38334059/Cloudflare-Radar-s-new-BGP-origin-hijack-detection-system.png" alt="Cloudflare Radar's new BGP origin hijack detection system" class="kg-image" width="1801" height="1019" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">Border Gateway Protocol</a> (BGP) is the de facto inter-domain routing protocol used on the Internet. It enables networks and organizations to exchange reachability information for blocks of IP addresses (IP prefixes) among each other, thus allowing routers across the Internet to forward traffic to its destination. BGP was designed with the assumption that networks do not intentionally propagate falsified information, but unfortunately that’s not a valid assumption on today’s Internet.</p>
 	<p>Malicious actors on the Internet who control BGP routers can perform BGP hijacks by falsely announcing ownership of groups of IP addresses that they do not own, control, or route to. By doing so, an attacker is able to redirect traffic destined for the victim network to itself, and monitor and intercept its traffic. A BGP hijack is much like if someone were to change out all the signs on a stretch of freeway and reroute automobile traffic onto incorrect exits.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eRfapZmJQLB67OmDnppNJ/a8a3ee199f84f697e1898da6b6f1746d/image11.png" alt="" class="kg-image" width="1459" height="957" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eRfapZmJQLB67OmDnppNJ/29c5285c15fc25ad65a2b615b8abe131/image11.png" alt="" class="kg-image" width="1459" height="957" loading="lazy">
 
 	</figure>
 	<p>You can learn more about <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> and <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking">BGP hijacking</a> and its consequences in our learning center.</p>
@@ -25,7 +25,7 @@
 	<p>Services and devices on the Internet locate each other using IP addresses. Blocks of IP addresses are called an IP prefix (or just prefix for short), and multiple prefixes from the same organization are aggregated into an <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">autonomous system</a> (AS).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1V7wyuIuBZwT9BV8uQjBRs/1fd182e6dc693335cac8fb713003ff42/Screenshot-2023-07-26-at-18.26.17.png" alt="" class="kg-image" width="1614" height="918" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1V7wyuIuBZwT9BV8uQjBRs/93167df81577e93c6e01dcae78883700/Screenshot-2023-07-26-at-18.26.17.png" alt="" class="kg-image" width="1614" height="918" loading="lazy">
 
 	</figure>
 	<p>Using the BGP protocol, ASes announce which routes can be imported or exported to other ASes and routers from their routing tables. This is called the AS routing policy. Without this routing information, operating the Internet on a large scale would quickly become impractical: data packets would get lost or take too long to reach their destinations.</p>
@@ -33,7 +33,7 @@
 	<p>In the following graph, we show an example where <code>AS 4</code> announces the prefix <code>P</code> that was previously originated by <code>AS 1</code>. The receiving parties, i.e. <code>AS 2</code> and <code>AS 3</code>, accept the hijacked routes and forward traffic toward prefix <code>P</code> to <code>AS 4</code> instead.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4868WfpNphX6eCHwMpZKGr/c4f05927c6029b436f09000d8c34d706/image2-15.png" alt="" class="kg-image" width="1186" height="616" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4868WfpNphX6eCHwMpZKGr/9edb6690b917913bdfcbc361eadbbae3/image2-15.png" alt="" class="kg-image" width="1186" height="616" loading="lazy">
 
 	</figure>
 	<p>As you can see, the normal and hijacked traffic flows back in the opposite direction of the BGP announcements we receive.</p>
@@ -52,7 +52,7 @@
 	<p>In order to further advocate for RPKI deployment and filtering of RPKI invalid announcements, Cloudflare has been providing a RPKI test service, <a href="https://isbgpsafeyet.com">Is BGP Safe Yet?</a>, allowing users to test whether their ISP filters RPKI invalid announcements. We also provide rich information with regard to the RPKI status of individual prefixes and ASes at <a href="https://rpki.cloudflare.com">https://rpki.cloudflare.com/</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MNPvwC6PpJCPQCIQhC8sl/a82401de8180e06615757aa3b4c25a49/image8-1.png" alt="" class="kg-image" width="1999" height="918" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MNPvwC6PpJCPQCIQhC8sl/82309707277d649b0b810ed6e3028947/image8-1.png" alt="" class="kg-image" width="1999" height="918" loading="lazy">
 
 	</figure>
 	<p><b>However</b>, the effectiveness of RPKI on preventing BGP origin hijacks depends on two factors:</p>
@@ -77,7 +77,7 @@
 	<p>Our system comprises multiple data sources and three distinct modules that work together to detect and analyze potential BGP hijack events: prefix origin change detection, hijack detection and the storage and notification module.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67bYKbfT4zBONmISARpcta/ced4cfeca71a3eb5c1c5fce241b3afd2/image6-7.png" alt="" class="kg-image" width="1999" height="1340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67bYKbfT4zBONmISARpcta/8790aaad3f3db54ba012bd751dd393c9/image6-7.png" alt="" class="kg-image" width="1999" height="1340" loading="lazy">
 
 	</figure>
 	<p>The Prefix Origin Change Detection module provides the data, the Hijack Detection module analyzes the data, and the Alerts Storage and Delivery module stores and provides access to the results. Together, these modules work in tandem to provide a comprehensive system for detecting and analyzing potential BGP hijack events.</p>
@@ -103,7 +103,7 @@
 	<p>Announcements include an AS-level path toward one or more prefixes. The path tells the receiving parties through which sequence of networks (ASes) one can reach the corresponding prefixes. The last hop of an AS path is the origin AS. In the following diagram, AS 1 is the origin AS of the announced path.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bF9IfSM2X5mtlWgqsKt4e/6dba4e3ffe3c3d4e4ce3cb113f9f20e0/image4-6.png" alt="" class="kg-image" width="1476" height="336" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bF9IfSM2X5mtlWgqsKt4e/8a30a1f33717082d8e5d0f0ba35ae68a/image4-6.png" alt="" class="kg-image" width="1476" height="336" loading="lazy">
 
 	</figure>
 	<p>Withdrawals, on the other hand, simply inform the receiving parties that the prefixes are no longer reachable.</p>
@@ -112,7 +112,7 @@
 	<p>The example figure below shows an example of the AS path information for prefix <code>192.0.2.0/24</code> stored on a prefix trie. When updating the information on the prefix trie, if we see a change of origin ASN for any given prefix, we record the BGP message as well as the change and create an <code>Origin Change Signal</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tZK0inZhfzbvgpQIBKkFE/8fc453c8a0d84b40ef9fb638e81554e1/Screenshot-2023-07-26-at-18.20.07.png" alt="" class="kg-image" width="1622" height="862" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tZK0inZhfzbvgpQIBKkFE/4215c1630012b91785c9a79866117eae/Screenshot-2023-07-26-at-18.20.07.png" alt="" class="kg-image" width="1622" height="862" loading="lazy">
 
 	</figure>
 	<p>The prefix origin changes detection module collects and processes live-stream and historical BGP data from various sources. For <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">live streams</a>, our system applies a thin layer of data processing to translate BGP messages into our internal data structure. At the same time, for historical archives, we use a dedicated deployment of the <a href="https://bgpkit.com/broker">BGPKIT broker</a> and <a href="https://bgpkit.com/parser">parser</a> to convert MRT files from <a href="https://www.routeviews.org">RouteViews</a> and <a href="https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris">RIPE RIS</a> into BGP message streams as they become available.</p>
@@ -132,7 +132,7 @@
 	<p>The following diagram illustrates this sequence of checks:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4y6YiYezGew65wYeNFPOqs/3609b94a2c1ac888a148367f8861cfd1/image1-12.png" alt="" class="kg-image" width="1410" height="1682" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4y6YiYezGew65wYeNFPOqs/f2883b0c385966acbc991be815bb4a1c/image1-12.png" alt="" class="kg-image" width="1410" height="1682" loading="lazy">
 
 	</figure>
 	<p>As you can see, for each event, several checks are involved that help calculate the final score: RPKI, Internet Routing Registry (IRR), bogon prefixes and ASNs lists, AS relationships, and AS path.</p>
@@ -144,7 +144,7 @@
 	<p>However, when a hijack is happening, the number of hijack signals can be overwhelming for operators to manage. To address this issue, we designed a method to aggregate individual hijack messages into <b>BGP hijack events</b>, thereby reducing the number of alerts triggered.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20mBP4fcykkGkNIXwXqlAa/879c7b95cb1f7909a4772f6b049259ce/image10.png" alt="" class="kg-image" width="1999" height="752" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20mBP4fcykkGkNIXwXqlAa/326f9aeed83dfd6c337bf374ae0f233b/image10.png" alt="" class="kg-image" width="1999" height="752" loading="lazy">
 
 	</figure>
 	<p>An event aggregates BGP messages that are coming from the same hijacker related to prefixes from the same victim. The start date is the same as the date of the first suspicious signal. To calculate the end of an event we look for one of the following conditions:</p>
@@ -214,14 +214,14 @@
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VwQO8aPGpngp78MrDyCmH/221681cec507a1fc7b731f03d9be707a/image3-6.png" alt="" class="kg-image" width="1407" height="532" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VwQO8aPGpngp78MrDyCmH/5b27df69735cf09eb21dea04385d8bcc/image3-6.png" alt="" class="kg-image" width="1407" height="532" loading="lazy">
 
 	</figure>
 	<p>For each BGP event, our system generates relevant evidence tags to indicate why the event is considered suspicious or not. These tags are used to inform the confidence score assigned to each event. Red tags indicate evidence that increases the likelihood of a hijack event, while green tags indicate the opposite.</p>
 	<p>For example, the red tag "RPKI INVALID" indicates an event is likely a hijack, as it suggests that the RPKI validation failed for the announcement. Conversely, the tag "SIBLING ORIGINS" is a green tag that indicates the detected and expected origins belong to the same organization, making it less likely for the event to be a hijack.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44EZVKQqIpl7O5tS7QrweM/2dddd47ea1da2f599c39f23404e9085c/Screenshot-2023-07-26-at-18.22.35.png" alt="" class="kg-image" width="1612" height="560" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44EZVKQqIpl7O5tS7QrweM/1a763e761fda826d151fd43e951c6167/Screenshot-2023-07-26-at-18.22.35.png" alt="" class="kg-image" width="1612" height="560" loading="lazy">
 
 	</figure>
 	<p>Users can now access the BGP hijacks table in the following ways:</p>

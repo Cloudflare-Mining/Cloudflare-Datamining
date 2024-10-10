@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HG7ZhCJIWaxh1s9ZGAPQI/20d1489995251d396bb818bb435d4f57/modernizing-a-familiar-approach-to-rest-apis-with-postgresql-and-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HG7ZhCJIWaxh1s9ZGAPQI/c49540b142f8950a7d5edbb287e3758d/modernizing-a-familiar-approach-to-rest-apis-with-postgresql-and-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><a href="http://postgresql.com">Postgres</a> is a ubiquitous open-source database technology. It contains a vast number of features and offers rock-solid reliability. It's also one of the most popular SQL database tools in the industry. As the industry builds “modern” developer experience tools—real-time and highly interactive—Postgres has also served as a great foundation. Projects like <a href="https://hasura.io">Hasura</a>, which offers a real-time GraphQL engine, and <a href="https://supabase.io">Supabase</a>, an open-source Firebase alternative, use Postgres under the hood. This makes Postgres a technology that every developer should know, and consider using in their applications.</p>
 	<p>For many developers, REST APIs serve as the primary way we interact with our data. Language-specific libraries like <a href="https://node-postgres.com"><code>pg</code></a> allow developers to connect with Postgres in their code, and directly interact with their databases. Yet in almost every case, developers reinvent the wheel, building the same connection logic on an app-by-app basis.</p>
@@ -8,7 +8,7 @@
 	<p>It’s great to be able to access your database directly from Workers, but do you really want to expose your database directly to the public Internet? Luckily, Cloudflare has a solution for this, and it works great with PostgREST: <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a>. Cloudflare Tunnel is one of my personal favorite products at Cloudflare. It creates a secure tunnel between your local server and the Cloudflare network. We want to expose our PostgREST endpoint, without making our entire database available on the public internet. Cloudflare Tunnel allows us to do that securely.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yA7ys92hJceHCMsd04rkT/33961ff216d8d6915635d8971a40f449/image1-4.png" alt="" class="kg-image" width="1568" height="828" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yA7ys92hJceHCMsd04rkT/edb36c84a2ea43d56c4f3374c60a3a0b/image1-4.png" alt="" class="kg-image" width="1568" height="828" loading="lazy">
 
 	</figure>
 	<p>By using PostgREST with Postgres, we can build REST API-based applications. In particular, it's an excellent fit for Cloudflare Workers, our serverless function platform. Workers is a great place to build REST APIs. With the open-source JavaScript library <a href="https://github.com/supabase/postgrest-js"><code>postgrest-js</code></a>, we can interact with a PostgREST endpoint from inside our Workers function, using simple JS-based primitives.</p>
@@ -17,7 +17,7 @@
 	<p>If you'd like to learn more about building REST APIs in Cloudflare Workers using PostgREST, <a href="https://developers.cloudflare.com/workers/tutorials/postgres">check out our new tutorial</a>! We've also provided two open-source libraries to help you get started. <a href="https://github.com/cloudflare/postgres-postgrest-cloudflared-example"><code>cloudflare/postgres-postgrest-cloudflared-example</code></a> helps you set up a Cloudflare Tunnel-backed Postgres + PostgREST endpoint. <a href="https://github.com/cloudflare/postgrest-worker-example"><code>postgrest-worker-example</code></a> is an example of using postgrest-js inside of Cloudflare Workers, to build REST APIs with your Postgres databases.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qDgnCYYBrkCji8WvUgM33/2c3bac69d4ef35ff3f39d82739939837/image2-4.png" alt="" class="kg-image" width="1536" height="1152" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qDgnCYYBrkCji8WvUgM33/09114cef001625e6e56236d2a3575cc0/image2-4.png" alt="" class="kg-image" width="1536" height="1152" loading="lazy">
 
 	</figure>
 	<p>With <code>postgrest-js</code>, you can build dynamic queries and request data from your database using the JS primitives you know and love:</p>

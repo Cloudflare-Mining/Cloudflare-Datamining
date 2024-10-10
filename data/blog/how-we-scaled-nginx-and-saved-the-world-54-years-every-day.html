@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dNZ9wBquGvSPDDsbKYnRv/9edd0f6c53454147f0124edd90f80900/how-we-scaled-nginx-and-saved-the-world-54-years-every-day.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">Deutsch</a> and <a href="https://blog.cloudflare.com/fr-fr/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dNZ9wBquGvSPDDsbKYnRv/1959763d681476e192bdf67f16c1475b/how-we-scaled-nginx-and-saved-the-world-54-years-every-day.png" alt="">
 <div class="post-content lh-copy gray1">
 	<blockquote>
 		<p>The <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a> team just pushed a change that improves our network's performance significantly, especially for particularly slow outlier requests. How much faster? We estimate we're saving the Internet ~54 years *per day* of time we'd all otherwise be waiting for sites to load.</p>
@@ -124,7 +124,7 @@ read(fd, buf, 32*1024);</code></pre>
 	<p>So I modified NGINX to do most of <code>open()</code> inside the thread pool as well so it won't block the event loop. And the result (both non-blocking open and non-blocking read):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zUNNTAUAfVrlcTLWqp0Xc/26f51bd51fcaca8bac19a4b502e5e2fc/Screenshot-from-2018-07-17-12-16-27.png" alt="Screenshot-from-2018-07-17-12-16-27" class="kg-image" width="1838" height="804" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zUNNTAUAfVrlcTLWqp0Xc/aaff6458aa54f35f8b7835cb19679fd3/Screenshot-from-2018-07-17-12-16-27.png" alt="Screenshot-from-2018-07-17-12-16-27" class="kg-image" width="1838" height="804" loading="lazy">
 
 	</figure>
 	<p>On June 26 we deployed our changes to 5 of our busiest data centers, followed by world wide roll-out the next day. Overall peak p99 TTFB improved by a factor of 6. In fact, adding up all the time from processing 8 million requests per second, we saved the Internet 54 years of wait time every day.</p>

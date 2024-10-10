@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ebjOOoNNxpYnYtsUGLSNc/87912095e1a39bc82683842f8f01de7d/image1-3.png" alt="" class="kg-image" width="1999" height="1164" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ebjOOoNNxpYnYtsUGLSNc/9454dd86c5a142da93bae121c626138d/image1-3.png" alt="" class="kg-image" width="1999" height="1164" loading="lazy">
 
 	</figure>
 	<p>Welcome to Speed Week! Each day this week, we’re going to talk about something Cloudflare is doing to make the Internet meaningfully faster for everyone.</p>
@@ -66,7 +66,7 @@
 	<p>To analogize this to Waze, Argo giving directions <i>without</i> transit selection is like telling someone to drive to a waypoint (go to New York from San Francisco, passing through Salt Lake City), without specifying the roads to actually take <i>to</i> Salt Lake City or New York. <i>With</i> transit selection, we’re able to give full turn-by-turn directions — take I-80 out of San Francisco, take a left here, enter the Salt Lake City area using SR-201 (because I-80 is congested around SLC), etc. This allows us to route around issues on the Internet with much greater precision.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x806c835ECNPmNDRr5fRT/cc94c8169341494419dc0b622e3b052b/Argo-Map_2x.png" alt="" class="kg-image" width="1600" height="929" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2x806c835ECNPmNDRr5fRT/7e9928cdc07f28c50732c68cd22d2ea1/Argo-Map_2x.png" alt="" class="kg-image" width="1600" height="929" loading="lazy">
 
 	</figure>
 	<p>Transit selection requires logic in our inter-data center data plane (the components that actually move data across our network) to allow for differentiation between different providers and links available in each location. Some interesting network automation and advertisement techniques allow us to be much more discerning about which link actually gets picked to move traffic.</p>
@@ -86,7 +86,7 @@
 	<p>As an example, here’s a measurement of jitter (variance in round trip time) between two of our data centers, Chicago and Newark, over a transit provider’s network:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5j3Wu37eyBkXzcOEiaV1tH/ea0f2f17ceb1ff1db03dd4dcdecdd2ac/image4-1.png" alt="" class="kg-image" width="1999" height="478" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j3Wu37eyBkXzcOEiaV1tH/70d3697a9a37bd3cbe77ed88ac2277c8/image4-1.png" alt="" class="kg-image" width="1999" height="478" loading="lazy">
 
 	</figure>
 	<p>Average jitter over the pictured 6 hours is 4ms, with average round trip latency of 27ms. Some amount of latency is something we just need to learn to live with; the speed of light is a tough physical constant to do battle with, and network protocols are built to function over links with high or low latency.</p>
@@ -94,7 +94,7 @@
 	<p>Here’s the same jitter chart between Chicago and Newark, except this time, transiting the Cloudflare Global Private Backbone:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aHclF30Av4bIGTOkHFLg4/040aa071effe3303dd288036fcbec6c2/image3.png" alt="" class="kg-image" width="1999" height="477" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aHclF30Av4bIGTOkHFLg4/80e32ef8cb6de89cbafd2eaf3a449a2e/image3.png" alt="" class="kg-image" width="1999" height="477" loading="lazy">
 
 	</figure>
 	<p>Much better! Here we see a jitter measurement of 536μs (microseconds), almost eight times better than the measurement over a transit provider between the same two sites.</p>
@@ -115,7 +115,7 @@
 	<p>Welcome to Speed Week!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DjjNeUjd2lQWKw6rPgbXR/dec86d281cedf76439687f27a2756d47/image1-2.png" alt="" class="kg-image" width="1500" height="708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DjjNeUjd2lQWKw6rPgbXR/726957024645198035c25b569b64d1fd/image1-2.png" alt="" class="kg-image" width="1500" height="708" loading="lazy">
 
 	</figure>
 	<p><a href="https://dash.cloudflare.com/traffic">Activate Argo</a> now, or <a href="mailto:enterprise@cloudflare.com">contact sales</a> to learn more!</p>

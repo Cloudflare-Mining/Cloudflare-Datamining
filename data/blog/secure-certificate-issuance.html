@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rckYCQuTt0cU5w2yy3SSk/f6125e9d1146f9bf9c37257d4ecf80b4/image1-6.png" alt="" class="kg-image" width="1999" height="1397" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rckYCQuTt0cU5w2yy3SSk/2761002716c640d0e903a749bf393f5c/image1-6.png" alt="" class="kg-image" width="1999" height="1397" loading="lazy">
 
 	</figure>
 	<p>This blog post is part of <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019">Crypto Week 2019</a>.</p>
@@ -108,7 +108,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>These attacks create a vulnerability when an adversary sends a certificate signing request for a victim’s domain to a CA. When the CA verifies the network resources using an <code>HTTP GET</code> &nbsp;request (as discussed earlier), the adversary then uses BGP attacks to hijack traffic to the victim’s domain in a way that the CA’s request is rerouted to the adversary and not the domain owner. To understand how these attacks are conducted, we first need to do a little bit of math.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55IOsCmOIvDukAEqazUFq9/d19c36e8139b37d4b8fe742e0db81f83/Domain-Control-Validation-Process_1.5x.png" alt="" class="kg-image" width="1707" height="732" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55IOsCmOIvDukAEqazUFq9/2a480249d3d70e5a1b271367f9eeb719/Domain-Control-Validation-Process_1.5x.png" alt="" class="kg-image" width="1707" height="732" loading="lazy">
 
 	</figure>
 	<p>Every device on the Internet uses an IP (Internet Protocol) address as a numerical identifier. IPv6 addresses contain 128 bits and follow a slash notation to indicate the size of the prefix. So, in the network address <b>2001:DB8:1000::/48</b>, “<b>/48</b>” refers to how many bits the network contains. This means that there are 80 bits left that contain the host addresses, for a total of 10,240 host addresses. The smaller the prefix number, the more host addresses remain in the network. With this knowledge, let’s jump into the attacks!</p>
@@ -117,14 +117,14 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>In an IPv4 attack, such as the <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">attack</a> during April 2018, this was /24 and /23 announcements, with the more specific /24 being announced by the nefarious entity. In IPv6, this could be a /48 and /47 announcement. In both scenarios, /24's and /48's are the smallest blocks allowed to be routed globally. In the diagram below, <b>/47</b> is Texas and <b>/48</b> is the more specific Austin, Texas. The new (but nefarious) routes overrode the existing routes for portions of the Internet. The attacker then ran a nefarious DNS server on the normal IP addresses with DNS records pointing at some new nefarious web server instead of the existing server. This attracted the traffic destined for the victim’s domain within the area the nefarious routes were being propagated. The reason this attack was successful was because a more specific prefix is always preferred by the receiving routers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1u8kdog1lBPYcQsjARPOkV/9433ebe2a61efa6f666c3697942d6d76/1-Traditional-Equally-specific-Sub-Prefix-Attack-KC-0A-_3x.png" alt="" class="kg-image" width="3147" height="1469" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1u8kdog1lBPYcQsjARPOkV/03c3da0661363f6fe10e589673c9aeab/1-Traditional-Equally-specific-Sub-Prefix-Attack-KC-0A-_3x.png" alt="" class="kg-image" width="3147" height="1469" loading="lazy">
 
 	</figure>
 	<h4>Attack two: Equally-Specific-Prefix Attack</h4>
 	<p>In the last attack, the adversary was able to hijack traffic by offering a more specific announcement, but what if the victim’s prefix is <b>/48</b> and a sub-prefix attack is not viable? In this case, an attacker would launch an <b>equally-specific-prefix hijack</b>, where the attacker announces the same prefix as the victim. This means that the AS chooses the preferred route between the victim and the adversary’s announcements based on properties like path length. This attack only ever intercepts a portion of the traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BKdC4cWYQO25VBryOZey1/d7aac2a5a669d9e3f3b92cb7a47c3a9d/2-Traditional-EquallyPrefix-Attack-0A-KC_3x.png" alt="" class="kg-image" width="3147" height="1607" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BKdC4cWYQO25VBryOZey1/828259a83952227bffd27fc4b655bc94/2-Traditional-EquallyPrefix-Attack-0A-KC_3x.png" alt="" class="kg-image" width="3147" height="1607" loading="lazy">
 
 	</figure>
 	<p>There are more advanced attacks that are covered in more depth in the paper. They are fundamentally similar attacks but are more stealthy.</p>
@@ -144,7 +144,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>In doing so, the answer section of a DNS response (the important part!) can be falsified, and an adversary can trick a CA into mis-issuing a certificate.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LqZ3us0OcigAJXbwPyIbf/10ce6ec5d2ce010c7d963ba62dd89d88/DNS-Spoofing_3x.png" alt="" class="kg-image" width="3147" height="2990" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LqZ3us0OcigAJXbwPyIbf/656eba59808bab008b5694eb195525c2/DNS-Spoofing_3x.png" alt="" class="kg-image" width="3147" height="2990" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -172,7 +172,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>When a CA wants to ensure that DCV occurred without being intercepted, it can send a request to our API specifying the type of DCV to perform and its parameters.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yKDxJFYuvSllzdqYBDWfx/cfb83246645aff3adb50220576b3cbd6/Mulitpath-DCV_3x.png" alt="" class="kg-image" width="2000" height="2215" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yKDxJFYuvSllzdqYBDWfx/8c7e27f099e2bf94b54df5bf1810e9f6/Mulitpath-DCV_3x.png" alt="" class="kg-image" width="2000" height="2215" loading="lazy">
 
 	</figure>
 	<p>The DCV orchestrator then forwards each request to a random subset of over 20 DCV agents in different datacenters. Each DCV agent performs the DCV request and forwards the result to the DCV orchestrator, which aggregates what each agent observed and returns it to the CA.</p>

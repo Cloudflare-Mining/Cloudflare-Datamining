@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18OlKXbvJgAahs6e81d0yp/93a4441b149878d7798f798ec23082af/image6-1.png" alt="How Cloudflare runs Prometheus at scale" class="kg-image" width="1200" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18OlKXbvJgAahs6e81d0yp/ab24a64dda0ab9c41a964c2c1fc74c9b/image6-1.png" alt="How Cloudflare runs Prometheus at scale" class="kg-image" width="1200" height="676" loading="lazy">
 
 	</figure>
 	<p>We use <a href="https://prometheus.io">Prometheus</a> to gain insight into all the different pieces of hardware and software that make up our global network. Prometheus allows us to measure health &amp; performance over time and, if there’s anything wrong with any service, let our team know before it becomes a problem.</p>
 	<p>At the moment of writing this post we run 916 Prometheus instances with a total of around 4.9 billion time series. Here’s a screenshot that shows exact numbers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eQSVoAaOO2Bi1xpCxbkMP/817a522bd8e8d6babd9ee19a5a7c7f86/pasted-image-0--7-.png" alt="" class="kg-image" width="1034" height="825" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eQSVoAaOO2Bi1xpCxbkMP/c8086dc6482c75d73cbd4e45cd52e4b8/pasted-image-0--7-.png" alt="" class="kg-image" width="1034" height="825" loading="lazy">
 
 	</figure>
 	<p>That’s an average of around 5 million time series per instance, but in reality we have a mixture of very tiny and very large instances, with the biggest instances storing around 30 million time series each.</p>
@@ -107,7 +107,7 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lTDb6LR4pGWmpAC2mrug2/62349f14eb923fe832bb1655ab68dbc8/blog-4.png" alt="" class="kg-image" width="1600" height="1446" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lTDb6LR4pGWmpAC2mrug2/4771271c4b28e30930be606bfd5b4213/blog-4.png" alt="" class="kg-image" width="1600" height="1446" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -144,7 +144,7 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>After sending a request it will parse the response looking for all the samples exposed there.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g84l6ioJCxTsF64iZoHr8/64dd9a939ab65af69a4b2b946eb3d780/blog-1.png" alt="" class="kg-image" width="1282" height="775" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2g84l6ioJCxTsF64iZoHr8/8ae8b1a7140517cd8a8eb330482c7377/blog-1.png" alt="" class="kg-image" width="1282" height="775" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -164,7 +164,7 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>Since everything is a label Prometheus can simply hash all labels using sha256 or any other algorithm to come up with a single ID that is unique for each time series.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4cXuu38kxa2u51z8Me0aBP/44d460725ee2fdc7dcc9a89de3c231a6/blog-2.png" alt="" class="kg-image" width="1600" height="922" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cXuu38kxa2u51z8Me0aBP/9dcc5694aef45e5a65a19dd4d7a7b8a7/blog-2.png" alt="" class="kg-image" width="1600" height="922" loading="lazy">
 
 	</figure>
 	<p>Knowing that it can quickly check if there are any time series already stored inside TSDB that have the same hashed value. Basically our labels hash is used as a primary key inside TSDB.</p>
@@ -182,7 +182,7 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>Samples are stored inside chunks using <a href="https://prometheus.io/blog/2016/05/08/when-to-use-varbit-chunks/#what-is-varbit-encoding">"varbit" encoding</a> which is a lossless compression scheme optimized for time series data. Each chunk represents a series of samples for a <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/head.go#L1969">specific time range</a>. This helps Prometheus query data faster since all it needs to do is first locate the memSeries instance with labels matching our query and then find the chunks responsible for time range of the query.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hE16dmyvOEjiTJUGnDVTy/17cc8c2618581153bb975e70a2b23a7e/blog-5.png" alt="" class="kg-image" width="1600" height="952" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hE16dmyvOEjiTJUGnDVTy/11b37f49775fac13165d75ff3d7b1c78/blog-5.png" alt="" class="kg-image" width="1600" height="952" loading="lazy">
 
 	</figure>
 	<p><a href="https://github.com/prometheus/prometheus/blob/v2.42.0/cmd/prometheus/main.go#L300-L301">By default</a> Prometheus will create a chunk per each <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/db.go#L53">two hours</a> of <b>wall clock</b>. So there would be a chunk for: 00:00 - 01:59, 02:00 - 03:59, 04:00 - 05:59, …, 22:00 - 23:59.</p>
@@ -192,7 +192,7 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>All chunks must be aligned to those two hour slots of wall clock time, so if TSDB was building a chunk for 10:00-11:59 and it was already “full” at 11:30 then it would create an extra chunk for the 11:30-11:59 time range.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1U540qt4t8r4OjMdKpBEIf/96e89a366d0baf3adc9088bbffed729a/blog-6.png" alt="" class="kg-image" width="1600" height="418" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1U540qt4t8r4OjMdKpBEIf/93aa0eb5e741683f71ef0eff002d6b1f/blog-6.png" alt="" class="kg-image" width="1600" height="418" loading="lazy">
 
 	</figure>
 	<p>Since the default Prometheus scrape interval is one minute it would take two hours to reach 120 samples.</p>
@@ -255,7 +255,7 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Bt2X8rR89TBWekMduXrSZ/1091fd1d38a5792e405cfaa587b16d46/blog-7.png" alt="" class="kg-image" width="1435" height="1031" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Bt2X8rR89TBWekMduXrSZ/d1cfc97d7fe7a60c431b123027755714/blog-7.png" alt="" class="kg-image" width="1435" height="1031" loading="lazy">
 
 	</figure>
 	<p>Once a chunk is written into a block it is removed from memSeries and thus from memory. Prometheus will keep each block on disk for the configured retention period.</p>
@@ -304,14 +304,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>If we try to visualize how the perfect type of data Prometheus was designed for looks like we’ll end up with this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58Sdl0opvl2leashpMABHR/a0af02a9c34a6164057ea27ed33467e0/blog-13.png" alt="" class="kg-image" width="930" height="636" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58Sdl0opvl2leashpMABHR/2fbe55566085307e632f284c9f487695/blog-13.png" alt="" class="kg-image" width="930" height="636" loading="lazy">
 
 	</figure>
 	<p>A few continuous lines describing some observed properties.</p>
 	<p>If, on the other hand, we want to visualize the type of data that Prometheus is the least efficient when dealing with, we’ll end up with this instead:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/peimfAo5FJ8Z7U4N9pYtm/4a125f4e565c5423c36cac1ab7b146a5/blog-14.png" alt="" class="kg-image" width="930" height="636" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/peimfAo5FJ8Z7U4N9pYtm/0779cb39815baea5a3ee3018d746c398/blog-14.png" alt="" class="kg-image" width="930" height="636" loading="lazy">
 
 	</figure>
 	<p>Here we have single data points, each for a different property that we measure.</p>
@@ -325,14 +325,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>This single sample (data point) will create a time series instance that will stay in memory for over two and a half hours using resources, just so that we have a single timestamp &amp; value pair.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42ihJDKAWyj7hT4DicZoxV/865bb3bd3a2723195e2d8356a337ba87/blog-8.png" alt="" class="kg-image" width="717" height="421" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42ihJDKAWyj7hT4DicZoxV/abff5645102c8c22da0c1ad8e811445a/blog-8.png" alt="" class="kg-image" width="717" height="421" loading="lazy">
 
 	</figure>
 	<p>If we were to continuously scrape a lot of time series that only exist for a very brief period then we would be slowly accumulating a lot of memSeries in memory until the next garbage collection.</p>
 	<p>Looking at memory usage of such Prometheus server we would see this pattern repeating over time:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qccLTfcv0dyJ6bFnEkkd6/9ca2f51207d977cbb2980a11b88a899b/blog-15.png" alt="" class="kg-image" width="1241" height="888" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qccLTfcv0dyJ6bFnEkkd6/ad547942173e2f6333412f694fbb0faa/blog-15.png" alt="" class="kg-image" width="1241" height="888" loading="lazy">
 
 	</figure>
 	<p>The important information here is that <b>short lived time series are expensive</b>. A time series that was only scraped once is <b>guaranteed to live in Prometheus for one to three hours</b>, depending on the exact time of that scrape.</p>
@@ -533,7 +533,7 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 	<p>This is the standard flow with a scrape that doesn’t set any sample_limit:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oxj5PicoVqieXzyDzlq2C/74ceba69a58594593588034bbe0bcbce/blog-10.png" alt="" class="kg-image" width="1600" height="716" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oxj5PicoVqieXzyDzlq2C/cbbf6a05d61adad33da574b05a297bde/blog-10.png" alt="" class="kg-image" width="1600" height="716" loading="lazy">
 
 	</figure>
 	<p>With our patch we tell TSDB that it’s allowed to store up to N time series in total, from all scrapes, at any time. So when TSDB is asked to append a new sample by any scrape, it will first check how many time series are already present.</p>
@@ -543,7 +543,7 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 	<p>This is the modified flow with our patch:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3luOmih7ZayqWukDhgoC5S/9f40237e379b55f38008da5fd049147b/blog-11.png" alt="" class="kg-image" width="1306" height="1600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3luOmih7ZayqWukDhgoC5S/98cade46c7b5da6bb3a85ae6877532bb/blog-11.png" alt="" class="kg-image" width="1306" height="1600" loading="lazy">
 
 	</figure>
 	<p>By running <i>“go_memstats_alloc_bytes / prometheus_tsdb_head_series”</i> query we know how much memory we need per single time series (on average), we also know how much physical memory we have available for Prometheus on each server, which means that we can easily calculate the rough number of time series we can store inside Prometheus, taking into account the fact the there’s garbage collection overhead since Prometheus is written in Go:</p>
@@ -554,7 +554,7 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 	<p>This is the standard Prometheus flow for a scrape that has the sample_limit option set:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2d8iEKXhwkrME4gR7IYEvm/b575d3d91da43ba40ed5326459dfb832/blog-9.png" alt="" class="kg-image" width="1600" height="1005" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2d8iEKXhwkrME4gR7IYEvm/71faa4cdb0781465b35e2c303e4c4e3e/blog-9.png" alt="" class="kg-image" width="1600" height="1005" loading="lazy">
 
 	</figure>
 	<p>The entire scrape either succeeds or fails. Prometheus simply counts how many samples are there in a scrape and if that’s more than sample_limit allows it will fail the scrape.</p>
@@ -565,7 +565,7 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 	<p>This is how our modified flow looks:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FstYUSQFx7G4uY1jIdlME/08a1e91f066d696843c8eddfc03df4b3/blog-12.png" alt="" class="kg-image" width="1306" height="1600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FstYUSQFx7G4uY1jIdlME/dbba3406fe4fcfea15410b4431bb01ca/blog-12.png" alt="" class="kg-image" width="1306" height="1600" loading="lazy">
 
 	</figure>
 	<p>Both patches give us two levels of protection.</p>

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/migrating-cdnjs-to-serverless-with-workers-kv">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/migrating-cdnjs-to-serverless-with-workers-kv">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KT7mX75POQq6wvpmqAbAy/53a7bb256b95d985a87b08c54f795374/migrating-cdnjs-to-serverless-with-workers-kv.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/migrating-cdnjs-to-serverless-with-workers-kv">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/migrating-cdnjs-to-serverless-with-workers-kv">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KT7mX75POQq6wvpmqAbAy/b2489955f86a39fec4ea0a27ad6f7a7b/migrating-cdnjs-to-serverless-with-workers-kv.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare powers <a href="https://cdnjs.com">cdnjs</a>, an open-source project that accelerates websites by delivering popular JavaScript libraries and resources via <a href="https://www.cloudflare.com/cdn">Cloudflare’s network</a>. Since <a href="https://blog.cloudflare.com/an-update-on-cdnjs">our major update in December</a>, we focused on remodelling cdnjs for scalability and resilience. Today, we are excited to announce how Cloudflare delivers cdnjs—a migration to a serverless infrastructure using <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> and its distributed key-value store <a href="https://developers.cloudflare.com/workers/reference/storage">Workers KV</a>!</p>
 	<div class="flex anchor relative">
@@ -13,7 +13,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/K5YOmwNbwMpTE8ILtKovN/f8390016d423e185d0201614ed2d7d8a/imagesmall.png" alt="" class="kg-image" width="1200" height="357" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/K5YOmwNbwMpTE8ILtKovN/a242c00ce389b1e3365a3e8ffb062d01/imagesmall.png" alt="" class="kg-image" width="1200" height="357" loading="lazy">
 
 	</figure>
 	<p>For those unfamiliar, cdnjs is an acronym describing a Content Delivery Network (CDN) for JavaScript (JS). A <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> simply refers to a geographically distributed network of servers that provide Internet content, whether it is memes, cat videos, or HTML pages. In our case, the CDN refers to Cloudflare’s ever <a href="https://blog.cloudflare.com/cloudflare-network-expands-to-more-than-100-countries">expanding network</a> of over 200 globally distributed data centers.</p>
@@ -45,7 +45,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Qz4kp8D2lbh2dSPTBQizG/f7771283709f78befca048b00d7f689c/image1-1.png" alt="" class="kg-image" width="1577" height="1418" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Qz4kp8D2lbh2dSPTBQizG/1bcf42ec9c4b6f0553c38ce59666b707/image1-1.png" alt="" class="kg-image" width="1577" height="1418" loading="lazy">
 
 	</figure>
 	<p>For the non-technical reader, a pull request (PR) is a request to merge changes you’ve made to a repository. Traditionally, if you wanted to include your JavaScript library in cdnjs, you would first create a PR on GitHub to <a href="https://github.com/cdnjs/cdnjs">cdnjs/cdnjs</a> with a JSON file describing your package and additional files for any version you wished to include. Once your PR was approved by our <a href="https://github.com/PeterBot">old bot</a>, manually reviewed, and then merged by a maintainer, your package would be integrated with cdnjs.</p>
@@ -64,7 +64,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Bh8OS2VHZy5FKAySbhQns/3cef2d27ac9b583d8b296506bcf471fa/image6-1-4.png" alt="" class="kg-image" width="2000" height="758" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Bh8OS2VHZy5FKAySbhQns/84626f199211f856b3f230fcb109c161/image6-1-4.png" alt="" class="kg-image" width="2000" height="758" loading="lazy">
 
 	</figure>
 	<p>In April, during maintenance at one of our core data centers, a technician accidentally disconnected the cables supplying all external connections to our other data centers, causing the data center to go offline for approximately four hours. <a href="https://blog.cloudflare.com/cloudflare-dashboard-and-api-outage-on-april-15-2020">This incident</a> served as the first wake-up call for cdnjs, especially since the affected data center housed the primary cdnjs origin web servers. In this case, we did have a backup running on an external provider, but what really saved us was Cloudflare’s global cache, which minimized the impact of the outage as only uncached assets failed to load.</p>
@@ -81,7 +81,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dAu3V0R16Ugbf2Ad0nh4f/ccea2e2ddcd20ede839765e258f8c7ef/image3-3.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dAu3V0R16Ugbf2Ad0nh4f/3ce544c6aa6c9558fdfbe686ff5ef640/image3-3.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
 
 	</figure>
 	<p>At first glance, the decision to use Workers KV was a no-brainer. Since files in cdnjs never change but require frequent reads, Workers KV was a perfect fit.</p>
@@ -115,7 +115,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2q1lBMUDzWZUSCs9rMRTIw/3bd7aa62d930acffd5065c5f20136639/image2.gif" alt="" class="kg-image" width="800" height="266" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2q1lBMUDzWZUSCs9rMRTIw/a0b9baf89cd1056752a84566fe31dda8/image2.gif" alt="" class="kg-image" width="800" height="266" loading="lazy">
 
 	</figure>
 	<p>Besides the core cdnjs infrastructure, many of its other components received upgrades as well!</p>

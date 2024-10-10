@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OGdTwmOpzW5OBk0JXVT4J/db07d8da3ee7b8a89b2e2e75df33e16d/image4-4.png" alt="header picture representing a galaxy of IPFS nodes" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OGdTwmOpzW5OBk0JXVT4J/c8498f798accaad19e7d1226459c7acc/image4-4.png" alt="header picture representing a galaxy of IPFS nodes" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Cloudflare's journey with IPFS started in 2018 when we announced a <a href="https://blog.cloudflare.com/distributed-web-gateway">public gateway for the distributed web</a>. Since then, the number of infrastructure providers for the InterPlanetary FileSystem (IPFS) has grown and matured substantially. This is a huge benefit for users and application developers as they have the ability to choose their infrastructure providers.</p>
@@ -21,7 +21,7 @@
 	<p>Nodes communicate with each other over the Internet using a Peer-to-Peer (P2P) architecture, preventing one node from becoming a single point of failure. This is even more true given that anyone can operate a node with limited resources. This can be light hardware such as a Raspberry Pi, a server at a cloud provider, or even your web browser.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7D6yuQR7r8BmcBPQS6YSjk/dd4ba6814481dd82242a9f8cd5fc5989/image2-4.png" alt="P2P network architecture" class="kg-image" width="1200" height="618" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7D6yuQR7r8BmcBPQS6YSjk/02c4a5bb7a86be4cebdc52bd54ae532f/image2-4.png" alt="P2P network architecture" class="kg-image" width="1200" height="618" loading="lazy">
 
 	</figure>
 	<p>This creates a challenge since not all nodes may support the same protocols, and networks may block some types of connections. For instance, your web browser does not expose a TCP API and your home router likely doesn’t allow inbound connections. This is where <a href="https://libp2p.io">libp2p</a> comes to help.</p>
@@ -29,20 +29,20 @@
 	<p>That’s exactly what four IPFS nodes need to connect to the IPFS network. From a node point of view, the architecture is the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KWwoCkKQL46RFHelilMtE/b036fd2017299ef296baf58eb7f2e0be/image6-2.png" alt="Communication between your node and others on the IPFS network" class="kg-image" width="1200" height="618" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KWwoCkKQL46RFHelilMtE/a5718f571f330746fc421f49a20cc76f/image6-2.png" alt="Communication between your node and others on the IPFS network" class="kg-image" width="1200" height="618" loading="lazy">
 
 	</figure>
 	<p>Any node that we maintain a connection with is a peer. A peer that does not have ? content can ask their peers, including you, they WANT?. If you do have it, you will provide the ? to them. If you don’t have it, you can give them information about the network to help them find someone who might have it. As each node chooses the resources they store, it means some might be stored on a limited number of nodes.</p>
 	<p>For instance, everyone likes ?, so many nodes will dedicate resources to store it. However, ? is less popular. Therefore, only a few nodes will provide it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lZKi9WAAYORStwkYGTnD1/29d6e095c27b4e1ab30200542526dcfe/image3-3.png" alt="Communication between a peer that wants content and your node on the IPFS network" class="kg-image" width="1200" height="618" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lZKi9WAAYORStwkYGTnD1/88b6e06f42bf6d5ac7585ddd3d337874/image3-3.png" alt="Communication between a peer that wants content and your node on the IPFS network" class="kg-image" width="1200" height="618" loading="lazy">
 
 	</figure>
 	<p>This assumption does not hold for public gateways like Cloudflare. A gateway is an HTTP interface to an IPFS node. On our gateway, we allow a user of the Internet to retrieve arbitrary content from IPFS. If a user asks for ?, we provide ?. If they ask for ?, we’ll find ? for them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Aj6yGIAk8iAzBoMZAuayV/a5254ccfaea68d655b780dba51663ad9/image1-6.png" alt="Communication between Web users making HTTP requests for IPFS content to your public gateway" class="kg-image" width="1200" height="618" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Aj6yGIAk8iAzBoMZAuayV/025e8fe16774f5fe81abffa46c519ed4/image1-6.png" alt="Communication between Web users making HTTP requests for IPFS content to your public gateway" class="kg-image" width="1200" height="618" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s IPFS gateway is simply a cache in front of IPFS. Cloudflare does not have the ability to modify or remove content from the IPFS network. However, IPFS is a decentralized and open network, so there is the possibility of users sharing threats like phishing or malware. This is content we do not want to provide to the P2P network or to our HTTP users.</p>
@@ -65,7 +65,7 @@
 	<p>In the filtering use case, it means that if ? content is included in other IPFS content, our node can also prevent content linking to malicious ? content from being served. This results in ?, a mix of valid and malicious content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CDrcC6XQcEbIs3DcdkA49/e3234de429065a875cf85d5a8ba43e69/image5-3.png" alt="Direct Acyclic Graph (DAG) based on IPFS CID" class="kg-image" width="1200" height="868" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CDrcC6XQcEbIs3DcdkA49/c12890df760859ad3f2ea2129bfc090a/image5-3.png" alt="Direct Acyclic Graph (DAG) based on IPFS CID" class="kg-image" width="1200" height="868" loading="lazy">
 
 	</figure>
 	<p>This cryptographic method of linking content together is known as MerkleDAG. You can learn more about it on <a href="https://proto.school/merkle-dags">ProtoSchool</a>, and Consensys did an article explaining the <a href="https://media.consensys.net/ever-wonder-how-merkle-trees-work-c2f8b7100ed3">basic cryptographic construction with bananas</a> ?.</p>

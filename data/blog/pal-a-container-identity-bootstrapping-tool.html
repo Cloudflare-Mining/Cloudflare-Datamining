@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/XK33aBLdglX9opkdncSGN/8364055f35b422f8227d4271890bfadd/pal-a-container-identity-bootstrapping-tool.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XK33aBLdglX9opkdncSGN/ec443dfaa9f4523dc954ad153a6e3787/pal-a-container-identity-bootstrapping-tool.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Everybody has secrets. Software developers have many. Often these secrets—API tokens, TLS private keys, database passwords, SSH keys, and other sensitive data—are needed to make a service run properly and interact securely with other services. Today we’re sharing a tool that we built at Cloudflare to securely distribute secrets to our Dockerized production applications: PAL.</p>
 	<p>PAL is available on Github: <a href="https://github.com/cloudflare/pal">github.com/cloudflare/pal</a></p>
@@ -14,7 +14,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9EgPkmFZufkA00t8O9NEK/4992e5d9b4b8c7df5752960be6a0fb13/16214699701_55072899bb_b.jpg" alt="" class="kg-image" width="1024" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9EgPkmFZufkA00t8O9NEK/6f04341ff5be43395c7d99236ae213b3/16214699701_55072899bb_b.jpg" alt="" class="kg-image" width="1024" height="540" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/personalcreations/16214699701">image</a> by <a href="https://www.personalcreations.com">Personal Creations</a></p>
@@ -67,14 +67,14 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/691ooiR4JKRArN1wWxWVlW/e96ee9633a4d6d362469bb16f61c806e/image3.png" alt="" class="kg-image" width="1504" height="898" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/691ooiR4JKRArN1wWxWVlW/8f14c8fd1a6c18d94a6d63aa7a9e1b1d/image3.png" alt="" class="kg-image" width="1504" height="898" loading="lazy">
 
 	</figure>
 	<p>PGP is a popular form of encryption that has been around since the early 90s. PAL allows you to use secrets that are encrypted with PGP keys that are installed on the host. The current version of PAL does not apply policies at a per-key level (e.g. only containers with Docker Label A can use key 1), but it could easily be extended to do so.</p>
 	<h4>PAL-Red October</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KqsF7ItaOhlij8TfpIqAF/d151b2d8307bd6ea4228285eaf56214f/image2.png" alt="" class="kg-image" width="1622" height="970" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KqsF7ItaOhlij8TfpIqAF/4867dad9211d68588d9c4a4950c1dada/image2.png" alt="" class="kg-image" width="1622" height="970" loading="lazy">
 
 	</figure>
 	<p>The Red October mode is used for secrets that are very high value and need to be managed manually or with multi-person control. We open sourced Red October <a href="https://blog.cloudflare.com/red-october-cloudflares-open-source-implementation-of-the-two-man-rule">back in 2013</a>. It has the nice feature of being able to encrypt a secret in such a way that multiple people are required to authorize the decryption.</p>

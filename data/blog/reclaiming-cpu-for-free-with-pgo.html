@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4l2RatJreRCXrOb56RseWa/c5bb8c58678c826130fbee84d5808279/image2-4.png" alt="Reclaiming CPU for free with Go's Profile Guided Optimization" class="kg-image" width="918" height="463" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4l2RatJreRCXrOb56RseWa/2cdfe05ad883a8443eb19c31cdd03bf3/image2-4.png" alt="Reclaiming CPU for free with Go's Profile Guided Optimization" class="kg-image" width="918" height="463" loading="lazy">
 
 	</figure>
 	<p><a href="https://tip.golang.org/doc/go1.20">Golang 1.20</a> introduced support for Profile Guided Optimization (PGO) to the go compiler. This allows guiding the compiler to introduce optimizations based on the real world behaviour of your system. In the Observability Team at Cloudflare, we maintain a few Go-based services that use thousands of cores worldwide, so even the 2-7% savings advertised would drastically reduce our CPU footprint, effectively for free. This would reduce the CPU usage for our internal services, freeing up those resources to serve customer requests, providing measurable improvements to our customer experience. In this post, I will cover the process we created for experimenting with PGO – collecting representative profiles across our production infrastructure and then deploying new PGO binaries and measuring the CPU savings.</p>
@@ -28,7 +28,7 @@
 	<p>Before deploying PGO, wshim was using over 3000 cores globally:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YefuIqASjynzrsnMuKMYk/c300d162dcf11e36f282af651504cffe/image1-3.png" alt="" class="kg-image" width="780" height="259" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YefuIqASjynzrsnMuKMYk/9d5ef360c79393dac4771b21f7cdc1a3/image1-3.png" alt="" class="kg-image" width="780" height="259" loading="lazy">
 
 	</figure>
 	<p><code>container_cpu_time_seconds</code> is our internal metric that tracks the amount of time a CPU has spent running wshim across the world. Even a 2% saving would return 60 cores to our customers, making the Cloudflare network even more efficient.</p>
@@ -71,12 +71,12 @@ pgo
 	<p>Firstly, we can look at the CPU usage of wshim immediately before and after the deployment. This may be confounded by the time difference between the sets, but it shows a decent improvement. Because our release takes just under two hours to roll to every tier 1 datacenter, we can use PromQLs `offset` operator to measure the difference:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3enVHBJjLVGDCSBBRqrLAn/2331f3410ca772ea25c309295294ee4b/image3-1.png" alt="" class="kg-image" width="1612" height="258" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3enVHBJjLVGDCSBBRqrLAn/157a65a91619f9252ad8819600241921/image3-1.png" alt="" class="kg-image" width="1612" height="258" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/I7piaGicvlQbFmzpiHxUT/22c46c3acb2f8342dd14c785b9df5985/image4-1.png" alt="" class="kg-image" width="1475" height="191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/I7piaGicvlQbFmzpiHxUT/65553d182d296b4b1d663b69eb34cb41/image4-1.png" alt="" class="kg-image" width="1475" height="191" loading="lazy">
 
 	</figure>
 	<p>This indicates that following the release, we’re using ~97 cores fewer than before the release, a ~3.5% reduction. This seems to be inline with the <a href="https://go.dev/doc/pgo#overview">upstream documentation</a> that gives numbers between 2% and 14%.</p>

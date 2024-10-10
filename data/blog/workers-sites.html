@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-sites">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/workers-sites">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-sites">日本語</a>, <a href="https://blog.cloudflare.com/es-es/workers-sites">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/workers-sites">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YmbQ9eB2RrZD40hnByNM4/8abf8497cd689588a0d442f3a552d835/workers-sites.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-sites">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/workers-sites">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-sites">日本語</a>, <a href="https://blog.cloudflare.com/es-es/workers-sites">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/workers-sites">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YmbQ9eB2RrZD40hnByNM4/bf55f4533e6474e1997455972ba87152/workers-sites.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><b><i>Update</i></b><i>: since publishing this blog post, we've released </i><a href="https://blog.cloudflare.com/big-ideas-on-pages"><i>Cloudflare Pages</i></a><i>. If you're using Cloudflare for hosting sites, Cloudflare Pages is better suited for this use case.</i></p>
 	<p>Performance on the web has always been a battle against the speed of light — accessing a site from London that is served from Seattle, WA means every single asset request has to travel over seven thousand miles. The first breakthrough in the web performance battle was HTTP/1.1 connection keep-alive and browsers opening multiple connections. The next breakthrough was the CDN, bringing your static assets closer to your end users by <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">caching them in data centers</a> closer to them. Today, with Workers Sites, we’re excited to announce the next big breakthrough — entire sites distributed directly onto the edge of the Internet.</p>
@@ -76,7 +76,7 @@ cargo install wrangler</code></pre>
 	<p>One common way to benchmark the performance of your site using <a href="https://developers.google.com/web/tools/lighthouse">Google Lighthouse</a>, which you can do directly from the Audits tab of your Chrome browser.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UOVn62zLc7zc549glFiTO/a7e96ea4ee1161abd13be13f2f2f7915/image1-7.png" alt="" class="kg-image" width="1514" height="710" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UOVn62zLc7zc549glFiTO/ceeab2a5a7bd731aa28d6020855beee1/image1-7.png" alt="" class="kg-image" width="1514" height="710" loading="lazy">
 
 	</figure>
 	<p>So we passed the first test with flying colors — 100! However, running a benchmark from your own computer introduces a bias: your users are not necessarily where you are. In fact, your users are increasingly <i>not</i> where you are.</p>
@@ -85,14 +85,14 @@ cargo install wrangler</code></pre>
 	<p>Since providers offer data center regions on the coasts of the United States, or Central Europe, it’s common to see good performance in regions such as North America, and we’ve got you covered here:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7C2l8XZO7Zb541CMMGGlmp/c29a68eab815821bd2e7ef730b027087/Screen-Shot-2019-09-26-at-10.58.41-PM.png" alt="" class="kg-image" width="1782" height="1070" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7C2l8XZO7Zb541CMMGGlmp/f9c75d30557d0b5f6b3e1c78a0a48994/Screen-Shot-2019-09-26-at-10.58.41-PM.png" alt="" class="kg-image" width="1782" height="1070" loading="lazy">
 
 	</figure>
 	<p>But what about your users in the rest of the world? Performance is even more critical in those regions: the first users are not going to be connecting to your site on a MacBook Pro, on a blazing fast connection. Workers Sites allows you to reach those regions without any additional effort on your part — every time <a href="https://blog.cloudflare.com/scaling-the-cloudflare-global">our map grows</a>, your global presence grows with it.</p>
 	<p>We’ve done the work of running some benchmarks from different parts of the world for you, and we’re pleased to share the results:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MWlNMQWy0ithl7CEi7C9o/d2d564f0215845fb02cdd8a2f8efbca4/Screen-Shot-2019-09-26-at-10.58.24-PM.png" alt="" class="kg-image" width="2000" height="856" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MWlNMQWy0ithl7CEi7C9o/2e5ce64bf0d018b720968f17e07c46dd/Screen-Shot-2019-09-26-at-10.58.24-PM.png" alt="" class="kg-image" width="2000" height="856" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

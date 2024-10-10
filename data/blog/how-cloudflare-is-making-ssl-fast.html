@@ -1,9 +1,9 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyuVruJG7h5nTbAQRVeNh/5e68586713d4517a810c89e944620e8b/how-cloudflare-is-making-ssl-fast.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6iyuVruJG7h5nTbAQRVeNh/20dd800f1dbc729c683fab11b169f7a2/how-cloudflare-is-making-ssl-fast.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>HTTP, the protocol of the web, is unencrypted by default. That means it is trivial for someone using the same local network as you to spy on all the data you send to and receive from most websites. If, for example, someone sniffs your session cookie for a website then they can install it themselves and log in as if they were you without knowing your password. One high profile example was when actor <a href="http://www.huffingtonpost.com/2011/03/02/ashton-kutcher-twitter-hacked_n_830619.html">Ashton Kutcher's Twitter session cookie was sniffed off the TED conference's wifi network</a>, allowing a hacker to take control of his Twitter account.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OIpYAf5gSb7J12tffxHPR/14f06a640c70a6b707fad0c3300d1b34/we_love_ssl.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="500" height="132" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OIpYAf5gSb7J12tffxHPR/5a44292a36dd95a531eb6c47bda818e8/we_love_ssl.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="500" height="132" loading="lazy">
 
 	</figure>
 	<p>The solution to problems like Ashton's is to use an encrypted HTTPS connection which requires a website to support SSL. The problem is that the SSL protocol imposes a heavy burden. I'm fairly technically savvy and still find the process of installing and maintaining SSL keys on a web server Byzantine. SSL sessions also add considerable CPU load to web servers and slow down web performance.</p>
@@ -19,7 +19,7 @@
 	<p>SSL imposes an additional tax on web performance, but it's important to understand exactly how. The primary source of the SSL performance tax comes from the initial setup of a new connection. Before any web page data can be exchanged, a SSL session must be "negotiated" between the client and the server. A simplified version of this process is as follows.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qw0GzK3LEAQJhgAzEj8qH/566c84c485b9a6c3c7b50ea72e09f154/SSL_session_negotiation.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="400" height="358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qw0GzK3LEAQJhgAzEj8qH/c0a07000c380a43afe64e61832497323/SSL_session_negotiation.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="400" height="358" loading="lazy">
 
 	</figure>
 	<p>If you have multiple resources on your web page under different domains, your visitors' browsers will need to negotiate an SSL session for each domain. Because each SSL session requires at least 4 additional exchanges, the <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">problems of flakey connections with high loss rates</a> (e.g., <a href="https://blog.cloudflare.com/why-mobile-performance-is-difficult">connections to mobile devices</a>) are amplified over HTTPS.</p>
@@ -34,7 +34,7 @@
 	<p>SSL certificates are issued by a certificate authority (CA). The CA attests that the website behind the certificate is who they say they are. Sometimes, after a certificate is issued, it is lost or compromised and needs to be revoked. CAs maintain a list of certificates that have been revoked, known as a Certificate Revocation List (CRL). Browsers, when they access a SSL-protected site, can query to download a CA's CRL and parse the list to see if a particular site is on it. Alternatively, they can issue a request via the Online Certificate Status Protocol (OCSP) to check if a particular site has had its certificate revoked.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Xs4W7wZZ7iObBu9fYpu8d/c51bd77fcd826c88e99972bb890ae3ca/revoked_cert.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="400" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xs4W7wZZ7iObBu9fYpu8d/98e9e755602900133a9c474721881890/revoked_cert.png.scaled500.png" alt="How to make SSL fast" class="kg-image" width="400" height="250" loading="lazy">
 
 	</figure>
 	<p>The problem is, for most CAs CRL and OCSP performance appears to be an afterthought. The CRL and OCSP servers are also not typically geographically distributed or tuned for performance. Verisign, one of the largest CAs, averages nearly <a href="http://unmitigatedrisk.com/?p=147">300ms to respond to a OCSP request</a>. That inherently means an additional third of a second gets added to your page load time for any visitor connecting to your site if you're using Verisign's SSL. To add insult to injury, most CAs don't yet accept IPv6 requests to their CRL or OCSP servers.</p>
@@ -62,7 +62,7 @@
 	<p>CloudFlare runs all its own infrastructure, which allowed us to spec the hardware for maximum SSL performance. We worked with Intel to integrate a custom tuned version of OpenSSL which takes advantage of special instruction sets on our servers' CPUs to make encryption and decryption as fast as possible. In our tests, it is about 30% faster and uses fewer CPU resources. This allows us to choose stronger cyphers that maximize performance without suffering a performance penalty.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CWlaNy0UKN5jhdaxwOj7a/d901265d6f42219c995c925551095351/speedy-gonzales.jpeg.scaled500.jpg" alt="How to make SSL fast" class="kg-image" width="290" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CWlaNy0UKN5jhdaxwOj7a/3e520924d55f99ca8f89fc01996644f6/speedy-gonzales.jpeg.scaled500.jpg" alt="How to make SSL fast" class="kg-image" width="290" height="332" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

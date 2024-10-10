@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DrYCWCue8cySRDqdf0nM3/9fb86dbc8e689277b095daf61c83608f/Configure-identity-based-policies-in-Cloudflare-Gateway-blog-home-2.png" alt="" class="kg-image" width="1182" height="654" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DrYCWCue8cySRDqdf0nM3/5c14024116db5ac6fddeaefd565fd12c/Configure-identity-based-policies-in-Cloudflare-Gateway-blog-home-2.png" alt="" class="kg-image" width="1182" height="654" loading="lazy">
 
 	</figure>
 	<p>During Zero Trust Week in October, <a href="https://blog.cloudflare.com/gateway-swg">we released HTTP filtering</a> in Cloudflare Gateway, which expands protection beyond DNS threats to those at the HTTP layer as well. With this feature, Cloudflare WARP proxies all Internet traffic from an enrolled device to a data center in our network. Once there, Cloudflare Gateway enforces organization-wide rules to <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-web-gateway/block-uploads">prevent data loss</a> and <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-web-gateway/block-football">protect team members</a>.</p>
@@ -19,19 +19,19 @@
 	<p>Until today, organizations could protect their users' Internet-bound traffic by configuring DNS and HTTP policies that applied to every user. While that makes it simple to configure policies to enforce content restrictions and mitigate security threats, any IT administrator knows that for every policy there’s an exception to that policy.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/174WHmJo1idvkjRgLzae7I/af395ed51426f64d252af86452f1d0e5/image2-40.png" alt="" class="kg-image" width="1999" height="892" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/174WHmJo1idvkjRgLzae7I/51f7020d71c5830841e58c6957c81882/image2-40.png" alt="" class="kg-image" width="1999" height="892" loading="lazy">
 
 	</figure>
 	<p>For example, a corporate content policy might restrict users from accessing social media — &nbsp;which is not ideal for a marketing team that needs to manage digital marketing campaigns. Administrators can now configure a rule in Gateway to ensure a marketing team can always reach social media from their corporate devices.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VekrGyvpHkmBgtZL0roUK/7e6be77b803cb041c4c6fc9ac84a77ba/image3-42.png" alt="" class="kg-image" width="1999" height="1234" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VekrGyvpHkmBgtZL0roUK/9234e305a6c237a6154e97e758bd4bb7/image3-42.png" alt="" class="kg-image" width="1999" height="1234" loading="lazy">
 
 	</figure>
 	<p>To meet corporate policy requirements for the rest of the organization, the administrator can then build a second rule to block all social media. They can drag-and-drop that rule below the marketing team’s rule, giving it a lower precedence so that anyone not in marketing will instead be evaluated against this policy.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/NCD76Z26ZrcGWoikzXknC/fb2ba0707e2dc632f5fcb91fdd9cb8c9/image6-12.png" alt="" class="kg-image" width="1999" height="1019" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NCD76Z26ZrcGWoikzXknC/0d97895683e96283e862fc92d80a1cae/image6-12.png" alt="" class="kg-image" width="1999" height="1019" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -45,7 +45,7 @@
 	<p>Cloudflare Gateway leverages the integration between your chosen identity provider (IdP) and Cloudflare Access to add identity to rules and logs. Customers can integrate one or more providers at the same time, including corporate providers like Okta and Azure AD, as well as public providers like GitHub and LinkedIn.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56LKepvMR6GRKJYoligKgv/d1d997053fcf7d5876080174c75d98dd/image4-25.png" alt="" class="kg-image" width="1848" height="1122" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56LKepvMR6GRKJYoligKgv/f626378385759f6fa9ea64726b03f1c4/image4-25.png" alt="" class="kg-image" width="1848" height="1122" loading="lazy">
 
 	</figure>
 	<p>When users first launch the WARP client, they will be prompted to authenticate with one of the providers configured. Once logged in, Cloudflare Gateway can send their traffic through your organization’s policies and attribute each connection to the user’s identity.</p>
@@ -75,7 +75,7 @@
 	<p>In addition to the ability to create identity-based rules, IT administrators can use the Gateway activity logs to filter the HTTP traffic logs for specific users and device IDs. This is critical for reasons with varying degrees of seriousness: on one end an administrator can identify users who are attempting to bypass content security policies, and on the other end, that administrator can identify users or devices that may be compromised.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TeZ70Kl6B7ERXaN154ocN/38aa1d79da7555263b892df413267361/image1-64.png" alt="" class="kg-image" width="1999" height="794" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TeZ70Kl6B7ERXaN154ocN/3ad2998fc05c70a6c748bdba87a78c66/image1-64.png" alt="" class="kg-image" width="1999" height="794" loading="lazy">
 
 	</figure>
 	<p>Securing your team from Internet threats requires IT or security administrators to keep pace with evolving attackers and, just as importantly, maintain full visibility on what’s happening to your users and data. Cloudflare Gateway now allows you to do both, so your team can get back to what matters.</p>
@@ -91,7 +91,7 @@
 	<p>For example, consider an employee in the finance department who interfaces with systems handling procurements or fund disbursement. A security team might consider preventing this employee from accessing the public Internet with their native browser and forcing that traffic into an isolated remote browser. Any traffic destined to internal systems would use the native browser. To create this policy, an administrator could create the following rules:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2czRlPLAbdEExXkBOgd1ZZ/4ca26834a4725f3719450d56924991f9/image7-9.png" alt="" class="kg-image" width="1999" height="747" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2czRlPLAbdEExXkBOgd1ZZ/c5225ffc1a0e055e92c233cc805076fc/image7-9.png" alt="" class="kg-image" width="1999" height="747" loading="lazy">
 
 	</figure>
 	<p>While other Gateway rules protect you from known threats, the isolate rule can help guard against everything else. Your team can build rules that isolate traffic based on identity or content without requiring the user to switch between browsers or client applications.</p>

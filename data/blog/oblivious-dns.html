@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YBSKOlLClafeeeiPkHjGT/3c5018b6bef3f43cb06f29eb46d6b086/image2-4.png" alt="Improving DNS Privacy with Oblivious DoH in 1.1.1.1" class="kg-image" width="1999" height="1068" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YBSKOlLClafeeeiPkHjGT/a68f1dca3b98feb51b3827bce9210f8b/image2-4.png" alt="Improving DNS Privacy with Oblivious DoH in 1.1.1.1" class="kg-image" width="1999" height="1068" loading="lazy">
 
 	</figure>
 	<p>Today we are announcing support for a new proposed DNS standard — co-authored by engineers from Cloudflare, Apple, and Fastly — that separates IP addresses from queries, so that no single entity can see both at the same time. Even better, we’ve made source code available, so anyone can try out ODoH, or run their own ODoH service!</p>
@@ -23,7 +23,7 @@
 	<p>A key component of ODoH is a proxy that is disjoint from the target resolver. Today, we’re launching ODoH with several leading proxy partners, including: PCCW, SURF, and Equinix.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7axirA87xboerNnYyli8zt/e9e0310f1d7f8eb17ba66ec1a283268e/image3-8.png" alt="" class="kg-image" width="1135" height="587" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7axirA87xboerNnYyli8zt/170dc833c86eb9be1914fd08e8591e3f/image3-8.png" alt="" class="kg-image" width="1135" height="587" loading="lazy">
 
 	</figure>
 	<blockquote>
@@ -31,7 +31,7 @@
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/uPbM9bA5gK1hN0WV5oafZ/a0bd29366722a889120ddd15818b40b6/image8-1.png" alt="" class="kg-image" width="600" height="102" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uPbM9bA5gK1hN0WV5oafZ/b7ee157691a64314dbddd565a7e00ec8/image8-1.png" alt="" class="kg-image" width="600" height="102" loading="lazy">
 
 	</figure>
 	<blockquote>
@@ -39,7 +39,7 @@
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TQuTnYRxLfYdwe6vge5Yp/88a8baf7b92c2ac42519b8506430db60/image9.png" alt="" class="kg-image" width="280" height="178" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TQuTnYRxLfYdwe6vge5Yp/9ac56c27f3d3f476b39a20a94bd4cee8/image9.png" alt="" class="kg-image" width="280" height="178" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -53,7 +53,7 @@
 	<p>ODoH is an emerging protocol being developed at the <a href="https://tools.ietf.org/html/draft-pauly-dprive-oblivious-doh-03">IETF</a>. ODoH works by adding a layer of public key encryption, as well as a network proxy between clients and DoH servers such as 1.1.1.1. The combination of these two added elements guarantees that only the user has access to both the DNS messages and their own IP address at the same time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yoWivpvmLp3zicMA3zRcv/da0117cae953c7d4a13fac1baf99e29f/image6-2.png" alt="" class="kg-image" width="1999" height="580" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yoWivpvmLp3zicMA3zRcv/ea4d846a7f7f72456b4ac9ba1fe9d045/image6-2.png" alt="" class="kg-image" width="1999" height="580" loading="lazy">
 
 	</figure>
 	<p>There are three players in the ODoH path. Looking at the figure above, let’s begin with the target. <b>The target</b> decrypts queries encrypted by the client, via a proxy. Similarly, the target encrypts responses and returns them to the proxy. The standard says that the target may or may not be the resolver (we’ll touch on this later). <b>The proxy</b> does as a proxy is supposed to do, in that it forwards messages between client and target. <b>The client</b> behaves as it does in DNS and DoH, but differs by encrypting queries for the target, and decrypting the target’s responses. Any client that chooses to do so can specify a proxy and target of choice.</p>
@@ -99,7 +99,7 @@
 	<p>The chart below shows the cumulative distributions for query/response times in DoH, ODoH, and DoH when transmitted over the Tor Network. The dashed horizontal line that starts on the left from 0.5 is the 50% mark. Along this horizontal line, for any plotted curve, the part of the curve below the dashed line is 50% of the data points. Now look at the x-axis, which is a measure of time. The lines that appear to the left are faster than lines to the right. One last important detail is that the x-axis is plotted on a logarithmic scale. What does this mean? Notice that the distance between the labeled markers (10x) is equal in cumulative distributions but the ‘x’ is an exponent, and represents orders of magnitude. So, while the time difference between the first two markers is 9ms, the difference between the 3rd and 4th markers is 900ms.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hhI6LPQUHxDXKAN7VKJmb/fd42d4e02dcb201ba87b505fb0223750/image7-1.png" alt="" class="kg-image" width="879" height="681" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hhI6LPQUHxDXKAN7VKJmb/9cbc575445958bf16abe2aede06953c6/image7-1.png" alt="" class="kg-image" width="879" height="681" loading="lazy">
 
 	</figure>
 	<p>In this chart, the middle curve represents ODoH measurements. We also measured the performance of privacy-preserving alternatives, for example, DoH queries transmitted over the Tor network as represented by the right curve in the chart. (Additional privacy-preserving alternatives are captured in the open access <a href="https://arxiv.org/abs/2011.10121">technical report</a>.) Compared to other privacy-oriented DNS variants, ODoH cuts query time in half, or better. This point is important since privacy and performance rarely play nicely together, so seeing this kind of improvement is encouraging!</p>
@@ -107,7 +107,7 @@
 	<p>Those curves also hide a lot of information, so it is important to delve further into the measurements. The chart below has three different cumulative distribution curves that describe ODoH performance if we select proxies and targets by their latency. This is also an example of the insights that measurements can reveal, some of which are counterintuitive. For example, looking above 0.5, these curves say that ½ of ODoH query/response times are virtually indistinguishable, no matter the choice of proxy and target. Now shift attention below 0.5 and compare the two solid curves against the dashed curve that represents overall average. This region suggests that selecting the lowest-latency proxy and target offers minimal improvement over the average but, most importantly, it shows that selecting the lowest-latency proxy leads to worse performance!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ruOPaoGythP8vZQm6RUJI/24b19eed2b73e4a1b2a7d2f8e6b3f5ba/image4-3.png" alt="" class="kg-image" width="568" height="459" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ruOPaoGythP8vZQm6RUJI/579a9968b09ac603f92c98ff0d9ab96a/image4-3.png" alt="" class="kg-image" width="568" height="459" loading="lazy">
 
 	</figure>
 	<p>Open questions remain, of course. This first set of measurements were executed largely in North America. Does performance change at a global level? How does this affect client performance, in practice? We’re working on finding out, and this release will help us to do that.</p>

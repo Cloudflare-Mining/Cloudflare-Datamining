@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tHUj629zLCxHUHREMzKvS/4047c1e32d181143a02507f186c66688/image1-31.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tHUj629zLCxHUHREMzKvS/3106b6fa9f6250036c6806e943b437b6/image1-31.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today we’re excited to announce Smart Edge Revalidation. It was designed to ensure that compute resources are synchronized efficiently between our edge and a browser. Right now, as many as 30% of objects cached on Cloudflare’s edge do not have the HTTP response headers required for revalidation. This can result in unnecessary origin calls. Smart Edge Revalidation fixes this: it does the work to ensure that these headers are present, even when an origin doesn’t send them to us. The advantage of this? There’s less wasted bandwidth and compute for objects that do not need to be redownloaded. And there are faster browser page loads for users.</p>
@@ -18,7 +18,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gTlB9tlXkMhFpf88xVu9O/626088dcfd982800f5e927c038b1953a/Cache-Hit--Miss.png" alt="" class="kg-image" width="1744" height="848" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gTlB9tlXkMhFpf88xVu9O/6fd36a3a9baa63e2c20b9ea49d54bd03/Cache-Hit--Miss.png" alt="" class="kg-image" width="1744" height="848" loading="lazy">
 
 	</figure>
 	<p>Revalidation is one part of a longer story about efficiently serving objects that live on an origin server from an intermediary cache. Visitors to a website want it to be fast. One foundational way to make sure that a website is fast for visitors is to serve objects from cache. In this way, requests and responses do not need to transit unnecessary parts of the Internet back to an origin and, instead, can be served from a data center that is closer to the visitor. As such, website operators generally only want to serve content from an origin when content has changed. So how do objects stay in cache for as long as necessary?</p>
@@ -40,14 +40,14 @@
 	<p>Revalidation checks occur when a browser sends a request to a cache server using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since"><code>If-Modified-Since</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match"><code>If-None-Match</code></a> headers. These <i>request headers</i> are questions sent from the browser cache about when an object has last changed that can be answered via the <code>ETag</code> or <code>Last-Modified</code> <i>response headers</i> on the cache server. For example, if the browser sends a request to a cache server with <code>If-Modified-Since: Tue, 8 Nov 2021 07:28:00 GMT</code> the cache server must look at the object being asked about and if it has not changed since November 8 at 7:28 AM, it will respond with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304">304 status code</a> indicating it’s unchanged. If the object has changed, the cache server will respond with the new object.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5prstYJc5fXhuiLi8ulIxg/866a161c8e78ae4f024f29d3583b526e/Cache-Response-Header.png" alt="" class="kg-image" width="1440" height="622" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5prstYJc5fXhuiLi8ulIxg/78a8cbd21546b33b2afea42bf3ea9826/Cache-Response-Header.png" alt="" class="kg-image" width="1440" height="622" loading="lazy">
 
 	</figure>
 	<p>Sending a 304 status code that indicates an object can be reused is much more efficient than sending the entire object. It’s like if you ran a news website that updated every 24 hours. Once the content is updated for the day, you wouldn’t want to keep redownloading the same unchanged content from the origin and instead, you would prefer to make sure that the day’s content was just reused by sending a lightweight signal to that effect, until the site changes the next day.</p>
 	<p>The problem with this system of browser questions and revalidation responses is that sometimes origins don’t set <code>ETag</code> or <code>Last-Modified</code> headers, or they aren’t configured by the website’s admin, making revalidation impossible. This means that every time an object expires, it must be redownloaded regardless of if there has been a change or not, because we have to assume that the asset has been updated, or else risk serving stale content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RvLJ1Px9qitcuzYQmdlUO/bbecea62897fc924ecebecf3065cb232/Origin-Response-Header.png" alt="" class="kg-image" width="1980" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RvLJ1Px9qitcuzYQmdlUO/86c73964fd7f8d18ed2697ce3b4fc350/Origin-Response-Header.png" alt="" class="kg-image" width="1980" height="628" loading="lazy">
 
 	</figure>
 	<p>This is an incredible waste of resources which costs hundreds of GB/sec of needless bandwidth between the edge and the visitor. Meaning browsers are downloading hundreds of GB/sec of content they <i>may already have</i>. If our baseline of revalidation is around 10% of all traffic and in initial tests, Smart Edge Revalidation increased revalidation just under 50%, this means that without a user needing to configure <b>anything</b>, we can increase total revalidations by around 5%!</p>
@@ -67,7 +67,7 @@
 	<p>Smart Edge Revalidation is the latest announcement to join the list of ways we're making our network more sustainable to help build a greener Internet — check out posts from earlier this week to learn about our <a href="https://blog.cloudflare.com/cloudflare-committed-to-building-a-greener-internet">climate commitments</a>, <a href="https://blog.cloudflare.com/announcing-green-compute">Green Compute with Workers</a>, <a href="https://assets.ctfassets.net/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf">Carbon Impact Report</a>, <a href="https://blog.cloudflare.com/green-hosting-with-cloudflare-pages">Pages x Green Web Foundation partnership</a>, and <a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches">crawler hints</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/guKMx74ygDjoGcziS5Usf/2e3b000bf283d7f5b8858bd08231a4fa/Green-Cache.png" alt="" class="kg-image" width="2400" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/guKMx74ygDjoGcziS5Usf/41e7cf39b57f8c9ba7c7052e2f4fbd62/Green-Cache.png" alt="" class="kg-image" width="2400" height="936" loading="lazy">
 
 	</figure>
 	<p></p>

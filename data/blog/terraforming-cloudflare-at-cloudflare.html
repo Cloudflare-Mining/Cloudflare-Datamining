@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RxLlGL9T3FygYK0GXDXoK/a063afa4892818e97c6ec04d1e41a99e/image3-35.png" alt="How Cloudflare uses Terraform to manage Cloudflare" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RxLlGL9T3FygYK0GXDXoK/855ee4da9d1a594cfb48c58c4aafbdc9/image3-35.png" alt="How Cloudflare uses Terraform to manage Cloudflare" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Configuration management is far from a solved problem. As organizations scale beyond a handful of administrators, having a secure, auditable, and self-service way of updating system settings becomes invaluable. Managing a Cloudflare account is no different. With <a href="https://www.cloudflare.com">dozens of products</a> and <a href="https://api.cloudflare.com">hundreds of API endpoints</a>, keeping track of current configuration and making bulk updates across multiple zones can be a challenge. While the Cloudflare Dashboard is great for analytics and feature exploration, any changes that could potentially impact users really should get a code review before being applied!</p>
@@ -55,7 +55,7 @@
 	<p>In this example pull request, I'm adding a user to the cloudflare-cool-account (see the code in the next section). Once the PR is opened, Bitbucket posts a webhook to Atlantis, telling it to run a `terraform plan` using this branch. The resulting comment is placed in the pull request. Notice that this pull request can't be applied or merged yet as it doesn't have an approval! Once the pull request is approved, I would comment "atlantis apply", wait for Atlantis to post a comment containing the output of the command, and merge the pull request if that output looks correct.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OqbJjxYbT2Dw4qpvFltng/dc17fd68514938762a382d0fefb5e5a1/image4-25.png" alt="" class="kg-image" width="1999" height="1537" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OqbJjxYbT2Dw4qpvFltng/d672644824a4808946b7f71d5d2fb3b9/image4-25.png" alt="" class="kg-image" width="1999" height="1537" loading="lazy">
 
 	</figure>
 	<p>Our Terraforming Cloudflare architecture consists of a monorepo with one directory (and tfstate) for each internally-owned Cloudflare account. This keeps all of our Cloudflare configuration centralized for easier oversight while remaining neatly organized.</p>
@@ -63,19 +63,19 @@
 	<p>Each of our terraform states, given that they <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration#credentials-and-sensitive-data">include secrets (including the API key!)</a>, is stored encrypted in an internal datastore. When a pull request is opened, Atlantis reaches out to a piece of middleware (that we may open source once it's cleaned up a bit) that retrieves and decrypts the state for processing. Once the pull request is applied, the state is encrypted and put away again.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WMBQIoo8yaKC6RLz75E1T/df07b1c980049bb61570d8a20c49cb72/image2-44.png" alt="Atlantis Plan Workflow Diagram" class="kg-image" width="1999" height="741" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WMBQIoo8yaKC6RLz75E1T/c29b2d834e0f580ca5912733a7a0e51e/image2-44.png" alt="Atlantis Plan Workflow Diagram" class="kg-image" width="1999" height="741" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76bxQk0hlFPFOHRyscuObV/7d68c71970ed1635d00abae26161dfab/image5-14.png" alt="Atlantis Apply Workflow Diagram" class="kg-image" width="1999" height="741" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76bxQk0hlFPFOHRyscuObV/23e258f576ab1e9b0c171c3fb5ee0ada/image5-14.png" alt="Atlantis Apply Workflow Diagram" class="kg-image" width="1999" height="741" loading="lazy">
 
 	</figure>
 	<p>We execute a daily Terraform apply across all tfstates to capture any unintended config drift and rotate certificates when they approach expiration. This prevents unrelated changes from popping up in pull request diffs and causing confusion. While we could run more frequent state applies to ensure Terraform remains firmly up to date, once-a-day rectification strikes a balance between code enforcement and avoiding state locks while users are running Terraform plans in pull requests.</p>
 	<p>One of the problems that we encountered during our transition to Terraform is that folks were in the habit of making updates to configuration in the Dashboard and were still able to edit settings there. Thus, we didn't always have a single source of truth for our configuration in code. It also meant the change would get mysteriously (to them) reverted the next day! So that's why I'm excited to share a new Zero Trust Dashboard toggle that we've been turning on for our accounts internally: API/Terraform read-only mode.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Ks2CZ0OxPwNbV5Kal95Tj/c30dee92d8207c0a917a11b6698f250d/image1-59.png" alt="" class="kg-image" width="1999" height="926" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ks2CZ0OxPwNbV5Kal95Tj/ce12fabf21a7fe81c67690f4fc4cf4ef/image1-59.png" alt="" class="kg-image" width="1999" height="926" loading="lazy">
 
 	</figure>
 	<p>Easily one of my favorite new features</p>

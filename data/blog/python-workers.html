@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BCvEmK49aK7qLQuTkUsI1/1dab41b7d98658e422d7dfeec5a1bfdf/pythonweba.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BCvEmK49aK7qLQuTkUsI1/0aecc2333aabe7e94ee99cdf9f830ef6/pythonweba.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Starting today, in open beta, you can now <a href="https://developers.cloudflare.com/workers/languages/python">write Cloudflare Workers in Python</a>.</p>
@@ -67,7 +67,7 @@ compatibility_flags = ["python_workers"]</code></pre>
 	<p>Just like with JavaScript Workers, with Python Workers we provide the runtime for you:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eCllqbVYDOzao6swhou7t/a5c54c3df2d07048aa15a8a5cbc326bc/VMs--Containers--ans-Isolates-comparison.png" alt="" class="kg-image" width="1600" height="798" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eCllqbVYDOzao6swhou7t/c4731707e15b9b37b4198f05a88682ee/VMs--Containers--ans-Isolates-comparison.png" alt="" class="kg-image" width="1600" height="798" loading="lazy">
 
 	</figure>
 	<p>Pyodide is currently the exception — most languages that target WebAssembly do not yet support dynamic linking, so each application ends up bringing its own copy of its language runtime. We hope to see more languages support dynamic linking in the future, so that we can more effectively bring them to Workers.</p>
@@ -132,7 +132,7 @@ for entry in js_array:
 	<p>The lifecycle of a request to a Python Worker makes use of Pyodide’s FFI, wrapping the incoming JavaScript <a href="https://developers.cloudflare.com/workers/runtime-apis/request">Request</a> object in a <a href="https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.JsProxy">JsProxy</a> object that is accessible in your Python code. It then converts the value returned by the Python Worker’s <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers">handler</a> into a JavaScript <a href="https://developers.cloudflare.com/workers/runtime-apis/response">Response</a> object that can be delivered back to the client:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/736nXjbNS1gxb4dm8xaptB/e542495df183a250f4903f488d18882d/Python-Worker-Request-Lifecycle.png" alt="" class="kg-image" width="978" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/736nXjbNS1gxb4dm8xaptB/9f4dd0232d22e7d7070b1f716813a7e6/Python-Worker-Request-Lifecycle.png" alt="" class="kg-image" width="978" height="400" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -147,7 +147,7 @@ for entry in js_array:
 	<p>Dynamic linking is “pay as you go”, while static linking is “pay upfront” — if code is statically linked into your binary, it must be loaded upfront in order for the binary to run, even if this code is never used.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JiF8v11hINyO6CpNnuP6a/eb917aebfbdf7b1383de65fbd6e1e3ea/Python-Workers---Runtime.png" alt="" class="kg-image" width="772" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JiF8v11hINyO6CpNnuP6a/52fad68dedc7a4d1c6beba46eb13f964/Python-Workers---Runtime.png" alt="" class="kg-image" width="772" height="400" loading="lazy">
 
 	</figure>
 	<p>Dynamic linking enables the Workers runtime to share the underlying WebAssembly modules of packages across different Workers that are running on the same machine.</p>
@@ -278,7 +278,7 @@ def sync_fetch(py_request):
 	<p>When a request comes in to your Worker, we load this snapshot and use it to bootstrap your Worker in an isolate, avoiding expensive initialization time:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2q0ztvdb60NUqlAsOWWFX4/032e33f96cc9f6f67de08f1a92add801/apipyth.png" alt="" class="kg-image" width="1200" height="475" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2q0ztvdb60NUqlAsOWWFX4/203e421e31e25c5794f5fada1ad94c40/apipyth.png" alt="" class="kg-image" width="1200" height="475" loading="lazy">
 
 	</figure>
 	<p>This takes cold starts for a basic Python Worker down to below 1 second. We’re not yet satisfied with this though. We’re confident that we can drive this down much, much further. How? By reusing memory snapshots.</p>
@@ -354,7 +354,7 @@ async def on_fetch(request, env):
 	<p>We’re grateful to the Pyodide maintainers and the broader Python community — and we’d love to hear from you. Drop into the Python Workers channel in the <a href="https://discord.cloudflare.com">Cloudflare Developers Discord</a>, or <a href="https://github.com/cloudflare/workerd/discussions/categories/python-packages">start a discussion on Github</a> about what you’d like to see next and which Python packages you’d like us to support.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nmt4B6AYocqmJCw21v5pL/0a37881aeb5d774b3a458e41cf0d0edd/Workers-and-Python.png" alt="" class="kg-image" width="1600" height="421" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nmt4B6AYocqmJCw21v5pL/112dcd395906643cbf8a67de22470e13/Workers-and-Python.png" alt="" class="kg-image" width="1600" height="421" loading="lazy">
 
 	</figure>
 	<p></p>

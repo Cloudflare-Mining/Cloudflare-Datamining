@@ -1,12 +1,12 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-api-shield">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-api-shield">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-api-shield">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/introducing-api-shield">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-api-shield">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-api-shield">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/introducing-api-shield">Português</a>, <a href="https://blog.cloudflare.com/es-es/introducing-api-shield">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-api-shield">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72s4wnUJL8eJgK7H3ksOdZ/bea8d6ee9ea46b3618d3cdf50bea392d/introducing-api-shield.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-api-shield">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-api-shield">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-api-shield">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/introducing-api-shield">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-api-shield">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-api-shield">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/introducing-api-shield">Português</a>, <a href="https://blog.cloudflare.com/es-es/introducing-api-shield">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-api-shield">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72s4wnUJL8eJgK7H3ksOdZ/7cefd9c4f2b4ba27d363ef28d1cf96b2/introducing-api-shield.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>APIs are the lifeblood of modern Internet-connected applications. Every millisecond they carry requests from mobile applications—place this food delivery order, “like” this picture—and directions to IoT devices—unlock the car door, start the wash cycle, my human just finished a 5k run—among countless other calls.</p>
 	<p>They’re also the target of widespread attacks designed to perform unauthorized actions or exfiltrate data, as data from Gartner increasingly shows: “by 2021, 90% of web-enabled applications will have more surface area for attack in the form of exposed APIs rather than the UI, up from 40% in 2019, and “Gartner predicted that, by 2022, API abuses will move from an infrequent to the most-frequent attack vector, resulting in data breaches for enterprise web applications”[1][2]. Of the 18 million requests per second that traverse Cloudflare’s network, 50% are directed towards APIs—with the majority of these requests blocked as malicious.</p>
 	<p>To combat these threats, Cloudflare is making it simple to <a href="https://www.cloudflare.com/application-services/solutions/api-security">secure APIs</a> through the use of strong client certificate-based identity and strict schema-based validation. As of today, these capabilities are available free for all plans within our new “API Shield” offering. And as of today, the security benefits <a href="https://blog.cloudflare.com/announcing-grpc">also extend to gRPC-based APIs</a>, which use binary formats such as protocol buffers rather than JSON, and have been growing in popularity with our customer base.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57hU743WWPc9IuSri97hCD/125b97df9310be0a6be301acfe334108/image3.png" alt="" class="kg-image" width="976" height="809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57hU743WWPc9IuSri97hCD/c6d495ce4edcd272263e0aa4d1f86e04/image3.png" alt="" class="kg-image" width="976" height="809" loading="lazy">
 
 	</figure>
 	<p>Continue reading to learn more about the new capabilities, or jump right to the "Demonstration" paragraph for examples of how to get started configuring your first API Shield rule.</p>
@@ -23,7 +23,7 @@
 	<p>Just as we simplified the issuance of server certificates back in 2014 with <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>, API Shield reduces the process of issuing client certificates to clicking a few buttons in the Cloudflare Dashboard. By providing a fully hosted private public key infrastructure (PKI), you can focus on your applications and features—rather than operating and securing your own certificate authority (CA).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3W34OWMhIbvXhFkJvqVUjc/1bcc2326269d41e060d164778877f4c6/API_Shield_Mutual_TLS.png" alt="" class="kg-image" width="1244" height="859" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3W34OWMhIbvXhFkJvqVUjc/8986a3068ebbf683c37f27542717642e/API_Shield_Mutual_TLS.png" alt="" class="kg-image" width="1244" height="859" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -39,7 +39,7 @@
 	<p>Schema validation is currently in closed beta for JSON payloads, with gRPC/protocol buffer support on the roadmap. If you would like to join the beta please open a support ticket with the subject “API Schema Validation Beta”. After the beta has ended, we plan to make schema validation available as part of the API Shield user interface.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7e0v45eOD6jY65spHlNYe2/b9d3f49917c01d9c35ebbb85ec126d70/API_Shield_Schema_Protection.png" alt="" class="kg-image" width="1502" height="1312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7e0v45eOD6jY65spHlNYe2/37899470ffba1a8ff53c8f21295d6372/API_Shield_Schema_Protection.png" alt="" class="kg-image" width="1502" height="1312" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -280,7 +280,7 @@ $ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-T
 	<p>The steps include specifying which hostnames to prompt for certificates, e.g., shield.upinatoms.com, and then creating the API Shield rule.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AdQIq6SE7b3EudHbkruHV/d5de7873d3e464800a8788d193462a33/API_Shield_demo.gif" alt="" class="kg-image" width="600" height="469" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AdQIq6SE7b3EudHbkruHV/c079941c7afa73490b7701e4c09ed541/API_Shield_demo.gif" alt="" class="kg-image" width="600" height="469" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

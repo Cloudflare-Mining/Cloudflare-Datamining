@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sfVCRtS6lSIai6MEJKe6d/7ab206962089ed45152afc04ba7088fd/HTML-rewrriter-GA_2x-1.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sfVCRtS6lSIai6MEJKe6d/62b69f0f5a6d768aa220daa866346337/HTML-rewrriter-GA_2x-1.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
 
 	</figure>
 	<p>The second blog post in the series on HTML rewriters picks up the story in 2017 after the launch of the Cloudflare edge compute platform <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. It became clear that the developers using workers wanted the same HTML rewriting capabilities that we used internally, but accessible via a JavaScript API.</p>
@@ -30,7 +30,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GmYB4iPMNqvDypCQbb2t/df8654ebb5eaf44a6c755220d2797458/image8-1.png" alt="" class="kg-image" width="842" height="511" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GmYB4iPMNqvDypCQbb2t/3f2010375f3c32cdf8b26730121981e0/image8-1.png" alt="" class="kg-image" width="842" height="511" loading="lazy">
 
 	</figure>
 	<p>LazyHTML with V8</p>
@@ -48,7 +48,7 @@
 	<p>As selectors define the scope of the content that should be rewritten, we realised we can skip the content that is not in this scope and not produce tokens for it. This not only significantly speeds up the parsing itself, but also avoids the performance burden of the back and forth interactions with the JavaScript VM. As ever the best optimization is not to do something.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bnIfLwJ1sYEYM34uXAleV/a76c7692dcb4bc557df147f4a148fe05/image7-2.png" alt="" class="kg-image" width="912" height="464" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bnIfLwJ1sYEYM34uXAleV/f03f74021ce0a7c89fba1e53e2073cb0/image7-2.png" alt="" class="kg-image" width="912" height="464" loading="lazy">
 
 	</figure>
 	<p>Considering the tasks required, LOL HTML’s parser consists of two internal parsers:</p>
@@ -63,7 +63,7 @@
 	<p>The parser switches back to the tag scanner as soon as input leaves the scope of all selector matches. The tag scanner may also sometimes switch the parser to the Lexer - if it requires additional tag information for the parsing feedback simulation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1U4yaNQ6DOcGtl5JeUZfVS/181db092de709616de038235da7226f6/image1-3.png" alt="" class="kg-image" width="832" height="782" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1U4yaNQ6DOcGtl5JeUZfVS/b61ecda06aa67d2704345854f61c4e45/image1-3.png" alt="" class="kg-image" width="832" height="782" loading="lazy">
 
 	</figure>
 	<p>LOL HTML architecture</p>
@@ -100,7 +100,7 @@
 	<p>As you can see, the new parser architecture along with all these optimizations produced great performance results:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3e73RS0xEBDmg1jxWQGKsJ/c0bd91ac62fa8997de83e53348a3f314/image4-2.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3e73RS0xEBDmg1jxWQGKsJ/ce5739700a08dea4e6e48c3a5cc96d7b/image4-2.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>Average parsing time depending on the input size - lower is better</p>
@@ -210,14 +210,14 @@ L2: expect d
 	<p>Having an input “” we’ll have the following stack:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/F9vqNHbnLYJDeg4qSjvbx/4219a5c3b6b3d2e2d770d4dd2c1f0e65/image2-3.png" alt="" class="kg-image" width="389" height="322" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/F9vqNHbnLYJDeg4qSjvbx/32b541fac6a9f1c5478c25d8a0be6da8/image2-3.png" alt="" class="kg-image" width="389" height="322" loading="lazy">
 
 	</figure>
 	<p>Now, if the next token is a start tag the VM will first try to execute the selectors program from the beginning and will fail on the first instruction. However, it will also look for any active hereditary jumps on the stack. We have one which jumps to the instructions at index 3. After jumping to this instruction the VM successfully produces a match. If we get yet another start tag later it will much as well following the same steps which is exactly what we expect for the descendant selector.</p>
 	<p>If we then receive a sequence of “” end tags our stack will contain only one item:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Y5I0Az6dXlOkEvQd239bI/3151124f2f2027aed5aa787dd9bbd25f/image5-2.png" alt="" class="kg-image" width="362" height="82" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Y5I0Az6dXlOkEvQd239bI/356ff04c062c308d94703a74cd2ff773/image5-2.png" alt="" class="kg-image" width="362" height="82" loading="lazy">
 
 	</figure>
 	<p>which instructs VM to jump to instruction at index 1, effectively rolling back to matching the <i>div</i> component of the selector.</p>
@@ -230,7 +230,7 @@ body &gt; span a</code></pre>
 	<p>we’ll get the following AST:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LczcYVznE4d44KCIO8JJw/245f18af12bb135b6cd2b051c847a118/image3-1.png" alt="" class="kg-image" width="478" height="241" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LczcYVznE4d44KCIO8JJw/56a4b10a75a124a2dcff5830381885a8/image3-1.png" alt="" class="kg-image" width="478" height="241" loading="lazy">
 
 	</figure>
 	<p>If selectors have common prefixes we can match them just once for all these selectors. In the compilation process, we flatten this structure into a vector of instructions.</p>

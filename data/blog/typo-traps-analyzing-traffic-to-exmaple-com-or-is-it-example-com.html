@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45BaEMmPeM13adYBN7nanP/aa1d4bb5438a92b916e45cde50bd6bb4/image12-1.png" alt="Typo traps: analyzing traffic to exmaple.com (or is it example.com?)" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45BaEMmPeM13adYBN7nanP/eaceb4f50062eaf53c4a484231f177ee/image12-1.png" alt="Typo traps: analyzing traffic to exmaple.com (or is it example.com?)" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>A typo is one of those common mistakes with unpredictable results when it comes to the Internet’s domain names (<a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>). In this blog post we’re going to analyze traffic for exmaple.com, and see how a very simple human error ends up creating unintentional traffic on the Internet.</p>
@@ -12,13 +12,13 @@
 	<p>Here is what the example.com web page shows to a user who goes directly to that domain name:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/722jbwOy6wcG8Tz5wWoFrl/911b5865b756ec314437a15f8c1c1f8f/image10.jpg" alt="" class="kg-image" width="994" height="456" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/722jbwOy6wcG8Tz5wWoFrl/09e338beaeee7b225af1ff8904eada64/image10.jpg" alt="" class="kg-image" width="994" height="456" loading="lazy">
 
 	</figure>
 	<p>And this is what exmaple.com looks like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56LKtwrCNXXeKcZ3Mnp2Ni/324d3245cbe969a41a6cde788538c2a1/image6.jpg" alt="" class="kg-image" width="892" height="343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56LKtwrCNXXeKcZ3Mnp2Ni/f6e4c231d5ad147691990082dcd4a9d5/image6.jpg" alt="" class="kg-image" width="892" height="343" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -43,13 +43,13 @@
 	<p>What type of traffic is it? Almost all HTTP traffic that goes to exmaple.com is categorized as bot-related. That’s around 99.99%: 2.48 billion requests were from bots, 110,000 were not from bots, and 40,000 we weren’t able to categorize. This already gives us some information, showing that the majority of traffic is not a typical user simply adding exmaple.com by mistake to some documentation or tutorial. This is mostly automated traffic (more on that below).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nedBmDSYUQZZHyVKE2qTR/9d9bece8aec0ee58ce59a054204477c1/image11.jpg" alt="" class="kg-image" width="720" height="252" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nedBmDSYUQZZHyVKE2qTR/bb251bbfb573e990c7d1556b8c170cff/image11.jpg" alt="" class="kg-image" width="720" height="252" loading="lazy">
 
 	</figure>
 	<p>There are also a few peaks worth mentioning. There’s a clear spike in bot traffic on December 8 and 9, 2022 (11.8 and 11.85 million requests, respectively), the week after Cyber Monday week.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pXLiivNXIJhThMP78qOtU/98a979d84fe315dbf4592c141ab61869/image3-9.png" alt="" class="kg-image" width="1999" height="812" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pXLiivNXIJhThMP78qOtU/b875f804316a6aff4da16e5ba7e465c8/image3-9.png" alt="" class="kg-image" width="1999" height="812" loading="lazy">
 
 	</figure>
 	<p>From which countries are requests coming from? The top countries include France, Japan, Germany, and the US. Below, we’re going to check why this happens by looking at the autonomous system (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASNs</a>) perspective. Never forgetting that connected networks or AS’s make up the Internet.</p>
@@ -65,7 +65,7 @@
 	<p>HTTP is definitely more used by automated traffic, given that HTTPS is more used for human consumption, as browsers tend to prioritize HTTPS. Only 6% of human-related requests use HTTP (the rest is HTTPS). That HTTP percentage jumps to 76%, when considering automated requests-only.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XhAqQ4E8Fl8IpMzPSpKjy/ba063e938f125f9d7e91d6b8cc000b8d/image4-3.png" alt="" class="kg-image" width="1999" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XhAqQ4E8Fl8IpMzPSpKjy/85dd74eb9688223a26d6c55dac5e384b/image4-3.png" alt="" class="kg-image" width="1999" height="802" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -88,7 +88,7 @@
 	<p>What drives most of the traffic are very specific ASNs. In this case, the dominant one is one of France's main Internet operators, Bouygues Telecom. Its <a href="https://radar.cloudflare.com/AS5410">AS5410</a> is generating the most traffic to exmaple.com, followed by Google Cloud, in Japan. Bouygues Telecom traffic to exmaple.com means more than three million daily requests at least since February 2023. Here’s the AS5410 over time traffic:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2708QH8GDrNXSmcAL693I1/2bfaa86c7cc3c2db794bbb12330147d3/image8.png" alt="" class="kg-image" width="1999" height="814" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2708QH8GDrNXSmcAL693I1/484988135be921365d7f22b4601f73b6/image8.png" alt="" class="kg-image" width="1999" height="814" loading="lazy">
 
 	</figure>
 	<p>We contacted Bouygues Telecom to let them know a couple of weeks ago, and shared information about where we were seeing traffic from. So far, they haven’t found the needle in the haystack sending traffic to exmaple.com, potentially related to some erroneous configuration.</p>
@@ -97,7 +97,7 @@
 	<p>Here is the list that associates countries with the ASNs that are generating more traffic to exmaple.com:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jidLcX2pthbeK8KU5XHTD/2866fe5362400c144cc9375f3bc5f48e/image2-3.png" alt="" class="kg-image" width="1999" height="1300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jidLcX2pthbeK8KU5XHTD/ff8503fdb25d468ebf087337fe57b295/image2-3.png" alt="" class="kg-image" width="1999" height="1300" loading="lazy">
 
 	</figure>
 	<p>Why does this happen in specific ASNs in different regions of the world, you may ask? Even without a definitive answer, the amount of daily traffic from those ASNs, and the prevalence of bot traffic, seems to indicate that most traffic is related to a possible misconfiguration in a router, software or network setting, intended to go to example.com.</p>
@@ -113,7 +113,7 @@
 	<p>Regarding IP versions, they can be IPv4 or IPv6 — v6 emerged as a solution when the initial v4 wasn't prepared for the Internet's growth. For exmaple.com unique visitors, looking at the daily number of unique IPs where requests originate, IPv6 has been rising in comparison to IPv4. This suggests that IPv6 is now more frequently used by the services and bots generating most of this traffic. It started in May at 30% IPv6 usage and is now around 50%.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tF1OYbFcfGjtKZyTzkA07/c3b6570d298b35729bc0d4d2e1dec64f/image5-3.png" alt="" class="kg-image" width="1999" height="809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tF1OYbFcfGjtKZyTzkA07/01e715b853ce1cc5c38063218347ce89/image5-3.png" alt="" class="kg-image" width="1999" height="809" loading="lazy">
 
 	</figure>
 	<p>The user-agent header sent by the visitor's web browser in the HTTP request typically contains information about the used browser, operating system, and sometimes even the device. But in this case, the user-agent information doesn’t give us much detail, even of there’s some odd ones. “Empty” (when user agents are absent) comes first, followed by “Mozilla/5.0” and “Go-http-client/2.0”. What do those user-agents mean?</p>
@@ -129,7 +129,7 @@
 	<p>In the camp of more unusual user agents, with a few thousand requests, are instances like a specific GitHub page (a software library called Typhoeus) or a possible “script for checking if job exists” for the job searching site vercida.com.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aJI19OboDuMmQj9H9tbgJ/261bba858fed3e5ae52228dd3ef0c8f6/Screenshot-2023-09-20-at-14.38.06.png" alt="" class="kg-image" width="1618" height="1240" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aJI19OboDuMmQj9H9tbgJ/59e07be079b6999519539ae906f5e0e1/Screenshot-2023-09-20-at-14.38.06.png" alt="" class="kg-image" width="1618" height="1240" loading="lazy">
 
 	</figure>
 	<p>From where did the users access the website? Let's examine the distribution of HTTP referrers. Note that the term "<a href="https://en.wikipedia.org/wiki/HTTP_referer">referer</a>" is based on a misspelling in the original specification that has persisted (it should be "referrer header" instead) in HTTP — in the <a href="https://datatracker.ietf.org/doc/html/draft-ietf-http-v10-spec-00">original HTTP proposal</a> Tim Berners-Lee spells it “referrer” as well. The referer or referrer header is an optional field that provides information about the URL of the web page from which a particular request originated.</p>
@@ -147,7 +147,7 @@
 	<p>Although no email address online intentionally targets exmaple.com, that address still gets some email attention. We configured a Gmail account to monitor these random emails in early 2022. Within 16 months, the 15 GB email capacity was fully used, containing 216,000 emails — an average of 432 daily emails. These emails reflect various scenarios: some are marketing-related, others appear to be network tests, and some are from individuals who, by error or to avoid spam, ended up at “@exmaple.com”. Among these use cases, we noticed accounts linked to PlayStation, Apple devices, Pandora music, Facebook, and more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Wdo2SML6GP7WSIeNJp7BY/c2594cafcba4210afe19045e8daee39b/image13.png" alt="What the exmaple.com Inbox typically looks like." class="kg-image" width="1999" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Wdo2SML6GP7WSIeNJp7BY/b1bef3d9f3f513c339ad5db2f459a135/image13.png" alt="What the exmaple.com Inbox typically looks like." class="kg-image" width="1999" height="1063" loading="lazy">
 
 	</figure>
 	<p><i>What the exmaple.com Inbox typically looks like.</i></p>
@@ -366,20 +366,20 @@
 	<p>Last but not least, we also have insight into example.com itself. Looking at our most popular domains list (using data from our <a href="https://1.1.1.1">1.1.1.1</a> resolver), example.com or “example.org” are no strangers to our popular domains ranking. Those two are usual “guests” of our top 500 domains ranking, both worldwide and in specific countries, which also is an expression of its popularity and usage for all the use cases we already discussed. example.com usually sits higher, in the top 300. Since July, it has even appeared in our top 100 for the first time in 2023.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ksvP7sHMevSJStvZENUvC/72f9a30cb7acccfb2d7157f2b675ee24/image14-2.png" alt="" class="kg-image" width="1999" height="817" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ksvP7sHMevSJStvZENUvC/c5f505091eb3c19241351cf010b7303d/image14-2.png" alt="" class="kg-image" width="1999" height="817" loading="lazy">
 
 	</figure>
 	<p>exmaple.com, on the other hand, is not in our top 100 list, and only appears in our top 100k top domains list. You can find our domains lists, including a top 100, and unordered CSV lists up to Top 1 million domains, on <a href="https://radar.cloudflare.com/domains">Cloudflare Radar</a> and through our <a href="https://developers.cloudflare.com/radar">API</a>.</p>
 	<p>Just by checking DNS data from those who use our resolver, the original example.com gets around 2.6 billion DNS queries every day. This number has been consistently increasing since 2022, more than doubling. Here's the chart to show it:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6epW1jYw9NWnQ8w4B3vSYf/81a77d98f74ab18821687e377eda32e3/image7-7.png" alt="" class="kg-image" width="1999" height="639" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6epW1jYw9NWnQ8w4B3vSYf/b5e4b80198648546b728a412975f6e27/image7-7.png" alt="" class="kg-image" width="1999" height="639" loading="lazy">
 
 	</figure>
 	<p>What about exmaple.com? DNS queries are significantly lower by an order of magnitude. On average, it receives around 40,000 DNS queries per day, with occasional spikes reaching 80,000 to 90,000 — there’s one 160k July 23, 2022, spike. It's also noteworthy that there are more DNS queries on weekdays and fewer on weekends, which is not the case for example.com.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iyl6xhpjG15OshLbjSTlm/309943b6bd8554bf6ed9d11ab0b96588/image9.png" alt="" class="kg-image" width="1999" height="659" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iyl6xhpjG15OshLbjSTlm/966e14a61037bad052c168576eba6d16/image9.png" alt="" class="kg-image" width="1999" height="659" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

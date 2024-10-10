@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZSJkAGSk5ed5rCURksXWu/14371f9bcbff6c271664cb545c8975bd/image2.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZSJkAGSk5ed5rCURksXWu/cb4be89efbfdc63241530a2c166c06bc/image2.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h2 id="a-story-of-security-and-simplicity">A story of security and simplicity</h2>
@@ -38,7 +38,7 @@
 	</div>
 	<p>Our security.txt generator is seamlessly integrated into our dashboard. Here's how it works:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2z7tEph5hu4T7LCkZU5KFQ/69b077e6520a9a9ad5e986b2e0205e99/image1.png" alt="" class="kg-image" width="1490" height="1233" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2z7tEph5hu4T7LCkZU5KFQ/8bc9c8efe332cda618c5dd8bb51e38da/image1.png" alt="" class="kg-image" width="1490" height="1233" loading="lazy">
 	</figure>
 	<p>When the user enters their data in the Cloudflare Dashboard, the information is immediately stored in a highly available and geo-redundant <a href="https://blog.cloudflare.com/performance-isolation-in-a-multi-tenant-database-environment"><u>PostgreSQL database</u></a>. This ensures that all user data is securely kept and can be accessed quickly from any location within our global network.</p>
 	<p>Instead of creating a static file at the point of data entry, we use a dynamic approach. When a request for the security.txt file is made via the standard .well-known path specified by <a href="https://www.rfc-editor.org/rfc/rfc9116"><u>RFC 9116</u></a>, our system dynamically constructs the file using the latest data from our database. This method ensures that any updates made by users are reflected in real-time without requiring manual intervention or file regeneration. The data entered by users is synchronized across Cloudflare’s global network using our <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a> technology. This allows for rapid propagation of changes, ensuring that any updates to the security.txt file are available almost instantaneously across all servers.</p>

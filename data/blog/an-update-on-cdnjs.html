@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kKcwNwDcT58jsT5iQXCr9/126402d6a97cd61a4d6254cf876db1c0/an-update-on-cdnjs.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kKcwNwDcT58jsT5iQXCr9/d64390fb7d94a9156120390b2a110471/an-update-on-cdnjs.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When you loaded this blog, a file was delivered to your browser called jquery-3.2.1.min.js. jQuery is a library which makes it easier to build websites, and was at one point included on as many as <a href="https://w3techs.com/technologies/details/js-jquery">74.1%</a> of all websites. A full eighteen million sites include jQuery and other libraries using one of the most popular tools on Earth: <a href="https://cdnjs.com">CDNJS</a>. Beginning about a month ago Cloudflare began to take a more active role in the operation of CDNJS. This post is here to tell you more about CDNJS’ history and explain why we are helping to manage CDNJS.</p>
 	<div class="flex anchor relative">
@@ -14,19 +14,19 @@
 	<p>If we all load jQuery from the same place the browser can do a much better job of not actually needing to download it for every site. When the user visits the first jQuery-powered site it will have to be downloaded, but it will already be cached on the user's computer for any subsequent jQuery-powered site they might visit.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KvbGCC3AOaU9YfFjRp4Ji/1ee23271397832d84799242f1461d60e/2-1.png" alt="" class="kg-image" width="1342" height="921" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KvbGCC3AOaU9YfFjRp4Ji/707e8cbacf87ff72fdd26bd197b7f925/2-1.png" alt="" class="kg-image" width="1342" height="921" loading="lazy">
 
 	</figure>
 	<p>The first visit might take time to load:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zjCDXJufSaYaIhnivnaju/3de848f271d3c08c0df3608194176788/Screen-Shot-2019-12-17-at-2.25.49-PM.png" alt="" class="kg-image" width="2206" height="106" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zjCDXJufSaYaIhnivnaju/956ee4881f53e4be9f49871b4ba1fb73/Screen-Shot-2019-12-17-at-2.25.49-PM.png" alt="" class="kg-image" width="2206" height="106" loading="lazy">
 
 	</figure>
 	<p>But any future visit to any website pointing to this common URL would already be cached:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NSQiCFdy2m4kJkHkARFoh/89c47db33eb2ba2b4dc045f15f9f658e/Screen-Shot-2019-12-17-at-2.26.09-PM.png" alt="" class="kg-image" width="2000" height="86" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NSQiCFdy2m4kJkHkARFoh/a86141bb665b85ca46d1d77cd95e35ad/Screen-Shot-2019-12-17-at-2.26.09-PM.png" alt="" class="kg-image" width="2000" height="86" loading="lazy">
 
 	</figure>
 	<pre class="language-html"><code class="language-html">&lt;!-- Loaded only on my site, will need to be downloaded by every user --&gt;
@@ -41,7 +41,7 @@
 	<p>CDNJS has been astonishingly successful. The project is currently installed on over eighteen million websites (<a href="https://w3techs.com/technologies/overview/content_delivery">10%</a> of the Internet!), offers files totaling over <a href="https://cdnjs.com/git_stats/cdnjs/general.html">1.5 billion lines of code</a>, and serves over 173 billion requests a month. CDNJS only gets more popular as sites get larger, with <a href="https://trends.builtwith.com/cdn/CDN-JS">34%</a> of the top 10k websites using the service. Each month we serve almost three petabytes of JavaScript, CSS, and other resources which power the web via cdnjs.cloudflare.com.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nE6O3729XDte6o95NNThA/665d8290a72fcc0818b65f27f79cf310/pasted-image-0-1.png" alt="" class="kg-image" width="1190" height="724" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nE6O3729XDte6o95NNThA/b91592cf9679b14f5b4aef57db8afe86/pasted-image-0-1.png" alt="" class="kg-image" width="1190" height="724" loading="lazy">
 
 	</figure>
 	<p>Spikes can happen when a very large or popular site installs CDNJS, or when a misbehaving web crawler discovers a CDNJS link.</p>
@@ -60,7 +60,7 @@
 	<p>Within Cloudflare’s infrastructure there is a set of machines which are responsible for pulling the latest version of the repo periodically. Those machines then become the origin for cdnjs.cloudflare.com, with <a href="https://www.cloudflare.com/load-balancing">Cloudflare’s Global Load Balancer</a> automatically handling failures. Cloudflare’s cache automatically stores copies of many of the projects making it possible for us to deliver them quickly from all 195 of our data centers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/y6zjzefb5QVkla0fcCbUA/5d45f15be7a778e6d3b9de2754651ccf/1-with-arrow-v2-1.png" alt="" class="kg-image" width="1450" height="1014" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/y6zjzefb5QVkla0fcCbUA/029fedc23230e957333de2c912df2113/1-with-arrow-v2-1.png" alt="" class="kg-image" width="1450" height="1014" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -77,7 +77,7 @@
 	<p>CDNJS has always been, and remains, a project for and by the community. We are invested in making all decisions in a transparent and inclusive manner. If you are interested in contributing to CDNJS or in the topics we're currently discussing please visit the <a href="https://github.com/cdnjs/cdnjs/issues">CDNJS Github Issues</a> page.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RYsRv22prgSJsOzeUTFMG/23fadb148c039b863175bc32d10fdfda/pasted-image-0-1-1.png" alt="" class="kg-image" width="1600" height="254" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RYsRv22prgSJsOzeUTFMG/97b5dec8a319da206c50d43cb78dbd72/pasted-image-0-1-1.png" alt="" class="kg-image" width="1600" height="254" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -92,7 +92,7 @@
 	<p>As a part of our analysis of the project we examined a snapshot of the still-open PRs made against CDNJS for several months:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ffwfsahT0occRgh467Exy/cae3d34f7e91a56c20543e93ac66a008/imageLikeEmbed.png" alt="" class="kg-image" width="1543" height="954" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ffwfsahT0occRgh467Exy/c4441f487765636a0e05a36feebdb375/imageLikeEmbed.png" alt="" class="kg-image" width="1543" height="954" loading="lazy">
 
 	</figure>
 	<p>The vast majority of these PRs were changes which ultimately passed the automated review but nevertheless couldn't be merged without manual review.</p>

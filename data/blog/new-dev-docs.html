@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/q0ADBxpjwz9BHKHkUOzSU/a2cd9c226e67e94fec20b4fcfdf3c988/unnamed-2.png" alt="" class="kg-image" width="1584" height="942" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/q0ADBxpjwz9BHKHkUOzSU/9e3d18625e6811f2e3609d09891e79c9/unnamed-2.png" alt="" class="kg-image" width="1584" height="942" loading="lazy">
 
 	</figure>
 	<p>We recently updated <code>developers.cloudflare.com</code>, the Cloudflare Developers documentation website, to a new version of our custom documentation engine. This change consisted of a significant migration from Gatsby to Hugo and converged a collection of Workers Sites into a single Cloudflare Pages instance. Together, these updates brought developer experience, performance, and quality of life improvements for our engineers, technical writers, and product managers.</p>
@@ -20,7 +20,7 @@
 	<p>When we released the first version of our Docs Engine in mid-2020, we were excited about the facelift to our Developer Documentation site and the inclusion of dev-friendly features like dark mode and proper code syntax highlighting.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UuLEAsx9i6dC7g3ai0LA9/86e652d63aae58463c35d2fe88e7415a/image1-60.png" alt="Cloudflare’s Developer Documentation Engine using 1.0 with its updated design." class="kg-image" width="1999" height="1615" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UuLEAsx9i6dC7g3ai0LA9/b564d7bf89af2483abcf0f521f0a353f/image1-60.png" alt="Cloudflare’s Developer Documentation Engine using 1.0 with its updated design." class="kg-image" width="1999" height="1615" loading="lazy">
 
 	</figure>
 	<p>Most importantly, we also used this engine to transition <i>all</i> of Cloudflare’s products with documentation onto a single engine. This allowed all Cloudflare product documentation to be developed, built, and deployed using the same core foundation. But over the next eighteen months and thousands of PRs, we realized that many of the architecture decisions we had made were not scaling.</p>
@@ -138,12 +138,12 @@ export async function modify(file) {
 	<p>The last point speaks to our web pages’ performance, which has real-world implications. These days, websites with faster page-load times are preferred over competitor sites with slower response times. This is true for human and bot users alike! In fact, this is so true that Google now <a href="https://developer.chrome.com/blog/search-ads-speed">takes page speed into consideration</a> when ranking search results and offers tools like WebMasters and Lighthouse to help site owners track and improve their scores. Below, you can see the before-after comparison of our previous JS-first site to our HTML-first replacement:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FaGWaH2XlN9riYuoufZAQ/42917bf1e4b2e3785824ddd6991b1f84/image2-55.png" alt="The Lightouse result for the mobile Developer Documentation site while using Gatsby. The Performance score is a 55." class="kg-image" width="1496" height="1296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FaGWaH2XlN9riYuoufZAQ/5978df6bf6a6299b62e75f1606058e9d/image2-55.png" alt="The Lightouse result for the mobile Developer Documentation site while using Gatsby. The Performance score is a 55." class="kg-image" width="1496" height="1296" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60vizdQG71GVdLRHE12TyQ/cf03ab8bf9081837ad58fb448ccf7ffe/image3-40.png" alt="The Lighthouse result for the mobile Developer Documentation site after our updates. The Performance score is now a 99!" class="kg-image" width="1456" height="1256" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60vizdQG71GVdLRHE12TyQ/f832833af15e2bd6200f07a9033a94dd/image3-40.png" alt="The Lighthouse result for the mobile Developer Documentation site after our updates. The Performance score is now a 99!" class="kg-image" width="1456" height="1256" loading="lazy">
 
 	</figure>
 	<p>Here you can see that our <code>Performance</code> grade has significantly improved! It’s this figure, which is a weighted score of the Metrics like First Contentful Paint, that is tied to Page Speed. While this <i>does</i> have SEO impact, the <code>SEO</code> score in a Lighthouse report has to do with Google Crawler’s ability to parse and understand the page’s metadata. This remains unchanged because the content (and its metadata) were not changed as part of the migration.</p>

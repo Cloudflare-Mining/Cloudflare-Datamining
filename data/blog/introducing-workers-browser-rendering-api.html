@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CWhH5azsfebtFtAMmbDNN/12d0b93caafc8f6e23cca9a03975ef8c/Workers-Rendering-API.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CWhH5azsfebtFtAMmbDNN/fdcae6fa7e00bbfc16f009216494ce82/Workers-Rendering-API.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>If you’ve ever created a website that shows any kind of analytics, you’ve probably also thought about adding a “Save Image” or “Save as PDF” button to store and share results. This isn’t as easy as it seems (I can attest to this firsthand) and it’s not long before you go down a rabbit hole of trying 10 different libraries, hoping one will work.</p>
@@ -93,7 +93,7 @@ export default {
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote browser isolation technology</a> is an integral part of our <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust</a> product offering. Remote browser isolation lets users interact with a web browser that instead of running on the client’s device, runs in a remote environment. The Rendering API repurposes this under the hood!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vVRXYPzKbQekTnLyMRyW6/6e5e65a45976dfae0061100239b062c6/image2-32.png" alt="Rendering API architecture diagram" class="kg-image" width="1402" height="390" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vVRXYPzKbQekTnLyMRyW6/4df732b07e3b883341b40bc81826d1b2/image2-32.png" alt="Rendering API architecture diagram" class="kg-image" width="1402" height="390" loading="lazy">
 
 	</figure>
 	<p>We’ve wrapped the Puppeteer library so that it can be run directly from your own Worker. You can think of your Worker as the client. Each of Cloudflare’s data centers has a pool of warm browsers ready to go and when a Worker requests a browser, the browser is instantly returned and is connected to via a WebSocket. Once the WebSocket connection is established, our internal browser API Worker handles all communication to the browser session via the Chrome Devtools Protocol.</p>

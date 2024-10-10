@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/586NrhRaDhvMRqqpV5X8sp/90680731e710235957144c7462f19bec/image3-4.png" alt="" class="kg-image" width="1999" height="1043" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/586NrhRaDhvMRqqpV5X8sp/e934752bcc456e0b6a860f999dfa4c42/image3-4.png" alt="" class="kg-image" width="1999" height="1043" loading="lazy">
 
 	</figure>
 	<p>We recently migrated the CAPTCHA provider we use from Google's reCAPTCHA to a service provided by the independent hCaptcha. We're excited about this change because it helps address a privacy concern inherent to relying on a Google service that we've had for some time and also gives us more flexibility to customize the CAPTCHAs we show. Since this change potentially impacts all Cloudflare customers, we wanted to walk through the rationale in more detail.</p>
@@ -18,14 +18,14 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZzleadTrmvoAHqnbOYSIh/6e6c3cfd9aa26427622aad3b77a2e82b/image1-9.png" alt="" class="kg-image" width="1999" height="1026" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZzleadTrmvoAHqnbOYSIh/c2d99e3ae30b053f3e4004c4ed86f6be/image1-9.png" alt="" class="kg-image" width="1999" height="1026" loading="lazy">
 
 	</figure>
 	<p>One of the services Cloudflare provides is a way to block <a href="https://www.cloudflare.com/learning/bots/what-is-bot-traffic">malicious automated ("bot") traffic</a>. We use a number of techniques to accomplish that. When we are confident something is malicious bot activity we block it entirely. When we are confident it's good human traffic (or a good bot like a search engine crawler) then we let it through. But, sometimes, when we're not 100% sure if something is malicious or good we issue it a “challenge”.</p>
 	<p>We have different types of challenges, some are entirely automatic, but one requires human intervention. Those challenges are known as <a href="https://www.cloudflare.com/learning/bots/how-captchas-work">CAPTCHAs</a>. That's an acronym for Completely Automated Public Turing Test to Tell Computers and Humans Apart (a few Ts are dropped otherwise it'd be CAPTTTCHA). These are the prompts to enter squiggly letters in a box or identify traffic lights or cross walks. Generally, they're supposed to be something that's easy for humans to do but hard for machines.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rC4odqDfae4WAV1tIDYXd/2904d99e7992fb180260b9e0b76fa82f/image2-7.png" alt="" class="kg-image" width="1999" height="1465" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rC4odqDfae4WAV1tIDYXd/a99f805fe98fc7bf288b275bbde55ba4/image2-7.png" alt="" class="kg-image" width="1999" height="1465" loading="lazy">
 
 	</figure>
 	<p>Since Cloudflare's earliest days, we have used Google's reCAPTCHA service. ReCAPTCHA started as a research project out of Carnegie Mellon University in 2007. Google acquired the project in 2009, around the same time that Cloudflare was first getting started. Google provided reCAPTCHA for free in exchange for data from the service being used to train its visual identification systems. When we were looking for a CAPTCHA for Cloudflare, we chose reCAPTCHA because it was effective, could scale, and was offered for free — which was important since so many of Cloudflare's customers use our free service.</p>
@@ -104,7 +104,7 @@
 	<p>Whenever possible, please include the RayID that usually appears on the footer of the CAPTCHA page so we can track down what went wrong.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PzJKNivdvbBrD44OEP5eM/2efc05e10ed0fa65ee743186f670dffd/image4-8.png" alt="" class="kg-image" width="1668" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PzJKNivdvbBrD44OEP5eM/9e34ea294023466b4e7977dc4415ba47/image4-8.png" alt="" class="kg-image" width="1668" height="206" loading="lazy">
 
 	</figure>
 	<p>Over time, we believe visual (and audio) CAPTCHAs are an imperfect answer to a number of difficult problems. Cloudflare is continuing work to minimize and hopefully eventually eliminate altogether the number of CAPTCHAs we issue and we will be excited to share the results of that work in this blog as we move along. The name of our internal chat room for the team making this change isn’t New CAPTCHA, it’s (No)CAPTCHA.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FXneXWxAlSjkmdEfZwK8V/22f0cc286eb7b0cfb7a7d244aa095989/bootstrapping-a-typescript-worker.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FXneXWxAlSjkmdEfZwK8V/2c2463ed0721ef17fc7105cbe8cbf026/bootstrapping-a-typescript-worker.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm">Webstorm</a> and npm run upload your code straight to the edge.</p>
 	<div class="flex anchor relative">
@@ -109,7 +109,7 @@ Ran all test suites.
 	<p>A hello world implementation in Typescript might look something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iZzB5lable4vXw45e7HjV/865f6f333a2dcd512ddd1919ce525ca8/typescript-hello-world.png" alt="Hello world first attempt" class="kg-image" width="383" height="139" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iZzB5lable4vXw45e7HjV/7b56613bef3fa2565b776631cae4deda/typescript-hello-world.png" alt="Hello world first attempt" class="kg-image" width="383" height="139" loading="lazy">
 
 	</figure>
 	<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch">node-fetch</a> provides an implementation for node, so let’s install that.</p>
@@ -118,7 +118,7 @@ npm install @types/node-fetch</code></pre>
 	<p>That made Webstorm happier. It’s been able to locate the type definitions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79lrvSbwWcbZMWH2Q93vJk/9e0a753fe06d2628a9e97d8965982231/typescript-hello-world2.png" alt="Hello world with type defs" class="kg-image" width="444" height="149" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79lrvSbwWcbZMWH2Q93vJk/bf5dd88ad97663d1be28c11f214916bb/typescript-hello-world2.png" alt="Hello world with type defs" class="kg-image" width="444" height="149" loading="lazy">
 
 	</figure>
 	<p>Now let's write a test. Create a new file <b>tests</b>/worker-spec.ts:</p>
@@ -177,19 +177,19 @@ exports.Worker = Worker;</code></pre>
 	<p>Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6H2ZEwr9QfXdCxE7Ai7kOs/273801a5ceb5eba3b05b4024f9dc66e0/workers-dashboard.png" alt="Workers Dashboard" class="kg-image" width="988" height="557" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6H2ZEwr9QfXdCxE7Ai7kOs/a5d2edbd452afcc5898a3adcb2ba211f/workers-dashboard.png" alt="Workers Dashboard" class="kg-image" width="988" height="557" loading="lazy">
 
 	</figure>
 	<p>First things first, check the canonical Hello World implementation works.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YHeN0MBVI3oGNznabkxvl/5a840b8ef2d908a41172c95c14207ec5/hello-world-ide.png" alt="Hello world in IDE" class="kg-image" width="1033" height="210" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YHeN0MBVI3oGNznabkxvl/53eb88bb32ed71bb81fdd47d5a973f83/hello-world-ide.png" alt="Hello world in IDE" class="kg-image" width="1033" height="210" loading="lazy">
 
 	</figure>
 	<p>Awesome, now let's replace it with our "transpiled from Typescript" version:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lIHef0I92E8ZoIlza2hdT/ed3226687a0834e73255341efccf3d6a/fail1.png" alt="Fail 1" class="kg-image" width="452" height="370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lIHef0I92E8ZoIlza2hdT/6dfb9fb0677b08341719b38552795cfc/fail1.png" alt="Fail 1" class="kg-image" width="452" height="370" loading="lazy">
 
 	</figure>
 	<p>Fail. OK, so the out of the box "transpiled from typescript" is not going to work. Let's make the changes necessary to get it run manually, then incorporate that into the build process.</p>
@@ -209,7 +209,7 @@ exports.Worker = Worker;</code></pre>
 	<p>Success!!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HVd2qR7Uhmbrfnd1doTZN/11a84a0e484c82caddde9352efd22293/hello-world-success.png" alt="Success" class="kg-image" width="752" height="381" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HVd2qR7Uhmbrfnd1doTZN/6461c7eb9afbd15ca4e27e02ccbb8cd3/hello-world-success.png" alt="Success" class="kg-image" width="752" height="381" loading="lazy">
 
 	</figure>
 	<p>OK, so with some massaging, we got a Worker transpiled from Typescript to execute. We:</p>
@@ -497,13 +497,13 @@ CF_WORKER_PATH=build/worker.js</code></pre>
 	<p>To locate your zone ID and auth key, go to the dashboard, select your zone and click the "Overview" icon.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39GyjeFWomLYOQ1LUjNg5E/a0eccb0bae567103c5866af35d0c110b/overview.png" alt="Overview" class="kg-image" width="484" height="219" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39GyjeFWomLYOQ1LUjNg5E/b1625fcce903fd56d053d034074f9d71/overview.png" alt="Overview" class="kg-image" width="484" height="219" loading="lazy">
 
 	</figure>
 	<p>The zone ID is right there, then click "Get API key" and choose the "Global API Key" to get the Auth Key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o5LTjxiyp74BEDsmNLt4p/97b7431136417fd08948c54043dc3f30/api-key.png" alt="API key" class="kg-image" width="936" height="191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3o5LTjxiyp74BEDsmNLt4p/a91ea533cff106348d4fafb4845cdbdc/api-key.png" alt="API key" class="kg-image" width="936" height="191" loading="lazy">
 
 	</figure>
 	<p>Fill out your .env with those values and then add the following to your Gruntfile which will:</p>
@@ -641,7 +641,7 @@ Status: Success
 	<p>Hmmm... nothing. Ah, we haven't actually configured Workers to route any requests to our Worker. You can do this via the API, but since it's a one off, I'll do it in the web IDE.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cOmAOF6ivdau7cpgr8VEF/354f046fed41c07cc4c44c1b5162468b/routes.png" alt="Add routes" class="kg-image" width="776" height="446" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cOmAOF6ivdau7cpgr8VEF/6fd51e85e26d9d0e7309e599c677a78c/routes.png" alt="Add routes" class="kg-image" width="776" height="446" loading="lazy">
 
 	</figure>
 	<p>And try again:</p>

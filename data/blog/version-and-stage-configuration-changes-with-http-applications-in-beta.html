@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/uHwCFeawx2DxDeztCqngJ/0f7d9fa19a12efa39b2158024e5161a3/image7-9.png" alt="Version and Stage Configuration Changes with HTTP Applications in Beta" class="kg-image" width="1200" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uHwCFeawx2DxDeztCqngJ/0dbc28566b8a3900228c4a0561bba4c1/image7-9.png" alt="Version and Stage Configuration Changes with HTTP Applications in Beta" class="kg-image" width="1200" height="676" loading="lazy">
 
 	</figure>
 	<p>Today, we are announcing a closed beta of HTTP Applications: a new way to safely test and deploy changes to your HTTP traffic. HTTP Applications introduce versioning of configuration and the ability to control when changes rollout to HTTP traffic on Cloudflare’s global edge network. Enterprise customers looking for greater control should reach out to their Customer Success Manager to get access.</p>
@@ -59,90 +59,90 @@
 	<p>First, I log into the Cloudflare Dashboard. After selecting my account, I see HTTP Applications available in the sidebar. Upon selecting that, I am given the option to create my first HTTP Application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Nd7yCSBQjOJ8m1GJKxeBi/788c176746d069fa4985e2ef26c1f22f/image9-2.png" alt="The Cloudflare Dashboard showing the empty state page for HTTP Applications" class="kg-image" width="1440" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Nd7yCSBQjOJ8m1GJKxeBi/ea7cd4f48ef2625a0047fead77758146/image9-2.png" alt="The Cloudflare Dashboard showing the empty state page for HTTP Applications" class="kg-image" width="1440" height="1024" loading="lazy">
 
 	</figure>
 	<p>The Cloudflare Dashboard showing the empty state page for HTTP Applications</p>
 	<p>To create my first HTTP Application, I need to give it a name and select a pre-existing zone, in this case example.com. Cloudflare will use that zone to initialize the configuration of the HTTP Application’s first version. By copying over the existing settings from the zone, I have a safe copy to work from, and I don’t need to rebuild the configuration manually.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XyZ5d6ChNq8iErjbLMY09/c549229cd4f745209d200a4cfb1861da/image4-26.png" alt="The “Create an Application” screen showing that an HTTP Application will be created named “Example Application” and initialized from example.com." class="kg-image" width="1440" height="1203" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XyZ5d6ChNq8iErjbLMY09/7acc911cec6786070783734f64f2c4dc/image4-26.png" alt="The “Create an Application” screen showing that an HTTP Application will be created named “Example Application” and initialized from example.com." class="kg-image" width="1440" height="1203" loading="lazy">
 
 	</figure>
 	<p>The “Create an Application” screen showing that an HTTP Application will be created named “Example Application” and initialized from example.com.</p>
 	<p>After selecting create, I have my first HTTP Application! Now, the first version is in the process of being created. Behind the scenes, Cloudflare will take the existing configuration of example.com and copy it to Version 1 of this HTTP Application. Once successfully copied, I can begin making edits to the configuration.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WFILRdVat2nT78zgcMd5F/a072d06a7758c7868717a860ca719bf0/image6-15.png" alt="The Version list of the Example Application, showing Version 1 being created." class="kg-image" width="1999" height="1422" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WFILRdVat2nT78zgcMd5F/47f17f72a8c6acb502a441f4e3b947f5/image6-15.png" alt="The Version list of the Example Application, showing Version 1 being created." class="kg-image" width="1999" height="1422" loading="lazy">
 
 	</figure>
 	<p>The Version list of the Example Application, showing Version 1 being created.</p>
 	<p>I can make edits to this version, just like I would with any zone. There are two important distinctions, however. First: any change I make right now will not affect any live traffic at Cloudflare’s edge, because we have not yet created any routing rules to send traffic to this version’s configuration. Second: we don’t allow everything associated with a zone to be controlled via an HTTP Application, namely: DNS records, SSL Certificates, Spectrum, or Load Balancing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BRn4GFKdQK8mIXZ6YPeSa/d06094c7ccd817b5d7438c969a450545/image8-8.png" alt="Transform rules of Version 1 showing no rules have been created." class="kg-image" width="1440" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BRn4GFKdQK8mIXZ6YPeSa/c87dc956111f59181770998c2dea6747/image8-8.png" alt="Transform rules of Version 1 showing no rules have been created." class="kg-image" width="1440" height="1024" loading="lazy">
 
 	</figure>
 	<p>Transform rules of Version 1 showing no rules have been created.</p>
 	<p>In the Rules section under <a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">Transform Rules</a>, I create a new rule to rewrite the path of assets to their correct location. For any request to <code>example.com/assets/*</code>, we will rewrite the path to be <code>example.com/internal/files/assets/*</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IOkrSZpo2qzsaJGQgx6FX/4553438fb3da24bd59d315b2ee4145e0/image13.png" alt="Creating a transform rule for Version 1 named “Rewrite Assets”. This rule replaces the path for requests starting with “/assets/” with “internal/files/assets/”." class="kg-image" width="1440" height="1393" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IOkrSZpo2qzsaJGQgx6FX/54036e3f872ea97d65555784111e87e1/image13.png" alt="Creating a transform rule for Version 1 named “Rewrite Assets”. This rule replaces the path for requests starting with “/assets/” with “internal/files/assets/”." class="kg-image" width="1440" height="1393" loading="lazy">
 
 	</figure>
 	<p>Creating a transform rule for Version 1 named “Rewrite Assets”. This rule replaces the path for requests starting with “/assets/*” with “internal/files/assets/*”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bSyIcAlnKfZgYrxUqToMp/ea35557d5784dd4d765d00887e64a474/image8-10.png" alt="Transform rules of Version 1 showing a new rule named “Rewrite Assets” has been created." class="kg-image" width="1440" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bSyIcAlnKfZgYrxUqToMp/6c56883f7b7025311b622608f5c38589/image8-10.png" alt="Transform rules of Version 1 showing a new rule named “Rewrite Assets” has been created." class="kg-image" width="1440" height="1024" loading="lazy">
 
 	</figure>
 	<p>Transform rules of Version 1 showing a new rule named “Rewrite Assets” has been created.</p>
 	<p>At this point, I have made my change, but now I want to test it. To do that, I can leave the version editing section and head over to Routing Rules for this HTTP Application. Here I can create rules that will allow my existing traffic to be routed through this version’s configuration.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68azYVx9EQe6VLE65dNZPu/d8164bce4ca3e259ddeaf6545c1e8f7d/image12-3.png" alt="An empty list of Routing Rules for the Example Application." class="kg-image" width="1999" height="1422" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68azYVx9EQe6VLE65dNZPu/26577b088b21188c3f8e7c448e8a5cf0/image12-3.png" alt="An empty list of Routing Rules for the Example Application." class="kg-image" width="1999" height="1422" loading="lazy">
 
 	</figure>
 	<p>An empty list of Routing Rules for the Example Application.</p>
 	<p>I will create a staging rule, as I want to be the only one testing these changes without affecting any customers. Note, that when creating a staging rule, the IPs that can be used to test this version will be shown in the rule creation screen.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tRvch04hvhXofPwAkArEF/853c47d7d0002fbc9270572546cd65bb/image5-15.png" alt="Creating a staging Routing Rule that will match when requests match example.com and the edge IP is 192.168.1.1 or 192.168.2.2 and apply the configuration of Version 1" class="kg-image" width="1999" height="1551" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tRvch04hvhXofPwAkArEF/73a8ed140d068076a677007e934fc2a8/image5-15.png" alt="Creating a staging Routing Rule that will match when requests match example.com and the edge IP is 192.168.1.1 or 192.168.2.2 and apply the configuration of Version 1" class="kg-image" width="1999" height="1551" loading="lazy">
 
 	</figure>
 	<p>Creating a staging Routing Rule that will match when requests match example.com and the edge IP is 192.168.1.1 or 192.168.2.2 and apply the configuration of Version 1</p>
 	<p>After creating the rule, I can configure my computer to send requests to those IPs for example.com. Rackspace has a <a href="https://docs.rackspace.com/support/how-to/modify-your-hosts-file">comprehensive guide</a> for how to change your local machine’s host file to do this. Now, when I visit example.com, the new transform rule is executed, but for everyone else visiting the site, nothing has changed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MtOYdPSjloi85alwvPYIo/4a1ae660ae4bf703f0e9f473606b1b40/image10-3.png" alt="Routing Rules for the Example Application showing one rule for staging has been created." class="kg-image" width="1440" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MtOYdPSjloi85alwvPYIo/0b7c69d1c844de0febf006fa38050592/image10-3.png" alt="Routing Rules for the Example Application showing one rule for staging has been created." class="kg-image" width="1440" height="1024" loading="lazy">
 
 	</figure>
 	<p>Routing Rules for the Example Application showing one rule for staging has been created.</p>
 	<p>Once I’m confident that my changes work, I can create a production Routing Rule that will apply these changes for all traffic to example.com — and I am done!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Mm3VFMhazKLwRXoDkyZC0/fe08b0a4a834efd5a5bf9c69eb25df00/image3-30.png" alt="Routing Rule creation screen showing the creation of a production rule that will apply Version 1 when requests match example.com" class="kg-image" width="1999" height="1551" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Mm3VFMhazKLwRXoDkyZC0/de0d34b90121b249fa27e16c7ce7f4a3/image3-30.png" alt="Routing Rule creation screen showing the creation of a production rule that will apply Version 1 when requests match example.com" class="kg-image" width="1999" height="1551" loading="lazy">
 
 	</figure>
 	<p>Routing Rule creation screen showing the creation of a production rule that will apply Version 1 when requests match example.com</p>
 	<p>Once updated, the path to assets for my site will be rewritten for all requests to <code><i>example.com</i></code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25SLXGcLHJdpAEv72gdtsy/c1acb611efa75f35e8ebcbb97e1a4d5f/image1-61.png" alt="Routing Rules for the Example Application showing both a staging and production rule for Version 1." class="kg-image" width="1440" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25SLXGcLHJdpAEv72gdtsy/71cabaeea463164f387375d91b91dbb9/image1-61.png" alt="Routing Rules for the Example Application showing both a staging and production rule for Version 1." class="kg-image" width="1440" height="1024" loading="lazy">
 
 	</figure>
 	<p>Routing Rules for the Example Application showing both a staging and production rule for Version 1.</p>
 	<p>What happens next? When I am ready to make another set of changes, I can go to my HTTP Application and clone Version 1 to create Version 2. Initially, Version 2 will exactly match the configuration of Version 1 but since it has no matching Routing Rules, it won’t be applied to any traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LAzLL9J0HlpOEED5SCkYw/8caea2ff392708880b056b8907743158/image11-3.png" alt="The list of versions for the Example Application showing Version 1 being applied to staging and production, and Version 2 ready to edit, but not being used anywhere." class="kg-image" width="1999" height="1422" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LAzLL9J0HlpOEED5SCkYw/18a45edb600b3fc7ab597935b7a4f82a/image11-3.png" alt="The list of versions for the Example Application showing Version 1 being applied to staging and production, and Version 2 ready to edit, but not being used anywhere." class="kg-image" width="1999" height="1422" loading="lazy">
 
 	</figure>
 	<p>The list of versions for the Example Application showing Version 1 being applied to staging and production, and Version 2 ready to edit, but not being used anywhere.</p>
 	<p>I can now safely edit Version 2, like I did previously with Version 1. This time I want to make some changes to firewall rules, so that I can prevent some potentially malicious traffic from accessing my site. Making the changes in Version 2 will not modify any traffic at the edge until I update my staging Routing Rule to use Version 2. This allows me to make changes with confidence, and then safely test them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Fn5gR3WRYZCtxAFdqCtvE/de574a71b1d34a60834c8ba435c6a056/image2-46.png" alt="The list of routing rules for the Example Application showing Version 2 being used for staging, while Version 1 is still used in production." class="kg-image" width="1440" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Fn5gR3WRYZCtxAFdqCtvE/26253d3f18921f4dc7078652929738ef/image2-46.png" alt="The list of routing rules for the Example Application showing Version 2 being used for staging, while Version 1 is still used in production." class="kg-image" width="1440" height="1024" loading="lazy">
 
 	</figure>
 	<p>The list of routing rules for the Example Application showing Version 2 being used for staging, while Version 1 is still used in production.</p>

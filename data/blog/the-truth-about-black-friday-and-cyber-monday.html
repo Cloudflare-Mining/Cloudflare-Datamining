@@ -1,16 +1,16 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gcIl8KPw9QtjtOmSQatTr/ba922fe4a3179274eb2ef2253b2a1b1b/the-truth-about-black-friday-and-cyber-monday.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gcIl8KPw9QtjtOmSQatTr/81a7fbd145d109b161abd9fccd2340f7/the-truth-about-black-friday-and-cyber-monday.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we handle a lot of traffic on behalf of our customers. Something we all see and hear a lot about at this time of year are Black Friday (23 November this year) and Cyber Monday (26 November) - but just how important are these days on the Internet?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CdCcJWms9KfhkHVoS8obS/f4be436760e4d5997076096d5c579f08/15894285291_b73d2af904_k-2.jpg" alt="" class="kg-image" width="2000" height="1494" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CdCcJWms9KfhkHVoS8obS/938d6625acf464be16dd9b5e7692f685/15894285291_b73d2af904_k-2.jpg" alt="" class="kg-image" width="2000" height="1494" loading="lazy">
 
 	</figure>
 	<p>Black Friday by <a href="https://www.flickr.com/photos/perolofforsberg">Per-Olof Forsberg</a>, license: <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></p>
 	<p>To try and answer this question, we took a look at anonymised samples of HTTP requests crossing our network. First of all, let’s look at total page views from across our global network from the last few weeks and see if we can spot Black Friday and Cyber Monday:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FhmseKPIpDhYFvNE0fqOn/4c62590e6ddc59941e51094b68eb8e33/all_page_views_black_friday_cyber_monday_utc-1.png" alt="" class="kg-image" width="1205" height="329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FhmseKPIpDhYFvNE0fqOn/cfa7beda1f5fde5b49d4c760d8497f13/all_page_views_black_friday_cyber_monday_utc-1.png" alt="" class="kg-image" width="1205" height="329" loading="lazy">
 
 	</figure>
 	<p>All page views</p>
@@ -27,14 +27,14 @@
 	<p>Here are the page views for these ecommerce sites over the same time period:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6En6Ly7MNHWzu5zhvLHNzr/e2547616a98e31e5e536ba94610cedd9/ecommerce_page_views_black_friday_cyber_monday_utc.png" alt="" class="kg-image" width="1203" height="318" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6En6Ly7MNHWzu5zhvLHNzr/763c7a846c0dbc998396b91810a3d070/ecommerce_page_views_black_friday_cyber_monday_utc.png" alt="" class="kg-image" width="1203" height="318" loading="lazy">
 
 	</figure>
 	<p>Ecommerce page views</p>
 	<p>So we can see clearly that our <a href="https://www.cloudflare.com/ecommerce">ecommerce customers</a> are seeing a big increase in page views on November 23 and 26. Black Friday and Cyber Monday are most certainly a thing. This year Black Friday was quite a bit busier than Cyber Monday - around 22% busier in terms of page views. If we compare the page views of each day to the week prior, we can see the changes clearly:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xC7tSp6bWyMWTNXa4C4MI/5798ca0aec9317bc931ae0e01d192764/page_views_black_friday_cyber_monday_prior_week_comparison_utc.png" alt="" class="kg-image" width="1199" height="325" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xC7tSp6bWyMWTNXa4C4MI/9bceb6fa2bc3f6d2391b92b73f5d290e/page_views_black_friday_cyber_monday_prior_week_comparison_utc.png" alt="" class="kg-image" width="1199" height="325" loading="lazy">
 
 	</figure>
 	<p>% page view change vs previous week</p>
@@ -51,7 +51,7 @@
 	<p>We’re dealing with trillions of requests across a really large data set of different websites without any specific knowledge of what a purchase transaction would look like for each - so to approximate this I took a crude approach, which is to look for successful checkout interactions in the data. If you imagine a typical ecommerce application makes a purchase with a HTTP request like “POST /store/checkout HTTP/1.1” we can look for requests similar to this to understand the activity.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/e14XnD1aGOZXbdleVqdo2/13bb08c213dba98965182d5e2a3775e6/checkout_interaction_black_friday_cyber_monday_prior_week_comparison_utc.png" alt="" class="kg-image" width="1203" height="333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/e14XnD1aGOZXbdleVqdo2/95ae4b72b586605876078a33a53cba25/checkout_interaction_black_friday_cyber_monday_prior_week_comparison_utc.png" alt="" class="kg-image" width="1203" height="333" loading="lazy">
 
 	</figure>
 	<p>% of checkout interactions vs prior week</p>
@@ -59,7 +59,7 @@
 	<p>Using this raw number of checkout interactions to compare with the page views we have something approximating a conversion %. This is not a true conversion figure - calculating a true conversion figure would require data that identifies individuals and detailed action tracking for each website. What we have is the total number of page views (HTTP requests that return HTML successfully) compared to the total number of POST requests to a checkout. This gives us a baseline to compare changes in “conversion” over these big November shopping days:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52Mr9YjKoGVvdq2pavrx6A/b8469e314978749684ef1d39bb119420/checkout_interaction_as_percentage_of_page_views_black_friday_cyber_monday_prior_week_comparison_utc.png" alt="" class="kg-image" width="1203" height="324" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52Mr9YjKoGVvdq2pavrx6A/a48394c8bcb8ce02bed6505677eb881a/checkout_interaction_as_percentage_of_page_views_black_friday_cyber_monday_prior_week_comparison_utc.png" alt="" class="kg-image" width="1203" height="324" loading="lazy">
 
 	</figure>
 	<p>% of checkout interactions / page views vs prior week</p>
@@ -76,21 +76,21 @@
 	<p>What we see here is just how much more browsing people do on mobiles today vs desktop, with mobile winning most days:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SXxZ4SEd2S8TIoAANXeNg/363d43fba595aee66c36bd9d0cc18fa7/page_views_by_device_type_black_friday_cyber_monday_utc.png" alt="" class="kg-image" width="1254" height="329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SXxZ4SEd2S8TIoAANXeNg/99a1fe2e2ec68a1e5e99debeede1694f/page_views_by_device_type_black_friday_cyber_monday_utc.png" alt="" class="kg-image" width="1254" height="329" loading="lazy">
 
 	</figure>
 	<p>Page Views by Device Type</p>
 	<p>When it comes to checkout interactions though, we can see the situation is switched with visitors more likely to interact with the checkout on a desktop overall, but even more so on Black Friday (14% more likely) and Cyber Monday (20% more likely).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AT2Ig9vnQWZwgnoRt9iHx/16de5cb80e006ba416d259b2ed6f240c/checkout_interaction_by_device_type_as_percentage_of_page_views_black_friday_cyber_monday_utc.png" alt="" class="kg-image" width="1259" height="317" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AT2Ig9vnQWZwgnoRt9iHx/1548111f5f18ebfdb37595c3240513c9/checkout_interaction_by_device_type_as_percentage_of_page_views_black_friday_cyber_monday_utc.png" alt="" class="kg-image" width="1259" height="317" loading="lazy">
 
 	</figure>
 	<p>Checkout Interaction as % of Page Views</p>
 	<p>Let’s look at a specific region to understand more, starting with the US:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MNHlkz9LG0NHrjides5bB/9d767ab51a53f4595227caea0d2b2a29/usa_black_friday_cyber_monday_page_views_pst.png" alt="" class="kg-image" width="1263" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MNHlkz9LG0NHrjides5bB/e904a148d6e36b5d4ddf6be3d1faa15c/usa_black_friday_cyber_monday_page_views_pst.png" alt="" class="kg-image" width="1263" height="332" loading="lazy">
 
 	</figure>
 	<p>USA Page Views (PST)</p>
@@ -99,7 +99,7 @@
 	<p>Let's take a look at checkout interaction over the Black Friday to Cyber Monday weekend by device type.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/240tKTStoBAVPrvsNPI6ct/f36ba4c9c4e9948b62541e7ced6df92f/usa_black_friday_cyber_monday_checkout_interaction_percentage_by_device_type_pst.png" alt="" class="kg-image" width="1279" height="323" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/240tKTStoBAVPrvsNPI6ct/5431367a6989f0d836cdacce7821fbd7/usa_black_friday_cyber_monday_checkout_interaction_percentage_by_device_type_pst.png" alt="" class="kg-image" width="1279" height="323" loading="lazy">
 
 	</figure>
 	<p>USA Checkout Interaction % (PST)</p>
@@ -115,14 +115,14 @@
 	<p>It might be obvious if you’re reading this from the UK, but despite the fact that Thanksgiving is not a holiday here, retailers have very much picked up the mantle from US retailers and seized the opportunity to drive sales over this weekend.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10DVGES8qxwWCJRpLktybt/61c3d03c56e6f11b6dceabede52250f3/uk_black_friday_cyber_monday_page_views_utc.png" alt="" class="kg-image" width="1265" height="331" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10DVGES8qxwWCJRpLktybt/a53651260d0f3748bb89fd7de9f9c485/uk_black_friday_cyber_monday_page_views_utc.png" alt="" class="kg-image" width="1265" height="331" loading="lazy">
 
 	</figure>
 	<p>UK Page Views (UTC)</p>
 	<p>Page views to ecommerce websites on Cloudflare look very similar in shape to the US on Black Friday. However, mobile is more dominant in the UK, even during working hours. It’s worth noting one big difference here - Cyber Monday in the UK was only 22% up in terms of page views compared to the prior Monday - in the US the increase was more than 4x that.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uX8Wt5UWFDEYLhEXJ1Htm/af39530faee1d22e4061615643a3da8a/uk_checkout_interaction_as_percentage_of_page_views_utc.png" alt="" class="kg-image" width="1250" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uX8Wt5UWFDEYLhEXJ1Htm/fd5253c0919f8aea3805d46c6476c00c/uk_checkout_interaction_as_percentage_of_page_views_utc.png" alt="" class="kg-image" width="1250" height="332" loading="lazy">
 
 	</figure>
 	<p>UK Checkout Interaction as % of Page Views</p>
@@ -130,7 +130,7 @@
 	<p>Taking Germany as another example, here’s how page views look:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18g6BZETsanoJr838h9A3J/826e2c632ed54246ef11fe6ae9c5d6dc/germany_black_friday_cyber_monday_page_views_cet.png" alt="" class="kg-image" width="1277" height="317" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18g6BZETsanoJr838h9A3J/05e2cef6eeff99b29eca64ca69e00ade/germany_black_friday_cyber_monday_page_views_cet.png" alt="" class="kg-image" width="1277" height="317" loading="lazy">
 
 	</figure>
 	<p>Germany Page Views (CET)</p>

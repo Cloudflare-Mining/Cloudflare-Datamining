@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2A1vrFJotzsKPMJxmJdOON/a8f1199721c2f8f4c66fc140a8ab6cb9/rakelimit.jpg" alt="" class="kg-image" width="1999" height="1028" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2A1vrFJotzsKPMJxmJdOON/81b2292df9631836d592585149fbef25/rakelimit.jpg" alt="" class="kg-image" width="1999" height="1028" loading="lazy">
 
 	</figure>
 	<p>Cloudflare has sophisticated DDoS attack mitigation systems with multiple layers to provide defense in depth. Some of these layers analyse large-scale traffic patterns to detect and mitigate attacks. Other layers are more protocol- and application-specific, in order to stop attacks that might be hard to detect from overall traffic patterns. In some cases, the best place to detect and stop an attack is in the service itself.</p>
@@ -43,14 +43,14 @@
 	<p>Luckily the academic world has us covered again, with the concept of <i>Hierarchical Heavy Hitters.</i> It extends the <i>Heavy Hitter</i> concept by using the underlying hierarchy in the elements of the stream. For example, an IP address can be naturally grouped into several subnets:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IPwA0tN0c6pOFMK5B2AT8/b60fb827d6450a502cae0765543d157a/0B429C7C-869C-4517-9B95-C90600943486.png" alt="" class="kg-image" width="631" height="102" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IPwA0tN0c6pOFMK5B2AT8/9101b971c3a69277a79b03a473e936ec/0B429C7C-869C-4517-9B95-C90600943486.png" alt="" class="kg-image" width="631" height="102" loading="lazy">
 
 	</figure>
 	<p>In this case we defined that we consider the fully-specified address, the /24 subnet and the /0 wildcard. We start at the left with the fully specified address, and each step walking towards the top we consider less information from it. We call these less-specific addresses generalisations, and measure how specific a generalisation is by assigning a level. In our example, the address 192.0.2.123 is at level 0, while 192.0.2.0/24 is at level 1, etc.</p>
 	<p>If we want to create a structure which can hold this information for every packet, it could look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lqAfAxLDrXwIgtQJ1Hm0/f4f2ca79a40847c5f176c83484271806/F4B2AA4A-4868-4E56-891A-6C19E0CACBA4.png" alt="" class="kg-image" width="286" height="357" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lqAfAxLDrXwIgtQJ1Hm0/b37c644442d0f0e91ef38725929cb5ef/F4B2AA4A-4868-4E56-891A-6C19E0CACBA4.png" alt="" class="kg-image" width="286" height="357" loading="lazy">
 
 	</figure>
 	<p>We maintain a CountMin-sketch per subnet and then apply Heavy Hitters. When a new packet arrives and we need to determine if it is allowed to pass we simply check the rates of the corresponding elements in every node. If no rate exceeds the rate limit that we set, e.g. 25 packets per second (<i>pps</i>), it is allowed to pass.</p>
@@ -58,14 +58,14 @@
 	<p>Now our structure looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EowltLQdppI0JmX9TtKFU/0b82b75d37f0c1239c3077b6341878a5/5D94D469-B2F3-48CD-918C-202B8C426B19.png" alt="" class="kg-image" width="624" height="256" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EowltLQdppI0JmX9TtKFU/f20d98ae5469b518897e4d9c621f5ab9/5D94D469-B2F3-48CD-918C-202B8C426B19.png" alt="" class="kg-image" width="624" height="256" loading="lazy">
 
 	</figure>
 	<p>Now let’s talk about the algorithm we use to traverse the structure and determine if a packet should be allowed to pass. The paper <i>Hierarchical Heavy Hitters with SpaceSaving algorithm</i> provides two methods that can be used on the data structure: one that updates elements and increases their counters, and one that provides all elements that currently are <i>Heavy Hitters</i>. This is actually not necessary for our use-case, as we are only interested if the element, or packet, we are looking at right now would be a <i>Heavy Hitter</i> to decide if it can pass or not.</p>
 	<p>Secondly, our goal is to prevent any Heavy Hitters from passing, thus leaving the structure with no _Heavy Hitter_s whatsoever. This is a great property, as it allows us to simplify the algorithm substantially, and it looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gXxGnRtWTU6jorXm6538i/abad44ac2faf0c5b850e30d4e21b1b53/A41D5CB1-5C6B-4378-B496-7B38E22DE0F7.png" alt="" class="kg-image" width="891" height="299" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gXxGnRtWTU6jorXm6538i/4c9c62fc80edffcf2ac2a4b2e2918292/A41D5CB1-5C6B-4378-B496-7B38E22DE0F7.png" alt="" class="kg-image" width="891" height="299" loading="lazy">
 
 	</figure>
 	<p>As you may notice, we update every node of a level and maintain the maximum rate we see. After each level we calculate a probability that determines if a packet should be passed to the next level, based on the maximum rate we saw on that level and a set rate limit. Each node essentially filters the traffic for the following, less specific level.</p>

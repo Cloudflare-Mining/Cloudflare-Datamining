@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/analysis-of-todays-centurylink-level-3-outage">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/analysis-of-todays-centurylink-level-3-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/analysis-of-todays-centurylink-level-3-outage">日本語</a>, <a href="https://blog.cloudflare.com/es-es/analysis-of-todays-centurylink-level-3-outage">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/analysis-of-todays-centurylink-level-3-outage">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nsX8J6T5JObTBYKWf1sLF/d40318864fff3a4f44c87aa21934c161/analysis-of-todays-centurylink-level-3-outage.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/analysis-of-todays-centurylink-level-3-outage">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/analysis-of-todays-centurylink-level-3-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/analysis-of-todays-centurylink-level-3-outage">日本語</a>, <a href="https://blog.cloudflare.com/es-es/analysis-of-todays-centurylink-level-3-outage">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/analysis-of-todays-centurylink-level-3-outage">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nsX8J6T5JObTBYKWf1sLF/4d97c8220fb534384e00351a47583687/analysis-of-todays-centurylink-level-3-outage.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today CenturyLink/Level(3), a major ISP and Internet bandwidth provider, experienced a significant outage that impacted some of Cloudflare’s customers as well as a significant number of other services and providers across the Internet. While we’re waiting for a postmortem from CenturyLink/Level(3), I wanted to write up the timeline of what we saw, how Cloudflare’s systems routed around the problem, why some of our customers were still impacted in spite of our mitigations, and what appears to be the likely root cause of the issue.</p>
 	<div class="flex anchor relative">
@@ -14,7 +14,7 @@
 	<p>Cloudflare is connected to CenturyLink/Level(3) among a large and diverse set of network providers. When we see an increase in errors from one network provider, our systems automatically attempt to reach customers’ applications across alternative providers. Given the number of providers we have access to, we are generally able to continue to route traffic even when one provider has an issue.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Ucm3D0MTr0jFICxEASaRY/9336a626cad3523be19c85f82884a206/1-3.png" alt="" class="kg-image" width="1462" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Ucm3D0MTr0jFICxEASaRY/4eb5c93e58c69dba68a9397dafed9dd7/1-3.png" alt="" class="kg-image" width="1462" height="936" loading="lazy">
 
 	</figure>
 	<p>The diverse set of network providers Cloudflare connects to. Source: <a href="https://bgp.he.net/AS13335#_asinfo">https://bgp.he.net/AS13335#_asinfo</a>‌‌</p>
@@ -30,21 +30,21 @@
 	<p>Our Network Operations Center was also alerted and our team began taking additional steps to mitigate any issues our automated systems weren’t automatically able to address beginning at 10:09 UTC. We were successful in keeping traffic flowing across our network for most customers and end users even with the loss of CenturyLink/Level(3) as one of our network providers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IaqqA25SioJLk6FRblsgn/5ea254308286447d8ec0134eb54d517c/2-1.png" alt="" class="kg-image" width="1600" height="1174" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IaqqA25SioJLk6FRblsgn/a653c09f9c03ea1975100cd4f0372789/2-1.png" alt="" class="kg-image" width="1600" height="1174" loading="lazy">
 
 	</figure>
 	<p>Dashboard Cloudflare’s automated systems recognizing the damage to the Internet caused by the CenturyLink/Level(3) failure and automatically routing around it.</p>
 	<p>The graph below shows traffic between Cloudflare’s network and six major tier-1 networks that are among the network providers we connect to. The red portion shows CenturyLink/Level(3) traffic, which dropped to near-zero during the incident. You can also see how we automatically shifted traffic to other network providers during the incident to mitigate the impact and ensure traffic continued to flow.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gRbJZ7VJViIBe1zJ9mbC6/4ae08df73dbc0979adec4788165e1ffa/3-2.png" alt="" class="kg-image" width="1510" height="319" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gRbJZ7VJViIBe1zJ9mbC6/6154af99efaa90c4e8f5537848360b77/3-2.png" alt="" class="kg-image" width="1510" height="319" loading="lazy">
 
 	</figure>
 	<p>Traffic across six major tier-1 networks that are among the network providers Cloudflare connects to. CenturyLink/Level(3) in red.</p>
 	<p>The following graph shows 522 errors (indicating our inability to reach customers’ applications) across our network during the time of the incident.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AcGLxXmSoDEtjAKB4thEQ/166512641ad5c2d3d5bb4b4b9b0508ca/4-2.png" alt="" class="kg-image" width="1428" height="880" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AcGLxXmSoDEtjAKB4thEQ/44b93339570b58ed8e5d2e57ba21d749/4-2.png" alt="" class="kg-image" width="1428" height="880" loading="lazy">
 
 	</figure>
 	<p>The sharp spike up at 10:03 UTC was the CenturyLink/Level(3) network failing. Our automated systems immediately kicked in to attempt to reroute and rebalance traffic across alternative network providers, causing the errors to drop in half immediately and then fall to approximately 25 percent of the peak as those paths were automatically optimized.</p>
@@ -62,7 +62,7 @@
 	<p>The same was a problem on the other (“eyeball”) side of the network. Individuals need to have an onramp onto the Internet’s superhighway. An onramp to the Internet is essentially what your ISP provides. CenturyLink is one of the largest ISPs in the United States.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2icudbLYouwM170cYZ6Sgg/5ca2e06c4716d970fd4953fd4a3f9c9a/image-3.png" alt="" class="kg-image" width="1426" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2icudbLYouwM170cYZ6Sgg/65c7a019da7606b8525980ef0f35f2e4/image-3.png" alt="" class="kg-image" width="1426" height="1406" loading="lazy">
 
 	</figure>
 	<p>Source: <a href="https://broadbandnow.com/CenturyLink">https://broadbandnow.com/CenturyLink</a></p>
@@ -79,14 +79,14 @@
 	<p>Starting at 10:04 UTC, there were a significant number of BGP updates. A BGP update is the signal a router makes to say that a route has changed or is no longer available. Under normal conditions, the Internet sees about 1.5MBs – 2MBs of BGP updates every 15 minutes. At the start of the incident, the number of BGP updates spiked to more than 26MBs of BGP updates per 15 minute period and stayed elevated throughout the incident.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QVexHMHnmU6OVZdcPpy94/3958dc6d776e9f8b9abc517eaeea5e2d/6-1.png" alt="" class="kg-image" width="734" height="312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QVexHMHnmU6OVZdcPpy94/d3804627c952b3d8bc417e5442340a9e/6-1.png" alt="" class="kg-image" width="734" height="312" loading="lazy">
 
 	</figure>
 	<p>Source: <a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></p>
 	<p>These updates show the instability of BGP routes inside the CenturyLink/Level(3) backbone. The question is what would have caused this instability. The CenturyLink/Level(3) status update offers some hints and points at a flowspec update as the root cause.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cy2Ywz7cnqyfNFwIX3nGa/80fb7304c891f9de78e268011bb79d4b/7-1.png" alt="" class="kg-image" width="1540" height="312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cy2Ywz7cnqyfNFwIX3nGa/4fc128b22c7b5524504283e87f087a89/7-1.png" alt="" class="kg-image" width="1540" height="312" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

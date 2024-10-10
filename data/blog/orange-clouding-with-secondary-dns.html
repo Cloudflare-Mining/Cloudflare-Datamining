@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/orange-clouding-with-secondary-dns">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/orange-clouding-with-secondary-dns">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KROHAH5RMUlWh94S3qY8G/4ddeff90ada363b6077ffbdbae19700f/orange-clouding-with-secondary-dns.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/orange-clouding-with-secondary-dns">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/orange-clouding-with-secondary-dns">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KROHAH5RMUlWh94S3qY8G/c2000cb0a2534360e6a3af018921f7b5/orange-clouding-with-secondary-dns.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="what-is-secondary-dns">What is secondary DNS?</h3>
@@ -36,7 +36,7 @@
 	<p>In order to take advantage of Cloudflare's security and performance services, we need to make sure that the origin IP stays hidden from the Internet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YAO6PZ3BqRCD5IK5NEL1t/2a5d1c6c5468dc0795553280d7ced64e/image1-10.png" alt="" class="kg-image" width="1526" height="762" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YAO6PZ3BqRCD5IK5NEL1t/fc4d45f62075d3d0531734273c707e20/image1-10.png" alt="" class="kg-image" width="1526" height="762" loading="lazy">
 
 	</figure>
 	<p>Figure 1: Secondary DNS without a hidden primary nameserver</p>
@@ -51,7 +51,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WlzPk7YGcEbVgVPWRsVNP/96c28e245178cddce8dc8ce1e64c7457/image2-6.png" alt="" class="kg-image" width="1724" height="792" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WlzPk7YGcEbVgVPWRsVNP/b36c9763423f18a1559922a772a8e5ce/image2-6.png" alt="" class="kg-image" width="1724" height="792" loading="lazy">
 
 	</figure>
 	<p>Figure 2: Secondary DNS with a hidden primary nameserver</p>
@@ -67,7 +67,7 @@
 	<p>The Secondary DNS Override UI looks similar to the primary UI, the only difference is that records cannot be edited.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23aOCWhXUNvk3rlDKomIUH/58f418d60a8828583a0335e132e45ada/image3-5.png" alt="" class="kg-image" width="1790" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23aOCWhXUNvk3rlDKomIUH/134a8410ac677f4c9341bd4ca757225f/image3-5.png" alt="" class="kg-image" width="1790" height="382" loading="lazy">
 
 	</figure>
 	<p>Figure 3: Secondary DNS Override Dashboard</p>
@@ -105,7 +105,7 @@
 	<p>At record edit time we do all of the merging of the secondary, override and CNAME at the apex records. This means that when a DNS request comes in to our authoritative server at the edge, we can still return the records in <a href="https://www.dnsperf.com">blazing fast times</a>. The workflow is shown in figure 4.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28Q1ApTislcuCz1JZlE57M/0902068e508f78047a1ce2905b5aa8a7/image4-6.png" alt="" class="kg-image" width="1004" height="1530" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28Q1ApTislcuCz1JZlE57M/ce770c426fe865fbed639a06440d8412/image4-6.png" alt="" class="kg-image" width="1004" height="1530" loading="lazy">
 
 	</figure>
 	<p>Figure 4: Record Merging process</p>

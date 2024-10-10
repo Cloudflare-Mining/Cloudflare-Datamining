@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/h8hH7qWrYChGMYyrktaXj/bdf984c65eceade004c754f0210559f3/image1-31.png" alt="Speeding up your (WordPress) website is a few clicks away" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/h8hH7qWrYChGMYyrktaXj/163bb1bb8d730c069de5865285db1697/image1-31.png" alt="Speeding up your (WordPress) website is a few clicks away" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Every day, website visitors spend far too much time waiting for websites to load in their browsers. This waiting is partially due to browsers not knowing which resources are critically important so they can prioritize them ahead of less-critical resources. In this blog we will outline how millions of websites across the Internet can improve their performance by specifying which critical content loads first with Cloudflare Workers and what Cloudflare will do to make this easier by default in the future.</p>
@@ -21,7 +21,7 @@
 	<p>Next, the browser processes the content itself. For HTML responses, the browser extracts important information from the section of the HTML, such as the page title, stylesheets, and scripts. Once this information is parsed, the browser moves on to the response which has the actual page content. During this stage, the browser begins to present the webpage to the visitor.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QXSvFomT1av14RMVga2Qf/04aa9ddb0f11e7494e0b387b79617cf2/image2-28.png" alt="" class="kg-image" width="1443" height="873" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QXSvFomT1av14RMVga2Qf/e379b539ca63b484d47e9f14f128cada/image2-28.png" alt="" class="kg-image" width="1443" height="873" loading="lazy">
 
 	</figure>
 	<p>If the response includes additional 3rd party resources like CSS, JavaScript, or other content, the browser may need to fetch and integrate them into the webpage. Typically, browsers like Google Chrome delay loading images until after the resources in the HTML have loaded. This is also known as “<a href="https://developer.chrome.com/en/docs/lighthouse/performance/render-blocking-resources">blocking</a>” the render of the webpage. However, developers can override this blocking behavior using <a href="https://web.dev/fetch-priority">fetch priority</a> or other methods to boost other content’s priority in the browser. By adjusting an important image's fetch priority, it can be loaded earlier, which can lead to significant improvements in crucial performance metrics like LCP (<a href="https://web.dev/optimize-lcp/#:~:text=LCP%20measures%20the%20time%20from%20when%20the%20user%20initiates%20loading%20the%20page%20until%20the%20largest%20image">Largest Contentful Paint</a>).</p>
@@ -161,7 +161,7 @@ function isImageSmall(element) {
 	<p>When testing the Worker, we saw that default image priority was boosted into “high” for the first four images and the fifth image remained “low.” This resulted in an LCP range of “<a href="https://web.dev/lcp/#:~:text=first%20started%20loading.-,What%20is%20a%20good%20LCP%20score%3F,across%20mobile%20and%20desktop%20devices.">good</a>” from a speed test. While this initial test is not a dispositive indicator that the Worker will boost performance in every situation, the results are promising and we look forward to continuing to experiment with this idea.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jHIrp0orKEbGAppkSWVXq/a8caddd869f7dd82988152480ebdc3f8/image3-21.png" alt="" class="kg-image" width="1999" height="629" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jHIrp0orKEbGAppkSWVXq/1d0b5704b4ae310010e25a99599dfa49/image3-21.png" alt="" class="kg-image" width="1999" height="629" loading="lazy">
 
 	</figure>
 	<p>While we’ve experimented with WordPress sites to illustrate the issues and potential performance benefits, this issue is present across the Internet.</p>

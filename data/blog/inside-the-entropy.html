@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NQyCGeUZv6OohlsKmkHKc/68e5591259b4e4fbf76d34996aaeeca4/image8-3.png" alt="" class="kg-image" width="1762" height="1047" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NQyCGeUZv6OohlsKmkHKc/5b4c4cd1ea1e8fff9048e25e01c0ff69/image8-3.png" alt="" class="kg-image" width="1762" height="1047" loading="lazy">
 
 	</figure>
 	<blockquote>
@@ -13,7 +13,7 @@
 	<p>In scientific experiments, a random sampling of results is necessary to ensure that data collection measurements are not skewed. Until now, generating random outputs in a way that we can verify that they are indeed random has been very difficult; typically involving taking a variety of statistical measurements.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CEsiU1gZNLRG4VZ8pKenE/645c9a798c5672062a950bf9916610ee/image9-2.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CEsiU1gZNLRG4VZ8pKenE/4fe5ae39fa2c63683bf7db2540ad266a/image9-2.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
 
 	</figure>
 	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com">League of Entropy</a>. The League of Entropy is a network of beacons that produces <i>distributed</i>, <i>publicly verifiable</i> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand">drand project</a>.</p>
@@ -33,7 +33,7 @@
 	<p>It is possible to mix entropy sources using specifically designed mixing functions to retrieve something with even greater entropy. The maximum resulting entropy is the sum of the entropy taken from the number of entropic sources used as input.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LcFWOh6MsFEqmYrGB6PXa/4ac05a3ddd40d32168a3bfd15bcb30b5/combined-entropy-_2x.png" alt="" class="kg-image" width="1600" height="1060" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LcFWOh6MsFEqmYrGB6PXa/f87eb05da963db50a5f8a0a24d260d76/combined-entropy-_2x.png" alt="" class="kg-image" width="1600" height="1060" loading="lazy">
 
 	</figure>
 	<h4>Sampling randomness</h4>
@@ -51,7 +51,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2nJtxum8JhhrkxOyplTTka/ae58f9eddc6623c955806c1ac1683986/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2nJtxum8JhhrkxOyplTTka/e96eaea45650c205a68cda95c4ee9b8a/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Unfortunately, these phenomena require very specific measuring tools, which are prohibitively expensive to install in mainstream consumer electronics. As such, most personal computing devices usually use external usage characteristics for seeding specific generator functions that output randomness as and when the system requires it. These characteristics include keyboard typing patterns and speed and mouse movement – since such usage patterns are based on the human user, it is assumed they provide sufficient entropy as a randomness source. An example of a random number generator that takes entropy from these characteristics is the Linux-based <a href="https://en.wikipedia.org/wiki/RdRand">RDRAND</a> function.</p>
@@ -78,13 +78,13 @@
 	<p>When a user needs randomness, they send requests to some number <code>t</code> of beacons, where <code>t &lt; n</code>, and combine these values using a specific procedure. The result is a random value that can be verified and used for public auditing mechanisms.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BeauvWICHvAH9uX1tCqaY/250bf2ba66f892753f1a9ece98ead790/pasted-image-0--2-.png" alt="" class="kg-image" width="512" height="446" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BeauvWICHvAH9uX1tCqaY/47a57124c026459500347cf14757f818/pasted-image-0--2-.png" alt="" class="kg-image" width="512" height="446" loading="lazy">
 
 	</figure>
 	<p>Consider what happens if some proportion <code>c/n</code> of the randomness beacons are <i>corrupted</i> at any one time. The nature of a threshold cryptographic system is that, as long as <code>c &lt; t</code>, then the end result still remains random.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NM7oB6KqjsC5ys55cVEGP/881e0a703ee6b513e98de6920aa4ab0c/pasted-image-0--3-.png" alt="" class="kg-image" width="512" height="285" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NM7oB6KqjsC5ys55cVEGP/9165d5ad0c235240b6e455cf08e62f1e/pasted-image-0--3-.png" alt="" class="kg-image" width="512" height="285" loading="lazy">
 
 	</figure>
 	<p>If <code>c</code> exceeds <code>t</code> then the random values produced by the system become predictable and the notion of randomness is lost. In summary, the distributed randomness procedure provides verifiably random outputs with sufficient entropy only when <code>c &lt; t</code>.</p>
@@ -113,14 +113,14 @@
 	<p>Mathematically speaking, and rather than thinking about pizzas, we can describe the underlying phenomenon by reconstructing lines or curves on a graph. We can take two coordinates on a <code>(x,y)</code> plane and immediately (and uniquely) define a line with the equation <code>y = ax+b</code>. For example, the points <code>(2,3)</code> and <code>(4,7)</code> immediately define a line with gradient <code>(7-3)/(4/2) = 2</code> so <code>a=2</code>. You can then derive the <code>b</code> coefficient as <code>-1</code> by evaluating either of the coordinates in the equation <code>y = 2x + b</code>. By <i>uniquely</i>, we mean that only the line <code>y = 2x -1</code> satisfies the two coordinates that are chosen; no other choice of <code>a</code> or <code>b</code> fits.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2htl50xQeT4euGS3VR6rxf/772cd8dfabde3cbc32052e9ed7e0bc8e/line2-2-.png" alt="" class="kg-image" width="488" height="718" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2htl50xQeT4euGS3VR6rxf/de0f4b27b223bd88f4fc90ebd204367e/line2-2-.png" alt="" class="kg-image" width="488" height="718" loading="lazy">
 
 	</figure>
 	<p>The curve <code>ax+b</code> has degree <code>1</code>, where the degree of the equation refers to the highest order multiplication of unknown variables in the equation. That might seem like mathematical jargon, but the equation above contains only one term <code>ax</code>, which depends on the unknown variable <code>x</code>. In this specific term, the &nbsp;<i>exponent</i> (or <i>power</i>) of <code>x</code> is <code>1</code>, and so the degree of the entire equation is also <code>1</code>.</p>
 	<p>Likewise, by taking three sets of coordinates pairs in the same plane, we uniquely define a quadratic curve with an equation that approximately takes the form <code>y = ax^2 + bx + c</code> with the coefficients <code>a,b,c</code> uniquely defined by the chosen coordinates. The process is a bit more involved than the above case, but it essentially starts in the same way using three coordinate pairs <code>(x_1, y_1)</code>, <code>(x_2, y_2)</code> and <code>(x_3, y_3)</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24FGvRaMCx5lUA2umjk6wi/26e8c64727377aa82b1cd086f10b3591/line3.png" alt="" class="kg-image" width="516" height="648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24FGvRaMCx5lUA2umjk6wi/4e76792bba003072606d6196c0febdc2/line3.png" alt="" class="kg-image" width="516" height="648" loading="lazy">
 
 	</figure>
 	<p>By a quadratic curve, we mean a curve of degree <code>2</code>. We can see that this curve has degree <code>2</code> because it contains two terms <code>ax^2</code> and <code>bx</code> that depend on <code>x</code>. The highest order term is the <code>ax^2</code> term with an exponent of <code>2</code>, so this curve has degree <code>2</code> (ignore the term <code>bx</code> which has a smaller power).</p>
@@ -148,7 +148,7 @@
 	<p>Again, think back to reconstructing the degree <code>t-1</code> curves on graphs with <code>t</code> known coordinates. In this case, the coordinates correspond to the intermediate signatures <code>u_i</code>, and the signature <code>u</code> corresponds to the entire curve. For the actual signature schemes, the mathematics are much more involved than in the DKG procedure, but the principal is the same.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SpuFg5fE6Trs3KhVfGeQq/f10fead03ece321cda2a39fc2c2e863b/threshold-sig-3-.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SpuFg5fE6Trs3KhVfGeQq/829504847821500097e2b7474a83037d/threshold-sig-3-.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -162,7 +162,7 @@
 	<p>The <code>n</code> beacons that will take part in the drand project are identified. In the trusted setup phase, the DKG protocol from above is run, and each beacon effectively creates a key pair <code>(vk_i, sk_i)</code> for a threshold signature scheme. In other words, this key pair will be able to generate intermediate signatures that can be combined to create an entire signature for the system.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZkOUnhX8QiVnhPou3nC9/400931ec6d2ab75701334f976923ab01/DKG-6-.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZkOUnhX8QiVnhPou3nC9/c7657ac1ec50d7156fee239f69e57e28/DKG-6-.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
 
 	</figure>
 	<p>For each round (occurring once a minute, for example), the beacons agree on a signature <code>u</code> evaluated over a message containing the previous round’s signature and the current round’s number. This signature <code>u</code> is the result of combining the intermediate signatures <code>u_i</code> over the same message. Each intermediate signature <code>u_i</code> is created by each of the beacons using their secret <code>sk_i</code>.</p>

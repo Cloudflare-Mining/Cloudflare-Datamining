@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-snippets-alpha">日本語</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-snippets-alpha">Español</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QsjzJhsf8r9VVdwAMAEDk/815a2c2bb02fef2888af5a1dfc54a4e4/cloudflare-snippets-alpha.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-snippets-alpha">日本語</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-snippets-alpha">Español</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QsjzJhsf8r9VVdwAMAEDk/f4d4f5a6e125d72e0134abddd463ff97/cloudflare-snippets-alpha.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p>Today we are excited to announce that <a href="https://blog.cloudflare.com/snippets-announcement">Cloudflare Snippets</a> is available in alpha. In the coming weeks we will be opening access to our waiting list.</p>
@@ -30,7 +30,7 @@
 	<p>Snippets also run before Workers; this means that users will be able to move simple logic out of a Cloudflare Worker into Snippets or use Cloudflare Workers and its features to further modify a request. The <a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first">Traffic Sequence UI</a> has also been updated to incorporate Snippets allowing you to easily understand how all the products fit together and understand how HTTP requests flow between them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mzGrins7tVyfuUDsaHVYI/2a990cdd3e9c4d488bc803e1857074b2/image4-13.png" alt="" class="kg-image" width="1386" height="884" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mzGrins7tVyfuUDsaHVYI/d9987a80370fac66c94ec49cac211871/image4-13.png" alt="" class="kg-image" width="1386" height="884" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -44,13 +44,13 @@
 	<p>Snippets allow customers to migrate their existing workloads to Cloudflare. For example, customers that wish to set a dynamic cookie on all of their responses for a percentage of requests can use the `math.random` function within their Snippet.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FMCvZXK5bgjhsyzLkFo4G/8dde6a902e294596d74b57d2fe5a0951/Screenshot-2023-06-12-at-15.40.26.png" alt="" class="kg-image" width="1600" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FMCvZXK5bgjhsyzLkFo4G/1641ca4379e1acfc5d1252deee86ffa8/Screenshot-2023-06-12-at-15.40.26.png" alt="" class="kg-image" width="1600" height="902" loading="lazy">
 
 	</figure>
 	<p>By leveraging the Ruleset Engine, we can improve the implementation by moving the set cookie logic to the rule instead of executing it on every response or handling it within a Snippet. For example if I only want to set this cookie on my shop subdomain and only for German or UK customers I can create the following rule.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hvl6NIA5Qd6JUu9zCJQTl/7c8c81c539cf11b621766aba2c4e076f/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hvl6NIA5Qd6JUu9zCJQTl/df6b3c51b85332fd812dd3d032b130ec/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
 
 	</figure>
 	<p>This approach ensures that the snippet will only execute when necessary, minimizing additional processing and reducing the complexity of the code required.</p>
@@ -66,7 +66,7 @@
 	<p>Snippets are located within the Rules section of the Cloudflare Dashboard. Here customers can use the UI to write, preview and deploy their first Snippet.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65jEwkBoBxpxT5hDxVcXFX/38e95c1ed5598456c86a7cd018624fc8/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="677" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65jEwkBoBxpxT5hDxVcXFX/a108461a9ffad8f23cab13ff8971536b/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="677" loading="lazy">
 
 	</figure>
 	<p>As with all Cloudflare products users can deploy their Snippets via the API and Terraform. Allowing users to easily incorporate Snippets within their CI/CD pipelines. The added benefit of using the Ruleset engine allows users to test their code on a subset of traffic. For example, by specifying your own office IP or secret header within the filter that will only trigger the Snippet if present. Finally we will be integrating Snippets within the <a href="https://developers.cloudflare.com/api/operations/account-request-tracer-request-trace">Account Request Tracer</a> allowing users to easily identify all Rules that are executing on a specific request.</p>
@@ -81,14 +81,14 @@
 	<p>During Developer Week, we discussed the process of <a href="https://blog.cloudflare.com/building-cloudflare-on-cloudflare">Building Cloudflare on Cloudflare</a>, using our Cloudflare Workers developer platform to enhance our products in terms of speed, robustness, and ease of development. Snippets, the latest Cloudflare product, is built on top of Workers for Platforms.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZjJrhzjJN19EPkBsFs1pF/8aa3cfe243be0e881229eaa07ace3391/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZjJrhzjJN19EPkBsFs1pF/3f926e67df4b3df4efffb03f0163cec9/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="434" loading="lazy">
 
 	</figure>
 	<p>A snippet is a piece of user-defined JavaScript that, upon creation, generates a unique Snippet ID. This Snippet ID is then associated with a user-defined rule created using the Rule Engine syntax. When a rule is created, a unique Rule ID is assigned to it. The Snippet ID and Rule ID are then linked in a one-to-one relationship. Customers have the flexibility to create multiple snippets and rules, each with its own unique Snippet and Rule. Customers with multiple snippets can easily prioritize them within the user interface (UI) or via API, similar to our other rules-based products.</p>
 	<p>When a customer's request reaches Cloudflare, we evaluate the request parameters against the created Snippet rules within a user's zone. If a Snippet rule is matched, the corresponding unique Snippet ID is added to a Snippet table. Once all the rules have been evaluated and the Snippet table has been compiled, the completed table is passed to the Snippets Internal Worker Service.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pfQrVdEz8jHYz1pTV7HYI/33db32f7bf3332cb3a00c638f330f201/pasted-image-0--3-.png" alt="" class="kg-image" width="1600" height="660" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pfQrVdEz8jHYz1pTV7HYI/7da7e12c763efe37bb21a2e23c184ad0/pasted-image-0--3-.png" alt="" class="kg-image" width="1600" height="660" loading="lazy">
 
 	</figure>
 	<p>This Worker receives all the Snippet IDs stored within the table that are to be sequentially executed. The system's design allows for the flexibility of keeping Snippets simple, where users can manage individual snippets independently, that execute on the same request. This approach grants users the freedom to control and fine-tune their own individual snippets rather than merging them into a single entity.</p>

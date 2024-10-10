@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VESHCwzMz14WZD7uL9VfD/788d64ce1141ea8de4adf444632e34c8/image4-5.png" alt="Monitoring machine learning models for bot detection" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VESHCwzMz14WZD7uL9VfD/b448fcd03ff4209734a660fa01b3ea8a/image4-5.png" alt="Monitoring machine learning models for bot detection" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Bot Management</a> is used by organizations around the world to proactively detect and mitigate automated bot traffic. To do this, Cloudflare leverages machine learning models that help predict whether a particular HTTP request is coming from a bot or not, and further distinguishes between benign and malicious bots. Cloudflare serves over 55 million HTTP requests per second — so our machine learning models need to run at Cloudflare scale.</p>
@@ -67,7 +67,7 @@
 	<p>The monitoring system runs on a unified platform called <i>Endeavor,</i> which we built to handle all aspects of bots-related machine learning, including model training and validation, model interpretability, and delivering the most up-to-date information to our servers running bot detection. We can break down monitoring into a few tasks: rendering monitoring queries to fetch datasets, computing performance metrics, and storing metrics. Endeavour uses <a href="https://airflow.apache.org">Airflow</a>, a workflow execution engine, making it a great place to run our monitoring tasks on top of a kubernetes cluster and GPUs, with access to Postgres and <a href="https://clickhouse.com">ClickHouse</a> databases.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52wZKzjuR1lNMYAdyFS0Kb/c2276af7f3fdc270717ce9baf487a43b/Monitoring-machine-learning-models-for-bot-detection.png" alt="" class="kg-image" width="1772" height="1248" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52wZKzjuR1lNMYAdyFS0Kb/1bcfe3a0f290772ee1cbd369cbcdf937/Monitoring-machine-learning-models-for-bot-detection.png" alt="" class="kg-image" width="1772" height="1248" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -128,7 +128,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mqzj2axLlpyV7dkdwX3Oo/e07b21056d34ec799c525f88bdbfe380/Screenshot-2023-10-26-at-4.03.36-PM.png" alt="" class="kg-image" width="1600" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mqzj2axLlpyV7dkdwX3Oo/47762be749130e966783c03bd3e3a274/Screenshot-2023-10-26-at-4.03.36-PM.png" alt="" class="kg-image" width="1600" height="488" loading="lazy">
 
 	</figure>
 	<p>When the monitoring system was first deployed, we quickly found an anomaly: our model wasn’t performing well on web traffic using HTTP/3. At the time, HTTP/3 usage was hardly seen across the web, and the primary model in production wasn’t trained on HTTP/3 traffic, leading to inaccurate bot scores. Fortunately, another bot detection layer, our <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#heuristics">heuristics engine</a>, was still accurately finding bots using HTTP/3 — so our customers were still covered.</p>
@@ -145,7 +145,7 @@
 	<p>A couple of years ago, we deployed an update to our machine learning powered bot detections, and it led to an increase in false positive bot detections — we were incorrectly flagging some legitimate traffic as bot traffic. Our monitoring system quickly showed a drop in performance on residential ASNs where we expect mostly non-automated traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Kv74hWqjzZHzbP175NLGy/b3a89a85a1ab8cc62c6672fb0f79fd7e/Screenshot-2023-10-26-at-9.52.45-AM.png" alt="In the graph above, deployments are shown to three colo “tiers”, 1-3. Since software deployments start on tier 3 colocation centers and gradually move up to tier 1, the impact followed the same pattern." class="kg-image" width="1600" height="541" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Kv74hWqjzZHzbP175NLGy/761d8f84c577923bfe4d85c58f3f7dae/Screenshot-2023-10-26-at-9.52.45-AM.png" alt="In the graph above, deployments are shown to three colo “tiers”, 1-3. Since software deployments start on tier 3 colocation centers and gradually move up to tier 1, the impact followed the same pattern." class="kg-image" width="1600" height="541" loading="lazy">
 
 	</figure>
 	<p><i>In the graph above, deployments are shown to three colo “tiers”, 1-3. Since software deployments start on tier 3 colocation centers and gradually move up to tier 1, the impact followed the same pattern.</i></p>

@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yviS5FtF4KbuDnCWmxXmU/5a4d911acc47b9eb82da1ee34519d061/image1-51.png" alt="D1: We turned it up to 11" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yviS5FtF4KbuDnCWmxXmU/a99a32be9b00040a1d2cd20dc284e364/image1-51.png" alt="D1: We turned it up to 11" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>We’re not going to bury the lede: we’re excited to launch a major update to our D1 database, with dramatic improvements to performance and scalability. Alpha users (which includes <i>any</i> Workers user) can create new databases using the new storage backend right now with the following command:</p>
@@ -33,7 +33,7 @@
 	<p>If you’ve used D1 in its alpha state to date: forget everything you know. D1 is now substantially faster: up to 20x faster on the well-known <a href="https://github.com/cloudflare/d1-northwind">Northwind Traders Demo</a>, which we’ve <a href="https://northwind.d1sql.com">just migrated</a> to use our new storage backend:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sD4jP1YsKJQN81B4R2Mfv/90e788e6f70f3d8b086ebb2657676e6c/image5-12.png" alt="" class="kg-image" width="1226" height="402" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sD4jP1YsKJQN81B4R2Mfv/2747c22b32fc38d1f02b4e47c61ed683/image5-12.png" alt="" class="kg-image" width="1226" height="402" loading="lazy">
 
 	</figure>
 	<p>Our new architecture also increases write performance: a simple benchmark inserting 1,000 rows (each row about 200 bytes wide) is approximately 6.8x faster than the previous version of D1.</p>
@@ -41,7 +41,7 @@
 	<p>With our new storage backend, we also want to make clear that D1 is not a toy, and we’re constantly benchmarking our performance against other serverless databases. A query against a 500,000 row key-value table (recognizing that benchmarks are inherently synthetic) sees D1 perform about 3.2x faster than a popular serverless Postgres provider:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RQ3n0MEB7ZOGlrsg7rU0S/858a863066abaf46ebbd2ae3515a06fd/download-14.png" alt="" class="kg-image" width="1600" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RQ3n0MEB7ZOGlrsg7rU0S/d536f7c25b66099897be571baa2be372/download-14.png" alt="" class="kg-image" width="1600" height="525" loading="lazy">
 
 	</figure>
 	<p>We ran the Postgres queries several times to prime the page cache and then took the median query time, as measured by the server. We’ll continue to sharpen our performance edge as we go forward.</p>
@@ -69,7 +69,7 @@
 	<p>Although D1 is designed to work natively within Cloudflare Workers, we realize that there’s often a need to quickly issue one-shot queries via CLI or a web editor when prototyping or just exploring a database. On top of the <a href="https://developers.cloudflare.com/workers/wrangler/commands/#execute">support in wrangler for executing queries</a> (and files), we’ve also introduced a console editor that allows you to issue queries, inspect tables, and even edit data on the fly:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rZ9d0Hqrq10a8tfkJ4atE/7ed9366da010be6af9be18b725467180/image3-20.png" alt="" class="kg-image" width="1999" height="960" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rZ9d0Hqrq10a8tfkJ4atE/b541e1c27513569c560d4da2a26b8d16/image3-20.png" alt="" class="kg-image" width="1999" height="960" loading="lazy">
 
 	</figure>
 	<p><a href="https://developers.cloudflare.com/d1/learning/querying-json/#extracting-values">JSON functions</a> allow you to query JSON stored in TEXT columns in D1: allowing you to be flexible about what data is associated strictly with your relational database schema and what isn’t, whilst still being able to query all of it via SQL (before it reaches your app).</p>
@@ -86,7 +86,7 @@ $ wrangler d1 create eu-users-db --location=weur --experimental-backend</code></
 	<p><a href="https://developers.cloudflare.com/r2/buckets/data-location">Location Hints</a> are also now available in the Cloudflare dashboard:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12JpcimRiOP51cuhDFpmg4/1a17e0f29dce2e31141b4c23d0b6d19b/image4-20.png" alt="" class="kg-image" width="1988" height="1802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12JpcimRiOP51cuhDFpmg4/a71d83d15d3277152775cb5a96f963dc/image4-20.png" alt="" class="kg-image" width="1988" height="1802" loading="lazy">
 
 	</figure>
 	<p>We’ve also published <a href="https://developers.cloudflare.com/d1">more documentation</a> to help developers not only get started, but make use of D1’s advanced features. Expect D1’s documentation to continue to grow substantially over the coming months.</p>
@@ -115,7 +115,7 @@ $ wrangler d1 create eu-users-db --location=weur --experimental-backend</code></
 	<p>Here’s a summary (we’re keeping it intentionally simple):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3R6k7Iu1ARM90hAytxmGkK/28443c87dec8993e985c80b7ffb2fde5/Screenshot-2023-05-19-at-10.14.58.png" alt="" class="kg-image" width="1584" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3R6k7Iu1ARM90hAytxmGkK/7a909968043acb71cec31f73d7485484/Screenshot-2023-05-19-at-10.14.58.png" alt="" class="kg-image" width="1584" height="488" loading="lazy">
 
 	</figure>
 	<p>Importantly, <b>when we enable global read replication, you won’t have to pay extra for it, nor will replication multiply your storage consumption</b>. We think built-in, automatic replication is important, and we don’t think developers should have to pay multiplicative costs (replicas x storage fees) in order to make their database fast <i>everywhere</i>.</p>

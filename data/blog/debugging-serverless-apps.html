@@ -1,10 +1,10 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SRkW7jUzmBG8F8Sjwh5BA/5cd78bbd6b9af8a6edc3577e267fa3ac/debugging-serverless-apps.gif" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SRkW7jUzmBG8F8Sjwh5BA/a6a4ce3603a372acbc6cbdee351778b9/debugging-serverless-apps.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The Workers team have already done an amazing job of creating a functional, familiar edit and debug tooling experience in the Workers IDE. It's Chrome Developer Tools fully integrated to Workers.</p>
 	<p><code>console.log</code> in your Worker goes straight to the console, just as if you were debugging locally! Furthermore, errors and even log lines come complete with call-site info, so you click and navigate straight to the relevant line.In this blog post I’m going to show a small and powerful technique I use to make debugging serverless apps simple and quick.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SFQMJY48ruzXTvK0EcG7p/3a34ff39a2df2b9acd1f25f1548f6344/workers-ide-console.gif" alt="Integrated Chrome Dev Tools" class="kg-image" width="1320" height="791" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SFQMJY48ruzXTvK0EcG7p/8e4d2bcf77cda6a6ff2b360a8ad778f8/workers-ide-console.gif" alt="Integrated Chrome Dev Tools" class="kg-image" width="1320" height="791" loading="lazy">
 
 	</figure>
 	<p>There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>

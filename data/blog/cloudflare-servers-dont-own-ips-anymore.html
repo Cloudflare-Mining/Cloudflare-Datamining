@@ -4,7 +4,7 @@
 	<p><i></i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27jjBnvTr1dvuTNt8baVMj/f5708e3aef7b8fb60bc147e97bdfdefb/image11-3.png" alt="Cloudflare servers don't own IPs anymore – so how do they connect to the Internet?" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27jjBnvTr1dvuTNt8baVMj/5244e0d8f89ffd15d4bf51a15e646625/image11-3.png" alt="Cloudflare servers don't own IPs anymore – so how do they connect to the Internet?" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>A lot of Cloudflare's technology is well documented. For example, how we handle traffic between the eyeballs (clients) and our servers has been discussed many times on this blog: “<a href="https://blog.cloudflare.com/a-brief-anycast-primer">A brief primer on anycast (2011)</a>”, "<a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">Load Balancing without Load Balancers (2013)</a>", "<a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">Path MTU discovery in practice (2015)</a>", &nbsp;"<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Cloudflare's edge load balancer (2020)</a>", "<a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf">How we fixed the BSD socket API (2022)</a>".</p>
@@ -21,7 +21,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01iopATg1CQGchxawLCk1U/f4ef9239d87d3de68eff087c8bb075c2/image8-4.png" alt="" class="kg-image" width="2000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01iopATg1CQGchxawLCk1U/9d8582351fed8929930c18c78321f194/image8-4.png" alt="" class="kg-image" width="2000" height="600" loading="lazy">
 
 	</figure>
 	<p>Each Cloudflare server deals with many kinds of networking traffic, but two rough categories stand out:</p>
@@ -60,20 +60,20 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WOoxT0QUqaGhBwa0lSgRu/a15d784065d56c77400b9576439c1a5f/image9-3.png" alt="" class="kg-image" width="1999" height="940" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WOoxT0QUqaGhBwa0lSgRu/15aba7b2dbf84e647d84dfa3a5adeeb2/image9-3.png" alt="" class="kg-image" width="1999" height="940" loading="lazy">
 
 	</figure>
 	<p>Our ingress network architecture is very different from the egress one. On ingress, the connections sourced from the Internet are handled exclusively by our anycast IP ranges. Anycast is a technology where each of our data centers "announces" and can handle the same IP ranges. With many destinations possible, how does the Internet know where to route the packets? Well, the eyeball packets are routed towards the closest data center based on Internet BGP metrics, often it's also geographically the closest one. Usually, the BGP routes don't change much, and each eyeball IP can be expected to be routed to a single data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jiVD7EKAKmWRoIN6FlrMz/f210d2dc4034556dc425c53d42ad8250/image10-2.png" alt="" class="kg-image" width="1820" height="690" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jiVD7EKAKmWRoIN6FlrMz/f7b12c24fcf94a56e44638f3f74f955a/image10-2.png" alt="" class="kg-image" width="1820" height="690" loading="lazy">
 
 	</figure>
 	<p>However, while anycast works well in the ingress direction, it can't operate on egress. Establishing an outgoing connection from an anycast IP won't work. Consider the response packet. It's likely to be routed back to a wrong place - a data center geographically closest to the sender, not necessarily the source data center!</p>
 	<p>For this reason, until recently, we established outgoing connections in a straightforward and conventional way: each server was given its own unicast IP address. "Unicast IP" means there is only one server using that address in the world. Return packets will work just fine and get back exactly to the right server identified by the unicast IP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GWAHkJLOKz7tR9rIgwfgG/3d7ae19fb7ace8fabf7aaf8f6b817cfb/image5-16.png" alt="" class="kg-image" width="1360" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GWAHkJLOKz7tR9rIgwfgG/5b7e68b8e02942697d7de1fbf6d74b0e/image5-16.png" alt="" class="kg-image" width="1360" height="600" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -88,7 +88,7 @@
 	<p>To work around the trusted vs untrusted traffic pool differentiation problem, we added an untrusted WARP IP address to each of our servers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hudtFCXBWUe1aRFIfcH7s/0782748cad45cf5d59369cee4ed09db4/image4-30.png" alt="" class="kg-image" width="1560" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hudtFCXBWUe1aRFIfcH7s/47bca3701568a8562029e41334d79692/image4-30.png" alt="" class="kg-image" width="1560" height="600" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -116,7 +116,7 @@
 	<p>For best service, we want to choose the egressing IP so that its country tag matches the country from the eyeball IP. But egressing from a specific country tagged IP is challenging: our data centers serve users from all over the world, potentially from many countries! Remember: due to anycast we don't directly control the ingress routing. Internet geography doesn’t always match physical geography. For example our London data center receives traffic not only from users in the United Kingdom, but also from Ireland, and Saudi Arabia. As a result, our servers in London need many WARP egress addresses associated with many countries:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rcN3OCsVAvpWBiER4JHgI/ce86879606f529d564925890c3abebc0/image2-52.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rcN3OCsVAvpWBiER4JHgI/6edbc6ec71af73c39d13c52e8e50b4e0/image2-52.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
 
 	</figure>
 	<p>Can you see where this is going? The problem space just explodes! Instead of having one or two egress IP addresses for each server, now we require dozens, and <a href="https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying">IPv4 addresses aren't cheap</a>. With this design, we need many addresses per server, and we operate thousands of servers. This architecture becomes very expensive.</p>
@@ -157,13 +157,13 @@
 	<p>Out of the thousands of servers we operate, every single one should be able to use an egress IP with any of the possible tags. It's easiest to explain our solution by first showing two extreme designs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UoCyD5rIsCDc6nAMY1jvp/0b415cff2fa333a0fe01a3546c1d7f88/image6-10.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UoCyD5rIsCDc6nAMY1jvp/646cd025de3707b60b205682f3b140c8/image6-10.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
 
 	</figure>
 	<p><b>Each server owns all the needed IPs:</b> each server has all the specialized egress IPs with the needed tags.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3s0xwHrfjPQpusPeq9HTtX/aabbc440bd002c6272eb0dd84dc20110/image12-1.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3s0xwHrfjPQpusPeq9HTtX/3338238e28e89abcaa5b4fc3eff2cc09/image12-1.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
 
 	</figure>
 	<p><b>One server owns the needed IP:</b> a specialized egress IP with a specific tag lives in one place, other servers forward traffic to it.</p>
@@ -239,7 +239,7 @@
 	<p>What we chose instead, is splitting an egress IP across servers by <b>a port range</b>. For a given egress IP, each server owns a small portion of available source ports - a port slice.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ruhT8POdI4Vd3yDd4WIrh/afb9a745b324110598a4da1bb98e905d/image1-68.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ruhT8POdI4Vd3yDd4WIrh/5204f34fbe65306902cb0b12216cedd4/image1-68.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
 
 	</figure>
 	<p>When return packets arrive from the Internet, we have to route them back to the correct machine. For this task we've customized "Unimog" - our L4 XDP-based load balancer - ("<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog, Cloudflare's load balancer (2020)</a>") and it's working flawlessly.</p>
@@ -262,7 +262,7 @@
 	<p>With this design, it doesn't matter to which data center return packets are delivered. Unimog can always fix it and forward the data to the right place. Basically, while at the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP layer</a> we are using anycast, due to our design, semantically an IP identifies a datacenter and an IP and port range identify a specific machine. It behaves almost like a unicast.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1aQ9FLJSpyr3OjcEynnyse/dee88652af1a074a7b8aa95c645d6940/image7-6.png" alt="" class="kg-image" width="1720" height="880" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aQ9FLJSpyr3OjcEynnyse/0274312eac4adaa6f391e7e48d3d6e3c/image7-6.png" alt="" class="kg-image" width="1720" height="880" loading="lazy">
 
 	</figure>
 	<p>We call this technology stack "<b>soft-unicast</b>" and it feels magical. It's like we did unicast in software over anycast in the BGP layer.</p>
@@ -321,7 +321,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sCk5BkrFFweDjmy5zQnHs/bc00b56c1c47425b9c70c268f4f04bce/image3-43.png" alt="" class="kg-image" width="1680" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5sCk5BkrFFweDjmy5zQnHs/058bef00f049ab0445b59d70a422f5d0/image3-43.png" alt="" class="kg-image" width="1680" height="900" loading="lazy">
 
 	</figure>
 	<p>As another example of problems, here's one issue we've hit with third party CDNs. As we mentioned before, there are three country tags in our pipeline:</p>

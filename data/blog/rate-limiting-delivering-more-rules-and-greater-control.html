@@ -1,9 +1,9 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ipERUR3AVGdYtEK6L7xfD/664c9417e4f36196a8cc2e8c83e35b39/rate-limiting-delivering-more-rules-and-greater-control.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ipERUR3AVGdYtEK6L7xfD/97b2cc9057eceaf3c67918ea0fae367f/rate-limiting-delivering-more-rules-and-greater-control.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>With more and more platforms taking the <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">necessary precautions against DDoS attacks</a> like integrating DDoS mitigation services and increasing bandwidth at weak points, Layer 3 and 4 attacks are just not as effective anymore. For Cloudflare, we have fully automated Layer 3/4 based protections with our internal platform, <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a>. In the last 6 months we have seen a large upward trend of Layer 7 based DDoS attacks. The key difference to these attacks is they are no longer focused on using huge payloads (volumetric attacks), but based on Requests per Second to exhaust server resources (CPU, Disk and Memory). On a regular basis we see attacks that are over 1 million requests per second. The graph below shows the number of Layer 7 attacks Cloudflare has monitored, which is trending up. On average seeing around 160 attacks a day, with some days spiking up to over 1000 attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KCzsb3VI9QyzaxYXWfPlW/e42af4c55a6921bdabe82f5bb993a597/Screen-Shot-2018-05-21-at-10.36.27-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.27-AM" class="kg-image" width="990" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KCzsb3VI9QyzaxYXWfPlW/bff6e0c18354270863ab8b5626f7dff1/Screen-Shot-2018-05-21-at-10.36.27-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.27-AM" class="kg-image" width="990" height="488" loading="lazy">
 
 	</figure>
 	<p>A year ago, Cloudflare released <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a> and it is proving to be a hugely effective tool for customers to protect their web applications and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> from all sorts of attacks, from “low and slow” DDoS attacks, through to bot-based attacks, such as credential stuffing and content scraping. We’re pleased about the success our customers are seeing with Rate Limiting and are excited to announce additional capabilities to give our customers further control.</p>
@@ -19,7 +19,7 @@
 	<p><b>Firstly</b>, to help customers more accurately identify the traffic, we are adding Cloudflare JavaScript Challenge, and Google reCaptcha (Challenge) mitigation actions to the UI and API for Pro and Business plans. The existing Block and Simulate actions still exist. As a reminder, to test any rule, deploying in Simulate means that you will not be charged for any requests. This is a great way to test your new rules to make sure they have been configured correctly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wD9AHZXCrufghkJPOcrDR/0028dee1fadafc34ccab90cecea0e56c/Screen-Shot-2018-05-21-at-10.36.39-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.39-AM" class="kg-image" width="698" height="741" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wD9AHZXCrufghkJPOcrDR/912893206456995a98bf003226cfac6e/Screen-Shot-2018-05-21-at-10.36.39-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.39-AM" class="kg-image" width="698" height="741" loading="lazy">
 
 	</figure>
 	<p><b>Secondly</b>, we’re making Rate Limiting more dynamically scalable. A new feature has been added which allows Rate Limiting to count on Origin Response Headers for Business and Enterprise customers. The way this feature works is by matching attributes which are returned by the Origin to Cloudflare.</p>
@@ -38,7 +38,7 @@
 	<p><b>Basic</b>:Cloudflare offers a “Protect My Login” feature out the box. Enter the URL for your login page and Cloudflare will create a rule such that clients that attempt to log in more than 5 times in 5 minutes will be blocked for 15 minutes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FhmlH6WeVwOhm3pyHjo9w/eccc3d86f171fd9eece9b8fc4c1233ce/Screen-Shot-2018-05-21-at-10.36.47-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.47-AM" class="kg-image" width="946" height="474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FhmlH6WeVwOhm3pyHjo9w/b5647d44c77165d7da31d69422c322a6/Screen-Shot-2018-05-21-at-10.36.47-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.47-AM" class="kg-image" width="946" height="474" loading="lazy">
 
 	</figure>
 	<p>With the new Challenge capabilities of Rate Limiting, you can customize the response parameters for log in to more closely match the behavior pattern for bots you see on your site through a custom built rule.</p>
@@ -120,7 +120,7 @@
 	<p>One of our customers was hit with a huge enumeration attack on their platform earlier this year, where the aggressors were trying to do exactly what we described above, in an attempt to overload their database platform. Their Rate Limiting configuration blocked over 100,000,000 bad requests during the 6 hour attack.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pwVBMpUcd368swYqwG5BY/7883e90d3addd1f4aeee02561b28a0ee/Screen-Shot-2018-05-21-at-10.36.57-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.57-AM" class="kg-image" width="989" height="579" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pwVBMpUcd368swYqwG5BY/497e8e574ff8d71d03ce7f44ed46c65c/Screen-Shot-2018-05-21-at-10.36.57-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.57-AM" class="kg-image" width="989" height="579" loading="lazy">
 
 	</figure>
 	<p>When a query is sent to the app, and the user is not found, the app serves a 404 (page not found) . A very basic approach is to set a rate limit for 404s. If a user crosses a threshold of 404’s in a period of time, set the app to challenge the user to prove themselves to be a real person.</p>

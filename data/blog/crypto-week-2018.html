@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h8IBYJQOwAWgl8DPwAWdv/5530f355e5f81e5a27bc44b208dd95dc/crypto-week_v02.gif" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1h8IBYJQOwAWgl8DPwAWdv/a3c5d82e68bfc147f9fb256fd9eebe02/crypto-week_v02.gif" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>The Internet is an amazing invention. We marvel at how it connects people, connects ideas, and makes the world smaller. But the Internet isn’t perfect. It was put together piecemeal through publicly funded research, private investment, and organic growth that has left us with an imperfect tapestry. It’s also evolving. People are constantly developing creative applications and finding new uses for existing Internet technology. Issues like privacy and security that were afterthoughts in the early days of the Internet are now supremely important. People are being tracked and monetized, websites and web services are being attacked in interesting new ways, and the fundamental system of trust the Internet is built on is showing signs of age. The Internet needs an upgrade, and one of the tools that can make things better is cryptography.</p>
@@ -104,13 +104,13 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wDRty2HT3gbpxOlTNAgm5/763e19f1aa0c9248e51c0ca37c1ff5a8/name-to-asn-_3.5x.png" alt="" class="kg-image" width="1600" height="460" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wDRty2HT3gbpxOlTNAgm5/98e8e5b4168678a79bb091946813a845/name-to-asn-_3.5x.png" alt="" class="kg-image" width="1600" height="460" loading="lazy">
 
 	</figure>
 	<p>When you type a website such as blog.cloudflare.com into your browser, a number of things happen. First, a (recursive) DNS service is contacted to get the IP address of the site. This DNS server configured by your ISP when you connect to the Internet, or it can be a public service such as 1.1.1.1 or 8.8.8.8. A query to the DNS service travels from network to network along a path determined by BGP announcements. If the recursive DNS server does not know the answer to the query, then it contacts the appropriate authoritative DNS services, starting with a root DNS server, down to a top level domain server (such as com or org), down to the DNS server that is authoritative for the domain. Once the DNS query has been answered, the browser sends an HTTP request to its IP address (traversing a sequence of networks), and in response, the server sends the content of the website.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JHDdXKcnw2lce7hUVVvjP/8ffb288a197ddf46622c6c3d68b95e5b/colorful-crypto-overview--copy-3_3.5x.png" alt="" class="kg-image" width="1600" height="764" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JHDdXKcnw2lce7hUVVvjP/a76212811897165d5e081bdc56be32a4/colorful-crypto-overview--copy-3_3.5x.png" alt="" class="kg-image" width="1600" height="764" loading="lazy">
 
 	</figure>
 	<p>So what’s the problem with this picture? For one, every DNS query and every network hop needs to be trusted in order to trust the content of the site. Any DNS query could be modified, a network could advertise an IP that belongs to another network, and any machine along the path could modify the content. When the Internet was small, there were mechanisms to combat this sort of subterfuge. Network operators had a personal relationship with each other and could punish bad behavior, but given the number of networks in existence <a href="https://www.cidr-report.org/as2.0/autnums.html">almost 400,000 as of this week</a> this is becoming difficult to scale.</p>
@@ -126,7 +126,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4thrwRrwuZ1ctzlstdLLqv/b71accd2b810eb47ae8ced9f2c264060/turtles.jpg" alt="" class="kg-image" width="768" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4thrwRrwuZ1ctzlstdLLqv/4e0c8c5b89d4faa9f8ff3c5d76251f01/turtles.jpg" alt="" class="kg-image" width="768" height="1024" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/wwarby/2499825928">Attribution 2.0 Generic (CC BY 2.0)</a></p>
@@ -141,14 +141,14 @@
 	<p><b>Routing</b>. Time-bound delegation of trust is defined through a system called the RPKI. RPKI defines an object called a Resource Certificate, an attestation that states that a given IP range belongs to a specific ASN for this period of time, digitally signed by the RIR responsible for assigning the IP range. Networks share routes via BGP, and if a route is advertised for an IP that does not conform the the Resource Certificate, the network can choose not to accept it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GgcQBjG2ecuqivy9h7SCe/475647468547e4706aba4c991141c04b/roas_3x.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GgcQBjG2ecuqivy9h7SCe/f6bea1c0abb365d2cab805c221d00ae6/roas_3x.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
 
 	</figure>
 	<p><b>DNS.</b> Adding cryptographic assurance to routing is powerful, but if a network adversary can change the content of the data (such as the DNS responses), then the system is still at risk. DNSSEC is a system built to provide a trusted link between names and IP addresses. The root of trust in DNSSEC is the DNS root key, which is managed with an <a href="https://www.iana.org/dnssec/ceremonies">elaborate signing ceremony</a>.</p>
 	<p><b>HTTPS</b>. When you connect to a site, not only do you want it to be coming from the right host, you also want the content to be private. The Web PKI is a system that issues certificates to sites, allowing you to bind the domain name to a time-bounded private key. Because there are many CAs, additional accountability systems like <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">certificate transparency</a> need to be involved to help keep the system in check.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oSYpHOMRKf2EtzXWvcTbE/68806f192a3bcd56f4722c60315d9687/connection-to-asn_3.5x.png" alt="" class="kg-image" width="1600" height="358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oSYpHOMRKf2EtzXWvcTbE/5b1100ad17540b9946cdbf91604a72fc/connection-to-asn_3.5x.png" alt="" class="kg-image" width="1600" height="358" loading="lazy">
 
 	</figure>
 	<p>This cryptographic scaffolding turns the Internet into an encoded system of trust. With these systems in place, Internet users no longer need to trust every network and party involved in this diagram, they only need to trust the RIRs, DNSSEC and the CAs (and know the correct time).</p>
@@ -176,7 +176,7 @@
 	<p>One of the networks built on top of the Internet that provides good privacy properties is Tor. The Tor network is run by a group of users who allow their computers to be used to route traffic for other members of the network. Using cryptography, it is possible to route traffic from one place to another without points along the path knowing both the source and the destination at the same time. This is called <a href="https://en.wikipedia.org/wiki/Onion_routing">onion routing</a> because it involves multiple layers of encryption, like an onion. Traffic coming out of the Tor network is “anonymous” because it could have come from anyone connected to the network. Everyone just blends in, making it hard to track individuals.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68kxhYzrB1vuZ1FogJ2MgK/57295d1f0f5badc1b54962a3cbc0afdc/Tor-Onion-Cloudflare.png" alt="" class="kg-image" width="1600" height="1556" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68kxhYzrB1vuZ1FogJ2MgK/e11e433e5f39a95cd6ef9ed4009b5c8b/Tor-Onion-Cloudflare.png" alt="" class="kg-image" width="1600" height="1556" loading="lazy">
 
 	</figure>
 	<p>Similarly, web services can use onion routing to serve content inside the Tor network without revealing their location to visitors. Instead of using a hostname to identify their network location, so-called onion services use a cryptographic public key as their address. There are hundreds of onion services in use, including the one <a href="https://blog.cloudflare.com/welcome-hidden-resolver">we use for 1.1.1.1</a> or the one in <a href="https://en.wikipedia.org/wiki/Facebookcorewwwi.onion">use by Facebook</a>.</p>
@@ -211,7 +211,7 @@
 	<p>Second, by enabling browsers to use a traditional DNS name to access the web through onion services, you can provide safer access to your site for Tor user with the added benefit of being better able to distinguish between bots and humans.With Cloudflare as the glue, is is possible to connect both standard internet and tor users to web sites and services on both the traditional web with the distributed web.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rzDTSMsIy1c5frGel8Eff/827e7f78401eef6a2ae2ed02f44c822b/bowtie-diagram-crypto-week-2018-v02_medium-1.gif" alt="" class="kg-image" width="1440" height="450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rzDTSMsIy1c5frGel8Eff/ea82dba88874f5772d6f7bdc3cc54776/bowtie-diagram-crypto-week-2018-v02_medium-1.gif" alt="" class="kg-image" width="1440" height="450" loading="lazy">
 
 	</figure>
 	<p>This is the promise of Crypto Week: using cryptographic guarantees to make a stronger, more trustworthy and more private internet without sacrificing usability.</p>

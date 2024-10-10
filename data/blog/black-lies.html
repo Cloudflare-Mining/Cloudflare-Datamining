@@ -1,9 +1,9 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yQ7940DQG2JA3KrLsuOQp/9c58bcba4b99633a5050fd34190cf638/black-lies.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yQ7940DQG2JA3KrLsuOQp/7a5709975defcdf109a2d53177b07232/black-lies.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We launched DNSSEC late last year and are already signing 56.9 billion DNS record sets per day. At this scale, we care a great deal about compute cost. One of the ways we save CPU cycles is our unique implementation of negative answers in DNSSEC.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39pYW2SBON2GibSMDXYXr9/874c68af606799716a646b304900adfb/217591669_c31a16e301_o.jpg" alt="" class="kg-image" width="600" height="450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39pYW2SBON2GibSMDXYXr9/1f9e5f863b435eaa642f67b810acbfbf/217591669_c31a16e301_o.jpg" alt="" class="kg-image" width="600" height="450" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/88478656@N00/217591669">image</a> by <a href="https://www.flickr.com/photos/chris-short">Chris Short</a></p>
@@ -36,7 +36,7 @@ cloudflare.com.		299	IN	RRSIG	A 13 2 300 20160311145051 20160309125051 35273    
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EDDHJnSfGNBWos6pw07VT/a6ab2d3485cc5f091e0f65b0eee78c12/250521158_0c5de0ef97_z.jpg" alt="" class="kg-image" width="500" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EDDHJnSfGNBWos6pw07VT/cbc431245dbf7cb97dc788ea6a909fcb/250521158_0c5de0ef97_z.jpg" alt="" class="kg-image" width="500" height="400" loading="lazy">
 
 	</figure>
 	<p>There are two types of negative answers. The first is <code>NXDOMAIN</code>, which means that the name asked for does not exist. An example of this is a query asking for <code>missing.cloudflare.com</code>. <code>missing.cloudflare.com</code> doesn’t exist at all.</p>
@@ -74,7 +74,7 @@ cloudflare.com.		299	IN	RRSIG	A 13 2 300 20160311145051 20160309125051 35273    
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IvO8IS03cvULjAZJGiGNh/b995a981411e104aff60908304d26ca1/4950628049_030625b5e1_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IvO8IS03cvULjAZJGiGNh/493fdb6facdde177c88222bd3226f535/4950628049_030625b5e1_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
 
 	</figure>
 	<p>What you may have noticed is that because the negative answer returns the previous and next name, you can keep asking for next names and essentially “walk” the zone until you learn every single name contained in it.</p>
@@ -99,7 +99,7 @@ cloudflare.com.		299	IN	RRSIG	A 13 2 300 20160311145051 20160309125051 35273    
 	<p>However, as you can imagine, this is a terrible idea for some zones. If you could walk the <code>.gov</code> zone, you could learn every US government agency and government agency portal. If you owned a real estate company where every realtor got their own subdomain, a competitor could walk through your zone and find out who all of your realtors are.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3r4Sa7oIA4l8dHp0Vfb8ZE/8b2cc57061307afaf33b17f8817686e9/3694621030_76a7e356e8_z.jpg" alt="" class="kg-image" width="640" height="446" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3r4Sa7oIA4l8dHp0Vfb8ZE/600b78872744b8a3af69169d1c3b2dfc/3694621030_76a7e356e8_z.jpg" alt="" class="kg-image" width="640" height="446" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/kiui/3694621030/in/photolist-6CtU7A-asJTAM-7CPbHo-8EwW4-3eVmjc-hJRKMq-6yqn7i-fHud6f-vkbXQ-dYdajL-Tvem-hhyi-yCJFx-faZG48-4NqD5n-4AznYu-agJiCs-7rHcZi-uctPy-86shBZ-5i6jk8-2FM8ku-4r6pDg-nKT4AD-89gnn7-4raAGu-5GZFu6-ediZYA-4ALrZC-47jTd2-dDUiSp-2UDPN5-dDU83M-89d89Z-dDUhX6-52rBrz-hkLCcd-dDTPvR-9yZg4K-67tzSW-8YUTHK-4YeciD-pdczj5-otQve1-72reNd-dDUoZV-F5Pg-4qFHBC-6yuv4A-54xhoz">image</a> by <a href="https://www.flickr.com/photos/kiui">KIUI</a></p>

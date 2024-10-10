@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mXdKDMicecNL6Iy017EXq/3671c5ecb46076be41e5eb4ccf12eec2/image4-5.png" alt="Wasm core dumps and debugging Rust in Workers" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mXdKDMicecNL6Iy017EXq/9b5a272fb48c3bf892c228984aee6ddd/image4-5.png" alt="Wasm core dumps and debugging Rust in Workers" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>A clear sign of maturing for any new programming language or environment is how easy and efficient debugging them is. Programming, like any other complex task, involves various challenges and potential pitfalls. Logic errors, off-by-ones, null pointer dereferences, and memory leaks are some examples of things that can make software developers desperate if they can't pinpoint and fix these issues quickly as part of their workflows and tools.</p>
@@ -179,7 +179,7 @@ function addTwo(v1, v2) {
 	<p>A diagram is worth a thousand words:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27DxZQioAhBsBiltjwIiyL/9cf3f8100e63e40d562531357a14acc1/image2-7.png" alt="" class="kg-image" width="1372" height="986" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27DxZQioAhBsBiltjwIiyL/2dc57b370b6741120a5bb263c2795652/image2-7.png" alt="" class="kg-image" width="1372" height="986" loading="lazy">
 
 	</figure>
 	<p>Wait, what’s this about the first 1 KiB of the memory being unused, you ask? Well, it turns out that most WebAssembly linters and tools, including <a href="https://github.com/emscripten-core/emscripten/issues/5775#issuecomment-344049528">Emscripten</a> and <a href="https://github.com/llvm/llvm-project/blob/121e15f96ce401c875e717992a4d054e308ba775/lld/wasm/Writer.cpp#L366">WebAssembly’s LLVM</a> don’t use the first 1 KiB of memory. <a href="https://github.com/rust-lang/rust/issues/50543">Rust</a> and <a href="https://github.com/ziglang/zig/issues/4496">Zig</a> also use LLVM, but they changed the default. This isn’t pretty, but the hugely popular Asyncify polyfill relies on the same trick, so there’s reasonable support until we find a better way.</p>
@@ -263,7 +263,7 @@ value (0xfff2c): usize = 0x00000003</code></pre>
 	<p>We use a <a href="https://developers.cloudflare.com/workers/configuration/bindings/about-service-bindings">service binding</a> to facilitate the communication between your application Worker and the Coredump service Worker. A Service binding allows you to send HTTP requests to another Worker without those requests going over the Internet, thus avoiding network latency or having to deal with authentication. Here’s a diagram of how it works:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gntGbV7rjDOncMZhFP7x1/d937ad96ae6799a56933426caf3bd309/image1-12.png" alt="" class="kg-image" width="1520" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gntGbV7rjDOncMZhFP7x1/3429a64f297c0edbf3327c677d56e0d3/image1-12.png" alt="" class="kg-image" width="1520" height="1000" loading="lazy">
 
 	</figure>
 	<p>Using it is as simple as npm/yarn installing <code>@cloudflare/wasm-coredump</code>, configuring a few options, and then adding a few lines of code to your other applications running in Cloudflare Workers, in the exception handling logic:</p>
@@ -291,7 +291,7 @@ async function fetch(request, env, ctx) {
 	<p>Here’s an example of a Wasm core dump exception in Sentry:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gqZyPFslc9uqCV7jEgaqW/d0c72b3daae1e85778973da7f5ffbc58/image3-4.png" alt="" class="kg-image" width="1999" height="1083" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gqZyPFslc9uqCV7jEgaqW/9425701b4209952518e3aef155d9b572/image3-4.png" alt="" class="kg-image" width="1999" height="1083" loading="lazy">
 
 	</figure>
 	<p>You can find a <a href="https://github.com/cloudflare/wasm-coredump/tree/main/example">working example</a>, the Sentry and R2 configuration options, and more details in the <a href="https://github.com/cloudflare/wasm-coredump">@cloudflare/wasm-coredump</a> GitHub repository.</p>

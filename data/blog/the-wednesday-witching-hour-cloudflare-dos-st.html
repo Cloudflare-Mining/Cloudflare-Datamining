@@ -1,9 +1,9 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54tkX8a1gcWJgBoZgPTFP0/315c8126ae5e2675fa3a9a0a040f8872/the-wednesday-witching-hour-cloudflare-dos-st.jpg" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54tkX8a1gcWJgBoZgPTFP0/02167a1cb5460d4b76b04ec0abe35456/the-wednesday-witching-hour-cloudflare-dos-st.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Data from inside CloudFlare's network shows that over 40% of the time there's a denial of service attack happening and directed at us. And that's just up to network layer 4 (i.e. it doesn't include more sophisticated attacks targeting applications themselves at layer 7).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SOUdiHMcr2MNIaJbtzkvY/b838a6d9cf4a09bbe425fa837fdf5101/Whitesnake.jpg.scaled500.jpg" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="473" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SOUdiHMcr2MNIaJbtzkvY/820bdf1a6708a21e95b2c60c46b9072e/Whitesnake.jpg.scaled500.jpg" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="473" height="427" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -17,21 +17,21 @@
 	<p>Those attacks literally keep our network engineers awake at night: the busiest time is during the night in the USA. This graph shows the number of 'attack minutes' (number of attacks in each sampled minute; often our engineers are dealing with multiple attacks at the same time) by UTChour. The peak corresponds to morning in Europe and the deep, dark night in the US.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eMaLPoHYVsouTQJdAWsny/f5391b19f3c157e10087ee4e49cd1017/hours.png.scaled500.png" alt="The Wednesday Witching Hour: CloudFlare DoS
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eMaLPoHYVsouTQJdAWsny/7ff48f1ca9399e56c60ef6c4c2fa4a60/hours.png.scaled500.png" alt="The Wednesday Witching Hour: CloudFlare DoS
 Statistics" class="kg-image" width="500" height="330" loading="lazy">
 
 	</figure>
 	<p>The attacks also keep them busy all week, but, like many of us, attackers seem to be at their best mid-week when they've shaken off those Monday morning blues and aren't winding down for the weekend. This graph shows the number of attack minutes by day of the week.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/p1AAkshprNEQGJypjw3yL/f4b467f076e5a752c57aa4d21a139934/dow.png.scaled500.png" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="500" height="339" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/p1AAkshprNEQGJypjw3yL/bc95662a11aa1763f4333c49f420cf90/dow.png.scaled500.png" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="500" height="339" loading="lazy">
 
 	</figure>
 	<p>So, the worst time for DoS attacks is in the middle of the night from Tuesday to Wednesday: the Wednesday Witching Hour. But the real message of those graphs is that DoS attacks simply never let up: they're happening 24/7.</p>
 	<p>And attackers try everything to bring us and sites on us down. The following graph shows the breakdown of DoS attacks by IP protocol: UDP just nudges past TCP as the majority as reflection attacks using both DNS and SNMP have become very popular. One SNMP reflection attack hit CloudFlare with an aggregate data rate of 21Gbps late last year.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IoGom6ZrSa7CRv30dUfEs/c27c76e97ff5f8ef4559d60e460b7a2c/protocols.png.scaled500.png" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="500" height="289" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IoGom6ZrSa7CRv30dUfEs/d5de13e057feb809ae20838d98baa4e3/protocols.png.scaled500.png" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="500" height="289" loading="lazy">
 
 	</figure>
 	<p>As CloudFlare is a protection and acceleration service for web sites it's not surprising that 92% of the DoS attacks using TCP are on port 80 (HTTP); and on UDP 97% are against port 53 (DNS). But we've also seen DNS attacks on TCP port 53 and UDP attacks on port 870 and 514 (syslog). Looking into TCP, SYN flooding remains the favorite attack method with 84% of the attacks.</p>
@@ -48,7 +48,7 @@ Statistics" class="kg-image" width="500" height="330" loading="lazy">
 	<p>Those massive attacks keep our network engineers up at night keeping CloudFlare web sites online and fast. But the overall trend in attacks has been slightly down over the last 6 months. We believe that attackers are becoming aware of CloudFlare's DoS protection and are switching to other attack methods (such as trying to break into web sites and not just knock them off line) and we've seen attackers try <a href="https://blog.cloudflare.com/post-mortem-todays-attack-apparent-google-app">sophisticated technical and social engineering attacks</a> to break into CloudFlare.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BLau18nqihpnQ9zs9dxrX/519a8f464cf9e7a06dc43af7d7401fbd/4436354018_293bac7cd5.jpg.scaled500.jpg" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="500" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6BLau18nqihpnQ9zs9dxrX/60e6aede5a58b1c7f2e182e1c8557ce5/4436354018_293bac7cd5.jpg.scaled500.jpg" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p>Image credit: Flickr user philcampbell</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68NfZl5AwLPrk573wmR7Id/76ee235cb57e29b0e42c05a607c5cea0/image2-14.png" alt="Smart Placement speeds up applications by moving code close to your backend — no config needed" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68NfZl5AwLPrk573wmR7Id/e605ccc58d1612b69beef233229ae79f/image2-14.png" alt="Smart Placement speeds up applications by moving code close to your backend — no config needed" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>We’ve all experienced the frustrations of slow loading websites, or an app that seems to stall when it needs to call an API for an update. Anything less than instant and your mind wanders to something else...</p>
@@ -53,7 +53,7 @@
 	<p>If your code makes multiple requests to your backend services they could be crossing the globe multiple times, having a big hit on performance. Some services offer data replication and caching which help to improve performance, but also come with trade-offs like data consistency and higher costs that should be weighed against your use case.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Xh0tIBnMeZp7z1mDeonqd/23e621d1ffd6290661f2a6dbaaba22df/map.png" alt="A map of the globe illustrating global users, global workers and a centralized database. " class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xh0tIBnMeZp7z1mDeonqd/2d55124ff2c831d964eb36a98852a968/map.png" alt="A map of the globe illustrating global users, global workers and a centralized database. " class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>The Cloudflare network is <a href="https://www.cloudflare.com/network">~50ms from 95% of the world’s connected population</a>. Turning this on its head, we're also very close to your backend services.</p>
@@ -69,20 +69,20 @@
 	<p>Say you have a user in Sydney, Australia who’s accessing an application running on Workers. This application makes three round trips to a database located in Frankfurt, Germany in order to serve the user’s request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EGjgjjCqADFBQGq5OXVFC/027afe943394d4097aa68837863a2c9a/download--1--6.png" alt="" class="kg-image" width="1600" height="569" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EGjgjjCqADFBQGq5OXVFC/cfd95273a6e9a7afbe09ab27e3c90104/download--1--6.png" alt="" class="kg-image" width="1600" height="569" loading="lazy">
 
 	</figure>
 	<p>Intuitively, you can guess that the bottleneck is going to be the time that it takes the Worker to perform multiple round trips to your database. Instead of the Worker being invoked close to the user, what if it was invoked in a data center closest to the database instead?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4D4IOJIAlHuGYce5DqjGky/8719ef97384e4e5f593bbf54e9a36c68/wAAAABJRU5ErkJggg__" alt="" class="kg-image" width="undefined" height="undefined" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4D4IOJIAlHuGYce5DqjGky/09d291252b813c1981cac9ef19cb1fd7/wAAAABJRU5ErkJggg__" alt="" class="kg-image" width="undefined" height="undefined" loading="lazy">
 
 	</figure>
 	<p>Let’s put this to the test.</p>
 	<p>We measured the request duration for a Worker without Smart Placement and compared it to one with Smart Placement enabled. For both tests, we sent 3,500 requests from Sydney to a Worker which does three round trips to an <a href="https://upstash.com">Upstash</a> instance (free-tier) located in eu-central-1 (Frankfurt).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54nvh0FI2RcDh1gQ9ea4Tq/9396f1d56f37c179fb5d16584c3ba332/image3-7.png" alt="A graph showing request duration with and without Smart Placement enabled. " class="kg-image" width="1524" height="920" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54nvh0FI2RcDh1gQ9ea4Tq/6a0ca6a7ea678cd965c79b25d7b90874/image3-7.png" alt="A graph showing request duration with and without Smart Placement enabled. " class="kg-image" width="1524" height="920" loading="lazy">
 
 	</figure>
 	<p>The results are clear! In this example, moving the Worker close to the backend <b>improved</b> <b>application performance by 4-8x</b>.</p>
@@ -114,7 +114,7 @@ mode = "smart"</code></pre>
 	<p>Once Smart Placement kicks in, you’ll be able to see a new “Request Duration” tab on your Worker. We route 1% of requests without Smart Placement enabled so that you can see its impact on request duration.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IicbhnuU143f8T6EJc9s4/3d24182b6b3d7134beb98451cd35703e/download-9.png" alt="Request duration with and without Smart Placement shown on the Workers dashboard. " class="kg-image" width="1600" height="868" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IicbhnuU143f8T6EJc9s4/2f24b79cc4b019123b1e7ed2df4cd02a/download-9.png" alt="Request duration with and without Smart Placement shown on the Workers dashboard. " class="kg-image" width="1600" height="868" loading="lazy">
 
 	</figure>
 	<p>And yes, it is really that easy!</p>

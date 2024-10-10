@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oYOYNxDVXur9l8h5l6ZHe/618d7c5574d708867e56079a02cda735/Serverless-Week-Cold-Starts_2x-3.png" alt="" class="kg-image" width="2000" height="1015" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oYOYNxDVXur9l8h5l6ZHe/39237ee0a2d46e8e7b7562d087bb8c40/Serverless-Week-Cold-Starts_2x-3.png" alt="" class="kg-image" width="2000" height="1015" loading="lazy">
 
 	</figure>
 	<p>A “cold start” is the time it takes to load and execute a new copy of a serverless function for the first time. It’s a problem that’s both complicated to solve and costly to fix. Other serverless platforms make you choose between suffering from random increases in execution time, or paying your way out with synthetic requests to keep your function warm. Cold starts are a horrible experience, especially when serverless containers can take full <i>seconds</i> to warm up.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7I5ZmdHAJG6sALtXOcCJvD/0ba71ee0ddff8e45df7ce9a0e8594288/cold-start-clock_2x.png" alt="" class="kg-image" width="973" height="823" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7I5ZmdHAJG6sALtXOcCJvD/095f74d232b47b895ff0fd957a67086b/cold-start-clock_2x.png" alt="" class="kg-image" width="973" height="823" loading="lazy">
 
 	</figure>
 	<p>Unlike containers, Cloudflare Workers utilize isolate technology, which measure cold starts in single-digit milliseconds. Well, at least they <i>did</i>. Today, we’re removing the need to worry about cold starts entirely, by introducing support for Workers that have no cold starts at all – that’s right, zero. Forget about cold starts, warm starts, or... any starts, with Cloudflare Workers you get always-hot, raw performance in more than 200 cities worldwide.</p>
@@ -24,7 +24,7 @@
 	<p>For Workers, this has never been much of a problem. In contrast to containers that can spend full seconds spinning up a new containerized process for each function, the isolate technology behind Workers allows it to warm up a function in under 5 milliseconds.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CyIMgGPifYO2zfgd8Y2XV/f92b7763c8abbfeeaae13aca3a8c8122/isolates-model_2x-1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CyIMgGPifYO2zfgd8Y2XV/a7e33fef97b56afc626870d09704ceed/isolates-model_2x-1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<p><i>Learn more about how isolates enable Cloudflare Workers to be performant and secure</i> <a href="https://blog.cloudflare.com/cloud-computing-without-containers"><i>here.</i></a></p>
@@ -42,13 +42,13 @@
 	<p>Previously, Workers would only load and compile after the <i>entire</i> handshake process was complete, which involves two round-trips between the client and server. But wait, we thought, if the hostname is present in the handshake, why wait until the entire process is done to preload the Worker? Since the handshake takes some time, there is an opportunity to warm up resources during the waiting time before the request arrives.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20vUSqi8x0NQ2FPLeQ807y/dfd5a0f7a396b9f45af4f4ac5003309b/Workers-handshake-after_2x.png" alt="" class="kg-image" width="1509" height="1004" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20vUSqi8x0NQ2FPLeQ807y/ce0d66bee2ffdae836174d2649a0f65f/Workers-handshake-after_2x.png" alt="" class="kg-image" width="1509" height="1004" loading="lazy">
 
 	</figure>
 	<p>With our newest optimization, when Cloudflare receives the first packet during TLS negotiation, the “ClientHello,” we hint the Workers runtime to eagerly load that hostname’s Worker. After the handshake is done, the Worker is warm and ready to receive requests. Since it only takes 5 milliseconds to load a Worker, and the average latency between a client and Cloudflare is more than that, the cold start is zero. The Worker starts executing code the moment the request is received from the client.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G67cFXFAeoyLca4YxgeqC/ec36e20d6cf7d639581b54998d85237b/Workers-handshake-before-_2x.png" alt="" class="kg-image" width="1509" height="1004" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7G67cFXFAeoyLca4YxgeqC/c33e1c41c983c8480af36e6418676ae7/Workers-handshake-before-_2x.png" alt="" class="kg-image" width="1509" height="1004" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

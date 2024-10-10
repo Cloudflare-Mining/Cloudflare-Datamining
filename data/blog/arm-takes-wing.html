@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qyl4ETYxmmECQzfzByLtd/529f9ccd39b94fb62934bdc3c4a5a0f7/arm-takes-wing.jpg" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qyl4ETYxmmECQzfzByLtd/47df8866e749c247386aa50dea75a4fc/arm-takes-wing.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>One of the nicer perks I have here at Cloudflare is access to the latest hardware, long before it even reaches the market.</p>
 	<p>Until recently I mostly played with Intel hardware. For example Intel supplied us with an engineering sample of their Skylake based Purley platform back in August 2016, to give us time to evaluate it and optimize our software. As a former Intel Architect, who did a lot of work on Skylake (as well as Sandy Bridge, Ivy Bridge and Icelake), I really enjoy that.</p>
@@ -8,14 +8,14 @@
 	<p>As we head into 2018, however, change is in the air. For the first time in a while, Intel has serious competition in the server market: Qualcomm and Cavium both have new server platforms based on the ARMv8 64-bit architecture (aka aarch64 or arm64). Qualcomm has the Centriq platform (codename Amberwing), based on the Falkor core, and Cavium has the ThunderX2 platform, based on the, ahm ... ThunderX2 core?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OerKvEoy4NXTwjEpDA1tY/7ea27d4ea05fb59e29ee4c746b601cf9/25704115174_061e907e57_o.jpg" alt="" class="kg-image" width="1705" height="1262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OerKvEoy4NXTwjEpDA1tY/d8d9c4dad28ab5bc7100710b3dcf644e/25704115174_061e907e57_o.jpg" alt="" class="kg-image" width="1705" height="1262" loading="lazy">
 
 	</figure>
 	<p>The majestic Amberwing powered by the Falkor CPU <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/drphotomoto/25704115174/in/photolist-FaoiVy-oqK2j2-f6A8TL-6PTBkR-gRasf9-f2R2Hz-7bZeUp-fmxSzZ-o9fogQ-8evb42-f4tgSX-eGzXYi-6umTDd-8evd8H-gdCU2L-uhCbnz-fmxSsX-oxnuko-wb7in9-oqsJSH-uxxAS2-CzS4Eh-6y8KQA-brLjKf-YT2jrY-eGG5QJ-8pLnKt-8eyvgY-cnQqJs-fXYs9f-f2R2jK-28ahBA-fXYjkD-a9K25u-289gvW-PHrqDS-cmkggf-Ff9NXa-EhMcP4-f36dMm-289xP7-Ehrz1y-f2QZRZ-GqT3vt-uUeHBq-xUDQoa-ymMxE9-wWFi3q-MDva8W-8CWG5X">image</a> by <a href="https://www.flickr.com/photos/drphotomoto">DrPhotoMoto</a></p>
 	<p>Recently, both Qualcomm and Cavium provided us with engineering samples of their ARM based platforms, and in this blog post I would like to share my findings about Centriq, the Qualcomm platform.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4t48heslIVcJiaqGTuxwhl/87c727a537926d9179afd0d3588cf1ba/IMG_7222.jpg" alt="alt" class="kg-image" width="2448" height="3264" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4t48heslIVcJiaqGTuxwhl/a968a4b7f0a6a5dd25fc8481029db354/IMG_7222.jpg" alt="alt" class="kg-image" width="2448" height="3264" loading="lazy">
 
 	</figure>
 	<p>The actual Amberwing in question</p>
@@ -103,12 +103,12 @@
 	<h4>Public key cryptography</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jqlU0sjyAGrZaT2Y1x8JR/fa168780ca576ec3ad2faa4c8b1feeaa/pub_key_1_core-2.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jqlU0sjyAGrZaT2Y1x8JR/9fc0bccc931f0e8f8cbf1c8fcd2bdecf/pub_key_1_core-2.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19nPDhEQXutllHbY08nO6O/4f5d8195f8579435238c782bda70d6d7/pub_key_all_core-2.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19nPDhEQXutllHbY08nO6O/0da82dc7260b6dbd732cc3cf79455ba8/pub_key_all_core-2.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>Public key cryptography is all about raw ALU performance. It is interesting, but not surprising to see that in the single core benchmark, the Broadwell core is faster than Skylake, and both in turn are faster than Falkor. This is because Broadwell runs at a higher frequency, while architecturally it is not much inferior to Skylake.</p>
@@ -118,12 +118,12 @@
 	<h4>Symmetric key cryptography</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5c1gb11NBOBVq2PyFyxHIJ/e47e45fd3a3fe47422ddb7575a7cd191/sym_key_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c1gb11NBOBVq2PyFyxHIJ/05ddba2c522eecce2fe1fceca405c3ac/sym_key_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HzScBUWaLPW2l7t0bvsuo/22d2f509bc2e86755958f7177f408f8e/sym_key_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HzScBUWaLPW2l7t0bvsuo/8c235d691f67a6fd9bbfe2176e3037d4/sym_key_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>Symmetric key performance of the Intel cores is outstanding.</p>
@@ -145,24 +145,24 @@
 	<h4>gzip</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pi68sRQQHPJLXZO5vIbhW/f4907763f34d920a1ffedcc5a39e89f2/gzip_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pi68sRQQHPJLXZO5vIbhW/72c6e8568f4d95e3e8d592dd72577ea8/gzip_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S2VrG4fcrmbDUeOtJ453S/1c470e01ba8b26010d376d85cd0fe363/gzip_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/S2VrG4fcrmbDUeOtJ453S/bbc5092e3565339bb7cb44ba7c8dd14d/gzip_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>When using gzip, at the single core level Skylake is the clear winner. Despite having lower frequency than Broadwell, it seems that having lower penalty for branch misprediction helps it pull ahead. The Falkor core is not far behind, especially with lower quality settings. At the system level Falkor performs significantly better, thanks to the higher core count. Note how well gzip scales on multiple cores.</p>
 	<h4>brotli</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LA2CLLkYa9iCe1eQzgs6x/a9a88cfe49d2d829a8d7691d9bc35407/brot_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LA2CLLkYa9iCe1eQzgs6x/1ff12aa354d80166407fe4f9fd538d78/brot_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cuPwzCY4eJzgsOXmNrLXu/ea16ea14e673bedd8a1d669872a12713/brot_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cuPwzCY4eJzgsOXmNrLXu/f7be60b7ac3497c13b3c0a2abe6ac522/brot_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>With brotli on single core the situation is similar. Skylake is the fastest, but Falkor is not very much behind, and with quality setting 9, Falkor is actually faster. Brotli with quality level 4 performs very similarly to gzip at level 5, while actually compressing slightly better (8,010B vs 8,187B).</p>
@@ -182,22 +182,22 @@
 	<p>I would like to start the benchmarks with crypto performance. Thanks to OpenSSL we have good reference numbers, and it is interesting to see just how good the Go library is.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64U9LsIbiAKp7Ut75mMmhj/a384499dfc862cb8af9afb6ef1c8585d/go_pub_key_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64U9LsIbiAKp7Ut75mMmhj/c73c1142233e260e8733b079dac06ff8/go_pub_key_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5e9MFqm53p78KdB211Z8rZ/c3f8074fa6c27dc8293e3c9513a507db/go_pub_key_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5e9MFqm53p78KdB211Z8rZ/bc16992088b6aa826819bec645f99581/go_pub_key_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TZyK91xQAJk4yfvYLnVjZ/861ba0c72816048cf9fe80932d0b05d8/go_sym_key_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TZyK91xQAJk4yfvYLnVjZ/c33931e0ead0f425c157746b9d637fc5/go_sym_key_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S2LKr04vDIi1WrrZNaJn1/1d97f783bead6b55bd269a8af5822b7d/go_sym_key_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1S2LKr04vDIi1WrrZNaJn1/827505e17425e0521142cb397e209504/go_sym_key_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>As far as Go crypto is concerned ARM and Intel are not even on the same playground. Go has very optimized assembly code for ECDSA, AES-GCM and Chacha20-Poly1305 on Intel. It also has Intel optimized math functions, used in RSA computations. All those are missing for ARMv8, putting it at a big disadvantage.</p>
@@ -207,12 +207,12 @@
 	<p>Next in Go performance is gzip. Here again we have a reference point to pretty well optimized code, and we can compare it to Go. In the case of the gzip library, there are no Intel specific optimizations in place.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GbKt2HcdJT5eNMdfsLw4d/cb8c70b24fb1564f7f4d099da9f278bf/go_gzip_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GbKt2HcdJT5eNMdfsLw4d/7c55522afbfa58653a91c28479de8c3d/go_gzip_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59TTlWALNqIkryEc7IwOnB/7f563efe745a7e735a2bf694c93b3ceb/go_gzip_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59TTlWALNqIkryEc7IwOnB/73ee80ab27313c3f55d3cb22c06b6704/go_gzip_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>Gzip performance is pretty good. The single core Falkor performance is way below both Intel processors, but at the system level it manages to outperform Broadwell, and lags behind Skylake. Since we already know that Falkor outperforms both when C is used, it can only mean that Go’s backend for ARMv8 is still pretty immature compared to gcc.</p>
@@ -220,22 +220,22 @@
 	<p>Regexp is widely used in a variety of tasks, so its performance is quite important too. I ran the builtin benchmarks on 32KB strings.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AhmqRQhO37Z03KXfz9PUk/d75596cc4fb75f9350cefe37b1301846/go_regexp_easy_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AhmqRQhO37Z03KXfz9PUk/9b39646f7e800c9a7c8565134d516815/go_regexp_easy_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PH0IDtvODvYcGbECgOvEt/adb2b8f00873cc99e70ceb0f90135682/go_regexp_easy_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PH0IDtvODvYcGbECgOvEt/fbb7c4a099ad2b478aa12b8f3b7fb0a0/go_regexp_easy_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eAhDauk00ZR4A37NPqQm5/2bc84b249b243d24449022af3dfed350/go_regexp_comp_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eAhDauk00ZR4A37NPqQm5/8f1c94f9d34087b57b8672a4928e76a7/go_regexp_comp_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ytsG1skhi4B1v24tqlrWw/e31d95984715e75d0cafd6363691a3ad/go_regexp_comp_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ytsG1skhi4B1v24tqlrWw/d0d803c543a990854bd60916ed03b089/go_regexp_comp_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>Go regexp performance is not very good on Falkor. In the medium and hard tests it takes second place, thanks to the higher core count, but Skylake is significantly faster still.</p>
@@ -244,12 +244,12 @@
 	<p>Another important library for a webserver is the Go strings library. I only tested the basic Replacer class here.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/G20n7Ru5izVdUBOMM8af7/09ea9ad498c84e6bcf54c6d2dd02d187/go_str_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/G20n7Ru5izVdUBOMM8af7/9a257ef47b5a38e3f745a22da7f36da5/go_str_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2W6GTABFY1t23YOIhyLc1A/c283be782db9208dc66093552e9bc30b/go_str_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2W6GTABFY1t23YOIhyLc1A/ce51cb7081718a724b797f39e7ff80e2/go_str_all_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>In this test again, Falkor lags behind, and loses even to Broadwell. Profiling shows significant time is spent in the function runtime.memmove. Guess what? It has a highly optimized assembly code for amd64, that uses AVX2, but only very simple ARM assembly, that copies 8 bytes at a time. By changing three lines in that code, and using the LDP/STP instructions (load pair/store pair) to copy 16 bytes at a time, I improved the performance of memmove by 30%, which resulted in 20% faster EscapeString and UnescapeString performance. And that is just scratching the surface.</p>
@@ -266,12 +266,12 @@
 	<p>Lua is the glue that holds Cloudflare together.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eTdeElawEbvCLpjM9XMUa/15dcbb4e9461caad301ae24345ae75e7/luajit_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eTdeElawEbvCLpjM9XMUa/8527a83cf68acc1e6a48af94860b190c/luajit_1_core.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ohY0uFyotdk0eJt9lU725/4b96122e6547e52414db1f44c9d3037e/luajit_all_cores.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ohY0uFyotdk0eJt9lU725/472f32803de7ecd6e2d95f27948aa85a/luajit_all_cores.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>With the exception of the binary_trees benchmark, the performance of LuaJIT on ARM is very competitive. It wins two benchmarks, and is in almost a tie in a third one.</p>
@@ -292,7 +292,7 @@
 	<p>Concurrently with the test, we took power readings from the respective BMC units of each server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d3OUyJ1m0q11IoWUNCyTp/2d2bb08546051a18dcdc1981c7e1620d/nginx.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3d3OUyJ1m0q11IoWUNCyTp/5cde6f742d596d71d14e5f1355a4b570/nginx.png" alt="alt" class="kg-image" width="1802" height="977" loading="lazy">
 
 	</figure>
 	<p>With the NGINX workload Falkor handled almost the same amount of requests as the Skylake server, and both significantly outperform Broadwell. The power readings, taken from the BMC show that it did so while consuming less than half the power of other processors. That means Falkor managed to get 214 requests/watt vs the Skylake’s 99 requests/watt and Broadwell’s 77.</p>

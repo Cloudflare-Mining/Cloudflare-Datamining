@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uBjvKmUER2NZwN4pOuwYg/4b56592ce7a73d621ec47eadb3c64e3d/image1-14.png" alt="" class="kg-image" width="1531" height="796" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uBjvKmUER2NZwN4pOuwYg/018f425e9728e281dee181d3f7b4f28b/image1-14.png" alt="" class="kg-image" width="1531" height="796" loading="lazy">
 
 	</figure>
 	<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a> are an awesome addition to the Workers developer ecosystem, allowing you to address and work inside a specific Worker to provide consistency in your applications. That sounds exciting at a high-level, but if you're like me, you might be wondering "Okay, so what can I build with that?"</p>
@@ -23,7 +23,7 @@
 	<p>Much like the Doom example we showcased on our blog, the Durable Object managed by the Workers application acts as a message router, accepting game state changes from clients, and retaining a list of active clients that receive those updates via the Worker.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6h6IhL6O32SUwdi9vXF1cl/0b5d1fc5edd48f590968a18387d99c5c/image2-7.png" alt="" class="kg-image" width="1566" height="1057" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6h6IhL6O32SUwdi9vXF1cl/3bf80c9508c1666a2f71b2c3513dd40e/image2-7.png" alt="" class="kg-image" width="1566" height="1057" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -193,7 +193,7 @@ async handleSession(websocket, ip) {
 	<p>When the game starts, you're placed in a single-player environment: your character can move around the static 3D world. Once the game connects to Workers and receives a WebSocket, it can begin to act in a multiplayer context. Here's a wireframe look at the world before it starts up:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ODKLZQJIpgx1RpzAeEbvp/fe60caea3128ec254d96d3f0488cf486/image4-11.png" alt="" class="kg-image" width="1999" height="985" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ODKLZQJIpgx1RpzAeEbvp/74db222f9536c968203270a7a1e4fc23/image4-11.png" alt="" class="kg-image" width="1999" height="985" loading="lazy">
 
 	</figure>
 	<p>When it comes to the actual code for the project, the connection aspects are quite simple: a Connection singleton is created when the game starts, which uses a WebSocket class to connect to Workers and call a variety of functions on new WebSocket updates. You can find the complete code <a href="https://github.com/signalnerve/durable-world/blob/main/packages/unity/Assets/Connection.cs">here</a>, but I'll summarize the important parts below.</p>

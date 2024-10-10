@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/the-complete-guide-to-golang-net-http-timeouts">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vTKS6Y5QPbl52ONtLm9WQ/bf1df25e8306d428f988c5696f8a85c6/the-complete-guide-to-golang-net-http-timeouts.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/the-complete-guide-to-golang-net-http-timeouts">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vTKS6Y5QPbl52ONtLm9WQ/b0047898381acad412621dbd464d7aab/the-complete-guide-to-golang-net-http-timeouts.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When writing an HTTP server or client in Go, timeouts are amongst the easiest and most subtle things to get wrong: there’s many to choose from, and a mistake can have no consequences for a long time, until the network glitches and the process hangs.</p>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP</a> is a complex multi-stage protocol, so there's no one-size fits all solution to timeouts. Think about a <a href="https://www.cloudflare.com/learning/video/what-is-streaming">streaming</a> endpoint versus a JSON API versus a <a href="https://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> endpoint. Indeed, the defaults are often not what you want.</p>
@@ -27,7 +27,7 @@
 	<p><i>The </i><a href="https://blog.cloudflare.com/exposing-go-on-the-internet"><i>"So you want to expose Go on the Internet" post</i></a><i> has more information on server timeouts, in particular about HTTP/2 and Go 1.7 bugs.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sOlH0CkRueHYFHY9JhYag/cb856c8a4f0a9425887c84f7ff36fc21/Timeouts-001.png" alt="HTTP server phases" class="kg-image" width="2215" height="648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sOlH0CkRueHYFHY9JhYag/3688eee879f10624eb42b75302000929/Timeouts-001.png" alt="HTTP server phases" class="kg-image" width="2215" height="648" loading="lazy">
 
 	</figure>
 	<p>It's critical for an HTTP server exposed to the Internet to enforce timeouts on client connections. Otherwise very slow or disappearing clients might leak file descriptors and eventually result in something along the lines of:</p>
@@ -63,7 +63,7 @@ log.Println(srv.ListenAndServe())</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/255U6cjjLCH1vUEJoA9QWo/2345ca2aa4d6aeb213939e0f9b686f00/Timeouts-002.png" alt="HTTP Client phases" class="kg-image" width="2234" height="603" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/255U6cjjLCH1vUEJoA9QWo/b73eae7e11ea4e42c847a5ee9c9c8f96/Timeouts-002.png" alt="HTTP Client phases" class="kg-image" width="2234" height="603" loading="lazy">
 
 	</figure>
 	<p>Client-side timeouts can be simpler or much more complex, depending which ones you use, but are just as important to prevent leaking resources or getting stuck.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OlWeYxXy94qT4DdzZNPeO/4fece6650e19f61b22d292ac2f10a918/image2-22.png" alt="Donning a MASQUE: building a new protocol into Cloudflare WARP" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OlWeYxXy94qT4DdzZNPeO/8a8146649f9cb850ed933cadeb6deb70/image2-22.png" alt="Donning a MASQUE: building a new protocol into Cloudflare WARP" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>When we originally <a href="https://blog.cloudflare.com/announcing-warp-plus">announced</a> WARP, we knew we were launching a product that was different from other VPNs. Cloudflare has not only hundreds more <a href="https://www.cloudflare.com/network">data centers</a> than your typical VPN provider, but also a unique purview into the adoption of open <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">Internet standards</a>. The confluence of these two factors have led us to today’s announcement: support for MASQUE, a cutting-edge new protocol for the beta version of our consumer WARP iOS app.</p>
@@ -29,7 +29,7 @@
 	<p>We’re excited about MASQUE because it fits into the way the Internet is evolving. According to this year’s <a href="https://blog.cloudflare.com/http3-usage-one-year-on">usage report from our Radar team</a>, HTTP/2 is currently the standard in use by the majority of Internet traffic, but HTTP/3 occupies a growing share – 28% as of June 2023. Cloudflare has always been dedicated towards adopting the cutting edge when it comes to standards: when RFC 9000 (the QUIC transport protocol) was published, we enabled it for all Cloudflare customers <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare">the very next day</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28cLqfK5SWtF4rPfghCg5C/d53c5f785cd84854f7401e1060908c22/image4-17.png" alt="" class="kg-image" width="1999" height="926" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28cLqfK5SWtF4rPfghCg5C/968adb4b97779bf8268e786caf40c97f/image4-17.png" alt="" class="kg-image" width="1999" height="926" loading="lazy">
 
 	</figure>
 	<p>So why do we think <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> is so promising? Well, a lot of it has to do with solving performance issues with HTTP/2. HTTP/3 promises a number of things.</p>
@@ -48,19 +48,19 @@
 	<p>You may have heard of HTTP GET, POST, and PUT, but what about CONNECT? HTTP-CONNECT is a method that opens up a tunnel between servers and proxies traffic between them. For a deeper dive, check out our <a href="https://blog.cloudflare.com/a-primer-on-proxies">Primer on Proxies</a>. Many Cloudflare services use this method like so:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wRyhoDt1llea6yFLatWM7/dd6f08039bb2d4466880a601d364e972/image3-19.png" alt="" class="kg-image" width="1520" height="146" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wRyhoDt1llea6yFLatWM7/74be9b291b836b0e6206c91b1fa6f1e7/image3-19.png" alt="" class="kg-image" width="1520" height="146" loading="lazy">
 
 	</figure>
 	<p>Clients send a CONNECT request, and if the proxy sends back a 2xx (success) status code, tunnel secured! Simple. However, remember that QUIC is UDP-based. Luckily, the MASQUE working group has figured out how to run multiple concurrently stream and datagram-based connections. Establishing one looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oM2BqoRmCSSNBnZat6fKg/5d4ee0346f91e14cbee02a0887d43b5e/image7-6.png" alt="" class="kg-image" width="1516" height="244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oM2BqoRmCSSNBnZat6fKg/eea30bf8bfa9bff3cdffa2a2c80471e4/image7-6.png" alt="" class="kg-image" width="1516" height="244" loading="lazy">
 
 	</figure>
 	<p>Here’s what this MASQUE proxying looks like:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74WqCLMSGU3VlkvGpD1kRb/628193959638f4cfd6b5d2fe5edcb4c1/image6-4.png" alt="" class="kg-image" width="1406" height="582" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74WqCLMSGU3VlkvGpD1kRb/785c18b7a14e8f92fa1adb01ee714e43/image6-4.png" alt="" class="kg-image" width="1406" height="582" loading="lazy">
 
 	</figure>
 	<p>From a development perspective, MASQUE also allows us to improve our performance in other ways: we’re already running it for <a href="https://blog.cloudflare.com/icloud-private-relay">iCloud Private Relay</a> and other Privacy Proxy partners. The services that power these partnerships, from our Rust-based <a href="https://blog.cloudflare.com/introducing-oxy">proxy framework</a> to our open source <a href="https://github.com/cloudflare/quiche">QUIC implementation</a>, are already deployed globally in our network and have proven to be fast, resilient, and reliable. We've already learned a lot about how to operate proxies at scale, but there’s plenty of room for improvement. The good news is that every performance improvement we make to speed up MASQUE-based connections for our WARP clients will also improve performance for our customers that use HTTP-CONNECT, and vice-versa.</p>
@@ -80,7 +80,7 @@
 	<p>To toggle between WireGuard and MASQUE, go to Settings &gt; Personalization &gt; Protocol:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7znX2d4cNvCtyP1ZJkGcXp/45531d6cea872a6a2f1ea0663450868a/Screenshot-2023-06-22-at-11.55.53.png" alt="" class="kg-image" width="1612" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7znX2d4cNvCtyP1ZJkGcXp/6e533c1c01642ed66312bc57f5d48915/Screenshot-2023-06-22-at-11.55.53.png" alt="" class="kg-image" width="1612" height="734" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

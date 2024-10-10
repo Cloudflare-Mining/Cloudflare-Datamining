@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NSxUaxAmzc8ORPh7vUIfY/9dc75597acc391fbdf662499ee0bce8c/hybrid-public-key-encryption.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NSxUaxAmzc8ORPh7vUIfY/820d960ed1fadfa9067d68d2f2b913bd/hybrid-public-key-encryption.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>For the last three years, the <a href="https://irtf.org/cfrg">Crypto Forum Research Group</a> of the <a href="https://irtf.org">Internet Research Task Force (IRTF)</a> has been working on specifying the next generation of (hybrid) public-key encryption (PKE) for Internet protocols and applications. The result is Hybrid Public Key Encryption (HPKE), published today as <a href="https://www.rfc-editor.org/rfc/rfc9180.html">RFC 9180</a>.</p>
 	<p>HPKE was made to be simple, reusable, and future-proof by building upon knowledge from prior PKE schemes and software implementations. It is already in use in a large assortment of emerging Internet standards, including TLS <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni">Encrypted Client Hello</a> and <a href="https://datatracker.ietf.org/doc/draft-pauly-dprive-oblivious-doh">Oblivious DNS-over-HTTPS</a>, and has a large assortment of interoperable implementations, including one in <a href="https://github.com/cloudflare/circl/tree/master/hpke">CIRCL</a>. This article provides an overview of this new standard, going back to discuss its motivation, design goals, and development process.</p>
@@ -13,7 +13,7 @@
 	<p>Public-key cryptography is decades old, with its roots going back to the seminal work of Diffie and Hellman in 1976, entitled “<a href="https://ee.stanford.edu/~hellman/publications/24.pdf">New Directions in Cryptography</a>.” Their proposal – today called Diffie-Hellman key exchange – was a breakthrough. It allowed one to transform small secrets into big secrets for cryptographic applications and protocols. For example, one can bootstrap a secure channel for exchanging messages with confidentiality and integrity using a key exchange protocol.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49zWFnGoaVQPUcKjDT52uO/1f2425f5f9ce81f631c74aec57a0c5e8/Screen-Shot-2022-02-24-at-11.09.26-AM.png" alt="Unauthenticated Diffie-Hellman key exchange" class="kg-image" width="1528" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49zWFnGoaVQPUcKjDT52uO/09610fee57bd627cb23faae14bc05ca4/Screen-Shot-2022-02-24-at-11.09.26-AM.png" alt="Unauthenticated Diffie-Hellman key exchange" class="kg-image" width="1528" height="742" loading="lazy">
 
 	</figure>
 	<p>Unauthenticated Diffie-Hellman key exchange</p>
@@ -55,7 +55,7 @@
 	<p>There have been a number of efforts in the past to standardize PKE, most of which focus on elliptic curve cryptography. Some examples of past standards include: ANSI X9.63 (ECIES), IEEE 1363a, ISO/IEC 18033-2, and SECG SEC 1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/85SKzkEqGOEuyw4brVcak/bd64a14da34e1ec375cb117438dbe7b3/Screen-Shot-2022-02-24-at-11.09.53-AM.png" alt="Timeline of related standards and software" class="kg-image" width="2000" height="739" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/85SKzkEqGOEuyw4brVcak/fe2a769b6c8210d6851f265e46dec90a/Screen-Shot-2022-02-24-at-11.09.53-AM.png" alt="Timeline of related standards and software" class="kg-image" width="2000" height="739" loading="lazy">
 
 	</figure>
 	<p>Timeline of related standards and software</p>
@@ -74,7 +74,7 @@
 	<p>HPKE is a public-key encryption construction that is designed from the outset to be simple, reusable, and future-proof. It lets a sender encrypt arbitrary-length messages under a receiver’s public key, as shown below. You can try this out in the browser at <a href="https://www.franziskuskiefer.de/p/tldr-hybrid-public-key-encryption">Franziskus Kiefer’s blog post on HPKE</a>!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QjgXQ7cSPcN5kLUpdpYEO/1d9a944dcccf8d0a1bbf85c18d97a9e9/image5-2.png" alt="HPKE overview" class="kg-image" width="1338" height="632" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QjgXQ7cSPcN5kLUpdpYEO/ba5071877cd0b2b6168d2c4e9493ea52/image5-2.png" alt="HPKE overview" class="kg-image" width="1338" height="632" loading="lazy">
 
 	</figure>
 	<p>HPKE overview</p>
@@ -102,7 +102,7 @@
 	<p>To support these various use cases, HPKE admits different modes of authentication, allowing various combinations of pre-shared key and sender private key authentication. The additional private key contributes to the shared secret between the sender and receiver, and the pre-shared key contributes to the derivation of the application data encryption secrets. This process is referred to as the “key schedule”, and a simplified version of it is shown below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kF11CKLHDthJSduTAD10i/e84555b4ad02be6a9cb6e3263eb48f26/image2-11.png" alt="Simplified HPKE key schedule" class="kg-image" width="876" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kF11CKLHDthJSduTAD10i/d47cc6df3c62d35970674fcd6e25df9e/image2-11.png" alt="Simplified HPKE key schedule" class="kg-image" width="876" height="500" loading="lazy">
 
 	</figure>
 	<p>Simplified HPKE key schedule</p>
@@ -153,7 +153,7 @@ ciphertext = senderContext.Seal(aad, message)</code></pre>
 	<p>HPKE is the result of a three-year development cycle between industry practitioners, protocol designers, and academic cryptographers. In particular, HPKE built upon prior art relating to public-key encryption, iterated on a design and specification in a tight specification, implementation, experimentation, and analysis loop, with an ultimate goal towards real world use.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11GwbhP4mtylFViu3VGoqP/056a2e2128feb4f414a455093d50bd12/image3-15.png" alt="HPKE development process" class="kg-image" width="1010" height="292" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11GwbhP4mtylFViu3VGoqP/580f50018acc54ba7d8fef892f339bf4/image3-15.png" alt="HPKE development process" class="kg-image" width="1010" height="292" loading="lazy">
 
 	</figure>
 	<p>HPKE development process</p>

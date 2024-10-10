@@ -1,5 +1,5 @@
 <div class="mb2 gray5">18 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-speed-brain">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-speed-brain">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-speed-brain">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-speed-brain">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-speed-brain">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-speed-brain">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-speed-brain">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pwJnviaM9hXlQcCbb4uXe/d7255a7db57ac4c4eb65d00798f1d1b9/BLOG-2422_1.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-speed-brain">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-speed-brain">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-speed-brain">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-speed-brain">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-speed-brain">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-speed-brain">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-speed-brain">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pwJnviaM9hXlQcCbb4uXe/deedbd33b4e0df917e700a29b0f4724b/BLOG-2422_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Each time a user visits your web page, they are initiating a race to receive content as quickly as possible. Performance is a critical <a href="https://www.speedcurve.com/blog/psychology-site-speed"><u>factor</u></a> that influences how visitors interact with your site. Some might think that moving content across the globe introduces significant latency, but for a while, network transmission speeds have approached their <a href="https://blog.cloudflare.com/fastest-internet"><u>theoretical limits</u></a>. To put this into perspective, data on Cloudflare can traverse the 11,000 kilometer round trip between New York and London in about 76 milliseconds – faster than the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4043155/#:~:text=one%20blink%20lasts%20about%201/3%20s"><u>blink of an eye</u></a>.</p>
 	<p>However, delays in loading web pages persist due to the complexities of processing requests, responses, and configurations. In addition to pushing advancements in <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>connection establishment</u></a>, <a href="https://blog.cloudflare.com/this-is-brotli-from-origin"><u>compression</u></a>, <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>hardware</u></a>, and <a href="https://blog.cloudflare.com/pingora-open-source"><u>software</u></a>, we have built a new way to reduce page load latency by anticipating how visitors will interact with a given web page.&nbsp;</p>
@@ -19,7 +19,7 @@
 	<p>Before discussing how Speed Brain can help load content exceptionally fast, we need to take a step back to review the complexity of loading content on browsers. Every time a user navigates to your web page, a series of request and response cycles must be completed.&nbsp;</p>
 	<p>After the browser <a href="https://www.debugbear.com/blog/http-server-connections"><u>establishes a secure connection</u></a> with a server, it sends an HTTP request to retrieve the base document of the web page. The server processes the request, constructs the necessary HTML document and sends it back to the browser in the response. </p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hxlOWcShKyU4y6sqNYQs1/3366c47629ecd0181f65b0ff2135f625/BLOG-2422_2.png" alt="BLOG-2422 2" class="kg-image" width="1371" height="1821" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hxlOWcShKyU4y6sqNYQs1/5717e4ebc130887376d629f9926d7a98/BLOG-2422_2.png" alt="BLOG-2422 2" class="kg-image" width="1371" height="1821" loading="lazy">
 	</figure>
 	<p>When the browser receives an HTML document, it immediately begins <a href="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work#parsing"><u>parsing</u></a> the content. During this process, it may encounter references to external resources such as CSS files, JavaScript, images, and fonts. These subresources are essential for rendering the page correctly, so the browser issues additional HTTP requests to fetch them. However, if these resources are available in the browser’s cache, the browser can retrieve them locally, significantly reducing <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency"><u>network latency</u></a> and improving page load times.</p>
 	<p>As the browser processes HTML, CSS, and JavaScript, the rendering engine begins to display content on the screen. Once the page’s visual elements are displayed, user interactions — like clicking a link — prompt the browser to restart much of this process to fetch new content for the next page. This workflow is typical of every browsing session: as users navigate, the browser continually fetches and renders new or uncached resources, introducing a delay before the new page fully loads.</p>
@@ -57,7 +57,7 @@
 	<p>Speed Brain offers a robust approach for implementing predictive prefetching strategies directly within the browser based on the ruleset returned by our servers. By building on lessons from previous attempts, it shifts the responsibility for resource prediction to the client, enabling more dynamic and personalized optimizations based on user interaction – like hovering over a link, for example – and their device capabilities. Instead of the browser sitting idly waiting for the next web page to be requested by the user, it takes cues from how a user is interacting with a page and begins asking for the next web page before the user finishes clicking on a link.</p>
 	<p>Behind the scenes, all of this magic is made possible by the <a href="https://developer.chrome.com/docs/web-platform/prerender-pages#speculation-rules-api"><u>Speculation Rules API</u></a>, which is an emerging standard in the web performance space from Google. When Cloudflare’s Speed Brain feature is enabled, an HTTP header called Speculation-Rules is added to web page responses. The value for this header is a URL that hosts an opinionated Rules configuration. This configuration instructs the browser to initiate prefetch requests for future navigations. Speed Brain does not improve page load time for the first page that is visited on a website, but it can improve it for subsequent web pages that are visited on the same site.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Fu2ADDum0Pp9e5kq94Jd4/1128bad90d426013b5a38fc490611b48/BLOG-2422_3.png" alt="BLOG-2422 3" class="kg-image" width="1999" height="756" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Fu2ADDum0Pp9e5kq94Jd4/3eba0ffc4d94c42af67d4e9c1c708a29/BLOG-2422_3.png" alt="BLOG-2422 3" class="kg-image" width="1999" height="756" loading="lazy">
 	</figure>
 	<p>The idea seems simple enough, but <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching"><u>prefetching comes with challenges</u></a>, as some prefetched content may never end up being used. With the initial release of Speed Brain, we have designed a solution with guardrails that addresses two important but distinct issues that limited previous speculation efforts — <i>stale prefetch configuration</i> and <i>incorrect prefetching. </i>The Speculation Rules API configuration we have chosen for this initial release has been carefully designed to balance safety of prefetching while still maintaining broad applicability of rules for the entire site.</p>
 	<h4>Stale prefetch configuration</h4>
@@ -119,7 +119,7 @@
 	<p>Our global <a href="https://www.cloudflare.com/network"><u>network</u></a> spans over 330 cities and operates within 50 milliseconds of 95% of the Internet-connected population. This extensive reach allows us to significantly improve the performance of cacheable assets for our customers. By leveraging this network for smart prefetching with Speed Brain, Cloudflare can serve prefetched content directly from the CDN cache, reducing network latency to practically instant.</p>
 	<p>Our unique position on the network provides us the leverage to automatically enable Speed Brain without requiring any changes from our customers to their origin server configurations. It's as simple as flipping a switch! Our first version of Speed Brain is now live.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/O3RwzUlOj1GlJuMSrq5TW/c6e37662d3628ddc51db7094aa6338d7/BLOG-2422_4.png" alt="BLOG-2422 4" class="kg-image" width="1370" height="1540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/O3RwzUlOj1GlJuMSrq5TW/55d9ef31a2de21034eb036b8c029d5b6/BLOG-2422_4.png" alt="BLOG-2422 4" class="kg-image" width="1370" height="1540" loading="lazy">
 	</figure>
 	<ul>
 		<li>
@@ -175,7 +175,7 @@
 	</ul>
 	<p>With RUM enabled, you can navigate to the Web Analytics section in the dashboard to see important information about how Speed Brain is helping reduce latency in your <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals"><u>core web vitals</u></a> metrics like Largest Contentful Paint (LCP) and load time. </p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zv2kRvsot12PSNwwaWCad/d30e23daf2cb08441d48e662aa62b331/BLOG-2422_5.png" alt="BLOG-2422 5" class="kg-image" width="1128" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zv2kRvsot12PSNwwaWCad/25e9e56d6f3769b04a8752f99c656f3b/BLOG-2422_5.png" alt="BLOG-2422 5" class="kg-image" width="1128" height="730" loading="lazy">
 	</figure>
 	<p><sub><i>Example RUM dashboard for a website with a high amount of prefetchable content that enabled Speed Brain around September 16.</i></sub></p>
 	<div class="flex anchor relative">
@@ -198,7 +198,7 @@
 	<p>Cloudflare currently has tens of millions of domains using Speed Brain. We have measured the LCP at the 75th quantile (p75) for these sites and found an improvement for these sites between 40% and 50% (average around 45%).&nbsp;</p>
 	<p>We found this improvement by comparing navigational prefetches to normal (non-prefetched) page loads for the same set of domains. </p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fNrRh84I3iZpHiEieNPg8/c57435f4af9fa2b28704b8542ff15966/BLOG-2422_6.png" alt="BLOG-2422 6" class="kg-image" width="682" height="334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fNrRh84I3iZpHiEieNPg8/a789d9d9a736a8eb76fa6120a84cdf10/BLOG-2422_6.png" alt="BLOG-2422 6" class="kg-image" width="682" height="334" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="requests">Requests</h3>
@@ -228,7 +228,7 @@
 	</div>
 	<p>Cloudflare sees hundreds of billions of requests for HTML content each day. Of these requests, about half are cached (make sure your HTML is cacheable!). Around 1% of those requests are for navigational prefetching made by the visitors. This represents significant savings every day for visitors to websites with Speed Brain enabled. Every 24 hours, <b>Speed Brain can save more than 82 years worth of latency!</b></p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CIpcdPC17LY2EGjNxCjNo/98d0a46f11961c84907b842414a966eb/BLOG-2422_7.png" alt="BLOG-2422 7" class="kg-image" width="1210" height="1246" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CIpcdPC17LY2EGjNxCjNo/cf1a915d16384e32d88951a48febed47/BLOG-2422_7.png" alt="BLOG-2422 7" class="kg-image" width="1210" height="1246" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="whats-next">What’s next?&nbsp;</h2>
@@ -293,7 +293,7 @@
 	<p>We strongly recommend that customers also <a href="https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare"><b><u>enable RUM</u></b></a>, found in the same section of the dashboard, to give visibility into the performance improvements provided by Speed Brain and other Cloudflare features and products.&nbsp;</p>
 	<p>We’re excited to continue to build products and features that make web performance reliably fast. If you’re an engineer interested in improving the performance of the web for all, <a href="https://cloudflare.com/jobs">come join us</a>!</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OaN8mrrAKAatOUCqGAsqu/4e95a87f6cb863a4baa74a94f77ddeba/BLOG-2422_8.png" alt="BLOG-2422 8" class="kg-image" width="1800" height="552" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OaN8mrrAKAatOUCqGAsqu/15ac363626180a0f0ed1a0cdb8146e5f/BLOG-2422_8.png" alt="BLOG-2422 8" class="kg-image" width="1800" height="552" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>

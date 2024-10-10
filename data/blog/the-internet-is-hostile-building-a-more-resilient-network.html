@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6D0k6L3wnkjdPsGuwlUu1T/508dbea8bd5b1d80e738f4e42e421312/the-internet-is-hostile-building-a-more-resilient-network.gif" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6D0k6L3wnkjdPsGuwlUu1T/ff982f2944abf5ff1ac07d0ed1e80e69/the-internet-is-hostile-building-a-more-resilient-network.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In a recent <a href="https://blog.cloudflare.com/a-post-mortem-on-this-mornings-incident">post</a> we discussed how we have been adding resilience to our network.</p>
 	<p>The strength of the Internet is its ability to interconnect all sorts of networks — big data centers, <a href="https://www.cloudflare.com/ecommerce">e-commerce websites</a> at small hosting companies, Internet Service Providers (ISP), and <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">Content Delivery Networks (CDN)</a> — just to name a few. These networks are either interconnected with each other directly using a dedicated physical fiber cable, through a common interconnection platform called an Internet Exchange (IXP), or they can even talk to each other by simply being on the Internet connected through intermediaries called transit providers.</p>
@@ -6,7 +6,7 @@
 	<p>Figuring out the route between networks is accomplished through a protocol designed 25 years ago (on <a href="http://www.computerhistory.org/atchm/the-two-napkin-protocol">two napkins</a>) called <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hf3aJRfh6KcsuPEJfYTSe/144a9f1e0602483f6bfc19da738d1961/BGP.jpg" alt="" class="kg-image" width="5100" height="6600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hf3aJRfh6KcsuPEJfYTSe/27f3c58f9490b6f6d135dafc287ee486/BGP.jpg" alt="" class="kg-image" width="5100" height="6600" loading="lazy">
 
 	</figure>
 	<p>BGP allows interconnections between networks to change dynamically. It provides an administrative protocol to exchange routes between networks, and allows for withdrawals in the case that a path is no longer viable (when some route no longer works).</p>
@@ -15,7 +15,7 @@
 	<p>Although BGP is able to handle the coming and going of networks with grace, it wasn’t designed to deal with Internet brownouts. One common problem is that a connection enters a state where it hasn’t failed, but isn’t working correctly either. This usually presents itself as packet loss: packets enter a connection and never arrive at their destination. The only solution to these brownouts is active, continuous monitoring of the health of the Internet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HIfOhD0jflahkGrgaVNZA/00531e51ff1526c7bb8f9ff619dfe0bc/916142_ddc2fd0140_o.gif" alt="" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HIfOhD0jflahkGrgaVNZA/3165e9cdb056961f56364bc86568a508/916142_ddc2fd0140_o.gif" alt="" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jurvetson/916142/in/photolist-5Gky-6yWE3-e2fQKB-eWnwZ-6wHvD2-dgZcgm-6KosGR-e3Hopo-px8hdd-7ZC1ZE-6Kpc5g-mwSyiS-mwSmbA-9cEASh-jXe2g-mDdk7X-far2ZD-ajTJc1-jVhjV4-fsq7m3-p7tksy-6Dfpax-7mbpjF-8m3K8i-ryoZoC-7wCB5-687rPk-njcKr4-7wzXXn-4EnS8a-2kafd3-tcCu6-tcCti-6V5RaY-pGCHzT-4yzuYg-9uwrFi-d9CeFw-7BfKzq-7Bc244-7Bc15c-7BfQRh-6JRaSd-7Bc1zp-7BfRgJ-k17mn-6JM5pM-q4R4Kw-aBAv3F-7BfNCY">image</a> by <a href="https://www.flickr.com/photos/jurvetson">Steve Jurvetson</a></p>
@@ -46,13 +46,13 @@
 	<p>Our monitoring data is stored in real-time in our metrics pipeline powered by a mix of open-source software: <a href="http://zeromq.org">ZeroMQ</a>, <a href="https://prometheus.io">Prometheus</a> and <a href="http://opentsdb.net">OpenTSDB</a>. The data can then be queried and filtered on a single dashboard to give us a clear view of the state of a specific transit provider, or one specific PoP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/451Jz0B6feZP4SHDMdUm0q/fb264e036a5384fec1cb9dd887564055/loss_1.gif" alt="" class="kg-image" width="882" height="239" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/451Jz0B6feZP4SHDMdUm0q/85f6ccc1e0ca94684c2abc4bef3c30d1/loss_1.gif" alt="" class="kg-image" width="882" height="239" loading="lazy">
 
 	</figure>
 	<p>Above we can see a time-lapse of a transit provider having some packet loss issues.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g8KEnve4KdnOmZqvTWLrD/70c305fe73b29123cbd7db11c377b559/Screenshot-2016-10-30-16.34.45.png" alt="" class="kg-image" width="1410" height="243" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g8KEnve4KdnOmZqvTWLrD/0666a47829dce22097cbdf4aa68bfdf5/Screenshot-2016-10-30-16.34.45.png" alt="" class="kg-image" width="1410" height="243" loading="lazy">
 
 	</figure>
 	<p>Here we see a transit provider having some trouble on the US West Coast on October 28, 2016.</p>
@@ -81,21 +81,21 @@
 	<p>We wanted to be able to perform actions such as configuring probes, retrieving their data, and managing complex BGP neighbor configuration regardless of the network device a given PoP was using. With all these features put together into an automated system, we can see the impact of actions it has taken:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BUEy4XCIg71TuqUQvJqo1/8934a55896e27bc23be353cd89261132/Screenshot-2016-10-31-11.04.44.png" alt="" class="kg-image" width="3528" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BUEy4XCIg71TuqUQvJqo1/3b49d0cee7acff31949542ad2e3f3665/Screenshot-2016-10-31-11.04.44.png" alt="" class="kg-image" width="3528" height="836" loading="lazy">
 
 	</figure>
 	<p>Here you can see one of our transit provider having a sudden problem in Hong-Kong. Our system automatically detects the fault and takes the necessary action, which is to disable this link for our routing.</p>
 	<p>Our system keeps improving every day, but it is already running at a high pace and making immediate adjustments across our network to <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">optimize performance</a> every single day.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6d2bX0eRLMj91oM9LrN2Ny/76ff10ddb1a9a3964a4b83021d3e01b6/Screenshot-2016-10-31-14.31.19-2.png" alt="" class="kg-image" width="1077" height="629" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6d2bX0eRLMj91oM9LrN2Ny/21f516b784e01bcdb7326cf3037e3962/Screenshot-2016-10-31-14.31.19-2.png" alt="" class="kg-image" width="1077" height="629" loading="lazy">
 
 	</figure>
 	<p>Here we can see actions taken during 90 days of our mitigation bot.</p>
 	<p>The impact of this is that we’ve managed to make the Internet perform better for our customers and reduce the number of errors that they'd see if they weren't using Cloudflare. One way to measure this is how often we're unable to reach a customer's origin. Sometimes origins are completely offline. However, we are increasingly at a point where if an origin is reachable we'll find a path to reach it. You can see the effects of our improvements over the last year in the graph below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xhgv1pZz3h5ql0xp26nv9/0934aade6b8748327467d70b740e9602/522_year-1.png" alt="" class="kg-image" width="1478" height="726" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Xhgv1pZz3h5ql0xp26nv9/d6493cdf3157ec25d3fcf3708cd6c561/522_year-1.png" alt="" class="kg-image" width="1478" height="726" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

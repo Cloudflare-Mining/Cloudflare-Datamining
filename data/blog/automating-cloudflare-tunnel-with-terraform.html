@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3v0TUHcslCYkLfDFBPyxwA/7538733250acd0b44fe70ae3a4b0775a/Terraform-tunnels.png" alt="" class="kg-image" width="1600" height="766" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3v0TUHcslCYkLfDFBPyxwA/d79eb11ff3aaf7393976c73f98cd90f4/Terraform-tunnels.png" alt="" class="kg-image" width="1600" height="766" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Tunnel allows you to connect applications securely and quickly to Cloudflare’s edge. With Cloudflare Tunnel, teams can expose anything to the world, from internal subnets to containers, in a secure and fast way. Thanks to recent developments with our <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/603">Terraform provider</a> and the advent of <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever">Named Tunnels</a> it’s never been easier to spin up.</p>
@@ -18,7 +18,7 @@
 	<p>With the jump to Named Tunnels and a supported <a href="https://api.cloudflare.com/#argo-tunnel-create-argo-tunnel">API endpoint</a> Cloudflare users can automate this manual process. Named Tunnels also moved to allow a <code>.json</code> file for the origin side tunnel credentials instead of (or with) the <code>cert.pem</code> file. It has been a dream of mine since joining Cloudflare to write a Cloudflare Tunnel as code, along with my instance/application, and deploy it while I go walk my dog. Tooling should be easy to deploy and robust to use. That dream is now a reality and my dog could not be happier.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gSV6JJ9YIcaT8Mb0Jd3M3/c13cad5755a80a681c03e2b081068195/image3-2.png" alt="" class="kg-image" width="1800" height="1800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gSV6JJ9YIcaT8Mb0Jd3M3/7903db595fad3dcf6d88732542562f99/image3-2.png" alt="" class="kg-image" width="1800" height="1800" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -282,7 +282,7 @@ resource "cloudflare_access_policy" "ssh_policy" {
 	<p>Now to connect to this SSH endpoint. First we need to spin up our environment. This can be done with <code>terraform plan</code> and then <code>terraform apply</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7t9hVHmNwlWQASoIFnboLt/6ac3d63e2df746ec44f6bb09e0fffbec/image5-2.png" alt="" class="kg-image" width="1667" height="708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7t9hVHmNwlWQASoIFnboLt/9efaaf728a3a432e73afff6c666544f6/image5-2.png" alt="" class="kg-image" width="1667" height="708" loading="lazy">
 
 	</figure>
 	<p>On my workstation I have <code>cloudflared</code> installed and updated my SSH config to proxy traffic for this SSH endpoint through <code>cloudflared</code>.</p>
@@ -298,25 +298,25 @@ Host ssh.chrisdlg.com
 	<p>I can then SSH with my local user on the remote machine (cdlg) at the SSH hostname (ssh.chrisdlg.com). The instance of cloudflared running on my workstation will then proxy this request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BcyIgXbVE2wu6rRq6pZgJ/71aca5082a4a413e0b4fc9f1dbc76b66/image4-3.png" alt="" class="kg-image" width="1999" height="306" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BcyIgXbVE2wu6rRq6pZgJ/8690b09b9e60f28a7fac1377942b7bc4/image4-3.png" alt="" class="kg-image" width="1999" height="306" loading="lazy">
 
 	</figure>
 	<p>This will open a new tab in my current browser and direct me to the Cloudflare Access application recently created with Terraform. Earlier in the Access resource we set the Cloudflare user as denoted by the <code>var.cloudflare_email</code> variable as the criteria for the Access policy. If the correct email address is provided the user will receive an email similar to the following.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z4k965ZDENHc6gTFX0AZx/aac4fdfdecff114222b11131001d831c/image1-3.png" alt="" class="kg-image" width="796" height="407" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Z4k965ZDENHc6gTFX0AZx/6914c9f98fdab2960ce873491966471d/image1-3.png" alt="" class="kg-image" width="796" height="407" loading="lazy">
 
 	</figure>
 	<p>Following the link or providing the pin on the previously opened tab will complete the authentication. Hitting ‘approve’ tells Cloudflare Access that the user should be allowed through per the length of the <code>session_duration</code> argument in the <code>cloudflare_access_application</code> resource. Navigating back to the terminal we can see that we are now on the server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zogkUR1oIkrVNTAXAMlnl/686e8d4bffd807fe0e658f50cc8f49ae/image6.png" alt="" class="kg-image" width="1379" height="851" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zogkUR1oIkrVNTAXAMlnl/35dfd66180b79030974a4df03154978a/image6.png" alt="" class="kg-image" width="1379" height="851" loading="lazy">
 
 	</figure>
 	<p>If we check the server’s authentication log we can see that connections from the tunnel are coming in via <code>localhost (127.0.0.1)</code>. This allows us to lock down external network access on the SSH port of the server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HQdBMj9vWK7HiKP6VXwcI/591827faa1ad787727f08aa012da02ce/image2-2.png" alt="" class="kg-image" width="1323" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HQdBMj9vWK7HiKP6VXwcI/383ba96ae8d91fd2eec69bf43a41e895/image2-2.png" alt="" class="kg-image" width="1323" height="332" loading="lazy">
 
 	</figure>
 	<p>The full config of this deployment can be viewed <a href="https://github.com/cloudflare/argo-tunnel-examples/tree/master/terraform-zerotrust-ssh-http-gcp">here</a>.</p>

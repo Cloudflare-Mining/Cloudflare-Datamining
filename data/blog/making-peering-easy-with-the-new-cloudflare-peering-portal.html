@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bkTezXVg1B2FiD7CJ2NFG/099874e8c7710d96784d1a61a2afcd01/image5-2.png" alt="Making peering easy with the new Cloudflare Peering Portal" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bkTezXVg1B2FiD7CJ2NFG/eb809fee92bf2f26776db163a5cf0414/image5-2.png" alt="Making peering easy with the new Cloudflare Peering Portal" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>In 2018, we launched the <a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta">Cloudflare Peering Portal</a>, which allows network operators to see where your traffic is coming from and to identify the best possible places to interconnect with Cloudflare. We’re excited to announce that we’ve made it even easier to interconnect with Cloudflare through this portal by removing Cloudflare-specific logins and allowing users to request sessions in the portal itself!</p>
@@ -29,7 +29,7 @@
 	<p>In the example below, AS 1 is trying to send packets to AS 3, but there are two possible paths the packets can go:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fCNEjOO8bFStrKBlS0Arw/acd19fb426c4e2b9be4768da38e13854/image6-3.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fCNEjOO8bFStrKBlS0Arw/dd1387ec2ecbb4896e9aa564ebb1acbc/image6-3.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
 
 	</figure>
 	<p>The BGP decision algorithm will select the path with the least number of hops, meaning that the path the packets will take is AS 1 → AS 2 → AS 3.</p>
@@ -54,7 +54,7 @@
 	<p>An <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp">Internet exchange</a> (IX) is a building that specifically houses many networks in the same place. Each network gets one or more ports, and plugs into what is essentially a shared switch so that every network has the potential to interconnect. These switches are massive and house hundreds, even thousands of networks. This is similar to a PNI, but instead of two networks directly connecting to each other, thousands of networks connect to the same device and establish BGP sessions through that device.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40jRLO6WCOpRFMDvx0emdm/c63c5d4bf080e4ee66bbd76ff4cddaa0/image7-1.png" alt="" class="kg-image" width="1280" height="853" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40jRLO6WCOpRFMDvx0emdm/390eb63b3f027c2bd8e069a8a479fb59/image7-1.png" alt="" class="kg-image" width="1280" height="853" loading="lazy">
 
 	</figure>
 	<p>Fabienne Serriere: An optical patch panel of the <a href="https://en.wikipedia.org/wiki/Amsterdam_Internet_Exchange">AMS-IX</a> Internet exchange point, in Amsterdam, Netherlands. <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></p>
@@ -84,13 +84,13 @@
 	<p>Here’s an example. Janine is trying to order food from Acme Food Services, a site protected by Cloudflare. She lives in Boston and connects to Cloudflare via her ISP. Acme Food Services has their origin in Boston as well, so for Janine to see the fastest performance, her ISP should connect to Cloudflare in Boston and then Cloudflare should route her traffic directly to the Acme origin in Boston. Unfortunately for Janine, her ISP doesn’t peer with Cloudflare in Boston, but instead peers with Cloudflare in New York: meaning that when Janine connects to Acme, her traffic is going through her ISP to New York before it reaches Cloudflare, and then all the way back to Boston to the Acme origins!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NcWwy6hBN1nUY8V2xdkX9/0a87acc37982947e3bc1f76168ac4d0f/image2-11.png" alt="" class="kg-image" width="1172" height="635" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NcWwy6hBN1nUY8V2xdkX9/6aba383e4cdf25084d5c1df8362d65e5/image2-11.png" alt="" class="kg-image" width="1172" height="635" loading="lazy">
 
 	</figure>
 	<p>But with proper peering, we can ensure that traffic is routed over the fastest possible path to ensure Janine connects to Cloudflare in Boston and everything stays local:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65pTmQFpQ8GO5tclIcfCZm/d29b25aabd27f429f566e17e5866a10f/image3-6.png" alt="" class="kg-image" width="606" height="635" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65pTmQFpQ8GO5tclIcfCZm/5a34f5d91c32a5be9312cda0577ad950/image3-6.png" alt="" class="kg-image" width="606" height="635" loading="lazy">
 
 	</figure>
 	<p>Fortunately for Janine, Cloudflare peers with over 10,000 networks in the world in over 275 locations, so high latency on the network is rare. And every time a new network peers with us, we help make user traffic even faster. So now let’s talk about how we’ve made peering even easier.</p>
@@ -107,7 +107,7 @@
 	<p>When you log into the Cloudflare Peering Portal, simply click on the PeeringDB login button and enter your PeeringDB credentials. Cloudflare will then use this login information to determine what networks you are responsible for and automatically load data for those networks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5C7TXmFaSzAPireLwIwvUa/71f7508cdfa572c7c934dd9e74710551/image4-5.png" alt="" class="kg-image" width="1170" height="498" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5C7TXmFaSzAPireLwIwvUa/7972e321ab1443e565c19f481f6da35e/image4-5.png" alt="" class="kg-image" width="1170" height="498" loading="lazy">
 
 	</figure>
 	<p>From here you can see all the places your network exchanges traffic with Cloudflare. You can see all the places you currently have direct peering with us, as well as locations for potential peering: places you could peer with us but currently don’t. Wouldn’t it be great if you could just click a button and configure a peering session with Cloudflare directly from that view? Well now you can!</p>
@@ -122,7 +122,7 @@
 	<p>Starting today, you can now request peering sessions with Cloudflare at Internet Exchanges right from the peering portal, making it even easier to get connected with Cloudflare. When you’re looking at potential peering sessions in the portal, you’ll now see a button that will allow you to verify your peering information is correct, and if it is to proceed with a peering request:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23BphHjyLZvbn9oOnFq6RY/9c8428206e8940e0fc574e35725a01a1/image1-13.png" alt="" class="kg-image" width="1188" height="686" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23BphHjyLZvbn9oOnFq6RY/b3181625f4efb7a2166df379afb23588/image1-13.png" alt="" class="kg-image" width="1188" height="686" loading="lazy">
 
 	</figure>
 	<p>Once you click that button, a ticket will go immediately to our network team to configure a peering session with you using the details already provided in PeeringDB. Our network team looks at whether we already have existing connections with your network at that location, and also what the impact to your Internet traffic will be if we peer with you there. Once we’ve evaluated these variables, we’ll proceed to establish a BGP session with you at the location and inform you via email that you’ve already provided via PeeringDB. Then all you have to do is accept the BGP sessions, and you’ll be exchanging traffic with Cloudflare!</p>

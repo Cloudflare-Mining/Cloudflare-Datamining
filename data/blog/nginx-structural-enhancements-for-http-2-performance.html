@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WsanUQ1CjQ2rrYztN1biZ/5d11c8df1b118dc827dd2c56b3aa0a98/http2prioritization-copy_2x-4.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WsanUQ1CjQ2rrYztN1biZ/e75c22c28570ae6ee27239c17fcec321/http2prioritization-copy_2x-4.png" alt="" class="kg-image" width="2000" height="1025" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -61,7 +61,7 @@
 	<p>Similar to the original NGINX, our Enhanced HTTP/2 Prioritization algorithm will place a cohort of HTTP/2 data frames into a write queue as a result of an iteration of the prioritization strategies being applied to them. The contents of the write queue would be destined to be written the downstream TLS layer. &nbsp;Also similar to the original NGINX, the write queue may only be partially written to the TLS layer due to back-pressure from the network connection that has temporarily reached write capacity.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bBa68J0uK2BJvMi5ouTD5/33de105d238567cb7e19c45438019685/Write-Queue-Construction-Without-Reclamation.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bBa68J0uK2BJvMi5ouTD5/92ce87c4a134c046206f2ac46ba55d2c/Write-Queue-Construction-Without-Reclamation.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>Early on in our project, if the write queue was only partially written to the TLS layer, we would simply leave the frames in the write queue until the backlog was cleared, then we would re-attempt to write that data to the network in a future write iteration, just like the original NGINX.</p>
@@ -70,7 +70,7 @@
 	<p>The following diagram illustrates this process:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uEXuMETgrrFmtN84ZlQEL/3280eb265d28bf388c8d78d8edcc9010/Write-Queue-Construction-With-Reclamation.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7uEXuMETgrrFmtN84ZlQEL/52b63e9fd2401ec0c7c56cd442f1c14e/Write-Queue-Construction-With-Reclamation.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>We were very pleased to ship Enhanced HTTP/2 Prioritization with the reclamation feature included as this single enhancement greatly increased Potential and made up for the fact that we had to withhold the next enhancement for speed week due to its delicacy.</p>
@@ -88,14 +88,14 @@
 	<p>The existing NGINX workflow is illustrated in this diagram:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69wml2jrdBLGZW1nMImkL4/f90a2e744bd1c326895a71a96f44ad0e/Upstream-Read-Event.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69wml2jrdBLGZW1nMImkL4/9583420328f40b1e521d0f0a8412614e/Upstream-Read-Event.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>By committing each streams’ frames to the TLS layer one stream at a time, many frames may pass entirely through the NGINX system before backpressure on the downstream connection allows the queue of frames to build up, providing an opportunity for these frames to be in proximity and allowing prioritization logic to be applied. &nbsp;This negatively impacts Potential and reduces the effectiveness of prioritization.</p>
 	<p>The Cloudflare Enhanced HTTP/2 Prioritization modified NGINX aims to re-arrange the internal workflow described above into the following model:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4d0xrrRBO4J3C1HCe4Hy8M/ec910d3c017c7157345eb40266938434/Upstream-Read-Reordered.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4d0xrrRBO4J3C1HCe4Hy8M/43b971a2a8592e5708f930b1c6bfddfb/Upstream-Read-Reordered.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>Although we continue to frame upstream data into HTTP/2 data frames in the separate iterations for each upstream connection, we no longer commit these frames to a single write queue within each iteration, instead we arrange the frames into the per-stream queues described earlier. We then post a single event to the end of the per-connection iterations, and perform the prioritization, queuing and writing of the HTTP/2 data frames of all streams in that single event.</p>
@@ -161,7 +161,7 @@
 	<p>The process is illustrated in this diagram:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rpLV7aUoGwAE6KcQmEts5/d09ea8f12355a45b735209df19078503/Upstream-Buffer-Current-1.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rpLV7aUoGwAE6KcQmEts5/9bfa13e2ef08845172e915f01354dc63/Upstream-Buffer-Current-1.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>You may ask: When the leading part of the upstream buffer is marked as Free (in blue in the diagram), even though the trailing part of the upstream buffer is still Busy, can the Free part be re-used for reading more data from upstream?</p>
@@ -170,7 +170,7 @@
 	<p>This is a shortcoming in NGINX and is clearly undesirable as it interrupts the flow of data into the system. We asked: what if we could cycle through this buffer region and re-use parts at the head as they became Free? We seek to answer that question in the near future by testing the following buffering model in NGINX:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WkYGqHYhndsb6dYFqM7TT/bbe3c00d8236642b46c6faa3a038fd97/Upstream-Buffer-Improved.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WkYGqHYhndsb6dYFqM7TT/6cf0dfe91b09ce205f512347d3427255/Upstream-Buffer-Improved.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -187,13 +187,13 @@
 	<p>The following diagram illustrates this undersize buffer situation:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/21JR00rWD6FPowvk2nMNRs/e97faba163c77256472a12ecadac5c85/TLS-Layer-Buffering-Undersize.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21JR00rWD6FPowvk2nMNRs/79712a865fa021954e8c37f187dac002/TLS-Layer-Buffering-Undersize.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>If the TLS buffer is too big, then an excessive amount of HTTP/2 data will be committed to encryption and if it failed to write to the network due to backpressure, it would be locked into the TLS layer and not be available to return to the HTTP/2 layer for the reclamation process, thus reducing the effectiveness of reclamation. The following diagram illustrates this oversize buffer situation:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wwWnqkWaJ0CpbGLCQWp1l/186a80068bc927b8b93de6ac770ddbc2/TLS-Layer-Buffering-Oversize.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wwWnqkWaJ0CpbGLCQWp1l/7e18f9e66c0a7ee9ed83357f52db9398/TLS-Layer-Buffering-Oversize.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>In the coming months, we will embark on a process to attempt to find the ‘goldilocks’ spot for TLS buffering: To size the TLS buffer so it is big enough to maintain efficiency of encryption and network writes, but not so big as to reduce the responsiveness to incomplete network writes and the efficiency of reclamation.</p>

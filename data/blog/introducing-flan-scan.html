@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4b5oZ2Bb01blXADYYOolDv/38d8e19cf3a1e0a36dcf8b4692703cb8/flan-scan-light_3x-1-.png" alt="" class="kg-image" width="2964" height="1494" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4b5oZ2Bb01blXADYYOolDv/1fca96ceba0a036118b9eb10dbe743b6/flan-scan-light_3x-1-.png" alt="" class="kg-image" width="2964" height="1494" loading="lazy">
 
 	</figure>
 	<p>Today, we’re excited to open source <a href="https://github.com/cloudflare/flan">Flan Scan</a>, Cloudflare’s in-house lightweight network vulnerability scanner. Flan Scan is a thin wrapper around <a href="https://nmap.org">Nmap</a> that converts this popular open source tool into a vulnerability scanner with the added benefit of easy deployment.</p>
@@ -24,7 +24,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://downloads.ctfassets.net/slt3lc6tev37/2P4YSEYrC1ofUi7vKitDR4/44d23e6f570300c928349cbfe0504f94/New_report_gif.gif" alt="" class="kg-image" width="1046" height="918" loading="lazy">
+		<img src="https://downloads.ctfassets.net/zkvhlag99gkb/2P4YSEYrC1ofUi7vKitDR4/284e76df1c2b00c24e40bc495962595d/New_report_gif.gif" alt="" class="kg-image" width="1046" height="918" loading="lazy">
 
 	</figure>
 	<p>Sample run of Flan Scan from start to finish.&nbsp;</p>
@@ -49,7 +49,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kAAc3ohubexEKfI60A0nS/ee8c757bdcc630e49c053a0bd85c6571/FLan-scan-diagram_3x.png" alt="" class="kg-image" width="2000" height="1243" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kAAc3ohubexEKfI60A0nS/9101e8229e320c6b53771ad09ab87e0e/FLan-scan-diagram_3x.png" alt="" class="kg-image" width="2000" height="1243" loading="lazy">
 
 	</figure>
 	<p>The first step of Flan Scan is running an Nmap scan with service detection. Flan Scan's default Nmap scan runs the following scans:</p>
@@ -67,14 +67,14 @@
 	<p>Other types of scanning such as UDP scanning and IPv6 addresses are also possible with Nmap. Flan Scan allows users to run these and any other extended features of Nmap by passing in Nmap flags at runtime.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jGqNtdhSePb0Iz3JEUCZF/7e5ca83d14313e459acf2082d29b3a90/Screen-Shot-2019-11-11-at-2.15.01-PM.png" alt="" class="kg-image" width="1334" height="520" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jGqNtdhSePb0Iz3JEUCZF/c04a4b36066b7e083be64c5306df5eb4/Screen-Shot-2019-11-11-at-2.15.01-PM.png" alt="" class="kg-image" width="1334" height="520" loading="lazy">
 
 	</figure>
 	<p>Sample Nmap output</p>
 	<p>Flan Scan adds the "vulners" script tag in its default Nmap command to include in the output a list of vulnerabilities applicable to the services detected. The vulners script works by making API calls to a service run by <a href="https://vulners.com">vulners.com</a> which returns any known vulnerabilities for the given service.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/476YY2nBlzz4hMVJVfQ98h/04185df34acad1807ded199453ef3af9/Screen-Shot-2019-11-11-at-2.28.58-PM.png" alt="" class="kg-image" width="1336" height="1406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/476YY2nBlzz4hMVJVfQ98h/f5bf27b240590dfb5ce700258875aa5b/Screen-Shot-2019-11-11-at-2.28.58-PM.png" alt="" class="kg-image" width="1336" height="1406" loading="lazy">
 
 	</figure>
 	<p>Sample Nmap output with Vulners script</p>
@@ -82,7 +82,7 @@
 	<p>Flan Scans results are structured around services. The report enumerates all vulnerable services with a list beneath each one of relevant vulnerabilities and all IP addresses running this service. This structure makes the report shorter and actionable since the services that need to be remediated can be clearly identified. Flan Scan reports are made using <a href="https://www.latex-project.org">LaTeX</a> because who doesn’t like nicely formatted reports that can be generated with a script? The raw LaTeX file that Flan Scan outputs can be converted to a beautiful PDF by using tools like pdf2latex or TeXShop.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VR5TpcOccduNyZWRNYN8A/1f075dd0512688c96298ed7854ced07e/Screen-Shot-2019-11-18-at-4.51.06-PM.png" alt="" class="kg-image" width="1768" height="964" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VR5TpcOccduNyZWRNYN8A/b13b1da0c38657eb8244cd396061799a/Screen-Shot-2019-11-18-at-4.51.06-PM.png" alt="" class="kg-image" width="1768" height="964" loading="lazy">
 
 	</figure>
 	<p>Sample Flan Scan report</p>

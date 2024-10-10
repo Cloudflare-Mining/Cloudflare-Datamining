@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xCkAJAUyFmN2b0MizGCP0/e28beb0133fb88e210c7faf0f685f11e/image1-28.png" alt="Seamless Postgres integration on Cloudflare Workers with Neon.tech" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xCkAJAUyFmN2b0MizGCP0/e191956551ac3604f322f51bee54dc02/image1-28.png" alt="Seamless Postgres integration on Cloudflare Workers with Neon.tech" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>It’s no wonder that Postgres is one of the world’s favorite databases. It’s easy to learn, a pleasure to use, and can scale all the way up from your first database in an early-stage startup to the system of record for giant organizations. Postgres has been an integral part of Cloudflare’s journey, so we know this fact well. But when it comes to connecting to Postgres from environments like Cloudflare Workers, there are unfortunately a bunch of challenges, as we mentioned in our <a href="https://blog.cloudflare.com/relational-database-connectors">Relational Database Connector post</a>.</p>
@@ -46,7 +46,7 @@ export default {
 	<p>You can also <a href="https://github.com/neondatabase/serverless-cfworker-demo">check out the source</a> for a slightly more complete demo app. This shows <a href="https://neon-cf-pg-test.pages.dev">your nearest UNESCO World Heritage sites</a> using IP geolocation in Cloudflare Workers and nearest-neighbor sorting in PostGIS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cdG0zVBCrFyiBilGo94o8/cae4cd6e0a370a502ce3fc5976973ac7/image3-18.png" alt="" class="kg-image" width="1999" height="1041" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cdG0zVBCrFyiBilGo94o8/1d33ccaca61c6efec303aaa763ddb1e8/image3-18.png" alt="" class="kg-image" width="1999" height="1041" loading="lazy">
 
 	</figure>
 	<p>How does this work? In this case, we take the coordinates supplied to our Worker in <code>request.cf.longitude</code> and <code>request.cf.latitude</code>. We then feed these coordinates to a SQL query that uses the <a href="https://postgis.net/docs/geometry_distance_knn.html">PostGIS distance operator <code>&lt;-&gt;</code></a> to order our results:</p>
@@ -90,7 +90,7 @@ const { rows } = await client.query(`
 	<p>This is what the solution looks like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CWb6OEZuNu8mg1YJsQTzY/3880b43885d3ad4b3aac234b427ca342/image2-23.png" alt="" class="kg-image" width="1999" height="1050" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CWb6OEZuNu8mg1YJsQTzY/3c14f184ab034be30f106f921f2485c7/image2-23.png" alt="" class="kg-image" width="1999" height="1050" loading="lazy">
 
 	</figure>
 	<p>It consists of three parts:</p>

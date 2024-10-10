@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pwJdbWdP6r2VPF0ttMmuK/e2dfdeb407614bacad414afcb943acf5/image2-38.png" alt="" class="kg-image" width="1999" height="903" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pwJdbWdP6r2VPF0ttMmuK/7405e9242133a524cb595874405525af/image2-38.png" alt="" class="kg-image" width="1999" height="903" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> are incredibly important. Throughout the 2000s, they formed the <a href="https://blog.postman.com/intro-to-apis-history-of-apis">backbone of popular web services</a>, helping the Internet become more useful and accessible. In the 2010s, APIs played a larger role in our lives, allowing personal devices to communicate with the digital world. Many of our daily activities, like using rideshare services and paying for lattes, are dependent on this form of modern communication. Now we are approaching a post-pandemic world in which APIs will be more important than ever.</p>
@@ -21,7 +21,7 @@
 	<p>Others have suggested deploying <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> on API endpoints. In many cases, this is effective and adds some degree of protection, particularly if the API is meant to be used by browsers (as part of a web application). But Bot Management was designed to find bad actors among <i>humans</i>. These actors typically use automation, while humans typically use browsers, so the distinction is somewhat clear. But APIs present a different problem. APIs are automated, so any solution must find bad bots among <i>other bots</i>. We must distinguish between good and bad automated traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YhZhSWpHpXwLgmsEx4EiD/5febcc804a6b91423e73293bb9bee44f/image1-46.png" alt="" class="kg-image" width="1642" height="634" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YhZhSWpHpXwLgmsEx4EiD/0a68497c077f8b741568d6c0b1687c3a/image1-46.png" alt="" class="kg-image" width="1642" height="634" loading="lazy">
 
 	</figure>
 	<p>To solve the API problem, we had to develop a measure of <i>intent</i> — almost like interviewing each request to determine its aims. We must answer the following questions purely based on circumstantial data:</p>
@@ -46,7 +46,7 @@
 	<p>Some of our users tell us they can’t keep track of their APIs. Before we even try to protect these endpoints, we need to map them out and understand the <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface area</a>. We call this “<a href="https://www.cloudflare.com/learning/learning/security/api/what-is-api-discovery">API Discovery</a>.”</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2l4AcWqZknWW9JvLWjLMV7/0989ac7fdf53b5c6177cefa2ba57206e/image6-20.png" alt="" class="kg-image" width="868" height="448" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2l4AcWqZknWW9JvLWjLMV7/d93c1253b1d39a3b4d90991c6f0630e0/image6-20.png" alt="" class="kg-image" width="868" height="448" loading="lazy">
 
 	</figure>
 	<p>The discovery process starts with simplification. Large websites may have thousands of APIs, but a lot of the calls look similar. Consider the following two paths:</p>
@@ -87,7 +87,7 @@ logout</code></pre>
 	<p>Consider the API path <b>/update-score</b> for a sports website. You can probably guess what this does — it routinely fetches the latest score for a game, which might happen multiple times per second. We might deploy unsupervised learning and set a high threshold for normal use. Perhaps 150 requests per minute for a specific IP, user agent, or other session identifier.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7s6VcDHxOjW2iND3mUIyXP/119b3bdfe5ddcd4e1c3cc737be7d2866/image7-10.png" alt="" class="kg-image" width="1595" height="704" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7s6VcDHxOjW2iND3mUIyXP/b56d43a6b4a4d70a55e463f603c576b1/image7-10.png" alt="" class="kg-image" width="1595" height="704" loading="lazy">
 
 	</figure>
 	<p>But that same sports website could require its users to have accounts. In this case, a separate <b>/reset-password</b> API could exist on the same domain. No sports fan would reset their password as much as they check scores, so this path would likely have a lower threshold. The beauty of unsupervised learning (and our form of abuse detection) is that we map out your site, develop separate baselines for each API, and try to predict the intent of requests as they are made. If we see 150 sudden attempts to reset a password, our systems immediately suspect an <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">account takeover</a>.</p>
@@ -103,14 +103,14 @@ logout</code></pre>
 	<p>Our team often applies the <a href="https://www.nytimes.com/2020/12/05/health/coronavirus-swiss-cheese-infection-mackay.html">Swiss Cheese Model</a> to security. This approach has been used in healthcare, physical security, and many other industries, but the idea is simple. Any layer of defense will have a few holes — but stacking <i>unique</i> defenses (or slices of cheese) next to each other improves overall safety.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MrZjxJssCNdQ37LbAFNVx/c1edda01cad60a601ee45671000b6718/image5-33.png" alt="" class="kg-image" width="1999" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MrZjxJssCNdQ37LbAFNVx/77c3639aa98255aa90f2dc8a0ef29ff2/image5-33.png" alt="" class="kg-image" width="1999" height="1067" loading="lazy">
 
 	</figure>
 	<p>In the world of Internet security, we call this “defense in depth.” APIs are first protected by Cloudflare’s security suite (DDoS, etc.). The second layer uses volumetric detection (described above). But the third layer is completely different from anything we have done before: it is <i>sequential</i> anomaly detection. We expect this to dramatically change the API landscape.</p>
 	<p>Here’s how it works. As usual, we start by running path normalization to find a finite set of states. In one test, this process reduced about 10,000 states to just 60, massively simplifying the API problem. Then we use <a href="https://brilliant.org/wiki/markov-chains">Markov Chains</a> to build a transition matrix, which is a map of all the states and where they commonly lead. We finish by assigning probabilities to each transition.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YWvGBNdZYEkRmZ0kNmnWV/349a5143d48e9a04d254f984b31ebdcc/image4-39.png" alt="" class="kg-image" width="1999" height="830" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YWvGBNdZYEkRmZ0kNmnWV/ab540765056762c31fc3477cea5c2229/image4-39.png" alt="" class="kg-image" width="1999" height="830" loading="lazy">
 
 	</figure>
 	<p>The end result? We can conceptually piece together the movement on a site, which might consist of the following steps:</p>
@@ -140,7 +140,7 @@ logout</code></pre>
 	<p>The first is Bot Management for mobile apps. While our Bot Management solution has worked well for many apps, API Abuse Detection is significantly more effective. That’s because mobile devices often rely on APIs. While their requests follow the slow, deliberate pace of a human user, mobile apps consume API endpoints and may appear automated. These apps do not offer the same navigational freedom that websites do. But we can use this to our advantage: legitimate users follow predictable sequences based on prior states, which we are now able to validate with API Abuse Detection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2T0NUMcqvCLGh6S0qopxTa/a72b996b47387bc41e1679549cad6133/image3-38.png" alt="" class="kg-image" width="1392" height="468" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2T0NUMcqvCLGh6S0qopxTa/440b1350e0d22d7ab8646979ced66127/image3-38.png" alt="" class="kg-image" width="1392" height="468" loading="lazy">
 
 	</figure>
 	<p>Other companies have developed mobile SDKs to approach API abuse. But SDKs are bulky, difficult to integrate, and sometimes ineffective. This client-side approach is also vulnerable to tampering. It performs authentication of the client software, but is not capable of detecting any actual abusive behavior. Anyone who can extract the client-side certificate can immediately bypass bot protections. We believe we can secure mobile apps without any sort of SDK — simply by deploying API Abuse Detection on mobile endpoints.</p>

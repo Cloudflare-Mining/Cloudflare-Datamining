@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OKS7gP02sJrPO41nAuyky/9f74f329a548d9b9c6d9fb05d1281562/LangChain-Workers-1.png" alt="Using LangChainJS and Cloudflare Workers together" class="kg-image" width="1801" height="1014" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OKS7gP02sJrPO41nAuyky/bb4c194f72b152bcf5dc4720e59995f3/LangChain-Workers-1.png" alt="Using LangChainJS and Cloudflare Workers together" class="kg-image" width="1801" height="1014" loading="lazy">
 
 	</figure>
 	<p>We are incredibly stoked that our friends at LangChain have announced <a href="https://blog.langchain.dev/js-envs">LangChainJS Support for Multiple JavaScript Environments (including Cloudflare Workers)</a>. During Developer Week 2023 we wanted to celebrate this launch and our future collaborations with LangChain.</p>
@@ -79,7 +79,7 @@ Array(1) [ Document ]</code></pre>
 	<p>Our document loader retrieved the content of the webpage, put that content in a document object and loaded it into an array.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eUEj1m3fLXaX22XfWzZc1/7947f9069ae7fc13c7aebdea040708d8/image7-8.png" alt="" class="kg-image" width="1480" height="440" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eUEj1m3fLXaX22XfWzZc1/9b080aef6c13b4bd4db31c740b2998f1/image7-8.png" alt="" class="kg-image" width="1480" height="440" loading="lazy">
 
 	</figure>
 	<p>This is great, but there’s one more improvement we can make to this code before we move on – splitting our text into multiple documents.</p>
@@ -93,20 +93,20 @@ Array(227) [ Document, Document, Document, Document, Document, Document, Documen
 	<p>Instead of an array with one document object, our document loader has now split the text it retrieved into multiple document objects. It’s still a single Wikipedia article, LangChain just split that text into chunks that would be more appropriately sized for working with a language model.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qjMlbP8yfVegK2PT9BPm/b19f4ecf1d7f4ef878d2a2e01de06287/image3-18.png" alt="" class="kg-image" width="1736" height="472" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qjMlbP8yfVegK2PT9BPm/31015f843d9a5dd7ad1d80f100da91f7/image3-18.png" alt="" class="kg-image" width="1736" height="472" loading="lazy">
 
 	</figure>
 	<p>Even though our text is split into multiple documents, we still need to be able to understand what text is relevant to our question and should be sent to our language model. To do this, we’re going to introduce two new concepts – <a href="https://www.cloudflare.com/learning/ai/what-are-embeddings">embeddings</a> and <a href="https://www.cloudflare.com/learning/ai/what-is-vector-database">vector stores</a>.</p>
 	<p>Embeddings are a way of representing text with numerical data. For our application we’ll be using <a href="https://platform.openai.com/docs/guides/embeddings">OpenAI Embeddings</a> to generate our embeddings based on the document objects we just created. When you generate embeddings the result is a vector of floating point numbers. This makes it easier for computers to understand the relatedness of the strings of text to each other. For each document object we pass the embedding API, a vector will be created.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WDcDosuQet5YbgNuU1ZQG/5d5688dfa651df5acc724914225d8397/image2-28.png" alt="" class="kg-image" width="1988" height="454" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WDcDosuQet5YbgNuU1ZQG/657e7684615f81785e69a4cb5fc03be9/image2-28.png" alt="" class="kg-image" width="1988" height="454" loading="lazy">
 
 	</figure>
 	<p>When we compare vectors, the closer numbers are to each other the more related the strings are. Inversely, the further apart the numbers are then the less related the strings are. It can be helpful to visualize how these numbers would allow us to place each document in a virtual space:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bngW4Ms4zz7PZIAZxnR2F/62f2505718413b680f0722d2bc5e32a8/image1-47.png" alt="" class="kg-image" width="1999" height="1608" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bngW4Ms4zz7PZIAZxnR2F/31f66eabc1b8b6b7630fe8bff4ce80f7/image1-47.png" alt="" class="kg-image" width="1999" height="1608" loading="lazy">
 
 	</figure>
 	<p>In this illustration, you could imagine how the text in the document objects that are bunched together would be more similar than the document object further off. The grouped documents could be text pulled from the article’s section on the history of Brooklyn. It’s a longer section that would have been split into multiple documents by our text splitter. But even though the text was split the embeddings would allow us to know this content is closely related to each other. Meanwhile, the document further away could be the text on the climate of Brooklyn. This section was smaller, not split into multiple documents, and the current climate is not as related to the history of Brooklyn, so it’s placed further away.</p>
@@ -122,7 +122,7 @@ import { MemoryVectorStore } from "langchain/vectorstores/memory";</code></pre>
 	<p>Chains enable you to combine a language model with other sources of information, APIs, or even other language models. In our case, we’ll be using the <a href="https://js.langchain.com/docs/modules/chains/index_related_chains/retrieval_qa">RetreivalQAChain</a>. This chain retrieves the documents from our vector store related to a question and then uses our model to answer the question using that information.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17hBMkJMZe5P3UHUfdCmCl/0c49130f1a3a5c4346bf2fe8a1b90580/image4-18.png" alt="" class="kg-image" width="1999" height="409" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17hBMkJMZe5P3UHUfdCmCl/db5da651d7f7c204a31d0729fe9f6c5d/image4-18.png" alt="" class="kg-image" width="1999" height="409" loading="lazy">
 
 	</figure>
 	<p>To start, we’ll add these two imports to the top of our file:</p>
@@ -144,7 +144,7 @@ import { RetrievalQAChain } from "langchain/chains";</code></pre>
 	<p>With all our code in place, let’s test it again by running <code>npx wrangler dev</code>. This time when you open your browser you will see a few facts about Brooklyn:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Eb3EUM6vGAZVPf1nlkxs/299c30ca474351b8ba92550ab8e1a6f2/image6-9.png" alt="" class="kg-image" width="1468" height="170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Eb3EUM6vGAZVPf1nlkxs/8169139105040b3ac58fa7171791775b/image6-9.png" alt="" class="kg-image" width="1468" height="170" loading="lazy">
 
 	</figure>
 	<p>Right now, the question we’re asking is hard coded. Our goal was to be able to use LangChain to ask any question we want about this article. Let’s update our code to allow us to pass the question we want to ask in our request. In this case, we’ll pass a question as an argument in the query string (e.g. <i>?question=When was Brooklyn founded</i>). To do this we’ll replace the line we’re currently assigning our question with the code needed to pull a question from our query string:</p>

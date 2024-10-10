@@ -1,9 +1,9 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71fyueXLClcenxxAGgB9BV/3f7072e9064535d6510b11cde6035aed/deprecating-dns-any-meta-query-type.jpg" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71fyueXLClcenxxAGgB9BV/e7c299755838eadd2d759a520ca5ba65/deprecating-dns-any-meta-query-type.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>DNS, one of the oldest technologies running the Internet, keeps evolving. There is a constant stream of new developments, <a href="https://blog.cloudflare.com/help-us-test-our-dnssec-implementation">from DNSSEC</a>, through <a href="http://www.isi.edu/ant/tdns">DNS-over-TLS</a>, to a plentiful supply of <a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11">fresh EDNS extensions</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cyA2HOLAYyTdbqLf4LKeP/50cf0f7047dce194fcff74e3e4dcfa28/5220534077_8d417f3bac_z.jpg" alt="penguins" class="kg-image" width="640" height="361" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cyA2HOLAYyTdbqLf4LKeP/4854a84baf0f33715d38d72e30363f00/5220534077_8d417f3bac_z.jpg" alt="penguins" class="kg-image" width="640" height="361" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-nd/2.0">CC BY-ND 2.0</a> <a href="https://www.flickr.com/photos/antarcticabound">image</a> by <a href="https://www.flickr.com/photos/antarcticabound">Antarctica Bound</a></p>
@@ -24,7 +24,7 @@
 	<p>The usage of ANY by a Firefox caught us by surprise and increased the ANY queries load 8 fold:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LQBvUa35G7JxXCkSQ3Rgb/c928be152ae9a58c6cbb472b5a094537/any.png" alt="ANY usage" class="kg-image" width="1029" height="503" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LQBvUa35G7JxXCkSQ3Rgb/14166b5de06fe138bb0ef3b87621074f/any.png" alt="ANY usage" class="kg-image" width="1029" height="503" loading="lazy">
 
 	</figure>
 	<p>Since Firefox reverted the use of ANY we expect this load to drop back to the level of a background noise. Unfortunately the most common users of ANY queries in practice are people trying to perform <a href="https://www.us-cert.gov/ncas/alerts/TA13-088A">DNS reflection attacks</a>, exploiting the unusual length of the ANY responses.</p>

@@ -1,11 +1,11 @@
 <div class="mb2 gray5">17 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/internationalizing-the-cloudflare-dashboard">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/internationalizing-the-cloudflare-dashboard">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/internationalizing-the-cloudflare-dashboard">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/internationalizing-the-cloudflare-dashboard">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51fZziOS1hvKKIdS4QBCTp/265e7a515344e9643ce8ee0129c30c0e/internationalizing-the-cloudflare-dashboard.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/internationalizing-the-cloudflare-dashboard">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/internationalizing-the-cloudflare-dashboard">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/internationalizing-the-cloudflare-dashboard">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/internationalizing-the-cloudflare-dashboard">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51fZziOS1hvKKIdS4QBCTp/becca5657be9bec4adcbb80469f4764a/internationalizing-the-cloudflare-dashboard.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><a href="https://dash.cloudflare.com/sign-up">Cloudflare’s dashboard</a> now supports four new languages (and multiple locales): Spanish (with country-specific locales: Chile, Ecuador, Mexico, Peru, and Spain), Brazilian Portuguese, Korean, and Traditional Chinese. Our customers are global and diverse, so in helping build a better Internet for everyone, it is imperative that we bring our products and services to customers in their native language.</p>
 	<p>Since last year Cloudflare has been hard at work internationalizing our dashboard. At the end of 2019, we launched our first language other than US English: German. At the end of March 2020, we released three additional languages: French, Japanese, and Simplified Chinese. If you want to start using the dashboard in any of these languages, you can change your language preference in the top right of the Cloudflare dashboard. The preference selected will be saved and used across all sessions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bPkaBuSElf3KVstMxueBb/603b6e1404ad291493b53f92721d27e7/image1-13.png" alt="" class="kg-image" width="937" height="829" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bPkaBuSElf3KVstMxueBb/96fe21b0b376c22d3ebdaa8395bf4e5e/image1-13.png" alt="" class="kg-image" width="937" height="829" loading="lazy">
 
 	</figure>
 	<p>In this blog post, I want to help those unfamiliar with internationalization and localization to better understand how it works. I also would like to tell the story of how we made internationalizing and localizing our application a standard and repeatable process along with sharing a few tips that may help you as you do the same.</p>
@@ -191,7 +191,7 @@
 	<p>This meant that in a lot of places the text in page elements would overflow, such as in this "Add" button:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DcZK0IiIXGAW4naCbxqCr/7df32dc7a0d58a0f153c2374e715dd5d/image4-7.png" alt="" class="kg-image" width="1002" height="392" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DcZK0IiIXGAW4naCbxqCr/b60a50a967f9eec972dc0bb9da72e181/image4-7.png" alt="" class="kg-image" width="1002" height="392" loading="lazy">
 
 	</figure>
 	<p>There aren't a lot of easy fixes for these types of problems that don't compromise the user experience.</p>
@@ -202,7 +202,7 @@
 	<p>Fortunately, with a growing percentage of our codebase in TypeScript, we were able to leverage the type-checker to give developers feedback as they wrote the code. Here’s an example where our code editor is helpfully showing us a red underline to indicate that the id property is invalid (due to the missing “l”):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2W5zNv5D1bIaPGPGjiDpE0/849f16ed5ef729887c24c2c7a218e054/image5-4.png" alt="" class="kg-image" width="1496" height="176" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2W5zNv5D1bIaPGPGjiDpE0/a9abde771093fb812573a2c7fb3d58ea/image5-4.png" alt="" class="kg-image" width="1496" height="176" loading="lazy">
 
 	</figure>
 	<p>Not only did it make the problems more obvious, but it also meant that violations would cause builds to fail, preventing bad code from entering the codebase.</p>

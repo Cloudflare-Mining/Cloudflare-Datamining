@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63T15yhI6VCQQbsoX0FGo3/707ce17a0fea7f6fd985042208e37993/http-2-for-web-developers.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63T15yhI6VCQQbsoX0FGo3/755a4454f7390d2fd1f3ccb7993d3baf/http-2-for-web-developers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>HTTP/2 changes the way web developers optimize their websites. In HTTP/1.1, it’s become common practice to eek out an extra 5% of page load speed by hacking away at your TCP connections and HTTP requests with techniques like spriting, inlining, domain sharding, and concatenation.</p>
 	<p>Life’s a little bit easier in HTTP/2. It gives the typical website a <a href="http://blog.chromium.org/2013/11/making-web-faster-with-spdy-and-http2.html">30% performance gain</a> without a complicated build and deploy process. In this article, we’ll discuss the new best practices for website optimization in HTTP/2.</p>
@@ -23,7 +23,7 @@
 	<p>Optimizing for HTTP/2 requires a different mindset. Instead of worrying about reducing HTTP requests, web developers should focus on tuning their website’s caching behavior. The general rule is to <b>ship small, granular resources</b> so they can be cached independently and transferred in parallel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24AGzHZfCsK26xRbyOolht/ba466507c69ebb85682a4aa69f7c5b0e/http-2-multiplexing.png" alt="HTTP/2 Multiplexing" class="kg-image" width="800" height="473" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24AGzHZfCsK26xRbyOolht/4231f1d4ffc688eb34df4e9fa7f12cfd/http-2-multiplexing.png" alt="HTTP/2 Multiplexing" class="kg-image" width="800" height="473" loading="lazy">
 
 	</figure>
 	<p>This shift occurs because of the <b>multiplexing</b> and <b>header compression</b> features of HTTP/2. Multiplexing lets multiple requests share a single TCP connection, allowing several assets to download in parallel without the unnecessary overhead of establishing multiple connections. This eliminates the head-of-line blocking issue of HTTP/1.1. Header compression further reduces the penalty of multiple HTTP requests, since the overhead for each request is smaller than the uncompressed HTTP/1.1 equivalent.</p>
@@ -40,14 +40,14 @@
 	<p>In HTTP/1.1, web developers often combined all of the CSS for their entire website into a single file. Similarly, JavaScript was also condensed into a single file, and images were combined into a spritesheet. Having a single file for your CSS, JavaScript, and images vastly reduced the amount of HTTP requests, making it a significant performance gain for HTTP/1.1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Iecd2TKCbAeC1psMbKgkm/8047dbbd9348ae96dd6584b9e9ffc5d4/http-1-1-file-concatenation.png" alt="HTTP/1.1 file concatenation" class="kg-image" width="647" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Iecd2TKCbAeC1psMbKgkm/f1174abd7cf8789ae31bd8fb6b46bdf4/http-1-1-file-concatenation.png" alt="HTTP/1.1 file concatenation" class="kg-image" width="647" height="350" loading="lazy">
 
 	</figure>
 	<p>However, concatenating files is no longer a best practice in HTTP/2. While concatenation can still improve compression ratios, it forces expensive cache invalidations. Even if only a single line of CSS is changed, browsers are forced to reload <i>all</i> of your CSS declarations.</p>
 	<p>In addition, not every page in your website uses all of the declarations or functions in your concatenated CSS or <a href="https://www.cloudflare.com/learning/performance/why-minify-javascript-code">JavaScript</a> files. After it’s been cached, this isn’t a big deal, but it means that unnecessary bytes are being transferred, processed, and executed in order to render the first page a user visits. While the overhead of a request in HTTP/1.1 made this a worthwhile tradeoff, it can actually slow down time-to-first-paint in HTTP/2.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vGVOAARP8UNVvPIB70fyb/1c4606a028250c79b8e888897d0e46ba/http-2-file-concatenation.png" alt="HTTP/2 file concatenation" class="kg-image" width="602" height="329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vGVOAARP8UNVvPIB70fyb/24482128b09677fc85c025401d584692/http-2-file-concatenation.png" alt="HTTP/2 file concatenation" class="kg-image" width="602" height="329" loading="lazy">
 
 	</figure>
 	<p>Instead of concatenating files, web developers should focus more on optimizing caching policy. By isolating files that change frequently from ones that rarely change, it’s possible to serve as much content as possible from your <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> or the user’s browser cache.</p>
@@ -87,7 +87,7 @@
 	<p>Domain sharding is a common technique for tricking browsers into opening more TCP connections than they’re supposed to. Browsers limit the number of connections to a single origin server, but by splitting your website’s assets across multiple domains, you can get it to open an extra set of TCP connections. This helps avoid head-of-line blocking, but it comes with significant tradeoffs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15BHvjDZ3lyXVv5ADPOI1a/b25d228002de136a696e8a87fc8e2190/domain-sharding-1.png" alt="Splitting website resources across multiple domains" class="kg-image" width="600" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15BHvjDZ3lyXVv5ADPOI1a/3b95cf0335a377f66c18517cf0bf22c1/domain-sharding-1.png" alt="Splitting website resources across multiple domains" class="kg-image" width="600" height="360" loading="lazy">
 
 	</figure>
 	<p>Domain sharding should be avoided in HTTP/2. Each shard results in an unnecessary DNS query, TCP connection, and <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS handshake</a> (assuming the servers use different <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS certificates</a>). In HTTP/1.1, that overhead was compensated for by allowing several assets to download in parallel. But, this is no longer the case in HTTP/2: multiplexing allows multiple assets to download in parallel over a single connection. And, similar to asset inlining, domain sharding breaks HTTP/2 stream prioritization because browsers can’t prioritize streams across multiple domains.</p>

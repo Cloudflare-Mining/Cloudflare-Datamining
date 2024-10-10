@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6P3gRxNNDSTcYdpkUZA3mO/3f050aed5ad8532c49bb6f11848dc9a0/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-2.png" alt="" class="kg-image" width="1513" height="757" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6P3gRxNNDSTcYdpkUZA3mO/7a362d3fcb385163ce938e160af2f5f2/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-2.png" alt="" class="kg-image" width="1513" height="757" loading="lazy">
 
 	</figure>
 	<p>API traffic is growing fast. Last year alone it grew 300% faster at our edge than web traffic. Because <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> power mobile and web applications, transmitting instructions as diverse as “order a pizza from my favourite restaurant using this credit card” or “place a cryptocurrency trade and these are my personal details”, they are ripe for data theft and abuse. Data exposure is listed as one of the top threats for API traffic by OWASP; this includes <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp/%5D(https://owasp.org/www-project-api-security/)">data leaks</a>. The increase in API traffic and more frequent data attacks call for new security solutions.</p>
@@ -21,14 +21,14 @@
 	<p>Schema Validation works by creating a positive security model based on an API “schema”, which is a contract that defines the consumption of an API and guides developers to integrate it in their systems. Conversely to a negative security model (where rules define what characteristics a request must have to trigger an action, such as block), Schema Validation is designed to allow requests that have been verified as compliant while taking actions on everything else. Schema Validation accepts schemas that adhere to the OpenAPI v3 Specification (also known as Swagger Specification), which is the standard for defining RESTful interfaces (<a href="https://swagger.io/solutions/getting-started-with-oas">learn more at this page</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OmEZLN8YahgdIHEHnTcUz/96b70a555013d7497aef14154d5fb1e3/image2-32.png" alt="Schema Validation evaluates each request against an API Schema logging or blocking requests that do not comply with it." class="kg-image" width="1502" height="1312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OmEZLN8YahgdIHEHnTcUz/8189d6e36666fcf4871a26b68133b0bc/image2-32.png" alt="Schema Validation evaluates each request against an API Schema logging or blocking requests that do not comply with it." class="kg-image" width="1502" height="1312" loading="lazy">
 
 	</figure>
 	<p>Schema Validation evaluates each request against an API Schema logging or blocking requests that do not comply with it.</p>
 	<p>API Shield offers an easy to use UI where users can upload their schemas to the Firewall and automatically create rules that validate each request against the API definition. If the request is compliant then it is forwarded to the origin. Conversely, if the format or data content of the request does not match what is expected by API Shield, the call is either logged or dropped protecting the origin from an invalid request or a malicious payload. Requests with extraneous input may not have been anticipated by the API developer, and they may trigger unforeseen application behaviour, such as a data leak.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5h8092G1mGzraEkcdPyJv/7c8d9288a1e70b6db58576fb7bacfa26/image6.gif" alt="API Shield with Schema Validation being deployed using the Cloudflare Rulesets OpenAPI schema." class="kg-image" width="600" height="613" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5h8092G1mGzraEkcdPyJv/4942cf0aec4af6528d7689f12e250984/image6.gif" alt="API Shield with Schema Validation being deployed using the Cloudflare Rulesets OpenAPI schema." class="kg-image" width="600" height="613" loading="lazy">
 
 	</figure>
 	<p>API Shield with Schema Validation being deployed using the Cloudflare Rulesets OpenAPI schema.‌‌</p>
@@ -47,14 +47,14 @@
 	<p>Earlier today we announced our Data Loss Prevention (DLP) product suite; we’re now extending this to identify sensitive data leaving your origin in the response phase of an HTTP or API request. The solution evaluates the egress traffic, checking payloads against common patterns of sensitive data. These include personally identifiable information such as Social Security numbers and financial information, including credit card numbers, bank details, etc. For the first release, users will be able to log any match triggered by DLP. We are planning to add other actions such as obfuscating and blocking sensitive data leaving origins behind Cloudflare. Next, we intend to let customers customise the rules to identify sensitive data that are specific to their application.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75ZzI5AZqM7QuBzVL2OPGU/6fe7ac1051de49c93a6dc7afcacd8f16/DLP-Diagram.png" alt="" class="kg-image" width="2316" height="1112" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75ZzI5AZqM7QuBzVL2OPGU/28debb7198a5879580d888c7dd8d2f2d/DLP-Diagram.png" alt="" class="kg-image" width="2316" height="1112" loading="lazy">
 
 	</figure>
 	<p>We developed DLP with simplicity in mind so that every customer can be protected without requiring complex and time-consuming set up periods. We are releasing DLP as a managed ruleset that can be turned on through the Firewall Managed Rules tab. DLP can be used as part of the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> of a reverse proxy, but it can also be used as part of Cloudflare for Teams integrating data protection in a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> configuration. This tight integration enables better control on who can access sensitive information within your organization.</p>
 	<p>DLP is in beta and we are releasing it to selected early adopter customers. Please <a href="https://www.cloudflare.com/waf/api-shield">fill this form</a> to join the waitlist.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bxKBybax9WBdQR4dN9fvY/2bb89f8d5866d77cbd9621f79b2fc250/image22-1.png" alt="Data Loss Protection can be turned on as a Managed Ruleset." class="kg-image" width="1186" height="669" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bxKBybax9WBdQR4dN9fvY/8c50dc8ece2b84b5a27ca2a411a31bc2/image22-1.png" alt="Data Loss Protection can be turned on as a Managed Ruleset." class="kg-image" width="1186" height="669" loading="lazy">
 
 	</figure>
 	<p>Data Loss Protection can be turned on as a Managed Ruleset.</p>
@@ -72,7 +72,7 @@
 	<p>The list is available to all Enterprise plans and it can be used by selecting ‘Cloudflare Open Proxies’ in the drop-down menu collecting all available IP Lists (see picture below).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/351zGO09M0BQM8yd1zyEMP/a7071eee91f310b14c9f199be8fc55e4/image3-29.png" alt="Cloudflare Open Proxies managed list can be used directly in the Firewall rule builder." class="kg-image" width="1879" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/351zGO09M0BQM8yd1zyEMP/fea9df4c3a19d78b4cb6e6f64ca8e056/image3-29.png" alt="Cloudflare Open Proxies managed list can be used directly in the Firewall rule builder." class="kg-image" width="1879" height="1063" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Open Proxies managed list can be used directly in the Firewall rule builder.</p>
@@ -90,7 +90,7 @@
 	<p>Each request presenting a certificate to the Cloudflare’s edge will have two Firewall fields set: cf.tls_client_auth.cert_verified and cf.tls_client_auth.cert_revoked. The request is processed by the Firewall where users can combine these fields with all other Firewall functionality. This allows customers to set different behaviours based on whether the certificate was verified or verified but revoked. It also allows you to implement the required security policy while providing a good experience for end users. A classic configuration is to allow only requests with a verified certificate, while forwarding requests from revoked certificates to a different page or endpoint to handle the exception as required by your users’ journey.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qbEaiHnrixfMACbSlwQ1q/f0648e29bb2e05b3f44d2750ce043e37/image5-28.png" alt="Users can revoke certificates by visiting the Client Certificates tab." class="kg-image" width="1166" height="1040" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qbEaiHnrixfMACbSlwQ1q/1a577d5929cf8116f53a6802664f9057/image5-28.png" alt="Users can revoke certificates by visiting the Client Certificates tab." class="kg-image" width="1166" height="1040" loading="lazy">
 
 	</figure>
 	<p>Users can revoke certificates by visiting the Client Certificates tab.</p>

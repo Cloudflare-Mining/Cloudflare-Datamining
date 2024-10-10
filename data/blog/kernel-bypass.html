@@ -1,10 +1,10 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3666RYL023B0bIu5BtI21o/70bc25b05691ed6c82bbb6b3355a3183/kernel-bypass.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3666RYL023B0bIu5BtI21o/8ac75cb625ec3092b71557173b59211a/kernel-bypass.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In two previous posts we've discussed <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">how to receive 1M UDP packets per second</a> and <a href="https://blog.cloudflare.com/how-to-achieve-low-latency">how to reduce the round trip time</a>. We did the experiments on Linux and the performance was very good considering it's a general purpose operating system.</p>
 	<p>Unfortunately the speed of vanilla Linux kernel networking is not sufficient for more specialized workloads. For example, here at CloudFlare, we are constantly dealing with large packet floods. Vanilla Linux can do only about 1M pps. This is not enough in our environment, especially since the network cards are capable of handling a much higher throughput. Modern 10Gbps NIC's can usually process at least 10M pps.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L7VhSXQeBPMTZxGz2hayc/13f48fc18c4cb80ce0d439cacc715a08/hispeed.jpg" alt="hispeed.jpg" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6L7VhSXQeBPMTZxGz2hayc/9faea000056440478c530bf7db7490e0/hispeed.jpg" alt="hispeed.jpg" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p>CC BY 2.0 <a href="https://www.flickr.com/photos/diversey/4573842992">image</a> by Tony Webster</p>
@@ -46,7 +46,7 @@ $ watch 'ethtool -S eth2|grep rx'
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CEpRDnaP9vzj6kZ2ZYpwT/2820bfcad45616f8dfe901378d2c4e32/bypass-1.jpg" alt="bypass.jpg" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CEpRDnaP9vzj6kZ2ZYpwT/1136d4f77b047fb854bbb8c139d45bd3/bypass-1.jpg" alt="bypass.jpg" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p>CC BY 2.0 <a href="https://www.flickr.com/photos/londonmatt/11421393074">image</a> by Matt Brown</p>
@@ -77,7 +77,7 @@ $ watch 'ethtool -S eth2|grep rx'
 	<p>While the techniques listed above require taking over a whole NIC, there are alternatives.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gB3CqgOE8Md1XBMjAPW5s/3c1010d65d6ad45953a01719c62fc20d/efvi-model.png" alt="efvi" class="kg-image" width="600" height="289" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gB3CqgOE8Md1XBMjAPW5s/2a50997ab6f1710d97734b0e21f2d711/efvi-model.png" alt="efvi" class="kg-image" width="600" height="289" loading="lazy">
 
 	</figure>
 	<p>Solarflare network cards support <a href="http://www.openonload.org">OpenOnload</a>, a magical network accelerator. It achieves a kernel bypass by implementing the network stack in userspace and using an <code>LD_PRELOAD</code> to overwrite network syscalls of the target program. For low level access to the network card OpenOnload relies on an "EF_VI" library. This library can be used directly and <a href="https://support.solarflare.com/index.php?option=com_cognidox&amp;file=SF-114063-CD-1_ef_vi_User_Guide.pdf&amp;task=download&amp;format=raw&amp;Itemid=11">is well documented</a>.</p>
@@ -94,7 +94,7 @@ $ watch 'ethtool -S eth2|grep rx'
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43gbb8giqS3qGsKT5fp67R/e2a784bf7a5d2db243022895490d7dfe/dpdk-model.png" alt="dpdk" class="kg-image" width="600" height="248" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43gbb8giqS3qGsKT5fp67R/26b9724f1707a683efbbcbc3625cd130/dpdk-model.png" alt="dpdk" class="kg-image" width="600" height="248" loading="lazy">
 
 	</figure>
 	<p>While EF_VI is specific to Solarflare, it's possible to replicate its techniques with other NIC's. To start off we need a multi-queue network card that supports flow steering and indirection table manipulation.</p>
@@ -123,7 +123,7 @@ $ watch 'ethtool -S eth2|grep rx'
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XbgZy5GdiIt1QT3lEdKav/0ea2cdb0bfe44de2649f693a813f0d60/virt-model.png" alt="virt" class="kg-image" width="600" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XbgZy5GdiIt1QT3lEdKav/8464cb36fb1c580d3e97fe04574cd73c/virt-model.png" alt="virt" class="kg-image" width="600" height="308" loading="lazy">
 
 	</figure>
 	<p>There is an alternative strategy for the Intel 82599 chips. Instead of having a bifurcated driver we could use the virtualization features of the NIC to do a kernel bypass.</p>

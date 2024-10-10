@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JczHGqdEQBBXsAZ7vDE0l/a3c654ad7e99523226c6e5558bb09f7d/wrangler.dev_2x--1-.png" alt="" class="kg-image" width="2000" height="1117" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JczHGqdEQBBXsAZ7vDE0l/cc3f9b114e47004a1732e50fa8ef6135/wrangler.dev_2x--1-.png" alt="" class="kg-image" width="2000" height="1117" loading="lazy">
 
 	</figure>
 	<p>When I arrived at Cloudflare for an internship in the summer of 2018, I was taken on a tour, introduced to my mentor who took me out for coffee (shoutout to Preston), and given a quick whiteboard overview of how Cloudflare works. Each of the interns would work on a small project of their own and they’d try to finish them by the end of the summer. The description of the project I was given on my very first day read something along the lines of “<a href="https://blog.cloudflare.com/real-urls-for-amp-cached-content-using-cloudflare-workers">implementing signed exchanges in a Cloudflare Worker to fix the AMP URL attribution problem</a>,” which was a lot to take in at once. I asked so many questions those first couple of weeks. What are signed exchanges? Can I put these stickers on my laptop? What’s a Cloudflare Worker? Is there a limit to how much Topo Chico I can take from the fridge? What’s the <a href="https://blog.amp.dev/2017/02/06/whats-in-an-amp-url">AMP URL attribution problem</a>? Where’s the bathroom?</p>
@@ -88,7 +88,7 @@
 	<p>What we came up with ended up looking a little something like this — when a developer runs <code>wrangler dev</code>, do the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4REMjenya1591p3JRN44k7/81bfd765c54fae287e839026b3210314/wrangler.dev-flowchart_2x.png" alt="" class="kg-image" width="4127" height="3840" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4REMjenya1591p3JRN44k7/09277c65ef8e5084b580f8876ef73149/wrangler.dev-flowchart_2x.png" alt="" class="kg-image" width="4127" height="3840" loading="lazy">
 
 	</figure>
 	<ol>
@@ -191,7 +191,7 @@ async function handleRequest(request) {
 	<p>This is what the Preview editor looks like when that script is run:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3z1nKvt6MrXFlNLph2b7kS/7887d71cd01ea97397bc3206795cede7/image2-4.png" alt="" class="kg-image" width="1999" height="1120" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3z1nKvt6MrXFlNLph2b7kS/7180183ce4e2de323c1d6c5246f0b742/image2-4.png" alt="" class="kg-image" width="1999" height="1120" loading="lazy">
 
 	</figure>
 	<p>You can see that <code>Hello, World!</code> has been printed to the console. This may not be the most useful example, but in more complex applications logging different variables is helpful for debugging. If you’re following along, try changing <code>console.log(message)</code> to something more interesting, like <code>console.log(request.url)</code>.</p>
@@ -214,13 +214,13 @@ async function handleRequest(request) {
 	<p>Your inspector should look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wvIrTdVQF1TzfZBc5BkRZ/9811566d32753c8fc3a2e2d7045a6d6f/image1-4.png" alt="" class="kg-image" width="1878" height="176" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3wvIrTdVQF1TzfZBc5BkRZ/783589719e14255621f7d60239049ac6/image1-4.png" alt="" class="kg-image" width="1878" height="176" loading="lazy">
 
 	</figure>
 	<p>Then, reload the page, and select the <code>/inspect</code> item to view its messages. It should look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AX9JjU5mwVt9LvEQ4T05m/91ebaf6f9d897bf57e444917363a2fc7/image4-4.png" alt="" class="kg-image" width="1999" height="641" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AX9JjU5mwVt9LvEQ4T05m/ab69695521afe2599e670d73ac625729/image4-4.png" alt="" class="kg-image" width="1999" height="641" loading="lazy">
 
 	</figure>
 	<p>Hey look at that! We can see messages that our browser sent to the Workers runtime to enable different portions of the developer tools for this Worker, and we can see that the runtime sent back our <code>Hello, World!</code> Pretty cool!</p>

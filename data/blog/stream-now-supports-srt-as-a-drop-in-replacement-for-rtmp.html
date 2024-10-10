@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hEBY4WtbgFMKdGe11oVGp/79595a45d06026c45103781384af16c6/rtr3vWNrtk3X2HSUuSSIHvNud8K6WeNHokdbx231vi9-TIC87GeD6QJ6dMR0vlSJF4qFzv-heJHGXFzhVDygIdHsm3Jh0kGw47QyVx8vtmxPVShb8YsE7CqBRaWJ.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hEBY4WtbgFMKdGe11oVGp/4716bdd4d2882483707f9d1245a67425/rtr3vWNrtk3X2HSUuSSIHvNud8K6WeNHokdbx231vi9-TIC87GeD6QJ6dMR0vlSJF4qFzv-heJHGXFzhVDygIdHsm3Jh0kGw47QyVx8vtmxPVShb8YsE7CqBRaWJ.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>SRT is a new and modern live video transport protocol. It features many improvements to the incumbent popular video ingest protocol, RTMP, such as lower latency, and better resilience against unpredictable network conditions on the public Internet. SRT supports newer video codecs and makes it easier to use accessibility features such as captions and multiple audio tracks. While RTMP development has been abandoned since at least 2012, SRT development is maintained by an active community of developers.</p>
 	<p>We don’t see RTMP use going down anytime soon, but we can do something so authors of new broadcasting software, as well as video streaming platforms, can have an alternative.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lsYVSFjz5nlK7TSllp2Y8/a4a2db6d044509ec3b97d934b58df766/Screen-Shot-2022-03-10-at-12.05.57-PM.png" alt="" class="kg-image" width="1392" height="494" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lsYVSFjz5nlK7TSllp2Y8/2ac5c0004a982682f30f7abd147159a2/Screen-Shot-2022-03-10-at-12.05.57-PM.png" alt="" class="kg-image" width="1392" height="494" loading="lazy">
 
 	</figure>
 	<p>Starting today, in open beta, you can use <a href="https://blog.cloudflare.com/restream-with-stream-connect">Stream Connect</a> as a gateway to translate SRT to RTMP or RTMP to SRT with your existing applications. This way, you can get the last-mile reliability benefits of SRT and can continue to use the RTMP service of your choice. It’s priced at $1 per 1,000 minutes, regardless of video encoding parameters.</p>
@@ -26,7 +26,7 @@
 	<p>When we first started developing live video features on Cloudflare Stream earlier last year we had to decide whether to reimplement an old and unmaintained protocol, RTMP, or focus on the future and start off fresh by using a modern protocol. If we launched with RTMP, we would get instant compatibility with existing clients but would give up features that would greatly improve performance and reliability. Reimplementing RTMP would also mean we’d have to handle the complicated state machine that powers it, demux the FLV container, parse AMF and even write a server that sends the text “Genuine Adobe Flash Media Server 001” as part of the RTMP handshake.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LxAJbuV3Vvdt0f0otJGeR/9446330b3b0679b27ab2cabea3bb5f39/pasted-image-0--3-.png" alt="" class="kg-image" width="1036" height="182" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LxAJbuV3Vvdt0f0otJGeR/99c1e75da5da943291e08c2b83f6e515/pasted-image-0--3-.png" alt="" class="kg-image" width="1036" height="182" loading="lazy">
 
 	</figure>
 	<p>Even though there were a few new protocols to evaluate and choose from in this project, the dominance of RTMP was still overwhelming. We decided to implement RTMP but really don’t want anybody else to do it again.</p>
@@ -56,7 +56,7 @@
 	<p>SRT is already implemented in software like FFmpeg and OBS. Here’s how to get it working from OBS:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Xtq8EpQEYPGJ1ApiQpSvm/ef1ec9866716a989081d258523fa6cdd/Screen-Shot-2022-03-10-at-12.05.39-PM.png" alt="" class="kg-image" width="1240" height="334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Xtq8EpQEYPGJ1ApiQpSvm/0fafdc93d03b1ba0ad6320fa26b39601/Screen-Shot-2022-03-10-at-12.05.39-PM.png" alt="" class="kg-image" width="1240" height="334" loading="lazy">
 
 	</figure>
 	<p>Get started with signing up for Cloudflare Stream and adding a live input.</p>

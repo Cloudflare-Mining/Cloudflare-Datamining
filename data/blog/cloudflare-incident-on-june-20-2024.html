@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18peGsB3IdmJIUOoqJalSs/53b89f20848e096ec16c46e35c8915b3/2459.png" alt="Cloudflare incident on June 20, 2024" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18peGsB3IdmJIUOoqJalSs/b69735394144edb57ba12ff8e8516518/2459.png" alt="Cloudflare incident on June 20, 2024" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>On Thursday, June 20, 2024, two independent events caused an increase in latency and error rates for Internet properties and Cloudflare services that lasted 114 minutes. During the 30-minute peak of the impact, we saw that 1.4 - 2.1% of HTTP requests to our CDN received a generic error page, and observed a 3x increase for the 99th percentile Time To First Byte (TTFB) latency.</p>
@@ -110,19 +110,19 @@
 	<p>Below, we provide a view of the impact from some of Cloudflare’s internal metrics. The first graph illustrates the percentage of all eyeball (inbound from external devices) HTTP requests that were served an error response because the service suffering poisoning could not be reached. We saw an initial increase to 0.5% of requests, and then later a larger one reaching as much as 2.1% before recovery started due to our service reloads.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1EoCaNBt1Bss8RhwKO5s5B/850ea333e782184080408ff6b16b2522/image7-3.png" alt="" class="kg-image" width="1880" height="442" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EoCaNBt1Bss8RhwKO5s5B/155382a7f8eba337c39f48c803c9979b/image7-3.png" alt="" class="kg-image" width="1880" height="442" loading="lazy">
 
 	</figure>
 	<p>For a broader view of errors, we can see all 5xx responses our network returned to eyeballs during the same window, including those from origin servers. These peaked at 3.45%, and you can more clearly see the gradual recovery between 19:25 and 20:00 UTC as Traffic Manager finished its re-routing activities. The dip at 19:25 UTC aligns with the last large reload, with the error increase afterwards primarily consisting of upstream DNS timeouts and connection limits which are consistent with high and unbalanced load.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G1ZnlpW9Qbw8DgW5MfsLv/d5371566d874d213574da4b884b9a123/image4-6.png" alt="" class="kg-image" width="1886" height="446" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7G1ZnlpW9Qbw8DgW5MfsLv/9758cb94e7d6be79dcfac41e482114ea/image4-6.png" alt="" class="kg-image" width="1886" height="446" loading="lazy">
 
 	</figure>
 	<p>And here’s what our TTFB measurements looked like at the 50th, 90th and 99th percentiles, showing an almost 3x increase in latency at p99:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16tMNhSZdhkV3wH6MtAWd6/d45c0dd94d1c2b69f0bcbe621a87addd/image2-10.png" alt="" class="kg-image" width="1253" height="295" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16tMNhSZdhkV3wH6MtAWd6/44a638b8f639d39026112c32cb80dc2e/image2-10.png" alt="" class="kg-image" width="1253" height="295" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -136,7 +136,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MQYpmg1O82vEURJNsl2VU/5ccf62ba6e5117cd72ec28952424e05f/image5-5.png" alt="" class="kg-image" width="1256" height="294" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MQYpmg1O82vEURJNsl2VU/da0b8e5c1afd70998bc928a533ee4160/image5-5.png" alt="" class="kg-image" width="1256" height="294" loading="lazy">
 
 	</figure>
 	<p><i>Global percentage of HTTP Request handling processes that were using excessive CPU during the event</i></p>
@@ -210,14 +210,14 @@ evaluate_rate_limit_rules();</code></pre>
 	<p>The first case of a poisoned process was at 17:47 UTC, and by 18:09 UTC – five minutes after the incident was declared – Traffic Manager was re-routing a lot of traffic out of Europe:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AVE8fJsh1ODNjAoAtduon/7ad11a7551499283b8f8ce9ff2765123/image3-14.png" alt="" class="kg-image" width="1999" height="1305" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AVE8fJsh1ODNjAoAtduon/6d77ac4385ba78ddd251c887ef02b74a/image3-14.png" alt="" class="kg-image" width="1999" height="1305" loading="lazy">
 
 	</figure>
 	<p><i>A summary map of Traffic Manager capacity actions as of 18:09 UTC. Each circle represents a data center that traffic is being re-routed towards or away from. The color of the circle indicates the CPU load of that data center. The orange ribbons between them show how much traffic is re-routed, and where from/to.</i></p>
 	<p>It’s obvious to see why, if we look at the percentage of the HTTP request service’s processes that were saturating their CPUs. 10% of our capacity in Western Europe was already gone, and 4% in Eastern Europe, during peak traffic time for those timezones:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A71NY1brim2rjGowoewXo/93aa08409dbf38cfcf970f00be5021b0/image1-21.png" alt="" class="kg-image" width="1888" height="438" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7A71NY1brim2rjGowoewXo/a1c7f316d465b7dfb6c844b14c6408c3/image1-21.png" alt="" class="kg-image" width="1888" height="438" loading="lazy">
 
 	</figure>
 	<p><i>Percentage of all the HTTP request handling processes saturating their CPU, by geographic region</i></p>

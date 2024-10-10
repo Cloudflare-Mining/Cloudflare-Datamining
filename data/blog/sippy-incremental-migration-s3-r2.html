@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4whKfl7szHhdKNWCiCETR3/2d6897c06e2f44b83b0557351f1ceb2f/image1-16.png" alt="Sippy helps you avoid egress fees while incrementally migrating data from S3 to R2" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4whKfl7szHhdKNWCiCETR3/d65f22ad8c25598a41426bd1de59188e/image1-16.png" alt="Sippy helps you avoid egress fees while incrementally migrating data from S3 to R2" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Earlier in 2023, we announced <a href="https://blog.cloudflare.com/r2-super-slurper-ga">Super Slurper</a>, a data migration tool that makes it easy to copy large amounts of data to <a href="https://developers.cloudflare.com/r2">R2</a> from other cloud object storage providers. Since the announcement, developers have used Super Slurper to run thousands of successful migrations to R2!</p>
@@ -22,14 +22,14 @@
 	<p>When an object is requested from <a href="https://developers.cloudflare.com/r2/api/workers">Workers</a>, <a href="https://developers.cloudflare.com/r2/api/s3">S3 API</a>, or <a href="https://developers.cloudflare.com/r2/buckets/public-buckets">public bucket</a>, it is served from your R2 bucket if it is found.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QSl0q22LEdoOUp6BzkWhE/838377390abd1f85639a0af728cc593d/image2-16.png" alt="" class="kg-image" width="1620" height="1340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QSl0q22LEdoOUp6BzkWhE/12f69030f3c5a4d53edf0a7d62af8b43/image2-16.png" alt="" class="kg-image" width="1620" height="1340" loading="lazy">
 
 	</figure>
 	<p>If the object is not found in R2, it will simultaneously be returned from your S3 bucket and copied to R2.</p>
 	<p>Note: Some large objects may take multiple requests to copy.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ok5dS498ocJgCBRR1V5HU/aa474cdc229c14ea6bd952710cad087d/image3-22.png" alt="" class="kg-image" width="1620" height="750" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ok5dS498ocJgCBRR1V5HU/683129c203b3343af7a4aa1c29e15b8a/image3-22.png" alt="" class="kg-image" width="1620" height="750" loading="lazy">
 
 	</figure>
 	<p>That means after objects are copied, subsequent requests will be served from R2, and you’ll begin saving on egress fees immediately.</p>
@@ -97,7 +97,7 @@
 	<p>If you are looking to start incrementally migrating your data to R2 and have any questions or feedback on what we should build next, we encourage you to join our <a href="https://discord.com/invite/cloudflaredev">Discord community</a> to share!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OxNi1UZsYR9ITa7KbaQ11/52417249acea09204426fcb55b86cf1c/Kfb7dwYUUzfrLKPH_ukrJRTvRlfl4E8Uy00vwEQPCTiW0IQ--fxpikjv1p0afm4A5J3JfVjQiOVjN3RMNeMcu3vhnz97pEmENCkNIuwdW_m-aW7ABfZnmUpJB_jh.png" alt="" class="kg-image" width="1600" height="467" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OxNi1UZsYR9ITa7KbaQ11/753b4c01ddbed65d637c55b0b91a47de/Kfb7dwYUUzfrLKPH_ukrJRTvRlfl4E8Uy00vwEQPCTiW0IQ--fxpikjv1p0afm4A5J3JfVjQiOVjN3RMNeMcu3vhnz97pEmENCkNIuwdW_m-aW7ABfZnmUpJB_jh.png" alt="" class="kg-image" width="1600" height="467" loading="lazy">
 
 	</figure>
 	<p></p>

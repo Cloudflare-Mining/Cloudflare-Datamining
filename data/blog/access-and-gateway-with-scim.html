@@ -4,14 +4,14 @@
 	<p><i></i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Y4UCjZkqF4azsX8qbM3tY/c07996ce7cc3d3e90b9b386f19cf0c6c/image5-11.png" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y4UCjZkqF4azsX8qbM3tY/e879ee99b9444f02f87b1b9ba0af5995/image5-11.png" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today, we're excited to announce that Cloudflare Access and Gateway now support the System for Cross-domain Identity Management (SCIM) protocol. Before we dive into what this means, let's take a step back and review what SCIM, Access, and Gateway are.</p>
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt">SCIM</a> is a protocol that enables organizations to manage user identities and access to resources across multiple systems and domains. It is often used to automate the process of creating, updating, and deleting user accounts and permissions, and to keep these accounts and permissions in sync across different systems.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lfFQAyAoj4oKdZhkqtyct/399f6496d1230ad33f9146425652e539/Access-SCIM-integration.png" alt="" class="kg-image" width="1600" height="789" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lfFQAyAoj4oKdZhkqtyct/37735dd182557095960ce8aaaf57b307/Access-SCIM-integration.png" alt="" class="kg-image" width="1600" height="789" loading="lazy">
 
 	</figure>
 	<p>For example, most organizations have an identity provider, such as Okta or Azure Active Directory, that stores information about its employees, such as names, addresses, and job titles. The organization also likely uses cloud-based applications for collaboration. In order to access the cloud-based application, employees need to create an account and log in with a username and password. Instead of manually creating and managing these accounts, the organization can use SCIM to automate the process. Both the on-premise system and the cloud-based application are configured to support SCIM.</p>
@@ -30,13 +30,13 @@
 	<p>Before SCIM, if a user needed to be deprovisioned (e.g. leaving the business, a security breach or other factors) an administrator needed to remove access for the user in both the identity provider and Access. This was because a user’s Cloudflare Zero Trust session would stay active until they attempted to log in via the identity provider again. This was time-consuming and error-prone, and it leaves room for security vulnerabilities if a user's access is not removed in a timely manner.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gPO5LyeJTlK6wBCGaPvKe/9cb92871be01867ff350533dbb8720c0/1_2x.png" alt="" class="kg-image" width="2000" height="784" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gPO5LyeJTlK6wBCGaPvKe/51ad34a222b30ddc27ea0511819bbdd6/1_2x.png" alt="" class="kg-image" width="2000" height="784" loading="lazy">
 
 	</figure>
 	<p>Another challenge with Cloudflare Access and Gateway was that identity provider groups had to be manually entered. This meant that if an identity provider group changed, an administrator had to manually update the value within the Cloudflare Zero trust dashboard to reflect those changes. This was tedious and time-consuming, and led to inconsistencies if the updates were not made promptly. Additionally, it required additional resources and expertise to manage this process effectively.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43e51HTYQXmgvlrnMXXECn/a16e7a0993413712c944659e1a012970/pasted-image-0.png" alt="" class="kg-image" width="1158" height="533" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43e51HTYQXmgvlrnMXXECn/1790f7100e8a1f33319c55570ffbd3c5/pasted-image-0.png" alt="" class="kg-image" width="1158" height="533" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -51,20 +51,20 @@
 	<p>User deprovisioning via SCIM listens for any user deactivation events in the identity provider and then revokes all active sessions for that user. This immediately cuts off their access to any application protected by Access and their session via WARP for Gateway.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1THRxHewCusYYYlA9ctsDj/3f1e44b71255977e076e67afa885a3e2/pasted-image-0--1-.png" alt="" class="kg-image" width="650" height="873" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1THRxHewCusYYYlA9ctsDj/3f05354ac1ee932106dd2ca8fe58b9d0/pasted-image-0--1-.png" alt="" class="kg-image" width="650" height="873" loading="lazy">
 
 	</figure>
 	<p>Additionally, the integration of SCIM allows for the synchronization of identity provider group information in Access and Gateway policies. This means that all identity provider groups will automatically be available in both the Access and Gateway policy builders. There is also an option to automatically force a user to reauthenticate if their group membership changes.</p>
 	<p>For example, if you wanted to create an Access policy that only applied to users with emails associated with example.com and apart from the risky user group, you would be able to build a policy as show below by simply selecting the risky user group from a drop-down:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7d6q2DKIWv6psiD9iES762/c57d00a980b40845e4887e00bc755500/pasted-image-0--2-.png" alt="" class="kg-image" width="1110" height="696" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7d6q2DKIWv6psiD9iES762/dc03b70383e935e0198a9c3d70a2fd1b/pasted-image-0--2-.png" alt="" class="kg-image" width="1110" height="696" loading="lazy">
 
 	</figure>
 	<p>Similarly, if you wanted to create a Gateway policy to block example.com and all of its subdomains for these same users you could create the policy below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28Kn8u1iqObCiaRzjs52Ii/05c2c40926a032fbe0e70482204b8de4/pasted-image-0--3-.png" alt="" class="kg-image" width="1186" height="883" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28Kn8u1iqObCiaRzjs52Ii/53a43ddf65f96a894b83bc1e88524b74/pasted-image-0--3-.png" alt="" class="kg-image" width="1186" height="883" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

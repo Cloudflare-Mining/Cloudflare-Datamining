@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VJzT6fPBtK9XhRPREMdbp/47c87776c8ee85ed2b253d4076df9d1d/image5-13.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VJzT6fPBtK9XhRPREMdbp/3f521f963557ea243cd2e6587651dd3d/image5-13.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Our <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">Notification Center</a> offers first class support for a variety of popular services (a list of which are available <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks">here</a>). However, even with such extensive support, you may use a tool that isn’t on that list. In that case, it is possible to leverage <a href="https://workers.cloudflare.com">Cloudflare Workers</a> in combination with a generic webhook to deliver notifications to <i>any</i> service that accepts webhooks.</p>
@@ -52,13 +52,13 @@
 	<p><b>Step 3</b>Sign up for Rocket Chat and add a webhook integration to accept incoming webhook notifications.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LYgyVgd1cLkVVTBLKqaog/7338f0dcf40b7d5c67f706d6e7a8378c/image2-15.png" alt="Example configuration of incoming webhook integration in Rocket Chat" class="kg-image" width="1999" height="1261" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LYgyVgd1cLkVVTBLKqaog/ffab14ab05cbb012449410d17b03403e/image2-15.png" alt="Example configuration of incoming webhook integration in Rocket Chat" class="kg-image" width="1999" height="1261" loading="lazy">
 
 	</figure>
 	<p>**Step 4**Configure an encrypted wrangler secret for request authentication and the Rocket Chat URL for sending requests in your Worker: <a href="https://developers.cloudflare.com/workers/platform/environment-variables/#adding-secrets-via-wrangler">Environment variables · Cloudflare Workers docs</a> (for this example, the secret is not encrypted.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SRZ9WJYEbf0IfKEv568b/c2f89b6af6b7cda4da387d30097f2507/image3-15.png" alt="Workers environment variables configuration in Cloudflare dashboard" class="kg-image" width="1999" height="693" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SRZ9WJYEbf0IfKEv568b/27fda35b3a413f11a523084e8f6235b4/image3-15.png" alt="Workers environment variables configuration in Cloudflare dashboard" class="kg-image" width="1999" height="693" loading="lazy">
 
 	</figure>
 	<p><b>Step 5</b>Modify your worker to accept POST webhook requests with the secret configured as a query param for authentication.</p>
@@ -103,36 +103,36 @@ return new Response(":)", {
 	<p><b>Step 8</b>Set up deployment configuration in your wrangler.toml file and publish your Worker. You can now see the Worker in the Cloudflare dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4v3krfdWPyWlb5XxsErwsk/2bc2a5f3093125b15df4f84eb32687eb/image1-20.png" alt="View and Manage workers in Cloudflare dashboard" class="kg-image" width="1928" height="862" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4v3krfdWPyWlb5XxsErwsk/3102a9bdde5eed1da0d21c863dc23893/image1-20.png" alt="View and Manage workers in Cloudflare dashboard" class="kg-image" width="1928" height="862" loading="lazy">
 
 	</figure>
 	<p><b>Step 9</b>You can manage and monitor the Worker with a variety of available tools.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kFBdyg5YEaadtiQwyVqYB/ee7407b849af3fb7d0d6d158040a32fa/image9-8.png" alt="Monitoring workers in Cloudflare dashboard" class="kg-image" width="1999" height="1337" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kFBdyg5YEaadtiQwyVqYB/801b12c030df701346223ad2dac72b5b/image9-8.png" alt="Monitoring workers in Cloudflare dashboard" class="kg-image" width="1999" height="1337" loading="lazy">
 
 	</figure>
 	<p><b>Step 10</b>Add the Worker URL as a generic webhook to the notification destinations in the Cloudflare dashboard: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks/#generic-webhooks">Configure webhooks · Cloudflare Fundamentals docs</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2p1qMaGDkEM6H3C5hHVst1/7a438f38f9af84390c6bcff63fc17115/image6-7.png" alt="Webhooks destination under Destinations in Notifications tab" class="kg-image" width="1999" height="872" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2p1qMaGDkEM6H3C5hHVst1/4bb7ebc358be784bf2b11dcab7f0920d/image6-7.png" alt="Webhooks destination under Destinations in Notifications tab" class="kg-image" width="1999" height="872" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PNvwMldKKmfZa8UlLvbHA/ac4fe6cedc4688767fe46561c315cde5/image7-6.png" alt="Workers URL as a generic webhook in Cloudflare dashboard example" class="kg-image" width="1999" height="875" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PNvwMldKKmfZa8UlLvbHA/ca07b97c7ceb57eb14251410851dff08/image7-6.png" alt="Workers URL as a generic webhook in Cloudflare dashboard example" class="kg-image" width="1999" height="875" loading="lazy">
 
 	</figure>
 	<p><b>Step 11</b>Create a notification with the destination as the configured generic webhook: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications">Create a Notification · Cloudflare Fundamentals docs</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/216pxD7Q6yTqyPuMbYuTgk/fe2aa412e4f8f762e546050a5f22421f/image8-6.png" alt="Example of notification creation" class="kg-image" width="1999" height="1208" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/216pxD7Q6yTqyPuMbYuTgk/fbd0b31d0ebba181f868b179a3d7f5c9/image8-6.png" alt="Example of notification creation" class="kg-image" width="1999" height="1208" loading="lazy">
 
 	</figure>
 	<p><b>Step 12</b>Tada! With your Cloudflare Worker running, you can now receive all notifications to Rocket Chat. We can configure in the same way for any communication tool.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nnSDSJrXuT0QlVXoGLVDY/46813c4d571b45e050872fdcd82d99ad/image4-9.png" alt="Sample webhook notification in Rocket Chat" class="kg-image" width="1999" height="223" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nnSDSJrXuT0QlVXoGLVDY/942155854f00bb616768e10d726503d1/image4-9.png" alt="Sample webhook notification in Rocket Chat" class="kg-image" width="1999" height="223" loading="lazy">
 
 	</figure>
 	<p>We know that a notification system is essential to proactively monitor any issues that may arise within a project. We are excited with this announcement to make notifications available to any communication service without having to worry too much about the system's compatibility to them. We have lots of updates planned, like adding more alertable events to choose from and extending our support to a wide range of webhook services to receive them.</p>

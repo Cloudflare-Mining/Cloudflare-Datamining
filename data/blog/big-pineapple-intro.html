@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tun8W7xGXu4HnA6zxJK7b/7fda6aa6d5da9c5108ba71f249f8620f/image1-11.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tun8W7xGXu4HnA6zxJK7b/07afefd11804c7b7b441a4b102650465/image1-11.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>≈</p>
@@ -22,7 +22,7 @@
 	<p>Before going any deeper, let’s first have a bird’s-eye view of a simplified Cloudflare data center setup, which could help us understand what we are going to talk about later. At Cloudflare, every server is identical: the software stack running on one server is exactly the same as on another server, only the configuration may be different. This setup greatly reduces the complexity of fleet maintenance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/346cYMKrtotPKZx6GcoDMX/881e0b136c86c6a806e7c0df54cb6e39/colo_kresd.png" alt="" class="kg-image" width="1600" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/346cYMKrtotPKZx6GcoDMX/e9ab5a9834ace47e28faee2c198dca50/colo_kresd.png" alt="" class="kg-image" width="1600" height="406" loading="lazy">
 
 	</figure>
 	<p>Figure 1 Data center layout</p>
@@ -72,7 +72,7 @@
 	<p>All the tasks can be run concurrently, and certain I/O heavy ones can be broken down into smaller pieces, to benefit from a more granular scheduling. As the runtime executes tasks on a threadpool, instead of a single thread, it also benefits from work stealing. This avoids a problem we previously had, where a single request taking a lot of time to process, that blocks all the other requests on the event loop.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72roTqirnpOZTjQpp36q4t/ed63d1f381d3b92a7e84ad20d63428c2/blog_server.png" alt="" class="kg-image" width="1600" height="725" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72roTqirnpOZTjQpp36q4t/ec16e695ef22b93f475df0eed9e21f9e/blog_server.png" alt="" class="kg-image" width="1600" height="725" loading="lazy">
 
 	</figure>
 	<p>Figure 2 Components overview</p>
@@ -92,7 +92,7 @@
 	<p>On the other side of the server is the conductor, which manages all the outbound connections. It helps to answer some questions before reaching out to the upstream: Which is the fastest nameserver to connect to in terms of latency? What to do if all the nameservers are not reachable? What protocol to use for the connection, and are there any <a href="https://engineering.fb.com/2018/12/21/security/dns-over-tls">better options</a>? The conductor is able to make these decisions by tracking the upstream server’s metrics, such as <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a>, QoS, etc. With that knowledge, it can also guess for things like upstream capacity, UDP packet loss, and take necessary actions, e.g. retry when it thinks the previous UDP packet didn’t reach the upstream.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oLCVKn5GkZd5SmRnuYSmL/c6fc57f79b72c1cd36008ae48c38e7dc/conductor-1-.png" alt="" class="kg-image" width="1600" height="1030" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oLCVKn5GkZd5SmRnuYSmL/fd8c90e52308efd01698c40d09c724d6/conductor-1-.png" alt="" class="kg-image" width="1600" height="1030" loading="lazy">
 
 	</figure>
 	<p>Figure 3 I/O conductor</p>
@@ -109,7 +109,7 @@
 	<p>Moreover, instead of duplicating the cache across the whole data center with multicast, as we did before, BigPineapple is aware of its peer nodes in the same data center, and relays queries from one node to another if it cannot find an entry in its own cache. This is done by consistent hashing the queries onto the healthy nodes in each data center. So, for example, queries for the same registered domain go through the same subset of nodes, which not only increases the cache hit ratio, but also helps the infrastructure cache, which stores information about performance and features of nameservers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ddu8jHnfdToCysh4urr1V/b13a37129129ef99499f22fca50e1d0d/colo_3_bp.png" alt="" class="kg-image" width="1600" height="789" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ddu8jHnfdToCysh4urr1V/d7634e09dfb853c862f75af3b7c33cca/colo_3_bp.png" alt="" class="kg-image" width="1600" height="789" loading="lazy">
 
 	</figure>
 	<p>Figure 4 Updated data center layout</p>
@@ -158,7 +158,7 @@
 	<p>But where do the program arguments come from? How could a guest app send log and metrics? The answer is, external functions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rMKxgaKCweGenTEf3kQ9U/d906a07de4668a94dd7c686c429e0282/sandbox-1-.png" alt="" class="kg-image" width="1600" height="1362" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rMKxgaKCweGenTEf3kQ9U/07adc8e464df9662c2633fe5f36dd315/sandbox-1-.png" alt="" class="kg-image" width="1600" height="1362" loading="lazy">
 
 	</figure>
 	<p>Figure 5 Wasm based Sandbox</p>

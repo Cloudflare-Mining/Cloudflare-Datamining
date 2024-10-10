@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/creating-serendipity-with-python">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29vLbTdBxrfDiCvoKbUBYs/0e47ad03718b3460748427e95218f5cd/creating-serendipity-with-python.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/creating-serendipity-with-python">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29vLbTdBxrfDiCvoKbUBYs/ead034b077c9f8cb76c32f078b60c0bc/creating-serendipity-with-python.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We've been experimenting with breaking up employees into random groups (of size 4) and setting up video hangouts between them. We're doing this to replace the serendipitous meetings that sometimes occur around coffee machines, in lunch lines or while waiting for the printer. And also, we just want people to get to know each other.</p>
 	<p>Which lead to me writing some code. The core of which is <i>divide n elements into groups of at least size g minimizing the size of each group</i>. So, suppose an office has 15 employees in it then it would be divided into three groups of sizes 5, 5, 5; if an office had 16 employees it would be 4, 4, 4, 4; if it had 17 employees it would be 4, 4, 4, 5 and so on.</p>
@@ -33,7 +33,7 @@
 	<p>This is a really simple implementation. I don't like it because it loops <code>n</code> times but it helps visualize something. Imagine that <code>g == 4</code> and <code>n == 17</code>. This loop 'fills up' each entry in <code>groups</code> like this (each square is an entry in <code>groups</code> and numbers in the squares are values of <code>i</code> for which that entry was incremented by the loop).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JXiBEQfNLAjuBnKH1et8n/8e78b37f3ca7b4f33a8ddbba9f3c8f59/N-elements-G-sized-groups.png" alt="" class="kg-image" width="2020" height="948" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JXiBEQfNLAjuBnKH1et8n/466e646a6b1729261839d0206eb29b18/N-elements-G-sized-groups.png" alt="" class="kg-image" width="2020" height="948" loading="lazy">
 
 	</figure>
 	<p>So groups ends up being <code>[5, 4, 4, 4]</code>. &nbsp;What this helps see is that the number of times <code>groups[i]</code> is incremented depends on the number of times the <code>for</code> loop 'loops around' on the <code>i</code>th element. And that's something that's easy to calculate without looping.</p>

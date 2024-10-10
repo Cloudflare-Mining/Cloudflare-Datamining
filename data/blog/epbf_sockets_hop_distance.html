@@ -1,9 +1,9 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22D0P2j1TzeJwLTuFmiAW2/9db6f642b6be95f0bd582143ebef46fc/epbf_sockets_hop_distance.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22D0P2j1TzeJwLTuFmiAW2/4bd572fd962126a42d980cb548c40d8e/epbf_sockets_hop_distance.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A friend gave me an interesting task: extract IP TTL values from TCP connections established by a userspace program. This seemingly simple task quickly exploded into an epic Linux system programming hack. The result code is grossly over engineered, but boy, did we learn plenty in the process!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UrWjrMBPW4l3ipvThL0sn/a536c99e8fc8cff58f33f20e5b2f4507/3845353725_7d7c624f34_z.jpg" alt="3845353725_7d7c624f34_z" class="kg-image" width="640" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UrWjrMBPW4l3ipvThL0sn/1e78cd221cc63a5fb9964b3bd55cd11d/3845353725_7d7c624f34_z.jpg" alt="3845353725_7d7c624f34_z" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/paulmiller/3845353725">image</a> by <a href="https://www.flickr.com/photos/paulmiller">Paul Miller</a></p>
@@ -18,14 +18,14 @@
 	<p>You may wonder why she wanted to inspect the TTL packet field (formally known as "IP Time To Live (TTL)" in IPv4, or "Hop Count" in IPv6)? The reason is simple - she wanted to ensure that the connections are routed outside of our datacenter. The "Hop Distance" - the difference between the TTL value set by the originating machine and the TTL value in the packet received at its destination - shows how many routers the packet crossed. If a packet crossed two or more routers, we know it indeed came from outside of our datacenter.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eYDA3vNOF8Cc9ytLOPo9N/a091dfca9e534fb65b6460a957a28c4b/Screen-Shot-2018-03-29-at-10.52.49-AM-1.png" alt="Screen-Shot-2018-03-29-at-10.52.49-AM-1" class="kg-image" width="2001" height="660" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eYDA3vNOF8Cc9ytLOPo9N/c4862fac898725e1bd54b0284977f251/Screen-Shot-2018-03-29-at-10.52.49-AM-1.png" alt="Screen-Shot-2018-03-29-at-10.52.49-AM-1" class="kg-image" width="2001" height="660" loading="lazy">
 
 	</figure>
 	<p>It's uncommon to look at TTL values (except for their intended purpose of mitigating routing loops by checking when the TTL reaches zero). The normal way to deal with the problem we had would be to blocklist IP ranges of our servers. But it’s not that simple in our setup. Our IP numbering configuration is rather baroque, with plenty of Anycast, Unicast and Reserved IP ranges. Some belong to us, some don't. We wanted to avoid having to maintain a hard-coded blocklist of IP ranges.</p>
 	<p>The gist of the idea is: we want to note the TTL value from a returned SYN+ACK packet. Having this number we can estimate the Hop Distance - number of routers on the path. If the Hop Distance is:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LCtnMJcT3dIXlGwBrWf69/389dd4ed37787c57f25c8c01b7afa1c0/Screen-Shot-2018-03-29-at-10.50.38-AM.png" alt="Screen-Shot-2018-03-29-at-10.50.38-AM" class="kg-image" width="1522" height="162" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LCtnMJcT3dIXlGwBrWf69/0dd6441edca81092fe6c536203657e21/Screen-Shot-2018-03-29-at-10.50.38-AM.png" alt="Screen-Shot-2018-03-29-at-10.50.38-AM" class="kg-image" width="1522" height="162" loading="lazy">
 
 	</figure>
 	<ul>
@@ -35,7 +35,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ugFXo390P0VMXOpsvqtVQ/0ac0d23af0044418077b900099a1e1f4/Screen-Shot-2018-03-29-at-10.49.42-AM.png" alt="Screen-Shot-2018-03-29-at-10.49.42-AM" class="kg-image" width="1512" height="142" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ugFXo390P0VMXOpsvqtVQ/04fc3c2133fbcfaa40db47655b131ab3/Screen-Shot-2018-03-29-at-10.49.42-AM.png" alt="Screen-Shot-2018-03-29-at-10.49.42-AM" class="kg-image" width="1512" height="142" loading="lazy">
 
 	</figure>
 	<ul>
@@ -45,7 +45,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dwa36qw1gHyNNLKJ24UiX/134cf151b1f41625c514c41036e4f227/Screen-Shot-2018-03-29-at-10.49.48-AM.png" alt="Screen-Shot-2018-03-29-at-10.49.48-AM" class="kg-image" width="1512" height="154" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dwa36qw1gHyNNLKJ24UiX/a3ee616930c1335d4e6f8dc3fa7da5bb/Screen-Shot-2018-03-29-at-10.49.48-AM.png" alt="Screen-Shot-2018-03-29-at-10.49.48-AM" class="kg-image" width="1512" height="154" loading="lazy">
 
 	</figure>
 	<ul>
@@ -77,7 +77,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qX4zkQCTMRtJsnaqzysvp/a53376ccd7a1178d741ff9990af7a72b/315128991_d49c312fbc_z.jpg" alt="315128991_d49c312fbc_z" class="kg-image" width="500" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qX4zkQCTMRtJsnaqzysvp/a95be0f638ee764a86591c9576671281/315128991_d49c312fbc_z.jpg" alt="315128991_d49c312fbc_z" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/leejordan/315128991">image</a> by <a href="https://www.flickr.com/photos/leejordan">Lee Jordan</a></p>
@@ -123,7 +123,7 @@
 	<p>The gem is the "map" abstraction. An eBPF map is a thingy that allows an eBPF program to store data and share it with a userspace code. Think of an eBPF map as a data structure (a hash table most usually) shared between a userspace program and an eBPF program running in kernel space.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51BMjhXrkIIAlAatG0qsMh/4a4c070d9c590970b985f1e1698fc566/Screen-Shot-2018-03-29-at-10.59.43-AM.png" alt="Screen-Shot-2018-03-29-at-10.59.43-AM" class="kg-image" width="1516" height="460" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51BMjhXrkIIAlAatG0qsMh/bdd6b955f048ae0a2cd5f5005a460bfe/Screen-Shot-2018-03-29-at-10.59.43-AM.png" alt="Screen-Shot-2018-03-29-at-10.59.43-AM" class="kg-image" width="1516" height="460" loading="lazy">
 
 	</figure>
 	<p>To solve our TTL problem, we can use eBPF filter program. It will look at the TTL values of passing packets, and save them in an eBPF map. Later, we can inspect the eBPF map and analyze the recorded values from userspace.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SXGGH30t3IcDCotJDMjEy/8f1ff64041860e964d01209b002d2941/image3-28.png" alt="Protect your key server with Keyless SSL and Cloudflare Tunnel integration" class="kg-image" width="1201" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SXGGH30t3IcDCotJDMjEy/04df2bdcd5cdcbf54b7521824072ebe4/image3-28.png" alt="Protect your key server with Keyless SSL and Cloudflare Tunnel integration" class="kg-image" width="1201" height="675" loading="lazy">
 
 	</figure>
 	<p>Today, we’re excited to announce a big security enhancement to our Keyless SSL offering. Keyless SSL allows customers to store their private keys on their own hardware, while continuing to use Cloudflare’s proxy services. In the past, the configuration required customers to expose the location of their key server through a DNS record - something that is publicly queryable. Now, customers will be able to use our Cloudflare Tunnels product to send traffic to the key server through a secure channel, without publicly exposing it to the rest of the Internet.</p>
@@ -18,7 +18,7 @@
 	<p>While Keyless SSL is compatible with any hardware that support PKCS#11 standard, Keyless SSL users frequently opt to secure their private keys within HSMs (Hardware Security Modules), which are specialized machines designed to be tamper proof and resistant to to unauthorized access or manipulation, secure against attacks, and optimized to efficiently execute cryptographic operations such as signing and decryption. To make it easy for customers to set this up, during Security Week in 2021, we <a href="https://blog.cloudflare.com/keyless-ssl-supports-fips-140-2-l3-hsm">launched</a> integrations between Keyless SSL and HSM offerings from all major cloud providers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wuHcCOkcDcvmXTGLrFQho/eed5e7ca0b82ac5a589364ec4599b1b6/image1-36.png" alt="[LOGICAL DIAGRAM SHOWING PRIVATE KEYS STORED ON HSMs BEING USED FOR TLS HANDSHAKE]" class="kg-image" width="1368" height="587" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wuHcCOkcDcvmXTGLrFQho/2b984dacb313cd7e85da2fb2e57e3321/image1-36.png" alt="[LOGICAL DIAGRAM SHOWING PRIVATE KEYS STORED ON HSMs BEING USED FOR TLS HANDSHAKE]" class="kg-image" width="1368" height="587" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -32,7 +32,7 @@
 	<p>In order for Cloudflare to communicate with a customer’s key server, we have to know the IP address associated with it. To configure Keyless SSL, we ask customers to create a DNS record that indicates the IP address of their keyserver. As a security measure, we ask customers to keep this record under a long, random hostname such as “11aa40b4a5db06d4889e48e2f738950ddfa50b7349d09b5f.example.com”. While it adds a layer of obfuscation to the location of the key server, it does expose the IP address of the keyserver to the public Internet, allowing anyone to send requests to that server. We lock the connection between Cloudflare and the Keyless server down through Mutual TLS, so that the Keyless server should only accept the request if a Cloudflare client certificate associated with the Keyless client is served. While this allows the key server to drop any requests with an invalid or missing client certificate, the key server is still publicly exposed, making it susceptible to attacks.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jRWZW8bTeCVotnsB8nbwI/c6c59ef2d8b4a34965d5213ede83270c/image6-8.png" alt="" class="kg-image" width="1581" height="396" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jRWZW8bTeCVotnsB8nbwI/1b83910f4917f4555abd27992a3378db/image6-8.png" alt="" class="kg-image" width="1581" height="396" loading="lazy">
 
 	</figure>
 	<p>Instead, Cloudflare should be the only party that knows about this key server’s location, as it should be the only party making requests to it.</p>
@@ -47,7 +47,7 @@
 	<p>Instead of re-inventing the wheel, we decided to make use of an existing Cloudflare product that our customers use to protect the connections between Cloudflare and their origin servers — Cloudflare Tunnels!</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/efEdmsMhMKZINZeiqaEbj/21dc7c483475ddde85a6300d7e63d9e0/image4-11.png" alt="" class="kg-image" width="1581" height="396" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/efEdmsMhMKZINZeiqaEbj/19f607592f8a07ae67ab9ac9aad574b6/image4-11.png" alt="" class="kg-image" width="1581" height="396" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Tunnel gives customers the tools to connect incoming traffic to their private networks without exposing those networks to the Internet through a public hostname. It works by having customers install a Cloudflare daemon, called “cloudflared” which Cloudflare’s client will then connect to.</p>
@@ -63,7 +63,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cwgNSFiwyruWuHOlNDBKO/08ad7b1bad2982c1fd875787a7414893/image2-20.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cwgNSFiwyruWuHOlNDBKO/ff04a1fc33f4de532cea36570e7fa712/image2-20.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>To set this up, customers will need to configure a virtual network on Cloudflare - this is where customers will tell us the IP address or hostname of their key server. Then, when uploading a Keyless certificate, instead of telling us the public hostname associated with the key server, customers will be able to tell us the virtual network that resolves to it. When making requests to the key server, Cloudflare’s gokeyless client will automatically connect to the “cloudflared” server and will continue to use Mutual TLS as an additional security layer on top of that connection. For more instructions on how to set this up , check out our <a href="https://developers.cloudflare.com/ssl/keyless-ssl/configuration">Developer Docs</a>.</p>

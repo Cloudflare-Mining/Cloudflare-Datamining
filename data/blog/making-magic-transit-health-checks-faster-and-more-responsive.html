@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4orYvvMFXsOYqJH0tpL4Y7/9583730865ceff62c9baeed2d1ca17f1/Magic-Transit-Heath-Checks.png" alt="" class="kg-image" width="1600" height="801" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4orYvvMFXsOYqJH0tpL4Y7/b89e432069398acb30aeff8fd417d4c9/Magic-Transit-Heath-Checks.png" alt="" class="kg-image" width="1600" height="801" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> advertises our customer’s IP prefixes directly from our edge network, applying DDoS mitigation and firewall policies to all traffic destined for the customer’s network. After the traffic is scrubbed, we deliver clean traffic to the customer over <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">GRE tunnels</a> (over the public Internet or <a href="https://www.cloudflare.com/network-interconnect">Cloudflare Network Interconnect</a>). But sometimes, we experience inclement weather on the Internet: network paths between Cloudflare and the customer can become unreliable or go down. Customers often configure multiple tunnels through different network paths and rely on Cloudflare to pick the best tunnel to use if, for example, some router on the Internet is having a stormy day and starts dropping traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oMkYeGKWm0pGXZ1j7418Q/c4df12da6d1a10fb18af2d6833954c52/Magic-Transit-Health-Checks-GRE-Tunnels-1.png" alt="" class="kg-image" width="1330" height="574" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oMkYeGKWm0pGXZ1j7418Q/edd502203a8124d601913fba908eecc6/Magic-Transit-Health-Checks-GRE-Tunnels-1.png" alt="" class="kg-image" width="1330" height="574" loading="lazy">
 
 	</figure>
 	<p>Because we use Anycast GRE, every server across Cloudflare’s 200+ locations globally can send GRE traffic to customers. Every server needs to know the status of every tunnel, and every location has completely different network routes to customers. Where to start?</p>
@@ -58,7 +58,7 @@
 	<p>A single IP address does not necessarily represent a single machine in a network. The Internet Protocol specifies a way to send one message that gets delivered to a group of machines, like writing to an email list. Every machine has to opt into the group—we can’t just enroll people at random for our email list—but once a machine joins, it receives a copy of any message sent to the group’s address.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RVyvQRZIEC2vurlUqhpc2/43f222c6da7c3bda1b45092585a842dc/Multicast.png" alt="" class="kg-image" width="879" height="502" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RVyvQRZIEC2vurlUqhpc2/c77720644c20cc5b9743fdb7464b1f6a/Multicast.png" alt="" class="kg-image" width="879" height="502" loading="lazy">
 
 	</figure>
 	<p>The servers in a Cloudflare edge data center are part of the same private network, so for “version 2” of our health check system, we had each server in a data center join a multicast group and share their health check results with one another. Each server still made an independent assessment for each tunnel, but that assessment was based on data collected by all servers in the same location.</p>
@@ -91,13 +91,13 @@
 	<p>Memory usage (measured in terabytes):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jIhwrwiVgb5ZVSndRsEFX/0c73465624c327fad0cd95d75ebbce5d/pasted-image-0-4.png" alt="" class="kg-image" width="1414" height="822" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jIhwrwiVgb5ZVSndRsEFX/1a6ca8f95e94ee8e1d19357ebb940b1f/pasted-image-0-4.png" alt="" class="kg-image" width="1414" height="822" loading="lazy">
 
 	</figure>
 	<p>CPU usage (measured in CPU-seconds per two minute interval, averaged over two days):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nO6YapeDukQjXoesRQKyg/084b9e44b8929f37a24f1849369fab5e/pasted-image-0--1--1.png" alt="" class="kg-image" width="1412" height="828" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nO6YapeDukQjXoesRQKyg/baba9631a11b0fc7a590980fd564dd0c/pasted-image-0--1--1.png" alt="" class="kg-image" width="1412" height="828" loading="lazy">
 
 	</figure>
 	<p>Reducing the number of multicast messages means that servers can now keep up with the Internet weather, even in the largest data centers. We’re now poised for the next stage of Magic Transit’s growth, just in time for our <a href="https://blog.cloudflare.com/magic-transit">two-year anniversary</a>.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FWCmJKl5HpaIiM9n3fBsN/2316e5cf67e027fdc751a869dc9e2c0a/gdpr-compliance-for-phishing.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FWCmJKl5HpaIiM9n3fBsN/ff98b0ae9130e57056ce947ff6abb2ff/gdpr-compliance-for-phishing.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in September 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>A new campaign is attempting to harvest credentials from several businesses across industry verticals using the European Union’s General Data Protection Regulation (GDPR) compliance as a lure. This phishing message, first caught by Area 1 Security on August 31st, leverages misconceptions regarding <a href="https://gdpr.eu/compliance">GDPR compliance</a> in an effort to steal email login credentials from unsuspecting targets.</p>
@@ -6,7 +6,7 @@
 	<p>As shown below, the attacker makes use of graphics and clever formatting to give the message a more credible, authoritative appearance. To maintain the illusion that the email originated from a legitimate source, the sender email address is spoofed to appear as an automated message from the security department of the targeted company. In order to stay relevant, the attacker also regularly updates to comply - or “Action required” - date included in the body of the message.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jQRzCRvQWcSvRurLPVSL1/40c4badbec6fb393dedebc4e4e161b72/image3-6.png" alt="" class="kg-image" width="1228" height="1694" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jQRzCRvQWcSvRurLPVSL1/f7d580cdafa6b368846f36a8d24c2636/image3-6.png" alt="" class="kg-image" width="1228" height="1694" loading="lazy">
 
 	</figure>
 	<p>Based on Area 1 Security’s analysis, this campaign is predominantly launched at public-facing emails of the targeted companies, e.g. @.com. However, to a lesser extent, there are instances when individuals are targeted, typically executives and upper management. These individuals often work in the sales department, demonstrating the attacker is purposefully choosing targets who are likely to have access to client data and need to comply with GDPR regulations.</p>
@@ -31,7 +31,7 @@ Date: 1 Sep 2020 16:19:07 +0700</code></pre>
 	<p>The attacker switched to this IP address to launch the second wave of the campaign. Depicted below is a screenshot of a vulnerable and shoddy gaming site, Ran Smok, which is directly accessible via this IP (i.e., hxxp://196[.]53[.]250[.]243). The site links to various web pages that result in “Access denied,” and the IP address has been associated with numerous suspicious websites over the years. An analysis of available services running on the IP address reveals that port 25 (used by the Simple Mail Transfer Protocol, or SMTP) is running in a filtered state, and is most likely how the attacker is sending the phishing messages. A closer look at the list of open ports on the IP address reveals a number of additional services that should never be open to the internet, thus leaving the host at this IP exceedingly vulnerable, and all-the-more enticing to an attacker.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VXVpm0mmjzWeIqtFFcNvb/3f5825e0f792c732913d869616bdcf40/image1-8.png" alt="" class="kg-image" width="1999" height="1498" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VXVpm0mmjzWeIqtFFcNvb/bbdcee882e927bc10f2204ebb0933a4c/image1-8.png" alt="" class="kg-image" width="1999" height="1498" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -45,7 +45,7 @@ Date: 1 Sep 2020 16:19:07 +0700</code></pre>
 	<p>The malicious payload in this phish is a link to a credential harvester, located at hxxps://www[.]techgaia[.]com/wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/?email=. The value of the “email” parameter in the URL will vary depending on the recipient, wherein the threat actor tailors each phishing message by setting this parameter equal to the target’s email address. The link opens up to a simple web page, hosted on a <a href="https://kinsta.com/blog/wordpress-security">compromised WordPress site</a>, as shown below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Lgr0NrLe8W6kDAAqGH9us/dfa1545c24c5fa9a5e03b317f20b97a1/image2-10.png" alt="" class="kg-image" width="1999" height="788" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Lgr0NrLe8W6kDAAqGH9us/1d8c4c054a6c983016e8f14655441b6c/image2-10.png" alt="" class="kg-image" width="1999" height="788" loading="lazy">
 
 	</figure>
 	<p>The HTML form on the malicious webpage autopopulates the username field based on the email address found in the URL’s “email” parameter. After clicking “Next,” the page will prompt the user to enter a password. Based on Area 1 Security’s analysis, the page appears to return an error regardless of whether the victim enters a correct password. Stolen credentials are then sent to the attacker via a script located at, hxxps://www[.]techgaia[.]com//wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin[.]php.</p>

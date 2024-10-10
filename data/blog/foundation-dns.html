@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34R953nb1tDrQyXtp6FtI4/afb6ddc69d2be358e678e0abe9b52fe1/image4-9.png" alt="Announcing Foundation DNS - Cloudflare’s new premium DNS offering" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34R953nb1tDrQyXtp6FtI4/0109bb14af2c023c22b5012c360e31c9/image4-9.png" alt="Announcing Foundation DNS - Cloudflare’s new premium DNS offering" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today, we’re announcing <b>Foundation DNS</b>, Cloudflare’s new premium DNS offering that provides unparalleled reliability, supreme performance and is able to meet the most complex requirements of infrastructure teams.</p>
@@ -40,14 +40,14 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RcHjKK6E0UAoaY32n5sso/3284ca6e0b9f862d5aaa9461d9bdd669/image1-27.png" alt="" class="kg-image" width="800" height="1236" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RcHjKK6E0UAoaY32n5sso/b927c26d748fad09e52bcc7513239f03/image1-27.png" alt="" class="kg-image" width="800" height="1236" loading="lazy">
 
 	</figure>
 	<p>The <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a> is nearly as old as the Internet itself. It was originally defined in <a href="https://datatracker.ietf.org/doc/html/rfc882">RFC882</a> and <a href="https://datatracker.ietf.org/doc/html/rfc883">RFC883</a> in 1983 out of the need to create a mapping between hostnames and IP addresses. Back then, the authors wisely stated: “<i>[The Internet] is a large system and is likely to grow much larger.</i>” [<a href="https://datatracker.ietf.org/doc/html/rfc882">RFC882</a>]. Today there are almost 160 Million domain names just under the .com, one of the largest Top Level Domains (TLD) [<a href="https://www.verisign.com/en_US/channel-resources/domain-registry-products/zone-file/index.xhtml">source</a>].</p>
 	<p>By design, DNS is a hierarchical and highly distributed system, but as an end user you usually only communicate with a resolver (1) that is either assigned or operated by your Internet Service Provider (ISP) or directly configured by your employer or yourself. The resolver communicates with one of the root servers (2), the responsible TLD server (3) and the authoritative nameserver (4) of the domain in question. In many cases all of these four parties are operated by a different entity and located in different regions, maybe even continents.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kSCksXv3eQ1TM6oBjkwAU/445957644b6c7a0020a75db3b7cdde18/image6-5.png" alt="" class="kg-image" width="1902" height="1206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kSCksXv3eQ1TM6oBjkwAU/4027a5b6dfec209ad51db0133bf06aa9/image6-5.png" alt="" class="kg-image" width="1902" height="1206" loading="lazy">
 
 	</figure>
 	<p>As we have seen in the <a href="https://blog.cloudflare.com/october-2021-facebook-outage">recent past</a>, if your DNS infrastructure goes down you are in serious trouble, and it likely will cost you a lot of money and potentially damage your reputation. So as a domain owner you want that DNS lookups to your domain are answered 100% of the time and ideally as quickly as possible. So what can you do? You cannot influence which resolver your users have configured. You cannot influence the root server. You can choose which TLD server is involved by picking a domain name with the respective TLD. But if you are bound to a certain TLD for other reasons then that is out of your control as well. What you can easily influence is the provider for your authoritative nameservers. So let’s take a closer look at Cloudflare’s authoritative DNS offering.</p>
@@ -143,13 +143,13 @@ $ dig tom.ns.cloudflare.com aaaa +short
 	<p>Alex Fattouche has written a very insightful blog post about <a href="https://blog.cloudflare.com/secondary-dns-deep-dive">how Secondary DNS works behind the scenes</a> if you want to learn more about it. Another flavor of the primary-secondary setup is to hide the primary, thus referred to as “hidden primary”. The difference of this setup is that only the secondary nameservers are authoritative — in other words configured at the domain’s registrar. The diagram below illustrates the different setups.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EJTWFCk1W0gDjsQ0tG52h/1a09cc81bddd5aad1b86a3655ac93609/image7-2.png" alt="" class="kg-image" width="1999" height="1453" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EJTWFCk1W0gDjsQ0tG52h/f6e143186f326477737e9ca1ff9c216c/image7-2.png" alt="" class="kg-image" width="1999" height="1453" loading="lazy">
 
 	</figure>
 	<p>Since 2018, we have been supporting primary-secondary setups where Cloudflare takes the role of the secondary nameserver. This means from our perspective that we are accepting incoming zone transfers from the primary nameservers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28isU7lACkmQqBKEcgSp0K/9aee405dfd146e61cbe2d2d8601fa2fc/image2-15.png" alt="" class="kg-image" width="1808" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28isU7lACkmQqBKEcgSp0K/e88819efaf4d3e5b976a3ed437339256/image2-15.png" alt="" class="kg-image" width="1808" height="1000" loading="lazy">
 
 	</figure>
 	<p>Starting today, we are now also supporting outgoing zone transfers, meaning taking the role of the primary nameserver with one or multiple external secondary nameservers receiving zone transfers from Cloudflare. Exactly as for incoming transfers, we are supporting</p>
@@ -175,13 +175,13 @@ $ dig tom.ns.cloudflare.com aaaa +short
 	<p>Here at Cloudflare we love logs. In Q3 2021, we processed 28 Million HTTP requests per second and 13.6 Million DNS queries per second on average and blocked 76 Billion threats each day. All these events are stored as logs for a limited time frame in order to provide our users near real-time analytics in the dashboard. For those customers who want to — or have to — permanently store these logs we’ve built <a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage">Logpush</a> back in 2019. Logpush allows you to stream logs in near real time to one of our analytics partners Microsoft Azure Sentinel, Splunk, Datadog and Sumo Logic or to any cloud storage destination with <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>-compatible API.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60ZmOi9HwfZR8x2OIouXqv/a83d4ac88ff5a92718dadf2fa17c3259/wHYBm0Y8Qwe4CD_N5DTx5nizhz61UjVh82f9V3k58VTSN_Jz73Xb_v_sGA7bTfTvNeqq63gFQN6QJypZP6aJPYDzbN8THBcGV_NWjcgqxpyTigVZAw2hlW5afs_e.png" alt="" class="kg-image" width="983" height="670" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60ZmOi9HwfZR8x2OIouXqv/4abd8922f78d7cb95b8e97c188fa1e58/wHYBm0Y8Qwe4CD_N5DTx5nizhz61UjVh82f9V3k58VTSN_Jz73Xb_v_sGA7bTfTvNeqq63gFQN6QJypZP6aJPYDzbN8THBcGV_NWjcgqxpyTigVZAw2hlW5afs_e.png" alt="" class="kg-image" width="983" height="670" loading="lazy">
 
 	</figure>
 	<p>Today, we’re adding one additional data set for Logpush: <b>DNS logs</b>. In order to configure Logpush and stream DNS logs for your domain, just head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fanalytics%2Flogs">Cloudflare dashboard</a>, create a new Logpush job, select DNS logs and configure the log fields you’re interested in:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33M87j3q8a6cLhpYxFELBN/340d10cabe64f69c4607683a92e75998/unnamed-8.png" alt="" class="kg-image" width="1600" height="1434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33M87j3q8a6cLhpYxFELBN/1490981cbe974d86fe9361a90e438f63/unnamed-8.png" alt="" class="kg-image" width="1600" height="1434" loading="lazy">
 
 	</figure>
 	<p>Check out our <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/dns_logs">developer documentation</a> for detailed instructions on how to do this through the API and for a thorough description of the new DNS log fields.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tc9X0He7eOawScU0Uqzoh/a888d2dd7a36b799aa2260a98482c758/image3-17.png" alt="Lessons from building an automated SDK pipeline" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tc9X0He7eOawScU0Uqzoh/ff0f9a9f8351f8638f11527236ec8bde/image3-17.png" alt="Lessons from building an automated SDK pipeline" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>In case you missed the <a href="https://blog.cloudflare.com/workers-production-safety">announcement</a> from Developer Week 2024, Cloudflare is now offering software development kits (SDKs) for <a href="https://github.com/cloudflare/cloudflare-typescript">Typescript</a>, <a href="https://github.com/cloudflare/cloudflare-go">Go</a> and <a href="https://github.com/cloudflare/cloudflare-python">Python</a>. As a reminder, you can get started by installing the packages.</p>
@@ -30,7 +30,7 @@ const newZone = await cloudflare.zones.create({
 	<p>This plan worked for newer products and additions to the Go SDK, which in turn helped tools like our <a href="https://github.com/cloudflare/terraform-provider-cloudflare">Terraform Provider</a> stay mostly up to date, but even this focused improvement was still very taxing and time-consuming for internal teams to maintain. On top of this, the process didn’t provide any guarantees on coverage, parity, or correctness because the changes were still manually maintained and susceptible to human error. Regardless of the size of contribution, a team member would still need to coordinate a minimum of 4 pull requests (shown in more depth below) before a change was considered shipped and needed deep knowledge of the relationship between the dependencies in order to get it just right.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wDwD07NI1poZCNaYHnjAq/11cb42dca8b4a955ee53c39b228353ee/image1-19.png" alt="The pull requests previously required to ship an SDK change." class="kg-image" width="1318" height="898" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wDwD07NI1poZCNaYHnjAq/0b80dab8da71ccabef400a6a7610d569/image1-19.png" alt="The pull requests previously required to ship an SDK change." class="kg-image" width="1318" height="898" loading="lazy">
 
 	</figure>
 	<p><i>The pull requests previously required to ship an SDK change.</i></p>
@@ -175,7 +175,7 @@ client.dns.records.list(...)</code></pre>
 	<p>The decision to use Stainless has allowed us to move our focus from building the generation engine to instead building high-quality schemas to describe our services. In the span of a few months, we have gone from inconsistent, manually maintained SDKs to automatically shipping three language SDKs with hands-off updates freely flowing from the internal teams. Best of all, it is now a single pull request workflow for the majority of our changes – even if we were to add a new language or integration to the pipeline!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pcaHSceyj5ah8LygAlB3Y/c566547a42cce1272ea3dd6cd009fbd2/image2-17.png" alt="Just a single pull request is now required to ship an SDK change." class="kg-image" width="1338" height="1226" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pcaHSceyj5ah8LygAlB3Y/34610034b6c955b4b61ee1b6f7d50627/image2-17.png" alt="Just a single pull request is now required to ship an SDK change." class="kg-image" width="1338" height="1226" loading="lazy">
 
 	</figure>
 	<p><i>Just a single pull request is now required to ship an SDK change.</i></p>

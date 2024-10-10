@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Rp8wjIon8rNXOAYb86Cv3/9873354a819f1f81f895b9392a057edb/teams-gateway-hero-illustration-3x-8-1.png" alt="" class="kg-image" width="1609" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Rp8wjIon8rNXOAYb86Cv3/3d0c2be8cb5552417a4361c6a4ee474f/teams-gateway-hero-illustration-3x-8-1.png" alt="" class="kg-image" width="1609" height="844" loading="lazy">
 
 	</figure>
 	<p>The tools we use at work are starting to look like the apps we use in our personal lives. We send emails for our jobs using Google Workspace and respond to personal notes in Gmail. We download PDFs from our team’s Dropbox and then upload images to our personal account. This can lead to confusion and mistakes—made worse by remote work when we forget to log off for the day.</p>
@@ -19,7 +19,7 @@
 	<p>Cloudflare Gateway provides security from threats on the Internet by sending all traffic leaving a device to Cloudflare’s network where it can be filtered. Organizations send traffic to Cloudflare by deploying the WARP agent, a WireGuard-based client built on feedback from our popular consumer app.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4I4Nvic29DjivU5ASKDFgF/a6addc5207145de4226de4d4f87fc886/identity-policy-engine.svg" alt="Organizations send traffic to Cloudflare by deploying the WARP agent, a WireGuard-based client built on feedback from our popular consumer app." class="kg-image" width="533" height="335" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I4Nvic29DjivU5ASKDFgF/4aea11857e44c0b807c0d6c5804576f6/identity-policy-engine.svg" alt="Organizations send traffic to Cloudflare by deploying the WARP agent, a WireGuard-based client built on feedback from our popular consumer app." class="kg-image" width="533" height="335" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Gateway can be deployed in several modes, but most customers start with DNS filtering which only sends <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS queries</a> to Cloudflare. Cloudflare runs the world’s fastest DNS resolver, 1.1.1.1, and on top of that we’ve built a DNS filtering solution where we help prevent users from visiting sites that contain malware or serve phishing attacks.</p>
@@ -47,7 +47,7 @@
 	<p>You can begin configuring these rules today in the Cloudflare for Teams dashboard. To enforce tenant control with Gateway, you can configure an HTTP policy in the Teams Dashboard. For example, you can prevent users from authenticating to GSuite with their personal account and uploading documents to Google Drive account by using the following policy (GSuite uses the “X-GooGApps-Allowed-Domains” header):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Nfi39ceQnPYt794xXHuff/2a9155b1597b0f226844a189d51e44fd/image1-37.png" alt="" class="kg-image" width="1999" height="1544" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Nfi39ceQnPYt794xXHuff/8f9008d31a869f39fdfcca8119be4080/image1-37.png" alt="" class="kg-image" width="1999" height="1544" loading="lazy">
 
 	</figure>
 	<p>As requests get filtered by Gateway’s firewall, allowed requests are proxied to their respective upstream servers. Before sending them upstream, we preprocess the request and append our own trace headers — these include things that are useful for debugging, like request ID headers. Now you can specify your own custom headers to be added onto these requests, which is what enables customers to enforce tenant control for their organizations.</p>

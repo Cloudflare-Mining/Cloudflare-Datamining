@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63hex9WTW2ymlDaeng2lyg/c4b65284ce625d95a71685098fbac5fd/rendering-react-on-the-edge-with-flareact-and-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63hex9WTW2ymlDaeng2lyg/e09bfa3d384778d5f0a92f38cc9b6648/rendering-react-on-the-edge-with-flareact-and-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a guest post from </i><a href="https://twitter.com/jplhomer"><i>Josh Larson</i></a><i>, Engineer at </i><a href="https://www.voxmedia.com"><i>Vox Media</i></a><i>.</i></p>
 	<p>Imagine you’re the maintainer of a high-traffic media website, and your DNS is already hosted on Cloudflare.</p>
@@ -15,7 +15,7 @@
 	<h4>I’m excited to announce <a href="https://flareact.com">Flareact</a>, a new open-source React framework built for Cloudflare Workers.</h4>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iZAEv0uTQCFMSWABs8KLe/71eb6d743b47bdc1521a9b2095f76ec5/Flareact_2x.png" alt="" class="kg-image" width="916" height="214" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iZAEv0uTQCFMSWABs8KLe/3ed9b1c1f576ae5498c03b58a41d6e3b/Flareact_2x.png" alt="" class="kg-image" width="916" height="214" loading="lazy">
 
 	</figure>
 	<p>With Flareact, you don’t need to make the tradeoff between a static site and a dynamic application.</p>
@@ -25,7 +25,7 @@
 	<p>You can <a href="https://flareact.com">check out the docs</a> and get started now by clicking the button below:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fflareact%2Fflareact-template&amp;paid=true">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DQKtrrjIPNSa9vCdzGlEo/8769c26e3255fa53b17f141188066b95/button" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DQKtrrjIPNSa9vCdzGlEo/91db1c0c29bfb1af1a4929292f4afb91/button" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
 		</a>
 	</figure>
 	<p>To get started manually, install the latest wrangler, and use the handy <code>wrangler generate</code> command below to create your first project:</p>
@@ -70,13 +70,13 @@ wrangler generate my-project https://github.com/flareact/flareact-template</code
 	<p>If the request is for an <b>API route</b>, it sends the entire <code>FetchEvent</code> along to the user-defined API function, allowing the user to respond as they see fit.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13wlNGHLGEn1TNpLkV2bDU/d394cb8a54bec2a5bc0ca4f56be1b024/Flareact-diagram-2_2x.png" alt="" class="kg-image" width="1479" height="896" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13wlNGHLGEn1TNpLkV2bDU/845168ed4eaeaa27bdb589b1b10daa64/Flareact-diagram-2_2x.png" alt="" class="kg-image" width="1479" height="896" loading="lazy">
 
 	</figure>
 	<p>If you want your cached page to be revalidated after a certain amount of time, you can return an additional <code>revalidate</code> property from <code>getEdgeProps()</code>. This instructs Flareact to cache the endpoint for that number of seconds before generating a new response.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wlcQVsaVBpMW4bbggCwbM/9033a3c76de3c9cb01317b7d06869f8a/Flareact-diagram-1_2x.png" alt="" class="kg-image" width="1435" height="943" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wlcQVsaVBpMW4bbggCwbM/9ecb3ed46b62f6fcd2b2176dffd9b350/Flareact-diagram-1_2x.png" alt="" class="kg-image" width="1435" height="943" loading="lazy">
 
 	</figure>
 	<p>Finally, if the request is for a static asset, it returns it directly from the <a href="https://developers.cloudflare.com/workers/runtime-apis/kv#background">Workers KV</a>.</p>

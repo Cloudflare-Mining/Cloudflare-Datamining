@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bj0ilelO20zjJBryHUVw4/8cc93d916e4e9833bc88867de938886f/win31-1-1.png" alt="Windows 3.1 Program Manager" class="kg-image" width="513" height="336" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bj0ilelO20zjJBryHUVw4/641ce20cfdc5060e6ad2ba083c3592f4/win31-1-1.png" alt="Windows 3.1 Program Manager" class="kg-image" width="513" height="336" loading="lazy">
 
 	</figure>
 	<p>Back in June 2012 CloudFlare started a <a href="https://blog.cloudflare.com/introducing-spdy">beta rollout</a> of Google's then new <a href="https://en.wikipedia.org/wiki/SPDY">SPDY</a> protocol and we took a <a href="https://blog.cloudflare.com/what-makes-spdy-speedy">detailed look</a> at how SPDY makes web sites faster.</p>
@@ -10,20 +10,20 @@
 	<p>As SPDY has progressed we've become more and more confident in the protocol and made it automatic for all our Pro, Business and Enterprise customers. No click needed. (Since SPDY runs over SSL/TLS to use it a web site must have an SSL certificate).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PpchE7eOhRAjW1Oi7wL7c/20f28c3c7850ff25f20e7ef4d7eeaafa/Screen_Shot_2014-02-18_at_10.00.09.png" alt="Always SPDY" class="kg-image" width="1394" height="156" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2PpchE7eOhRAjW1Oi7wL7c/ba229bb4051630fed5c4923065197e63/Screen_Shot_2014-02-18_at_10.00.09.png" alt="Always SPDY" class="kg-image" width="1394" height="156" loading="lazy">
 
 	</figure>
 	<p>Last week we rolled out the most recent version of SPDY, 3.1, for all customers. SPDY/3.1 is supported by Google Chrome and Mozilla Firefox. As older versions of SPDY (particularly SPDY/2) are being deprecated it's vital for us to keep up to date.</p>
 	<p>To see whether a site is served over SPDY it's possible to use the CloudFlare <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl">Claire</a> extension for Google Chrome. Here it's showing that the popular <a href="https://news.ycombinator.com">Hacker News</a> site is served over SPDY.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jsIJ2FU6I4dxoEVHtn4zj/7901b91f1eb7d342693802528ed6a3ab/Screen_Shot_2014-02-18_at_10.36.01.png" alt="Hacker News SPDY" class="kg-image" width="1450" height="188" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jsIJ2FU6I4dxoEVHtn4zj/908a09be427f3171d90a7b4223d4e2fa/Screen_Shot_2014-02-18_at_10.36.01.png" alt="Hacker News SPDY" class="kg-image" width="1450" height="188" loading="lazy">
 
 	</figure>
 	<p>To discover the exact version used you can dive into Chrome's <a href="chrome://net-internals">chrome://net-internals</a> where the version is shown for each connection. Here connections to Google, CloudFlare and Hacker News are all using the latest version.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3s8Y75eF7NDiyE2Un8PpCU/1d504b734d09012ef7047225dc508adb/Screen_Shot_2014-02-18_at_07.48.33.png" alt="net-internals" class="kg-image" width="962" height="352" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3s8Y75eF7NDiyE2Un8PpCU/c0bf780210d14bf8844e6856e6a80da0/Screen_Shot_2014-02-18_at_07.48.33.png" alt="net-internals" class="kg-image" width="962" height="352" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -38,7 +38,7 @@
 	<p><a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft3">SPDY/3</a> introduced <a href="https://en.wikipedia.org/wiki/Flow_control_(data)">flow control</a> so that SPDY clients (and servers) could control the amount of data they receive on a SPDY connection. <a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft3-1">SPDY/3.1</a> extended flow control to individual SPDY streams (each SPDY connection handles multiple simultaneous streams of data). Flow control is important because different clients (think of the differences in available memory in laptops, desktops and mobile phones) will have varying limitations on how much data they can receive at any one time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65Q11v5zJ1nBrsBJAYYl7x/7529f2ba9064de6dcbcb1a7ff58c7447/9739472905_4dd2992b6c_c.jpg" alt="QUIC" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65Q11v5zJ1nBrsBJAYYl7x/d19997a15bcbbfe80e5b7268aedb6a5a/9739472905_4dd2992b6c_c.jpg" alt="QUIC" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -54,7 +54,7 @@
 	<p>If you're interested in playing with QUIC today you'll need to build the test <a href="https://code.google.com/p/chromium/codesearch#chromium/src/net/tools/quic/&amp;ct=rc&amp;cd=2&amp;q=quic&amp;sq=package:chromium">QUIC server and client</a> that are part of the <a href="http://www.chromium.org">Chromium</a> project, get <a href="https://www.google.co.uk/intl/en/chrome/browser/canary.html">Google Chrome Canary</a> and enable QUIC in <a href="chrome://flags">chrome://flags</a>. You'll probably also want the latest <a href="https://www.wireshark.org/download.html">Wireshark</a> (the development release) which is capable of decoding QUIC frames.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YkDhnZrbBRzcJDyG9jprc/cd7546073ddf20fb6da7f31694140c79/Screen_Shot_2014-02-17_at_13.01.26.png" alt="QUIC in Wireshark" class="kg-image" width="1510" height="416" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YkDhnZrbBRzcJDyG9jprc/487e5f62fc83d51cdf227ebd74d0f134/Screen_Shot_2014-02-17_at_13.01.26.png" alt="QUIC in Wireshark" class="kg-image" width="1510" height="416" loading="lazy">
 
 	</figure>
 	<p>And once QUIC makes the move from experimental to beta we'll be sure to make it available for our customers.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JtGJ8MIiHZVMkCWPqCp3s/2cc7702cbfebdee56453c15b8892dcf7/image1-48.png" alt="Use the language of your choice with Pages Functions via WebAssembly" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JtGJ8MIiHZVMkCWPqCp3s/94e735629b4710ef2ba8c25a32e1ee6f/image1-48.png" alt="Use the language of your choice with Pages Functions via WebAssembly" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>On the Cloudflare Developer Platform, we understand that building any application is a unique experience for every developer. We know that in the developer ecosystem there are a plethora of tools to choose from and as a developer you have preferences and needs. We don’t believe there are “right” or “wrong” tools to use in development and want to ensure a good developer experience no matter your choices. We believe in meeting you where you are.</p>
@@ -76,7 +76,7 @@ export async function onRequest() {
 	<p>The application computes the distance in kilometers on the surface of Earth between your current location (based on the geo coordinates of the incoming <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties">request</a>) and any other point on the globe, each time you click on the globe's surface.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZkZSyM2pJghHYzcwgfw3T/f865800efc62f1511f956618cb8708c1/image3-31.png" alt="" class="kg-image" width="1999" height="1079" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZkZSyM2pJghHYzcwgfw3T/3c3609ec59bb6589d7a575177cbf602e/image3-31.png" alt="" class="kg-image" width="1999" height="1079" loading="lazy">
 
 	</figure>
 	<p>The code that performs the actual high-performance distance calculation is written in Rust, and is a slight adaptation of the <a href="https://rust-lang-nursery.github.io/rust-cookbook/science/mathematics/trigonometry.html#distance-between-two-points-on-the-earth">example</a> provided in the <a href="https://rust-lang-nursery.github.io/rust-cookbook">Rust cookbook</a>:</p>
@@ -106,7 +106,7 @@ wasm-pack build</code></pre>
 	<p>Then, we import the generated <code>.wasm</code> artifact from inside our <code>distance-between.js</code> Pages Function. Now, each time you click on the globe surface, a request to <code>/api/distance-between</code> is made, which will trigger the <code>distance_between()</code> function to execute. Once computed, the distance value is returned by our Function, back to the client, which proceeds to display the value to the user.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nWcWHd4MNnPVEZQ8A3MwE/676fb945f03ec743d41fc953d666e9c5/image2-23.png" alt="" class="kg-image" width="1999" height="1136" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nWcWHd4MNnPVEZQ8A3MwE/868b091b3b4849d2c6d9848a737eb476/image2-23.png" alt="" class="kg-image" width="1999" height="1136" loading="lazy">
 
 	</figure>
 	<p>We want to point out that this application could have been built entirely in JavaScript, however, we equally wanted to show just how simple it is to build it with Rust. The decision to use Rust was motivated by a few factors. First, the tooling ecosystem for building and working with Rust-generated WebAssembly is quite mature, well documented, and easy to get started with. Second, the Rust <a href="https://www.rust-lang.org/learn">docs</a> are a fantastic resource if you are new to Rust or to Rust with WebAssembly! If you are looking for a step-by-step tutorial on how to generate and set up a Rust and WebAssembly project, we highly recommend checking out Rust’s official <a href="https://rustwasm.github.io/docs/book/introduction.html">WebAssembly Book</a>.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pgoyNDnkmPob9cZNTizaH/1b1505df9528ce2abae601ac9aa6e7fb/releasing-cloudflare-access-most-requested-feature.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pgoyNDnkmPob9cZNTizaH/f7ed53e29944f72d26e4c949e17f84b0/releasing-cloudflare-access-most-requested-feature.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare Access, part of <a href="https://teams.cloudflare.com">Cloudflare for Teams</a>, replaces legacy corporate VPNs with Cloudflare’s global network. Instead of starting a VPN client to backhaul traffic through an office, users visit the hostname of an internal application and login with your team’s SSO provider. While the applications feel like SaaS apps for end users, your security and IT departments can configure granular controls and audit logging in a single place.</p>
 	<p>Since Access launched two years ago, customers have been able to integrate multiple SSO providers at the same time. This MultiSSO option <a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">makes it seamless</a> for teams to have employees login with Okta or Azure AD while partners and contractors use LinkedIN or GitHub.</p>
@@ -16,7 +16,7 @@
 	<p>Cloudflare Access secures applications by applying zero-trust enforcement to every request. Rather than trusting anyone on a private network, Access checks for identity any time someone attempts to reach the application. With Cloudflare’s global network, that check takes place in a data center in over 200 cities around the world to avoid compromising performance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jvDc3WmSGJaziha5arU8b/bc4e537f323bc3e0e4cf51e4f5717b7f/image5-2.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jvDc3WmSGJaziha5arU8b/7cfb04543a79186aaf3f5e04a60de0f6/image5-2.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
 
 	</figure>
 	<p>Behind the scenes, administrators build rules to decide who should be able to reach the tools protected by Access. In turn, when users need to connect to those tools, they are prompted to authenticate with one of the identity provider options. Cloudflare Access checks their login against the list of allowed users and, if permitted, allows the request to proceed.</p>
@@ -33,20 +33,20 @@
 	<p>This option gives an organization control of identity, but adds overhead in terms of time and cost. The project owner also needs to pay for new SSO seat licenses, even if those seats are temporary. The IT department must spend time onboarding, helping, and then offboarding those user accounts. And the users themselves need to learn a new system and manage yet another password - this one with permission to your internal resources.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OeJ6LsB9y0nGnlfj4ZPNq/e0721babad1fba9927669bd78c75a2cd/image1-6.png" alt="" class="kg-image" width="1999" height="1859" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OeJ6LsB9y0nGnlfj4ZPNq/74392d79cda4f74596f09f6776ba2e01/image1-6.png" alt="" class="kg-image" width="1999" height="1859" loading="lazy">
 
 	</figure>
 	<p>Alternatively, other groups decide to “federate” identity. In this flow, an organization will connect their own directory service to their partner’s equivalent service. External users login with their own credentials, but administrators do the work to merge the two services to trust one another.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NOaKt0Xn0lw2F7xPHnpcZ/e9ffc00d7d970cd5d40536103c35c450/image4-3.png" alt="" class="kg-image" width="1999" height="1108" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NOaKt0Xn0lw2F7xPHnpcZ/eb6fd4e37ccdae7841082778829ece41/image4-3.png" alt="" class="kg-image" width="1999" height="1108" loading="lazy">
 
 	</figure>
 	<p>While this method avoids introducing new passwords, both organizations need to agree to dedicate time to integrate their identity providers - assuming that those providers can integrate. Businesses then need to configure this setup with each contractor or partner group. This model also requires that external users be part of a larger organization, making it unavailable to single users or freelancers.</p>
 	<p>Cloudflare Access avoids forcing the decision on a single source of identity by supporting multiple. When users connect, they are presented with those options. Users choose their specific provider and Access checks that individual’s login against the list of allowed users.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4E18BwG8NDEjA0ndcw3kiH/44784f04f11607dfc65e30fc39e0a1b0/image3-6.png" alt="" class="kg-image" width="400" height="690" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4E18BwG8NDEjA0ndcw3kiH/4f6517caf7c72c6a21addd9fc4caca04/image3-6.png" alt="" class="kg-image" width="400" height="690" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -61,7 +61,7 @@
 	<p>To get started, select the application that you want to segment with a particular provider in the Cloudflare for Teams UI. Click the tab titled “Authentication”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KJYUZrnwcsF28hoNnU98y/5c6ca062bd04ff526d51473e939214f3/image2-6.png" alt="" class="kg-image" width="1999" height="1508" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KJYUZrnwcsF28hoNnU98y/9c42b086934cd99c94c2047b49ca67f3/image2-6.png" alt="" class="kg-image" width="1999" height="1508" loading="lazy">
 
 	</figure>
 	<p>The tab will list all providers integrated with your account. By default, Access will continue to enable all options for end users. You can toggle any provider on or off in this view and save. The next time your users visit this application, they will only see the options enabled.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6w8vKDbhQBJq2sCgv1iBgS/f497e29694f87a5732f48b0b9be1175d/network-based-policies-in-cloudflare-gateway.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6w8vKDbhQBJq2sCgv1iBgS/1cd2b1985c18bba567ce80005d74a4c5/network-based-policies-in-cloudflare-gateway.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the past year, Cloudflare Gateway has grown from a DNS filtering solution to a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a>. That growth has allowed customers to protect their organizations with fine-grained <a href="https://blog.cloudflare.com/gateway-swg-3">identity-based HTTP policies</a> and <a href="https://blog.cloudflare.com/announcing-antivirus-in-cloudflare-gateway">malware protection</a> wherever their users are. But what about other Internet-bound, non-HTTP traffic that users generate every day — like SSH?</p>
 	<p>Today we’re excited to announce the ability for administrators to configure network-based policies in Cloudflare Gateway. Like DNS and HTTP policy enforcement, organizations can use network selectors like IP address and port to control access to any network origin.</p>
@@ -61,19 +61,19 @@
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> is a versatile protocol that allows users to connect to remote machines and even tunnel traffic from a local machine to a remote machine before reaching the intended destination. That’s great but it also leaves organizations with a gaping hole in their security posture. At first, an administrator could configure a rule that blocks all outbound SSH traffic across the organization.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PuvwSo4c4rojxjIuvuUsc/67cd3a2d5d3eb3f8e13e488f19ebdb6b/image1-1.png" alt="" class="kg-image" width="1999" height="576" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2PuvwSo4c4rojxjIuvuUsc/a0ac33dc9fc109631c68658537b573a2/image1-1.png" alt="" class="kg-image" width="1999" height="576" loading="lazy">
 
 	</figure>
 	<p>As soon as you save that policy, the phone rings and it’s an engineer asking why they can’t use a lot of their development tools. Right, engineers use SSH a lot so we should use the engineering IdP group to allow just our engineers to use SSH.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V3VEbkNMhvpSMV5Bb63p6/2894de653dd7bcc62bb9da9ebd81fde0/image3.png" alt="" class="kg-image" width="1999" height="555" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4V3VEbkNMhvpSMV5Bb63p6/be90f9f55c5883d6d5764fea3adf95dc/image3.png" alt="" class="kg-image" width="1999" height="555" loading="lazy">
 
 	</figure>
 	<p>You take advantage of rule precedence and place that rule above the existing rule that affects all users to allow engineers to SSH outbound but not any other users in the organization.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fv1F45sVsyODzjx0X3lgG/98ca22e55cc621d97a8c27186ad32683/image2-2.png" alt="" class="kg-image" width="1999" height="288" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fv1F45sVsyODzjx0X3lgG/a81d883af18fec99cbd579fc3dcde942/image2-2.png" alt="" class="kg-image" width="1999" height="288" loading="lazy">
 
 	</figure>
 	<p>It doesn’t matter which corporate device engineers are using or where they are located, they will be allowed to use SSH and all other users will be blocked.</p>
@@ -88,7 +88,7 @@
 	<p>Last month, we announced the ability for customers to <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare">create private networks on Cloudflare</a>. Using Cloudflare Tunnel, organizations can connect environments they control using private IP space and route traffic between sites; better, WARP users can connect to those private networks wherever they’re located. No need for centralized VPN concentrators and complicated configurations--connect your environment to Cloudflare and configure routing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18Lu4V9HQRQ5OyrPMMQTYD/5a1457ba05acd3a9bd05c0e57b1d566f/image4.png" alt="" class="kg-image" width="1999" height="951" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18Lu4V9HQRQ5OyrPMMQTYD/0c808689c3fa8ed706f3d08ff4757be2/image4.png" alt="" class="kg-image" width="1999" height="951" loading="lazy">
 
 	</figure>
 	<p>Today’s announcement gives administrators the ability to <i>configure network access policies</i> to control traffic within those private networks. What if the engineer above wasn’t trying to SSH to an Internet-accessible resource but to something an organization deliberately wants to keep within an internal private network (e.g., a development server)? Again, not everyone in the organization should have access to that either. Now administrators can configure identity-based rules that apply to private networks built on Cloudflare.</p>

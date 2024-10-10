@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TzytViD2ytryTUMs5ZnUb/a7429b61c1e8709336338c48cdf81953/image1-29.png" alt="Analyze any URL safely using the Cloudflare Radar URL Scanner" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TzytViD2ytryTUMs5ZnUb/4f4e9842da3c2287c78dcf373736743c/image1-29.png" alt="Analyze any URL safely using the Cloudflare Radar URL Scanner" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>One of the first steps in an <a href="https://www.cloudflare.com/learning/security/what-is-information-security">information security</a> investigation is to gather as much context as possible. But compiling that information can become a sprawling task.</p>
 	<p>Cloudflare is excited to announce early access to a new, free tool — the <a href="https://radar.cloudflare.com/scan">Radar URL Scanner</a>. Provide us a URL, and our scanner will compile a report containing a myriad of technical details: a phishing scan, SSL certificate data, HTTP request and response data, page performance data, DNS records, whether cookies are set to secure and HttpOnly, what technologies and libraries the page uses, and more.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GsgfSITBhXstKRgSfvypB/b78a54732ed9ec7800e51b9bce080cf0/pasted-image-0-8.png" alt="" class="kg-image" width="1600" height="790" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GsgfSITBhXstKRgSfvypB/8d561e767aa13862b4644783153c2704/pasted-image-0-8.png" alt="" class="kg-image" width="1600" height="790" loading="lazy">
 
 	</figure>
 	<p>Let’s walk through a report on John Graham-Cumming’s blog as an example. Conveniently, all reports generated will be publicly accessible.</p>
@@ -17,49 +17,49 @@
 	<p>In the Summary tab itself, you’ll notice the submitted URL was <code>https://blog.jgc.org</code>. If we had received a URL short link, the scanner would have followed the redirects and generated a report for the final URL.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34kwoSuWi6QoxI7jIMVVBC/025f0050386a195a364ee4db1343a910/pasted-image-0--1--4.png" alt="" class="kg-image" width="1600" height="911" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34kwoSuWi6QoxI7jIMVVBC/44a65ac5e58230eccee490f4eb6598ce/pasted-image-0--1--4.png" alt="" class="kg-image" width="1600" height="911" loading="lazy">
 
 	</figure>
 	<p>The Security tab presents information to help determine whether a page is safe to visit with a phishing and certificates section. In our blog example, the report confirms the link we provided is not a phishing link, but there could easily be phishing scams trying to harvest personal information. We’re excited to enable wider access to our <a href="https://www.cloudflare.com/securitycenter">security infrastructure</a> with this free tool.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Kez8ydCdqqjKk2It8mixK/2b9291bb46b5a08728102c549d87b595/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="941" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Kez8ydCdqqjKk2It8mixK/6524d0216969cd6c90506cd834f0fa3f/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="941" loading="lazy">
 
 	</figure>
 	<p>The Cookies tab can indicate how privacy friendly a website is to its users. We show all the cookies set and their attribute values to do this. In this report, the blog loaded 2 cookies. There's the Secure flag. You’ll want that set to true as often as possible because this means the cookie may only be transmitted over HTTPS, preventing it from being observed by unauthorized parties. Additionally, cookies set to HttpOnly will be inaccessible to the JavaScript API, potentially <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">mitigating XSS attacks</a> from third-party scripts.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01ObBbNRbauQICeLQCKiIm/dfbb0c0c19f72984f9def305fdfe8555/pasted-image-0--3--2.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01ObBbNRbauQICeLQCKiIm/3e75b28b2cf4a49683714bc8d266f638/pasted-image-0--3--2.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
 
 	</figure>
 	<p>The Technology tab enumerates the technologies, frameworks, libraries, etc that are used to power the page being scanned. Understanding the technology stack of a page can be very useful for when there are outages in a particular service, when exploits in popular libraries are discovered, or simply to understand what tools are most popular in the industry. John’s blog appears to use 7 different technologies including Google AdSense, Blogger, and Cloudflare.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Kp2mqp5PbBnSDNMayeMF5/95ae6acfbcf2e32aae1c5cef21adc264/pasted-image-0--4--2.png" alt="" class="kg-image" width="1600" height="954" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Kp2mqp5PbBnSDNMayeMF5/a9f246ff54b8790f0985ac25a23d8605/pasted-image-0--4--2.png" alt="" class="kg-image" width="1600" height="954" loading="lazy">
 
 	</figure>
 	<p>The Network tab shows all the HTTP transactions that occur on the page as well as the hostname’s associated DNS records. HTTP transactions are the requests and responses the page makes to load all its content. This tells engineers where the website is going to load its content. Our report of John’s blog shows a total of 82 requests.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3v3qvBLBtxtpJZd3MveiLr/b4c5ace3b5a1cf4b735ed656f52726d7/pasted-image-0--5--1.png" alt="" class="kg-image" width="1600" height="823" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3v3qvBLBtxtpJZd3MveiLr/b3473b358c8bc4c74d51685f01b228af/pasted-image-0--5--1.png" alt="" class="kg-image" width="1600" height="823" loading="lazy">
 
 	</figure>
 	<p>The tab also contains DNS records which are a great way to understand more about the fundamentals of the page. And of course, we at Cloudflare are big advocates for enabling <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works">DNSSEC</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xzzSHEkXPIAsuidVqzIlE/c2fc06ad0a1550a542f13c152962fe95/pasted-image-0--6--1.png" alt="" class="kg-image" width="1600" height="918" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xzzSHEkXPIAsuidVqzIlE/9dae3d756d1c6fcfeb4f3ad0f3b8566a/pasted-image-0--6--1.png" alt="" class="kg-image" width="1600" height="918" loading="lazy">
 
 	</figure>
 	<p>The DOM (Document Object Model) tab conveniently collates common information you may be looking for from within the page. We grouped together lists of all hyperlinks and global JavaScript variables. Additionally, we provide the raw HTML of the page for you to further analyze. Our report shows the blog’s landing page has 104 hyperlinks going off to other websites.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iv4M2V1zvhEnmdRxnH2pU/d70626509c0f7e4f176db967e05b5180/pasted-image-0--7--3.png" alt="" class="kg-image" width="1600" height="813" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iv4M2V1zvhEnmdRxnH2pU/e5cb14ca8c13365ff36497b31fecbe8f/pasted-image-0--7--3.png" alt="" class="kg-image" width="1600" height="813" loading="lazy">
 
 	</figure>
 	<p>The Performance tab presents a breakdown of the time it takes for the website to load. It’s not enough for a page to be secure for users. It must also be usable, and load speeds are a big factor in the overall experience. That’s why we’ve also included <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming">Performance Navigation Timing</a> metrics alongside our more security and privacy oriented tabs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FZbcHW8RHpnz51yD59Itc/86cae60018da879f2da83cfbc002f771/pasted-image-0--8--1.png" alt="" class="kg-image" width="1600" height="877" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FZbcHW8RHpnz51yD59Itc/21600bdf993f1514cf74ae5ca0e9d7c8/pasted-image-0--8--1.png" alt="" class="kg-image" width="1600" height="877" loading="lazy">
 
 	</figure>
 	<p>Under the hood, one of the great things about this tool is that the underlying scanning technology uses Cloudflare’s homegrown <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">Workers Browser Rendering API</a> to run all our headless scans. You can follow that link to join the waitlist and try it out for yourself.</p>

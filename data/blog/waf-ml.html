@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GDvMpi31KcFUtY5SY8ark/0c832037eeefc49bcc2ab80281186423/image5-1.png" alt="Improving the WAF with Machine Learning" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GDvMpi31KcFUtY5SY8ark/8c9552273249bf33bcfcbbf651db9e31/image5-1.png" alt="Improving the WAF with Machine Learning" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Cloudflare handles 32 million HTTP requests per second and is used by more than 22% of all the websites whose web server is known by <a href="https://w3techs.com/technologies/details/ws-cloudflare">W3Techs</a>. Cloudflare is in the unique position of protecting traffic for 1 out of 5 Internet properties which allows it to identify threats as they arise and track how these evolve and mutate.</p>
@@ -44,14 +44,14 @@
 	<p>The new detection is based on the paradigm launched with <a href="https://blog.cloudflare.com/introducing-bot-analytics">Bot Analytics</a>. Following this approach, each request is evaluated, and a score assigned, regardless of whether we are taking actions on it. Since we score every request, users can visualize how the score evolves over time for the entirety of the traffic directed to their server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QkWbUsXN3lFzVRG8OuvOP/ac562adcfafc4c7f52e0ab10d510645d/image3-11.png" alt="Customers can use the machine learning categorization engine to identify trends in their traffic." class="kg-image" width="1999" height="905" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QkWbUsXN3lFzVRG8OuvOP/1b3376efde40ba359c0f7611c0ff1e7c/image3-11.png" alt="Customers can use the machine learning categorization engine to identify trends in their traffic." class="kg-image" width="1999" height="905" loading="lazy">
 
 	</figure>
 	<p>Furthermore, users can visualize the histogram of how requests were scored for a specific attack vector (such as SQLi) and find what score is a good value to separate good from bad traffic.</p>
 	<p>The actual <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">mitigation</a> is performed with custom WAF rules where the score is used to decide which requests should be blocked. This allows customers to create rules whose logic includes any parameter of the HTTP requests, including the dynamic fields populated by Cloudflare, such as bot scores.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Mwj5N1m1dvlx3Z65rSUjA/af8d553553281de9a9cbb0f3104f0348/image2-29.png" alt="Firewall rule built on waf ml score." class="kg-image" width="1999" height="1159" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Mwj5N1m1dvlx3Z65rSUjA/5bbd9960effb94af5226a3fdc0c0d873/image2-29.png" alt="Firewall rule built on waf ml score." class="kg-image" width="1999" height="1159" loading="lazy">
 
 	</figure>
 	<p>We are now looking at extending this approach to work for the managed rules too (OWASP and Cloudflare Managed). Customers will be able to identify trends and create rules based on patterns that are visible when looking at their overall traffic; rather than creating rules based on trial and error, log traffic to validate them and finally enforce protection.</p>
@@ -67,14 +67,14 @@
 	<p>As of today, we expose scores for two attack vectors: SQL injection and Cross Site Scripting. Users can create custom WAF/Firewall rules using three separate scores: a total score (<code>cf.waf.ml.score</code>), one for SQLi and one for XSS (<code>cf.waf.ml.score.sqli</code>, <code>cf.waf.ml.score.xss</code>, respectively). The scores can have values between 1 and 99, with 1 being definitely malicious and 99 being valid traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2L5nEecwBOfJNrWlLAmW7n/f95b33a6141c56c6bb17587f955f19e0/image4-1.png" alt="Histogram of the score across all traffic hitting an application." class="kg-image" width="1999" height="475" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2L5nEecwBOfJNrWlLAmW7n/81c3454f461d1bd4a1bc07801729a555/image4-1.png" alt="Histogram of the score across all traffic hitting an application." class="kg-image" width="1999" height="475" loading="lazy">
 
 	</figure>
 	<p>The model is then trained based on traffic classified by the existing WAF rules, and it works on a transformed version of the original request, making it easier to identify fingerprints of attacks.</p>
 	<p>For each request, the model scores each part of the request independently so that it’s possible to identify where malicious payloads were identified, for example, in the body of the request, the URI or headers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36nH3d4BUBlVDtBUGwulaP/55806094154abb0df7eaa0e0d3bb970a/image1-30.png" alt="The detection engine provides a breakdown of where the threats were found (for example, body, URI, headers)." class="kg-image" width="1999" height="485" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36nH3d4BUBlVDtBUGwulaP/152add49afbc256f0f38d52476c227da/image1-30.png" alt="The detection engine provides a breakdown of where the threats were found (for example, body, URI, headers)." class="kg-image" width="1999" height="485" loading="lazy">
 
 	</figure>
 	<p>This looks easy on paper, but there are a number of challenges that Cloudflare engineers had to solve to get here. This includes how to build a reliable dataset, scalable data labeling, selecting the right model architecture, and the requirement for executing the categorization on <i>every</i> request processed by Cloudflare’s global network (i.e. 32 million times per seconds).</p>

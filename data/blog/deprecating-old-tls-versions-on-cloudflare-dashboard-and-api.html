@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RiImymSJbPUVkjuGQh3Su/a5ae1699361a979ed0cc8ddb6a5a0aad/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RiImymSJbPUVkjuGQh3Su/ff56b5705e81745e66ebdd1cb44b9bdc/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On June 4, Cloudflare will be dropping support for TLS 1.0 and 1.1 on api.cloudflare.com. Additionally, the dashboard will be moved from <a href="https://www.cloudflare.com/a">www.cloudflare.com/a</a> to dash.cloudflare.com and will require a browser that supports TLS 1.2 or higher.</p>
 	<p>No changes will be made to customer traffic that is proxied through <a href="https://www.cloudflare.com/network">our network</a>, though you may decide to enforce a minimum version for your own traffic. We will soon expose TLS analytics that indicate the percent of connections to your sites using TLS 1.0-1.3, and controls to set a specific minimum version. Currently, you may enforce version 1.2 or higher using the <a href="https://support.cloudflare.com/hc/en-us/articles/206029258-How-to-use-Cloudflare-s-Require-Modern-TLS-Feature">Require Modern TLS</a> setting.</p>
@@ -135,7 +135,7 @@
 	<p>Currently you have the ability in the Crypto tab of the dashboard to disable TLS 1.0 and 1.1 together, but not 1.0 only:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61PQSC3j3jCJSf2vDnRGkI/838b0cb2836185d96e50cf3393a71a6a/require-modern-tls.png" alt="require-modern-tls" class="kg-image" width="970" height="177" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61PQSC3j3jCJSf2vDnRGkI/57fdcc2524221450a6f5c2036a7cce45/require-modern-tls.png" alt="require-modern-tls" class="kg-image" width="970" height="177" loading="lazy">
 
 	</figure>
 	<p>Flip the toggle on, as shown in the above screenshot, and only TLS 1.2 or higher will be permitted on your site. Even though TLS 1.1 represents ~0.2% of traffic we see at the edge, some customers have indicated they wish to continue to support it but not TLS 1.0. To address this request, we will soon make the two changes detailed below.</p>
@@ -143,7 +143,7 @@
 	<p>Replacing the "Require Modern TLS" card above will be the "Minimum TLS Version" card:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TGKFNa9iRSQ2dow5AFk2j/b63bf820f094d8b6cf8402295b8201f6/min-tls-version.png" alt="min-tls-version" class="kg-image" width="969" height="198" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TGKFNa9iRSQ2dow5AFk2j/30aeab8ebd98fe231acd1afbd80a613a/min-tls-version.png" alt="min-tls-version" class="kg-image" width="969" height="198" loading="lazy">
 
 	</figure>
 	<p>Note that while the Require Modern TLS UI control will be removed as soon as the Minimum TLS Version card is deployed, the existing API endpoint will continue to function for 60 days from that date. We will enforce the greater of the two settings (if both are used).</p>
@@ -151,7 +151,7 @@
 	<p>The current "Traffic Served Over SSL" pie chart will be enhanced to show the percent of requests by TLS version with slices for HTTP, TLS 1.0, TLS 1.1, TLS 1.2, and TLS 1.3. Hovering over any section will pop up the number of requests in the selected time period.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59LjU9F2gks9LDLvrrSbm0/8303a7ff5419e5584073d6602e5cc8c1/tls-analytics.png" alt="tls-analytics" class="kg-image" width="1586" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59LjU9F2gks9LDLvrrSbm0/cdef9605b7f6757ea1e5355a8de08025/tls-analytics.png" alt="tls-analytics" class="kg-image" width="1586" height="902" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71HWydR0EwctKPYRncEFvy/1eed96be148a0a7cb115670abb595c2b/image4-3.png" alt="Smart Hints make code-free performance simple" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71HWydR0EwctKPYRncEFvy/254415bf6576a561d8639180f828b4cd/image4-3.png" alt="Smart Hints make code-free performance simple" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Today, we’re excited to announce how we’re making Early Hints and <a href="https://web.dev/fetch-priority">Fetch Priorities</a> automatic using the power of Cloudflare’s network. Almost a <a href="https://blog.cloudflare.com/early-hints-performance">year ago</a> we launched <a href="https://blog.cloudflare.com/early-hints">Early Hints</a>. Early Hints are a method that allows web servers to asynchronously send instructions to the browser whilst the web server is getting the full response ready. This gives proactive suggestions to the browser on how to load the webpage faster for the visitor rather than idly waiting to receive the full webpage response.</p>
@@ -23,7 +23,7 @@
 	<p>When you visit a webpage, your browser is actually requesting numerous individual resources from the server. These resources include everything from visible elements like images, text, and videos, to the behind-the-scenes logic (JavaScript, etc.) that powers the website analytics, functionality, and more. The order in which these resources are loaded by the browser plays a crucial role in determining how quickly users can view and interact with the page.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Bg1lqmo1GvJuO45fUqPw4/7aef0a246988ef186ab4106f2d6806ed/image3-2.png" alt="" class="kg-image" width="1443" height="873" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Bg1lqmo1GvJuO45fUqPw4/262928332c4c731f6d3226658424634c/image3-2.png" alt="" class="kg-image" width="1443" height="873" loading="lazy">
 
 	</figure>
 	<p>When your browser receives a response from the server, it parses the HTML response sequentially, from start to finish.When the HTML response arrives in the browser, it is split into two parts: the <code>&lt;head&gt;</code> and the <code>&lt;body&gt;</code>.</p>
@@ -45,7 +45,7 @@
 	<p>When a client sends a request to a server, the server can respond with an "early hint" to provide a clue about the final response. This early hint is a separate response that includes headers related to the final response, such as important static objects that can be fetched early, and links to where to get related resources.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YUg3DWKVa8PZEB0YQ2zkU/8483558f9b677bd4bc7c01fbbede9d3e/image1-4.png" alt="" class="kg-image" width="1999" height="1055" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YUg3DWKVa8PZEB0YQ2zkU/fc6fcb5005c567f37f203326e6538885/image1-4.png" alt="" class="kg-image" width="1999" height="1055" loading="lazy">
 
 	</figure>
 	<p>The purpose of Early Hints is to allow the client to start processing the received information while waiting for the final response. The client can use the Early Hint to initiate early resource preloading, and preconnecting to servers that will have information for the final response, which can lead to faster page load times.</p>
@@ -54,7 +54,7 @@
 	<p>When analyzing a webpage, web browsers often prioritize the fetching of resources such as scripts and stylesheets to optimize the download sequence and efficiently use bandwidth. The priorities assigned to these resources are determined by browsers based on factors like resource type, placement within the webpage, and its location within the HTML response. For instance, images within the visible area for the visitor should be given higher priority, whereas essential scripts loaded early in the <code>&lt;head&gt;</code> section may be assigned a very high priority. Although browsers generally handle priority assignment effectively, it's worth noting that they may not always be optimal for every scenario.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PnNA8LMQijlVtiw7VsVLo/561a8324a234fb8e50a17d64420271b5/Fetch-Priorities.png" alt="" class="kg-image" width="2070" height="1155" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PnNA8LMQijlVtiw7VsVLo/c67e993e168e5b93fcc6d53c6c3d9a26/Fetch-Priorities.png" alt="" class="kg-image" width="2070" height="1155" loading="lazy">
 
 	</figure>
 	<p>By leveraging <a href="https://web.dev/fetch-priority">Fetch Priorities</a>, developers gain additional control over resource loading and assign higher/lower priorities to different resources on their webpage, which can help optimize the overall performance of web pages.</p>

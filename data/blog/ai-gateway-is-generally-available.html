@@ -4,14 +4,14 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GsB2wwIevC3G2m0PGOAhz/3dd7538a78b949610c59bce609c3e2f2/image4-3.png" alt="AI Gateway is generally available: a unified interface for managing and scaling your generative AI workloads." class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GsB2wwIevC3G2m0PGOAhz/d9eaeea0933d269b39fcda70c22881b7/image4-3.png" alt="AI Gateway is generally available: a unified interface for managing and scaling your generative AI workloads." class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>During Developer Week in April 2024, we announced General Availability of <a href="https://blog.cloudflare.com/workers-ai-ga-huggingface-loras-python-support">Workers AI</a>, and today, we are excited to announce that AI Gateway is Generally Available as well. Since its launch to beta <a href="https://blog.cloudflare.com/announcing-ai-gateway">in September 2023 during Birthday Week</a>, we’ve proxied over 500 million requests and are now prepared for you to use it in production.</p>
 	<p>AI Gateway is an AI ops platform that offers a unified interface for managing and scaling your generative AI workloads. At its core, it acts as a proxy between your service and your inference provider(s), regardless of where your model runs. With a single line of code, you can unlock a set of powerful features focused on performance, security, reliability, and observability – think of it as your <a href="https://www.cloudflare.com/learning/network-layer/what-is-the-control-plane">control plane</a> for your AI ops. And this is just the beginning – we have a roadmap full of exciting features planned for the near future, making AI Gateway the tool for any organization looking to get more out of their AI workloads.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6M6hDWXdRH2rZETQK4UlPe/d4964ae3fcd1a27e52b8ded6e50041f9/image6-1.png" alt="architecture diagram illustrating the setup of AI Gateway as a forward proxy" class="kg-image" width="1200" height="380" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6M6hDWXdRH2rZETQK4UlPe/444269e8d23056252e9e17aa08cef333/image6-1.png" alt="architecture diagram illustrating the setup of AI Gateway as a forward proxy" class="kg-image" width="1200" height="380" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -46,31 +46,31 @@ apiKey: 'my api key', // defaults to process.env["OPENAI_API_KEY"]
 	<p><b>Analytics</b>: Aggregate metrics from across multiple providers. See traffic patterns and usage including the number of requests, tokens, and costs over time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gFXixQSV6rVUM9V6ew1W4/6870b7a8949ff27755d8deb84ce723f8/pasted-image-0--10-.png" alt="" class="kg-image" width="1328" height="1216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gFXixQSV6rVUM9V6ew1W4/db974469f45415b7ae0f0af45c30e7f3/pasted-image-0--10-.png" alt="" class="kg-image" width="1328" height="1216" loading="lazy">
 
 	</figure>
 	<p><b>Real-time logs:</b> Gain insight into requests and errors as you build.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31KebDSmQfi9lW87mh3oZy/902dfc3c3a042d71a06d02a989ed0524/image8-1.png" alt="Real-time logs from running three requests to Cohere" class="kg-image" width="810" height="212" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31KebDSmQfi9lW87mh3oZy/541a90575637dc860e1ef28972958ed4/image8-1.png" alt="Real-time logs from running three requests to Cohere" class="kg-image" width="810" height="212" loading="lazy">
 
 	</figure>
 	<p><b>Caching:</b> Enable custom caching rules and use Cloudflare’s cache for repeat requests instead of hitting the original model provider API, helping you save on cost and latency.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bZw1HaJUP48B3MbXiATpx/f41374a75e55d16093320adc4f764d78/image1-10.png" alt="Set up rules for caching requests" class="kg-image" width="1999" height="389" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bZw1HaJUP48B3MbXiATpx/0e7ee230a8b1c62e782efd466177fb5f/image1-10.png" alt="Set up rules for caching requests" class="kg-image" width="1999" height="389" loading="lazy">
 
 	</figure>
 	<p><b>Rate limiting:</b> Control how your application scales by limiting the number of requests your application receives to control costs or prevent abuse.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4icXzN7Z8VuZw17KdzKl2X/e93266ed09c13f43d03786ad0fe6026f/image5-9.png" alt="Set up rules for rate limiting traffic" class="kg-image" width="1999" height="385" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4icXzN7Z8VuZw17KdzKl2X/60466c7cbe3869c14aa7a7ad90c40159/image5-9.png" alt="Set up rules for rate limiting traffic" class="kg-image" width="1999" height="385" loading="lazy">
 
 	</figure>
 	<p><b>Support for your favorite providers:</b> AI Gateway now natively supports Workers AI plus 10 of the most popular providers, including <a href="https://x.com/CloudflareDev/status/1791204770394648901">Groq and Cohere</a> as of mid-May 2024.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ORhtmLzCTOKLVrCyhyEZK/db1d8b79ae52882fd409dd7f96d781c4/image2-10.png" alt="Real time logs from three LLM providers - Cohere, Groq, and OpenAI" class="kg-image" width="1134" height="932" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ORhtmLzCTOKLVrCyhyEZK/53be2a20c4d6bd7dd3cdcd2657ef6455/image2-10.png" alt="Real time logs from three LLM providers - Cohere, Groq, and OpenAI" class="kg-image" width="1134" height="932" loading="lazy">
 
 	</figure>
 	<p><b>Universal endpoint:</b> In case of errors, improve resilience by defining <a href="https://developers.cloudflare.com/ai-gateway/configuration/fallbacks">request fallbacks</a> to another model or inference provider.</p>

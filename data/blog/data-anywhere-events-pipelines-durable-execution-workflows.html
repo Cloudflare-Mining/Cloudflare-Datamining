@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4a3NcRwpfQK1mgW7n37Yao/3d3f101e973320edd2dd9b873b0b2e36/image3-4.png" alt="Data Anywhere with Pipelines, Event Notifications, and Workflows" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4a3NcRwpfQK1mgW7n37Yao/b423201ef3f68704aa7a3f7dea900828/image3-4.png" alt="Data Anywhere with Pipelines, Event Notifications, and Workflows" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Data is fundamental to any real-world application: the database storing your user data and inventory, the analytics tracking sales events and/or error rates, the object storage with your web assets and/or the Parquet files driving your data science team, and the vector database enabling semantic search or AI-powered recommendations for your users.</p>
@@ -21,7 +21,7 @@
 	<p>You can read more in the deep-dive on <a href="https://blog.cloudflare.com/r2-events-gcs-migration-infrequent-access">Event Notifications for R2</a>, but in a nutshell: you can configure changes to content in any R2 bucket to write directly to a <a href="https://developers.cloudflare.com/queues">Queue</a>, allowing you to reliably consume those events in a Worker or to <a href="https://developers.cloudflare.com/queues/reference/pull-consumers">pull from compute</a> in a legacy cloud.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63wR0NuQIFaZUo5TvDvS29/92999ffd89864a36a832e0341852fc06/image2-3.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63wR0NuQIFaZUo5TvDvS29/79b6444d125a9c373f59d6cbdf1bb9c3/image2-3.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
 
 	</figure>
 	<p>Event Notifications for R2 are just the beginning, though. There are many kinds of events you might want to trigger as a developer — these are just some of the event types we’re planning to support:</p>
@@ -124,7 +124,7 @@
 	<p>Step-by-step, it looks like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OCCJMjL6NCXeeVTD4aNeb/371610f75006bd4a97c62e842bc83b72/image4-5.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OCCJMjL6NCXeeVTD4aNeb/43cda373e2969d263d03226b19244429/image4-5.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
 
 	</figure>
 	<p>Transforming this series of steps into real code, here’s what this would look like with Workflows:</p>
@@ -251,7 +251,7 @@ export default class extends Workflow {
 	<p>If we look at how we can build a system that helps us solve each of these three parts together with Pipelines, Event Notifications, R2, and Workflows, we end up with an architecture that resembles this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15ue6XZBrDyTtfja0z8VS5/baedf1a168731a319a6b14eb14f3ad00/image1-2.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15ue6XZBrDyTtfja0z8VS5/57140a77d3881b3b3c8c5a0186c2a84f/image1-2.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
 
 	</figure>
 	<p>Specifically, we have Pipelines (1) scaling out to ingest data, batch it, filter it, and then durably store it in R2 (2) in a format that’s ready and optimized for querying. Workflows, ClickHouse, Databricks, or the query engine of your choice can then query (3) that data as soon as it’s ready — with “ready” being automatically triggered by an Event Notification <i>as soon as the data is ingested and written to R2</i>.</p>

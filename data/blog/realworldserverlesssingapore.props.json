@@ -8,13 +8,13 @@
 			{
 				"name": "Andrew Fitch",
 				"slug": "andrew-fitch",
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rqJ3G9jaSryZquSGJlhWW/f5610ad0c16e32d97e2a6c8c6316de80/AJF-Headshot.avif"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rqJ3G9jaSryZquSGJlhWW/719d5d6f39539620de040356c89bd65b/AJF-Headshot.avif"
 			},
 			{
 				"name": "Remy Guercio",
 				"slug": "remy",
 				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/XFtpWzKBY5g17Pi6YH0Ce/cc9d6a8e835ac64622c576014a2bdb8a/remy.jpg",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XFtpWzKBY5g17Pi6YH0Ce/2ad7279ae447f860bf2449ee5b1c5b52/remy.jpg",
 				"location": null,
 				"website": null,
 				"twitter": null,
@@ -22,7 +22,7 @@
 			}
 		],
 		"excerpt": "Cloudflare Workers has had a very busy 2018. Throughout the year, Workers moved from beta to general availability, continued to expand its footprint as Cloudflare grew to 155 locations, and added new features and services to help developers create increasingly advanced applications.",
-		"feature_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/rKXU0kNQmuTZfNPwB0Eq2/4d0bd4879801e499b1cb789199311ec5/realworldserverlesssingapore.jpg",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rKXU0kNQmuTZfNPwB0Eq2/f709591820debd30ba388c5636fbd311/realworldserverlesssingapore.jpg",
 		"featured": false,
 		"html": "<p><a href=\"https://developers.cloudflare.com/workers/\">Cloudflare Workers</a> has had a very busy 2018. Throughout the year, Workers moved from beta to general availability, continued to expand its footprint as Cloudflare grew to 155 locations, and added new features and services to help developers create increasingly advanced applications.</p><p>To cap off 2018 we decided hit the road (and then head to the airport) with our Real World Serverless event series in San Francisco, Austin, London, Singapore, Sydney, and Melbourne. It was a great time sharing serverless application development insights we’ve discovered over the past year as well as demonstrating how to build applications with new services like our key value store, <a href=\"https://developers.cloudflare.com/workers/kv/\">Cloudflare Workers KV</a>.</p><p>Below is a recording from our Singapore Real World Serverless event. It included three talks about Serverless technology featuring <a href=\"https://twitter.com/Miss_Vee22\"></a><a href=\"https://twitter.com/obezuk\">Tim Obezuk</a>, <a href=\"https://twitter.com/stnly\">Stanley Tan</a>, and <a href=\"https://twitter.com/remyguercio\">Remy Guercio</a> from Cloudflare. They spoke about the fundamentals of serverless technology, twelve factors of serverless application development, and achieving no ops at scale with network-based serverless.</p><p>If you’d like to join us in person to talk about serverless, we’ll be announcing 2019 event locations starting in the new year.</p><p></p>\n          <div class=\"flex anchor relative\">\n            <h3 id=\"about-the-talks\">About the talks</h3>\n            <a href=\"#about-the-talks\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-left-5\">\n              <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n            </a>\n          </div>\n        <p><b>Fundamentals of Serverless Technology - Tim Obezuk (0:00-13:56)</b></p><p>Tim explores the anatomy of Cloudflare’s serverless technology, Cloudflare Workers, and how they can be used to improve availability, build faster websites and save costs. Workers allows you to run Javascript from 150+ data centers around the world.</p><p><b>The Serverless Twelve Factors - Stanley Tan (13:56-22:46)</b></p><p>Developers all know the benefits of the Twelve-Factor App methodology. It is now the industry standard for building modern web app services. Let’s take a look at how this applies to a serverless platform.</p><p><b>Achieving No Ops at Scale with Network-Based Serverless - Remy Guercio (22:46-49:21)</b></p><p>While most major serverless platforms have done an effective job of abstracting the concept of a single server or group of servers, they have yet to make it as easy to deploy globally as it is to deploy to a specific region. Building global applications with region-based serverless providers still requires a significant effort to set up both frontend load balancing and backend data replication. Let’s explore how network-based serverless providers are helping developers build applications of all sizes with a true No Ops mentality.</p><p>Check out our Workers recipes we have listed on our docs <a href=\"https://developers.cloudflare.com/workers/\">here »</a></p>",
 		"id": "5COnRqYvzl7YKeqVjL41OP",
@@ -108,7 +108,7 @@
 			}
 		],
 		"title": "Real World Serverless: Serverless Use Cases and Best Practices",
-		"updated_at": "2024-08-27T02:16:18.899Z",
+		"updated_at": "2024-10-10T00:32:35.700Z",
 		"url": "https://blog.cloudflare.com/realworldserverlesssingapore"
 	},
 	"translations": {

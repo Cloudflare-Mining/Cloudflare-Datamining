@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wDr8WmCXQMdkbqQOADu9g/6a22532e5d937e8b8bd4eae0ab3dbd4e/Good-bye-ESNI--hello-ECH-blog-header.png" alt="" class="kg-image" width="1200" height="569" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3wDr8WmCXQMdkbqQOADu9g/0159cde86c7c28fb87f6b0082656d0a0/Good-bye-ESNI--hello-ECH-blog-header.png" alt="" class="kg-image" width="1200" height="569" loading="lazy">
 
 	</figure>
 	<p>Most communication on the modern Internet is encrypted to ensure that its content is intelligible only to the endpoints, i.e., client and server. Encryption, however, requires a key and so the endpoints must agree on an encryption key without revealing the key to would-be attackers. The most widely used cryptographic protocol for this task, called <i>key exchange,</i> is the <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls"><i>Transport Layer Security</i> (TLS)</a> handshake.</p>
@@ -37,7 +37,7 @@
 	<p>The first handshake message that is encrypted is the server's EncryptedExtensions. The purpose of this message is to protect the server's sensitive handshake parameters, including the server's ALPN extension, which contains the application selected from the client's ALPN list. Key-exchange parameters are sent unencrypted in the ClientHello and ServerHello.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Dya9l0Am8pUE5Ii0u58az/e3b45ffbbcd8282322239715cf3c4379/image4-11.png" alt="" class="kg-image" width="1574" height="1321" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Dya9l0Am8pUE5Ii0u58az/7eed911113649bdb11d583be8629795c/image4-11.png" alt="" class="kg-image" width="1574" height="1321" loading="lazy">
 
 	</figure>
 	<p><b>Figure 1:</b> The TLS 1.3 handshake.</p>
@@ -58,7 +58,7 @@
 	<p>The immediate predecessor of ECH was the <a href="https://tools.ietf.org/html/draft-ietf-tls-esni-02"><i>Encrypted SNI</i> (ESNI)</a> extension. As its name implies, the goal of ESNI was to provide confidentiality of the SNI. To do so, the client would encrypt its SNI extension under the server's public key and send the ciphertext to the server. The server would attempt to decrypt the ciphertext using the secret key corresponding to its public key. If decryption were to succeed, then the server would proceed with the connection using the decrypted SNI. Otherwise, it would simply abort the handshake. The high-level flow of this simple protocol is illustrated in Figure 2.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24LqleKycQgsXAe0qKK6Yk/2dc4b8cbaffdc7140b383aac03adbdad/image9-1.png" alt="" class="kg-image" width="1574" height="1437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24LqleKycQgsXAe0qKK6Yk/1bab0083757f0dab8e049f9bd0dbed45/image9-1.png" alt="" class="kg-image" width="1574" height="1437" loading="lazy">
 
 	</figure>
 	<p><b>Figure 2:</b> The TLS 1.3 handshake with the ESNI extension. It is identical to the TLS 1.3 handshake, except the SNI extension has been replaced with ESNI.</p>
@@ -83,7 +83,7 @@
 	<p>But how can the server complete the handshake if it's unable to decrypt the ClientHello? As illustrated in Figure 3, the ECH protocol actually involves <i>two</i> ClientHello messages: the ClientHelloOuter, which is sent in the clear, as usual; and the ClientHelloInner, which is encrypted and sent as an extension of the ClientHelloOuter. The server completes the handshake with just one of these ClientHellos: if decryption succeeds, then it proceeds with the ClientHelloInner; otherwise, it proceeds with the ClientHelloOuter.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3C9ceBTx5AQXu8tS0lgzdF/901833ef82cacefd64f725acbba1c84e/image3-17.png" alt="" class="kg-image" width="1574" height="1437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3C9ceBTx5AQXu8tS0lgzdF/55ea89f5a56843db15296b2b47f7b1c2/image3-17.png" alt="" class="kg-image" width="1574" height="1437" loading="lazy">
 
 	</figure>
 	<p><b>Figure 3:</b> The TLS 1.3 handshake with the ECH extension.</p>

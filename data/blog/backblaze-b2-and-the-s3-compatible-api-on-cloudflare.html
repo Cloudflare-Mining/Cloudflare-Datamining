@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40Wel75nPvEosuf1dBXFv9/6136908ba4728fc0c6749988ee3db1aa/backblaze-b2-and-the-s3-compatible-api-on-cloudflare.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40Wel75nPvEosuf1dBXFv9/79746872c2ec7ea9f32c7bba55108e6c/backblaze-b2-and-the-s3-compatible-api-on-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In May 2020, Backblaze, a founding Bandwidth Alliance partner announced <a href="https://www.backblaze.com/blog/backblaze-b2-s3-compatible-api">S3 compatible APIs</a> for their B2 Cloud Storage service. As a refresher, the <a href="https://blog.cloudflare.com/bandwidth-alliance">Bandwidth Alliance</a> is a group of forward-thinking cloud and networking companies that are committed to discounting or waiving data transfer fees for shared customers. Backblaze has been a proud partner since 2018. We are excited to see Backblaze introduce a new level of compatibility in their Cloud Storage service.</p>
 	<div class="flex anchor relative">
@@ -36,7 +36,7 @@
 	<p>What is less well understood is the <i>first-mile</i> cost of moving data from a storage provider to the content delivery network. Typically storage providers expect traffic to route via the Internet and will charge the consumer per-gigabyte of data transmitted. This is not the case for Cloudflare as we also share facilities and mutual fibre optic cables with many storage providers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4m3CbQcc8F3gAAtDhYD1ef/0aa676ad9de0d47e1c5ee3510dc6f59e/image2-3.png" alt="" class="kg-image" width="1702" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4m3CbQcc8F3gAAtDhYD1ef/1a75e62d6a8ded64c148a2c68387c899/image2-3.png" alt="" class="kg-image" width="1702" height="860" loading="lazy">
 
 	</figure>
 	<p>These shared interconnects created an opportunity to waive the cost of first-mile bandwidth between Cloudflare and many providers and is what prompted us to create the Bandwidth Alliance.</p>
@@ -113,7 +113,7 @@ AWS_S3_BUCKET = "&lt;BACKBLAZE B2 bucketName&gt;.&lt;BACKBLAZE B2 S3 Endpoint&gt
 	<p>Next run <code>wrangler preview --env dev</code> to enter a preview window of your Worker script. My bucket contained a static website containing adaptive streaming video content stored in a Backblaze B2 bucket.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IjZRYdJMjcMjaYuxWlSiG/0c1af54ced17d5a64f51d8197712feda/image1-3.png" alt="" class="kg-image" width="778" height="925" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IjZRYdJMjcMjaYuxWlSiG/d5271e0124db9c0bdb859306c8f68bc8/image1-3.png" alt="" class="kg-image" width="778" height="925" loading="lazy">
 
 	</figure>
 	<p><i>Note: We permit caching of third party video content only for enterprise domains. Free/Pro/Biz users wanting to serve video content via Cloudflare may use</i> <a href="https://www.cloudflare.com/products/cloudflare-stream"><i>Stream</i></a> <i>which delivers an end-to-end video delivery service.</i></p>

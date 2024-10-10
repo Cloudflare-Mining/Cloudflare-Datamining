@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dwWDZZWvAwOWqtzMwqqA8/f0954aa35cb5744d383ef8d971973fb4/image3-38.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dwWDZZWvAwOWqtzMwqqA8/0ed1217e005b7d723b60acf47de62e95/image3-38.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Local development gives you a fully-controllable and easy-to-debug testing environment. At the start of this year, we brought this experience to Workers developers by <a href="https://blog.cloudflare.com/miniflare">launching Miniflare 2.0</a>: a local Cloudflare Workers simulator. Miniflare 2 came with features like step-through debugging support, detailed <code>console.log</code>s, pretty <a href="https://miniflare.dev/developing/source-maps">source-mapped</a> error pages, <a href="https://miniflare.dev/developing/live-reload">live reload</a> and a highly-configurable <a href="https://miniflare.dev/testing/jest">unit testing environment</a>. Not only that, but we also incorporated Miniflare into Wrangler, our Workers CLI, to enable <code>wrangler dev</code>’s --<code>local</code> mode.</p>
@@ -32,7 +32,7 @@ export default {
 	<p>With the Workers runtime <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">now open-sourced</a>, Miniflare 3 can leverage the same implementations that are deployed on Cloudflare’s network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. ?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VB6hw88YFoVMQWokJ0eIr/60101fecfe367ea8fcd03cc67e9ad83b/image4-26.png" alt="" class="kg-image" width="1544" height="784" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VB6hw88YFoVMQWokJ0eIr/dda37612c76ed09051c4e997cf789c70/image4-26.png" alt="" class="kg-image" width="1544" height="784" loading="lazy">
 
 	</figure>
 	<p>Miniflare 3’s new simplified architecture using worked</p>
@@ -50,7 +50,7 @@ export default {
 	<p>With Miniflare 3, we’re blurring the lines between local and remote development, by bringing real data to your machine as an experimental opt-in feature. If enabled, Miniflare will read and write data to namespaces on the Cloudflare network, as your Worker would when deployed. This is only supported with <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">Workers KV</a> for now, but we’re exploring similar solutions for <a href="https://developers.cloudflare.com/r2">R2</a> and <a href="https://blog.cloudflare.com/introducing-d1">D1</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lSKVsotKwkVeNIXGo3XoK/77817d290b3a7d5823e6ae5a86aa95d1/image2-46.png" alt="" class="kg-image" width="1068" height="1034" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lSKVsotKwkVeNIXGo3XoK/c10227a6bec12bb7ea72c44e72cb3f39/image2-46.png" alt="" class="kg-image" width="1068" height="1034" loading="lazy">
 
 	</figure>
 	<p>Miniflare’s system for accessing real KV data, reads and writes are cached locally for future accesses</p>
@@ -65,7 +65,7 @@ export default {
 	<p>With Miniflare 3 now effectively as accurate as the real Workers environment, and the ability to access real data locally, we’re revisiting the decision to make remote development the initial Wrangler experience. In a future update, <code><b>wrangler dev --local</b></code><b> will become the default</b>. <code>--local</code> will no longer be required. Benchmarking suggests this will bring an approximate <b>10x reduction to startup</b> and a massive <b>60x reduction to script reload</b> times! Over the next few weeks, we’ll be focusing on further optimizing Wrangler’s performance to bring you the fastest Workers development experience yet!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qal4ZCSp4RwfzHJf5FTBa/0ad0c7a6b85d7b57d6c0e3dee2c4c9ce/image1-63.png" alt="lower is better, startup: time until HTTP response received containing expected body, reload: time from writing file until HTTP response received containing new body, mean average over 13 runs discarding first 3 plotted, tested on MacBook Pro 14-inch 2021" class="kg-image" width="1420" height="580" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qal4ZCSp4RwfzHJf5FTBa/43d3f6e244136954aeb084c7c798d632/image1-63.png" alt="lower is better, startup: time until HTTP response received containing expected body, reload: time from writing file until HTTP response received containing new body, mean average over 13 runs discarding first 3 plotted, tested on MacBook Pro 14-inch 2021" class="kg-image" width="1420" height="580" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

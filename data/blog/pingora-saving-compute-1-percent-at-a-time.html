@@ -1,7 +1,7 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uwVNobeSBws457ad5SoNY/90450804dbb882c9fe7f9b5f6d467c1e/2442-1-hero.png" alt="2442-1-hero" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uwVNobeSBws457ad5SoNY/080de413142fc98caffc3c0108912fe4/2442-1-hero.png" alt="2442-1-hero" class="kg-image" width="1800" height="1013" loading="lazy">
 	</figure>
 	<p>Cloudflare’s global network handles <i>a lot</i> of HTTP requests – over 60 million per second on average. That in and of itself is not news, but it is the starting point to an adventure that started a few months ago and ends with the announcement of a new <a href="https://github.com/cloudflare/trie-hard"><u>open-source Rust crate</u></a> that we are using to reduce our CPU utilization, enabling our CDN to handle even more of the world’s ever-increasing Web traffic.&nbsp;</p>
 	<div class="flex anchor relative">
@@ -41,12 +41,12 @@ pub fn clear_internal_headers(request_header: &amp;mut RequestHeader) {
 	</div>
 	<p>One potentially quick win is to invert how we find the headers that need to be removed from requests. If you look at the original code, you can see that we are evaluating <code>request_header.remove_header(h)</code> for each header in our list of internal headers, so 100+ times. Diagrammatically, it looks like this:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7y2qHbNfBQeoGRc8PqjBcp/8836800cb4a9e980665fb35ef8c8db24/2442-2.png" alt="2442-2" class="kg-image" width="568" height="244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7y2qHbNfBQeoGRc8PqjBcp/9e8fccb6951a475a26def66695e47635/2442-2.png" alt="2442-2" class="kg-image" width="568" height="244" loading="lazy">
 	</figure>
 	<p></p>
 	<p>Since an average request has significantly fewer than 100 headers (10-30), flipping the lookup direction should reduce the number of reads while yielding the same intersection. Because we are working in Rust (and because <code>retain</code> does not exist for <code>http::HeaderMap</code> <a href="https://github.com/hyperium/http/issues/541"><u>yet</u></a>), we have to collect the identified internal headers in a separate step before removing them from the request. Conceptually, it looks like this:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hgLavu1hZbwkw91Tee8e1/b228557b065f207726779fe185ad2c74/2442-3.png" alt="2442-3" class="kg-image" width="599" height="351" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hgLavu1hZbwkw91Tee8e1/4d43b538274ae2c680236ca66791d73b/2442-3.png" alt="2442-3" class="kg-image" width="599" height="351" loading="lazy">
 	</figure>
 	<p></p>
 	<p>Using our benchmarking tool, we can measure the impact of this small change, and surprisingly this is already a substantial improvement. The runtime improves from <b>3.65µs</b> to <b>1.53µs</b>. That’s a 2.39x speed improvement for our function. We can calculate the theoretical CPU percentage by multiplying the starting utilization by the ratio of the new and old times: 1.71% * 1.53 / 3.65 = 0.717%. Unfortunately, if we subtract that from the original 1.71% that only equates to saving 1.71% - 0.717% = <i>0.993%</i> of the total CPU time. We should be able to do better.&nbsp;</p>
@@ -85,7 +85,7 @@ pub fn clear_internal_headers(request_header: &amp;mut RequestHeader) {
 	</div>
 	<p>A <a href="https://en.wikipedia.org/wiki/Trie"><u>trie</u></a> (pronounced like “try” or “tree”) is a type of <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)"><u>tree data structure</u></a> normally used for prefix searches or auto-complete systems over a known set of strings. The structure of the trie lends itself to this because each node in the trie represents a substring of characters found in the initial set. The connections between the nodes represent the characters that can follow a prefix. Here is a small example of a trie built from the words: “and”, “ant”, “dad”, “do”, &amp; “dot”.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wy48j3XNs9awxRNvjLljC/62bdf276359d1cf5b8377e13ad2a0017/2442-4.png" alt="2442-4" class="kg-image" width="519" height="291" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wy48j3XNs9awxRNvjLljC/4e2a05b4e1802eba26f9e10e95bd843f/2442-4.png" alt="2442-4" class="kg-image" width="519" height="291" loading="lazy">
 	</figure>
 	<p>The root node represents an empty string prefix, so the two lettered edges directed out of it are the only letters that can appear as the first letter in the list of strings, “a” and “d”. Subsequent nodes have increasingly longer prefixes until the final valid words are reached. This layout should make it easy to see how a trie could be useful for quickly identifying strings that are not contained. Even at the root node, we can eliminate any strings that are presented that do not start with “a” or “d”. This paring down of the search space on every step gives reading from a trie the <b>O(log(L))</b> we were looking for … but only for misses. Hits within a trie are still <b>O(L)</b>, but that’s okay, because we are getting misses over 90% of the time.</p>
 	<p>Benchmarking a few trie implementations from <a href="https://crates.io/search?q=trie"><u>crates.io</u></a> was disheartening. Remember, most tries are used in response to keyboard events, so optimizing them to run in the hot path of tens of millions of requests per second is not a priority. The fastest existing implementation we found was <a href="https://crates.io/crates/radix_trie"><u>radix_trie</u></a>, but it still clocked in at a full microsecond slower than hashmap. The only thing left to do was write our own implementation of a trie that was optimized for our use case.</p>

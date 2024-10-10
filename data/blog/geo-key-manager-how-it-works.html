@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/geo-key-manager-how-it-works">Français</a>, <a href="https://blog.cloudflare.com/es-es/geo-key-manager-how-it-works">Español</a> and <a href="https://blog.cloudflare.com/de-de/geo-key-manager-how-it-works">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BMLs89RUwPOPnl4it0O3b/0bbc0af3cba2ec99dc0d5a06e2cfc7b4/geo-key-manager-how-it-works.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/geo-key-manager-how-it-works">Français</a>, <a href="https://blog.cloudflare.com/es-es/geo-key-manager-how-it-works">Español</a> and <a href="https://blog.cloudflare.com/de-de/geo-key-manager-how-it-works">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BMLs89RUwPOPnl4it0O3b/99bc7da09f2687b10a554f4782c35f30/geo-key-manager-how-it-works.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today we announced <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, a feature that gives customers unprecedented control over where their private keys are stored when uploaded to Cloudflare. This feature builds on a previous Cloudflare innovation called Keyless SSL and a novel cryptographic access control mechanism based on both identity-based encryption and broadcast encryption. In this post we’ll explain the technical details of this feature, the first of its kind in the industry, and how Cloudflare leveraged its existing network and technologies to build it.</p>
 	<div class="flex anchor relative">
@@ -13,14 +13,14 @@
 	<p>Cloudflare launched <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys">Keyless SSL</a> three years ago to wide acclaim. With Keyless SSL, customers are able to take advantage of the full benefits of Cloudflare’s network while keeping their HTTPS private keys inside their own infrastructure. Keyless SSL has been popular with customers in industries with regulations around the control of access to private keys, such as the financial industry. Keyless SSL adoption has been slower outside these regulated industries, partly because it requires customers to run custom software (the key server) inside their infrastructure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/121VptrQkTUYUPss5HLIWs/3a325e2b0f0875e62a42b2e7c3a3df86/image5.png" alt="Standard Configuration" class="kg-image" width="1999" height="531" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/121VptrQkTUYUPss5HLIWs/1f01586195f9611eb1490f98166bd8ef/image5.png" alt="Standard Configuration" class="kg-image" width="1999" height="531" loading="lazy">
 
 	</figure>
 	<p></p>
 	<p>Standard Configuration</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/W3u9jRPpuvciPzndNJYTE/379bf074961b93192dc18dfde144ea3a/image7.png" alt="Keyless SSL" class="kg-image" width="1999" height="783" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/W3u9jRPpuvciPzndNJYTE/f99f3e97afb98b68c17447bde600b805/image7.png" alt="Keyless SSL" class="kg-image" width="1999" height="783" loading="lazy">
 
 	</figure>
 	<p></p>
@@ -51,14 +51,14 @@
 	<p>The private key operation is critical to the TLS handshake: it allows the server to prove that it owns a given certificate. Without this private key operation, the client has no way of knowing whether or not the server is authentic. In Keyless SSL, the private key operation is separated from the rest of the handshake. In a Keyless SSL handshake, instead of performing the private key operation locally, the server makes a remote procedure call to another server (called the key server) that controls the private key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qVkp63Sxh2oKSbGYq5S4t/9221e78e0e800a7cc5a1bd8bcb9e1d43/image8.gif" alt="" class="kg-image" width="1137" height="773" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qVkp63Sxh2oKSbGYq5S4t/57ce236a21aa8623fc7a7a7c3e9a1030/image8.gif" alt="" class="kg-image" width="1137" height="773" loading="lazy">
 
 	</figure>
 	<p>Keyless SSL lets you logically separate concerns so that a compromise of the web server does not result in a compromise of the private key. This additional security comes at a cost. The remote procedure call from the server to the key server can add latency to the handshake, slowing down connection establishment. The additional latency cost corresponds to the round-trip time from the server to the key server, which can be as much as a second if the key server is on the other side of the world.</p>
 	<p>Luckily, this latency cost only applies to the first time you connect to a server. Once the handshake is complete, the key server is not involved. Furthermore, if you reconnect to a site you don’t have to pay the latency cost either because resuming a connection with <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">TLS Session Resumption</a> doesn’t require the private key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eRBZiNmYoLOrG7EKJiBtC/c941874cd83c40a941c83256b69db58d/geo-key-frame_4x.gif" alt="" class="kg-image" width="2278" height="1136" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eRBZiNmYoLOrG7EKJiBtC/589586580fa3559e67aa222047ca7908/geo-key-frame_4x.gif" alt="" class="kg-image" width="2278" height="1136" loading="lazy">
 
 	</figure>
 	<p>Latency is only added for the initial connection.</p>
@@ -114,14 +114,14 @@
 	<p>Unlike traditional public key cryptography, where each party has a public key and a private key, in identity-based encryption, your identity <i>is</i> your public key. This is a very powerful concept, because it allows you to encrypt data to a person without having to obtain a their public key ahead of time. Instead of a large random-looking number, a public key can literally be any string, such as “<a href="mailto:bob@example.com">bob@example.com</a>” or “beebob”. Identity-based encryption is useful for email, where you can imagine encrypting a message using person’s email address as the public key. Compare this to the complexity of using PGP, where you need to find someone’s public key and validate it before you send a message. With identity-based encryption, you can even encrypt data to someone before they have the private key associated with their identity (which is managed by a central key generation authority).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q2nDn5ijrqWLGMEpqCvtL/d426503f6236b6c51d77f80b20b1ad92/image10.png" alt="" class="kg-image" width="1999" height="1256" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Q2nDn5ijrqWLGMEpqCvtL/8492334a36047cfa46df3a9c041d9e6a/image10.png" alt="" class="kg-image" width="1999" height="1256" loading="lazy">
 
 	</figure>
 	<p></p>
 	<p>Public Key Cryptography (PGP, etc.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tKl78Up3D6ZQcQObkEscl/e0971e9260fc67bc879e3e6498eba518/image1-2.png" alt="" class="kg-image" width="1999" height="1373" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tKl78Up3D6ZQcQObkEscl/9052e1d04856d4a690cb368a984c5469/image1-2.png" alt="" class="kg-image" width="1999" height="1373" loading="lazy">
 
 	</figure>
 	<p></p>
@@ -182,26 +182,26 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dEYAkvLTz4wg4vnpSmJ1y/34a25df1eb54ad4b607173ac80c7add5/image11.png" alt="1" class="kg-image" width="1999" height="1181" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dEYAkvLTz4wg4vnpSmJ1y/80f8c01cc9ad92f920c1886d14541898/image11.png" alt="1" class="kg-image" width="1999" height="1181" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5A6r4FXSSdko6wNNKA2sFi/c508222eda4609e7f726769a62ade558/image4.jpg" alt="2" class="kg-image" width="579" height="342" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5A6r4FXSSdko6wNNKA2sFi/d898890a6196d82796618e7245850a45/image4.jpg" alt="2" class="kg-image" width="579" height="342" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZEZXyLDAkN0Gpxr0ils0f/52e192940948e63f3d3f638bf429d136/image2-2.png" alt="" class="kg-image" width="1159" height="1304" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZEZXyLDAkN0Gpxr0ils0f/fa28cb9857466912df7c5001c1ee62b2/image2-2.png" alt="" class="kg-image" width="1159" height="1304" loading="lazy">
 
 	</figure>
 	<p>The locations inside the regions allowlist can decrypt half of the key (KEK1), and need to also be outside the blocklist to decrypt the other half of the key (KEK2). In the example, London and Dallas only have access to KEK1 because they can’t decrypt KEK2. These locations can’t reconstruct KEK and therefore can’t decrypt the private key. Every other location in the E.U. and U.S. can decrypt KEK1 and KEK2 so they can construct KEK to decrypt the private key. Tokyo and Sydney can decrypt the KEK from the allowlist and use it to decrypt the private key.</p>
 	<p>This will make the private TLS key available in all of the EU and US except for Dallas and London and it will additionally be available in Tokyo and Sydney. The result is the following map:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S9frEbHm1U5VAzfqpeTWW/a42e46d90735ef366dd6460b7ed153cd/image3.png" alt="" class="kg-image" width="1999" height="1078" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/S9frEbHm1U5VAzfqpeTWW/dcb0b031d8d552c0b1322f243b02d360/image3.png" alt="" class="kg-image" width="1999" height="1078" loading="lazy">
 
 	</figure>
 	<p>This design lets customers choose with per-datacenter granularity where their private keys can be accessed. If someone connects to a datacenter that can’t decrypt the private key, that SSL connection is handled using Keyless SSL, where the key server is located in a location with access to the key. The Geo Key code automatically finds the nearest data center that can access the relevant TLS private key and uses Keyless SSL to handle the TLS handshake with the client.</p>
@@ -219,7 +219,7 @@
 	<p>The data from these measurements was used to construct the following map, highlighting the additional latency added for visitors around the world for the US-only configuration.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BbX0LQqopTXlY86GvIpa8/7bcd63648d2682baf84946542b527070/image6.png" alt="" class="kg-image" width="1999" height="1121" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BbX0LQqopTXlY86GvIpa8/922b82e0e9e38dc3865f3148d9156ce1/image6.png" alt="" class="kg-image" width="1999" height="1121" loading="lazy">
 
 	</figure>
 	<p>Latency added when keys are in U.S. only. Green: no latency cost,Yellow: &lt;50ms,Red: &gt; 100ms</p>

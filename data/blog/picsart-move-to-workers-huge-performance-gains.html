@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fvxOCsz7pdUfGfdqTXTbU/725c9fd9a356ad3111f0222138d8346f/image5.png" alt="How Picsart leverages Cloudflare's Developer Platform to build globally performant services" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fvxOCsz7pdUfGfdqTXTbU/c1e703466aeca7fbe1fa274ff34fb5b5/image5.png" alt="How Picsart leverages Cloudflare's Developer Platform to build globally performant services" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Delivering great user experiences with a global user base can be challenging. While serving requests quickly when you start out in a local market is straightforward, doing so for a global audience is much more difficult. Why? Even under optimal conditions, you cannot be faster than the speed of light, which brings single data center solutions to their performance limits.</p>
@@ -20,7 +20,7 @@
 	<p>On each app start, the client device sends a request to the remote configuration service for the latest setup tailored to the user's session. The assignment of experiments relies on factors like the operating system and previous sessions, making each request unique and uncachable. Picsart's app showcases extensive remote configuration capabilities, enabling adjustments to nearly every element. This results in a response containing a 1.5 MB configuration file for mobile clients. While the long-term solution is to reduce the file size, which has grown over time as more teams adopted the powerful service, this is not possible in the near or mid-term as it requires a major rewrite of all clients.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xgUdo4wBKIbu0YzxXotHi/905e616adc5afc48e45528a647d1a1a4/Screenshot-2024-04-01-at-2.47.52-PM.png" alt="" class="kg-image" width="752" height="804" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xgUdo4wBKIbu0YzxXotHi/3e855c5adc807cb115a3a59fcaf1893b/Screenshot-2024-04-01-at-2.47.52-PM.png" alt="" class="kg-image" width="752" height="804" loading="lazy">
 
 	</figure>
 	<p>This setup request is blocking in the "hot path" during app start, as the results of this request will decide how the app itself looks and behaves. Hence, performance is critical. To ensure users are not waiting for too long, Picsart apps will wait for 1500ms on mobile for the request to complete – if it does not, the user will not be assigned a test group and the app will fallback to default settings.</p>
@@ -46,7 +46,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54ZFnOPI3zMI2FNmf5uOwU/1a46230f6d38c6c1ccb93fc8635c8d48/image1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54ZFnOPI3zMI2FNmf5uOwU/18cc25a5ee55887e590128be733b7774/image1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Looking at the data, it was clear to the Picsart team that their backend service was already well-optimized, taking only 30 milliseconds, a tiny fraction of the available time budget, to process each of the billions of monthly requests. The bulk of the request time came from <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">network latency</a>. Especially with mobile devices, last mile performance can be very volatile, eating away a significant amount of the available time budget. Not only that, but the data was clear: users closer to the origin server had a much higher chance of making the round trip in time versus users out of region. It quickly became obvious that Picsart, fueled by its global success, had outgrown a single-region setup.</p>
@@ -61,14 +61,14 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XTH17l3JlPKoeV7i0MO5p/8b186063ac085fe4a75007efc2cf7ddd/image6.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XTH17l3JlPKoeV7i0MO5p/501ffe57026f80797089df6ddd627892/image6.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
 
 	</figure>
 	<p>A solution that comes to mind would be to replicate the existing cloud infrastructure in multiple regions and use global load balancing to minimize the distance a request needs to travel. However, this introduces significant overhead and cost. On the infrastructure side, it is not only the additional compute instances and database clusters that incur cost, but also cross-region data transfer to keep data in sync. Moreover, technical teams would need to operate and monitor infrastructure in multiple regions, which can add a lot to the complexity and cognitive load, leading to decreased development velocity and productivity loss.</p>
 	<p>Picsart instead looked to Cloudflare – we already had a long-lasting relationship for <a href="https://www.cloudflare.com/application-services">Application Performance and Security</a>, and they aimed to use our <a href="https://www.cloudflare.com/developer-platform">Developer Platform</a> to tackle the problem.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mRjLlmOaeyNOM6eUUudvZ/a34b66a5eafd947185ba37928e3b1f53/image2.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mRjLlmOaeyNOM6eUUudvZ/fc39dee9770bf76bef154efd52cdb48b/image2.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
 
 	</figure>
 	<p>Workers and Workers KV seemed like the ideal solution. Both compute and data are globally distributed in <a href="https://www.cloudflare.com/network">310+ locations around the world</a>, resulting in a shorter distance between end users and the experimentation service. Not only that, but Cloudflare's global-by-default approach allows for deployment with minimal overhead, and in contrast to other considered solutions, no additional fees to distribute the data around the globe.</p>
@@ -325,7 +325,7 @@ fetchDataFromBothEndpoints();</code></pre>
 	<p>The day had come, and it was time for the phased rollout, web first and the mobile apps second. With suspense, the team looked at the dashboards, and were pleasantly surprised. The rollout was successful and billions of requests were handled with ease.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1aNPXwkM6Nk2lWZaDmJ4NV/653e5fd7205194bc0696d059729fa2b6/image4.png" alt="" class="kg-image" width="1999" height="791" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aNPXwkM6Nk2lWZaDmJ4NV/e9b3268e3d395a34295ff72231b60e39/image4.png" alt="" class="kg-image" width="1999" height="791" loading="lazy">
 
 	</figure>
 	<p><i>Share of successfully delivered experiments</i></p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39u6Bx6wM8khHVcNgtAsGe/b24014fc249047b04ed917231b0df339/dns-analytics-cloudflare.png" alt="" class="kg-image" width="1432" height="2312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39u6Bx6wM8khHVcNgtAsGe/95570ae074f8d442443dd6096a43d7dd/dns-analytics-cloudflare.png" alt="" class="kg-image" width="1432" height="2312" loading="lazy">
 
 	</figure>
 	<p>Have you noticed something new in your Cloudflare analytics dashboard this morning? You can now see detailed DNS analytics for your domains on Cloudflare.</p>
@@ -18,32 +18,32 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gayLtboo439PBfUSqfaYG/7ad10b1bb0257c37bf3b32141f846040/dns-analytics-cloudflare-queries-by-response-code.png" alt="" class="kg-image" width="889" height="535" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gayLtboo439PBfUSqfaYG/51de684933ca5691d8a11fd1e1660800/dns-analytics-cloudflare-queries-by-response-code.png" alt="" class="kg-image" width="889" height="535" loading="lazy">
 
 	</figure>
 	<p>At the top of the DNS analytics dashboard you can see your DNS traffic health. This “Queries by Response Codes” graph breaks down queries by what response code Cloudflare DNS answered to the visitor. Like HTTP response codes, DNS response codes give an indication of what is happening behind the scenes. Mostly you will just see NOERROR, the HTTP 200 of DNS response codes, and NXDOMAIN, the HTTP 404 of DNS response codes. NXDOMAIN is particularly interesting - what are people querying for that doesn’t exist?</p>
 	<p>If you are an enterprise customer and you want to know what all the NXDOMAIN queries are, just scroll down a little bit where we show you the top queries for your domain and top queries for your domain for DNS records that don’t exist (aka top NXDOMAIN queries).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dYCnr6MPzKtLXwRbG6CWw/4d2e812f2e19355e3012850ad6bd4a16/dns-analytics-cloudflare-top-n.png" alt="" class="kg-image" width="899" height="692" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dYCnr6MPzKtLXwRbG6CWw/c691683380592ebd2a46ec72930cc955/dns-analytics-cloudflare-top-n.png" alt="" class="kg-image" width="899" height="692" loading="lazy">
 
 	</figure>
 	<p>If you are curious then where all of these NXDOMAIN queries are coming from, all Pro, Business and Enterprise plan customers can scroll down a little bit further to the geography section where we show you the breakdown of where your queries come from and also where your queries returning NXDOMAIN come from.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79Or1yswL8gEzb5uJdF6OS/cb280bf8e0fa4b5459506c1dd1df9fad/dns-analytics-cloudflare-map-nxdomain.png" alt="" class="kg-image" width="889" height="1082" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79Or1yswL8gEzb5uJdF6OS/1f68945573194417efbaf93a86aeac5f/dns-analytics-cloudflare-map-nxdomain.png" alt="" class="kg-image" width="889" height="1082" loading="lazy">
 
 	</figure>
 	<p>If you are an Enterprise customer and want to dive in deeper just for one or a few names, you can filter down the entire dashboard by hostname. You can even filter the dashboard by names that don’t exist in your DNS records so you can explore traffic for misconfigured records resolvers are looking for that don’t exist.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2a1UfGtCWo3rjgDYLdJKu7/4ecad43bbae40f9473a91e77c042da3a/filter.png" alt="" class="kg-image" width="876" height="95" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2a1UfGtCWo3rjgDYLdJKu7/22947f0dc005b252b9dad2ed43c3661c/filter.png" alt="" class="kg-image" width="876" height="95" loading="lazy">
 
 	</figure>
 	<p>Lastly, back up at the top, business and enterprise customers can see a breakdown of traffic by record type. If your domain has DNSSEC enabled, you’ll even see queries for DNSKEY records, meaning DNS resolvers that are DNSSEC-aware are asking Cloudflare for your DNSSEC keys to verify DNS records are untampered with.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/D1lhrXdCiBMGUV85ipFos/1ba473cfae92fcbf0de7368655ab66b4/dns-analytics-cloudflare-qtype.png" alt="" class="kg-image" width="1777" height="1060" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/D1lhrXdCiBMGUV85ipFos/74bede452777f1d44ab03dd287ef1268/dns-analytics-cloudflare-qtype.png" alt="" class="kg-image" width="1777" height="1060" loading="lazy">
 
 	</figure>
 	<p>If you like what you’re seeing and wish you could use the data to piece together your own dashboards? You can. We’ve developed a <a href="https://blog.cloudflare.com/grafana-plugin">Grafana plugin</a> you can use to build your own dashboards and an API you can use to create your own tools. Plus the API gives you some added neat information like the distribution of queries over IPv6 vs IPv4 and UDP vs TCP, as well as the distribution of answers by query and response size. (DNS people rejoice -- now you can finally see if there’s a difference in query size between IPv6 and IPv4, and what is the breaking point where Cloudflare DNS answers switch from UDP to TCP.)</p>

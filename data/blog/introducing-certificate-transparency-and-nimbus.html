@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6930XiAxNtvaZ8YnjkFV66/b5c69aac77ddf0e225cd42b31bbec87b/image1-1.png" alt="image1-1" class="kg-image" width="714" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6930XiAxNtvaZ8YnjkFV66/5c5163e5d8e3efc9802b4b0e4821dbb6/image1-1.png" alt="image1-1" class="kg-image" width="714" height="332" loading="lazy">
 
 	</figure>
 	<p>Certificate Transparency (CT) is an ambitious project to help improve security online by bringing accountability to the system that protects HTTPS. Cloudflare is announcing support for this project by introducing two new public-good services:</p>
@@ -27,7 +27,7 @@
 	<p>From a high level, a PKI is similar to a system of notaries who can grant servers the authority to serve websites by giving them a signed object called a digital certificate. This certificate contains the name of the website, the name of the organization that requested the certificate, how long it’s valid for, and a public key. For each public key, there is an associated private key. In order to serve an HTTPS site with a given certificate, the server needs to prove ownership of the associated private key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ArZT2zzy50umQZFOznIA/b22c930990d62954df99f0e4152c86f7/image8.png" alt="image8" class="kg-image" width="1393" height="1266" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17ArZT2zzy50umQZFOznIA/d0315e3b412ce3c9376ed234f45c1cd0/image8.png" alt="image8" class="kg-image" width="1393" height="1266" loading="lazy">
 
 	</figure>
 	<p>Sites obtain digital certificates from trusted third parties called Certificate Authorities (CAs). CAs validate the operator’s ownership of a domain before issuing them a certificate. If the issuing CA for a certificate is trusted by the browser, then that certificate can be used to serve content over HTTPS to visitors of the site. All this happens under the hood of the browser and is only surfaced to user by the little green lock in your address bar, or a nasty error message if things go wrong.</p>
@@ -35,7 +35,7 @@
 	<p>This system works great, until it doesn’t. As a system of trust, there are many ways for the PKI to fail. One of the risks inherent in the web PKI is that any certificate authority can issue any certificate for any website. That means that the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=408949">Hong Kong Post Office</a> can issue a certificate valid for gmail.com or facebook.com, and every browser will trust it. This forces users to put a lot of faith in certificate authorities and hope they don’t misbehave by issuing a certificate to the wrong person. Even worse, if a CA gets hacked, then an attacker could issue any certificate without the CA knowing, putting users at an even greater risk.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DTDhhiLOKMayPifq2JmYH/9335199d7a987e182380d5ada0ef543b/image11.png" alt="image11" class="kg-image" width="1214" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DTDhhiLOKMayPifq2JmYH/105d45d24b3aa0fd696b87463792c9b8/image11.png" alt="image11" class="kg-image" width="1214" height="1999" loading="lazy">
 
 	</figure>
 	<p>If someone manages to get a certificate for a site that isn’t theirs, they can impersonate that site to its visitors and steal their information. To get a sense of how many CAs are trusted by popular browsers, <a href="https://ccadb-public.secure.force.com/mozilla/IncludedCACertificateReport">here’s the list</a> of the 160 trusted CAs in Firefox. Microsoft and Apple maintain their own lists, which are comparably long (Cloudflare keeps track of these lists in our <a href="https://github.com/cloudflare/cfssl_trust">cfssl_trust</a> repository). By trusting all of these organizations implicitly when you browse the internet, users bear the risk of certificate authority misbehavior.</p>
@@ -54,7 +54,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MQoZ8uEfBJZJbMWHSii9u/d64506f325d5cd6df67e6f20210ee98f/image12.jpg" alt="image12" class="kg-image" width="940" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MQoZ8uEfBJZJbMWHSii9u/cd91d06e5206737c49a9ee6b7f2922ef/image12.jpg" alt="image12" class="kg-image" width="940" height="628" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.pexels.com/@angele-j-35172">Creative Commons Zero (CC0) - angele-j</a></p>
@@ -79,13 +79,13 @@
 	<p>There are multiple ways that an SCT can be presented to the client. The most popular way to is to embed the SCTs into the certificate when it’s issued. This involves the CA submitting a pre-certificate, a precursor to a certificate, to various CT logs to obtain SCTs before finalizing the certificate.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1X2MjNCxQqpKMNkwYvVcAh/8655a8ea8aeafdbd0b1755c5c89097d5/image10.png" alt="image10" class="kg-image" width="1999" height="1625" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1X2MjNCxQqpKMNkwYvVcAh/e9db15c08ddff2447b7132ba98055464/image10.png" alt="image10" class="kg-image" width="1999" height="1625" loading="lazy">
 
 	</figure>
 	<p>For certificates that don’t have SCTs embedded, a server has other mechanisms to transmit SCTs to the client. SCTs can be included in the connection as a <a href="https://medium.com/@davetempleton/enabling-a-certificate-transparency-tls-extension-in-nginx-489b3b804f89">TLS extension</a>, or in a <a href="https://en.wikipedia.org/wiki/OCSP_stapling">stapled OCSP response</a>. These mechanisms are more difficult to do reliably, but they allow any certificate to be included in CT.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7a7iZnEIv9yKOif6dS8E79/a6d0bb046862d4ad45f724e8c5778c99/image14.png" alt="image14" class="kg-image" width="1393" height="1266" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7a7iZnEIv9yKOif6dS8E79/436ad5a8386f5c8a9f0f471e3e117033/image14.png" alt="image14" class="kg-image" width="1393" height="1266" loading="lazy">
 
 	</figure>
 	<p>A certificate with embedded SCTs</p>
@@ -111,7 +111,7 @@
 	<h4>All or nothing</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gbUWaez8iOEBmGrTpRLtu/1bc3b90c1c744532adccaf05b702c549/image2.jpg" alt="image2" class="kg-image" width="1999" height="1333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gbUWaez8iOEBmGrTpRLtu/f087b62d12e5a27f8f30e178fc621d1f/image2.jpg" alt="image2" class="kg-image" width="1999" height="1333" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:CISV_trust_game.JPG">Creative Commons Attribution-Share Alike 3.0 - Gorskiya</a></p>
@@ -144,13 +144,13 @@
 	<p>The naïve data structure to use for an append-only database is a hash chain. In a hash chain, elements are aligned in order and combined using a <a href="https://simple.wikipedia.org/wiki/Cryptographic_hash_function">one-way hash function</a> like SHA-256. The diagram below describes how a hash chain is created from a list of values d1 to d8. Start with the first element, d1, which is hashed to a value a, which then becomes the head of the chain. Every time an element is added to the chain, a hash function is computed over two inputs: the current chain head and the new element. This hash value become the new chain head. Because one-way hash functions can’t be reversed, it’s computationally infeasible to change a value without it changing the entire chain that has been computed from it. This makes a hash chain’s history very difficult to modify maliciously.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2v25fx7zDjnAqEUvNdLnVU/e040ff8aeab2cce4ffb403a9b5152883/image7.gif" alt="image7" class="kg-image" width="1464" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v25fx7zDjnAqEUvNdLnVU/65bc5aa6933a36cbd7e85d69bcf19a41/image7.gif" alt="image7" class="kg-image" width="1464" height="504" loading="lazy">
 
 	</figure>
 	<p>A hash chain is the optimal data structure for inserting new elements: only one hash needs to be computed for each element added. However, it is not an efficient data structure for validating whether an element is correctly included in a chain given a chain head. In the example below, there are six additional elements (b, d4-d8) needed to validate that d3 is correct on a chain of 8 values. You need approximately n/2 elements to verify an average element in a chain of length n. In computer science terms, this is called “linear scaling.”</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fq19rbF5uMj1Xb2BRomJj/e91f166c38fef93eddbe17f2b3ffe0bb/image4.gif" alt="image4" class="kg-image" width="1514" height="546" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fq19rbF5uMj1Xb2BRomJj/b4b54a16ca7cb6205b2d1b278a1c9258/image4.gif" alt="image4" class="kg-image" width="1514" height="546" loading="lazy">
 
 	</figure>
 	<p>When building a system, it’s best to try to reduce complexity for the participants involved. For CT, the main participants we care about are the log operator and the auditor. If we were to choose a hash chain as our data structure, the job of the log operator would be easy but that of the auditor would be very hard. We can do better.</p>
@@ -158,20 +158,20 @@
 	<p>For each new element, instead of hashing it into a running total, you arrange the elements into a <a href="https://en.wikipedia.org/wiki/Binary_tree">balanced binary tree</a> and compute the hash of the element with its sibling. This gives you half as many hashes as elements. These hashes are then arranged in pairs and hashed together to create the next level of the tree. This continues until you have one element, the top of the tree; this is called the tree head. Adding a new value to a Merkle tree requires the modification of at most one hash per level in the tree, following the path from the element up to the tree head.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/255yicnSkcbR6yUYKDh3s6/8f3e29b4057f19cc7273993a01d46d22/image11.gif" alt="image11" class="kg-image" width="1494" height="1026" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/255yicnSkcbR6yUYKDh3s6/5658e680fd0a965f991bf8e0000e49db/image11.gif" alt="image11" class="kg-image" width="1494" height="1026" loading="lazy">
 
 	</figure>
 	<p>The depth of a binary tree is <a href="https://en.wikipedia.org/wiki/Logarithmic_scale">logarithmic</a> with respect to the number of elements. Roughly speaking, if the tree size is 8 = 2^3, then the depth is 4 (= 3+1), if it’s 1024 = 2^10 then the tree depth is 11 (= 10+1), for 1048576 = 2^20 the tree size is 21 (= 20+1). The cost of insertion is at most log_2(size), which is worse than in a hash chain, but generally not too bad.</p>
 	<p>What makes the Merkle tree so useful is the efficiency of element validation. Instead of having to compute n/2 hashes like in a hash chain, you only need the elements in the tree that lead you to the root. This is called the co-path. In the diagram below, the co-path is computed for d3.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LUFI4MfjCHSojuxEyyaPC/3ade6a210a83d7186ad5ad95051153fe/image5.gif" alt="image5" class="kg-image" width="1494" height="1026" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LUFI4MfjCHSojuxEyyaPC/11cf7ab9c28fa92fbd799e2e3cdbfeb3/image5.gif" alt="image5" class="kg-image" width="1494" height="1026" loading="lazy">
 
 	</figure>
 	<p>The copath consists of one value per level of the tree. The computation necessary to prove that an element is correct (an inclusion proof) is therefore logarithmic, not linear as in the case of a hash tree. Both insertion and validation are cheap relative to the size of the tree, making a Merkle tree the ideal data structure for CT.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FpSweNBiv0xNDaXT6xZQ2/5c8d649fb09e215550a9d3b7d10b20cc/image6.png" alt="image6" class="kg-image" width="1494" height="1026" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FpSweNBiv0xNDaXT6xZQ2/9e7f2c61b8bce51926a9a6f6346b89fa/image6.png" alt="image6" class="kg-image" width="1494" height="1026" loading="lazy">
 
 	</figure>
 	<p>A certificate transparency log is a Merkle tree where the leaf elements are certificates. Each log has a private key that it uses to sign the current tree head at regular intervals. Some CT logs are huge with over a hundred million entries, but because of the efficiency of Merkle trees, inclusion proofs only require around 30 hashes. This structure provides a good balance between the cost to the log operator of adding certificates and the cost to the auditor of validating its consistency.</p>
@@ -186,7 +186,7 @@
 	<p>Our own addition to the log ecosystem is Nimbus. Nimbus is a family of Certificate Transparency logs with an open acceptance policy. Nimbus accepts any certificate that is signed by a CA from our <a href="https://github.com/cloudflare/cfssl_trust">cfssl_trust</a> root store. The logs are organized by year, e.g. Nimbus 2018, Nimbus 2019, etc. with each log only accepting certificates that expire in that year.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yxv4DH2K2TDPjxlI6DUbG/4cceafd27526b48e16cf67c1977b9f00/image8-1.png" alt="image8-1" class="kg-image" width="376" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yxv4DH2K2TDPjxlI6DUbG/6292fc800aa8db6382ab4427eecd15ef/image8-1.png" alt="image8-1" class="kg-image" width="376" height="492" loading="lazy">
 
 	</figure>
 	<p>Nimbus is built with <a href="https://github.com/google/trillian">Trillian</a>, a Go-based implementation of a scalable Merkle tree. The data backend is custom, re-using components from Cloudflare’s high <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second">capacity logging infrastructure</a>, which runs entirely on Cloudflare’s bare metal infrastructure. Having a high-reliability and completely open log that is not dependent on shared cloud infrastructure adds insurance in case of outages. Nimbus is intended to bring diversity and stability to the CT ecosystem, and in the end, make the internet safer for everyone.</p>

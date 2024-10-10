@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XAwhvgK5l02B9TAvUiy9d/a40bce0428dca57245f45d5dd69bf790/image7-11.png" alt="Amazon’s $2bn IPv4 tax — and how you can avoid paying it" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XAwhvgK5l02B9TAvUiy9d/8aed64f222f749b8bc6515e421c624d8/image7-11.png" alt="Amazon’s $2bn IPv4 tax — and how you can avoid paying it" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>One of the wonderful things about the Internet is that, whether as a consumer or producer, the cost has continued to come down. Back in the day, it used to be that you needed a server room, a whole host of hardware, and an army of folks to help keep everything up and running. The cloud changed that, but even with that shift, services like <a href="https://www.cloudflare.com/application-services/products/ssl">SSL</a> or unmetered <a href="https://www.cloudflare.com/ddos">DDoS protection</a> were out of reach for many. We think that the march towards a more accessible Internet — both through ease of use, and reduced cost — is a wonderful thing, and we’re proud to have played a part in making it happen.</p>
@@ -23,7 +23,7 @@
 	<p>IPv6 services like these are something we’ve been offering at Cloudflare for years - in fact this was first announced during Cloudflare's first birthday week in 2011! We’ve made this process simple to enable as well, so you can set this up as soon as today.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UYTukqpByLSMhpLwk7rQK/fd5ba92c3576c08daf11b46146bdd2bf/image6-2.png" alt="" class="kg-image" width="1999" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UYTukqpByLSMhpLwk7rQK/c47a8e37780e14ab2a26353f10bbf12d/image6-2.png" alt="" class="kg-image" width="1999" height="628" loading="lazy">
 
 	</figure>
 	<p>To set this feature up you will need to both enable IPv6 Compatibility and set up your origin for <a href="https://docs.aws.amazon.com/vpc/latest/userguide/aws-ipv6-support.html">AWS to be an IPv6 origin</a>.</p>
@@ -33,13 +33,13 @@
 	<p>3. Click the Network app.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66Te3OO0yjDXrPqmF4YVYq/3eb6574ca41257cbe88a93408b442a61/Screenshot-2023-09-25-at-17.01.11.png" alt="" class="kg-image" width="1580" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66Te3OO0yjDXrPqmF4YVYq/5ad20b6f21de07cb239ea2ce16185727/Screenshot-2023-09-25-at-17.01.11.png" alt="" class="kg-image" width="1580" height="332" loading="lazy">
 
 	</figure>
 	<p>4. Make sure IPv6 Compatibility is toggled on.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62DVRA42xpR7KkUFPEqrKt/cfa54a6ae143fa8c49d5a2f739d63c13/Screenshot-2023-09-25-at-17.01.24.png" alt="" class="kg-image" width="1590" height="222" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62DVRA42xpR7KkUFPEqrKt/058d64e5e67472b89732dff7c7debe4b/Screenshot-2023-09-25-at-17.01.24.png" alt="" class="kg-image" width="1590" height="222" loading="lazy">
 
 	</figure>
 	<p>To get an IPv6 origin from Amazon you will likely have to follow these steps:</p>
@@ -67,7 +67,7 @@
 	<p>Once you have your IPv6 origins, you’ll want to update your origins on Cloudflare to use the IPv6 addresses. In the simple example of a single origin at root, this is done by creating a proxied (orange-cloud) <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-aaaa-record">AAAA record</a> in your Cloudflare DNS editor:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JN8TolCbQmiAUnzrDhnAX/8d1a4bed32828a4ae27b025fb4c22f32/image2-8.png" alt="" class="kg-image" width="1999" height="532" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JN8TolCbQmiAUnzrDhnAX/4e3d75ce7cef9536290118c6344a125b/image2-8.png" alt="" class="kg-image" width="1999" height="532" loading="lazy">
 
 	</figure>
 	<p>If you are using <a href="https://www.cloudflare.com/application-services/products/load-balancing">Load Balancers</a>, you will want to <a href="https://developers.cloudflare.com/load-balancing/how-to/create-pool/#edit-a-pool">update the origin(s)</a> there.</p>
@@ -99,7 +99,7 @@
 	<p>Let's speak on AWS first: AWS today owns one of the largest chunks of the IPv4 space. During a period of time when IPv4 addresses were on the private market to purchase for dollars per IP address, AWS chose to use its large capital to its advantage and buy up a large amount of the space. Today AWS owns 1.7% of the IPv4 address space which equates to <a href="https://toonk.io/aws-and-their-billions-in-ipv4-addresses/index.html">~100 million IPv4 addresses</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/toRGJVmQp33iZlby5l5vi/6dc68effa3c5ef03c14f59f6c3eb86b4/image1-11.png" alt="" class="kg-image" width="1934" height="1190" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/toRGJVmQp33iZlby5l5vi/2528151de1f1655419f715594f0cb389/image1-11.png" alt="" class="kg-image" width="1934" height="1190" loading="lazy">
 
 	</figure>
 	<p>So you would think that moving to IPv6 is the right move, however, for the Internet community it’s proven to be quite a challenge.</p>
@@ -108,7 +108,7 @@
 	<p>For a while there were also many networks which had markedly worse performance for IPv6 than IPv4. This is not true anymore, as of today we see only a slight degradation in IPv6 performance across the whole Internet compared to IPv4. The reasons for this include things like legacy hardware, sub-optimal IPv6 connectivity outside our network and high cost for deploying IPv6. You can see in the chart below the additional latency of IPv6 traffic on Cloudflare’s network as compared to IPv4 traffic:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gD5CMwSwUA7X2OkYlrLsT/e3b4faa749c02c06d03bde247d795110/image5-5.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gD5CMwSwUA7X2OkYlrLsT/4716cb91db061e660ccbe3ea8c5b3aae/image5-5.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>There were many challenges to adopting IPv6, and for some these issues with hardware compatibility and network performance are still worries. This is why still using IPv4 can be useful to folks while transitioning to IPv6, which is what makes AWS’ decision to charge for IPv4 impactful on many websites.</p>

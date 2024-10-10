@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oBNAX3rdlN340ASOgjLDD/61e3e10352d73f59f11c166fee92ef83/Cache-Reserve.png" alt="Cache Reserve goes GA: enhanced control to minimize egress costs" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oBNAX3rdlN340ASOgjLDD/027b66abb0ecc1d9d742796a6dcdbdfb/Cache-Reserve.png" alt="Cache Reserve goes GA: enhanced control to minimize egress costs" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Everyone is chasing the highest cache ratio possible. Serving more content from Cloudflare’s cache means it loads faster for visitors, saves website operators money on <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a> from origins, and provides multiple layers of resiliency and protection to make sure that content is available to be served and websites scale effortlessly. A year ago we introduced <a href="https://blog.cloudflare.com/introducing-cache-reserve">Cache Reserve</a> to help customer’s serve as much content as possible from Cloudflare’s cache.</p>
@@ -34,7 +34,7 @@
 	<p>CDNs must decide whether to evict content before their specified TTL to optimize storage for other assets when cache space nears full capacity. At Cloudflare, our eviction strategy prioritizes content based on its popularity, employing an algorithm known as "least recently used" or LRU. This means that even if the content’s TTL specifies that content should be cached for a long time, we may still need to evict it earlier if it's less frequently requested than other resources, to make room for more frequently accessed content.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dzhq6o3KQPVXLIzMFVdJ9/ba57c5e92e47cba9647dbc28c214b686/Cache-Reserve-Response-Flow.png" alt="" class="kg-image" width="1600" height="739" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dzhq6o3KQPVXLIzMFVdJ9/90d489a541d8921ff9607f9c201c2c9c/Cache-Reserve-Response-Flow.png" alt="" class="kg-image" width="1600" height="739" loading="lazy">
 
 	</figure>
 	<p>This approach can sometimes perplex users who wonder why a cache miss occurs unexpectedly. Without eviction, we'd be forced to store content in data centers farther from the requesting visitors, hindering asset performance and introducing inefficiencies into Cloudflare's network operations.</p>
@@ -68,7 +68,7 @@
 	<p>In the coming months we will also provide greater visibility into the largest and most requested items being served from Cache Reserve.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iCtq5lq4aebz2tPsNfn1g/727bd4f39e8afa9da800c374693db3d7/Screenshot-2023-10-08-at-7.45.35-PM.png" alt="" class="kg-image" width="1600" height="979" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iCtq5lq4aebz2tPsNfn1g/032549ab5220306641ed6177f9572507/Screenshot-2023-10-08-at-7.45.35-PM.png" alt="" class="kg-image" width="1600" height="979" loading="lazy">
 
 	</figure>
 	<h4>Cache Reserve delete storage</h4>
@@ -77,14 +77,14 @@
 	<p>The Cache Reserve delete button differs from purging. <b>Purge</b> will still allow for you to invalidate resources across <i>all</i> of Cloudflare’s Caches — including both Cache Reserve and the edge cache with a single request. The Cache Reserve delete button will actively remove the entire storage in the Reserve only. Currently, this action can be performed for the entire Cache Reserve storage associated with a zone.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wDOQHqMtcZNilIEwbhM6e/db957e09ae86b2550bf10a4e6d3637c8/Screenshot-2023-10-08-at-7.46.10-PM.png" alt="" class="kg-image" width="1600" height="274" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3wDOQHqMtcZNilIEwbhM6e/52d8fe60c0aec1ddc97cbe0d53b98ce6/Screenshot-2023-10-08-at-7.46.10-PM.png" alt="" class="kg-image" width="1600" height="274" loading="lazy">
 
 	</figure>
 	<h4>Integration into Cache Rules</h4>
 	<p>One of the most requested Cache Reserve features we heard from early adopters is the ability to specify what parts of their website should be eligible for storage in Cache Reserve. Previously, when a user enabled Cache Reserve, all of a website’s assets that were <a href="https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#cache-reserve-asset-eligibility">eligible</a> for Cache Reserve could be stored in the Reserve. For egress sensitive customers, this is the path we still recommend. However, for customers that really want to customize what is eligible for Cache Reserve, you can now use <a href="https://dash.cloudflare.com/caching/cache-rules">Cache Rules</a> to specify assets that should be stored in Cache Reserve based on the usual Cache Rules fields (hostnames, paths, URLs, etc.) and also by using specific new rules configurations like the minimum size of a resource. For example, you can specify that all assets that should be written to Cache Reserve have a minimum size of 100kb. By using the new rules functionality, Cache Reserve customers can customize how their Reserve is built while still maintaining utilization of the edge cache, and saving even more money.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FHCh7P9iTCDWWvnMqXqXr/dc1995743aa91407cc68b828332f804c/Screenshot-2023-10-08-at-4.14.48-PM--1-.png" alt="" class="kg-image" width="1600" height="353" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FHCh7P9iTCDWWvnMqXqXr/bdda7a73e6bb9613fa5d564e5675d753/Screenshot-2023-10-08-at-4.14.48-PM--1-.png" alt="" class="kg-image" width="1600" height="353" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">12 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/foundation-dns-launch">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/foundation-dns-launch">Français</a>, <a href="https://blog.cloudflare.com/de-de/foundation-dns-launch">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/foundation-dns-launch">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/foundation-dns-launch">한국어</a>, <a href="https://blog.cloudflare.com/es-es/foundation-dns-launch">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/foundation-dns-launch">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hyjJ87RTQZTsRgOWxSGLA/032f2b99b8bc7811f412037d4dcdbd63/foundation-dns-launch.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/foundation-dns-launch">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/foundation-dns-launch">Français</a>, <a href="https://blog.cloudflare.com/de-de/foundation-dns-launch">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/foundation-dns-launch">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/foundation-dns-launch">한국어</a>, <a href="https://blog.cloudflare.com/es-es/foundation-dns-launch">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/foundation-dns-launch">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hyjJ87RTQZTsRgOWxSGLA/ea7b5eeaeeb6daf717e95df5c02e5e6c/foundation-dns-launch.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We are very excited to announce the official release of <a href="https://blog.cloudflare.com/foundation-dns">Foundation DNS</a>, with new advanced nameservers, even more resilience, and advanced analytics to meet the complex requirements of our enterprise customers. Foundation DNS is one of Cloudflare's largest leaps forward in our authoritative DNS offering since its launch in 2010, and we know our customers are interested in an enterprise-ready authoritative DNS service with the highest level of performance, reliability, security, flexibility, and advanced analytics.</p>
 	<p>Starting today, every new enterprise contract that includes authoritative DNS will have access to the Foundation DNS feature set and existing enterprise customers will have Foundation DNS features made available to them over the course of this year. If you are an existing enterprise customer already using our authoritative DNS services, and you’re interested in getting your hands on Foundation DNS earlier, just reach out to your account team, and they can enable it for you. Let’s get started…</p>
@@ -15,7 +15,7 @@
 	<p>From a business perspective, DNS is the very first step in reaching websites and connecting to applications. Devices need to know where to connect in order to reach services, authenticate users, and provide the information being requested. Resolving DNS queries quickly can be the difference between a website or application being perceived as responsive or not and can have a real impact on user experience.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j8Eg82sdIpdztGDwGptGB/0c3a350e8f875be53412264127f8be0f/image4-12.png" alt="" class="kg-image" width="1796" height="806" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j8Eg82sdIpdztGDwGptGB/25ed0d0e10c497fc865248e13679a31e/image4-12.png" alt="" class="kg-image" width="1796" height="806" loading="lazy">
 
 	</figure>
 	<p>When DNS outages occur, the impacts are obvious. Imagine your go-to ecommerce site not loading, just like what happened with the <a href="https://blog.cloudflare.com/how-the-dyn-outage-affected-cloudflare">outage Dyn experienced in 2016</a>, which took down multiple popular ecommerce sites among others. Or, if you are part of a company, and customers aren’t able to reach your website to purchase the goods or services you are selling, a DNS outage will literally lose you money. DNS is often taken for granted, but make no mistake, you’ll notice it when it’s not working properly. Thankfully, if you use Cloudflare authoritative DNS, these are problems you don’t worry about very much.</p>
@@ -105,7 +105,7 @@ blue.foundationdns.org. 300     IN      A       172.64.40.1</code></pre>
 	<p>You are probably aware of Cloudflare’s use of <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">Anycast</a> and, as you might assume, our DNS services leverage Anycast to ensure that our authoritative DNS servers are available globally and as close as possible to users and resolvers across the Internet. Our standard nameservers are all advertised out of every Cloudflare data center by a single Anycast group. If we zoom in on Europe, you can see that in a standard nameserver deployment, both nameservers are advertised from every data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RXMhxG3gkV6QGdc9MLNn7/25d5fb79f79ba1191494c77be51e3873/DNS---Anycast---1-Group.png" alt="" class="kg-image" width="1600" height="909" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RXMhxG3gkV6QGdc9MLNn7/8821cb762aeccaf4ce51d82ff9d30711/DNS---Anycast---1-Group.png" alt="" class="kg-image" width="1600" height="909" loading="lazy">
 
 	</figure>
 	<p>We can take those six IP addresses from our standard nameservers above and perform a lookup for their "hostname.bind" TXT record which will show us the airport code or physical location of the closest data center where our DNS queries are being resolved from. This output helps explain the reason why more isn’t always better.</p>
@@ -130,19 +130,19 @@ $ dig @172.64.35.247 ch txt hostname.bind +short
 	<p>You might be asking, “So what? What does that mean to me?” Let’s look at an example. If you wanted to resolve a domain using Cloudflare standard nameservers from London, and I am using a public resolver that is also located in London, the resolver will always connect to the Cloudflare LHR data center regardless of which nameserver it's trying to reach. It doesn’t have any other option, because of Anycast.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10cqrujFMIilg6rEPpjoWK/7c83259e3bb235b54711a77cd87e32b7/Untitled.png" alt="" class="kg-image" width="1228" height="294" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10cqrujFMIilg6rEPpjoWK/8f7ad630f291949b272881e8a8b48182/Untitled.png" alt="" class="kg-image" width="1228" height="294" loading="lazy">
 
 	</figure>
 	<p>Because of Anycast, should the LHR data center go offline completely, all the traffic intended for LHR would be routed to other nearby data centers and resolvers would continue to function normally. However, in the unlikely scenario where the LHR data center was online, but our DNS services aren’t able to respond to DNS queries, the resolver would have no way to resolve these DNS queries since they can’t reach out to any other data center. We could have 100 IP addresses, and it would not help us in this scenario. Eventually, cached responses will expire, and the domain will eventually stop being resolved.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KzCMn3FGbmbfnv7tDJPND/a7c470265474ed15dd22401f8610d9a2/Untitled--1-.png" alt="" class="kg-image" width="1228" height="294" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KzCMn3FGbmbfnv7tDJPND/af92cc20ed40e60a6611688c59da7416/Untitled--1-.png" alt="" class="kg-image" width="1228" height="294" loading="lazy">
 
 	</figure>
 	<p>Foundation DNS advanced nameservers are changing the way we use Anycast by leveraging two Anycast groups, which breaks the previous paradigm of every authoritative nameserver IP being advertised from every data center. Using two Anycast groups means that Foundation DNS authoritative nameservers actually have different physical locations from one another, rather than all being advertised from each data center. Here is how that same region would look using two Anycast groups:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RNThUjcDyqemyWpHTWXgo/f96cff52311eb7db8b7276e62008be2a/DNS---Anycast---2-Groups.png" alt="" class="kg-image" width="1600" height="880" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RNThUjcDyqemyWpHTWXgo/4d8b7490278fe202b7ce4c22fe0bec74/DNS---Anycast---2-Groups.png" alt="" class="kg-image" width="1600" height="880" loading="lazy">
 
 	</figure>
 	<p>Let’s go back and finish our comparison of six authoritative IP addresses for standard authoritative DNS vs three IP addresses for Foundation DNS now that it's understood that Foundation DNS is using two Anycast groups for advertising nameservers. Let’s see where Foundation DNS servers are being advertised from for our example:</p>
@@ -161,19 +161,19 @@ $ dig @172.64.40.1 ch txt hostname.bind +short
 	<p>With Foundation DNS leveraging two Anycast groups, the previous outage scenario is handled seamlessly. DNS resolvers monitor requests to all the authoritative nameservers returned for a given domain, but primarily use the nameserver that is providing the fastest responses.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1u3SrmtgUejWSebbRXUPAt/d55a541753c02a9970cdfbad63871a60/Untitled--3-.png" alt="" class="kg-image" width="1228" height="616" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1u3SrmtgUejWSebbRXUPAt/227561599823e742c22b8de84f58a6e1/Untitled--3-.png" alt="" class="kg-image" width="1228" height="616" loading="lazy">
 
 	</figure>
 	<p>With this configuration, DNS resolvers are able to send requests to two different Cloudflare data centers, so, should a failure happen at one physical location, queries are then automatically sent to the second data center where they can be properly resolved.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3keJQHl9r4G2MbPBfVM6z2/bfe870c411802b8b60f84ea496888584/Untitled--4-.png" alt="" class="kg-image" width="1228" height="616" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3keJQHl9r4G2MbPBfVM6z2/ea6df88b75f5509775e9606b346e1430/Untitled--4-.png" alt="" class="kg-image" width="1228" height="616" loading="lazy">
 
 	</figure>
 	<p>Foundation DNS advanced nameservers are a big step forward in reliability for our enterprise customers. We welcome our enterprise customers to enable advanced nameservers for existing zones today. Migrating to Foundation DNS won’t involve any downtime either because even after Foundation DNS advanced nameservers are enabled for a zone, the previous standard authoritative DNS nameservers will continue to function and respond to queries for the zone. Customers don’t need to plan for a cutover or other service-impacting event to migrate to Foundation DNS advanced nameservers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Yb7o6mhNlOEOUzB49iaRj/34908daa0f05cadf93f3eb07e9cd437e/DNS-Enable-Foundation.png" alt="" class="kg-image" width="1600" height="610" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Yb7o6mhNlOEOUzB49iaRj/7cdbb3feede33f2d5d32db89aff6a861/DNS-Enable-Foundation.png" alt="" class="kg-image" width="1600" height="610" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -336,7 +336,7 @@ $ dig @172.64.40.1 ch txt hostname.bind +short
 	<p>The GraphQL API also allows us to add a new DNS analytics section to the Cloudflare dashboard. Customers will be able to track the most queried records, see which data centers are answering those queries, see how many queries are being made, and much more.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wxCCwWyZnmhd0orYUww9Y/8a88004293534b03c0c2f7a7f9dd1c94/DNS-Analytics.png" alt="" class="kg-image" width="1600" height="791" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wxCCwWyZnmhd0orYUww9Y/c851eba998a7fbdaded3426e1aff19b4/DNS-Analytics.png" alt="" class="kg-image" width="1600" height="791" loading="lazy">
 
 	</figure>
 	<p>The new DNS dataset in our GraphQL API and the new DNS analytics page work together to help our DNS customers to monitor, analyze, and troubleshoot their Foundation DNS deployments.</p>

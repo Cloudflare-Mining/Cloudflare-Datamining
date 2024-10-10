@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fbc6bQaUyUP5rj8e3JNna/38e5d1d32075915364c4dbe43c919fec/introducing-workers-kv.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fbc6bQaUyUP5rj8e3JNna/a21479dcab51379170024ff235dae3f3/introducing-workers-kv.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In 1864 British computer pioneer Charles Babbage described the first key-value store. It was meant to be part of his Analytical Engine. Sadly, the Analytical Engine, which would have been the first programmable computer, was never built. But Babbage lays out clearly the design for his key-value store in his autobiography. He imagined a read-only store implemented as punched cards. He referred to these as Tables:</p>
 	<blockquote>
@@ -6,7 +6,7 @@
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EOjr3wC4TtVBIpyaMDOc1/b3f600ace277ce9b032558123da4679b/Punch-Card-Example-2.png" alt="" class="kg-image" width="1976" height="1054" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EOjr3wC4TtVBIpyaMDOc1/475c1f5d96b2eac0d69bfc3d366c5683/Punch-Card-Example-2.png" alt="" class="kg-image" width="1976" height="1054" loading="lazy">
 
 	</figure>
 	<p><i>Punched card illustration from Babbage’s autobiography showing an integer key (2303) and value representing the decimal part of log10(2303) (0.3622939)</i></p>
@@ -108,7 +108,7 @@
 	<p>The code accesses the namespace and retrieves values with <code>const retrieved = await LOGCARD.get(paddedInt)</code>. &nbsp;The full code for the Worker can be found <a href="https://gist.github.com/jgrahamc/585fde79c56b1ffe6ae9633cf318ebdf">here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DF1OkyLOyNuJV9mY0kih/7ddcac3688882a79d54824967ae43b24/Screen-Shot-2018-09-28-at-10.46.09.png" alt="" class="kg-image" width="958" height="434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5DF1OkyLOyNuJV9mY0kih/e7503f38702cd533d2e68758a9710437/Screen-Shot-2018-09-28-at-10.46.09.png" alt="" class="kg-image" width="958" height="434" loading="lazy">
 
 	</figure>
 	<p>I've bound this Worker to the route <code>/logcard</code> on the site <a href="https://glowbeamtechnologies.com">https://glowbeamtechnologies.com/</a>. The Worker takes a value between 1 and 9999 in the URI parameter <code>int</code> and outputs a representation of one of Babbage's punched cards containing the decimal part of the base-10 log of <code>int</code>.</p>
@@ -116,7 +116,7 @@
 	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on all of our announcements.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73nqQPg6KRYOf3IQanyfxZ/7b113043c04127be145d805f1b80f6f5/Cloudflare-Birthday-Week-8-3.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73nqQPg6KRYOf3IQanyfxZ/f327d6c3ad1bf461081aed9e550e3614/Cloudflare-Birthday-Week-8-3.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 </div>

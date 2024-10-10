@@ -1,4 +1,4 @@
-<div class="mb2 gray5">18 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tGGXBcb8NnGfP7x5IdedQ/cfa8420d6a97c94394d3bcbd5cbfc4f5/introducing-quicksilver-configuration-distribution-at-internet-scale.png" alt="">
+<div class="mb2 gray5">18 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tGGXBcb8NnGfP7x5IdedQ/fc1e65e0e070d46f33fc19bec71d9ece/introducing-quicksilver-configuration-distribution-at-internet-scale.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare’s network processes more than fourteen million HTTP requests per second at peak for Internet users around the world. We spend a lot of time thinking about the tools we use to make those requests faster and more secure, but a secret-sauce which makes all of this possible is how we distribute configuration globally. Every time a user makes a change to their DNS, adds a Worker, or makes any of hundreds of other changes to their configuration, we distribute that change to 200 cities in 90 countries where we operate hardware. And we do that within seconds. The system that does this needs to not only be fast, but also impeccably reliable: more than 26 million Internet properties are depending on it. It also has had to scale dramatically as Cloudflare has grown over the past decade.</p>
 	<p>Historically, we built this system on top of the Kyoto Tycoon (KT) datastore. In the early days, it served us incredibly well. We contributed support for <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">encrypted replication</a> and wrote a <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">foreign data wrapper</a> for PostgreSQL. However, what worked for the first 25 cities was starting to show its age as we passed 100. In the summer of 2015 we decided to write a replacement from scratch. This is the story of how and why we outgrew KT, learned we needed something new, and built what was needed.</p>
@@ -19,7 +19,7 @@
 	<p><i>Data flow from the API to data centres and individual machines</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gGWHVGlvCl7g8Q3BRjff0/4a1de5abee41062be9c35885402b6a51/JEfOupQNshJRIkh-msed0XhcFgvUQEQudziSa3kwJ8wZdb1YBVzQMkzHcmIzvlHqOW_lLj4j9tGdebdlPMpGryZuBE5Bt2PddVQzRykGm5bOhQWN1zvaHABdPBg1.png" alt="" class="kg-image" width="524" height="598" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gGWHVGlvCl7g8Q3BRjff0/37a75d8f698424c79818609f0be724c4/JEfOupQNshJRIkh-msed0XhcFgvUQEQudziSa3kwJ8wZdb1YBVzQMkzHcmIzvlHqOW_lLj4j9tGdebdlPMpGryZuBE5Bt2PddVQzRykGm5bOhQWN1zvaHABdPBg1.png" alt="" class="kg-image" width="524" height="598" loading="lazy">
 
 	</figure>
 	<p>Doing at least one read from KT was on the critical path of virtually every Cloudflare service. Every DNS or HTTP request would send multiple requests to a KT store and each TLS handshake would load certificates from it. If KT was down, many of our services were down, if KT was slow, many of our services were slow. Having a service like KT was something of a superpower for us, making it possible for us to deploy new services and trust that configuration would be fast and reliable. But when it wasn’t, we had very big problems.</p>
@@ -69,7 +69,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16d49gQL8pntVHvltpWWay/b2783d504d2377fb03a1eea9551c6e94/CP4-gwlVmLeZiBy8N336QFia18Wkia5u6TQ7pRvGxN0tcjk1d7IeNjP--xukzXjK-jyp9lF6Q_3q3GgK5jT5tX2W4EgpXfRbxt6OtC_q76darsLmo6p_hqakKbQV.png" alt="" class="kg-image" width="1180" height="732" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16d49gQL8pntVHvltpWWay/747d2784df4cc90f021d88cd11572e6e/CP4-gwlVmLeZiBy8N336QFia18Wkia5u6TQ7pRvGxN0tcjk1d7IeNjP--xukzXjK-jyp9lF6Q_3q3GgK5jT5tX2W4EgpXfRbxt6OtC_q76darsLmo6p_hqakKbQV.png" alt="" class="kg-image" width="1180" height="732" loading="lazy">
 
 	</figure>
 	<p>These numbers are concerning: writing more increases the read latency significantly. Given how many sites change their Cloudflare configuration every second, it was impossible for us to imagine a world where write loads would not be high. We had to track down the source of this poor performance. There must be either resource contention or some form of write locking, but where?</p>
@@ -84,13 +84,13 @@
 	<p>After looking into the code the issue seems to be that when reading from KT, the function accept in the file kcplandb.h of Kyoto Cabinet acquires a lock:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64z0LhlT6Am1HeECyzP4xl/1adc24ea70a3592529c0fe81e7cf2b5c/-nOV9DKgqkBsPmnFuxhm0AQxwI6wCpb-pKxqUqYIhjOQAUKuPaXMmnjgr7T5KE1pqS2ZyYQHWZeQtqkwC7OCuaPJJG9n8IwaSb4zaJpdoUkxo2Vfls4J9SXx5nPs.png" alt="" class="kg-image" width="1600" height="599" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64z0LhlT6Am1HeECyzP4xl/6ea3640c61e93d8d90c365cf83a2d7e9/-nOV9DKgqkBsPmnFuxhm0AQxwI6wCpb-pKxqUqYIhjOQAUKuPaXMmnjgr7T5KE1pqS2ZyYQHWZeQtqkwC7OCuaPJJG9n8IwaSb4zaJpdoUkxo2Vfls4J9SXx5nPs.png" alt="" class="kg-image" width="1600" height="599" loading="lazy">
 
 	</figure>
 	<p>This lock is also acquired in the synchronize function of kcfile.cc in charge of flushing data to disk:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WLoW1BpYI15jdLoJREjEt/994d519bf5021a7448e0030eb732f71d/k4CRuyaIiLueBXM6hVov4tOoEneiyLqsaWiyQAyTGtu1rkMUDkwC7WY8UdDunehbisuV89UbUo2Yjveh0v8MaXK_BSsIseynrBjLDGwSrEp68Dm7mtKnkgGMf93P.png" alt="" class="kg-image" width="1600" height="941" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WLoW1BpYI15jdLoJREjEt/804fd93ef844a0fcdacca13cd9477376/k4CRuyaIiLueBXM6hVov4tOoEneiyLqsaWiyQAyTGtu1rkMUDkwC7WY8UdDunehbisuV89UbUo2Yjveh0v8MaXK_BSsIseynrBjLDGwSrEp68Dm7mtKnkgGMf93P.png" alt="" class="kg-image" width="1600" height="941" loading="lazy">
 
 	</figure>
 	<p>This is where we have a problem. Flushing to disk blocks all reads and flushing is slow.</p>
@@ -138,7 +138,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MoHRzwGEl3NBbJ0I1Rld7/8ee538ad16bdb5ca0fdde964ae03032d/config-values-stored-1.png" alt="" class="kg-image" width="1194" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MoHRzwGEl3NBbJ0I1Rld7/c556e0159971d05bd1013af4a18bd644/config-values-stored-1.png" alt="" class="kg-image" width="1194" height="730" loading="lazy">
 
 	</figure>
 	<p>Unfortunately in a world where the quantity of data is always growing, it’s not realistic to think you will never flush to disk. As we write new keys the page cache quickly fills. When it’s full, it is flushed to disk. I/O saturation was leading to the very same contention problems we experienced previously.</p>
@@ -157,7 +157,7 @@
 	<p>Another weakness we noticed happens when the timestamp file is being written. Here is a snippet of the file ktserver.cc where the client replication code is implemented:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JpjE6zu4Ly0EjBnToMKa5/b27e48888db305746a8e56923cf9a3fd/fTPXO_KUAmx2J2Ewd7gjLes4eFhnXckdlFhPweBsRid4US0UKt1o5Tu2LT0QedJckiuoR7CCfC9w5zYWoE6tvJMNwMIBDziP9KSonuZgWG_S3mxqXWhCeOCtF09j.png" alt="" class="kg-image" width="1600" height="1042" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JpjE6zu4Ly0EjBnToMKa5/9cbc0393d11655c52ee5a24d7222ac0f/fTPXO_KUAmx2J2Ewd7gjLes4eFhnXckdlFhPweBsRid4US0UKt1o5Tu2LT0QedJckiuoR7CCfC9w5zYWoE6tvJMNwMIBDziP9KSonuZgWG_S3mxqXWhCeOCtF09j.png" alt="" class="kg-image" width="1600" height="1042" loading="lazy">
 
 	</figure>
 	<p>This code snippet runs the loop as long as replication is working fine. The timestamp file is only going to be written when the loop terminates. The call to write_rts (the function writing to disk the last applied transaction log) can be seen at the bottom of the screenshot.</p>
@@ -240,7 +240,7 @@
 	<p>LMDB does a great job of allowing us to query Quicksilver from each of our edge servers, but it alone doesn’t give us a distributed database. We also needed to develop a way to distribute the changes made to customer configurations into the thousands of instances of LMDB we now have around the world. We quickly settled on a fan-out type distribution where nodes would query main-nodes, who would in turn query top-mains, for the latest updates.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oNX2wRqNKxK8693wf8NXA/9c156848c4203f95b43e4035df0075a0/top-masters.png" alt="" class="kg-image" width="1408" height="1470" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oNX2wRqNKxK8693wf8NXA/246631ae36379f234ec48a9c91c45b77/top-masters.png" alt="" class="kg-image" width="1408" height="1470" loading="lazy">
 
 	</figure>
 	<p>Unfortunately there is no such thing as a perfectly reliable network or system. It is easy for a network to become disconnected or a machine to go down just long enough to miss critical replication updates. Conversely though, when users make changes to their Cloudflare configuration it is critical that they propagate accurately whatever the condition of the network. To ensure this, we used one of the oldest tricks in the book and included a monotonically increasing sequence number in our Quicksilver protocol:</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nxquJeqlvdGKuN3SrDebC/288528285188a929b238ebf0b60362de/massive_attack.jpg.scaled500.jpg" alt="The DDoS That Almost Broke the Internet" class="kg-image" width="500" height="377" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nxquJeqlvdGKuN3SrDebC/1b10fba3dbdaf460187e70b56d185dfc/massive_attack.jpg.scaled500.jpg" alt="The DDoS That Almost Broke the Internet" class="kg-image" width="500" height="377" loading="lazy">
 
 	</figure>
 	<p>The <i>New York Times</i> this morning published a story about the <a href="http://www.nytimes.com/2013/03/27/technology/internet/online-dispute-becomes-internet-snarling-attack.html">Spamhaus DDoS attack and how CloudFlare helped mitigate it and keep the site online</a>. The <i>Times</i> calls the attack the largest known DDoS attack ever on the Internet. We <a href="https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho">wrote about the attack last week</a>. At the time, it was a large attack, sending 85Gbps of traffic. Since then, the attack got much worse. Here are some of the technical details of what we've seen.</p>
@@ -50,7 +50,7 @@
 	<p>Once the attackers realized they couldn't knock CloudFlare itself offline even with more than 100Gbps of DDoS traffic, they went after our direct peers. In this case, they attacked the providers from whom CloudFlare buys bandwidth. We, primarily, contract with what are known as Tier 2 providers for CloudFlare's paid bandwidth. These companies peer with other providers and also buy bandwidth from so-called Tier 1 providers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22hbMTdkpSNRSpAw5DbuRP/60e6bf7c708cd0b657c346cc5a497e7b/peer_pressure.png.scaled500.png" alt="The DDoS That Almost Broke the
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22hbMTdkpSNRSpAw5DbuRP/fa5af36d7fc2d355cdc543324139876e/peer_pressure.png.scaled500.png" alt="The DDoS That Almost Broke the
 Internet" class="kg-image" width="500" height="472" loading="lazy">
 
 	</figure>
@@ -71,7 +71,7 @@ Internet" class="kg-image" width="500" height="472" loading="lazy">
 	<p>Beyond attacking CloudFlare's direct peers, the attackers also attacked the core IX infrastructure on the London Internet Exchange (LINX), the Amsterdam Internet Exchange (AMS-IX), the Frankfurt Internet Exchange (DE-CIX), and the Hong Kong Internet Exchange (HKIX). From our perspective, the attacks had the largest effect on LINX which caused impact over the exchange and LINX's systems that monitor the exchange, as visible through the drop in traffic recorded by their monitoring systems. (Corrected: see below for original phrasing.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fHxhpq7UXrJ6WOosNIKdK/4d84e3bda12c4c471a6089044c940738/linx_traffic.png.scaled500.png" alt="The DDoS That Almost Broke the Internet" class="kg-image" width="500" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fHxhpq7UXrJ6WOosNIKdK/d6a45067b94605961eb2871a50f3b661/linx_traffic.png.scaled500.png" alt="The DDoS That Almost Broke the Internet" class="kg-image" width="500" height="206" loading="lazy">
 
 	</figure>
 	<p>The congestion impacted many of the networks on the IXs, including CloudFlare's. As problems were detected on the IX, we would route traffic around them. However, several London-based CloudFlare users reported intermittent issues over the last several days. This is the root cause of those problems.</p>
@@ -90,7 +90,7 @@ Internet" class="kg-image" width="500" height="472" loading="lazy">
 	<p>We'd debated doing the same thing ourselves for some time but worried about the collateral damage of what would happen if such a list fell into the hands of the bad people. The last five days have made clear that the bad people have the list of open resolvers and they are getting increasingly brazen in the attacks they are willing to launch. We are in full support of the Open Resolver Project and believe it is incumbent on all network providers to work with their customers to close any open resolvers running on their networks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LNpfbEWSkEYDsC7wGJL6D/3a315cfd44f3a98e6fd0c834b5b8d963/bazookas.jpg.scaled500.jpg" alt="The DDoS That Almost Broke the Internet" class="kg-image" width="500" height="289" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LNpfbEWSkEYDsC7wGJL6D/31e15acde4efadce0767f14b13a3945f/bazookas.jpg.scaled500.jpg" alt="The DDoS That Almost Broke the Internet" class="kg-image" width="500" height="289" loading="lazy">
 
 	</figure>
 	<p>Unlike traditional <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnets</a> which could only generate limited traffic because of the modest Internet connections and home PCs they typically run on, these open resolvers are typically running on big servers with fat pipes. They are like bazookas and the events of the last week have shown the damage they can cause. What's troubling is that, compared with what is possible, this attack may prove to be relatively modest.</p>

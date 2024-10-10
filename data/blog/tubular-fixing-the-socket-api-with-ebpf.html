@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qt80mUTCxJp6nLkenADAL/1a71ede9014fa70f15b4ae03465017f9/tubular-1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qt80mUTCxJp6nLkenADAL/29eb329be3097752997f3ac4b9a00f25/tubular-1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>As we develop new products, we often push our operating system - Linux - beyond what is commonly possible. A common theme has been relying on <a href="https://ebpf.io/what-is-ebpf">eBPF</a> to build technology that would otherwise have required modifying the kernel. For example, we’ve built <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">DDoS mitigation</a> and a <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">load balancer</a> and use it to <a href="https://blog.cloudflare.com/introducing-ebpf_exporter">monitor our fleet of servers</a>.</p>
@@ -33,7 +33,7 @@
 	<p><code>tubular</code> sits at a critical point in the Cloudflare stack, since it has to inspect every connection terminated by a server and decide which application should receive it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZFfhU9ui5dR4KpbOcofqr/acf812730af46f7a7a12fed2c1b984ce/unnamed.png" alt="" class="kg-image" width="1600" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZFfhU9ui5dR4KpbOcofqr/c61fde7a87d189167a3b72ca90b61e20/unnamed.png" alt="" class="kg-image" width="1600" height="382" loading="lazy">
 
 	</figure>
 	<p>Failure to do so will drop or misdirect connections hundreds of times per second. So it has to be incredibly robust during day to day operations. We had the following goals for tubular:</p>
@@ -62,7 +62,7 @@
 	<p>Bindings and sockets are "glued" together via arbitrary strings called labels. Conceptually, a binding assigns a label to some traffic. The label is then used to find the correct socket.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3G1ZM7iKvkGurKMBYqonW5/366a80886304676336f4473fbae866db/unnamed--2-.png" alt="" class="kg-image" width="1130" height="185" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3G1ZM7iKvkGurKMBYqonW5/f6612068b8fb404a8cc0af1d02108c43/unnamed--2-.png" alt="" class="kg-image" width="1130" height="185" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -147,13 +147,13 @@ ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080</code></pre>
 	<p>For example, adding a binding for "foo" <code>tcp 127.0.0.1</code> ... allocates an ID for ("<code>foo</code>", <code>AF_INET</code>, <code>TCP</code>). Including domain and protocol in the destination allows simpler data structures in the BPF. Each allocation also tracks how many bindings reference a destination so that we can recycle unused IDs. This data is persisted into the destinations hash table, which is keyed by (Label, Domain, Protocol) and contains (ID, Count). Metrics for each destination are tracked in destination_metrics in the form of per-CPU counters.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JI7BzZmFdOS5DO6n2cpjh/c89eed998b8a79b5cac441527e97b3e1/unnamed--1--5.png" alt="" class="kg-image" width="892" height="297" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JI7BzZmFdOS5DO6n2cpjh/3bf1a320954e9de2e4b60e64e0a3b375/unnamed--1--5.png" alt="" class="kg-image" width="892" height="297" loading="lazy">
 
 	</figure>
 	<p><code>bindings</code> is a <a href="https://en.wikipedia.org/wiki/Trie">longest prefix match (LPM) trie</a> which stores a mapping from (<code>protocol</code>, <code>port</code>, <code>prefix</code>) to (<code>ID</code>, <code>prefix length</code>). The ID is used as a key to the sockets map which contains pointers to kernel socket structures. IDs are allocated in a way that makes them suitable as an array index, which allows using the simpler BPF sockmap (an array) instead of a socket hash table. The prefix length is duplicated in the value to work around shortcomings in the BPF API.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FJXwiooeaLRbRriCrETia/941a8987d9d36bcdeb5d414696ba5928/unnamed--3-.png" alt="" class="kg-image" width="1119" height="662" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FJXwiooeaLRbRriCrETia/656cc5c0f78ca393627335cec1064755/unnamed--3-.png" alt="" class="kg-image" width="1119" height="662" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

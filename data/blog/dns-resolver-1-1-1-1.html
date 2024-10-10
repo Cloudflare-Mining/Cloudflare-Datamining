@@ -1,10 +1,10 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/dns-resolver-1-1-1-1">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/dns-resolver-1-1-1-1">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/dns-resolver-1-1-1-1">日本語</a>, <a href="https://blog.cloudflare.com/es-es/dns-resolver-1-1-1-1">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/dns-resolver-1-1-1-1">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qgaJIg5CKfBvs2TAbyw8o/105e23822160f2c0dcee860b7efa6c25/dns-resolver-1-1-1-1.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/dns-resolver-1-1-1-1">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/dns-resolver-1-1-1-1">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/dns-resolver-1-1-1-1">日本語</a>, <a href="https://blog.cloudflare.com/es-es/dns-resolver-1-1-1-1">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/dns-resolver-1-1-1-1">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qgaJIg5CKfBvs2TAbyw8o/51cd533853ce1267691d626e9796d7df/dns-resolver-1-1-1-1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare’s mission is to help build a better Internet and today we are releasing our DNS resolver, <a href="https://1.1.1.1">1.1.1.1</a> - a recursive DNS service. With this offering, we’re fixing the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. The DNS resolver, 1.1.1.1, is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/V4FY9gxhQg6fqRgn5VLPt/55031c561eeb26f7155f363e389697fd/1.1.1.1.svg" alt="1.1.1.1" class="kg-image" width="304" height="95" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/V4FY9gxhQg6fqRgn5VLPt/ddc10850b07eff62665dee8fa07a8e86/1.1.1.1.svg" alt="1.1.1.1" class="kg-image" width="304" height="95" loading="lazy">
 
 	</figure>
 	<p>We’re using the following IPv4 addresses for our resolver: <b>1.1.1.1</b> and <b>1.0.0.1</b>. Easy to remember. These addresses have been provided to Cloudflare by APNIC for both joint research and this service. You can read more about their work via the <a href="https://labs.apnic.net/?p=1127">APNIC blog</a>.</p>
@@ -20,7 +20,7 @@
 	<p>Our friends at <a href="https://dnsimple.com">DNSimple</a> have made this amazing DNS Tutorial for anyone to fill in their gaps on <a href="https://howdns.works">how DNS works</a>. They explain all about resolvers, root name servers, and much more in a very informative way.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jPbSyNPUonCJ1K5iq71CF/aa2a1c9985ec5b020f93a9cf728a0c91/dnsimple-howdns-works.png" alt="dnsimple-howdns-works" class="kg-image" width="2611" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jPbSyNPUonCJ1K5iq71CF/a5cad2f0ad2e28a99314206509ad1759/dnsimple-howdns-works.png" alt="dnsimple-howdns-works" class="kg-image" width="2611" height="676" loading="lazy">
 
 	</figure>
 	<p>When resolving a domain name, a query travels from your end system (i.e. a web browser) to a <a href="https://www.cloudflare.com/learning/dns/what-is-recursive-dns">recursive DNS service</a>. If the DNS record is not in the service’s local cache, the recursor will query the authoritative DNS hierarchy to find the IP address information you are looking for. The recursor is the part that DNS resolver, 1.1.1.1 plays. It must be fast and these days it must be secure!</p>
@@ -35,7 +35,7 @@
 	<p>Our goals with the public resolver are simple: Cloudflare wants to operate the fastest public resolver on the planet while raising the standard of privacy protections for users. To make the Internet faster, we are already building data centers all over the globe to reduce the distance (i.e. latency) from users to content. Eventually we want everyone to be within 10 milliseconds of at least one of our locations.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jl1jZyKSdjvPvyEhQxtiP/a77b56f50660b3c7a20c1b826b6881f0/Cloudflare_and_world-population-map.png" alt="Cloudflare_and_world-population-map" class="kg-image" width="1800" height="1008" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jl1jZyKSdjvPvyEhQxtiP/314ae80aaae5f5011df13b2a61f71459/Cloudflare_and_world-population-map.png" alt="Cloudflare_and_world-population-map" class="kg-image" width="1800" height="1008" loading="lazy">
 
 	</figure>
 	<p>In March alone, we enabled thirty-one new data centers globally (<a href="https://blog.cloudflare.com/istanbul-not-constantinople">Istanbul</a>, <a href="https://blog.cloudflare.com/reykjavik-cloudflares-northernmost-location">Reykjavík</a>, <a href="https://blog.cloudflare.com/riyadh">Riyadh</a>, <a href="https://blog.cloudflare.com/macau">Macau</a>, <a href="https://blog.cloudflare.com/baghdad">Baghdad</a>, <a href="https://blog.cloudflare.com/usa-expansion">Houston, Indianapolis, Montgomery, Pittsburgh, Sacramento</a>, <a href="https://blog.cloudflare.com/mexico-city">Mexico City</a>, <a href="https://blog.cloudflare.com/tel-aviv">Tel Aviv</a>, <a href="https://blog.cloudflare.com/durban-and-port-louis">Durban, Port Louis</a>, <a href="https://blog.cloudflare.com/cebu">Cebu City</a>, <a href="https://blog.cloudflare.com/edinburgh">Edinburgh</a>, <a href="https://blog.cloudflare.com/riga-tallinn-vilnius">Riga, Tallinn, Vilnius</a>, <a href="https://blog.cloudflare.com/welcome-calgary-saskatoon-and-winnipeg">Calgary, Saskatoon, Winnipeg</a>, <a href="https://blog.cloudflare.com/more-us-data-centers">Jacksonville, Memphis, Tallahassee</a>, <a href="https://blog.cloudflare.com/bogota">Bogotá</a>, <a href="https://blog.cloudflare.com/luxembourg-chisinau">Luxembourg City, Chișinău</a>) and just like every other city in our network, new sites run DNS Resolver, 1.1.1.1 on day-one!</p>
@@ -99,7 +99,7 @@
 	<p>There are many factors that affect how fast a resolver is. The first and foremost is: can it answer from cache? If it can, then the time to answer is only the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trip time</a> for a packet from the client to the resolver.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4r4HfabYK6zlyJU7VIpsXb/1a297c35b465a9c506a2d76027297646/1.1.1.1-dns-resolver-performance.png" alt="1.1.1.1-dns-resolver-performance" class="kg-image" width="2494" height="1276" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4r4HfabYK6zlyJU7VIpsXb/60d4400700a3b64720866680225ad704/1.1.1.1-dns-resolver-performance.png" alt="1.1.1.1-dns-resolver-performance" class="kg-image" width="2494" height="1276" loading="lazy">
 
 	</figure>
 	<p>When a resolver needs to get an answer from an authority, things get a bit more complicated. A resolver needs to follow the DNS hierarchy to resolve a name, which means it has to talk to multiple authoritative servers starting at the root. For example, our resolver in Buenos Aires, Argentina will take longer to follow a DNS hierarchy than our resolver in Frankfurt, Germany because of its proximity to the authoritative servers. In order to get around this issue we prefill our cache, out-of-band, for popular names, which means when an actual query comes in, responses can be fetched from cache which is much faster. Over the next few weeks we will post blogs about some of the other things we are doing to make the resolver faster and better, Including our fast caching.</p>

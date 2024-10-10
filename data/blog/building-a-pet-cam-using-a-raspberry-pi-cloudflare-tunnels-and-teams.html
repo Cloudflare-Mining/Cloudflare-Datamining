@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lLA54HfCD40EiSdZhdxSg/20f64112ef9fdef2a650ac57db323677/Pet-Cam.png" alt="" class="kg-image" width="1543" height="727" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lLA54HfCD40EiSdZhdxSg/411e40d1f8846564c6743546f2d761f6/Pet-Cam.png" alt="" class="kg-image" width="1543" height="727" loading="lazy">
 
 	</figure>
 	<p>I adopted Ziggy in late 2020. It took me quite a while to get used to his routine and mix it with mine. He consistently jumped on the kitchen counter in search of food, albeit only when no one was around. And I only found out when he tossed the ceramic butter box. It shattered and made a loud bang in the late hours of the night. Thankfully, no one was asleep yet.</p>
@@ -10,7 +10,7 @@
 	<p>This was a perfect weekend project: I would set up my own pet cam, connect it to the Internet, and make it available for me to check from anywhere in the world. I also wanted to ensure that only I could access it and that it had some easy way to login, possibly using my Google account. The solution? Cloudflare Tunnel and Teams. Cloudflare would help me expose a service running in an internal network using <a href="https://www.cloudflare.com/products/tunnel">Tunnel</a> while providing a security solution on top of it to keep it secure. <a href="https://www.cloudflare.com/teams">Teams</a> on the other hand, would help me by adding access control in the form of Google authentication.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bWBM8Z87zIOnvBG8TYXJ3/831c0ebbf9f8d86628a3cd94f7c9068c/image10.jpg" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bWBM8Z87zIOnvBG8TYXJ3/54946b52cfe1989747b9400f2c2f2b66/image10.jpg" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
 
 	</figure>
 	<p>So all I am left to do is configure my Raspberry Pi to be able to run a camera as a web service. That weekend, I started researching for it and made a list of things I needed:</p>
@@ -46,7 +46,7 @@
 	<p>The first thing we need to do is connect the camera module to the Raspberry Pi. For more detailed instructions, follow the <a href="https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/1">official guide</a>, steps 1 to 3.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nMbgxZI3HylSD6wKx5ImA/168a89e26e978107c73ccb6680367bd3/image2.jpg" alt="" class="kg-image" width="1999" height="1872" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nMbgxZI3HylSD6wKx5ImA/cef37fd42e0ea3f4338658d08f45f168/image2.jpg" alt="" class="kg-image" width="1999" height="1872" loading="lazy">
 
 	</figure>
 	<p>After setting up the camera and testing that it works, we need to set it up as a camera with a web server. This is so we can access it at a URL such as <a href="https://192.168.0.2:8080">https://192.168.0.2:8080</a> within the local network, to which the Raspberry Pi is also connected. To do that, we will use <a href="https://motion-project.github.io">Motion</a>, a program for setting up the camera module v2 as a web server.</p>
@@ -96,7 +96,7 @@ ingress:
 	<p>This adds a DNS CNAME record, which can be verified from the Cloudflare dashboard as shown here:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72ToAYL4KvcUUsN9mLC4bY/fb127c2086230101564ad75cd1d035e7/image9.png" alt="" class="kg-image" width="1999" height="750" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72ToAYL4KvcUUsN9mLC4bY/54dcf24add84b971a02085ecb3b1e708/image9.png" alt="" class="kg-image" width="1999" height="750" loading="lazy">
 
 	</figure>
 	<p>Let’s test the Tunnel!</p>
@@ -126,7 +126,7 @@ ingress:
 	<p>We still haven’t put any requirement for authentication on top of the server. Right now, anyone who knows about the domain can just open it and look at what is happening inside my house. Frightening, right? Thankfully we have two options now:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZyzqSJev8PbTkyn3qFn8n/c0fd6c10fe00d210bdb9b6a0a60f34d4/image7-1.png" alt="" class="kg-image" width="1398" height="1264" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZyzqSJev8PbTkyn3qFn8n/d37bc2f7ced529309f7f173485256d05/image7-1.png" alt="" class="kg-image" width="1398" height="1264" loading="lazy">
 
 	</figure>
 	<ol>
@@ -140,43 +140,43 @@ ingress:
 	<p>To take advantage of this Cloudflare Access functionality, the first step is to set up Cloudflare for Teams. Visit <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com/</a>, follow the <a href="https://developers.cloudflare.com/cloudflare-one/setup">setup guide</a> and choose a team name (imohak in my case).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Ckc0vrJf3mhwd00R4EPuO/74ba8e015b91d156985f6c977c1f79fc/image6-1.png" alt="" class="kg-image" width="1529" height="943" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Ckc0vrJf3mhwd00R4EPuO/43a6df1837a7eaf0fffd2128e8b467f1/image6-1.png" alt="" class="kg-image" width="1529" height="943" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ECuaRhkiYYhB0PAn5wb66/82b82a6311c2d705882e36fb77d40b51/image13.png" alt="" class="kg-image" width="1996" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ECuaRhkiYYhB0PAn5wb66/495aced4d3bd416324e365018e0da159/image13.png" alt="" class="kg-image" width="1996" height="1999" loading="lazy">
 
 	</figure>
 	<p>After this, we have two things left to do: add a login method and add an application. Let’s cover how we add a login method first. Navigate to <b>Configuration</b> &gt; <b>Authentication</b> and click on <b>+Add</b>, under the Login tab. The Dashboard will show us a list of identity providers to choose from. Select <b>Google</b> — follow <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google">this guide</a> for a walkthrough of how to set up a Google Cloud application, get a ClientID and Client Secret, and use them to configure the identity provider in Teams.</p>
 	<p>After adding a login method and testing it, we should see a confirmation page like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4P79mOvcSRa4tG1MQZlV4b/3139a2eeed017713f27a91f387150d84/image4-2.png" alt="" class="kg-image" width="1994" height="1360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4P79mOvcSRa4tG1MQZlV4b/aa025e7c0fcc069fbcba15750602f4c7/image4-2.png" alt="" class="kg-image" width="1994" height="1360" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mrPcowDoLHrYOgO0m5TJZ/a1aeaf637b1fbdb73162788fd5e8cd4d/image11.png" alt="" class="kg-image" width="1903" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mrPcowDoLHrYOgO0m5TJZ/56caf36503399da9978180448a6393ec/image11.png" alt="" class="kg-image" width="1903" height="1999" loading="lazy">
 
 	</figure>
 	<p>The last thing we need to do is to add the pet-cam subdomain as an application protected behind Teams. This enables us to enforce the Google authentication requirement we have configured before. To do that, navigate to <b>Access</b> &gt; <b>Applications</b>, click on <b>Add an application</b>, and select <b>Self-hosted.</b></p>
 	<p>On the next page, we specify a name, session duration and also the URL at which the application should be accessible. We add the subdomain <b>camera.imohak.com</b> and also name the app ‘camera’ to keep it simple.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Fw04ynQQofuRrzAEDtNrf/2a86410190a2541f3455ca20c50ae186/image5-6.png" alt="" class="kg-image" width="1999" height="1473" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Fw04ynQQofuRrzAEDtNrf/9c9f06d76be3fff0dab3a377b6f1b5bf/image5-6.png" alt="" class="kg-image" width="1999" height="1473" loading="lazy">
 
 	</figure>
 	<p>Next, we select Google as an identity provider for this application. Given that we are not choosing multiple authentication methods, I can also enable Instant Auth — this means we don’t need to select Google when we open the URL.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4afTGRdT9HqB27ijtHV1sz/b9c7aa88e43a757b19bc8c53ed5616b1/image3-7.png" alt="" class="kg-image" width="1999" height="572" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4afTGRdT9HqB27ijtHV1sz/899a61e1508a2b83cfa8542c6ebe5754/image3-7.png" alt="" class="kg-image" width="1999" height="572" loading="lazy">
 
 	</figure>
 	<p>Now we add policies to the application. Here, we add an email check so that after the Google authentication, a check is made to ensure the specified email address is the only one who is able to access the URL. If needed, we can choose to configure other, more <a href="https://developers.cloudflare.com/cloudflare-one/policies/zero-trust">complex rules</a>. At this point, we click on <b>Next</b> and finish the setup.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1geMYdeb3TxwfOdNX2EbXc/f22b2ae0f5f32d0e47a3a9e2775b8267/image12.png" alt="" class="kg-image" width="1999" height="1336" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1geMYdeb3TxwfOdNX2EbXc/ea5c14428ed5cdcdc83ec87dfa246c2c/image12.png" alt="" class="kg-image" width="1999" height="1336" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -190,7 +190,7 @@ ingress:
 	<p>The setup is now complete. Time to test everything! After opening the browser and entering my URL, <b>voilà.</b> Now, when I visit this URL, I see a Google authentication page and, after logging in, Ziggy eating his dinner.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22S1tv39WLxSU92UNgnaPW/f689b30d016f94c11f1282ac6e103c68/image8.png" alt="" class="kg-image" width="1398" height="1264" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22S1tv39WLxSU92UNgnaPW/a54c9c1de414af27c0f68d9afaba55b2/image8.png" alt="" class="kg-image" width="1398" height="1264" loading="lazy">
 
 	</figure>
 	<p></p>

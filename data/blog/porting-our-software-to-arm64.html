@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FelPB5PRd57tLymCWszD9/4867c46c317b555ea9a021e49c1491d7/porting-our-software-to-arm64.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FelPB5PRd57tLymCWszD9/aaa5f419147f1d621e25d64f7b86ade7/porting-our-software-to-arm64.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As we enable more ARM64<a href="https://blog.cloudflare.com/#fn1">[1]</a> machines in our network, I want to give some technical insight into the process we went through to reach software parity in our multi-architecture environment.</p>
 	<p>To give some idea of the scale of this task, it’s necessary to describe the software stack we run on our servers. The foundation is the Linux kernel. Then, we use the Debian distribution as our base operating system. Finally, we install hundreds of packages that we build ourselves. Some packages are based on open-source software, often tailored to better meet our needs. Other packages were written from scratch within Cloudflare.</p>
@@ -15,7 +15,7 @@
 	<p>Cross-compiling Go code is relatively simple, since <a href="https://github.com/golang/go/wiki/GoArm">ARM64 is a first-class citizen</a>. Go compiles and links static binaries using the system’s crossbuild toolchain, meaning the only additional Debian package we had to install on top of <code>build-essential</code> is <code>crossbuild-essential-arm64</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35Jkf2QztHDpwjzR2x6hw3/8afd2ecbe0a5a7646d969b179c7f89b0/photo-1509815963-90cab26a868f" alt="traffic light on green light" class="kg-image" width="1080" height="1095" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35Jkf2QztHDpwjzR2x6hw3/3cee03287c46dca64e8ad270c54839d2/photo-1509815963-90cab26a868f" alt="traffic light on green light" class="kg-image" width="1080" height="1095" loading="lazy">
 
 	</figure>
 	<p>Photo by <a href="https://unsplash.com/@tomcoe?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">tom coe</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>

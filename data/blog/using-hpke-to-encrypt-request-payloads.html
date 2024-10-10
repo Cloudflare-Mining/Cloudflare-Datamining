@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XG4TCzi8BAF4IgXcN6pPO/80aad7693fead2e8458d8df51b05f839/Hybrid-WAF-keys.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XG4TCzi8BAF4IgXcN6pPO/9310076760243a9019e133af6c7a21ad/Hybrid-WAF-keys.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<p>The Managed Rules team was recently given the task of allowing Enterprise users to <a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke">debug Firewall Rules</a> by viewing the part of a request that matched the rule. This makes it easier to determine what specific attacks a rule is stopping or why a request was a false positive, and what possible refinements of a rule could improve it.</p>
@@ -44,7 +44,7 @@
 	<p>HPKE solves these problems by providing a high level of security in a generic manner and providing necessary hooks to tie messages to the context in which they are generated. This is the application of decades of research into the correct security notions and schemes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/d6wSZdRKA3sg9R7181Rc3/8f842a8445712a23c96459cd1ff3c0f0/image2-13.png" alt="" class="kg-image" width="624" height="285" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/d6wSZdRKA3sg9R7181Rc3/6f61f19999611103d51ee2f394caa00d/image2-13.png" alt="" class="kg-image" width="624" height="285" loading="lazy">
 
 	</figure>
 	<p>HPKE is built in stages. First it turns a Diffie-Hellman key agreement into a Key Encapsulation Mechanism. A key encapsulation mechanism has two algorithms: Encap and Decap. The Encap algorithm creates a symmetric secret and wraps it in a public key, so that only the holder of the private key can unwrap it. An attacker with the encapsulation cannot recover the random key. Decap takes the encapsulation and the private key associated to the public key, and computes the same random key. This translation gives HPKE the flexibility to work almost unchanged with any kind of public key encryption or key agreement algorithm.</p>
@@ -103,7 +103,7 @@ http.request.uri.path -&gt; /cms/%0Aadmin</code></pre>
 	<p>Finally, these get serialized as JSON, encrypted with the customer's public key, serialized again as a set of bytes, and prefixed with a version number should we need to change/update it in the future. To simplify consumption of these blobs, our APIs display a base64 encoded version of the bytes:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GszxT7kezPhIz3olZ7NRG/d2aa01a77c7a174d8d7b8d304012e67f/image3-8.png" alt="" class="kg-image" width="1794" height="1484" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GszxT7kezPhIz3olZ7NRG/5e5468f1d414682c3279c9f427c92dfa/image3-8.png" alt="" class="kg-image" width="1794" height="1484" loading="lazy">
 
 	</figure>
 	<p>Now that we have encrypted the data at the edge and persisted it in <a href="https://blog.cloudflare.com/tag/clickhouse">ClickHouse</a>, we need to allow users to decrypt it. As part of the setup of turning this feature on, users generated a key-pair: the public key which was used to encrypt the payloads and a private key which is used to decrypt them. Decryption is done completely offline via either the command line using <a href="https://github.com/cloudflare/matched-data-cli">cloudflare/matched-data-cli</a>:</p>
@@ -113,7 +113,7 @@ $ matched-data-cli decrypt -d $MATCHED_DATA -k $PRIVATE_KEY
 	<p>Or the dashboard UI:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4S6H5u9SqEUrWDRRnYnCS/3c86fb0be06c7c1d86025899a8f77bb9/image1-7.png" alt="" class="kg-image" width="1976" height="1455" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4S6H5u9SqEUrWDRRnYnCS/18a59db043aab89967c898bf87185151/image1-7.png" alt="" class="kg-image" width="1976" height="1455" loading="lazy">
 
 	</figure>
 	<p>Since our CLI tool is open-source and HPKE is interoperable, it can also be used in other tooling as part of a user's logging pipeline, for example in security information and event management (SIEM) software.</p>

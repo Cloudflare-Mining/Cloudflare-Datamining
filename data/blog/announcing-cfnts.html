@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28EzbhrfLhC04DYdiKeABn/b07a628bf8e0011f0347b7d7e7f960d3/NTS-Open-source_2x.png" alt="" class="kg-image" width="1600" height="973" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28EzbhrfLhC04DYdiKeABn/7028654e1c75ef34a334309c36e5ccb5/NTS-Open-source_2x.png" alt="" class="kg-image" width="1600" height="973" loading="lazy">
 
 	</figure>
 	<p>Several months ago we announced that we were providing a <a href="https://blog.cloudflare.com/secure-time">new public time service.</a> Part of what we were providing was the first major deployment of the new Network Time Security (NTS) protocol, with a newly written implementation of NTS in Rust. In the process, we received helpful advice from the NTP community, especially from the NTPSec and Chrony projects. We’ve also participated in several interoperability events. Now we are returning something to the community: Our implementation, cfnts, is now <a href="https://github.com/cloudflare/cfnts">open source</a> and we welcome your pull requests and issues.</p>
@@ -42,7 +42,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ELZCQXF1AwQPqScsl7VRM/8d6c427da0eb14582153316370a4dd5b/overview-of-NTP-_2x-1.png" alt="" class="kg-image" width="1104" height="1180" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ELZCQXF1AwQPqScsl7VRM/3a9b9848f80df1c72126b485ebbba15d/overview-of-NTP-_2x-1.png" alt="" class="kg-image" width="1104" height="1180" loading="lazy">
 
 	</figure>
 	<p>In the second stage, the client securely synchronizes the clock with the negotiated NTP server. To synchronize securely, the client sends NTPv4 packets with four special extensions:</p>
@@ -122,7 +122,7 @@
 	<p>At the IETF 104 in Prague we had a working client and server for NTS-KE by the end of the hackathon. This was a good amount of progress considering we started with nothing. However, without implementing NTP we didn’t actually know that our server and client were computing the right thing. That would have to wait for later rounds of testing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YlPzBw5H4kOUfQWJfgFXq/8dbc6176123dbc779a3f1fce70b36a1a/Screen-Shot-2019-10-28-at-12.58.07-PM.png" alt="" class="kg-image" width="2489" height="1401" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YlPzBw5H4kOUfQWJfgFXq/486254883416f6509d7abd54ec911ff1/Screen-Shot-2019-10-28-at-12.58.07-PM.png" alt="" class="kg-image" width="2489" height="1401" loading="lazy">
 
 	</figure>
 	<p>Wireshark during some NTS debugging</p>
@@ -139,7 +139,7 @@
 	<p>We ended up compiling a chrony branch with NTS support and NTPsec ourselves and testing against time.cloudflare.com. We also tested our client against test servers set up by the chrony and NTPsec projects, in the hopes that this would expose bugs and have our implementations work nicely together. After a few lengthy days of debugging, we found out that our nonce length wasn’t exactly in accordance with the spec, which was quickly fixed. The NTPsec project was extremely helpful in this effort. Of course, this was the day that our <a href="https://sfist.com/2019/05/31/power-outage-hits-soma-china-basin">office had a blackout</a>, so the testing happened outside in Yerba Buena Gardens.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JaJ1t9QsDElwkgvBo5Uo/8f57df13f93b904259d04f81d53f9f5f/pasted-image-0-3.png" alt="" class="kg-image" width="319" height="209" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JaJ1t9QsDElwkgvBo5Uo/94b282d0f621c730e467495d03a486d2/pasted-image-0-3.png" alt="" class="kg-image" width="319" height="209" loading="lazy">
 
 	</figure>
 	<p>Yerba Buena commons. Taken by Wikipedia user Beyond My Ken. CC-BY-SA</p>
@@ -188,7 +188,7 @@
 	<p>Tanya Verma and <a href="https://blog.cloudflare.com/author/gabbi">Gabbi Fisher</a> were major contributors to the code, especially the configuration system and the client code. We’d also like to thank Gary Miller, Miroslav Lichter, and all the people at Cloudflare who set up their laptops and home machines to point to time.cloudflare.com for early feedback.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0pc2IWY3wfq8UQuTPPMAB/2cad44838043d8e6661a56d89c46de38/tales-from-the-crypto-team_2x--1--1.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0pc2IWY3wfq8UQuTPPMAB/2d7651cc321580194ca41bbbb6b3e7e5/tales-from-the-crypto-team_2x--1--1.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
 
 	</figure>
 </div>

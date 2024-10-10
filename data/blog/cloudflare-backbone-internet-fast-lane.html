@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OUYOeMRCqEeC3L1RaxMKY/3ced28a54f488df0c0f7f8881f6f9982/Grbackbone-1.png" alt="" class="kg-image" width="1709" height="1048" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OUYOeMRCqEeC3L1RaxMKY/3887a03e2de1b881611620a42c7768aa/Grbackbone-1.png" alt="" class="kg-image" width="1709" height="1048" loading="lazy">
 
 	</figure>
 	<p>The Internet is an amazing place. It’s a communication superhighway, allowing people and machines to exchange exabytes of information every day. But it's not without its share of issues: whether it’s <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">DDoS attacks</a>, <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">route leaks</a>, <a href="https://blog.cloudflare.com/not-one-not-two-but-three-undersea-cables-cut-in-jersey">cable cuts</a>, or <a href="https://blog.cloudflare.com/a-post-mortem-on-this-mornings-incident">packet loss</a>, the components of the Internet do not always work as intended.</p>
@@ -18,7 +18,7 @@
 	<p>We began building out our global backbone in 2018. It comprises a network of long-distance fiber optic cables connecting various Cloudflare data centers across North America, South America, Europe, and Asia. This also includes Cloudflare’s metro fiber network, directly connecting data centers within a metropolitan area.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jn1eE7h9w0TMITPDwbsHF/3559fa4b9f2effd92b7b775b89330866/Untitled.png" alt="A map of Cloudflare’s global long-haul fiber backbone." class="kg-image" width="1704" height="926" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jn1eE7h9w0TMITPDwbsHF/c9131d2d2fe23d34051312c7b9fd23a7/Untitled.png" alt="A map of Cloudflare’s global long-haul fiber backbone." class="kg-image" width="1704" height="926" loading="lazy">
 
 	</figure>
 	<p>Our backbone is a dedicated network, providing guaranteed network capacity and consistent latency between various locations. It gives us the ability to securely, reliably, and quickly route packets between our data centers, without having to rely on other networks.</p>
@@ -40,7 +40,7 @@
 	<p>With that disclaimer out of the way, now onto the test.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1J6FgOCk20reULhsoVF8BE/f5de9bc147a19012951f083990babe2f/averages.png" alt="A bar chart showing an overall decrease in average response times when using the Cloudflare backbone, compared to the public Internet." class="kg-image" width="2000" height="770" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1J6FgOCk20reULhsoVF8BE/0c2e430b5ca8ddf670aad16d4d825449/averages.png" alt="A bar chart showing an overall decrease in average response times when using the Cloudflare backbone, compared to the public Internet." class="kg-image" width="2000" height="770" loading="lazy">
 
 	</figure>
 	<p>With the backbone disabled, if a visitor from São Paulo performed a request to our service, they would be routed to our São Paulo data center via <a href="https://blog.cloudflare.com/a-brief-anycast-primer">BGP Anycast</a>. With caching disabled, our São Paulo data center forwarded the request over the public Internet to the origin server in Chicago. On average, the entire process to fetch data from the origin server and return to the response to the requesting user took 335.8 milliseconds.</p>
@@ -79,7 +79,7 @@
 	<p>We also observed a smaller deviation in the response time of packets routed through our backbone over larger distances.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4l7WB7dKR0zXUM7yjyoBwv/8c38cacfed853dd96346580fa4c0df2c/timeseries.png" alt="A line chart showing an overall decrease in latency and jitter when using the Cloudflare backbone, compared to the public Internet." class="kg-image" width="2000" height="770" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4l7WB7dKR0zXUM7yjyoBwv/031ff75e5b3da67b7f1be69d509b3dd6/timeseries.png" alt="A line chart showing an overall decrease in latency and jitter when using the Cloudflare backbone, compared to the public Internet." class="kg-image" width="2000" height="770" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

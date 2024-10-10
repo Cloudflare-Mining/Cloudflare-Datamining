@@ -1,10 +1,10 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/route-leak-detection">日本語</a>, <a href="https://blog.cloudflare.com/th-th/route-leak-detection">ไทย</a> and <a href="https://blog.cloudflare.com/id-id/route-leak-detection">Indonesia</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fiXrKRSmq3PrP7QMhyyNr/109c27e5392566ea6e94f6116af43d7e/route-leak-detection.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/route-leak-detection">日本語</a>, <a href="https://blog.cloudflare.com/th-th/route-leak-detection">ไทย</a> and <a href="https://blog.cloudflare.com/id-id/route-leak-detection">Indonesia</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fiXrKRSmq3PrP7QMhyyNr/6d9a6adbac7802e2796f7ea1a260dc15/route-leak-detection.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This post is also available in </i><a href="https://blog.cloudflare.com/ja-jp/route-leak-detection-ja-jp"><i>日本語</i></a><i>, </i><a href="https://blog.cloudflare.com/id-id/route-leak-detection-id-id"><i>Bahasa Indonesia</i></a><i>, </i><a href="https://blog.cloudflare.com/th-th/route-leak-detection-th-th"><i>ไทย</i></a><i>.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RqommHUoS6kg7yEKfg1b0/16894da25d4f7ffcd1c100473918594a/image6-17.png" alt="Protecting Cloudflare Customers from BGP Insecurity with Route Leak Detection" class="kg-image" width="1852" height="926" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RqommHUoS6kg7yEKfg1b0/b2a9436cfbfad21affdd171f271e4b06/image6-17.png" alt="Protecting Cloudflare Customers from BGP Insecurity with Route Leak Detection" class="kg-image" width="1852" height="926" loading="lazy">
 
 	</figure>
 	<p>Border Gateway Protocol (BGP) route leaks and hijacks can ruin your day — BGP is <a href="https://blog.cloudflare.com/is-bgp-safe-yet-rpki-routing-security-initiative">insecure by design</a>, and incorrect routing information spreading across the Internet can be incredibly disruptive and dangerous to the normal functioning of customer networks, and the Internet at large. Today, we're excited to announce Route Leak Detection, a new network alerting feature that tells customers when a prefix they own that is onboarded to Cloudflare is being leaked, i.e., advertised by an unauthorized party. Route Leak Detection helps protect your routes on the Internet: it tells you when your traffic is going places it’s not supposed to go, which is an indicator of a possible attack, and reduces time to mitigate leaks by arming you with timely information.</p>
@@ -21,13 +21,13 @@
 	<p>Some route leaks are innocuous. But some route leaks can be malicious, and can have very real security impact. An attacker can advertise specific routes for the express purpose of directing users to their network to do things like <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">steal cryptocurrencies</a> and other important data, or attempt to issue SSL/TLS certificates that can be used to impersonate domains. By advertising more specific routes, an attacker can trick you into accessing a site that you don’t intend to, and if it looks exactly like the site you expect, you may unwittingly enter in personal data and be at risk for an attack. Here’s a diagram representing traffic without a route leak:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ldg1OBf3Ql3K2OM5QzuFQ/bee6a48d95fb6a39bb5b54ba066ad6c6/image4-32.png" alt="Here’s a diagram representing traffic without a route leak" class="kg-image" width="1999" height="1045" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ldg1OBf3Ql3K2OM5QzuFQ/dfc07340361bb25b84ea1c8c7caf2d57/image4-32.png" alt="Here’s a diagram representing traffic without a route leak" class="kg-image" width="1999" height="1045" loading="lazy">
 
 	</figure>
 	<p>And here’s traffic after a route leak:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JTlxIjXatTk3p7VWBjqst/b35f3e400b1859a2e039c7c7492cb300/image5-30.png" alt="And here’s traffic after a route leak" class="kg-image" width="1999" height="1045" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JTlxIjXatTk3p7VWBjqst/57c838e231584e8dd22db0be74001e82/image5-30.png" alt="And here’s traffic after a route leak" class="kg-image" width="1999" height="1045" loading="lazy">
 
 	</figure>
 	<p>So in addition to making users unhappy because a lot of Internet traffic is going through paths that can’t handle it, route leaks can have very real data leak implications.</p>
@@ -53,7 +53,7 @@
 	<p>Configuring Route Leak Detection can be done by setting up a message in the Notifications tab in your account.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QnjMkL4u4AwrgSh1Jpxrr/6d6d70ed03a4e9e9828b86cb459cc95a/image7.gif" alt="Configuring Route Leak Detection can be done by setting up a message in the Notifications tab in your account." class="kg-image" width="1971" height="978" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QnjMkL4u4AwrgSh1Jpxrr/142248389c38a6204d2948785f36208c/image7.gif" alt="Configuring Route Leak Detection can be done by setting up a message in the Notifications tab in your account." class="kg-image" width="1971" height="978" loading="lazy">
 
 	</figure>
 	<p>Cloudflare will then begin monitoring all of your onboarded prefixes for leaks and hijacks and will send you alerts when they occur via <a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare">email or specialized on call tools like PagerDuty</a>.</p>
@@ -73,7 +73,7 @@
 	<p>Because Acme has enabled Route Leak Detection, an alert is sent to Acme’s administrators.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NcQzvEYk24mS66H5r6jMc/7d445915cc1cab52dd6d790e861b38a0/image1-41.png" alt="Because Acme has enabled Route Leak Detection, an alert is sent to Acme’s administrators." class="kg-image" width="1316" height="1469" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NcQzvEYk24mS66H5r6jMc/e3924fc243bc6c1dc79829063561fb4a/image1-41.png" alt="Because Acme has enabled Route Leak Detection, an alert is sent to Acme’s administrators." class="kg-image" width="1316" height="1469" loading="lazy">
 
 	</figure>
 	<p>The alert includes all of the ASNs that are seeing the prefix being advertised by the potentially malicious party. Acme is able to warn their users that they may be at risk of a data exfiltration attack, and they should be on the lookout for suspicious behavior.</p>
@@ -100,7 +100,7 @@
 	<p>Cloudflare already has this configured on our own prefixes today. Here’s an example of what we see when our system determines that something is wrong:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UsydST8qItOP1lNo38LCP/28ea2ad6bcc1947c14dd24ee86b11775/image2-35.png" alt="Cloudflare already has this configured on our own prefixes today. Here’s an example of what we see when our system determines that something is wrong:" class="kg-image" width="1205" height="239" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UsydST8qItOP1lNo38LCP/51816b8fda71313bcc09dc867d2a8cc3/image2-35.png" alt="Cloudflare already has this configured on our own prefixes today. Here’s an example of what we see when our system determines that something is wrong:" class="kg-image" width="1205" height="239" loading="lazy">
 
 	</figure>
 	<p>Cloudflare owns the prefix range 2606:4700:50::/44, as it is a subnet of one of the ranges <a href="https://www.cloudflare.com/ips">listed on our site here</a>. For a period of an hour, we noticed that someone tried to advertise a subnet of that range to 38 other networks. Fortunately, because we have <a href="https://blog.cloudflare.com/rpki-details">deployed RPKI</a>, we know that most networks will reject rather than honor these route advertisements from attackers.</p>
@@ -116,7 +116,7 @@
 	<p>Cloudflare’s <a href="https://isbgpsafeyet.com">continued advocacy</a> for RPKI has yielded fruits in the past three months alone. Providers such as Amazon, Google, Telstra, Cogent, and even Netflix have started supporting RPKI and are filtering and dropping invalid prefixes. In fact, over 50% of the top Internet providers now support RPKI in some fashion:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33cOUIS0k8FDIJjIVHC2aN/35ddfe50c09058c1e7fb79e3a438c57b/image3-33.png" alt="In fact, over 50% of the top Internet providers now support RPKI in some fashion:" class="kg-image" width="1262" height="1744" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33cOUIS0k8FDIJjIVHC2aN/6e14337d251c6f6d4c570c668ffa1b25/image3-33.png" alt="In fact, over 50% of the top Internet providers now support RPKI in some fashion:" class="kg-image" width="1262" height="1744" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s Route Leak Detection combined with more providers implementing RPKI are helping to ensure that data loss and downtime from route leaks become a thing of the past. If you’re a Cloudflare Magic Transit or BYOIP customer, try configuring a route leak alert in your dash today. If you’re not a Magic Transit or BYOIP customer, reach out to our <a href="https://www.cloudflare.com/plans/enterprise/contact">sales team</a> to get started in the process to keep your network safe — even the routes.</p>

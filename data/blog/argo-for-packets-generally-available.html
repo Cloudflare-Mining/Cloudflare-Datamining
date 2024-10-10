@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ze9T67g2Ut7CQGQ7soMNr/fa73ac84592b2f8f2bdde23ee4d6420a/image5-14.png" alt="Argo for Packets is Generally Available" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ze9T67g2Ut7CQGQ7soMNr/66a70e17c8d33f4b9e53400fe82d2d4e/image5-14.png" alt="Argo for Packets is Generally Available" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>What would you say if we told you your IP network can be faster by 10%, and all you have to do is reach out to your account team to make it happen?</p>
@@ -22,7 +22,7 @@
 	<p>As we said during Speed Week, Argo for Packets provides an average 10% latency improvement across the world in our internal testing:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ikoMLDL8TGw5uMACrwHg1/8244b036a27389656be8b75a2f5d170a/image6-14.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ikoMLDL8TGw5uMACrwHg1/6834d63e080c9ebe7117e1f66993a7fc/image6-14.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>As we moved towards GA, we found that our real world numbers match our internal testing, and we still see that 10% improvement. But it’s important to note that the 10% latency reduction numbers are an average across all paths across the world. Different customers can see different latency gains depending on their setup.</p>
@@ -33,7 +33,7 @@
 	<p>To make Argo personalized to your private network, Cloudflare makes use of a data source that we already built for <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a>. That data source: health check probes. Cloudflare leverages existing health check probes from every single Cloudflare data center back to each customer’s origin. These probes are used to determine the health of paths from Cloudflare back to a customer for Magic Transit, so that Cloudflare knows which paths back to origin are healthy. These probes contain a variety of information that can also be used to improve performance such as packet loss and latency data. By examining health check probes and adding them to existing Layer 4 data, Cloudflare can get a better understanding of one-way latencies and can construct a map that allows us to see all the interconnected data centers and how fast they are to each other. Cloudflare then finds the best path at layer 3 back to the customer datacenter by picking an entry location where the packet entered our network, and an exit location that is directly connected back to the customer via a Cloudflare Network Interconnect.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ml1iHvry9yunmX1ue1xbc/9e653fda2224e63599703c76558e1828/image1-49.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ml1iHvry9yunmX1ue1xbc/e0585642360129d42581d12d199fff33/image1-49.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
 
 	</figure>
 	<p>Using this map, Cloudflare constructs dynamic routes for each customer based on where their traffic enters Cloudflare’s network and where they need to go.</p>
@@ -50,12 +50,12 @@
 	<p>The example from the blog outlined a company with locations in South Carolina, Oregon, and Los Angeles. In that blog, we showed the latency improvements that Magic Transit by itself provided for one leg of the trip. That network looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Asq79awFbjcKjQEyM1YYj/4f5bac2593560a731faa88bac0940553/image3-23.png" alt="" class="kg-image" width="1092" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Asq79awFbjcKjQEyM1YYj/3c7780faf0a954920c40facdfef73abc/image3-23.png" alt="" class="kg-image" width="1092" height="728" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vZPTaPL8yyUuuosFPL28r/c3087ea3743d789c9e740901484cdb6d/image4-25.png" alt="" class="kg-image" width="1502" height="832" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vZPTaPL8yyUuuosFPL28r/09b17497953c525aafefba63ccb00783/image4-25.png" alt="" class="kg-image" width="1502" height="832" loading="lazy">
 
 	</figure>
 	<p>Let’s break that out to show the latencies between all paths on that network. Let’s assume that South Carolina connects to Atlanta, and Oregon connects to Seattle, which is the most likely scenario:</p>
@@ -200,7 +200,7 @@
 	<p>Taking the above example from the United States, if this company adds two new locations in Boston and Dallas, those locations also see significant latency reduction through Argo for Packets. Now, their network looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Mtub5sA25DVwRXkxKLa6o/00243d394123d03b37c51bc55b2d3864/image2-32.png" alt="" class="kg-image" width="1125" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Mtub5sA25DVwRXkxKLa6o/97053ec38ab4138ed1470b24f207ae76/image2-32.png" alt="" class="kg-image" width="1125" height="720" loading="lazy">
 
 	</figure>
 	<p>Argo for Packets also ensures that those freshly added new offices will immediately see great performance on the private network:</p>

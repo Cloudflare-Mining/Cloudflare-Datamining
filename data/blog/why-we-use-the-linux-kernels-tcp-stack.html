@@ -1,10 +1,10 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Yf1URYfUbGWfDebsATxIr/a5e9f050e95d8e9de4b1d00d6639da33/why-we-use-the-linux-kernels-tcp-stack.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Yf1URYfUbGWfDebsATxIr/2c69025d54e1d12e81fa4ff8e2ce2bae/why-we-use-the-linux-kernels-tcp-stack.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A recent blog post posed the question <a href="http://jvns.ca/blog/2016/06/30/why-do-we-use-the-linux-kernels-tcp-stack">Why do we use the Linux kernel's TCP stack?</a>. It triggered a very interesting <a href="https://news.ycombinator.com/item?id=12021195">discussion on Hacker News</a>.</p>
 	<p>I've also thought about this question while working at CloudFlare. My experience mostly comes from working with thousands of production machines here and I can try to answer the question from that perspective.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lHPHaLdbARQnTO8oLpyLU/29247bcbd1d930c1ade1f23fb7124f68/225724064_46fec2a98c_b.jpg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lHPHaLdbARQnTO8oLpyLU/ce8e6da33c84a2a143a64d3b5d91b0d0/225724064_46fec2a98c_b.jpg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jvetterli/225724064">image</a> by <a href="https://www.flickr.com/photos/jvetterli">John Vetterli</a></p>
@@ -22,7 +22,7 @@
 	<p>As crazy as it sounds, this is exactly what most off the shelf userspace network stack technologies propose. The common term for this is "full kernel bypass". The idea is to bypass the kernel and use network hardware directly from userspace process.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2e9Ajl5eitNX8yqNI61glE/51bd0748e0e077174e132961e9ebd186/18174650566_bb7caa8a17_z.jpg" alt="" class="kg-image" width="640" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2e9Ajl5eitNX8yqNI61glE/ac93c061a09ed55f59a7340c7787f38c/18174650566_bb7caa8a17_z.jpg" alt="" class="kg-image" width="640" height="360" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/audiotecna/18174650566/in/photolist-tG2Qqf-doZFcH-5dUQtz-9TLCRR-5dUEPB-7KN1DT-5ZfUg4-39Fax6-5dUJot-5dUGxP-5dZ53w-5PA2W1-7A1AjN-km3MZn-ddgZzC-km5vtd-dHCLzh-7jVVb3-GwBUem-9TPrad-aWf6UZ-7yJAxD-c7YYMY-aMEM2V-4FLyP-a2UGuD-a2UFck-a2XwUQ-bgVJ9H-a2UGm6-a2Xx9C-a2UFyP-a2XwGf-a2XxS1-a2UGC2-a2UGQD-a2XxEm-a2UGap-5dUGiK-a2UFDp-7KRXV3-5dUGMP-a2UF9t-a2UFNg-4aBxT-fVMCS1-6CZhV1-a2Xydw-a2XxnC-a2UG2x">image</a> by <a href="https://www.flickr.com/photos/audiotecna">Audiotecna Música</a></p>
@@ -64,7 +64,7 @@
 	<p>Having said that, at CloudFlare we do use kernel bypass. We are in the second group - we care about performance. More specifically we suffer from IRQ storms. The Linux networking stack has a limit on how many packets per second it can handle. When the limit is reached all CPUs become busy just receiving packets. In that case either the packets are dropped or the applications are starved of CPU. While we don't have to deal with IRQ storms during our normal operation, this does happen when we are the target of an L3 (layer 3 OSI) DDoS attack. This is a type of attack where the target is flooded with arbitrary packets not belonging to valid connections - typically spoofed packets.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iCkTUfur8J5kg3FT7JgbT/13025a3e91d87c8388157084f8512db6/5939812628_7f22121e62_z.jpg" alt="" class="kg-image" width="640" height="478" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6iCkTUfur8J5kg3FT7JgbT/f4ea5557ad8e7cc552abca2c878d18fa/5939812628_7f22121e62_z.jpg" alt="" class="kg-image" width="640" height="478" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/howardlake/5939812628/in/photolist-a3T6my-mvx2SL-mvx9GN-mvvYag-X6CLx-Xb9mh-bmjkSU-amciaJ-4MpEAP-4Vgs6Q-6cRVcG-c9FET9-e2Gx4d-4VcdZV-65y4Bs-GRMfH-6Vd9JY-92mK5y-92mJP3-dyhTr2-9grVVr-34A4qk-352xtB-7h1LK3-6daUPd-4UmGDb-4MtQh9-dUMgRP-7jMHn4-92iD1a-352xFk-4MpDUx-3577LS-352xzz-3577Ff-4pZZiN-bH5CK-3577rA-3577dN-aK4MAg-7jMGnT-352xiF-3577Vh-92i9MD-352xmi-6z6jjL-34EAF3-3577yW-34EAzq-2iCSpN">image</a> by <a href="https://www.flickr.com/photos/howardlake">Howard Lake</a></p>
@@ -82,7 +82,7 @@
 	<p>Yes, it would be faster, but there is no evidence it will actually make much of a practical difference. Most of the CPU used on our servers goes to the userspace NGINX processes and not to the operating system. The CPU is mostly spent on usual NGINX bookkeeping and our Lua application logic, not on network handling. I estimate with bypass we could save about 5-10% CPU, which is (currently) not worth the effort.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cf9h0MnfwGNzl7G3YTHd/64ce4d9627492036aeaaadf1e1b7911f/8239882623_e54c104393_z.jpg" alt="" class="kg-image" width="640" height="379" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cf9h0MnfwGNzl7G3YTHd/57387ab6ecaa94d7423a449d580da60e/8239882623_e54c104393_z.jpg" alt="" class="kg-image" width="640" height="379" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/bakaotaku/8239882623/in/photolist-dy8y2M-5agSvS-HDgU1f-dye34N-ByBo-5QRSqj-4tw51P-g21SvY-7HotRb-7mUrEM-8CYXCb-pK97Yk-dT1LP2-dQU7DB-ocj55o-aT9gyV-oSXTr1-8JKS8q-9uaRmj-nGYc4N-Mh7K-bPdqrz-qfYS3U-ByBi-dVREbd-ByBy-A4vY2-HyXi7f-4aMV1X-4D8agk-p2upRe-ByBL-dWeHpZ-ByBr-58UcmL-pTHFMp-9u7QJK-9u7QMn-dSg4wP-dT7tjG-7FEZv8-7FEZuP-p4thUV-e7ZWar-ByBG-qnQuCg-5kmcHN-cXGcRA-a4K5t6-guWTgr">image</a> by <a href="https://www.flickr.com/photos/bakaotaku">Charlie</a></p>

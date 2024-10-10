@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48ITDIuGFsDkkeLlfW5wR6/f7d586db58614f703d8812a7b171d300/image1-56.png" alt="Workers Browser Rendering API enters open beta" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48ITDIuGFsDkkeLlfW5wR6/a1a70dec0c91931ba63a9c0a5851ed5e/image1-56.png" alt="Workers Browser Rendering API enters open beta" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>The Workers Browser Rendering API allows developers to programmatically control and interact with a headless browser instance and create automation flows for their applications and products.</p>
@@ -25,7 +25,7 @@
 	<p>Under the hood, the Browser Rendering API gives you access to a WebSocket endpoint that speaks the <a href="https://chromedevtools.github.io/devtools-protocol">DevTools Protocol</a>. DevTools is what allows us to instrument a Chromium instance running in our global network, and it's the same protocol that Chrome uses on your computer when you inspect a page.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jPdmcv9Dtzd3yq8R3DFUR/d0e5fcc61904dca4ed7ac5ccb55b4574/image2-35.png" alt="" class="kg-image" width="1726" height="938" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jPdmcv9Dtzd3yq8R3DFUR/9065566d8deb7780efe494da03cdb1bc/image2-35.png" alt="" class="kg-image" width="1726" height="938" loading="lazy">
 
 	</figure>
 	<p>With enough dedication, you can, in fact, implement your own DevTools client and talk the protocol directly. But that'd be crazy; almost no one does that.</p>
@@ -58,7 +58,7 @@
 	<p>You can access this page to learn more about how the service works, Wrangler support, APIs, and limits, and find examples of starter templates for common applications.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xCzHB3baMJCw7CRov6P1P/8ef73452876094584a4747aa93dd9463/download-16.png" alt="" class="kg-image" width="1600" height="777" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xCzHB3baMJCw7CRov6P1P/33414eea87ea7b9e226b4dcc62395dcb/download-16.png" alt="" class="kg-image" width="1600" height="777" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -113,7 +113,7 @@ export default {
 	<p>Run <code>npx wrangler dev –remote</code> to test it and <code>npx wrangler publish</code> when you’re done.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SBhHt9GtxSXSEERkrnwSl/57d42137b79003879d2ea67b71579075/image4-21.png" alt="" class="kg-image" width="1999" height="1655" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SBhHt9GtxSXSEERkrnwSl/d159f82e6319be6d7a37c34709059067/image4-21.png" alt="" class="kg-image" width="1999" height="1655" loading="lazy">
 
 	</figure>
 	<p>You can explore the <a href="https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md">entire Puppeteer API</a> and implement other functionality and logic from here. And, because it's Workers, you can add other <a href="https://developers.cloudflare.com">developer products</a> to your code. You might need a <a href="https://developers.cloudflare.com/d1">relational database</a>, or a <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/#kv">KV store</a> to cache your screenshots, or an <a href="https://developers.cloudflare.com/r2">R2 bucket</a> to archive your crawled pages and assets, or maybe use a <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/#durable-objects">Durable Object</a> to keep your browser instance alive and share it with multiple requests, or <a href="https://developers.cloudflare.com/queues">queues</a> to handle your jobs asynchronous, we have all of this and <a href="https://developers.cloudflare.com">more</a>.</p>
@@ -130,7 +130,7 @@ export default {
 	<p>But there's one product we've been using to stress test and push the limits of the Browser Rendering API and drive the engineering sprints that brought us to open the beta to our customers today: The <a href="https://radar.cloudflare.com/scan">Cloudflare Radar URL Scanner</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wv4BHcjI8iY4ZkhNJSGEK/55470bc57f09ee4dde6ccbdaf91f4f79/image3-22.png" alt="" class="kg-image" width="1999" height="1310" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wv4BHcjI8iY4ZkhNJSGEK/d824748dab36a93bf8393820f0045a89/image3-22.png" alt="" class="kg-image" width="1999" height="1310" loading="lazy">
 
 	</figure>
 	<p>The URL Scanner scans any URL and compiles a full report containing technical, performance, privacy, and security details about that page. It's processing thousands of scans per day currently. It was built on top of Workers and uses a combination of the Browser Rendering APIs with Puppeteer to create enriched <a href="https://en.wikipedia.org/wiki/HAR_(file_format)">HAR archives</a> and page screenshots, Durable Objects to reuse browser instances, Queues to handle customers' load and execute jobs asynchronously, and <a href="https://www.cloudflare.com/developer-platform/r2">R2</a> to store the final reports.</p>

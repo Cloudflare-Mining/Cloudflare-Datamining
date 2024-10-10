@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rw5MM4LFMt3oQHaBgSslV/ac0df9aba8452224eea458a26267534a/image1-14.png" alt="Disrupting FlyingYeti's campaign targeting Ukraine" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rw5MM4LFMt3oQHaBgSslV/8ad26ff9bf840aecd75cfdd6830a8ffd/image1-14.png" alt="Disrupting FlyingYeti's campaign targeting Ukraine" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Cloudforce One is publishing the results of our investigation and real-time effort to detect, deny, degrade, disrupt, and delay threat activity by the Russia-aligned threat actor FlyingYeti during their latest phishing campaign targeting Ukraine. At the onset of Russia’s invasion of Ukraine on February 24, 2022, Ukraine introduced a moratorium on evictions and termination of utility services for unpaid debt. The moratorium ended in January 2024, resulting in significant debt liability and increased financial stress for Ukrainian citizens. The FlyingYeti campaign capitalized on anxiety over the potential loss of access to housing and utilities by enticing targets to open malicious files via debt-themed lures. If opened, the files would result in infection with the PowerShell malware known as <a href="https://cert.gov.ua/article/6277849">COOKBOX</a>, allowing FlyingYeti to support follow-on objectives, such as installation of additional payloads and control over the victim’s system.</p>
@@ -78,7 +78,7 @@
 	<p>Based on past FlyingYeti operations, targets may be directed to the actor’s Github page via a link in a phishing email or an encrypted Signal message. If a target accesses the spoofed Komunalka platform at hxxps[:]//komunalka[.]github[.]io, the page displays a large green button with a prompt to download the document “Рахунок.docx” (“Invoice.docx”), as shown in Figure 1. This button masquerades as a link to an overdue payment invoice but actually results in the download of the malicious archive “Заборгованість по ЖКП.rar” (“Debt for housing and utility services.rar”).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22Rnm7YOnwnJocG98RMFDa/14466c9a091580c21521e6941729b842/image4-5.png" alt="" class="kg-image" width="1999" height="868" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22Rnm7YOnwnJocG98RMFDa/def10039081f7e9c6df15980a8b855ac/image4-5.png" alt="" class="kg-image" width="1999" height="868" loading="lazy">
 
 	</figure>
 	<p>Figure 1: Prompt to download malicious archive “Заборгованість по ЖКП.rar”</p>
@@ -109,7 +109,7 @@
 	<p>During remediation, Cloudforce One recovered the RAR file “Заборгованість по ЖКП.rar” and performed analysis of the malicious payload. The downloaded RAR archive contains multiple files, including a file with a name that contains the unicode character “U+201F”. This character appears as whitespace on Windows devices and can be used to “hide” file extensions by adding excessive whitespace between the filename and the file extension. As highlighted in blue in Figure 2, this cleverly named file within the RAR archive appears to be a PDF document but is actually a malicious CMD file (“Рахунок на оплату.pdf[unicode character U+201F].cmd”).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55Vjmg9VLEnAFv3RZQoZ2l/35dd1d82a2570b0e4c4a0c1dd7ac6998/image2-11.png" alt="" class="kg-image" width="1999" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55Vjmg9VLEnAFv3RZQoZ2l/866016a2489f2a6c780c9f3971dd28ca/image2-11.png" alt="" class="kg-image" width="1999" height="480" loading="lazy">
 
 	</figure>
 	<p>Figure 2: Files contained in the malicious RAR archive “Заборгованість по ЖКП.rar” (“Housing Debt.rar”)</p>
@@ -118,14 +118,14 @@
 	<p>Alongside COOKBOX, several decoy documents are opened, which contain hidden tracking links using the <a href="https://canarytokens.com/generate">Canary Tokens</a> service. The first document, shown in Figure 3 below, poses as an agreement under which debt for housing and utility services will be restructured.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20vFV9kNTMmwxFXvpQoJTc/861fd0b9b4744a3063126e76ef28fa8e/image5-10.png" alt="" class="kg-image" width="1999" height="879" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20vFV9kNTMmwxFXvpQoJTc/12542fb7a7d2108d49607f2a23fc7575/image5-10.png" alt="" class="kg-image" width="1999" height="879" loading="lazy">
 
 	</figure>
 	<p>Figure 3: Decoy document Реструктуризація боргу за житлово комунальні послуги.docx</p>
 	<p>The second document (Figure 4) is a user agreement outlining the terms and conditions for the usage of the payment platform komunalka[.]ua.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VHSTwqfrXWXvoryg8lOcE/aa84387d5471398b7097f11e03441c7e/image3-6.png" alt="" class="kg-image" width="1104" height="646" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VHSTwqfrXWXvoryg8lOcE/68eb096bc82f18c7edcb4c88c1ed6d2c/image3-6.png" alt="" class="kg-image" width="1104" height="646" loading="lazy">
 
 	</figure>
 	<p>Figure 4: Decoy document Угода користувача.docx <i>(User Agreement.docx)</i></p>

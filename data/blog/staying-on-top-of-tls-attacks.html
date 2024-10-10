@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1COc2Gk7od84cBjNfwG5Df/829a634f121db12f53360b887ad8904e/staying-on-top-of-tls-attacks.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1COc2Gk7od84cBjNfwG5Df/2b9c9ba9e6b5081ab07a438fbc8f3750/staying-on-top-of-tls-attacks.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>CloudFlare makes extensive use of TLS connections throughout our service which makes staying on top of the latest news about security problems with TLS a priority. We use TLS both externally and internally and different uses of TLS have different constraints.</p>
 	<p>Broadly there are three ways we use TLS: to handle HTTPS connections from web browsers visiting web sites that use CloudFlare, to make HTTPS connections from our network of datacenters to our customers' web servers, and internally within our network.</p>
@@ -84,7 +84,7 @@
 	<p>The CloudFlare server's preference is ECDHE-RSA-AES128-GCM SHA256 but unfortunately it is not widely supported. Yet. I'll come back to that ciphersuite later. So, my browser and the server agreed to use the server's second preference, ECDHE-RSA-RC4128-SHA.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yPxhndZGv6wLp9dEHVJjk/21a1dfe0d0a7cf4de733f3ca6f2e2c1b/dory.png" alt="Forward Secrecy" class="kg-image" width="227" height="301" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yPxhndZGv6wLp9dEHVJjk/6b8d564c366aec41e3bc23abf2abdd77/dory.png" alt="Forward Secrecy" class="kg-image" width="227" height="301" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -115,7 +115,7 @@
 	<p>RC4. Unfortunately, the latest attack goes after RC4. So now both the popular ciphers have published flaws. The sooner browser vendors move to TLSv1.2 and away from RC4 and AES in CBC mode the better.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/NhHyUX2LZmikLwwRq01QD/6a35be620f1379edcef395a169362b72/vernam.png" alt="Vernam" class="kg-image" width="443" height="634" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NhHyUX2LZmikLwwRq01QD/0be13755a617686d1f641d9a1f6f9509/vernam.png" alt="Vernam" class="kg-image" width="443" height="634" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -155,7 +155,7 @@
 	<p>For example, here's their chart showing the probability of each number appearing as the first number produced in the RC4 keystream. This should be completely flat with each number being equally probable. It's not. That means that if the same message were encrypted over and over again it would be possible to determine (with a certain probability) what the original first character was.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ogvdCsuZlGiJKr6MjKC4u/6bc4522860b0b6f318b3560f02c2545e/rc4bias.png" alt="RC4 bias" class="kg-image" width="852" height="639" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ogvdCsuZlGiJKr6MjKC4u/8408462b4477449958dfdd117ab19f3f/rc4bias.png" alt="RC4 bias" class="kg-image" width="852" height="639" loading="lazy">
 
 	</figure>
 	<p>With many repeated tests, just as rolling a loaded die many times would show which numbers come up most often, the attack can see which ciphertext numbers come up most frequently and match that pattern to the pattern in the keystream. From that a simple XOR can reveal the original message.</p>

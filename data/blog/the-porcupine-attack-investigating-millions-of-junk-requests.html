@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DuyJ94v0vkWC7AkFq9f1m/afbf15c36df2bd411a9d8928d5156607/the-porcupine-attack-investigating-millions-of-junk-requests.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DuyJ94v0vkWC7AkFq9f1m/3371ada29695de66e53f6ed454790726/the-porcupine-attack-investigating-millions-of-junk-requests.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We extensively monitor our network and use multiple systems that give us visibility including external monitoring and internal alerts when things go wrong. One of the most useful systems is <a href="http://grafana.org">Grafana</a> that allows us to quickly create arbitrary dashboards. And a heavy user of Grafana we are: at last count we had 645 different Grafana dashboards configured in our system!</p>
 	<pre class="language-bash"><code class="language-bash">grafana=&gt; select count(1) from dashboard;
@@ -9,7 +9,7 @@
 	<p>This post is not about our Grafana systems though. It's about something we noticed a few days ago, while looking at one of those dashboards. We noticed this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5J5NcPnvP0aNMRm7SdcuAI/fbc7a4cc38d0e0d33911ef2503d79034/hedgehog.png" alt="" class="kg-image" width="1024" height="324" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5J5NcPnvP0aNMRm7SdcuAI/68d1f8a5edf4f600666ca51aba6c4a7b/hedgehog.png" alt="" class="kg-image" width="1024" height="324" loading="lazy">
 
 	</figure>
 	<p>This chart shows the number of HTTP requests per second handled by our systems globally. You can clearly see multiple spikes, and this chart most definitely should not look like a porcupine! The spikes were large in scale - <i>500k to 1M HTTP requests per second</i>. Something very strange was going on.</p>
@@ -26,7 +26,7 @@
 	<p>The spikes happened every 80 minutes and lasted about 10 minutes. We waited, and tried to catch the offending traffic. Here is what the HTTP traffic looked like on the wire:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/acRydqIF0JozrKjwO470H/0774292f16435f5f35c48199a0f5edb0/hwire.png" alt="" class="kg-image" width="892" height="307" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/acRydqIF0JozrKjwO470H/d86d7e850604998cf33db9d1a66d4561/hwire.png" alt="" class="kg-image" width="892" height="307" loading="lazy">
 
 	</figure>
 	<p>The client had sent some binary junk to our HTTP server on port 80; they weren't even sending a fake GET or POST line!</p>
@@ -43,13 +43,13 @@
 	<p>Let me show what's happening. Here are the first 24 bytes of the mentioned payload:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xuqzBVwsArs569h0oJmAa/02774e8f16280ed8631c6a304d7c2a34/hp1.png" alt="" class="kg-image" width="800" height="329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xuqzBVwsArs569h0oJmAa/f44b29516fae40a6226870f8fb9f2853/hp1.png" alt="" class="kg-image" width="800" height="329" loading="lazy">
 
 	</figure>
 	<p>If you look closely, the pattern will start to emerge. Let's add some colors and draw it in not eight, but seven bytes per row:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/l8hPvQM54L9hQnRbRZ3S1/2098b9a944149e97e2dff69157c3fbd4/hp2-1.png" alt="" class="kg-image" width="800" height="475" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/l8hPvQM54L9hQnRbRZ3S1/f70c83ac3c81f7488129eefc06cab033/hp2-1.png" alt="" class="kg-image" width="800" height="475" loading="lazy">
 
 	</figure>
 	<p>This checkerboard-like pattern, is exhibited in most of the requests with payload sizes below 512 bytes.</p>
@@ -67,7 +67,7 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	<p>The length distribution of the requests is also interesting. Here's the histogram showing the popularity of particular lengths of payloads.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CqXp7Q2ihFt6gWng6lJqP/cc47940b795531bb4fda540374f6e3b5/hlengths.png" alt="" class="kg-image" width="600" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CqXp7Q2ihFt6gWng6lJqP/2269db7f9437f2a681bad630554e290f/hlengths.png" alt="" class="kg-image" width="600" height="550" loading="lazy">
 
 	</figure>
 	<p>About 80% of the junk requests we received had length of up to 511 bytes, uniformly distributed.</p>
@@ -83,7 +83,7 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	<p>The spikes were large. It takes a lot of firepower to generate a spike in our global HTTP statistics! On the first day the spikes reached about 600k junk requests per second. On second day the score went up to 1M rps. In total we recorded 37 spikes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dRBYTfiRAb6aYn3yGhlKQ/34a3df5842671a33b64a4df1f370955a/hattacks.png" alt="" class="kg-image" width="918" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dRBYTfiRAb6aYn3yGhlKQ/61cc57d15679a62d4cb3b3f1bb714f00/hattacks.png" alt="" class="kg-image" width="918" height="768" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -131,7 +131,7 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	<p>The traffic was truly global and launched with IPs from 121 countries. This kind of globally distributed attack is where <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">Cloudflare's Anycast</a> network shines. During these spikes the load was nicely distributed across dozens of datacenters. <a href="https://blog.cloudflare.com/parabens-brasil-cloudflares-27th-data-center-now-live">Our datacenter in São Paulo</a> absorbed the most traffic, roughly 4 times more traffic than the second in line - Paris. This chart shows how the traffic was distributed across many datacenters:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qrKg7vQPH8xcmC2rMOVcn/53e4c167fce350ac13c46ae0c18abd11/hcolos.png" alt="" class="kg-image" width="950" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qrKg7vQPH8xcmC2rMOVcn/f637b781e9fc738eddbdd164a10af826/hcolos.png" alt="" class="kg-image" width="950" height="768" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -146,7 +146,7 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	<p>Normally we would conclude that whoever generated the attack controlled roughly 200k bots, and that's it. But these spikes were different. It seems the bots rotated IPs aggressively. Here is an example: during these 16 spikes we recorded a total count of a whopping 1.2M unique IP addresses attacking us.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EtSV8z8pfbXnnebomGU0i/78b51b4b9ab68cd5951c8fde5a5dfcf4/hmillion.png" alt="" class="kg-image" width="1024" height="633" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EtSV8z8pfbXnnebomGU0i/d8619334d05cd0637953111b5e650079/hmillion.png" alt="" class="kg-image" width="1024" height="633" loading="lazy">
 
 	</figure>
 	<p>This can be explained by bots churning through IP addresses. We believe that out of the estimated 200k bots, between 50k and 100k bots changed their IP addresses during the 80 minutes between attacks. This resulted in 1.2M unique IP addresses during the 16 spikes happening over 24 hours.</p>

@@ -1,11 +1,11 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QVZHcE0PosXx7IOACYe5R/abf16f55dad2ce03f423a4ad53d1bc2d/secure-and-fast-github-pages-with-cloudflare.JPG" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QVZHcE0PosXx7IOACYe5R/d4315996b9c5b467fe27c75a9c39c603/secure-and-fast-github-pages-with-cloudflare.JPG" alt="">
 <div class="post-content lh-copy gray1">
 	<p>GitHub offers a web hosting service whereby you can serve a static website from a GitHub repository. This platform, GitHub Pages, can be used with CloudFlare whilst using a custom domain name.</p>
 	<p>In this tutorial, I will show you how to use CloudFlare and GitHub together. By taking advantage of CloudFlare’s global network, you can utilise our CDN service to improve your site's performance and security.</p>
 	<p>Whilst GitHub Pages doesn't ordinarily support SSL on custom domains, CloudFlare's Universal SSL allows your users to access your site over SSL, thus opening up the performance advantages of HTTP/2.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70mtZVLv2Dj2kkNjmWj1q7/2a8c11fd9e9989c55e1a51a629b91abc/IMG_0651.JPG.jpeg" alt="GitHub mascot in the CloudFlare London office" class="kg-image" width="4032" height="3024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70mtZVLv2Dj2kkNjmWj1q7/0b9490f343714a2c5d61cadcc05e675f/IMG_0651.JPG.jpeg" alt="GitHub mascot in the CloudFlare London office" class="kg-image" width="4032" height="3024" loading="lazy">
 
 	</figure>
 	<p>GitHub Pages is designed to host sites that only serve static HTML. The ability to only host static content isn’t as big of a restriction as you might think.</p>
@@ -25,7 +25,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50nf0J19SYvwLHgvCTNE3T/197df6a206d82d060d946f128ec55cee/1280px-Dr_Jekyll_and_Mr_Hyde_poster_edit2-1.jpg" alt="Dr. Jekyll and Mr. Hyde" class="kg-image" width="1280" height="890" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50nf0J19SYvwLHgvCTNE3T/a46dd03886f172e8483eec365c2700da/1280px-Dr_Jekyll_and_Mr_Hyde_poster_edit2-1.jpg" alt="Dr. Jekyll and Mr. Hyde" class="kg-image" width="1280" height="890" loading="lazy">
 
 	</figure>
 	<p><a href="https://en.wikipedia.org/wiki/Strange_Case_of_Dr_Jekyll_and_Mr_Hyde#/media/File:Dr_Jekyll_and_Mr_Hyde_poster_edit2.jpg"><i>Chicago: National Prtg. &amp; Engr. Co.</i></a></p>
@@ -56,7 +56,7 @@ jekyll serve</code></pre>
 	<p>Create a GitHub repository which contains the files of the site we want to serve (such as our Jekyll source or our HTML). As my GitHub username is IcyApril, I can create a repository called <code>icyapril.github.io</code>. Be sure that the repository name is all lowercase.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Xfs9k0OfZU8tVFrtlgWip/9d42d5865d99a85f3958e2e14a38b021/create_repo_github_pages.png" alt="Creating a GitHub Pages repository" class="kg-image" width="975" height="765" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xfs9k0OfZU8tVFrtlgWip/002f8515283e9e18268abc25b7e36981/create_repo_github_pages.png" alt="Creating a GitHub Pages repository" class="kg-image" width="975" height="765" loading="lazy">
 
 	</figure>
 	<p>In this repository, whatever is in the main branch ends up published on <code>icyapril.github.io</code>.</p>
@@ -94,7 +94,7 @@ git push origin master</code></pre>
 	<p>We can add the records to point our DNS records to our GitHub Pages account (we can use a CNAME at the root thanks to <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME Flattening</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jZjeTCFx2D8hokGjAD2m4/c14fd31bb96f8320b50cd1d870305492/Yn1pLtu.png" alt="GitHub Pages DNS CloudFlare" class="kg-image" width="964" height="152" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jZjeTCFx2D8hokGjAD2m4/e80624359358b60e0b7cfdd75544b5bd/Yn1pLtu.png" alt="GitHub Pages DNS CloudFlare" class="kg-image" width="964" height="152" loading="lazy">
 
 	</figure>
 	<p>You can find <a href="https://help.github.com/articles/setting-up-an-apex-domain">the most up-to-date IP Addresses</a> from the GitHub Pages documentation.</p>
@@ -110,25 +110,25 @@ git push origin master</code></pre>
 	<p>Fortunately, CloudFlare’s Universal SSL option allows us provide a signed SSL certificate to site visitors. This allows us to gain the performance benefits of HTTP/2 and <a href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html">potentially improve search engine rankings</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hHyZ2zWyyRhhA1f7QQ48o/16ef345da65a2d0f367d8a6ef99129fd/cloudflare_ssl_modes.png" alt="CloudFlare's SSL Modes" class="kg-image" width="975" height="627" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hHyZ2zWyyRhhA1f7QQ48o/4f9e52471bbcec3d65d829a7229a1c8a/cloudflare_ssl_modes.png" alt="CloudFlare's SSL Modes" class="kg-image" width="975" height="627" loading="lazy">
 
 	</figure>
 	<p>In the Crypto tab of your CloudFlare site you should ensure your SSL mode is set to <code>Full</code> but not <code>Full (Strict)</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WdxoW5g3b6hG8DkPD1Kka/419d6bc0e45c4954d27ce2dd98545f32/T08btVu.png" alt="CloudFlare SSL configuration" class="kg-image" width="970" height="199" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WdxoW5g3b6hG8DkPD1Kka/606b8757f89a2144725e5ec55b8ee928/T08btVu.png" alt="CloudFlare SSL configuration" class="kg-image" width="970" height="199" loading="lazy">
 
 	</figure>
 	<p>We can now add a Page Rule to enforce HTTPS, as you add other Page Rules make sure this is the primary Page Rule:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rNJrxsVAjbZCmrxNXtqHG/243652b80a4c5dd5b7e205367d8e6410/always_use_https_page_rule.png" alt="Always Use HTTPS" class="kg-image" width="975" height="748" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rNJrxsVAjbZCmrxNXtqHG/0176c20cd7a73d9530f559a83ae0ae91/always_use_https_page_rule.png" alt="Always Use HTTPS" class="kg-image" width="975" height="748" loading="lazy">
 
 	</figure>
 	<p>We can also create a Page Rule to ensure that non-www is redirected to www securely when using HTTPS:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60sT5nSCAcf9S1akGJ0YPd/ba7aec6f72fe7b8c8769c0bfe466ad85/redirect_page_rule_to_www.png" alt="Enforced HTTPS redirect" class="kg-image" width="975" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60sT5nSCAcf9S1akGJ0YPd/79edbe8bea1fff301c526eb0f3296767/redirect_page_rule_to_www.png" alt="Enforced HTTPS redirect" class="kg-image" width="975" height="800" loading="lazy">
 
 	</figure>
 	<p>Enabling HTTP Strict Transport Security (HSTS) will help ensure that your visitors have to communicate to your site over HTTPS, by telling browsers that they should always communicate over encrypted HTTPS. Be careful if you choose to set this though, it may render your site inaccessible if you wish to choose to ever turn HTTPS off.</p>
@@ -143,7 +143,7 @@ git push origin master</code></pre>
 	<p>CloudFlare has a “Cache Everything” option in Page Rules. For static sites, it allows your HTML to be cached and served directly from CloudFlare's CDN.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vl8huJzTmWXTyQvaEjt1L/bf9579ab2ba1dc57876616dd95553c22/PtBIQyF.png" alt="Cache Everything Page Rule" class="kg-image" width="811" height="621" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vl8huJzTmWXTyQvaEjt1L/53b00cb3328e6645f172bcef285b33c0/PtBIQyF.png" alt="Cache Everything Page Rule" class="kg-image" width="811" height="621" loading="lazy">
 
 	</figure>
 	<p>When deploying your site you can use the Purge Cache option in the Cache tab on CloudFlare to remove the cached version of the static pages. If you’re using a Continuous Integration system to deploy your site, you can use our <a href="https://api.cloudflare.com">API</a> to clear the cache programmatically.</p>
@@ -158,7 +158,7 @@ git push origin master</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uyeqKi4p6FkFGOw2WiyaO/fef40298d75b07cb44c86a1b0925aa65/mind_the_gap.png" alt="Mind the Gap" class="kg-image" width="975" height="815" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uyeqKi4p6FkFGOw2WiyaO/94f2c0aa6976b5e24bb74e1eec67dd58/mind_the_gap.png" alt="Mind the Gap" class="kg-image" width="975" height="815" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:MindTheGapVictoria.jpg"><i>WillMcC on WikiMedia</i></a></p>

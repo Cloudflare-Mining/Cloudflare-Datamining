@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HYQb3rOdfwT4Xk3HkXzMo/03551ee706088d25016d87451fc327dd/a-single-dashboard-for-cloudflare-for-teams.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HYQb3rOdfwT4Xk3HkXzMo/21ecc31c249007db37c14dd639f1ba9d/a-single-dashboard-for-cloudflare-for-teams.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Starting today, Cloudflare Access can now be used in the Cloudflare for Teams dashboard. You can manage security policies for your people and devices in the same place that you build zero-trust rules to protect your applications and resources. Everything is now in one place in a single dashboard.</p>
 	<p>We are excited to launch a new UI that can be used across the entire Teams platform, but we didn’t build this dashboard just for the sake of a new look-and-feel. While migrating the Access dashboard, we focused on solving one of the largest sources of user confusion in the product.</p>
@@ -14,7 +14,7 @@
 	<p><a href="https://teams.cloudflare.com/access/index.html">Cloudflare Access</a> is one-half of <a href="https://teams.cloudflare.com">Cloudflare for Teams</a>, a security platform that runs on Cloudflare’s network. Teams protects users, devices and data &nbsp;without compromising experience or performance. We built Cloudflare Access to <a href="https://blog.cloudflare.com/dogfooding-from-home">solve our own headaches</a> with private networks as we grew from a team concentrated in a single office to a globally distributed organization.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6reW00xK1uHks0ndOasP0D/ba13d166ff93234ddcf5d1d7914bb913/access-tunnel-1.png" alt="" class="kg-image" width="2296" height="1101" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6reW00xK1uHks0ndOasP0D/d0f0b4e2ece6d237b52d78f183c75b77/access-tunnel-1.png" alt="" class="kg-image" width="2296" height="1101" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Access replaces corporate VPNs with Cloudflare’s network in a zero-trust model. Instead of placing internal tools on a private network, teams deploy them in any environment, including hybrid or multi-cloud models, and secure them consistently with Cloudflare’s network.</p>
@@ -33,7 +33,7 @@
 	<p>When we launched Access nearly two years ago, you could use the product to add an identity check to a site you added to Cloudflare, either at the hostname, subdomain, or path. To do that, users select the site in their Cloudflare dashboard, toggle to the Access tab, and build a rule specific to that site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QbXmvGsCH4ezSxd4XqnMC/863c21421a2c4645c43e2bfb386a36c5/access-tab.png" alt="" class="kg-image" width="641" height="649" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QbXmvGsCH4ezSxd4XqnMC/e521007708ad92f9b6a8a3f608b73629/access-tab.png" alt="" class="kg-image" width="641" height="649" loading="lazy">
 
 	</figure>
 	<p>To add rules to a different site, a user steps back up a level. They need to select the new site from the dropdown and load the Access tab for that site. However, two components in the UI remained the same and shared configuration:</p>
@@ -51,7 +51,7 @@
 	<p>As more features were added, this exception grew out of control. At this point, the majority of features you see when you open the Access tab for one of your sites are account-level features stuffed into the site view. The page below is the Access tab for a site in my account, widgetcorp{.}tech. Highlighted in green are the boxes that apply to the site I have selected. Highlighted in red are the boxes that apply to my Access account.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7N0Vi02BpJipg2PX7u0Phy/eaeaa96e37f94d2dcb7e7f29d1a27cfe/Screen-Shot-2020-05-04-at-9.24.20-AM.png" alt="" class="kg-image" width="1163" height="354" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7N0Vi02BpJipg2PX7u0Phy/cb0ff5828b6444b758e2b6a8f1de0b2a/Screen-Shot-2020-05-04-at-9.24.20-AM.png" alt="" class="kg-image" width="1163" height="354" loading="lazy">
 
 	</figure>
 	<p>This user experience is unnecessarily complex . Even worse, though, is that confusion in security products can lead to real incidents. Any time that a user asks “am I building something for my account or this site?” We needed to fix both.</p>
@@ -69,7 +69,7 @@
 	<p>To capture that model, we started on a new UI from scratch, and earlier this year <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">we launched a new dashboard for Gateway</a>, dash.teams.cloudflare.com.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LoRFtNPOIbolv4eCKualU/6dbe31c5c13744540c5337f436a79158/new-dash-gateway.png" alt="" class="kg-image" width="1600" height="1207" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LoRFtNPOIbolv4eCKualU/34ba7788dd418e9a42bdd5504d5021f5/new-dash-gateway.png" alt="" class="kg-image" width="1600" height="1207" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -84,7 +84,7 @@
 	<p>That also gave us an opportunity to solve the confusion in the current Access UI. Since the Teams dashboard is not constrained by the site-specific model, we could break out the dashboard into components that made sense for how people use the Access product.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bmn2yFDQ5OxMk5u27PsbR/f14bed6b7d1c823535c18b62dfec8a1c/new-dash-auth.png" alt="" class="kg-image" width="1600" height="1207" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bmn2yFDQ5OxMk5u27PsbR/858bd2352d386c6fb87e40f633634579/new-dash-auth.png" alt="" class="kg-image" width="1600" height="1207" loading="lazy">
 
 	</figure>
 	<p>The new dashboard untangles the tools in Access that apply to your entire account (the methods that you use to secure your resources) from the features that apply to a single site (the rules you build to protect a resource).</p>
@@ -100,7 +100,7 @@
 	<p>You will also be able to continue to extend some of the configuration made in Access to Gateway. For example, an integration with a provider like Okta to build zero-trust policies in Access can eventually be reused for adding group-based policies into Gateway. You’ll see the beginning of that in the new UI, as well, with categories like “My Teams” and “Logs” that apply or will apply to both products. As we continue, we’re going to try to avoid making the same mistake of conflating account, site, and now product objects.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JDlqoqhaurj5kidiMlkH8/6a6b8f87a7ccf68cbe1bf1b10479fe85/one-dash-1.png" alt="" class="kg-image" width="1246" height="1246" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JDlqoqhaurj5kidiMlkH8/1f6f7ef2e21cde9d860cf6ec049dce19/one-dash-1.png" alt="" class="kg-image" width="1246" height="1246" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

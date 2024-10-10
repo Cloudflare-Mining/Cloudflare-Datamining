@@ -1,11 +1,11 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ea353TBFZSUyOPQBTFyZz/62d8718233f4fe2d059e0f11f94ad9ca/dyn-issues-affecting-joint-customers.png" alt="">
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ea353TBFZSUyOPQBTFyZz/ecd7c880d010ad66447719db31174557/dyn-issues-affecting-joint-customers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today there is an ongoing, large scale Denial-of-Service attack directed against Dyn DNS. While Cloudflare services are operating normally, if you are using both Cloudflare and Dyn services, your website may be affected.</p>
 	<p>Specifically, if you are using CNAME records which point to a zone hosted on Dyn, our DNS queries directed to Dyn might fail making your website unavailable, and presenting a “1001” error message.</p>
 	<p>Some popular services that might rely on Dyn for part of their operations include GitHub Pages, Heroku, Shopify and AWS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8CBsEx31WrHrxQK8sV9fh/09f8d8f9d310bfa477dba5de43483c79/Screen-Shot-2016-10-21-at-19.08.14.png" alt="1001 error" class="kg-image" width="1732" height="372" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8CBsEx31WrHrxQK8sV9fh/5590eaa0c9628a5a4eda472a1fd78ad6/Screen-Shot-2016-10-21-at-19.08.14.png" alt="1001 error" class="kg-image" width="1732" height="372" loading="lazy">
 
 	</figure>
 	<p>As a possible workaround, you might be able to update your Cloudflare DNS records from CNAMEs (referring to Dyn hosted records) to A/AAAA records specifying the origin IP of your website. This will allow Cloudflare to reach your origin without the need for an external DNS lookup.</p>

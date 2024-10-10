@@ -1,9 +1,9 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Tk0IsOdyW1PzT3xtzzxxw/b9bf175baf7e229bc70f546ead5a492b/why-are-some-keys-small.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Tk0IsOdyW1PzT3xtzzxxw/ec7ec3ebd3b1c92ab87f7737317b42d3/why-are-some-keys-small.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you connect to <a href="https://www.cloudflare.com">CloudFlare's web site</a> using HTTPS the connection will be secured using one of the many encryption schemes supported by SSL/TLS. When I connect using Chrome I get an RC4_128 connection (with a 128-bit key) which used the ECDHE_RSA key exchange mechanism (with a 2,048-bit key) to set the connection up.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G4da35qbg9auSgeT2YClg/0e67c6ccd5c676aaf3e4c3601d00ec9f/cloudflare-tls.png" alt="CloudFlare TLS Connection" class="kg-image" width="306" height="433" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7G4da35qbg9auSgeT2YClg/94a14cd2d77227b4a74d532131b8b52c/cloudflare-tls.png" alt="CloudFlare TLS Connection" class="kg-image" width="306" height="433" loading="lazy">
 
 	</figure>
 	<p>If you're not familiar with the cryptographic protocols involved you might be wondering why one part uses a 128-bit key and another a 2,048-bit key. And you'd be forgiven for wondering why a large key wasn't used throughout and whether a 128-bit key is weaker than a 2,048-bit key. This blog post will explain why a 128-bit <i>symmetric</i> key is, in fact, a bit more secure than a 2,048-bit <i>asymmetric</i> key; you have to look at both the type of encryption being used (symmetric or asymmetric) and the key length to understand the strength of the encryption.</p>
@@ -25,7 +25,7 @@
 		PZAOL ILZAA OHAJV YWVYH SIVII FZOHM AVLJH UKVVU ZOVYA UVAPJ L</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QAkwOHHM2r0OUPElBkBpv/665a9b1f12bb90676b0f50f7f6165df0/caesar-cipher.png" alt="Caesar Cipher" class="kg-image" width="500" height="211" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QAkwOHHM2r0OUPElBkBpv/ed81bf8342b3b74d2c701e8094b340ff/caesar-cipher.png" alt="Caesar Cipher" class="kg-image" width="500" height="211" loading="lazy">
 
 	</figure>
 	<p>There are lots of ways to break the Caesar Cipher, but one way is to try out all 26 possible keys. That's really not that hard since there are only 26 possible solutions:</p>
@@ -74,7 +74,7 @@
 	<p>Since personal computers became available roughly 1 billion of them have been sold. Imagine that they all had the same top-of-the-line processor and were used to attack a 128-bit key. You'd manage to get the time down to <b>660 * the age of the universe</b>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1w5RgPJRr4Gnxk4E2rWqFu/0deece63787871506b1db1909c6d3d6a/milliways.png" alt="Milliways" class="kg-image" width="500" height="370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1w5RgPJRr4Gnxk4E2rWqFu/cbc76d09e7671de7fe3731c38fcfdb8a/milliways.png" alt="Milliways" class="kg-image" width="500" height="370" loading="lazy">
 
 	</figure>
 	<p>Image (c) BBC TV</p>
@@ -98,7 +98,7 @@
 	<p>This diagram (called an <a href="https://en.wikipedia.org/wiki/Ulam_spiral">Ulam Spiral</a>) shows the numbers from 1 to 40,000 as black or white dots. The black dots are the primes</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VIXrzzZVLON430lnHxCPO/42c12d991870edb77ba9a0fb3e97deaa/ulam-spiral.png" alt="Ulam Spiral" class="kg-image" width="400" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VIXrzzZVLON430lnHxCPO/940bf5e06b1965d20e0f6371c695ca06/ulam-spiral.png" alt="Ulam Spiral" class="kg-image" width="400" height="400" loading="lazy">
 
 	</figure>
 	<p>Image from <a href="https://en.wikipedia.org/wiki/File:Ulam_1.png">Wikipedia</a></p>
@@ -119,7 +119,7 @@
 	<p>The length of time a key is good for is also important. Over time computers get faster and techniques for breaking encryption schemes (particuarly techniques for breaking asymmetric encryption) get better. That 512-bit key used for TI calculators probably looked pretty safe when it was first chosen. And in 1999 a key of that length took a <a href="https://en.wikipedia.org/wiki/Cray_C90">supercomputer</a> to break.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43FhANStq4MmuxKjgUXS6Y/968b16d0c5745431b72012dd63ed3cec/sneakers.png" alt="Sneakers" class="kg-image" width="500" height="268" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43FhANStq4MmuxKjgUXS6Y/70e7ba13b64f49f60eec15570a1f037a/sneakers.png" alt="Sneakers" class="kg-image" width="500" height="268" loading="lazy">
 
 	</figure>
 	<p>We keep an eye on these reports when choosing ciphers and key lengths to secure our and our customers' communications.</p>

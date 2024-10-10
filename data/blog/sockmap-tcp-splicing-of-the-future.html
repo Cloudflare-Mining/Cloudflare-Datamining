@@ -1,9 +1,9 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/b5eaPg3ZE1e4cmf0JeDVX/f9c64c4ed933d91e94535a26b7da34fc/sockmap-tcp-splicing-of-the-future.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/b5eaPg3ZE1e4cmf0JeDVX/944eefde587a2b7cd54f3cb38e614fef/sockmap-tcp-splicing-of-the-future.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently we stumbled upon the holy grail for reverse proxies - a TCP socket splicing API. This caught our attention because, as you may know, we run a global network of reverse proxy services. Proper TCP socket splicing reduces the load on userspace processes and enables more efficient data forwarding. We realized that Linux Kernel's SOCKMAP infrastructure can be reused for this purpose. SOCKMAP is a very promising API and is likely to cause a tectonic shift in the architecture of data-heavy applications like software proxies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69XVqZWzoAEEazmpmVeARy/0f98512abb656a205086f08bf248f153/31958194737_e06ecd6fcc_o.jpg" alt="31958194737_e06ecd6fcc_o" class="kg-image" width="500" height="281" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69XVqZWzoAEEazmpmVeARy/6977b3f52755ec4075cb3f38e5e8bbff/31958194737_e06ecd6fcc_o.jpg" alt="31958194737_e06ecd6fcc_o" class="kg-image" width="500" height="281" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/mustadmarine/31958194737">Image</a> by <a href="https://www.flickr.com/photos/mustadmarine">Mustad Marine</a> public domain</p>
@@ -109,7 +109,7 @@ while n:
 	<p><a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">In a previous blog post about io_submit()</a> we proposed using the AIO interface with network sockets. Read the blog post for details, but <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-iosubmit.c#L81-L107">here is the prepared program</a> that has the echo server loop implemented with only a single syscall.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qk4EejV30qMZoVZ2RcMFW/f2b1ef43277ba89ac35a7c1256333447/452423494_31aa5caca5_z-1.jpg" alt="452423494_31aa5caca5_z-1" class="kg-image" width="500" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qk4EejV30qMZoVZ2RcMFW/d1020375b1a5083ccdd442cfdfba186b/452423494_31aa5caca5_z-1.jpg" alt="452423494_31aa5caca5_z-1" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/jrsnchzhrs/452423494">Image</a> by <a href="https://www.flickr.com/photos/jrsnchzhrs">jrsnchzhrs</a> By-Nd 2.0</p>
@@ -290,7 +290,7 @@ Values:
 	<p>This test shows: Time to transmit and receive 2MiB blocks of data, via our tested echo server. We repeat this 10k times, and run the test 10 times. After stripping the worst 1% numbers we get the following latency distribution:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yxe0fOUjkJpcsD1uoCIm6/a0a9e3facd210a85c9869c9e07fb9a63/numbers-2mib-2.png" alt="numbers-2mib-2" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yxe0fOUjkJpcsD1uoCIm6/03169327d9ee3060e31aa1d59d12283a/numbers-2mib-2.png" alt="numbers-2mib-2" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>This charts shows that both naive read+write and io_submit programs were able to achieve 1500us mean round trip time for TCP echo server of 2MiB blocks.</p>
@@ -307,7 +307,7 @@ Values:
 	<p>Our second run of tests was with much smaller data sizes, sending tiny 16KiB blocks at a time. This test should illustrate the "wakeup time" of the tested programs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WxbvoQBvU00WzJldYpSED/38594e9e10b3068f3e1b2a46cb6ece00/numbers-16kib-1.png" alt="numbers-16kib-1" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WxbvoQBvU00WzJldYpSED/b794cd76ed5acb14d807fd0fd624857a/numbers-16kib-1.png" alt="numbers-16kib-1" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>In this test the non-BUSYPOLL runs of all the programs look quite similar (min and max values), with SOCKMAP being the exception. This is great - we can speculate the wakeup time is comparable. Surprisingly, the splice has slightly better median time from others. Perhaps this can be explained by CPU artifacts, like having better CPU cache locality due to less data copying. SOCKMAP is again, slowest with worst max and median times. Boo.</p>

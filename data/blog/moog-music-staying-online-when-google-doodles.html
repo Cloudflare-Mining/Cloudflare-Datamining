@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YkMKnTBYklTzJvmRFWhH5/b26b6411144af4d0f03ecf4be5aae495/moogmusic_how_to_doodle.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YkMKnTBYklTzJvmRFWhH5/66514655acf417aacc0db3d77b845724/moogmusic_how_to_doodle.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="308" loading="lazy">
 
 	</figure>
 	<p>Today Google celebrated the birthday of Bob Moog, the creator of the Moog keyboard, with an interactive doodle. If you haven't played with it, it's pretty cool. Check out, for example, this version of the <a href="https://www.google.com/webhp?doodle=6201726XWhA74MzMMlMzN0pmZthmZn8AAAMRmZnyAAANQAAB6pmZs3__-3-2E8aZmbTPP__9lPUzMz2n7___YzzpmZh2Fx5IRZBcYYhcIZBSIZBaIZBGIZBOGYhOYYROYZBeYZBRYZBZBYhRUZheIZBREYReYZBOeYhOcYhGYZhGIYhOIZBeeZBOEYhGEYhKYZhKIYhGYTgWIRhGISmGEUiGUUiGIWmGQVkUFZOEZBIYYhIQYhIQZRIYYRIIYRIIZBIIYhIQYxIIZ1rAQO-DMzDJTMzdKZmbYZmZ_AAADEZmZ8gAADUAAAeqZmbN___t_thPGmZm0zz___ZT1AAANp-___2M86ZmYcRcJ1CNhdKYwktwrSIxGmQSBeeYwEDvgzMwyUzM3SmZm2GZmfwAAAxGZmfIAAA1AAAHqmZmzf__7f7YTxpmZtM8___2U9QAADafv__9jPMAAAHYWic5DGQ0UN4LOK1hMFJOF5Dg&amp;hl=en&amp;nord=1">Legend of Zelda theme music</a> composed with today's doodle.</p>
@@ -27,7 +27,7 @@
 	<p>As soon as the doodle went live in Australia and the embargo was lifted, PurpleCat called us at CloudFlare and explained what was about to happen. We were happy to help having had a lot of experience dealing with floods of traffic from <a href="https://blog.cloudflare.com/today-show-traffic-spike-no-problem-for-khata">events</a> <a href="https://blog.cloudflare.com/cloudflare-saves-groundhog-day">like</a> <a href="https://blog.cloudflare.com/tales-from-the-pumpkin-patch">these</a>. The MoogMusic.com site went live behind CloudFlare and we saw the trafficbegin to rise.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4D58ezxx3dcI7L9zNky8yx/ea764a2b03abb8eaffde4eb4f68ae2a3/moogmusic_bandwidth.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="225" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4D58ezxx3dcI7L9zNky8yx/33d1757e2ce314b0279ed6072490cae4/moogmusic_bandwidth.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="225" loading="lazy">
 
 	</figure>
 	<p>Things were ok at first, but as the sun rose in Asia, errors started to be returned from the stressed MoogMusic.com VPS. CloudFlare's Always Online technology kicked in and served cached versions of the page, but the dynamic portions were at times inaccessible and the pages loaded slowly as our servers waited for a response or timeout from the backend. It wasn't ideal.</p>
@@ -42,13 +42,13 @@
 	<p>We knew we could help even more, so our support team worked with the folks at PurpleCat to setup Page Rules for the MoogMusic.com site. While some of the site is dynamic, large portions are relatively static. That meant a Page Rule could define the static portions -- like the front page and a history of Moog's legacy -- and instruct CloudFlare to Cache Everything, even the HTML. That means we will serve all requests to the pages that match the rule from our infrastructure without <i>any</i> requests getting sent to the VPS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FUYxDYabfTCo7UHijaJEU/ee42ac53467d963c6ff2fc55dae3a65c/moogmusic_page_rules_cache_everything.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="133" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FUYxDYabfTCo7UHijaJEU/dc99ee5de3ca9b7703e09389a4f3f008/moogmusic_page_rules_cache_everything.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="133" loading="lazy">
 
 	</figure>
 	<p>The results were dramatic. Approximately 92% of requests that would have previously hit the VPS were instead fielded directly by CloudFlare. We also reduced bandwidth needed to serve the requests to MoogMusic.com by more than 90%. With all the static requests offloaded to CloudFlare, the VPS had plenty of capacity to return the dynamic, uncachable HTML of the site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ed9Gy5P6a1VSRRHg2rHgl/ba3ae3fd874a66b8cc18dd81de6c14e5/moogmusic_requests_bandwidth_saved.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="96" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ed9Gy5P6a1VSRRHg2rHgl/ed9bc23593bfb55159639771bc15cfb3/moogmusic_requests_bandwidth_saved.png.scaled500.png" alt="Moog Music: Staying online when Google doodles you" class="kg-image" width="500" height="96" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

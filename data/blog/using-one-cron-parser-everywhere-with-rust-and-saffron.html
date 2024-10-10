@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2y54DqTXOltWgHLkoTumtQ/2c970231985491fa3fbbd9108aae9f76/image4-28.png" alt="Using One Cron Parser Everywhere With Rust and Saffron" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2y54DqTXOltWgHLkoTumtQ/4d4c448941fd0b3759f397ba40199992/image4-28.png" alt="Using One Cron Parser Everywhere With Rust and Saffron" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>As part of the development for <a href="https://blog.cloudflare.com/introducing-cron-triggers-for-cloudflare-workers">Cron Triggers</a> on Cloudflare Workers, we had an interesting problem to tackle relating to parsers and the cron expression format. Cron expressions are the format used to write schedules in Cron Triggers, and extensions for cron expressions are everywhere. They vary between parsers and platforms as well, and aren’t standardized by a governing body, which means most parsers out there support many different feature sets, which isn’t good if you’d like something off the shelf that just works.</p>
@@ -19,7 +19,7 @@
 	<p>Cron expressions are a set of fields that represent a set of times. They act as a pattern that matches over the minute, hour, day of the month, month, and day of the week of a given time. Since cron is a simple format, it’s easy to extend with extra fields, so some parsers and platforms allow specifying seconds and years as well. However, seconds are a bit too granular and years are a bit too long, so we opted to not support them as part of Cron Triggers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/400xD1qjPc3r4SFAFkvbrD/de7a8ac4c5fd1f7c5737737b973d8c61/image6-13.png" alt="" class="kg-image" width="1797" height="1097" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/400xD1qjPc3r4SFAFkvbrD/0b6b0bb523b375e99dfdf9d3217b44e5/image6-13.png" alt="" class="kg-image" width="1797" height="1097" loading="lazy">
 
 	</figure>
 	<p>In the original cron program, the expressions supported were simple, each field could contain either:</p>
@@ -107,7 +107,7 @@
 	<p>However, the UI had a different set of requirements. It didn’t need to know whether a given time matched a cron pattern <b>—</b> we wanted to provide information to the user about the cron expression they'd written, so it needed to provide a more human readable translation (description) of their cron expression and show them their next five executions (future times). But we were on a limited time budget — we needed something off the shelf.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49puHileZr67865X7l0wim/7ba253cafbd76bd5c2e91979562e534d/image7-10.png" alt="" class="kg-image" width="1033" height="419" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49puHileZr67865X7l0wim/14b71810763d68afda7074595553e524/image7-10.png" alt="" class="kg-image" width="1033" height="419" loading="lazy">
 
 	</figure>
 	<p>We used two different JavaScript libraries for displaying info about given cron expressions: one gave us descriptions, the other gave us future times. Since these two libraries were tasked with parsing cron expressions, they also acted as validation; however, just using these two libraries for validation proved to be less than optimal. Both of the libraries supported extensions that were different both from each other and from the backend. Because of that they’d sometimes allow users to add schedules that would be rejected by the API on submit, which doesn’t translate into a good user experience. This validation should happen while the user writes their cron expression, not after they already hit submit! Because of this fracture in extension support, the UI parsers also sometimes didn’t parse expressions that should be supported and were accepted by the API!</p>
@@ -115,7 +115,7 @@
 	<p>So before launch, we were using four completely different parsers! This probably wouldn’t be much of an issue if cron expressions were standardized. But because they aren’t, inconsistencies could exist at every step in the trigger creation process: between the two libraries we used on the frontend, between the frontend and API, and between the API and the backend.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NVr45cgI3MPZFpuDgHVB2/ca477c0d82e4250743510bcb8bd0ca56/image3-47.png" alt="" class="kg-image" width="1999" height="694" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NVr45cgI3MPZFpuDgHVB2/3eb9401a805d0d79d56af7b24049660d/image3-47.png" alt="" class="kg-image" width="1999" height="694" loading="lazy">
 
 	</figure>
 	<p>To solve these issues in the UI and API before release, we synced the API and backend with another schedule runner entrypoint that simply read a cron expression from stdio, parsed it, and returned whether it was valid, to make sure they perfectly matched. We also added a validation endpoint to the API that could be used by the UI to check a cron expression, to make sure the backend actually accepted it. This fixed all cases of the API and UI being too accepting of expressions that weren’t supported, but neither of these solutions were optimal.</p>
@@ -123,7 +123,7 @@
 	<p>Another reason this was nonoptimal is we were still limited in the features we supported by one library. One of our UI libraries didn’t support the ‘L’ and ‘W’ extensions, and since we also programmed the UI to accept expressions based on whether all parsers accepted it, expressions that used those extensions couldn’t be added.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yCnAAKgPd8fLtJGhU3aTM/167eb95fe289abc1f8a8e12f6732bb34/image2-45.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yCnAAKgPd8fLtJGhU3aTM/62ad88fae6d4389b6b5fafb325259127/image2-45.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
 
 	</figure>
 	<p>So even though we dropped it to three parsers before release, it still didn’t seem good enough. Soon after release, I made plans to remedy it and started working on saffron (originally this project was called cfron but Cloudflare’s CTO couldn’t resist suggesting renaming it to saffron because he loves puns) to fill in for the one library holding us back in the UI. It would’ve been OK if missing extension support was the only thing wrong after release, but soon some other issues came up.</p>
@@ -215,13 +215,13 @@ pub fn validate(crons: JsArray) -&gt; ValidationResult {
 	<p>After a week of dedicated development, a Worker was written, the future times were calculated, and the UI was fixed! On top of that, we also implicitly introduced support for more extensions by removing the old parser and replacing it with the same one used on the backend as part of the fix itself. But we’re still using two parsers, so inconsistencies may still exist out there that we haven’t seen yet (that we don’t already know about).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30niml977L8v0gEycYwx2k/5df971dde960e87817a9d0ed613d7ee6/image5-28.png" alt="" class="kg-image" width="706" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30niml977L8v0gEycYwx2k/007dda6f1c1e3e9f6a9b96861eb5f766/image5-28.png" alt="" class="kg-image" width="706" height="427" loading="lazy">
 
 	</figure>
 	<p>For example, this expression “0 0 L-1W 2 *”, or “12:00 AM on the closest weekday to the 2nd to last day of the month in February” cannot be parsed by the parser we use for descriptions, but it’s accepted by the API, backend, and Worker, so you can use it in your cron triggers, but the UI won’t give you a description for it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BlsrGxNNu22q5Inpi8Gyz/a8af3d7bf2556561a8c5c748b5997439/image8-7.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BlsrGxNNu22q5Inpi8Gyz/f649cc4ee12e81643bf5953b3f523ffc/image8-7.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -237,7 +237,7 @@ pub fn validate(crons: JsArray) -&gt; ValidationResult {
 	<p>With our parser everywhere, we can then focus exclusively on cron descriptions to replace the one other parser we’re using in the UI. At that point we will have one parser for the whole stack, a single source of truth that anyone can reference to understand how the frontend, API, and backend all work together. It also simplifies our graph. Now instead of multiple libraries written in different languages, we have one library with multiple language wrappers, each serving a different part of the stack. No inconsistencies will exist since they’re all using the same parser!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VJVB31qVsOxYv5QKRc8XE/5ca03bea2ebad4d6727939f075b8300f/image1-68.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VJVB31qVsOxYv5QKRc8XE/750a01c07aacf4b11cc5a5136ac09d88/image1-68.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
 
 	</figure>
 	<p>However, we wanted to do something before that…</p>

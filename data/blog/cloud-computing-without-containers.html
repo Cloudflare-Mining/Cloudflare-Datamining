@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloud-computing-without-containers">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloud-computing-without-containers">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloud-computing-without-containers">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloud-computing-without-containers">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HhFV0o3X8HeitagVRwg0W/1852b8327d0d1258b1f122043e2f8357/cloud-computing-without-containers.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloud-computing-without-containers">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloud-computing-without-containers">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloud-computing-without-containers">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloud-computing-without-containers">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HhFV0o3X8HeitagVRwg0W/0fef2e289b974b15a8ac0cd6b943a68f/cloud-computing-without-containers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare has a cloud computing platform called <a href="https://www.cloudflare.com/developer-platform/workers">Workers</a>. <b>Unlike essentially every other cloud computing platform I know of, it doesn’t use containers or virtual machines.</b> We believe that is the future of Serverless and cloud computing in general, and I’ll try to convince you why.</p>
 	<div class="flex anchor relative">
@@ -13,7 +13,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JzV7eItWZDcmNaG7YVIMp/c4daeb8715d990fbdc6f2444f86ba52f/Artboard-42_3x.png" alt="" class="kg-image" width="2000" height="729" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JzV7eItWZDcmNaG7YVIMp/ba8cc6d8d8fcea22f15b3297c9ccb57f/Artboard-42_3x.png" alt="" class="kg-image" width="2000" height="729" loading="lazy">
 
 	</figure>
 	<p>Two years ago we had a problem. We were limited in how many features and options we could build in-house, we needed a way for customers to be able to build for themselves. We set out to find a way to let people write code on our servers deployed around the world (we had a little over a hundred data centers then, 155 as of this writing). Our system needed to run untrusted code securely, with low overhead. We sit in front of ten million sites and process millions and millions of requests per second, it also had to run very very quickly.</p>
@@ -25,7 +25,7 @@
 	<p>This is not meant to be an ad for Workers, but I do want to show you a chart to reflect just how stark the difference is, to showcase why I believe this is not iterative improvement but an actual paradigm shift:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xFJ5UwlfTu85cGo0oU2st/86b5315b3c643c2b9f6733133ad72f61/image-2.png" alt="" class="kg-image" width="1516" height="934" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xFJ5UwlfTu85cGo0oU2st/4f3f90dcb86af6587ed2a2bf4ec435dc/image-2.png" alt="" class="kg-image" width="1516" height="934" loading="lazy">
 
 	</figure>
 	<p>This data reflects actual requests (including network latency) made from a data center near where all the functions were deployed, performing a CPU intensive workload. <a href="https://blog.cloudflare.com/serverless-performance-with-cpu-bound-tasks">Source</a></p>
@@ -40,7 +40,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Jjvoxu3PZsYBkVwjGRUmr/4bf8cdedf3fdebbdf811f54db3c58e2b/Cold-start_3x.png" alt="" class="kg-image" width="1970" height="881" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Jjvoxu3PZsYBkVwjGRUmr/1b9a50c7e0b9ae19346c73b068c59c6e/Cold-start_3x.png" alt="" class="kg-image" width="1970" height="881" loading="lazy">
 
 	</figure>
 	<p>Not everyone fully understands how a traditional Serverless platform like Lambda works. It spins up a containerized process for your code. It isn’t running your code in any environment more lightweight than running Node on your own machines. What it does do is auto-scale those processes (somewhat clumsily). That auto-scaling creates cold-starts.</p>
@@ -57,7 +57,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oMVH0pmrZXsiW5fPPnmvm/0303ccadee2bc06f79ec2de6a6cb8026/multitasking-bars_3x.png" alt="" class="kg-image" width="2000" height="987" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oMVH0pmrZXsiW5fPPnmvm/d69f39dce7eb820ca3f5e384c3c20249/multitasking-bars_3x.png" alt="" class="kg-image" width="2000" height="987" loading="lazy">
 
 	</figure>
 	<p>One key feature of an operating system is it gives you the ability to run many processes at once. It transparently switches between the various processes which would like to run code at any given time. To accomplish that it does what’s called a ‘context switch’: moving all of the memory required for one process out, and the memory required for the next in.</p>
@@ -127,7 +127,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QHHWB6zgfeaEgDDvg84na/e7734845b46cc46490095e343a3031c9/no-VM-_3x-3.png" alt="" class="kg-image" width="2000" height="792" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QHHWB6zgfeaEgDDvg84na/62c17628b583ed458ff8d8c4c387fe11/no-VM-_3x-3.png" alt="" class="kg-image" width="2000" height="792" loading="lazy">
 
 	</figure>
 	<p>I would love for you to <a href="https://developers.cloudflare.com/workers/about">try Workers</a> and let us and the community know about your experience. There is still a lot for us to build, we could use your feedback.</p>

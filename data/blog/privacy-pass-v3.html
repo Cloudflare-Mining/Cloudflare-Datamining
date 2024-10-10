@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/115kIQcQAjoVFKaUFIy2hU/232f0962c1f473474bfcdad51ea391fe/image1-32.png" alt="privacy pass v3 logo" class="kg-image" width="1812" height="1008" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/115kIQcQAjoVFKaUFIy2hU/84df256d7d1a70332d79880d6aee8635/image1-32.png" alt="privacy pass v3 logo" class="kg-image" width="1812" height="1008" loading="lazy">
 
 	</figure>
 	<p>In November 2017, we <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">released</a> our implementation of a privacy preserving protocol to let users prove that they are humans without enabling tracking. When you install <a href="https://privacypass.github.io">Privacy Pass’s browser extension</a>, you get tokens when you solve a Cloudflare CAPTCHA which can be used to avoid needing to solve one again... The redeemed token is cryptographically unlinkable to the token originally provided by the server. That is why Privacy Pass is privacy preserving.</p>
@@ -56,7 +56,7 @@
 	<p>Using a configuration file limits the flexibility of the provider by the number of possible configurations. In addition, when the logic of each provider evolves and deviates from one another, the size of configuration will grow larger and larger which makes it hard to document and keep track of. So we decided to refactor how we determine the request flow from using a configuration file to using a module file written specifically for each service provider instead.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34G52zSZ9ukkaa0h079EBV/3549db6d9562510fcf23850f3cc79b22/image2-19.png" alt="Configuration to modularization refactoring." class="kg-image" width="1020" height="493" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34G52zSZ9ukkaa0h079EBV/287aaf7e3245f7fe1071ee0d4270a95f/image2-19.png" alt="Configuration to modularization refactoring." class="kg-image" width="1020" height="493" loading="lazy">
 
 	</figure>
 	<p>By using a programmable module, the providers are not limited by the available fields in the configuration. In addition, the providers can use the available implementations of the necessary cryptographic primitives in any point of the request flow because we factored out the crypto bits into a separate module which can be used by any provider. In the future, if the cryptographic primitives ever change, the providers can update the code and use it any time.</p>

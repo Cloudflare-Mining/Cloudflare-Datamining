@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XxIRAe21RUGtSKyasiJ8G/3223670cae9de4fd9156b11c59c80c29/time-service_3x-1.png" alt="" class="kg-image" width="1600" height="1032" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XxIRAe21RUGtSKyasiJ8G/85495f1052ed287174c46f6687a5451f/time-service_3x-1.png" alt="" class="kg-image" width="1600" height="1032" loading="lazy">
 
 	</figure>
 	<p>Cloudflare has always been a leader in deploying secure versions of insecure Internet protocols and making them available for free for anyone to use. In 2014, we launched one of the world’s first free, secure HTTPS service (<a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>) to go along with our existing free HTTP plan. When we launched the <a href="https://blog.cloudflare.com/announcing-1111">1.1.1.1 DNS resolver</a>, we also supported the new secure versions of DNS (<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https">DNS over HTTPS</a> and <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls">DNS over TLS</a>). Today, as part of <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019">Crypto Week 2019</a>, we are doing the same thing for the Network Time Protocol (NTP), the dominant protocol for obtaining time over the Internet.</p>
@@ -24,7 +24,7 @@
 	<p>In its most common mode, NTP works by having a client send a query packet out to an NTP server that then responds with its clock time. The client then computes an estimate of the difference between its clock and the remote clock and attempts to compensate for network delay in this. NTP client queries multiple servers and implements algorithms to select the best estimate, and rejects clearly wrong answers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xjsZtf4GN97mYhOpT69oY/0a23a9985626c85ad67f18e5cb80c6d1/VGltZSBoYW5kc2hha2UgLnBuZw--.png" alt="" class="kg-image" width="1211" height="669" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xjsZtf4GN97mYhOpT69oY/9c7f6886c164edae191ec749ce652e15/VGltZSBoYW5kc2hha2UgLnBuZw--.png" alt="" class="kg-image" width="1211" height="669" loading="lazy">
 
 	</figure>
 	<p>Surprisingly enough, research on NTP and its security was not very active at the time. Before this, in late 2013 and early 2014, high-profile Distributed Denial of Service (DDoS) attacks were carried out by amplifying traffic from NTP servers; attackers able to spoof a victim’s IP address were able to funnel copious amounts of traffic overwhelming the targeted domains. This caught the attention of some researchers. However, these attacks did not exploit flaws in the fundamental protocol design. The attackers simply used NTP as a boring bandwidth multiplier. Cloudflare wrote extensively about these attacks and you can read about it <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">here</a>, <a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">here</a>, and <a href="https://blog.cloudflare.com/good-news-vulnerable-ntp-servers-closing-down">here</a>.</p>
@@ -32,7 +32,7 @@
 	<p>Fragmentation is a feature of the IP layer where a large packet is chopped into several smaller fragments so that they can pass through the networks that do not support large packets. Basically, any random network element on the path between the client and the server can send a special “<a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery">ICMP fragmentation needed</a>” packet to the server telling them to fragment the packet to say X bytes. Since the server is not expected to know the IP addresses of all the network elements on its path, this packet can be sent from any source IP.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39sOnNckJNlTnfltzsnQE/eab2a4ddc372b1bd8446d8200dc72744/time-fragmentation-attack-_2x.png" alt="" class="kg-image" width="2420" height="1387" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39sOnNckJNlTnfltzsnQE/d4502e981fcdbed63f2e86db6290e2c4/time-fragmentation-attack-_2x.png" alt="" class="kg-image" width="2420" height="1387" loading="lazy">
 
 	</figure>
 	<p>Fragmentation attack against NTP</p>
@@ -49,7 +49,7 @@
 	<p>The second goal was load distribution. While every client would like to talk to time servers which are directly attached to high precision time-keeping devices like atomic clocks, GPS, etc, and thus have more accurate time, the capacity of those devices is only so much. So, to reduce protocol load on the network, the service was designed in a hierarchical manner. At the top of the hierarchy are servers connected to non-NTP time sources, that distribute time to other servers, that further distribute time to even more servers. Most computers connect to either these second or third level servers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zpb9Mrl4Fq8eLFHu3s2Uh/b54a0c54855d21f3d91f4808a244e294/time-stratum-_2x.png" alt="" class="kg-image" width="2391" height="1460" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zpb9Mrl4Fq8eLFHu3s2Uh/3be6e29efad172ee0cb46b5e17e7f49b/time-stratum-_2x.png" alt="" class="kg-image" width="2391" height="1460" loading="lazy">
 
 	</figure>
 	<p>The stratum hierarchy of NTP</p>
@@ -61,7 +61,7 @@
 	<p>The future of the Internet is a secure Internet, which means an authenticated and encrypted Internet. But until now NTP remains mostly insecure, despite continuing protocol development. In the meantime more and more services depended on it.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1I67AnK8FPq2Cg7n2HXbke/7adc0d37f96fb1fcad592b2f87cf0169/timeline-_2x.png" alt="" class="kg-image" width="2092" height="771" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I67AnK8FPq2Cg7n2HXbke/e6dea09ce609b8b82bbddcb93008bf10/timeline-_2x.png" alt="" class="kg-image" width="2092" height="771" loading="lazy">
 
 	</figure>
 	<p>Timeline of NTP development</p>
@@ -108,7 +108,7 @@
 	<p>From our <a href="https://developers.cloudflare.com/roughtime/docs">Roughtime</a> service to <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a> Cloudflare has played a role in expanding the availability and use of secure protocols. Now with our free public time service we provide a trustworthy, widely available alternative to another insecure legacy protocol. It’s all a part of our mission to help make a faster, reliable, and more secure Internet for everyone.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HXFb98c49ePa7hFEf6eTO/6b8cb393e9f6b6c18af901bb19f292db/crypto-week-2019-header-circle_2x-3.png" alt="" class="kg-image" width="1600" height="1173" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HXFb98c49ePa7hFEf6eTO/9c1447f75f5547c56a1afa49043269bc/crypto-week-2019-header-circle_2x-3.png" alt="" class="kg-image" width="1600" height="1173" loading="lazy">
 
 	</figure>
 	<p><b>Thanks to the many other engineers who worked on this project, including </b><a href="https://github.com/wbl"><b>Watson Ladd</b></a><b>, </b><a href="https://blog.cloudflare.com/author/gabbi"><b>Gabbi Fisher</b></a><b>, and </b><a href="https://blog.cloudflare.com/author/dina"><b>Dina Kozlov</b></a></p>

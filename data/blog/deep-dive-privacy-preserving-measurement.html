@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zSmxY3r158Pkuq7F1ZLDk/79f630ad14f1c0cddaca48b1b1729fcb/image6-6.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zSmxY3r158Pkuq7F1ZLDk/c524702f02e7773e08a0263e65b17c39/image6-6.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>In 2023, data-driven approaches to making decisions are the norm. We use data for everything from analyzing x-rays to translating thousands of languages to directing autonomous cars. However, when it comes to building these systems, the conventional approach has been to collect as much data as possible, and worry about privacy as an afterthought.</p>
@@ -23,27 +23,27 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Y8EEQM4c3MgIDKhYnp09B/a6030cd0b7f61df572512ce01e36ebc5/MAnxtCSIuR-Y9c_2OkGchGPEHA_U4feb9db_mXD1BOWpc5cMy25ggAgcGg_Ir-8lkU6kCXkLIyq8M25cxxBmPksZL1EIrlsHErLD7rpZXvMxnRdeLmWdavhLIGww.png" alt="" class="kg-image" width="1600" height="845" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Y8EEQM4c3MgIDKhYnp09B/c7626358f569efcd509c4571ff3fc409/MAnxtCSIuR-Y9c_2OkGchGPEHA_U4feb9db_mXD1BOWpc5cMy25ggAgcGg_Ir-8lkU6kCXkLIyq8M25cxxBmPksZL1EIrlsHErLD7rpZXvMxnRdeLmWdavhLIGww.png" alt="" class="kg-image" width="1600" height="845" loading="lazy">
 
 	</figure>
 	<p>At a high level, using the DAP protocol forces us to think in terms of <i>data minimization</i><b>:</b> collect only the data that we use and nothing more. Abstractly, our goal is to devise a system with which a data collector can compute some function \( f(m_{1},...,m_{N}) \) of measurements \( m_{1},...,m_{N} \) uploaded by users without observing the measurements in the clear.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qDmuIUgKzPXskT39UdfKf/c29f8700c07e7f48c1e4b73152044bb9/image12-3.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qDmuIUgKzPXskT39UdfKf/17309b04fd740935c53fe01be8f4b11c/image12-3.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
 
 	</figure>
 	<p><i>Alice wants to know some aggregate statistic – like the average salary of the people at the party – without knowing how much each individual person makes.</i></p>
 	<p>This may at first seem like an impossible task: to compute on data without knowing the data we're computing on. Nevertheless, —and, as is often the case in cryptography— once we've properly constrained the problem, solutions begin to emerge.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nMLQ0GblS8fPnWGtfm2oM/c741dc7b690599127dff57d11be61261/image9-2.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nMLQ0GblS8fPnWGtfm2oM/36cc8266ab7f74a7240d3aa266d26790/image9-2.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
 
 	</figure>
 	<p><i>Strawperson solution: delegate the calculation to a trusted third party, Bob. The problem with this is that Bob can see the private inputs in the clear</i></p>
 	<p>In an ideal world (see above), there would be some server somewhere on the Internet that we could trust to consume measurements, aggregate them, and send the result to the data collector without ever disclosing anything else. However, in reality there's no reason for users to trust such a server more than the data collector; Indeed, both are subject to the usual assortment of attacks that can lead to a data breach.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6axqzCL6WF50qNFJu3qMT5/dc7600d1d5049880c540e719b078bd49/image1-42.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6axqzCL6WF50qNFJu3qMT5/3781cd288e80cd53be27ad090ad52082/image1-42.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
 
 	</figure>
 	<p>_MPC solution: secret-share the inputs across multiple parties, a.k.a. Bob and Daphne. If at least one person is honest, Alice gets the aggregate result without anyone knowing individual inputs in the clear._‌ ‌</p>

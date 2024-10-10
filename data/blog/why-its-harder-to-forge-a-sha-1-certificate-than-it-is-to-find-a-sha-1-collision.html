@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ESZA91skHvBtP1AuGECAm/2c219450e222b897e93b1eb3c0fd9a79/why-its-harder-to-forge-a-sha-1-certificate-than-it-is-to-find-a-sha-1-collision.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ESZA91skHvBtP1AuGECAm/61eb8790ca0ca4962521cb44ad9864c8/why-its-harder-to-forge-a-sha-1-certificate-than-it-is-to-find-a-sha-1-collision.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It’s well known that SHA-1 is no longer considered a secure cryptographic hash function. Researchers now believe that finding a hash collision (two values that result in the same value when SHA-1 is applied) is inevitable and likely to happen in a matter of months. This poses a potential threat to trust on the web, as many websites use certificates that are digitally signed with algorithms that rely on SHA-1. Luckily for everyone, finding a hash collision is <i>not</i> enough to forge a digital certificate and break the trust model of the Internet.</p>
 	<p>We’ll explore how hash collisions have been used to forge digital signatures in the past. We’ll also discuss how certificate authorities can make this significantly harder for attackers in the future by including randomness in certificate serial numbers.</p>
@@ -17,7 +17,7 @@
 	<p>For example, to create an RSA signature, you take a hash of the message and encrypt that hash with your private key. Anyone can verify that signature both belongs to you and is valid for the associated message. Take the public key, decrypt the hash and compare it with the hash of the message. If it's a match, the signature is correct. <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA</a> is a more recent algorithm that gets the same job done.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DECDGDpoEwCG0eHS4QmLn/0826a851ecb03c4436085e0745d1b986/rsa-signing-1.png" alt="digital signatures" class="kg-image" width="720" height="372" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DECDGDpoEwCG0eHS4QmLn/8df3a6e7d0f0a4ddf9c8351e94f27b08/rsa-signing-1.png" alt="digital signatures" class="kg-image" width="720" height="372" loading="lazy">
 
 	</figure>
 	<p>There are several ways of obtaining a digitally signed certificate for a website. The standard way is by purchasing a certificate from a certificate authority like GlobalSign or Comodo. CAs follow a set of rules about certificate issuance, governed by CA/Browser Forum’s <a href="https://cabforum.org/baseline-requirements">Baseline Requirements</a>.</p>
@@ -25,13 +25,13 @@
 	<p>A third more interesting way to obtain a certificate is to create a certificate that has the same hash as an existing trusted certificate. The signature from the trusted certificate can be added to the untrusted certificate, making it appear trusted.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v5ZRqGjgWN7MI75yf6SBP/6fd54e1a04a0ac3b36c4b0bcb3021d02/rsa-signing-2.png" alt="hash collision" class="kg-image" width="720" height="217" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v5ZRqGjgWN7MI75yf6SBP/09d2a0d7103d40ae775cf46e2157fd31/rsa-signing-2.png" alt="hash collision" class="kg-image" width="720" height="217" loading="lazy">
 
 	</figure>
 	<p>If you can find a message that has the same hash value as a signed message, then you can swap in your message and the signature will verify correctly. This can be used to trick anyone into thinking someone signed a message that they didn’t.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JUU3Fxeaazw6RMm22opTu/e944c1bf6fb724d61edce8bbe241c72a/rsa-signing-3.png" alt="exploiting hash collisions" class="kg-image" width="720" height="417" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JUU3Fxeaazw6RMm22opTu/c37aa56bd43d5b8102319d8b863fbfb1/rsa-signing-3.png" alt="exploiting hash collisions" class="kg-image" width="720" height="417" loading="lazy">
 
 	</figure>
 	<p>Cryptographic hash functions are designed to resist this sort of thing. They don’t always succeed.</p>
@@ -72,19 +72,19 @@
 	<p>Three images with the same MD5 hash:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Y4r54sl9X78iapskroWkw/8a3c4412db41467770cdc97c77c94a39/white.jpg" alt="" class="kg-image" width="273" height="184" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y4r54sl9X78iapskroWkw/854aa7c2211ddee02fa67467c641a56b/white.jpg" alt="" class="kg-image" width="273" height="184" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DnAT2RzFjTvssur0eOceu/8993d192ea500944bc8a053f50f59087/brown.jpg" alt="" class="kg-image" width="536" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DnAT2RzFjTvssur0eOceu/e84ae3e2ca5c6a35fd3bb034303e286b/brown.jpg" alt="" class="kg-image" width="536" height="400" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hARGIj78j9wtOwXzqetBv/fe94238d0634f0f1b0f25cfcb4af3492/black.jpg" alt="" class="kg-image" width="927" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hARGIj78j9wtOwXzqetBv/b061d4f5ffd8863c4a81e52dcdeb2966/black.jpg" alt="" class="kg-image" width="927" height="600" loading="lazy">
 
 	</figure>
 	<p>You can verify this yourself via <code>curl</code> and <code>md5</code>:</p>
@@ -144,7 +144,7 @@ b69dd1fd1254868b6e0bb8ed9fe7ecad</code></pre>
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79PwdrVZnzNpdV3JWdnUdw/b87f68d5d0b13c5a4dbf893e866e192e/sha-1-certificate-forgery-1.png" alt="" class="kg-image" width="488" height="309" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79PwdrVZnzNpdV3JWdnUdw/c4407fb3b97a6384778d10df999ea8d7/sha-1-certificate-forgery-1.png" alt="" class="kg-image" width="488" height="309" loading="lazy">
 
 	</figure>
 	<p>The attacker precomputes chosen-prefix collisions for the choices for each of these values, where one prefix has a domain name that is under the requester’s control (e.g. for attacker.com) and one for the target domain (e.g. google.com). The "collision bits" that cause the two certificates to collide end up aligning with first few bytes of the public key of the certificate.</p>
@@ -172,7 +172,7 @@ b69dd1fd1254868b6e0bb8ed9fe7ecad</code></pre>
 	<p>SHA-1 is supposedly more secure than MD5 for use in digital signatures. The National Security Agency published SHA-1 (SHA stands for Secure Hash Algorithm) in 1995 as a standard for cryptographically secure hashing. Designed to be collision resistant up to 2<sup>80</sup> bits, SHA-1 has had a long and useful life, and a collision has not been published as of this blog post. Even though a collision has never been published, several theoretical attacks (the <a href="http://gauss.ececs.uc.edu/Courses/c653/lectures/Hashing/sha1-crypto-auth-new-2-yao.pdf">first in 2005</a>, improved <a href="http://2012.sharcs.org/slides/stevens.pdf">in 2012</a>) indicate that SHA-1 is not as secure as its bit length implies. The latest research suggests that its collision resistance is <a href="https://marc-stevens.nl/research/papers/PhD%20Thesis%20Marc%20Stevens%20-%20Attacks%20on%20Hash%20Functions%20and%20Applications.pdf">at best 265</a> — within the realm of feasibility for some governments. In fact, researchers published a freestart collision (a precursor to a full collision) for SHA-1 <a href="https://eprint.iacr.org/2015/967.pdf">earlier this year</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dR7YVWkazh7VY1IGSz8tb/1a423fd5f23f27a5fbb253b9d18a4151/Sharks_outside_cage.jpg" alt="" class="kg-image" width="1280" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dR7YVWkazh7VY1IGSz8tb/e171383cbc753cb8fefcbf911b525eb3/Sharks_outside_cage.jpg" alt="" class="kg-image" width="1280" height="720" loading="lazy">
 
 	</figure>
 	<p><a href="https://en.wikipedia.org/wiki/Shark_proof_cage#/media/File:Sharks_outside_cage.jpg">CC BY-SA 2.0</a></p>

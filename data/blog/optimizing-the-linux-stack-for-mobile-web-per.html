@@ -1,10 +1,10 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/501KvSRbHruqS325VSvHEF/91afd5ca0fcd36019bca9e906d081d69/optimizing-the-linux-stack-for-mobile-web-per.png" alt="">
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/501KvSRbHruqS325VSvHEF/572008102d808b4a2eda76a50be6d20c/optimizing-the-linux-stack-for-mobile-web-per.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a technical post written by Ian Applegate</i><i>(</i><a href="https://twitter.com/AppealingTea"><i>@AppealingTea</i></a><i>), a member of our Systems Engineering team, on how to optimize the Linux TCP stack for mobile connections. The article was </i><a href="http://calendar.perfplanet.com/2012/optimizing-your-network-stack-for-optimal-mobile-web-performance"><i>originally published</i></a><i>as part of the </i><a href="http://calendar.perfplanet.com/2012"><i>2012 Web Performance Calendar</i></a><i>. At CloudFlare, we spend a significant amount of time ensuring our network stack is tuned to whatever kind of network or device is connecting to us. We wanted to share some of the technical details to help other organizations that are looking to optimize for mobile network performance, even if they're not using CloudFlare. And, if you are </i><a href="https://www.cloudflare.com/plans"><i>using CloudFlare</i></a><i>, you get all these benefits and the fastest possible TCP performance when a mobile network accesses your site.</i></p>
 	<hr>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/309OrGzHiyiGYED9GHsnHj/4068cb6e784e0c448df0d99362f8df21/mobile_web.png.scaled500.png" alt="Optimizing Your Linux Stack for Maximum Mobile Web Performance" class="kg-image" width="255" height="280" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/309OrGzHiyiGYED9GHsnHj/061fae9f34217663f46aa32f8d3729eb/mobile_web.png.scaled500.png" alt="Optimizing Your Linux Stack for Maximum Mobile Web Performance" class="kg-image" width="255" height="280" loading="lazy">
 
 	</figure>
 	<p>We spend a lot of time at CloudFlare thinking about how to make the Internet fast on mobile devices. Currently there are over 1.2 billion active mobile users and that number is growing rapidly. Earlier this year mobile Internet access passed fixed Internet access in India and that's likely to be repeated the world over. So, mobile network performance will only become more and more important.</p>
@@ -32,7 +32,7 @@
 	<p>To optimize networks for lossy networks like those on mobile networks, it's important to understand exactly how TCP Congestion Control algorithms are designed. While the high level concept makes sense, the details of TCP Congestion Control are not widely understood by most people working in the web performance industry. That said, it is an important core part of what makes the Internet reliable and the subject of very active research and development.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7s7NDYgX0WAVefPGuhOM7V/55c83fbe2fc797156ac91673359db21f/ted-stevens.jpg.scaled500.jpg" alt="Optimizing Your Linux Stack for Maximum Mobile Web
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7s7NDYgX0WAVefPGuhOM7V/e341adb699ad745e1e4c947214a7dc54/ted-stevens.jpg.scaled500.jpg" alt="Optimizing Your Linux Stack for Maximum Mobile Web
 Performance" class="kg-image" width="383" height="284" loading="lazy">
 
 	</figure>
@@ -51,7 +51,7 @@ Performance" class="kg-image" width="383" height="284" loading="lazy">
 	<p>When a TCP connection is first established it attempts to ramp up the cwnd quickly. This phase of the connection, where TCP grows the cwnd rapidly, is called Slow Start. That's a bit of a misnomer since it is generally an exponential growth function which is quite fast and aggressive. Just like when the water utility in the example above detects a drop in pressure it turns down the volume of water, when TCP detects packets are lost it reduces the size of the cwnd and delays the time before another burst of packets is delivered. The time between packet bursts is known as the Retransmission Timeout (RTO). Thealgorithm within TCP that controls these processes is called the Congestion Control Algorithm. There are many congestion control algorithms and clients and servers can use different strategies based in the characteristics of their networks. Most of Congestion Control Algorithms focus on optimizing for one type of network loss or another: congestive loss (like you see on wired networks) or random loss (like you see on mobile networks).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XDdJhfKkwJIVCGWA0PUHf/551db79d734581d83f57f3bf1e98d7f5/crazy_plumber.jpg.scaled500.jpg" alt="Optimizing Your Linux Stack for Maximum Mobile Web Performance" class="kg-image" width="500" height="359" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XDdJhfKkwJIVCGWA0PUHf/35c21c67e529a24cdda85b226b623484/crazy_plumber.jpg.scaled500.jpg" alt="Optimizing Your Linux Stack for Maximum Mobile Web Performance" class="kg-image" width="500" height="359" loading="lazy">
 
 	</figure>
 	<p>In the example above, a pipe bursting would be an indication of congestive loss. There was a physical limit to the pipes, it is exceeded, and the appropriate response is to back off. On the other hand, Crazy Arty's pump is analogous to random loss. The capacity is still available on the network and only a temporary disturbance causes the water utility to see the pipes as overfull. The Internet started as a network of wired devices, and, as its name suggests, congestion control was largely designed to optimize for congestive loss. As a result, the default Congestion Control Algorithm in many operating systems is good for communicating wired networks but not as good for communicating with mobile networks.</p>
@@ -69,7 +69,7 @@ Performance" class="kg-image" width="383" height="284" loading="lazy">
 	<p><code>uname -a</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZBH3WiP71t6zc1YKSHOad/91b0f1cd7bbbb036d4f372b23a737166/linux.png.scaled500.png" alt="Optimizing Your Linux Stack for Maximum Mobile Web Performance" class="kg-image" width="170" height="197" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZBH3WiP71t6zc1YKSHOad/b05e3b465dac2c31bc37650424f15720/linux.png.scaled500.png" alt="Optimizing Your Linux Stack for Maximum Mobile Web Performance" class="kg-image" width="170" height="197" loading="lazy">
 
 	</figure>
 	<p>There are a number of reasons that if you're running an old kernel on your web server and want to increase web performance, especially for mobile devices, you should investigate upgrading. To begin, Linux 2.6.38 bumps the default initcwnd and initrwnd (inital receive window) from <a href="http://www.ietf.org/rfc/rfc3390.txt">3to 10</a>. This is an easy, big win. It allows for 14.2KB (vs 5.7KB) of data to be sent or received in the initial <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip</a> before slow start grows the cwnd further. This is important for HTTP and SSL because it gives you more room to fit the header in the initial set of packets. If you are running an older kernel you may be able to run the following command on a bash shell (use caution) to set all of your routes' initcwnd and initrwnd to 10. On average, this small change can be one of the biggest boosts when you're trying to maximize web performance.</p>
@@ -104,7 +104,7 @@ Performance" class="kg-image" width="383" height="284" loading="lazy">
 	<p>You may be curious as to why I haven't made a recommendation as far as a quick and easy change of congestion control algorithms. Since Linux 2.6.19, the default congestion control algorithm in the Linux kernel is CUBIC, which is time based and optimized for high speed and high latency networks. It's killer feature, known as called Hybrid Slow Start (HyStart), allows it to safely exit slow start by measuring the ACK trains and not overshoot the cwnd. It can improve startup throughput by up to 200-300%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q5VrFzRfPfkHHLD1Ldfzf/e42bc6fd9313c4b316934806934d15dd/ack.jpg.scaled500.jpg" alt="Optimizing Your Linux Stack for Maximum Mobile Web
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6q5VrFzRfPfkHHLD1Ldfzf/05d8b5dafd09aa4a50f415f838b49c35/ack.jpg.scaled500.jpg" alt="Optimizing Your Linux Stack for Maximum Mobile Web
 Performance" class="kg-image" width="350" height="249" loading="lazy">
 
 	</figure>

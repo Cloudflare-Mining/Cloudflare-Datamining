@@ -1,11 +1,11 @@
-<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ascn9dfuDu4OpyTPkiyJ6/bc01c5077076e5690c3dc363e685f80a/rpki.jpg" alt="">
+<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ascn9dfuDu4OpyTPkiyJ6/9e7e3bf6ae4b925717fdff7947020416/rpki.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We have talked about the BGP Internet routing protocol before. We have talked about how we build a <a href="https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network">more resilient network</a> and how we can see <a href="https://blog.cloudflare.com/the-story-of-two-outages">outages at a country-level</a> via BGP. We have even talked about the <a href="https://blog.cloudflare.com/nanog-the-art-of-running-a-network-and-discussing-common-operational-issues">network community</a> that is vital to the operation of the global Internet.</p>
 	<p>Today we need to talk about why existing operational practices for BGP routing and filtering have to significantly improve in order to finally stop route leaks and hijacks; which are sadly pervasive in today’s Internet routing world. In fact, the subtle art of running a BGP network and the various tools (both online and within your a networks subsystems) that are vital to making the Internet routing world a safe and reliable place to operate need to improve.</p>
 	<p>Internet routing and BGP and security along with its operational expertise must improve globally.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yV7wTNobUDVMktWwaoTPB/b27bab966fcd34c0ca549e3fd87aa7a4/33673974352_3085c34cb5_o.jpg" alt="" class="kg-image" width="2000" height="1333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yV7wTNobUDVMktWwaoTPB/d4647c0bb9adfc12da795f208428eadf/33673974352_3085c34cb5_o.jpg" alt="" class="kg-image" width="2000" height="1333" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/30478819@N08/33673974352">photo</a> by <a href="https://www.flickr.com/photos/30478819@N08">Marco Verch</a> by/2.0</p>
@@ -151,7 +151,7 @@ neighbor 192.168.0.2 route-map as65001-listen in</code></pre>
 	<p>Resource Public Key Infrastructure (RPKI) is a cryptographic method of signing records that associate a route with an originating AS number. Presently the five RIRs (AFRINIC, APNIC, ARIN, LACNIC &amp; RIPE) provide a method for members to take an IP/ASN pair and sign a ROA (Route Origin Authorization) record. The ROA record is what we need to focus on.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vo7EQoqPim1Fq7Qio5Wqg/b2e5c2beba86c8158b42e6f0ce7c8dcf/roas_3x-2.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vo7EQoqPim1Fq7Qio5Wqg/81e59bf19ec648db71369a272374a69b/roas_3x-2.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
 
 	</figure>
 	<p>Once a route is signed; it can propagate to anyone that wants to use the data to filter routing or monitor this data as ROAs are public. A ROA is a digitally signed object that makes use of <a href="https://tools.ietf.org/html/rfc3852">RFC3852</a> Cryptographic Message Syntax (CMS) as a standard encapsulation format. In fact ROAs are X.509 certificates as defined in <a href="https://tools.ietf.org/html/rfc5280">RFC5280</a> (Internet X.509 Public Key Infrastructure Certificate) and <a href="https://tools.ietf.org/html/rfc3779">RFC3779</a> (X.509 Extensions for IP Addresses and AS Identifiers).</p>
@@ -241,7 +241,7 @@ ASN:  1 - 4,294,967,295 (AS 0 is unused)</code></pre>
 	<p>As network operators don’t want to run an cryptographic software on the control plane of a router (or even have RPKI data anywhere near the control plane), the normal deployment is to pair routers with a server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GM31tWc9wRdNWY9U631S7/2c70d2ae85ba7f54d3658a47268847cc/RPKI-diagram-_3x-3.png" alt="" class="kg-image" width="2000" height="1043" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GM31tWc9wRdNWY9U631S7/5486760d30910a9288112ddc77720bb6/RPKI-diagram-_3x-3.png" alt="" class="kg-image" width="2000" height="1043" loading="lazy">
 
 	</figure>
 	<p>The server runs all the RPKI code (including the crypto processing of the TA, the certificate tree, and the ROAs). When the router sees a new route, the router send a simple message across a communications path (that includes the origin AS plus the IP route). The server, running a validator, responds with a yes/no answer that drives the filtering of that BGP route. This lightweight protocol is defined in <a href="https://tools.ietf.org/html/rfc6810">RFC6810</a>, then updated later to include some BGPsec support in <a href="https://tools.ietf.org/html/rfc8210">RFC8210</a> (The Resource Public Key Infrastructure (RPKI) to Router Protocol). This lightweight protocol is nicknamed “RTR”.</p>
@@ -293,7 +293,7 @@ ASN:  1 - 4,294,967,295 (AS 0 is unused)</code></pre>
 	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on our announcements.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yhey6ViCRukh886HRpCSS/8dba09af1be1ab26a6fc9d646ce8c16b/Crypto-Week-1-1-2.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yhey6ViCRukh886HRpCSS/eb12006aa2e71a7b193284210dea17cb/Crypto-Week-1-1-2.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
 
 	</figure>
 </div>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kgspiFm8DIElEEVJ44EAZ/318755d05a52b011203a9c31b707f025/rfc-8446-aka-tls-1-3.png" alt="">
+<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kgspiFm8DIElEEVJ44EAZ/b0f165fcbd96d4d3fe83a3189bc6a9f0/rfc-8446-aka-tls-1-3.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>For the last five years, the Internet Engineering Task Force (IETF), the standards body that defines internet protocols, has been working on standardizing the latest version of one of its most important security protocols: Transport Layer Security (TLS). TLS is used to secure the web (and much more!), providing encryption and ensuring the authenticity of every HTTPS website and API. The latest version of TLS, TLS 1.3 (<a href="https://www.rfc-editor.org/rfc/pdfrfc/rfc8446.txt.pdf">RFC 8446</a>) was published today. It is the first major overhaul of the protocol, bringing significant security and performance improvements. This article provides a deep dive into the changes introduced in TLS 1.3 and its impact on the future of internet security.</p>
 	<div class="flex anchor relative">
@@ -13,7 +13,7 @@
 	<p>The machinery under the hood that makes HTTPS secure is a protocol called TLS. It has its roots in a protocol called Secure Sockets Layer (SSL) developed in the mid-nineties at Netscape. By the end of the 1990s, Netscape handed SSL over to the IETF, who renamed it TLS and have been the stewards of the protocol ever since. Many people still refer to web encryption as SSL, even though the vast majority of services have switched over to supporting TLS only. The term SSL continues to have popular appeal and Cloudflare has kept the term alive through product names like <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> and <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59tFn3me3Oe6OcjT24CqYF/a937841386c6004a951ec1fc597777dd/image5.png" alt="Timeline" class="kg-image" width="1998" height="956" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59tFn3me3Oe6OcjT24CqYF/22a662ccc88b06adc516449b8e2be657/image5.png" alt="Timeline" class="kg-image" width="1998" height="956" loading="lazy">
 
 	</figure>
 	<p>In the IETF, protocols are called RFCs. TLS 1.0 was RFC 2246, TLS 1.1 was RFC 4346, and TLS 1.2 was RFC 5246. Today, TLS 1.3 was published as RFC 8446. RFCs are generally published in order, keeping 46 as part of the RFC number is a nice touch.</p>
@@ -28,7 +28,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5p8wOtJF3L8LEprZDoO0z7/88d6da2f8bda13ac0fc69e543cf7f348/image11.jpg" alt="MC Hammer" class="kg-image" width="379" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5p8wOtJF3L8LEprZDoO0z7/c4742d6066b73c33e4f5e98afddb83ff/image11.jpg" alt="MC Hammer" class="kg-image" width="379" height="600" loading="lazy">
 
 	</figure>
 	<p><a href="https://memegenerator.net/Mc-Hammer-Pants">MC Hammer</a>, like SSL, was popular in the 90s</p>
@@ -82,7 +82,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57PQK3ofbneOYgOmlwNm4Y/d9c43eb9f289a3971450d80e6f9ae06a/image10.jpg" alt="hedge" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57PQK3ofbneOYgOmlwNm4Y/e5c3c319903504002330efec0fc06db2/image10.jpg" alt="hedge" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Williton_Highbridge_Nursery_topiary_garden.jpg">Creative Commons Attribution-Share Alike 3.0</a></p>
@@ -94,13 +94,13 @@
 	<p>The public key portion of TLS is about establishing a shared secret. There are two main ways of doing this with public key cryptography. The simpler way is with public-key encryption: one party encrypts the shared secret with the other party’s public key and sends it along. The other party then uses its private key to decrypt the shared secret and ... voila! They both share the same secret. This technique was discovered in 1977 by Rivest, Shamir and Adelman and is called RSA key exchange. In TLS’s RSA key exchange, the shared secret is decided by the client, who then encrypts it to the server’s public key (extracted from the certificate) and sends it to the server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vFfpyW3dU5vLUnbrzOGk8/c87730cc03aec696a49217b3a66899b8/image4.png" alt="image4" class="kg-image" width="1016" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vFfpyW3dU5vLUnbrzOGk8/5b9c70ff88d0da6d3210fc37f13e8184/image4.png" alt="image4" class="kg-image" width="1016" height="936" loading="lazy">
 
 	</figure>
 	<p>The other form of key exchange available in TLS is based on another form of public-key cryptography, invented by Diffie and Hellman in 1976, so-called Diffie-Hellman key agreement. In Diffie-Hellman, the client and server both start by creating a public-private key pair. They then send the public portion of their key share to the other party. When each party receives the public key share of the other, they combine it with their own private key and end up with the same value: the pre-main secret. The server then uses a digital signature to ensure the exchange hasn’t been tampered with. This key exchange is called “ephemeral” if the client and server both choose a new key pair for every exchange.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tjgSGvMVdzh3LZvt1HZT1/992559b11f96bd932b3e2b2576ef44d3/image3.png" alt="image3" class="kg-image" width="1016" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tjgSGvMVdzh3LZvt1HZT1/98031ef05fdc4353af60d27062fdb67a/image3.png" alt="image3" class="kg-image" width="1016" height="936" loading="lazy">
 
 	</figure>
 	<p>Both modes result in the client and server having a shared secret, but RSA mode has a serious downside: it’s not <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secret</a>. That means that if someone records the encrypted conversation and then gets ahold of the RSA private key of the server, they can decrypt the conversation. This even applies if the conversation was recorded and the key is obtained some time well into the future. In a world where national governments are recording encrypted conversations and using exploits like <a href="https://en.wikipedia.org/wiki/Heartbleed">Heartbleed</a> to steal private keys, this is a realistic threat.</p>
@@ -128,13 +128,13 @@
 	<p>A block cipher is different than a stream cipher because it only encrypts fixed-sized messages. If you want to encrypt a message that is shorter or longer than the block size, you have to do a bit of work. For shorter messages, you have to add some extra data to the end of the message. For longer messages, you can either split your message up into blocks the cipher can encrypt and then use a block cipher mode to combine the pieces together somehow. Alternatively, you can turn your block cipher into a stream cipher by encrypting a sequence of counters with a block cipher and using that as the stream. This is called “counter mode”. One popular way of encrypting arbitrary length data with a block cipher is a mode called cipher block chaining (CBC).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hHGcSStKo5bHWDn64PXHq/252f412fb113f3f35f08e20204e521a9/image9.png" alt="encryption" class="kg-image" width="1684" height="837" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hHGcSStKo5bHWDn64PXHq/4801697c668fc061eab0c0ab57c2fdd8/image9.png" alt="encryption" class="kg-image" width="1684" height="837" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/510G6uPdPGbwTJHcsGqPSc/41f54686847692f14711426934d54aba/image7.png" alt="decryption" class="kg-image" width="1684" height="837" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/510G6uPdPGbwTJHcsGqPSc/726945c085f0912e1307e18ef4393563/image7.png" alt="decryption" class="kg-image" width="1684" height="837" loading="lazy">
 
 	</figure>
 	<p>In order to prevent people from tampering with data, encryption is not enough. Data also needs to be integrity-protected. For CBC-mode ciphers, this is done using something called a message-authentication code (MAC), which is like a fancy checksum with a key. Cryptographically strong MACs have the property that finding a MAC value that matches an input is practically impossible unless you know the secret key. There are two ways to combine MACs and CBC-mode ciphers. Either you encrypt first and then MAC the ciphertext, or you MAC the plaintext first and then encrypt the whole thing. In TLS, they chose the latter, MAC-then-Encrypt, which turned out to be the wrong choice.</p>
@@ -142,7 +142,7 @@
 	<p>RC4 is a classic stream cipher designed by Ron Rivest (the “R” of RSA) that was broadly supported since the early days of TLS. In 2013, it was found to have <a href="http://www.isg.rhul.ac.uk/tls">measurable biases</a> that could be leveraged to allow attackers to decrypt messages.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A6uMNALwNJtA0GSKOkxOL/94a6b5acdf6f7b469883d22ba7df15c4/image2.png" alt="image2" class="kg-image" width="1999" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7A6uMNALwNJtA0GSKOkxOL/5c9692baac1ab202e0e4d7f79e4ae8f2/image2.png" alt="image2" class="kg-image" width="1999" height="728" loading="lazy">
 
 	</figure>
 	<p>AEAD Mode</p>
@@ -162,7 +162,7 @@
 	<p>We described earlier how the server uses a digital signature to prove that the key exchange hasn’t been tampered with. In TLS 1.2 and earlier, the server’s signature only covers part of the handshake. The other parts of the handshake, specifically the parts that are used to negotiate which symmetric cipher to use, are not signed by the private key. Instead, a symmetric MAC is used to ensure that the handshake was not tampered with. This oversight resulted in a number of high-profile vulnerabilities (FREAK, LogJam, etc.). In TLS 1.3 these are prevented because the server signs the entire handshake transcript.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gJewngm3kPtCgXDvl7O4q/c825c455694a69c115d1cbe31d84cb58/image1.png" alt="tls12" class="kg-image" width="508" height="622" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gJewngm3kPtCgXDvl7O4q/340d28439e4eaac4cd176359dfa19900/image1.png" alt="tls12" class="kg-image" width="508" height="622" loading="lazy">
 
 	</figure>
 	<p>The FREAK, LogJam and CurveSwap attacks took advantage of two things:</p>
@@ -177,13 +177,13 @@
 	<p>The on-path attacker can swap out the supported ciphers (or supported groups, or supported curves) from the client with an easily crackable choice that the server supports. They then break the key and forge two finished messages to make both parties think they’ve agreed on a transcript.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PHIoZN6sxu78eUdoLWcbz/9c42b2e6f5de3a594a36235971a2b82c/image13.png" alt="FREAK" class="kg-image" width="1480" height="1536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PHIoZN6sxu78eUdoLWcbz/4f4a1fbbff72785aa2be24c5c9872e8f/image13.png" alt="FREAK" class="kg-image" width="1480" height="1536" loading="lazy">
 
 	</figure>
 	<p>These attacks are called downgrade attacks, and they allow attackers to force two participants to use the weakest cipher supported by both parties, even if more secure ciphers are supported. In this style of attack, the perpetrator sits in the middle of the handshake and changes the list of supported ciphers advertised from the client to the server to only include weak export ciphers. The server then chooses one of the weak ciphers, and the attacker figures out the key with a brute-force attack, allowing the attacker to forge the MACs on the handshake. In TLS 1.3, this type of downgrade attack is impossible because the server now signs the entire handshake, including the cipher negotiation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/P4S0oZBnuJvkG23ljrAmN/6278b19181d1830a79d99dc2c60ca6c5/image14.png" alt="signed transcript" class="kg-image" width="508" height="593" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/P4S0oZBnuJvkG23ljrAmN/a658f4a88dddcf2019fa22567e150a53/image14.png" alt="signed transcript" class="kg-image" width="508" height="593" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -220,13 +220,13 @@
 	<p>Ciphersuites in previous versions of TLS had grown into monstrously large alphabet soups. Examples of commonly used cipher suites are: DHE-RC4-MD5 or ECDHE-ECDSA-AES-GCM-SHA256. Each ciphersuite was represented by a code point in a table maintained by an organization called the Internet Assigned Numbers Authority (IANA). Every time a new cipher was introduced, a new set of combinations needed to be added to the list. This resulted in a combinatorial explosion of code points representing every valid choice of these parameters. It had become a bit of a mess.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2W8o2jcAOgb3EUcGitVN8b/87d8da91473022039ed2d50612f4fb49/image8.png" alt="take-out menu" class="kg-image" width="1611" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2W8o2jcAOgb3EUcGitVN8b/59d24160803d908ed4417494d57ea288/image8.png" alt="take-out menu" class="kg-image" width="1611" height="1080" loading="lazy">
 
 	</figure>
 	<p>TLS 1.2</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/171emSynzRJ1MSpJv08jc1/f83929a737ed67a6a180b355b5b5ef92/image16.png" alt="prix fixe" class="kg-image" width="593" height="1042" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/171emSynzRJ1MSpJv08jc1/18c165eb9c379b48418a5f25a47131e1/image16.png" alt="prix fixe" class="kg-image" width="593" height="1042" loading="lazy">
 
 	</figure>
 	<p></p>
@@ -245,7 +245,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eHObkLXwOPPw9MEbaxSsc/349ef4f7c235e831fa7618c29582c4bd/image6.png" alt="negotiation" class="kg-image" width="1130" height="864" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eHObkLXwOPPw9MEbaxSsc/8e20132ec65ebb83b1e43528711fe05d/image6.png" alt="negotiation" class="kg-image" width="1130" height="864" loading="lazy">
 
 	</figure>
 	<p>This simplified cipher suite negotiation and radically reduced set of negotiation parameters opens up a new possibility. This possibility enables the TLS 1.3 handshake latency to drop from two round-trips to only one round-trip, providing the performance boost that will ensure that TLS 1.3 will be popular and widely adopted.</p>
@@ -269,13 +269,13 @@
 	<p>TLS 1.3 now has a radically simpler cipher negotiation model and a reduced set of key agreement options (no RSA, no user-defined DH parameters). This means that every connection will use a DH-based key agreement and the parameters supported by the server are likely easy to guess (ECDHE with X25519 or P-256). Because of this limited set of choices, the client can simply choose to send DH key shares in the first message instead of waiting until the server has confirmed which key shares it is willing to support. That way, the server can learn the shared secret and send encrypted data one round trip earlier. Chrome’s implementation of TLS 1.3, for example, sends an X25519 keyshare in the first message to the server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3E3tuAB7cL1jf7HXHLegge/7af9d3e10e4ea6b70be65bd688f75dbd/image3.png" alt="DH in 1.2" class="kg-image" width="1016" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3E3tuAB7cL1jf7HXHLegge/461301a79e282e3034a6acc1bb537e49/image3.png" alt="DH in 1.2" class="kg-image" width="1016" height="936" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xa8AA1zO4jZ4yjPcIukcM/0927b9f3bb7f4fd43339b6cef89bfa44/image15.png" alt="DH in 1.3" class="kg-image" width="1016" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xa8AA1zO4jZ4yjPcIukcM/a29464a13527710055cd6031cae54c92/image15.png" alt="DH in 1.3" class="kg-image" width="1016" height="936" loading="lazy">
 
 	</figure>
 	<p>In the rare situation that the server does not support one of the key shares sent by the client, the server can send a new message, the HelloRetryRequest, to let the client know which groups it supports. Because the list has been trimmed down so much, this is not expected to be a common occurrence.</p>
@@ -301,7 +301,7 @@
 	<p>There is no interactivity in 0-RTT data. It’s sent by the client, and consumed by the server without any interactions. This is great for performance, but comes at a cost: replayability. If an attacker captures a 0-RTT packet that was sent to server, they can replay it and there’s a chance that the server will accept it as valid. This can have interesting negative consequences.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aI0oRVRPjH8lmqKPfo2Uu/0e24e04c08be6c6dc54e20cca320fb2f/0-rtt-attack-_2x.png" alt="0-rtt-attack-@2x" class="kg-image" width="1273" height="626" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aI0oRVRPjH8lmqKPfo2Uu/66828a933209d66d8f8ac0db0d77d54d/0-rtt-attack-_2x.png" alt="0-rtt-attack-@2x" class="kg-image" width="1273" height="626" loading="lazy">
 
 	</figure>
 	<p>An example of dangerous replayed data is anything that changes state on the server. If you increment a counter, perform a database transaction, or do anything that has a permanent effect, it’s risky to put it in 0-RTT data.</p>

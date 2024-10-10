@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LLXkjwYZfb8a0TXMyuJFg/7c6c40408560af9f579ea23f8730f5b8/dns-over-tls-for-openwrt.JPG" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LLXkjwYZfb8a0TXMyuJFg/4a3ef9a6d13b689fb9a924e681eee192/dns-over-tls-for-openwrt.JPG" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>If you want to skip ahead to instructions, </i><a href="https://blog.cloudflare.com/#settingupdnsovertls"><i>scroll to the next section</i></a><i>. But I, like a TLS handshake, am very verbose so please enjoy this opener.</i></p>
 	<p>Imagine this scenario - I'm at a restaurant and need to have a private phone conversation but unfortunately my phone's battery is drained. To get around this problem, I borrow my friend's phone and dial the number - to protect my privacy I walk outside. When I'm done with the call, I come back inside and return the phone.</p>
@@ -9,7 +9,7 @@
 	<p>As is common IT knowledge, before your browser makes a HTTP connection to a website (say, cloudflare.com), your client needs to make a DNS query to work out the IP Address where the HTTP connection should be made. The same is true for any other application layer protocol, when you connect using a hostname instead of an IP Address. For a primer on DNS, we have an article on <a href="https://www.cloudflare.com/learning/dns/what-is-dns">the basics of DNS</a> on our Learning Centre.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HlZXQ1B1RUBPioetMFMAu/e0aa949dbbad37bfc890f49b8e0604db/dns-lookup-diagram.png" alt="dns-lookup-diagram" class="kg-image" width="1460" height="972" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HlZXQ1B1RUBPioetMFMAu/2d903b592a7d53903b93a8c16db7d569/dns-lookup-diagram.png" alt="dns-lookup-diagram" class="kg-image" width="1460" height="972" loading="lazy">
 
 	</figure>
 	<p>Whilst encryption technologies have been fairly long-standing for HTTP itself, only recently have such encryption techniques been standardised for DNS. Chances are, if you don't know if your DNS traffic is encrypted - it isn't.</p>
@@ -28,13 +28,13 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LxdO125L6OSPxEmCZCgFu/a0dc16c22088f572856a8b172d556dbc/IMG-3335-1.JPG.jpeg" alt="Router" class="kg-image" width="700" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LxdO125L6OSPxEmCZCgFu/6b6faeecf730ddd2d0cff6bb097d6e86/IMG-3335-1.JPG.jpeg" alt="Router" class="kg-image" width="700" height="525" loading="lazy">
 
 	</figure>
 	<p>Over the weekend, prior to writing this post, I ordered a new wireless router, the GL.iNet GL-AR750. This router has a very small form-factor and is marketed as a "Travel Router" and can act as a Wi-Fi repeater as well as a traditional Wi-Fi Router. At it's longest edge, the router itself is around the length of my index finger:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sI1sP3XQaTzuWqFRFZ6Wy/c490d75d0271124c19edf9ec81be687d/IMG-3360.JPG.jpeg" alt="Router photo" class="kg-image" width="645" height="376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sI1sP3XQaTzuWqFRFZ6Wy/7284e9bab35195f0f3abe380ba77d606/IMG-3360.JPG.jpeg" alt="Router photo" class="kg-image" width="645" height="376" loading="lazy">
 
 	</figure>
 	<p>I didn't just order this specific router because of it's form-factor, it also comes pre-installed with OpenWRT - an embedded Linux-based operating system that's well suited for routers. In May 2016, OpenWRT was forked as LEDE (the Linux Embedded Development Environment) and was re-merged with the OpenWRT project in January 2018.</p>
@@ -51,13 +51,13 @@
 	<p>For the sake of experimentation - through the web UI, I am able to configure this router to use <code>1.1.1.1</code>, <code>1.0.0.1</code>, <code>2606:4700:4700::1111</code> and<code>2606:4700:4700::1001</code> as the upsteam DNS servers (with the IPv6 addresses updated if the network doesn't support them):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2L5uK2C6pOpSC9EREcgcMh/8d42b8009fb64d689189104a8c52589c/Screen-Shot-2018-04-09-at-13.15.07.png" alt="DNS Resolver configuration" class="kg-image" width="1846" height="1052" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2L5uK2C6pOpSC9EREcgcMh/0320649b7ee8b21641c9e1008e430b33/Screen-Shot-2018-04-09-at-13.15.07.png" alt="DNS Resolver configuration" class="kg-image" width="1846" height="1052" loading="lazy">
 
 	</figure>
 	<p>By connecting the router's <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">WAN</a> port to my computer, I am able to sniff traffic as it leaves the router by using Wireshark before it goes out to the actual WAN. When a DNS query isn't in my routers cache it is forwarded to <code>1.1.1.1</code>. As my router is sending these queries unecrypted instead of using DNS-over-TLS, I am able to see these DNS queries being sent around the internet in unencrypted form:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MwYdpfJPivptjLrWfJSqN/1d2bdf62fbf24b83359414e673d2605e/dns_unencrypted.png" alt="dns_unencrypted" class="kg-image" width="862" height="684" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MwYdpfJPivptjLrWfJSqN/24674ce3f0431057f119ef1cb6220d57/dns_unencrypted.png" alt="dns_unencrypted" class="kg-image" width="862" height="684" loading="lazy">
 
 	</figure>
 	<p>Although Cloudflare Resolver supports DNS-over-TLS, unfortuantely my router doesn't and will simply send all queries unencrypted.</p>
@@ -73,7 +73,7 @@
 	<p>Before we can get started, we need to <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> into our router, if you're prompted for a password, this will likely be identical to the one you set up for the web portal:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jwntgIewgDBLPjv2dlCra/bee161f405a6165310a14ec6f93c022c/Screen-Shot-2018-04-09-at-13.06.26.png" alt="SSH to Router" class="kg-image" width="2164" height="1528" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jwntgIewgDBLPjv2dlCra/a2e28851b4cac59151435fee144264bc/Screen-Shot-2018-04-09-at-13.06.26.png" alt="SSH to Router" class="kg-image" width="2164" height="1528" loading="lazy">
 
 	</figure>
 	<p>LEDE uses <code>opkg</code> as it's package manager of choice. Firstly, let's update the package list, then we install Unbound with Unbound-Control and the full version of odhcpd:</p>
@@ -123,7 +123,7 @@ service unbound start</code></pre>
 	<p>Here's the proof of the pudding; when we intercept DNS queries between our router and the wider internet, we'll notice they are encrypted with TLS v1.2:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UhGWT8fE7lL2nOPxLxaEd/8ac3d4d3f4ac4e3f43079052f449abc8/dns_encrypted.png" alt="DNS Encrypted" class="kg-image" width="862" height="684" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UhGWT8fE7lL2nOPxLxaEd/145dcb85616f1cc87dc9b9c3ff29d58c/dns_encrypted.png" alt="DNS Encrypted" class="kg-image" width="862" height="684" loading="lazy">
 
 	</figure>
 	<h4>Conclusion</h4>

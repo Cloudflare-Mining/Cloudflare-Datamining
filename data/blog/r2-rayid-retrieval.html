@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5un0eKgtUR9mf6rWmZDXyM/2afdc2e252021508e71ea807564d2deb/image4-13.png" alt="Indexing millions of HTTP requests using Durable Objects" class="kg-image" width="1800" height="1012" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5un0eKgtUR9mf6rWmZDXyM/7a918c41a2c463599d4fca0c43da97eb/image4-13.png" alt="Indexing millions of HTTP requests using Durable Objects" class="kg-image" width="1800" height="1012" loading="lazy">
 
 	</figure>
 	<p>Our customers rely on their Cloudflare logs to troubleshoot problems and debug issues. One of the biggest challenges with logs is the cost of managing them, so earlier this year, we launched the ability to <a href="https://blog.cloudflare.com/store-and-retrieve-logs-on-r2">store and retrieve</a> Cloudflare logs using R2.</p>
@@ -22,7 +22,7 @@
 	<p>In our case, a document is a batch of logs stored in R2 and the words are RayIDs contained within that document. For example, our index currently looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/GSL12fcNI0rI91FttQe9Y/8920a9be54c809fc420fad148ff7705b/image1-33.png" alt="" class="kg-image" width="1999" height="535" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GSL12fcNI0rI91FttQe9Y/317612cd90d9dfb4ed4ea5cb8c4d1f8b/image1-33.png" alt="" class="kg-image" width="1999" height="535" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -72,20 +72,20 @@
 	<p>Each batch produced by Logpush also happens to encode the time the batch was started and completed. Last but not least, upon analysis of our logging pipeline we found that 95% of RayIDs can be found in a batch produced within five minutes of the request completing. (Note that the encoded time sets a <i>lower bound</i> of the batch time we need to search).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/CQQIphdmvG7aDifAvU3YT/0809234900ff0dc5399e944fd3ccbedb/image5-8.png" alt="" class="kg-image" width="1608" height="325" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CQQIphdmvG7aDifAvU3YT/8a4461caaaec9ad2bbea1bfea5cfd4d2/image5-8.png" alt="" class="kg-image" width="1608" height="325" loading="lazy">
 
 	</figure>
 	<p>Encoding of a RayID</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kqEm2Y08awXjSUjx1oGg4/fc3e7a236ff98e1f4384de23a94d4ced/image2-26.png" alt="" class="kg-image" width="1999" height="108" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kqEm2Y08awXjSUjx1oGg4/12c4768e6779434f31ce51b55dc99dec/image2-26.png" alt="" class="kg-image" width="1999" height="108" loading="lazy">
 
 	</figure>
 	<p>Encoding of a batch name</p>
 	<p>For example: say we have a request that was made on November 3 at 16:00:00 UTC. We only need to check the batches under the prefix <code>20221103</code> and those batches that contain the time range of 16:00:00 to 16:05:00 UTC.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Y64vyD65p3JPXHZyEOoak/53f588f30e56e899efb93331998a8017/image3-20.png" alt="" class="kg-image" width="1999" height="364" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Y64vyD65p3JPXHZyEOoak/ea61d45ae19b2f36c75a2fba2d81bf19/image3-20.png" alt="" class="kg-image" width="1999" height="364" loading="lazy">
 
 	</figure>
 	<p>By reducing the number of batches to just a small handful of possibilities for a given RayID, we can simply ask our index if any of those batches contains the RayID by iterating through all the batch names (keys).</p>

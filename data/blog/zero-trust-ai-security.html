@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/zero-trust-ai-security">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/zero-trust-ai-security">Français</a>, <a href="https://blog.cloudflare.com/de-de/zero-trust-ai-security">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/zero-trust-ai-security">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/zero-trust-ai-security">Português</a>, <a href="https://blog.cloudflare.com/es-es/zero-trust-ai-security">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/zero-trust-ai-security">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bmd1fGukS5vyt53JNxGkC/4e9b9b4988ec563a90123515a23f16c4/zero-trust-ai-security.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/zero-trust-ai-security">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/zero-trust-ai-security">Français</a>, <a href="https://blog.cloudflare.com/de-de/zero-trust-ai-security">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/zero-trust-ai-security">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/zero-trust-ai-security">Português</a>, <a href="https://blog.cloudflare.com/es-es/zero-trust-ai-security">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/zero-trust-ai-security">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bmd1fGukS5vyt53JNxGkC/c6e096189a4efd2c98bc4d11f6226f60/zero-trust-ai-security.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p></p>
 	<p><b>A collection of tools from Cloudflare One to help your teams use AI services safely</b></p>
@@ -29,7 +29,7 @@
 	<p>Cloudflare One customers on any plan <a href="https://developers.cloudflare.com/cloudflare-one/analytics/access">can now review</a> the usage of AIs. Your IT department can deploy Cloudflare Gateway and passively observe how many users are selecting which services as a way to start scoping out enterprise licensing plans.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uHrL23faFCHE9540fQFp0/76753b3362d19178727356155a3e3f45/image6-5.png" alt="" class="kg-image" width="1879" height="682" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uHrL23faFCHE9540fQFp0/c7fbebb109d03999ebaf94fc39890805/image6-5.png" alt="" class="kg-image" width="1879" height="682" loading="lazy">
 
 	</figure>
 	<p>Administrators can also block the use of these services with a single click, but that is not our goal today. You might want to use this feature if you select ChatGPT as your approved model, and you want to make sure team members don’t continue to use alternatives, but we hope you don’t block all of these services outright. Cloudflare’s priority is to give you the ability to use these tools safely.</p>
@@ -47,19 +47,19 @@
 	<p>First, teams can create <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-tokens">service tokens</a> that external services must present to reach data made available through Cloudflare One. Administrators can provide these tokens to systems making API requests and log every single request. As needed, teams can revoke these tokens with a single click.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MImi9GeUWltY5DOFwvMSh/0da21f9e40a96617c335118d4886d862/download-7.png" alt="" class="kg-image" width="1600" height="1317" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MImi9GeUWltY5DOFwvMSh/c2d8358832bd18a88bdbc5e38bd12fb5/download-7.png" alt="" class="kg-image" width="1600" height="1317" loading="lazy">
 
 	</figure>
 	<p>After creating and issuing service tokens, administrators can create policies to allow specific services access to their training data. These policies will verify the service token and can be extended to verify country, IP address or an mTLS certificate. Policies can also be created to require human users to authenticate with an identity provider and complete an MFA prompt before accessing sensitive training data or services.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AsBiCcSRRs2cB0fX91qFb/159995972d32262ed3fb5edd8fb8d21c/download--1--4.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AsBiCcSRRs2cB0fX91qFb/d6235e9b8e6ab10b8b1370811aa8336f/download--1--4.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
 
 	</figure>
 	<p>When teams are ready to allow an AI service to connect to their infrastructure, they can do so without poking holes in their firewalls by using <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">Cloudflare Tunnel</a>. Cloudflare Tunnel will create an encrypted, outbound-only connection to Cloudflare’s network where every request will be checked against the access rules configured for one or more services protected by Cloudflare One.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TXIWdwYglW1oueAfgVY3e/f0252344f35984516876996c7aa380a2/download--2--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TXIWdwYglW1oueAfgVY3e/5136b53e234f770692a00f569edfdc84/download--2--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s Zero Trust <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access control</a> gives you the ability to enforce authentication on each and every request made to the data your organization decides to provide to these tools. That still leaves a gap in the data your team members might overshare on their own.</p>
@@ -76,13 +76,13 @@
 	<p>First, tell us what data you care about. We provide simple, preconfigured options that give you the ability to check for things that look like social security numbers or credit card numbers. Cloudflare DLP can also scan for patterns based on regular expressions configured by your team.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6H0NwXfAL6x2e0iccJbfTr/ebecd8217ce3a0e29ef3879727ff7b84/download--3--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6H0NwXfAL6x2e0iccJbfTr/58c6bd1e2ee1ba39cdafaec17b1d8896/download--3--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
 
 	</figure>
 	<p>Once you have defined the data that should never leave your organization, you can build granular rules about how it can and cannot be shared with AI services. Maybe some users are approved to experiment with projects that contain sensitive data, in which case you can build a rule that only allows an Active Directory or Okta group to upload that kind of information while everyone else is blocked.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15YcMzIxUHycVsceeYjlTr/9bc397a044ab264fc397f89d5c888d58/download--4--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15YcMzIxUHycVsceeYjlTr/3ee7c0b98d067656377ee5a188fcc100/download--4--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ykhqWHB5a5uSWg1MqRXxQ/2e935be43972c6fb6333092f62adcfd0/BLOG-2517_1.png" alt="">
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ykhqWHB5a5uSWg1MqRXxQ/0338bdc893389962ca7d56d7620db31b/BLOG-2517_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>To celebrate <a href="https://builderday.pages.dev"><u>Builder Day 2024</u></a>, we’re shipping 18 updates inspired by direct feedback from developers building on Cloudflare. Choosing a platform isn't just about current technologies and services — it's about betting on a partner that will evolve with your needs as your project grows and the tech landscape shifts. We’re in it for the long haul with you.</p>
 	<div class="flex anchor relative">
@@ -90,11 +90,11 @@ enabled = true
 </code></pre>
 	<p>Workers Logs allow you to view all logs emitted from your Worker. When enabled, each <code>console.log</code> message, error, and exception is published as a separate event. Every Worker invocation (i.e. requests, alarms, rpc, etc.) also publishes an enriched execution log that contains invocation metadata. You can view logs in the <code>Logs</code> tab of your Worker in the dashboard, where you can filter on any event field, such as time, error code, message, or your own custom field.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rPKtYlXEgN1u8utUuXxJR/ce807c210f32889ce2c034f388adee50/image2.png" alt="BLOG-2517 2" class="kg-image" width="1146" height="681" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rPKtYlXEgN1u8utUuXxJR/c2fc4dcff2a7574d8ad9f92edbe867fe/image2.png" alt="BLOG-2517 2" class="kg-image" width="1146" height="681" loading="lazy">
 	</figure>
 	<p>If you’ve ever had to piece together the puzzle of unusual metrics, such as a spike in errors or latency, you know how frustrating it is to connect metrics to traces and logs that often live in independent data silos. Workers Logs is the first piece of a new observability platform we are building that helps you easily correlate telemetry data, and surfaces insights to help you <i>understand</i>. We’ll structure your telemetry data so you have the full context to ask the right questions, and can quickly and easily analyze the behavior of your applications. This is just the beginning for observability tools for Workers. We are already working on automatically emitting distributed traces from Workers, with real time errors and wide, high dimensionality events coming soon as well.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/XiRuQjqzVEld2eCIVVHPh/7837b3ddde9e35ce97764cffb9e7b51a/Screenshot_2024-09-25_at_3.06.00_PM.png" alt="BLOG-2517 3" class="kg-image" width="661" height="248" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XiRuQjqzVEld2eCIVVHPh/7c8938479e1f254699487dfe23caade4/Screenshot_2024-09-25_at_3.06.00_PM.png" alt="BLOG-2517 3" class="kg-image" width="661" height="248" loading="lazy">
 	</figure>
 	<p>Starting November 1, 2024, Workers Logs will cost $0.60 per million log lines written after the included volume, as shown in the table below. Querying your logs is free. This makes it easy to estimate and forecast your costs —&nbsp;we think you shouldn’t have to calculate the number of ‘Gigabytes Ingested’ to understand what you’ll pay.</p>
 	<style type="text/css">
@@ -197,7 +197,7 @@ enabled = true
 	<p>The majority of databases today aren’t publicly accessible on the Internet. Data is highly sensitive and placing databases within private networks like a <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud"><u>virtual private cloud (VPC)</u></a> keeps data secure. But to date, that has also meant that your data is held captive within your cloud provider, preventing you from building on Workers.&nbsp;</p>
 	<p>Today, we’re enabling Hyperdrive to <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database"><u>securely connect to private databases</u></a> using <a href="https://www.cloudflare.com/en-ca/products/tunnel"><u>Cloudflare Tunnels</u></a> and <a href="https://www.cloudflare.com/zero-trust/products/access"><u>Cloudflare Access</u></a>. With a Cloudflare Tunnel running in your private network, Hyperdrive can securely connect to your database and start speeding up your queries.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ozsfXdsWFJlfRhhulMClT/50a5c514d3580518c3746ff08a673025/BLOG-2517_4.png" alt="BLOG-2517 4" class="kg-image" width="1924" height="1040" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ozsfXdsWFJlfRhhulMClT/61ec772a843880370e81eeec190000fa/BLOG-2517_4.png" alt="BLOG-2517 4" class="kg-image" width="1924" height="1040" loading="lazy">
 	</figure>
 	<p>With this update, Hyperdrive makes it possible for you to build full-stack applications on Workers with your existing databases, network-isolated or not. Whether you’re using <a href="https://developers.cloudflare.com/hyperdrive/examples/aws-rds-aurora"><u>Amazon RDS</u></a>, <a href="https://developers.cloudflare.com/hyperdrive/examples/aws-rds-aurora"><u>Amazon Aurora</u></a>, <a href="https://developers.cloudflare.com/hyperdrive/examples/google-cloud-sql"><u>Google Cloud SQL</u></a>, <a href="https://azure.microsoft.com/en-gb/products/category/databases"><u>Azure Database</u></a>, or any other provider, Hyperdrive can connect to your databases and optimize your database connections to provide the fast performance you’ve come to expect with building on Workers.</p>
 	<h2 id="improved-node.js-compatibility-is-now-ga">Improved Node.js compatibility is now GA</h2>
@@ -227,7 +227,7 @@ compatibility_date = "2024-09-23"
 	<h2 id="continuous-integration-and-delivery">Continuous Integration &amp; Delivery (CI/CD) with Workers Builds</h2>
 	<p>Now in open beta, you can connect a GitHub or GitLab repository to a Worker, and Cloudflare will automatically build and deploy your changes each time you push a commit. Workers Builds provides an integrated CI/CD workflow you can use to build and deploy everything from full-stack applications built with the most popular frameworks to simple static websites. Just add your build command and let Workers Builds take care of the rest.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1K9izEbBxIlA0nXbNKJ1Od/2dc98ef0662a1ebf5bed4215895fa758/BLOG-2517_5.png" alt="BLOG-2517 5" class="kg-image" width="923" height="203" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1K9izEbBxIlA0nXbNKJ1Od/55ecf9e56ecbc33aeb88df7ede1afddc/BLOG-2517_5.png" alt="BLOG-2517 5" class="kg-image" width="923" height="203" loading="lazy">
 	</figure>
 	<p>While in open beta, Workers Builds is free to use, with a limit of one concurrent build per account, and unlimited build minutes per month. Once Workers Builds is Generally Available in early 2025, you will be billed based on the number of build minutes you use each month, and have a higher number of concurrent builds.</p>
 	<style type="text/css">
@@ -339,14 +339,14 @@ compatibility_date = "2024-09-23"
 	<p>Each newly uploaded version of a Worker now automatically generates a preview URL. Preview URLs make it easier for you to collaborate with your team during development, and can be used to test and identify issues in a preview environment before they are deployed to production.</p>
 	<p>When you upload a version of your Worker via the Wrangler CLI, Wrangler will display the preview URL once your upload succeeds. You can also find preview URLs for each version of your Worker in the Cloudflare dashboard:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29iDm0x8QQex5ryatk23e1/e0f16dc98b0f0fbd37d18663847d4cfd/BLOG-2517_6.png" alt="BLOG-2517 6" class="kg-image" width="1999" height="477" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29iDm0x8QQex5ryatk23e1/ecfdba5b98b6e0c22350087a6035442d/BLOG-2517_6.png" alt="BLOG-2517 6" class="kg-image" width="1999" height="477" loading="lazy">
 	</figure>
 	<p>Preview URLs for Workers are similar to Pages <a href="https://developers.cloudflare.com/pages/configuration/preview-deployments"><u>preview deployments</u></a> — they run on your Worker’s <code>workers.dev</code> subdomain and allow you to view changes applied on a new version of your application before the changes are deployed.</p>
 	<p>Learn more about preview URLs by visiting our <a href="https://developers.cloudflare.com/workers/configuration/previews"><u>developer documentation</u></a>.&nbsp;</p>
 	<h2 id="gradual-deployments">Safely release to production with Gradual Deployments</h2>
 	<p>At Developer Week, we launched <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#_top"><u>Gradual Deployments</u></a> for Workers and Durable Objects to make it safer and easier to deploy changes to your applications. Gradual Deployments is now GA —&nbsp;we have been using it ourselves at Cloudflare for mission-critical services built on Workers since early 2024.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FOHnaYqTyhuJRZVdERWdh/d0fa754c9a96a1623bbc6761a9477527/BLOG-2517_7.png" alt="BLOG-2517 7" class="kg-image" width="1999" height="997" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FOHnaYqTyhuJRZVdERWdh/52df3d29622ccca9118d1cb49de19ae8/BLOG-2517_7.png" alt="BLOG-2517 7" class="kg-image" width="1999" height="997" loading="lazy">
 	</figure>
 	<p>Gradual deployments can help you stay on top of availability SLAs and minimize application downtime by surfacing issues early. Internally at Cloudflare, every single service built on Workers uses gradual deployments to roll out new changes. Each new version gets released in stages —– 0.05%, 0.5%, 3%, 10%, 25%, 50%, 75% and 100% with time to soak between each stage. Throughout the roll-out, we keep an eye on metrics (which are often instrumented with <a href="https://developers.cloudflare.com/analytics/analytics-engine"><u>Workers Analytics Engine</u></a>!) and we <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks"><u>roll back</u></a> if we encounter issues.&nbsp;</p>
 	<p>Using gradual deployments is as simple as swapping out the <a href="https://developers.cloudflare.com/workers/wrangler/commands/#versions"><u>wrangler commands</u></a>, <a href="https://developers.cloudflare.com/api/operations/worker-versions-upload-version"><u>API endpoints</u></a>, and/or using “Save version” in the code editor that is built into the Workers dashboard. Read the <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments"><u>developer documentation</u></a> to learn more and get started.&nbsp;</p>
@@ -354,7 +354,7 @@ compatibility_date = "2024-09-23"
 	<p><a href="https://developers.cloudflare.com/queues"><u>Cloudflare Queues</u></a> is now generally available with higher limits.&nbsp;</p>
 	<p>Queues let a developer decouple their Workers into event driven services. <i>Producer </i>Workers write events to a Queue, and <i>consumer </i>Workers are invoked to take actions on the events. For example, you can use a Queue to decouple an e-commerce website from a service which sends purchase confirmation emails to users.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cpkxgIQSYLrwbfhDSL2A5/7576bfdc1d671c53dcb1ad283e0ae400/BLOG-2517_8.png" alt="BLOG-2517 8" class="kg-image" width="1200" height="429" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cpkxgIQSYLrwbfhDSL2A5/97818131c1f4f7d2e8b8d76dcc8c7f9a/BLOG-2517_8.png" alt="BLOG-2517 8" class="kg-image" width="1200" height="429" loading="lazy">
 	</figure>
 	<p>Throughput and concurrency limits for Queues are now significantly higher, which means you can push more messages through a Queue, and consume them faster.</p>
 	<ul>
@@ -381,11 +381,11 @@ compatibility_date = "2024-09-23"
 	<h2 id="event-notifications-for-r2-is-now-ga">Event notifications for R2 is now GA</h2>
 	<p>We’re excited to announce that event notifications for R2 is now generally available. Whether it’s kicking off image processing after a user uploads a file or triggering a sync to an external data warehouse when new analytics data is generated, many applications need to be able to reliably respond when events happen. <a href="https://blog.cloudflare.com/r2-events-gcs-migration-infrequent-access/#event-notifications-open-beta"><u>Event notifications</u></a> for <a href="https://developers.cloudflare.com/r2"><u>Cloudflare R2</u></a> give you the ability to build event-driven applications and workflows that react to changes in your data.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73t1PtQg576iv7m95HHjGL/509bd2afe667a89d172c13d050131fa0/BLOG-2517_9.png" alt="BLOG-2517 9" class="kg-image" width="1200" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73t1PtQg576iv7m95HHjGL/26cd028004f5b669e41a89a7265c5a14/BLOG-2517_9.png" alt="BLOG-2517 9" class="kg-image" width="1200" height="384" loading="lazy">
 	</figure>
 	<p>Here’s how it works: When data in your R2 bucket changes, event notifications are sent to your queue. You can consume these notifications with a <a href="https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker"><u>consumer Worker </u></a>or <a href="https://developers.cloudflare.com/queues/configuration/pull-consumers"><u>pull them over HTTP</u></a> from outside of Cloudflare Workers.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NSN5r40rmXy0FMGOKvdAd/3f6a25a5c77dcbe25fc8147e89bfb3dd/BLOG-2517_10.png" alt="BLOG-2517 10" class="kg-image" width="1756" height="1378" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NSN5r40rmXy0FMGOKvdAd/7d0c0637ccc478881528339304942948/BLOG-2517_10.png" alt="BLOG-2517 10" class="kg-image" width="1756" height="1378" loading="lazy">
 	</figure>
 	<p>Since we introduced event notifications in <a href="https://blog.cloudflare.com/r2-events-gcs-migration-infrequent-access/#event-notifications-open-beta"><u>open beta</u></a> earlier this year, we’ve made significant improvements based on your feedback:</p>
 	<ul>
@@ -406,7 +406,7 @@ compatibility_date = "2024-09-23"
 	<h2 id="removing-serverless-microservices-tax">Removing the serverless microservices tax: No more request fees for Service Bindings and Tail Workers</h2>
 	<p>Earlier this year, we quietly changed Workers pricing to lower your costs. As of July 2024, you are no longer charged for requests between Workers on your account made via <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings"><u>Service Bindings</u></a>, or for invocations of <a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers"><u>Tail Workers.</u></a> For example, let’s say you have the following chain of Workers: </p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PTgWu9XiGJNoWrHTduQdB/b2ea50573a6e4a027df8b82420066919/BLOG-2517_11.png" alt="Diagram of Workers using Service Bindings and a Tail Worker" class="kg-image" width="1402" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PTgWu9XiGJNoWrHTduQdB/84e1f6ee0788f99684440a9db7b4e6c1/BLOG-2517_11.png" alt="Diagram of Workers using Service Bindings and a Tail Worker" class="kg-image" width="1402" height="628" loading="lazy">
 	</figure>
 	<p>Each request from a client results in three Workers invocations. Previously, we charged you for each of these invocations, plus the CPU time for each of these Workers. With this change, we only charge you for the first request from the client, plus the CPU time used by each Worker.</p>
 	<p>This eliminates the additional cost of breaking a monolithic serverless app into microservices. In 2023, we introduced new <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero"><u>pricing based on CPU time</u></a>, rather than duration, so you don’t have to worry about being billed for time spent waiting on I/O. This includes I/O to other Workers. With this change, you’re only billed for the first request in the chain, eliminating the other additional cost of using multiple Workers.</p>
@@ -416,7 +416,7 @@ compatibility_date = "2024-09-23"
 	<p>Large, oversized images can throttle your application speed and page load times. We built <a href="https://developers.cloudflare.com/images"><u>Cloudflare Images</u></a> to let you dynamically optimize images in the correct dimensions and formats for each use case, all while storing only the original image.</p>
 	<p>In the spirit of Birthday Week, we’re making image optimization available to everyone with a Cloudflare account, no subscription needed. You’ll be able to use Images to transform images that are stored outside of Images, such as in R2.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49UPZRpeAp79qugqstqbT7/39d884eb57d7ef6daff4e40b563147ce/BLOG-2517_12.png" alt="BLOG-2517 12" class="kg-image" width="1200" height="370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49UPZRpeAp79qugqstqbT7/5e23fb4c7a458f5d00b401383bd6e777/BLOG-2517_12.png" alt="BLOG-2517 12" class="kg-image" width="1200" height="370" loading="lazy">
 	</figure>
 	<p>Transformations are served from your zone through a specially formatted URL with parameters that specify how an image should be optimized. For example, the transformation URL below uses the <code>format</code> parameter to automatically serve the image in the most optimal format for the requesting browser:</p>
 	<pre class="language-javascript"><code class="language-javascript">https://example.com/cdn-cgi/image/format=auto/thumbnail.png</code></pre>

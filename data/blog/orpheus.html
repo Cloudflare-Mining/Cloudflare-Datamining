@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UPbWYEgAtr3rCGssj1yv7/697f4f416fcd206ab36a597dda1ef203/Orpheus.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UPbWYEgAtr3rCGssj1yv7/02c60e96692924603c3c26f2a4dcafa6/Orpheus.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s mission is to help build a better Internet for everyone. Building a better Internet means helping build more reliable and efficient services that everyone can use. To help realize this vision, we’re announcing the free distribution of two products, one old and one new:</p>
@@ -28,7 +28,7 @@
 	<p>Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tyJdM0Ardg2o6mCgracqP/7e05a7255e7af76984d325d641c16c3a/pasted-image-0.png" alt="" class="kg-image" width="1999" height="723" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tyJdM0Ardg2o6mCgracqP/781fa255d1a3bd7fbfc3438770323a55/pasted-image-0.png" alt="" class="kg-image" width="1999" height="723" loading="lazy">
 
 	</figure>
 	<h4>Tiered Cache is simple to enable:</h4>
@@ -49,7 +49,7 @@
 	<p>From there, customers will automatically be enrolled in <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation/#:~:text=Tiered%20Cache%20is%20part%20of,visitor%20to%20content%20is%20at">Smart Tiered Cache Topology</a> without needing to make any additional changes. Enterprise Customers can select from different prefab topologies or have a custom topology created for their unique needs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24qHPhnucDlLNf31ullV63/1935194a8c52b5702fc57fe13fd6ff64/Screen-Shot-2021-09-13-at-10.14.33-AM.png" alt="" class="kg-image" width="1792" height="1250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24qHPhnucDlLNf31ullV63/4326a33f02fb3142bf061f3d6018b40a/Screen-Shot-2021-09-13-at-10.14.33-AM.png" alt="" class="kg-image" width="1792" height="1250" loading="lazy">
 
 	</figure>
 	<p>Smart Tiered Cache dynamically selects the single best upper tier for each of your website’s origins with no configuration required. We will dynamically find the single best upper tier for an origin by using Cloudflare’s performance and routing data. Cloudflare collects latency data for each request to an origin. Using this latency data, we can determine how well any upper-tier data center is connected with an origin and can empirically select the best data center with the lowest latency to be the upper-tier for an origin.</p>
@@ -78,7 +78,7 @@
 	<p>You may have seen this error before at one time or another.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6599jQn6DEqybzjrQpQa60/4d9fd16813b1c6ac44ee4fedb0d08e4d/image2-11.png" alt="" class="kg-image" width="919" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6599jQn6DEqybzjrQpQa60/0410df7eb2f542cbd89fde544ca3d67a/image2-11.png" alt="" class="kg-image" width="919" height="452" loading="lazy">
 
 	</figure>
 	<p>This error indicates that a user was unable to reach content because Cloudflare couldn’t reach the origin. Because of the unpredictability of the Internet described above, users may see this error even when an origin is up and able to receive traffic.</p>
@@ -95,7 +95,7 @@
 	<p>Orpheus builds and provisions routes from Cloudflare to origins by analyzing data from users on every path from Cloudflare and ordering them on a per-data center level with the goal of eliminating connection errors and minimizing packet loss. If Orpheus detects errors on the current path from Cloudflare back to a customer origin, Orpheus will steer subsequent traffic from the impacted network path to the healthiest path available.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ay5HW825T1WjKsgpfxOSb/0dca9c3b36d2c37979209f36ca16eacb/pasted-image-0--1-.png" alt="" class="kg-image" width="1201" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ay5HW825T1WjKsgpfxOSb/bd1229a73126b57aad5fd0653719296e/pasted-image-0--1-.png" alt="" class="kg-image" width="1201" height="676" loading="lazy">
 
 	</figure>
 	<p>This is similar to how Argo works but with some key differences: Argo is always steering traffic down the fastest path, whereas Orpheus is reactionary and steers traffic down healthy (and not necessarily the fastest) paths when needed.</p>
@@ -112,7 +112,7 @@
 	<p>One day, a link between Tampa and the Chicago origin gets cut by a wandering backhoe. This means that Tampa loses some connectivity back to the Chicago origin. As a result, Barry’s parents start to see failures when connecting back to origin when connecting to the site. This reflects in origin reachability decreasing. Orpheus helps here by finding alternate paths for Barry’s parents, whether it’s through Boston, Seattle, or any location in between that isn’t impacted by the fiber cut seen in Tampa.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nGtu3bi6IFo4tRu23sjw8/9c0efb38d9e8032eccdbd1efe97ccfc9/pasted-image-0--2-.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nGtu3bi6IFo4tRu23sjw8/ed581a22fd8bb7c63f79fd28b8ce36c6/pasted-image-0--2-.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>So even though there is packet loss between one of Cloudflare’s data centers and Barry’s origin, because there is a path through a different Cloudflare data center that doesn’t have loss, the traffic will still succeed because the traffic will go down the non-lossy path.</p>
@@ -127,7 +127,7 @@
 	<p>In our rollout of Orpheus for customers, we observed that Orpheus improved Origin reachability by 23%, from 99.87% to 99.90%. Here is a chart showing the improvement Orpheus provides (lower is better):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MQRci25WsBnmAzcM4Xlpi/5bdc4630cbb2b35d0de6479b58571e8a/imageLikeEmbed--3-.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MQRci25WsBnmAzcM4Xlpi/866e96d193212605efe017da8f8157c5/imageLikeEmbed--3-.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>We measure this reachability improvement by measuring 522 rates for every data center-origin pair and then comparing traffic that traversed Orpheus routes with traffic that went directly back to origin. Orpheus was especially helpful at improving reachability for slightly lossy paths that could present small amounts of failure over a long period of time, whereas direct to origin would see those failures.</p>

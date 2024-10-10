@@ -1,4 +1,4 @@
-<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cIhr4n65BFcEhP5C4Ic8J/467cd810242860cc5da401a8b8a8777b/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers.png" alt="">
+<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cIhr4n65BFcEhP5C4Ic8J/913226074214f0dc7e4e855ddb19abcd/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>I'm extremely stoked to announce <a href="https://workers.cloudflare.com/built-with">Built with Workers</a> today – it's an awesome resource for exploring what you can build with <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. As Adam explained in <a href="https://blog.cloudflare.com/built-with-workers">our launch post</a>, showcasing developers building incredible projects with tools like Workers KV or our <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">streaming HTML rewriter</a> is a great way to celebrate users of our platform. It also helps encourage developers to try building their dream app on top of Workers. In this post, I’ll explore some of the architectural and implementation designs we made while building the site.</p>
 	<p>When we first started planning Built with Workers, we wanted to use the site as an opportunity to build a new greenfield application, showcasing the strength of the Workers platform. The Workers Developer Experience team is cross-functional: while we might spend most of our time improving our docs, or developing features for our command-line interface <a href="https://github.com/cloudflare/wrangler">Wrangler,</a> most of us have spent years developing on the web. The prospect of starting a new application is always fun, but in this instance, it was a prime chance to ask (and answer) the question, <i>"If I could build this site on Workers with whatever tools I want, what would I choose?"</i></p>
@@ -7,7 +7,7 @@
 	<p>In this post, we'll dig into Built with Workers, exploring how it works, the technical decisions we've made, and some of the most fascinating aspects of what it means to build applications on the edge.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1umidSCuFOnPav3ZdYthdC/2b77849ae4814f0a22b0317564bf28b4/bww.png" alt="" class="kg-image" width="3338" height="2003" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1umidSCuFOnPav3ZdYthdC/31579479c96cf58508268af85780f38e/bww.png" alt="" class="kg-image" width="3338" height="2003" loading="lazy">
 
 	</figure>
 	<p>A screenshot of the Built with Workers homepage</p>
@@ -150,7 +150,7 @@ exports.createPages = async ({ graphql, actions }) =&gt; {
 	<p>With our previous objective of empowering non-technical folks to make changes to the site without deploying any code in consideration, we've also taken the entire homepage of Built with Workers and defined it as an instance of the "layout" data model in Sanity.io. By doing this, we can define corresponding "collections", which are sets of projects. When a layout has many collections defined inside of the CMS, we can rapidly re-order, re-arrange, and experiment with new collections on the homepage, seeing the updated version of the site reflected immediately, and live on the production site within only a few minutes, after our continuous deployment process has finished.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x7v7SMVVKcuM48wKvz22T/2df48a11b117913892d6b096347f69e3/bww-demo.gif" alt="" class="kg-image" width="3360" height="2100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1x7v7SMVVKcuM48wKvz22T/50e4a31742d85f60e689574f75af1541/bww-demo.gif" alt="" class="kg-image" width="3360" height="2100" loading="lazy">
 
 	</figure>
 	<p>Updating the layout of Built with Workers live from Sanity's studio</p>
@@ -281,7 +281,7 @@ addEventListener('fetch', handleRequest)</code></pre>
 	<p>In doing this, we've made it possible to completely abstract away <i>every</i> deployment task around the Built with Workers project. Not only does the site deploy on a schedule, and on new commits to <code>master</code>, but it can also do additional deploys as the content changes, so that the site is always reflective of the current content in our CMS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CR3w7eC9bk2QZXFlirn1o/d28f5a8eada1c3f8bda045098e6378b4/i6sG6fa_qL9h3uHrSQWI5adnC41xFKaS3vwBIKqk_WqqjSzQ_qZhT5VGnMo8DTMyfyqc8YiPUgTiw77EzopT9cyVWUn1HSrVxsFbKCPHkI-MVtbzTxLJZH8KbYrw.png" alt="" class="kg-image" width="1456" height="896" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CR3w7eC9bk2QZXFlirn1o/fea6c2fe3b3e137c1b78aacabba44d4c/i6sG6fa_qL9h3uHrSQWI5adnC41xFKaS3vwBIKqk_WqqjSzQ_qZhT5VGnMo8DTMyfyqc8YiPUgTiw77EzopT9cyVWUn1HSrVxsFbKCPHkI-MVtbzTxLJZH8KbYrw.png" alt="" class="kg-image" width="1456" height="896" loading="lazy">
 
 	</figure>
 	<p>The GitHub Actions deployment workflow for Built with Workers</p>

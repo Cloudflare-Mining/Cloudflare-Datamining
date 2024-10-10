@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yTydvq57TLdAcc8DsmcM2/f866bce2b40f7868f8deb72d56dc9202/improving-html-time-to-first-byte-es.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yTydvq57TLdAcc8DsmcM2/dc7001396404c3e685f19220f6d68bb5/improving-html-time-to-first-byte-es.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>El tiempo hasta el primer byte (TTFB) de un sitio web es el tiempo desde que el usuario comienza a navegar hasta que el código HTML de la página que ha solicitado empieza a llegar. Un TTFB lento ha sido la pesadilla de mi existencia los más de diez años que llevo ejecutando <a href="https://www.webpagetest.org">WebPageTest</a>.</p>
 	<blockquote>
@@ -10,7 +10,7 @@
 	<p>Hay una razón por la que el TTFB aparece como una de las pocas "notas" que WebPageTest le adjudica a los sitios y, específicamente, por la que es la primera nota de la lista.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TCUV4gx3ZyNYnVjVsfYFV/19c314f1525087b4b10480ac15a6b67a/image2.png" alt="" class="kg-image" width="421" height="109" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TCUV4gx3ZyNYnVjVsfYFV/32c8b2c2d7f37a783ffabd487e315654/image2.png" alt="" class="kg-image" width="421" height="109" loading="lazy">
 
 	</figure>
 	<p>Si el primer byte es lento, <b>TODAS</b> las otras métricas también serán lentas. Su mejora es uno de los pocos elementos que te permite predecir cuál será el impacto sobre las otras medidas. Cada mejora de un milisegundo en el TTFB se traduce directamente en un milisegundo de ahorro en cada una de las otras medidas (es decir, los primeros contenidos serán 500 ms más rápidos si el TTFB mejora 500 ms). Dicho esto, un TTFB rápido no garantiza una experiencia rápida, pero un TTFB lento garantiza una experiencia lenta. Calculo que aproximadamente 50 % de todas las solicitudes de ayuda sobre los resultados de WebPageTest proceden de los propietarios de sitios que tienen problemas con un TTFB lento.</p>
@@ -18,7 +18,7 @@
 	<p>El gráfico de cascada a continuación muestra el tiempo de respuesta del servidor como una barra azul claro en la primera solicitud y puede ser vergonzosamente obvio cuando es lento. En condiciones óptimas, el tiempo de respuesta del servidor no sería más largo que la barra naranja del socket de conexión que va justo antes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7d0DNHbpLoV0EmRTHqGwa5/b5702209c7c547a90242d500d998cc91/waterfall.png" alt="" class="kg-image" width="930" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7d0DNHbpLoV0EmRTHqGwa5/1e6847230080f733ddd23e2356858e45/waterfall.png" alt="" class="kg-image" width="930" height="488" loading="lazy">
 
 	</figure>
 	<p>Unos tres segundos para que el servidor responda.</p>
@@ -36,7 +36,7 @@
 	<p>Existen casos especiales, como cuando un usuario inicia sesión (como administrador u otro) donde el contenido difiere, pero la gran mayoría de visitas son de usuarios anónimos. Si el HTML puede almacenarse en caché y servirse directamente desde el perímetro, entonces la mejora del rendimiento puede ser considerable (unos 3 segundos más rápido en todas las métricas en este caso).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TH74oGL97R8JsgywCNHT2/7496e9fb43d12e8c1b9f10e552d6b3fe/waterfall-fast.png" alt="" class="kg-image" width="930" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TH74oGL97R8JsgywCNHT2/79c4e69003b6ec049eefdb1c5ffda117/waterfall-fast.png" alt="" class="kg-image" width="930" height="471" loading="lazy">
 
 	</figure>
 	<p>Un tiempo de respuesta de servidor mucho más rápido.</p>
@@ -68,14 +68,14 @@
 	<p><code>x-HTML-Edge-Cache: supports=cache|purgeall|bypass-cookies</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BQCzrj1cmT7GFXr2F3bb4/427333c2c3f046bbee24b781b5199875/get.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BQCzrj1cmT7GFXr2F3bb4/5b1abd9356ec40987740b1426b638588/get.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>2 - Cuando el origen responde con una página almacenable en caché, añade un encabezado HTTP en la respuesta para indicar que debe almacenarse en caché y las normas para cuando la versión almacenada no se debe utilizar (para posibilitar que se evite el almacenamiento en caché de usuarios con sesión iniciada):</p>
 	<p><code>x-HTML-Edge-Cache: cache,bypass-cookies=wp-|wordpress</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G6I4eZL3vVd7UcZbvRpf7/9b2fd4c7aaf2358de550a79978f946ab/get-response.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7G6I4eZL3vVd7UcZbvRpf7/255a130164af75eb996aadf622ca3bdc/get-response.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>En este caso, se almacenará en caché el código HTML, pero las solicitudes que tienen cookies que comienzan con "wordpress" o "wp-" en su nombre evitarán el almacenamiento e irán al origen.</p>
@@ -83,19 +83,19 @@
 	<p><code>x-HTML-Edge-Cache: purgeall</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2E2JOCJ9w0SWbMm4EdOx2v/5db26ab7af750b31159c18dd9091e6ab/update-1.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2E2JOCJ9w0SWbMm4EdOx2v/0f4255a1f9be4463f2931cd4490a3054/update-1.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5auvvm8QWCpv35NEglJnLM/a8cf52726e10158859ca985462cdab08/update-response.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5auvvm8QWCpv35NEglJnLM/ad8b85a65cef2a124756e10028ee333a/update-response.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>La única parte complicada de gestionar es que la purga tiene que borrar la caché de TODOS los perímetros, no solo el que traspasó la solicitud.</p>
 	<p>4 - Cuando aparece una nueva solicitud para HTML que está en el almacenamiento perimetral, las cookies de petición se cotejan con las normas para la respuesta almacenada en caché. Si las cookies no están presentes, se sirve la versión almacenada en caché; de lo contrario, la solicitud se traspasa al origen.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ALpw3KENPnX4tZ9gadjcF/709b9d0cc356b0dcb48f78509b571483/cached.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ALpw3KENPnX4tZ9gadjcF/e9bb64e79f138db9f4eb063af9a2b201/cached.png" alt="" class="kg-image" width="960" height="290" loading="lazy">
 
 	</figure>
 	<p>Con este sencillo comando basado en el encabezado y esta interfaz de control, podemos eliminar la necesidad de que un origen se comunique con una API y de cualquier configuración explícita. También hace que la lógica del origen sea significativamente más fácil de implementar, ya que no hay ninguna configuración (o interfaz de usuario) y no hay necesidad de realizar solicitudes salientes a una API específica de un proveedor. El <a href="https://github.com/cloudflare/worker-examples/blob/master/examples/edge-cache-html/WordPress%20Plugin/cloudflare-page-cache/cloudflare-page-cache.php">ejemplo del plugin de WordPress</a>es menos de 50 líneas de código que en su gran mayoría conecta retrollamadas de todos los eventos que cambian contenidos.</p>

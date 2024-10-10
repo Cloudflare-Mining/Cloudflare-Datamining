@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FquuHyDPsMcYwbXrqCMn8/5d55c3293f5c3068aacff27a5fd737d2/image5-1.png" alt="Cloudflare Email Security now works with CrowdStrike Falcon LogScale" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FquuHyDPsMcYwbXrqCMn8/0c5b2fec070a0ddf8eb8df42fdcc668a/image5-1.png" alt="Cloudflare Email Security now works with CrowdStrike Falcon LogScale" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>We are excited to announce an extended partnership between CrowdStrike and Cloudflare to bring together <a href="https://www.cloudflare.com/zero-trust/products/email-security">Cloudflare Email Security</a> and CrowdStrike Falcon® LogScale. With this integration, joint customers who have both Falcon LogScale and Cloudflare Email Security can now send detection data to be ingested and displayed within their Falcon LogScale dashboard.</p>
@@ -33,20 +33,20 @@
 	<p>To set up Cloudflare Email Security detections to flow into Falcon LogScale, navigate to the Settings section and choose the Marketplace tab in the lefthand toolbar, as shown in the screenshot below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WABmFgLPIpepczMvGOlFh/dcaa8a831b0001c56c787cbf513e6aa5/image2.png" alt="" class="kg-image" width="1999" height="852" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WABmFgLPIpepczMvGOlFh/69ac599cc39729cad37b28430a446070/image2.png" alt="" class="kg-image" width="1999" height="852" loading="lazy">
 
 	</figure>
 	<p>After installing the package, an ingest token needs to be generated. Navigate to the “Ingest Tokens” tab under Settings and create one.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gV4sogmc8QmbhHzFsrYCO/584253194146f5b5c353b7d9896ae968/image4-1.png" alt="" class="kg-image" width="1088" height="487" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gV4sogmc8QmbhHzFsrYCO/23d16e335db132bacabd9bb7b735ddd0/image4-1.png" alt="" class="kg-image" width="1088" height="487" loading="lazy">
 
 	</figure>
 	<p>Copy the ingest token to save it for later. From here, customers can navigate to the Cloudflare Email Security dashboard, go to the Settings section, select the Alert Webhooks tab and choose “+ New Webhook”. Then click the SIEM option, choose Other from the dropdown, and input the following information:</p>
 	<p><b>Auth Token:</b> Bearer [INGEST TOKEN]<b>Target:</b> <a href="https://cloud.community.humio.com/api/v1/ingest/hec/raw">https://cloud.community.humio.com/api/v1/ingest/hec/raw</a></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gXAcCOsoN71yC2Kn9DJwV/3c534905ea4c6b6d4f62bd4a36a08038/Screenshot-2023-09-08-at-10.31.26.png" alt="" class="kg-image" width="1598" height="1006" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gXAcCOsoN71yC2Kn9DJwV/8d1bdf8c1cf7c85b8b7bc90003dd8fbf/Screenshot-2023-09-08-at-10.31.26.png" alt="" class="kg-image" width="1598" height="1006" loading="lazy">
 
 	</figure>
 	<p>Customers can choose which events to send to Falcon LogScale by selecting the expanded option. In the screenshot above, the user has chosen to only send malicious and suspicious detections.</p>
@@ -54,7 +54,7 @@
 	<p>When the Cloudflare Email Security package from the Falcon LogScale marketplace is installed, customers are provided with a parser for field extraction and out-of-box content through a dashboard. The parser allows the Falcon LogScale product to be able to query the detection data while the dashboard allows organizations to quickly get the relevant information about their email security. Below is what the dashboard looks like:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uDCtxex6GqQIyBWncKjZp/f51f570f465439b859255b978e85d61f/image3-2.png" alt="" class="kg-image" width="1999" height="754" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uDCtxex6GqQIyBWncKjZp/4fc41be69ec551d11f0c766d8b4f94a3/image3-2.png" alt="" class="kg-image" width="1999" height="754" loading="lazy">
 
 	</figure>
 	<p>As you can see, we have included visualizations and queries to get teams up and running quickly, but it is meant to be a starting point for customers to build on. Customers can write their own queries and use them to create their own widgets. From there, they can create their own rendition of this dashboard to fit their needs.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aEg5hWU8kbH6EqNQ8ubQ0/84b9a29f9cc6e8d6e79f197788b145eb/2009-cheetah-sprint_flip2.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="513" height="397" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aEg5hWU8kbH6EqNQ8ubQ0/9ad3dabe7ded97e7cca48000588c7c9e/2009-cheetah-sprint_flip2.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="513" height="397" loading="lazy">
 
 	</figure>
 	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://upload.wikimedia.org/wikipedia/commons/a/ab/2009-cheetah-sprint.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Yathin_sk">Yathin sk</a></p>
@@ -21,7 +21,7 @@
 	<p>With OCSP, the browser sends the certificate for the site in question to the CA. The CA then returns good, revoked, or unknown for the particular certificate. OCSP is generally preferable because less data needs to be sent and there's less overhead from the browser having to parse the CRL response. While every browser handles the revocation check process differently, generally modern browsers prefer OCSP to CRL checks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TmhgM2xaDZSYQBQOLCbnt/34191bf3624a5b7dd0289865d4161595/guard_dogs.jpg.scaled500.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="500" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TmhgM2xaDZSYQBQOLCbnt/f001d00601ca6540870cbc70802b6da2/guard_dogs.jpg.scaled500.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="500" height="384" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -77,7 +77,7 @@
 	<p>The key to speeding up OCSP is to get rid of the requests that go back to the CA. Rather than needing to request the OCSP response from the CA directly, the OCSP response can be included in the initial SSL handshake (step 3 in the example above). In this sense, the OCSP response is "stapled" to the initial SSL handshake. While it seems like this approach would be less secure, the response is signed by the CA's root certificate so the browser can verify its authenticity even if it is not delivered directly from the CA's OCSP server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uInqYkKZt1noMtSsVPuWc/204c51056acdf20529cb517751f24349/sneakers_ssl.jpg.scaled500.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="480" height="259" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uInqYkKZt1noMtSsVPuWc/dc2b7b8ae7da8ca138dc2bb805459699/sneakers_ssl.jpg.scaled500.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="480" height="259" loading="lazy">
 
 	</figure>
 	<p>While OCSP Stapling makes a ton of sense, it unfortunately hasn't previously been widely supported by web servers. Part of the problem is that it often requires a significant technical investment by web administrators. While that investment may not make sense for many individual sites, CloudFlare sits in a unique position to enable OCSP Stapling for a large number of sites in one fell swoop. So that's what we just did.</p>

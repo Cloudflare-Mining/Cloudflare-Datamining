@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ytLCcef0Vf1F6cXURqSsZ/579687bbd1dc88c1c7683f7340245c4c/image3-37.png" alt="Where to? Introducing Origin Rules" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ytLCcef0Vf1F6cXURqSsZ/d2d967a921e69e23a599ee70e762f970/image3-37.png" alt="Where to? Introducing Origin Rules" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -34,7 +34,7 @@
 	<p>This allows for the web server running <code>www.example.com</code> to live on the IP address 98.51.100.12, and the web server responsible for running <code>shop.example.com</code> to live on a different IP address, e.g. 203.0.113.34. When Cloudflare receives a request for <code>shop.example.com</code>, we send that traffic to the web server at <code>203.0.113.34</code> with the <b>host header</b> <code>shop.example.com</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QtPCUPsB2vqa9Qy18YH87/bec5119f975aa7487b2140956c229a39/image6-10.png" alt="" class="kg-image" width="905" height="409" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QtPCUPsB2vqa9Qy18YH87/15d7dd8e90f7d09d24e2ceee3a8f5d63/image6-10.png" alt="" class="kg-image" width="905" height="409" loading="lazy">
 
 	</figure>
 	<p>As most web servers commonly serve multiple websites, this host header is used to ensure the correct content is loaded. The web server looks at the request it receives, checks the host header, and tries to match it against websites it's been told to serve. If it finds a match, it will route this request to the corresponding website's configuration and the correct files are returned to the visitor.</p>
@@ -50,13 +50,13 @@
 	<p>With a resolve override in place, HTTP requests to <code>www.example.com/shop</code> are now correctly sent by Cloudflare to 203.0.113.34 as requested. And they fail. The web server says it doesn’t know what to do with the HTTP request. This is because the <code>host</code> header is still <code>www.example.com</code>, and the web server does not have any knowledge of that website.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SrXZvJ7n4QlU19sqk81Wk/e0224c3839ac2f5145ef6d9e57b5f5cd/image4-19.png" alt="" class="kg-image" width="905" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SrXZvJ7n4QlU19sqk81Wk/3f7ca877859ef306b0449dea32a8e2ff/image4-19.png" alt="" class="kg-image" width="905" height="441" loading="lazy">
 
 	</figure>
 	<p>To fix this, we need to make sure these requests are sent to 203.0.113.34 with a host header of <code>shop.example.com</code>. This is what is known as a <b>host header override.</b> Now, requests to <code>www.example.com/shop</code> are not only correctly routed to 203.0.113.34, but the host header is changed to one that the ecommerce software is expecting - and thus the request is correctly routed, and the visitors sees the correct content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rPXzJ1UgVPGrHyI4nd68t/34777965ac1122b29d57acb73ea6a62b/image7-7.png" alt="" class="kg-image" width="905" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rPXzJ1UgVPGrHyI4nd68t/da84f9efcae86b2b1cac10fb7cb1fad5/image7-7.png" alt="" class="kg-image" width="905" height="441" loading="lazy">
 
 	</figure>
 	<p>The management of these selective overrides, and other overrides, is achieved via <b>Origin Rules</b>.</p>
@@ -74,7 +74,7 @@
 	<p>Historically, host header override and resolve override were achieved with the setting of a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-">Page Rule</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ls9SG1BSKQJvYXkZ60Y8Q/c7eed78b983b0aaf7c4504c1f9b9b7eb/image5-19.png" alt="" class="kg-image" width="1772" height="984" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ls9SG1BSKQJvYXkZ60Y8Q/70ca974801df2c918ad2c138f6d1598b/image5-19.png" alt="" class="kg-image" width="1772" height="984" loading="lazy">
 
 	</figure>
 	<p>Page Rules is the ‘If This Then That’ of Cloudflare. Where the ‘If…’ is a URL, and the ‘Then That’ is changing how we handle traffic to specific parts of a ‘zone’. It allows users to selectively change how traffic is handled, or in this case, where traffic is sent. It is very well adopted, with over one million Page Rules in the past three months alone.</p>
@@ -91,7 +91,7 @@
 	<p>One such use case is using a cloud storage provider as a backend for static assets, such as images. Enterprise zones can use a combination of host header override and resolve override actions to override the destination of outgoing HTTP requests. This allows for all traffic to <code>example.net</code> to be sent to <code>98.51.100.12</code>, but requests to <code>example.net/*.jpg</code> be sent to a publicly accessible S3-compatible bucket.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/swQTQskk9TNp4Ghc6EmeP/5f11dcf208f04841c4af75e0971768e5/image1-61.png" alt="" class="kg-image" width="1600" height="453" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/swQTQskk9TNp4Ghc6EmeP/54fdc46baa87a3a3d1af0bec66b031ca/image1-61.png" alt="" class="kg-image" width="1600" height="453" loading="lazy">
 
 	</figure>
 	<p>To do this, the user would create an Origin Rule setting the resolve override value to be a DNS record on their own zone, pointing to the S3 provider’s URL. This ensures that requests matching the pattern are routed to the S3 URL. However, when the cloud storage provider receives the request it will drop it - as it does not know how to route requests for the host <code>example.net</code>. Therefore, users also need to deploy a host header override, changing this value to match the bucket name - e.g. <code>bucket.example.net</code>.</p>
@@ -129,7 +129,7 @@ server {
 	<p>Origin Rules simplifies destination port modifications, letting users change the destination port via a simple rules experience without ever having to write a single line of code or configuration:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/NZLYSIrxlREcyXmAmdlpJ/8e6f93bf56b168da2f67bb1b16568d95/image2-52.png" alt="" class="kg-image" width="1914" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NZLYSIrxlREcyXmAmdlpJ/9c1773381c3a2312275e1fab51e073c2/image2-52.png" alt="" class="kg-image" width="1914" height="384" loading="lazy">
 
 	</figure>
 	<p>This destination port modification can also be triggered on almost any <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">field</a> available in the ruleset engine, also, allowing users to change which port to send requests to based on URL, URI path, the presence of HTTP request header and more.</p>

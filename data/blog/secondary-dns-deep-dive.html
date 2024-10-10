@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1muUHhV8ymC3QqF4RBGST3/833356a545df94bbed6a2296fec46d75/secondary-dns-deep-dive.png" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1muUHhV8ymC3QqF4RBGST3/04d241be9b6925d92423c02c818f5d7d/secondary-dns-deep-dive.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h2 id="how-does-secondary-dns-work">How Does Secondary DNS Work?</h2>
@@ -141,7 +141,7 @@
 	<p>Each of these microservices communicates with the others through <a href="https://kafka.apache.org">Kafka</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cS9HY6kpiqdrdyD3tqQjI/035e886584658b3d1996f2d20e515b0d/image8-1.png" alt="" class="kg-image" width="1200" height="776" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cS9HY6kpiqdrdyD3tqQjI/55d2a781d351cc854f416dd9b1e7d4f3/image8-1.png" alt="" class="kg-image" width="1200" height="776" loading="lazy">
 
 	</figure>
 	<p>Figure 1: Secondary DNS Microservice Architecture‌‌</p>
@@ -195,7 +195,7 @@
 	<p>Ultimately we decided to proxy our egress traffic from k8s, to the DNS primary servers, using static proxy addresses. <a href="https://github.com/shadowsocks/shadowsocks-libev">Shadowsocks-libev</a> was chosen as the <a href="https://en.wikipedia.org/wiki/SOCKS">SOCKS5</a> implementation because it is fast, secure and known to scale. In addition, it can handle both UDP/TCP and IPv4/IPv6.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JcJoxa44FoxHtMrWBXCP5/a38eceacbe063b32e05f2eb0c6638cb2/image1-8.png" alt="" class="kg-image" width="1740" height="895" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JcJoxa44FoxHtMrWBXCP5/62805a1a8091ba1597f33614bece420b/image1-8.png" alt="" class="kg-image" width="1740" height="895" loading="lazy">
 
 	</figure>
 	<p>Figure 2: Shadowsocks proxy Setup</p>
@@ -243,7 +243,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S3Ha1uEWxV2bbrzSJY9y2/0febbda1ee4fb722a744595db30af419/image5-3.png" alt="" class="kg-image" width="1999" height="639" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1S3Ha1uEWxV2bbrzSJY9y2/84a6c819cf54b3ade09d9e36ecad8ac2/image5-3.png" alt="" class="kg-image" width="1999" height="639" loading="lazy">
 
 	</figure>
 	<p>Figure 3: Spectrum interaction with Notify Listener</p>
@@ -275,7 +275,7 @@
 	<p>There is no way to spoof these records, because the server only permits two extra records, one of which is the optional TSIG. Any other records will be overwritten.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pg2MCnr4MUQapXAtQRLeK/17b6e3c82d4da758986e7172941c63da/image4-6.png" alt="" class="kg-image" width="1460" height="1053" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pg2MCnr4MUQapXAtQRLeK/365f1bdaec1c60c88ae408b5c0dea128/image4-6.png" alt="" class="kg-image" width="1460" height="1053" loading="lazy">
 
 	</figure>
 	<p>Figure 4: Proxying Records Between Notifier and Spectrum‌‌</p>
@@ -312,7 +312,7 @@
 	<p>Consider the following problem:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LbPUGXSdf0uzNeI68U06Q/c21959b1bf7b4ca5ab51c3cf58378f9c/image2-2.png" alt="" class="kg-image" width="1483" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LbPUGXSdf0uzNeI68U06Q/13295276ff697029d06c58b2e4a9df81/image2-2.png" alt="" class="kg-image" width="1483" height="486" loading="lazy">
 
 	</figure>
 	<p>Figure 5: Kafka Partition‌‌</p>
@@ -347,7 +347,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1g6Ku6Is2fixeHyiTIoEwC/32bf48f615987d67d56146208dc999e3/image9-2.png" alt="" class="kg-image" width="1721" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1g6Ku6Is2fixeHyiTIoEwC/0bb4026298db401018aefc89b027a717/image9-2.png" alt="" class="kg-image" width="1721" height="1999" loading="lazy">
 
 	</figure>
 	<p>Figure 6: Kafka Algorithm to Solve Message Loss</p>
@@ -371,7 +371,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3INig0h7w1oSks6FwirZls/234548723a6de8eac8004ba5264e3a57/image3-6.png" alt="" class="kg-image" width="1200" height="758" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3INig0h7w1oSks6FwirZls/c99581c1c0019f5fc5dd2a80884dc943/image3-6.png" alt="" class="kg-image" width="1200" height="758" loading="lazy">
 
 	</figure>
 	<p>Figure 7: End to End Secondary DNS‌‌</p>
@@ -397,28 +397,28 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70uQkuuFtfY5UPVrza1ZpK/a44d3c567a5ff04ee6e36a07242bce3b/image7-2.png" alt="" class="kg-image" width="1999" height="746" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70uQkuuFtfY5UPVrza1ZpK/ccfa5d2a7c522369d34c8b0671056167/image7-2.png" alt="" class="kg-image" width="1999" height="746" loading="lazy">
 
 	</figure>
 	<p>Figure 8: Zone XFR latency</p>
 	<p>4. Zone Transferer to Zone Builder - 99% of the time we see ~10ms to build a zone.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cfNN2ilrDOES8QwG5ok4I/dff8def77bf9182df3ee2242290e1468/image11-1.png" alt="" class="kg-image" width="1999" height="354" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cfNN2ilrDOES8QwG5ok4I/ab8e3bafc66ec05e55530d997f628a68/image11-1.png" alt="" class="kg-image" width="1999" height="354" loading="lazy">
 
 	</figure>
 	<p>Figure 9: Zone Build time</p>
 	<p>5. Zone Builder to Quicksilver edge: 95% of the time we see less than 1s propagation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1imVuigo0GB7gLug2ISqL7/308cbd2349561ab029712c301ac3c8d1/image6-2.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1imVuigo0GB7gLug2ISqL7/2ad64a24445b9aa75094d78437710d16/image6-2.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
 
 	</figure>
 	<p>Figure 10: Quicksilver propagation time</p>
 	<p>End to End latency: less than 5 seconds on average. Although we have several external probes running around the world to test propagation latencies, they lack precision due to their sleep intervals, location, provider and number of zones that need to run. The actual propagation latency is likely much lower than what is shown in figure 10. Each of the different colored dots is a separate data center location around the world.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BjcchQWzBqyYbX6ksIYMj/b58b93fe2a505cef309271661aa5a1a4/image10.png" alt="" class="kg-image" width="1999" height="433" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BjcchQWzBqyYbX6ksIYMj/0f167f037efdeaf5cece6a054b3095ab/image10.png" alt="" class="kg-image" width="1999" height="433" loading="lazy">
 
 	</figure>
 	<p>Figure 11: End to End Latency</p>

@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TRb09uVoQt8o6FQERO8D/df500a0263d4fb3ad5b7b34cd29154ee/image3-36.png" alt="Cloudflare now uses post-quantum cryptography to talk to your origin server" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TRb09uVoQt8o6FQERO8D/6343f8220bb3e9e7599da155aa299c72/image3-36.png" alt="Cloudflare now uses post-quantum cryptography to talk to your origin server" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Quantum computers pose a <a href="https://blog.cloudflare.com/the-quantum-menace">serious threat</a> to security and privacy of the Internet: encrypted communication intercepted today can be decrypted <a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later">in the future</a> by a sufficiently advanced quantum computer. To counter this <a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later">store-now/decrypt-later</a> threat, cryptographers have been hard at work over the last decades proposing and vetting post-quantum cryptography (PQC), cryptography that’s designed to withstand attacks of quantum computers. After a six-year public competition, in July 2022, the US National Institute of Standards and Technology (NIST), known for standardizing AES and SHA, announced <a href="https://pq-crystals.org/kyber/index.shtml">Kyber</a> as <a href="https://blog.cloudflare.com/nist-post-quantum-surprise">their pick</a> for post-quantum key agreement. Now the baton has been handed to Industry to deploy post-quantum key agreement to protect today’s communications from the threat of future decryption by a quantum computer.</p>
 	<p>Cloudflare operates as a reverse proxy between clients (“visitors”) and customers’ web servers (“origins”), so that we can protect origin sites from attacks and improve site performance. In this post we explain how we secure the connection from Cloudflare to <i>origin servers</i>. To put that in context, let’s have a look at the connection involved when visiting an uncached page on a website served through Cloudflare.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WZQZByAjMmuu53BzxjNik/d2ffa03d42c004706f330d9dbc910ec2/Connections-involved-when-user-visits-an-uncached-page-on-a-website-served-through-Cloudflare.png" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server." class="kg-image" width="1600" height="417" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WZQZByAjMmuu53BzxjNik/170ebefe3aec6f8277f4c2e4e34b76f1/Connections-involved-when-user-visits-an-uncached-page-on-a-website-served-through-Cloudflare.png" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server." class="kg-image" width="1600" height="417" loading="lazy">
 
 	</figure>
 	<p>The first connection is from the visitor’s browser to Cloudflare. In October 2022, <a href="https://blog.cloudflare.com/post-quantum-for-all">we enabled <i>X25519+Kyber</i> as a beta for all websites and APIs</a> served through Cloudflare. However, it takes two to tango: the connection is only secured if the browser also supports post-quantum cryptography. As of August 2023, <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html">Chrome</a> is slowly enabling <i>X25519+Kyber</i> by default.</p>
@@ -124,7 +124,7 @@
 	<p>To remove a round trip, the client is allowed to make a guess of what the server supports and start the key agreement by sending one or more <i>client keyshares</i>. That guess might be correct (on the left in the diagram below) or the client has to retry (on the right). By the way, this guessing of keyshares is a <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">new feature of TLS 1.3</a>, and it is the main reason why it’s faster than TLS 1.2.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QbpgdMdMdt9aW2nmrBSnT/4b260dba5525453955aaba499a83e3a9/image2-30.png" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right." class="kg-image" width="1726" height="1346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QbpgdMdMdt9aW2nmrBSnT/97fee7c97d8c726e29fbf7b72666bfb6/image2-30.png" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right." class="kg-image" width="1726" height="1346" loading="lazy">
 
 	</figure>
 	<p><i>Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a</i> HelloRetryRequest <i>on the right.</i></p>

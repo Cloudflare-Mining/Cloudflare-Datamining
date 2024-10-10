@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EZamNYbSPCC1yBqXXwaZR/158a957cb00ef4768bdb257033b2a334/image4-4.png" alt="Network flow monitoring is GA, providing end-to-end traffic visibility" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EZamNYbSPCC1yBqXXwaZR/d3e36168073dcc8f08b715ab7d4bbe5e/image4-4.png" alt="Network flow monitoring is GA, providing end-to-end traffic visibility" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Network engineers often find they need better visibility into their network’s traffic and operations while analyzing DDoS attacks or troubleshooting other traffic anomalies. These engineers typically have some high level metrics about their network traffic, but they struggle to collect essential information on the specific traffic flows that would clarify the issue. To solve this problem, Cloudflare has been piloting a cloud network flow monitoring product called <a href="https://www.cloudflare.com/network-services/products/magic-network-monitoring">Magic Network Monitoring</a> that gives customers end-to-end visibility into all traffic across their network.</p>
@@ -22,7 +22,7 @@
 	<p>Magic Network Monitoring is a cloud network flow monitor. <a href="https://en.wikipedia.org/wiki/Traffic_flow_(computer_networking)">Network traffic flow</a> refers to any stream of packets between one source and one destination with the same Internet protocol and set of ports. Customers can send network flow reports from their routers (or any other network flow generator) to a publicly available endpoint on <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">Cloudflare’s anycast network</a>, even if the traffic didn’t originally pass through Cloudflare’s network. Cloudflare analyzes the network flow data, then provides customers visibility into key network traffic metrics via an analytics dashboard. These metrics include: traffic volume (in bits or packets) over time, source IPs, destination IPs, ports, traffic protocols, and router IPs. Customers can also configure alerts to identify <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a> and any other abnormal traffic volume activities.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CrObnYrLzKlSOjSUS8dH6/4d7859161148d4f49ed8a052de0cb123/1-1.png" alt="" class="kg-image" width="1435" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CrObnYrLzKlSOjSUS8dH6/c59b39388b98ba4e7492121d5db3bacf/1-1.png" alt="" class="kg-image" width="1435" height="802" loading="lazy">
 
 	</figure>
 	<p>Send flow data from your network to Cloudflare for analysis</p>
@@ -38,14 +38,14 @@
 	<p>In general, we noticed that some MTOD customers lacked the network visibility tools to quickly identify DDoS attacks and take the appropriate mitigation action. Now, MTOD customers can use Magic Network Monitoring to analyze their network data and receive an alert if a DDoS attack is detected.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HcgWfT995D5YTtTjI7t0x/574610a467b76ac566a6925542cc264e/2-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HcgWfT995D5YTtTjI7t0x/8f5265dc6c920df9aa4de7db814bfc71/2-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
 
 	</figure>
 	<p>Cloudflare detects a DDoS attack from the customer’s network flow data</p>
 	<p>Once a DDoS attack is detected, Magic Network Monitoring customers can choose to either manually or automatically enable Magic Transit to mitigate any DDoS attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FlxXObNPK0L8lx2sN0S6S/1f72af26e54e14b46245c9cd1bb53ba2/3-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FlxXObNPK0L8lx2sN0S6S/8a47e805c9ec45f41c1f9d3bf6d84a33/3-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
 
 	</figure>
 	<p>Activate Magic Transit for DDoS protection</p>
@@ -71,7 +71,7 @@
 	<p>The sampled data is packaged into one of two industry standard formats for network flow data: NetFlow or sFlow. In NetFlow, the sampled packet data is grouped by different packet characteristics such as source / destination IP, port, and protocol. Each group of sampled packet data also includes a traffic volume estimate. In sFlow, the entire packet header is selected as the representative sample, and there isn’t any data summarization. As a result, sFlow is a richer data format and includes more details about network traffic than NetFlow data. Once either the NetFlow or sFlow data samples are collected, they’re sent to Magic Network Monitoring for analysis and alerting.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XoUWHVTlsaVD6wYjekYm6/1cad7d0771490b43d75d9341d6d50edc/4-1.png" alt="" class="kg-image" width="1600" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XoUWHVTlsaVD6wYjekYm6/951cff39344b3912444f239618af64c6/4-1.png" alt="" class="kg-image" width="1600" height="400" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -87,7 +87,7 @@
 	<p>The first version of Magic Network Monitoring used <a href="https://en.wikipedia.org/wiki/Simple_random_sample">random sampling</a> where a random subset of network flow data with the same timestamp was selected to represent the traffic volume at that point in time. A characteristic of network flow data is that some samples are more significant than others and represent a greater volume of network traffic. In order to account for this significance, we can associate a <a href="https://en.wikipedia.org/wiki/Weighting">weight</a> with each sample based on the traffic volume it represents. Network flow data weights are always positive numbers, and they follow a <a href="https://en.wikipedia.org/wiki/Long_tail">long tail distribution</a>. These data characteristics caused MNM’s random sampling to incorrectly estimate the traffic volume of a customer’s network. Customers would see false spikes in their traffic volume analytics when an outlying data sample from the long tail was randomly selected to be the representative of all traffic at that point in time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Tje0Xn9GucCoNamBEyvVE/d42f34ec07fa4acfbc61f617b3aa307f/5-1.png" alt="" class="kg-image" width="1600" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Tje0Xn9GucCoNamBEyvVE/0d097130617a1c6584efa8679f91c87a/5-1.png" alt="" class="kg-image" width="1600" height="400" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -103,7 +103,7 @@
 	<p>The new VarOpt sampling method significantly increased the accuracy of the traffic volume estimations in Magic Network Monitoring, and solved our customer’s problems. These sampling improvements paved the way for general availability, and we’re excited to make accurate network flow analytics available to everyone.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NYGpyTodAgtP9K8KycjGZ/6507a0e3a9c017846015ae7862fd7633/6-1.png" alt="" class="kg-image" width="1600" height="320" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NYGpyTodAgtP9K8KycjGZ/fa5e290cdf3286c7efcbbe53954e1540/6-1.png" alt="" class="kg-image" width="1600" height="320" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

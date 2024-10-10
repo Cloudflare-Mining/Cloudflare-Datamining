@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66XqWhNhXtlHJl2NLTFfc6/530c6aa05ba4cc2d194d89d896b467e7/image4-3.png" alt="Cloudflare does not usually put pressure on an origin server as this article picture may imply." class="kg-image" width="1200" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66XqWhNhXtlHJl2NLTFfc6/3b2fa4074ba19bdd7581739c163ba7bf/image4-3.png" alt="Cloudflare does not usually put pressure on an origin server as this article picture may imply." class="kg-image" width="1200" height="676" loading="lazy">
 
 	</figure>
 	<p>It is no secret that Cloudflare is encouraging companies to deprecate their use of IPv4 addresses and move to IPv6 addresses. We have a couple articles on the subject from this year:</p>
@@ -26,7 +26,7 @@
 	<p>Describing the full scope of the <a href="https://developers.cloudflare.com/reference-architecture/cdn-reference-architecture/#cloudflare-cdn-architecture-and-design">architecture</a> is out of scope of this article, however, we can provide a basic outline:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70ULgxsqU4zuyWYVrNn6et/f80bedc31733a7d09e120bb797c055ca/image1-2.png" alt="Figure 1: Diagram representing requests coming from an Internet User, protected by Cloudflare products including WAF and DDoS protection, and traveling through the Anycast Network to reach the origin server using Smart Tiered Cache." class="kg-image" width="1999" height="859" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70ULgxsqU4zuyWYVrNn6et/8c80079d6dd93083059a875bbf48059d/image1-2.png" alt="Figure 1: Diagram representing requests coming from an Internet User, protected by Cloudflare products including WAF and DDoS protection, and traveling through the Anycast Network to reach the origin server using Smart Tiered Cache." class="kg-image" width="1999" height="859" loading="lazy">
 
 	</figure>
 	<ol>
@@ -68,7 +68,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1q7v3WNgI5X3JQg5ua0B8g/de08b85579b9871bcbe49ba89e6caba6/image6.png" alt="Figure 2: A bimodal chart, given two IPv4 source addresses, depicting 20 thousand connections that were slow to find a port, and more than roughly 50 thousand connections that were fast to find a port." class="kg-image" width="1626" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1q7v3WNgI5X3JQg5ua0B8g/5b557ca762a08422badae379233dee76/image6.png" alt="Figure 2: A bimodal chart, given two IPv4 source addresses, depicting 20 thousand connections that were slow to find a port, and more than roughly 50 thousand connections that were fast to find a port." class="kg-image" width="1626" height="742" loading="lazy">
 
 	</figure>
 	<p>The y-axis are buckets of nanoseconds in powers of ten. The x-axis represents the number of connections made per bucket. Therefore, more connections in a lower power of ten buckets is better.</p>
@@ -85,7 +85,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kpueuXS3SbBTIig306IDN/0b1cddbb69f71152ac106a3b76228e3e/image8.png" alt="Figure 3: A bimodal chart, given one IPv4 source address, depicting a split of roughly 25 thousand connections in the fast case, and over 40 thousand connections in the slow case." class="kg-image" width="1710" height="892" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kpueuXS3SbBTIig306IDN/b27ab899656fbfc0bf3c885a44fb04a4/image8.png" alt="Figure 3: A bimodal chart, given one IPv4 source address, depicting a split of roughly 25 thousand connections in the fast case, and over 40 thousand connections in the slow case." class="kg-image" width="1710" height="892" loading="lazy">
 
 	</figure>
 	<p>In this case, the bimodal distribution is even more pronounced. Over half of the total connections are in the slow case than in the fast! We may conclude that simply switching to one IPv4 address for cache egress is going to introduce significant latency on our connect() syscalls.</p>
@@ -101,7 +101,7 @@
 	<p>To investigate this, we first took a flame graph of a production machine:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tFwadYDdC5UVK78j4yKsv/c060c4a5072125d437042ddeb486ae1a/image7.png" alt="Figure 4: This is a flame graph of the connect syscall in Linux." class="kg-image" width="1360" height="365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tFwadYDdC5UVK78j4yKsv/64aca09189acba5bf3dab2e043265e0f/image7.png" alt="Figure 4: This is a flame graph of the connect syscall in Linux." class="kg-image" width="1360" height="365" loading="lazy">
 
 	</figure>
 	<p>Flame graphs depict a run-time function call stack of a system. Y-axis depicts call-stack depth, and x-axis depicts a function name in a horizontal bar that represents the amount of times the function was sampled. Checkout this in-depth <a href="https://www.brendangregg.com/flamegraphs.html">guide</a> about flame graphs for more details.</p>
@@ -110,7 +110,7 @@
 	<p>We are now going to ensure a deterministic amount of connections, and remove lock contention from the problem. The result is something like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d6tJum5BBe3jsLRqhXtFN/255b2c1146035224efa1ab063464e6a4/Screenshot-2024-02-07-at-15.54.29.png" alt="Figure 5: A detailed chart representing the bimodal distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.025 milliseconds while we see 4.59 milliseconds on average for odd ports." class="kg-image" width="1622" height="908" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5d6tJum5BBe3jsLRqhXtFN/7952fb3d0a3da761de158fae4f925eb5/Screenshot-2024-02-07-at-15.54.29.png" alt="Figure 5: A detailed chart representing the bimodal distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.025 milliseconds while we see 4.59 milliseconds on average for odd ports." class="kg-image" width="1622" height="908" loading="lazy">
 
 	</figure>
 	<p>On the y-axis we measured the latency between the start and end of a connect() syscall. The x-axis denotes when a connect() was called. Green dots are even numbered ports, and red dots are odd numbered ports. The orange line is a linear-regression on the data.</p>
@@ -154,7 +154,7 @@ other_parity_scan:
 	<p>There is a bit too much going on in the loop to explain in text. I have an example instead:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uVqtAUR07epRRKqQbHWkp/0e204a4f19b381ae1dce5c5ac4094891/image5.png" alt="Figure 6: A step-by-step diagram showing how the function __inet_has_connect() finds a port for connections preferring late port-binding." class="kg-image" width="825" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uVqtAUR07epRRKqQbHWkp/2a5671b1dd3c68c012e7171b8103a53e/image5.png" alt="Figure 6: A step-by-step diagram showing how the function __inet_has_connect() finds a port for connections preferring late port-binding." class="kg-image" width="825" height="471" loading="lazy">
 
 	</figure>
 	<p>This example is bound by 8 ports and 8 possible connections. All ports start unused. As a port is used up, the port is grayed out. Green boxes represent the next chosen port. All other colors represent open ports. Blue arrows are even port iterations of offset, and red are the odd port iterations of offset. Note that the offset is randomly picked, and once we cross over to the odd range, the offset is incremented by one.</p>
@@ -211,7 +211,7 @@ while i &gt;= 0:
 	<p>This approach leverages the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177f3e42a4d8738af8ac19c3a90d002"><code>IP_LOCAL_PORT_RANGE</code></a> socket option. And we were able to achieve performance like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Uz8whp12VuvqvKTDnE1u9/18f6621de34ae00e57aee7ffe5dff7fb/Screenshot-2024-02-07-at-16.00.22.png" alt="Figure 7: A detailed chart representing a flatter-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.03 milliseconds while we see 0.031 milliseconds on average for odd ports. There are 868 connections that resulted in an error." class="kg-image" width="1614" height="906" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Uz8whp12VuvqvKTDnE1u9/4701177d739bdffe2a2399213cf72941/Screenshot-2024-02-07-at-16.00.22.png" alt="Figure 7: A detailed chart representing a flatter-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.03 milliseconds while we see 0.031 milliseconds on average for odd ports. There are 868 connections that resulted in an error." class="kg-image" width="1614" height="906" loading="lazy">
 
 	</figure>
 	<p>That is much better! The chart also introduces black dots that represent errored connections. However, they have a tendency to clump at the very end of our port range as we approach exhaustion. This is not dissimilar to what we may see in “<a href="https://blog.cloudflare.com/#selecttestrepeat">select, test, repeat</a>”.</p>
@@ -332,7 +332,7 @@ sk.connect((dest_ip, dest_port))</code></pre>
 	<p>Setting <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177f3e42a4d8738af8ac19c3a90d002"><code>IP_LOCAL_PORT_RANGE</code></a> option is what tells the kernel to use a similar approach to “<a href="https://blog.cloudflare.com/#random">select port by random shifting range</a>” such that the start offset is randomized to be even or odd, but then loops incrementally rather than skipping every other port. We end up with results like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ttWStZgNYfwftr71r8Vrt/99c2bfe9615e05d8af0de06c78ae26d0/Screenshot-2024-02-07-at-16.04.24.png" alt="Figure 8: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.029 milliseconds while we see 0.029 milliseconds on average for odd ports. There are no errors." class="kg-image" width="1618" height="888" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ttWStZgNYfwftr71r8Vrt/7c333411ef01b674cc839f27ae4cbbbf/Screenshot-2024-02-07-at-16.04.24.png" alt="Figure 8: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.029 milliseconds while we see 0.029 milliseconds on average for odd ports. There are no errors." class="kg-image" width="1618" height="888" loading="lazy">
 
 	</figure>
 	<p>The performance of this approach is quite comparable to our user space implementation. Albeit, a little faster. Due in part to general improvements, and that the algorithm can always find a port given the full search space of the range. Then there are no cycles wasted on a potentially filled sub-range.</p>
@@ -371,7 +371,7 @@ sk.connect((dest_ip, dest_port))</code></pre>
 	<p>And the results should be unsurprising with one IPv4 source address:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UM5d0RBTgqADgVLbbqMlQ/235ac3ee5183efdefb42f9bd17dee9a3/Screenshot-2024-02-07-at-16.06.27.png" alt="Figure 9: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.001 milliseconds while we see 0.001 milliseconds on average for odd ports. There are no errors." class="kg-image" width="1614" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UM5d0RBTgqADgVLbbqMlQ/940306c90767ba4b5e3762c6467b71ed/Screenshot-2024-02-07-at-16.06.27.png" alt="Figure 9: A detailed chart representing a flat-linear distribution of port-finding speeds. Out of 56,512 connections the average time spent finding an even port is 0.001 milliseconds while we see 0.001 milliseconds on average for odd ports. There are no errors." class="kg-image" width="1614" height="902" loading="lazy">
 
 	</figure>
 	<p>UDP fundamentally behaves differently from TCP. And there is less work overall for port lookups. The outliers in the chart represent a worst-case scenario when we reach a fairly bad random number collision. In that case, we need to more-completely loop over the ephemeral range to find a port.</p>

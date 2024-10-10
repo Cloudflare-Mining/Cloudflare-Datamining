@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38AL8kYOfUuUOlGD2p2Wfw/92f5a79b98f6c13af50855abc5b9044d/image1-33.png" alt="Hyperdrive: making databases feel like they’re global" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38AL8kYOfUuUOlGD2p2Wfw/596490c5c841fb416154cbce56cc830b/image1-33.png" alt="Hyperdrive: making databases feel like they’re global" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Hyperdrive makes accessing your existing databases from Cloudflare Workers, wherever they are running, hyper fast. You connect Hyperdrive to your database, change one line of code to connect through Hyperdrive, and voilà: connections and queries get faster (and spoiler: <a href="https://developers.cloudflare.com/hyperdrive">you can use it today</a>).</p>
@@ -13,7 +13,7 @@
 	<p>To demonstrate Hyperdrive’s performance, we built a <a href="https://hyperdrive-demo.pages.dev">demo application</a> that makes back-to-back queries against the same database: both with Hyperdrive and without Hyperdrive (directly). The app selects a database in a neighboring continent: if you’re in Europe, it selects a database in the US — an all-too-common experience for many European Internet users — and if you’re in Africa, it selects a database in Europe (and so on). It returns raw results from a straightforward <code>SELECT</code> query, with no carefully selected averages or cherry-picked metrics.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VWco8QZERMlkgBpiilOyA/3e72980dd1ba32b5d68434a929d2e2cb/image2-25.png" alt="" class="kg-image" width="1999" height="1705" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VWco8QZERMlkgBpiilOyA/99245c5a6ce8a208e7fc793121aeaef3/image2-25.png" alt="" class="kg-image" width="1999" height="1705" loading="lazy">
 
 	</figure>
 	<p><i>We</i> <a href="https://hyperdrive-demo.pages.dev"><i>built a demo app</i></a> <i>that makes real queries to a PostgreSQL database, with and without Hyperdrive</i></p>
@@ -35,7 +35,7 @@
 	<p>Second, it understands the difference between read (non-mutating) and write (mutating) queries and transactions, and can automatically cache your most popular read queries: which represent over 80% of most queries made to databases in typical web applications. That product listing page that tens of thousands of users visit every hour; open jobs on a major careers site; or even queries for config data that changes occasionally; a tremendous amount of what is queried does not change often, and caching it closer to where the user is querying it from can dramatically speed up access to that data for the next ten thousand users. Write queries, which can’t be safely cached, still get to benefit from both Hyperdrive’s connection pooling <i>and</i> Cloudflare’s <a href="https://www.cloudflare.com/network">global network</a>: being able to take the fastest routes across the Internet across our backbone cuts down latency there, too.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZPuh9S7KNGNfcIOW1FSqF/9af6084d964b7307e85a99e84756e718/image4-16.png" alt="" class="kg-image" width="1725" height="1005" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZPuh9S7KNGNfcIOW1FSqF/07cd95b1d45dd66d7b13fcab51cf4189/image4-16.png" alt="" class="kg-image" width="1725" height="1005" loading="lazy">
 
 	</figure>
 	<p><i>Even if your database is on the other side of the country, 70ms x 6 round-trips is a lot of time for a user to be waiting for a query response.</i></p>
@@ -136,7 +136,7 @@ export default {
 	<p>To connect Hyperdrive to your existing database, visit our <a href="https://developers.cloudflare.com/hyperdrive">developer docs</a> — it takes less than a minute to create a Hyperdrive and update existing code to use it. Join the <i>#hyperdrive-beta</i> channel in our <a href="https://discord.cloudflare.com">Developer Discord</a> to ask questions, surface bugs, and talk to our Product &amp; Engineering teams directly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BbZolVBokU7h0EedVawor/356e01ec5cc419603e8ce94363cc9f07/image3-31.png" alt="" class="kg-image" width="1800" height="647" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BbZolVBokU7h0EedVawor/e98def78df39541f03a595ef2e083387/image3-31.png" alt="" class="kg-image" width="1800" height="647" loading="lazy">
 
 	</figure>
 	<p></p>

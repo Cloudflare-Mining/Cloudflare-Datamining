@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uPMOeFh8tQEadTycwT0Sm/3e3e13ab7d9c8c5851fc8befc7f2ea15/accelerating-udp-packet-transmission-for-quic.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uPMOeFh8tQEadTycwT0Sm/36d0d5fe3db4eb60bb24c1c8f3e76563/accelerating-udp-packet-transmission-for-quic.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This was originally published on </i><a href="https://calendar.perfplanet.com/2019/accelerating-udp-packet-transmission-for-quic"><i>Perf Planet's 2019 Web Performance Calendar</i></a><i>.</i></p>
 	<p><a href="https://blog.cloudflare.com/the-road-to-quic">QUIC</a>, the new Internet transport protocol designed to accelerate HTTP traffic, is delivered on top of <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP datagrams</a>, to ease deployment and avoid interference from network appliances that drop packets from unknown protocols. This also allows QUIC implementations to live in user-space, so that, for example, browsers will be able to implement new protocol features and ship them to their users without having to wait for operating systems updates.</p>
@@ -28,13 +28,13 @@
 	<p>The <code>struct msghdr</code> carries a <code>struct iovec</code> which can in turn carry multiple buffers. However, all of the buffers within a single iovec will be merged together into a single UDP datagram during transmission. The kernel will then take care of encapsulating the buffer in a UDP packet and sending it over the wire.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/774r0FpU47qMQ5bbxIOPL5/81e9748f436befab58b2afd1af711532/sendmsg.png" alt="sendmsg" class="kg-image" width="513" height="184" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/774r0FpU47qMQ5bbxIOPL5/3560c09b55949e3c406ad958498e7fd4/sendmsg.png" alt="sendmsg" class="kg-image" width="513" height="184" loading="lazy">
 
 	</figure>
 	<p>The throughput of this particular implementation tops out at around 80-90 MB/s, as measured by h2load when performing 10 sequential requests for a 100 MB resource.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V8JtNxw1ogFryQ7xBVcgk/25436e3e362d37987439ba7b14cc54d1/sendmsg-chart.png" alt="sendmsg-chart" class="kg-image" width="600" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4V8JtNxw1ogFryQ7xBVcgk/74bf3551df4837143a4cb2dbc53e3f84/sendmsg-chart.png" alt="sendmsg-chart" class="kg-image" width="600" height="371" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -58,7 +58,7 @@ Attaching 2 probes...
 	<p>Multiple <code>struct mmsghdr</code> structures can be passed to the kernel as an array, each in turn carrying a single <code>struct msghdr</code> with its own <code>struct iovec</code> , with each element in the <code>msgvec</code> array representing a single UDP datagram.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QO4EdUwmU9MJhSCY2wwC1/c70c984d38864a5af294c06597fd420a/sendmmsg.png" alt="sendmmsg" class="kg-image" width="513" height="184" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QO4EdUwmU9MJhSCY2wwC1/ac6bc505e3b1f3b4d571910f13905131/sendmmsg.png" alt="sendmmsg" class="kg-image" width="513" height="184" loading="lazy">
 
 	</figure>
 	<p>Let's see what happens when NGINX is updated to use <code>sendmmsg()</code> to send QUIC packets:</p>
@@ -71,7 +71,7 @@ Attaching 2 probes...
 	<p>The number of system calls went down dramatically, which translates into an increase in throughput, though not quite as big as the decrease in syscalls:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fv3ZaxYLZmteczFchjfiO/976e6579d0714e5f1b70abf3dce24a78/sendmmsg-chart.png" alt="sendmmsg-chart-1" class="kg-image" width="600" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fv3ZaxYLZmteczFchjfiO/e0056c40dacea0422ed53edaf8158869/sendmmsg-chart.png" alt="sendmmsg-chart-1" class="kg-image" width="600" height="371" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -95,14 +95,14 @@ cm-&gt;cmsg_len = CMSG_LEN(sizeof(uint16_t));
 	<p>Where <code>gso_size</code> is the size of each segment that form the "super buffer" passed to the kernel from the application. Once configured, the application can provide one contiguous large buffer containing a number of packets of <code>gso_size</code> length (as well as a final smaller packet), that will then be segmented by the kernel (or the NIC if hardware segmentation offloading is supported and enabled).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3vQo11I0RupCQ4msUqj0Ve/4f522dd54ef93729350c45d3ffe37e6e/sendmsg-gso.png" alt="sendmsg-gso" class="kg-image" width="513" height="184" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vQo11I0RupCQ4msUqj0Ve/dcec6ac6c0bea7c737aa9fa822e69d0a/sendmsg-gso.png" alt="sendmsg-gso" class="kg-image" width="513" height="184" loading="lazy">
 
 	</figure>
 	<p><a href="https://github.com/torvalds/linux/blob/80a0c2e511a97e11d82e0ec11564e2c3fe624b0d/include/linux/udp.h#L94">Up to 64 segments</a> can be batched with the <code>UDP_SEGMENT</code> option.</p>
 	<p>GSO with plain <code>sendmsg()</code> already delivers a significant improvement:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4q2OxEsgZcsw2JXc8JcAfk/fba97c64c61ecb8639b4f9d499724189/gso-chart.png" alt="gso-chart" class="kg-image" width="600" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4q2OxEsgZcsw2JXc8JcAfk/a64c9b48cad41378122e7d7c5a88e67a/gso-chart.png" alt="gso-chart" class="kg-image" width="600" height="371" loading="lazy">
 
 	</figure>
 	<p>And indeed the number of syscalls also went down significantly, compared to plain <code>sendmsg()</code> :</p>
@@ -126,7 +126,7 @@ Attaching 2 probes...
 	<p>Packet pacing is an effective technique to squeeze out more performance from a network flow. The idea being that adding a short delay between each outgoing packet will smooth out bursty traffic and reduce the chance of congestion, and packet loss. For TCP this was originally implemented in Linux via the fq packet scheduler, and later by the BBR congestion control algorithm implementation, which implements its own pacer.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PkaZcKDkzzjUDhFLRT1jw/f6762e7f5547bed99b97ae4dcef65637/afap.png" alt="afap" class="kg-image" width="486" height="187" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PkaZcKDkzzjUDhFLRT1jw/a4247010827f1763bd7560894e30938e/afap.png" alt="afap" class="kg-image" width="486" height="187" loading="lazy">
 
 	</figure>
 	<p>Due to the nature of current QUIC implementations, which reside entirely in user-space, pacing of QUIC packets conflicts with any of the techniques explored in this post, because pacing each packet separately during transmission will prevent any batching on the application side, and in turn batching will prevent pacing, as batched packets will be transmitted as fast as possible once received by the kernel.</p>

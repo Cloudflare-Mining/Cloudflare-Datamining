@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mZpm1Hj9LNc3hy0ygY0XY/14a79627d9ccb28e35f123e7a8d2efac/image3-7.png" alt="Oxy: Fish/Bumblebee/Splicer subsystems to improve reliability" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mZpm1Hj9LNc3hy0ygY0XY/733741a82056440aab35bc52fec04747/image3-7.png" alt="Oxy: Fish/Bumblebee/Splicer subsystems to improve reliability" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we are building proxy applications on top of <a href="https://blog.cloudflare.com/introducing-oxy">Oxy</a> that must be able to handle a <i>huge</i> amount of traffic. Besides high performance requirements, the applications must also be resilient against crashes or reloads. As the framework evolves, the complexity also increases. While migrating WARP to support soft-unicast (<a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore">Cloudflare servers don't own IPs anymore</a>), we needed to add different functionalities to our proxy framework. Those additions increased not only the code size but also resource usage and states required to be <a href="https://blog.cloudflare.com/oxy-the-journey-of-graceful-restarts">preserved between process upgrades</a>.</p>
 	<p>To address those issues, we opted to split a big proxy process into smaller, specialized services. Following the Unix philosophy, each service should have a single responsibility, and it must do it well. In this blog post, we will talk about how our proxy interacts with three different services - Splicer (which pipes data between sockets), Bumblebee (which upgrades an IP flow to a TCP socket), and Fish (which handles layer 3 egress using soft-unicast IPs). Those three services help us to improve system reliability and efficiency as we migrated WARP to support soft-unicast.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BnvngSFKAe8Lo7PrjUbIQ/9e128d8f48280d249b1725ca80551c99/image2-8.png" alt="" class="kg-image" width="1717" height="920" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BnvngSFKAe8Lo7PrjUbIQ/770f180a0fd67ad8ad7c5914046614f8/image2-8.png" alt="" class="kg-image" width="1717" height="920" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -63,7 +63,7 @@
 	<p>We use Unix Domain Sockets for interprocess communication. This is a common pattern for inter-process communication. Besides sending raw data, unix sockets also allow passing file descriptors between different processes. This is essential for our architecture as well as graceful restarts.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43M4QXoTMDFZLlb9idMPbs/fb3d21bdcb005a6d18ed420efc3d5696/image4-6.png" alt="" class="kg-image" width="1999" height="1214" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43M4QXoTMDFZLlb9idMPbs/5f9ea51f3c055e0b7ee8723c97c9188a/image4-6.png" alt="" class="kg-image" width="1999" height="1214" loading="lazy">
 
 	</figure>
 	<p>There are two main ways to transfer a file descriptor: using pid_getfd syscall or <a href="https://blog.cloudflare.com/know-your-scm_rights">SCM_RIGHTS</a>. The latter is the better choice for us here as the use cases gear toward the proxy application “giving” the sockets instead of the microservices “taking” them. Moreover, the first method would require special permission and a way for the proxy to signal which file descriptor to take.</p>
@@ -103,7 +103,7 @@
 	<p>In three micro-services in this blog post, we use the state-passing concept, where the pending requests will be paused and transferred to the new process. The new process will pick up both new requests and the old ones immediately on start. This method indeed requires a higher complexity than keeping the old process running. At a high level, we have the following extra steps when the application receives an upgrade request (usually SIGHUP): pause all tasks, wait until all tasks (in groups) are paused, and send them to the new process.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JKw9eZUPQspxBsmCKcwm6/5372ad01adef61b543f8a340ea4db60a/Graceful-restart.png" alt="" class="kg-image" width="3225" height="2400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JKw9eZUPQspxBsmCKcwm6/5a83e36bcc5fb03531a89cd75da73158/Graceful-restart.png" alt="" class="kg-image" width="3225" height="2400" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45CLpQoXM7URxmOSq3dWL5/1b5eedf7747037c07369f332b9018ba5/image3-9.png" alt="Adopting OpenTelemetry for our logging pipeline" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45CLpQoXM7URxmOSq3dWL5/41bf6ea4e02db135cee9c7433edfb53b/image3-9.png" alt="Adopting OpenTelemetry for our logging pipeline" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s logging pipeline is one of the largest data pipelines that Cloudflare has, serving millions of log events per second globally, from every server we run. Recently, we undertook a project to migrate the underlying systems of our logging pipeline from <a href="https://www.syslog-ng.com">syslog-ng</a> to <a href="https://github.com/open-telemetry/opentelemetry-collector">OpenTelemetry Collector</a> and in this post we want to share how we managed to swap out such a significant piece of our infrastructure, why we did it, what went well, what went wrong, and how we plan to improve the pipeline even more going forward.</p>
@@ -28,7 +28,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sjQKVdQN2fHiKpXDoz3KP/490e5a943c350984d6141d6baa953c65/image1-16.png" alt="image1-16" class="kg-image" width="696" height="601" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5sjQKVdQN2fHiKpXDoz3KP/403e5d362685125b8c6fc7b8c7e60d7a/image1-16.png" alt="image1-16" class="kg-image" width="696" height="601" loading="lazy">
 
 	</figure>
 	<p>The goal of this project was to replace those syslog-ng instances as transparently as possible. That means we needed to implement all these behaviors as precisely as possible, so that we didn’t need to modify any downstream systems.</p>
@@ -78,7 +78,7 @@
 	<p>We want to set the value of an attribute/field that comes from external sources: either from an HTTP endpoint or an output from running a specific command. In syslog-ng, we have a sidecar service that generates a syslog-ng configuration to achieve this. In replacing syslog-ng with our OpenTelemetry Collector, we thought it would be easier to implement this feature as a custom component of our collector instead.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WG45quu9J9Mpm1SxOCQR8/84f8e6d072b0883ab1c8eed4ab6be0a3/image2-14.png" alt="image2-14" class="kg-image" width="411" height="262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WG45quu9J9Mpm1SxOCQR8/0f2761748bb68af101ed2880cb5e2fbb/image2-14.png" alt="image2-14" class="kg-image" width="411" height="262" loading="lazy">
 
 	</figure>
 	<p>To that end, we implemented an “external JSON processor”, which is able to periodically query external data sources and add those fields to all the logs that flow through the processor. Cloudflare has many internal tools and APIs, and we use this processor to fetch data like the status of a data center, or the status of a systemd unit. This enables our engineers to have more filtering options, such as to exclude logs from data centers that are not supposed to receive customer traffic, or servers that are disabled for maintenance. Crucially, this allows us to update these values much faster than the standard three-hour cadence of other configuration updates through salt, allowing more rapid updates to these fields that may change quickly as we operate our network.</p>

@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q7OqfYCQg4hWl6fxHoOq6/8f02428154ffa42a7dd6c37cf3b32e0b/image2-47.png" alt="Improving Workers TypeScript support: accuracy, ergonomics and interoperability" class="kg-image" width="1201" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6q7OqfYCQg4hWl6fxHoOq6/308a694c52ae40e073bc40b25e8dbe23/image2-47.png" alt="Improving Workers TypeScript support: accuracy, ergonomics and interoperability" class="kg-image" width="1201" height="676" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.typescriptlang.org">TypeScript</a> makes it easy for developers to write code that doesn’t crash, by catching type errors before your program runs. We want developers to take advantage of this tooling, which is why one year ago, we <a href="https://blog.cloudflare.com/automatically-generated-types">built a system to automatically generate TypeScript types</a> for the Cloudflare Workers runtime. This enabled developers to see code completions in their IDEs for Workers APIs, and to type check code before deploying. Each week, <a href="https://github.com/cloudflare/workers-types/pull/210">a new version of the types would be published</a>, reflecting the most recent changes.</p>
@@ -28,7 +28,7 @@
 	<p>Your editor will now highlight issues and give you code completions as you type, leading to a less error-prone and more enjoyable developer experience.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Q1weJrUhhrrT7QIUkGMIw/e6ed8813c208d476a1f31d9e3338bd07/image3-39.png" alt="" class="kg-image" width="650" height="270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Q1weJrUhhrrT7QIUkGMIw/c32d14dd8965a8b5598496045ac4fe2b/image3-39.png" alt="" class="kg-image" width="650" height="270" loading="lazy">
 
 	</figure>
 	<p>Editor highlighting incorrect use of <code>set</code> instead of <code>put</code>, and providing code completions</p>
@@ -96,7 +96,7 @@ declare module "*.txt" {
 	<p>Code completions provide a great way for developers new to the Workers platform to explore the API surface. We now include the documentation for standard APIs from TypeScript’s official types in our types. We’re also starting the process of bringing <a href="https://developers.cloudflare.com/workers/runtime-apis">docs for Cloudflare specific APIs</a> into them too.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4N4SjX4uCcnhULQ6BeRfD9/49c44c36995a180258f9f7ed4b27b7ac/image4-27.png" alt="docs in types shown with code completions" class="kg-image" width="477" height="141" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4N4SjX4uCcnhULQ6BeRfD9/d678d5a385b812670f70f331796c3fcc/image4-27.png" alt="docs in types shown with code completions" class="kg-image" width="477" height="141" loading="lazy">
 
 	</figure>
 	<p>For developers already using the Workers platform, it can be difficult to see how types are changing with each release of <code>@cloudflare/workers-types</code>. To avoid type errors and highlight new features, we now generate a detailed changelog with each release that <a href="https://github.com/cloudflare/workers-types/pull/291#issuecomment-1274541965">splits out new, changed and removed definitions</a>.</p>
@@ -157,7 +157,7 @@ console.log(output); // interface KVNamespace { get(key: string): Promise&lt;str
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6d9euawkfvZmWDJeIRw0Yn/dea585e2a613afbd1dcc0a0a376da64c/image1-64.png" alt="new automatic type generation architecture" class="kg-image" width="1102" height="758" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6d9euawkfvZmWDJeIRw0Yn/b0a19f0287fc55c2b869b0ee56c71a81/image1-64.png" alt="new automatic type generation architecture" class="kg-image" width="1102" height="758" loading="lazy">
 
 	</figure>
 	<p>Whilst the auto-generated types <i>correctly</i> describe the JavaScript interface of Workers runtime APIs, TypeScript provides additional features we can use to provide <i>higher-fidelity</i> types and improve developer ergonomics. Our system allows us to handwrite partial TypeScript “overrides” that get merged with the auto-generated types. This enables us to…</p>

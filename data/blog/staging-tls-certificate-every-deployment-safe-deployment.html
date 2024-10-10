@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2P8NWCvxkPapmr1ttenDuf/27e5f7efc91468a9e7cd10f8aaabc956/staging-tls-certificate-every-deployment-safe-deployment-OG.png" alt="teams-home-intelligence-spot-illustration.svg" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2P8NWCvxkPapmr1ttenDuf/e791ae8f7c16e61f13258f4cddeea222/staging-tls-certificate-every-deployment-safe-deployment-OG.png" alt="teams-home-intelligence-spot-illustration.svg" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>We are excited to announce that Enterprise customers now have the ability to test custom uploaded certificates in a staging environment before pushing them to production.</p>
@@ -43,7 +43,7 @@
 	<p>You can go to the Staging Certificates section under the SSL/TLS tab in the Cloudflare dashboard and upload a new certificate to our staging network. The staging network will replicate your production environment but will only be accessible through the Staging IPs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fNtIwuq25OxUuGOADltbV/038307f20df9f23e02e27a45b463bd3b/image1-13.png" alt="The staging certificates dashboard UI" class="kg-image" width="1552" height="1262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fNtIwuq25OxUuGOADltbV/837cc254af65defc8c26438d9cbe9c16/image1-13.png" alt="The staging certificates dashboard UI" class="kg-image" width="1552" height="1262" loading="lazy">
 
 	</figure>
 	<p>Once you upload your certificate, you can make `curl` requests against the staging IPs to verify that it’s being served and that it covers all the hostnames that you need it to. If you’ve decided to pin your previous certificate, the staging environment helps you verify that your pins have been updated correctly and that TLS termination is successful.</p>
@@ -59,7 +59,7 @@
 	<p>Mistakes happen. It’s possible that you found one client device whose pin you forgot to update. In that case, you can disable the certificate to quickly mitigate the problem by rolling back to the certificate that you were last serving.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FgeBZJlVphPRrA6Fciaid/38a085969b4c716877c6b158dafb722e/image3-10.png" alt="Deactivating a certificate from the production environment after a bad rollout" class="kg-image" width="1946" height="1004" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FgeBZJlVphPRrA6Fciaid/ad85f91827471d7541a073096875a1c2/image3-10.png" alt="Deactivating a certificate from the production environment after a bad rollout" class="kg-image" width="1946" height="1004" loading="lazy">
 
 	</figure>
 	<p>What if you realize that this is a bigger issue, and you need more time to test? You can push the disabled certificate back to the staging environment, and when you’ve verified everything works correctly, push it back to production.</p>

@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uaGzDxOHpdfDJSiuCIZGj/8b485ff709b0ee46807544ad2c9e2706/making-page-load-even-faster.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uaGzDxOHpdfDJSiuCIZGj/99114d23bf12ef1f8c5057df8ba51fd6/making-page-load-even-faster.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In 2017 we made two of our web optimisation products - <a href="https://www.cloudflare.com/website-optimization/mirage">Mirage</a> and <a href="https://vimeo.com/24900882">Rocket Loader</a> - even faster! Combined, these products speed up around 1.2 billion web-pages a week. The products are both around 5 years old, so there was a big opportunity to update them for the brave new world of highly-tuned browsers, HTTP2 and modern Javascript tooling. We measured a performance boost that, <a href="https://blog.cloudflare.com/#savings">very roughly</a>, will save visitors to sites on our network between 50-700ms. Visitors that see content faster have much higher engagement and lower bounce rates, as shown by studies like <a href="https://www.doubleclickbygoogle.com/articles/mobile-speed-matters">Google’s</a>. This really adds up, representing a further saving of 380 years of loading time each year and a staggering 1.03 petabytes of data transfer!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2I9Wjjv1mmUo8m0mpjQuiI/cb7b3da2f7bb13df28a8114b9ae11283/dimon-blr-309444.jpg" alt="dimon-blr-309444" class="kg-image" width="2784" height="1856" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2I9Wjjv1mmUo8m0mpjQuiI/5678a5b42527782848dd62d462a0a8d6/dimon-blr-309444.jpg" alt="dimon-blr-309444" class="kg-image" width="2784" height="1856" loading="lazy">
 
 	</figure>
 	<p>Cycling image Photo by <a href="https://unsplash.com/photos/mdgMbYfFlSA">Dimon Blr on Unsplash</a>.</p>
@@ -21,7 +21,7 @@
 	<p>With Mirage, users on slow mobile connections will be quickly shown a full page of content, using placeholder images with a low file-size which will load much faster. Without Mirage visitors on a slow mobile connection will have to wait a long time to download high-quality images. Since it’ll take a long time, they will perceive your website as slow:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IqZ5hbozfR4VXhvHoynn4/b42f1193d91a36bf0987a14e7f021e15/Mirage---before-1.svg" alt="Mirage---before" class="kg-image" width="365" height="247" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IqZ5hbozfR4VXhvHoynn4/0cb6687cd157efb9c1973121c4f74809/Mirage---before-1.svg" alt="Mirage---before" class="kg-image" width="365" height="247" loading="lazy">
 
 	</figure>
 	<p>With Mirage visitors will see content much faster, will thus perceive that the content is loading quickly, and will be less likely to give up:</p>
@@ -29,13 +29,13 @@
 	<p>Browsers will not show content that until all the Javascript that might affect it has been loaded and run. This can mean users wait a significant time before seeing any content at all, even if that content is the only reason they’re on visiting the page!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ATanlKIoEw2yABAoJ4y8x/6a68cc3e165f383d231ec0384e3cba7c/Rocket-before.svg" alt="Rocket-before" class="kg-image" width="389" height="261" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ATanlKIoEw2yABAoJ4y8x/8e13860a0fee9ac69dbe52215c312eb4/Rocket-before.svg" alt="Rocket-before" class="kg-image" width="389" height="261" loading="lazy">
 
 	</figure>
 	<p>Rocket Loader transparently defers all Javascript execution until the rest of the page has loaded. This allows the browser to display the content the visitors are interested in as soon as possible.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4svTMwAb9yRtZ56uBpBZFR/c827373464064b92568315efe60da622/Rocket-after.svg" alt="Rocket-after" class="kg-image" width="389" height="261" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4svTMwAb9yRtZ56uBpBZFR/71f80aa0175260d5e957ea663bf89451/Rocket-after.svg" alt="Rocket-after" class="kg-image" width="389" height="261" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -82,7 +82,7 @@
 	<p>To make matters worse, Rocket Loader was being dynamically inserted using that villain of the DOM API, <code>document.write</code> - a technique that creates huge performance problems. Understanding exactly why is involved, so I’ve created a diagram. Skim it, and refer back to it as you read the next paragraph:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45iYLM7SRhBk216L8GaIZJ/8338be0447af1c979806a1a59b7afa3f/Old-version.svg" alt="Old-version" class="kg-image" width="784" height="304" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45iYLM7SRhBk216L8GaIZJ/5c51258d80880a7bb433e6b51ead3d8f/Old-version.svg" alt="Old-version" class="kg-image" width="784" height="304" loading="lazy">
 
 	</figure>
 	<p>As said, using <code>document.write</code> to insert scripts is be particularly damaging to page load performance. Since the <code>document.write</code> that inserts the script is invisible to the preload scanner (even if the script is inline, which ours isn’t, preload scanning <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=575850">doesn’t</a> even attempt to scan JS), at the instant it is inserted the browser will already be busy requesting resources the scanner found elsewhere in the page (other script tags, images etc). This matters because a browser encountering a non-deferred or asynchronous Javascript, like Rocket Loader, must block all further building of the DOM tree until that script is loaded and executed, to give the script a chance to modify the DOM. So Rocket Loader was being inserted at an instant in which it was going to be very slow to load, due to the backlog of requests from the preload scan, and therefore causes a very long delay until the DOM parser can resume!</p>
@@ -165,7 +165,7 @@ if(cloudflare.rocket) {
 	<p>If you compare the new insertion sequence diagram, you can see why this is so much better:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UOAgrBB8DitoNbPqlG6yP/ad4aba17f20a1b775204759b1c60279d/New-Version.svg" alt="New-Version" class="kg-image" width="784" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6UOAgrBB8DitoNbPqlG6yP/606fb38481f2a760ec1d2ab26e1d786a/New-Version.svg" alt="New-Version" class="kg-image" width="784" height="340" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

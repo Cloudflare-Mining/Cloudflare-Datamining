@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tDoihpSzZHoPhxOvGxsVu/ff26a3e6a5708428539b3a91b553d95d/image2-9.png" alt="Announcing Anycast IPsec: a new on-ramp to Cloudflare One" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tDoihpSzZHoPhxOvGxsVu/ba32b777ec53a78ee7ed9eab6e7d6293/image2-9.png" alt="Announcing Anycast IPsec: a new on-ramp to Cloudflare One" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today, we're excited to announce support for IPsec as an on-ramp to Cloudflare One. As a customer, you should be able to use whatever method you want to get your traffic to Cloudflare's network. We've heard from you that IPsec is your method of choice for connecting to us at the network layer, because of its near-universal vendor support and blanket layer of encryption across all traffic. So we built support for it! Read on to learn how our IPsec implementation is faster and easier to use than traditional IPsec connectivity, and how it integrates deeply with our Cloudflare One suite to provide unified security, performance, and reliability across all your traffic.</p>
@@ -27,13 +27,13 @@
 	<p>IPsec as a technology has been around since 1995, and is broadly implemented across many hardware and software platforms. Many companies have adopted IPsec VPNs for securely transferring corporate traffic over the Internet. These VPNs tend to have one of two main architectures: hub and spoke, or mesh.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VgcVHiIXfIo3mp0ZGnoIV/2d48558e4f1066f6a9f35ba5b0abb1fc/image1-22.png" alt="Hub and spoke architecture" class="kg-image" width="1279" height="975" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VgcVHiIXfIo3mp0ZGnoIV/b61543b156b8a4e200e42a89e7d4fbe1/image1-22.png" alt="Hub and spoke architecture" class="kg-image" width="1279" height="975" loading="lazy">
 
 	</figure>
 	<p>In the hub and spoke model, each “spoke” node establishes an IPsec tunnel back to a core “hub,” usually a headquarters or data center location. Traffic between spokes flows through the hub for routing and in order to have security policies applied (like by an on-premise firewall). This architecture is simple because each node only needs to maintain one tunnel to get connectivity to other locations, but it can introduce significant performance penalties. Imagine a global network with two “spokes”, one in India and another one in Singapore, but a “hub” located in the United States — traffic needs to travel a round trip thousands of miles back and forth in order to get to its destination.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51rrrTeThskEktKstglrC4/3198e37773af422dd2b50d0505828736/image3-9.png" alt="Mesh architecture" class="kg-image" width="1714" height="1011" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51rrrTeThskEktKstglrC4/8947f899ee685f13b8f5d7fc1a1d8cd7/image3-9.png" alt="Mesh architecture" class="kg-image" width="1714" height="1011" loading="lazy">
 
 	</figure>
 	<p>In the mesh model, every node is connected to every other node with a dedicated IPsec tunnel. This improves performance because traffic can take more direct paths, but in practice means an unmanageable number of tunnels after even a handful of locations are added.</p>

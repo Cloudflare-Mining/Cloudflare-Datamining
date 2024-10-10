@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01Qe1wU9p7T1BOPBFTSjcl/1530f1f96cdfd081c1d43cefa1c32d80/BLOG-2559_1_Hero.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01Qe1wU9p7T1BOPBFTSjcl/8b3e76df3440cca88afe9ed67c01e9ca/BLOG-2559_1_Hero.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><a href="https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html"><u>Chrome</u></a> and <a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/jCvkhBjg9Yw?pli=1"><u>Mozilla</u></a> announced that they will stop trusting Entrust’s public TLS certificates issued after November 12, 2024 and December 1, 2024, respectively. This decision stems from <a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/LhTIUMFGHNw/m/uKzergzqAAAJ"><u>concerns</u></a> related to Entrust’s ability to meet the CA/Browser Forum’s requirements for a publicly trusted certificate authority (CA). To prevent Entrust customers from being impacted by this change, Entrust has announced that they are partnering with <a href="http://ssl.com"><u>SSL.com</u></a>, a publicly trusted CA, and will be issuing certs from SSL.com’s roots to ensure that they can continue to provide their customers with certificates that are trusted by Chrome and Mozilla.&nbsp;</p>
 	<p>We’re excited to announce that we’re going to be adding SSL.com as a certificate authority that Cloudflare customers can use. This means that Cloudflare customers that are currently relying on Entrust as a CA and uploading their certificate manually to Cloudflare will now be able to rely on Cloudflare’s certificate management pipeline for automatic issuance and renewal of SSL.com certificates.&nbsp;</p>
@@ -38,13 +38,13 @@
 		</b>Customers can select SSL.com as a CA through the UI or through the <a href="https://developers.cloudflare.com/api/operations/certificate-packs-order-advanced-certificate-manager-certificate-pack"><u>Advanced Certificate API endpoint</u></a> by specifying “ssl_com” in the certificate_authority parameter.&nbsp;</p>
 	<p>If you’d like to use SSL.com as a CA for an advanced certificate, you can select “SSL.com” as your CA when creating a new Advanced certificate order.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4StVxaTcon8sLoCSGcskcq/fdef6b6454aced7c138537cad3d2abf9/BLOG-2559_2.png" alt="BLOG-2559 2" class="kg-image" width="1069" height="608" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4StVxaTcon8sLoCSGcskcq/df72f56d61f818d01ccc21cb71a98925/BLOG-2559_2.png" alt="BLOG-2559 2" class="kg-image" width="1069" height="608" loading="lazy">
 	</figure>
 	<p></p>
 	<p>If you’d like to use SSL.com as a CA for all of your certificates, we recommend setting your <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls"><u>Total TLS</u></a> CA to SSL.com. This will issue an individual certificate for each of your proxied hostname from the CA.&nbsp;</p>
 	<p>Note: Total TLS is a feature that’s only available to customers that are using Cloudflare as their DNS provider.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SGVKQZZ1cs1T9r8gynImE/ee73431ea84a14765ce20bb5c9125e48/BLOG-2559_3.png" alt="BLOG-2559 3" class="kg-image" width="1046" height="267" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SGVKQZZ1cs1T9r8gynImE/44b4a90416431ab3abfaba51a3ac15a9/BLOG-2559_3.png" alt="BLOG-2559 3" class="kg-image" width="1046" height="267" loading="lazy">
 	</figure>
 	<p></p>
 	<p><b>SSL for SaaS: selecting SSL.com as a CA through the UI or API

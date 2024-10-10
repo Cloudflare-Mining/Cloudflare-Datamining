@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15nAX8kXKg4gz7jDCecogD/337b7838d4dca712e7498f6e32c11d9e/anchor2-2-1.png" alt="" class="kg-image" width="1600" height="904" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15nAX8kXKg4gz7jDCecogD/f2340b560358c5d4c25f5ff7fbb77325/anchor2-2-1.png" alt="" class="kg-image" width="1600" height="904" loading="lazy">
 
 	</figure>
 	<p>As a security company, we pride ourselves on finding innovative ways to protect our platform to, in turn, protect the data of our customers. Part of this approach is implementing progressive methods in protecting our hardware at scale. While we have blogged about how we address security threats from <a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model">application</a> to <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">memory</a>, the attacks on hardware, as well as firmware, have increased substantially. The data cataloged in the <a href="https://nvd.nist.gov">National Vulnerability Database (NVD)</a> has shown the frequency of hardware and firmware-level vulnerabilities rising year after year.</p>
@@ -19,7 +19,7 @@
 	<p>Before we discuss how we secure our boot process, we will first go over how we boot our machines.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ubWFPurTNwYnbXL8EnVpl/01493656ce43feeb988c0a94b81dc9bd/image1-7.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ubWFPurTNwYnbXL8EnVpl/bd8c93e0e7acedf04b2787816be51e6d/image1-7.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>The above image shows the following sequence of events:</p>
@@ -54,7 +54,7 @@
 	<p>These variables are respectively the master platform public key, which is used to sign all other resources, and an allow list database, containing other certificates, binary file hashes, etc. In default secure boot scenarios, Microsoft keys are used by default. At Cloudflare we use our own, which makes us the root of trust for UEFI:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12zsC1QVrT8uIGMG0K6ss8/c542b4e961c9779f504acb881ae9432b/image7.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12zsC1QVrT8uIGMG0K6ss8/92c1d1cdaf9348b03794be40943c81f8/image7.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>But, by setting our trust anchor in the UEFI firmware, what attack vectors still exist?</p>
@@ -69,14 +69,14 @@
 	<p>As stated previously, firmware and hardware attacks are on the rise. It is clear from the figure below that firmware-related vulnerabilities have increased significantly over the last 10 years, especially since 2017, when the hacker community started attacking the firmware on different platforms:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gyyxjhnApSBYfZEdqglcS/619200077d4cc54684d51c40d4e517f6/image14.png" alt="" class="kg-image" width="1610" height="1462" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gyyxjhnApSBYfZEdqglcS/d863b610573c1ca0b497b1b3e1ebf2cc/image14.png" alt="" class="kg-image" width="1610" height="1462" loading="lazy">
 
 	</figure>
 	<p>This upward trend, coupled with <a href="https://arstechnica.com/information-technology/2020/10/custom-made-uefi-bootkit-found-lurking-in-the-wild">recent malware findings in UEFI</a>, shows that trusting firmware is becoming increasingly problematic.</p>
 	<p>By tainting the UEFI firmware image, you poison the entire boot trust chain. The ability to trust firmware integrity is important beyond secure boot. For example, if you can't trust the firmware not to be compromised, you can't trust things like <a href="https://docs.microsoft.com/en-us/windows/security/information-protection/tpm/trusted-platform-module-overview">trusted platform module (TPM) measurements</a> to be accurate, because the firmware is itself responsible for doing these measurements (e.g a TPM is not an on-path security mechanism, but instead it requires firmware to interact and cooperate with). Firmware may be crafted to extend measurements that are accepted by a remote attestor, but that don't represent what's being locally loaded. This could cause firmware to have a questionable measured boot and remote attestation procedure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hTmUFGH3CZwcPD6CXmASh/a3a1916cbae485bbf1938e54b7f457d7/image11.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hTmUFGH3CZwcPD6CXmASh/4a26d01153fb10cd9b11d461be513005/image11.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>If we can’t trust firmware, then hardware becomes our last line of defense.</p>
@@ -125,7 +125,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ABw5l5aHps4VcM0wHACDq/8f28a204f81b8608d25a15ccd37e9e6c/image4.gif" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ABw5l5aHps4VcM0wHACDq/e0eaaf60f0ffee8317d88d049f3c594c/image4.gif" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<ol>
@@ -164,7 +164,7 @@
 	<p>Before the image gets built, a public key infrastructure (PKI) is created to generate the key pairs involved for signing and validating signatures:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CGqAcYMPxBE9kv0ZcjGwL/76e0192eb62d0cc1becfff8efd32a9ee/image10.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CGqAcYMPxBE9kv0ZcjGwL/0ffb73c3d6b1353b0291b1736ff0f599/image10.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>Our original device manufacturer (ODM), as a trust extension, creates a key pair (public and private) that is used to sign the first segment of the BIOS (private key) and validates that segment on boot (public key).</p>
@@ -217,7 +217,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jqoVoEKDiRSoVt9MbdY0W/cc78823e08260658511296d9e82225c3/image3-3.png" alt="" class="kg-image" width="966" height="155" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jqoVoEKDiRSoVt9MbdY0W/0f4d2d505e12ecef65a6b31648f223d1/image3-3.png" alt="" class="kg-image" width="966" height="155" loading="lazy">
 
 	</figure>
 	<p>Remember these values, as we’ll show how we use them in a bit. Any of the <code>DISABLE</code> values are optional, but recommended based on your security posture/comfort level.</p>
@@ -233,7 +233,7 @@
 	<p>The following is a step-by-step illustration of how signed UEFI firmware is built:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48teEpwD6WwiJEVvSql73e/caa650ab3ce2b393dee8c7417a25b073/image8.gif" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48teEpwD6WwiJEVvSql73e/203673a7e6265f4d799c2b31ec9f492a/image8.gif" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<ol>
@@ -318,13 +318,13 @@ Process completed.</code></pre>
 	<p>After the update completed, we rebooted:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZW4E36XqbrlpgvXyjR34t/8fe106d8d5c1054d89f014e40143be6e/image2-6.png" alt="" class="kg-image" width="1603" height="1205" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZW4E36XqbrlpgvXyjR34t/21625b6e4691951b840d4d0d7bb91c5b/image2-6.png" alt="" class="kg-image" width="1603" height="1205" loading="lazy">
 
 	</figure>
 	<p>After a successful install, we validated that the image was correct via the <a href="https://man7.org/linux/man-pages/man5/sysfs.5.html">sysfs</a> information provided in the <a href="https://linux.die.net/man/8/dmidecode">dmidecode</a> output:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gIi4xRxwq4PfpxAjc2nnA/41cd8a14cf8e706fa950f384afa18923/image12.gif" alt="" class="kg-image" width="463" height="233" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gIi4xRxwq4PfpxAjc2nnA/6262739c2730a1c85865a59dd168ada7/image12.gif" alt="" class="kg-image" width="463" height="233" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -338,13 +338,13 @@ Process completed.</code></pre>
 	<p>With a signed image installed, we wanted to test that it worked, meaning: what if an unauthorized user installed their own firmware image? We did this by downgrading the image back to an unsigned image, <code>2.16</code>. In theory, the machine shouldn’t boot as the x86 cores should stay in a locked state. After downgrading, we rebooted and got the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HQqHnKOTSHg1YQOyZq35A/71d546123a3df594596bc6c7ba86ecee/image13-1.jpg" alt="" class="kg-image" width="292" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HQqHnKOTSHg1YQOyZq35A/2209455a149759a90c474970bb9bf6ad/image13-1.jpg" alt="" class="kg-image" width="292" height="452" loading="lazy">
 
 	</figure>
 	<p>This isn’t a powered down machine, but the result of booting with an unsigned image.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/y9RGO5UGzOEG1lxRyPJa2/8356466f68d677c4119a32675d2191e4/image9.jpg" alt="" class="kg-image" width="225" height="225" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/y9RGO5UGzOEG1lxRyPJa2/818ecd62bc892f61097cf369d1b599a2/image9.jpg" alt="" class="kg-image" width="225" height="225" loading="lazy">
 
 	</figure>
 	<p>Flashing back to a signed image is done by running the same flashing utility through the BMC, so we weren’t bricked. Nonetheless, the results were successful.</p>

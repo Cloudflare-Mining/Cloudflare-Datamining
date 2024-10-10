@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WMBkMmpUBqk6MuJdwbtps/260597b89e0b007f193862f5f2a62f9c/a-winter-of-400gbps-weekend-ddos-attacks.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WMBkMmpUBqk6MuJdwbtps/9ac49a56da289ca006b0723ea9e03381/a-winter-of-400gbps-weekend-ddos-attacks.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the last month, we’ve been watching some of the largest distributed denial of service (DDoS) attacks ever seen unfold. As CloudFlare has grown we've brought on line systems capable of absorbing and <i>accurately measuring</i> attacks. Since we don't need to resort to crude techniques to block traffic we can measure and filter attacks with accuracy. Our systems sort bad packets from good, keep websites online and keep track of attack packet rates and bits per second.</p>
 	<p>The current spate of large attacks are all layer 3 (L3) DDoS. Layer 3 attacks consist of a large volume of packets hitting the target network, and the aim is usually to overwhelm the target network hardware or connectivity.</p>
@@ -15,7 +15,7 @@
 	<p>This chart shows our L3 DoS mitigation during the last quarter of 2015:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38kFVHuPA0mAiJlfI0vINy/cc9fbac5fe0b9986886d088221d03a9e/Daily-DOS-Events.png" alt="Daily-DOS-Events" class="kg-image" width="500" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38kFVHuPA0mAiJlfI0vINy/fab71bd2587471c6f1714d1cdf98e8e4/Daily-DOS-Events.png" alt="Daily-DOS-Events" class="kg-image" width="500" height="350" loading="lazy">
 
 	</figure>
 	<p>The y-axis is the number of individual "DoS events" that we responded to, which is about 20-80 on a typical day. Each of these DoS events are automatically triggered by an attack on one or more of our customers.</p>
@@ -32,7 +32,7 @@
 	<p>Over the last month, we’ve been watching some of the largest distributed denial of service (DDoS) attacks ever seen unfold. As CloudFlare has grown we've brought on line systems capable of absorbing and accurately measuring attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vfkSAklwsTtnkIY3jjkgF/f22ca19fc1e55ecb692a94d0173eca8b/Daily-DOS-Events-in-Feb.png" alt="Daily-DOS-Events-in-Feb" class="kg-image" width="500" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vfkSAklwsTtnkIY3jjkgF/cb7f0270a3d6944b804b7934852b8921/Daily-DOS-Events-in-Feb.png" alt="Daily-DOS-Events-in-Feb" class="kg-image" width="500" height="350" loading="lazy">
 
 	</figure>
 	<p>That’s about a 15x increase in individual DoS events. These new attacks are interesting for a couple of reasons. First, the spikes align with the weekends. It seems the attackers are busy with something else during the week. Second, they are targeting a couple of fairly benign websites—this demonstrates that <i>anybody</i> can become the target of a large attack. Third, the overall volume of the attack is enormous.</p>
@@ -49,7 +49,7 @@
 	<p>After that happens, it’s impossible to report the volume of the attack. The attack traffic will disappear in a “black hole” and is invisible to the operators of the attacked network. This is why reporting on big attacks is difficult—with BGP blackholing, it’s impossible to assess the true scale of the malicious traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vmypmoCP53Cc9fTfXlnf2/3c80c497815c65fe9484f28b63968342/2844659652_308ecc230f_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vmypmoCP53Cc9fTfXlnf2/8c6fa9829fabc44b6201ee5450303887/2844659652_308ecc230f_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/mwichary/2844659652/in/photolist-5knCd5-5knH5b-6mJq7x-4HaGyf-6mJvLH-4HrEVJ-81DPyL-6mNyCo-6Va71U-81AEVR-pPFFHL-4w3qa7-6V63qT-6mJkh2-6mNCeJ-36k8qA-pPwRs3-4M2GXi-4HrE6u-4HsdeB-4JD8hf-4JD6nw-4QqseF-6mJoog-pNjmq5-4HJQz6-qa29gR-3h8GjF-J8M2b-4Hwxgh-ex6kUp-4HJMaX-4HP4kb-8DSYWk-nqEz3T-4G8kLK-4HsiHa-5knEos-6mJm94-eaUcwV-6mNvCb-4HNSp3-4HscFR-4JyQnR-4HJG9K-4HJRx6-5knD6Q-5kipKe-4x3H5P-6mNF7E">image</a> by <a href="https://www.flickr.com/photos/mwichary">Marcin Wichary</a></p>
@@ -72,7 +72,7 @@ Fabric drops are increasing at a rate of 329678.81/s.</code></pre>
 	<p>It’s not uncommon for attacks against CloudFlare to reach 100Mpps. The recent attacks were larger and peaked at 180Mpps. Here’s a chart of the attack packets per second that we received over the last month:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vPGAQuIemYVcO1CDr0sPH/d328e7539f308cd63a7db221584f8df4/attack-pps.png" alt="" class="kg-image" width="761" height="220" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vPGAQuIemYVcO1CDr0sPH/a96b8dde9622bd782ab59cf7ea57cf33/attack-pps.png" alt="" class="kg-image" width="761" height="220" loading="lazy">
 
 	</figure>
 	<p>There aren’t many networks in the world that could sustain this rate of attack packets, but our hardware was able to keep up with all the malicious traffic. Our networking team does an excellent job at keeping CloudFlare’s networking hardware up to the task.</p>
@@ -84,14 +84,14 @@ ae-1/2/2 (HardLayer) in: 81092mbps (81.10%)</code></pre>
 	<p>We saw this warning some time ago when a link got quite full. In fact, in recent weeks a couple of our fat 100Gbps links got quite busy, hitting a ceiling at 77Gbps on inbound:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12hbZzVMslMyjDBIINRKGn/017baf64983991d0dbb2c56531420d59/76g-ceiling.png" alt="" class="kg-image" width="869" height="325" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12hbZzVMslMyjDBIINRKGn/648750ef9a8610e093581ee407f7eb8b/76g-ceiling.png" alt="" class="kg-image" width="869" height="325" loading="lazy">
 
 	</figure>
 	<p>We speculate the attack against this datacenter was larger than 77Gbps, but that congestion occurred on the other side of the network—close to the attackers. We’re investigating this with our Internet providers.</p>
 	<p>The recent attacks peaked at around 400Gbps of aggregate inbound traffic. The peak wasn't a one-off spike, it lasted for a couple of hours!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3R7AfavSaYuoe8bk7UFRDc/7d63e6ff58aea94e12936693488c2cab/attack-bps.png" alt="" class="kg-image" width="762" height="212" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3R7AfavSaYuoe8bk7UFRDc/07ba4f9504f567bad8de9b5464f1b901/attack-bps.png" alt="" class="kg-image" width="762" height="212" loading="lazy">
 
 	</figure>
 	<p>Even during the peak attack traffic, our network wasn’t congested and systems operated normally. Our automatic mitigation software was able to sort the good from the bad packets.</p>

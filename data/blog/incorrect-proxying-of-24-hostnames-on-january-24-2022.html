@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IeXybuliWDzpWxEqvcuP4/52db2584b9a8f57e1d527d92ba0d2bd7/incorrect-proxying-of-24-hostnames-on-january-24-2022.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IeXybuliWDzpWxEqvcuP4/6f630d424bb4a05b7c9eaac7861074c6/incorrect-proxying-of-24-hostnames-on-january-24-2022.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On January 24, 2022, as a result of an internal Cloudflare product migration, 24 hostnames (including <a href="https://www.cloudflare.com">www.cloudflare.com</a>) that were actively proxied through the Cloudflare global network were mistakenly redirected to the wrong origin. During this incident, traffic destined for these hostnames was passed through to the clickfunnels.com origin and may have resulted in a <code>clickfunnels.com</code> page being displayed instead of the intended website. This was our doing and clickfunnels.com was unaware of our error until traffic started to reach their origin.</p>
 	<p>API calls or other expected responses to and from these hostnames may not have responded properly, or may have failed completely. For example, if you were making an API call to api.example.com, and api.example.com was an impacted hostname, you likely would not have received the response you would have expected.</p>
@@ -14,7 +14,7 @@
 	<p>Here is a graph (on a log scale) of requests to clickfunnels.com during the event. Out of a total of 268,430,157 requests redirected, 268,220,296 (99.92%) were for <a href="https://www.cloudflare.com">www.cloudflare.com</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZJtL8tRo16K0DbDL5D2lj/1ddcd61b22f2a5890c020cf72ec6becd/unnamed-16.png" alt="" class="kg-image" width="1196" height="664" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZJtL8tRo16K0DbDL5D2lj/720a2b3ff7593778925e94f6d0af1084/unnamed-16.png" alt="" class="kg-image" width="1196" height="664" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we take these types of incidents very seriously, dedicating massive amounts of resources in preventative action and in follow-up engineering. In this case, there are both procedural and technical follow-ups to prevent reoccurrence. Here are our next steps:</p>

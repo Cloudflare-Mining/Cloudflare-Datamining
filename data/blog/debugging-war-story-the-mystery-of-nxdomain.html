@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nVzURm8NEO6MeTksPSCyN/58edd86347674177f34765e77c2e3657/debugging-war-story-the-mystery-of-nxdomain.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nVzURm8NEO6MeTksPSCyN/7ada2b0b6a3d96006e739f480e18dd9a/debugging-war-story-the-mystery-of-nxdomain.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The following blog post describes a debugging adventure on Cloudflare's <a href="https://mesos.apache.org">Mesos</a>-based cluster. This internal cluster is primarily used to process log file information so that Cloudflare customers have analytics, and for our systems that detect and respond to attacks.</p>
 	<p>The problem encountered didn't have any effect on our customers, but did have engineers scratching their heads...</p>
@@ -58,13 +58,13 @@ func main() {
 	<p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2016/12/image01.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/sAJzwdZ6928uieteOs3if/c9c044e478897f21b4a5a795b180a5e4/image01.png" alt="" class="kg-image" width="1484" height="528" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sAJzwdZ6928uieteOs3if/5cbfd0ace54627052214ccf1439c9418/image01.png" alt="" class="kg-image" width="1484" height="528" loading="lazy">
 		</a>
 	</figure>
 	<p>We saw no strong correlation to racks or specific machines. Errors happened on many hosts, but not on all of them and in different time windows errors happen on different machines. Putting time on X axis and number of errors on Y axis showed the following:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2016/12/image00.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dtzcTKyCg5QdgJLJaRLFT/6bac0e04705a355a23437003dcac7bec/image00.png" alt="" class="kg-image" width="1579" height="208" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dtzcTKyCg5QdgJLJaRLFT/cf51638f85c1b4c2a52f00b95fc84281/image00.png" alt="" class="kg-image" width="1579" height="208" loading="lazy">
 		</a>
 	</figure>
 	<p>To see if some particular DNS recursor had gone crazy, we stopped all load generators on regular machines and started the load generation tool on the recursors themselves. There were no errors in a few hours, which suggested that Unbound was perfectly healthy.</p>

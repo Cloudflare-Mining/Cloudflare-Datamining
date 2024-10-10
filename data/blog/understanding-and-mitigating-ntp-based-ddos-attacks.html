@@ -1,9 +1,9 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hRqYlVfSwUYL47CC0clSi/bfff7285bfd3d4be3897702b4d0c8d14/understanding-and-mitigating-ntp-based-ddos-attacks.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hRqYlVfSwUYL47CC0clSi/1b7d00da231f135ede710e7b687f17d1/understanding-and-mitigating-ntp-based-ddos-attacks.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the last couple of weeks you may have been hearing about a new tool in the DDoS arsenal: NTP-based attacks. These have become popular recently and caused trouble for some gaming web sites and service providers. We'd long thought that <a href="https://github.com/cloudflare/jgc-talks/blob/master/Virus_Bulletin/Secure_2013_and_Virus_Bulletin_2013/CloudFlare%20JGC%20-%20Secure%202013%20and%20Virus%20Bulletin%202013.pdf">NTP might become a vector for DDoS attacks</a> because, like DNS, it is a simple UDP-based protocol that can be persuaded to return a large reply to a small request. Unfortunately, that prediction has come true.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5srV8xsezFIDmoDes2VOPh/b9a69687ff4fcb807f3e5c8b93e88f9b/speak_clock_1.jpg" alt="The UK's Speaking Clock" class="kg-image" width="560" height="409" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5srV8xsezFIDmoDes2VOPh/6f097751cbd6d7277a5e67766fd6a8bb/speak_clock_1.jpg" alt="The UK's Speaking Clock" class="kg-image" width="560" height="409" loading="lazy">
 
 	</figure>
 	<p>This blog post explains how an NTP-based attack works and how web site owners can help mitigate them. CloudFlare defends web sites against NTP based attacks, but it's best to stem the flow of NTP-based DDoS by making simple configuration changes to firewalls and NTP servers. Doing so makes the web safer for everyone.</p>
@@ -22,7 +22,7 @@
 	<p>Amplification attacks like that result in an attacker turning a small amount of bandwidth coming from a small number of machines into a massive traffic load hitting a victim from around the Internet. Until recently the most popular protocol for amplification attacks was DNS: a small DNS query looking up the IP address of a domain name would result in a large reply.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AUH2Pw2eHluzo2Azh5WWJ/7149705df8de1b8193599294535844c9/illustration-amplification-attack-ph3.png" alt="" class="kg-image" width="645" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AUH2Pw2eHluzo2Azh5WWJ/4093ce97e0bdc109f0e86d1847ce002a/illustration-amplification-attack-ph3.png" alt="" class="kg-image" width="645" height="441" loading="lazy">
 
 	</figure>
 	<p>For DNS the amplification factor (how much larger a reply is than a request) is 8x. So an attacker can generate an attack 8x larger than the bandwidth they themselves have access to. For example, an attacker controlling 10 machines with 1Gbps could generate an 80Gbps DNS amplification attack.</p>
@@ -39,7 +39,7 @@
 	<p>NTP is the <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">Network Time Protocol</a> that is used by machines connected to the Internet to set their clocks accurately. For example, the address time.euro.apple.com seen in the clock configuration on my Mac is actually the address of an NTP server run by Apple.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EKI3a5J7dJs5P7nPLUZjA/1f8ad152f4924a6ab0948faff5dfa2de/Screen_Shot_2014-01-09_at_11.33.15_AM.png" alt="" class="kg-image" width="782" height="699" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EKI3a5J7dJs5P7nPLUZjA/d7194af903f92f223718795617112818/Screen_Shot_2014-01-09_at_11.33.15_AM.png" alt="" class="kg-image" width="782" height="699" loading="lazy">
 
 	</figure>
 	<p>My Mac quietly synchronizes with that server to keep its clock accurate. And, of course, NTP is not just used by Macs: it is widely used across the Internet by desktops, servers and even phones to keep their clocks in sync.</p>
@@ -48,7 +48,7 @@
 	<p>To get an idea of how much larger, I used the <a href="http://linuxcommand.org/man_pages/ntpdc1.html">ntpdc</a> command to send a monlist command to a randomly chosen open NTP server on the Internet. Here are the request and response packets captured with <a href="https://www.wireshark.org">Wireshark</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rrzt9EWPhDbg0F1uQkWvH/4634c8ee0f1d3d3d426df45319a9c013/Screen_Shot_2014-01-09_at_11.47.29_AM.png" alt="" class="kg-image" width="740" height="227" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rrzt9EWPhDbg0F1uQkWvH/98cc24692bf708d385e729851e87ec0c/Screen_Shot_2014-01-09_at_11.47.29_AM.png" alt="" class="kg-image" width="740" height="227" loading="lazy">
 
 	</figure>
 	<p>At the command line I typed</p>

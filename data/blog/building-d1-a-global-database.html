@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76hMKeBHewbCLm4XlVS4zL/3bf95667f0256177dc651f44ce33e2eb/image2-33.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76hMKeBHewbCLm4XlVS4zL/92271c25576185cad1ab5e70e29ede58/image2-33.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Developers who build Worker applications focus on what they're creating, not the infrastructure required, and benefit from the global reach of <a href="https://www.cloudflare.com/network">Cloudflare's network</a>. Many applications require persistent data, from personal projects to business-critical workloads. Workers offer various <a href="https://developers.cloudflare.com/workers/platform/storage-options">database and storage options</a> tailored to developer needs, such as key-value and object storage.</p>
@@ -33,7 +33,7 @@
 	<p>The question, then, is how can D1, as Cloudflare’s built-in database solution, better support data placement for global applications? The answer is asynchronous read replication.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1I58tQFeSOcIyqrGfv9UnB/cad196a172cd0c5ff4000bac916848f4/image4-30.png" alt="" class="kg-image" width="1800" height="590" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I58tQFeSOcIyqrGfv9UnB/c1bc267b8cd2eb09332ae909429aeb5b/image4-30.png" alt="" class="kg-image" width="1800" height="590" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -78,7 +78,7 @@
 	<p>At time t=10s, query 1 goes to replica A and returns. Query 1 sees what the primary database looked like at t=9.9s. Suppose it takes 500ms to do the computation, so at t=10.5s, query 2 goes to replica B. Remember, replica B lags the primary database by 2s, so at t=10.5s, query 2 sees what the database looks like at t=8.5s. As far as the application is concerned, the results of query 2 look like the database has gone backwards in time!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2R1p29j20c7szuRmY2Sjlp/d3da1494232913b556806d624a0c8f14/image3-34.png" alt="" class="kg-image" width="1200" height="510" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2R1p29j20c7szuRmY2Sjlp/52e4982c6c45e18c4d0c18835931b016/image3-34.png" alt="" class="kg-image" width="1200" height="510" loading="lazy">
 
 	</figure>
 	<p>Formally, this is <a href="https://jepsen.io/consistency/models/read-committed">read committed</a> consistency since your queries will only see committed data, but there’s no other guarantee - not even that you can read your own writes. While read committed is a valid consistency model, it’s hard to reason about all of the possible race conditions the read committed model allows, making it difficult to write applications correctly.</p>
@@ -298,7 +298,7 @@ npx wrangler d1 insights &lt;database_name&gt; --sort-type=avg --sort-by=time --
 	<p>The features available now with GA and our global read replication design are just the start of delivering the SQL database needs for developer applications. If you haven’t yet used D1, you can <a href="https://developers.cloudflare.com/d1/get-started">get started</a> right now, visit D1’s <a href="https://developers.cloudflare.com/d1">developer documentation</a> to spark some ideas, or <a href="https://discord.cloudflare.com">join the #d1 channel</a> on our Developer Discord to talk to other D1 developers and our product engineering team.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dTCMeWMaQjhBd1SM8hM6O/5d2c50cacd4a2240b691643d9872536c/image1-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dTCMeWMaQjhBd1SM8hM6O/2cbe9ec1a7a4fb0c061afe0e1c0bf666/image1-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
 
 	</figure>
 	<p></p>

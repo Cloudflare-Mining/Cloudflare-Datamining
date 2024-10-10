@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gfMoLiwSE5HsgT3ta2ajk/066b2b5d1511f29b7d8c5b1fb6f49c98/Flowtrackd-network-namespaces-fix-1.png" alt="A story about AF_XDP, network namespaces and a cookie" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gfMoLiwSE5HsgT3ta2ajk/0b7e143d925e51afc0fdc743ff40bd8f/Flowtrackd-network-namespaces-fix-1.png" alt="A story about AF_XDP, network namespaces and a cookie" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html">network namespace</a> aware.</p>
@@ -13,7 +13,7 @@
 	<p>For the rest of this post the network setup will be the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gnH2TUlwgdNAxFjrw0vL6/d9755d67db4b9a7b479286b70bc2efd8/image13-3.png" alt="flowtrackd network setup" class="kg-image" width="1933" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gnH2TUlwgdNAxFjrw0vL6/be9a5939c06f5d10924c1942a35ee869/image13-3.png" alt="flowtrackd network setup" class="kg-image" width="1933" height="500" loading="lazy">
 
 	</figure>
 	<p>e.g. eyeball packets arrive at the outer device in the root network namespace, they are picked up by flowtrackd and then forwarded to the inner device in the inner-ns namespace.</p>
@@ -29,7 +29,7 @@
 	<p>The UMEM is split in contiguous equal-sized "frames" that are referenced by "descriptors" which are just offsets from the start address of the UMEM.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48r1ecV9BRfVD8wNc103jB/8a105fef1e35c0b9de8d6862fa1338b0/image12-2.png" alt="AF_XDP UMEM representation" class="kg-image" width="1999" height="1012" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48r1ecV9BRfVD8wNc103jB/8fe3ca45fc83d557af8086c27cfe91fa/image12-2.png" alt="AF_XDP UMEM representation" class="kg-image" width="1999" height="1012" loading="lazy">
 
 	</figure>
 	<p>The interactions and synchronization between the kernel and userspace happen via a set of queues (circular buffers) as well as a socket from the AF_XDP family.</p>
@@ -60,7 +60,7 @@
 	<p>The last plumbing operation to be done to use AF_XDP is to load a BPF program attached with XDP on the network device we want to interact with and insert the Xsk file descriptor into a BPF map (of type XSKMAP). Doing so will enable the BPF program to redirect incoming packets (with the <code>bpf_redirect_map()</code> <a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html">function</a>) to a specific socket that we created in userspace:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3K8DUwo8pARFEwtKmpRjp0/9457a4f43d35a34921fd4b33cb4c6920/image4-9.png" alt="AF_XDP BPF redirect map action" class="kg-image" width="1999" height="782" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3K8DUwo8pARFEwtKmpRjp0/9b6e624d5d159b87e8bb3875f338312a/image4-9.png" alt="AF_XDP BPF redirect map action" class="kg-image" width="1999" height="782" loading="lazy">
 
 	</figure>
 	<p>Once everything has been allocated and strapped together, what I call "the descriptors dance" can start. While this has nothing to do with courtship behaviors it still requires a flawless execution:</p>
@@ -68,7 +68,7 @@
 	<p>The overview of the queue interactions from the application perspective is represented on the following diagram (note that the queues contain descriptors that point to UMEM frames):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5TkCEuedruPJCPfzWidBjc/146517dd835a671a200064a1aaa5b395/image7-6.png" alt="flowtrackd interactions with AF_XDP queues" class="kg-image" width="1999" height="919" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TkCEuedruPJCPfzWidBjc/a600b902fea7894d12006afb8c2d46a4/image7-6.png" alt="flowtrackd interactions with AF_XDP queues" class="kg-image" width="1999" height="919" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -85,31 +85,31 @@
 	<p>In this blogpost, we will only focus on the new usage of the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html#xdp-shared-umem-bind-flag">AF_XDP shared UMEM feature</a> which enables us to handle all customer accounts with a single flowtrackd instance per server and with a single shared UMEM (see schema on the right side below).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fzyIwrz5hCvFe5nvvPgf8/5e009dbeb63430b8c9e62fe071e02052/unnamed-4.png" alt="previous flowtrackd version next to the I/O rewrite one" class="kg-image" width="1600" height="1537" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fzyIwrz5hCvFe5nvvPgf8/ed34ea06fa7d9f2ccc54e1df103ecde3/unnamed-4.png" alt="previous flowtrackd version next to the I/O rewrite one" class="kg-image" width="1600" height="1537" loading="lazy">
 
 	</figure>
 	<p>The Linux kernel documentation describes the additional plumbing steps to share a UMEM across multiple AF_XDP sockets:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jo3Fu7TMp3riMHpFS2JVB/47bae199edbb723d55aaa0f68d3ca4a7/image14-3.png" alt="XDP_SHARED_UMEM bind flag documentation" class="kg-image" width="1239" height="286" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jo3Fu7TMp3riMHpFS2JVB/172fee5a98ad24fae110e75750590fe5/image14-3.png" alt="XDP_SHARED_UMEM bind flag documentation" class="kg-image" width="1239" height="286" loading="lazy">
 
 	</figure>
 	<p>Followed by the instructions for our use case:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SnkkPjseYCtlkpImqFUqN/a18b4a8c583c710f3ecb5a22b2fb21cb/image9-4.png" alt="shared UMEM use case documentation" class="kg-image" width="1214" height="339" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SnkkPjseYCtlkpImqFUqN/4505c75ffd7ff6f07f851425c4f0eabe/image9-4.png" alt="shared UMEM use case documentation" class="kg-image" width="1214" height="339" loading="lazy">
 
 	</figure>
 	<p>Hopefully for us a helper function in libbpf does it all for us: <code>xsk_socket__create_shared()</code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/X3bAf6b0i9A5MQ8rpPwEB/499c1e2b4ed93fd0ffdd8d3de28879cc/image10-2.png" alt="xsk_socket__create_shared() function documentation" class="kg-image" width="1230" height="186" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/X3bAf6b0i9A5MQ8rpPwEB/659c37c28c96d55f5d33b9abc6acdc4a/image10-2.png" alt="xsk_socket__create_shared() function documentation" class="kg-image" width="1230" height="186" loading="lazy">
 
 	</figure>
 	<p>The final setup is the following: Xsks are created for each queue of the devices in their respective network namespaces. flowtrackd then handles the descriptors like a puppeteer while applying our DoS mitigation logic on the packets that they reference with one exception… (notice the red crosses on the diagram):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Of32s5kJrl6seldfKEnI4/4ee8feb492184a5eacc643e70fe88949/unnamed1.png" alt="overview of flowtrackd interactions with Xsks in namespaces" class="kg-image" width="1600" height="646" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Of32s5kJrl6seldfKEnI4/76b3dfb3e7b3dd4ab47ba1f4715ae422/unnamed1.png" alt="overview of flowtrackd interactions with Xsks in namespaces" class="kg-image" width="1600" height="646" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -128,14 +128,14 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace</c
 	<p>According to the line number, the first socket was created with success and flowtrackd crashed when the second Xsk was created:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wSlomdCWIQcOjiFLpvtmk/5daf6a54c98d6ccaf6c920a1cf9d3e68/image11-3.png" alt="Rust Xsk instantiation code snippet" class="kg-image" width="1673" height="887" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wSlomdCWIQcOjiFLpvtmk/c90313156ae25307fc0810f99e47e092/image11-3.png" alt="Rust Xsk instantiation code snippet" class="kg-image" width="1673" height="887" loading="lazy">
 
 	</figure>
 	<p>Here is what we do: we enter the network namespace where the interface sits, load and attach the BPF program and for each queue of the interface, we create a socket. The UMEM and the config parameters are the same with the ingress Xsk creation. Only the ingress_veth and egress_veth are different.</p>
 	<p>This is what the code to create an Xsk looks like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xd6YfIKTsCJOEq9OHGYfW/dd136476e5551679e63677651ddc9768/image3-6.png" alt="Rust Xsk creation code snippet" class="kg-image" width="1354" height="1168" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xd6YfIKTsCJOEq9OHGYfW/2b06a4be3d9ab9d64842d99b68b998c6/image3-6.png" alt="Rust Xsk creation code snippet" class="kg-image" width="1354" height="1168" loading="lazy">
 
 	</figure>
 	<p>The call to the libbpf function <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L994"><code>xsk_socket__create_shared()</code></a> didn't return 0.</p>
@@ -547,13 +547,13 @@ make -j$(nproc) bzImage</code></pre>
 	<p>After executing the network setup script and running flowtrackd, we hit the <code>xsk_bind</code> breakpoint:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gubA71gEppejdOkeME2rL/bc130cdcc125e2f76bb2ff9c54aad191/image6-7.png" alt="gdb with breakpoint hit at xsk_bind" class="kg-image" width="1076" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gubA71gEppejdOkeME2rL/61ea127cb68fdfd4a6603445bb28630c/image6-7.png" alt="gdb with breakpoint hit at xsk_bind" class="kg-image" width="1076" height="820" loading="lazy">
 
 	</figure>
 	<p>We continue to hit the second <code>xsk_bind</code> breakpoint (the one that returns EINVAL) and after a few <code>next</code> and <code>step</code> commands, we find <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L938">which function</a> returned the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk_buff_pool.c#L201">EINVAL value</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GRpxt6bPf3f42tL0rTmf7/c9197c0ea2c6dbe5c7f613ddb61ef3b3/image8-2.png" alt="gdb stepping next to the EINVAL value" class="kg-image" width="1276" height="906" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GRpxt6bPf3f42tL0rTmf7/a99d880dc0579353c49bb21703adfc79/image8-2.png" alt="gdb stepping next to the EINVAL value" class="kg-image" width="1276" height="906" loading="lazy">
 
 	</figure>
 	<p>In our Rust code, we allocate a new FILL and a COMPLETION queue for each queue id of the device prior to calling <code>xsk_socket__create_shared()</code>. Why are those set to NULL? Looking at the code, <code>pool-&gt;fq</code> comes from a struct field named <code>fq_tmp</code> that is accessed from the sock pointer <code>(print ((struct xdp_sock *)sock-&gt;sk)-&gt;fq_tmp)</code>. The field is set in the first call to xsk_bind() but isn't in the second call. We note that at the end of the xsk_bind() function, <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L981">fq_tmp and cq_tmp are set to NULL</a> as per this comment: "FQ and CQ are now owned by the buffer pool and cleaned up with it.".</p>
@@ -562,13 +562,13 @@ make -j$(nproc) bzImage</code></pre>
 	<p>The first function called is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L879"><code>xsk_get_ctx()</code></a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZJQXz150mnzj47exyaKUB/8ab3551d8e35524239c02738e5b1466e/image18-2.png" alt="xsk_get_ctx() function code" class="kg-image" width="993" height="508" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZJQXz150mnzj47exyaKUB/c0cc03d40a70873a21725abc4401886f/image18-2.png" alt="xsk_get_ctx() function code" class="kg-image" width="993" height="508" loading="lazy">
 
 	</figure>
 	<p>The second is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L923"><code>xsk_create_ctx()</code></a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37eShbafNDmVglIOd8RUPt/4848f3b23e270515c99ef47603358574/image16-3.png" alt="xsk_create_ctx() function code" class="kg-image" width="795" height="1164" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37eShbafNDmVglIOd8RUPt/c1ade49287889ec4a9b31e350b47c889/image16-3.png" alt="xsk_create_ctx() function code" class="kg-image" width="795" height="1164" loading="lazy">
 
 	</figure>
 	<p>Remembering our setup, can you spot what the issue is?</p>
@@ -614,13 +614,13 @@ make -j$(nproc) bzImage</code></pre>
 	<p>This is almost what we need! This patch adds a kernel function named <code>bpf_get_netns_cookie()</code> that would get us the network namespace cookie linked to a socket:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yeyvSXN19FPw3gJvKGPdh/a03087660591eb8e9e580c6f65378afd/image15-3.png" alt="bpf_get_netns_cookie manual page" class="kg-image" width="987" height="413" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yeyvSXN19FPw3gJvKGPdh/31c07d8740a52ce7de8073565d181de0/image15-3.png" alt="bpf_get_netns_cookie manual page" class="kg-image" width="987" height="413" loading="lazy">
 
 	</figure>
 	<p>A <a href="https://patchwork.kernel.org/project/linux-parisc/patch/20210210120425.53438-2-lmb@cloudflare.com">second patch</a> enables us to get this cookie from userspace:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fkodeI6Um1we4uArDAl9w/be2f97843d9e47a6f0f3b63ea2e11a1f/image17-2.png" alt="add SO_NETNS_COOKIE socket option patch" class="kg-image" width="1108" height="527" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fkodeI6Um1we4uArDAl9w/864571b824f22e85d43265d964efc138/image17-2.png" alt="add SO_NETNS_COOKIE socket option patch" class="kg-image" width="1108" height="527" loading="lazy">
 
 	</figure>
 	<p>I know this Lorenz from somewhere :D</p>
@@ -662,13 +662,13 @@ make -j$(nproc) bzImage</code></pre>
 	<p>After recompiling flowtrackd to use our patched libbpf, we can run it inside <b>our guest</b> with gdb and set breakpoints on <code>xsk_get_ctx</code> as well as <code>xsk_create_ctx</code>. We now have two instances of gdb running at the same time, one debugging the system and the other debugging the application running in that system. Here is the gdb guest view:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sbLABtvPacBjuX9oFVn0Z/a6d04c9879805ff1063715568f9953a2/unnamed2-1.png" alt="gdb guest view of the xsk context breakpoint hits" class="kg-image" width="1415" height="845" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sbLABtvPacBjuX9oFVn0Z/c01cd118d1d3d6e15d178a0689e92691/unnamed2-1.png" alt="gdb guest view of the xsk context breakpoint hits" class="kg-image" width="1415" height="845" loading="lazy">
 
 	</figure>
 	<p>Here is the gdb system view:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HDyMoI08Ipp4ppwCRZmH8/985ccec0f1b485e7d25df4947a73d686/unnamed3.png" alt="gdb system view of the xsk_bind breakpoint hits" class="kg-image" width="1241" height="751" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HDyMoI08Ipp4ppwCRZmH8/256e62125a122c3e8a493059dd3f718e/unnamed3.png" alt="gdb system view of the xsk_bind breakpoint hits" class="kg-image" width="1241" height="751" loading="lazy">
 
 	</figure>
 	<p>We can see that the netns_cookie value for the first two Xsks is 1 (root namespace) and the <code>net_cookie</code> value for the two other Xsks is 8193 (inner-ns namespace).</p>

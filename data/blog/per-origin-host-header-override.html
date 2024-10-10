@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4D0jZSmsO7tGSSc8bN3uE1/c876e098618d635cf8d106fc49c26f8d/per-origin-host-header-override.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4D0jZSmsO7tGSSc8bN3uE1/cc618690b29f303661087edca56e1d80/per-origin-host-header-override.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Load Balancing as a concept is pretty straightforward. Take an existing infrastructure and route requests to the available origin servers so no single server is overwhelmed. Add in some health monitoring to ensure each server has a heartbeat/pulse so proactive decisions can be made. With two steps, you get more effective utilization of your existing resources… simple enough!</p>
 	<p>As your application grows, however, load balancing becomes more complicated. An example of this — and the subject of this blog post — is how load balancing interacts with the Host header in an HTTP request.</p>
@@ -27,14 +27,14 @@
 	<p>To address this problem, we’ve added support to override the Host header on a per-origin basis within our Load Balancing solution. This means that you don’t have to worry about sending errors back to your end-users and can seamlessly integrate apps — such as Heroku — into your reliability solutions.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lHzhndIL0cghD1eIW5bp0/238f597b954fd96868e355c621f3c9b3/image3-3.png" alt="" class="kg-image" width="1068" height="437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lHzhndIL0cghD1eIW5bp0/341af6fc0de25da3311ca71b99c7c806/image3-3.png" alt="" class="kg-image" width="1068" height="437" loading="lazy">
 
 	</figure>
 	<p>We wanted to create a scalable solution, one that allowed you to perform these overrides in an easy and intuitive way. As we reviewed the problem, we saw that there was no one-size fit all solution. Different customers are going to have their apps architected differently and have different goals based on their business, industry, geography, etc. Thus, it was important to provide flexibility to override the Host header on a per-origin basis, since different origins can support different segments of an application or entirely different applications altogether! With a simple click, users can now update the Host header on their origins. When requests hit the Load Balancer, it reads the overwritten value for the origin host instead of the defaulted origin Host header value and requests are routed properly without errors.</p>
 	<p>“<i>But what about my health monitors!?</i>” you may be thinking. When you add a Host header override on your origin, we will automatically apply it to the origin’s health monitor. No extra configuration is required. On top of that, we felt it was important to provide as much meaningful information as possible so you could make informed decisions around any configuration updates. When editing a health monitor, you will see a new table if any origins have a Host header override.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xmbMjXqdFhPrxqTNQXnsJ/ce3e1d64bde472a02b052271f38f6e8a/image2-2.png" alt="" class="kg-image" width="1056" height="1022" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xmbMjXqdFhPrxqTNQXnsJ/7c8231a41bdc43895aec5fbed1aa34b9/image2-2.png" alt="" class="kg-image" width="1056" height="1022" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -59,7 +59,7 @@
 	<p>Now, when you navigate to the Traffic tab and set up a Load Balancer, you can add a Host header override on your back-end origin. When you add the Host header, we do safety checks — which we’ll get to in a bit — and if it passes all the checks then your configuration gets saved. If you set a Host header override on an origin, it will take precedence over a Host header override set on the monitor.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pGJS2FVLjiyF6otz5yHiB/be561cb810d756cdf9363807ee1f7d20/image1-4.png" alt="" class="kg-image" width="1140" height="487" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pGJS2FVLjiyF6otz5yHiB/7b23bcaa6e45a1f68674dbe65d7f8bd8/image1-4.png" alt="" class="kg-image" width="1140" height="487" loading="lazy">
 
 	</figure>
 	<p>Cloudflare has over 200 edge locations around the world, making it one of the largest Anycast networks. We make sure that your Load Balancer config information is available at all our Cloudflare edge locations. For example, you may have your website hosted on a third-party cloud provider like Heroku. You would set up a Load Balancer with pools and associated origin <code>example.com</code>. To reach <code>example.com</code> hosted on Heroku, you would set the heroku url <code>example.herokuapp.com</code> as the origin Host header “Host:example.herokuapp.com”. When a request hits a Cloudflare edge, we would first check the load balancing config and the health monitor to check the origin health status. Then, we would set the Host header override and Server Name Indication (SNI).For more about, visit our <a href="https://www.cloudflare.com/learning/ssl/what-is-sni">learning center</a>.</p>

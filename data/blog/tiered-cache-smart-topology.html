@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kqj0NzNPWYbmWCnwY19Hh/14842e65449cadf5515a37d71a07206a/image5-8.png" alt="" class="kg-image" width="1200" height="619" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kqj0NzNPWYbmWCnwY19Hh/e114613842d5fb83e5ec20bee819e4b1/image5-8.png" alt="" class="kg-image" width="1200" height="619" loading="lazy">
 
 	</figure>
 	<p>A few years ago, we released <a href="https://blog.cloudflare.com/argo">Argo</a> to help make the Internet faster and more efficient. Argo observes network conditions and finds the optimal route across the Internet for origin server requests, avoiding congestion along the way.</p>
@@ -20,7 +20,7 @@
 	<p>The standard method for caching assets is to let each data center be a reverse proxy for the origin server. In this scheme, a miss in any data center causes a request to the origin for an asset. A request to the origin for one asset could be made as many times as there are data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QnGdgnxTozRxIq0MEwdsb/a7c8a6546b398d0d7d85c5447a1e411b/image4-5.png" alt="" class="kg-image" width="1197" height="809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QnGdgnxTozRxIq0MEwdsb/4b4413246cb73464fbe29f170e7b4408/image4-5.png" alt="" class="kg-image" width="1197" height="809" loading="lazy">
 
 	</figure>
 	<p>A cache miss in any data center will result in a request being sent to the origin server even if the asset is cached in some other data center. This is because the data centers are completely oblivious of each other.</p>
@@ -39,7 +39,7 @@
 	<p>Tiered Cache improves cache hit ratios by allowing some data centers to serve as caches for others, before the latter has to make a request to the origin. With Tiered Cache, certain data centers are reverse proxies to the origin for other data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PsRoz96enPiCs85zvTwYf/68f7eaa5f9e46c899573e386d51fbb62/image6-4.png" alt="" class="kg-image" width="1439" height="883" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PsRoz96enPiCs85zvTwYf/69254f48c367caee07f27d02f3da1f60/image6-4.png" alt="" class="kg-image" width="1439" height="883" loading="lazy">
 
 	</figure>
 	<p>If the proxied data centers make requests for the same asset, the asset will already be cached in the proxying data center and can be retrieved from there rather than from the origin. Fewer requests to the origin are made overall.</p>
@@ -103,7 +103,7 @@
 	<p><b>Anycast Networks</b>We are measuring the latency to the origin IP address and assuming that it represents the latency to the origin server, but this can break down in certain cases. A few cloud providers other than Cloudflare also use Anycast technology to provide their services. In Anycast, multiple machines can share an IP address regardless of where they are connected to the Internet, and the Internet will typically route packets destined for that address to the closest machine. If an Anycast network is used to proxy an origin server, then the apparent latency to the IP address for the origin server is actually the latency to the edge of the Anycast network rather than the latency to the origin server. The real latency to the origin server cannot be determined by probing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74m6djnAH5qLOVljncJLXo/9ae5b091f8dffa7f0ffdf890357fa4ef/image1-8.png" alt="" class="kg-image" width="1422" height="612" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74m6djnAH5qLOVljncJLXo/8e5f863e6a820a7b38514a08d490dcc5/image1-8.png" alt="" class="kg-image" width="1422" height="612" loading="lazy">
 
 	</figure>
 	<p>The algorithm would fail to select the single best proxying data center if the latencies are not representative of the actual latency between data center and origin. Selecting the wrong data center would adversely affect latencies for requests to the origin, and could be expensive.</p>
@@ -111,7 +111,7 @@
 	<p>The data center selection algorithm assumes that the origin is in a single geographic location and can be probed to determine latency from each data center. These networks break one or both of these assumptions, so a procedure had to be developed in order to detect them. First, it is assumed that the IP appears in a single geographic location and is not proxied by such a network. The latency to the origin is bounded by the speed of light through fiber. Although the distance between any data center and the origin server is not known, the distances between data centers is known by Cloudflare.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iwqe42uNZr6ga01UFzrmv/0ebda2f4bef4d3b109a406d5121d92a8/image3-10.png" alt="" class="kg-image" width="1269" height="269" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iwqe42uNZr6ga01UFzrmv/0603513b24cddcc30254696676831261/image3-10.png" alt="" class="kg-image" width="1269" height="269" loading="lazy">
 
 	</figure>
 	<p>Imagine putting the origin server as a pitstop in that journey. Then, the theoretical minimum possible observable pair of latencies between the origin server and any two data centers can be computed. We have the latency probe data from both of these data centers and the origin, so we can check to see whether the observed latency is lower than what is possible.</p>
@@ -127,7 +127,7 @@
 	<p>When Smart Topology is enabled many Cloudflare systems work together to ensure the correct data center is eventually used to request assets from the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RvAPjgVKj7WJgNS6B0gyK/4dd54af4e54e3bf74c11fd4c4ba4e1f6/image2-16.png" alt="" class="kg-image" width="1346" height="796" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RvAPjgVKj7WJgNS6B0gyK/c91cce48d0ec0669e2e0395ff168a0c5/image2-16.png" alt="" class="kg-image" width="1346" height="796" loading="lazy">
 
 	</figure>
 	<p>When the customer enables Tiered Cache Smart Topology, one of a few things can happen from the perspective of the origin. If a proxying data center has already been assigned to the CIDR block that encompasses the origin IP, the preferred or fallback data center is used to request assets from the origin. Otherwise, the generic topology is used to determine which proxying data centers to use to pull assets from the origin. The latency to the proxying data center should only decrease as the choice for proxying data center is updated over time.</p>

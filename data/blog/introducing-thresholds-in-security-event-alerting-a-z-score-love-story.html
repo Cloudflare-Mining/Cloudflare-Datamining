@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dcGwYorRTVHo2W7G6zCOe/acf8bf774d476c1859d62283bb0d03f2/pasted-image-0--1--1.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dcGwYorRTVHo2W7G6zCOe/f554c5f002064e541c1daf8a396eee20/pasted-image-0--1--1.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>Today we are excited to announce thresholds for our Security Event Alerts: a new and improved way of detecting anomalous spikes of security events on your Internet properties. Previously, our calculations were based on z-score methodology alone, which was able to determine most of the significant spikes. By introducing a threshold, we are able to make alerts more accurate and only notify you when it truly matters. One can think of it as a romance between the two strategies. This is the story of how they met.</p>
@@ -28,26 +28,26 @@
 	<p>The following graphs are an example of how the z-score method works. The first graph shows the number of security events over time, with a recent spike.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EnlNMeKzVeZ13Q0M2Mxcx/95d1c73e1e1c29fe41963ea5420d56f5/image3-9.png" alt="A graph of the number of security rules broken over time with a big recent spike." class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EnlNMeKzVeZ13Q0M2Mxcx/f9c919a5ad35d509e1728a77142247f5/image3-9.png" alt="A graph of the number of security rules broken over time with a big recent spike." class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>To determine whether this spike is significant, we calculate the z-score and check if the value is above 3.5:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40S18LfgnqtBqZRA3zMT3r/b84867f155f9b17e34374ce9e6407ba7/image4-3.png" alt="A graph of z-score values over time with a big recent spike" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40S18LfgnqtBqZRA3zMT3r/2508f9fc821a75ac3c0a16c4780aebba/image4-3.png" alt="A graph of z-score values over time with a big recent spike" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>As the graph shows, the deviation is above 3.5 and so an alert is triggered.</p>
 	<p>However, relying on z-score becomes tricky for domains that experience no security events for a long period of time. With many security events at zero, the mean and standard deviation depress to zero as well. When a non-zero value finally appears, it will always be infinite standard deviations away from the mean. As a result, it will always trigger an alert even on spikes that do not pose any threat to your domain, such as the below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/iGehGRFNnvEfKjmkZEWNm/d6227436d31a3090953106e3fa726098/image8.png" alt="A graph of the number of security rules broken over time with a recent spike of five security events" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iGehGRFNnvEfKjmkZEWNm/90a9793e0a828dd8d6cdbcc4010cb94a/image8.png" alt="A graph of the number of security rules broken over time with a recent spike of five security events" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>With five security events, you are likely going to ignore this spike, as it is too low to indicate a meaningful threat. However, the z-score in this instance will be infinite:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3j3tRLJgHkuLdmFb9YWZOt/b78a7788fcd999eb3889b3c7cddc512e/image5-3.png" alt="A graph of z-score values over time with a recent spike to infinity" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3j3tRLJgHkuLdmFb9YWZOt/8be281744a599e191f4b228373b61570/image5-3.png" alt="A graph of z-score values over time with a recent spike to infinity" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>Since a z-score of infinity is greater than 3.5, an alert will be triggered. This means that customers with few security events would often be overwhelmed by event alerts that are not worth worrying about.</p>
@@ -63,20 +63,20 @@
 	<p>With those conditions, the same spike to five security events will now generate a different z-score:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/U9AkTbV420o1eOa4ooARM/c2a47c6930279448e60970dc4edfa711/image7.png" alt="A graph of z-score values over time with all values equal to zero" class="kg-image" width="1174" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/U9AkTbV420o1eOa4ooARM/2e1195b59c652cff9c3e77dfc0292c21/image7.png" alt="A graph of z-score values over time with all values equal to zero" class="kg-image" width="1174" height="728" loading="lazy">
 
 	</figure>
 	<p>Great! With the z-score at zero, it will no longer trigger an alert on the harmless spike!</p>
 	<p>But what about spikes that could be harmful? When calculations ignore zeros, we need enough non-zero data points to accurately determine the mean and standard deviation. If only one non-zero value is present, that data point determines the mean and standard deviation. As such, the mean will always be equal to the spike, z-score will always be zero and an alert will never be triggered:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wwHM9U3GcPF7M07EzZN35/e284ec80615ea2f9885713d07ff3a86a/image6-1.png" alt="A graph of the number of security rules broken over time with a spike from zero to 1000" class="kg-image" width="1154" height="714" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wwHM9U3GcPF7M07EzZN35/7603546497ec2483fa954df74e3742aa/image6-1.png" alt="A graph of the number of security rules broken over time with a spike from zero to 1000" class="kg-image" width="1154" height="714" loading="lazy">
 
 	</figure>
 	<p>For a spike of 1000 events, we can tell that there is something wrong and we should trigger an alert. However, because there is only one non-zero data point, the z-score will remain zero:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ebNgZAbLIzsj1JahZs0Ua/9bceddc632c96ed39ab0dc23c3683056/image7-1.png" alt="A graph of z-score values over time with all values equal to zero" class="kg-image" width="1174" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ebNgZAbLIzsj1JahZs0Ua/f65a2c2875d4c471f238dc8ed4f37397/image7-1.png" alt="A graph of z-score values over time with all values equal to zero" class="kg-image" width="1174" height="728" loading="lazy">
 
 	</figure>
 	<p>The z-score does not cross the value 3.5 and an alert will not be triggered.</p>
@@ -93,13 +93,13 @@
 	<p>Instead, we paired up the z-score with a threshold. The threshold represents the raw number of security events an Internet property can have, below which an alert will not be sent. While z-score checks whether the spike is at least 3.5 standard deviations above the mean, the threshold makes sure it is above a certain static value. If both of these conditions are met, we will send you an alert:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IOnJTCLN6LaQ3u8sCxFe/4e58e9c3cc44a4a669fa27d270d3daa6/image1-17.png" alt="A graph of security events over time with a recent spike of 225 security events" class="kg-image" width="1070" height="662" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IOnJTCLN6LaQ3u8sCxFe/14fefb481faec6d77a6754f14d3e4bb5/image1-17.png" alt="A graph of security events over time with a recent spike of 225 security events" class="kg-image" width="1070" height="662" loading="lazy">
 
 	</figure>
 	<p>The above spike crosses the threshold of 200 security events. We now have to check that the z-score is above 3.5:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ih3ymbLWAs063WrBlL8AH/eb360640d6a0b4b6d1b93fbe6eddf69f/image9.png" alt="A graph of z-score values over time with a recent spike crossing the value 3.5" class="kg-image" width="990" height="612" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ih3ymbLWAs063WrBlL8AH/33cbf6ca5203e664638e8cd1592a178d/image9.png" alt="A graph of z-score values over time with a recent spike crossing the value 3.5" class="kg-image" width="990" height="612" loading="lazy">
 
 	</figure>
 	<p>The z-score value crosses 3.5 and an alert will be sent.</p>

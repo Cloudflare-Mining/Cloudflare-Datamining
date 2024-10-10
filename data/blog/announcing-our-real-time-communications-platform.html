@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CBsL61feJjKwBXw3jXG7Z/8f131384b77ac50f957e4851235b9a22/image1-44.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CBsL61feJjKwBXw3jXG7Z/6b795a03d617819b03909af4a0dda1a8/image1-44.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>For every successful technology, there is a moment where its time comes. Something happens, usually external, to catalyze it — shifting it from being a good idea with promise, to a reality that we can’t imagine living without. Perhaps the best recent example was what happened to the cloud as a result of the introduction of the iPhone in 2007. Smartphones created a huge addressable market for small developers; and even big developers found their customer base could explode in a way that they couldn’t handle without access to public cloud infrastructure. Both wanted to be able to focus on building amazing applications, without having to worry about what lay underneath.</p>
@@ -50,14 +50,14 @@
 	<p><a href="https://webrtcforthecurious.com/docs/03-connecting/#turn">TURN</a>, or Traversal Using Relays Around NAT (Network Address Translation), was designed to navigate the practical shortcomings of WebRTC’s peer-to-peer origins. WebRTC was (and is!) a peer-to-peer technology, but in practice, establishing reliable peer-to-peer connections remains hard due to Carrier-Grade NAT, corporate NATs and firewalls. Further, each peer is limited by its own network connectivity — in a traditional <a href="https://webrtcforthecurious.com/docs/08-applied-webrtc/#full-mesh">peer-to-peer mesh</a>, participants can quickly find their network connections saturated because they have to receive data from every other peer. In a mixed environment with different devices (mobile, desktops), networks (high-latency 3G through to fast fiber), scaling to more than a handful of peers becomes extremely challenging.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/XY5oJWURkYZEvmSeSXGax/601f41779552d43622bb1257e9d3abc1/Before.png" alt="Users trying to start a media session using WebRTC with centralized infrastructure over the public Internet." class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XY5oJWURkYZEvmSeSXGax/8dc00dc851aaa722ed75b8e53df26d87/Before.png" alt="Users trying to start a media session using WebRTC with centralized infrastructure over the public Internet." class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Running a TURN service at the edge instead of your own infrastructure gets you a better connection. Cloudflare operates an anycast network spanning <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">250+ cities</a>, meaning we’re very close to wherever your users are. This means that when users connect to Cloudflare’s TURN service, they get a really good connection to the Cloudflare network. Once it’s on there, we leverage our network and <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">private backbone</a> to get you superior connectivity, all the way back to the other user on the call.</p>
 	<p>But even better: stop worrying about scale. WebRTC infrastructure is notoriously difficult to scale: you need to make sure you have the right capacity in the right location. Cloudflare’s TURN service scales automatically and if you want more endpoints they’re just an API call away.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Qt7hVKP49sXw4ceYyA2Q2/4bf757414e96b2712fda511d5d9f8002/unnamed--1--1.png" alt="Users connecting through Cloudflare’s distributed global edge." class="kg-image" width="1801" height="945" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Qt7hVKP49sXw4ceYyA2Q2/73c56a80d17827050b8f90a37a7382ee/unnamed--1--1.png" alt="Users connecting through Cloudflare’s distributed global edge." class="kg-image" width="1801" height="945" loading="lazy">
 
 	</figure>
 	<p>Of course WebRTC Components is built on the Cloudflare network, benefiting from the DDoS protection that it’s 100 Tbps network offers. From now on deploying scalable, secure, production-grade WebRTC relays globally is only a couple of API calls away.</p>

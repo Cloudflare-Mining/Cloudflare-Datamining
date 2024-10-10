@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59MnohfCDnlnjzNvfMt9rY/268bd8de1da5bab930f16d345528098d/image1-17.png" alt="Cloudflare Data Loss Prevention now Generally Available" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59MnohfCDnlnjzNvfMt9rY/5b540012b5da2e169fd530d04757341d/image1-17.png" alt="Cloudflare Data Loss Prevention now Generally Available" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>In July 2022, we <a href="https://blog.cloudflare.com/inline-data-loss-prevention">announced</a> beta access to our newest Zero Trust product, Data Loss Prevention (DLP). Today, we are even more excited to announce that DLP is Generally Available to customers! Any customer can now get visibility and control of sensitive data moving into, out of, and around their corporate network. If you are interested, check out the bottom of this post.</p>
@@ -29,7 +29,7 @@
 	<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> <a href="https://www.cloudflare.com/learning/network-layer/network-as-a-service-naas">network-as-a-service</a> platform that connects users to enterprise resources. Cloudflare One runs traffic from data centers, offices, and remote users, through the Cloudflare network. This offers a wide variety of opportunities to secure the traffic, including validating identity and device posture, filtering corporate traffic to protect from malware and phishing, checking the configurations on SaaS applications, and using Browser Isolation to make web surfing safer for employees. All of this is done with the performance of our global network and managed with one control plane.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69LEhrzNB3qO19DcQSDxIC/e24c95ca2b8cc09b4902ae01c8e00e53/image5-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69LEhrzNB3qO19DcQSDxIC/b8c83b53d142ab6bd27f083c13b8290e/image5-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -54,26 +54,26 @@
 	<p>Let’s dive further in to see how this all actually comes to life. To use DLP in the Zero Trust Dashboard, navigate to the DLP Profiles tab under Gateway:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EQnaB7V1Akwzwysxv4XyF/dfbe1d93ffc6a0dd907d8d61e03adfd4/image2-14.png" alt="" class="kg-image" width="1238" height="468" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EQnaB7V1Akwzwysxv4XyF/c9c42b926e2d5ef38ef1f33b6d029b2b/image2-14.png" alt="" class="kg-image" width="1238" height="468" loading="lazy">
 
 	</figure>
 	<p>Decide on the type of data you want to protect. We currently detect credit card numbers and US Social Security numbers, but this is where we intend to grow a robust library of DLP detections. &nbsp;Our next steps are custom and additional predefined detections, including more international identifiers and financial record numbers, which will be arriving soon.</p>
 	<p>When you have decided, select Configure to enable detections:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ohWjYF6CSnHW9c3clXCg9/62eaf12a667a875ec827dab01c23b32d/image6-2.png" alt="" class="kg-image" width="1990" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ohWjYF6CSnHW9c3clXCg9/5fcb59d40da56942b5610bf04a1e9a01/image6-2.png" alt="" class="kg-image" width="1990" height="668" loading="lazy">
 
 	</figure>
 	<p>Enable the detections you want to use. As described above, these card number detections are made using regexes and validated with Luhn’s algorithm. You can make numeric detections for card numbers or detect strings matching card names, such as “American Express.”</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eUqmagXBJcZiQ6N8DASD6/3d920f583734e026c066fa6bb7566c51/image3-10.png" alt="" class="kg-image" width="1962" height="1392" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eUqmagXBJcZiQ6N8DASD6/be655b80c0b59bb6657395dea5259d6a/image3-10.png" alt="" class="kg-image" width="1962" height="1392" loading="lazy">
 
 	</figure>
 	<p>Then apply the detections to a Gateway <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies">HTTP policy</a> on the traffic of your choosing. Here we applied DLP to Google Drive traffic. This policy will block uploads and downloads to Google Drive that contain US Social Security Numbers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5es1X7XImRbyrAgxm7jaOW/20601c0b4cff402a670b003acee46072/image4-6.png" alt="" class="kg-image" width="1770" height="1134" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5es1X7XImRbyrAgxm7jaOW/525a16426f263bb04ecb850aac80f8c3/image4-6.png" alt="" class="kg-image" width="1770" height="1134" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

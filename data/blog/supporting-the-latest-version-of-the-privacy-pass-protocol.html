@@ -3,19 +3,19 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/445gSyr8pFihUh221BqGV5/25f3a0fb9b0b055ba322ab0983864937/Privacy-Pass-_2x-2.png" alt="" class="kg-image" width="1600" height="1017" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/445gSyr8pFihUh221BqGV5/0e704d8d2ecd834689eea53c04554be5/Privacy-Pass-_2x-2.png" alt="" class="kg-image" width="1600" height="1017" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we are committed to supporting and developing new privacy-preserving technologies that benefit all Internet users. In November 2017, we announced server-side support for the <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">Privacy Pass protocol</a>, a piece of work developed in <a href="https://petsymposium.org/2018/files/papers/issue3/popets-2018-0026.pdf">collaboration with the academic community</a>. Privacy Pass, in a nutshell, allows clients to provide proof of trust <a href="https://privacypass.github.io/protocol">without revealing where and when the trust was provided</a>. The aim of the protocol is then to allow anyone to prove they are trusted by a server, without that server being able to track the user via the trust that was assigned.</p>
 	<p>On a technical level, Privacy Pass clients receive attestation tokens from a server, that can then be redeemed in the future. These tokens are provided when a server deems the client to be trusted; for example, after they have logged into a service or if they prove certain characteristics. The redeemed tokens are cryptographically unlinkable to the attestation originally provided by the server, and so they do not reveal anything about the client.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LVQnmDxgw0kv43MipnEO5/e93d29edcbed98c4e04f6f1cc0c77a1a/imageLikeEmbed--2-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LVQnmDxgw0kv43MipnEO5/ed93518b30730567d1780e22fa46e606/imageLikeEmbed--2-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62mh0kvdwZSIUQhkLHmqLt/e30974ac20083a69c563feeec194db26/imageLikeEmbed--1-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62mh0kvdwZSIUQhkLHmqLt/ea96c6a856a3b53c7ceb8a3b52c6dd3d/imageLikeEmbed--1-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
 
 	</figure>
 	<p>To use Privacy Pass, clients can install an <a href="https://github.com/privacypass/challenge-bypass-extension">open-source</a> browser extension available in <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en">Chrome</a> &amp; <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>. There have been over 150,000 individual downloads of Privacy Pass worldwide; approximately 130,000 in Chrome and more than 20,000 in Firefox. The extension is supported by Cloudflare to make websites more accessible for users. This complements previous work, including the launch of <a href="https://blog.cloudflare.com/cloudflare-onion-service">Cloudflare onion services</a> to help improve accessibility for users of the Tor Browser.</p>
@@ -68,7 +68,7 @@
 	<p>The extension remains under active development and we still regard our support as in the beta phase. This will continue to be the case as the draft specification of the protocol continues to be written in collaboration with the wider community.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WHnz7X5VULjd2rQPvSCYM/63840406756d0aab8a744128ef6897cf/pasted-image-0-2.png" alt="" class="kg-image" width="1280" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WHnz7X5VULjd2rQPvSCYM/3fb47ca24f01788504fd4768813267fc/pasted-image-0-2.png" alt="" class="kg-image" width="1280" height="800" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -83,14 +83,14 @@
 	<p>For example, a user may receive Privacy Pass tokens for completing some server security checks. These tokens are stored by the browser extension, and any future request that needs similar security clearance can be modified to add a stored token as an extra HTTP header. The server can then check the client token and verify that the client has the correct authorization to proceed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1EOFEhhNfe23pe6Beqsprx/f3fd84acd5a495fba8b34de47b5f6011/imageLikeEmbed--4-.png" alt="" class="kg-image" width="546" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EOFEhhNfe23pe6Beqsprx/f11bd08106711abf443dd53afd45f013/imageLikeEmbed--4-.png" alt="" class="kg-image" width="546" height="350" loading="lazy">
 
 	</figure>
 	<p>While Cloudflare supports a particular type of request flow, it would be impossible to expect different service providers to all abide by the same exact interaction characteristics. One of the major changes in the v2.0 extension has been a technical rewrite to instead use a central configuration file. The config is specified in the <a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js">source code</a> of the extension and allows easier modification of the browsing characteristics that initiate Privacy Pass actions. This makes adding new, completely different request flows possible by simply cloning and adapting the configuration for new providers.</p>
 	<p>To demonstrate that such integrations are now possible with other services beyond Cloudflare, a new version of the extension will soon be rolling out that is supported by the CAPTCHA provider <a href="https://www.hcaptcha.com">hCaptcha</a>. Users that solve ephemeral challenges provided by hCaptcha will receive privacy-preserving tokens that will be redeemable at other hCaptcha customer sites.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/66fIxiUIFsXF1mShWhpp9U/608e570254e7f0502221dc95df565c74/image-8-1.png" alt="" class="kg-image" width="436" height="116" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66fIxiUIFsXF1mShWhpp9U/8e1e7cf73b844e2128b8766a8dde95dc/image-8-1.png" alt="" class="kg-image" width="436" height="116" loading="lazy">
 
 	</figure>
 	<p><i>“hCaptcha is focused on user privacy, and supporting Privacy Pass is a natural extension of our work in this area. We look forward to working with Cloudflare and others to make this a common and widely adopted standard, and are currently exploring other applications. Implementing Privacy Pass into our globally distributed service was relatively straightforward, and we have enjoyed working with the Cloudflare team to improve the open source Chrome browser extension in order to deliver the best experience for our users.”</i></p>
@@ -109,7 +109,7 @@
 	<p>The cryptographic operations required for Privacy Pass are performed using <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">elliptic curve cryptography</a> (ECC). The extension currently uses the <a href="https://www.secg.org/SEC2-Ver-1.0.pdf">NIST P-256</a> curve, for which we have included some optimisations. Firstly, this makes it possible to store elliptic curve points in compressed and uncompressed data formats. This means that browser storage can be reduced by 50%, and that server responses can be made smaller too.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6k9bRq8TswnyzrNdFxl0km/62b737a937726eb8e94673b6f4dc1cc1/imageLikeEmbed--5-.png" alt="" class="kg-image" width="958" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k9bRq8TswnyzrNdFxl0km/9db49e7d648d03b225077aecb6ee0fa0/imageLikeEmbed--5-.png" alt="" class="kg-image" width="958" height="406" loading="lazy">
 
 	</figure>
 	<p>Secondly, support has been added for hashing to the P-256 curve using the “Simplified Shallue-van de Woestijne-Ulas” (SSWU) method specified in an ongoing draft (<a href="https://tools.ietf.org/html/draft-irtf-cfrg-hash-to-curve-03">https://tools.ietf.org/html/draft-irtf-cfrg-hash-to-curve-03</a>) for standardizing encodings for hashing to elliptic curves. The implementation is compliant with the specification of the “P256-SHA256-SSWU-” ciphersuite in this draft.</p>
@@ -126,13 +126,13 @@
 	<p>Every time the server issues Privacy Pass tokens to the client, it also produces a <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">zero-knowledge proof</a> that it has produced these tokens using the correct key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SUH19vNZ1MZ3G7hvTNN40/1995280c5c669797464447de78b80b67/imageLikeEmbed--6-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SUH19vNZ1MZ3G7hvTNN40/6717cc2c64b8fc3a69efb014d76411c8/imageLikeEmbed--6-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
 
 	</figure>
 	<p>Before the extension stores any tokens, it first verifies the proof against the commitments it knows. Previously, these commitments were stored directly in the source code of the extension. This meant that if the server wanted to rotate its key, then it required releasing a new version of the extension, which was unnecessarily difficult. The extension has been modified so that the commitments are stored in a <a href="https://github.com/privacypass/ec-commitments">trusted location</a> that the client can access when it needs to verify the server response. Currently this location is a separate Privacy Pass <a href="https://github.com/privacypass/ec-commitments">GitHub repository</a>. For those that are interested, we have provided a more detailed description of the new commitment format in Appendix A at the end of this post.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ak9ZJ0QWKpWnQBAa4oOpe/301f02626e6766c9fbc7a568e75405d3/imageLikeEmbed--7-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ak9ZJ0QWKpWnQBAa4oOpe/59a1907df42318f2e63dbd889c80f839/imageLikeEmbed--7-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
 
 	</figure>
 	<h1>Implementing server-side support in Workers</h1>
@@ -150,7 +150,7 @@
 	<p>In the Privacy Pass protocol, as we’ll discuss a bit later, the main cryptographic operations are performed by a protocol known as a verifiable oblivious pseudorandom function (VOPRF). Such a protocol allows a client to learn function outputs computed by a server, without revealing to the server what their actual input was. The verifiable aspect means that the server must also prove (in a publicly verifiable way) that the evaluation they pass to the user is correct. Such a function is pseudorandom because the server output is indistinguishable from a random sequence of bytes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KJRvlrFMHsy9QlSofzWVs/607a4c623b17d2ed827d17ae8d93e52f/imageLikeEmbed--8-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KJRvlrFMHsy9QlSofzWVs/b208b4b31a1169d2a3b60ffb396049a8/imageLikeEmbed--8-.png" alt="" class="kg-image" width="721" height="382" loading="lazy">
 
 	</figure>
 	<p>The VOPRF functionality requires a server to perform low-level ECC operations that are not currently exposed in the WebCrypto API. We balanced out the possible ways of getting around this requirement. First we trialled trying to use the WebCrypto API in a non-standard manner, using EC Diffie-Hellman key exchange as a method for performing the scalar multiplication that we needed. We also tried to implement all operations using pure JavaScript. Unfortunately both methods were unsatisfactory in the sense that they would either mean integrating with large external cryptographic libraries, or they would be far too slow to be used in a performant Internet setting.</p>
@@ -176,7 +176,7 @@
 	<p>Writing the server in Cloudflare Workers means that we will be providing server-side support for Privacy Pass on a <a href="https://privacypass.cloudflare.com">public domain</a>! While we only issue tokens to clients after we are sure that we can trust them, anyone will be able to redeem the tokens using our public redemption API at <a href="https://privacypass.cloudflare.com/api/redeem">https://privacypass.cloudflare.com/api/redeem</a>. As we roll-out the server-side component worldwide, you will be able to interact with this API and verify Cloudflare Privacy Pass tokens <a href="https://privacypass.github.io/api-redeem">independently of the browser extension</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zI9w6HIR8cXOr884kCw8m/13fb32cfbdd322720222a4a36e87583f/imageLikeEmbed--9-.png" alt="" class="kg-image" width="828" height="465" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zI9w6HIR8cXOr884kCw8m/601fe8c196b434ac50fdb12eaca63927/imageLikeEmbed--9-.png" alt="" class="kg-image" width="828" height="465" loading="lazy">
 
 	</figure>
 	<p>This means that any service can accept Privacy Pass tokens from a client that were issued by Cloudflare, and then verify them with the Cloudflare redemption API. Using the result provided by the API, external services can check whether Cloudflare has authorized the user in the past.</p>
@@ -207,7 +207,7 @@
 	<p>The application that we demonstrated when originally supporting Privacy Pass was always intended as a proof-of-concept for the protocol. Over the past few months, a number of new possibilities have arisen in areas that go far beyond what was previously envisaged.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SceyvCGOJ7quMiDSyPxR5/d97728eceea87289d7cc8385f61f27e5/imageLikeEmbed--10-.png" alt="" class="kg-image" width="546" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SceyvCGOJ7quMiDSyPxR5/9785c42a79cf313d05ef5eb5a113d2f2/imageLikeEmbed--10-.png" alt="" class="kg-image" width="546" height="350" loading="lazy">
 
 	</figure>
 	<p>For example, the <a href="https://github.com/WICG/trust-token-api">trust token API</a>, developed by the <a href="https://wicg.io">Web Incubator Community Group</a>, has been proposed as an interface for using Privacy Pass. This applications allows third-party vendors to check that a user has received a trust attestation from a set of central issuers. This allows the vendor to make decisions about the honesty of a client without having to associate a behaviour profile with the identity of the user. The objective is to prevent against fraudulent activity from users who are not trusted by the central issuer set. Checking trust attestations with central issuers would be possible using similar redemption APIs to the one that <a href="https://privacypass.cloudflare.com">we have introduced</a>.</p>
@@ -271,7 +271,7 @@
 	<p>We will continue to work with the wider community in developing the standardization of the protocol; taking our motivation from the available applications that have been developed. We are always looking for new applications that can help to expand the Privacy Pass ecosystem beyond its current boundaries.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eVrPb2t3hl5pVI97EtEu8/e64f8770f2d9e9392355e7657573e196/tales-from-the-crypto-team_2x--1-.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eVrPb2t3hl5pVI97EtEu8/86eb63191b0cd299390f24162d51c54a/tales-from-the-crypto-team_2x--1-.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
 
 	</figure>
 	<h1>Appendix</h1>

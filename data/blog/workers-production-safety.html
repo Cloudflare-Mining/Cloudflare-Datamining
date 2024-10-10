@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HeyqozVOGygo2RCNnunIq/021fcc7b1471974c3c6a9164a05706cc/image4-7.png" alt="New tools for production safety — Gradual deployments, Source maps, Rate Limiting, and new SDKs" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HeyqozVOGygo2RCNnunIq/b429dc5b9f81c9fed6dfc0d200d296e5/image4-7.png" alt="New tools for production safety — Gradual deployments, Source maps, Rate Limiting, and new SDKs" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>2024’s Developer Week is all about production readiness. On Monday. April 1, we <a href="https://blog.cloudflare.com/making-full-stack-easier-d1-ga-hyperdrive-queues">announced</a> that <a href="https://developers.cloudflare.com/d1">D1</a>, <a href="https://developers.cloudflare.com/queues">Queues</a>, <a href="https://developers.cloudflare.com/hyperdrive">Hyperdrive</a>, and <a href="https://developers.cloudflare.com/analytics/analytics-engine">Workers Analytics Engine</a> are ready for production scale and generally available. On Tuesday, April 2, we <a href="https://blog.cloudflare.com/workers-ai-ga-huggingface-loras-python-support">announced</a> the same about our inference platform, <a href="https://developers.cloudflare.com/workers-ai">Workers AI</a>. And we’re not nearly done yet.</p>
@@ -35,7 +35,7 @@
 	<p>Today we’re opening up a first-class way to deploy code changes gradually to Workers and Durable Objects via the <a href="https://developers.cloudflare.com/api/operations/worker-deployments-list-deployments">Cloudflare API</a>, the <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-wrangler">Wrangler CLI</a>, or the <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-the-cloudflare-dashboard">Workers dashboard</a>. Gradual Deployments is entering open beta – you can use Gradual Deployments with any Cloudflare account that is on the <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers">Workers Free plan</a>, and very soon you’ll be able to start using Gradual Deployments with Cloudflare accounts on the <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers">Workers Paid</a> and Enterprise plans. You’ll see a banner on the Workers dashboard once your account has access.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5C2hc1EtfppDeWWDxJBh3K/a94732761e63363404ee391a4bad1e87/pasted-image-0.png" alt="Splitting traffic between different versions of a Worker." class="kg-image" width="1600" height="791" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5C2hc1EtfppDeWWDxJBh3K/3235bfa198e136bfac793f877415011d/pasted-image-0.png" alt="Splitting traffic between different versions of a Worker." class="kg-image" width="1600" height="791" loading="lazy">
 
 	</figure>
 	<p>When you have two versions of your Worker or Durable Object running concurrently in production, you almost certainly want to be able to filter your metrics, exceptions, and logs by version. This can help you spot production issues early, when the new version is only rolled out to a small percentage of traffic, or compare performance metrics when splitting traffic 50/50. We’ve also added observability at a version level across our platform:</p>
@@ -168,7 +168,7 @@ go get -u github.com/cloudflare/cloudflare-go/v2</code></pre>
 	<p>We haven’t previously exposed associated analytical trends in the dashboard, making it hard to understand the usage patterns and error rates within a <a href="https://developers.cloudflare.com/durable-objects/configuration/access-durable-object-from-a-worker/#generate-ids-randomly">Durable Objects namespace</a> unless you used the <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL Analytics API</a> directly. The <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fdurable-objects">Durable Objects dashboard</a> has now been revamped, letting you drill down into metrics, and go as deep as you need.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wFlllqLKz9G1J7ZU4cAfp/1f53ff244f77fe52646bcbef219aa775/pasted-image-0--1-.png" alt="" class="kg-image" width="1342" height="1045" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wFlllqLKz9G1J7ZU4cAfp/67b84ff52331c449bfbbb291fec01ffa/pasted-image-0--1-.png" alt="" class="kg-image" width="1342" height="1045" loading="lazy">
 
 	</figure>
 	<p>From <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">day one</a>, Durable Objects have supported <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">WebSockets</a>, allowing many clients to directly connect to a Durable Object to send and receive messages.</p>

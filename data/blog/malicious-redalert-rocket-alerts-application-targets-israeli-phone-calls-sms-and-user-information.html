@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16uIyWaGcO2XWUU8LFgfIF/1042a266021bbec25d89a64f230a6315/pasted-image-0--15-.png" alt="Malicious “RedAlert - Rocket Alerts” application targets Israeli phone calls, SMS, and user information" class="kg-image" width="1600" height="895" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16uIyWaGcO2XWUU8LFgfIF/951821609d1e44805c99e051818bc857/pasted-image-0--15-.png" alt="Malicious “RedAlert - Rocket Alerts” application targets Israeli phone calls, SMS, and user information" class="kg-image" width="1600" height="895" loading="lazy">
 
 	</figure>
 	<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (<a href="https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1">https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1</a>). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
@@ -13,7 +13,7 @@
 	<p>The website hosting the malicious file was created on October 12, 2023 and has since been taken offline. Only users who installed the Android version of the app from this specific website are impacted and urgently advised to delete the app. Users can determine if they installed the malicious version by reviewing the permissions granted to the RedAlert app. If users are unsure whether they installed the malicious version, they can delete the RedAlert applications and reinstall the legitimate version directly in the Play Store.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nCyNtOTncD702msYn7mzW/8b4f83f72149b88bc1e7b85d24141388/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nCyNtOTncD702msYn7mzW/9550d6742b8bbf6ba382d36166da4357/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
 
 	</figure>
 	<p><i>Screenshot of the attacker site </i><a href="https://redalerts/[./]me"><i>https://redalerts\[.\]me</i></a></p>
@@ -64,7 +64,7 @@
 	<p>The application is designed to look and act like RedAlert. However, upon opening the app, a malicious service is started in the background. The <code><i>startService()</i></code> call is the only change to the <code><i>onCreate()</i></code> method, and this begins the sequence of malicious activity, which the actor has placed in a package called <code><i>com.company.allinclusive.AI</i></code></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SOvfo0vzlyyREVB4A9Jyt/0934cc8d3a7d254075bf62d97381888e/pasted-image-0--14-.png" alt="" class="kg-image" width="1530" height="442" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SOvfo0vzlyyREVB4A9Jyt/a3a971fe5b0860bb403528579a5f5393/pasted-image-0--14-.png" alt="" class="kg-image" width="1530" height="442" loading="lazy">
 
 	</figure>
 	<p><i>The attacker starts their malicious code within the legitimate RedAlert code com.red.alert.activities: Main.java</i></p>
@@ -95,21 +95,21 @@
 	<p>The actor’s code for gathering this information is illustrated below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33VyzytviTDeG7qXy6aCrK/51c3207e0b57e9be8d4e62d5134ceaa5/Screenshot-2023-10-13-at-3.32.27-PM.png" alt="" class="kg-image" width="1842" height="1326" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33VyzytviTDeG7qXy6aCrK/3f74918c7ceaaae9a9ce18fd650050a2/Screenshot-2023-10-13-at-3.32.27-PM.png" alt="" class="kg-image" width="1842" height="1326" loading="lazy">
 
 	</figure>
 	<p><i>com.company.allinclusive.AI: AIMain.java contains the data the attacker will capture form the target</i></p>
 	<p>Stolen data is uploaded to an HTTP server at a hardcoded IP address. The actor has a <i>Tools</i> class which details the IP address where the data is to be uploaded:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Fh4WgPsM5kmKnuM8Jqyxh/eb969c27ab91f1a2a8b670436bc67571/Screenshot-2023-10-13-at-3.31.42-PM.png" alt="" class="kg-image" width="1896" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Fh4WgPsM5kmKnuM8Jqyxh/1307c4a8306bafcdfd47cc2f5e5323b8/Screenshot-2023-10-13-at-3.31.42-PM.png" alt="" class="kg-image" width="1896" height="668" loading="lazy">
 
 	</figure>
 	<p><b>com.company.allinclusive.AI: Tools.java stores the attackers command and control for the malware</b></p>
 	<p>Although HTTP and port 80 are specified, the actor appears to have the ability to use HTTPS and port 443 if a certificate is found bundled within the application package:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ty1JMARyIggOGXmFoJjcE/6f439cfc8ad27efc23f3384de202848f/Screenshot-2023-10-13-at-3.30.20-PM.png" alt="" class="kg-image" width="2000" height="935" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ty1JMARyIggOGXmFoJjcE/7c4fe21747005a3882da8d2ca448583d/Screenshot-2023-10-13-at-3.30.20-PM.png" alt="" class="kg-image" width="2000" height="935" loading="lazy">
 
 	</figure>
 	<p><i>com.company.allinclusive.AI: UploadFileAsync.java</i></p>
@@ -146,7 +146,7 @@
 	<p>The application makes a simple call using the builtin <i>android.os.Debug</i> package to see if the application is being debugged.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n1Dsyz3tBVwTCQDzQjCpu/19955368529b520bb62368330ef4baaf/Screenshot-2023-10-13-at-3.29.28-PM.png" alt="" class="kg-image" width="1970" height="474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7n1Dsyz3tBVwTCQDzQjCpu/62e2fcf823fee0b7c1f144d1d302c557/Screenshot-2023-10-13-at-3.29.28-PM.png" alt="" class="kg-image" width="1970" height="474" loading="lazy">
 
 	</figure>
 	<p><i>com.company.allinclusive.AI.anti.debugger: FindDebugger.java</i></p>
@@ -161,7 +161,7 @@
 	<p>The application attempts to locate certain files and identifiers to determine whether it is being run in an emulated environment. A snippet of these indicators are shown below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oRGahgfmW0fqsFZ3L7Bi1/49606350da5d8782d9d5f11fea5da004/pasted-image-0--12--1.png" alt="" class="kg-image" width="1558" height="436" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oRGahgfmW0fqsFZ3L7Bi1/c63b68f780e19a3a3d8f005db7e15c50/pasted-image-0--12--1.png" alt="" class="kg-image" width="1558" height="436" loading="lazy">
 
 	</figure>
 	<p><i>com.company.allinclusive.AI.anti.emulator: FindEmulator.java checks for common emulators</i></p>
@@ -176,7 +176,7 @@
 	<p>The application has utilities to identify whether a test user (“monkey”) is using the application:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bibuD77OAXj6pBVkBb012/e4b666a5baddce89c6e7f7f3d462fc8a/Screenshot-2023-10-13-at-3.28.48-PM.png" alt="" class="kg-image" width="2000" height="774" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bibuD77OAXj6pBVkBb012/9d5c06d0c17b43978e70bfe6101ea8d4/Screenshot-2023-10-13-at-3.28.48-PM.png" alt="" class="kg-image" width="2000" height="774" loading="lazy">
 
 	</figure>
 	<p><i>com.company.allinclusive.AI.anti.monkey: FindMonkey.java</i></p>

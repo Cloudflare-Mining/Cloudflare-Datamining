@@ -1,10 +1,10 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AcExbCRBWQi43UwswpiEH/5792b8c70bcb7855b7ca95eb62a10e62/inside-imagetragick-the-real-payloads-being-used-to-hack-websites-2.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AcExbCRBWQi43UwswpiEH/8045081b845f90ac6926a6a1c0fe0ec8/inside-imagetragick-the-real-payloads-being-used-to-hack-websites-2.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last week multiple vulnerabilities were made public in the popular image manipulation software, <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a>. These were quickly named <a href="https://imagetragick.com">ImageTragick</a>. Although a vulnerability in image manipulation software might not seem like a problem for web site owners it is in fact a genuine security concern.</p>
 	<p>CloudFlare quickly rolled out a <a href="https://www.cloudflare.com/waf">WAF</a> rule to protect our customers from this vulnerability. It was automatically deployed for all customers with the WAF enabled. We know that it takes time for customers to upgrade their web server software and so the WAF protects them in the interim.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5L6OB9byDVkfPbm1z40BU3/2483ac166815cd666e8c29ff09ea6ab6/logo-medium.png" alt="" class="kg-image" width="473" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5L6OB9byDVkfPbm1z40BU3/28ea65b7299418210cedbabc7059588d/logo-medium.png" alt="" class="kg-image" width="473" height="488" loading="lazy">
 
 	</figure>
 	<p>Many websites allow users to upload images and the websites themselves often manipulate these images using software like ImageMagick. For example, if you upload a picture of yourself to use as an avatar, it will very likely be resized by the website. ImageMagick is very popular and there are plugins that make it easy to use with PHP, Ruby, Node.js and other languages so it is common for websites to use it for image resizing or cropping.</p>
@@ -22,7 +22,7 @@
 	<p><i>The Shellshock problem is an example of an </i><a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution"><i>arbitrary code execution</i></a><i> (ACE) vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5f5Z5LreADltMKEyNhyABa/4fb6dd2baa26e247d6d049a4427e10e2/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5f5Z5LreADltMKEyNhyABa/024070cbc2049a8fa3937bea18564678/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
 
 	</figure>
 	<p><i>Attacker will also use an ACE vulnerability to upload or run a program that gives them a simple way of controlling the targeted machine. This is often achieved by running a "shell". A shell is a command-line where commands can be entered and executed.</i></p>
@@ -40,7 +40,7 @@
 	<p>I’ve gathered examples of the most popular payloads being used by hackers. These are not weaponized as I have removed the image wrapping from around the payloads to ensure that they cannot simply be copied and pasted to perform an attack. I have also obscured IP addresses and website names used by attackers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49SYY1ePd5sOXuZVZWkgOp/9914cbd68debf5c7145305e3ff84817d/4968376506_9021f8ba78_z.jpg" alt="" class="kg-image" width="640" height="428" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49SYY1ePd5sOXuZVZWkgOp/5c767e30a3d584637032b24aba4988f9/4968376506_9021f8ba78_z.jpg" alt="" class="kg-image" width="640" height="428" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jason_ff/4968376506/in/photolist-nppKpF-9maSMt-6UjRg3-8dZ2v1-9maSMF-ciWDeQ-8wyQBR-8wyMtg-bHAn9H-8wBWpd-Br4Jmk-8wUBkj-8wRBy2-8wyMna-Hkuoq-2GfCf3-7Fb2i-9sBsEq-ojiew6-8NRizs-aadh3q-aadhhj-8z3eeU-qobKXg-CosgiZ-CdT34E-8wBPi9-8wyWPR-66mmrK-2VkSj5-fwm2w-2EJZZ1-azHtta">image</a> by <a href="https://www.flickr.com/photos/jason_ff">Jason Brennan</a></p>
@@ -66,7 +66,7 @@ x="0" y="0" height="140px" width="140px"/&gt;</code></pre>
 	<p>The attacker downloads a file (presumably from a server they control) using wget and saves it to a file on the website’s server. This could be the prelude to a larger attack and the contents of the temporary file would likely contain a program to be executed on the web server giving the attacker access.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2X06i8lKXEjFDds4H8xawg/04bf282ce108d0d4d8b1737b4a8f2e22/52823834_5429a6e452_z.jpg" alt="" class="kg-image" width="500" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2X06i8lKXEjFDds4H8xawg/b095d697b932e2ea4098a60d3a5719ee/52823834_5429a6e452_z.jpg" alt="" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/eklektikos/52823834/in/photolist-5EJFL-nCKUnd-5G4WGv-8iogvR-e8Smqc-9eXH23-oXmq66-ChqSEh-8Enzct-Byd9kC-apKYx5-6VZ7U7-8KibTc-8poYHx-63hmpb-gZ7WnC-66xzCZ-nxAbfy-5S7sx2-3FshC-dxEaU-7pPAjY-bJHYtV-oH5R5e-9jTMKP-ac28HM-oJ44cc-4aZN82-JciZ3-Nvcgu-4L34v1-9EMzzd-9mTWFx-9mWYV9-fMQmU2-5GZon4-aJDuEp-4jDMhn-k7N6qc-8P9AZr-hG7WGu-335tK9-9VGNyf-5ppck5-7KgP26-6uqKfV-5tYMxX-9fKY8H-aJDuFk-9fKYgZ">image</a> by <a href="https://www.flickr.com/photos/eklektikos/52823834/in/photolist-5EJFL-nCKUnd-5G4WGv-8iogvR-e8Smqc-9eXH23-oXmq66-ChqSEh-8Enzct-Byd9kC-apKYx5-6VZ7U7-8KibTc-8poYHx-63hmpb-gZ7WnC-66xzCZ-nxAbfy-5S7sx2-3FshC-dxEaU-7pPAjY-bJHYtV-oH5R5e-9jTMKP-ac28HM-oJ44cc-4aZN82-JciZ3-Nvcgu-4L34v1-9EMzzd-9mTWFx-9mWYV9-fMQmU2-5GZon4-aJDuEp-4jDMhn-k7N6qc-8P9AZr-hG7WGu-335tK9-9VGNyf-5ppck5-7KgP26-6uqKfV-5tYMxX-9fKY8H-aJDuFk-9fKYgZ">Todd Ehlers</a></p>

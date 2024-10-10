@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5T1hkMmQNOOw0lktUx3JFF/615723c1b3d544a5a66e5b12d89729ed/gen-x-color-Friday--twitter_2x-1.png" alt="" class="kg-image" width="1249" height="703" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5T1hkMmQNOOw0lktUx3JFF/2e5e4aa40039a6ad46c2a251eb421650/gen-x-color-Friday--twitter_2x-1.png" alt="" class="kg-image" width="1249" height="703" loading="lazy">
 
 	</figure>
 	<p>In Cloudflare’s global network, every server runs the whole software stack. Therefore, it's critical that every server performs to its maximum potential capacity. In order to provide us better flexibility from a supply chain perspective, we buy server hardware from multiple vendors with the exact same configuration. However, after the deployment of our Gen X AMD EPYC Zen 2 (Rome) servers, we noticed that servers from one vendor (which we’ll call SKU-B) were consistently performing 5-10% worse than servers from second vendor (which we'll call SKU-A).</p>
 	<p>The graph below shows the performance discrepancy between the two SKUs in terms of percentage difference. The performance is gauged on the metric of requests per second, and this data is an average of observations captured over 24 hours.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wvNDGyAxlthdlOg3DW5Ur/4eae835c1bb8cf2927b650efc6980592/1-2.png" alt="Machines before implementing performance improvements. The average RPS for SKU-B is approximately 10% below SKU-A." class="kg-image" width="1264" height="511" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wvNDGyAxlthdlOg3DW5Ur/163ac5682c189dae77797fc9eda582f7/1-2.png" alt="Machines before implementing performance improvements. The average RPS for SKU-B is approximately 10% below SKU-A." class="kg-image" width="1264" height="511" loading="lazy">
 
 	</figure>
 	<p>Machines before implementing performance improvements. The average RPS for SKU-B is approximately 10% below SKU-A.</p>
@@ -26,13 +26,13 @@
 	<p>Screenshot from the DGEMM run of a good system:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vOh2PokcYbj1v6kev1fQt/2106a70011817ab6d51678ea49436808/2.png" alt="" class="kg-image" width="643" height="134" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vOh2PokcYbj1v6kev1fQt/96fdec6bfa79b9cb9042c2f7d7d60119/2.png" alt="" class="kg-image" width="643" height="134" loading="lazy">
 
 	</figure>
 	<p>Screenshot from an underperforming system:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OQ7wN5uXDI1Ttiv28QpzE/963876a8957eaa019c7f8ac4c8e4c5ff/3.png" alt="" class="kg-image" width="744" height="154" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OQ7wN5uXDI1Ttiv28QpzE/5389a020a89ace802506133dcaf04ce0/3.png" alt="" class="kg-image" width="744" height="154" loading="lazy">
 
 	</figure>
 	<p>To debug the issue, we first tried disabling idle power saving mode (also known as C-states) in the CPU BIOS configuration. The servers reported expected GFLOPS numbers and achieved max TDP. Believing that this could have been the root cause, the servers were moved back into the production test environment for data collection.</p>
@@ -59,13 +59,13 @@
 	<p>Running out of debugging options, we reached out to AMD for assistance and were provided a debug tool called <a href="https://github.com/amd/amd_hsmp">HSMP</a> that lets users access the Host System Management Port. This tool provides a wide variety of processor management options, such as reading and changing processor TDP limits, reading processor and memory temperatures, and reading memory and processor clock frequencies. When we ran the HSMP tool, we discovered that the memory was being clocked at a different rate from AMD’s Infinity Fabric system — the architecture which connects the memory to the processor core. As shown below, the memory clock frequency was set to 1467 MHz while the Infinity Fabric clock frequency was set to 1333 MHz.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Cq2VxpFjJN4fesZur1auc/a05b383710208cc06d91bee5ffe814bb/4.png" alt="" class="kg-image" width="649" height="62" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Cq2VxpFjJN4fesZur1auc/979823ac8ebd8961a859b23ccbaee087/4.png" alt="" class="kg-image" width="649" height="62" loading="lazy">
 
 	</figure>
 	<p>Ideally, the two clock frequencies need to be equal for optimized workloads sensitive to latency and throughput. Below is a snapshot for an SKU-A server where both memory and Infinity Fabric frequencies are equal.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3niJPphw3HJr2Z8CoSBCzU/fd06c4cacb1c817bbe84fc9a3210d29c/5.png" alt="" class="kg-image" width="1336" height="116" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3niJPphw3HJr2Z8CoSBCzU/28b6a48b6f881983b6a41f38563559b4/5.png" alt="" class="kg-image" width="1336" height="116" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -79,7 +79,7 @@
 	<p>Since the Infinity Fabric clock setting was not exposed as a tunable parameter in the BIOS, we asked the vendor to provide a new BIOS that set the frequency to 1467 MHz during compile time. Once we deployed the new BIOS on the underperforming systems in production, we saw that all servers started performing to their expected levels. Below is a snapshot of the same set of systems with data captured and averaged over a 24 hours window on the same day of the week as the previous dataset. Now, the requests per second performance of SKU-B equals and in some cases exceeds the performance of SKU-A!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sFDwVBvdiVO3gWaTtI2FG/c54047dd8710a106da4300dd684b5996/6.png" alt="Four machine from each Server SKU-A and SKU-B is observed with the BIOS fix implemented on SKU-B.
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sFDwVBvdiVO3gWaTtI2FG/3fa8433840f2d5bef0d8504a50a1962b/6.png" alt="Four machine from each Server SKU-A and SKU-B is observed with the BIOS fix implemented on SKU-B.
 Baseline benchmark numbers from both SKU's mentioned and it is  visible that the average performance on SKU-B improved after the BIOS fix was implemented." class="kg-image" width="1267" height="538" loading="lazy">
 
 	</figure>

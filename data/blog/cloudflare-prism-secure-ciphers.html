@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nTfGR9waOin7PS0VY7YKO/7e58a73ad65a0fcdce3400872bdf34f7/prism_logo.jpg" alt="Prism" class="kg-image" width="460" height="346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nTfGR9waOin7PS0VY7YKO/b2c1ef65caed3e901ead735f11b0d7e2/prism_logo.jpg" alt="Prism" class="kg-image" width="460" height="346" loading="lazy">
 
 	</figure>
 	<p>Over the last week we've closely watched the disclosures about the alleged NSA PRISM program. At CloudFlare, we have never been approached to participate in PRISM or any other similar program. We do, from time to time, receive subpoenas and court orders. A human being on our team reviews each of these requests manually. When we determine that a request is too broad, we push back to limit the scope of the request. Whenever possible, we disclose to all affected customers the fact that we have received a subpoena or court order and allow them an opportunity to challenge it before we respond.</p>
@@ -33,7 +33,7 @@
 	<p>It is not inconceivable that the NSA has data centers full of specialized hardware optimized for SSL key breaking. According to data shared with us from a survey of SSL keys used by various websites, the majority of web companies were using 1024-bit SSL ciphers and RSA-based encryption through 2012. Given enough specialized hardware, it is within the realm of possibility that the NSA could within a reasonable period of time reverse engineer 1024-bit SSL keys for certain web companies. If they'd been recording the traffic to these web companies, they could then use the broken key to go back and decrypt all the transactions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kSRBFaVNRYY6ovmphjXDz/0782ca7a9dee81d531182ec673323cd7/prism_slide.jpg" alt="Prism Slide" class="kg-image" width="630" height="354" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kSRBFaVNRYY6ovmphjXDz/fc8f0ca97b0253855f98e5c6cc64b45f/prism_slide.jpg" alt="Prism Slide" class="kg-image" width="630" height="354" loading="lazy">
 
 	</figure>
 	<p>While this seems like a compelling theory, ultimately, we remain skeptical this is how the PRISM program described in the slides actually works. Cracking 1024-bit keys would be a big deal and likely involve some cutting-edge cryptography and computational power, even for the NSA. The largest SSL key that is known to have been broken to date is <a href="https://en.wikipedia.org/wiki/RSA-768#RSA-768">768 bits long</a>. While that was 4 years ago, and the NSA undoubtedly has some of the best cryptographers in the world, it's still a considerable distance from 768 bits to 1024 bits -- especially given the slide suggests Microsoft's key would have to had been broken back in 2007.</p>
@@ -77,7 +77,7 @@
 	<p>Google is a notable anomaly. The company uses a 1024 bit key, but, unlike all the other companies listed above, rather than using a default cipher suite based on the RSA encryption algorithm, they instead prefer the Elliptic Curve Diffie-Hellman Ephemeral (ECDHE) cipher suites. Without going into the technical details, a key difference of ECDHE is that they <a href="http://www.imperialviolet.org/2011/11/22/forwardsecret.html">use a different private key for each user's session</a>. This means that if the NSA, or anyone else, is recording encrypted traffic, they cannot break one private key and read all historical transactions with Google. The NSA would have to break the private key generated for each session, which, in Google's case, is unique to each user and regenerated for each user at least every 28-hours.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Rwn2KTYmtxuRHRrLVwJLA/e522c1fe48460c9bf17bdfce3fad46ea/elliptic_curve.png" alt="Prism" class="kg-image" width="165" height="203" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Rwn2KTYmtxuRHRrLVwJLA/9eb55673c9e551ae9ef6307dabf660fb/elliptic_curve.png" alt="Prism" class="kg-image" width="165" height="203" loading="lazy">
 
 	</figure>
 	<p>While ECDHE arguably already puts Google at the head of the pack for web transaction security, to further augment security Google has <a href="https://googleonlinesecurity.blogspot.com/2013/05/changes-to-our-ssl-certificates.html">publicly announced</a> that they will be increasing their key length to 2048-bit by the end of 2013. Assuming the company continues to prefer the ECDHE cipher suites, this will put Google at the cutting edge of web transaction security.</p>

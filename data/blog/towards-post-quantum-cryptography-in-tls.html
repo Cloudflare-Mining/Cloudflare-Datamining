@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gD2K91FPRozZcsZ8Z56XU/3087cb66b729eeeff4c25d0280fde189/post-quantum-_1_2x.png" alt="" class="kg-image" width="1616" height="987" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gD2K91FPRozZcsZ8Z56XU/607429bce9941b66ba59ea235b9e8d32/post-quantum-_1_2x.png" alt="" class="kg-image" width="1616" height="987" loading="lazy">
 
 	</figure>
 	<p>We live in a completely connected society. A society connected by a variety of devices: laptops, mobile phones, wearables, self-driving or self-flying <i>things</i>. We have standards for a common language that allows these devices to communicate with each other. This is critical for wide-scale deployment – especially in cryptography where the smallest detail has great importance.</p>
@@ -61,7 +61,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oHEFoSgnIAeuq111tpnEw/be0a3db100bd430c620e7a8601ccc713/pasted-image-0-5.png" alt="" class="kg-image" width="1156" height="338" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oHEFoSgnIAeuq111tpnEw/18189d2954df7b8c991258f1439a2e2f/pasted-image-0-5.png" alt="" class="kg-image" width="1156" height="338" loading="lazy">
 
 	</figure>
 	<p>To better understand the post-quantum world, Cloudflare began experimenting with these algorithms and used them to provide confidentiality in TLS connections.</p>
@@ -180,14 +180,14 @@
 	<p>We will enable the CECPQ2 implemented by Adam Langley from Google on our servers. He described this implementation in detail <a href="https://www.imperialviolet.org/2018/12/12/cecpq2.html">here</a>. This key exchange uses the HRSS algorithm, which is based on the NTRU (<b>N</b>-Th Degree <b>TRU</b>ncated Polynomial Ring) algorithm. Foregoing too much detail, I am going to explain how NTRU works and give simplified examples, and finally, compare it to HRSS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mw4chMg1bmziLfBeRywAo/647988008e68bd97dede606f8d6eb6cc/polynomial-wheel_3x-1.png" alt="" class="kg-image" width="1600" height="1568" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mw4chMg1bmziLfBeRywAo/f8353de8b49dee0704f5a813c4609230/polynomial-wheel_3x-1.png" alt="" class="kg-image" width="1600" height="1568" loading="lazy">
 
 	</figure>
 	<p>NTRU is a cryptosystem based on a polynomial ring. This means that we do not operate on numbers modulo a prime (like in RSA), but on polynomials of degree \( N \) , where the <i>degree</i> of a polynomial is the highest exponent of its variable. For example, \(x^7 + 6x^3 + 11x^2 \) has degree of 7.</p>
 	<p>One can add polynomials in the ring in the usual way, by simply adding theirs coefficients modulo some integer. In NTRU this integer is called \( q \). Polynomials can also be multiplied, but remember, you are operating in the ring, therefore the result of a multiplication is always a polynomial of degree less than \(N\). It basically means that exponents of the resulting polynomial are added to modulo \(N\).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fjc31dekJkPOBmLSlnJPS/235528f7c7d1845713ec06680c6e2598/1feQoHE5ePfzDfdzw01q3eQDZz6gCs6znHlzj24ThULscNMsvS6kdmoN0diX9cGbcpcB6T7WbUk5v1vdfLB1vSWizK3LFpW3b_4lNY6i-BwIEAtVdp1wCz-D85gC.png" alt="" class="kg-image" width="204" height="61" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fjc31dekJkPOBmLSlnJPS/de486d978d6740055c65deadd39ed3b2/1feQoHE5ePfzDfdzw01q3eQDZz6gCs6znHlzj24ThULscNMsvS6kdmoN0diX9cGbcpcB6T7WbUk5v1vdfLB1vSWizK3LFpW3b_4lNY6i-BwIEAtVdp1wCz-D85gC.png" alt="" class="kg-image" width="204" height="61" loading="lazy">
 
 	</figure>
 	<p>In other words, polynomial ring arithmetic is very similar to modular arithmetic<a href="https://betterexplained.com/articles/fun-with-modular-arithmetic">,</a> but instead of working with a set of numbers less than <i>N</i>, you are working with a set of polynomials with a degree less than <i>N</i>.</p>
@@ -210,7 +210,7 @@
 	<p>This diagram demonstrates why and how decryption works.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3m4bNrzq0NQFYpTObXuHYj/a0a31d23d5719664221a7a0e43f6ff9d/image-24.png" alt="" class="kg-image" width="700" height="355" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3m4bNrzq0NQFYpTObXuHYj/631873550a519f0bb4552f3343db00af/image-24.png" alt="" class="kg-image" width="700" height="355" loading="lazy">
 
 	</figure>
 	<p>Step-by-step correctness of decryption procedure.</p>
@@ -236,7 +236,7 @@
 	<p>The picture below visualizes lattice as points in a two-dimensional space. A lattice is defined by the origin \(O\) and base vectors \( \{ b_1 , b_2\} \). Every point on the lattice is represented as a linear combination of the base vectors, for example &nbsp;\(V = -2b_1+b_2\).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40Fg69tL7QYjTIzHk5s0z2/e984c766f1a40bbeb1946ff72d6b34c7/pasted-image-0--1--3.png" alt="" class="kg-image" width="787" height="460" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40Fg69tL7QYjTIzHk5s0z2/d6807ffa9ba6a103c4d8d1ac845c2f14/pasted-image-0--1--3.png" alt="" class="kg-image" width="787" height="460" loading="lazy">
 
 	</figure>
 	<p>There are two classical NP-hard problems in lattice-based cryptography:</p>
@@ -281,13 +281,13 @@
 	<p>An elliptic curve is a set of points that satisfy a specific mathematical equation. The equation of an elliptic curve may have multiple forms, the standard form is called the <i>Weierstrass</i> equation $$ y^2 = x^3 +ax +b &nbsp;$$ and its shape can look like the red curve.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26PHEagKtiaocOpyT6e85j/a5452f4a29e7ff1701017052cab0b14e/pasted-image-0--2--3.png" alt="" class="kg-image" width="409" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26PHEagKtiaocOpyT6e85j/4e0b5a3e2f40bdf6fa77b4a14b44b88d/pasted-image-0--2--3.png" alt="" class="kg-image" width="409" height="410" loading="lazy">
 
 	</figure>
 	<p>An interesting fact about elliptic curves is have a group structure. That is, the set of points on the curve have associated a binary operation called <i>point addition</i>. The set of points on the elliptic curve is closed under addition. Thus, adding two points results in another point that is also on the elliptic curve.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65C2RgCyQ7TG84QUa4kYkd/d99b22cf2bc16197bf30cda24132314b/ecc.gif" alt="" class="kg-image" width="410" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65C2RgCyQ7TG84QUa4kYkd/14197ecc324cb64112614ec33fe06ba1/ecc.gif" alt="" class="kg-image" width="410" height="410" loading="lazy">
 
 	</figure>
 	<p>If we can add two different points on a curve, then we can also add one point to itself. And if we do it multiple times, then the resulting operations is known as a <i>scalar multiplication</i> and denoted as &nbsp;<i>\(Q = k\cdot P = P+P+\dots+P\)</i> for an integer \(k\).</p>
@@ -310,14 +310,14 @@
 	<p>It depends on the map if those two curves are isomorphic or not. Isogeny can be visualised as:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RSE4DdJxSwP5IspNUpc8D/d740de311582369c57f7a7647d9305eb/pasted-image-0--3--2.png" alt="" class="kg-image" width="336" height="150" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RSE4DdJxSwP5IspNUpc8D/689054d8939ceb6af436869a3dc352fb/pasted-image-0--3--2.png" alt="" class="kg-image" width="336" height="150" loading="lazy">
 
 	</figure>
 	<p>There may exist many of those mappings, each curve used in SIDH has small number of isogenies to other curves. Natural question is how do we compute such isogeny. Here is where the <b><i>kernel</i></b> of an isogeny comes. The <b><i>kernel</i></b> uniquely determines isogeny (up to <i>isomorphism class</i>). Formulas for calculating isogeny from its kernel were initially <a href="https://www.researchgate.net/publication/246557704_Isogenies_entre_courbes_elliptiques">given by J. Vélu</a> and the idea of calculating them efficiently was <a href="https://eprint.iacr.org/2017/504.pdf">extended</a>.</p>
 	<p>To finish, I will summarize what was said above with a picture.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/240s5FQy6PHpVMswhLAnAg/4e0424bbc4861eee65bf61cdae4792f9/pasted-image-0--4--2.png" alt="" class="kg-image" width="480" height="278" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/240s5FQy6PHpVMswhLAnAg/8af4f4386706c1abf312a3c58f429892/pasted-image-0--4--2.png" alt="" class="kg-image" width="480" height="278" loading="lazy">
 
 	</figure>
 	<p>There are two <b>isomorphism classes</b> on the picture above. Both curves \(E_1\) and \(E_2\) are <b>isomorphic</b> and have &nbsp;j-invariant = 6. As curves \(E_3\) and \(E_4\) have j-invariant=13, they are in a different isomorphism class. There exists an <b>isogeny</b> \(\phi_2\) between curve \(E_3\) and \(E_2\), so they both are <b>isogeneous</b>. Curves \( \phi_1 \) and \( E_2 \) are isomorphic and there is isogeny \( \phi_1 \) between them. Curves \( E_1\) and \(E_4\) are not isomorphic.</p>
@@ -365,7 +365,7 @@
 	<p>When we talk about <i>Isogeny Based Cryptography</i>, as a topic distinct from <i>Elliptic Curve Cryptography</i>, we usually mean algorithms and protocols that rely fundamentally on the structure of isogeny graphs. An example of such a (small) graph is pictured below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VatBy9An0gtSVOCUZBdjG/bc7a2882a5c99a56de78eadd0f840443/isogeny-based-crypt0-1-.gif" alt="" class="kg-image" width="600" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VatBy9An0gtSVOCUZBdjG/33747b7af909ae94861f7c30e981b875/isogeny-based-crypt0-1-.gif" alt="" class="kg-image" width="600" height="406" loading="lazy">
 
 	</figure>
 	<p>Animation based on Chloe Martindale <a href="https://2017.pqcrypto.org/school/slides/Isogeny_based_crypto.pdf">slide deck</a></p>
@@ -374,7 +374,7 @@
 	<p>The random walk is a key concept that makes isogeny based crypto feasible. When you look closely at the graph, you can notice that each vertex has a small number of edges incident to it, this is why we can compute the isogenies efficiently. But also for any vertex there is only a limited number of isogenies to choose from, which doesn’t look like good base for a cryptographic scheme. The key question is - where does the security of the scheme come from exactly? In order to get it, it is necessary to visit a couple hundred vertices. What it means in practice is that secret isogeny (of <i>large degree</i>) is constructed as a composition of multiple isogenies (of <i>small, prime degree</i>). &nbsp;Which means, the secret isogeny is:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pTiHpzM9xu84YbuXZozv8/90bd95dcd53a7bedb14d36fff26a36f9/CtdsWhxZs8vr7nj6LJCQhh4Mu3mP5VF5U2ayMvqZ_LVXIRBsVuduM2QwTsuy8V1izo53I5JcAFc0z6eA1LYP4FsviY4g_fqiDJc2-s8vZE_eHQGp6aQQrlhsdDDu.png" alt="" class="kg-image" width="344" height="25" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pTiHpzM9xu84YbuXZozv8/40cb2052e3850cbc622f8569ac4d5ab2/CtdsWhxZs8vr7nj6LJCQhh4Mu3mP5VF5U2ayMvqZ_LVXIRBsVuduM2QwTsuy8V1izo53I5JcAFc0z6eA1LYP4FsviY4g_fqiDJc2-s8vZE_eHQGp6aQQrlhsdDDu.png" alt="" class="kg-image" width="344" height="25" loading="lazy">
 
 	</figure>
 	<p>This property and properties of the isogeny graph are <b>what makes</b> some of us believe that <b>scheme</b> has a good chance to be <b>secure</b><b><i>.</i></b> More specifically, there is no efficient way of finding a path that connects \( E_0 \) with \( E_n \), even with quantum computer at hand. The security level of a system depends on value <i>n</i> - the number of steps taken during the walk.</p>
@@ -396,7 +396,7 @@
 	<p>The picture below visualizes the operation. The black dots represent curves grouped in the same <i>isomorphism classes</i> represented by light blue circles. Alice takes the orange path ending up on a curve \( E_a \) in a separate isomorphism class than Bob after taking his dark blue path ending on \( E_b \). SIDH is parametrized in a way that Alice and Bob will always end up in different isomorphism classes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4coOPO3i8W2RxZpT8aS4Th/e5c750c91c40fa3fdd1c0f56e85caedb/pasted-image-0--5--2.png" alt="" class="kg-image" width="625" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4coOPO3i8W2RxZpT8aS4Th/8a7f4006dec8c675ef7c81ffb2702143/pasted-image-0--5--2.png" alt="" class="kg-image" width="625" height="486" loading="lazy">
 
 	</figure>
 	<p>Upon receipt of triple \( { E_a, \phi_a(PB), \phi_a(QB) } \) &nbsp;from Alice, Bob will use his secret value <i>m</i> to calculate a new kernel - but instead of using point \(PA\) and \(QA\) to calculate an isogeny kernel, he will now use images \( \phi_a(PB) \) and \( \phi_a(QB) \) received from Alice:</p>
@@ -404,14 +404,14 @@
 	<p>Afterwards, he uses \( R’_1 \) to start the walk again resulting in the isogeny \( \phi’_b: E_a \rightarrow E_{ab} \). Allice proceeds analogously resulting in the isogeny \(\phi’_a: E_b \rightarrow E_{ba} \). With isogenies calculated this way, both Alice and Bob will converge in the same isomorphism class. The math math may seem complicated, hopefully the picture below makes it easier to understand.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2o7VmACLF5SYhrydaRyBRo/1a4389d9196c137d1577e4a6954806fc/pasted-image-0--6--2.png" alt="" class="kg-image" width="660" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2o7VmACLF5SYhrydaRyBRo/49b090ed60c4abdccbd6df456f833147/pasted-image-0--6--2.png" alt="" class="kg-image" width="660" height="486" loading="lazy">
 
 	</figure>
 	<p>Bob computes a new isogeny and starts his random walk from \( E_a \) received from Alice. He ends up on some curve \(E_{ba}\). Similarly, Alice calculates a new isogeny, applies it on \( E_b \) received from Bob and her random walk ends on some curve \(E_{ab}\). Curves \(E_{ab}\) and \(E_{ba}\) are not likely to be the same, but construction guarantees that they are isomorphic_._ As mentioned earlier, isomorphic curves have the same value of j-invariant, &nbsp;hence the shared secret is a value of j-invariant \(j(E_{ab})\).</p>
 	<p>Coming back to differences between SIDH and ECDH - we can split them into four categories: the elements of the group we are operating on, the cornerstone computation required to agree on a shared secret, the elements representing secret values, and the difficult problem on which the security relies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JOy8niIRMJP7yIY0hAcoE/034a706b8d458f15048d514174321551/pasted-image-0--7--2.png" alt="" class="kg-image" width="601" height="221" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JOy8niIRMJP7yIY0hAcoE/a842ac7d3b49ff90dea78b98940f3cde/pasted-image-0--7--2.png" alt="" class="kg-image" width="601" height="221" loading="lazy">
 
 	</figure>
 	<p>Comparison based on Craig Costello’ s <a href="http://www.craigcostello.com.au/wp-content/uploads/Craig-isogenies-tutorial.pdf">slide deck</a>.</p>
@@ -449,7 +449,7 @@
 	<p>Cloudflare sees great potential in those algorithms and believes that some of them can be used as a safe replacement for classical public-key cryptosystems. Time will tell if we’re justified in this belief!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eUX7xZqv0SKXlOXdRzbVM/2fdca936e7f2e5074cea943860593115/crypto-week-2019-header-circle_2x-2.png" alt="" class="kg-image" width="1600" height="1173" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eUX7xZqv0SKXlOXdRzbVM/a72e8969c4e1f1e5c6e8a3fc665af342/crypto-week-2019-header-circle_2x-2.png" alt="" class="kg-image" width="1600" height="1173" loading="lazy">
 
 	</figure>
 </div>

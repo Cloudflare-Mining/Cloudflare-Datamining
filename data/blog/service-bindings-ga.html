@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2L105m8tNMhHJQ99kyH2hn/ff67848b8e3a2cddf53e362b10719164/image5-3.png" alt="Service Bindings are generally available, with efficient pricing" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2L105m8tNMhHJQ99kyH2hn/5dad5f91fe572d4def8fe9c297dedea1/image5-3.png" alt="Service Bindings are generally available, with efficient pricing" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today, we’re happy to unveil a new way to communicate between your Workers. In the spirit of baking more and more flexibility into our Developer Platform, our team has been hard at work building a new API to facilitate Worker to Worker communication: Service Bindings. Service Bindings allow your Workers to send requests to other Workers Services, from your code, without those requests going over the Internet. It opens up a world of composability that was previously closed off by a difficult interface, and makes it a lot easier for you to build complex applications on our developer platform.</p>
@@ -20,13 +20,13 @@
 	<p>Let’s walk through a simple example of an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateway</a> Worker that handles routing and user authentication. We’ll build an application that takes in a user request and checks for authorization. If the user isn’t authorized, we block the request. If the user has valid credentials, we’ll fetch the user data. The application will also implement login and logout to change the user authentication state.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kkaZ70HmxIJ6wXKINDb1b/42b2925bad65ce93a314404d01632d0f/image3-8.png" alt="The api-gateway Worker handles routing and authentication checks for all the available endpoints" class="kg-image" width="1407" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kkaZ70HmxIJ6wXKINDb1b/82f037cb3b79c88d2ba0ac09922a1b3c/image3-8.png" alt="The api-gateway Worker handles routing and authentication checks for all the available endpoints" class="kg-image" width="1407" height="525" loading="lazy">
 
 	</figure>
 	<p>Here, the <code>api-gateway</code> Worker calls <code>login</code> and <code>logout</code> Workers for authentication to privileged endpoints like <code>/getuser</code>. The <code>api-gateway</code> Worker also checks each request for authorization via the <code>auth</code> Worker and allows valid requests to call the <code>get-user</code> Worker. The <code>get-user</code> Worker then makes an outbound network request to gather the required user information, and passes that data back to the client via our <code>api-gateway</code> Worker. The <code>api-gateway</code> Worker is therefore bound to four other Worker Services: <code>auth</code>, <code>get-user</code>, <code>login</code>, and <code>logout</code>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eixPNmvpG8IywgiuhSIbV/b621470f07d112371675b6628695c8ff/image6-6.png" alt="The api-gateway Worker is bound to auth, get-user, login, and logout Workers via Service Bindings." class="kg-image" width="1908" height="614" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eixPNmvpG8IywgiuhSIbV/6be31ae6fa9cdbc336a385b977d0366a/image6-6.png" alt="The api-gateway Worker is bound to auth, get-user, login, and logout Workers via Service Bindings." class="kg-image" width="1908" height="614" loading="lazy">
 
 	</figure>
 	<p>Let’s take a look at the code for the <code>api-gateway</code> Worker. We’ll see the routes <code>/login</code>, <code>/logout</code>, and <code>/getuser</code> are implemented on this API. For the <code>/getuser route</code>, the <code>api-gateway</code> Worker requires authorization via the <code>auth</code> Worker. Requests to any other endpoints will return a 404 HTTP status code.</p>
@@ -55,7 +55,7 @@
 	<p>But your next question might be, what am I charged for? Before we get into price, let’s first talk about where the compute execution is happening using our example above. A request to <code>/getuser</code> may look something like this, when looking across the request’s lifecycle:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YCcVOSEERBcJLV2iya61r/c93b1465f0de95d5a303367a34b1211c/image7-2.png" alt="A request lifetime graphic representing a sample application with multiple subroutines and a network request" class="kg-image" width="962" height="349" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5YCcVOSEERBcJLV2iya61r/d5fc05b866364d00d82055683c21c433/image7-2.png" alt="A request lifetime graphic representing a sample application with multiple subroutines and a network request" class="kg-image" width="962" height="349" loading="lazy">
 
 	</figure>
 	<p>The <code>get-user</code> Worker makes a network call to gather user information while the <code>auth</code> Worker executes entirely within the Workers runtime. Now that we understand what a single execution looks like, let’s talk about cost efficiency.</p>
@@ -71,19 +71,19 @@
 	<p>Revisiting our example above, the <code>api-gateway</code> Worker may be waiting on other dependencies to perform some work, while it sits idle. When we say idle, we mean the time the <code>api-gateway</code> Worker is awaiting a response from the <code>auth</code> and <code>get-user</code> Workers – represented by the gray bars in the request lifetime graphic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3inkZDySh1DZoX4yfauPcS/cf2120314e47d63dee6b48490b21335f/image7-3.png" alt="A request lifetime graphic representing a sample application with multiple subroutines and a network request" class="kg-image" width="962" height="349" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3inkZDySh1DZoX4yfauPcS/b6596a1db23517c0eb0999f975f59259/image7-3.png" alt="A request lifetime graphic representing a sample application with multiple subroutines and a network request" class="kg-image" width="962" height="349" loading="lazy">
 
 	</figure>
 	<p>When using Service Bindings, you no longer have to pay for those “idle resources”. With the Workers model, customers can execute work on a single shared compute thread across multiple individual Services, for each and every request. Cloudflare will charge for the amount of time that thread is allocated to your Workers and the time your Workers are awaiting external dependencies. Cloudflare won’t double charge for any overlap.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40SbbAaIExmf7sZ9p5w5zg/3d667ecdea8726fc9165555441b45903/image2-11.png" alt="with the Workers model, resources are shared and you only pay a flattened duration bill" class="kg-image" width="962" height="249" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40SbbAaIExmf7sZ9p5w5zg/870c0084dcabc7aef7cba165c656e752/image2-11.png" alt="with the Workers model, resources are shared and you only pay a flattened duration bill" class="kg-image" width="962" height="249" loading="lazy">
 
 	</figure>
 	<p>This is in stark contrast to classic serverless compute models (like Amazon Web Services’ Lambda), where resources are allocated on a per-instance basis, and as such cost is passed to the customer even when those resources are not actively being used. That extra charge is represented by the magenta portions of the request lifetime graphic below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QLn6BPLvLTfqUHdnba4gS/7638e272b8c50dfe9c9bf6d005e5e6a8/image4-7.png" alt="In a classic compute model, you’re potentially overpaying for resources that are not being used" class="kg-image" width="962" height="353" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QLn6BPLvLTfqUHdnba4gS/a4b79e01657d18c62babefbfe25a7731/image4-7.png" alt="In a classic compute model, you’re potentially overpaying for resources that are not being used" class="kg-image" width="962" height="353" loading="lazy">
 
 	</figure>
 	<p>Cloudflare is able to squash duration down to a single charge, since Cloudflare can share the compute resources between your services. We pass those cost savings on to our customers, so you can pay only for the work you need done, when you need it done, every time.</p>

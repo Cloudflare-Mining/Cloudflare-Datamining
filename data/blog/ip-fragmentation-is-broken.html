@@ -1,9 +1,9 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MSNlDVCEGcZt827pPmqor/2a31c207fb99abb3eaaeeb25712d9dbd/ip-fragmentation-is-broken.jpg" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MSNlDVCEGcZt827pPmqor/0f2f3aa764239d71b714dd656158b607/ip-fragmentation-is-broken.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As opposed to the <a href="https://en.wikipedia.org/wiki/Public_switched_telephone_network">public telephone network</a>, the internet has a <a href="https://en.wikipedia.org/wiki/Packet_switching">Packet Switched</a> design. But just how big can these packets be?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73Q2p7jy3NbOeARKhzz5Zm/43525246d159df685d8bd9b6d8d8c5bb/8093997590_02d7ec3713_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73Q2p7jy3NbOeARKhzz5Zm/f460ab3c98a3eebf5270e9cef093132f/8093997590_02d7ec3713_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p> CC BY 2.0 <a href="https://www.flickr.com/photos/ajmexico/8093997590">image</a> by <a href="https://www.flickr.com/photos/ajmexico">ajmexico</a>, <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">inspired by</a></p>
@@ -19,7 +19,7 @@
 	<p>When a packet is too big for a physical link, an intermediate router might chop it into multiple smaller datagrams in order to make it fit. This process is called "forward" IP fragmentation and the smaller datagrams are called IP fragments<a href="https://blog.cloudflare.com/#fn1">[1]</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yOVFEXv5xc8DvPBehp1Zn/5f73c0c95459f3b26ec92ececcc33cca/fragments.jpg" alt="" class="kg-image" width="830" height="578" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yOVFEXv5xc8DvPBehp1Zn/acec50ceab6a07ff6d31a50df3ab5287/fragments.jpg" alt="" class="kg-image" width="830" height="578" loading="lazy">
 
 	</figure>
 	<p>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Geoff Huston</a>, reproduced with permission</p>
@@ -78,7 +78,7 @@ octets without further fragmentation. [...]</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fsgW6ELxQUUQUY7fkrloE/00b80f738c612b2967107f132b08b683/df.jpg" alt="" class="kg-image" width="487" height="297" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fsgW6ELxQUUQUY7fkrloE/7325c15f203b2058b95da50dac776113/df.jpg" alt="" class="kg-image" width="487" height="297" loading="lazy">
 
 	</figure>
 	<p>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation">Geoff Huston</a>, reproduced with permission</p>
@@ -96,7 +96,7 @@ octets without further fragmentation. [...]</code></pre>
 	<p>This is because the modern internet is much more complex than anticipated 36 years ago. Today, basically nobody is plugged directly into the public internet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pgqc0JOIId0GpmtbKoTc7/c819e60729a58ad496d013bd46e6e35e/thecloud2.png" alt="" class="kg-image" width="757" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pgqc0JOIId0GpmtbKoTc7/dbf0e2a316b29cbbdee57a678c1cc495/thecloud2.png" alt="" class="kg-image" width="757" height="300" loading="lazy">
 
 	</figure>
 	<p>Customer devices connect through home routers which do NAT (<a href="https://en.wikipedia.org/wiki/Network_address_translation">Network Address Translation</a>) and usually enforce firewall rules. Increasingly often there is more than one NAT installation on the packet path (e.g. <a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT">carrier-grade NAT</a>). Then, the packets hit the ISP infrastructure where there are ISP "middle boxes". They perform all manner of weird things on the traffic: enforce plan caps, throttle connections, perform logging, <a href="https://www.cloudflare.com/learning/security/global-dns-hijacking-threat">hijack DNS requests</a>, implement government-mandated web site bans, force transparent caching or arguably "optimize" the traffic in some other magical way. The middle boxes are used especially by mobile telcos.</p>
@@ -105,7 +105,7 @@ octets without further fragmentation. [...]</code></pre>
 	<h4>1. Client -&gt; Server DF+ / ICMP</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Cz9EAKTmEqN1aqJzKXJSF/3af99e43a81a24510dca6dc27915f33e/client-dfp.png" alt="" class="kg-image" width="600" height="149" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Cz9EAKTmEqN1aqJzKXJSF/2ee1ffefb8509d5c8acc92ac5ed4944c/client-dfp.png" alt="" class="kg-image" width="600" height="149" loading="lazy">
 
 	</figure>
 	<p>In the first scenario, a client uploads some data to the server using TCP so the DF flag is set on all of the packets. If the client fails to predict an appropriate MTU, an intermediate router will drop the big packets and send an ICMP “Packet too big” notification back to the client. These ICMP packets might get dropped by misconfigured customer NAT devices or ISP middle boxes.</p>
@@ -114,7 +114,7 @@ octets without further fragmentation. [...]</code></pre>
 	<h4>2. Client -&gt; Server DF- / fragmentation</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4cc7LrXd6JM9lt0KWGe0m1/4bd8dff5fe30055064c9bbde5a627149/client-dfm.png" alt="" class="kg-image" width="581" height="137" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cc7LrXd6JM9lt0KWGe0m1/0a045a4d544e9f584f7a78e5a8da827b/client-dfm.png" alt="" class="kg-image" width="581" height="137" loading="lazy">
 
 	</figure>
 	<p>In next scenario, a client uploads some data with a protocol other than TCP, which has the DF flag cleared. For example, this might be a user playing a game using UDP, or having a voice call. The big outbound packets might get fragmented at some point in the path.</p>
@@ -134,7 +134,7 @@ octets without further fragmentation. [...]</code></pre>
 	<h4>3. Server -&gt; Client DF+ / ICMP</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UtBkyENFMejLCiBYfwpNI/4a955ba9686ed47d5556d20633fdde2a/server-dfp.png" alt="" class="kg-image" width="590" height="139" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UtBkyENFMejLCiBYfwpNI/be2227af40a62f1b8764106d4eecaf64/server-dfp.png" alt="" class="kg-image" width="590" height="139" loading="lazy">
 
 	</figure>
 	<p>The next scenario is about a client downloading some data over TCP. When the server fails to predict the correct MTU, it should receive an ICMP “Packet too big” message. Easy, right?</p>
@@ -146,7 +146,7 @@ octets without further fragmentation. [...]</code></pre>
 	<h4>4. Server -&gt; Client DF- / fragmentation</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FLqYyctRkLrYYTyDGXcbP/f2609eea60694bd2d4592da117dc7230/server-dfm.png" alt="" class="kg-image" width="604" height="126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FLqYyctRkLrYYTyDGXcbP/2b79de43fe7add8866faf603b872f975/server-dfm.png" alt="" class="kg-image" width="604" height="126" loading="lazy">
 
 	</figure>
 	<p>Finally, there is a situation where the server sends big packets using a non-TCP protocol with the DF bit clear. In this scenario, the big packets will get fragmented on the path to the client. This situation is best illustrated with big DNS responses. Here are two DNS requests that will generate large responses and be delivered to the client as multiple IP fragments:</p>
@@ -167,7 +167,7 @@ $ dig +notcp +dnssec DNSKEY org @2001:500:f::1</code></pre>
 	<p>With all these things going wrong, how does the internet still manage to work?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cXkQdo8Tuq03pgrmUGLoZ/f23ac387a3179bbcabb71b29aa0406ce/nic.jpg" alt="" class="kg-image" width="1280" height="949" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cXkQdo8Tuq03pgrmUGLoZ/6c496c142b61f7708631f8cc0973c3bf/nic.jpg" alt="" class="kg-image" width="1280" height="949" loading="lazy">
 
 	</figure>
 	<p>CC BY-SA 3.0, <a href="https://commons.wikimedia.org/w/index.php?curid=122201">source: Wikipedia</a></p>
@@ -187,7 +187,7 @@ $ dig +notcp +dnssec DNSKEY org @2001:500:f::1</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6C5lYgpMbYOFtDd96gWWra/bfec8936cd05d380f63bcc90e56f8736/Screen-Shot-2017-08-16-at-2.11.05-AM-1.png" alt="" class="kg-image" width="727" height="354" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6C5lYgpMbYOFtDd96gWWra/f3650ccf76ba161d577d29e6e40ea4c5/Screen-Shot-2017-08-16-at-2.11.05-AM-1.png" alt="" class="kg-image" width="727" height="354" loading="lazy">
 
 	</figure>
 	<p>To help explore and debug these issues, we built an online checker. You can find two versions of the test:</p>

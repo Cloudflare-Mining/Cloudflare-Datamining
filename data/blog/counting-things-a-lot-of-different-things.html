@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nuMdDZng8w9d6WhYiWIsv/07472c319554d0d0110a0a88c03494bd/counting-things-a-lot-of-different-things.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nuMdDZng8w9d6WhYiWIsv/09ff720934541c4d158b21da37796ae9/counting-things-a-lot-of-different-things.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Back in April we announced <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a> of requests for every Cloudflare customer. Being able to rate limit at the edge of the network has many advantages: it’s easier for customers to set up and operate, their origin servers are not bothered by excessive traffic or layer 7 attacks, the performance and memory cost of rate limiting is offloaded to the edge, and more.</p>
 	<p>In a nutshell, <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting">rate limiting</a> works like this:</p>
@@ -48,7 +48,7 @@
 	<p>First let’s take a look at how the traffic is routed in the Cloudflare network. All the traffic going to our edge servers is <a href="https://en.wikipedia.org/wiki/Anycast">anycast</a> traffic. This means that we announce the same IP address for a given web application, site or API worldwide, and traffic will be automatically and consistently routed to the closest live data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MXm1hRKiJKtqZuSG8Ie0j/3f9356f59ab2ebde2b5721a6f8bb19ec/world.png" alt="Anycast routing example" class="kg-image" width="1200" height="708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MXm1hRKiJKtqZuSG8Ie0j/9b1869712dd6b0538cf7e3615fe4136d/world.png" alt="Anycast routing example" class="kg-image" width="1200" height="708" loading="lazy">
 
 	</figure>
 	<p>This property is extremely valuable: we are sure that, under normal conditions<a href="https://blog.cloudflare.com/#fn1">[1]</a>, the traffic from a single IP address will always reach the same PoP. Unfortunately each new TCP connection might hit a different server inside that PoP. But we can still narrow down our problem: we can actually create an isolated counting system inside each PoP. This mostly solves the latency problem and greatly improves the availability as well.</p>
@@ -77,7 +77,7 @@
 	<p>The <a href="https://en.wikipedia.org/wiki/Leaky_bucket">leaky bucket</a> algorithm allows a great level of accuracy while being nicer on resources (this is what the stock NGINX module is using). Conceptually, it works by incrementing a counter when each request comes in. That same counter is also decremented over time based on the allowed rate of requests until it reaches zero. The capacity of the bucket is what you are ready to accept as “burst” traffic (important given that legitimate traffic is not always perfectly regular). If the bucket is full despite its decay, further requests are mitigated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nur2wjEAyjE0S6VYblkr3/a615bcf732e1ac6d7f28507886f7f84e/leakybucket.svg.png" alt="Leaky bucket algorithm schema" class="kg-image" width="1288" height="691" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nur2wjEAyjE0S6VYblkr3/080ad1cbb09aa1bf6a294ffb4955e9e0/leakybucket.svg.png" alt="Leaky bucket algorithm schema" class="kg-image" width="1288" height="691" loading="lazy">
 
 	</figure>
 	<p>However, in our case, this approach has two drawbacks:</p>
@@ -101,7 +101,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gvU2RabELQEWsauNMm8cu/3044cd0c46716748d56e61482f55ce78/14247536929_1a6315311d_z.jpg" alt="" class="kg-image" width="640" height="431" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gvU2RabELQEWsauNMm8cu/ac296e8bf4e122f18935500ef0bd1c2e/14247536929_1a6315311d_z.jpg" alt="" class="kg-image" width="640" height="431" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/halfrain/14247536929">image</a> by <a href="https://www.flickr.com/photos/halfrain">halfrain</a></p>
@@ -109,7 +109,7 @@
 	<p>Let’s say I set a limit of 50 requests per minute on an API endpoint. The counter can be thought of like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SfLGYqNjjjxfJo0C9rU4H/2d63b88fb63985fb7210584c89b13645/sliding.svg.png" alt="Sliding window example" class="kg-image" width="1063" height="453" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SfLGYqNjjjxfJo0C9rU4H/e000ba22680e27910c8963a7111a97c8/sliding.svg.png" alt="Sliding window example" class="kg-image" width="1063" height="453" loading="lazy">
 
 	</figure>
 	<p>In this situation, I did 18 requests during the current minute, which started 15 seconds ago, and 42 requests during the entire previous minute. Based on this information, the rate approximation is calculated like this:</p>
@@ -159,7 +159,7 @@
 	<p>This is why the increment jobs are run asynchronously without slowing down the requests. If the request rate is above the threshold, another piece of data is stored asking all servers in the PoP to start applying the mitigation for that client. Only this bit of information is checked during request processing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pCPtEGvM5WPv1vUPzc0MH/faa6816a8bbf72ed805d23da4363bee2/el-sequence.svg.png" alt="Request processing example" class="kg-image" width="1200" height="863" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pCPtEGvM5WPv1vUPzc0MH/ba54eae2f0aeaa2ae960c84bfe32be8c/el-sequence.svg.png" alt="Request processing example" class="kg-image" width="1200" height="863" loading="lazy">
 
 	</figure>
 	<p>Even more interesting: once a mitigation has started, we know exactly when it will end. This means that we can cache that information in the server memory itself. Once a server starts to mitigate a client, it will not even run another query for the subsequent requests it might see from that source!</p>

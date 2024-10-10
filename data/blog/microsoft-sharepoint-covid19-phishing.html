@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-tw/microsoft-sharepoint-covid19-phishing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LlsDPDUQYy8P7quKceXl6/a3a6ccecd9c03b36a548b765f71f92af/microsoft-sharepoint-covid19-phishing.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-tw/microsoft-sharepoint-covid19-phishing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LlsDPDUQYy8P7quKceXl6/d3c2ad2e647f9d86d55cbc59bb89331b/microsoft-sharepoint-covid19-phishing.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in December 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>In August, Area 1 Security researchers identified a Microsoft SharePoint phishing campaign that abused cloud computing services, such as Azure Web Sites, Google Storage, and Amazon Web Services, to host credential harvesters. <b>Most recently, our researchers detected an updated wave of Microsoft SharePoint phish that are leveraging</b> <a href="https://www.nytimes.com/live/2020/11/27/world/covid-19-coronavirus"><b>new COVID-19 restrictions</b></a> <b>to steal victims’ login information.</b></p>
@@ -15,7 +15,7 @@
 	<p>This new campaign deviates from the previous “Summer Bonus” Microsoft Office 365 phishing campaign by attempting to trick targets into thinking they missed an important update to COVID-19 procedures. As seen in Figure 1, the attacker states that a purported SharePoint-hosted document was sent a week prior, creating a sense of urgency in order to lure targets into clicking on the provided link.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10ew2nlngWsc3BH6Gt1PED/b09a3c77817360341896a16c77842e22/image3-2.png" alt="" class="kg-image" width="1999" height="1161" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10ew2nlngWsc3BH6Gt1PED/1e1c5e0e13f2f7f88e12c53bec1cadd2/image3-2.png" alt="" class="kg-image" width="1999" height="1161" loading="lazy">
 
 	</figure>
 	<p>Figure 1. SharePoint Phishing Email</p>
@@ -37,21 +37,21 @@
 	<p>An example link, hxxps://x9n44x9nvc9nn9a4l9xa4cds[.]df[.]r[.]appspot[.]com/#<a href="mailto:redacted@redacted.com">redacted@redacted.com</a>, shown in the address bar in Figure 2, further demonstrates the targeted nature of the attacks. The redacted information in the URL contains the target’s company email address. To further add legitimacy, this spoofed site is nearly identical to the real Microsoft login page. The only discernible difference is the inclusion of the word “Outlook.”</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UkOsrJOZ4IcqPO6dTjodI/979b3654ce98b30b809f8024a4e10e65/image1-3.png" alt="" class="kg-image" width="1999" height="1112" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UkOsrJOZ4IcqPO6dTjodI/30aad0c95ad609443b21b3ab1b499a7e/image1-3.png" alt="" class="kg-image" width="1999" height="1112" loading="lazy">
 
 	</figure>
 	<p>Figure 2. Spoofed Microsoft Login Portal</p>
 	<p>Figure 3 shows a portion of the source code of the spoofed login page. This section of code consists of JavaScript that attempts to mimic the functionality of the legitimate Microsoft login page.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WujgZRceknQImQfcIflzs/2940bf3b6fff2a6c97b5fcd6352d2990/image2-2.png" alt="" class="kg-image" width="905" height="732" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WujgZRceknQImQfcIflzs/f6c566112c2dd009d21a214167595a5b/image2-2.png" alt="" class="kg-image" width="905" height="732" loading="lazy">
 
 	</figure>
 	<p>Figure 3. JavaScript of Spoofed Login Page</p>
 	<p>The code calls a custom function responsible for extracting the victim’s email from the URL and prepopulating it in the account username field. In this function the actor left a portion of commented code (presumably used by the developer of the code for testing purposes) as highlighted in Figure 4.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bQlfWsHPafn9QTDswuYbv/321b2a2d4edb7fe7303763075d69e09d/image6-2.png" alt="" class="kg-image" width="1320" height="314" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bQlfWsHPafn9QTDswuYbv/016fc321f76f4a6f78d0c62623937d1c/image6-2.png" alt="" class="kg-image" width="1320" height="314" loading="lazy">
 
 	</figure>
 	<p>Figure 4. Custom Function Containing Commented Code</p>
@@ -60,14 +60,14 @@
 	<p>If the target enters their password, it is posted to a website hosted on Microsoft Azure Web Sites, for example hxxps://fajal2a2l0jj0ccf2lf020jf[.]azurewebsites[.]net/handler[.]php, as revealed in Figure 5.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZnDKBssQT8MxCzPBie6nL/9d310da7f785caaf93cf41d0dc8078b8/image5-3.png" alt="" class="kg-image" width="1138" height="408" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZnDKBssQT8MxCzPBie6nL/4a070855d6c2b86a8ffa67a0ff99dc39/image5-3.png" alt="" class="kg-image" width="1138" height="408" loading="lazy">
 
 	</figure>
 	<p>Figure 5. HTTP Post of Victim Credentials</p>
 	<p>After the credentials are entered, the .ldsddddd function above displays a spinning circle next to the “Sign In” button, making it appear as if the credentials are being validated. After several seconds have passed, the error message shown in Figure 6 is displayed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/263zPzyWhhvnNrPQvy9GQI/b99fe459392d4d22cd31c7f8bffcdf0f/image4-3.png" alt="" class="kg-image" width="952" height="1004" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/263zPzyWhhvnNrPQvy9GQI/d51ef834c60d20d35ce80b4d6229012a/image4-3.png" alt="" class="kg-image" width="952" height="1004" loading="lazy">
 
 	</figure>
 	<p>Figure 6. Error Message Displayed After Credentials Are Entered</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hw1XcalmYZYKeGDqf4FQ9/ddfe49f942aa14f132cc311afcd939ed/tls-1-3-overview-and-q-and-a.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hw1XcalmYZYKeGDqf4FQ9/756804637f525cd8085dd866e902dda1/tls-1-3-overview-and-q-and-a.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The CloudFlare London office hosts weekly internal Tech Talks (with free lunch picked by the speaker). My recent one was an explanation of the latest version of <a href="https://www.cloudflare.com/ssl">TLS, 1.3</a>, how it works and why it's faster and safer.</p>
 	<p>You can <a href="https://vimeo.com/177333631">watch the complete talk</a> below or just read my summarized transcript.</p>
@@ -8,13 +8,13 @@
 	<h4>Summarized transcript</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Bq6YFjnvg3SB2kKRjfNsr/e32f6f7e9a5e3b0be731c979f6759094/TLS-1.3.003.png" alt="TLS 1.2 ECDHE" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Bq6YFjnvg3SB2kKRjfNsr/4be9ff4c51df8eb9b9dbd9eb6f499f13/TLS-1.3.003.png" alt="TLS 1.2 ECDHE" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>To understand why TLS 1.3 is awesome, we need to take a step back and look at how TLS 1.2 works. In particular we will look at modern TLS 1.2, the kind that a recent browser would use when connecting to the CloudFlare edge.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8ohjI9yrzu2eEm0U6iOu9/fe8f5ec9944e2933ca5c294178c1e6d6/TLS-1.3.004.png" alt="TLS 1.2 ECDHE exchange" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8ohjI9yrzu2eEm0U6iOu9/654853ffc8128cef9c4f17ac6dfb28cb/TLS-1.3.004.png" alt="TLS 1.2 ECDHE exchange" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>The client starts by sending a message called the <code>ClientHello</code> that essentially says "hey, I want to speak TLS 1.2, with one of these cipher suites".</p>
@@ -28,14 +28,14 @@
 	<p>Notice that this takes two round-trips between the client and the server before the HTTP request can be transferred. And <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trips on the Internet</a> can be slow.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d2jAu0W5lMg2PQm8zrdtz/4d72789dfb00d19aed9e88ec18dd0781/TLS-1.3.006.png" alt="TLS 1.3" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3d2jAu0W5lMg2PQm8zrdtz/221af7783bc17706e2d3a2587ecf1312/TLS-1.3.006.png" alt="TLS 1.3" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>Enter TLS 1.3. While TLS 1.0, 1.1 and 1.2 are not that different, 1.3 is a big jump.</p>
 	<p>Most importantly, establishing a TLS 1.3 connection takes <b>one less round-trip</b>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hr3R0qLxh2XIklK8lNJdh/6447dd2d0e1530315d8fa8509a533aca/TLS-1.3.007.png" alt="TLS 1.3 handshake" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hr3R0qLxh2XIklK8lNJdh/8b4cbbea91b113ba182294c1bef64695/TLS-1.3.007.png" alt="TLS 1.3 handshake" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>In TLS 1.3 a client starts by sending not only the <code>ClientHello</code> and the list of supported ciphers, but it also makes a guess as to which key agreement algorithm the server will choose, and <b>sends a key share for that</b>.</p>
@@ -45,27 +45,27 @@
 	<p>The client receives all that, generates the keys using the key share, checks the certificate and <code>Finished</code>, and it's immediately ready to send the HTTP request, after only one round-trip. Which can be hundreds of milliseconds.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Uvkj3F2TDTPupYTuJOCdE/d9cf8446381f87b1756e4074c6848c3f/TLS-1.3.009.png" alt="TLS 1.2 resumption" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Uvkj3F2TDTPupYTuJOCdE/03d16a27196bb78a5cafebecf12e9b34/TLS-1.3.009.png" alt="TLS 1.2 resumption" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>One existing way to speed up TLS connections is called resumption. It's what happens when the client has connected to that server before, and uses what they remember from the last time to cut short the handshake.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Kb8uoWeYCfHtOsR4jKTig/0b2b38064c1a31cdc015419208b43530/TLS-1.3.010.png" alt="TLS 1.2 resumption schema" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Kb8uoWeYCfHtOsR4jKTig/4e5ea4f6cdd0fd2498db35e1c51ecdac/TLS-1.3.010.png" alt="TLS 1.2 resumption schema" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>How this worked in TLS 1.2 is that servers would send the client either a <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">Session ID or a Session Ticket</a>. The former is just a reference number that the server can trace back to a session, while the latter is an encrypted serialized session which allows the server not to keep state.</p>
 	<p>The next time the client would connect, it would send the Session ID or Ticket in the <code>ClientHello</code>, and the server would go like "hey, I know you, we have agreed on a key already", skip the whole key shares dance, and jump straight to <code>Finished</code>, saving a round-trip.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T989Gfy9u4y0b5WlC2YyJ/48902f2fc32e2c0077e0e6666c509ea1/TLS-1.3.011.png" alt="1.3 0-rtt resumption" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3T989Gfy9u4y0b5WlC2YyJ/926f71e94f528ae25d275bad8399e0fd/TLS-1.3.011.png" alt="1.3 0-rtt resumption" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>So, we have a way to do 1-RTT connections in 1.2 if the client has connected before, which is very common. Then what does 1.3 gain us? When resumption is available, <b>1.3 allows us to do 0-RTT connections</b>, again saving one round trip and ending up with no round trip at all.</p>
 	<p>If you have connected to a 1.3 server before you can immediately start sending encrypted data, like an HTTP request, without any round-trip at all, making TLS essentially <b>zero overhead</b>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4x3MsWrJJB60co3tWBTcfD/82a63852b441391c9ecd1251a9c380f6/TLS-1.3.012.png" alt="1.3 0-rtt resumption schema" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4x3MsWrJJB60co3tWBTcfD/cc3976fa1688d6bcb39f4fdae04c06ae/TLS-1.3.012.png" alt="1.3 0-rtt resumption schema" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>When a 1.3 client connects to a 1.3 server they agree on a resumption key (or PSK, pre-shared key), and the server gives the client a Session Ticket that will help it remember it. The Ticket can be an encrypted copy of the PSK—to avoid state—or a reference number.</p>
@@ -73,7 +73,7 @@
 	<p>The client also sends a key share, so that client and server can switch to a new fresh key for the actual HTTP response and the rest of the connection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bxXx5kuJvmtOYmxa1JNcy/f2625d78cfd8aca55a2a878f2374482b/TLS-1.3.013.png" alt="0-RTT caveats" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bxXx5kuJvmtOYmxa1JNcy/1cdbfb3ee46d508d6eabcafd44e043b7/TLS-1.3.013.png" alt="0-RTT caveats" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>0-RTT comes with a couple of caveats.</p>
@@ -82,7 +82,7 @@
 	<p>TLS 1.2 has never provided any Forward Secrecy against a compromise of the Session Ticket key at all, so even with 0-RTT 1.3 is an improvement upon 1.2.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79qHz08hcnfJAk8ogogTfH/3bc80da84b88aecd1aac5b2cc8e6eb7e/TLS-1.3.014.png" alt="0-RTT replay" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79qHz08hcnfJAk8ogogTfH/1822898b0fc6f0262a2b9c7ae9df0eba/TLS-1.3.014.png" alt="0-RTT replay" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>More problematic are replay attacks.</p>
@@ -93,17 +93,17 @@
 	<p>Thankfully, most times the first request a client sends is not a state-changing transaction, but something idempotent like a GET.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oeeDc9HROItV41GXxqggs/f17b7bca5020af6c0577362e4bc9bf0c/TLS-1.3.016.png" alt="removed" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oeeDc9HROItV41GXxqggs/12f35c007af3f031ab681968ff807dad/TLS-1.3.016.png" alt="removed" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4u8bypRISwPgvFeXhAZfuU/8748ea5760b064dbed00a509e0a99b76/TLS-1.3.017.png" alt="simplified" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4u8bypRISwPgvFeXhAZfuU/bbcdaf44a4b89aa05390b5e85a4a1a5a/TLS-1.3.017.png" alt="simplified" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45Ejce1oMIH6MiWRDtalo3/b46e8a785ba6b47c56027270aedab422/TLS-1.3.018.png" alt="added" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45Ejce1oMIH6MiWRDtalo3/537497589b0bf99b28ec8b8488c8279e/TLS-1.3.018.png" alt="added" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>TLS 1.3 is not only good for cutting a round-trip. It's also better, more robust crypto all around.</p>
@@ -139,7 +139,7 @@
 	<p>Some of these were not necessarily broken by design, but they were dangerous, hard to implement correctly and easy to get wrong. The new excellent trend of TLS 1.3 and cryptography in general is to make mistakes less likely at the design stage, since humans are not perfect.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56pPwUsCFfumH2fYMeL8FN/3c8577e171f5a10dd34e09da08d6e626/TLS-1.3.019.png" alt="anti-downgrade" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56pPwUsCFfumH2fYMeL8FN/35aa6d17ae21394702ce0122e6bdfb5c/TLS-1.3.019.png" alt="anti-downgrade" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>A new version of a protocol obviously can't dictate how older implementations behave and 1.3 can't improve the security of 1.2 systems. So how do you make sure that if tomorrow TLS 1.2 is completely broken, a client and server that both support 1.2 and 1.3 can't be tricked into using 1.2 by a proxy?</p>
@@ -148,20 +148,20 @@
 	<p>The Server Random is signed with the certificate in 1.2, so it's impossible to fake even if pieces of 1.2 are broken. This is very important because it will allow us to keep supporting 1.2 in the future even if it's found to be weaker, unlike we had to do with <a href="https://blog.cloudflare.com/sslv3-support-disabled-by-default-due-to-vulnerability">SSLv3 and POODLE</a>. With 1.3 we will know for sure that clients that can do any better are not being put at risk, allowing us to make sure <a href="https://blog.cloudflare.com/ensuring-that-the-web-is-for-everyone">the Internet is for Everyone</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Q7LYbjQBvS2WP0PUvkmdk/597cd698f8cd5af0e5ac74c2a1b43b5e/TLS-1.3.020.png" alt="solid" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Q7LYbjQBvS2WP0PUvkmdk/6fb34646631b248c2d3750b4b2c198c5/TLS-1.3.020.png" alt="solid" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>So this is TLS 1.3. Meant to be a solid, safe, robust, simple, essential foundation for Internet encryption for the years to come. And it's faster, so that no one will have performance reasons not to implement it.</p>
 	<p>TLS 1.3 is still a draft and it might change before being finalized, but at CloudFlare we are actively developing a 1.3 stack compatible with current experimental browsers, so <a href="https://blog.cloudflare.com/introducing-tls-1-3">everyone can get it today</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xQPlSJ4uBQaS60OpFogxD/a59992f256388bd95545219f110ba1bb/TLS-1.3.023.png" alt="github" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xQPlSJ4uBQaS60OpFogxD/7967fae7cd0f8766658a02c0534b95c5/TLS-1.3.023.png" alt="github" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>The TLS 1.3 spec is <a href="https://github.com/tlswg/tls13-spec">on GitHub</a>, so anyone can contribute. Just while making the slides for this presentation I noticed I was having a hard time understanding a system because a diagram was missing some details, so I submitted a PR to fix it. How easy is that!?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ecgvi8YtzFKhcoQjoPLzU/f26f8cec4fbc15f5a5d452c52b9013eb/TLS-1.3.026.png" alt="questions" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ecgvi8YtzFKhcoQjoPLzU/cb6a281fbd8246c453bc145ca36a7b56/TLS-1.3.026.png" alt="questions" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>Like any talk, at the end there's the Q&amp;A. Send your questions to <a href="mailto:tls13@cloudflare.com">tls13@cloudflare.com</a> or leave them in the Disqus comments below and I'll answer them in an upcoming blog post!</p>

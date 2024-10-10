@@ -1,10 +1,10 @@
 <div class="mb2 gray5">10 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/magic-transit">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/magic-transit">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/magic-transit">日本語</a>, <a href="https://blog.cloudflare.com/es-es/magic-transit">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/magic-transit">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30ukPBIoKtCCjjRyLCp0uk/051ed8505a72c96fd6937cbc542b4de9/magic-transit.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/magic-transit">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/magic-transit">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/magic-transit">日本語</a>, <a href="https://blog.cloudflare.com/es-es/magic-transit">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/magic-transit">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30ukPBIoKtCCjjRyLCp0uk/4940f94513ab1c6c0a2d48f6e55ead97/magic-transit.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today we’re excited to announce <a href="https://www.cloudflare.com/magic-transit">Cloudflare Magic Transit</a>. Magic Transit provides secure, performant, and reliable IP connectivity to the Internet. Out-of-the-box, Magic Transit deployed in front of your on-premise network protects it from DDoS attack and enables provisioning of a full suite of virtual network functions, including advanced packet filtering, load balancing, and traffic management tools.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xrudUtd0p89Xzltytmvr5/7ea6a0dbddcbd4fdcda9f7293caab749/Magic-Transit-Network-Diagram-3.gif" alt="" class="kg-image" width="1920" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xrudUtd0p89Xzltytmvr5/85d2ae11d640a1d2c56dc0dda37d0103/Magic-Transit-Network-Diagram-3.gif" alt="" class="kg-image" width="1920" height="860" loading="lazy">
 
 	</figure>
 	<p>Magic Transit is built on the standards and networking primitives you are familiar with, but delivered from Cloudflare’s global edge network as a service. Traffic is ingested by the Cloudflare Network with anycast and BGP, announcing your company’s IP address space and extending your network presence globally. Today, our anycast edge network spans 193 cities in more than 90 countries around the world.</p>
@@ -45,13 +45,13 @@
 	<p>Let’s walk through how a customer might deploy Magic Transit. Customer Acme Corp. owns the IP prefix 203.0.113.0/24, which they use to address a rack of hardware they run in their own physical datacenter. Acme currently announces routes to the Internet from their customer-premise equipment (CPE, aka a router at the perimeter of their datacenter), telling the world 203.0.113.0/24 is reachable from their autonomous system number, AS64512. Acme has DDoS mitigation and firewall hardware appliances on-premise.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dKeZlmtO1CLvJY4ZuIk9b/b08d44db5093494f9f69d8c871814a7b/Legacy-Arch_Diagram_3x--1-.png" alt="" class="kg-image" width="1600" height="972" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dKeZlmtO1CLvJY4ZuIk9b/8c967c28d3187864e211067b8f90ea31/Legacy-Arch_Diagram_3x--1-.png" alt="" class="kg-image" width="1600" height="972" loading="lazy">
 
 	</figure>
 	<p>Acme wants to connect to the Cloudflare Network to improve the security and performance of their own network. Specifically, they’ve been the target of distributed denial of service attacks, and want to sleep soundly at night without relying on on-premise hardware. This is where Cloudflare comes in.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/108YJxvEAZllG1WQA5uCnw/6e2000efac13b8916de34b070c978d72/Modern-Arch_Diagram_3x.png" alt="" class="kg-image" width="1600" height="982" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/108YJxvEAZllG1WQA5uCnw/efc1cf482336a8b67dbbbff76bbf5dac/Modern-Arch_Diagram_3x.png" alt="" class="kg-image" width="1600" height="982" loading="lazy">
 
 	</figure>
 	<p>Deploying Magic Transit in front of their network is simple:</p>
@@ -164,7 +164,7 @@
 	<p>How expansive is the Cloudflare Network? We’re in 193 cities worldwide, with more than 30Tbps of network capacity spread across them. Cloudflare operates within 100 milliseconds of 98% of the Internet-connected population in the developed world, and 93% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kjGmLjsRPHSa8c91odBGG/54bd4aeed97bbbb7cde3bb6c5b24f21c/image1-2.png" alt="" class="kg-image" width="1999" height="1418" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kjGmLjsRPHSa8c91odBGG/6d46342b7a6d8e72f420966737d6e35b/image1-2.png" alt="" class="kg-image" width="1999" height="1418" loading="lazy">
 
 	</figure>
 	<p>Areas of the globe within 100 milliseconds of a Cloudflare datacenter.</p>

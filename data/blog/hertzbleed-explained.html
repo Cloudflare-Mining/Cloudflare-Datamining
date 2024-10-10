@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wNR7nycv8hI9sGsR6x1sr/ab362a7343f775ee16c6c2bdd01e36a7/image9-8.png" alt="Hertzbleed explained" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wNR7nycv8hI9sGsR6x1sr/c5a888f30336182a29155e79a683a1d4/image9-8.png" alt="Hertzbleed explained" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>You may have heard a bit about the <a href="http://hertzbleed.com">Hertzbleed</a> attack that was recently disclosed. Fortunately, one of the student researchers who was part of the team that discovered this vulnerability and developed the attack is spending this summer with Cloudflare Research and can help us understand it better.</p>
@@ -16,7 +16,7 @@
 	<p>In short, the Hertzbleed attack shows that, under certain circumstances, dynamic voltage and frequency scaling (<a href="https://en.wikipedia.org/wiki/Dynamic_frequency_scaling">DVFS</a>), a power management scheme of modern x86 processors, depends on the data being processed. This means that on modern processors, the same program can run at different CPU frequencies (and therefore take different wall-clock times). For example, we expect that a CPU takes the same amount of time to perform the following two operations because it uses the same algorithm for both. However, there is an observable time difference between them:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2T8HDeM152nUJmCOzb3lD3/240da64995514f24051cb8b3444fd186/image5-15.png" alt="Bit operations that perform integer additions." class="kg-image" width="791" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2T8HDeM152nUJmCOzb3lD3/111075d5659b25ed5d096a6ff6c535fd/image5-15.png" alt="Bit operations that perform integer additions." class="kg-image" width="791" height="206" loading="lazy">
 
 	</figure>
 	<pre class="language-bash"><code class="language-bash">Trivia: Could you guess which operation runs faster?</code></pre>
@@ -32,14 +32,14 @@
 	<p>Suppose a runner is in a long distance race. To optimize the performance, the heart monitors the body all the time. Depending on the input (such as distance or oxygen absorption), it releases the appropriate hormones that will accelerate or slow down the heart rate, and as a result tells the runner to speed up or slow down a little. Just like the heart of a runner, <a href="https://en.wikipedia.org/wiki/Dynamic_frequency_scaling">DVFS</a> (dynamic voltage and frequency scaling) is a monitor system for the CPU. It helps the CPU to run at its best under present conditions without being overloaded.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3v9Z8954FqPDImeLnTcfns/1c701cd915ae52a297c8dcf44ba26882/image1-55.png" alt="" class="kg-image" width="1801" height="1014" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3v9Z8954FqPDImeLnTcfns/efd112b90fbc7f2ca1c4bda32df73116/image1-55.png" alt="" class="kg-image" width="1801" height="1014" loading="lazy">
 
 	</figure>
 	<p>Just as a runner’s heart causes a runner’s pace to fluctuate throughout a race depending on the level of exertion, when a CPU is running a sustained workload, DVFS modifies the CPU’s frequency from the so-called <i>steady-state frequency.</i> DVFS causes it to switch among multiple performance levels (called P-states) and oscillate among them. Modern DVFS gives the hardware almost full control to adjust the P-states it wants to execute in and the duration it stays at any P-state. These modifications are totally opaque to the user, since they are controlled by hardware and the operating system provides limited visibility and control to the end-user.</p>
 	<p>The <a href="https://uefi.org/specs/ACPI/6.4/index.html">ACPI</a> specification defines <a href="https://uefi.org/specs/ACPI/6.4/02_Definition_of_Terms/Definition_of_Terms.html#term-P0-Performance-State">P0 state</a> as the state the CPU runs at its maximum performance capability. Moving to higher P-states makes the CPU less performant in favor of consuming less energy and power.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2y3DvoP97XLhnO8GzYfEVF/ea1594768143ef649f3062721946f792/image4-26.png" alt="CPU with oscillating P-state" class="kg-image" width="898" height="470" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2y3DvoP97XLhnO8GzYfEVF/769352fed791726f56f80123e506e34c/image4-26.png" alt="CPU with oscillating P-state" class="kg-image" width="898" height="470" loading="lazy">
 
 	</figure>
 	<p>Suppose a CPU’s <i>steady-state frequency</i> is 4.0 GHz. Under DVFS, frequency can oscillate between 3.9-4.1 GHz.</p>
@@ -48,14 +48,14 @@
 	<p>To continue our human running analogy: a typical person can sprint only short distances, and must run longer distances at a slower pace. When the workload is of short duration, DVFS allows the CPU to enter a high-performance state, called Turbo Boost on Intel processors. In this mode, the CPU can temporarily execute very quickly while consuming much more power than TDP allows. But when running a sustained workload, the CPU average power consumption should stay below TDP to prevent overheating. For example, as illustrated below, suppose the CPU has been free of any task for a while, the CPU runs extra hard (Turbo Boost on) when it just starts running the workload. After a while, it realizes that this workload is not a short one, so it slows down and enters steady-state. How much does it slow down? That depends on the TDP. When entering steady-state, the CPU runs at a certain speed such that its current power consumption is not above TDP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1moCuxakiYLVgwsyWE9axJ/a1fdbf61c25dbf2b3d4c51fb01efd1bc/image7-11.png" alt="CPU entering steady state after running at a higher frequency" class="kg-image" width="928" height="470" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1moCuxakiYLVgwsyWE9axJ/0281910124d71d1463a956c66a7e6d31/image7-11.png" alt="CPU entering steady state after running at a higher frequency" class="kg-image" width="928" height="470" loading="lazy">
 
 	</figure>
 	<p>CPU entering steady state after running at a higher frequency.</p>
 	<p>Beyond protecting CPUs from overheating, DVFS also wants to maximize the performance. When a runner is in a marathon, she doesn't run at a fixed pace but rather her pace floats up and down a little. Remember the P-state we mentioned above? CPUs oscillate between P-states just like runners adjust their pace slightly over time. P-states are CPU frequency levels with discrete increments of 100 MHz.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhdAzae9l9Ne6OIJ3AilO/d4177fb608af6da17abe936ea62c3adf/image16.png" alt="CPU frequency changes at discrete increments." class="kg-image" width="1800" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mhdAzae9l9Ne6OIJ3AilO/3ce6c62ab6719f164a98e831461f2d74/image16.png" alt="CPU frequency changes at discrete increments." class="kg-image" width="1800" height="675" loading="lazy">
 
 	</figure>
 	<p>CPU frequency levels with discrete increments</p>
@@ -63,7 +63,7 @@
 	<p>To understand this, check out this figure again.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jaAOzM60czbPTnCp758fI/30c03a443c74e2ac441159b400a788a0/image4-27.png" alt="" class="kg-image" width="898" height="470" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jaAOzM60czbPTnCp758fI/440446a7197ef9ddd3f2a2d0dfb4513d/image4-27.png" alt="" class="kg-image" width="898" height="470" loading="lazy">
 
 	</figure>
 	<p>If the CPU only wants to protect itself from overheating, it can run at P-state 3.9 GHz safely. However, DVFS wants to maximize the CPU performance by utilizing all available power allowed by TDP. As a result, the CPU oscillates around the P-state 4.0 GHz. It is never far above or below. When at 4.1 GHz, it overloads itself a little, it then drops to a higher P-state. When at 3.9 GHz, it recovers itself, it quickly climbs to a lower P-state. It may not stay long in any P-state, which avoids overheating when at 4.1 GHz and keeps the average power consumption near the TDP.</p>
@@ -81,21 +81,21 @@
 	<p>First, the larger the number of bits set (also known as the <a href="https://en.wikipedia.org/wiki/Hamming_weight">Hamming weight</a>) in the operands, the more power an operation takes. The Hamming weight effect is widely observed with no known explanation of its root cause. For example,</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SGcJDL8vmsFY0qpnYBRWe/31171f05e19385925b15d70ab39ed987/image5-16.png" alt="hamming weight" class="kg-image" width="791" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SGcJDL8vmsFY0qpnYBRWe/8c8ec24dc5248a86478a3d7b68413677/image5-16.png" alt="hamming weight" class="kg-image" width="791" height="206" loading="lazy">
 
 	</figure>
 	<p>The addition on the left will consume more power compared to the one on the right.</p>
 	<p>Similarly, when registers change their value there are power variations due to transistor switching. For example, a register switching its value from A to B (as shown in the left) requires flipping only one bit because the <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</a> of A and B is 1. Meanwhile, switching from C to D will consume more energy to perform six bit transitions since the Hamming distance between C and D is 6.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eYZFPpLM2z5oFQc0LOCGO/3decd1e0f5cb4252db4c854e912f1de2/image3-33.png" alt="Hamming distance" class="kg-image" width="738" height="252" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eYZFPpLM2z5oFQc0LOCGO/972de3fb3622c97d79a9f3ccd5bb96e9/image3-33.png" alt="Hamming distance" class="kg-image" width="738" height="252" loading="lazy">
 
 	</figure>
 	<p>Hamming distance</p>
 	<p>Now we see where the vulnerability is! When running sustained workloads, CPU overall performance is capped by TDP. Under modern DVFS, it maximizes its performance by oscillating between multiple P-states. At the same time, the CPU power consumption is data-dependent. Inevitably, workloads with different power consumption will lead to different CPU P-state distribution. For example, if workload w1 consumes less power than workload w2, the CPU will stay longer in lower P-state (higher frequency) when running w1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rvo9VT0yhKQVwVZq2ngcS/29f47052e8859d842fac2c65e5acd555/image10-3.png" alt="Different P-state distribution with different workload power consumption" class="kg-image" width="600" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rvo9VT0yhKQVwVZq2ngcS/9db873879532c38906ee370645803df5/image10-3.png" alt="Different P-state distribution with different workload power consumption" class="kg-image" width="600" height="400" loading="lazy">
 
 	</figure>
 	<p>Different power consumption leads to different P-state distribution</p>
@@ -103,7 +103,7 @@
 	<p>Consider a program that takes five cycles to finish as depicted in the following figure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33ZYgaR34vUpsq9EmDP94V/6f7573807b86ad2b4889009ff4056838/image8-10.png" alt="Different frequency resulting in different running time with constant-cycle program" class="kg-image" width="957" height="538" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33ZYgaR34vUpsq9EmDP94V/6241baf615ff5ff4abf3e15af4e8ab72/image8-10.png" alt="Different frequency resulting in different running time with constant-cycle program" class="kg-image" width="957" height="538" loading="lazy">
 
 	</figure>
 	<p>CPU frequency directly translate to running time</p>
@@ -175,14 +175,14 @@
 	<p>To give you another concrete example: Suppose we have a sustained workload <code><i>Foo</i></code>. We know that <code><i>Foo</i></code> consumes more power with input <code><i>data 1</i></code><i>,</i> and less power with input <code><i>data 2</i></code>. As shown on the left in the figure below, if the power consumption of <i>Foo</i> is below the TDP, CPU frequency as well as running time stays the same regardless of the choice of input data. However, as shown in the middle, if we add a background stressor to the CPU, the combined power consumption will exceed TDP. Now we are in trouble. CPU overall performance is monitored by DVFS and capped by TDP. To prevent itself from overheating, it dynamically adjusts its P-state distribution when running workload with various power consumption. P-state distribution of <code><i>Foo(data 1)</i></code> will have a slight right shift compared to that of <code><i>Foo(data 2)</i></code>. As shown on the right, CPU running <code><i>Foo(data 1)</i></code> results in a lower overall frequency and longer running time. The observation here is that, if <code><i>data</i></code> is a binary secret, an attacker can infer <code><i>data</i></code> by simply measuring the running time of <code><i>Foo</i></code>!</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70UwC6lCoxxW6tGJ0jDXgt/4e587aab6b7743a90803cfc9c1251b78/image11-2.png" alt="Detailed explanation of Hertzbleed" class="kg-image" width="1105" height="536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70UwC6lCoxxW6tGJ0jDXgt/29d47d570eafce2f4f9f9c15ead70c3c/image11-2.png" alt="Detailed explanation of Hertzbleed" class="kg-image" width="1105" height="536" loading="lazy">
 
 	</figure>
 	<p>Complete recap of Hertzbleed. Figure taken from Intel’s <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/software-security-guidance/technical-documentation/frequency-throttling-side-channel-guidance.html">documentation</a>.</p>
 	<p>This observation is astonishing because it conflicts with our expectation of a CPU. We expect a CPU to take the same amount of time computing these two additions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tUqIgy4Ujj7ex8Jn2IaPb/68a463ae7dffece44a835e2884a2808c/image17-1.png" alt="" class="kg-image" width="768" height="209" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tUqIgy4Ujj7ex8Jn2IaPb/67989690678fe48374fb5a05cf5d28bc/image17-1.png" alt="" class="kg-image" width="768" height="209" loading="lazy">
 
 	</figure>
 	<p>However, Hertzbleed tells us that just like a person doing math on paper, <i>a CPU not only takes more power to compute more complicated numbers but also spends more time as well!</i> This is not what a CPU should do while performing a secure computation! Because anyone that measures the CPU execution time should not be able to infer the data being computed on.</p>
@@ -200,7 +200,7 @@
 	<p>The Supersingular Isogeny Key Encapsulation (<a href="https://sike.org">SIKE</a>) protocol is a Key Encapsulation Mechanism (KEM) finalist of the NIST Post-Quantum Cryptography competition (currently at Round 3). The building block operation of SIKE is the calculation of isogenies (transformations) between elliptic curves. You can find helpful information about the calculation of isogenies in our previous <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-tls">blog post</a>. In essence, calculating isogenies amounts to evaluating mathematical formulas that take as inputs points on an elliptic curve and produce other different points lying on a different elliptic curve.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GnJu9fPINA1O4TsbSgOeS/4d0ba3818e816d7494a76d67ee2669c1/image12-1.png" alt="Isogeny between elliptic curves." class="kg-image" width="848" height="327" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GnJu9fPINA1O4TsbSgOeS/10c1a952f195e80e9e4f2d4bada40b51/image12-1.png" alt="Isogeny between elliptic curves." class="kg-image" width="848" height="327" loading="lazy">
 
 	</figure>
 	<p>SIKE bases its security on the difficulty of computing a relationship between two elliptic curves. On the one hand, it’s easy computing this relation (called an <i>isogeny</i>) if the points that generate such isogeny (called <i>the kernel</i> of the isogeny) are known in advance. On the other hand, it’s difficult to know the isogeny given only two elliptic curves, but without knowledge of the kernel points. An attacker has no advantage if the number of possible kernel points to try is large enough to make the search infeasible (computationally intractable) even with the help of a quantum computer.</p>
@@ -211,7 +211,7 @@
 	<p>The formulas for point operations using Montgomery curves have some edge cases. More technically, a formula is said to be complete if for any valid input a valid output point is produced. Otherwise, a formula is not complete, meaning that there are some exceptional inputs for which it cannot produce a valid output point.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rU9vkaAs5EWFA8ab5h29J/9816193585159b79d206194a543d74b5/image6-14.png" alt="Elliptic curve formulas have some exceptional points." class="kg-image" width="848" height="329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rU9vkaAs5EWFA8ab5h29J/b95ebd086764b05e281fcc66708e76b7/image6-14.png" alt="Elliptic curve formulas have some exceptional points." class="kg-image" width="848" height="329" loading="lazy">
 
 	</figure>
 	<p>In practice, algorithms working with incomplete formulas must be designed in such a way that edge cases never occur. Otherwise, algorithms could trigger some undesired effects. Let’s take a closer look at what happens in this situation.</p>
@@ -227,7 +227,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bJS447Fs1QNCfQVXiw9zy/802453f535014546c177e61d1a35ced2/image15.png" alt="Domino-effect, domino pieces falling down." class="kg-image" width="1223" height="343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bJS447Fs1QNCfQVXiw9zy/d227e4cdb65234fc468297783477b6e5/image15.png" alt="Domino-effect, domino pieces falling down." class="kg-image" width="1223" height="343" loading="lazy">
 
 	</figure>
 	<p>Exploiting this subtlety of mathematical formulas makes a case for the Hertzbleed side-channel attack. In SIKE, whenever an edge case occurs at some point in the middle of its execution, it produces a domino effect that propagates the zero coordinates to subsequent computations, which means the whole algorithm is stuck on 0. As a result, the computation gets corrupted obtaining a zero at the end, but what is worse is that an attacker can use this domino effect to make guesses on the bits of secret keys.</p>
@@ -246,7 +246,7 @@
 	<p>SIKE uses special formulas to speed up operations, but if these formulas are forced to hit certain edge cases then they will fail. Failing due to these edge cases not only corrupts the computation, but also makes the formulas output coordinates with zeros, which in machine representation amount to several registers all loaded with zeros. If the computation continues without noticing the presence of these edge cases, then the processor registers will be stuck on 0 for the rest of the computation. Finally, at the hardware level, some instructions can consume fewer resources if operands are zeroed. Because of that, the DVFS behind CPU power consumption can modify the CPU frequency, which alters the steady-state frequency. The ultimate result is a program that runs faster or slower depending on whether it operates with all zeros versus with random-looking data.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yRdFcbomVv9zUyfKCrJuk/c6c243acd767b9baa931fa39f273fe02/image2-48.png" alt="Hertzbleed logo, a clock with a frequency signal." class="kg-image" width="1200" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yRdFcbomVv9zUyfKCrJuk/b45bad7e42dd9f50e8db1cc396cbcff7/image2-48.png" alt="Hertzbleed logo, a clock with a frequency signal." class="kg-image" width="1200" height="250" loading="lazy">
 
 	</figure>
 	<p>Hertzbleed’s authors contacted Cloudflare Research because they showed a successful attack on <a href="https://github.com/cloudflare/circl">CIRCL</a>, our optimized Go cryptographic library that includes SIKE. We worked closely with the authors to find potential mitigations in the early stages of their research. While the embargo of the disclosure was in effect, another research group including <a href="https://eprint.iacr.org/2022/054">De Feo et al.</a> independently described a systematic study of the possible failures of SIKE formulas, including the same attack found by the Hertzbleed team, and pointed to a proper countermeasure. Hertzbleed borrows such a countermeasure.</p>
@@ -261,7 +261,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18GNQhMYFfv81mfUYuM0zo/f6de66a21d2815dacc8ab52a15e7a77d/image13-1.png" alt="Stopping the domino effect." class="kg-image" width="1223" height="482" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18GNQhMYFfv81mfUYuM0zo/10f682905c67802a7c773491acef6aba/image13-1.png" alt="Stopping the domino effect." class="kg-image" width="1223" height="482" loading="lazy">
 
 	</figure>
 	<p>The immediate action specific for SIKE is to prevent edge cases from occurring in the first place. Most SIKE implementations provide a certain amount of leeway, assuming that inputs will not trigger exceptional cases. This is not a safe assumption. Instead, implementations should be hardened and should validate that inputs and keys are well-formed.</p>
@@ -270,7 +270,7 @@
 	<p>The countermeasure, originally proposed by <a href="https://eprint.iacr.org/2016/413">Costello, et al.</a>, consists of verifying whether the input points are of the right full-order. To do so, we check whether an input point vanishes only when multiplied by its expected order, and not before when multiplied by smaller scalars. By doing so, the hand-crafted invalid points will not pass this validation routine, which prevents edge cases from appearing during the algorithm execution. In practice, we observed around a 5-10% performance overhead on SIKE decapsulation. The <a href="https://github.com/cloudflare/circl/commit/10923e8d736009130170c06c1bdbd81bee4de56c">ciphertext validation</a> is already available in CIRCL as of version <a href="https://github.com/cloudflare/circl/releases/tag/v1.2.0">v1.2.0</a>. We strongly recommend updating your projects that depend on CIRCL to this version, so you can make sure that strict validation on SIKE is in place.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26b8CdTJXYhPhyjflDrQE4/cfc7b0be7e876da8dfd4971092d59171/image14-2.png" alt="" class="kg-image" width="1200" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26b8CdTJXYhPhyjflDrQE4/b9b8798f17533efff225532b0ff76cf2/image14-2.png" alt="" class="kg-image" width="1200" height="250" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

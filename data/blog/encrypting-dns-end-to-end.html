@@ -1,9 +1,9 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IDXPjNZkzmF3sJWhFXz5E/003c85532b50f5f6072a7c3846e16333/encrypting-dns-end-to-end.png" alt="">
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IDXPjNZkzmF3sJWhFXz5E/e6e8269e57067c825859bf4987989bb8/encrypting-dns-end-to-end.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the past few months, we have been <a href="https://code.fb.com/security/dns-over-tls">running a pilot with Facebook</a> to test the feasibility of securing the connection between 1.1.1.1 and Facebook’s authoritative name servers. Traditionally, the connection between a resolver and an authoritative name server is unencrypted i.e. over UDP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Aw0fH5ga1YAaBhsEsiRYP/960a5ad0e2658b2445a5eb973994dc7f/Code-Blog-Pilot-Post-1.png" alt="" class="kg-image" width="779" height="437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Aw0fH5ga1YAaBhsEsiRYP/76eee714955f8ec94c38de7e8b19893a/Code-Blog-Pilot-Post-1.png" alt="" class="kg-image" width="779" height="437" loading="lazy">
 
 	</figure>
 	<p>In this pilot we tested how an encrypted connection using TLS impacts the end-to-end latency between 1.1.1.1 and Facebook’s authoritative name servers. Even though the initial connection adds some latency, the overhead is amortized over many queries. The resulting DNS latency between 1.1.1.1 and Facebook’s authoritative name servers is on par with the average UDP connections.</p>

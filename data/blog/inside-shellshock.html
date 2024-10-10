@@ -1,16 +1,16 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KJYmql9e9J7bf7tHMJRh5/4f867358dda56f4dd77b1c0b8197595b/inside-shellshock.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KJYmql9e9J7bf7tHMJRh5/e6ff7458580659fd36447e6a356cf057/inside-shellshock.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On Wednesday of last week, details of the <a href="https://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a> bash bug emerged. This bug started a scramble to patch computers, servers, routers, firewalls, and other computing appliances using vulnerable versions of bash.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L3sgALNPL4lzR339hqcdb/9553cb40d33169e9da1865358d8c37f9/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6L3sgALNPL4lzR339hqcdb/568d1050760c355a07b8bee8ed491c4f/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
 
 	</figure>
 	<p>CloudFlare immediately rolled out <a href="https://blog.cloudflare.com/bash-vulnerability-cve-2014-6271-patched">protection for Pro, Business, and Enterprise customers</a> through our Web Application Firewall. On Sunday, after studying the extent of the problem, and looking at logs of attacks stopped by our WAF, we decided to roll out <a href="https://blog.cloudflare.com/shellshock-protection-enabled-for-all-customers">protection for our Free plan customers</a> as well.</p>
 	<p>Since then we've been monitoring attacks we've stopped in order to understand what they look like, and where they come from. Based on our observations, it's clear that hackers are exploiting Shellshock worldwide.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GuExiKPJg7xHj26otgdYi/884b14b0ecd5451c82597f75eba7cf83/287665619_2418591122_z.jpg" alt="" class="kg-image" width="640" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GuExiKPJg7xHj26otgdYi/818d955c560bd8831d5edd7a07fdd51d/287665619_2418591122_z.jpg" alt="" class="kg-image" width="640" height="452" loading="lazy">
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/aussiegall">aussiegall</a>)</p>
@@ -76,7 +76,7 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>This chart shows the number of attacks per second across the CloudFlare network since rolling out protection for all customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lNLTw4OkPvCuli6C26Jht/8f010cf307bcf3cfcf9bf26ade63a74c/Screen-Shot-2014-09-30-at-8-56-33.png" alt="" class="kg-image" width="2136" height="906" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lNLTw4OkPvCuli6C26Jht/94cc58bd2c0b0d0737f6daf43e56852d/Screen-Shot-2014-09-30-at-8-56-33.png" alt="" class="kg-image" width="2136" height="906" loading="lazy">
 
 	</figure>
 	<p>From the moment CloudFlare turned on our Shellshock protection up until early this morning, we were seeing 10 to 15 attacks per second. In order of attack volume, these requests were coming from France (80%), US (7%), Netherlands (7%), and then smaller volumes from many other countries.</p>
@@ -102,7 +102,7 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>At their leisure, the attacker can log into their email and find out which sites were vulnerable. The same email technique can be used to extract data like the password file.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52ocewvPYryPE5fI5rAsLQ/28b3796bcfbd33593cda53cdc00fb18d/7439564750_b9ca34855c_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52ocewvPYryPE5fI5rAsLQ/dedad0888539c70401cb707d10e9205c/7439564750_b9ca34855c_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a>)</p>
@@ -121,7 +121,7 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>The <code>ping</code> command is normally used to test whether a machine is “alive” or online (an alive machine responds with its own ping). If a web server is vulnerable to Shellshock then it will send a single ping packet (the <code>-c 1</code>) to attacker-machine.com with a payload set by the <code>-p</code>. The payload is a unique ID created by the attacker so they can trace the ping back to the vulnerable web site.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mNsjINkqc8mE1B3zc22oU/24e9ce2277ad1910685e09bdbc1815a0/illustration-bash-blog.png" alt="" class="kg-image" width="1800" height="735" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2mNsjINkqc8mE1B3zc22oU/90e21a3ae6c6bc59c136afbd507d1c56/illustration-bash-blog.png" alt="" class="kg-image" width="1800" height="735" loading="lazy">
 
 	</figure>
 	<p>Another technique being used to identify vulnerable servers is to make the web server download a web page from an attacker-controlled machine. The attacker can then look in their web server logs to find out which machine was vulnerable. This attack works by sending a Shellshock string like:</p>
@@ -144,7 +144,7 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>This is perhaps the simplest denial-of-service of all. The attackers simply tells the machine to sleep for a while. Send enough of those commands, and the machine could be tied up doing nothing and unable to service legitimate requests.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17Zh1JXPfZfNKPfYkhiRN2/6a97b0c5bcc16e8ac10585274dacb2d5/3894184210_47762c00a9_z.jpg" alt="" class="kg-image" width="640" height="425" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17Zh1JXPfZfNKPfYkhiRN2/14e516b8408634b4584df62e2153da3a/3894184210_47762c00a9_z.jpg" alt="" class="kg-image" width="640" height="425" loading="lazy">
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/petercastleton">peter castleton</a>)</p>
@@ -164,7 +164,7 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>The <code>cl.py</code> program downloaded is made to look like an update to the ClamAV antivirus program. After a delay of 5 seconds, the attack cleans up after itself by removing the downloaded file (leaving it running only in memory).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ikGFv90UzO7oo38QMIywN/fc63f9d8e94d290de2cd86fae0e92f70/6933311011_3b385e28c8_o.jpg" alt="" class="kg-image" width="600" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ikGFv90UzO7oo38QMIywN/b36ee7e1656b75b73172cdfd5c19ab0b/6933311011_3b385e28c8_o.jpg" alt="" class="kg-image" width="600" height="452" loading="lazy">
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/custom-painting-studio">Jeff Taylor</a>)</p>
@@ -181,7 +181,7 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>It appears that 23% of the attacks are directed against the <a href="http://cpanel.net">cPanel</a> web hosting control software, 15% against old Apache installations, and 15% against the <a href="https://www.barracuda.com">Barracuda</a> hardware products which have a web-based interface.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/486boXqbgwzEOIjozq8rKI/123b722fd5d8340681ad7c6f38bad89f/cpanel.png" alt="" class="kg-image" width="1944" height="778" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/486boXqbgwzEOIjozq8rKI/8ba80c35b52a63122d1bcf134d3932a2/cpanel.png" alt="" class="kg-image" width="1944" height="778" loading="lazy">
 
 	</figure>
 	<p>The latter is interesting because it highlights the fact that Shellshock isn't just an attack on web sites: it's an attack on anything that's running bash and accessible across the Internet. That could include hardware devices, set-top boxes, laptop computers, even, perhaps, telephones.</p>

@@ -1,7 +1,7 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pBDoI1dESTWbQFz0Vcsa6/f368e79e4470509c3c73837fc69d3ae2/Birthday-Week-OG-images_WordPress_Optimization.png" alt="Birthday-Week-OG-images WordPress Optimization" class="kg-image" width="3334" height="1668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pBDoI1dESTWbQFz0Vcsa6/76dfc80f250f0dec6cfd442c2a0dae7d/Birthday-Week-OG-images_WordPress_Optimization.png" alt="Birthday-Week-OG-images WordPress Optimization" class="kg-image" width="3334" height="1668" loading="lazy">
 	</figure>
 	<p>Today, we are announcing a new service to serve more than just the static content of your website with the <a href="https://www.cloudflare.com/application-services/products/automatic-platform-optimization">Automatic Platform Optimization (APO)</a> service. With this launch, we are supporting WordPress, the most popular website hosting solution serving 38% of all websites. Our testing, as detailed below, showed a 72% reduction in Time to First Byte (TTFB), 23% reduction to <a href="https://web.dev/fcp">First Contentful Paint</a>, and 13% reduction in <a href="https://web.dev/speed-index">Speed Index</a> for desktop users at the 90th percentile, by serving nearly all of your website’s content from Cloudflare’s network. This means visitors to your website see not only the first content sooner but all content more quickly.</p>
 	<p>With Automatic Platform Optimization for WordPress, your customers won’t suffer any slowness caused by common issues like shared hosting congestion, slow database lookups, or misbehaving plugins. This service is now available for anyone using WordPress.</p>
@@ -49,7 +49,7 @@
 	</div>
 	<p>Evaluating performance of a website is difficult. There are many different metrics you can track and it is not always obvious which metrics most meaningfully represent a user’s experience. As discussed when we <a href="https://blog.cloudflare.com/new-speed-page">blogged</a> about our new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed">Speed page</a>, we aim to simplify this for customers by automating tests using the infrastructure of webpagetest.org, and summarizing both the results visually and numerically in one place.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NWhWuNJ3uph9V9GZVw1aW/5e299709771ebcfa00aef2dc84bfd037/image4-2.png" alt="image4-2" class="kg-image" width="996" height="853" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NWhWuNJ3uph9V9GZVw1aW/be579629678a74e01792f6c6c6f56330/image4-2.png" alt="image4-2" class="kg-image" width="996" height="853" loading="lazy">
 	</figure>
 	<p>The visualization gives you a clear idea of what customers are going to see when they come to your site, and the <i>Critical Loading Times</i> provide the most important metrics to judge your performance. On top of seeing your site’s performance, we provide a list of recommendations for ways to even further increase your performance. If you are using WordPress, then we will test your site with Automatic Platform Optimizations to estimate the benefit you will get with the service.</p>
 	<div class="flex anchor relative">
@@ -219,7 +219,7 @@
 	</blockquote>
 	<p>Brian’s test results are summarized in this image:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gDzHYWY75hKTwwHOoi6Xz/bd3cbca753851b306a22cd48a7e42096/image1-7.png" alt="image1-7" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gDzHYWY75hKTwwHOoi6Xz/17e3e423683f032d12d22407bccf74a2/image1-7.png" alt="image1-7" class="kg-image" width="1920" height="1080" loading="lazy">
 	</figure>
 	<p><sub>Page Load Speeds for loading a website hosted in Tokyo from 6 locations worldwide - comparing Kinsta, Kinsta with KeyCDN, and Kinsta with Cloudflare APO.</sub></p>
 	<p>One of the clear benefits, from Kinsta’s testing of APO, is the consistency of performance for serving your site no matter where your visitors are in the world. The consistent sub-second performance shown with APO versus two or three second load times in other setups makes it clear that if you have a global customer base, APO delivers an improved experience for all visitors.</p>
@@ -233,12 +233,12 @@
 	</div>
 	<p>Automatic Platform Optimization is the result of being able to use the power of <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a> to intelligently cache dynamic content. By caching dynamic content, we can serve the entire website from our edge network. Think ‘static site’ but without any of the work of having to build or maintain a static site. Customers can keep managing and updating content on their website in the same way and leave the hard work for performance to us. Serving both static and dynamic content from our network results, generally, in no origin requests or origin processing time. This means all the communication occurs between the user’s device and our edge. Reducing the multitude of round trips typically required from our edge to the origin for dynamic content is what makes this service so effective. Let’s first see what it normally looks like to load a WordPress site for a visitor.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nNaWWkM0X15Pp0jwnO0Hc/c23a0a3a95a12f1622f5f7dc32fdae58/image3-3.png" alt="image3-3" class="kg-image" width="1466" height="1222" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nNaWWkM0X15Pp0jwnO0Hc/3c3b17b0325638bdb93e844654f2b92b/image3-3.png" alt="image3-3" class="kg-image" width="1466" height="1222" loading="lazy">
 	</figure>
 	<p><sub>A sequence diagram for a typical user visiting a site‌‌</sub></p>
 	<p>In a regular request flow, Cloudflare is able to cache some of the content like images, CSS, or JS, while other requests go to either the origin or a third party service in order to fetch the content. Most importantly the first request to fetch the HTML for the site needs to go to the origin which is a typical cause of long TTFB, since no other requests get made until the client can receive the HTML and parse it to make subsequent requests.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rbLsPASTNRFCNN5E1ySpm/d66b03cc7adc4188fde6c8be80bdcd9c/image2-2.png" alt="image2-2" class="kg-image" width="1454" height="1214" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rbLsPASTNRFCNN5E1ySpm/edc2cc24486bc03730ebf0980654c834/image2-2.png" alt="image2-2" class="kg-image" width="1454" height="1214" loading="lazy">
 	</figure>
 	<p><sub>The same site visit but with APO enabled.</sub></p>
 	<p>Once APO is enabled, all those trips to the origin are removed. TTFB benefits greatly because the first hop starts and ends at Cloudflare’s network. This also means the browser starts working on fetching and painting the webpage sooner meaning each paint event occurs earlier. Last by caching third party fonts, we remove additional requests that would need to leave Cloudflare’s network and extend the time to display text to the user. Often, websites use fonts hosted on third-party domains. While this saves bandwidth costs that would be incurred from hosting it on the origin, depending on where those fonts are hosted, it can still be a costly operation to fetch them. By rehosting the fonts and serving them from our cache, we can reduce one of the remaining costly round trips.</p>

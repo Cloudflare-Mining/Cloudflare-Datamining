@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LK9kez9THVLuJRXJ6R1EE/91170c506ae1067ec941e972cb1ffdb6/image4-15.png" alt="CIRCL logo" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LK9kez9THVLuJRXJ6R1EE/284b4abed1e42769036086a6012f8500/image4-15.png" alt="CIRCL logo" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>In 2019, we announced the release of <a href="https://github.com/cloudflare/circl">CIRCL</a>, an open-source cryptographic library written in Go that provides optimized implementations of several primitives for key exchange and digital signatures. We are pleased to announce a major update of our library: we have included more packages for elliptic curve-based cryptography (ECC), pairing-based cryptography, and quantum-resistant algorithms.</p>
@@ -25,7 +25,7 @@
 	<p>Pairing is defined as &nbsp;$$ e \colon\; \mathbb{G}_1 \times \mathbb{G}_2 \rightarrow \mathbb{G}_T $$Groups \(\mathbb{G}_1\) and \(\mathbb{G}_2\) contain points of an elliptic curve \(E\). More specifically, they are the \(r\)-torsion points, for a fixed prime \(r\). Some pairing instances fix \(\mathbb{G}_1=\mathbb{G}_2\), but it is common to use disjoint sets for efficiency reasons. The third group \(\mathbb{G}_T\) has notable differences. First, it is written multiplicatively, unlike the other two groups. \(\mathbb{G}_T\) is not the set of points on an elliptic curve. It’s instead a subgroup of the multiplicative group over some larger finite field. It contains the elements that satisfy \(x^r=1\), better known as the \(r\)-roots of unity.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nmjAHa9jrnE1lnmilM8rR/92bd7ff7f34a0dc0191ee875f24b9015/2ai5WUAviNg3iAxw9x-IMAv3mVWnrMrDOgvJEIHsKqqNNn3OzQdeDJd6kMo578rqUTqoCPdQcFz6rcrTiXlyfdxL_iDLQ9v6zvswJiz5ini3lLgSMfHbFIpIEwS7.png" alt="Image of a pairing acting on points." class="kg-image" width="909" height="378" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nmjAHa9jrnE1lnmilM8rR/f0c5e06aaadf4fbd276a970e5426eaef/2ai5WUAviNg3iAxw9x-IMAv3mVWnrMrDOgvJEIHsKqqNNn3OzQdeDJd6kMo578rqUTqoCPdQcFz6rcrTiXlyfdxL_iDLQ9v6zvswJiz5ini3lLgSMfHbFIpIEwS7.png" alt="Image of a pairing acting on points." class="kg-image" width="909" height="378" loading="lazy">
 
 	</figure>
 	<p>Source: “<i>Pairings are not dead, just resting</i>” by Diego Aranha <a href="https://ecc2017.cs.ru.nl/slides/ecc2017-aranha.pdf">ECC-2017</a> (inspired by Avanzi’s talk at <a href="https://www.hyperelliptic.org/SPEED/slides09/avanzi.pdf">SPEED-2009</a>).</p>
@@ -59,13 +59,13 @@
 	<p>Let’s see first how a three-party Diffie-Hellman is done without pairings. Alice, Bob and Charlie want to agree on a shared key, so they compute, respectively, \(aP\), \(bP\) and \(cP\) for a public point P. Then, they send to each other the points they computed. So Alice receives \(cP\) from Charlie and sends \(aP\) to Bob, who can then send \(baP\) to Charlie and get \(acP\) from Alice and so on. After all this is done, they can all compute \(k=abcP\). Can this be performed in a single round trip?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pGrpJQPbIktFdaxQz81fd/07f597903d2faf67bcb9c9a1b3c5444b/vnfAPEoM5vefRaP6wysBktjTyxvh4sxXzYY3HUz3ErengPo01exd3LDLZ38SQi_lYTKoJZQEPuvGYaLBE7Kg7ExNErj8Yu5k06klm8cQoXdwgtOZkDR3umqZWa6o.png" alt="Two round Diffie-Hellman without pairings." class="kg-image" width="538" height="621" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pGrpJQPbIktFdaxQz81fd/a0bcccab1b5efa958bb221de5a220f43/vnfAPEoM5vefRaP6wysBktjTyxvh4sxXzYY3HUz3ErengPo01exd3LDLZ38SQi_lYTKoJZQEPuvGYaLBE7Kg7ExNErj8Yu5k06klm8cQoXdwgtOZkDR3umqZWa6o.png" alt="Two round Diffie-Hellman without pairings." class="kg-image" width="538" height="621" loading="lazy">
 
 	</figure>
 	<p>Two round Diffie-Hellman without pairings.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hIYImdhvrm8dbikA9HnOv/b4cb559cde4ea95bb86a8ec7c13a6dac/n8lyvbn43kHVis2z6mlUO5Msq5jVy2OixIA1xoZ9H3S0XZIczsdmnipD71gvvRDF6hZG10EWY0V803za-sihFWFMf32EF_0rRAlaA_zVXivOv0zYH1KOeMW4qZun.png" alt="One round Diffie-Hellman with pairings." class="kg-image" width="562" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hIYImdhvrm8dbikA9HnOv/9b5970d153b0c0146f844b310330609e/n8lyvbn43kHVis2z6mlUO5Msq5jVy2OixIA1xoZ9H3S0XZIczsdmnipD71gvvRDF6hZG10EWY0V803za-sihFWFMf32EF_0rRAlaA_zVXivOv0zYH1KOeMW4qZun.png" alt="One round Diffie-Hellman with pairings." class="kg-image" width="562" height="550" loading="lazy">
 
 	</figure>
 	<p>One round Diffie-Hellman with pairings.</p>
@@ -92,7 +92,7 @@
 	<p>Until now our constructions have worked for any curve. &nbsp;Elliptic curves have a special property: since a line intersects the curve in three points, it’s always possible to turn an element of the Jacobian into one of the form \((P)-(O)\) for a point \(P\). This is where the addition law of elliptic curves comes from.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eisQYqRXhDNLTdMbiFZRO/5632042cccb6348e1859b36d1c42e369/DZUPeC6dl9fx4W7ggusFvWzN6-zjcQAroZZAcu2BsDWuhOd1j9_YjfjyCpCI2jOwLi9IoCDgKSNEyb4Zc3q7cp5wVM6_gyNMBDHfttqQ_cTxedlMzBLS8EOb2miG.png" alt="Intersection of an elliptic curve and a line." class="kg-image" width="1360" height="412" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eisQYqRXhDNLTdMbiFZRO/0db5b48f5cd06ea377cd944c5120036a/DZUPeC6dl9fx4W7ggusFvWzN6-zjcQAroZZAcu2BsDWuhOd1j9_YjfjyCpCI2jOwLi9IoCDgKSNEyb4Zc3q7cp5wVM6_gyNMBDHfttqQ_cTxedlMzBLS8EOb2miG.png" alt="Intersection of an elliptic curve and a line." class="kg-image" width="1360" height="412" loading="lazy">
 
 	</figure>
 	<p>The relation between addition on an elliptic curve and the geometry of the curve. Source file <a href="https://commons.wikimedia.org/wiki/File:ECClines.svg">ECClines.svg</a></p>

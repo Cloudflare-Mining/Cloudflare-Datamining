@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dvlQFaxrLQVZe9a4xrJHW/e77f7770a31117cb336f147b299c07f6/sad-dns-explained.png" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dvlQFaxrLQVZe9a4xrJHW/39692b495f7bf8cbd3739a20cc20b2ac/sad-dns-explained.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>This week, at the <a href="https://www.sigsac.org/ccs/CCS2020/conference-program.html">ACM CCS 2020 conference</a>, researchers from UC Riverside and Tsinghua University announced a new attack against the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a> called <a href="https://www.saddns.net">SAD DNS</a> (Side channel AttackeD DNS). This attack leverages recent features of the networking stack in modern operating systems (like Linux) to allow attackers to revive a classic attack category: DNS cache poisoning. As part of a coordinated disclosure effort earlier this year, the researchers contacted Cloudflare and other major DNS providers and we are happy to announce that 1.1.1.1 Public Resolver is no longer vulnerable to this attack.</p>
 	<p>In this post, we’ll explain what the vulnerability was, how it relates to previous attacks of this sort, what mitigation measures we have taken to protect our users, and future directions the industry should consider to prevent this class of attacks from being a problem in the future.</p>
@@ -24,7 +24,7 @@
 	<p>Still, the most common transport protocol for message exchange is UDP, which has the advantages of being fast, ubiquitous and requiring no setup. Because UDP is stateless, the pairing of a response to an outstanding query is based on two main factors: the source address and port pair, and information in the DNS message. Given that UDP is both stateless and unauthenticated, anyone, and not just the recipient, can send a response with a forged source address and port, which opens up a range of potential problems.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dCFbp5FSjzJUvxRtOx371/633b4ef98843ba4954fc3999cd148e65/image4-6.png" alt="" class="kg-image" width="1186" height="972" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dCFbp5FSjzJUvxRtOx371/3905b3efe9706c5044b5399aacca28d8/image4-6.png" alt="" class="kg-image" width="1186" height="972" loading="lazy">
 
 	</figure>
 	<p>The blue portions contribute randomness</p>
@@ -52,7 +52,7 @@
 	<p>For popular domains, resolvers contact authoritative servers once per TTL (which can be as short as 5 minutes), so there are plenty of opportunities to mount this attack. Forwarders that cache DNS responses are also vulnerable to this type of attack.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UE6h36FxkzSRIJlh4HQj4/5b77d30177443bbfa55dc1ed2da2e7d0/image3-4.png" alt="" class="kg-image" width="1999" height="709" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UE6h36FxkzSRIJlh4HQj4/843403c141ee61cf047365a9b8e7a0f5/image3-4.png" alt="" class="kg-image" width="1999" height="709" loading="lazy">
 
 	</figure>
 	<p>In response to this attack, DNS resolvers started doing source port randomization and careful checking of the security ranking of cached data. To poison these updated resolvers, forged responses would not only need to guess the message ID, but they would also have to guess the source port, bringing the number of guesses from the tens of thousands to over a billion. This made the attack effectively infeasible. Furthermore, the IETF published <a href="https://tools.ietf.org/html/rfc5452">RFC 5452</a> on how to harden DNS from guessing attacks.</p>
@@ -69,13 +69,13 @@
 	<p>The key to this attack is the fact that all the randomness that needs to be guessed in a DNS poisoning attack is concentrated at the beginning of the DNS message (UDP header and DNS header).If the UDP response packet (sometimes called a datagram) is split into two fragments, the first half containing the message ID and source port and the second containing part of the DNS response, then all an attacker needs to do is forge the second fragment and make sure that the fake second fragment arrives at the resolver before the true second fragment does. When a datagram is fragmented, each fragment is assigned a 16-bit IDs (called IP-ID), which is used to reassemble it at the other end of the connection. Since the second fragment only has the IP-ID as entropy (again, this is a familiar refrain in this area), this attack is feasible with a relatively small number of forged packets. The downside of this attack is the precondition that the response must be fragmented in the first place, and the fragment must be carefully altered to pass the original section counts and UDP checksum.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HX4qrdRButwYt5dYR5wum/302a4d8ae5bb66ee8dcb6adfaeef1efd/image5-1.png" alt="" class="kg-image" width="1999" height="1261" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HX4qrdRButwYt5dYR5wum/3d6b5054b4d782279417484a12553bda/image5-1.png" alt="" class="kg-image" width="1999" height="1261" loading="lazy">
 
 	</figure>
 	<p>Also discussed in the original and <a href="https://pki.cad.sit.fraunhofer.de/media/doc-CCS2018.pdf">follow-up papers</a> is a method of forcing two remote servers to send packets between each other which are fragmented at an attacker-controlled point, making this attack much more feasible. The details are in the paper, but it boils down to the fact that the control mechanism for describing the maximum transmissible unit (MTU) between two servers -- which determines at which point packets are fragmented -- can be set via a forged UDP packet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/21fbVKVHIVx78Vr9H0kIo3/0a44792fe8839d7afa599aff5e4b4958/image1-8.png" alt="" class="kg-image" width="1999" height="1899" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21fbVKVHIVx78Vr9H0kIo3/1b9012b11ef9a6bb39920b2429dba302/image1-8.png" alt="" class="kg-image" width="1999" height="1899" loading="lazy">
 
 	</figure>
 	<p>We explored this risk in a previous blog post in the context of certificate issuance last year when we introduced our <a href="https://blog.cloudflare.com/secure-certificate-issuance">multi-path DCV service</a>, which mitigates this risk in the context of certificate issuance by making DNS queries from multiple vantage points. Nevertheless, fragmentation-based attacks are proving less and less effective as DNS providers move to eliminate support for fragmented DNS packets (one of the major goals of <a href="https://dnsflagday.net/2020">DNS Flag Day 2020</a>).</p>
@@ -98,7 +98,7 @@
 	<p>An attacker wants to know whether the target has an open port, so it sends a spoofed UDP message from the authoritative server to that port. If the port is open, no ICMP reply is sent and the rate counter remains unchanged. If the port is inaccessible, then an ICMP reply is sent (back to the authoritative server, not to the attacker) and the rate is increased by one. Although the attacker doesn’t see the ICMP response, it has influenced the counter. The counter itself isn’t known outside the server, but whether it has hit the rate limit or not <i>can</i> be measured by any outside observer by sending a UDP packet and waiting for a reply. If an ICMP “port unreachable” reply comes back, the rate limit hasn’t been reached. No reply means the rate limit has been met. This leaks one bit of information about the counter to the outside observer, which in the end is enough to reveal the supposedly secret information (whether the spoofed request got through or not).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VZjJoJhfSuFB0QjVY74Xz/b9462385b2b51e915ad92d4497db32c6/image2-7.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4VZjJoJhfSuFB0QjVY74Xz/25462293f51df83350c36c5fe6090fa3/image2-7.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
 
 	</figure>
 	<p>Diagram inspired by <a href="https://www.sigsac.org/ccs/CCS2020/conference-program.html">original paper</a>‌‌</p>

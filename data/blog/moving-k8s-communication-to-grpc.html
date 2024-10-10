@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2S1Sgp1RE5mlT3UI7j9jwo/5f9fb2247cf2512774dec821addcf945/Group-1.png" alt="Moving k8s communication to gRPC" class="kg-image" width="1571" height="839" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2S1Sgp1RE5mlT3UI7j9jwo/9e14c93e386e7916e2da73aa299d75a4/Group-1.png" alt="Moving k8s communication to gRPC" class="kg-image" width="1571" height="839" loading="lazy">
 
 	</figure>
 	<p>Over the past year and a half, Cloudflare has been hard at work moving our back-end services running in our non-edge locations from bare metal solutions and Mesos Marathon to a more unified approach using <a href="https://kubernetes.io">Kubernetes(K8s)</a>. We chose Kubernetes because it allowed us to split up our monolithic application into many different microservices with granular control of communication.</p>
@@ -10,7 +10,7 @@
 	<p>The diagram below shows a simple example of this setup.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33zWCqFZw2iuXfhllsHgdk/ffcce05554b4d5d483db86e0664ae967/2-3.png" alt="The diagram below shows a simple example of this setup." class="kg-image" width="1248" height="1198" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33zWCqFZw2iuXfhllsHgdk/e290742e17a975a98a195bccc283297f/2-3.png" alt="The diagram below shows a simple example of this setup." class="kg-image" width="1248" height="1198" loading="lazy">
 
 	</figure>
 	<p>Though Kubernetes does an excellent job at providing the tools for communication and traffic management, it does not help the developer decide the best way to communicate between the applications running on the pods. Throughout this blog we will look at some of the decisions we made and why we made them to discuss the pros and cons of two commonly used API architectures, REST and gRPC.</p>
@@ -25,7 +25,7 @@
 	<p>When the DNS team first moved to Kubernetes, all of our pod-to-pod communication was done through REST APIs and in many cases also included Kafka. The general communication flow was as follows:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GQIkngkqEYcBJNFzv1xNU/d6fed9f2dd5109348fbf0a4218777280/1-5.png" alt="When the DNS team first moved to Kubernetes, all of our pod-to-pod communication was done through REST APIs and in many cases also included Kafka. " class="kg-image" width="1248" height="506" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GQIkngkqEYcBJNFzv1xNU/fe13bc8911a11a9c26dc5925b4fe6a19/1-5.png" alt="When the DNS team first moved to Kubernetes, all of our pod-to-pod communication was done through REST APIs and in many cases also included Kafka. " class="kg-image" width="1248" height="506" loading="lazy">
 
 	</figure>
 	<p>We use Kafka because it allows us to handle large spikes in volume without losing information. For example, during a Secondary DNS Zone zone transfer, Service A tells Service B that the zone is ready to be published to the edge. Service B then calls Service A’s REST API, generates the zone, and pushes it to the edge. If you want more information about how this works, I wrote an entire blog post about the <a href="https://blog.cloudflare.com/secondary-dns-deep-dive">Secondary DNS pipeline</a> at Cloudflare.</p>
@@ -111,14 +111,14 @@ client.SayHello(context.Background(), &amp;pb.Hello{Name: "alex"})</code></pre>
 	<p>HTTP REST APIs generally use JSON for their request and response format. Protobuf is the native request/response format of gRPC because it has a standard schema agreed upon by the client and server during registration. In addition, protobuf is known to be significantly faster than JSON due to its serialization speeds. I’ve run some benchmarks on my laptop, source code can be found <a href="https://github.com/Fattouche/protobuf-benchmark">here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23TkQ80Iruo8IYflqIuobN/76abd2899ae35830f882cef7c8a72ae3/image1-26.png" alt="Protobuf performs better in small, medium, and large data sizes." class="kg-image" width="1999" height="875" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23TkQ80Iruo8IYflqIuobN/f7323dd5817ca47f9b203b8b63a3a980/image1-26.png" alt="Protobuf performs better in small, medium, and large data sizes." class="kg-image" width="1999" height="875" loading="lazy">
 
 	</figure>
 	<p>As you can see, protobuf performs better in small, medium, and large data sizes. It is faster per operation, smaller after marshalling, and scales well with input size. This becomes even more noticeable when unmarshaling very large data sets. Protobuf takes 96.4ns/op but JSON takes 22647ns/op, a 235X reduction in time! For large DNS zones, this efficiency makes a massive difference in the time it takes us to go from record change in our API to serving it at the edge.</p>
 	<p>Combining the benefits of HTTP/2 and protobuf showed almost no performance change from our application’s point of view. This is likely due to the fact that our pods were already so close together that our connection times were already very low. In addition, most of our gRPC calls are done with small amounts of data where the difference is negligible. One thing that we did notice <b>—</b> likely related to the multiplexing of HTTP/2 <b>—</b> was greater efficiency when writing newly created/edited/deleted records to the edge. Our latency spikes dropped in both amplitude and frequency.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PDR6bZkh8zzVVv2j6tmE5/38c7b40766ad5de98483923e0f02e7c6/image2-19.png" alt="Our latency spikes dropped in both amplitude and frequency." class="kg-image" width="1418" height="434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PDR6bZkh8zzVVv2j6tmE5/9ce516e00daa832135964246eaf7b95c/image2-19.png" alt="Our latency spikes dropped in both amplitude and frequency." class="kg-image" width="1418" height="434" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

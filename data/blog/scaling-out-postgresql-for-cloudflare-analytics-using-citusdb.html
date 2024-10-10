@@ -1,9 +1,9 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6r6fBeXogS3L4yGGCL1sev/fe83f144312d931cccc57d04fb849de4/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6r6fBeXogS3L4yGGCL1sev/47d56cf330ac4a09d17da37fd4d70c14/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When I joined CloudFlare about 18 months ago, we had just started to build out our new Data Platform. At that point, the log processing and analytics pipeline built in the early days of the company had reached its limits. This was due to the rapidly increasing log volume from our Edge Platform where we’ve had to deal with traffic growth in excess of 400% annually.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AxkHPDBZrwj6QJQVWuQcX/1ef91135ed7f8f2ff1569024f9b389af/keepcalm_scaled.png" alt="alt" class="kg-image" width="449" height="523" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AxkHPDBZrwj6QJQVWuQcX/fec02af530de1ab2f8a1f516ece59057/keepcalm_scaled.png" alt="alt" class="kg-image" width="449" height="523" loading="lazy">
 
 	</figure>
 	<p>Our log processing pipeline started out like most everybody else’s: compressed log files shipped to a central location for aggregation by a motley collection of Perl scripts and C++ programs with a single PostgreSQL instance to store the aggregated data. Since then, CloudFlare has grown to serve millions of requests per second for millions of sites. Apart from the hundreds of terabytes of log data that has to be aggregated every day, we also face some unique challenges in providing detailed analytics for each of the millions of sites on CloudFlare.</p>
@@ -13,7 +13,7 @@
 	<p>Before jumping into the details of our database backend, let’s review the pipeline that takes a log event from CloudFlare’s Edge to our analytics database.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4I3yKJFMKyL4M3gtS2SlTy/fa46c99622dcfb0beb0195e242709d30/image01.png" alt="alt" class="kg-image" width="1273" height="1494" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I3yKJFMKyL4M3gtS2SlTy/b34a4a58d3da74e788950e6af1699582/image01.png" alt="alt" class="kg-image" width="1273" height="1494" loading="lazy">
 
 	</figure>
 	<p>An HTTP access log event proceeds through the CloudFlare data pipeline as follows:</p>
@@ -80,7 +80,7 @@
 	<h4>CitusDB Architecture</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74Tl2hP3Tfk1HNzpF1MV4i/80d01164c0be89b9f7cd7a06c0f62901/image00.png" alt="alt" class="kg-image" width="1271" height="1517" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74Tl2hP3Tfk1HNzpF1MV4i/121b31b62700289180653b647a653edb/image00.png" alt="alt" class="kg-image" width="1271" height="1517" loading="lazy">
 
 	</figure>
 	<p>CitusDB follows an architecture similar to Hadoop to scale out Postgres: one primary node holds authoritative metadata about shards in the cluster and parallelizes incoming queries. The worker nodes then do all the actual work of running the queries.</p>

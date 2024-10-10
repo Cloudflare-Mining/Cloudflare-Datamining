@@ -1,10 +1,10 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tSRqtIaVy2BR68lNgXRj1/8827c46cd7868f34fea07bd0b2336ea0/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tSRqtIaVy2BR68lNgXRj1/f3a9f4e8ac7475b3156253216fccf420/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over the last few weeks we've seen DDoS attacks hitting our systems that show that attackers have switched to new, large methods of bringing down web applications. They appear to come from an IoT botnet (like Mirai and relations) which were responsible for the <a href="http://uk.businessinsider.com/akamai-brian-krebs-ddos-attack-2016-9">large attacks against Brian Krebs</a>.</p>
 	<p>Our automatic DDoS mitigation systems have been handling these attacks, but we thought it would be interesting to publish some of the details of what we are seeing. In this article we'll share data on two attacks, which are perfect examples of the new trends in DDoS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7koNzfrpuLEAvqVIkrBYOm/f69f2287685962e6e43e8f85d57ac896/4766316315_48242afc03_b.jpg" alt="" class="kg-image" width="1024" height="736" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7koNzfrpuLEAvqVIkrBYOm/b1588f531747efc4e28ac5d095c9744d/4766316315_48242afc03_b.jpg" alt="" class="kg-image" width="1024" height="736" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/maderik/4766316315/in/photolist-8gbBMv-7HnuE5-8BjP3g-rbsb76-6j3F2b-6j3F2L-4P4uCw-pkG9KA-doPM2q-omvaV-pkGoDz-D1Nbt-qveZtC-bHAKgz-bHBSLv-buH773-bmdm7S-myGet-u1jWDt-hfLE98-7HiziR-7JfdZn-tkVTSV-tkKHvo-tkKLbo-8BnVdE-jkvs-7Hizc6-bHBSJT-qdKGZf-o6HNXo-rbiiWD-7Hiz7x-8vmyNs-8BnVib-vSMrhj-8BnVqJ-8J36Hc-fh4LmT-et7dSA-8J6efA-7os11Z-6N6KyX-brDjkd-9nfCDq-ipefs1-cpVwkE-a6bS7t-b4JLhe-a8WfQr">image</a> by <a href="https://www.flickr.com/photos/maderik">E Magnuson</a></p>
@@ -24,7 +24,7 @@
 	<p>Recently we were hit by a couple of unusually large L7 attacks, crossing 1 million HTTP requests per second (1 Mrps). Here is one of them:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/exwpXKLnNtB2ARIM1jHup/5ab1c7fc774bce0853a54cfbd5de4896/https.005.png" alt="" class="kg-image" width="1024" height="478" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/exwpXKLnNtB2ARIM1jHup/106962ce956068514925b5d028d74cfa/https.005.png" alt="" class="kg-image" width="1024" height="478" loading="lazy">
 
 	</figure>
 	<p>This attack continued for 15 minutes. Multiple recent attacks had &gt;1 Mrps and lasted for minutes.</p>
@@ -33,7 +33,7 @@
 	<p>Here are the top affected datacenters:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/meG8LUUO15USZ3tdFdb7X/c8ff16c889898df78ec94a80d26d99cd/https.004.png" alt="" class="kg-image" width="1024" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/meG8LUUO15USZ3tdFdb7X/a2e5aa96265611103b0d21b7242a85ff/https.004.png" alt="" class="kg-image" width="1024" height="486" loading="lazy">
 
 	</figure>
 	<p>This attack went largely to our Hong Kong and Prague datacenters. This is another common characteristic; most of the recent attacks looked similar.</p>
@@ -57,13 +57,13 @@
 	<p>However, we saw another attack that was unusual in that it was an L7 with similar bandwidth consumption to traditional L3/4 volumetric attacks. First, here's the requests per second graph:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5g2Rhgyi6l1ZlWw6Y6sIGa/ba287f114b17c09110a1ef71d21c8331/https.003.png" alt="" class="kg-image" width="1023" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5g2Rhgyi6l1ZlWw6Y6sIGa/0e30549ea13ed98927afc33ca3dca5b7/https.003.png" alt="" class="kg-image" width="1023" height="471" loading="lazy">
 
 	</figure>
 	<p>This attack generated "only" 220k requests per second at peak. However, it generated significant inbound bandwidth:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5w0BaTPZVLyDn3fXFOlkfZ/0a05720b5fad5a1c772f128d2347461c/x.001-1.png" alt="" class="kg-image" width="1024" height="468" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5w0BaTPZVLyDn3fXFOlkfZ/e37dcc868c297b181227586de0717160/x.001-1.png" alt="" class="kg-image" width="1024" height="468" loading="lazy">
 
 	</figure>
 	<p>This attack topped out at 360Gbps per second of inbound HTTP traffic. It's pretty unusual for an HTTP attack to generate a substantial amount of network traffic. This attack was special, and was composed of HTTP requests like this:</p>
@@ -79,7 +79,7 @@ a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp
 	<p>Additionally, this particular attack lasted roughly one hour, with 128,833 unique IP addresses. The datacenter distribution was different, with most of the attack concentrated on Frankfurt:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hs6Je7g3YpJ1BygPIFbpf/420efed9aac1d0784800c3014a931b34/https.002.png" alt="" class="kg-image" width="1023" height="466" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Hs6Je7g3YpJ1BygPIFbpf/1ce275a4343a05aef89b4f6a383a7f71/https.002.png" alt="" class="kg-image" width="1023" height="466" loading="lazy">
 
 	</figure>
 	<p>As the attack was composed of a very large number of bots, we expected the AS distribution to be fairly even. Indeed, in the 10,000 request sample we recorded a whopping 737 unique AS numbers. Here are the top sources:</p>
@@ -100,13 +100,13 @@ a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp
 	<p>We wondered why AS15895 was so special. First, we investigated our traffic charts. Here is the inbound traffic we received from them over last 30 days:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LaeMJ49p3uNUiPnQjX8X0/ca94b016ff9e92939619a873ad8f3876/AS15895-1.png" alt="" class="kg-image" width="1983" height="394" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LaeMJ49p3uNUiPnQjX8X0/87851416a49e0e72c2d3db6d215171db/AS15895-1.png" alt="" class="kg-image" width="1983" height="394" loading="lazy">
 
 	</figure>
 	<p>The first significant attack was clearly seen as a spike on September 29 and reached 30Gbps. A very similar chart is visible for AS45899:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gW1N4AAJaMbUFR3v3yyJR/27d042e95f86c20a8bfd0e8c68056707/AS45899-1.png" alt="" class="kg-image" width="1994" height="394" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gW1N4AAJaMbUFR3v3yyJR/48dbbe8ed2f6025a9623c0e0c1a96cb0/AS45899-1.png" alt="" class="kg-image" width="1994" height="394" loading="lazy">
 
 	</figure>
 	<p>We can see some smaller attacks attempted around September 26. A couple of days later the attackers turned the throttle up hitting 7.5Gbps non-stop from this ASN. Other AS numbers we investigated reveal a similar story.</p>
@@ -124,19 +124,19 @@ a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp
 	<p>Most of the hosts from the Vietnamese networks look like connected CCTV cameras. Multiple have open port 80 with presenting "NETSurveillance WEB" page.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3U9FaChepjUly2hcD3mQYv/a5df8b1bbc0d767b4f9524b9cddb8e20/cam02.png" alt="" class="kg-image" width="1199" height="631" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3U9FaChepjUly2hcD3mQYv/06f4e3f57d0b39badf82a9800988420b/cam02.png" alt="" class="kg-image" width="1199" height="631" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7a81etHG2oj18GcTaipdR1/8f5042d7443325e68feb6f110f0ee5d7/cam03-1.png" alt="" class="kg-image" width="1199" height="638" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7a81etHG2oj18GcTaipdR1/91b221a5fb9260c18b455a92d98d4627/cam03-1.png" alt="" class="kg-image" width="1199" height="638" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GnS9jO8ZxI8nvr3HdSrKi/4a9a0b7e011c022ecae8ee28724bcb16/cam04.png" alt="" class="kg-image" width="1200" height="649" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GnS9jO8ZxI8nvr3HdSrKi/2ee1b264cb4c507ceb9698e75a42812d/cam04.png" alt="" class="kg-image" width="1200" height="649" loading="lazy">
 
 	</figure>
 	<p>The Ukrainian devices are a bit different though. Most have port 80 closed, making it harder to identify.</p>
@@ -153,7 +153,7 @@ a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp;b[]=&amp;a[]=&amp
 	<p>Although the most recent attacks have mostly involved Internet-connected cameras, there's no reason to think that they are likely the only source of future DDoS attacks. As more and more devices (fridges, fitness trackers, sleep monitors, ...) are added to the Internet they'll likely be unwilling participants in future attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xTBgyJiewTcdNWJ6ELskn/9867b000a3195a534fe2a1569cc01eb1/15197555485_82029aa9df_k.jpg" alt="" class="kg-image" width="2048" height="1365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xTBgyJiewTcdNWJ6ELskn/07bf9d571ee3e6a7eb246cb72f16066f/15197555485_82029aa9df_k.jpg" alt="" class="kg-image" width="2048" height="1365" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/codeofthenew/15197555485/in/photolist-p9VwGA-p9XrVF-p9XrLH-oSrX9R-oSrXvx-oSsKUL-p9Vy6C-i5tukY-fP8skv-fPq1aQ-oSAiHj-p83wk5-fMLz3H-fKoxbS-fKoMJj-dokcef-dojRpi-K1p7WG">image</a> by <a href="https://www.flickr.com/photos/codeofthenew">CODE_n</a></p>

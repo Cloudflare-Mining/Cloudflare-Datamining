@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Cfsrozo0zVMLQjOH4jB2I/ed8eef8cb1148127b4c33c2c36d4f442/image6-19.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Cfsrozo0zVMLQjOH4jB2I/6d19cb50e39714e7ec2bb7bc385f8c94/image6-19.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>At large operational scales, IP addressing stifles innovation in network- and web-oriented services. For every architectural change, and certainly when starting to design new systems, the first set of questions we are forced to ask are:</p>
@@ -26,7 +26,7 @@
 	<p>In this blog post, we’ll explain why IP addressing is a problem for web services, the underlying causes, and then describe an innovative solution that we’re calling Addressing Agility, alongside the lessons we’ve learned. The best part of all may be the kinds of new systems and architectures enabled by Addressing Agility. The full details are available in our recent <a href="https://research.cloudflare.com/publications/Fayed2021">paper</a> from ACM SIGCOMM 2021. As a preview, here is a summary of some of the things we learned:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74paTQy3g6xZgcTVirW3mz/358ec4fe6c68458d5465f55359468c5c/image5-18.png" alt="" class="kg-image" width="1958" height="544" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74paTQy3g6xZgcTVirW3mz/9c65a4786c9683b570c256b33594d722/image5-18.png" alt="" class="kg-image" width="1958" height="544" loading="lazy">
 
 	</figure>
 	<p>It’s true! There is no limit to the number of names that can appear on any single address; the address of any name can change with every new query, <i>anywhere</i>; and address changes can be made for any reason, be it service provisioning or policy or performance evaluation, or others we’ve yet to encounter...</p>
@@ -44,7 +44,7 @@
 	<p>The “narrow waist” of IP has enabled the Internet, but much like TCP has been to transport protocols and HTTP to application protocols, IP has become a stifling bottleneck to innovation. The idea is depicted by the figure below, in which we see that otherwise separate communication bindings (with names) and connection bindings (with interfaces and sockets) create transitive relationships between them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JLHGmkSTwbwo97XCnFRQi/d0c356e8259798e1d8bef0a0b1552ef8/image8-12.png" alt="IP addresses bind to names and, separately, IP addresses bind to interfaces and sockets. This creates a transitive relationship where changing either can affect the other. The transitive nature is hard to follow or reason about, which hinders innovation." class="kg-image" width="1200" height="638" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JLHGmkSTwbwo97XCnFRQi/df435beb76297e4fea5a77e0a0d70e7b/image8-12.png" alt="IP addresses bind to names and, separately, IP addresses bind to interfaces and sockets. This creates a transitive relationship where changing either can affect the other. The transitive nature is hard to follow or reason about, which hinders innovation." class="kg-image" width="1200" height="638" loading="lazy">
 
 	</figure>
 	<p>The transitive lock is hard to break, because changing either can have an impact on the other. Moreover, service providers often use IP addresses to represent policies and service levels that themselves exist independently of names. Ultimately the IP bindings are one more thing to think about — and for no good reason.</p>
@@ -87,13 +87,13 @@
 	<p>This leads to the observation that name mappings are actually made, not in some record or zone file, but at the moment the response is returned. It’s a subtle, but important distinction. Today’s DNS systems use a name to look up a set of addresses, and then sometimes use some policy to decide which specific address to return. The idea is shown in the figure below. When a query arrives, a lookup reveals the addresses associated with that name, and then returns one or more of those addresses. Often, additional policy or logic filters are used to narrow the address selection, such as service level or geo-regional coverage. The important detail is that addresses are identified with a name first, and policies are only applied afterwards.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yJ6ppYKPOIdy8ycWt1WPH/a0645ec2a11a07707a3b2332ab218851/image10-5.png" alt="" class="kg-image" width="612" height="296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yJ6ppYKPOIdy8ycWt1WPH/eb531cfe42021c754d1d492ba5e0c61e/image10-5.png" alt="" class="kg-image" width="612" height="296" loading="lazy">
 
 	</figure>
 	<p>(a) Conventional Authoritative DNS</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aCwoQPNckWBfEa1wbJ5Ah/1faf829032c9b68c9c5e9b5b2cb5354b/image3-24.png" alt="" class="kg-image" width="621" height="296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aCwoQPNckWBfEa1wbJ5Ah/8074247fe9fea9a946f5c2a78027294d/image3-24.png" alt="" class="kg-image" width="621" height="296" loading="lazy">
 
 	</figure>
 	<p>(b) Addressing Agility</p>
@@ -177,7 +177,7 @@
 	<p>The answer is shown by the example in the figure below. From all data centers in the “Rest of World” outside our deployment, a query for a zone returns the same addresses (such is Cloudflare’s global anycast system). In contrast, every query that lands in a deployment data center receives a random address. These can be seen below in successive dig commands to two different data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IDAhbgavbKx0WOhd5uYn/47e15c80f255062e26bebc384e9128e3/image9-9.png" alt="successive dig commands to two different data centers" class="kg-image" width="1158" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IDAhbgavbKx0WOhd5uYn/571890e89a92724d6c9168e045763ebc/image9-9.png" alt="successive dig commands to two different data centers" class="kg-image" width="1158" height="480" loading="lazy">
 
 	</figure>
 	<p>For those who may be wondering about subsequent request traffic, yes, this means that servers are configured to accept connection requests for <i>any</i> of the 20+ million domains on <i>all</i> addresses in the address pool.</p>
@@ -186,19 +186,19 @@
 	<p>There is, however, one fascinating side effect: randomization is to IP addresses as a good hash function is to a hash table -- it evenly maps an arbitrary size input to a fixed number of outputs. The effect can be seen by looking at measures of load-per-IP before and after randomization as in the graphs below, with data taken from 1% samples of requests at one data center over seven days.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4cOkznkWXZcsaNI5lScPlI/233cd60a96bdb42565865fa497cb8218/image4-24.png" alt="Before Addressing Agility" class="kg-image" width="1870" height="1104" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cOkznkWXZcsaNI5lScPlI/cc1546e3b58274298b295b00aa9e0b7e/image4-24.png" alt="Before Addressing Agility" class="kg-image" width="1870" height="1104" loading="lazy">
 
 	</figure>
 	<p>Before Addressing Agility</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YNafEISfLNYqe5GThlNT9/bb5ebe0e519003433280f8bd4b2bbc67/image2-26.png" alt="Randomization on /20" class="kg-image" width="1870" height="1104" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YNafEISfLNYqe5GThlNT9/dc95ed24557685da6640ef45f483b892/image2-26.png" alt="Randomization on /20" class="kg-image" width="1870" height="1104" loading="lazy">
 
 	</figure>
 	<p>Randomization on /20</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZVhcE5JRaNbzUf7P7pY3W/c23917dce925d705161da89052922d1b/image1-40.png" alt="Randomization on /24" class="kg-image" width="1870" height="1104" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZVhcE5JRaNbzUf7P7pY3W/2af2f3ac50364ba9128c7b9976bf9865/image1-40.png" alt="Randomization on /24" class="kg-image" width="1870" height="1104" loading="lazy">
 
 	</figure>
 	<p>Randomization on /24</p>
@@ -284,7 +284,7 @@
 	<p>And so we end as we began. With no limit to the number of names on any single IP address, the ability to change the address per-query, for any reason, what could <i>you</i> build?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AvsEosOmXPtmdbeJJYzN2/97f6362c0f5dd049f2c850fd7f664f34/image7-12.png" alt="" class="kg-image" width="1938" height="428" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AvsEosOmXPtmdbeJJYzN2/1e807c46b1d6cfdde89dc8234cc6b69f/image7-12.png" alt="" class="kg-image" width="1938" height="428" loading="lazy">
 
 	</figure>
 	<p>We are, indeed, just getting started! The flexibility and future-proofing enabled by Addressing Agility is enabling us to imagine, design, and build new systems and architectures. We’re planning BGP route leak detection and mitigation for anycast systems, measurement platforms, and more.</p>

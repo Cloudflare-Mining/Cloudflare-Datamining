@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Icsnq0MfraKeAfhZuKsdH/e875e3c489466b5ac84ba087911d1220/image3-41.png" alt="Twilio Segment Edge SDK Powered by Cloudflare Workers" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Icsnq0MfraKeAfhZuKsdH/52a4b3f7dba6f370f49e0091906b3018/image3-41.png" alt="Twilio Segment Edge SDK Powered by Cloudflare Workers" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>The Cloudflare team was so excited to hear how Twilio Segment solved problems they encountered with tracking first-party data and personalization using Cloudflare Workers. We are happy to have guest bloggers Pooya Jaferian and Tasha Alfano from Twilio Segment to share their story.</p>
@@ -34,7 +34,7 @@
 	<p>Analytics.js also stores state in the browser as first-party cookies (e.g., storing an <code>ajs_user_id</code> cookie with the value of john, with cookie scoped at the example.com domain) so that when the user visits the website again, the user identifier stored in the cookie can be used to recognize the user.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cFwIwnC5QZKPZ0617hgDb/f995420d5d23c273bbfd677f174219c6/image2-49.png" alt="" class="kg-image" width="1840" height="870" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cFwIwnC5QZKPZ0617hgDb/91afc6d5094f5d60288778ddfb3c7e97/image2-49.png" alt="" class="kg-image" width="1840" height="870" loading="lazy">
 
 	</figure>
 	<p>Figure 1- How analytics.js loads on a website and tracks events</p>
@@ -93,7 +93,7 @@ export default {
 	<p>Regardless of the route, the router eventually returns a response to the browser (step 4) containing data from the origin, the response from Segment tracking API, or analytics.js assets. When Edge SDK detects the user identity in an incoming request (more on that later), it sets an HTTPOnly cookie in the response headers to persist the user identity in the browser.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cKXch0aUGqaIrvETjhR3K/ee302362d172b7e8062e08a9fb871aec/image1-65.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cKXch0aUGqaIrvETjhR3K/3d9ae7aea0999ed55a00c30bb65fa03b/image1-65.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
 
 	</figure>
 	<p>Figure 2- Edge SDK router flow‌‌</p>
@@ -255,7 +255,7 @@ export const enrichWithAJS: HandlerFunction = async (
 	<p>Figure 3 demonstrates how the personalization flow works. In <i>step 1</i>, the user requests content for the root path ( / ), and the Worker sends the request to the Edge SDK <i>(step 2)</i>. The Edge SDK router determines that a variation is registered on the route, therefore, extracts the <code>ajs_user_id</code> from the request cookies, and goes through the full profile extraction <i>(step 3)</i>. The SDK first checks the KV for a record with the key of <code>ajs_user_id</code> value and if not found, queries Segment API to fetch the profile, and stores the profile in the KV. Eventually, the profile is extracted and passed into the decision function to decide which path should be served to the user <i>(step 4)</i>. The router eventually fetches the variation from the origin <i>(step 5)</i> and returns the response under the / path to the browser <i>(step 6).</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KzFSDxZVXQ1P7YN7IeyKC/3c7dba4b78dd268535381e96b329fe94/image4-28.png" alt="" class="kg-image" width="1999" height="1226" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KzFSDxZVXQ1P7YN7IeyKC/a56a6d820e939601ff6ca4d6385308c4/image4-28.png" alt="" class="kg-image" width="1999" height="1226" loading="lazy">
 
 	</figure>
 	<p>Figure 3- Personalization flow</p>

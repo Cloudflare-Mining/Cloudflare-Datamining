@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dSvaMsKlh9OgEd9qHld5Q/d18980ba316ea5d8328bd5c04be74d53/OHTTPS-1.png" alt="Stronger than a promise: proving Oblivious HTTP privacy properties" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dSvaMsKlh9OgEd9qHld5Q/8522221ea18cacdf5f14a5a4dd22f98a/OHTTPS-1.png" alt="Stronger than a promise: proving Oblivious HTTP privacy properties" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>We recently announced <a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today">Privacy Gateway</a>, a fully managed, scalable, and performant Oblivious HTTP (OHTTP) relay. Conceptually, OHTTP is a simple protocol: end-to-end encrypted requests and responses are forwarded between client and server through a relay, decoupling <i>who</i> from <i>what</i> was sent. This is a common pattern, as evidenced by deployed technologies like <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DoH</a> and <a href="https://blog.cloudflare.com/icloud-private-relay">Apple Private Relay</a>. Nevertheless, OHTTP is still new, and as a new protocol it’s imperative that we analyze the protocol carefully.</p>
@@ -20,14 +20,14 @@
 	<p>In this way, OHTTP is a lightweight application-layer proxy protocol. This means that it proxies application messages rather than network-layer connections. This distinction is important, so let’s make sure we understand the differences. Proxying connections involves a whole other suite of protocols typically built on <a href="https://blog.cloudflare.com/a-primer-on-proxies">HTTP CONNECT</a>. (Technologies like VPNs and WireGuard, including Cloudflare WARP, can also be used, but let’s focus on HTTP CONNECT for comparison.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7G2GpukW91K4h4HWG4LwLP/bba5aaede0774202a916a876f76bbe9b/image2-16.png" alt="" class="kg-image" width="1348" height="358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7G2GpukW91K4h4HWG4LwLP/085f4dd9a95840ca0e596d882804db9b/image2-16.png" alt="" class="kg-image" width="1348" height="358" loading="lazy">
 
 	</figure>
 	<p>Connection-oriented proxy depiction</p>
 	<p>Since the entire TCP connection itself is proxied, connection-oriented proxies are compatible with any application that uses TCP. In effect, they are general purpose proxy protocols that support any type of application traffic. In contrast, proxying application messages is compatible with application use cases that require transferring entire objects (messages) between a client and server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tmYhfoorqr1dlClq57lNr/908ea2e6668b36edc5d41ff3469469a2/image5-3.png" alt="" class="kg-image" width="1348" height="358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tmYhfoorqr1dlClq57lNr/3201b3615bd8512329ef4eebbd56bf34/image5-3.png" alt="" class="kg-image" width="1348" height="358" loading="lazy">
 
 	</figure>
 	<p>Message-oriented proxy depiction</p>
@@ -73,13 +73,13 @@
 	<p>Once the HTTP request is encoded in binary format, it is then fed into HPKE to produce an encrypted message, which clients then send to the relay to be forwarded to the gateway. The gateway decrypts this message, transforms the binary-encoded request back to its equivalent HTTP request, and then forwards it to the target server for processing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NYRu14pWAPynS3nqMocnu/c45f6291f98a991be1548b77a4228a36/image10-1.png" alt="" class="kg-image" width="1338" height="518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NYRu14pWAPynS3nqMocnu/34be010611eaf64921467df3e4fa82b8/image10-1.png" alt="" class="kg-image" width="1338" height="518" loading="lazy">
 
 	</figure>
 	<p>Responses from the gateway are encapsulated back to the client in a very similar fashion. The gateway first encodes the response in an equivalent binary HTTP message, encrypts it using a symmetric key known only to the client and gateway, and then returns it to the relay to be forwarded to the client. The client decrypts and transforms this message to recover the result.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JuJ9CoqPX4v8HQuqjjoeh/8420f1d8270c8362de6d2d67181fa7fc/image4-10.png" alt="" class="kg-image" width="1596" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JuJ9CoqPX4v8HQuqjjoeh/f9ca1d53bdaf4a9a997f9e13b0e0e790/image4-10.png" alt="" class="kg-image" width="1596" height="384" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -122,7 +122,7 @@
 	<p>Tamarin uses a technique known as <a href="https://resources.mpi-inf.mpg.de/departments/rg1/conferences/vtsa18/slides/basin-lecture2.pdf">multiset rewriting</a> to describe protocols. A protocol description is formed of a series of “rules” that can “fire” when certain requirements are met. Each rule represents a discrete step in the protocol, and when a rule fires that means the step was taken. For example, we have a rule representing the gateway generating its long-term public encapsulation key, and for different parties in the protocol establishing secure TLS connections. These rules can be triggered pretty much any time as they have no requirements.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Dx29NTs610pWriwpovIQS/d5a7ef248f5d516d2d7cf40a67b4df34/image9-2.png" alt="" class="kg-image" width="532" height="138" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Dx29NTs610pWriwpovIQS/4d5b1466c872a9d3e98d314a0b8763d8/image9-2.png" alt="" class="kg-image" width="532" height="138" loading="lazy">
 
 	</figure>
 	<p>Basic rule for OHTTP gateway key generation</p>
@@ -144,7 +144,7 @@
 	<p>As an example of the action graph, let’s consider what happens when the client successfully finishes the protocol. When the requirements for this rule are satisfied, the rule triggers, marking that the client is done and that the response was valid. Since the protocol is done at this point, there are no output facts produced.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6k53NoxUnAriRnQpZxTDYM/166e61df4f20c1943783af5399d5e009/image3-8.png" alt="" class="kg-image" width="1230" height="812" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k53NoxUnAriRnQpZxTDYM/a357d7ca7e0131453b794f8719dfa374/image3-8.png" alt="" class="kg-image" width="1230" height="812" loading="lazy">
 
 	</figure>
 	<p>Action graph for terminal client response handler rule</p>
@@ -163,7 +163,7 @@
 	<p>Going back to our model, we give the attacker the ability to compromise long-term key pairs and TLS sessions as needed through different rules. These set various action facts that mark the fact that compromise took place.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28YufQ6WgtS1RkyeH9O2ZI/aa0e5e9526c650a1007ce24ced749beb/image11-2.png" alt="" class="kg-image" width="958" height="824" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28YufQ6WgtS1RkyeH9O2ZI/ad31cbef4844b7dd3cd4c4598f9ad873/image11-2.png" alt="" class="kg-image" width="958" height="824" loading="lazy">
 
 	</figure>
 	<p>Action graph for key compromise rule</p>

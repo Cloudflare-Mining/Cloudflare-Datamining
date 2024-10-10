@@ -1,4 +1,4 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oQmk0Xnt1xt8wQVlKeyFk/23f72abff5a6d1d9d4a32d63f8b67509/protecting-the-origin-with-tls-authenticated-origin-pulls.png" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oQmk0Xnt1xt8wQVlKeyFk/2f4046d563d507e229c3c368b8c4167c/protecting-the-origin-with-tls-authenticated-origin-pulls.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As we have been discussing this week, securing the connection between Cloudflare and the origin server is arguably just as important as securing the connection between end users and Cloudflare. The <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">origin certificate authority</a> we announced this week will help CloudFlare verify that it is talking to the correct origin server. But what about verification in the opposite direction? How can the origin verify that the client talking to it is actually CloudFlare?</p>
 	<div class="flex anchor relative">
@@ -12,13 +12,13 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4j8yHcLklM13sQFFE5NLds/b71be15ffefd747b72ca64c8986edbc8/illustration-tls-ssl-standard-1.png" alt="Normal TLS handshake" class="kg-image" width="900" height="1058" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4j8yHcLklM13sQFFE5NLds/f8d792142a8982d3fd71718990ffcc1c/illustration-tls-ssl-standard-1.png" alt="Normal TLS handshake" class="kg-image" width="900" height="1058" loading="lazy">
 
 	</figure>
 	<p>TLS (the modern version of SSL) allows a client to verify the identity of the server it is talking to. Normally, a TLS handshake is one-way, that is, the client is able to verify the server's identity, but the server is not able to verify the client's identity. What about when both sides need to verify each other's identity?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IJu2fHHc7jni7nKl63g16/243c5ea7dd6cf63d1ce748fdd8e561c5/illustration-tls-ssl-client-auth.png" alt="Client authenticated TLS handshake" class="kg-image" width="900" height="1256" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IJu2fHHc7jni7nKl63g16/a42aeadfa66be1e0c5255b4eeed0b7f5/illustration-tls-ssl-client-auth.png" alt="Client authenticated TLS handshake" class="kg-image" width="900" height="1256" loading="lazy">
 
 	</figure>
 	<p>Enter <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake">TLS Client Authentication</a>. In a client authenticated TLS handshake both sides provide a certificate to be verified. If the origin server is configured to only accept requests which use a valid client certificate from Cloudflare, requests which have not passed through Cloudflare will be dropped (as they will not have our certificate). This means that attackers cannot circumvent CloudFlare features such as our <a href="https://www.cloudflare.com/waf">WAF</a>, even via an attack like <a href="http://www.cisco.com/web/about/ac123/ac147/archived_issues/ipj_10-4/104_ip-spoofing.html">TCP source IP spoofing</a> which could typically be used make an origin server believe malicious requests have passed through CloudFlare's network.</p>
@@ -35,7 +35,7 @@
 	<p>In order to enable Authenticated Origin Pulls for your Cloudflare protected website, you will need to use our new dashboard (currently in beta). To access this beta dashboard, first log in to your Cloudflare account. In the lower right corner of the page there is a button labeled "Try Our New Dashboard." Click and log in again. At this point, you're in our new dashboard with access to all your existing domains and settings through a completely new user interface.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WKbGYfpdrkkxQXYOw7OqV/d0b201a06e87e27d9be8489112e0e9f9/Screen-Shot-2015-02-27-at-15-16-11.png" alt="" class="kg-image" width="1298" height="1717" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WKbGYfpdrkkxQXYOw7OqV/1acb9dc527efbf728a719fc885923b45/Screen-Shot-2015-02-27-at-15-16-11.png" alt="" class="kg-image" width="1298" height="1717" loading="lazy">
 
 	</figure>
 	<p>There will be more information about this new dashboard in the near future, but feel free to check it out. You can continue to freely switch between old and new dashboard.</p>
@@ -96,7 +96,7 @@ s0s5dsq5zpLeaw==
 	<p>We will include configuration examples for popular web servers in our <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up">Cloudflare Support Docs</a> in the next week.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JjE8Qn3bmZblfN1zNWzb8/ee10f3114fe9cb94962d1bc38d57150d/cloudflare_ssl-week-2-1.png" alt="" class="kg-image" width="1000" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JjE8Qn3bmZblfN1zNWzb8/33c2ed63f0bf710fba2a75a38cc955a8/cloudflare_ssl-week-2-1.png" alt="" class="kg-image" width="1000" height="375" loading="lazy">
 
 	</figure>
 </div>

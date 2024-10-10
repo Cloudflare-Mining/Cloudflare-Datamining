@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LKQG43lQbCXdnCR35QWx/0bcecac41043f2fa5c2ae2707aaa57fa/speeding-up-https-and-http-3-negotiation-with-dns.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LKQG43lQbCXdnCR35QWx/59eb463f4d361490c042a8112869c0bc/speeding-up-https-and-http-3-negotiation-with-dns.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In late June 2019, Cloudflare's resolver team noticed a spike in DNS requests for the 65479 Resource Record thanks to data exposed through <a href="https://blog.cloudflare.com/introducing-cloudflare-radar">our new Radar service</a>. We began investigating and found these to be a part of <a href="https://developer.apple.com/videos/play/wwdc2020/10111">Apple’s iOS14 beta release</a> where they were testing out a new SVCB/HTTPS record type.</p>
 	<p>Once we saw that Apple was requesting this record type, and while the iOS 14 beta was still on-going, we rolled out support across the Cloudflare customer base.</p>
@@ -16,14 +16,14 @@
 	<p>Whenever a user types a URL in the browser box without specifying a scheme (like “https://” or “http://”), the browser cannot assume, without prior knowledge such as a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security (HSTS)</a> cache or preload list entry, whether the requested website supports HTTPS or not. The browser will first try to fetch the resources using plaintext HTTP, and only if the website redirects to an HTTPS URL, or if it specifies an HSTS policy in the initial HTTP response, the browser will then fetch the resource again over a secure connection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iz2JFuI19whcuN931y8pk/fb0bd72a013a3555077f1d1ee4473a33/image4.gif" alt="" class="kg-image" width="724" height="53" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iz2JFuI19whcuN931y8pk/8d46dd114b946940a6cdcd49502d7b07/image4.gif" alt="" class="kg-image" width="724" height="53" loading="lazy">
 
 	</figure>
 	<p>This means that the latency incurred in fetching the initial resource (say, the index page of a website) is doubled, due to the fact that the browser needs to re-establish the connection over TLS and request the resource all over again. But worse still, the initial request is leaked to the network in plaintext, which could potentially be modified by malicious on-path attackers (think of all those unsecured public WiFi networks) to redirect the user to a completely different website. In practical terms, this weakness is sometimes used by said unsecured public WiFi network operators to sneak advertisements into people’s browsers.</p>
 	<p>Unfortunately, that’s not the full extent of it. This problem also impacts <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">HTTP/3</a>, the newest revision of the HTTP protocol that provides increased performance and security. <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> is advertised using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Alt-Svc">Alt-Svc</a> HTTP header, which is only returned after the browser has already contacted the origin using a different and potentially less performant HTTP version. The browser ends up missing out on using faster HTTP/3 on its first visit to the website (although it does store the knowledge for later visits).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ulWkZdFUIrgAg7WSKuOwc/241c0aaaf513df3301e33fbb00be7444/image2-18.png" alt="" class="kg-image" width="1999" height="906" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ulWkZdFUIrgAg7WSKuOwc/acf044f1633f1116567dfd1a0c3d15e0/image2-18.png" alt="" class="kg-image" width="1999" height="906" loading="lazy">
 
 	</figure>
 	<p>The fundamental problem comes from the fact that negotiation of HTTP-related parameters (such as whether HTTPS or HTTP/3 can be used) is done through HTTP itself (either via a redirect, HSTS and/or Alt-Svc headers). This leads to a chicken and egg problem where the client needs to use the most basic HTTP configuration that has the best chance of succeeding for the initial request. In most cases this means using plaintext HTTP/1.1. Only after it learns of parameters can it change its configuration for the following requests.</p>
@@ -80,7 +80,7 @@ www               3600 IN CNAME cloudflare.com.</code></pre>
 	<p>This means that SVCB/HTTPS are a requirement to support newer revisions of Encrypted SNI/Encrypted ClientHello. More on this later this year.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EBQrn9Y1mOFSs0PtAWtri/bcffce047ef4619f823dd8151eaabc39/image1-28.png" alt="" class="kg-image" width="1999" height="852" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EBQrn9Y1mOFSs0PtAWtri/f77c27a9e29ef4492e11e0b055e4eacf/image1-28.png" alt="" class="kg-image" width="1999" height="852" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -96,7 +96,7 @@ www               3600 IN CNAME cloudflare.com.</code></pre>
 	<p>Adopting new protocols requires cooperation between multiple parties. We have been working with various browsers and clients to increase the support and adoption of HTTPS records. Over the last few weeks, Apple’s iOS 14 release has included <a href="https://mailarchive.ietf.org/arch/msg/dnsop/eeP4H9fli712JPWnEMvDg1sLEfg">client support for HTTPS records</a>, allowing connections to be upgraded to QUIC when the HTTP/3 parameter is returned in the DNS record. Apple has reported that so far, of the population that has manually enabled HTTP/3 on iOS 14, 8% of the QUIC connections had the HTTPS record response.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tcR9Q2DOynyF2kGZDNwKz/42ebb54fc8b6316d36bec7d378b1c1b9/image3-15.png" alt="" class="kg-image" width="2000" height="704" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tcR9Q2DOynyF2kGZDNwKz/47cb2bc54fdd25f8778e3cd6f94d773e/image3-15.png" alt="" class="kg-image" width="2000" height="704" loading="lazy">
 
 	</figure>
 	<p>Other browser vendors, such as <a href="https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/brZTXr6-2PU/g0g8wWwCAwAJ">Google</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1634793">Mozilla</a>, are also working on shipping support for HTTPS records to their users, and we hope to be hearing more on this front soon.</p>

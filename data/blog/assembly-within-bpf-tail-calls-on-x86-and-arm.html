@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lk8AVPci0nIoH0jHfBTzC/d1005038bd4e111d00c520ef53e6cc4b/unnamed-3.png" alt="Assembly within! BPF tail calls on x86 and ARM" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lk8AVPci0nIoH0jHfBTzC/d96fefa82025c4a8cc0b88f554d6dd77/unnamed-3.png" alt="Assembly within! BPF tail calls on x86 and ARM" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Early on when we learn to program, we get introduced to the concept of <a href="https://ocw.mit.edu/courses/6-00sc-introduction-to-computer-science-and-programming-spring-2011/resources/lecture-6-recursion">recursion</a>. And that it is handy for computing, among other things, sequences defined in terms of recurrences. Such as the famous <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonnaci numbers</a> - <i>Fn = Fn-1 + Fn-2</i>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Zkbmk81PBl2lx62bzcNz4/1c18b6175cb62c7cdc563228296249f4/Screenshot-2022-10-10-at-10.13.32.png" alt="" class="kg-image" width="1618" height="418" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Zkbmk81PBl2lx62bzcNz4/ce5eb7474578577dd0c5d4c3284d73f2/Screenshot-2022-10-10-at-10.13.32.png" alt="" class="kg-image" width="1618" height="418" loading="lazy">
 
 	</figure>
 	<p>Later on, perhaps when diving into multithreaded programming, we come to terms with the fact that <a href="https://textbook.cs161.org/memory-safety/x86.html#26-stack-pushing-and-popping">the stack space</a> for call frames is finite. And that there is an “okay” way and a “cool” way to calculate the Fibonacci numbers using recursion:</p>
@@ -47,7 +47,7 @@ uint64_t fib(uint64_t n)
 	<p>⚠ DISCLAIMER: This blog post is assembly-heavy. We will be looking at assembly code for x86-64, arm64 and BPF architectures. If you need an introduction or a refresher, I can recommend <a href="https://github.com/Apress/low-level-programming">“Low-Level Programming”</a> by Igor Zhirkov for x86-64, and <a href="https://github.com/Apress/programming-with-64-bit-ARM-assembly-language">“Programming with 64-Bit ARM Assembly Language”</a> by Stephen Smith for arm64. For BPF, see the <a href="https://www.kernel.org/doc/html/latest/bpf/standardization/instruction-set.html">Linux kernel documentation</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bahmmfAErsC7aO9LUTzTa/38b408cd2990bc8e6acac52f6b099a65/Screenshot-2022-10-10-at-10.25.23.png" alt="" class="kg-image" width="1574" height="700" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bahmmfAErsC7aO9LUTzTa/e685101ca35f092cd482993e3b86405b/Screenshot-2022-10-10-at-10.25.23.png" alt="" class="kg-image" width="1574" height="700" loading="lazy">
 
 	</figure>
 	<p>Listing 3. <code>fib_cool.c</code> compiled for x86-64 and arm64</p>
@@ -128,7 +128,7 @@ $</code></pre>
 	<p>But I am no <a href="https://github.com/dendibakh/perf-ninja">performance ninja</a> and this blog post is not about compiler optimizations. So why am I telling you about it?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pi98zHx1blOehbqwhB1LP/4033933628bd5a109d9eee62c5f3d752/image5.jpg" alt="" class="kg-image" width="1470" height="954" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pi98zHx1blOehbqwhB1LP/049a1532b192261cdfedade320e871a1/image5.jpg" alt="" class="kg-image" width="1470" height="954" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Lemur_catta_-_tail_length_01.jpg">Alex Dunkel (Maky), CC BY-SA 3.0</a>, via <a href="https://creativecommons.org/licenses/by-sa/3.0">Wikimedia Commons</a></p>
@@ -145,7 +145,7 @@ $</code></pre>
 	<p>We first adopted BPF tail calls when building our <a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation=">XDP-based packet processing pipeline</a>. Thanks to it, we were able to divide the processing logic into several XDP programs. Each responsible for doing one thing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ANc6el4eTdaklbTHnlzPH/aab1713a5a5e759f13042ef6b1104b86/image8.png" alt="Slide from “XDP based DDoS Mitigation” talk by Arthur Fabre" class="kg-image" width="931" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ANc6el4eTdaklbTHnlzPH/688282a0c8534d50fd1d8c1143c53058/image8.png" alt="Slide from “XDP based DDoS Mitigation” talk by Arthur Fabre" class="kg-image" width="931" height="492" loading="lazy">
 
 	</figure>
 	<p>Slide from “<a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation=">XDP based DDoS Mitigation</a>” talk by <a href="https://blog.cloudflare.com/author/arthur">Arthur Fabre</a></p>
@@ -220,7 +220,7 @@ int server2(struct __sk_buff *skb)
 	<p>The second thing to keep in mind is that the compiler does not know that the bpf_tail_call() helper changes the control flow. Hence, the unsuspecting compiler optimizes the code as if the execution would continue past the BPF tail call.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57RsaISELMEErCz7js2C0w/5f8fad340351d766a42296f3644de210/image2-8.png" alt="" class="kg-image" width="1999" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57RsaISELMEErCz7js2C0w/70efe8757f435fb6450ae26c50ff0f2b/image2-8.png" alt="" class="kg-image" width="1999" height="742" loading="lazy">
 
 	</figure>
 	<p>The call graph for <code>server1()</code> and <code>server2()</code> is the same, but the return value differs due to build time optimizations.</p>
@@ -230,7 +230,7 @@ int server2(struct __sk_buff *skb)
 	<p>How does the <code>bpf_tail_call()</code> work underneath then? And why the BPF verifier wouldn’t let us mix the function calls with tail calls on arm64? Time to dig deeper.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rp6nKgRPwuuXUzAyolOA9/270b245c70263bd8d40ddfc26596a9b9/image7.jpg" alt="Public Domain image" class="kg-image" width="1999" height="1235" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rp6nKgRPwuuXUzAyolOA9/1b740786194fceb11c2fdf26e1c5a1d7/image7.jpg" alt="Public Domain image" class="kg-image" width="1999" height="1235" loading="lazy">
 
 	</figure>
 	<p>Public Domain <a href="https://www.rawpixel.com/image/3578996/free-photo-image-bulldozer-construction-site">image</a></p>
@@ -429,7 +429,7 @@ Core was generated by `earlyprintk=serial,ttyS0,115200 console=ttyS0 psmouse.pro
 	<p>Now we are prepared to work out what happens when we use a BPF tail call.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cyhfC6M0zUcXpRmaGDf6b/555f00da691bbde9edc3c3c0fff5f870/image9.png" alt="" class="kg-image" width="1999" height="1235" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cyhfC6M0zUcXpRmaGDf6b/26595d9ce05e788d01a23fc0c6836d96/image9.png" alt="" class="kg-image" width="1999" height="1235" loading="lazy">
 
 	</figure>
 	<p>In essence, <code>bpf_tail_call()</code> emits a jump into another function, reusing the current stack frame. It is just like a regular optimized tail call, but with a twist.</p>
@@ -486,7 +486,7 @@ Core was generated by `earlyprintk=serial,ttyS0,115200 console=ttyS0 psmouse.pro
 	<p>This means that we have to pass the tail call count from one BPF subprogram to another, just like we did when making a BPF tail call, so we yet again turn to value passing through the <code>rax register</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cRz7vr40Hl4l65tgG15gV/71df179b7245119ada1fe3649fee2c8e/image1-11.png" alt="" class="kg-image" width="1999" height="1030" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cRz7vr40Hl4l65tgG15gV/09d1d3980f2f4c3e61ed2ff5cb5021f0/image1-11.png" alt="" class="kg-image" width="1999" height="1030" loading="lazy">
 
 	</figure>
 	<p>Control flow in a BPF program with a function call followed by a tail call.</p>
@@ -498,7 +498,7 @@ Core was generated by `earlyprintk=serial,ttyS0,115200 console=ttyS0 psmouse.pro
 	<p>Now we have seen how all the pieces of the puzzle fit together to make BPF tail work on x86-64 safely. The only open question is does it work the same way on other platforms like arm64? Time to shift gears and dive into a completely different BPF JIT implementation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WJ7PZxCCS8jaahx6fGfu/74aafb87051443231c609ae896ddb0c5/image10.jpg" alt="" class="kg-image" width="1999" height="1501" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WJ7PZxCCS8jaahx6fGfu/a3c1568774c9c47fbf902f1959b3ec17/image10.jpg" alt="" class="kg-image" width="1999" height="1501" loading="lazy">
 
 	</figure>
 	<p>Based on an image by <a href="https://www.flickr.com/photos/pockethifi/48303582037">Wutthichai Charoenburi</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></p>

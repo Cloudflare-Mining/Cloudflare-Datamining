@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NkV2keoVVLzTUxmoFl6NS/7882660ed4d98f176ec925fa4f07fa17/introducing-tls-1-3.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NkV2keoVVLzTUxmoFl6NS/23c9b2b9c3517ba25d32335625ff9711/introducing-tls-1-3.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><b><i>CloudFlare is turbocharging the encrypted internet</i></b></p>
 	<p>The encrypted Internet is about to become a whole lot snappier. When it comes to browsing, we’ve been driving around in a beat-up car from the 90s for a while. Little does anyone know, we’re all about to trade in our station wagons for a smoking new sports car. The reason for this speed boost is TLS 1.3, a new encryption protocol that improves both speed and security for Internet users everywhere. As of today, TLS 1.3 is available to all CloudFlare customers.</p>
@@ -54,7 +54,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49hiXpSgZTn0owXevua6P6/cf023c5ba6b4ddea2584442e76ff5899/image02.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49hiXpSgZTn0owXevua6P6/00129c545ce0979a6bab5b34a8da5d32/image02.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p>CC 2.0 Generic <a href="https://www.flickr.com/photos/aquamech-utah/24445365953">Aqua Mechanical</a></p>
@@ -72,14 +72,14 @@
 	<p>A message from Sydney to New York and back can take over 200ms, enough for <a href="https://hpbn.co/primer-on-web-performance/#speed-performance-and-human-perception">humans to notice</a>. Mobile browsing can also increase latency for a connection. Sending a message over a modern 4G mobile network routinely adds over 100ms of latency to requests. On 3G networks, which are still common in Europe, <a href="https://opensignal.com/blog/2014/03/10/lte-latency-how-does-it-compare-to-other-technologies">add over 200ms of additional latency</a>. Even home WiFi connections and ISPs add dozens of milliseconds to requests. This additional latency can make mobile browsing feel slow. Unfortunately, encryption can make these slow connections seem slower. TLS 1.3 helps improve this situation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vhUThCtQG95GVCJoweEzN/a1f05435581293c6ff7dba55acaa40aa/handshake-1443446541etN.jpg" alt="" class="kg-image" width="1920" height="755" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vhUThCtQG95GVCJoweEzN/351c7a3163f0404416606e98d24e6301/handshake-1443446541etN.jpg" alt="" class="kg-image" width="1920" height="755" loading="lazy">
 
 	</figure>
 	<p>To send a message to an encrypted site, you must first establish shared cryptographic keys. This process is called a cryptographic handshake. It requires special messages to be sent back and forth between the browser and the website. The TLS handshake happens behind the scenes whenever you connect to an encrypted site with your browser.</p>
 	<p>With TLS 1.2, two <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trips</a> are needed to complete the handshake before the request can be sent. Accessing a site over a mobile network can add more than half a second to its load time. With TLS 1.3, the initial handshake is cut in half, requiring only one round-trip. That’s like going from a fast station wagon (0-60mph in 10 seconds) to a Tesla Model S (5 seconds).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9Dw3e5yPlJrQ54CaR7UE1/d289f28fd95fd479558c97b62c25d5f0/image01.jpg" alt="" class="kg-image" width="1999" height="1076" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9Dw3e5yPlJrQ54CaR7UE1/842b2e25dee71ce2d6fd49eac1fc7e59/image01.jpg" alt="" class="kg-image" width="1999" height="1076" loading="lazy">
 
 	</figure>
 	<p>If the round-trip time for a connection is around 100ms, the speed boost from TLS 1.3 is enough to take sites that seem <a href="https://hpbn.co/primer-on-latency-and-bandwidth/#speed-of-light-and-propagation-latency">“sluggish”</a> (over 300ms), and turn them into sites that load comfortably fast (under 300ms).</p>
@@ -95,7 +95,7 @@
 	<p>TLS 1.3 is huge step forward for web security and performance. It’s available to all CloudFlare customers, and enabled by default for all Free and Pro customers. You will find the toggle to enable/disable TLS 1.3 in the Crypto tab of the CloudFlare dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gBklXLwNX8MsBrkyjoqup/520582dee330e87042640505b94f1476/image00.png" alt="" class="kg-image" width="1922" height="320" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gBklXLwNX8MsBrkyjoqup/96d12ceb76d73c581d91f75453f20d29/image00.png" alt="" class="kg-image" width="1922" height="320" loading="lazy">
 
 	</figure>
 	<p>The TLS 1.3 specification is still being polished, but the IETF is very close to settling on a final version of the protocol. Major browser vendors Firefox and Chrome have implemented preliminary versions of TLS 1.3 in their developer releases (<a href="https://nightly.mozilla.org">Firefox Nightly</a> and <a href="https://www.google.com/chrome/browser/canary.html">Chrome Canary</a>), and we’re updating our implementation to match the current version in these browsers until the specification is final. Expect a faster, safer web browsing experience as more browsers enable TLS 1.3 by default in the coming months.</p>

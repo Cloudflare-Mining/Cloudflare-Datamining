@@ -1,11 +1,11 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ud76bnnQ8qTC83YR2K1g9/d5e2ff0ad93c2865a8659bbff2c1b09a/killing-rc4.jpg" alt="">
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ud76bnnQ8qTC83YR2K1g9/481af402aaa00e29d4985b828dc2864c/killing-rc4.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Back in 2011, the BEAST attack on the cipher block chaining (CBC) encryption mode used in TLS v1.0 was demonstrated. At the time the advice of <a href="https://community.qualys.com/blogs/securitylabs/2011/10/17/mitigating-the-beast-attack-on-tls">experts</a> (including <a href="https://blog.cloudflare.com/taming-beast-better-ssl-now-available-across">our own</a>) was to prioritize the use of RC4-based cipher suites.</p>
 	<p>The BEAST vulnerability itself had already been fixed in TLS v1.1 a few years before, but in 2011 the adoption of TLS v1.1 was virtually non-existent and web server administrators (and companies like CloudFlare) started preferring RC4 over AES-CBC ciphers in order to mitigate the attack.</p>
 	<p>Fast-forward to 2013 and attacks on <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">RC4 have been demonstrated</a>; that makes the preference for RC4 problematic. Unfortunately, at the time, TLS v1.1 and above still weren't very popular, which meant that we had to make a choice between either the mitigation of BEAST or the RC4 attack.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AtJUXVRMHkKJKWpqeav6u/ff9f600d2d5f9b07b3bae61d701ea4dd/rock-and-hard-place.jpg" alt="" class="kg-image" width="425" height="282" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AtJUXVRMHkKJKWpqeav6u/b66223af9c016bc0d9bee9b1dde40fef/rock-and-hard-place.jpg" alt="" class="kg-image" width="425" height="282" loading="lazy">
 
 	</figure>
 	<p>Since then, all modern browsers have started supporting TLS v1.2, which means that in theory we could support RC4 only for connections using TLS v1.0 in order to protect against BEAST attack and use AES-GCM or AES-CBC for connections using TLS v1.1 and above in order to protect against RC4 attack. Unfortunately, open-source web servers (and OpenSSL) don't allow for such fine-grained control over which ciphers should be supported for which protocol version.</p>
@@ -27,14 +27,14 @@
 	<p>SSL Labs have updated their testing to penalize the use of RC4 on TLS v1.1 and v1.2 connections as detailed here. If a site allows RC4 with TLS v1.1 or v1.2 then the following warning will appear in the SSL Labs report:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/223p8ooPHBOGbfJiXLYqW9/eb27e8cbe06df4aa8b29fa09b602a325/Screen_Shot_2014-01-22_at_6.06.13_PM.png" alt="" class="kg-image" width="783" height="45" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/223p8ooPHBOGbfJiXLYqW9/e086b8f84cacf7480c05218e1ed1439b/Screen_Shot_2014-01-22_at_6.06.13_PM.png" alt="" class="kg-image" width="783" height="45" loading="lazy">
 
 	</figure>
 	<p>SSL Labs have introduced warnings that will lower a web site's score. Warnings are given for a lack of forward secrecy, missing secure renegotiation, or the use of RC4 on TLS v1.1 and v1.2. Web sites are also heavily penalized for using key sizes below <a href="https://blog.cloudflare.com/cloudflare-prism-secure-ciphers">2048 bits</a>.</p>
 	<p>Customers of CloudFlare using our SSL options will get an A or A+ rating with no warnings from SSL Labs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FfNYdifUULQwA1AVNIQgz/85710cee8ee735224096788e7d795223/Screen_Shot_2014-01-29_at_8.17.14_PM.png" alt="" class="kg-image" width="938" height="565" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FfNYdifUULQwA1AVNIQgz/223bd6adcec8dcc48bd27521b6cbd4aa/Screen_Shot_2014-01-29_at_8.17.14_PM.png" alt="" class="kg-image" width="938" height="565" loading="lazy">
 
 	</figure>
 	<p>You can download the <a href="https://github.com/cloudflare/openssl-deprecate-rc4">patch here</a>.</p>

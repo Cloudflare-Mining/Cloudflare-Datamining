@@ -1,9 +1,9 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xtok1cx2QaNRK8WjwEI4J/9111902af1a851d381f62ff86f4fa3cb/saturday-night-fever-layer-7-attacks-against.jpg" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xtok1cx2QaNRK8WjwEI4J/dcfcddd96f08fbdda5de0dd1f6c3934a/saturday-night-fever-layer-7-attacks-against.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently, I've taken a look at DDoS attacks against CloudFlare sites at the IP level and the source of those attacks. The worst time for those DDoS attacks is the <a href="https://blog.cloudflare.com/the-wednesday-witching-hour-cloudflare-dos-st">Wednesday Witching Hour</a> and because of source IP address forgery most of the attacks seem to <a href="https://blog.cloudflare.com/mars-attacks">come from Mars</a>. But layer 7 attacks, where the attacker actually connects to our hardware using TCP and makes apparently valid HTTP requests are another matter: their source is traceable because of the need to establish a TCP connection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dyLzuhwquzwHo4ejUFBZ7/9c3b8cc5d4b2485c6df519f4852d3801/Saturday-Night-Fever-1977-movie-props.jpeg.scaled500.jpg" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dyLzuhwquzwHo4ejUFBZ7/81b1631ca9ee22dab4926648fae7ccef/Saturday-Night-Fever-1977-movie-props.jpeg.scaled500.jpg" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
 sites" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
@@ -12,27 +12,27 @@ sites" class="kg-image" width="500" height="375" loading="lazy">
 	<p>Although the attacks come all the time the worst day is Saturday. The following chart shows the number of unique IP addresses use in layer 7 DoS attacks by day of the week for the period January to August 2012.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4a59c9TMWALYotuaG3aia3/1ea553cde9247aa1ec3bbc2e0205a17e/7day.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4a59c9TMWALYotuaG3aia3/8c2def3e0db995d511d477ccdb3e9621/7day.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
 sites" class="kg-image" width="500" height="304" loading="lazy">
 
 	</figure>
 	<p>Focusing on the largest attacks shows the same trend with an uptick on Saturdays and layer 7 DoS attackers seeming to take a bit of a break on Sundays.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mp5GeHfxTeMoEdy31J340/79e2154bac2cd71758ab3d83323199f8/7day-big.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" class="kg-image" width="500" height="312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mp5GeHfxTeMoEdy31J340/790ed29a28218ebb38c39d1dca4fe46e/7day-big.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" class="kg-image" width="500" height="312" loading="lazy">
 
 	</figure>
 	<p>Looking at the time of day shows that attacks are occurring 24 hours a day with only a slight dip in the overall number of attacks around 0700 UTC (the middle of the night in California).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/L2FZB8dgqbARJKtjkTWpq/d9848de5468e591cac0b3173ae2a270f/7hod.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/L2FZB8dgqbARJKtjkTWpq/b5215fcb8a5550c614cc578a8ee2d11b/7hod.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
 sites" class="kg-image" width="500" height="278" loading="lazy">
 
 	</figure>
 	<p>But focussing on the largest attacks reveals a pattern with which our team is familiar. The largest layer 7 attacks come during the night in California (around midnight, 0800 UTC) and then again at around 1800 UTC (just when the folks who've been up half the night fighting attacks are coming into work).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4C1zmGWgmKAqet0Zi42j0R/1e4f54db53262f24b12cbafe6787a939/7hod-big.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4C1zmGWgmKAqet0Zi42j0R/f284fb62f8e46438b75a5f2b681dba28/7hod-big.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
 sites" class="kg-image" width="500" height="319" loading="lazy">
 
 	</figure>
@@ -40,7 +40,7 @@ sites" class="kg-image" width="500" height="319" loading="lazy">
 	<p>The trend across the year shows some intriguing, and dramatic, dips in layer 7 DoS activity. The dips in the chart are around the following dates: January 30, February 21 (Mardi Gras), March 20 (attackers recovering from St. Patrick's Day?), April 22 (did attackers take Earth Day off, or did people switch off their home machines making botnets smaller for a day?), May 29 (Memorial Day weekend), June 28 (just before July 4).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mZXlKgWmTr0jWJwzL8hiV/85c7534e38377f5a6cd1a124e957cdfc/7trend.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" class="kg-image" width="500" height="244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mZXlKgWmTr0jWJwzL8hiV/20477274ab99316ffee74098add721b6/7trend.png.scaled500.png" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare sites" class="kg-image" width="500" height="244" loading="lazy">
 
 	</figure>
 	<p>The overall trend month on month is up. For the first 6 months of 2012 we say a 10% increase in layer 7 DoS attacks but a 21% increase in large layer 7 attacks. Statistics for lower level DDoS attacks show a slight decline. Attackers appear to be switching to layer 7 attacks to take sites offline.</p>
@@ -50,7 +50,7 @@ sites" class="kg-image" width="500" height="319" loading="lazy">
 	<p>CloudFlare's mission is all about making sure our customers' web sites stay alive.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ofbCjYxxLY5fu6Ip0Ap7/1eddb871c14d13e0bfc8ac7eeb0dce05/sa002.jpg.scaled500.jpg" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ofbCjYxxLY5fu6Ip0Ap7/e806306af5206e77a5de696fc91f9bee/sa002.jpg.scaled500.jpg" alt="Saturday Night Fever: Layer 7 attacks against CloudFlare
 sites" class="kg-image" width="500" height="355" loading="lazy">
 
 	</figure>

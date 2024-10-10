@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JCsc7bajCBJ3wbOoVXgmb/6d2034925f16c7cfeab09421d25490dc/pac-spoof-drops-emotet-phish.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JCsc7bajCBJ3wbOoVXgmb/6f8fc6d526364455504166735afabbc8/pac-spoof-drops-emotet-phish.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in October 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>Following the recent <a href="https://healthitsecurity.com/news/emotet-malware-actors-return-with-malicious-email-campaign">return of Emotet</a> after a five-month hiatus, a newly-discovered phishing campaign is using updated tactics by leveraging the hype surrounding President Trump’s decision to halt U.S. funding for the World Health Organization (WHO). In a ruse to drop this dangerous banking trojan, the malicious messages take the form of a typical Political Action Committee (PAC) email, eliciting support for presidential incumbent Donald Trump in the upcoming 2020 election.</p>
@@ -18,7 +18,7 @@
 	<p>Like a Wolf in sheep’s clothing, the attacker cleverly disguises their Emotet delivery mechanism as messaging about timely and highly publicized, hot-button issues in politics.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ytkluOmXOD1hJxnypVEaC/7620f83e143c759b90f96c2058ab08c9/image4-6.png" alt="" class="kg-image" width="1999" height="1004" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ytkluOmXOD1hJxnypVEaC/76b71fe462ae6f17fbfce5323a29dae2/image4-6.png" alt="" class="kg-image" width="1999" height="1004" loading="lazy">
 
 	</figure>
 	<p>Figure 1. Screenshot of phishing message</p>
@@ -51,21 +51,21 @@
 	<p>At the bottom of the phishing message, there is a Microsoft Word Document that uses VBA Macros to drop the first-stage payload, the Emotet downloader. After clicking on the document, the user is prompted by a dialog box to enable editing and content, as depicted below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G3ir7Qw3akI7P1XaEpSak/0d5a0b87995a2a26a9be54b171af585f/image2-8.png" alt="" class="kg-image" width="920" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G3ir7Qw3akI7P1XaEpSak/9d311857679dfa72e2ab3aadaefc517a/image2-8.png" alt="" class="kg-image" width="920" height="400" loading="lazy">
 
 	</figure>
 	<p>Figure 2. Screenshot of Dialog Box</p>
 	<p>Merely clicking this box will enable a highly obfuscated VBA Macro (as shown in Figure 3) that runs an equally obfuscated PowerShell command using Windows Management Instrumentation (WMI).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wLVTbEWxGWjgj7BoJaify/86fdb81ef0316bdf56fa23daa0d946f8/image1-7.png" alt="" class="kg-image" width="749" height="255" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wLVTbEWxGWjgj7BoJaify/622248d7b9aedde014f413897272913b/image1-7.png" alt="" class="kg-image" width="749" height="255" loading="lazy">
 
 	</figure>
 	<p>Figure 3. Screenshot of Macro VBA obfuscated code</p>
 	<p>The content in Figure 4 shows a sampling of the PowerShell script after Area 1 Security researchers deobfuscated a majority of the code. This script attempts to download Emotet from a list of hardcoded <i>compromised WordPress</i> sites. It first runs through this list of sites (as highlighted below) to determine which are still actively hosting the Emotet trojan.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hEqjf9OW4FW593ADrmF9J/b4b3ffebba8fa4d8dcd572d4ee6de2c2/image3-5.png" alt="" class="kg-image" width="1348" height="1090" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hEqjf9OW4FW593ADrmF9J/b20e4cb7dd78c55bc4701be7d6c3c072/image3-5.png" alt="" class="kg-image" width="1348" height="1090" loading="lazy">
 
 	</figure>
 	<p>Figure 4. Screenshot of deobfuscated PowerShell</p>

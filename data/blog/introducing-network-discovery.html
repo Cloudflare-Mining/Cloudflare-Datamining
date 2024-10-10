@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31kTQILHW5NtAyRFpagnD3/4f29f683be7b894e460af8d0dbd7b97a/image4-19.png" alt="Introducing Private Network Discovery" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31kTQILHW5NtAyRFpagnD3/9cf91b29fc38d312f0f0f5a44ca93a15/image4-19.png" alt="Introducing Private Network Discovery" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>With Cloudflare One, building your private network on Cloudflare is easy. What is not so easy is maintaining the security of your private network over time. Resources are constantly being spun up and down with new users being added and removed on a daily basis, making it painful to manage over time.</p>
@@ -24,7 +24,7 @@
 	<p>On the other side of this equation, you need your end users to be able to easily connect to Cloudflare and, more importantly, your network. This connection is handled by our robust device agent, Cloudflare WARP. This agent can be rolled out to your entire organization in just a few minutes using your in-house MDM tooling, and it establishes a secure connection from your users’ devices to the Cloudflare network.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZSuHpn9OVszm7xyyWkPjj/3df165fd5eed174a85ef79f4573681ca/image2-29.png" alt="Building a private network on Cloudflare" class="kg-image" width="1695" height="825" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZSuHpn9OVszm7xyyWkPjj/e0fea4c23b93c94c8ea941e4b5711134/image2-29.png" alt="Building a private network on Cloudflare" class="kg-image" width="1695" height="825" loading="lazy">
 
 	</figure>
 	<p>Now that we have your infrastructure and your users connected to Cloudflare, it becomes easy to tag your applications and layer on Zero Trust security controls to verify both identity and device-centric rules for each and every request on your network.</p>
@@ -39,7 +39,7 @@
 	<p>As we mentioned earlier, we built this feature to help your team gain visibility into your network by passively cataloging unique traffic destined for an RFC 1918 or RFC 4193 address space. By design, this tool operates in an observability mode whereby all applications are surfaced, but are tagged with a base state of “Unreviewed.”</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7knrqbccpRyMSlXEJmjpe2/d98ade33c411d3f9e52724524d496f1e/image3-21.png" alt="Generating the Private Network Discovery Report" class="kg-image" width="1800" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7knrqbccpRyMSlXEJmjpe2/83f5716fa3d90ce3baa61e7b2eaad6b7/image3-21.png" alt="Generating the Private Network Discovery Report" class="kg-image" width="1800" height="645" loading="lazy">
 
 	</figure>
 	<p>The Network Discovery tool surfaces all origins within your network, defined as any unique IP address, port, or protocol. You can review the details of any given origin and then create a Cloudflare Access application to control access to that origin. It’s also worth noting that Access applications may be composed of more than one origin.</p>
@@ -48,7 +48,7 @@
 	<p>After you have assigned an application name and added your first origin, tcp:10.0.0.1:443, you can then follow the same pattern to add the other origin, udp:10.0.0.1:10000, as well. This allows you to create logical groupings of origins to create a more accurate representation of the resources on your network.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HyitCjObLQBZkGmAVJZBU/21be26143527f6885922c07fb0f100ee/image1-29.png" alt="Access Analytics: Private Network Discovery Report" class="kg-image" width="1999" height="1801" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HyitCjObLQBZkGmAVJZBU/95575ed3139f725f1a2a10081e50c86c/image1-29.png" alt="Access Analytics: Private Network Discovery Report" class="kg-image" width="1999" height="1801" loading="lazy">
 
 	</figure>
 	<p>By creating an application, our Network Discovery tool will automatically update the status of these individual origins from “Unreviewed'' to “In-Review.” This will allow your team to easily track the origin’s status. From there, you can drill further down to review the number of unique users accessing a particular origin as well as the total number of requests each user has made. This will help equip your team with the information it needs to create identity and device-driven Zero Trust policies. Once your team is comfortable with a given application's usage, you can then manually update the status of a given application to be either “Approved” or “Unapproved”.</p>

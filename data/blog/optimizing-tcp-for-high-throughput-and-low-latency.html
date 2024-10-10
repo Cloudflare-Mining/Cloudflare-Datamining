@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HNI6ivdZlqIiHle3kw74q/94bec66155f72469b519a19f6ab329f2/BLOG-1004-header.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HNI6ivdZlqIiHle3kw74q/7dcfbb260b4f50415f1909df397b52f6/BLOG-1004-header.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Here at Cloudflare we're constantly working on improving our service. Our engineers are looking at hundreds of parameters of our traffic, making sure that we get better all the time.</p>
@@ -11,7 +11,7 @@
 	<p>The tradeoff is that using a low value for tcp_rmem limits TCP throughput over high latency links. The following graph shows the maximum throughput as a function of network latency for a window size of 2 MiB. Note that the 2 MiB corresponds to a tcp_rmem value of 4 MiB due to the tcp_adv_win_scale setting in effect at the time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mRCX3pD7U0Yzn1QeHDDhL/aafbdcba0c82ab7d77585be931b8efb4/image10-5.png" alt="" class="kg-image" width="787" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mRCX3pD7U0Yzn1QeHDDhL/cef49d60e7e32c23d364cbbc65dd50e7/image10-5.png" alt="" class="kg-image" width="787" height="480" loading="lazy">
 
 	</figure>
 	<p>For the Cloudflare products then in existence, this was not a major problem, as connections terminate and content is served from nearby servers due to our BGP anycast routing.</p>
@@ -190,7 +190,7 @@ net.ipv4.tcp_adv_win_scale = -2</code></pre>
 	<p>Taking a step back, let’s look at the default Linux behavior. The following is kernel v5.15.16.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Is9BcIyjbhVAjoZiNetW1/e7f7f55dc7a419ebd2dcfc1de7b1a29e/Screenshot-2022-06-29-at-19.12.11.png" alt="" class="kg-image" width="1614" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Is9BcIyjbhVAjoZiNetW1/1620db2af7d5b29425b0f850566c078c/Screenshot-2022-06-29-at-19.12.11.png" alt="" class="kg-image" width="1614" height="488" loading="lazy">
 
 	</figure>
 	<p>The Linux kernel is effective at freeing up space in order to make room for incoming packets when the receive buffer memory limit is hit. As documented previously, the cost for saving these packets (i.e. not dropping them) is latency.</p>
@@ -246,37 +246,37 @@ net.ipv4.tcp_adv_win_scale = -2</code></pre>
 	<p>oscil – 300ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/NpI2ilVBtiaaCKwKeCPY5/3c40d8ad2f323461642ba62c6af29127/Screenshot-2022-06-29-at-19.35.26.png" alt="" class="kg-image" width="1632" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NpI2ilVBtiaaCKwKeCPY5/fa18322a23e1f021078642911a1712dd/Screenshot-2022-06-29-at-19.35.26.png" alt="" class="kg-image" width="1632" height="640" loading="lazy">
 
 	</figure>
 	<p>oscil – 20ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZaXvJh7k1GnZ2C3DjFaZB/6a06e2acee5a37a2adb400c307b5d06d/Screenshot-2022-06-29-at-19.35.38.png" alt="" class="kg-image" width="1626" height="650" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZaXvJh7k1GnZ2C3DjFaZB/da5579fae510e12525ff387c739b51e6/Screenshot-2022-06-29-at-19.35.38.png" alt="" class="kg-image" width="1626" height="650" loading="lazy">
 
 	</figure>
 	<p>oscil – 0ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LOI3kaW6x7ogSL222XHZ3/cabfd2d3d7135f5a443f883add0c2c90/Screenshot-2022-06-29-at-19.36.44.png" alt="" class="kg-image" width="1626" height="648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LOI3kaW6x7ogSL222XHZ3/8e3598c9d8ca31a814c1794f0f4290ce/Screenshot-2022-06-29-at-19.36.44.png" alt="" class="kg-image" width="1626" height="648" loading="lazy">
 
 	</figure>
 	<p>iperf3 – 300 ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6x5WMIfI815e5G3RMv1q9C/5ce42351aa64d5fdfa06e474e0165799/Screenshot-2022-06-29-at-19.38.17.png" alt="" class="kg-image" width="1630" height="532" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6x5WMIfI815e5G3RMv1q9C/45c8bc659090d925ee9dbefe66fd841a/Screenshot-2022-06-29-at-19.38.17.png" alt="" class="kg-image" width="1630" height="532" loading="lazy">
 
 	</figure>
 	<p>iperf3 – 20 ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DZ2rpXAAayUUNOHM3YFae/d1e459afbcd0a05c257c96c435c6fc26/Screenshot-2022-06-29-at-19.39.07.png" alt="" class="kg-image" width="1630" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DZ2rpXAAayUUNOHM3YFae/f9c16451c5215e6722e90fc81f7c47e7/Screenshot-2022-06-29-at-19.39.07.png" alt="" class="kg-image" width="1630" height="540" loading="lazy">
 
 	</figure>
 	<p>iperf3 – 0ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fQBnlRoHFWaCeWjo5vlv6/f8a8b27f4ffc2f3981cf0df61f76b5f5/Screenshot-2022-06-29-at-19.39.19.png" alt="" class="kg-image" width="1630" height="536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fQBnlRoHFWaCeWjo5vlv6/b23387d2fd95b8da315e3cfb3b220a8d/Screenshot-2022-06-29-at-19.39.19.png" alt="" class="kg-image" width="1630" height="536" loading="lazy">
 
 	</figure>
 	<p>All tests are successful.</p>
@@ -291,12 +291,12 @@ net.ipv4.tcp_adv_win_scale = -2</code></pre>
 	<p>In order to determine this setting, we need to understand what the biggest queue we <i>can</i> collapse without incurring unacceptable latency.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PfP9U02g39dedYXSqz0H2/669a60c75fc769eeeb762ffcb74aa4f1/image8-12.png" alt="" class="kg-image" width="813" height="474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PfP9U02g39dedYXSqz0H2/8b61121e3ffe7f102fea0d682d902c56/image8-12.png" alt="" class="kg-image" width="813" height="474" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14e9NHQT0aciu7bJvpLyIM/fe3519b2ad79a6d47972455b1596219f/image7-13.png" alt="" class="kg-image" width="820" height="477" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14e9NHQT0aciu7bJvpLyIM/5df55a86e2a24c7c7501c2c80a38e847/image7-13.png" alt="" class="kg-image" width="820" height="477" loading="lazy">
 
 	</figure>
 	<p>Using 6 MiB should result in a maximum latency of no more than 2 ms.</p>
@@ -352,7 +352,7 @@ net.ipv4.tcp_notsent_lowat = 131072</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GkgLi4X0vuXMl7rOEWvZK/bfe4107fcc39ce5cde8fd6f864c21bf7/image3-36.png" alt="" class="kg-image" width="757" height="449" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GkgLi4X0vuXMl7rOEWvZK/e64146a2a197174ab5e563b34b8ba9e8/image3-36.png" alt="" class="kg-image" width="757" height="449" loading="lazy">
 
 	</figure>
 	<p>RTT (ms)</p>
@@ -372,25 +372,25 @@ net.ipv4.tcp_notsent_lowat = 131072</code></pre>
 	<p><b>Iowa-Marseille throughput</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WvQmKxKD8buJU17GU15Kw/c8e09c3c64044ca6d7c87726515ee9a2/image6-16.png" alt="" class="kg-image" width="958" height="512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WvQmKxKD8buJU17GU15Kw/798330bea25ad3dedfe5d1beb8578363/image6-16.png" alt="" class="kg-image" width="958" height="512" loading="lazy">
 
 	</figure>
 	<p><b>Iowa-Marseille receive window and bytes-in-flight</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2V2iFmp0s1h8vH4SyrzFQS/197417830c22d3a563d36ab67b098544/image2-51.png" alt="" class="kg-image" width="1023" height="507" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2V2iFmp0s1h8vH4SyrzFQS/5b1118af5ff1ee2116aacfe7c9d60927/image2-51.png" alt="" class="kg-image" width="1023" height="507" loading="lazy">
 
 	</figure>
 	<p><b>Melbourne-Marseille throughput</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PnqeHPMJbmCuyGvt9UjtA/7a6718fa4067cbc613ac900d6ed0be3e/image9-10.png" alt="" class="kg-image" width="965" height="514" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PnqeHPMJbmCuyGvt9UjtA/037328ab56686611fce568409e0c8336/image9-10.png" alt="" class="kg-image" width="965" height="514" loading="lazy">
 
 	</figure>
 	<p><b>Melbourne-Marseille receive window and bytes-in-flight</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4H5cZs3oyG7KiTKL9m4b7R/16ed59f4c5fad54d6af6fbd29a6b41a2/image5-21.png" alt="" class="kg-image" width="1030" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4H5cZs3oyG7KiTKL9m4b7R/ff9563e9d1a69da0adb653587dd1f336/image5-21.png" alt="" class="kg-image" width="1030" height="504" loading="lazy">
 
 	</figure>
 	<p>Even with the new settings in place, the Melbourne to Marseille performance is limited by the receive window on the Cloudflare host. This means that further adjustments to these settings yield even higher throughput.</p>
@@ -406,13 +406,13 @@ net.ipv4.tcp_notsent_lowat = 131072</code></pre>
 	<p><b>Cloudflare hosts in Marseille running the current production settings</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jxkFikBYH12eNxfHcHwXR/c62ea00167a6160b3875246b99be7279/image11-4.png" alt="" class="kg-image" width="765" height="372" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jxkFikBYH12eNxfHcHwXR/c8c3e183a28b84a4f93bc725309d5eff/image11-4.png" alt="" class="kg-image" width="765" height="372" loading="lazy">
 
 	</figure>
 	<p><b>Cloudflare hosts in Marseille running the new settings</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dqk8mtvEpghINGK0bfKUz/e946e078c3d714f66dd8365afd1da4cf/image1-59.png" alt="" class="kg-image" width="764" height="368" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dqk8mtvEpghINGK0bfKUz/cec115db36d4a927ca4764bfe022cad8/image1-59.png" alt="" class="kg-image" width="764" height="368" loading="lazy">
 
 	</figure>
 	<p>The takeaway in looking at these graphs is that maximum TCP collapse time for the new settings is no worse than with the current production settings. This is the desired result.</p>
@@ -430,7 +430,7 @@ net.ipv4.tcp_notsent_lowat = 131072</code></pre>
 	<p>The results are significant:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yXWQ4mWrhKWV8Tzv0bUCb/8dc7615447e65d5c44ce71baa75042ce/image4-29.png" alt="" class="kg-image" width="1199" height="639" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yXWQ4mWrhKWV8Tzv0bUCb/75339710d08b943a8cb884a68377d4ec/image4-29.png" alt="" class="kg-image" width="1199" height="639" loading="lazy">
 
 	</figure>
 	<p>The RTT for these tests was 466ms. Throughput is not negatively affected. Throughput is at full wire speed in all cases (1 Gbps). Memory usage is as reported by /proc/net/sockstat, TCP mem.</p>

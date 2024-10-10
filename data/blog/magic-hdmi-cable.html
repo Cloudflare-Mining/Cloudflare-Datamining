@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EDQ1S6d0gKtzZB3FPWqxX/1d18d65be63056ca46de41f87bf8e199/Stream---RTMP.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EDQ1S6d0gKtzZB3FPWqxX/a75629c3610c17adcce3e9eed13cf89c/Stream---RTMP.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Starting today, in open beta, <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a> supports video playback with sub-second latency over SRT or RTMPS at scale. Just like <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming">HLS</a> and DASH formats, playback over RTMPS and SRT costs $1 per 1,000 minutes delivered regardless of video encoding settings used.</p>
@@ -30,7 +30,7 @@
 	<p>We’ve tested about 500ms of glass to glass latency from San Francisco to London, both from and to residential networks. If both the broadcaster and the viewers were in California, this number would be lower, simply because of lower delay caused by less distance to travel over speed of light. An early tester was able to achieve 300ms of latency by broadcasting using OBS via RTMPS to Cloudflare Stream and pulling down that content over SRT using ffplay.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2X9Jnr7Cj20i62zOz2AS6u/31e6084112d387a8498f912918f3f2bd/RTMPS.png" alt="" class="kg-image" width="1178" height="801" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2X9Jnr7Cj20i62zOz2AS6u/7a672eb97ecd0991a3ad7adc937738a1/RTMPS.png" alt="" class="kg-image" width="1178" height="801" loading="lazy">
 
 	</figure>
 	<p>Any server in the Cloudflare Anycast network can receive and publish low-latency video, which means that you're automatically broadcasting to the nearest server with no configuration necessary. To minimize latency and avoid network congestion, we route video traffic between broadcaster and audience servers using the same network telemetry as <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo</a>.</p>

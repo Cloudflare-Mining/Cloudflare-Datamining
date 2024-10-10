@@ -1,10 +1,10 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LJDgPp6sQymIMqjRDBuKZ/db8915c2b839436c306496b66d19923e/weird-bug-of-the-day-twitter-in-app-browser-cant-visit-site.png" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LJDgPp6sQymIMqjRDBuKZ/079c5e71ae732710df0189a02ae7a065/weird-bug-of-the-day-twitter-in-app-browser-cant-visit-site.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We keep a close eye on tweets that mention CloudFlare because sometimes we get early warning about odd errors that we are not seeing ourselves through our monitoring systems.</p>
 	<p>Towards the end of August we saw a small number of tweets like this one:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3N70nN3la2z027RKH74AMt/d7e2ba7b21b29b1e1ac54e3fec15708f/Screen-Shot-2015-09-07-at-14-18-42.png" alt="" class="kg-image" width="1188" height="648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3N70nN3la2z027RKH74AMt/860b153c7dae72850bd5d411839c7c07/Screen-Shot-2015-09-07-at-14-18-42.png" alt="" class="kg-image" width="1188" height="648" loading="lazy">
 
 	</figure>
 	<p>indicating that trying to browse to a CloudFlare customer web site using the Twitter in-app browser was resulting in an error page. Which was <i>very odd</i> because it was clearly only happening occasionally: <i>very</i> occasionally.</p>
@@ -42,7 +42,7 @@ User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mtfnt5DXeYMJ6SXR7GOgg/28076255925671062b94ba2d3215d1ec/Screen-Shot-2015-09-07-at-14-48-07.png" alt="" class="kg-image" width="1904" height="327" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mtfnt5DXeYMJ6SXR7GOgg/33a121a054a1e600f9c9a7ba81a81020/Screen-Shot-2015-09-07-at-14-48-07.png" alt="" class="kg-image" width="1904" height="327" loading="lazy">
 
 	</figure>
 	<p>CloudFlare's <a href="https://support.cloudflare.com/hc/en-us/articles/200170086-What-does-the-Browser-Integrity-Check-do-">Browser Integrity Check</a> was verifying that the Referer header was well formed and generating the error (since there's a Referer, but it's empty) and it looks like the Twitter app in-app browser (and, we later discovered, the Facebook app in-app browser) are, instead of removing the header, blanking it out.</p>

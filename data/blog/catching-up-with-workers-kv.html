@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vbenILawyzD5vRcVtPeiM/d301f0bb81b33df7c25fc894e0a3c4ef/catching-up-with-KV-_2x.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vbenILawyzD5vRcVtPeiM/4f32079be1842e77f7b2aaf77a755b5d/catching-up-with-KV-_2x.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
 
 	</figure>
 	<p>The Workers Distributed Data team has been hard at work since <a href="https://blog.cloudflare.com/whats-new-with-workers-kv">we gave you an update last November</a>. Today, we’d like to share with you some of the stuff that has recently shipped in Workers KV: a new feature and an internal change that should significantly improve latency in some cases. Let’s dig in!</p>
@@ -51,14 +51,14 @@ await contents.put(“index.js”, someJsContent, {“Content-Type”: “text/j
 	<p>How much faster? Well, it will depend on your workload. Several other Cloudflare products use Workers KV, and here’s a graph of response times from one of them:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rWSdJkZyGgRnuRQepJzmE/449eb572eff914cbd68d1140e63dfa7d/image2-10.png" alt="" class="kg-image" width="1999" height="1225" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rWSdJkZyGgRnuRQepJzmE/bcb9ef29ac2bfb276f4592c6638dc143/image2-10.png" alt="" class="kg-image" width="1999" height="1225" loading="lazy">
 
 	</figure>
 	<p>As you can see, there’s a sharp drop in the graph when the switchover happened.</p>
 	<p>We can also measure this time across all customers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bZoPcQ3CbtsahcNKvTExa/025e5a6a2fe0008c64537cf4b9f9b917/image1-11.png" alt="" class="kg-image" width="1015" height="306" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bZoPcQ3CbtsahcNKvTExa/d5751591954fe86fd1416b9853f04bff/image1-11.png" alt="" class="kg-image" width="1015" height="306" loading="lazy">
 
 	</figure>
 	<p>The long tail has been significantly shortened. (We’ve redacted the exact numbers, but you can still see the magnitude of the changes.)</p>

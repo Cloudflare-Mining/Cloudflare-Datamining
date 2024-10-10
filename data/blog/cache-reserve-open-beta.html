@@ -4,7 +4,7 @@
 	<p><i></i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ni8e1xP2TTTgsWfQun7u9/ec7dd041bbb36db9f4e3933976766a6e/Cache-Reserve-Open-Beta.png" alt="Reduce origin load, save on cloud egress fees, and maximize cache hits with Cache Reserve" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ni8e1xP2TTTgsWfQun7u9/0c3e07191798bf7ac736d9b54350c2f0/Cache-Reserve-Open-Beta.png" alt="Reduce origin load, save on cloud egress fees, and maximize cache hits with Cache Reserve" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Earlier this year, we introduced Cache Reserve. Cache Reserve helps users serve content from Cloudflare’s cache for longer by using <a href="https://www.cloudflare.com/products/r2">R2</a>’s persistent data storage. Serving content from Cloudflare’s cache benefits website operators by reducing their bills for <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a> from origins, while also benefiting website visitors by having content load faster.</p>
@@ -22,7 +22,7 @@
 	<p>The distance between the visitor and the origin can affect the performance of the asset as it may travel a long distance for the response. This is also where the user is charged a fee to move the content from where it’s stored on the origin to the visitor requesting the content. These fees, known as “bandwidth” or “egress” fees, are familiar monthly line items on the invoices for users that host their content on cloud providers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7p6Nnmjna0afwsk0flu98t/95c581f3ebc03ef0f662cccf79c94d00/Response-Flow.png" alt="" class="kg-image" width="1600" height="738" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7p6Nnmjna0afwsk0flu98t/eba76d569819cc15ca1c803590caf7e3/Response-Flow.png" alt="" class="kg-image" width="1600" height="738" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s CDN sits between the origin and visitor and evaluates the origin’s response to see if it can be cached. If it can be added to Cloudflare’s cache, then the next time a request comes in for that content, Cloudflare can respond with the cached asset, which means there's no need to send the request to the origin– reducing egress fees for our customers. We also cache content in data centers close to the visitor to improve the performance and cut down on the transit time for a response.</p>
@@ -33,7 +33,7 @@
 	<p>Some customers, however, have large libraries of content that may not be requested for long periods of time. Using the traditional cache, these assets would likely be evicted and, if requested again, served from the origin. Keeping assets in cache requires that they remain popular on the Internet which is hard given what’s popular or current is constantly changing. Evicting content that becomes cold means additional origin egress for the customer if that content needs to be pulled repeatedly from the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iewRr0TSvgJQweqFGos7r/ba01d004a735bfcbabb19a76175fa7cd/Cache-Reserve-Response-Flow.png" alt="" class="kg-image" width="1600" height="738" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iewRr0TSvgJQweqFGos7r/bc11bdf11f206f58767966cba190da20/Cache-Reserve-Response-Flow.png" alt="" class="kg-image" width="1600" height="738" loading="lazy">
 
 	</figure>
 	<p><b>Enter Cache Reserve</b>This is where Cache Reserve shines. Cache Reserve serves as the ultimate upper-tier data center for content that might otherwise be evicted from cache. Once <a href="https://developers.cloudflare.com/cache/about/cache-reserve/#cache-reserve-asset-eligibility">admitted</a> to Cache Reserve, content can be stored for a much longer period of time– 30 days by <a href="https://developers.cloudflare.com/cache/about/cache-reserve">default</a>. If another request comes in during that period, it can be extended for another 30 days (and so on) or until cache-control signifies that we should no longer serve that content from cache. Cache Reserve serves as a safety net to backstop all cacheable content, so customers don't have to worry about unwanted cache eviction and origin egress fees.</p>
@@ -77,7 +77,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7A0KCP536ALqWhmE5xLR6g/dc66c3901459c47de7fb13d5318afc06/Screen-Shot-2022-11-14-at-4.31.20-PM.png" alt="" class="kg-image" width="1600" height="534" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7A0KCP536ALqWhmE5xLR6g/5a4cab50d1d9cdad46a83456d7b21824/Screen-Shot-2022-11-14-at-4.31.20-PM.png" alt="" class="kg-image" width="1600" height="534" loading="lazy">
 
 	</figure>
 	<p>This is magic! None of the above needs to be managed by the user. By bringing together R2, Workers, Durable Objects, Pingora, and Tiered Cache we were able to quickly build and make changes to Cache Reserve to scale as needed…</p>
@@ -133,7 +133,7 @@
 	<p>We will continue to make sure that we are quickly triaging the feedback you give us and making improvements to help ensure Cache Reserve is easy to use, massively beneficial, and your choice for reducing egress fees for cached content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AtiPruR4tHDw87XV1NdfE/54da3ac9e3022796c01420b7d7c9dfa1/Screen-Shot-2022-11-10-at-12.00.31-PM.png" alt="" class="kg-image" width="1600" height="1077" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AtiPruR4tHDw87XV1NdfE/0ac9a73b571bc43b41cc56449fd5b6eb/Screen-Shot-2022-11-10-at-12.00.31-PM.png" alt="" class="kg-image" width="1600" height="1077" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

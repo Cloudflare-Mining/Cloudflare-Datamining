@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/454zT29tGMzMld2Zybtn6X/8718d9c3eced290d0f2ee7d44e50df04/image2-10.png" alt="Cloudflare Aegis: dedicated IPs for Zero Trust migration" class="kg-image" width="1201" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/454zT29tGMzMld2Zybtn6X/bef01bc771ad70230c2817be4d690d52/image2-10.png" alt="Cloudflare Aegis: dedicated IPs for Zero Trust migration" class="kg-image" width="1201" height="676" loading="lazy">
 
 	</figure>
 	<p>Realizing the goals of Zero Trust is a journey: moving from a world of static networking and hardware concepts to organization-based access and continuous validation is not a one-step process. This challenge is never more real than when dealing with IP addresses. For years, companies on the Internet have built hardened systems based on the idea that only users with certain IP addresses can access certain resources. This implies that IP addresses are tied with identity, which is a kluge and can actually open websites up to attack in some cases. For large companies with many origins and applications that need to be protected in a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a>, it’s important to be able to support their transition to Zero Trust using mTLS, Access, or Tunnel. To make the transition some organizations may need dedicated IP addresses.</p>
@@ -31,13 +31,13 @@
 	<p>Cloudflare Aegis helps solve this problem by scoping the number of IPs we use to talk to Blank Bank from millions down to one: the private egress IP we allocated for them and only them. This IP address ensures that the only traffic that should be reaching Blank Bank servers comes from an IP meant for only Blank Bank traffic: no other Cloudflare customer attempting to reach Blank Bank will have this IP address. Furthermore, this IP is not publicly listed making it harder for an attacker to figure out what IP Cloudflare is using to speak to Blank Bank. With this, Blank Bank can restrict their network Access Control Lists (ACLs) to only allow traffic coming from this IP into their network. Here’s how their network firewall looks before Aegis:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rbWuO63aCiycGGcEUeBsa/d23d04971477733e932c006fa318d26f/image1-18.png" alt="" class="kg-image" width="1399" height="388" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rbWuO63aCiycGGcEUeBsa/f183ea30532af5c4af77733ab221e83d/image1-18.png" alt="" class="kg-image" width="1399" height="388" loading="lazy">
 
 	</figure>
 	<p>After getting an Aegis IP, they can completely lock down their firewalls to only allow traffic from the Aegis IP that is reserved for them:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vhDK0ddfdlMLjGFRzNipR/598e6726d4723ee20a7d02bca11d36aa/image3-15.png" alt="" class="kg-image" width="1399" height="388" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vhDK0ddfdlMLjGFRzNipR/42c4cbf496cf3490cfe283dde1be2b36/image3-15.png" alt="" class="kg-image" width="1399" height="388" loading="lazy">
 
 	</figure>
 	<p>Simply by making a change of egress IP, we've been able to better protect Blank Bank’s entire network, ensuring they can keep developing new features and improving their already stellar customer experience, while keeping their endpoints safe until they are able to deploy mTLS to every single origin they need to.</p>

@@ -1,15 +1,15 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZzoWjSKtccQkXrKAW6gZW/37299fba40458a80681cc2a1e0b1dcea/health-check-analytics-and-how-you-can-use-it.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZzoWjSKtccQkXrKAW6gZW/1fda212448d61878203e9c6b1e3b82d1/health-check-analytics-and-how-you-can-use-it.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At the end of last year, we introduced <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">Standalone Health Checks</a> - a service that lets you monitor the health of your origin servers and avoid the need to purchase additional third party services. The more that can be controlled from Cloudflare decreases maintenance cost, vendor management, and infrastructure complexity. This is important as it ensures you are able to scale your infrastructure seamlessly as your company grows. Today, we are introducing Standalone Health Check Analytics to help decrease your time to resolution for any potential issues. You can find Health Check Analytics in the sub-menu under the Traffic tab in your Cloudflare Dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7f25fu7kADPkUPmpNrPqbV/911b949b35b8b88e7219f610be6bb1f6/image6-2.png" alt="" class="kg-image" width="1999" height="297" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7f25fu7kADPkUPmpNrPqbV/efa9b95ac2310e7abd23ea9ee79be535/image6-2.png" alt="" class="kg-image" width="1999" height="297" loading="lazy">
 
 	</figure>
 	<p>As a refresher, Standalone Health Checks is a service that monitors an IP address or hostname for your origin servers or application and notifies you in near real-time if there happens to be a problem. These Health Checks support fine-tuned configurations based on expected codes, interval, protocols, timeout and <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">more</a>. These configurations enable you to properly target your checks based on the unique setup of your infrastructure. An example of a Health Check can be seen below which is monitoring an origin server in a staging environment with a notification set via email.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rPMDAiXMEg7DUPWHSI33a/a01ad2934bef78502df29c308951c8cb/image7.png" alt="" class="kg-image" width="951" height="894" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rPMDAiXMEg7DUPWHSI33a/74089596eb49bfde3619b08fa3b72941/image7.png" alt="" class="kg-image" width="951" height="894" loading="lazy">
 
 	</figure>
 	<p>Once you set up a notification, you will be alerted when there is a change in the health of your origin server. In the example above, if your staging environment starts responding with anything other than a 200 OK response code, we will send you an email within seconds so you can take the necessary action before customers are impacted.</p>
@@ -26,13 +26,13 @@
 	<p>This starts to narrow the funnel for what the issue could be. We know that there is something wrong with either the Staging server's ability to receive connections, maybe an issue during the SYN-ACK handshake, or possibly an issue with the router being used and not an issue with the origin server at all but instead receiving a down-stream consequence. With this information, you can quickly make the necessary checks to validate your hypothesis and minimize your time to resolution. Instead of having to dig through endless logs, or try to make educated guesses at where the issue could stem from, Health Check Analytics allows you to quickly hone in on detailed areas that could be the root cause. This in turn maximizes your application reliability but more importantly, keeps trust and brand expectation with your customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5u9fZspxov0t9Zv6MpDz07/ee408902ce80716b489f9d2bd59ea17e/image1-5.png" alt="" class="kg-image" width="1516" height="1334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5u9fZspxov0t9Zv6MpDz07/f0e81032ac1c5cc5c7dbba46cb104195/image1-5.png" alt="" class="kg-image" width="1516" height="1334" loading="lazy">
 
 	</figure>
 	<p>Being able to quickly understand an overview of your infrastructure is important, but sometimes being able to dig deeper into each healthcheck can be more valuable to understand what is happening at a granular level. In addition to general information like address, response-code, <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a> and failure reason, &nbsp;we are adding more features to help you understand the Health Check result(s). We have also added extra information into the event table so you can quickly understand a given problem. In the case of a Response Code Mismatch Error, we now provide the expected response code for a given Health Check along with the received code. This removes the need to go back and check the configuration that may have been setup long ago and keep focus on the problem at hand.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nItEajnHqqIPpyOC2rxBk/7c4a42603d994e87a172df5704b060da/image4.png" alt="" class="kg-image" width="969" height="489" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nItEajnHqqIPpyOC2rxBk/3485f38a0c9b7ac77fa827ea4a8fef49/image4.png" alt="" class="kg-image" width="969" height="489" loading="lazy">
 
 	</figure>
 	<p>The availability of different portions of your infrastructure is very important, but this does not provide the complete view. Performance is continuing to skyrocket in importance and value to customers. If an application is not performant, they will quickly go to a competitor without a second thought. Sometimes RTT is not enough to understand why requests have higher latency and where the root of the issue may reside. To better understand where time is spent for a given request, we are introducing the waterfall view of a request within the Event Log. With this view, you can understand the time taken for the TCP connection, time taken for the TLS handshake, and the time to first byte (TTFB) for the request. The waterfall will give you a chronological idea about time spent in different stages of the request.</p>
@@ -54,13 +54,13 @@
 	<p>Cloudflare has over 200 edge locations around the world making it one of the largest Anycast networks on the planet. When a health check is configured, it can be run across the different regions on the Cloudflare infrastructure, enabling you to see the variation in latency around the world for specific Health Checks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2mvXsdyNuJ4mV3QPhcbjag/cf687841cac5d09af0336d91a66866af/image2-4.png" alt="" class="kg-image" width="968" height="491" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2mvXsdyNuJ4mV3QPhcbjag/a0043711628a194fddb8ce60c6aab2a2/image2-4.png" alt="" class="kg-image" width="968" height="491" loading="lazy">
 
 	</figure>
 	<p>Waterfall from India</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ehZAiYItuf69fyMo7Gful/0b266b31fa6b9d150a8638352c1955de/image5-2.png" alt="" class="kg-image" width="969" height="476" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ehZAiYItuf69fyMo7Gful/d723821ec1d4f7f2ac662a94e7d29965/image5-2.png" alt="" class="kg-image" width="969" height="476" loading="lazy">
 
 	</figure>
 	<p>Waterfall from Western North America‌‌</p>
@@ -78,7 +78,7 @@
 	<p>Imagine you configure a Health Check from two regions, Western North America and South East Asia, at an interval of 10 seconds. You may have been expecting to get two requests to your origin server every 10 seconds, but if you look at your server’s logs you will see that you are actually getting six. That is because we send Health Checks not just from one location in each region but three.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6thlddjekU628u1WI3wPrY/2dba76091c98977039db62d59712edb7/image3-1.png" alt="" class="kg-image" width="538" height="590" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6thlddjekU628u1WI3wPrY/204fd64bba493ca2d3b3969ca9a8ddff/image3-1.png" alt="" class="kg-image" width="538" height="590" loading="lazy">
 
 	</figure>
 	<p>For a health check configured from All Regions (thirteen regions) there will be 39 requests to your server per configured interval.</p>

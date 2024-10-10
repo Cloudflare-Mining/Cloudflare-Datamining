@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cIE9yVmHZqySrtOvL5RZf/fd5b7426f318abebf2b8236f35542b1a/image14-1.png" alt="Unbounded memory usage by TCP for receive buffers, and how we fixed it" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cIE9yVmHZqySrtOvL5RZf/5562d6abf0227dacb18cd13509fbe3f3/image14-1.png" alt="Unbounded memory usage by TCP for receive buffers, and how we fixed it" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we are constantly monitoring and optimizing the performance and resource utilization of our systems. Recently, we noticed that some of our TCP sessions were allocating more memory than expected.</p>
@@ -20,7 +20,7 @@
 	<p>Digging into the details, we observed that most of those TCP sessions had a <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> (RTT) of roughly 20ms. <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT is the round trip time</a> between the endpoints, measured in milliseconds. At that latency, standard <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product">BDP</a> calculations tell us that a window size of 2.5 MB can accommodate up to 1 Gbps of throughput. We then counted the number of TCP sessions with an upper memory limit set by autotuning (skmem_rb) greater than 5 MB, which is double our calculated window size. The relationship between the window size and skmem_rb is described in more detail <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">here</a>. &nbsp;There were 558 such TCP sessions on one of our servers. Most of those sessions looked similar to this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5E38uVpENXg60453V33B8z/63e606c9b72bef08c03b725c30f62092/Screenshot-2023-05-25-at-15.28.57.png" alt="" class="kg-image" width="1582" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5E38uVpENXg60453V33B8z/036d2e40ab0ea1734ea6f19ef158a378/Screenshot-2023-05-25-at-15.28.57.png" alt="" class="kg-image" width="1582" height="734" loading="lazy">
 
 	</figure>
 	<p>The key fields to focus on above are:</p>
@@ -51,7 +51,7 @@
 	<p>Here is a graph of one of the problematic sessions, showing skmem_r (allocated memory) and skmem_rb (the limit for “r”) over time:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6frTdIWTmJblioLZM26wYy/56bec41506156893c392c9da308b5c8b/download-17.png" alt="" class="kg-image" width="800" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6frTdIWTmJblioLZM26wYy/783af9ffa5a5e12b8178583ec95baa51/download-17.png" alt="" class="kg-image" width="800" height="500" loading="lazy">
 
 	</figure>
 	<p>This graph is showing us that the limit being set by autotuning is being ignored, because every time skmem_r exceeds skmem_rb, skmem_rb is simply being raised to match it. So something is wrong with how skmem_rb is being handled. This explains the high memory usage. The question now is why.</p>
@@ -150,13 +150,13 @@ while True:
 	<p>Here is what this TCP session is doing:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4a1rsgh4WSUwmMi6lBj6P3/b370a0aed680e28e82a6313cfed0b3bb/download--1--11.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4a1rsgh4WSUwmMi6lBj6P3/967eb34bdceab5dd6752d308befdef18/download--1--11.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>At second 189 of the run, we see these packets being exchanged:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/kyCivGZSURqg8rQc1Rl32/7b72a90ae8567837a2cb434d8e853667/download--2--9.png" alt="" class="kg-image" width="1600" height="509" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/kyCivGZSURqg8rQc1Rl32/e447480e0679472ef93d86068fc4697b/download--2--9.png" alt="" class="kg-image" width="1600" height="509" loading="lazy">
 
 	</figure>
 	<p>This is a significant failure because the memory limits are being ignored, and memory usage is unbounded until net.ipv4.tcp_rmem max is reached.</p>
@@ -188,7 +188,7 @@ while True:
 	<p>We did find similar TCP sessions on our production network, which provided confirmation. But we also found this one, which, although it looks a little different, is actually the same root cause:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77M3L6t408cvgtJm9H4bFw/3bda16c796ce4a19f7bf330d24b655c4/download--3--6.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77M3L6t408cvgtJm9H4bFw/419901429ff9e1298659c3635d96b59b/download--3--6.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>During this TCP session, the rate at which the userspace process is reading from the socket (the L7read rate line) after second 411 is zero. That is, L7 stops reading entirely at that point.</p>
@@ -196,7 +196,7 @@ while True:
 	<p>Here is the pattern of packet exchange that repeats itself during the erroneous “growth phase” after L7 stopped reading at the 411 second mark:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/680HeUb2d1KD6usPg0lC2/1650f700142b290c2fc130acbeb23cb9/download--4--6.png" alt="" class="kg-image" width="1600" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/680HeUb2d1KD6usPg0lC2/ac04168db28094115cca11807834f3c1/download--4--6.png" alt="" class="kg-image" width="1600" height="300" loading="lazy">
 
 	</figure>
 	<p>This variation of the problem is addressed below in the section called “Reader never reads”.</p>
@@ -233,7 +233,7 @@ while True:
 	<p><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L4770">tcp_try_rmem_schedule</a> is being called as usual.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/aohoByJQqypdNrDLfoiDB/a73cf0fba9ea89e3af77037a91939ce5/download--5--6.png" alt="" class="kg-image" width="554" height="255" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aohoByJQqypdNrDLfoiDB/1ec5444d6bada18fbb955e9cf6ac40d0/download--5--6.png" alt="" class="kg-image" width="554" height="255" loading="lazy">
 
 	</figure>
 	<p>Sometimes rmem_alloc &gt; sk_rcvbuf. When that happens, prune is called, which calls tcp_clamp_window. tcp_clamp_window <i>increases</i> sk_rcvbuf to match rmem_alloc. That is unexpected.</p>
@@ -304,7 +304,7 @@ while True:
 	<p>The way TCP’s sliding window works is described in Stevens, “TCP/IP Illustrated, Volume 1”, section 20.3. &nbsp;Visually, the receive window looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T4BEKeOU8Vaa7rzuec8OI/51ee17201faf41735cec4b57b63a5333/download--6--5.png" alt="" class="kg-image" width="1600" height="552" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3T4BEKeOU8Vaa7rzuec8OI/641a64303988fd717fbcc1bbc61dadd9/download--6--5.png" alt="" class="kg-image" width="1600" height="552" loading="lazy">
 
 	</figure>
 	<p>In the early days of the Internet, wide-area communications links offered low bandwidths (relative to today), so the 16 bits in the TCP header was more than enough to express the size of the receive window needed to achieve optimal throughput. Then the future happened, and now those 16-bit window values are scaled based upon a multiplier set during the TCP 3-way handshake.</p>
@@ -408,7 +408,7 @@ while True:
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7323#section-2.4">RFC 7323</a> says:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hjOIKUJlsa2mQ3NTD0oNS/d951b8b978092233ed55e971845c89b1/download--7--1.png" alt="" class="kg-image" width="605" height="251" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hjOIKUJlsa2mQ3NTD0oNS/6fe810be0066a57ca07a8fdfbb5cd4dd/download--7--1.png" alt="" class="kg-image" width="605" height="251" loading="lazy">
 
 	</figure>
 	<p>There are two elements here that are important.</p>
@@ -446,13 +446,13 @@ while True:
 	<p>Here is the test we showed above, but this time using the kernel patch:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q08PzhHmDALsyvrqEanvp/c4da33e404104bf53b98910188836af2/download--8--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6q08PzhHmDALsyvrqEanvp/a0de8edfc8961bc66ee4f888c2dda58b/download--8--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>Here is the pattern of packet exchanges that repeat when using the kernel patch:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jENxEgOngxoMsWA2CtkGb/f50a418e9f37b7601134e09ec89dec5b/download--10--1.png" alt="" class="kg-image" width="1600" height="593" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jENxEgOngxoMsWA2CtkGb/e56d683213ce56c55b3626bedce92a97/download--10--1.png" alt="" class="kg-image" width="1600" height="593" loading="lazy">
 
 	</figure>
 	<p>We see that the memory limit is being honored, ZeroWindows are being sent, there are no retransmissions, and no disconnects after 15 minutes. This is the desired result.</p>
@@ -487,7 +487,7 @@ while True:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bymqRbxF3Ty7SokgQACbf/8b458ceaec5de3cba654afea70b461b4/download--11--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bymqRbxF3Ty7SokgQACbf/42b90b67aca9e9f539aa634c93b474a3/download--11--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>At the ~2100 second mark, we see the same problems we saw earlier when using wscale 13.</p>
@@ -502,7 +502,7 @@ while True:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GEvtqjf7mRG9z4iouZdxU/86ab1de68cb5d22105d140030a0c215a/download--12--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GEvtqjf7mRG9z4iouZdxU/6a89e8283c392ace7b8b9475a5cba303/download--12--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>The kernel patch is working as expected.</p>
@@ -537,7 +537,7 @@ while True:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wVZgjyGcD2JT5lO8okZWO/f8f36e62aa801aeb9aee3d68f80134ce/download--13-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wVZgjyGcD2JT5lO8okZWO/7c1b6f087b6686024d2cfd29cdbb138b/download--13-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -551,7 +551,7 @@ while True:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6euKMB55WcEZzPsHR59OGJ/10334f78cde44af6a0e4851388de16f9/download--14-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6euKMB55WcEZzPsHR59OGJ/7064210c444249644026b33e4559c1cf/download--14-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>The kernel patch is working as expected.</p>
@@ -588,7 +588,7 @@ while True:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wmz2uhmftqBWNdyAjJREM/dcc889ef659699e7d1311aea79f8c66f/download--15-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wmz2uhmftqBWNdyAjJREM/3d780a8cf115aa4ed60dd4f37be68ea4/download--15-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -602,7 +602,7 @@ while True:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1D4GXbXA6H7kdqXtBM3VPM/7f78d7bd484a2181417fc88abe5e15aa/download--16-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1D4GXbXA6H7kdqXtBM3VPM/9103c7f2821f3fd3b4d4cfed668b7cb2/download--16-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>Using the kernel patch produces the expected behavior.</p>
@@ -626,7 +626,7 @@ while True:
 	<p>This first graph shows RcvPruned, which shows how many incoming packets per second were dropped due to memory constraints.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7K8K11hUJCsHQfzVNg0ljy/057d70024d517c5afeb151893c37a361/download--17-.png" alt="" class="kg-image" width="1053" height="405" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7K8K11hUJCsHQfzVNg0ljy/8abe4f6e7973cc8f86d6ddd97c95f2ed/download--17-.png" alt="" class="kg-image" width="1053" height="405" loading="lazy">
 
 	</figure>
 	<p>The patch was enabled on most servers on 05/01 at 22:00, eliminating those drops.</p>
@@ -641,7 +641,7 @@ while True:
 	<p>Recall that TCPRcvCollapsed is the number of packets per second that are merged together in the queue in order to reduce memory usage (by eliminating header metadata). &nbsp;This occurs when memory limits are reached.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hvXUoVFy84ss30qG9D9d4/63b02b5fd11d340f90ff12a12e9258ce/download--18-.png" alt="" class="kg-image" width="762" height="687" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hvXUoVFy84ss30qG9D9d4/354ba2447d99e4e85366396cfd31b4d0/download--18-.png" alt="" class="kg-image" width="762" height="687" loading="lazy">
 
 	</figure>
 	<p>The patch was enabled on most servers on 05/01 at 22:00. These graphs show the results from one of our data centers. The upper graph shows that the patch has eliminated all collapse processing. The lower graph shows the amount of time spent in collapse processing (each line in the lower graph is a single server). This is important because it can impact Cloudflare’s responsiveness in processing <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP requests</a>. &nbsp;The result of the patch is that all latency due to TCP collapse processing has been eliminated.</p>
@@ -656,7 +656,7 @@ while True:
 	<p>Because the memory limits set by autotuning are now being enforced, the total amount of memory allocated is reduced.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5F0FZs5UBS7QLMo6KMAIWE/1fcf7f5921945fdef8df59b2401d67b7/download--19-.png" alt="" class="kg-image" width="1040" height="475" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5F0FZs5UBS7QLMo6KMAIWE/8d7597782fb2bde9895591379b4ae994/download--19-.png" alt="" class="kg-image" width="1040" height="475" loading="lazy">
 
 	</figure>
 	<p>In this graph, the green line shows the total amount of memory allocated for TCP buffers in one of our data centers. &nbsp;This is with the patch enabled. &nbsp;The purple line is the same total, but from exactly 7 days prior to the time indicated on the x axis, before the patch was enabled. &nbsp;Using this approach to visualization, it is clear to see the memory saved with the patch enabled.</p>
@@ -672,7 +672,7 @@ while True:
 	<p>After a receiver has sent a Zero Window to the sender, the receiver is not expecting to get any additional data from the sender. Should additional data packets arrive at the receiver during the period when the window size is zero, those packets are dropped and the metric TCPZeroWindowDrop is incremented. &nbsp;These dropped packets are usually just due to the timing of these events, i.e. the Zero Window packet in one direction and some data packets flowing in the other direction passed by each other on the network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lXFnIJVZKY9W6hW9IWIoA/81a2a7e8763da96cc79f9868d73c2f55/download--20-.png" alt="" class="kg-image" width="763" height="607" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lXFnIJVZKY9W6hW9IWIoA/1f0d0320f00ff92cde5b9b17f131ac4b/download--20-.png" alt="" class="kg-image" width="763" height="607" loading="lazy">
 
 	</figure>
 	<p>The patch was enabled on most servers on 05/01 at 22:00, although it was enabled for a subset of servers on 04/26 and 04/28.</p>

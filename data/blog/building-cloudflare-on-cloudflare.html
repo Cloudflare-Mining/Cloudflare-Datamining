@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Hup2bn43RophIGNah4W01/845374d5c67ff95604c466df30c58f3f/image1-50.png" alt="Building Cloudflare on Cloudflare" class="kg-image" width="1999" height="1132" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Hup2bn43RophIGNah4W01/5b2af08dc427e329abd763261e67d367/image1-50.png" alt="Building Cloudflare on Cloudflare" class="kg-image" width="1999" height="1132" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s website, application security and performance products handle upwards of 46 million HTTP requests per second, every second. These products were originally built as a set of native Linux services, but we’re increasingly building parts of the system using our Cloudflare Workers developer platform to make these products faster, more robust, and easier to develop. This blog post digs into how and why we’re doing this.</p>
@@ -18,7 +18,7 @@
 	<p>The proxies each have distinct purposes - some obvious, some less so. One which we’ll be discussing in more detail is the FL service, which performs “Front Line” processing of requests, applying customer configuration to decide how to handle and route the request.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WnKFZZ1KiuCqS4Kue2UMp/d9bcfc6a39e87673859daed22a0259f7/image3-19.png" alt="A request from a client flows through multiple separate services: Ingress and TLS termination, FL, Workers, FL again, Cache, Egress before being sent to the Origin" class="kg-image" width="1999" height="610" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WnKFZZ1KiuCqS4Kue2UMp/7bf67b34bdf5dd963929a371392c11e0/image3-19.png" alt="A request from a client flows through multiple separate services: Ingress and TLS termination, FL, Workers, FL again, Cache, Egress before being sent to the Origin" class="kg-image" width="1999" height="610" loading="lazy">
 
 	</figure>
 	<p>This architecture has worked well for more than a decade. It allows parts of the system to be developed and deployed independently, parts of the system to be scaled independently, and traffic to be routed to different nodes in our systems according to load, or to ensure efficient cache utilization.</p>
@@ -34,7 +34,7 @@
 	<p>To avoid this overhead, we put most of the logic for many different products into FL. We’ve developed a simple modular architecture in this service, allowing teams to make and deploy changes with some level of isolation. This has become a very complex service which takes a constant effort by a team of skilled engineers to maintain and operate.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/igmGOsAvyznNM9i1Dvvnh/fb0ec2da7c65f047b0e18b7557412fdf/image2-31.png" alt="A request still flows through multiple services, but the FL service is large and has lots of internal modules" class="kg-image" width="1999" height="595" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/igmGOsAvyznNM9i1Dvvnh/ac61fe1dc0eee2af7e80a0165e5e9a82/image2-31.png" alt="A request still flows through multiple services, but the FL service is large and has lots of internal modules" class="kg-image" width="1999" height="595" loading="lazy">
 
 	</figure>
 	<p>Even with this effort, the developer experience for Cloudflare engineers has often been much harder than we would like. We need to be able to start working on implementing any change quickly, but even getting a version of the system running in a local development environment is hard, requiring installation of custom tooling and Linux kernels.</p>
@@ -75,7 +75,7 @@
 	<p>We first integrated internal workers into our architecture in 2019, in a very simple way. An ordered chain of internal workers was created, which run before any customer scripts.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26J7yyiNwK8faCEpUlusU1/85838a11627f503d00fc0595f595e74f/download-12.png" alt="A request flows through multiple services as before, but the workers module includes a chain of internal workers before running customer workers" class="kg-image" width="1600" height="434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26J7yyiNwK8faCEpUlusU1/7045afd0529fc0634619ebbd6300a7cd/download-12.png" alt="A request flows through multiple services as before, but the workers module includes a chain of internal workers before running customer workers" class="kg-image" width="1600" height="434" loading="lazy">
 
 	</figure>
 	<p>I previously said that adding more steps in our chain would cause excessive latency. So why isn’t this a problem for internal workers?</p>
@@ -97,7 +97,7 @@
 	<p>So we started, in late 2021, with a prototype. This routed traffic directly from our TLS ingress service to our workers runtime, skipping the FL service. We named this prototype Flame.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OjtYTJibEXwCRCSw8hes4/73226a4ae6c5e074b9231f4925af9e0e/download--1--8.png" alt="A request is served as in previous diagrams, but the first pass through the FL service is skipped" class="kg-image" width="1600" height="434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OjtYTJibEXwCRCSw8hes4/3bd67c0e22592689fc621f30645311cc/download--1--8.png" alt="A request is served as in previous diagrams, but the first pass through the FL service is skipped" class="kg-image" width="1600" height="434" loading="lazy">
 
 	</figure>
 	<p>It worked. Just about. Most importantly for a prototype, we could see that we were missing some fundamental capabilities. We couldn’t access other Cloudflare internal services, such as our DNS infrastructure or our customer configuration database, and we couldn’t emit request logs to our data pipeline, for analytics and billing purposes.</p>
@@ -221,7 +221,7 @@ let response = await ownershipInterface.lookupOwnership(query);</code></pre>
 	<p>The following flowchart describes the semantics of this cache.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63dKKhUBjb9BhnuN6Ea4sA/61f5a13610391c93ee5cf95ca243c2c0/image8-9.png" alt="The cache is provided with a key and a callback function. If the key is in the cache it is returned. If the key is not found, and isn’t already being fetched, the callback will be used to fetch it. The callback will return the result, which is used to populate the cache. No more than one fetch at a time for a given key will be performed by each cache instance." class="kg-image" width="1710" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63dKKhUBjb9BhnuN6Ea4sA/14bb67483c59d3f447b26297ba57c480/image8-9.png" alt="The cache is provided with a key and a callback function. If the key is in the cache it is returned. If the key is not found, and isn’t already being fetched, the callback will be used to fetch it. The callback will return the result, which is used to populate the cache. No more than one fetch at a time for a given key will be performed by each cache instance." class="kg-image" width="1710" height="1999" loading="lazy">
 
 	</figure>
 	<p>To use the cache, we simply need to wrap a block of code in a call to the cache:</p>
@@ -279,7 +279,7 @@ let response = await ownershipInterface.lookupOwnership(query);</code></pre>
 	<p>This system allows developers to focus on the behavior of their system, rather than the mechanics of a deployment.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70wIkaPF0PcYWlMT6rzh9m/606739716c2e424cc6ebdc55556241a5/image6-10.png" alt="A code change is started by a merge to staging, followed by an automatic deployment to staging, and health checks on staging. It is then continued by a merge to production, followed by automatic deployment to each group and a health check on each group, until all deployment groups have been completed" class="kg-image" width="1999" height="922" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70wIkaPF0PcYWlMT6rzh9m/740b15023db50177d6fe82a8358debf8/image6-10.png" alt="A code change is started by a merge to staging, followed by an automatic deployment to staging, and health checks on staging. It is then continued by a merge to production, followed by automatic deployment to each group and a health check on each group, until all deployment groups have been completed" class="kg-image" width="1999" height="922" loading="lazy">
 
 	</figure>
 	<p>There are still plenty of plans for further improvement to many of these systems - but they’re running now in production for many of our internal workers.</p>
@@ -346,7 +346,7 @@ Date:   Thu Sep 19 19:31:15 2013 -0700
 	<p>If you’re interested in hearing more about this project, or in letting us know about capabilities you want to add to the developer platform, <a href="https://discord.com/invite/cloudflaredev">get in touch on Discord</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lK0RZY4NdiGg1J6RyKXGx/a9f2da045931c6fb680e97bed7a55b65/image5-11.png" alt="" class="kg-image" width="1999" height="450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lK0RZY4NdiGg1J6RyKXGx/f4653ce34e3cb3c454758848673777bb/image5-11.png" alt="" class="kg-image" width="1999" height="450" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

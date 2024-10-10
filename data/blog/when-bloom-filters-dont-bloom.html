@@ -3,21 +3,21 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bQ9cbvVLCJTUntwCHSGSp/1dcfd71eafb5a6c8608d95f8684e361c/bloom-filter_2x.png" alt="bloom-filter@2x" class="kg-image" width="2000" height="1098" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bQ9cbvVLCJTUntwCHSGSp/570583980831b19e4da88411fdff5eda/bloom-filter_2x.png" alt="bloom-filter@2x" class="kg-image" width="2000" height="1098" loading="lazy">
 
 	</figure>
 	<p>I've known about <a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom filters</a> (named after Burton Bloom) since university, but I haven't had an opportunity to use them in anger. Last month this changed - I became fascinated with the promise of this data structure, but I quickly realized it had some drawbacks. This blog post is the tale of my brief love affair with Bloom filters.</p>
 	<p>While doing research about <a href="https://blog.cloudflare.com/the-root-cause-of-large-ddos-ip-spoofing">IP spoofing</a>, I needed to examine whether the source IP addresses extracted from packets reaching our servers were legitimate, depending on the geographical location of our data centers. For example, source IPs belonging to a legitimate Italian ISP should not arrive in a Brazilian datacenter. This problem might sound simple, but in the ever-evolving landscape of the internet this is far from easy. Suffice it to say I ended up with many large text files with data like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EyhhPLD0IymvVMr3R8pMz/2e105915709c14bcbdb69cb76558ea49/Screenshot-from-2020-03-01-23-57-10.png" alt="Screenshot-from-2020-03-01-23-57-10" class="kg-image" width="634" height="176" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EyhhPLD0IymvVMr3R8pMz/2c30f18b77fdee9184c438f80e94781b/Screenshot-from-2020-03-01-23-57-10.png" alt="Screenshot-from-2020-03-01-23-57-10" class="kg-image" width="634" height="176" loading="lazy">
 
 	</figure>
 	<p>This reads as: the IP 192.0.2.1 was recorded reaching Cloudflare data center number 107 with a legitimate request. This data came from many sources, including our active and passive probes, logs of certain domains we own (like cloudflare.com), public sources (like BGP table), etc. The same line would usually be repeated across multiple files.</p>
 	<p>I ended up with a gigantic collection of data of this kind. At some point I counted 1 billion lines across all the harvested sources. I usually write bash scripts to pre-process the inputs, but at this scale this approach wasn't working. For example, removing duplicates from this tiny file of a meager 600MiB and 40M lines, took... about an eternity:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lzqpR8gHJRr6XC4fbcepJ/0cc0ad957c2efe513f33dc2ea8cd31db/Screenshot-from-2020-03-01-23-25-19a.png" alt="Screenshot-from-2020-03-01-23-25-19a" class="kg-image" width="800" height="126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lzqpR8gHJRr6XC4fbcepJ/91185ef0b6036ecd484bd791f5a72651/Screenshot-from-2020-03-01-23-25-19a.png" alt="Screenshot-from-2020-03-01-23-25-19a" class="kg-image" width="800" height="126" loading="lazy">
 
 	</figure>
 	<p>Enough to say that deduplicating lines using the usual bash commands like 'sort' in various configurations (see '--parallel', '--buffer-size' and '--unique') was not optimal for such a large data set.</p>
@@ -32,7 +32,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vR5EB9TdKmVJDjStuvpwL/9f1e98985914afe5ea3b54188b2cb222/Bloom_filter.png" alt="Bloom_filter" class="kg-image" width="649" height="233" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vR5EB9TdKmVJDjStuvpwL/fe51959f24694cc5c072f3263aa42ab0/Bloom_filter.png" alt="Bloom_filter" class="kg-image" width="649" height="233" loading="lazy">
 
 	</figure>
 	<p><a href="https://en.wikipedia.org/wiki/Bloom_filter#/media/File:Bloom_filter.svg">Image</a> by <a href="https://commons.wikimedia.org/wiki/User:David_Eppstein">David Eppstein</a> Public Domain</p>
@@ -81,20 +81,20 @@
 	<p>We can now run it against the same data file we used before:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eWA2sCxdTwbHW0JVE4dLm/3640c9dee10548f3846323b802a71fd1/image11.png" alt="image11" class="kg-image" width="1160" height="154" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eWA2sCxdTwbHW0JVE4dLm/ffffd6f6823305f41a15d0091d1acaef/image11.png" alt="image11" class="kg-image" width="1160" height="154" loading="lazy">
 
 	</figure>
 	<p>Oh, this is so much better! 12 seconds is much more manageable than 2 minutes before. But hold on... The program is using an optimized data structure, relatively limited memory footprint, optimized line-parsing and good output buffering... 12 seconds is still eternity compared to 'wc -l' tool:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10yS38GPKuBTqMMd4ZJVSe/30549ae295481009b43b6d57463bfd4a/image5.png" alt="image5" class="kg-image" width="1108" height="128" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10yS38GPKuBTqMMd4ZJVSe/199b9ceea61eb91700012362ef92e0ab/image5.png" alt="image5" class="kg-image" width="1108" height="128" loading="lazy">
 
 	</figure>
 	<p>What is going on? I understand that counting lines by 'wc' is <i>easier</i> than figuring out unique lines, but is it really worth the 26x difference? Where does all the CPU in 'mmuniq-bloom' go?</p>
 	<p>It must be my hash function. 'wc' doesn't need to spend all this CPU performing all this strange math for each of the 40M lines on input. I'm using a pretty non-trivial 'siphash24' hash function, so it surely burns the CPU, right? Let's check by running the code computing hash function but <i>not</i> doing any Bloom filter operations:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4cmgeZbT0nJNh9bwRC4gEH/0377bf301051986ab7b716c981f1d748/image2.png" alt="image2" class="kg-image" width="1220" height="168" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cmgeZbT0nJNh9bwRC4gEH/b5a71c8c573d506f20f6b6bc01173028/image2.png" alt="image2" class="kg-image" width="1220" height="168" loading="lazy">
 
 	</figure>
 	<p>This is strange. Counting the hash function indeed costs about 2s, but the program took 12s in the previous run. The Bloom filter alone takes 10 seconds? How is that possible? It's such a simple data structure...</p>
@@ -109,51 +109,51 @@
 	<p>It was time to use a proper tool for the task - let's fire up a profiler and see where the CPU goes. First, let's fire an 'strace' to confirm we are not running any unexpected syscalls:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29N25pGnOTso9WBxn4SckO/3121cfa78fd0b04423dead91f83f93d7/image14.png" alt="image14" class="kg-image" width="1160" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29N25pGnOTso9WBxn4SckO/4a8bbb0dccf4dfb5fd2a248625d29bd9/image14.png" alt="image14" class="kg-image" width="1160" height="492" loading="lazy">
 
 	</figure>
 	<p>Everything looks good. The 10 calls to 'mmap' each taking 4ms (3971 us) is intriguing, but it's fine. We pre-populate memory up front with 'MAP_POPULATE' to save on page faults later.</p>
 	<p>What is the next step? Of course Linux's 'perf'!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/632ygHAtmgUaNH18WsUPAG/9831f446d2fff89957c64556826e147e/image10.png" alt="image10" class="kg-image" width="1144" height="130" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/632ygHAtmgUaNH18WsUPAG/b9f3990786d96bf84b2bc28d5a55f0e3/image10.png" alt="image10" class="kg-image" width="1144" height="130" loading="lazy">
 
 	</figure>
 	<p>Then we can see the results:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61GXvk0ujwFsP0vEDyrD6c/055807800ae72b7473f5ea85f5ddbef2/image6.png" alt="image6" class="kg-image" width="1290" height="518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61GXvk0ujwFsP0vEDyrD6c/ab4ec96b0e748f5dd8e6e496d1b499b4/image6.png" alt="image6" class="kg-image" width="1290" height="518" loading="lazy">
 
 	</figure>
 	<p>Right, so we indeed burn 87.2% of cycles in our hot code. Let's see where exactly. Doing 'perf annotate process_line --source' quickly shows something I didn't expect.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3i10E5RjlO3vvJTuA751wv/25cfdd5c285fa01c4dc6f7b36f91c13e/image3.png" alt="image3" class="kg-image" width="856" height="362" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3i10E5RjlO3vvJTuA751wv/da7db1a7614e3936218206689767e752/image3.png" alt="image3" class="kg-image" width="856" height="362" loading="lazy">
 
 	</figure>
 	<p>You can see 26.90% of CPU burned in the 'mov', but that's not all of it! The compiler correctly inlined the function, and unrolled the loop 8-fold. Summed up that 'mov' or 'uint64_t v = *p' line adds up to a great majority of cycles!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sTjVPwEz6BILccJz8pdDa/36167468b4761fe511d64c0878b3357e/image4.png" alt="image4" class="kg-image" width="778" height="350" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sTjVPwEz6BILccJz8pdDa/2e3435805a1e092460dcb916f4d6ecb2/image4.png" alt="image4" class="kg-image" width="778" height="350" loading="lazy">
 
 	</figure>
 	<p>Clearly 'perf' must be mistaken, how can such a simple line cost so much? We can repeat the benchmark with any other profiler and it will show us the same problem. For example, I like using 'google-perftools' with kcachegrind since they emit eye-candy charts:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fWWh8EZelfOMfwA5XMT16/3754036adf922c134fe1d6339fd929a2/Screenshot-from-2020-03-02-00-08-23.png" alt="Screenshot-from-2020-03-02-00-08-23" class="kg-image" width="1182" height="286" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fWWh8EZelfOMfwA5XMT16/4ded280402c936f2a6f67e2930115f5e/Screenshot-from-2020-03-02-00-08-23.png" alt="Screenshot-from-2020-03-02-00-08-23" class="kg-image" width="1182" height="286" loading="lazy">
 
 	</figure>
 	<p>The rendered result looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2p5hkIX3zVAO7IFFWEVZuF/22d3e225db6c890c17c6cde99b612732/image13.png" alt="image13" class="kg-image" width="1999" height="853" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2p5hkIX3zVAO7IFFWEVZuF/14f1f9505b91e15c904dab7309a11907/image13.png" alt="image13" class="kg-image" width="1999" height="853" loading="lazy">
 
 	</figure>
 	<p>Allow me to summarise what we found so far.</p>
 	<p>The generic 'wc' tool takes 0.45s CPU time to process 600MiB file. Our optimized 'mmuniq-bloom' tool takes 12 seconds. CPU is burned on one 'mov' instruction, dereferencing memory....</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eRwMPBq6BEAyWB0g10EDo/186f784de1e05b7db656b1257868ee9a/6784957048_4661ea7dfc_c.jpg" alt="6784957048_4661ea7dfc_c" class="kg-image" width="800" height="530" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eRwMPBq6BEAyWB0g10EDo/3802664ab1b47d94b96845f487338a08/6784957048_4661ea7dfc_c.jpg" alt="6784957048_4661ea7dfc_c" class="kg-image" width="800" height="530" loading="lazy">
 
 	</figure>
 	<p><a href="https://flickr.com/photos/jonicdao/6784957048">Image</a> by <a href="https://flickr.com/photos/jonicdao">Jose Nicdao</a> CC BY/2.0</p>
@@ -161,19 +161,19 @@
 	<p>According to the general rule <a href="http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html">"latency numbers every programmer should know about"</a>, one RAM fetch is about 100ns. Let's do the math: 40 million lines, 8 hashes counted for each line. Since our Bloom filter is 128MiB, on <a href="https://blog.cloudflare.com/gen-x-performance-tuning">our older hardware</a> it doesn't fit into L3 cache! The hashes are uniformly distributed across the large memory range - each hash generates a memory miss. Adding it together that's...</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ORPcRAqG2H2xqeEEdGbmh/4d6d3af3e7ebd05f21c672884ac9d180/Screenshot-from-2020-03-02-00-34-29.png" alt="Screenshot-from-2020-03-02-00-34-29" class="kg-image" width="1078" height="120" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ORPcRAqG2H2xqeEEdGbmh/ef6968c82bfe0aa44706a4f36e59bb1c/Screenshot-from-2020-03-02-00-34-29.png" alt="Screenshot-from-2020-03-02-00-34-29" class="kg-image" width="1078" height="120" loading="lazy">
 
 	</figure>
 	<p>That suggests 32 seconds burned just on memory fetches. The real program is faster, taking only 12s. This is because, although the Bloom filter data does not completely fit into L3 cache, it still gets some benefit from caching. It's easy to see with 'perf stat -d':</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pgVS7zKpVhueO7rAhQDRI/8168d47ad113d0d42d1389a6707b0857/image9.png" alt="image9" class="kg-image" width="1214" height="568" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pgVS7zKpVhueO7rAhQDRI/5145db41e7b06f5875d1da4adfa92142/image9.png" alt="image9" class="kg-image" width="1214" height="568" loading="lazy">
 
 	</figure>
 	<p>Right, so we should have had at least 320M LLC-load-misses, but we had only 280M. This still doesn't explain why the program was running only 12 seconds. But it doesn't really matter. What matters is that the number of cache misses is a real problem and we can only fix it by reducing the number of memory accesses. Let's try tuning Bloom filter to use only one hash function:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30BFuINOqYvVgCCdYXCzUB/2a458d3995f11456b78970e825a55908/image12.png" alt="image12" class="kg-image" width="1174" height="156" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30BFuINOqYvVgCCdYXCzUB/0893742e7bc41b923af6e67f53629049/image12.png" alt="image12" class="kg-image" width="1174" height="156" loading="lazy">
 
 	</figure>
 	<p>Ouch! That really hurt! The Bloom filter required 64 GiB of memory to get our desired false positive probability ratio of 1-error-per-10k-lines. This is terrible!</p>
@@ -191,7 +191,7 @@
 	<p>While we could think of more sophisticated data structures like <a href="https://en.wikipedia.org/wiki/Cuckoo_filter">Cuckoo filter</a>, maybe we can be simpler. How about a good old simple hash table with linear probing?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PVz5hd2DqyiraxgMJ7KIp/f00529ba1b3754672883c3bc44fd0cf6/linear-probing.png" alt="linear-probing" class="kg-image" width="378" height="203" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PVz5hd2DqyiraxgMJ7KIp/37706f6ffcc1cd52f544d626381deaeb/linear-probing.png" alt="linear-probing" class="kg-image" width="378" height="203" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.sysadmins.lv/blog-en/array-search-hash-tables-behind-the-scenes.aspx">Image</a> by <a href="https://www.sysadmins.lv/about.aspx">Vadims Podāns</a></p>
@@ -214,7 +214,7 @@
 	<p>The hash table code runs faster, has better memory access patterns and better false positive probability than the Bloom filter approach.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7i3tnYhlVqJ7NEfutgywVD/a3ebdd07d707ed0ba59e1ed9974d521d/image7.png" alt="image7" class="kg-image" width="1160" height="190" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7i3tnYhlVqJ7NEfutgywVD/dafe27be80727cd61533f548457bc4a3/image7.png" alt="image7" class="kg-image" width="1160" height="190" loading="lazy">
 
 	</figure>
 	<p>Don't be scared about the "hash conflicts" line, it just indicates how full the hash table was. We are using linear probing, so when a bucket is already used, we just pick up the next empty bucket. In our case we had to skip over 0.7 buckets on average to find an empty slot in the table. This is fine and, since we iterate over the buckets in linear order, we can expect the memory to be nicely prefetched.</p>
@@ -250,7 +250,7 @@
 	<p>It is able to dynamically resize the hash table, to support inputs of unknown cardinality. Then, by using batching, it can effectively use the 'prefetch' CPU hint, speeding up the program by 35-40%. Beware, sprinkling the code with 'prefetch' rarely works. Instead, I specifically changed the flow of algorithms to take advantage of this instruction. With all the improvements I got the run time down to 2.1 seconds:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cnwoob2q1SVG27I7zqals/3db6fa2505a598e6b2f44bb56e16ec77/Screenshot-from-2020-03-01-23-52-18.png" alt="Screenshot-from-2020-03-01-23-52-18" class="kg-image" width="1246" height="568" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cnwoob2q1SVG27I7zqals/87621808c31bd4707e08e816a4a58480/Screenshot-from-2020-03-01-23-52-18.png" alt="Screenshot-from-2020-03-01-23-52-18" class="kg-image" width="1246" height="568" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

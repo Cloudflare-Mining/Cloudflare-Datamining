@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OONKfWmk4yFIWvi9jeOQs/76968cd13cf7ed6fbe5c22638c6a7a04/private-networking.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OONKfWmk4yFIWvi9jeOQs/12eeda7e0695725e5895cc0b9524ec21/private-networking.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Starting today, you can build identity-aware, Zero Trust network policies using Cloudflare for Teams. You can apply these rules to connections bound for the public Internet or for traffic inside a private network running on Cloudflare. These rules are enforced in Cloudflare’s network of data centers in over 200 cities around the world, giving your team comprehensive network filtering and logging, wherever your users work, without slowing them down.</p>
 	<p>Last week, my teammate Pete’s <a href="https://blog.cloudflare.com/network-based-policies-in-cloudflare-gateway">blog post</a> described the release of network-based policies in Cloudflare for Teams. Your team can now keep users safe from threats by limiting the ports and IPs that devices in your fleet can reach. With that release, security teams can now replace even more security appliances with Cloudflare’s network.</p>
@@ -31,7 +31,7 @@
 	<p>Private networks should not disappear, but the usability and security compromises they require should stay in the past. Two months ago, we announced the ability to <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare">build a private network</a> on Cloudflare. This feature allows your team to <a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement">replace VPN appliances</a> and clients with a network that has a point of presence in over 200 cities around the world.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2u1ykC70SvXg8lbeACtzAe/fbd58f194b3590e0cccada17acaff1b4/image1-5.png" alt="" class="kg-image" width="1999" height="951" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2u1ykC70SvXg8lbeACtzAe/c445cc902629f5ab284e60bd937580e9/image1-5.png" alt="" class="kg-image" width="1999" height="951" loading="lazy">
 
 	</figure>
 	<p>Zero Trust rules are enforced on the Cloudflare edge</p>
@@ -85,19 +85,19 @@
 	<p>1. Create a new network policy in Gateway.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72txwhfZ8EUPThVTm588pX/e9354f9c834586c0f9fe833b159f9b84/image3-5.png" alt="" class="kg-image" width="1612" height="896" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72txwhfZ8EUPThVTm588pX/18141f7b5295f29b85a9a4f6c2ee1906/image3-5.png" alt="" class="kg-image" width="1612" height="896" loading="lazy">
 
 	</figure>
 	<p>2. Specify the IP and Port combination you want to allow access to. In this example, we are exposing an RDP port on a specific private IP address.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40OGmXllWIdymdmnkVdyBJ/321a7863d7b569f052259ab299f28f5a/image4-6.png" alt="" class="kg-image" width="1480" height="1332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40OGmXllWIdymdmnkVdyBJ/1bc494948efe9cf4f8b5c72ca6d83642/image4-6.png" alt="" class="kg-image" width="1480" height="1332" loading="lazy">
 
 	</figure>
 	<p>3. Add any desired identity policies to your network policy. In this example, we have limited access to users in a “Developers” group specified in the identity provider.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xGBgBlmAy4v2saPOfE421/d6a9c98d69f516d38b2419a7137d8a05/image2-7.png" alt="" class="kg-image" width="1040" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xGBgBlmAy4v2saPOfE421/bd5a04f69d6031c5307dd6cf941314cc/image2-7.png" alt="" class="kg-image" width="1040" height="500" loading="lazy">
 
 	</figure>
 	<p>Once this policy is configured, only users in the specific identity group running the WARP client will be able to access applications on the specified IP and port combination.</p>

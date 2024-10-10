@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20oTuia7NFEhvYsIErWBR4/04400f1e4665dcfaf741cba4b48ea815/image00.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20oTuia7NFEhvYsIErWBR4/58f388d9cdcf6b18dcb1bd8c7f949429/image00.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p>Flickr/mark van de wouw</p>
@@ -21,7 +21,7 @@
 	<p>Entropy is distinct from statistical randomness. Looking at the statistical properties of a stream of numbers does not guarantee that the stream contains any entropy. For example, the digits of pi look random by almost any statistical measure, but contain no entropy since there is a well known formula to calculate them and perfectly predict the next value. (As an aside, pi is an example of a&nbsp;<a href="https://en.wikipedia.org/wiki/Normal_number">normal number</a>: one where all the digits will appear in equal quantities).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b7vLFi4E7629OD9FcOzR9/3b2dd0aa4aaf301d8934d0f990e99925/image02.jpg" alt="" class="kg-image" width="576" height="502" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5b7vLFi4E7629OD9FcOzR9/801744468dbdaf714d4fce985544f865/image02.jpg" alt="" class="kg-image" width="576" height="502" loading="lazy">
 
 	</figure>
 	<p>Flickr/foxtongue License: CC Attribution 2.0 Generic</p>
@@ -44,7 +44,7 @@
 	<p>All that’s needed is the right combination function: a function that can be used to combine two sources of entropy. One of the simplest such functions is the logical exclusive or (XOR). This truth table shows how bits x and y coming from different random streams are combined by the XOR function.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/21eHCWkYIi7WYIUkY08u1G/5e379e306130bb57d04039047ea8167f/image03.png" alt="" class="kg-image" width="299" height="348" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21eHCWkYIi7WYIUkY08u1G/0ffb220acfc5ea40ca5729e0060e7cdf/image03.png" alt="" class="kg-image" width="299" height="348" loading="lazy">
 
 	</figure>
 	<p>Even if one source of bits does not have much entropy, there is no harm in XORing it into another source. Entropy always increases. In the Linux kernel, a combination of XORs is used to mix timestamps into the main entropy pool.</p>
@@ -59,7 +59,7 @@
 	<p>Linux exposes two interfaces for random data that behave differently when the entropy level is low. They are /dev/random and /dev/urandom. When the entropy pool becomes predictable, both interfaces for requesting random numbers become problematic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kINVbY4jlPxrSntHYa2wY/8e6a92a33efab35ace57fcf417fd7f88/image01.png" alt="" class="kg-image" width="1200" height="429" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kINVbY4jlPxrSntHYa2wY/ae4cd21549842bcf6d57e9e1e480f8ff/image01.png" alt="" class="kg-image" width="1200" height="429" loading="lazy">
 
 	</figure>
 	<p>When the entropy level is too low, /dev/random blocks and does not return until the level of entropy in the system is high enough. This guarantees high entropy random numbers. If /dev/random is used in a time-critical service and the system has not incorporated a minimum amount of entropy, the delays could be detrimental to the quality of service.</p>

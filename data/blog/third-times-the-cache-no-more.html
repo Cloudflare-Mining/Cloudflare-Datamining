@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4O1uuMmglOLHOnjissasIm/6a071307d96a8b3461803cbb1aa9898e/image1-23.png" alt="Third Time’s the Cache, No More" class="kg-image" width="1918" height="1068" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4O1uuMmglOLHOnjissasIm/fc8d17ddb00f8badf076190b8c67ade4/image1-23.png" alt="Third Time’s the Cache, No More" class="kg-image" width="1918" height="1068" loading="lazy">
 
 	</figure>
 	<p>Caching is a big part of how Cloudflare CDN makes the Internet faster and more reliable. When a visitor to a customer’s website requests an asset, we retrieve it from the customer’s origin server. After that first request, in many cases we <i>cache</i> that asset. Whenever anyone requests it again, we can serve it from one of our data centers close to them, dramatically speeding up load times.</p>
@@ -55,7 +55,7 @@
 	<p>Unpopular requests are not a new problem for us. Previously, <a href="https://blog.cloudflare.com/why-we-started-putting-unpopular-assets-in-memory">we wrote about how we use an in-memory transient cache</a> to store requests we only ever see once (dubbed “one-hit-wonders”) so that they are never written to disk. This transient cache, enabled for just a subset of traffic, reduces our disk writes by 20-25%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57yHAVDQQJWmKXvIkZirLm/983def149783d405c7bae7f37c597470/image2-15.png" alt="This transient cache, enabled for just a subset of traffic, reduces our disk writes by 20-25%." class="kg-image" width="1149" height="647" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57yHAVDQQJWmKXvIkZirLm/24ee2c3198f5af8b54a07c8e545ec9f8/image2-15.png" alt="This transient cache, enabled for just a subset of traffic, reduces our disk writes by 20-25%." class="kg-image" width="1149" height="647" loading="lazy">
 
 	</figure>
 	<p>Was this behavior from 2010 giving us similar benefits? Since then, our network has grown from 10,000 Internet properties to 25 million. It was time to re-evaluate. Just how much would our disk writes increase if we cached on the first request? How much better would cache hit ratios be?</p>
@@ -82,7 +82,7 @@
 	<p>We ran this test for a couple days and, as hypothesized, found a minor but acceptable increase in disk writes per request to the tune of 2.5%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QFiZGM6WpUd9OYZ135xLb/42e7f479d69277d4e935cf1b598215b0/image3-17.png" alt="We ran this test for a couple days and, as hypothesized, found a minor but acceptable increase in disk writes per request to the tune of 2.5%." class="kg-image" width="760" height="273" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QFiZGM6WpUd9OYZ135xLb/1a57482bbecd6e08f93d4102b7b0359a/image3-17.png" alt="We ran this test for a couple days and, as hypothesized, found a minor but acceptable increase in disk writes per request to the tune of 2.5%." class="kg-image" width="760" height="273" loading="lazy">
 
 	</figure>
 	<p>What’s more, we saw a modest hit rate increase of around +3% on average for our Enterprise customers. More hits meant fewer trips to origin servers and thus bandwidth savings for customers: in this case, a -5% decrease in total bytes served from origin.</p>
@@ -100,7 +100,7 @@
 	<p>Using a data-driven approach, we determined our caution around caching query string requests wasn’t nearly as effective at preventing disk writes of unpopular requests compared to our newer efforts, such as transient cache. It was a good reminder for us to re-examine past assumptions from time-to-time and see if they still held.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29s2kKkqUOMWDmlFHY5qp8/a0117b4dbf24acae01b81b787dc2b42d/image4-15.png" alt="Revisiting old assumptions" class="kg-image" width="1918" height="1068" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29s2kKkqUOMWDmlFHY5qp8/60a7d113cde89a6e197d4536bd911e7b/image4-15.png" alt="Revisiting old assumptions" class="kg-image" width="1918" height="1068" loading="lazy">
 
 	</figure>
 	<p>Post-experiment, we gradually rolled out the change to verify that our cost expectations were met. At this time, we’re happy to report that we’ve left the “third time’s the charm” quirk behind for the history books. Long live “cache at first sight.”</p>

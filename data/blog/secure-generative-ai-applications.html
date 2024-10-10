@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PyiD8DNHchzOpnnwCEOe3/5481d4c42dd6abec994ab134ccf9a4ab/image3-17.png" alt="How to secure Generative AI applications" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PyiD8DNHchzOpnnwCEOe3/e11b7354829cf75234a523acf3c03601/image3-17.png" alt="How to secure Generative AI applications" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>I remember when the first iPhone was announced in 2007. This was NOT an iPhone as we think of one today. It had warts. A lot of warts. It couldn’t do MMS for example. But I remember the possibility it brought to mind. No product before had seemed like anything more than a product. The iPhone, or more the potential that the iPhone hinted at, had an actual impact on me. It changed my thinking about what could be.</p>
@@ -47,20 +47,20 @@
 	<p>4. <b>Implement smart rate limits</b>. Counting not only requests per minute and requests per session, but also IPs per token and tokens per IP can guard against abuse. Tracking how many different IPs are using a particular token at any one time can alert you to a user's token being leaked. Similarly, if one IP is rotating through tokens, looking at each token’s session traffic would not alert you to the abuse. You’d need to look at how many tokens that single IP is generating in order to pinpoint that specific abusive behavior.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jgaPoRB87Peebw8QGjtx4/732eca0425df40bd6a122d32820f63ae/download-13.png" alt="" class="kg-image" width="591" height="454" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jgaPoRB87Peebw8QGjtx4/6fad62926cefdc299be55f6fe1ae5e53/download-13.png" alt="" class="kg-image" width="591" height="454" loading="lazy">
 
 	</figure>
 	<p>5. <b>Rate limit on something other than the user.</b> Similar to enforcing tokens on each user, your <a href="https://blog.cloudflare.com/advanced-rate-limiting">real time rate limits</a> should also be set on your sticky identifier.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LfqsVb8eGM4VOcvHnri8d/698df663c7afda48a53d04ee749eab9d/download--1--9.png" alt="" class="kg-image" width="611" height="229" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LfqsVb8eGM4VOcvHnri8d/28e24a5b58d63d35c121a5ff51a61728/download--1--9.png" alt="" class="kg-image" width="611" height="229" loading="lazy">
 
 	</figure>
 	<p>6. <b>Have an option to slow down attackers.</b> Customers often think about stopping abuse in terms of blocking traffic from abusers. But blocking isn’t the only option. Attacks not only need to be successful, they also need to be economically feasible. If you can make requests more difficult or time-consuming for abusers, you can ruin their economics. You can do this by implementing a waiting room, or by challenging users. We recommend a challenge option that <a href="https://blog.cloudflare.com/turnstile-private-captcha-alternative">doesn’t give real users an awful experience</a>. Challenging users can also be quickly enabled or disabled as you see abuse spike or recede.</p>
 	<p>7. <b>Map and analyze sequences</b>. By sampling user sessions that you suspect of abuse, you can i<a href="https://blog.cloudflare.com/api-sequence-analytics">nspect their requests path-by-path</a> in your SIEM. Are they using your app as expected? Or are they circumventing intended usage? You might benefit from enforcing a user flow between endpoints.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41KhKBCKiZM8ayvjEr2M10/99c3c4448ef9ef5fa945794a0a276862/download--2--7.png" alt="" class="kg-image" width="932" height="929" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41KhKBCKiZM8ayvjEr2M10/10c9c9cba316362fb6284a11e7008e66/download--2--7.png" alt="" class="kg-image" width="932" height="929" loading="lazy">
 
 	</figure>
 	<p>8. <b>Build and validate an API schema</b>. Many API breaches happen due to permissive schemas. Users are allowed to send in extra fields in requests that grant them too many privileges or allow access to other users’ data. Make sure you build a verbose schema that outlines what intended usage is by <a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">identifying and cataloging all API endpoints</a>, then making sure all specific parameters are listed as required and have type limits to them.</p>

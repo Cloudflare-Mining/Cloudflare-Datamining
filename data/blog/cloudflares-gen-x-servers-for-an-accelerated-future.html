@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6OFV3ZwYcw11xt6pAFHfPz/b7808f3d780d294d5cf8d076bf061361/gen-x-color-Friday--twitter_2x.png" alt="" class="kg-image" width="1249" height="703" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OFV3ZwYcw11xt6pAFHfPz/2208a85a2c944f60f54eea851a1cd5c4/gen-x-color-Friday--twitter_2x.png" alt="" class="kg-image" width="1249" height="703" loading="lazy">
 
 	</figure>
 	<blockquote>
@@ -24,14 +24,14 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cA2rKV0dU3II6avmDY7BS/7d3fc5248480acb6d397e502df2e0e04/AMD_EPYC-39.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cA2rKV0dU3II6avmDY7BS/fba1453ea9bc827e399f57971ce871af/AMD_EPYC-39.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
 	<p>We recently turned up our tenth generation of servers, “Gen X”, already deployed across major US cities, and in the process of being shipped worldwide. Compared with our prior server (<a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a>), it processes as much as 36% more requests while costing substantially less. Additionally, it enables a ~50% decrease in L3 cache miss rate and up to 50% decrease in NGINX p99 latency, powered by a CPU rated at 25% lower TDP (thermal design power) per core.</p>
 	<p>Notably, for the first time, Intel is not inside. We are not using their hardware for any major server components such as the CPU, board, memory, storage, network interface card (or any type of accelerator). Given how critical Intel is to our industry, this would until recently have been unimaginable, and is in contrast with <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">prior</a> <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">generations</a> which made extensive use of their hardware.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uCBtfJ5jawcCdsdyipghO/96288025e34534e540c13d793b91dd82/AMD2.png" alt="" class="kg-image" width="1128" height="224" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uCBtfJ5jawcCdsdyipghO/0d99e66b8db30d4c872d2a540cf9072c/AMD2.png" alt="" class="kg-image" width="1128" height="224" loading="lazy">
 
 	</figure>
 	<p><i>Intel-based Gen 9 server</i></p>
@@ -48,7 +48,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qvmFWlrsejJpb9NEG6ZqU/a34b5592ff1949e802a2f9347a8f2342/pasted-image-0.png" alt="" class="kg-image" width="1600" height="1064" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qvmFWlrsejJpb9NEG6ZqU/d830111b48ee0ed930132e88660063ba/pasted-image-0.png" alt="" class="kg-image" width="1600" height="1064" loading="lazy">
 
 	</figure>
 	<p>CPU efficiency is very important to our server design. Since we have a compute-heavy workload, our servers are typically limited by the CPU before other components. Cloudflare’s software stack scales quite well with additional cores. So, we care more about core-count and power-efficiency than dimensions such as clock speed.</p>
@@ -71,19 +71,19 @@
 	<p>Since we are typically limited by CPU, Gen X represented an opportunity to grow components such as RAM and SSD more slowly than compute.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26Sxt3ggFdoQ0GzKF3EGss/368feff2bdc3a22f0d13da9fbc23d6de/AMD_EPYC-13.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26Sxt3ggFdoQ0GzKF3EGss/368a3e0d940daae20b6feeb5a3e4fba2/AMD_EPYC-13.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
 	<p>For memory, we continued to use 256GB of RAM, as in our prior generation, but rated higher at 2933MHz. For storage, we continue to have ~3TB, but moved to 3x1TB form factor using NVME flash (instead of SATA) with increased available IOPS and higher endurance, which enables <a href="https://www.usenix.org/conference/vault20/presentation/korchagin">full disk encryption using LUKS without penalty</a>. For the network card, we continue to use Mellanox 2x25G NIC.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ss6eIWw5bu2PmPfE000Wi/ecebe64c7af1493e2487cf91492cd0dd/AMD_EPYC-5.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ss6eIWw5bu2PmPfE000Wi/131a3644d28be05b4d00a113bc9565ea/AMD_EPYC-5.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
 	<p>We moved from our multi-node chassis back to a simple 1U form factor, designed to be lighter and less error prone during operational work at the data center. We also added multiple new ODM partners to diversify how we manufacture our equipment and to take advantage of additional global warehousing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7idOzt8cy7gwxh6oeOSpI5/ccddd0f13eb0280200f4c868cabd7da7/AMD_EPYC-7.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7idOzt8cy7gwxh6oeOSpI5/302f275f840d028cbd2b0bb6a1a351cc/AMD_EPYC-7.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -97,7 +97,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kEiqTtyNgUY66Rh34MpuG/17571559c4303ee364748a98653a8a5e/AMD_EPYC-35.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kEiqTtyNgUY66Rh34MpuG/42da64e77acad6084872058580ed2d89/AMD_EPYC-35.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
 	<p>Our newest generation of servers give us the flexibility to continue to build out our network even closer to every user on Earth. We’re proud of the hard work from across engineering teams on Gen X, and are grateful for the support of our partners. Be on the lookout for more blogs about these servers in the coming days.</p>

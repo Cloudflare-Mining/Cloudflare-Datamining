@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TYxahpsj66q7L2bERLIZa/88fc58ab7073c4cc63fbbd827585940f/KEMTLS--Post-quantum-TLS-without-signatures-blog-home-2.png" alt="" class="kg-image" width="1314" height="724" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TYxahpsj66q7L2bERLIZa/537157a1eecaedcbd187f9b1d391523d/KEMTLS--Post-quantum-TLS-without-signatures-blog-home-2.png" alt="" class="kg-image" width="1314" height="724" loading="lazy">
 
 	</figure>
 	<p>The Transport Layer Security protocol (TLS), which secures most Internet connections, has mainly been a protocol consisting of a key exchange authenticated by digital signatures used to encrypt data at transport[1]. Even though it has undergone major changes since 1994, when SSL 1.0 was introduced by Netscape, its main mechanism has remained the same. The key exchange was first based on RSA, and later on traditional Diffie-Hellman (DH) and Elliptic-curve Diffie-Hellman (ECDH). The signatures used for authentication have almost always been RSA-based, though in recent years other kinds of signatures have been adopted, mainly ECDSA and Ed25519. This recent change to elliptic curve cryptography in both at the key exchange and at the signature level has resulted in considerable speed and bandwidth benefits in comparison to traditional Diffie-Hellman and RSA.</p>
@@ -20,7 +20,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/589KMSU0NPVnVGNPCiWIXg/28c63436ed1d656c2df64f28675988c4/image2-5.png" alt="" class="kg-image" width="456" height="404" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/589KMSU0NPVnVGNPCiWIXg/b12d643b105956d0c452dbdcb122ce61/image2-5.png" alt="" class="kg-image" width="456" height="404" loading="lazy">
 
 	</figure>
 	<p><a href="https://tools.ietf.org/html/rfc8446">TLS 1.3</a> was introduced in August 2018, and it brought many security and performance improvements (notably, having only one round-trip to complete the handshake). But TLS 1.3 is designed for a world with classical computers, and some of its functionality will be broken by quantum computers when they do arrive.</p>
@@ -47,7 +47,7 @@
 	<p>With KEMTLS, application data transmitted during the handshake is implicitly authenticated rather than explicitly (as in TLS 1.3), and has slightly weaker downgrade resilience and forward secrecy; but full downgrade resilience and forward secrecy are achieved once the KEMTLS handshake completes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UREaRAF5rjwsKtO4HpZ2I/d9b853e2a045798c8a4f5840a4ecf0f5/image1-7.png" alt="" class="kg-image" width="1999" height="1296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UREaRAF5rjwsKtO4HpZ2I/96dcf49355e3f1f67d88bcb336515dd1/image1-7.png" alt="" class="kg-image" width="1999" height="1296" loading="lazy">
 
 	</figure>
 	<p>By replacing the handshake signature by a KEM key exchange, we reduce the size of the data transmitted in the example handshake to 8,344 bytes, using Kyber512 and Dilithium II — a significant reduction. We can reduce the handshake size even for algorithms such as the NTRU-assumption based KEM NTRU and signature algorithm Falcon, which have a less-pronounced size gap. Typically, KEM operations are computationally much lighter than signing operations, which makes the reduction even more significant.</p>

@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hJhY1sHBOZSpglFZVl7Hq/30634b8d77b077f1272b73f6596bd306/1-2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hJhY1sHBOZSpglFZVl7Hq/df78cb9e5dccac95d320287b3cb42dd8/1-2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Today, a change to our Tiered Cache system caused some requests to fail for users with status code 530. The impact lasted for almost six hours in total. We estimate that about 5% of all requests failed at peak. Because of the complexity of our system and a blind spot in our tests, we did not spot this when the change was released to our test environment. &nbsp;</p>
@@ -21,7 +21,7 @@
 	<p>To improve cache hit ratios, we introduced <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Tiered Cache</a>. With Tiered Cache, we organize our data centers in the CDN into a hierarchy of “lower tiers” which are closer to the end users and “upper tiers” that are closer to the origin. When a cache-miss occurs in a lower tier, the upper tier is checked. If the upper tier has a fresh copy of the asset, we can serve that in response to the request. This improves performance and reduces the amount of times that Cloudflare has to reach out to an origin server to retrieve assets that are not cached in lower tier data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yyZ1ow2W0dM1zPPSWlYDb/ccff5f66324f998fd4fc700a5b7cb9b4/2-2.png" alt="" class="kg-image" width="1439" height="883" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yyZ1ow2W0dM1zPPSWlYDb/442072566ebc71758aa6e70c0193a9fd/2-2.png" alt="" class="kg-image" width="1439" height="883" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -37,7 +37,7 @@
 	<p>Once the release started rolling out globally to the remaining data centers, a sharp increase in 530s triggered alerts along with more customer reports, and an incident was declared.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GRoqSuj9kxooMxIeQ7X6o/7a234f837fc1d67510c693e430498059/3-2.png" alt="Requests resulting in a response with status code 530" class="kg-image" width="1600" height="705" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GRoqSuj9kxooMxIeQ7X6o/e751538115c6108f2335261d3f835807/3-2.png" alt="Requests resulting in a response with status code 530" class="kg-image" width="1600" height="705" loading="lazy">
 
 	</figure>
 	<p><i>Requests resulting in a response with status code 530</i></p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JeLifbB3Vdk6jqpeUpVRc/7d490af306b792a039bb73edc2d7e115/2148-HERO.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JeLifbB3Vdk6jqpeUpVRc/1647ed581b63f4f196194655e8c286d1/2148-HERO.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Cloudflare recently announced <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a>, giving developers the ability to run serverless GPU-powered AI inference on Cloudflare’s global network. One key area of focus in enabling this across our network was updating our Baseboard Management Controllers (BMCs). The BMC is an embedded microprocessor that sits on most servers and is responsible for remote power management, sensors, serial console, and other features such as virtual media.</p>
@@ -20,13 +20,13 @@
 	<p>With OpenBMC, our first approach to enabling our product teams to start working with the GPUs was to simply blast fans directly in line with the GPU, assuming the GPU was running at Thermal Design Power (TDP, the maximum heat from a given source). Unfortunately, because of the heat given off by these new GPUs, we could not keep them below 95˚C when they were fully stressed. This prompted us to install another fan to help keep the GPU cool and helped us bring a fully stressed GPU down to 65˚C. This served as our baseline before we began the process of fine-tuning the fan Peripheral Integral Derivative (PID) controller to handle variation in temperature in a more nuanced manner. Below shows a graph of the baseline described above:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1r06acJOE7ZIuVP4jrCnqz/a772f2e937b4f77b7d078447e2554dc0/2148-1.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1r06acJOE7ZIuVP4jrCnqz/543e4e015d4a7de22f35800a9b4a80f4/2148-1.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
 
 	</figure>
 	<p>With this baseline in place, tuning becomes a tedious iteration of PID constants. For those unfamiliar with PID controllers, we use the following equation to describe the control output given the error as input.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ooby3NUPSj7MFRmkYpesl/70e8bce864c214992157687de87b3c88/Screenshot-2023-12-05-at-15.31.01.png" alt="" class="kg-image" width="1620" height="190" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ooby3NUPSj7MFRmkYpesl/8d63ee010e49d6f350a76b23d50862dc/Screenshot-2023-12-05-at-15.31.01.png" alt="" class="kg-image" width="1620" height="190" loading="lazy">
 
 	</figure>
 	<p>To break this down, u(t) represents our control output, e(t) is the error signal, and Kp, Ki, and Kd are the proportional gain, integral gain, and derivative gain constants, respectively. To briefly describe how each of these components work, I will isolate each of the components. Our error, or e(t), is simply the difference between the target temperature and the current temperature, so if our target temperature is 50 ˚C and my current is 60 ˚C, the e(t) for the proportional component is 10 ˚C. If u(t) = Kp⋅e(t), we can see that u(t) is = Kp⋅10. Any given Kp could drastically affect the control output u(t) and is responsible for how quickly the controller adjusts to approaching the target. The Ki⋅∫e(t)dt accumulates the error over time. The scenario where the controller reaches steady state but does not hit the target setpoint is called steady-state error. The integral component accumulating that error is intended for resolving this scenario but can also cause oscillations if the integral gain is too large. Lastly, the derivative portion, Kd⋅∂e(t)/∂t, can be seen as Kd⋅(the slope at the given point in time). You can imagine that the more quickly the controller approaches the target, the greater the slope, and the slower the approach, the less slope. Another way to look at it is that with faster oscillations, the greater the derivative portion, and slower oscillations, the lesser the derivative portion.</p>
@@ -51,13 +51,13 @@
 	<p>With a better understanding of the PID controller theory, we can see how we can iterate toward our final product. Our initial trial from a full load fan had some difficulties finding the setpoints, as shown by the oscillations on the left side of the graph. As we learned above, by adjusting our integral and derivative gains we were able to help reduce the oscillations. We can see the controller trying to lock in around the 70C, but our intended target was 65 ˚C (if it were to lock in at 70 ˚C, this would be a clear example of steady-state error). The last point we worked to resolve was to improve the speed at which it approaches the setpoint, which we were able to tune with by adjusting proportional gain.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MX23CfxcUPHg4l72ITUVn/ba0869d2db9e022521ae918563e43130/2148-3.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MX23CfxcUPHg4l72ITUVn/2961f3ef72cd07e21d780e90af5436a6/2148-3.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
 
 	</figure>
 	<p>OpenBMC fan configurations are easily configurable JSON files to manually tune PID settings. The graphs presented come from comma-separated-value (CSV) files generated from OpenBMC’s PID controller application and allow us to easily iterate and improve our configuration. Several iterations later, we got our final product. We had a tad bit of overshoot in the beginning, but this is a strong enough result for us to leave the PID controller for now.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5n47tnZ8vZqTD2fQsIX33W/83491e0e655d5992d4fcfd3fc55939ab/2148-4.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5n47tnZ8vZqTD2fQsIX33W/44690423f9ce2053ea99a875065cfc7c/2148-4.png" alt="" class="kg-image" width="1600" height="769" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

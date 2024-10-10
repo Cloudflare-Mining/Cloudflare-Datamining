@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TW7Xd4t2gdo1XQLywRZ4w/955297b344fde0117b190487a6bb00c6/Blog-827---KEMs-and-KEMTLS.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TW7Xd4t2gdo1XQLywRZ4w/a1836b21157127d6c2a117abcf8fb1ed/Blog-827---KEMs-and-KEMTLS.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>On Tuesday, the US National Institute of Standards and Technology (NIST) <a href="https://www.nist.gov/news-events/news/2022/07/nist-announces-first-four-quantum-resistant-cryptographic-algorithms">announced</a> which post-quantum cryptography they will standardize. We were already drafting this post with an educated guess on the choice NIST would make. We almost got it right, except for a single choice we didn’t expect—and which changes everything.</p>
@@ -80,13 +80,13 @@
 	<p>For key agreement, NIST picked only <a href="https://pq-crystals.org/kyber/index.shtml"><b>Kyber</b></a>, which is a Key Encapsulation Mechanism (KEM). Let’s compare it side-by-side to an RSA-based KEM and the X25519 Diffie–Hellman key agreement:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ltGYyYPY4GtLzE4ETzpE/ab7a0fc019728541b60eb16ce1ff17b7/Screen-Shot-2022-07-08-at-7.37.04-AM.png" alt="" class="kg-image" width="1006" height="232" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ltGYyYPY4GtLzE4ETzpE/81b57ba49a5753ba576e0501a0f15821/Screen-Shot-2022-07-08-at-7.37.04-AM.png" alt="" class="kg-image" width="1006" height="232" loading="lazy">
 
 	</figure>
 	<p>Performance characteristics of Kyber and RSA. We compare instances of security level 1, see below. Timings vary considerably by platform and implementation constraints and should be taken as a rough indication only.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JiVHnH2VbzrTs4aZow5Tf/c7641611a4c5f0391c360dac11818303/Screen-Shot-2022-07-08-at-7.37.25-AM.png" alt="" class="kg-image" width="1006" height="160" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JiVHnH2VbzrTs4aZow5Tf/caec70701cd0affee28d47e7dafe6a23/Screen-Shot-2022-07-08-at-7.37.25-AM.png" alt="" class="kg-image" width="1006" height="160" loading="lazy">
 
 	</figure>
 	<p>Performance characteristics of the X25519 Diffie–Hellman key agreement commonly used in TLS 1.3.</p>
@@ -94,7 +94,7 @@
 	<p>To properly compare these numbers, we have to explain how KEM and Diffie–Hellman key agreements are different.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cseVDL5dz3hAakfQ3gVgM/94db0c2c88fa8afdae3509ffdc584f5d/IMG_3E98764E5A4C-1.jpeg.jpeg" alt="" class="kg-image" width="1600" height="815" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cseVDL5dz3hAakfQ3gVgM/4a229fa440511b1cf8af65616a9e545b/IMG_3E98764E5A4C-1.jpeg.jpeg" alt="" class="kg-image" width="1600" height="815" loading="lazy">
 
 	</figure>
 	<p>Protocol flow of KEM and Diffie-Hellman key agreement.</p>
@@ -102,7 +102,7 @@
 	<p>With Diffie–Hellman, both parties generate a keypair. Because of the magic of Diffie–Hellman, there is a unique shared secret between every combination of a public and private key. Again, the initiator sends its public key. The receiver <i>combines</i> the received public key with its own private key to create the shared secret and returns its public key with which the initiator can also compute the shared secret.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rLtpAeaZvMzWQwUks07xt/537e2e01cca246e3072eca0e09ee39a7/Screen-Shot-2022-07-08-at-7.40.57-AM.png" alt="" class="kg-image" width="1006" height="304" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rLtpAeaZvMzWQwUks07xt/35595ea8f8eeb9f44cfee55035c016ba/Screen-Shot-2022-07-08-at-7.40.57-AM.png" alt="" class="kg-image" width="1006" height="304" loading="lazy">
 
 	</figure>
 	<h6><i>Interactive versus non-interactive key agreement</i></h6>
@@ -113,7 +113,7 @@
 	<p>We have some indirect data. Back in 2019 together with Google we tested two post-quantum KEMs, NTRU-HRSS and SIKE in Chrome. SIKE has very small keys, but is computationally very expensive. NTRU-HRSS, on the other hand, has similar performance characteristics to Kyber, but is slightly bigger and slower. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">This is what we found</a>:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZeN5ueGHiWynRKFenllBk/442d90efc850d9fdc45bc07b46235912/pasted-image-0.png" alt="" class="kg-image" width="1600" height="850" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZeN5ueGHiWynRKFenllBk/4994a0a4c970fcbf8111a9a1fe44080a/pasted-image-0.png" alt="" class="kg-image" width="1600" height="850" loading="lazy">
 
 	</figure>
 	<p>Handshake times for TLS with X25519 (control), NTRU-HRSS (CECPQ2) and SIKE (CECPQ2b). Both post-quantum KEMs were combined with a X25519 key agreement.</p>
@@ -153,7 +153,7 @@
 	<p>As we just saw, the situation for post-quantum key agreement isn’t too bad: Kyber, the chosen scheme is somewhat larger, but it offers computational efficiency in return. The situation for post-quantum signatures is worse: none of the schemes fit the bill on their own for different reasons. We discussed these issues at length for ten of them <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">in a deep-dive last year</a>. Let’s restrict ourselves for the moment to the schemes that were most likely to be standardized and compare them against Ed25519 and RSA-2048, the schemes that are in common use today.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wlbFCsTjsWtsugi5Q9cIJ/9f1d40335329fe9d67c31dacb52d3498/Screenshot-2022-07-09-at-08.45.51.png" alt="" class="kg-image" width="1376" height="546" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wlbFCsTjsWtsugi5Q9cIJ/705931a2c0c18b2efe9d77c57733a3e4/Screenshot-2022-07-09-at-08.45.51.png" alt="" class="kg-image" width="1376" height="546" loading="lazy">
 
 	</figure>
 	<p>Performance characteristics of NIST’s chosen signature schemes compared to Ed25519 and RSA-2048. We compare instances of security level 1, see below. Timings vary considerably by platform and implementation constraints and should be taken as a rough indication only. SPHINCS+ was timed with simple haraka as the underlying hash function. (*) Falcon requires a suitable double-precision floating-point unit for fast signing.</p>
@@ -167,14 +167,14 @@
 	<p>This brings us to <b>Dilithium</b>. Compared to Falcon it’s easy to implement safely and has better signing performance to boot. Its signatures and public keys are much larger though, which is problematic. For example, to each browser visiting this very page, we sent six signatures and two public keys. If we’d replace them all with Dilithium2 we would be looking at <b>17kB of additional data</b>. Last year, <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we ran an experiment</a> to see the impact of additional data in the TLS handshake:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75kLinYj12cYdK8eHQvRx8/b35931ac6e58a2f460d18df1821f7e28/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75kLinYj12cYdK8eHQvRx8/d880e06a52625cb0fc8f681ddc3b6cfc/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<p>Impact of larger signatures on TLS handshake time. For the details, see <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">this blog</a>.</p>
 	<p>There are some caveats to point out: first, we used a big 30-segment initial congestion window (icwnd). With a normal icwnd, the <i>bump</i> at 40KB moves to 10KB. Secondly, the height of this bump is the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trip time (RTT)</a>, which due to our broadly distributed network, is <a href="https://blog.cloudflare.com/cdn-latency-passive-measurement">very low</a> for us. Thus, switching to Dilithium alone might well double your TLS handshake times. More disturbingly, we saw that some connections stopped working when we added too much data:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QHAZZc6N74wSbYRJlgZDy/fd1d75896a1d97709a8c2e4834aff31d/Screen-Shot-2022-07-08-at-10.04.10-AM.png" alt="" class="kg-image" width="2000" height="1036" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QHAZZc6N74wSbYRJlgZDy/bf8af43d90ad6a2144dc2504167a80cb/Screen-Shot-2022-07-08-at-10.04.10-AM.png" alt="" class="kg-image" width="2000" height="1036" loading="lazy">
 
 	</figure>
 	<p>Amount of failed TLS handshakes by size of added signatures. For the details, see <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">this blog</a>.</p>
@@ -183,7 +183,7 @@
 	<p>Unfortunately, NIST stated on <a href="https://csrc.nist.gov/CSRC/media/Presentations/pqc-update-round-2-and-beyond/images-media/pqcrypto-sept2020-moody.pdf">several</a> <a href="https://nvlpubs.nist.gov/nistpubs/ir/2020/NIST.IR.8309.pdf">occasions</a> that it would choose only two signature schemes, but not both Falcon and Dilithium:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rOBpuWZKsYrCB14qBI8UD/1dfcf550c5a578c14d919f1a4ee7b81a/Screenshot-2022-07-06-at-13.20.43.png" alt="" class="kg-image" width="1600" height="688" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rOBpuWZKsYrCB14qBI8UD/d1cbbd680a6c3ebf5ec720c1c77ae708/Screenshot-2022-07-06-at-13.20.43.png" alt="" class="kg-image" width="1600" height="688" loading="lazy">
 
 	</figure>
 	<p><a href="https://csrc.nist.gov/CSRC/media/Presentations/pqc-update-round-2-and-beyond/images-media/pqcrypto-sept2020-moody.pdf">Slides</a> of NIST’s status update after the conclusion of round 2</p>
@@ -307,7 +307,7 @@
 	<p>We already mentioned CIRCL a few times, it’s our optimized crypto-library for Go whose <a href="https://blog.cloudflare.com/introducing-circl">development we started</a> in 2019. CIRCL already contains support for several post-quantum algorithms such as the KEMs Kyber and SIKE and signature schemes Dilithium and Frodo. The code is up to date and compliant with test vectors from the third round. CIRCL is readily usable in Go programs either as a library or natively as part of Go using <a href="https://github.com/cloudflare/go">this fork</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13Yr1CAgGUVkNU48YQcowR/07291364caa45c57e112d2cf73c01514/pasted-image-0--2-.png" alt="" class="kg-image" width="1200" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13Yr1CAgGUVkNU48YQcowR/0e79dde272e73143135795d2cb78b521/pasted-image-0--2-.png" alt="" class="kg-image" width="1200" height="250" loading="lazy">
 
 	</figure>
 	<p>One goal of CIRCL is to enable experimentation with post-quantum algorithms in TLS. For instance, we ran a <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">measurement study</a> to <a href="https://eprint.iacr.org/2021/1019">evaluate</a> the feasibility of the KEMTLS protocol for which we’ve adapted the TLS package of the Go library.</p>

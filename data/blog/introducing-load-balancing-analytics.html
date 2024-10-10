@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6R59KAAz31Pj7gNRda33d0/66c1dd2923b5d234f39ad75d057dde8a/image1-2.png" alt="" class="kg-image" width="1999" height="1038" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6R59KAAz31Pj7gNRda33d0/0ef5286d0ec55fcc7e955c7c7af35019/image1-2.png" alt="" class="kg-image" width="1999" height="1038" loading="lazy">
 
 	</figure>
 	<p>Cloudflare aspires to make Internet properties everywhere faster, more secure, and more reliable. <a href="https://www.cloudflare.com/load-balancing">Load Balancing</a> helps with speed and reliability and has been evolving over the past <a href="https://blog.cloudflare.com/cloudflare-traffic">three years</a>.</p>
@@ -35,7 +35,7 @@
 	<p>Understanding how traffic flow is distributed informs the process of creating new origin pools, adapting to peak traffic demands, and observing failover response during origin pool failures.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TWw8kMjxWkVZ2m8MeYz8D/dc145f93a7ce47eccea8bdec2fb49e1e/image5-1.png" alt="" class="kg-image" width="1245" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TWw8kMjxWkVZ2m8MeYz8D/863596a6142772d6391a1e4dd3b1f3f4/image5-1.png" alt="" class="kg-image" width="1245" height="1063" loading="lazy">
 
 	</figure>
 	<p>Figure 1</p>
@@ -53,14 +53,14 @@
 	<p>The map provides a summary of how responsive origins are from around the world, so customers can see regions where requests are underperforming and may need further investigation. A common metric used to identify performance is request latency. We found that the p90 latency for all Load Balancing origins being monitored is 300 milliseconds, which means that 90% of all monitors’ health checks had a round trip time faster than 300 milliseconds. We used this value to identify locations where latency was slower than the p90 latency seen by other Load Balancing customers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/h0Yh8XJ5eicGBGDwqzKgO/3a1ca9badcde22e26eaf45fd93088443/image6-2.png" alt="" class="kg-image" width="1420" height="1260" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/h0Yh8XJ5eicGBGDwqzKgO/5261df5479aaccfe537ebb6cab47a61f/image6-2.png" alt="" class="kg-image" width="1420" height="1260" loading="lazy">
 
 	</figure>
 	<p>Figure 2</p>
 	<p>In Figure 2, we can see the responsiveness of the Northeast Asia pool. The Northeast Asia pool is slow specifically for monitors in South America, the Middle East, and Southern Africa, but fast for monitors that are probing closer to the origin pool. Unfortunately, this means users for the pool in countries like Paraguay are seeing high request latency. High page load times have many unfortunate consequences: higher visitor bounce rate, decreased visitor satisfaction rate, and a lower search engine ranking. In order to avoid these repercussions, a site administrator could consider adding a new origin pool in a region closer to underserved regions. In Figure 3, we can see the result of adding a new origin pool in Eastern North America. We see the number of locations where the domain was found to be unhealthy drops to zero and the number of slow locations cut by more than 50%.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZgBHTryIIddChrdpq3nPl/ed1392fda0a28967852cf4354f8e59de/image3-2.png" alt="" class="kg-image" width="1420" height="1260" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZgBHTryIIddChrdpq3nPl/5ae7f131f2894e2caac5d28800681a48/image3-2.png" alt="" class="kg-image" width="1420" height="1260" loading="lazy">
 
 	</figure>
 	<p>Figure 3</p>
@@ -77,14 +77,14 @@
 	<p>Suppose you want to understand the number of requests the pools for a load balancer are seeing from the different locations in Cloudflare’s global network. The query in Figure 4 counts the number of unique (location, pool ID) combinations every fifteen minutes over the course of a week.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/iG1rrtCkk9R95r1l8b2Yf/679c1f7858b9803478d131eecdf7449c/image7.png" alt="" class="kg-image" width="1999" height="1076" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iG1rrtCkk9R95r1l8b2Yf/2b4b4fc042c9141e93bc627d29ee0182/image7.png" alt="" class="kg-image" width="1999" height="1076" loading="lazy">
 
 	</figure>
 	<p>Figure 4</p>
 	<p>For context, our example load balancer, lb.example.com, utilizes dynamic steering. <a href="https://blog.cloudflare.com/i-wanna-go-fast-load-balancing-dynamic-steering">Dynamic steering</a> directs requests to the most responsive, available, origin pool, which is often the closest. It does so using a weighted round-trip time measurement. Let’s try to understand why all traffic from Singapore (SIN) is being steered to our pool in Northeast Asia (asia-ne). We can run the query in Figure 5. This query shows us that the asia-ne pool has an avgRttMs value of 67ms, whereas the other two pools have avgRttMs values that exceed 150ms. The lower avgRttMs value explains why traffic in Singapore is being routed to the asia-ne pool.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5y7YRu5ZthmJV6JMZ6Sxlv/de1b1c9aa86def0bdfc7346f7c06f366/image4-1.png" alt="" class="kg-image" width="1999" height="921" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5y7YRu5ZthmJV6JMZ6Sxlv/8199396319354447783e07a62cf685ad/image4-1.png" alt="" class="kg-image" width="1999" height="921" loading="lazy">
 
 	</figure>
 	<p>Figure 5</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aXWFT6Lc5c9NmDdAs2V6/481a6b886de65180e5ee94ae58d3bca4/cDI2hCkDbEWqOIl0cSSai_boVv1IonLxeUEr1-2sBHIH4y93sG8DsZjkxWETR2AAHTb_4fo_Hsfk_8Gc7H6H5A9hmNGtnEpQ2nnY7W8xbJ3vpsbH9koCvQzG7Yzg.png" alt="" class="kg-image" width="1437" height="864" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aXWFT6Lc5c9NmDdAs2V6/1ab10d049c2b2aaac22d04a20b08542a/cDI2hCkDbEWqOIl0cSSai_boVv1IonLxeUEr1-2sBHIH4y93sG8DsZjkxWETR2AAHTb_4fo_Hsfk_8Gc7H6H5A9hmNGtnEpQ2nnY7W8xbJ3vpsbH9koCvQzG7Yzg.png" alt="" class="kg-image" width="1437" height="864" loading="lazy">
 
 	</figure>
 	<p>Today, we are announcing the general availability of <a href="https://blog.cloudflare.com/cloudflare-waiting-room">Cloudflare Waiting Room</a> to customers on our <a href="https://www.cloudflare.com/plans/enterprise">Enterprise plans</a>, making it easier than ever to protect your website against traffic spikes. We are also excited to present several new features that have user experience in mind — an alternative queueing method and support for custom web/mobile applications.</p>
@@ -17,7 +17,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HimJUBjwlefUf3zFKz1kV/5d9398daf66301567af943a80620d7e0/image3-11.png" alt="" class="kg-image" width="845" height="271" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HimJUBjwlefUf3zFKz1kV/14b81b8142f7c074a02a0407fd94fdbb/image3-11.png" alt="" class="kg-image" width="845" height="271" loading="lazy">
 
 	</figure>
 	<p>Whether you’ve waited to check out at a supermarket or stood in line at a bank, you’ve undoubtedly experienced FIFO queueing. FIFO stands for First-In-First-Out, which simply means that people are seen in the order they arrive — i.e., those who arrive first are processed before those who arrive later.</p>
@@ -34,7 +34,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Y5uqRgnOlkffp4VrgWNyA/ff1bc684f1fb0c059eecd850ea012530/image8-9.png" alt="" class="kg-image" width="1648" height="814" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Y5uqRgnOlkffp4VrgWNyA/6ea17980be8c3453471dfaf7bf38bc4d/image8-9.png" alt="" class="kg-image" width="1648" height="814" loading="lazy">
 
 	</figure>
 	<p>You can think of random queueing as participating in a raffle for a prize. In a raffle, people obtain tickets and put them into a big container. Later, tickets are drawn at random to determine the winners. The more time you spend in the raffle, the better your chances of winning at least once, since there will be fewer tickets in the container. No matter what, everyone participating in the raffle has an opportunity to win.</p>
@@ -53,7 +53,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DMz1FTEC6lJp9AV5Mdb1e/d825a915ae6716388678c3d8249d2bd2/image9-5.png" alt="" class="kg-image" width="1892" height="1226" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DMz1FTEC6lJp9AV5Mdb1e/e198bba78f0fa5e5d77daece125b683d/image9-5.png" alt="" class="kg-image" width="1892" height="1226" loading="lazy">
 
 	</figure>
 	<p>Perhaps the best part about random queueing is that it maintains the same internal structure that powers FIFO. As a result, if you <a href="https://developers.cloudflare.com/waiting-room/reference/queueing-methods#changing-queueing-methods">change the queueing method</a> in the dashboard — even when you may be actively queueing users — the transition to the new method is seamless. Imagine you have users 1, 2, 3, 4, and 5 waiting in a FIFO queue in the order 5 → &nbsp;4 → 3 → 2 → 1, where user 1 will be the next user to access the application. Let’s assume you switch to random queueing. Now, any user can be accepted next. Let’s assume user 4 is accepted. If you decide to immediately switch back to FIFO queueing, the queue will reflect the order 5 → 3 → 2 → 1. In other words, transitioning from FIFO to random and back to FIFO will respect the initial queue positions of the users! But how does this work? To understand, we first need to remember <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects">how we built Waiting Room</a> for FIFO.</p>
@@ -145,12 +145,12 @@
 	<p>Nevertheless, we weren’t convinced our efforts were enough and wanted to test random queueing empirically to validate its integrity. We conducted a simulation of 10,000 users joining a Waiting Room uniformly across 30 minutes. When let into the application, users spent approximately 1 minute “browsing” before they stopped checking in. We ran this experiment for both FIFO and random queueing and graphed each user’s observed wait time in seconds in the Waiting Room against the minute they initially arrived (starting from 0). Recall that users are grouped by minute using bucketIds, so each user’s arrival minute is truncated down to the current minute.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r72Jc8hoJptY4q59jOw7u/e31db71ca63479dd9682ee0894d4b17c/image10-2.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5r72Jc8hoJptY4q59jOw7u/7cc2c4e1213d3ea04e88b648fceb266d/image10-2.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7F0FFNzDtgGkQqbwWUc6dm/d708019971b1493c985db83560bd5857/image7-7.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7F0FFNzDtgGkQqbwWUc6dm/63829b423bc953ef4f3b2bd3eae0b472/image7-7.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
 
 	</figure>
 	<p>Based on our data, we can see immediately for FIFO queueing that, as the arrival minute increases, the observed wait time increases linearly. This makes sense for a FIFO queue, since the “line” will just get longer if there are more users entering the queue than leaving it. For each arrival minute, there is very little variation among user wait times, meaning that if you and your friend join a Waiting Room at approximately the same time, you will both be accepted around the same time. If you join a couple of minutes before your friend, you will almost always be accepted first.</p>
@@ -180,12 +180,12 @@ with open(filename) as file:
 	<p>The heatmaps display where the data points are concentrated in the original plot, using brighter (hotter) colors to represent areas containing more points:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/F7MOVRWvAt4cnRWjtFv9q/aab663c6367b9cfbc2511f4a8dd12a4c/image2-13.png" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/F7MOVRWvAt4cnRWjtFv9q/5c8781a91232bf6ee1a6f755ae45745b/image2-13.png" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FvI5MK2XVjrLW3RcDQym0/1c74d5891739362a962134a608a46cce/image1-14.png" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FvI5MK2XVjrLW3RcDQym0/66be2046b23542bb707a1fdddc6be82c/image1-14.png" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p>By inspecting the generated heatmaps, we can conclude that FIFO and random queueing are working properly. For FIFO queueing, users are being accepted in the order they arrive. For random queueing, we can see that users are accepted to the origin regardless of arrival time. Overall, we can see the heatmap for random queueing is well distributed, indicating it is sufficiently random!</p>
@@ -201,7 +201,7 @@ with open(filename) as file:
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24BHsyypybgrHaVUFhdypo/7e80290cc231282cd010a62c3c284a6b/image4-12.png" alt="" class="kg-image" width="1051" height="574" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24BHsyypybgrHaVUFhdypo/9d4832d080b091ac74145ab48aeab534/image4-12.png" alt="" class="kg-image" width="1051" height="574" loading="lazy">
 
 	</figure>
 	<p>In a random queue, you can be accepted at any moment… so how can you display an estimated wait time? For a particular user, this is an impossible task, but when you observe all the users together, you can accurately account for most user experiences using a probabilistic estimated wait time range.</p>
@@ -236,7 +236,7 @@ with open(filename) as file:
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pkXTi5JsH7w7tvLlUePDA/a703cc67be839d78f687d19513106408/image5-11.png" alt="" class="kg-image" width="1052" height="826" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pkXTi5JsH7w7tvLlUePDA/3d57ea5dc0fc8be9c69f7ee05ffdec5e/image5-11.png" alt="" class="kg-image" width="1052" height="826" loading="lazy">
 
 	</figure>
 	<p>Before, customers could only deploy static <a href="https://mustache.github.io">Mustache</a> HTML templates to customize the style of their Waiting Rooms. These templates work well for most use cases, but fall short if you want to display anything that requires state. Let’s imagine you’re queueing to buy concert tickets on your mobile device, and you see an embedded video of your favorite song. Naturally, you click on it and start singing along! A couple seconds later, the browser refreshes the page automatically to update your status in the Waiting Room, resetting your video to the start.</p>
@@ -356,7 +356,7 @@ async function handleRequest(request) {
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6y2H55tauwVyQMONGeLoxW/0e080f13a069d73eceee07ab78f94094/image6-10.png" alt="" class="kg-image" width="1216" height="777" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y2H55tauwVyQMONGeLoxW/d1d077d67a637f90ebfb91255c26bfb3/image6-10.png" alt="" class="kg-image" width="1216" height="777" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

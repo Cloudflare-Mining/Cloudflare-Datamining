@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wyWCJnYSOqYik46U38jkH/f5481bb818a7c7086736bc829b0a7af5/exposing-go-on-the-internet.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wyWCJnYSOqYik46U38jkH/ce8af6476dbaa7ba9d12c2ae51d11615/exposing-go-on-the-internet.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This piece was </i><a href="https://blog.gopheracademy.com/advent-2016/exposing-go-on-the-internet"><i>originally written</i></a><i> for the Gopher Academy advent series. We are grateful to them for allowing us to republish it here.</i></p>
 	<p>Back when <code>crypto/tls</code> was slow and <code>net/http</code> young, the general wisdom was to always put Go servers behind a reverse proxy like NGINX. That's not necessary anymore!</p>
@@ -78,7 +78,7 @@ go func() { log.Fatal(srv.ListenAndServe()) }()</code></pre>
 	<p>A zero/default <code>http.Server</code>, like the one used by the package-level helpers <code>http.ListenAndServe</code> and <code>http.ListenAndServeTLS</code>, comes with no timeouts. You don't want that.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12k30eO5eG5vdJG4C7Yk6J/940aaf163d0f2181ce0f3ecc3e11e288/Timeouts.png" alt="HTTP server phases" class="kg-image" width="2231" height="554" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12k30eO5eG5vdJG4C7Yk6J/89cc5b4dc27bff41da1259bde71b278d/Timeouts.png" alt="HTTP server phases" class="kg-image" width="2231" height="554" loading="lazy">
 
 	</figure>
 	<p>There are three main timeouts exposed in <code>http.Server</code>: <code>ReadTimeout</code>, <code>WriteTimeout</code> and <code>IdleTimeout</code>. You set them by explicitly using a Server:</p>

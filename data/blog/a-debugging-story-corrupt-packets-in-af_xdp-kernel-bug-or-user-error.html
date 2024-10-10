@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6y8e5gSMEYuaTCmUVwscON/b02f4adb1ac59344125568a7790a6cc3/image2-33.png" alt="A debugging story: corrupt packets in AF_XDP; a kernel bug or user error?" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y8e5gSMEYuaTCmUVwscON/e7b52d75c044b155fbc6682379a6350b/image2-33.png" alt="A debugging story: corrupt packets in AF_XDP; a kernel bug or user error?" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -32,7 +32,7 @@
 	<p>First, a shared packet buffer (UMEM) is created. This UMEM is divided into equal-sized “frames” that are referenced by a “descriptor address,” which is just the offset from the start of the UMEM.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sZldzVDmiFTIbWi5VROpW/6bde251d538b13c99322ead690395894/image12-2.png" alt="AF_XDP UMEM representation" class="kg-image" width="1600" height="810" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sZldzVDmiFTIbWi5VROpW/799e655b50ce2288d748086a1c85bab4/image12-2.png" alt="AF_XDP UMEM representation" class="kg-image" width="1600" height="810" loading="lazy">
 
 	</figure>
 	<p>Next, multiple AF_XDP sockets (XSKs) are created – one for each hardware queue on the network device – and bound to the UMEM. Each of these sockets provides four ring buffers (or “queues”) which are used to send descriptors back and forth between the kernel and user-space.</p>
@@ -78,7 +78,7 @@
 	<p>Here is an overview of the interactions between the kernel and user-space:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5g3TzP8qFYPWMxEXeXxhz3/0071ee946ede5ebe3f96887be1304764/Untitled-2.png" alt="" class="kg-image" width="1600" height="866" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5g3TzP8qFYPWMxEXeXxhz3/798bc1db0ce5bdf894804039eee1b77d/Untitled-2.png" alt="" class="kg-image" width="1600" height="866" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -93,7 +93,7 @@
 	<p>This setup is depicted in the following diagram:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nAwNZF6NfDJK6sz1yymW2/d9a504dbc65fc41227657adf9516c12e/Untitled--1--1.png" alt="" class="kg-image" width="1600" height="646" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nAwNZF6NfDJK6sz1yymW2/45823d63ae47c22878796864d847187a/Untitled--1--1.png" alt="" class="kg-image" width="1600" height="646" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -139,7 +139,7 @@
 	<p>After deploying the new code in production, we saw the following lines in our logs:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NG7NbMAC6kpbMT1mBZtwT/04f59b6964651b17fc1469f1feec4871/pasted-image-0-2.png" alt="" class="kg-image" width="1476" height="607" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NG7NbMAC6kpbMT1mBZtwT/cbb254e24627be61ecba34d2783d069b/pasted-image-0-2.png" alt="" class="kg-image" width="1476" height="607" loading="lazy">
 
 	</figure>
 	<p>Here you can see three interesting things:</p>
@@ -185,7 +185,7 @@
 	<p>Auditing our application code did not show any obvious location where we might be inserting the same descriptor address into either the FILL or TX ring twice. We do however know that descriptors transition through a set of known states, and we could track those transitions with a state machine. The below diagram shows all the possible valid transitions:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7c0EnogcWg13acmzNWQmiJ/a0b5e40e062e66dc1bb36a038ce11002/af_xdp_descriptor_transitions.png" alt="" class="kg-image" width="1403" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7c0EnogcWg13acmzNWQmiJ/6fc9f78824fc566a68da6893b24b7f0a/af_xdp_descriptor_transitions.png" alt="" class="kg-image" width="1403" height="441" loading="lazy">
 
 	</figure>
 	<p>For example, a descriptor going from the RX ring to either the FILL or the TX ring is a perfectly valid transition. On the other hand, a descriptor going from the FILL ring to the COMP ring is an invalid transition.</p>
@@ -256,7 +256,7 @@ Nov 29 10:52:08 fuzzer4 flowtrackd[83849]: thread 'flowtrackd-5UYF' panicked at 
 	<p>Below is the end of the first trace we captured with the updated code tracking the order of the FILL to RX queues. The color has been added to improve readability:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/uSATZc25o3ESPjeXWQVUX/c3114ccb1029770a3a400eebbe8e9b1f/Screenshot-2023-01-16-at-14.16.47.png" alt="" class="kg-image" width="1422" height="636" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uSATZc25o3ESPjeXWQVUX/9967b0a78fd476266ca5daf42b5cc177/Screenshot-2023-01-16-at-14.16.47.png" alt="" class="kg-image" width="1422" height="636" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<p>Here you can see the power of our ftrace flight recorder. For example, we can follow the full cycle of descriptor <span style="color:#ff00ff">0x16ce900</span> as it is first received in the kernel, received by our application which forwards the packet by adding to the TX queue, the kernel transmitting, and finally our application receiving the completion and placing the descriptor back in the FILL queue.</p>
@@ -285,7 +285,7 @@ Nov 29 10:52:08 fuzzer4 flowtrackd[83849]: thread 'flowtrackd-5UYF' panicked at 
 	<p><code>perf probe -a 'xsk_flush:0 xs'</code></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xx2qaoywvGvlb0VsenLAw/6202379ff2efc2d6a6190851fd1a9c72/Screenshot-2023-01-16-at-14.16.05.png" alt="" class="kg-image" width="1426" height="196" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Xx2qaoywvGvlb0VsenLAw/c0ec0249ac0f1ca77829fd6a39228624/Screenshot-2023-01-16-at-14.16.05.png" alt="" class="kg-image" width="1426" height="196" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<p>Here we appear to have our smoking gun. As we predicted we can see that <span style="font-family:'Roboto Mono',monospace"><span style="color:#000000">xsk_flush()</span></span> is called on CPU 0 while a softirq is currently in progress on CPU 2. After the flush our application sees the expected <span style="font-size:11pt"><span style="font-family:'Roboto Mono',monospace"><span style="color:#0000ff">0xff0900</span></span></span> filled in from the softirq on CPU 0, and then <span style="font-family:'Roboto Mono',monospace"><span style="color:#ff0000">0xdeadbeefdeadbeef</span></span> which is our poisoned uninitialized descriptor address.</p>

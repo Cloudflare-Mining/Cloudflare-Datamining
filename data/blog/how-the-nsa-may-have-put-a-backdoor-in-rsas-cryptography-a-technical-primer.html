@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bgoZkEpokb0OeWKamCPSZ/ce69fe9b41e74071adefe312720b302e/how-the-nsa-may-have-put-a-backdoor-in-rsas-cryptography-a-technical-primer.jpg" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bgoZkEpokb0OeWKamCPSZ/4da61a39ea681bb961864b6c8357981e/how-the-nsa-may-have-put-a-backdoor-in-rsas-cryptography-a-technical-primer.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>There has been a lot of news lately about <a href="http://arstechnica.com/security/2013/09/we-dont-enable-backdoors-in-our-crypto-products-rsa-tells-customers">nefarious-sounding backdoors</a> being inserted into cryptographic standards and toolkits. One algorithm, a pseudo-random bit generator, Dual_EC_DRBG, was ratified by the National Institute of Standards and Technology (NIST) in 2007 and is attracting a lot of attention for having a potential backdoor. This is the algorithm into which the NSA allegedly inserted a backdoor and then paid RSA to use.</p>
 	<p>So how is that possible? This is a technical primer that explains what a backdoor is, how easy it can be to create your own, and the dangerouconsequences of using a random number generator that was designed to have a backdoor. This is necessarily a long technical discussion, but hopefully by the end it should be clear why Dual_EC_DRBG has such a bad reputation.</p>
@@ -14,7 +14,7 @@
 	<p>Backdoors can be inserted by lazy programmers who want to bypass their own security systems for debugging reasons, or they can be created to intentionally weaken a system used by others. Government agencies have been known to insert backdoors into commonly used software to enable mass surveillance. Backdoors can be built into software, hardware, or even built into the design of an algorithm.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1uJmB869vcmTTnva4RXrsM/41dfb580bea9eb61695d50c9feb5fa9d/image01_1.jpg" alt="" class="kg-image" width="400" height="479" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uJmB869vcmTTnva4RXrsM/119feb168b0f0da2291a26d1feb68c98/image01_1.jpg" alt="" class="kg-image" width="400" height="479" loading="lazy">
 
 	</figure>
 	<p>In theory, a well-designed cryptographic system does not include a backdoor. In practice, it is hard to guarantee that a piece of software is backdoor-free. A backdoor was recently found in a widely-deployed version of <a href="http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor">D-Link router firmware</a>. The backdoor allows anyone with knowledge of a secret user agent string to log in and modify settings on any router running the vulnerable software. The D-Link backdoor took a long time to find because the source code for the router software was not available to security researchers to examine. With open source software, a researcher can look directly at the part of the code that verifies authentication and check for backdoors.</p>
@@ -57,7 +57,7 @@
 	<p>Here's a diagram of the basic pseudo-random number generator construction:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AHVv9RteJQ5geq65OGY5T/ffb68ce7605d2a89b7a60580a6430ce4/pseudo-random-number-generator.jpg" alt="" class="kg-image" width="645" height="285" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AHVv9RteJQ5geq65OGY5T/60317eb1672f29371590244161007d5b/pseudo-random-number-generator.jpg" alt="" class="kg-image" width="645" height="285" loading="lazy">
 
 	</figure>
 	<p>In this diagramF = SHA1and G = SHA1 + mix with XOR</p>
@@ -76,7 +76,7 @@
 	<p>The reason elliptic curves are used in cryptography is the strongly one way function they enable. As described previously, there is a geometrically intuitive way to define an arithmetic on the points of an elliptic curve.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vgoQBMQqqLCG1cDESkfLY/c8851066d99dd064b9877554eaa31bd5/elliptic-curve.png" alt="" class="kg-image" width="409" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vgoQBMQqqLCG1cDESkfLY/74fc59cc92817df14762fe648a581a25/elliptic-curve.png" alt="" class="kg-image" width="409" height="410" loading="lazy">
 
 	</figure>
 	<p>Any two points on an elliptic curve can be "dotted" ("multiplied") together to get a new point on the curve. Dotting a point with itself any number of times is fast easy to do, but going back to the original point takes a lot of computation. This operation can be used to create a nice and simple one-way function from a point P1:</p>
@@ -94,12 +94,12 @@
 	<p>With this billiards analogy, we can think of this random number generator as a new bizarro game of pool. Consider two balls on the infinite elliptic curve billiards table, the yellow ball called P1 and the blue ball called P2.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sH0Ulsxlek9Iog74xdmCs/60c863db927d3dcad9d0e003ba289747/yellow-billard.jpg" alt="" class="kg-image" width="570" height="597" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sH0Ulsxlek9Iog74xdmCs/972e652c948fd3e87bab261704de920d/yellow-billard.jpg" alt="" class="kg-image" width="570" height="597" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3J6rBecotNezmjyTCXBxcT/308a10319f2d44586b442925205f1218/blue-billard.jpg" alt="" class="kg-image" width="570" height="606" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3J6rBecotNezmjyTCXBxcT/3dd64ddb155a670897f04f7aae824ee9/blue-billard.jpg" alt="" class="kg-image" width="570" height="606" loading="lazy">
 
 	</figure>
 	<p>These two balls have specific points on the curve where they start. This is a two person game where one person is called the generator and the other is the observer. The generator has a secret number "n". The generator takes the ball P1 and performs n shots, and lets the observer see its final location. Then it takes P2 and performs n shots, taking the final location of P2 as a new value for n. Then P1 and P2 are reset to their original location and that's the end of the turn. Each turn the observer sees a new pseudo-random location for P1, and that's the output of the game.</p>

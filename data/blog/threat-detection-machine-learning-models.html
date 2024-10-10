@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AJmLPVIHc8Bb76BxbVoc0/402ff06ed605cf650ca3224a65c6a254/image9-1.png" alt="Using the power of Cloudflare’s global network to detect malicious domains using machine learning" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AJmLPVIHc8Bb76BxbVoc0/85553fb148e5b0ce20c767d8d881d6e1/image9-1.png" alt="Using the power of Cloudflare’s global network to detect malicious domains using machine learning" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Cloudflare secures outbound Internet traffic for thousands of organizations every day, protecting users, devices, and data from threats like ransomware and phishing. One way we do this is by intelligently classifying what Internet destinations are risky using the domain name system (DNS). <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> is essential to Internet navigation because it enables users to look up addresses using human-friendly names, like cloudflare.com. For websites, this means translating a domain name into the IP address of the server that can deliver the content for that site.</p>
@@ -44,7 +44,7 @@
 	<p>From the queries observed on 1.1.1.1, we filter down first to new and newly seen domain names. We then apply our DGA classifier to the new and newly seen domain names, allowing us to detect activated command and control domains as soon as they are observed anywhere in the world by the 1.1.1.1 resolver.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42ST4MV3Qez55tgxi3S4AY/dc0b313504a381e601650280683af892/Deployment.png" alt="" class="kg-image" width="1600" height="658" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42ST4MV3Qez55tgxi3S4AY/5c98186c63d81fb376ae925c728ebc0b/Deployment.png" alt="" class="kg-image" width="1600" height="658" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -111,7 +111,7 @@
 	<p>The authoritative DNS server decodes the query back into the original data, and if necessary can transmit it elsewhere on the Internet. Responses go back the other direction, the response data is encoded as a query response (for example a TXT record) and sent back to the malware running on the infected host.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1USLxe7JSl0fwBhhYf2buD/fa006fd90233e5c47df32ba21f25d9e7/DNS-Tunneling-Detection.png" alt="" class="kg-image" width="1600" height="536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1USLxe7JSl0fwBhhYf2buD/3660b5adcaf710f7a3b7036435361077/DNS-Tunneling-Detection.png" alt="" class="kg-image" width="1600" height="536" loading="lazy">
 
 	</figure>
 	<p>One challenge with identifying this type of traffic, however, is that there are also many benign applications that use the DNS system to encode or transmit data as well. An example of a query that was classified as not DNS tunneling:</p>
@@ -132,7 +132,7 @@
 	<p>In this model, the neural network takes 28 features as input and classifies the domain into one of 17 applications, such as DNS tunneling, IT appliance beacons, or email delivery and spam related. <b>Figure 2</b> shows a diagram generated from the popular Python software package <a href="https://keras.io">Keras</a> showing the layers of this neural network. We see the 28 input features at the top layer and at the bottom layer, the 17 output values indicating the prediction value for each type of application. This neural network is very small, having about 2,000 individual weights that can be set during the training process. In the next section we will see an example of a model that is based on a state-of-the-art pretrained model from a model family that has tens to hundreds of millions of predefined weights.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qkJkL0s3NDzVk4cgEl0hq/b4d6894fcd00a88669bccbfcaf9d0466/Screenshot-2023-03-15-at-11.24.14.png" alt="" class="kg-image" width="1596" height="814" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qkJkL0s3NDzVk4cgEl0hq/2b34d1060f540b0d8eda15ab694a14ad/Screenshot-2023-03-15-at-11.24.14.png" alt="" class="kg-image" width="1596" height="814" loading="lazy">
 
 	</figure>
 	<p>Fig. 2, The keras.utils.plot_model() function draws a diagram of the neural network layers.</p>
@@ -140,7 +140,7 @@
 	<p>When we observe a new domain and compute its feature values, our model uses those feature values to give us a prediction about which application the new domain resembles. As mentioned, the neural network has 28 inputs each of which is the value for a single feature and 17 outputs. The 17 output values represent the prediction that the domain is each of those 17 different types of applications, with malicious DNS tunneling being one of the 17 outputs. The job of the model is to convert the sometimes small differences between the feature values into a prediction. If the value of the malicious DNS tunneling output of the neural network is higher than the other outputs, the domain is labeled as a security threat.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FaIlCe95na1Jfpx8WzfT7/efb7c6d0a6b63ca33fc7464155d88cc6/Screenshot-2023-03-15-at-11.24.49.png" alt="" class="kg-image" width="1614" height="1066" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FaIlCe95na1Jfpx8WzfT7/93729854869830e3e4fbc460f50029f3/Screenshot-2023-03-15-at-11.24.49.png" alt="" class="kg-image" width="1614" height="1066" loading="lazy">
 
 	</figure>
 	<p>Fig. 3, Domains containing high-entropy DNS subdomains, visualized as feature plots. Each section around the circumference of the plot represents a different feature of the observed DNS queries. The distance from the center represents the value of that feature. Each color line is a distinct application, and machine learning helps us distinguish between these and classify them.</p>
@@ -155,7 +155,7 @@
 	<p>For the DNS tunneling model, our system consumes the logs from our secure web gateway service. The first stage model is applied to all DNS queries. Domains that are flagged as possible DNS tunneling are then sent to the second stage where the prediction is refined using additional features.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g99YpOWjODQHlrYssdkLS/af5079c7c03f6813ac76706c5bffee36/Deployment_2.png" alt="" class="kg-image" width="1600" height="622" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2g99YpOWjODQHlrYssdkLS/6e1a77e0b7a31ec0b33121d6e1aa6db6/Deployment_2.png" alt="" class="kg-image" width="1600" height="622" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -1,9 +1,9 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/FKFVt8eR9TmTngTUD8ajx/132fa5c41574131f19c0a332d51e1cc4/path-mtu-discovery-in-practice.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FKFVt8eR9TmTngTUD8ajx/7b4dca9cf3bbbc14ca80e7a3f6b48c24/path-mtu-discovery-in-practice.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last week, a very small number of our users who are using IP tunnels (primarily tunneling IPv6 over IPv4) were unable to access our services because a networking change broke "path MTU discovery" on our servers. In this article, I'll explain what path MTU discovery is, how we broke it, how we fixed it, and the open source code we used.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VOqwclfvRu2ER1ZcOorNo/e6221fd6a2d211946524d3e89066b467/11774786603_c3bfd2d22c_z.jpg" alt="Tunnel" class="kg-image" width="500" height="334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VOqwclfvRu2ER1ZcOorNo/8744614ee557cb44b7e6604d51737af8/11774786603_c3bfd2d22c_z.jpg" alt="Tunnel" class="kg-image" width="500" height="334" loading="lazy">
 
 	</figure>
 	<p>via <a href="https://www.flickr.com/photos/balintfoeldesi">Flickr</a></p>
@@ -39,7 +39,7 @@
 	<p>In theory, it's great but unfortunately many things can go wrong when delivering ICMP packets. The most common problems are caused by misconfigured firewalls that drop ICMP packets.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MjJtXICfrunkPwdh3NnEB/ca04e67f09734ca399675d1d32e9f5eb/15084150039_b1bed17210_z.jpg" alt="Black Hole " class="kg-image" width="500" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MjJtXICfrunkPwdh3NnEB/85952bb1d8c1b11df1cfa26559d101d2/15084150039_b1bed17210_z.jpg" alt="Black Hole " class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p>via <a href="https://www.flickr.com/photos/gsfc">Flickr</a></p>
@@ -91,7 +91,7 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TLVX51c8Cwvew4PFs20Ya/c94907c75563bd82026770110a1fe80e/ECMP-hashing-TCP-1.png" alt="ECMP hashing for tcp" class="kg-image" width="931" height="331" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TLVX51c8Cwvew4PFs20Ya/7ed16e92fc63d928e15ce35090fa2b1e/ECMP-hashing-TCP-1.png" alt="ECMP hashing for tcp" class="kg-image" width="931" height="331" loading="lazy">
 
 	</figure>
 	<p>And uses this hash to chose destination server. This guarantees that packets from one "flow" will always hit the same server.</p>
@@ -106,7 +106,7 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 	<p>ECMP will indeed forward TCP packets in a session to the appropriate server. Unfortunately, it has no special knowledge of ICMP and it hashes only (src ip, dst ip).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lHEwmHyDSt3UxvhO1t3uu/eb7fe22d983df3364b06db7178b2faf7/ECMP-hashing-ICMP.png" alt="ECMP hashing for icmp" class="kg-image" width="931" height="331" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lHEwmHyDSt3UxvhO1t3uu/bc2abcdfaec06bdfb6fb13fe952a9a87/ECMP-hashing-ICMP.png" alt="ECMP hashing for icmp" class="kg-image" width="931" height="331" loading="lazy">
 
 	</figure>
 	<p>Where the the source IP is most likely an IP of a router on the Internet. In practice, this may sometimes end up delivering the ICMP packets to a different server than the one handling the TCP connection.</p>

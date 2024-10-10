@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hkEsUWDVJmPQ7DAieHQCS/d528b281c27b3e3c0a5a8bccb9b2796d/Account-level-Security-Analytics-and-Security-Events_-better-visibility-and-control-over-all-account-zones-at-once.png" alt="Account Security Analytics and Events: better visibility over all domains" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hkEsUWDVJmPQ7DAieHQCS/6571ab358294597bd14e95b5f1feb5ed/Account-level-Security-Analytics-and-Security-Events_-better-visibility-and-control-over-all-account-zones-at-once.png" alt="Account Security Analytics and Events: better visibility over all domains" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Cloudflare offers many security features like <a href="https://developers.cloudflare.com/waf">WAF</a>, <a href="https://developers.cloudflare.com/bots">Bot management</a>, <a href="https://developers.cloudflare.com/ddos-protection">DDoS</a>, <a href="https://developers.cloudflare.com/cloudflare-one">Zero Trust</a>, and more! This suite of products are offered in the form of rules to give basic protection against common vulnerability attacks. These rules are usually configured and monitored per domain, which is very simple when we talk about one, two, maybe three domains (or what we call in Cloudflare’s terms, “zones”).</p>
@@ -39,7 +39,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gWJhl65y6sUNRHNaZjwqt/1e5d28510395d6febf3f84077ec3638c/Screenshot-2023-03-17-at-9.57.13-AM.png" alt="Snapshot highlighting Security Analytics and Events location in the dashboard sidebar" class="kg-image" width="2000" height="1601" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gWJhl65y6sUNRHNaZjwqt/d2a107ab79c0a3da65c4721a1b48fa74/Screenshot-2023-03-17-at-9.57.13-AM.png" alt="Snapshot highlighting Security Analytics and Events location in the dashboard sidebar" class="kg-image" width="2000" height="1601" loading="lazy">
 
 	</figure>
 	<p>The new views are security focused, data-driven dashboards — similar to zone-level views, both have &nbsp;similar data like: sampled logs and the top filters over many source dimensions (for example, IP addresses, Host, Country, ASN, etc.).</p>
@@ -60,7 +60,7 @@
 	<p><b>Step 1:</b> To navigate to the new views, sign into the Cloudflare dashboard and select the account you want to monitor. You will find <b>Security Analytics</b> and <b>Security Events</b> in the sidebar under <b>Security Center.</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GQ2Z3yAa1OehelJegPHZU/409de88672b04ba5d7f4986386811ccd/pasted-image-0--8--2.png" alt="Screenshot displaying the full Account Security Analytics view through the dashboard" class="kg-image" width="1600" height="1135" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GQ2Z3yAa1OehelJegPHZU/ffc7db3bde4a6976ed94e6eab597458c/pasted-image-0--8--2.png" alt="Screenshot displaying the full Account Security Analytics view through the dashboard" class="kg-image" width="1600" height="1135" loading="lazy">
 
 	</figure>
 	<p><b>Step 2:</b> In the Analytics dashboard, if you had a big spike in the traffic compared to the usual, there’s a big chance it's a layer 7 DDoS attack. Once you spot one, zoom into the time interval in the graph.</p><!--kg-card-begin: html-->
@@ -69,32 +69,32 @@
 	<p>By Expanding the top-Ns on top of the analytics page we can see here many observations:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XDngTA5PHz7hc0O8f7RJ8/7d86d098be0917cdf2659a9dc1b366ae/pasted-image-0--9--1.png" alt="Screenshot showing Analytics top Ns for traffic spike analysis" class="kg-image" width="1600" height="631" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XDngTA5PHz7hc0O8f7RJ8/5bfe5659e3eafa42689d998f2de886a3/pasted-image-0--9--1.png" alt="Screenshot showing Analytics top Ns for traffic spike analysis" class="kg-image" width="1600" height="631" loading="lazy">
 
 	</figure>
 	<p>We can confirm it’s a DDoS attack as the peak of traffic does not come from one single IP address, It’s distributed over multiple source IPs. The “edge status code” indicates that there’s a rate limiting rule applied on this attack and it’s a GET method over HTTP/2.</p>
 	<p>Looking at the right hand side of the analytics we can see “Attack Analysis” indicating that these requests were clean from <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">XSS</a>, SQLi, and common RCE attacks. The Bot Analysis indicates it’s an automated traffic in the Bot Scores distribution; these two products add another layer of intelligence to the investigation process. We can easily deduce here that the attacker is sending clean requests through high volumetric attack from multiple IPs to take the web application down.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mBN0yDIQo4aK0HAXCO5Yb/61bb0ecf355f966a179fc94b86da0533/pasted-image-0--10--1.png" alt="Display of Attack Analysis and Bot Analysis from Security Analytics dashboard" class="kg-image" width="1600" height="584" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mBN0yDIQo4aK0HAXCO5Yb/98fe973514f449147b3171e579c2dbce/pasted-image-0--10--1.png" alt="Display of Attack Analysis and Bot Analysis from Security Analytics dashboard" class="kg-image" width="1600" height="584" loading="lazy">
 
 	</figure>
 	<p><b>Step 3:</b> For this attack we can see we have rules in place to mitigate it, with the visibility we get the freedom to fine tune our configurations to have better security posture, if needed. we can filter on this attack fingerprint, for instance: add a filter on the referer `<a href="http://www.example.com`">www.example.com`</a> which is receiving big bulk of the attack requests, add filter on path equals `/`, HTTP method, query string, and a filter on the automated traffic with Bot score, we will see the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bI1AAaTSFbA7nPxvx4lZn/402d764e21b17196573b53c6030e1998/pasted-image-0--11-.png" alt="Using the Analytics’ filters to get to the fingerprint identifying the Attack" class="kg-image" width="1600" height="862" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bI1AAaTSFbA7nPxvx4lZn/2f8197708c7dc3ac8d842ff2c003b4eb/pasted-image-0--11-.png" alt="Using the Analytics’ filters to get to the fingerprint identifying the Attack" class="kg-image" width="1600" height="862" loading="lazy">
 
 	</figure>
 	<p><b>Step 4:</b> Jumping to Security Events to zoom in on our mitigation actions in this case, spike fingerprint is mitigated using two actions: Managed Challenge and Block.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JuvFbzYoI01oHDIrCh7ze/3a2c0f20d2ff39d7c7ea4d67a4d6ab98/pasted-image-0--12-.png" alt="Screenshot of the traffic spike distribution in the Security Events" class="kg-image" width="1600" height="1492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JuvFbzYoI01oHDIrCh7ze/3e21d9d444699434a28e25eea8422423/pasted-image-0--12-.png" alt="Screenshot of the traffic spike distribution in the Security Events" class="kg-image" width="1600" height="1492" loading="lazy">
 
 	</figure>
 	<p>The mitigation happened on: Firewall rules and DDoS configurations, the exact rules are shown in the top events.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20ANCsBgB0TowOniXpMl0E/fd3f6ebcc2ad1c4ddba3fc4917a5f775/pasted-image-0--13-.png" alt="Mitigation rules used as shown in the top events of the attack" class="kg-image" width="1108" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20ANCsBgB0TowOniXpMl0E/1e4445f96e05af157c3174314422513b/pasted-image-0--13-.png" alt="Mitigation rules used as shown in the top events of the attack" class="kg-image" width="1108" height="504" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

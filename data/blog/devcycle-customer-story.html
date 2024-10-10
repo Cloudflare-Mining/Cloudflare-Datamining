@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2je9wLWBbgJ60vm8tfAsxW/68cc2463bacee3b8df69f325de808d53/image3-15.png" alt="Cloudflare Workers scale too well and broke our infrastructure, so we are rebuilding it on Workers" class="kg-image" width="1801" height="1012" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2je9wLWBbgJ60vm8tfAsxW/58e457a186718c56719b84960db586de/image3-15.png" alt="Cloudflare Workers scale too well and broke our infrastructure, so we are rebuilding it on Workers" class="kg-image" width="1801" height="1012" loading="lazy">
 
 	</figure>
 	<p>While scaling our new Feature Flagging product <a href="https://devcycle.com">DevCycle</a>, we’ve encountered an interesting challenge: our Cloudflare Workers-based infrastructure can handle way more instantaneous load than our traditional AWS infrastructure. This led us to rethink how we design our infrastructure to always use Cloudflare Workers for everything.</p>
@@ -29,7 +29,7 @@
 	<p>The core architecture of DevCycle revolves around publishing and consuming JSON configuration files per project environment. The publishing side is managed in our AWS services, while Cloudflare manages the consumption of these config files at scale. This split in responsibilities allows for all high-scale requests to be managed by Cloudflare, while keeping our AWS services simple and low-scale.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5u1ZlzkOHcB4ImfB5t9Nw7/6a125505063486b9cb5c04e138a97caf/image1-22.png" alt="" class="kg-image" width="1999" height="1309" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5u1ZlzkOHcB4ImfB5t9Nw7/95a30c622c0b646be1472e5619f8fc1d/image1-22.png" alt="" class="kg-image" width="1999" height="1309" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -43,7 +43,7 @@
 	<p>One of the primary challenges as a feature management platform is that we don’t have direct control over the load from our customers’ applications using our SDKs; our systems need the ability to scale instantly to match their load. For example, we have a couple of large customers whose mobile traffic is primarily driven by push notifications, which causes massive instantaneous spikes in traffic to our APIs in the range of 10x increases in load. As you can imagine, any traditional auto-scaled API service and the load balancer cannot manage that type of increase in load. Thus, our choices are to dramatically increase the minimum size of our cluster and load balancer to handle these unknown load spikes, accept that some requests will be rate-limited, or move to an architecture that can handle this load.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wv1AhdzZCGrR1nX0x0BBm/ead915ba60426b435223692633eae193/image4-10.png" alt="" class="kg-image" width="1999" height="611" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wv1AhdzZCGrR1nX0x0BBm/3788b48880257b4346e1ec58fda2e9a6/image4-10.png" alt="" class="kg-image" width="1999" height="611" loading="lazy">
 
 	</figure>
 	<p>Given that all our SDK API requests are already served with Workers, they have no problem scaling instantly to 10x+ their base load. Sadly we can’t say the same about the traditional parts of our infrastructure.</p>
@@ -51,7 +51,7 @@
 	<p>To solve this issue we are moving towards a new events Cloudflare Worker which will be able to handle the instantaneous events load from these requests and make use of the Kinesis Data Firehose to write events to our existing S3 bucket which is ingested by Snowflake. In the future, we look forward to testing out Cloudflare Queues writing to R2 once a Snowflake connector has been created. This architecture should allow us to ingest events at almost any scale and withstand instantaneous traffic spikes with a predictable and efficient cost structure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sOm1ZrZvJGgcHWtGvzPB8/81185b3b9eaeddc5f712530135b47b95/image2-21.png" alt="" class="kg-image" width="1999" height="1266" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sOm1ZrZvJGgcHWtGvzPB8/2872f752d67f87eb2cbfa95b6ca0cffe/image2-21.png" alt="" class="kg-image" width="1999" height="1266" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

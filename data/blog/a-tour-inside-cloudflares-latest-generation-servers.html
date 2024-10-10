@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dTFG1sHx66iBZUdoCWL6r/571dca362a0c5a4ceb3ed4f99019f98d/open-g4-server.png" alt="Open G4 server" class="kg-image" width="645" height="395" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dTFG1sHx66iBZUdoCWL6r/be66d95df16e24bae08042998e8e4dcb/open-g4-server.png" alt="Open G4 server" class="kg-image" width="645" height="395" loading="lazy">
 
 	</figure>
 	<p>CloudFlare operates at a significant scale, handling more than a trillion requests through our network every month. To ensure this is as efficient as possible, we own and operate all the equipment in our <a href="https://www.cloudflare.com/network-map">23 locations around the world</a> in order to process the volume of traffic that flows through our network. We spend a significant amount of time specing and, in some cases, designing the hardware that makes up our network. At the edge of CloudFlare's network we run three main components: routers, switches, and servers. On regular intervals, we will take everything we've learned about a last generation of hardware and refresh each component with a next generation.</p>
@@ -29,21 +29,21 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hUZui0mI4wq6GaDiECcu3/c75c430e872950f0e4757095f9f02a3c/array-of-ssds.png" alt="Array of SSDs" class="kg-image" width="505" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hUZui0mI4wq6GaDiECcu3/575d5af340810690051c4f96693ca42b/array-of-ssds.png" alt="Array of SSDs" class="kg-image" width="505" height="645" loading="lazy">
 
 	</figure>
 	<p>CloudFlare uses SSDs exclusively at the edge of our network. SSDs give us three advantages. First, they tend to fail gradually over time rather than catastrophically, which allows us to predictably schedule their replacement and not keep staff on hand at all our locations around the world. Second, SSDs consume significantly less power than spinning HDDs. Less power means we can put more equipment less expensively in the data centers where we are located. Finally, SSDs have faster random seek and write performance, which is important given the nature of our traffic.</p>
 	<p>We went through a number of different models of SSDs over the life of our G3 hardware. The best price performance we found were the 240GB Intel 520 SSD drives, which is what we are using in the first shipments of the new G4 servers. Intel reports that the 520-series drives have a mean time between failure (MTBF) of <a href="http://www.intel.com/content/www/us/en/solid-state-drives/ssd-520-specification.html">1,200,000 hours</a> (about 137 years). While we haven't been running enough of the drives long enough to confirm that MTBF, we have been pleased with their low failure rate in our production environment. We vary the number of SSDs per server depending on the needs of the data center where the machine is located. At a minimum we install 6 drives but will ramp up to 24 if the traffic in the location calls for it. We do a lot of small transactions so, when optimizing our drive and file system choices, we focus on small file performance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44h30Nq2o2yo4J8P6s26jp/5b75e5faf14ecdd04461b597261cbc69/intel-ssd.png" alt="Intel SSD" class="kg-image" width="645" height="372" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44h30Nq2o2yo4J8P6s26jp/6185c5152605a69f86e813798cae4304/intel-ssd.png" alt="Intel SSD" class="kg-image" width="645" height="372" loading="lazy">
 
 	</figure>
 	<p>One thing we pulled out of our G4 setup was a RAID card. We'd experimented with hardware RAID but found we got more performance addressing each disk individually and using consistent hashing in the algorithm to spread files across disks. Specifically, we saw a 50% performance benefit addressing disks directly rather than going through the G3 hardware RAID. The additional reliability of RAID isn't as important for our application as we can always go fetch a copy of the original object from our customer's origin server if necessary.</p>
 	<p>While disk performance is important, in the case of frequently requested files it's even better if we can pull them straight from RAM. With RAM prices falling dramatically, we increased the amount of RAM in our G4 servers to 128GB. This allows us to hold more cache objects in RAM and hit the disk less frequently. Specifically, 128GB vs 48GB, allows us to have 100GB of in-memory file cache versus 20GB. That's 5x the memory file cache, which means we don't have to go to disk for the most popular resources. This gives us a 50% memory cache hit rate vs 25% on G3 servers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CpS4tQdmQT19w1gqYDPVF/1f4bded1e1a95b35f7f48346aeab8339/128-gb-of-ram.png" alt="128 GB of Ram" class="kg-image" width="645" height="373" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CpS4tQdmQT19w1gqYDPVF/555895c5efdaf59100117f3aa85e2c78/128-gb-of-ram.png" alt="128 GB of Ram" class="kg-image" width="645" height="373" loading="lazy">
 
 	</figure>
 	<p>Our software, for certain applications like caching where it makes sense, shares resources across all the servers within a location. This means that as we add additional servers to a data center the overall storage capacity of that data center increases. This architecture has allowed us to scale quickly to meet our continued growth.</p>
@@ -59,7 +59,7 @@
 	<p>While top clockspeed was not our priority, our product roadmap includes more CPU-heavy features. These include image optimization (e.g., Mirage and Polish), high volumes of SSL/TLS connections, and extremely fast pattern expression matching (e.g., PCRE tests for our WAF). These CPU-heavy operations can, in most cases, take advantage of special vector processing instruction sets on post-Westmere Intel chips. This made Intel's newest generation Sandybridge chipset attractive.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dGbGPAADpr3XUDCfIA1vt/ccca42599b07d394a8687055fbe4fceb/intel-sandybridge-chipset.png" alt="Intel Sandybridge chipset" class="kg-image" width="645" height="411" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dGbGPAADpr3XUDCfIA1vt/7120833f65aa761ba9a28473f35f71dc/intel-sandybridge-chipset.png" alt="Intel Sandybridge chipset" class="kg-image" width="645" height="411" loading="lazy">
 
 	</figure>
 	<p>We were willing to sacrifice a bit of clockspeed and spend a bit more on chips to save power. We tend to put our equipment in data centers that have high network density. These facilities, however, are usually older and don't always have the highest power capacity. We settled on our G4 servers having two <a href="http://ark.intel.com/products/64586">Intel Xeon 2630L</a> CPUs (a low power chip in the Sandybridge family) running at 2.0GHz. This gives us 12 physical cores (and 24 virtual cores with hyperthreading) per server. The power savings per chip (60 watts vs. 95 watts) is sufficient to allow us at least one more server per rack than we'd be able to get if we went with the non-low power version.</p>
@@ -75,7 +75,7 @@
 	<p>We ended up testing a very wide range of network cards, spending more time optimizing this component in the servers than any other. In the end, we settled on the network cards from a company called <a href="http://solarflare.com">Solarflare</a>. (It didn't hurt that their name was similar to ours.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NOvtlmExdtwvxegXN1jga/25281af9453977637828a7d4812caa74/solarflare-network-card.png" alt="Solarflare network card" class="kg-image" width="645" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NOvtlmExdtwvxegXN1jga/d127d7ca8f77be6a47077c1bc2b97d1c/solarflare-network-card.png" alt="Solarflare network card" class="kg-image" width="645" height="427" loading="lazy">
 
 	</figure>
 	<p>Solarflare has traditionally focused on supplying extremely performant network cards for the high frequency trading industry. What we found was that their cards ran circles around everything else in the market: handling up to 16 million packets per second in our tests (at 60 bytes per packet, the typical size of a SYN packet in a SYN-flood attack), compared with the next best alternative topping out around 9M PPS. We ended up using the Solarflare SFC9020 in our G4 servers. Part of the explanation for the performance benefit is that Solarflare includes a comparatively large network buffer on their cards (16MB versus 512KB or less in most the other cards we tested), minimizing the chance of network congestion leading to packet loss. This is good under normal operations but is particularly helpful when there is a DDoS attack.</p>
@@ -84,7 +84,7 @@
 	<p>Because of our unique requirements, we need to rewrite portions of the Solarflare network drivers before OpenOnload can be fully implemented. We're working with Solarflare on this project. However, we're excited once that process is done to fully unleash the potential of our G4 network hardware.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7chb0Q8V6mHaxPefXNT4lZ/da5664b70c230148caa0e6eb6aec820b/g4-ethernet-cables.png" alt="G4 Ethernet cables" class="kg-image" width="645" height="378" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7chb0Q8V6mHaxPefXNT4lZ/b04110389538b5774b9779ff9bf52dd7/g4-ethernet-cables.png" alt="G4 Ethernet cables" class="kg-image" width="645" height="378" loading="lazy">
 
 	</figure>
 	<p>Finally, while 10Gbps Ethernet can run across standard Cat5/6 cable, we elected to use SFP+ connectors. We chose this to have the flexibility between optical (fiber) and copper connections. Some network card and switch vendors lock down their equipment to only support proprietary SFP+s, which they charge a significant premium for. We spent significant time testing a combination of SFP+ vendors before finding <a href="http://www.fiberstore.com">FiberStore</a>, a SFP+ manufacturer from which we could directly source SFP+s at a reasonable price that worked in the network gear we wanted to use.</p>
@@ -99,7 +99,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/N6fM38wNLuJCpJIC4SvOg/ea9adfbdd5ff1217ffd846e7a3457116/platinum-power-supply.png" alt="Platinum power supply" class="kg-image" width="645" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/N6fM38wNLuJCpJIC4SvOg/fd5c27c81c9ea07127d897ffaf64da8d/platinum-power-supply.png" alt="Platinum power supply" class="kg-image" width="645" height="406" loading="lazy">
 
 	</figure>
 	<p>We've continued to use a single, high efficiency (Platinum) power supply on our servers. While power supplies do fail, we've designed CloudFlare's network to be highly resilient to component failure. If a power supply fails, traffic is automatically rebalanced across the remaining servers and a ticket is created to have the power supply replaced.</p>
@@ -107,7 +107,7 @@
 	<p>While we talked to these OEMs in the bakeoff we ran to select the vendor for our G4 servers, in the end we chose to work with what is known as an original design manufacturer (ODM) that built the servers exactly to our spec. We choose a Taiwanese company called <a href="http://www.quantatw.com/Quanta/english/Default.aspx">Quanta</a> which has built custom designed servers for companies like Facebook and Rackspace.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tO0UzkT0xLL9dhSJ8vVHJ/85b85dbcf34be67a086feabac14be180/complete-g4-hardware.png" alt="Complete G4 hardware" class="kg-image" width="645" height="430" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tO0UzkT0xLL9dhSJ8vVHJ/4d598f661da0b126f1f23d4e6b36b24f/complete-g4-hardware.png" alt="Complete G4 hardware" class="kg-image" width="645" height="430" loading="lazy">
 
 	</figure>
 	<p>Overall, our G4 servers cost us slightly less per server than our G3s but deliver a bit better CPU performance, faster storage, 3 times the RAM, and 3 times the network capacity all while using about 20% less power. While we continue to tune our G4 servers to optimize performance, and we will update particular components as better versions become available (e.g., we're already testing various next generation SSDs from Intel and other vendors), we expect that we'll continue to utilize the core G4 current platform through at least mid-2014. We've already begun to discover bottlenecks in this new architecture (hint: switches) which we're starting to investigate how to solve. As we do, we'll keep sharing what we learn.</p>

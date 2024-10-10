@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QFTD1v6Bs2YqXJadCskuJ/da3f243e558c325d072cc1fe3cb3a0c0/cloudflare_no_hardware.png" alt="Alt text" class="kg-image" width="1000" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QFTD1v6Bs2YqXJadCskuJ/ae612a4b94ac4073f47bcfa89afdd2e2/cloudflare_no_hardware.png" alt="Alt text" class="kg-image" width="1000" height="480" loading="lazy">
 
 	</figure>
 	<p>CloudFlare is an engineering-driven company. This is a story we're proud of because it embodies the essence of who we are: when faced with a problem, we found a novel solution. Technical details to follow but, until then, welcome to the no hardware world. (Update: The <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">post with the technical details</a> is now online.)</p>
@@ -54,7 +54,7 @@
 	<p>Sebastien is the kind of engineer that, when he's transfixed with a problem, can't sleep. It's a trait we hire for at CloudFlare. He showed up the next morning looking both exhausted and excited. "I've proven it's possible," he said. "It's crude. It won't scale. It probably has security vulnerabilities galore, but I've proved we can terminate SSL connections even if we don't have physical access to the private SSL key."</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67ye2noSXbS8Cjl30wK2MG/e895beb8a75c1cc897900361339c0f7f/keyless-comic-v1.gif" alt="alt" class="kg-image" width="1137" height="773" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67ye2noSXbS8Cjl30wK2MG/93f62328ce478c9c352994b027d2cba3/keyless-comic-v1.gif" alt="alt" class="kg-image" width="1137" height="773" loading="lazy">
 
 	</figure>
 	<p>Tomorrow, we'll publish a full post on the nitty, gritty techical details of how, what has come to be called Keyless SSL™, works. (Update: The <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">post with the technical details</a> is now online.) For now, I'll just tell you about what Sebastien had built. It was a dramatic demo. A simple agent ran on a Raspberry Pi. A web server, running on a remote server on CloudFlare's network, received HTTPS connections. When the Raspberry Pi was plugged in, the connections went through from a browser as they would normally. The lock appeared and the connection was secured, end-to-end. The minute the Raspberry Pi's power was disconnected, HTTPS access terminated.</p>
@@ -63,7 +63,7 @@
 	<p>To make it work, we needed to hold connections open between CloudFlare's network and agents running on our customers' infrastructure. Moreover, we needed to share data about crytographic sessions setup for a visitor between all the machines that could serve that visitor. Making it work was one thing, making it fast was another. And, today, Keyless SSL clients are experiencing 3x+ faster SSL termination globally using the service than they were when they were relying only on on-premise solutions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2u2xEAMVLaATb46eazdLOz/53913744d02d785bc0b17693e18c9b51/illustration-keyless-ssl-explained-01.png" alt="Keyless SSL RSA Diagram" class="kg-image" width="6667" height="3132" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2u2xEAMVLaATb46eazdLOz/66d8589ef795eb71b2bbf4a0c0462b55/illustration-keyless-ssl-explained-01.png" alt="Keyless SSL RSA Diagram" class="kg-image" width="6667" height="3132" loading="lazy">
 
 	</figure>
 	<p>Tomorrow Nick Sullivan will spend time going through the details of how Keyless SSL works. For now know this: private clouds are an oxymoron. Keeping your network behind on-premise hardware you control is a recipe for disaster. Over time, the network edge needs the infinite scalability and elastacity that only a service like CloudFlare can provide. And, now, with Keyless SSL, anyone can get that flexibility without having to turn over their most guarded secrets: their private SSL keys.</p>

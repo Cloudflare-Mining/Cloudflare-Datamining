@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nlkEJ9eJajUh9It1DIhCL/ce39871c934b873f5863e488aae93ba0/how-we-built-origin-ca-web-crypto.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nlkEJ9eJajUh9It1DIhCL/a8fc5dfbadc6c5123723584600c702a4/how-we-built-origin-ca-web-crypto.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At CloudFlare we strive to combine features that are simple, secure, and backed by solid technology. The <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Origin CA</a> is a great example of this. You no longer need to go to a third-party certificate authority to protect the connection between CloudFlare and your origin server. You can now get a certificate to encrypt the connection between CloudFlare and the origin from CloudFlare directly with one click.</p>
 	<p>In certificate-based security, the most important thing is protecting the private key. We designed the one-click certificate dashboard to maximize private key security. Your private key is created client-side in your browser using the W3C’s <a href="https://www.w3.org/2012/webcrypto">Web Crypto API</a> and only the public key is sent to CloudFlare’s servers. This security feature turned out to be a big win for usability as well as an interesting technical challenge.</p>
@@ -13,7 +13,7 @@
 	<p>Most certificate authorities (CAs) specialize in one type of transaction: they take a certificate signing request (CSR) (and sometimes a fee) and in return they provide a signed certificate. A CSR is a way to tell a certificate authority what your public key is and to prove you have control of the corresponding private key. The certificate authority doesn’t need to see your private key to validate the CSR. This is a good thing. Sharing your private key with anybody, including your CA, makes it more vulnerable to theft.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25JF9DhQ0U8um4jlzYtkrA/24f9a6d2d5f0ed737622b5de1d489a12/illustrations-ssl.png" alt="Getting a certificate" class="kg-image" width="2688" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25JF9DhQ0U8um4jlzYtkrA/654c5cf294e1ea114f3f3b87f37662b7/illustrations-ssl.png" alt="Getting a certificate" class="kg-image" width="2688" height="1080" loading="lazy">
 
 	</figure>
 	<p>Like most CAs, the CloudFlare Origin CA requires you to send a CSR signed by your private key to get a certificate. If you <a href="https://api.cloudflare.com/#origin-ca-create-certificate">take a look at the API</a> for the Origin CA you’ll see that CSRs are exchanged for certificates and private keys are not involved. This API is the only way to get a certificate from CloudFlare’s Origin CA: both the CloudFlare dashboard and the Origin CA CLI use it under the hood.</p>
@@ -30,7 +30,7 @@
 	<p>In the last few years, a new addition to Web standards was introduced that changes everything: support for native cryptography in the browser. The <a href="https://www.w3.org/2012/webcrypto">W3C Web Crypto group</a> has made a lot of progress towards standardizing a set of APIs to do standard cryptographic operations including encryption, digital signatures and key generation. As of today, Web Crypto features are supported by <a href="http://caniuse.com/#feat=cryptography">almost all</a> modern browsers. With native web crypto, we no longer need to use problematic JavaScript cryptography to create private keys and sign CSRs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55nxtM9JIJmsuWxBv1FA4I/e3c237d53d873aa22fc92403f272a7b6/Unofficial_JavaScript_logo_2-svg.png" alt="" class="kg-image" width="1024" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55nxtM9JIJmsuWxBv1FA4I/7ae3128d80e3983671aa1ee83ae3d1ce/Unofficial_JavaScript_logo_2-svg.png" alt="" class="kg-image" width="1024" height="1024" loading="lazy">
 
 	</figure>
 	<p>With the pure cryptographic operations handled by the browser, we still needed some code to structure and format the CSRs and certificates. For this we used <a href="https://pkijs.org">PKI.js</a>, an open source JavaScript library by our friends at GlobalSign that is built on the WebCrypto API. PKI.js a full featured PKI toolkit that can create CSRs and certificates as well as handle a wide variety of certificate formats including DER, PEM, PKCS#7 and PKCS#12.</p>
@@ -38,7 +38,7 @@
 	<p>CloudFlare’s servers don’t see your private key and you get to save yourself the hassle of learning obscure OpenSSL commands.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eUgxqtZuqCKQfFRmN8Swc/6f77fd3da939bf185ab800ac94e3dcc8/origin-ca.png" alt="Origin CA Data Flow" class="kg-image" width="600" height="355" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eUgxqtZuqCKQfFRmN8Swc/decf60cdd31bca97c7ea0beb857528c4/origin-ca.png" alt="Origin CA Data Flow" class="kg-image" width="600" height="355" loading="lazy">
 
 	</figure>
 	<p>Of course, not everything smells of roses. Because Web Crypto is an evolving standard, we have to deal with uneven support for the APIs we need. While working on the project, we realized that Firefox was unable to export ECDSA keys in the formats we needed—if we left it as is, a huge portion of our user base would be unable to use modern cryptography. We want our features to be used by as many people as possible, so we built a shim over the WebCrypto API which supports the formatting we need. We intend to continue working on this shim, adding support for Safari, Internet Explorer and other browsers.</p>

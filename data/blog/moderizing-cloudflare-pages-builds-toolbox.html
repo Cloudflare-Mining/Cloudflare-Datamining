@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lME1CWawsCQtIuzvvfLPq/c6a23f19519d4d66a3e0d9c4fb5ea403/image2-22.png" alt="Modernizing the toolbox for Cloudflare Pages builds" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lME1CWawsCQtIuzvvfLPq/b037a9c82151e6976cb0ed220573ad80/image2-22.png" alt="Modernizing the toolbox for Cloudflare Pages builds" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Pages <a href="https://blog.cloudflare.com/cloudflare-pages">launched</a> over two years ago in December 2020, and since then, we have grown Pages to build millions of deployments for developers. In May 2022, to support developers with more complex requirements, we opened up Pages to empower developers to <a href="https://blog.cloudflare.com/cloudflare-pages-direct-uploads">create deployments using their own build environments</a> — but that wasn't the end of our journey. Ultimately, we want to be able to allow anyone to use our build platform and take advantage of the git integration we offer. You should be able to connect your repository and have it <i>just work</i> on Cloudflare Pages.</p>
@@ -37,7 +37,7 @@
 	<p>We're aware that these new defaults constitute a breaking change for anyone using a project without pinning their versions with an environment variable or version file. That's why we're making this new build system opt-in for existing projects. You'll be able to stay on the existing system without breaking your builds. If you do decide to adventure with us, we make it easy to test out the new system in your preview environments before rolling out to production.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/265Kkauu3hg7i7PgW6l9IC/56f958e09cba78e60ee164922fe86ae5/image5-5.png" alt="Screenshot of the Cloudflare dashboard Pages project settings screen where you can configure the build system version." class="kg-image" width="1758" height="1288" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/265Kkauu3hg7i7PgW6l9IC/ac785539cffcfd46c52ca0e01b70b306/image5-5.png" alt="Screenshot of the Cloudflare dashboard Pages project settings screen where you can configure the build system version." class="kg-image" width="1758" height="1288" loading="lazy">
 
 	</figure>
 	<p>Additionally, we're now making your builds more reproducible by taking advantage of lockfiles with many package managers. <code>npm ci</code> and <code>yarn --pure-lockfile</code> are now used ahead of your build command in this new version of the build system.</p>
@@ -69,7 +69,7 @@
 	<p>We use a <a href="https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume">shared volume</a> to give the build a persistent workspace to use between containers, but now there is clear isolation between <b>system</b> stages (cloning a repository and uploading assets) and <b>user</b> stages (running code that the user is responsible for). We no longer need to worry about conflicting versions, and we've created an additional layer of security by isolating a user's control to a separate environment.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11McSSl7sZWok1UdR8EuRV/913d88563fed59c0af4646526a7a657b/1-6.png" alt="A diagram of three sequential Kubernetes containers which all connect to a Kubernetes Shared Volume. They belong to a Kubernetes job which itself is run within a Kubernetes Node. The first container clones a user's git repository; the second installs languages, tools, dependencies and runs the build; and the third uploads the assets." class="kg-image" width="1500" height="1360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11McSSl7sZWok1UdR8EuRV/35bb07d37152065d5870c24813ac8d73/1-6.png" alt="A diagram of three sequential Kubernetes containers which all connect to a Kubernetes Shared Volume. They belong to a Kubernetes job which itself is run within a Kubernetes Node. The first container clones a user's git repository; the second installs languages, tools, dependencies and runs the build; and the third uploads the assets." class="kg-image" width="1500" height="1360" loading="lazy">
 
 	</figure>
 	<p>We're also aligning the final stage, the one responsible for uploading static assets, with the same APIs that Wrangler uses for Direct Upload projects. This reduces our maintenance burden going forward since we'll only need to consider one way of uploading assets and creating deployments. As we consolidate, we're exploring ways to make these APIs even faster and more reliable.</p>
@@ -85,7 +85,7 @@
 	<p>By introducing this new isolation between containers, we had to get a bit more inventive. After prototyping a number of approaches, we've found one that we like. We run a separate, global log collector container inside Kubernetes which is responsible for collating logs from a build, and passing them through to that same Durable Object infrastructure. The one caveat is that the logs now need to be annotated with which build they are coming from, since one global log collector container accepts logs from multiple builds. A Worker in front of the Durable Object is responsible for reading the annotation and delegating to the relevant build's Durable Object instance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6liD6t03jOlyaUug44A7gQ/266b108422c385f3a1ff13d3011c3f83/image1-40.png" alt="A diagram of multiple builds within a Kubernetes node, all streaming their container logs to a global log collector running in yet another container in the Kubernetes node. This container then posts its aggregated logs to a Cloudflare Worker which distributes the logs to a Durable Object instance for each build." class="kg-image" width="1999" height="1298" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6liD6t03jOlyaUug44A7gQ/9e6fec6d6b8864b187353872d9744cd4/image1-40.png" alt="A diagram of multiple builds within a Kubernetes node, all streaming their container logs to a global log collector running in yet another container in the Kubernetes node. This container then posts its aggregated logs to a Cloudflare Worker which distributes the logs to a Durable Object instance for each build." class="kg-image" width="1999" height="1298" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -101,7 +101,7 @@
 	<p>This is possible because our new modular design has clear divides between the stages where we'd want to restore and cache files.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YcQdgswXh6aueVEkJkBGK/6c1f8a13e6d1bf1c183cadc02af6ef49/2-3.png" alt="A diagram showing the three containers of a build, plus a divider between the first and second marked " restore="" cache"="" and="" a="" divider="" between="" the="" second="" third="" marked="" "persist="" cache" ."="" class="kg-image" width="1600" height="1190" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YcQdgswXh6aueVEkJkBGK/020e5a74f78b9c8a961cda57c623c69c/2-3.png" alt="A diagram showing the three containers of a build, plus a divider between the first and second marked " restore="" cache"="" and="" a="" divider="" between="" the="" second="" third="" marked="" "persist="" cache" ."="" class="kg-image" width="1600" height="1190" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NgKY8lcObRRPp4XUwHWRH/495852032fa4560752c6c10d9205be42/image14-1.png" alt="How Cloudflare’s systems dynamically route traffic across the globe" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NgKY8lcObRRPp4XUwHWRH/fd6462ace767589fd26f2f52aa98252f/image14-1.png" alt="How Cloudflare’s systems dynamically route traffic across the globe" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Picture this: you’re at an airport, and you’re going through an airport security checkpoint. There are a bunch of agents who are scanning your boarding pass and your passport and sending you through to your gate. All of a sudden, some of the agents go on break. Maybe there’s a leak in the ceiling above the checkpoint. Or perhaps a bunch of flights are leaving at 6pm, and a number of passengers turn up at once. Either way, this imbalance between localized supply and demand can cause huge lines and unhappy travelers — who just want to get through the line to get on their flight. How do airports handle this?</p>
@@ -34,7 +34,7 @@
 	<p>But doing it manually wasn’t just a burden on our Network Operations team. It also resulted in a sub-par experience for our customers; our engineers would need to take time to diagnose and re-route traffic. To solve both these problems, we wanted to build a service that would immediately and automatically detect if users were unable to reach a Cloudflare data center, and withdraw routes from the data center until users were no longer seeing issues. Once the service received notifications that the impacted data center could absorb the traffic, it could put the routes back and reconnect that data center. This service is called Traffic Manager, because its job (as you might guess) is to manage traffic coming into the Cloudflare network.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38NInVKI4VizcCukXlF7o4/9475d3b3b6e83d526036df8c6d2a69c9/image19.png" alt="" class="kg-image" width="1999" height="1040" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38NInVKI4VizcCukXlF7o4/77758610378a6721ecf30127b6246d0f/image19.png" alt="" class="kg-image" width="1999" height="1040" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -76,13 +76,13 @@
 	<p>Here’s what those failure paths and failover scenarios look like for all of our data centers around the world when they’re visualized:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NxD3OynAnVJFP9yfv9pa1/2aa409b87909d2f4d0a6e6f99f98286d/image17.png" alt="" class="kg-image" width="1999" height="1902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NxD3OynAnVJFP9yfv9pa1/1b518728e831062aa5bcae1d8329ffe8/image17.png" alt="" class="kg-image" width="1999" height="1902" loading="lazy">
 
 	</figure>
 	<p>This can be a bit complicated for humans to parse, so let’s dig into that above scenario for Christchurch, New Zealand to make this a bit more clear. When we take a look at failover paths specifically for Christchurch, we see they look like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JGMDbR9jjZHFTpQMEkfZI/c2f0fb94d9f6bef1e706488bf54389d1/image20.png" alt="" class="kg-image" width="1999" height="1725" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JGMDbR9jjZHFTpQMEkfZI/29dbc0bfeb4fa4147156d331831d8ebc/image20.png" alt="" class="kg-image" width="1999" height="1725" loading="lazy">
 
 	</figure>
 	<p>In this scenario we predict that 99.8% of Christchurch’s traffic would shift to Auckland, which is able to absorb all Christchurch traffic in the event of a catastrophic outage.</p>
@@ -104,7 +104,7 @@
 	<p>Plurimog does the same thing, but instead of talking between machines, Plurimog talks in between data centers and points of presence. If a request goes into Philadelphia and Philadelphia is unable to take the request, Plurimog will forward to another data center that can take the request, like Ashburn, where the request is decrypted and processed. Because Plurimog operates at layer 4, it can send individual TCP or UDP requests to other places which allows it to be very fine-grained: it can send percentages of traffic to other data centers very easily, meaning that we only need to send away enough traffic to ensure that everyone can be served as fast as possible. Check out how that works in our Frankfurt data center, as we are able to shift progressively more and more traffic away to handle issues in our data centers. This chart shows the number of actions taken on free traffic that cause it to be sent out of Frankfurt over time:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NqLJgn8hYCuHKXRaJfX2P/028d8a2a0a2d39b17f04b0f549a46e79/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NqLJgn8hYCuHKXRaJfX2P/c666ab9c6c8aba3071a3528b274f997b/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="358" loading="lazy">
 
 	</figure>
 	<p>But even within a data center, we can route traffic around to prevent traffic from leaving the datacenter at all. Our large data centers, called Multi-Colo Points of Presence (MCPs) contain logical sections of compute within a data center that are distinct from one another. These MCP data centers are enabled with another version of Unimog called Duomog, which allows for traffic to be shifted between logical sections of compute automatically. This makes MCP data centers fault-tolerant without sacrificing performance for our customers, and allows Traffic Manager to work within a data center as well as between data centers.</p>
@@ -124,7 +124,7 @@
 	<p>During this time period, Duomog sent more traffic from IAD02 to other subsections within Ashburn, ensuring that Ashburn was always online, and that performance was not impacted during this issue. Then, once IAD02 was able to take traffic again, Duomog shifted traffic back automatically. You can see these actions visualized in the time series graph below, which tracks the percentage of traffic moved over time between subsections of capacity within IAD02 (shown in green):</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tHxLx4GG2vfqVOfscJlCr/2a8bda94e4d92f5e41678febcbefc748/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="803" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tHxLx4GG2vfqVOfscJlCr/c4864e24dc18b7ad1866c716862d79ee/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="803" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -139,7 +139,7 @@
 	<p>CPU time is an important metric because of the impact it can have on latency and customer performance. As an example, consider the time it takes for an eyeball request to make it entirely through the Cloudflare front line servers: we call this the cfcheck latency. If this number goes too high, then our customers will start to notice, and they will have a bad experience. When cfcheck latency gets high, it’s usually because CPU utilization is high. The graph below shows 95th percentile cfcheck latency plotted against CPU utilization across all the machines in the same data center, and you can see the strong correlation:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZNFbWlf35KUMAh9SchRHb/bbf9b61f12fa572e47bbbd348f9d73d3/Untitled.png" alt="" class="kg-image" width="982" height="591" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZNFbWlf35KUMAh9SchRHb/4e415f7d847d10bbe68585c9a7695266/Untitled.png" alt="" class="kg-image" width="982" height="591" loading="lazy">
 
 	</figure>
 	<p>So having Traffic Manager look at CPU time in a data center is a very good way to ensure that we’re giving customers the best experience and not causing problems.</p>
@@ -159,31 +159,31 @@
 	<p>Target ratio equals current ratio:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EGE8UPINB9MUPtpETprf5/fa9b3f86a504d6726d2a277b42adceec/Screenshot-2023-09-18-at-22.11.27.png" alt="" class="kg-image" width="1328" height="66" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EGE8UPINB9MUPtpETprf5/0f82d6166774a63f8e252dea7f169490/Screenshot-2023-09-18-at-22.11.27.png" alt="" class="kg-image" width="1328" height="66" loading="lazy">
 
 	</figure>
 	<p>Therefore:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/uyhAhuKbaFhMpdxtJTBFq/88d2d0f6d15dcc453faf51e82e91602d/Screenshot-2023-09-18-at-22.12.17.png" alt="" class="kg-image" width="1334" height="66" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uyhAhuKbaFhMpdxtJTBFq/89f9032c5e4380b895f5bf9542ced1d9/Screenshot-2023-09-18-at-22.12.17.png" alt="" class="kg-image" width="1334" height="66" loading="lazy">
 
 	</figure>
 	<p>Subtracting the target CPU time from the current CPU time gives us the CPU time to move:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SQDzRDMKby1OrhYxrLhBY/b017e7556e57ae7242ea1104b37358c7/Screenshot-2023-09-18-at-22.13.14.png" alt="" class="kg-image" width="1344" height="66" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SQDzRDMKby1OrhYxrLhBY/74142207095c5b9a4e869e2fe735ce6f/Screenshot-2023-09-18-at-22.13.14.png" alt="" class="kg-image" width="1344" height="66" loading="lazy">
 
 	</figure>
 	<p>For example, if the current CPU utilization was at 90% across the data center, the target was 85%, and the CPU time across all plans was 18,000, we would have:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2A074OHvmPertIwkAIb0ev/1f9429e2432ebea73a65b8d00ed412c1/Screenshot-2023-09-18-at-22.14.02.png" alt="" class="kg-image" width="1318" height="66" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2A074OHvmPertIwkAIb0ev/e49abb26ac4b17cba2a96a4e5ccb7a8f/Screenshot-2023-09-18-at-22.14.02.png" alt="" class="kg-image" width="1318" height="66" loading="lazy">
 
 	</figure>
 	<p>This would mean Traffic Manager would need to move 1,000 CPU time:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qKnOiyzymcphDes5ee2cS/7e5208ab3d18b41a189d92ec9f9e5381/Screenshot-2023-09-25-at-10.44.41.png" alt="" class="kg-image" width="1220" height="46" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qKnOiyzymcphDes5ee2cS/d7cec01541398c1b3ae1b075622626c9/Screenshot-2023-09-25-at-10.44.41.png" alt="" class="kg-image" width="1220" height="46" loading="lazy">
 
 	</figure>
 	<p>Now we know the total CPU time needed to move, we can go through the plans, until the required time to move has been met.</p>
@@ -201,25 +201,25 @@
 	<p>But we also need to define a service-level objective (SLO) in order for our machine learning application to be able to adjust the threshold. We set the SLO for 20ms. Comparing our SLO to our SLI, our 95th percentile cfcheck latency should never go above 20ms and if it does, we need to do something. The below graph shows 95th percentile cfcheck latency over time, and customers start to get unhappy when cfcheck latency goes into the red zone:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3A9IRcG1ztxPxIxF0ljSLj/f243fd3d6700f1c18cf53073fd2f33b0/Untitled--1-.png" alt="" class="kg-image" width="978" height="591" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3A9IRcG1ztxPxIxF0ljSLj/9db6c767756a2e0e17b7c8b1d00089fa/Untitled--1-.png" alt="" class="kg-image" width="978" height="591" loading="lazy">
 
 	</figure>
 	<p>If customers have a bad experience when CPU gets too high, then the goal of Traffic Manager’s maximum thresholds are to ensure that customer performance isn’t impacted and to start redirecting traffic away before performance starts to degrade. At a scheduled interval the Traffic Manager service will fetch a number of metrics for each data center and apply a series of machine learning algorithms. After cleaning the data for outliers we apply a simple quadratic curve fit, and we are currently testing a linear regression algorithm.</p>
 	<p>After fitting the models we can use them to predict the CPU usage when the SLI is equal to our SLO, and then use it as our maximum threshold. If we plot the cpu values against the SLI we can see clearly why these methods work so well for our data centers, as you can see for Barcelona in the graphs below, which are plotted against curve fit and linear regression fit respectively.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/695BSI9vd6OJ0jfhHwSj43/8449d819b43b35e10f1dbc8d4a69c301/Untitled--2-.png" alt="" class="kg-image" width="1001" height="855" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/695BSI9vd6OJ0jfhHwSj43/df037d425ddf50b3579696c770e6ff80/Untitled--2-.png" alt="" class="kg-image" width="1001" height="855" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LDLfdY2PNOTJjA1FU6lQM/503ea104b900743831733f6f9f165fcc/Untitled--3-.png" alt="" class="kg-image" width="1001" height="855" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LDLfdY2PNOTJjA1FU6lQM/e4341455c659795ce9ee2e004d1eb5b0/Untitled--3-.png" alt="" class="kg-image" width="1001" height="855" loading="lazy">
 
 	</figure>
 	<p>In these charts the vertical line is the SLO, and the intersection of this line with the fitted model represents the value that will be used as the maximum threshold. This model has proved to be very accurate, and we are able to significantly reduce the SLO breaches. Let’s take a look at when we started deploying this service in Lisbon:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vK8dNvcvRFb0L9WiKuaOI/664891636cf50147014957dc81117d25/Untitled--4-.png" alt="" class="kg-image" width="982" height="591" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vK8dNvcvRFb0L9WiKuaOI/9ed8d056f903d5ce09b62515c6ecb9c2/Untitled--4-.png" alt="" class="kg-image" width="982" height="591" loading="lazy">
 
 	</figure>
 	<p>Before the change, cfcheck latency was constantly spiking, but Traffic Manager wasn’t taking actions because the maximum threshold was static. But after July 29, we see that cfcheck latency has never hit the SLO because we are constantly measuring to make sure that customers are never impacted by CPU increases.</p>
@@ -234,19 +234,19 @@
 	<p>So now that we have a maximum threshold, we need to find the third CPU utilization threshold which isn’t used when calculating how much traffic to move - the acceptable threshold. When a data center is below this threshold, it has unused capacity which, as long as it isn’t forwarding traffic itself, is made available for other data centers to use when required. To work out how much each data center is able to receive, we use the same methodology as above, substituting target for acceptable:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yHCxMMzytg6BnYdigXx1w/c1aa189aef8f6e4e007eeec24d419b8b/Screenshot-2023-09-18-at-22.16.48.png" alt="" class="kg-image" width="1318" height="78" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yHCxMMzytg6BnYdigXx1w/9f441adfb38cc474ab8580cdd1b5c72d/Screenshot-2023-09-18-at-22.16.48.png" alt="" class="kg-image" width="1318" height="78" loading="lazy">
 
 	</figure>
 	<p>Therefore:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6A0qMzXEmTPhVl8KRIiTRO/eb210c86e049b0cc855d2d621d10a846/Screenshot-2023-09-18-at-22.17.36.png" alt="" class="kg-image" width="1272" height="76" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6A0qMzXEmTPhVl8KRIiTRO/7830d77baee83d779ff01ff3605f0f09/Screenshot-2023-09-18-at-22.17.36.png" alt="" class="kg-image" width="1272" height="76" loading="lazy">
 
 	</figure>
 	<p>Subtracting the current CPU time from the acceptable CPU time gives us the amount of CPU time that a data center could accept:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yQPGjUGnLWy9C9GGOzIRN/b3777b6afd7fac836be258987ddcb8e6/Screenshot-2023-09-18-at-22.18.16.png" alt="" class="kg-image" width="1260" height="66" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yQPGjUGnLWy9C9GGOzIRN/ad105de71360d03299039453b554059e/Screenshot-2023-09-18-at-22.18.16.png" alt="" class="kg-image" width="1260" height="66" loading="lazy">
 
 	</figure>
 	<p>To find where to send traffic, Traffic Manager will find the available CPU time in all data centers, then it will order them by latency from the data center needing to move traffic. It moves through each of the data centers, using all available capacity based on the maximum thresholds before moving onto the next. When finding which plans to move, we move from the lowest priority plan to highest, but when finding where to send them, we move in the opposite direction.</p>

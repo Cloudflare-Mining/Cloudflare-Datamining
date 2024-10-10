@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HnIBD6LQ4175YJSVdeM4a/925833a8802c9e09929d983d8cce08d9/a-byzantine-failure-in-the-real-world.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HnIBD6LQ4175YJSVdeM4a/c622b4259dddddf19fd0f02fbafc3033/a-byzantine-failure-in-the-real-world.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>An analysis of the Cloudflare API availability incident on 2020-11-02</i></p>
 	<p>When we review design documents at Cloudflare, we are always on the lookout for Single Points of Failure (SPOFs). Eliminating these is a necessary step in architecting a system you can be confident in. Ironically, when you’re designing a system with built-in redundancy, you spend most of your time thinking about how well it functions when that redundancy is lost.</p>
@@ -41,7 +41,7 @@
 	<p>This caused cluster members to have conflicting views of reality, known in distributed systems theory as a <a href="https://en.wikipedia.org/wiki/Byzantine_fault">Byzantine fault</a>. As a consequence of this conflicting information, node 1 repeatedly initiated leader elections, voting for itself, while node 2 repeatedly voted for node 3, which it could still connect to. This resulted in ties that did not promote a leader node 1 could reach. RAFT leader elections are disruptive, blocking all writes until they're resolved, so this made the cluster read-only until the faulty switch recovered and node 1 could once again reach node 3.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37eeMzKeltqOt105GJ4ctK/1d3f74e9f2e6940d40c176345fd7abca/image1-20.png" alt="" class="kg-image" width="1999" height="1006" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37eeMzKeltqOt105GJ4ctK/0a0a320ace579b8f28cc2aded23abc9a/image1-20.png" alt="" class="kg-image" width="1999" height="1006" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

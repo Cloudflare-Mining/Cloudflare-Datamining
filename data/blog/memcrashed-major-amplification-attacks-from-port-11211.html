@@ -1,10 +1,10 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/memcrashed-major-amplification-attacks-from-port-11211">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/memcrashed-major-amplification-attacks-from-port-11211">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/memcrashed-major-amplification-attacks-from-port-11211">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/memcrashed-major-amplification-attacks-from-port-11211">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EjZkyPaSccN7e2OwJkhT9/28fb73dce44a97391e76878f1ed8484c/memcrashed-major-amplification-attacks-from-port-11211.jpg" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/memcrashed-major-amplification-attacks-from-port-11211">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/memcrashed-major-amplification-attacks-from-port-11211">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/memcrashed-major-amplification-attacks-from-port-11211">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/memcrashed-major-amplification-attacks-from-port-11211">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EjZkyPaSccN7e2OwJkhT9/dd9672607702749993229286c095c971/memcrashed-major-amplification-attacks-from-port-11211.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Over last couple of days we've seen a big increase in an obscure amplification attack vector - using the <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt">memcached protocol</a>, coming from UDP port 11211.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Mh7uCbRBwKf3LjeioLBFy/8fe4b877ffc9cc5fda0bfb736d5a12c3/3829936641_f112ed1665_b.jpg" alt="3829936641_f112ed1665_b" class="kg-image" width="1024" height="680" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Mh7uCbRBwKf3LjeioLBFy/34ac14cf2982454843c1cac88d77c6db/3829936641_f112ed1665_b.jpg" alt="3829936641_f112ed1665_b" class="kg-image" width="1024" height="680" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/trawin/3829936641">image</a> by <a href="https://www.flickr.com/photos/trawin">David Trawin</a>In the past, we have talked a lot about amplification attacks happening on the internet. Our most recent two blog posts on this subject were:</p>
@@ -19,7 +19,7 @@
 	<p>The general idea behind all amplification attacks is the same. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing">An IP-spoofing capable attacker</a> sends forged requests to a vulnerable UDP server. The UDP server, not knowing the request is forged, politely prepares the response. The problem happens when thousands of responses are delivered to an unsuspecting target host, overwhelming its resources - most typically the network itself.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16dgrwlKcAnFbOkNxSYolX/74526d9a5b0f755b1f88988c70952feb/spoofing-1.png" alt="spoofing-1" class="kg-image" width="640" height="411" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16dgrwlKcAnFbOkNxSYolX/b1b7cff8a4fb93e7c0ce826bbed621a8/spoofing-1.png" alt="spoofing-1" class="kg-image" width="640" height="411" loading="lazy">
 
 	</figure>
 	<p>Amplification attacks are effective, because often the response packets are much larger than the request packets. A carefully prepared technique allows an attacker with limited IP spoofing capacity (such as 1Gbps) to launch very large attacks (reaching 100s Gbps) "amplifying" the attacker's bandwidth.</p>
@@ -36,19 +36,19 @@
 	<p>The <a href="https://ddosmon.net/insight">DDosMon from Qihoo 360</a> monitors amplification attack vectors and this chart shows recent memcached/11211 attacks:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xImt2QRqij9hJLNe8uJm7/8ac0881ed8e0988ed8a323dddfbc0e82/memcached-ddosmon.png" alt="memcached-ddosmon" class="kg-image" width="1862" height="922" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1xImt2QRqij9hJLNe8uJm7/ea08387f1f5246b4f3c8866d2666ad3f/memcached-ddosmon.png" alt="memcached-ddosmon" class="kg-image" width="1862" height="922" loading="lazy">
 
 	</figure>
 	<p>The number of memcached attacks was relatively flat, until it started spiking just a couple days ago. Our charts also confirm this, here are attacks in packets per second over the last four days:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VD1Yd7gkKpd68RBfW2xYu/c57feffa17b5b2beedde9766ed639a0c/memcached-pps.png" alt="memcached-pps" class="kg-image" width="2328" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VD1Yd7gkKpd68RBfW2xYu/44afafe112b0d94774ddd44621e80a72/memcached-pps.png" alt="memcached-pps" class="kg-image" width="2328" height="488" loading="lazy">
 
 	</figure>
 	<p>While the packets per second count is not that impressive, the bandwidth generated is:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1THC5a2xHEdnadw4AOEuoB/64938475517e0125cc910274230ce454/memcached-gpb.png" alt="memcached-gpb" class="kg-image" width="1713" height="497" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1THC5a2xHEdnadw4AOEuoB/c169b23cbf7b4a735478a77e7f0a760a/memcached-gpb.png" alt="memcached-gpb" class="kg-image" width="1713" height="497" loading="lazy">
 
 	</figure>
 	<p>At peak we've seen 260Gbps of inbound UDP memcached traffic. This is massive for a new amplification vector. But the numbers don't lie. It's possible because all the reflected packets are very large. This is how it looks in tcpdump:</p>
@@ -92,7 +92,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 	<p>The vulnerable memcached servers are all around the globe, with higher concentration in North America and Europe. Here is a map of the source IPs we've seen in each of our 120+ points of presence:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70pC9m63FE7QI31oRMluQW/4079e920412a43611b9a096562e7689d/memcached-map2.png" alt="memcached-map2" class="kg-image" width="1026" height="495" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70pC9m63FE7QI31oRMluQW/b75920090ae2490ccfc1844dde812ed1/memcached-map2.png" alt="memcached-map2" class="kg-image" width="1026" height="495" loading="lazy">
 
 	</figure>
 	<p>Interestingly our datacenters in EWR, HAM and HKG see disproportionally large numbers of attacking IPs. This is because most of the vulnerable servers are located in major hosting providers. The AS numbers of the IPs that we've seen:</p>
@@ -125,7 +125,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 	<p>In total we've seen only 5,729 unique source IPs of memcached servers. We're expecting to see much larger attacks in future, as <a href="https://www.shodan.io">Shodan</a> reports 88,000 open memcached servers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3M4vOFeXyjG82X94Qb5OdW/d5f443470826d07922b3b220bd8fdf72/memcached-shodan.png" alt="memcached-shodan" class="kg-image" width="970" height="567" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3M4vOFeXyjG82X94Qb5OdW/c1c32822cad31a0825bae7adf06a50ed/memcached-shodan.png" alt="memcached-shodan" class="kg-image" width="970" height="567" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -176,7 +176,7 @@ PORT      STATE         SERVICE
 	<h4>Internet Service Providers</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Dmq5baGJDRlwdmxqz9hHg/2bbc71c422589c18683842a2c5c849b0/memcached-reflector.png" alt="memcached-reflector" class="kg-image" width="944" height="573" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Dmq5baGJDRlwdmxqz9hHg/b9a8188adb7776dd16a7689d8936baa8/memcached-reflector.png" alt="memcached-reflector" class="kg-image" width="944" height="573" loading="lazy">
 
 	</figure>
 	<p>In order to defeat such attacks in future, we need to fix vulnerable protocols and also IP spoofing. As long as IP spoofing is permissible on the internet, we'll be in trouble.</p>

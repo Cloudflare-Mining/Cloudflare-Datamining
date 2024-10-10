@@ -1,9 +1,9 @@
-<div class="mb2 gray5">21 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6glweGeeBcTLf1YPoaTsNW/4d2294ab963ef7168ed290e8d7d49c4d/post-quantum-formal-analysis.png" alt="">
+<div class="mb2 gray5">21 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6glweGeeBcTLf1YPoaTsNW/c7f96d7a75223d5e11489fa93ee53af9/post-quantum-formal-analysis.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><b>An introduction to formal analysis and our proof of the security of KEMTLS</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/393auOPCMHtWuvmZxJZ44s/3dfd6f5623d9e91b27c0b9c6440df049/Blog-827---KEMs-and-KEMTLS.png" alt="Blogpost around building confidence through cryptographic protocols using formal analysis." class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/393auOPCMHtWuvmZxJZ44s/a634d8c90882e32c599268fddd3cfc6b/Blog-827---KEMs-and-KEMTLS.png" alt="Blogpost around building confidence through cryptographic protocols using formal analysis." class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Good morning everyone, and welcome to another Post-Quantum–themed blog post! Today we’re going to look at something a little different. Rather than look into the past or future quantum we’re going to look as far back as the ‘80s and ‘90s, to try and get some perspective on how we can determine whether a protocol is or is not secure. Unsurprisingly, this question comes up all the time. Cryptographers like to build fancy new cryptosystems, but just because we, the authors, can’t break our own designs, it doesn’t mean they are secure: it just means we are not smart enough to break them.</p>
@@ -23,7 +23,7 @@
 	<p>Euclid’s famous work, <i>The Elements</i>, a standard math textbook for over 2,000 years, is written in this style. Euclid gives five “postulates”, or assumptions, from which he can derive a huge portion of the geometry known in his day. Euclid’s first postulate, that you can draw a straight line between any two points, is never proven, but taken as read. You can take his first postulate, and his third, that you can draw a circle with any center and radius, and use it to prove his first proposition, that you can draw an equilateral triangle given any finite line. For the curious, you can find <a href="https://gutenberg.org/ebooks/21076">public-domain translations of Euclid’s work</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qV3nhDT4bKQvndrAnbw9N/4cb92b559042aeb9484a9d7707ac54da/Screenshot-2022-02-15-at-22.27.54.png" alt="image showing Euclid’s method of drawing an equilateral triangle." class="kg-image" width="454" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qV3nhDT4bKQvndrAnbw9N/a167c02b1a7127c6b2e7207a69a44ea8/Screenshot-2022-02-15-at-22.27.54.png" alt="image showing Euclid’s method of drawing an equilateral triangle." class="kg-image" width="454" height="340" loading="lazy">
 
 	</figure>
 	<p>Euclid’s method of drawing an equilateral triangle based on the finite line AB, by drawing two circles around points A and B, with the radius AB. The intersection finds point C of the triangle. Original raster file uploader was Mcgill at en.wikibooks SVG: Beao, Public domain, via Wikimedia Commons.</p>
@@ -110,7 +110,7 @@
 	<p>The main idea of KEMTLS is the following: instead of using a signature to prove that you have access to the private key that corresponds to the (signing) public key in the certificate presented, we derive a shared secret <i>encapsulated to</i> a (KEM) public key. The party that presented the certificate can only derive (<i>decapsulate</i>) it from the resulting <i>encapsulation</i> (often also called the ciphertext) if they have access to the correct private key; and only then can they read encrypted traffic. A brief overview of how this looks in the “traditional arrows on paper” form is given below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mgeVds1Jxd59Qoy4QT187/a160fc4038c04d95937c5ef8a17e6b76/image3-24.png" alt="A client and a server exchange messages. The client holds an ephemeral private key and sends the public key to the server. The server holds a certificate and its private key. The server takes the client’s public key and sends back a ciphertext, obtained from an encapsulate operation, as well as the certificate. From the encapsulate operation, the server also obtains a shared secret key 1. The client receives the ciphertext and computes the same shared secret key. It then computes ciphertext 2 (and shared secret key 2) by encapsulating against the certificate public key. It sends over ciphertext 2 to the server. Both the client and server can then compute encryption key K, used to encrypt the application data." class="kg-image" width="1038" height="1297" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4mgeVds1Jxd59Qoy4QT187/0c5b8f84c1e4195904982efe5149400f/image3-24.png" alt="A client and a server exchange messages. The client holds an ephemeral private key and sends the public key to the server. The server holds a certificate and its private key. The server takes the client’s public key and sends back a ciphertext, obtained from an encapsulate operation, as well as the certificate. From the encapsulate operation, the server also obtains a shared secret key 1. The client receives the ciphertext and computes the same shared secret key. It then computes ciphertext 2 (and shared secret key 2) by encapsulating against the certificate public key. It sends over ciphertext 2 to the server. Both the client and server can then compute encryption key K, used to encrypt the application data." class="kg-image" width="1038" height="1297" loading="lazy">
 
 	</figure>
 	<p>Brief overview of the core idea of KEMTLS.</p>
@@ -300,7 +300,7 @@ in
 	<p>The manual prover interface allows you to select what goal Tamarin should pursue step by step. A proof quickly splits into separate branches: in the picture, you see that Tamarin has already been able to prove the branches that are green, leaving us to make a choice for case 1.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39wLyAIAVaVCmfgpQRrq7o/ba04bfb55d498bc2028cf48d47bf9c1d/pasted-image-0.png" alt="The Tamarin prover’s user interface. On the left-hand side, there is a lemma, to which some steps have been applied. Some branches have been proven (they are marked green). There is one branch that is highlighted. On the right hand side, there are several goals listed that Tamarin can pursue." class="kg-image" width="1203" height="727" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39wLyAIAVaVCmfgpQRrq7o/798666afd187a98809b4706bb8e62faa/pasted-image-0.png" alt="The Tamarin prover’s user interface. On the left-hand side, there is a lemma, to which some steps have been applied. Some branches have been proven (they are marked green). There is one branch that is highlighted. On the right hand side, there are several goals listed that Tamarin can pursue." class="kg-image" width="1203" height="727" loading="lazy">
 
 	</figure>
 	<p>Screenshot from the Tamarin user interface, showing a prompt for the next step in a proof. The branches of the proof that are marked green have already been proven.</p>

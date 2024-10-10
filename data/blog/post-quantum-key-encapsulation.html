@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xf41q44DF2aceTz1qvh7L/cd2bed3acdd4eaa1b7a835939c095d5b/image4-12.png" alt="Blogpost about what is a Post-Quantum Key Encapsulation Mechanism (KEM)." class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Xf41q44DF2aceTz1qvh7L/d0e00bff1e8959ab4d497761697c9434/image4-12.png" alt="Blogpost about what is a Post-Quantum Key Encapsulation Mechanism (KEM)." class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>The Internet is accustomed to the fact that any two parties can exchange information securely without ever having to meet in advance. This magic is made possible by key exchange algorithms, which are core to certain protocols, such as the Transport Layer Security (TLS) protocol, that are used widely across the Internet.</p>
@@ -27,7 +27,7 @@
 	<p>When using a KEM, Persephone would run <i>Generate</i> and publish the public key. Demeter takes this public key, runs <i>Encapsulate</i>, keeps the generated secret to herself, and sends the encapsulation (the ciphertext) to Persephone. Persephone then runs <i>Decapsulate</i> on this encapsulation and, with it, arrives at the same shared secret that Demeter holds. Hades will not be able to guess even a bit of this secret value even if he sees the ciphertext.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bbaBxcIILEzrNhIFZNb6p/d294ab7bc3eb522db5ab04d946319c22/image3-21.png" alt="The encapsulation and decapsulation procedure" class="kg-image" width="901" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bbaBxcIILEzrNhIFZNb6p/11e6723fc4c28fdfa43009db7892e9a3/image3-21.png" alt="The encapsulation and decapsulation procedure" class="kg-image" width="901" height="360" loading="lazy">
 
 	</figure>
 	<p>In this post, we go over the construction of one particular post-quantum KEM, called <i>FrodoKEM</i>. Its design is simple, which makes it a good choice to illustrate how a KEM can be constructed. We will look at it from two perspectives:</p>
@@ -41,7 +41,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EAd5Cm1yP22B42GNMq19P/a6bb8da32d87fb968917ce9a23f320cd/image7-3.png" alt="The different dolls of a post-quantum algorithm." class="kg-image" width="1801" height="750" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EAd5Cm1yP22B42GNMq19P/39d0e79590bb89c001e1d792df8130ac/image7-3.png" alt="The different dolls of a post-quantum algorithm." class="kg-image" width="1801" height="750" loading="lazy">
 
 	</figure>
 	<p>The core of <i>FrodoKEM</i> is a public-key encryption scheme called <i>FrodoPKE</i>, whose security is based on the hardness of the “Learning with Errors” (LWE) problem over lattices. Let us look now at the first doll of a KEM.</p>
@@ -95,7 +95,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FTWefsA5VM4m5OetAKHJQ/98be369bc7c59c51736c14a536ffd4e8/image5-7.png" alt="Image of the LWE problem: search and decision." class="kg-image" width="1564" height="536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FTWefsA5VM4m5OetAKHJQ/533bee8f2eb83b992ac6a5cbfd117e14/image5-7.png" alt="Image of the LWE problem: search and decision." class="kg-image" width="1564" height="536" loading="lazy">
 
 	</figure>
 	<p>The LWE problem: search and decision.</p>
@@ -103,19 +103,19 @@
 	<p>So, why is this problem related to lattices? In <a href="https://blog.cloudflare.com/quantum-solace-and-spectre">other blog posts</a>, we have seen that certain algorithms of post-quantum cryptography are based on lattices. So, how does LWE relate to them? One can view LWE as the problem of decoding from random linear codes, or reduce it to lattices, in particular to problems such as the Short Vector Problem (SVP) or the Shortest independent vectors problem (SIVP): an efficient solution to LWE implies a quantum algorithm to SVP and SIVP. In <a href="https://blog.cloudflare.com/post-quantum-signatures">other blog posts</a>, we talk about SVP, so, in this one, we will focus on the random bounded distance decoding problem on lattices.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xOnjfYoHaqK06BOZuobgw/9a6c6e34bc217aa98da2ca603c0baf14/image1-18.png" alt="Image of a lattice." class="kg-image" width="1200" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xOnjfYoHaqK06BOZuobgw/caaacc6a318bffe35af6f5c63b9dbd07/image1-18.png" alt="Image of a lattice." class="kg-image" width="1200" height="300" loading="lazy">
 
 	</figure>
 	<p>Lattices (as seen in the image), as a regular and periodic arrangement of points in space, have emerged as a foundation of cryptography in the face of quantum adversaries; one modern problem in which they rely on is the Bounded Distance Decoding (BDD) problem. In the BDD problem, you are given a lattice with an arbitrary basis (a basis is a list of vectors that generate all the other points in a lattice. In the case of the image, it is the pair of vectors b<sub>1</sub> and b<sub>2</sub>). You are then given a vector b<sub>3</sub> on it. You then perturb the lattice point b<sub>3</sub> by adding some noise (or error) to give <i>x</i>. Given <i>x</i>, the goal is to find the nearest lattice point (in this case b<sub>3</sub>), as seen in the image. In this case, LWE is an average-case form of BDD (Regev also gave a worst-case to average-case reduction from BDD to LWE: the security of a cryptographic system is related to the worst-case complexity of BDD).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5q6amGgRvbV2qDx82I0HbF/e89094f8ca1c6e12d41996963ede709a/image2-19.png" alt="The learning with errors problems (as BDD) in a 2 dimensions lattice. The red oval is only used for clarity." class="kg-image" width="786" height="678" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5q6amGgRvbV2qDx82I0HbF/4a19e3224d839860af5a0107f0484f26/image2-19.png" alt="The learning with errors problems (as BDD) in a 2 dimensions lattice. The red oval is only used for clarity." class="kg-image" width="786" height="678" loading="lazy">
 
 	</figure>
 	<p>The first doll is built. Now, how do we build encryption from this mathematical base? From LWE, we can build a public key encryption algorithm (PKE), as we will see next with <i>FrodoPKE</i> as an example.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51MCMCJSxznDdeKsLjSs5j/4e0b7879fec2129a64cf7b91a2c9186f/image6-7.png" alt="" class="kg-image" width="1200" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51MCMCJSxznDdeKsLjSs5j/a8f7e494c928c05ae76a0faf62f0efac/image6-7.png" alt="" class="kg-image" width="1200" height="500" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

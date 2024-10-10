@@ -1,4 +1,4 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wMPmxf26vXI6TUIJvSE3j/ee6fde77bc442cf3d2a113dbe8b3ac33/the-new-ddos-landscape.png" alt="">
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wMPmxf26vXI6TUIJvSE3j/f6d592f0ea3510ddc95f48d4adacb694/the-new-ddos-landscape.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>News outlets and blogs will frequently compare DDoS attacks by the volume of traffic that a victim receives. Surely this makes some sense, right? The greater the volume of traffic a victim receives, the harder to mitigate an attack - right?</p>
 	<p>At least, this is how things used to work. An attacker would gain capacity and then use that capacity to launch an attack. With enough capacity, an attack would overwhelm the victim's network hardware with junk traffic such that they can no longer serve legitimate requests. If your web traffic is served by a server with a 100 Gbps port and someone sends you 200 Gbps, your network will be saturated and the website will be unavailable.</p>
@@ -7,7 +7,7 @@
 	<p>Far from attackers simply closing shop, we see a trend whereby attackers are moving to more advanced application-layer attack strategies. This trend is not only seen in metrics from our automated attack mitigation systems, but has also been the experience of our frontline customer support engineers. Whilst we continue to see very large network level attacks, note that they are occurring less frequently since the introduction of Unmetered Mitigation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4j6SZYixPDOxuWY5hwbHXE/0c4a33024e9ec47d9cb951eb6a5dd9be/syn.png" alt="" class="kg-image" width="2029" height="1011" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4j6SZYixPDOxuWY5hwbHXE/36e14812f66afffc9c63960a2c6e1244/syn.png" alt="" class="kg-image" width="2029" height="1011" loading="lazy">
 
 	</figure>
 	<p>To understand how the landscape has made such a dramatic shift, we must first understand how DDoS attacks are performed.</p>
@@ -37,7 +37,7 @@
 	<p>Where users set passwords instead of them merely being the default values, other pieces of malware can use Dictionary Attacks to repeatedly guess simple user-configured passwords, using a list of common passwords like the one shown below. I have self-censored some of the passwords, apparently users can be in a fairly angry state-of-mind when setting passwords:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lxX56Rn4vULNewXMTViZ8/870c4aed9ce7aa699a24b7377e19744e/Screen-Shot-2017-11-24-at-16.22.59.png" alt="" class="kg-image" width="1424" height="1050" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lxX56Rn4vULNewXMTViZ8/f7e7739a0d93d0762854ca96c6802116/Screen-Shot-2017-11-24-at-16.22.59.png" alt="" class="kg-image" width="1424" height="1050" loading="lazy">
 
 	</figure>
 	<p>Passwords aside, back in May, I blogged specifically about some examples of security risks we are starting to see which are specific to IoT devices: <a href="https://blog.cloudflare.com/iot-security-anti-patterns">IoT Security Anti-Patterns</a>.</p>
@@ -45,7 +45,7 @@
 	<p>DNS is the phonebook of the Internet; in order to reach this site, your local computer used DNS to look up which IP Address would serve traffic for <code>blog.cloudflare.com</code>. I can perform this DNS queries from my command line using <code>dig A blog.cloudflare.com</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Hh5Ef8wCUFfsLgQFSTDnL/303c52c238cc3f7950b3e30318f66cd3/Screen-Shot-2017-11-24-at-16.37.47.png" alt="" class="kg-image" width="2180" height="1648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Hh5Ef8wCUFfsLgQFSTDnL/1c1a6f2b786c35624b8ac302552f0005/Screen-Shot-2017-11-24-at-16.37.47.png" alt="" class="kg-image" width="2180" height="1648" loading="lazy">
 
 	</figure>
 	<p>Firstly notice that the response is pretty big, it's certainly bigger than the question we asked.</p>
@@ -56,7 +56,7 @@
 	<p>In 2013, we blogged about how one DNS Amplification attack we faced <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">almost broke the internet</a>; however, in recent times aside from one exceptionally high attack (occurring just after we launched <a href="https://blog.cloudflare.com/unmetered-mitigation">Unmetered DDoS Mitigation</a>), DNS Amplification attacks have generally been a low proportion of attacks we see recently:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zWEAcupocMXEFYGTN7qfk/7a4717c7ab648cafff7221a0c9016b14/dns.png" alt="" class="kg-image" width="1575" height="1023" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zWEAcupocMXEFYGTN7qfk/9ef20d45969ecfb65ab4661beb390918/dns.png" alt="" class="kg-image" width="1575" height="1023" loading="lazy">
 
 	</figure>
 	<p>Whilst we're seeing fewer of these attacks, you can find a more detailed overview on our learning centre: <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack">DNS Amplification Attack</a></p>
@@ -74,7 +74,7 @@
 	<p>Cloudflare's network was built when large scale DDoS Attacks were becoming a reality. Huge network capacity, spread out over the world in many different data centres makes it easier to absorb large attacks. We currently have over 15 Tbps and this figure is always growing fast.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64a0Lhlr7C7Fj66wdHTi4K/64bf2b678addae9c9259a0d3b224e924/network-map-gradient.png" alt="" class="kg-image" width="1100" height="678" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64a0Lhlr7C7Fj66wdHTi4K/c119b1c033db44582bda9643fe58cf34/network-map-gradient.png" alt="" class="kg-image" width="1100" height="678" loading="lazy">
 
 	</figure>
 	<p>Preventing DDoS attacks needs a little more sophistication than just capacity though. While traditional Content Delivery Networks are built using Unicast technology, Cloudflare's network is built using an Anycast design.</p>
@@ -92,13 +92,13 @@
 	<p>I started this blog post with a chart which demonstrates the frequency of a type of network-layer attack known as a SYN Flood against the Cloudflare network. You'll notice how the largest attacks are further spaced out over the past few months:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UvuxVBCEB5uFaqbDnN1XH/a8709b10f9bb909d79c857bbd9c92b1d/syn.png" alt="" class="kg-image" width="2029" height="1011" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6UvuxVBCEB5uFaqbDnN1XH/05d3fb315da365196f34578b57ea9cff/syn.png" alt="" class="kg-image" width="2029" height="1011" loading="lazy">
 
 	</figure>
 	<p>You can also see that this trend does not follow when compared to a graph of Application Layer DDoS attacks which we continue to see coming in:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0o48AirpaxWXQkjV6lmcZ/fdaa6009bc9567f019dc466ee0c4bed2/layer7.png" alt="" class="kg-image" width="2085" height="975" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0o48AirpaxWXQkjV6lmcZ/39598752e41f9188e77a70c5edad67ca/layer7.png" alt="" class="kg-image" width="2085" height="975" loading="lazy">
 
 	</figure>
 	<p>The chart above has an important caveat, an Application Layer attack is defined by what <b>we</b> determine an attack is. Application Layer (Layer 7) attacks are more indistinguishable from real traffic than Layer 3/4 attacks. The attacks effectively resemble normal web requests, instead of junk traffic.</p>
@@ -110,7 +110,7 @@
 	<p>The chart below outlines DDoS attacks per day against Cloudflare customers; but it is important to bear in mind that this includes what <b>we</b> define as an attack. In recent times, Cloudflare has built specific products to help customers define what they think an attack looks like and how much traffic they feel they should cope with.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jDOUHwa7eNwq42lzB65M8/3dc9310f765f350782a6f890beab2087/cfddos.png" alt="" class="kg-image" width="2115" height="1039" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jDOUHwa7eNwq42lzB65M8/dee1a55374ae1f37e7f60c85472662cc/cfddos.png" alt="" class="kg-image" width="2115" height="1039" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

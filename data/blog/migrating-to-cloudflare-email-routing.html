@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/migrating-to-cloudflare-email-routing">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1EkbzK9FQGLc2Trbt6gFvG/fbcffab1b73a64c7682c2b1ecbaffea9/migrating-to-cloudflare-email-routing.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/migrating-to-cloudflare-email-routing">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EkbzK9FQGLc2Trbt6gFvG/64091ce8b8dec25ac5bade992dfb170a/migrating-to-cloudflare-email-routing.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A few days ago Google <a href="https://support.google.com/a/answer/60217">announced</a> that the users from the "G Suite legacy free edition" would need to switch to the paid edition before May 1, 2022, to maintain their services and accounts working. Because of this, many people are now considering alternatives.</p>
 	<p>One use case for G Suite legacy was <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">handling email for custom domains</a>.</p>
@@ -20,26 +20,26 @@
 	<p>Today it still takes a couple of days to get approved into the beta, but feel free to ping us on the <a href="https://discord.com/invite/cloudflaredev">Discord server</a> or <a href="https://community.cloudflare.com/new-topic?category=Feedback%2FPreviews+%26+Betas&amp;tags=email">community forum</a> if you can't wait.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YqdIKA7lwIFKmCrmxwSIw/c5fddd9cdd5d6d6aa7c1c3b2ee6af6ac/image2-25.png" alt="" class="kg-image" width="1999" height="791" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YqdIKA7lwIFKmCrmxwSIw/4a4a6f626ea86250d7a8d9b9c77dd3b6/image2-25.png" alt="" class="kg-image" width="1999" height="791" loading="lazy">
 
 	</figure>
 	<p>Once you get invited to join Email Routing, we will take you to our three-step easy configuration wizard. The first step is to define the custom address <a href="mailto:me@example.com"><b>me@example.com</b></a> and the destination address <a href="mailto:username13335@gmail.com"><b>username13335@gmail.com</b></a>. Don’t worry too much, you can modify or add others later.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QkbPIkP7C2xdnLjpiwjp9/d1b923c3bbdb5c83c3e42bb553302e18/image5-17.png" alt="" class="kg-image" width="1938" height="1004" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QkbPIkP7C2xdnLjpiwjp9/4ea3489e2492af451b171328b52e492f/image5-17.png" alt="" class="kg-image" width="1938" height="1004" loading="lazy">
 
 	</figure>
 	<p>This step will trigger sending a confirmation email to <a href="mailto:username13335@gmail.com"><b>username13335@gmail.com</b></a> so that we can prove that the destination Inbox is yours. You need to open Gmail and press the verification link.</p>
 	<p>Then, on the last step, you need to configure your zone MX and SPF DNS records. We will do this automatically for you. Just press "<b>Add records automatically</b>". If you already have MX or SPF configured, we will guide you through the conflicts we find and help you solve them.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ledgN9wWSVdbuafKEVC3R/7041c9ac1bc8b8e35762bd50eccb7db1/image4-17.png" alt="" class="kg-image" width="1999" height="1438" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ledgN9wWSVdbuafKEVC3R/391095c77cd7b60982b42a190c035489/image4-17.png" alt="" class="kg-image" width="1999" height="1438" loading="lazy">
 
 	</figure>
 	<p>That’s it, Email Routing is now configured, and you can start sending emails to <a href="mailto:me@example.com"><b>me@example.com</b></a> and read them at <a href="mailto:username13335@gmail.com"><b>username13335@gmail.com</b></a> in Gmail.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h7VjUXWeRqPgW0JWh1Uxn/490c16c95cbcbc1ed7b7676f13524668/image1-22.png" alt="" class="kg-image" width="1999" height="1476" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1h7VjUXWeRqPgW0JWh1Uxn/0047db9d54e08ac461db4e25cccade3f/image1-22.png" alt="" class="kg-image" width="1999" height="1476" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -56,7 +56,7 @@
 	<p>If you want to use these conventions with Cloudflare Email Routing, you can. Enable the "Catch-all address" feature and forward every incoming address for which there's no other rule configured to the verified destination address of your choice (<a href="mailto:username13335@gmail.com"><b>username13335@gmail.com</b></a> in this example).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64SEk5XKelDXh1blIwkpx4/823547e8a36b3e1ffd87d94fc5367601/PastedGraphic-6.png" alt="" class="kg-image" width="2094" height="558" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64SEk5XKelDXh1blIwkpx4/ca59c4269410e563d2086f99c50144cd/PastedGraphic-6.png" alt="" class="kg-image" width="2094" height="558" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

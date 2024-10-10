@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cfhX5Un90xJArSxZnzl1g/4f3c382d57d58c5cc7a4cfdcb01b15fd/Concurrent-Streaming.png" alt="" class="kg-image" width="1813" height="1221" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cfhX5Un90xJArSxZnzl1g/3595ff20dab1b72a25ea6008777b2968/Concurrent-Streaming.png" alt="" class="kg-image" width="1813" height="1221" loading="lazy">
 
 	</figure>
 	<p>Today we’re excited to introduce Concurrent Streaming Acceleration, a new technique for reducing the end-to-end latency of live video on the web when using <a href="https://www.cloudflare.com/products/stream-delivery">Stream Delivery</a>.</p>
@@ -34,7 +34,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40U4L4lZHzdpS4NiSGbscr/81e241af5cc7d61fc745fc19e2b35831/Content-Processing.jpg" alt="" class="kg-image" width="1280" height="236" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40U4L4lZHzdpS4NiSGbscr/43773418e54f5f8e58c1d7427dfe531a/Content-Processing.jpg" alt="" class="kg-image" width="1280" height="236" loading="lazy">
 
 	</figure>
 	<p>And all of this is under a time constraint — the whole process need to happen in a few seconds, or video experiences will suffer. We call the total delay between when the video was shot, and when it can be viewed on an end-user’s device, as “end-to-end latency” (think of it as the time from the camera lens to your phone’s screen).</p>
@@ -50,7 +50,7 @@
 	<p>If a client player needs to wait for a whole 6s segment to be encoded, sent through a CDN, and then decoded, it can be a long wait! It takes even longer if you want the client to build up a buffer of segments to protect against any interruptions in delivery. A typical player buffer for HLS is 3 segments:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tcODrUGXuyxbAcxPWiF4g/3e7d2abcec29d027d4ec870fa0b42deb/Buffering.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tcODrUGXuyxbAcxPWiF4g/d148c796c8cc6e0ca2a7130c036691d2/Buffering.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
 
 	</figure>
 	<p>_Clients may have to buffer three 6-second chunks, introducing at least 18s of latency_‌‌</p>
@@ -75,7 +75,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DXyeaG7liLUlMff7v32vq/c41187bfbb373e3af88da5e35570ea65/Chunked-Encoding.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DXyeaG7liLUlMff7v32vq/e1cbb7a57139f17a35fe0ad71a245c76/Chunked-Encoding.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
 
 	</figure>
 	<p><i>Chunked Encoding splits segments into shorter chunks</i></p>
@@ -94,20 +94,20 @@
 	<p>Unfortunately, even if you enable chunking to optimise delivery, your CDN may be working against you by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72cAKXFSt7jASVx88HncQH/89a290dda225ca112c04588071da6e25/Bulk-Request.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72cAKXFSt7jASVx88HncQH/70ac4a2acffeeab6fc60cd2e797392af/Bulk-Request.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
 
 	</figure>
 	<p>If the file is already in cache, great! CDNs do a great job at delivering cached files to huge audiences. But what happens when the segment isn’t in cache yet? Remember – this is the typical request pattern for live video!</p>
 	<p>Typically, CDNs are able to “stream on cache miss” from the origin. That looks something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35E6JRDF51cSyaVMo1Rcuy/6ce28cba7705204a3354a75c98e5c495/Stream-On-Cache-Misse.jpg" alt="" class="kg-image" width="1280" height="285" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35E6JRDF51cSyaVMo1Rcuy/22abf6d762e78238356adf0920151fed/Stream-On-Cache-Misse.jpg" alt="" class="kg-image" width="1280" height="285" loading="lazy">
 
 	</figure>
 	<p>But again – what happens when multiple people request the file at once? CDNs typically need to <b>pull the entire file into cache before serving additional viewers</b>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Qx4ILMftvAnN3zSx0KEll/a67a1b52874e7b46d1680a4da956d3d0/One-at-a-Time.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Qx4ILMftvAnN3zSx0KEll/843373561c266f0f005174d305a50e73/One-at-a-Time.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
 
 	</figure>
 	<p><i>Only one viewer can stream video, while other clients wait for the segment to buffer at the CDN</i></p>
@@ -135,7 +135,7 @@
 	<p>As you may have guessed, we think we can do better. Put simply, we now have the ability to deliver un-cached files to <b>multiple clients simultaneously</b> while we pull the file once from the origin server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/36X1svqoltq5egyP8fP5r2/b3659a456abe8053dc83a235aea00ac5/Simultaneously.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36X1svqoltq5egyP8fP5r2/68308cf8299e2e779973d42155e2e4ec/Simultaneously.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
 
 	</figure>
 	<p>This sounds like a simple change, but there’s a lot of subtlety to do this safely. Under the hood, we’ve made deep changes to our caching infrastructure to remove the cache lock and enable multiple clients to be able to safely read from a single file while it’s still being written.</p>
@@ -143,7 +143,7 @@
 	<p>We rolled this feature out a couple months ago and have been really pleased with the results so far. We measure success by the “cache lock wait time,” i.e. how long a request must wait for other requests – a direct component of Time To First Byte. &nbsp;One OTT customer saw this metric drop from 1.5s at P99 to nearly 0, as expected:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ktb7f6UjResqOyWSoncyc/f940f2dd4be6d5027c9da656ca710766/Speed-Improvement.png" alt="" class="kg-image" width="1930" height="1118" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ktb7f6UjResqOyWSoncyc/384471208538afdbea9134a592fe9107/Speed-Improvement.png" alt="" class="kg-image" width="1930" height="1118" loading="lazy">
 
 	</figure>
 	<p>This directly translates into a 1.5-second improvement in end-to-end latency. Live video just got more live!</p>

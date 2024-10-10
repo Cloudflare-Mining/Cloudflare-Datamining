@@ -9,7 +9,7 @@
 				"name": "Damon Billian",
 				"slug": "damon-billian",
 				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HF5u3o1qzCDFGeEFwnXKt/f4377a20f464574383a597ca3072c80d/damon-billian.jpg",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HF5u3o1qzCDFGeEFwnXKt/6ee5a21c44819f50392521ce2f0f1b7c/damon-billian.jpg",
 				"location": null,
 				"website": null,
 				"twitter": null,
@@ -17,7 +17,7 @@
 			}
 		],
 		"excerpt": "CloudFlare loves threat data. CloudFlare's sytem continually gets smarter through a variety of ways, including through user-reported data. So for example, users can add IP and IP ranges to their Block List. This information is fed back to the CloudFlare system benefiting the entire community.",
-		"feature_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3w380EBN1D6PSL8SzM3J20/60b31f0a967a76f368d05f1155ee5ebd/using-the-cloudflare-api-to-report-spam-on-yo.jpg",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3w380EBN1D6PSL8SzM3J20/814b9f9b2643d5bbaefae34ccf1b0504/using-the-cloudflare-api-to-report-spam-on-yo.jpg",
 		"featured": false,
 		"html": "<p>[</p><p>](<a href=\"http://www.flickr.com/photos/damonbillian/5617253313/\">http://www.flickr.com/photos/damonbillian/5617253313/</a> &quot;CloudFlare Ninja killing spam by dbillian, on Flickr&quot;)</p><p>CloudFlare loves threat data. CloudFlare&#39;s sytem continually gets smarter through a variety of ways, including through user-reported data. So for example, users can add IP and IP ranges to their Block List. This information is fed back to the CloudFlare system benefiting the entire community. Recently, we also made some enhancements to our <a href=\"http://www.cloudflare.com/docs/client-api.html\">API</a> that makes it even easier for CloudFlare users to feed reports of spam back to CloudFlare.</p><h4>Reporting spam to CloudFlare with WordPress</h4><p>If you run are running your website on WordPress, you can easily share spam data with CloudFlare.</p><ol><li><p>If you don&#39;t have the CloudFlare plugin installed, you will first need to install the <a href=\"http://wordpress.org/extend/plugins/cloudflare/\">CloudFlare WordPress</a> plugin to get the spam reporting benefits.</p></li><li><p>After you install the plugin, please go to the sidebar in WordPress for &#39;Plugins&#39; and click on CloudFlare.</p></li><li><p>You will need to enter in the CloudFlare API key and your CloudFlare account email address in the fields at the bottom of the configuration page. You can find your CloudFlare API key on your <a href=\"https://www.cloudflare.com/my-account.html\">account page</a>.</p></li><li><p>After you&#39;ve configured the plugin, you will be able to report spam back to CloudFlare for comments that are found under &#39;All&#39; or &#39;Pending&#39; comments. If you want to select only one comment as spam, click on the &#39;spam&#39; option and this will report the data back to CloudFlare. If you want to do a bulk report of spam comments, you can also use the bulk selector to mark the items as spam like you do now.</p></li></ol><p>Note: You will not be able to report spam that is already marked as spam.</p><h4>Reporting spam to CloudFlare with the regular API</h4><p>If you&#39;re not using WordPress, or if you want to report spam a little differently, you can use our <a href=\"http://www.cloudflare.com/docs/client-api.html\">Client Interface API</a> to report spam back to us.</p><p>To interface with the CloudFlare Client Interface API you will need:</p><ul><li><p>Your API Key (which is available on <a href=\"https://www.cloudflare.com/my-account.html\">your account</a> page)</p></li><li><p>Your account&#39;s email address</p></li><li><p>The root domain name for a website under your account</p></li></ul><p>You may interface with the API via HTTPS POST or GET requests to <a href=\"http://www.cloudflare.com/api_json.html\">www.cloudflare.com/api_json.html</a>. Unencrypted HTTP requests are not supported. Responses are returned in a JSON format.</p><p>The API call to send spam to CloudFlare:</p><p>$value = array(&quot;a&quot; =\\&gt; $comment-\\&gt;comment\\_author,&quot;am&quot; =\\&gt; $comment-\\&gt;comment\\_author\\_email,&quot;ip&quot; =\\&gt; $comment-\\&gt;comment\\_author\\_IP,&quot;con&quot; =\\&gt; substr($comment-\\&gt;comment\\_content, 0, 100));$url = &quot;/ajax/external-event.html?evnt\\_v=&quot; .urlencode(json\\_encode($value)) .\n&quot;&amp;u=$cloudflare\\_api\\_email&amp;tkn=$cloudflare\\_api\\_key&amp;evnt\\_t=&quot;;</p><p>send to <a href=\"http://www.cloudflare.com\">www.cloudflare.com</a>, port 443;</p><p>This threat data is used to make CloudFlare smarter and benefits not only your website, but the entire community. Let us know if you have any suggestions for making it easier to feed threat data to us.</p><p>Thanks for making the web a better place!</p>",
 		"id": "2YVJumHUS7OocaWlzdAq5q",
@@ -73,7 +73,7 @@
 			}
 		],
 		"title": "Using the CloudFlare API to report spam on your site back to CloudFlare",
-		"updated_at": "2024-08-27T02:55:01.857Z",
+		"updated_at": "2024-10-10T00:37:40.416Z",
 		"url": "https://blog.cloudflare.com/using-the-cloudflare-api-to-report-spam-on-yo"
 	},
 	"translations": {

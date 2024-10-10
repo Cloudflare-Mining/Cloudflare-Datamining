@@ -1,9 +1,9 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/mtwkycUiz0G5AOoqkjs4Q/361909bc7ab8d2818468690d8736d40a/single-rx-queue-kernel-bypass-with-netmap.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mtwkycUiz0G5AOoqkjs4Q/56858180757ef757eab1cc96bbe4bbb3/single-rx-queue-kernel-bypass-with-netmap.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In <a href="https://blog.cloudflare.com/kernel-bypass">a previous post</a> we discussed the performance limitations of the Linux kernel network stack. We detailed the available kernel bypass techniques allowing user space programs to receive packets with high throughput. Unfortunately, none of the discussed open source solutions supported our needs. To improve the situation we decided to contribute to the <a href="http://info.iet.unipi.it/~luigi/netmap">Netmap project</a>. In this blog post we'll describe our proposed changes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wUCqE4w1PE0nbGFJLjIX3/10e7e2b28c94297597d61d7d9cf0b374/122715232_32da8cd353_o-1.jpg" alt="network card" class="kg-image" width="861" height="536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wUCqE4w1PE0nbGFJLjIX3/8e30b5ce1a117131d4929b29bf536fc1/122715232_32da8cd353_o-1.jpg" alt="network card" class="kg-image" width="861" height="536" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232">image</a> by Binary Koala</p>
@@ -103,7 +103,7 @@ while (1) {
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2a0bUYxkJn3js1Nnve8vV6/d57be335e53ff830702967d3ce6ccfc0/RX_bypass.png" alt="" class="kg-image" width="1024" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2a0bUYxkJn3js1Nnve8vV6/cabf675555d51efb16d90372405aa07e/RX_bypass.png" alt="" class="kg-image" width="1024" height="500" loading="lazy">
 
 	</figure>
 	<h4>Isolating a queue</h4>
@@ -143,7 +143,7 @@ $ ethtool -K eth3 ntuple on</code></pre>
 	<p>At this point we started flooding the interface with 6M short UDP packets. <code>htop</code> shows the server being totally busy with handling the flood:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7etmtoEPnxIeh6CPP8mrJd/4e48729d359fa34e75263692d79096b8/htop1-1.png" alt="" class="kg-image" width="248" height="339" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7etmtoEPnxIeh6CPP8mrJd/ef05cbd9ff6626ab3adf6d4ded361877/htop1-1.png" alt="" class="kg-image" width="248" height="339" loading="lazy">
 
 	</figure>
 	<p>To counter the flood we started Netmap. First, we needed to edit the indirection table, to isolate the RX queue #4:</p>
@@ -169,7 +169,7 @@ $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
 	<p>For completeness, here's an <code>htop</code> showing only a single core being busy with Netmap:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/72C2hRcoZTkoaTJZLaqgoi/3ee48807c9591069dde5063529ca95e0/htop2-1.png" alt="" class="kg-image" width="246" height="335" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72C2hRcoZTkoaTJZLaqgoi/5563f1256fe254287e9d77272da0ea97/htop2-1.png" alt="" class="kg-image" width="246" height="335" loading="lazy">
 
 	</figure>
 	<h4>Thanks</h4>

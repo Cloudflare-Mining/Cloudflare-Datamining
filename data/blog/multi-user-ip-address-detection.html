@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2P3T8NV3hBd0SFrlLDXDKS/5a9a240a27087bab57deed841e473129/Screen-Shot-2021-10-14-at-12.50.11-PM.png" alt="Multi-User IP Address Detection" class="kg-image" width="1642" height="970" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2P3T8NV3hBd0SFrlLDXDKS/137775b9e808295d444574aa4ac2d4a3/Screen-Shot-2021-10-14-at-12.50.11-PM.png" alt="Multi-User IP Address Detection" class="kg-image" width="1642" height="970" loading="lazy">
 
 	</figure>
 	<p>Cloudflare provides our customers with security tools that help them protect their Internet applications against malicious or undesired traffic. Malicious traffic can include scraping content from a website, spamming form submissions, and a variety of other cyberattacks. To <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protect themselves from these types of threats</a> while minimizing the blocking of legitimate site visitors, Cloudflare’s customers need to be able to identify traffic that might be malicious.</p>
@@ -11,7 +11,7 @@
 	<p>However, this analogy is flawed and can present a problem for security. In practice, IP addresses are more like postal addresses because they can be shared by more than one person at a time (and because of NAT and CG-NAT the number of people sharing an IP can be very large!). Many existing Internet security tools accept IP addresses as a reliable way to distinguish between site visitors. However, if multiple visitors share the same IP address, security products cannot rely on the IP address as a unique identifying signal. Thousands of requests from thousands of different users need to be treated differently from thousands of requests from the same user. The former is likely normal traffic, while the latter is almost certainly automated, malicious traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sZpyBt1mYP9UoIiM22Vi0/3685ad8faf0490678f96b163fe5eac5d/image4-26.png" alt="Multiple visitors share the same IP address." class="kg-image" width="1999" height="856" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sZpyBt1mYP9UoIiM22Vi0/d34ab204c48f9cee508d7c477505b98b/image4-26.png" alt="Multiple visitors share the same IP address." class="kg-image" width="1999" height="856" loading="lazy">
 
 	</figure>
 	<p>For example, if several people in the same apartment building accessed the same site, it’s possible all of their requests would be routed through a middlebox operated by their Internet service provider that has only one IP address. But this sudden series of requests from the same IP address could closely resemble the behavior of a bot. In this case, IP addresses can’t be used by our customers to distinguish this activity from a real threat, leading them to mistakenly block or challenge their legitimate site visitors.</p>
@@ -28,7 +28,7 @@
 	<p>Another type of multi-user IP address originated from the core communications protocol of the Internet. IPv4 was developed in the 1980s. The protocol uses a 32-bit address space, allowing for over four billion unique addresses. Today, however, there are many times more devices than IPv4 addresses, meaning that not every device can have a unique IP address. Though IPv6 (IPv4’s successor protocol) solves the problem with 128-bit addresses (supporting 2<sup>128</sup> unique addresses), IPv4 still routes the majority of Internet traffic (76% of human-only traffic is IPv4, as shown on <a href="https://radar.cloudflare.com">Cloudflare Radar</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fUZjYGJBDNO43bfbwjYnW/1ac4f13b3538afd217c701532351e053/image9-11.png" alt="IPv4 traffic accounts for 76% of all traffic compared to 24% for IPv6." class="kg-image" width="1172" height="448" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fUZjYGJBDNO43bfbwjYnW/52a560023422a751932ad1e753a9f53e/image9-11.png" alt="IPv4 traffic accounts for 76% of all traffic compared to 24% for IPv6." class="kg-image" width="1172" height="448" loading="lazy">
 
 	</figure>
 	<p>To solve this issue, many devices in the same Local Area Network (LAN) can share a single Internet-addressable IP address to communicate with the public Internet, while using <a href="https://datatracker.ietf.org/doc/html/rfc1918">private Internet addresses</a> to communicate within the LAN. Since private addresses are to be used only within a LAN, different LANs can number their hosts using the same private IP address space. The Internet gateway of the LAN does the <a href="https://datatracker.ietf.org/doc/html/rfc2663">Network Address Translation (NAT)</a>, namely takes messages which arrive on that single public IP and forwards them to the private IP of the appropriate device on their local network. In effect it’s similar to how everyone in an office building shares the same street address, and the front desk worker is responsible for sorting out what mail was meant for which person.</p>
@@ -44,7 +44,7 @@
 	<p>We built a tool to help our customers detect when a /24 IP prefix (set of IP addresses that have the same first 24 bits) is likely to contain multi-user IP addresses, so they can more finely tune the security rules that protect their websites. In order to identify multi-user IP prefixes, we leverage both internal data and public data sources. Within this data, we look at a few key parameters.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1z79Bd3TKfnTCfCkrw2ha6/7de58e24d5aec4a68f3d0f26d3975d88/image7.jpg" alt="Example of a 4-tuple of network features that identifies a TCP connection" class="kg-image" width="1999" height="970" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1z79Bd3TKfnTCfCkrw2ha6/c7e7f2c303cbe22e1a3e6af51cbd8538/image7.jpg" alt="Example of a 4-tuple of network features that identifies a TCP connection" class="kg-image" width="1999" height="970" loading="lazy">
 
 	</figure>
 	<p>Each TCP connection between a source (client) and a destination (server) is identified by 4 identifiers (source IP, source port, destination IP, destination port)</p>
@@ -54,7 +54,7 @@
 	<p>For our inferences, we group IP addresses to their corresponding /24 IP prefix. The figure below shows the distribution of browser User Agents per /24 IP prefix, based on data accumulated over the period of a day. About 35% of the prefixes have more than 100 different browser clients behind them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46ARVnuaST7b7Dsi4spuJl/84049b4ce69ff724a6e1e7c1dd4a8c79/image2-28.png" alt="The distribution of distinct (unique) User Agents per /24 IP prefix" class="kg-image" width="885" height="465" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46ARVnuaST7b7Dsi4spuJl/d4a9dcf72f360a1fcad784a778a07e78/image2-28.png" alt="The distribution of distinct (unique) User Agents per /24 IP prefix" class="kg-image" width="885" height="465" loading="lazy">
 
 	</figure>
 	<p>Our service also uses other publicly available data sources to further refine the accuracy of our identification and to classify the type of multi-user IP address. For example, we collect data from <a href="https://www.peeringdb.com">PeeringDB</a>, which is a database where network operators self-identify their network type, traffic levels, interconnection points, and peering policy. This data only covers a fraction of the Internet's <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">autonomous systems</a> (ASes). To overcome this limitation, we use this data and our own data (number of requests per AS, number of websites in each AS) to infer AS type. We also use external data sources such as IRR to identify requests from VPNs and proxy servers.</p>
@@ -73,7 +73,7 @@
 	<p>Our initial launch will integrate multi-user IP address detection into our <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> and <a href="https://www.cloudflare.com/rate-limiting">Rate Limiting</a> products.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DMXMERpWpQsXkdmNx9p09/2790525a89bbaf13ee233a6594b34765/Screen-Shot-2021-10-15-at-5.47.35-AM.png" alt="The bot detection system consists of three building blocks: Machine Learning, Heuristics Engine and Behavioural Analysis." class="kg-image" width="1214" height="234" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DMXMERpWpQsXkdmNx9p09/fa3f12a71382149fc016cb84b6a998e1/Screen-Shot-2021-10-15-at-5.47.35-AM.png" alt="The bot detection system consists of three building blocks: Machine Learning, Heuristics Engine and Behavioural Analysis." class="kg-image" width="1214" height="234" loading="lazy">
 
 	</figure>
 	<p>The three modules that comprise the bot detection system.&nbsp;</p>

@@ -1,9 +1,9 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lxy6vpG3sEEbllFy98AO8/2ad42d8fb0fc5efa9a1fb874964aef67/mars-attacks.jpg" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lxy6vpG3sEEbllFy98AO8/e183319e8a9578553b396903d2356272/mars-attacks.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Following on from my recent post about <a href="https://blog.cloudflare.com/the-wednesday-witching-hour-cloudflare-dos-st">when attacks hit CloudFlare</a>, here's a follow up looking at where they come from. Or at least where they say they come from. Looking at attack statistics for the month of July 2012 the largest source of attacks is Mars.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RJhOuRwK9MzDcOvkawkxN/04faf0968e4fd7c74ab0eb821192f91c/mars-attacks1.jpeg.scaled500.jpg" alt="Mars
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6RJhOuRwK9MzDcOvkawkxN/21a2ad922a3ebc2ddef97842e95c591b/mars-attacks1.jpeg.scaled500.jpg" alt="Mars
 Attacks!" class="kg-image" width="500" height="213" loading="lazy">
 
 	</figure>
@@ -12,7 +12,7 @@ Attacks!" class="kg-image" width="500" height="213" loading="lazy">
 	<p>We see vast numbers of attacks with IP addresses such as 192.168.91.84 (apparently from inside a network), 127.0.0.1 (apparently from inside the machine that's being attacked--spooky), 10.99.88.226 (inside a corporate network), and 169.254.85.75 (used on a local, private link).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o2Kbzd6OMY64ujmgGythi/31a79e3ed6820fc186492fba33228208/campfire.png.scaled500.png" alt="Mars
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3o2Kbzd6OMY64ujmgGythi/385222bd95a81e17063ec922d7f638ca/campfire.png.scaled500.png" alt="Mars
 Attacks!" class="kg-image" width="273" height="276" loading="lazy">
 
 	</figure>
@@ -26,7 +26,7 @@ Attacks!" class="kg-image" width="273" height="276" loading="lazy">
 	<p>Of course, the attacker doesn't do this with one DNS server, they do it with hundreds or thousands so that CloudFlare suddenly receives a huge wave of DNS replies we didn't ask for. And, ironically, we get frantic calls from network managers asking us to stop attacking <i>them</i>. Since they see the source IP address is CloudFlare they, naturally, assume we've sent the traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GxCAyLfP7Um8OzZIz1knd/fa1fd13b67fc70b925a2d36ad58e7bd0/spinal_tap_but_it_goes_to_eleven1.jpeg.scaled500.jpg" alt="Mars Attacks!" class="kg-image" width="500" height="281" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GxCAyLfP7Um8OzZIz1knd/5d9048d01d390b8607c6aba0a49f11a7/spinal_tap_but_it_goes_to_eleven1.jpeg.scaled500.jpg" alt="Mars Attacks!" class="kg-image" width="500" height="281" loading="lazy">
 
 	</figure>
 	<p>Worse, reflection attacks also have an amplification effect as well. Since a DNS query packet can be very small (60 bytes, for example) and the reply much larger (e.g. 512 bytes), it's possible for an attacker to amplify the bandwidth available to them by sending thousands of small packets to DNS servers which respond to the CloudFlare server with a large packet. That means that the attacker uses a small amount of outgoing bandwidth to hit CloudFlare at a much greater rate.</p>

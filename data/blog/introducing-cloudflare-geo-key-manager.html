@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tz5d05Hn7eyeUdb0xCoNA/8a8931861f8add186c79357089980cb3/geo-key-frame_4x.gif" alt="" class="kg-image" width="2278" height="1136" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Tz5d05Hn7eyeUdb0xCoNA/25a0bb10e667bcfb4cece07a38597250/geo-key-frame_4x.gif" alt="" class="kg-image" width="2278" height="1136" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s customers recognize that they need to protect the confidentiality and integrity of communications with their web visitors. The widely accepted solution to this problem is to use the SSL/TLS protocol to establish an encrypted HTTPS session, over which secure requests can then be sent. Eavesdropping is protected against as only those who have access to the “private key” can legitimately identify themselves to browsers and decrypt encrypted requests.</p>
@@ -17,14 +17,14 @@
 	<p>We’ve listened carefully to those requests, and today we’re excited to introduce a new feature that hands this geography-based control over to you. We call it Geo Key Manager.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CqhHsCbPxuspDKNr4oh4k/d9be636e29c565ce1262a7a74d5f06ad/Private_Key_Restriction.png" alt="" class="kg-image" width="1440" height="476" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CqhHsCbPxuspDKNr4oh4k/a64944f2237a441c39535097194b1146/Private_Key_Restriction.png" alt="" class="kg-image" width="1440" height="476" loading="lazy">
 
 	</figure>
 	<p>On upload of a new <a href="https://support.cloudflare.com/hc/en-us/articles/200170466-How-do-I-upload-a-custom-SSL-certificate-Business-or-Enterprise-only-">Custom Certificate</a>, you now have the ability to indicate which subset of our data centers should have local access to your private key for the purpose of establishing HTTPS sessions.</p>
 	<p>Connections to data centers that you’ve told us aren’t allowed to hold your key will still be fully encrypted and accessible via HTTPS, using identical encryption algorithms, but will be done so using our <a href="https://www.cloudflare.com/ssl/keyless-ssl">Keyless SSL</a> technology rather than locally accessing the key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4txZSIc7uT2bpG6kQM0gz/7d71795fd5c4f94cae74f6a3c4688005/Keyless-SSL.png" alt="" class="kg-image" width="4131" height="1617" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4txZSIc7uT2bpG6kQM0gz/c358509e38dcd258ee7ec546c98b7084/Keyless-SSL.png" alt="" class="kg-image" width="4131" height="1617" loading="lazy">
 
 	</figure>
 	<h4>Initial options available for use</h4>
@@ -123,7 +123,7 @@
 	<p>By “overhead” we mean that a bit of network latency is introduced while the remote facility is contacted for assistance establishing the secure channel. The further (physically) this key-holding data center is from where the HTTPS request is being established, the longer the wait.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19SvmML3d3vSNkQLkVaLPl/db1848ca57e457b668568bb1a74aa1e6/EU-heatmap.png" alt="" class="kg-image" width="4096" height="2296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19SvmML3d3vSNkQLkVaLPl/cbb7bbd7872bad603870bdd144bd672e/EU-heatmap.png" alt="" class="kg-image" width="4096" height="2296" loading="lazy">
 
 	</figure>
 	<p>For example, the first request to Moscow for a resource that's protected by a key held only in our “Highest Security” facilities takes an additional three one-hundredths of a second (30ms) to go to Stockholm and back. Or four one-hundredths of a second (40ms) to go from Moscow to Frankfurt and back.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HbcD2nz4oPww319S2cbBv/0971f31c93254919a898bd833da72c33/access-plus-Spectrum_2x-1.png" alt="" class="kg-image" width="2312" height="1190" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HbcD2nz4oPww319S2cbBv/6b8fb8eb285b84cf4f18fa5de13ecc46/access-plus-Spectrum_2x-1.png" alt="" class="kg-image" width="2312" height="1190" loading="lazy">
 
 	</figure>
 	<p>With so many people at Cloudflare now working remotely, it's worth stepping back and looking at the systems we use to get work done and how we protect them. <a href="https://blog.cloudflare.com/dogfooding-from-home">Over the years we've migrated</a> from a traditional "put it behind the VPN!" company to a modern zero-trust architecture. Cloudflare hasn’t completed its journey yet, but we're pretty darn close. Our general strategy: protect every internal app we can with <a href="https://teams.cloudflare.com/access/index.html">Access</a> (our zero-trust access proxy), and simultaneously beef up our VPN’s security with <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> (a product allowing the proxying of arbitrary TCP and UDP traffic, protecting it from DDoS).</p>
@@ -11,7 +11,7 @@
 	<p>Over the years, we've been whittling away at our services, one-by-one. We're nearly there, with only a few niche tools remaining behind the VPN and not behind Access. As of this year, we are no longer requiring new employees to set up VPN as part of their company onboarding! We can see this in our Access logs, with more users logging into more apps every month:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5V12QwR05YIkZ1PHUXvnw6/454b1eac7b64577a3f8ba4ef98735e7b/1-3.png" alt="Logins for apps behind Access steadily going up" class="kg-image" width="1600" height="985" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5V12QwR05YIkZ1PHUXvnw6/c5dd851801509785fa22233a454cf8b5/1-3.png" alt="Logins for apps behind Access steadily going up" class="kg-image" width="1600" height="985" loading="lazy">
 
 	</figure>
 	<p>During this transition period from VPN to Access, we've had to keep our VPN service up and running. As VPN is a key tool for people doing their work while remote, it's extremely important that this service is highly available and performant.</p>
@@ -20,7 +20,7 @@
 	<p>Setup was a breeze, with only minimal configuration needed:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ToKNn4OwfUURzIitlS0VV/ace6f13975147e94aff215482b9642ed/2-3.png" alt="" class="kg-image" width="1436" height="1594" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ToKNn4OwfUURzIitlS0VV/39722c8c1b4634328e5180451d553cdf/2-3.png" alt="" class="kg-image" width="1436" height="1594" loading="lazy">
 
 	</figure>
 	<p>Cisco AnyConnect uses HTTPS (TCP) to authenticate, after which the actual data is tunneled using a DTLS encrypted UDP protocol.</p>

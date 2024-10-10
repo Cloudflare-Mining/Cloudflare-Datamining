@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7VIHBhzJ95jgWlnQdfSd9/ea0a4fe6e2c6a919cd5b1943e1e8d1ae/Firewall-rules-white-back_2x.png" alt="" class="kg-image" width="650" height="519" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7VIHBhzJ95jgWlnQdfSd9/fc66868b78925a2826b1c00ef31aa07a/Firewall-rules-white-back_2x.png" alt="" class="kg-image" width="650" height="519" loading="lazy">
 
 	</figure>
 	<p>Firewall Rules are one of the best security features we released this year and have been an overwhelming success. Customers have been using Firewall Rules to solve interesting security related use cases; for example, advanced hotlink protection, restricting access to embargoed content (e.g. productId=1234), locking down sensitive API endpoints, and more.</p>
 	<p>One of the biggest pieces of feedback from the <a href="https://community.cloudflare.com/c/security">Cloudflare community</a>, Twitter, and via customer support, has been around the order in which rules are actioned. By default, Firewall Rules have a default precedence, based on the actions set on the rule:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rL1K406rCKQ3YftQq1ULq/286eb335981ccb66801fe4df65b04e46/Default-Precedence.png" alt="" class="kg-image" width="188" height="142" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rL1K406rCKQ3YftQq1ULq/b5801c680dc13c33522ac3bea55bc4ea/Default-Precedence.png" alt="" class="kg-image" width="188" height="142" loading="lazy">
 
 	</figure>
 	<p>If two or more rules match a request, but have different actions, the above precedence will take effect. However, what happens if you've got a bad actor who needs to be blocked from your API, and you have other specific allow or challenge rules already created for their originating ASN or a perhaps one of your URLs? Once a Firewall Rule is matched, it will not continue processing other rule, unless you are using the Log action. Without a method of overriding the default precedence, you cannot easily achieve what's needed.</p>
@@ -18,7 +18,7 @@
 	<p>In the Firewall Rules user interface, you should now have an additional button on the top right, shown here:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3SsVymtGhbWmBW62F5vEee/cf2e4cfdbb6e564fcf846e89bc201e67/cloudflare-order-options.gif" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3SsVymtGhbWmBW62F5vEee/72db09f7e1a3b5e7e94f91e2d01ebf34/cloudflare-order-options.gif" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -46,7 +46,7 @@
 	<p>Ordering is intuitive, being literally a drag and drop placement of rules in order of execution. See below for a quick demo of how straightforward the controls are:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dUASOudWuDH00VNk3pb9z/f49eb6b520f5ad7b3c8bca84e01a9c99/cloudflare-order-rule.gif" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dUASOudWuDH00VNk3pb9z/a6b459cf2c0521437186e7ce05927de8/cloudflare-order-rule.gif" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
 
 	</figure>
 	<p>There is currently a 200 rule limit with this method, so upon creating your 201st rule, you will be switched to Priority Numbering, automatically.</p>

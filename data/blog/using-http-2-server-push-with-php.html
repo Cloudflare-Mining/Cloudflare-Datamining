@@ -1,10 +1,10 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NPP0lk9059Fun7XgYDpJv/105101437ca8cc8d6749c77f4af7bb34/using-http-2-server-push-with-php.png" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NPP0lk9059Fun7XgYDpJv/abefe80a280891839114d756339d10d3/using-http-2-server-push-with-php.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Two weeks ago CloudFlare announced that it was supporting <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">HTTP/2 Server</a> Push for all our customers. By simply adding a <code>Link</code> header to an HTTP response specifying <code>preload</code> CloudFlare would automatically push items to web browsers that support Server Push.</p>
 	<p>To illustrate how easy this is I create a small PHP page that uses the PHP <a href="https://secure.php.net/manual/en/function.header.php"><code>header</code></a> function to insert appropriate <code>Link</code> headers to push images to the web browser via CloudFlare. The web page looks like this when loaded:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KEen2kNGsrXXEKZZnQSni/ec4e708f9f475f5c606fb41ded670011/Screen-Shot-2016-05-13-at-11-50-00-AM.png" alt="" class="kg-image" width="436" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KEen2kNGsrXXEKZZnQSni/27615c7b083c1aff54f087eb5225c1c6/Screen-Shot-2016-05-13-at-11-50-00-AM.png" alt="" class="kg-image" width="436" height="675" loading="lazy">
 
 	</figure>
 	<p>There are two images loaded from the same server both of which are pushed if the web browser supports Server Push. This is achieved by inserting two <code>Link</code> headers in the HTTP response. The response looks like:</p>
@@ -64,14 +64,14 @@ Link: &lt;/images/empire.jpg&gt;; rel=preload; as=image</code></pre>
 	<p>Here's the simple waterfall over HTTP/2 with no Server Push:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-22-24-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oN4WtS0666At1eTeB2Xkr/4bddfb71d899aa81f067e797a08f632f/Screen-Shot-2016-05-13-at-12-22-24-PM.png" alt="" class="kg-image" width="1181" height="388" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oN4WtS0666At1eTeB2Xkr/aa2a06fb0da68d4e5a068a944c1c6da9/Screen-Shot-2016-05-13-at-12-22-24-PM.png" alt="" class="kg-image" width="1181" height="388" loading="lazy">
 		</a>
 	</figure>
 	<p>The page load time was 651ms. You can see the initial page HTML load in 175ms followed by the two images.</p>
 	<p>How here's the waterfall with HTTP/2 Server Push:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-20-58-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2thpvABMv76ref5uY2LIhX/1df7cc75f59f74f092450b71e74fe3f0/Screen-Shot-2016-05-13-at-12-20-58-PM.png" alt="" class="kg-image" width="1171" height="366" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2thpvABMv76ref5uY2LIhX/771d0c7d56cec749b84306fbbdd48ca7/Screen-Shot-2016-05-13-at-12-20-58-PM.png" alt="" class="kg-image" width="1171" height="366" loading="lazy">
 		</a>
 	</figure>
 	<p>The page load time was 251ms (the HTML loaded in 168ms) and Chrome is showing that the two images were pushed (see the Initiator column).</p>

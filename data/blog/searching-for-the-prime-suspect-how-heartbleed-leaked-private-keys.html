@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lPKgNDjRS2f7pTWXkQIIh/32f024420e3af1cfdad2a210386bda65/searching-for-the-prime-suspect-how-heartbleed-leaked-private-keys.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lPKgNDjRS2f7pTWXkQIIh/aea6f3e6f315b08869ec7a8b42001d44/searching-for-the-prime-suspect-how-heartbleed-leaked-private-keys.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Within a few hours of CloudFlare launching its <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">Heartbleed Challenge</a> the truth was out. Not only did Heartbleed leak private session information (such as cookies and other data that SSL should have been protecting), but the crown jewels of an HTTPS web server were also vulnerable: the private SSL keys were accessible through Heartbleed messages.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n71WKRKu8a2cIoaEWTCPJ/988364f331493a2803fa23219271c1b3/Prime-Suspect_BBC_cast-e1315077167915.jpg" alt="Prime Suspect" class="kg-image" width="1024" height="530" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3n71WKRKu8a2cIoaEWTCPJ/37bba296da398ddee502753e8a9d3b91/Prime-Suspect_BBC_cast-e1315077167915.jpg" alt="Prime Suspect" class="kg-image" width="1024" height="530" loading="lazy">
 
 	</figure>
 	<p>When we launched the challenge we were unsure if private keys could be accessed, but had started the process of revoking and recreating all the SSL private keys that we manage. When the challenge was defeated in a matter of hours it became obvious that it was fairly easy to find the prime numbers that are at the heart of an RSA private key.</p>
@@ -67,32 +67,32 @@
 	<p>Each row of the picture is 1,024 bytes. The picture shows a total of about 280KB of memory in use. The primes are being stored in a single location (delving into the source of OpenSSL this is the location of the primes when loaded in the function <code>ssl_set_pkey</code> in <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_rsa.c#L190">ssl_rsa.c</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VEiEETMlSBS0q12JWFt3R/610d3d1d4f658e13752aaa231fccf044/startup.png" alt="Starting" class="kg-image" width="2048" height="560" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VEiEETMlSBS0q12JWFt3R/c6c3d968ffaae448d00ae7dc0f369e68/startup.png" alt="Starting" class="kg-image" width="2048" height="560" loading="lazy">
 
 	</figure>
 	<p>In contrast, something interesting has happen when NGINX/OpenSSL processes its first request. A second copy of the primes has appeared. OpenSSL is now using more memory and two long red lines (two complete primes) are in memory along with some fragments of prime numbers that have been partially overwritten (those are vulnerable to Coppersmith's Attack).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5S7P8HmimvnpSsHUlImMzN/bc5621dd3c2ba3c1016a624c97627f8c/first.png" alt="One Request" class="kg-image" width="2048" height="1204" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S7P8HmimvnpSsHUlImMzN/fe5285e8bed3a9be1845fe8f3a427ed1/first.png" alt="One Request" class="kg-image" width="2048" height="1204" loading="lazy">
 
 	</figure>
 	<p>Delving into the code once more it becomes apparent that the two new primes are copies of p and q made for the Montgomery reduction code in <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn_mont.c">bn_mont.c</a>. The fragments of primes are left over from where p and q were used in calculations.</p>
 	<p>After ten identical requests the memory layout has changed a little more. The fragments of primes have been overwritten, but the Montgomery reduction copies are still there. And some new fragments have appeared.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LoRhqkEerZKwaEzchIM8E/fa920c3770b39b31480d4129f3405265/ten.png" alt="Ten Requests" class="kg-image" width="2048" height="1226" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LoRhqkEerZKwaEzchIM8E/67b24a99a82bbcdac71dd32d622bcc13/ten.png" alt="Ten Requests" class="kg-image" width="2048" height="1226" loading="lazy">
 
 	</figure>
 	<p>After running a more realistic simulated load through the web server the memory has grown and most of the prime fragments have been overwritten leaving the original primes and the Montgomery reduction primes in memory.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kiHxM20Td8UonaVHwuPh/f7d9f9d661fc8d11569aff5fa305d127/load.png" alt="Load" class="kg-image" width="2048" height="3542" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kiHxM20Td8UonaVHwuPh/ea644194c164c6c22f22f792e6d7e57e/load.png" alt="Load" class="kg-image" width="2048" height="3542" loading="lazy">
 
 	</figure>
 	<p>To get a sense of how OpenSSL copies the primes around, here's a slightly different visualization. It shows all the memory that stored primes in red (whether or not it was later overwritten). As you can see OpenSSL is making copies of the primes all over its memory space.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bAcd8A5rn32nna7vi2oOt/603af0b4084a914e046c6b5bb23e773e/load-overwrite.png" alt="Load overwrite" class="kg-image" width="2048" height="3702" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bAcd8A5rn32nna7vi2oOt/9992cce4d2d7f7fd70c2891ade0eebe3/load-overwrite.png" alt="Load overwrite" class="kg-image" width="2048" height="3702" loading="lazy">
 
 	</figure>
 	<p>And therein lies the heart of Heartbleed: there are two copies of the primes that never move (the original location where they are loaded and the location of the Montgomery reduction copy) and lots of temporary copies of the primes all over OpenSSL's memory.</p>

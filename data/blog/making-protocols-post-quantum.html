@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1flACIZiYBgpxhoL1FhCXQ/982487c73da66d46afc33d45392da366/image1-20.png" alt="Blogpost about how to integrate post-quantum cryptography into protocols." class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1flACIZiYBgpxhoL1FhCXQ/339ffcd3848162984dc62303143a531e/image1-20.png" alt="Blogpost about how to integrate post-quantum cryptography into protocols." class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Ever since the (public) invention of cryptography based on mathematical trap-doors by <a href="https://ieeexplore.ieee.org/document/1055638">Whitfield Diffie, Martin Hellman</a>, and Ralph Merkle, the world has had key agreement and signature schemes based on discrete logarithms. <a href="https://patents.google.com/patent/US4405829">Rivest, Shamir, and Adleman</a> invented integer factorization-based signature and encryption schemes a few years later. The core idea, that has perhaps changed the world in ways that are hard to comprehend, is that of public key cryptography. We can give you a piece of information that is completely public (the <i>public key</i>), known to all our adversaries, and yet we can still securely communicate as long as we do not reveal our piece of extra information (the <i>private key</i>). With the private key, we can then efficiently solve mathematical problems that, without the secret information, would be practically unsolvable.</p>
@@ -10,7 +10,7 @@
 	<p>But this blog has “post-quantum” in the title; quantum computers are likely to make our cryptographic lives significantly harder by undermining many of the assurances we previously took for granted. The old schemes are no longer secure because new algorithms can efficiently solve their particular mathematical trapdoors. We, together with everyone on the Internet, will need to swap them out. There are whole suites of quantum-resistant replacement algorithms; however, right now it seems that we need to choose between “fast” and “small”. The new alternatives also do not always have the same properties that we have based some protocols on.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DEjVrUy9g5YErrYBWnxwh/8a29edb2988b55dfc22f9e58d743148d/image4-13.png" alt="Drawing of an ostrich, a large, but very fast running bird, to depict the CECPQ2 (HRSS+X25519) experiment, and a drawing of a turkey (a smaller, slower bird) to depict the CECPQ2b (SIKE+X25519) experiment." class="kg-image" width="1534" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DEjVrUy9g5YErrYBWnxwh/398bd862409ed0d2c8f880c0d2e1e4e6/image4-13.png" alt="Drawing of an ostrich, a large, but very fast running bird, to depict the CECPQ2 (HRSS+X25519) experiment, and a drawing of a turkey (a smaller, slower bird) to depict the CECPQ2b (SIKE+X25519) experiment." class="kg-image" width="1534" height="844" loading="lazy">
 
 	</figure>
 	<p>Fast or small: Cloudflare <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">previously experimented</a> with NTRU-HRSS (a fast key exchange scheme with large public keys and ciphertexts) and SIKE (a scheme with very small public keys and ciphertexts, but much slower algorithm operations).</p>
@@ -27,7 +27,7 @@
 	<p>In principle, TLS can become post-quantum straightforwardly: we just write “PQ” in front of the algorithms. We replace ECDH key exchange by post-quantum (PQ) key exchange provided by a post-quantum Key Encapsulation Mechanism (KEM). For the signatures on the handshake, we just use a post-quantum signature scheme instead of an elliptic curve or RSA signature scheme. No big changes to the actual “arrows” of the protocol necessary, which is super convenient because we don’t need to revisit our security proofs. Mission accomplished, cake for everyone, right?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CWLpWVAzCcJ5cmwcFneEt/38ba4ddf48d697e10cb134063d92f9b1/image3-22.png" alt="A diagrammatic overview of the TLS 1.3 handshake protocol. In the places of DH key exchange, the operations are crossed out and KEM operations are scribbled in instead. For the signature operations, “PQ-” is scribbled in, in front of “Signature”." class="kg-image" width="1999" height="1630" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CWLpWVAzCcJ5cmwcFneEt/118fb95c11ef060e250545f9fd2962e1/image3-22.png" alt="A diagrammatic overview of the TLS 1.3 handshake protocol. In the places of DH key exchange, the operations are crossed out and KEM operations are scribbled in instead. For the signature operations, “PQ-” is scribbled in, in front of “Signature”." class="kg-image" width="1999" height="1630" loading="lazy">
 
 	</figure>
 	<p>Upgrading the cryptography in TLS seems as easy as scribbling in “PQ-”.</p>

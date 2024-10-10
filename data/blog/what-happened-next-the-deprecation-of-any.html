@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fU96B44b2PhS8GbbR0l5K/723f4637a845f42134225b2e903c8ba9/what-happened-next-the-deprecation-of-any.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fU96B44b2PhS8GbbR0l5K/e16dffcabdff456a694f11e4827a29cf/what-happened-next-the-deprecation-of-any.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Almost a year ago, we announced that we were going to <a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type">stop answering DNS ANY</a> queries. We were prompted by a number of factors:</p>
 	<ol>
@@ -15,7 +15,7 @@
 	<p>Additionally, we were about to launch <a href="https://www.cloudflare.com/dnssec/universal-dnssec">Universal DNSSEC</a>, and we could foresee the high cost of assembling ANY answers and providing DNSSEC-on-the-fly for those answers, especially when most of the time, those ANY answers were for malicious, illegitimate, clients.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://dnsreactions.tumblr.com/post/115111883802/cloudflare-responds-to-qtype-any">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76VgmR1nSYbfIkKmmZ7tFC/9576d267207a40a1de857e0dd4598fb3/Screen-Shot-2016-04-13-at-9-49-31-AM.png" alt="" class="kg-image" width="574" height="560" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76VgmR1nSYbfIkKmmZ7tFC/3dfbf14246951cb4c2bd2d914e24b603/Screen-Shot-2016-04-13-at-9-49-31-AM.png" alt="" class="kg-image" width="574" height="560" loading="lazy">
 		</a>
 	</figure>
 	<p>Although we usually make a tremendous effort to maintain backwards compatibility across Internet protocols (recently, for example, continuing to support <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">SHA-1-based SSL certificates</a>), it was clear to us that the DNS ANY query was something that was better removed from the Internet than maintained for general use.</p>
@@ -23,7 +23,7 @@
 	<p>Just before we published our blog a popular software started using ANY queries, to get all address records for a name -- something that ANY isn’t actually designed to do. The effect of this software was that our steady ANY query load had grown from few hundred per second to tens of thousands in a matter of days. Luckily, the software in question issued a revised version that did not use ANY, and our steady ANY query load returned to the old level.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hiSIjgf7eL3dVpclsjVMK/6bbfd6c7a70b16fd918ba2545c309eea/5719368307_7475b5594c_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hiSIjgf7eL3dVpclsjVMK/457b1fed76df1399beb02ef158542019/5719368307_7475b5594c_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liamq/5719368307/in/photolist-9HpfWp-7vpC9Y-7nQmx5-q1mALK-2NP1Dj-9tSNAV-fs6aGK-9YGHL4-a2MX7m-pdavta-9YG3s2-9HMRfG-vyBqdd-57eEb7-nVMdGs-9XmtSF-9LzUNq-9Hsn2o-ijY6d-stqR-9s2yQP-9UQ1he-9HsbT7-9USt79-8rJpfT-zRD2us-q1fiy4-vReb9v-87zVLF-dix1Mc-bkvWid-9YGk6z-8rVUX-ibFyKE-JNes5-4ZTY63-9Hpsuk-ak22cF-8AYnAR-9rCCPK-7wLkFs-9LzY73-oG2GwQ-3YN2wN-9UQ1Zx-2VDgHs-rgq9Tv-9pTXeC-vQB1HW-pkU3qT">image</a> by <a href="https://www.flickr.com/photos/liamq">Liam Quinn</a></p>
@@ -59,7 +59,7 @@
 	<p>In a <a href="https://www.stateoftheinternet.com/downloads/pdfs/2016-state-of-the-internet-threat-advisory-dnssec-ddos-amplification-attacks.pdf">recent paper</a> by Akamai the authors draw the conclusion that DNSSEC is the main cause of large answers used for DDoS attacks. But looking at the packet capture they included in the paper, it’s clear the real cause of the large answers is that the attackers use ANY queries to maximize the amplification factor.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67n5OGO94a4jGEf93Gq5ce/771ffd34aebc05c3d7c79390b98a7e99/542729697_fee708a68f_z.jpg" alt="" class="kg-image" width="640" height="624" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67n5OGO94a4jGEf93Gq5ce/380e90087e4e1eb00225458c77792529/542729697_fee708a68f_z.jpg" alt="" class="kg-image" width="640" height="624" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vshioshvili/542729697/in/photolist-PXCCz-k6NoRc-cDtNZd-edwgy1-6jQXRQ-dXy1Jr-y7nBK-bc1yiX-3VM5qq-gwmAC2-f9yVtM-oRrjRG-941Srq-4S5XGd-iWWst8-osFsjb-bwNo4s-fmBA2h-gMUKvN-bSYVZ-qyv52o-j5SCMq-hbeFS5-c4YDmC-pBuq2q-7dLGEn-6yMZwa-pQBJaX-8rtb76-8G1gSm-4S6XpX-oNYyuF-8jiMY-oTjWxG-7rMR8G-4TXTS2-pBv71k-9Ti743-pugFk8-8v4Sze-pSheSw-hSNyda-qtj2GB-yvd8-9dDz1m-nMnq18-7Ky43P-tJa4Bm-8UEDst-7R5MQW">image</a> by <a href="https://www.flickr.com/photos/vshioshvili">Vladimer Shioshvili</a></p>

@@ -1,10 +1,10 @@
 <div class="mb2 gray5">7 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/syn-packet-handling-in-the-wild">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/syn-packet-handling-in-the-wild">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/syn-packet-handling-in-the-wild">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/syn-packet-handling-in-the-wild">한국어</a>, <a href="https://blog.cloudflare.com/es-es/syn-packet-handling-in-the-wild">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/syn-packet-handling-in-the-wild">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EUE3fVAOu4KQPHF745mLo/556d24a09091522377ed7ce2e73cfea3/syn-packet-handling-in-the-wild.jpeg" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/syn-packet-handling-in-the-wild">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/syn-packet-handling-in-the-wild">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/syn-packet-handling-in-the-wild">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/syn-packet-handling-in-the-wild">한국어</a>, <a href="https://blog.cloudflare.com/es-es/syn-packet-handling-in-the-wild">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/syn-packet-handling-in-the-wild">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EUE3fVAOu4KQPHF745mLo/c1917269c50bc986ac597ab032740c0a/syn-packet-handling-in-the-wild.jpeg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Here at Cloudflare, we have a lot of experience of operating servers on the wild Internet. But we are always improving our mastery of this black art. On this very blog we have touched on multiple dark corners of the Internet protocols: like <a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification">understanding FIN-WAIT-2</a> or <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">receive buffer tuning</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/GBoY12EMNx75snoQtVcGI/45d49f2b092816ab4f607bec741c3428/1471936772_652043cb6c_b.jpg" alt="1471936772_652043cb6c_b" class="kg-image" width="1024" height="767" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GBoY12EMNx75snoQtVcGI/46163cd4b532746e1a9603f57c4b044f/1471936772_652043cb6c_b.jpg" alt="1471936772_652043cb6c_b" class="kg-image" width="1024" height="767" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72">image</a> by <a href="https://www.flickr.com/photos/isaimoreno">Isaí Moreno</a></p>
@@ -20,7 +20,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/X9oaRfcffxKbxYg4VvWuc/7db3cfce1b67388cdbb42a6ed69cf5cf/all-1.jpeg.jpeg" alt="all-1" class="kg-image" width="480" height="265" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/X9oaRfcffxKbxYg4VvWuc/8a2277a49d7e092794d581d499a6083c/all-1.jpeg.jpeg" alt="all-1" class="kg-image" width="480" height="265" loading="lazy">
 
 	</figure>
 	<p>First we must understand that each bound socket, in the "LISTENING" TCP state has two separate queues:</p>
@@ -124,7 +124,7 @@ $ ss -n state syn-recv sport = :443 | wc -l
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/M8OtXMLU8ocN9jg1du8p1/4440ff64dcc371315b7b9c6325931685/full-accept-1.jpeg.jpeg" alt="full-accept-1" class="kg-image" width="480" height="267" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/M8OtXMLU8ocN9jg1du8p1/57edd7ac7c6340c44e21970f27a0596d/full-accept-1.jpeg.jpeg" alt="full-accept-1" class="kg-image" width="480" height="267" loading="lazy">
 
 	</figure>
 	<p>What happens if the application can't keep up with calling <code>accept()</code> fast enough?</p>
@@ -164,7 +164,7 @@ time (us)        acceptq qmax  local addr    remote_addr
 	<p>Here you can see precisely which SYN packets were affected by the ListenDrops. With this script it's trivial to understand which application is dropping connections.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3y08wVb2ROvhucECXpWm8x/28875ba96ed641b8197299a8bfccb7ed/3713965419_20388fb368_b.jpg" alt="3713965419_20388fb368_b" class="kg-image" width="1024" height="576" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3y08wVb2ROvhucECXpWm8x/f9ce889bf44d01ee2fd34c6a8d74b9cb/3713965419_20388fb368_b.jpg" alt="3713965419_20388fb368_b" class="kg-image" width="1024" height="576" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B">image</a> by <a href="https://www.flickr.com/photos/16339684@N00">internets_dairy</a></p>
@@ -179,7 +179,7 @@ time (us)        acceptq qmax  local addr    remote_addr
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KIPBW1tsmG1nRfI3Guvmn/bd5fd47c61d0bb4c688751d97f1bfd3d/full-syn-1.jpeg.jpeg" alt="full-syn-1" class="kg-image" width="480" height="268" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KIPBW1tsmG1nRfI3Guvmn/33abe68f9be1e5838ba472624c99be8d/full-syn-1.jpeg.jpeg" alt="full-syn-1" class="kg-image" width="480" height="268" loading="lazy">
 
 	</figure>
 	<p>If it's possible to overflow the Accept Queue, it must be possible to overflow the SYN Queue as well. What happens in that case?</p>
@@ -257,7 +257,7 @@ net.ipv4.tcp_timestamps = 1</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nw81MpcuH9JCz80nnq4du/a1ce4ed12a3f44916ba77987364e2e0c/Screen-Shot-2016-12-02-at-10.53.27-1.png" alt="Screen-Shot-2016-12-02-at-10.53.27-1" class="kg-image" width="1354" height="191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nw81MpcuH9JCz80nnq4du/4737ceb4a755113713159ee7b454370a/Screen-Shot-2016-12-02-at-10.53.27-1.png" alt="Screen-Shot-2016-12-02-at-10.53.27-1" class="kg-image" width="1354" height="191" loading="lazy">
 
 	</figure>
 	<p>SYN Cookies are a great invention and solve the problem of smaller SYN Floods. At Cloudflare though, we try to avoid them if possible. While sending out a couple of thousand of cryptographically verifiable SYN+ACK packets per second is okay, we see <a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks">attacks of more than 200 Million packets per second</a>. At this scale, our SYN+ACK responses would just litter the internet, bringing absolutely no benefit.</p>

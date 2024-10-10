@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ceiiPjH9Haad2gamQkBSc/2e31e744259173b8dc7b5ae64871f9fc/unnamed-3.png" alt="Introducing Waiting Room Bypass Rules" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ceiiPjH9Haad2gamQkBSc/67abc72293f03cffc4cfa953408a782b/unnamed-3.png" alt="Introducing Waiting Room Bypass Rules" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Leveraging the power and versatility of Cloudflare's Ruleset Engine, Waiting Room now offers customers more fine-tuned control over their waiting room traffic. Queue only the traffic you want to with Waiting Room Bypass Rules, now available to all Enterprise customers with an Advanced Purchase of Waiting Room.</p>
 	<p>Customers depend on <a href="https://blog.cloudflare.com/cloudflare-waiting-room">Waiting Room</a> for always-on protection from unexpected and overwhelming traffic surges that would otherwise bring their site down. Waiting Room places excess users in a fully customizable virtual waiting room, admitting new visitors dynamically as spots become available on a customer’s site. Instead of throwing error pages or delivering poorly-performing site pages, Waiting Room empowers customers to take control of their end-user experience during unmanageable traffic surges.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6n3SXyNyJTLfNHzKSadZEQ/19acaf363c6feb098bb64d1c6a526ac3/image7-2.png" alt="" class="kg-image" width="1440" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6n3SXyNyJTLfNHzKSadZEQ/500878a533c197451d1afc42e6a1beb9/image7-2.png" alt="" class="kg-image" width="1440" height="1024" loading="lazy">
 
 	</figure>
 	<p>Take control of your customer experience with a fully customizable virtual waiting room</p>
@@ -28,13 +28,13 @@
 	<p>Waiting Room Bypass Rules allow customers to write expressions that define what traffic should bypass their waiting room. A waiting room will not apply to incoming requests matching conditions based on one or more <a href="https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules">available fields</a>, like IP address, URI path, query string, and country. Bypass rules supersede all Waiting Room features; even in <a href="https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/#queue-all-visitors">Queue-all mode</a>, event pre-queuing, or any other waiting room state, traffic matching your enabled rules’ expressions will never be queued or issued a waiting room cookie. Waiting Room rules are created via the Waiting Room API or the Waiting Room dashboard using a familiar rule management interface found throughout the Cloudflare dashboard. Waiting Room rules are managed at the individual waiting room level for precise control over each waiting room’s traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qU9yyQgWm9n7sohikI5LL/29102be5aa623017f7e99e79ed1ccc81/Screen-Shot-2022-11-28-at-11.35.50-AM.png" alt="" class="kg-image" width="1600" height="732" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qU9yyQgWm9n7sohikI5LL/a9415c27aac27e2dd617df2876a75250/Screen-Shot-2022-11-28-at-11.35.50-AM.png" alt="" class="kg-image" width="1600" height="732" loading="lazy">
 
 	</figure>
 	<p>Use the familiar rule builder found throughout the Cloudflare dashboard to define which traffic should bypass your waiting room.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/732mVjGlMIDtW3rOOhglfK/b6f930b4059d0dbf85a98709abf3c7ef/Screen-Shot-2022-11-28-at-12.20.02-PM.png" alt="" class="kg-image" width="1600" height="639" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/732mVjGlMIDtW3rOOhglfK/417683285c722cca7fd1d3538d443ccc/Screen-Shot-2022-11-28-at-12.20.02-PM.png" alt="" class="kg-image" width="1600" height="639" loading="lazy">
 
 	</figure>
 	<p>Manage bypass rules at the individual waiting room level for precise control over each waiting room’s traffic coverage.</p>
@@ -72,28 +72,28 @@
 	<p>Before setting up your administrator bypass rule, you can <a href="https://developers.cloudflare.com/firewall/cf-dashboard/rules-lists/manage-items">create an IP</a> list if you have more than a handful of IPs you'd like to bypass your waiting room. Then, you will need to <a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room">configure a waiting room</a> from the Waiting Room dashboard. From that waiting room's expanded view, navigate to Manage rules, where you can create, disable, and delete rules for a waiting room.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nLXLofqRK0U1S8hhCwpBB/b3db9c0337751a087ca868b0a6801de2/Untitled-3.png" alt="" class="kg-image" width="1600" height="955" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nLXLofqRK0U1S8hhCwpBB/d3f9e719e190a59833947020bc20e584/Untitled-3.png" alt="" class="kg-image" width="1600" height="955" loading="lazy">
 
 	</figure>
 	<p>Once you have created your waiting room, from that waiting room’s expanded view, select Manage rules to create Waiting Room bypass rules.</p>
 	<p>Using the rule builder, give your rule a descriptive name and build your expression. To build an expression for this example, we will select “IP Source Address” from the Field drop-down, “is in list” from the Operator drop-down, and then select the name of the IP list we created earlier. &nbsp;Once we've built the expression, we can either save this rule as a draft and deploy it later or save the rule and deploy it now.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GVmQpVKb3VixCNl5cJMiJ/e19fdf569402d4ad1ce4b8f5c0805b19/Untitled--1--2.png" alt="Allow site administrators to bypass your waiting room by creating a Waiting Room bypass rule via the Waiting Room dashboard." class="kg-image" width="1596" height="1472" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GVmQpVKb3VixCNl5cJMiJ/661656758a8964c5d7b6533e1cc02317/Untitled--1--2.png" alt="Allow site administrators to bypass your waiting room by creating a Waiting Room bypass rule via the Waiting Room dashboard." class="kg-image" width="1596" height="1472" loading="lazy">
 
 	</figure>
 	<p>Allow site administrators to bypass your waiting room by creating a Waiting Room bypass rule via the Waiting Room dashboard.</p>
 	<p>Once saved, the rule will appear on this waiting room's rules management page along with all other rules for this waiting room. All requests for which this rule's expression evaluates to true will bypass the waiting room. Thus, any user with an IP address from this managed list will never be queued when this rule is enabled.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Nhijav5NcNydJBITXNrC5/99ed71350232cf4be4e2cb045a810b66/Untitled--2-.png" alt="Enable or disabled Waiting Room rules from an individual waiting room’s rule management dashboard." class="kg-image" width="1600" height="619" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Nhijav5NcNydJBITXNrC5/b0ab6e47d6bfa28a419888f5759a9e49/Untitled--2-.png" alt="Enable or disabled Waiting Room rules from an individual waiting room’s rule management dashboard." class="kg-image" width="1600" height="619" loading="lazy">
 
 	</figure>
 	<p>Enable or disabled Waiting Room rules from an individual waiting room’s rule management dashboard.</p>
 	<p>For added oversight, there are indicators on the Waiting Room dashboard that clearly signal if a waiting room has any bypass rules enabled. Now that we have deployed the admin bypass rule, we can see from the Waiting Room table that there is an active rule for this waiting room.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JhsSbz8HTYPiNyvHk6vSo/6870cf0d8a8b8513f7920b8e93406712/Screenshot-2022-12-09-at-9.51.26-AM.png" alt="Easily glean which waiting rooms have bypass rules active from the Waiting Room table." class="kg-image" width="1600" height="1103" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JhsSbz8HTYPiNyvHk6vSo/9f347fbe55a1a99e28582ede188147ec/Screenshot-2022-12-09-at-9.51.26-AM.png" alt="Easily glean which waiting rooms have bypass rules active from the Waiting Room table." class="kg-image" width="1600" height="1103" loading="lazy">
 
 	</figure>
 	<p>Easily glean which waiting rooms have bypass rules active from the Waiting Room table.</p>

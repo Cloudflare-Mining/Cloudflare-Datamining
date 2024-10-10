@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KiDis2Ki65ox7urlr4a4b/f7ed10cd2593f9f15f2092538201d821/chat-bot_2x_optimized.png" alt="chat-bot@2x_optimized" class="kg-image" width="3195" height="1598" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KiDis2Ki65ox7urlr4a4b/6cd4b8365cf245434a629f47083e53cf/chat-bot_2x_optimized.png" alt="chat-bot@2x_optimized" class="kg-image" width="3195" height="1598" loading="lazy">
 
 	</figure>
 	<p>I'm the Product Manager for the Application Services team here at Cloudflare. We recently identified a need for a new tool around service ownership. As a fast growing engineering organization, ownership of services changes fairly frequently. Many cycles get burned in chat with questions like "Who owns service x now?</p>
@@ -76,7 +76,7 @@ x 260 work days
 			<p>Search for the <b>Hangouts Chat API</b> (<i>Note: not the Google+ Hangouts API</i>)</p>
 			<figure class="kg-card kg-image-card ">
 
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mQUzoV7nOtkEjVc5IOxnf/51216ae4b482ea730b56684fa7fc9f1a/api-console-hangouts-chat-api-1.png" alt="api-console-hangouts-chat-api-1" class="kg-image" width="1710" height="250" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mQUzoV7nOtkEjVc5IOxnf/5981969de5b73cec65d8146eeec3b383/api-console-hangouts-chat-api-1.png" alt="api-console-hangouts-chat-api-1" class="kg-image" width="1710" height="250" loading="lazy">
 
 			</figure>
 		</li>
@@ -93,7 +93,7 @@ x 260 work days
 					<p>The URL will be the route you associate with your Worker in the Dashboard</p>
 					<figure class="kg-card kg-image-card ">
 
-						<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LfF9FngUCK4THzSlrnFho/2a17c7e7b7354e7ceb5cbdbb0e50222a/bot-configuration-1.png" alt="bot-configuration-1" class="kg-image" width="2000" height="1820" loading="lazy">
+						<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LfF9FngUCK4THzSlrnFho/ecfee7e37965cdfb841e4f1a304959cd/bot-configuration-1.png" alt="bot-configuration-1" class="kg-image" width="2000" height="1820" loading="lazy">
 
 					</figure>
 				</li>
@@ -106,7 +106,7 @@ x 260 work days
 	<p>So Google Chat should know about our bot now. Back in Google Chat, click in the "Find people, rooms, bots" textbox and choose "Message a Bot". Your bot should show up in the search:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6En5Ilq95DEcC1hQEfpCO/a4763fb27aa1342c86a00d98b811fc42/message-a-bot.png" alt="message-a-bot" class="kg-image" width="1946" height="858" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6En5Ilq95DEcC1hQEfpCO/3c9e5a928f68f279d96e16bc62934b3e/message-a-bot.png" alt="message-a-bot" class="kg-image" width="1946" height="858" loading="lazy">
 
 	</figure>
 	<p>It won't be too useful just yet, as we need to create our Worker to receive the messages and respond!</p>
@@ -121,7 +121,7 @@ x 260 work days
 	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guid). It should look something like below. <a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pjvx9aep146V4aVSCBjvV/52bc993ad63b133d42921d256bb0f0b5/route.png" alt="route" class="kg-image" width="1246" height="546" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pjvx9aep146V4aVSCBjvV/41307cdb04256dea6036ff1c6fab1902/route.png" alt="route" class="kg-image" width="1246" height="546" loading="lazy">
 
 	</figure>
 	<p>The Google Chatbot interface is pretty simple, but weirdly obfuscated in the Hangouts API guide IMHO. You have to reverse engineer the python example.</p>
@@ -155,7 +155,7 @@ function process(request) {
 	<p>Save and deploy that and we should be able message our bot:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BL2D9sXew5rPpVLtif5bS/0569b31f608ae70cd1e73c2e2d826ee6/google-chatbot-hello-world-response.png" alt="google-chatbot-hello-world-response" class="kg-image" width="1462" height="680" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BL2D9sXew5rPpVLtif5bS/d75d9c07bbb51ff94de92115e34a8d71/google-chatbot-hello-world-response.png" alt="google-chatbot-hello-world-response" class="kg-image" width="1462" height="680" loading="lazy">
 
 	</figure>
 	<p><b>Success</b>!</p>
@@ -285,7 +285,7 @@ function process(request) {
 	<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot">full source on Github</a>. Let's take it for a spin!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UJpvFMBP0gI5gx6ggEadY/991f161a60bada2cb00e4e9a235d3258/ownerbot1-1.gif" alt="ownerbot1-1" class="kg-image" width="847" height="526" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UJpvFMBP0gI5gx6ggEadY/303538f35b351adb396c9f3a0da38c94/ownerbot1-1.gif" alt="ownerbot1-1" class="kg-image" width="847" height="526" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4LvxrlD24KgpmU59lqrUB2/d31fa8f9c0f61557aaae13091907612f/East-Africa-or-Middle-East-Outage-2.png" alt="Exam time means Internet disruptions in Syria, Sudan and Algeria" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LvxrlD24KgpmU59lqrUB2/fa30678a9998fa9f9b22d22005e26731/East-Africa-or-Middle-East-Outage-2.png" alt="Exam time means Internet disruptions in Syria, Sudan and Algeria" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>It is once again exam time in Syria, Sudan, and Algeria, and with it, we find these countries disrupting Internet connectivity in an effort to prevent cheating on these exams. As they have done over the past several years, Syria and Sudan are implementing multi-hour nationwide Internet shutdowns. Algeria has also taken a similar approach in the past, but this year appears to be implementing more targeted website/application blocking.</p>
@@ -18,13 +18,13 @@
 	<p>This year, the first shutdown was observed on May 30, with subsequent shutdowns (to date) seen on June 2, 6, and 12. In the <a href="https://radar.cloudflare.com/sy">Cloudflare Radar</a> graph below, traffic for Syria drops to zero while the shutdowns are active. According to <a href="https://pulse.internetsociety.org/shutdowns/exams-disrupt-access-in-syria">Internet Society Pulse</a>, several additional shutdowns are expected through June 21. Each takes place between 02000530 UTC (0500–0830 local time). According to a <a href="https://www-syria-tv.translate.goog/%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF-%D9%82%D8%B7%D8%B9-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA-%D9%81%D9%8A-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%A8%D8%A7%D9%84%D8%AA%D8%B2%D8%A7%D9%85%D9%86-%D9%85%D8%B9-%D8%A8%D8%AF%D8%A1-%D8%A7%D9%84%D8%A7%D9%85%D8%AA%D8%AD%D8%A7%D9%86%D8%A7%D8%AA?_x_tr_sl=auto&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">published report</a>, the current exam cycle covers more than 500,000 students for basic and general secondary education certificates.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1HLYkIofO3dcdG4Obi0GHu/f296a2fc823b63923355e0154d9cd28d/image9-5.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HLYkIofO3dcdG4Obi0GHu/70dfe1d4c6ba0c28f79adba19fa6accd/image9-5.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<p>Consistent with shutdowns observed in prior years, Syria is once again implementing them in an <a href="https://twitter.com/DougMadory/status/1138064496008806400">asymmetric</a> fashion – that is, inbound traffic is disabled, but egress traffic remains. This is clearly visible in request traffic from Syria to Cloudflare’s <a href="https://one.one.one.one">1.1.1.1</a> DNS resolver. As the graph below shows, queries from clients in Syria are able to exit the country and reach Cloudflare, but responses can’t return, leading to retry floods, visible as spikes in the graph.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34WQB3dNlXfr7PSnUOPmLi/d017e804c01b8207a6029b9f3516c7eb/image11-1.png" alt="" class="kg-image" width="1020" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34WQB3dNlXfr7PSnUOPmLi/95f74b272d5801bd1a1b9aa574827a5b/image11-1.png" alt="" class="kg-image" width="1020" height="360" loading="lazy">
 
 	</figure>
 	<p>Last year, the Syrian Minister of Education <a href="https://www-enabbaladi-net.translate.goog/archives/480497?_x_tr_sl=auto&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">noted</a> that, for the first time, encryption and surveillance technologies would be used in an effort to curtail cheating, with an apparent <a href="https://dig.watch/updates/another-internet-blackout-syria-during-exams">promise</a> to suspend Internet shutdowns in the future if these technologies proved successful.</p>
@@ -40,13 +40,13 @@
 	<p>According to a <a href="https://twitter.com/accessnow/status/1535268473625972743">schedule</a> published by digital rights organization AccessNow, this year’s Secondary Certificate Exams will be taking place in Sudan daily between June 11–22, except June 17. As of this writing, near-complete shutdowns have been observed on June 11, 12, and 13 between 0530-0830 UTC (0730-1030 local time), as seen in the graph below. The timing of these shutdowns aligns with a communication <a href="https://sudantelegraph.com/news/sudan-announcement-of-cutting-off-the-internet-in-conjunction-with-the-high-school-exams-sessions">reportedly</a> sent to subscribers of telecommunications services in the country, which stated <i>“In implementation of the decision of the Attorney General, the Internet service will be suspended during the Sudanese certificate exam sessions from 8 in the morning until 11 in the morning.”</i></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BvGTxPOVFT3C0eqzoQyDz/47d4fc110929004c577dbb95f0901310/image10-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BvGTxPOVFT3C0eqzoQyDz/d985b9376aaacd0e91321b51898b2529/image10-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<p>It is interesting to note that the shutdown, while nationwide, does not appear to be complete. The graph below shows that Cloudflare continues to see a small volume of HTTP requests from Sudatel during the shutdown periods. This is not completely unusual, as Sudatel may have public sector, financial services, or other types of customers that remain online.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1X365n4C6bOjIv5uhukJsn/93351b1077d8a1e8e3962b3f71b46de0/image5-5.png" alt="" class="kg-image" width="1060" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1X365n4C6bOjIv5uhukJsn/419f755e1e6c23ffc686b1b44931b624/image5-5.png" alt="" class="kg-image" width="1060" height="360" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -63,30 +63,30 @@
 	<p>Thus far, it appears that this has been the case. However, it appears that the Algerian government has shifted to a content blocking-based approach, instead of a wide-scale Internet shutdown. The Cloudflare Radar graph below shows two nominal drops in country-level traffic during the two times on June 13 that the exams took place—0730–1000 UTC (0830–1100 local time) and 1330–1600 UTC (1430–1700 local time), similar to last year’s timing.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52oT6U76Ut7T7MfamhK42A/7e13b65c2a79e8d649f5af00aff34e4d/image7.jpg" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52oT6U76Ut7T7MfamhK42A/ed6f70a9bff38799d441330e07e9b60a/image7.jpg" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<p>The disruptions are also visible in traffic graphs for several major Algerian network providers, as shown below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2m7snum430H4LfAmrnJGw0/5d49efbe2c388502d8d9fd36991edfbf/image4-7.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2m7snum430H4LfAmrnJGw0/2c667d2b40bc214660b0520a9eac0e91/image4-7.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YDfrbnnikmxFQPqBkv9xd/7eb3c3101bf25f06d3eb767c343f1891/image6-5.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YDfrbnnikmxFQPqBkv9xd/6a7ea4531f07ee9b1e88a9888655bfbe/image6-5.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JlAuFSUFljhGi3nZwTCts/b49ed5776d63cb599efeee98c484e20b/image8-6.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JlAuFSUFljhGi3nZwTCts/c8b6cf9b819e0b170b03ac3d59ab7cfc/image8-6.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<p>Analysis of additional Cloudflare data further supports the hypothesis that Algeria is blocking access to specific websites and applications, rather than shutting down the Internet completely.</p>
 	<p>As described in a <a href="https://blog.cloudflare.com/last-mile-insights">previous blog post</a>, Network Error Logging (NEL) is a browser-based reporting system that allows users’ browsers to report connection failures to an endpoint specified by the webpage that failed to load. Below, a graph of NEL reports from browsers in Algeria shows clear spikes during the times (thus far) that the exams have taken place, with report levels significantly lower and more consistent during other times of the day.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/145Qx9M1JCF5Ld4i1RLw4V/77330f0c209f0850fc3cd151c6829167/image3-10.png" alt="" class="kg-image" width="1020" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/145Qx9M1JCF5Ld4i1RLw4V/ebab38acc6939879ab1c0963d31aa448/image3-10.png" alt="" class="kg-image" width="1020" height="360" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

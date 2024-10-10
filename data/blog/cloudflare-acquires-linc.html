@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l6I9z2js8qvU9KVOh5Q68/d7df7c031c8bd0a932c57c7a3d63c8f9/image1-66.png" alt="Cloudflare Acquires Linc" class="kg-image" width="1201" height="629" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6l6I9z2js8qvU9KVOh5Q68/3b3fd3154971ddb87fdb9f441b139100/image1-66.png" alt="Cloudflare Acquires Linc" class="kg-image" width="1201" height="629" loading="lazy">
 
 	</figure>
 	<p>Cloudflare has always been about democratizing the Internet. For us, that means bringing the most powerful tools used by the largest of enterprises to the smallest development shops. Sometimes that looks like putting our global network to work defending against large-scale attacks. Other times it looks like giving Internet users simple and reliable privacy services like 1.1.1.1. &nbsp;Last week, it looked like <a href="https://pages.cloudflare.com">Cloudflare Pages</a> — a fast, secure and free way to build and host your <a href="https://www.cloudflare.com/learning/performance/what-is-jamstack">JAMstack sites</a>.</p>
@@ -23,7 +23,7 @@
 	<p>While serverless platforms have arisen to solve these problems for backend services and can be brought to bear on frontend apps, they're much less cost-effective than using static hosting, especially if the bulk of your frontend assets are static. As such, we've seen a rise of technologies under the umbrella term of "JAMstack"; they aim at making static sites more powerful (like rebuilding based off CMS updates), or at making it possible to deploy small pieces of server-side APIs as "cloud functions", along with each update of your app. But it's still fundamentally a limited architecture — you always have a static layer between you and your users, so the more dynamic your needs, the more complex your build pipeline becomes, or the more you're forced to rely on client-side logic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nHs2UUyT6chrUyhl6xyw0/c54d2c48261db72fd11bae57fddeec38/image4-26.png" alt="" class="kg-image" width="1687" height="637" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nHs2UUyT6chrUyhl6xyw0/c83dec72860b29808ddc81d5b23cc3e6/image4-26.png" alt="" class="kg-image" width="1687" height="637" loading="lazy">
 
 	</figure>
 	<p>FABs took a different approach: a deployment artefact that could support the full range of server-side needs, from entirely static sites, apps with some API routes or cloud functions, all the way to full server-side streaming rendering. We also made it compatible with all the cloud hosting providers you might want, so that deploying becomes as easy as uploading a ZIP file. Then, as your needs change, as dynamic content becomes more important, as new frameworks arise that offer increasing performance or you look at moving which provider you're hosting with, you never need to change your tooling and deployment processes.</p>
@@ -38,21 +38,21 @@
 	<p>Regardless of what framework you're working with, the FAB compiler generates a fab.zip file that has two components: a server.js file that acts as a server-side entry point, and an _assets directory that stores the HTML, CSS, JS, images, and fonts that are sent to the client.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hCbaeFsNVeN579nyOCVfZ/1c66e6d33aa1e3e4fd51b05be938c343/image3-43.png" alt="" class="kg-image" width="1833" height="920" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hCbaeFsNVeN579nyOCVfZ/e24bb3feb541c696d50cee8736cb629a/image3-43.png" alt="" class="kg-image" width="1833" height="920" loading="lazy">
 
 	</figure>
 	<p>This simple structure gives us enough flexibility to handle all kinds of apps. For example, a static site will have a server.js of only a few auto-generated lines of server-side code, just enough to add redirects for any files outside the _assets directory. On the other end of the spectrum, an app with full server rendering looks and works exactly the same. It just has a lot more code inside its server.js file.</p>
 	<p>On a server running NodeJS, serving a compiled FAB is as easy as fab serve fab.zip, but FABs are really designed with production class hosting in mind. They make use of world-class <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> and the best serverless hosting platforms around.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iIRJAFAloTN8spJ8zbEIT/970843530ae90fa724323f07a4905273/image5-27.png" alt="" class="kg-image" width="1998" height="895" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iIRJAFAloTN8spJ8zbEIT/082f423dc57e5a03ba6a312e6675cbd7/image5-27.png" alt="" class="kg-image" width="1998" height="895" loading="lazy">
 
 	</figure>
 	<p>When a FAB is deployed, it's often split into these component parts and deployed separately. Assets are sent to a low-cost object storage platform with a CDN in front of it, and the server component is sent to dedicated serverless hosting. It's all deployed in an atomic, idempotent manner that feels as simple as uploading static files, but completely unlocks dynamic server-side code as part of your architecture.</p>
 	<p>That generic architecture works great and is compatible with virtually every hosting platform around, but it works slightly differently on Cloudflare Workers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xdv1Txo6E6IuxLGuBUj6d/03f556c0ce9e24b2674c65e5b24a7ff4/image2-43.png" alt="" class="kg-image" width="1752" height="1038" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xdv1Txo6E6IuxLGuBUj6d/735efdbf5f13d90225e4e4dfa11e2c04/image2-43.png" alt="" class="kg-image" width="1752" height="1038" loading="lazy">
 
 	</figure>
 	<p>Workers, unlike other serverless platforms, truly runs at the edge: there is no CDN or load balancer in front of it to split off /_assets routes and send them directly to the Assets storage. This means that every request hits the worker, whether it's triggering a full page render or piping through the bytes for an image file. It might feel like a downside, but with Workers' performance and cost profile, it's quite the opposite — it actually gives us much more flexibility in what we end up building, and gets us closer to the goal of fully unlocking server-side code.</p>

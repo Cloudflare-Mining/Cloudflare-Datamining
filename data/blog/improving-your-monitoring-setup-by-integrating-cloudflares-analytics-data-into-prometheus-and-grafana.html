@@ -1,10 +1,10 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/improving-your-monitoring-setup-by-integrating-cloudflares-analytics-data-into-prometheus-and-grafana">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SVs05GDVh8Q6LxJGmTpk8/ad7d8bd95ea3e234ed66fbb77a280a3d/improving-your-monitoring-setup-by-integrating-cloudflares-analytics-data-into-prometheus-and-grafana.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/improving-your-monitoring-setup-by-integrating-cloudflares-analytics-data-into-prometheus-and-grafana">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SVs05GDVh8Q6LxJGmTpk8/e818bf776e36e57c2024e21709e7a2c8/improving-your-monitoring-setup-by-integrating-cloudflares-analytics-data-into-prometheus-and-grafana.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a guest post by Martin Hauskrecht, DevOps Engineer at Labyrinth Labs.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1No9XvnguRN5bpcRgbSZBe/c6a43a7ff49dc9218c79c79e95d0a016/image1-7.png" alt="" class="kg-image" width="1382" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1No9XvnguRN5bpcRgbSZBe/5e776b72c64573b51921171da88be6c1/image1-7.png" alt="" class="kg-image" width="1382" height="668" loading="lazy">
 
 	</figure>
 	<p>Here at Labyrinth Labs, we put great emphasis on monitoring. Having a working monitoring setup is a critical part of the work we do for our clients.</p>
@@ -28,7 +28,7 @@
 	<p>After running the queries against the GraphQL API, we simply format the results to follow the Prometheus metrics format and expose them on the /metrics endpoint. To make things faster, we use Goroutines and make the requests in parallel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d6eIT9Tv7F4p5iLP4bYQR/ce92621a12264d3349210352adc2f3fe/image4-9.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1d6eIT9Tv7F4p5iLP4bYQR/1fc81995d3304539456ace57170af022/image4-9.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -78,12 +78,12 @@ helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter
 	<p>The dashboard is divided into several rows, which group individual panels for easier navigation. It allows you to target individual zones for metrics visualization.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zGurfsIFldJAl7JWn1Ugm/a83520e364303a3282b54973410a1ffc/image2-5.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zGurfsIFldJAl7JWn1Ugm/f7e1173d0d3ccadb91de95d49902b6fc/image2-5.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Wui3JqzgAU1GAU5J7XXj3/0b33e5a69cf5e6aea9e3f8a45067a599/image3-6.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Wui3JqzgAU1GAU5J7XXj3/b5fa5aab63702997b97d7be3cc5ed7f0/image3-6.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<p>To make things even more beneficial for the operations team, you can use the gathered metrics to create alerts. These can be created either in Grafana directly or using Prometheus alert rules.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rltsZknPP1DqbhaFqdc2d/0bfcf62d16697ee5aaba652c3e0506ad/image1-15.png" alt="" class="kg-image" width="1028" height="787" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rltsZknPP1DqbhaFqdc2d/cc0cf740fcd92b2833e0278f2c05c2b2/image1-15.png" alt="" class="kg-image" width="1028" height="787" loading="lazy">
 
 	</figure>
 	<p>On May 27 2021, the Internet Engineering Task Force published RFC 9000 - the standardarized version of the QUIC transport protocol. The QUIC Working Group declared themselves done by issuing a <a href="https://blog.cloudflare.com/last-call-for-quic">Last Call</a> 7 months ago. The i's have been dotted and the t's crossed, RFC 8999 - RFC 9002 are a suite of documents that capture years of engineering design and testing of QUIC. This marks a big occasion.</p>
@@ -13,7 +13,7 @@
 	<p>According to <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, we're seeing around 12% of Internet traffic using QUIC with HTTP/3 already. We look forward to this increasing now that RFC 9000 is out and raising awareness of the stability of things.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44hkcMdHbgfl5XZk42hRUv/86988ab51ca1c1cebb158a1a1102e512/image3-8.png" alt="" class="kg-image" width="1714" height="857" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44hkcMdHbgfl5XZk42hRUv/328f93d4e472216c75880da4db50b60a/image3-8.png" alt="" class="kg-image" width="1714" height="857" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -27,7 +27,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CC9znbBgFKJGTw6QN8YOL/75ee386991000bbc8a7dcb32d37b8d6b/image4-12.png" alt="" class="kg-image" width="1999" height="388" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CC9znbBgFKJGTw6QN8YOL/094c27a60a4b9c4271d4b6cc6b610dcb/image4-12.png" alt="" class="kg-image" width="1999" height="388" loading="lazy">
 
 	</figure>
 	<p>HTTP/3 and QUIC are controlled from the "Network" tab of your dashboard. Turn it on and start testing.</p>
@@ -49,7 +49,7 @@ alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400<
 	<p>Previously, you needed to <a href="https://blog.cloudflare.com/how-to-test-http-3-and-quic-with-firefox-nightly">enable experimental support</a> if you wanted to test it out in browsers. But now many of them have QUIC enabled by default and we expect them to start enabling QUIC v1 support soon. So today we've begun rolling out changes to our Alt-Svc advertisements to also include the "h3" identifier and we'll have complete world-wide support early next week. All of these protocol upgrade behaviours are done behind the scenes, hopefully your browsing experiences just appear to get magically faster. If you want to check what's happening, you can, for example, use a browser's network tools - just be sure to enable the Protocol column. Here's how it looks in Firefox:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40t2IICcOJjpNbYclJVm3N/86e1aa46445e58c5ffe4a58a88f0a1ba/image2-8.png" alt="" class="kg-image" width="773" height="635" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40t2IICcOJjpNbYclJVm3N/9b3390d0b88137917610abeb140e56da/image2-8.png" alt="" class="kg-image" width="773" height="635" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -63,7 +63,7 @@ alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400<
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uiSku4MIBNz7VHzAR1H5B/3ef2cb1d4f9c9022ae51a56efb8f7c63/image5-5.png" alt="" class="kg-image" width="1638" height="446" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uiSku4MIBNz7VHzAR1H5B/e28eb3e55adb5be7f6d204168662db98/image5-5.png" alt="" class="kg-image" width="1638" height="446" loading="lazy">
 
 	</figure>
 	<p>Cloudflare's QUIC and HTTP/3 support is powered by quiche, <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">our own open-source implementation written in Rust</a>. You can find it on GitHub at <a href="https://github.com/cloudflare/quiche">github.com/cloudflare/quiche</a>.</p>

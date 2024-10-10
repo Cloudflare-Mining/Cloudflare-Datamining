@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MwDdpmFexb2YBRb6Y4VkD/49cb71a69fc0cf40ba95543ca6584e0c/Technical-deep-dive-for-Security-week.png" alt="Linux kernel security tunables everyone should consider adopting" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MwDdpmFexb2YBRb6Y4VkD/f8fe7a101729ee9fa518a457b8bb170a/Technical-deep-dive-for-Security-week.png" alt="Linux kernel security tunables everyone should consider adopting" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>The Linux kernel is the heart of many modern production systems. It decides when any code is allowed to run and which programs/users can access which resources. It manages memory, mediates access to hardware, and does a bulk of work under the hood on behalf of programs running on top. Since the kernel is always involved in any code execution, it is in the best position to protect the system from malicious programs, enforce the desired system security policy, and provide security features for safer production environments.</p>
@@ -18,7 +18,7 @@
 	<p>When a machine (either a laptop or a server) boots, it goes through several boot stages:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LULhRh5qh02zFnil5ZPnl/47318fdf6bd27645e8fd4c6ff282774f/image3-17.png" alt="image3-17" class="kg-image" width="1999" height="554" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LULhRh5qh02zFnil5ZPnl/b2e1867ba56492628bbb95ba6850448e/image3-17.png" alt="image3-17" class="kg-image" width="1999" height="554" loading="lazy">
 
 	</figure>
 	<p>Within a secure boot architecture each stage from the above diagram verifies the integrity of the next stage before passing execution to it, thus forming a so-called secure boot chain. This way “trustworthiness” is extended to every component in the boot chain, because if we verified the code integrity of a particular stage, we can trust this code to verify the integrity of the next stage.</p>
@@ -164,7 +164,7 @@ CONFIG_MODULE_SIG=y
 	<p>But what is the best way to eliminate the risk of losing something? Not to have it in the first place! Luckily the kernel build system <a href="https://elixir.bootlin.com/linux/v6.6.17/source/certs/Makefile#L36">will generate a random keypair</a> for module signing, if none is provided. At Cloudflare, we use that feature to sign all the kernel modules during the kernel compilation stage. When the compilation and signing is done though, instead of storing the key in a secure place, we just destroy the private key:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1EWN5Kh5NebZTW3kAzK9uM/0961ddf5c92c750ed1cc24a3a2446e4d/image1-19.png" alt="image1-19" class="kg-image" width="1999" height="1042" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EWN5Kh5NebZTW3kAzK9uM/0dfb98bc095710e5b317a128d3efb1c0/image1-19.png" alt="image1-19" class="kg-image" width="1999" height="1042" loading="lazy">
 
 	</figure>
 	<p>So with the above process:</p>
@@ -236,7 +236,7 @@ ffffffffb41bcae0 B selinux_state</code></pre>
 	<p><a href="https://docs.kernel.org/security/self-protection.html#kernel-address-space-layout-randomization-kaslr">Kernel Address Space Layout Randomization (or KASLR)</a> is a simple concept: it slightly and randomly shifts the kernel code and data on each boot:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6e7sTU0q25lHmBG5b4Q8if/0f524d18928e81ef2dca8d0068313d91/Screenshot-2024-03-06-at-13.53.23-2.png" alt="Screenshot-2024-03-06-at-13.53.23-2" class="kg-image" width="2000" height="1545" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6e7sTU0q25lHmBG5b4Q8if/d19a762047547d6f14dff4f9ab8f2d81/Screenshot-2024-03-06-at-13.53.23-2.png" alt="Screenshot-2024-03-06-at-13.53.23-2" class="kg-image" width="2000" height="1545" loading="lazy">
 
 	</figure>
 	<p>This is to combat targeted exploitation (like the malicious module in this post) based on the knowledge of the location of internal kernel structures and code. It is especially useful for popular Linux distribution kernels, like the Debian one, because most users use the same binary and anyone can download the debug symbols and the System.map file with all the addresses of the kernel internals. Just to note: it will not prevent the module loading and doing harm, but it will likely not achieve the targeted effect of disabling SELinux. Instead, it will modify a random piece of kernel memory potentially causing the kernel to crash.</p>

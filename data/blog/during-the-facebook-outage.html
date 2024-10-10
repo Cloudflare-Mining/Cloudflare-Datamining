@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4luKcmN9A6iTtHUmFHTUR8/5c44120cfb84efdd9a802884affd645f/during-the-facebook-outage.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4luKcmN9A6iTtHUmFHTUR8/3c681313427bac6569cdbd1b0b3e4ef8/during-the-facebook-outage.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It's been a few days now since Facebook, Instagram, and WhatsApp went AWOL and experienced one of the most extended and rough downtime periods in their existence.</p>
 	<p>When that happened, we reported our bird's-eye view of the event and posted the blog <a href="https://blog.cloudflare.com/october-2021-facebook-outage">Understanding How Facebook Disappeared from the Internet</a> where we tried to explain what we saw and how <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> and BGP, two of the technologies at the center of the outage, played a role in the event.</p>
@@ -19,14 +19,14 @@
 	<p>In this case, we started serving SERVFAIL responses to all facebook.com and whatsapp.com DNS queries because our resolver couldn't access the upstream Facebook authoritative servers. About 60x times more than the average on a typical day.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BKM7m3fUz3fCRrVuCN3jh/2a4ef51aef813a86403ff85eae286927/image16.png" alt="Mean query rate by response code" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BKM7m3fUz3fCRrVuCN3jh/4cb1ccccd0cbe22f2fed10cf10360084/image16.png" alt="Mean query rate by response code" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<p>If we look at all the queries, not specific to Facebook or WhatsApp domains, and we split them by IPv4 and IPv6 clients, we can see that our load increased too.</p>
 	<p>As explained before, this is due to a snowball effect associated with applications and users retrying after the errors and generating even more traffic. In this case, 1.1.1.1 had to handle more than the expected rate for A and AAAA queries.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7a67lujBcgIkqVusTr4R1t/52b1aab0a31505e8839de38995e977e8/image3-12.png" alt="Resolver: Mean query rate by queryType, A and AAAA only" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7a67lujBcgIkqVusTr4R1t/6f5bd1971964e4b3721d6096b50bc8d7/image3-12.png" alt="Resolver: Mean query rate by queryType, A and AAAA only" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<p>Here's another fun one.</p>
@@ -36,30 +36,30 @@
 	<p>When Facebook went offline, we saw the number of DoT+DoH SERVFAILs responses grow by over x300 vs. the average rate.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/TNHkfPvSSHUxljyh89S5a/0211b2766f0f62dc392373eda96cafe8/image14.png" alt="DNS vs Do* (SERVFAIL only)" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TNHkfPvSSHUxljyh89S5a/4de08b52d1a9cd23862d56a90943677b/image14.png" alt="DNS vs Do* (SERVFAIL only)" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pdogcCvQMRd10yEPUV0hu/b0fa09f5ad587ca3936c56ed1ea2b6b6/image11-1.png" alt="DoH vs DNS (SERVAIL only)" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pdogcCvQMRd10yEPUV0hu/c2ce7f4eeabd871727af41e2fc574524/image11-1.png" alt="DoH vs DNS (SERVAIL only)" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GJdW0PO7zIHBlnkKTyGa2/bc9105af10eda4d875bc94cf6fdc78f2/image4-13.png" alt="DoH vs DNS vs DoT (SERVFAIL only)" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GJdW0PO7zIHBlnkKTyGa2/59fd778bee5c0a837877535399455210/image4-13.png" alt="DoH vs DNS vs DoT (SERVFAIL only)" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<p>So, we got hammered with lots of requests and errors, causing traffic spikes to our 1.1.1.1 resolver and causing an unexpected load in the edge network and systems. How did we perform during this stressful period?</p>
 	<p>Quite well. 1.1.1.1 kept its cool and continued serving the vast majority of requests around the <a href="https://www.dnsperf.com/#!dns-resolvers">famous 10ms mark</a>. An insignificant fraction of p95 and p99 percentiles saw increased response times, probably due to timeouts trying to reach Facebook’s nameservers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZzJKGMnii2ghnbRxI8UoT/81ee75225259ea182b4702f80a7e4832/image6-11.png" alt="Response time quantiles" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZzJKGMnii2ghnbRxI8UoT/8c282529bb5efc0f834728c14047b463/image6-11.png" alt="Response time quantiles" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<p>Another interesting perspective is the distribution of the ratio between SERVFAIL and good DNS answers, by country. In theory, the higher this ratio is, the more the country uses Facebook. Here's the map with the countries that suffered the most:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XJYvy2Ore7FARCv4oBbiD/564ef0c3e18d771d4d74550a6ee12322/image18.png" alt="During the Facebook outage October 2021: ratio between SERVFAIL/good answers per country" class="kg-image" width="823" height="512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XJYvy2Ore7FARCv4oBbiD/d1700bca70c1c85c2fe01d3e49019fdb/image18.png" alt="During the Facebook outage October 2021: ratio between SERVFAIL/good answers per country" class="kg-image" width="823" height="512" loading="lazy">
 
 	</figure>
 	<p>Here’s the top twelve country list, ordered by those that apparently use Facebook, WhatsApp and Instagram the most:</p>
@@ -103,25 +103,25 @@
 	<p>Other social media platforms saw a slight increase in use, compared to normal.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uFhqEr4MIl6HxpBI9GG1M/39ec9e64795d86d5a4e36283b5a5b5b3/image17.png" alt="DNS queries to Social Media sites" class="kg-image" width="1043" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7uFhqEr4MIl6HxpBI9GG1M/a995ce00e0ff2b2b96d9aa9fb3341fa6/image17.png" alt="DNS queries to Social Media sites" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
 	<p>Traffic to messaging platforms like Telegram, Signal, Discord and Slack got a little push too.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16AyoRRD7YSUSd3MuHNNGO/596eadd04532582479b186cbaa91873f/image9-6.png" alt="DNS queries to Messaging Services" class="kg-image" width="1043" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16AyoRRD7YSUSd3MuHNNGO/c587c9a318702877248025d86f921c79/image9-6.png" alt="DNS queries to Messaging Services" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
 	<p>Nothing like a little gaming time when Instagram is down, we guess, when looking at traffic to sites like Steam, Xbox, Minecraft and others.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2v3JZdLK2rSbGPlhgicDJn/e59ac7566e636ce468ec46d709dc3c0d/image8-10.png" alt="DNS queries to Gaming Sites" class="kg-image" width="1043" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v3JZdLK2rSbGPlhgicDJn/e8f2bb509432c9b5fa2837588bd1f927/image8-10.png" alt="DNS queries to Gaming Sites" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
 	<p>And yes, people want to know what’s going on and fall back on news sites like CNN, New York Times, The Guardian, Wall Street Journal, Washington Post, Huffington Post, BBC, and others:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JR6ipTzivZfWYOS5rmnlX/bdc43e975a9f3b02857de7957f380c59/image5-12.png" alt="DNS queries to News Sites" class="kg-image" width="1043" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JR6ipTzivZfWYOS5rmnlX/c9b363c7babfaa94b096ebd657780b5a/image5-12.png" alt="DNS queries to News Sites" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -135,7 +135,7 @@
 	<p>One could speculate that the Internet was under attack from malicious hackers. Our Firewall doesn't agree; nothing out of the ordinary stands out.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lBrIk5Tx5b64G2SGtfFXZ/e59f3a9cce891988d107151eef65b243/image13.png" alt="Layer 7 attacks during the Facebook outage October 2021" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lBrIk5Tx5b64G2SGtfFXZ/b899bd50829087a48ef38b31b97cfd7a/image13.png" alt="Layer 7 attacks during the Facebook outage October 2021" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -151,7 +151,7 @@
 	<p>If Facebook is down and their DNS isn't responding, Chrome will start reporting NEL events every time one of the pages in our zones fails to load Facebook comments, posts, ads, or authentication buttons. This chart shows it clearly.<b>​​</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56Sp2huqEtyGiEOmzBrsiU/dba51c694454d2ae11f6d42cc36932ee/image7-8.png" alt="NEL (Network Error Logs)" class="kg-image" width="1043" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56Sp2huqEtyGiEOmzBrsiU/6ce9a0f9affe20691bf8588d9f4d6a8f/image7-8.png" alt="NEL (Network Error Logs)" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -165,7 +165,7 @@
 	<p>Cloudflare announced <a href="https://1.1.1.1">WARP</a> in 2019, and called it "<a href="https://blog.cloudflare.com/1111-warp-better-vpn">A VPN for People Who Don't Know What V.P.N. Stands For</a>" and offered it for free to its customers. Today WARP is used by millions of people worldwide to securely and privately access the Internet on their desktop and mobile devices. Here's what we saw during the outage by looking at traffic volume between WARP and Facebook’s network:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UIMVg1PpKr27RRkKagcdp/47f1e85a1720ac9bcadec1c3dab79b7b/WARP-graph-Facebook-outage-Oct-2021.png" alt="WARP usage to Facebook ASN during the outage" class="kg-image" width="2048" height="747" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UIMVg1PpKr27RRkKagcdp/979d1e3ef2dda3107f4db2799bb2f3f6/WARP-graph-Facebook-outage-Oct-2021.png" alt="WARP usage to Facebook ASN during the outage" class="kg-image" width="2048" height="747" loading="lazy">
 
 	</figure>
 	<p>You can see how the steep drop in Facebook ASN traffic coincides with the start of the incident and how it compares to the same period the day before.</p>
@@ -181,14 +181,14 @@
 	<p>Here's what we see when traffic is coming from the Facebook ASN, supposedly from crawlers, to our CDN sites:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bWgF42TihmULktktsg6TX/e345515ef51896da07287059b416da3d/image10-3.png" alt="Traffic from facebook ASN 32934" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bWgF42TihmULktktsg6TX/669f1a605301c7be4f8983d45c42ffd3/image10-3.png" alt="Traffic from facebook ASN 32934" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<p>The robots went silent.</p>
 	<p>What about the traffic coming to our CDN sites from Facebook <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent">User-Agents</a>? The gap is indisputable.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WCcPk5XJu2bmFxhfNjJq3/52146d0ab1b1e128093549291876693f/image1-16.png" alt="Requests with Facebook browser (User Agent)" class="kg-image" width="823" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WCcPk5XJu2bmFxhfNjJq3/825ee59fe0ac3b20f14fe249e18f701d/image1-16.png" alt="Requests with Facebook browser (User Agent)" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
 	<p>We see about 30% of a typical request rate hitting us. But it's not zero; why is that?</p>
@@ -208,13 +208,13 @@
 	<p>We used a list of about 400 domains that we know embed Facebook scripts in their pages and looked at the data.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HZbQOhcV4ki3H7NVMD6Yq/de9773c4fe5e89f396f34bce1cea5d35/image12.png" alt="Pageload times quantiles" class="kg-image" width="1043" height="360" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HZbQOhcV4ki3H7NVMD6Yq/117d2298e9d0e06521083d5176a34f77/image12.png" alt="Pageload times quantiles" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
 	<p>Now let's look at the Largest Contentful Paint. <a href="https://web.dev/lcp">LCP</a> marks the point in the page load timeline when the page's main content has likely loaded. The faster the LCP is, the better the end-user experience.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QJiUkTvEWln7dpvLkVKiV/d85aba9a4d90475ce3423dcd67846668/image15.png" alt="Largest Contentful Paint quantiles" class="kg-image" width="1034" height="339" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QJiUkTvEWln7dpvLkVKiV/eb6595b2c781e5ccc68c03b4bd233e3b/image15.png" alt="Largest Contentful Paint quantiles" class="kg-image" width="1034" height="339" loading="lazy">
 
 	</figure>
 	<p>Again, the page load experience got visibly degraded.</p>

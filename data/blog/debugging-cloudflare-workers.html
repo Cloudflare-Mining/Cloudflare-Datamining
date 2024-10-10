@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kmdQgGjQDnMeJ0amrvTDS/aed05e8b5c2f61cf2c8547f95bfadbd1/Debugging-1.png" alt="Better debugging for Cloudflare Workers, now with breakpoints" class="kg-image" width="2400" height="1351" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2kmdQgGjQDnMeJ0amrvTDS/9577ec3eefd6e91d3e9a3aeb76e9f299/Debugging-1.png" alt="Better debugging for Cloudflare Workers, now with breakpoints" class="kg-image" width="2400" height="1351" loading="lazy">
 
 	</figure>
 	<p>As developers, we’ve all experienced times when our code doesn’t work like we expect it to. Whatever the root cause is, being able to quickly dive in, diagnose the problem, and ship a fix is invaluable.</p>
@@ -28,13 +28,13 @@
 	<p><code>console.log</code>. It might be the simplest tool for a developer to debug, but don’t underestimate it. Built into the Cloudflare runtime is node-like logging, which provides detailed, color-coded logs. Locally, you can view these logs in a terminal window, and they will look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FOAbByfvb94W0iinSF3dp/f449b6cff75da030258ff41fb6d4904f/image5-2.png" alt="" class="kg-image" width="618" height="547" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FOAbByfvb94W0iinSF3dp/47b7086fcbf1ff54a39ae39fb09e6f95/image5-2.png" alt="" class="kg-image" width="618" height="547" loading="lazy">
 
 	</figure>
 	<p>Outside local development, once your Worker is deployed, <code>console.log</code> statements are visible via the Real-time Logs interface in the Cloudflare Dashboard or via the Workers CLI tool, <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update">Wrangler</a>, using the <a href="https://developers.cloudflare.com/workers/wrangler/commands/#tail"><code>wrangler tail</code></a> command. Each log that comes through <code>wrangler tail</code> is structured JSON, and the command has options to filter and search incoming logs to make results as relevant as possible.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PA8wVYsgB1hkhz6zyhk97/f09833377999f5f4fa0a6b8748f8d282/image2-4.png" alt="" class="kg-image" width="1281" height="523" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PA8wVYsgB1hkhz6zyhk97/17410babcdcbfef6bc8ef74a261b7c12/image2-4.png" alt="" class="kg-image" width="1281" height="523" loading="lazy">
 
 	</figure>
 	<p>If you’d like to send these logs to third-parties for processing and storage, you can leverage <a href="https://developers.cloudflare.com/workers/observability/logpush">Workers Trace Events Logpush</a> which supports a variety of <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations">destinations</a>.</p>
@@ -50,7 +50,7 @@
 	<p>This interactive tool provides even further insight and information about your Cloudflare Workers, and can be started from within Wrangler by running <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev"><code>wrangler dev</code></a> and pressing <b>[d]</b> once the dev server is spun up. It can also be accessed by the editor that is built into the <a href="https://dash.cloudflare.com/login?redirect_uri=https%3A%2F%2Fdash.cloudflare.com%2F%3Faccount%3Dworkers">Cloudflare Dashboard</a> or the <a href="https://workers.new">Workers Playground</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FjYb3g7ceyAbIa5gmgPPb/7726349798496b44d9321a8614a33877/image6-1.png" alt="" class="kg-image" width="1058" height="469" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FjYb3g7ceyAbIa5gmgPPb/3f94eda9e0ccb498daed4c1fc01b40bb/image6-1.png" alt="" class="kg-image" width="1058" height="469" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -87,13 +87,13 @@
 	<p><b>Setting up WebStorm</b>To set up WebStorm with breakpoint debugging, create a new “Attach to Node.js/Chrome” Debug Configuration, setting the port to <code>9229</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DTxZCPd3CPizjkeZoSeKv/6f03a2b00884bac015611fb0b868a7a4/image4-2.png" alt="" class="kg-image" width="738" height="654" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DTxZCPd3CPizjkeZoSeKv/17b9aeb346b798d02755b7a463485a90/image4-2.png" alt="" class="kg-image" width="738" height="654" loading="lazy">
 
 	</figure>
 	<p>Run <code>npx wrangler dev</code> to start a local dev server, then start the Debug Configuration:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TDefT0FNe3cWNuPvTzxSK/ebf498a0b66564e8320c9579dfe26b6d/Screenshot-2023-11-28-at-10.07.57.png" alt="" class="kg-image" width="2000" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TDefT0FNe3cWNuPvTzxSK/7656e30ced53a2f15d504c74703d438f/Screenshot-2023-11-28-at-10.07.57.png" alt="" class="kg-image" width="2000" height="216" loading="lazy">
 
 	</figure>
 	<p>Add a breakpoint, then open your browser and go to the Worker’s local URL (default <a href="http://127.0.0.1:8787">http://127.0.0.1:8787</a>). The breakpoint should be hit, and you should see details about your code at the specified line.</p>
@@ -150,7 +150,7 @@
 	<p>Now that we can set breakpoints and fetch source maps, DevTools works as normal. When a user tries to set a breakpoint in an original source file, DevTools will use the map’s <code>mappings</code> to find the location in the generated JavaScript file and set a breakpoint there. This is the opposite problem to source mapping error stack traces. When V8 hits this JavaScript breakpoint, DevTools will pause on the location in the original source file. Stepping through the source file requires mapping the stepped-over segment to generated code, sending the step-over command to V8, then mapping back the new paused location in generated code to the original source file.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4biqz5FNB0gTzSFbvM3O9B/e263602d53f3e8dfacd1f0dd31f73043/image3-5.png" alt="" class="kg-image" width="1500" height="1105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4biqz5FNB0gTzSFbvM3O9B/5a9d60f06cab849c4b56a14b164600d4/image3-5.png" alt="" class="kg-image" width="1500" height="1105" loading="lazy">
 
 	</figure>
 	<p><i>(sequence diagram showing process of setting, hitting, and stepping over breakpoints) (</i><a href="https://mermaid.live/edit#pako:eNq1VUtvEzEQ_iuWTyClG1DUA6sqh6pCQmpLlRJxqHNw1pONidde_AitVvnvjOPdNgmbEgTsyfbMfN88dxpaGAE0pw6-B9AFXEleWl4xTfDjhTeWTB3YdK-59bKQNdeeXMH6izHK_Sr5arkuVZ_ND2NXYEUSdABn43FnkePjPJQl2Aw0nytImp0YNVuEnCRJez3rx3CFlbW_49aBuJjbcUOcCbaAG15PJ9eIQRdSQT4cZlk2lFrAY_bNZRWvGR0QfCObA36k6bz-I5rkZkt0EYIU4wOK3mTcgo-WmTJctOcJJOzEE6w6DX4ngy8BNMTDo48ADWOMrsE6aXQ85qOtNaOdfWyBPdt78OTSAl_VRmofvXmTEuhd_uHtKQV24F8ALp-mVu3F1FOZGJOSGm5DNY9Q56NjMR7pkl0_GjJ_Zv8UNen7_HyUv8t7iV_NYxJp44FYWS49MYttwmKWtHBkEkfL-VM6tubhuYkKrtRHHEVAigd0ZzYgUbCUO3mLotc9n3Wu4yzLNUcf94awv7UP6oeyFM_d1r1jLeGhJp_X3dz_pvqoHHXbeVnJ-lo67MUHvHj8Y8QC7deabNpqz04veD-3BReqLgwB_yIxk13Ivyjx_yrWsSiZpgNaga24FLgEmvjKqF9CBfgXwKOABQ_KM8r0BlV58Ob-SRc09zbAgIZaIGa7M7pHEBLXxk3aK9v1svkJ1EsiBw"><i>mermaid URL</i></a><i>)</i></p>

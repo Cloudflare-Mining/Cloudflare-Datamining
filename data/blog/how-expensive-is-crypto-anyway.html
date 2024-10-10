@@ -1,10 +1,10 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5c0uyMJyCapr0q3u8LBjwZ/20059d91abb5f5e04e707ce38948112b/how-expensive-is-crypto-anyway.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c0uyMJyCapr0q3u8LBjwZ/fce4d98349db0f579076d2d1422dada0/how-expensive-is-crypto-anyway.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>I wouldn’t be surprised if the title of this post attracts some Bitcoin aficionados, but if you are such, I want to disappoint you. For me crypto means cryptography, not cybermoney, and the price we pay for it is measured in CPU cycles, not USD.</p>
 	<p>If you got to this second paragraph you probably heard that TLS today is very cheap to deploy. Considerable effort was put to optimize the cryptography stacks of OpenSSL and <a href="https://blog.cloudflare.com/make-ssl-boring-again">BoringSSL</a>, as well as the hardware that runs them. However, aside for the occasional benchmark, that can tell us how many GB/s a given algorithm can encrypt, or how many signatures a certain elliptic curve can generate, I did not find much information about the cost of crypto in real world TLS deployments.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GpBJuCjZpnZ4bN5fo6AB5/432fa44db6adaf39715c74a6cce1c1eb/22100041369_327f9dcfc6_o.jpg" alt="" class="kg-image" width="4096" height="2560" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GpBJuCjZpnZ4bN5fo6AB5/1d03279839c5d142210fd92278f1c3a0/22100041369_327f9dcfc6_o.jpg" alt="" class="kg-image" width="4096" height="2560" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/e-coli/22100041369/in/photolist-zEUum2-ER8BYq-5hXtwb-CxiYwX-5hXtvY-5hXtwj-5hFNbs-64fGf6-5hFLPQ-DSoVkq-bwyd2T-wYRxkw-5qW7d2-Vk3SA3-Kz3mo-KmY6zN-56qFgQ-UTiRvS-oEfFVF-dYqdH3-9z5NFC-64r7NG-ps3sX2-21Lx1pJ-CoqCmg-ZDQmP6-Es7Qyu-ZUU2fs-CmLMxz-ZUTF2w-CoqCPa-DU3hpj-64mTPT-56nEXr-Chbu5y-aXWvtK-56mDWX-Kz3mf-nJmMH7-7u5NGZ-jfFAJZ-afaRHw-HixWdX-Kz3mj-nbMprL-thpMu-4mtfnn-56mN4F-ZUUVs3-DSn1A9">image</a> by <a href="https://www.flickr.com/photos/e-coli">Michele M. F.</a></p>
@@ -13,13 +13,13 @@
 	<p>The profiled server is located in our Frankfurt data center, and sports 2 Xeon Silver 4116 processors. Every geography has a slightly different use pattern of TLS. In Frankfurt 73% of the requests are TLS, and the negotiated cipher-suites break down like so:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FwOwwcCOKEmKPXC39AKre/d0a1c16bd3dc3f2c8dcf634a9a2285bc/Cloudflare--Frankfurt---negotiated-TLS-cipher-suites.png" alt="" class="kg-image" width="1388" height="1040" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FwOwwcCOKEmKPXC39AKre/65ef57db90078551f6e6f87356acf7dc/Cloudflare--Frankfurt---negotiated-TLS-cipher-suites.png" alt="" class="kg-image" width="1388" height="1040" loading="lazy">
 
 	</figure>
 	<p>Processing all of those different ciphersuites, BoringSSL consumes just 1.8% of the CPU time. That’s right, mere 1.8%. And that is not even pure cryptography, there is a considerable overhead involved too.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10fP5b90Te8C5dgLu9niYm/43ee7fd737f58dd89ab88681b842714d/Cloudflare-boringssl-profiling.png" alt="" class="kg-image" width="1950" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10fP5b90Te8C5dgLu9niYm/9eecc466e1d99d5c67407ea53e49da5c/Cloudflare-boringssl-profiling.png" alt="" class="kg-image" width="1950" height="800" loading="lazy">
 
 	</figure>
 	<p>Let’s take a deeper dive, shall we?</p>
@@ -34,7 +34,7 @@
 	<p>If we break down the negotiated cipher suites, by the AEAD used, we get the following breakdown:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xAr8QpgNXYb87XWzOaJcZ/22bfdc7f0939a0cd3c437b876ae1bd06/Cloudflare-boringssl-ciphers-1.png" alt="" class="kg-image" width="1776" height="726" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xAr8QpgNXYb87XWzOaJcZ/baf15d5818d5e5a9335540da5d0ed87d/Cloudflare-boringssl-ciphers-1.png" alt="" class="kg-image" width="1776" height="726" loading="lazy">
 
 	</figure>
 	<p>BoringSSL speed tells us that AES-128-GCM, <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20-Poly1305</a> and AES-128-CBC-SHA1 can achieve encryption speeds of 3,733.3 MB/s, 1,486.9 MB/s and 387.0 MB/s, but this speed varies greatly as a function of the record size. Indeed we see that GCM uses proportionately less CPU time.</p>
@@ -51,7 +51,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3J8LQ4EYzEy2w7hFqmQRKU/978ea572027ae7edad0900131cb00dc4/Cloudflare-boringssl-pubkey-1.png" alt="" class="kg-image" width="2238" height="726" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3J8LQ4EYzEy2w7hFqmQRKU/87a4663fc2b28f0903cdb7dcc0a98dd5/Cloudflare-boringssl-pubkey-1.png" alt="" class="kg-image" width="2238" height="726" loading="lazy">
 
 	</figure>
 	<p>Public key algorithms in TLS serve two functions.</p>
@@ -71,7 +71,7 @@
 	<p>Only two hash function are currently used in TLS: SHA1 and SHA2 (including SHA384). SHA3 will probably debut with TLS1.3. Hash functions serve several purposes in TLS. First, they are used as part of the signature for both the certificate and the handshake, second they are used for key derivation, finally when using AES-CBC, SHA1 and SHA2 are used in HMAC to authenticate the records.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KdvAh7bAu4nqYOG51WpYM/157a0e45524c6c945915fb7c365dabe9/Cloudflare-boringssl-hash.png" alt="" class="kg-image" width="1512" height="724" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KdvAh7bAu4nqYOG51WpYM/d2aa3e1a0b9ede77a8e4cf71b38c8707/Cloudflare-boringssl-hash.png" alt="" class="kg-image" width="1512" height="724" loading="lazy">
 
 	</figure>
 	<p>Here we see SHA1 consuming more resources than expected, but that is really because it is used as HMAC, whereas most cipher suites that negotiate SHA256 use AEADs. In terms of benchmarks BoringSSL speed reports 667.7 MB/s for SHA1, 309.0 MB/s for SHA256 and 436.0 MB/s for SHA512 (truncated to SHA384 in TLS, that is not visible in the graphs because its usage approaches 0%).</p>

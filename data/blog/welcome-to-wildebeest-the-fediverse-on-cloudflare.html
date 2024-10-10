@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BbRRixkMxcIiNYgdA9go/cbcc73e8da9973115556e53ea8c6ed5e/Wildebeest.png" alt="Welcome to Wildebeest: the Fediverse on Cloudflare" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BbRRixkMxcIiNYgdA9go/f2d1e27e932958951271d36ccffa2c16/Wildebeest.png" alt="Welcome to Wildebeest: the Fediverse on Cloudflare" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p><a href="https://en.wikipedia.org/wiki/Fediverse">The Fediverse</a> has been a hot topic of discussion lately, with thousands, if not <a href="https://bitcoinhackers.org/@mastodonusercount">millions</a>, of new users creating accounts on platforms like <a href="https://joinmastodon.org">Mastodon</a> to either move entirely to "the other side" or experiment and learn about this new social network.</p>
@@ -69,7 +69,7 @@
 	<p>Here's a birds-eye diagram of Wildebeest's architecture:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33R5UHXYSBDBUsoFLMkoC8/d85bbc1373634d502be43994bea210fe/Screenshot-2023-02-08-at-10.58.01-AM.png" alt="" class="kg-image" width="1464" height="1016" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33R5UHXYSBDBUsoFLMkoC8/0304880c93af0a41d168616da4c73b90/Screenshot-2023-02-08-at-10.58.01-AM.png" alt="" class="kg-image" width="1464" height="1016" loading="lazy">
 
 	</figure>
 	<p>Let's get into the details and get technical now.</p>
@@ -85,7 +85,7 @@
 	<p>Functions has a built-in <a href="https://developers.cloudflare.com/pages/platform/functions/routing">file-based router</a>. The <a href="https://github.com/cloudflare/wildebeest/tree/main/functions">/functions</a> directory structure, which is uploaded by Wildebeest’s continuous deployment builds, defines your application routes and what files and code will process each HTTP endpoint request. This routing technique is similar to what other frameworks like Next.js <a href="https://nextjs.org/docs/routing/introduction">use</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NsNlFYtyqKVzhFFBuGeRW/a1fe69253e1a8fe054956e7497d4a4f6/2b.png" alt="" class="kg-image" width="1558" height="706" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NsNlFYtyqKVzhFFBuGeRW/767c9b102b9d97ad067c343df387c5db/2b.png" alt="" class="kg-image" width="1558" height="706" loading="lazy">
 
 	</figure>
 	<p>For example, Mastodon’s <a href="https://docs.joinmastodon.org/methods/timelines/#public">/api/v1/timelines/public</a> API endpoint is handled by <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v1/timelines/public.ts">/functions/api/v1/timelines/public.ts</a> with the onRequest method.</p>
@@ -123,7 +123,7 @@ describe('Mastodon APIs', () =&gt; {
 	<p>We use Functions to implement a large portion of the official <a href="https://docs.joinmastodon.org/api">Mastodon API</a> specification, making Wildebeest compatible with the existing ecosystem of other servers and client applications, and also to run our own read-only web frontend under the same project codebase.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Wz8EZKQyMvyEfDvH7cOV9/26f5d40505c2fe9dafa6046210f850ca/3b.png" alt="" class="kg-image" width="1600" height="824" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Wz8EZKQyMvyEfDvH7cOV9/02183c976fe7c619c2fc4f8e99795463/3b.png" alt="" class="kg-image" width="1600" height="824" loading="lazy">
 
 	</figure>
 	<p>Wildebeest’s web frontend uses <a href="https://qwik.builder.io">Qwik</a>, a general-purpose web framework that is optimized for speed, uses modern concepts like the JSX JavaScript syntax extension and supports server-side-rendering (SSR) and static site generation (SSG).</p>
@@ -142,7 +142,7 @@ describe('Mastodon APIs', () =&gt; {
 	<p>Wildebeest uses <a href="https://developers.cloudflare.com/d1">D1</a>, Cloudflare’s first SQL database for the Workers platform built on top of SQLite, now open to everyone in <a href="https://blog.cloudflare.com/d1-open-alpha">alpha</a>, to store and query data. Here’s our schema:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67Xq9kbn6qh2XgRveGSdHt/c98a39d1af602121204acb00ad62372d/4b.png" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67Xq9kbn6qh2XgRveGSdHt/3a020d6c71a89f0020b8fb7e87433601/4b.png" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
 
 	</figure>
 	<p>The schema will probably change in the future, as we add more features. That’s fine, D1 supports <a href="https://developers.cloudflare.com/d1/platform/migrations">migrations</a> which are great when you need to update your database schema without losing your data. With each new Wildebeest version, we can create a <a href="https://github.com/cloudflare/wildebeest/blob/main/migrations/0001_add-unique-following.sql">new migration</a> file if it requires database schema changes.</p>
@@ -213,7 +213,7 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 	<p>Cloudflare Images is also available from the dashboard. You can use it to browse or manage your catalog quickly.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A4gwBFdbSGDvS4DAJRyhR/d8d6f35274e1bbf66779b7c170f4e8cf/5b.png" alt="" class="kg-image" width="1600" height="1170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1A4gwBFdbSGDvS4DAJRyhR/95849178c4b10c82d5f619ffc1153ba0/5b.png" alt="" class="kg-image" width="1600" height="1170" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -230,7 +230,7 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 	<p>To put it simply, you have a queue topic identifier, which is basically a buffered list that scales automatically, then you have one or more producers that, well, produce structured messages, JSON objects in our case, and put them in the queue (you define their schema), and finally you have one or more consumers that subscribes that queue, receive its messages and process them, at their own speed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5m1TSSTZesMX1jt7K7YpHS/290fe8ef7952802927d1b7179ae91901/6b.png" alt="" class="kg-image" width="1432" height="390" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m1TSSTZesMX1jt7K7YpHS/c192aa543426e12c03b2c753f4e4b8c4/6b.png" alt="" class="kg-image" width="1432" height="390" loading="lazy">
 
 	</figure>
 	<p>Here’s the <a href="https://developers.cloudflare.com/queues/learning/how-queues-works">How Queues works</a> page for more information.</p>
@@ -311,7 +311,7 @@ const actor = await actors.getPersonById(db, actorId)
 	<p>The ActivityPub protocol is highly transactional and can't afford eventual consistency. Here's an example: generating complete timelines is expensive, so we cache that operation. However, when you post something, we need to invalidate that cache before we reply to the client. Otherwise, the new post won't be in the timeline and the client can fail with an error because it doesn’t see it. This actually happened to us with one of the most popular clients.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mBZfs5UZumkHzh9ITpUSn/9af14f1a1a520e4f93f790aab1728cf4/7b.png" alt="" class="kg-image" width="1600" height="511" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mBZfs5UZumkHzh9ITpUSn/1f9d5e53e7d61417d962a9fd566df9e6/7b.png" alt="" class="kg-image" width="1600" height="511" loading="lazy">
 
 	</figure>
 	<p>We needed to get clever. The team discussed a few options. Fortunately, our API catalog has plenty of options. Meet <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>.</p>
@@ -351,13 +351,13 @@ const actor = await actors.getPersonById(db, actorId)
 	<p>The policy defines who can authenticate, and how.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zDpfgueYrKRmhmNvHCBGX/4185cb10277f5d9c7f3667d7623d7eee/8b.png" alt="" class="kg-image" width="1366" height="527" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zDpfgueYrKRmhmNvHCBGX/68b6b579fcb33110566b07ea6e5a3d3e/8b.png" alt="" class="kg-image" width="1366" height="527" loading="lazy">
 
 	</figure>
 	<p>When authenticated, Access will redirect you back to Wildebeest. The first time this happens, we will detect that we don't have information about the user and ask for your Username and Display Name. This will be asked only once and is what will be to create your public Mastodon profile.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76J7DmTtShD7slpawYXNAE/f818433fe13b110ff929b111ee13d91d/9b.png" alt="" class="kg-image" width="1600" height="897" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76J7DmTtShD7slpawYXNAE/ccc908ed0dffb75a7ce6afc7b0b55510/9b.png" alt="" class="kg-image" width="1600" height="897" loading="lazy">
 
 	</figure>
 	<p>Technically, Wildebeest implements the <a href="https://docs.joinmastodon.org/spec/oauth/#implementation">OAuth 2 specification</a>. <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> protects the <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/oauth/authorize.ts">/oauth/authorize</a> endpoint and issues a valid <a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json">JWT token</a> in the request headers when the user is authenticated. Wildebeest then reads and verifies the JWT and returns an authorization code in the URL redirect.</p>
@@ -377,13 +377,13 @@ const actor = await actors.getPersonById(db, actorId)
 	<p>The solution ended up being a clever mix of using GitHub with <a href="https://github.com/features/actions">GitHub Actions</a>, <a href="https://developers.cloudflare.com/workers/platform/deploy-button">Deploy with Workers</a>, and <a href="https://github.com/cloudflare/terraform-provider-cloudflare">Terraform</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5V8fRfu3U03n2ZVNtsh01L/e41a2afac4210351b76ed8c8221a6c93/Screenshot-2023-02-08-at-11.13.05-AM-1.png" alt="" class="kg-image" width="1300" height="87" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5V8fRfu3U03n2ZVNtsh01L/404637763a8476b425a562ff5bbf8739/Screenshot-2023-02-08-at-11.13.05-AM-1.png" alt="" class="kg-image" width="1300" height="87" loading="lazy">
 
 	</figure>
 	<p>The Deploy with Workers button is a specially crafted link that auto-generates a workflow page where the user gets asked some questions, and Cloudflare handles authorizing GitHub to deploy to Workers, automatically forks the Wildebeest repository into the user's account, and then configures and deploys the project using a <a href="https://github.com/marketplace/actions/deploy-to-cloudflare-workers-with-wrangler">GitHub Actions</a> workflow.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MhyoOAbQEjlNnEhwl70Jm/12f4487644b8c16cb4b47e9f7858cf97/10b.png" alt="" class="kg-image" width="1300" height="1189" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MhyoOAbQEjlNnEhwl70Jm/5000c8c1dc1dfea549ee6ca62f8460b4/10b.png" alt="" class="kg-image" width="1300" height="1189" loading="lazy">
 
 	</figure>
 	<p>A GitHub Actions <a href="https://docs.github.com/en/actions/using-workflows/about-workflows">workflow</a> is a YAML file that declares what to do in every step. Here’s the <a href="https://github.com/cloudflare/wildebeest/blob/main/.github/workflows/deploy.yml">Wildebeest workflow</a> (simplified):</p>
@@ -426,7 +426,7 @@ jobs:
 	<p>This workflow runs automatically every time the main branch changes, so updating the Wildebeest is as easy as synchronizing the upstream official repository with the fork. You don't even need to use git commands for that; GitHub provides a convenient Sync button in the UI that you can simply click.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vkcs7XzLMZdihq7z5n2L5/4025c9154782dab6da24cb0421b7f571/11b.png" alt="" class="kg-image" width="500" height="352" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vkcs7XzLMZdihq7z5n2L5/b83e8499970012ebcf0b47e686b6518a/11b.png" alt="" class="kg-image" width="500" height="352" loading="lazy">
 
 	</figure>
 	<p>What's more? Updates are incremental and non-destructive. When the GitHub Actions workflow redeploys Wildebeest, we only make the necessary changes to your configuration and nothing else. You don't lose your data; we don't need to delete your existing configurations. Here’s how we achieved this:</p>
@@ -434,7 +434,7 @@ jobs:
 	<p>Data loss is not a problem either because, as you read above, D1 supports <a href="https://developers.cloudflare.com/d1/platform/migrations">migrations</a>. If we need to add a new column to a table or a new table, we don't need to destroy the database and create it again; we just apply the necessary SQL to that change.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UW6Qm1KE662wiFVgrWFPZ/681fa0298c988bf661dbe16c09cd4603/12b.png" alt="" class="kg-image" width="1600" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UW6Qm1KE662wiFVgrWFPZ/ba80730c09161abc81c85bb89fd758b3/12b.png" alt="" class="kg-image" width="1600" height="600" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -449,7 +449,7 @@ jobs:
 	<p>Likewise, you'll get instant network and content delivery optimizations from our products and <a href="https://www.cloudflare.com/analytics">analytics</a> on how your Wildebeest instance is performing and being used.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EYUh9pE5NNPnpj9mwVSfz/7129f4607c971562e5b6aa4bf4ac96c9/13b.png" alt="" class="kg-image" width="1600" height="934" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EYUh9pE5NNPnpj9mwVSfz/7d97cf99ad29cd9436b8e48c7918cd24/13b.png" alt="" class="kg-image" width="1600" height="934" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -561,7 +561,7 @@ export async function addObjectInInbox(db, actor, obj) {
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QJsY2PkGqLfVQCDJc1AlH/ba78b5e73d12541d0f777bb9eec83302/14b.png" alt="" class="kg-image" width="1600" height="722" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QJsY2PkGqLfVQCDJc1AlH/d52823cfd8d2d9e7de9845686790a3bf/14b.png" alt="" class="kg-image" width="1600" height="722" loading="lazy">
 
 	</figure>
 	<p>Wildebeest is compatible with most client apps; we are confirmed to work with the official Mastodon <a href="https://play.google.com/store/apps/details?id=org.joinmastodon.android">Android</a> and <a href="https://apps.apple.com/us/app/mastodon-for-iphone/id1571998974">iOS</a> apps, <a href="https://pinafore.social">Pinafore</a>, <a href="https://mastodon.social/@JPEGuin/109315609418460036">Mammoth</a>, and <a href="https://tooot.app">tooot</a>, and looking into others like <a href="https://tapbots.com/ivory">Ivory</a>. If your favorite isn’t working, please submit an <a href="https://github.com/cloudflare/wildebeest/issues">issue here</a>, we’ll do our best to help support it.</p>

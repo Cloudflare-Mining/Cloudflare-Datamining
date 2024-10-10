@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZHxyfGWtrAGLZZ3XI3M42/edca1fc8b2c3d1e1ef2663de1d6a5b6f/today-chrome-takes-another-step-forward-in-addressing-the-design-flaw-that-is-an-unencrypted-web.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZHxyfGWtrAGLZZ3XI3M42/6516d22fe371b20bef3b94ee0e76f793/today-chrome-takes-another-step-forward-in-addressing-the-design-flaw-that-is-an-unencrypted-web.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a guest post by Troy Hunt, awarded </i><a href="https://www.troyhunt.com/about"><i>Security expert</i></a><i>, </i><a href="https://www.troyhunt.com"><i>blogger</i></a><i>, and Pluralsight author. He’s also the creator of the popular </i><a href="https://haveibeenpwned.com"><i>Have I been pwned?</i></a><i>, the free aggregation service that helps the owners of over 5 billion accounts impacted by data breaches.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KzdaWJzeTAjCK93nkKTlP/b8109914b613501130b3e0549de7e551/chrome-68-troy-hhunt-quote_0.75x.png" alt="chrome-68-troy-hhunt-quote@0.75x" class="kg-image" width="3558" height="1965" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KzdaWJzeTAjCK93nkKTlP/47b50fe081c28d84805f57ff82036494/chrome-68-troy-hhunt-quote_0.75x.png" alt="chrome-68-troy-hhunt-quote@0.75x" class="kg-image" width="3558" height="1965" loading="lazy">
 
 	</figure>
 	<p><a href="https://twitter.com/share?ref_src=twsrc%5Etfw">Tweet</a></p>
@@ -44,7 +44,7 @@
 	<p>That's an <i>astonishingly</i> high growth rate, pretty much doubling every 12 months. We can't sustain that rate forever, of course, but depending on how you look at it, the numbers are even higher than that. <a href="https://docs.telemetry.mozilla.org/datasets/other/ssl/reference.html">Firefox's telemetry</a> suggests that as of today, 73% of all requests are served over a secure HTTPS connection. That number is much higher than Scott's due to the higher prevalence of the world's largest websites implementing HTTPS more frequently than the smaller ones. In fact, Scott's own figures graphically illustrate this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vArpeYnYlrbUxOeOqrOP9/edd7f18a27f472387fdee92118a33d67/Troy_Hunt_Image.png" alt="Troy_Hunt_Image" class="kg-image" width="1082" height="659" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vArpeYnYlrbUxOeOqrOP9/ac69cc49464fb3b115d13f51098a5451/Troy_Hunt_Image.png" alt="Troy_Hunt_Image" class="kg-image" width="1082" height="659" loading="lazy">
 
 	</figure>
 	<p>Each point on the graph is a cluster of 4,000 websites with the largest ones on the left and the smallest on the right. It's clear that well over half of the largest sites are doing HTTPS by default whilst the smallest ones are much closer to one quarter. This can be explained by the fact that larger services tend to be those that we've traditionally expected higher levels of security on; they're <a href="https://www.cloudflare.com/ecommerce">e-commerce sites</a>, social media platforms, banks and so on. Paradoxically, those sites are also the ones that are less trivial to roll over to HTTPS whilst the ones to the right of the graph are more likely to literally be lunchtime jobs. Last month I produced <a href="https://httpsiseasy.com">a free 4-part series called "HTTP Is Easy"</a> and part 1 literally went from zero HTTPS to full HTTPS across the entire site in 5 minutes. It took another 5 minutes to get a higher grade than what most banks have for their transport layer encryption. HTTPS really <i>is</i> easy!</p>

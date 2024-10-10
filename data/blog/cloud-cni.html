@@ -4,7 +4,7 @@
 	<p><i></i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QdKiRzTrBGSbPvJJaZpiA/877ab892cf70e7ea27030fe617459bd4/image3-23.png" alt="Cloud CNI privately connects your clouds to Cloudflare" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QdKiRzTrBGSbPvJJaZpiA/b94d9bcbaaad4b0bb2d1c45b4a356463/image3-23.png" alt="Cloud CNI privately connects your clouds to Cloudflare" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>For CIOs, networking is a hard process that is often made harder. Corporate networks have so many things that need to be connected and each one of them needs to be connected differently: user devices need managed connectivity through a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a>, offices need to be connected using the public Internet or dedicated connectivity, data centers need to be managed with their own private or public connectivity, and then you have to <a href="https://www.cloudflare.com/cio">manage cloud connectivity</a> on top of it all! It can be exasperating to manage connectivity for all these different scenarios and all their privacy and compliance requirements when all you want to do is enable your users to access their resources privately, securely, and in a non-intrusive manner.</p>
@@ -34,26 +34,26 @@
 	<p>Let’s take an example company that connects a data center, an office, and an Azure instance together. Today, this company may have remote users that connect to applications hosted in either the datacenter, the office, or the cloud instance. Users in the office may connect to applications in the cloud, and all of it today is managed by the company. To do this, they may employ VPNs that tunnel the remote users into the data center or office before accessing the necessary applications. The office and data center are often connected through <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS</a> lines that are leased from connectivity providers. And then there’s the private IBM instance that is connected via IBM Direct Link. That’s three different connectivity providers for CIOs to manage, and we haven’t even started talking about access policies for the internal applications, firewalls for the cross-building network, and implementing MPLS routing on top of the provider underlay.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6w6gFveBWCskbGmfcK6VW2/6e48a655c242f94a2315761f13cf7f33/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6w6gFveBWCskbGmfcK6VW2/cb556f159fdeef78a1e478cb676d7829/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
 
 	</figure>
 	<p>Cloudflare One helps simplify this by allowing companies to insert Cloudflare as the network for all the different connectivity options. Instead of having to run connections between buildings and clouds, all you need to do is manage your connections to Cloudflare.</p>
 	<p>WARP manages connectivity for remote users, Cloudflare Network Interconnect provides the private connectivity from data centers and offices to Cloudflare, and all of that can be managed with Access policies for policing applications and Magic WAN to provide the routing that gets your users where they need to go. When we released Cloudflare One, we were able to simplify the connectivity story to look like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sFiKaY8z9BJz379RSrARQ/e39ae713cd30e66dee030c402001a57b/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sFiKaY8z9BJz379RSrARQ/6bc04bccec2fd0239768776cc892e726/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="1080" loading="lazy">
 
 	</figure>
 	<p>Before, users with private clouds had to either expose their cloud instances to the public Internet, or maintain suboptimal routing by keeping their private cloud instances connected to their data centers instead of directly connecting to Cloudflare. This means that these customers have to maintain their private connections directly to their data centers, which adds toil to a solution that is supposed to be easier:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ct4W3INP8JoIrxcjHTG0A/8f32ed5986c1bc195d91dcfbf1588c64/pasted-image-0--2--1.png" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ct4W3INP8JoIrxcjHTG0A/15ac27eb67289b4102a7e32ac140c8c6/pasted-image-0--2--1.png" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
 	<p>Now that CNI supports cloud environments, this company can open a private cloud link directly into Cloudflare instead of into their data center. This allows the company to use Cloudflare as a true intermediary between all of their resources, and they can rely on Cloudflare to manage firewalls, access policies, and routing for all of their resources, trimming the number of vendors they need to manage for routing down to one: just Cloudflare!</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YZG5m6lM51q3psWX3KdB1/4a30532058c5be9797a6961a7d925242/pasted-image-0--3--1.png" alt="" class="kg-image" width="1600" height="1050" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5YZG5m6lM51q3psWX3KdB1/20c77c740d894632d798fdd844876092/pasted-image-0--3--1.png" alt="" class="kg-image" width="1600" height="1050" loading="lazy">
 
 	</figure>
 	<p>Once everything is directly connected to Cloudflare, this company can manage their cross-resource routing and firewalls through Magic WAN, they can set their user policies directly in Access, and they can set egress policies out to the public Internet through any one of Cloudflare’s 250+ data centers through Gateway. All the offices and clouds talk to each other on a hermetically sealed network with no public access or publicly shared peering links, and most importantly, all of these security and privacy efforts are done completely transparently to the user.</p>
@@ -71,13 +71,13 @@
 	<p>The first step to provisioning connectivity in any cloud is to request a connection. In Google Cloud, you can do this by selecting “Private Service Connect” in the VPC network details:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pQ5nP4ARIDvH3B5EFSNZL/913d84a1f1559f1e1f3471fe4e1897e5/Untitled.png" alt="" class="kg-image" width="1600" height="1077" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pQ5nP4ARIDvH3B5EFSNZL/087f8c749db2c1e6d8096fa6d859aef6/Untitled.png" alt="" class="kg-image" width="1600" height="1077" loading="lazy">
 
 	</figure>
 	<p>That will allow you to select a partner connection or a direct connection. In Cloudflare’s case, you should select a partner connection. Follow the instructions to select a connecting region and datacenter site, and you’ll get what’s called a connection ID, which is used by Google Cloud and Cloudflare to identify the private connection with your VPC:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WtaGJnX060HuFTjxDWp4k/5ab6167bba578cc730808b7b8b8e9c88/Untitled--1-.png" alt="" class="kg-image" width="1364" height="1346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WtaGJnX060HuFTjxDWp4k/76d0f0d0c3581ae24826720ae52369bf/Untitled--1-.png" alt="" class="kg-image" width="1364" height="1346" loading="lazy">
 
 	</figure>
 	<p>You’ll notice in this screenshot that it says you need to configure the connection on the partner side. In this case, you can take that key and use it to automatically provision a virtual connection on top of an already existing link. The provisioning process consists of five steps:</p>

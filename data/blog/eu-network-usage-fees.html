@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4y22iFSEioQj0S4JrypqFb/47fd43fdc42c457b7deb2c748ab873c3/1-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4y22iFSEioQj0S4JrypqFb/8b56c96421d0839ec419aeb14dc1baff/1-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>There’s an important debate happening in Europe that could affect the future of the Internet. The European Commission is considering new rules for how networks connect to each other on the Internet. It’s considering proposals that – no hyperbole – will slow the Internet for consumers and are dangerous for the Internet.</p>
@@ -35,7 +35,7 @@
 	<p>There are different ways in which networks exchange data on the Internet. In some cases, networks connect directly to exchange data between users of each network. This is called peering. Cloudflare has an <a href="https://www.cloudflare.com/peering-policy">open peering policy</a>; we’ll peer with any other network. Peering is one hop between networks – it’s the gold standard. Fewer hops from start to end generally means faster and more reliable data delivery. We peer with more than 12,000 networks around the world on a settlement-free basis, which means neither network pays the other to send traffic. This settlement-free peering is one of the aspects of Cloudflare’s business that allows us to offer a free version of our services to millions of users globally, permitting individuals and small businesses to have websites that load quickly and efficiently and are better protected from cyberattacks. We’ll talk more about the benefits of settlement-free peering below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MwPHFLIXaM6x0bv4HVkKg/0050cb8110a8fc7cd8c024b28097907e/2-2.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MwPHFLIXaM6x0bv4HVkKg/26208e7ac043e0686d988ddbc03782d4/2-2.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p><i>Figure 1: Traffic takes one of three paths between an end-user’s ISP and the content or service they are trying to access. Traffic could go over direct peering which is 1:1 between the ISP and the content or service provider; it could go through IX Peering which is a many:many connection between networks; or it could go via a transit provider, which is a network that gets compensated for delivering traffic anywhere on the Internet.</i></p>
@@ -80,21 +80,21 @@
 	<p>In recognition of the myriad benefits, settlement-free peering between CDNs and terminating ISPs is the global norm in the industry. Most networks understand that through settlement-free peering, (1) customers get the best experience through local traffic delivery, (2) networks have increased resilience through multiple traffic paths, and (3) data is exchanged locally instead of backhauled and aggregated in larger volumes at regional Internet hubs. By contrast, paid peering is rare, and is usually employed by networks that operate in markets without robust competition. Unfortunately, when an incumbent telco achieves a dominant market position or has no significant competition, they may be less concerned about the performance penalty they impose on their own users by refusing to peer directly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DfB0FAz2CBDWaeFiGzCm/a424bc34fd0cde879c786a5c1476e808/Screenshot-2023-05-08-at-9.19.49-AM.png" alt="" class="kg-image" width="1370" height="626" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DfB0FAz2CBDWaeFiGzCm/a933e781ab6cc3d3a239e745be4c90e5/Screenshot-2023-05-08-at-9.19.49-AM.png" alt="" class="kg-image" width="1370" height="626" loading="lazy">
 
 	</figure>
 	<p>As an example, consider the map in Figure 2. This map shows the situation in Germany, where most traffic is exchanged via transit providers at the Internet hub in Frankfurt. Consumers are losing in this situation for two reasons: First, the farther they are from Frankfurt, the higher latency they will experience for Cloudflare services. For customers in northeast Germany, for example, the distance from Cloudflare’s servers in Frankfurt means they will experience nearly double the latency of consumers closer to Cloudflare geographically. Second, the reliance on a small number of transit providers exposes their traffic to congestion and reliability risks. The remedy is obvious: if large telcos would interconnect (“peer”) with Cloudflare in all five cities where Cloudflare has points of presence, every consumer, regardless of where they are in Germany, would have the same excellent Internet experience.</p>
 	<p>We’ve shown that local settlement-free interconnection benefits consumers by improving the speed of their Internet experience, but local interconnection also reduces the amount of traffic that aggregates at regional Internet hubs. If a telco interconnects with a large video provider in a single regional hub, the telco needs to carry their subscribers’ request for content through their network to the hub. Data will be exchanged at the hub, then the telco needs to carry the data back through their “backbone” network to the subscriber. (While this situation can result in large traffic volumes, modern networks can easily expand the capacity between themselves at almost no cost by adding additional port capacity. The fibre-optic cable capacity in this “backbone” part of the Internet is not constrained.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fsvTdNnG7P6QPefRM7RPx/2faa256efb076a176bdb418d2b928a57/4.png" alt="" class="kg-image" width="1600" height="1061" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fsvTdNnG7P6QPefRM7RPx/a5564b8ddf68e7c998abbd294fed28d4/4.png" alt="" class="kg-image" width="1600" height="1061" loading="lazy">
 
 	</figure>
 	<p><i>Figure 3. A hypothetical example where a telco only interconnects with a video provider at a regional Internet hub, showing how traffic aggregates at the interconnection point.</i></p>
 	<p>Local settlement-free peering is one way to reduce the traffic across those interconnection points. Another way is to use embedded caches, which are offered by most CDNs, including Cloudflare. In this scenario, a CDN sends hardware to the telco, which installs it in their network at local aggregation points that are private to the telco. When their subscriber requests data from the CDN, the telco can find that content at a local infrastructure point and send it back to the subscriber. The data doesn’t need to aggregate on backhaul links, or ever reach a regional Internet hub. This approach is common. Cloudflare has hundreds of these deployments with telcos globally.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aElw5KpetUVQmQulidsWx/e6a5758002f88510e4d336029713ab89/5.png" alt="" class="kg-image" width="1600" height="1061" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aElw5KpetUVQmQulidsWx/35e2979b9d454f29c9ce012d2fd117a5/5.png" alt="" class="kg-image" width="1600" height="1061" loading="lazy">
 
 	</figure>
 	<p><i>Figure 4. A hypothetical example where a telco has deployed embedded caches from a video provider, removing the backhaul and aggregation of traffic across Internet exchange points</i></p>

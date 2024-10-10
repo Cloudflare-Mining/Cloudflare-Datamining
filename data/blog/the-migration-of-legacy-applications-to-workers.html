@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CiiwpLDvIDyqpsuuAMUqJ/acd29c3f91622a23350cac6401aaf8e7/Serverless-Week-Day-2_2x-1.png" alt="" class="kg-image" width="1600" height="814" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CiiwpLDvIDyqpsuuAMUqJ/880d971f2587fe65153b9e4826478647/Serverless-Week-Day-2_2x-1.png" alt="" class="kg-image" width="1600" height="814" loading="lazy">
 
 	</figure>
 	<p>As Cloudflare Workers, and other Serverless platforms, continue to drive down costs while making it easier for developers to stand up globally scaled applications, the migration of legacy applications is becoming increasingly common. In this post, I want to show how easy it is to migrate such an application onto Workers. To demonstrate, I’m going to use a common migration scenario: moving a legacy application — on an old compute platform behind a VPN or in a private cloud — to a serverless compute platform behind zero-trust security.</p>
@@ -128,7 +128,7 @@
 	<h4>Current State Application Architecture</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d6MEhUqu77DDapE41clZn/4535c396b06248d0ffe6b55b92f8f7bd/image4-9.png" alt="" class="kg-image" width="1597" height="659" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1d6MEhUqu77DDapE41clZn/dea420cdf5233fa5afd3f9b7aaa22280/image4-9.png" alt="" class="kg-image" width="1597" height="659" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -154,7 +154,7 @@
 	<h4>Target State Application Architecture</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XTQxjhc7V7BCNLD6OYtNu/e2d71de73dfa10a6685eb90e4f71fc4c/image3-15.png" alt="" class="kg-image" width="1737" height="766" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XTQxjhc7V7BCNLD6OYtNu/eec3260400209afbf1d7e56f0d753bc4/image3-15.png" alt="" class="kg-image" width="1737" height="766" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -170,19 +170,19 @@
 	<p>I open up a terminal and use <code>cloudflared tunnel login</code>, which presents me with an authentication flow. I then use the <code>cloudflared tunnel --hostname postprocess.kschwenkler.com --url localhost:8080</code> command to connect an Argo Tunnel between the “url” (my local server) and the “hostname” (the new, public address we will use on my Cloudflare zone).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HmHbX1sc9KoQHRihx36SP/746dbd70f805a55d5d0b9a15fb20f658/2.gif" alt="" class="kg-image" width="1400" height="763" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HmHbX1sc9KoQHRihx36SP/e1aba58bbdba9d7afe35a330c219cb5c/2.gif" alt="" class="kg-image" width="1400" height="763" loading="lazy">
 
 	</figure>
 	<p>Next I flip over to my Cloudflare dashboard, and attach an Access Policy to the “hostname” I specified before. We will be using the Service Token mode of Access; which generates a client-specific security token which that client can attach to each HTTP POST. Other modes are better suited to interactive browser use cases.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/343nkuLHV6Hro1OpA9ae6g/0e1d63dfdc7c77615b49a6d0186d43e8/3.gif" alt="" class="kg-image" width="1600" height="785" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/343nkuLHV6Hro1OpA9ae6g/8ff8045b063ecf3d5cc479782afbd819/3.gif" alt="" class="kg-image" width="1600" height="785" loading="lazy">
 
 	</figure>
 	<p>Now, without using the VPN, I can send a POST to the service, still running on Node.js on my laptop, from any Internet-connected device which has the correct token! It has taken only a few minutes to add zero-trust security to this application; and safely expose it to the Internet while still running on a legacy compute platform (my laptop!).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BYW2YOuW6EuHNgzM92W7i/97614b466ae09a9eb9ce0da0bf9c0f2e/4.gif" alt="" class="kg-image" width="1402" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BYW2YOuW6EuHNgzM92W7i/2de262828b7b10718f813274a15e46fc/4.gif" alt="" class="kg-image" width="1402" height="734" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -196,7 +196,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qYhPJkmdsepqfjMCytdnS/28c21ce7eef4b28ef6961068fd228977/image13.png" alt="" class="kg-image" width="1555" height="642" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qYhPJkmdsepqfjMCytdnS/6181df1c9920da0109d37cf3cc62049b/image13.png" alt="" class="kg-image" width="1555" height="642" loading="lazy">
 
 	</figure>
 	<p>Beyond the direct benefit of a huge security upgrade; we’ve also made our eventual application migration much easier, by putting the traffic through the target-state API gateway already. We will see later how we can surgically move traffic to the new application for testing, in this state.</p>
@@ -253,7 +253,7 @@ async function handleRequest(request) {
 	<p>Now we can simply run wrangler publish, to put our application on <a href="https://workers.dev">workers.dev</a> for testing! The Router template’s defaults; and the small edits made above, are all we need. Since Wrangler automatically exposes the test application to the Internet (note that we can *also* put the test application behind Access, with a slightly modified method), we can easily send test traffic from any device.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ikUB5oJkvyjkScPyyJ8PT/bb834f282678678e6363980283427441/5.gif" alt="" class="kg-image" width="1399" height="753" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ikUB5oJkvyjkScPyyJ8PT/3d4bad9f0b3fc2b9cb1d8bf115f900aa/5.gif" alt="" class="kg-image" width="1399" height="753" loading="lazy">
 
 	</figure>
 	<h4>Shift, Safely!</h4>
@@ -262,34 +262,34 @@ async function handleRequest(request) {
 	<h4>Seamless cutover from Transition to Target state</h4>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rYqzkjG8iwCxKPNYSbvTH/a55b5be9e1499ec9a623dfef8c713482/image14.png" alt="" class="kg-image" width="1999" height="1319" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rYqzkjG8iwCxKPNYSbvTH/fd7135b9281f04ae799205a7becb86e6/image14.png" alt="" class="kg-image" width="1999" height="1319" loading="lazy">
 
 	</figure>
 	<p>We simply modify <code>wrangler.toml</code> to indicate the production domain / route we’d like the application to operate on; and <code>wrangler publish</code>. As soon as Cloudflare receives this update; it will send production traffic to our new application instead of the Argo Tunnel. We have configured the application to send a ‘version’ header which lets us verify this easily using curl.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NNWzJ0Lf1qPBPQVGv6SpK/8dafefd471b1c508cce88dad8d8c0282/6.gif" alt="" class="kg-image" width="1600" height="826" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NNWzJ0Lf1qPBPQVGv6SpK/8365b2d8c6ff73ed042416398445fb7d/6.gif" alt="" class="kg-image" width="1600" height="826" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S3FRDRzxAL0M2JciODIkA/cf903061a8500b182b89897e6252f5b7/7.gif" alt="" class="kg-image" width="1600" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1S3FRDRzxAL0M2JciODIkA/76b7c2c9935629bee8c177d268d6237a/7.gif" alt="" class="kg-image" width="1600" height="250" loading="lazy">
 
 	</figure>
 	<p>Rollback, if it is needed, is also very easy. We can either set the <code>wrangler.toml</code> back to the workers.dev only mode, and <code>wrangler publish</code> again; or delete our route manually. Either will send traffic back to the Argo Tunnel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zkTHE7QsTycEDpCzOjCWL/966eb2941051a0fa32d07113a2c68655/8.gif" alt="" class="kg-image" width="1600" height="826" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zkTHE7QsTycEDpCzOjCWL/3522bdaf3498d5ab7fadc493fa7b7075/8.gif" alt="" class="kg-image" width="1600" height="826" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qYUySUW2sUik0WhhsOFiP/c50d0241de3cf2c8ea930df33c21e944/9.gif" alt="" class="kg-image" width="1600" height="432" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qYUySUW2sUik0WhhsOFiP/bf1e89e2a3c46fae2d9578ad1489882a/9.gif" alt="" class="kg-image" width="1600" height="432" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wlX569YmzRMhxjjgy7ZLm/f30e82b4953690a0b2fc800242343bb6/10.png" alt="" class="kg-image" width="1600" height="706" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wlX569YmzRMhxjjgy7ZLm/a199cd40004b09aa3734229bffd1012c/10.png" alt="" class="kg-image" width="1600" height="706" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

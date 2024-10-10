@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xMXmG8J4vPZGZZeB4f6sH/f61c619c0db891a1745dc5ebaa37953b/rpki-and-the-rtr-protocol.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xMXmG8J4vPZGZZeB4f6sH/5f081705f4f0110ecc572b56e1ceb9e7/rpki-and-the-rtr-protocol.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today’s Internet requires stronger protection within its core routing system and as we have already said: it's high time to stop BGP route leaks and hijacks by deploying operationally-excellent RPKI!</p>
 	<p>Luckily, over the last year plus a lot of good work has happened in this arena. If you’ve been following the growth of RPKI’s validation data, then you’ll know that more and more networks are signing their routes and creating ROA’s or Route Origin Authorizations. These are cryptographically-signed assertions of the validity of an announced IP block and contribute to the further securing of the global routing table that makes for a safer Internet.</p>
@@ -15,7 +15,7 @@
 	<p>The primary part of the RPKI (Resource Public Key Infrastructure) system is a cryptographically-signed database which is read and processed by a RPKI validator. The validator works with the published ROAs to build a list of validated routes. A ROA consists of an IP address block plus an ASN (Autonomous System Number) that together define who can announce which IP block.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yv4LlkdkAiIazOsWgJgx7/14aade918f406b9c1ebd7ff29d7e20d8/roas.png" alt="" class="kg-image" width="1381" height="789" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yv4LlkdkAiIazOsWgJgx7/8ae09ab6c5ad8e19787c06a23f6ad908/roas.png" alt="" class="kg-image" width="1381" height="789" loading="lazy">
 
 	</figure>
 	<p>After that step, it is then the job of that validator (or some associated software module) to communicate its list of valid routes to an Internet router. That’s where the RTR protocol (the RPKI to Router Protocol) comes in. Its job is to communicate between the validator and device in charge of allowing or rejecting routes in its table.</p>
@@ -38,7 +38,7 @@
 	<p>Cloudflare’s open-source software for RPKI validation also includes <a href="https://github.com/cloudflare/gortr">GoRTR</a>, an implementation of the RTR protocol. As mentioned, in Cloudflare’s operational model, we separate the validation (done with OctoRPKI) from the RTR process.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qSyBXe8BbiXvhAMRGwVAd/c019d7856e767576def7cd8ec333d413/octorpki-1.png" alt="" class="kg-image" width="1530" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qSyBXe8BbiXvhAMRGwVAd/25fe3a325ab4ae5ba4867e698fd64094/octorpki-1.png" alt="" class="kg-image" width="1530" height="768" loading="lazy">
 
 	</figure>
 	<p>RTR protocol implementations are also provided in other RPKI validation software packages. In fact, RPKI is unable to filter routes without the final step of running RTR (or something similar - should it exist). Here’s a current list of RPKI software packages that either validate or validate and run RTR.</p>
@@ -86,7 +86,7 @@
 	<p>The RTR protocol supports IPv4 and IPv6 routing information (as you would expect).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VXVQ9Ox0r0Xmhw6OxXQuD/0e0c74c5d6fd8c3008951ed3efdc8a30/rtr-ipv4-ipv6.png" alt="" class="kg-image" width="1475" height="806" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VXVQ9Ox0r0Xmhw6OxXQuD/4637bc72616546c90a6acce6b241e88a/rtr-ipv4-ipv6.png" alt="" class="kg-image" width="1475" height="806" loading="lazy">
 
 	</figure>
 	<p>Being specified as a lightweight protocol, RTR allows the data to be transferred quickly. With a session-id created by the RTR cache server plus serial-numbers exchanged between cache servers and routers, there’s the solid ability for route authentication data on the router to be kept fresh with a minimum amount of actual data being transferred. Remember, as we said above, the router has much better things to do with its control plane processor like running the BGP convergence algorithm, or SRv6, or ISIS, or any of the protocols needed to manage routing tables.</p>
@@ -196,7 +196,7 @@ $</code></pre>
 	<p>At the present time there’s an IETF proposal for RTR version 2. This is <a href="https://tools.ietf.org/html/draft-ymbk-8210bis-00">draft</a>, work alongside the ASPA (Autonomous System Provider Authorization) <a href="https://tools.ietf.org/html/draft-ietf-sidrops-aspa-verification-03">draft</a> and <a href="https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile-01">draft</a> work. These draft documents from Alexander Azimov et al. define ASPA extending the RPKI data structures to handle BGP path information. The version 2 of RTR protocol should provide the required messaging in order to move ASPA data into the router.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4V6DbOYRH1yqs94D1BcV0t/da0d00cad32a18bbd89e12838b8c3f5a/rtr-11-aspa.png" alt="" class="kg-image" width="1475" height="693" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4V6DbOYRH1yqs94D1BcV0t/ea1d01ecffbac001a59b69fac5e84971/rtr-11-aspa.png" alt="" class="kg-image" width="1475" height="693" loading="lazy">
 
 	</figure>
 	<p>Additionally, RPKI is going to potentially further expand, at some point, from today's singular data type (the ROA object). Just like with the ASPA draft, RTR will need to advance in lock-step. Hopefully the open-source code we have published will help this effort.</p>

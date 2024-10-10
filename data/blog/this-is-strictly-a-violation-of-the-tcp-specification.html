@@ -1,9 +1,9 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EyKRro7QD2kOp73vdKh1T/fd704d5548bd693b1921283005db8439/this-is-strictly-a-violation-of-the-tcp-specification.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EyKRro7QD2kOp73vdKh1T/7904808eb1ab43c91595108c5fc4eb53/this-is-strictly-a-violation-of-the-tcp-specification.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>I was asked to debug another weird issue on our network. Apparently every now and then a connection going through CloudFlare would time out with 522 HTTP error.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G5eLlitmSrxYlXxvBL47P/633b484673c3c10585c7b5e1e68e7a41/16132759228_7eed8f32d1_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G5eLlitmSrxYlXxvBL47P/3b7ccb5c5278e82642aa321fb89abd21/16132759228_7eed8f32d1_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/lclosicenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/cosmicherb70/16132759228">image</a> by Chris Combe</p>
@@ -34,7 +34,7 @@ connect(3, {sa_family=AF_INET, sin_port=htons(5000), sin_addr=inet_addr("127.0.0
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bdZxdRdturLuABS6ep2WV/abd52274674ab751aba466ed9543cad2/26449341072_009ae28070_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bdZxdRdturLuABS6ep2WV/c8fa6def43cc2ce57a89e2ee86508129/26449341072_009ae28070_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/akj1706/26449341072">image</a> by akj1706</p>
@@ -84,7 +84,7 @@ CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36536
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ts0oIJkae9HpoHZtvZAsf/5e500506ea1797a4f0965a8bfd094201/20147524535_8c6ac1c853_z.jpg" alt="" class="kg-image" width="640" height="424" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ts0oIJkae9HpoHZtvZAsf/b5a86e303739746bb9f5afecb8f2f90a/20147524535_8c6ac1c853_z.jpg" alt="" class="kg-image" width="640" height="424" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/sidelong/20147524535">image</a> by DaveBleasdale</p>
@@ -108,7 +108,7 @@ CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36536
 	<p>The root cause of the problem is definitely our application leaking sockets. The symptoms though, the connection timing out, are still unexplained.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SnoSfKadf8y4R4YJk1IYw/23f36e077abfbb1e84ab60b2bf78ebe2/Screen-Shot-2016-08-11-at-23-59-05-1.png" alt="" class="kg-image" width="530" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SnoSfKadf8y4R4YJk1IYw/0243e1e7d60760e303fcf65739137bcb/Screen-Shot-2016-08-11-at-23-59-05-1.png" alt="" class="kg-image" width="530" height="600" loading="lazy">
 
 	</figure>
 	<p>Time to raise the curtain of doubt. Here is what happens.</p>

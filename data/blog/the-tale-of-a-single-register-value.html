@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3l34KM4Sax8EgLid3Z9UbD/a003b8ac4086c3099966d335cec46968/The-tale-of-a-single-register-value-header-2.png" alt="The tale of a single register value" class="kg-image" width="1200" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3l34KM4Sax8EgLid3Z9UbD/1da800d62b2d0b9ff285b96c2b7bac00/The-tale-of-a-single-register-value-header-2.png" alt="The tale of a single register value" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
 	<blockquote>
@@ -31,7 +31,7 @@
 	<p>The crashed servers were leaving behind only a crash report, affectionately known as a “kernel oops”. Let’s take a look at it and go over what information we have there.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X4BpNNGAD1ZPfxBlb1o4T/f1f5b48598c3d3a43f039fc6698cfc54/oops-before-decode-white-bg.png" alt="kernel oops before decoding" class="kg-image" width="1920" height="1348" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X4BpNNGAD1ZPfxBlb1o4T/4a7cde352e376a1fe414d0e2923e3890/oops-before-decode-white-bg.png" alt="kernel oops before decoding" class="kg-image" width="1920" height="1348" loading="lazy">
 
 	</figure>
 	<p>Parts of the oops, like offsets into functions, need to be decoded in order to be human-readable. Fortunately Linux comes with the <code>decode_stacktrace.sh</code> script that did the work for us.</p>
@@ -45,7 +45,7 @@ $ ./decode_stacktrace.sh -r 5.4.14-cloudflare-2020.1.11 &lt; oops.txt &gt; oops-
 	<p>When decoded, the oops report is even longer than before! But that is a good thing. There is new information there that can help us.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1J7tFIHQHeUhXDkBLEWFth/c42f9684f0222b839ae6ed3c77cf770c/oops-after-decode-white-bg.png" alt="kernel oops after decoding" class="kg-image" width="1920" height="2365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1J7tFIHQHeUhXDkBLEWFth/fdde379245fe287ade67f07ccea9032e/oops-after-decode-white-bg.png" alt="kernel oops after decoding" class="kg-image" width="1920" height="2365" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -73,7 +73,7 @@ $ ./decode_stacktrace.sh -r 5.4.14-cloudflare-2020.1.11 &lt; oops.txt &gt; oops-
 	<p>The exact line where we crashed belongs to an if-branch that handles tunnel traffic. It calculates the length of the TCP header of the inner packet, that is the encapsulated one. We do that to compute the length of the outer L4 segment, which accounts for the inner packet length:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5f4jCCQGws5d2j7iRB8Duo/e622a6437081ae2ffa1a7f54e73162ff/image3-9.png" alt="" class="kg-image" width="601" height="223" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5f4jCCQGws5d2j7iRB8Duo/434ac3684fedde0c205d267072173afa/image3-9.png" alt="" class="kg-image" width="601" height="223" loading="lazy">
 
 	</figure>
 	<p>To understand how the length of the inner TCP header is computed we have to peel off a few layers of inlined function calls:</p>
@@ -207,7 +207,7 @@ RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900</code></pre>
 	<p>It is time to take a look at the call trace in the oops report. If we walk through it, it is apparent that a veth device received a packet. The packet then got routed and forwarded to some other network device. The kernel crashed before the egress device transmitted the packet out.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/30cfhDbkYftnpJA2cU0q6W/c7c536d321ac54710345dc2028e12f67/image4-2.png" alt="" class="kg-image" width="802" height="242" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30cfhDbkYftnpJA2cU0q6W/8fa1d2db7aac9a171b82e987849bc3b1/image4-2.png" alt="" class="kg-image" width="802" height="242" loading="lazy">
 
 	</figure>
 	<p>What immediately draws our attention is the <code>veth_poll()</code> function in the call trace. Polling inside a virtual device that acts as a simple pipe joining two network namespaces together? Puzzling!</p>
@@ -216,7 +216,7 @@ RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900</code></pre>
 	<p>The NAPI receive path in the <code>veth</code> driver is taken only when there is an XDP program attached. The fork occurs in <a href="https://elixir.bootlin.com/linux/v5.4.14/source/drivers/net/veth.c#L228"><code>veth_forward_skb</code></a>, where the TX path ends and a RX path on the other side begins.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qHZ8EKuRnrslIiRz0Bj2L/adf6ee8bb44f5ddf372769a8f852b1e4/image9-4.png" alt="" class="kg-image" width="1162" height="402" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qHZ8EKuRnrslIiRz0Bj2L/18a0101bec28d22c5bead91f3306b8a2/image9-4.png" alt="" class="kg-image" width="1162" height="402" loading="lazy">
 
 	</figure>
 	<p>This is an important observation because only on the NAPI/XDP path in the <code>veth</code> driver, received packets might get aggregated by the <a href="https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/#generic-receive-offloading-gro">Generic Receive Offload</a>.</p>
@@ -237,7 +237,7 @@ RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900</code></pre>
 	<p>I will be frank. The code that performs GRO is pretty complex, and I spent a significant amount of time staring into it. Hat tip to its authors. However, for our little investigation it will be enough to understand that a TCP stream encapsulated with <a href="https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation">GRE</a>1 would trigger callback chain like so:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qEZv8Xq8brXJwmOplw0HA/990a338b498fbbf7bbe21a19d580a722/image11-3.png" alt="GRO walks the headers to check if packets can be merged." class="kg-image" width="1562" height="1142" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qEZv8Xq8brXJwmOplw0HA/38715e0e84c5fa98bc931faff8d47942/image11-3.png" alt="GRO walks the headers to check if packets can be merged." class="kg-image" width="1562" height="1142" loading="lazy">
 
 	</figure>
 	<p>Armed with basic GRO/GSO understanding we are ready to take a shot at reproducing the crash.</p>
@@ -273,7 +273,7 @@ RDX: ffff9d9624babec0 RSI: 000000000000feda RDI: ffff9d982becc900</code></pre>
 	<p>This paints a pretty clear picture on what the setup should look like:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tj05SVdRlQaspSaW0DO9J/7dd93927a06b01cf0d431c6dc80948e7/image6-4.png" alt="We have crashed on egress when transmitting forwarded GSO packet." class="kg-image" width="1902" height="430" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tj05SVdRlQaspSaW0DO9J/fff7b814e502dac66eee59a78a53f4d1/image6-4.png" alt="We have crashed on egress when transmitting forwarded GSO packet." class="kg-image" width="1902" height="430" loading="lazy">
 
 	</figure>
 	<p>We can work with that. A <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-10-gso-encap-crash/setup.sh">simple shell script</a> will be our setup machinery.</p>
@@ -322,7 +322,7 @@ sink 2936 270 290 1   294 254  |  1436 2    0x41 skb_gso_transport_seglen</code>
 	<p>The surprise comes last. The inner transport header offset points somewhere near the end of headroom which XDP reserves. Instead, it should start at 314, following the inner IPv4 header.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cyux0UKvxGzmBEfxSh6Pf/0c5a046ce601110307aad23ad25c736e/image10-6.png" alt="Header offsets" class="kg-image" width="1864" height="310" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cyux0UKvxGzmBEfxSh6Pf/40835a4882e722a2f530bd6b4920159e/image10-6.png" alt="Header offsets" class="kg-image" width="1864" height="310" loading="lazy">
 
 	</figure>
 	<p>Is this the smoking gun we were looking for?</p>
@@ -344,14 +344,14 @@ Attaching 1 probe...
 	<p>If we map it out, it looks like we are loading part of the source MAC address (upper 4 bits of the 5th byte, to be precise) and interpreting it as TCP Data Offset.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EPmlwZGRF0Yeykmr4gHPu/655ea0a1198a76eefbadae8fb1be9562/image5-4.png" alt="" class="kg-image" width="1100" height="319" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EPmlwZGRF0Yeykmr4gHPu/ff8c21aa49c9b7f3090e1160db1d09cb/image5-4.png" alt="" class="kg-image" width="1100" height="319" loading="lazy">
 
 	</figure>
 	<p>Are we? There is an easy way to check.</p>
 	<p>If we ask nicely, <code>tcpdump</code> will tell us what the MAC addresses are:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6m1WVc1zTBaEVPTQLqLbz2/bd04e59141145fd028c988eb5d3352f0/Screenshot-2021-11-03-at-14-57-51-The-tale-of-a-single-register-value---Blog-Drafts-documentation.png" alt="" class="kg-image" width="685" height="102" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6m1WVc1zTBaEVPTQLqLbz2/e99c5754c25cccde322c54787fc0b719/Screenshot-2021-11-03-at-14-57-51-The-tale-of-a-single-register-value---Blog-Drafts-documentation.png" alt="" class="kg-image" width="685" height="102" loading="lazy">
 
 	</figure>
 	<p>Plugging that into the calculations that <code>skb_gso_transport_seglen()</code> …</p>
@@ -377,7 +377,7 @@ Attaching 1 probe...
 	<p>However, the address we were trying to read was <code>(0xfffc+12)/4096 ~= 16 pages</code> (or 64 KiB) past the <code>skb-&gt;head</code> page boundary <code>(0xffff9d9624babfff)</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69J4h6qU3nC1rv0Pvypxng/7b3270c2bbdcb1391ad8516e908312ca/image7-5.png" alt="Faulty read from an address beyond the packet data" class="kg-image" width="346" height="291" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69J4h6qU3nC1rv0Pvypxng/870bcf91eee6b65ecbacf76fab8b207b/image7-5.png" alt="Faulty read from an address beyond the packet data" class="kg-image" width="346" height="291" loading="lazy">
 
 	</figure>
 	<p>Who knows if there was memory mapped to this address?! Looks like from time to time there wasn’t anything mapped there and the kernel page fault handling code went “oops!”.</p>

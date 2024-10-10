@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sAqx5qSgmjeoBYdvwQ5mS/39c569633a6713414227680a585e9e40/image2-11.png" alt="Supporting Postgres Named Prepared Statements in Hyperdrive" class="kg-image" width="1800" height="647" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sAqx5qSgmjeoBYdvwQ5mS/2288d893764028e86bee5cb801d8aff0/image2-11.png" alt="Supporting Postgres Named Prepared Statements in Hyperdrive" class="kg-image" width="1800" height="647" loading="lazy">
 
 	</figure>
 	<p>Hyperdrive (Cloudflare’s globally distributed SQL connection pooler and cache) recently added support for Postgres protocol-level named prepared statements across pooled connections. Named prepared statements allow Postgres to cache query execution plans, providing potentially substantial performance improvements. Further, many popular drivers in the ecosystem use these by default, meaning that not having them is a bit of a footgun for developers. We are very excited that Hyperdrive’s users will now have access to better performance and a more seamless development experience, without needing to make any significant changes to their applications!</p>
@@ -57,7 +57,7 @@ let [{ a, b, c, id }] = await sql`SELECT a, b, c, id FROM hyper_test WHERE id = 
 	<p>So the basic query from our code above looks like this from a message perspective:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ztflSTbecT9o4QU3YLDW3/10210722d12dc619e3cd7c7333fa1ef2/unnamed-4.png" alt="" class="kg-image" width="590" height="529" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ztflSTbecT9o4QU3YLDW3/4ee2003396e5b15a15dd2cb63cdd2711/unnamed-4.png" alt="" class="kg-image" width="590" height="529" loading="lazy">
 
 	</figure>
 	<p>A <a href="https://www.postgresql.org/docs/current/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY">more complete description</a> and the <a href="https://www.postgresql.org/docs/current/protocol-message-formats.html">full structure of each message type</a> are well described in the Postgres documentation.</p>
@@ -125,25 +125,25 @@ let [{ a, b, c, id }] = await sql`SELECT a, b, c, id FROM hyper_test WHERE id = 
 	<p>A <i>Parse</i> with a cache hit is the easiest path to address, as we don't need to do anything special. We use the messages sent as a cache key, and serve the results back to the client. We will still keep the <i>Parse</i> in our <i>HashMap</i> in case we want it later (#2 below), but otherwise we're good to go.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33CSY4vk0u6lYLkKBRW7XH/dfe9e5406462d9e274cc34787135ea78/unnamed--1--4.png" alt="" class="kg-image" width="1041" height="417" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33CSY4vk0u6lYLkKBRW7XH/291ea17f55196c35caee8d29d0f733a6/unnamed--1--4.png" alt="" class="kg-image" width="1041" height="417" loading="lazy">
 
 	</figure>
 	<p>A <i>Parse</i> with a cache miss is a bit more complicated, as now we need to send these messages to the origin server. We take a connection at random from our pool and do so, passing the results back to the client. With that, we've begun to make changes to session state such that all our database connections are no longer identical to each other. To keep track of what we've done to muddy up our state, we keep a <i>LruCache</i> on each connection of which statements it already has prepared. In the case where we need to evict from such a cache, we will also <i>DEALLOCATE</i> the statement on the connection to keep things tracked correctly.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NFnGuHT6uAmr2dMRdp41m/c47234538616751c014974a5f22e4ad1/unnamed--2--2.png" alt="" class="kg-image" width="1268" height="735" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NFnGuHT6uAmr2dMRdp41m/a95422a38aa44e7720cbdcca7bd73513/unnamed--2--2.png" alt="" class="kg-image" width="1268" height="735" loading="lazy">
 
 	</figure>
 	<p>Reuse with a cache hit is yet more tricky, but still straightforward enough. In the example below, we are sent a <i>Bind</i> with the same parameters twice (#1 and #9). We must identify that we received a <i>Bind</i> without a preceding <i>Parse</i>, we must go retrieve that <i>Parse</i> (#10), and we must use the information from it to build our cache key. Once all that is accomplished, we can serve our results from cache, needing only to trim out the <i>ParseComplete</i> within the cached results before returning them to the client.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ksUndQnXpbjzu6Ggm3veo/3a74a3704d74adfb03cbd570d018fa8c/unnamed--3--2.png" alt="" class="kg-image" width="1326" height="1135" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ksUndQnXpbjzu6Ggm3veo/9fa185c8c8a26829a1c4894efd24ccaa/unnamed--3--2.png" alt="" class="kg-image" width="1326" height="1135" loading="lazy">
 
 	</figure>
 	<p>Reuse with a cache miss is the hardest scenario, as it may require us to lie in both directions. In the example below, we cache results for one set of parameters (#8), but are sent a <i>Bind</i> with different parameters (#9). As in the cache hit scenario, we must identify that we were not sent a <i>Parse</i> as part of the current message sequence, retrieve it from our <i>HashMap</i> (#10), and build our cache key to GET from cache and confirm the miss (#11). Once we take a connection from the pool, though, we then need to check if it already has the statement we want prepared. If not, we must take our saved <i>Parse</i> and prepend it to our message log to be sent along to the origin database (#13). Thus, what the server receives looks like a perfectly valid <i>Parse-Bind-Execute-Sync</i> sequence. This is where our <i>VecDeque</i> (mentioned above) comes in, as converting our message log to that structure allowed us to very ergonomically make such changes without needing to rebuild the whole byte sequence. Once we receive the response from the server, all that's needed is to trim out the initial <i>ParseComplete</i> response from the server, as a well-made client would likely be very confused receiving such a response to a <i>Parse</i> it didn't send. With that message trimmed out, however, the client is in the position of getting exactly what it asked for, and both sides of the conversation are happy.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lWQHcpash88r4sjmT3Thq/87b3d30e7c699da4f7fd3a656bbbfcc8/unnamed--4--1.png" alt="" class="kg-image" width="1326" height="1405" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lWQHcpash88r4sjmT3Thq/993c69dfe03c4a8bb0c4e472df2b4a7a/unnamed--4--1.png" alt="" class="kg-image" width="1326" height="1405" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

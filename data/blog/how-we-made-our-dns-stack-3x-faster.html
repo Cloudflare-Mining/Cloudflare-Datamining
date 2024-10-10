@@ -1,16 +1,16 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2u96b2I2bsCKAU3m3Ta1aU/81fea86dd3d286aa13161cff060fd724/how-we-made-our-dns-stack-3x-faster.jpg" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2u96b2I2bsCKAU3m3Ta1aU/8254af85be557f662423ad9c0f17936e/how-we-made-our-dns-stack-3x-faster.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare is now well into its 6th year and providing authoritative DNS has been a core part of infrastructure from the start. We’ve since grown to be the largest and one of the fastest managed DNS services on the Internet, hosting DNS for nearly 100,000 of the <a href="https://www.datanyze.com/market-share/dns/Alexa%20top%201M">Alexa top 1M sites</a> and over 6 million other web properties – or DNS zones.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6k94yrsuPlbsjgsmuf9tVF/5a8e4d661a6761404fc936a23381f00c/8159769501_c2026331b8_k.jpg" alt="Space Shuttle Main Engine SSME" class="kg-image" width="2048" height="1343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k94yrsuPlbsjgsmuf9tVF/e6f7de37d5e1a03b66333b72cd60092e/8159769501_c2026331b8_k.jpg" alt="Space Shuttle Main Engine SSME" class="kg-image" width="2048" height="1343" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a> <a href="https://flic.kr/p/dr3Xc4">image</a> by <a href="https://www.flickr.com/photos/jurvetson">Steve Jurvetson</a></p>
 	<p>Today Cloudflare’s DNS service answers around 1 million queries per second – not including attack traffic – via a global anycast network. Naturally as a growing startup, the technology we used to handle tens or hundreds of thousands of zones a few years ago became outdated over time, and couldn't keep up with the millions we have today. Last year we decided to replace two core elements of our DNS infrastructure: the part of our DNS server that answers authoritative queries and the data pipeline which takes changes made by our customers to DNS records and distributes them to our edge machines across the globe.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9rXGrQRlGmIWAfKr8oM2D/798bfa282d75bee56d3dd5b5644b1de5/data-flow-3.png" alt="DNS Data Flow" class="kg-image" width="1230" height="320" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9rXGrQRlGmIWAfKr8oM2D/f85999d6398fba0c3627c9ea7c6746a6/data-flow-3.png" alt="DNS Data Flow" class="kg-image" width="1230" height="320" loading="lazy">
 
 	</figure>
 	<p>The rough architecture of the system can be seen above. We store customer DNS records and other origin server information in a central database, convert the raw data into a format usable by our edge in the middle, and then distribute it to our <a href="https://www.cloudflare.com/network">&gt;100 data centers</a> (we call them PoPs - Points of Presence) using a KV (key/value) store.</p>
@@ -45,7 +45,7 @@
 	<p>MessagePack also performs incredibly well compared to other formats on the market. Here’s an excerpt <a href="https://github.com/alecthomas/go_serialization_benchmarks#results">from a Go serialization benchmarking test</a>; we can see that on top of the other reasons MessagePack benefits our stack, it outperforms pretty much every other viable cross-platform option.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AlursaqXqiLWWVYqmCZV/c4ebd2cb8f333546813c52a2c6912411/unmarshal.png" alt="Benchmark Results Table" class="kg-image" width="1234" height="680" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AlursaqXqiLWWVYqmCZV/7b618379c494fd0ec48f5b8dc1de3e7c/unmarshal.png" alt="Benchmark Results Table" class="kg-image" width="1234" height="680" loading="lazy">
 
 	</figure>
 	<p>One unexpected surprise after switching to this new model was that we actually reduced the space required to store the data at the edge by around 9x, which was a significantly higher saving compared to our initial estimates. It just goes to show how much impact a bloated data model can have on a system.</p>
@@ -64,13 +64,13 @@
 	<p>In this time frame we can see there were a couple of incidents where delays of a few minutes were visible for a small number of PoPs due to network connectivity, but generally all probes reported stable propagation times.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3b39QD2BNytbKhSVw2eFVp/f1151b1b9edc0e08dbde14dad69af4d8/drift-ok-2.png" alt="Zone Propagation Drift" class="kg-image" width="1806" height="626" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3b39QD2BNytbKhSVw2eFVp/f9e4a87160f66595c3b2de54984d0ef5/drift-ok-2.png" alt="Zone Propagation Drift" class="kg-image" width="1806" height="626" loading="lazy">
 
 	</figure>
 	<p>In contrast, here’s a graph of the old data pipeline for the same period. We can see how the graph represents the growing delay in visible changes for all PoPs at any given time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XyhiYnT2kz0pM2PJygck4/f0e9f18a7ce71654ad539da1d30a5fc5/drift-delayed-1.png" alt="Late Zone Propagation Drift" class="kg-image" width="1806" height="630" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XyhiYnT2kz0pM2PJygck4/8f4a2a772597b3a64dd04110e1e1611d/drift-delayed-1.png" alt="Late Zone Propagation Drift" class="kg-image" width="1806" height="630" loading="lazy">
 
 	</figure>
 	<p>With a new data model designed and ready to go, one that better matched our query patterns, we set out implementing a new service to pick up changes to our zones in the central data store, do any needed processing and send the resulting output to our KV store.</p>
@@ -82,7 +82,7 @@
 	<p>The results with the new filter have been great: we’re able to respond to DNS queries on average 3x faster than before, which is excellent news for our customers and improves our ability to mitigate large DNS attacks. We can see here that as the percentage of zones migrated increased, we saw a significant improvement in our average response time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/m0Z5sDnulTMQHBtjLDLm7/1dea8cf6fea00f9f5464d31cdc9ada3e/grafana-rrdns-response.png" alt="rrdns Response Time 60d" class="kg-image" width="1588" height="518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/m0Z5sDnulTMQHBtjLDLm7/89c4749f7a7855ecf1ad8330957b4869/grafana-rrdns-response.png" alt="rrdns Response Time 60d" class="kg-image" width="1588" height="518" loading="lazy">
 
 	</figure>
 	<h4>Replacing the wings while flying</h4>
@@ -92,7 +92,7 @@
 	<p>Once we got going we were safely migrating zones at several hundred thousand per day, and we kept a close eye on how far we were from our initial goal of 99%. The last mile is still in progress, as there is often an element of customer engagement for some complex configurations that need attention.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54cH2meY3F08ohfUhEtcp0/4e00faa38eea273f85391c36a6df0ec0/migrated-zones-1.png" alt="Zone Migration Chart" class="kg-image" width="1786" height="636" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54cH2meY3F08ohfUhEtcp0/0c9b43f28c798738b67d49ca2b2f7a11/migrated-zones-1.png" alt="Zone Migration Chart" class="kg-image" width="1786" height="636" loading="lazy">
 
 	</figure>
 	<h4>What did we gain?</h4>

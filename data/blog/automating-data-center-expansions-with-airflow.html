@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IFNa9W7ikcSbNe9onlqVD/4585cb9b03a0be5b923e33a3879207e1/automating-data-center-expansions-with-airflow.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IFNa9W7ikcSbNe9onlqVD/4758a38358bf918aa366283a60c17d7b/automating-data-center-expansions-with-airflow.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare’s network keeps growing, and that growth doesn’t just come from building new data centers in new cities. We’re also upgrading the capacity of existing data centers by adding newer generations of servers — a process that makes our network safer, faster, and more reliable for our users.</p>
 	<p>Connecting new Cloudflare servers to our network has always been complex, in large part because of the amount of manual effort that used to be required. Members of our Data Center and Infrastructure Operations, Network Operations, and Site Reliability Engineering teams had to carefully follow steps in an extremely detailed standard operating procedure (SOP) document, often copying command-line snippets directly from the document and pasting them into terminal windows.</p>
@@ -87,7 +87,7 @@
 	<p>In order for PraaS to be able to accept human inputs, we’ve written a separate DAG we call our DAG Manager. Whenever we need to submit input back to a running expansion DAG, we simply trigger the DAG Manager and pass in our input as a JSON configuration, which will then be processed accordingly and submit the input back to the expansion DAG.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1y5JUysuUMGAzvWpiPEb4G/719381401f49dfd736a33ef68a2b16f9/image2-20.png" alt="" class="kg-image" width="1116" height="1034" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y5JUysuUMGAzvWpiPEb4G/162771c50b9be51d4a496cc0aa019c4c/image2-20.png" alt="" class="kg-image" width="1116" height="1034" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -122,7 +122,7 @@ evaluate_ecmp_management</code></pre>
 	<p>The Helper DAG comprises logic that allows us to mimic a “for loop” by having the DAG respawn itself if needed, technically doing cycles. If you recall, a DAG is acyclic, but we have some tasks in our workflow that require us to do complex loops and are solved by using a helper DAG.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JEhMEgEZswPJWxkgSAtck/20c963b2e0f13464cb56e162515f5e85/image3-31.png" alt="" class="kg-image" width="1117" height="932" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JEhMEgEZswPJWxkgSAtck/11453cefd2e4c6543181bdf241c9d2ea/image3-31.png" alt="" class="kg-image" width="1117" height="932" loading="lazy">
 
 	</figure>
 	<p>We designed reusable DAGs early on, which allowed us to build complex automation workflows from separable DAGs, each of which handles distinct and well-defined tasks. Each data center DAG could easily reuse other DAGs by triggering them programmatically.</p>
@@ -143,7 +143,7 @@ evaluate_ecmp_management</code></pre>
 	<p>Following the software design principle called DRY (Don’t Repeat Yourself), and inspired by the Factory Method design pattern in programming, we’ve instead written both phase 1 and phase 2 DAGs in a way that allow them to dynamically create multiple different DAGs with exactly the same tasks, and to fully reuse the exact same code. As a result, we only maintain one code base, and as we add new data centers, we are also able to generate a DAG for each new data center instantly, without writing a single line of code.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32tu5HSvTbXRo6yrRAqlq9/2058145e4d7c1f97f19a6a691055a43c/image1-37.png" alt="" class="kg-image" width="1116" height="927" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32tu5HSvTbXRo6yrRAqlq9/dff87e0fd133a1b8ce83b49ef616e0c3/image1-37.png" alt="" class="kg-image" width="1116" height="927" loading="lazy">
 
 	</figure>
 	<p>And Airflow even made it easy to put a simple customized web UI on top of the process, which made it simple to use by more employees who didn’t have to understand all the details.</p>

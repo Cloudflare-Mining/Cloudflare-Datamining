@@ -1,24 +1,24 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ffOdpvrWFOm0KAFMjihfO/046e04a4760d3f88c619f4cda337030b/aes-cbc-going-the-way-of-the-dodo.jpg" alt="">
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ffOdpvrWFOm0KAFMjihfO/2289fa2c3b7028982b58fac36cf9ecb2/aes-cbc-going-the-way-of-the-dodo.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A little over a year ago, Nick Sullivan <a href="https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites">talked about</a> the beginning of the end for AES-CBC cipher suites, following a plethora of attacks on this cipher mode.</p>
 	<p>Today we can safely confirm that this prediction is coming true, as for the first time ever the share of AES-CBC cipher suites on Cloudflare’s edge network dropped below that of <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20-Poly1305</a> suites, and is fast approaching the 10% mark.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Nlmap0WYRSOk7Y2UdI8ww/42a741c24d6be304cc310c89fec823c9/153059715_fad3b8be43_z.jpg" alt="" class="kg-image" width="637" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Nlmap0WYRSOk7Y2UdI8ww/f73d5e7ed173d992dc36ae3f0c9d2579/153059715_fad3b8be43_z.jpg" alt="" class="kg-image" width="637" height="640" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/andreweason/153059715/in/photolist-ewtjB-4DuF2q-7nWzyC-54VpEC-piTG3-e9gFka-47jfK-47jfh-47jfC-47jfq-47jf5-54VpFf-gTEbKu-54VpDJ-KvpMZH-47iKQ-7527ue-49Y6Z6-7dcwjq-6kGs2K-kmBTE-8vEFRq-4NfTAs-5AXLyv-qCxMrX-6Th9Ds-7oN3Zc-59wsSQ-5vyf5e-qHrCWQ-JWpMjc-4BqcyP-qFe6ky-aH51WB-7zxqQ-dsFacY-7uv9Qi-4PMzMv-9WUNfe-7yZJHo-9xVWK-sfqKtc-eHEhYe-qpiFHG-apXNix-9tnNDQ-7jdmAj-8Bwgp7-8UsZhm-55ke5e">image</a> by <a href="https://www.flickr.com/photos/andreweason">aesop</a></p>
 	<p>Over the course of the last six months, AES-CBC shed more than 33% of its “market” share, dropping from 20% to just 13.4%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gz1nglJIcaJvAFH5DHWJs/561649ee32ec453d1d86152e9d8698a6/cipher-ms.png" alt="Ciphers" class="kg-image" width="1762" height="940" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gz1nglJIcaJvAFH5DHWJs/e32c986781b4f816b3edd4301129564a/cipher-ms.png" alt="Ciphers" class="kg-image" width="1762" height="940" loading="lazy">
 
 	</figure>
 	<p>All of that share, went to AES-GCM, that currently encrypts over 71.2% of all connections. <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20-Poly1305</a> is stable, with 15.3% of all connections opting for that cipher. Surprisingly 3DES is still around, with 0.1% of the connections.</p>
 	<p>The internal AES-CBC cipher suite breakdown as follows:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yeTAZ34KUHiQXPku20xEF/ceaccf9b7d9b190e16c7275b9031963e/CBC.png" alt="CBC" class="kg-image" width="1602" height="1149" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yeTAZ34KUHiQXPku20xEF/70eb66c65844ca1a6bd5344169bd65f8/CBC.png" alt="CBC" class="kg-image" width="1602" height="1149" loading="lazy">
 
 	</figure>
 	<p>The majority of AES-CBC connections use ECDHE-RSA or RSA key exchange, and not ECDHE-ECDSA, which implies that we mostly deal with older clients.</p>
@@ -34,7 +34,7 @@
 	<p>Although 2048-bit RSA is not broken, it is generally considered less secure than 256-bit ECDSA, and is significantly slower to boot.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tro9KjStX75FiUaOngQZ/97b8822e40abe2ea0ff54f44f714a9c9/signature.png" alt="signatures" class="kg-image" width="1762" height="940" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Tro9KjStX75FiUaOngQZ/03c7701079026f519e5a2bdaad669ce8/signature.png" alt="signatures" class="kg-image" width="1762" height="940" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

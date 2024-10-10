@@ -1,4 +1,4 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52eWtOy0Q8BkS4fQzHVXJZ/f379e3aedb2bfeb592f4db4295696651/subdomains-vs-subdirectories-improved-seo-part-2.jpg" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52eWtOy0Q8BkS4fQzHVXJZ/1549609e53a7f9cbe4d555ac982726db/subdomains-vs-subdirectories-improved-seo-part-2.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<h4>Recap</h4>
 	<p>In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1">Part 1</a>, the merits and tradeoffs of <i>subdirectories</i> and <i>subdomains</i> were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <i>keyword</i> and <i>backlink dilution</i>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
@@ -18,7 +18,7 @@ const myBlog = {
 	<p>The script will proxy traffic from <code>myBlog.targetSubdirectory</code> to Bob's hosted Ghost endpoint, <code>myBlog.hostname</code>. &nbsp;We'll talk about <code>myBlog.assetsPathnames</code> a little later.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4euHWaCm0YKJDnMpWIsFy9/b669d8d42d88e33b51bab3c38f52c2c9/Screen-Shot-2019-01-27-at-2.47.39-PM.png" alt="" class="kg-image" width="2000" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4euHWaCm0YKJDnMpWIsFy9/90cb71bf33f1637863413a04af86f5e4/Screen-Shot-2019-01-27-at-2.47.39-PM.png" alt="" class="kg-image" width="2000" height="645" loading="lazy">
 
 	</figure>
 	<p>Requests are proxied from bobtopia.com/articles to bobtopia.coolghosthost.com (Uh oh... is because the hosted Ghost blog doesn't actually exist)</p>
@@ -66,7 +66,7 @@ if ([myBlog.assetsPathnames].some(requestMatches)) {
 	<p>This similarly shaped block checks if the request matches any pathnames enumerated in <code>myBlog.assetPathnames</code> and fetches the assets required to fully render the page. &nbsp;Assets happen to live in <i>/public</i> and <i>/assets</i> on a Ghost blog. &nbsp;You'll be able to identify your assets directories when you <code>fetch</code> the HTML and see logs for scripts, images, and stylesheets.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/333FXL8DTk3xbnNH3CDM2G/778a48d3d76fbda9e26ae712ab06b3f5/Screen-Shot-2019-01-27-at-5.51.44-PM.png" alt="" class="kg-image" width="2464" height="760" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/333FXL8DTk3xbnNH3CDM2G/9818beae76d36f64663d71a99e41fcb1/Screen-Shot-2019-01-27-at-5.51.44-PM.png" alt="" class="kg-image" width="2464" height="760" loading="lazy">
 
 	</figure>
 	<p>Logs show the various scripts and stylesheets required by Ghost live in <i>/assets</i> and <i>/public</i></p>

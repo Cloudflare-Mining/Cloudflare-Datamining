@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WT0OzykEX9fSzalaoD8GP/bdd61dc8b3742223467ef6fc23449062/image4-14.png" alt="Zaraz use Workers to make third-party tools secure and fast" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WT0OzykEX9fSzalaoD8GP/138b4dab26180f9995f46a9172708078/image4-14.png" alt="Zaraz use Workers to make third-party tools secure and fast" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>We decided to create Zaraz around the end of March 2020. We were working on another product when we noticed everyone was asking us about the performance impact of having many third-parties on their website. Third-party content is an important part of the majority of websites today, powering analytics, chatbots, conversion pixels, widgets — you name it. The definition of third-party is an asset, often JavaScript, hosted outside the primary site-user relationship, that is not under the direct control of the site owner but is present with ‘approval’. <a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools">Yair wrote in detail about the process of measuring the impact of these third-party tools, and how we pivoted our startup</a>, but I wanted to write about how we built Zaraz and what it actually does behind the scenes.</p>
@@ -34,7 +34,7 @@ ga('send', 'pageview');
 	<p>The reality is that the vast majority of tools consist of more than one resource file, and that it’s practically impossible to know in advance what a tool is going to load without testing it on your website. You can use <a href="https://requestmap.webperf.tools">Request Map Generator</a> to get a visual representation of all the resources loaded on your website, including how they call each other. Below is a Request Map of a demo e-commerce website we created:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6d0x1iH8o1cnjj1qJkJXt2/79fdcfbd972ee6ba2a4bf2185fe82f58/image6-6.png" alt="a chart showing all the resources fetched when downloading an example website. The map shows how one resource can end up in a chain of other external resources, that are often coming from untrusted servers and responding with very large payloads." class="kg-image" width="1999" height="1066" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6d0x1iH8o1cnjj1qJkJXt2/9cf3432bf125d8e6cd4bee4136a6d633/image6-6.png" alt="a chart showing all the resources fetched when downloading an example website. The map shows how one resource can end up in a chain of other external resources, that are often coming from untrusted servers and responding with very large payloads." class="kg-image" width="1999" height="1066" loading="lazy">
 
 	</figure>
 	<p>That big blue circle is our website’s resources, and all other circles are third-party tools. You can see how the big green circle is actually a sub-request of the main Facebook pixel (fbevents.js), and how many tools, like LinkedIn on top right, are creating a redirect chain in order to sync some data, on the expense of forcing the browser to make more and more network requests.</p>
@@ -62,7 +62,7 @@ ga('send', 'pageview');
 	<p>When you configure a third-party tool through a normal tag manager, a lot happens in the browsers of your visitors which is out of your control. The tag manager will load and then evaluate all trigger rules to decide which tools to load. It would then usually append the script tags of those tools to the DOM of the page, making the browser fetch the scripts and execute them. These scripts come from untrusted or unknown origins, increasing the risk of malicious code execution in the browser. They can also block the browser from becoming interactive until they are completely executed. They are generally free to do whatever they want in the browser, but most commonly they would then collect some information and send it to some endpoint on the third-party server. With Zaraz, the browser essentially does none of that.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FfeOuSS5KXe1m3JtPX8LB/9ba7ae677e861d6c3227def9f1246a02/BLOG-713---Pageload.png" alt="" class="kg-image" width="1800" height="1640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FfeOuSS5KXe1m3JtPX8LB/9c7de59bbd06987f1f2a9b9fdac17df0/BLOG-713---Pageload.png" alt="" class="kg-image" width="1800" height="1640" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -187,7 +187,7 @@ async function handleRequest(request) {
 	<p>This is different from how traditional tag managers work: GTM’s <code>dataLayer.push</code> serves a similar purpose, but is evaluated client-side. The result is that GTM itself, when used intensively, will grow its script so much that it can become the heaviest tool a website loads. Each event sent using <code>dataLayer.push</code> will cause repeated evaluation of code in the browser, and each tool that will match the evaluation will execute code in the browser, and might call more external assets again. As these events are usually coupled with user interactions, this often makes interacting with a website feel slow, because running the tools is occupying the main thread. With Zaraz, these tools exist and are evaluated only at the edge, improving the website’s speed and security.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zfeXBueyJMyduWMF5VzXv/e7292630ebba710daa53a02d9a696d26/unnamed-7.png" alt="" class="kg-image" width="1600" height="1512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zfeXBueyJMyduWMF5VzXv/37af1f8270a57bab5edaad333ed6ff85/unnamed-7.png" alt="" class="kg-image" width="1600" height="1512" loading="lazy">
 
 	</figure>
 	<p>You don’t have to be coder to use triggers. The Zaraz dashboard allows you to choose from a predefined set of templates like click listeners, scroll events and more, that you can attach to any element on your website without touching your code. When you combine <code>zaraz.track()</code> with the ability to program your own tools, what you get is essentially a one-liner integration of Workers into your website. You can write any backend code you want and Zaraz will take care of calling it exactly at the right time with the right parameters.</p>

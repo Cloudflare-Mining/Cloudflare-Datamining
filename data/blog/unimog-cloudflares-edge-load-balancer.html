@@ -1,10 +1,10 @@
-<div class="mb2 gray5">29 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ac6LaT9T7NzfG04EM8RfD/6f7f47ab51d33b75a299c9877bc2c34d/unimog-cloudflares-edge-load-balancer.png" alt="">
+<div class="mb2 gray5">29 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ac6LaT9T7NzfG04EM8RfD/119c909c94f92829c9435b73760bb263/unimog-cloudflares-edge-load-balancer.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As the scale of Cloudflare’s edge network has grown, we sometimes reach the limits of parts of our architecture. About two years ago we realized that our existing solution for spreading load within our data centers could no longer meet our needs. We embarked on a project to deploy a <i>Layer 4 Load Balancer</i>, internally called <i>Unimog</i>, to improve the reliability and operational efficiency of our edge network. Unimog has now been deployed in production for over a year.</p>
 	<p>This post explains the problems Unimog solves and how it works. Unimog builds on techniques used in other Layer 4 Load Balancers, but there are many details of its implementation that are tailored to the needs of our edge network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44EsYFcb0zDeaXqYUX6Jxg/dd301d1f9efc27a71fe60b0ee832aec6/image3-1.png" alt="" class="kg-image" width="1999" height="956" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44EsYFcb0zDeaXqYUX6Jxg/3bb5afc4bd624ccb66e53cd091b8bed9/image3-1.png" alt="" class="kg-image" width="1999" height="956" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -18,13 +18,13 @@
 	<p>Cloudflare operates an anycast network, meaning that our data centers in <a href="https://www.cloudflare.com/network">200+ cities</a> around the world serve the same IP addresses. For example, our own cloudflare.com website uses Cloudflare services, and one of its IP addresses is 104.17.175.85. All of our data centers will accept connections to that address and respond to HTTP requests. By the magic of Internet routing, when you visit cloudflare.com and your browser connects to 104.17.175.85, your connection will usually go to the closest (and therefore fastest) data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ADAIlOzgQE4V4C7yHERdq/9c38d77ab688205b6c15fa1f7412f711/internet-2.png" alt="" class="kg-image" width="715" height="398" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ADAIlOzgQE4V4C7yHERdq/5ae28f8121ca6d39d79acc1a73733d42/internet-2.png" alt="" class="kg-image" width="715" height="398" loading="lazy">
 
 	</figure>
 	<p>Inside those data centers are many servers. The number of servers in each varies greatly (the biggest data centers have a hundred times more servers than the smallest ones). The servers run the <a href="https://www.cloudflare.com/application-services">application services</a> that implement our products (our caching, DNS, WAF, DDoS mitigation, Spectrum, WARP, etc). Within a single data center, any of the servers can handle a connection for any of our services on any of our anycast IP addresses. This uniformity keeps things simple and avoids bottlenecks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1653XjnZj666YAdzKgPcCN/399c4aa950fb8acfe358d0b550bb39d8/colo-4.png" alt="" class="kg-image" width="566" height="430" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1653XjnZj666YAdzKgPcCN/d0146fc7d280e556ca4d36cfddbdd5ca/colo-4.png" alt="" class="kg-image" width="566" height="430" loading="lazy">
 
 	</figure>
 	<p>But if any server within a data center can handle any connection, when a connection arrives from a browser or some other client, what controls which server it goes to? That’s the job of Unimog.</p>
@@ -34,7 +34,7 @@
 	<p>Deploying Unimog led to a big improvement in our ability to balance the load on our servers in our edge data centers. Here’s a chart for one data center, showing the difference due to Unimog. Each line shows the processor utilization of an individual server (the colour of the lines indicates <a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">server model</a>). The load on the servers varies during the day with the activity of users close to this data center. The white line marks the point when we enabled Unimog. You can see that after that point, the load on the servers became much more uniform. We saw similar results when we deployed Unimog to our other data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ysIFd2DX2oOFyrujMX8OV/30ea9d969062f4e2d6a0f63d9f9e1f74/image1.png" alt="" class="kg-image" width="1999" height="888" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ysIFd2DX2oOFyrujMX8OV/a66dc6b3fdabe9c3015887fae118efcb/image1.png" alt="" class="kg-image" width="1999" height="888" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -83,7 +83,7 @@
 	<p>Here is the outline of a TCP packet:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1uN86MCb8Xmcxhd8Eupv0R/016f3004d18863399734081e3def38dd/image12.png" alt="" class="kg-image" width="474" height="288" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uN86MCb8Xmcxhd8Eupv0R/5c82ac004e4fe1f80c6ba68ea49186d0/image12.png" alt="" class="kg-image" width="474" height="288" loading="lazy">
 
 	</figure>
 	<p>The TCP connection that this packet belongs to is identified by the four labelled header fields, which span the IPv4/IPv6 (i.e. layer 3) and TCP (i.e. layer 4) headers: the source and destination addresses, and the source and destination ports. Collectively, these four fields are known as the 4-tuple. When we say the Unimog sends a connection to a server, we mean that all the packets with the 4-tuple identifying that connection are sent to that server.</p>
@@ -101,7 +101,7 @@
 	<p>To start with, let’s consider how one of our data centers might look without Unimog or any other load balancer. Here’s a conceptual view:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sGaljcZUwny7RxYvQzF0z/918bfd90407d9162b58a6773e69a8c07/colo-simple.png" alt="" class="kg-image" width="654" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sGaljcZUwny7RxYvQzF0z/4d15981b1a6d5442cadf99c8c789a857/colo-simple.png" alt="" class="kg-image" width="654" height="375" loading="lazy">
 
 	</figure>
 	<p>Packets arrive from the Internet, and pass through the router, which forwards them on to servers (in reality there is usually additional network infrastructure between the router and the servers, but it doesn’t play a significant role here so we’ll ignore it).</p>
@@ -110,14 +110,14 @@
 	<p>We can work around the limitations of routers by having the router send the packets to some load balancing servers, and then programming those load balancers to forward packets as we want. If the load balancers all act on packets in a consistent way, then it doesn’t matter which load balancer gets which packets from the router (so we can use ECMP to spread packets across the load balancers). That suggests an arrangement like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QsaXd0zJOinv3P3kXgFRm/cc9565ea66d0f314e0e538956cf8349c/colo-lb.png" alt="" class="kg-image" width="783" height="388" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QsaXd0zJOinv3P3kXgFRm/9baef06d0e1fe4e8106bc1029288329e/colo-lb.png" alt="" class="kg-image" width="783" height="388" loading="lazy">
 
 	</figure>
 	<p>And indeed L4LBs are often deployed like this.</p>
 	<p>Instead, Unimog makes <i>every</i> server into a load balancer. The router can send any packet to any server, and that initial server will forward the packet to the right server for that connection:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77gUuMMXWbIGKclOV82dLp/f748d2db9d149d797a29831186a9bf3a/colo-unimog.png" alt="" class="kg-image" width="705" height="385" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77gUuMMXWbIGKclOV82dLp/f89ee9080e094307f1a8b0e8a0a01e6d/colo-unimog.png" alt="" class="kg-image" width="705" height="385" loading="lazy">
 
 	</figure>
 	<p>We have two reasons to favour this arrangement:</p>
@@ -157,7 +157,7 @@
 	<p>The following diagram shows an overview of our use of XDP. Both l4drop and Unimog are implemented by an XDP program. l4drop matches attack packets, and uses the DROP action to discard them. Unimog forwards packets, using the TX action to resend them. Packets that are not dropped or forwarded pass through to the normal Linux network stack. To support our elaborate use of XDP, we have developed the <i>xdpd daemon</i> which performs the necessary supervisory and support functions for our XDP programs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/mwuvfgu1KFhyMtYkI7c4M/128f132b127dbc296d990281b57111d0/xdpd.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mwuvfgu1KFhyMtYkI7c4M/f1450237c9417b357b3c11144f90f048/xdpd.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>Rather than a single XDP program, we have a chain of XDP programs that must be run for each packet (l4drop, Unimog, and others we have not covered here). One of the responsibilities of xdpd is to prepare these programs, and to make the appropriate system calls to load them and assemble the full chain.</p>
@@ -194,7 +194,7 @@
 	<p>GUE is a relatively simple encapsulation format. It encapsulates within a UDP packet, placing a GUE-specific header between the outer IP/UDP headers and the payload packet to allow extension data to be carried (and we’ll see how Unimog takes advantage of this):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ImbRfgHVop1QjM0K3R6Lr/8c7f8fc6021887a0ce456f68b6f66806/image8.png" alt="" class="kg-image" width="474" height="233" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ImbRfgHVop1QjM0K3R6Lr/8f7ce8fdab72ee2dfacc454d59bc1171/image8.png" alt="" class="kg-image" width="474" height="233" loading="lazy">
 
 	</figure>
 	<p>When an encapsulated packet arrives at a server, the encapsulation process must be reversed. This step is called <i>decapsulation</i>. The headers that were added during the encapsulation process are removed, leaving the original packet to be processed by the network stack as if it had arrived directly from the client.</p>
@@ -225,7 +225,7 @@
 	<p>To look up a packet’s key in the forwarding table, the low N bits from the key are used as the index for a bucket (the forwarding table is always a power-of-2 in size):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PTRbsbXdTdzDPg0zTNtkJ/97317060fb96b86013fccff39b41f291/hashing.png" alt="" class="kg-image" width="556" height="430" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PTRbsbXdTdzDPg0zTNtkJ/c22c4634097466ff8e57844465713398/hashing.png" alt="" class="kg-image" width="556" height="430" loading="lazy">
 
 	</figure>
 	<p>Note that this approach does not provide per-connection control - each bucket typically applies to many connections. All load balancers in a data center use the same forwarding table, so they all forward packets in a consistent manner. This means it doesn’t matter which packets are sent by the router to which servers, and so ECMP re-hashes are a non-issue. And because the forwarding table is immutable and simple in structure, lookups are fast.</p>
@@ -247,13 +247,13 @@
 	<p>For example, imagine we have a forwarding table that refers to servers A, B, and C, and then it is updated to stop new connections going to server A, but maintaining established connections to server A. This is achieved by replacing server A’s DIP in the first slot of any buckets where it appears, but preserving it in the second slot:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hTdYu2s3dFhNKhsASADKa/551c1db2bfa7578fa666ab4fac25abf5/image9-1.png" alt="" class="kg-image" width="545" height="347" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hTdYu2s3dFhNKhsASADKa/44fe175c6f406753d82390f7a046669f/image9-1.png" alt="" class="kg-image" width="545" height="347" loading="lazy">
 
 	</figure>
 	<p>In addition to extending the forwarding table, this approach requires a component on each server to forward packets on the second hop when necessary. This diagram shows where this <i>redirector</i> fits into the path a packet can take:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6f5CQLIjy5hO2eWKW8i36H/73fe38ccf9c2f80591e7c1fbcfe78499/sausage.png" alt="" class="kg-image" width="952" height="349" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6f5CQLIjy5hO2eWKW8i36H/ab18994ccdf15961e8a87d1e3890d2da/sausage.png" alt="" class="kg-image" width="952" height="349" loading="lazy">
 
 	</figure>
 	<p>The redirector follows some simple logic to decide whether to process a packet locally on the first-hop server or to forward it on the second-hop server:</p>
@@ -324,7 +324,7 @@
 	<p>Finally, the conductor queries internal Cloudflare APIs to obtain the necessary information on servers and addresses.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25doef0hn0sJTI8oGzgoOk/1a659fb835924e789681707de143aae0/control.png" alt="" class="kg-image" width="911" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25doef0hn0sJTI8oGzgoOk/fb025967eab0ee87dcb9ead2724dc755/control.png" alt="" class="kg-image" width="911" height="452" loading="lazy">
 
 	</figure>
 	<p>Unimog is a critical system: incorrect, poorly adjusted or stale forwarding tables could cause incoming network traffic to a data center to be dropped, or servers to be overloaded, to the point that a data center would have to be removed from service. To maintain a high quality of service and minimise the overhead of managing our many edge data centers, we have to be able to upgrade all components. So to the greatest extent possible, all components are able to tolerate brief absences of the other components without any impact to service. In some cases this is possible through careful design. In other cases, it requires explicit handling. For example, we have found that Consul can temporarily report inaccurate health information for a server and its services when the Consul agent on that server is restarted (for example, in order to upgrade Consul). So we implemented the necessary logic in the conductor to detect and disregard these transient health changes.</p>

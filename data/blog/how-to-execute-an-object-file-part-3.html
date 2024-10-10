@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L2LYeMJ5dbwiIINGXRCJ2/fc402d5812d80ce884adf382569429da/how-to-execute-an-object-file-part-3.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4L2LYeMJ5dbwiIINGXRCJ2/2abd9bb41531604a3c657f4e4f9cc68b/how-to-execute-an-object-file-part-3.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h2 id="dealing-with-external-libraries">Dealing with external libraries</h2>
@@ -110,7 +110,7 @@ static int my_puts(const char *s)
 	<p>We will not deep-dive into specifics of the standard PLT/GOT implementation as there are many other great resources online, but in a nutshell PLT/GOT is just a jumptable for external code. At the linking stage the linker resolves all external 32-bit relative relocations with respect to a locally generated PLT/GOT table. It can do that, because this table would become part of the final ELF file itself, so it will be "close" to the main code, when the file is mapped into memory at runtime. Later, at runtime <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html">the dynamic loader</a> populates PLT/GOT tables for every loaded ELF file (both the executable and the shared libraries) with the runtime addresses of all the dependencies. Eventually, when the program code calls some external library function, the CPU "jumps" through the local PLT/GOT table to the final code:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xHrWlui04cqRxeurzvRpd/87fd68f6b7ad8a46bf5ec65dc85f8c05/image2-5.png" alt="simplified PLT/GOT call flow" class="kg-image" width="648" height="572" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xHrWlui04cqRxeurzvRpd/2d4b41f80468fde55541c19933d924c1/image2-5.png" alt="simplified PLT/GOT call flow" class="kg-image" width="648" height="572" loading="lazy">
 
 	</figure>
 	<p>Why do we need two ELF sections to implement one jumptable you may ask? Well, because real world PLT/GOT is a bit more complex than described above. Turns out resolving all external references at runtime may significantly slow down program startup time, so symbol resolution is implemented via a "lazy approach": a reference is resolved by <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html">the dynamic loader</a> only when the code actually tries to call a particular function. If the main application code never calls a library function, that reference will never be resolved.</p>

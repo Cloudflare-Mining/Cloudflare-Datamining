@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dTPBbSocDbhSar2Yu2DR4/0998571312207cdfde02e0a419cad418/Magic-IoT.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dTPBbSocDbhSar2Yu2DR4/39defc7e22d64de7db87d11067da7cba/Magic-IoT.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>There is probably an insecure device with an exploitable vulnerability sitting in your house. And your office. And probably even your child’s school. Cameras, printers, speakers, access control readers, thermostats, even heart monitors... all of these devices are, or can be, Internet of Things (IoT) devices. These IoT devices are seamlessly integrated into our modern lives to improve efficiency and control of our environments — yet they are notoriously insecure. This is due to the constrained nature of device hardware and their limited computational capacity, which often lead to minimize access controls, hard-coded passwords, and an inability to patch remotely.</p>
@@ -35,7 +35,7 @@
 	<p>We use our own products to isolate devices without deploying on a separate network. This provides security guarantees without requiring additional hardware. It's a severless, infrastructure-less solution to isolating a network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/giYC0IVjLQCR4LfLN98Xw/5b44b68ef0afb98b171deb76d16aa9d0/Magic-x-IoT.png" alt="" class="kg-image" width="1429" height="905" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/giYC0IVjLQCR4LfLN98Xw/f876288406022b22ac5a726a9da9dbb7/Magic-x-IoT.png" alt="" class="kg-image" width="1429" height="905" loading="lazy">
 
 	</figure>
 	<p>How is this done? The hardware device (for our proof of concept, a Verkada camera) is connected to a Power over Ethernet switch, which is configured to tunnel its traffic via Anycast GRE to the Cloudflare Global network. There, we can configure rules from the Cloudflare dash to write egress rules, ensuring that outbound traffic only goes where it is supposed to. Thus, lateral movement is prevented.</p>

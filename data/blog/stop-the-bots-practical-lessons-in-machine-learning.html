@@ -1,12 +1,12 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stop-the-bots-practical-lessons-in-machine-learning">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42fu2EXmA8SbbOaPBO4n4D/8b20d0d62b655be1350233c6b756f223/stop-the-bots-practical-lessons-in-machine-learning.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stop-the-bots-practical-lessons-in-machine-learning">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42fu2EXmA8SbbOaPBO4n4D/f6d4a19ec8949e056c0d424ffc255dcd/stop-the-bots-practical-lessons-in-machine-learning.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Bot-powered <b>credential stuffing</b> is a scourge on the modern Internet. These attacks attempt to log into and take over a user’s account by assaulting password forms with a barrage of dictionary words and previously stolen account credentials, with the aim of performing fraudulent transactions, stealing sensitive data, and compromising personal information.</p>
 	<p>At Cloudflare we’ve built a suite of technologies to combat bots, many of them grounded in <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">Machine Learning</a>. ML is a hot topic these days, but the literature tends to focus on improving the core technology — and not how these learning machines are incorporated into real-world organizations.</p>
 	<p>Given how much experience we have with ML (which we employ for many security and performance products, in addition to bot management), we wanted to share some lessons learned with regard to how this technology manifests in actual products.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74ITP9JXmR0JmbEX4bh44h/3d10951987edf50274bd95684f4bebe9/Stop-the-Bots.png" alt="" class="kg-image" width="1999" height="1345" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74ITP9JXmR0JmbEX4bh44h/47a679cee63264c9e1cd2a1bfd3fc7cd/Stop-the-Bots.png" alt="" class="kg-image" width="1999" height="1345" loading="lazy">
 
 	</figure>
 	<p>There tend to be three stages every company goes through in the life cycle of infusing machine learning into their DNA. They are:</p>
@@ -80,7 +80,7 @@
 	<p>To inform our machine learning models, we rely on data from the 13 million domains on Cloudflare’s network, which sees more than 660 billion requests per day serving more than 2.8 billion people per month. We employ this huge volume of data to address one of the most urgent security threats on the web: <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot-attack"><b>bot attacks</b></a><b>.</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BDWIThPIOl5al3pTLlXuC/815542dcbe49c560eb7f67071852556e/Bot-Attacks.png" alt="" class="kg-image" width="1999" height="1733" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6BDWIThPIOl5al3pTLlXuC/5e6236b195b18e769b2c700cd02a7c48/Bot-Attacks.png" alt="" class="kg-image" width="1999" height="1733" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -95,7 +95,7 @@
 	<p>One initial takeaway from our analysis was the geographical breakdown of attacks. Rudimentary bot-protection tools rely on blocking IP addresses from countries commonly associated with hostile traffic. But when we ranked the origin of bots across our network, it was obvious that this approach was untenable as most attacks originate from countries with huge volumes of legitimate traffic. A more sophisticated solution allows us to protect against bots without affecting real users.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/193J803AFDiN80dmrv4CQu/b59358d7c973a747bf14d582b42545e1/image2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/193J803AFDiN80dmrv4CQu/c042ddb3ad163bd9f0d23d1a87f157d8/image2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

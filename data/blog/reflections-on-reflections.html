@@ -1,9 +1,9 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7z3StKcINqYvK3VC2oJfY4/e653869d22b42be3cdfdb00649855338/reflections-on-reflections.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7z3StKcINqYvK3VC2oJfY4/f13dba84d044b786d1d0e71194d8ce35/reflections-on-reflections.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently <a href="https://www.akamai.com/us/en/about/our-thinking/threat-advisories/connection-less-lightweight-directory-access-protocol-reflection-ddos-threat-advisory.jsp">Akamai published an article about CLDAP</a> reflection attacks. This got us thinking. We saw attacks from <a href="https://ldapscan.shadowserver.org">Connectionless LDAP</a> servers back in November 2016 but totally ignored them because our systems were automatically dropping the attack traffic without any impact.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cPH4iVdvSLz4zASMsx4y1/e8b920bb7738f33c2c7ef331beb152c8/5624068176_547766995c_z.jpg" alt="" class="kg-image" width="640" height="447" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cPH4iVdvSLz4zASMsx4y1/55263fc349679bfdd3bb738294dcde51/5624068176_547766995c_z.jpg" alt="" class="kg-image" width="640" height="447" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ragez/5624068176">image</a> by <a href="https://www.flickr.com/photos/ragez">RageZ</a></p>
@@ -19,7 +19,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37shntzMKVznz96CFNVl4n/e7e765bbdd4ccd80ed07cd1d589c995a/Untitled-2.001saaa.png" alt="" class="kg-image" width="640" height="354" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37shntzMKVznz96CFNVl4n/c7d72b8761f9c5c89ef10a41cd3b398b/Untitled-2.001saaa.png" alt="" class="kg-image" width="640" height="354" loading="lazy">
 
 	</figure>
 	<p>Let's start with a brief reminder on how reflection attacks (often called "amplification attacks") work.</p>
@@ -151,7 +151,7 @@ Peak bandwidth in Gbps:
 	<p>This stacked chart shows the geographical distribution of the largest NTP attack we've seen in the last six months. You can see the packets per second number directed to each datacenter. One our datacenters (San Jose to be precise) received about a third of the total attack volume, while the remaining packets were distributed roughly evenly across other datacenters.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZfOEawZjCimyFTOrVawyI/ade7a4030b65272dcf841eeae7aa551c/ntp-3164b6fac836774c.png" alt="" class="kg-image" width="800" height="257" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZfOEawZjCimyFTOrVawyI/253b1a0b851aa23e0c276f2d184b21cd/ntp-3164b6fac836774c.png" alt="" class="kg-image" width="800" height="257" loading="lazy">
 
 	</figure>
 	<p>The attack lasted 20 minutes, used 527 reflector NTP servers and generated about 20Mpps / 64Gbps at peak.</p>
@@ -226,7 +226,7 @@ Bandwidth in Gbps:
 	<p>Let's take a closer look at the largest (80Gbps) attack we've recorded. Here's a stacked chart showing packets per second going to each datacenter. This attack was using 940k reflector IPs, generated 30Mpps. The datacenters receiving the largest proportion of the traffic were San Jose, Los Angeles and Moscow.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tn5lGP6EmQYqB6gwESNST/df0128602894fc8e25f86ba0a7e4a075/ssdp-4ca985a2211f8c88.png" alt="" class="kg-image" width="800" height="262" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Tn5lGP6EmQYqB6gwESNST/63ec0dc0e40e0b5521f8523de6dd5670/ssdp-4ca985a2211f8c88.png" alt="" class="kg-image" width="800" height="262" loading="lazy">
 
 	</figure>
 	<p>The average packet size was 300 bytes. Here's how the attack looked on the wire:</p>
@@ -351,7 +351,7 @@ Port 0 packet length:
 	<p>This is because all these attacks stopped at the network layer. Routers are heavily optimized to perform packet forwarding and have a limited capacity of extracting raw packets. Basically there is no "tcpdump" there.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OT709HCNnicRfaMIXxaRV/c73865139a75236b70c23eb7511b0be9/Untitled-2.001bbb.png" alt="" class="kg-image" width="640" height="292" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OT709HCNnicRfaMIXxaRV/e23cda7421fa2a893538aec40433c70d/Untitled-2.001bbb.png" alt="" class="kg-image" width="640" height="292" loading="lazy">
 
 	</figure>
 	<p>We track these attacks with netflow, and we observe them hit our routers firewall. The tcpdump snippets shown above were actually fake, reconstructed artificially from netflow data.</p>
@@ -403,7 +403,7 @@ All attacks in Gbps:
 	<p>But not all Cloudflare datacenters have equal sized network connections to the Internet. So how can we manage?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zPhFBCkn2Dmw14rD2TUhe/0a206630fbc5b67f6c59183830434629/Untitled-2.001-1.png" alt="" class="kg-image" width="640" height="376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zPhFBCkn2Dmw14rD2TUhe/3210e6a859c0deb8c098cb197d5627f1/Untitled-2.001-1.png" alt="" class="kg-image" width="640" height="376" loading="lazy">
 
 	</figure>
 	<p>Cloudflare <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">was architected to withstand large attacks</a>. We are able to spread the traffic on two layers:</p>

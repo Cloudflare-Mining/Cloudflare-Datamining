@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Uz433hfg7oe0SYXrtCeFe/6aec9833ce7de4cba580c5c4011fd579/how-and-why-the-leap-second-affected-cloudflare-dns.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Uz433hfg7oe0SYXrtCeFe/d2a808e29b4d790ae41987720decc6a3/how-and-why-the-leap-second-affected-cloudflare-dns.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At midnight UTC on New Year’s Day, deep inside Cloudflare’s custom <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a> software, a number went negative when it should always have been, at worst, zero. A little later this negative value caused RRDNS to panic. This panic was caught using the recover feature of the Go language. The net effect was that some DNS resolutions to some Cloudflare managed web properties failed.</p>
 	<p>The problem only affected customers who use CNAME DNS records with Cloudflare, and only affected a small number of machines across Cloudflare's 102 data centers. At peak approximately 0.2% of DNS queries to Cloudflare were affected and less than 1% of all HTTP requests to Cloudflare encountered an error.</p>
@@ -15,7 +15,7 @@
 	<p>This image shows a test site with an A record for <code>theburritobot.com</code> and a CNAME for <code>www.theburritobot.com</code> pointing directly to Heroku.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6849XKj9F4rFAMEnAT53RX/4517096de0cb01b0118630f3c9969b7f/cloudflare_dns_control_panel.png.scaled500.png" alt="" class="kg-image" width="500" height="251" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6849XKj9F4rFAMEnAT53RX/4a550069ff1b976af330dafffc087783/cloudflare_dns_control_panel.png.scaled500.png" alt="" class="kg-image" width="500" height="251" loading="lazy">
 
 	</figure>
 	<p>When a customer uses the CNAME option, Cloudflare has occasionally to do a lookup, using DNS, for the actual IP address of the origin server. It does this automatically using standard recursive DNS. It was this CNAME lookup code that contained the bug that caused the outage.</p>
@@ -61,7 +61,7 @@ if !start.IsZero() {
 	<p>In this patch we allowed RRDNS to forget about current upstream performance, and let it normalize again if time skipped backwards. This prevents leaking of negative numbers to the server selection code, which would result in throwing errors before attempting to contact the upstream server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j85WZisqjCJVcyemxck8s/756439c7c68d832661f2fdb5e9a7bcf0/Screen-Shot-2017-01-01-at-12.22.33.png" alt="" class="kg-image" width="444" height="88" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j85WZisqjCJVcyemxck8s/5fdacf08b5b00ac2f764671e133b49ed/Screen-Shot-2017-01-01-at-12.22.33.png" alt="" class="kg-image" width="444" height="88" loading="lazy">
 
 	</figure>
 	<p>The fix we applied prevents the recording of negative values in server selection. Restarting all the RRDNS servers then fixed any recurrence of the problem.</p>
@@ -78,7 +78,7 @@ if !start.IsZero() {
 	<p>This chart shows error rates for each Cloudflare data center (some data centers were more affected than others) and the rapid drop in errors as the fix was deployed. We deployed the fix prioritizing those locations with the most errors first.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jwqwG3byUaTj1jux5soqZ/75a557fcaad91902e949779872756cab/Screen-Shot-2017-01-01-at-13.59.43-1.png" alt="" class="kg-image" width="1491" height="954" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jwqwG3byUaTj1jux5soqZ/d7a15c7b78547a96f1c7af8b30853f69/Screen-Shot-2017-01-01-at-13.59.43-1.png" alt="" class="kg-image" width="1491" height="954" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

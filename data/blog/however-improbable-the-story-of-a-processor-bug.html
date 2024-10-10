@@ -1,10 +1,10 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dvh44lpgKR1NGnW1nN3Eu/0bee62c8555294bda7632fdec0c9f125/however-improbable-the-story-of-a-processor-bug.jpg" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dvh44lpgKR1NGnW1nN3Eu/859e924681cb04507b13385a673c7d51/however-improbable-the-story-of-a-processor-bug.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Processor problems have been in the news lately, due to the <a href="https://blog.cloudflare.com/meltdown-spectre-non-technical">Meltdown and Spectre vulnerabilities</a>. But generally, engineers writing software assume that computer hardware operates in a reliable, well-understood fashion, and that any problems lie on the software side of the software-hardware divide. Modern processor chips routinely execute many billions of instructions in a second, so any erratic behaviour must be very hard to trigger, or it would quickly become obvious.</p>
 	<p>But sometimes that assumption of reliable processor hardware doesn’t hold. Last year at Cloudflare, we were affected by a bug in one of Intel’s processor models. Here’s the story of how we found we had a mysterious problem, and how we tracked down the cause.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/259H08ZlP34cvwO953wEbe/e9945d1515bd9ee6937c36f541a381ee/Sherlock_holmes_pipe_hat-1.jpg" alt="Sherlock_holmes_pipe_hat-1" class="kg-image" width="645" height="627" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/259H08ZlP34cvwO953wEbe/9dfefb01771e3aff180bde9186c3c319/Sherlock_holmes_pipe_hat-1.jpg" alt="Sherlock_holmes_pipe_hat-1" class="kg-image" width="645" height="627" loading="lazy">
 
 	</figure>
 	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA-3.0</a> <a href="https://commons.wikimedia.org/wiki/File:Sherlock_holmes_pipe_hat.jpg">image</a> by Alterego</p>
@@ -50,7 +50,7 @@
 	<p>A brief aside: Why are core dumps called core dumps? It’s a historical term that originated in the 1960s when the principal form of random access memory was <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory">magnetic core memory</a>. At the time, the word core was used as a shorthand for memory, so “core dump” means a dump of the contents of memory.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DW66RVAAUllbxyW26n4oP/58b1acf2d894e7236741a8bdd9e08e4e/coremem-2.jpg" alt="coremem-2" class="kg-image" width="400" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DW66RVAAUllbxyW26n4oP/9fe72dacf0f67f9a8a79dd4c115ba62a/coremem-2.jpg" alt="coremem-2" class="kg-image" width="400" height="400" loading="lazy">
 
 	</figure>
 	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory#/media/File:KL_CoreMemory.jpg">image</a> by Konstantin Lanzet</p>
@@ -99,7 +99,7 @@
 	<p>To our great relief, once the update was completed, the mystery core dumps stopped. This chart shows the number of core dumps we were getting each day for the relevant months of 2017:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3swQhL1euB2VpWjtlom4Yh/5758ac8f17c7a34ca514c970df528110/coredumps.png" alt="coredumps" class="kg-image" width="1182" height="530" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3swQhL1euB2VpWjtlom4Yh/0be3eebcb41da11502e23af45ce08eb7/coredumps.png" alt="coredumps" class="kg-image" width="1182" height="530" loading="lazy">
 
 	</figure>
 	<p>As you can see, after the microcode update there is a marked reduction in the rate of core dumps. But we still get some core dumps. These are not mysteries, but represent conventional issues in our software. We continue to investigate and fix them to ensure they don’t represent security issues in our service.</p>

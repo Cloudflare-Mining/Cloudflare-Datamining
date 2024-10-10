@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZIGEKXxAHQjkdhTmJIlI7/de404978e2a78167664d6608ca04a947/image1-26.png" alt="Detecting API abuse automatically using sequence analysis" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZIGEKXxAHQjkdhTmJIlI7/88561d87ef5b611280c21d6ca2cf3c5a/image1-26.png" alt="Detecting API abuse automatically using sequence analysis" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today, we're announcing Cloudflare Sequence Analytics for APIs. Using Sequence Analytics, Customers subscribed to <a href="https://developers.cloudflare.com/api-shield">API Gateway</a> can view the most important sequences of API requests to their endpoints. This new feature helps customers to <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">apply protection</a> to the most important endpoints first.</p>
@@ -242,7 +242,7 @@
 	<p>To help illustrate these challenges for the example of api.cloudflare.com, we can group API requests by session and plot the number of distinct sequences versus sequence length:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AJLBVYJl3ApceVT8ubl7v/16833985e2f66205e47d9d587aba28b3/unnamed-1.png" alt="" class="kg-image" width="826" height="511" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AJLBVYJl3ApceVT8ubl7v/995a6548852547fb31e6e9d6a5c4b917/unnamed-1.png" alt="" class="kg-image" width="826" height="511" loading="lazy">
 
 	</figure>
 	<p>The plot is based on a one hour snapshot comprising approximately 88,000 sessions and 260 million API requests, with 301 distinct API endpoints. We process the data by applying a fixed-length sliding window to each session, then we count the total number of different fixed-length sequences (‘n-grams’) that we observe as a result of applying the sliding window. The plot displays results for a window size (‘n-gram length’) varying between 1 and 10 requests. The number of distinct sequences ranges from 301 (for a window size of 1 request) to approximately 780,000 (for a window size of 10 requests). Based on the plot, we observe a large number of possible sequences which grows with sequence length: As we increase the sliding window size, we see an increasingly large amount of different sequences in the sample. The smooth trend can be explained by the fact that we apply a sliding window (sessions may themselves contain many sequences) in combination with many long sessions relative to the sequence length.</p>
@@ -258,7 +258,7 @@
 	<p>Here is a screenshot from the API Gateway dashboard highlighting Sequence Analytics:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/XNYHZ4fxireN81jqHtCs5/1d849a43172336931842a5d571aeecfa/image2-14.png" alt="" class="kg-image" width="1999" height="1794" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XNYHZ4fxireN81jqHtCs5/401355249971c341845feed2f68445a0/image2-14.png" alt="" class="kg-image" width="1999" height="1794" loading="lazy">
 
 	</figure>
 	<p>Let’s break down the new functionality seen in the screenshot.</p>

@@ -1,9 +1,9 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67vLIcLGoezNpy4C95TUGA/5308035bdd955def34476dae1e01eebf/the-road-to-quic.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67vLIcLGoezNpy4C95TUGA/6e1338be469718a337efc6138e9bf65e/the-road-to-quic.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>QUIC (Quick UDP Internet Connections) is a new encrypted-by-default Internet transport protocol, that provides a number of improvements designed to accelerate HTTP traffic as well as make it more secure, with the intended goal of eventually replacing TCP and TLS on the web. In this blog post we are going to outline some of the key features of QUIC and how they benefit the web, and also some of the challenges of supporting this radical new protocol.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XUtUi1ckk243XN0PWk2zo/7981184ac671e6206ee93c43c672b7b6/QUIC-Badge-Dark-RGB-Horiz.png" alt="QUIC-Badge-Dark-RGB-Horiz" class="kg-image" width="2000" height="679" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XUtUi1ckk243XN0PWk2zo/68dcab940f1bcbb37cb3d3b7f10d1ddb/QUIC-Badge-Dark-RGB-Horiz.png" alt="QUIC-Badge-Dark-RGB-Horiz" class="kg-image" width="2000" height="679" loading="lazy">
 
 	</figure>
 	<p>There are in fact two protocols that share the same name: “Google QUIC” (“gQUIC” for short), is the original protocol that was designed by Google engineers several years ago, which, after years of experimentation, has now been adopted by the <a href="https://ietf.org">IETF</a> (Internet Engineering Task Force) for standardization.</p>
@@ -22,13 +22,13 @@
 	<p>Not only does this ensure that the connection is always authenticated and encrypted, but it also makes the initial connection establishment faster as a result: the typical QUIC handshake only takes a single round-trip between client and server to complete, compared to the two round-trips required for the TCP and TLS 1.3 handshakes combined.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CWL4LYn5pKIq6nJjHfPeK/802cdc0d30acb1d03ea0d3427bcf3e22/http-request-over-tcp-tls_2x.png" alt="http-request-over-tcp-tls@2x" class="kg-image" width="968" height="994" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CWL4LYn5pKIq6nJjHfPeK/0683aa058799594bf35d41605e05b4c1/http-request-over-tcp-tls_2x.png" alt="http-request-over-tcp-tls@2x" class="kg-image" width="968" height="994" loading="lazy">
 
 	</figure>
 	<p> </p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rT3ge707TKiFEIiyEL4IW/d2531439d844328ef7db083fab75332f/http-request-over-quic_2x.png" alt="http-request-over-quic@2x" class="kg-image" width="1038" height="744" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rT3ge707TKiFEIiyEL4IW/3588b3d9d434ca9b705d75c2a72de090/http-request-over-quic_2x.png" alt="http-request-over-quic@2x" class="kg-image" width="1038" height="744" loading="lazy">
 
 	</figure>
 	<p>But QUIC goes even further, and also encrypts additional connection metadata that could be abused by middle-boxes to interfere with connections. For example packet numbers could be used by passive on-path attackers to correlate users activity over multiple network paths when connection migration is employed (see below). By encrypting packet numbers QUIC ensures that they can't be used to correlate activity by any entity other than the end-points in the connection.</p>
@@ -45,7 +45,7 @@
 	<p>This was a big improvement over the then status quo, which required applications to initiate multiple TCP+TLS connections if they wanted to process multiple HTTP/1.1 requests concurrently (e.g. when a browser needs to fetch both CSS and Javascript assets to render a web page). Creating new connections requires repeating the initial handshakes multiple times, as well as going through the initial congestion window ramp-up, which means that rendering of web pages is slowed down. Multiplexing HTTP exchanges avoids all that.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FcudeYzlfQKPqRI8YXk45/3e013d812c9067b3c0ad823f284ad5be/multiplexing.svg" alt="" class="kg-image" width="1000" height="435" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FcudeYzlfQKPqRI8YXk45/d271d04cc9150d0debd301c6481157d5/multiplexing.svg" alt="" class="kg-image" width="1000" height="435" loading="lazy">
 
 	</figure>
 	<p>This however has a downside: since multiple requests/responses are transmitted over the same TCP connection, they are all equally affected by packet loss (e.g. due to network congestion), even if the data that was lost only concerned a single request. This is called “head-of-line blocking”.</p>
@@ -75,7 +75,7 @@
 	<p>When a NAT rebinding happens (due to a timeout for example), the end-point on the outside of the NAT perimeter will see packets coming from a different source port than the one that was observed when the connection was originally established, which makes it impossible to track connections by only using the 4-tuple.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2nozSxNZ6rsrj02Tb1IACy/61c560dfd197170da6541d304f15ca8f/NAT-timeout-_2x.png" alt="NAT-timeout-@2x" class="kg-image" width="1100" height="956" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2nozSxNZ6rsrj02Tb1IACy/fa90467738d8e89865b59be3ee4e5cf6/NAT-timeout-_2x.png" alt="NAT-timeout-@2x" class="kg-image" width="1100" height="956" loading="lazy">
 
 	</figure>
 	<p>And it's not just NAT! One of the features QUIC is intended to deliver is called “connection migration” and will allow QUIC end-points to migrate connections to different IP addresses and network paths at will. For example, a mobile client will be able to migrate QUIC connections between cellular data networks and WiFi when a known WiFi network becomes available (like when its user enters their favorite coffee shop).</p>
@@ -83,7 +83,7 @@
 	<p>However this also poses a problem for network operators that use anycast addressing and <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">ECMP routing</a>, where a single destination IP address can potentially identify hundreds or even thousands of servers. Since edge routers used by these networks also don't yet know how to handle QUIC traffic, it might happen that UDP packets belonging to the same QUIC connection (that is, with the same connection ID) but with different 4-tuple (due to NAT rebinding or connection migration) might end up being routed to different servers, thus breaking the connection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3y7Ae7Hm6zUy6SyL315Oxa/4c55d3645cb2be14e9786001a6a55bda/anycast-cdn.png" alt="" class="kg-image" width="1459" height="889" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3y7Ae7Hm6zUy6SyL315Oxa/366eee8f4d5a89458556b77c53aacecb/anycast-cdn.png" alt="" class="kg-image" width="1459" height="889" loading="lazy">
 
 	</figure>
 	<p>In order to address this, network operators might need to employ smarter layer 4 load balancing solutions, which can be implemented in software and deployed without the need to touch edge routers (see for example Facebook's <a href="https://github.com/facebookincubator/katran">Katran</a> project).</p>
@@ -114,7 +114,7 @@
 	<p>A common problem among <a href="https://blog.cloudflare.com/ssdp-100gbps">UDP-based</a> <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">protocols</a> is their susceptibility to <a href="https://blog.cloudflare.com/reflections-on-reflections">reflection attacks</a>, where an attacker tricks an otherwise innocent server into sending large amounts of data to a third-party victim, by spoofing the source IP address of packets targeted to the server to make them look like they came from the victim.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LfQICIemcnM4AgyhDb6kD/ad4debd0c0eed033e144676a771ffe39/ip-spoofing.png" alt="" class="kg-image" width="1456" height="663" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LfQICIemcnM4AgyhDb6kD/0649164a476896ca3a58de5390c08f09/ip-spoofing.png" alt="" class="kg-image" width="1456" height="663" loading="lazy">
 
 	</figure>
 	<p>This kind of attack can be very effective when the response sent by the server happens to be larger than the request it received, in which case we talk of “amplification”.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nQrGvJfa2nCvJTVHuyCt7/5187a94355b404f5732434167e606763/proxying-traffic-to-report-uri-with-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nQrGvJfa2nCvJTVHuyCt7/afb2dc825ad14b2858a81b1fb4be52f6/proxying-traffic-to-report-uri-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a guest post by Scott Helme, a Security Researcher, international speaker, and </i><a href="https://scotthelme.co.uk"><i>blogger</i></a><i>. He's also the founder of the popular </i><a href="https://securityheaders.com"><i>securityheaders.com</i></a><i> and </i><a href="https://report-uri.com"><i>report-uri.com</i></a><i>, free tools to help people deploy better security.</i></p>
 	<p>With the continued growth of Report URI we're seeing a larger and larger variety of sites use the service. With that diversity comes additional requirements that need to be met, some of them simple and some of them less so. Here's a quick look at those challenges and how they can be solved easily with a Cloudflare Worker.</p>
@@ -6,7 +6,7 @@
 	<p>When a browser sends a CSP report for us to collect at Report URI, we receive the JSON payload sent to us but we also have access to two other pieces of information, the client IP and the User Agent string. We never store, collect or analyse the client IP, we simply don't need or want to, and all we do with the UA string is extract the browser name like Chrome or Firefox. Most site operators are perfectly happy with our approach here and things work just fine. There are however some issues when the site operator simply doesn't want to have us to have this information and some cases have come up where they can't allow us to have access to that information because of restrictions placed on them by a regulator. The other common thing that comes up, which I honestly never anticipated, was simply the perception of the reporting endpoint being a 3rd party address. There are various different ways we can and do tackle these problems.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OgeJOCwWvsrbooIrPeE6x/b88ef2d52fd61c883e7e26d0b0bee0dc/logo-2.png" alt="logo-2" class="kg-image" width="718" height="163" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OgeJOCwWvsrbooIrPeE6x/192aae816ffa13cf69636d171762bd63/logo-2.png" alt="logo-2" class="kg-image" width="718" height="163" loading="lazy">
 
 	</figure>
 	<h4>CNAME</h4>
@@ -49,7 +49,7 @@ async function forwardReport(req) {
 	<p>This simple worker, deployed on your own site, provides a solution to all of the above problems. All you need to do is configure your subdomain in the var on the first line and everything else will be taken care of for you. Deploy this worker onto the subdomain you want to send reports to, follow the same naming convention for the path when sending reports, and everything will Just Work(TM).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qROepXu7FHMn3OmnuuHf5/23e020d4c7e4d80f778aba5418412df5/pic2.png" alt="pic2" class="kg-image" width="640" height="160" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qROepXu7FHMn3OmnuuHf5/58d2e7fb716ceeb751db79266e2b39d3/pic2.png" alt="pic2" class="kg-image" width="640" height="160" loading="lazy">
 
 	</figure>
 	<p>The script above is configured for my subdomain, so if I wanted to deploy this on any site, say <code>example.com</code>, I'd choose the subdomain on my site where I wanted to send reports <code>report-uri.example.com</code> and off we go.</p>
@@ -76,7 +76,7 @@ https://report-uri.example.com/r/d/csp/enforce</code></pre>
 	<p>Talking about cheap enough, I thought I'd actually quantify that and quote the Cloudflare pricing for workers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qJn1MqvluG0CTRlLxJ5K6/0a2929f1eaf4e40c8a4f3a9b6a832b06/workers-pricing-text.png" alt="workers-pricing-text" class="kg-image" width="605" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qJn1MqvluG0CTRlLxJ5K6/980dcf1d948032d0379fd94933a35c38/workers-pricing-text.png" alt="workers-pricing-text" class="kg-image" width="605" height="308" loading="lazy">
 
 	</figure>
 	<p>Starting at $5 per month and covering your first 10 million requests is an amazingly cheap deal. Most websites that report through us wouldn't even come close to sending 10 million reports so you'd probably never pay any more than $5 for your Cloudflare Worker. That's it, $5 per month... By the time you've even thought about creating a CNAME or standing up your own proxy you've probably blown through more than Cloudflare Workers would ever cost you. What's best is that if you already use Cloudflare Workers then you can roll this into your existing usage and it might not even increase the cost if you have some of your initial 10 million requests spare. If you don't use Cloudflare on your site already then you could just as easily grab a new domain name exclusively for reporting, that'd cost just a few dollars, and stand that up behind Cloudflare too. One way or another this is insanely easy and insanely cheap.</p>

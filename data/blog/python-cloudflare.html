@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GOesLC2I4qEGSXJPmJFLx/999e64ffba2c987b97fba27b05749c33/python-cloudflare.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GOesLC2I4qEGSXJPmJFLx/2d5c8922ad788d4e133b9ffc5732da12/python-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="using-the-cloudflare-api-via-python">Using the CloudFlare API via Python</h3>
@@ -39,7 +39,7 @@ if __name__ == '__main__':
 	<p>For example, take a look at the <a href="https://api.cloudflare.com/#waf-rules-list-rules">WAF list rules</a> API call.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58QXJkTf6PTJW4n69AsL1R/e9ebd68756e3b2d3d9b174b2a1637da1/1-list_rules.png" alt="alt" class="kg-image" width="892" height="313" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58QXJkTf6PTJW4n69AsL1R/00031b7cac29a93d4da4d3816fd1171d/1-list_rules.png" alt="alt" class="kg-image" width="892" height="313" loading="lazy">
 
 	</figure>
 	<p>This codes into <code>CloudFlare.zones.dns_records.post()</code> method with the <code>zone_id</code> as the first argument, the <code>package_id</code> as the second argument and the optional parameters passed last (or if there aren’t any; then just drop the third argument for the call). Because this is a <code>GET</code> call there’s a <code>.get()</code> as part of the method name.</p>
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 	<p>Here’s the much simpler <a href="https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record">Create DNS record</a> API call.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/giA1qSsZ55yOwwczVcXBk/08dd0a38bcde2464b411de2faff2e1f4/2-create_dns_record.png" alt="alt" class="kg-image" width="892" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/giA1qSsZ55yOwwczVcXBk/5f7b3b2a9e56856ccd75af6e054791f2/2-create_dns_record.png" alt="alt" class="kg-image" width="892" height="340" loading="lazy">
 
 	</figure>
 	<p>This would be coded into the Python method <code>CloudFlare.zones.dns_records.post()</code> with the <code>zone_id</code> as the first argument and the required parameters passed as data. Because this is a <code>POST</code> call there’s a <code>.post()</code> as part of the method name.</p>
@@ -121,7 +121,7 @@ $</code></pre>
 	<p>See how the commands arguments match the <a href="https://api.cloudflare.com/#zone-purge-all-files">purge_cache</a> API documentation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3E5z7ixk8yXPm3sg4hYmGT/1108337dd020efec7c0fe78037dc97e7/3-purge.png" alt="alt" class="kg-image" width="894" height="316" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3E5z7ixk8yXPm3sg4hYmGT/549732f7675c9a925056e141571ee9e6/3-purge.png" alt="alt" class="kg-image" width="894" height="316" loading="lazy">
 
 	</figure>
 	<p>Finally, here’s an example of turning on DNSSEC via the API.</p>

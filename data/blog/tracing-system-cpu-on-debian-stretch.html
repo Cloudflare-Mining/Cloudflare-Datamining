@@ -1,9 +1,9 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g2xrmIfJIGHgqqL9PyoFb/bd50550e42b158286f26d5ba9b9d4142/tracing-system-cpu-on-debian-stretch.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g2xrmIfJIGHgqqL9PyoFb/47034cfa218818054ecb8446be9dbbec/tracing-system-cpu-on-debian-stretch.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is a heavily truncated version of an internal blog post from August 2017. For more recent updates on Kafka, check out </i><a href="https://blog.cloudflare.com/squeezing-the-firehose"><i>another blog post on compression</i></a><i>, where we optimized throughput 4.5x for both disks and network.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6o0r4Jk1oqG6ncMv8xWNb3/5a9162d233c788897a93a8288097114d/photo-1511971523672-53e6411f62b9" alt="" class="kg-image" width="1080" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6o0r4Jk1oqG6ncMv8xWNb3/08bd0256a7509447b87aa08a7e7305f5/photo-1511971523672-53e6411f62b9" alt="" class="kg-image" width="1080" height="720" loading="lazy">
 
 	</figure>
 	<p>Photo by <a href="https://unsplash.com/@alex_povolyashko?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Alex Povolyashko</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
@@ -29,14 +29,14 @@
 	<p>We upgraded one Kafka <code>http</code> node, and it did not go as planned:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/1.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hbPsT1ahBYgS806ztIpG3/7f0943af12405ff2d154a13402b70af4/1.png" alt="1" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hbPsT1ahBYgS806ztIpG3/070d402c9a5c1d38f257d65d87252f6c/1.png" alt="1" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<p>Having 5x CPU usage was definitely an unexpected outcome. For control datapoints, we compared to a node where no upgrade happened, and an intermediary node that received a software stack upgrade, but not an OS upgrade. Neither of these two nodes experienced the same CPU saturation issues, even though their setups were practically identical.</p>
 	<p>For debugging CPU saturation issues, we call on <code>perf</code> to fish out details:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/2-3.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FsdAiwWMDh5t6VTTLuSV9/2f9ed6cedf9d2af665ce5be67916a7e3/2-3.png" alt="2-3" class="kg-image" width="1849" height="1640" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FsdAiwWMDh5t6VTTLuSV9/14c09b1b8fc3053a3dd4d49ff467f19a/2-3.png" alt="2-3" class="kg-image" width="1849" height="1640" loading="lazy">
 		</a>
 	</figure>
 	<p><i>The command used was: </i><code><i>perf top -F 99</i></code><i>.</i></p>
@@ -159,7 +159,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/9.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fhMCSmQj4IC8MLxPN2d1V/83a41d1552987dbb82e798e25d836703/9.png" alt="9" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fhMCSmQj4IC8MLxPN2d1V/60a107967bdede0ba8c4465090fb6ec4/9.png" alt="9" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<ul>
@@ -169,7 +169,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/10.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6b523AB48TNUF2jj6OYhxi/862e02270df6becdc5e3108009293cd9/10.png" alt="10" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6b523AB48TNUF2jj6OYhxi/9cadde05d8cf89187f182b56c48b3c1b/10.png" alt="10" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<p>At first it looked like Jessie was doing <code>writev</code> instead of <code>sendfile</code>, but the full flamegraphs revealed that Strech was executing <code>sendfile</code> a lot slower.</p>
@@ -181,7 +181,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/11.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XXts4Hvy58nwa8FG3ZNfT/ba103012dbca9e74f35492cd84cf7edd/11.png" alt="11" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XXts4Hvy58nwa8FG3ZNfT/2e36ce3aa2b111059bcff6a21e3da712/11.png" alt="11" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<ul>
@@ -191,7 +191,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/12.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32BB3vFsnbl7ul6b6Aa5MP/88b6c4843847ca32f89cb8443fffe62c/12.png" alt="12" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32BB3vFsnbl7ul6b6Aa5MP/10788cfa90962c2034e7be7fc6b76a1f/12.png" alt="12" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<p>And zoomed in:</p>
@@ -202,7 +202,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/13.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75TU9Q58iCRcCKAt6eZxf3/6e5a1fd8a74bbdd62f26939b2f43bbb4/13.png" alt="13" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75TU9Q58iCRcCKAt6eZxf3/4cdf2f2038bb4e7ef813ba7e21562121/13.png" alt="13" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<ul>
@@ -212,7 +212,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/14.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fgUsgL2hUrhJHg3ns5HeE/0575371dd3725957d7e865b28e68c253/14.png" alt="14" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fgUsgL2hUrhJHg3ns5HeE/3b733ecc2ed4ebee2a751394a81804fb/14.png" alt="14" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<p>These two look very different.</p>
@@ -374,7 +374,7 @@ lock_timer_base                        140085</code></pre>
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/15.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PJjYK3FzgAeQxpbHPGn5i/72e92b049fd6dd87a00d333edd9e7142/15.png" alt="15" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PJjYK3FzgAeQxpbHPGn5i/06f546c8ea1cda3d58c4c54dd3618a15/15.png" alt="15" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<ul>
@@ -384,7 +384,7 @@ lock_timer_base                        140085</code></pre>
 	</ul>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/16.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7M8XyRvy7vHDytdpWJQXAr/965fc3941b469fb80137ab0c512b6283/16.png" alt="16" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7M8XyRvy7vHDytdpWJQXAr/784aa92acf4f92c8896d08e2fede9bcd/16.png" alt="16" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<p>We then traced the functions that were different:</p>
@@ -673,7 +673,7 @@ udp-fragmentation-offload: on</code></pre>
 	<p>The last missing piece we found was that offload changes are applied only during connection initiation, so we restarted Kafka, and we immediately saw a performance improvement (green line):</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/17.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73uyXt5y4F1L6AUULX8S9g/d640687946250a1636240a7abb52b223/17.png" alt="17" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73uyXt5y4F1L6AUULX8S9g/e80494d09daf7d0b87884c62fd5341e6/17.png" alt="17" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<p>Not enabling offload features when possible seems like a pretty bad regression, so we filed a ticket for <code>systemd</code>:</p>
@@ -686,13 +686,13 @@ udp-fragmentation-offload: on</code></pre>
 	<p>Having a fix enabled, we rebooted our <code>logs</code> Kafka cluster to upgrade to the latest kernel, and our 5 day CPU usage history yielded positive results:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/18.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VBuiRySNEfFiN8LQ9nUg5/bce23a8e7e8eee4ad19b0768dcf237bc/18.png" alt="18" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VBuiRySNEfFiN8LQ9nUg5/a5a1881b229cb1e173663af52f3eb136/18.png" alt="18" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<p>The DNS cluster also yielded positive results, with just 2 nodes rebooted (purple line going down):</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/19.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CWuJQCmMt7QarvAdU0b3g/641e0fd513eb61fc32f3f2b8e49b9f4d/19.png" alt="19" class="kg-image" width="3104" height="1972" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CWuJQCmMt7QarvAdU0b3g/c35ad9f7a9ab6113614f736f0e682d64/19.png" alt="19" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
 	<div class="flex anchor relative">

@@ -1,10 +1,10 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DYVktd4CLuqhNQkxYD74n/619f57099bf2af8ac3eec400dc8624cf/an-introduction-to-three-phase-power-and-pdus.jpg" alt="">
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DYVktd4CLuqhNQkxYD74n/49c2fcbc3cc837d91d2d641b350c12df/an-introduction-to-three-phase-power-and-pdus.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Our fleet of over 200 locations comprises various generations of servers and routers. And with the ever changing landscape of services and computing demands, it’s imperative that we manage power in our data centers right. This blog is a brief Electrical Engineering 101 session going over specifically how power distribution units (PDU) work, along with some good practices on how we use them. It appears to me that we could all use a bit more knowledge on this topic, and more love and appreciation of something that’s critical but usually taken for granted, like hot showers and opposable thumbs.</p>
 	<p>A PDU is a device used in data centers to distribute power to multiple rack-mounted machines. It’s an industrial grade power strip typically designed to power an average consumption of about <a href="https://www.eia.gov/tools/faqs/faq.php?id=97&amp;t=3">seven US households</a>. Advanced models have monitoring features and can be accessed via <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> or webGUI to turn on and off power outlets. How we choose a PDU depends on what country the data center is and what it provides in terms of <a href="https://www.worldstandards.eu/electricity/three-phase-electric-power">voltage, phase, and plug type</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VQToUAxoKYdAqSWgqOyDS/96e96552c7dcec209262323090204046/Artboard-1.png" alt="" class="kg-image" width="1500" height="1271" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VQToUAxoKYdAqSWgqOyDS/15afd55e2d243d5ae444bf39929cc88c/Artboard-1.png" alt="" class="kg-image" width="1500" height="1271" loading="lazy">
 
 	</figure>
 	<p>For each of our racks, all of our dual power-supply (PSU) servers are cabled to one of the two vertically mounted PDUs. As shown in the picture above, one PDU feeds a server’s PSU via a red cable, and the other PDU feeds that server’s other PSU via a blue cable. This is to ensure we have power redundancy maximizing our service uptime; in case one of the PDUs or server PSUs fail, the redundant power feed will be available keeping the server alive.</p>
@@ -20,18 +20,18 @@
 	<p>The sine wave can be explained by Faraday’s Law and by looking at how an AC power generator works. Faraday’s Law tells us that a current is induced to flow due to a changing magnetic field. Below illustrates a simple generator with a permanent magnet rotating at constant speed and a coil coming in contact with the magnet’s magnetic field. Magnetic force is strongest at the North and South ends of the magnet. So as it rotates on itself near the coil, current flow fluctuates in the coil. One complete rotation of the magnet represents one phase. As the North end approaches the coil, current increases from zero. Once the North end leaves, current decreases to zero. The South end in turn approaches, now the current “increases” in the opposite direction. And finishing the phase, the South end leaves returning the current back to zero. Current <i>alternates</i> its direction at every half cycle, hence the naming of Alternating Current.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CcXLX2BlNWmNeVBk9YOJz/c4a5be8770ae4f13228bf3addd888896/Artboard-2-1.png" alt="" class="kg-image" width="1200" height="491" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CcXLX2BlNWmNeVBk9YOJz/68fd03d71ec5a29a4c13454e4ce5fb72/Artboard-2-1.png" alt="" class="kg-image" width="1200" height="491" loading="lazy">
 
 	</figure>
 	<p>Current and voltage in AC power fluctuate in-phase, or “in tandem”, with each other. So by Ohm's Law of Power = Voltage x Current, power will always be positive. Notice on the graph below that AC power (Watts) has two peaks per cycle. But for practical purposes, we'd like to use a constant power value. We do that by interpreting AC power into "DC" power using root-mean-square (RMS) averaging, which takes the max value and divides it by √2. For example, in the US, our conditions are 208V 24A at 60Hz. When we look at spec sheets, all of these values can be assumed as RMS'd into their constant DC equivalent values. When we say we're fully utilizing a PDU's max capacity of 5kW, it actually means that the power consumption of our machines bounces between 0 and 7.1kW (5kW x √2).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fM63pmekFqVlqHI6opB4V/77e1c301a9bc874949c80f903946c144/image13.png" alt="" class="kg-image" width="807" height="479" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fM63pmekFqVlqHI6opB4V/c26220c91da05301a7573407d513eafe/image13.png" alt="" class="kg-image" width="807" height="479" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6n22LgiBvxJ4hrF6UdL0em/e348d6792242537012a9f71d17da2620/image6.png" alt="" class="kg-image" width="808" height="479" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6n22LgiBvxJ4hrF6UdL0em/058bcddee79584ca845603f0ae6ca706/image6.png" alt="" class="kg-image" width="808" height="479" loading="lazy">
 
 	</figure>
 	<p>It’s also critical to figure out the sum of power our servers will need in a rack so that it falls under the PDU’s design max power capacity. For our US example, a PDU is typically 5kW (208 volts x 24 amps); therefore, we're budgeting 5kW and fit as many machines as we can under that. If we need more machines and the total sum power goes above 5kW, we'd need to provision another power source. That would lead to possibly another set of PDUs and racks that we may not fully use depending on demand; e.g. more underutilized costs. All we can do is abide by P = V x I.</p>
@@ -55,7 +55,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6j4fgzSlb8GU9fsGwywC11/ed156203ed76ff919ca4d8f199806e88/image5-1.png" alt="" class="kg-image" width="1200" height="120" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6j4fgzSlb8GU9fsGwywC11/a761ff04c713ff3cbc5a5b04f5e067b0/image5-1.png" alt="" class="kg-image" width="1200" height="120" loading="lazy">
 
 	</figure>
 	<p>The PDU shown above is a 3-phase model of 48 outlets. We can see three pairs of circuit breakers for the three branches that are intertwined with each other <b>—</b> white, grey, and black. Industry demands today pressure engineers to maximize compute performance and minimize physical footprint, making the 3-phase PDU a widely-used part of operating a data center.</p>
@@ -70,13 +70,13 @@
 	<p>A 3-phase AC generator has three coils instead of one where the coils are 120 degrees apart inside the cylindrical core, as shown in the figure below. Just like the 1-phase generator, current flow is induced by the rotation of the magnet thus creating power from each coil sequentially at every one-third of the magnet’s rotation cycle. In other words, we’re generating three 1-phase power offset by 120 degrees.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JNipgmV5CwJESOZLyeiy2/86c513ee9dbcecfeb39af20dc586ed83/Artboard-3-1.png" alt="" class="kg-image" width="1200" height="471" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JNipgmV5CwJESOZLyeiy2/8a8cd916f8af4b820b8de6d93ed237ce/Artboard-3-1.png" alt="" class="kg-image" width="1200" height="471" loading="lazy">
 
 	</figure>
 	<p>A 3-phase feed is set up by joining any of its three coils into line pairs. L1, L2, and L3 coils are live wires with each on their own <i>phase</i> carrying their own <i>phase</i> voltage and <i>phase</i> current. Two phases joining together form one <i>line</i> carrying a common <i>line</i> voltage and <i>line</i> current. L1 and L2 phase voltages create the L1/L2 line voltage. L2 and L3 phase voltages create the L2/L3 line voltage. L1 and L3 phase voltages create the L1/L3 line voltage.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/aEGubJ4ZOZYPBdqTyT2If/c1dd7c7703c7c888612abd7d64750ed0/image9-1.jpg" alt="" class="kg-image" width="811" height="782" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aEGubJ4ZOZYPBdqTyT2If/6d9ec3e4af13c9a9b8edfc3ddf4235ab/image9-1.jpg" alt="" class="kg-image" width="811" height="782" loading="lazy">
 
 	</figure>
 	<p>Let’s take a moment to clarify the terminology. Some other sources may refer to line voltage (or current) as line-to-line or phase-to-phase voltage (or current). It can get confusing, because line voltage is the same as phase voltage in 1-phase circuits, as there’s only one phase. Also, the <i>magnitude</i> of the line voltage is equal to the <i>magnitude</i> of the phase voltage in 3-phase Delta circuits, while the <i>magnitude</i> of the line current is equal to the <i>magnitude</i> of the phase current in 3-phase Wye circuits.</p>
@@ -90,19 +90,19 @@
 	<p>Delta and Wye circuits are the two methods that three wires can join together. This happens both at the power source with three coils and at the PDU end with three branches of outlets. Note that the generator and the PDU don’t need to match each other’s circuit types.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yBiiAFcHTedr9s3s3QSPL/39f6fba8331bc70477cff2c184587ba2/image8.png" alt="" class="kg-image" width="1278" height="628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yBiiAFcHTedr9s3s3QSPL/52c6822b94b0816b139570c334c62998/image8.png" alt="" class="kg-image" width="1278" height="628" loading="lazy">
 
 	</figure>
 	<p>On PDUs, these phases join when we plug servers into the outlets. So we conceptually use the wirings of coils above and replace them with resistors to represent servers. Below is a simplified wiring diagram of a 3-phase Delta PDU showing the three line pairs as three modular branches. Each branch carries two phase currents and its own one common voltage drop.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xV9Yds4Dzc7VOVFEmrg7X/f6885f808adac071216b859336e0b2cc/image15.png" alt="" class="kg-image" width="1796" height="338" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xV9Yds4Dzc7VOVFEmrg7X/f398859d93ca13341b641ca3ec533753/image15.png" alt="" class="kg-image" width="1796" height="338" loading="lazy">
 
 	</figure>
 	<p>And this one below is of a 3-phase Wye PDU. Note that Wye circuits have an additional line known as the neutral line where all three phases meet at one point. Here each branch carries one phase and a neutral line, therefore one common current. The neutral line isn’t considered as one of the phases.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6P2JKqoppmgeEjomv9jmmY/8b8130b80e9641a85235290fa325778a/image20.png" alt="" class="kg-image" width="1999" height="379" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6P2JKqoppmgeEjomv9jmmY/8fe420607f4a0f0abba13cdf82aa117a/image20.png" alt="" class="kg-image" width="1999" height="379" loading="lazy">
 
 	</figure>
 	<p>Thanks to a neutral line, a Wye PDU can offer a second voltage source that is √3 times lower for smaller devices, like laptops or monitors. Common voltages for Wye PDUs are 230V/400V or 120V/208V, particularly in North America.</p>
@@ -124,7 +124,7 @@ L2 = |L2|∠-120° = α∠-120°</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NtOvL0EuHAqcE84gSFJsf/a465b760c97a0d8349c676faaf15fd6a/image10.png" alt="" class="kg-image" width="1748" height="567" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NtOvL0EuHAqcE84gSFJsf/64042e5e1175757f216824d49222b611/image10.png" alt="" class="kg-image" width="1748" height="567" loading="lazy">
 
 	</figure>
 	<p>$$\text{L1/L2} = α∠\text{0°} - α∠\text{-120°}$$</p>
@@ -173,26 +173,26 @@ L2 = |L2|∠-120° = α∠-120°</code></pre>
 	<p>Splitting 4 chassis into 3 branches evenly is impossible, and will force us to have one of the branches to have 2 chassis. That would lead to a non-ideal phase balancing:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vAVIr6zDrLo4vIWjmtQYL/3125689d9c651bcb6ea9fd4b164a0259/image17.png" alt="" class="kg-image" width="1999" height="1069" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vAVIr6zDrLo4vIWjmtQYL/50f9ae2af265da7f953e05e96003f47f/image17.png" alt="" class="kg-image" width="1999" height="1069" loading="lazy">
 
 	</figure>
 	<p>Keeping phase currents under 24A, there's only 1.1A (24A - 22.9A) to add on L1 or L2 before the PDU gets overloaded. Say we want to add as many machines as we can under the PDU’s power capacity. One solution is we can add up to 242W on the L1/L2 branch until both L1 and L2 currents reach their 24A limit.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NP9EOPb0h2lEXuvlSdg3B/1fa2739a8b8d642506872a5b50eed5e7/image18.png" alt="" class="kg-image" width="1999" height="1072" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NP9EOPb0h2lEXuvlSdg3B/9a6f53163c45fd3b8f2ee01964c0bd86/image18.png" alt="" class="kg-image" width="1999" height="1072" loading="lazy">
 
 	</figure>
 	<p>Alternatively, we can add up to 298W on the L2/L3 branch until L2 current reaches 24A. Note we can also add another 298W on the L3/L1 branch until L1 current reaches 24A.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ECQoHBzqhPuq38sNizat/89340ed86b0f1e3601841a9cb9e94992/image16.png" alt="" class="kg-image" width="1999" height="1075" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64ECQoHBzqhPuq38sNizat/6070a8f2acad6cb76fae4e32f1c566df/image16.png" alt="" class="kg-image" width="1999" height="1075" loading="lazy">
 
 	</figure>
 	<p>In the examples above, we can see that various solutions are possible. Adding two 298W machines each at L2/L3 and L3/L1 is the most phase balanced solution, given the parameters. Nonetheless, PDU capacity isn't optimized at 7.8kW.</p>
 	<p>Dealing with a 1800W server is not ideal, because whichever branch we choose to power one would significantly swing the phase balance unfavorably. Thankfully, our <a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">Gen X servers</a> take up less space and are more power efficient. Smaller footprint allows us to have more flexibility and fine-grained control over our racks in many of our diverse data centers. Assuming each 1U server is 450W, as if we physically split the 1800W 2U4N into fours each with their own power supplies, we're now able to fit 18 nodes. That's 2 more nodes than the four 2U4N setup:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eBaV5AwmB0D31FSgEw65b/9b10b79710165889b01210c848b252a2/image21.png" alt="" class="kg-image" width="1999" height="1072" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eBaV5AwmB0D31FSgEw65b/bfd1bd88c6e6078edf84523c2852081a/image21.png" alt="" class="kg-image" width="1999" height="1072" loading="lazy">
 
 	</figure>
 	<p>Adding two more servers here means we've increased our value by 12.5%. While there are more factors not considered here to calculate the Total Cost of Ownership, this is still a great way to show we can be smarter with asset costs.</p>

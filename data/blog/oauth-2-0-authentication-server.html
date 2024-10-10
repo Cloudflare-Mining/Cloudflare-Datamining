@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Y2cbwlsOkF1fkvNHmspE/b004f98d1549b580b3a2008c38812549/oauth-2-0-authentication-server.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Y2cbwlsOkF1fkvNHmspE/a45e645210f8354dcf0d481341381cf9/oauth-2-0-authentication-server.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
 	<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
@@ -34,7 +34,7 @@
 	<p>On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VFGcOfkTKZXNuEHBDlReT/5206887028df2278ee441724b5ba9972/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" class="kg-image" width="510" height="518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VFGcOfkTKZXNuEHBDlReT/4ca67344666d87c20215defd524a9b70/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" class="kg-image" width="510" height="518" loading="lazy">
 
 	</figure>
 	<p>To put and get items from storage using KV Storage syntax:</p>

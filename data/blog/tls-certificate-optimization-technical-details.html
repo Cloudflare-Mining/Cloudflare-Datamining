@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZIHOxPdIx90SbuqE7QEd1/0c698faf77c2e53b0bf57ed120883d82/tls-certificate-optimization-technical-details.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZIHOxPdIx90SbuqE7QEd1/95c52fe343385640142f9c1f2ea77fbb/tls-certificate-optimization-technical-details.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="overview">Overview</h3>
@@ -40,7 +40,7 @@
 	<p>Then, for each certificate in the assembled chain, the browser extracts the signature provided by the issuing certificate authority (CA) and verifies it using the issuer’s public key. To do so, the browser uses the specified hashing algorithm — typically SHA-1 or SHA-256 — to create a digest of the data contained within the <a href="http://tools.ietf.org/html/rfc5280#section-4.1">To Be Signed (TBS) Certificate section</a> of the X509 structure (e.g., expiration date, valid hostnames, etc.). It then takes that digest, along with the issuer's public key and signature, and runs it through the "verify" function for the signature algorithm. If the output of this verify function is "true", the browser knows the structure is intact and unchanged from when the CA vetted it, as only someone in possession of the corresponding private key could have produced a valid signature.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KoMEV43Sf1gU0AE99fcgQ/fb5dc5ad5a1b3eede7798ae3b4dbcd70/ca-cert-signing.png" alt="Creating and validating the CA's signature" class="kg-image" width="1326" height="982" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KoMEV43Sf1gU0AE99fcgQ/d2319780dd58af5c06561d92628d6943/ca-cert-signing.png" alt="Creating and validating the CA's signature" class="kg-image" width="1326" height="982" loading="lazy">
 
 	</figure>
 	<p><i>Figure 4 - Validating a certificate signature</i></p>
@@ -58,7 +58,7 @@
 	<p>Below is the logic tree that our edge traverses to craft the appropriate response to the client's <b>ClientHello</b>. We’ve labeled each decision point with a number that corresponds to the headings below so that you can understand each step in the process. Before you attempt to verify this logic with your own zone, please remember that i) this flow only applies to paid plans—free plans always see the SHA-256/ECDSA certificate—and ii) you may have <a href="https://support.cloudflare.com/hc/en-us/articles/214770928-Legacy-Browser-Support">Legacy Browser Support disabled</a>, so make sure to confirm on the Crypto tab in your CloudFlare dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29TLfMfCAPTDpQygz5ZK0v/c4d6e4b80a180b19794cf2a4a3993f4c/certificate_optimization_logic.png" alt="Certificate Optimization Logic for Paid plans" class="kg-image" width="1800" height="1369" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29TLfMfCAPTDpQygz5ZK0v/3f6c549538c598bbc5046f93b0492fdd/certificate_optimization_logic.png" alt="Certificate Optimization Logic for Paid plans" class="kg-image" width="1800" height="1369" loading="lazy">
 
 	</figure>
 	<p><i>Figure 5 - Certificate Optimization Logic for Paid plans</i></p>

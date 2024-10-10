@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vczhB7W7AF3k1mS6hxo5g/f0f9b488d1c1004150f6b45319123011/moving-quicksilver-into-production.png" alt="">
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vczhB7W7AF3k1mS6hxo5g/26a9f591d42afbaa066bbe87258cbbeb/moving-quicksilver-into-production.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>One of the great arts of software engineering is making updates and improvements to working systems without taking them offline. For some systems this can be rather easy, spin up a new web server or load balancer, redirect traffic and you’re done. For other systems, such as the core distributed data store which keeps millions of websites online, it’s a bit more of a challenge.</p>
 	<p>Quicksilver is the data store responsible for storing and distributing the billions of KV pairs used to configure the millions of sites and Internet services which use Cloudflare. <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">In a previous post</a>, we discussed why it was built and what it was replacing. Building it, however, was only a small part of the challenge. We needed to deploy it to production into a network which was designed to be fault tolerant and in which downtime was unacceptable.</p>
@@ -14,13 +14,13 @@
 	<p>Our goal in deploying Quicksilver was to run it in parallel with our then existing KV distribution tool, Kyoto Tycoon. Once we had evaluated its performance and scalability, we would gradually phase out reads and writes to Kyoto Tycoon, until only Quicksilver was handling production traffic. To make this possible we decided to build a bridge - QSKTBridge.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pUDqhqWX3ZCG0ihI9972P/946c3f8f6cb7d493828d7bdd215e2fb8/image3-16.png" alt="" class="kg-image" width="1635" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pUDqhqWX3ZCG0ihI9972P/a6b75ed8cf5e34d9c44c1d6229faf98e/image3-16.png" alt="" class="kg-image" width="1635" height="1067" loading="lazy">
 
 	</figure>
 	<p><i>Image Credit: </i><a href="https://en.wikipedia.org/wiki/Bodie_Creek_Suspension_Bridge"><i>https://en.wikipedia.org/wiki/Bodie_Creek_Suspension_Bridge</i></a></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AeGYvTKsKEaF4n4llh3KY/53107c561d9c2476f4786d74953f2e1f/image1-18.png" alt="" class="kg-image" width="693" height="404" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AeGYvTKsKEaF4n4llh3KY/56f665316d1a91f6f1635a9fc0e13b96/image1-18.png" alt="" class="kg-image" width="693" height="404" loading="lazy">
 
 	</figure>
 	<p>Our bridge replicated from Kyoto Tycoon, sending write and delete commands to our Quicksilver root node. This bridge service was deployed on Kubernetes within our infrastructure, consumed the Kyoto Tycoon update feed, and wrote the batched changes every 500ms.</p>
@@ -58,7 +58,7 @@
 	<p>Here are some screenshots showing FL metrics. The vertical red line marks the switchover point, on the left of the line is Kyoto Tycoon, on the right is Quicksilver. The drop immediately before the line is due to the upgrade procedure itself. We saw an immediate and significant improvement in error rates and response time by migrating to Quicksilver.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VmLmi8X5cQlWQ722gNbTq/1c25b05cbe259cf2bb45ffc23ad56a8d/image6-6.png" alt="" class="kg-image" width="793" height="657" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VmLmi8X5cQlWQ722gNbTq/124a47513364913e9fae8b6db4d9c42e/image6-6.png" alt="" class="kg-image" width="793" height="657" loading="lazy">
 
 	</figure>
 	<p>The middle graph shows the error count. Green dot errors are non-critical errors: the first request to Kyoto Tycoon/Quicksilver failed so FL will try again. The red dot errors are the critical ones, they mean the second request also failed. In that case FL will return an error code to an end user. Both counts decreased substantially.</p>
@@ -128,7 +128,7 @@
 	<p><i>Note: Cloudflare’s migration from Marathon to Kubernetes was happening in parallel to this task so each time we refer to Kubernetes it is likely that the job was started on Marathon before being migrated later on.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1D3wqBGrywDAwzET2SJSpA/ba07dbeaa8c28c61e9cc67279c3b6cd3/Quicksilver-blog-_2x--1-.png" alt="" class="kg-image" width="740" height="1006" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1D3wqBGrywDAwzET2SJSpA/35969bba003824ef7828842b97ce44fa/Quicksilver-blog-_2x--1-.png" alt="" class="kg-image" width="740" height="1006" loading="lazy">
 
 	</figure>
 	<p>The diagram above shows how all components below interact with each other.</p>
@@ -159,7 +159,7 @@
 	<p>We have made great progress, Kyoto Tycoon is no longer among us, we smoothly moved all Cloudflare services to Quicksilver, our new KV store. And things now look more like this.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TAvdFTskE3MjXy8GF8GUP/e205f6d66c39570c3d987bcb7df72ccf/Quicksilver-blog-2_2x.png" alt="" class="kg-image" width="517" height="520" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TAvdFTskE3MjXy8GF8GUP/c5959a7d5ae9ea84a195db68fd673491/Quicksilver-blog-2_2x.png" alt="" class="kg-image" width="517" height="520" loading="lazy">
 
 	</figure>
 	<p>The job is still far from done though. The Quicksilver root server was still a single point of failure, so we decided to build Quicksilver Raft - a <a href="https://en.wikipedia.org/wiki/Raft_(computer_science)">Raft</a>-enabled root cluster using the etcd Raft package. It was harder than I originally thought. Adding Raft into Quicksilver required proper synchronization between the Raft snapshot and the current Quicksilver DB. Sometimes there are situations where Quicksilver needs to fall back to asynchronous replication to catch up before doing proper Raft synchronous writes. Getting all of this to work required deep changes in our code base, which also proved to be hard to build proper unit and integration tests. But removing single points of failure is worth it.</p>
@@ -185,13 +185,13 @@
 	<p>We started with this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5D04BFHgTQ5PLvyJy8zsTo/30d61e4c86c559526ea6c9a43c0f0975/Quicksilver-blog-3_2x--1-.png" alt="" class="kg-image" width="1070" height="608" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5D04BFHgTQ5PLvyJy8zsTo/292e21bd14efd716055e4065f558e86b/Quicksilver-blog-3_2x--1-.png" alt="" class="kg-image" width="1070" height="608" loading="lazy">
 
 	</figure>
 	<p>We moved our 10 QSrest instances one after another from the legacy root node to write against the HA cluster. We did this slowly without any significant issue and we were finally able to turn off the legacy top-main.This is what we ended up with:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qOBQIBnPZVqpOuQ9co2zK/dba00103afbd86e65784b23b76032642/Quicksilver-blog-4_2x.png" alt="" class="kg-image" width="989" height="608" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qOBQIBnPZVqpOuQ9co2zK/e5c9f669c0ce7f2c11959a6f68ec4cd2/Quicksilver-blog-4_2x.png" alt="" class="kg-image" width="989" height="608" loading="lazy">
 
 	</figure>
 	<p>And that was it, <i>Quicksilver was running in the wild without a hardware single point of failure.</i></p>
@@ -209,7 +209,7 @@
 	<p>The workaround was to serialize bootstrapping across instances. We did this by implementing a lock between Quicksilver processes, a client grabs the lock to bootstrap and gives it back once done, ready for the next client. The lock moves around in round robin fashion forever.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/525KVnuK1hF4S7YuihIwP4/74b56389d40830421d3387a0a2dd7bbd/Quicksilver-blog-5_2x.png" alt="" class="kg-image" width="549" height="606" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/525KVnuK1hF4S7YuihIwP4/a1d0607e4410d87240b9b356192bc248/Quicksilver-blog-5_2x.png" alt="" class="kg-image" width="549" height="606" loading="lazy">
 
 	</figure>
 	<p>Unfortunately, we hit another page cache thrashing issue. We know that LMDB mostly does random I/O but we turned on readahead to load as much DB as possible into memory. But again as our DBs grew, the readahead started evicting useful pages. So we improved the performance by… disabling it.</p>

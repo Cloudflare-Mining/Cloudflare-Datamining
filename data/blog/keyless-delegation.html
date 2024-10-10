@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KXdQTkoiXl3X5qGvdyBM7/3a5830ae6b3715e12e85d107de9416bf/Keyless-SSL--copy_2x.png" alt="" class="kg-image" width="2000" height="1043" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KXdQTkoiXl3X5qGvdyBM7/3a00c9e01d13a6e75005c038ecea252d/Keyless-SSL--copy_2x.png" alt="" class="kg-image" width="2000" height="1043" loading="lazy">
 
 	</figure>
 	<p>Today we’re happy to announce support for a new cryptographic protocol that helps make it possible to deploy encrypted services in a global network while still maintaining fast performance and tight control of private keys: Delegated Credentials for TLS. We have been working with partners from Facebook, Mozilla, and the broader IETF community to define this emerging standard. We’re excited to share the gory details today in this blog post.</p>
@@ -32,13 +32,13 @@
 	<p>Enter the new TLS feature of <a href="https://tools.ietf.org/html/draft-ietf-tls-subcerts-04">Delegated Credentials</a> (DCs). A delegated credential is a short-lasting key that the certificate’s owner has delegated for use in TLS. They work like a power of attorney: your server authorizes our server to terminate TLS for a limited time. When a browser that supports this protocol connects to our edge servers we can show it this “power of attorney”, instead of needing to reach back to a customer’s server to get it to authorize the TLS connection. This reduces latency and improves performance and reliability.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wNKw1iaNaUHBESq06OXIK/8767082b256b112864708135bcfa8228/pull-diagram-1.jpg" alt="" class="kg-image" width="512" height="277" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wNKw1iaNaUHBESq06OXIK/fbbba3ca4614c398480a03e7ce00fc1b/pull-diagram-1.jpg" alt="" class="kg-image" width="512" height="277" loading="lazy">
 
 	</figure>
 	<p>The pull model</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qfW3dQvRSnHowxNEW2lSf/b8da1226e4efaa9304549d17f57871e4/push-diagram.jpg" alt="" class="kg-image" width="512" height="292" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qfW3dQvRSnHowxNEW2lSf/d457a3d0b7c52f9c3523c7f2d73cd94a/push-diagram.jpg" alt="" class="kg-image" width="512" height="292" loading="lazy">
 
 	</figure>
 	<p>The push model</p>

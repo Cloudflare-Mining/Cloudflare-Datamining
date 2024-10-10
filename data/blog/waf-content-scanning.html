@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UtLHKRNQe1iJlf68d8cTk/84d698e42dc7195f260439039bbfca58/image3-2.png" alt="How Cloudflare can help stop malware before it reaches your app" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UtLHKRNQe1iJlf68d8cTk/2f3a221efb334c0aa038a44277b91c2a/image3-2.png" alt="How Cloudflare can help stop malware before it reaches your app" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Let’s assume you manage a job advert site. On a daily basis job-seekers will be uploading their CVs, cover letters and other supplementary documents to your servers. What if someone tried to upload malware instead?</p>
@@ -27,7 +27,7 @@
 	<p>In the dashboard the rule would look like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6daRCuMMjCfLuvANxoRSbS/2392b3281c41093cfb6c07303395ac6b/image4.png" alt="a WAF Custom Rule to block malicious file uploads" class="kg-image" width="1578" height="840" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6daRCuMMjCfLuvANxoRSbS/51056b8e1ff80c7ae1788c98c62956bb/image4.png" alt="a WAF Custom Rule to block malicious file uploads" class="kg-image" width="1578" height="840" loading="lazy">
 
 	</figure>
 	<p>Many other use cases can be achieved by leveraging the metadata exposed by the WAF Content Scanning engine. For example, let’s say you only wanted to allow PDF files to be uploaded on a given endpoint. You would achieve this by deploying the following WAF Custom Rule:</p>
@@ -40,7 +40,7 @@
 	<p>Another very common use case is supporting file upload endpoints that accept JSON content. In this instance files are normally embedded into a JSON payload after being base64-encoded. If your application has such an endpoint, you can provide additional metadata to the scanning engine to recognise the traffic by submitting a <a href="https://developers.cloudflare.com/waf/about/content-scanning/#custom-scan-expressions">custom scan expression</a>. Once submitted, files within JSON payloads will be parsed, decoded, and scanned automatically. In the event you want to issue a block action, you can use a <a href="https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#configuring-a-custom-response-for-blocked-requests">JSON custom response type</a> so that your web application front end can easily parse and display error messages:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lLy5oO6L0sSZuMpRwpYqf/5dd186d4063322ff514ab7a6c6324e66/image1.png" alt="a WAF Custom Rule to block malicious file uploads on JSON endpoints" class="kg-image" width="1662" height="1072" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lLy5oO6L0sSZuMpRwpYqf/3579d013c6073b33fe91eab44e3ad26d/image1.png" alt="a WAF Custom Rule to block malicious file uploads on JSON endpoints" class="kg-image" width="1662" height="1072" loading="lazy">
 
 	</figure>
 	<p>The full list of fields exposed by the WAF Content Scanning engine can be found on our <a href="https://developers.cloudflare.com/waf/about/content-scanning">developer documentation</a>.</p>
@@ -81,7 +81,7 @@
 	<p>At Cloudflare, we try to leverage our horizontal architecture to build scalable software. This means the underlying scanner is deployed on every server that handles customer HTTP/S traffic. The diagram below describes the setup:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/249nbQXwboFqmUXV7jTmph/f1c1e587d4371f1b8f73953ddc392ed1/image5.png" alt="Diagram showing content scanning blocking malicious file upload before it reaches customer origin." class="kg-image" width="1999" height="870" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/249nbQXwboFqmUXV7jTmph/06851ef35672f016e1ab600c3f39cd74/image5.png" alt="Diagram showing content scanning blocking malicious file upload before it reaches customer origin." class="kg-image" width="1999" height="870" loading="lazy">
 
 	</figure>
 	<p>Having each server perform the scanning locally helps ensure latency impact is reduced to a minimum to applicable HTTP requests. The actual scanning engine is the same one used by the <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Web Gateway</a>, our forward proxy solution that among many other things, helps keep end user devices safe by blocking attempts to download malware.</p>
@@ -98,7 +98,7 @@
 	<p>First, this allows us to provide visibility into your application traffic, without you having to deploy any mitigation. This automatically opens up a great use case: discovery. For large enterprise applications security teams may not be aware of which paths or endpoints might be expecting file uploads from the Internet. Using our WAF Content Scanning feature in conjunction with our <a href="https://blog.cloudflare.com/security-analytics">new Security Analytics</a> they can now filter on request traffic that has a file content object (a file being uploaded) to observe top N paths and hostnames, exposing such endpoints.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71OBMDvqbIhOdBnuROxNiu/11db621da4dd1a0086c85ce5f84a0fc2/image2.png" alt="File upload attempts to the Cloudflare blog by filtering on scanned object count greater than zero using the new Security Analytics." class="kg-image" width="1999" height="767" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71OBMDvqbIhOdBnuROxNiu/5d74a14b6b2d9244f78d549cce2951da/image2.png" alt="File upload attempts to the Cloudflare blog by filtering on scanned object count greater than zero using the new Security Analytics." class="kg-image" width="1999" height="767" loading="lazy">
 
 	</figure>
 	<p>Second, as mentioned in the prior section, exposing the intelligence provided by Cloudflare as fields that can be used in our WAF Custom Rules allows us to provide a very flexible platform. As a plus, you don’t need to learn how to use a new feature, as you are likely already familiar with our WAF Custom Rule builder.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6m1wkgdmUtbzfBvUkNir4P/0b53b8e5644da840de8ff63d16699b8a/image1-41.png" alt="Postgres cluster user access" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6m1wkgdmUtbzfBvUkNir4P/28533b00766735dfa116235de718481c/image1-41.png" alt="Postgres cluster user access" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>For a long time we used the traditional method of accessing internal database clusters by SSHing to a bastion host. Due to the overhead and limitations of maintaining the SSH configuration, we’ve moved to using Cloudflare Tunnels combined with Cloudflare Access to dramatically improve the user experience and onboarding times related to database access.</p>
@@ -18,7 +18,7 @@
 	<p>When an employee requires access to one of these databases – be it for staging environments, incident management, or supporting production services – an SSH user account is required. This SSH account has limited access on a bastion host, purely for querying databases within the data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6r0mqLUa3j8D6MOhcCCV7N/1e02c004212e8dd2e1f0b13643814709/image2-39.png" alt="" class="kg-image" width="1822" height="718" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6r0mqLUa3j8D6MOhcCCV7N/c6720dde115f0fb07f21c8eb00258a8d/image2-39.png" alt="" class="kg-image" width="1822" height="718" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -43,20 +43,20 @@
 	<p>To get started, we deployed Cloudflare Tunnel on a pod set up within our internal Kubernetes cluster that maintains access to the database clusters. This established connectivity from our origin to the Cloudflare global network. At this point, our newly created Tunnel was ready to serve traffic to our origin, in this case our PostgreSQL database server. This already simplified orchestration and management as we no longer needed to manage any Access Control List (ACL) changes for the pod itself in order for cloudflared to connect to it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23MJHI3T6PVEZ4x8iuSuaT/aebf7fa62effae086c15a98dc2541b58/image4-24.png" alt="" class="kg-image" width="1463" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23MJHI3T6PVEZ4x8iuSuaT/a9e61ae171762020c052307ce56a4671/image4-24.png" alt="" class="kg-image" width="1463" height="675" loading="lazy">
 
 	</figure>
 	<p>Next, to ensure that only eligible Cloudflare employees could access the database endpoints, we implemented Cloudflare Access and created identity-driven <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> policies. Access then handled all user authentication for each incoming request over Tunnel and enforced a set of pre-defined identity-based policies to ensure that only certain Cloudflare employees could make connections to our database.</p>
 	<p>We were also able to better delineate access to staging and production databases by creating independent Tunnels for each. This allowed us to enforce more granular restrictions for production access without impeding our more accessible staging environments. It also had the added benefit of clearly separating the network policies used internally.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TQil9zBDTq9GJzhc8e5yQ/f3d0583a341128aab96ca940b0123458/image3-26.png" alt="A terminal window running cloudflared to establish a local tunnel to a staging database" class="kg-image" width="1260" height="272" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TQil9zBDTq9GJzhc8e5yQ/87885d43aad47945dfd2420c3ca66095/image3-26.png" alt="A terminal window running cloudflared to establish a local tunnel to a staging database" class="kg-image" width="1260" height="272" loading="lazy">
 
 	</figure>
 	<p>Finally, in order for our internal users to connect to these databases, they simply needed to install cloudflared client side on their machine. Once installed, they could run cloudflared access from their endpoint to establish a long-lived TCP connection from their local laptop to the desired database cluster. Each request was then routed to Cloudflare first for policy evaluation through Cloudflare Access. This prompted the user to complete an authentication event which ensured only the Cloudflare engineers defined within our Zero Trust policies were able to establish a connection to the database.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XV7TH3eeSDtE7PYMkCO9r/02a1acf0d830abb5004d8f0d6e938055/image5-13.png" alt="Web browser prompting to approve authentication request" class="kg-image" width="724" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XV7TH3eeSDtE7PYMkCO9r/41f0835c7f4d2c48f8611cc88756a8a9/image5-13.png" alt="Web browser prompting to approve authentication request" class="kg-image" width="724" height="728" loading="lazy">
 
 	</figure>
 	<p>With cloudflared running locally, the user is then free to fire up their favorite database client to connect to the local port and run queries against the remote database cluster as if it is running locally. In short, our users were now able to run a lightweight daemon, cloudflared, on their local machine to route traffic to Cloudflare. Cloudflare Access then evaluated each request against the identity-driven Zero Trust security policies we defined. If the user met these requirements, the request was forwarded onto Cloudflare Tunnel which securely connected internal users to our databases behind Tunnel.</p>

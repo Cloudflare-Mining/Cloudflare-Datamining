@@ -1,10 +1,10 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-to-drop-10-million-packets">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-to-drop-10-million-packets">Deutsch</a>, <a href="https://blog.cloudflare.com/ko-kr/how-to-drop-10-million-packets">한국어</a>, <a href="https://blog.cloudflare.com/es-es/how-to-drop-10-million-packets">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/how-to-drop-10-million-packets">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AaLqkJOn4yMNV7GNOhWxy/c757cf4ee347a9cdde593d3390ada936/how-to-drop-10-million-packets.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-to-drop-10-million-packets">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-to-drop-10-million-packets">Deutsch</a>, <a href="https://blog.cloudflare.com/ko-kr/how-to-drop-10-million-packets">한국어</a>, <a href="https://blog.cloudflare.com/es-es/how-to-drop-10-million-packets">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/how-to-drop-10-million-packets">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AaLqkJOn4yMNV7GNOhWxy/7f2dfba0311ce439865f1f9063c264d0/how-to-drop-10-million-packets.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Internally our DDoS mitigation team is sometimes called "the packet droppers". When other teams build exciting products to do smart things with the traffic that passes through our network, we take joy in discovering novel ways of discarding it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yS2j3vUrdmAkLkGjcunWg/9e1e465035911d455f60897e50492f31/38464589350_d00908ee98_b.jpg" alt="38464589350_d00908ee98_b" class="kg-image" width="1024" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yS2j3vUrdmAkLkGjcunWg/cabb3814dc89260f1338ee65cd38466f/38464589350_d00908ee98_b.jpg" alt="38464589350_d00908ee98_b" class="kg-image" width="1024" height="820" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350">image</a> by <a href="https://www.flickr.com/photos/beegee49">Brian Evans</a></p>
@@ -55,7 +55,7 @@ p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,f
 	<p>While Turbo Boost is nice and increases throughput by at least 20%, it also drastically worsens the standard deviation in our tests. With turbo enabled we had ±1.5% deviation in our numbers. With Turbo off this falls down to manageable 0.25%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oJAi3KKpj9clrG5Abebho/d405da4ed707f03cd431759b4a1d5705/layers.JPG.jpeg" alt="layers" class="kg-image" width="1280" height="782" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oJAi3KKpj9clrG5Abebho/59ed605de89f49183c5b360a4b50d30c/layers.JPG.jpeg" alt="layers" class="kg-image" width="1280" height="782" loading="lazy">
 
 	</figure>
 	<h4>Step 1. Dropping packets in application</h4>
@@ -207,7 +207,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>Whooa! With XDP we can drop 10 million packets per second on a single CPU.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SE8JnlqRwU9PvWk57Drtp/83ebe66d69a9d9677bc5a32584697ff6/225821241_ed5da2da91_o.jpg" alt="225821241_ed5da2da91_o" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SE8JnlqRwU9PvWk57Drtp/f399e77d9a09e6ca767caf3818d35bee/225821241_ed5da2da91_o.jpg" alt="225821241_ed5da2da91_o" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241">image</a> by <a href="https://www.flickr.com/photos/afiler">Andrew Filer</a></p>
@@ -222,7 +222,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>We repeated the these for both IPv4 and IPv6 and prepared this chart:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gFSZtRxYtyzjQwOjcfXE/ad82b4d8b73732984e56374dd8efb1ba/numbers-noxdp.png" alt="numbers-noxdp" class="kg-image" width="1500" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gFSZtRxYtyzjQwOjcfXE/7815d540a5dcd04bacd0821d2e7067fc/numbers-noxdp.png" alt="numbers-noxdp" class="kg-image" width="1500" height="900" loading="lazy">
 
 	</figure>
 	<p>Generally speaking in our setup IPv6 had slightly lower performance. Remember that IPv6 packets are slightly larger, so some performance difference is unavoidable.</p>
@@ -233,7 +233,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>For even more demanding workloads, we always have XDP. And boy, it is powerful. Here is the same chart as above, but including XDP:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OUdMjazlfP6gpm6usqmj7/87e60146d1a602623bb888cb50078eb3/numbers-xdp-1.png" alt="numbers-xdp-1" class="kg-image" width="1500" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OUdMjazlfP6gpm6usqmj7/20f07e262782d9ef5c67ca46a603fed6/numbers-xdp-1.png" alt="numbers-xdp-1" class="kg-image" width="1500" height="900" loading="lazy">
 
 	</figure>
 	<p>If you want to reproduce these numbers, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md">see the README where we documented everything</a>.</p>

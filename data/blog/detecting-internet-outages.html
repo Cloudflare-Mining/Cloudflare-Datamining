@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6852m159V2aRnaTVvL3rMx/f5614912fae8c4f8cc70c4e66e436492/image13-4.png" alt="Gone offline: how Cloudflare Radar detects Internet outages" class="kg-image" width="1999" height="1132" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6852m159V2aRnaTVvL3rMx/c56e7a487b7eead7a419188df8e22aa9/image13-4.png" alt="Gone offline: how Cloudflare Radar detects Internet outages" class="kg-image" width="1999" height="1132" loading="lazy">
 
 	</figure>
 	<p>Currently, Cloudflare Radar curates a list of observed Internet disruptions (which may include partial or complete outages) in the <a href="https://radar.cloudflare.com/outage-center">Outage Center</a>. These disruptions are recorded whenever we have sufficient context to correlate with an observed drop in traffic, found by checking status updates and related communications from ISPs, or finding news reports related to cable cuts, government orders, power outages, or natural disasters.</p>
@@ -12,7 +12,7 @@
 	<p>As we announced today in a <a href="https://blog.cloudflare.com/traffic-anomalies-notifications-radar">related blog post</a>, Cloudflare Radar will be publishing anomalous traffic events for countries and Autonomous Systems (ASes). These events are the same ones referenced above that have been triggering our internal workflow to validate and confirm disruptions. (Note that at this time “anomalous traffic events” are associated with drops in traffic, not unexpected traffic spikes.) In addition to adding traffic anomaly information to the Outage Center, we are also launching the ability for users to subscribe to notifications at a location (country) or network (autonomous system) level whenever a new anomaly event is detected, or a new entry is added to the outage table. Please refer to the related blog post for more details on how to subscribe.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MRBVUw03ZVfB8Slb3d4Ve/101df1e72a0092d51bb83f6071031531/pasted-image-0-5.png" alt="" class="kg-image" width="1351" height="379" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MRBVUw03ZVfB8Slb3d4Ve/bfe91f69ed64899fe246f00d6d384a67/pasted-image-0-5.png" alt="" class="kg-image" width="1351" height="379" loading="lazy">
 
 	</figure>
 	<p>The current status of each detected anomaly will be shown in the new “Traffic anomalies” table on the Outage Center page:</p>
@@ -47,13 +47,13 @@
 	<p>1. Ideally, the signals would resemble the pattern depicted below for <a href="https://radar.cloudflare.com/au">Australia (AU)</a>: a stable weekly pattern with a slightly positive trend meaning that the trend average is moving up over time (we see more traffic over time from users in Australia).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tS7fgzOPYaIWKJwC8RKt/b66559669eb721506b94343794b44c43/pasted-image-0--1--5.png" alt="" class="kg-image" width="1600" height="692" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tS7fgzOPYaIWKJwC8RKt/15014b7ddd128849d4fda688cd24b307/pasted-image-0--1--5.png" alt="" class="kg-image" width="1600" height="692" loading="lazy">
 
 	</figure>
 	<p>These statements can be clearly seen when we perform time-series decomposition which allows us to break down a time-series into its constituent parts to better understand and analyze its underlying patterns. Decomposing the traffic volume for Australia above assuming a weekly pattern with <a href="https://otexts.com/fpp2/stl.html">Seasonal-Trend decomposition using LOESS (STL)</a> we get the following:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2D6P6yAl7YdUQzSITQEmKZ/207d42c8780d42babb9cd4086d0aebde/pasted-image-0--2--3.png" alt="" class="kg-image" width="1600" height="717" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2D6P6yAl7YdUQzSITQEmKZ/c8736d5719b7fdbb95f39827e6960700/pasted-image-0--2--3.png" alt="" class="kg-image" width="1600" height="717" loading="lazy">
 
 	</figure>
 	<p>The weekly pattern we are referring to is represented by the seasonal part of the signal that is expected to be observed due to the fact that we are interested in eyeball / human internet traffic. As observed in the image above, the trend component is expected to move slowly when compared with the signal level and the residual part ideally would resemble white noise meaning that all existing patterns in the signal are represented by the seasonal and trend components.</p>
@@ -61,31 +61,31 @@
 	<p>We also observe that there’s a value offset of the signal right after the first four days (blue dashed-line) and the red background shows us an outage for which we didn’t find any reporting besides seeing it in our data and other Internet data providers — our intention here is to develop an algorithm that will trigger an event when it comes across this or similar patterns.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2U7KiZm6vDAstocOBx5Ndc/8882b44cd078aaff3df4e9ebbaa84f06/pasted-image-0--3--5.png" alt="" class="kg-image" width="1600" height="698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2U7KiZm6vDAstocOBx5Ndc/0a22e6668981b4d00494df8f46e6642f/pasted-image-0--3--5.png" alt="" class="kg-image" width="1600" height="698" loading="lazy">
 
 	</figure>
 	<p>3. Here we have a similar example for <a href="https://radar.cloudflare.com/gf">French Guiana (GF)</a>. We observe some data offsets (August 9 and 23), a change in the amplitude (between August 15 and 23) and another <a href="https://twitter.com/CloudflareRadar/status/1696143174337466685">outage for which we do have context</a> that is observable in <a href="https://radar.cloudflare.com/gf?dateStart=2023-08-25&amp;dateEnd=2023-08-29">Cloudflare Radar</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RsqxnHhEYE0JJKNaaYft/81e53da62aca986e9cd1883131051c72/pasted-image-0--4--1.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RsqxnHhEYE0JJKNaaYft/4dbdb08b33c44335be38fefec59ff35d/pasted-image-0--4--1.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
 
 	</figure>
 	<p>4. Another scenario is several scheduled outages for <a href="https://radar.cloudflare.com/as203214">AS203214 (HulumTele)</a>, <a href="https://radar.cloudflare.com/as203214?dateStart=2023-08-18&amp;dateEnd=2023-08-29">for which we also have context</a>. These anomalies are the easiest to detect since the traffic goes to values that are unique to outages (cannot be mistaken as regular traffic), but it poses another challenge: if our plan was to just check the weekly patterns, since these government-directed outages happen with the same frequency, at some point the algorithm would see this as expected traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bY7v57eNClUuq4wMEiiM8/160364f3bc3859b2c4f107e2b98bff30/pasted-image-0--5--1.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bY7v57eNClUuq4wMEiiM8/6339478f0fecb4c559c5efdc835883f3/pasted-image-0--5--1.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
 
 	</figure>
 	<p>5. This <a href="https://radar.cloudflare.com/ke?dateStart=2023-08-23&amp;dateEnd=2023-08-28">outage in Kenya</a> could be seen as similar to the above: the traffic volume went down to unseen values although not as significantly. We also observe some upward spikes in the data that are not following any specific pattern — possibly outliers — that we should clean depending on the approach we use to model the time-series.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45WjgUJzE6wmKTtj9wOC06/c8b889b41fa5944272a8ce9cc228f01c/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="692" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45WjgUJzE6wmKTtj9wOC06/11d3e5c292d0a30ba795c30e68a1fc38/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="692" loading="lazy">
 
 	</figure>
 	<p>6. Lastly, here's the data that will be used throughout this post as an example of how we are approaching this problem. For <a href="https://radar.cloudflare.com/mg">Madagascar (MG)</a>, we observe a clear pattern with pronounced weekends (blue background). There’s also a holiday (Assumption of Mary), highlighted with a green background, and an outage, with a red background. In this example, weekends, holidays, and outages all seem to have roughly the same traffic volume. Fortunately, the outage gives itself away by showing that it intended to go up as in a normal working day, but then there was a sudden drop — we will see it more closely later in this post.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48RxRX1UN0bG5bocUZd3pK/721e2431067dbfd8dd1d410b06b32ed9/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="695" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48RxRX1UN0bG5bocUZd3pK/8095a4de931d7d38638530887e19a700/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="695" loading="lazy">
 
 	</figure>
 	<p>In summary, here we looked over six examples out of ~700 (the number of entities we are automatically detecting anomalies for currently) and we see a wide range of variability. This means that in order to effectively model the time-series we would have to run a lot of preprocessing steps before the modeling itself. These steps include removing outliers, detecting short and long-term data offsets and readjusting, and detecting changes in variance, mean, or magnitude. Time is also a factor in preprocessing, as we would also need to know in advance when to expect events / holidays that will push the traffic down, apply daylight saving time adjustments that will cause a time shift in the data, and be able to apply local time zones for each entity, including dealing with locations that have multiple time zones and AS traffic that is shared across different time zones.</p>
@@ -124,7 +124,7 @@
 	<p>For ASes, since we are mainly interested in Internet traffic that represents human activity, we use the number of <a href="https://stats.labs.apnic.net/aspop">users estimation provided by APNIC</a>. We then compute the total number of users per location by summing up the number of users of each AS in that location, and then we calculate what percentage of users an AS has for that location (this number is also provided by the APNIC table in column ‘% of country’). We filter out ASes that have less than 1% of the users in that location. Here’s what the list looks like for Portugal — <a href="https://radar.cloudflare.com/as15525">AS15525 (MEO-EMPRESAS)</a> is excluded because it has less than 1% of users of the total number of Internet users in Portugal (estimated).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nVGnDDcngh1bK7pBhzH80/595e723c7e657a21f78d7098b2037d3c/pasted-image-0--8-.png" alt="" class="kg-image" width="1600" height="391" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nVGnDDcngh1bK7pBhzH80/02c6108065e827a82029b38fd65c9bfb/pasted-image-0--8-.png" alt="" class="kg-image" width="1600" height="391" loading="lazy">
 
 	</figure>
 	<p>At this point we have a subset of ASes and a set of locations (we don’t exclude any location <i>a priori</i> because we want to cover as much as possible) but we will have to narrow it down based on the quality of the data to be able to reliably detect anomalies automatically. After testing several metrics and visually analyzing the results, we came to the conclusion that the best predictor of a stable signal is related to the volume of data, so we removed the entities that don’t satisfy the criteria of a minimum number of unique IPs daily in a two weeks period — the threshold is based on visual inspection.</p>
@@ -141,7 +141,7 @@
 	<p>1. We look at the last 24 hours immediately before the forecast window and use that interval as the reference. The assumption is that the last 24 hours will contain information about the shape of what follows. In the figure below, the last 24 hours (in blue) corresponds to data transitioning from Friday to Saturday. By using the <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a>, we get the six most similar matches to that reference (orange) — four of those six matches correspond to other transitions from Friday to Saturday. It also captures the holiday on Monday (August 14, 2023) to Tuesday, and we also see a match that is the most dissimilar to the reference, a regular working day from Wednesday to Thursday. Capturing one that doesn't represent the reference properly should not be a problem because the forecast is the median of the most similar 24 hours to the reference, and thus the data of that day ends up being discarded.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tepzu3DgEKfAhn4S1SrUi/41c9caec19ac1be19247480532001ccc/Screenshot-2023-09-26-at-11.03.51.png" alt="" class="kg-image" width="1598" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tepzu3DgEKfAhn4S1SrUi/742c3be56013b688a1ddd4e215426adf/Screenshot-2023-09-26-at-11.03.51.png" alt="" class="kg-image" width="1598" height="1024" loading="lazy">
 
 	</figure>
 	<ol>
@@ -159,14 +159,14 @@
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ySUzWSCIELUZp0LCDctpI/54952c485f291db4888b136b7005293d/pasted-image-0--10-.png" alt="" class="kg-image" width="1600" height="1161" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ySUzWSCIELUZp0LCDctpI/486cc9a8d379cdb7dcab3587a16ed139/pasted-image-0--10-.png" alt="" class="kg-image" width="1600" height="1161" loading="lazy">
 
 	</figure>
 	<p>A holiday in the middle of the week in this case looks like a transition from Friday to Saturday. Since we are using the last 28 days and the holiday starts on a Tuesday we only see three such transitions that are matching (orange) and then another three regular working days because that pattern is not found anywhere else in the time-series and those are the closest matches. This is why we use the lower quartile when computing the median for an even number of values (meaning we round the data down to the lower values) and use the result as the forecast. This also allows us to be more conservative and plays a role in the true positive/false positive tradeoff.</p>
 	<p>Lastly let's look at the outage example:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2whYpeGdMZWElfxrz2auIJ/0b2170b567282cd8fd2c867e25fa36be/pasted-image-0--9-.png" alt="" class="kg-image" width="1600" height="1161" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2whYpeGdMZWElfxrz2auIJ/b7d79fa75ad1a8255431773b9d855ff4/pasted-image-0--9-.png" alt="" class="kg-image" width="1600" height="1161" loading="lazy">
 
 	</figure>
 	<p>In this case, the matches are always connected to low traffic because the last 24h (reference) corresponds to a transition from Sunday to Monday and due to the low traffic the lowest Euclidean distance (most similar 24h) are either Saturdays (two times) or Sundays (four times). So the forecast is what we would expect to see on a regular Monday and that’s why the forecast (red) has an upward trend but since we had an outage, the actual volume of traffic (black) is considerably lower than the forecast.</p>
@@ -188,7 +188,7 @@
 	<p>We calculate relative change, which measures how much one value has changed relative to another. Since we are detecting anomalies based on traffic drops, the <i>actual</i> traffic will always be lower than the <i>forecast.</i></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HsIJci2IutIP4HTpNYnRY/2275732c2d9e2d84229fda9f68416b12/Screenshot-2023-09-26-at-11.08.57.png" alt="" class="kg-image" width="1626" height="92" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HsIJci2IutIP4HTpNYnRY/1cc0103696ebb25de6b80ba53e02dc29/Screenshot-2023-09-26-at-11.08.57.png" alt="" class="kg-image" width="1626" height="92" loading="lazy">
 
 	</figure>
 	<p>After calculating this metric, we apply the following rules:</p>
@@ -215,7 +215,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/479UGvwcoqEgSmKjDQLcEg/a7dad37996b66b072d53ffafb103b651/pasted-image-0--11-.png" alt="" class="kg-image" width="1600" height="705" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/479UGvwcoqEgSmKjDQLcEg/254b87964b683c817b3e13697d145329/pasted-image-0--11-.png" alt="" class="kg-image" width="1600" height="705" loading="lazy">
 
 	</figure>
 	<ul>
@@ -225,7 +225,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73rrAaAMX3yh2DOWZVL7j3/0937356ae4bf039946456898eef45f1e/pasted-image-0--12-.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73rrAaAMX3yh2DOWZVL7j3/07306bcafa28f49f9a9f051e95ff8026/pasted-image-0--12-.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
 
 	</figure>
 	<ul>

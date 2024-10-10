@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BUGEs7C2jfqfVgsp4z3fF/87aed3fb879fae09f0fc25c30a836528/encryption-week.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BUGEs7C2jfqfVgsp4z3fF/d0cd85eb91c7f597e0196318a54f71ab/encryption-week.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>Note: Since this was published we have renamed Encryption Week to Crypto Week. You can find this post, and news from Encryption and SSL weeks </i><a href="https://blog.cloudflare.com/tag/crypto-week"><i>here</i></a><i>.</i></p>
 	<p>Since CloudFlare’s inception, we have worked tirelessly to make encryption as simple and as accessible as possible. Over the last two years, we’ve made CloudFlare the easiest way to enable encryption for web properties and internet services. From the launch of <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>, which gives HTTPS to millions of sites for free, to the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Origin CA</a>, which helps customers encrypt their origin servers, to the <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">“No Browser Left Behind” initiative</a>, which ensures that the encrypted Internet is available to everyone, CloudFlare has pushed to make Internet encryption better and more widespread.</p>
@@ -16,7 +16,7 @@
 	<p>If it takes 50 miliseconds for a message to travel from the browser to CloudFlare, the speed boost from TLS 1.3 is enough to take sites that seem <a href="https://hpbn.co/primer-on-latency-and-bandwidth/#speed-of-light-and-propagation-latency">“sluggish”</a> (over 300ms), and turn them into sites that load comfortably fast (under 300ms).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/MgDOAFwcU9C9wPEhJDxVB/d142877dd2cd318a5a4d3ecbe1d925e3/13vs12.jpg" alt="TLS 1.3 vs TLS 1.2" class="kg-image" width="2034" height="1094" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MgDOAFwcU9C9wPEhJDxVB/25045f31233f88bac137bdfe6830c4e8/13vs12.jpg" alt="TLS 1.3 vs TLS 1.2" class="kg-image" width="2034" height="1094" loading="lazy">
 
 	</figure>
 	<p>Comparison of TLS 1.2 and TLS 1.3 handshakes</p>
@@ -33,13 +33,13 @@
 	<p>A user requesting a web page over HTTPS can assume that the connection is authenticated, encrypted and that the response has not been tampered with. However, if any of the sub-resources (scripts, images) are requested over an insecure protocol such as HTTP, then those parts of the site can be accessed and modified by attackers. HTTPS sites with insecure sub-resources contain mixed content. Modern browsers will attempt to protect users from mixed content by providing warnings for passive content (such as images), and blocking insecure active content (scripts, stylesheets) from loading. Because of this, sites with mixed content often don’t work correctly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zJXu6vRAgT9tUVuabF11K/dbc3e040f3217646ab38eb9403508c34/mixedvsfixed.jpg" alt="Mixed Content vs Fixed Content" class="kg-image" width="1462" height="674" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zJXu6vRAgT9tUVuabF11K/229536d6ecf781e0098de895ac3357ae/mixedvsfixed.jpg" alt="Mixed Content vs Fixed Content" class="kg-image" width="1462" height="674" loading="lazy">
 
 	</figure>
 	<p>Sites served with HTTP currently look “neutral” to visitors compared to HTTPS sites with mixed content, so site operators often prefer to serve their sites with insecure HTTP rather than partially-secured HTTPS. This is changing. Both Chrome and Firefox announced that they will begin to show increasingly negative indicators to visitors of HTTP sites. <a href="https://security.googleblog.com/2016/09/moving-towards-more-secure-web.html">Chrome is planning</a> to eventually put the words “Not Secure” in the address bar for HTTP sites, making it much less appealing for site operators to choose HTTP over HTTPS. Because of this, fixing mixed content and moving your site to HTTPS is more important than ever.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5On9CC982TmTvvjCUQomUp/0db6e40b45491ec538bf5d414d604291/image01.png" alt="HTTP in Chrome" class="kg-image" width="400" height="194" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5On9CC982TmTvvjCUQomUp/bdfe5b43f29344c80fc3a2ead9058973/image01.png" alt="HTTP in Chrome" class="kg-image" width="400" height="194" loading="lazy">
 
 	</figure>
 	<h4>Automatic HTTPS Rewrites: Fixing mixed content automatically</h4>
@@ -57,7 +57,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nHRS3s4GG09UqQluqTvzr/e3e0637132ee8ed7814010555dbfc1ac/2861549541_0336349bfe_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nHRS3s4GG09UqQluqTvzr/8b4a98369ef4df344cff2184dc425bfe/2861549541_0336349bfe_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
 
 	</figure>
 	<p>CC 2.0 Generic <a href="https://www.flickr.com/photos/qwghlm/2861549541">Chris Applegate</a></p>

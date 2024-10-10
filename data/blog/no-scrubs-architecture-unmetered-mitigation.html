@@ -1,9 +1,9 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KGm2qiwgg1icwvQc0xope/2f206f3344bfed207e6a0db567b06a8e/no-scrubs-architecture-unmetered-mitigation.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KGm2qiwgg1icwvQc0xope/c798378b2000f880f5299ca1719c7efa/no-scrubs-architecture-unmetered-mitigation.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When building a DDoS mitigation service it’s incredibly tempting to think that the solution is scrubbing centers or scrubbing servers. I, too, thought that was a good idea in the beginning, but experience has shown that there are serious pitfalls to this approach.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LesaJydiArltdyjZRhtaV/3f69f7e23c725f0c154ccc2d4329efb6/Screen-Shot-2017-09-25-at-09.50.52.png" alt="" class="kg-image" width="608" height="351" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LesaJydiArltdyjZRhtaV/26bec646125f117594381835ab30b378/Screen-Shot-2017-09-25-at-09.50.52.png" alt="" class="kg-image" width="608" height="351" loading="lazy">
 
 	</figure>
 	<p>A scrubbing server is a dedicated machine that receives all network traffic destined for an IP address and attempts to filter good traffic from bad. Ideally, the scrubbing server will only forward non-DDoS packets to the Internet application being attacked. A scrubbing center is a dedicated location filled with scrubbing servers.</p>
@@ -24,7 +24,7 @@
 	<p>At that point, scrubbing engineers need to become protocol experts at all levels of the stack. That means you have to build a competency in all levels of TCP/IP, DNS, HTTP, TLS, etc. And that’s hard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64KLtaUHX9bNnt7gPObyUW/f6bc3608ba0aa98b167c1ceb747d065a/4663602907_c7312af549_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64KLtaUHX9bNnt7gPObyUW/f8f58affdea28aa1b5e07ca8c8d31a16/4663602907_c7312af549_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/lisibo/4663602907/in/photolist-dreKAq-877bEF-dC6SaH-87fRQa-87aUnd-878ubK-87j6bE-87fP1t-879ZGj-8777Wc-87aMK5-87iYJq-87bY93-878n2g-879Wmw-87a431-87b9sQ-87bUBy-87bupQ-87bmFE-87fxZ6-87bqyW-87aQm7-87bBCC-878E3P-87833H-87azmU-877ttK-877xNk-878QqX-87bJC5-87b69u-XUmTo9-2Zsyny-87b2YC-877L8r-ebekdb-8w1o6r-8w1nPr-8w1n7B-8w1hKt-8w4jCE-8w1jcZ-8w4qUS-8w1jJz-ovHP2-3feGiy-Wj2Q48-8w4nZQ-8w4m9s">image</a> by <a href="https://www.flickr.com/photos/lisibo">Lisa Stevens</a></p>
@@ -48,7 +48,7 @@
 	<p>By building the world’s <a href="https://www.peeringdb.com/net/4224">most peered network</a> we’ve built this capacity at reasonable cost and more importantly are able to handle attack traffic globally wherever it originates with low latency links. No scrubbing solution is able to say the same.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nhLKpOgJaQcxsCM0kFcHM/b09a48d054451a7f3135898aa2dce77a/upload.png" alt="" class="kg-image" width="1396" height="924" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nhLKpOgJaQcxsCM0kFcHM/286dc2bbea0e3649aa73a8ad766adb66/upload.png" alt="" class="kg-image" width="1396" height="924" loading="lazy">
 
 	</figure>
 	<p>And because Cloudflare manages DNS for our customers and uses an Anycasted network attack traffic originating from botnets is automatically distributed across our global network. Each data center deals with a portion of DDoS traffic.</p>
@@ -65,14 +65,14 @@
 	<p>Once all this global and local load balancing has occurred packets do finally hit a network adapter card in a server. It’s here that Cloudflare’s custom DDoS mitigation stack comes into play.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SsunNzjBUScjiFqvOYqsC/2025151881e5c59faf3a94866602c073/image2-1.png" alt="" class="kg-image" width="1044" height="330" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SsunNzjBUScjiFqvOYqsC/a2f6047bc836d427abf6659b86826c3c/image2-1.png" alt="" class="kg-image" width="1044" height="330" loading="lazy">
 
 	</figure>
 	<p>Over the years we’ve learned how to automatically detect and mitigate anything the internet can throw at us. For most of the attacks, we rely on dynamically managing iptables: the standard Linux firewall. We’ve spoken about <a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible">the most effective techniques</a> in past. iptables has a number of very powerful features which we select depending on specific attack vector. From our experience xt_bpf, ipset, hashlimits and connlimits are the most useful iptables modules.</p>
 	<p>For very large attacks the Linux Kernel is not fast enough though. To relieve the kernel from processing excessive number of packets, we experimented with various <a href="https://blog.cloudflare.com/kernel-bypass">kernel bypass</a> techniques. We’ve settled on a partial kernel bypass interface - Solarflare specific EFVI.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/f4YDKLOLmRBcMaV2CojRO/fb0ab90585a954098c58df849a87fd36/image1.png" alt="" class="kg-image" width="1244" height="530" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/f4YDKLOLmRBcMaV2CojRO/a38c51911bfaf0cd830d7d0fe284ed26/image1.png" alt="" class="kg-image" width="1244" height="530" loading="lazy">
 
 	</figure>
 	<p>With EFVI we can offload the processing of our firewall rules to a user space program, and we can easily process millions of packets per second on each server, while keeping the CPU usage low. This allows us to withstand the largest attacks, without affecting our multi-tenant service.</p>

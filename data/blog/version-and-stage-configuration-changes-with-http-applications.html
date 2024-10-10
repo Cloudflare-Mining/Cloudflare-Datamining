@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RfXhy3APLR8mf7Jel8lCj/ba513bfa7d2442d29a4f92bf630e2d5c/image3-20.png" alt="How we built config staging and versioning with HTTP applications" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RfXhy3APLR8mf7Jel8lCj/3b5f819049ae6bf2800f1d0058538903/image3-20.png" alt="How we built config staging and versioning with HTTP applications" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Last December, we <a href="https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications-in-beta">announced</a> a closed beta of a new product, HTTP Applications, giving customers the ability to better control their L7 Cloudflare configuration with versioning and staging capabilities. Today, we are expanding this beta to all enterprise customers who want to participate. In this post, I will talk about some of the improvements that have landed and go into more detail about how this product works.</p>
@@ -19,7 +19,7 @@
 	<p>An HTTP Application can be represented with the following diagram:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YUr9K9DtZn6SmLo2jg8Tp/6cc1c4108ebda7101debb9ce27783264/unnamed.png" alt="" class="kg-image" width="1335" height="684" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YUr9K9DtZn6SmLo2jg8Tp/8253840807293310fe227d67ca24a7f6/unnamed.png" alt="" class="kg-image" width="1335" height="684" loading="lazy">
 
 	</figure>
 	<p>Each HTTP Application is sourced from an existing zone. That zone’s current configuration will be copied to instantiate the first version of the HTTP Application. After that any changes made to the zone or version 1 will be independent of the other. Versions themselves don’t affect any traffic for a zone until they are deployed via the use of Routing Rules.</p>
@@ -38,7 +38,7 @@ Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 	<p>Expanding the previous diagram we get the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DVFJUw8iPKJFzUcsNdWYX/291608b46ff620909259217483324888/unnamed--1-.png" alt="" class="kg-image" width="1389" height="1218" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DVFJUw8iPKJFzUcsNdWYX/6e6a419f80625200e480f807351059b3/unnamed--1-.png" alt="" class="kg-image" width="1389" height="1218" loading="lazy">
 
 	</figure>
 	<p>The combination of Routing Rules and HTTP Applications means you can ‘stage’ a set of changes, via a version, without requiring a separate staging zone as has been required in the past. Cloudflare will provide you with specific IPs that can be used to test the configuration before rolling it out to production. This means you can catch misconfigurations in rules or other settings before it impacts your customers.</p>
@@ -57,13 +57,13 @@ Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 	<p>Then when ownership is evaluated, instead of loading configuration for account:config 777:123, Cloudflare will load the configuration of the version of that HTTP Application, let’s say that version 2 from the rule has a config id of 456. Then the lookup value for loading configuration will instead be 777:456.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hhe8bllxcQL20E1npIO5K/060dc2fad734e35ee194ba953bea0da8/HTTP-Apps-1.png" alt="" class="kg-image" width="1616" height="864" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hhe8bllxcQL20E1npIO5K/8ee6d0ebd2611b8577c3b94ae1874892/HTTP-Apps-1.png" alt="" class="kg-image" width="1616" height="864" loading="lazy">
 
 	</figure>
 	<p>Because Routing Rules are implemented with the <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset Engine</a>, we can implement a special type of rule to allow a version to be staged such that it is only executed for requests when the request is sent to IPs reserved for testing. The resulting diagram is almost the same, but because the request is being sent to staging IPs, Cloudflare’s network will route that request to a different version of the HTTP Application that has a set of changes not yet deployed for all other traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mNuQRHVRs5ZzR5nIESQgZ/5cf6091dfc31c73c5663ee3b408b2cfa/HTTP-Apps-2.png" alt="" class="kg-image" width="1616" height="864" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mNuQRHVRs5ZzR5nIESQgZ/857180f18ae90769a6feb4ce30fdff8a/HTTP-Apps-2.png" alt="" class="kg-image" width="1616" height="864" loading="lazy">
 
 	</figure>
 	<p>This is what enables you to safely test a set of changes and then simultaneously deploy the exact same configuration to all traffic. If anything goes wrong when testing in staging or rolling out to production, you can simply roll back the configuration to the previous version that was deployed. No need to try and hunt down what settings may have changed. That investigation can be done after the issue has been resolved through a quick, one-click rollback.</p>

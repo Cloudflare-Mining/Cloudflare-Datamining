@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eTIpwut0tmtP0lBCzekOj/e2810146a997f50acdd6336a368de750/the-sleepy-user-agent.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eTIpwut0tmtP0lBCzekOj/bd67b69034ef23aa094097efb1eff36a/the-sleepy-user-agent.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>From time to time a customer writes in and asks about certain requests that have been blocked by the CloudFlare <a href="https://www.cloudflare.com/waf">WAF</a>. Recently, a customer couldn’t understand why it appeared that some simple GET requests for their homepage were listed as blocked in WAF analytics.</p>
 	<p>A sample request looked liked this:</p>
@@ -25,7 +25,7 @@ Accept-Language: en-US,en;q=0.8,fr;q=0.6</code></pre>
 	<p>Many SQL injection attempts try to extract information from a website (such as the names of users, or their passwords, or other private information). This SQL statement is doing something different: it’s asking the database that’s processing the request to sleep for 20 seconds.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rmqocwlPw8OrygkT6pNeT/fc9a53978cafb4ba20fa3a0d27bb1295/4036024362_8752bea514_z.jpg" alt="" class="kg-image" width="426" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rmqocwlPw8OrygkT6pNeT/6803912a90963ddff7241702192de824/4036024362_8752bea514_z.jpg" alt="" class="kg-image" width="426" height="640" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vancouverlaser/4036024362/in/photolist-79DFqW-6bgKJ-hgsZxu-cp4c1Q-6miL6P-m4i1Xp-dxPs8E-8mCoyF-3BFYxy-kLLfcD-c12jub-niAXry-bAubec-ou2BkV-nom5Ly-k3Asnv-e5x4Lz-pYmu5c-nBWZAv-75BDDM-oBkwMY-8ZRzKS-h66fwy-p8adfb-s36TNQ-ejtuw9-nDUYFd-8uKeGF-qhtCL4-6RsCFn-3p1HAG-2MfZ7x-e5x65R-inNGRD-nAbCjW-h66xXW-awx1PJ-8iGb58-nTv2E6-p7cUnR-m4tfVT-nm4KwK-nxqyyb-pYrWxE-9J3x8y-nrB4VY-apoiVi-iMCsos-pQXzae-dUoEYW">image</a> by <a href="https://www.flickr.com/photos/vancouverlaser">Dr Braun</a></p>
@@ -60,7 +60,7 @@ $link-&gt;query($query);
 	<p>This is ripe for a SQL injection, but because my code doesn’t report any errors the attacker won’t know they managed an injection without something like the sleep trick.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://xkcd.com/327">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MwWphAx0Xw3xAToFfDw6s/3118662e29d5202e5c1516f0185e1d81/static_qr_code_without_logo.jpg" alt="" class="kg-image" width="370" height="370" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MwWphAx0Xw3xAToFfDw6s/19d3e78edce9d149ce48e8fb6706e41d/static_qr_code_without_logo.jpg" alt="" class="kg-image" width="370" height="370" loading="lazy">
 		</a>
 	</figure>
 	<p>To exploit this application it’s enough to do the following (where <code>insecure.php</code> is the script above):</p>
@@ -109,7 +109,7 @@ sys    0m0.012s</code></pre>
 	<p>Unfortunately, the richness of SQL means that this chink in the <code>insecure.php</code> code (a mere 3 lines of PHP!) lets an attacker go much further than just making a slow response happen. Even though the <code>INSERT INTO</code> query being attacked only writes to the database it’s possible to turn this around and extract information and gain access.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LFivPXVG3iL4s9NNuc5zV/4a80a7392aa1237a197b7e61937f9929/4813392151_410cf9a73b_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LFivPXVG3iL4s9NNuc5zV/2f560073829c9541274b1b4ae258ee25/4813392151_410cf9a73b_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/schill/4813392151/in/photolist-8kkTMR-bUTUKK-8FBu6H-pVRDno-7xXSxj-78ePNM-dEBQ1Z-r2ouJ-apHUxy-9yNrec-5A9bu9-pEvMok-5A4UmF-5GU2A9-dRweT2-9YVh9-5GU2zo-8PBLrM-8PBqxv-81AwZa-7w3oG3-7Nfb9c-got9Ti-dRezcB-6GNKrM-5A4Ub2-cdM6PJ-5A4Uwv-5GPJYg-D5coqS-5A9bEY-5GPJVX-8kKDCP-91N2sr-49XqW-3eKNbN-8ohQ4f-Cn1mG-ciNZdd-4CMtNC-DhQ2M-yoMGq-N1HP8-88YcCu-t2ruTe">image</a> by <a href="https://www.flickr.com/photos/schill">Scott Schiller</a></p>

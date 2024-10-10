@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aUUytiBVstOF1uzNsNDj6/eeef9947f8213e33232666a7422a1e30/workers-KV-dark-back_2x.png" alt="" class="kg-image" width="1550" height="776" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aUUytiBVstOF1uzNsNDj6/8b9fe6961718df0d106ff9ab40b6c593/workers-KV-dark-back_2x.png" alt="" class="kg-image" width="1550" height="776" loading="lazy">
 
 	</figure>
 	<p>In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>.</p>
@@ -91,7 +91,7 @@
 	<p>This is one of my favorite features of the editor - working with your actual website, understanding <i>how</i> the worker will interface with your existing project.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/121XS5g0iERXCdVwilld5G/aaab3893fda1e4634db006b2be58d556/image4-2.png" alt="" class="kg-image" width="1600" height="1407" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/121XS5g0iERXCdVwilld5G/8fe0b9a7e7b869aaf2b5d5bba3c51d98/image4-2.png" alt="" class="kg-image" width="1600" height="1407" loading="lazy">
 
 	</figure>
 	<p>The process of writing a Worker should be familiar to anyone who’s used the fetch library before. In short, the default code for a Worker hooks into the <code>fetch</code> event, passing the request of that event into a custom function, <code>handleRequest</code>:</p>
@@ -114,13 +114,13 @@
 	<p>Given that very small functionality we’ve added to the worker, let’s deploy it. Moving into the “Routes” tab of the Worker editor, I added the route <code>https://todo.kristianfreeman.com/*</code> and attached it to the cloudflare-worker-todos script.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29QYuFrFiwZKVwZHkWN90v/0f906c3986f0b4517c3ce76ebd9a444a/image5.png" alt="" class="kg-image" width="1600" height="1206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29QYuFrFiwZKVwZHkWN90v/851c0e9b95c03badc9eccbee41079a20/image5.png" alt="" class="kg-image" width="1600" height="1206" loading="lazy">
 
 	</figure>
 	<p>Once attached, I deployed the worker, and voila! Visiting todo.kristianfreeman.com in-browser gives me my simple “Hello!” response back.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Boo3xWgZdHEDHgpUgIrKy/80856f43843efc128a3425460dfa1f85/Screen-Shot-2019-05-15-at-10.12.04-AM.png" alt="" class="kg-image" width="1600" height="1269" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Boo3xWgZdHEDHgpUgIrKy/594ae6a988d40a13253af74937d9a964/Screen-Shot-2019-05-15-at-10.12.04-AM.png" alt="" class="kg-image" width="1600" height="1269" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -136,7 +136,7 @@
 	<p>I’ll create a new namespace in the Workers dashboard, called <code>KRISTIAN_TODOS</code>, and in the Worker editor, I’ll expose the namespace by binding it to the variable <code>KRISTIAN_TODOS</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4i4hCpAgNXFTWxg8X2CXW2/b89728cd09493306aafa9c788b2c230a/image1-6.png" alt="" class="kg-image" width="890" height="652" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4i4hCpAgNXFTWxg8X2CXW2/8f67cbecd052f177ca02ce089b511e65/image1-6.png" alt="" class="kg-image" width="890" height="652" loading="lazy">
 
 	</figure>
 	<p>Given the presence of <code>KRISTIAN_TODOS</code> in my script, it’s time to understand the KV API. At time of writing, a KV namespace has three primary methods you can use to interface with your cache: <code>get</code>, <code>put</code>, and <code>delete</code>. Pretty straightforward!</p>
@@ -217,7 +217,7 @@ async function handleRequest(request) {
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JYK6WXof6rGxmk6ovyH27/50e3c25fe321599d7bacc0e944bf2787/Screen-Shot-2019-05-15-at-10.06.57-AM.png" alt="" class="kg-image" width="1600" height="1269" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JYK6WXof6rGxmk6ovyH27/77f4df33d945cf673df4510bf650b16b/Screen-Shot-2019-05-15-at-10.06.57-AM.png" alt="" class="kg-image" width="1600" height="1269" loading="lazy">
 
 	</figure>
 	<p>We have a static HTML site being rendered, and now we can begin populating it with data! In the body, we’ll add a <code>ul</code> tag with an id of <code>todos</code>:</p>
@@ -263,7 +263,7 @@ async function handleRequest(request) {
 	<p>The finished product looks something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/579BL1kiP7vJc6bxWcDD82/1e1f84c326216d3f2bb7eddad03009f1/image3-3.png" alt="" class="kg-image" width="1482" height="1228" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/579BL1kiP7vJc6bxWcDD82/057188acb0323d3764e76419b13e7469/image3-3.png" alt="" class="kg-image" width="1482" height="1228" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -365,7 +365,7 @@ document.querySelector("#create")
 	<p>With the client-side code in place, deploying the new Worker should put all these pieces together. The result is an actual dynamic todo list!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bexkIHx7QhOOnLX7m0T2a/8056c8226bd64b80dcd35d07a6778fba/image7.gif" alt="" class="kg-image" width="444" height="236" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bexkIHx7QhOOnLX7m0T2a/d1cbb132f91d422682e12a169d1e3b1c/image7.gif" alt="" class="kg-image" width="444" height="236" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -437,7 +437,7 @@ document.querySelector("#create")
 	<p>The final result of our code is a system that simply checks the <code>todos</code> variable, updates our Cloudflare KV cache with that value, and then does a straightforward re-render of the UI based on the data it has locally.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dSK1aNSHxnICPPqdBZeS1/f8a9d0f618566429e911c18acd9aa661/image8-1.png" alt="" class="kg-image" width="1600" height="1176" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dSK1aNSHxnICPPqdBZeS1/4612465de022714c1d7a7cc64e261d55/image8-1.png" alt="" class="kg-image" width="1600" height="1176" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -451,7 +451,7 @@ document.querySelector("#create")
 	<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com">todo.kristianfreeman.com</a>), security, speed, etc.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Vif8WsAf5slR8KM3NLeGv/64ba0b80716535897fcb3456d63b46fc/image2-1.png" alt="" class="kg-image" width="1378" height="730" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Vif8WsAf5slR8KM3NLeGv/6cd59bcdf0c30a6df7e4bbf9eef916ba/image2-1.png" alt="" class="kg-image" width="1378" height="730" loading="lazy">
 
 	</figure>
 	<p>One interesting and fairly trivial addition is implementing per-user caching. Of course, right now, the cache key is simply “data”: anyone visiting the site will share a todo list with any other user. Because we have the request information inside of our worker, it’s easy to make this data user-specific. For instance, implementing per-user caching by generating the cache key based on the requesting IP:</p>

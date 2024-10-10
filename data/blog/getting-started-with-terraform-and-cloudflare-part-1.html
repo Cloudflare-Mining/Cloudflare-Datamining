@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42AZg6Ra0Id70tzPLTfGpg/9b06ba72eadef025af25c8db6f6f0471/getting-started-with-terraform-and-cloudflare-part-1.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42AZg6Ra0Id70tzPLTfGpg/34fba0da3219991e7c9c3069725f4954/getting-started-with-terraform-and-cloudflare-part-1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>You can read Part 2 of Getting Started with Terraform </i><a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2"><i>here</i></a><i>.</i></p>
 	<p>As a Product Manager at Cloudflare, I spend quite a bit of my time talking to customers. One of the most common topics I'm asked about is configuration management. Developers want to know how they can write code to manage their Cloudflare config, without interacting with our APIs or UI directly.</p>
@@ -16,13 +16,13 @@
 	<p>Before we jump into some real-world examples of using Terraform with Cloudflare, here is a set of diagrams that depicts the paradigm shift.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VfXSQWtmvcXHDMG27XO5T/436e6634825504d112b95b763fec138b/before-terraform-_3x.png" alt="before-terraform-@3x" class="kg-image" width="2394" height="1254" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VfXSQWtmvcXHDMG27XO5T/018f57def84f3a2d66f33d29a8a8727d/before-terraform-_3x.png" alt="before-terraform-@3x" class="kg-image" width="2394" height="1254" loading="lazy">
 
 	</figure>
 	<p>Before Terraform, you needed to learn how to use the configuration interfaces or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> of each cloud and edge provider, e.g., Google Cloud and Cloudflare below. Additionally, your ability to store your configuration in your own source code control system depends on vendor-specific configuration export mechanisms (which may or may not exist).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PfbFLbgtZrfToqvJNr4SD/b357de078799110ba03d962bf583c14f/with-terraform-_3x-2.png" alt="with-terraform-@3x-2" class="kg-image" width="2394" height="1254" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PfbFLbgtZrfToqvJNr4SD/7b9be75ae4d633f6e54ab7ecdc9f3b5f/with-terraform-_3x-2.png" alt="with-terraform-@3x-2" class="kg-image" width="2394" height="1254" loading="lazy">
 
 	</figure>
 	<p>With Terraform, you can store and version your configuration in GitHub (or your source code control system of choice). Once you learn Terraform's configuration syntax, you don't need to bother learning how to use providers' UIs or APIs—you just tell Terraform what you want and it figures out the rest.</p>
@@ -203,7 +203,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 	<p>Logging back into the Cloudflare Dashboard and selecting the DNS tab, I can see the record that was created by Terraform:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eWL2qsaFsPrzVG9d3A4tD/d5880a585eeabbdc665a60ff87693565/Verify-DNS.png" alt="Verify-DNS" class="kg-image" width="748" height="78" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eWL2qsaFsPrzVG9d3A4tD/9a054125bc8170e171aa654cc0dfd5b0/Verify-DNS.png" alt="Verify-DNS" class="kg-image" width="748" height="78" loading="lazy">
 
 	</figure>
 	<p>If you'd like to see the full results returned from the API call (including the default values that you didn't specify but let Terraform compute), you can run <code>terraform show</code>:</p>

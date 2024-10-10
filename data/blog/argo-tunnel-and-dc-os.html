@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cbmns16jlNVE7iw0O9kFd/e5028646971dff34c3a0ddef4812393f/argo-tunnel-and-dc-os.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cbmns16jlNVE7iw0O9kFd/0acd920c87b002dbc7faffbfdb553cb2/argo-tunnel-and-dc-os.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare is proud to partner with Mesosphere on their new Argo Tunnel offering available within their DC/OS (Data Center / Operating System) catalogue! Before diving deeper into the offering itself, we’ll first do a quick overview of the Mesophere platform, DC/OS.</p>
 	<div class="flex anchor relative">
@@ -13,7 +13,7 @@
 	<p>In this multi cloud world Cloudflare and Mesosphere DC/OS are great complements. Mesosphere DC/OS provides the same common services experience for developers and operators, and Cloudflare provides the same common service access experience across cloud providers. DC/OS helps tremendously for avoiding vendor lock-in to a single provider, while Cloudflare can load balance traffic intelligently (in addition to many other services) at the edge between providers. This new offering will allow you to load balance through the use of Argo Tunnel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G5ZOTv2xHKdlDqCus7HnU/5a6cd43a30a89a720c532ae4caa10c5b/multicloud-neautral_2x.png" alt="" class="kg-image" width="3719" height="2164" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G5ZOTv2xHKdlDqCus7HnU/bd4cf9e0d12ac9fbb93e6b3a9476b8c0/multicloud-neautral_2x.png" alt="" class="kg-image" width="3719" height="2164" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -48,13 +48,13 @@
 	<p>When you launch the Tunnel for your service, it creates persistent outbound connections to the 2 closest Cloudflare PoPs over which the entire Cloudflare network will route through to reach the service associated with the Tunnel. There is no need to configure DNS, update a NAT configuration, or modify firewall rules (connections are outbound). The Argo Tunnel exposed service gets all the benefits offered by the Cloudflare network (e.g. DDoS protection, CDN and performance, TLS, etc.).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59NfzsE9nLW3aaKhzrSR1I/3ed2b62a25085f904a00388a0f2ef818/Argo-Tunnel-DC-OS.png" alt="" class="kg-image" width="1381" height="785" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59NfzsE9nLW3aaKhzrSR1I/f0eb0aaa4d0e97feb5dfa942e9919446/Argo-Tunnel-DC-OS.png" alt="" class="kg-image" width="1381" height="785" loading="lazy">
 
 	</figure>
 	<p>The Cloudflare Argo Tunnel Service is available from Mesosphere DC/OS catalog.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ILYxEsM8NriMNpWhNZrf7/e38ce4ef8812d556677b372c34a76dfb/Argo-2.png" alt="" class="kg-image" width="1444" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ILYxEsM8NriMNpWhNZrf7/fd0f075da7013e08e4d6a0c01e537636/Argo-2.png" alt="" class="kg-image" width="1444" height="486" loading="lazy">
 
 	</figure>
 	<p>Configuration of the Argo Tunnel requires you to specify three things.</p>
@@ -71,13 +71,13 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VsuRFMMuVxqBNba5cUjR0/e9d08f5bb91a605ee0124ef7035d1189/LB-Configuration.png" alt="" class="kg-image" width="1790" height="810" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VsuRFMMuVxqBNba5cUjR0/0f06d0d22282b82610390f3c951bd3e6/LB-Configuration.png" alt="" class="kg-image" width="1790" height="810" loading="lazy">
 
 	</figure>
 	<p>Assuming you do that setup for a service in a West Coast DC/OS cluster and an East Coast DC/OS cluster, with a respective us-west and us-east LB pool, then you end up with a Cloudflare load balancer globally balancing traffic between these clusters. The load balancer can be configured to do geosteering, which you can learn more about <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare">here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XLHj1d6PnXMgyoRrj7ICc/10e5de860f1247a4adb870784a725b43/LB-Settings.png" alt="" class="kg-image" width="1798" height="670" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XLHj1d6PnXMgyoRrj7ICc/84715d0fc25f14045c0a36454d7d1f12/LB-Settings.png" alt="" class="kg-image" width="1798" height="670" loading="lazy">
 
 	</figure>
 	<p>For more details see the DC/OS Argo Tunnel <a href="https://github.com/dcos/examples/tree/master/cloudflare-argotunnel">documentation</a>. We hope this partnership is a meaningful step towards a simple multi-cloud solution for DC/OS customers.</p>

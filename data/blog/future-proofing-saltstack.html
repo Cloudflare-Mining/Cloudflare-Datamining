@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nEkdTpsVy73ORSrsqCtSQ/0a61b527affdbcaea92e1ecca286e5cf/image2-94.png" alt="blogpost on SaltStack: its security and post-quantum future." class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nEkdTpsVy73ORSrsqCtSQ/916cd8a582b9f63d56124d6d165178b0/image2-94.png" alt="blogpost on SaltStack: its security and post-quantum future." class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we are <a href="https://blog.cloudflare.com/post-quantumify-cloudflare">preparing the Internet and our infrastructure</a> for the arrival of quantum computers. A sufficiently large and stable quantum computer <a href="https://blog.cloudflare.com/quantum-solace-and-spectre">will easily break</a> commonly deployed cryptography such as RSA. Luckily there is a solution: we can swap out the vulnerable algorithms with so-called <i>post-quantum</i> algorithms that are believed to be secure even against quantum computers. For a particular system, this means that we first need to figure out which cryptography is used, for what purpose, and under which (performance) constraints. Most systems use the <a href="https://www.cloudflare.com/en-gb/learning/ssl/transport-layer-security-tls">TLS</a> protocol in a standard way, and there a post-quantum upgrade is routine. However, some systems such as <a href="https://saltproject.io">SaltStack</a>, the focus of this blog post, are more interesting. This blog post chronicles our path of making SaltStack quantum-secure, so welcome to this adventure: this secret extra post-quantum blog post!</p>
@@ -31,7 +31,7 @@
 	<p>In its basic form, the key exchange (or handshake) protocol is an RSA key exchange in which the server chooses the secret and encrypts it to the client’s public key. The exact form of the protocol then depends on whether either party already knows the other party’s long-term public key, since certificates (like in TLS) are not used. By default, clients trust the server’s public key on first use, and servers only trust the client’s public key after it has been accepted by an out-of-band mechanism. The shared secret is shared among the entire fleet of clients_,_ so it is not specific to a particular server and client pair. This allows the server to encrypt a broadcast message only once. We will come back to this performance trade-off later on.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OOEK47GfL4jKc8uua4lRX/740766a450ee4734b546700b8225132f/image4-27.png" alt="Salt key exchange (as of version 3004) under default settings, showing the first connection between the given server and client." class="kg-image" width="1750" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OOEK47GfL4jKc8uua4lRX/843b1e90771e36612635a04c47b49509/image4-27.png" alt="Salt key exchange (as of version 3004) under default settings, showing the first connection between the given server and client." class="kg-image" width="1750" height="1999" loading="lazy">
 
 	</figure>
 	<p>Salt key exchange (as of version 3004) under default settings, showing the first connection between the given server and client.</p>
@@ -46,7 +46,7 @@
 	<p>The shared secret is used as the key for encryption. Most of the messages between a server and a client are secured in an Encrypt-then-MAC fashion, with AES-192 in CBC mode with SHA-256 for HMAC. For certain more sensitive messages, variations on this protocol are used to add more security. For example, commands are signed using the server’s long-term secret key, and “<a href="https://docs.saltproject.io/en/3004/topics/tutorials/pillar.html">pillar data</a>” (deemed more sensitive) is encrypted only to a particular client using a freshly generated secret key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xYB4BWt379cUihxp8hnjs/6f62469ae95249ba3e6b17710e4ec2f0/image3-43.png" alt="Symmetric channel in Salt (as of version 3004)." class="kg-image" width="1750" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xYB4BWt379cUihxp8hnjs/7f1c7c74be3981f69986df75491d1683/image3-43.png" alt="Symmetric channel in Salt (as of version 3004)." class="kg-image" width="1750" height="1999" loading="lazy">
 
 	</figure>
 	<p>Symmetric channel in Salt (as of version 3004).</p>
@@ -61,7 +61,7 @@
 	<p>We found that the protocol variation used for pillar messages contains a flaw. As shown in the diagram below, a <a href="https://blog.cloudflare.com/monsters-in-the-middleboxes">monster-in-the-middle attacker</a> (MitM) that sits between a server and a client can substitute arbitrary “pillar data” to the client. It needs to know the client’s public key, but that is easy to find since clients broadcast it as part of their key exchange request. The initial key exchange can be observed, or one could be triggered on-demand using a specially crafted message. This MitM was possible because neither the newly generated key nor the actual payload were authenticated as coming from the server. This matters because “pillar data” can include anything from specifying packages to be installed to credentials and cryptographic keys. Thus, it is possible that this flaw could allow an attacker to gain access to the vulnerable client machine.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Pho9IvH1FEmLmEywHZ2iM/9600daf04fc88df031efc4662d6e1a60/image1-107.png" alt="Illustration of the monster-in-the-middle attack, CVE-2022-22934." class="kg-image" width="1598" height="756" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Pho9IvH1FEmLmEywHZ2iM/9fcea35fd78622ed159a06e7c2026609/image1-107.png" alt="Illustration of the monster-in-the-middle attack, CVE-2022-22934." class="kg-image" width="1598" height="756" loading="lazy">
 
 	</figure>
 	<p>Illustration of the monster-in-the-middle attack, <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2022-22934">CVE-2022-22934</a>.</p>

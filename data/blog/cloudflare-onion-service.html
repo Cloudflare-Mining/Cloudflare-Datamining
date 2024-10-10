@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zrQosYw53kvfW2Q4aCLqB/cac63b75745a251551323cf12f84dc54/unnamed-1.png" alt="" class="kg-image" width="1049" height="1020" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zrQosYw53kvfW2Q4aCLqB/c984e375c0d54f92bee94352c1e105fa/unnamed-1.png" alt="" class="kg-image" width="1049" height="1020" loading="lazy">
 
 	</figure>
 	<ul>
@@ -32,14 +32,14 @@
 	<p>However, the Internet is full of bad actors, and distinguishing legitimate traffic from malicious traffic, which is one of Cloudflare’s core features, becomes much more difficult when the traffic is anonymous. In particular, many features that make Tor a great tool for privacy also make it a tool for hiding the source of malicious traffic. That is why many resort to using CAPTCHA challenges to make it more expensive to be a bot on the Tor network. There is, however, a collateral damage associated with using CAPTCHA challenges to stop bots: humans eyes also have to deal with them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59vmBdRen9zTJnzUEwUOOL/07f6cc7710bb21b343a221fe354fb51a/Captcha-Example.png" alt="" class="kg-image" width="300" height="57" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59vmBdRen9zTJnzUEwUOOL/54910c287d16f022e66afc2d8ff68d0e/Captcha-Example.png" alt="" class="kg-image" width="300" height="57" loading="lazy">
 
 	</figure>
 	<p>One way to minimize this is using privacy-preserving cryptographic signatures, aka blinded tokens, such as those that power <a href="https://blog.cloudflare.com/privacy-pass-the-math">Privacy Pass</a>.</p>
 	<p>The other way is to use onions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CENi6YjjPGrHKOsS7hfgE/3388cf7fa98ce044e79e20081420e13b/Onion-Cloudflare.png" alt="" class="kg-image" width="1349" height="618" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CENi6YjjPGrHKOsS7hfgE/3f07dbad9c56b377cb5bcfa7d8f40c36/Onion-Cloudflare.png" alt="" class="kg-image" width="1349" height="618" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -55,7 +55,7 @@
 	<p>As Matthew mentioned in his blog post, one way to sift through Tor traffic is to use the <a href="https://www.torproject.org/docs/onion-services.html.en">onion service</a> protocol. Onion services are Tor nodes that advertise their public key, encoded as an address with .onion TLD, and use “rendezvous points” to establish connections entirely within the Tor network:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YwoSQd9m6fwJ4INk44fsz/60eba1420362725a255b303c4ccef317/Tor-network-example-1.png" alt="" class="kg-image" width="1999" height="575" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YwoSQd9m6fwJ4INk44fsz/7aa81a4f71f35f9323ba4173e328d356/Tor-network-example-1.png" alt="" class="kg-image" width="1999" height="575" loading="lazy">
 
 	</figure>
 	<p>While onion services are designed to provide anonymity for content providers, <a href="https://securedrop.org/directory">media organizations</a> use them to allow whistleblowers to communicate securely with them and <a href="https://www.facebook.com/notes/protect-the-graph/making-connections-to-facebook-more-secure/1526085754298237">Facebook</a> uses one to tell Tor users from bots.</p>
@@ -73,7 +73,7 @@
 	<p>Not quite. As discussed when we introduced the <a href="https://blog.cloudflare.com/welcome-hidden-resolver">hidden resolver</a>, the problem of ensuring that a seemingly random .onion address is correct is a barrier to usable security. In that case, our solution was to purchase an <a href="https://www.digicert.com/extended-validation-ssl.htm">Extended Validation</a> (EV) certificate, which costs considerably more. Needless to say, this limits who can buy an HTTPS certificate for their onion service to a <a href="https://crt.sh/?Identity=%25.onion">privileged few</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1n6CTaL7LjM6pQGorlXIQ6/ff3075925b85169a0f384a6224d132f4/Address-Bar.png" alt="" class="kg-image" width="697" height="23" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n6CTaL7LjM6pQGorlXIQ6/4ffd43906dcaa7fac54a098379d12171/Address-Bar.png" alt="" class="kg-image" width="697" height="23" loading="lazy">
 
 	</figure>
 	<p>Some people <a href="https://cabforum.org/pipermail/public/2017-November/012451.html">disagree</a>. In particular, the <a href="https://blog.torproject.org/tors-fall-harvest-next-generation-onion-services">new generation</a> of onion services resolves the weakness that Matthew pointed to as a possible reason why the CA/B Forum <a href="https://cabforum.org/2015/02/18/ballot-144-validation-rules-dot-onion-names">only permits</a> EV certificates for onion services. This could mean that getting Domain Validation (DV) certificates for onion services could be possible soon. We certainly hope that’s the case.</p>
@@ -101,7 +101,7 @@
 	<p>Just as with Opportunistic Encryption, we can point users to the Cloudflare Onion Service using <a href="https://tools.ietf.org/html/rfc7838">HTTP Alternative Services</a>, a mechanism that allows servers to tell clients that the service they are accessing is available at another network location or over another protocol. For instance, when Tor Browser makes a request to “cloudflare.com,” Cloudflare adds an Alternative Service header to indicate that the site is available to access over HTTP/2 via our onion services.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G5bKEOaIJdnsqhNTT2Ozo/b7da51ac9d88eb6154e96af2801ace81/tor-resquest_2x.png" alt="" class="kg-image" width="2000" height="413" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G5bKEOaIJdnsqhNTT2Ozo/e1466f89156e68b539b2cefc8d506d2a/tor-resquest_2x.png" alt="" class="kg-image" width="2000" height="413" loading="lazy">
 
 	</figure>
 	<p>In the same sense that Cloudflare owns the IP addresses that serve our customers’ websites, we run 10 .onion addresses. Think of them as 10 Cloudflare points of presence (or PoPs) within the Tor network. The exact header looks something like this, except with all 10 .onion addresses included, each starting with the prefix “cflare”:</p>
@@ -119,7 +119,7 @@ Log notice stdout</code></pre>
 	<p>Be careful with using the configuration above, as it enables a non-anonymous setting for onion services that do not require anonymity for themselves. To clarify, this does not sacrifice privacy or anonymity of Tor users, just the server. Plus, it improves latency of the circuits.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NVzWfvM9FVH73gjp0AG3X/8a4fb4d1d8c73047902d56afeb67a423/Tor-Onion-Service-Cloudflare.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NVzWfvM9FVH73gjp0AG3X/8a3dbf2a8440bb0f32e05626e30bb695/Tor-Onion-Service-Cloudflare.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
 
 	</figure>
 	<p>If the certificate is signed by a trusted certificate authority, for any subsequent requests to “cloudflare.com” the browser will connect using HTTP/2 via the onion service, sidestepping the need for going through an exit node.</p>
@@ -196,7 +196,7 @@ Log notice stdout</code></pre>
 	<p>Onion Routing is now available to all Cloudflare customers, enabled by default for Free and <a href="https://www.cloudflare.com/plans/pro">Pro plans</a>. The option is available in the Crypto tab of the Cloudflare dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hA2RUo2mh5WZDM5xSkwow/540eae006df0787beaf32fb182b2e173/Screen-Shot-2018-09-20-at-7.36.11-AM.jpg" alt="" class="kg-image" width="1728" height="370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hA2RUo2mh5WZDM5xSkwow/d407c5fb030c3df65cf64fdbad2fffcd/Screen-Shot-2018-09-20-at-7.36.11-AM.jpg" alt="" class="kg-image" width="1728" height="370" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -250,7 +250,7 @@ cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</code></pre>
 	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on our announcements.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15NmOPYhQ1eUrnNvavD3TX/6b20a5236adb94f3f1fd3853045f638c/Crypto-Week.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15NmOPYhQ1eUrnNvavD3TX/f3878ea7031dee5fa0b8fcfffb5e6563/Crypto-Week.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
 
 	</figure>
 </div>

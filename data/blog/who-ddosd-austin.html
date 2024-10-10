@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dWGmh8hmKeeuLo4DeEroo/045cb8785e1324b08051258ceee285fb/who-ddosd-austin.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dWGmh8hmKeeuLo4DeEroo/481d6602534ab9b5a859f1f109c302ef/who-ddosd-austin.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It was a scorching Monday on July 22 as temperatures soared above 37°C (99°F) in Austin, TX, the live music capital of the world. Only hours earlier, the last crowds dispersed from the historic East 6th Street entertainment district. A few blocks away, Cloudflarians were starting to make their way to the office. Little did those early arrivers know that they would soon be unknowingly participating in a Cloudflare time honored tradition of dogfooding new services before releasing them to the wild.</p>
 	<div class="flex anchor relative">
@@ -12,14 +12,14 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IYFcbdrD2QtNr415LdBxt/a3fc5aca0edbbc75b876adb57eb4369c/pasted-image-0.png" alt="" class="kg-image" width="956" height="717" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IYFcbdrD2QtNr415LdBxt/2cc78c72046baa755a06c15c58e4a51d/pasted-image-0.png" alt="" class="kg-image" width="956" height="717" loading="lazy">
 
 	</figure>
 	<p>(A photo I took on a night out with the team while visiting the Cloudflare Austin office)</p>
 	<p><a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">Dogfooding</a> is when an organization uses its own products. In this case, we dogfed our newest cloud service, <a href="https://blog.cloudflare.com/magic-transit">Magic Transit,</a> which both protects and accelerates our customers’ entire network infrastructure—not just their <a href="https://www.cloudflare.com/waf">web properties</a> or <a href="https://www.cloudflare.com/products/cloudflare-spectrum">TCP/UDP applications</a>. With Magic Transit, Cloudflare announces your IP prefixes via BGP, attracts (routes) your traffic to our <a href="https://www.cloudflare.com/network">global network</a> edge, blocks bad packets, and delivers good packets to your data centers via <a href="https://blog.cloudflare.com/magic-transit-network-functions/#gre-anycast-magic">Anycast GRE</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62mQhft6zrMrezPRmbiP1k/1142a839b738722a94dce61c12478aa9/Modern-Arch_Diagram_3x--1-.png" alt="" class="kg-image" width="1600" height="982" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62mQhft6zrMrezPRmbiP1k/05bc1ade59dbd71b02ec5c704ee5503d/Modern-Arch_Diagram_3x--1-.png" alt="" class="kg-image" width="1600" height="982" loading="lazy">
 
 	</figure>
 	<p>We decided to use Austin’s network because we wanted to test the new service on a live network with real traffic from real people and apps. With the target identified, we began onboarding the Austin office in an always-on routing topology.</p>
@@ -35,7 +35,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nDNrBoUc0WD5jxQ80F8I3/75d94973c0c66b722037843b4bae764f/image29.png" alt="" class="kg-image" width="1600" height="1124" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nDNrBoUc0WD5jxQ80F8I3/96411c5fbce81b0079c8a8a92f753305/image29.png" alt="" class="kg-image" width="1600" height="1124" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -49,7 +49,7 @@
 	<p>Now that we’ve completed onboarding Austin to Magic Transit, all we needed was a motivated attacker to launch a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attack</a>. Luckily, we found more than a few willing volunteers on our Site Reliability Engineering (SRE) team to execute the attack. While the teams were still assembling in multiple locations around the world, our SRE volunteer started firing packets at our target from an undisclosed location.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yHiJ2fGpz1FIAK1xOHGkC/a25c12c42292fe6236553cf36c78742e/image-7-1.png" alt="" class="kg-image" width="1306" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yHiJ2fGpz1FIAK1xOHGkC/70fd4cfd102007e17d8e67eb806038be/image-7-1.png" alt="" class="kg-image" width="1306" height="500" loading="lazy">
 
 	</figure>
 	<p>Without Magic Transit, the Austin office would’ve been hit directly with the packet flood. Two things could have happened in this case (not mutually exclusive):</p>
@@ -74,7 +74,7 @@
 	<p>Static rules can vary from straightforward IP blocking and rate-limiting to more sophisticated expressions that match against specific packet attributes. Dynamic rules, on the other hand, are generated automatically in real-time. To play fair with our attacker, we didn’t pre-configure any special rules against the attack. We wanted to give our attacker a fair opportunity to take Austin down. Although due to our multi-layered protection approach, the odds were never actually in their favor.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LEch2fGYFuVKfpEhH47S4/ebe556110735e202ab8bf8ed4c9f7945/pasted-image-0--1-.png" alt="" class="kg-image" width="524" height="296" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LEch2fGYFuVKfpEhH47S4/d4392c39666d6af6199955e02187e984/pasted-image-0--1-.png" alt="" class="kg-image" width="524" height="296" loading="lazy">
 
 	</figure>
 	<p>Source: <a href="https://imgflip.com">https://imgflip.com</a></p>
@@ -90,7 +90,7 @@
 	<p>The asynchronous attack detection lifecycle is represented as the dotted lines in the diagram below. Attacks are detected out of path to assure that we don’t add any latency, and mitigation rules are pushed in line and removed as needed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qslCOBR0RJTYr6nQIHVQa/896e768cb6c914631cac196aba36f361/pasted-image-0--2-.png" alt="" class="kg-image" width="1598" height="872" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qslCOBR0RJTYr6nQIHVQa/d32505a7b0d441fb84184ca95f61ef62/pasted-image-0--2-.png" alt="" class="kg-image" width="1598" height="872" loading="lazy">
 
 	</figure>
 	<p>Multiple packet attributes and correlations are taken into consideration during analysis and detection. Gatebot and DoSD search for both new network anomalies and already known attacks. Once an attack is detected, rules are automatically generated, propagated, and applied in the optimal location within 10 seconds or less. Just to give you an idea of the scale, we’re talking about hundreds of thousands of dynamic rules that are applied and removed every second across the entire Cloudflare network.</p>
@@ -116,7 +116,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hYJyvTODZdPezRRJh8JMD/9814df847eb3205fa03b4297f6561862/image-6-1.png" alt="" class="kg-image" width="2000" height="764" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hYJyvTODZdPezRRJh8JMD/6b0a4a4a1458d56c6f976dd6682dc497/image-6-1.png" alt="" class="kg-image" width="2000" height="764" loading="lazy">
 
 	</figure>
 	<p>Green line = Attack traffic to Cloudflare edge, Yellow line = clean traffic from Cloudflare to origin over GRE</p>

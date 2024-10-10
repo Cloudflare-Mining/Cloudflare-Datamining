@@ -1,17 +1,17 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Pk1cLPYfiOAQK0TiCXQJU/eb7589f32daf69e8b54ce904edbd8b33/tracking-shifts-in-internet-connectivity-in-kherson-ukraine.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Pk1cLPYfiOAQK0TiCXQJU/7e9faf51e0eb15d4f0eb7b6ea13b44f7/tracking-shifts-in-internet-connectivity-in-kherson-ukraine.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The Internet is not only a <a href="https://en.wikipedia.org/wiki/Right_to_Internet_access">human right</a> according to the United Nations, and a way to get <a href="https://blog.cloudflare.com/the-deluge-of-digital-attacks-against-journalists">information</a>, but it has also become an important element in geopolitical conflicts, like the war going on in Ukraine. We have previously written about Ukrainians moving westward to escape the war <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">and Internet outages</a> in the country, but also about the importance of the <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">open Internet in Russia</a>.</p>
 	<p>Over this past week, we observed an outage in the occupied city of Kherson, south Ukraine, coupled with an apparent shift in who controls the Internet within the region. First, let’s give some context and show what we saw.</p>
 	<p>The <a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast">Russian-occupied Kherson</a> (a city of 280,000 people) experienced an Internet outage on Saturday, April 30, 2022, that began just after 16:00 UTC. The outage lasted until Wednesday, May 4, with traffic starting to return around 04:30 UTC traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22LeUWNKRHuGy0h6wEUmzY/a0cf8b51914806bfce7252446993c607/image1-3.png" alt="The outage lasted until Wednesday, May 4, with traffic starting to return around 04:30 UTC traffic." class="kg-image" width="1999" height="790" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22LeUWNKRHuGy0h6wEUmzY/4f0a046436618c9185e28f5dac3f46ec/image1-3.png" alt="The outage lasted until Wednesday, May 4, with traffic starting to return around 04:30 UTC traffic." class="kg-image" width="1999" height="790" loading="lazy">
 
 	</figure>
 	<p>In the chart below, we can see that there was a 43% decrease in traffic from Kherson from February 23 to 24, after the war started. However, this weekend’s outage is the most significant disruption to Internet traffic in Kherson since the start of the war.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PuxCnx6OvnWNLrc4bSCgv/2550953741ca7f52b1f0e852c2f13594/image2.png" alt="There was a 43% decrease in traffic from Kherson from February 23 to 24, after the war started. However, this weekend’s outage is the most significant disruption to Internet traffic in Kherson since the start of the war." class="kg-image" width="1999" height="816" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PuxCnx6OvnWNLrc4bSCgv/49649a6b88b08ef99b4c0d1e7de5e0db/image2.png" alt="There was a 43% decrease in traffic from Kherson from February 23 to 24, after the war started. However, this weekend’s outage is the most significant disruption to Internet traffic in Kherson since the start of the war." class="kg-image" width="1999" height="816" loading="lazy">
 
 	</figure>
 	<p>According to Ukraine’s <a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664">vice Prime-Minister</a>, Mykhailo Fedorov, and also the <a href="https://www.facebook.com/dsszzi/posts/306820328295777">State Service of Special Communications and Information Protection</a>, on Wednesday morning, May 4, “the communication cut off by the occupiers in Kherson and Kherson region was restored” using “backup power channels”. The reasons presented for the lack of communication “were interruptions of fiber-optic trunk lines and disconnection from the power supply of equipment of operators in the region”.</p>
@@ -37,7 +37,7 @@
 	<p>Because <a href="https://blog.cloudflare.com/a-brief-anycast-primer">Cloudflare uses Anycast</a> to route content requests to data centers on our network, routing changes such as this one can impact data center selection. This is clearly evident in the graph below. Prior to the outage, when Khersontelecom reached the Internet through other Ukrainian providers, requests from the network were handled by Cloudflare data centers in Kyiv, Ukraine and Frankfurt, Germany. On May 1, after the Russian network began to route traffic for Khersontelecom, requests were sent to our Moscow data center.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jbsCvF3ON7us0bVzaUfeo/e735ec6b641f82f107924468a2a26aad/image3-1.png" alt="" class="kg-image" width="1664" height="526" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jbsCvF3ON7us0bVzaUfeo/6576f127ede912aafb1b319df9f55d5a/image3-1.png" alt="" class="kg-image" width="1664" height="526" loading="lazy">
 
 	</figure>
 	<p>These requests continued to be handled by our Moscow data center for approximately three days. However, the graph also shows that traffic started being handled again by the Kyiv and Frankfurt data centers, with the Moscow data center no longer in the mix, around 06:00 UTC on May 4. This aligns with the observed update to the routing path for AS47598 shown in the table below – it no longer had Russian networks as upstream providers, but instead returned to reaching the Internet through other Ukrainian networks.</p>

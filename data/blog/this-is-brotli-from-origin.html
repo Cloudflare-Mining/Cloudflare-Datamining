@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eudI9Wu9FybnliXMNdIib/3732252a1e57762a41f4ca557f970e61/image8-2.png" alt="All the way up to 11: Serve Brotli from origin and Introducing Compression Rules" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eudI9Wu9FybnliXMNdIib/eacd7d29901473846554ed5c678e7e8c/image8-2.png" alt="All the way up to 11: Serve Brotli from origin and Introducing Compression Rules" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Throughout Speed Week, we have talked about the importance of <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website">optimizing performance</a>. Compression plays a crucial role by reducing file sizes transmitted over the Internet. Smaller file sizes lead to faster downloads, quicker website loading, and an improved user experience.</p>
@@ -26,20 +26,20 @@
 	<p><b>Old world</b></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oE6hwo4gOyCbDmcN9yd9P/09b28a4589217212277938d9f596ca7f/Flow_how-CF-compresses_1.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oE6hwo4gOyCbDmcN9yd9P/18d7e83b965bbb83190039aa2013f480/Flow_how-CF-compresses_1.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
 
 	</figure>
 	<p>With Cloudflare now fully supporting Brotli end to end, customers will start seeing our updated accept-encoding header arriving at their origins. Once available customers can transfer, cache and serve heavily compressed Brotli files directly to us, all the way up to the maximum level of 11. This will help reduce <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> and bandwidth consumption. If the end user device does not support Brotli compression, we will automatically decompress the file and serve it either in its decompressed format or as a Gzip-compressed file, depending on the Accept-Encoding header.</p>
 	<p><b>Full end-to-end Brotli compression support</b></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pQQ1tDxSU00iu1BARptlf/413e70a98eee54c7da8360c806a68739/Flow_how-CF-compresses_2.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pQQ1tDxSU00iu1BARptlf/a448f89051e2480f2b11fe51b02d669a/Flow_how-CF-compresses_2.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
 
 	</figure>
 	<p><b>End user cannot support Brotli compression</b></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YLEb3iqcTCqQu3GdUIwzo/6fea5318a4eaa09dd6defd5d30476be4/Flow_how-CF-compresses_3.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YLEb3iqcTCqQu3GdUIwzo/3913ea436fb7b81ababe03f07c82cd6d/Flow_how-CF-compresses_3.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
 
 	</figure>
 	<p>Customers can implement Brotli compression at their origin by referring to the appropriate online materials. For example, customers that are using NGINX, can implement Brotli by following this <a href="https://github.com/google/ngx_brotli#installation">tutorial</a> and setting compression at level 11 within the <code>nginx.conf</code> configuration file as follows:</p>
@@ -165,7 +165,7 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 	<p>This is due to Cloudflare needing to decompress and access the body to apply the requested settings. Alternatively a customer can disable these features for specific paths using Configuration Rules.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JgawIZ58Bp2hB133zV09d/5ad84e54f90493d4ba1fb46f44a99b00/pasted-image-0-3.png" alt="" class="kg-image" width="1114" height="1518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JgawIZ58Bp2hB133zV09d/3c4d5d9cc6b7fc6a558393032d124c3c/pasted-image-0-3.png" alt="" class="kg-image" width="1114" height="1518" loading="lazy">
 
 	</figure>
 	<p>If any of these rewrite features are enabled, your origin can still send Brotli compression at higher levels. However, we will decompress, apply the Cloudflare feature(s) enabled, and recompress on the fly using Cloudflare’s default Brotli level 4 or Gzip level 8 depending on the user's accept-encoding header.</p>
@@ -193,19 +193,19 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 	<p>For example, by using Cloudflare's Compression Rules for .ktx files, customers can optimize the delivery of textures in webGL applications, enhancing the overall user experience. Enabling compression minimizes the bandwidth usage and ensures that webGL applications load quickly and smoothly, even when dealing with large and detailed textures.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KkfvWdXDQauzqaRSxLInu/985152d73416e21fadd39ca5dbfa03cb/pasted-image-0--1--2.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KkfvWdXDQauzqaRSxLInu/e97a02af6927b7c2a405184b7204d7dc/pasted-image-0--1--2.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
 
 	</figure>
 	<p>Alternatively customers can disable compression or specify a preference of how we compress. Another example could be an Infrastructure company only wanting to support Gzip for their IoT devices but allow Brotli compression for all other hostnames.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SHkVVBlGpGDOstaY6r0wQ/655a245b48e483e82eba1c3e123c165f/pasted-image-0--2--1.png" alt="" class="kg-image" width="1470" height="1114" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SHkVVBlGpGDOstaY6r0wQ/c9aabf11c022b67402b8fdcaa4304636/pasted-image-0--2--1.png" alt="" class="kg-image" width="1470" height="1114" loading="lazy">
 
 	</figure>
 	<p>Compression rules use the filters that our other <a href="https://developers.cloudflare.com/rules">rules</a> products are built on top of with the added fields of Media Type and Extension type. Allowing users to easily specify the content you wish to compress.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7K6o1RMDHunR0xDyl61sdI/39e572a972c7b8d717a1e4d4682d89cd/pasted-image-0--3--1.png" alt="" class="kg-image" width="1600" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7K6o1RMDHunR0xDyl61sdI/1f51fa7fcc17d70da034831b5461988d/pasted-image-0--3--1.png" alt="" class="kg-image" width="1600" height="406" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -219,7 +219,7 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 	<p>Brotli has been long supported by some <a href="https://caniuse.com/brotli">web browsers</a> since 2016 and Cloudflare offered Brotli Support in 2017. As with all new web technologies Brotli was unknown and we gave customers the ability to selectively enable or disable BrotlI via the API and our UI.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3e78OtHsTlLbAeCYGpgfjf/4e0b72ca3f3d519092e07320f887f658/pasted-image-0--4-.png" alt="" class="kg-image" width="1600" height="339" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3e78OtHsTlLbAeCYGpgfjf/f4ade0204cbcf04021a54d5f63583afc/pasted-image-0--4-.png" alt="" class="kg-image" width="1600" height="339" loading="lazy">
 
 	</figure>
 	<p>Now that Brotli has evolved and is supported by all browsers, we plan to enable Brotli on all zones by default in the coming months. Mirroring the Gzip behavior we currently support and removing the toggle from our dashboard. If browsers do not support Brotli, Cloudflare will continue to support their accepted encoding types such as Gzip or uncompressed and Enterprise customers will still be able to use Compression rules to granularly control how we compress data towards their users.</p>

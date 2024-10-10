@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5J1PiQCFG3jjjT5PElRVlb/601c3b2710369749ad16b59e44018fc0/image_0-1.png" alt="Welcome to the Internet. All Browsers Welcome" class="kg-image" width="978" height="652" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5J1PiQCFG3jjjT5PElRVlb/f104679a8599246b8e215d1f7f3c2188/image_0-1.png" alt="Welcome to the Internet. All Browsers Welcome" class="kg-image" width="978" height="652" loading="lazy">
 
 	</figure>
 	<p>After December 31, 2015, <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificates</a> that use the SHA-1 hash algorithm for their signature will be declared technology non grata on the modern Internet. Google's Chrome browser has already begun displaying a warning for SHA-1 based certs that expire after 2015. Other browsers are mirroring Google and, over the course of 2016, will begin issuing warnings and eventually completely distrust connections to sites using SHA-1 signed certs. And, starting January 1, 2016, you will no longer be able to get a new SHA-1 certificate from most certificate authorities.</p>
@@ -22,14 +22,14 @@
 	<p>In a Silicon Valley tech company, where most employees get a new laptop every year and having a 5-year-old phone is unheard of, this may not seem like a problem. But the Internet is used by billions of people around the world and most of them don’t have the latest technology. To understand the impact, we spent the last few weeks testing browser connections to CloudFlare's network for SHA-2 support. We see approximately 1 trillion page views for more than 2.2 billion unique visitors every month, which gives us a pretty representative sample of global traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11dNe3uCetrBC0oWKoO4js/50b6e4e720c9f79eb3fb87bedfda8ca3/image_1-1.png" alt="SHA-1/SHA-2 browser support" class="kg-image" width="720" height="564" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11dNe3uCetrBC0oWKoO4js/2b10be60736439b5800f7bf6ffe66202/image_1-1.png" alt="SHA-1/SHA-2 browser support" class="kg-image" width="720" height="564" loading="lazy">
 
 	</figure>
 	<h4>Global SHA-2 Support, Not Equal</h4>
 	<p>The seemingly good news is that globally, SHA-2 is supported by at least 98.31% of browsers. Cutting 1.69% off the encrypted Internet may not seem like a lot, but it represents over 37 million people. That's the equivalent of the population of California not having access to encryption unless they upgrade their devices. As SHA-2 only sites proliferate, if these users on SHA-1-only browsers try and access an encrypted site, they’ll see an error page that completely blocks their access.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2l93Kv2fvRmZuSl1gvJNV8/58cad0039bb654e6bea4b75d863daf48/image_2.png" alt="Error page for SHA-1 failure" class="kg-image" width="2052" height="1496" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2l93Kv2fvRmZuSl1gvJNV8/31aa98363b964cdfb0ad48fad767de43/image_2.png" alt="Error page for SHA-1 failure" class="kg-image" width="2052" height="1496" loading="lazy">
 
 	</figure>
 	<p>Now, if it were just a bunch of large enterprises in the United States that refused to get off old versions of Windows XP, then you could make an argument that this is actually a good thing. Unfortunately, the data shows that's not the case. The United States has 99.26% SHA-2 support, making it the 15th most modern browser market (out of more than 190 countries we saw traffic from during our test). In fact, SHA-2 support in Western Europe and North America is universally over 99%.</p>
@@ -93,14 +93,14 @@
 	<p>That's what we have built for CloudFlare's customers. As of today, for all paid CloudFlare customers, we now automatically support SHA-1 fallback. (Free customers' SSL support was already limited to SHA-2 and modern browsers due to the need for SNI.) If you'd prefer not to fallback to SHA-1 you can disable the feature from the Crypto Application in the CloudFlare control panel. This is available for <a href="https://www.cloudflare.com/plans/business">Business</a> and <a href="https://www.cloudflare.com/plans/enterprise">Enterprise</a> customers today and we’ll be adding support for disabling SHA-1 fallback before the end of the year for Pro customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6o4W75kwZYSrfUpzxbaaxr/aa39d5d7d5b924732701ad57dd49ee90/disable-standalone.png" alt="image alt text" class="kg-image" width="1926" height="488" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6o4W75kwZYSrfUpzxbaaxr/b64e7059ef7501ac2b42674bc4bac57e/disable-standalone.png" alt="image alt text" class="kg-image" width="1926" height="488" loading="lazy">
 
 	</figure>
 	<h4>Who Else Is Falling Back?</h4>
 	<p>CloudFlare isn't the only company doing this. In order to understand who else is supporting SHA-1 fallback we crawled the world's top 100,000 websites. While it's an exclusive club of sites that support SHA-1 fallback, the results are telling.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6c15d0pQ3ZeJPfsXFcUTGI/75325eba23d47146b7ad1077045c5046/facebook_alibaba2.png" alt="image alt text" class="kg-image" width="599" height="211" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6c15d0pQ3ZeJPfsXFcUTGI/1604cc2ea31aeb47662acf6ecc454ff4/facebook_alibaba2.png" alt="image alt text" class="kg-image" width="599" height="211" loading="lazy">
 
 	</figure>
 	<p>For instance, Alibaba, the Chinese Internet commerce giant, supports SHA-1 fallback across many of its sites. That's not surprising given more than 6% of their Chinese customers could not securely buy from their online store if they only supported SHA-2.</p>
@@ -178,7 +178,7 @@
 	<p>One example brought home the importance of SHA-1 fallback. Mozilla, the maker of Firefox, has always been a proponent of strong cryptography. Firefox has supported SHA-2 since its first version. As a result, earlier this year they switched their site to a SHA-2 certificate. In retrospect, the results weren't a surprise. The Firefox team has <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387#c6">spoken publicly about the drop in downloads they experienced when they moved mozilla.org to only support SHA-2 certificates</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42K28oUV57ioVVJA6ncoRb/2e0f17f9a9dffad5914784cd65319010/image_5.png" alt="Mozilla logo" class="kg-image" width="267" height="272" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42K28oUV57ioVVJA6ncoRb/7bb6f415d1328859765c90a7edc91299/image_5.png" alt="Mozilla logo" class="kg-image" width="267" height="272" loading="lazy">
 
 	</figure>
 	<p>It's a classic chicken-and-egg problem: customers with legacy browsers can't upgrade if the site where you download the modern browser requires a modern browser. So, as much as it's convenient for those of us with brand new MacBooks and 4k monitors to say that everyone should just upgrade their browser, the case of Mozilla proves that's literally impossible if we force a SHA-2 only Internet.</p>

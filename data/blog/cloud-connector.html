@@ -1,7 +1,7 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VXjKvnAYhWJ1LYe6rCCyT/d57a789c986da20f8ad3d92c0f451bf5/2472-1-Hero.png" alt="2472-1-Hero" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VXjKvnAYhWJ1LYe6rCCyT/ab20954a0ed34a7ce5b23e5f1d7212fa/2472-1-Hero.png" alt="2472-1-Hero" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p>As part of Cloudflare's mission to help build a better Internet, we’re continuously integrating with other networks and service providers, ensuring ease of use for anyone, anywhere, anytime.&nbsp;</p>
 	<p>Today, we’re excited to announce Cloud Connector – a brand-new way to put Cloudflare in front of popular public cloud services, protecting your assets, <a href="https://www.cloudflare.com/application-services/solutions"><u>accelerating applications</u></a>, and routing your traffic between multiple cloud providers seamlessly.</p>
@@ -38,18 +38,18 @@
 	</div>
 	<p>Getting started with Cloud Connector is easy. Navigate to the <b>Rules &gt; Cloud Connector</b> tab in your zone dashboard. From there, select your cloud provider:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Iv4dPgAUh0gC46Y2LGwBz/c5ecafb970023df762349fc22c3e09b4/2472-2.png" alt="2472-2" class="kg-image" width="1999" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Iv4dPgAUh0gC46Y2LGwBz/8c220eca52d1c13662fd837ca594e396/2472-2.png" alt="2472-2" class="kg-image" width="1999" height="936" loading="lazy">
 	</figure>
 	<p>
 		You’ll be presented with an interface where you can configure the destination hostname of your object storage bucket. Ensure that your bucket URL matches the expected schema for your cloud provider, such as .amazonaws.com for AWS S3 or storage.googleapis.com for Google Cloud Storage. In case of <a href="https://developers.cloudflare.com/r2"><u>R2</u></a>, your bucket needs to be public and associated with <a href="https://developers.cloudflare.com/r2/buckets/public-buckets/#connect-a-bucket-to-a-custom-domain"><u>a custom domain</u></a>:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53gSU119UIYjmFrzLAZMJx/61de14fbe0d34a7183699f7559146872/2472-3.png" alt="2472-3" class="kg-image" width="914" height="718" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53gSU119UIYjmFrzLAZMJx/ddd65062c6db6393d88d357515b0bda0/2472-3.png" alt="2472-3" class="kg-image" width="914" height="718" loading="lazy">
 	</figure>
 	<p>
 		Once you’ve configured your bucket, the next step is to determine which traffic is routed by Cloud Connector. Using the familiar rule builder interface that powers all our Rules products, you can filter requests based on hostname, URI path, headers, cookies, source IP, AS number, and more.</p>
 	<p>After configuring, deploy your rule, and it will be immediately effective:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qXv7kCzvwftgAHrlqDgtA/6cad79397bed373319f427d49ecb28c1/2472-4.png" alt="2472-4" class="kg-image" width="1999" height="1037" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qXv7kCzvwftgAHrlqDgtA/dda2d9aa19de5ab4a5bbee6778db812e/2472-4.png" alt="2472-4" class="kg-image" width="1999" height="1037" loading="lazy">
 	</figure>
 	<p>
 		Cloud Connector is intentionally placed at the end of the <a href="https://developers.cloudflare.com/ruleset-engine/reference/phases-list"><u>Ruleset Engine phase sequence</u></a> to ensure it works out of the box, even if there are active origin or configuration rules with matching criteria.</p>

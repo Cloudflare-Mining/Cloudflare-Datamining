@@ -3,13 +3,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DOfOOnXrmzg116uUKi9T1/b8f99fa19b9df88da4fc91ffeb39349d/image6-20.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DOfOOnXrmzg116uUKi9T1/bddad02789c70a2e82c1d2b30a71c9a6/image6-20.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today we’re rolling out a new tool to tackle email spoofing and phishing and improve email deliverability: The new <i>Email Security DNS Wizard</i> can be used to create DNS records that prevent others from sending malicious emails on behalf of your domain. This new feature also warns users about insecure DNS configurations on their domain and shows recommendations on how to fix them. The feature will first be rolled out to users on the <a href="https://www.cloudflare.com/plans/free">Free plan</a> and over the next weeks be made available for Pro, Business and Enterprise customers, as well.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aEZCdU9gaKn96DeylxQ6o/57b34a038249b8e9a42c203b1a31976e/image4-24.png" alt="" class="kg-image" width="1800" height="751" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aEZCdU9gaKn96DeylxQ6o/35f01fb59be4eb7cafbbe1cc44d3d77f/image4-24.png" alt="" class="kg-image" width="1800" height="751" loading="lazy">
 
 	</figure>
 	<p>Before we dive into what magic this wizard is capable of, let’s take a step back and take a look at the problem: <a href="https://www.cloudflare.com/learning/email-security/what-is-email-spoofing">email spoofing</a> and phishing.</p>
@@ -24,7 +24,7 @@
 	<p>Spoofing is the process of posing as someone else which can be used in order to gain some kind of illicit advantage. One example is <b>domain spoofing</b> where someone hosts a website like <code>mycoolwebpaqe.xyz</code> &nbsp;to trick users of <code>mycoolwebpage.xyz</code> to provide sensitive information without knowing they landed on a false website. When looking at the address bar side by side in a browser, it’s very hard to spot the difference.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PxVe1b4Hez5NOq5XvzIh7/954e44a8fecb6baa25cc06410c7e426a/Screen-Shot-2021-09-25-at-10.05.21-AM.png" alt="" class="kg-image" width="1482" height="804" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PxVe1b4Hez5NOq5XvzIh7/5524b5746727c82b0a97ab7783153edf/Screen-Shot-2021-09-25-at-10.05.21-AM.png" alt="" class="kg-image" width="1482" height="804" loading="lazy">
 
 	</figure>
 	<p>Then, there is <b>email spoofing</b>. In order to understand how this works, let’s take a look at a Cloudflare product update email I received on my personal email address. With most email providers you can look at the full source of an email which contains a number of headers and of course the body of the email.</p>
@@ -35,26 +35,26 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	<p>Above you can see four headers of the email, when it was received, who it came from, who I should reply to, and my personal email address. The value of the <code>From</code> header is used to display the sender in my email program.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28pGQD2E3P3ONQn0pQY9Vb/e69aefb8d52639f73ec205170121d776/image3-30.png" alt="" class="kg-image" width="712" height="156" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28pGQD2E3P3ONQn0pQY9Vb/16e561d34f8891d069a79fee7c034450/image3-30.png" alt="" class="kg-image" width="712" height="156" loading="lazy">
 
 	</figure>
 	<p>When I receive an email as above, I automatically assume this email has been sent from Cloudflare. However, nobody is stopped from sending an email with a modified <code>From</code> header from their mail server. If my email provider is not performing the right checks, which we will cover later in this blog post, I could be tricked into believing that an email was sent from Cloudflare, but it actually was not.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PaMxRQLG5BwnK5ZIzwwg6/e56cadeea3a1cf21ea4a9be527d71b09/image13-4.png" alt="" class="kg-image" width="1800" height="749" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PaMxRQLG5BwnK5ZIzwwg6/53a70fcc30e37930c23e7ab94311242e/image13-4.png" alt="" class="kg-image" width="1800" height="749" loading="lazy">
 
 	</figure>
 	<p>This brings us to the second attack type: <b>phishing</b>. Let’s say a malicious actor has successfully used email spoofing to send emails to your company’s customers that seem to originate from one of your corporate service emails. The content of these emails look exactly like a legitimate email from your company using the same styling and format. The email text could be an urgent message to update some account information including a hyperlink to the alleged web portal. If the receiving mail server of a user does not flag the email as spam or insecure origin, the user might click on the link which could execute malicious code or lead them to a spoofed domain asking for sensitive information.</p>
 	<p>According to the <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2020_IC3Report.pdf">FBI’s 2020 Internet Crime Report</a>, phishing was the most common cyber crime in 2020 with over 240,000 victims leading to a loss of over $50M. And the number of victims has more than doubled since 2019 and is almost ten times higher than in 2018.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VvX416Rl6OBzDvGgNav1V/db7c072a16cf1b38ef01da2c7d7a3b39/image5-23.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VvX416Rl6OBzDvGgNav1V/685b7969b190b249c4b9bec3d1f7d0f9/image5-23.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
 
 	</figure>
 	<p>In order to understand how most phishing attacks are carried out, let's take a closer look at the findings of the <a href="https://enterprise.verizon.com/resources/reports/2020/2020-data-breach-investigations-report.pdf">2020 Verizon Data Breach Investigations Report</a>. It lays out that phishing accounts for more than 80% of all "social actions", another word for social engineering attacks, making it by far the most common type of such an attack. Furthermore, the report states that 96% of social actions are sent via email and only 3% through a website and 1% via phone or text.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Ke7b9XwyfjM1Y2jAU56uO/e7fc30ca2685efc7c0ea5b9039cba0f0/zJaupW_6sFUgHngoCJ6naiTt_XpKHahn5P63J9jlxpynfThhNpDb9wAREZbAkL9SSIuUfu4l_K0rnYUP-iOQZvmZinl5Kt9BNKrreXFyQ07q0YZApEAdw927zjk7.png" alt="" class="kg-image" width="1214" height="752" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Ke7b9XwyfjM1Y2jAU56uO/774ad9250113105fe79f44e2403cb135/zJaupW_6sFUgHngoCJ6naiTt_XpKHahn5P63J9jlxpynfThhNpDb9wAREZbAkL9SSIuUfu4l_K0rnYUP-iOQZvmZinl5Kt9BNKrreXFyQ07q0YZApEAdw927zjk7.png" alt="" class="kg-image" width="1214" height="752" loading="lazy">
 
 	</figure>
 	<p>This clearly shows that email phishing is a serious problem causing Internet users a big headache. So let’s see what domain owners can do to stop bad actors from misusing their domain for email phishing.</p>
@@ -93,7 +93,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	<p>Finally, there is the catch-all mechanism <code>-all</code> which specifies how all incoming, but unspecified emails should be treated The catch-all mechanism is preceded by a qualifier that can be either + (Allow), ~ (Softfail) or - (Fail). Using the <code>Allow</code> qualifier is not recommended as it basically makes the SPF record useless and allows all IP addresses and domains to send email on behalf of your domain. <code>Softfail</code> is interpreted differently by receiving mail servers, marking an email as Spam or insecure, depending on the server. <code>Fail</code> tells a server not to accept any emails originating from unspecified sources.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YneN2p3yGEEOsBQpwDcDg/97d494225d37f6dc02bc654893aaf39d/image12-7.png" alt="" class="kg-image" width="1602" height="1191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YneN2p3yGEEOsBQpwDcDg/b820270fc74d219fd6b66ac0c4d0d56f/image12-7.png" alt="" class="kg-image" width="1602" height="1191" loading="lazy">
 
 	</figure>
 	<p>The diagram above shows the steps taken to ensure a received email is SPF compliant.</p>
@@ -172,7 +172,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	<p>The last tag we can find on the record is the reporting URI (<code>rua</code>). This is used to specify an email address that will receive aggregate reports (usually daily) about non-conforming emails.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Vsly4zfa661vaySq9OFm5/d67078bba86450cb79b60fdd8d7bd38d/unnamed3.png" alt="" class="kg-image" width="1792" height="1232" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Vsly4zfa661vaySq9OFm5/f3eaa88003ea3ebce2a2e6822c63049b/unnamed3.png" alt="" class="kg-image" width="1792" height="1232" loading="lazy">
 
 	</figure>
 	<p>Above, we can see how DMARC works step by step.</p>
@@ -203,7 +203,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	<p><a href="https://dmarc.org/stats/farsight/dmarc">Dmarc.org</a> has published the adoption of DMARC records of domains in a representative dataset. It shows that by the end of 2020, still less than 50% of domains even had a DMARC record. And remember, without a DMARC record there is no clear enforcement of SPF and DKIM checks. The study further shows that, of the domains that have a DMARC record, more than 65% are using the monitoring only policy (<code>p=none</code>), so there is a significant potential to drive this adoption higher. The study does not mention if these domains are sending or receiving emails, but even if they didn’t, a secure configuration should include a DMARC record (more about this later).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LZQMSYmzWUIFhTD2JfTuZ/be4ce5fd54e32b665d3efbd63e515a84/image2-37.png" alt="" class="kg-image" width="950" height="524" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LZQMSYmzWUIFhTD2JfTuZ/46f5a4d4626ef5978449cc63ed3ce58a/image2-37.png" alt="" class="kg-image" width="950" height="524" loading="lazy">
 
 	</figure>
 	<p>Another <a href="https://www.dmarc360.com/dmarc-adoption-rate">report</a> from August 1, 2021 tells a similar story for domains that belong to entities in the banking sector. Of 2,881 banking entities in the United States, only 44% have published a DMARC record on their domain. Of those that have a DMARC record, roughly 2 out of 5 have set the DMARC policy to <code>None</code> and another 8% are considered “Misconfigured”. Denmark has a very high adoption of DMARC on domains in the banking sector of 94%, in contrast to Japan where only 13% of domains are using DMARC. SPF adoption is on average significantly higher than DMARC, which might have to do with the fact that the SPF standard was first introduced as <a href="https://datatracker.ietf.org/doc/html/rfc4408">experimental RFC</a> in 2006 and DMARC only <a href="https://datatracker.ietf.org/doc/html/rfc7489">became a standard</a> in 2015.</p><!--kg-card-begin: html-->
@@ -326,7 +326,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pY3PXTalaZ8MW18dHjfvK/c928a715e4ca581533f4e6f1c4ab1d06/7yW39Yx6BIcxLPOaHCJJkQHMCfihi6ZI1TeIw26hoYNslR0Dpm0E0A2QT7zA-78TWXvK_wAxbxcFdK815bu-2xx8046O5rOgVavTZLPT8k6pWoMMfSvjc0LDN5d8.png" alt="" class="kg-image" width="2048" height="323" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pY3PXTalaZ8MW18dHjfvK/7de935fceeb1ae55409442d8aaa388c8/7yW39Yx6BIcxLPOaHCJJkQHMCfihi6ZI1TeIw26hoYNslR0Dpm0E0A2QT7zA-78TWXvK_wAxbxcFdK815bu-2xx8046O5rOgVavTZLPT8k6pWoMMfSvjc0LDN5d8.png" alt="" class="kg-image" width="2048" height="323" loading="lazy">
 
 	</figure>
 	<ol>
@@ -336,13 +336,13 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mzRxukzm24D0TyFcRZl2m/903ca0e8a8aaa9a6f961681ed05b5c61/image.png" alt="" class="kg-image" width="2074" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mzRxukzm24D0TyFcRZl2m/c02c0c75777b33c3d90e62b63e3c8a28/image.png" alt="" class="kg-image" width="2074" height="452" loading="lazy">
 
 	</figure>
 	<p>In order to start using the <i>Email Security DNS Wizard,</i> you can either directly click the link in the warning which brings you to the relevant section of the wizard or click <b>Configure</b> in the new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard">Email Security section</a>. The latter will show you the following available options:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sB5AoCErbZ3TAUWdJ2cFS/4a525c46298c3658ca4b790ffaed33b5/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQ.png" alt="" class="kg-image" width="1547" height="2048" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sB5AoCErbZ3TAUWdJ2cFS/151cf3fade55dae8f8378cd01e58b66f/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQ.png" alt="" class="kg-image" width="1547" height="2048" loading="lazy">
 
 	</figure>
 	<p>There are two scenarios. You’re using your domain to send email, or you don’t. If you do, you can configure SPF, DKIM, and DMARC records by following a few simple steps. Here you can see the steps for SPF:</p><!--kg-card-begin: html-->
@@ -351,7 +351,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	<p>If your domain is not sending email, there is an easy way to configure all three records with just one click:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cV5y3W01eHkbNU0DCj7kf/482514736cf3a0ca4ec7f32a0b2b3ec5/Azbl1cjgQw2_iThjg-8djR52IWooTAg9J5PJ-ak-TtZc3UnqMOLN9LqsKw1-mGyn5SsJ9mYzIth9IxWXjiLHnLHAFHetl6Fy1DIB0fXBLwQr3hXq2giVs52YNLNu.png" alt="" class="kg-image" width="2048" height="928" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cV5y3W01eHkbNU0DCj7kf/32138a1b15dd747a32012e976ac0992d/Azbl1cjgQw2_iThjg-8djR52IWooTAg9J5PJ-ak-TtZc3UnqMOLN9LqsKw1-mGyn5SsJ9mYzIth9IxWXjiLHnLHAFHetl6Fy1DIB0fXBLwQr3hXq2giVs52YNLNu.png" alt="" class="kg-image" width="2048" height="928" loading="lazy">
 
 	</figure>
 	<p>Once you click <b>Submit</b>, this will create all three records configured in such a way that all emails will fail the checks and be rejected by incoming email servers.</p>

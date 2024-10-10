@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xs3odwiEbW2X4uv6wNNdA/647b85d38c09f3d504cdef6d4be642f6/image2-57.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xs3odwiEbW2X4uv6wNNdA/a08cd0796a54029678fd143edc84e4d6/image2-57.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>In July 2021, as part of <a href="https://blog.cloudflare.com/welcome-to-cloudflare-impact-week">Impact Innovation Week</a>, we announced our intention to launch <a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches">Crawler Hints</a> as a means to reduce the environmental impact of web searches. We spent the weeks following the announcement hard at work, and in October 2021, we announced <a href="https://blog.cloudflare.com/cloudflare-now-supports-indexnow">General Availability for the first iteration of the product</a>. This post explains how we built it, some of the interesting engineering problems we had to solve, and shares some metrics on how it's going so far.</p>
@@ -19,7 +19,7 @@
 	<p>A high level design of the system we built looks as follows:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kSfCs22YboeTPDLdbffsG/a3807415d5923268f7dbda1fe08cd10a/image3-42.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kSfCs22YboeTPDLdbffsG/b21c528beaa8579a0d6e2e3b874fccca/image3-42.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
 
 	</figure>
 	<p>In this blog we will dig into each aspect of it in more detail.</p>
@@ -35,7 +35,7 @@
 	<p>For Crawler Hints to work, we make use of a number of signals available at request time to make an informed decision on the “freshness” of content. For our first iteration of Crawler Hints, we used a cache miss from Cloudflare’s cache as a starting basis. Although a naive signal on its own, getting the data pipelines in place to forward cache miss data from our global network to our control plane meant we would have everything in place to iterate on and improve the signal processing quickly going forward. To do this, we leveraged some existing services from our data team that takes request data , marshalls it into <a href="https://capnproto.org">Cap'n Proto format</a>, and forwards it to a message bus (we use apache Kafka). These messages include the URLs of the resources that have met the signal criteria, along with some additional metadata for analytics/future improvement.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XeWU8Bx1SuIOajaVbu3Kd/f7c02e359c3322d52b79cdd66257a9a7/image4-34.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XeWU8Bx1SuIOajaVbu3Kd/76edad32d2eff51af6b2d9887ea2825e/image4-34.png" alt="" class="kg-image" width="1999" height="833" loading="lazy">
 
 	</figure>
 	<p>The amount of traffic our global network receives is substantial. We serve over 28 million HTTP requests per second on average, with more than 35 million HTTP requests per second at peak. Typically, Cloudflare teams sample this data to enable products <a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">such as being alerted when you are under attack</a>. For Crawler Hints, every cache miss is important. Therefore, 100% of all cache misses for opted-in sites were sent for further processing, and we’ll discuss more on opt-in later.</p>
@@ -60,7 +60,7 @@
 	<p>For the deduplication, the simplest thing to do would be to have an in-memory map in our service to track resources between a pre-specified interval. A naive implementation in Go might look something like this.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vlmka7b85QzcVxziLLGdR/92a97efa5644dbc023ba09c3c204326d/image5-22.png" alt="" class="kg-image" width="1144" height="624" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vlmka7b85QzcVxziLLGdR/b3669b1bbd3fd4108d94ffa8052b2f8d/image5-22.png" alt="" class="kg-image" width="1144" height="624" loading="lazy">
 
 	</figure>
 	<p>The problem with this approach is we have little resilience. If the service was to crash, we would lose all the data for our current batch. Furthermore, if we were to run multiple instances of our services, they would all have a different “view” of which resources they had seen before and therefore we would not be deduplicating.To mitigate this issue, we decided to use a specialist caching service. There are a number of distributed caches that would fit the bill, but we chose Redis given our team’s familiarity with operating it at scale.</p>
@@ -68,7 +68,7 @@
 	<p>Two standalone Redis clusters were spun up. For each generation of request data, one cluster would be designated as the active primary. The validated records would be inserted as keys on the primary, serving the dual purpose of buffering while also deduplicating since Redis keys are unique. Separately, a downstream service (more on this later!) would periodically issue the command for these inserters to switch from the active primary (cluster A) to the inactive cluster (cluster B). Cluster A could then be flushed with records being batch read in a size of our choosing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IYn9s1nmM2Qcci2c5A8cn/b79bfeac09e135b8faaef35263481d47/image9-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IYn9s1nmM2Qcci2c5A8cn/21069dec8e9b95ec87e17d8b2d31a767/image9-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -85,20 +85,20 @@
 	<p>To ensure we can add more partners in the future, we defined an interface which we call a “Hinter”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7K0wQWVx2hciGxZVwFMxM6/7168bc31d8e84e3dda3cccb4c19c1f37/image8-12.png" alt="" class="kg-image" width="1346" height="552" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7K0wQWVx2hciGxZVwFMxM6/a3b6f0272225bbddd393465592c98721/image8-12.png" alt="" class="kg-image" width="1346" height="552" loading="lazy">
 
 	</figure>
 	<p>We then satisfy this interface for each partner that we work with. We return a custom error from the Hinter service that is of type *indexers.Error. The definition of which is:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Aq6eqraSEg1TpQ2b2QJK9/893ec595c792f9acb5c62e7142fc82cd/image1-84.png" alt="" class="kg-image" width="1632" height="840" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Aq6eqraSEg1TpQ2b2QJK9/e763eb8303e0d1fdef3807ae58503cda/image1-84.png" alt="" class="kg-image" width="1632" height="840" loading="lazy">
 
 	</figure>
 	<p>This allows us to “bubble up” information about which indexer has failed and increment metrics and retry only those calls to indexers which have failed.</p>
 	<p>This all culminates together with the following in our service layer:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fwN6ZGTRJ5NARBrJWLfOq/0f0f9de0887da85f3cb1135697173474/image6-21.png" alt="" class="kg-image" width="1970" height="1056" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fwN6ZGTRJ5NARBrJWLfOq/a69a7ef3147e17c02de3c99e0f92ee95/image6-21.png" alt="" class="kg-image" width="1970" height="1056" loading="lazy">
 
 	</figure>
 	<p>Simple, performant, maintainable, AND easy to add more partners in the future.</p>
@@ -166,7 +166,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bunGQ2Uvk8bZ5jdRz3t6G/b92361b0b84649cc81d005d566dc853e/image7-12.png" alt="" class="kg-image" width="1999" height="248" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bunGQ2Uvk8bZ5jdRz3t6G/08a155b3ec60b9bf44218a4d2e12b774/image7-12.png" alt="" class="kg-image" width="1999" height="248" loading="lazy">
 
 	</figure>
 	<p>It seems a lot to track, but this information is invaluable to us, and we use it to generate alerts that notify the on-call engineer if a threshold is breached. For example, we have an alert that would escalate to an engineer if our Redis cluster approached 80% capacity. For some thresholds we specify, we may want the system to “self-heal.” In this instance, we would want an engineer to investigate as this is outside the bounds of “normal,” and it might be that something is not working as expected. An alternative reason that we might receive alerts is that our product has increased in popularity beyond our expectations, and we simply need to increase the memory limit. This requires context and is therefore best left to a human to make this decision.</p>

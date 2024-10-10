@@ -9,7 +9,7 @@
 				"name": "Connor Peshek",
 				"slug": "connor-peshek",
 				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/lK5urK8vGbVAi93SD59FJ/be3e0a20331428e98484fa88cb615b42/connor-peshek.jpg",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lK5urK8vGbVAi93SD59FJ/3ef6e700617098eaa39ae25132ff1199/connor-peshek.jpg",
 				"location": null,
 				"website": null,
 				"twitter": "@ConzorKingKong",
@@ -18,11 +18,11 @@
 			{
 				"name": "Andrew Fitch",
 				"slug": "andrew-fitch",
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rqJ3G9jaSryZquSGJlhWW/f5610ad0c16e32d97e2a6c8c6316de80/AJF-Headshot.avif"
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rqJ3G9jaSryZquSGJlhWW/719d5d6f39539620de040356c89bd65b/AJF-Headshot.avif"
 			}
 		],
 		"excerpt": "Check out our 4th edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
-		"feature_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Zo1FIr9bpkE9t5k64DsHv/8b10706e5b05123c65761dcb2a986ba2/serverlist-4th-edition.png",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Zo1FIr9bpkE9t5k64DsHv/4db1a16f511aa0a0a94681343b937c7f/serverlist-4th-edition.png",
 		"featured": false,
 		"html": "<p>Check out our fourth edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.</p><p>Sign up below to have The Serverlist sent directly to your mailbox.</p><!--kg-card-begin: html--><style>\n    iframe[seamless]{\n        background-color: transparent;\n        border: 0 none transparent;\n        padding: 0;\n        overflow: hidden;\n    }\n</style>\n<iframe id=\"magic\" style=\"visbility: hidden;\" seamless></iframe>\n<script>\n    const magic = document.getElementById('magic')\n  \n \n    function resizeIframe() {\n        const iframeDoc = magic.contentDocument\n        const iframeWindow = magic.contentWindow\n        magic.height = iframeDoc.body.clientHeight\n        magic.width = \"100%\"\n\n        const injectedStyle = iframeDoc.createElement('style')\n\n        injectedStyle.innerHTML = `\n            body {\n                background: white !important;\n            }\n        `\n\n        magic.contentDocument.head.appendChild(injectedStyle)\n        \n        function onFinish() {\n            setTimeout(() => {\n            \tmagic.style.visibility = ''\n            }, 80)\n        }\n        \n        if (iframeDoc.readyState === 'loading') {\n            iframeWindow.addEventListener('load', onFinish)\n        } else {\n            onFinish()\n        }\n    }\n\n    async function fetchURL(url) {\n      magic.addEventListener('load', resizeIframe)\n  \n        const call = await fetch(`https://streamblog.website/proxy?domain=${url}`)\n        const text = await call.text()\n        const divie = document.createElement(\"div\")\n        divie.innerHTML = text\n        const listie = divie.getElementsByTagName(\"a\")\n        for (var i = 0; i < listie.length; i++) {\n            listie[i].setAttribute(\"target\", \"_blank\")\n\t\t}\n        magic.scrolling = \"no\"\n        magic.srcdoc = divie.innerHTML\n    }\n    fetchURL(\"https://mailchi.mp/cloudflare/theserverlistnewsletter-e04\")\n\n</script>\n<!--kg-card-end: html-->",
 		"id": "2F2bXmmfCjJbTOl5G50Ryx",
@@ -98,7 +98,7 @@
 			}
 		],
 		"title": "The Serverlist: A big week of Rust with WASM, cloud cost hacking, and more",
-		"updated_at": "2024-08-27T02:13:01.306Z",
+		"updated_at": "2024-10-10T00:32:13.203Z",
 		"url": "https://blog.cloudflare.com/serverlist-4th-edition"
 	},
 	"translations": {

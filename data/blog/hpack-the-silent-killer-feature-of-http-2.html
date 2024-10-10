@@ -1,10 +1,10 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TatPuEv0AZpY4Nv0jwH7v/c6f4ceb9635c5e6c88240e30aad35cc0/hpack-the-silent-killer-feature-of-http-2.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TatPuEv0AZpY4Nv0jwH7v/b711604b0a08f9434e5701805537a103/hpack-the-silent-killer-feature-of-http-2.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you have <a href="https://www.cloudflare.com/website-optimization/http2">experienced HTTP/2</a> for yourself, you are probably aware of the visible performance gains possible with <a href="https://www.cloudflare.com/website-optimization/http2">HTTP/2</a> due to features like stream multiplexing, explicit stream dependencies, and <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">Server Push</a>.</p>
 	<p>There is however one important feature that is not obvious to the eye. This is the HPACK header compression. Current implementation of nginx, as well edge networks and <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> using it, do not support the full HPACK implementation. We have, however, implemented the full HPACK in nginx, and <a href="http://mailman.nginx.org/pipermail/nginx-devel/2015-December/007682.html">upstreamed</a> the part that performs Huffman encoding.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wGvQogXUWstwB5ETJPpyr/0b7baa8aac02e499ab4edc719608985b/6129093355_9434beed25_z.jpg" alt="" class="kg-image" width="640" height="639" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wGvQogXUWstwB5ETJPpyr/5423d3e1f23daed6c17cc8d79a25ac8d/6129093355_9434beed25_z.jpg" alt="" class="kg-image" width="640" height="639" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/6129093355/in/photolist-akBcVn-6eEtUq-d9Xi2T-c8MwzA-mGVr3z-aVezji-mGVxov-acMJmz-6nvbCJ-6a6DGQ-5uwrr9-rRtCCp-acMKsk-cKeuXY-9F6N13-9GSuHh-acMDBk-cJYes5-cijtcj-akFua9-cK1iqS-fiAHkE-acMCDt-cJZ9Fq-5qtfNv-cJWFiw-e4pfTd-6fzyLV-8RNMTo-p7jJLQ-524dkf-dw52qG-mVDttF-duUbYU-dvXt3Z-c8NkYG-6e6K2S-duKJjZ-5DbaqV-duBiR3-dvGTsM-dvLst4-dvPfJ1-ezYL1J-7f1cMC-bqi5WN-5MMGkV-9F3C7c-eWASXx-cJXsW9">image</a> by <a href="https://www.flickr.com/photos/conchur">Conor Lawless</a></p>
@@ -65,13 +65,13 @@
 	<p>This is how ingress header traffic appears on the Cloudflare edge network during a six hour period:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hRafOHVmAAbUcHkXmB41S/a42ccf4f8e3fc31a81ae3440a11baf59/headers-ingress-1.png" alt="alt" class="kg-image" width="954" height="532" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hRafOHVmAAbUcHkXmB41S/1f601ca581a9f94fb0d8f08f2966bbc7/headers-ingress-1.png" alt="alt" class="kg-image" width="954" height="532" loading="lazy">
 
 	</figure>
 	<p>On average we are seeing a 76% compression for ingress headers. As the headers represent the majority of ingress traffic, it also provides substantial savings in the total ingress traffic:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8J76zioOehggfZXNukjGQ/a68c5b37928c59384dfe411988f6eadb/headers-ingress-2-1.png" alt="alt" class="kg-image" width="968" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8J76zioOehggfZXNukjGQ/3e99553a7156092babe86efa68713333/headers-ingress-2-1.png" alt="alt" class="kg-image" width="968" height="486" loading="lazy">
 
 	</figure>
 	<p>We can see that the total ingress traffic is reduced by 53% as the result of HPACK compression!</p>
@@ -97,13 +97,13 @@
 	<p>This is how egress header traffic appears on the Cloudflare edge:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GxMxHoPdJGWpyZmqzw6lL/a8fe810e6eb1b13d8db6db656968d0e2/headers-egress-1.png" alt="alt" class="kg-image" width="752" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GxMxHoPdJGWpyZmqzw6lL/75874c72c47944a121e98517fba5b78b/headers-egress-1.png" alt="alt" class="kg-image" width="752" height="452" loading="lazy">
 
 	</figure>
 	<p>On average egress headers are compressed by 69%. The savings for the total egress traffic are not that significant however:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MibXK42BowSlnSdhPGZZx/55314cd48e27e47f1b7f19c4c552ea3d/headers-egress-2-1.png" alt="alt" class="kg-image" width="969" height="485" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MibXK42BowSlnSdhPGZZx/9e82b02d6c1eac9474cbb4d4e55ac919/headers-egress-2-1.png" alt="alt" class="kg-image" width="969" height="485" loading="lazy">
 
 	</figure>
 	<p>It is difficult to see, but we get 1.4% savings in the total egress HTTP/2 traffic. While it does not look like much, it is still more than <a href="https://blog.cloudflare.com/results-experimenting-brotli">increasing the compression level for data would give</a> in many cases. This number is also significantly skewed by websites that serve very large files: we measured savings of well over 15% for some websites.</p>

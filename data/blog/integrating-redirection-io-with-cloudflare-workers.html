@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Iuge2F8aQRmCIDvci80Lu/887f8825d4df01ce64f687184d283004/integrating-redirection-io-with-cloudflare-workers.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Iuge2F8aQRmCIDvci80Lu/362b6ed4b5d3916bba8ddb1e39b24be3/integrating-redirection-io-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a guest post by </i><a href="https://twitter.com/xavierlacot"><i>Xavier Lacot</i></a><i>, a developer at </i><a href="https://redirection.io"><i>redirection.io</i></a><i> and founder at </i><a href="https://jolicode.com"><i>JoliCode</i></a><i>. He works primarily on Web and mobile projects as a consultant, trainer and technical expert.</i></p>
 	<div class="flex anchor relative">
@@ -35,7 +35,7 @@ async function handleRequest(request) {
 	<p>Luckily, redirection.io already has a public HTTP endpoint for exposing hosted agents (for shared hosting, for instance, where it is impossible to install your own binaries). Offering redirection.io to all Cloudflare Workers users is as simple as querying our hosted agent at each incoming request:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xa23T55yNTFqNt71UL4He/e4d176c55bf3e9840639c5d5186e5928/cloudflare-redirectionio.png" alt="Integration of redirection.io with Clourdflare Workers" class="kg-image" width="778" height="723" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xa23T55yNTFqNt71UL4He/a7c2d04334db32c398aaf6f6e3b6ae3a/cloudflare-redirectionio.png" alt="Integration of redirection.io with Clourdflare Workers" class="kg-image" width="778" height="723" loading="lazy">
 
 	</figure>
 	<p>In terms of code, the pattern we use is very similar to the Workers example: we listen on the incoming request:</p>

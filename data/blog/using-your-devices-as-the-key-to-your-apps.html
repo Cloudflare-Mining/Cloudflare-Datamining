@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fqFLlEejETYbv6RLsuG8t/4e6daf0d1716880d456a83c78a3ec212/using-your-devices-as-the-key-to-your-apps.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fqFLlEejETYbv6RLsuG8t/bb80c89a189c843aecd48ded44f16ffb/using-your-devices-as-the-key-to-your-apps.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>I keep a very detailed budget. I have for the last 7 years. I manually input every expense into a spreadsheet app and use a combination of <code>sumifs</code> functions to track spending.</p>
 	<p>Opening the spreadsheet app, and then the specific spreadsheet, every time that I want to submit an expense is a little clunky. I'm working on a new project to make that easier. I'm building a simple web app, with a very basic form, into which I will enter one-off expenses. This form will then append those expenses as rows into the budget workbook.</p>
@@ -48,7 +48,7 @@
 	<p>To perform that check, Access needs to confirm a user's identity. To do that, teams can integrate Access with identity providers like G Suite, AzureAD, Okta or even Facebook and GitHub.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uaC7WZ67qVTXZV1wsG10t/e140d5a12eb8645f34e5e0e934669f75/image-1.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uaC7WZ67qVTXZV1wsG10t/f4022ec5da0d1dcefadad9520abfbba7/image-1.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
 
 	</figure>
 	<p>For this project, I want to limit not just <b>who</b> can reach the app, but also <b>what</b> can reach it. I want to only allow my particular iPhone to connect. Since my iPhone does not have its own GitHub account, I need to use a workflow that allows devices to authenticate: certificates, specifically mutual TLS (mTLS) certificate authentication.</p>
@@ -118,7 +118,7 @@
 	<p>The “Root CA” here is really a composition of three files, all of which are created by that command. <code>cfssl</code> generates a private key, a certificate signing request, and the certificate itself. The output should resemble this screenshot:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Qmo84Y4hqJYdZmzRyXIVm/8deaea622d8ae4d78dc098abbd23e9bb/root-output-1.png" alt="" class="kg-image" width="464" height="316" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Qmo84Y4hqJYdZmzRyXIVm/c335a9fc7b57fb60c28a7ed01c0c79a4/root-output-1.png" alt="" class="kg-image" width="464" height="316" loading="lazy">
 
 	</figure>
 	<p>I need to guard the private key like it's the only thing that matters. In real production deployments, most organizations will create an intermediate certificate and sign client certificates with that intermediate. This allows administrators to keep the root locked down even further, they only need to handle it when creating new intermediates (and those intermediates can be quickly revoked). For this test, I'm just going to use a root to create the client certificates.</p>
@@ -126,14 +126,14 @@
 	<p>In the Cloudflare Access dashboard, I'll use the card titled “Mutual TLS Root Certificates”. I can click “Add A New Certificate” and then paste the content of the <code>ca.pem</code> file directly into it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AJkIr7XXnZWhGARxwrtzk/71c7e100fd2e0780480aae5f5b63af1e/ca-upload-1.png" alt="" class="kg-image" width="1441" height="1265" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AJkIr7XXnZWhGARxwrtzk/7cd9e4f598f4d721f6a1b4537d10087e/ca-upload-1.png" alt="" class="kg-image" width="1441" height="1265" loading="lazy">
 
 	</figure>
 	<p>I need to associate this certificate with a fully qualified domain name (FQDN). In this case, I'm going to use the certificate to authenticate requests for <code>money.samrhea.com</code>, so I'll just input that subdomain, but I could associate this cert with multiple FQDNs if needed.</p>
 	<p>Once saved, the Access dashboard will list the new Root CA.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bEIhYcE8oLTrVEgpzT99d/8dfb655a97adf5a052e06e6c187da73b/dash-list-1.png" alt="" class="kg-image" width="1752" height="430" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bEIhYcE8oLTrVEgpzT99d/6de974802e52c3f5e45c789bd2e0220c/dash-list-1.png" alt="" class="kg-image" width="1752" height="430" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -148,7 +148,7 @@
 	<p>In the Cloudflare dashboard, I'll select the zone <code>samrhea.com</code> and navigate to the Access tab. Once there, I can click <code>Create Access Policy</code> in the <code>Access Policies</code> card. That card will launch an editor where I can build out the rule(s) for reaching this subdomain.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24POemu9X41I2c4TaAxhuD/2a6369632bfbad0fbd65066932abaea9/access-policy.png" alt="" class="kg-image" width="1274" height="1610" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24POemu9X41I2c4TaAxhuD/2f1a92e4b3b395e1a63922824b1718b1/access-policy.png" alt="" class="kg-image" width="1274" height="1610" loading="lazy">
 
 	</figure>
 	<p>In the example above, the policy will be applied to just the subdomain <code>money.samrhea.com</code>. I could make it more granular with path-based rules, but I'll keep it simple for now.</p>
@@ -187,7 +187,7 @@
 	<p>The combined output should resemble the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JwgtLX24Yo9QI7iNU6080/c7e68580c0251c0130e9e80e9d99593a/folder-client-2.png" alt="" class="kg-image" width="512" height="542" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JwgtLX24Yo9QI7iNU6080/f0ad1d7022faf0a872c1463b59841bb5/folder-client-2.png" alt="" class="kg-image" width="512" height="542" loading="lazy">
 
 	</figure>
 	<p><b>FileDescription</b><code>client-csr.json</code>The JSON configuration created earlier to specify client cert details.<code>iphone-client-key.pem</code>The private key for the client certificate generated.<code>iphone-client.csr</code>The certificate signing request used to request the client cert.<code>iphone-client.pem</code>The client certificate created.</p>
@@ -200,7 +200,7 @@
 	<p>The command above takes the key and certificate generated previously and converts them into a single <code>.p12</code> file. I'll also be prompted to create an “Export Password”. I'll use something that I can remember, because I'm going to need it in the next section.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MAG6HR9az3gjZpzAZYXEP/910581f83d12f6439e095ea12d591a71/convert-twelve.png" alt="" class="kg-image" width="1132" height="268" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MAG6HR9az3gjZpzAZYXEP/e7ea4ba3957b0b820583db65f029ea96/convert-twelve.png" alt="" class="kg-image" width="1132" height="268" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -214,25 +214,25 @@
 	<p>I now need to get the <code>.p12</code> file on my iPhone. In corporate environments, organizations distribute client certificates via mobile device management (MDM) programs or other tools. I'm just doing this for a personal test project, so I'm going to use AirDrop.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TvhEiK3T77V6lN4XJZpRt/b5d4812b0e4c68878016adb8402c74c6/airdrop.png" alt="" class="kg-image" width="826" height="512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TvhEiK3T77V6lN4XJZpRt/745731293c1554ab9128aad6ec99f65f/airdrop.png" alt="" class="kg-image" width="826" height="512" loading="lazy">
 
 	</figure>
 	<p>Once my iPhone receives the file, I'll be prompted to select a device where the certificate will be installed as a device profile.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/b0wJT1rQzV8XCDVihx4ar/b133221383b15355bf003cd55d3c99f2/choose-device-1.png" alt="" class="kg-image" width="1125" height="2436" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/b0wJT1rQzV8XCDVihx4ar/6ab8c4d3afe1ee39cfda1878d16bdacb/choose-device-1.png" alt="" class="kg-image" width="1125" height="2436" loading="lazy">
 
 	</figure>
 	<p>I'll then be prompted to enter my device password and the password set in the “Export” step above. Once complete, I can view the certificate under <code>Profiles</code> in <code>Settings</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MEPK4uly4715ECJTYv66I/2105ebb91fc6636a0d8539b0821c19ce/cert-view-1.png" alt="" class="kg-image" width="1125" height="2436" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MEPK4uly4715ECJTYv66I/4051c6f7ea9b1826238303248313bfe9/cert-view-1.png" alt="" class="kg-image" width="1125" height="2436" loading="lazy">
 
 	</figure>
 	<p>Now, when I visit <code>money.samrhea.com</code> for the first time from my phone, I'll be prompted to use the profile created.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZblzD1kalEVc1MrzoFrAY/85c185e302d2a33b49d7791aab26ae01/cert-prompt-1.png" alt="" class="kg-image" width="1125" height="2436" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZblzD1kalEVc1MrzoFrAY/12448ed0e99c5800d20bd699470db163/cert-prompt-1.png" alt="" class="kg-image" width="1125" height="2436" loading="lazy">
 
 	</figure>
 	<p>Browsers can exhibit strange behavior when handling client certificate prompts. This should be the only time I need to confirm this profile should be used, but it might happen again.</p>

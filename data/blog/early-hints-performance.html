@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34CtmnpR4eAtUQI1cRG9v8/af01b80f7d9d06b48fbbb17c13daba52/image7-4.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34CtmnpR4eAtUQI1cRG9v8/b5aeee14416b9872effff4494fb454d4/image7-4.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>A few months ago, we wrote a <a href="https://blog.cloudflare.com/early-hints">post</a> focused on a product we were building that could vastly improve page load performance. That product, known as Early Hints, has seen wide adoption since that original post. In early benchmarking experiments with Early Hints, we saw performance improvements that were as high as 30%.</p>
@@ -32,7 +32,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5X6KUywKFKIT4njcqG6oDx/af49733c71c38bad7f49fb54e2e5f5a3/image1-26.png" alt="" class="kg-image" width="1652" height="760" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5X6KUywKFKIT4njcqG6oDx/6f2dba740fc457b264f93e5a0f84a0cb/image1-26.png" alt="" class="kg-image" width="1652" height="760" loading="lazy">
 
 	</figure>
 	<p>Early Hints is like multitasking across the Internet - at the same time the origin is compiling resources for the final response and making calls to databases or other servers, the browser is already beginning to load assets for the end user.</p>
@@ -84,23 +84,23 @@
 	<p>In the box plots below, we’re comparing FCP and LCP percentiles between the timing data control runs (no Early Hints) and the runs with Early Hints enabled. Our sample population represents a variety of zones, some of which load relatively quickly and some far slower, thus the long whiskers and string of outlier points climbing the y-axis. The y-axis is constrained to the max p99 of the dataset, to ensure 99% of the data are reflected in the graph while still letting us focus on the p25 / p50 / p75 differences.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1j17ZcUiVpUfYsuGE2INtM/afde526a71d6e99e0513ba4bc7ba5462/image2-26.png" alt="" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1j17ZcUiVpUfYsuGE2INtM/42a00c9d5f429f2dbc712bf749ab9069/image2-26.png" alt="" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7h5iGHo8JCg7a6tYeBxaiV/03a3f96d59b38601814e5f46d6d9f78e/image6-10.png" alt="" class="kg-image" width="800" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7h5iGHo8JCg7a6tYeBxaiV/80c501e9d52cb7deacaa43034b277fe9/image6-10.png" alt="" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
 	<p>The relative shift in the box plot quantiles suggest we should expect modest benefits for Early Hints for the majority of web pages. By comparing FCP / LCP percentage improvement of the web pages from their respective baselines, we can quantify what those median and p75 improvements would look like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MNoOPalsR0oildpZutzx6/f0337ed1fc89df906f9b3cfe23820d41/image8-7.png" alt="" class="kg-image" width="708" height="438" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MNoOPalsR0oildpZutzx6/fd9fbd6b10f9521a6466045a17c41012/image8-7.png" alt="" class="kg-image" width="708" height="438" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BlauSorivIGRF5fZiu5Oy/0f052e76a20d1e8befad1c56b900abc3/image4-14.png" alt="" class="kg-image" width="708" height="438" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BlauSorivIGRF5fZiu5Oy/45a0544dc24dab19fd23f2f238ce9f74/image4-14.png" alt="" class="kg-image" width="708" height="438" loading="lazy">
 
 	</figure>
 	<p>A couple observations:</p>
@@ -121,13 +121,13 @@
 	<p>The relative distributions between control and Early Hints runs, as well as the per-site baseline improvements, show us Early Hints can be broadly beneficial for use cases beyond Shopify’s. As suggested by the p75+ values, we also still find plenty of case studies showing a more substantial potential impact to LCP (and FCP) like the one we observed from our artificial test case, as indicated from these WebPageTest waterfall diagrams:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SXT10k2QdHrLaBfVW2ygc/0e3e51fa267def2ac909f31a79f8a093/image3-18.png" alt="" class="kg-image" width="943" height="314" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SXT10k2QdHrLaBfVW2ygc/c40ba4f5f31aa48aa5c59658382dc699/image3-18.png" alt="" class="kg-image" width="943" height="314" loading="lazy">
 
 	</figure>
 	<p>These diagrams show the network and rendering activity on the same web page (which, bucking the trend, had some of its best results over mobile – 3G settings, shown here) for its first ten resources. Compare the WebPageTest waterfall view above (with Early Hints disabled) with the waterfall below (Early Hints enabled). The first green vertical line in each indicates First Contentful Paint. The page configures Link preload headers for a few JS / CSS assets, as well as a handful of key images. When Early Hints is on, those assets (numbered 2 through 9 below) get a significant head start from the preload hints. In this case, FCP and LCP improved by 33%!</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zORzzS6Qvh3eX4KEvUW0P/cd82ffd90e0e5fce74cbf16330032e8e/image5-9.png" alt="" class="kg-image" width="945" height="313" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zORzzS6Qvh3eX4KEvUW0P/854ed6d6fca1e26e5389e7736cf0b1e4/image5-9.png" alt="" class="kg-image" width="945" height="313" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vltNFGSyhFtdiqEqGI7aQ/9b168f84c32749d36afc1480e016213e/image9-2.png" alt="" class="kg-image" width="1437" height="864" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vltNFGSyhFtdiqEqGI7aQ/011ab7a38af1360d5d41e454f63ea9c9/image9-2.png" alt="" class="kg-image" width="1437" height="864" loading="lazy">
 
 	</figure>
 	<p>In January, we announced the Cloudflare <a href="https://blog.cloudflare.com/cloudflare-waiting-room">Waiting Room</a>, which has been available to select customers through <a href="https://blog.cloudflare.com/project-fair-shot">Project Fair Shot</a> to help COVID-19 vaccination web applications handle demand. Back then, we mentioned that our system was built on top of Cloudflare Workers and the then brand new <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>. In the coming days, we are making Waiting Room available to customers on our Business and Enterprise plans. As we are expanding availability, we are taking this opportunity to share how we came up with this design.</p>
@@ -20,7 +20,7 @@
 	<p>When there are more users trying to access the web application than the limits the customer has configured, new users are given a cookie and greeted with a waiting room page. This page displays their estimated wait time and automatically refreshes until the user is automatically admitted to the web application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hNkOnNnIvELvBuHVYlTWz/4286eec67997c36da9e575dc5ae59d0c/image2-3.png" alt="" class="kg-image" width="362" height="284" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hNkOnNnIvELvBuHVYlTWz/8871260737d007f14de2d61e3a6f371b/image2-3.png" alt="" class="kg-image" width="362" height="284" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -54,7 +54,7 @@
 	<p>If a web application is behind Cloudflare, every request from an end user to the web application will go to a Cloudflare data center close to them. If the web application enables the waiting room, Cloudflare issues a ticket to this user in the form of an encrypted cookie.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CXv57H2vr7pw2HBQtvvJN/fd840275480f882951e89e72dcb38a3f/image6-1.png" alt="" class="kg-image" width="1892" height="1226" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CXv57H2vr7pw2HBQtvvJN/ff8fb77e20f48dab2bccea0a0e947b42/image6-1.png" alt="" class="kg-image" width="1892" height="1226" loading="lazy">
 
 	</figure>
 	<p>Waiting Room Overview</p>
@@ -62,7 +62,7 @@
 	<p>When a traffic surge happens on the web application the number of user slots available on the web application keeps decreasing. Current user sessions need to end before new users go in. So user slots keep decreasing until there are no more slots. At this point the waiting room starts queueing.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YupAjYjEvXX15xjhGJQQH/432eea69500ec29bcbea4d4de450f077/image1-2.png" alt="" class="kg-image" width="1999" height="822" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YupAjYjEvXX15xjhGJQQH/af04e39e638aef93901e4b6fa4195600/image1-2.png" alt="" class="kg-image" width="1999" height="822" loading="lazy">
 
 	</figure>
 	<p>The chart above is a customer's traffic to a web application between 09:40 and 11:30. The configuration for total active users is set to 250 users (yellow line). As time progresses there are more and more users on the application. The number of user slots available (orange line) in the application keeps decreasing as more users get into the application (green line). When there are more users on the application, the number of slots available decreases and eventually users start queueing (blue line). Queueing users ensures that the total number of active users stays around the configured limit.</p>
@@ -85,7 +85,7 @@ Thu, 27 May 2021 16:32:00 GMT:
 	<p>For the minute <code>Thu, 27 May 2021 16:34:00 GMT</code>, the number of user slots available will be divided using the ratio 0.45 (Nairobi) to 0.55 (Dublin). So if there are 1000 slots available, Nairobi will be able to send 450 and Dublin can send 550.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pT9KvjCcU8g9kTWHMU2Qt/a487d8fba0739377c82d86b47d780de0/image8.png" alt="" class="kg-image" width="603" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pT9KvjCcU8g9kTWHMU2Qt/ae0d2abbede2b05b269f751c607517e8/image8.png" alt="" class="kg-image" width="603" height="375" loading="lazy">
 
 	</figure>
 	<p>The service at the edge data centers counts the number of users it let into the web application. It will start queueing when the data center limit is approached. The presence of limits for the data center that change based on historical traffic helps us to have a system that doesn’t need to communicate often between data centers.</p>
@@ -309,7 +309,7 @@ buckets:
 	<p>We started to work on the project around March 2020. At that point, Workers offered two options for storage: the <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a> and <a href="https://www.cloudflare.com/products/workers-kv">KV</a>. Cache is shared only at the data center level, so for global coordination we had to use KV. Each worker writes its own key to KV that describes the requests it received and how it processed them. Each key is set to expire after a few minutes if the worker stopped writing. To create a workerState, the worker periodically does a list operation on the KV namespace to get the state around the world.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fcnX6Cjf5L7E8lDjOBQGD/0d1b752be7f1d244940b720142b71591/image7.png" alt="" class="kg-image" width="1944" height="1090" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fcnX6Cjf5L7E8lDjOBQGD/4398b5634d38d3d7b88985dc4c5fa8e4/image7.png" alt="" class="kg-image" width="1944" height="1090" loading="lazy">
 
 	</figure>
 	<p>Design using KV</p>
@@ -325,7 +325,7 @@ buckets:
 	<p>Another alternative was to run our own databases in our core data centers. The <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a> in Workers lets us use the cache directly within a data center. If there is frequent communication with the core data centers to get the state of the world, the cached data in the data center should let us respond with minimal latency on the request hot path. There would be fine-grained control on when the data propagation happens and this time can be kept low.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ySnARioXWtR5DkkjSyH9b/360eca89758443e5d1388a2d402991d2/image3-1.png" alt="" class="kg-image" width="1938" height="1088" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ySnARioXWtR5DkkjSyH9b/9e8856d4b0fcf7f629d8e5284ccc4b6c/image3-1.png" alt="" class="kg-image" width="1938" height="1088" loading="lazy">
 
 	</figure>
 	<p>Design using Core Data centers‌‌</p>
@@ -344,14 +344,14 @@ buckets:
 	<p>As mentioned above, we use a worker to decide whether to send users to the Waiting Room or the web application. That worker periodically sends a request to a Durable Object saying how many users it sent to the Waiting Room and how many it sent to the web application. A Durable Object instance is created on the first request and remains active as long as it is receiving requests. The Durable Object aggregates the counters sent by every worker to create a count of users sent to the Waiting Room and a count of users on the web application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uo0AeQpWFcgVEQJSyf4F2/4204d8dcdb025a8bce262a381e350a7d/image10.png" alt="" class="kg-image" width="819" height="850" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uo0AeQpWFcgVEQJSyf4F2/adc1cca869b02b92b06e26a98cb281d0/image10.png" alt="" class="kg-image" width="819" height="850" loading="lazy">
 
 	</figure>
 	<p>A Durable Object instance is only active as long as it is receiving requests and can be restarted during maintenance. When a Durable Object instance is restarted, its in-memory state is cleared. To preserve the in-memory data on Durable Object restarts, we back up the data using the Cache API. This offers weaker guarantees than using the <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects#accessing-persistent-storage-from-a-durable-object">Durable Object persistent storage</a> as data may be evicted from cache, or the Durable Object can be moved to a different data center. If that happens, the Durable Object will have to start without cached data. On the other hand, persistent storage at the edge still has limited capacity. Since we can rebuild state very quickly from worker updates, we decided that cache is enough for our use case.</p>
 	<p><b>Scaling up</b>When traffic spikes happen around the world, new workers are created. Every worker needs to communicate how many users have been queued and how many have been let through to the web application. However, while workers automatically scale horizontally when traffic increases, Durable Objects do not. By design, there is only one instance of any Durable Object. This instance runs on a single thread so if it receives requests more quickly than it can respond, it can become overloaded. To avoid that, we cannot let every worker send its data directly to the same Durable Object. The way we achieve scalability is by sharding: we create per data center Durable Object instances that report up to one global instance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/746CExfEYweWJtQf9fxk1z/b0b65f95c7d22ad96d37165e0f44670d/image5.png" alt="" class="kg-image" width="1938" height="1092" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/746CExfEYweWJtQf9fxk1z/81c666b4eca2f963375084a2fce26334/image5.png" alt="" class="kg-image" width="1938" height="1092" loading="lazy">
 
 	</figure>
 	<p>Durable Objects implementation</p>
@@ -362,7 +362,7 @@ buckets:
 	<p>Every worker keeps track of the number of users it has let through to the web application and the number of users that it has queued. The worker user slots are the number of users a worker can send to the web application at any point in time. This is calculated from the user slots available for the data center and the worker count in the data center. We divide the total number of user slots available for the data center by the number of workers in the data center to get the user slots available for each worker. If there are two workers and 10 users that can be sent to the web application from the data center, then we allocate five as the budget for each worker. This division is needed because every worker makes its own decisions on whether to send the user to the web application or the waiting room without talking to anyone else.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GhRGXwUGAzkSXs5e2ytwF/0c10b68afeeaccf27e67db32c17eb6c7/Waiting-room-diagram-4.png" alt="" class="kg-image" width="1337" height="1050" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GhRGXwUGAzkSXs5e2ytwF/48b8aff1f9057f84e4cd8731c38e531c/Waiting-room-diagram-4.png" alt="" class="kg-image" width="1337" height="1050" loading="lazy">
 
 	</figure>
 	<p>Waiting room inside a data center</p>
@@ -380,7 +380,7 @@ buckets:
 	<p>The Global Durable Object is designed to be simple and stores the information it receives from any data center in memory. It responds with the information it has about all data centers. It periodically saves its in-memory state to cache using the Workers Cache API so that it can withstand restarts as mentioned above.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IciXNUkxrxLFeZ6qo02UP/3192eab75e8b2bb745e40e655f7eb76b/image11.png" alt="" class="kg-image" width="819" height="850" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IciXNUkxrxLFeZ6qo02UP/af58b5e686ed1dc2ef4af9c9ad89c94b/image11.png" alt="" class="kg-image" width="819" height="850" loading="lazy">
 
 	</figure>
 	<p>Components of waiting room</p>

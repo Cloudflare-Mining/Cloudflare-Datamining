@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01zugo4vFijAmQS86pVIrN/8bcaffc640fcbaf10cccc1e09060d7bc/introducing-0-rtt.jpg" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01zugo4vFijAmQS86pVIrN/d8652b4a3204427301d08d4d2185a4d7/introducing-0-rtt.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><sub><i></i></sub></p>
 	<blockquote>
@@ -9,7 +9,7 @@
 	<p>We’re happy to announce that 0-RTT is <b>NOT</b> enabled by default for all sites on Cloudflare’s free service. For paid customers, it can be enabled in the Crypto app in the Cloudflare dashboard. </p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jnAtBFcCo19Qvyjxa2aVI/7825e8ad85adc280704bd1d5ae710e68/image05.jpg" alt="" class="kg-image" width="1960" height="342" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jnAtBFcCo19Qvyjxa2aVI/fe6a5395324791599304b84c0d5baa38/image05.jpg" alt="" class="kg-image" width="1960" height="342" loading="lazy">
 
 	</figure>
 	<p>This is an experimental feature, and therefore subject to change.</p>
@@ -26,14 +26,14 @@
 	<p>The diagram below comes from a recent latency test of Cloudflare’s network using the RIPE Atlas project. In the experiment, hundreds of probes from around the world sent a single <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">“ping”</a> message to Cloudflare and measured the time it took to get an answer in reply. This time is a good approximation of how long it takes for data to make the round trip from the probe to the server and back, so-called <i>round-trip latency</i>.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://atlas.ripe.net/measurements/7883648">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eiU71K5ZPEX2slK1J1mYb/67a6e307c1d1833029ac378d4f2d36dd/image03.png" alt="https://atlas.ripe.net/measurements/7883648/" class="kg-image" width="895" height="525" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eiU71K5ZPEX2slK1J1mYb/68441b9ae1d68d8cb9ef7579e84625fc/image03.png" alt="https://atlas.ripe.net/measurements/7883648/" class="kg-image" width="895" height="525" loading="lazy">
 		</a>
 	</figure>
 	<p>Latency is usually measured in milliseconds or thousandths of a second. A thousandth of a second may not seem like a long time, but they can add up quickly. It’s <a href="https://www.nngroup.com/articles/response-times-3-important-limits">generally accepted</a> that the threshold over which humans no longer perceive something as instantaneous is 100ms. Anything above 100ms will seem fast, but not immediate. For example, Usain Bolt’s reaction time out of the starting blocks in the hundred meter sprint is around <a href="https://www.nytimes.com/interactive/2016/08/13/sports/olympics/can-you-beat-usain-bolt-out-of-the-blocks.html">155ms</a>, a good reference point for thinking about latency. Let’s use 155ms, a fast but human perceptible amount of time, as a unit of time measurement. Call 155ms “one Bolt.”</p>
 	<p>The map above shows that most probes have very low round-trip latency (&lt;20ms) to Cloudflare’s global network. However, for a percentage of probes, the time it takes to reach the nearest Cloudflare data center is much longer, in some cases exceeding 300ms (or two bolts!).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59Z9OOkEOcRLQzaJM6A2ZB/7ead82fdc425276acbc830856754962a/image01.jpg" alt="200ms into the 200m" class="kg-image" width="1280" height="850" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59Z9OOkEOcRLQzaJM6A2ZB/4ee8f0a294467572f88e092df1dffbc9/image01.jpg" alt="200ms into the 200m" class="kg-image" width="1280" height="850" loading="lazy">
 
 	</figure>
 	<p><sub>Creative Commons Attribution 2.0 Generic [</sub><a href="https://commons.wikimedia.org/wiki/File:London/_2012/_200m/_heat/_1/_start.jpg"><sub>Nick J. Webb</sub></a><sub>]</sub></p>
@@ -41,7 +41,7 @@
 	<p>Geographic proximity is not the only contributor to latency. WiFi and cellular networks can add <a href="https://hpbn.co/wifi/#measuring-your-wifi-first-hop-latency">tens</a> or even <a href="https://opensignal.com/blog/2014/03/10/lte-latency-how-does-it-compare-to-other-technologies">hundreds</a> of milliseconds to transmission latency. For example, using a 3G cellular network adds around 1.5 bolts to every transmission. Satellite Internet connections are even worse, adding up to <a href="https://arstechnica.com/information-technology/2013/02/satellite-internet-faster-than-advertised-but-latency-still-awful">4 bolts to every transmission</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wIWoXVW0V1AugzJb4lVoh/8ae080446e11564326ce509cd923821a/boltchart.jpg" alt="" class="kg-image" width="1028" height="612" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wIWoXVW0V1AugzJb4lVoh/3269fe660fdf6bebaa8577de42d98432/boltchart.jpg" alt="" class="kg-image" width="1028" height="612" loading="lazy">
 
 	</figure>
 	<p>Round-trip latency makes an especially big difference for HTTPS. When making a secure connection to a server, there is an additional set-up phase that can require up to three messages to make the round trip between the client and the server before the first request can even be sent. For a visitor 250ms away, this can result in an excruciating one second (1000ms) delay before a site starts loading. During this time Usain Bolt has run 10 meters and you’re still waiting for a web page. TLS 1.3 and 0-RTT can’t reduce the round trip latency of a transmission, but it can reduce the number of round trips required for setting up an HTTPS connection.</p>
@@ -83,7 +83,7 @@
 	<p>One of the biggest advantages of TLS 1.3 over earlier versions is that it only requires one round trip to set up the connection, resumed or not. This provides a significant speed up for new connections, but none for resumed connections. Our measurements show that around 40% of HTTPS connections are resumptions (either via session IDs or session tickets). With 0-RTT, a round trip can be eliminated for most of that 40%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53zGSmQOGgFg0ARVyqQu0B/b1b7381254cee1b02ef8391b13df3b7e/image04.jpg" alt="TLS connection reuse by time of day" class="kg-image" width="1999" height="1045" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53zGSmQOGgFg0ARVyqQu0B/8f7c5096eb40fe509a5991c29b314a06/image04.jpg" alt="TLS connection reuse by time of day" class="kg-image" width="1999" height="1045" loading="lazy">
 
 	</figure>
 	<p>TLS connection reuse by time of day.</p>
@@ -151,7 +151,7 @@
 	<p>To see what’s going on under the hood, take a look in Firefox’s Developer Tools. We’ve taken a screenshot of a version of this demo as run by a user in San Francisco. In the first screenshot, the image is served with TLS 1.3, in the second with TLS 1.3 and 0-RTT.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2017/03/image02.jpg">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IFlqIKCZ4NeVGJv3uuidK/4ccb9306a821644b0757b9d7790e7fbe/image02.jpg" alt="0-RTT" class="kg-image" width="1999" height="266" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IFlqIKCZ4NeVGJv3uuidK/6b46ab2c2cdc758cf452e0c2b50c8289/image02.jpg" alt="0-RTT" class="kg-image" width="1999" height="266" loading="lazy">
 		</a>
 	</figure>
 	<p>In the top image, you can see that the blue “Waiting” bar is around 250ms shorter than it is for the second image. This 250ms represents the time it took for the extra round trip between the browser and the server. If you’re in San Francisco, 0-RTT enables the image to load 1.5 bolts faster than it would have otherwise.</p>
@@ -168,7 +168,7 @@
 	<p>This doesn’t sound like a big deal until you consider that HTTP requests are used for more than just downloading web pages. For example, HTTP requests can trigger transfers of money. If someone makes a request to their bank to “pay $1000 to Craig” and that request is replayed, it could cause Craig to be paid multiple times. A good deal if you’re Craig.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6npVssOtArI92M8EEGPgvM/d1c7bf7f1bb1b02861fb6d504f72e97b/image00.jpg" alt="" class="kg-image" width="1604" height="1052" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6npVssOtArI92M8EEGPgvM/05162655ebe86e376b1abd35d934c4ba/image00.jpg" alt="" class="kg-image" width="1604" height="1052" loading="lazy">
 
 	</figure>
 	<p>Luckily, the example above is somewhat contrived. Applications need to be replay safe to work with modern browsers, whether they support 0-RTT or not. Browsers replay data all the time due to normal network glitches, and researchers from Google have even shown that attackers can <a href="https://vnhacker.blogspot.com/2015/12/bad-life-advice-never-give-up-replay.html">trick the browser into to replaying requests</a> in almost any circumstance by triggering a particular type of network error. In order to be resilient against this reality, well-designed web applications that handle sensitive requests use application-layer mechanisms to prevent replayed requests from affecting them.</p>

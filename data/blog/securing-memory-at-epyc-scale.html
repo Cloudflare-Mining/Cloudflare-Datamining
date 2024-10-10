@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62GuPBeaKG1VrC8w2j6zwO/cb47b874b36a10ef4d8a1ea0743d176a/Gen-X.png" alt="" class="kg-image" width="623" height="352" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62GuPBeaKG1VrC8w2j6zwO/26e9fa640c2029b5d6efccf729b43730/Gen-X.png" alt="" class="kg-image" width="623" height="352" loading="lazy">
 
 	</figure>
 	<p>Security is a serious business, one that we do not take lightly at Cloudflare. We have <a href="https://www.cloudflare.com/compliance">invested a lot of effort</a> into ensuring that our services, both external and internal, are protected by meeting or exceeding industry best practices. Encryption is a huge part of our strategy as it is embedded in nearly every process we have. At Cloudflare, we encrypt data both in <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">transit</a> (on the network) and at rest (on the disk). Both practices address some of the most common vectors used to exfiltrate information and these measures serve to <a href="https://www.cloudflare.com/learning/security/what-is-information-security">protect sensitive data</a> from attackers but, what about data currently in use?</p>
 	<p>Can encryption or any technology eliminate all threats? No, but as Infrastructure Security, it’s our job to consider worst-case scenarios. For example, what if someone were to steal a server from one of our <a href="https://www.cloudflare.com/network">data centers</a>? How can we leverage the most reliable, cutting edge, innovative technology to secure all data on that host if it were in the wrong hands? Would it be protected? And, in particular, what about the server’s RAM?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/F40SGb897EzCafJNfUMxo/865b882dff5dbe541d8db7b0b4eac9ab/mission-impossible-1.png" alt="" class="kg-image" width="1568" height="1192" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/F40SGb897EzCafJNfUMxo/9346da5cc95f377fd15c8ebe6d3a7077/mission-impossible-1.png" alt="" class="kg-image" width="1568" height="1192" loading="lazy">
 
 	</figure>
 	<p>Data in random access memory (RAM) is usually stored in the clear. This can leave data vulnerable to software or hardware probing by an attacker on the system. Extracting data from memory isn’t an easy task but, with the rise of <a href="https://www.snia.org/sites/default/files/SSSI/NVDIMM%20-%20Changes%20are%20Here%20So%20What's%20Next%20-%20final.pdf">persistent memory technologies</a>, additional attack vectors are possible:</p>
@@ -77,7 +77,7 @@
 	<p>After memory encryption is enabled, a physical address bit (C-Bit) is utilized to mark if a memory page is protected. The operating system sets the bit of a physical address to 1 in the page table entry (PTE) to indicate the page should be encrypted. This causes any data assigned to that memory space to be automatically encrypted and decrypted by the AES engine in the memory controller:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Y55gr55Ypmf0kCFfSBrNN/c3ee9af90021d89cf8944bd6530c466e/enclavng-diagrams_3x.png" alt="" class="kg-image" width="3845" height="4105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y55gr55Ypmf0kCFfSBrNN/d52fa52def521555431c16c76d9a1086/enclavng-diagrams_3x.png" alt="" class="kg-image" width="3845" height="4105" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -97,7 +97,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AqdL0sTjEI4YKjHdwas11/eb2d60460bff5ae4bc75af77a307198a/bios-tsme2.png" alt="" class="kg-image" width="963" height="658" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AqdL0sTjEI4YKjHdwas11/d1f28bfac2bd91a7751fe4fe2aa25109/bios-tsme2.png" alt="" class="kg-image" width="963" height="658" loading="lazy">
 
 	</figure>
 	<p>2. Enabling kernel support with the following flag:</p>
@@ -152,12 +152,12 @@
 	<p>We used a custom STREAM binary with 24 threads, using all available cores, to measure the sustainable memory bandwidth (in MB/s). Four synthetic computational kernels are run, with the output of each kernel being used as an input to the next. The best rates observed are reported for each choice of thread count.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kwLMDcfqdWZ0dP9dgpbBO/bb547229938577091701e712ae9b539a/Stream-SME-On-vs-Off-1.png" alt="" class="kg-image" width="974" height="430" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kwLMDcfqdWZ0dP9dgpbBO/a8ac5a90cd57a212539df64002fd1a04/Stream-SME-On-vs-Off-1.png" alt="" class="kg-image" width="974" height="430" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3C8c6Nfn0cScGA0dt4yTaN/4a4127264da959f856075d4a075a90a5/Stream-Performance-delta-1.png" alt="" class="kg-image" width="922" height="570" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3C8c6Nfn0cScGA0dt4yTaN/1bf1a1f32cceefac591aab63a1ab1e1c/Stream-Performance-delta-1.png" alt="" class="kg-image" width="922" height="570" loading="lazy">
 
 	</figure>
 	<p>The figures above show 2.6% to 4.2% performance variation, with a mean of 3.7%. These were the highest numbers measured, which fell below an expected performance impact of &gt;5%.</p>
@@ -181,12 +181,12 @@ PBKDF2-whirlpool  661979 iterations per second for 256-bit key</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BC1HclFkbzijWahfsXLxH/b2ffc56c623f8ee1e09e6851165dcab1/cryptsetup-benchmark-SME-Off-vs-On-1.png" alt="" class="kg-image" width="973" height="484" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BC1HclFkbzijWahfsXLxH/67dec2664c6a31625c99613aef6b925e/cryptsetup-benchmark-SME-Off-vs-On-1.png" alt="" class="kg-image" width="973" height="484" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FoosofQ0iHlQbLAdi8fuS/45f62dae33bbb36458579e294140d464/crypt-Performance-delta-1.png" alt="" class="kg-image" width="727" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FoosofQ0iHlQbLAdi8fuS/950d23104a94ad5bd66f15614dd72b49/crypt-Performance-delta-1.png" alt="" class="kg-image" width="727" height="371" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -200,12 +200,12 @@ PBKDF2-whirlpool  661979 iterations per second for 256-bit key</code></pre>
 	<p>Benchmarky is a homegrown tool <a href="https://blog.cloudflare.com/author/ivan">provided by our Performance team</a> to run synthetic workloads against a specific target to evaluate performance of different components. It uses <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to send requests and read stats on responses. In addition to that, it also reports versions of all important stack components and their CPU usage. Each test runs 256 concurrent clients, grabbing a cached 10kB PNG image from a performance testing endpoint, and calculating the requests per second (RPS).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uHw5bMNlZiKFLb3Ks5weQ/a0843bacf8ed49348b7401bdb834726b/benckmarky-SME-off-and-SME-on-1.png" alt="" class="kg-image" width="649" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uHw5bMNlZiKFLb3Ks5weQ/37cbcd116f472c6b20a35ede49d26f15/benckmarky-SME-off-and-SME-on-1.png" alt="" class="kg-image" width="649" height="371" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3h5FsuK2Lv5xS3qUwv382A/bf7491746bf958b34366c0a2fbacedd7/bench-Performance-delta-1.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3h5FsuK2Lv5xS3qUwv382A/2161213c7b0fb3715d9ab3eae66d4cc3/bench-Performance-delta-1.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
 
 	</figure>
 	<h1>Conclusion</h1>

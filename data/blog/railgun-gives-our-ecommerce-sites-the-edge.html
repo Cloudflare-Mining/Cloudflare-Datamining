@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KaVdS0fjrAC2lVYQnUVxT/545ebe36f864add0103359ee09673013/railgun.png.scaled500.png" alt="Railgun Gives our Ecommerce Sites the Edge" class="kg-image" width="500" height="225" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KaVdS0fjrAC2lVYQnUVxT/7b1b5a5b2de6b47ac1cbb8db768c0603/railgun.png.scaled500.png" alt="Railgun Gives our Ecommerce Sites the Edge" class="kg-image" width="500" height="225" loading="lazy">
 
 	</figure>
 	<p><i>The following is a guest blog post by </i><a href="http://www.linkedin.com/in/chrisholland"><i>Chris Holland</i></a><i>, Director of Technology at </i><a href="http://www.luxurylink.com"><i>Luxury Link</i></a><i>. Luxury Link has been using CloudFlare’s </i><a href="https://www.cloudflare.com/railgun"><i>Railgun acceleration technology</i></a><i> since March 2013.</i></p>
@@ -23,7 +23,7 @@
 	<p>In the chart below, the green line shows our outbound bandwidth consumption over a six month period. You can see that before we turned Railgun on in March, there are many spikes. Post-March, the spikes disappear.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4t1FdWM6x2riXcMBVLMfgs/a23e8e3ea586194bddb3353cc06f99d2/6-months-before-after-Railgun.png" alt="" class="kg-image" width="1200" height="304" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4t1FdWM6x2riXcMBVLMfgs/c776a94ebddf03164adb3a2073fab1c6/6-months-before-after-Railgun.png" alt="" class="kg-image" width="1200" height="304" loading="lazy">
 
 	</figure>
 	<p>It is important to note that with or without Railgun enabled, all of our HTML documents are delivered using gzip encoding. All our images, stylesheets and scripts are cached in CloudFlare data centers; as such they barely factor in the outbound bandwidth consumption. It's for the most part fair to state that our outbound bandwidth consumption is solely comprised of the retrieval of uncached HTML documents.</p>
@@ -39,7 +39,7 @@
 	<p>This chart shows the inbound (orange line) and outbound (green line) bandwidth on February 6, 2013, before we introduced Railgun. It shows a pretty typical story for us: dramatic peaks in traffic linked to specific email campaigns.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fGev8Eca4TOz0YAjaj6Tc/ff1f3a694680a42bcbc4d000a8ea49cd/graphs-feb.png" alt="" class="kg-image" width="977" height="432" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fGev8Eca4TOz0YAjaj6Tc/a8da0a372d36ab9d70bc46757be80ffe/graphs-feb.png" alt="" class="kg-image" width="977" height="432" loading="lazy">
 
 	</figure>
 	<p>The data shows that our outbound bandwidth is between 5x and 10x our inbound. That's pretty typical of gzipped HTTP traffic serving mostly HTML: inbound traffic is made up of HTTP requests, most of which fit in a packet or two, while outbound traffic is made up of all the actual HTML documents in response to those requests.</p>
@@ -55,7 +55,7 @@
 	<p>Next take a look at this chart from May 8, 2013, with CloudFlare Railgun running on our site:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GKMMlK5ygAO9Hqeb4wc4y/eead0fbfe5cd3289ce305fe9d4957c52/graphs-may.png" alt="" class="kg-image" width="977" height="432" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GKMMlK5ygAO9Hqeb4wc4y/a7127e31e1f709af916eba7e720b152b/graphs-may.png" alt="" class="kg-image" width="977" height="432" loading="lazy">
 
 	</figure>
 	<p>Railgun shines when many users access a handful of similar URIs, which is the pattern of our peak traffic. Even though the documents being returned are different in subtle ways for each user, those unique subtleties are the only bits of information exiting our data center. Think "diffs." Railgun essentially flattens our peaks: going from a 10:1 ratio to a 1:1 ratio, our peak outbound traffic is 1/10th of what it used to be before Railgun.</p>

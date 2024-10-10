@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OJtqoXNl4hQ9CBy7B0EYj/9599f8898813af7c54e75f067a9f646c/BLOG-2587_1.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OJtqoXNl4hQ9CBy7B0EYj/1a12b4febd5951e0d367b3dcd5a028f7/BLOG-2587_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On Monday, September 30, customers on Verizon’s mobile network in multiple cities across the United States <a href="https://apnews.com/article/verizon-outage-sos-mode-phone-service-b03c9b8615e0650669339daa2eaa1713"><u>reported</u></a> experiencing a loss of connectivity. Impacted phones showed “SOS” instead of the usual bar-based signal strength indicator, and customers complained of an inability to make or receive calls on their mobile devices.</p>
 	<p><a href="https://radar.cloudflare.com/as6167"><u>AS6167 (CELLCO)</u></a> is the <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u>autonomous system</u></a> used by Verizon for its mobile network. To better understand how the outage impacted Internet traffic on Verizon’s network, we took a look at HTTP request volume from AS6167 independent of geography, as well as traffic from AS6167 in various cities that were <a href="https://mashable.com/live/verizon-outage-live-updates"><u>reported</u></a> to be the most significantly impacted.</p>
@@ -6,47 +6,47 @@
 	<p>As the <a href="https://radar.cloudflare.com/explorer?dataSet=http&amp;loc=as6167&amp;dt=2024-09-30_2024-09-30&amp;timeCompare=2024-09-23"><u>Cloudflare Radar graph</u></a> below shows, a slight decline (-5%) in HTTP traffic as compared to traffic at the same time a week prior is first visible around 11:00 ET (15:00 UTC). Request volume fell as much as 9% below expected levels at 13:45 ET (17:45 UTC).</p>
 	<p>Just after 17:00 ET (21:00 UTC), Verizon <a href="https://x.com/VerizonNews/status/1840860310997254609"><u>published a second social media post</u></a> noting, in part, “<i>Verizon engineers are making progress on our network issue and service has started to be restored.</i>” Request volumes returned to expected levels around the same time, surpassing the previous week’s levels at 17:15 ET (21:15 UTC). At 19:18 ET (23:18 UTC), a <a href="https://x.com/VerizonNews/status/1840893978411221191"><u>social media post</u></a> from Verizon noted “Verizon engineers have fully restored today's network disruption that impacted some customers. Service has returned to normal levels.”</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fwaspr4MBTWT0zf36YEmf/e1641faaedca1acf1d1494aaae6ad382/BLOG-2587_2.png" alt="BLOG-2587 2" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fwaspr4MBTWT0zf36YEmf/86dfccdab0df85ea90edaa369520c23b/BLOG-2587_2.png" alt="BLOG-2587 2" class="kg-image" width="1600" height="900" loading="lazy">
 	</figure>
 	<p>Media reports listed cities including Chicago, Indianapolis, New York City, Atlanta, Cincinnati, Omaha, Phoenix, Denver, Minneapolis, Seattle, Los Angeles, and Las Vegas as being most impacted. In addition to looking at comparative traffic trends across the whole Verizon Wireless network, we also compared request volumes in the listed cities to the same time a week prior (September 23).</p>
 	<p>Declines in request traffic starting around 11:00 ET (15:00 UTC) are clearly visible in cities including Los Angeles, Seattle, Omaha, Denver, Phoenix, Minneapolis, Indianapolis, and Chicago. In contrast to other cities, Omaha’s request volume was already trending lower than last week heading into today’s outage, but its graph clearly shows the impact of today’s disruption as well. Omaha’s difference in traffic was the most significant, down approximately 30%, while other cities saw declines in the 10-20% range.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wg0aCH9hUSpECGnzs4I9s/8998f9ef13cc050ef93bbdb95e4b18f2/BLOG-2587_3.png" alt="BLOG-2587 3" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wg0aCH9hUSpECGnzs4I9s/c7eeef574e5ba07cf26c7c667a0a9239/BLOG-2587_3.png" alt="BLOG-2587 3" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kE1kBRS4tTyB5TPY8ain7/6ae9f5898531cd46581669a5c1358d4d/BLOG-2587_4.png" alt="BLOG-2587 4" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kE1kBRS4tTyB5TPY8ain7/5a153b7c7052352e9e44c6d88b1fab1c/BLOG-2587_4.png" alt="BLOG-2587 4" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gg28UcLpcp92UYvLpykuO/c25ec7cbf057cfb913f37148e35d9060/BLOG-2587_5.png" alt="BLOG-2587 5" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gg28UcLpcp92UYvLpykuO/715fa25efcfcdfc6dd18b8dd5b81b0ca/BLOG-2587_5.png" alt="BLOG-2587 5" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rcGVaVuBsK7oMhPaAfOx3/a2b6977ca4e23c42ce60d3a7eac58852/BLOG-2587_6.png" alt="BLOG-2587 6" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rcGVaVuBsK7oMhPaAfOx3/3b785c2b4d296b6d459e5f50a5d69da7/BLOG-2587_6.png" alt="BLOG-2587 6" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WuYIbLm9MdkjN5C20JgG2/133de863bbce08d746eb3828487abaf2/BLOG-2587_7.png" alt="BLOG-2587 7" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WuYIbLm9MdkjN5C20JgG2/6784dca790e32ad199f2fb2122e21fcb/BLOG-2587_7.png" alt="BLOG-2587 7" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YTBl2XO8YDDgFSzAoIAxo/454b0dc4a0785af2087819d88900c5c5/BLOG-2587_8.png" alt="BLOG-2587 8" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YTBl2XO8YDDgFSzAoIAxo/0a9481add616709fa8d95762cfbfc71e/BLOG-2587_8.png" alt="BLOG-2587 8" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dt2aD35Ipq0eZKuQcF8PB/28544c28ee7b697a1832606a43dd5827/BLOG-2587_9.png" alt="BLOG-2587 9" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dt2aD35Ipq0eZKuQcF8PB/2f51bd06ee1ced5fab68a76cc71f70ce/BLOG-2587_9.png" alt="BLOG-2587 9" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NS4Wq7KB0U60IkhyzhwTs/5e675ede635bd807edb6f43f2b3f9c2b/BLOG-2587_10.png" alt="BLOG-2587 10" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NS4Wq7KB0U60IkhyzhwTs/f69159fe84dd373c6905ebe56e570b6d/BLOG-2587_10.png" alt="BLOG-2587 10" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<p>Request traffic from Las Vegas initially appeared to exhibit a bit of volatility around 11:00 ET (15:00 UTC), but continues to track fairly closely to last week’s levels before exceeding them starting at 16:00 ET (20:00 UTC). Cincinnati was tracking slightly above last week’s request volume before the outage began, and tracked closely to the prior week during the outage period.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NatjBWUvwgaU2mRRHAEUV/97592fdf7e380bd9215f30dd7aeec466/BLOG-2587_11.png" alt="BLOG-2587 11" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NatjBWUvwgaU2mRRHAEUV/9a21e0c3ce61eb4fc11a0fb1d239c411/BLOG-2587_11.png" alt="BLOG-2587 11" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jqFrqdvO203QDKMsFUWrM/9086bb8ab57fd07616ba0c92b7d88da5/BLOG-2587_12.png" alt="BLOG-2587 12" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jqFrqdvO203QDKMsFUWrM/1d3e538cd3f00b7e522be922eb6b3664/BLOG-2587_12.png" alt="BLOG-2587 12" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<p>We observed week-over-week traffic increases during the outage period in New York and Atlanta. However, in both cities, traffic was already slightly above last week’s levels, and that trend continued throughout the day.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UnTO0qSD24rreW9LHRk0H/e1060129cb4a9a664065de049fa5f01f/BLOG-2587_13.png" alt="BLOG-2587 13" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UnTO0qSD24rreW9LHRk0H/043ebdf603b7604c4018944ad5192f2c/BLOG-2587_13.png" alt="BLOG-2587 13" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gDfClWDv7hqlgZE30HRjF/efed3466ffe394e6a349702ce3c08271/BLOG-2587_14.png" alt="BLOG-2587 14" class="kg-image" width="1175" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gDfClWDv7hqlgZE30HRjF/b427490198d2ba4fc74c6e84753de502/BLOG-2587_14.png" alt="BLOG-2587 14" class="kg-image" width="1175" height="525" loading="lazy">
 	</figure>
 	<p>Based on our observations, it appears that voice services on Verizon’s network may have been more significantly impacted than data services, as we saw some declines in request traffic across impacted cities, but none experienced full outages.</p>
 	<p>As of this writing (19:15 ET, 23:15 UTC), no specific information has been made available by Verizon regarding the root cause of the network problems. </p>

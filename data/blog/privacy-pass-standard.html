@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LZJxp89GI8PxGwGSPRQJL/c5c9f109068e90e0a624f349fcbc51f1/image9.png" alt="Privacy Pass: Upgrading to the latest protocol version" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LZJxp89GI8PxGwGSPRQJL/9cfe61e756369dcad6cb78f5ad89ec1f/image9.png" alt="Privacy Pass: Upgrading to the latest protocol version" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -47,7 +47,7 @@
 	<p>Below is a brief overview of changes to the protocol we participated in:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YImfph78oDPj3kgEcyvV6/f264eb1041143129987fa2bb4f6eeeef/image8.png" alt="" class="kg-image" width="1808" height="631" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YImfph78oDPj3kgEcyvV6/37bcd89ffcfff8b636b00c8e931f3218/image8.png" alt="" class="kg-image" width="1808" height="631" loading="lazy">
 
 	</figure>
 	<p>The timeline presents cryptographic changes, community inputs, and industry collaborations. These changes helped shape better standards for the web, such as VOPRF (<a href="https://www.rfc-editor.org/rfc/rfc9497">RFC 9497</a>), or RSA Blind Signatures (<a href="https://www.rfc-editor.org/rfc/rfc9474">RFC 9474</a>). In the next sections, we dive in the Privacy Pass protocol to understand its ins and outs.</p>
@@ -91,7 +91,7 @@
 	<p>They interact as illustrated below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tX1xRQv6Ltif1NRj2fCOa/97e03c053c1ec61e93115e59b46c0cd6/Frame-699-1-.png" alt="" class="kg-image" width="1492" height="780" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tX1xRQv6Ltif1NRj2fCOa/eeb412fa39d73e2232f4b062d95cd708/Frame-699-1-.png" alt="" class="kg-image" width="1492" height="780" loading="lazy">
 
 	</figure>
 	<p>Let's dive into what's really happening with an example. The User wants to access an Origin, say store.example.com. This website has suffered attacks or abuse in the past, and the site is using Privacy Pass to help avoid these going forward. To that end, the Origin returns <a href="https://www.rfc-editor.org/rfc/rfc9110#field.www-authenticate">an authentication request</a> to the Client: <code>WWW-Authenticate: PrivateToken challenge="A==",token-key="B=="</code>. In this way, the Origin signals that it accepts tokens from the Issuer with public key “B==” to satisfy the challenge. That Issuer in turn trusts reputable Attesters to vouch for the Client not being an attacker by means of the presence of a cookie, CAPTCHA, Turnstile, or <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">CAP challenge</a> for example. For accessibility reasons for our example, let us say that the Client likely prefers the Turnstile method. The User’s browser prompts them to solve a Turnstile challenge. On success, it contacts the Issuer “B==” with that solution, and then replays the initial requests to store.example.com, this time sending along the token header <code>Authorization: PrivateToken token="C=="</code>, which the Origin accepts and returns your desired content to the Client. And that’s it.</p>
@@ -108,31 +108,31 @@
 	<p>Then, head to <a href="https://demo-pat.research.cloudflare.com/login">https://demo-pat.research.cloudflare.com/login</a>. The page returns a 401 Privacy Pass Token not presented. In fact, the origin expects you to perform a PrivateToken authentication. If you don’t have the extension installed, the flow stops here. If you have the extension installed, the extension is going to orchestrate the flow required to get you a token requested by the Origin.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZPDrhytZNVoB81Q7RILu5/cdd0aed37f68330f125f8043919146d4/image10.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZPDrhytZNVoB81Q7RILu5/7c115c9ed069aa09694373ec1adcc4d0/image10.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
 
 	</figure>
 	<p>With the extension installed, you are directed to a new tab <a href="https://pp-attester-turnstile.research.cloudflare.com/challenge">https://pp-attester-turnstile.research.cloudflare.com/challenge</a>. This is a page provided by an Attester able to deliver you a token signed by the Issuer request by the Origin. In this case, the Attester checks you’re able to solve a Turnstile challenge.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fmDWo3548oMK8jgZ7V0Kd/1bb5b16b41477687fccf30ee57aae5b0/image2.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fmDWo3548oMK8jgZ7V0Kd/94ee9ab9bc1df6fee6e6a76dc4fb3e02/image2.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
 
 	</figure>
 	<p>You click, and that’s it. The Turnstile challenge solution is sent to the Attester, which upon validation, sends back a token from the requested Issuer. This page appears for a very short time, as once the extension has the token, the challenge page is no longer needed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KROIlp9njiXlfceDzRU7W/63b5e5ac1342d092005fb84b292ca41e/image11.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KROIlp9njiXlfceDzRU7W/d1e306da3012c949e3fa5b80934f83a4/image11.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
 
 	</figure>
 	<p>The extension, now having a token requested by the Origin, sends your initial request for a second time, with an Authorization header containing a valid Issuer PrivateToken. Upon validation, the Origin allows you in with a 200 Privacy Pass Token valid!</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qOSkMc5wIqS50CuNNNoZY/e2631d3162c2f5258f3a8a14a41e6041/image3.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qOSkMc5wIqS50CuNNNoZY/b36b88ba01ffa1c5f4d78727e602062f/image3.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
 
 	</figure>
 	<p>If you want to check behind the scenes, you can right-click on the extension logo and go to the preference/options page. It contains a list of attesters trusted by the extension, one per line. You can add your own attestation method (API described below). This allows the Client to decide on their preferred attestation methods.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78BCHYQuOBC2aFlnPshu83/0454929f67cc9b5f51d46a70773d62b5/image7.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78BCHYQuOBC2aFlnPshu83/c6ee6b54d1d24b6f92f34577267a1146/image7.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -146,7 +146,7 @@
 	<p>The Privacy Pass protocol is new and not a standard yet, which implies that it’s not uniformly supported on all platforms. To improve flexibility beyond the existing standard proposal, we are introducing two mechanisms: an API for Attesters, and a replay API for web clients. The API for attesters allows developers to build new attestation methods, which only need to provide their URL to interface with the Silk browser extension. The replay API for web clients is a mechanism to enable websites to cooperate with the extension to make PrivateToken authentication work on browsers with Chrome user agents.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TLz1CPx9OHczqLabCRmyc/3f1b19d2ed3712f3a73d8b558c69bf82/image12.png" alt="" class="kg-image" width="1999" height="1119" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TLz1CPx9OHczqLabCRmyc/c54b0b4bb637a97812c637ca0eebc78c/image12.png" alt="" class="kg-image" width="1999" height="1119" loading="lazy">
 
 	</figure>
 	<p>Because more than one Attester may be supported on your machine, your Client needs to understand which Attester to use depending on the requested Issuer. As mentioned before, you as the Client do not communicate directly with the Issuer because you don’t necessarily know their relation with the attester, so you cannot retrieve its public key. To this end, the Attester API exposes all Issuers reachable by the said Attester via an endpoint: /v1/private-token-issuer-directory. This way, your client selects an appropriate Attester - one in relation with an Issuer that the Origin trusts, before triggering a validation.</p>
@@ -176,7 +176,7 @@
 	<p>To access your service, users are required to prove they've paid for the service through a payment provider of their choosing (that you deem acceptable). This payment provider acknowledges the payment and requests a token for the user to access the service. As a sequence diagram, it looks as follows:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CDt5NsDY4c2DuYbggdleT/15f35f0693abdba6d95870a37ee71fd7/image4.png" alt="" class="kg-image" width="1615" height="903" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CDt5NsDY4c2DuYbggdleT/c2084b1b7cb141a8b528de78392833b3/image4.png" alt="" class="kg-image" width="1615" height="903" loading="lazy">
 
 	</figure>
 	<p>To implement it in Workers, we rely on the <a href="https://www.npmjs.com/package/@cloudflare/privacypass-ts"><code>@cloudflare/privacypass-ts</code></a> library, which can be installed by running:</p>
@@ -305,7 +305,7 @@ addEventListener('fetch', event =&gt; {
 	<p>The validation method above is simply checking if the user selected yes. Your method might be more complex, the wrapping stays the same.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5PnBuinoRKUpYjrBsHQbn/66b7be220c41f4dd04a67892cf1fff65/Screenshot-2024-01-04-at-10.30.04.png" alt="" class="kg-image" width="1356" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PnBuinoRKUpYjrBsHQbn/966c266e7de411503c5bf9a5dc9a184d/Screenshot-2024-01-04-at-10.30.04.png" alt="" class="kg-image" width="1356" height="206" loading="lazy">
 
 	</figure>
 	<p><i>Screenshot of the Yes/No Attester example</i></p>
@@ -365,7 +365,7 @@ export default {
 	<p>Privacy Pass <i>the extension</i> is based on an agreed upon Privacy Pass <a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-auth-scheme"><i>authentication protocol</i></a>. Briefly looking at <a href="https://developer.chrome.com/docs/extensions/reference/webRequest">Chrome’s API documentation</a>, we should be able to use the onAuthRequired event. However, with PrivateToken authentication not yet being standard, there are no hooks provided by browsers for extensions to add logic to this event.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iQsRopHuLfmHqjsppwImc/6633ea141ad09d02b918f57555197bdf/Screenshot-2024-01-04-at-10.32.44.png" alt="" class="kg-image" width="2000" height="932" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iQsRopHuLfmHqjsppwImc/1a379a0cdd3de3e17de04811b1c08ac0/Screenshot-2024-01-04-at-10.32.44.png" alt="" class="kg-image" width="2000" height="932" loading="lazy">
 
 	</figure>
 	<p><i>Image available under CC-BY-SA 4.0 provided by</i> <a href="https://developer.chrome.com/docs/extensions/reference/webRequest"><i>Google For Developers</i></a></p>

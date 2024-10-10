@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RHVtyjcC2Y3odEDnepL0T/acbeed5ca030bd01bde6fba35b7fa14d/the-rise-of-multivector-amplifications.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6RHVtyjcC2Y3odEDnepL0T/08ed0e43fafd8cb15ad129e638be0d65/the-rise-of-multivector-amplifications.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It's been a while since we last wrote about <a href="https://blog.cloudflare.com/reflections-on-reflections">Layer 3/4 DDoS attacks on this blog</a>. This is a good news - we've been quietly handling the daily onslaught of DDoS attacks. Since our last write-up, a handful of interesting L3/4 attacks have happened. Let's review them.</p>
 	<div class="flex anchor relative">
@@ -12,20 +12,20 @@
 	<p>In April, <a href="https://twitter.com/jgrahamc/status/983278388059058181">John tweeted about a gigantic 942Gbps SYN flood</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zDV2Skl4GNNghhywbXthQ/a6e9a7f8c2c372e646540cdd6ab82774/DaVOetFVMAI9W8m.jpg-large.jpeg.jpeg" alt="DaVOetFVMAI9W8m.jpg-large" class="kg-image" width="1688" height="454" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zDV2Skl4GNNghhywbXthQ/3d3e9b64eec480cacc4844756f7c55c3/DaVOetFVMAI9W8m.jpg-large.jpeg.jpeg" alt="DaVOetFVMAI9W8m.jpg-large" class="kg-image" width="1688" height="454" loading="lazy">
 
 	</figure>
 	<p>It was a notable event for a couple of reasons.</p>
 	<p>First, it was really large. Previously, we've seen only amplification / reflection attacks at terabit scale. In those cases, the attacker doesn't actually have too much capacity. They need to bounce the traffic off other servers to generate a substantial load. This is different from typical "direct" style attacks, like SYN floods. In the SYN flood mentioned by John, all 942Gbps were coming directly from attacker-controlled machines.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PuzvyIN5DUCEoYioR7Ey/c0ed78a0959e528d44fdd387497c7ff3/image2018-4-13_12-45-12.png" alt="image2018-4-13_12-45-12" class="kg-image" width="2000" height="733" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PuzvyIN5DUCEoYioR7Ey/9d8ffd168062b7a686d78b0794591175/image2018-4-13_12-45-12.png" alt="image2018-4-13_12-45-12" class="kg-image" width="2000" height="733" loading="lazy">
 
 	</figure>
 	<p>Secondly, this attack was truly distributed. Normal SYN floods come from a small number of geographical locations. This one, was all over the globe, hitting all Cloudflare data centers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dVX774vMX9ALTOhJbOADy/c07b75986d960e32dce9aa14e117150d/ams-1.png" alt="ams-1" class="kg-image" width="2000" height="1016" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dVX774vMX9ALTOhJbOADy/405b6ffd1b2e7c48be9a7a2be4f210cf/ams-1.png" alt="ams-1" class="kg-image" width="2000" height="1016" loading="lazy">
 
 	</figure>
 	<p>Thirdly, the attack seem to be partially spoofed. While our analysis was not conclusive, we saw random, spoofed source IP addresses in the largest internet exchanges. The above <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert curve</a> shows the source IP distribution in AMS-IX. As you can see we even saw the 127.0.0.0/8 block attacking us!</p>
@@ -42,7 +42,7 @@
 	<p>Apart from the gigantic one-off SYN floods, we are, as usual, the target of more common SYN floods coming mainly from Asia. Here is a chart from two days some time ago:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2heaW03y367UPwXganSr85/6a1ae36e54700c34c6de752d598e8288/syn-2d.png" alt="syn-2d" class="kg-image" width="1888" height="550" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2heaW03y367UPwXganSr85/59662bbe89628b3a9344d9fc7c3475c1/syn-2d.png" alt="syn-2d" class="kg-image" width="1888" height="550" loading="lazy">
 
 	</figure>
 	<p>These kind of SYN floods, reaching 600-650 Gbps, we consider a normal part of operating in the internet.</p>
@@ -64,13 +64,13 @@
 	<p>After that event, we saw much larger SSDP attacks, peaking at 400Gbps. But this was back in 2017 - this year we have rarely seen major SSDP spikes. Over the last 30 days we haven't seen one crossing 180Gbps (which is puny):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42uBBo1vBkQ7mYkBlLBw0n/789eb5fd84413ae2edc9ecde5e952b56/ssdp-30-days.png" alt="ssdp-30-days" class="kg-image" width="2000" height="485" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42uBBo1vBkQ7mYkBlLBw0n/35e6c6d3db56ee592ecf603b93528e6e/ssdp-30-days.png" alt="ssdp-30-days" class="kg-image" width="2000" height="485" loading="lazy">
 
 	</figure>
 	<p>These attacks employ 60k-100k vulnerable IPs, which are mostly in Russia, China, the USA and Italy; here is per-country unique IP map:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JN7Pnvpp34WV9zz3F2Aet/66a84424a92b1ab76bcb316b04dcb295/ssdp-30-days-ips-1.png" alt="ssdp-30-days-ips-1" class="kg-image" width="2000" height="693" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JN7Pnvpp34WV9zz3F2Aet/3d41a251b25b4198ca6800622f40d2eb/ssdp-30-days-ips-1.png" alt="ssdp-30-days-ips-1" class="kg-image" width="2000" height="693" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -90,7 +90,7 @@
 	<p>Initially the attacks were scary, starting at 260Gbps when first reported, reaching a <a href="https://githubengineering.com/ddos-incident-report">terabit a day later</a>. But after the initial hype the attacks have weakened - the industry reacted rapidly and cleaned up the vulnerable servers. Nowadays, we don't see very large attacks of this type. Here is a chart for the last 30 days, with memcached reaching 80Gbps tops:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ypEYQgJt0L1ShN5t6b60e/fb9bc4656850460c5fc142e29fc461b1/memcached.png" alt="memcached" class="kg-image" width="1972" height="552" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ypEYQgJt0L1ShN5t6b60e/40e846171ee726e03b03967406c36253/memcached.png" alt="memcached" class="kg-image" width="1972" height="552" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -105,7 +105,7 @@
 	<p>The industry calls this "multivector attacks", and while it's rather standard and has existed for years, we haven't seen it on this scale before. For example, here is one such an attack reaching a combined 800Gbps:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AjwoeLkG5qwx1dRTbzFZG/0f6cf26b6bedc7431af9caf6a904d2e3/multivector-800.png" alt="multivector-800" class="kg-image" width="1430" height="566" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AjwoeLkG5qwx1dRTbzFZG/120c7d7bcec6b90202f5a845ab4522f4/multivector-800.png" alt="multivector-800" class="kg-image" width="1430" height="566" loading="lazy">
 
 	</figure>
 	<p>You can see all the different amplifications started and ended at the same time. The amplification types list is somewhat intriguing:</p>

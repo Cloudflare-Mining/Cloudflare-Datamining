@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fZ4bAmzJg9RdmC77dRSwH/80b66f737918390bfafe4bbcc6387296/Early-Hints.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fZ4bAmzJg9RdmC77dRSwH/46fe0459429d956b326a2ddd1b285a2e/Early-Hints.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Want to know a secret about Internet performance? Browsers spend an inordinate amount of time twiddling their thumbs waiting to be told what to do. This waiting impacts page load performance. Today, we’re excited to announce support for Early Hints, which dramatically improves browser page load performance and reduces thumb-twiddling time.</p>
@@ -22,7 +22,7 @@
 	<p>Sending hints on which assets to expect before the entire response is compiled allows the browser to use think time (when it would otherwise have been waiting) to fetch needed assets, prepare parts of the displayed page, and otherwise get ready for the full response to be returned. &nbsp;</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qObHIONmupAcBER3OlArB/732677f1bc9a00a16e2944ff9eccb4a7/Early-hints-diagram-1.png" alt="" class="kg-image" width="1740" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qObHIONmupAcBER3OlArB/7008b143ba42ee3efc4ba844b738b017/Early-hints-diagram-1.png" alt="" class="kg-image" width="1740" height="860" loading="lazy">
 
 	</figure>
 	<p>Cloudflare, as an edge network that sits in between client and server, is well positioned to issue these hints to clients on servers’ behalf. This is true for a few reasons:</p>
@@ -52,7 +52,7 @@
 	<p>Let’s take a look at this in action. Below is the performance waterfall for a checkout page on pinecoffeesupply.com, a coffee shop with a storefront on Shopify: &nbsp;</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aRDbD5ou2c5Ks22NKIG0l/618c87351bc2d7e5fdf94817f94dfaba/pasted-image-0--3-.png" alt="" class="kg-image" width="2048" height="1443" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aRDbD5ou2c5Ks22NKIG0l/4a779d81fad0f618aadd4e67ddfcd045/pasted-image-0--3-.png" alt="" class="kg-image" width="2048" height="1443" loading="lazy">
 
 	</figure>
 	<p>Page rendering cannot complete (and the shopper can’t get their coffee fix, and the coffee shop can’t get paid!) until key assets are loaded. Information on subresources needed for the browser to load the page aren’t available until the server has thought about and returned the initial response (the first document in the above table). In the above example, the page load could have been accelerated had the browser known, prior to receiving the full response, that the stylesheet and the four subsequent scripts will be needed to render the page.</p>
@@ -132,7 +132,7 @@ Host: example.com</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Hh14GoS4bGQk2oVGserQa/c321a8ad84a09bc1ef1ac941a37097de/Frame-662.png" alt="" class="kg-image" width="1811" height="430" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Hh14GoS4bGQk2oVGserQa/d388f0369ca8cd322640f0d28c9a50fe/Frame-662.png" alt="" class="kg-image" width="1811" height="430" loading="lazy">
 
 	</figure>
 	<p>Standards like Early Hints often don’t get off the ground because of this chicken and egg problem: clients have no reason to support new standards without server support and servers have no reason to implement support without clients speaking their language. As previously discussed, Early Hints is particularly complicated for origins to directly support, because 103 is an unfamiliar status code and multiple responses to a single request may not be a well-supported pattern in common HTTP server and application stacks.</p>
@@ -244,7 +244,7 @@ Host: example.com</code></pre>
 	<p>Using Web Page Test, we’ve been able to observe greater than <b>30% improvement</b> to a page's content loading in the browser as measured by Largest Contentful Paint (<a href="https://web.dev/lcp">LCP</a>). An example test filmstrip:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fsbcbAWGRutiLn0znk1K2/bb020a8fa7ce5cfdcc76f34e13e7a76c/image2021-9-14_12-34-3.png" alt="" class="kg-image" width="2048" height="542" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fsbcbAWGRutiLn0znk1K2/5b83f317e6dea72d8ab7a0c348c3f368/image2021-9-14_12-34-3.png" alt="" class="kg-image" width="2048" height="542" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

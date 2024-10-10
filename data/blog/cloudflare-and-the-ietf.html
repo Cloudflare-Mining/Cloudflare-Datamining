@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S2dtKwIfKq5icOXER0UKE/48af873983b05ba1ddc2b926340a4ab6/Mask-Group--1--2.png" alt="" class="kg-image" width="2503" height="1244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/S2dtKwIfKq5icOXER0UKE/f2e19bba5bb9bc2641d3a01f968abec0/Mask-Group--1--2.png" alt="" class="kg-image" width="2503" height="1244" loading="lazy">
 
 	</figure>
 	<p>The Internet, far from being just a series of tubes, is a huge, incredibly complex, decentralized system. Every action and interaction in the system is enabled by a complicated mass of protocols woven together to accomplish their task, each handing off to the next like trapeze artists high above a virtual circus ring. Stop to think about details, and it is a marvel.</p>
@@ -11,7 +11,7 @@
 	<p>The location (address) of a receiver is discovered using <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>, a connection between sender and receiver is established using a transport protocol like TCP, and (hopefully!) secured with a protocol like TLS. The sender's message is encoded in a format that the receiver can recognize and parse, like HTTP, because the two disparate parties need a common language to communicate. Then, ultimately, the message is sent and carried in an IP datagram that is forwarded from sender to receiver based on routes established with BGP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z79TEfHR8kGEqa8qMWBCQ/9bd762ed599d72100e430b0a76ccf3cc/image1-35.png" alt="Many steps of sending dog pictures on the Internet" class="kg-image" width="1074" height="1658" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Z79TEfHR8kGEqa8qMWBCQ/eecb98d60c7bbcbf5baae72ee10d8357/image1-35.png" alt="Many steps of sending dog pictures on the Internet" class="kg-image" width="1074" height="1658" loading="lazy">
 
 	</figure>
 	<p>Even an explanation this dense is laughably oversimplified. For example, the four protocols listed are just the start, and ignore many others with acronyms of their own. The truth is that things are complicated. And because things are complicated, how these protocols and systems interact and influence the user experience on the Internet is complicated. Extra round trips to establish a secure connection increase the amount of time before useful work is done, harming user performance. The use of unauthenticated or unencrypted protocols reveals potentially sensitive information to the network or, worse, to malicious entities, which harms user security and privacy. And finally, consolidation and centralization — seemingly a prerequisite for reducing costs and protecting against attacks — makes it challenging to provide high availability even for essential services. (What happens when that one system goes down or is otherwise unavailable, or to extend our earlier metaphor, when a trapeze isn’t there to catch?)</p>
@@ -44,7 +44,7 @@
 	<p>The Internet is not only complicated — it is leaky. Metadata seeps like toxic waste from nearly every protocol in use, from DNS to TLS, and even to HTTP at the application layer.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1t1ZVnKH9ZGQnKCgx6I8Pr/746599c2915114273dbd0110bcb7a61d/image6-14.png" alt="Leaky protocols" class="kg-image" width="512" height="261" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1t1ZVnKH9ZGQnKCgx6I8Pr/ada911c196fb971b19b8a4a3f7767362/image6-14.png" alt="Leaky protocols" class="kg-image" width="512" height="261" loading="lazy">
 
 	</figure>
 	<p>One critically important piece of metadata that still leaks today is the name of the server that clients connect to. When a client opens a connection to a server, it reveals the name and identity of that server in many places, including DNS, TLS, and even sometimes at the IP layer (if the destination IP address is unique to that server). Linking client identity (IP address) to target server names enables third parties to build a profile of per-user behavior without end-user consent. The result is a set of protocols that does not respect end-user privacy.</p>
@@ -80,7 +80,7 @@
 	<p>Another salient feature of QUIC is its wire format. Nearly every bit of every QUIC packet is encrypted and authenticated between sender and receiver. And within a QUIC packet, individual frames can be rearranged, repackaged, and otherwise transformed by the sender.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qpdpgnX8A8M6iHvf0ECWP/857f40a464fcb9dbba63f8660d781749/image2-22.png" alt="Anti-ossification through encryption and wire format variability" class="kg-image" width="1130" height="454" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qpdpgnX8A8M6iHvf0ECWP/aae602a63abed5400ffa431b4ce3cdce/image2-22.png" alt="Anti-ossification through encryption and wire format variability" class="kg-image" width="1130" height="454" loading="lazy">
 
 	</figure>
 	<p>Together, these are powerful tools to help mitigate future network ossification and enable continued extensibility. (TLS’s wire format ultimately led to the <a href="https://datatracker.ietf.org/doc/html/rfc8446#appendix-D.4">middlebox compatibility mode</a> for TLS 1.3 due to the many middlebox ossification problems that were encountered during early deployment tests.)</p>
@@ -99,7 +99,7 @@
 	<p>Standards allow us to build abstractions. An ideal standard is one that is usable in many contexts and contains all the information a sufficiently skilled engineer needs to build a compliant implementation that successfully interoperates with other independent implementations. Writing a new standard is sort of like creating a new Lego brick. Creating a new Lego brick allows us to build things that we couldn’t have built before. For example, one new “brick” that’s nearly finished (as of this writing) is <a href="https://www.ietf.org/archive/id/draft-irtf-cfrg-hpke-12.html">Hybrid Public Key Encryption (HPKE)</a>. HPKE allows us to efficiently encrypt arbitrary plaintexts under the recipient’s public key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eWRfVLYtCcnUohsI2X8SE/77d0a0e1dbb438658f06a1bafa456479/image4-21.png" alt="HPKE overview" class="kg-image" width="624" height="285" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eWRfVLYtCcnUohsI2X8SE/48ccbddb899b98e65baea220bd7c06f6/image4-21.png" alt="HPKE overview" class="kg-image" width="624" height="285" loading="lazy">
 
 	</figure>
 	<p>Mixing asymmetric and symmetric cryptography for efficiency is a common technique that has been used for many years in all sorts of protocols, from TLS to <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a>. However, each of these applications has come up with their own design, each with its own security properties. HPKE is intended to be a single, standard, interoperable version of this technique that turns this complex and technical corner of protocol design into an easy-to-use black box. The standard has undergone extensive analysis by cryptographers throughout its development and has numerous implementations available. The end result is a simple abstraction that protocol designers can include without having to consider how it works under-the-hood. In fact, HPKE is already a dependency for a number of other draft protocols in the IETF, such as <a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-13">TLS Encrypted Client Hello</a>, <a href="https://datatracker.ietf.org/doc/html/draft-pauly-dprive-oblivious-doh-07">Oblivious DNS-over-HTTPS</a>, and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-mls-architecture-07.html">Message Layer Security</a>.</p>
@@ -114,7 +114,7 @@
 	<p>We engage with the IETF in the specification, implementation, experimentation, and analysis phases of a standard to help achieve our three goals of incremental innovation, architectural advancement, and production of simple abstractions.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/0tbHRFLSsWV7qBNiKi4WN/1f86fbe8febc3a725867ad6bff37ffc6/image3-20.png" alt="Standard iteration process" class="kg-image" width="1006" height="292" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0tbHRFLSsWV7qBNiKi4WN/34d3b7742fe21500bcaa4970729bd4e6/image3-20.png" alt="Standard iteration process" class="kg-image" width="1006" height="292" loading="lazy">
 
 	</figure>
 	<p>Our participation in the standards process hits all four phases. Individuals in Cloudflare bring a diversity of knowledge and domain expertise to each phase, especially in the production of technical specifications. Today, we also published <a href="https://blog.cloudflare.com/exported-authenticators-the-long-road-to-rfc">a blog post</a> about an upcoming standard that we’ve been working on for a number of years and will be sharing details about how we used formal analysis to make sure that we ruled out as many security issues in the design as possible. We work in close collaboration with people from all around the world as an investment in the future of the Internet. Open standards mean that everyone can take advantage of the latest and greatest in protocol design, whether they use Cloudflare or not.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/375AypN2olTcM8FZbLAtha/8f7f76cdceafd4216a08e358d39c5ac7/one-hit-wonders-copy_2x-1.png" alt="" class="kg-image" width="2299" height="1294" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/375AypN2olTcM8FZbLAtha/c99ce5501de50a6b330550a47a46c985/one-hit-wonders-copy_2x-1.png" alt="" class="kg-image" width="2299" height="1294" loading="lazy">
 
 	</figure>
 	<p>Part of Cloudflare's service is a CDN that makes millions of Internet properties faster and more reliable by caching web assets closer to browsers and end users.</p>
@@ -35,7 +35,7 @@
 	<p>Below shows the memory layout of a typical Cloudflare edge server with 256GB of physical memory.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KkHFLmaUIQV1xFNyJfNc6/9d5a638532ded647805a5e60a9fdd012/Screen-Shot-2020-03-23-at-10.04.24-AM.png" alt="" class="kg-image" width="2000" height="585" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KkHFLmaUIQV1xFNyJfNc6/726ee9b4a7959daf1edf055ac4178bf4/Screen-Shot-2020-03-23-at-10.04.24-AM.png" alt="" class="kg-image" width="2000" height="585" loading="lazy">
 
 	</figure>
 	<p>We can see the used memory (RSS) on top. RSS memory consumption for all services is about 87.71 GB, with our cache service consuming 4.1 GB. At the bottom we see overall page cache usage. Total size is 128.6 GB, with the cache service using 41.6 GB of it to serve cached web assets.</p>
@@ -84,12 +84,12 @@
 	<p>To quantify how many of our assets are one-hit-wonders and to test the hypothesis that <b>reducing disk writes can speed up disk reads</b>, we conducted a simple experiment. The experiment: using a representative sample of traffic, we modified our caching logic to only cache an asset the second time our server encountered it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7K3qlrpIfh40SNSFCLdeMl/57c183a22d6ed95f7f2440c7c8ed2952/Screen-Shot-2020-03-17-at-12.35.30-PM.png" alt="" class="kg-image" width="1600" height="587" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7K3qlrpIfh40SNSFCLdeMl/34361c0b74a052d2010d7517cf5c25e5/Screen-Shot-2020-03-17-at-12.35.30-PM.png" alt="" class="kg-image" width="1600" height="587" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bqrrRAmrxDzLIvDaOUqv/3c3df53ec5b6d20172a7d4f3edec1f77/Screen-Shot-2020-03-17-at-12.44.56-PM-1.png" alt="" class="kg-image" width="1600" height="574" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60bqrrRAmrxDzLIvDaOUqv/92277ae85b7026fec8b786193f8518e2/Screen-Shot-2020-03-17-at-12.44.56-PM-1.png" alt="" class="kg-image" width="1600" height="574" loading="lazy">
 
 	</figure>
 	<p>The red line indicates when the experiment started. The green line represents the experimental group and the yellow line represents the control group.</p>
@@ -128,7 +128,7 @@
 	<p>A better idea we came up with: put every asset we want to cache to disk in memory <i>first</i>. The memory is called a “transient cache”. Assets in transient cache are promoted to the permanent cache, backed by SSDs, after they are accessed a certain number of times, indicating they are popular enough to be stored persistently. If they are not promoted, they are eventually evicted from transient cache because of lack of popularity.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1czq59FF4mV0OR472rLAqi/f284fa295f34a4b88a93c0a332b33122/pasted-image-0--4--1.png" alt="" class="kg-image" width="1600" height="903" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1czq59FF4mV0OR472rLAqi/16cc7284cd6bd9f3a8cb965d591f3abf/pasted-image-0--4--1.png" alt="" class="kg-image" width="1600" height="903" loading="lazy">
 
 	</figure>
 	<p>This design makes sure that disk writes are only spent on assets that are popular, while ensuring every asset is only “missed” once.</p>
@@ -168,14 +168,14 @@
 	<p>The chart below shows the IO usage of an enabled cohort before and after (red line) enabling transient cache.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BSsNPgx8rrMXPvmSUhxoE/09e5e350c7d8b6134685db182de6b446/Screen-Shot-2020-03-17-at-11.09.38-AM-1.png" alt="" class="kg-image" width="1600" height="413" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6BSsNPgx8rrMXPvmSUhxoE/babef48059ce8b6ed26db7a8a5bf9077/Screen-Shot-2020-03-17-at-11.09.38-AM-1.png" alt="" class="kg-image" width="1600" height="413" loading="lazy">
 
 	</figure>
 	<p>We can see that disk write (in bytes per second) was reduced by 25% at peak and 20% off peak. Although it is too early to tell, the life-span of those SSDs should be extended proportionally.</p>
 	<p>More importantly for our customers: our CDN cache hit tail latency is measurably decreased!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ocvoQpil6QTcaxw5Zgcmj/d5e32c53a80d18b89382a76a5445160b/Screen-Shot-2020-03-17-at-11.30.09-AM.png" alt="" class="kg-image" width="1600" height="421" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ocvoQpil6QTcaxw5Zgcmj/a7ef94a727251dfd4e9f3313271aa027/Screen-Shot-2020-03-17-at-11.30.09-AM.png" alt="" class="kg-image" width="1600" height="421" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

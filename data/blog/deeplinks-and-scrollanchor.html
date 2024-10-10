@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6neEMhq4G7VLzdtb8taQok/68ee08d5f7bef0e79fdc09af4d87cb45/deeplinks-and-scrollanchor.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6neEMhq4G7VLzdtb8taQok/8fc3c8f45bd784c1063018219601bb4a/deeplinks-and-scrollanchor.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="what-are-deeplinks">What are DeepLinks?</h3>
@@ -58,7 +58,7 @@ dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources:
 	<p>Just to prove that it works, here’s a GIF of us deep linking to the “TLS 1.3” setting on the security settings page:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ffkWLOQ4Jux6PfgoDaF6r/204d780d0cf867de01cb8a7a3e8184a2/image1-1.gif" alt="" class="kg-image" width="1665" height="968" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ffkWLOQ4Jux6PfgoDaF6r/004b0bd23e0944c895b96a0a1a1a3e32/image1-1.gif" alt="" class="kg-image" width="1665" height="968" loading="lazy">
 
 	</figure>
 	<p>It works! I was asked to select one of my several accounts, then our DeepLink routing component was smart enough to know that I have only one zone within that account and auto-filled the rest of the URL path. After the page was fully loaded, we were automatically scrolled to the TLS 1.3 setting. If you’re curious how all of this works and want to jump into the nitty gritty details, read on!</p>
@@ -180,7 +180,7 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
 	<p>We already have a page in the dashboard with a zone list that looks like this.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57MLM5FGHiSN9LiWocJ7Se/663a9fd12d64fe9d8da9e1c690761f0f/image3-5.png" alt="" class="kg-image" width="1300" height="542" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57MLM5FGHiSN9LiWocJ7Se/b9396b6f0f69ac90b9982c308aa35f5f/image3-5.png" alt="" class="kg-image" width="1300" height="542" loading="lazy">
 
 	</figure>
 	<p>What we need to do is give the resolver the ability to somehow show this page, and wait for the result of the user's interaction.You might be asking: “But how do we show this page? You just told me that DeepLink blocks the entire page!”That’s true!</p>
@@ -307,7 +307,7 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fsQmMLnn9G44KEnxEuhtd/6c0506139893fff355230aacb511e99d/image2-5.png" alt="" class="kg-image" width="1999" height="735" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fsQmMLnn9G44KEnxEuhtd/598f79ee26775ac850960bc7d7a797c5/image2-5.png" alt="" class="kg-image" width="1999" height="735" loading="lazy">
 
 	</figure>
 	<p>This CSS trick alone would work for a static site with a fixed header, but the Dashboard is very dynamic. We found early on in testing that using a normal HTML ID anchor in a URL would cause the browser to jump to the tag <i>on page load</i> but the DOM would change in response to newly fetched information or re-rendering, and the anchored content would be pushed out of view.</p>

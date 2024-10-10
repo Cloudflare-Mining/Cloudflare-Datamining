@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61ia1koFew16incWbMoRT5/2a05fff70304d72563d1892ea909b4dd/image1-15.png" alt="" class="kg-image" width="1999" height="1142" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61ia1koFew16incWbMoRT5/9a2242aa3b5dc6eceee2fddfd671ca25/image1-15.png" alt="" class="kg-image" width="1999" height="1142" loading="lazy">
 
 	</figure>
 	<p>Today I’m excited to announce <code>wrangler login</code>, an easy way to get started with Wrangler! This summer for my internship on the Workers Developer Productivity team I was tasked with helping improve the Wrangler user experience. For those who don’t know, <a href="https://workers.cloudflare.com">Workers</a> is Cloudflare’s serverless platform which allows users to deploy their software directly to Cloudflare’s edge network.</p>
@@ -29,7 +29,7 @@
 	<p>What we came up with was a way to create and transfer API Tokens for a user, similar to how <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> does their login.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5K8pJJ6i1PL1RuKrb2N2IU/346441ab21410d9d5d6ff1a54fc6ece0/image3-6.png" alt="" class="kg-image" width="852" height="325" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5K8pJJ6i1PL1RuKrb2N2IU/5a998782dad3a40d3b15e33885e98e9f/image3-6.png" alt="" class="kg-image" width="852" height="325" loading="lazy">
 
 	</figure>
 	<p>An overview of the process is shown above, which starts with Wrangler. When the user types <code>wrangler login</code> in their terminal, they will be prompted to open the Cloudflare dashboard in their browser. All dashboard pages require the user to sign in before loading and once the user is signed in, all actions taken by the dashboard page will use the authentication of that user.</p>
@@ -46,7 +46,7 @@
 	<p>Wrangler will generate a public-private key pair and pass off the public key to our dashboard page. Once the dashboard page is finished creating our token, EWC will then encrypt the token using the public key before storing. This means in the previous scenario where someone takes the token from our user, all they will have is an encrypted token they can’t use. The only way to decrypt it would be with the private key held by Wrangler.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15A1FtleHZMGbZ6tN6n7XY/16772395753bb25ac145c592485b7410/image2.gif" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15A1FtleHZMGbZ6tN6n7XY/8b926ff99ac81feabf48be43b335735b/image2.gif" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>In the end, this solution results in a smooth experience for Workers users. Now instead of rummaging through dashboard pages you can get started with Wrangler in only a few seconds, sometimes without having to leave the comfort of your own terminal.</p>

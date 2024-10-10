@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EUnoyCMHJTxeminr6q3ke/aca52aa8578ad37a6e8a6b64ee29245e/Durable-Objects-Beta-Blog-OG.png" alt="" class="kg-image" width="2284" height="1367" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EUnoyCMHJTxeminr6q3ke/1ff43c69d60d22f71116e6b2420407fd/Durable-Objects-Beta-Blog-OG.png" alt="" class="kg-image" width="2284" height="1367" loading="lazy">
 
 	</figure>
 	<p>Back in September, we <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">announced</a> Durable Objects - a new paradigm for stateful serverless.</p>
@@ -22,13 +22,13 @@
 	<p>Normally Cloudflare’s network executes a Worker wherever the client’s network request is terminated. This means there can be many instances of your Worker running at a given time all over the world, shown below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KDw6tGDQlvRrae4PS7AGM/4399b323abc4fa8d61fe5501b2258838/image3-54.png" alt="" class="kg-image" width="938" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KDw6tGDQlvRrae4PS7AGM/eb4cb08f52b3a5f989531ac06214894c/image3-54.png" alt="" class="kg-image" width="938" height="525" loading="lazy">
 
 	</figure>
 	<p>By contrast, a Durable Object is defined by a JavaScript class and an id. There is only ever one instance of a Durable Object with a given id running anywhere in the world. All Workers making subrequests for the Durable Object with that id are routed to the same instance - letting them coordinate across multiple requests. The Durable Object instance can then make requests to downstream APIs and store data with our strongly consistent storage API.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HLQ06eTIRyAl30bPTlVov/86107a3b11d5729d025d558b8120fb0d/image1-65.png" alt="" class="kg-image" width="1213" height="544" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HLQ06eTIRyAl30bPTlVov/975cd2e8aa2360c4eab7e4c5a6d440ef/image1-65.png" alt="" class="kg-image" width="1213" height="544" loading="lazy">
 
 	</figure>
 	<p>In this example shown above, we’ve chosen our application’s user id as the Durable Object’s id. &nbsp;When a Worker needs access to a specific user’s data, they can contact the Object with that user’s id. &nbsp;That Object can then handle API calls and data access specific to that individual user.</p>

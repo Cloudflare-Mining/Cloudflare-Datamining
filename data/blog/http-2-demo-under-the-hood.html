@@ -1,9 +1,9 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7At1cZChsRRWJ0iVzxue68/3ce6bc8de561f488a7f099fac6ce17d8/http-2-demo-under-the-hood.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7At1cZChsRRWJ0iVzxue68/0d6f60e366278ce89295c5d7c53dc79a/http-2-demo-under-the-hood.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At first glance, the potential performance improvements of HTTP/1.1 versus HTTP/2 on our <a href="https://www.cloudflare.com/http2">demo page</a> may seem a bit hard to believe. So, we put together a technical explanation of how this demo actually works. We’d also like to credit the <a href="https://http2.golang.org/gophertiles">Gophertiles demo</a>, which served as a basis for our own HTTP/2 demo.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LWui8z0k4gKtqGkRw0nUs/2c3ed34780a0d1de74b9ab588238cafd/http2-demo.png" alt="Screenshot of HTTP/2 Demo" class="kg-image" width="1304" height="596" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LWui8z0k4gKtqGkRw0nUs/4ef8bc2f54551788ccc7a47d27c4d717/http2-demo.png" alt="Screenshot of HTTP/2 Demo" class="kg-image" width="1304" height="596" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -52,7 +52,7 @@
 	<p>Part of CloudFlare’s unique value proposition for HTTP/2 is an automatic SPDY fallback. When a visitor’s browser supports HTTP/2, our edge network will use HTTP/2. If it supports SPDY but not HTTP/2, we’ll respond in SPDY. Otherwise, we’ll fall back to HTTP/1.1. As discussed in our <a href="https://blog.cloudflare.com/introducing-http2">HTTP/2 announcement blog post</a>, this lets us continue supporting about 57% of Internet users that are SPDY-enabled, but not HTTP/2-enabled.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xfO6Wd9gydkLQQEnoz0S8/ab91cb0c8c598dba8cef8156db78690f/how-cloudflare-http2-works.png" alt="HTTP/2 with SPDY fallback on CloudFlare network" class="kg-image" width="800" height="450" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xfO6Wd9gydkLQQEnoz0S8/1155c05af1a3417ab858063031a75810/how-cloudflare-http2-works.png" alt="HTTP/2 with SPDY fallback on CloudFlare network" class="kg-image" width="800" height="450" loading="lazy">
 
 	</figure>
 	<p>So, if you’re using Safari 8 or an Android browser, don’t worry! You may not be able to see the HTTP/2 demo, but our edge servers will fall back to SPDY, which should provide similar results.</p>

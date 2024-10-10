@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34A6C8jMnZf1ikWSlFwNO4/aa491462967a373098849cc26b888e4f/rpki-copy_6.5x-2.png" alt="" class="kg-image" width="1791" height="1329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34A6C8jMnZf1ikWSlFwNO4/c889270fe1f38c6a888e3057f3ca74af/rpki-copy_6.5x-2.png" alt="" class="kg-image" width="1791" height="1329" loading="lazy">
 
 	</figure>
 	<p>This article will talk about our approach to <a href="https://www.cloudflare.com/network-security">network security</a> using technologies like RPKI to sign Internet routes and protect our users and customers from route hijacks and misconfigurations. We are proud to announce we have started deploying active filtering by using RPKI for routing decisions and signing our routes.</p>
@@ -22,7 +22,7 @@
 	<p>IP addresses and Autonomous Systems Numbers are allocated by five Regional Internet Registries (RIR): <a href="https://afrinic.net">Afrinic</a> for Africa, <a href="https://www.apnic.net">APNIC</a> for Asia-Pacific, <a href="https://www.arin.net">ARIN</a> for North America, <a href="https://www.lacnic.net">LACNIC</a> for Central and South America and <a href="https://www.ripe.net">RIPE</a> for Europe, Middle-East and Russia. Each one operates independently.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fnGjueGh1e3tInixUT2zc/0b871d346bcbcd5269e6da74f758d0b1/rirs-01.png" alt="" class="kg-image" width="2000" height="913" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fnGjueGh1e3tInixUT2zc/49f63762c184aacac85079da9e50b744/rirs-01.png" alt="" class="kg-image" width="2000" height="913" loading="lazy">
 
 	</figure>
 	<p>With more than 700,000 IPv4 routes and 40,000 IPv6 routes announced by all Internet actors, it is difficult to know who owns which resource.</p>
@@ -31,7 +31,7 @@
 	<p>A change in route will cause the traffic to be redirected via other networks. Unencrypted traffic can be read and modified. HTTP webpages and DNS without DNSSEC are sensitive to these exploits.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wdvXA5fV7m7z6e5Xdtqx2/0b750e387b49a50b9424111f365a1629/bgp-hijacking-technical-flow-1.png" alt="" class="kg-image" width="1459" height="555" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wdvXA5fV7m7z6e5Xdtqx2/adce2d2dc0b79010b7c4a3e353fec50a/bgp-hijacking-technical-flow-1.png" alt="" class="kg-image" width="1459" height="555" loading="lazy">
 
 	</figure>
 	<p>You can learn more about BGP Hijacking in our <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking">Learning Center</a>.</p>
@@ -43,12 +43,12 @@
 	<p>If you are used to SSL/TLS certificates used by browsers to authenticate the holder of a website, then ROAs are the equivalent in the Internet routing world.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/790gd4F1LviExZpxP0HAFk/ecde28693a9153bbe76d80c5f0623a0b/roas_3x-1.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/790gd4F1LviExZpxP0HAFk/f1430645a7c769788129fb47c3b9dca6/roas_3x-1.png" alt="" class="kg-image" width="1471" height="1032" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tQYkBINEbYbCSl7cM5Jvw/f88eb58d8901419a84668dc956d87702/routing-rpki-2-01.png" alt="" class="kg-image" width="2000" height="2168" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tQYkBINEbYbCSl7cM5Jvw/568c706d6256d0f44740aecb28297cd6/routing-rpki-2-01.png" alt="" class="kg-image" width="2000" height="2168" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -75,7 +75,7 @@
 	<p>Major vendors support a protocol called <a href="https://tools.ietf.org/html/rfc6810">RPKI to Router Protocol</a> (abbreviated as RTR). This is a simple protocol for passing a list of valid prefixes with their origin ASN and expected mask length. However, while the RFC defines 4 different secure transport methods, vendors have only implemented the insecure one. Routes sent in clear text over TCP can be tampered with.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ahyNsczbXfzaYtuvvbJ6g/db579c4c268e34f83121a732b91737f4/RPKI-diagram-_3x-2.png" alt="" class="kg-image" width="2000" height="1043" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ahyNsczbXfzaYtuvvbJ6g/2bf47a4a24b03da433a29a456725cce3/RPKI-diagram-_3x-2.png" alt="" class="kg-image" width="2000" height="1043" loading="lazy">
 
 	</figure>
 	<p>With more than 150 routers over the globe, it would be unsafe to rely on these cleartext TCP sessions over the insecure and lossy Internet to our validator. We needed local distribution on a link we know secure and reliable.</p>
@@ -85,7 +85,7 @@
 	<p>Rolling out this system on all our PoPs using automation was straightforward and we are progressively moving towards enforcing strict validation of RPKI signed routes everywhere.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ztRweRuwqRgBnTauHI0P9/d2527a1324789789a043141044344932/gortr-2-01.png" alt="" class="kg-image" width="2000" height="1382" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ztRweRuwqRgBnTauHI0P9/215d2f4b6ee60a54a26956d55e3f3839/gortr-2-01.png" alt="" class="kg-image" width="2000" height="1382" loading="lazy">
 
 	</figure>
 	<p>To encourage adoption of Route Origin Validation on the Internet, we also want to provide this service to everyone, for free. You can already download our <a href="https://github.com/cloudflare/gortr">RTR server</a> with the cache behind Cloudflare. Just configure your <a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-origin-as-validation.html">Juniper</a> or <a href="https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k_r6-1/routing/configuration/guide/b-routing-cg-asr9k-61x/b-routing-cg-asr9k-61x_chapter_010.html#concept_A84818AD41744DFFBD094DA7FCD7FE8B">Cisco</a> router. And if you do not want to use our file of prefixes, it is compatible with the RIPE RPKI Validator Export format.</p>
@@ -128,7 +128,7 @@
 	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on our announcements.</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1H1JDnSWx28sdAjdF3sd0Z/4c960131f9692adc4d1a5b10ba1438a4/CRYPTO-WEEK-banner_2x.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1H1JDnSWx28sdAjdF3sd0Z/b5425cf515b60c2c3a9be6b2420d8a3b/CRYPTO-WEEK-banner_2x.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
 
 	</figure>
 </div>

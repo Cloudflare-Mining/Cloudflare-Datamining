@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14eN6Iq0kTwdnVs7haN1bk/a8abbdcc6aa421c5cac22cb7b3fb5b56/image4-2.png" alt="Oxy is Cloudflare’s morphing next generation proxy framework" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14eN6Iq0kTwdnVs7haN1bk/a810aab7066ab6f239f9f098063c75f8/image4-2.png" alt="Oxy is Cloudflare’s morphing next generation proxy framework" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>In this blog post, we are proud to introduce Oxy - our modern proxy framework, developed using the Rust programming language. Oxy is a foundation of several Cloudflare projects, including the <a href="https://www.cloudflare.com/products/zero-trust/gateway">Zero Trust Gateway</a>, the iCloud Private Relay <a href="https://blog.cloudflare.com/icloud-private-relay">second hop proxy</a>, and the internal <a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore">egress routing service</a>.</p>
@@ -21,7 +21,7 @@
 	<p>This design is in line with our belief in an iterative approach to development, where a basic solution is built first and then gradually improved over time. With Oxy, you can start with a basic solution that can be deployed to our servers and then add additional features as needed, taking advantage of the many extensibility points offered by Oxy. In fact, you can avoid writing any code, besides a few lines of bootstrap boilerplate and get a production-ready server with a wide variety of startup configuration options and traffic flow scenarios.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nk7Ri6viC85BdWoRSiB9v/f7827c5cde69ae75c589a6c9065bbfd7/image3-2.png" alt="High-level Oxy architecture" class="kg-image" width="1999" height="1478" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nk7Ri6viC85BdWoRSiB9v/f40a9971fdad71cb07ee0b3aebf99fd9/image3-2.png" alt="High-level Oxy architecture" class="kg-image" width="1999" height="1478" loading="lazy">
 
 	</figure>
 	<p><i>High-level Oxy architecture</i></p>
@@ -55,7 +55,7 @@
 	<p>The application can even go further and ask Oxy to sniff UDP packets and check if they contain <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3 traffic</a>. In this case, Oxy can upgrade the UDP traffic to HTTP and handle HTTP/3 requests that were originally received as raw IP packets. This allows for the simultaneous processing of traffic at all three layers (L3, L4, L7), enabling applications to analyze, filter, and manipulate the traffic flow from multiple perspectives. This provides a robust toolset for developing advanced traffic processing applications.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tVlLbQeNVeN2lYN9ovJNH/23c92059e1266ed4d27c4d7a10d1d8b2/image1-1.png" alt="Multi-layer traffic processing in Oxy applications" class="kg-image" width="1999" height="817" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tVlLbQeNVeN2lYN9ovJNH/d87cc5adb53ff0fc441530520540f781/image1-1.png" alt="Multi-layer traffic processing in Oxy applications" class="kg-image" width="1999" height="817" loading="lazy">
 
 	</figure>
 	<p><i>Multi-layer traffic processing in Oxy applications</i></p>
@@ -83,7 +83,7 @@
 	<p>In addition to its multi-layer traffic processing capabilities, Oxy also supports advanced HTTP tunneling methods, such as <a href="https://datatracker.ietf.org/doc/html/rfc9298">CONNECT-UDP</a> and <a href="https://datatracker.ietf.org/doc/draft-ietf-masque-connect-ip">CONNECT-IP</a>, using the latest extensions to HTTP 3 and 2 protocols. It can even process HTTP CONNECT request payloads on layer 4 and recursively process the payload as HTTP if the encapsulated traffic is HTTP.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4a80AwmzUmUyxx7q8j2hcK/b9b43eb435ccbce7e665a54649fc4b90/image2-2.png" alt="Recursive processing of HTTP CONNECT body payload in HTTP pipeline" class="kg-image" width="1999" height="685" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4a80AwmzUmUyxx7q8j2hcK/c2bcd1903e037852e57186510f6bac58/image2-2.png" alt="Recursive processing of HTTP CONNECT body payload in HTTP pipeline" class="kg-image" width="1999" height="685" loading="lazy">
 
 	</figure>
 	<p><i>Recursive processing of HTTP CONNECT body payload in HTTP pipeline</i></p>

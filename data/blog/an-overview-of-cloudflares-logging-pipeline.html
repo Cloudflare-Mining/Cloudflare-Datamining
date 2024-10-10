@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RAzgHKo8kAWdyDF7VzU8x/71f3661c2e8a1bf31751f1107bc07002/image3-2.png" alt="An overview of Cloudflare's logging pipeline" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RAzgHKo8kAWdyDF7VzU8x/439a1b8f94496de7bca6bab7917136cb/image3-2.png" alt="An overview of Cloudflare's logging pipeline" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>One of the roles of Cloudflare's Observability Platform team is managing the operation, improvement, and maintenance of our internal logging pipelines. These pipelines are used to ship debugging logs from every service across Cloudflare’s infrastructure into a centralised location, allowing our engineers to operate and debug their services in near real time. In this post, we’re going to go over what that looks like, how we achieve high availability, and how we meet our Service Level Objectives (SLOs) while shipping close to a million log lines per second.</p>
@@ -42,7 +42,7 @@
 	<p>The next problem we encounter is that we have many <a href="https://www.cloudflare.com/learning/cdn/glossary/data-center">data centers</a> all around the world, which at any time due to changing Internet conditions may become disconnected from one, or both core data centers. If the data center is disconnected for long enough we may end up in a situation where we drop logs to either the log-a or log-b receivers. This would result in an incomplete view of logs from one data center and is unacceptable; Log-x was designed to alleviate this problem. In the event that syslog-ng fails to send logs to either log-a or log-b, it will actually send the log <i>twice</i> to the available receiver. This second copy will be marked as actually destined for the other log-x receiver. When a log-x receiver receives such a log, it will insert it into a <i>different</i> Kafka queue, known as the Dead Letter Queue (DLQ). We then use <a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330">Kafka Mirror Maker</a> to sync this DLQ across to the data center that was inaccessible. With this logic log-x allows us to maintain a full copy of all the logs in each core data center, regardless of any transient failures from any of our data centers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PLoVSIH48LYsFxCwUK9vf/9b6bf6ea71a1a940780694f5363dde16/Blog-1945_Kafka.png" alt="" class="kg-image" width="2541" height="2025" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PLoVSIH48LYsFxCwUK9vf/85598f497674f9509fced29decaf7e58/Blog-1945_Kafka.png" alt="" class="kg-image" width="2541" height="2025" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -68,7 +68,7 @@
 	<p>On the Clickhouse side, we operate a ten node Clickhouse cluster that stores our service logs. We are in the process of migrating this to be our primary storage, but at the moment it provides an alternative interface into the same logs that ElasticSearch provides, allowing our Engineers to use either Lucene through the ELK stack, or SQL and Bash scripts through the Clickhouse interface.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iTClO1Axdg7wI0UVLK0oL/cbade8e715611a96ca7bce25420b0c34/Blog-1945_What-s-next_.png" alt="" class="kg-image" width="2541" height="1803" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iTClO1Axdg7wI0UVLK0oL/13e1a46890d207290f8ee0a230af6e03/Blog-1945_What-s-next_.png" alt="" class="kg-image" width="2541" height="1803" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

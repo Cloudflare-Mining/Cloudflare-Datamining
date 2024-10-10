@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5I2uG3bDDa0Sg8sGgP1uS8/81fbaf02f633a7b86c7926f953e98b6f/image2-19.png" alt="Magic NAT: everywhere, unbounded, and lower cost" class="kg-image" width="1812" height="1008" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5I2uG3bDDa0Sg8sGgP1uS8/76ab383022e8706b6bb4906682c1dc1b/image2-19.png" alt="Magic NAT: everywhere, unbounded, and lower cost" class="kg-image" width="1812" height="1008" loading="lazy">
 
 	</figure>
 	<p>Network Address Translation (NAT) is one of the most common and versatile network functions, used by everything from your home router to the largest ISPs. Today, we’re delighted to introduce a new approach to NAT that solves the problems of traditional hardware and virtual solutions. Magic NAT is free from capacity constraints, available everywhere through our global Anycast architecture, and operates across any network (physical or cloud). For Internet connectivity providers, Magic NAT for Carriers operates across high volumes of traffic, removing the complexity and cost associated with NATing thousands or millions of connections.</p>
@@ -27,7 +27,7 @@
 	<p>Resources within private subnets often need to reach out to the public Internet. The most common example of this is connectivity from your laptop, which might be allocated a private address like 192.168.0.1, reaching out to a public resource like google.com. In order for Google to respond to a request from your laptop, the source IP of your request needs to be publicly routable on the Internet. To accomplish this, your ISP <i>translates</i> the private source IP in your request to a public IP (and reverse-translates for the responses back to you). This use case is often referred to as public NAT, performed by hardware or software acting as a “NAT gateway.”</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2c5BlXgYO4KygMXBbxo7Kw/495019182ef2292b5a9eea770bec60fe/image1-28.png" alt="Public NAT translates private IP addresses to public ones so that traffic from within private networks can access the Internet." class="kg-image" width="1107" height="494" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2c5BlXgYO4KygMXBbxo7Kw/f00fdf9e80a11c8924d46e5f20e64380/image1-28.png" alt="Public NAT translates private IP addresses to public ones so that traffic from within private networks can access the Internet." class="kg-image" width="1107" height="494" loading="lazy">
 
 	</figure>
 	<p><i>Public NAT translates private IP addresses to public ones so that traffic from within private networks can access the Internet.</i></p>
@@ -43,7 +43,7 @@
 	<p>NATs are also used for routing traffic within fully private networks, in order to enable communication between resources with overlapping IP space. One example: imagine that you’re an IT architect at a retail company with a hundred geographically distributed store locations and a central data center. To make your life easier, you want to use the same IP address management scheme for all of your stores - e.g. host all of your printers on 10.0.1.0/24, point of sale devices on 10.0.2.0/24, and security cameras on 10.0.3.0/24. These devices need to reach out to resources hosted in your data center, which is also on your private network. The challenge: if multiple devices across your stores have the same source IP, how do return packets from your data center get back to the right device? This is where private NAT comes in.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HCPpCpvedR5uQatgJl2YE/d8c8d1de05b76e5cb52dbf39378334ac/image3-16.png" alt="Private NAT translates IPs into a different private range so that devices with overlapping IP space can communicate with each other." class="kg-image" width="1163" height="497" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HCPpCpvedR5uQatgJl2YE/16db8f85aac1ea0f3d5b795c37ca3d35/image3-16.png" alt="Private NAT translates IPs into a different private range so that devices with overlapping IP space can communicate with each other." class="kg-image" width="1163" height="497" loading="lazy">
 
 	</figure>
 	<p><i>Private NAT translates IPs into a different private range so that devices with overlapping IP space can communicate with each other.</i></p>
@@ -59,7 +59,7 @@
 	<p><a href="https://en.wikipedia.org/wiki/IPv4_address_exhaustion#:~:text=On%2025%20November%202019%2C%20RIPE,run%20out%20of%20IPv4%20addresses.%22">As of 2019</a>, the available pool of allocatable IPv4 space has been exhausted, making addresses a limited resource. In order to conserve their IPv4 space while the industry <a href="https://radar.cloudflare.com/notebooks/ipv6-adoption-2022">slowly transitions to IPv6</a>, ISPs have adopted carrier-grade NAT solutions to map multiple users to a single IP, maximizing the mileage of the space they have available. This uses the same mechanisms for address translation we’ve already described, but at a large scale - ISPs need to deploy devices that can handle thousands or millions of concurrent connections without impacting traffic performance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aDQgZ0q1V0dRjmMi4OgnQ/37ac0c64a86499b5ef87884688c9119f/image4-11.png" alt="" class="kg-image" width="1163" height="649" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aDQgZ0q1V0dRjmMi4OgnQ/9c613bded60b0a5bc9c28b381bb9e6e0/image4-11.png" alt="" class="kg-image" width="1163" height="649" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -143,7 +143,7 @@
 	<p>Address translation between IP versions will also be supported, including <i>4to6</i> and <i>6to4</i> NAT capabilities to ensure backwards and forwards compatibility when clients or servers are only reachable via IPv4 or IPv6.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32wDFBTCpPkzsQJDt3OUMB/f493344a17fc730499d0e222cb785fe1/image5-6.png" alt="" class="kg-image" width="1295" height="695" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32wDFBTCpPkzsQJDt3OUMB/dd50654442eba5baa2018ea3ebc6bcd7/image5-6.png" alt="" class="kg-image" width="1295" height="695" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

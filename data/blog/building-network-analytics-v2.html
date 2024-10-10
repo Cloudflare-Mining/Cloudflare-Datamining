@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yHBkNerL4n6kD1cKOmt6R/3decf313d4c2a4060988fc8d8268c371/2-1.png" alt="How we built Network Analytics v2" class="kg-image" width="1201" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yHBkNerL4n6kD1cKOmt6R/26064936da965ce1b57f00aa2d7ff1cb/2-1.png" alt="How we built Network Analytics v2" class="kg-image" width="1201" height="676" loading="lazy">
 
 	</figure>
 	<p>Network Analytics v2 is a fundamental redesign of the backend systems that provide real-time visibility into network layer traffic patterns for Magic Transit and Spectrum customers. In this blog post, we'll dive into the technical details behind this redesign and discuss some of the more interesting aspects of the new system.</p>
@@ -31,19 +31,19 @@
 	<p>In the world of on-premise networks, packets typically chain through a series of appliances that each serve their own special purposes. For example, a packet may first pass through a <a href="https://www.cloudflare.com/learning/security/what-is-a-firewall">firewall</a>, then through a <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-router">router</a>, and then through a <a href="https://www.cloudflare.com/learning/performance/what-is-load-balancing">load balancer</a>, before finally reaching the intended destination. The links in this chain can be thought of as independent “network functions”, each with some well-defined inputs and outputs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HyIOEHYGQf20hkRAM0B2y/4ebff5015d023304e01a69baa965ec33/image7-2.png" alt="" class="kg-image" width="1999" height="663" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HyIOEHYGQf20hkRAM0B2y/cc34040ee4362e20853384b0d869ac5e/image7-2.png" alt="" class="kg-image" width="1999" height="663" loading="lazy">
 
 	</figure>
 	<p>A key insight for us was that, if you squint a little, Cloudflare’s software architecture looks very similar to this. Each server receives packets and chains them through a series of independent and specialized software components that handle things like <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">DDoS mitigation</a>, firewalling, reverse proxying, etc.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jhl2sFYblJceu7YOQXsSx/d35c1ab835cdeff4e4a34a7e72a30d42/download-5.png" alt="" class="kg-image" width="1600" height="523" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jhl2sFYblJceu7YOQXsSx/4442688ca74f5524350dafa508c6f84a/download-5.png" alt="" class="kg-image" width="1600" height="523" loading="lazy">
 
 	</figure>
 	<p>After noticing this similarity, we decided to explore how people with traditional networks monitor them. Universally, the answer is either Netflow or sFlow.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QlEGf7TwMBALc5DiS8kgt/791b06fed373d9deba30ded1a73949a0/image6-3.png" alt="" class="kg-image" width="1999" height="1109" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QlEGf7TwMBALc5DiS8kgt/1545c0c2b22e50f315701e4276a02950/image6-3.png" alt="" class="kg-image" width="1999" height="1109" loading="lazy">
 
 	</figure>
 	<p>Nearly all on-premise hardware appliances can be configured to send a stream of Netflow or sFlow samples to a centralized flow collector. Traditional network operators tend to take these samples at many different points in the network, in order to monitor each device independently. This was different from our approach, which was to take packet samples only once, as soon as they entered the network and before performing any processing on them.</p>
@@ -51,7 +51,7 @@
 	<p>The more we thought about what kind of features and flexibility we wanted in an analytics system, the more we began to appreciate the elegance of traditional network monitoring. We realized that we could take advantage of the similarities between Cloudflare’s software architecture and “network functions” by having each software component emit its own packet samples with its own context-specific metadata attached.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LbuFoHv5I8iEtdjAT8vsO/29aca0b538ccce249688efb04ea9d5c7/image4-3.png" alt="" class="kg-image" width="1999" height="1096" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LbuFoHv5I8iEtdjAT8vsO/0ef699c0b2fdf46e164466bff52dc6b6/image4-3.png" alt="" class="kg-image" width="1999" height="1096" loading="lazy">
 
 	</figure>
 	<p>Even though it seemed counterintuitive for our software to emit multiple streams of packet samples this way, we realized through taking inspiration from traditional network monitoring that doing so was exactly how we could build the extensible and future-proof observability that we needed.</p>
@@ -67,7 +67,7 @@
 	<p>The samplerd pipeline is relatively small and straightforward. It implements a few different interfaces that other software can use to send it metadata-rich packet samples. It then normalizes these samples and forwards them for postprocessing and insertion into a ClickHouse database.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BiF7lS637ltCiPwwkoDSY/aaeac6a2403a8bb2f1e8a2e61a089013/image8-6.png" alt="" class="kg-image" width="1999" height="674" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BiF7lS637ltCiPwwkoDSY/6ce31e547b9ec6228c018a3c28d722c0/image8-6.png" alt="" class="kg-image" width="1999" height="674" loading="lazy">
 
 	</figure>
 	<p>The other, larger piece of work was to modify existing Cloudflare systems and make them send packet samples to samplerd. The rest of this post will cover a few interesting technical challenges that we had to overcome to adapt these systems to work with samplerd.</p>
@@ -83,7 +83,7 @@
 	<p>Before introducing samplerd, these XDP programs were organized like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kBT1fUkelAG0gwADmoZvu/c487bab0ab1eb3dbd6c2288989118392/download-4.png" alt="" class="kg-image" width="1600" height="593" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kBT1fUkelAG0gwADmoZvu/61bbd689d9856742f9db4c936125b8e7/download-4.png" alt="" class="kg-image" width="1600" height="593" loading="lazy">
 
 	</figure>
 	<p>An incoming packet goes through a sampler that will emit a packet sample for some packets. It then enters l4drop, a set of programs that will decide the fate of a particular packet. Finally, L4LB is in charge of layer 4 load balancing.</p>
@@ -96,7 +96,7 @@
 	<p>Given how tightly the sampler is now coupled with the rest of l4drop, it’s not a standalone part of xdpd anymore and the final result looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PhssbefKXY78fC6fHZxCb/5c2c7979456d4d25e8a319109da86450/download--1--2.png" alt="" class="kg-image" width="1600" height="609" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PhssbefKXY78fC6fHZxCb/cc9e2d23b32a220eea53c5e248a732b8/download--1--2.png" alt="" class="kg-image" width="1600" height="609" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ph397oCX2vpDy4d6PIVCP/bf23f37b0396f99d2c83a706d4e22fc7/making-the-waf-40-faster.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ph397oCX2vpDy4d6PIVCP/b194243293310362b36ad01c91d15211/making-the-waf-40-faster.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare’s <a href="https://www.cloudflare.com/waf">Web Application Firewall (WAF)</a> protects against malicious attacks aiming to exploit vulnerabilities in web applications. It is continuously updated to provide comprehensive coverage against the most recent threats while ensuring a low false positive rate.</p>
 	<p>As with all <a href="https://www.cloudflare.com/security">Cloudflare security products</a>, the WAF is designed to not sacrifice performance for security, but there is always room for improvement.</p>
@@ -66,7 +66,7 @@ rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
 	<p>Some of these functions are expensive and caching the result does lead to significant savings. To give a sense of magnitude, one of the rules we modified to ensure memoization took place saw its execution time reduced by about 95%:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kud0Xv668ZFip72geJ3h6/38ca65c94cf6843e65d7b59ffe020aac/rule.png" alt="" class="kg-image" width="1400" height="804" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kud0Xv668ZFip72geJ3h6/8cdc6f4a5c49664df89a2e33434c6147/rule.png" alt="" class="kg-image" width="1400" height="804" loading="lazy">
 
 	</figure>
 	<p>Execution time per rule</p>
@@ -83,7 +83,7 @@ rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
 	<p>To improve this, we first looked into the rules taking the most <a href="https://en.wikipedia.org/wiki/Elapsed_real_time">wall-clock time</a> to execute using some of our performance metrics:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ahB7tm8BWAjy3zyN8S1ZY/8ae9a7471aa2369df258597aeb1b91cb/execution-time.png" alt="" class="kg-image" width="1166" height="528" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ahB7tm8BWAjy3zyN8S1ZY/03369f203293f3ea39fa51b6d87088c8/execution-time.png" alt="" class="kg-image" width="1166" height="528" loading="lazy">
 
 	</figure>
 	<p>Execution time per rule</p>
@@ -117,7 +117,7 @@ Candidates:
 	<p>Most importantly, we also observed a sharp decrease of <b>40%</b> in the average time the WAF takes to process and analyze an HTTP request at the Cloudflare edge.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cNxDlf2ad0Ns8yp8OLPLP/62ce6079a0dcdfe0fa5cd6b5d4cd0857/results.png" alt="" class="kg-image" width="1395" height="722" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cNxDlf2ad0Ns8yp8OLPLP/8b8d2d7953210ba57e0df12991b8a444/results.png" alt="" class="kg-image" width="1395" height="722" loading="lazy">
 
 	</figure>
 	<p>WAF Request Processing - Time Average</p>

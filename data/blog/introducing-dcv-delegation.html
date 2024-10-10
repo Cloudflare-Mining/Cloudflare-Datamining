@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uBbobHazhgQxau1zJ8mG2/1fc211628becf562098fac54f2b48c5d/image1-45.png" alt="Out now! Auto-renew TLS certificates with DCV Delegation" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uBbobHazhgQxau1zJ8mG2/e7aacc8bebf5790cf101969657b9b972/image1-45.png" alt="Out now! Auto-renew TLS certificates with DCV Delegation" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>To get a TLS certificate issued, the requesting party must prove that they own the domain through a process called Domain Control Validation (DCV). As industry wide standards have evolved to enhance security measures, this process has become manual for Cloudflare customers that manage their DNS externally. Today, we’re excited to announce DCV Delegation — a feature that gives all customers the ability offload the DCV process to Cloudflare, so that all certificates can be auto-renewed without the management overhead.</p>
@@ -19,7 +19,7 @@
 	<p>Before we dive into how DCV Delegation works, let's talk about it. DCV is the process of verifying that the party requesting a certificate owns or controls the domain for which they are requesting a certificate.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5L3DANFKTaTScKScK8hdsA/5fa74cf3d25b6750231d07eb5ac5a273/image4-18.png" alt="" class="kg-image" width="1999" height="1708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5L3DANFKTaTScKScK8hdsA/c406eda2b34d4e8aa06e9c1892d7acdc/image4-18.png" alt="" class="kg-image" width="1999" height="1708" loading="lazy">
 
 	</figure>
 	<p>When a subscriber requests a certificate from a CA, the CA returns validation tokens that the domain owner needs to place. The token can be an HTTP file that the domain owner needs to serve from a specific endpoint or it can be a DNS TXT record that they can place at their Authoritative DNS provider. Once the tokens are placed, ownership has been proved, and the CA can proceed with the certificate issuance.</p>
@@ -65,7 +65,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qoJcTgOrzUqy8EdRg89TF/2eb341b0503061652eaa7b05c08b4887/image3-30.png" alt="" class="kg-image" width="1999" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qoJcTgOrzUqy8EdRg89TF/aa8c224880919cab69b226552c94e6c3/image3-30.png" alt="" class="kg-image" width="1999" height="900" loading="lazy">
 
 	</figure>
 	<p>For years, Cloudflare has been managing TLS certificates for 10s of millions of domains. One of the reasons customers choose to manage their TLS certificates with Cloudflare is that we keep up with all the changes in standards, so you don’t have to.</p>
@@ -102,13 +102,13 @@
 	<p>DCV Delegation for Partial Zones:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3SApOCdK4niR4kkXWci8nb/98dcccab1ca5174b07b964fba56ecd4a/pasted-image-0-12.png" alt="" class="kg-image" width="1600" height="437" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3SApOCdK4niR4kkXWci8nb/586abd158ebc79c1da6ffab7ae2d9ffa/pasted-image-0-12.png" alt="" class="kg-image" width="1600" height="437" loading="lazy">
 
 	</figure>
 	<p>DCV Delegation for Custom Hostnames:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JmwTdJCJkKecERcxhoe2T/600f9685adfe4eaf2d7affa7f9551553/pasted-image-0--1--10.png" alt="" class="kg-image" width="1600" height="434" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JmwTdJCJkKecERcxhoe2T/899f8f9fce371e9eb8f5d3893608f132/pasted-image-0--1--10.png" alt="" class="kg-image" width="1600" height="434" loading="lazy">
 
 	</figure>
 	<p>The UUID in the CNAME target is a unique identifier. Each partial domain will have its own UUID that corresponds to all of the DCV delegation records created under that domain. Similarly, each SaaS zone will have one UUID that all custom hostnames under that domain will use. Keep in mind that if the same domain is moved to another account, the UUID value will change and the corresponding DCV delegation records will need to be updated.</p>

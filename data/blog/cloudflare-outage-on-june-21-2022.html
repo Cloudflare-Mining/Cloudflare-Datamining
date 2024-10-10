@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LzOzlg7mmUmt62U2SepS2/85c38ac42125c8a73f962a873e21cb5d/BLOG-1226-Global-Latency-1.png" alt="Cloudflare outage on June 21, 2022" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LzOzlg7mmUmt62U2SepS2/7d09343a7115e0eb064b482a6dc3df14/BLOG-1226-Global-Latency-1.png" alt="Cloudflare outage on June 21, 2022" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -29,7 +29,7 @@
 	<p>A critical part of this new architecture, which is designed as a <a href="https://en.wikipedia.org/wiki/Clos_network">Clos network</a>, is an added layer of routing that creates a mesh of connections. This mesh allows us to easily disable and enable parts of the internal network in a data center for maintenance or to deal with a problem. This layer is represented by the spines in the following diagram.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wHXMwydO0BJOwgL8myKrl/61ff5905fd286749c968168712cb5823/image2-27.png" alt="" class="kg-image" width="1071" height="1260" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3wHXMwydO0BJOwgL8myKrl/4c603771d020ef604f23bcbfd9b44649/image2-27.png" alt="" class="kg-image" width="1071" height="1260" loading="lazy">
 
 	</figure>
 	<p>This new architecture has provided us with significant reliability improvements, as well as allowing us to run maintenance in these locations without disrupting customer traffic. As these locations also carry a significant proportion of the Cloudflare traffic, any problem here can have a very wide impact, and unfortunately, that’s what happened today.</p>
@@ -45,7 +45,7 @@
 	<p>These policies have individual components, which are evaluated sequentially. The end result is that any given prefixes will either be advertised or not advertised. A change in policy can mean a previously advertised prefix is no longer advertised, known as being "withdrawn", and those IP addresses will no longer be reachable on the Internet.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oS7n2Z7dAA9LNGAsz23rf/8ffaef7981ae194c612d535d938f1436/image1-27.png" alt="" class="kg-image" width="1048" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oS7n2Z7dAA9LNGAsz23rf/b7e176a7985fbebef456f7fad251de24/image1-27.png" alt="" class="kg-image" width="1048" height="1013" loading="lazy">
 
 	</figure>
 	<p>While deploying a change to our prefix advertisement policies, a re-ordering of terms caused us to withdraw a critical subset of prefixes.</p>
@@ -54,13 +54,13 @@
 	<p>The criticality of these data centers can clearly be seen in the volume of successful HTTP requests we handled globally:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bgGYgoUmRFFbay19ThYit/b802ad70777a82e63f6309ea7c81d942/image3-19.png" alt="" class="kg-image" width="1999" height="1179" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bgGYgoUmRFFbay19ThYit/74168099ecf004a6dc1bbda9aa81919f/image3-19.png" alt="" class="kg-image" width="1999" height="1179" loading="lazy">
 
 	</figure>
 	<p>Even though these locations are only 4% of our total network, the outage impacted 50% of total requests. The same can be seen in our egress bandwidth:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gWQTaPkyGxypCw4LBdZML/0cd0849c92627c3ec030b29abc4d4f46/image6-11.png" alt="" class="kg-image" width="1999" height="1182" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gWQTaPkyGxypCw4LBdZML/df1e2bbe7ca4a06f5746f7be42700c37/image6-11.png" alt="" class="kg-image" width="1999" height="1182" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -131,7 +131,7 @@ community delete NO-EXPORT { ... }
 	<p>On top of the inability to contact origins, the removal of these site-local prefixes also caused our internal load balancing system Multimog (a variation of our <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog load-balancer</a>) to stop working, as it could no longer forward requests between the servers in our MCPs. This meant that our smaller compute clusters in an MCP received the same amount of traffic as our largest clusters, causing the smaller ones to overload.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jBcPxvumdeOx5Ffojnwuw/d1caaa01185ec49893168c81b8c8557d/image4-15.png" alt="" class="kg-image" width="1999" height="1180" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jBcPxvumdeOx5Ffojnwuw/d34adc458e95b357c521733a933d73bf/image4-15.png" alt="" class="kg-image" width="1999" height="1180" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

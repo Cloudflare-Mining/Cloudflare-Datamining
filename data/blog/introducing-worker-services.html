@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JgxwN8ogWhTVIkezjkPDL/9b2f3eb4508c8f7a51b18353d7fdaf24/unnamed-14.png" alt="Introducing Services: Build Composable, Distributed Applications on Cloudflare Workers" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JgxwN8ogWhTVIkezjkPDL/b7a83e3fd18b82b629f5d2ed2a07556b/unnamed-14.png" alt="Introducing Services: Build Composable, Distributed Applications on Cloudflare Workers" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>First, there was the Worker script. It was simple, yet elegant. With just a few lines of code, you could rewrite an HTTP request, append a header, or make a quick fix to your website.</p>
@@ -43,7 +43,7 @@
 	<p>Every change to a service is versioned and audited. Mistakes do happen, but when they do, it’s important to be able to quickly roll back, then have the tools to answer the age-old question: “who changed what, when?”</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AJHfT2PjwB7j3BIP0ouSU/aa682fd1f7385ed631afa35ec515a8c2/unnamed--1--6.png" alt="Each environment has a version history." class="kg-image" width="1600" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AJHfT2PjwB7j3BIP0ouSU/b33181ce481ad9acd6f7c1a34302117b/unnamed--1--6.png" alt="Each environment has a version history." class="kg-image" width="1600" height="406" loading="lazy">
 
 	</figure>
 	<p>Each environment in a service has its own version history. Every time there is a code change or an environment variable is updated, the version number of that environment is incremented. You can also append additional metadata to each version, like a git commit or a deployment tag.</p>
@@ -58,7 +58,7 @@
 	<p>Services are composable, allowing one service to talk to another service. To support this, we’re introducing a new API to facilitate service-to-service communication: service bindings.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eealXyrW68mNRRRR6reuQ/48219fc8b350f43db01153b7693b568e/image2-10.png" alt="Service bindings open up a world of composability" class="kg-image" width="1676" height="358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eealXyrW68mNRRRR6reuQ/238fa89f310c0a70ca66c9bd0194b79d/image2-10.png" alt="Service bindings open up a world of composability" class="kg-image" width="1676" height="358" loading="lazy">
 
 	</figure>
 	<p>A service binding allows you to send HTTP requests to another service, without those requests going over the Internet. That means you can invoke other Workers directly from your code! Service bindings open up a new world of composability. In the example below, requests are validated by an authentication service.</p>
@@ -74,7 +74,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nJXwQ6IMSgEPtnhP95yRn/6f449e61eeeaa707ddd5a4e167189b85/image1-25.png" alt="Service Bindings allow for separation of concerns" class="kg-image" width="1260" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nJXwQ6IMSgEPtnhP95yRn/ec33050f570daaf8dcf18d491ceecee7/image1-25.png" alt="Service Bindings allow for separation of concerns" class="kg-image" width="1260" height="500" loading="lazy">
 
 	</figure>
 	<p>Service bindings use the standard <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch">fetch</a> API, so you can continue to use your existing utilities and libraries. You can also change the environment of a service binding, so you can test a new version of a service. In the next example, 1% of requests are routed to a “canary” deployment of a service. If a request to the canary fails, it’s sent to the production deployment for another chance.</p>
@@ -95,7 +95,7 @@
 	<p>While the interface among services is HTTP, the networking is not. In fact, there is no networking! Unlike the typical “microservice architecture,” where services communicate over a network and can suffer from latency or interruption, service bindings are a zero-cost abstraction. When you deploy a service, we build a dependency graph of its service bindings, then package all of those services into a single deployment. When one service invokes another, there is no network delay; the request is executed immediately.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68l5AHIonTqDD9fpXLJQKh/9599677c852124e0c5ca0d2a2fbdce93/image3-18.png" alt="Classic service-oriented architecture; versus service bindings" class="kg-image" width="1532" height="578" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68l5AHIonTqDD9fpXLJQKh/fdf129dd6695975cd3073e00ed73ca07/image3-18.png" alt="Classic service-oriented architecture; versus service bindings" class="kg-image" width="1532" height="578" loading="lazy">
 
 	</figure>
 	<p>This zero-cost model enables teams to share and reuse code within their organizations, without sacrificing latency or performance. Forget the days of convoluted YAML templates or exponential back off to orchestrate services — just write code, and we’ll stitch it all together.</p>
@@ -120,7 +120,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hteH8Qu4zVjXKVWv9Q5PT/076421a9d55f1c0420ae2fde2f0514cc/Lego.png" alt="" class="kg-image" width="1200" height="385" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hteH8Qu4zVjXKVWv9Q5PT/79b3ce57bfd3e619b8085733d6cfb4a9/Lego.png" alt="" class="kg-image" width="1200" height="385" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

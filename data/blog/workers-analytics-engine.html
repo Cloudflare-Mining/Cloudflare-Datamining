@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zlbELn1LCl8vl8ySLZB1Q/b908077c20dbe32bea30e7fdc52ce2b7/image2-18.png" alt="Introducing Workers Analytics Engine" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zlbELn1LCl8vl8ySLZB1Q/b06d808bc030f0e8dfc2e2118bda6637/image2-18.png" alt="Introducing Workers Analytics Engine" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today we’re excited to introduce Workers Analytics Engine, a new way to get telemetry about anything using Cloudflare Workers. Workers Analytics Engine provides time series analytics built for the serverless era.</p>
@@ -94,7 +94,7 @@ LIMIT 10</code></pre>
 	<p>Workers Analytics Engine is optimized for powering <i>time series</i> analytics that can be visualized using tools like Grafana. Every event written from the runtime is automatically populated with a <code>timestamp</code> field. This makes it incredibly easy to make time series charts in Grafana:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iEBcfjVdFME7W2G313LEL/6a3f2253dce511e4bf2cd1a3f1979f58/image1-27.png" alt="" class="kg-image" width="1161" height="970" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6iEBcfjVdFME7W2G313LEL/f38a3c2aca1e48fe675c68f5b4b0c0d8/image1-27.png" alt="" class="kg-image" width="1161" height="970" loading="lazy">
 
 	</figure>
 	<p>The macro <code>$timeSeries</code> simply expands to <code>intDiv(toUInt32(timestamp), 60) * 60 * 1000</code> — i.e. the timestamp rounded to the nearest minute (as defined in our \$step parameter) &nbsp;and converted into milliseconds. Grafana also provides \$timeFilter which can be changed at the grafana dashboard level. We could easily add another series here by just “grouping” on another field like “city”.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/586i1nldE4rjsAQeNqfyEf/c2c6b04da085a25a1d53f5eb869e9667/lessons-learned-from-scaling-up-cloudflare-anomaly-detection-platform.png" alt="">
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/586i1nldE4rjsAQeNqfyEf/7d94a5fe051266bfd172c402c5513f17/lessons-learned-from-scaling-up-cloudflare-anomaly-detection-platform.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="introduction-to-anomaly-detection-for-bot-management">Introduction to Anomaly Detection for Bot Management</h3>
@@ -44,7 +44,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17JKOorPN2YNRAHZAJxFd2/54d6832da620dcba3caec15a70a7a314/image1-13.png" alt="" class="kg-image" width="989" height="341" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17JKOorPN2YNRAHZAJxFd2/53fae073ecb2cf4dd98e5a8b6308d1dc/image1-13.png" alt="" class="kg-image" width="989" height="341" loading="lazy">
 
 	</figure>
 	<p>The Anomaly Detection platform consists of a series of microservices running on <a href="https://kubernetes.io">Kubernetes</a>. Request data come in through a dedicated Kafka topic and are inserted to both ClickHouse and Redis.</p>
@@ -64,7 +64,7 @@
 	<p>In an earlier incarnation, most of the core Anomaly Detection logic was contained in a single (replicated) service running under Kubernetes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nZtBtQAWGXjQBbez5abWH/055a7227b82e906c19c4062d30c3cbcc/image2-7.png" alt="" class="kg-image" width="523" height="310" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nZtBtQAWGXjQBbez5abWH/fa6c555c497ae2b349b43961c1852522/image2-7.png" alt="" class="kg-image" width="523" height="310" loading="lazy">
 
 	</figure>
 	<p>Each service pod fulfilled multiple responsibilities: generating behavioral baselines from ClickHouse data, aggregating visitor profiles from Redis, and calculating outlier scores. These outlier detections were then forwarded to the edge by piggybacking on another bot management system’s existing integration with <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>, Cloudflare’s replicated key-value store.</p>
@@ -98,7 +98,7 @@
 	<p>As the number of features and visitors grew, we discovered that “standard” Redis recommendations didn’t always work for us in practice. Redis typically recommends using human-readable keys, even if they are longer.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/l8FHluRsIC5sNkJzVeELp/96e0fae9a46d015e49b1e0fb1aad5e78/image3-11.png" alt="" class="kg-image" width="898" height="692" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/l8FHluRsIC5sNkJzVeELp/535f4a5123f405f0657cd3a2fe74209f/image3-11.png" alt="" class="kg-image" width="898" height="692" loading="lazy">
 
 	</figure>
 	<p>However, by encoding our keys in a compact, binary-encoded format, we observed roughly 30% memory savings, as well as CPU savings — which again demonstrates the value of iterating on a real-world system.</p>

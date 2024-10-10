@@ -1,11 +1,11 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lsPZB2aeMhpiwz5S4zHmi/9fc8dbc08df0c0d19ea4cde88a63c8f9/luajit-hacking-getting-next-out-of-the-nyi-list.jpg" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lsPZB2aeMhpiwz5S4zHmi/25aebe148ed2c2151857ec7dd3345ac7/luajit-hacking-getting-next-out-of-the-nyi-list.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we’re heavy users of LuaJIT and in the past have sponsored many improvements to its performance.</p>
 	<p>LuaJIT is a powerful piece of software, maybe the highest performing JIT in the industry. But it’s not always easy to get the most out of it, and sometimes a small change in one part of your code can negatively impact other, already optimized, parts.</p>
 	<p>One of the first pieces of advice anyone receives when writing Lua code to run quickly using LuaJIT is “avoid the NYIs”: the language or library features that can’t be compiled because they’re NYI (not yet implemented). And that means they run in the interpreter.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iZfOn4qOz1IUbak9b2uFF/dd3dee6346b8d8cb1faee553a4c04c7c/6822250770_d6f8399cf2_z.jpg" alt="" class="kg-image" width="434" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iZfOn4qOz1IUbak9b2uFF/d13073febe4074591ddb70d51fdfc301/6822250770_d6f8399cf2_z.jpg" alt="" class="kg-image" width="434" height="640" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/zengei/6822250770/in/photolist-boRPth-7xeiAm-e6H8w5-dSoqGF-FiYGj-okoVwy-e1ugbE-dXhvop-8fQNCX-974Bts-ekbDjn-p9HV9L-971y78-bdb8Hi-e2Us2u-8fU4pm-9ZFfXg-g469T-7Ft9Jc-9YWa6m-95HYN2-95J19D-5JeU76-95M3qb-PFZRj-9uYpbM-6bJrpt-D2DfZK-Ccqoxs-Jqvvxd-kSQzNX-JyLzNN-dEnx4T-dezBQR-e2NN7a-6aP8op-971xFi-974BBJ-qR8GWh-5De3Sy-974CTy-gyUry-dezAkY-7qHBJ2-eHJH4W-9v2qQs-dCQMt7-nBkbJ7-eZ8yc-e3u6kJ">image</a> by <a href="https://www.flickr.com/photos/zengei">Dwayne Bent</a></p>
@@ -26,7 +26,7 @@
 	<p>One very nice feature is that all these JIT options are implemented in Lua. To accomplish this the JIT provides ‘hooks’ that can execute a Lua function at important moments with the relevant information. Sometimes the best way to understand what some <code>-jdump</code> output actually means is to read the code that generated that specific part of the output.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ofHRCoePgNqk4t0T1HlqM/99308b3b82e6c6f60f2a00a1c596e7e6/6353190489_1363ec7f16_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ofHRCoePgNqk4t0T1HlqM/b682959718d54d07c604c0e084111dd2/6353190489_1363ec7f16_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/kevandotorg/6353190489/in/photolist-aFpLc4-6Rorty-gvhKC9-8UEeqU-aBoHof-9qr8bs-9qo6Ai-9qrafb-FhYA4L-CH4r5G-8HZcMK-pX32R-6SJMc6-pX39e-oXee8D-aBoHBJ-cLgitL-cLgeKY-3THPb-hzKrGL-cLggDJ-6Rh35p-dqkQyJ-7Ey5Pz-6RkwNh-6RgYDe-7C7F9S-6RgxKH-6RkLFN-i4HqqU-6Rktx9-6RkXKQ-6RgRqD-6RkmBs-6RgML2-6RkE4j-6Rg5nT-6RjKkq-6RfDK2-6RfRRc-6RfYfK-6RfUT8-6RjN4d-hzMBtc-hzNnyN-hzJiM8-hzJVpv-hzLE56-hzKU4c-9mQrRy">image</a> by <a href="https://www.flickr.com/photos/kevandotorg">Kevan</a></p>
@@ -104,7 +104,7 @@ end</code></pre>
 	<p>Now using loom:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2017/02/image00.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gsTyF05jZO2nJd8HvEec8/574ce9cc0591d4ac83e49ae3d2b863ad/image00.png" alt="" class="kg-image" width="1913" height="1534" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gsTyF05jZO2nJd8HvEec8/9deaa76956425f382f1e68aba1e9b13e/image00.png" alt="" class="kg-image" width="1913" height="1534" loading="lazy">
 		</a>
 	</figure>
 	<p>There’s the source code, with the corresponding bytecodes, and the same two traces, with IR and mcode listings. The bytecode lines on the traces and on the top listings are linked, hovering on some arguments on the IR listing highlights the source and use of each value, the jumps between traces are correctly labeled (and colored), finally, clicking on the bytecode or IR column headers reveals more information: excerpts from the source code and snapshot formats, respectively.</p>
@@ -343,14 +343,14 @@ typedef struct Node {
 	<p>First test is with all 10,000 elements on sequential integers, making the table a valid sequence, so <code>ipairs()</code> (which is already compiled) can be used just as well:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2017/02/image02.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4m2lJk0jSnK7D5qd81PEgz/78b165a0310c4f1f82b2f67afa6bdae1/image02.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4m2lJk0jSnK7D5qd81PEgz/15ad27baf4c66609632dd903b5829f05/image02.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
 		</a>
 	</figure>
 	<p>So, compiled <code>next()</code> is quite a lot faster, but the <code>pairs()</code> optimization in the interpreter is very fast. On the other hand, the smallest smell of FFI completely trashes interpreter performance, while making compiled code slightly tighter. Finally, <code>ipairs()</code> is faster, but a big part of it is because it stops on the first <code><b>nil</b></code>, while <code>next()</code> has to skip over every <code><b>nil</b></code> at the end of the array, which by default can be up to twice as big as the sequence itself.</p>
 	<p>Now with 5,000 (sequential) integer keys and 5,000 string keys. Of course, we can't use <code>ipairs()</code> here:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2017/02/image01.png">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2c4yKNAwBjIqqQDz8Em4Hr/539facf85d6f05e6c8252f223d39178d/image01.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2c4yKNAwBjIqqQDz8Em4Hr/56cb0a4af36b3f68df25b36367d8e30a/image01.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
 		</a>
 	</figure>
 	<p>Roughly the same pattern: the compiled <code>next()</code> performance is very much the same on the three forms (used directly, under <code>pairs()</code> and with FFI code), while the interpreter benefits from the <code>pairs()</code> optimization and almost dies with FFI. In this case, the interpreted <code>pairs()</code> actually surpasses the compiled <code>next()</code> performance, hinting that separately optimizing <code>pairs()</code> is still desirable.</p>

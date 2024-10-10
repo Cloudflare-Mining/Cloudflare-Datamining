@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60qSp4iHg04DudT56qHNsw/18e669aea4b38c6f72c58b0ad857678f/graceful-upgrades-in-go.jpg" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60qSp4iHg04DudT56qHNsw/c232220596c9a7821dde71fcc8f775d1/graceful-upgrades-in-go.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><sup><i>Dingle Dangle! by </i></sup><a href="https://www.flickr.com/photos/grant_subaru/14175646490"><sup><i>Grant C.</i></sup></a><sup><i> (CC-BY 2.0)</i></sup></p>
 	<p>The idea behind graceful upgrades is to swap out the configuration and code of a process while it is running, without anyone noticing it. If this sounds error-prone, dangerous, undesirable and in general a bad idea – I’m with you. However, sometimes you really need them. Usually this happens in an environment where there is no load balancing layer. We have these at Cloudflare, which led to us investigating and implementing various solutions to this problem.</p>
@@ -43,7 +43,7 @@ func main() {
 	<p>Even if the exec call works, this solution assumes that initialisation of the new process is practically instantaneous. We can get into a situation where the kernel refuses new connections because the <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html">listen queue is overflowing</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46DpPmhtCjeHZmXVkySQTP/87c9479303bcfab7b9ccebcfc8cae1b3/Example1-1.png" alt="" class="kg-image" width="586" height="188" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46DpPmhtCjeHZmXVkySQTP/e644645ace6a5b37c1e0c4c09fc86814/Example1-1.png" alt="" class="kg-image" width="586" height="188" loading="lazy">
 
 	</figure>
 	<p><i>New connections may be dropped if </i><code><i>Accept()</i></code><i> is not called regularly enough</i></p>
@@ -131,7 +131,7 @@ func main() {
 	<p>The way NGINX has implemented graceful upgrades is very nice. There is a clear life cycle which determines valid actions at any point in time:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71WT8Hg8Bi4AAgf3yGdN8I/35feac68dd8fdb17e233396ff4c1ef3c/upgrade-lifecycle.svg" alt="" class="kg-image" width="764" height="133" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71WT8Hg8Bi4AAgf3yGdN8I/e30876bbf1c15d1e68143278b52f4bba/upgrade-lifecycle.svg" alt="" class="kg-image" width="764" height="133" loading="lazy">
 
 	</figure>
 	<p>It also solves the problems we’ve identified with the other approaches. Really, we’d like NGINX-style graceful upgrades as a Go library.</p>

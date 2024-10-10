@@ -1,10 +1,10 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/log-every-request-to-corporate-apps-no-code-changes-required">Français</a>, <a href="https://blog.cloudflare.com/es-es/log-every-request-to-corporate-apps-no-code-changes-required">Español</a> and <a href="https://blog.cloudflare.com/de-de/log-every-request-to-corporate-apps-no-code-changes-required">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iN2GcJZ6H0hhdo1O8I6o0/25e52966ff88b5b37b18174195fa5a38/log-every-request-to-corporate-apps-no-code-changes-required.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/log-every-request-to-corporate-apps-no-code-changes-required">Français</a>, <a href="https://blog.cloudflare.com/es-es/log-every-request-to-corporate-apps-no-code-changes-required">Español</a> and <a href="https://blog.cloudflare.com/de-de/log-every-request-to-corporate-apps-no-code-changes-required">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iN2GcJZ6H0hhdo1O8I6o0/cbba8f98c0903af958c9015980c70c71/log-every-request-to-corporate-apps-no-code-changes-required.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When a user connects to a corporate network through an enterprise VPN client, this is what the VPN appliance logs:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fg3lkKZ2LFyomRR6aGPZc/e239b5cb5ddb3c8d701d94eb2fcaa171/r_jjVpKIEx9ZoM5wf1o2t2_m9xuPCN6QgTQWch5QpGdNgAjre_tAwG0H_y6ACU0aXXkAfJzwJ4LJQ3-X47VdyLOwjVbNapg44RUT-JF9yXtLoN4yLIUwIN39Oens.png" alt="" class="kg-image" width="686" height="202" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fg3lkKZ2LFyomRR6aGPZc/2d632e76f7c521ee34ad53f97e00caf0/r_jjVpKIEx9ZoM5wf1o2t2_m9xuPCN6QgTQWch5QpGdNgAjre_tAwG0H_y6ACU0aXXkAfJzwJ4LJQ3-X47VdyLOwjVbNapg44RUT-JF9yXtLoN4yLIUwIN39Oens.png" alt="" class="kg-image" width="686" height="202" loading="lazy">
 
 	</figure>
 	<p>The administrator of that private network knows the user opened the door at 12:15:05, but, in most cases, has no visibility into what they did next. Once inside that private network, users can reach internal tools, sensitive data, and production environments. Preventing this requires complicated <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">network segmentation</a>, and often server-side application changes. Logging the steps that an individual takes <i>inside</i> that network is even more difficult.</p>
@@ -24,13 +24,13 @@
 	<p>Access flips this model by assuming no user should be able to reach anything by default; applying a zero-trust solution to the internal tools your team uses. With Access, when any user requests the hostname of that application, the request hits Cloudflare first. We check to see if the user is authenticated and, if not, send them to your identity provider like Okta, or Azure ActiveDirectory. The user is prompted to login, and Cloudflare then evaluates if they are allowed to reach the requested application. All of this happens at the edge of our network before a request touches your origin, and for the user, it feels like the seamless SSO flow they’ve become accustomed to for SaaS apps.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zJPqmXqg1rVpllHTJ6ErU/dd159416639b8aa5ece895ede300bcaa/tz2WgRWLFDETs2FRVNJiS5EXc6FM6WCSf-4SGN5USRsN62QW5D8VPei6Vu-A8e1yixcxG3Gw7ZDgm-7B5Shyv0WIzt4uFBZX8zlbBR2irEYP9xD16dFybxlvuAYK.png" alt="" class="kg-image" width="1600" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zJPqmXqg1rVpllHTJ6ErU/77f26c9f1921a1e83ab196795a636bdf/tz2WgRWLFDETs2FRVNJiS5EXc6FM6WCSf-4SGN5USRsN62QW5D8VPei6Vu-A8e1yixcxG3Gw7ZDgm-7B5Shyv0WIzt4uFBZX8zlbBR2irEYP9xD16dFybxlvuAYK.png" alt="" class="kg-image" width="1600" height="645" loading="lazy">
 
 	</figure>
 	<p>When a user authenticates with your identity provider, we audit that event as a login and make those available in our API. We capture the user’s email, their IP address, the time they authenticated, the method (in this case, a Google SSO flow), and the application they were able to reach.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cPoL1RHDlSwoZG0JPgnzy/fb5a3ece313edb881e47f1ea27266bde/EF7yfE9_weAtXSAgvQ3ei8vTlW-q6tzIPVgsTWJ3IAljZuc82KAlMwPjcXObP9HvaQI35gkMHvrXPP9oVxAMGuhHJT7VM8CyNN60wgGojRT0MgLxvCeU8Ekv6EKI.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cPoL1RHDlSwoZG0JPgnzy/05a51337b50a921d05c878152c8e7096/EF7yfE9_weAtXSAgvQ3ei8vTlW-q6tzIPVgsTWJ3IAljZuc82KAlMwPjcXObP9HvaQI35gkMHvrXPP9oVxAMGuhHJT7VM8CyNN60wgGojRT0MgLxvCeU8Ekv6EKI.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
 
 	</figure>
 	<p>These logs can help you track every user who connected to an internal application, including contractors and partners who might use different identity providers. However, this logging stopped at the authentication. Access did not capture the next steps of a given user.</p>

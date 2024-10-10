@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wtkrE4GWst9TZnOc65wDQ/0b7df2d4d450407068db88f2577c88f9/Dispelling-the-Generative-AI-Fear_-Cloudflare-Introduces-New-Way-to-Secure-Inbox.png" alt="Dispelling the Generative AI fear: how Cloudflare secures inboxes against AI-enhanced phishing" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wtkrE4GWst9TZnOc65wDQ/e4c58520a99d30f5156e43bb4f460057/Dispelling-the-Generative-AI-Fear_-Cloudflare-Introduces-New-Way-to-Secure-Inbox.png" alt="Dispelling the Generative AI fear: how Cloudflare secures inboxes against AI-enhanced phishing" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/email-security/what-is-email">Email</a> continues to be the largest attack vector that attackers use to try to compromise or extort organizations. Given the frequency with which email is used for business communication, <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">phishing attacks</a> have remained ubiquitous. As tools available to attackers have evolved, so have the ways in which attackers have targeted users while skirting security protections. The release of several <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">artificial intelligence</a> (AI) <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model">large language models</a> (LLMs) has created a mad scramble to discover novel applications of <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai">generative AI</a> capabilities and has consumed the minds of security researchers. One application of this capability is creating phishing attack content.</p>
@@ -39,7 +39,7 @@
 	<p>We can see an example of how this may accumulate in a BEC attack below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vcLTmUrZ0XIigZFP1VyHu/77517142a458ec1c441d58ef07c2d129/N4rK4QS9njr9X1tUAEHvZjqCDwlzt6pDMrrB7sFhq1kiKaFvPygxLQWI6wczYXbV6LGzo6CkUWvV2QbcycxSHIrIEQKPr4o1PksVZ6C_qZaZzNDpJMjfOnpGLHoO.png" alt="" class="kg-image" width="1182" height="498" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vcLTmUrZ0XIigZFP1VyHu/13eba49f49a6e7500b42a444c8d1f073/N4rK4QS9njr9X1tUAEHvZjqCDwlzt6pDMrrB7sFhq1kiKaFvPygxLQWI6wczYXbV6LGzo6CkUWvV2QbcycxSHIrIEQKPr4o1PksVZ6C_qZaZzNDpJMjfOnpGLHoO.png" alt="" class="kg-image" width="1182" height="498" loading="lazy">
 
 	</figure>
 	<p>The text within the message does not contain any grammatical errors and is easily readable, yet our sentiment models triggered on the text, detecting that there was a sense of urgency in the sentiment in combination with an invoice — a common pattern employed by attackers. However, there are many other things in this message that triggered different models. For example, the attacker is pretending to be from PricewaterhouseCoopers, but there is a mismatch in the domain from which this email was sent. We also noticed that the sending domain was recently registered, alerting us that this message may not be legitimate. Finally, one of our models generates a social graph unique to each customer based on their communication patterns. This graph provides information about whom each user communicates with and about what. This model flagged that, given the fresh history of this communication, this message was not business as usual. All the signals above plus the outputs of our sentiment models led our analysis engine to conclude that this was a malicious message and to not allow the recipient of this message to interact with it.</p>
@@ -55,7 +55,7 @@
 	<p>In August of last year, we published our <a href="https://blog.cloudflare.com/2023-phishing-report">2023 Phishing Report</a>. That year, Cloudflare processed approximately 13 billion emails, which included blocking approximately 250 million malicious messages from reaching customers’ inboxes. Even though it was the year of ChatGPT, our analysis saw that attacks still revolved around long-standing vectors like malicious links.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6thpMQK5FCqIx3XJ7ftFln/7793e93f0f598c1eecb209be78ddb529/FI0gnVZuDEtqX3MbSB7pZpaduv6XAwkCqLgeVWWAHlMtc-cSqIPwR1QVFk5YOcc-F8egyqEC2zXJAeeBlJjoXtWojJfWW-2kR3Qu_btdXRUXpD_Kct1TIKiqvEET.png" alt="" class="kg-image" width="1600" height="1531" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6thpMQK5FCqIx3XJ7ftFln/41f86784a5a942f9355cb4e6a5d92255/FI0gnVZuDEtqX3MbSB7pZpaduv6XAwkCqLgeVWWAHlMtc-cSqIPwR1QVFk5YOcc-F8egyqEC2zXJAeeBlJjoXtWojJfWW-2kR3Qu_btdXRUXpD_Kct1TIKiqvEET.png" alt="" class="kg-image" width="1600" height="1531" loading="lazy">
 
 	</figure>
 	<p>Most attackers were still trying to get users to either click on a link or download a malicious file. And as discussed earlier, while Generative AI can help with making a readable and convincing message, it cannot help attackers with obfuscating these aspects of their attack.</p>
@@ -73,14 +73,14 @@
 	<p>Emails contain information beyond the body and subject of the message. When building detections, we like to think of emails as having both mutable and immutable properties. Mutable properties like the body text can be easily faked while other mutable properties like sender IP address require more effort to fake. However, there are immutable properties like domain age of the sender and similarity of the domain to known brands that cannot be altered at all. For example, let's take a look at a message that I received.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5I546B8TyjfcPUJFgvs5VS/c9067ca149a99ccda40acef17649e1ad/BhpSr8GQMige78JJ3Y6n3XqzowH5L8H3y-I3Mi_x7yStxeA3wZQBdPyw7pesWnbp1i_bE8miC64GaCMVGj27jjQEPzCFDm-e2mv0fKjMXjCu8-bCuCWltwN-U6a-.png" alt="" class="kg-image" width="758" height="785" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5I546B8TyjfcPUJFgvs5VS/18151cd55044af1b0a6efefe18b962cc/BhpSr8GQMige78JJ3Y6n3XqzowH5L8H3y-I3Mi_x7yStxeA3wZQBdPyw7pesWnbp1i_bE8miC64GaCMVGj27jjQEPzCFDm-e2mv0fKjMXjCu8-bCuCWltwN-U6a-.png" alt="" class="kg-image" width="758" height="785" loading="lazy">
 
 	</figure>
 	<p><i>Example email content</i></p>
 	<p>While the message above is what the user sees, it is a small part of the larger content of the email. Below is a snippet of the message headers. This information is typically useless to a recipient (and most of it isn’t displayed by default) but it contains a treasure trove of information for us as defenders. For example, our detections can see all the preliminary checks for <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf">DMARC, SPF, and DKIM</a>. These let us know whether this email was allowed to be sent on behalf of the purported sender and if it was altered before reaching our inbox. Our models can also see the client IP address of the sender and use this to check their reputation. We can also see which domain the email was sent from and check if it matches the branding included in the message.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10BXP1mHum6zQgJwxFLEat/e44a00953e673f23c838a21edd1d25fc/u_E1OhipYsXS1787X0rP22F4fk1uvu8f1uwm-5MhEpDN0MuHBmwSrERNQK-BQdeLbP-f0P-imKcSfBrYZu3LAcMdlRsE9uFko_8veh6IQEBS3FfNkqV6NeByFU_f.png" alt="" class="kg-image" width="960" height="695" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10BXP1mHum6zQgJwxFLEat/bedc8c306a4570af9c69114eb20ac5b4/u_E1OhipYsXS1787X0rP22F4fk1uvu8f1uwm-5MhEpDN0MuHBmwSrERNQK-BQdeLbP-f0P-imKcSfBrYZu3LAcMdlRsE9uFko_8veh6IQEBS3FfNkqV6NeByFU_f.png" alt="" class="kg-image" width="960" height="695" loading="lazy">
 
 	</figure>
 	<p><i>Example email headers</i></p>

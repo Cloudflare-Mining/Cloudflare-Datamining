@@ -1,9 +1,9 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Whv00W9ZpsZklMR9lIAVz/11bed7742d0c133e59d9c5f46790318d/rfc8482-saying-goodbye-to-any.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Whv00W9ZpsZklMR9lIAVz/4f710cdeb6b05f9e3a8d7503f8c2c5bd/rfc8482-saying-goodbye-to-any.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Ladies and gentlemen, I would like you to welcome the new shiny <a href="https://tools.ietf.org/html/rfc8482">RFC8482</a>, which effectively deprecates the DNS ANY query type. DNS ANY was a "meta-query" - think of it as a similar thing to the common A, AAAA, MX or SRV query types, but unlike these it wasn't a real query type - it was special. Unlike the standard query types, ANY didn't age well. It was hard to implement on modern DNS servers, the semantics were poorly understood by the community and it unnecessarily exposed the DNS protocol to abuse. RFC8482 allows us to clean it up - it's a good thing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PCmdGHjKE7wTlBgmp6igp/c7686540a43acc5214d6161fb623361d/Screenshot-from-2019-03-15-14-22-51.png" alt="Screenshot-from-2019-03-15-14-22-51" class="kg-image" width="1246" height="552" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PCmdGHjKE7wTlBgmp6igp/e77a20411c26932eba98e8fcede95bfd/Screenshot-from-2019-03-15-14-22-51.png" alt="Screenshot-from-2019-03-15-14-22-51" class="kg-image" width="1246" height="552" loading="lazy">
 
 	</figure>
 	<p>But let's rewind a bit.</p>
@@ -22,7 +22,7 @@
 	<p>This special code was ugly and error prone. This got us thinking: do we really need it? "ANY" is not a popular query type - no legitimate software uses it (with the notable exception of qmail).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oOaG7G1WJfwM7TX5qGESz/673a177f6adb95deed714221078306fc/11235945713_5bf22a701d_z.jpg" alt="11235945713_5bf22a701d_z" class="kg-image" width="640" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oOaG7G1WJfwM7TX5qGESz/c6e5c5359f4eb3c499d6b3e891d4f19b/11235945713_5bf22a701d_z.jpg" alt="11235945713_5bf22a701d_z" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/cmichel67/11235945713">Image</a> by <a href="https://www.flickr.com/photos/cmichel67">Christopher Michel</a>CC BY 2.0</p>
@@ -64,7 +64,7 @@
 	<h1>ANY is hard for network operators</h1>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FBoDQ01mFhkylbffAGioR/1d02cc870c7153a8960efdef5473fb6a/Screenshot-from-2019-03-15-14-44-58.png" alt="Screenshot-from-2019-03-15-14-44-58" class="kg-image" width="1168" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FBoDQ01mFhkylbffAGioR/b08d10f697d24c84f232a1a2ca9bff02/Screenshot-from-2019-03-15-14-44-58.png" alt="Screenshot-from-2019-03-15-14-44-58" class="kg-image" width="1168" height="308" loading="lazy">
 
 	</figure>
 	<p>A typical 50Gbps DNS amplification targeting one of our customers. The attack lasted about 4 hours.</p>
@@ -109,7 +109,7 @@
 	<p>And here we come today! With <a href="https://tools.ietf.org/html/rfc8482">RFC8482</a> we have an RFC proposed standard clarifying that controversial query.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VXjlDZD1THaZzfyH53uo0/5e5b825cdec178e99fbf05a2eede123e/Screenshot-from-2019-03-15-13-19-21.png" alt="Screenshot-from-2019-03-15-13-19-21" class="kg-image" width="1370" height="370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VXjlDZD1THaZzfyH53uo0/59098d02034b3b987d143ba9d5936a90/Screenshot-from-2019-03-15-13-19-21.png" alt="Screenshot-from-2019-03-15-13-19-21" class="kg-image" width="1370" height="370" loading="lazy">
 
 	</figure>
 	<p>ANY queries are a background noise. Under normal circumstances, we see a very small volume of ANY queries.</p>

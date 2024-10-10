@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jyWDPQCkpnp8AGkJl07o1/08819c0024bb975f8bd41a8e14519a8e/image1-86.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jyWDPQCkpnp8AGkJl07o1/4f730f07ffbc2845fc93d46b7067ba2c/image1-86.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>In the last post on <a href="https://blog.cloudflare.com/a-primer-on-proxies">proxy TCP-based applications</a>, we discussed how HTTP CONNECT can be used to proxy TCP-based applications, including DNS-over-HTTPS and generic HTTPS traffic, between a client and target server. This provides significant benefits for those applications, but it doesn’t lend itself to non-TCP applications. And if you’re wondering whether or not we care about these, the answer is an affirmative yes!</p>
@@ -56,7 +56,7 @@
 	<p>A client sends an extended CONNECT request to a proxy server, which identifies a target server in the :path. If the proxy succeeds in opening a UDP socket, it responds with a 2xx (Successful) status code. After this, an end-to-end flow of unreliable messages between the client and target is possible; the client and proxy exchange QUIC DATAGRAM frames with an encapsulated payload, and the proxy and target exchange UDP datagrams bearing that payload.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BXgtvSVPvNMa3CkKqqioK/62383fa1e78f543c0cbb4d4d13db1262/image3-34.png" alt="Components involved in UDP tunneling. From left-to-right: Client, Proxy, Server." class="kg-image" width="1680" height="634" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BXgtvSVPvNMa3CkKqqioK/1530306e4007e30b6d7b995c2b01f823/image3-34.png" alt="Components involved in UDP tunneling. From left-to-right: Client, Proxy, Server." class="kg-image" width="1680" height="634" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -71,7 +71,7 @@
 	<p>We've been talking in terms of HTTP/3 which normally has its own frames (HEADERS, DATA, etc) that have a common type and length overhead. However, there is no HTTP/3 framing when it comes to DATAGRAM, instead the bytes are placed directly into the QUIC frame. This frame is composed of two fields. The first field is a variable number of bytes, called the <a href="https://datatracker.ietf.org/doc/html/draft-ietf-masque-h3-datagram-05#section-3">Quarter Stream ID</a> field, which is an encoded identifier that supports independent multiplexed DATAGRAM flows. It does so by binding each DATAGRAM to the HTTP request stream ID. In QUIC, stream IDs use two bits to encode four types of stream. Since request streams are always of one type (client-initiated bidirectional, to be exact), we can divide their ID by four to save space on the wire. Hence the name Quarter Stream ID. The second field is payload, which contains the end-to-end message payload. Here's how it might look on the wire.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fzMrcBgH540C9SizGskfh/8985821f1cdceb3e869dbb4da1493ad5/image2-75.png" alt="A UDP datagram, containing a QUIC packet, which contains a DATAGRAM frame." class="kg-image" width="702" height="401" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fzMrcBgH540C9SizGskfh/2107ffe432c189ec089e5663615bc814/image2-75.png" alt="A UDP datagram, containing a QUIC packet, which contains a DATAGRAM frame." class="kg-image" width="702" height="401" loading="lazy">
 
 	</figure>
 	<p>If you recall our lesson from the <a href="https://blog.cloudflare.com/a-primer-on-proxies">last post</a>, DATAGRAM frames (like all frames) must fit completely inside a QUIC packet. Moreover, since QUIC requires that <a href="https://www.rfc-editor.org/rfc/rfc9000.html#section-14-7">fragmentation is disabled</a>, QUIC packets must fit completely inside a UDP datagram. This all combines to limit the maximum size of things that we can actually send: the path MTU determines the size of the UDP datagram, then we need to subtract the overheads of the UDP datagram header, QUIC packet header, and QUIC DATAGRAM frame header. For a better understanding of QUIC's wire image and overheads, see <a href="https://www.rfc-editor.org/rfc/rfc8999.html#section-5">Section 5 of RFC 8999</a> and <a href="https://www.rfc-editor.org/rfc/rfc9000.html#section-12.4">Section 12.4 of RFC 9000</a>.</p>
@@ -88,7 +88,7 @@
 	<p>One example of this case is nested tunneling via multiple proxies, which can minimize the connection metadata available to each individual proxy or server (one example of this type of deployment is described in our recent post on <a href="https://blog.cloudflare.com/icloud-private-relay">iCloud Private Relay)</a>. In this kind of setup, a client might manage at least three logical connections. First, a QUIC connection between Client and Proxy 1. Second, a QUIC connection between Client and Proxy 2, which runs via a CONNECT tunnel in the first connection. Third, an end-to-end byte stream between Client and Server, which runs via a CONNECT tunnel in the second connection. A real TCP connection only exists between Proxy 2 and Server. If additional Client to Server logical connections are needed, they can be created inside the existing pair of QUIC connections.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zIR70pmMrWlgjGongXqkH/209cfa43c47877f016da76906ab98772/image4-16.png" alt="Components involved in a nested tunneling setup. From left-to-right: Client, Proxy 1, Proxy 2 and Server." class="kg-image" width="1680" height="1060" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zIR70pmMrWlgjGongXqkH/9409a30dfba8a603d9a917b20e8a3d3a/image4-16.png" alt="Components involved in a nested tunneling setup. From left-to-right: Client, Proxy 1, Proxy 2 and Server." class="kg-image" width="1680" height="1060" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

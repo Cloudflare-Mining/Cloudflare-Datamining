@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qJZd1dizqFIdaPcbY7Xxo/2d318a2177e22bcdf3e0272797fd8a34/image5-4.png" alt="Announcing Custom DLP profiles" class="kg-image" width="1800" height="1012" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qJZd1dizqFIdaPcbY7Xxo/c285a34ed84c8120f86801f516037e27/image5-4.png" alt="Announcing Custom DLP profiles" class="kg-image" width="1800" height="1012" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -35,13 +35,13 @@
 	<p>First, once within the Zero Trust dashboard, navigate to the DLP Profiles tab under Gateway:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kfzsPRGyGAS35yu7A0uC9/c834a01c9b823f46b68193e7b53802d1/image2-13.png" alt="" class="kg-image" width="1198" height="428" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kfzsPRGyGAS35yu7A0uC9/e02371cee6289fe92c38b0dacbbccef1/image2-13.png" alt="" class="kg-image" width="1198" height="428" loading="lazy">
 
 	</figure>
 	<p>Here you will find any available DLP profiles, either predefined or custom:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/199ahBcyglz52Lpsofvl1F/cdd2709bd3e7e1e1e775729b5f578bb7/image1-20.png" alt="" class="kg-image" width="1999" height="748" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/199ahBcyglz52Lpsofvl1F/0ef3b17dd0a17ffc290db20d735bdc98/image1-20.png" alt="" class="kg-image" width="1999" height="748" loading="lazy">
 
 	</figure>
 	<p>Select to <b>Create Profile</b> to begin a new one. &nbsp;After providing a name and description, select <b>Add detection entry</b> to add a custom regular expression. A <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>, or regex, is a sequence of characters that specifies a search pattern in text, and is a standard way for administrators to achieve the flexibility and granularity they need in policy building.</p>
@@ -49,26 +49,26 @@
 	<p>Regular expressions can be used to build custom PII detections of your choosing, such as email addresses, or to detect keywords for sensitive intellectual property.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KclkjaZOxF6PMVkY0L2yM/f671f4976c9bdd9f8f7c56fb2ba76433/image3-9.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KclkjaZOxF6PMVkY0L2yM/9b327971802a650d2ffc7977fcd712c0/image3-9.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
 
 	</figure>
 	<p>Provide a name and a regex of your choosing. Every entry in a DLP profile is a new detection that you can scan for in your corporate traffic. Our <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile">documentation</a> provides resources to help you create and test Rust regexes.</p>
 	<p>Below is an example of regex to detect a simple email address:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QUMf9IdSNh6i81pYWdzUb/99ee96c462bde9e9b89f3cc70402cedd/image7-1.png" alt="" class="kg-image" width="1340" height="472" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QUMf9IdSNh6i81pYWdzUb/b4295e07168c644dce339715c493bb43/image7-1.png" alt="" class="kg-image" width="1340" height="472" loading="lazy">
 
 	</figure>
 	<p>When you are done, you will see the entry in your profile. &nbsp;You can turn entries on and off in the <b>Status</b> field for easier testing.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XCjno9mGXiEPz3oCv8BwL/a0cdba6d8d3b9ccae92a83aa4871234d/image4-5.png" alt="" class="kg-image" width="1999" height="1053" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XCjno9mGXiEPz3oCv8BwL/96c7075d1516f4e8fb6484ba5f01fbfc/image4-5.png" alt="" class="kg-image" width="1999" height="1053" loading="lazy">
 
 	</figure>
 	<p>The custom profile can then be applied to traffic using an HTTP policy, just like a predefined profile. Here both a predefined and custom profile are used in the same policy, blocking sensitive traffic to dlptest.com:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cUsE6rB7AcS5oQMQVicXs/5f348dc4f7841bf23c7f6cf6027d74f4/image6.png" alt="" class="kg-image" width="1910" height="1568" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cUsE6rB7AcS5oQMQVicXs/b5858d4f1aff7a7295d1c04edbe9000c/image6.png" alt="" class="kg-image" width="1910" height="1568" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ljxxzMBstGmHOAJS4hvjy/426a730cfd199452198ebb74ea5cf81d/image5-4.png" alt="Announcing the Cloudflare API Gateway" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ljxxzMBstGmHOAJS4hvjy/fa1206eedecf9c3b885e7ea14b7e1450/image5-4.png" alt="Announcing the Cloudflare API Gateway" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Over the past decade, the Internet has experienced a tectonic shift. It used to be composed of static websites: with text, images, and the occasional embedded movie. But the Internet has grown enormously. We now rely on API-driven applications to help with almost every aspect of life. Rather than just download files, we are able to <i>engage</i> with apps by exchanging rich data. We track workouts and send the results to the cloud. We use smart locks and all kinds of IoT devices. And we interact with our friends online.</p>
@@ -35,7 +35,7 @@
 	<p>That’s where Discovery comes in. Head to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield">Cloudflare dashboard</a>, select the <b>Security</b> tab, then choose “API Shield.” Activate the feature and tell us how you want to identify your API traffic. Most users provide a header (available today), but we can also use the request body or cookie (available soon).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cYcAk2aZnbvboWf4w7nH5/5b12bdc44fc5d3d0ce1159a2c49007b6/image7.jpg" alt="The Cloudflare API Shield tab, showing various endpoints that have been discovered and a set of recommended rate limiting thresholds." class="kg-image" width="1999" height="1625" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cYcAk2aZnbvboWf4w7nH5/268c82e1fbdc7457aa5532bf17f72a07/image7.jpg" alt="The Cloudflare API Shield tab, showing various endpoints that have been discovered and a set of recommended rate limiting thresholds." class="kg-image" width="1999" height="1625" loading="lazy">
 
 	</figure>
 	<p>We provide an exhaustive list of your API endpoints. Cloudflare lists each method, path, and additional metadata to help you understand your surface area. We even <i>collapse</i> endpoints that include variables (e.g., <i>/account/</i><b><i>217</i></b>) to become generally applicable (e.g., <i>/account/</i><b><i>{var1}</i></b>).</p>
@@ -52,7 +52,7 @@
 	<p>To harden your security, we can <i>validate</i> incoming traffic against this schema. This is a great way to stop basic attacks. Cloudflare will turn away nonconforming requests, discarding nonsense traffic that ignored the dress code. Simply upload your schema to the dashboard, select the actions you want to take, and deploy:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nWP8L7vs3ayf5fEA2OU5s/32f892618f5ff1f1ef209de1e2c00223/image9.jpg" alt="A step in the schema upload process, after a schema has already been provided. Cloudflare lists out each endpoint with path, query, header, cookies, and body provided as metadata." class="kg-image" width="1999" height="1145" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nWP8L7vs3ayf5fEA2OU5s/5650d04a6f8cbd0a13a7c95d696798ef/image9.jpg" alt="A step in the schema upload process, after a schema has already been provided. Cloudflare lists out each endpoint with path, query, header, cookies, and body provided as metadata." class="kg-image" width="1999" height="1145" loading="lazy">
 
 	</figure>
 	<p>Schema Validation has already vetted traffic for some of the world’s largest crypto sites, delivery services, and payment platforms. It’s available now, and we’ll add body validation soon.</p>
@@ -69,7 +69,7 @@
 	<p>Consider an API endpoint that returns weather updates. Specifically, the endpoint will return “yes” if it is likely to snow in the next hour, and “no” otherwise. Our algorithm might detect that the average user requests this data once every 10 minutes. A small group of scrapers, however, makes 37 requests per 10 minutes. Cloudflare automatically recommends a threshold in between, weighted to provide normal users with some breathing room. This would prevent abusive scraping services from fetching the weather too often.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AmCy8IlDu6F2xQMz6Y9Bh/6860464fc5cf83b3de7586dc2b9ffcf3/image3-18.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AmCy8IlDu6F2xQMz6Y9Bh/5a38cabf4a3694188bf6b4c8f0b97047/image3-18.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>We provide the option to create a rule using our new <a href="https://blog.cloudflare.com/advanced-rate-limiting">Advanced Rate Limiting</a> engine. You can use cookies, headers, and more to tune thresholds. We’ve been using Abuse Detection to protect <a href="https://api.cloudflare.com">api.cloudflare.com</a> for months now.</p>
@@ -86,7 +86,7 @@
 	<p>Mutual TLS takes security to a new level. You can use certificates to validate incoming traffic as it reaches your APIs—which is especially useful for mobile and IoT devices. Moreover, this is an excellent positive security model that can (and should) be adopted for most device ecosystems.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BoGPOVpajEoOtHvYpdzvX/b4d064b4094c75f24235ba1befbba315/image1-48.png" alt="" class="kg-image" width="1999" height="1030" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BoGPOVpajEoOtHvYpdzvX/c84536ef94f14bf09725e088c29d5154/image1-48.png" alt="" class="kg-image" width="1999" height="1030" loading="lazy">
 
 	</figure>
 	<p>As an example, let’s return to our weather API. Perhaps this service includes a second endpoint that <i>receives</i> the current temperature from a thermometer. But there’s a problem: anyone can make fake requests, providing inaccurate readings to the endpoint. To prevent this, use mTLS to install a client certificate on the <i>legitimate</i> thermometer, then let Cloudflare validate that certificate. Any other requests will be turned away. Problem solved!</p>
@@ -115,7 +115,7 @@
 	<p>Using access control lists, we help you manage different user groups with varying permissions. And this matters—because your current provider is introducing tons of latency and unnecessary data exchange. If a request has to go somewhere <i>outside</i> the Cloudflare ecosystem, it’s traveling farther than it needs to:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53rdn4o2AexuxH6ebDhEV4/571042e23601b5e6a792c7946fbd556f/image2-39.png" alt="Additional latency incurred by sending requests out of the Cloudflare network for authentication." class="kg-image" width="1658" height="785" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53rdn4o2AexuxH6ebDhEV4/803f9fd2c8a7fa96570b84eb4fdb8515/image2-39.png" alt="Additional latency incurred by sending requests out of the Cloudflare network for authentication." class="kg-image" width="1658" height="785" loading="lazy">
 
 	</figure>
 	<p>Cloudflare can authenticate on our global network and handle requests in a fraction of the time. This kind of technology is difficult to implement, but we felt it was too important to ignore. How did we build it so quickly? <a href="https://www.cloudflare.com/products/zero-trust/access">Cloudflare Access</a>. We took our experience working with identity providers and, once again, ported it over to the world of APIs. Our gateway includes unlimited authentication and token exchange. These features will be available soon.</p>
@@ -131,14 +131,14 @@
 	<p>Consider an application that helps you book a hotel room. It might use a microservice to fetch available dates, another to fetch prices, and still another to fetch room types. Perhaps a different team manages each microservice, but they all need to be available from a single public entry point:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vE5CLMCH7SBOvyjUEdz1a/de4787c48618f8e7cfc3f97ebb9d419e/image8.png" alt="Various steps in an architecture that relies on microservices. A visitor makes a request to a hotel API, which is then routed towards available dates, prices, or room types." class="kg-image" width="1063" height="555" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vE5CLMCH7SBOvyjUEdz1a/860064c062cab01677ce237ac35ab950/image8.png" alt="Various steps in an architecture that relies on microservices. A visitor makes a request to a hotel API, which is then routed towards available dates, prices, or room types." class="kg-image" width="1063" height="555" loading="lazy">
 
 	</figure>
 	<p>That single entry point—traditionally managed by an API gateway—is responsible for <i>routing</i> each request to the right microservice. Many of our customers have been paying standalone services to do this for years. That’s no longer necessary. We’ve built on our <a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">Transform Rules</a> product to dynamically re-write and re-route at our edge. It’s easy to configure, fast to deploy, and natively built into API Gateway. Cloudflare can now be your API’s single point of entry.</p>
 	<p>That’s just the tip of the iceberg. API Gateway can actually <i>replace</i> your microservices through an integration with our <a href="https://workers.cloudflare.com">Workers</a> product. How? Consider writing a Worker that performs some action; perhaps return hotel prices, which are stored with <a href="https://blog.cloudflare.com/durable-objects-ga">Durable Objects</a> on our network. With API Gateway, requests arrive at our network, are routed to the correct microservice with Transform Rules, and then are fully served with Workers (still on our network!). These Workers may contact your origin for additional information, where necessary.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Xlw0UyeftYsiiFsGbrHbE/3dad73d794d9c822fb17d5a09c8a32ac/image4-3.png" alt="Cloudflare’s simplified API architecture. With authentication, routing, management, and storage handled at the edge, several hops are eliminated." class="kg-image" width="1098" height="715" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Xlw0UyeftYsiiFsGbrHbE/7b9772d9a46cd8dc1ddef13d98285951/image4-3.png" alt="Cloudflare’s simplified API architecture. With authentication, routing, management, and storage handled at the edge, several hops are eliminated." class="kg-image" width="1098" height="715" loading="lazy">
 
 	</figure>
 	<p>Workers are faster, cheaper, and simpler than microservice alternatives. This integration will be available soon.</p>
@@ -153,7 +153,7 @@
 	<p>Customers tell us that <i>seeing</i> API traffic is sometimes more important than even acting on it. In fact, this trend isn’t specific to APIs. We published <a href="https://blog.cloudflare.com/envoy-media-machine-learning-bot-management">another blog</a> today that explores how one customer uses our bot intelligence to passively log information about threats.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Lod4XcchPemDNuK209PAg/0cdb9a3d3a8281e86425b3a7187e6498/image6.png" alt="" class="kg-image" width="1217" height="656" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Lod4XcchPemDNuK209PAg/24ef6bf697b80ddbc052e4cdb88701ad/image6.png" alt="" class="kg-image" width="1217" height="656" loading="lazy">
 
 	</figure>
 	<p>With API Analytics, we’ve drawn on our other products to show useful data in real time. You can view popular endpoints, filter by ML-driven insights, see histograms of abuse thresholds, and capture trends.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lrXWL4f6IEY8gQ650cXWT/33a48eeb1bc0a43716bb5e05dad5791a/random-employee-chats-cloudflare.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lrXWL4f6IEY8gQ650cXWT/b6997ff562169bc38a9f3f251c77f714/random-employee-chats-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Due to the COVID-19 pandemic, most Cloudflare offices closed in March 2020, and employees began working from home. Having online meetings presented its own challenges, but preserving the benefits of casual encounters in physical offices was something we struggled with. Those informal interactions, like teams talking next to the coffee machine, help form the social glue that holds companies together.</p>
 	<p>In an attempt to recreate that experience, David Wragg, an engineer at Cloudflare, introduced “Random Engineer Chats” (We’re calling them “Random Employee Chats” here since this can be applied to any team). The idea is that participants are randomly paired, and the pairs then schedule a 30-minute video call. There’s no fixed agenda for these conversations, but the participants might learn what is going on in other teams, gain new perspectives on their own work by discussing it, or meet new people.</p>
@@ -40,7 +40,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26ih1wWQgNslI8kNjBYq1d/556e8e4c4caab253173431054f5129aa/Random-Engineer-Chat-Dashboard-1.png" alt="The User Interface" class="kg-image" width="400" height="599" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26ih1wWQgNslI8kNjBYq1d/20676f1eef4c8052cc6ec2dda8c06eb7/Random-Engineer-Chat-Dashboard-1.png" alt="The User Interface" class="kg-image" width="400" height="599" loading="lazy">
 
 	</figure>
 	<p>The interface is very simple. It shows the list of participants and allows users to register for the next session.</p>
@@ -102,14 +102,14 @@ crons = ["0 8 * * 2"]</code></pre>
 	<p>The people form a complete graph with people as nodes and the edges weighted by the number of times the two people connected by the edge have met.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/anoEru6iUYXNlVFxpCk4w/3f50df75752add270f226f387a11b8bb/image5-20.png" alt="The people form a complete graph with people as nodes and the edges weighted by the number of times the two people connected by the edge have met." class="kg-image" width="570" height="468" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/anoEru6iUYXNlVFxpCk4w/67d7587b1440044c1a9072545dc8cce6/image5-20.png" alt="The people form a complete graph with people as nodes and the edges weighted by the number of times the two people connected by the edge have met." class="kg-image" width="570" height="468" loading="lazy">
 
 	</figure>
 	<p>Next, we run a weighted matching algorithm, in our case the <a href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom algorithm</a>, which will find a maximum matching on the graph (a set of edges that maximize the number of pairs of people connected with each person appearing exactly once). As we use the weighted form of the Blossom algorithm we also minimize the path weights. This has the effect of finding the optimal set of pairs minimizing the number of times people have met previously.</p>
 	<p>In the case above the algorithm suggests the optimal pairs are &nbsp;(Tom, Ivie) and (Edie, Ada). In this case, those pairs have never met before.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Fi6gV8b7uZHZMVR7jouFF/fa27bedfe0d13dc2f6e38b56d65b9f79/image2-18.png" alt="In this case, those pairs have never met before." class="kg-image" width="570" height="468" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Fi6gV8b7uZHZMVR7jouFF/0e7ef8ef4cdcd6dde01e4fb637bc964c/image2-18.png" alt="In this case, those pairs have never met before." class="kg-image" width="570" height="468" loading="lazy">
 
 	</figure>
 	<p>The pairs are recorded in Workers KV with their updated matching count to refine the weights at future sessions:</p>
@@ -118,7 +118,7 @@ value: {"emails":["left@cloudflare.com","right@cloudflare.com", "count": 1]}</co
 	<p>A notification is sent to each pair of users to notify them that they matched.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xVSUWDwEFKqY2KS9Mupwj/713a474b5c75e4c14a8882ba0e8768d3/image4-17.png" alt="" class="kg-image" width="805" height="147" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xVSUWDwEFKqY2KS9Mupwj/0e7e502307c3a67fc6e7d124a08a5101/image4-17.png" alt="" class="kg-image" width="805" height="147" loading="lazy">
 
 	</figure>
 	<p>Once the pairing is done, all <code>register:</code> keys are deleted from KV.</p>
@@ -137,7 +137,7 @@ crons = ["0 13 * * 5"]</code></pre>
 	<p>This script is much simpler than the pairing script. It simply sends a message to a room in our company messaging platform that notifies all members of the channel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ACIIWbP4COwxXbImfqiQE/dd48fd462a24405ccd7f465f1528c53a/image3-19.png" alt="" class="kg-image" width="655" height="192" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ACIIWbP4COwxXbImfqiQE/78488aeabc86a3a1b6d382ffe32f42a2/image3-19.png" alt="" class="kg-image" width="655" height="192" loading="lazy">
 
 	</figure>
 	<p>All the reminder code is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/cron-reminder/index.js">here</a>.</p>

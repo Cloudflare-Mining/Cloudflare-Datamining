@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ms6u2WZoqyNjSMtDSszcO/2f8133894513ceade9b864068584cd7c/image10-2.png" alt="" class="kg-image" width="1493" height="716" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ms6u2WZoqyNjSMtDSszcO/af4c392d74ed61ee0c2b806e9a6e89dc/image10-2.png" alt="" class="kg-image" width="1493" height="716" loading="lazy">
 
 	</figure>
 	<p>Applications expect specific inputs in order to perform optimally. Techniques used to shape inputs to meet an application's requirements might include <a href="https://developers.cloudflare.com/rules/normalization">normalizing the URLs</a> to conform to a consistent formatting standard, <a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">rewriting the URL’s</a> path and query based on different conditions and logic, and/or <a href="https://blog.cloudflare.com/transform-http-request-headers">modifying headers</a> to indicate an application’s specific information. These are expensive to run and complex to manage. Cloudflare can help you to offload the heavy lifting of modifying requests for your servers with Transform Rules. In this blog we will cover the nuts and bolts of the functionality.</p>
@@ -20,7 +20,7 @@
 	<p>Cloudflare Workers open the door to many possibilities regarding the amount of work that can be done for your applications, close to where your end users are located. It provides a serverless execution environment that allows you to create application functionality without configuring or maintaining infrastructure. However, using a Worker to modify the request is kind of like wearing a diving suit in a kiddie pool. Therefore, a simple tool to modify requests without Workers has long been wanted.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/62P8ovhPVq9mJuMFjJcVSD/0ed157c67501d73f44b6354e5f8e1b89/image13.png" alt="" class="kg-image" width="1612" height="874" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62P8ovhPVq9mJuMFjJcVSD/e8949a7092f6a362e32b51b5eb2b9e12/image13.png" alt="" class="kg-image" width="1612" height="874" loading="lazy">
 
 	</figure>
 	<p>It’s in this context that we looked at the most common request modifications that customers were making, and built out Transform Rules to cover them. Once Transform Rules were announced we anticipated they’d become the favourite tool in our customers’ tool box.</p>
@@ -59,12 +59,12 @@
 	<p>By default, URL Normalization is enabled for all the zones on Cloudflare at Cloudflare’s edge, and disabled when going to origins. This means incoming URLs will be decoded to standard format before any Cloudflare security execution. When going back to the origins, we will use the original URL. In this way, no encoded URL can bypass security features and the origin also can see the original URL.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f33EIaG1UvCcCBNaLWwpi/ede05be5d94568a9af8e7379ebec759c/image3-2.png" alt="" class="kg-image" width="1043" height="407" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1f33EIaG1UvCcCBNaLWwpi/d16c1eb4e8d125a5227d1180ebc7e7d0/image3-2.png" alt="" class="kg-image" width="1043" height="407" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zUZWJPDIgV6U7KIw69BSE/07b3bd294edc71d2701cad4dd0abd8a0/image1-5.png" alt="" class="kg-image" width="1774" height="508" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zUZWJPDIgV6U7KIw69BSE/d0cbfe19cfe045a96617b4a5c674c583/image1-5.png" alt="" class="kg-image" width="1774" height="508" loading="lazy">
 
 	</figure>
 	<p>The default settings are flexible to adjust if you need. <a href="https://community.cloudflare.com/t/faq-url-normalization/259183">This FAQ page</a> has more information about URL Normalization.</p>
@@ -89,7 +89,7 @@
 	<p>When visiting <code>www.example.com</code> with a cookie of <code>version=v1</code>, you want to rewrite the URL to <code>www.example.com/v1</code> when going to the origin server. In this case, the end-user facing URL will not change, but the content will be the /v1’s content. This is a static URL rewrite. It only does rewrites when end users visit the URL <code>www.example.com</code> with cookie <code>version=v1</code><i>.</i> It can help you to do A/B testing when rolling out new content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xbvwaBlCv7apqIU45AdTU/77e24fe54e0d7bc03195f04ca24b86a3/image9-1.png" alt="" class="kg-image" width="856" height="790" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xbvwaBlCv7apqIU45AdTU/1f8ea0e9d0e76537f04feefea6d5966f/image9-1.png" alt="" class="kg-image" width="856" height="790" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -105,7 +105,7 @@
 	<p>When end users visit <code>www.example.com/fictionlibrary/book52/line43/universe</code> with cookie <code>version=v1</code>, Cloudflare will rewrite the URL to <code>www.example.com/v1/fictionlibrary/book52/line43/universe</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VX3SJrAzXtXQDx9r99Ol7/ae373c54531fb947abbb80d79c50b982/image2-3.png" alt="" class="kg-image" width="984" height="815" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VX3SJrAzXtXQDx9r99Ol7/7994f0b6e4c43148a2567b4c8c165edb/image2-3.png" alt="" class="kg-image" width="984" height="815" loading="lazy">
 
 	</figure>
 	<p>In this case, the URL visible in the client’s browser will not change, but the content returned will be from the <code>/v1</code> location. This is a dynamic URL rewrite, so it applies the rewrite to all URLs when end users visit with the cookie.</p>
@@ -122,7 +122,7 @@
 	<p>And when end users visit <code>www.example.com/global/fictionlibarary/book52/line43/universe?page=1</code> with cookie of <code>version=v1</code><b>,</b> Cloudflare will rewrite the URL to <code>www.example.com/v1/fictionlibarary/book52/line43/universe?newpage=1</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5z21p3m7Bt3vAcqRMXuAHc/cd74c08669477bdd21277765f6b05940/image6-3.png" alt="" class="kg-image" width="852" height="825" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5z21p3m7Bt3vAcqRMXuAHc/6730cd6d20ffd8904b89d55f741febc0/image6-3.png" alt="" class="kg-image" width="852" height="825" loading="lazy">
 
 	</figure>
 	<p>In this case, the end-user facing URLs will not change, but the content will be v1’s content. This is a dynamic URL rewrite, so it applies the rewrite to all URLs when end users visit with the cookie of <code>version=v1</code> and a query string of <code>page=1</code>.</p>
@@ -139,37 +139,37 @@
 	<p>For example, add a request header such as <code>foo: bar</code> only when the requests have the hostname of <code>www.example.com</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1u2KfCcl08HmV4vGuMp6Tq/ed9307d031d78aeebaa454976fa89922/pasted-image-0.png" alt="" class="kg-image" width="1084" height="626" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1u2KfCcl08HmV4vGuMp6Tq/25cb7038fb5bac3b804d905f70addeb9/pasted-image-0.png" alt="" class="kg-image" width="1084" height="626" loading="lazy">
 
 	</figure>
 	<p>With the above setting, Cloudflare appends a static header Foo: bar to your origin when this rule triggers. Here is what the origin should see.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GP9tyY2bKuneIOCqvrox7/fd3e83c45a2d68343704b5e54eebffc8/image8-1.png" alt="" class="kg-image" width="969" height="293" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GP9tyY2bKuneIOCqvrox7/daed985ba5d99ef49ade7e636932f933/image8-1.png" alt="" class="kg-image" width="969" height="293" loading="lazy">
 
 	</figure>
 	<p><b>Set Dynamic header :</b> Adds a dynamic header value from the computed field, like the end user’s geolocation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zfVWPAG1OBr2jyHmPxpQi/ec5dc7ef20d05ed1e4b03115f6be495a/image7-1.png" alt="" class="kg-image" width="973" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zfVWPAG1OBr2jyHmPxpQi/f475e986ca8675e038b790bfd572970a/image7-1.png" alt="" class="kg-image" width="973" height="645" loading="lazy">
 
 	</figure>
 	<p>The dynamic request headers are added.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZT19vARgXTzSCAnzmpSG9/35f7c46090a6933ee7e15ed35a894302/image5-4.png" alt="" class="kg-image" width="986" height="349" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZT19vARgXTzSCAnzmpSG9/728bd7100c2c7f2f419c0afca9048f80/image5-4.png" alt="" class="kg-image" width="986" height="349" loading="lazy">
 
 	</figure>
 	<p><b>Set Dynamic Bot Management headers:</b> Cloudflare Bot Management protects applications from bad bot traffic by scoring each request with a “bot score” from 1 to 99. With Bot Management enabled, we can send the bot score to the origin server as a request header via Transform Rules.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fAWqLlHhQnTbvhbhLkHR8/73e7b7459cf6f58682e930cca68e9e9f/image4-2.png" alt="" class="kg-image" width="971" height="554" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fAWqLlHhQnTbvhbhLkHR8/02dbfda7d1688295a600bbf58570eba3/image4-2.png" alt="" class="kg-image" width="971" height="554" loading="lazy">
 
 	</figure>
 	<p>The bot score header is added.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RVr7yI1GAKQLRX0h2YBR6/c9c44ff07e734227df8cc895873f3ea4/image12.png" alt="" class="kg-image" width="984" height="323" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RVr7yI1GAKQLRX0h2YBR6/36defb26432dd7fc9f3b463ceac6d74e/image12.png" alt="" class="kg-image" width="984" height="323" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

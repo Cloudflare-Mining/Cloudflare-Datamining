@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xjDFy2iQrc84LmmtmPYj0/d1888e2997366d9c2609fc51936ebd6c/image8-5.png" alt="Effects of the conflict in Sudan on Internet patterns" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xjDFy2iQrc84LmmtmPYj0/0411f503331d419c8db5dc0b46c75664/image8-5.png" alt="Effects of the conflict in Sudan on Internet patterns" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>On Saturday, April 15, 2023, an <a href="https://en.wikipedia.org/wiki/2023_Sudan_conflict">armed conflict</a> between rival factions of the military government of Sudan began. Cloudflare observed a disruption in Internet traffic on that Saturday, starting at 08:00 UTC, which deepened on Sunday. Since then, the conflict has continued, and different ISPs have been affected, in some cases with a 90% drop in traffic. On May 2, Internet traffic is still ~30% lower than pre-conflict levels. This blog post will show what we’ve been seeing in terms of Internet disruption there.</p>
@@ -10,13 +10,13 @@
 	<p>Here’s the hourly perspective of Sudan’s Internet traffic over the past weeks as seen on <a href="https://radar.cloudflare.com/sd?range=14d">Cloudflare Radar</a>, with the orange shading highlighting the disruption since April 15.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Rb3bwqLvq89EqvY4PUdSX/baf71d9b01209a2321dd8dd52b99a1aa/image11-1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Rb3bwqLvq89EqvY4PUdSX/5c6aa9133cee84364eaf164c48f56ff0/image11-1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>The next chart of daily traffic in Sudan (that is dominated by mobile device traffic — more on that below) clearly shows a daily drop in traffic after April 15. On that Saturday, traffic was 27% lower than on the previous Saturday, and it was a 43% decrease on Sunday, April 16, compared to the previous week.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2w36Hda2IUWRns98DlbeJE/d6c5705b9a0f49aafeeb05ec1d9fe1d5/image3-1.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2w36Hda2IUWRns98DlbeJE/bef59da839dc80be0ded12adfc2262ac/image3-1.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -32,7 +32,7 @@
 	<p>In the news, ISP MTN (AS36972) reportedly blocked Internet services on April 16, and, according to <a href="https://www.reuters.com/article/sudan-politics-internet-idAFL1N36J071">Reuters</a>, was told by the authorities to restore it a few hours after. We saw a clear outage in that ASN, an almost 90% drop in traffic compared with previous weeks for about 10 hours, after 00:00 UTC on April 16, and it mostly recovered after 10:00 UTC.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GrvytJHqY35xYGp62aBtD/37433ba2bc5bea19209e6c01204b4573/image10-1.png" alt="" class="kg-image" width="1999" height="1042" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GrvytJHqY35xYGp62aBtD/37fccdda80b10512086df582911be325/image10-1.png" alt="" class="kg-image" width="1999" height="1042" loading="lazy">
 
 	</figure>
 	<p>The most impacted ISPs were Sudatel (AS15706), Zain (AS36998), and Canar (AS33788) with almost complete outages. Canar was the outage that lasted the longest, with 83 hours, from April 21 to 25. Next, it was the main ISP in the country, Sudatel, with 40 hours of almost complete Internet blackout, followed by Zain, with 10 hours on April 24.</p>
@@ -40,7 +40,7 @@
 	<p>BGP or <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">Border Gateway Protocol</a> is a mechanism to exchange routing information between networks on the Internet, and a crucial part that enables the existence of the network of networks (the Internet). BGP announcements or updates can signal disruption in connectivity or outages, as we saw in Canada in 2022 with <a href="https://blog.cloudflare.com/cloudflares-view-of-the-rogers-communications-outage-in-canada">Rogers</a> ISP or in the UK in 2023 with <a href="https://blog.cloudflare.com/virgin-media-outage-april-4-2023">Virgin Media</a>, for example. In this case, highlighted in the next chart, BGP updates biggest spikes from Sudatel (AS15706) are consistent with both the start of the outage, and the return to traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ivTdSm2MJb4NcpUswg2Cp/37b602483b0e06b6c414a660cef6674e/image9-1.png" alt="" class="kg-image" width="1999" height="699" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ivTdSm2MJb4NcpUswg2Cp/9c2751537798fded4250c519b3b7b09b/image9-1.png" alt="" class="kg-image" width="1999" height="699" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -54,33 +54,33 @@
 	<p>Sudan is typically one of the countries with the highest percentage of mobile device traffic in the world. We’ve written about this in the past (see the <a href="https://blog.cloudflare.com/where-mobile-traffic-more-and-less-popular">2021 mobile device traffic blog post</a>), and at the time the average was 83%. Observing data from the past week, as seen on our Cloudflare Radar traffic worldwide page, Sudan leads our ranking with 88% of traffic coming from mobile devices.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sV8ftxRHe6w8koEametLZ/8c044fd7a0d4a4f5e36110e7d959bf52/image5-1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sV8ftxRHe6w8koEametLZ/71e1ebff1d5bffc5e9a2426e60929c3f/image5-1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Looking at the past few weeks, we can see mobile device traffic growing as a percentage of all Internet traffic in Sudan. The April 3 week showed a lower percentage than it is now, with 77% (23% was desktop traffic percentage). In the April 10 week, which includes April 15 and 16, mobile device traffic rose to 80%. In the week of April 17, it was 85%, and the week of April 24, it’s 88%.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dS5PYTDYCXpaWS2qXtWb3/943d7968b16d34976b6e542a1eb501df/image1-6.png" alt="" class="kg-image" width="1999" height="557" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dS5PYTDYCXpaWS2qXtWb3/c6dea06e554112e50695214b761438a5/image1-6.png" alt="" class="kg-image" width="1999" height="557" loading="lazy">
 
 	</figure>
 	<p>How is Internet traffic holding up more recently in Sudan? Looking at a week-over-week hourly comparison, traffic last Friday was still around 55% lower than before April 15, and on May 2, traffic is still around 30% lower than pre-conflict levels (April 11).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wfLZ5lBowufWWLdaEdFxf/28ff2c7da871fc467137ec317ebea91a/image2-1.png" alt="" class="kg-image" width="1112" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wfLZ5lBowufWWLdaEdFxf/574d1ae2352e64aded7cf018b151ccc0/image2-1.png" alt="" class="kg-image" width="1112" height="308" loading="lazy">
 
 	</figure>
 	<p>In the previous chart, there’s a regular drop in traffic observed at around 16:00 UTC, ~18:00 local time. It’s more evident before April 15, but it generally continues after that. That drop in traffic is consistent with Ramadan trends we discussed recently in a <a href="https://blog.cloudflare.com/easter-passover-ramadan-internet-trends-2023">blog post</a>. It is related to the Iftar, the first meal after sunset that breaks the fast and often serves as a family or community event — sunset in Khartoum, Sudan, is at 18:07.</p>
 	<p>As of this Tuesday, Internet traffic data (from a linear perspective) shows that traffic continues to be much lower than before, and this morning at 08:00 UTC it is ~30% lower than it was three weeks ago (pre-conflict), at the same time, showing some recovery in the past couple of days.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oR1nzrTY18KaMOqwL1E74/de6377443d6d3bcb56e3d207c471e47a/image7-1.png" alt="" class="kg-image" width="1999" height="799" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oR1nzrTY18KaMOqwL1E74/478d3bf6dbfcc8ed7cf16e2ba083df82/image7-1.png" alt="" class="kg-image" width="1999" height="799" loading="lazy">
 
 	</figure>
 	<p>According to the <a href="https://www.bbc.com/news/live/world-65394740">BBC</a>, reporting from Sudan, the Internet continues to be impacted, an observation that is consistent with our data.</p>
 	<p>Looking more closely at Sudan’s capital, Khartoum, where most people live and the conflict began, traffic was impacted after April 15 (the blue line in the next chart). On April 27, Internet traffic was around 76% lower than it was on the same pre-conflict weekday (April 13). The next chart also shows the typical drop around 18:00, for Ramadan’s Iftar, the first meal after sunset.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4eADKOufz0P4MYmb4Dvbj6/2b354eee5c6555d2ffac087ed2223184/image6-1.png" alt="" class="kg-image" width="1999" height="565" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eADKOufz0P4MYmb4Dvbj6/ab6b2e0667a7607daa6726e2aa455717/image6-1.png" alt="" class="kg-image" width="1999" height="565" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -95,7 +95,7 @@
 	<p>Social media platforms such as LinkedIn, but also TikTok or YouTube, had a clear decrease since April 15. On the other hand, Facebook and Twitter saw an increase, especially on April 15 and 16, with some disruptions (possibly related to Internet access), but with bigger spikes than before, usually at night, since then. Here’s the aggregated view to social media platforms:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31bGXYQwK21lyCFSHjJKRn/b8b25d897d0a5fdff347b03f2d559189/image4-1.png" alt="" class="kg-image" width="1999" height="633" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31bGXYQwK21lyCFSHjJKRn/f749cf2ea4b04f8c649b2f4adfabcc9e/image4-1.png" alt="" class="kg-image" width="1999" height="633" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

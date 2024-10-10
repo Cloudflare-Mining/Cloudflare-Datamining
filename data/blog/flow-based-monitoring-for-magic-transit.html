@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2l3UZjDwv00SLhxig61vWi/ab0205091d8f5bf20caf537765925ad8/1-2.png" alt="" class="kg-image" width="1600" height="866" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2l3UZjDwv00SLhxig61vWi/d3d4691687a2c75c3c950be40956df30/1-2.png" alt="" class="kg-image" width="1600" height="866" loading="lazy">
 
 	</figure>
 	<p>Network-layer DDoS attacks are <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q4-2020">on the rise</a>, prompting security teams to rethink their L3 DDoS mitigation strategies to prevent business impact. <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> protects customers’ entire networks from DDoS attacks by placing our network in front of theirs, either always on or on demand. Today, we’re announcing new functionality to improve the experience for on-demand Magic Transit customers: flow-based monitoring. Flow-based monitoring allows us to detect threats and notify customers when they’re <a href="https://www.cloudflare.com/ddos/under-attack">under attack</a> so they can activate Magic Transit for protection.</p>
@@ -19,7 +19,7 @@
 	<p>With Magic Transit, Cloudflare <a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip">advertises customers’ IP prefixes</a> to the Internet with BGP in order to attract traffic to our network for DDoS protection. Customers can choose to use Magic Transit always on or on demand. With always on, we advertise their IPs and mitigate attacks all the time; for on demand, customers activate advertisement only when their networks are under active attack. But there’s a problem with on demand: if your traffic isn’t routed through Cloudflare’s network, by the time you notice you’re being targeted by an attack and activate Magic Transit to mitigate it, the attack may have already caused impact to your business.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AwonbMEE0lcPsDBIDxiyM/7f9e63bbb9d8dd48ddd7e8c722a29809/2-1.png" alt="" class="kg-image" width="827" height="424" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AwonbMEE0lcPsDBIDxiyM/85af653cb360352da5a645b6528e4917/2-1.png" alt="" class="kg-image" width="827" height="424" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -33,21 +33,21 @@
 	<p>Flow-based monitoring solves the problem with on-demand by enabling Cloudflare to detect and notify you about attacks based on traffic flows from your data centers. You can configure your routers to continuously send NetFlow or sFlow (coming soon) to Cloudflare. We’ll ingest your flow data and analyze it for volumetric DDoS attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4owxfliNis5W1of3QQsKby/eba41dd236e50bd443df0ddbe52be971/3-1.png" alt="" class="kg-image" width="1435" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4owxfliNis5W1of3QQsKby/7aa03b63921abac1f8cae0f51f70df52/3-1.png" alt="" class="kg-image" width="1435" height="802" loading="lazy">
 
 	</figure>
 	<p>Send flow data from your network to Cloudflare for analysis</p>
 	<p>When an attack is detected, we’ll notify you automatically (by email, webhook, and/or PagerDuty) with information about the attack.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43cGyArvSAfIwoeOIv8N93/e6d934da8882ca2445e8a905377a2d9a/4.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43cGyArvSAfIwoeOIv8N93/12b3d414e3c2d176b006ee92f4c47326/4.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
 
 	</figure>
 	<p>Cloudflare detects attacks based on your flow data</p>
 	<p>You can choose whether you’d like to activate IP advertisement with Magic Transit manually - we support activation via the Cloudflare dashboard or API - or automatically, to minimize the time to mitigation. Once Magic Transit is activated and your traffic is flowing through Cloudflare, you’ll receive only the clean traffic back to your network over your GRE tunnels.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WB4xizWsFXcMsL5RjYwXX/553a6888a6c49818a474482d4fb6bb8f/5-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WB4xizWsFXcMsL5RjYwXX/3f78f800d014582c05675e660c55a112/5-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
 
 	</figure>
 	<p>Activate Magic Transit for DDoS protection</p>
@@ -64,7 +64,7 @@
 	<p>Cloudflare receives Acme’s NetFlow data at a location close to the data center sending it (thanks, Anycast!) and analyzes it for DDoS attacks. When traffic exceeds attack thresholds, Cloudflare triggers an automatic <a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare">PagerDuty incident</a> for Acme’s NOC team and starts advertising Acme’s IP prefixes to the Internet with BGP. Acme’s traffic, including the attack, starts flowing through Cloudflare within minutes, and the attack is <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge">blocked at the edge</a>. Clean traffic is routed back to Acme through their GRE tunnels, causing no disruption to end users - they’ll never even know Acme was attacked. When the attack has subsided, Acme’s team can withdraw their prefixes from Cloudflare with one click, returning their traffic to its normal path.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QaMA2Cf6vPZupctWCOz5u/8f024ed4813db114d44935677bccd6d6/6-1.png" alt="" class="kg-image" width="1435" height="787" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QaMA2Cf6vPZupctWCOz5u/fe1e3470c5c9ac3bc4efad85bf702237/6-1.png" alt="" class="kg-image" width="1435" height="787" loading="lazy">
 
 	</figure>
 	<p>When the attack subsides, withdraw your prefixes from Cloudflare to return to normal</p>

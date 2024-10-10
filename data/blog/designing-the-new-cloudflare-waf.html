@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v0UjF3JxEqKPGcBumv74P/04a4b3b1ef62d10886ac32f0753a0715/Designing-the-new-WAF.png" alt="" class="kg-image" width="1363" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v0UjF3JxEqKPGcBumv74P/f963ee741a56c7e8da64b9703d2f866e/Designing-the-new-WAF.png" alt="" class="kg-image" width="1363" height="728" loading="lazy">
 
 	</figure>
 	<p>The Cloudflare Web Application Firewall (WAF) protects websites and applications from malicious traffic attempting to exploit vulnerabilities in server software. It’s a critical piece of the broader security posture of your application. With that in mind, we made sure improvements to the Web Application Firewall dashboard experience made it easier to enable the WAF and configure rules to match the specific requirements of an application. In this post, I’ll share parts of the process we followed and the rationale behind the decisions we took when designing the <a href="https://blog.cloudflare.com/new-cloudflare-waf">new Web Application Firewall</a> dashboard experience.</p>
@@ -59,7 +59,7 @@
 	<p>This is where we identified our first opportunity of improvement. The existing user journey had too many opportunities for misconfiguration and should have been very straightforward.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xx2d5p8bJjCvKAUbnCSdw/cce26637b87db67386e203aa95fd3a50/image4-2.png" alt="" class="kg-image" width="1920" height="1358" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4xx2d5p8bJjCvKAUbnCSdw/e4f08afe8fd935d6f1cdb05e756e276b/image4-2.png" alt="" class="kg-image" width="1920" height="1358" loading="lazy">
 
 	</figure>
 	<p>The legacy UI of the Web Application Firewall.</p>
@@ -95,7 +95,7 @@
 	<p>We use Figma to design the user interface of the dashboard. Using our Component Library, it allows us to quickly create mockups of what an interface could look like. At this stage of the project, a tool like Figma makes it easy for us to iterate through numerous ideas or permutations of a particular interaction.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kKZwxbciujiWCCvrUhq3D/f08fe0698e445445b5211664f5842000/image3-1.png" alt="" class="kg-image" width="1999" height="776" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kKZwxbciujiWCCvrUhq3D/180fbd0eaad8b8993c6285b59e4e82d4/image3-1.png" alt="" class="kg-image" width="1999" height="776" loading="lazy">
 
 	</figure>
 	<p>The Figma file used during the development of the new UI.</p>
@@ -103,21 +103,21 @@
 	<p>Part of our job as designers at Cloudflare is to make the complex and intricate aspects of configuration ridiculously simple and increasing the confidence customers have with the UI and the actions they’re performing. With that in mind, to enable a ruleset like the Cloudflare Managed Ruleset with the new Managed Rules a customer only needs to do a single click.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X04C1fZsEhGzVEtdVsufz/98d365cb08ab7283fc7ebea42de7c151/image1-2.png" alt="" class="kg-image" width="1920" height="1440" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X04C1fZsEhGzVEtdVsufz/d9287df00e99900fe4e36b98a6eda6c3/image1-2.png" alt="" class="kg-image" width="1920" height="1440" loading="lazy">
 
 	</figure>
 	<p>The new Web Application Firewall page.</p>
 	<p>We wanted to improve the method of having all rules execute the same specific action. With the legacy UI, this required customers to select from a drop-down menu on all the individual rules. This was an extremely tedious and time-consuming process. Sticking to our design principles of maintaining ease of use and increasing simplicity and efficiency, the new Managed Rules allows for a single action to execute across the entire ruleset. We call this a Ruleset Action. A Ruleset Action is an action which all the rules within a ruleset will adhere to.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Fyn5W5ghPi1rJVhnRzsGM/b31b8579d36c2b40d7b3229431d0c079/image2-1.png" alt="" class="kg-image" width="1920" height="1440" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Fyn5W5ghPi1rJVhnRzsGM/a841b9b647e0b9cd76097432719ac7f7/image2-1.png" alt="" class="kg-image" width="1920" height="1440" loading="lazy">
 
 	</figure>
 	<p>Review page with Ruleset Action configured.</p>
 	<p>The next capability we focused on was having all the rules execute the same specific action. In the legacy UI, changing the mode of multiple rules at once wasn’t possible. With the new dashboard experience, customers can browse through all the rules within the ruleset. Multiple rules can be selected at once using the select box on the left-hand side and the action or status can be set for the entire selection.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MaD63Qoi4HVw9iCJTXXsW/4ed6df63d8442fb568113bbf28d980c8/image5-1.png" alt="" class="kg-image" width="1920" height="1580" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MaD63Qoi4HVw9iCJTXXsW/bf2494eb2b65483b6e8b57a031ba5252/image5-1.png" alt="" class="kg-image" width="1920" height="1580" loading="lazy">
 
 	</figure>
 	<p>Rule Browser page with multiple rules selected and Set Action drop-down menu open.</p>

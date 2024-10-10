@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MMvICc6vMA9k4kZMtZiT8/bc7e165409c14fc40b8202c4629c7752/DDR4-memory-organization-and-how-it-affects-memory-bandwidth.png" alt="DDR4 memory organization and how it affects memory bandwidth" class="kg-image" width="1801" height="1008" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MMvICc6vMA9k4kZMtZiT8/1a5acf55a0d8fbe07df30ec45ef59e68/DDR4-memory-organization-and-how-it-affects-memory-bandwidth.png" alt="DDR4 memory organization and how it affects memory bandwidth" class="kg-image" width="1801" height="1008" loading="lazy">
 
 	</figure>
 	<p>When shopping for DDR4 memory modules, we typically look at the memory density and memory speed. For example a 32GB DDR4-2666 memory module has 32GB of memory density, and the data rate transfer speed is 2666 mega transfers per second (MT/s).</p>
@@ -24,7 +24,7 @@
 	<p>Figure 1 is a simplified view of the DQ signal flow on a dual-rank memory module. There are two identical sets of memory chips: set 1 and set 2. The 64-bit data I/O signals of each memory set are connected to a data I/O module. A single bit chip select (CS_n) signal controls which set of memory chips is accessed and the data I/O signals of the selected set will be connected to the DQ pins of the memory module.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6q9XI3SWMopg2BQ2DC0RhR/20a22a17e582d738eef50d39aeef6e9a/image4-5.png" alt="" class="kg-image" width="1632" height="710" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6q9XI3SWMopg2BQ2DC0RhR/cac46aa57d755132291b3e5ea1485b79/image4-5.png" alt="" class="kg-image" width="1632" height="710" loading="lazy">
 
 	</figure>
 	<p>Figure 1: DQ signal path on a dual rank memory module</p>
@@ -45,7 +45,7 @@
 	<p>We can think of each memory chip as a library. Within that library, there are four bank groups, which are the four floors of the library. On each floor, there are four shelves, each shelf is similar to one of the banks. And we can locate each one of the memory cells by its row and column addresses, just like the library book call numbers. Within each bank, the row address MUX activates a line in the memory array through the Row address latch and decoder, based on the given row address. This line is also called the word line. When a word line is activated, the data on the word line is loaded on to the sense amplifiers. Subsequently, the column decoder accesses the data on the sense amplifier based on the given column address.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69bOFcBszD2lzFKP6PuKmv/6e6814664a176ec4762f53dac8e12b54/pasted-image-0-3.png" alt="" class="kg-image" width="966" height="580" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69bOFcBszD2lzFKP6PuKmv/bfed28f664a654faa5c16d5f1530cff7/pasted-image-0-3.png" alt="" class="kg-image" width="966" height="580" loading="lazy">
 
 	</figure>
 	<p>Figure 2: 1Gbx8 block diagram</p>
@@ -63,7 +63,7 @@
 	<p>Figure 3 describes the function block diagram of a 2 Gb x 4 device.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JTK5yWP3Kw5O7g1gZS6p7/6c357c60e7b5046083a95b238c291b91/pasted-image-0--1--3.png" alt="" class="kg-image" width="958" height="582" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JTK5yWP3Kw5O7g1gZS6p7/7d832423f891cb01019f73b1f4146f3b/pasted-image-0--1--3.png" alt="" class="kg-image" width="958" height="582" loading="lazy">
 
 	</figure>
 	<p>Figure 3: 2Gbx4 Block Diagram</p>
@@ -288,7 +288,7 @@
 	<p>Our production Gen11 servers are configured with 1 DIMM populated in each memory channel. In order to achieve 6GB/core memory per core ratio, the total memory for the Gen11 system is 64 core * 6 GB/core = 384 GB. This is achieved by installing four pieces of 32GB 2Rx8 and four pieces of 64GB 2Rx4 memory modules.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xl4Gwvsl4gUdpgNafGzhW/116c6eb15e7245fd9486b0ed2a1ad879/Untitled.png" alt="" class="kg-image" width="1448" height="636" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xl4Gwvsl4gUdpgNafGzhW/fb099e78d8d8b6cec35afbaef2794dd3/Untitled.png" alt="" class="kg-image" width="1448" height="636" loading="lazy">
 
 	</figure>
 	<p>Figure 5: Gen11 server memory configuration</p>

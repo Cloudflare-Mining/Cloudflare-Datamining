@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/w3kWFDpuOojxINXqQ8E1M/ac179490e43e600d0624f803e264835f/updating-the-dns-registration-model-to-keep-pace-with-todays-internet.gif" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/w3kWFDpuOojxINXqQ8E1M/591ae170aafde84f8b9d7311a86b8d1e/updating-the-dns-registration-model-to-keep-pace-with-todays-internet.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>CloudFlare is, arguably, the <a href="http://solvedns.com">largest third-party DNS Authoritative operator in the world</a>. We manage well over 1 million domains and have registrations in almost every TLD open for registrations. Our role as a DNS operator is to maintain customer information and publish their records in the global DNS.</p>
 	<p>In this blog, we’ll introduce a significant problem that DNS operators like CloudFlare face when trying to provide the best possible experience to our customers. If you are a CloudFlare customer, you’ll remember during the sign up process you were asked to login to your registrar account in order to change your nameservers (NS). The absence of an automated process for changing NS records not only makes our signup process one step longer than we’d like, it also prevents CloudFlare, and other 3rd party DNS operators, from doing a slew of other things that would benefit customers and the Internet as a whole.</p>
@@ -15,7 +15,7 @@
 	<p>When CloudFlare customers enable our DNS services for their domain, we allocate and provide them with nameservers. After the customer configures various records within their domain (e.g., A, AAAA, MX, CNAME, etc. records) on the CloudFlare system, customer’s then need to go back to their Domain Registrar and manually update their NS records so they match the NS information provided by CloudFlare. Once the NS records have been changed, CloudFlare becomes the authoritative DNS operator for that zone.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xGSdSSJaAmdzPRXGsKMTl/f6c4b40b2be288f1126e7753eb03322f/image01.png" alt="alt" class="kg-image" width="1023" height="508" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xGSdSSJaAmdzPRXGsKMTl/95600f604567101eab60db2995d1237f/image01.png" alt="alt" class="kg-image" width="1023" height="508" loading="lazy">
 
 	</figure>
 	<p>This manual process is outdated, and there is only one thing standing in the way of an automated process—the current domain industry registration model.</p>
@@ -30,7 +30,7 @@
 	<p>The <a href="https://www.cloudflare.com/products/registrar">domain registration</a> system includes Registrants (Resellers and Registrars), Registries, and ICANN, and there are strict rules about how information flows through it:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OisQPr4yYjNuGeQvWKoZm/71e2045432e36473d3fb7eae46cdd249/image00.gif" alt="alt" class="kg-image" width="726" height="408" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OisQPr4yYjNuGeQvWKoZm/91ddc13aff287140eb618f672cc30197/image00.gif" alt="alt" class="kg-image" width="726" height="408" loading="lazy">
 
 	</figure>
 	<p><i>Note: A full glossary of the terms used in this document is available from the ICANN website.</i></p>

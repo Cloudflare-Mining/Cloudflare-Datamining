@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jzlwMQj1FdlZPvgIfJAKP/ec57872b60a69b2c4cabb8487821120d/export-logs-from-cloudflare-gateway-with-logpush.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jzlwMQj1FdlZPvgIfJAKP/61355efc1cc0dac94cdc392570239296/export-logs-from-cloudflare-gateway-with-logpush.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Like many people, I have spent a lot more time at home in the last several weeks. I use the free version of Cloudflare Gateway, part of Cloudflare for Teams, to secure the Internet-connected devices on my WiFi network. In the last week, Gateway has processed about 114,000 DNS queries from those devices and blocked nearly 100 as potential security risks.</p>
 	<p>I can search those requests in the Cloudflare for Teams UI. The logs capture the hostname requested, the time of the request, and Gateway’s decision to allow or block. This works fine for one-off investigations into a block, but does not help if I want to analyze the data more thoroughly. The last thing I want to do is click through hundreds or thousands of pages.</p>
@@ -15,7 +15,7 @@
 	<p>Cloudflare Gateway is one-half of Cloudflare for Teams, Cloudflare’s platform for securing users, devices, and data. With Cloudflare for Teams, our global network becomes your team’s network, replacing on-premise appliances and security subscriptions with a single solution delivered closer to your users - wherever they work.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JWEZSrQR7ulD8aQN6c39H/56d470c5e24aa74df8ebf1cad148eb98/YwO4JZYUemcjuBKu4nT3Q-StBRocPnnsJb-yQk9t4NgVLdWoKpmrfmaKxJHM1i0m-7EdVRdjuJOkQggh8Y0nEhNjKEs8febz0nooNgRdyg5UCtHekla6aZRuVQiv.png" alt="" class="kg-image" width="1600" height="1264" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JWEZSrQR7ulD8aQN6c39H/30072a7998e10e7463681dad6ffee6cb/YwO4JZYUemcjuBKu4nT3Q-StBRocPnnsJb-yQk9t4NgVLdWoKpmrfmaKxJHM1i0m-7EdVRdjuJOkQggh8Y0nEhNjKEs8febz0nooNgRdyg5UCtHekla6aZRuVQiv.png" alt="" class="kg-image" width="1600" height="1264" loading="lazy">
 
 	</figure>
 	<p>As part of that platform, Cloudflare Gateway blocks threats on the public Internet from becoming incidents inside your organization. Gateway’s <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">first release</a> added DNS security filtering and content blocking to the world’s fastest DNS resolver, Cloudflare’s 1.1.1.1.</p>
@@ -44,13 +44,13 @@
 	<p>When enabled, you can navigate to a new section of the Logs component in the Cloudflare for Teams UI, titled “Logpush”. Once there, you’ll be able to choose which fields you want to export from Cloudflare Gateway and the storage destination.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Oprf36DuhfSZ8FgwLqisq/876dcafcc3cda9c90570bf5339b7c976/image2-9.png" alt="" class="kg-image" width="1411" height="786" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Oprf36DuhfSZ8FgwLqisq/319316faa12fc11f3520f8fb9bde4c92/image2-9.png" alt="" class="kg-image" width="1411" height="786" loading="lazy">
 
 	</figure>
 	<p>The Logpush wizard will walk you through validating that you own the destination and configuring how you want folders to be structured. When saved, Logpush will send updated logs every five minutes to that destination. You can configure multiple destinations and monitor for any issues by returning to this section of the Cloudflare for Teams UI.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6t415R9imvFz1P1j5DGcBx/4dd555daab5220bc22f920dd28d85dcc/image1-9.png" alt="" class="kg-image" width="1411" height="786" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6t415R9imvFz1P1j5DGcBx/6af644eb6ded4511a15da901b29f11fb/image1-9.png" alt="" class="kg-image" width="1411" height="786" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

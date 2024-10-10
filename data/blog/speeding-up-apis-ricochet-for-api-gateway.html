@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Synl1uYnNEY4EctLl6YuA/3aa99ac7f386661ebf6e87bae1241a77/image1-38.png" alt="Speeding up APIs with Ricochet for API Gateway" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Synl1uYnNEY4EctLl6YuA/72f668789b9406651d63cb73bac881ee/image1-38.png" alt="Speeding up APIs with Ricochet for API Gateway" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>APIs form the backbone of communication between apps and services on the Internet. They are a quick way for an application to ask for data or ask that a task be performed by a service. For example, anyone can write a weather app without being a meteorologist: simply ask a <a href="https://developer.accuweather.com">weather API</a> for the forecast and display it in your app.</p>
@@ -33,19 +33,19 @@
 	<p>But what do we know about RESTful APIs that can make caching easier? The endpoints usually stay the same when operating on objects, but the methods change. We will enable caching for safe methods and then automatically invalidate the cache when we see a non-safe method request for a RESTful endpoint managed by API Gateway. It’s also possible you have updates on one endpoint that change another endpoint’s data. In that event, we urge you to consider whether API Gateway’s short default TTL timers fit your use case by allowing a small delay between updating data at the origin and serving that update from cache. Check out the below diagram for an example of how automatic cache invalidation would work for shared paths with different methods:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3v6vFjigmfN5K4Ql6Q7Fsx/f9dc70706d7246cff3fe24c73685f2ea/pasted-image-0-4.png" alt="" class="kg-image" width="1600" height="986" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3v6vFjigmfN5K4Ql6Q7Fsx/bfeb7bde6d1b4b757e094ca972f65517/pasted-image-0-4.png" alt="" class="kg-image" width="1600" height="986" loading="lazy">
 
 	</figure>
 	<p>Even for safe requests, caching API data is risky when it comes to <a href="https://www.cloudflare.com/application-services/solutions/api-security">security</a>. Done incorrectly, you could accidentally serve sensitive user data to the wrong person. That’s why Ricochet’s cache key includes the user’s API session identifier. This extra information in the cache key ensures that only an authorized user is able to receive their own cached data. For APIs without authentication, we hash the request parameters themselves and include that hash in the cache key, to ensure the correct data is returned for endpoints with static paths but variable inputs. Here’s an example for authenticated APIs:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KNh6YT4kyImu2mhltAa2F/2d2ddda602934466bd165aea75291a11/How-is-Speed-boost-different---Anonymous--1-.png" alt="" class="kg-image" width="1496" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KNh6YT4kyImu2mhltAa2F/93e3234b03971febfb04ed0347524b89/How-is-Speed-boost-different---Anonymous--1-.png" alt="" class="kg-image" width="1496" height="1200" loading="lazy">
 
 	</figure>
 	<p>And here’s an example for anonymous APIs, where we use a hash of the request body to preserve privacy and still enable unique, useful cache keys:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ihfmkMaM5efmRbaUxujGT/009846d088aaf4204b289f9d84a7072c/How-is-Speed-boost-different---Authenticated-1.png" alt="" class="kg-image" width="1496" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ihfmkMaM5efmRbaUxujGT/e0c268ed225ac5f31a329abcd55ba9d1/How-is-Speed-boost-different---Authenticated-1.png" alt="" class="kg-image" width="1496" height="1200" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -70,7 +70,7 @@
 	<p>We profiled five top global airline website APIs for flight status checks and compared their retrieval time against the airline logo’s retrieval time. Here are the results:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uGhMnkmmhYAmxzga68MCo/584ff888ee228a8ae0751b738c189464/image2-33.png" alt="" class="kg-image" width="1684" height="1038" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7uGhMnkmmhYAmxzga68MCo/36f4d84c9fcb83ef8372df674600180e/image2-33.png" alt="" class="kg-image" width="1684" height="1038" loading="lazy">
 
 	</figure>
 	<p>All five airlines saw on average a ~7x slow down for data that could easily be cached!</p>

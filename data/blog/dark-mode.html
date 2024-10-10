@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61QiOeplrC8eEpodCYr3Vm/9fefbdcf621cd71e9edd26b81e5e6ba9/image1-42.png" alt="Dark Mode for the Cloudflare Dashboard" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61QiOeplrC8eEpodCYr3Vm/db254c79029a092fa9e18903825f65f1/image1-42.png" alt="Dark Mode for the Cloudflare Dashboard" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today, dark mode is available for the Cloudflare Dashboard in beta! From your <a href="https://dash.cloudflare.com/profile">user profile</a>, you can configure the Cloudflare Dashboard in light mode, dark mode, or match it to your system settings.</p>
 	<p>For those unfamiliar, dark mode, or light on dark color schemes, uses light text on dark backgrounds instead of the typical dark text on light (usually white) backgrounds. In low-light environments, this can help reduce eyestrain and actually reduce power consumption on OLED screens. For many though, dark mode is simply a preference supported widely by applications and devices.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/58dMu82Wo7DpdqOHsoh66s/6669ee8a76246310d3c3f4812de3de12/image13-6.png" alt="Side by side comparing the Cloudflare dashboard in dark mode and in light mode" class="kg-image" width="2000" height="1299" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58dMu82Wo7DpdqOHsoh66s/15cc1b33d43d29b2d5579751676b81a6/image13-6.png" alt="Side by side comparing the Cloudflare dashboard in dark mode and in light mode" class="kg-image" width="2000" height="1299" loading="lazy">
 
 	</figure>
 	<p>Side by side comparing the Cloudflare dashboard in dark mode and in light mode</p>
@@ -34,7 +34,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k9oNOhJL3UoE6f9bBgilf/89eda5f3ebd19e25531000d8dd01b957/image11-6.png" alt="The appearance card in the dashboard for modifying color themes" class="kg-image" width="1999" height="509" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1k9oNOhJL3UoE6f9bBgilf/04cbb0f7e715ad2fd5d21f659f839c55/image11-6.png" alt="The appearance card in the dashboard for modifying color themes" class="kg-image" width="1999" height="509" loading="lazy">
 
 	</figure>
 	<p>The appearance card in the dashboard for modifying color themes</p>
@@ -50,7 +50,7 @@
 	<p>Before getting into the specifics of how we implemented dark mode, it helps to understand the system that underpins all product design and UI work at Cloudflare - the Cloudflare Design System.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2o0p4aO6GndFww4DkORffk/8755cf140f651806b55e4bcda264b722/image6-22.png" alt="The six pillars of the design system: logo, typography, color, layout, icons, videos" class="kg-image" width="1026" height="661" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2o0p4aO6GndFww4DkORffk/ff5c862d0f14a57b2c8e33d6e7ab8022/image6-22.png" alt="The six pillars of the design system: logo, typography, color, layout, icons, videos" class="kg-image" width="1026" height="661" loading="lazy">
 
 	</figure>
 	<p>The six pillars of the design system: logo, typography, color, layout, icons, videos</p>
@@ -68,7 +68,7 @@
 	<p>The use of color at Cloudflare has a well documented history. When we originally set out to build our color system, the <a href="https://color.cloudflare.design">tools we built</a> and the extensive <a href="https://blog.cloudflare.com/thinking-about-color">research we performed</a> resulted in a ten-hue, ten-luminosity set of colors that can be used to build digital products. These colors were built to be accessible — not just in terms of internal use, but for our customers. Take our blue hue scale, for example.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PGzm1z3tMdVi7DymNP7uP/df6520bb1c99fe91f598f5fb16b22c8a/image10-6.png" alt="Our blue color scale, as used on the Cloudflare Dashboard. This shows color-contrast accessible text and background pairings for each step in the scale." class="kg-image" width="1999" height="893" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PGzm1z3tMdVi7DymNP7uP/1e38bb546fd274bc4349d946466e7e77/image10-6.png" alt="Our blue color scale, as used on the Cloudflare Dashboard. This shows color-contrast accessible text and background pairings for each step in the scale." class="kg-image" width="1999" height="893" loading="lazy">
 
 	</figure>
 	<p>Our blue color scale, as used on the Cloudflare Dashboard. This shows color-contrast accessible text and background pairings for each step in the scale.</p>
@@ -77,14 +77,14 @@
 	<p>So, with this color system in place, how do we begin to ship a dark mode? It turns out there’s a simple solution to this, and it’s built into the JS standard library. We call <code>reverse()</code> and flip the luminosity scales.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/GUZ9MW5PKQYsaTCDWrL8n/418131385cb79d7c1a155fe37c142f3d/image12-8.png" alt="Our blue color scale after calling reverse on it. High luminosity colors are now at the start of the scale, making them contrast accessible with darker backgrounds (and vice-versa)." class="kg-image" width="1999" height="525" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GUZ9MW5PKQYsaTCDWrL8n/d893975cdc0d3783366ae5ec8cc1f7ae/image12-8.png" alt="Our blue color scale after calling reverse on it. High luminosity colors are now at the start of the scale, making them contrast accessible with darker backgrounds (and vice-versa)." class="kg-image" width="1999" height="525" loading="lazy">
 
 	</figure>
 	<p>Our blue color scale after calling reverse on it. High luminosity colors are now at the start of the scale, making them contrast accessible with darker backgrounds (and vice-versa).</p>
 	<p>By performing this small change within our dashboard’s React codebase and shipping a production preview deploy, we were able to see the Cloudflare Dashboard in dark mode with a whole new set of colors in a matter of minutes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n0vUwjdzCS1IWjvK0487K/b441ef5181881e538ec184a1e1da74ef/image7-9.png" alt="An early preview of the Cloudflare Dashboard after flipping our color scales." class="kg-image" width="1614" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3n0vUwjdzCS1IWjvK0487K/83aae923cb84ec67ce50ef45779e2c20/image7-9.png" alt="An early preview of the Cloudflare Dashboard after flipping our color scales." class="kg-image" width="1614" height="1999" loading="lazy">
 
 	</figure>
 	<p>An early preview of the Cloudflare Dashboard after flipping our color scales.</p>
@@ -105,20 +105,20 @@
 	<p>Here is what it looks like in our design system:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53o6OTIT1cBmThMDNR0aXP/b529b04d5ce60adf443fb58a1cdc9851/image9-7.png" alt="Black background color contrast for white text" class="kg-image" width="960" height="34" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53o6OTIT1cBmThMDNR0aXP/43f973ef4ab2ebbe615ec3e86b0bc7f0/image9-7.png" alt="Black background color contrast for white text" class="kg-image" width="960" height="34" loading="lazy">
 
 	</figure>
 	<p>Black background color contrast for white text</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3083uB7mi7KPoGzbGldGJY/1d90f031a9fb30172fccb0d5fad5f0c7/image8-8.png" alt="Gray background color contrast for white text" class="kg-image" width="957" height="34" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3083uB7mi7KPoGzbGldGJY/ba3a68d98618794e1117428f2c9aee7d/image8-8.png" alt="Gray background color contrast for white text" class="kg-image" width="957" height="34" loading="lazy">
 
 	</figure>
 	<p>Gray background color contrast for white text</p>
 	<p>And here is a more realistic example:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/S5q4EXp6VFsU65wupcmwG/3876aa86c2413406fbcf50326278a63b/image4-27.png" alt="lorem ipsum sample text on black background and on gray background" class="kg-image" width="678" height="346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/S5q4EXp6VFsU65wupcmwG/ba61887437a4a331b18d3a7a7afb6df7/image4-27.png" alt="lorem ipsum sample text on black background and on gray background" class="kg-image" width="678" height="346" loading="lazy">
 
 	</figure>
 	<p>lorem ipsum sample text on black background and on gray background</p>
@@ -126,7 +126,7 @@
 	<p>Our technique during the prototyping stage involved flipping our color scale; however, we additionally created a tool to let us replace any color within the scale arbitrarily. As the dashboard is made up of charts, icons, links, shadows, buttons and certainly other components, we needed to be able to see how they reacted in their various possible states. Importantly, we also wanted to improve the accessibility of these components and pay particular attention to color contrast.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DN7Nzw7yW5WKtQXWpfej9/5f6ca18106aaf6f7791174e049757ccc/image5-24.png" alt="Color picker tool screenshot showing a color scale" class="kg-image" width="400" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DN7Nzw7yW5WKtQXWpfej9/fabb6d2b18a3ac4aa438a5048a765b75/image5-24.png" alt="Color picker tool screenshot showing a color scale" class="kg-image" width="400" height="426" loading="lazy">
 
 	</figure>
 	<p>Color picker tool screenshot showing a color scale</p>
@@ -147,14 +147,14 @@
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JApmRD2XeF5fhAzjaGCdn/1dc37c090472f57d230aa13a11f3d144/image2-44.png" alt="Example showing the various colors for states of buttons in light and dark mode" class="kg-image" width="1414" height="309" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JApmRD2XeF5fhAzjaGCdn/ef0764d345c51fbfea035f637317eb02/image2-44.png" alt="Example showing the various colors for states of buttons in light and dark mode" class="kg-image" width="1414" height="309" loading="lazy">
 
 	</figure>
 	<p>Example showing the various colors for states of buttons in light and dark mode</p>
 	<p>We wanted to ensure that each of these states would be at least compliant with the AA accessibility standards according to the WCAG. Using a combination of our design systems documentation and a prioritized list of components and pages based on occurrence and visits, we meticulously reviewed each state of our components to ensure their compliance.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SoATB16O1z2em0u7nfoUq/a286e7271bc661d555834b0ab712b5a7/image3-34.png" alt="Side by side comparison of the navbar in light and dark modes" class="kg-image" width="1920" height="504" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SoATB16O1z2em0u7nfoUq/94a29e459c22bf049d53dfb370a7f730/image3-34.png" alt="Side by side comparison of the navbar in light and dark modes" class="kg-image" width="1920" height="504" loading="lazy">
 
 	</figure>
 	<p>Side by side comparison of the navbar in light and dark modes</p>

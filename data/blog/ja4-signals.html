@@ -1,7 +1,7 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IYFtccvqFLBlZVLf30WOC/e2ee38c38f147decb8abc24759f7bac5/2361-1.png" alt="2361-1" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IYFtccvqFLBlZVLf30WOC/570728f03aebd288b80f88a865103d4c/2361-1.png" alt="2361-1" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p>For many years, Cloudflare has used advanced fingerprinting techniques to help block online threats, in products like our <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep"><u>DDoS engine</u></a>, <a href="https://blog.cloudflare.com/patching-the-internet-fixing-the-wordpress-br"><u>our WAF</u></a>, and <a href="https://www.cloudflare.com/application-services/products/bot-management"><u>Bot Management</u></a>. For the purposes of Bot Management, fingerprinting characteristic elements of client software help us quickly identify what kind of software is making an HTTP request. It’s an efficient and accurate way to differentiate a browser from a Python script, while preserving user privacy. These fingerprints are used on their own for simple rules, and they underpin complex machine learning models as well.&nbsp;</p>
 	<p>Making sure our fingerprints keep pace with the pace of change on the Internet is a constant and critical task. Bots will always adapt to try and look more browser-like. Less frequently, browsers will introduce major changes to their behavior and affect the entire Internet landscape. Last year, Google <a href="https://chromestatus.com/feature/5124606246518784"><u>did exactly that</u></a>, making older TLS fingerprints almost useless for identifying the latest version of Chrome.</p>
@@ -38,7 +38,7 @@
 	<p>JA4 fingerprint is resistant to the randomization of TLS extensions and incorporates additional useful dimensions, such as Application Layer Protocol Negotiation (ALPN), which were not part of JA3. The introduction of JA4 has been met with positive reception in the cybersecurity community, with several open-source tools and commercial products beginning to incorporate it into their systems, including <a href="https://developers.cloudflare.com/bots/concepts/ja3-ja4-fingerprint"><u>Cloudflare</u></a>. The JA4 fingerprint is available under the <a href="https://github.com/FoxIO-LLC/ja4/blob/main/License%20FAQ.md"><u>BSD 3-Clause license</u></a>, promoting seamless upgrades from JA3. Other fingerprints within the suite, such as JA4S (TLS Server Response) and JA4H (HTTP Client Fingerprinting), are licensed under the proprietary FoxIO License, which is designed for broader use but requires specific arrangements for commercial monetization.</p>
 	<p>Let’s take a look at specific JA4 fingerprint example, representing the latest version of Google Chrome on Linux:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gjWV3tr6fAzSFNq9Z8Xeu/ebf15a5a727e3a3b9cfc4d65b3bd327b/2361-2.png" alt="2361-2" class="kg-image" width="1999" height="1273" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gjWV3tr6fAzSFNq9Z8Xeu/360f0079d987ebc8f8c61f4596b158be/2361-2.png" alt="2361-2" class="kg-image" width="1999" height="1273" loading="lazy">
 	</figure>
 	<ol>
 		<li>
@@ -68,7 +68,7 @@
 	</ol>
 	<p>Here is a <a href="https://www.wireshark.org"><u>Wireshark</u></a> example of TLS ClientHello from the latest Chrome on Linux querying <a href="https://www.cloudflare.com"><u>https://www.cloudflare.com</u></a>:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3a1jNGnnYTNZbyshIvWhtb/f5ee4a39777628801bedf53b07ac527b/2361-3.png" alt="2361-3" class="kg-image" width="1999" height="1115" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3a1jNGnnYTNZbyshIvWhtb/ead13d6dfdcef44a433bdd3f9c72952e/2361-3.png" alt="2361-3" class="kg-image" width="1999" height="1115" loading="lazy">
 	</figure>
 	<p>Integrating JA4 support into Cloudflare required rethinking our approach to parsing TLS ClientHello messages, which were previously handled in separate implementations across C, Lua, and Go. Recognizing the need to boost performance and ensure memory safety, we developed a new Rust-based crate, client-hello-parser. This unified parser not only simplifies modifications by centralizing all related logic but also prepares us for future transitions, such as replacing nginx with an upcoming Rust-based service. Additionally, this streamlined parser facilitates the exposure of JA4 fingerprints across our platform, improving the integration with Cloudflare's firewall rules, Workers, and analytics systems.</p>
 	<div class="flex anchor relative">

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZpaAETYvADuip6gpfOvTP/01adfb4e76ed4452595650b6d7b7e523/io_submit-the-epoll-alternative-youve-never-heard-about.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZpaAETYvADuip6gpfOvTP/ec3fd5ee1439b795656cc11679384d91/io_submit-the-epoll-alternative-youve-never-heard-about.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>My curiosity was piqued by an LWN article about <a href="https://lwn.net/Articles/743714">IOCB_CMD_POLL - A new kernel polling interface</a>. It discusses an addition of a new polling mechanism to Linux AIO API, which was merged in 4.18 kernel. The whole idea is rather intriguing. The author of the patch is proposing to use the Linux AIO API with things like network sockets.</p>
 	<p>Hold on. The Linux AIO is designed for, well, <b>A</b>synchronous disk <b>IO</b>! Disk files are not the same thing as network sockets! Is it even possible to use the Linux AIO API with network sockets in the first place?</p>
@@ -6,7 +6,7 @@
 	<p>But before we start, what is Linux AIO anyway?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eFqY9nu5REcVlHdjmlag3/47c84df38ca7420fad6baedbef3ad26b/6891085910_3390ebe29f_k.jpg" alt="" class="kg-image" width="2048" height="1182" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eFqY9nu5REcVlHdjmlag3/bc9f6b06f408bd6703a8ceb51b27f588/6891085910_3390ebe29f_k.jpg" alt="" class="kg-image" width="2048" height="1182" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/schill/6891085910">Photo</a> by <a href="https://www.flickr.com/photos/schill">Scott Schiller</a> CC/BY/2.0</p>
@@ -104,7 +104,7 @@ io_getevents(0x7fe1e800a000, 1, 1, [{data=0, obj=0x7fffb9588910, res=1073741824,
 	<p>The kernel spent 738ms in <code>io_submit</code> and only 15us in <code>io_getevents</code>. The kernel behaves the same way with network sockets - all the work is done in <code>io_submit</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Aem3ZSReNmWJZwFNQmySO/466e6ee542111b1aec2a6f02ae40e4e2/Network_card-2.jpg" alt="" class="kg-image" width="2000" height="876" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Aem3ZSReNmWJZwFNQmySO/326c6c7ca476e955d42a4e14ba8e6150/Network_card-2.jpg" alt="" class="kg-image" width="2000" height="876" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Network_card.jpg">Photo</a> by <a href="https://commons.wikimedia.org/wiki/User:Helix84">Helix84</a> CC/BY-SA/3.0</p>
@@ -215,7 +215,7 @@ do_syscall:
 	<p>With this code fixing the <code>io_getevents</code> function, our Linux AIO version of the TCP proxy needs only one syscall per loop, and indeed is a tiny bit faster than the read+write code.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BUl6rp23b2NJ1XX8Z7RmV/1de1221ac1f6541ac1aa4436b12d812d/16026681353_90b26e0731_z.jpg" alt="" class="kg-image" width="640" height="361" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BUl6rp23b2NJ1XX8Z7RmV/1260b98a4e8b77dc6610626a38ce6ecb/16026681353_90b26e0731_z.jpg" alt="" class="kg-image" width="640" height="361" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/99279135@N05/16026681353">Photo</a> by <a href="https://www.flickr.com/photos/99279135@N05">Train Photos</a> CC/BY-SA/2.0</p>

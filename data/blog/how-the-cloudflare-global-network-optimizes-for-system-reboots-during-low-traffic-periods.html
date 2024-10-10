@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65eDRbf8jNnmNCZdeHQzcC/af2401bccfac212601f19cdf9eb20b12/image6-2.png" alt="How the Cloudflare global network optimizes for system reboots during low-traffic periods" class="kg-image" width="1255" height="698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65eDRbf8jNnmNCZdeHQzcC/e0998e5c947abaec05d4b40c90db4a4d/image6-2.png" alt="How the Cloudflare global network optimizes for system reboots during low-traffic periods" class="kg-image" width="1255" height="698" loading="lazy">
 
 	</figure>
 	<p>To facilitate the huge scale of Cloudflare’s customer base, we maintain data centers which span more than 300 cities in over 100 countries, including approximately 30 locations in Mainland China.</p>
@@ -46,7 +46,7 @@
 	<p>A theoretical solution to this was <b>sine-fitting</b> on the CPU pattern of the data center over a configurable period. e.g. two weeks. This method is a way to transform the pattern into a theoretical sinusoidal wave as shown in the image below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6m0REdheEVhO4W3BsS5HFL/608b2ab2f9ed7e3904b52dd109d84d62/bkk05.png" alt="This is an example of a datacenter with a good sine fit." class="kg-image" width="1402" height="1050" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6m0REdheEVhO4W3BsS5HFL/b1b0b057c1f1dfd355e74d65d3ce5e48/bkk05.png" alt="This is an example of a datacenter with a good sine fit." class="kg-image" width="1402" height="1050" loading="lazy">
 
 	</figure>
 	<p>With a sine wave, the most common troughs can be determined. The periods where these troughs occur are then used as options for the maintenance window.</p>
@@ -62,7 +62,7 @@
 	<p>The image below shows a theoretical representation of a sine wave. It is represented by the mathematical function y(t) = Asin(2πft + φ) where A = Amplitude, f = Frequency, t = Time and φ = Phase.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Lz6pTBIAuP5fumgeqQEP5/ffa306c03130a9d75ec3e19b70f53fa8/sine.drawio--4-.png" alt="A sine wave is a geometric waveform that oscillates (moves up, down, or side-to-side) periodically." class="kg-image" width="534" height="286" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Lz6pTBIAuP5fumgeqQEP5/65353694941e554cacd8e05990deb69f/sine.drawio--4-.png" alt="A sine wave is a geometric waveform that oscillates (moves up, down, or side-to-side) periodically." class="kg-image" width="534" height="286" loading="lazy">
 
 	</figure>
 	<p>In practice, various programming language packages exist to fit an arbitrary dataset on a curve. For example, Python has the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">scipy curve_fit function</a>.</p>
@@ -98,7 +98,7 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 	<p>If there’s an accurate enough fit, the window is cached in Consul along with other metadata. Otherwise, fallback logic is implemented. For various reasons, some data centers might not have enough data for a fit at that moment. For example, a data center which was only recently provisioned and hasn’t served enough traffic yet.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CrPBsJwkVqmvL4NYkcTsK/248d26868e3cf544966967e3de851740/Frame-5269.png" alt="" class="kg-image" width="1600" height="445" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CrPBsJwkVqmvL4NYkcTsK/35b0bbf59fce37c7fe0efc461e1f562f/Frame-5269.png" alt="" class="kg-image" width="1600" height="445" loading="lazy">
 
 	</figure>
 	<p>When a server requests to reboot, the system checks if the current time is within the maintenance window first, before running other pre-flight checks. In most cases the window already exists because of the prefetch mechanism implemented, but when it doesn’t due to Consul session expiry or some other reason, it is computed using the CPU data in Prometheus.</p>
@@ -119,7 +119,7 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 	<p><a href="https://youtu.be/Jl-Ye38qkRc">Curve fitting in Python with curve_fit</a> describes curve fitting and calculating the chi-squared value. The formula for a goodness of fit chi-squared test in the image below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5H29tgQrHcJFXZg2BSAhYA/313cad758f2460782efc27bc65a174ea/Untitled.png" alt="" class="kg-image" width="1600" height="808" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5H29tgQrHcJFXZg2BSAhYA/e61c1354768aaf36eadcfdc2e0d6e60e/Untitled.png" alt="" class="kg-image" width="1600" height="808" loading="lazy">
 
 	</figure>
 	<p>The different values are the observed (Yi), expected (f(Xi)) and uncertainty. In this theory, the closer the chi-square value to the length of the sample, the better the fit is. Chi-squared values that are a lot smaller than the length represent an overestimated uncertainty and much larger represent a bad fit.</p>
@@ -144,7 +144,7 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 	<p>These data centers do not exhibit a sinusoidal pattern and the maintenance window can only be determined arbitrarily. This is common in test data centers which do not handle customer traffic. In these cases, it makes sense to turn off load-based reboots and use an arbitrary window. In these cases, it is common to require faster reboots on a different schedule to catch any potential issues early.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d7CxZfSQkvubSUdK8DlQA/682fddb7cedac5c4a70532d6cf9c28ef/bgw05.png" alt="This data center has no low-traffic periods." class="kg-image" width="1600" height="1201" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5d7CxZfSQkvubSUdK8DlQA/00f849b422a0383bbd051741758ab75d/bgw05.png" alt="This data center has no low-traffic periods." class="kg-image" width="1600" height="1201" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -158,7 +158,7 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 	<p>These data centers exhibit sinusoidal traffic patterns but are a bit skewed, with some smaller troughs within the wave cycle. The troughs (and hence the windows) are still correct, but the accuracy of fit is reduced.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Kh1ulRPX7V1vWq9BufT8r/9f24476544dbe930c75f4184dc14dfaa/alg01.png" alt="This data center has low-traffic periods, but has multiple troughs resulting in a skewed fit. " class="kg-image" width="1402" height="1048" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Kh1ulRPX7V1vWq9BufT8r/7ded85df831ae8c06a4c82674f59d7ec/alg01.png" alt="This data center has low-traffic periods, but has multiple troughs resulting in a skewed fit. " class="kg-image" width="1402" height="1048" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -172,7 +172,7 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 	<p>These are data centers with very clear patterns and great fits. This is the ideal scenario and most fall into this category.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37lKmcTlLr9hdMP59WNlDJ/d80c9b9509e6442a5ff46309317183bc/blr02.png" alt="This data center fits perfectly on the sine curve. It has a high accuracy of it." class="kg-image" width="1400" height="1052" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37lKmcTlLr9hdMP59WNlDJ/4bfed02a2a07be2a6ba0ca96823e5961/blr02.png" alt="This data center fits perfectly on the sine curve. It has a high accuracy of it." class="kg-image" width="1400" height="1052" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-outage-on-july-17-2020">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-outage-on-july-17-2020">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-outage-on-july-17-2020">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-outage-on-july-17-2020">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cIPl5f67VVwOcCpR8s8vI/835b7816efe3ae53604123adb58c8022/cloudflare-outage-on-july-17-2020.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-outage-on-july-17-2020">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-outage-on-july-17-2020">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-outage-on-july-17-2020">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-outage-on-july-17-2020">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cIPl5f67VVwOcCpR8s8vI/45872f03e903a8ee62861fd15b0e7005/cloudflare-outage-on-july-17-2020.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today a configuration error in our backbone network caused an outage for Internet properties and Cloudflare services that lasted 27 minutes. We saw traffic drop by about 50% across our network. Because of the architecture of our backbone this outage didn’t affect the entire Cloudflare network and was localized to certain geographies.</p>
 	<p>The outage occurred because, while working on an unrelated issue with a segment of the backbone from Newark to Chicago, our network engineering team updated the configuration on a router in Atlanta to alleviate congestion. This configuration contained an error that caused all traffic across our backbone to be sent to Atlanta. This quickly overwhelmed the Atlanta router and caused Cloudflare network locations connected to the backbone to fail.</p>
@@ -17,7 +17,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lxqQ2vEuos6lPh4nPIxec/c8c56cdfc5cbdc9a2c59f9ad0f9e5a5c/1a.png" alt="" class="kg-image" width="1043" height="749" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lxqQ2vEuos6lPh4nPIxec/6227b0963540779f2a6c1e1a2d3bfab8/1a.png" alt="" class="kg-image" width="1043" height="749" loading="lazy">
 
 	</figure>
 	<p>Cloudflare operates a <i>backbone</i> between many of our data centers around the world. The backbone is a series of private lines between our data centers that we use for faster and more reliable paths between them. These links allow us to carry traffic between different data centers, without going over the public Internet.</p>
@@ -58,7 +58,7 @@
 	<p>Other, unaffected data centers show no change in their CPU utilization during the incident. That’s indicated by the fact that the green color does not change during the incident for those data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UOZSLl9J7PyVPw3kePKnO/9e2e0ee9f63c57dcedce2996cabb9423/tm.png" alt="" class="kg-image" width="1151" height="1141" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UOZSLl9J7PyVPw3kePKnO/5e0f993255ee89d7d7170b6a800c4f14/tm.png" alt="" class="kg-image" width="1151" height="1141" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -9,7 +9,7 @@
 				"name": "Matthew Prince",
 				"slug": "matthew-prince",
 				"bio": "A little bit geek, wonk, and nerd. Repeat entrepreneur, recovering lawyer, and former ski instructor. Co-founder & CEO of Cloudflare (NYSE: NET).",
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VD9WePJ1jvjFwuSRF0IfQ/4867307860761eb8209f67f2a9dd771f/matthew-prince.jpeg",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VD9WePJ1jvjFwuSRF0IfQ/5e4f7d5fd4825358b33b2ead623140d8/matthew-prince.jpeg",
 				"location": "San Francisco, CA",
 				"website": null,
 				"twitter": "@eastdakota",
@@ -17,9 +17,9 @@
 			}
 		],
 		"excerpt": "About a month ago I wrote a blog post titled: When Is a Page View Not a Page View.\n\nIt explained how CloudFlare counted page views differently than beacon-based analytics systems like Google Analytics. ",
-		"feature_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UsWxZ5O79xPIbmVmfXWde/71547100830c0fd5e142be19e52408b0/a-quick-update-on-page-views.jpg",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UsWxZ5O79xPIbmVmfXWde/1eeb332a19f496955dbf93bba9b7d55e/a-quick-update-on-page-views.jpg",
 		"featured": false,
-		"html": "\n            <figure class=\"kg-card kg-image-card \">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/6a1tTTaNTAJ3T273e4pAAr/fd5002617109d12b99239953266e21b2/ajax_logo.jpg.scaled500.jpg\" alt=\"A Quick Update on Page Views\" class=\"kg-image\" width=\"285\" height=\"300\" loading=\"lazy\"/>\n            \n            </figure><p>About a month ago I wrote a blog post titled: <a href=\"/understanding-analytics-when-is-a-page-view-n\">When Is a Page View Not a Page View.</a></p><p>It explained how CloudFlare counted page views differently than beacon-based analytics systems like Google Analytics. While we were following the industry-standard method of counting page views based on raw logs, we weren&#39;t entirely happy with the results in some cases. Specifically, websites with a lot of AJAX-driven requests were seeing extremely high page view counts that simply didn&#39;t jive with what they expected.</p><p>On Friday (26 Aug 2011), we pushed a change to our logging system to help get page views more in line with expectations. We no longer treat AJAX (XHR) calls as page views. These calls will continue to be represented in the overall &quot;Hits&quot; number, which counts all resource requests. Overall, this has resulted in about a 17% drop in page views reported system wide. For individual sites, the impact is either nothing (in most cases) or substantial (for sites that rely heavily on AJAX). For sites in the latter category, you&#39;re likely to see a significant drops in page view counts with the new number being more in line with what you&#39;d expect.</p><p>The update required us to change the way we were counting logs at the edge of our network. This means it&#39;s not possible for us to go back and revert historical page view counts. Going forward, we&#39;re confident that this will provide a more accurate representation of what people expect for page views.</p>",
+		"html": "\n            <figure class=\"kg-card kg-image-card \">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6a1tTTaNTAJ3T273e4pAAr/e8a58110a5df019006b3cdb2af8cd8b8/ajax_logo.jpg.scaled500.jpg\" alt=\"A Quick Update on Page Views\" class=\"kg-image\" width=\"285\" height=\"300\" loading=\"lazy\"/>\n            \n            </figure><p>About a month ago I wrote a blog post titled: <a href=\"/understanding-analytics-when-is-a-page-view-n\">When Is a Page View Not a Page View.</a></p><p>It explained how CloudFlare counted page views differently than beacon-based analytics systems like Google Analytics. While we were following the industry-standard method of counting page views based on raw logs, we weren&#39;t entirely happy with the results in some cases. Specifically, websites with a lot of AJAX-driven requests were seeing extremely high page view counts that simply didn&#39;t jive with what they expected.</p><p>On Friday (26 Aug 2011), we pushed a change to our logging system to help get page views more in line with expectations. We no longer treat AJAX (XHR) calls as page views. These calls will continue to be represented in the overall &quot;Hits&quot; number, which counts all resource requests. Overall, this has resulted in about a 17% drop in page views reported system wide. For individual sites, the impact is either nothing (in most cases) or substantial (for sites that rely heavily on AJAX). For sites in the latter category, you&#39;re likely to see a significant drops in page view counts with the new number being more in line with what you&#39;d expect.</p><p>The update required us to change the way we were counting logs at the edge of our network. This means it&#39;s not possible for us to go back and revert historical page view counts. Going forward, we&#39;re confident that this will provide a more accurate representation of what people expect for page views.</p>",
 		"id": "43BPPSMwB8vu6a89ioamo2",
 		"localeList": {
 			"name": "A Quick Update on Page Views Config",
@@ -68,7 +68,7 @@
 			}
 		],
 		"title": "A Quick Update on Page Views",
-		"updated_at": "2024-08-27T02:52:35.915Z",
+		"updated_at": "2024-10-10T00:38:12.101Z",
 		"url": "https://blog.cloudflare.com/a-quick-update-on-page-views"
 	},
 	"translations": {

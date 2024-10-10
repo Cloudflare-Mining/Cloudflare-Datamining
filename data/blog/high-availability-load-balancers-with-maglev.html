@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Uvj1OyKQ5tysl2y1PW7S2/fd5da221b283f3690c7726432ed7a7fd/image1-4.png" alt="" class="kg-image" width="1200" height="688" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Uvj1OyKQ5tysl2y1PW7S2/c8b29a98ab67385666dce0fed14664b6/image1-4.png" alt="" class="kg-image" width="1200" height="688" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -64,7 +64,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CMbFBlBDHc4rzZ458SE03/e7f775064cb52098dd6ef904938cce83/image6-1.png" alt="" class="kg-image" width="1200" height="723" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CMbFBlBDHc4rzZ458SE03/d1a7f034913bb4d188048d4f14620867/image6-1.png" alt="" class="kg-image" width="1200" height="723" loading="lazy">
 
 	</figure>
 	<p>Previously, when traffic arrived at our backend data centers, our routers would pick and forward packets to one of the L4 load balancers servers it knew about. &nbsp;These L4 load balancers would determine what service the traffic was for, then forward the traffic to one of the service's L7 servers.</p>
@@ -80,7 +80,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sQ0ZsemGl1ZjnxB8SaBZ2/86bed762c7491b31fb2ed431ea66ab5e/image5-1.png" alt="" class="kg-image" width="1200" height="723" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sQ0ZsemGl1ZjnxB8SaBZ2/dee6b3b33c0d088b8f2e5378a714ae5a/image5-1.png" alt="" class="kg-image" width="1200" height="723" loading="lazy">
 
 	</figure>
 	<p>During normal operations, our new architecture has similar behavior to the previous design. A L4 load balancer would be selected by our routers, which would then forward traffic to a service's L7 server.</p>
@@ -129,7 +129,7 @@
 	<p>Where possible, we wanted to use commonplace and reliable Linux features. Linux has implemented a powerful layer 4 load balancer, the IP Virtual Server (IPVS), since the early 2000s. IPVS has supported the Maglev scheduler <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=039f32e8cdea29b4d0680df7a83817b5ec4166e1">since Linux 4.18</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FK6ZVvqjjOVdFwdvTZM3L/76092c0cf37f533c66145c62274cf57f/image2-3.png" alt="" class="kg-image" width="1200" height="843" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FK6ZVvqjjOVdFwdvTZM3L/5617f15dd5cf447bff3a47e7dff5702f/image2-3.png" alt="" class="kg-image" width="1200" height="843" loading="lazy">
 
 	</figure>
 	<p>Our load balancer and application servers are spread across multiple racks and subnets. To route traffic from the load balancer we opted to use Foo-Over-UDP encapsulation.</p>

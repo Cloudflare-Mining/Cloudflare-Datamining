@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SDfDFG2CTr8NOiyt9xLR9/433a6837217344a01d0e789fdb26d31c/thwarting-the-tactics-of-the-equifax-attackers.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SDfDFG2CTr8NOiyt9xLR9/e479da2b461f1aeb75f80d5b8b981a4a/thwarting-the-tactics-of-the-equifax-attackers.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We are now 3 months on from one of the biggest, most significant data breaches in history, but has it redefined people's awareness on security?</p>
 	<p>The answer to that is absolutely yes, awareness is at an all-time high. Awareness, however, does not always result in positive action. The fallacy which is often assumed is "surely, if I keep my software up to date with all the patches, that's more than enough to keep me safe?". It's true, keeping software up to date does defend against known vulnerabilities, but it's a very reactive stance. The more important part is protecting against the unknown.</p>
@@ -6,7 +6,7 @@
 	<p>Looking at the wider landscape, an increase in security research has created a surge of CVEs (Common Vulnerability and Exposures) being announced. This compounded by GDPR, NIST and other new data protection legislation, businesses are now forced to pay much more attention to security vulnerabilities that potentially could affect their software, and ultimately put them on the forever growing list of victims of data breaches.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://public.tableau.com/profile/nela7296#!/vizhome/CommonVulnerabilitiesandExposurescvedetails_com/Sheet2">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8XeikDcpPYgT2tFoIN9IT/72bc40373035336525594193e5f072a3/cve2.png" alt="" class="kg-image" width="2556" height="1118" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8XeikDcpPYgT2tFoIN9IT/fc5083fcf76036e99e0a5500a030851d/cve2.png" alt="" class="kg-image" width="2556" height="1118" loading="lazy">
 		</a>
 	</figure>
 	<p>Dissecting the Equifax tragedy, in testimony from the CEO, he mentions that the reason for the breach was that there was one single person within the organisation who was responsible for communicating the availability of the patch for Apache Struts, the software at the heart of the breach. The crucial lesson learned from Equifax is that we are all human, and that mistakes can happen, however having multiple people responsible for communicating and notifying teams about threats is crucial. In this case, the mistake almost destroyed one of the largest credit agencies in the world.</p>
@@ -47,7 +47,7 @@ root@struts-demo:~$</code></pre>
 	<p>In the last week, we have seen over 180,000 hits on our WAF rules protecting against Apache Struts across the Cloudflare network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IPzn62W8nzdCNR4F8if95/9e5325cabc1000308b7a82d66be0a568/Struts-1.png" alt="" class="kg-image" width="2426" height="2084" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IPzn62W8nzdCNR4F8if95/debceba1c6e4582142c2854525567ddc/Struts-1.png" alt="" class="kg-image" width="2426" height="2084" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -72,7 +72,7 @@ root@struts-demo:~$</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xkZ2dHeg7dLuOI7TUoyfS/11e80327cd63f2ca9ff591571a1441fa/emaileg.png" alt="" class="kg-image" width="1458" height="130" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xkZ2dHeg7dLuOI7TUoyfS/46bc35df59150c95d70e8be3e6d1a035/emaileg.png" alt="" class="kg-image" width="1458" height="130" loading="lazy">
 
 	</figure>
 	<p>Due to the lack of validation, the query which the web application sends to the database will be:</p>
@@ -86,13 +86,13 @@ root@struts-demo:~$</code></pre>
 	<p>Many SQLi attacks are often on fields which are not often considered high risk, like an authentication form for example. To put the seriousness of SQLi attacks in perspective, in the last week, we have seen over 2.4 million matches.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4521BwLEn69dAUQR0W5sbC/495f6267980498d0f220c36462e04026/SQLi-1.png" alt="" class="kg-image" width="2412" height="2072" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4521BwLEn69dAUQR0W5sbC/4fc29447225748f0583fe55448c8f51d/SQLi-1.png" alt="" class="kg-image" width="2412" height="2072" loading="lazy">
 
 	</figure>
 	<p>The Cloudflare WAF is built to not only protect customers against SQLi and RCE based attacks, but also add <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">protection against Cross Site Scripting (XSS)</a> and a number of other known attacks. On an average week, just on our Cloudflare Specials WAF ruleset, we see over 138 million matches.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6T7PzjGJwXvJLNAk006MMf/e411ce288b5f95193e104994672a3546/WAF.png" alt="" class="kg-image" width="3142" height="1748" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6T7PzjGJwXvJLNAk006MMf/4cfc9cb7f2c1ad9602526bef2ccfef2a/WAF.png" alt="" class="kg-image" width="3142" height="1748" loading="lazy">
 
 	</figure>
 	<p>The next important part is communication and awareness; understanding what you have installed, what versions you are running, and most importantly, what announcements your vendor is making. Generally, most notifications are received via email, and are usually quite cumbersome to digest, regardless of their complexity, it is crucial to try and understand them.</p>

@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tjdb8oktiBnsjsr6Fj109/9350cd5dededa0201771e4e9998eb4f2/image5-19.png" alt="How we detect route leaks and our new Cloudflare Radar route leak service" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tjdb8oktiBnsjsr6Fj109/dca51bae6a054cc120d91c11a35c54fe/image5-19.png" alt="How we detect route leaks and our new Cloudflare Radar route leak service" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Today we’re introducing Cloudflare Radar’s route leak data and API so that anyone can get information about route leaks across the Internet. We’ve built a comprehensive system that takes in data from public sources and Cloudflare’s view of the Internet drawn from our massive global network. The system is now feeding route leak data on Cloudflare Radar’s ASN pages and via the API.</p>
@@ -27,7 +27,7 @@
 	<p>At Cloudflare, we have developed a system to detect route leak events automatically and send notifications to multiple channels for visibility. As we continue our efforts to bring more relevant <a href="https://developers.cloudflare.com/radar">data to the public</a>, we are happy to announce that we are starting an <a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents">open data API</a> for our route leak detection results today and integrate results to <a href="https://radar.cloudflare.com">Cloudflare Radar</a> pages.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bWYvHZtatR3ooYMKq2WCb/91a866d86838d12f7179560a24849f1e/image4-32.png" alt="" class="kg-image" width="1310" height="602" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bWYvHZtatR3ooYMKq2WCb/79ef433f8c46c40aefa2fefe35905aa7/image4-32.png" alt="" class="kg-image" width="1310" height="602" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -45,7 +45,7 @@
 	<p>In a customer-provider relationship the customer AS has an agreement with another network to transit its traffic to the global routing table. In a peer-to-peer relationship two ASes agree to free bilateral traffic exchange, but only between their own IPs and the IPs of their customers. Finally, ASes that belong under the same administrative entity are considered siblings, and their traffic exchange is often unrestricted. &nbsp;The image below illustrates how the three main relationship types translate to export policies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XAOHLT8UtzkLQigSbcrUd/21370590385294bd88951856f2f527ec/image7-7.png" alt="" class="kg-image" width="1653" height="738" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XAOHLT8UtzkLQigSbcrUd/34f8de710fcdda2c4feb7fd1eaaec576/image7-7.png" alt="" class="kg-image" width="1653" height="738" loading="lazy">
 
 	</figure>
 	<p>By categorizing the types of AS-level relationships and their implications on the propagation of BGP routes, we can define multiple phases of a prefix origination announcements during propagation:</p>
@@ -63,7 +63,7 @@
 	<p>An AS path that follows <a href="https://ieeexplore.ieee.org/document/6363987"><b>valley-free routing principle</b></a> will have <b>upward, peering, downward</b> phases, <b>all optional</b> but have to be <b>in that order</b>. Here is an example of an AS path that conforms with valley-free routing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mm4sD88Ai3cFOS7ugzhoH/0a5e93873b022bd17507dbd3ac332ddc/image11-4.png" alt="" class="kg-image" width="1563" height="729" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mm4sD88Ai3cFOS7ugzhoH/d0ea889e5d22d60d4648b7f13a69b08b/image11-4.png" alt="" class="kg-image" width="1563" height="729" loading="lazy">
 
 	</figure>
 	<p>In RFC7908, <a href="https://www.rfc-editor.org/rfc/rfc7908.html"><i>"Problem Definition and Classification of BGP Route Leaks"</i></a>, the authors define six types of route leaks, and we refer to these definitions in our system design. Here are illustrations of each of the route leak types.</p>
@@ -79,7 +79,7 @@
 	<p>An AS path that contains a provider-customer and customer-provider segment is considered a type 1 leak. The following example: AS4 → AS5 → AS6 forms a type 1 leak.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Njxtz1neeF3ejVaLH6RPi/d50fecb94405ec4610585554e60ec151/image9-5.png" alt="" class="kg-image" width="1577" height="811" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Njxtz1neeF3ejVaLH6RPi/4836161f45d7f547608839f3a11467dd/image9-5.png" alt="" class="kg-image" width="1577" height="811" loading="lazy">
 
 	</figure>
 	<p>Type 1 is the most recognized type of route leaks and is very impactful. In many cases, a customer route is preferable to a peer or a provider route. In this example, AS6 will likely prefer sending traffic via AS5 instead of its other peer or provider routes, causing AS5 to unintentionally become a transit provider. This can significantly affect the performance of the traffic related to the leaked prefix or cause outages if the leaking AS is not provisioned to handle a large influx of traffic.</p>
@@ -96,7 +96,7 @@
 	<p>Here is an example: AS3 → AS4 → AS5 forms a &nbsp;type 2 leak.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18VJCjED1cnQmJd0cXPnBU/d29a565c74e6a2186bca0fbd30d7742e/image1-70.png" alt="" class="kg-image" width="1601" height="833" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18VJCjED1cnQmJd0cXPnBU/f38d68dacc38637c0a9d72e5cdafa5ae/image1-70.png" alt="" class="kg-image" width="1601" height="833" loading="lazy">
 
 	</figure>
 	<p>One example of such leaks is <a href="https://archive.nanog.org/meetings/nanog41/presentations/mauch-lightning.pdf">more than three very large networks appearing in sequence</a>. Very large networks (such as Verizon and Lumen) do not purchase transit from each other, and having <a href="https://puck.nether.net/bgp/leakinfo.cgi">more than three such networks</a> on the path in sequence is often an indication of a route leak.</p>
@@ -112,12 +112,12 @@
 	<p>These two types involve propagating routes from a provider or a peer not to a customer, but to another peer or provider. Here are the illustrations of the two types of leaks:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6T2roi9v4ATputaICUVuUv/90696f05b8e1d3649de80d76b880d21d/image10-3.png" alt="" class="kg-image" width="1573" height="776" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6T2roi9v4ATputaICUVuUv/50831a0a631774e101e5f04abfb25876/image10-3.png" alt="" class="kg-image" width="1573" height="776" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/18D2LnLHkNkbzLsORnD95y/0d2901fbc1434fba19f1cd29640553e9/image13-1.png" alt="" class="kg-image" width="1600" height="766" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18D2LnLHkNkbzLsORnD95y/1c033cd2c3cea76e556013bc777889a9/image13-1.png" alt="" class="kg-image" width="1600" height="766" loading="lazy">
 
 	</figure>
 	<p>As in the <a href="https://blog.cloudflare.com/how-a-nigerian-isp-knocked-google-offline">previously mentioned example</a>, a Nigerian ISP who peers with Google accidentally leaked its route to its provider <a href="https://radar.cloudflare.com/traffic/as4809">AS4809</a>, and thus generated a type 4 route leak. Because routes via customers are usually preferred to others, the large provider (AS4809) rerouted its traffic to Google via its customer, i.e. the leaking ASN, overwhelmed the small ISP and took down Google for over one hour.</p>
@@ -205,7 +205,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6p32es0tPhqsESHMazR8Ni/a84f639d0345c504846a418d2ffdd3b8/image6-11.png" alt="" class="kg-image" width="1999" height="838" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6p32es0tPhqsESHMazR8Ni/96910fef1be1cccf2bd69aa750b063c8/image6-11.png" alt="" class="kg-image" width="1999" height="838" loading="lazy">
 
 	</figure>
 	<p>For the current version, we use the semi-real-time data source for the detection system, i.e., the BGP updates files from RouteViews and RIPE RIS. For data completeness, we process data from all public collectors from these two projects (a total of 63 collectors and over 2,400 collector peers) and implement a pipeline that’s capable of handling the BGP data processing as the data files become available.</p>
@@ -221,7 +221,7 @@
 	<p>The route leak detection module works at the level of individual BGP announcements. The detection component investigates one BGP message at a time, and estimates how likely a given BGP message is a result of a route leak event.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uLtzc0IV8IAuxze3lYUXY/b4be2f5359d1da68c361de6f680df421/image8-5.png" alt="" class="kg-image" width="1999" height="1232" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uLtzc0IV8IAuxze3lYUXY/8eb3553e71a84930fe6851e8732f849f/image8-5.png" alt="" class="kg-image" width="1999" height="1232" loading="lazy">
 
 	</figure>
 	<p>We base our detection algorithm mainly on the <a href="https://ieeexplore.ieee.org/document/6363987">valley-free model</a>, which we believe can capture most of the notable route leak incidents. As mentioned previously, the key to having low false positives for detecting route leaks with the valley-free model is to have accurate AS-level relationships. While those relationship types are not publicized by every AS, there have been over two <a href="https://ieeexplore.ieee.org/document/6027863">decades of research</a> on the inference of the relationship types using publicly observed BGP data.</p>
@@ -237,7 +237,7 @@
 	<p>After processing each BGP message, we store the generated route leak entries in a database for long-term storage and exploration. We also aggregate individual route leak BGP announcements and group relevant leaks from the same leak ASN within a short period together into <b>route-leak events</b>. The route leak events will then be available for consumption by different downstream applications like web UIs, an <a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents">API</a>, or alerts.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7f4kKk1DFYPIltkyzArwDy/4c6797e7b713672fa3f1d30e8dcc94a4/image12-2.png" alt="" class="kg-image" width="1999" height="1271" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7f4kKk1DFYPIltkyzArwDy/4347df7a5bee4ca6686455d6205324f7/image12-2.png" alt="" class="kg-image" width="1999" height="1271" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -253,13 +253,13 @@
 	<p>The Cloudflare Radar ASN page is directly accessible via <a href="https://radar.cloudflare.com/as%7BASN%7D"><b>https://radar.cloudflare.com/as{ASN}</b></a>. For example, one can navigate to <a href="https://radar.cloudflare.com/as174">https://radar.cloudflare.com/as174</a> to view the overview page for Cogent AS174. ASN pages now show a dedicated card for route leaks detected relevant to the current ASN within the selected time range.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CoRAfRuDBdZr5zQxCtoGn/0ee40082fd44f1f6ebf07ad55f213791/image2-54.png" alt="" class="kg-image" width="1213" height="641" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CoRAfRuDBdZr5zQxCtoGn/1a89ba21ea72c44cbd45da3661705f65/image2-54.png" alt="" class="kg-image" width="1213" height="641" loading="lazy">
 
 	</figure>
 	<p>Users can also start using our <a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents">public data API</a> to lookup route leak events with regards to any given ASN. &nbsp;Our API supports filtering route leak results by time ranges, and ASes involved. Here is a screenshot of the <a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents">route leak events API documentation page</a> on the <a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation">newly updated API docs site</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IgJJ1GO4uHepxxQc5vwV7/eebe2d0f0fa6d367e37b2bed4f036615/image3-44.png" alt="" class="kg-image" width="1170" height="1135" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IgJJ1GO4uHepxxQc5vwV7/9e809b7ef9264f9c03d70c70c27d4bb5/image3-44.png" alt="" class="kg-image" width="1170" height="1135" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

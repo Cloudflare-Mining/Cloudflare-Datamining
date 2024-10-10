@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eLqguOeTtaIuT3agBG5oQ/2aaca001c21f99a0f8924fb31f611767/delivering-a-serverless-api-in-10-minutes-using-workers.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eLqguOeTtaIuT3agBG5oQ/4d984a6828c1786dcb48e0513f1a603b/delivering-a-serverless-api-in-10-minutes-using-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In preparation for Chrome’s Not Secure flag, which will update the indicator to show Not Secure when a site is not accessed over https, we wanted people to be able to test whether their site would pass. If you read our previous <a href="https://blog.cloudflare.com/chrome-not-secure-for-http">blog post</a> about the existing misconceptions around using https, and preparing your site, you may have noticed a small fiddle, allowing you to test which sites will be deemed “Secure”. In preparation for the blog post itself, one of our PMs approached me asking for help making this fiddle come to life. It was a simple ask: we need an endpoint which runs logic to see if a given domain will automatically redirect to https.</p>
 	<p>The logic and requirements turned out to be very simple:</p>
@@ -141,7 +141,7 @@ async function handleRequest(request) {
 	<p>As I was building the Worker, I was using the preview UI to validate that I was on the right track at every step. The console output is really useful for simple debugging along the way.For example, to make sure the query string was getting parsed properly, I can <code>console.log(domain)</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rAXIaf2zY93aBHC6ucvdS/d3ba79fc96859cb13b18a4fd36c552e8/workers_preview.png" alt="workers_preview" class="kg-image" width="850" height="660" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rAXIaf2zY93aBHC6ucvdS/b67f0e290980ea0b5bac1bbdd248b677/workers_preview.png" alt="workers_preview" class="kg-image" width="850" height="660" loading="lazy">
 
 	</figure>
 	<p>It’s hard to get code right on the first try, and it’s not always clear where things went wrong. While the Preview is not reflective of the end to end experience (there are many variables that may change once a request is going over the web), it’s a great developer tool to help validate progress along the way.</p>

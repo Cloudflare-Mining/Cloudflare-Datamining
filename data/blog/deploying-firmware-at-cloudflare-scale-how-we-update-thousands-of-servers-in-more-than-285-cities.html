@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aFHXMhZa8uGHc3cxgaXPm/f702b5e74e75d2ec5a2f2dce5a415c17/image2-4.png" alt="Deploying firmware at Cloudflare-scale: How we update thousands of servers in more than 285 cities" class="kg-image" width="1800" height="1014" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aFHXMhZa8uGHc3cxgaXPm/acc44f6d43497ad246c8acfdb213f4dd/image2-4.png" alt="Deploying firmware at Cloudflare-scale: How we update thousands of servers in more than 285 cities" class="kg-image" width="1800" height="1014" loading="lazy">
 
 	</figure>
 	<p>As a security company, it’s critical that we have good processes for dealing with security issues. We regularly release software to our servers - on a daily basis even - which includes new features, bug fixes, and as required, security patches. But just as critical is the software which is <i>embedded</i> into the server hardware, known as firmware. Primarily of interest is the BIOS and <a href="https://blog.cloudflare.com/bmc-vuln">Baseboard Management Controller</a> (BMC), but many other components also have firmware such as Network Interface Cards (NICs).</p>
@@ -63,7 +63,7 @@ imgexec shell.efi || goto unexpected_error</code></pre>
 	<p>Unfortunately, the number of vendors that support firmware updates with UEFI flashing binaries is limited. There are a large number of other updates that we need to perform such as BMC and NIC.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Bnbihh4sYojHTFzb0VX5k/479e19bb833769e4c0310b15b16e05ab/image1-6.png" alt="" class="kg-image" width="1999" height="523" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Bnbihh4sYojHTFzb0VX5k/d4e818e8959aaacdcff156a64b30bd89/image1-6.png" alt="" class="kg-image" width="1999" height="523" loading="lazy">
 
 	</figure>
 	<p>Consequently, we need another way to flash these binaries. Thankfully, these vendors invariably support flashing from Linux. Consequently we can perform flashing from a minimal Linux environment. Since vendor firmware updates are typically closed source utilities and vendors are often highly secretive about firmware flashing, we can ensure that the flashing environment does not provide an attackable surface by ensuring that the network is not configured. If it’s not on the network, it can’t be attacked and exploited.</p>

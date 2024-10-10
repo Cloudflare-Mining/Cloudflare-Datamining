@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SbWVx8lx9LMBcht8AgwwR/6a21b8cf24db3e3e7983a5dd95ffb3da/sidh-go.jpg" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SbWVx8lx9LMBcht8AgwwR/c5696a720fb2cd36ab37e3814a6afeea/sidh-go.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog post presents a new cryptography primitive that we open sourced: </i><a href="https://github.com/cloudflare/p751sidh"><i>p751sidh</i></a><i>.</i></p>
 	<div class="flex anchor relative">
@@ -40,7 +40,7 @@
 	<p>In Diffie-Hellman, we have two parties, Alice and Bob, wishing to establish a shared secret. They fix an <a href="https://en.wikipedia.org/wiki/Abelian_group">abelian group</a> <code>G</code> of prime order <code>p</code>, written additively, as well as a generator <code>P</code> of <code>G</code> (the basepoint). Alice then selects a uniformly random integer <code>a</code> in the range <code>[0,p]</code>. This determines a multiplication-by-<code>a</code> map, usually denoted <code>[a] : G -&gt; G</code>. Alice computes the <code>[a]P</code>, the image of the basepoint under her map, and sends it to Bob. Similarly, Bob chooses a random integer <code>b</code> in the range <code>[0,p]</code>, determining the map <code>[b]</code>, computes <code>[b]P</code>, and sends it to Alice. Alice and Bob then agree on a shared secret <code>[ab]P</code>, which Alice computes as <code>[a]([b]P)</code> and Bob computes as <code>[b]([a]P)</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ylTypDJrBnx7ePlqXUy9z/15fec958ab98e8e2fabef7087b41ecd7/dh_diagram_1024.jpg" alt="DH diagram" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ylTypDJrBnx7ePlqXUy9z/53b9ef381ae71e6645e91875df6faa27/dh_diagram_1024.jpg" alt="DH diagram" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p>(Here I'm describing the process in terms of maps, in order to show similarity with SIDH later).</p>
@@ -62,7 +62,7 @@
 	<p>The resulting diagram is slightly more complicated, but structurally similar to the one above:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yH9scwz585cUkMWgFT5Pa/d3dc3f97fdd5d92ec7093776fb1d955d/sidh_phi_prim_kernel.jpg" alt="sidh_phi_prim_kernel" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yH9scwz585cUkMWgFT5Pa/bc4315826352945e63e4867c541a763d/sidh_phi_prim_kernel.jpg" alt="sidh_phi_prim_kernel" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p>What exactly is going on here? The starting curve <code>E_0</code>, as well as the points <code>P_A, Q_A, P_B, Q_B</code>, are system parameters.</p>

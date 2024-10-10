@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zYPGrhkfV8AMzgS6G7pg3/5130d1f904536b5de6fc537ccbfa5cb4/increasing-ipv6-mtu.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zYPGrhkfV8AMzgS6G7pg3/2fe3587725932a9f1f920cc7a2641dd8/increasing-ipv6-mtu.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Back in 2015 we deployed <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing">ECMP routing</a> - Equal Cost Multi Path - within our datacenters. This technology allowed us to spread traffic heading to a single IP address across multiple physical servers.</p>
 	<p>You can think about it as a third layer of load balancing.</p>
@@ -15,7 +15,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6brB6jYvBwnIHL5UyGZZpq/58a42d1e42d2a587dfce50d170c854f0/5799659266_28038df72f_b.jpg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6brB6jYvBwnIHL5UyGZZpq/dbc2f52a7ba7056bebc36eb90ec98c55/5799659266_28038df72f_b.jpg" alt="" class="kg-image" width="1024" height="683" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/superlatif/5799659266">photo</a> by <a href="https://www.flickr.com/photos/superlatif">Sahra</a> by-sa/2.0</p>
@@ -38,7 +38,7 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
 	<p>With this setting our servers never transmitted IPv6 packets larger than 1280 bytes, therefore "fixing" the issue. Since all IPv6 routers must have an MTU of at least 1280, we could expect that no ICMP Packet-Too-Big message would ever be sent to us.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WoQ4atXDbAlJ1mhDnXDcf/2a6e0096c4c14ac619c0ebe8344ba679/ECMP-hashing-ICMP.png" alt="" class="kg-image" width="931" height="331" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WoQ4atXDbAlJ1mhDnXDcf/0e2df496f1184bf35217d2be59f255b8/ECMP-hashing-ICMP.png" alt="" class="kg-image" width="931" height="331" loading="lazy">
 
 	</figure>
 	<p>Remember - the original problem introduced by ECMP was that ICMP routed back to our Anycast addresses could go to a wrong machine within the ECMP group. Therefore we became ICMP black holes. Cloudflare would send large packets, they would be dropped with ICMP PTB packet flying back to us. Which, in turn would fail to be delivered to the right machine due to ECMP.</p>
@@ -64,7 +64,7 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yo93AUS4hONJUarTUlGP/e7e9d646b131700e706d911ec888bc51/6545737741_077583ca1f_b-1.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yo93AUS4hONJUarTUlGP/1c9fd02139519ea6f947b61a39da9d8b/6545737741_077583ca1f_b-1.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/nh53/6545737741">photo</a> by <a href="https://www.flickr.com/photos/nh53">NH53</a> by/2.0</p>
@@ -204,13 +204,13 @@ Icmp6InPktTooBigs               738748             0.0</code></pre>
 	<p>Here is a chart of the ICMP PTB packets we received over last 7 days. You can clearly see that when the rollout started, we saw a large increase in PTB ICMP messages (Y label - packet count - deliberately obfuscated):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64aFjrP5OwJLKlbMfwIofg/7c13777636abdd8b959877257fe97ee4/Screen-Shot-2018-09-06-at-2.12.28-PM.png" alt="" class="kg-image" width="1678" height="806" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64aFjrP5OwJLKlbMfwIofg/abc284d8d6f8b2b0c7441277cfea12cc/Screen-Shot-2018-09-06-at-2.12.28-PM.png" alt="" class="kg-image" width="1678" height="806" loading="lazy">
 
 	</figure>
 	<p>Interestingly the majority of the ICMP packets are concentrated in our Frankfurt datacenter:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rwp7vqya4hZUVtqgALCo0/017ed5078dfb216dbc815683032b842b/Screen-Shot-2018-09-06-at-2.11.53-PM.png" alt="" class="kg-image" width="1722" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rwp7vqya4hZUVtqgALCo0/70c29ca328859bd7330a9399305d7d79/Screen-Shot-2018-09-06-at-2.11.53-PM.png" alt="" class="kg-image" width="1722" height="800" loading="lazy">
 
 	</figure>
 	<p>We estimate that in our Frankfurt datacenter, we receive ICMP PTB message on 2 out of every 100 IPv6 TCP connections. These seem to come from only a handful of ASNs:</p>

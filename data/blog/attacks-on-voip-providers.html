@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5scnckYKmaLjLhcqAKlM2z/58eead4aa082171517213d4fb1f9d965/image-2-1.png" alt="" class="kg-image" width="1360" height="772" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5scnckYKmaLjLhcqAKlM2z/0cdff1ded9d8716758ebd4c5f000c624/image-2-1.png" alt="" class="kg-image" width="1360" height="772" loading="lazy">
 
 	</figure>
 	<p>Over the past month, multiple Voice over Internet Protocol (VoIP) providers have been targeted by <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service</a> (DDoS) attacks from entities claiming to be <a href="https://en.wikipedia.org/wiki/REvil">REvil</a>. The multi-vector attacks combined both L7 attacks targeting critical HTTP websites and API endpoints, as well as L3/4 attacks targeting VoIP server infrastructure. In some cases, these attacks resulted in significant impact to the targets’ VoIP services and website/API availability.</p>
@@ -20,7 +20,7 @@
 	<p>Voice over IP (VoIP) is a term that's used to describe a group of technologies that allow for communication of multimedia over the Internet. This technology enables your FaceTime call with your friends, your virtual classroom lessons over Zoom and even some “normal” <a href="https://en.wikipedia.org/wiki/Voice_over_LTE">calls you make from your cell phone</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25Rq1Fpa8Yk3Nk6JjTMTzD/9175100e100b06c94eb5529c56e14eb6/fBF3R0cMoiiEcrbpmZOCBTNJj2hyTWnxNDcKQGJFragPFf1vf-9sIlPrYOYtHo4r3pJqTqCiVJCG6bSb0vQ4-EcsUJRpwd2tacBhHsHAXN5TMv8CUQKxeXibq4dB.png" alt="Child on a video conference all" class="kg-image" width="1100" height="619" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25Rq1Fpa8Yk3Nk6JjTMTzD/60e01d58150e99d9a48302efcb258181/fBF3R0cMoiiEcrbpmZOCBTNJj2hyTWnxNDcKQGJFragPFf1vf-9sIlPrYOYtHo4r3pJqTqCiVJCG6bSb0vQ4-EcsUJRpwd2tacBhHsHAXN5TMv8CUQKxeXibq4dB.png" alt="Child on a video conference all" class="kg-image" width="1100" height="619" loading="lazy">
 
 	</figure>
 	<p>The principles behind VoIP are similar to traditional digital calls over circuit-switched networks. The main difference is that the encoded media, e.g., voice or video, is partitioned into small units of bits that are transferred over the Internet as the payloads of IP packets according to specially defined media protocols.</p>
@@ -37,7 +37,7 @@
 	<p>Real-time communication between people needs to feel natural, immediate and responsive. Therefore, one of the most important features of a good VoIP service is speed. The user experiences this as natural sounding audio and high definition video, without lag or stutter. Users’ perceptions of call quality are typically closely measured and tracked using metrics like <a href="https://en.wikipedia.org/wiki/Perceptual_Evaluation_of_Speech_Quality">Perceptual Evaluation of Speech Quality</a> and <a href="https://en.wikipedia.org/wiki/Mean_opinion_score">Mean Opinion Scores</a>. While SIP and other VoIP protocols can be implemented using <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP</a> or <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a> as the underlying protocols, UDP is typically chosen because it’s faster for routers and servers to process them.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AmGmFZIFpA4s42yh86k9z/7e92585134cd1724b94b691bc36529e3/pasted-image-0--1-.png" alt="" class="kg-image" width="1638" height="1044" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AmGmFZIFpA4s42yh86k9z/47d171fcc57bc62e711e79efc423c979/pasted-image-0--1-.png" alt="" class="kg-image" width="1638" height="1044" loading="lazy">
 
 	</figure>
 	<p>UDP is a protocol that is unreliable, stateless and comes with no Quality of Service (QoS) guarantees. What this means is that the routers and servers typically use less memory and computational power to process UDP packets and therefore can process more packets per second. Processing packets faster results in quicker assembly of the packets’ payloads (the encoded media), and therefore a better call quality.</p>
@@ -55,25 +55,25 @@
 	<p>Attackers can take advantage of UDP and the SIP protocol to overwhelm unprotected VoIP servers with floods of specially-crafted UDP packets. One way attackers overwhelm VoIP servers is by pretending to initiate calls. Each time a malicious call initiation request is sent to the victim, their server uses computational power and memory to authenticate the request. If the attacker can generate enough call initiations, they can overwhelm the victim’s server and prevent it from processing legitimate calls. This is a classic DDoS technique applied to SIP.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44Gt0qiZEnPizgMU0Tm4qF/2a1be8d2e611ce83e7149f9ae275fe30/image-3-1.png" alt="Illustration of a DDoS attack preventing access to legitimate clients" class="kg-image" width="746" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44Gt0qiZEnPizgMU0Tm4qF/398c2973aae58df7060167d794bd296e/image-3-1.png" alt="Illustration of a DDoS attack preventing access to legitimate clients" class="kg-image" width="746" height="452" loading="lazy">
 
 	</figure>
 	<p>A variation on this technique is a SIP reflection attack. As with the previous technique, malicious call initiation requests are used. However, in this variation, the attacker doesn’t send the malicious traffic to the victim directly. Instead, the attacker sends them to many thousands of random unwitting SIP servers all across the Internet, and they spoof the source of the malicious traffic to be the source of the intended victim. That causes thousands of SIP servers to start sending unsolicited replies to the victim, who must then use computational resources to discern whether they are legitimate. This too can starve the victim server of resources needed to process legitimate calls, resulting in a widespread denial of service event for users. Without the proper protection in place, VoIP services can be extremely susceptible to DDoS attacks.</p>
 	<p>The graph below shows a recent multi-vector UDP DDoS attack that targeted VoIP infrastructure protected by Cloudflare’s <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> service. The attack peaked just above 70 Gbps and 16M packets per second. While it's not the largest attack we’ve ever seen, attacks of this size can have large impact on unprotected infrastructure. This specific attack lasted a bit over 10 hours and was automatically detected and mitigated.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/783B5mU5tkeQh3WCy6sZZw/fef5c43ae84dc499d2dfae66273cd7bb/1.png" alt="Graph of a 70 Gbps DDoS attack against a VoIP provider" class="kg-image" width="2048" height="834" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/783B5mU5tkeQh3WCy6sZZw/3646fc97616f8cdcb79a33a10383f77d/1.png" alt="Graph of a 70 Gbps DDoS attack against a VoIP provider" class="kg-image" width="2048" height="834" loading="lazy">
 
 	</figure>
 	<p>Below are two additional graphs of similar attacks seen last week against SIP infrastructure. In the first chart we see multiple protocols being used to launch the attack, with the bulk of traffic coming from (spoofed) DNS reflection and other common amplification and reflection vectors. These attacks peaked at over 130 Gbps and 17.4M pps.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Nkjw09j6s8NeJz2iUJ0F8/266ba25dde9bd2b1e5e62ac7bf2fd124/2.png" alt="" class="kg-image" width="1706" height="834" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Nkjw09j6s8NeJz2iUJ0F8/f53003ab380dbdf93e89ad659d87c865/2.png" alt="" class="kg-image" width="1706" height="834" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Lt858PFam9TDqQCXZa60A/27d7c9970a315d58d786f704f65dc1c1/3.png" alt="Graph of a 130 Gbps DDoS attack against a different VoIP provider" class="kg-image" width="1706" height="842" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Lt858PFam9TDqQCXZa60A/afe2971a7febc08ae82eb3161e339290/3.png" alt="Graph of a 130 Gbps DDoS attack against a different VoIP provider" class="kg-image" width="1706" height="842" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -87,19 +87,19 @@
 	<p>One of the most important factors for delivering a quality VoIP service is speed. The lower the latency, the better. Cloudflare’s <a href="https://www.cloudflare.com/de-de/magic-transit">Magic Transit</a> service can help protect critical VoIP infrastructure without impacting latency and call quality.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mZSrIvKNLTyiYElhv7Ydp/642e41e4f0c71e9f2aecb9197cec8d49/4.png" alt="Diagram of Cloudflare Magic Transit routing" class="kg-image" width="2048" height="910" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZSrIvKNLTyiYElhv7Ydp/8b18d4e784c5ec1f3cf94ab14a3aebf8/4.png" alt="Diagram of Cloudflare Magic Transit routing" class="kg-image" width="2048" height="910" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s Anycast architecture, coupled with the size and scale of our network, minimizes and can even improve latency for traffic routed through Cloudflare versus the public Internet. Check out our <a href="https://blog.cloudflare.com/magic-makes-your-network-faster">recent post</a> from Cloudflare’s Speed Week for more details on how this works, including test results demonstrating a performance improvement of 36% on average across the globe for a real customer network using Magic Transit.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/654f4KI1t80kWgpSp9CzAh/18727d7938a89b3e49c41a5c569eead0/5.png" alt="World map of Cloudflare locations" class="kg-image" width="1134" height="642" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/654f4KI1t80kWgpSp9CzAh/99c1d83370a21d9f1213df79163d7c81/5.png" alt="World map of Cloudflare locations" class="kg-image" width="1134" height="642" loading="lazy">
 
 	</figure>
 	<p>Furthermore, every packet that is ingested in a Cloudflare data center is analyzed for DDoS attacks using multiple layers of out-of-path detection to avoid latency. Once an attack is detected, the edge generates a real-time fingerprint that matches the characteristics of the attack packets. The fingerprint is then matched in the Linux kernel eXpress Data Path (XDP) to quickly drop attack packets at wirespeed without inflicting collateral damage on legitimate packets. We have also recently deployed additional specific mitigation rules to inspect UDP traffic to determine whether it is valid SIP traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5BOr4wRSTZL3RGXjSTooLk/397f6db6b673d778549f137bbf76327e/6.png" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" class="kg-image" width="1560" height="866" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BOr4wRSTZL3RGXjSTooLk/947d19c3f66ff3a213fa139c21377460/6.png" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" class="kg-image" width="1560" height="866" loading="lazy">
 
 	</figure>
 	<p>The detection and mitigation is done autonomously within every single Cloudflare edge server — there is no “scrubbing center” with limited capacity and limited deployment scope in the equation. Additionally, threat intelligence is automatically shared across our network in real-time to ‘teach’ other edge servers about the attack.</p>

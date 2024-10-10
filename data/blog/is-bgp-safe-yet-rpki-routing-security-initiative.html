@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/is-bgp-safe-yet-rpki-routing-security-initiative">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/is-bgp-safe-yet-rpki-routing-security-initiative">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/is-bgp-safe-yet-rpki-routing-security-initiative">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/is-bgp-safe-yet-rpki-routing-security-initiative">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xKVoR7JG9V1r387JR1U5q/196c0f2bbf56b60c24951ac69ed2eb8f/is-bgp-safe-yet-rpki-routing-security-initiative.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/is-bgp-safe-yet-rpki-routing-security-initiative">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/is-bgp-safe-yet-rpki-routing-security-initiative">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/is-bgp-safe-yet-rpki-routing-security-initiative">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/is-bgp-safe-yet-rpki-routing-security-initiative">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xKVoR7JG9V1r387JR1U5q/bcf911163aabc1a21efb521d52f6dcdc/is-bgp-safe-yet-rpki-routing-security-initiative.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>BGP leaks and hijacks have been accepted as an unavoidable part of the Internet for far too long. We relied on protection at the upper layers like TLS and DNSSEC to ensure an untampered delivery of packets, but a hijacked route often results in an unreachable IP address. Which results in an Internet outage.</p>
 	<p>The Internet is too vital to allow this known problem to continue any longer. It's time networks prevented leaks and hijacks from having any impact. It's time to make BGP safe. No more excuses.</p>
@@ -10,7 +10,7 @@
 	<p>If we observe the customer-cones of the networks that have deployed RPKI, we see around 50% of the Internet is more protected against route leaks. That's great, but it's nothing like enough.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Uh9D7PVerLfXQ68eqAnlh/b3b690b24e96717035fb43156e18958d/isbgpsafeyet.png" alt="" class="kg-image" width="456" height="110" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Uh9D7PVerLfXQ68eqAnlh/ae920ca803b130eae81550f7c36a3c7c/isbgpsafeyet.png" alt="" class="kg-image" width="456" height="110" loading="lazy">
 
 	</figure>
 	<p>Today, we are releasing <a href="https://isbgpsafeyet.com">isBGPSafeYet.com</a>, a website to track deployments and filtering of invalid routes by the major networks.</p>
@@ -28,7 +28,7 @@
 	<p>Both these prefixes should be considered <i>invalid</i> and should not be routed by your provider if RPKI is implemented within their network. This makes it easy to demonstrate how far a bad route can go, and test whether RPKI is working in the real world.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76jlyQka8osAb5vX9EuzKf/9f26afcb26ce3270e8f03e5bfa61a1ec/Screen-Shot-2020-04-16-at-6.36.48-PM.png" alt="" class="kg-image" width="644" height="359" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76jlyQka8osAb5vX9EuzKf/6709edfcecc29419cca07da0748ed3de/Screen-Shot-2020-04-16-at-6.36.48-PM.png" alt="" class="kg-image" width="644" height="359" loading="lazy">
 
 	</figure>
 	<p><a href="https://rpki.cloudflare.com/?validateRoute=13335_103.21.244.0%2F24">A Route Origin Authorization for 103.21.244.0/24 on rpki.cloudflare.com</a></p>
@@ -44,7 +44,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ihoJvfZjpxRs6GGJ2cZL6/4fa02ee2af428b0055e8d0831e0f9255/blogpost2-01.png" alt="diagram showing a simple test of RPKI invalid reachability" class="kg-image" width="2026" height="930" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ihoJvfZjpxRs6GGJ2cZL6/90dcb2481e75ce40c4800c3e99ae9fc4/blogpost2-01.png" alt="diagram showing a simple test of RPKI invalid reachability" class="kg-image" width="2026" height="930" loading="lazy">
 
 	</figure>
 	<p>a simple test of RPKI invalid reachability</p>
@@ -52,7 +52,7 @@
 	<p>A simple indicator is the number of networks sending the accepted route to their peers and collectors:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wdk01mSlPLv5TVHzuyDHp/d1afe5dad867994b16140f64a5d74e4d/invalid-prefixes-reachability.png" alt="RIPE" class="kg-image" width="619" height="140" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wdk01mSlPLv5TVHzuyDHp/4b56692fa0b12154d860023723290c9d/invalid-prefixes-reachability.png" alt="RIPE" class="kg-image" width="619" height="140" loading="lazy">
 
 	</figure>
 	<p>Routing status from online route collection tool <a href="https://stat.ripe.net/widget/routing-status#w.resource=103.21.244.0/24&amp;w.min_peers_seeing=0">RIPE Stat</a></p>
@@ -60,7 +60,7 @@
 	<p>To summarize, the yellow areas are IP space behind networks that drop RPKI invalid prefixes. The Internet isn't safe until the blue becomes yellow.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tiSr4Gzbk0qrtdGfMgIw/31f652c8d00503a098d02f05ad4e1ce5/blogpost-hilbert-01.png" alt="" class="kg-image" width="2134" height="2134" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tiSr4Gzbk0qrtdGfMgIw/9be9478693140ad1132542148afe02ce/blogpost-hilbert-01.png" alt="" class="kg-image" width="2134" height="2134" loading="lazy">
 
 	</figure>
 	<p>Hilbert Curve Map of IP address space behind networks filtering RPKI invalid prefixes</p>

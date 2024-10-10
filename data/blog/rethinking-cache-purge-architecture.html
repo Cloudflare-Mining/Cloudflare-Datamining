@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EU9TDz1YS47zrHosO5j0g/c66127cdbe46eb4696cdf7d695c7e7b1/image4-12.png" alt="Part 2: Rethinking cache purge with a new architecture" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EU9TDz1YS47zrHosO5j0g/ce6992e656f33e7819696b3b36f30c0a/image4-12.png" alt="Part 2: Rethinking cache purge with a new architecture" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>In <a href="https://blog.cloudflare.com/part1-coreless-purge">Part 1: Rethinking Cache Purge, Fast and Scalable Global Cache Invalidation</a>, we outlined the importance of cache invalidation and the difficulties of purging caches, how our existing purge system was designed and performed, and we gave a high level overview of what we wanted our new Cache Purge system to look like.</p>
@@ -18,7 +18,7 @@
 	<p>We touched on the high level design of what we called the “coreless” purge system in part 1, but let’s dive deeper into what that design encompasses by following a purge request from end to end:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wDdgC1O4K0X6npqec7hd9/dc87b95437c93500d75fe0f6967f8a92/image3-13.png" alt="" class="kg-image" width="1999" height="905" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wDdgC1O4K0X6npqec7hd9/11748d6419268a8efdfaaa1c24542e1a/image3-13.png" alt="" class="kg-image" width="1999" height="905" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -52,7 +52,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KE3gyiFfEntTtr8vMYODq/dab2f42c24a74169cb3efe901521d667/image2-15.png" alt="purge request to small colo, ingest worker sends to queue worker in T1" class="kg-image" width="1999" height="1370" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KE3gyiFfEntTtr8vMYODq/5c37d8a17ef2a34ad730893b21704e6b/image2-15.png" alt="purge request to small colo, ingest worker sends to queue worker in T1" class="kg-image" width="1999" height="1370" loading="lazy">
 
 	</figure>
 	<p>Once the local purge is done the <b>Purge Ingest worker</b> forwards the purge request with the cache key obtained from the local cache to a <b>Purge Queue worker</b>. The queue worker is a <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Object</a> worker using its persistent state to hold a queue of purges it receives and pointers to how far along in the queue each data center in our network is in processing purges.</p>
@@ -70,7 +70,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wb88kH1WkS4aZjc8wWsk2/ac39791bf51c55f6a823b1edcade7763/image1-22.png" alt="multiple regions, durable object sends purges to fanouts in other regions, fanout sends to small colos in their region" class="kg-image" width="1999" height="1155" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wb88kH1WkS4aZjc8wWsk2/9c4ae3c695f9725f69c898bb6c8b8a2d/image1-22.png" alt="multiple regions, durable object sends purges to fanouts in other regions, fanout sends to small colos in their region" class="kg-image" width="1999" height="1155" loading="lazy">
 
 	</figure>
 	<p>Once a purge request is queued by a <b>Purge Queue worker</b> it needs to be broadcast to the rest of Cloudflare’s data centers to be carried out by their caches. The Durable Objects will broadcast purges directly to all data centers in their region, but when broadcasting to other regions they pick a <b>Purge Fanout worker</b> per region to take care of their region’s distribution. The fanout workers manage queues of their own as well as pointers for all of their region’s data centers, and in fact they share a lot of the same logic as the <b>Purge Queue workers</b> in order to do so. One key difference is fanout workers aren’t Durable Objects; they’re normal worker scripts, and their queues are purely in memory as opposed to being backed by Durable Object state. This means not all queue worker Durable Objects are talking to the same fanout worker in each region. Fanout workers can be dropped and spun up again quickly by any metal in the data center because they aren’t canonical sources of state. They maintain queues and pointers for their region but all of that info is also sent back downstream to the Durable Objects who persist that data themselves, reliably.</p>

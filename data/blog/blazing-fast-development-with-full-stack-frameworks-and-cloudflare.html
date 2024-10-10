@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xvsyMq20OCakhHT9tjeh0/2a505af6c78624a810d7158b502adfc0/image3-5.png" alt="Blazing fast development with full-stack frameworks and Cloudflare" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xvsyMq20OCakhHT9tjeh0/76848877f09d49fad9b78ce04557cec1/image3-5.png" alt="Blazing fast development with full-stack frameworks and Cloudflare" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Hello web developers! <a href="https://blog.cloudflare.com/making-cloudflare-for-web">Last year we released</a> a slew of improvements that made deploying web applications on Cloudflare much easier, and in response we’ve seen a large growth of Astro, Next.js, Nuxt, Qwik, Remix, SolidStart, SvelteKit, and other web apps hosted on Cloudflare. Today we are announcing major improvements to our integration with these web frameworks that makes it easier to develop sophisticated applications that use our <a href="https://developers.cloudflare.com/d1">D1</a> SQL database, <a href="https://developers.cloudflare.com/r2">R2</a> object store, <a href="https://developers.cloudflare.com/ai">AI</a> models, and other powerful features of <a href="https://www.cloudflare.com/developer-platform">Cloudflare’s developer platform.</a></p>
@@ -23,7 +23,7 @@
 	<p>Provide a name for your app, or stick with the randomly generated one. Then select the “Website or web app” category, and pick a full-stack framework of your choice. We support many: <a href="https://astro.build">Astro</a>, <a href="https://nextjs.org">Next.js</a>, <a href="https://nuxt.com">Nuxt</a>, <a href="https://qwik.dev">Qwik</a>, <a href="https://remix.run">Remix</a>, <a href="https://start.solidjs.com/getting-started/what-is-solidstart">SolidStart</a>, and <a href="https://kit.svelte.dev">SvelteKit</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/pa9natISsY3icyIUpu9Ul/10e27576305113ca7a9c9e2bebddc634/Screenshot-2024-03-28-at-7.25.10-AM.png" alt="" class="kg-image" width="1600" height="1327" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pa9natISsY3icyIUpu9Ul/cd6aa0baebe85d1b0a85eaba684d66e6/Screenshot-2024-03-28-at-7.25.10-AM.png" alt="" class="kg-image" width="1600" height="1327" loading="lazy">
 
 	</figure>
 	<p>Since C3 delegates the application scaffolding to the latest version of the framework-specific CLI, you will scaffold the application exactly as the framework authors intended without missing out on any of the framework features or options. C3 then adds to your application everything necessary for integrating and deploying to Cloudflare so that you don’t have to configure it yourself.</p>
@@ -94,7 +94,7 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
 	<p>Our team however came up with an interesting approach to bridging the gap between these two JS runtimes. We call it the <a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy">getPlatformProxy()</a> API, which is now part of wrangler and is super-powered by <a href="https://github.com/cloudflare/miniflare/pull/639">miniflare’s magic proxy</a>. This API exposes a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">JS proxy object</a> that behaves just like the usual <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters">Workers env object</a> containing all bound resources. The proxy object enables code from Node.js to transparently invoke JavaScript code running in workerd, as well access Cloudflare-specific runtime APIs.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MPXvdyK3eYsY3YKnOC8co/0f930bd263bd6b0a42dcea30800fda02/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MPXvdyK3eYsY3YKnOC8co/480cdd00d7a921ecb65eb738caf17ff2/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="966" loading="lazy">
 
 	</figure>
 	<p>With this bridge between the Node.js and workerd runtimes, your application can now access Cloudflare simulators for D1, R2, KV and other storage solutions directly while running in a dev server powered by Node.js. Or you could even write an Node.js script to do the same:</p>
@@ -125,7 +125,7 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
 	<p>If Vite had first-class support for running a full-stack application in an alternative JavaScript runtime, we could enable anyone using Vite to develop their applications locally with complete access to the Cloudflare developer platform. No more framework specific custom integrations and workarounds — all the features of a full-stack framework, Vite, and Cloudflare accessible to all developers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3hj4Tb9Ex2NnwrnqZ5z6M2/b9e2f56f6d928c97259f4c0210f40b69/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hj4Tb9Ex2NnwrnqZ5z6M2/e049e4300b188381259f60bc69ad054c/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="1024" loading="lazy">
 
 	</figure>
 	<p>Sounds too good to be true? Maybe. We are very stoked to be working with the Vite team on the <a href="https://github.com/vitejs/vite/pull/16089">Vite environments</a> proposal, which could enable just that. This proposal is still evolving, so stay tuned for updates.</p>

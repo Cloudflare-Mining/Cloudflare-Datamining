@@ -1,10 +1,10 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4W6BcZa3ilvqXHkW7YK68n/8910faebed5c9e97cae98a65917d859f/a-look-at-the-new-wordpress-brute-force-amplification-attack.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4W6BcZa3ilvqXHkW7YK68n/17fc001105de141193b45c7e614f817a/a-look-at-the-new-wordpress-brute-force-amplification-attack.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently, a new brute force attack method for WordPress instances was identified by Sucuri. This latest technique allows attackers to try a large number of WordPress username and password login combinations in a single HTTP request.</p>
 	<p>The vulnerability can easily be abused by a simple script to try a significant number of username and password combinations with a relatively small number of HTTP requests. The following diagram shows a 4-fold increase in login attempts to HTTP requests, but this can trivially be expanded to a thousand logins.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jdeVX3b5JHTMwZvY4J7wY/5f6dad5876ad9036b9440a68ac81bf6f/wordpress-xmlrpc-brute-force-amplification.png" alt="WordPress XML-RPC Brute Force Amplification Attack" class="kg-image" width="1137" height="1663" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jdeVX3b5JHTMwZvY4J7wY/3db3519b348381101ef3bdd943e6e636/wordpress-xmlrpc-brute-force-amplification.png" alt="WordPress XML-RPC Brute Force Amplification Attack" class="kg-image" width="1137" height="1663" loading="lazy">
 
 	</figure>
 	<p>This form of brute force attack is harder to detect, since you won’t necessarily see a flood of requests. Fortunately, all CloudFlare paid customers have the option to enable a Web Application Firewall ruleset to stop this new attack method.</p>
@@ -133,7 +133,7 @@
 	<p>To enable the rule, navigate to your CloudFlare Firewall dashboard, and reference the rule named "Blocks amplified brute force attempts to xmlrpc.php" with the rule ID WP0018.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UjJTAaaGerRJ928DM0NGv/82a687a20739dd0422d3ffa261af6efa/enabling-xmlrpc-waf-rule.png" alt="Enabling WordPress XML-RPC WAF Rule" class="kg-image" width="950" height="205" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UjJTAaaGerRJ928DM0NGv/cc569d79f7675aafdf10d83ef73ea4cc/enabling-xmlrpc-waf-rule.png" alt="Enabling WordPress XML-RPC WAF Rule" class="kg-image" width="950" height="205" loading="lazy">
 
 	</figure>
 	<p>That’s all there is to it. Now you are protected from the new WordPress XML-RPC brute force amplification attack.</p>

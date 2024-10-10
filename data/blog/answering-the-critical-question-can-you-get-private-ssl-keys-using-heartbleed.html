@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oh7BBKVsYazrO00r5nb30/35c4e8bf9ef76e34df7d703c83f3a82c/heartbleed.png" alt="Heartbleed" class="kg-image" width="341" height="413" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oh7BBKVsYazrO00r5nb30/c324a89a0b4bed9ec1075506a71562dd/heartbleed.png" alt="Heartbleed" class="kg-image" width="341" height="413" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -48,7 +48,7 @@
 	<p>The major problem (and cause of heartbleed) is that the code does not check that this length is the actual length sent in the heartbeat request, allowing the request to ask for more data than it should be able to retrieve. The code then copies the amount of data indicated by the length from the incoming message to the outgoing message. If the length is longer than the incoming message, the software just keeps copying data past the end of the message. Since the length variable is 16 bits, you can request up to 65,535 bytes from memory. The data that lives past the end of the incoming message is from a kind of no-man’s land that the program should not be accessing and may contain data left behind from other parts of OpenSSL.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cb01fhCapiWLF2XGkA8PE/2dea04713ee8786d022effb18bc73e1a/blog-illustration-heartbleed.png" alt="diagram" class="kg-image" width="645" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cb01fhCapiWLF2XGkA8PE/b6d8d9ce2c3b9f685a700ff50e775799/blog-illustration-heartbleed.png" alt="diagram" class="kg-image" width="645" height="645" loading="lazy">
 
 	</figure>
 	<p>When processing a request that contains a longer length than the request payload, some of this unknown data is copied into the response and sent back to the client. This extra data can contain sensitive information like session cookies and passwords, as we describe in the next section.</p>
@@ -66,7 +66,7 @@
 	<p>The memory address with the highest value is where the stack data lives. This includes local working variables and non-persistent data storage for running a program. The lowest portion of the address space typically contains the program’s code, followed by static data needed by the program. Right above that is the heap, where all dynamically allocated data lives.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HWKap7AiqX5LqnPsONfIl/3f753c54ea9835158337768b64a41643/image00.gif" alt="Heap organization" class="kg-image" width="437" height="388" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HWKap7AiqX5LqnPsONfIl/965c80d25eecde1ac67c6f761331f819/image00.gif" alt="Heap organization" class="kg-image" width="437" height="388" loading="lazy">
 
 	</figure>
 	<p>Managing data on the heap is done with the library calls <code>malloc</code> (used to get memory) and <code>free</code> (used to give it back when no longer needed). When you call <code>malloc</code>, the program picks some unused space in the heap area and returns the address of the first part of it to you. Your program is then able to store data at that location. When you call <code>free</code>, memory space is marked as unused. In most cases, the data that was stored in that space is just left there unmodified.</p>
@@ -91,7 +91,7 @@
 	<p>[</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kyjDrvwVyh42FxEm4R0jg/a76bfb7e14aa05976393b0c2ed6bacb3/Screen_Shot_2014-04-11_at_12.45.44_1.png" alt="Memory Layout" class="kg-image" width="480" height="1158" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kyjDrvwVyh42FxEm4R0jg/3efd8109ad24e6113734dc280855fa56/Screen_Shot_2014-04-11_at_12.45.44_1.png" alt="Memory Layout" class="kg-image" width="480" height="1158" loading="lazy">
 
 	</figure>
 	<p>](<a href="https://blog.cloudflare.com/content/images/heartbleed_1.png">/content/images/heartbleed_1.png</a>)</p>
@@ -108,13 +108,13 @@
 	<p>Here, for example, is a dump showing some HTTP headers from a previous request to a running NGINX server. These headers would have been transmitted securely over HTTPS but Heartbleed means that an attacker can read them. That’s a big problem because the headers might contain login credentials or a cookie.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GZ7K9jJ6nAKaFzBvmyZuZ/c215910453cd34a74682b46760f85b0d/image04_3.png" alt="HTTP headers stolen" class="kg-image" width="1407" height="976" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GZ7K9jJ6nAKaFzBvmyZuZ/edbac730a324c4983d126938136887a8/image04_3.png" alt="HTTP headers stolen" class="kg-image" width="1407" height="976" loading="lazy">
 
 	</figure>
 	<p>And here’s a copy of the public part of a certificate (as would be sent as part of the TLS/SSL handshake) sitting in memory and readable. Since it’s public this is not in itself dangerous -- by design, you can get the public key of a website even without the vulnerability and doing so does not create risk due to the nature of public/private key cryptography.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ldHLent9feNqC46j7fgYH/2901b9f4f77d0a5469afaea24bc83b8a/image03_3.png" alt="Certificate" class="kg-image" width="1413" height="975" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ldHLent9feNqC46j7fgYH/fa83d90b96c4a065ed69ad3f5d912e18/image03_3.png" alt="Certificate" class="kg-image" width="1413" height="975" loading="lazy">
 
 	</figure>
 	<p>We have not fully ruled out the possibility, albeit slim, that some early elements of the heap get reused when NGINX is restarted. In theory, the old memory of the previous process might be available to a newly restarted NGINX. However, after extensive testing, we have not been able to reproduce this situation with an NGINX server on Linux. If a private key is available, it is most likely only available on the first request after restart. After that the chance that the memory is still available is extremely low.</p>

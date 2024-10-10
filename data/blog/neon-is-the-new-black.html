@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UWUhTHQzbfQPMHv4CsfSb/ab16f3c4722f0bdc0b54f56540ebf3b4/neon-is-the-new-black.jpg" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UWUhTHQzbfQPMHv4CsfSb/3234dac39468cf0c42e7853addf4683d/neon-is-the-new-black.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As engineers at Cloudflare quickly adapt our software stack to run on ARM, a few parts of our software stack have not been performing as well on ARM processors as they currently do on our Xeon® Silver 4116 CPUs. For the most part this is a matter of Intel specific optimizations some of which utilize SIMD or other special instructions.</p>
 	<p>One such example is the venerable jpegtran, one of the workhorses behind our Polish image optimization service.</p>
@@ -19,7 +19,7 @@ sys     0m0.225s</code></pre>
 	<p>Not one to despair, I figured out that applying the same optimizations I did for Intel would be trivial. Surely the NEON instructions map neatly to the SSE instructions I used before?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3P8ertRFNQ4EZJnWHFTahh/3a0453673075d8489380b193e4c733b1/2535574361_30730d9a7b_o_d.jpg" alt="" class="kg-image" width="600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3P8ertRFNQ4EZJnWHFTahh/c5b5e7013434c25e9d7816d7556e4d08/2535574361_30730d9a7b_o_d.jpg" alt="" class="kg-image" width="600" height="800" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vizzzual-dot-com/2535574361/in/photolist-4S4tVk-8yutL-ge8Q-5fXXRQ-wJcRY-yrvgf-9vXGvq-hGx4N-4NZ4L-5cjA7-iJrnwJ-7VXhaz-866BCb-auGuG-68BjeT-92L4-9rXsu-3Pfaz-5GZs6n-oAKSY-LhdKa-7BLZ96-VRGZ2H-ofm5ZJ-8xC1bv-5DePNQ-ZouKg-afu4r-49ThBC-7VyeQT-qfr6P3-4zpUM8-hgPbs-naTubk-S7khvM-6hTftH-ByLAg-9sNftz-8G4os2-zsq8-oBEf6L-5y1nxR-7aTZfD-9fYMH-wJcnp-8yhgk-wJcDS-qsPXVn-kbW5A6-bPx3gX">image</a> by <a href="https://www.flickr.com/photos/vizzzual-dot-com">viZZZual.com</a></p>
@@ -217,7 +217,7 @@ sys     0m0.241s</code></pre>
 	<p>Using one thread, the Intel Xeon managed to process all those images in 14 minutes and 43 seconds. The original jpegtran on our ARM server took 29 minutes and 34 seconds. The improved jpegtran took only 13 minutes and 52 seconds, slightly outperforming even the Xeon processor, despite losing on the test image.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/koIIgyZHWMqH2zFQlXE4Q/fd84f032a3743af2480c865e66a048fc/jpegtran.png" alt="jpegtran" class="kg-image" width="1628" height="1030" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/koIIgyZHWMqH2zFQlXE4Q/9f9de84ab448b9a0e75568d8c71d82d5/jpegtran.png" alt="jpegtran" class="kg-image" width="1628" height="1030" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -535,13 +535,13 @@ k += skip;</code></pre>
 	<p>The final version of our jpegtran managed to reduce the test image in 2.756 seconds. Or an extra 1.26X speedup, that gets it incredibly close to the performance of the Xeon on that image. As a bonus batch performance also improved!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kEvqeb1Ddf7x4WbeyjEx8/03dfbac6645ec11d0ea7193e88f93ffe/jpegtran-asm-1.png" alt="jpegtran-asm-1" class="kg-image" width="1622" height="1024" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kEvqeb1Ddf7x4WbeyjEx8/f8752cb3a6e2c084ede51509d9e7ca15/jpegtran-asm-1.png" alt="jpegtran-asm-1" class="kg-image" width="1622" height="1024" loading="lazy">
 
 	</figure>
 	<p>Another favorite part of mine, working with the Qualcomm Centriq CPU is the ability to take power readings, and be pleasantly surprised every time.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j5DWevxhY9nVnAW2Z7g31/a6037010171022a89105114748381385/jpegtran-power-1.png" alt="jpegtran-power-1" class="kg-image" width="1688" height="1032" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j5DWevxhY9nVnAW2Z7g31/fa34949f6f797487efbfbf9da646d20b/jpegtran-power-1.png" alt="jpegtran-power-1" class="kg-image" width="1688" height="1032" loading="lazy">
 
 	</figure>
 	<p>With the new implementation Centriq outperforms the Xeon at batch reduction for every number of workers. We usually run Polish with four workers, for which Centriq is now 1.3 times faster while also 6.5 times more power efficient.</p>

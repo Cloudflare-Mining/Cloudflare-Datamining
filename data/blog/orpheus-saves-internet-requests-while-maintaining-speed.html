@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ey02qUXv8qq7WKmzAofEo/ed34e6f6a2919eefca74dff1421ac835/image2-6.png" alt="How Orpheus automatically routes around bad Internet weather" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ey02qUXv8qq7WKmzAofEo/1fbb10402f880b88acac527da322425f/image2-6.png" alt="How Orpheus automatically routes around bad Internet weather" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Cloudflare’s mission is to help build a better Internet for everyone, and <a href="https://blog.cloudflare.com/orpheus">Orpheus</a> plays an important role in realizing this mission. Orpheus identifies Internet connectivity outages beyond Cloudflare’s network in real time then leverages the scale and speed of Cloudflare’s network to find alternative paths around those outages. This ensures that everyone can reach a Cloudflare customer’s <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server">origin server</a> no matter what is happening on the Internet. The end result is powerful: Cloudflare &nbsp;protects customers from Internet incidents outside our network while maintaining the average latency and speed of our customer’s traffic.</p>
@@ -28,7 +28,7 @@
 	<p>At some point while browsing the Internet, you may have run into this <a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors#522error">522 error</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1uOmXFuEIqQuOncFseJNVk/474c5ee40bdeceace345722c2fc24d85/image3-4.png" alt="" class="kg-image" width="919" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uOmXFuEIqQuOncFseJNVk/2e9ae2ba47e57ce4bd6b748556d19956/image3-4.png" alt="" class="kg-image" width="919" height="452" loading="lazy">
 
 	</figure>
 	<p>This error indicates that you, the end user, was unable to access content on a Cloudflare customer’s origin server because Cloudflare couldn’t connect to the origin. Sometimes, this error occurs because the origin is offline for everyone, and ultimately the origin owner needs to fix the problem. Other times, this error can occur even when the origin server is up and able to receive traffic. In this case, some people can reach content on the origin server, but other people using a different Internet routing path cannot because of connectivity issues across the Internet.</p>
@@ -48,7 +48,7 @@
 	<p>This is where Orpheus comes in to save the day. Orpheus detects that users in Tampa are receiving 522 errors when connecting to Chicago. Its database shows there is another route from Tampa through Boston and then to Chicago that is valid. As a result, Orpheus saves the end user’s request by rerouting it through Boston and taking an alternative path. Now, everyone in Tampa can still buy dog toys from your website hosted in Chicago, even though a fiber line was damaged unexpectedly.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44iuCk9vxool3B7x7YJnXa/f516890f45daa9c90a967acd30364087/image1-7.png" alt="" class="kg-image" width="1200" height="765" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44iuCk9vxool3B7x7YJnXa/10a905865a76e4e8ce207de1d18c8f6b/image1-7.png" alt="" class="kg-image" width="1200" height="765" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -66,7 +66,7 @@
 	<p>In any of these scenarios, Orpheus can leverage the scale of Cloudflare’s global network to reach the origin in New York via an alternate path. While the direct path from Mumbai to New York may be unreachable, an alternate path from Mumbai, through London, then to New York may be available. This alternate path is valid because it uses different physical Internet connections that are unaffected by the issues with directly connecting from Mumbai to New York. In this case, Orpheus selects the alternate route through London and saves a request that would otherwise fail via the direct connection.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g4XlGEt326h2LwNuFT5zN/5ec1e41626704a868da7609dcbc0261d/image4-5.png" alt="" class="kg-image" width="1157" height="769" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2g4XlGEt326h2LwNuFT5zN/68a0a5fac28b270e7ecc0a284351a4f1/image4-5.png" alt="" class="kg-image" width="1157" height="769" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

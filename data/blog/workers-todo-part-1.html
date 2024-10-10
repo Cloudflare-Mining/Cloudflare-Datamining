@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vXdoODv4g0k8Lo3jAjOjE/ee335e2ce7e7f03c5ea7d9357281bc14/image1-29.png" alt="Going originless with Cloudflare Workers – Building a Todo app – Part 1: The API" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vXdoODv4g0k8Lo3jAjOjE/1df3a424af6b9d21743fba331e36f1cb/image1-29.png" alt="Going originless with Cloudflare Workers – Building a Todo app – Part 1: The API" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>A few months ago we launched Custom Domains into an <a href="https://blog.cloudflare.com/custom-domains-for-workers">open beta</a>. Custom Domains allow you to hook up your Workers to the Internet, without having to deal with DNS records or certificates – just enter a valid hostname and Cloudflare will do the rest! The beta’s over, and Custom Domains are now GA.</p>
@@ -20,7 +20,7 @@
 	<p>For our todo application, we begin by building an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API Gateway</a> to perform routing, any authorization checks, and drop invalid requests. We then fan out to each individual use case in a separate Worker, so our teams can independently make updates or add features to each endpoint without a full redeploy of the whole application. Finally, each Worker has a D1 binding to be able to create, read, update, and delete records from the database. All of this happens on Cloudflare’s global network, so your API is truly available everywhere. The architecture will look something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qm175kv1nM4LmxTUhY48p/53410fe7db3088432a28778a03aa00d2/image2-24.png" alt="This application consists of a Custom Domain on our gateway Worker, a series of endpoint Workers, and a D1 database powering it all." class="kg-image" width="1732" height="579" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qm175kv1nM4LmxTUhY48p/237e8c8839a15d139a8c6a689888eaa3/image2-24.png" alt="This application consists of a Custom Domain on our gateway Worker, a series of endpoint Workers, and a D1 database powering it all." class="kg-image" width="1732" height="579" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -181,7 +181,7 @@ Published todo-gateway (0.51 sec)
 	<p>Since it’s built natively on Cloudflare, you can also include Cloudflare’s security suite in front of the application. If we want to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">prevent SQL Injection attacks</a> for this endpoint, we can enable the appropriate Managed WAF rules on our todos API endpoint. Alternatively, if we wanted to prevent global access to our API (only allowing privileged clients to access the application), we can simply put Cloudflare Access in front, with custom Access Rules.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3i5ZY1TUMPyiUuvZ6Uggy9/e6f663935f52358b6c439a9f595002fd/image3-15.png" alt="our application can have any number of Cloudflare services running in front of it" class="kg-image" width="1077" height="364" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3i5ZY1TUMPyiUuvZ6Uggy9/4341c43b2022b5820c0eb002802e18be/image3-15.png" alt="our application can have any number of Cloudflare services running in front of it" class="kg-image" width="1077" height="364" loading="lazy">
 
 	</figure>
 	<p>With Custom Domains on Workers, you’re able to easily create applications that are native to Cloudflare’s global network, instantly. Best of all, your developers don’t need to worry about maintaining DNS records or certificate renewal - Cloudflare handles it all on their behalf. We’d like to give a huge shout out to the 5,000+ developers who used Custom Domains during the open beta period, and those that gave feedback along the way to make this possible. Can’t wait to see what you build next! As always, if you have any questions or would like to get involved, please join us on <a href="https://discord.gg/cloudflaredev">Discord</a>.</p>

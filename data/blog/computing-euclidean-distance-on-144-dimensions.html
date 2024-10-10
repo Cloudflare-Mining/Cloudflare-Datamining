@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rNxjRfxGzhJI3MAVokLgA/e04062dd2bb85cdda456bfec5d688336/image1-62.png" alt="Computing Euclidean distance on 144 dimensions" class="kg-image" width="1653" height="853" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rNxjRfxGzhJI3MAVokLgA/8b8be5359634c3c75ecd5cfc696b6072/image1-62.png" alt="Computing Euclidean distance on 144 dimensions" class="kg-image" width="1653" height="853" loading="lazy">
 
 	</figure>
 	<p>Late last year I read a blog post about <a href="https://blog.cloudflare.com/the-csam-scanning-tool">our CSAM image scanning tool</a>. I remember thinking: this is so cool! Image processing is always hard, and deploying a real image identification system at Cloudflare is no small achievement!</p>
@@ -27,14 +27,14 @@
 	<p>The <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> equation used by the algorithm is standard:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5p3VcvTiFKgdwx5xLkRRWv/b3278cf5c902ed69f38ca12fb179a17c/image3-41.png" alt="The Euclidean distance equation used by the algorithm is standard" class="kg-image" width="575" height="39" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5p3VcvTiFKgdwx5xLkRRWv/33fa46b931b1764cf6e51df3198e0a23/image3-41.png" alt="The Euclidean distance equation used by the algorithm is standard" class="kg-image" width="575" height="39" loading="lazy">
 
 	</figure>
 	<p>To calculate the distance between two 144-byte hashes, we take each byte, calculate the delta, square it, sum it to an accumulator, do a square root, and ta-dah! We have the distance!</p>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive.c#L11-L20">Here's how to count the squared distance in C</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lwPTgH8PmEYB8mMyOhbsH/436fc4c722e4bc894d26aeff76aca90b/image4-24.png" alt="Here's how to count the squared distance in C" class="kg-image" width="912" height="302" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lwPTgH8PmEYB8mMyOhbsH/f660b81e92c9ff46a422bdbf1af18321/image4-24.png" alt="Here's how to count the squared distance in C" class="kg-image" width="912" height="302" loading="lazy">
 
 	</figure>
 	<p>This function returns the squared distance. We avoid computing the actual distance to save us from running the square root function - it's slow. Inside the code, for performance and simplicity, we'll mostly operate on the squared value. We don't need the actual distance value, we just need to find the vector with the smallest one. In our case it doesn't matter if we'll compare distances or squared distances!</p>
@@ -69,7 +69,7 @@ Total: 85261.833ms, 1536 items, avg 55.509ms per query, 18.015 qps</code></pre>
 	<p>Using AVX2 is easier said than done. There is no single instruction to count Euclidean distance between two uint8 vectors! The fastest way of counting the full distance of two 144-byte vectors <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive-avx2.c#L13-L36">with AVX2 we could find is authored</a> by <a href="https://twitter.com/thecomp1ler">Vlad</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yFtHcZSRvyub5vHtjDXKE/38d74b111049403d4a2784c3021ca680/image2-39.png" alt="" class="kg-image" width="1352" height="646" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yFtHcZSRvyub5vHtjDXKE/54596189ea43193a5fd51653ec73daea/image2-39.png" alt="" class="kg-image" width="1352" height="646" loading="lazy">
 
 	</figure>
 	<p>It’s actually simpler than it looks: load 16 bytes, convert vector from uint8 to int16, subtract the vector, store intermediate sums as int32, repeat. At the end, we need to do complex 4 instructions to extract the partial sums into the final sum. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive-avx2.c">This AVX2 code</a> improves the performance around 3x:</p>
@@ -129,7 +129,7 @@ Total: 4994.435ms, 1536 items, avg 3.252ms per query, 307.542 qps</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rp4oarmXrL2JtieXZ4VWB/f12ad4eac6d47ede0d9018c74e8b7730/image6-11.png" alt="" class="kg-image" width="1081" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rp4oarmXrL2JtieXZ4VWB/56dd69e834fa27e7c0c5cb0eb7544a58/image6-11.png" alt="" class="kg-image" width="1081" height="375" loading="lazy">
 
 	</figure>
 	<p>At some point, John noted that the threshold allows additional optimization. We can order the hashes by their distance from some origin point. Given a query hash which has origin distance of A, we can inspect only hashes which are distant between |A-threshold| and |A+threshold| from the origin. This is pretty much how each level of Vantage Point Tree works, just simplified. This optimization — ordering items in the database by their distance from origin point — is relatively simple and can help save us a bit of work.</p>
@@ -160,7 +160,7 @@ Total: 4994.435ms, 1536 items, avg 3.252ms per query, 307.542 qps</code></pre>
 	<p>To effectively use these instructions we need to transpose the data in the database. Instead of storing hashes in rows, we can store them in columns:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29kHAIq6T1Mfif5MVP3Jol/812901d730791e0b164bd82a4d488d29/image1-63.png" alt="" class="kg-image" width="1653" height="853" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29kHAIq6T1Mfif5MVP3Jol/7369ea0b4a38a416a4367bb9865996ca/image1-63.png" alt="" class="kg-image" width="1653" height="853" loading="lazy">
 
 	</figure>
 	<p>So instead of:</p>
@@ -193,7 +193,7 @@ Total: 4994.435ms, 1536 items, avg 3.252ms per query, 307.542 qps</code></pre>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-inv-avx2.c#L138-L147">The hot loop code</a> even looks relatively pretty:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Xb2h3rI8mXT1yeiQcVYfn/01a4de95b5a61f449f2eafc480b6fd3b/image5-26.png" alt="" class="kg-image" width="577" height="157" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Xb2h3rI8mXT1yeiQcVYfn/4a7eb556d7aea0014c3944b301b52b0d/image5-26.png" alt="" class="kg-image" width="577" height="157" loading="lazy">
 
 	</figure>
 	<p>With the well-tuned batch size and short distance size parameters we can <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-inv-avx2.c">see the performance of this algorithm</a>:</p>
@@ -202,7 +202,7 @@ Total: 1118.669ms, 1536 items, avg 0.728ms per query, 1373.062 qps</code></pre>
 	<p>Whoa! This is pretty awesome. We started from 55ms per query, and we finished with just 0.73ms. There are further micro-optimizations possible, like memory prefetching or using huge pages to reduce page faults, but they have diminishing returns at this point.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dBsIg3yHloEmyLqUyfETK/c088b24dbccaa9fa240180db50cccb2b/image7-8.png" alt="" class="kg-image" width="512" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dBsIg3yHloEmyLqUyfETK/3119d166040ef5d6b96d03acc9873120/image7-8.png" alt="" class="kg-image" width="512" height="410" loading="lazy">
 
 	</figure>
 	<p>Roofline model from Denis Bakhvalov's book‌‌</p>

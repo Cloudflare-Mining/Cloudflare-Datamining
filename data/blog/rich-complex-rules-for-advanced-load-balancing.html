@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kRo39XsUp3WJjldKkZhhZ/520ce27f97cf0e0432d26dd1eea5d802/Cloudflarerd-updates-2.png" alt="" class="kg-image" width="1510" height="892" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kRo39XsUp3WJjldKkZhhZ/fb1970ec6417d47dbed3affadfc1c9b2/Cloudflarerd-updates-2.png" alt="" class="kg-image" width="1510" height="892" loading="lazy">
 
 	</figure>
 	<p>Load Balancing — functionality that’s been around for the last 30 years to help businesses leverage their existing infrastructure resources. Load balancing works by proactively steering traffic away from unhealthy origin servers and — for more advanced solutions — intelligently distributing traffic load based on different steering <a href="https://www.cloudflare.com/learning/performance/types-of-load-balancing-algorithms">algorithms</a>. This process ensures that errors aren’t served to end users and empowers businesses to tightly couple overall business objectives to their traffic behavior.</p>
@@ -41,7 +41,7 @@
 	<p>For any high-volume transaction business such as an ecommerce or retail store, ensuring the transactions go through as fast and reliably as possible is a table stakes requirement. As transaction volume increases, no single origin can handle the incoming traffic, and it doesn’t always make sense for it to do so. Why have a transaction request travel around the world to a specifically nominated origin for payment processing? This setup would only add latency, leading to degraded performance, increased errors, and a poor customer experience. But what if you could create custom logic to segment transactions to different origin servers based on a specific value in a query string, such as a PS5 (associated with Sony’s popular PlayStation 5)? What if you could then couple that value with dynamic latency steering to ensure your load balancer always chooses the most performant path to the origin? This would be game changing to not only ensure that table-stakes transactions are reliable and fast but also drastically improve the customer experience. You could do this in minutes with load balancing custom rules:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1svxayy53RBp3u5XDKRh0b/99677f52e360ca46789f9328d495e99c/image5-5.png" alt="" class="kg-image" width="1999" height="1117" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1svxayy53RBp3u5XDKRh0b/3608c2ec914e40e1ab1cb6a9f42ab641/image5-5.png" alt="" class="kg-image" width="1999" height="1117" loading="lazy">
 
 	</figure>
 	<p>For any requests where the query string shows ‘PS5’, then route based on which pool is the most performant.</p>
@@ -57,7 +57,7 @@
 	<p>Without flexibility, however, it can be difficult to easily and intelligently route traffic to the proper data centers to maintain that security and privacy posture. Not anymore! With load balancing custom rules, supporting a split horizon DNS architecture takes as little as five minutes to set up a rule based on the IP source condition and then overwriting which pools or data centers that traffic should route to.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ElmM0Q5zkKM0KjXWqLr4K/0ddc87ba710fd5247940f74cd7d713da/image2-4.png" alt="" class="kg-image" width="1260" height="1094" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ElmM0Q5zkKM0KjXWqLr4K/704a2a3569bb7690c39a997ab60873dc/image2-4.png" alt="" class="kg-image" width="1260" height="1094" loading="lazy">
 
 	</figure>
 	<p>This can also be extremely helpful if your data centers are spread across multiple areas of the globe that don’t align with the 13 current regions within Cloudflare. By segmenting where traffic goes based on the IP source address, you can create a type of geo-steering setup that is also finely tuned to the requirements of the business!</p>
@@ -85,7 +85,7 @@
 	<p>These different modes mean the fields available to each end up being quite different. The DNS load balancer gets access to DNS-specific fields such as “dns.qry.name” (the query name) while our Proxied load balancer has access to “http.request.method” (the HTTP method used to access the proxied resource). Some more general fields — like the name of the load balancer being used — are available in both modes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/NUhRkCfvb73WY8MTkGvfi/97d79b3511f2a0dfe788f4901de5737e/Screenshot-2021-07-14-at-12.20.53.png" alt="" class="kg-image" width="1040" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NUhRkCfvb73WY8MTkGvfi/ff01e7523568b2d62acc15f916e45b82/Screenshot-2021-07-14-at-12.20.53.png" alt="" class="kg-image" width="1040" height="742" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

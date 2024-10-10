@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ivUYRyChURq7D4FqFWCV/a16ae1de4562cbf4949c60a915efc84a/image2-13.png" alt="" class="kg-image" width="1999" height="1068" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ivUYRyChURq7D4FqFWCV/0023160564370003e1a16ac68385b51d/image2-13.png" alt="" class="kg-image" width="1999" height="1068" loading="lazy">
 
 	</figure>
 	<p>Starting today, we’re excited to share that you can now shift another traditional client-driven use case to a browser. Teams can now provide their users with a Virtual Network Computing (VNC) client fully rendered in the browser with built-in <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust controls</a>.</p>
@@ -52,7 +52,7 @@
 	<p>To do this we built a full VNC viewer implementation that runs in a web browser. Something like this would normally require running a server-side TCP → WebSocket proxy (eg. websockify since TCP connections are not natively supported in browsers today). Since we already have exactly this with cloudflared + Cloudflare Tunnel, we can connect to existing TCP tunnels and provide an entirely in-browser VNC experience. Because the server-side proxy happens at the TCP level, the VNC session is end-to-end encrypted between the web client and the VNC server within your network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2v9WxFFsZAPQcPYxFFFdbr/7e509918feef5dd0a17d5f7b0164265c/image3-9.png" alt="" class="kg-image" width="960" height="244" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v9WxFFsZAPQcPYxFFFdbr/1cac8ad57c72b947d6745c2ec43d79e4/image3-9.png" alt="" class="kg-image" width="960" height="244" loading="lazy">
 
 	</figure>
 	<p>Once we establish a connection, we use <a href="https://github.com/novnc/noVNC">noVNC</a> to render any VNC server natively in the browser.</p>
@@ -60,13 +60,13 @@
 	<p>The final step is to authenticate the traffic going to the Tunnel established with your VNC server. For this, we can use Cloudflare Access, as it allows us to verify a user’s identity and enforce additional security checks. Once a user is properly authenticated, they are presented with a cookie that is then checked on every request made to the VNC server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4i6FGqtz2HZCiQ79wXtEQy/1f4527bf1749d3aad6fd07383e02acfc/image1-11.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4i6FGqtz2HZCiQ79wXtEQy/e347049200df61d1c663628ba7a65d76/image1-11.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>And then a user can use their VNC terminal!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1l8CwOyzBTOphseoR6uFUq/6e29d910df409782970537fd509a6c4f/image5-4.png" alt="" class="kg-image" width="927" height="645" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1l8CwOyzBTOphseoR6uFUq/0f502d7874b18a3bf9e00e56d28dddc1/image5-4.png" alt="" class="kg-image" width="927" height="645" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -82,7 +82,7 @@
 	<p>Visibility is another major improvement. In future releases, we will support screen recording and network request logging to provide detailed information on exactly what was completed during a VNC session. We already provide clear logs on any time a user accesses their VNC or SSH server via the browser.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xgXpUjkHhOh5wgLkHFxj3/77fe97197aa8b6062397985871d05567/image4-8.png" alt="" class="kg-image" width="1464" height="581" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xgXpUjkHhOh5wgLkHFxj3/90df823312ff68ef23b0591a550e4940/image4-8.png" alt="" class="kg-image" width="1464" height="581" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

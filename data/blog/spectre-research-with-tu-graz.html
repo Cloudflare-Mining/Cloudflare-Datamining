@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zbYCkL8PoGYZPrncyRYNw/2d23444d3262431da7a0eda02b1be3b2/Frozen-Spectre.png" alt="Dynamic Process Isolation: Research by Cloudflare and TU Graz" class="kg-image" width="1800" height="1012" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zbYCkL8PoGYZPrncyRYNw/c3da0b0c44c3a0248134ea38a9d970e7/Frozen-Spectre.png" alt="Dynamic Process Isolation: Research by Cloudflare and TU Graz" class="kg-image" width="1800" height="1012" loading="lazy">
 
 	</figure>
 	<p>Last year, <a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model">I wrote about the Cloudflare Workers security model, including how we fight Spectre attacks</a>. In that post, I explained that there is no known complete defense against Spectre — regardless of whether you're using isolates, processes, containers, or virtual machines to isolate tenants. What we do have, though, is a huge number of tools to increase the cost of a Spectre attack, to the point where it becomes infeasible. Cloudflare Workers has been designed from the very beginning with protection against side channel attacks in mind, and because of this we have been able to incorporate many defenses that other platforms — such as virtual machines and web browsers — cannot. However, the performance and scalability requirements of edge compute make it infeasible to run every Worker in its own private process, so we cannot rely on the usual defenses provided by the operating system kernel and address space separation.</p>

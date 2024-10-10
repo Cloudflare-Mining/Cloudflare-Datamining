@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BkjeVJuqxZCICjC8odCCV/1a9817803fec8767a62d64d1f61f6c4b/illustration-ssl-certificate.png" alt="Certificate" class="kg-image" width="645" height="200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BkjeVJuqxZCICjC8odCCV/830125de96d114b33e8fcf76491229da/illustration-ssl-certificate.png" alt="Certificate" class="kg-image" width="645" height="200" loading="lazy">
 
 	</figure>
 	<p><b>Update:</b> Cloudflare now issues <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">free certificates for the origin</a>.</p>
@@ -19,7 +19,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ygkzm4KrzUlKGAMywOLFh/1ba9a86152bc4a5a57d2b68aa97b4711/image00_2.png" alt="We love SSL" class="kg-image" width="500" height="132" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ygkzm4KrzUlKGAMywOLFh/e2eae85d08525e74381a20effb1573e8/image00_2.png" alt="We love SSL" class="kg-image" width="500" height="132" loading="lazy">
 
 	</figure>
 	<p>Transport Layer Security (TLS) is a protocol for encrypting data that is sent over the Internet. TLS grew out of Secure Sockets Layer (SSL), the first widely-adopted web encryption protocol, in order to fix most of the earlier protocol’s security flaws. The industry still uses the terms somewhat interchangeably for historical reasons. Any web site that you visit starting with https:// rather than http:// is using TLS/SSL for communication between your browser and their server.</p>
@@ -35,7 +35,7 @@
 	<p>To enable TLS, a site needs a certificate and a corresponding key. Certificates are files containing information about the owner of a site, and the public half of an asymmetric key pair (usually <a href="https://blog.cloudflare.com/why-are-some-keys-small">RSA</a>). A certificate authority (CA) digitally signs the certificate to verify that the information in the certificate is correct. By trusting the certificate, you are trusting that the certificate authority has done its due diligence.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3tkicH7mdMhFShk0MpNH9J/df8eec9797056dc0642c0198e4c4bdc1/image01_2.png" alt="Not Trusted" class="kg-image" width="873" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tkicH7mdMhFShk0MpNH9J/8d43421e14717e838aa32862faef11ad/image01_2.png" alt="Not Trusted" class="kg-image" width="873" height="441" loading="lazy">
 
 	</figure>
 	<p>Operating systems and browsers typically have a list of certificate authorities that they implicitly trust. If a web site presents a certificate that is signed by an untrusted certificate authority, the browser warns the visitor that something could be afoot.</p>
@@ -50,7 +50,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wL3XrgDCzvh9vFMbGOa2u/c4e70bbbe82f6ad7e65e57c5260c85f9/image02_1.jpg" alt="MitM" class="kg-image" width="259" height="194" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3wL3XrgDCzvh9vFMbGOa2u/c84b9e14762c5fc88f79246445929ef7/image02_1.jpg" alt="MitM" class="kg-image" width="259" height="194" loading="lazy">
 
 	</figure>
 	<p>One type of attack that could trigger a browser warning is a on-path attack. In this attack, an attacker places himself in between a visitor and a web site, impersonating both. With this attack, the browser thinks it is talking to the server on an encrypted channel, and the server thinks it is talking to the browser, but they are both talking to the attacker who is sitting in the middle. All traffic passes through this attacker, who is able to read and modify any of the data.</p>
@@ -67,19 +67,19 @@
 	<p>The front-end is a dangerous place for data that is sent unencrypted and unauthenticated. Messages have to go from the browser, through the local wired or wireless network to the modem and the Internet service provider, before reaching the Internet and CloudFlare’s servers. Malicious parties can read or modify the messages anywhere in this chain. For example, using an unencrypted site at a coffee shop could expose your private data for all to see.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/79aEj1Yu8IqIJgz7s1eewW/2efd6d79b8a3fcbcadca971b439b3182/illustration-no-ssl.png" alt="Internet" class="kg-image" width="645" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79aEj1Yu8IqIJgz7s1eewW/e2570dd82845e63c6035f2b578a1eef6/illustration-no-ssl.png" alt="Internet" class="kg-image" width="645" height="340" loading="lazy">
 
 	</figure>
 	<p>The communication on the back-end is harder to spy on, since most server-to-server data flows through the Internet backbone. The coffee shop snooper can’t read or modify the information flowing through transatlantic pipelines, but large telecommunications and nation-state level attackers can still potentially intercept this data. This is what <a href="https://www.techdirt.com/articles/20130910/10470024468/flying-pig-nsa-is-running-man-middle-attacks-imitating-googles-servers.shtml">Operation FLYING PIG</a> is said to be doing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/suz0TAvIimakV95KT3FMj/12a8fe044d18a4db16a60606ca833207/image08_1.png" alt="FLYING PIG" class="kg-image" width="368" height="323" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/suz0TAvIimakV95KT3FMj/2491400cf2414c7fa69dbf8962185a53/image08_1.png" alt="FLYING PIG" class="kg-image" width="368" height="323" loading="lazy">
 
 	</figure>
 	<p>The traceroute command shows the network hops to get from your computer to any given website:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26UxPlpp6M8A54RLztEUEu/8fc9567fb51582b75a536a23b4bee867/Screen_Shot_2014-02-14_at_12.55.02_PM.png" alt="traceroute" class="kg-image" width="749" height="478" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26UxPlpp6M8A54RLztEUEu/6def1d512beefdb0fe5e98fe906ece7a/Screen_Shot_2014-02-14_at_12.55.02_PM.png" alt="traceroute" class="kg-image" width="749" height="478" loading="lazy">
 
 	</figure>
 	<p>Sending your Internet traffic through so many computers unencrypted certainly seems like a risky move.</p>
@@ -97,7 +97,7 @@
 	<p>Flexible SSL encrypts all data between your site’s visitors and CloudFlare using TLS configured with best practices such as <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a> and <a href="https://blog.cloudflare.com/killing-rc4">more</a>. This is where most threats to web traffic happen: in your coffee shop, by your ISP, and others in the local network. The browser’s certificate validation prevents attackers in these locations. This option is very useful for customers who don’t have TLS configured on their host or can’t enable it because of how they are set up with their hosting provider.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zByqnQWFbJJ687Zjeow4P/47bb83faf851d23ed0d6ca8a3e0af5c6/illustration-flexible-ssl.png" alt="Flexible" class="kg-image" width="645" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zByqnQWFbJJ687Zjeow4P/6ad6e8613bda95cef8090ba3743f492b/illustration-flexible-ssl.png" alt="Flexible" class="kg-image" width="645" height="340" loading="lazy">
 
 	</figure>
 	<p>Above: Flexible SSL - front-end over TLS, back-end unencrypted</p>
@@ -106,7 +106,7 @@
 	<p>On-path attempts between CloudFlare and the web server are difficult to pull off, but still possible, and we wanted our customers to have the option of protecting their customers against such attackers. Full SSL (Strict) makes sure that CloudFlare validates the certificate chain presented by the web server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7juOCKC9VJb8Lf0CrfWNpm/d6389df63bb26fa009a344492fb2af92/illustration-full-ssl.png" alt="Full SSL" class="kg-image" width="645" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7juOCKC9VJb8Lf0CrfWNpm/c9a6443af1f8c650b421d0d7b01ee7e8/illustration-full-ssl.png" alt="Full SSL" class="kg-image" width="645" height="340" loading="lazy">
 
 	</figure>
 	<p>Above: Full SSL - front-end over TLS, back-end over TLS</p>
@@ -114,7 +114,7 @@
 	<p>In strict mode, CloudFlare validates the certificate chain on the back-end using its own list of trusted certificate authorities. Customers can enable this globally for their site, or they can have different settings for different subdomains, using Page Rules. CloudFlare’s list is more exclusive than the ones used by the popular browsers. By trusting a smaller and more exclusive list of certificate authorities, we protect our customers against MitM attacks using certificates signed by <a href="http://arstechnica.com/security/2011/09/comodo-hacker-i-hacked-diginotar-too-other-cas-breached">rogue or compromised certificate authorities</a>. We are automatically upgrading customers from Full SSL to Full SSL (Strict) if we determine that their origin server has a valid certificate installed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X9sJZmVW7ThiJXLOMlK2k/37ec24fc239ec8dba9bb7b0322ad3009/illustration-strict-ssl.png" alt="Full SSL (Strict)" class="kg-image" width="645" height="440" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X9sJZmVW7ThiJXLOMlK2k/bb9252efdb4c7a27a2579979bcb1e9b2/illustration-strict-ssl.png" alt="Full SSL (Strict)" class="kg-image" width="645" height="440" loading="lazy">
 
 	</figure>
 	<p>Above: Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</p>

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/cubic-and-hystart-support-in-quiche">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LBDK4VC4Y5eHEn2zn2orT/645bcefed1ad1b799d3fcdf447ffacce/cubic-and-hystart-support-in-quiche.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/cubic-and-hystart-support-in-quiche">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LBDK4VC4Y5eHEn2zn2orT/da98a787cfccddfd8bd0b74853b675b6/cubic-and-hystart-support-in-quiche.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><a href="https://github.com/cloudflare/quiche">quiche</a>, Cloudflare's IETF QUIC implementation has been running <a href="https://tools.ietf.org/html/rfc8312">CUBIC congestion control</a> for a while in our production environment as mentioned in <a href="https://blog.cloudflare.com/http-3-vs-http-2">Comparing HTTP/3 vs. HTTP/2 Performance</a>. Recently we also added <a href="https://tools.ietf.org/html/draft-balasubramanian-tcpm-hystartplusplus-03">HyStart++</a> &nbsp;to the congestion control module for further improvements.</p>
 	<p>In this post, we will talk about QUIC congestion control and loss recovery briefly and CUBIC and HyStart++ in the quiche congestion control module. We will also discuss lab test results and how to visualize those using <a href="https://tools.ietf.org/html/draft-marx-qlog-event-definitions-quic-h3-01">qlog</a> which was recently added to the quiche library as well.</p>
@@ -32,7 +32,7 @@
 	<p>Here is an example of Reno congestion control CWND graph. See the “Congestion Window” line.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oTUuWLimS5jC3imLTcZY1/aecd4f3ad30badee96cec8a11f08715b/reno-nohs.png" alt="" class="kg-image" width="1413" height="887" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oTUuWLimS5jC3imLTcZY1/c7008deac0b62ac774735f2dda0a0324/reno-nohs.png" alt="" class="kg-image" width="1413" height="887" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -47,7 +47,7 @@
 	<p>What makes the difference from Reno is during congestion avoidance &nbsp;its CWND growth is based on a cubic function as follows:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KI70rYLDzS02VWarowfyi/f59779c3bb0597bc3df7e8030d93d46c/1J22foaznVbLs-waPSxKZusUf88svZfepM2QeTeDGe3kvjnkYKN73L861cTQu2eaxLBNtQhW-WEvmlqv3YWf_tRdfTLFXMcWDmUuNzSFanrz53N-9c4insL5kXnj.png" alt="" class="kg-image" width="335" height="201" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KI70rYLDzS02VWarowfyi/981f066dfbf86f11c0a2cc5c697d8d84/1J22foaznVbLs-waPSxKZusUf88svZfepM2QeTeDGe3kvjnkYKN73L861cTQu2eaxLBNtQhW-WEvmlqv3YWf_tRdfTLFXMcWDmUuNzSFanrz53N-9c4insL5kXnj.png" alt="" class="kg-image" width="335" height="201" loading="lazy">
 
 	</figure>
 	<p>(from the CUBIC paper: <a href="https://www.cs.princeton.edu/courses/archive/fall16/cos561/papers/Cubic08.pdf">https://www.cs.princeton.edu/courses/archive/fall16/cos561/papers/Cubic08.pdf</a>)</p>
@@ -145,7 +145,7 @@
 	<p>Here is a chart of overall test results:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9p0dppTGft9jL6vBZrpI7/1caa4c453fe526d5e4cbbe18ed65d88c/image6-2.png" alt="" class="kg-image" width="835" height="486" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9p0dppTGft9jL6vBZrpI7/edf89c790e406e83b0df0c556b3c45fb/image6-2.png" alt="" class="kg-image" width="835" height="486" loading="lazy">
 
 	</figure>
 	<p>In these tests, TCP-CUBIC (blue bars) is the baseline to which we compare the performance of QUIC congestion control variants. We include QUIC-RENO (red and yellow bars) because that is the default QUIC baseline. Reno is simpler so we expect it to perform worse than TCP-CUBIC. QUIC-CUBIC (green and orange bars) should perform the same or better than TCP-CUBIC.</p>
@@ -171,7 +171,7 @@
 	<p>For each test, the number of detected packets lost (not the retransmit count) is shown in the following chart. The lost packets number is the average of 20 runs for each test.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IMpVqPBHkCvQhDQnrJE81/302d23dbf7ae546f3eb3a87411fee47f/lost_pkt_hs.png" alt="" class="kg-image" width="1180" height="712" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IMpVqPBHkCvQhDQnrJE81/b23f89e3a15cb314700532b371898a46/lost_pkt_hs.png" alt="" class="kg-image" width="1180" height="712" loading="lazy">
 
 	</figure>
 	<p>As shown above, you can see that HyStart++ reduces a lot of packet loss.</p>
@@ -196,13 +196,13 @@
 	<p>Here is a qvis congestion chart for a 16MB transfer in the same lab test conditions, with 0% packet loss. You can see a high peak of CWND in the beginning due to slow start. After some time, it starts to show the CUBIC window growth pattern (concave function).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/147wv6vAfFBfVunzmgqi4Z/de0fce35f9e99cac3f594237381bae27/cubic-nohs.png" alt="" class="kg-image" width="1415" height="885" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/147wv6vAfFBfVunzmgqi4Z/037337856e3edf6983e7d88f27f21d76/cubic-nohs.png" alt="" class="kg-image" width="1415" height="885" loading="lazy">
 
 	</figure>
 	<p>When we zoom into the slow start section (the first 0.7 seconds), we can see there is a linear increase of CWND during slow start. This continues until we see a packet lost around 500ms and enters into congestion avoidance after recovery, as you can see in the following chart:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2N7Oiud9tfiQq8JQ1ReRxV/df87b2c17e3b32d41050142c7da38ade/cubic-nohs-zoom-legend.png" alt="" class="kg-image" width="1412" height="883" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2N7Oiud9tfiQq8JQ1ReRxV/a656abfba8f9dc62778600274861d83b/cubic-nohs-zoom-legend.png" alt="" class="kg-image" width="1412" height="883" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -216,14 +216,14 @@
 	<p>Let’s see the same graph when HyStart++ is enabled. You can see the slow start peak is smaller than without HyStart++, which will lead to less overshooting and packet loss:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g0T9fYiwD4biGawOh7LTS/c209d1af78c457b5725b6579bb7874c6/cubic-hs.png" alt="" class="kg-image" width="1416" height="886" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g0T9fYiwD4biGawOh7LTS/ed5f2dfe915751e0fbad12ffd532624c/cubic-hs.png" alt="" class="kg-image" width="1416" height="886" loading="lazy">
 
 	</figure>
 	<p>When we zoom in the slow start part again, now we can see that the slow start exits to Limited Slow Start (LSS) around 390ms and exit to congestion avoidance at the congestion event around 500ms.</p>
 	<p>As a result you can see the slope is less steep until congestion is detected. It will lead to less packet loss due to less overshooting the network and faster convergence to a stable CWND.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49le5NmySGIuvRcZETrR8Z/577dfebab3caf97c7dc749c5291107ad/cubic-hs-zoom-legend.png" alt="" class="kg-image" width="1415" height="885" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49le5NmySGIuvRcZETrR8Z/67236043dd84b2932e23d0ea5db3d95d/cubic-hs-zoom-legend.png" alt="" class="kg-image" width="1415" height="885" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

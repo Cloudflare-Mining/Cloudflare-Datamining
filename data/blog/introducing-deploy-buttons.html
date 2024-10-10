@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T50z7dOUZPWCbrE9g8hCW/d0ff97aa797599d3b3b9cf1f406654f4/image1-13-1.png" alt="" class="kg-image" width="1280" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3T50z7dOUZPWCbrE9g8hCW/86751d67bc32b2259344a4892842aa0b/image1-13-1.png" alt="" class="kg-image" width="1280" height="720" loading="lazy">
 
 	</figure>
 	<p>When I first try out new development platforms, the first thing I do is get an OSS (Open Source Software) project I find on Github up and running. I used to start by following tutorials or digging through documentation. It’s a little bit counterintuitive. Let me share with you why. One reason is that Hello, World! examples rarely show the real “magic” of the platform. I want to feel excited and get a sense of how other people are creatively using the platform.</p>
@@ -13,14 +13,14 @@
 	<p>Try this button to deploy a GraphQL db:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fsignalnerve%2Fworkers-graphql-server">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mIGxNuovWilwnhFBVpWUM/43e449365e0203648e0e694b269c4595/button.svg_xml" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mIGxNuovWilwnhFBVpWUM/c16e5d8c19b51f10f87f83e3474f7ea4/button.svg_xml" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
 		</a>
 	</figure>
 	<p>We’ve also curated a <a href="https://deploy.workers.cloudflare.com">few awesome projects</a> to try deploying now with this new deploy flow.</p>
 	<p>Before Deploy Buttons, things were a bit more complicated. When you found a project you like on GitHub or an example on our template gallery, you had to go to cloudflare.com to create an account, go to the docs to set up a local development environment, clone the project, and finally, learn how to use wrangler to deploy it. Now, you can just click on the deploy button to quickly get a project up and running with Workers to experience the magic of serverless.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11cLi5av4Q8vhzvZm6kxOt/dfe1bc02bd57692a483ae5e612418025/deploytool.png" alt="" class="kg-image" width="792" height="784" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11cLi5av4Q8vhzvZm6kxOt/0571890de73be1ed68f359be204a502d/deploytool.png" alt="" class="kg-image" width="792" height="784" loading="lazy">
 
 	</figure>
 	<p>Here’s how it works. For example, if you find an interesting Workers project on GitHub and want to deploy it, you would click the “Deploy to Workers Button” on the <a href="https://github.com/bytesizedxyz/cloudflare-worker-cra">repo README</a>. This would take you to our new web-based deploy tool where you can deploy that project in just three steps. First, connect your Github account. Second, connect your Cloudflare account. Third, click “Deploy” and the project will be forked to your Github account and deployed to Workers with our Github action.</p><!--kg-card-begin: html-->
@@ -72,14 +72,14 @@ deploy:
 	</ol>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FYOURUSERNAME%2FYOURREPO">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59lOKk9dO4ihyDPCik5Yso/5fd126704b78e700e92818e4481cbdd2/button.svg_xml" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59lOKk9dO4ihyDPCik5Yso/762e86effd0f44b5bb1885d8e10abc7d/button.svg_xml" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
 		</a>
 	</figure>
 	<pre class="language-bash"><code class="language-bash">[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO)</code></pre>
 	<p>Does your project use features only available in a paid Workers plan like Workers KV? Providing the paid=true query parameter to the /button and the deploy application paths will render a "Deploy to Workers Bundled" button, as seen below -- it will also render a notice in the UI that the project requires Workers Bundled:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FYOURUSERNAME%2FYOURREPO&amp;paid=true">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TlG5fqH4m4NUBe8pml5SI/a78f2e0a3bb3250c93226323c2bbc963/button" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TlG5fqH4m4NUBe8pml5SI/7c138e438e015d54e0ab99927a923f16/button" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
 		</a>
 	</figure>
 	<pre class="language-bash"><code class="language-bash">[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO&amp;paid=true)</code></pre>

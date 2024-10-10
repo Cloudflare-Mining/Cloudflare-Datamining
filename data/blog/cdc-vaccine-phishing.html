@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26z4OmcCThlhCgxYtcUFU7/c3f88358d209a4e10a83ed38e697d5e6/cdc-vaccine-phishing.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26z4OmcCThlhCgxYtcUFU7/cf5689ff1764701d77297826d3ea742c/cdc-vaccine-phishing.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in January 2021 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>As news reports began to break concerning COVID-19 vaccine distribution, and which groups the highly-coveted initial doses would go to first, malicious actors quickly mobilized phishing messages that exploited a variety of ongoing concerns regarding the vaccine. These <a href="https://www.computerweekly.com/news/252493523/Surge-in-Covid-19-vaccine-phishing-scams-reported">attacks</a> ranged from information stealing campaigns to Business Email Compromise (BEC) to operations that aimed to infect victim hosts with malware.</p>
@@ -6,7 +6,7 @@
 	<p>Figure 1 shows the body of the CDC phishing message that the attacker sent to various targeted companies across multiple industries.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TcZUaBFtr9OdM8dORVcuX/905756fbd34b26b46899ddd331aa6fb0/image1-1.png" alt="" class="kg-image" width="1999" height="1062" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TcZUaBFtr9OdM8dORVcuX/f1a75b760a4d5cb78aecf0c288892b71/image1-1.png" alt="" class="kg-image" width="1999" height="1062" loading="lazy">
 
 	</figure>
 	<p>Figure 1. Vaccine-Themed Phishing Message Impersonating the CDC</p>
@@ -14,7 +14,7 @@
 	<p>Seen in Figure 2, the next wave of this campaign engages in brand spoofing with a new and improved graphic to imitate pharmaceutical and vaccine manufacturer Pfizer in addition to using the CDC logo. This comes as no surprise, as impersonation of Pfizer and the CDC is all too common amid the current nationwide roll-out of the COVID-19 vaccine.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gheB5gvaX50eBdXgYceTG/d3d772b5b8dd3affd4bd0dc3161444c1/image4-1.png" alt="" class="kg-image" width="597" height="689" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gheB5gvaX50eBdXgYceTG/235031f1351161f36c6173ce7ff64154/image4-1.png" alt="" class="kg-image" width="597" height="689" loading="lazy">
 
 	</figure>
 	<p>Figure 2. Vaccine-Themed Phishing Message with Pfizer Brand Spoof</p>
@@ -53,7 +53,7 @@
 	<p>Interestingly enough, the attacker misspells vaccine as “vassine,” indicating English is likely not their native language.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vHkFhmeNnmcF67qHaI9rL/f20113acf42effad695711003f2358cf/image5-2.png" alt="" class="kg-image" width="1464" height="1052" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vHkFhmeNnmcF67qHaI9rL/8e19c5b4aa43fbad6cae794f51db289c/image5-2.png" alt="" class="kg-image" width="1464" height="1052" loading="lazy">
 
 	</figure>
 	<p>Figure 3. “CDC” Contact Phishing Form</p>
@@ -84,7 +84,7 @@
 	<p>Navigating directly to <code>hxxp://mail10298[.]buzz</code> exposed an OPSEC blunder by the attacker — an open directory of the phishing website, as shown in Figure 4.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bqArmfZpLkCzoqVUrxmof/26aed53c17b3720585a57f39dbb121b6/image2-1.png" alt="" class="kg-image" width="328" height="269" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bqArmfZpLkCzoqVUrxmof/c578e68ad7b2a95c05537e0f22f61159/image2-1.png" alt="" class="kg-image" width="328" height="269" loading="lazy">
 
 	</figure>
 	<p>Figure 4. Index of “CDC” COVID-19 Website</p>
@@ -92,7 +92,7 @@
 	<p>One file in particular caught our interest: process.php. This script, a portion of which is shown below in Figure 5, was most likely taken from open source code for processing HTML forms &nbsp;using PHP. This is evident in the extensive commenting and default values that still remain in the script.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qcWaT9gqG3VTzQGxo7Bly/3413b028740b0a11d56553c88d4ed11e/image3-1.png" alt="" class="kg-image" width="1009" height="649" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qcWaT9gqG3VTzQGxo7Bly/8feecc00e20192a4aa6235df3dc9bbd7/image3-1.png" alt="" class="kg-image" width="1009" height="649" loading="lazy">
 
 	</figure>
 	<p>Figure 5. Portion of process.php Script</p>

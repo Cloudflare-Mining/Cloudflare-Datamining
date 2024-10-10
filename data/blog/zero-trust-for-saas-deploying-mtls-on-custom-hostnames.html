@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">한국어</a>, <a href="https://blog.cloudflare.com/es-es/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YvLw2RK0h9dQEnTN1Rj8t/c8638033aa89d26cdc6aaf0c6c1aa36c/zero-trust-for-saas-deploying-mtls-on-custom-hostnames.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">한국어</a>, <a href="https://blog.cloudflare.com/es-es/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YvLw2RK0h9dQEnTN1Rj8t/2b0deebcbd648f9b2bdd88147ad0f5d6/zero-trust-for-saas-deploying-mtls-on-custom-hostnames.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare has a large base of Software-as-a-Service (SaaS) customers who manage thousands or millions of their customers’ domains that use their SaaS service. We have helped those SaaS providers grow by extending our infrastructure and services to their customer’s domains through a product called <a href="https://blog.cloudflare.com/cloudflare-for-saas">Cloudflare for SaaS</a>. Today, we’re excited to give our SaaS providers a new tool that will help their customers add an extra layer of security: they can now enable mutual TLS authentication on their customer’s domains through our Access product.</p>
 	<div class="flex anchor relative">
@@ -15,7 +15,7 @@
 	<p>A TLS handshake looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MaiC18jwmeIKkUabottxd/f301ed89951fce235eacfaeadf7b9a9b/image1-102.png" alt="" class="kg-image" width="784" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MaiC18jwmeIKkUabottxd/1be850baf8137a768e76401e483c2a23/image1-102.png" alt="" class="kg-image" width="784" height="728" loading="lazy">
 
 	</figure>
 	<p>In a TLS handshake, the client always validates the certificate that is served by the server to make sure that it's sending requests to the right destination. In the same way that the client needs to authenticate the identity of the server, sometimes the server needs to authenticate the client — to ensure that only authorized clients are sending requests to the server.</p>
@@ -25,7 +25,7 @@
 	<p>When mTLS isn’t used, only the server is responsible for presenting a certificate, which the client verifies. With mTLS, both the client and the server present and validate one another’s certificates, pictured below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qRrMeIBvIWAKu8hDGxGhF/dee2a0a570b05b25a76e2bef3be7be4d/-jX-m0--vJzKCpz9UhlbWZNvl8hJDGoACckkNp0bAIdKGWk1Zr_k4R6gQqNBybVqbkkT8X9bopBZFsDa04iHJzkohQ4pMchvaEMV0secN2DR8pB4OX63Ysd-y6sw.png" alt="" class="kg-image" width="1222" height="1028" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qRrMeIBvIWAKu8hDGxGhF/75113cc0c743f6663da8216725b02da2/-jX-m0--vJzKCpz9UhlbWZNvl8hJDGoACckkNp0bAIdKGWk1Zr_k4R6gQqNBybVqbkkT8X9bopBZFsDa04iHJzkohQ4pMchvaEMV0secN2DR8pB4OX63Ysd-y6sw.png" alt="" class="kg-image" width="1222" height="1028" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

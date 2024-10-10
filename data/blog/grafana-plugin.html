@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vFBUo0uSKXUOXUxWKGNkJ/963e6ab7da69b2fe8e0ddb7b8cba577b/Screen-Shot-2017-02-09-at-11.34.40-AM.png" alt="" class="kg-image" width="1440" height="770" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vFBUo0uSKXUOXUxWKGNkJ/2583055d05f295bf403e59386795643f/Screen-Shot-2017-02-09-at-11.34.40-AM.png" alt="" class="kg-image" width="1440" height="770" loading="lazy">
 
 	</figure>
 	<p>Curious where your DNS traffic is coming from, how much DNS traffic is on your domain, and what records people are querying for that don’t exist? We now have a Grafana plugin for you.</p>
@@ -10,25 +10,25 @@
 	<p>In the Cloudflare Grafana plugin, you can see the response code breakdown of your DNS traffic. During a random prefix flood, a common type of DNS DDoS attack where an attacker queries random subdomains to bypass DNS caches and overwhelm the origin nameservers, you will see the number of NXDOMAIN responses increase dramatically. It is also common during normal traffic to have a small amount of negative answers due to typos or clients searching for missing records.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lx4BwSBiV5nQUNAbNolzl/e81b3dda70c6c7aeb734eaf3950fa8b6/rcode.png" alt="" class="kg-image" width="1414" height="227" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lx4BwSBiV5nQUNAbNolzl/4297d330f64822e001a478a9555d7f78/rcode.png" alt="" class="kg-image" width="1414" height="227" loading="lazy">
 
 	</figure>
 	<p>You can also see the breakdown of queries by data center and by query type to understand where your traffic is coming from and what your domains are being queried for. This is very useful to identify localized issues, and to see how your traffic is spread globally.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pOm5hXg0QRuSySo23lL3v/8fe6076ac7be3381d1e633be27bf6f82/colo-qtype.png" alt="" class="kg-image" width="1425" height="232" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pOm5hXg0QRuSySo23lL3v/c917f8cd3db5f557eebfa75b3c4274c1/colo-qtype.png" alt="" class="kg-image" width="1425" height="232" loading="lazy">
 
 	</figure>
 	<p>You can filter by specific data centers, record types, query types, response codes, and query name, so you can filter down to see analytics for just the MX records that are returning errors in one of the data centers, or understand whether the negative answers are generated because of a DNS attack, or misconfigured records.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3h1OmevfS9qBnIfHnTil6L/e67051a5ceeb5c1faefe08f84de65b34/Screen-Shot-2017-02-13-at-10.59.45-AM.png" alt="" class="kg-image" width="712" height="54" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3h1OmevfS9qBnIfHnTil6L/18f4fd1b286addec94829765eb60c9ab/Screen-Shot-2017-02-13-at-10.59.45-AM.png" alt="" class="kg-image" width="712" height="54" loading="lazy">
 
 	</figure>
 	<p>Once you have the Cloudflare Grafana Plugin installed, you can also make your own charts using the Cloudflare data set in Grafana, and integrate them into your existing dashboards.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/738PJEVjnkrzf5qnIUSL0S/880dcf2f2c6a944e42ebe0d66b42a6de/Screen-Shot-2017-02-13-at-11.08.11-AM.png" alt="" class="kg-image" width="1432" height="294" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/738PJEVjnkrzf5qnIUSL0S/7cca7ada36e01cb425efeb85a710e979/Screen-Shot-2017-02-13-at-11.08.11-AM.png" alt="" class="kg-image" width="1432" height="294" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/virtual-dns">Virtual DNS customers</a> can also take advantage of the Grafana plugin. There is a custom Grafana dashboard that comes installed with the plugin to show traffic distribution and <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a> from different Virtual DNS origins, as well as the top queries that uncached or are returning SERVFAIL.</p>

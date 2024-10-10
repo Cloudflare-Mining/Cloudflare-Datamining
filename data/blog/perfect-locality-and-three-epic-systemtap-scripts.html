@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yl7HZNXJGxmQzQxGckHZc/742f0586cf5dca5b8c64dffacec0cb05/perfect-locality-and-three-epic-systemtap-scripts.jpg" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yl7HZNXJGxmQzQxGckHZc/9dbcfebec1e96857cbf40b3f353c5427/perfect-locality-and-three-epic-systemtap-scripts.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In a recent blog post we discussed <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">epoll behavior causing uneven load</a> among NGINX worker processes. We suggested a work around - the REUSEPORT socket option. It changes the queuing from "combined queue model" aka Waitrose (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html">M/M/s</a>), to a dedicated accept queue per worker aka "the Tesco superstore model" (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html">M/M/1</a>). With this setup the load is spread more evenly, but in certain conditions the latency distribution might suffer.</p>
 	<p>After reading that piece, a colleague of mine, John, said: <i>"Hey Marek, don't forget that REUSEPORT has an additional advantage: it can improve packet locality! Packets can avoid being passed around CPUs!"</i></p>
@@ -15,7 +15,7 @@
 	<p>The standard BSD socket API model is rather simple. In order to receive new TCP connections a program calls bind() and then listen() on a fresh socket. This will create a single accept queue. Programs can share the file descriptor - pointing to one kernel data structure - among multiple processes to spread the load. As we've <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">seen in a previous blog post</a> connections might not be distributed perfectly. Still, this allows programs to scale up processing power from a limited single-process, single-CPU design.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71jaXye3QUzA1zqSVuZRmQ/9d31ec81e744545d84f94f8cab40d268/mms-1.jpeg.jpeg" alt="" class="kg-image" width="640" height="247" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71jaXye3QUzA1zqSVuZRmQ/63baa3f7fd5e645911631646312d8b59/mms-1.jpeg.jpeg" alt="" class="kg-image" width="640" height="247" loading="lazy">
 
 	</figure>
 	<p>Modern network cards split the inbound packets across multiple RX queues, allowing multiple CPUs to share interrupt and packet processing load. Unfortunately in the standard BSD API the new connections will all be funneled back to single accept queue, causing a potential bottleneck.</p>
@@ -30,7 +30,7 @@
 	<p>This bottleneck was identified at Google, where a reported application was dealing with 40,000 connections per second. Google kernel hackers fixed it by <a href="https://lwn.net/Articles/542629">adding a TCP support for SO_REUSEPORT socket option</a> in Linux kernel 3.9.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5B2G4N5rR8U4TrLkekzX9g/67f08c9d1cf24164efc93fad47f21656/mm1-1.jpeg.jpeg" alt="" class="kg-image" width="640" height="243" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5B2G4N5rR8U4TrLkekzX9g/fbb42fc0ba73ec2b244e8be84e8741f8/mm1-1.jpeg.jpeg" alt="" class="kg-image" width="640" height="243" loading="lazy">
 
 	</figure>
 	<p>REUSEPORT allows the application to set multiple accept queues on a single TCP listen port. This removes the central bottleneck and enables the CPUs to do more work in parallel.</p>
@@ -46,7 +46,7 @@
 	<p>This changed in Linux kernel 4.4 with the introduction of the <a href="https://patchwork.ozlabs.org/patch/528071">SO_INCOMING_CPU settable socket option</a>. Now a userspace program could add a hint to make the packets received on a specific CPU go to a specific accept queue. With this improvement the accept queue won't need to be shared across multiple cores, improving CPU cache locality and fixing lock contention issues.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qVKKTNlhoSvrjKN2peAYH/fc129300f7a9532d951b1700c8414744/mm1-local-1.jpeg.jpeg" alt="" class="kg-image" width="640" height="238" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qVKKTNlhoSvrjKN2peAYH/a193a7185a4b1cb09f82fd9707df1206/mm1-local-1.jpeg.jpeg" alt="" class="kg-image" width="640" height="238" loading="lazy">
 
 	</figure>
 	<p>There are other benefits - with proper tuning it is possible to keep the processing of packets belonging to entire connections local. Think about it like that: if a SYN packet was received on some CPU it is likely that further packets for this connection will also be delivered to the same CPU<a href="https://blog.cloudflare.com/#fn1">[1]</a>. Therefore, making sure the worker on the same CPU called the accept() has strong advantages. With the right tuning all processing of the connection might be performed on a single CPU. This can help keep the CPU cache warm, reduce cross-CPU interrupts and boost the performance of memory allocation algorithms.</p>

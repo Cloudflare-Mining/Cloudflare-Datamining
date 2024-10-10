@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1LZHxtd3JFoOqtmcpvQhAi/bcd9aec78c509cb99e57ac4e19e4f3a9/require-hard-key-auth-with-cloudflare-access.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LZHxtd3JFoOqtmcpvQhAi/49e266a3365611f2467b81c515e6c0a4/require-hard-key-auth-with-cloudflare-access.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Last month, attackers compromised a Twitter team member’s access to an internal administrative panel in order to take over high-profile accounts. Full details of the breach are still pending, but <a href="https://twitter.com/TwitterSupport/status/1289000138300563457">Twitter has shared</a> that the attackers stole credentials through a coordinated spear phishing attack.</p>
 	<p>The attackers convinced a team member to share login permissions, giving the attackers the ability to access the Twitter control plane. Once authenticated, they sent password reset flows to email accounts they controlled in order to hijack the Twitter accounts.</p>
@@ -57,7 +57,7 @@
 	<p>The policy flexibility gave us what we needed to work with our security team to solve this problem. By adding a new rule that layers on top of the identity rule, we could immediately require that every team member logging in to our admin panel do so with their software-secured key.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75D384Ub0Tl428EFoDHL5h/0d62a1a43d56018472bd042a5aca6e2a/image-1.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75D384Ub0Tl428EFoDHL5h/de65bdf40c6cffe61e0ba6cf89148648/image-1.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
 
 	</figure>
 	<p>In our case, that includes any hard keys supported by WebAuthN and FIDO2 or keys tied to a physical device like Apple Touch ID and Windows Hello. Access would reject the attempt if they (or an attacker) used the fallback TOTP code - even if the identity provider allowed the login.</p>
@@ -73,7 +73,7 @@
 	<p>To get started, navigate to an application you have in Cloudflare Access or create a new one. In the rules that determine who is allowed to reach the application, add a rule in the “Require” section. Select “MFA” from the dropdown and then choose which options you want to require.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yZnRjyP8uX8WNVAI7QPM/4d939a8fbe06bdeaba875b6c1d349d50/Screen-Shot-2020-08-19-at-8.59.26-PM.png" alt="" class="kg-image" width="2000" height="1328" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yZnRjyP8uX8WNVAI7QPM/5b4186c9cdd1339a8e656162971cb7d7/Screen-Shot-2020-08-19-at-8.59.26-PM.png" alt="" class="kg-image" width="2000" height="1328" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

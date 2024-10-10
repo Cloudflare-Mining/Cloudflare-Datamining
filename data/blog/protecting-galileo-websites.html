@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QonsD1MGebQ55asgnIryG/4195f84f24e972298d21fa861fa5cd63/protecting-galileo-websites.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QonsD1MGebQ55asgnIryG/a78887faf0677b8190c6abd66393c76d/protecting-galileo-websites.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Yesterday, we celebrated the <a href="https://blog.cloudflare.com/project-galileo-fifth-anniversary">fifth anniversary of Project Galileo</a>. More than 550 websites are part of this program, and they have something in common: each and every one of them has been subject to attacks in the last month. In this blog post, we will look at the security events we observed between the 23 April 2019 and 23 May 2019.</p>
 	<p>Project Galileo sites are protected by the Cloudflare Firewall and Advanced DDoS Protection which contain a number of features that can be used to detect and mitigate different types of attack and suspicious traffic. The following table shows how each of these features contributed to the protection of sites on Project Galileo.</p>
@@ -13,7 +13,7 @@
 	<p>Although not the most impressive in terms of blocked requests, the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> is the most interesting as it identifies and blocks malicious requests, based on heuristics and rules that are the result of seeing attacks across all of our customers and learning from those. The WAF is available to all of our paying customers, protecting them against 0-days, SQL/XSS exploits and more. For the Project Galileo customers the WAF rules blocked more than <b>4.5</b> million requests in the month that we looked at, matching over 130 WAF rules and approximately 150k requests per day.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xeVZ4bwsq4aySUxpIdXkU/8dd3ff208e1064d738d8d8415424e1f0/AJxk6op83jW6A3LcLLhGJaGFaVpCsBd4ty_K_QhFcnW0_FKXEkJYV6bbIvg7DL-yOtWIfmvlEVChFTmGh8IMjywqn2adoBwb8fmY6-Birvpx43kAgzsjwqx2YmAX.png" alt="" class="kg-image" width="1147" height="1184" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xeVZ4bwsq4aySUxpIdXkU/d97be07840a080be16f7cf6a8e65135c/AJxk6op83jW6A3LcLLhGJaGFaVpCsBd4ty_K_QhFcnW0_FKXEkJYV6bbIvg7DL-yOtWIfmvlEVChFTmGh8IMjywqn2adoBwb8fmY6-Birvpx43kAgzsjwqx2YmAX.png" alt="" class="kg-image" width="1147" height="1184" loading="lazy">
 
 	</figure>
 	<p>Heat map showing the attacks seen on customer sites (rows) per day (columns)</p>
@@ -22,7 +22,7 @@
 	<p>Fortunately, the vast majority of websites only receive a few malicious requests per day, likely from automated scanners. In some cases, we notice a net increase in attacks against some websites - and a few websites are under a constant influx of attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jspr63m1ZPzhccip8JViU/7f47a003d6da464cc6e12a7f97ca548d/KaFgtLheT89hQ073frYp-5DBiBPAESZ93t6FIPYz8t0oo02omlH8sugpKIGJA847c8jh2O0iErKU61Vuf06IAeCNQWn8TT-eETZu-SkgIYCl98GtxVCEqC0hIPWf.png" alt="" class="kg-image" width="1147" height="1184" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jspr63m1ZPzhccip8JViU/2d3bdf2c382b12ecf60bb107079a0fb3/KaFgtLheT89hQ073frYp-5DBiBPAESZ93t6FIPYz8t0oo02omlH8sugpKIGJA847c8jh2O0iErKU61Vuf06IAeCNQWn8TT-eETZu-SkgIYCl98GtxVCEqC0hIPWf.png" alt="" class="kg-image" width="1147" height="1184" loading="lazy">
 
 	</figure>
 	<p>Heat map showing the attacks blocked for each WAF rule (rows) per day (columns)</p>
@@ -38,7 +38,7 @@
 	<p>A <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation"><b>DoS</b></a> attack prevents legitimate visitors from accessing a website by flooding it with bad traffic. &nbsp;Due to the way Cloudflare works, websites protected by Cloudflare are immune to many DoS vectors, out of the box. We block layer 3 and 4 attacks, which includes SYN floods and UDP amplifications. DNS nameservers, often described as the Internet’s phone book, are fully managed by Cloudflare, and protected - visitors know how to reach the websites.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dkARodmacrTw5PrQla5Oy/02f6c7004b13b6675ec0ad851be12b9d/QKswAfRZDj8yH9Q6c6sWB0x-KokAOFijKoFRwT6lsE9JYmc6hR9SbVgkvjRdbATfczLZ5ZPLtRzZMEuwximdwmKgPgH7Gno9GHZWL27VX3xSPY0CMI7JRCxLe9M.jpeg" alt="" class="kg-image" width="1600" height="622" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dkARodmacrTw5PrQla5Oy/f9ee8f84538a7af737977fd3f002764b/QKswAfRZDj8yH9Q6c6sWB0x-KokAOFijKoFRwT6lsE9JYmc6hR9SbVgkvjRdbATfczLZ5ZPLtRzZMEuwximdwmKgPgH7Gno9GHZWL27VX3xSPY0CMI7JRCxLe9M.jpeg" alt="" class="kg-image" width="1600" height="622" loading="lazy">
 
 	</figure>
 	<p>Line plot - requests per second to a website under DoS attack</p>
@@ -57,7 +57,7 @@
 	<p>For instance, a well-known website used <b>Firewall Rules</b> to prevent twenty IPs from fetching specific pages. 3 of these IPs were then used to send a total of 4.5 million requests over a short period of time, and the following chart shows the requests seen for this website. When this happened Cloudflare, mitigated the traffic ensuring that the website remains available.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QX05tYEJtJONlXhXLT4Rd/78c61a54bbd95b71477d9cade293466e/vO5ctEREt3GkkAHbKc3YGsP52-1_G0BEFUgcjL7pvlYGwkjHv5xm5X6QI3yD84bBlArh7hjI-CI2qWZ-pU-DBsF0gBXBMjA0YcLfMVcc2gG__20xRKI86ObNvfjS.png" alt="" class="kg-image" width="1600" height="679" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QX05tYEJtJONlXhXLT4Rd/0b481c7b58a8101bd588801ab96b6b7f/vO5ctEREt3GkkAHbKc3YGsP52-1_G0BEFUgcjL7pvlYGwkjHv5xm5X6QI3yD84bBlArh7hjI-CI2qWZ-pU-DBsF0gBXBMjA0YcLfMVcc2gG__20xRKI86ObNvfjS.png" alt="" class="kg-image" width="1600" height="679" loading="lazy">
 
 	</figure>
 	<p>Cumulative line plot. Requests per second to a website</p>

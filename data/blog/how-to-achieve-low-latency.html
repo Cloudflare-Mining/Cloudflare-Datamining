@@ -1,10 +1,10 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/AXJDvFdC3bUiMT8BurbcL/15bf1c1cfa1a1c945df96635f0e90127/how-to-achieve-low-latency.jpg" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AXJDvFdC3bUiMT8BurbcL/2a7b6da20f7f3aac257f891d75ea8434/how-to-achieve-low-latency.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Good morning!</p>
 	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">a recent blog post</a> we explained how to tweak a simple UDP application to maximize throughput. This time we are going to optimize our UDP application for <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a>. Fighting with latency is a great excuse to discuss modern features of multiqueue NICs. Some of the techniques covered here are also discussed in the <a href="https://www.kernel.org/doc/Documentation/networking/scaling.txt">scaling.txt kernel document</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Yd58jloFHjTHG1fQjAkRB/2058f58cf29090ebcf83369f867d12ea/queue.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Yd58jloFHjTHG1fQjAkRB/3c087350b7ed34cb19ea1d27c02b5dca/queue.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
 
 	</figure>
 	<p>CC BY-SA 2.0 <a href="https://www.flickr.com/photos/hktang/4243300265">image</a> by Xiaojun Deng</p>
@@ -155,7 +155,7 @@ pps= 26604 avg= 36.149us dev= 11.321us min=30.421us</code></pre>
 	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">the previous article</a> we mentioned that the NIC hashes packets in order to spread the load across many RX queues. This technique is called RSS - Receive Side Scaling. We can see it in action by observing the <code>/proc/net/softnet_stat</code> file with <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/softnet.sh">the softnet.sh script</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fSRiGuv2ifzgyxdfm1yBi/3da50b83df9e5b798a83c5143be0ca71/softnet-rx.png" alt="" class="kg-image" width="215" height="213" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fSRiGuv2ifzgyxdfm1yBi/1b2aa0c578a6851fcb50de600dffb8c2/softnet-rx.png" alt="" class="kg-image" width="215" height="213" loading="lazy">
 
 	</figure>
 	<p>This makes sense - since we send only one flow (connection) from the <code>udpclient</code>, all the packets hit the same RX queue. In this case it is RX queue #1, which is bound to CPU #1. Indeed, when we run the client on that very CPU the latency goes up by around 2us:</p>
@@ -180,7 +180,7 @@ pps= 25279 avg= 38.041us dev= 12.565us min=32.235us</code></pre>
 	<p>But what is <code>INDIR</code> anyway? Well, it's an indirection table that maps the least significant bits of a hash to an RX queue number. To view the indirection table run <code>ethtool -x</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aEJ2l39OFDhEOvDbK89md/95f95f77a105e90f41dc392fe9f680a4/indir-before.png" alt="" class="kg-image" width="443" height="294" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aEJ2l39OFDhEOvDbK89md/58b46635f0132f5fc926ae82e500c0ad/indir-before.png" alt="" class="kg-image" width="443" height="294" loading="lazy">
 
 	</figure>
 	<p>This reads as: packets with hash equal to, say, 72 will go to RX queue #6, hash of 126 will go to RX queue #5, and so on.</p>
@@ -190,7 +190,7 @@ server$ sudo ethtool -X eth3 weight 1 1 1 1 1 1 0 0 0 0 0</code></pre>
 	<p>The adjusted indirection table:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60TeBiwuIiEE9xfAvQh4Fm/93327b5e0e366586517c158b34400242/indir-after.png" alt="" class="kg-image" width="437" height="292" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60TeBiwuIiEE9xfAvQh4Fm/415f41806744c69dbe928fe997448964/indir-after.png" alt="" class="kg-image" width="437" height="292" loading="lazy">
 
 	</figure>
 	<p>With that set up our latency numbers don't change much, but at least we are sure the packets will always hit only the CPUs on the first NUMA node. The lack of NUMA locality usually costs around 2us.</p>
@@ -221,7 +221,7 @@ Added rule with ID 2045</code></pre>
 	<p>Going back to our experiment, let's take a look at <code>/proc/interrupts</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sKCppzLcJoJYKesDSMU0L/b00610d43b35a6918f100e81811881a7/interrupts-client.png" alt="" class="kg-image" width="604" height="201" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sKCppzLcJoJYKesDSMU0L/f3b25006d9b3b90e886abbef75a931f3/interrupts-client.png" alt="" class="kg-image" width="604" height="201" loading="lazy">
 
 	</figure>
 	<p>We can see the 27k interrupts corresponding to received packets on RX queue #1. But what about these 27k interrupts on RX queue #7? We surely disabled this RX queue with our RSS / indirection table setup.</p>
@@ -257,7 +257,7 @@ client$ for RX in `seq 0 10`; do
 	<p>To debug use sixth column <code>softnet.sh</code> script:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2u1j3D0bQeNf0yzBYFMOND/8691adc059444310172d420d14f15739/softnet-rfs.png" alt="" class="kg-image" width="510" height="200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2u1j3D0bQeNf0yzBYFMOND/935835dd360dd100212ae42861da1312/softnet-rfs.png" alt="" class="kg-image" width="510" height="200" loading="lazy">
 
 	</figure>
 	<p>I don't fully understand why, but enabling software RFS increases the latency by around 2us. On the other hand RFS is said to be effective in increasing throughput.</p>
@@ -273,7 +273,7 @@ client$ for RX in `seq 0 10`; do
 	<p>On Solarflare NICs <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Performance_Tuning_Guide/network-acc-rfs.html">ARFS</a> is automatically enabled whenever RFS is enabled. This is visible in <code>/proc/interrupts</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TZoUo25i6N762Hrnku5ym/b0e1a5fc274f91d353d9094e9446144e/interrupts-arfs.png" alt="" class="kg-image" width="603" height="150" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TZoUo25i6N762Hrnku5ym/defa4d7988249069c6c4d3ff34f39ba4/interrupts-arfs.png" alt="" class="kg-image" width="603" height="150" loading="lazy">
 
 	</figure>
 	<p>Here, I pinned the client process to CPU #2. As you see both receives and transmissions are visible on the same CPU. If the process was rescheduled to another CPU, the interrupts would "follow" it.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/U661NnSrddF9wxrI7AnpX/be4cc7f6d57621d76c98d71649325032/protecting-remote-desktops-at-scale-with-cloudflare-access.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/U661NnSrddF9wxrI7AnpX/aa186b7c22c2415fe673774fa3151c12/protecting-remote-desktops-at-scale-with-cloudflare-access.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Early last year, before any of us knew that so many people would be <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">working remotely</a> in 2020, we announced that <a href="https://www.cloudflare.com/teams-access">Cloudflare Access</a>, Cloudflare’s <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> authentication solution, would begin <a href="https://blog.cloudflare.com/cloudflare-access-now-supports-rdp">protecting the Remote Desktop Protocol</a> (RDP). To protect RDP, customers would deploy Argo Tunnel to create an encrypted connection between their RDP server and our edge - effectively locking down RDP resources from the public Internet. Once locked down with Tunnel, customers could use Cloudflare Access to create identity-driven rules enforcing who could log in to their resources.</p>
 	<p>Setting Tunnel up initially required installing the Cloudflare daemon, <i>cloudflared</i>, on each RDP server. However, as the adoption of remote work increased we learned that installing and provisioning a new daemon on every server in a network was a tall order for customers managing large fleets of servers.</p>
@@ -39,7 +39,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2F1ESbixv0lKlezYoD9le5/8b0dab63c9d8cacb3957ce493a070e19/image1-4.png" alt="" class="kg-image" width="823" height="406" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2F1ESbixv0lKlezYoD9le5/d1b0f807dd88c0c8f9d11b8c38cc8100/image1-4.png" alt="" class="kg-image" width="823" height="406" loading="lazy">
 
 	</figure>
 	<p>On the origin side, an admin will configure a single <i>cloudflared</i> instance to run in bastion mode. That bastion will reach out to the two closest Cloudflare edge data centers and create a long-lived HTTP2 session. Once set up, <i>cloudflared</i> will wait for incoming connections from clients to specify which final origin to connect to. This is unlike conventional <i>cloudflared</i> tunnel behavior, which immediately creates a single outgoing connection to a pre-configured origin.</p>
@@ -49,7 +49,7 @@
 	<p>For each incoming connection, the bastion will initiate an outgoing RDP session to the final internal destination and proxy traffic back and forth to the client.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/10R3VrpjZHt2SVheCLIngC/c73e779489d02415ea0043e6b63d54ff/Screen-Recording-2020-08-04-at-11.48.30-AM--1-.gif" alt="" class="kg-image" width="960" height="587" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10R3VrpjZHt2SVheCLIngC/901281294222221ce5f8f3eda0d05dcd/Screen-Recording-2020-08-04-at-11.48.30-AM--1-.gif" alt="" class="kg-image" width="960" height="587" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

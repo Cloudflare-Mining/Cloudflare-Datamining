@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5E8mZjU7F1SA7fPkNnwTJS/cc0cacdd4c85a2013f82b79263902513/Vary-Support.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5E8mZjU7F1SA7fPkNnwTJS/0181bcb724d8411675ad222075fe5610/Vary-Support.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today, we’re excited to announce support for <b>Vary</b>, an HTTP header that ensures different content types can be served to user-agents with differing capabilities.</p>
@@ -65,7 +65,7 @@ Vary: Accept</code></pre>
 	<p>For example, through a process known as content-negotiation, the correct variant is directed to the requesting browser through a process of multiple requests and responses. The browser could send a request to the origin asking for a list of available resource variants. When the origin responds with the list, the browser can make an additional request for the desired resources from that list, which the server would then respond to. These redundant calls to narrow down which type of content that the browser accepts and the server has available can cause performance delays.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71lg6VkOQspb3Sy4fLvCtR/cdea403d2dde050bfcddb31974c76f89/Vary-Images-Diagram.png" alt="" class="kg-image" width="1336" height="830" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71lg6VkOQspb3Sy4fLvCtR/a8b1a42b14a7cb8855312a7b539c21f3/Vary-Images-Diagram.png" alt="" class="kg-image" width="1336" height="830" loading="lazy">
 
 	</figure>
 	<p>Vary for Images reduces the need for these redundant negotiations to an origin by parsing the request’s <i>Accept</i> header and sending that on to the origin to ensure that the origin knows exactly what content it needs to deliver to the browser. Additionally because the expected variant values can be set in Cloudflare’s API (see below), we make an end-run around the negotiation process because we are sure what to ask for and expect from the origin. This reduces the needless back-and-forth between browsers and servers.</p>

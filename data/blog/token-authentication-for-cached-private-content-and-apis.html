@@ -1,10 +1,10 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/9i73vmFY5WHgBi3ibNQsX/05c11b2583a20cd567a5ffc9c5d51f76/token-authentication-for-cached-private-content-and-apis.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9i73vmFY5WHgBi3ibNQsX/37445178a39cb8546bc191e314ade9ae/token-authentication-for-cached-private-content-and-apis.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>While working to make the Internet a better place, we also want to make it easier for our customers to have control of their content and APIs, and who has access to them. Using Cloudflare’s Token Authentication features, customers can implement access control via URL tokens or HTTP request headers without having to build complex back-end systems.</p>
 	<p>Cloudflare will check these tokens at the edge before any request is relayed to an origin or served from cache. If the token is not valid the request is blocked. Since Cloudflare handles all the token validation, the origin server does not need to have complex authentication logic. In addition, a malicious user who attempts to forge tokens will be blocked from ever reaching the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55nPmvYZFvRW4goPQPWrlH/cd00aaf8ad84a14ceeaa479c5c3a2276/6089266689_ea391d6a6d_o.jpg" alt="Cloudflare Private Content" class="kg-image" width="1462" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55nPmvYZFvRW4goPQPWrlH/77f3eed6606b2267725a96183585a4d8/6089266689_ea391d6a6d_o.jpg" alt="Cloudflare Private Content" class="kg-image" width="1462" height="1063" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/zeevveez/6089266689">image</a> by <a href="https://www.flickr.com/photos/zeevveez">zeevveez</a></p>
@@ -112,13 +112,13 @@ $url    = "http://www.domain.com/download/private.jpg?verify=" . $token;
 	<p>Once deployed, the authentication rules are available under the Web Application Firewall Custom User Rule Set Package. From here the rules can be configured on simulate, challenge or block or deactivated completely:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KkkoIw2fN7NIL7BWghFSA/dd492f863df3125e7222c53460c2a0c7/User-Rules.png" alt="WAF Rules" class="kg-image" width="1804" height="526" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KkkoIw2fN7NIL7BWghFSA/f81f09f38945957fdfe036f9cedd3430/User-Rules.png" alt="WAF Rules" class="kg-image" width="1804" height="526" loading="lazy">
 
 	</figure>
 	<p>Once active and in the event a user were to try to access a restricted resource without a valid token, Cloudflare would present the default WAF Block page shown below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G4yullCHdWisggX8DIz6q/45bfdd6512d69f709baf9063effdb8ac/Block-Page.png" alt="WAF Block Page" class="kg-image" width="998" height="856" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G4yullCHdWisggX8DIz6q/05a02de012613c8c85a22f690e0bd4ef/Block-Page.png" alt="WAF Block Page" class="kg-image" width="998" height="856" loading="lazy">
 
 	</figure>
 	<p>The block page can be <a href="https://support.cloudflare.com/hc/en-us/articles/200172706-How-do-I-customize-Cloudflare-error-pages-">fully customized</a> to match the customer branding as necessary.</p>

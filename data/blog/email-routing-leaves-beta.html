@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/q6tb42ms5LEKAVOkxqOCm/39e3f1450416358f990586049a7a0c7b/image2-18.png" alt="Email Routing leaves Beta" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/q6tb42ms5LEKAVOkxqOCm/5d14b6641896ec21be012b9c25a7e50e/image2-18.png" alt="Email Routing leaves Beta" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Email Routing was <a href="https://blog.cloudflare.com/introducing-email-routing">announced</a> during Birthday Week in 2021 and has been available for free to every Cloudflare customer since early this year. When we launched in beta, we set out to make a difference and provide the most <a href="https://blog.cloudflare.com/migrating-to-cloudflare-email-routing">uncomplicated</a>, more powerful <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">email forwarding service</a> on the Internet for all our customers, for free.</p>
@@ -26,7 +26,7 @@
 	<p>Even better, if you're an infrastructure as code type of user and use Terraform to configure your systems automatically, we have you covered too. The latest releases of <a href="https://registry.terraform.io/providers/cloudflare/cloudflare">Cloudflare's Terraform provider</a> now <a href="https://github.com/cloudflare/terraform-provider-cloudflare/tree/master/internal/provider">incorporate</a> the Email Routing API resources, which you can use with <a href="https://www.terraform.io/language/syntax/configuration">HCL</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oPdbQSpCrGdInWwSmc3Gz/d1acad454c7fa496c87829dbdacd0a3e/image4-11.png" alt="" class="kg-image" width="1978" height="1558" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oPdbQSpCrGdInWwSmc3Gz/bfa929155775e78998b86f6149b6ed9d/image4-11.png" alt="" class="kg-image" width="1978" height="1558" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -59,7 +59,7 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 	<p>We’re happy to report that we’re now delivering most of our email to upstreams using IPv6.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fpqLS2x7AzUJBHUfBd1Vw/e6cec23b17565237fa0612a0a960e661/image1-22.png" alt="" class="kg-image" width="1999" height="1012" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fpqLS2x7AzUJBHUfBd1Vw/65e0089ca141515c51b2ff2df5a4716e/image1-22.png" alt="" class="kg-image" width="1999" height="1012" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -75,14 +75,14 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 	<p>The Analytics section of Email Routing shows general statistics about the number of emails received during the selected timeframe, how they got handled to the upstream destination addresses, and a convenient time-series chart.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5idsdXSP16hDLOxayDOGqi/81d7b1dccdbe5147fa70e776a204d305/image5-4.png" alt="" class="kg-image" width="1999" height="1123" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5idsdXSP16hDLOxayDOGqi/6b62d3ce039cdd9d94abc0e69405594f/image5-4.png" alt="" class="kg-image" width="1999" height="1123" loading="lazy">
 
 	</figure>
 	<p>On the Activity Log, you can get detailed information about what happened to each individual message that was received and then delivered to the destination. That information includes the sender and the custom address used, the timestamp, and the delivery attempt result. It also has the details of our SPF, DMARC, and DKIM validations. We also provide filters to help you find what you're looking for in case your message volume is higher.</p>
 	<p>More recently, the Activity Log now also shows <a href="https://en.wikipedia.org/wiki/Bounce_message">bounces</a>. A bounce message happens when the upstream SMTP server accepts the delivery, but then, for any reason (exceeded quota, virus checks, forged messages, or other issues), the recipient inbox decides to reject it and return a new message back with an error to the latest <a href="https://en.wikipedia.org/wiki/Message_transfer_agent">MTA</a> in the chain, read from the <a href="https://www.rfc-editor.org/rfc/rfc5322.html#section-3.6.7">Return-Path</a> headers, which is us.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wyT0gd7l6GHjl7LVFjCUR/a72215fe0aa5b2edfda59390f358c094/image8-4.png" alt="" class="kg-image" width="1043" height="524" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wyT0gd7l6GHjl7LVFjCUR/67628c835e2f8f76f0d6a16ef99011be/image8-4.png" alt="" class="kg-image" width="1043" height="524" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -97,7 +97,7 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 	<p>Email Routing now integrates with Audit Logs and records all configuration changes, like adding a new address, changing a rule, or editing the catch-all address. You can find the Audit Logs on the dashboard under "Manage Account" or use our API to download the list.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15USXKo9itSQkX8h8JS0kE/4c45b8fde7a7f0ce4291c0ae89bc5507/image6-7.png" alt="" class="kg-image" width="1999" height="1165" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15USXKo9itSQkX8h8JS0kE/ea244f54b31e72c73be3416ee42ace4e/image6-7.png" alt="" class="kg-image" width="1999" height="1165" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -127,7 +127,7 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 	<p>Email Routing didn’t support IDNs until now. Starting today, Email Routing can be used with IDNs and everything will work end to end as expected.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2w5ochqMtILwVjTYbA0Pb/e0cefc44b813ae66f0b1d6a4493f16d1/image3-10.png" alt="" class="kg-image" width="1041" height="846" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2w5ochqMtILwVjTYbA0Pb/659ce2e551b0ea0e8540045dd48839e7/image3-10.png" alt="" class="kg-image" width="1041" height="846" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -185,7 +185,7 @@ EHLO celso.io
 	<p>Thousands of users are waiting for Email Workers to start creating advanced email processing workflows, and we're excited about the possibilities this will open. We promise we're working hard to open the public beta as soon as possible.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xNqMMpydzI8i8kWisriPT/b58213a80962930860284a34ec2f5c04/image7-4.png" alt="" class="kg-image" width="1281" height="1104" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xNqMMpydzI8i8kWisriPT/d01bb6f42e9fe4bad92e8fec3796f6b4/image7-4.png" alt="" class="kg-image" width="1281" height="1104" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lgNVy6zV5VsmAkYjvZM57/e21e42faf3eb62c0f474851e5e08b6da/image3-21.png" alt="Zone Versioning is now generally available" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lgNVy6zV5VsmAkYjvZM57/0a5bcbfb683be5623e2d740da6b60f6c/image3-21.png" alt="Zone Versioning is now generally available" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Today we are announcing the general availability of Zone Versioning for enterprise customers. Zone Versioning allows you to safely manage zone configuration by versioning changes and choosing how and when to deploy those changes to defined environments of traffic. Previously announced as <a href="https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications">HTTP Applications</a>, we have redesigned the experience based on testing and feedback to provide a seamless experience for customers looking to safely rollout configuration changes.</p>
@@ -38,7 +38,7 @@
 	<p>Versions are independent sets of zone configuration. They can be created anytime from a previous version or the initial configuration of the zone and changes to one version will not affect another version. Initially, a version affects none of a zone’s traffic, so any changes made are safe by definition. When first enabling zone versioning, we create Version 1 that is based on the current configuration of the zone (referred to as the baseline configuration).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01RMiRjNi47AeFK64CZoy3/4f97a14b6ec4af76fd5f422c63a1d179/Screenshot-2022-12-22-at-10.25.13-AM.png" alt="Version Management Screen in the Cloudflare dashboard showing 2 versions one of which is deployed to the Staging environment." class="kg-image" width="1600" height="1141" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01RMiRjNi47AeFK64CZoy3/7ba82f9681a67178659a2c26f8c77a29/Screenshot-2022-12-22-at-10.25.13-AM.png" alt="Version Management Screen in the Cloudflare dashboard showing 2 versions one of which is deployed to the Staging environment." class="kg-image" width="1600" height="1141" loading="lazy">
 
 	</figure>
 	<p>From there any changes that you make to Version 1 will be safely stored and propagated to our global network, but will not affect any traffic. Making changes to a version is no different from before, just select the version to edit and modify the configuration of that feature as normal. Once you have made the set of changes desired for a given version, to deploy that version on live traffic in your zone, you will need to deploy the version to an Environment.</p>

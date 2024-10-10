@@ -1,16 +1,16 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ygxyha7vtHlNn3mpCzMeR/9dcb2840dd41b24512e626bbf5001322/accelerating-node-js-applications-with-http-2-server-push.jpg" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ygxyha7vtHlNn3mpCzMeR/b83bf9429e6631e092d322aa5b42873a/accelerating-node-js-applications-with-http-2-server-push.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In April, we announced support for <a href="https://www.cloudflare.com/http2/server-push">HTTP/2 Server Push</a> via the HTTP <code>Link</code> header. My coworker John has demonstrated how easy it is to <a href="https://blog.cloudflare.com/using-http-2-server-push-with-php">add Server Push to an example PHP</a> application.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cTvkkBKYrTnHNyFrfyrYI/4e14fa602215b0c01b996d456cff90ee/489477622_594bf9e3d9_z.jpg" alt="" class="kg-image" width="500" height="334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cTvkkBKYrTnHNyFrfyrYI/05d92efb1903cd4700d8a9020e430b40/489477622_594bf9e3d9_z.jpg" alt="" class="kg-image" width="500" height="334" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/nickyfern/489477622/in/photolist-KfGDm-4WuA7B-4WySRS-a8ijnt-4WuByk-4WuB9M-bE3e6V-665C6K-eeQRx1-b97viM-qzYJ8z-9n2aTS-8EsaQK-aqxV42-jWDkD2-jKyWKv-jzs7yy-9TKcYn-4iAQTa-ECjYJ-96MvXy-bP43v2-rEmKWR-5p3k5r-pVZhDo-os1Njy-5CEEnU-8RhgUX-7JV4jr-9bC7me-sSKqA-72Mppz-maZfyL-6KfUge-dDvw4S-ngyFgY-aPxqsP-7b24QV-5opdXV-sEA7Xj-mZohS-8GFkMr-twfh93-7ZXqtJ-dvRbXj-a8mRiU-4NCzeD-qFXKpj-4n7K7j-34D66Q">image</a> by <a href="https://www.flickr.com/photos/nickyfern">Nicky Fernandes</a></p>
 	<p>We wanted to make it easy to improve the performance of contemporary websites built with <a href="https://nodejs.org">Node.js</a>. we developed the <a href="https://github.com/cloudflare/netjet">netjet</a> middleware to parse the generated HTML and automatically add the <code>Link</code> headers. When used with an example Express application you can see the headers being added:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yzfZDbCTajZyJDNnbqrUm/9c7a3ac595aa20cdfb0408f5c13f7881/2016-08-11_13-32-45.png" alt="" class="kg-image" width="314" height="252" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yzfZDbCTajZyJDNnbqrUm/ab28553b5d5e878e10b93f115a0f602e/2016-08-11_13-32-45.png" alt="" class="kg-image" width="314" height="252" loading="lazy">
 
 	</figure>
 	<p>We use <a href="https://ghost.org">Ghost</a> to power this blog, so if your browser supports HTTP/2 you have already benefited from Server Push without realizing it! More on that below.</p>
@@ -65,7 +65,7 @@ server.listen(port, hostname, function () {
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qCaQEt8gl74hBdoZVEzBS/20aa6a0b137146be1420ab63e797e2d8/2016-08-02_10-49-33.png" alt="" class="kg-image" width="679" height="217" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qCaQEt8gl74hBdoZVEzBS/d29a6028893b87b888cad5ba438b3a78/2016-08-02_10-49-33.png" alt="" class="kg-image" width="679" height="217" loading="lazy">
 
 	</figure>
 	<p>Chrome's Developer Tools makes it easy to verify that your site is using Server Push. The Network tab shows pushed assets with "Push" included as part of the initiator.</p>

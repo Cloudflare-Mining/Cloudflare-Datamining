@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WLKJEQLzMQnxnGLYc4CDp/f58c09e012cff5b3fc523ac87e1bb36a/recycling-memory-buffers-in-go.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WLKJEQLzMQnxnGLYc4CDp/d40f475039ad6084b3c14255f4e5d0bf/recycling-memory-buffers-in-go.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><b>THIS BLOG POST IS VERY OLD NOW. YOU PROBABLY DON'T WANT TO USE THE TECHNIQUE DESCRIBED HERE. GO'S </b><a href="https://golang.org/pkg/sync/#Pool"><b>sync.Pool</b></a><b> IS A BETTER WAY TO GO.</b></p>
 	<p>The other day I wrote about our use of Lua to <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">implement our new Web Application Firewall</a>. The other language that's become very popular at CloudFlare is <a href="https://golang.org">Go</a>. In the past, I've written about <a href="https://blog.cloudflare.com/go-at-cloudflare">how we use Go</a> to write network services including <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun</a>.</p>
@@ -38,7 +38,7 @@ for {
 	<p>Here's a chart of the program above running for ten minutes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76nenz8v0eyxrZHmIti2zW/d2e042a1bb605ebcb731c5ea6386fe55/garbage.png" alt="" class="kg-image" width="1859" height="1240" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76nenz8v0eyxrZHmIti2zW/0304ac9ad9c4af487ba7afc40c074807/garbage.png" alt="" class="kg-image" width="1859" height="1240" loading="lazy">
 
 	</figure>
 	<p>(On this and subsequent charts the left axis in in bytes and the right axis is a count used for Make Count)</p>
@@ -100,7 +100,7 @@ for {
 	<p>And here's a graph of its operation for 10 minutes:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SJYyQrsi4WUg9Vdg8xxvx/b525c8dda985cba7859b1d8b9128d8c9/garbage-pool.png" alt="" class="kg-image" width="1690" height="1378" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SJYyQrsi4WUg9Vdg8xxvx/a9da773d3b0ad6238f20aca96d2a8172/garbage-pool.png" alt="" class="kg-image" width="1690" height="1378" loading="lazy">
 
 	</figure>
 	<p>This tells a very different story from above. The memory actually in pool is very close to the memory requested from the operating system and the garbage collector has little to no work to do. The heap only has a very small amount of idle memory that eventually gets released to the operating system.</p>
@@ -208,7 +208,7 @@ for {
 	<p>Running that program for ten minutes looks very similar to the second program above:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ob2nuz31JU6rVynv82T7z/05069ec28e0024f3681fed2adef5b080/garbage-recyler.png" alt="" class="kg-image" width="1926" height="1271" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ob2nuz31JU6rVynv82T7z/1391c2e044d550e9386f374fa814c1b5/garbage-recyler.png" alt="" class="kg-image" width="1926" height="1271" loading="lazy">
 
 	</figure>
 	<p>These techniques can be used to recycle memory that the programmer knows is likely to be reused without asking the garbage collector to do the work. They can significantly reduce the amount of memory a program needs. And they can be used for more than just byte slices. Any arbitrary Go type (user-defined or not) could be recycled in a similar manner.</p>

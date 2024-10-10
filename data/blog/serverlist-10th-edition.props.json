@@ -9,7 +9,7 @@
 				"name": "Connor Peshek",
 				"slug": "connor-peshek",
 				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/lK5urK8vGbVAi93SD59FJ/be3e0a20331428e98484fa88cb615b42/connor-peshek.jpg",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lK5urK8vGbVAi93SD59FJ/3ef6e700617098eaa39ae25132ff1199/connor-peshek.jpg",
 				"location": null,
 				"website": null,
 				"twitter": "@ConzorKingKong",
@@ -17,7 +17,7 @@
 			}
 		],
 		"excerpt": "Check out our tenth edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
-		"feature_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/543UkzI6aZpVMcVa07qwkh/606114c7a38994c969e89e91ad48af08/serverlist-10th-edition.png",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/543UkzI6aZpVMcVa07qwkh/35c6b0a757d018b29f3e002c7f77a90a/serverlist-10th-edition.png",
 		"featured": false,
 		"html": "<p>Check out our tenth edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.</p><p>Sign up below to have The Serverlist sent directly to your mailbox.</p><!--kg-card-begin: html--><style>\n    iframe[seamless]{\n        background-color: transparent;\n        border: 0 none transparent;\n        padding: 0;\n        overflow: hidden;\n    }\n</style>\n<iframe id=\"magic\" style=\"visbility: hidden;\" seamless></iframe>\n<script>\n    const magic = document.getElementById('magic')\n  \n \n    function resizeIframe() {\n        const iframeDoc = magic.contentDocument\n        const iframeWindow = magic.contentWindow\n        magic.height = iframeDoc.body.clientHeight\n        magic.width = \"100%\"\n\n        const injectedStyle = iframeDoc.createElement('style')\n\n        injectedStyle.innerHTML = `\n            body {\n                background: white !important;\n            }\n\t\t\t.stack {\n\t\t\t\tdisplay: flex;\n\t\t\t\talign-items: center;\n\t\t\t}\n\t\t\t#footerModulec155fe9e-f964-4fdf-829b-1366f112e82b .stack {\n\t\t\t\tdisplay: block;\n\t\t\t}\n`\n        \t\n\n        magic.contentDocument.head.appendChild(injectedStyle)\n        \n        function onFinish() {\n            setTimeout(() => {\n            \tmagic.style.visibility = ''\n            }, 80)\n        }\n        \n        if (iframeDoc.readyState === 'loading') {\n            iframeWindow.addEventListener('load', onFinish)\n        } else {\n            onFinish()\n        }\n    }\n\n    async function fetchURL(url) {\n      magic.addEventListener('load', resizeIframe)\n  \n        const call = await fetch(`https://proxy.devrel.workers.dev?domain=${url}`)\n        const text = await call.text()\n        const divie = document.createElement(\"div\")\n        divie.innerHTML = text\n        const listie = divie.getElementsByTagName(\"a\")\n        for (var i = 0; i < listie.length; i++) {\n            listie[i].setAttribute(\"target\", \"_blank\")\n\t\t}\n        magic.scrolling = \"no\"\n        magic.srcdoc = divie.innerHTML\n    }\n    fetchURL(\"https://info.cloudflare.com/index.php/email/emailWebview?mkt_tok=eyJpIjoiTXpFNE5UWmxabUpoWmpkbCIsInQiOiIwME1oWUR2clMrdWJBY1djek16QXVXWUlZQkxIUGhMV3dUd1hQczFTTjA5NkprZFN5cGdWZXRMS3Nwc3djUnBRRFVNRzVEVXUvWHlCblVOWGNKQk1RNXdzMSsrZFJ1a1haWlh1QXNiN2Exb1g3M0NNZ2RRdDZreWdQdW9qMVMvQiJ9\")    \n</script><!--kg-card-end: html-->",
 		"id": "4X1in1Jol4OSq3WBZs7cK7",
@@ -93,7 +93,7 @@
 			}
 		],
 		"title": "The Serverlist: Full Stack Serverless, Serverless Architecture Reference Guides, and more",
-		"updated_at": "2024-08-27T02:07:17.858Z",
+		"updated_at": "2024-10-10T00:31:23.444Z",
 		"url": "https://blog.cloudflare.com/serverlist-10th-edition"
 	},
 	"translations": {

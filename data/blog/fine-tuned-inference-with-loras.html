@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/70HGv5JY8CcvWM8IesAxt0/0c1c15305c70f63795af69d1a249ba06/loraai.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70HGv5JY8CcvWM8IesAxt0/5b60789faf49d45cd4f54e6dd8e4efd4/loraai.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -61,7 +61,7 @@
 	<p>According to the <a href="https://arxiv.org/abs/2106.09685">original LoRA paper</a>, researchers have found that when a model is low-rank, the matrix representing the change in weights is also low-rank. Therefore, we can apply rank decomposition to our matrix representing the change in weights <i>ΔW</i> to create two smaller matrices <i>A, B</i>, where <i>ΔW = BA</i>. Now, the change in the model can be represented by two smaller low-rank matrices_._ This is why this method of fine-tuning is called Low-Rank Adaptation.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13k5puOQpL75CRNCTv5ZYE/8cedc35e6ae7590e54430bde206989d6/Lora-lineapro.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13k5puOQpL75CRNCTv5ZYE/309e49ef14cc3ef7a3493c5ad75c1f97/Lora-lineapro.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
 	<p>When we run inference, we only need the smaller matrices <i>A, B</i> to change the behavior of the model. The model weights in <i>A, B</i> constitute our LoRA adapter (along with a config file). At runtime, we add the model weights together, combining the original model (<i>W0</i>) and the LoRA adapter (<i>A, B)</i>. Adding and subtracting are simple mathematical operations, meaning that we can quickly swap out different LoRA adapters by adding and subtracting <i>A, B</i> from <i>W0.</i>. By temporarily adjusting the weights of the original model, we modify the model’s behavior and output and as a result, we get fine-tuned inference with minimal added latency.</p>

@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MXprIYDqrhnoQhWnQ9V5x/f22d5208ee90cf8805620be5ae0c73ef/Private-Authentication-Token-open-source-standard-to-eliminate-CAPTCHAs.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MXprIYDqrhnoQhWnQ9V5x/b7e3b0d906f122a54dbca8f3636de8d6/Private-Authentication-Token-open-source-standard-to-eliminate-CAPTCHAs.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Today we’re announcing Private Access Tokens, a completely invisible, private way to validate that real users are visiting your site. Visitors using operating systems that support these tokens, including <a href="https://developer.apple.com/wwdc22/10077">the upcoming versions of macOS or iOS</a>, can now prove they’re human without completing a CAPTCHA or giving up personal data. This will eliminate nearly 100% of CAPTCHAs served to these users.</p>
@@ -47,7 +47,7 @@
 	<p>Cloudflare has already incorporated PATs into our <a href="https://blog.cloudflare.com/end-cloudflare-captcha">Managed Challenge platform</a>, so any customer using this feature will automatically take advantage of this new technology to improve the browsing experience for supported devices.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2t6bhh7vQcRRbOVZheNgPH/2f5d2f1dae1a2a7ae176fa3bc703ae6c/image2-4.png" alt="" class="kg-image" width="1277" height="627" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2t6bhh7vQcRRbOVZheNgPH/53dcccd448967d62b28d7e4b77bbe376/image2-4.png" alt="" class="kg-image" width="1277" height="627" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -61,7 +61,7 @@
 	<p>We’ve <a href="https://blog.cloudflare.com/end-cloudflare-captcha">written</a> <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">numerous</a> <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">times</a> about how CAPTCHAs are a terrible user experience. However, we haven’t discussed specifically how much worse the user experience is on a mobile device. CAPTCHA as a technology was built and optimized for a browser-based world. They are deployed via a widget or iframe that is generally one size fits all, leading to rendering issues, or the input window only being partially visible on a device. The smaller real estate on mobile screens inherently makes the technology less accessible and solving any CAPTCHA more difficult, and the need to render JavaScript and image files slows down image loads while consuming excess customer bandwidth.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nIPAH3gWctx5emjDD4Yp4/a9eff5f3c543c44b78ad62403e496f98/image5-2.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nIPAH3gWctx5emjDD4Yp4/0f4843b09702b44e53e95aff6ca305ab/image5-2.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Usability aside, mobile environments present an additional challenge in that they are increasingly <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API-driven</a>. CAPTCHAs simply cannot work in an API environment where JavaScript can’t be rendered, or a WebView can’t be called. So, mobile app developers often have no easy option for challenging a user when necessary. They sometimes resort to using a clunky SDK to embed a CAPTCHA directly into an app. This requires work to embed and customize the CAPTCHA, continued maintenance and monitoring, and results in higher abandonment rates. For these reasons, when our customers choose to show a CAPTCHA today, it's only shown on mobile 20% of the time.</p>
@@ -97,7 +97,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vnMi2aTbGheZegJ6jupiC/e05b9476de67de80d6459491c199bf11/Screen-Shot-2022-06-07-at-10.24.12-AM.png" alt="" class="kg-image" width="1822" height="802" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vnMi2aTbGheZegJ6jupiC/e7631b1b0b279ce7f8524cafcbc21ce7/Screen-Shot-2022-06-07-at-10.24.12-AM.png" alt="" class="kg-image" width="1822" height="802" loading="lazy">
 
 	</figure>
 	<p>When PATs are used, device data is isolated and explicitly NOT exchanged between the involved parties (the manufacturer and Cloudflare)</p>
@@ -114,7 +114,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vRC2wIaTHgP8zLJ8EJIO5/0a0713d2d922ccaaf0c3b87770e65b6b/image3-2.png" alt="" class="kg-image" width="1221" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vRC2wIaTHgP8zLJ8EJIO5/f87537648020532a565a1636254685c2/image3-2.png" alt="" class="kg-image" width="1221" height="492" loading="lazy">
 
 	</figure>
 	<p>We don’t actually need or want the underlying data that’s being collected for this process, we just want to verify if a visitor is faking their device or user agent. Private Access Tokens allow us to capture that validation state directly, without needing any of the underlying data. They allow us to be more confident in the authenticity of important signals, without having to look at those signals directly ourselves.</p>
@@ -143,7 +143,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ho7MHd8tHAhHpStG8ItWQ/f4c83a87efb301d3e93bfbfd8c196d48/Screen-Shot-2022-06-07-at-2.01.38-PM.png" alt="" class="kg-image" width="1390" height="882" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ho7MHd8tHAhHpStG8ItWQ/51b3f08744f6ceb855fbb2fc4c623930/Screen-Shot-2022-06-07-at-2.01.38-PM.png" alt="" class="kg-image" width="1390" height="882" loading="lazy">
 
 	</figure>
 	<p>In the example above, a visitor opens the Safari browser on their iPhone and tries to visit example.com.</p>

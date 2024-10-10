@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MWuJSbUVoY5MZTRFmRd9i/b7f7420b3ed12f299c157d66b22c7f89/image2-12.png" alt="We've added JavaScript-native RPC to Cloudflare Workers" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MWuJSbUVoY5MZTRFmRd9i/d75ef53700fec27a254109047f2757c3/image2-12.png" alt="We've added JavaScript-native RPC to Cloudflare Workers" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Workers now features a built-in RPC (Remote Procedure Call) system enabling seamless Worker-to-Worker and Worker-to-Durable Object communication, with almost no boilerplate. You just define a class:</p>
@@ -308,7 +308,7 @@ entrypoint = "AuthService"  # name of the exported RPC class</code></pre>
 	<p>No, absolutely not! All code runs strictly in the <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates">isolate</a> where it was originally loaded. What actually happens is, when the return value is passed over RPC, all class instances are replaced with RPC stubs. The stub, when called, makes a new RPC back to the server, where it calls the method on the original User object that was created there:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3npoG6d0ArXOiSEtHb9uhx/5a753b9a09662981f7f83990092647d2/image1-8.png" alt="" class="kg-image" width="1999" height="1000" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3npoG6d0ArXOiSEtHb9uhx/301d9f07566dbe7cdc84db7ab07a69d3/image1-8.png" alt="" class="kg-image" width="1999" height="1000" loading="lazy">
 
 	</figure>
 	<p>But then you might ask: how does the RPC stub know what methods are available? Is a list of methods passed over the wire?</p>

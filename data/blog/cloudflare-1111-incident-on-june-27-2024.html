@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kBrAZxRvJnPmEMCYY9KuL/60ecadc9598cf7064e8d839927ccd4e4/image2-4.png" alt="Cloudflare 1.1.1.1 incident on June 27, 2024" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kBrAZxRvJnPmEMCYY9KuL/b998cbe27bf1b851f48ca7c75d12d565/image2-4.png" alt="Cloudflare 1.1.1.1 incident on June 27, 2024" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -40,7 +40,7 @@
 	<p>Some of the difficulty comes from potential <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking">routing hijacks</a> of 1.1.1.1. For example, if some fictitious FooBar Networks assigns 1.1.1.1/32 to one of their routers and shares this prefix within their internal network, their customers will have difficulty routing to the 1.1.1.1 DNS service. If they advertise the 1.1.1.1/32 prefix outside their immediate network, the impact can be even greater. The reason 1.1.1.1/32 would be selected instead of the 1.1.1.0/24 BGP-announced by Cloudflare is due to <a href="https://en.wikipedia.org/wiki/Longest_prefix_match">Longest Prefix Matching (LPM)</a>. While many prefixes in a route table could match the 1.1.1.1 address, such as 1.1.1.0/24, 1.1.1.0/29, and 1.1.1.1/32, 1.1.1.1/32 is considered the “longest match” by the LPM algorithm because it has the highest number of identical bits and longest <a href="https://en.wikipedia.org/wiki/Subnet">subnet</a> mask while matching the 1.1.1.1 address. In simple terms, we would call 1.1.1.1/32 the “most specific” route available to 1.1.1.1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n3Xe0tgkW3a2cZuVI0bAs/ccdca6bcb1b844bb4c8a80d982e5e663/image4-1.png" alt="" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7n3Xe0tgkW3a2cZuVI0bAs/4d192f979294dc2f6b758994ac512b71/image4-1.png" alt="" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>Instead of traffic toward 1.1.1.1 routing to Cloudflare via anycast and landing on one of our servers globally, it will instead land somewhere on a device within FooBar Networks where 1.1.1.1 is terminated, and a legitimate response will fail to be served back to clients. This would be considered a hijack of requests to 1.1.1.1, either done purposefully or accidentally by network operators within FooBar Networks.</p>
@@ -55,7 +55,7 @@
 	<p>Another source of impact we sometimes face for 1.1.1.1 is BGP route leaks. A route leak occurs when a network becomes an upstream, in terms of BGP announcement, for a network it shouldn’t be an upstream provider for.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Nw7KaaD49t0Drer2H1kbd/90cbda6f76ff9f142451848c48408616/image3-2.png" alt="" class="kg-image" width="1920" height="1080" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Nw7KaaD49t0Drer2H1kbd/1e61b336c901e2f4b4c9cd3d70843adf/image3-2.png" alt="" class="kg-image" width="1920" height="1080" loading="lazy">
 
 	</figure>
 	<p>Here is an example of a route leak where a customer forward routes learned from one provider to another, causing a type 1 leak (defined in <a href="https://www.rfc-editor.org/rfc/rfc7908.html">RFC7908</a>).</p>
@@ -90,14 +90,14 @@
 	<p><i>Source Country of Users:</i></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/492JYYYPZzxjjmGk2IF5Sb/9212b29659b64147a08e1741adf77eef/image5-1.png" alt="" class="kg-image" width="1426" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/492JYYYPZzxjjmGk2IF5Sb/5d6762775689439de1aca2f868bf67cd/image5-1.png" alt="" class="kg-image" width="1426" height="332" loading="lazy">
 
 	</figure>
 	<p><i>Keep in mind that overall this may represent a relatively small amount of total requests per source country, but normally no requests would route from the US or Germany to Brazil at all for 1.1.1.1.</i></p>
 	<p><i>Cloudflare Data Center city:</i></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61Bq2eHhu5HZzGNcIs8tZS/64c01b433205dc4102fe670b6a887835/image6-1.png" alt="" class="kg-image" width="1426" height="332" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61Bq2eHhu5HZzGNcIs8tZS/4dcaa35237709fb1b9af4abfde382303/image6-1.png" alt="" class="kg-image" width="1426" height="332" loading="lazy">
 
 	</figure>
 	<p>Looking at the graphs, requests to 1.1.1.1 were landing in Brazilian data centers. The gaps between the spikes are when 1.1.1.1 requests were blackholed prior to or within AS267613, and the spikes themselves are when traffic was delivered to Cloudflare with high latency invoked on the request and response. The brief spikes of traffic successfully carried to the Cloudflare peering location with AS267613 could be explained by the 1.1.1.1/32 route flapping within their network, occasionally letting traffic through to Cloudflare instead of it dropping somewhere in the intermediate path.</p>
@@ -153,7 +153,7 @@ A|1719519128.843415|190.15.124.18|61568|1.1.1.0/24|61568 262504 267613 13335|IGP
 	<p>Looking at an example path, “199524 1031 262504 267613 13335”, AS267613 is functionally a peer of AS13335 and should not share the 1.1.1.0/24 announcement with their peers or upstreams, only their customers (<a href="https://www.manrs.org/wp-content/uploads/2021/11/AS-Cones-MANRS.pdf">AS Cone</a>). AS262504 is a customer of AS267613 and the next adjacent ASN in the path, so that particular announcement is fine up until this point. Where the 1.1.1.0/24 goes wrong is AS262504, when they announce the prefix to their upstream AS1031. Furthermore, AS1031 redistributed the advertisement to their peers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fWhrQoqfJzgS7EEaK05Gw/3707828c0a91f975a5fd2f60f7711ac7/image1-3.png" alt="" class="kg-image" width="1920" height="781" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fWhrQoqfJzgS7EEaK05Gw/2de5227144de75d232012c0029540af4/image1-3.png" alt="" class="kg-image" width="1920" height="781" loading="lazy">
 
 	</figure>
 	<p>This means AS262504 is the leaking network. AS1031 accepted the leak from their customer, AS262504, and caused wide impact by distributing the route in multiple peering locations globally. AS1031 (Peer-1 Global Internet Exchange) advertises themselves as a global peering exchange. Cloudflare is not a customer of AS1031, so 1.1.1.0/24 should have never been redistributed to peers, route-servers, or upstreams of AS1031. It appears that AS1031 does not perform any extensive filtering for customer BGP sessions, and instead just matches on adjacency (in this case, AS262504) and redistributes everything that meets this criteria. Unfortunately, this is irresponsible of AS1031 and causes direct impact to 1.1.1.1 and potentially other services that fall victim to the unguarded route propagation. While the original leaking network was AS262504, impact was greatly amplified by AS1031 and others when they accepted the hijack or leak and further distributed the announcements.</p>

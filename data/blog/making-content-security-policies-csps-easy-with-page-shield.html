@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6akJyZtMtOBYlR8vJf3qsP/eaafb9096c2bd1244be2a235ff5357be/image3-4.png" alt="Making Content Security Policies (CSPs) easy with Page Shield" class="kg-image" width="1201" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6akJyZtMtOBYlR8vJf3qsP/cb12b04fb6b4541a24a7cdec5c4115d6/image3-4.png" alt="Making Content Security Policies (CSPs) easy with Page Shield" class="kg-image" width="1201" height="675" loading="lazy">
 
 	</figure>
 	<p>Modern web applications are complex, often loading JavaScript libraries from tens of different sources and submitting data to just as many. This leads to a vast <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface area</a> and many attack types that hackers may leverage to target the user browser directly. <a href="https://en.wikipedia.org/wiki/Web_skimming">Magecart</a>, a category of <a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack">supply chain attack</a>, is a good example.</p>
@@ -25,7 +25,7 @@
 	<p>To do this we need to follow a few simple steps. First, log in to Cloudflare and head over to the relevant zone → Security → Page Shield → Policies → Create policy. We are presented with the following page:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j5RnzcoTtQ1Ext6YT3GZh/08c0d094a7b3fb9da9969f3d4e1f3159/image1-4.png" alt="Page Shield policy builder UI" class="kg-image" width="1454" height="1780" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j5RnzcoTtQ1Ext6YT3GZh/5e2b35791d0c572211cc8a4c550007ee/image1-4.png" alt="Page Shield policy builder UI" class="kg-image" width="1454" height="1780" loading="lazy">
 
 	</figure>
 	<p>Insert a policy name (e.g., <code>my website policy</code>) and select, if needed, using our standard <a href="https://developers.cloudflare.com/ruleset-engine/rules-language">wirefilter syntax</a>, where you want the policy to be applied. For example, if we only wanted the policy to be applied on our checkout pages, where there is a higher risk of data being leaked, we can select:</p>
@@ -33,7 +33,7 @@
 	<p>In the UI this would be represented like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lv5fxZdIoLix1PGO9CBaY/10fa856243b934f6ca7a01b06bf83fab/Screenshot-2023-09-08-at-11.15.52.png" alt="Page Shield policy builder filter" class="kg-image" width="1398" height="588" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lv5fxZdIoLix1PGO9CBaY/0cd4857e8f712317e87a27dc2569caaf/Screenshot-2023-09-08-at-11.15.52.png" alt="Page Shield policy builder filter" class="kg-image" width="1398" height="588" loading="lazy">
 
 	</figure>
 	<p>This filtering allows you to focus on the portions of your site that matter most, or, at the same time, test your policies on specific subsets of your traffic.</p>
@@ -44,27 +44,27 @@
 	<p>From the <i>Add a new directive</i> dropdown, select <i>Scripts:</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/x4iZvrqtiCAEqPv50tc6b/7d90cc0faeb35abc01cf0f23e17cff79/Screenshot-2023-09-08-at-11.25.40.png" alt="Page Shield policy directive list" class="kg-image" width="1438" height="1062" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/x4iZvrqtiCAEqPv50tc6b/8a80f8595697a167fd1b077a87bb6683/Screenshot-2023-09-08-at-11.25.40.png" alt="Page Shield policy directive list" class="kg-image" width="1438" height="1062" loading="lazy">
 
 	</figure>
 	<p>Once added, the script directive will show:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45wtQ1bSJ9bZ10g0crxcTC/6e068b715dad5180708c7e28e76fe96f/Screenshot-2023-09-08-at-11.30.16.png" alt="Page Shield policy builder script directive suggestions example" class="kg-image" width="1394" height="522" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45wtQ1bSJ9bZ10g0crxcTC/035c506f8a724a4771ee92ab98d43b83/Screenshot-2023-09-08-at-11.30.16.png" alt="Page Shield policy builder script directive suggestions example" class="kg-image" width="1394" height="522" loading="lazy">
 
 	</figure>
 	<p>This is where the magic begins. If Page Shield has been enabled on your site, you may notice it may have already detected the JavaScript files your site is loading, and will suggest them to you as a simple list of checkboxes. No more chasing developer team members to understand what is being loaded by your site.</p>
 	<p>Building the directive becomes a simple checklist exercise. The builder does allow you to decide if you wish to allow scripts from entire domains, or drill down to specific URLs only. In a normal circumstance, you should expect to allow all detected scripts. For Stripe, the directive configuration would look like the following:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dJZmS24JkI0WL1r67cnFV/7c13d64f07d213402ee40c445e129837/Screenshot-2023-09-08-at-11.36.50.png" alt="Page Shield policy builder script directive suggestions example expanded" class="kg-image" width="1406" height="812" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dJZmS24JkI0WL1r67cnFV/4faba1fa8c05b68d1658d99067c02843/Screenshot-2023-09-08-at-11.36.50.png" alt="Page Shield policy builder script directive suggestions example expanded" class="kg-image" width="1406" height="812" loading="lazy">
 
 	</figure>
 	<p>A preview of the directive is shown below the builder.</p>
 	<p>One more example: remember that you also load a script from your own site? That is being identified under the <code>example.com</code> entry in the list. However, loading scripts from the same source is very common and to strike a good balance between simplicity and security, CSPs allow a shortcut keyword: <code>self</code>, available at the top of the builder. Our final policy will look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/PoCBtGKkA0qyEIgqfnE8Z/90d0e58c374d64c74817400fb5023b2d/Screenshot-2023-09-08-at-11.40.52.png" alt="Page Shield policy builder script directive self keyword example" class="kg-image" width="1396" height="812" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PoCBtGKkA0qyEIgqfnE8Z/c1e0b80a02e44150bb13933971bdc84a/Screenshot-2023-09-08-at-11.40.52.png" alt="Page Shield policy builder script directive self keyword example" class="kg-image" width="1396" height="812" loading="lazy">
 
 	</figure>
 	<p>And those are the basics. Simply repeat the steps for the <code>connect-src</code> (Connections) directive (where data should be sent to) and deploy the policy either in <code>LOG</code> (for testing) or <code>ALLOW</code> (enforcing). Your users will be a lot safer as a result.</p>
@@ -229,7 +229,7 @@
 	<p>A lot of customers adopting Page Shield have asked if they could import their existing CSP policies into the product. We’ve now taken a first step to make this experience possible by allowing you to paste an existing CSP directly in the policy interface:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uEfkdcIgnYaO8mbGS7jgk/45ad659a4b6edeeaf4555df75d1d1bee/Screenshot-2023-09-11-at-14.44.15.png" alt="Page Shield policy import popup" class="kg-image" width="1264" height="648" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uEfkdcIgnYaO8mbGS7jgk/1bfe34b368e25229ba11b0d2d50ec614/Screenshot-2023-09-11-at-14.44.15.png" alt="Page Shield policy import popup" class="kg-image" width="1264" height="648" loading="lazy">
 
 	</figure>
 	<p>Once pasted and imported, the system will automatically parse all found directives into the builder allowing you to subsequently edit them as required. If your policy contains deprecated directives, or directives not currently supported, an appropriate error message will be displayed allowing you to edit before trying again.</p>
@@ -247,7 +247,7 @@
 	<p>With the new support for all major directives, we now also improved violation reporting to show you which directive is causing any potential issues (the first column in the screenshot below). This is provided in the policy overview screen:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vFFJJ4niOIPyaUrxViTPF/469c1c424b5e8dd8fd273358fa391f44/Screenshot-2023-09-08-at-12.37.49.png" alt="Page Shield policy violation reports" class="kg-image" width="1370" height="828" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vFFJJ4niOIPyaUrxViTPF/3b285c3aa245c21d2179795c2edd69ff/Screenshot-2023-09-08-at-12.37.49.png" alt="Page Shield policy violation reports" class="kg-image" width="1370" height="828" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -261,7 +261,7 @@
 	<p>In this release, we also took the opportunity to improve our resource details page by adding domain insights. Domain name WHOIS info is often a very good indicator of the potential maliciousness of a JavaScript resource or connection endpoint. For example, data being sent to a newly registered domain should cause some concern. We’ve also exposed any categorisations we have available for any given domain, allowing you to more quickly review the data without having to navigate to our <a href="https://developers.cloudflare.com/security-center">Security Center</a> or <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FoxIbRdwEy9LcVEMdAYxz/999c7ace1f0f6851889f32d240a3c106/Screenshot-2023-09-11-at-14.40.23.png" alt="Domain insights for a resource hosted under cndjs.cloudflare.com" class="kg-image" width="1192" height="790" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FoxIbRdwEy9LcVEMdAYxz/c80ec3de20b4ad8d2836692c1d2df1b0/Screenshot-2023-09-11-at-14.40.23.png" alt="Domain insights for a resource hosted under cndjs.cloudflare.com" class="kg-image" width="1192" height="790" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

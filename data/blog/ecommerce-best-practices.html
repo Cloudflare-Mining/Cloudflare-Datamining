@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XKEuCSLTmpNpVvgb9aqjE/b617f774eec66c5182d3d01ae89ba7b5/ecommerce-best-practices.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XKEuCSLTmpNpVvgb9aqjE/6b7f8e0f89f9040ee13772f3e027fbd6/ecommerce-best-practices.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare provides numerous benefits to <a href="https://www.cloudflare.com/ecommerce">ecommerce sites</a>, including advanced DDOS protection and an industry-leading <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall (WAF)</a> that helps secure your transactions and protect customers’ private data.</p>
 	<p>A key Cloudflare feature is caching, which allows content to be served closer to the end user from our global network of data centers. Doing so improves the user's shopping experience and contributes to increasing the proportion of people completing a purchase (conversion rate).</p>
@@ -55,7 +55,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/693W6zmtTqjWk76TOCYqCB/30e00b0827aae57eac1854572fe227bc/Cloudflare-Ecommerce-Best-Practices.png" alt="A typical ecommerce website - with static elements and dynamic elements" class="kg-image" width="954" height="457" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/693W6zmtTqjWk76TOCYqCB/ba2c2fb65d96f0b1985f6af9acbdf170/Cloudflare-Ecommerce-Best-Practices.png" alt="A typical ecommerce website - with static elements and dynamic elements" class="kg-image" width="954" height="457" loading="lazy">
 
 	</figure>
 	<p>The user might have one or more session cookies to maintain these dynamic elements.</p>
@@ -76,7 +76,7 @@
 	<p>This is achieved by introducing a <a href="https://support.cloudflare.com/hc/en-us/articles/200168306-Is-there-a-tutorial-for-Page-Rules-">Page Rule</a> with a “Bypass Cache on Cookie” setting:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IMt5NxIQXyZGwv8JniGgH/e640b83b4e1142485cc49f00d196c09d/pagerulesettings.png" alt="Screenshot of Cloudflare's Page Rule settings" class="kg-image" width="1942" height="1404" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IMt5NxIQXyZGwv8JniGgH/fc7ddf4c27b19c984e804815bbcd0958/pagerulesettings.png" alt="Screenshot of Cloudflare's Page Rule settings" class="kg-image" width="1942" height="1404" loading="lazy">
 
 	</figure>
 	<p>In the above example, the Page Rule will cause all requests to the site to serve from cache, unless the web browser has sent a cookie named “loggedin” or “iteminbasket”.</p>
@@ -94,7 +94,7 @@
 	<p>To configure this, use a Page Rule with Cache Level “Cache Everything” for the static content and another Page Rule with Cache Level “Bypass” for the dynamic (AJAX) requests.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WRx5BjGEX5GQ6EUppvg3j/606d6da28ff7e10320f07cec9cf468b4/page_rules_to_bypass_cache_and_cache.png" alt="" class="kg-image" width="1228" height="312" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WRx5BjGEX5GQ6EUppvg3j/af57c919e57567ae1c6f933a177c7301/page_rules_to_bypass_cache_and_cache.png" alt="" class="kg-image" width="1228" height="312" loading="lazy">
 
 	</figure>
 	<p>In this example, any requests going to <code>www.example.com/ajax/basket_contents.php</code> and <code>www.example.com/ajax/logged-in-state.php</code> would match the first Page Rule, which has cache level “Bypass” - Cloudflare will proxy the request but the request won't touch the Cloudflare cache.</p>
@@ -123,13 +123,13 @@
 	<p>Before Railgun:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ooTWlxFNJ60jWwvzKEy1P/f0b1ff59d1f965d3cefb2dfd17c3d863/railgun-diagram-how-it-works-without.svg" alt="" class="kg-image" width="1000" height="164" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ooTWlxFNJ60jWwvzKEy1P/ee1a734c9c1021d84556e048558f6789/railgun-diagram-how-it-works-without.svg" alt="" class="kg-image" width="1000" height="164" loading="lazy">
 
 	</figure>
 	<p>After Railgun:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uX10OAM7zEqKm80XibrHk/bc5ce7e369097595373b813c5f2e1720/railgun-diagram-how-it-works-with.svg" alt="" class="kg-image" width="1000" height="164" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uX10OAM7zEqKm80XibrHk/f9d89979ed91184eec0bd20b7d04dbc2/railgun-diagram-how-it-works-with.svg" alt="" class="kg-image" width="1000" height="164" loading="lazy">
 
 	</figure>
 	<p>Railgun can happily be used in conjunction with the previously discussed caching methods.</p>

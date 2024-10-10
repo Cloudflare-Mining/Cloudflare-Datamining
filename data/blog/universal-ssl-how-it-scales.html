@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3M8XcagYCSKKH7CGEKNzmV/8c4cfced65a9ee6307cddd8ab110b60f/universal-ssl-how-it-scales.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3M8XcagYCSKKH7CGEKNzmV/f407953ea9e1ad707b33dcff9677503e/universal-ssl-how-it-scales.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On Monday, <a href="https://blog.cloudflare.com/introducing-universal-ssl">we announced Universal SSL</a>, enabling HTTPS for all websites using CloudFlare’s Free plan. Universal SSL represents a massive increase in the number of sites we serve over HTTPS—from tens of thousands, to millions. People have asked us, both in comments and in person, how our servers handle this extra load. The answer, in a nutshell, is this: we found that with the right hardware, software, and configuration, the cost of SSL on web servers can be reduced to almost nothing.</p>
 	<div class="flex anchor relative">
@@ -29,7 +29,7 @@ RC4: 		0.0003%</code></pre>
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ayQvSYvSxbJLTi6YVdMiL/d5f85e88a9c002b8563fe6290e978830/Screen-Shot-2014-10-01-at-3-57-56-PM-2.jpg" alt="Modern Crypto" class="kg-image" width="1472" height="906" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ayQvSYvSxbJLTi6YVdMiL/54acd30ee53461b30dbec40799ce8acc/Screen-Shot-2014-10-01-at-3-57-56-PM-2.jpg" alt="Modern Crypto" class="kg-image" width="1472" height="906" loading="lazy">
 
 	</figure>
 	<p>Image © Trevor Perrin 2014</p>
@@ -50,12 +50,12 @@ RC4: 		0.0003%</code></pre>
 	<p>The TLS protocol has two ways to resume a session: session tickets and session IDs. In session ID resumption, the server stores the session information for reuse later. For session tickets, the session information is encrypted by a key known only by the server and sent to the client in the handshake in a “session ticket”. When the client wants to resume a session, it can send the session ticket to the server which can decrypt it and resume the session. By storing the connection information in a way that it can be reused later, the expensive parts of the handshake are not necessary.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_ticket.jpg">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53uz7327RW3oJxRIyI7fi/e8f2a76097a71312be06f80111d79b1a/session_resumption_with_session_ticket.jpg" alt="Session resumption with session tickets" class="kg-image" width="1297" height="605" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53uz7327RW3oJxRIyI7fi/18c27e58c26e577a2d6b11788d9679a8/session_resumption_with_session_ticket.jpg" alt="Session resumption with session tickets" class="kg-image" width="1297" height="605" loading="lazy">
 		</a>
 	</figure>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2014/Sep/session_resumption_with_session_id.jpg">
-			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1t5PpxBOHyEB7u7xHsxOLb/22997d4ea8a58c72c805854008e3c2c0/session_resumption_with_session_id.jpg" alt="Session resumption with session IDs" class="kg-image" width="1334" height="518" loading="lazy">
+			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1t5PpxBOHyEB7u7xHsxOLb/328f51c12005622ec485536b12730828/session_resumption_with_session_id.jpg" alt="Session resumption with session IDs" class="kg-image" width="1334" height="518" loading="lazy">
 		</a>
 	</figure>
 	<p>The work done by Zi Lin and Kyle Isom for <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> to share sessions and session tickets across machines allows us to resume connections even if they were made to a different CloudFlare server. For SSL session ticket based resumption (used in Chrome and Firefox), sessions can be resumed worldwide; for session ID based resumption (all other browsers), sessions can be resumed from any machine in the same data center.</p>

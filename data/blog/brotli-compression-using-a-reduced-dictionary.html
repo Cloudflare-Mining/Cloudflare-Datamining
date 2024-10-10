@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6haKhrTzV51P29qcw2i9Ns/b8b8dc74d141fdd55c59e902411bd8e1/brotli-compression-using-a-reduced-dictionary.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6haKhrTzV51P29qcw2i9Ns/9c72df650b236bb407d698452bccd51d/brotli-compression-using-a-reduced-dictionary.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><a href="https://github.com/google/brotli">Brotli</a> is a state of the art lossless compression format, supported by all major browsers. It is capable of achieving considerably better compression ratios than the ubiquitous gzip, and is rapidly gaining in popularity. Cloudflare uses the Google brotli library to dynamically compress web content whenever possible. In 2015, we took <a href="https://blog.cloudflare.com/results-experimenting-brotli">an in-depth look at how brotli works</a> and its compression advantages.</p>
 	<p>One of the more interesting features of the <a href="https://tools.ietf.org/html/rfc7932">brotli file format</a>, in the context of textual web content compression, is the inclusion of a built-in static dictionary. The dictionary is quite large, and in addition to containing various strings in multiple languages, it also supports the option to apply multiple transformations to those words, increasing its versatility.</p>
@@ -37,7 +37,7 @@
 	<p>To improve compression without sacrificing performance, we needed a fast way to find matches if we want to search the dictionary more thoroughly than brotli does by default. Our approach uses three data structures to find a matching word directly. The radix trie is responsible for finding the word while the hash table and bloom filter are used to speed up the radix trie and quickly eliminate many words that can’t be matched using the dictionary.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JdGRN9pPZ0GPTRvecnh0P/3d47decc7749bd65a98893ab38dc15ac/image1.png" alt="" class="kg-image" width="1556" height="912" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JdGRN9pPZ0GPTRvecnh0P/a3a4bb1289e25385b098c719ad865a1e/image1.png" alt="" class="kg-image" width="1556" height="912" loading="lazy">
 
 	</figure>
 	<p>Lookup for a position starting with “type”</p>
@@ -83,7 +83,7 @@
 	<p>Compression improvement is defined as 1 - (compressed size using the reduced dictionary / compressed size without dictionary). This ratio is then averaged for each input size range. We also provide an average value weighted by file size. Our data set mirrors typical web traffic, covering a wide range of file sizes with small files being more common, which explains the large difference between the weighted and unweighted average.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fjLER7c308iIMA3kQx9Qs/1ef86640b34db3e8634b462ea2bb340e/image-2.png" alt="" class="kg-image" width="1634" height="966" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fjLER7c308iIMA3kQx9Qs/cc51eec61ad9c4b9b3637e7cfec397cb/image-2.png" alt="" class="kg-image" width="1634" height="966" loading="lazy">
 
 	</figure>
 	<p>With the improved dictionary approach, we are now able to compress HTML, JavaScript and CSS files as well, or sometimes even better than using a higher compression level would allow us, all while using only 1% to 3% more CPU. For reference using compression level 6 over 5 would increase CPU usage by up to 12%.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Qc7EGaZtlXsYT0s2mE4G/0ee5f00c67d729c9508c9591b1dc9719/Screen-Shot-2021-08-25-at-11.43.24-PM.png" alt="" class="kg-image" width="1209" height="761" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Qc7EGaZtlXsYT0s2mE4G/831cb4d71ac1fd19be9b56872e0fda78/Screen-Shot-2021-08-25-at-11.43.24-PM.png" alt="" class="kg-image" width="1209" height="761" loading="lazy">
 
 	</figure>
 	<p></p>
@@ -125,7 +125,7 @@ fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, _cx: &amp;amp;mut Context) -
 	<p>OK, that wasn't too hard. There's just one problem: this doesn't work.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vQYwC1N4iXqv6DzpxWJDq/9ebc6414bfee83d2f76c2cbfac7aa660/Screen-Shot-2021-08-25-at-11.15.17-PM.png" alt="" class="kg-image" width="2000" height="509" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vQYwC1N4iXqv6DzpxWJDq/ce5125480ef4ad35b8eb0d4882a408bf/Screen-Shot-2021-08-25-at-11.15.17-PM.png" alt="" class="kg-image" width="2000" height="509" loading="lazy">
 
 	</figure>
 	<p></p>
@@ -152,14 +152,14 @@ fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, _cx: &amp;amp;mut Context) -
 	<p>Self-referential types can be really useful, but they're also hard to make memory-safe. To see why, let's use this example type with two fields, an i32 called <code>val</code> and a pointer to an i32 called <code>pointer</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DejT3ngy1ze7AWuwy37Zq/6c562fb640356c4d7d837f6df88da550/memory_before.png" alt="" class="kg-image" width="256" height="110" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DejT3ngy1ze7AWuwy37Zq/6b9d388bb27d37a9d06f1e8ef2898615/memory_before.png" alt="" class="kg-image" width="256" height="110" loading="lazy">
 
 	</figure>
 	<p></p>
 	<p>So far, everything is OK. The <code>pointer</code> field points to the val field in memory address A, which contains a valid i32. All the pointers are <i>valid</i>, i.e. they point to memory that does indeed encode a value of the right type (in this case, an i32). But the Rust compiler often moves values around in memory. For example, if we pass this struct into another function, it might get moved to a different memory address. Or we might Box it and put it on the heap. Or if this struct was in a <code>Vec&lt;MyStruct&gt;</code>, and we pushed more values in, the Vec might outgrow its capacity and need to move its elements into a new, larger buffer.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WF4QNkOCFQiAIsmpbUaQK/3d80ad7612a49569a5a8987900bb15ed/memory_after.png" alt="" class="kg-image" width="577" height="134" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WF4QNkOCFQiAIsmpbUaQK/fb8d03bc290071fb69a6d35399bec85f/memory_after.png" alt="" class="kg-image" width="577" height="134" loading="lazy">
 
 	</figure>
 	<p></p>
@@ -186,7 +186,7 @@ fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, _cx: &amp;amp;mut Context) -
 	<p>Types in (2) are creatively named <code>!Unpin</code> (the <code>!</code> in a trait means "does not implement"). To use these types safely, we can't use regular pointers for self-reference. Instead, we use special pointers that "pin" their values into place, ensuring they can't be moved. This is exactly what the <a href="https://doc.rust-lang.org/stable/std/pin/struct.Pin.html"><code>Pin</code></a> type does.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19Usw25JStox7edODSK287/65d5cd83004234f75437921d68e825a9/pin_diagram.png" alt="" class="kg-image" width="1172" height="162" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19Usw25JStox7edODSK287/8d0f6e45aa88340d6f34bcde72b31980/pin_diagram.png" alt="" class="kg-image" width="1172" height="162" loading="lazy">
 
 	</figure>
 	<p></p>

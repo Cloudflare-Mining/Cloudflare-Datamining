@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fekJ9lcmsDv1eoKyYqhUP/2efa94f4f1f4167f24c2ca3033d6f6d1/Observability-partnerships.png" alt="" class="kg-image" width="1377" height="695" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fekJ9lcmsDv1eoKyYqhUP/f76a19543b25ff79ffcf53a4c2193c6f/Observability-partnerships.png" alt="" class="kg-image" width="1377" height="695" loading="lazy">
 
 	</figure>
 	<p>One of the themes of Developer Week is “it takes a village”, and observability is one area where that is especially true. Cloudflare Workers lets you quickly write code that is infinitely scalable — no availability regions, no scaling policies. Your code runs in every one of our data centers by default: <b>region Earth,</b> as we like to say. While fast time to market and effortless scale are amazing benefits, seasoned developers know that as soon as your code is in the wild… <i>stuff</i> happens, and you need the tools in place to investigate, diagnose, fix and monitor those issues.</p>
 	<p>Today we’re delighted to add to our existing analytics partners. We’re announcing new partnerships with six observability-focused companies that are deeply integrated into the Cloudflare Workers ecosystem. We’re confident these partnerships will provide immediate value in building the operational muscle to maintain and make your next generation of applications fast, secure and bullet-proof in production.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3okZhOLa6mCLgd9sVdimJV/adfd8d97e95ff234566d9acfe1e9ddfa/Screenshot-2021-04-12-at-18.23.19.png" alt="" class="kg-image" width="1274" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3okZhOLa6mCLgd9sVdimJV/fc15fb727c3958ec87d8ac778ffad8b1/Screenshot-2021-04-12-at-18.23.19.png" alt="" class="kg-image" width="1274" height="206" loading="lazy">
 
 	</figure>
 	<p><code>console.log(`Got request. Extracted name=${name}. Saving…`);</code></p>
@@ -24,7 +24,7 @@
 	<p>to be visualized in <a href="https://sentry.io/for/serverless">Sentry</a> as a user journey with filters, times, versioning and more, allowing you to understand what events led to the errors.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GPKEs7UewznHt3bGyccSj/fe132e15a2c891417a20c80e9d9620ae/image2-7.png" alt="" class="kg-image" width="1565" height="994" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GPKEs7UewznHt3bGyccSj/a399411af7697d2ab3bf56e17cc0406c/image2-7.png" alt="" class="kg-image" width="1565" height="994" loading="lazy">
 
 	</figure>
 	<p>New Relic is a popular observability platform, particularly with Enterprises offering a Telemetry Data Platform, Full-Stack observability and Applied Intelligence. While there isn't (yet!) a specific npm package for NewRelic and Cloudflare Workers, the combination of NewRelic’s <a href="https://docs.newrelic.com/docs/logs/log-management/log-api/introduction-log-api">https log endpoint</a> and Cloudflare Workers <a href="https://developers.cloudflare.com/workers/learning/fetch-event-lifecycle#waituntil">event.waitUntil()</a> means you can very easily instrument your application with NewRelic, without blocking the request and thus not impacting performance.</p>
@@ -47,7 +47,7 @@ event.waitUntil(fetch(url, init));</code></pre>
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nZbt0OxrYEfEyeMMarvTG/ab26e93456ebec3289a20ccb39e1965e/Screenshot-2021-04-12-at-18.34.08.png" alt="" class="kg-image" width="1308" height="334" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nZbt0OxrYEfEyeMMarvTG/5ac46bcadbf1cb42401519d9df1ddbc7/Screenshot-2021-04-12-at-18.34.08.png" alt="" class="kg-image" width="1308" height="334" loading="lazy">
 
 	</figure>
 	<p>Developers are not the only part of an organization that need to observe all aspects of their applications in production. As organizations grow and the sophistication of their infrastructure monitoring and security systems grow, they typically implement observability platforms, which provide overall visibility into the entire infrastructure and the ability to alert on anomalies — not just individual applications, appliances, hardware or network. To achieve that goal, observability platforms must ingest as much data as possible. Cloudflare already <a href="https://www.cloudflare.com/partners/analytics">partners</a> with Datadog, Sumo Logic and Splunk — this allows security and operations teams to ingest <a href="https://developers.cloudflare.com/logs/analytics-integrations">HTTP logs</a> from the network edge along with origin logs and many other sources of data.</p>
@@ -55,7 +55,7 @@ event.waitUntil(fetch(url, init));</code></pre>
 	<p>Fortunately, our partners all offer simple HTTP interfaces into their ingestion engines. Check out <b>Datadog</b>’s <a href="https://docs.datadoghq.com/getting_started/api">HTTP API</a>, <b>Splunk</b>’s <a href="https://docs.splunk.com/Documentation/Splunk/8.1.3/RESTREF/RESTprolog">REST API</a> and <b>SumoLogic</b>’s <a href="https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source">HTTP Logs and Metric Source</a> for step-by-step instructions on how to easily ingest your Cloudflare Workers logs. Besides getting on your CISO’s good side, if your organization has a Detection and Response team, they’ll be able to help you ensure your Cloudflare Workers application is integrated and <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">monitored</a> as a first-class citizen in your organization's security apparatus. For example, the screenshot below shows Datadog surfacing a security signal detecting malicious activity in Cloudflare HTTP logs based on threat intel feeds.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ivjoT4S5JIVJDMGsfAJRX/ca596cb36709783cc14318f71ec2b829/image10.png" alt="" class="kg-image" width="1999" height="1230" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ivjoT4S5JIVJDMGsfAJRX/6cab40955d6980af3ed37ef31f24f480/image10.png" alt="" class="kg-image" width="1999" height="1230" loading="lazy">
 
 	</figure>
 	<blockquote>
@@ -69,7 +69,7 @@ event.waitUntil(fetch(url, init));</code></pre>
 	</blockquote>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pFJW7FkhI2LRQH1c2nAYr/bd6a4e6e7baa2e976866694caf1c944d/Screenshot-2021-04-12-at-18.34.34.png" alt="" class="kg-image" width="1262" height="192" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pFJW7FkhI2LRQH1c2nAYr/d275d2707bd89aaa52d6b41ad7b482ab/Screenshot-2021-04-12-at-18.34.34.png" alt="" class="kg-image" width="1262" height="192" loading="lazy">
 
 	</figure>
 	<p><a href="https://honeycomb.io">Honeycomb.io</a> is an observability platform that gives you high level data regarding how your services are performing, combined with the ability to drill down all the way to the individual user level to troubleshoot issues without having to hop across different data types to piece the data together. Traditionally, when debugging production incidents with dashboards and metrics, it is difficult to drill down beyond aggregate measures. For example, a graph with error rates can’t tell you which exact customers are experiencing the most errors. Logs show you the raw error data, but it's hard to see the big picture unless you know exactly where to look.</p>
@@ -77,7 +77,7 @@ event.waitUntil(fetch(url, init));</code></pre>
 	<p>The Honeycomb <a href="https://www.npmjs.com/package/@cloudflare/workers-honeycomb-logger">beta npm module</a> for Cloudflare Workers observability is unique, in that it has first-class knowledge of the concept of sub-requests that are a core part of many Worker applications, and this is surfaced directly in the platform. We can’t wait to see the GA version and more innovation around observability for Cloudflare Workers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2WLS74Q36uCQ31dNtZx0BZ/f56f434974911c775e550d8284274d4d/image6-2.png" alt="" class="kg-image" width="1999" height="452" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WLS74Q36uCQ31dNtZx0BZ/26ebd003243d6b680578d067c796b988/image6-2.png" alt="" class="kg-image" width="1999" height="452" loading="lazy">
 
 	</figure>
 	<blockquote>

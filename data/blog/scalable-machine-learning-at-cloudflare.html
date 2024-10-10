@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ezkO9JuKoLVAFi0ynmBfc/c6482c8760cfdb4c5b9bc49b01d16f6a/image7-3.png" alt="Every request, every microsecond: scalable machine learning at Cloudflare" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ezkO9JuKoLVAFi0ynmBfc/57b5f4032ff2789953cabb7f60c3a9ea/image7-3.png" alt="Every request, every microsecond: scalable machine learning at Cloudflare" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>In this post, we will take you through the advancements we've made in our <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> capabilities. We'll describe the technical strategies that have enabled us to expand the number of machine learning features and models, all while substantially reducing the processing time for each HTTP request on our network. Let's begin.</p>
@@ -21,7 +21,7 @@
 	<p>The extraction and preparation of inter-request features were handled by <b>Gagarin</b>, a Go-based feature serving platform we developed. As a request arrived at Cloudflare, we extracted dimension keys from the request attributes. We then looked up the corresponding machine learning features in the <a href="https://github.com/thibaultcha/lua-resty-mlcache">multi-layered cache</a>. If the desired machine learning features were not found in the cache, a <b>memcached "get" request</b> was made to Gagarin to fetch those. Then machine learning features were plugged into CatBoost models to produce detections, which were then surfaced to the customers via Firewall and Workers fields and internally through our <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">logging pipeline to ClickHouse</a>. This allowed our data scientists to run further experiments, producing more features and models.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TDWrBIkxKHgZk1fjZnBJe/c7bb6a57331d6b28ce41cc00967d832a/image3-3.png" alt="" class="kg-image" width="1999" height="1044" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TDWrBIkxKHgZk1fjZnBJe/1340bc0dc964dd4b9022708463d91b24/image3-3.png" alt="" class="kg-image" width="1999" height="1044" loading="lazy">
 
 	</figure>
 	<p>Previous system design for serving machine learning features over Unix socket using Gagarin.</p>
@@ -345,7 +345,7 @@
 	<p>One of the key features of rkyv that our solution relies on is its ability to access <code><b>HashMap</b></code> data structures in a zero-copy fashion. This is a unique capability among Rust serialization libraries and one of the main reasons we chose rkyv for our implementation. It also has a vibrant <a href="https://discord.gg/65F6MdnbQh">Discord community</a>, eager to offer best-practice advice and accommodate feature requests.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3m6VU5QBUW41ck2SEd9omL/69ef7b34ff6187b7bfa42281667d5de2/Screenshot-2023-06-16-at-18.18.02.png" alt="" class="kg-image" width="1618" height="772" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3m6VU5QBUW41ck2SEd9omL/31db11a33dcf7e8a32d2a563138dce09/Screenshot-2023-06-16-at-18.18.02.png" alt="" class="kg-image" width="1618" height="772" loading="lazy">
 
 	</figure>
 	<p><a href="https://rkyv.org/feature-comparison.html">Feature comparison: rkyv vs FlatBuffers and Cap'n Proto</a></p>
@@ -397,7 +397,7 @@ pub struct FeaturesMetadata {
 	<p>Transitioning from a Lua-based module that made memcached requests over Unix socket to Gagarin in Go to fetch machine learning features, our new design represents a significant evolution. This change pivots around the introduction of <code><b>mmap-sync</b></code>, our newly developed Rust package, laying the groundwork for a substantial performance upgrade. This development led to a comprehensive system redesign and introduced two new components that form the backbone of our <i>Bots Liquidation Intelligent Security System</i> - or <b>BLISS</b>, in short: the bliss service and the bliss library.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Dnl0GqLtcqoPZ3ceZuxTG/b72d62544756b337cf7015165b6e8ad5/after-bliss-diagram-v2.png" alt="" class="kg-image" width="1600" height="929" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Dnl0GqLtcqoPZ3ceZuxTG/efa55a49b326fe71821f2f6be9935b8a/after-bliss-diagram-v2.png" alt="" class="kg-image" width="1600" height="929" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -457,7 +457,7 @@ go tool pprof -http=: ./target/criterion/process_benchmark/process/profile/profi
 	<p>This improvement is even more significant in the Bot Management module, where latency improved by an average of <b>55.93%</b>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CEtjyqdZ3W1566LlcJCmY/234c7c1be6b1e0c495e9c8e8a5105819/image6.png" alt="" class="kg-image" width="1700" height="1052" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CEtjyqdZ3W1566LlcJCmY/8df07e319288090092413f3217b46464/image6.png" alt="" class="kg-image" width="1700" height="1052" loading="lazy">
 
 	</figure>
 	<p>Bot Management module latency, in microseconds.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qzexTuQeCIbe7wdbb9oyI/f6242d45a962ab23243310dd90fe8cc4/image1-22.png" alt="Making WAF ML models go brrr: saving decades of processing time" class="kg-image" width="1600" height="901" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qzexTuQeCIbe7wdbb9oyI/364aa6e688c079d0666998777c92eb4a/image1-22.png" alt="Making WAF ML models go brrr: saving decades of processing time" class="kg-image" width="1600" height="901" loading="lazy">
 
 	</figure>
 	<p>We made our WAF Machine Learning models <b>5.5x</b> faster, reducing execution time by approximately <b>82%</b>, from <b>1519</b> to <b>275</b> microseconds! Read on to find out how we achieved this remarkable improvement.</p>
@@ -21,7 +21,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Bis9LE38A3aK4k7HEn7k9/dafa794ea88cf9cba34695fb77c9c6d1/unnamed--4--6.png" alt="" class="kg-image" width="1600" height="343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Bis9LE38A3aK4k7HEn7k9/44ae7b31096471a5256961715f8c7991/unnamed--4--6.png" alt="" class="kg-image" width="1600" height="343" loading="lazy">
 
 	</figure>
 	<p>Cloudflare's WAF attack score identifies various traffic types and attack vectors (<a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">SQLi</a>, <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">XSS</a>, Command Injection, etc.) based on structural or statistical content properties. Here's how it works during inference:</p>
@@ -44,7 +44,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZzHRYXU27VYB5F3F3QjXf/5e59aa0c9d660300b73bc4636a0ccf09/cfce15fb-ce84-4489-a05a-6872b9e502b8.png" alt="" class="kg-image" width="1600" height="991" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZzHRYXU27VYB5F3F3QjXf/9e5248610a1e89ac8c73a446925abb69/cfce15fb-ce84-4489-a05a-6872b9e502b8.png" alt="" class="kg-image" width="1600" height="991" loading="lazy">
 
 	</figure>
 	<p>Next, we will explore feature extraction and inference optimizations.</p>
@@ -59,7 +59,7 @@
 	<p>In the context of the WAF Attack Score ML model, feature extraction or pre-processing is essentially a process of tokenizing the given input and producing a float tensor of 1 x m size:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DIxHJ5zLkdeknndiNGbk0/9a9b785734b692896e3a688accdd6b27/8cc41311-3a09-4c39-b47c-9dc449760ee2.png" alt="" class="kg-image" width="1271" height="805" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DIxHJ5zLkdeknndiNGbk0/e802888a2212ddfcae688f1c4201587f/8cc41311-3a09-4c39-b47c-9dc449760ee2.png" alt="" class="kg-image" width="1271" height="805" loading="lazy">
 
 	</figure>
 	<p>In our initial pre-processing implementation, this is achieved via a sliding window of 3 bytes over the input with the help of Rust’s <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html">std::collections::HashMap</a> to look up the tensor index for a given ngram.</p>
@@ -163,7 +163,7 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WGhFT3j6vn4QGFOmdyNGO/78f2459a63659b4fe1981a4a0413dbcf/unnamed--5--6.png" alt="" class="kg-image" width="1600" height="729" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WGhFT3j6vn4QGFOmdyNGO/8dd1c6e4d171cd2c407af7bf4d9a9ac7/unnamed--5--6.png" alt="" class="kg-image" width="1600" height="729" loading="lazy">
 
 	</figure>
 	<p>Looking at the pre-processing flamegraph above, it's clear that most of the time was spent on the following two operations:</p><!--kg-card-begin: html-->
@@ -1054,7 +1054,7 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 	<p>Digging deeper with profiler, we observed that most of the time is spent on the following operations:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uy64gatRk8PfdnpRz5Xm5/32aa54a520cd1693358bec408180c08a/unnamed--6--6.png" alt="" class="kg-image" width="1600" height="137" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uy64gatRk8PfdnpRz5Xm5/0d3da469c30e5941524289c1b13574c5/unnamed--6--6.png" alt="" class="kg-image" width="1600" height="137" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -1187,7 +1187,7 @@ fi</code></pre>
 	<p>After running profiler again using the SIMD-optimized TensorFlow Lite library:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NmJhJoYG42ZZhU41m0Uj5/8254b3e7b3f76cadaf8f932b7f480d5b/unnamed--7--5.png" alt="" class="kg-image" width="1600" height="102" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NmJhJoYG42ZZhU41m0Uj5/1d9fce45d44f98b41375d6a56f1a7cac/unnamed--7--5.png" alt="" class="kg-image" width="1600" height="102" loading="lazy">
 
 	</figure>
 	<p>Top operations as per profiler output:</p><!--kg-card-begin: html-->
@@ -1536,7 +1536,7 @@ fi</code></pre>
 	<p><a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf</a>'<a href="https://en.wikipedia.org/wiki/Zipf%27s_law">s law</a> states that in many natural datasets, the frequency of any item is inversely proportional to its rank in the frequency table. In other words, a few items are extremely common, while the majority are rare. By analyzing our request data, we found that URLs, HTTP headers, and even HTTP bodies follow this distribution. For example, here is the user agent header frequency distribution against its rank:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50OWcB7Buza1Jp77ePY75X/53bc7773e0bc267de2381ab030fb4a2d/unnamed--8--3.png" alt="" class="kg-image" width="1277" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50OWcB7Buza1Jp77ePY75X/e25e66e7665fccc454df026e5ca37729/unnamed--8--3.png" alt="" class="kg-image" width="1277" height="800" loading="lazy">
 
 	</figure>
 	<p>By caching the top-N most frequently occurring inputs and their corresponding inference results, we can ensure that both pre-processing and inference are skipped for the majority of requests. This is where the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU">Least Recently Used (LRU)</a> cache comes in – frequently used items stay hot in the cache, while the least recently used ones are evicted.</p>
@@ -1554,19 +1554,19 @@ fi</code></pre>
 	<p>First, we enabled SIMD optimizations for TensorFlow Lite, which reduced WAF ML total execution time by approximately <b>41.80%,</b> decreasing from <b>1519</b> ➔ <b>884 μs</b> on average.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15SMdamloYpjyUy5ZwH9o0/2921c162a0d59eeda5d29f19e20a372a/unnamed--9--3.png" alt="" class="kg-image" width="1600" height="470" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15SMdamloYpjyUy5ZwH9o0/ab4ec787f870d27a45ff513db1f696c8/unnamed--9--3.png" alt="" class="kg-image" width="1600" height="470" loading="lazy">
 
 	</figure>
 	<p>Next, we upgraded TensorFlow Lite from version 2.6.0 to 2.16.1, enabled XNNPack, and implemented pre-processing optimizations. This further reduced WAF ML total execution time by <b>~40.77%</b>, bringing it down from <b>932</b> ➔ <b>552 μs</b> on average. The initial average time of 932 μs was slightly higher than the previous 884 μs due to the increased number of customers using this feature and the months that passed between changes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01EuBB1eVopVjUjWsVvwrK/efdfca6e88b7d1e5fe609821b9815e41/unnamed--10--3.png" alt="" class="kg-image" width="1600" height="472" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01EuBB1eVopVjUjWsVvwrK/0d908285bd4296d75f5c98918cf1a561/unnamed--10--3.png" alt="" class="kg-image" width="1600" height="472" loading="lazy">
 
 	</figure>
 	<p>Lastly, we introduced LRU caching, which led to an additional reduction in WAF ML total execution time by <b>~50.18%</b>, from <b>552</b> ➔ <b>275 μs</b> on average.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6epSwp5jz4ZMaVfdwahZnN/6a2dab50a90b93db2affbb006c522bd5/unnamed--11--3.png" alt="" class="kg-image" width="1600" height="482" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6epSwp5jz4ZMaVfdwahZnN/8c23c1b6a90bf301f9e7f6566d4f3295/unnamed--11--3.png" alt="" class="kg-image" width="1600" height="482" loading="lazy">
 
 	</figure>
 	<p>Overall, we cut WAF ML execution time by <b>~81.90%</b>, decreasing from <b>1519</b> ➔ <b>275 μs</b>, or <b>5.5x</b> faster!</p>

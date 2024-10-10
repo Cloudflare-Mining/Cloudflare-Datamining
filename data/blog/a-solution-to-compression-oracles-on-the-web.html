@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CF9rdyyaBeVuDQkAC1WG2/eac67cb97ba7ce6f93b2ed60d10b822e/Ressort_de_compression.jpg" alt="Spring" class="kg-image" width="638" height="365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CF9rdyyaBeVuDQkAC1WG2/074b08b69ecbedd2e53a93e85879f375/Ressort_de_compression.jpg" alt="Spring" class="kg-image" width="638" height="365" loading="lazy">
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Ressort_de_compression.jpg">CC 3.0 by Jean-Jacques MILAN</a></p>
@@ -11,7 +11,7 @@
 	<p>I worked at Cloudflare last summer to investigate possible solutions to this problem. The result is a project called <a href="https://github.com/cloudflare/cf-nocompress">cf-nocompress</a>. The aim of this project was to develop a tool which automatically mitigates instances of the attack, in particular CSRF extraction, on Cloudflare hosted services transparently without significantly impacting the effectiveness of compression. We have published a <a href="https://github.com/cloudflare/cf-nocompress/tree/master/cf-nocompress">proof-of-concept implementation</a> on GitHub, and provide a <a href="https://compression.website">challenge site</a> and <a href="https://github.com/cloudflare/cf-nocompress/tree/master/example_attack/src/main">tool</a> which demonstrates the attack in action).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OWY4iAZGfQjKwmBgRkway/3e8c1a109936ad8001d5da45572f5226/compression.website.jpg" alt="compression.website" class="kg-image" width="1920" height="1276" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OWY4iAZGfQjKwmBgRkway/2bc96e67c7df62a5316ec450b5f56142/compression.website.jpg" alt="compression.website" class="kg-image" width="1920" height="1276" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -25,7 +25,7 @@
 	<p>Most web compression schemes reduce the size of data by replacing common sequences with references to a dictionary of terms created during the compression. When using such compression schemes the size of the encrypted response will be reduced if there are repeated strings within the plaintext. This can be exploited through the use of a canary, an element in a request which we know will be added to the response, to test whether a string exists within the original response using the compressed response length. From this we can extract the contents of portions of a webpage incrementally by guessing each subsequent character. This attack creates an opportunity for malicious JavaScript to extract CSRF tokens and other confidential information from a webpage through malicious code served to a browser using either a packet sniffer (a methodology created by Duong and Rizzo as part of the <a href="https://blog.cryptographyengineering.com/2011/09/21/brief-diversion-beast-attack-on-tlsssl">BEAST attack</a>) or JavaScript APIs which reveal network statistics (described by Vanhoef and Van Goethem in <a href="https://www.blackhat.com/docs/us-16/materials/us-16-VanGoethem-HEIST-HTTP-Encrypted-Information-Can-Be-Stolen-Through-TCP-Windows.pdf">HEIST</a>).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23iahybYJxsleUyYAbpWoQ/8c8d70096bc225735f83c395279f3d02/Artboard---4.png" alt="Artboard---4" class="kg-image" width="1810" height="3308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23iahybYJxsleUyYAbpWoQ/81440ac0fe67f75711e7d1c5608d41ef/Artboard---4.png" alt="Artboard---4" class="kg-image" width="1810" height="3308" loading="lazy">
 
 	</figure>
 	<p>There are two common mitigation schemes for this attack. The first is to send a unique CSRF every time a page is loaded. By removing the consistent element from the page the threat of attack is removed. This approach requires the server to keep state of valid CSRFs and whether they have been used, additionally it can only be used to protect page tokens and not user-readable data. Another approach is to XOR all secrets in a response with a per-request random number and then transmit the number with the response. Once received a piece of JavaScript can then be used to recover the original secret by XORing the data again. Alternatively, the server can be modified to expect the XOR variant and the random number rather than the original secret. This approach allows for all secrets to be protected, however it requires client side post-processing. Additionally, both approaches require extensive, per page, modification which make mitigation incredibly cumbersome in practice. At present the only way to fully mitigate such an attack is to disable compression entirely on vulnerable websites, an impractical solution for most websites and content delivery networks.</p>

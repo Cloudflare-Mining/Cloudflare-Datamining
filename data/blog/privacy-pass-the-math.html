@@ -1,4 +1,4 @@
-<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yXzyZDnhtRQkiULdIAWCK/a461721b2766e554c190d237c83e0eb3/privacy-pass-the-math.png" alt="">
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1yXzyZDnhtRQkiULdIAWCK/221255b93aab8c3fe5dce7eb2d871a80/privacy-pass-the-math.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This is a guest post by Alex Davidson, a PhD student in Cryptography at Royal Holloway, University of London, who is part of the team that developed </i><a href="https://privacypass.github.io"><i>Privacy Pass</i></a><i>. Alex worked at Cloudflare for the summer on deploying Privacy Pass on the Cloudflare network</i>.</p>
 	<p>During a recent internship at Cloudflare, I had the chance to help integrate support for improving the accessibility of websites that are protected by the Cloudflare edge network. Specifically, I helped develop an open-source browser extension named ‘Privacy Pass’ and added support for the Privacy Pass protocol within Cloudflare infrastructure. Currently, Privacy Pass works with the Cloudflare edge to help honest users to reduce the number of Cloudflare CAPTCHA pages that they see when browsing the web. However, the operation of Privacy Pass is not limited to the Cloudflare use-case and we envisage that it has applications over a wider and more diverse range of applications as support grows.</p>
@@ -57,7 +57,7 @@
 	<p>An oblivious PRF (OPRF) is actually a protocol between a server S and a client C. In the protocol, S holds a key <code>K</code> for some PRF <code>F</code> and C holds an input <code>x</code>. The security goal is that C receives the output <code>y = F(K,x)</code> without learning the key <code>K</code> and S does not learn the value <code>x</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LG1M3dg4OwiUYd1TFWIWJ/de12642dd135cb6e4379f52bc7a54ff6/image3-1.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LG1M3dg4OwiUYd1TFWIWJ/8e26d23ae4dd905c599cece4cf9c1cbd/image3-1.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
 
 	</figure>
 	<p>It may seem difficult to construct such a functionality without revealing the input x or the key K. However, there are numerous (and very efficient) constructions of OPRFs with applications to many different cryptographic problems such as <a href="https://eprint.iacr.org/2016/799">private set intersection</a>, <a href="https://eprint.iacr.org/2016/144">password-protected secret-sharing</a> and <a href="http://webee.technion.ac.il/~hugo/sphinx.pdf">cryptographic password storage</a> to name a few.</p>
@@ -137,7 +137,7 @@
 	<p>We think of <code>T = H_1(t)</code> as a token, these objects form the backbone of the protocol that we use to bypass challenges.Notice, that the only difference between this protocol and the OPRF above is the blinding factor <code>r</code> that we use.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LJYvqKAwDw1Rh6oPlGeZy/93971900ce96ac2b012fc1e456a7a584/image2.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LJYvqKAwDw1Rh6oPlGeZy/ef4c5d38cf87ce48480c6e7680d17444/image2.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
 
 	</figure>
 	<h4>Redemption phase</h4>
@@ -161,7 +161,7 @@
 	<p>If all the steps above pass, then the server validates that the user has a validly signed token. When we refer to ‘passes’ we mean the pair <code>(t, MAC_sk(req))</code> and if verification is successful the edge server grants the user access to the requested resource.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UrTr7lpAY9Fin8rctVoLa/932a51c8ba03f9137ffacc31b5914e7a/image1-1.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UrTr7lpAY9Fin8rctVoLa/61fbb098340ac56a5012b6f03a13acc0/image1-1.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

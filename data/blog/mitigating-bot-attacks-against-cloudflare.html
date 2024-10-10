@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/13hO1zs6Z5KQyz8hQPHAjD/c12f81b29ab6a5ee522ee512796d7d8b/image3-39.png" alt="" class="kg-image" width="1382" height="668" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13hO1zs6Z5KQyz8hQPHAjD/da55834f033135079078a5ecadb1bc40/image3-39.png" alt="" class="kg-image" width="1382" height="668" loading="lazy">
 
 	</figure>
 	<p>The word “bots” on the Internet is a fairly loaded one. My earliest ‘bot’ experience was <a href="https://en.wikipedia.org/wiki/IRC_bot">on IRC</a>, where bots were quite helpful in making sure your favorite channel didn’t get taken over by malicious users and allowed for fun games of trivia. Around five years ago, “bots” were often referencing text chats in combination with AI and messaging platforms/apps as a new way to interact with customers. Today most of the connotations around bots on the Internet, particularly in the security space, are negative, and we have a number of vendors offering new ways to detect and block bots.</p>
@@ -22,7 +22,7 @@
 	<p>Word of the problem reached our engineering team, and it became clear that this was a great place to launch our first customer and dogfood our product. At first, attackers were not attempting to hide very much. They used out-of-the-box scripts and oftentimes didn’t even bother to change obvious signals like the User Agent header or spread the attack over a significant number of IPs or ASNs. As we added heuristics into the system and tuned the ML model, the attackers adjusted their tactics. Over time, our full array of tools became necessary as the attackers continued to adapt. An example of a more recent attack is below; during the attack, automated traffic increased to 7x over normal for roughly 30 minutes. Scaling would have likely been an issue for our downstream provider, where we ultimately sent API calls on form submission. During this attack, our Anomaly Detection (which is the basis for our new <a href="https://blog.cloudflare.com/api-abuse-detection">API abuse detection</a>) did the majority of the heavy lifting, accounting for 42% of the detections.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YqMNYLNqnz7rDAUmkSeSq/d53ad5294b4796ee3d9a0f14338c3f24/image2-40.png" alt="" class="kg-image" width="1999" height="671" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YqMNYLNqnz7rDAUmkSeSq/8cc76fda1504da1999fe72b9d0d5d1cb/image2-40.png" alt="" class="kg-image" width="1999" height="671" loading="lazy">
 
 	</figure>
 	<p>We also battle bots on our dashboard across many of our user-facing APIs. A common pattern of abuse we have seen over the years is that a malicious user signs up numerous domains, often from free TLDs, and often spread across multiple accounts. The user takes these domains and engages in a form of Search Engine Optimization (SEO) spam. It is believed that one of the ways you increase your search ranking is to have many sites linking to your domain. SEO spammers sign up large numbers of domains and create thousands of hostname records within and then charge unscrupulous website owners to crosslink from each of these domains.</p>
@@ -30,7 +30,7 @@
 	<p>This type of abuse only works through scale. An SEO spammer must be able to sign up a lot of domains in an efficient and automated fashion in order to sell their services. So we threw Bot Management at the problem. Originally we slowed the problem down through Rate Limiting as well as preventing a given IP from signing up numerous accounts over a short period of time, but attackers persisted. We challenged new account signups that appeared automated through our Bot Management product and the problem immediately went away.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ggwTCrqsxcZOBuuS8eusz/9bbb79ca6bfaf39ac423c437d13ba63d/image1-47.png" alt="" class="kg-image" width="1360" height="287" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ggwTCrqsxcZOBuuS8eusz/ee4f93673e22bcca57f4675320bdb6d5/image1-47.png" alt="" class="kg-image" width="1360" height="287" loading="lazy">
 
 	</figure>
 	<p>Another part of Cloudflare’s dashboard that deals with bots is our billing system. Attackers will use our payment card processing system to test stolen credit card numbers for validity, which allows them to use or resell the card for use on another, more expensive transaction at a different site. Once again, speed and scale are key here. An attacker does not want to test one or two card numbers — they want to test dozens or hundreds and automate the process. Our billing engineering team uses Bot Management to trigger challenges or blocks when a user adds or changes a payment method to stop this attack. The billing team also passes the bot score to our third party payment provider’s own fraud detection system (via <a href="https://developers.cloudflare.com/bots/bot-management-enterprise#bot-management-variables">Cloudflare Workers</a>), which incorporates the score into its analysis for manual transaction reviews.</p>

@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/197vDu5yTHz6BWxuXwBDgU/5d3278584af573c4efe48eaab047cf2c/image3-14.png" alt="Cloudflare Research: Two Years In" class="kg-image" width="1202" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/197vDu5yTHz6BWxuXwBDgU/d7a79dc89f37b3504942b1d09ac8fcc7/image3-14.png" alt="Cloudflare Research: Two Years In" class="kg-image" width="1202" height="675" loading="lazy">
 
 	</figure>
 	<blockquote>
@@ -126,7 +126,7 @@
 	<p>Cloudflare’s architecture challenges several assumptions about how different aspects of the Internet relate to each other. Historically, a server IP address corresponds to a specific machine. Cloudflare’s anycast architecture and server design allow any server to serve any customer site. This architecture has allowed the service to scale in incredible ways with very little work.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OuQyv6Pdm1rWv8HYJPMGD/96c419eca7a2a801b90c4c31ec5913d6/unnamed-7.png" alt="IP Bindings Stifle Innovation" class="kg-image" width="1200" height="638" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OuQyv6Pdm1rWv8HYJPMGD/6cba6ee3b015ba82da845353a088afee/unnamed-7.png" alt="IP Bindings Stifle Innovation" class="kg-image" width="1200" height="638" loading="lazy">
 
 	</figure>
 	<p>This insight led us to question other fundamental assumptions about how the Internet could potentially work. If an IP address doesn’t need to correspond with a specific server, what else could we decouple from it? Could we decouple hostnames from IPs? Maybe we could! We could also frame the question negatively: what do we lose if we don’t take advantage of this decoupling? It was worth an experiment, at least.</p>
@@ -153,7 +153,7 @@
 	<p>When Cloudflare launched the 1.1.1.1 recursive DNS service in 2019, privacy was again at the forefront. We offered 1.1.1.1 with a new encryption standard called <a href="https://blog.cloudflare.com/dns-encryption-explained">DNS-over-HTTPS</a> (DoH) to keep queries private as they travel over the Internet. However, even with DoH, a DNS query is associated with the IP address of the user who sent it. Cloudflare wrote a privacy policy and created technical measures to ensure that user IP data is only kept for a short amount of time and even engaged a top auditing firm to <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination">confirm this</a>. But still, the question remained, could we offer the service without needing to have this privacy-sensitive information in the first place? We created the <a href="https://blog.cloudflare.com/welcome-hidden-resolver">Onion Resolver</a> to let users access the service over the Tor anonymity network, but it was extremely slow to use. Could we offer cryptographically private DNS with acceptable performance? It was an open problem.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mSUIzWCQsR7WLfJpMjrpY/142161a0c05fc4aada7533cbb10063eb/unnamed--1-.png" alt="The ODoH architecture" class="kg-image" width="1200" height="931" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mSUIzWCQsR7WLfJpMjrpY/76e844601571b32df1aceb04d6db7de5/unnamed--1-.png" alt="The ODoH architecture" class="kg-image" width="1200" height="931" loading="lazy">
 
 	</figure>
 	<p>The breakthrough came through a combination of sources. We learned about new results out of academia describing a novel proxying technique called <a href="https://www.sciendo.com/article/10.2478/popets-2019-0028">Oblivious DNS</a>. We also found other folks in the industry from Apple and Fastly who were working on the same problem. The resulting proposal combined Oblivious DNS and DoH into an elegant protocol called Oblivious DoH (or ODoH). ODoH was <a href="https://datatracker.ietf.org/doc/html/draft-pauly-dprive-oblivious-doh-07">published</a> and discussed extensively at the IETF. DNS is an especially standards-dependent protocol since different parties operate so many components of the system. ODoH adds another participant to the equation, making careful interoperability standards even more critical.</p>
@@ -182,7 +182,7 @@
 	<p>In Case Study #4, we explored a deep and fundamental networking question. As fun as exploring the plumbing can be, it’s also important to explore user experience questions because clients and customers can immediately feel them. A big part of Cloudflare’s value is protecting customers from bots, and one of the tools we use is the CAPTCHA. People <a href="https://twitter.com/Nazenko/status/1337987291483136002">hate</a> CAPTCHAs. Few aspects of the web experience inspire more seething anger in the user experience than being stopped and asked to identify street signs and trucks in low-res images when trying to go to a site. Furthermore, the most common CAPTCHAs are inaccessible to many communities, including the blind and the visually impaired. The Bots team at Cloudflare has made great strides to reduce the number of CAPTCHAs shown on the server-side using <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> (a challenging problem in itself). We decided to complement their work by asking if we could leverage accessibility on the client-side to provide equivalent protection to a CAPTCHA?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v7w30ADISIpFn4zf3VyZ5/b61013b644b7e6f27215372a296303d5/unnamed--2-.png" alt="the user workflow of CAP" class="kg-image" width="1200" height="605" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v7w30ADISIpFn4zf3VyZ5/7f6cc630e8264d47e06d9ebc17be85b2/unnamed--2-.png" alt="the user workflow of CAP" class="kg-image" width="1200" height="605" loading="lazy">
 
 	</figure>
 	<p>This question led us down the path to developing a new technique we call the <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">Cryptographic Attestation of Personhood (CAP)</a>. Instead of users proving to Cloudflare that they are human by performing a human task, we could ask them to prove that they have trusted physical hardware. We identified the widely deployed WebAuthn standard to do this so that millions of users could leverage their hard security keys or the hardware biometric system built into their phones and laptops.</p>

@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GhVBYNZAsGZtOfgo8C3VY/eff8587ef503170a85216be66f88aad6/image6-6.png" alt="Log Explorer: monitor security events without third-party storage" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GhVBYNZAsGZtOfgo8C3VY/42fc180d060574162071cbdd13ad6a88/image6-6.png" alt="Log Explorer: monitor security events without third-party storage" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today, we are excited to announce beta availability of <a href="https://developers.cloudflare.com/logs/log-explorer">Log Explorer</a>, which allows you to investigate your HTTP and Security Event logs directly from the Cloudflare Dashboard. Log Explorer is an extension of <a href="https://blog.cloudflare.com/security-analytics">Security Analytics</a>, giving you the ability to review related raw logs. You can analyze, investigate, and monitor for security attacks natively within the Cloudflare Dashboard, reducing time to resolution and overall cost of ownership by eliminating the need to forward logs to third party security analysis tools.</p>
@@ -74,43 +74,43 @@
 	<p>On the Security Analytics dashboard, you can see in the Insights panel that there is some traffic that has been tagged as a likely attack, but not mitigated.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Oq3oqY8JXMigK8OJKPFZ4/6a98a93616091edbc3fbd507a47d3ef4/Screenshot-2024-03-07-at-20.20.41.png" alt="" class="kg-image" width="2000" height="323" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Oq3oqY8JXMigK8OJKPFZ4/5d3a8751a56f06f58e96538f1d46a480/Screenshot-2024-03-07-at-20.20.41.png" alt="" class="kg-image" width="2000" height="323" loading="lazy">
 
 	</figure>
 	<p>Clicking the filter button narrows in on these requests for further investigation.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sWkjUYz1J0So4nphy4FSs/830bf440c6ae6b5060de92431f25f2df/image11.jpg" alt="" class="kg-image" width="1844" height="1018" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sWkjUYz1J0So4nphy4FSs/769d5ebb0b706a073a616b706783030c/image11.jpg" alt="" class="kg-image" width="1844" height="1018" loading="lazy">
 
 	</figure>
 	<p>In the sampled logs view, you can see that most of these requests are coming from a common client IP address.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gtrP14GKbnB0YeV0ySgL1/dcea22a5780640e0c8ebaf4d9ed66d37/Sampled-logs.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gtrP14GKbnB0YeV0ySgL1/6b476ec9d19e255912315eac9730604d/Sampled-logs.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
 
 	</figure>
 	<p>You can also see that Cloudflare has flagged all of these requests as bot traffic. With this information, you can craft a WAF rule to either block all traffic from this IP address, or block all traffic with a bot score lower than 10.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YgFTRD7u3KYh0bbInLylK/0cf798f3360db60ebe937e782aad2feb/Screenshot-2024-03-07-at-20.22.04.png" alt="" class="kg-image" width="2000" height="407" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YgFTRD7u3KYh0bbInLylK/f076a70bc09f41d8ace0569bca172b39/Screenshot-2024-03-07-at-20.22.04.png" alt="" class="kg-image" width="2000" height="407" loading="lazy">
 
 	</figure>
 	<p>Let’s say that the Compliance Team would like to gather documentation on the scope and impact of this attack. We can dig further into the logs during this time period to see everything that this attacker attempted to access.</p>
 	<p>First, we can use Log Explorer to query HTTP requests from the suspect IP address during the time range of the spike seen in Security Analytics.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qsi7UnxjtygCQHnMCIx02/f132552253a376764c93caccc3fcef54/Log-Explorer.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qsi7UnxjtygCQHnMCIx02/cda0aacf6d783b05c15196f27907c611/Log-Explorer.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YyewPADkPzjofXHXSihyi/1dabeb1cb38e37b50817d7939cbb797b/Query-results.png" alt="" class="kg-image" width="1600" height="852" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YyewPADkPzjofXHXSihyi/e494ca5d4b9a3ad7071d5d3e27f57887/Query-results.png" alt="" class="kg-image" width="1600" height="852" loading="lazy">
 
 	</figure>
 	<p>We can also review whether the attacker was able to exfiltrate data by adding the OriginResponseBytes field and updating the query to show requests with OriginResponseBytes &gt; 0. The results show that no data was exfiltrated.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TgN2aPwWTDo5niA95TGQx/26d0cb0b90f2c00359629c25c49e907f/No-logs-found.png" alt="" class="kg-image" width="1600" height="698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TgN2aPwWTDo5niA95TGQx/71143be92550dfea1ce284507fa688ac/No-logs-found.png" alt="" class="kg-image" width="1600" height="698" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -126,13 +126,13 @@
 	<p>In these situations, we can now use Log Explorer to identify these requests and why they were blocked, and then adjust the relevant WAF rules accordingly.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ecKfF4lRDQSyLCoOgDjTw/09ff87f2430548dbc155ce1cc2af56f5/Log-Explorer-2.png" alt="" class="kg-image" width="1600" height="859" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ecKfF4lRDQSyLCoOgDjTw/6f0872962caff8d719958e6fdfcc8dbc/Log-Explorer-2.png" alt="" class="kg-image" width="1600" height="859" loading="lazy">
 
 	</figure>
 	<p>Or, if you are interested in tracking down a specific request by Ray ID, an identifier given to every request that goes through Cloudflare, you can do that via Log Explorer with one query.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NCDOP0axFC3wZ4qs03Jei/59c7ecb04449aa69ee1b1c07748d1d56/Log-Explorer-3.png" alt="" class="kg-image" width="1600" height="750" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NCDOP0axFC3wZ4qs03Jei/86286da2fd9fca3cdb68214c1d0f472a/Log-Explorer-3.png" alt="" class="kg-image" width="1600" height="750" loading="lazy">
 
 	</figure>
 	<p>Note that the LIMIT clause is included in the query by default, but has no impact on RayID queries as RayID is unique and only one record would be returned when using the RayID filter field.</p>
@@ -147,7 +147,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pNBd5iSyVW7aqfJ0JfYDP/ae7f50f08b87f719f0073845764db67f/How-we-built-Log-Explorer.png" alt="" class="kg-image" width="1600" height="1191" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pNBd5iSyVW7aqfJ0JfYDP/89cd0341cc35ad9d86fd8687ba7a9147/How-we-built-Log-Explorer.png" alt="" class="kg-image" width="1600" height="1191" loading="lazy">
 
 	</figure>
 	<p>With Log Explorer, we have built a long-term, append-only log storage platform on top of <a href="https://www.cloudflare.com/developer-platform/r2">Cloudflare R2</a>. Log Explorer leverages the <a href="https://databricks.com/wp-content/uploads/2020/08/p975-armbrust.pdf">Delta Lake</a> protocol, an open-source storage framework for building highly performant, <a href="https://en.wikipedia.org/wiki/ACID">ACID</a>-compliant databases atop a cloud object store. In other words, Log Explorer combines a large and cost-effective storage system – <a href="https://blog.cloudflare.com/www.cloudflare.com/developer-platform/r2">Cloudflare R2</a> – with the benefits of strong consistency and high performance. Additionally, Log Explorer gives you a SQL interface to your Cloudflare logs.</p>

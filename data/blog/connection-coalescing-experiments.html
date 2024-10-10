@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZsTPnkr2T9etYYX57AwcJ/0455f2e0152bc420e29615d6faff15aa/image4-20.png" alt="Coalescing Connections to Improve Network Privacy and Performance" class="kg-image" width="750" height="326" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZsTPnkr2T9etYYX57AwcJ/d60316332e3477abc74365da55cf4926/image4-20.png" alt="Coalescing Connections to Improve Network Privacy and Performance" class="kg-image" width="750" height="326" loading="lazy">
 
 	</figure>
 	<p>Web pages typically have <a href="https://discuss.httparchive.org/t/whats-the-distribution-of-requests-per-page/21/10?u=patmeenan">a large number</a> of embedded subresources (e.g., JavaScript, CSS, image files, ads, beacons) that are fetched by a browser on page loads. Requests for these subresources can prompt browsers to perform further DNS lookups, TCP connections, and TLS handshakes, which can have a significant impact on how long it takes for the user to see the content and interact with the page. Further, each additional request exposes metadata (such as plaintext DNS queries, or unencrypted SNI in TLS handshake) which can have potential privacy implications for the user. With these factors in mind, we carried out a measurement study to understand how we can leverage <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing">Connection Coalescing</a> (aka <a href="https://datatracker.ietf.org/doc/html/rfc7540#section-9.1.1">Connection Reuse</a>) to address such concerns, and study its feasibility.</p>
@@ -20,7 +20,7 @@
 	<p>Interestingly, the protocol has a lesser-known feature to also enable subresources at <b><i>different</i></b><i> </i><b><i>hostnames</i></b> to be fetched over the <b><i>same</i></b> <b><i>connection</i></b>. We studied the real-world feasibility and benefits of this technique as an effort to improve users' experience for websites across our network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3tmFcDGsMhGlSKQ3XxEzHs/bee56ed45ce2e6a8947728599a624444/image16-1.png" alt="Connection Coalescing allows reusing a TLS connection across different domains" class="kg-image" width="1496" height="593" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tmFcDGsMhGlSKQ3XxEzHs/a10aa68acabb9004a4a25bf82ba9ddc9/image16-1.png" alt="Connection Coalescing allows reusing a TLS connection across different domains" class="kg-image" width="1496" height="593" loading="lazy">
 
 	</figure>
 	<p>Connection Coalescing allows reusing a TLS connection across different domains</p>
@@ -53,7 +53,7 @@
 	<p>The above two conditions (same IP and compatible certificate) are required to achieve coalescing as per the <a href="https://datatracker.ietf.org/doc/html/rfc7540#section-9.1.1">HTTP/2 spec</a>. However, the <a href="https://datatracker.ietf.org/doc/html/draft-ietf-quic-http-29#section-3.4">QUIC spec</a> allows coalescing even if only the second condition is met. Major web browsers are <a href="https://mailarchive.ietf.org/arch/msg/quic/0nqKySdzmXK6CwZ9dKfD5GsQgqE">yet to adopt the QUIC coalescing mechanism</a>, and currently use only the HTTP/2 coalescing logic for both protocols.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qIQMnxndHLQGdhdmswsxg/a3bd501b7429c7551cfa6b311330b421/image14-1.png" alt="Requests to Experiment Group Zones and cdnjs being coalesced on the same TLS connection" class="kg-image" width="1392" height="570" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qIQMnxndHLQGdhdmswsxg/da3ba47675985dd6ada032432a9de12e/image14-1.png" alt="Requests to Experiment Group Zones and cdnjs being coalesced on the same TLS connection" class="kg-image" width="1392" height="570" loading="lazy">
 
 	</figure>
 	<p>Requests to Experiment Group Zones and cdnjs being coalesced on the same TLS connection</p>
@@ -68,7 +68,7 @@
 	<p>We started noticing evidence of real-world coalescing from the day our experiment was launched. The following graph shows that approximately 50% of requests to cdnjs from our experiment group sites are coalesced (i.e., their TLS SNI does not equal cdnjs) as compared to 0% of requests from the control group sites.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/A3Z2xGpVTKtXr05t6Vzkd/8f3e8efb4d7cbd6d964b781b4a465959/image2-21.png" alt="Coalesced Requests to cdnjs from Control and Experimental Group Zones" class="kg-image" width="1999" height="416" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/A3Z2xGpVTKtXr05t6Vzkd/4f259113d184d2d3b71786e65f805bb3/image2-21.png" alt="Coalesced Requests to cdnjs from Control and Experimental Group Zones" class="kg-image" width="1999" height="416" loading="lazy">
 
 	</figure>
 	<p>Coalesced Requests to cdnjs from Control and Experimental Group Zones</p>
@@ -85,7 +85,7 @@
 	<p>After evaluating the potential benefits of coalescing, we wanted to understand if coalescing caused any unintended side effects. Hence, the final measurement we conducted was to check whether our experiments were detrimental to a website’s performance. We tracked <a href="https://blog.cloudflare.com/start-measuring-web-vitals-with-browser-insights">Page Load Times (PLT) and Largest Contentful Paint (LCP)</a> across a variety of stimulated network conditions using both Chrome and Firefox and found the results for experiment vs control group to <i>not</i> be statistically significant.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mqWfurrAFY6NrvUrO067u/03d9b019eb0c6baac51fce3341510d72/image3-19.png" alt="Page load times for control and experiment group sites. Each site was loaded once, and the “fullyLoaded” metric from WebPageTest is reported" class="kg-image" width="1074" height="814" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mqWfurrAFY6NrvUrO067u/1c55d30632a9bfff09d3592508d7f8e2/image3-19.png" alt="Page load times for control and experiment group sites. Each site was loaded once, and the “fullyLoaded” metric from WebPageTest is reported" class="kg-image" width="1074" height="814" loading="lazy">
 
 	</figure>
 	<p>Page load times for control and experiment group sites. Each site was loaded once, and the “<i>fullyLoaded</i>” metric from WebPageTest is reported</p>

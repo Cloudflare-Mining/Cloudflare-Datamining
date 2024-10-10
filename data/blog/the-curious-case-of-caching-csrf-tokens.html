@@ -1,10 +1,10 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IdlUoQJcvZrOrfBx1T8Dl/ee798a4359233c821e333a0d39657a53/the-curious-case-of-caching-csrf-tokens.jpg" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IdlUoQJcvZrOrfBx1T8Dl/3ca71c1fa0562cb0d0284e4bfbf98124/the-curious-case-of-caching-csrf-tokens.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It is now commonly accepted as fact that web performance is critical for business. Slower sites can affect conversion rates on <a href="https://www.cloudflare.com/ecommerce">e-commerce stores</a>, they can affect your sign-up rate on your SaaS service and lower the readership of your content.</p>
 	<p>In the run-up to Thanksgiving and Black Friday, e-commerce sites turned to services like Cloudflare to help <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">optimise their performance</a> and withstand the traffic spikes of the shopping season.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Bees9K4tKCi83vUBqpmsf/ce0a185c9cc59cb6909223ddf652a036/23910AEA00000578-2852835-Shoppers_scramble_to_pick_up_one-8_1417169462181.jpg" alt="" class="kg-image" width="962" height="643" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Bees9K4tKCi83vUBqpmsf/0436f1a0d72b5230e17b5a8ee2b90889/23910AEA00000578-2852835-Shoppers_scramble_to_pick_up_one-8_1417169462181.jpg" alt="" class="kg-image" width="962" height="643" loading="lazy">
 
 	</figure>
 	<p>In preparation, an e-commerce customer joined Cloudflare on the 9th November, a few weeks before the shopping season. Instead of joining via our Enterprise plan, they were a self-serve customer who signed-up by subscribing to our Business plan online and switching their nameservers over to us.</p>
@@ -64,7 +64,7 @@
 	<p>By looking at a Waterfall View of how their site loaded (similar to the one below) they could see the main constraint.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xj4dTK90yYqCe8l77rAtH/058d35f911b51f93c42d14f53b815419/time-to-first-byte.png" alt="" class="kg-image" width="787" height="230" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xj4dTK90yYqCe8l77rAtH/a85111cd2d50928073dc90d7233baac1/time-to-first-byte.png" alt="" class="kg-image" width="787" height="230" loading="lazy">
 
 	</figure>
 	<p>Example Waterfall view from WebSiteOptimization.com</p>
@@ -88,7 +88,7 @@
 	<p>Here's an example of how this can be configured in Cloudflare using the Page Rules functionality:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pBjTSCiHvMVLi5J1spu0E/54e7cc2e576d7ebed55bb799b13abeb5/Screen-Shot-2017-11-30-at-13.57.40.png" alt="Magento Cache Cookie Bypass" class="kg-image" width="1490" height="1304" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pBjTSCiHvMVLi5J1spu0E/9731ebfb1521b397c7fa22e19fbc263a/Screen-Shot-2017-11-30-at-13.57.40.png" alt="Magento Cache Cookie Bypass" class="kg-image" width="1490" height="1304" loading="lazy">
 
 	</figure>
 	<p>The Page Rule configuration above instructs Cloudflare to "Cache Everything (including HTML), but bypass the cache when it sees a request which contains any of the cookies: <code>external_no_cache</code>, <code>PHPSESSID</code> or <code>adminhtml</code>. The final <code>Edge Cache TTL</code> setting just instructs Cloudflare to keep HTML files in cache for a month, this is necessary as Magento by default uses headers to discourage caching.</p>
@@ -110,7 +110,7 @@
 	<p>This behaviour can be summarised in the following crude diagram:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZuitM2bncUoJNYpHFC1A1/87a9c5da9bad94e572a7869504942ee6/Screen-Shot-2017-12-12-at-14.00.59.png" alt="" class="kg-image" width="1566" height="1050" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZuitM2bncUoJNYpHFC1A1/e6678ca0768bf540ea8a23acbb09a6f3/Screen-Shot-2017-12-12-at-14.00.59.png" alt="" class="kg-image" width="1566" height="1050" loading="lazy">
 
 	</figure>
 	<p>The site administrators initially enabled this configuration on a subdomain for testing purposes, but noticed something rather strange. When they would add something to the cart on their test site, the cart would show up empty. If they then tried again to add something to the cart, the item would be added successfully.</p>
@@ -133,7 +133,7 @@
 	<p>The Support Agent provided some internal comments that described the issue in detail and their own debugging steps, with an effective "TL;DR" summary:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78Icys6dPunTt7NhKgPJA0/c9cdcf2d7eb5f4201afedf14933b3d4a/Screen-Shot-2017-11-30-at-20.42.09.png" alt="" class="kg-image" width="1154" height="240" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78Icys6dPunTt7NhKgPJA0/b8e0e03814e7ca602a7445f6cecc0ec3/Screen-Shot-2017-11-30-at-20.42.09.png" alt="" class="kg-image" width="1154" height="240" loading="lazy">
 
 	</figure>
 	<p>Debugging these kinds of customer issues is not as simple as putting breakpoints into a codebase. Often, for our Support Engineers, the customers origin server acts as a black-box and there can be many moving parts, and they of course have to manage the expectations of a real customer at the other end. This level of problem solving fun, is one of the reasons I still like answering customer support tickets when I get a chance.</p>

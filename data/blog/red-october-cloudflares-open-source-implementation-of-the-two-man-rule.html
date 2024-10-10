@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wtQ5zLe3DfKd7KPi460Hg/8d4f2c32e3be6fbe0a837dc68859b43c/The_Hunt_for_Red_October-1.jpg" alt="The Hunt for Red October" class="kg-image" width="480" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wtQ5zLe3DfKd7KPi460Hg/d74c7b41cab036b09e5d02a65ba6e7f5/The_Hunt_for_Red_October-1.jpg" alt="The Hunt for Red October" class="kg-image" width="480" height="206" loading="lazy">
 
 	</figure>
 	<p>At CloudFlare, we are always looking for better ways to secure the data we’re entrusted with. This means hardening our system against outside threats such as hackers, but it also means protecting against insider threats. According to a <a href="http://www.verizonenterprise.com/DBIR/2013">recent Verizon report</a>, insider threats account for around 14% of data breaches in 2013. While we perform background checks and carefully screen team members, we also implement technical barriers to protect the data with which we are entrusted.</p>
@@ -47,21 +47,21 @@
 	<p>When asked to encrypt a piece of data, the server generates a random 128-bit AES key. This key is used to encrypt the data. For each user that is allowed to decrypt the data, a user-specific key encryption key is chosen. For each unique pair of users, the data key is doubly encrypted, once with the key encryption key of each user. The key encryption keys are then encrypted with the public RSA key associated with their account. The encrypted data, the set of doubly-encrypted data keys, and the RSA-encrypted key encryption keys are all bundled together and returned. The encrypted data is never stored on the server.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38JLECxsa5YaGcwkkJnhEn/3a34478535581458b928b784de54e93c/cryptography1.png" alt="" class="kg-image" width="1731" height="562" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38JLECxsa5YaGcwkkJnhEn/3054808bc0b25afda9d7c3be1fdc8f6b/cryptography1.png" alt="" class="kg-image" width="1731" height="562" loading="lazy">
 
 	</figure>
 	<p>Delegating credentials to the server</p>
 	<p>When a user delegates their key to the server, they submit their username and password over TLS using the delegate JSON API. For each account, the password is verified against the salted hash. If the password is correct, a password key is derived from the password and used to decrypt the user’s RSA private key. This key is now “Live” for the length of time and number of decryptions chosen by the user.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Jefh1rq4DwCnifHejHJNe/28f8b7a1c03f64bba94354b5051a2d54/cryptography3.png" alt="" class="kg-image" width="964" height="774" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Jefh1rq4DwCnifHejHJNe/c10f4e6420354b9c16f3f8f12ff15ae8/cryptography3.png" alt="" class="kg-image" width="964" height="774" loading="lazy">
 
 	</figure>
 	<p>Decrypting data</p>
 	<p>To decrypt a file, the server validates that the requesting user is an administrator and has the correct password. If two users of the list of valid users have delegated their keys, then decryption can occur. First the RSA private key is used to decrypt the key encryption key for these two users, then the key encryption keys are used to decrypt the doubly encrypted data key, which is then used to decrypt the data.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nvlGuGFWguhaebYbrsY9n/9b29d57ac1d0ea4009ff4e9a0a831ec6/cryptography2.png" alt="" class="kg-image" width="1102" height="1212" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nvlGuGFWguhaebYbrsY9n/1432bb6989d6b48631c7271d95bd12a6/cryptography2.png" alt="" class="kg-image" width="1102" height="1212" loading="lazy">
 
 	</figure>
 	<p>Some other key points:</p>

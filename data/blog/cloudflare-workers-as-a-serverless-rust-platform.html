@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BAx37OMGa3UKptJhvBifT/20f32b26091de8d034d4ebfac8456289/cloudflare-workers-as-a-serverless-rust-platform.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BAx37OMGa3UKptJhvBifT/ffdd359d0294a85dccb0b7e127affb2b/cloudflare-workers-as-a-serverless-rust-platform.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><b><i>Update</i></b><i>: Rust Tooling for Workers has improved significantly since this post. Go </i><a href="https://blog.cloudflare.com/introducing-wrangler-cli"><i>here</i></a><i> to check out Wrangler, our new Rust+Workers cli</i></p>
 	<hr>
@@ -83,7 +83,7 @@ npx: installed 1 in 2.533s
 	<p>Open your web browser at <a href="http://localhost:8080">http://localhost:8080</a> and you should see your first WASM generated content!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nGG5L8JRVz3j0DE8M7jds/c41efd82c76dbb6b9628c98d1f64d109/rust-wasm-hello-world.png" alt="Rust WASM Hello World" class="kg-image" width="1038" height="380" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nGG5L8JRVz3j0DE8M7jds/18178a9da5a9a7f5718a665145a11153/rust-wasm-hello-world.png" alt="Rust WASM Hello World" class="kg-image" width="1038" height="380" loading="lazy">
 
 	</figure>
 	<p>OK, that's promising, but it's not actually our code. Our greet function returned <code>"Hello, bob-ross-lorem-ipsum-rust!"</code></p>
@@ -111,7 +111,7 @@ npm run start</code></pre>
 	<p>Better! That's our code.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31yXXKuqGD2mkeKNer0Dok/22b841bf80503ef96127ae65778fea2a/rust-wasm-hello-world2.png" alt="Rust WASM Hello World 2" class="kg-image" width="466" height="144" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31yXXKuqGD2mkeKNer0Dok/c263af03d29c34f4fd8f745981f0c421/rust-wasm-hello-world2.png" alt="Rust WASM Hello World 2" class="kg-image" width="466" height="144" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -238,7 +238,7 @@ alert(phraseText);</code></pre>
 	<p>Fail.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AIwddjpP7c8NrOrl5FONS/799b4b7bb0edc29d5eceb8a69b908475/rust-wasm-fail-no-entropy.png" alt="Rust WASM Fail no entropy" class="kg-image" width="1152" height="239" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AIwddjpP7c8NrOrl5FONS/02cd2d9c04e00f9f0a5109fea2d01142/rust-wasm-fail-no-entropy.png" alt="Rust WASM Fail no entropy" class="kg-image" width="1152" height="239" loading="lazy">
 
 	</figure>
 	<p>If you've played around with Rust, you'll know how jarring it can be to see your code compile and tests pass, only to have it blow up at runtime. The strictness of the language means your code behaves exactly as you expect more often than other languages, so this failure really threw me.</p>
@@ -259,7 +259,7 @@ alert(phraseText);</code></pre>
 	<p>After another <code>wasm-pack build</code> and reloading our test page...</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tQ0dr6wWPBgr5koG2NNXK/675a7c90e81a182a90d8a48dcd381c51/rust-wasm-random-phrases.png" alt="Generating random phrases" class="kg-image" width="810" height="444" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tQ0dr6wWPBgr5koG2NNXK/d27bbfbc4b957b61294d6b0d3f90cedb/rust-wasm-random-phrases.png" alt="Generating random phrases" class="kg-image" width="810" height="444" loading="lazy">
 
 	</figure>
 	<p>Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
@@ -274,7 +274,7 @@ alert(phraseText);</code></pre>
 	<p>You can use the <a href="https://developers.cloudflare.com/workers/api">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/32dpvCO880Ktl6yq92ZjmN/8b1956d8e31b5cbc6e129ad6fb231c44/rust-wasm-upload.png" alt="Rust WASM upload" class="kg-image" width="571" height="409" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32dpvCO880Ktl6yq92ZjmN/871f582f646aab3a5244aee51bd43610/rust-wasm-upload.png" alt="Rust WASM upload" class="kg-image" width="571" height="409" loading="lazy">
 
 	</figure>
 	<p>If you're following and looked at the output of the <code>wasm-pack build</code> command, you might have noticed it produced a JavaScript glue file in the pkg folder, which is actually what the browser executed.</p>
@@ -389,7 +389,7 @@ async function handleRequest(request) {
 	<p>Success!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uC0hcvIpB50a7w5p5NdOE/8df2e4bbaa50312ff149bcf67e18219c/rust-wasm-success.png" alt="Serverless Rust on the Edge" class="kg-image" width="705" height="354" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uC0hcvIpB50a7w5p5NdOE/d1ef8455307a8a2c6ad25dfbf3dc5c5c/rust-wasm-success.png" alt="Serverless Rust on the Edge" class="kg-image" width="705" height="354" loading="lazy">
 
 	</figure>
 	<p>The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js">source code</a> is on Github.</p>

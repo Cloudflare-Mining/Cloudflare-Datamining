@@ -1,7 +1,7 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5P5jObj3tz5QPBuitlTVd4/744f3a04087823cee15415c6977511ea/2492-1-Hero.png" alt="2492-1-Hero" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5P5jObj3tz5QPBuitlTVd4/b620f993a510e7a35adebc58f8819afc/2492-1-Hero.png" alt="2492-1-Hero" class="kg-image" width="1800" height="1013" loading="lazy">
 	</figure>
 	<p>Cloudflare Stream is an end-to-end solution for video encoding, storage, delivery, and playback. Our focus has always been on simplifying all aspects of video for developers. This goal continues to motivate us as we introduce first-class portrait (vertical) video support today. Newly uploaded or ingested portrait videos will now automatically be processed in full HD quality.</p>
 	<div class="flex anchor relative">
@@ -23,12 +23,12 @@
 	</div>
 	<p>When you <a href="https://developers.cloudflare.com/stream/uploading-videos"><u>upload a video to Stream</u></a>, it is first encoded into several different “renditions” (sizes or resolutions) before delivery. This is done in order to enable playback in a wide variety of network conditions, as well as to standardize the way a video is experienced. By using these adaptive bitrate renditions, we are able to offer viewers the highest quality streaming experience which fits their network bandwidth, meaning someone watching a video with a slow mobile connection would be served a 240p video (a resolution of 320x240 pixels) and receive the 1080p (a resolution of 1920x1080 pixels) version when they are watching at home on their fiber Internet connection. This encoding pipeline follows one of two different paths:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MaG68M8kXxHCmFZGQGypj/879798037a80f0b5979cc50d2ba62267/2492-2.png" alt="2492-2" class="kg-image" width="1013" height="1742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MaG68M8kXxHCmFZGQGypj/82aa200a20d3afe9e4c1f8ba1664906d/2492-2.png" alt="2492-2" class="kg-image" width="1013" height="1742" loading="lazy">
 	</figure>
 	<p>The first path is our video on-demand (VOD) encoding pipeline, which generates and stores a set of encoded video segments at each of our standard video resolutions. The other path is our on-the-fly encoding (OTFE) pipeline, which uses the same process as Stream Live to generate resolutions upon user request. Both pipelines work with the set of standard resolutions, which are identified through a constrained target (output) height. This means that we encode every rendition to heights of 240 pixels, 360 pixels, etc. up to 1080 pixels.</p>
 	<p>When originally conceived, this encoding pipeline was not designed with portrait video in mind because portrait video was less common. As a result, portrait videos were encoded with lower quality dimensions that were consistent with landscape video encoding. For example, a portrait HD video would have the dimensions 1920x1080 — scaling that down to the height of a landscape HD video would result in the much smaller output of 1080x606. However, current smartphones all have HD displays, making the discrepancy clear when a portrait video is viewed in portrait mode on a phone. With this new change to our encoding pipeline, all newly uploaded portrait videos will now be automatically encoded with constrained target width, using a new set of standard resolutions for portrait video. These resolutions are the same as the current set of landscape resolutions, but with the dimensions reversed: 240x426 up to 1080x1920.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/L1mjs73r4H6VdRPtX3gzX/d9121592aff582db1fc9201ce298dd30/2492-3.png" alt="2492-3" class="kg-image" width="1999" height="665" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/L1mjs73r4H6VdRPtX3gzX/44d8dcc8eae3dd5d7de0ecd29222d2f5/2492-3.png" alt="2492-3" class="kg-image" width="1999" height="665" loading="lazy">
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="technical-details">Technical details</h2>
@@ -54,24 +54,24 @@
 	</div>
 	<p>After the change, portrait videos are now encoded to higher resolutions and visibly appear to be higher quality. To confirm these differences, I analyzed the effect of the pipeline change on four different sample videos using the <a href="https://www.ni.com/en/shop/data-acquisition-and-control/add-ons-for-data-acquisition-and-control/what-is-vision-development-module/peak-signal-to-noise-ratio-as-an-image-quality-metric.html"><u>peak-signal-to-noise ratio</u></a> (PSNR, a mathematical representation of image quality). Since the old pipeline produced lower resolution videos, the comparison here is between an upscaled version of the old pipeline rendition and the current pipeline rendition. In the graph below, higher values reflect higher quality relative to the unencoded original video.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UFpZKOjtZNgnob3TroqEX/0106b6511ef9cd01d7337eb253acb6fc/2492-4.png" alt="2492-4" class="kg-image" width="1200" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UFpZKOjtZNgnob3TroqEX/43c2c91d20858629035aceb33c409643/2492-4.png" alt="2492-4" class="kg-image" width="1200" height="742" loading="lazy">
 	</figure>
 	<p></p>
 	<p>According to this metric, we see an increase in quality from the pipeline changes as high as 8%. However, the quality increase is most noticeable to the human eye in videos that feature fine details or a high amount of movement, which is not always captured in the PSNR. For example, compare a side-by-side of a frame from the book sample video encoded both ways:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cslwJdIonHtk5ChAhCOSi/76a0de5152b58c235237c6c8e98a144d/2492-5.png" alt="2492-5" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cslwJdIonHtk5ChAhCOSi/fbdf72ad50c7a3f28b681a62417d523b/2492-5.png" alt="2492-5" class="kg-image" width="960" height="540" loading="lazy">
 	</figure>
 	<p>The difference between the old and new encodings is most clear when zoomed in:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DpHar5bEKhKZi3zAVDtHa/11b8c1a4e04576b1f0c7420ef802037e/2492-6.png" alt="2492-6" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DpHar5bEKhKZi3zAVDtHa/ee90377bfce1262d97dcda4298031997/2492-6.png" alt="2492-6" class="kg-image" width="960" height="540" loading="lazy">
 	</figure>
 	<p>Here’s another example (sourced from <a href="https://mixkit.co/free-stock-video/winter-fashion-cold-looking-woman-concept-video-39874"><u>Mixkit</u></a>):</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rjQa5v4Dz9OVUave52hKe/3978a687e0708576b86a4971129254cc/2492-7.png" alt="2492-7" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rjQa5v4Dz9OVUave52hKe/4a4ad9344d89b8cdf64a315d7fd3a684/2492-7.png" alt="2492-7" class="kg-image" width="960" height="540" loading="lazy">
 	</figure>
 	<p>Magnified:</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6grWclJIxuZXYzk74jXMfM/5adea066603124e72649b86244a655a1/2492-8.png" alt="2492-8" class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6grWclJIxuZXYzk74jXMfM/42fcd73d9d006dcd6041ca2a2904a718/2492-8.png" alt="2492-8" class="kg-image" width="960" height="540" loading="lazy">
 	</figure>
 	<p>Of course, watching these example clips is the clearest way to see:</p>
 	<ul>

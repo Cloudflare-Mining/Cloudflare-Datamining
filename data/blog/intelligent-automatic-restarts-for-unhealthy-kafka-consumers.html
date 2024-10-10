@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eWbGD5pEX9bKf2p58iqOw/de2f2c74a0924acfa92037e7ddc2c5dd/image3-8-2.png" alt="Intelligent, automatic restarts for unhealthy Kafka consumers" class="kg-image" width="1999" height="942" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eWbGD5pEX9bKf2p58iqOw/b55ba4bfd305da7ed38cf66fe770585c/image3-8-2.png" alt="Intelligent, automatic restarts for unhealthy Kafka consumers" class="kg-image" width="1999" height="942" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we take steps to ensure we are resilient against failure at all levels of our infrastructure. This includes Kafka, which we use for critical workflows such as sending time-sensitive emails and alerts.</p>
@@ -23,7 +23,7 @@
 	<p>Kafka organises messages in topics. A topic is an ordered log of events in which each message is marked with a progressive offset. When an event is written by an external system, that is appended to the end of that topic. These events are not deleted from the topic by default (retention can be applied).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KUYbqCCL74YZVU8NXOThl/4860dd2ab6c257b57d6ffb4e1c8c56e9/1-4.png" alt="" class="kg-image" width="1600" height="715" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KUYbqCCL74YZVU8NXOThl/4ec5024168993a2300add7221016af0d/1-4.png" alt="" class="kg-image" width="1600" height="715" loading="lazy">
 
 	</figure>
 	<p>Topics are stored as log files on disk, which are finite in size. Partitions are a systematic way of breaking the one topic log file into many logs, each of which can be hosted on separate servers–enabling to scale topics.</p>
@@ -34,13 +34,13 @@
 	<p>When a consumer starts consuming from a topic, it will process all messages, starting from a selected offset, from each partition. With a consumer group, the partitions are divided amongst each consumer in the group. This division is determined by the consumer group leader. This leader will receive information about the other consumers in the group and will decide which consumers will receive messages from which partitions (partition strategy).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Qe2Qe5nQ5gcHyhV0zpTWw/e957e5b053b9b58b96e86f69560b5ecc/2-3.png" alt="" class="kg-image" width="1518" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Qe2Qe5nQ5gcHyhV0zpTWw/5182eea9de66164a36a28e92270fdb3f/2-3.png" alt="" class="kg-image" width="1518" height="836" loading="lazy">
 
 	</figure>
 	<p>The offset of a consumer’s commit can demonstrate whether the consumer is working as expected. Committing a processed offset is the way a consumer and its consumer group report to the broker that they have processed a particular message.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/29Y9mQiHkvGKUzc3RGF1sk/d6d424af059dd157e395ec736ddefbb9/unnamed-6.png" alt="" class="kg-image" width="1600" height="741" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29Y9mQiHkvGKUzc3RGF1sk/09d2987f53eef026c164e6c49cacc95c/unnamed-6.png" alt="" class="kg-image" width="1600" height="741" loading="lazy">
 
 	</figure>
 	<p>A standard measurement of whether a consumer is processing fast enough is lag. We use this to measure how far behind the newest message we are. This tracks time elapsed between messages being written to and read from a topic. When a service is lagging behind, it means that the consumption is at a slower rate than new messages being produced.</p>
@@ -57,14 +57,14 @@
 	<p>Kubernetes uses <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes">probes</a> to understand if a service is healthy and is ready to receive traffic or to run. When a liveness probe fails and the bounds for retrying are exceeded, Kubernetes restarts the services.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FagbTygES9L7dmEQ6ratD/b5f168689b0b9899c6d031f98b57a288/4-3.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FagbTygES9L7dmEQ6ratD/0a6f0d4c5ac117b723ad726a12d3936a/4-3.png" alt="" class="kg-image" width="1600" height="818" loading="lazy">
 
 	</figure>
 	<p>When a readiness probe fails and the bounds for retrying are exceeded, it stops sending HTTP traffic to the targeted pods. In the case of Kafka applications this is not relevant as they don’t run an http server. For this reason, we’ll cover only liveness checks.</p>
 	<p>A classic Kafka liveness check done on a consumer checks the status of the connection with the broker. It’s often best practice to keep these checks simple and perform some basic operations - in this case, something like listing topics. If, for any reason, this check fails consistently, for instance the broker returns a TLS error, Kubernetes terminates the service and starts a new pod of the same service, therefore forcing a new connection. Simple Kafka liveness checks do a good job of understanding when the connection with the broker is unhealthy.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gNWb3Rit0MmTutsurm7sf/285f88c5ea3579b3513b31cd123c06bb/5-2.png" alt="" class="kg-image" width="1553" height="1151" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gNWb3Rit0MmTutsurm7sf/70355c422fab7ebce7d59d8c2c682d6d/5-2.png" alt="" class="kg-image" width="1553" height="1151" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -79,7 +79,7 @@
 	<p>Microservices that consume from Kafka topics are healthy if they are consuming and committing offsets at regular intervals when messages are being published to a topic. When such services are not committing offsets as expected, it means that the consumer is in a bad state, and it will start accumulating lag. An approach we often take is to manually terminate and restart the service in Kubernetes, this will cause a reconnection and rebalance.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/N4YalYdgNRxYJK7PVAlzY/d455a225ee280d1a02d3f51cce95853b/lag.png" alt="" class="kg-image" width="1225" height="897" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/N4YalYdgNRxYJK7PVAlzY/26b55fc38c53855a6c28c71b25cdac02/lag.png" alt="" class="kg-image" width="1225" height="897" loading="lazy">
 
 	</figure>
 	<p>When a consumer joins or leaves a consumer group, a rebalance is triggered and the consumer group leader must re-assign which consumers will read from which partitions.</p>
@@ -99,7 +99,7 @@
 	<p>Their approach used the current (latest) offset and the committed offset values. The current offset signifies the last message that was sent to the topic, while the committed offset is the last message that was processed by the consumer.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fwem7NtBnO6M1RMhrezr8/d234a968e3cbc99eb9b146743af55bce/pasted-image-0-4.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fwem7NtBnO6M1RMhrezr8/af4cbbd7a63d3145f5c7fe9f405bd04d/pasted-image-0-4.png" alt="" class="kg-image" width="1600" height="942" loading="lazy">
 
 	</figure>
 	<p>Checking the consumer is moving forwards, by ensuring that the latest offset was changing (receiving new messages) and the committed offsets were changing as well (processing the new messages).</p>
@@ -120,7 +120,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r76n2Iew7pSqA8vYNZzIy/836e90ff862eb75c8c940a7f7cdbde7a/pasted-image-0--1--3.png" alt="" class="kg-image" width="1600" height="320" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5r76n2Iew7pSqA8vYNZzIy/c9e0f6a113a34d0c36a216c054e4d840/pasted-image-0--1--3.png" alt="" class="kg-image" width="1600" height="320" loading="lazy">
 
 	</figure>
 	<p>To measure if the committed offset is changing, we need to store the value of the previous run, we do this using an in-memory map where partition number is the key. This means each instance of our service only has a view of the partitions it is currently consuming from and will run the health check for each.</p>

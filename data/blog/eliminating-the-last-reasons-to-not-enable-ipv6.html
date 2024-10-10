@@ -1,11 +1,11 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lI202Soe8FfNHjPB9sWHn/daf5ab0f0aeac785889aaeee85aae19a/eliminating-the-last-reasons-to-not-enable-ipv6.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lI202Soe8FfNHjPB9sWHn/ef440adf7d75bbbf2936e8c1976018a1/eliminating-the-last-reasons-to-not-enable-ipv6.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today is June 6. For the last two years, the date has been celebrated as World IPv6 Day. CloudFlare has offered full IPv6 support as well as our <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">IPv6-to-IPv4 gateway</a> since 2012. In preparation for this year's IPv6 Day, we scanned the world's largest websites in order to figure out how many are available over IPv6. There's good news and bad news.</p>
 	<p>The good news is that our IPv6 gateway is being widely used in order to enable the IPv6 Web. In fact, of the sites that support IPv6, more than 20% of them do so via CloudFlare. The bad news is that, while CloudFlare, Google, Facebook and other big people have shown IPv6 can be adopted without a performance penalty, still only 7% of the world's largest websites are available over IPv6. And, disappointingly, in spite of CloudFlare offering it for free, only about half of our customers have turned on our IPv6 gateway.</p>
 	<p>The silver lining is that, if we can just get all our current customers to enable our IPv6 gateway, we'd nearly reach the milestone of 10% of the world's largest sites being available over IPv6. With that goal in mind, we set out to find and solve the last stumbling blocks for our customers enabling IPv6.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4p3qau2rRNWaH13YFDmHRg/99fc06e92fbdecb693114bbf13cadceb/50522885.jpg" alt="" class="kg-image" width="500" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4p3qau2rRNWaH13YFDmHRg/419a28235a0e6435b562f8e99f8f7581/50522885.jpg" alt="" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -21,7 +21,7 @@
 	<p>The long term solution, of course, is for platforms like 4chan to rewrite their software to accommodate IPv6. That takes time. We wanted to provide a stopgap solution that would allow CloudFlare customers to enable IPv6 quickly while they worked to upgrade their software to fully support it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4H3Mqw7RIjhyfdWc4L6ZZB/52061f5ba68504263a89a6e110a1bef0/tumblr_n3jfmoaNSN1qbgvpzo1_1280_2.jpg" alt="" class="kg-image" width="400" height="395" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4H3Mqw7RIjhyfdWc4L6ZZB/241fa79094aa2136f9e8dcc7542f6811/tumblr_n3jfmoaNSN1qbgvpzo1_1280_2.jpg" alt="" class="kg-image" width="400" height="395" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -37,14 +37,14 @@
 	<p>There are two options for the Pseudo IPv4 service: 1) you can have us automatically add a header (<code>Cf-Pseudo-IPv4</code>), which can then be parsed by software as needed; or 2) you can have us overwrite the existing <code>Cf-Connecting-IP</code> and <code>X-Forwarded-For</code> headers with a Pseudo IPv4 address. The advantage of the overwrite option is that, in most cases, it won't require any software changes. If you choose the overwrite option, we'll append a new header (<code>Cf-Connecting-IPv6</code>) in order to ensure you can still find the actual connecting IP address for debugging.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gqDguZCPR90Lu7T5McVP5/aab0c06961d4962099b1af300b7e67a9/Screen_Shot_2014-06-06_at_10.13.58.png" alt="" class="kg-image" width="1630" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gqDguZCPR90Lu7T5McVP5/f0db530cfaa92a2de77dd63b9c202197/Screen_Shot_2014-06-06_at_10.13.58.png" alt="" class="kg-image" width="1630" height="500" loading="lazy">
 
 	</figure>
 	<p>The Pseudo IPv4 service, like our IPv6 gateway, is available to all our customers, even those on the free plan. Our hope is that it will eliminate one of the last reasons for IPv6 holdouts. If you're already a CloudFlare customer, login to your account and make sure IPv6 is enabled on the CloudFlare Settings page. You can find the toggle for Pseudo IPv4 there as well. If you're not yet a CloudFlare customer, it <a href="https://www.cloudflare.com/sign-up">only takes five minutes to sign up</a>, so for most of the world there's still time to get your site on our network and join the modern web before World IPv6 Day 2014 comes to an end.</p>
 	<p>And, by the way, as of today, 4chan is now available over IPv6.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rj92MlvwzuJfOPEKwVuKo/57b5f55dd37ab0e15da1c4d7f80f0744/001c0674220.jpg" alt="" class="kg-image" width="600" height="421" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rj92MlvwzuJfOPEKwVuKo/a654d841be684ebd6f9f18da3d4518bc/001c0674220.jpg" alt="" class="kg-image" width="600" height="421" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

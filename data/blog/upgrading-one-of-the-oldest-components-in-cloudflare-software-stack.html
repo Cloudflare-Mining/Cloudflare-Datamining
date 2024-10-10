@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QjhVnpTUGt3W5Pf5bJm8q/3b6871ea17079abd0b36e0937ab00862/image4-23.png" alt="Upgrading one of the oldest components in Cloudflare’s software stack" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QjhVnpTUGt3W5Pf5bJm8q/05e3925a26baee187aee212b4428080e/image4-23.png" alt="Upgrading one of the oldest components in Cloudflare’s software stack" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Cloudflare serves a huge amount of traffic: 45 million HTTP requests per second on average (as of 2023; 61 million at peak) from more than 285 cities in over 100 countries. What inevitably happens with that kind of scale is that software will be pushed to its limits. As we grew, one of the problems we faced was related to deploying our code. Sometimes, a release would be delayed because of inadequate hardware resources on our servers. Buying more and more hardware is expensive and there are limits to e.g. how much memory we can realistically have on a server. In this article, we explain how we optimised our software and its release process so that no additional resources are needed.</p>
@@ -47,13 +47,13 @@
 	<p>The standard NGINX upgrade mechanism is visualised in this diagram:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2At10yd2Eea3HVDdL0U3N1/199887e06c60cc57a0215a82993ebd03/image5-6.png" alt="" class="kg-image" width="416" height="234" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2At10yd2Eea3HVDdL0U3N1/23a06f60c88a26071a0dd6e0ccccbb6e/image5-6.png" alt="" class="kg-image" width="416" height="234" loading="lazy">
 
 	</figure>
 	<p>It’s also clearly visible in the memory usage graph below (notice the large bump during the upgrade).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TZd2iwu6ObkICVMNoRVKV/82e4f241f3248e2f313c08ffdb03b7c4/image1-60.png" alt="" class="kg-image" width="862" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TZd2iwu6ObkICVMNoRVKV/ef47bb08937c28ac59b66d434091b5d3/image1-60.png" alt="" class="kg-image" width="862" height="720" loading="lazy">
 
 	</figure>
 	<p>The mechanism outlined above has both versions running at the same time for a while. When both sets of workers are running, they are still sharing the same sockets, so all of them accept requests. As the release progresses, ‘old’ workers stop listening and accepting new requests (at that point only the new workers accept new requests). As we release new code multiple times per week, this process is effectively doubling up our memory requirements. At our scale, it’s easy to see how multiplying this event by the number of servers we operate results in an immense waste of memory resources.</p>
@@ -101,13 +101,13 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ja1ydbwqob5R6Gha1siHf/d7b3abe4572bfa6020dd162496f30539/image3-33.png" alt="" class="kg-image" width="1011" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ja1ydbwqob5R6Gha1siHf/01e7d09ea1e388a689e267b2d8455dbb/image3-33.png" alt="" class="kg-image" width="1011" height="216" loading="lazy">
 
 	</figure>
 	<p>We can observe our new mechanism in action in the graph below. Thanks to our new procedure, our use of memory remains stable during the release.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/P5YwoLGgcP5ckjOrBgq4Q/18dd3f7b92aef6a60a1514fdc1b12e28/image2-28.png" alt="" class="kg-image" width="1109" height="667" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/P5YwoLGgcP5ckjOrBgq4Q/1cad0069b9e0bd811ee61905a2fe2ffa/image2-28.png" alt="" class="kg-image" width="1109" height="667" loading="lazy">
 
 	</figure>
 	<p>But why do we begin by shutting down a worker belonging to an older instance (v1)? This turns out to be important.</p>

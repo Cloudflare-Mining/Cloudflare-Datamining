@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QHyZhwCGVsif9XXvbCwT1/b511b3f15d6ecd98da9150755b56394b/Americas-Outage.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QHyZhwCGVsif9XXvbCwT1/9e2b3414f8cd59598c70a5411de5cdf3/Americas-Outage.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p><i>(Check for the latest updates at the end of this blog: Internet traffic started to come back at around July 9, 01:00 UTC, after 17 hours)</i></p>
@@ -11,7 +11,7 @@
 	<p><a href="https://radar.cloudflare.com/ca">Cloudflare Radar</a> shows a near complete loss of traffic from Rogers <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, <a href="https://radar.cloudflare.com/asn/812?date_filter=last_24_hours">AS812</a>, that started around 08:45 UTC (all times in this blog are UTC).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/tZHDhahk4nR00oDfI8szG/69206b447a14414679c882f894bbaba0/Rogers1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tZHDhahk4nR00oDfI8szG/c36a5003edbe59c3d12d780a259f4945/Rogers1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -25,7 +25,7 @@
 	<p>Cloudflare <a href="https://radar.cloudflare.com/asn/812?date_filter=last_24_hours">data</a> shows that there was a clear spike in <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> (Border Gateway Protocol) updates after 08:15, reaching its peak at 08:45.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15UuM3cVejUo6RdHzU7SBq/d1504fe15950343230d8a5cfadfc3e89/Rogers2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15UuM3cVejUo6RdHzU7SBq/0cc79af234bdecfb3cdd2c87582c6496/Rogers2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<p>BGP is a mechanism to exchange routing information between networks on the Internet. The big routers that make the Internet work have huge, constantly updated lists of the possible routes that can be used to deliver each network packet to its final destination. Without BGP, the Internet routers wouldn't know what to do, and the Internet wouldn't exist.</p>
@@ -33,19 +33,19 @@
 	<p>A BGP update message informs a router of changes made to a prefix (a group of IP addresses) advertisement or entirely withdraws the prefix. In this next chart, we can see that at 08:45 there was a withdrawal of prefixes from Rogers ASN.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tJghQaY9RR5dE3iLz5E14/61ad8bd9c01ecf35e1a2901c1d4d29b0/Rogers3.png" alt="" class="kg-image" width="1600" height="188" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tJghQaY9RR5dE3iLz5E14/b260ad92da783d746cba02d0211d6d73/Rogers3.png" alt="" class="kg-image" width="1600" height="188" loading="lazy">
 
 	</figure>
 	<p>Since then, at 14:30, attempts seem to be made to advertise their prefixes again. This maps to us seeing a slow increase in traffic again from Rogers’ end users.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yGrJKxKMEStNpw0Oz55hk/fea58f934647e13c237af95bfea634ca/Rogers4.png" alt="" class="kg-image" width="1600" height="467" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yGrJKxKMEStNpw0Oz55hk/ba90dc41539d444db3baea549e0eea9d/Rogers4.png" alt="" class="kg-image" width="1600" height="467" loading="lazy">
 
 	</figure>
 	<p>The graph below, which shows the prefixes we were receiving from Rogers in Toronto, clearly shows the withdrawal of prefixes around 08:45, and the slow start in recovery at 14:30, with another round of withdraws at around 15:45.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UHGDxAGNU9Y5dpi8o45zT/3fcee114bb72d1c916b96dc2eea382df/Rogers5.png" alt="" class="kg-image" width="1600" height="366" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UHGDxAGNU9Y5dpi8o45zT/9bc313a2fb430b68f3c79483f73e94ea/Rogers5.png" alt="" class="kg-image" width="1600" height="366" loading="lazy">
 
 	</figure>
 	<p>Outages happen more regularly than people think. This week we did an <a href="https://blog.cloudflare.com/q2-2022-internet-disruption-summary">Internet disruptions overview for Q2 2022</a> where you can get a better sense of that, and on how collaborative and interconnected the Internet (the network of networks) is. And not so long ago <a href="https://blog.cloudflare.com/october-2021-facebook-outage">Facebook had an hours long outage</a> where BGP updates showed Facebook itself disappearing from the Internet.</p>
@@ -65,19 +65,19 @@
 	<p>The Rogers outage is still ongoing after 15 hours without clear signs of Internet traffic fully coming back.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6u44LM1dkEUH59b9hNOZnL/e33411a272ce7c173a36552ae13e64fc/Rogers6.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6u44LM1dkEUH59b9hNOZnL/28357da4e5d22764488aa40fc317182b/Rogers6.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 	<p>At around 18:15 there was a small bump in traffic (only around 3% of the usual traffic at that time) that lasted for about 30 minutes, quickly returning to the ongoing outage. Here is the representation of that increase in AS812.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fclZ8O3Mku3gKRxz5Ewhm/5c1dbb5f86d6345d69df58db28633203/Rogers7.png" alt="" class="kg-image" width="566" height="319" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fclZ8O3Mku3gKRxz5Ewhm/7a62f06e01e0a8158772a9548cb3e9f0/Rogers7.png" alt="" class="kg-image" width="566" height="319" loading="lazy">
 
 	</figure>
 	<p>Here we can see an update on the BGP announcements. Rogers is still trying to get their services back online with new spikes in announcements to advertise their prefixes, but instants later it all seems to crumble again with the withdrawal of prefixes. The latest attempt was at 21:45 UTC:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1H3QK3p9qoLO1cDOpyRQws/e12cf6ba4fa0c7cbaf1438f52719142f/Rogers8.png" alt="" class="kg-image" width="1600" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1H3QK3p9qoLO1cDOpyRQws/4720379465eecab90cd536e8bdad69f4/Rogers8.png" alt="" class="kg-image" width="1600" height="340" loading="lazy">
 
 	</figure>
 	<p>It seems that the internal sessions in the Rogers core network flap, causing withdrawals when going down, and advertisements when coming up.Rogers Senior Vice President, Kye Prigg, said a few hours ago in an <a href="https://twitter.com/PnPCBC/status/1545512971878662145">interview</a> that they haven’t identified the root cause for the outage and still don’t have an estimate on when the service will be restored.</p>
@@ -92,13 +92,13 @@
 	<p>We are seeing partial recovery of traffic from the Rogers network, mostly after 00:15 UTC. The current traffic rate (01:50 UTC) is at about 17.5% of the rate from 24 hours before, an hour ago it was 13%. More than 17 hours have passed since the outage started.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xfZXmAPkE2CD3LAD1zmgd/70fa23698ece9ed216eb4f349e38545c/Screen-Shot-2022-07-08-at-10.27.53-PM.png" alt="" class="kg-image" width="1336" height="444" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xfZXmAPkE2CD3LAD1zmgd/50e0d8ef5347765795d8d9ed0bf28f0e/Screen-Shot-2022-07-08-at-10.27.53-PM.png" alt="" class="kg-image" width="1336" height="444" loading="lazy">
 
 	</figure>
 	<p>We continue to see frequent BGP announcement and withdrawals originated from Rogers network, which indicates the core network flapping issue has not been fully resolved at this moment.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33IvZvnQPDmql9yV0P503N/23df12b901655862754ec84f98ee207a/Screen-Shot-2022-07-08-at-10.28.00-PM.png" alt="" class="kg-image" width="1346" height="424" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33IvZvnQPDmql9yV0P503N/811bc7e6f64336bc831f2a2291677fd0/Screen-Shot-2022-07-08-at-10.28.00-PM.png" alt="" class="kg-image" width="1346" height="424" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -112,7 +112,7 @@
 	<p>Rogers traffic seems to be climbing back up to usual levels, for the past eight hours. Cloudflare's data shows that Saturday, July 9, at 08:40 UTC, there was around 76% of the previous day traffic at the same time. You can track it <a href="https://radar.cloudflare.com/asn/812?date_filter=last_7_days">here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tpuR6DegLsBaBms5scN2L/cd8aca5b9e51b5a16a9351ba585ee983/unnamed-2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tpuR6DegLsBaBms5scN2L/06cc0f7750cc77d39d23641ebcaa0ff4/unnamed-2.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
 </div>

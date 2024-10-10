@@ -1,9 +1,9 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xyFBtDk5hj2vGo4DOTwbf/64d50fabebe98e45e19ca1695e02502f/tls-session-resumption-full-speed-and-secure.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xyFBtDk5hj2vGo4DOTwbf/70fe1c45fe7027d16cd451524a34e130/tls-session-resumption-full-speed-and-secure.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At CloudFlare, making web sites faster and safer at scale is always a driving force for innovation. We introduced “<a href="https://blog.cloudflare.com/universal-ssl-how-it-scales">Universal SSL</a>” to dramatically increase the size of the encrypted web. In order for that to happen we knew we needed to efficiently handle large volumes of HTTPS traffic, and give end users the fastest possible performance.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wjvWjC2tNe2fmxUhuWLUN/1abf278e60f231855e946d53d63449bd/7439386300_837724fe8e_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wjvWjC2tNe2fmxUhuWLUN/ff2b81ce5075aa45d5f78a52a1343f42/7439386300_837724fe8e_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ecossystems/7439386300/in/photolist-ckoNn3-ckoMrj-ckoDLC-2avSAw-ckoMTE-cknaTs-cknaL7-nGDFzz-nvRvYP-8TqyZC-sszBV-4NV8t8-6KsRdt-9A92Ci-4yuwtQ-9X7Bkd-7kERzD-fUG4DG-7UGXkZ-8F4mG3-ar89v8-8TqJW5-8TnCai-cJorC1-cKPf55-nr6F4s-wrLjf-aNqxbR-eVfMiZ-dJRj8E-jogBj4-feJ1Y-49rZz6-pv8QoU-cJorDA-a6tf2m-4VoZZs-9qWH8F-bvb1X6-aoa1zS-jogRMo-7UGWb2-joqdky-9Q51D7-gdczv-4Lu4qb-6R4VUd-8Tqojq-6QZSQB-6QZSEx">image</a> by <a href="https://www.flickr.com/photos/ecossystems">ecos systems</a></p>
@@ -19,7 +19,7 @@
 	<p>Resuming an encrypted session through a session ID means that the server keeps track of recent negotiated sessions using unique session IDs. This is done so that when a client reconnects to a server with a session ID, the server can quickly look up the session keys and resume the encrypted communication.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XN2D3lCPIVBbE7SazQkS5/39132974258c77fd0da64de096b7b226/session_resumption_with_session_id.jpg" alt="" class="kg-image" width="1334" height="518" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XN2D3lCPIVBbE7SazQkS5/3cc478f12f8bf390c2d7365ea2e2288f/session_resumption_with_session_id.jpg" alt="" class="kg-image" width="1334" height="518" loading="lazy">
 
 	</figure>
 	<p>At each of CloudFlare’s PoPs (Point of Presence) there are multiple hosts handling HTTPS traffic. When the client attempts to resume a TLS connection with a web site, there is no guarantee that they will connect to the same physical machine that they connected to previously. Without session sharing, the success rate of session ID resumption could be as low as 1/n (when there are n hosts). That means the more hosts we have, the less likely a session can be resumed. This goes directly against our goal of scaling SSL performance!</p>
@@ -45,13 +45,13 @@
 	<p>Using OpenSSL’s <a href="https://www.openssl.org/docs/apps/s_client.html">s_client</a> utility, we can quickly test how a session ID is speeds up the TLS connection from the client side. We test the TLS performance of <a href="https://www.cloudflare.com">www.cloudflare.com</a> from our office. And the result is shown below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IccBdOGPS42EqiK8JiH7z/c87c8ca703764645cdd73e98dd7a1e75/figure_1-1.png" alt="" class="kg-image" width="463" height="228" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IccBdOGPS42EqiK8JiH7z/58333544b71bece5376737d367eb03d2/figure_1-1.png" alt="" class="kg-image" width="463" height="228" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60Ar1nt9o6ku1Fr9Q7PwzD/fd9373254e65ddbe00fa147369c62920/figure_2.png" alt="" class="kg-image" width="464" height="217" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60Ar1nt9o6ku1Fr9Q7PwzD/de3e82ec883ab6aade8255b765f1a3f4/figure_2.png" alt="" class="kg-image" width="464" height="217" loading="lazy">
 
 	</figure>
 	<p>The overall cost of a session resumption is less than 50% of a full TLS handshake, mainly because session resumption only costs one round-trip while a full TLS handshake requires two. Moreover, a session resumption does not require any large finite field arithmetic (new sessions do), so the CPU cost for the client is almost negligible compared to that in a full TLS handshake. For mobile users, the performance improvement by session resumption means a much more reactive and battery-life-friendly surfing experience.</p>
@@ -66,7 +66,7 @@
 	<p>Session resumption with session IDs has a major limitation: servers are responsible for remembering negotiated TLS sessions for a given period of time. It poses scalability issues for servers with a large load of concurrent connections per second and for servers that want to cache sessions for a long time. Session ticket resumption is designed to address this issue.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aO6djKlA6MK8GFN6Isspa/dec703351cd6334e9de754274c523abd/session_resumption_with_session_ticket.jpg" alt="" class="kg-image" width="1297" height="605" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aO6djKlA6MK8GFN6Isspa/ada797115af7ab8f068152b8b61752bb/session_resumption_with_session_ticket.jpg" alt="" class="kg-image" width="1297" height="605" loading="lazy">
 
 	</figure>
 	<p>The idea is simple: outsource session storage to clients. A session ticket is a blob of <a href="https://tools.ietf.org/html/rfc5077#section-4">a session key and associated information</a> encrypted by a key which is only known by the server. The ticket is sent by the server at the end of the TLS handshake. Clients supporting session tickets will cache the ticket along with the current session key information. Later the client includes the session ticket in the handshake message to indicate it wishes to resume the earlier session The server on the other end will be able to decrypt this ticket, recover the session key and resume the session.</p>
@@ -96,7 +96,7 @@
 	<p>To summarize, we support TLS session resumption globally using both sessions IDs and session tickets. For any web site on CloudFlare’s network, HTTPS performance has been made faster for every user and every device.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WloH8zZ0HRguIGNqe9Hu4/66254acd4946b82e372794615759669a/cloudflare_ssl-week-2.png" alt="CloudFlare SSL Week" class="kg-image" width="1000" height="375" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WloH8zZ0HRguIGNqe9Hu4/599874036b97e67327bbfa3b42afdcaf/cloudflare_ssl-week-2.png" alt="CloudFlare SSL Week" class="kg-image" width="1000" height="375" loading="lazy">
 
 	</figure>
 </div>

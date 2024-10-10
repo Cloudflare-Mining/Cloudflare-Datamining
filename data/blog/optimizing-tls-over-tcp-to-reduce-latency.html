@@ -1,9 +1,9 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ie6Lc5EI9GALb3KPdrZrg/86704d1abfd2a9dfa0830efc40d9306b/optimizing-tls-over-tcp-to-reduce-latency.jpg" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ie6Lc5EI9GALb3KPdrZrg/e8d71135e14deee180a42e9ad7fb081d/optimizing-tls-over-tcp-to-reduce-latency.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The layered nature of the Internet (HTTP on top of some reliable transport (e.g. TCP), TCP on top of some datagram layer (e.g. IP), IP on top of some link (e.g. Ethernet)) has been very important in its development. Different link layers have come and gone over time (any readers still using 802.5?) and this flexibility also means that a connection from your web browser might traverse your home network over WiFi, then down a DSL line, across fiber and finally be delivered over Ethernet to the web server. Each layer is blissfully unaware of the implementation of the layer below it.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NXh661kZVo5dom0ouMvxC/92e268ec4212cd3ccd856b02ca894a8a/640px-EISA_TokenRing_NIC.jpeg.jpeg" alt="" class="kg-image" width="640" height="270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NXh661kZVo5dom0ouMvxC/1d6ad85f6e85cf9e17c32d992d23e57a/640px-EISA_TokenRing_NIC.jpeg.jpeg" alt="" class="kg-image" width="640" height="270" loading="lazy">
 
 	</figure>
 	<p>But there are some disadvantages to this model. In the case of TLS (the most common standard used for sending encrypted data across in the Internet and the protocol your browser uses with visiting an https:// web site) the layering of TLS on top of TCP can cause delays to the delivery of a web page.</p>
@@ -21,13 +21,13 @@
 	<p>At the start of a TCP connection as the TCP slow start occurs the record could be split across multiple segments that are delivered relatively slowly. During a TCP connection one of the segments that a TLS record has been split into may get lost causing the record to be delayed until the missing segment is retransmitted.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F7nfcHkR6p8ECHSkpKBtx/0c1ec42a1f176b8f4c4a3d9cf5561101/Screen-Shot-2016-06-10-at-10-57-21.png" alt="" class="kg-image" width="2172" height="1548" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6F7nfcHkR6p8ECHSkpKBtx/8b38f045585fd3b17a4176d600ade7bc/Screen-Shot-2016-06-10-at-10-57-21.png" alt="" class="kg-image" width="2172" height="1548" loading="lazy">
 
 	</figure>
 	<p>Thus it’s preferable to not use a fixed TLS record size but <a href="http://chimera.labs.oreilly.com/books/1230000000545/ch04.html#TLS_RECORD_SIZE">adjust the record size</a> as the underlying TCP connection spins up (and down in the case of congestion). Starting with a small record size helps match the record size to the segments that TCP is sending at the start of a connection. Once the connection is running the record size can be increased.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12L5mXigeSmG8mAExKMVe5/fa1c36be0f80cf80ca4696b545b49a52/Screen-Shot-2016-06-10-at-11-37-25.png" alt="" class="kg-image" width="2174" height="1133" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12L5mXigeSmG8mAExKMVe5/c975187228d920fd3d64748a13e6d484/Screen-Shot-2016-06-10-at-11-37-25.png" alt="" class="kg-image" width="2174" height="1133" loading="lazy">
 
 	</figure>
 	<p>CloudFlare uses NGINX to handle web requests. By default NGINX does not support dynamic TLS record sizes. NGINX has a fixed TLS record size with a default of 16KB that can be adjusted with the <a href="http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_buffer_size"><code>ssl_buffer_size</code></a> parameter.</p>

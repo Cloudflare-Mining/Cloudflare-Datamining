@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KdrDwAySZFkXgO9VlDjdf/c6378dac98e750dbe37ac99b90b5ff5e/cloudflare-waf-screenshot.png" alt="" class="kg-image" width="873" height="577" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KdrDwAySZFkXgO9VlDjdf/6827e3b694c022fb2835f95566b57922/cloudflare-waf-screenshot.png" alt="" class="kg-image" width="873" height="577" loading="lazy">
 
 	</figure>
 	<p>We just rolled out an update to <a href="https://www.cloudflare.com/features-security">CloudFlare's Web Application Firewall (WAF)</a>. Previously, CloudFlare's WAF has <a href="http://www.slideshare.net/zeroscience/cloudflare-vs-incapsula-vs-modsecurity">received criticism from people who have tested</a> it and found that it didn't behave as traditional WAFs are expected to. That contrasted with the real world experience of users who saw our WAF virtually eliminate actual web threats. Seemingly paradoxically, all of the following are correct: the criticisms weren't wrong and CloudFlare's original WAF was working as designed. I'll explain below, but first some history.</p>
@@ -17,7 +17,7 @@
 	<p>I started working in the Internet security space in 1998. At the time, I was interested in the emerging problem of email spam. The state of the art technology in 1998 for battling spam was an <a href="http://spamassassin.apache.org/index.html">open source project called SpamAssassin</a>. SpamAssassin was a rules-based email filter engine. At a simplistic level, it had a list of things that were likely to appear in spam messages (e.g., the word "<i>viagra</i>"), each with a score. When a new message arrived, it was run through the engine, each hit incremented the score, and a message was considered "spam" if the score exceeded a certain threshold.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/651jQBAfKdOUnhrDdwIvZE/5852df1016f287c9340a9d9b73759332/you-can-rules.png" alt="" class="kg-image" width="400" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/651jQBAfKdOUnhrDdwIvZE/bfbb11a259f7f8a3722fcce09dd19731/you-can-rules.png" alt="" class="kg-image" width="400" height="400" loading="lazy">
 
 	</figure>
 	<p>This rules-based approach had at least two major flaws. First, it was very difficult to configure because every organization's needs were different. For instance, while "viagra" may have been an indication of spam in many cases, if you were setting up SpamAssassin for the Pfizer corporation (which manufactures the drug) then "viagra" may actually have been an indication of non-spamminess.</p>
@@ -33,7 +33,7 @@
 	<p>In 2002, before he started Y Combinator, Paul Graham wrote an influential essay called "<a href="http://www.paulgraham.com/spam.html">A Plan for Spam</a>." The essay suggested that the rules-based approach for email filtering was headed down the wrong path. Instead, Paul argued anti-spam systems should be based on heuristics. Specifically, he outlined a Bayesian statistics-based approach where spam filters could be self-learning based on a statistical calculation of "normal" adjusted for an individual user's feedback marking messages as "spam" and "not spam."</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Jtni8ewMvwoscyIiz3v0y/214d293fa05541287a04ece6ef3c8c1c/thomas-bayes.png" alt="" class="kg-image" width="225" height="241" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Jtni8ewMvwoscyIiz3v0y/5c1a126814fdcf4487bde8c5be574fb5/thomas-bayes.png" alt="" class="kg-image" width="225" height="241" loading="lazy">
 
 	</figure>
 	<p>In 2003, after an overwhelming response to his essay, Paul organized the first <a href="http://static.usenix.org/publications/login/2003-06/openpdfs/spam.pdf">MIT Anti-Spam Conference</a>. From that conference, many of the companies that would go on to largely solve the email spam problem (at least from the perspective of end users) would emerge. Paul turned out to be right and whatever email program you're using today it is almost guaranteed that a heuristic engine is making the decision on what ends up in your spam folder.</p>
@@ -71,7 +71,7 @@
 	<p>We spent the last 6 months building a traditional, rules-based WAF to augment CloudFlare's existing next generation, heuristics-based WAF. The new WAF is included by default with every Pro and better plan (<a href="https://www.cloudflare.com/plans">$20/month for the first site, $5/month for each additional site</a>). In the process, we also took the opportunity to rearchitect how some of our security systems work in order to provide more visibility and flexibility. You'll see that increasingly reflected in our UI over the next few months.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EA0jQrpqXXDg0M0xrEymE/7d4f605466a1f204c453ed78214b2c15/owasp-logo.png" alt="" class="kg-image" width="246" height="104" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EA0jQrpqXXDg0M0xrEymE/c50f1558d90391d0f5a3f53f1645e2ef/owasp-logo.png" alt="" class="kg-image" width="246" height="104" loading="lazy">
 
 	</figure>
 	<p>When we set out to add a traditional WAF, our design goal was to build a system that was fully user configurable, accepted the existing ModSecurity rule configuration language, added less than 1ms of latency to requests when processing the full OWASP ruleset or its equivalent, would update worldwide within less than 30 seconds of a user configuration change, provided data and feedback on rules as they were triggered, and would scale to handle the billions of requests CloudFlare processes every day. I'm excited to say we exceeded our goal.</p>

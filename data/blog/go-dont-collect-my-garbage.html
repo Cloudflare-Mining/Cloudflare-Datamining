@@ -1,9 +1,9 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wFaih37JIst82WTTjixHU/23aaa75008160a5e6fa1cdbe3e42c9bc/go-dont-collect-my-garbage.jpg" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wFaih37JIst82WTTjixHU/a0c0c9b279c8c0d013162f9ce3ddd4d4/go-dont-collect-my-garbage.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Not long ago I needed to benchmark the performance of Golang on a many-core machine. I took several of the benchmarks that are bundled with the Go source code, copied them, and modified them to run on all available threads. In that case the machine has 24 cores and 48 threads.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1im9xk1mwSCF71CvOgrQYP/32a4e603bf37d47f325103bd83e00deb/36963798223_b4da5151aa_k.jpg" alt="" class="kg-image" width="2048" height="1365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1im9xk1mwSCF71CvOgrQYP/b7fef48c9fd09fe3fa09ff5b3bababfb/36963798223_b4da5151aa_k.jpg" alt="" class="kg-image" width="2048" height="1365" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/147079914@N03/36963798223/in/photolist-ZhPe1A-Yjn8pV-ZhPcm3-YfT3xL-ZkG9kP-qLEURD-4rPJbB-uwsT5-9aWgeA-92n4h-5LWz68-92n6p-5gE7TJ-3Scj6p-duNYgz-4rTMKJ-8P3YZ3-8QLKYc-CHFrLH-MuQT2E">image</a> by <a href="https://www.flickr.com/photos/147079914@N03">sponki25</a></p>
@@ -15,7 +15,7 @@
 	<p>I ran the benchmark for every number of goroutines from 1 to 48:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gTjIIpNxaG4OoM8U4M2V3/7b63848a25d7f0b3f36894b41adfe08b/goroutines2.png" alt="alt" class="kg-image" width="1809" height="969" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gTjIIpNxaG4OoM8U4M2V3/0e0c43feb83f2b1e462513ad930651a9/goroutines2.png" alt="alt" class="kg-image" width="1809" height="969" loading="lazy">
 
 	</figure>
 	<p>Looks like the number of signatures per second peaks at 274,622, with 17 goroutines. And starts dropping rapidly after that.</p>
@@ -76,14 +76,14 @@ gc 6790 @10.000s 12%: 0.086+0.55+0.24 ms clock, 0.78+0.30/4.2/0.043+2.2 ms cpu, 
 	<p>I ran a script to find the best value, from 100 to 20,000, in increments of 100. This is what I got:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zXh0sUUSQ5Qjuf9RaTPl1/dfe128fd3fcce5794b706fcbed89d536/gogc.png" alt="alt" class="kg-image" width="1956" height="769" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zXh0sUUSQ5Qjuf9RaTPl1/226f072ccfc516fbe92dc0531d0bfa71/gogc.png" alt="alt" class="kg-image" width="1956" height="769" loading="lazy">
 
 	</figure>
 	<p>Looks like the optimal value for <code>GOGC</code> in that case is 11,300 and it gets us 691,054 signatures/second. That is 22.56X times faster than the single core score, and overall pretty good for a 24 core processor. Remember that when running on a single core, the CPU frequency is 3.0GHz, and only 2.1GHz when running on all cores.</p>
 	<p>Per goroutine performance when running with <code>GOGC=11300</code> now looks like that:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Qjl1zChKIwSlMcLjVanpE/2eba482e872f27fed05d0982a928adce/goroutines3.png" alt="" class="kg-image" width="1808" height="969" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Qjl1zChKIwSlMcLjVanpE/66d0e438bb5cd24ba15442ae0484e193/goroutines3.png" alt="" class="kg-image" width="1808" height="969" loading="lazy">
 
 	</figure>
 	<p>The scaling looks much better, and even past 24 goroutines, when we run out of physical cores, and start sharing cores with hyper-threading, the overall performance improves.</p>

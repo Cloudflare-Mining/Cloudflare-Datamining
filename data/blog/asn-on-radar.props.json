@@ -9,7 +9,7 @@
 				"name": "Celso Martinho",
 				"slug": "celso",
 				"bio": "From when Mosaic took over Gopher. Engineering Director at Cloudflare.",
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pzgat1zmt1oF1byi7hskH/7e3b95ac25469b2640929caf376fa4c8/celso.png",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pzgat1zmt1oF1byi7hskH/7b25e8e00117ee44afe36ad27d7d8032/celso.png",
 				"location": "Portugal, Lisbon",
 				"website": "https://celso.io/",
 				"twitter": "@celso",
@@ -19,7 +19,7 @@
 				"name": "Sofia Cardita",
 				"slug": "sofia-cardita",
 				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ra2NnooW35NsF7j6AyeY5/a689b00898cd5f98523386d89295fefd/sofia-cardita.png",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ra2NnooW35NsF7j6AyeY5/fb9ae6a3c0cdb81c6232fd14a319e811/sofia-cardita.png",
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": null,
@@ -29,7 +29,7 @@
 				"name": "João Sousa Botto",
 				"slug": "joao",
 				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q09FyExwtslD5vJTMeVCD/c0e01403852a7d738acd7c8c0908a4b2/joao.jpg",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Q09FyExwtslD5vJTMeVCD/adf282bc3f9f914ba6499801ee62e403/joao.jpg",
 				"location": "Lisbon, Portugal",
 				"website": null,
 				"twitter": "@jsbotto",
@@ -37,9 +37,9 @@
 			}
 		],
 		"excerpt": "Autonomous Systems (ASes) are a group of routable IP prefixes belonging to a single entity or organization, and is one of the fundamental building blocks of the Internet",
-		"feature_image": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6325t9rTLddXndRqSD6Yo/d2548b692cc020c7af17144f77a0e051/asn-on-radar.png",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6325t9rTLddXndRqSD6Yo/d7fea9b81b27c9eb3fc003320b9dfb6f/asn-on-radar.png",
 		"featured": false,
-		"html": "\n            <figure class=\"kg-card kg-image-card \">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mIY5oYu7p9IEdNBl2GFJf/9cdc3eb8bbded52dc7f5f0b440b2bbdc/image3-41.png\" alt=\"\" class=\"kg-image\" width=\"2000\" height=\"949\" loading=\"lazy\"/>\n            \n            </figure><p>An AS, or Autonomous System, is a group of routable IP prefixes belonging to a single entity, and is one of the key building blocks of the Internet. Internet providers, public clouds, governments, and other organizations have one or more ASes that they use to connect their users or systems to the rest of the Internet by advertising <a href=\"https://www.cloudflare.com/learning/security/glossary/what-is-bgp/\">how to reach them</a>.</p><p>Per AS traffic statistics and trends help when we need insight into unusual events, like Internet outages, infrastructure anomalies, targeted attacks, or any other changes from service providers.</p><p>Today, we are opening more of our data and launching the Cloudflare Radar pages for Autonomous Systems. When navigating to a country or region page on Cloudflare Radar you will see a list of five selected ASes for that country or region. But you shouldn’t feel limited to those, as you can deep dive into any AS by plugging its ASN (Autonomous System Number) into the Radar URL (for example: <a href=\"https://radar.cloudflare.com/asn/812\">https://radar.cloudflare.com/asn/812</a>). We have excluded some statistical trends from ASes with small amounts of traffic as that data would be difficult to interpret.</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/79MSdrP9Fw2qj65GInNbYi/417d133fd2b75a3f48ec21c52dbf9401/image2-84.png\" alt=\"List of five selected ASes in the United States\" class=\"kg-image\" width=\"1999\" height=\"929\" loading=\"lazy\"/>\n            \n            </figure><p>The AS page is similar to the country page on Cloudflare Radar. You can find traffic levels, protocol use, and security details such as application and network-level DDoS attack information. Additionally, we show a geographical distribution map of the traffic and the volume of BGP announcements we see for the list of prefixes associated with the specific AS.</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2U52RWx1h4VvU3iuGUtQHB/3f2669b2ed947957c05f85fad1aa1bfd/image1-101.png\" alt=\"Regions with the most traffic flowing through an ASN\" class=\"kg-image\" width=\"1999\" height=\"921\" loading=\"lazy\"/>\n            \n            </figure><p>A sudden increase in BGP announcements often suggests disruptive changes to the Internet in the region or institution associated with the AS. Spikes in BGP announcements were visible when the <a href=\"/tonga-internet-outage/\">submarine cable was cut in Tonga in 2022</a>, on the <a href=\"/october-2021-facebook-outage/\">Facebook outage in October 2021</a>, and when governments limited the Internet access in their countries (as seen in <a href=\"/sudan-woke-up-without-internet/\">Sudan</a> and <a href=\"/syria-exam-related-internet-shutdowns/\">Syria</a> in 2021).</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Z74kFvZq0WsiC6xr5c3te/e541ad9c8ce05cfe23da3c4beefd21d6/image4-25.png\" alt=\"BGP announcement volume in the last seven days compared to the previous seven days\" class=\"kg-image\" width=\"1999\" height=\"620\" loading=\"lazy\"/>\n            \n            </figure><p>At Cloudflare, we are committed to keep increasing transparency on the inner workings of the Internet, so that we can all do our part in keeping the Internet more open and secure for everyone. Keep an eye on <a href=\"https://radar.cloudflare.com\">Cloudflare Radar</a> for more insights like these.</p>",
+		"html": "\n            <figure class=\"kg-card kg-image-card \">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mIY5oYu7p9IEdNBl2GFJf/5560c113db80619e26b73568fa935f90/image3-41.png\" alt=\"\" class=\"kg-image\" width=\"2000\" height=\"949\" loading=\"lazy\"/>\n            \n            </figure><p>An AS, or Autonomous System, is a group of routable IP prefixes belonging to a single entity, and is one of the key building blocks of the Internet. Internet providers, public clouds, governments, and other organizations have one or more ASes that they use to connect their users or systems to the rest of the Internet by advertising <a href=\"https://www.cloudflare.com/learning/security/glossary/what-is-bgp/\">how to reach them</a>.</p><p>Per AS traffic statistics and trends help when we need insight into unusual events, like Internet outages, infrastructure anomalies, targeted attacks, or any other changes from service providers.</p><p>Today, we are opening more of our data and launching the Cloudflare Radar pages for Autonomous Systems. When navigating to a country or region page on Cloudflare Radar you will see a list of five selected ASes for that country or region. But you shouldn’t feel limited to those, as you can deep dive into any AS by plugging its ASN (Autonomous System Number) into the Radar URL (for example: <a href=\"https://radar.cloudflare.com/asn/812\">https://radar.cloudflare.com/asn/812</a>). We have excluded some statistical trends from ASes with small amounts of traffic as that data would be difficult to interpret.</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79MSdrP9Fw2qj65GInNbYi/db087bd4b2ddae6371a2bc463042dac4/image2-84.png\" alt=\"List of five selected ASes in the United States\" class=\"kg-image\" width=\"1999\" height=\"929\" loading=\"lazy\"/>\n            \n            </figure><p>The AS page is similar to the country page on Cloudflare Radar. You can find traffic levels, protocol use, and security details such as application and network-level DDoS attack information. Additionally, we show a geographical distribution map of the traffic and the volume of BGP announcements we see for the list of prefixes associated with the specific AS.</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2U52RWx1h4VvU3iuGUtQHB/e703adbb2d716c9a4c017c565f4b5323/image1-101.png\" alt=\"Regions with the most traffic flowing through an ASN\" class=\"kg-image\" width=\"1999\" height=\"921\" loading=\"lazy\"/>\n            \n            </figure><p>A sudden increase in BGP announcements often suggests disruptive changes to the Internet in the region or institution associated with the AS. Spikes in BGP announcements were visible when the <a href=\"/tonga-internet-outage/\">submarine cable was cut in Tonga in 2022</a>, on the <a href=\"/october-2021-facebook-outage/\">Facebook outage in October 2021</a>, and when governments limited the Internet access in their countries (as seen in <a href=\"/sudan-woke-up-without-internet/\">Sudan</a> and <a href=\"/syria-exam-related-internet-shutdowns/\">Syria</a> in 2021).</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Z74kFvZq0WsiC6xr5c3te/70e553b038bdc866b6436277845fd001/image4-25.png\" alt=\"BGP announcement volume in the last seven days compared to the previous seven days\" class=\"kg-image\" width=\"1999\" height=\"620\" loading=\"lazy\"/>\n            \n            </figure><p>At Cloudflare, we are committed to keep increasing transparency on the inner workings of the Internet, so that we can all do our part in keeping the Internet more open and secure for everyone. Keep an eye on <a href=\"https://radar.cloudflare.com\">Cloudflare Radar</a> for more insights like these.</p>",
 		"id": "1tjSJwE5Re6TLV9wokISGx",
 		"localeList": {
 			"name": "Cloudflare Radar’s new ASN pages Config",
@@ -77,7 +77,7 @@
 		"metadata": {
 			"title": "Cloudflare Radar’s new ASN pages",
 			"description": "Autonomous Systems (ASes) are a group of routable IP prefixes belonging to a single entity or organization, and is one of the fundamental building blocks of the Internet.",
-			"imgPreview": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zCcpp2kN0qdkmNKjwidkB/b47b387433182f51bdb392be18e0c09d/asn-on-radar-c4pQZR.png"
+			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zCcpp2kN0qdkmNKjwidkB/324982e77af7ea2f2094318b4078774f/asn-on-radar-c4pQZR.png"
 		},
 		"primary_author": {},
 		"published_at": "2022-03-24T13:32:16.000+00:00",
@@ -100,7 +100,7 @@
 			}
 		],
 		"title": "Cloudflare Radar’s new ASN pages",
-		"updated_at": "2024-08-27T01:33:30.517Z",
+		"updated_at": "2024-10-09T23:17:58.074Z",
 		"url": "https://blog.cloudflare.com/asn-on-radar"
 	},
 	"translations": {

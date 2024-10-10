@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DBEWG18IhgUfWavcANnwP/0d651b304f4fbf6d177ecf2fdea78771/image3-25.png" alt="" class="kg-image" width="1812" height="637" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DBEWG18IhgUfWavcANnwP/da88593d69cc529aebcc6ccc66bf7e16/image3-25.png" alt="" class="kg-image" width="1812" height="637" loading="lazy">
 
 	</figure>
 	<p>A few months ago, after reading about <a href="https://blog.cloudflare.com/cloudflare-doubling-size-of-2020-summer-intern-class">Cloudflare doubling its intern class size</a>, I quickly dusted off my CV and applied for an internship. Long story short: now, a couple of months later, I found myself staring into Linux kernel code and adding a pretty cool feature <a href="https://gvisor.dev">to gVisor, a Linux container runtime</a>.</p>
@@ -21,7 +21,7 @@
 	<p>However, inside gVisor, each call of <code>open()</code> on <code>/proc/self/mem</code> resulted in <code>ENOENT</code>, because the entire <code>/proc/self/mem</code> file was missing. In order to provide a robust sandbox, gVisor has to carefully reimplement the Linux kernel interfaces. This particular <code>/proc</code> file was simply unimplemented in the virtual file system of Sentry, one of gVisor's sandboxing components.<a href="https://blog.cloudflare.com/author/marek-majkowski">Marek</a> asked the devs on the project chat and got confirmation - they would be happy to accept a patch implementing this file.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4r2jNRjbWTgK866HBQjSKe/8e21c162a98dfb9f4c8dfad13531dbe6/image1-39.png" alt="image1-39" class="kg-image" width="946" height="154" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4r2jNRjbWTgK866HBQjSKe/2a32421d3b661d496a54dde61721b45b/image1-39.png" alt="image1-39" class="kg-image" width="946" height="154" loading="lazy">
 
 	</figure>
 	<p>The easy way out would have been to make a small, local patch to the unwinder behavior, yet I found myself diving into the Linux kernel trying to figure how the <code>mem</code> file worked in an attempt to implement it in Sentry's VFS.</p>

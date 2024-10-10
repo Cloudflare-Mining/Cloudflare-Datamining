@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wnkskFDuLFCKg3bJKxdEA/2e142c77baef95b1154d2ce418951dea/Artboard-1-1.png" alt="Introducing Cloudflare’s 2024 API security and management report" class="kg-image" width="1465" height="845" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wnkskFDuLFCKg3bJKxdEA/dde70afb5d2340f7a3939f79686cc670/Artboard-1-1.png" alt="Introducing Cloudflare’s 2024 API security and management report" class="kg-image" width="1465" height="845" loading="lazy">
 
 	</figure>
 	<p>You may know Cloudflare as the company powering nearly 20% of the web. But powering and protecting websites and static content is only a fraction of what we do. In fact, well over half of the dynamic traffic on our network consists not of web pages, but of Application Programming Interface (API) traffic — the plumbing that makes technology work. This blog introduces and is a supplement to the <a href="https://www.cloudflare.com/lp/api-security-report">API Security Report for 2024</a> where we detail exactly how we’re protecting our customers, and what it means for the future of API security. Unlike other industry API reports, our report isn’t based on user surveys — but instead, based on real traffic data.</p>
@@ -65,14 +65,14 @@ print(csv_output)</code></pre>
 	<p>There are pros and cons to both approaches, but we find that by far most APIs respond with HTTP 429 out of all the 4xx and 5xx error messages (almost 52%).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cJjGIFScYgWUrc7KizhvE/68bf77157f9a0b94d5599205d81ba658/Untitled.png" alt="" class="kg-image" width="1600" height="885" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cJjGIFScYgWUrc7KizhvE/8cc248c65dde6736cd9f634e988ff73e/Untitled.png" alt="" class="kg-image" width="1600" height="885" loading="lazy">
 
 	</figure>
 	<p>What about the logic of the rate limit rule itself, not just the response code? Implementing request limits on IP addresses can be tempting, but <b>we recommend you base the limit on a session ID as a best practice and only fall back to IP address (or IP + JA3 fingerprint) when session IDs aren’t available</b>. Setting rate limits on user sessions instead of IPs will reliably identify your real users and minimize false positives due to shared IP space. Cloudflare’s <a href="https://www.cloudflare.com/application-services/products/rate-limiting">Advanced Rate Limiting</a> and API Gateway’s <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection">volumetric abuse protection</a> make it easy to enforce these limits by profiling session traffic on each API endpoint and giving one-click solutions to set up the per-endpoint rate limits.</p>
 	<p>To find values for your rate limits, Cloudflare API Gateway computes session request statistics for you. We suggest a limit by looking at the distribution of requests per session across <i>all</i> sessions to your API as identified by the customer-configured API session identifier. We then <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#observe-rate-limits">compute statistical p-levels</a> — which describe the request rates for different cohorts of traffic — for p50, p90, and p99 on this distribution and use the variance of the distribution to come up with a recommended threshold for every single endpoint in your API inventory. The recommendation might not match the p-levels, which is an important distinction and a reason not to use p-levels alone. Along with the recommendation, API Gateway informs users of our confidence in the recommendation. Generally, the more API sessions we’re able to collect, the more confident we’ll be in the recommendation.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b6UZSSACJxBUGIBkD7lBL/eb2c9847b745da597036bf162a103cc7/Screenshot-2024-01-04-at-12.50.45-1.png" alt="" class="kg-image" width="2082" height="1116" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5b6UZSSACJxBUGIBkD7lBL/d9bdf32f1648685ec291f5c172e86d5a/Screenshot-2024-01-04-at-12.50.45-1.png" alt="" class="kg-image" width="2082" height="1116" loading="lazy">
 
 	</figure>
 	<p>Activating a rate limit is as easy as clicking the ‘create rule’ link, and API Gateway will automatically bring your session identifier over to the advanced rate limit rule creation page, ensuring your rules have pinpoint accuracy to defend against attacks and minimize false positives compared to traditional, overly broad limits.</p>
@@ -88,7 +88,7 @@ print(csv_output)</code></pre>
 	<p>In fact, when we looked at Cloudflare’s WAF managed rules, injection attacks were the second most common threat vector Cloudflare saw carried out on APIs. The most common threat was HTTP Anomaly. Examples of HTTP anomalies include malformed method names, null byte characters in headers, non-standard ports or content length of zero with a POST request. Here are the stats on the other top threats we saw against APIs:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4RAYOdH61ox07Ps1INKxO2/43a0019dd046c38887bacf95eca053a6/Untitled--1---1-.png" alt="" class="kg-image" width="1600" height="822" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RAYOdH61ox07Ps1INKxO2/35e3eeed0b2981d15ac65b22e27ce692/Untitled--1---1-.png" alt="" class="kg-image" width="1600" height="822" loading="lazy">
 
 	</figure>
 	<p>Absent from the chart is broken authentication and authorization. Broken authentication and authorization occur when an API fails to check whether the entity sending requests for information to an API actually has the permission to request that data or not. It can also happen when attacks try to forge credentials and insert less restricted permissions into their existing (valid) credentials that have more restricted permissions. OWASP categorizes these attacks in a few different ways, but the main categories are Broken Object Level Authorization (BOLA) and Broken Function Level Authorization (BFLA) attacks.</p>
@@ -120,7 +120,7 @@ print(csv_output)</code></pre>
 	<p>We can illustrate this by looking at the API traffic patterns observed during holidays, when people gather around friends and family and spend more time socializing in person and less time online. We’ve annotated the following Worldwide API traffic graph with common holidays and promotions. Notice how traffic peaks around Black Friday and Cyber Monday around the +10% level when people shop online, but then traffic drops off for the festivities of Christmas and New Years days.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aETzYYdiYbkQws35HSDlK/71637ed0e1b502b7b17ba376876110b5/Untitled--2-.png" alt="" class="kg-image" width="1600" height="647" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aETzYYdiYbkQws35HSDlK/e6212b57845bb2e2813d513e4de8c5a0/Untitled--2-.png" alt="" class="kg-image" width="1600" height="647" loading="lazy">
 
 	</figure>
 	<p>This pattern <a href="https://blog.cloudflare.com/cyber-week-analyzing-internet-traffic-and-e-commerce-trends">closely resembles</a> what we observe in regular HTTP traffic. It’s clear that APIs are no longer just the realm of automated processes but are intricately linked with human behaviors and social trends.</p>

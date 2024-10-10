@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42mvDyZ60vTF19WBZS6S7D/1c8430247bddd371f84d57b4c796274f/image_0_1.png" alt="" class="kg-image" width="545" height="270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42mvDyZ60vTF19WBZS6S7D/1e0121da376f6a9bfccac175acd54ecf/image_0_1.png" alt="" class="kg-image" width="545" height="270" loading="lazy">
 
 	</figure>
 	<p>This post is about a new feature we've been quietly rolling out over the last few months. Last week we began enabling it for everyone by default. It's called CNAME Flattening and it's a bit geeky, but very useful and important if you’re using cloud-based services and you hate having a “www” subdomain. The gist is: you can now safely use a <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record">CNAME record</a>, as opposed to an A record that points to a fixed IP address, as your root record in <a href="https://www.cloudflare.com/dns">CloudFlare DNS</a> without triggering a number of edge case error conditions because you’re violating the DNS spec. Geeky, I know, so before asking you to wade through why this is cool, here are some of our customers singing the feature’s praises:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4x4R3Clrwx8HW49RxMbLTT/9f34d345c82872d51eb70cc92a85c5f3/image_1.jpg" alt="" class="kg-image" width="640" height="515" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4x4R3Clrwx8HW49RxMbLTT/ed811ca71d906fec3763bd0b8d707151/image_1.jpg" alt="" class="kg-image" width="640" height="515" loading="lazy">
 
 	</figure>
 	<p><i>"CloudFlare's CNAME Flattening feature enabled us to easily front our Amazon Elastic Load Balancer (ELB) with CloudFlare's DDoS and WAF protection."</i></p>
@@ -50,7 +50,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1p32DFkA1vxgdSk98cna0Y/51a75e1afacfaf349e50ef14badd0968/image_2.png" alt="" class="kg-image" width="400" height="366" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1p32DFkA1vxgdSk98cna0Y/8ec5aee8525f6beaf3b59748f2ba706b/image_2.png" alt="" class="kg-image" width="400" height="366" loading="lazy">
 
 	</figure>
 	<p>The problem stems from the fact that the <a href="http://www.ietf.org/rfc/rfc1035.txt">DNS specification</a> dates from 1987. At the time, no one conceived of website -- it was two years before Tim Berners-Lee’s seminal paper first laying out the idea for the world wide web -- let alone modern outsourced cloud services like Amazon Web Services (AWS) or Heroku. As a result, the DNS spec enshrined that the root record -- the naked domain without any subdomain -- could not be a CNAME. Technically, the root could be a CNAME but the RFCs state that once a record has a CNAME it can't have any other entries associated with it: that's a problem for a root record like example.com because it will often have an MX record (so email gets delivered), an NS record (to find out which nameserver handles the zone) and an SOA record.</p>
@@ -75,7 +75,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DKVkYjc7enxjCr5Qjvrpq/9734ee72520f2d502fc493de5fb61a25/image_3.png" alt="" class="kg-image" width="400" height="284" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DKVkYjc7enxjCr5Qjvrpq/8e252bcca1f30010b43ee175df5e0d96/image_3.png" alt="" class="kg-image" width="400" height="284" loading="lazy">
 
 	</figure>
 	<p>What we needed was a way to support a CNAME at the root, but still follow the RFC and return an IP address for any query for the root record. To accomplish this, we extended our authoritative DNS infrastructure to, in certain cases, act as a kind of DNS resolver. What happens is that, if there's a CNAME at the root, rather than returning that record directly we recurse through the CNAME chain ourselves until we find an A Record. At that point, we return the IP address associated with the A Record. This, effectively, "flattens" the CNAME chain.</p>
@@ -91,7 +91,7 @@
 	<p>The biggest benefit is that this allows the flexibility of having CNAMEs at the root without breaking the DNS specification. An ancillary benefit we've found is that we decrease the time for CNAME resolution by about 30% on average. We cache the CNAME responses -- respecting the DNS TTLs, just like a recursor should -- which means often we have the answer without having to traverse the chain. When we do need to traverse the CNAME chain, we often have much a much faster, more direct connection to whatever server is authoritative than your visitor's ISP's recursive DNS service, which would have otherwise been doing the heavy lifting.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Fth2oAHolLRMvFmj7nEJJ/c5bd55234211c2a1574ad88efbaaa46c/image_4.png" alt="" class="kg-image" width="300" height="249" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Fth2oAHolLRMvFmj7nEJJ/c42c4ca186f16c4db36a0c30d8480879/image_4.png" alt="" class="kg-image" width="300" height="249" loading="lazy">
 
 	</figure>
 	<p>While we're defaulting this on just for root records, we've begun experimenting with turning CNAME Flattening on more broadly. We've begun to flatten all the CNAMEs that CloudFlare uses internally. For example, if you signed up via a hosting partner then you may have gotten a CNAME that included in the CNAME chain something like cf-ssl2463-protected-<a href="http://www.cloudflare.com.cdn.cloudflare.net">www.cloudflare.com.cdn.cloudflare.net</a>. That is increasingly going away and will now resolve directly from your domain to an IP address. This makes DNS resolution a bit faster and also better obscures the fact that you're using CloudFlare.</p>

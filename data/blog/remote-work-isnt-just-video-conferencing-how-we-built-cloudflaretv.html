@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aNtO3AtkTlJfqei1At84m/1dc19c682ec3d9f008e421c3984e33bd/1-1.png" alt="" class="kg-image" width="987" height="787" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aNtO3AtkTlJfqei1At84m/0461caf5060116952c2ab6e1a3fcd1be/1-1.png" alt="" class="kg-image" width="987" height="787" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-Hands to product demos. Being able to <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand">stream video on demand</a> has two major advantages when compared to live video:</p>
@@ -42,7 +42,7 @@
 	<p>Every video uploaded to Cloudflare Stream can be locked down by requiring signed URLs. A Stream video can be marked as requiring signed URLs using the UI or by making an API call:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19J2fu6de5Cg5lmf5fAIVX/68177df55cdbea91c62eb830fcfaeec5/2-2.png" alt="" class="kg-image" width="560" height="299" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19J2fu6de5Cg5lmf5fAIVX/328a6648871b2a79b71ab2a0cbb763f3/2-2.png" alt="" class="kg-image" width="560" height="299" loading="lazy">
 
 	</figure>
 	<p>Once locked down in this way videos can’t be accessed directly. Instead, they can only be accessed using a temporary token.</p>
@@ -106,7 +106,7 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 	<p>First, we set up environment variables for our Worker:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gupv1LnhFeJ7X3rGOIcY7/7ea1aacc9bb1caef0a13b7345f6953cf/3-3.png" alt="" class="kg-image" width="588" height="309" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gupv1LnhFeJ7X3rGOIcY7/9eed06310ca958eab862287b2730eb95/3-3.png" alt="" class="kg-image" width="588" height="309" loading="lazy">
 
 	</figure>
 	<p>Next, we wrote a simple Workers function to call the Stream API and return a list of videos, eliminating the need for an origin:</p>
@@ -125,7 +125,7 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 	<p>Lastly, we set up a zone and within the zone, we set up a Worker routes pointing to our Workers script. This can be done from the Workers tab:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rxhNxPv0rVfFTXofb8xOL/82ed59df4c76df97ca3432712bbc7ed7/4-2.png" alt="" class="kg-image" width="1111" height="479" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rxhNxPv0rVfFTXofb8xOL/3238839da4f443931b00ef6feeec7e14/4-2.png" alt="" class="kg-image" width="1111" height="479" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -149,19 +149,19 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 	<p>To add a new login method, click the “+” icon and choose your identity provider. In our case, we chose Google:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77wNmqDraVQTPuqrWKAL15/e9c6e6334d9af6df1f0499a233de153c/5-1.png" alt="" class="kg-image" width="356" height="374" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77wNmqDraVQTPuqrWKAL15/883ff1e404764adb80144a96ed921412/5-1.png" alt="" class="kg-image" width="356" height="374" loading="lazy">
 
 	</figure>
 	<p>You will see a pop up asking for information including <b>Client ID</b> and <b>Client Secret</b>, both key pieces of information required to set up Google as the identity provider.</p>
 	<p>Once we add an identity provider, we want to tell Access “who specifically should be allowed to access our application?” This is done by creating an <b>Access Policy.</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lGE8NoPuruBdbJ62gOULQ/b0bafa2f125b49be31690d1b6172c3c6/6-1.png" alt="" class="kg-image" width="917" height="188" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lGE8NoPuruBdbJ62gOULQ/01b9ccf941a7b886857e733ebfbceda9/6-1.png" alt="" class="kg-image" width="917" height="188" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/759SsaHGmEgN626KJKrj5j/7c35a044167e0d80a7d6c27b3f5f3186/7.png" alt="" class="kg-image" width="1600" height="746" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/759SsaHGmEgN626KJKrj5j/3664a275496339dd42f3c5320c4b6b32/7.png" alt="" class="kg-image" width="1600" height="746" loading="lazy">
 
 	</figure>
 	<p>We set up an Access Policy to only allow emails ending in our domain name. This effectively makes CloudflareTV only accessible by our team!</p>

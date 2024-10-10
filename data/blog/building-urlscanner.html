@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3eSANAscXnEBIAQrZDXEEs/6c78bdca9b6bab049ff98436e6e7437b/image3-25.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eSANAscXnEBIAQrZDXEEs/21c860fb37794b0a1e5fa1492e1eb1b3/image3-25.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Today, we’re excited to talk about <a href="https://radar.cloudflare.com/scan">URL Scanner</a>, a tool that helps everyone from security teams to everyday users to detect and safeguard against malicious websites by scanning and analyzing them. URL Scanner has executed almost a million scans since its <a href="https://blog.cloudflare.com/radar-url-scanner-early-access">launch</a> last March on <a href="https://radar.cloudflare.com/scan">Cloudflare Radar</a>, driving us to continuously innovate and enhance its capabilities. Since that time, we have introduced unlisted scans, detailed malicious verdicts, enriched search functionality, and now, integration with Security Center and an official API, all built upon the robust foundation of <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>, and the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a>.</p>
@@ -18,7 +18,7 @@
 	<p>Customers with Cloudflare dashboard access will enjoy higher API limits and faster response times, crucial for agile security operations. Integration with internal workflows becomes seamless, allowing for sophisticated network and user protection strategies.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xsq5tQ1cjM8cQwnCRUCmh/f315a8104811c503fed06f215d8b6041/image2-24.png" alt="Security Center in the Cloudflare Dashboard" class="kg-image" width="888" height="988" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xsq5tQ1cjM8cQwnCRUCmh/f6f3a929b008c706765db6a22e5abde7/image2-24.png" alt="Security Center in the Cloudflare Dashboard" class="kg-image" width="888" height="988" loading="lazy">
 
 	</figure>
 	<p><i>Security Center in the Cloudflare Dashboard</i></p>
@@ -59,7 +59,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NRMloVOilGBXsYy12xeeT/8202728097a541d3bd027d51892e1bb4/image5-16.png" alt="Scan results for www.cloudflare.com on Cloudflare Radar" class="kg-image" width="1999" height="1185" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NRMloVOilGBXsYy12xeeT/a43d66e1b6cd00bd5fdf2bd18ede1256/image5-16.png" alt="Scan results for www.cloudflare.com on Cloudflare Radar" class="kg-image" width="1999" height="1185" loading="lazy">
 
 	</figure>
 	<p><i>Scan results for</i> <a href="https://www.cloudflare.com"><i>www.cloudflare.com</i></a> <i>on Cloudflare Radar</i></p>
@@ -85,7 +85,7 @@
 	<p>In recounting the process of developing the URL Scanner, we aim to showcase the potential and versatility of Cloudflare Workers as a platform. This story is more than a technical journey, but a testament to the capabilities inherent in our platform's suite of APIs. By dogfooding our own technology, we not only demonstrate confidence in its robustness but also encourage developers to harness the same capabilities for building sophisticated applications. The URL Scanner exemplifies how Cloudflare Workers, Durable Objects, and the Browser Rendering API seamlessly integrate.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/55HCrSeFuu3FUjcjjIXJyl/3eebc727f0034d32e54526c6a50f939a/image4-23.png" alt="High level overview of the Cloudflare URL Scanner technology stack" class="kg-image" width="1999" height="564" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55HCrSeFuu3FUjcjjIXJyl/53c0ed5a74a3ca5052972fa191bd679b/image4-23.png" alt="High level overview of the Cloudflare URL Scanner technology stack" class="kg-image" width="1999" height="564" loading="lazy">
 
 	</figure>
 	<p><i><i>High level overview of the</i></i><i> </i><i><i>Cloudflare URL Scanner technology stack</i></i></p>
@@ -115,14 +115,14 @@
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5AUAfO5VBEUvbRlYwoJ5zL/dedd5666ad32c6824d8b53eecb934ab0/image1-28.png" alt="" class="kg-image" width="1999" height="438" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AUAfO5VBEUvbRlYwoJ5zL/4da6566b0dff56dca49e14fc500cc427/image1-28.png" alt="" class="kg-image" width="1999" height="438" loading="lazy">
 
 	</figure>
 	<p>In short, we create a Durable Object, the Scanner, unique to each scan, which is responsible for orchestrating the scan from start to finish. Since we want to respond immediately to the user, we save the scan to the Durable Object’s transactional Key-Value storage, and schedule an alarm so we can perform the scan asynchronously a second later. &nbsp;We then respond to the user, informing them that the scan request was accepted.</p>
 	<p>When the Scanner’s alarm triggers, we enter the second phase:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qnzMmDQbPtWmyIClv6680/f251bd874d45b397013355d804a1b292/image7-5.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qnzMmDQbPtWmyIClv6680/4ff2ee5c2a36b78a9d5e2d7f6d3a134a/image7-5.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
 
 	</figure>
 	<p>There are 3 components at work in this phase, the Scanner, the Browser Pool and the Browser Controller, all <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>.</p>
@@ -169,7 +169,7 @@
 	<p>While the initial approach involved sending each completed scan promptly to the core API for immediate storage in Postgres, we realized that, as the rate of scans grew, a more efficient strategy would be to batch those operations, and for that, we use Worker Queues:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gyX0lHVmgVGhmYZeyipcM/ff87f8dbfdaff32775b8c5f454ccd40c/image6-8.png" alt="" class="kg-image" width="1999" height="469" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gyX0lHVmgVGhmYZeyipcM/93933f31d4dd0905fef9d7cc234a1528/image6-8.png" alt="" class="kg-image" width="1999" height="469" loading="lazy">
 
 	</figure>
 	<p>This allows us to better manage the write load on Postgres. We wanted scans available as soon as possible to those who requested them, but it’s ok if they’re only available in search results at a slightly later point in time (seconds to minutes, depending on load).</p>

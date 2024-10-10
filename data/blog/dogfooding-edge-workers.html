@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/625Bpi9sa9TW6Y31S7FMbT/43483f09efa26d24c776e764d7e31c50/dogfooding-edge-workers.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/625Bpi9sa9TW6Y31S7FMbT/9b64813a530efc9b25fcb01d51d2286f/dogfooding-edge-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On the WWW team, we’re responsible for Cloudflare’s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
 	<p>A <a href="https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api">recent compliance project</a> had a requirement of detecting certain end user request data at the edge, and reacting to it both in API responses as well as visually in the dashboard. We realized that this was an excellent opportunity to dogfood Cloudflare Workers.</p>
@@ -35,7 +35,7 @@
 	<p>Our APIs use this data to add deprecation warnings to responses, and our UI uses it to display banners explaining the upcoming changes.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TlooYc7slpilLJyFkXxD5/a5b4c4259ae19217bdae2692e63ed21a/tls-deprecation-banner.png" alt="tls-deprecation-banner" class="kg-image" width="2464" height="1110" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TlooYc7slpilLJyFkXxD5/313021631d31baa4c712bf48b7647fd6/tls-deprecation-banner.png" alt="tls-deprecation-banner" class="kg-image" width="2464" height="1110" loading="lazy">
 
 	</figure>
 	<p>Let's now take a look at the source code for our worker.</p>

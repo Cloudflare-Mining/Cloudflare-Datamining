@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EvHaiULKKXcU67DpkY3eZ/9ae1636544b5f14cb5dfbdb6d9095136/image1-1.png" alt="Load Balancing with Weighted Pools" class="kg-image" width="1801" height="1014" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EvHaiULKKXcU67DpkY3eZ/1dd49cf6259eef8d0445cdd108b49633/image1-1.png" alt="Load Balancing with Weighted Pools" class="kg-image" width="1801" height="1014" loading="lazy">
 
 	</figure>
 	<p>Anyone can take advantage of Cloudflare’s far-reaching network to protect and accelerate their online presence. Our vast <a href="https://www.cloudflare.com/network">number of data centers</a>, and their proximity to Internet users around the world, enables us to secure and accelerate our customers’ Internet applications, APIs and websites. Even a simple service with a <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server">single origin server</a> can leverage the massive scale of the Cloudflare network in 270+ cities. Using the Cloudflare cache, you can support more requests and users without purchasing new servers.</p>
@@ -23,7 +23,7 @@
 	<p><b>Pool Weight</b> - A numerical value to describe what percentage of requests should be sent to a pool, relative to other pools.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rTxNJcZUpuAep6AGouFyW/a34b7d09040c193d78796ab6e5bb2aa2/image6.png" alt="Diagram showing a request arriving at Cloudflare and two load balancer origin pools with equal weights" class="kg-image" width="1386" height="837" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rTxNJcZUpuAep6AGouFyW/51f258c84377e710316181a3e0ce7991/image6.png" alt="Diagram showing a request arriving at Cloudflare and two load balancer origin pools with equal weights" class="kg-image" width="1386" height="837" loading="lazy">
 
 	</figure>
 	<p>When a request from a visitor arrives at the Cloudflare network for a hostname with a load balancer attached to it, the load balancer must decide where the request should be forwarded. Customers can configure this behavior with traffic steering policies.</p>
@@ -49,7 +49,7 @@
 	<p>In the example below, the amount of dynamic and uncacheable traffic has significantly increased due to a large sales promotion. Administrators notice that the load on their Las Vegas data center is too high, so they elect to dynamically increase the number of origins within their public cloud provider. Our two pools, “las-vegas-bldg1” and “us-east-cloud” are no longer equally sized. Our pool representing the public cloud provider is now much larger, so administrators change the pool weights so that the cloud pool receives 0.8 (80%) of the traffic, relative to the 0.2 (20%) of the traffic which the Las Vegas pool receives. The administrators were able to use pool weights to very quickly fine-tune the distribution of requests across unequally sized pools.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5V6rFceRK8So5AK0S7FzV9/aea396b6ea171ddca51e39b6777a6c33/image3.png" alt="Diagram showing a request arriving at Cloudflare, and two load balancer origin pools. One pool is larger and has a weight of 80 percent." class="kg-image" width="1501" height="848" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5V6rFceRK8So5AK0S7FzV9/4441a732a2581a6fe42938710e624742/image3.png" alt="Diagram showing a request arriving at Cloudflare, and two load balancer origin pools. One pool is larger and has a weight of 80 percent." class="kg-image" width="1501" height="848" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -84,17 +84,17 @@
 	<p>If your weights do not add up to 1.00 (100%), that’s fine! We will do the math behind the scenes to ensure how much traffic the pool should receive relative to other pools.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tgWXK6Slx7C3KZdZd5SrO/6b420ff63cac046ed5a6e9d12a40466e/image4.png" alt="" class="kg-image" width="1562" height="967" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tgWXK6Slx7C3KZdZd5SrO/de00d5b4889346a67ba6fc7b34b0e05d/image4.png" alt="" class="kg-image" width="1562" height="967" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MoDiAL340j2GfFJ3KihWr/557c987cc64bbc2d5272eab0502434df/image2.png" alt="" class="kg-image" width="1562" height="1083" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MoDiAL340j2GfFJ3KihWr/157eac63640bbd6cd11c75d8b610458b/image2.png" alt="" class="kg-image" width="1562" height="1083" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FjRnImOHxs5NHVZqRVG7w/6f028362f29261e6610a9dbc87860ac6/image5-1.png" alt="" class="kg-image" width="1118" height="771" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FjRnImOHxs5NHVZqRVG7w/ee4e4f38303dc06ee0ec1494fa65faab/image5-1.png" alt="" class="kg-image" width="1118" height="771" loading="lazy">
 
 	</figure>
 	<p>Weighted Pools may also be configured via the API. We’ve edited an example illustrating the relevant parts of the REST API.</p>

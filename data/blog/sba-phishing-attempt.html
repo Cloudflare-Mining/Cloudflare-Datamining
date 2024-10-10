@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vJApWyzdeaCOklpKCSs1j/50ede732c457af3ace8a213fd39c50f5/sba-phishing-attempt.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vJApWyzdeaCOklpKCSs1j/b0ab36540a8a476433fd3ef6d3ffe91f/sba-phishing-attempt.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in September 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>Congress may be in a deadlock over a second stimulus package, but malicious actors are always ready to pounce on the slightest opportunity to exploit the public’s confusion. The US Small Business Administration (SBA) is being impersonated in Coronavirus-themed phishing messages that leverage unfamiliarity with loan application procedures. With many small businesses relying on loans from the SBA to keep their doors open during the quarantine slump, cyber criminals are capitalizing on delays in loan approvals to swindle businesses.</p>
@@ -26,18 +26,18 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SL2Wqk58XJjYMH4dOxO9D/705b632feb174e95cba0c3e0fe122705/image5-7.png" alt="" class="kg-image" width="1928" height="1418" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SL2Wqk58XJjYMH4dOxO9D/ad3b9dbec1e6a989a8b3941cca4cce28/image5-7.png" alt="" class="kg-image" width="1928" height="1418" loading="lazy">
 
 	</figure>
 	<p>The attacker successfully spoofs the FROM headers of the real SBA Disaster Customer Service account, as seen on the left. Unfortunately, replying to this email will not send your Economic Injury Disaster Loan (EIDL) application to the SBA, but instead to the attacker’s account at the malicious Reply-To domain, as shown on the right.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fb5YRj623UslHx7ROThhJ/934dd61ea1aaa92ca55d74ff274d8b0e/image4-7.png" alt="" class="kg-image" width="1444" height="420" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fb5YRj623UslHx7ROThhJ/49ee74f3ebdecb3a4fb621f4ccd6e64a/image4-7.png" alt="" class="kg-image" width="1444" height="420" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qqNmvS5ehJRWaP7oy1Uv5/d8d3bebea22fdc7462dac389c62f4207/image6-5.png" alt="" class="kg-image" width="1416" height="466" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qqNmvS5ehJRWaP7oy1Uv5/e0c9551b4d553adda0a5ae43c2c60b44/image6-5.png" alt="" class="kg-image" width="1416" height="466" loading="lazy">
 
 	</figure>
 	<p>Just days before launching this campaign, the attacker created the malicious Reply-To domain gov-sba[.]us using bogus registration information. Whois details for this newly registered domain (NRD) are shown below.</p>
@@ -115,12 +115,12 @@ From: "U.S. Small Business Administration (SBA)" &lt;disastercustomerservice@sba
 	<p>Looking at the PDF below, it’s almost impossible to believe this is a forgery, especially with a valid Office of Management and Budget (OMB) form number. In fact, the PDF closely resembles the legitimate <a href="https://covid19relief.sba.gov/#/business-info">Business Information form</a> of the SBA’s online application for EIDL, and even includes an oath at the bottom certifying that all information is true under penalty of perjury. <b>With this attached PDF the attacker clearly has one goal in mind -- steal sensitive account and routing information from businesses.</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eo8OUef6V5ym63PUxdNYx/afef912550bed125be01b73aa0d25e7d/image3-7.png" alt="" class="kg-image" width="1918" height="1628" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eo8OUef6V5ym63PUxdNYx/8bdeeee4de42534cb28602b93467d647/image3-7.png" alt="" class="kg-image" width="1918" height="1628" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KpkngTHUKOi6zAvPKiYnb/6a067d2efc4aa3a0baa3350a0930abc4/image1-10.png" alt="" class="kg-image" width="1772" height="1760" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KpkngTHUKOi6zAvPKiYnb/ac57eab45defeb82bd272e6b93c2843e/image1-10.png" alt="" class="kg-image" width="1772" height="1760" loading="lazy">
 
 	</figure>
 	<p>The only telltale sign that this application is a forgery can be found buried in the document properties, where no typical target would venture:</p>
@@ -134,7 +134,7 @@ From: "U.S. Small Business Administration (SBA)" &lt;disastercustomerservice@sba
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eR2z7fvU5PANaxamjrOyR/f35d684e469ae2722c4aeef62cd5549c/image2-12.png" alt="" class="kg-image" width="1156" height="658" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eR2z7fvU5PANaxamjrOyR/e93c85a8fa3e3ce15ac3f99d90854060/image2-12.png" alt="" class="kg-image" width="1156" height="658" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

@@ -2,14 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LZNySVMEKXPpHByOETLV2/ce763204aee713c37e53e9078e5188b5/Screen-Shot-2018-07-20-at-11.26.39-AM.png" alt="Ricky Bobby" class="kg-image" width="477" height="257" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LZNySVMEKXPpHByOETLV2/931e6eef15864f241a9436491174f18d/Screen-Shot-2018-07-20-at-11.26.39-AM.png" alt="Ricky Bobby" class="kg-image" width="477" height="257" loading="lazy">
 
 	</figure>
 	<p>Earlier this month we released <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering">Dynamic Steering</a> for Load Balancing which allows you to have your Cloudflare load balancer direct traffic to the fastest pool for a given Cloudflare region or colo (Enterprise only).</p>
 	<p>To build this feature, we had to solve two key problems: 1) How to decide which pool of origins was the fastest and 2) How to distribute this decision to a growing group of 151 locations around the world.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52lBF8CGh1rOdQrpgHQHHa/39e7353c7fc61e155cf707805ace66e5/steering_logo.png" alt="steering_logo" class="kg-image" width="1600" height="882" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52lBF8CGh1rOdQrpgHQHHa/0e3233691489f0cc9d8640892c5924fa/steering_logo.png" alt="steering_logo" class="kg-image" width="1600" height="882" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -64,7 +64,7 @@
 	<p>We run a custom inhouse key-value store on every machine servicing requests. The main advantage of this datastore lies in how its replication logic takes advantage of the hierarchy nature of our network layout to facilitate faster replication while transfering less data.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14niTMB5ZnIjSfRkYSke3N/85b43b82d37afb758b9291fc2c67faea/data_model.png" alt="data_model" class="kg-image" width="707" height="625" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14niTMB5ZnIjSfRkYSke3N/a6febb2d0d368d41249bd98e85e7fc4c/data_model.png" alt="data_model" class="kg-image" width="707" height="625" loading="lazy">
 
 	</figure>
 	<p>Since we keep a copy of the data on every machine in <a href="https://www.cloudflare.com/network">every data center</a>, we need to make sure our dataset is as small as possible. We evaluated what additional data we actually needed to select a pool inside a Load Balancer configured with Dynamic Steering. Currently the only information we propagate is a map of the pool identifier to the EWMA.</p>
@@ -79,7 +79,7 @@
 	<p>Internally at Cloudflare we often talk about eyeballs, the actual visitors of a site clicking away in their browsers, and their experience of the process. Let's say you’ve setup three pools around the world: North America, Europe, and Australia. With Dynamic Steering, we will route your traffic to the pool with the lowest EWMA. Assuming all your pools are in good health and reporting expected RTT values an eyeballs experience should look like this.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3u3ZIX76FCGgkc5TViWtTu/42b7830fef23f7880dfd3f3fdd0375e2/IMG_1101.jpeg.jpeg" alt="IMG_1101" class="kg-image" width="530" height="468" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3u3ZIX76FCGgkc5TViWtTu/211374f51d8e1446a80f78fefc5756fc/IMG_1101.jpeg.jpeg" alt="IMG_1101" class="kg-image" width="530" height="468" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -93,7 +93,7 @@
 	<p>All Enterprise customers and customers with the Geo Routing add-on for Load Balancing have access to Dynamic Steering. To enable Dynamic Steering, select the option in your Load Balancing traffic steering configuration. Please see the <a href="https://support.cloudflare.com/hc/en-us/articles/360006900952-Load-Balancing-Dynamic-Steering">KB article</a> or your Cloudflare account team for more information.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OKw6wPzI1kyNZK7GPf5ZD/ab3e9379878e350807c32324604f56c2/Step_4.png" alt="Dynamic Steering Configuration" class="kg-image" width="1526" height="372" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OKw6wPzI1kyNZK7GPf5ZD/0883d9e807dbf9ff319095f13c9a75f2/Step_4.png" alt="Dynamic Steering Configuration" class="kg-image" width="1526" height="372" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

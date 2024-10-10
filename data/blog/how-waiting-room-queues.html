@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/308ogSo9qOQp2ng3ve7spq/0d5964a4355efc10476e7c953f1298e9/image3-7.png" alt="How Waiting Room makes queueing decisions on Cloudflare's highly distributed network" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/308ogSo9qOQp2ng3ve7spq/163e8201c4d426710ef2211237699c08/image3-7.png" alt="How Waiting Room makes queueing decisions on Cloudflare's highly distributed network" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>Almost three years ago, we <a href="https://blog.cloudflare.com/cloudflare-waiting-room">launched Cloudflare Waiting Room</a> to protect our customers’ sites from overwhelming spikes in legitimate traffic that could bring down their sites. Waiting Room gives customers control over user experience even in times of high traffic by placing excess traffic in a customizable, on-brand waiting room, dynamically admitting users as spots become available on their sites. Since the launch of Waiting Room, we’ve continued to expand its functionality based on customer feedback with features like <a href="https://blog.cloudflare.com/waiting-room-random-queueing-and-custom-web-mobile-apps">mobile app support</a>, <a href="https://blog.cloudflare.com/understand-the-impact-of-your-waiting-rooms-settings-with-waiting-room-analytics">analytics</a>, <a href="https://blog.cloudflare.com/waiting-room-bypass-rules">Waiting Room bypass rules</a>, and <a href="https://blog.cloudflare.com/tag/waiting-room">more</a>.</p>
@@ -20,7 +20,7 @@
 	<p>The diagram below shows a quick overview of where the Waiting room sits when a customer enables it for their website.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/e3jZQvH7ed5YAFbSYk5km/a32668534f89f772748d8a662433c2b2/Waiting-Room-overview.png" alt="Waiting Room overview" class="kg-image" width="1600" height="1127" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/e3jZQvH7ed5YAFbSYk5km/8866b3fe3f89ed1ac3f0b536d30b9d30/Waiting-Room-overview.png" alt="Waiting Room overview" class="kg-image" width="1600" height="1127" loading="lazy">
 
 	</figure>
 	<p>Waiting Room is built on <a href="https://workers.cloudflare.com">Workers</a> that runs across a global network of Cloudflare data centers. The requests to a customer’s website can go to many different Cloudflare data centers. To optimize for minimal <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> and enhanced performance, these requests are routed to the data center with the most geographical proximity. When a new user makes a request to the host/path covered by the Waiting room, the waiting room worker decides whether to send the user to the origin or the waiting room. This decision is made by making use of the waiting room state which gives an idea of how many users are on the origin.</p>
@@ -39,7 +39,7 @@
 	<p>The graph below is from one of our internal monitoring tools for a customer and shows a customer's traffic pattern for 2 days. This customer has set their limits, <i>new users per minute</i> and <i>total active users</i> to 200 and 200 respectively.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ldSHbmG07jQ9qRikiy9Yh/4a4e21e822003c509cb31be364519279/Screen-Shot-2023-09-11-at-10.30.21-AM.png" alt="Customer traffic for 2 days between September 9th to 11th with 2 spikes in traffic" class="kg-image" width="1600" height="927" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ldSHbmG07jQ9qRikiy9Yh/500ddc98a204322415592acdddefb91d/Screen-Shot-2023-09-11-at-10.30.21-AM.png" alt="Customer traffic for 2 days between September 9th to 11th with 2 spikes in traffic" class="kg-image" width="1600" height="927" loading="lazy">
 
 	</figure>
 	<p>If you look at their traffic you can see that users were queued on September 11th around 11:45. At that point in time, the <i>total active users</i> was around 200. As the <i>total active users</i> ramped down (around 12:30)<i>,</i> the queued users progressed to 0. The queueing started again on September 11th around 15:00 when total active users got to 200. The users that were queued around this time ensured that the traffic going to the website is around the limits set by the customer.</p>
@@ -98,7 +98,7 @@
 	<p>As we can see from the example above, we decide whether to queue or not at the worker level. The number of new users that go to workers around the world can be non-uniform. To understand what can happen when there is non-uniform distribution of traffic to two workers, let us look at the diagram below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2I3CYq6IbnjE7T1A4yEOC1/02cf9dcb4acaeca3bc68e2bca8343f3f/Side-effect-of-dividing-slots-at-worker-level.png" alt="Side effect of dividing slots at worker level" class="kg-image" width="1600" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2I3CYq6IbnjE7T1A4yEOC1/513183137efaa278314be172c9ba549d/Side-effect-of-dividing-slots-at-worker-level.png" alt="Side effect of dividing slots at worker level" class="kg-image" width="1600" height="1013" loading="lazy">
 
 	</figure>
 	<p>Imagine the slots available for a data center in San Jose are <i>ten</i>. There are two workers running in San Jose. <i>Seven</i> users go to worker1 and <i>one</i> user goes to worker2. In this situation worker1 will let in <i>five</i> out of the <i>seven</i> workers to the website and <i>two</i> of them get queued as worker1 only has <i>five</i> slots available. The <i>one</i> user that shows up at worker2 also gets to go to the origin. So we queue <i>two</i> users, when in reality <i>ten</i> users can get sent from the datacenter San Jose when only <i>eight</i> users show up.</p>
@@ -126,13 +126,13 @@
 	<p>To understand this let's revisit the example where there is non-uniform distribution of traffic to two workers. So two workers similar to the one we discussed before are shown below. In this case the utilization is low (10%). This means we are far from the limits. So the slots allocated(8) are closer to the <code>slotsAvailable</code> for the datacenter San Jose which is 10. As you can see in the diagram below, all the eight users that go to either worker get to reach the website with this modified slot allocation as we are providing more slots per worker at lower utilization levels.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zNp1o6DEAbGL4GSYjUkeJ/fa76b41beea6d244b474302c4c8d9364/Division-of-slots-among-workers-at-lower-utilization.png" alt="Division of slots among workers at lower utilization" class="kg-image" width="1600" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zNp1o6DEAbGL4GSYjUkeJ/1bc9bdf44861eb0025a0fe49ce45ae2a/Division-of-slots-among-workers-at-lower-utilization.png" alt="Division of slots among workers at lower utilization" class="kg-image" width="1600" height="1013" loading="lazy">
 
 	</figure>
 	<p>The diagram below shows how the slots allocated per worker changes with utilization (how far you are away from limits). As you can see here, we are allocating more slots per worker at lower utilization. As the utilization increases, the slots allocated per worker decrease as it’s getting closer to the limits, and we are better prepared for spikes in traffic. At 10% utilization every worker gets close to the slots available for the data center. As the utilization is close to 100% it becomes close to the slots available divided by worker count in the data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qy2IXaKqoER8zkDRL9mAZ/7a734f79cd402ef7105b6195dd13cf69/Alloting-more-slots-at-lower-limits.png" alt="Allotting more slots at lower limits" class="kg-image" width="1600" height="1480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qy2IXaKqoER8zkDRL9mAZ/2de5767fa86bc57ccc1d428b26269cef/Alloting-more-slots-at-lower-limits.png" alt="Allotting more slots at lower limits" class="kg-image" width="1600" height="1480" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -165,7 +165,7 @@ adaptedWorkerCount = actualWorkerCount * workerMultiplier</code></pre>
 	<p><code>curveFactor</code> - is the exponent which can be adjusted which decides how aggressive we are with the distribution of extra budgets at lower worker counts. To understand this let's look at the graph of how y = x and y = x^2 looks between values 0 and 1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wgTahQXjs2Heu9fW2jOgG/93f53a5d280e9ab9f194a87c906a343e/Graph-for-y-x-curveFactor.png" alt="Graph for y=x^curveFactor" class="kg-image" width="1600" height="1480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wgTahQXjs2Heu9fW2jOgG/56f26b2e0bcd048dd4a2a7b28bdaef38/Graph-for-y-x-curveFactor.png" alt="Graph for y=x^curveFactor" class="kg-image" width="1600" height="1480" loading="lazy">
 
 	</figure>
 	<p>The graph for y=x is a straight line passing through (0, 0) and (1, 1).</p>
@@ -187,7 +187,7 @@ adaptedWorkerCount = actualWorkerCount * workerMultiplier</code></pre>
 	<p>The method of giving more slots at lower limits decreases the chances of queuing when traffic is low relative to traffic limits. However, at lower utilization levels a uniform spike happening around the world could cause more users to go into the origin than expected. The diagram below shows the case where this can be an issue. As you can see the slots available are <i>ten</i> for the data center. At 10% utilization we discussed before, each worker can have <i>eight</i> slots each. If <i>eight</i> users show up at one worker and <i>seven</i> show up at another, we will be sending <i>fifteen</i> users to the website when only <i>ten</i> are the maximum available slots for the data center.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aKrVwAvh40LjZGBcGl43R/8387284e8d9ce08d930e1d414a15e773/Risk-of-over-provisioning-at-lower-utilization.png" alt="Risk of over provisioning at lower utilization" class="kg-image" width="1600" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aKrVwAvh40LjZGBcGl43R/2736425861cbc5ff8266c0aa7aa64a88/Risk-of-over-provisioning-at-lower-utilization.png" alt="Risk of over provisioning at lower utilization" class="kg-image" width="1600" height="1013" loading="lazy">
 
 	</figure>
 	<p>With the range of customers and types of traffic we have, we were able to see cases where this became a problem. A traffic spike from low utilization levels could cause overshooting of the global limits. This is because we are over provisioned at lower limits and this increases the risk of significantly exceeding traffic limits. We needed to implement a safer approach which would not cause limits to be exceeded while also decreasing the chance of queueing when traffic is low relative to traffic limits.</p>
@@ -206,20 +206,20 @@ adaptedWorkerCount = actualWorkerCount * workerMultiplier</code></pre>
 	<p>To understand how it helps with avoiding usage of worker counts, let's check the diagram below. There are two workers talking to a <i>Data Center Counter</i> below. Just as we discussed before, the workers let users through to the website based on the waiting room state. The count of the number of users let through was stored in the memory of the worker before. By introducing counters, it is done in the <i>Data Center Counter</i>. Whenever a new user makes a request to the worker, the worker talks to the counter to know the current value of the counter. In the example below for the first new request to the worker the counter value received is 9. When a data center has 10 slots available, that will mean the user can go to the website. If the next worker receives a new user and makes a request just after that, it will get a value 10 and based on the slots available for the worker, the user will get queued.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ttIdi7gwzmK4ENeqkIGO0/351fb10609f5818c43fa472cddba89eb/Counters-helping-workers-communicate-with-each-other.png" alt="Counters helping workers communicate with each other" class="kg-image" width="1600" height="1170" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ttIdi7gwzmK4ENeqkIGO0/108c8831de2691504c4667bbc6180fcc/Counters-helping-workers-communicate-with-each-other.png" alt="Counters helping workers communicate with each other" class="kg-image" width="1600" height="1170" loading="lazy">
 
 	</figure>
 	<p>The <i>Data Center Counter</i> acts as a point of synchronization for the workers in the waiting room. Essentially, this enables the workers to talk to each other without really talking to each other directly. This is similar to how a ticketing counter works. Whenever one worker lets someone in, they request tickets from the counter, so another worker requesting the tickets from the counter will not get the same ticket number. If the ticket value is valid, the new user gets to go to the website. So when different numbers of new users show up at workers, we will not over allocate or under allocate slots for the worker as the number of slots used is calculated by the counter which is for the data center.</p>
 	<p>The diagram below shows the behavior when an uneven number of new users reach the workers, one gets <i>seven</i> new users and the other worker gets <i>one</i> new user. All <i>eight</i> users that show up at the workers in the diagram below get to the website as the slots available for the data center is <i>ten</i> which is below <i>ten</i>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bais5OnxQpewoeNM2T81H/7f766d3d58a380f16af8ad93e5e815d3/Uneven-number-of-requests-to-Workers-does-not-cause-queueing.png" alt="Uneven number of requests to workers does not cause queueing" class="kg-image" width="1600" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bais5OnxQpewoeNM2T81H/b2693f9d527c65183299e5bbe778d976/Uneven-number-of-requests-to-Workers-does-not-cause-queueing.png" alt="Uneven number of requests to workers does not cause queueing" class="kg-image" width="1600" height="1013" loading="lazy">
 
 	</figure>
 	<p>This also does not cause excess users to get sent to the website as we do not send extra users when the counter value equals the <code>slotsAvailable</code> for the data center. Out of the <i>fifteen</i> users that show up at the workers in the diagram below <i>ten</i> will get to the website and <i>five</i> will get queued which is what we would expect.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IF1Ze4p1TvZM9YUfCLyla/146ffc7044ed34ecdfebf08ef7b58a0b/Risk-of-over-provisioning-at-lower-utilization-also-does-not-exist-as-counters-help-Workers-communicate-with-each-other.png" alt="" class="kg-image" width="1600" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IF1Ze4p1TvZM9YUfCLyla/ba620e498641a3006eedc6200e0e3c55/Risk-of-over-provisioning-at-lower-utilization-also-does-not-exist-as-counters-help-Workers-communicate-with-each-other.png" alt="" class="kg-image" width="1600" height="1013" loading="lazy">
 
 	</figure>
 	<p>Risk of over provisioning at lower utilization also does not exist as counters help workers to communicate with each other.</p>
@@ -253,7 +253,7 @@ adaptedWorkerCount = actualWorkerCount * workerMultiplier</code></pre>
 	<p>However, the durable object for the data center stays within the same data center. This leads to minimal additional latency which is usually less than 10 ms. For the calls to the durable object that handles Anywhere data centers, the worker may have to cross oceans and long distances. This could cause the latency to be around 60 or 70 ms in those cases. The 95th percentile values shown below are higher because of calls that go to farther data centers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LC6pdXV2rZxZAntvU36Bs/8e3772682ffd39eec8b7b1c93b87211b/1Dr9LuESmHPXU4nQlr_9WIncDSE9uXcbHA6qevspl.png" alt="Graph showing percentile distribution of counter latencies from our production dashboard" class="kg-image" width="1600" height="688" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LC6pdXV2rZxZAntvU36Bs/fa9c714cd8bbad0d2b6fed0a35873f7d/1Dr9LuESmHPXU4nQlr_9WIncDSE9uXcbHA6qevspl.png" alt="Graph showing percentile distribution of counter latencies from our production dashboard" class="kg-image" width="1600" height="688" loading="lazy">
 
 	</figure>
 	<p>The design decision to add counters adds a slight extra latency for new users going to the website. We deemed the trade-off acceptable because this reduces the number of users that get queued before limits are reached. In addition, the counters are only required when new users try to go into the website. Once new users get to the origin, they get entry directly from workers as the proof of entry is available in the cookies that the customers come with, and we can let them in based on that.</p>

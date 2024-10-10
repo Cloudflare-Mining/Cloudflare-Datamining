@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NJezhsJZ3Up74AGwLZpi6/279e93ceb045d0cb9e161a224a903214/Cloudflare-reflections-copy-2_2x.png" alt="" class="kg-image" width="2214" height="1067" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NJezhsJZ3Up74AGwLZpi6/552e4017a10432d1eabf618d2b6b1b6d/Cloudflare-reflections-copy-2_2x.png" alt="" class="kg-image" width="2214" height="1067" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we’re <a href="https://blog.cloudflare.com/making-the-waf-40-faster">constantly working on</a> improving the performance of our edge — and that was exactly what my internship this summer entailed. I’m excited to share some improvements we’ve made to our popular <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">Firewall Rules</a> product over the past few months.</p>
@@ -29,7 +29,7 @@
 	<p>Our solution? Performance measurement as a service — an isolated and reproducible benchmark for our Firewall engine and a framework for engineers to easily request runs and view results. It’s worth noting that we took a lot of inspiration from the fantastic <a href="https://perf.rust-lang.org">Rust Compiler benchmarks</a> to build this.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j6ou7jUofaSYjEjoMej25/d467199d6dc809000a6fab7608a8c00f/image3-10.png" alt="" class="kg-image" width="1999" height="719" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j6ou7jUofaSYjEjoMej25/a380fb67cdca84b7b95ff13eb8d98203/image3-10.png" alt="" class="kg-image" width="1999" height="719" loading="lazy">
 
 	</figure>
 	<p>Our benchmarking framework, showing how performance during different stages of processing Wirefilter expressions has changed over time [1].</p>
@@ -45,7 +45,7 @@
 	<p>Once again we took inspiration from the Rust compiler, and its <a href="https://blog.rust-lang.org/inside-rust/2020/02/25/intro-rustc-self-profile.html">self-profiling options</a>, using the <a href="https://www.man7.org/linux/man-pages/man2/perf_event_open.2.html">perf_event_open</a> API to record counters from <i>inside</i> our binary. We then output something like the following, which our framework can easily ingest and store for later visualization.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rMHtBLVjfrHV0BMfTvaZV/e1963508f5cabc4177d346993e232b75/Screen-Shot-2020-09-24-at-10.20.42.png" alt="" class="kg-image" width="1338" height="860" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rMHtBLVjfrHV0BMfTvaZV/a53037be7211be732df9ced5169b8fe7/Screen-Shot-2020-09-24-at-10.20.42.png" alt="" class="kg-image" width="1338" height="860" loading="lazy">
 
 	</figure>
 	<p>Output of our benchmarks in <a href="https://jsonlines.org">JSON Lines</a> format, showing a list of recordings for each combination of hardware counter and Wirefilter processing stage. We’ve used 10 repeats here for readability, but we use around 20, in addition to 5 warmup rounds, within our framework.</p>
@@ -279,14 +279,14 @@
 	<p><b>Before modification</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OUJ2AojfLLoz1mZepPjg0/5fe5a7e4a451fc49245ad3b7a962779d/image1-16.png" alt="" class="kg-image" width="1999" height="225" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OUJ2AojfLLoz1mZepPjg0/1b98003bf5fb2a44fed2366f6840fcae/image1-16.png" alt="" class="kg-image" width="1999" height="225" loading="lazy">
 
 	</figure>
 	<p>How registers are filled in the original implementation for the haystack “abcdefghij”, red squares indicate out of bounds memory.</p>
 	<p><b>After modification</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j5TTWwSXcV1Rtu7Uaoqsf/420aae85fa11ab55c9e0563d0a31082c/image4-10.png" alt="" class="kg-image" width="1999" height="228" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j5TTWwSXcV1Rtu7Uaoqsf/138c36a096cc6c201777028933a3f49c/image4-10.png" alt="" class="kg-image" width="1999" height="228" loading="lazy">
 
 	</figure>
 	<p>How registers are filled with the overlapping modification for the same haystack, notice how ‘g’ and ‘h’ each appear in two registers.</p>

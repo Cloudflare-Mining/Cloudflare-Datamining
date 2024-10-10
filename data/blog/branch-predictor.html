@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rKA0cXsmlXoLuoPA07BLc/33c6100db42a60a6edcb84854fd0e071/Branch-Prediction.png" alt="" class="kg-image" width="1600" height="847" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rKA0cXsmlXoLuoPA07BLc/e8ebc764924993aa2adbda8d7a435fb2/Branch-Prediction.png" alt="" class="kg-image" width="1600" height="847" loading="lazy">
 
 	</figure>
 	<p>Some time ago I was looking at a hot section in our code and I saw this:</p>
@@ -56,14 +56,14 @@ const char *getCountry(int cc) {
 	<p>The branch predictor attempts to figure out a destination of a branching instruction very early and with very little context. This magic happens <b>before</b> the "decoder" pipeline stage and the predictor has very limited data available. It only has some past history and the address of the current instruction. If you think about it - this is super powerful. Given only current instruction pointer it can assess, with very high confidence, where the target of the jump will be.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1K3IOo5qkOOP0hhRtwu10U/0f1b00bf1f66c601a1b2cfe7ca990c99/pasted-image-0-1.png" alt="" class="kg-image" width="840" height="613" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1K3IOo5qkOOP0hhRtwu10U/e9997acf855e96044f2684e1adae87b0/pasted-image-0-1.png" alt="" class="kg-image" width="840" height="613" loading="lazy">
 
 	</figure>
 	<p>Source: <a href="https://en.wikipedia.org/wiki/Branch_predictor">https://en.wikipedia.org/wiki/Branch_predictor</a></p>
 	<p>The BPU maintains a couple of data structures, but today we'll focus on Branch Target Buffer (BTB). It's a place where the BPU remembers the target instruction pointer of previously taken branches. The whole mechanism is much more complex, take a look a the <a href="http://www.ece.uah.edu/~milenka/docs/VladimirUzelac.thesis.pdf">Vladimir Uzelac's Master thesis</a> for details about branch prediction on CPU's from 2008 era:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FO1GCWdkQYR5I90qGopuH/2739fae48f53208ee8511369f3f1a453/pasted-image-0--1-.png" alt="" class="kg-image" width="765" height="601" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FO1GCWdkQYR5I90qGopuH/9f51e10ca53eafd001f2238896103327/pasted-image-0--1-.png" alt="" class="kg-image" width="765" height="601" loading="lazy">
 
 	</figure>
 	<p>For the scope of this article we'll simplify and focus on the BTB only. We'll try to show how large it is and how it behaves under different conditions.</p>
@@ -86,7 +86,7 @@ label_a:
 	<p>Assuming a simplistic CPU model, the operations would flow through the pipeline like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LYtd8rNXEQA2X2pOPwmvd/189b8a049a74f89c13089d9b8a2fe7d6/3P6PIWN6gPAdYzP8oDgrsaOMKgUmG51zIiFhbm071cZKM276S7vRb5atpTwlKrM1lFHRYsobw8P4e-Z9t1Vb9TGeutpBe2CkMrNGruWO8yb5Qz0vZ6Qn6RbOi5Tp.png" alt="" class="kg-image" width="1170" height="654" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LYtd8rNXEQA2X2pOPwmvd/e9bbdd4d54a72dc78730684252d01a84/3P6PIWN6gPAdYzP8oDgrsaOMKgUmG51zIiFhbm071cZKM276S7vRb5atpTwlKrM1lFHRYsobw8P4e-Z9t1Vb9TGeutpBe2CkMrNGruWO8yb5Qz0vZ6Qn6RbOi5Tp.png" alt="" class="kg-image" width="1170" height="654" loading="lazy">
 
 	</figure>
 	<p>In the first cycle the BR instruction is fetched. This is an unconditional branch instruction changing the execution flow of the CPU. At this point it's not yet decoded, but the CPU would like to fetch another instruction already! Without a branch predictor in cycle 2 the fetch unit either has to wait or simply continues to the next instruction in memory, hoping it will be the right one.</p>
@@ -105,14 +105,14 @@ label_a:
 	<p>Preparing an experiment to stress only the BTB is relatively simple (<a href="https://xania.org/201602/bpu-part-three">based on Matt Godbolt's work</a>). It turns out a sequence of unconditional <code>jmps</code> is totally sufficient. Consider this x86 code:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/259y50RQfLqaFcsT4tljGb/1877e062685dd0177c2db1a054da3731/pasted-image-0--2-.png" alt="" class="kg-image" width="900" height="448" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/259y50RQfLqaFcsT4tljGb/5010158442d4e2afb6ebb3c105ee4e5b/pasted-image-0--2-.png" alt="" class="kg-image" width="900" height="448" loading="lazy">
 
 	</figure>
 	<p>This code stresses the BTB to an extreme - it just consists of a chain of <code>jmp +2</code> statements (i.e. literally jumping to the next instruction). In order to avoid wasting cycles on frontend pipeline bubbles, each taken jump needs a BTB hit. This branch prediction must happen very early in the CPU pipeline, before instruction decode is finished. This same mechanism is needed for any taken branch, whether it's unconditional, conditional or a function call.</p>
 	<p>The code above was run inside a test harness that measures how many CPU cycles elapse for each instruction. For example, in this run we're measuring times of dense - every two bytes - 1024 jmp instructions one after another:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QofFzm1kmqFLuRrFPoyjQ/e85247358de40b0ead463299792416a1/pasted-image-0--3-.png" alt="" class="kg-image" width="876" height="510" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QofFzm1kmqFLuRrFPoyjQ/857bfbfe366720bd480653388f97eac8/pasted-image-0--3-.png" alt="" class="kg-image" width="876" height="510" loading="lazy">
 
 	</figure>
 	<p>We’ll look at the results of experiments like this for a few different CPUs. But in this instance, it was run on a machine with an AMD EPYC 7642. Here, the cold run took 10.5 cycles per jmp, and then all subsequent runs took ~3.5 cycles per jmp. The code is prepared in such a way to make sure it's the BTB that is slowing down the first run. Take a look at the full code, there is quite some magic to warm up the L1 cache and iTLB without priming the BTB.</p>
@@ -128,7 +128,7 @@ label_a:
 	<p>To get a full picture we also need to think about the density of jmp instructions in the code. The code above did eight jmps per 16-byte code block. This is a lot. For example, the code below contains one jmp instruction in each block of 16 bytes. Notice that the <code>nop</code> opcodes are jumped over. The block size doesn't change the number of executed instructions, only the code density:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2uenA2zFAkPWQZldVX7gba/7d2bdf7cb06dcd7924821749c715fac8/pasted-image-0--4-.png" alt="" class="kg-image" width="790" height="778" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uenA2zFAkPWQZldVX7gba/8823f9ec4052618dc06c21d0621a6581/pasted-image-0--4-.png" alt="" class="kg-image" width="790" height="778" loading="lazy">
 
 	</figure>
 	<p>Varying the jmp block size might be important. It allows us to control the placement of the jmp opcodes. Remember the BTB is indexed by instruction pointer address. Its value and its alignment might influence the placement in the BTB and help us reveal the BTB layout. Increasing the alignment will cause more nop padding to be added. The sequence of a single measured instruction - jmp in this case - and zero or more nops, I will call "block", and its size "block size". Notice that the larger the block size, the larger the working code size for the CPU. At larger values we might see some performance drop due to exhausting L1 cache space.</p>
@@ -144,13 +144,13 @@ label_a:
 	<p>See the <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-05-branch-prediction">code on GitHub</a>. If you want to see the generated machine code, though, you need to run a special command. It's created procedurally by the code, customized by passed parameters. Here's an example <code>gdb</code> incantation:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aAKMXz8aruwblN67UvZd7/af2eec43064b1182b6b3f2bcb462d962/pasted-image-0--5-.png" alt="" class="kg-image" width="1197" height="76" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aAKMXz8aruwblN67UvZd7/1eb2aea7cc6e2e3a9c0f6823f60b8f08/pasted-image-0--5-.png" alt="" class="kg-image" width="1197" height="76" loading="lazy">
 
 	</figure>
 	<p>Let's bring this experiment forward, what if we took the best times of each run - with a fully primed BTB - for varying values of jmp block sizes and number of blocks - working set size? Here you go:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZNeolS38Q90vdHPvehvVa/fffb2a76c40931e593d424dc4bb7f873/pasted-image-0--6-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZNeolS38Q90vdHPvehvVa/64e0c16d163d74c05cfbaee6f8d9e15c/pasted-image-0--6-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>This is an astonishing chart. First, it's obvious something happens at the 4096 jmp mark[<a href="https://blog.cloudflare.com/#footnotes">4</a>] regardless of how large the jmp block sizes - how many nop's we skip over. Reading it aloud:</p>
@@ -170,13 +170,13 @@ label_a:
 	<p>An entry to BTB is added wherever a branch is "taken" - that is, the jump actually happens. An unconditional "jmp" or always taken conditional branch, will cost a BTB slot. To get best performance make sure to not have more than 4096 taken branches in the hot loop. The good news is that branches never-taken don't take space in the BTB. We can illustrate this with another experiment:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gd2JKAwYMpgk5obd4E0Hz/590527483c2896fc98376c5032737b41/pasted-image-0--7-.png" alt="" class="kg-image" width="457" height="126" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gd2JKAwYMpgk5obd4E0Hz/29876ce9f45dc01edbb8e3966bcb9903/pasted-image-0--7-.png" alt="" class="kg-image" width="457" height="126" loading="lazy">
 
 	</figure>
 	<p>This boring code is going over not-taken <code>jne</code> followed by two nops (block size=4). Aimed with this test (jne never-taken), the previous one (jmp always-taken) and a conditional branch <code>je</code> always-taken, we can draw this chart:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1F2STBl6iw6OpkwqmIdlR9/656f5681f453bbd62023d160795a3519/pasted-image-0--8-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1F2STBl6iw6OpkwqmIdlR9/1de627e490ddd75816bb3899f99f6ed7/pasted-image-0--8-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>First, without any surprise we can see the conditional 'je always-taken' is getting slightly more costly than the simple unconditional <code>jmp</code>, but only after the 4096 branches mark. This makes sense, the conditional branch is resolved later in the pipeline so the frontend bubble is longer. Then take a look at the blue line hovering near zero. This is the "jne never-taken" line flat at 0.3 clocks / block, no matter how many blocks we run in sequence. The takeaway is clear - you can have as many never-taken branches as you want, without incurring any cost. There isn't any spike at 4096 mark, meaning BTB is not used in this case. It seems the conditional jump not seen before is guessed to be not-taken.</p>
@@ -185,13 +185,13 @@ label_a:
 	<p>I haven't been able to find this in the literature, but it seems call/ret also need the BTB entry for best performance. I was able to illustrate this on our AMD EPYC. Let's take a look at this test:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fHArGj5TWvRM9AEM84NLJ/02ca744848251f7d4723c63a92c5ffc4/pasted-image-0--9-.png" alt="" class="kg-image" width="480" height="333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fHArGj5TWvRM9AEM84NLJ/1951dfe42651b923551d90dddc63964f/pasted-image-0--9-.png" alt="" class="kg-image" width="480" height="333" loading="lazy">
 
 	</figure>
 	<p>This time we'll issue a number of <code>callq</code> instructions followed by <code>ret</code> - both of which should be fully predicted. The experiment is crafted so that each callq calls a unique function, to allow for retq prediction - each one returns to exactly one caller.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/677H5BdxwzZ9B6hbebRFnB/0a53b883924daf4e65850d27c5999ee9/pasted-image-0--10-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/677H5BdxwzZ9B6hbebRFnB/a1ac1602d5efab51152a6219fde87579/pasted-image-0--10-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>This chart confirms the theory: no matter the code density - with the exception of 64-byte block size being notably slower - &nbsp;the cost of predicted call/ret starts to deteriorate after the 2048 mark. At this point the BTB is filled with call and ret predictions and can't handle any more data. This leads to an important conclusion:</p>
@@ -209,7 +209,7 @@ label_a:
 	<p>Newer AMD is more complex than the previous generations. Let's run the two most important experiments. First, the <code>jmp</code> one:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12g3Zg18eWyHIwyUuf63gj/1966b1de89c131fd46fcbcdbe6d6d725/pasted-image-0--11-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12g3Zg18eWyHIwyUuf63gj/0cb89d1fc7a8fedbed929aa455e11dbf/pasted-image-0--11-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>For the always-taken branches case we can see a very good, sub 1 cycle, timings when the number of branches doesn't exceed 1024 and the code isn't too dense.</p>
@@ -217,7 +217,7 @@ label_a:
 	<p>Then there is some noise starting after the 4096 jmps mark. This is followed by a complete drop of speed at about 6000 branches. This is in line with the theory that BTB is 4096 entries long. We can speculate that some other prediction mechanism is successfully kicking in beyond that, and keeps up the performance up the ~6k mark.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4X5KfDDT36u9u2MGb7iu7t/f0c33bdaa2cbf42f2090f5a616008bd9/pasted-image-0--12-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4X5KfDDT36u9u2MGb7iu7t/90c4fbf3d04cd386ed6eecae645f25f8/pasted-image-0--12-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>The call/ret chart shows a similar tale, the timings start breaking after 2048 mark, and completely fail to be predicted beyond ~3000.</p>
@@ -232,7 +232,7 @@ label_a:
 	<p>The Intel Xeon looks different from the AMD:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hIriKLopeE26yIor9qGG/ed9680bc72b4843455b3b165473db63d/pasted-image-0--13-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hIriKLopeE26yIor9qGG/9ab0d56fd18cfd4a782b7270845bc66f/pasted-image-0--13-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>Our test shows the predicted taken branch costs 2 cycles. Intel has documented a clock penalty for very dense branching code - this explains the 4-byte block size line hovering at ~3 cycles. The branch cost breaks at the 4096 jmp mark, confirming the theory that the Intel BTB can hold 4096 entries. The 64-byte block size chart looks confusing, but really isn't. The branch cost stays at flat 2 cycles up till the 512 jmp count. Then it increases. This is caused by the internal layout of the BTB which is said to be 8-way associative. It seems with the 64-byte block size we can utilize at most half of the 4096 BTB slots.</p>
@@ -240,7 +240,7 @@ label_a:
 	<p>Then the call/ret chart:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XU4ofCRG3wfjLZlwsEhBv/597d7b569487f230adb6705fe82fd324/pasted-image-0--14-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XU4ofCRG3wfjLZlwsEhBv/2df1b19f6623a26be745caf35c28ee33/pasted-image-0--14-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>Similarly, we can see the branch predictions failing after the 2048 jmp mark - in this experiment one block uses two flow control instructions: call and ret. This again confirms the BTB size of 4K entries. The 64-byte block size is generally slower due to the nop padding but also breaks faster due to the instructions alignment issue. Notice, we haven't seen this effect on AMD.</p>
@@ -256,7 +256,7 @@ label_a:
 	<p>We expect it to be very different - it's designed for mobile and it's using ARM64 architecture. Let's see our two experiments:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bJ9lzYsIARltRCkOEJVZZ/af75a9fdbdb0324fab4e3a376e053766/pasted-image-0--15-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bJ9lzYsIARltRCkOEJVZZ/6b1b5edcdf00e3c0a3c353fff72c8232/pasted-image-0--15-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>The predicted <code>jmp</code> test shows an interesting story. First, when the code fits 4096 bytes (1024*4 or 512*8, etc) you can expect a predicted <code>jmp</code> to cost 1 clock cycle. This is an excellent score.</p>
@@ -264,7 +264,7 @@ label_a:
 	<p>Let's compare the "predicted jmp" with the "unpredicted jmp" chart. Take this chart with a grain of salt, because flushing the branch predictor is notoriously difficult.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VCtlgVdJkSB3MFuYbR5MQ/cc906444e88a9fbf951e1a7ab84a142e/pasted-image-0--16-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VCtlgVdJkSB3MFuYbR5MQ/31b80611cab5b7a5ec14514dd375e7ea/pasted-image-0--16-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>However, even if we don't trust the flush-bpu code (<a href="https://xania.org/201602/bpu-part-three">adapted from Matt Godbolt</a>), this chart reveals two things. First, the "unpredicted" branch cost seems to be correlated with the branch distance. The longer the branch the costlier it is. We haven't seen such behaviour on x86 CPUs.</p>
@@ -273,7 +273,7 @@ label_a:
 	<p>The call/ret chart is funny:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/54s7q6CJamAHCjpzDHFm6V/9693c0b7ddf00b57f4db9df68b149d08/pasted-image-0--17-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54s7q6CJamAHCjpzDHFm6V/d1db62f4d8ec351ce539709cb6a512cd/pasted-image-0--17-.png" alt="" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
 	<p>Like in the chart before, we can see a big benefit if hot code fits within 4096 bytes (512*4 or 256*8). Otherwise, you can count on 4-6 cycles per call/ret sequence (or, bl/ret as it's known in ARM). The chart shows funny alignment issues. It's unclear what they are caused by. Beware, comparing the numbers in this chart with x86 is unfair, since ARM <code>call</code> operation differs substantially from the x86 variant.</p>

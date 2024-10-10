@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FnKT6c6pdMhMscrs7wlqP/a14e4cb97821a781a9ece07275b7ae24/6188310189_a4059f9e2c.jpeg.scaled500.jpg" alt="What makes SPDY
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FnKT6c6pdMhMscrs7wlqP/0e3ff4988c8effa5423bbc5ea1718af6/6188310189_a4059f9e2c.jpeg.scaled500.jpg" alt="What makes SPDY
 speedy?" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
@@ -14,13 +14,13 @@ speedy?" class="kg-image" width="500" height="375" loading="lazy">
 	<p>Here's a screen shot from Firebug running in Mozilla Firefox. You can see the page being downloaded at the top and then the parts of the page (such as JavaScript, CSS and images) being downloaded in parallel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WKgWL3qsCGc6T29MgKGSd/de52727bc16ca25232ccd3b834904a64/Screen_Shot_2012-06-22_at_2.40.16_PM.png.scaled500.png" alt="What makes SPDY speedy?" class="kg-image" width="500" height="270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WKgWL3qsCGc6T29MgKGSd/47c9376c711daaf84ea6045c5beb82c6/Screen_Shot_2012-06-22_at_2.40.16_PM.png.scaled500.png" alt="What makes SPDY speedy?" class="kg-image" width="500" height="270" loading="lazy">
 
 	</figure>
 	<p>But what's not clear from that view is how Firefox is actually connecting to the web server and retrieving the parts of the page. For that it's necessary to dig a little deeper. Using a combination of Wireshark and a custom program written in Processing here's a view of the TCP connections and downloading of each part of the CloudFlare home page.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zsz5tmMmvRwJwaE34NiMD/2629d5790da0a300e1857f11059acd7f/Screen_Shot_2012-06-22_at_7.06.42_PM.png.scaled500.png" alt="What makes SPDY speedy?" class="kg-image" width="500" height="300" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zsz5tmMmvRwJwaE34NiMD/32f41fd5989580f1f13a4ecc2bc19b20/Screen_Shot_2012-06-22_at_7.06.42_PM.png.scaled500.png" alt="What makes SPDY speedy?" class="kg-image" width="500" height="300" loading="lazy">
 
 	</figure>
 	<p>The scale at the top shows elapsed time in seconds. Down the left hand side is the identifier of each TCP connection; each row in the diagram is a single TCP connection. On the right hand side is a number indicating how many separate parts of the page (images, CSS, JavaScript) were downloaded by the connection on that row.</p>
@@ -31,7 +31,7 @@ speedy?" class="kg-image" width="500" height="375" loading="lazy">
 	<p>First, it takes time to set up a TCP connection. The browser connects to the server and goes through a handshake to establish the connection. In the example above each connection was taking roughly 50ms to establish. If you did that for all 36 items being downloaded it would add up to 1.8s (longer than the entire download took). So, clearly reusing a connection helps.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rBjghMPBKWgJNWbmHVmgA/1f2dd416b46dbef97cb35ac8bd20a3c9/145450640_c337f29735.jpeg.scaled500.jpg" alt="What makes SPDY speedy?" class="kg-image" width="332" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rBjghMPBKWgJNWbmHVmgA/31cedf696a58af582cb85f324b3f52b9/145450640_c337f29735.jpeg.scaled500.jpg" alt="What makes SPDY speedy?" class="kg-image" width="332" height="500" loading="lazy">
 
 	</figure>
 	<p>Image credit: <a href="http://www.flickr.com/photos/dad_and_clint">Charles &amp; Clint</a></p>
@@ -45,7 +45,7 @@ speedy?" class="kg-image" width="500" height="375" loading="lazy">
 	<p>These problems come about in part because HTTP is synchronous: a request is made for part of a page and the connection it was made on needs to wait for the response. A better protocol would allow multiple requests to be sent and the responses returned in the order they are available. Line 47108 would look very different in that case: all three requests could be sent and the small one would be returned first even though it was the second request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26aO6DJTa36Zz5111yPWr5/23ef8d0011a75151de136419b08b94db/4367848988_4e60dbe99a.jpeg.scaled500.jpg" alt="What makes SPDY speedy?" class="kg-image" width="500" height="333" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26aO6DJTa36Zz5111yPWr5/c9fa243e1478ad7e8d79255d355e8577/4367848988_4e60dbe99a.jpeg.scaled500.jpg" alt="What makes SPDY speedy?" class="kg-image" width="500" height="333" loading="lazy">
 
 	</figure>
 	<p>Image credit: <a href="http://www.flickr.com/photos/ben_salter">Capt' Gorgeous</a></p>

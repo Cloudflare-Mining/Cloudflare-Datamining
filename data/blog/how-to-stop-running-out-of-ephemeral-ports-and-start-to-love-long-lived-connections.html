@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AZiMPSwNyfZ3Y3blz1MJz/f2d9561e590fc9a691c645f86f0b61c9/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections.png" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AZiMPSwNyfZ3Y3blz1MJz/77aaa9e15b96784f075533d425dfed92/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Often programmers have assumptions that turn out, to their surprise, to be invalid. From my experience this happens a lot. Every API, technology or system can be abused beyond its limits and break in a miserable way.</p>
 	<p>It's particularly interesting when basic things used everywhere fail. Recently we've reached such a breaking point in a ubiquitous part of Linux networking: establishing a network connection using the <code>connect()</code> system call.</p>
@@ -54,7 +54,7 @@ cd.connect(('104.1.1.229', 80))</code></pre>
 	<p>The operating system’s job is to figure out how to reach that destination, selecting an appropriate source address and source port to form the full 4-tuple for the connection:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zDTSzTRPl4JRrdWfjbzkP/d522af39b5ceff0041ad522d3a61553b/image4-1.png" alt="in outgoing connection 4-tuple, the src IP and src port are usually selected automatically by the kernel" class="kg-image" width="1213" height="601" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zDTSzTRPl4JRrdWfjbzkP/63e0de7a453377f267b41ee0fa394a33/image4-1.png" alt="in outgoing connection 4-tuple, the src IP and src port are usually selected automatically by the kernel" class="kg-image" width="1213" height="601" loading="lazy">
 
 	</figure>
 	<p>The operating system chooses the source IP based on the routing configuration. On Linux we can see which source IP will be chosen with <code>ip route get</code>:</p>
@@ -519,7 +519,7 @@ sd.connect( (dst_IP, dst_port) )</code></pre>
 	<p>The name we chose isn't an accident. MacOS (specifically the underlying Darwin OS) has exactly that function implemented <a href="https://www.manpagez.com/man/2/connectx">as a <code>connectx()</code> system call</a> (<a href="https://github.com/apple/darwin-xnu/blob/a1babec6b135d1f35b2590a1990af3c5c5393479/bsd/netinet/tcp_usrreq.c#L517">implementation</a>):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ixMd6STGDjs1IO4DhAaFQ/1055833d42932a5767973294d2ec38cd/image2.png" alt="snippet from connectx() man page" class="kg-image" width="1999" height="739" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ixMd6STGDjs1IO4DhAaFQ/3cbca6a9ec28010fb15f4004e2450587/image2.png" alt="snippet from connectx() man page" class="kg-image" width="1999" height="739" loading="lazy">
 
 	</figure>
 	<p>It's more powerful than our <code>connectx</code> code, since it supports TCP Fast Open.</p>

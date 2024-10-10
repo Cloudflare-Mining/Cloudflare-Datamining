@@ -1,4 +1,4 @@
-<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UaoX6fPvFuhN1ecJpbe6v/564c5a0cc67371272bdcbff53253dd10/New-system-architecture.jpg" alt="">
+<div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UaoX6fPvFuhN1ecJpbe6v/8aee3bd1ab395cb4a4ac2b8db9575a23/New-system-architecture.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>One of our large scale data infrastructure challenges here at Cloudflare is around providing HTTP traffic analytics to our customers. HTTP Analytics is available to all our customers via two options:</p>
 	<ul>
@@ -29,7 +29,7 @@
 	</div>
 	<p>The previous pipeline was built in 2014. It has been mentioned previously in <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb">Scaling out PostgreSQL for CloudFlare Analytics using CitusDB</a> and <a href="https://blog.cloudflare.com/more-data-more-data">More data, more data</a> blog posts from the Data team.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MY5UJgdkM35pwDy4mMOxt/17a5c1cf18a4e653aa440225ce71ad12/Old-system-architecture.jpg" alt="Old-system-architecture" class="kg-image" width="2171" height="551" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MY5UJgdkM35pwDy4mMOxt/2c08b73e37001788547db620f00a5a92/Old-system-architecture.jpg" alt="Old-system-architecture" class="kg-image" width="2171" height="551" loading="lazy">
 	</figure>
 	<p>It had following components:</p>
 	<ul>
@@ -132,7 +132,7 @@
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mN4cq6YrpiHjBfbP6vpCh/20d05cda889737ddf5288b55fe185ba9/ClickHouse-uniq-functions.png" alt="ClickHouse-uniq-functions" class="kg-image" width="1029" height="698" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mN4cq6YrpiHjBfbP6vpCh/7181a8e68b4a63cd48e42e0eaf807191/ClickHouse-uniq-functions.png" alt="ClickHouse-uniq-functions" class="kg-image" width="1029" height="698" loading="lazy">
 	</figure>
 	<p>Along with filing many bug reports, we also report about every issue we face in our cluster, which we hope will help to improve ClickHouse in future.</p>
 	<p>Even though DNS analytics on ClickHouse had been a great success, we were still skeptical that we would be able to scale ClickHouse to the needs of the HTTP pipeline:</p>
@@ -273,7 +273,7 @@
 		</li>
 	</ol>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iQvOQSik5xLDR7lkG0X9H/e03ceb9475a0df36c90458a1444c9077/Schema-design--1-1.jpg" alt="Schema-design--1-1" class="kg-image" width="981" height="151" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iQvOQSik5xLDR7lkG0X9H/ee505f826947f6844c3e001bb83c7e7b/Schema-design--1-1.jpg" alt="Schema-design--1-1" class="kg-image" width="981" height="151" loading="lazy">
 	</figure>
 	<p>Schema design #1 didn't work out well. ClickHouse JOIN syntax forces to write monstrous query over 300 lines of SQL, repeating the selected columns many times because you can do only <a href="https://github.com/yandex/ClickHouse/issues/873">pairwise joins</a> in ClickHouse.</p>
 	<p>As for querying each of materialized views separately in parallel, benchmark showed prominent, but moderate results - query throughput would be a little bit better than using our Citus based old pipeline.</p>
@@ -296,7 +296,7 @@
 	<p>As for problem #2, we had to put uniques into separate materialized view, which uses the ReplicatedAggregatingMergeTree Engine and supports merge of AggregateFunction states for records with the same primary keys. We're considering adding the same functionality into SummingMergeTree, so it will simplify our schema even more.</p>
 	<p>We also created a separate materialized view for the Colo endpoint because it has much lower usage (5% for Colo endpoint queries, 95% for Zone dashboard queries), so its more dispersed primary key will not affect performance of Zone dashboard queries.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZmeMrcqIgAI99UJgfx1HK/2a418131e5e8bf9bd4863da9af9c3e9a/Schema-design--2.jpg" alt="Schema-design--2" class="kg-image" width="557" height="316" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZmeMrcqIgAI99UJgfx1HK/80923c6f467d95a1bd8d74e838f91d99/Schema-design--2.jpg" alt="Schema-design--2" class="kg-image" width="557" height="316" loading="lazy">
 	</figure>
 	<p>Once schema design was acceptable, we proceeded to performance testing.</p>
 	<div class="flex anchor relative">
@@ -331,7 +331,7 @@
 	</div>
 	<p>The new pipeline architecture re-uses some of the components from old pipeline, however it replaces its most weak components.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UaoX6fPvFuhN1ecJpbe6v/564c5a0cc67371272bdcbff53253dd10/New-system-architecture.jpg" alt="New-system-architecture" class="kg-image" width="1609" height="553" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UaoX6fPvFuhN1ecJpbe6v/8aee3bd1ab395cb4a4ac2b8db9575a23/New-system-architecture.jpg" alt="New-system-architecture" class="kg-image" width="1609" height="553" loading="lazy">
 	</figure>
 	<p>New components include:</p>
 	<ul>
@@ -348,7 +348,7 @@
 	<p>As you can see the architecture of new pipeline is much simpler and fault-tolerant. It provides Analytics for all our 7M+ customers' domains totalling more than 2.5 billion monthly unique visitors and over 1.5 trillion monthly page views.</p>
 	<p>On average we process 6M HTTP requests per second, with peaks of upto 8M requests per second.</p>
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/zjubA3CgetykRE8Angxln/8bccf6f1101dbe5dd3409121420a947d/HTTP-Logfwdr-throughput.png" alt="HTTP-Logfwdr-throughput" class="kg-image" width="1833" height="764" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zjubA3CgetykRE8Angxln/7509dd5dea82ad7408339a5f78561b41/HTTP-Logfwdr-throughput.png" alt="HTTP-Logfwdr-throughput" class="kg-image" width="1833" height="764" loading="lazy">
 	</figure>
 	<p>Average log message size in <a href="https://capnproto.org">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.</p>
 	<h4>Benefits of new pipeline</h4>
@@ -383,7 +383,7 @@
 			<p><b>Improved API throughput and latency </b>- with previous pipeline Zone Analytics API was struggling to serve more than 15 queries per second, so we had to introduce temporary hard rate limits for largest users. With new pipeline we were able to remove hard rate limits and now we are serving ~40 queries per second. We went further and did intensive load testing for new API and with current setup and hardware we are able serve up to ~150 queries per second and this is scalable with additional nodes.
 			</p>
 			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TCHFdGAndAank2N3agHQj/02f71f0c4768cd30d26f0e083f6b2540/Zone-Analytics-API-requests-latency-quantiles.png" alt="Zone-Analytics-API-requests-latency-quantiles" class="kg-image" width="3678" height="1570" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TCHFdGAndAank2N3agHQj/5db6811ef0918e8fc66b8543531f9733/Zone-Analytics-API-requests-latency-quantiles.png" alt="Zone-Analytics-API-requests-latency-quantiles" class="kg-image" width="3678" height="1570" loading="lazy">
 			</figure>
 			<p></p>
 		</li>
@@ -430,7 +430,7 @@
 			<p><b>CPU time</b> - after recent hardware upgrade and all optimizations, our cluster CPU time is quite low.
 			</p>
 			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61sIThxxM4s9mgA8nQSibn/49b66751e7da1ed46b55f2fd92eaaae0/ClickHouse-CPU-usage.png" alt="ClickHouse-CPU-usage" class="kg-image" width="3650" height="1568" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61sIThxxM4s9mgA8nQSibn/4e09df1a744f0c1e2cd92b8bf5bfdd5f/ClickHouse-CPU-usage.png" alt="ClickHouse-CPU-usage" class="kg-image" width="3650" height="1568" loading="lazy">
 			</figure>
 			<p></p>
 		</li>
@@ -438,7 +438,7 @@
 			<p><b>Max disk IO</b> (device time) - it's low as well.
 			</p>
 			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rNrJvGvXd6VNvPRH2qe0l/296b66b233a5762a1c2324db7cc7fd44/Max-disk-IO.png" alt="Max-disk-IO" class="kg-image" width="1875" height="735" loading="lazy">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rNrJvGvXd6VNvPRH2qe0l/f7813d61e834b420515047062e25e791/Max-disk-IO.png" alt="Max-disk-IO" class="kg-image" width="1875" height="735" loading="lazy">
 			</figure>
 			<p></p>
 			<p></p>

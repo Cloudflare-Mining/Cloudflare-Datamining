@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2W5Y5EhCBeCYjD5Az5bAc2/b39e09c9e59570a436ffae8ae5b179ac/aus-nz.png" alt="" class="kg-image" width="640" height="307" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2W5Y5EhCBeCYjD5Az5bAc2/b90ac90feb8ae17a9b9d3d1efc32457e/aus-nz.png" alt="" class="kg-image" width="640" height="307" loading="lazy">
 
 	</figure>
 	<p>The genesis of our 33rd and 34th data centers in Auckland and Melbourne started a short hop away in nearby Sydney. Prior to these deployments traffic from all of New Zealand and Australia's collective 23 million Internet users was routed through CloudFlare's <a href="https://blog.cloudflare.com/sydney-australia-cloudflares-15th-data-center">Sydney data center</a>. Even for those in faraway Perth, the time necessary to reach our Sydney PoP was a mere 55ms of <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round trip time (RTT)</a>. By comparison, the blink of an eye takes 300-400ms. In other words, latency wasn't exactly the pressing concern. The <i>real</i> concern was a failure scenario in our Sydney data center.</p>
@@ -20,7 +20,7 @@
 	<p>At first blush a second facility in Sydney would seem to solve most imaginable failure scenarios (perhaps save a nuclear one). However, when it comes to the Internet, things are rarely intuitive. Australia, at least in the context of the Internet, is very Sydney-centric. The vast majority of traffic from Australia to the rest of the Internet passes through a single data center (which just so happens to be the same exact facility in which we are currently located). Even if we were to make a redundant deployment in a completely separate facility, traffic to that facility would still have to pass through the same potential point of failure: our current facility. Not to mention, a second facility in Sydney would neither reduce latency and improve performance for a larger subset of Internet users in the region nor localize our traffic any further than it already was. It also wouldn't have opened up any new peering opportunities which, as we've explained in a prior <a href="https://blog.cloudflare.com/cloudflare-joins-three-more-peering-exchanges-in-australia">blog post</a>, is of immense importance to the performance and overall health of our network.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KpTUPwnKjCml13Tuv4lWG/2f9f177323761c3181aaecbe78800be8/aus-pops-sydney-1.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KpTUPwnKjCml13Tuv4lWG/be23dfb1efbdc5d6c568aab0441d9103/aus-pops-sydney-1.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
 
 	</figure>
 	<p><i>Not enough redundancy. No performance gain from status quo.</i></p>
@@ -28,13 +28,13 @@
 	<p>Out of left pitch came Auckland. Although not an obvious choice, Auckland is rather uniquely situated to provide redundancy in-region as a result of how many operators have constructed their networks: by building or buying a 3 drop ring between New Zealand-Australia, Australia-USA, and USA-New Zealand.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WuzE3YpRrToyhp6Qq9rDY/87ca58e96b36be5948c0a81a79f06880/map-1.gif" alt="" class="kg-image" width="405" height="299" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WuzE3YpRrToyhp6Qq9rDY/ba0ea4bdf673407be612fef58838ac51/map-1.gif" alt="" class="kg-image" width="405" height="299" loading="lazy">
 
 	</figure>
 	<p>Because traffic is only heavily utilized in one direction, <i>towards</i> New Zealand, this leaves a lot of free capacity between New Zealand-Australia (i.e. <i>from</i> New Zealand). After working with various providers, we've structured a solution that allows us to reduce latency and further localize traffic for Internet users in New Zealand while <i>also</i> allowing for full redundancy between both Auckland, Sydney and the rest of Oceania. Not to mention, CloudFlare is now a member of New Zealand's largest peering exchange, <a href="http://ape.nzix.net">APE-IX</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hc6GXzHHuQIIkcP0F2nHb/ea684546b559eefe406759bcf82de876/aus-pops-auckland.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hc6GXzHHuQIIkcP0F2nHb/147ceb4f0dfff119d3cc004611de6905/aus-pops-auckland.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
 
 	</figure>
 	<p><i>Redundancy and performance gains versus the status quo.</i></p>
@@ -43,7 +43,7 @@
 	<p>Despite achieving the desired level of redundancy and performance gains in New Zealand through our own version of the <a href="https://en.wikipedia.org/wiki/Trans-Tasman_Travel_Arrangement">Trans-Tasman arrangement</a>, we figured that both Kiwi’s and Aussies would prefer not to have the others' redundancy deposited at their doorstep. So, along came Melbourne as a complement to Auckland. Our Melbourne data center offers the same benefits of content localization and performance improvement for Internet users south of the border, as well as domestic redundancy in the case of a data center failure.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/tj4UsfEkenMu8Phwl9KcT/2bfc6dc32fd41e673b919aca3dac2fc7/aus-pops-melbourne.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tj4UsfEkenMu8Phwl9KcT/913a8033bbae4cad101111545016fe3d/aus-pops-melbourne.png" alt="" class="kg-image" width="584" height="346" loading="lazy">
 
 	</figure>
 	<p><i>Latency improvement and additional redundancy.</i></p>

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/fixing-the-mixed-content-problem-with-automatic-https-rewrites">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/fixing-the-mixed-content-problem-with-automatic-https-rewrites">日本語</a>, <a href="https://blog.cloudflare.com/es-es/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77UoCKX1MDvvgaAZ9Q3PQ8/e6f1df1779c5d57322cd09f4f19f519e/fixing-the-mixed-content-problem-with-automatic-https-rewrites.jpg" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/fixing-the-mixed-content-problem-with-automatic-https-rewrites">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/fixing-the-mixed-content-problem-with-automatic-https-rewrites">日本語</a>, <a href="https://blog.cloudflare.com/es-es/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77UoCKX1MDvvgaAZ9Q3PQ8/2e16989c71cdfc7e858e05ba47ad8ce6/fixing-the-mixed-content-problem-with-automatic-https-rewrites.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>CloudFlare aims to put an end to the unencrypted Internet. But the web has a chicken and egg problem moving to HTTPS.</p>
 	<p>Long ago it was difficult, expensive, and slow to set up an HTTPS capable web site. Then along came services like CloudFlare’s <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a> that made switching from http:// to https:// as easy as clicking a button. With one click a site was served over HTTPS with a freshly minted, <a href="https://www.cloudflare.com/application-services/products/ssl">free SSL certificate</a>.</p>
@@ -10,19 +10,19 @@
 	<p>Web browsers have known this was a problem for a long, long time. Way back in 1997, Internet Explorer 3.0.2 warned users of sites with mixed content with the following dialog box.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fFSyQa1HkTERZMaHgzcd7/88c2716498c36b1a321f142d3a4d1b17/IC310968.gif" alt="" class="kg-image" width="332" height="157" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fFSyQa1HkTERZMaHgzcd7/17cf2d14f450feaa32164ac0ac3c6a7b/IC310968.gif" alt="" class="kg-image" width="332" height="157" loading="lazy">
 
 	</figure>
 	<p>Today, Google Chrome shows a circled i on any https:// that has insecure content.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UbRZJMuwMEpCkstNVdxAh/7f7b702d80c694f388cc8e3625ac3328/Screen-Shot-2016-09-22-at-11.22.08.png" alt="" class="kg-image" width="302" height="138" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UbRZJMuwMEpCkstNVdxAh/5938aa65b3bea23c830841646df74ad9/Screen-Shot-2016-09-22-at-11.22.08.png" alt="" class="kg-image" width="302" height="138" loading="lazy">
 
 	</figure>
 	<p>And Firefox shows a padlock with a warning symbol. To get a green padlock from either of these browsers requires every single subresource (resource loaded by a page) to be served over HTTPS.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/567KKnhwZN2f9MjwnOXzaE/db33ad18233f74be35f2506c09a9bdc8/Screen-Shot-2016-09-22-at-11.23.45.png" alt="" class="kg-image" width="330" height="129" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/567KKnhwZN2f9MjwnOXzaE/9c7eb09e29684c2a6f0b9684eff925f2/Screen-Shot-2016-09-22-at-11.23.45.png" alt="" class="kg-image" width="330" height="129" loading="lazy">
 
 	</figure>
 	<p>If you had clicked Yes back in 1997, Internet Explorer would have ignored the dangers of mixed content and gone ahead and loaded subresources using plaintext HTTP. Clicking No prevented them from being loaded (often resulting in a broken but secure web page).</p>
@@ -37,7 +37,7 @@
 	<p>It's tempting, but naive, to think that the solution to mixed content is easy: “Simply load everything using https:// and just fix your website”. Unfortunately, the smörgåsbord of content loaded into modern websites from first-party and third-party web sites makes it very hard to ‘simply’ make that change.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5z1ldg0RSCpvmwSsUEr3At/ca6acaf891e50d77603d241d3ee16a3d/14127169401_54ca5e9c1f_z.jpg" alt="" class="kg-image" width="640" height="348" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5z1ldg0RSCpvmwSsUEr3At/fb802e6f873ddeec6da07219cb2081cd/14127169401_54ca5e9c1f_z.jpg" alt="" class="kg-image" width="640" height="348" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jeepersmedia/14127169401/in/photolist-nwnrhe-nwFTKm-nwpaXy-nd8jZZ-nwnqMB-6bsjcC-nwFSD3-aQ5Zk4-c4uV99-6itRSF-6iy17Y-8iDUTL-jb2wag-MvpRU-B61f-B61b-7GcrpR-jCxYo4-bTkuiD-2rLaU-a7VsfV-eyNEd-dUEjYu-4iVNkY-a3Gcnb-nJhD2H-nHasXC-5L7FZy-2i8iQ9-qN5RF-6HHCqb-6HDxai-6HDxnK-6HHCvU-5T9v3L-6ytdUs-6HHCyG-2WZgpg-5XZ5BD-b4SFeF-hNBK9K-8JDyeY-pbysVv-5dkLUi-6iy19o-6HDxiV-4o63bZ-kiN76q-ik1o7a-qkcqbe">image</a> by <a href="https://www.flickr.com/photos/jeepersmedia">Mike Mozart</a></p>
@@ -58,7 +58,7 @@
 	<p>Mixed content comes in two flavors: active and passive. Modern web browsers approach the dangers from these different types of mixed content as follows: active mixed content (the most dangerous) is automatically and completely blocked, passive mixed content is allowed through but results in a warning.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CleAMTHGwVEkjUZX07Dko/5919bb38af6f45fdcc2bfeb736c77e09/6714200883_2ba8167533_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CleAMTHGwVEkjUZX07Dko/dc8d461778fb08337f10c53e00a7ee4b/6714200883_2ba8167533_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/99mph/6714200883/in/photolist-bej31c-szQAb-i2swr-fnz3A-avkaMz-SB8LC-4kKK2r-6UFtFq-5EhUFH-i2sBe-dHEMmA-A4cie-aC6Wtc-4ZRUkX-srjkGs-5raEpY-eosHU-Ee7Ye-6vWtxh-6Pd2Nq-5Yz5u2-nU1Pfn-nBPiU4-N6B99-7WL2J9-FEkU5X-dU1PPb-JbHZad-aBEqKL-6w5v1r-65Nths-6DbhPs-nsfgLN-67jbBc-nAxzxi-7krEou-4GxJDe-nUsvgg-9kk75E-8AAsi-jJpNkj-4a5Znf-NQtE-d5xmAL-qiBCh-8cM-qXdkTc-9aLMpU-dWVoe-4A1jyr">image</a> by <a href="https://www.flickr.com/photos/99mph">Ben Tilley</a></p>
@@ -79,7 +79,7 @@
 	<p>We’ve wanted to help fix the mixed content properly for a long time as our goal is that the web become completely encrypted. And, like other CloudFlare services, we wanted to make this a ‘one click’ experience.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28Wmhnv7H20f0tjIPihGlt/09ad26f7a9cb14a27b9b48ef5595f71b/1078317132_0e96301aef_b--1-.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28Wmhnv7H20f0tjIPihGlt/b4ce58dc1aa7db8ab248029a3cc1a2fd/1078317132_0e96301aef_b--1-.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/pinkmoose/1078317132/in/photolist-2DhE7G-pvcxy5-k8yyU-dGahX9-7cRyRV-byeo7f-cNka9m-5VqLgk-byenTE-dG4STe-dGafYU-dG4RnT-tAGvqC-tAGA6u-uxhxfW-4Wrx7L-dGahZQ-dGafW9-dG4QiZ-dGagHY-4K5jAk-dwrgVQ-dGafTE-xyEYA-dG4SYP-9LEfKd-7cRy3F-dGainJ-dGahAN-4LPBp9-bnWEe3-bNknmF-pTFtg2-dG4Ra8-6hZDxR-AobuPS-bM92up-dGafDC-yuJw-q8ZsgV-4GGuAM-4Twy1U-dGaf9s-dG4QfX-52rQZg-dpK5hj-dG4RSz-dpJU8v-4EJ5JP-5pvYKT">image</a> by <a href="https://www.flickr.com/photos/pinkmoose">Anthony Easton</a></p>
@@ -114,7 +114,7 @@ gstatic\.com/" to="https://$1.gstatic.com/"/&gt;</code></pre>
 	<p>Automatic HTTPS Rewrites are now available in the customer dashboard for all CloudFlare customers. Today, this feature is disabled by default and can be enabled in ‘one click’:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DZLdLkvnV1oot1cCmSTR/827d86fc4c8eeb42ef6b18a60191f01c/Screen-Shot-2016-09-22-at-11.06.05.png" alt="" class="kg-image" width="968" height="221" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DZLdLkvnV1oot1cCmSTR/8eddcb3deaaeb16f0bead6cea6817a52/Screen-Shot-2016-09-22-at-11.06.05.png" alt="" class="kg-image" width="968" height="221" loading="lazy">
 
 	</figure>
 	<p>We will be monitoring the performance and effectiveness of this feature and enable it by default for Free and Pro customers later in the year. We also plan to use the Content Security Policy reporting features to give customers an automatic view of which URIs remain to be upgraded so that their transition to all https:// is made as simple as possible: sometimes just finding which URIs need to be changed can be very hard as Wired <a href="https://www.wired.com/2016/05/wired-first-big-https-rollout-snag">found out</a>.</p>

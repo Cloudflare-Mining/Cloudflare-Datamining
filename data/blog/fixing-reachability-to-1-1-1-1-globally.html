@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25CGqnY0FCAxQZulueAkNl/02c66982b4be8a7cb1d16bd4fddf2734/fixing-reachability-to-1-1-1-1-globally.gif" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25CGqnY0FCAxQZulueAkNl/4dacbc1db190892a21317dfbf8cf2659/fixing-reachability-to-1-1-1-1-globally.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Recently <a href="https://blog.cloudflare.com/announcing-1111">we announced</a> our fast, privacy-centric DNS resolver <a href="https://1.1.1.1">1.1.1.1</a>, supported by our <a href="https://www.cloudflare.com/network">global network</a>. As you can see 1.1.1.1 is very easy to remember, which is both a blessing and a curse. In the time leading up to the announcement of the resolver service we began testing reachability to 1.1.1.1, primarily using the RIPE Atlas probes. The <a href="https://atlas.ripe.net/about">RIPE Atlas</a> project is an extensive collection of small monitoring devices hosted by the public around the world. Currently there are over 10,000 active probes hosted in over 3,000 networks, giving great vantage points for testing. We found large numbers of probes unable to query 1.1.1.1, but successfully able to query 1.0.0.1 in almost all cases. 1.0.0.1 is the secondary address we have assigned for the resolver, to allow clients who are unable to reach 1.1.1.1 to be able to make DNS queries.</p>
 	<p>This blog focuses on IPv4. We provide four IPs (two for each IP address family) in order to provide a path toward the DNS resolver independent of IPv4 or IPv6 reachability.</p>
@@ -66,31 +66,31 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<p>All of those fixes were great to make, but most were quite uninteresting, what was more interesting was finding cases from issue number 1, CPEs (customer premises equipment) aka home routers, gateways and wireless access points. With the help from the folks at <a href="https://www.sonic.com">Sonic</a> we were quickly able to identify that the Pace 5268 a common xDSL modem deployed primarily in the United States (including wide usage on AT&amp;T) uses 1.1.1.0/29 for internal communication. We requested comment from AT&amp;T’s noc, but have not heard anything from them. We did however receive a response from them via social media:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50omQfbLechc9NUeetoHc8/e4b646c7b2488e330e01675a294301dc/DaMmfBTUQAEmc3k.jpg" alt="DaMmfBTUQAEmc3k" class="kg-image" width="914" height="728" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50omQfbLechc9NUeetoHc8/f9996eb51fd5a4f35a840bab8fa80811/DaMmfBTUQAEmc3k.jpg" alt="DaMmfBTUQAEmc3k" class="kg-image" width="914" height="728" loading="lazy">
 
 	</figure>
 	<p>Independent investigation confirms the findings:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IyfRcal5A339fbfs9l2Vy/9c94ad422e9d49dc8132b971f6313ca6/thumb.jpg" alt="thumb" class="kg-image" width="600" height="498" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IyfRcal5A339fbfs9l2Vy/efffd5fa86aae4a1e663f36ac8ae6764/thumb.jpg" alt="thumb" class="kg-image" width="600" height="498" loading="lazy">
 
 	</figure>
 	<p>The same finding was made with the D-Link DMG-6661, which was reported to us by a user from Brazil connected to Vivo FTTH.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jJuqQBGf0Eg3TMcaameD4/0d2ed4c92a4a9c92923a7d6e4b95791e/Screen-Shot-2018-04-05-at-10.57.21.png" alt="Screen-Shot-2018-04-05-at-10.57.21" class="kg-image" width="556" height="215" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jJuqQBGf0Eg3TMcaameD4/4ff9d2f8f278f89c04cc1913788c51e3/Screen-Shot-2018-04-05-at-10.57.21.png" alt="Screen-Shot-2018-04-05-at-10.57.21" class="kg-image" width="556" height="215" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/G2DNnIkM8BRfZWykOnxnN/4df7317e59abc356945d9814c003e65c/Screen-Shot-2018-04-05-at-10.57.32.png" alt="Screen-Shot-2018-04-05-at-10.57.32" class="kg-image" width="550" height="178" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/G2DNnIkM8BRfZWykOnxnN/71e657b62a2ea5b69b12cb18f369bf27/Screen-Shot-2018-04-05-at-10.57.32.png" alt="Screen-Shot-2018-04-05-at-10.57.32" class="kg-image" width="550" height="178" loading="lazy">
 
 	</figure>
 	<p>Another user in Argentina connected to Telefónica found the issue on the Mitrastar GPT-2541GNAC.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3E2hUBQObLarnWzMkoQRy9/c7338d0167f9d042834079b83d2b6d0d/DaKwk7eW0AEUKL-.jpg" alt="DaKwk7eW0AEUKL-" class="kg-image" width="684" height="250" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3E2hUBQObLarnWzMkoQRy9/d3c19b98a539bb05076ef37de2aed21f/DaKwk7eW0AEUKL-.jpg" alt="DaKwk7eW0AEUKL-" class="kg-image" width="684" height="250" loading="lazy">
 
 	</figure>
 	<p>It appears this CPE has been deployed in many of Telefónica's networks internationally.</p>
@@ -150,7 +150,7 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<p>Using the RIPE Atlas probes gives excellent visibility into residential and business internet connections, however they’re connected via a cable, so this rules out another use-case, WiFi access points. After very little research we quickly came across <a href="https://supportforums.cisco.com/t5/wireless-mobility-documents/web-authentication-1-1-1-1-login-redirect-issue-wireless-lan/ta-p/3161248">Cisco mis-using 1.1.1.1</a>, a quick search for “cisco 1.1.1.1” brought up numerous articles where Cisco are squatting on 1.1.1.1 for their Wireless LAN Controllers (WLC). It’s unclear if Cisco officially regards 1.0.0.0/8 as <a href="https://en.wikipedia.org/wiki/Bogon_filtering">bogon</a> space, but there are lots of examples that can be found on their community websites giving example bogon lists that include the /8. It mostly seems to be used for captive portal when authenticating to the wireless access point, often found in hotels, cafés and other public WiFi hotspot locations.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PR9A4lMN8YjfHlKhXbkjD/758dff216e398e7dc7ee5ef9d4c08ffb/cisco_captive_portal_issue.jpg" alt="cisco_captive_portal_issue" class="kg-image" width="750" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PR9A4lMN8YjfHlKhXbkjD/0faeef10428e41b9bb2ee0aab4cf2b28/cisco_captive_portal_issue.jpg" alt="cisco_captive_portal_issue" class="kg-image" width="750" height="902" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -165,28 +165,28 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<p>We began testing the availability of 1.1.1.1 on the 23rd of March, in Europe and North America it was only around 91%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KxLfhj5QlhTnj04yqOFvh/ab56c23abc8d82a9262197968d704361/catchpoint_eu_us_march.png" alt="catchpoint_eu_us_march" class="kg-image" width="1652" height="408" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KxLfhj5QlhTnj04yqOFvh/73faff29f9d746631416d2e21b88d08b/catchpoint_eu_us_march.png" alt="catchpoint_eu_us_march" class="kg-image" width="1652" height="408" loading="lazy">
 
 	</figure>
 	<p><i>1.1.1.1 availability from Europe and North America, 23rd of March</i></p>
 	<p>By the 3rd of April, our work cleaning up the space had pushed the availability up to 97%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rLR2f0i9O6Q3SpA8iO6xm/fe5e45e40f0916d52a3f43e926849da6/EU-US-3rd-of-April-2018.png" alt="EU-US-3rd-of-April-2018" class="kg-image" width="1766" height="444" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rLR2f0i9O6Q3SpA8iO6xm/6fe769d6bf99a1cbd4d014d6406c3247/EU-US-3rd-of-April-2018.png" alt="EU-US-3rd-of-April-2018" class="kg-image" width="1766" height="444" loading="lazy">
 
 	</figure>
 	<p><i>1.1.1.1 availability from Europe and North America, 3rd of April</i></p>
 	<p>For the rest of the world, excluding Europe and North America, availability to 1.1.1.1 was only 73% on the 23d of March.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/T3QYlMASaL5wIo3Uyug5r/48153185087694022c3f4380d870f4fb/world_without_eu_us_march.png" alt="world_without_eu_us_march" class="kg-image" width="1367" height="365" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/T3QYlMASaL5wIo3Uyug5r/f3df44c2df48988e80d544a08808b9b5/world_without_eu_us_march.png" alt="world_without_eu_us_march" class="kg-image" width="1367" height="365" loading="lazy">
 
 	</figure>
 	<p><i>1.1.1.1 availability for the World (Europe and North America excluded), 23rd of March</i></p>
 	<p>By the 3rd of April we've made a tonne of progress and managed to clean up enough of the bad routing that availability was up to 85%.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gjNpj8fgMPxvNdTUmMYGs/c1f66c42e9907d2b50de698d4f8b3807/World-without-EU-US-3rd-of-April-2018.png" alt="World-without-EU-US-3rd-of-April-2018" class="kg-image" width="1850" height="448" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gjNpj8fgMPxvNdTUmMYGs/17ec4d59223c734f56926d037fbb8057/World-without-EU-US-3rd-of-April-2018.png" alt="World-without-EU-US-3rd-of-April-2018" class="kg-image" width="1850" height="448" loading="lazy">
 
 	</figure>
 	<p><i>1.1.1.1 availability for the World (Europe and North America excluded), 3rd of April</i></p>
@@ -208,7 +208,7 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<p>All of this bad traffic is unrelated to DNS, simple, unsolicited background traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60MHzDgsP3kPWPHXDSg0Nh/462532430d06063bc69b05aaa15fbf88/Screen-Shot-2018-04-05-at-7.28.41-AM.png" alt="Screen-Shot-2018-04-05-at-7.28.41-AM" class="kg-image" width="1294" height="510" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60MHzDgsP3kPWPHXDSg0Nh/c8f601896e54e0783eb2f3ea54c44a75/Screen-Shot-2018-04-05-at-7.28.41-AM.png" alt="Screen-Shot-2018-04-05-at-7.28.41-AM" class="kg-image" width="1294" height="510" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

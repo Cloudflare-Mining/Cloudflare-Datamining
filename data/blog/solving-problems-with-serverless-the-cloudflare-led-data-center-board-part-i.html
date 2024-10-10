@@ -1,10 +1,10 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KhgvJchhKsSh1StaMW0um/69441eada5f00ddf4e6546d2bb29d327/solving-problems-with-serverless-the-cloudflare-led-data-center-board-part-i.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KhgvJchhKsSh1StaMW0um/1399b0879b8a7f4f4de777a485b3283c/solving-problems-with-serverless-the-cloudflare-led-data-center-board-part-i.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>You know you have a cool job when your first project lets you bring your hobby into the office.</p>
 	<p>That’s what happened to me just a few short weeks ago when I joined Cloudflare. The task: to create a light-up version of our Data Center map – we’re talking more than a hundred LEDs tied to the deployment state of each and every Cloudflare data center. This map will be a part of our booths, so it has to be able to travel; meaning we have to consider physical shipping <i>and</i> the ability to update the data when the map is away from the office. And the fun part – we are debuting it at SF Developer Week in late February (I even get to give a talk about it!) That gave me one week of software time in our San Francisco office, and a little over two and a half in the Austin office with the physical materials.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eS2D5nN1ryxnbNscLYa3G/a166021937b603115f775fc695a99e1b/Screen-Shot-2019-02-14-at-9.33.11-AM.png" alt="" class="kg-image" width="2000" height="1033" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eS2D5nN1ryxnbNscLYa3G/ab5a2b025cc3aa2e84545e2bccf6756b/Screen-Shot-2019-02-14-at-9.33.11-AM.png" alt="" class="kg-image" width="2000" height="1033" loading="lazy">
 
 	</figure>
 	<p>What the final LEDs will look like on a map of the world.</p>
@@ -41,7 +41,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yB2l13rg61b9JTNZu9aZj/89caaf018a4a5f77743999381e8dd2d0/LED-PoP-Board-Architecture-Diagram.png" alt="" class="kg-image" width="391" height="441" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yB2l13rg61b9JTNZu9aZj/81ef8c85c292ed9d76899db9619c4f71/LED-PoP-Board-Architecture-Diagram.png" alt="" class="kg-image" width="391" height="441" loading="lazy">
 
 	</figure>
 	<p>In the end, we ended up with this architecture diagram; 2 Workers KV data stores, and 2 serverless Workers; all of which can be deployed across the world in order to make sure the physical map has the updated data every time we head to a new show.</p>
@@ -49,7 +49,7 @@
 	<p>In the next post in this series, we'll take a look at the physical architecture of the sign:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42wDBaBFqptcC9iCt99h6I/b7f3e8cb682a64aaadd6a4a8656fd816/Image_20190212_102827.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42wDBaBFqptcC9iCt99h6I/66d9376444ab592eef2a570ac16568d6/Image_20190212_102827.jpeg.jpeg" alt="" class="kg-image" width="2000" height="1500" loading="lazy">
 
 	</figure>
 	<p>We'll also take a look at the system we built that uses the architecture laid out in this post that consumes this data and turns it into an LED map – so keep an eye out for it next month!</p>

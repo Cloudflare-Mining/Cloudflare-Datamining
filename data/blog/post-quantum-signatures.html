@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ewsKSumB2t0mCKIp9i1yo/caeda255bb0d18bc1d95c4d484e6a1eb/image6-5.png" alt="Blogpost around what is a post-quantum signature scheme." class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ewsKSumB2t0mCKIp9i1yo/6d79a6e2ec066820b1c17bdb06fb96fe/image6-5.png" alt="Blogpost around what is a post-quantum signature scheme." class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>To provide authentication is no more than to assert, to provide proof of, an identity. We can claim who we claim to be but if there is no proof of it (recognition of our face, voice or mannerisms) there is no assurance of that. In fact, we can claim to be someone we are not. We can even claim we are someone that does not exist, as clever Odysseus did once.</p>
@@ -14,7 +14,7 @@
 	<p>The cyclops believed that was Odysseus' name (<a href="https://en.wikipedia.org/wiki/Outis">Nobody</a>) and proceeded to tell everyone, which resulted in no one believing him. “How can nobody have wounded you?” they questioned the cyclops. It was a trick, a play of words by Odysseus. Because to give an identity, to tell the world who you are (or who you are pretending to be) is easy. To provide proof of it is very difficult. The cyclops could have asked Odysseus to prove who he was, and the story would have been different. And Odysseus wouldn’t have left the cyclops laughing.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Pkg7X1JgYTojfc5AgbTxY/40499a72f2c82697a187373899a74c81/image1-17.png" alt="Odysseus and the cyclops." class="kg-image" width="1802" height="889" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Pkg7X1JgYTojfc5AgbTxY/ce721f84c91d55c5e110a3e4d57c7f04/image1-17.png" alt="Odysseus and the cyclops." class="kg-image" width="1802" height="889" loading="lazy">
 
 	</figure>
 	<p>In the digital world, proving your identity is more complex. In face-to-face conversations, we can often attest to the identity of someone by knowing and verifying their face, their voice, or by someone else introducing them to us. From computer to computer, the scenario is a little different. But there are ways. When a user connects to their banking provider on the Internet, they need assurance not only that the information they send is secured; but that they are also sending it to their bank, and not a malicious website masquerading as their provider. The Transport Layer Security (TLS) protocol provides this through digitally signed statements of identity (certificates). Digital signature schemes also play a central role in DNSSEC as well, an extension to the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a> that protects applications from accepting forged or manipulated DNS data, which is what happens during <a href="https://en.wikipedia.org/wiki/DNS_spoofing">DNS cache poisoning</a>, for example.</p>
@@ -46,7 +46,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HkQpmpEYsnuu4tZx9NM9C/59dd2e33936fc8dfbce1221b1582279f/image5-6.png" alt="The different boxes of a post-quantum algorithm" class="kg-image" width="1800" height="750" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HkQpmpEYsnuu4tZx9NM9C/3f22f53e364162d3ed551bc5cc06fce9/image5-6.png" alt="The different boxes of a post-quantum algorithm" class="kg-image" width="1800" height="750" loading="lazy">
 
 	</figure>
 	<p>The mathematical core of <i>Dilithium</i> is, as with <a href="https://csrc.nist.gov/Projects/post-quantum-cryptography/round-3-submissions">FrodoKEM</a>, based on the hardness of a variant of the Learning with Errors (LWE) problem and the Short Integer Solution (SIS) problem. As we have already <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation">talked about LWE</a>, let’s now briefly go over SIS.</p>
@@ -62,20 +62,20 @@
 	<p>In order to properly explain what the SIS problem is, we need to first start by understanding what a <i>lattice</i> is. A lattice is a regular repeated arrangement of objects or elements over a space. In geometry, these objects can be points; in physics, these objects can be atoms. For our purposes, we can think of a lattice as a set of points in <i>n</i>-dimensional space with a periodic (repeated) structure, as we see in the image. It is important to understand the meaning of <i>n</i>-dimensional space here: a two-dimensional space is, for example, the one that we often see represented on planes: a projection of the physical universe into a plane with two dimensions which are length and width. Historically, lattices have been investigated since the late 18th century for various reasons. For a more comprehensive introduction to lattices, you can read this <a href="https://cims.nyu.edu/~regev/papers/qcrypto.pdf">great paper</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XTU1HRx6QrSZx9fsPjhEa/fc017296eac694e7c732cf0232c0eb0e/image4-11.png" alt="picture of a lattice." class="kg-image" width="1152" height="1536" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XTU1HRx6QrSZx9fsPjhEa/0a51d0469b64c83428759635be0c5c88/image4-11.png" alt="picture of a lattice." class="kg-image" width="1152" height="1536" loading="lazy">
 
 	</figure>
 	<p>Picture of a lattice. They are found in the wild in Portugal.</p>
 	<p>What does <a href="https://crypto.stanford.edu/cs355/18sp/lec9.pdf">SIS</a> pertain to? You are given a positive integer <i>q</i> and a <a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">matrix</a> (a rectangular array of numbers) <i>A</i> of dimensions <i>n x m</i> (the number of rows is <i>n</i> and the number of columns is <i>m</i>), whose elements are integers between 0 and a number <i>q</i>. You are then asked to find a <a href="https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics)">vector</a> <i>r</i> (smaller than a certain amount, called the “norm bound”) such that <i>Ar = 0</i>. The conjecture is that, for a sufficiently large <i>n</i>, finding this solution is hard even for quantum computers. This problem is “dual” to the LWE problem that we explored in <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation">another blog post</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26WDPtAXRotNflQ4IqzL0s/3b28317a0739f329652e86d59f3db242/image2-18.png" alt="the SIS problem" class="kg-image" width="927" height="496" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26WDPtAXRotNflQ4IqzL0s/e7bdb4a467589e0db87f950e4482306c/image2-18.png" alt="the SIS problem" class="kg-image" width="927" height="496" loading="lazy">
 
 	</figure>
 	<p>We can define this same <a href="https://web.eecs.umich.edu/~cpeikert/pubs/slides-abit2.pdf">problem over a lattice</a>. Take a lattice <i>L(A)</i>, made up of <i>m</i> different <i>n</i>-dimensional vectors <i>y</i> (the repeated elements)<i>.</i> The goal is to find non-zero vectors in the lattice such that <i>Ay = 0 (mod q)</i> (for some <i>q</i>), whose size is less than a certain specified amount. This problem can be seen as trying to find the “short” solutions in the lattice, which makes the problem the <a href="https://en.wikipedia.org/wiki/Lattice_problem#Shortest_vector_problem_(SVP)">Short Vector Problem</a> (SVP) in the average case. Finding this solution is simple to do in two dimensions (as seen in the diagram), but finding the solution in more dimensions is hard.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CDPZWUUhMGnb2VKGMoxyG/595f28cde66e2e1afa460965c75dc4c2/image3-20.png" alt="The SIS problem as the SVP. The goal is to find the “short” vectors in the radius." class="kg-image" width="792" height="678" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CDPZWUUhMGnb2VKGMoxyG/eedf163a85ea7567b55003d382fe8b21/image3-20.png" alt="The SIS problem as the SVP. The goal is to find the “short” vectors in the radius." class="kg-image" width="792" height="678" loading="lazy">
 
 	</figure>
 	<p>The SIS problem as the SVP. The goal is to find the “short” vectors in the radius.</p>

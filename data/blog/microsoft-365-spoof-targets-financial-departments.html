@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-tw/microsoft-365-spoof-targets-financial-departments">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XrovIaG7G7Mk5anltwFl1/9e41c0865f3731d8c33a90ebcfb10aa9/microsoft-365-spoof-targets-financial-departments.png" alt="">
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-tw/microsoft-365-spoof-targets-financial-departments">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XrovIaG7G7Mk5anltwFl1/18159538171f985be2ed0f7bbb53c79b/microsoft-365-spoof-targets-financial-departments.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in March 2021 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<div class="flex anchor relative">
@@ -44,7 +44,7 @@
 	<p>The first credential harvesting campaign, which initially bypassed Microsoft’s defenses and other email security layers before being discovered by Area 1 Security, involved emails containing purported instructions for applying an Office 365 security update, as detailed in Figure 1.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jOAKssOYB019bNyPCkVwF/fad8d069584dc5a4e5e85766a6a5944a/image3.png" alt="Figure 1. Phishing Message with Office 365 Brand Spoof" class="kg-image" width="1158" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jOAKssOYB019bNyPCkVwF/964bd2f53a94482c2a6288992ee3d4d6/image3.png" alt="Figure 1. Phishing Message with Office 365 Brand Spoof" class="kg-image" width="1158" height="480" loading="lazy">
 
 	</figure>
 	<p>Figure 1. Phishing Message with Office 365 Brand Spoof</p>
@@ -68,7 +68,7 @@
 	<p>The phishing messages contained just enough details to lure unsuspecting targets into opening the attachment, which was either a PDF, HTML, or HTM file. Depicted in Figure 2 is an example of the PDF attachment, which contains redacted target information, including full name, email address, and company logo.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JgxiQ66ExhQtALjw2zFwp/ee92b0e8f762e207b59d90f0dc330ab4/image5.png" alt="Figure 2. Example PDF Attachment with Link to Office 365 Credential Harvester" class="kg-image" width="976" height="1394" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JgxiQ66ExhQtALjw2zFwp/5e4f5addb53a0a063a715c270d4415aa/image5.png" alt="Figure 2. Example PDF Attachment with Link to Office 365 Credential Harvester" class="kg-image" width="976" height="1394" loading="lazy">
 
 	</figure>
 	<p>Figure 2. Example PDF Attachment with Link to Office 365 Credential Harvester</p>
@@ -99,14 +99,14 @@
 	<p>As shown in Figure 5, this URL links to the landing page for the credential harvester, which displays a very convincing Microsoft-themed “privacy policy” statement.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8K5iLRFvh8WAB2CICz3qU/f05f9882e57f2cbcb90979591af9a6d4/image2.png" alt="Figure 5. Fake Microsoft Privacy Policy Statement" class="kg-image" width="1999" height="992" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8K5iLRFvh8WAB2CICz3qU/a1f1ceb9dd47b79402ef48f6b1204298/image2.png" alt="Figure 5. Fake Microsoft Privacy Policy Statement" class="kg-image" width="1999" height="992" loading="lazy">
 
 	</figure>
 	<p>Figure 5. Fake Microsoft Privacy Policy Statement</p>
 	<p>In the upper-right corner of the page is a uniquely photoshopped image of the Microsoft logo. Area 1 Security researchers overlaid this image on a black background, as depicted below, to highlight where the attackers edited the original logo.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tHCAQNHzvM3r8BQdV4CIo/3acc496ee79a0dec396d362fd6b3cac0/image6.png" alt="" class="kg-image" width="187" height="120" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tHCAQNHzvM3r8BQdV4CIo/0219d511eff3566ed8412c1687106c58/image6.png" alt="" class="kg-image" width="187" height="120" loading="lazy">
 
 	</figure>
 	<p>Figure 6. Photoshopped Microsoft Logo</p>
@@ -115,7 +115,7 @@
 	<p>The page looks identical to the legitimate login, and to appear all the more convincing, the logo associated with the domain of the targeted company is dynamically loaded. More specifically, the domain appearing in the target’s email address is used to grab the company logo from the site logo.clearbit.com (i.e., <a href="http://logo.clearbit.com">http://logo.clearbit.com/</a>). For demonstration purposes, the fake email “<a href="mailto:admin@google.com">admin@google[.]com</a>” was used to illustrate how the phishing kit displays the Google logo based on the “google.com” domain found in the “victim” email address.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MF7RCbLHHEjt8MMRmmUDu/6586da9b85c78097061b502adb098f85/image1.png" alt="" class="kg-image" width="1286" height="998" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MF7RCbLHHEjt8MMRmmUDu/325611c1fe4c88a717ae61fd6cbe0bfa/image1.png" alt="" class="kg-image" width="1286" height="998" loading="lazy">
 
 	</figure>
 	<p>Figure 7. Fake Office 365 Login</p>
@@ -138,12 +138,12 @@
 	<p>Figure 8 highlights how JavaScript is used to execute the screenshot functionality and encode the resulting image in Base64.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QasyVUljSXHkysqwYTbWb/e53559351b60cbc6cc4a28da53ae6537/image4.png" alt="" class="kg-image" width="915" height="589" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QasyVUljSXHkysqwYTbWb/96ad9bff6fdfc2b835e8f98b197eead9/image4.png" alt="" class="kg-image" width="915" height="589" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ex00Kgpx4HvMJlfLV5WP6/4039ca2c735283f1118d4c67240148d3/image7.png" alt="" class="kg-image" width="1518" height="845" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ex00Kgpx4HvMJlfLV5WP6/8b9ea87ac65e060daa82040344418b7f/image7.png" alt="" class="kg-image" width="1518" height="845" loading="lazy">
 
 	</figure>
 	<p>Figure 8. Evidence of Phishing Kit Base64-Encoding Screenshots</p>

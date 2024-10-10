@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fn80cCKCVWYn0XOOh3eX2/defd8edf9cf7a29d896966813e69fdda/image3-11.png" alt="Major data center power failure (again): Cloudflare Code Orange tested" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fn80cCKCVWYn0XOOh3eX2/e23f4144cdb106dc80bd3b8a27f27254/image3-11.png" alt="Major data center power failure (again): Cloudflare Code Orange tested" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Here's a post we never thought we'd need to write: less than five months after one of our major data centers lost power, it happened again to the exact same data center. That sucks and, if you're thinking "why do they keep using this facility??," I don't blame you. We're thinking the same thing. But, here's the thing, while a lot may not have changed at the data center, a lot changed over those five months at Cloudflare. So, while five months ago a major data center going offline was really painful, this time it was much less so.</p>
@@ -26,7 +26,7 @@
 	<p>After getting through the immediate incident, Jeremy quickly triaged the most important work that needed to be done in order to ensure we'd be highly available even in the case of another catastrophic failure of a major data center facility. And the team got to work.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Q7F31g2w6xPxdlq39dpDW/3b9d2ffd272280cc4ef28b5a4ba194ad/image2-15.png" alt="" class="kg-image" width="1800" height="338" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Q7F31g2w6xPxdlq39dpDW/ad9a106fed84e8fcd728e165bfd2767a/image2-15.png" alt="" class="kg-image" width="1800" height="338" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -93,7 +93,7 @@
 	<p>Once we had validated the functionality of our Control Plane services, we were faced yet again with the cold start of a very large data center. This activity took roughly 72 hours in November 2023, but this time around we were able to complete this in roughly 10 hours. There is still work to be done to make that even faster in the future, and we will continue to refine our procedures in case we have a similar incident in the future.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cu18EGvfdwXuXIr81qHN8/7cbafcb907164840f1a45a2dfbd8ac08/Incident-inspection.png" alt="" class="kg-image" width="1600" height="284" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cu18EGvfdwXuXIr81qHN8/eaa05db6a5944d0270ed685ce558b070/Incident-inspection.png" alt="" class="kg-image" width="1600" height="284" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -111,7 +111,7 @@
 	<p>A number of other improvements in our Stream and Zero Trust products resulted in little to no impact to their operation. Our Stream products, which use a lot of compute resources to transcode videos, were able to seamlessly hand off to our Amsterdam facility to continue operations. Teams were given specific availability targets for the services and were provided several options to achieve those targets. Stream is a good example of a service that chose a different resiliency architecture but was able to seamlessly deliver their service during this outage. Zero Trust, which was also impacted in November 2023, has since moved the vast majority of its functionally to our hundreds of data centers, which kept working seamlessly throughout this event. Ultimately this is the strategy we are pushing all Cloudflare products to adopt as our data centers in <a href="https://www.cloudflare.com/network">over 300 cities worldwide</a> provide the highest level of availability possible.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hnYtkVM6JHuvAOD3HGNmq/f47cefb3afdd7c0a2a3bb622187b5c61/image1-12.png" alt="" class="kg-image" width="1800" height="320" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hnYtkVM6JHuvAOD3HGNmq/239ae0443184a22761245b4458e15ead/image1-12.png" alt="" class="kg-image" width="1800" height="320" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -126,7 +126,7 @@
 	<p>Initial assessment of the root cause of Flexential’s CSB failures points to incorrectly set breaker coordination settings within the four CSBs as one contributing factor. Trip settings which are too restrictive can result in overly sensitive overcurrent protection and the potential nuisance tripping of devices. In our case, Flexential’s breaker settings within the four CSBs were reportedly too low in relation to the downstream provisioned power capacities. When one or more of these breakers tripped, a cascading failure of the remaining active CSB boards resulted, thus causing a total loss of power serving Cloudflare’s cage and others on the shared infrastructure. During the triage of the incident, we were told that the Flexential facilities team noticed the incorrect trip settings, reset the CSBs and adjusted them to the expected values, enabling our team to power up our servers in a staged and controlled fashion. We do not know when these settings were established – typically, these would be set/adjusted as part of a data center commissioning process and/or breaker coordination study before customer critical loads are installed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lJDAVlXMNrU7Eyp7PP0lF/590a1d03bd1d87ff75466ed801f8a628/Incident-inspection-3.png" alt="" class="kg-image" width="1600" height="284" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lJDAVlXMNrU7Eyp7PP0lF/db9a86dfa40f4ca85965d8af8b36c634/Incident-inspection-3.png" alt="" class="kg-image" width="1600" height="284" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

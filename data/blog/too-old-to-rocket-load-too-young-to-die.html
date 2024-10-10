@@ -1,4 +1,4 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33Hj8QmbGkhb7aHUlCpEwr/3963e2ee7beaff4b318fa0d0123cd716/too-old-to-rocket-load-too-young-to-die.png" alt="">
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33Hj8QmbGkhb7aHUlCpEwr/3628b7271f93fddfd5b60986ab776e75/too-old-to-rocket-load-too-young-to-die.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Rocket Loader is in the news again. One of Cloudflare's earliest web performance products has been re-engineered for contemporary browsers and Web standards.</p>
 	<p>No longer a beta product, Rocket Loader controls the load and execution of your page JavaScript, ensuring useful and meaningful page content is unblocked and displayed sooner.</p>
@@ -15,14 +15,14 @@
 	<p>Early humans looked upon Netscape 2.0, with its new ability to script HTML using LiveScript, and <code>&lt;BLINK&gt;</code>ed to ensure themselves they weren’t dreaming. They decided to use this technology, soon to be re-christened JavaScript (a story told often and elsewhere), for everything they didn’t know they needed: form input validation, image substitution, frameset manipulation, popup windows, and more. The sole requirement was a few interpreted commands enclosed in a <code>&lt;script&gt;</code> tag. The possibilities were endless.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3koyiGY3ofb0n0pf4qzuIn/6878cea45ca2aeb8d57ee5bc159726be/prehistory-_4x.png" alt="prehistory-@4x" class="kg-image" width="2798" height="2521" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3koyiGY3ofb0n0pf4qzuIn/abff6cdaf842ca710c41d560f4396328/prehistory-_4x.png" alt="prehistory-@4x" class="kg-image" width="2798" height="2521" loading="lazy">
 
 	</figure>
 	<p>Soon, the introduction of the <code>src</code> attribute allowed them to import a file full of JS into their pages. Little need to fiddle with the markup, when all the requisite JS for the page could be included in a single, or a few, external files, specified in the page’s <code>&lt;HEAD&gt;</code>. It didn’t take our ancestors long before they decided that the same JS file(s) should be in <i>all</i> pages, throughout their website, containing JS for the complete site. No worries about bloat; after all, the browser would cache it.</p>
 	<p>A clear, sunny, road to dynamic, interactive sites lay ahead. What could go wrong?</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kYBa0v72xkrGHmbZlVApH/229cf833455d5c3b4a0fd82d7a50e0c8/blockage_4x.png" alt="blockage@4x" class="kg-image" width="3109" height="2485" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kYBa0v72xkrGHmbZlVApH/de4fe237c97739dc8b8359b4ec122ff1/blockage_4x.png" alt="blockage@4x" class="kg-image" width="3109" height="2485" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -121,7 +121,7 @@
 	<p>Although our aim remains the same, to improve customer page performance, we incorporated lessons learned. Most importantly, we learned not to aim too high. In order to satisfy all permutations of page layout, the old Rocket Loader created a virtual DOM, a decision that ultimately led to fragility. We've gone the simple, elegant route, knowing full well that there will be a minority of websites that will not benefit.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/515Gnp9rXBxLS4eicMWX5A/f3027f4b4d141fc6298b77e2253626ce/new-and-improved-_4x.png" alt="new-and-improved-@4x" class="kg-image" width="2977" height="2485" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/515Gnp9rXBxLS4eicMWX5A/49004b2f6d659dff5b9bf10fba657629/new-and-improved-_4x.png" alt="new-and-improved-@4x" class="kg-image" width="2977" height="2485" loading="lazy">
 
 	</figure>
 	<p>The main concept behind Rocket Loader is quite straightforward: execute blocking scripts after all other page assets have loaded.</p>
@@ -192,7 +192,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jwj7cYA0lu9sgSsf9boRx/ef8303ded9467c3d3baea6c76ec57296/loadExecute1.png" alt="loadExecute1" class="kg-image" width="1882" height="448" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jwj7cYA0lu9sgSsf9boRx/86993ee16e0cd1eda9a3178017961b53/loadExecute1.png" alt="loadExecute1" class="kg-image" width="1882" height="448" loading="lazy">
 
 	</figure>
 	<p>Modified diagram from <a href="https://html.spec.whatwg.org/#attr-script-defer">HTML Standard</a></p>
@@ -226,19 +226,19 @@
 	<p>There is one not-so-obvious difference between our algorithm and the real behaviour of browsers. Modern browsers try to be clever with the way they manage page resources, engaging various heuristics to improve performance during page load. These are, generally, implementation-specific and not set-in-stone by any specification.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UoWRV4FFktlhVFLGetJeC/680a023e75803cf3d7b85187f176e27a/noRocketCroppedSm.png" alt="" class="kg-image" width="359" height="353" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UoWRV4FFktlhVFLGetJeC/093faf054eb7ba695d3f1ef05a184d3a/noRocketCroppedSm.png" alt="" class="kg-image" width="359" height="353" loading="lazy">
 
 	</figure>
 	<p>One such optimisation that affects us, is <i>speculative parsing</i>. Despite the official specification requiring a browser to block parsing on script execution, browsers continue parsing received HTML markup speculatively, and prefetch found external resources. For example, even with blocking scripts on a page, Chrome loads them simultaneously, in parallel.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1uUQ3PUV8f5FCh9SCY2Y6V/0e52b432499bb57c377cebab344b45c8/prevRocketCroppedSm-1.png" alt="" class="kg-image" width="389" height="355" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uUQ3PUV8f5FCh9SCY2Y6V/370f69793a57e917b9765e28a7a99406/prevRocketCroppedSm-1.png" alt="" class="kg-image" width="389" height="355" loading="lazy">
 
 	</figure>
 	<p>With Rocket Loader, browsers don’t prefetch scripts, as our nonce makes them non-executable during page load. Later, when we sequentially re-insert activated scripts, we witness a sequential “waterfall” graph.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tjsG9hdMmd8QDZduzsrXF/dd6acf4afc216c7362f83b24a7b3d446/withRocketCroppedSm.png" alt="" class="kg-image" width="378" height="352" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tjsG9hdMmd8QDZduzsrXF/bfbd69cda8f237c8eed1826a1196b58f/withRocketCroppedSm.png" alt="" class="kg-image" width="378" height="352" loading="lazy">
 
 	</figure>
 	<p>In our attempt to improve page load performance, we significantly slowed down some script loading. Ironic. Fortunately, we have a workaround: we can insert <i>preload hints</i> (see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content">Preloading content with rel="preload"</a>) before we begin unwinding our script stack, giving the browser notice that we’ll soon be requiring these scripts. It begins fetching them as it would do during speculative parsing.</p>
@@ -356,7 +356,7 @@ document.write('"&gt;some content&lt;/div&gt;');</code></pre>
 	<p>The need to account for every quirk, every variation in browser parsing, is strong, but implementation would eventually only weaken our product. We've dealt with the best part of browser parser behaviours, enough to benefit the majority of our customers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vV1rYeaoGyrndNCqb0qyq/52b4d33fe815cc81c0948c7d61e07909/rock-house-_4x.png" alt="rock-house-@4x" class="kg-image" width="2977" height="2485" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vV1rYeaoGyrndNCqb0qyq/733478aacd708279692d6dc75d4d085b/rock-house-_4x.png" alt="rock-house-@4x" class="kg-image" width="2977" height="2485" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

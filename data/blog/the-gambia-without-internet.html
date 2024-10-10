@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XkB4Alnn5RpAXiR6nooQ7/3fb1b384a3ff69be991dbab70a284f9a/The-Gambia-Internet-Outage-JAN-2022.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XkB4Alnn5RpAXiR6nooQ7/8e337cc29a67e274a94ad453b33b5b81/The-Gambia-Internet-Outage-JAN-2022.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>Internet outages are more common than most people think, and may be caused by misconfigurations, power outages, extreme weather, or infrastructure damage. Note that such outages are distinct from state-imposed <a href="https://blog.cloudflare.com/tag/internet-shutdown">shutdowns</a> that also happen all too frequently, generally used to deal with situations of <a href="https://blog.cloudflare.com/unrest-in-gabon-leads-to-internet-shutdown">unrest</a>, <a href="https://blog.cloudflare.com/uganda-january-13-2021-internet-shut-down">elections</a> or even <a href="https://blog.cloudflare.com/sudans-exam-related-internet-shutdowns">exams</a>.</p>
@@ -10,13 +10,13 @@
 	<p>Cloudflare Radar shows that the outage had a significant impact on Internet traffic in the country and started after 01:00 UTC (which is the same local time), lasting until ~09:45 — a disruption of over 8 hours.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22KA345Bo9T1RUp9dTr13B/bd9f7dd02db1bd8d564a85a2f2145ddb/image4-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22KA345Bo9T1RUp9dTr13B/3bdc8388af3f2f4aa3104278eecdbb61/image4-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
 	<p>Looking at &nbsp;<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> (Border Gateway Protocol) updates from Gambian ASNs around the time of the outage, we see a clear spike at 01:10 UTC. These update messages are BGP signaling that the Gambian ASNs are no longer routable.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CAXydcGjnQwf0vKoaFKF2/5c620cc0e4d65b0c5c20a8e1b7b64671/image5-1.png" alt="" class="kg-image" width="1999" height="848" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CAXydcGjnQwf0vKoaFKF2/1698a32da1dfced0588e317368487f54/image5-1.png" alt="" class="kg-image" width="1999" height="848" loading="lazy">
 
 	</figure>
 	<p>It is important to know that BGP is a mechanism to exchange routing information between autonomous systems (networks) on the Internet. The routers that make the Internet work have huge, constantly updated lists of the possible routes that can be used to deliver every network packet to their final destinations. Without BGP, the Internet routers wouldn't know what to do, and the Internet wouldn't work. As we saw in our blog post in 2021 about <a href="https://blog.cloudflare.com/october-2021-facebook-outage">how Facebook disappeared from the Internet</a>, the Internet is literally a network of networks, and it’s bound together by BGP.</p>
@@ -26,13 +26,13 @@
 	<p>Looking at the “Path” results, we see that AS8346 (Sonatel) and AS25250 (Gamtel) are in the path for all the Gambian networks.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AelkVnU67WSv5qkhLt2VW/ffa3fcf261ed42b4b2a1f5d83c642d7d/image1-1.png" alt="" class="kg-image" width="1456" height="420" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AelkVnU67WSv5qkhLt2VW/1cfb56ec61006e69a028f6ee598efdfa/image1-1.png" alt="" class="kg-image" width="1456" height="420" loading="lazy">
 
 	</figure>
 	<p>Visualized, you can see the dependency on this network path for The Gambia’s Internet access.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5q3QiELxPvQxzebO9OdrtH/84c89e9ad4bde7386efcabdb5fc99aef/image3-2.png" alt="" class="kg-image" width="1999" height="1019" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5q3QiELxPvQxzebO9OdrtH/3855bc7959f6f832b88213affd229a44/image3-2.png" alt="" class="kg-image" width="1999" height="1019" loading="lazy">
 
 	</figure>
 	<p>No interruptions were seen in Sonatel (AS8346), so this indicates that the single network path between Sonatel and Gamtel (AS25250) is a critical point for connectivity. A failure in either of these networks could result in The Gambia going offline again.</p>
@@ -40,7 +40,7 @@
 	<p>Going back to The Gambia, Gamtel explained in a January 5, 2022, <a href="https://twitter.com/Gamtel/status/1478670244067651587/photo/1">press release</a> that there was “a primary link failure at <a href="https://en.wikipedia.org/wiki/Africa_Coast_to_Europe_(cable_system)">ACE</a>” — the cable system that serves 24 countries, from Europe to Africa. “The ACE cable repair is expected to be completed in mid-January, 2022,” explained the company.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DV29RysbNePQPo9JVmNaW/26a40a40e973c2f07c63833edda8d6a6/image2-1.png" alt="" class="kg-image" width="1999" height="1282" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DV29RysbNePQPo9JVmNaW/649dcc3f160cb049e2e591582a924bae/image2-1.png" alt="" class="kg-image" width="1999" height="1282" loading="lazy">
 
 	</figure>
 	<p>The full <a href="https://en.wikipedia.org/wiki/Africa_Coast_to_Europe_(cable_system)">ACE</a> (Africa Coast to Europe) submarine cable system. From <a href="https://afterfibre.nsrc.org">NSRC</a></p>

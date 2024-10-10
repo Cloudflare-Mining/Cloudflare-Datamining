@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ggjawBGr4t92zyLzlZ71e/c746aee8eff83fc71e1836c9221d1df5/what-weve-been-doing-with-go.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ggjawBGr4t92zyLzlZ71e/4b1b9ecec2ac4f161e32e7ce004f16bb/what-weve-been-doing-with-go.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Almost two years ago CloudFlare started working with Go. What started as an experiment on one network and concurrency heavy project has turned into full, production use of Go for multiple services. Today Go is at the heart of CloudFlare's services including handling compression for high-latency HTTP connections, our entire DNS infrastructure, SSL, load testing and more.</p>
 	<p>I first wrote about CloudFlare's use of <a href="https://blog.cloudflare.com/go-at-cloudflare">Go back in July 2012</a>. At that time there was only one CloudFlare project, <a href="https://www.cloudflare.com/railgun">Railgun</a>, written in Go, but others were starting to germinate around the company. Today we have many major projects in Go. So, we celebrate Go's <a href="https://blog.golang.org/4years">4th birthday</a> with a short list of interesting things we've written in Go.</p>
@@ -25,7 +25,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WoNHpcKK14wLSsSifQYQA/cbeed54fb4b77e0e1d187c08d90a13f8/railgun.png.scaled500_1.png" alt="Railgun" class="kg-image" width="500" height="225" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WoNHpcKK14wLSsSifQYQA/f3f1098e66124cf8185ab2d5ea1fd0f6/railgun.png.scaled500_1.png" alt="Railgun" class="kg-image" width="500" height="225" loading="lazy">
 
 	</figure>
 	<p>Railgun is CloudFlare's compression technology that's used to speed up connections between CloudFlare's data centers and origin web servers (especially when there is high latency between them). It's 100% written in Go and performs on the fly compression of web pages (and other textual assets) against recent versions of those pages to send the absolute minimum data possible.</p>
@@ -42,7 +42,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bgG5mznimQuyVwyYePpnb/2fe1dc428a3bd0b97754d517dfef80d3/The_Hunt_for_Red_October-1.jpg" alt="The Hunt for Red October" class="kg-image" width="480" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bgG5mznimQuyVwyYePpnb/278dfca284fd8d75acde787f39942bee/The_Hunt_for_Red_October-1.jpg" alt="The Hunt for Red October" class="kg-image" width="480" height="206" loading="lazy">
 
 	</figure>
 	<p>Red October is a cryptographically secure implementation of the <a href="https://en.wikipedia.org/wiki/Two-man_rule">two-man rule</a> control mechanism. It is a software-based encryption and decryption server. The server allows authorized individuals to encrypt a payload in such a way that no one individual can decrypt it. To decrypt the payload, at least two authorized individuals must be logged into the server. The decryption of the payload is cryptographically tied to the login credentials of the authorized individuals and is only kept in memory for the duration of the decryption.</p>
@@ -58,7 +58,7 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ISeaNc9XgwhFEpdVP8Mce/8354c8a21bb13ebd73a792de7e813680/chain.jpg.scaled500_1.jpg" alt="Chain" class="kg-image" width="220" height="165" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ISeaNc9XgwhFEpdVP8Mce/33527712a89e3fa7bef47095259f00a9/chain.jpg.scaled500_1.jpg" alt="Chain" class="kg-image" width="220" height="165" loading="lazy">
 
 	</figure>
 	<p>The SSL Bundler allows us to take a customer's own SSL certificate and compute the <a href="https://blog.cloudflare.com/what-we-just-did-to-make-ssl-even-faster">fastest, shortest chain of intermediate certificates</a> that can be used to verify the connection. When someone uploads a custom SSL certificate, we use our directory of intermediate certificates to build all the possible chains from the uploaded cert to a trusted browser root. We then rank these chains based on a number of factors including:</p>
@@ -89,7 +89,7 @@
 	<p>All in all Go is one of the main languages in use at CloudFlare and from here it looks like it has a bright future.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nLQBFNBDHtGXjroUxDBbE/38f38f06718470fd44686b3ce695f0a3/Screen_Shot_2013-11-11_at_9.04.31_PM.png" alt="Go's 4th Birthday" class="kg-image" width="159" height="175" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nLQBFNBDHtGXjroUxDBbE/81eeb7497ee1b27c25cfdc36be62718d/Screen_Shot_2013-11-11_at_9.04.31_PM.png" alt="Go's 4th Birthday" class="kg-image" width="159" height="175" loading="lazy">
 
 	</figure>
 	<p>Happy 4th Birthday Go!</p>

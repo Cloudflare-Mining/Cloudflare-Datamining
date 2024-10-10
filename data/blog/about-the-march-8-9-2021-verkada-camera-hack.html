@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VeSXGVmH9D5ua1ucmOgcE/0fca7fc8d9f7aaeacb9bc64d83d2450a/about-the-march-8-9-2021-verkada-camera-hack.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VeSXGVmH9D5ua1ucmOgcE/7366666cc1b2746874912470cdbd761a/about-the-march-8-9-2021-verkada-camera-hack.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare uses a vendor called Verkada for cameras in our offices in San Francisco, Austin, New York, London and Singapore. These cameras are used at the entrances, exits and main thoroughfares of our offices and have been part of maintaining the security of offices that have been closed for almost a year.</p>
 	<p>Yesterday, we were notified of a breach of Verkada that allowed a hacker to access Verkada’s internal support tools to manage those cameras remotely, as well as access them through a remote root shell. As soon as we were notified of the breach, we proceeded to shut down the cameras in all our office locations to prevent further access.</p>
@@ -8,7 +8,7 @@
 	<p>For example, a claim was made on Twitter that it might have been possible to access Cloudflare CEO Matthew Prince’s laptop.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zzivXRx7aGOJE9Ll3bE1u/1169aa4f13f4e3f8a88eb8756f7bbf9d/image5-8.png" alt="" class="kg-image" width="512" height="167" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zzivXRx7aGOJE9Ll3bE1u/085eaa29f46282ae44c76ab5660f1232/image5-8.png" alt="" class="kg-image" width="512" height="167" loading="lazy">
 
 	</figure>
 	<p>This claim is spurious for a few reasons. Firstly, Matthew isn’t in the San Francisco office because of COVID-19. None of us are. So being on the corporate San Francisco network doesn’t get you closer to his or my machine.</p>
@@ -16,7 +16,7 @@
 	<p>And another claim was that the attackers had a “root shell inside Cloudflare’s network”.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2bLDmfIfNbgj9LVCSoGVjH/1cfc978416a10a837be909bc29a8de67/image3-9.png" alt="" class="kg-image" width="512" height="192" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bLDmfIfNbgj9LVCSoGVjH/7cf465f2b35cc1e64fe2fda1272abde4/image3-9.png" alt="" class="kg-image" width="512" height="192" loading="lazy">
 
 	</figure>
 	<p>That sounds scary but we don’t trust our corporate network; we use our products, such as Cloudflare Access, to control access to resources. The fact that the attacker had access to a machine inside the corporate network is no better than the kind of access they’d have had if they’d connected to our corporate WiFi network. The network isn't important, it's the access control that matters.</p>
@@ -34,7 +34,7 @@
 	<p>Some press stories contain an image of the “root shell” on one of the cameras. It shows the attacker having executed commands like <code>whoami</code>, <code>ifconfig</code> and <code>curl ifconfig.me</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DYxQxv0VLgGpYqzic3ToS/d8087aaf720ba9425bc01d6cee5d06ec/image6.jpg" alt="" class="kg-image" width="1600" height="936" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DYxQxv0VLgGpYqzic3ToS/78aefd686374b9b5e35de50e36eef85c/image6.jpg" alt="" class="kg-image" width="1600" height="936" loading="lazy">
 
 	</figure>
 	<p>Here are the commands executed by the intruder on March 8 (we are waiting for Verkada to supply us with the commands executed on March 9 but our other monitoring and logging tools give us a good sense of what those commands will be):</p>
@@ -118,17 +118,17 @@ curl/7.64.0
 	<p>The attacker used the Verkada tools to download two archived recordings of our San Francisco office lobby. We only keep 30 days of video but when there’s a formal investigation we keep specific video for up to one year. The downloaded videos date back to July 13, 2020; we had kept them to support investigation into a theft. Here are some stills from each of those videos:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VJFyH0AOlNOg8Hw4MTwQl/4b605938fd7c17709fb9e79996054a56/image1-11.png" alt="" class="kg-image" width="1999" height="1498" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VJFyH0AOlNOg8Hw4MTwQl/59728611e4cc2772f53830ee7ef822f8/image1-11.png" alt="" class="kg-image" width="1999" height="1498" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Rhg8ytCnl6uiXk6Dw2JMN/0687dfac2e55bbff269d8720ce2e7740/image4-8.png" alt="" class="kg-image" width="1999" height="1501" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Rhg8ytCnl6uiXk6Dw2JMN/e25b1b71197b07baf13a730268deebce/image4-8.png" alt="" class="kg-image" width="1999" height="1501" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/t0F3n7KEVrmxhpU7raJTn/7fff5ed7f14af2274b7afa1cc4aa9c3b/image2-5.png" alt="" class="kg-image" width="1999" height="1497" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/t0F3n7KEVrmxhpU7raJTn/1ceba0a05ba199895398ec72feb24ebb/image2-5.png" alt="" class="kg-image" width="1999" height="1497" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

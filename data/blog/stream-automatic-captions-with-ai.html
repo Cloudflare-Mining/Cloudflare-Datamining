@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZNOCnu9XDN7qU6CIDuysv/a7b83e5d5a02294fabd01e9a79b396dc/image3-6.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZNOCnu9XDN7qU6CIDuysv/e297849f3d6bae5663bfae0866febbfe/image3-6.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>With one click, customers can now generate video captions effortlessly using Stream’s newest feature: AI-generated captions for on-demand videos and recordings of live streams. As part of Cloudflare’s mission to help build a better Internet, this feature is available to all Stream customers at no additional cost.</p>
@@ -105,7 +105,7 @@ export default {
 	<p>One aspect for pre-processing is ensuring files are a sensible duration for optimized inference. &nbsp;Whisper has an “sweet spot” of 30 seconds for the duration of audio files for transcription. As they note in this <a href="https://github.com/openai/whisper/discussions/1118">Github discussion</a>: “<i>Too short, and you’d lack surrounding context. You’d cut sentences more often. A lot of sentences would cease to make sense. Too long, and you’ll need larger and larger models to contain the complexity of the meaning you want the model to keep track of.</i>” Fortunately, Stream already splits videos into smaller segments to ensure fast delivery during playback on the web. We wrote functionality to concatenate those small segments into 30-second batches prior to sending to Workers AI.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hAKps3VE8xMCHQX99y7th/0c32d3db8723d4f892c257d9b658b327/image1-17.png" alt="" class="kg-image" width="1440" height="677" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hAKps3VE8xMCHQX99y7th/28e47409eb8ed6e794683c878e4c0c32/image1-17.png" alt="" class="kg-image" width="1440" height="677" loading="lazy">
 
 	</figure>
 	<p>To optimize processing speed, our team parallelized as many operations as possible. By concurrently creating the 30-second audio batches and sending requests to Workers AI, we take full advantage of the scalability of the Workers AI platform. Doing this greatly reduces the time it takes to generate captions, but adds some additional complexity. Because we are sending requests to Workers AI in parallel, transcription responses may arrive out-of-order. For example, if a video is one minute in duration, the request to generate captions for the second 30 seconds of a video may complete before the request for the first 30 seconds of the video. The captions need to be sequential to align with the video, so our team had to maintain an understanding of the audio batch order to ensure our final combined <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API">WebVTT caption file</a> is properly synced with the video. We sort the incoming Workers AI responses and re-order timestamps for a final accurate transcript.</p>

@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d97S9cLxaxXV7fyA3Wont/c921aa0e36a5571d82967fe4287aa803/image2-3.png" alt="Data generation and sampling strategies" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3d97S9cLxaxXV7fyA3Wont/e42f3b2c078b097067b6423e7cee4b59/image2-3.png" alt="Data generation and sampling strategies" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we are always looking for ways to make our customers' faster and more secure. A key part of that commitment is our ongoing investment in research and development of new technologies, such as the work on our machine learning based <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall (WAF)</a> solution we announced during <a href="https://blog.cloudflare.com/waf-ml">security week</a>.</p>
@@ -45,7 +45,7 @@
 	</ol>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7u9bJYCjNOH3rGEbQ5zlO1/b10680dcefc2804672244fd47b210956/image3-1.png" alt="" class="kg-image" width="1530" height="510" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7u9bJYCjNOH3rGEbQ5zlO1/a175b0be66d684af349c37166abda782/image3-1.png" alt="" class="kg-image" width="1530" height="510" loading="lazy">
 
 	</figure>
 	<p>This reasonable starting point stumbles immediately upon a critical challenge right from the start: we need high quality labeled data, and lots of it as that has the biggest impact on model performance. Contrary to well-researched fields like image recognition, text sentiment analysis, or classification, large datasets of HTTP requests with malicious payloads embedded are difficult to get.</p>
@@ -141,13 +141,13 @@
 	<p><i>Ascii_script: alphanumeric characters plus &nbsp;'&lt;', '&gt;', '/', '&lt;/', '-', '+', '=', '&lt; ', ' &gt;', ' ', ' /&gt;'</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6i3VyWGzBWnaekmFn2tGiT/7386a37fecd1e10f59e508fa90004490/Screenshot-2022-09-05-at-13.16.14.png" alt="" class="kg-image" width="1628" height="242" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6i3VyWGzBWnaekmFn2tGiT/b2f091c9d91a5f480cee24486c649228/Screenshot-2022-09-05-at-13.16.14.png" alt="" class="kg-image" width="1628" height="242" loading="lazy">
 
 	</figure>
 	<p><i>alphanumerics, plus special characters, plus a variant of full javascript or sql keywords and (multi-character) sub-token fragments</i></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52NYD6gz6hJp5JVce60DBb/63fcaa0e4263d2507d2f65ff2fbb1d7b/Screenshot-2022-09-05-at-13.17.48.png" alt="" class="kg-image" width="1626" height="242" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52NYD6gz6hJp5JVce60DBb/112933462a04aaeea3f2cb070f45c3e5/Screenshot-2022-09-05-at-13.17.48.png" alt="" class="kg-image" width="1626" height="242" loading="lazy">
 
 	</figure>
 	<p>It’s fairly straightforward to construct a suite of these noise generators of varying complexity, and targeting different types of content: JSON, XML, URIs with SQL-esque ‘noise’, and so on. As the strings get sufficiently long, the probability that they will contain at least some dangerous looking subsequences grows, so it’s also an excellent test of model robustness.</p>
@@ -183,7 +183,7 @@
 	<p>For this post, we will concentrate on key quantitative metrics like F1 score even though we examine a variety of metrics to assess the model performance. F1 score is the weighted average (harmonic mean) of precision and recall. We can represent the F1 score with the formula:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bWOTqvQ8CzWMQrdnojquV/7cdb8fd340db49606abd4a0b8e3a7632/57sg9aMxBhrWv1CnYdMvRNodVVjcvCUZIrbRExH2sD4-f-7sy2mOKjqRaU3Z6uAH_WEVXHLmzuHBooN_ThqEfan7dVu5khiwLzr8a7ts1UpyNdP6bVWQ4WNhxv_o.png" alt="" class="kg-image" width="608" height="124" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bWOTqvQ8CzWMQrdnojquV/107aeb9f49cdd59750745be2dbb4e2ac/57sg9aMxBhrWv1CnYdMvRNodVVjcvCUZIrbRExH2sD4-f-7sy2mOKjqRaU3Z6uAH_WEVXHLmzuHBooN_ThqEfan7dVu5khiwLzr8a7ts1UpyNdP6bVWQ4WNhxv_o.png" alt="" class="kg-image" width="608" height="124" loading="lazy">
 
 	</figure>
 	<p>Where,</p>
@@ -347,7 +347,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lUchXLKHNfQEkM952eDQd/eafa188e9168cbabea0f15734f3e17c3/Screenshot-2022-09-05-at-12.35.06.png" alt="" class="kg-image" width="1618" height="206" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lUchXLKHNfQEkM952eDQd/443efc4aa7a9d93509938da05e161581/Screenshot-2022-09-05-at-12.35.06.png" alt="" class="kg-image" width="1618" height="206" loading="lazy">
 
 	</figure>
 	<p>Today, the only major category of false positives are literal SQL or JavaScript files.</p>
@@ -364,7 +364,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CDUCnINmeCQ5NAxnF5LQD/e816c61f93244a1903f793de4bf1b4eb/Screenshot-2022-09-05-at-12.36.25.png" alt="" class="kg-image" width="1622" height="112" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CDUCnINmeCQ5NAxnF5LQD/c72bb1f9a7b5e318da3886479842ef79/Screenshot-2022-09-05-at-12.36.25.png" alt="" class="kg-image" width="1622" height="112" loading="lazy">
 
 	</figure>
 	<p>These yield approximately same scores as they are a result of only a few byte &nbsp; alterations</p>
@@ -378,7 +378,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vhJPYVNW2bfVfPTgQmT4H/7a76976d827a6e4d155a9d877bb54499/Screenshot-2022-09-05-at-12.37.03.png" alt="" class="kg-image" width="1626" height="136" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vhJPYVNW2bfVfPTgQmT4H/16f3587fea7bdb6570cfc53bc7cff451/Screenshot-2022-09-05-at-12.37.03.png" alt="" class="kg-image" width="1626" height="136" loading="lazy">
 
 	</figure>
 	<p>They both generate similar scores even though the latter has junk padding around the payload.</p>

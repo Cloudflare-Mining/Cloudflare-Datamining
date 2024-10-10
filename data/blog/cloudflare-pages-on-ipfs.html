@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FIBrvdw7c5lUUpVHbtd82/f3d9cd618031d5e7571979cebb1a2f2c/image5-14.png" alt="An antenna streaming Cloudflare Pages to Saturn (IPFS gateway)" class="kg-image" width="1800" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FIBrvdw7c5lUUpVHbtd82/3851d05d25e3f94e559c8d0e2943c688/image5-14.png" alt="An antenna streaming Cloudflare Pages to Saturn (IPFS gateway)" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
 	<p>Four years ago, <a href="https://blog.cloudflare.com/distributed-web-gateway">Cloudflare went Interplanetary</a> by offering a gateway to the IPFS network. This meant that if you hosted content on IPFS, we offered to make it available to every user of the Internet through HTTPS and with Cloudflare protection. IPFS allows you to choose a storage provider you are comfortable with, while providing a standard interface for Cloudflare to serve this data.</p>
@@ -22,19 +22,19 @@
 	<p>As a participant in the network, Alice keeps connections with a subset of participants, referred to as her peers. When Alice is making her content 🐱 available on IPFS, it means she announces to her peers she has content 🐱, and these peers stored in their routing table 🐱 is provided by Alice's node.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BzC2QWnSrnF6lIqzMd0S8/28cc9df959b0dff76294b65ef6e0491c/image7-8.png" alt="Alice and Bob are part of the IPFS network, peering via multiple hops on the IPFS network. They don’t have each other in their peering table." class="kg-image" width="1801" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6BzC2QWnSrnF6lIqzMd0S8/df749e6c4e59acccb288c078235cab46/image7-8.png" alt="Alice and Bob are part of the IPFS network, peering via multiple hops on the IPFS network. They don’t have each other in their peering table." class="kg-image" width="1801" height="600" loading="lazy">
 
 	</figure>
 	<p>Each node has a routing table, and a datastore. The routing table retains a mapping of content to peers, and the datastore retains the content a given node stores. In the above case, only Alice has content, a 🐱.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JKs4dKwaokLGutycmasSr/dc14aa5ff61331432fd243e781f7f780/image1-41.png" alt="Process for Bob to retrieve ? content" class="kg-image" width="956" height="1208" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JKs4dKwaokLGutycmasSr/ee51d2f5c4b313c920f8f9ff22778b55/image1-41.png" alt="Process for Bob to retrieve ? content" class="kg-image" width="956" height="1208" loading="lazy">
 
 	</figure>
 	<p>When Bob wants to retrieve 🐱, he tells his peers they want 🐱. These peers point him to Alice. Alice then provides 🐱 to Bob. Bob can verify 🐱 is the content they were looking for, because the content identifier he requested is derived from the 🐱 content itself, using a secure, cryptographic hash function.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kYdWRivzzXiVbC9LsDWPf/ce90afc286f2c93a0a305dea05fe5a03/image3-28.png" alt="Bob has retrieved ? from Alice. They now announce to the IPFS network that they are providing it." class="kg-image" width="1801" height="600" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kYdWRivzzXiVbC9LsDWPf/9bdcb0ae5393a7c3551b7395ab5efd61/image3-28.png" alt="Bob has retrieved ? from Alice. They now announce to the IPFS network that they are providing it." class="kg-image" width="1801" height="600" loading="lazy">
 
 	</figure>
 	<p>Even better, if Bob becomes a cat person, they can announce to their peers they are also providing a cat. Bob's love for cats could be genuine, or because they have interest in providing the content, such as a contract with Alice. IPFS provides a common ground to share content, without being opinionated on how this content has to be stored and its guarantees.</p>
@@ -49,7 +49,7 @@
 	<p>Content is made available as follows.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7y0PyVwr6OWWm4Ql8BDeZz/f8a5bad0416dd2996e333e56725d0065/image2-37.png" alt="Architecture of the IPFS Indexer used by Cloudflare" class="kg-image" width="1031" height="593" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7y0PyVwr6OWWm4Ql8BDeZz/22401175f3cc9f85635a155ad1b4c78c/image2-37.png" alt="Architecture of the IPFS Indexer used by Cloudflare" class="kg-image" width="1031" height="593" loading="lazy">
 
 	</figure>
 	<p>The components are:</p>
@@ -93,14 +93,14 @@
 	<p>To provide this website on IPFS, Cloudflare has to compute a CID for /. CIDs are built recursively. To compute the CID for a given folder /, one needs to have the CID of <code>index.html</code> and <code>static</code>/. <code>index.html</code> CID is derived from its binary representation, and static/ from cats.txt and beautiful_cats.txt.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7stjDpQPAhOugUqBcwRV8H/0552c5a8e9c03638075f77218519b64c/image6-13.png" alt="MerkleDAG for the demo website. At the root, / folder. Then, files and folders are nodes in the DAG." class="kg-image" width="1256" height="1208" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7stjDpQPAhOugUqBcwRV8H/1bf1f181f61793fa0d6c1d1c2a860d77/image6-13.png" alt="MerkleDAG for the demo website. At the root, / folder. Then, files and folders are nodes in the DAG." class="kg-image" width="1256" height="1208" loading="lazy">
 
 	</figure>
 	<p>This works similarly to a Merkle tree, except nodes can reference each other as long as they still form a Directed Acyclic Graph (DAG). This structure is therefore referred to as a <a href="https://docs.ipfs.io/concepts/merkle-dag">MerkleDAG</a>.</p>
 	<p>In our example, it's not unlikely for <code>cats.txt</code> and <code>beautiful_cats.txt</code> to have data in common. In this case, Cloudflare can be smart in the way it builds the MerkleDAG.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mqAMRlu7HoiESker0Tiur/91174a50e30e52eb011f93f60d66b827/image4-22.png" alt="MerkleDAG depicting optimisation that can be performed by having two nodes sharing a common subnode" class="kg-image" width="1103" height="1069" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mqAMRlu7HoiESker0Tiur/49e0b2c53cdf847dc283391335408f15/image4-22.png" alt="MerkleDAG depicting optimisation that can be performed by having two nodes sharing a common subnode" class="kg-image" width="1103" height="1069" loading="lazy">
 
 	</figure>
 	<p>This reduces the storage and bandwidth requirement when accessing the website on IPFS.</p>

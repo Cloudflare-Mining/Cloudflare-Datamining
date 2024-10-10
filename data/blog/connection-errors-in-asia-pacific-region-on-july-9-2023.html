@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XSclbffVsXyJvs6H28PzZ/0df6b2ba952024851a79466f7de66921/image2-5.png" alt="Connection errors in Asia Pacific region on July 9, 2023" class="kg-image" width="1200" height="675" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XSclbffVsXyJvs6H28PzZ/8ca3e3e580eecf4e762af00eb94eb8d4/image2-5.png" alt="Connection errors in Asia Pacific region on July 9, 2023" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
 	<p>On Sunday, July 9, 2023, early morning UTC time, we observed a high number of DNS resolution failures — up to 7% of all DNS queries across the Asia Pacific region — caused by invalid DNSSEC signatures from Verisign .com and .net Top Level Domain (TLD) nameservers. This resulted in connection errors for visitors of Internet properties on Cloudflare in the region.</p>
@@ -22,7 +22,7 @@
 	<p>To understand this, let’s look at the domain name <code>blog.cloudflare.com</code> — which is proxied through Cloudflare’s network — and let’s assume it is configured to use <code>origin.example</code> as the origin server:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nnwNUFQmflIHHioGDISlg/258d4811cc82202c35ba30628c69e316/image5-1.png" alt="" class="kg-image" width="1999" height="124" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nnwNUFQmflIHHioGDISlg/250c388a2d796d0dc8139b4eddda6c05/image5-1.png" alt="" class="kg-image" width="1999" height="124" loading="lazy">
 
 	</figure>
 	<p>Here, the external DNS resolution is the part where DNS queries to <code>blog.cloudflare.com</code> sent by public resolvers like <code>1.1.1.1</code> or <code>8.8.8.8</code> on behalf of a visitor return a set of Cloudflare Anycast IP addresses. This ensures that the visitor’s browser knows where to send an HTTPS request to load the website. Under the hood your browser performs a DNS query that looks something like this (the trailing dot indicates the <a href="https://en.wikipedia.org/wiki/DNS_root_zone">DNS root zone</a>):</p>
@@ -37,7 +37,7 @@
 	<p>DNS is a hierarchical protocol, so the recursive DNS resolver, which usually handles DNS resolution for whoever wants to resolve a domain name, needs to talk to several involved nameservers until it finally gets an answer from the authoritative nameservers of the domain (assuming no DNS responses are cached). This is the same process during the external DNS resolution and the origin DNS resolution. Here is an example for the origin DNS resolution:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7E1GLN7i8qGi3oB6Zentug/b039a6b04b6abca70ee6717f974dd040/image6-1.png" alt="" class="kg-image" width="1165" height="863" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7E1GLN7i8qGi3oB6Zentug/8b55136d3c67a79d0d9c711c428911b4/image6-1.png" alt="" class="kg-image" width="1165" height="863" loading="lazy">
 
 	</figure>
 	<p>Inherently, DNS is a public system that was initially published without any means to validate the integrity of the DNS traffic. So in order to prevent someone from spoofing DNS responses, <a href="https://blog.cloudflare.com/dnssec-an-introduction">DNS Security Extensions (DNSSEC)</a> were introduced as a means to authenticate that DNS responses really come from who they claim to come from. This is achieved by generating cryptographic signatures alongside existing DNS records like A, AAAA, MX, CNAME, etc. By validating a DNS record’s associated signature, it is possible to verify that a requested DNS record really comes from its authoritative nameserver and wasn’t altered en-route. If a signature cannot be validated successfully, recursive resolvers usually return an error indicating the invalid signature. This is exactly what happened on Sunday.</p>
@@ -53,7 +53,7 @@
 	<p>After several hours, the error rate had increased to a point in which ~13% of our upstream DNS queries in affected locations were failing. This percentage continued to fluctuate over the duration of the incident between the ranges of 10-15% of upstream DNS queries, and roughly 5-7% of all DNS queries (external &amp; upstream resolution) to affected Cloudflare data centers in the Asia Pacific region.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/acWvj718KdxYfGx33fBZT/19f85768be479855d18345e8269e495e/image1-6.png" alt="" class="kg-image" width="1636" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/acWvj718KdxYfGx33fBZT/7ee25b63cf83ee9ff18e6734aeb1cc3e/image1-6.png" alt="" class="kg-image" width="1636" height="902" loading="lazy">
 
 	</figure>
 	<p>Initially it appeared as though only a single upstream nameserver was having issues with DNS resolution, however upon further investigation it was discovered that the issue was more widespread. Ultimately, we were able to verify that the Verisign nameservers for .com and .net were returning expired DNSSEC signatures on a portion of DNS queries in the Asia Pacific region. Based on our tests, other nameserver locations were correctly returning valid DNSSEC signatures.</p>
@@ -91,13 +91,13 @@
 	<p>In both cases, behind the scenes the DNS query goes through an in-house recursive DNS resolver in order to lookup what a hostname resolves to. The purpose of this resolver is to cache queries, optimize future queries and provide DNSSEC validation. If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qE0JFXaLHPwt3orOsNBm5/ef6801def2954c499c91a217be7404de/image3-1.png" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." class="kg-image" width="1999" height="935" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qE0JFXaLHPwt3orOsNBm5/37d2d34d396d4cc4c2a22b7241e4120f/image3-1.png" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." class="kg-image" width="1999" height="935" loading="lazy">
 
 	</figure>
 	<p>During the incident, the recursive resolver was failing to validate the DNSSEC signatures in DNS responses for domains ending in .com and .net. These signatures are sent in the form of an RRSIG record alongside the other DNS records they cover. Together they form a Resource Record set (RRset). Each RRSIG has the corresponding fields:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3aZjsnpM6WSE70sPrnkHbr/503acd71e1f2d34102b0535ce488e8db/image4.png" alt="As you can see, the main part of the payload is associated with the signature and its corresponding metadata. Each recursive resolver is responsible for not only checking the signature but also the expiration time of the signature. It is important to obey the expiration time in order to avoid returning responses for RRsets that have been signed by old keys, which could have potentially been compromised by that time." class="kg-image" width="1999" height="565" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aZjsnpM6WSE70sPrnkHbr/6af366bd2accafc3f06296e241ceaba5/image4.png" alt="As you can see, the main part of the payload is associated with the signature and its corresponding metadata. Each recursive resolver is responsible for not only checking the signature but also the expiration time of the signature. It is important to obey the expiration time in order to avoid returning responses for RRsets that have been signed by old keys, which could have potentially been compromised by that time." class="kg-image" width="1999" height="565" loading="lazy">
 
 	</figure>
 	<p>As you can see, the main part of the payload is associated with the signature and its corresponding metadata. Each recursive resolver is responsible for not only checking the signature but also the expiration time of the signature. It is important to obey the expiration time in order to avoid returning responses for RRsets that have been signed by old keys, which could have potentially been compromised by that time.</p>

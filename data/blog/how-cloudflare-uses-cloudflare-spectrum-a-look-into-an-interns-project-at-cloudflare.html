@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Z5QW1BQ7OCth8QdTIQddz/a5c5139ae8e38e2b7e0c5252aef83913/Dogfooding-Spectrum_2x-1.png" alt="" class="kg-image" width="1600" height="913" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Z5QW1BQ7OCth8QdTIQddz/6db79a8f7df3cad36ac62c12ca2b65ba/Dogfooding-Spectrum_2x-1.png" alt="" class="kg-image" width="1600" height="913" loading="lazy">
 
 	</figure>
 	<p>Cloudflare extensively uses its own products internally in a process known as <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dogfooding</a>. As part of my onboarding as an intern on the Spectrum (a layer 4 reverse proxy) team, I learned that many internal services dogfood Spectrum, as they are exposed to the Internet and benefit from layer 4 DDoS protection. One of my first tasks was to update the configuration for an internal service that was using Spectrum. The configuration was managed in Salt (<a href="https://blog.cloudflare.com/manage-cloudflare-records-with-salt">used for configuration management at Cloudflare</a>), which was not particularly user-friendly, and required an engineer on the Spectrum team to handle updating it manually.</p>
@@ -31,7 +31,7 @@
 	<p>This could potentially crash the daemon or degrade performance. In practice, this configuration is useless and would only be created by a malicious user, as the proxied connection never reaches an origin, so it is never allowed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RAT655ZFI4uFjH14ymleJ/1c99049de2351245dc93486738e5ef79/Spectrum-loop_2x.png" alt="" class="kg-image" width="1600" height="857" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RAT655ZFI4uFjH14ymleJ/93d5e29de5b132b635bbea52560b006d/Spectrum-loop_2x.png" alt="" class="kg-image" width="1600" height="857" loading="lazy">
 
 	</figure><!--kg-card-begin: html-->
 	<p>In fact, the more general case of setting another Spectrum app as an origin (even when the configuration does not result in a cycle) is (almost<sup><a href="https://blog.cloudflare.com/#footnote">1</a></sup>) never needed, so it also needs to be avoided.</p><!--kg-card-end: html-->
@@ -109,7 +109,7 @@
 	<p>After instrumenting the Spectrum config service with OpenTracing, we were able to determine that the Addressing API accounted for a very small amount of time in the overall request, and allowed us to identify potentially problematic request times to other services.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hdvsPKhjS41OxLNPDltxj/0b79b95bd23e65b84e53be671eef7a73/image1-14.png" alt="" class="kg-image" width="1919" height="603" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hdvsPKhjS41OxLNPDltxj/27ccf978efbe73a81d47960aa6dcf981/image1-14.png" alt="" class="kg-image" width="1919" height="603" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

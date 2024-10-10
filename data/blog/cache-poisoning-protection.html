@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dbuzfY837nCckWOlkTfxM/790ab33cdd191307d4afbdc78db173e1/cache-poisoning-protection.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dbuzfY837nCckWOlkTfxM/176a253901b27e9d0639e8b0d4058272/cache-poisoning-protection.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A few days ago, Cloudflare — along with the rest of the world — learned of a <a href="https://portswigger.net/blog/practical-web-cache-poisoning">"practical" cache poisoning attack</a>. In this post I’ll walk through the attack and explain how Cloudflare mitigated it for our customers. While any web cache is vulnerable to this attack, Cloudflare is uniquely able to take proactive steps to defend millions of customers.</p>
 	<p>In addition to the steps we’ve taken, we strongly recommend that customers update their origin web servers to mitigate vulnerabilities. Some popular vendors have applied patches that can be installed right away, including <a href="https://www.drupal.org/SA-CORE-2018-005">Drupal</a>, <a href="https://symfony.com/blog/cve-2018-14773-remove-support-for-legacy-and-risky-http-headers">Symfony</a>, and <a href="https://framework.zend.com/security/advisory/ZF2018-01">Zend</a>.</p>
@@ -14,7 +14,7 @@
 	<p>Although contents of a response can vary slightly between requests, customers may want to cache a single version of the file to improve performance:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jMHNvdj7hDJAiEb7ureAq/09988fb308eb182d6c722d81b51960fe/cache-ok.png" alt="How cache normally works" class="kg-image" width="1478" height="586" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jMHNvdj7hDJAiEb7ureAq/ad5182cfe46cc64c74d3cd53405373c0/cache-ok.png" alt="How cache normally works" class="kg-image" width="1478" height="586" loading="lazy">
 
 	</figure>
 	<p><i>(See </i><a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-"><i>this support page</i></a><i> for more info about how to cache HTML with Cloudflare.)</i></p>
@@ -48,7 +48,7 @@
 	<p>In a cache poisoning attack, a malicious user crafts an HTTP request that tricks the origin into producing a “poisoned” version of <code>index.html</code> with the same cache key as an innocuous request. This file may get cached and served to other users:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xi374PMzX5VRkQrVBQ8bp/ef6fbf1f28d5c362fdc9eefa01406a54/cache-poison.png" alt="How a cache poisoning attack works" class="kg-image" width="1522" height="594" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xi374PMzX5VRkQrVBQ8bp/bb5ef953e39dd740e757f377793ddf0c/cache-poison.png" alt="How a cache poisoning attack works" class="kg-image" width="1522" height="594" loading="lazy">
 
 	</figure>
 	<p>We take this vulnerability very seriously, because an attacker with no privileges may be able to inject arbitrary data or resources into customer websites.</p>
@@ -56,13 +56,13 @@
 	<p>To give one example, we might observe origin behavior like:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cPNW6DoaAdUjbIhc28SQD/8c002fcf1de54a4e97292e7579bb5d3a/example-req-resp.png" alt="An HTTP response that reflects back data in an HTTP request header" class="kg-image" width="1230" height="820" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cPNW6DoaAdUjbIhc28SQD/bb84421e3a961ae69f8d94a075570255/example-req-resp.png" alt="An HTTP response that reflects back data in an HTTP request header" class="kg-image" width="1230" height="820" loading="lazy">
 
 	</figure>
 	<p>Because this data is returned, unescaped, from the origin, it can be used in scary ways:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1595GWWVTWBjLUvCBhL6VH/ff1af379aa8afaf1eff0fc334194b5f7/js-req-resp.png" alt="An HTTP response that reflects back malicious JavaScript from an HTTP request header" class="kg-image" width="1262" height="852" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1595GWWVTWBjLUvCBhL6VH/50099682aa6d7be4e0a0364769908f79/js-req-resp.png" alt="An HTTP response that reflects back malicious JavaScript from an HTTP request header" class="kg-image" width="1262" height="852" loading="lazy">
 
 	</figure>
 	<p>Game over — the attacker can now get arbitrary JavaScript to execute on this webpage.</p>
@@ -97,7 +97,7 @@
 	<p>Many requests that have traveled through another proxy before reaching Cloudflare contain the X-Forwarded-Host header. Some origins may rely on this value to serve web pages. For example:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AteTgCdKken1Iu6c7a3Dx/e9b60d8003f6785a32d61535f7aa5af6/subtle-req-resp.png" alt="An HTTP request may look innocuous, but contain malicious data that gets reflected by an origin" class="kg-image" width="1256" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AteTgCdKken1Iu6c7a3Dx/e7c7613aa48e671d99a3dd2e40a17b84/subtle-req-resp.png" alt="An HTTP request may look innocuous, but contain malicious data that gets reflected by an origin" class="kg-image" width="1256" height="844" loading="lazy">
 
 	</figure>
 	<p>In this case, there’s no way to just block requests with this X-Forwarded-Host header, because it may have a valid purpose. However, we need to ensure that we don’t return this content to any users who didn’t request it!</p>

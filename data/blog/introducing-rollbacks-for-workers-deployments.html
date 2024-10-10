@@ -2,13 +2,13 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IH8az0MhmycEbXeiuzzNs/63e8af2015ba92645dce3f14558648a2/image8-1.png" alt="Introducing Rollbacks for Workers Deployments" class="kg-image" width="1999" height="1125" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IH8az0MhmycEbXeiuzzNs/e638bce143ddb1a2a057683ca9ebebfd/image8-1.png" alt="Introducing Rollbacks for Workers Deployments" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
 	<p>In November, 2022, we introduced <a href="https://blog.cloudflare.com/deployments-for-workers">deployments for Workers</a>. Deployments are created as you make changes to a Worker. Each one is unique. These let you track changes to your Workers over time, seeing who made the changes, and where they came from.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kYW6tf3Hrwpv3PKkmMOa3/14645b908a5346f57ae635aa4e61c421/image5.png" alt="" class="kg-image" width="1999" height="574" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kYW6tf3Hrwpv3PKkmMOa3/0be12df468ecd4a8a67c08f51104b314/image5.png" alt="" class="kg-image" width="1999" height="574" loading="lazy">
 
 	</figure>
 	<p>When we made the announcement, we also said our intention was to build more functionality on top of deployments.</p>
@@ -33,19 +33,19 @@
 	<p>In the dashboard, you can navigate to the <b>Deployments</b> tab. For each deployment that’s not the most recent, you should see a new icon on the far right of the deployment. Hovering over that icon will display the option to rollback to the specified deployment.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5U6DDnyubvT7UXnR7sRUDk/170d76cb7645141398bfbb46a69316e8/image3.png" alt="" class="kg-image" width="1999" height="465" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5U6DDnyubvT7UXnR7sRUDk/cf343fc7b07b51962c90647c62c557d2/image3.png" alt="" class="kg-image" width="1999" height="465" loading="lazy">
 
 	</figure>
 	<p>Clicking on that will bring up a confirmation dialog, where you can enter a reason for rollback. This provides another mechanism of record-keeping and helps give more context for why the rollback was necessary.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4A9laQMfOq2KcbFvnMHeey/7f9c6b74e293b4b6b7f972df8759b7bf/image2.png" alt="" class="kg-image" width="1066" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4A9laQMfOq2KcbFvnMHeey/5a5dae8225559b93da09d0be590a241d/image2.png" alt="" class="kg-image" width="1066" height="900" loading="lazy">
 
 	</figure>
 	<p>Once you enter a reason and confirm, a new rollback deployment will be created. This deployment has its own ID, but is a duplicate of the one you rolled back to. A message appears with the new deployment ID, as well as an icon showing the rollback message you entered above.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tXWsG9Yhh00HF8D2P0EJY/66f2c7ab7964fe1cf67681fb05bdd494/image6.png" alt="" class="kg-image" width="1999" height="586" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tXWsG9Yhh00HF8D2P0EJY/fe9ff085d320216613bf3d9d215612cd/image6.png" alt="" class="kg-image" width="1999" height="586" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -61,14 +61,14 @@
 	<p>In addition to <code>wrangler rollback</code> we’ve done some refactoring to the <code>wrangler deployments</code> command. Now you can run <code>wrangler deployments list</code> to view up to the last 10 deployments.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZdZipCnby1lHSs3wuPMSy/da9d781c347811bc5e91bfd5304e8a09/image7-1.png" alt="" class="kg-image" width="1222" height="1002" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZdZipCnby1lHSs3wuPMSy/6aa6aee246c7238bf9e3173aa5c0f098/image7-1.png" alt="" class="kg-image" width="1222" height="1002" loading="lazy">
 
 	</figure>
 	<p>Here, you can see two new annotations: <b>rollback from</b> and <b>message</b>. These match the dashboard experience, and provide more visibility into your deployment history.</p>
 	<p>To view an individual deployment, you can run wrangler deployments view. This will display the last deployment made, which is the active deployment. If you would like to see a specific deployment, you can run <code>wrangler deployments view [ID]</code>.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lNq1vG8GBcmNpC634bmvB/1ca5c85680c26a60c8f05cb90cd155a0/image4.png" alt="" class="kg-image" width="1354" height="584" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lNq1vG8GBcmNpC634bmvB/2e0f0f7544f2572a0a17d93f7c802249/image4.png" alt="" class="kg-image" width="1354" height="584" loading="lazy">
 
 	</figure>
 	<p>We’ve updated this command to display more data like: compatibility date, usage model, and bindings. This additional data will help you to quickly visualize changes to Worker or to see more about a specific Worker deployment without having to open your editor and go through source code.</p>

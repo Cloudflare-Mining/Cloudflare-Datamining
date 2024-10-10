@@ -1,4 +1,4 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IjF4VssaTS1Ag3WQSYIl0/131f6ca20744047bfa6cab1fe83f0d31/http-2-prioritization-with-nginx.gif" alt="">
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IjF4VssaTS1Ag3WQSYIl0/0cd923840f5fe619e11dc5e7b8c39b3d/http-2-prioritization-with-nginx.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Getting the best end-user performance from HTTP/2 requires good support for resource prioritization. While most web servers support HTTP/2 prioritization, getting it to work well all the way to the browser requires a fair bit of coordination across the networking stack. This article will expose some of the interactions between the web server, Operating System and network and how to tune a server to optimize performance for end users.</p>
 	<div class="flex anchor relative">
@@ -26,7 +26,7 @@
 	<p>In a simple implementation, the web browser could wait until everything is loaded and constructed and then show the result but that would be pretty slow. Not all of the content is critical to the user and can include things such as images way down in the page, analytics for tracking usage, ads, like buttons, etc. All the browsers work more incrementally where they display the content as it becomes available. This results in a much faster user experience. The visible part of the page can be displayed while the rest of the content is being loaded in the background. Deciding on the best order to request the content in is where browser request prioritization comes into play. Done correctly the visible content can display significantly faster than a naive implementation.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XMGHLI8Lg4iw7DBN7mNAS/403d781b31be77887df37527c1eabc23/Parser-web.png" alt="HTML Parser blocking page render for styles and scripts in the head of the document." class="kg-image" width="960" height="720" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XMGHLI8Lg4iw7DBN7mNAS/b1c65f7a021f93e5c81d47f1304b50de/Parser-web.png" alt="HTML Parser blocking page render for styles and scripts in the head of the document." class="kg-image" width="960" height="720" loading="lazy">
 
 	</figure>
 	<p>HTML Parser blocking page render for styles and scripts in the head of the document.</p>
@@ -54,7 +54,7 @@
 	<p>Most servers that support prioritization will send data for the highest priority responses for which it has data available. But if the most important response takes longer to generate than lower priority responses, the server may end up starting to send data for a lower priority response and then interrupt its stream when the higher priority response becomes available. That way it can avoid wasting available bandwidth and head-of-line blocking where a slow response holds everything else up.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59eyWItYTFdeYfulcnJGgn/71be1a58593d1069e22261e8470c2bf0/H2Prioritization.gif" alt="Browser requesting a high-priority resource after several low-priority resources." class="kg-image" width="960" height="540" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59eyWItYTFdeYfulcnJGgn/80c68b2bc82e445e1c5685f602ed235d/H2Prioritization.gif" alt="Browser requesting a high-priority resource after several low-priority resources." class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
 	<p>Browser requesting a high-priority resource after several low-priority resources.</p>
@@ -74,7 +74,7 @@
 	<p>For HTTP/2, the problem with large send buffers is that it limits the nimbleness of the server to adjust the data it is sending on a connection as high priority responses become available. Once the response data has been written into the TCP send buffer it is beyond the server’s control and has been committed to be delivered in the order it is written.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AqTAsnXSJ1q1TQpRZh0pm/e832830d61564d3dc7e884c6a2cdf94e/Lowat-buff-web.png" alt="High-priority resource queued behind low-priority resources in the TCP send buffer." class="kg-image" width="960" height="491" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AqTAsnXSJ1q1TQpRZh0pm/86f7438dcd64c932fe96921e811b5a95/Lowat-buff-web.png" alt="High-priority resource queued behind low-priority resources in the TCP send buffer." class="kg-image" width="960" height="491" loading="lazy">
 
 	</figure>
 	<p>High-priority resource queued behind low-priority resources in the TCP send buffer.</p>
@@ -86,7 +86,7 @@
 	<p>We have a patch we are preparing to upstream for NGINX to make it configurable but it isn’t quite ready yet so configuring it system-wide is required. Experimentally, the value 16,384 (16K) has proven to be a good balance where the connections are kept fully-utilized with negligible additional CPU overhead. That will mean that at most 16KB of lower priority data will be buffered before a higher priority response can interrupt it and be delivered. As always, your mileage may vary and it is worth experimenting with.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/r0NmKQUjLYjXThiREdchj/cee79ba6835190ad698f3733ff080c10/Lowat-web.png" alt="High-priority resource ready to send with minimal TCP buffering." class="kg-image" width="960" height="483" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/r0NmKQUjLYjXThiREdchj/37a90992b93c43d8a31563f27c46c349/Lowat-web.png" alt="High-priority resource ready to send with minimal TCP buffering." class="kg-image" width="960" height="483" loading="lazy">
 
 	</figure>
 	<p>High-priority resource ready to send with minimal TCP buffering.</p>
@@ -95,7 +95,7 @@
 	<p>The buffers in the network can be quite large at times (megabytes) and they interact very poorly with the congestion control algorithms usually used by TCP. Most classic congestion-control algorithms determine the congestion window by watching for packet loss. Once a packet is dropped then it knows there was too much data on the network and it scales back from there. With Bufferbloat that limit is raised artificially high because the buffers are absorbing the extra packets beyond what is needed to saturate the connection. As a result, the TCP stack ends up calculating a congestion window that spikes to much larger than the actual size needed, then drops to significantly smaller once the buffers are saturated and a packet is dropped and the cycle repeats.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5yp3yoEG0uBWlPowSVbKLm/3cb46fa903c965bc6e5609b14e658856/h2_tcp_sawtooth_web.png" alt="Loss-based congestion control congestion window graph." class="kg-image" width="960" height="599" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yp3yoEG0uBWlPowSVbKLm/e6fdd79c824709f41e2993698d2f8155/h2_tcp_sawtooth_web.png" alt="Loss-based congestion control congestion window graph." class="kg-image" width="960" height="599" loading="lazy">
 
 	</figure>
 	<p>Loss-based congestion control congestion window graph.</p>
@@ -104,14 +104,14 @@
 	<p>Bufferbloat is very similar. When the data is coming into the network slower than the links can support, everything is nice and fast:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IpqZY4r070iJKdzCndFAU/3835c137c1f2627df1e13412929b70a3/Bb-fast-web.png" alt="Response traveling through the network with no buffering." class="kg-image" width="960" height="327" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IpqZY4r070iJKdzCndFAU/1e039adf8d8ea8f00238794b6eea0191/Bb-fast-web.png" alt="Response traveling through the network with no buffering." class="kg-image" width="960" height="327" loading="lazy">
 
 	</figure>
 	<p>Response traveling through the network with no buffering.</p>
 	<p>Once the data comes in faster than it can go out the gates are flipped and the data gets routed through the maze of buffers to hold it until it can be sent. From the entrance to the line it still looks like everything is going fine since the network is absorbing the extra data but it also means there is a long queue of the low-priority data already absorbed when you want to send the high-priority data and it has no choice but to follow at the back of the line:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iqGmNvNY0pOG3CJZRHT0w/67995cc193facceae9fe346632256d21/Bb-slow-web.png" alt="Responses queued in network buffers." class="kg-image" width="960" height="307" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iqGmNvNY0pOG3CJZRHT0w/4f65ec518eff246284d8f2bca373b7da/Bb-slow-web.png" alt="Responses queued in network buffers." class="kg-image" width="960" height="307" loading="lazy">
 
 	</figure>
 	<p>Responses queued in network buffers.</p>
@@ -122,21 +122,21 @@
 	<p>BBR also tends to perform better overall since it doesn’t require packet loss as part of probing for the correct congestion window and also tends to react better to random packet loss.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4t9tjuLzOCF7CbuCLicM5G/d8f159f4514779f3f9cd524e0961ab27/h2_bbr_sawtooth.png" alt="BBR congestion window graph." class="kg-image" width="2000" height="1499" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4t9tjuLzOCF7CbuCLicM5G/a350fcbdafc39f865ac34e90f5778fce/h2_bbr_sawtooth.png" alt="BBR congestion window graph." class="kg-image" width="2000" height="1499" loading="lazy">
 
 	</figure>
 	<p>BBR congestion window graph.</p>
 	<p>Back to the amusement park line, BBR is like having each person carry one of the RFID cards they use to measure the wait time. Once the wait time looks like it is getting slower the people at the entrance slow down the rate that they let people enter the line.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lAoZDM2jP8XYw9SyS5OMx/0802329a635b5b0ae9b650c13b3aa478/Bb-detect-web.png" alt="BBR detecting network congestion early." class="kg-image" width="960" height="341" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lAoZDM2jP8XYw9SyS5OMx/f040d3c07ff4b97eefc65cad5f89ab39/Bb-detect-web.png" alt="BBR detecting network congestion early." class="kg-image" width="960" height="341" loading="lazy">
 
 	</figure>
 	<p>BBR detecting network congestion early.</p>
 	<p>This way BBR essentially keeps the line moving as fast as possible and prevents the maze of lines from being used. When a guest with a fast pass arrives (the high-priority request) they can jump into the fast-moving line and hop right onto the ride.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PIseBoVZR55F9yEe71pya/4eeb742c3d3a38064d090c7e4f009933/Bb-bbr-web.png" alt="BBR delivering responses without network buffering." class="kg-image" width="960" height="343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PIseBoVZR55F9yEe71pya/75c406b6b42272f3d02a761f7b6a7047/Bb-bbr-web.png" alt="BBR delivering responses without network buffering." class="kg-image" width="960" height="343" loading="lazy">
 
 	</figure>
 	<p>BBR delivering responses without network buffering.</p>
@@ -154,25 +154,25 @@
 	<p>Even on a 5Mbps cable connection proper resource ordering can result in rendering a page significantly faster (and the difference can explode to dozens of seconds or even minutes on a slower connection). <a href="https://www.webpagetest.org/video/view.php?id=180927_1b80249b8e1a7619300d2a51533c07438e4fa5ea">Here</a> is a relatively common case of a WordPress blog served over HTTP/2:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42hSIcWY4c4t5AlEDYa1Sl/c22fd732440e595b9959b9dc02019744/h2_render_1.png" alt="The page from the tuned server (After) starts to render at 1.8 seconds." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42hSIcWY4c4t5AlEDYa1Sl/eaacdf916bba0264aa90549411b8fc22/h2_render_1.png" alt="The page from the tuned server (After) starts to render at 1.8 seconds." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>The page from the tuned server (After) starts to render at 1.8 seconds.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DbdYJbZ12so4x2jDmnx3W/71e95a7b78e8f8708da4e2cd96a91ba5/h2_render_2.png" alt="The page from the tuned server (After) is completely done rendering at 4.5 seconds, well before the default configuration (Before) even started to render." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DbdYJbZ12so4x2jDmnx3W/a9bb2f54dedd07bb752dddb8fcc11667/h2_render_2.png" alt="The page from the tuned server (After) is completely done rendering at 4.5 seconds, well before the default configuration (Before) even started to render." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>The page from the tuned server (After) is completely done rendering at 4.5 seconds, well before the default configuration (Before) even started to render.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DFgPFFYHWh7yoPDVPvzD8/433758b9bfe9afea5b8d72bac2e6200e/h2_render_3.png" alt="Finally, at 10.2 seconds the default configuration started to render (8.4 seconds later or 5.6 times slower than the tuned server)." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DFgPFFYHWh7yoPDVPvzD8/a9788b5de09169f0d9113b8255fee060/h2_render_3.png" alt="Finally, at 10.2 seconds the default configuration started to render (8.4 seconds later or 5.6 times slower than the tuned server)." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>Finally, at 10.2 seconds the default configuration started to render (8.4 seconds later or 5.6 times slower than the tuned server).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Mi9As6BWT0lq9HCITHwJ5/5d5c6bef3bf2ec27823685aec0e9f96f/h2_render_4.png" alt="Visually complete on the default configuration arrives at 10.7 seconds (6.2 seconds or 2.3 times slower than the tuned server)." class="kg-image" width="816" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Mi9As6BWT0lq9HCITHwJ5/fbd8ebf3a553691da6b53d266286652e/h2_render_4.png" alt="Visually complete on the default configuration arrives at 10.7 seconds (6.2 seconds or 2.3 times slower than the tuned server)." class="kg-image" width="816" height="384" loading="lazy">
 
 	</figure>
 	<p>Visually complete on the default configuration arrives at 10.7 seconds (6.2 seconds or 2.3 times slower than the tuned server).</p>
@@ -188,21 +188,21 @@
 	<p>If you look at a network waterfall diagram of a page loading prioritization issues will show up as high-priority requests completing much later than lower-priority requests from the same origin. Usually that will also push metrics like <a href="https://w3c.github.io/paint-timing/#sec-terminology">First Paint</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded">DOM Content Loaded</a> (the vertical purple bar below) much later.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ed4mofSgwlJ77sJ46qcWf/b77cfbdb4f8c809d0269d6ef731ad0b8/h2_waterfall_delayed.png" alt="Network waterfall showing critical CSS and JavaScript delayed by images." class="kg-image" width="938" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ed4mofSgwlJ77sJ46qcWf/4fa3f82440f6df9a1cab240d02c1ce4f/h2_waterfall_delayed.png" alt="Network waterfall showing critical CSS and JavaScript delayed by images." class="kg-image" width="938" height="492" loading="lazy">
 
 	</figure>
 	<p>Network waterfall showing critical CSS and JavaScript delayed by images.</p>
 	<p>When prioritization is working correctly you will see critical resources all completing much earlier and not be blocked by the lower-priority requests. You may still see SOME low-priority data download before the higher-priority data starts downloading because there is still some buffering even under ideal conditions but it should be minimal.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xpPBVSGpsy1byCuc6vGy7/23bc599075b8b6d226868fa6fd0b050e/h2_waterfall_fast.png" alt="Network waterfall showing critical CSS and JavaScript loading quickly." class="kg-image" width="945" height="535" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1xpPBVSGpsy1byCuc6vGy7/2c2fe0e20129d3ce23304886674c8ef0/h2_waterfall_fast.png" alt="Network waterfall showing critical CSS and JavaScript loading quickly." class="kg-image" width="945" height="535" loading="lazy">
 
 	</figure>
 	<p>Network waterfall showing critical CSS and JavaScript loading quickly.</p>
 	<p>Chrome 69 and later may hide the problem a bit. Chrome holds back lower-priority requests even on HTTP/2 connections until after it has finished processing the head of the document. In a waterfall it will look like a delayed block of requests that all start at the same time after the critical requests have completed. That doesn’t mean that it isn’t a problem for Chrome, just that it isn’t as obvious. Even with the staggering of requests there are still high-priority requests outside of the head of the document that can be delayed by lower-priority requests. Most notable are any blocking scripts in the body of the page and any external fonts that were not preloaded.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/35PouKEd6DjgpSylNzuGp6/4e174df34926d2864f39e1dd30e8f379/h2_waterfall_chrome.png" alt="Network waterfall showing Chrome delaying the requesting of low-priority resources." class="kg-image" width="941" height="548" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35PouKEd6DjgpSylNzuGp6/1081ad9271d8cb9acd89d1d5cce75c17/h2_waterfall_chrome.png" alt="Network waterfall showing Chrome delaying the requesting of low-priority resources." class="kg-image" width="941" height="548" loading="lazy">
 
 	</figure>
 	<p>Network waterfall showing Chrome delaying the requesting of low-priority resources.</p>

@@ -1,4 +1,4 @@
-<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EMvAGGgjUtuYprycYpn7Q/4e39e365030cbe3c4aa176a14be80937/speeding-up-linux-disk-encryption.png" alt="">
+<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EMvAGGgjUtuYprycYpn7Q/607c0b4e8ed38febcda4f1d21ab5c0cc/speeding-up-linux-disk-encryption.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Data encryption at rest is a must-have for any modern Internet company. Many companies, however, don't encrypt their disks, because they fear the potential performance penalty caused by encryption overhead.</p>
 	<p>Encrypting data at rest is vital for Cloudflare with <a href="https://www.cloudflare.com/network">more than 200 data centres across the world</a>. In this post, we will investigate the performance of disk encryption on Linux and explain how we made it at least two times faster for ourselves and our customers!</p>
@@ -13,7 +13,7 @@
 	<p>When it comes to encrypting data at rest there are several ways it can be implemented on a modern operating system (OS). Available techniques are tightly coupled with a <a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/Storage">typical OS storage stack</a>. A simplified version of the storage stack and encryption solutions can be found on the diagram below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IM596LYKyiKGoM8dQv0a2/c2ec72f513ccebca898377be81ef057b/storage-stack.png" alt="storage-stack" class="kg-image" width="1510" height="740" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IM596LYKyiKGoM8dQv0a2/459b3d6be1edf9328914470ed9eee925/storage-stack.png" alt="storage-stack" class="kg-image" width="1510" height="740" loading="lazy">
 
 	</figure>
 	<p>On the top of the stack are applications, which read and write data in files (or streams). The file system in the OS kernel keeps track of which blocks of the underlying block device belong to which files and translates these file reads and writes into block reads and writes, however the hardware specifics of the underlying storage device is abstracted away from the filesystem. Finally, the block subsystem actually passes the block reads and writes to the underlying hardware using appropriate device drivers.</p>
@@ -162,7 +162,7 @@ Run status group 0 (all jobs):
 	<p>When trying to use the custom <code>dm-crypt</code> options described above we were curious why they exist in the first place and what is that "offloading" all about. Originally we expected <code>dm-crypt</code> to be a simple "proxy", which just encrypts/decrypts data as it flows through the stack. Turns out <code>dm-crypt</code> does more than just encrypting memory buffers and a (simplified) IO traverse path diagram is presented below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UenGQJyEiOzxwISPhhGR1/87ade22c1dfbe6aeda5c77af9d29a0e5/dm-crypt.png" alt="dm-crypt" class="kg-image" width="1610" height="792" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UenGQJyEiOzxwISPhhGR1/bdeae8ae7c9d331f4ca4d1cc75bbfb15/dm-crypt.png" alt="dm-crypt" class="kg-image" width="1610" height="792" loading="lazy">
 
 	</figure>
 	<p>When the file system issues a write request, <code>dm-crypt</code> does not process it immediately - instead it puts it into a <a href="https://www.kernel.org/doc/html/v4.19/core-api/workqueue.html">workqueue</a> <a href="https://github.com/torvalds/linux/blob/0d81a3f29c0afb18ba2b1275dcccf21e0dd4da38/drivers/md/dm-crypt.c#L3124">named "kcryptd"</a>. In a nutshell, a kernel workqueue just schedules some work (encryption in this case) to be performed at some later time, when it is more convenient. When "the time" comes, <code>dm-crypt</code> <a href="https://github.com/torvalds/linux/blob/0d81a3f29c0afb18ba2b1275dcccf21e0dd4da38/drivers/md/dm-crypt.c#L1940">sends the request</a> to <a href="https://www.kernel.org/doc/html/v4.19/crypto/index.html">Linux Crypto API</a> for actual encryption. However, modern Linux Crypto API <a href="https://www.kernel.org/doc/html/v4.19/crypto/api-skcipher.html#symmetric-key-cipher-api">is asynchronous</a> as well, so depending on which particular implementation your system will use, most likely it will not be processed immediately, but queued again for "later time". When Linux Crypto API will finally <a href="https://github.com/torvalds/linux/blob/0d81a3f29c0afb18ba2b1275dcccf21e0dd4da38/drivers/md/dm-crypt.c#L1980">do the encryption</a>, <code>dm-crypt</code> may try to <a href="https://github.com/torvalds/linux/blob/0d81a3f29c0afb18ba2b1275dcccf21e0dd4da38/drivers/md/dm-crypt.c#L1909-L1910">sort pending write requests by putting each request</a> into a <a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black tree</a>. Then a <a href="https://github.com/torvalds/linux/blob/0d81a3f29c0afb18ba2b1275dcccf21e0dd4da38/drivers/md/dm-crypt.c#L1819">separate kernel thread</a> again at "some time later" actually takes all IO requests in the tree and <a href="https://github.com/torvalds/linux/blob/0d81a3f29c0afb18ba2b1275dcccf21e0dd4da38/drivers/md/dm-crypt.c#L1864">sends them down the stack</a>.</p>
@@ -335,19 +335,19 @@ chunksize    : 16</code></pre>
 	<p>And now observe the result. We may go back to the other terminal running the <code>fio</code> job and look at the output, but to make things nicer, here's a snapshot of the observed read/write throughput in <a href="https://grafana.com">Grafana</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gU4JU2MqSRwllckZS17O0/57f0119b2961c63b67d39d6b4bb96c9b/read-throughput-annotated.png" alt="read-throughput-annotated" class="kg-image" width="2032" height="972" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gU4JU2MqSRwllckZS17O0/eb5ce828cbd3e9a84bfa12411def3455/read-throughput-annotated.png" alt="read-throughput-annotated" class="kg-image" width="2032" height="972" loading="lazy">
 
 	</figure>
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jxXWkIyojMU4AfFA3BVGm/f825e7309689bb314ca12a95b47b80bc/write-throughput-annotated.png" alt="write-throughput-annotated" class="kg-image" width="2056" height="944" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jxXWkIyojMU4AfFA3BVGm/223478d25385f5dbb18385074fa9d60e/write-throughput-annotated.png" alt="write-throughput-annotated" class="kg-image" width="2056" height="944" loading="lazy">
 
 	</figure>
 	<p>Wow, we have more than doubled the throughput! With the total throughput of <code>~640 MB/s</code> we're now much closer to the expected <code>~696 MB/s</code> from above. What about the IO latency? (The <code>await</code> statistic from the <a href="http://man7.org/linux/man-pages/man1/iostat.1.html">iostat reporting tool</a>):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gewP8Uml8nprMoLHFTeCR/473f839d51abfa2d7da9bfc1e8d3ffac/await-annotated.png" alt="await-annotated" class="kg-image" width="2024" height="688" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gewP8Uml8nprMoLHFTeCR/5f559ee898a438446b8cbccf962290c9/await-annotated.png" alt="await-annotated" class="kg-image" width="2024" height="688" loading="lazy">
 
 	</figure>
 	<p>The latency has been cut in half as well!</p>
@@ -355,7 +355,7 @@ chunksize    : 16</code></pre>
 	<p>So far we have been using a synthetic setup with some parts of the full production stack missing, like file systems, real hardware and most importantly, production workload. To ensure we’re not optimising imaginary things, here is a snapshot of the production impact these changes bring to the caching part of our stack:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6efmOs555BLNsL8xsxw7YP/9171510ee73c424b323f3cfd5e51bf05/prod.png" alt="prod" class="kg-image" width="2000" height="329" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6efmOs555BLNsL8xsxw7YP/7c43e23c6c93013511e06fd191cab393/prod.png" alt="prod" class="kg-image" width="2000" height="329" loading="lazy">
 
 	</figure>
 	<p>This graph represents a three-way comparison of the worst-case response times (99th percentile) for a <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">cache hit in one of our servers</a>. The green line is from a server with unencrypted disks, which we will use as baseline. The red line is from a server with encrypted disks with the default Linux disk encryption implementation and the blue line is from a server with encrypted disks and our optimisations enabled. As we can see the default Linux disk encryption implementation has a significant impact on our cache latency in worst case scenarios, whereas the patched implementation is indistinguishable from not using encryption at all. In other words the improved encryption implementation does not have any impact at all on our cache response speed, so we basically get it for free! That’s a win!</p>
@@ -372,7 +372,7 @@ chunksize    : 16</code></pre>
 	<p>That said, if you think your case is similar and you want to take advantage of the performance improvements now, you may <a href="https://github.com/cloudflare/linux/blob/master/patches">grab the patches</a> and hopefully provide feedback. The runtime flag makes it easy to toggle the functionality on the fly and a simple A/B test may be performed to see if it benefits any particular case or setup. These patches have been running across our <a href="https://www.cloudflare.com/network">wide network of more than 200 data centres</a> on five generations of hardware, so can be reasonably considered stable. Enjoy both performance and security from Cloudflare for all!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QGDkwHsSsWOJBpiZYunWH/b5deb0fd8b2ebfb1cb240f56051ff88e/perf-sec.png" alt="perf-sec" class="kg-image" width="1024" height="512" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QGDkwHsSsWOJBpiZYunWH/81406719438a6797a82752855ee57cdd/perf-sec.png" alt="perf-sec" class="kg-image" width="1024" height="512" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

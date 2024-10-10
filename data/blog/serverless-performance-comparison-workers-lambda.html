@@ -1,11 +1,11 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3H9qyjhJzEuV6GdKzbTJ0S/772ccd642e25bbc37edb155c263afae2/serverless-performance-comparison-workers-lambda.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3H9qyjhJzEuV6GdKzbTJ0S/68e2fad6dc262caf29a06615750855d5/serverless-performance-comparison-workers-lambda.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>A few months ago we released a new way for people to run serverless Javascript called <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>. We believe Workers is the fastest way to execute serverless functions.</p>
 	<p>If it is truly the fastest, and it is comparable in price, it should be how every team deploys all of their serverless infrastructure. So I set out to see just how fast Worker execution is and prove it.</p>
 	<p>tl;dr Workers is much faster than Lambda and Lambda@Edge:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4vxHhJkonZi3eJip7ddR3O/a61d39df413fec7a3e4e66d8def27852/Screen-Shot-2018-06-28-at-2.48.05-PM.png" alt="Screen-Shot-2018-06-28-at-2.48.05-PM" class="kg-image" width="1956" height="872" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vxHhJkonZi3eJip7ddR3O/4e0fa7869d6a0440c61ed991ce15ff9c/Screen-Shot-2018-06-28-at-2.48.05-PM.png" alt="Screen-Shot-2018-06-28-at-2.48.05-PM" class="kg-image" width="1956" height="872" loading="lazy">
 
 	</figure>
 	<p>This is a chart showing what percentage of requests to each service were faster than a given number of ms. It is based on thousands of tests from all around the world, evenly sampled over the past 12 hours. <b>At the 95th percentile, Workers is 441% faster than a Lambda function, and 192% faster than Lambda@Edge.</b> &nbsp;<a href="https://twitter.com/share?url=https%3A%2F%2Fblog.cloudflare.com%2Fserverless-performance-comparison-workers-lambda%2F&amp;text=%22%40Cloudflare+Workers+is+441%25+faster+than+a+Lambda+function%2C+and+192%25+faster+than+Lambda%40Edge.%22&amp;hashtags=serverless"></a></p>
@@ -21,20 +21,20 @@
 	<p>This is every test ran in the last hour, with results over 1500ms filtered out:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iI1x6FSCNcbe8BpnEJuEG/3dcb2975d1491c4ab19c1d29545d9f56/Screen-Shot-2018-06-28-at-2.59.13-PM.png" alt="Screen-Shot-2018-06-28-at-2.59.13-PM" class="kg-image" width="1976" height="888" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iI1x6FSCNcbe8BpnEJuEG/33ee70f0355280e13a28f4955e537c9d/Screen-Shot-2018-06-28-at-2.59.13-PM.png" alt="Screen-Shot-2018-06-28-at-2.59.13-PM" class="kg-image" width="1976" height="888" loading="lazy">
 
 	</figure>
 	<p>You can immediately see that Worker results are tightly clustered around the x-axis, while Lambda and Lambda@Edge show much worse performance.</p>
 	<p>To be fair, comparing my Lambda, which only runs in us-east-1 (Northern Virginia, USA), to a global service like Workers is a a little unfair. This effect becomes even more clear if I only show tests ran in Australia. Sydney is 9,735 miles (53 light-ms) from our instance in us-east-1. It becomes pretty clear how miserable the experience would be for visitors down south:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WaRTyFKmnQu0rfBADaI4/bda90d434f5ecc089543129c6f728665/Screen-Shot-2018-06-28-at-3.02.52-PM.png" alt="Screen-Shot-2018-06-28-at-3.02.52-PM" class="kg-image" width="1944" height="868" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WaRTyFKmnQu0rfBADaI4/56876932cbeca703e4facded80e99ee6/Screen-Shot-2018-06-28-at-3.02.52-PM.png" alt="Screen-Shot-2018-06-28-at-3.02.52-PM" class="kg-image" width="1944" height="868" loading="lazy">
 
 	</figure>
 	<p>As we only run one instance of each test from Australia every five minutes that's not a conclusive amount of data though, so let's look at the percentile distribution for the past 24 hours:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ySgfIxRIGIElFESzCcRp5/bf3bb7f17c5d94ae8f3bfd21e46a3e71/Screen-Shot-2018-06-28-at-3.03.17-PM.png" alt="Screen-Shot-2018-06-28-at-3.03.17-PM" class="kg-image" width="1952" height="866" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ySgfIxRIGIElFESzCcRp5/bd3954e11d675c51483f9ecaaacc066a/Screen-Shot-2018-06-28-at-3.03.17-PM.png" alt="Screen-Shot-2018-06-28-at-3.03.17-PM" class="kg-image" width="1952" height="866" loading="lazy">
 
 	</figure>
 	<p>The 50th percentile speed for Workers is 13ms, well faster than a packet could even get half way to Virginia. At the 95th percentile you're looking at 882ms for Lambda, 216ms for Lambda@Edge, and 40ms for Workers. A full 5% of your users will be waiting almost a second for the simplest possible Lambda response, making it impossible to build a responsive application.</p>
@@ -49,25 +49,25 @@
 	<p>As we said, Workers has quite the advantage being deployed everywhere, as compared to Lambda which lives in a single region. (Lambda@Edge has less of an excuse). We believe Worker performance should be great everywhere though, so lets look a little closer to our Lambda instance. First all the tests in North America:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aD2gIFVhuGg8BSExlA9PP/06cedc2d5250a4f5decd5a25ce715e4f/Screen-Shot-2018-06-28-at-3.10.16-PM.png" alt="Screen-Shot-2018-06-28-at-3.10.16-PM" class="kg-image" width="1944" height="856" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aD2gIFVhuGg8BSExlA9PP/0abd7d871d8e8b7210878c423243bd71/Screen-Shot-2018-06-28-at-3.10.16-PM.png" alt="Screen-Shot-2018-06-28-at-3.10.16-PM" class="kg-image" width="1944" height="856" loading="lazy">
 
 	</figure>
 	<p>There are, amazingly, visitors who will be waiting over two seconds for a Lambda response:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hnF9vZcWYCvKVxoi4sVf/4d98beac65e1c59965b1e98da65d059e/Screen-Shot-2018-06-28-at-3.10.46-PM.png" alt="Screen-Shot-2018-06-28-at-3.10.46-PM" class="kg-image" width="394" height="478" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hnF9vZcWYCvKVxoi4sVf/2fbc2d986dfabde376daf64430b574da/Screen-Shot-2018-06-28-at-3.10.46-PM.png" alt="Screen-Shot-2018-06-28-at-3.10.46-PM" class="kg-image" width="394" height="478" loading="lazy">
 
 	</figure>
 	<p>Most of that delay is DNS however (Route53?). Just showing the time spent waiting for a response (ignoring DNS and connection time) tells a similar story however (filtering points over 300ms):</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l5kfmMfibUilObLZ6AYcz/b0f3b8463a1715d90e964989bb4956a5/Screen-Shot-2018-06-28-at-3.13.29-PM.png" alt="Screen-Shot-2018-06-28-at-3.13.29-PM" class="kg-image" width="1930" height="872" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6l5kfmMfibUilObLZ6AYcz/68d3ab453c812284d30c8a5d3f050469/Screen-Shot-2018-06-28-at-3.13.29-PM.png" alt="Screen-Shot-2018-06-28-at-3.13.29-PM" class="kg-image" width="1930" height="872" loading="lazy">
 
 	</figure>
 	<p>It's true that Cloudflare has many more points of presence than Lambda@Edge, but not all of this is explained by geographic distribution. To prove it, lets look at the testing location closest to my Northern Virginia-based Lambda function, Washington, DC. Again, looking at the last 24 hours:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gg2eRiorfbynR5Ycb5Esz/254f0ed08b17925e87e0be28354e9976/Screen-Shot-2018-06-28-at-3.16.37-PM.png" alt="Screen-Shot-2018-06-28-at-3.16.37-PM" class="kg-image" width="1966" height="884" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gg2eRiorfbynR5Ycb5Esz/c299ff3a91de79d7b61d5f573ff0504b/Screen-Shot-2018-06-28-at-3.16.37-PM.png" alt="Screen-Shot-2018-06-28-at-3.16.37-PM" class="kg-image" width="1966" height="884" loading="lazy">
 
 	</figure>
 	<p><b>With no geographic explanation the 95th percentile of Workers is 126% faster than Lambda and 65% faster than Lambda@Edge.</b> I find this incredible. Please feel free <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARU8-C-D-K3hmOjV28DtDEAA">play with the chart</a> yourself.</p>
@@ -82,7 +82,7 @@
 	<p>How is this possible? I have some guesses. Workers is built on V8 isolates, which are significantly faster to spin up (under 5ms) than a full NodeJS process and have a tenth the memory overhead. The effect of having to wait for new processes start is very obvious when you look at the difference in speed for the first request which hits a new Lambda@Edge function:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mr8YDry1DhlTzRT1fAUvd/5b7158833174fa6de4b7ad61a6323785/Screen-Shot-2018-06-27-at-4.59.01-PM-1.png" alt="Screen-Shot-2018-06-27-at-4.59.01-PM-1" class="kg-image" width="2258" height="986" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mr8YDry1DhlTzRT1fAUvd/8ac00c07272271b2b3ee7df11cabe2d5/Screen-Shot-2018-06-27-at-4.59.01-PM-1.png" alt="Screen-Shot-2018-06-27-at-4.59.01-PM-1" class="kg-image" width="2258" height="986" loading="lazy">
 
 	</figure>
 	<p>Workers has also been carefully architected to avoid moving memory and blocking when it could be avoided, complete with our own optimized implementations of the Javascript APIs. Finally, Workers runs on the same thousands of machines which serve Cloudflare traffic around the world, benefiting from over half a decade of experience pushing the limits of our hardware.</p>

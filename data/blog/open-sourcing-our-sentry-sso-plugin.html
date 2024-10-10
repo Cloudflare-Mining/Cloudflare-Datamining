@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2vsjfrYhM1PwEz8WRIIQqK/80fe2fb9f6999a7687fedbfa5ef2308a/open-sourcing-our-sentry-sso-plugin.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vsjfrYhM1PwEz8WRIIQqK/9a277c603746708ae41416e6e6e74631/open-sourcing-our-sentry-sso-plugin.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare Access, part of <a href="https://teams.cloudflare.com">Cloudflare for Teams</a>, replaces legacy corporate VPNs with Cloudflare’s global network. Using your existing identity provider, Access enables your end users to login from anywhere — without a clunky agent or traffic backhaul through a centralized appliance or VPN.</p>
 	<p>Today, we are <a href="https://github.com/cloudflare/cloudflare-access-for-sentry">open sourcing a plugin</a> that continues to improve that experience by making it easier for teams to use Cloudflare Access with one of the software industry’s most popular engineering tools, <a href="https://sentry.io/welcome">Sentry</a>.</p>
@@ -37,7 +37,7 @@
 	<p>When a user logs in to their identity provider when connecting to an application protected by Access, Cloudflare signs a JSON Web Token (JWT).</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5dmK31q5XXNfv3Zoe32frf/12e4edd4b1f307f5eb2563ae68664963/pasted-image-0.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dmK31q5XXNfv3Zoe32frf/b43a4d349f21ce70abf18c08b4f219e3/pasted-image-0.png" alt="" class="kg-image" width="1334" height="844" loading="lazy">
 
 	</figure>
 	<p>Cloudflare Access uses that JWT, and its contents, to confirm a user identity before allowing or denying access to sensitive resources. Cloudflare securely creates these through the OAUTH or SAML integration between Cloudflare Access and the configured identity provider. Each JWT consists of three Base64-URL strings: the header, the payload, and the signature.</p>

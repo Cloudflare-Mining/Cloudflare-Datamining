@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qX0TK3yOrsGiV8sHlhIPu/4675b6b20a7f08554550003476af3149/image1-9.png" alt="Have your data and hide it too: An introduction to differential privacy" class="kg-image" width="1201" height="676" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qX0TK3yOrsGiV8sHlhIPu/1aa42da9a41cb439817705f7583e6659/image1-9.png" alt="Have your data and hide it too: An introduction to differential privacy" class="kg-image" width="1201" height="676" loading="lazy">
 
 	</figure>
 	<p>Many applications rely on user data to deliver useful features. For instance, browser telemetry can identify network errors or buggy websites by collecting and aggregating data from individuals. However, browsing history can be sensitive, and sharing this information opens the door to privacy risks. Interestingly, these applications are often not interested in individual data points (e.g. whether a particular user faced a network error while trying to access Wikipedia) but only care about aggregated data (e.g. the total number of users who had trouble connecting to Wikipedia).</p>
@@ -21,7 +21,7 @@
 	<p>DAP uses a cryptographic technique called <i>multi-party computation</i>. At a high-level, multi-party computation increases privacy by distributing the computation of the aggregate across multiple servers such that no server sees any individual's data in the clear. (See <a href="https://blog.cloudflare.com/deep-dive-privacy-preserving-measurement">our earlier blog post on DAP for a primer on multi-party computation</a>.) At first, it may seem like this ought to be sufficient to protect the privacy of each individual user: the data collector learns only the information it <i>needs</i> (namely, the aggregate), and not the underlying data used to compute it. Unfortunately this is often not the case because the aggregate itself can sometimes reveal lots of private information.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uIHWWel6DxTm20qAi4Ba0/65f191d975049af551fe1bbac54578f8/image9.jpg" alt="" class="kg-image" width="921" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uIHWWel6DxTm20qAi4Ba0/18054a27477ed88349f57c9f47573306/image9.jpg" alt="" class="kg-image" width="921" height="734" loading="lazy">
 
 	</figure>
 	<p><i>8ft 11.1in (2.72m) tall Robert Wadlow posing for a family photograph, 1939. Credit:</i> <a href="https://www.flickr.com/photos/paille-fr/24559019804"><i>Paille</i></a> <i>// CC BY-SA 2.0.</i></p>
@@ -30,7 +30,7 @@
 	<p>Such attacks exist in real life. For instance, deanonymization attacks <a href="https://www2.census.gov/about/training-workshops/2021/2021-05-07-das-presentation.pdf">against the U.S. Census</a> have been credibly demonstrated. <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model">Large language models</a>, such as ChatGPT, are also vulnerable; a <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning model</a> can be seen as a particular type of statistical aggregate computed over a training dataset. Here is an example of an attack, where researchers gave a special instruction to GPT-2 and extracted the name, address and phone number of a real individual whose data appeared only once in the training dataset:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/nA8hGDlSaPCt3OGSw6k50/bb560eaa7e7d3d9cb16b78c62c2c0e0e/Screenshot-2023-12-22-at-15.49.54.png" alt="" class="kg-image" width="2000" height="911" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nA8hGDlSaPCt3OGSw6k50/7d5990b03d3d231b917c2d6699b81e99/Screenshot-2023-12-22-at-15.49.54.png" alt="" class="kg-image" width="2000" height="911" loading="lazy">
 
 	</figure>
 	<p><i>Figure 1 from “Extracting Training Data from Large Language Models”, USENIX Security ‘21,</i> <a href="https://arxiv.org/pdf/2012.07805.pdf"><i>https://arxiv.org/pdf/2012.07805.pdf</i></a><i>.</i></p>
@@ -40,7 +40,7 @@
 	<p>The goal of the attack is to reconstruct the 8 Ground Truth images in the bottom row of the figure, with only access to the federated, average update. The attacker starts from a random guess ("Initial"), and progressively improves it by moving the guess in a direction that would give an update similar to the true average update. After enough iterations, we see that the images in the attacker's guess ("Fully Leaked") are close to the images in the true Ground Truth dataset, although the order can be different.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5neTYqnrNqbM3bZ9BJYqOg/26800995eba93200d175551c0c8fa050/Screenshot-2023-12-22-at-8.02.00-AM.png" alt="" class="kg-image" width="1868" height="686" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5neTYqnrNqbM3bZ9BJYqOg/9c9d4785640642e62ee9b54ea084e340/Screenshot-2023-12-22-at-8.02.00-AM.png" alt="" class="kg-image" width="1868" height="686" loading="lazy">
 
 	</figure>
 	<p><i>Figure 4 from “Deep Leakage from Gradients”, NeurIPS ‘19,</i> <a href="https://arxiv.org/pdf/1906.08935.pdf"><i>https://arxiv.org/pdf/1906.08935.pdf</i></a><i>.</i></p>
@@ -82,7 +82,7 @@
 	<p>This third method, which we'll call Aggregator Randomization, is the method we decided to investigate during my internship. It is straightforward to implement, has about the same computational overhead as basic Central DP, and satisfies the same threat model as DAP (more on that later!). Aggregator Randomization is illustrated below.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61b4XtwJIddfKoBsQDL1KX/bb96aff40ea87c7b39b1c6840cb1ef36/image4-1.png" alt="" class="kg-image" width="1308" height="483" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61b4XtwJIddfKoBsQDL1KX/df00f925dffea8755c1465c1cd6a66ec/image4-1.png" alt="" class="kg-image" width="1308" height="483" loading="lazy">
 
 	</figure>
 	<p>Although our Aggregator-Randomization version of DAP seems straightforward, we need to be convinced that it provides the privacy guarantees we expect. That means writing down the protocol and carrying out a formal analysis of its guarantees.</p>
@@ -100,7 +100,7 @@
 	<p>For simplicity, let’s focus on the case where the list of domains is already known, e.g., to track connection errors for a single domain, or across a closed set of paying customers. For the rest of the blog post, you can assume that we are using a DAP deployment to compute a histogram of connection errors for a single domain (but other statistics from the DAP specification share the same structure, which makes them suitable for similar DP mechanisms). The true aggregate might look something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3SJwpl1mnJkp8cteX9Y1mo/43aa0f495f581cacc36f7b59af8a4dcc/Screenshot-2023-12-22-at-15.55.38.png" alt="" class="kg-image" width="1612" height="902" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3SJwpl1mnJkp8cteX9Y1mo/953c147f76cba0c9a16610ecb586bf08/Screenshot-2023-12-22-at-15.55.38.png" alt="" class="kg-image" width="1612" height="902" loading="lazy">
 
 	</figure>
 	<p>In this figure, we see a typical distribution of errors from 1,000 reports. The actual error types are irrelevant, and thus are just represented by numbers here. error_type = 8 is by far the most common, but we observe a smattering of other error types as well.</p>
@@ -118,21 +118,21 @@
 	<p>Up until this point, we have treated DP engineering as a science, but choosing 𝜖 remains somewhat of an art. To illustrate, let's go back to our NEL data and compute some DP histograms for the network errors on one domain. Here are noisy histograms for different values of 𝜖:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WncPTnPZEl9cZr5if5nGe/2ff3baa4e22c81733c19d9c152912662/image3-1.png" alt="" class="kg-image" width="946" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WncPTnPZEl9cZr5if5nGe/2b7442d6386eb1086996f4c54df5fd7c/image3-1.png" alt="" class="kg-image" width="946" height="480" loading="lazy">
 
 	</figure>
 	<p>We observe that decreasing 𝜖 yields noisier results, even giving negative counts in some cases – although we can always truncate or round results without losing privacy. Since this example has many reports and a few possible errors, it is reasonably easy to mask the contribution of any single individual. Here we see that 𝜖 = 1 seems to be a reasonable choice for this use case. We can still observe that the relative error is higher for rare events (such as error_type = 15) than for common errors (such as error_type = 8).</p>
 	<p>Let’s focus on these two events, and look at how 𝜖 impacts accuracy:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EHfG5Rt0wm0chvlXYjy3O/0304e4f9c828bfbf1c73d74f339b6bcb/Screenshot-2023-12-22-at-15.58.14.png" alt="" class="kg-image" width="1588" height="742" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EHfG5Rt0wm0chvlXYjy3O/fb1cb6f1d1ffd10c7b080f38840e71fc/Screenshot-2023-12-22-at-15.58.14.png" alt="" class="kg-image" width="1588" height="742" loading="lazy">
 
 	</figure>
 	<p>It becomes clearer that the accuracy increases with 𝜖 – an aggregate that is less noisy is also less private and more accurate. This tradeoff is known as the privacy-utility tradeoff. You can notice that the tradeoff depends on what we are measuring. If we are only interested in error_type = 8 and can tolerate at most 2% of relative error, then using 𝜖 = 0.01 would be sufficient. If we are interested in error_type = 15, then we would need to use 𝜖 = 0.1 to reach the same level of accuracy.</p>
 	<p>We can also look at how other parameters, such as batch size, can impact accuracy for a fixed privacy guarantee:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1SyucL0288RHw4QIfYY3cn/ea0d07df5ee01a66e7070303d4fafe40/Screenshot-2023-12-22-at-15.58.38.png" alt="" class="kg-image" width="1598" height="734" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SyucL0288RHw4QIfYY3cn/5e5191580def64ba5643ed579f009770/Screenshot-2023-12-22-at-15.58.38.png" alt="" class="kg-image" width="1598" height="734" loading="lazy">
 
 	</figure>
 	<p>Intuitively, if we wait longer before computing an aggregate, we can get more accurate results for the same privacy level, because it is easier to mask a contribution if it is drowned in a large batch. As noted previously, we can set the privacy level upfront and adjust aggregation parameters later. If we try to collect an aggregate over a batch of size 1, the DP result will simply be close to random, and therefore protect the value of the single report in that batch. This graceful degradation – output useless results rather than breaking privacy on small batches – can be a problem in applications where accuracy is particularly important, but it can be controlled by choosing an 𝜖 that satisfies a comfortable accuracy-privacy tradeoff. <b>It is always possible to get more accurate results, if we are willing to pay the privacy price for it.</b></p>

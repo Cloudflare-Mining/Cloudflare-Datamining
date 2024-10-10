@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gB8Xx9tu80GW2YBRLLDkk/8b18bc34a8089643f2b06cc82b717b06/Investigating-Rapid-Reset-Vulnerability.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gB8Xx9tu80GW2YBRLLDkk/1313d2cbb4b53e92824050c2345d4077/Investigating-Rapid-Reset-Vulnerability.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
 
 	</figure>
 	<p>Starting on Aug 25, 2023, we started to notice some unusually big HTTP attacks hitting many of our customers. These attacks were detected and mitigated by our automated DDoS system. It was not long however, before they started to reach record breaking sizes — and eventually peaked just above 201 million requests per second. This was nearly 3x bigger than our <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">previous biggest attack on record</a>.</p><!--kg-card-begin: html-->
@@ -49,7 +49,7 @@
 	<p>In HTTP/2 our GET request for <code>https://blog.cloudflare.com</code> would be exchanged across stream ID 1, with the client sending one <a href="https://www.rfc-editor.org/rfc/rfc9113#name-headers">HEADERS</a> frame, and the server responding with one HEADERS frame, followed by one or more <a href="https://www.rfc-editor.org/rfc/rfc9113#name-data">DATA</a> frames. Client requests always use odd-numbered stream IDs, so subsequent requests would use stream ID 3, 5, and so on. Responses can be served in any order, and frames from different streams can be interleaved.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/UgsMj35BXBaxK2dKVIvC2/1cc8f438075df4b1f02b86227227c898/Screenshot-2023-10-09-at-2.13.29-PM.png" alt="" class="kg-image" width="1172" height="362" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UgsMj35BXBaxK2dKVIvC2/8b6db7d94e03f2a0f9f0f9a2c2a55df6/Screenshot-2023-10-09-at-2.13.29-PM.png" alt="" class="kg-image" width="1172" height="362" loading="lazy">
 
 	</figure>
 	<p>Stream multiplexing and concurrency are powerful features of HTTP/2. They enable more efficient usage of a single TCP connection. HTTP/2 optimizes resources fetching especially when coupled with <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">prioritization</a>. On the flip side, making it easy for clients to launch large amounts of parallel work can increase the peak demand for server resources when compared to HTTP/1.1. This is an obvious vector for denial-of-service.</p>
@@ -58,7 +58,7 @@
 	<p>HEADERS and DATA frames include an END_STREAM flag, that when set to the value 1 (true), can trigger a state transition.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iRGsrf6eBGkrJ0rpqZtSx/6650c9bf9d868dfa52fa13cbc2dabd61/Request-stream-states.png" alt="" class="kg-image" width="1600" height="1152" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2iRGsrf6eBGkrJ0rpqZtSx/a4c47fc7f29ec562660aa75c3e26e13c/Request-stream-states.png" alt="" class="kg-image" width="1600" height="1152" loading="lazy">
 
 	</figure>
 	<p>Let's work through this with an example of a GET request that has no message content. The client sends the request as a HEADERS frame with the END_STREAM flag set to 1. The client first transitions the stream from <b>idle</b> to <b>open</b> state, then immediately transitions into <b>half-closed</b> state. The client half-closed state means that it can no longer send HEADERS or DATA, only <a href="https://www.rfc-editor.org/rfc/rfc9113.html#section-6.9">WINDOW_UPDATE</a>, <a href="https://www.rfc-editor.org/rfc/rfc9113.html#section-6.3">PRIORITY</a> or RST_STREAM frames. It can receive any frame however.</p>
@@ -79,14 +79,14 @@
 	<p>Let's consider our previous example of 3 requests. This time the client cancels the request on stream 1 after all of the HEADERS have been sent. The server parses this RST_STREAM frame before it is ready to serve the response and instead only responds to stream 3 and 5:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dnYO0saZeIgGlocFRxKLb/2a7bdc52367086ab69aacb67ea296415/Screenshot-2023-10-09-at-2.12.04-PM.png" alt="" class="kg-image" width="1196" height="376" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dnYO0saZeIgGlocFRxKLb/45b3c1197559ee9f5547efad0a88b00a/Screenshot-2023-10-09-at-2.12.04-PM.png" alt="" class="kg-image" width="1196" height="376" loading="lazy">
 
 	</figure>
 	<p>Request cancellation is a useful feature. For example, when scrolling a webpage with multiple images, a web browser can cancel images that fall outside the viewport, meaning that images entering it can load faster. HTTP/2 makes this behaviour a lot more efficient compared to HTTP/1.1.</p>
 	<p>A request stream that is canceled, rapidly transitions through the stream lifecycle. The client's HEADERS with END_STREAM flag set to 1 transitions the state from <b>idle</b> to <b>open</b> to <b>half-closed</b>, then RST_STREAM immediately causes a transition from <b>half-closed</b> to <b>closed.</b></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XHuuWwKaQkVyDclt2ktaT/3452fec821155c2b51e6802bf54bf137/Request-stream-states-reset.png" alt="" class="kg-image" width="1600" height="1152" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XHuuWwKaQkVyDclt2ktaT/983c5d5531c2987a90382548e8618f50/Request-stream-states-reset.png" alt="" class="kg-image" width="1600" height="1152" loading="lazy">
 
 	</figure>
 	<p>Recall that only streams that are in the open or half-closed state contribute to the stream concurrency limit. When a client cancels a stream, it instantly gets the ability to open another stream in its place and can send another request immediately. This is the crux of what makes <a href="https://www.cve.org/CVERecord?id=CVE-2023-44487">CVE-2023-44487</a> work.</p>
@@ -113,19 +113,19 @@
 	<!--kg-card-begin: html-->Here's an example of rapid reset reproduced using a proof-of-concept client attempting to make a total of 1000 requests. I've used an off-the-shelf server without any mitigations; listening on port 443 in a test environment. The traffic is dissected using Wireshark and filtered to show only HTTP/2 traffic for clarity. <a href="https://blog.cloudflare.com/content/images/rapidreset.pcapng" download="rapidreset.pcapng">Download the pcap</a> to follow along.<!--kg-card-end: html-->
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wv6U0bsO7wQ2Ofw0qp5f9/c06c79bc41e381ff0014868a4faca653/Untitled--2-.png" alt="" class="kg-image" width="1600" height="79" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3wv6U0bsO7wQ2Ofw0qp5f9/9d974117608d62c9eef6e276890f336b/Untitled--2-.png" alt="" class="kg-image" width="1600" height="79" loading="lazy">
 
 	</figure>
 	<p>It's a bit difficult to see, because there are a lot of frames. We can get a quick summary via Wireshark's Statistics &gt; HTTP2 tool:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1STsop3XklVVe7phIL1mg0/3c6cdf0db93c03f461d0607138786543/Screenshot-2023-10-09-at-10.50.42-PM.png" alt="" class="kg-image" width="1058" height="324" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1STsop3XklVVe7phIL1mg0/69bb1269474936146e529c969aaecd18/Screenshot-2023-10-09-at-10.50.42-PM.png" alt="" class="kg-image" width="1058" height="324" loading="lazy">
 
 	</figure>
 	<p>The first frame in this trace, in packet 14, is the server's SETTINGS frame, which advertises a maximum stream concurrency of 100. In packet 15, the client sends a few control frames and then starts making requests that are rapidly reset. The first HEADERS frame is 26 bytes long, all subsequent HEADERS are only 9 bytes. This size difference is due to a compression technology called <a href="https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2">HPACK</a>. In total, packet 15 contains 525 requests, going up to stream 1051.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JkezErQ90qEV2L0JuKNuK/7bf172882e6283f8fbcf0cdf90990cb3/Untitled--3-.png" alt="" class="kg-image" width="619" height="593" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JkezErQ90qEV2L0JuKNuK/c75695ef3a2b192eb1cb7a93a546cb7f/Untitled--3-.png" alt="" class="kg-image" width="619" height="593" loading="lazy">
 
 	</figure>
 	<p>Interestingly, the RST_STREAM for stream 1051 doesn't fit in packet 15, so in packet 16 we see the server respond with a 404 response. &nbsp;Then in packet 17 the client does send the RST_STREAM, before moving on to sending the remaining 475 requests.</p>
@@ -142,7 +142,7 @@
 	<p>First, as the rate of incoming requests reached peaks never seen before, we had reports of increased levels of 502 errors seen by clients. This happened on our most impacted data centers as they were struggling to process all the requests. While our network is meant to deal with large attacks, this particular vulnerability exposed a weakness in our infrastructure. Let's dig a little deeper into the details, focusing on how incoming requests are handled when they hit one of our data centers:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FNw47et7A6A8yQ8FTJWeB/0d60a41109cc00a1d5f55354facfc7d6/Untitled-2023-10-04-1953.png" alt="" class="kg-image" width="1600" height="602" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FNw47et7A6A8yQ8FTJWeB/4a244ae8faed2fca1afc45de7ccb2600/Untitled-2023-10-04-1953.png" alt="" class="kg-image" width="1600" height="602" loading="lazy">
 
 	</figure>
 	<p>We can see that our infrastructure is composed of a chain of different proxy servers with different responsibilities. In particular, when a client connects to Cloudflare to send HTTPS traffic, it first hits our TLS decryption proxy: it decrypts TLS traffic, processes HTTP 1, 2 or 3 traffic, then forwards it to our "business logic" proxy. This one is responsible for loading all the settings for each customer, then routing the requests correctly to other upstream services — and more importantly in our case, <b>it is also responsible for security features</b>. This is where L7 attack mitigation is processed.</p>
@@ -150,13 +150,13 @@
 	<p>When this happens, the TLS proxy cannot connect anymore to its upstream proxy, this is why some clients saw a bare "502 Bad Gateway" error during the most serious attacks. It is important to note that, as of today, the logs used to create HTTP analytics are also emitted by our business logic proxy. The consequence of that is that these errors are not visible in the Cloudflare dashboard. Our internal dashboards show that about 1% of requests were impacted during the initial wave of attacks (before we implemented mitigations), with peaks at around 12% for a few seconds during the most serious one on August 29th. The following graph shows the ratio of these errors over a two hours while this was happening:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lNZyUoAWzVfyQ66xIPJ9i/d59c162773b320c7f8b357f003f1910d/imageLikeEmbed.png" alt="" class="kg-image" width="1600" height="990" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lNZyUoAWzVfyQ66xIPJ9i/d9907d299155b8b6e80c9de3f4a4f032/imageLikeEmbed.png" alt="" class="kg-image" width="1600" height="990" loading="lazy">
 
 	</figure>
 	<p>We worked to reduce this number dramatically in the following days, as detailed later on in this post. Both thanks to changes in our stack and to our mitigation that reduce the size of these attacks considerably, this number today is effectively zero.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PDIKg6O07UYWjQk30YkIH/1784ed020836caea33768fd2f2153a95/imageLikeEmbed--2-.png" alt="" class="kg-image" width="1600" height="989" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PDIKg6O07UYWjQk30YkIH/e542a06392b680737ec2256c0919a33e/imageLikeEmbed--2-.png" alt="" class="kg-image" width="1600" height="989" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -171,7 +171,7 @@
 	<p>HTTP/2 settings are exchanged at the start of a connection using SETTINGS frames. In the absence of receiving an explicit parameter, default values apply. Once a client establishes an HTTP/2 connection, it can wait for a server's SETTINGS (slow) or it can assume the default values and start making requests (fast). For SETTINGS_MAX_CONCURRENT_STREAMS, the default is effectively unlimited (stream IDs use a 31-bit number space, and requests use odd numbers, so the actual limit is 1073741824). The specification recommends that a server offer no fewer than 100 streams. Clients are generally biased towards speed, so don't tend to wait for server settings, which creates a bit of a race condition. Clients are taking a gamble on what limit the server might pick; if they pick wrong the request will be rejected and will have to be retried. Gambling on 1073741824 streams is a bit silly. Instead, a lot of clients decide to limit themselves to issuing 100 concurrent streams, with the hope that servers followed the specification recommendation. Where servers pick something below 100, this client gamble fails and streams are reset.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZdAxnNVz1PsuG1BCE3wsT/1cee5a8067e88e4703bdfb7d2b36dca4/Untitled-2023-10-04-1953--1-.png" alt="" class="kg-image" width="1600" height="551" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZdAxnNVz1PsuG1BCE3wsT/d4b02d4d1b8f6cf8ecebdddbed194c74/Untitled-2023-10-04-1953--1-.png" alt="" class="kg-image" width="1600" height="551" loading="lazy">
 
 	</figure>
 	<p>There are many reasons a server might reset a stream beyond concurrency limit overstepping. HTTP/2 is strict and requires a stream to be closed when there are parsing or logic errors. In 2019, Cloudflare developed several mitigations in response to <a href="https://blog.cloudflare.com/on-the-recent-http-2-dos-attacks">HTTP/2 DoS vulnerabilities</a>. Several of those vulnerabilities were caused by a client misbehaving, leading the server to reset a stream. A very effective strategy to clamp down on such clients is to count the number of server resets during a connection, and when that exceeds some threshold value, close the connection with a <a href="https://www.rfc-editor.org/rfc/rfc9113#section-6.8">GOAWAY</a> frame. Legitimate clients might make one or two mistakes in a connection and that is acceptable. A client that makes too many mistakes is probably either broken or malicious and closing the connection addresses both cases.</p>
@@ -198,7 +198,7 @@
 	<p>To achieve this we expanded the IP Jail system to protect our entire infrastructure: once an IP is "jailed", not only it is blocked from connecting to the attacked property, we also forbid the corresponding IPs from using HTTP/2 to any other domain on Cloudflare for some time. As such protocol abuses are not possible using HTTP/1.x, this limits the attacker's ability to run large attacks, while any legitimate client sharing the same IP would only see a very small performance decrease during that time. IP based mitigations are a very blunt tool — this is why we have to be extremely careful when using them at that scale and seek to avoid false positives as much as possible. Moreover, the lifespan of a given IP in a botnet is usually short so any long term mitigation is likely to do more harm than good. The following graph shows the churn of IPs in the attacks we witnessed:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3tsViCTkDispBbBmIY57vy/5889f1682d8737338c284709ff3ddc24/ip-churn.png" alt="" class="kg-image" width="1014" height="493" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tsViCTkDispBbBmIY57vy/3c49903f3c4a1ac60f98efae6c1e3fb4/ip-churn.png" alt="" class="kg-image" width="1014" height="493" loading="lazy">
 
 	</figure>
 	<p>As we can see, many new IPs spotted on a given day disappear very quickly afterwards.</p>

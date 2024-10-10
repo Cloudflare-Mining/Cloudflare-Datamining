@@ -1,4 +1,4 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3D6V99PdRHwx9vaezpf8H0/65fa13ec1ac66aa81ade6287a237995f/cloudflare-uses-intelligent-caching-to-avoid.png" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3D6V99PdRHwx9vaezpf8H0/e54694423e0fe06c7cb48f56c184e63e/cloudflare-uses-intelligent-caching-to-avoid.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>I originally wrote this article for the </i><a href="http://calendar.perfplanet.com/2011/using-intelligent-caching-to-avoid-the-bot-performance-tax"><i>Web Performance Calendar website</i></a><i>, which is a terrific resource of expert opinions on making your website as fast as possible. We thought CloudFlare users would be interested so we reproduced it here. Enjoy!</i></p>
 	<hr>
@@ -9,7 +9,7 @@
 	<p>The average website sees more than 20% of its requests coming from some sort of automated bot. These bots include the usual suspects like search engine crawlers, but also include malicious bots scanning for vulnerabilities or harvesting data. We've been tracking this data at CloudFlare across hundreds of thousands of sites on our network and have found that on average approximately <a href="https://blog.cloudflare.com/do-hackers-take-the-holidays-off">15% of web total requests originate a web threat of one form or another</a>, with swings up and down depending on the day.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53KzltkP9pJxEmlCP7TuVU/b4c2d7b2d2fa7f7fd2f159421b52af6d/web_attacks_on_the_holidays.png.scaled500.png" alt="CloudFlare Uses Intelligent Caching to Avoid the Bot Performance Tax" class="kg-image" width="500" height="303" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53KzltkP9pJxEmlCP7TuVU/c2bdf7cab7148cbc48f0045783e879ca/web_attacks_on_the_holidays.png.scaled500.png" alt="CloudFlare Uses Intelligent Caching to Avoid the Bot Performance Tax" class="kg-image" width="500" height="303" loading="lazy">
 
 	</figure>
 	<p>In Project Honey Pot's case, the traffic from these bots had a significant performance impact. Because they did not follow the typical human visitation pattern, they were often triggering pages that weren't hot in our cache. Moreover, since the bots typically didn't fire Javascript beacons like those used in systems like Google Analytics, their traffic and its impact weren't immediately obvious.</p>
@@ -21,7 +21,7 @@
 	<p>The results can be dramatic. For example, SXSW's website employs extensive traditional web application and database caching systems but was able to <a href="https://blog.cloudflare.com/cloudflare-powers-the-sxsw-panel-picker">reduce the load on their web servers and database machinesby more than 50%</a> in large part because of CloudFlare's bot-aware caching.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3tbbF1KL2pxN8hV0keeuPW/d17f0ad4eb45c252ea27b8b8e989e706/SXSW_load_graph.png.scaled500.png" alt="CloudFlare Uses Intelligent Caching to Avoid the Bot Performance Tax" class="kg-image" width="500" height="124" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tbbF1KL2pxN8hV0keeuPW/08606f1367522c62c843e0268541bc0d/SXSW_load_graph.png.scaled500.png" alt="CloudFlare Uses Intelligent Caching to Avoid the Bot Performance Tax" class="kg-image" width="500" height="124" loading="lazy">
 
 	</figure>
 	<p>When you're tuning your web application for maximum performance, if you're only looking at a beacon-based analytics tool like Google Analytics you may be missing one of the biggest sources of web application load. This is why CloudFlare's analytics reports the visits from all visitors to your site. Even without CloudFlare, digging through your raw server logs, being bot-aware, and building caching strategies that differentiate between the behaviors of different classes of visitors can be an important aspect of any site's web performance strategy.</p>

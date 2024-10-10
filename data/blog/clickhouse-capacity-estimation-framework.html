@@ -1,4 +1,4 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XI3zXxeM23e4dOnJN8fWj/d7eef98ee6ea8576e824bad83d2fee1d/clickhouse-capacity-estimation-framework.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XI3zXxeM23e4dOnJN8fWj/347e3999c946c94274ced08a9990749d/clickhouse-capacity-estimation-framework.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We use ClickHouse widely at Cloudflare. It helps us with our internal analytics workload, bot management, customer dashboards, and many other systems. For instance, before <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Bot Management</a> can analyze and classify our traffic, we need to collect logs. The <a href="https://blog.cloudflare.com/updates-to-firewall-analytics">Firewall Analytics tool</a> needs to store and query data somewhere too. The same goes for our new <a href="https://blog.cloudflare.com/introducing-cloudflare-radar">Cloudflare Radar project</a>. We are using ClickHouse for this purpose. It is a big database that can store <a href="https://www.cloudflare.com/learning/ai/big-data">huge amounts of data</a> and return it on demand. This is not the first time we have talked about ClickHouse, there is a <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">dedicated blogpost</a> on how we introduced ClickHouse for HTTP analytics.</p>
 	<p>Our biggest cluster has more than 100 nodes, another one about half that number. Besides that, we have over 20 clusters that have at least three nodes and the replication factor of three. Our current insertion rate is about 90M rows per second.</p>
@@ -6,7 +6,7 @@
 	<p>Schema of one cluster:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23qnFNyui1KHob8huAzcyz/94ff886b8d61976459a77e9269a1cb17/image1-1.jpg" alt="" class="kg-image" width="941" height="108" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23qnFNyui1KHob8huAzcyz/fc936b0a27e145859e37e9e6a762d57d/image1-1.jpg" alt="" class="kg-image" width="941" height="108" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -37,7 +37,7 @@
 	<p>You can see on the graph below in April we had this sharp decrease caused by topology changes. We got ~550T instead of ~850T among all shards and replicas.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51i2Mc9wdPJHZp3EggeTOg/a4cd066b77a893ca8c76742e851dc757/image3-1.png" alt="" class="kg-image" width="1999" height="839" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51i2Mc9wdPJHZp3EggeTOg/c8d87927bd4426424f8930b4493077cc/image3-1.png" alt="" class="kg-image" width="1999" height="839" loading="lazy">
 
 	</figure>
 	<p>When we tried to train our model based on the real data due to the April drop it thought we had a downward trend. Which was incorrect as we only dropped replicated data. The trend for unreplicated data hadn’t changed. So we decided to take into account only unreplicated data. It saved us from the topology change and node replacement in case of problems with hardware.</p>
@@ -51,7 +51,7 @@ on (instance) group_right (cluster, shardgroup) sum(table_parts_bytes{cluster="%
 	<p>In the image below there is the same cluster as in the image above but instead of counting the whole amount of data we look at unreplicated data from all shards. You can clearly see that we continued to grow and didn’t have any drop in data.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G1I3E5f1VWtIcqVmSCABV/3e385c49c384558a3a28b1a86821a76d/image2-1.png" alt="" class="kg-image" width="1999" height="771" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G1I3E5f1VWtIcqVmSCABV/12bc544b71ff7c8ba12ac9466b68303a/image2-1.png" alt="" class="kg-image" width="1999" height="771" loading="lazy">
 
 	</figure>
 	<p>Another problem we faced was that we migrated some tables from one cluster to another because we were running out of space and it required immediate action. However, our model didn’t know that part of the tables didn’t live there anymore, and we didn’t want them to be a part of the prediction. To solve this problem we queried Prometheus to get the list of the tables that existed at the prediction time, then filtered historical data to include only these tables and used them as the input for training a model.</p>
@@ -106,7 +106,7 @@ on (instance) group_right (cluster, shardgroup) sum(table_parts_bytes{cluster="%
 	</ul>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ehYaDioxFUKBtEAAlexZ3/b1b22fb9c03d8acd69fa4d9faa766851/image4-1.png" alt="" class="kg-image" width="1999" height="842" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ehYaDioxFUKBtEAAlexZ3/5b35969d2b1edb125ddb75997f197847/image4-1.png" alt="" class="kg-image" width="1999" height="842" loading="lazy">
 
 	</figure>
 	<p>We have a service running in Kubernetes that does all the toil, and we created an environment for other metrics. We have the place where we collect metrics from Thanos and expose them in the required format to Grafana. If we find the right metrics for accounting other resources like IO, CPU or other systems like Kafka we can easily add them to our framework. We can easily replace Prophet with another algorithm, and we can go back months and evaluate how close we were in our prediction according to the real data.</p>

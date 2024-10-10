@@ -1,4 +1,4 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ycX2szdbRgG1eEYMS9DcU/5b3890373cd14846faca018ab8829e4d/how-cloudflare-analyzes-1m-dns-queries-per-second.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ycX2szdbRgG1eEYMS9DcU/94bd839ce9ee28d852fd55ce84e3e56d/how-cloudflare-analyzes-1m-dns-queries-per-second.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>On Friday, we <a href="https://blog.cloudflare.com/dns-analytics">announced DNS analytics</a> for all Cloudflare customers. Because of our scale –– by the time you’ve finished reading this, Cloudflare DNS will have handled millions of DNS queries –– we had to be creative in our implementation. In this post, we’ll describe the systems that make up DNS Analytics which help us comb through trillions of these logs each month.</p>
 	<div class="flex anchor relative">
@@ -12,14 +12,14 @@
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43iWrS8JtJwUtuUMJoO4Bx/6381dc911a3a0bf7ee822966a167012f/Screen-Shot-2017-05-10-at-2.35.39-PM.png" alt="" class="kg-image" width="934" height="325" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43iWrS8JtJwUtuUMJoO4Bx/27e5021c786337d38293d03f8260a104/Screen-Shot-2017-05-10-at-2.35.39-PM.png" alt="" class="kg-image" width="934" height="325" loading="lazy">
 
 	</figure>
 	<p>Cloudflare already has a <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb">data pipeline for HTTP logs</a>. We wanted to utilize what we could of that system for the new DNS analytics. Every time one of our edge services gets an HTTP request, it generates a structured log message in the <a href="https://capnproto.org">Cap’n Proto</a> format and sends it to a local multiplexer service. Given the volume of the data, we chose not to record the full DNS message payload, only telemetry data we are interested in such as response code, size, or query name, which has allowed us to keep only ~150 bytes on average per message. It is then fused with processing metadata such as timing information and exceptions triggered during query processing. The benefit of fusing data and metadata at the edge is that we can spread the computational cost across our thousands of edge servers, and log only what we absolutely need.</p>
 	<p>The multiplexer service (known as “log forwarder”) is running on each edge node, assembling log messages from multiple services and transporting them to our warehouse for processing over a TLS secured channel. A counterpart service running in the warehouse receives and demultiplexes the logs into several Apache Kafka clusters. Over the years, Apache Kafka has proven to be an invaluable service for buffering between producers and downstream consumers, preventing data loss when consumers fail over or require maintenance. Since version 0.10, Kafka allows <a href="https://issues.apache.org/jira/browse/KAFKA-1215">rack-aware allocation of replicas</a>, which improves resilience against rack or site failure, giving us fault tolerant storage of unprocessed messages.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/39oKpjRECU2vqTqBI6FM4h/6c9d6863c40b80bf973d4659376c8d1b/data-pipeline-lg.png" alt="" class="kg-image" width="1447" height="932" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39oKpjRECU2vqTqBI6FM4h/cbe9e83d633142933d6d2291a28acc57/data-pipeline-lg.png" alt="" class="kg-image" width="1447" height="932" loading="lazy">
 
 	</figure>
 	<p>Having a queue with structured logs has allowed us to investigate issues retrospectively without requiring access to production nodes, but it has proven to be quite laborious at times. In the early days of the project we would skim the queue to find offsets for the rough timespan we needed, and then extract the data into HDFS in <a href="https://parquet.apache.org">Parquet</a> format for offline analysis.</p>
@@ -36,7 +36,7 @@
 	<p>Due to how DNS caching works, resolvers will answer identical queries from cache without going to the authoritative server for the duration of the TTL. The TTL tends to be longer than a minute. So, while authoritative servers see the same request many times, our data is skewed towards non-cacheable queries such as typos or random prefix subdomain attacks. In practice, we see anywhere between 0 - 60x row reduction when aggregating by query names, so storing aggregations in multiple resolutions almost negates the row reduction. Aggregations are also done with multiple resolution and key combinations, so aggregating on a high cardinality column can even result in more rows than original.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jfGlvqdn84rSStt6KYsPO/2cccc419c11955d85e8bc7db798ccf37/data-agg-lg-1.png" alt="" class="kg-image" width="1521" height="322" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jfGlvqdn84rSStt6KYsPO/eb0b6c634a9cf130335ff77443b474b8/data-agg-lg-1.png" alt="" class="kg-image" width="1521" height="322" loading="lazy">
 
 	</figure>
 	<p>For these reasons we started by only aggregating logs at the zone level, which was useful enough for trends, but too coarse for root cause analysis. For example, in one case we were investigating short bursts of unavailability in one of our data centers. Having unaggregated data allowed us to narrow the issue down to the specific DNS queries experiencing latency spikes, and then correlated the queries with a misconfigured firewall rule. Cases like these would be much harder to investigate with only aggregated data as it only affected a tiny percentage of requests that would be lost in the aggregations.</p>
@@ -76,14 +76,14 @@
 	<p>At the time we relied solely on <a href="http://pandas.pydata.org">Pandas</a> and <a href="https://clickhouse.yandex/reference_en.html#HTTP%20interface">ClickHouse’s HTTP interface</a> for ad-hoc analyses, but we wanted to make it more accessible for both analysis and monitoring. Since we knew Caravel - now renamed to <a href="https://github.com/airbnb/superset">Superset</a> - from the experiments with Druid, we started working on an integration with ClickHouse.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4flBsPFls2o0tCyU2N5MqV/9e97c1e47276a20e3dfae4a8e5e1f4df/superset-1.png" alt="" class="kg-image" width="1440" height="903" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4flBsPFls2o0tCyU2N5MqV/3e92f7508c3a869c7ed13438607bc2de/superset-1.png" alt="" class="kg-image" width="1440" height="903" loading="lazy">
 
 	</figure>
 	<p>Superset is a data visualisation platform designed to be intuitive, and allows analysts to interactively slice and dice the data without writing a single line of SQL. It was initially <a href="https://medium.com/airbnb-engineering/caravel-airbnb-s-data-exploration-platform-15a72aa610e5">built and open sourced by AirBnB</a> for Druid, but over time it has gained support for SQL-based backends using <a href="https://www.sqlalchemy.org">SQLAlchemy</a>, an abstraction and ORM for tens of different database dialects. So we wrote and open-sourced a <a href="https://github.com/cloudflare/sqlalchemy-clickhouse">ClickHouse dialect</a> and finally a native <a href="https://github.com/airbnb/superset/pull/1844">Superset integration</a> that has been merged a few days ago.</p>
 	<p>Superset has served us well for ad-hoc visualisations, but it is still not polished enough for our monitoring use case. At Cloudflare we’re heavy users of Grafana for visualisation of all our metrics, so we wrote and open-sourced a <a href="https://github.com/vavrusa/grafana-sqldb-datasource">Grafana integration</a> as well.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HRlF5lQlrcikqgwFWM6cs/010ca45aeeff4c8aadc56570b25cf9b9/Screen-Shot-2017-05-08-at-12.39.47-1.png" alt="" class="kg-image" width="2830" height="1654" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HRlF5lQlrcikqgwFWM6cs/fdefd2e8f8d23a1fb371fbc9c72cb7a6/Screen-Shot-2017-05-08-at-12.39.47-1.png" alt="" class="kg-image" width="2830" height="1654" loading="lazy">
 
 	</figure>
 	<p>It has allowed us to seamlessly extend our existing monitoring dashboards with the new analytical data. We liked it so much that we wanted to give the same ability to look at the analytics data to you, our users. So we built a <a href="https://blog.cloudflare.com/grafana-plugin">Grafana app</a> to visualise data from Cloudflare DNS Analytics. Finally, we made it available in your <a href="https://blog.cloudflare.com/dns-analytics">Cloudflare dashboard analytics</a>. Over time we’re going to add new data sources, dimensions, and other useful ways how to visualise your data from Cloudflare. Let us know what you’d like to see next.</p>

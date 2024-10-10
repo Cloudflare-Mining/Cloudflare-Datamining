@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LGGPwBbcwri0fn60opcSq/b36cf5210208537312ad821f4225c168/illustration-ssl-certificate.png" alt="" class="kg-image" width="645" height="200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LGGPwBbcwri0fn60opcSq/5e28765924727002e341282c119b5dfb/illustration-ssl-certificate.png" alt="" class="kg-image" width="645" height="200" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -39,7 +39,7 @@
 	<p>Customers more comfortable in the GUI can, with just two clicks, securely generate a private key and wildcard certificate that will be trusted by our systems for anywhere from 7 days to 15 years. And those who prefer more control over the process can use our API or CLI to issue certificates of specified validity, key type, and key size. Regardless of the user interface chosen, the potentially complicated validation process has been replaced by a simple API key now available in your account on the CloudFlare dashboard; we’ve already verified you control your zone, there’s no need to prove it again.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aKKwwFmI91bim9WOmJ0HE/964987aa5fa3c333362f82248b16e87c/strict-ssl.png" alt="" class="kg-image" width="1000" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aKKwwFmI91bim9WOmJ0HE/4709fb9705866b7185b4dccebdfe4865/strict-ssl.png" alt="" class="kg-image" width="1000" height="480" loading="lazy">
 
 	</figure>
 	<h4>2. Wildcard certificates reduce complexity</h4>
@@ -51,7 +51,7 @@
 	<p>And if/when the time comes to revoke, a single click and confirmation is all that’s required for our edge to distrust the certificate. If you expose or misplace your private key (and can’t find it under the couch or in the pockets of yesterday’s pants), simply navigate to the Crypto tab and click the "x" icon next to the compromised certificate. Within seconds we’ll push this revocation status worldwide and our edge servers will refuse to communicate with origins serving the revoked certificate. Such speed, security, and reliability is impossible without total control over the CA and browser ecosystem.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5k3l2VOBwjSwhRBAOEZLgw/da92ae3db4bc9b91916e6f6e9c5c41ba/revoke-modal.png" alt="" class="kg-image" width="920" height="960" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5k3l2VOBwjSwhRBAOEZLgw/ad92e85cee00d5e7e60c0e3a5945436a/revoke-modal.png" alt="" class="kg-image" width="920" height="960" loading="lazy">
 
 	</figure>
 	<p>Even if published to the world, to abuse your CloudFlare Origin CA certificate an attacker would either need to compromise your CloudFlare account or take control of your <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> or DNS provider account. In any case, you'd have a lot more to worry about than just a compromised certificate.</p>
@@ -85,27 +85,27 @@ SSL handshake has read 1289 bytes and written 496 bytes</code></pre>
 	<p>To get started, login to <a href="https://www.cloudflare.com/a/login">the dashboard</a> and click on the Crypto icon.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aYmz9vQ74KDbgLUdkoghd/44a035da25632fcf2dada27d6a30fdb4/heading.png" alt="" class="kg-image" width="1936" height="348" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aYmz9vQ74KDbgLUdkoghd/64ff7adf5ba2c6e24681462695baa923/heading.png" alt="" class="kg-image" width="1936" height="348" loading="lazy">
 
 	</figure>
 	<p>Next, scroll down to the Origin Certificates card and click the "Create Certificate" button.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16CIs13h8n6Utv9q0vzMFO/3237f8b2c9cfc0c4914a558e2818ba86/origin-certificates-emptytable.png" alt="" class="kg-image" width="1958" height="522" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16CIs13h8n6Utv9q0vzMFO/75e25e322034cdae1964ced74dc358a6/origin-certificates-emptytable.png" alt="" class="kg-image" width="1958" height="522" loading="lazy">
 
 	</figure>
 	<p>At this point, you must decide whether you wish to provide your own certificate signing request (CSR) or let your browser create one using its cryptographic libraries.</p>
 	<p>If you’ve already generated a private key and CSR, select the radio button labeled "I have my own CSR" and paste the CSR contents into the textbox that appears. Alternatively, leave the default option of “Let CloudFlare generate a key pair using my browser” selected. (If you are accessing the dashboard using an older browser, i.e., one that does not support <a href="https://www.w3.org/TR/WebCryptoAPI">Web Crypto API</a>, you will only see one option.)</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tbWU0IOrjnp3dgQ1W2m5p/0f9c2b76faeae58add069ac53bb5db34/create-step1.png" alt="" class="kg-image" width="1634" height="1200" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tbWU0IOrjnp3dgQ1W2m5p/ac83f201c8f7b628f287b4b0456f1bfe/create-step1.png" alt="" class="kg-image" width="1634" height="1200" loading="lazy">
 
 	</figure>
 	<p>By default, the list of hostnames your origin certificate covers includes the apex of the currently selected zone (example.com) and one level of wildcard (*.example.com). If you’d like to protect additional hostnames outside this list (e.g., *.secure.example.com), simply type them in the input box at the bottom of the modal. You may add up to 100 hostnames (or wildcards) on a single certificate, spanning multiple zones, provided they are for zones active in your account. Please keep in mind that each additional SAN increases the size of your certificate, so applications requiring frequent updates to the origin (and thus TLS handshakes) you should use as few SANs as possible.</p>
 	<p>After entering additional hostnames (or confirming the defaults will suffice), click Next and your certificate will be generated. By default, it will be displayed in PEM format, which is what web servers such as Apache httpd and NGINX expect. If you require an alternative format, such as PKCS#7 for Microsoft’s IIS or Apache Tomcat, change the dropdown box appropriately and save the contents to your server. Or if you’d like to use a binary format such as DER, select that and click the download button.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ES61XNDaqGSGALF2KrHQn/676dcf8c3a077522868fb3fbfa8efc4b/generated-cert.png" alt="" class="kg-image" width="1703" height="970" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ES61XNDaqGSGALF2KrHQn/be167e38324277b7c714b35fb48c8f1a/generated-cert.png" alt="" class="kg-image" width="1703" height="970" loading="lazy">
 
 	</figure>
 	<p>Lastly, choose your web server from the select box at the bottom of the window and click "Show instructions". Doing so will open installation instructions in a new browser window that, once followed, will allow you to adjust your SSL setting (at the top of the Crypto app) to "Strict" mode.</p>
@@ -122,13 +122,13 @@ writing new private key to 'www_example_com.key'</code></pre>
 	<p>Log in to the CloudFlare dashboard, and click My Settings under your username in the top-right &nbsp;hand corner. Scroll down to the API Key panel and click "View API Key".</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2R4UWX1Op2jBlpfPW5e6kU/bf74052f2492140c0e873a72e483aad0/api-key-panel.png" alt="" class="kg-image" width="1944" height="560" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2R4UWX1Op2jBlpfPW5e6kU/85dbf029b7db0f52b415ad4ad25700c5/api-key-panel.png" alt="" class="kg-image" width="1944" height="560" loading="lazy">
 
 	</figure>
 	<p>Click within the window that pops up and then copy the contents that is auto-selected to your clipboard. Save the key to an environment variable as it will be used in the subsequent curl command.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dS3x5a8AGAuZcewhbA05d/704873d37a4d2f6ed8c0cfc7be9472cf/scoped-token-data.png" alt="" class="kg-image" width="926" height="546" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dS3x5a8AGAuZcewhbA05d/4d7df94e75a9b613d05db037a372981e/scoped-token-data.png" alt="" class="kg-image" width="926" height="546" loading="lazy">
 
 	</figure>
 	<pre class="language-bash"><code class="language-bash">$ &nbsp;&nbsp;export CF_API_KEY="v1.0-c9..."</code></pre>

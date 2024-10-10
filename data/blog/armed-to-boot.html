@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DXRZwWpgxoNOs7LL87gEw/ab8c9bc5a0c64302312218e042f974fd/image1-45.png" alt="Armed to Boot: an enhancement to Arm's Secure Boot chain" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DXRZwWpgxoNOs7LL87gEw/26d5483a74be3dcbe2a5c56c65c5986c/image1-45.png" alt="Armed to Boot: an enhancement to Arm's Secure Boot chain" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Over the last few years, there has been a rise in the number of attacks that affect how a computer boots. Most modern computers use a specification called Unified Extensible Firmware Interface (<a href="https://en.wikipedia.org/wiki/UEFI">UEFI</a>) that defines a software interface between an operating system (e.g. Windows) and platform firmware (e.g. disk drives, video cards). There are security mechanisms built into UEFI that ensure that platform firmware can be cryptographically validated and boot securely through an application called a bootloader. This firmware is stored in non-volatile <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface">SPI</a> flash memory on the motherboard, so it persists on the system even if the operating system is reinstalled and drives are replaced.</p>
@@ -50,7 +50,7 @@
 	<p>Each image is authenticated by a public key, which is stored in a signed certificate and can be traced back to a root key stored on the SoC in one time programmable (OTP) memory or ROM.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UdHJVQqnXX9gZ6uaglVa4/2d56dab357339e8567b04c48d4c28b73/image9.png" alt="" class="kg-image" width="1999" height="809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UdHJVQqnXX9gZ6uaglVa4/83e7065007376d4f774fc6d9d6ee867b/image9.png" alt="" class="kg-image" width="1999" height="809" loading="lazy">
 
 	</figure>
 	<p>TBBR was originally designed for cell phones. This established a reference architecture on how to build a “Chain of Trust” from the first ROM executed (BL1) to the handoff to “normal world” firmware (BL3). While this creates a validated firmware signing chain, it has caveats:</p>
@@ -71,7 +71,7 @@
 	<p>What this tells us is what was built for cell phones doesn’t scale for servers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ycPPB81rgzRIuCGSu0KE7/16e53b122c23921afc4ac327046f8408/image3-27.png" alt="" class="kg-image" width="1587" height="384" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ycPPB81rgzRIuCGSu0KE7/6ed984097e839782f83ecbc28c25212a/image3-27.png" alt="" class="kg-image" width="1587" height="384" loading="lazy">
 
 	</figure>
 	<p>If we were involved 100% in the manufacturing process, then this wouldn’t be as much of an issue, but we are a customer and consumer. As a customer, we have a lot of control of our server and block design, so we looked at design partners that would take some of the concepts we were able to implement with AMD Platform Secure Boot and refine them to fit Arm CPUs.</p>
@@ -96,7 +96,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3z02FzpTwAjg8aK9VdC2Ro/a1af0887de5043ef7a3a770c315e2db8/image4-21.png" alt="" class="kg-image" width="1999" height="616" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3z02FzpTwAjg8aK9VdC2Ro/6ab22618c187ff09fcc1b7d177d165db/image4-21.png" alt="" class="kg-image" width="1999" height="616" loading="lazy">
 
 	</figure>
 	<p>The diagram above shows the Arm processor boot sequence as implemented by Ampere. System Control Processors (SCP) are comprised of the System Management Processor (SMpro) and the Power Management Processor (PMpro). The SMpro is responsible for features such as secure boot and bmc communication while the PMpro is responsible for power features such as Dynamic Frequency Scaling and on-die thermal monitoring.</p>
@@ -112,7 +112,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1uctsORF4iINvxIpkpAMCM/ba7dc0704f110843b1a0657fb391d2fb/image7-5.png" alt="" class="kg-image" width="1999" height="687" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uctsORF4iINvxIpkpAMCM/34e931a29cc21a6b0e9d3549e81abcf8/image7-5.png" alt="" class="kg-image" width="1999" height="687" loading="lazy">
 
 	</figure>
 	<p>At power on, the SMpro firmware reads Ampere’s public key (ROTPK) from the SMpro key certificate in SCP EEPROM, computes a hash and compares this to Ampere’s public key hash stored in eFuse. Once authenticated, Ampere’s public key is used to decrypt key and content certificates for SMpro, PMpro, and ATF firmware, which are launched in the order described above.</p>
@@ -129,7 +129,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FQq6V32FKRBNJ8z0efGuP/69bbc928f6e12dc510d334e20efa8641/image11-2.png" alt="" class="kg-image" width="1999" height="616" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FQq6V32FKRBNJ8z0efGuP/e718f9c9cf5e8b754b4e2ce5018f904a/image11-2.png" alt="" class="kg-image" width="1999" height="616" loading="lazy">
 
 	</figure>
 	<p>Single Domain Secure Boot takes the same authentication flow and adds a hash of the customer public key (Cloudflare firmware signing key in this case) to the eFuse domain. This enables the verification of UEFI firmware by a hardware root of trust. This process is performed in the already validated ATF firmware by BL2. Our public key (dbb) is read from UEFI secure variable storage, a hash is computed and compared to the public key hash stored in eFuse. If they match, the validated public key is used to decrypt the BL33 content certificate, validating and launching the BIOS, and remaining boot items. This is the key feature added by SDSB. It validates the entire software boot chain with a single eFuse root of trust on the processor.</p>
@@ -144,19 +144,19 @@
 	<p>With a basic understanding of how Single Domain Secure Boot works, the next logical question is “How does it get implemented?”. We ensure that all UEFI firmware is signed at build time, but this process can be better understood if broken down into steps.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JbZYTpQmAzs85jK66urgj/7fb8380076d78c8ab5b6b719295fadbb/Building-Blocks-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JbZYTpQmAzs85jK66urgj/dd5cf1128921938209c0ea090372eab4/Building-Blocks-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Ampere, our original device manufacturer (ODM), and we play a role in execution of SDSB. First, we generate certificates for a public-private key pair using our internal, secure PKI. The public key side is provided to the ODM as dbb.auth and dbu.auth in UEFI secure variable format. Ampere provides a reference Software Release Package (SRP) including the baseboard management controller, system control processor, UEFI, and complex programmable logic device (CPLD) firmware to the ODM, who customizes it for their platform. The ODM generates a board file describing the hardware configuration, and also customizes the UEFI to enroll dbb and dbu to secure variable storage on first boot.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AtHZs6bsQ0VgTHkNDskFD/eb442b95e1d173eec022ccab4a463a19/Building-Blocks-2.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AtHZs6bsQ0VgTHkNDskFD/6ef31e083683fa462cf1f0f9e0860501/Building-Blocks-2.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Once this is done, we generate a UEFI.slim file using the ODM’s UEFI ROM image, Arm Trusted Firmware (ATF) and Board File. (Note: This differs from AMD PSB insofar as the entire image and ATF files are signed; with AMD PSB, only the first block of boot code is signed.) The entire .SLIM file is signed with our private key, producing a signature hash in the file. This can only be authenticated by the correct public key. Finally, the ODM packages the UEFI into .HPM format compatible with their platform BMC.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74fFXKUQ6ao22MbxnLRTOZ/b743f75c5b493ff29f622481ee11b2d2/Security-Provisioning-Firmware.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74fFXKUQ6ao22MbxnLRTOZ/8ee373903359790a543c2907280069ec/Security-Provisioning-Firmware.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>In parallel, we provide the debug fuse selection and hash of our DER-formatted public key. Ampere uses this information to create a special version of the SCP firmware known as Security Provisioning (SECPROV) .slim format. This firmware is run one time only, to program the debug fuse settings and public key hash into the SoC eFuses. Ampere delivers the SECPROV .slim file to the ODM, who packages it into a .hpm file compatible with the BMC firmware update tooling.</p>
@@ -171,7 +171,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5PcDXfMPCbyZHbW06S9TQK/2c45f4c98a03f948b745d28f73aed55d/eFuse-Key-Provisioning.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PcDXfMPCbyZHbW06S9TQK/a1fbf46b9176e2291172387cda350829/eFuse-Key-Provisioning.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>During system manufacturing, firmware is pre-programmed into storage ICs before placement on the motherboard. Note that the SCP EEPROM contains the SECPROV image, not standard SCP firmware. After a system is first powered on, an IPMI command is sent to the BMC which releases the Ampere processor from reset. This allows SECPROV firmware to run, burning the SoC eFuse with our public key hash and debug fuse settings.</p>
@@ -186,7 +186,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5APB65geJdVYfsHYJDeU5W/3475538e6b17279de059558b89b9bbc9/Final-manufacturing-flow.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5APB65geJdVYfsHYJDeU5W/b9ce5c4abbf565525110c79852d53e87/Final-manufacturing-flow.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 
 	</figure>
 	<p>Once our public key has been provisioned, manufacturing proceeds by re-programming the SCP EEPROM with its regular firmware. Once the system powers on, ATF detects there are no keys present in secure variable storage and allows UEFI firmware to boot, regardless of signature. Since this is the first UEFI boot, it programs our public key into secure variable storage and reboots. ATF is validated by Ampere’s public key hash as usual. Since our public key is present in dbb, it is validated against our public key hash in eFuse and allows UEFI to boot.</p>
@@ -201,7 +201,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/QqpZGCJe52609SFewuSK0/bfc526dd598917708e33b31a9111979a/Validation.png" alt="" class="kg-image" width="1600" height="885" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QqpZGCJe52609SFewuSK0/bc0514db4f993630e9ec8b735c38d91e/Validation.png" alt="" class="kg-image" width="1600" height="885" loading="lazy">
 
 	</figure>
 	<p>The first part of validation requires observing successful destruction of the eFuses. This imprints our public key hash into a dedicated, immutable memory region, not allowing the hash to be overwritten. Upon automatic or manual issue of an IPMI OEM command to the BMC, the BMC observes a signal from the SECPROV firmware, denoting eFuse programming completion. This can be probed with BMC commands.</p>
@@ -219,7 +219,7 @@
 
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6AsINoXMVNcl9qeYT3mwgz/651fc9a6dfe90036df750ae419874580/UEFI-Authentication.png" alt="" class="kg-image" width="1600" height="534" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AsINoXMVNcl9qeYT3mwgz/04850535a1613572e174fec5f40003a0/UEFI-Authentication.png" alt="" class="kg-image" width="1600" height="534" loading="lazy">
 
 	</figure>
 	<p>On all subsequent boot cycles, the ATF will read secure variable dbb (our public key), compute a hash of the key, and compare it to the read-only Cloudflare public key hash in eFuse. If the computed and eFuse hashes match, our public key variable can be trusted and is used to authenticate the signed UEFI. After this, the system boots to the OS.</p>

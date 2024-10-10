@@ -1,4 +1,4 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lG4DxOj5ymFb6T4i8otvs/a18943759bad1351392f6c2ab8d3f4bb/keeping-drupal-sites-safe-with-cloudflares-waf.png" alt="">
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lG4DxOj5ymFb6T4i8otvs/6ddc8178c02d21b997119c9660f9f061/keeping-drupal-sites-safe-with-cloudflares-waf.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare’s team of security analysts monitor for upcoming threats and vulnerabilities and where possible put protection in place for upcoming threats before they compromise our customers. This post examines how we protected people against a new major vulnerability in the Drupal CMS, nicknamed Drupalgeddon 2.</p>
 	<p>Two weeks after adding <a href="https://blog.cloudflare.com/drupal-waf-rule-mitigate-critical-exploit">protection with WAF rule ID D0003</a> which mitigates the critical remote code execution Drupal exploit (<a href="https://www.drupal.org/sa-core-2018-002">SA-CORE-2018-002/CVE-2018-7600</a>), we have seen significant spikes of attack attempts. Since the 13th of April the Drupal security team has been aware of automated attack attempts and it significantly increased the security risk score of the vulnerability. It makes sense to go back and analyse what happened in the last seven days in Cloudflare’s WAF environment.</p>
@@ -24,7 +24,7 @@
 	<p>Just during last week, after removing false positives, the rule has blocked more than 500,000 potential attacks, especially at the start of the sample date, when the vulnerability was more recent.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mA1NiMBuHknowR8vUwgs7/5e6ebbe918805cbd190f555e2315d656/Drupal.png" alt="drupal_7d" class="kg-image" width="2460" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4mA1NiMBuHknowR8vUwgs7/b0e17bb1f764451c1018e9c696ce24f5/Drupal.png" alt="drupal_7d" class="kg-image" width="2460" height="400" loading="lazy">
 
 	</figure>
 	<p>Apart from that, we are seeing more than 250 unique IPs per day, mostly IPv4 but also some IPv6 addresses.</p>
@@ -39,7 +39,7 @@ files/temp/http://[REDACTED]/blog/wpcontent/uploads/2017/01/example.sites.php;ec
 	<p>The number of blocked requests does not seem to be going down and we keep blocking more than 56,000 potential attacks per day.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/484432IHZHBwDWBLST0CMY/7f60aab36507ab84d1de683bdbd43a17/Drupal2.png" alt="drupal_24h" class="kg-image" width="2458" height="400" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/484432IHZHBwDWBLST0CMY/7a09acf3cb32423ab84dc71b925c266f/Drupal2.png" alt="drupal_24h" class="kg-image" width="2458" height="400" loading="lazy">
 
 	</figure>
 </div>

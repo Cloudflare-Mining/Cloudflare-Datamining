@@ -1,4 +1,4 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lZtEYoEuiTfYE9d6hCWuF/066705059496b9595f820859c96ef2ca/the-benefits-of-serving-stale-dns-entries-when-using-consul.png" alt="">
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lZtEYoEuiTfYE9d6hCWuF/a390cc1d0a889d77b47229a5b2c31e08/the-benefits-of-serving-stale-dns-entries-when-using-consul.png" alt="">
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h2 id="introduction">Introduction</h2>
@@ -23,7 +23,7 @@
 	<p>This works very well for records that are accessed frequently, but poses issues in two situations: records that are accessed infrequently and records that have a small TTL. In both cases it is unlikely that a prefetch would be triggered, and so the cache expires and the next client will have to wait for the network resolution.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6NcCnqSXw360PiHjNzeq2y/950efc55a0899d17ffc3f9cd4b62f9ad/image1-6.png" alt="" class="kg-image" width="825" height="107" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NcCnqSXw360PiHjNzeq2y/4e2305dada9a66609edb4fc4264d20e5/image1-6.png" alt="" class="kg-image" width="825" height="107" loading="lazy">
 
 	</figure>
 	<p>In our case, the records have a 30 second TTL, so frequently no requests come in during the yellow "prefetch" stage, which bumps the records out of the cache and causes the next client to have to wait for the slow network resolution. Prefetching was already turned on in our Unbound configuration but this still was not enough for our use case.</p>
@@ -47,7 +47,7 @@
 	<p>The first case is exactly our current scenario.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ixBixKeeIwU63f485mr2U/e899e066d64620851885f86b1cfa23e3/image7.png" alt="" class="kg-image" width="1041" height="107" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ixBixKeeIwU63f485mr2U/18844f87438211049fcfcf923e12c231/image7.png" alt="" class="kg-image" width="1041" height="107" loading="lazy">
 
 	</figure>
 	<p>Being able to serve stale entries from the cache for a period after the TTL expires affords us some time in which we can return a result to a client either immediately or after some small amount of time has passed. The latter is the behaviour that we are looking for which also makes us compliant with <a href="https://www.rfc-editor.org/rfc/rfc8767">RFC 8767</a>, “Serving Stale Data to Improve DNS Resiliency”, published March 2020.</p>
@@ -140,7 +140,7 @@ service1.query.consul. 30 IN A 192.0.2.1
 	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional+Tools">Network Link Conditioner</a> was used to simulate high latency:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LzVKSaIVIOaKuMuHbq9Fa/fbf67d04de71f3fade1ad2c3bd1e7882/image16.png" alt="" class="kg-image" width="669" height="343" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LzVKSaIVIOaKuMuHbq9Fa/578619d90974ef897ae8e5d58ca9fe12/image16.png" alt="" class="kg-image" width="669" height="343" loading="lazy">
 
 	</figure>
 	<pre class="language-bash"><code class="language-bash">➜ dig service1.service.consul @CONSUL_ADDRESS
@@ -193,13 +193,13 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SEqkHk3xrVWSixpgdbdZa/ce9cbe52cb574b4274603917da9e2c8c/image2-2.png" alt="" class="kg-image" width="1624" height="844" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SEqkHk3xrVWSixpgdbdZa/7efa3f7c24e00772122d5b2e41efc353/image2-2.png" alt="" class="kg-image" width="1624" height="844" loading="lazy">
 
 	</figure>
 	<p>The graph above is from the Toronto data center which received the change at approximately 14:00 UTC. We can observe an attenuated curve, which indicates that spikes in the number of in-flight requests were probably caused by slow/unresponsive upstreams which are now served a stale response after a short while.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/VG1RTOCYpAKbaGFm1wIzo/66db55a3724a7f484cb3cf6a175644e1/image5-2.png" alt="" class="kg-image" width="1636" height="865" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VG1RTOCYpAKbaGFm1wIzo/42901205b6abb8db0fb4d2056555eb42/image5-2.png" alt="" class="kg-image" width="1636" height="865" loading="lazy">
 
 	</figure>
 	<p>The same graph from the Perth data center, which received the change on a later day.</p>
@@ -214,19 +214,19 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sHaBdYvhCW0SdPdPLm03F/f5551ac3ae68ee8c6f35574f7fa3f5d1/image15.png" alt="" class="kg-image" width="1622" height="841" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sHaBdYvhCW0SdPdPLm03F/14d71c18a9e1e6ae6fa99f15e4edab38/image15.png" alt="" class="kg-image" width="1622" height="841" loading="lazy">
 
 	</figure>
 	<p>The graph above is from the Lisbon data center_,_ which received the change at approximately 12:37 UTC. We can see that the long tail (P99) of request latencies decreases dramatically as we are now able to serve a response to clients in more situations without having them wait for a slow upstream network resolution that might not even succeed.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4205xzfOSup4fdebmcwW5G/4c8c9971ab1589cf4536400d145d3307/image10-2.png" alt="" class="kg-image" width="1625" height="892" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4205xzfOSup4fdebmcwW5G/d1c7d53dfb89066328eb9db64d3abf95/image10-2.png" alt="" class="kg-image" width="1625" height="892" loading="lazy">
 
 	</figure>
 	<p>The effect is even more dramatic on the Paris data center.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/61OoMQx3e3PjZVzVvQoSUe/203cbeaeb2542d9480c09f3fe0da5148/image8-2.png" alt="" class="kg-image" width="795" height="272" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61OoMQx3e3PjZVzVvQoSUe/c70e5b82c7349897757ec5658ef36d03/image8-2.png" alt="" class="kg-image" width="795" height="272" loading="lazy">
 
 	</figure>
 	<p>The decrease in P99 latencies directly correlates to the start of serving stale entries, even though there are not many of them. In the graph above we can observe the number of stale records served per second for the same data center, using the last 3 minutes of datapoints.</p>
@@ -241,13 +241,13 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49nNtzXobSQtD0tgnddiJL/cc4867491849f8a7b64ed74f938f61d5/image12.png" alt="" class="kg-image" width="1635" height="865" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49nNtzXobSQtD0tgnddiJL/7505715c40eeb1d2767a6d7e33ea86bc/image12.png" alt="" class="kg-image" width="1635" height="865" loading="lazy">
 
 	</figure>
 	<p>This graph is from our Perth data center, which received the change on February 8. This is explained by now being able to serve some requests to unresponsive/slow upstreams, which previously would have resulted in a failed request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Pj6PgH2tsWfgRjFIOvZ7P/05e928116722350849fdc0e3334f2435/image19.png" alt="" class="kg-image" width="1632" height="862" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Pj6PgH2tsWfgRjFIOvZ7P/83f7dfaa8623dc3acc694ff04953bddc/image19.png" alt="" class="kg-image" width="1632" height="862" loading="lazy">
 
 	</figure>
 	<p>Graph from the Vientiane data center, which received the change on February 1.</p>
@@ -262,13 +262,13 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LFLwd8W5wriMKlsZZdCXG/0536db4e8cb6f4077ca6b780053c9f7d/image11.png" alt="" class="kg-image" width="1634" height="862" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LFLwd8W5wriMKlsZZdCXG/d06e8adc686b4aec2c4cca858beafd56/image11.png" alt="" class="kg-image" width="1634" height="862" loading="lazy">
 
 	</figure>
 	<p>Another graph from the Perth data center, which received the change on February 8. An explanation for this change is that resolvers usually retry after a small amount of time when they don't get any response, and so by returning a stale response instead of keeping the client waiting (and retrying), we prevent a surge of new queries for expired and slow to resolve records.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Nlj6ruekdbxc5e86cDIVd/908c1adbb82920aaba7ba31bd2489297/image18.png" alt="" class="kg-image" width="1633" height="867" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Nlj6ruekdbxc5e86cDIVd/ef1c0ea3d9de713c60fd28ec247258a8/image18.png" alt="" class="kg-image" width="1633" height="867" loading="lazy">
 
 	</figure>
 	<p>A graph from the Doha data center, which received the change on February 1.</p>
@@ -283,32 +283,32 @@ service2.service.consul. 58 IN A 192.0.2.200
 	<p>This change also had a positive effect on several Unbound-specific metrics, below are several graphs from the Perth data center that received the change on February 8.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tvgfdPirOIApYCRxmzujb/6a9684bff01f88c6cfe23ebb9e900a66/image6-2.png" alt="" class="kg-image" width="791" height="308" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tvgfdPirOIApYCRxmzujb/945dea0b77381302fd9a931ccd8389ee/image6-2.png" alt="" class="kg-image" width="791" height="308" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TnCvyvE1SxFM02ulD7wOA/9d031ed7b441c25b8755f48c3933060e/image13.png" alt="" class="kg-image" width="790" height="267" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TnCvyvE1SxFM02ulD7wOA/dbc2b15548cf92494dcc439d17d2f2ab/image13.png" alt="" class="kg-image" width="790" height="267" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KnVnBNkHrtUnkuC4X4rlN/e05252b61e53927b303decff1916f7ad/image14.png" alt="" class="kg-image" width="787" height="229" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KnVnBNkHrtUnkuC4X4rlN/6dbafa822edc14fbb03c077636e59b7c/image14.png" alt="" class="kg-image" width="787" height="229" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1K0X5VnGlDWyfj4GXhHwKR/8632ffd3994bd382f9e5fa4638916894/image4-4.png" alt="" class="kg-image" width="789" height="231" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1K0X5VnGlDWyfj4GXhHwKR/f676986d1c901998425a855e10ac4a2e/image4-4.png" alt="" class="kg-image" width="789" height="231" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78YTgVILYTXNqtkZCgPZhu/01a7dc9644f6100450cc9ffcbc4c5eb1/image9-1.png" alt="" class="kg-image" width="788" height="269" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78YTgVILYTXNqtkZCgPZhu/5a6aeb35e06bb620000291a16bf69412/image9-1.png" alt="" class="kg-image" width="788" height="269" loading="lazy">
 
 	</figure>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lbt8d6fKHtHIi84k0SnyW/43dab47838c8031ac239238c3ea18cf0/image17.png" alt="" class="kg-image" width="792" height="270" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lbt8d6fKHtHIi84k0SnyW/f2cd288ec63f34e2be4c5f938b658028/image17.png" alt="" class="kg-image" width="792" height="270" loading="lazy">
 
 	</figure>
 	<p>How it started vs how it's going</p>

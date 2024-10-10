@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01PYrLDBsDALKQEIqzBC2P/e8fa4591726798e10ffce4b6e8b8ddce/image1-6.png" alt="New! Rate Limiting analytics and throttling" class="kg-image" width="1999" height="1136" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01PYrLDBsDALKQEIqzBC2P/4d61021b9090b0b7a9770fd11f72cd86/image1-6.png" alt="New! Rate Limiting analytics and throttling" class="kg-image" width="1999" height="1136" loading="lazy">
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/application-services/products/rate-limiting">Rate Limiting</a> rules are essential in the toolbox of security professionals as they are very effective in managing targeted volumetric attacks, <a href="https://www.cloudflare.com/learning/access-management/account-takeover">takeover attempts</a>, <a href="https://www.cloudflare.com/learning/bots/what-is-data-scraping">scraping bots</a>, or API abuse. Over the years we have received a lot of feature requests from users, but two stand out: suggesting rate limiting thresholds and implementing a throttle behavior. Today we released both to Enterprise customers!</p>
@@ -31,14 +31,14 @@
 	<p>In Security Analytics, users can analyze traffic data by creating filters combining what we call <i>top statistics.</i> These statistics reveal the total volume of requests associated with a specific attribute of the <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP requests</a>. For example, you can filter the traffic from the <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASNs</a> that generated more requests in the last 24 hours, or you slice the data to look only at traffic reaching the most popular paths of your application. This tool is handy when creating rules based on traffic analysis.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QmpAIl5PaDpDvc6eLBNeK/a85912abb2578a92850a68062271a8b8/image3-5.png" alt="Screenshot of expandable top N statistics" class="kg-image" width="1999" height="260" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QmpAIl5PaDpDvc6eLBNeK/15d3af5e819eb89bb749b58eb43f24c7/image3-5.png" alt="Screenshot of expandable top N statistics" class="kg-image" width="1999" height="260" loading="lazy">
 
 	</figure>
 	<p>However, for rate limits, a more detailed approach is required.</p>
 	<p>The new <i>Rate limit analysis</i> tab now displays data on request rate for traffic matching the selected filter and time period. You can select a rate defined on different time intervals, like one or five minutes, and the attribute of the request used to identify the rate, such as IP address, JA3 fingerprint, or a combination of both as this often improves accuracy. Once the attributes are selected, the chart displays the distribution of request rates for the top 50 unique clients (identified as unique IPs or JA3s) observed during the chosen time interval in descending order.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iXu3aai6ibY25UWhtYUT1/a0bb9b8385cfac0c0e23b98e7e0bdefb/image2-1.png" alt="Screenshot of the dashboard highlighting Rate limit analysis tab within Security Analytics view" class="kg-image" width="1999" height="1571" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iXu3aai6ibY25UWhtYUT1/9bef2b03e884668efbba3d8251cd4882/image2-1.png" alt="Screenshot of the dashboard highlighting Rate limit analysis tab within Security Analytics view" class="kg-image" width="1999" height="1571" loading="lazy">
 
 	</figure>
 	<p>You can use the slider to determine the impact of a rule with different thresholds. How many clients would have been caught by the rule and rate limited? Can I visually identify abusers with above-average rate vs. the long tail of average users? This information will guide you in assessing what’s the most appropriate rate for the selected filter.</p>
@@ -68,7 +68,7 @@
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZC9jNROj5C5X6mHImu8zf/74a1bd931e4e5aa5b424b691b93b6e84/image5-2.png" alt="Top IP addresses distribution from the new rate limit analysis tab for previous 12 hours, grouping by top IP Address over a 1 min interval, using Bot score greater than 40 and /login API endpoint as filters" class="kg-image" width="1421" height="554" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZC9jNROj5C5X6mHImu8zf/88b11e610fafe2504665dad8c22b3da6/image5-2.png" alt="Top IP addresses distribution from the new rate limit analysis tab for previous 12 hours, grouping by top IP Address over a 1 min interval, using Bot score greater than 40 and /login API endpoint as filters" class="kg-image" width="1421" height="554" loading="lazy">
 
 	</figure>
 	<ul>
@@ -80,7 +80,7 @@
 	<p><b>Create a rule.</b> Selecting “Create rate limit rule” will take you to the rate limiting tab in the WAF with your filters pre-populated.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7bxY562ESZk6pzJYrPBvuF/1b3537fef45009cbb7a5ba91c6b5b5f9/image7-2.png" alt="screenshot from Rate Limiting WAF rule with values distributed from the chosen filters" class="kg-image" width="1398" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bxY562ESZk6pzJYrPBvuF/35d5d626a4ee5b286dd0c087c74d756e/image7-2.png" alt="screenshot from Rate Limiting WAF rule with values distributed from the chosen filters" class="kg-image" width="1398" height="1999" loading="lazy">
 
 	</figure>
 	<p><b>Choose your action and behavior in the rule.</b> Depending on your needs you can choose to log, challenge, or block requests exceeding the selected threshold. It’s often a good idea to first deploy the rule with a log action to validate the threshold and then change the action to block or challenge when you are confident with the result. With every action, you can also choose between two behaviors: fixed action or throttle. Learn more about the difference in the next section.</p>
@@ -95,20 +95,20 @@
 	<p>Until today, the only available behavior for Rate Limiting has been <i>fixed action,</i> where an action is triggered for a selected time period (also known as timeout). For example, did the IP 192.0.2.23 exceed the rate of 20 requests per minute? Then block (or log) all requests from this IP for, let’s say, 10 minutes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2VKfUoWJSGACGOz50fEsof/c46b29c6c00fa79c4a114b01adc08156/Screenshot-2023-09-19-at-11.16.42.png" alt="Fixed action: once a threshold is reached, the action is performed for a customer-defined time duration." class="kg-image" width="1392" height="230" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VKfUoWJSGACGOz50fEsof/00da159c12b659159a2f883b81988a4d/Screenshot-2023-09-19-at-11.16.42.png" alt="Fixed action: once a threshold is reached, the action is performed for a customer-defined time duration." class="kg-image" width="1392" height="230" loading="lazy">
 
 	</figure>
 	<p>In some situations, this type of penalty is too severe and risks affecting legitimate traffic. For example, if a device in a corporate network (think about NAT) exceeds the threshold, all devices sharing the same IP will be blocked outright.</p>
 	<p>With <i>throttling</i>, rate limiting selectively drops requests to maintain the rate within the specified threshold. It’s like a leaky bucket behavior (with the only difference that we do not implement a queuing system). For example, throttling a client to 20 requests per minute means that when a request comes from this client, we look at the last 60 seconds and see if (on average) we have received less than 20 requests. If this is true, the rule won’t perform any action. If the average is already at 20 requests then we will take action on that request. When another request comes in, we will check again. Since some time has passed the average rate might have dropped, making room for more requests.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nguPmj1apYY1lehsrbybF/a538d41bf61557200b65f365e78d3885/Screenshot-2023-09-19-at-11.17.18.png" alt="Throttle behavior: for every request we assess whether the average rate is within the defined limit; if it is then we allow the request." class="kg-image" width="1404" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nguPmj1apYY1lehsrbybF/3b954929b65a06a4e509ddc67689a874/Screenshot-2023-09-19-at-11.17.18.png" alt="Throttle behavior: for every request we assess whether the average rate is within the defined limit; if it is then we allow the request." class="kg-image" width="1404" height="216" loading="lazy">
 
 	</figure>
 	<p>Throttling can be used with all actions: block, log, or challenge. When creating a rule, you can select the behavior after choosing the action.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/19vPKFMr4S8VXOGtUkUXTK/5be98ad78dda2ee39a07da48b5511a23/Screenshot-2023-09-19-at-11.17.42.png" alt="The Rate Limit rule user interface allows users to select what behavior should be used." class="kg-image" width="1416" height="492" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19vPKFMr4S8VXOGtUkUXTK/822e2c7b704fa0f03fa86c6044bfd288/Screenshot-2023-09-19-at-11.17.42.png" alt="The Rate Limit rule user interface allows users to select what behavior should be used." class="kg-image" width="1416" height="492" loading="lazy">
 
 	</figure>
 	<p>When using any challenge action, we recommend using the <i>fixed</i> <i>action</i> behavior. As a result, when a client exceeds the threshold we will challenge all requests until a challenge is passed. The client will then be able to reach the origin again until the threshold is breached again.</p>

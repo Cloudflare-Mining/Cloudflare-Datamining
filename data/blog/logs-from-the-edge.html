@@ -1,10 +1,10 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/22EHOfwq4HTxAYc28d7SFV/974b5d12c4b6745f06815f001739b1b1/logs-from-the-edge.jpg" alt="">
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22EHOfwq4HTxAYc28d7SFV/08c3b4cba9058a9f21b10cc3834cda24/logs-from-the-edge.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>With <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Cloudflare Workers</a>, our JavaScript environment at the edge, it is possible to send traffic logs to arbitrary locations. In this post we are going to discuss an example Worker implementation on how to achieve this. So if you are building or maintaining your own traffic logging/analytics environment, read on.</p>
 	<p>To build the underlying script we are going to leverage sub requests. Sub requests, which can be spawned from the initial HTTP/S request, can be used to aggregate and compose a response from several back end services, or, like in the example discussed here, to post data to a specific endpoint. Sub requests can be made asynchronously and after the initial request has been fully served to avoid adding unnecessary latency to the main request.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ky2AOpjSfW9fZY5cLt9iy/6e71e0b52a3a3e42188f2cc18493dccf/logs.jpg" alt="logs" class="kg-image" width="3072" height="2048" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ky2AOpjSfW9fZY5cLt9iy/7adbf0f3f3e19119d303c7c207753764/logs.jpg" alt="logs" class="kg-image" width="3072" height="2048" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

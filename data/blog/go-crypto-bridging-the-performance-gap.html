@@ -1,9 +1,9 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xguPwVPbmK7wIWeDlYhwD/971c35c0688925664a444d690fb91729/go-crypto-bridging-the-performance-gap.jpg" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1xguPwVPbmK7wIWeDlYhwD/497eea77811ee45c9b595f28003cc5fb/go-crypto-bridging-the-performance-gap.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It is no secret that we at CloudFlare love Go. We use it, and we use it a LOT. There are many things to love about Go, but what I personally find appealing is the ability to write assembly code!</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KXkUfdeZkkc1sWRj7cMWM/d594f474bcec6fdb6c4398a7a25de021/4238725400_58e0df7d8a_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KXkUfdeZkkc1sWRj7cMWM/0169fe43ac4fca720cc5e3c048bd913f/4238725400_58e0df7d8a_z.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/curns/4238725400/in/photolist-7syzoq-bX6MBP-7MB6AP-bV6qYW-JKJyC-jwtSkq-eaezFL-cYsmkE-ndmMRH-2EMNd1-oW5DRv-N7SWP-62CbPG-mm4X-5hUghN-bUdHXE-awERSL-5rx4ST-nUJ7Za-ewYVyy-diiyTv-pprT55-6tuZgp-fQDkYD-fQDkUF-bMRznn-3VAiJx-bvGxVF-7S8RZX-pcqyM9-6g4iYb-8NwRYU-cwiigy-9PkavU-61G39m-4bnYXH-d2QTGb-32J1co-q2VB1P-nGbBjk-rnm8s8-nT6b6W-88u81w-9aWDrY-9C5Anx-nT6TBk-oah7x8-oarCdA-pb3eXW-68dr8i">image</a> by <a href="https://www.flickr.com/photos/curns">Jon Curnow</a></p>
@@ -42,7 +42,7 @@ Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X</code></pre>
 	<p>That is why we use AES-GCM as the preferred cipher for customer HTTPS only prioritizing ChaCha20-Poly1305 for mobile browsers that support it. You can see it in our <a href="https://github.com/cloudflare/sslconfig">configuration</a>. As such today more than 60% of our client facing traffic is encrypted with AES-GCM, and about 10% is encrypted with ChaCha20-Poly1305. This percentage grows every day, as browser support improves. We also use AES-GCM to encrypt all the traffic between our data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YfENR53QhCOS7e6p5hxww/0332bc209400d0ddfbf5b6e301c28bfa/2564482934_d26c31c011_z-1.jpg" alt="" class="kg-image" width="549" height="448" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YfENR53QhCOS7e6p5hxww/82283b52e997187cfa7c4a3ed9b80448/2564482934_d26c31c011_z-1.jpg" alt="" class="kg-image" width="549" height="448" loading="lazy">
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/319/2564482934/in/photolist-5FYmSD-7zvQwN-6ATEuo-4VgpgZ-kUSNp3-6wAN3r-c3LXyY-c3LXpW-4S2DaR-4UBDr1-4UxqxR-82A7UM-4VgH6r-6cXGRY">image</a> by <a href="https://www.flickr.com/photos/319">3:19</a></p>

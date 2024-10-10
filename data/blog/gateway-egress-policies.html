@@ -4,7 +4,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/n2EL5cxGe6DoEC8l0uIfO/167d4c8050742bdb1918289e614fa081/image5-1.png" alt="Manage and control the use of dedicated egress IPs with Cloudflare Zero Trust" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/n2EL5cxGe6DoEC8l0uIfO/4f37f5248a6bdb58b8ac88ab7912f301/image5-1.png" alt="Manage and control the use of dedicated egress IPs with Cloudflare Zero Trust" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>Before identity-driven Zero Trust rules, some SaaS applications on the public Internet relied on the IP address of a connecting user as a security model. Users would connect from known office locations, with fixed IP address ranges, and the SaaS application would check their address in addition to their login credentials.</p>
@@ -47,25 +47,25 @@
 	<p>To set this up, I just have to navigate to Egress Policies under Gateway on the Zero Trust dashboard. Once there I can hit ‘Create egress policy’:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/yuJg8Ppn8asHZyfbw1L9R/3f12480b3628304d80ef337ee3aeda3e/image3-1.png" alt="" class="kg-image" width="1999" height="809" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yuJg8Ppn8asHZyfbw1L9R/ae805efe79147a7df6b61e04cbf6d0e6/image3-1.png" alt="" class="kg-image" width="1999" height="809" loading="lazy">
 
 	</figure>
 	<p>For my organization most of my users accessing this third-party service are located in Portugal so I’ll use my dedicated egress IPs that are assigned to Montijo, Portugal. The users will access example.com hosted on 203.0.113.10 so I’ll use the destination IP selector to match all traffic to this site; policy configuration below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xfip4X6BAuf5PVeo0wDYE/dc47259c52944743bbd111c5c29d7d7c/image2.png" alt="" class="kg-image" width="1869" height="1999" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xfip4X6BAuf5PVeo0wDYE/18556fb7fc1620e4e621aaa9ec13fb6d/image2.png" alt="" class="kg-image" width="1869" height="1999" loading="lazy">
 
 	</figure>
 	<p>Once my policy is created, I’ll add in one more as a catch-all for my organization to make sure they don’t use any dedicated egress IPs for destinations not associated with this third-party service. This is key to add in because it makes sure my users receive the most performant network experience while still maintaining their privacy by egress via our shared Enterprise pool of IPs; policy configuration below:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pybWxPAfzFcURsoGQ3MC5/5b01f250501b270966f3d55aae216cb5/image4.png" alt="" class="kg-image" width="1456" height="1178" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pybWxPAfzFcURsoGQ3MC5/9201edcdad977b2698ae8a11e87fadd4/image4.png" alt="" class="kg-image" width="1456" height="1178" loading="lazy">
 
 	</figure>
 	<p>Taking a look at the egress policy list we can see both policies are enabled and now when my users try to access example.com they will be using either the primary or secondary dedicated IPv4 or the IPv6 range as the egress IP. And for all other traffic, the default Cloudflare egress IPs will be used.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nW6c0Qx8QXR4tZT1IMNLH/4c13726625612d73e9bd5e83b539c765/image1-3.png" alt="" class="kg-image" width="1999" height="963" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nW6c0Qx8QXR4tZT1IMNLH/dfec617aadbd186f79b4f6f5e3445463/image1-3.png" alt="" class="kg-image" width="1999" height="963" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">

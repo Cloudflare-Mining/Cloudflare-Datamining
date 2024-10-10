@@ -1,4 +1,4 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TvLCsvWs5RNVQy3qPdymV/6cf5f39759e87f6ee715a61a49b912ff/introducing-lua-capnproto-better-serialization-in-lua.png" alt="">
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TvLCsvWs5RNVQy3qPdymV/d6b8481cda338004ca95ac67a12fad94/introducing-lua-capnproto-better-serialization-in-lua.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When we need to transfer data from one program to another program, either within a machine or from one data center to another some form of serialization is needed. Serialization converts data stored in memory into a form that can be sent across a network or between processes and then converted back into data a program can use directly.</p>
 	<p>At CloudFlare, we have data centers all over the world. When transferring data from one data center to another, we need a very efficient way of serializing data, saving us both time and network bandwidth.</p>
@@ -188,7 +188,7 @@
 	<p>In one project we switched to lua-capnproto from <a href="http://www.kyne.com.au/~mark/software/lua-cjson.php">lua-cjson</a> (a quite fast JSON library for Lua) for serialization. So let's see how fast lua-capnproto is compared to lua-cjson.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59GtNOY9Ix3jO9tFNn53ms/013722edaf2743fa5140040acd66bb5d/lua-capnproto.png" alt="Performance" class="kg-image" width="524" height="340" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59GtNOY9Ix3jO9tFNn53ms/8b88605c6a817d02dd525926adebee8b/lua-capnproto.png" alt="Performance" class="kg-image" width="524" height="340" loading="lazy">
 
 	</figure>
 	<p>You can also run <a href="https://github.com/cloudflare/lua-capnproto/blob/master/benchmark.lua">benchmark.lua</a> yourself (included in the source code) to find out how fast lua-capnproto is compared to <a href="http://www.kyne.com.au/~mark/software/lua-cjson.php">lua-cjson</a> on your machine.</p>

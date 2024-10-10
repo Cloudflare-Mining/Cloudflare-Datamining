@@ -1,9 +1,9 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3PfRxJnPC0YmB5XsdwKB1p/c507d65d467420193c9b6b53c44f038a/kyoto-tycoon-secure-replication.jpg" alt="">
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PfRxJnPC0YmB5XsdwKB1p/1f1a0b85e657a6a3a68e9f1c5cf2911d/kyoto-tycoon-secure-replication.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Kyoto Tycoon is a distributed key-value store written by <a href="http://fallabs.com">FAL Labs</a>, and it is used extensively at CloudFlare. Like many popular key-value stores, Kyoto Tycoon uses timestamp-based replication to ensure eventual consistency and guarantee ordering. Kyoto Tycoon is an open source project, and in the spirit of the holidays, we’re contributing our internal changes back to the open source project.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jRyWlOE1SmCistizq5P2h/7334b8afc0f4900301ac6c9151173309/image00.jpg" alt="CC BY-ND 2.0 image by Moyan Brenn" class="kg-image" width="640" height="404" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jRyWlOE1SmCistizq5P2h/98a75871a22a4252774f2605fd7508d8/image00.jpg" alt="CC BY-ND 2.0 image by Moyan Brenn" class="kg-image" width="640" height="404" loading="lazy">
 
 	</figure>
 	<p><sub></sub><a href="https://creativecommons.org/licenses/by-nd/2.0"><sub>CC BY-ND 2.0</sub></a><sub> </sub><a href="https://www.flickr.com/photos/aigle_dore/16040166131"><sub>image</sub></a><sub> by </sub><a href="https://www.flickr.com/photos/aigle_dore"><sub>Moyan Brenn</sub></a></p>
@@ -31,13 +31,13 @@
 	<p>The following diagram shows how a TLS connection is established.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fB6HM9UJytKexrPLVG6fv/1c426b881cc83d4cfd71c40000ee4510/image02.jpg" alt="" class="kg-image" width="1600" height="1110" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fB6HM9UJytKexrPLVG6fv/2a994c35190522231d5ff03179e990f4/image02.jpg" alt="" class="kg-image" width="1600" height="1110" loading="lazy">
 
 	</figure>
 	<p>There are different requirements for server-to-server communication. For one, both sides need to trust each other. This mutual trust prevents malicious computers from accessing the network of CloudFlare machines. In TLS, the feature that enables both sides to authenticate each other is called client authentication. Just as in the example above, the server has a certificate and validates its side of the connection, but in addition, the client also has a certificate. At the end of the handshake, the client signs the conversation with its certificate key. This signature proves that the client owns the certificate and that the handshake hasn’t been tampered with.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40xGfGTzaMoYXxae9jQ3Tc/4f8470ee4591a61d3bc4d82bfbc3d604/image01.png" alt="" class="kg-image" width="1260" height="1063" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40xGfGTzaMoYXxae9jQ3Tc/b0a6635ef72fc8169e0122e6225c2411/image01.png" alt="" class="kg-image" width="1260" height="1063" loading="lazy">
 
 	</figure>
 	<p>Client authentication is a simple way for servers to limit incoming connections to trusted clients. It’s sometimes used with browsers in corporate environments, and we use it in <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> to authenticate connections to the key server.</p>

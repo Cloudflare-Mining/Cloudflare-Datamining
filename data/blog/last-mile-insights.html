@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wlfF9aZn7cQx8iwKKyUml/a7c2d34b5bbd91f8ea2b5234ccc464e0/Last-mile.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wlfF9aZn7cQx8iwKKyUml/940d86cf8ce2c800acc1331005caeab5/Last-mile.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
 	<p>“The last 20% of the work requires 80% of the effort.” The Pareto Principle applies in many domains — nowhere more so on the Internet, however, than on the Last Mile. Last Mile networks are heterogeneous and independent of each other, but all of them need to be running to allow for everyone to use the Internet. They’re typically the responsibility of Internet Service Providers (ISPs). However, if you’re an organization running a mission-critical service on the Internet, not paying attention to Last Mile networks is in effect handing off responsibility for the uptime and performance of your service over to those ISPs.</p>
@@ -29,20 +29,20 @@
 	<p>The Last Mile is the connection between your home and your ISP. When we talk about how users connect to content on the Internet, we typically do it like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DwcjkdeiL32Iu98kc9q9y/93851c933bdf0694a368de3d4f7615d0/image6-4.png" alt=" end user to Web Site" class="kg-image" width="827" height="404" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DwcjkdeiL32Iu98kc9q9y/b3e0cf94b995f4b069b4ffd14d7c26dc/image6-4.png" alt=" end user to Web Site" class="kg-image" width="827" height="404" loading="lazy">
 
 	</figure>
 	<p>This is useful, but in reality, there are lots of things in the path between a user and anything on the Internet. Say that a user is connecting to a resource hosted behind Cloudflare. The path would look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DsNzK5aYOsmVppSscumET/420ca0228920a9fcc2ac76a974686c1e/image3-17.png" alt="life of a request through Cloudflare on the Internet" class="kg-image" width="1999" height="378" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DsNzK5aYOsmVppSscumET/226d7ec1a09ef2bf609676d0e51db6bd/image3-17.png" alt="life of a request through Cloudflare on the Internet" class="kg-image" width="1999" height="378" loading="lazy">
 
 	</figure>
 	<p>Cloudflare is a global Anycast network that takes traffic from the Internet and proxies it to your origin. Because we function as a proxy, we think of the life of a request in two legs: before it reaches Cloudflare (end users to Cloudflare), and after it reaches Cloudflare (Cloudflare to origin). However, in Internet parlance, there are generally three legs: the First Mile tends to represent the path from an origin server to the data that you are requesting. The Middle Mile represents the path from an origin server to any proxies or other network hops. And finally, there is the final hop from the ISP to the user, which is known as the Last Mile.</p>
 	<p>Issues with the Last Mile are difficult to detect. If users are unable to reach something on the Internet, it is difficult for the resource to report that there was a problem. This is because if a user never reaches the resource, then the resource will never know something is wrong. Multiply that one problem across hundreds of thousands of Last Mile ISPs coming from a diverse set of regions, and it can be really hard for services to keep track of all the possible things that can go wrong on the Internet. The above graphic actually doesn’t really reflect the scope of the problem, so let’s revise it a bit more:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/282Htt2lur4oMmIRxazr48/7b9f386926382acf34d992efb8a605cc/image1-14.png" alt="life of a request through Cloudflare showing the true impact of the Last Mile" class="kg-image" width="1999" height="410" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/282Htt2lur4oMmIRxazr48/492affdf559d4f246eef635a2e37ed2a/image1-14.png" alt="life of a request through Cloudflare showing the true impact of the Last Mile" class="kg-image" width="1999" height="410" loading="lazy">
 
 	</figure>
 	<p>It’s not an easy problem to keep on top of.</p>
@@ -57,7 +57,7 @@
 	<p>Cloudflare is launching a closed beta of a brand new Last Mile reporting tool, Last Mile Insights. Last Mile Insights allows for customers to see where their end-users are having trouble connecting to their Cloudflare properties. Cloudflare can now show customers the traffic that failed to connect to Cloudflare, where it failed to connect, and why.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xpSHY4nDn6GbysOq3obLv/d5ddf26f9e780bf5d329a9b4c8bd9b0a/image8.png" alt="" class="kg-image" width="1999" height="1622" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xpSHY4nDn6GbysOq3obLv/c43b04dc6f312b9c143a6d2245492b13/image8.png" alt="" class="kg-image" width="1999" height="1622" loading="lazy">
 
 	</figure>
 	<p>Access to this data is useful to our customers because when things break, knowing what is broken and why — and then communicating with your end users — is vital. During issues, users and employees may create support/helpdesk tickets and social media posts to understand what’s going on. Knowing what is going on, and then communicating effectively about what the problem is and where it’s happening, can give end users confidence that issues are identified and being investigated… even if the issues are occurring on a third party network. Beyond that, understanding the root of the problem can help with mitigations and speed time to resolution.</p>
@@ -74,7 +74,7 @@
 	<p>The browser can send failure reports for many reasons: it could send reports because the TLS certificate was incorrect, the ISP or an upstream transit was having issues on the request path, the terminating server was overloaded and dropping requests, or a data center was unreachable. The W3C specification outlines specific buckets that the browser should break reports into and uploads those as reasons the browser could not connect. So the browser is literally telling the reporting endpoint why it was unable to reach the desired site. Here’s an example of a sample report a browser gives to Cloudflare’s endpoint:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/75PZvAhZZCgzwKlrvlLPmX/4baa9c78aae7b0b757b09afa47fa3380/image7.png" alt="" class="kg-image" width="842" height="612" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75PZvAhZZCgzwKlrvlLPmX/6f82016253527d4b132694fd30c394b6/image7.png" alt="" class="kg-image" width="842" height="612" loading="lazy">
 
 	</figure>
 	<p>The report itself is a JSON blob that contains a lot of things, but the things we care about are when in the request the failure occurred (phase), why the request failed (tcp.timed_out), the ASN the request came over, and the metro area where the request came from. This information allows anyone looking at the reports to see where things are failing and why. Personal Identifiable Information is not captured in NEL reports. For more information, please see our <a href="https://support.cloudflare.com/hc/en-us/articles/360050691831-Understanding-Network-Error-Logging">KB article on NEL</a>.</p>
@@ -113,7 +113,7 @@
 	<p>A healthy network has no downtime, minimal congestion, and low packet loss. &nbsp;These things all add latency. If you’re driving somewhere, street closures, traffic, and bad roads will prevent you from going as fast as possible to where you need to be. Healthy networks provide the best possible conditions for you to connect, and Last Mile performance is better because of it. &nbsp;Consider three networks in the same country: ISP A, ISP B, and ISP C. These ISPs have similar distribution among their users. ISP A is healthy and is directly connected with Cloudflare. ISP B is healthy but is not directly connected to Cloudflare. &nbsp;ISP C is an unhealthy network. Our data shows that Last Mile latencies for ISP C are significantly slower than Network A or B because the network quality of ISP C is worse.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4e2Y5J2efSredpNcRrGRNj/a622aa4bbde813b296b40d698169c9a6/image4-12.png" alt="" class="kg-image" width="636" height="419" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4e2Y5J2efSredpNcRrGRNj/079b2800d47f8ff0dfb8e4ade52796fe/image4-12.png" alt="" class="kg-image" width="636" height="419" loading="lazy">
 
 	</figure>
 	<p>This box plot shows that the latencies to Cloudflare for ISP C are 360% higher than ISPs A or B.</p>
@@ -129,13 +129,13 @@
 	<p>By placing data centers close to our users, we reduce the amount of time spent on these Last Mile networks, and the latency between end users and Cloudflare goes down. A great example of this is how bringing up new locations in Africa affected the latency for the Internet-connected population there. &nbsp;Blue shows the latency before these locations were added, and red shows after:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CoocVadwANp3T12FRacP6/7c982fc682853401a17c97a9cbb0c57a/image5-10.png" alt="" class="kg-image" width="1186" height="614" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CoocVadwANp3T12FRacP6/40ab018d81c0a33172904cfb2e85bc6c/image5-10.png" alt="" class="kg-image" width="1186" height="614" loading="lazy">
 
 	</figure>
 	<p>Our efforts globally have brought 95% of the Internet-connected population within 50ms of us:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Cdk1q51Xvzi7Vys8Rm0MU/bbaa3601af797d4c2396c703dd82b400/image2-19.png" alt="" class="kg-image" width="609" height="307" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Cdk1q51Xvzi7Vys8Rm0MU/c788ae4dde2307ffab24b61c3d7c9ab9/image2-19.png" alt="" class="kg-image" width="609" height="307" loading="lazy">
 
 	</figure>
 	<p>You will also notice that 80% of the Internet is within 30ms of us. The tail for Last Mile latencies is very long, and every data center we add helps bring that tail closer to great performance. As we expand into more locations and countries, more of the Internet will be even better connected.</p>

@@ -1,9 +1,9 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CT8K89EYMDGymBabkFZRx/bb30e5e85f91c6b74c1644ef1ed5463d/make-ssl-boring-again.png" alt="">
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CT8K89EYMDGymBabkFZRx/ca9340c82a83fd2d9d13e6702b557b8b/make-ssl-boring-again.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It may (or may not!) come as surprise, but a few months ago we migrated Cloudflare’s edge SSL connection termination stack to use <a href="https://boringssl.googlesource.com/boringssl">BoringSSL</a>: Google's crypto and SSL implementation that started as a fork of OpenSSL.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ocB2kjFK3yu7bQpWq7NCu/38cd109d9bcffb9998a40d8f169e50ff/2017-12-05-160528_621x216_scrot-1.png" alt="CTO tweet" class="kg-image" width="621" height="216" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ocB2kjFK3yu7bQpWq7NCu/28291ba6a3d750709fe632d9f214ca95/2017-12-05-160528_621x216_scrot-1.png" alt="CTO tweet" class="kg-image" width="621" height="216" loading="lazy">
 
 	</figure>
 	<p>We dedicated several months of work to make this happen without negative impact on customer traffic. We had a few bumps along the way, and had to overcome some challenges, but we ended up in a better place than we were in a few months ago.</p>
@@ -32,7 +32,7 @@
 	<p>X25519 is now the second most popular elliptic curve algorithm that is being used on our network:</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bi0W8QN1x6ftLgdkeHx4A/4be21fbfb8b538fba80cfce0cc021890/curves-metrics-with-logo-1.png" alt="Elliptic curves usage" class="kg-image" width="739" height="660" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bi0W8QN1x6ftLgdkeHx4A/4e9b0526e02faa55c06fdda2e3d7db13/curves-metrics-with-logo-1.png" alt="Elliptic curves usage" class="kg-image" width="739" height="660" loading="lazy">
 
 	</figure>
 	<div class="flex anchor relative">
@@ -82,7 +82,7 @@
 	<p>We looked at our metrics and realized that a significant percentage of clients still relied on this feature. These would be older mobile clients that don't have AES hardware offloading, and that didn't get software updated to get the newer ChaCha20 ciphers.</p>
 	<figure class="kg-card kg-image-card ">
 
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RtyTjVTdSV5RtFn6pJKTF/07bd4adb69b5e9021612ab171404ffa7/chacha-metrics-with-logo.png" alt="ChaCha20 Poly1305 ciphers usage" class="kg-image" width="752" height="708" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RtyTjVTdSV5RtFn6pJKTF/dd9e482b0233834b26a93b9a185ced00/chacha-metrics-with-logo.png" alt="ChaCha20 Poly1305 ciphers usage" class="kg-image" width="752" height="708" loading="lazy">
 
 	</figure>
 	<p>We decided to add support for these ciphers back to our own internal BoringSSL fork so that those older clients could still take advantage of them. We will keep monitoring our metrics and decide whether to remove them once the usage drops significantly.</p>
