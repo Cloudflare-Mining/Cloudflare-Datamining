@@ -209,10 +209,44 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "DNS record name (or @ for the zone apex) in Punycode.",
-					"example": "example.com",
-					"maxLength": 255,
-					"minLength": 1,
+					"description": "Exact value of the DNS record name. This is a convenience alias for `name.exact`.\n",
+					"example": "www.example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.exact",
+				"schema": {
+					"description": "Exact value of the DNS record name. Name filters are case-insensitive.\n",
+					"example": "www.example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.contains",
+				"schema": {
+					"description": "Substring of the DNS record name. Name filters are case-insensitive.\n",
+					"example": "w.example.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.startswith",
+				"schema": {
+					"description": "Prefix of the DNS record name. Name filters are case-insensitive.\n",
+					"example": "www.example",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.endswith",
+				"schema": {
+					"description": "Suffix of the DNS record name. Name filters are case-insensitive.\n",
+					"example": ".example.com",
 					"type": "string"
 				}
 			},
@@ -252,8 +286,44 @@
 				"in": "query",
 				"name": "content",
 				"schema": {
-					"description": "DNS record content.",
+					"description": "Exact value of the DNS record content. This is a convenience alias for `content.exact`.\n",
 					"example": "127.0.0.1",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.exact",
+				"schema": {
+					"description": "Exact value of the DNS record content. Content filters are case-insensitive.\n",
+					"example": "127.0.0.1",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.contains",
+				"schema": {
+					"description": "Substring of the DNS record content. Content filters are case-insensitive.\n",
+					"example": "7.0.0.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.startswith",
+				"schema": {
+					"description": "Prefix of the DNS record content. Content filters are case-insensitive.\n",
+					"example": "127.0.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.endswith",
+				"schema": {
+					"description": "Suffix of the DNS record content. Content filters are case-insensitive.\n",
+					"example": ".0.1",
 					"type": "string"
 				}
 			},
