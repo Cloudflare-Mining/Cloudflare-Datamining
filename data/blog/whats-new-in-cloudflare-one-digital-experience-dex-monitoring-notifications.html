@@ -1,0 +1,146 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wpL9GKd5CM6MWYnDCjfN9/16348e1c31c8da7589925642b60e1d2d/BLOG-2557_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>At Cloudflare, we are constantly innovating and launching new features and capabilities across our product portfolio. We are introducing roundup blog posts to ensure that you never miss the latest updates across our platform. In this post, we are excited to share two new ways that our customers can continue to keep their web properties performant and secure with Cloudflare One: new Digital Experience Monitoring (DEX) notifications help proactively identify issues that can affect the end-user digital experience, and integration with China Express enables secure access to China-hosted sites for Cloudflare Gateway customers.&nbsp;&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="using-dex-notifications-for-proactive-monitoring-with-cloudflare-zero-trust">Using DEX Notifications for proactive monitoring with Cloudflare Zero Trust</h2>
+		<a href="https://blog.cloudflare.com/#using-dex-notifications-for-proactive-monitoring-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tniec2CiEVF4GrAkcI2Ck/1a97d8ff8e069bcdbebe623b1698e8c8/BLOG-2557_2.png" alt="BLOG-2557 2" class="kg-image" width="1999" height="1120" loading="lazy">
+	</figure>
+	<p>As with other notification types, DEX notifications can be configured and reviewed from <a href="https://developers.cloudflare.com/notifications/get-started"><u>Cloudflare dashboard notifications</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-problem-does-it-solve">What problem does it solve?</h3>
+		<a href="https://blog.cloudflare.com/#what-problem-does-it-solve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DEX notifications address the challenge of proactively identifying issues affecting the digital experience of your end users. By monitoring device health and conducting synthetic tests from WARP clients deployed on your fleet's end-user devices, DEX provides valuable insights. These notifications empower IT administrators to quickly identify and address connectivity and application performance problems before they impact a wide range of users.</p>
+	<p>By proactively notifying administrators when problems arise, DEX helps minimize user disruption and provides peace of mind. Instead of actively refreshing and looking for issues as before, administrators can now receive immediate notifications. Management is simple, as notifications can be easily configured through the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fnotifications"><u>Cloudflare dashboard</u></a>.</p>
+	<p>Administrators can now create three new notification types:</p>
+	<p><b>1) Device Connectivity Anomaly</b></p>
+	<p>Are you tired of manually monitoring your end-users' device connectivity? Do you want to be notified immediately when there's a sudden change? Our new DEX notification for Device Connectivity Anomaly alerts you when there's a significant increase or decrease in the number of monitored devices connecting or disconnecting to the WARP Client. This can be filtered by various characteristics such as data center (“colo”), platform (operating system), and WARP Client version.</p>
+	<p>We use a statistical method called <a href="https://en.wikipedia.org/wiki/Standard_score"><u>z-score</u></a> to detect anomalies in monitored device count. A z-score measures how many standard deviations a data point is from the mean. By comparing the current five minutes of data to the past four hours, we can calculate the mean and standard deviation. If the z-score value exceeds 3.5 or falls below -3.5, a notification is triggered.</p>
+	<p>Here's an example of a notification configuration for macOS devices in the UK using WARP Client version 2023.7.24:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/aT5GXcDWKLFT8XX2SaVqO/6398631d6a52037632bdced2801825d2/BLOG-2557_3.png" alt="BLOG-2557 3" class="kg-image" width="1999" height="1182" loading="lazy">
+	</figure>
+	<p><b>2) DEX Test Latency&nbsp;</b></p>
+	<p>Ever worry application performance is slow? We're thrilled to introduce DEX Test Latency notifications, which are designed for administrators who want to stay ahead of the curve when it comes to application performance. This notification proactively alerts you of significant spikes or drops in latency based on:</p>
+	<ul>
+		<li>
+			<p><b>HTTP Test:</b> Resource Fetch Time measures the time it takes for a web browser to retrieve a specific resource from your application and deliver it to the end user.</p>
+		</li>
+		<li>
+			<p><b>Traceroute Test:</b> Round Trip Time measures the average time it takes for data packets to travel from your device to a specific destination IP address and back (when successful). Traceroute tests focus on the overall network performance between the test client/device and your application.</p>
+		</li>
+	</ul>
+	<p>This notification can be filtered by various characteristics such as data center (“colo”), platform (operating system), WARP Client version, and test name.</p>
+	<p>In this example, you have a DEX test monitoring the latency of the website<a href="https://www.cloudflarestatus.com"> www.cloudflarestatus.com</a>. This test, named "Cloudflare Status," uses an HTTP GET request and runs on Windows devices connecting through the Lisbon colo (data center).&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xCxwfiNdjZCAtxwDnsUV7/629bed0af47e9c8e2eaacd7dbd946b9e/BLOG-2557_4.png" alt="BLOG-2557 4" class="kg-image" width="1999" height="1179" loading="lazy">
+	</figure>
+	<p><b>3) DEX Test Low Availability</b></p>
+	<p>Is application downtime causing headaches for you and your users?&nbsp;</p>
+	<p>DEX Test Low Availability notifications help maintain optimal application health by notifying you when availability&nbsp; falls below a given threshold. This notification monitors the success rate of HTTP or Traceroute requests sent to an application through pre-configured DEX tests. These synthetic tests simulate user traffic and measure the percentage of successful interactions with your application.</p>
+	<p>You define the Service Level Objective (SLO) — a specific availability threshold — for each notification. When the percentage of successful requests falls below this threshold, you'll receive immediate notification, allowing you to proactively address issues before they impact a wide range of end users.</p>
+	<p>This can be filtered by various characteristics such as colo (data center), platform (operating system), WARP Client version, and test name.</p>
+	<p>In this example, a DEX test is targeting <a href="https://www.google.com">www.google.com</a>. This Traceroute test runs on Chrome OS devices connecting through the Tel Aviv colo. The example notification is configured to alert you whenever the availability (percentage of successful requests) drops below 98%, allowing you to investigate potential issues and take corrective action quickly.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Gh07xEzYS5dzr3CP2tmeB/4b1cf2fa22c8b1561e757a75d85abb5c/BLOG-2557_5.png" alt="BLOG-2557 5" class="kg-image" width="1999" height="1179" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">Get started today</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DEX notifications are now available for Cloudflare One customers. They can be configured by going to <a href="https://dash.cloudflare.com"><u>Cloudflare Dashboard</u></a> &gt; Account home &gt; Notifications &gt; Add, and then selecting any of the three DEX notification types. For more information, refer to <a href="https://developers.cloudflare.com/notifications/get-started/#create-a-notification"><u>Create a notification</u></a>. DEX notifications are one of the many ways the Cloudflare One suite of solutions work seamlessly together as a unified platform to find and fix security issues across SaaS applications. Get started now with Cloudflare’s Zero Trust platform by <a href="https://dash.cloudflare.com/sign-up/teams"><u>signing up here</u></a>.&nbsp;</p>
+	<hr>
+	<div class="flex anchor relative">
+		<h2 id="seamless-access-to-cloudflare-gateway-with-china-express">Seamless access to Cloudflare Gateway with China Express</h2>
+		<a href="https://blog.cloudflare.com/#seamless-access-to-cloudflare-gateway-with-china-express" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7shUMnuFPJXM0OFJFuq7TF/0e1f08c35042f18b215c502a13f1c2df/BLOG-2557_6.png" alt="BLOG-2557 6" class="kg-image" width="1999" height="1136" loading="lazy">
+	</figure>
+	<p>In January 2023, we proudly launched <a href="https://blog.cloudflare.com/china-express"><u>China Express</u></a> with multiple partners in China to extend Cloudflare One into China and provide connectivity to ensure that customers within the country could enjoy the same level of access to global services as the rest of the world. Our goal was simple: to deliver a consistent experience for customers and employees everywhere.</p>
+	<p>Over the past year, we've observed a notable increase in demand from enterprise customers seeking secure access to China-hosted sites. These customers, who often require consistent zero trust security policies applied through <a href="https://www.cloudflare.com/zero-trust/products/gateway"><u>Cloudflare Gateway</u></a>, including device posture checks, have faced challenges like scenic routing, where Internet traffic passes through multiple countries or networks, leading to significant packet loss when connecting to these websites.</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-the-problem">Understanding the problem</h3>
+		<a href="https://blog.cloudflare.com/#understanding-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For example, a global company with offices in both Hong Kong and San Jose has implemented <a href="https://www.cloudflare.com/lp/ppc/cloudflare-one/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=ao-fy-acq-namer_en_na-umbrella-ge-ge-prospecting-sch_g_brand_alpha&amp;utm_content=Alpha_Brand_ZeroTrust_Cloudflare1-Pure&amp;utm_term=cloudflare+one&amp;campaignid=71700000110566648&amp;adgroupid=58700008395369383&amp;creativeid=669302992682&amp;_bt=669302992682&amp;_bk=cloudflare+one&amp;_bm=e&amp;_bn=g&amp;_bg=152212903107&amp;_placement=&amp;_target=&amp;_loc=1027627&amp;_dv=c&amp;awsearchcpc=1&amp;gad_source=1&amp;gclid=CjwKCAjwuMC2BhA7EiwAmJKRrLfahJyZl_VP-qlxROmaAvijEE51KPZzcVGiZtPNQQkQIUtUCmDGdRoC1loQAvD_BwE&amp;gclsrc=aw.ds"><u>Cloudflare One</u></a> to implement a unified Zero Trust platform globally, with all employees using <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp"><u>WARP</u></a> on their devices to manage Internet access. As part of their daily operations, employees need to access websites hosted in mainland China. However, they have experienced unstable connections, particularly when accessing the AWS web console in China. Further investigation revealed long and sometimes unpredictable network routes, contributing to the instability.</p>
+	<p>Global Internet traffic to and from China flows through a limited number of international links, tightly regulated by government authorities, often leading to significant instability and fluctuations. To address these challenges, our China Express partners offer the 'Reverse Tunnel' solution, a reliable service that ensures stable access to Chinese websites, effectively mitigating connectivity issues.</p>
+	<div class="flex anchor relative">
+		<h3 id="reverse-tunnel">Reverse tunnel</h3>
+		<a href="https://blog.cloudflare.com/#reverse-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Today, we are thrilled to announce a significant enhancement to China Express: a new offering tailored to the needs of global Cloudflare Gateway customers accessing China-hosted sites. This enhancement introduces a dedicated tunnel configuration, ensuring safe and predictable connectivity while maintaining stringent <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust"><u>zero trust security policies</u></a>.</p>
+	<p>By <a href="https://blog.cloudflare.com/upgrading-the-cloudflare-china-network"><u>partnering with JD Cloud</u></a>, one of our trusted local providers in China, we've developed a solution that seamlessly integrates with <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/dns-policies"><u>Cloudflare's Zero Trust Firewall DNS Policies</u></a> by:</p>
+	<p><b>Directly routing through our Cloudflare Hong Kong data center:</b> When global Cloudflare Gateway customers attempt to access China-hosted sites, their traffic is routed directly to our Hong Kong data center. This strategic routing point allows us to apply Zero Trust policies before the traffic continues its journey into China.</p>
+	<p><b>Using JD Cloud's connectivity tunnel:</b> From our Cloudflare Hong Kong data center, the traffic is then securely transmitted through JD Cloud's private tunnel infrastructure, ensuring reliable and efficient connectivity into China. This partnership with JD Cloud leverages their local expertise and infrastructure capabilities, further enhancing the reliability and performance of the connection.&nbsp;</p>
+	<p>Note: This premium service is exclusive to China Network customers and requires a dedicated reverse tunnel contract with JD Cloud.</p>
+	<div class="flex anchor relative">
+		<h3 id="key-benefits">Key benefits</h3>
+		<a href="https://blog.cloudflare.com/#key-benefits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This solution offers several key benefits for our customers:</p>
+	<ul>
+		<li>
+			<p><b>Improved stability: </b>By directing all traffic to a dedicated tunnel, customers experience more reliable connections to websites within China.</p>
+		</li>
+		<li>
+			<p><b>Enhanced security: </b>Zero Trust policies are consistently applied to all traffic, regardless of its destination, ensuring the highest level of security for customers accessing China-hosted sites.</p>
+		</li>
+		<li>
+			<p><b>Seamless customer experience: </b>With a dedicated tunnel configuration, customers can access websites in China with confidence, knowing that their connections are both safe and predictable. Whether it’s multinational corporations expanding into the Chinese market, e-commerce platforms serving Chinese customers, or remote workers accessing corporate resources from within China, Cloudflare's China Express with JD Cloud partnership provides a solution tailored to their specific needs.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>By having companies implement a DNS host override policy in Cloudflare Gateway for origins in China, which routes traffic through the China Express Reverse Tunnel instead of using public Internet routes, companies can ensure more stable and reliable connections for their employees.</p>
+	<p>Looking ahead, we remain committed to continuously improving and expanding our offerings within China Express. Future developments may include further enhancements to performance, additional partnerships with local providers, and ongoing innovation to meet the evolving needs of our customers in the region.</p>
+	<hr>
+	<div class="flex anchor relative">
+		<h3 id="never-miss-an-update">Never Miss an Update</h3>
+		<a href="https://blog.cloudflare.com/#never-miss-an-update" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ll continue to share roundup blog posts as we continue to build and innovate. Be sure to follow along on the <a href="https://blog.cloudflare.com">Cloudflare Blog</a> for the latest news and updates. </p>
+</div>
