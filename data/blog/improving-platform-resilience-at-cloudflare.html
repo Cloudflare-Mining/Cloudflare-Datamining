@@ -38,7 +38,7 @@
 	</div>
 
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VirjJuJQOqXpc29cFOS7o/7612b73dd3c626eca0afc39da12cbdbe/BLOG-2498_2.png" alt="BLOG-2498 2" class="kg-image" width="1456" height="1047" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VirjJuJQOqXpc29cFOS7o/164354305037f5670f6b598cddf34353/Temporal_process.png" alt="BLOG-2498 2" class="kg-image" width="1456" height="1046" loading="lazy">
 	</figure>
 	<p>Before we discuss the system that provides our self-healing functions, let’s explore how the workflow execution engine works, as its native architecture provided numerous benefits that we took advantage of to build a more robust foundation.</p>
 	<p>The most attractive feature Temporal offered us was the ability to write code that has reliability baked in. Some examples of these primitives are automatic retries, timeouts, rollbacks, and queueing. The Temporal Platform consists of the <a href="https://docs.temporal.io/clusters"><u>Temporal Cluster</u></a> and <a href="https://docs.temporal.io/workers"><u>Worker</u></a> processes (application code that contains your custom logic).</p>
@@ -65,7 +65,7 @@
 	</div>
 
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FOpkEE13QcgwHJ9vhcIZj/e3c2c3e505299bf33a243005ac939f9f/BLOG-2498_3.png" alt="BLOG-2498 3" class="kg-image" width="1999" height="740" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FOpkEE13QcgwHJ9vhcIZj/5b0c5328ee5326794329a4a07c5db065/Building_on_Temporal_process.png" alt="BLOG-2498 3" class="kg-image" width="2400" height="889" loading="lazy">
 	</figure>
 	<p>After our initial testing of Temporal, it was now possible to write workflows. But we needed a way to schedule workflow tasks from other internal services. The coordinator was built to serve this purpose, and became the primary mechanism for the authorisation and scheduling of workflows.&nbsp;</p>
 	<p>The most important roles of the coordinator are authorisation, workflow task routing, and safety constraints enforcement. Each consumer is authorized via <a href="https://www.cloudflare.com/learning/access-management/what-is-mutual-tls"><u>mTLS authentication</u></a>, and the coordinator uses an ACL to determine whether to permit the execution of a workflow. An ACL configuration looks like the following example.</p>
@@ -134,7 +134,7 @@ constraint {
 	</div>
 
 	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wOIwKfkKzp7k46Z6tPuhW/6a6c9f4c691c3b27a079481a1969c925/BLOG-2498_4.png" alt="BLOG-2498 4" class="kg-image" width="1999" height="836" loading="lazy">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wOIwKfkKzp7k46Z6tPuhW/f35667a65872cf7a90fc9c03f38a48d5/Task_Routing_is_amazing_process.png" alt="BLOG-2498 4" class="kg-image" width="2400" height="1003" loading="lazy">
 	</figure>
 	<p>An unforeseen benefit of using a central Temporal cluster was the discovery of Task Routing. This feature allows us to schedule a Workflow/Activity on any server that has a running Temporal Worker, and further segment by the type of server, its location, etc. For this reason, we have three primary task queues — the general queue in which tasks can be executed by any worker in the datacenter, the node type queue in which tasks can only be executed by a specific node type in the datacenter, and the individual node queue where we target a specific node for task execution.</p>
 	<p>We rely on this heavily to ensure the speed and efficiency of automated remediation. Certain tasks can be run in datacenters with known low latency to an external resource, or a node type with better performance than others (due to differences in the underlying hardware). This reduces the amount of failure and latency we see overall in task executions. Sometimes we are also constrained by certain types of tasks that can only run on a certain node type, such as a database.</p>
