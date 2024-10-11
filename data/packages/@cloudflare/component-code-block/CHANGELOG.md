@@ -1,5 +1,11 @@
 # @cloudflare/component-code-block
 
+## 5.0.44
+
+### Patch Changes
+
+- 71a476b8b4: fix: fix codeblock max height not being respected properly
+
 ## 5.0.43
 
 ### Patch Changes
