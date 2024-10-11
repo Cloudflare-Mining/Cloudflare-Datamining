@@ -3582,9 +3582,11 @@ declare abstract class BaseAiTranslation {
 }
 type GatewayOptions = {
   id: string;
+  cacheKey?: string;
   cacheTtl?: number;
   skipCache?: boolean;
   metadata?: Record<string, number | string | boolean | null | bigint>;
+  collectLog?: boolean;
 };
 type AiOptions = {
   gateway?: GatewayOptions;
@@ -5089,7 +5091,7 @@ declare namespace Rpc {
   export const __RPC_TARGET_BRAND: "__RPC_TARGET_BRAND";
   export const __WORKER_ENTRYPOINT_BRAND: "__WORKER_ENTRYPOINT_BRAND";
   export const __DURABLE_OBJECT_BRAND: "__DURABLE_OBJECT_BRAND";
-  export const __WORKFLOW_BRAND: "__WORKFLOW_BRAND";
+  export const __WORKFLOW_ENTRYPOINT_BRAND: "__WORKFLOW_ENTRYPOINT_BRAND";
   export interface RpcTargetBranded {
     [__RPC_TARGET_BRAND]: never;
   }
@@ -5099,13 +5101,13 @@ declare namespace Rpc {
   export interface DurableObjectBranded {
     [__DURABLE_OBJECT_BRAND]: never;
   }
-  export interface WorkflowBranded {
-    [__WORKFLOW_BRAND]: never;
+  export interface WorkflowEntrypointBranded {
+    [__WORKFLOW_ENTRYPOINT_BRAND]: never;
   }
   export type EntrypointBranded =
     | WorkerEntrypointBranded
     | DurableObjectBranded
-    | WorkflowBranded;
+    | WorkflowEntrypointBranded;
   // Types that can be used through `Stub`s
   export type Stubable = RpcTargetBranded | ((...args: any[]) => any);
   // Types that can be passed over RPC
@@ -5300,25 +5302,33 @@ declare module "cloudflare:workers" {
     timestamp: Date;
   };
   export type WorkflowStep = {
-    do: <T extends Rpc.Serializable>(
-      name: string,
-      callback: () => Promise<T>,
-      config?: WorkflowStepConfig,
-    ) => Promise<T>;
-    sleep: (
-      name: string,
-      duration: WorkflowSleepDuration,
-    ) => void | Promise<void>;
+    do:
+      | (<T extends Rpc.Serializable>(
+          name: string,
+          callback: () => Promise<T>,
+        ) => Promise<T>)
+      | (<T extends Rpc.Serializable>(
+          name: string,
+          config: WorkflowStepConfig,
+          callback: () => Promise<T>,
+        ) => Promise<T>)
+      | (<T extends Rpc.Serializable>(
+          name: string,
+          config: WorkflowStepConfig | (() => Promise<T>),
+          callback?: () => Promise<T>,
+        ) => Promise<T>);
+    sleep: (name: string, duration: WorkflowSleepDuration) => Promise<void>;
+    sleepUntil: (name: string, timestamp: Date | number) => Promise<void>;
   };
-  export abstract class Workflow<
+  export abstract class WorkflowEntrypoint<
     Env = unknown,
     T extends Rpc.Serializable | unknown = unknown,
-  > implements Rpc.WorkflowBranded
+  > implements Rpc.WorkflowEntrypointBranded
   {
-    [Rpc.__WORKFLOW_BRAND]: never;
+    [Rpc.__WORKFLOW_ENTRYPOINT_BRAND]: never;
     protected ctx: ExecutionContext;
     protected env: Env;
-    run(events: Array<WorkflowEvent<T>>, step: WorkflowStep): Promise<unknown>;
+    run(event: WorkflowEvent<T>, step: WorkflowStep): Promise<unknown>;
   }
 }
 declare module "cloudflare:sockets" {

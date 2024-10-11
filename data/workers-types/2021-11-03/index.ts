@@ -3538,9 +3538,11 @@ export declare abstract class BaseAiTranslation {
 }
 export type GatewayOptions = {
   id: string;
+  cacheKey?: string;
   cacheTtl?: number;
   skipCache?: boolean;
   metadata?: Record<string, number | string | boolean | null | bigint>;
+  collectLog?: boolean;
 };
 export type AiOptions = {
   gateway?: GatewayOptions;
@@ -5048,7 +5050,7 @@ export declare namespace Rpc {
   export const __RPC_TARGET_BRAND: "__RPC_TARGET_BRAND";
   export const __WORKER_ENTRYPOINT_BRAND: "__WORKER_ENTRYPOINT_BRAND";
   export const __DURABLE_OBJECT_BRAND: "__DURABLE_OBJECT_BRAND";
-  export const __WORKFLOW_BRAND: "__WORKFLOW_BRAND";
+  export const __WORKFLOW_ENTRYPOINT_BRAND: "__WORKFLOW_ENTRYPOINT_BRAND";
   export interface RpcTargetBranded {
     [__RPC_TARGET_BRAND]: never;
   }
@@ -5058,13 +5060,13 @@ export declare namespace Rpc {
   export interface DurableObjectBranded {
     [__DURABLE_OBJECT_BRAND]: never;
   }
-  export interface WorkflowBranded {
-    [__WORKFLOW_BRAND]: never;
+  export interface WorkflowEntrypointBranded {
+    [__WORKFLOW_ENTRYPOINT_BRAND]: never;
   }
   export type EntrypointBranded =
     | WorkerEntrypointBranded
     | DurableObjectBranded
-    | WorkflowBranded;
+    | WorkflowEntrypointBranded;
   // Types that can be used through `Stub`s
   export type Stubable = RpcTargetBranded | ((...args: any[]) => any);
   // Types that can be passed over RPC
