@@ -6,23 +6,25 @@
 	</div>
 </div>
 <p><strong>Available Locations:</strong> Hybrid - Austin, San Francisco, New York. Two days in the office.</p>
-<h4><strong>About the Product Experience (PX) team:</strong></h4>
+<p><strong>About the Product Experience (PX) team:</strong></p>
 <p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Product Designer to join our team.</p>
-<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Product Designer on the Platform team, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders.</p>
+<p>Your work will impact and influence the user experience of a product used by millions of people daily. In this role you will join our Platform design team and work closely with other designers, engineers, product managers, and cross-functional stakeholders to design key growth-related experiences such as onboarding, product recommendations, and more.</p>
 <p>If you're a systems-thinking Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
-<h4><strong>What you'll do:</strong></h4>
+<p><strong>What you'll do:</strong></p>
 <ul>
 	<li>Demonstrate talent and passion for designing end-to-end user experiences.</li>
-	<li>Distill complex, technical problems into approachable products and features using research, ideation, and communicating ideas through design artifacts to build alignment with cross-functional partners.</li>
+	<li>Distill complex, technical problems into approachable products and features using ideation, experimentation, and data-driven decision-making.</li>
 	<li>Collaborate with product managers and engineers to work through technical tradeoffs that affect products and roadmaps.</li>
 	<li>Partner with other designers on the design team to collaborate on shared patterns, product vision, and design goals.</li>
 	<li>Facilitate design reviews with cross-functional teams.</li>
 	<li>Influence and contribute to the internal design process and team culture.</li>
 	<li>Make time to mentor entry-level designers on the team and share your craft, learning as you teach.</li>
 </ul>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li><strong>5+</strong> years of product design experience, ideally designing technical tools for business.</li>
+	<li>Experience designing for growth, including acquisition, conversion, and retention experiences</li>
+	<li>Experience with A/B testing and data-driven design decision-making</li>
 	<li>Ability to advocate for user centered design and be the voice of customers.</li>
 	<li>Effective written and verbal communication skills.</li>
 	<li>Technical expertise and an understanding of network services are a plus.</li>

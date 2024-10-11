@@ -5,40 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available locations: US Remote (Preference for Austin TX, Denver CO, San Francisco CA, New York NY, Seattle WA, Atlanta GA, Washington DC)</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>We are growing our Total Rewards team and looking for someone with a background in compensation, who is passionate about developing meaningful rewards programs, guiding organizations in making pay decisions, and building knowledge and trust in our compensation programs.</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare’s Americas Marketing Team is searching for a Head of US Partner Marketing to collaborate with our sales leaders, campaign, and product marketing organizations to design &amp; drive high-impact pipeline generation programs leading to closed-won bookings.</p>
+<p>The Director, US Partner Marketing will lead a growing team aligned to sales, utilizing data and historical performance to inform quarterly plans &amp; strategies.</p>
+<p>This key leader will be responsible for coordinating and managing a comprehensive marketing approach for our US Partner community including regional and national resellers, distributors, and service-providers.</p>
+<p><strong>Locations: San Francisco or Austin&nbsp;</strong></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Participate in compensation surveys and analyze market data&nbsp;&nbsp;</li>
-	<li>Audit, maintain, enhance and refresh compensation databases and systems</li>
-	<li>Support day to day ad hoc analytical data analysis</li>
-	<li>Work with data to develop compensation models in order to derive useful compensation insights that will drive our decision making&nbsp;</li>
-	<li>Partner with recruiters to create fair and competitive compensation decisions and offers</li>
-	<li>Partner with the People Operations and Systems team to configure and administer compensation systems, including Workday for compensation planning&nbsp;</li>
-	<li>Help with the implementation and administration of compensation policies and programs&nbsp;&nbsp;</li>
-	<li>Assist with development of total compensation communications, including training, compensation statements, videos and other material</li>
-	<li>Support the administration of the Company’s compensation cycles&nbsp;&nbsp;</li>
+	<li>Team leadership: proven experience as a manager, building team performance and culture in a high-growth environment</li>
+	<li>Planning &amp; execution: demonstrable skill working with teams to build &amp; execute quarterly and yearly plans including budget management and projection of results</li>
+	<li>Performance monitoring &amp; management: proven track record using enterprise analytics to monitor and optimize program performance, including investment rationalization, based on past performance and results</li>
+	<li>Sales alignment &amp; partnership: experience working in partnership with sales and channel leaders to enable partners with account engagement and demand generation programs leading to opportunity discovery and pipeline creation.</li>
+	<li>Cross-organization collaboration: represent the Americas team in the global go-to-market motion relating to partners, including sharing best practices, plans &amp; strategies for the betterment of Cloudflare sales &amp; marketing as a whole.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Your Qualifications</strong></p>
 <ul>
-	<li>5+ years of Compensation experience</li>
-	<li>Experience with salary structure design and market pricing</li>
-	<li>Exposure to with equity program administration</li>
-	<li>Knowledge of Radford survey benchmark jobs and database</li>
-	<li>Strong analytical skills; the ability to synthesize data and develop insights</li>
-	<li>Ability to work independently as well as work collaboratively</li>
-	<li>Exceptional communication skills both written and oral</li>
-	<li>Microsoft Excel and Google sheets guru, proficient in PowerPoint and presentation software</li>
-	<li>Working knowledge of Workday, especially for Compensation Planning</li>
+	<li>10+ years in US partner marketing role in $1B+ B2B technology organization in cybersecurity or networking; minimum 5 years as a manager</li>
+	<li>Direct experience working extensively with channel sales managers, leaders, and technical teams.&nbsp; Equivalent experience working across the partner landscape including regional and national resellers, distributors, and service-providers.</li>
+	<li>Budget oversight of $1M+ annually, including experience with partner investment models including MDF and co-op funding programs.</li>
+	<li>Experience building and launching new initiatives to the partner community including enablement, incentives, and performance management</li>
+	<li>Hands on experience with predominant sales and marketing systems such as Salesforce, analytics platforms, and partner management systems.</li>
+	<li>Thorough knowledge and understanding of enterprise lead-management processes and marketing attribution approaches, in particular relating to partner deal-registration and partner marketing investments</li>
+	<li>Effective working across organizational boundaries and building relationships to accomplish objectives</li>
+	<li>BA/BS in Marketing, Business, Communications, Engineering or other related fields; MBA a plus</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $109,000 - $133,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $122,000 - $150,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $129,000 - $157,000</li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $214,000 - $262,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $239,00 - $293,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $252,000 - $308,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -67,7 +63,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
