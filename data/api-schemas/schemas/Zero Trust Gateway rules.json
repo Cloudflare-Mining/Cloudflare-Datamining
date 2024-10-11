@@ -466,6 +466,35 @@
 														"example": true,
 														"type": "boolean"
 													},
+													"expiration": {
+														"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+														"properties": {
+															"duration": {
+																"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+																"example": 10,
+																"minimum": 5,
+																"type": "integer"
+															},
+															"expires_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	{
+																		"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																		"example": "2014-01-01T05:20:20Z",
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"expires_at"
+														],
+														"type": "object"
+													},
 													"filters": {
 														"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
 														"example": [
@@ -1048,6 +1077,35 @@
 																"description": "True if the rule is enabled.",
 																"example": true,
 																"type": "boolean"
+															},
+															"expiration": {
+																"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+																"properties": {
+																	"duration": {
+																		"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+																		"example": 10,
+																		"minimum": 5,
+																		"type": "integer"
+																	},
+																	"expires_at": {
+																		"allOf": [
+																			{
+																				"example": "2014-01-01T05:20:00.12345Z",
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			{
+																				"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																				"example": "2014-01-01T05:20:20Z",
+																				"type": "string"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"expires_at"
+																],
+																"type": "object"
 															},
 															"filters": {
 																"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -1724,6 +1782,35 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"expiration": {
+													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"properties": {
+														"duration": {
+															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+															"example": 10,
+															"minimum": 5,
+															"type": "integer"
+														},
+														"expires_at": {
+															"allOf": [
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																{
+																	"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																	"example": "2014-01-01T05:20:20Z",
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"expires_at"
+													],
+													"type": "object"
+												},
 												"filters": {
 													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
 													"example": [
@@ -2274,6 +2361,35 @@
 															"description": "True if the rule is enabled.",
 															"example": true,
 															"type": "boolean"
+														},
+														"expiration": {
+															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"properties": {
+																"duration": {
+																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+																	"example": 10,
+																	"minimum": 5,
+																	"type": "integer"
+																},
+																"expires_at": {
+																	"allOf": [
+																		{
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		{
+																			"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																			"example": "2014-01-01T05:20:20Z",
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"expires_at"
+															],
+															"type": "object"
 														},
 														"filters": {
 															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -2855,6 +2971,35 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"expiration": {
+								"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+								"properties": {
+									"duration": {
+										"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+										"example": 10,
+										"minimum": 5,
+										"type": "integer"
+									},
+									"expires_at": {
+										"allOf": [
+											{
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											{
+												"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+												"example": "2014-01-01T05:20:20Z",
+												"type": "string"
+											}
+										]
+									}
+								},
+								"required": [
+									"expires_at"
+								],
+								"type": "object"
+							},
 							"filters": {
 								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
 								"example": [
@@ -3392,6 +3537,35 @@
 													"description": "True if the rule is enabled.",
 													"example": true,
 													"type": "boolean"
+												},
+												"expiration": {
+													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"properties": {
+														"duration": {
+															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+															"example": 10,
+															"minimum": 5,
+															"type": "integer"
+														},
+														"expires_at": {
+															"allOf": [
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																{
+																	"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																	"example": "2014-01-01T05:20:20Z",
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"expires_at"
+													],
+													"type": "object"
 												},
 												"filters": {
 													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -3944,6 +4118,35 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"expiration": {
+															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"properties": {
+																"duration": {
+																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+																	"example": 10,
+																	"minimum": 5,
+																	"type": "integer"
+																},
+																"expires_at": {
+																	"allOf": [
+																		{
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		{
+																			"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																			"example": "2014-01-01T05:20:20Z",
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"expires_at"
+															],
+															"type": "object"
+														},
 														"filters": {
 															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
 															"example": [
@@ -4467,6 +4670,1288 @@
 			"Zero Trust Gateway rules"
 		]
 	},
+	"POST /accounts/{account_id}/gateway/rules/{rule_id}/reset_expiration": {
+		"description": "Resets the expiration of a Zero Trust Gateway Rule if its duration has elapsed and it has a default duration.\n\nThe Zero Trust Gateway Rule must have values for both `expiration.expires_at` and `expiration.duration`.\n",
+		"operationId": "zero-trust-gateway-rules-reset-expiration-zero-trust-gateway-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The API resource UUID.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"enum": [
+														"on",
+														"off",
+														"allow",
+														"block",
+														"scan",
+														"noscan",
+														"safesearch",
+														"ytrestricted",
+														"isolate",
+														"noisolate",
+														"override",
+														"l4_override",
+														"egress",
+														"audit_ssh",
+														"resolve",
+														"quarantine"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Date of deletion, if any.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the rule.",
+													"example": "Block bad websites based on their host name.",
+													"type": "string"
+												},
+												"device_posture": {
+													"description": "The wirefilter expression used for device posture check matching.",
+													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "True if the rule is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"expiration": {
+													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"properties": {
+														"duration": {
+															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+															"example": 10,
+															"minimum": 5,
+															"type": "integer"
+														},
+														"expires_at": {
+															"allOf": [
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																{
+																	"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																	"example": "2014-01-01T05:20:20Z",
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"expires_at"
+													],
+													"type": "object"
+												},
+												"filters": {
+													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"example": [
+														"http"
+													],
+													"items": {
+														"description": "The protocol or layer to use.",
+														"enum": [
+															"http",
+															"dns",
+															"l4",
+															"egress"
+														],
+														"example": "http",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "The API resource UUID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"identity": {
+													"description": "The wirefilter expression used for identity matching.",
+													"example": "any(identity.groups.name[*] in {\"finance\"})",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the rule.",
+													"example": "block bad websites",
+													"type": "string"
+												},
+												"precedence": {
+													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+													"type": "integer"
+												},
+												"rule_settings": {
+													"description": "Additional settings that modify the rule's action.",
+													"properties": {
+														"add_headers": {
+															"additionalProperties": {
+																"type": "string"
+															},
+															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+															"example": {
+																"My-Next-Header": [
+																	"foo",
+																	"bar"
+																],
+																"X-Custom-Header-Name": [
+																	"somecustomvalue"
+																]
+															},
+															"type": "object"
+														},
+														"allow_child_bypass": {
+															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+															"example": false,
+															"type": "boolean"
+														},
+														"audit_ssh": {
+															"description": "Settings for the Audit SSH action.",
+															"properties": {
+																"command_logging": {
+																	"description": "Enable to turn on SSH command logging.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"biso_admin_controls": {
+															"description": "Configure how browser isolation behaves.",
+															"properties": {
+																"dcp": {
+																	"description": "Set to false to enable copy-pasting.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dd": {
+																	"description": "Set to false to enable downloading.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dk": {
+																	"description": "Set to false to enable keyboard usage.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dp": {
+																	"description": "Set to false to enable printing.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"du": {
+																	"description": "Set to false to enable uploading.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"block_page_enabled": {
+															"description": "Enable the custom block page.",
+															"example": true,
+															"type": "boolean"
+														},
+														"block_reason": {
+															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+															"example": "This website is a security risk",
+															"type": "string"
+														},
+														"bypass_parent_rule": {
+															"description": "Set by children MSP accounts to bypass their parent's rules.",
+															"example": false,
+															"type": "boolean"
+														},
+														"check_session": {
+															"description": "Configure how session check behaves.",
+															"properties": {
+																"duration": {
+																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"example": "300s",
+																	"type": "string"
+																},
+																"enforce": {
+																	"description": "Set to true to enable session enforcement.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"dns_resolvers": {
+															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+															"properties": {
+																"ipv4": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IPv4 address of upstream resolver.",
+																				"example": "2.2.2.2",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"ipv6": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IPv6 address of upstream resolver.",
+																				"example": "2001:DB8::",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"egress": {
+															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"properties": {
+																"ipv4": {
+																	"description": "The IPv4 address to be used for egress.",
+																	"example": "192.0.2.2",
+																	"type": "string"
+																},
+																"ipv4_fallback": {
+																	"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																	"example": "192.0.2.3",
+																	"type": "string"
+																},
+																"ipv6": {
+																	"description": "The IPv6 range to be used for egress.",
+																	"example": "2001:DB8::/64",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"ignore_cname_category_matches": {
+															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+															"example": true,
+															"type": "boolean"
+														},
+														"insecure_disable_dnssec_validation": {
+															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+															"example": false,
+															"type": "boolean"
+														},
+														"ip_categories": {
+															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"ip_indicator_feeds": {
+															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"l4override": {
+															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"properties": {
+																"ip": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "A port number to use for TCP/UDP overrides.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"notification_settings": {
+															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"properties": {
+																"enabled": {
+																	"description": "Set notification on",
+																	"type": "boolean"
+																},
+																"msg": {
+																	"description": "Customize the message shown in the notification.",
+																	"type": "string"
+																},
+																"support_url": {
+																	"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"override_host": {
+															"description": "Override matching DNS queries with a hostname.",
+															"example": "example.com",
+															"type": "string"
+														},
+														"override_ips": {
+															"description": "Override matching DNS queries with an IP or set of IPs.",
+															"example": [
+																"1.1.1.1",
+																"2.2.2.2"
+															],
+															"items": {
+																"description": "IPv4 or IPv6 address.",
+																"example": "1.1.1.1",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"payload_log": {
+															"description": "Configure DLP payload logging.",
+															"properties": {
+																"enabled": {
+																	"description": "Set to true to enable DLP payload logging for this rule.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"quarantine": {
+															"description": "Settings that apply to quarantine rules",
+															"properties": {
+																"file_types": {
+																	"description": "Types of files to sandbox.",
+																	"items": {
+																		"enum": [
+																			"exe",
+																			"pdf",
+																			"doc",
+																			"docm",
+																			"docx",
+																			"rtf",
+																			"ppt",
+																			"pptx",
+																			"xls",
+																			"xlsm",
+																			"xlsx",
+																			"zip",
+																			"rar"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"resolve_dns_through_cloudflare": {
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
+															"example": true,
+															"type": "boolean"
+														},
+														"untrusted_cert": {
+															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"properties": {
+																"action": {
+																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
+																	"enum": [
+																		"pass_through",
+																		"block",
+																		"error"
+																	],
+																	"example": "error",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"schedule": {
+													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"properties": {
+														"fri": {
+															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"mon": {
+															"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sat": {
+															"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sun": {
+															"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"thu": {
+															"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"time_zone": {
+															"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+															"example": "America/New York",
+															"type": "string"
+														},
+														"tue": {
+															"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"wed": {
+															"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"traffic": {
+													"description": "The wirefilter expression used for traffic matching.",
+													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Reset the expiration of a Zero Trust Gateway rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"action": {
+															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"enum": [
+																"on",
+																"off",
+																"allow",
+																"block",
+																"scan",
+																"noscan",
+																"safesearch",
+																"ytrestricted",
+																"isolate",
+																"noisolate",
+																"override",
+																"l4_override",
+																"egress",
+																"audit_ssh",
+																"resolve",
+																"quarantine"
+															],
+															"example": "allow",
+															"type": "string"
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Date of deletion, if any.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "The description of the rule.",
+															"example": "Block bad websites based on their host name.",
+															"type": "string"
+														},
+														"device_posture": {
+															"description": "The wirefilter expression used for device posture check matching.",
+															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "True if the rule is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"expiration": {
+															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"properties": {
+																"duration": {
+																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+																	"example": 10,
+																	"minimum": 5,
+																	"type": "integer"
+																},
+																"expires_at": {
+																	"allOf": [
+																		{
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		{
+																			"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																			"example": "2014-01-01T05:20:20Z",
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"expires_at"
+															],
+															"type": "object"
+														},
+														"filters": {
+															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"example": [
+																"http"
+															],
+															"items": {
+																"description": "The protocol or layer to use.",
+																"enum": [
+																	"http",
+																	"dns",
+																	"l4",
+																	"egress"
+																],
+																"example": "http",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "The API resource UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														},
+														"identity": {
+															"description": "The wirefilter expression used for identity matching.",
+															"example": "any(identity.groups.name[*] in {\"finance\"})",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the rule.",
+															"example": "block bad websites",
+															"type": "string"
+														},
+														"precedence": {
+															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+															"type": "integer"
+														},
+														"rule_settings": {
+															"description": "Additional settings that modify the rule's action.",
+															"properties": {
+																"add_headers": {
+																	"additionalProperties": {
+																		"type": "string"
+																	},
+																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+																	"example": {
+																		"My-Next-Header": [
+																			"foo",
+																			"bar"
+																		],
+																		"X-Custom-Header-Name": [
+																			"somecustomvalue"
+																		]
+																	},
+																	"type": "object"
+																},
+																"allow_child_bypass": {
+																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"audit_ssh": {
+																	"description": "Settings for the Audit SSH action.",
+																	"properties": {
+																		"command_logging": {
+																			"description": "Enable to turn on SSH command logging.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"biso_admin_controls": {
+																	"description": "Configure how browser isolation behaves.",
+																	"properties": {
+																		"dcp": {
+																			"description": "Set to false to enable copy-pasting.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dd": {
+																			"description": "Set to false to enable downloading.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dk": {
+																			"description": "Set to false to enable keyboard usage.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dp": {
+																			"description": "Set to false to enable printing.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"du": {
+																			"description": "Set to false to enable uploading.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"block_page_enabled": {
+																	"description": "Enable the custom block page.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"block_reason": {
+																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+																	"example": "This website is a security risk",
+																	"type": "string"
+																},
+																"bypass_parent_rule": {
+																	"description": "Set by children MSP accounts to bypass their parent's rules.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"check_session": {
+																	"description": "Configure how session check behaves.",
+																	"properties": {
+																		"duration": {
+																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"example": "300s",
+																			"type": "string"
+																		},
+																		"enforce": {
+																			"description": "Set to true to enable session enforcement.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"dns_resolvers": {
+																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
+																	"properties": {
+																		"ipv4": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IPv4 address of upstream resolver.",
+																						"example": "2.2.2.2",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"ipv6": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IPv6 address of upstream resolver.",
+																						"example": "2001:DB8::",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"egress": {
+																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"properties": {
+																		"ipv4": {
+																			"description": "The IPv4 address to be used for egress.",
+																			"example": "192.0.2.2",
+																			"type": "string"
+																		},
+																		"ipv4_fallback": {
+																			"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																			"example": "192.0.2.3",
+																			"type": "string"
+																		},
+																		"ipv6": {
+																			"description": "The IPv6 range to be used for egress.",
+																			"example": "2001:DB8::/64",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"ignore_cname_category_matches": {
+																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"insecure_disable_dnssec_validation": {
+																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"ip_categories": {
+																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"ip_indicator_feeds": {
+																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"l4override": {
+																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"properties": {
+																		"ip": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
+																		"port": {
+																			"description": "A port number to use for TCP/UDP overrides.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"notification_settings": {
+																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Set notification on",
+																			"type": "boolean"
+																		},
+																		"msg": {
+																			"description": "Customize the message shown in the notification.",
+																			"type": "string"
+																		},
+																		"support_url": {
+																			"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"override_host": {
+																	"description": "Override matching DNS queries with a hostname.",
+																	"example": "example.com",
+																	"type": "string"
+																},
+																"override_ips": {
+																	"description": "Override matching DNS queries with an IP or set of IPs.",
+																	"example": [
+																		"1.1.1.1",
+																		"2.2.2.2"
+																	],
+																	"items": {
+																		"description": "IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"payload_log": {
+																	"description": "Configure DLP payload logging.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Set to true to enable DLP payload logging for this rule.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"quarantine": {
+																	"description": "Settings that apply to quarantine rules",
+																	"properties": {
+																		"file_types": {
+																			"description": "Types of files to sandbox.",
+																			"items": {
+																				"enum": [
+																					"exe",
+																					"pdf",
+																					"doc",
+																					"docm",
+																					"docx",
+																					"rtf",
+																					"ppt",
+																					"pptx",
+																					"xls",
+																					"xlsm",
+																					"xlsx",
+																					"zip",
+																					"rar"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"resolve_dns_through_cloudflare": {
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"untrusted_cert": {
+																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"properties": {
+																		"action": {
+																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
+																			"enum": [
+																				"pass_through",
+																				"block",
+																				"error"
+																			],
+																			"example": "error",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"schedule": {
+															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"properties": {
+																"fri": {
+																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"mon": {
+																	"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sat": {
+																	"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sun": {
+																	"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"thu": {
+																	"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"time_zone": {
+																	"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+																	"example": "America/New York",
+																	"type": "string"
+																},
+																"tue": {
+																	"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"wed": {
+																	"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"traffic": {
+															"description": "The wirefilter expression used for traffic matching.",
+															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+															"type": "string"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Reset the expiration of a Zero Trust Gateway rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Reset the expiration of a Zero Trust Gateway Rule",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	},
 	"PUT /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"description": "Updates a configured Zero Trust Gateway rule.",
 		"operationId": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
@@ -4534,6 +6019,35 @@
 								"description": "True if the rule is enabled.",
 								"example": true,
 								"type": "boolean"
+							},
+							"expiration": {
+								"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+								"properties": {
+									"duration": {
+										"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+										"example": 10,
+										"minimum": 5,
+										"type": "integer"
+									},
+									"expires_at": {
+										"allOf": [
+											{
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											{
+												"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+												"example": "2014-01-01T05:20:20Z",
+												"type": "string"
+											}
+										]
+									}
+								},
+								"required": [
+									"expires_at"
+								],
+								"type": "object"
 							},
 							"filters": {
 								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -5072,6 +6586,35 @@
 													"description": "True if the rule is enabled.",
 													"example": true,
 													"type": "boolean"
+												},
+												"expiration": {
+													"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+													"properties": {
+														"duration": {
+															"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+															"example": 10,
+															"minimum": 5,
+															"type": "integer"
+														},
+														"expires_at": {
+															"allOf": [
+																{
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																{
+																	"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																	"example": "2014-01-01T05:20:20Z",
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"expires_at"
+													],
+													"type": "object"
 												},
 												"filters": {
 													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
@@ -5623,6 +7166,35 @@
 															"description": "True if the rule is enabled.",
 															"example": true,
 															"type": "boolean"
+														},
+														"expiration": {
+															"description": "The expiration time stamp and default duration of a DNS policy. Takes\nprecedence over the policy's `schedule` configuration, if any.\n\nThis does not apply to HTTP or network policies.\n",
+															"properties": {
+																"duration": {
+																	"description": "The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.",
+																	"example": 10,
+																	"minimum": 5,
+																	"type": "integer"
+																},
+																"expires_at": {
+																	"allOf": [
+																		{
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		{
+																			"description": "The time stamp at which the policy will expire and cease to be\napplied.\n\nMust adhere to RFC 3339 and include a UTC offset. Non-zero\noffsets are accepted but will be converted to the equivalent\nvalue with offset zero (UTC+00:00) and will be returned as time\nstamps with offset zero denoted by a trailing 'Z'.\n\nPolicies with an expiration do not consider the timezone of\nclients they are applied to, and expire \"globally\" at the point\ngiven by their `expires_at` value.\n",
+																			"example": "2014-01-01T05:20:20Z",
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"expires_at"
+															],
+															"type": "object"
 														},
 														"filters": {
 															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
