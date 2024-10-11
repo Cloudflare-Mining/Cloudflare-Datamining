@@ -34,23 +34,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -142,23 +125,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -506,23 +472,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -614,23 +563,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -935,23 +867,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -1043,23 +958,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -1356,23 +1254,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -1464,23 +1345,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -1773,23 +1637,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -1881,23 +1728,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -2186,23 +2016,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -2294,23 +2107,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -2599,23 +2395,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -2707,23 +2486,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -3102,23 +2864,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -3210,23 +2955,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -3523,23 +3251,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -3631,23 +3342,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -3940,23 +3634,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -4048,23 +3725,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -4451,23 +4111,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -4559,23 +4202,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -4884,23 +4510,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -4992,23 +4601,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -5297,23 +4889,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -5405,23 +4980,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -5947,23 +5505,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -6055,23 +5596,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -6355,23 +5879,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -6463,23 +5970,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -6772,23 +6262,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -6880,23 +6353,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -7189,23 +6645,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -7297,23 +6736,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -7606,23 +7028,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -7714,23 +7119,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -8023,23 +7411,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -8131,23 +7502,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -8440,23 +7794,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -8548,23 +7885,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -9022,23 +8342,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -9130,23 +8433,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -9439,23 +8725,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -9547,23 +8816,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -10054,23 +9306,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -10162,23 +9397,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -10536,23 +9754,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -10644,23 +9845,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -11039,23 +10223,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -11147,23 +10314,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -11456,23 +10606,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -11564,23 +10697,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -11877,23 +10993,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -11985,23 +11084,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -12376,23 +11458,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -12484,23 +11549,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -12793,23 +11841,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -12901,23 +11932,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -13295,23 +12309,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -13403,23 +12400,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -13712,23 +12692,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -13820,23 +12783,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -14129,23 +13075,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -14237,23 +13166,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -14550,23 +13462,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -14658,23 +13553,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -15478,23 +14356,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -15586,23 +14447,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -15895,23 +14739,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -16003,23 +14830,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -16303,23 +15113,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -16411,23 +15204,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -16891,23 +15667,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -16999,23 +15758,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -17308,23 +16050,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -17416,23 +16141,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
@@ -17725,23 +16433,6 @@
 									"maxLength": 131072,
 									"description": "The input text prompt for the model to generate a response."
 								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
-								},
 								"raw": {
 									"type": "boolean",
 									"default": false,
@@ -17833,23 +16524,6 @@
 											"content"
 										]
 									}
-								},
-								"image": {
-									"oneOf": [
-										{
-											"type": "array",
-											"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-											"items": {
-												"type": "number",
-												"description": "A value between 0 and 255"
-											}
-										},
-										{
-											"type": "string",
-											"format": "binary",
-											"description": "Binary string representing the image contents."
-										}
-									]
 								},
 								"functions": {
 									"type": "array",
