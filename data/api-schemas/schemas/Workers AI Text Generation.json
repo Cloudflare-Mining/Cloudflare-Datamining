@@ -25,23 +25,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -135,23 +118,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -524,23 +490,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -634,23 +583,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -1023,23 +955,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -1133,23 +1048,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -1522,23 +1420,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -1632,23 +1513,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -2021,23 +1885,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -2131,23 +1978,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -2520,23 +2350,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -2630,23 +2443,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -3019,23 +2815,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -3129,23 +2908,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -3518,23 +3280,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -3628,23 +3373,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -4017,23 +3745,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -4127,23 +3838,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -4516,23 +4210,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -4626,23 +4303,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -5015,23 +4675,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -5125,23 +4768,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -5514,23 +5140,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -5624,23 +5233,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -6013,23 +5605,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -6123,23 +5698,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -6512,23 +6070,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -6622,23 +6163,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -7011,23 +6535,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -7121,23 +6628,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -7510,23 +7000,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -7620,23 +7093,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -8009,23 +7465,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -8119,23 +7558,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -8508,23 +7930,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -8618,23 +8023,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -9506,23 +8894,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -9616,23 +8987,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -10005,23 +9359,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -10115,23 +9452,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -10504,23 +9824,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -10614,23 +9917,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -11003,23 +10289,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -11113,23 +10382,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -11502,23 +10754,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -11612,23 +10847,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -12001,23 +11219,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -12111,23 +11312,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -12500,23 +11684,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -12610,23 +11777,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -12999,23 +12149,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -13109,23 +12242,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -13498,23 +12614,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -13608,23 +12707,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -13997,23 +13079,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -14107,23 +13172,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -14496,23 +13544,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -14606,23 +13637,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -14995,23 +14009,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -15105,23 +14102,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -15494,23 +14474,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -15604,23 +14567,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -15993,23 +14939,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -16103,23 +15032,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -16492,23 +15404,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -16602,23 +15497,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -16991,23 +15869,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -17101,23 +15962,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -17490,23 +16334,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -17600,23 +16427,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -17989,23 +16799,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -18099,23 +16892,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -18488,23 +17264,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -18598,23 +17357,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -18987,23 +17729,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -19097,23 +17822,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -19486,23 +18194,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -19596,23 +18287,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -19985,23 +18659,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -20095,23 +18752,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -20484,23 +19124,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -20594,23 +19217,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -20983,23 +19589,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -21093,23 +19682,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -21482,23 +20054,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -21592,23 +20147,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -21981,23 +20519,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -22091,23 +20612,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
@@ -22480,23 +20984,6 @@
 										"minimum": 0,
 										"type": "number"
 									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
-									},
 									"lora": {
 										"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
 										"type": "string"
@@ -22590,23 +21077,6 @@
 											"type": "object"
 										},
 										"type": "array"
-									},
-									"image": {
-										"oneOf": [
-											{
-												"description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-												"items": {
-													"description": "A value between 0 and 255",
-													"type": "number"
-												},
-												"type": "array"
-											},
-											{
-												"description": "Binary string representing the image contents.",
-												"format": "binary",
-												"type": "string"
-											}
-										]
 									},
 									"max_tokens": {
 										"default": 256,
