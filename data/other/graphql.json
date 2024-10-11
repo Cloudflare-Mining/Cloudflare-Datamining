@@ -1469,6 +1469,8 @@
 	"AccountGatewayL4SessionsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"action": "action taken by gateway",
+		"applicationIds": "IDs of the applications that matched the session parameters",
+		"applicationNames": "Names of the applications that matched the session parameters",
 		"coloCode": "Colo Code of edge server",
 		"datetime": "Datetime that the session was started",
 		"datetimeHour": "Datetime that the session was started truncated to hours",
@@ -1477,13 +1479,22 @@
 		"destinationPort": "The destination port for the session",
 		"detectedProtocol": "The detected protocol of network traffic",
 		"deviceId": "The device ID of the gateway user who initiated the session",
+		"dstIpContinent": "Continent code of the session destination IP address",
+		"dstIpCountry": "Country code of the session destination IP address",
 		"email": "The email address of the gateway user who initiated the session",
+		"proxyEndpoint": "The proxy endpoint used on this session",
+		"sessionId": "The network session unique identifier",
 		"sni": "The SNI pulled from the session tls handshake, if present",
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
 		"sourceIp": "The source IP address for the session",
 		"sourcePort": "The source port for the session",
-		"transport": "The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp)",
-		"userId": "The ID of the gateway user who initiated the session"
+		"srcIpContinent": "Continent code of the session source IP address",
+		"srcIpCountry": "Country code of the session source IP address",
+		"transport": "<small>DEPRECATED (Field is replaced with <code>transportProtocol</code>):</small> The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp). Deprecated, please use transportProtocol",
+		"transportProtocol": "The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp)",
+		"userId": "The ID of the gateway user who initiated the session",
+		"virtualNetworkId": "The ID of the virtual nework the device was connected to",
+		"virtualNetworkName": "The name of the virtual nework the device was connected to"
 	},
 	"AccountGatewayL4SessionsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -1549,20 +1560,33 @@
 	"AccountGatewayL7RequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"action": "action taken by gateway",
+		"applicationIds": "IDs of the applications that matched the request parameters",
+		"applicationNames": "Names of the applications that matched the request parameters",
+		"categoryIds": "IDs of the categories that matched the request parameters",
+		"categoryNames": "Names of the categories that matched the request parameters",
 		"coloCode": "Colo Code of edge server",
 		"datetime": "Datetime that the request happened",
 		"datetimeHour": "Datetime that the request happened truncated to hours",
 		"datetimeMinute": "Datetime that the request happened truncated to minutes",
 		"deviceId": "The device ID of the gateway user who made the request",
+		"dstIpContinent": "Continent code of the request destination IP address",
+		"dstIpCountry": "Country code of the request destination IP address",
 		"email": "The email address of the gateway user who made the request",
 		"httpHost": "The destination host for the request",
 		"httpStatusCode": "HTTP status code gateway returned to the user. 0 if nothing was returned(e.g client disconnected)",
 		"isIsolated": "Indicates whether this request was made through an isolated link",
 		"privateAppAUD": "Access private app AUD",
+		"proxyEndpoint": "The proxy endpoint used on this request",
 		"quarantined": "Indicates if the request content was quarantined",
+		"requestId": "The request unique identifier",
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
+		"srcIpContinent": "Continent code of the request source IP address",
+		"srcIpCountry": "Country code of the request source IP address",
 		"untrustedCertificateAction": "Action taken when an untrusted origin certificate error occurs",
-		"userId": "The ID of the gateway user who made the request"
+		"url": "The request URL",
+		"userId": "The ID of the gateway user who made the request",
+		"virtualNetworkId": "The ID of the virtual nework the device was connected to",
+		"virtualNetworkName": "The name of the virtual nework the device was connected to"
 	},
 	"AccountGatewayL7RequestsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
