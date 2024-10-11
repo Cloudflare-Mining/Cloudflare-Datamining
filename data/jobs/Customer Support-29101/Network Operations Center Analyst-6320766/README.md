@@ -5,51 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> London, UK</p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for talented Systems Reliability Engineers to build and operate our Edge platform running in more than 320 cities in over 120 countries. Our SREs come from diverse technical backgrounds and have built up their knowledge working in different environments, but common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence. We support our services in a “follow the sun” model with offices in East Asia, Europe and North America.</p>
-<p>This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows. We live at the boundary between systems, network, and software, and love improving the glue that holds them together. Working with us, you will build tools to constantly improve service availability, performance, and operational velocity. You will nurture a passion for an “automate everything” approach that makes systems failure resistant and ready to scale.</p>
-<p>SREs focus on the immediate state and functionality of the Cloudflare platform around the world, leveraging an array of monitoring, alerting and diagnostics tools while developing and enhancing the Cloudflare platform and its capabilities. We own a wide portfolio of applications and services, running a tight feedback loop of developer and operator patterns. The ideal SRE candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of networking, Linux and TLS along with coding ability in Go or Python.</p>
-<p><strong>Requisite Skills</strong></p>
+<p><strong>Available Locations: </strong>Lisbon or Remote Portugal&nbsp;</p>
+<p><strong>Role Description</strong></p>
+<p>Network Operations Center ("NOC") Analyst provides premium-level support for Cloudflare's largest and most technically sophisticated customers. The NOC service will focus on monitoring, alerting, and addressing issues related to availability and latency degradation in Layer 7 traffic, as well as handling basic security escalations and offering recommendations to mitigate fundamental attacks. The NOC system will monitor HTTP requests for alert-able conditions, and our NOC team will alert customers about problems as soon as they are found.&nbsp;</p>
+<p>NOC Engineers analyze the alerts, inform the customer of any material impact, and proactively put in motion a remediation path to resolving the degraded service, whether that be by moving traffic through a new route or working with the Systems Reliability Engineering team for a quick product fix or to declare a broader incident. The team also provides reporting and analysis to the customer in regular cadence, beyond any report that would be self-serviceable within the Cloudflare UI.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Aptitude for identifying problems, owning them and working with others to solve them</li>
-	<li>Linux systems experience</li>
-	<li>3 years experience in an SRE role or a role with similar functions</li>
-	<li>Software development skills in some programming language such as Go or Python</li>
-	<li>Understanding of distributed software systems and large scale system design tradeoffs</li>
-	<li>Intermediate experience of common network protocols like DNS and HTTP</li>
-	<li>Understanding of routing protocols and concepts such as BGP and IP anycast&nbsp;</li>
+	<li>Configure and maintain custom alerting for availability and latency across Layer 7.&nbsp;&nbsp;</li>
+	<li>Maintain customer dashboards&nbsp; in Grafana, which will be used to monitor for alert signals.</li>
+	<li>Work closely with internal teams such as System Reliability Engineering, Infrastructure Engineering, and Network Engineering to alert against, and subsequently provide meaningful data on performance degradation.</li>
+	<li>Outreach to customers for triggered alerts, providing them with meaningful information on what alerts are firing and why.</li>
+	<li>Escalate impactful alerts to customer support and/or other internal teams.</li>
+	<li>Join customer calls to provide granular and frequent status updates on critical issues.</li>
+	<li>Compile historical reporting on a regular cadence to customers, including remediation steps.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Requirements</strong></p>
+<p><strong>3+ years experience in a customer-facing technical support role</strong></p>
 <ul>
-	<li>Experience with the Linux kernel and Linux software packaging</li>
-	<li>Performance analysis and debugging</li>
-	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
-	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Squid or Apache</li>
-	<li>SQL databases</li>
-	<li>Time series databases such as OpenTSDB, Graphite, Prometheus or Grafana</li>
-	<li>Key/Value stores</li>
+	<li>Modern internet protocols like HTTPS, UDP, TCP, etc.</li>
+	<li>Analysis of traffic for anomaly detection and creation of mitigation rules</li>
+	<li>Knowledge of Cloudflare Products &amp; Features</li>
+	<li>Excellent communication skills with both an internal technical audience and a high-level customer stakeholder</li>
+	<li>Command line / Bash shell</li>
+	<li>Demonstrates excellent crisis management principles</li>
+	<li>Strong multi-tasker with ability to quickly context switch</li>
+	<li>Motivated self-starter who is always looking to improve and expand skills</li>
+	<li>Flexible for scheduled holiday/weekend coverage.</li>
+	<li>Highly desirable:</li>
+	<ul>
+		<li>Experience with prometheus queries, grafana, alertmanager, webhooks, and pagerduty.</li>
+		<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+	</ul>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with continuous / rapid release engineering</li>
-	<li>Strong tooling and automation development experience</li>
-	<li>Experience working in a 24/7/365 service environment</li>
-	<li>Experience working with large scale production distributed systems</li>
-	<li>A history of contributing to Open Source Software</li>
-</ul>
-<p><strong>Some tools that we use</strong></p>
-<ul>
-	<li>Nginx</li>
-	<li>PostgreSQL</li>
-	<li>Docker</li>
-	<li>Prometheus</li>
-	<li>Grafana</li>
-	<li>Consul</li>
-	<li>Nomad</li>
-	<li>Salt</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
