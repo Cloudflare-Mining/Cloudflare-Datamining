@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-12-04T18:24:21.207Z",
-					"updatedAt": "2024-10-09T00:01:26.262Z"
+					"updatedAt": "2024-10-12T04:47:08.258Z"
 				},
 				"contentfulId": "4rFhEbg2Zq18lpchzjHXrz",
 				"contentTypeId": "page",
@@ -72,10 +72,24 @@
 						"htmlId": null,
 						"menuItems": [
 							{
+								"contentfulId": "4K2oqf5tBHXlCCeMl2AmWu",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/application-services",
+								"subMenuItems": []
+							},
+							{
 								"contentfulId": "6eRoDVNFwc6GKofAQ4Ufo7",
 								"linkText": "Solutions",
 								"page": null,
 								"url": "/application-services/solutions",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "7IZ21UFScNrUiM7YaQNoaC",
+								"linkText": "Products",
+								"page": null,
+								"url": "/application-services/products",
 								"subMenuItems": []
 							},
 							{
@@ -89,6 +103,12 @@
 										"linkText": "Case Studies",
 										"page": null,
 										"url": "/case-studies?usecase=Secure+websites+%26+applications"
+									},
+									{
+										"contentfulId": "5IO7qSjlfp2J1GxRmD3imT",
+										"linkText": "Analyst Reports",
+										"page": null,
+										"url": "/analysts/"
 									},
 									{
 										"contentfulId": "7gyBwojKuFLbJgXMuOL3pg",
@@ -130,6 +150,70 @@
 								"subMenuItems": []
 							}
 						]
+					},
+					{
+						"contentfulId": "V3uiwLEbtCaN0UqFOsw6L",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare application services",
+						"titleSize": null,
+						"subtitle": "Web app security and delivery services run from a unified, cloud-native platform of security and connectivity solutions",
+						"subtitleSize": null,
+						"copy": "Cloudflare application services help you block DDoS attacks and bad bots, close zero-days and other vulnerabilities, cache and accelerate content, manage APIs, and more.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Talk to an expert",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "#",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": "talk-to-an-expert",
+						"buttonText2": "Get started",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "/plans",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": false,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Large",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "show",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "a3fe5227-779f-5c68-b261-a33721d14ab9",
+							"altText": "Map of global Cloudflare network",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qkAxZ673cqHFDwafV08rB/a84fce9776746b777d06625170646cbc/Application_Services_current_network_map.svg"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentfulId": "1rKZeknLcHKupsZOSqBrGJ",
