@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/products/zero-trust/cloudflare-vs-zscaler/",
+	"path": "/products/zero-trust/vpn-replacement/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[ZT PMM] Beat Zscaler",
+				"pageName": "VPN Replacement - Solutions Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "products/zero-trust/cloudflare-vs-zscaler",
+				"relativePath": "products/zero-trust/vpn-replacement",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare vs. Zscaler | Fueling Transformation",
-					"metaDescription": "Simpler more flexible architecture, trusted secure connectivity, and faster future-proof innovation. Learn why customers choose Cloudflare over Zscaler.",
+					"metaTitle": "VPN Replacement | Zero Trust",
+					"metaDescription": "Augment or replace your VPN with ZTNA. Learn how ZTNA provides better security, performance, and visibility. Start by offloading higher risk apps.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -47,19 +47,14 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					},
+					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-02-10T20:52:50.868Z",
-					"updatedAt": "2023-11-29T15:17:48.874Z"
+					"createdAt": "2022-01-24T18:28:54.967Z",
+					"updatedAt": "2024-10-04T21:54:01.475Z"
 				},
-				"contentfulId": "5Mwkmp9x2rHpUq54j7pKTs",
+				"contentfulId": "62xMZ1ricakE06Y0AZrMkT",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -2548,6 +2543,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "X2RTVnzFhYFnl1RYgIKZH",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span\n            >Cloudflare named in 2024 Gartner® Magic Quadrant™ for SV-SASE.\n        </span>\n        <a\n            class=\"link-helper\"\n            href=\"https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/\"\n        >\n            <strong>Announcement ></strong></a\n        >\n    </div>\n</section>\n",
+						"htmlId": null
+					},
+					{
 						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
 						"contentTypeId": "bladePadding",
 						"height": 1,
@@ -2648,23 +2649,23 @@
 						]
 					},
 					{
-						"contentfulId": "Rv4LtQlKoDBJhiIWjqaIR",
+						"contentfulId": "yIsVobIlyMRoqIhu9CWMi",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Comparing Cloudflare vs. Zscaler ",
+						"title": "Replace your VPN with Cloudflare",
 						"titleSize": null,
-						"subtitle": "Which better fuels transformation?",
+						"subtitle": "Strengthen security with fast, reliable Zero Trust Network Access",
 						"subtitleSize": null,
-						"copy": "Don't lock yourself out of your own future. Cloudflare helps you move quickly and nimbly as the future of networking evolves.\n\nSimple deployment, network resiliency, and quick innovation provide a stronger foundation for true transformation of networking, security, and applications.",
+						"copy": "Cloudflare's connectivity cloud helps you accelerate Zero Trust adoption. Augment — and eventually replace — your VPN, offloading your highest-risk users and apps quickly.\n",
 						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Talk to an expert",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Contact Sales",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "beat-zscaler-zero-trust",
-						"buttonText2": "See detailed comparison",
+						"button1ExtraClass": "vpn-replacement-contact-us",
+						"buttonText2": "Read the solution brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "#htmlIdPlansMatrix",
+						"buttonUrl2": "https://cfl.re/vpn-replacement-solution-brief",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -2672,13 +2673,12 @@
 						"includeVideo": false,
 						"streamVideoId": null,
 						"streamOptions": [
-							"controls",
-							"captions"
+							"controls"
 						],
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": false,
+						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": false,
 						"streamThumbnails": null,
 						"sectionPadding": null,
@@ -2696,14 +2696,14 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "b7a076ae-0fdc-5955-9d1d-152814f7a609",
+							"id": "eb6978ee-a226-54dc-94c3-bb080edb2a97",
 							"altText": null,
-							"title": "Zscaler vs Cloudflare hero image: transformation",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YgDfGzkik2bCbrOUlczyY/500067c786292ffd8839eff34032fc1e/Zero-Trust-Exchange.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ndq5Lx6daFOEdqlqP8MLE/b7a8e7b7b9700d5d46e6517f8b706fd7/teams-access-zero-trust-spot-illustration.svg"
 								},
 								"description": ""
 							},
@@ -2712,40 +2712,43 @@
 						}
 					},
 					{
-						"contentfulId": "2ASBstOjM6GZptIoYV5fno",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Three reasons customers choose Cloudflare over Zscaler",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "2FtFT90ppyl0Vvw0MQNdTU",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "THE CLOUDFLARE DIFFERENCE",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4kosi9ubNc0P7rH5BxvXgJ",
-								"title": "Simpler, more flexible architecture",
-								"makeTitleLink": null,
+								"contentfulId": "3sYIMhFH4sDotQZGAgcwA5",
+								"title": "Strengthen your security posture",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare customers value a uniform and composable platform for easy setup and operations. They do not want piecemeal services that lead to a more time-consuming, error-prone experience.",
+								"description": "Accelerate your adoption of a Zero Trust security model and reduce the risk of costly breaches.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/21kID7CIq7pf1zl8deUCB6/e9c0e42e56b4dce2436f953bc5b7ac00/performance-acceleration-rocket__1_.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eb93065c-06f0-53bf-8f24-82f814b29726",
+									"altText": "security-shield-zero-trust",
+									"title": "security-shield-zero-trust",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35yeieyQns5B8WsFes9Z20/8bf36cbf9edf546c30cc9e3e08235255/cloudflare-zero-trust.svg"
+										},
+										"description": "Shield with arrow icon"
 									},
-									"description": "Icon of a rocket ship"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -2755,24 +2758,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2ChcnHVxZVCSsbDC3cgzlQ",
-								"title": "Trusted, secure connectivity",
-								"makeTitleLink": null,
+								"contentfulId": "6Yu09nOiz0qAUExvuoIpBG",
+								"title": "Simplify IT operational complexity",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "The Cloudflare global network is built with end-to-end traffic automation for reliability and performance that customers trust. No one wants manual connectivity to many cloud networks that forces security tradeoffs.",
+								"description": "Reduce IT tickets and accelerate onboarding of new employees with a modernized access strategy and comprehensive visibility.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y3kSXK7xp7Cjdqe9IBsNB/f4d127e723cd1e68383cf0d19c0ee76f/security-shield-protection-1__1_.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
+										},
+										"description": "Ease of use orange"
 									},
-									"description": "Shield icon"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -2782,24 +2794,69 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7ojZGtl485VygzwiRgc7Qo",
-								"title": "Faster, future-proof innovation",
-								"makeTitleLink": null,
+								"contentfulId": "3pIfVLFZ8xULTFX823dXc8",
+								"title": "Deliver better user experiences",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare is architected to integrate innovations into the same network that customers use to evolve fast. No one wants new services bolted on or stagnating adoption of new standards that delays their future.",
+								"description": "Eliminate the frustration of using a VPN with seamless, low-latency access to apps and other resources, powered by our massive global network.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Gr4QwkdGjhpZYNfx2njHE/221cf3f86d23580b8e2c42bd450f409b/evolve.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
+									"altText": "Lightning bolt icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
+										},
+										"description": "Lightning bolt icon"
 									},
-									"description": ""
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2YDbtPsLCrd08p1GeTMGo6",
+								"title": "Maximize your Zero Trust impact",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Expand the scope of VPN replacement beyond apps and networks to [infrastructure](https://blog.cloudflare.com/cloudflare-acquires-bastionzero).",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6a5c5870-7d66-5fbc-9511-c53d717129b8",
+									"altText": "Cloudflare Carbon Impact Icon",
+									"title": "Cloudflare Carbon Impact Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Vvt7KtXuvnGyacELrs40c/a880c023a77b6ca6981f806e3c15ab88/cloudflare-carbon-impact.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -2807,24 +2864,85 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "2NIt6JXLN0BWR6EfH4Idto",
+						"title": "Enable faster, safer internal access with Zero Trust",
+						"copy": "Eliminate the poor performance and inherent vulnerabilities of VPN access with [Cloudflare's Zero Trust Network Access (ZTNA) service](https://www.cloudflare.com/zero-trust/products/access/). \n\n- Create a consistent, SaaS-like login process across all internal resources. Integration with preferred identity providers offers users a familiar experience.\n\n- Boost remote access performance by capitalizing on Cloudflare's extensive global network. Users enjoy fast performance from anywhere in the world.\n\n- Eliminate implicit trust of network \"insiders.\" Authenticate each request based on user identity, device posture, and other contextual factors.\n\n- Enhance your ZTNA deployment over time. Start with clientless access for quick time to value, then add [client-based](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/) capabilities and add inline [RBI](https://www.cloudflare.com/zero-trust/products/browser-isolation/) and [DLP](https://www.cloudflare.com/zero-trust/products/dlp/), or automate with Terraform.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
+						"learnMoreText": "See SASE reference architecture",
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "435caf64-3206-5964-bad5-33c553c35148",
+							"altText": "Cloudflare Access Diagram",
+							"title": "Cloudflare Access Diagram Jul '24",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gjNRPqN1scaDkw58fYSzt/87f312d3e9f6ee6c7adbfe8d067c4d55/Cloudflare_Access_Diagram.svg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "42SmUnWxLRzmMwReXGdYNi",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nApplied Systems replaced their sluggish <br>VPN with Cloudflare \n</div>",
+						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "pRUgQ9ghU8sknMYE1ruV2",
+						"contentfulId": "7uH66pOXbweqkHrNKD9sZi",
 						"htmlId": null,
-						"mainHeadline": "Pick an architecture designed for the future of networking ",
-						"backgroundColor": "light-blue",
+						"mainHeadline": null,
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": null,
-						"columnLayout": "One Column Wide",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"columnLayout": "Half & Half",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "f8b13aZceUKMkYMgFzKm7",
+								"contentfulId": "7IowYPWCSEyOYLRd4jppMC",
 								"title": null,
 								"htmlId": null,
-								"elementPosition": null,
+								"elementPosition": "relative",
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -2843,39 +2961,133 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "When choosing Cloudflare over Zscaler, you will benefit from a network built to run every edge service on every server — globally. We bring the entire network to the cloud and enable ",
+													"value": "Applied Systems needed to address poor VPN performance and reduce management complexity while eliminating the risks of granting users full network access. ",
 													"marks": [],
 													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Zero Trust",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": " with single-pass inspection, quickly connecting users, devices, workloads, offices, clouds, data centers, and resources, wherever they are located. It is easy to deploy and run, so you can take control and start modernizing your environment at your desired pace, without needing an infinite IT budget, a parade of expensive POCs, and multiple complex deployments to get there.",
+													"value": "",
 													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The company replaced their VPN and outbound Internet access solutions with Cloudflare's SSE platform. As a result, Applied Systems gained more granular access control, has consolidated administration, and is delivering better user experiences. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "gCs1DjLSJFEO8D1FKPGdw",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"We have received great feedback on Cloudflare Zero Trust — it's easier to deploy and better for our employees. We are much more secure as an organization with the same amount of time available to us.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"content": null
 												}
 											]
@@ -2885,18 +3097,18 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "vNIIKs2b8g06iLcDPhRjj",
+														"id": "6rP03Si8CMu3IL40TSDp0b",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "vNIIKs2b8g06iLcDPhRjj",
+															"contentfulId": "6rP03Si8CMu3IL40TSDp0b",
 															"locale": "en-US",
-															"title": "[Beat Zscaler] Architecture comparison [1128PX W x 438PX H]",
+															"title": "logo Applied",
 															"file": {
-																"name": "Zscaler_architecture-01.svg",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vNIIKs2b8g06iLcDPhRjj/a2175f413404ee150dc59724307256a4/Zscaler_architecture-01.svg",
+																"name": "logo-applied.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rP03Si8CMu3IL40TSDp0b/73b8423c469cc426cfa8e26ff27f0518/logo-applied.svg",
 																"internal": {
 																	"mediaType": "image/svg+xml"
 																}
@@ -2946,298 +3158,10 @@
 						]
 					},
 					{
-						"contentfulId": "6A91te02lSsMjqw0k4ZgGc",
-						"title": "Fast-track your journey to secure, any-to-any connectivity",
-						"copy": "While Zero Trust principles remain the same across providers, implementation and ROI vary widely. Cloudflare uniformly connects and secures end-to-end using one network and control plane to provide a better experience for both your IT practitioners and end users.\n\n- Who would pick siloed services as a first choice? No one. That is why *all* Cloudflare on-ramps and edge services actually work together.\n- Don't wait weeks on white-glove support to start adoption. Our services platform is composable, so in just minutes and hours you are solving real use cases.\n- Avoid bloated virtual machine deployment logistics. Speed setup time with software-only connectors and one-time integrations.\n",
-						"toggleText": "Simple - Cloudflare",
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": "Is the deployment simple enough?",
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "46aaa45c-982e-5bad-be35-39dbedf14743",
-							"altText": null,
-							"title": "Fast-track your journey: Cloudflare, Simple",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QRGzo4PIdgahVvqd2HsPl/d9891fdfda7323d8bb7cdfbd1d0028e2/Fast-track_your_journey_A.svg"
-								},
-								"description": "Illustration of Cloudflare's journey to secure connectivity"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": [
-							{
-								"contentfulId": "15MAqz481PqwG5RmTdRhpc",
-								"title": "Fast-track your journey to secure, any-to-any connectivity",
-								"copy": "While Zero Trust principles remain the same across providers, implementation and ROI vary widely. Cloudflare uniformly connects and secures end-to-end using one network and control plane to provide a better experience for both your IT practitioners and end users.\n\n- Who would pick siloed services as a first choice? No one. That is why *all* Cloudflare on-ramps and edge services actually work together.\n- Don't wait weeks on white-glove support to start adoption. Our services platform is composable, so in just minutes and hours you are solving real use cases.\n- Avoid bloated virtual machine deployment logistics. Speed setup time with software-only connectors and one-time integrations.\n",
-								"toggleText": "Complex - Zscaler",
-								"button": [],
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"link": [],
-								"subheadline": "Is the deployment simple enough?",
-								"button1Text": null,
-								"button1Url": null,
-								"button1Color": null,
-								"button2Text": null,
-								"button2Url": null,
-								"button2Color": null,
-								"streamOptions": [
-									"controls"
-								],
-								"streamCaptions": "en",
-								"streamVideoId": null,
-								"streamThumbnails": null,
-								"streamPoster": null,
-								"streamPosterAssetFile": null,
-								"image": null,
-								"imageAssetFile": {
-									"id": "088cc79b-14f5-5dc8-b3ef-731f62ce0ab4",
-									"altText": null,
-									"title": "Fast-track your journey: Zscaler, Complex",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KxGsjXBVwGtTFV3oKqqqT/eb460fd341fe2689e43d8c0d841a3e53/Fast-track_your_journey_B.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"featureList": []
-							}
-						]
-					},
-					{
-						"contentfulId": "4eNaQbCyHG9FSQXeXBREsT",
-						"title": "Only a better Internet can consistently protect your business",
-						"copy": "Today, roughly 20% of all websites are routed through the Cloudflare network — using the same proxies that deliver Zero Trust for your business. Our end-to-end traffic automation ensures reliable and scalable network connectivity with consistent protection from any location.\n\n- Security should not feel like a puzzle. Every edge service is built to run in every network location, available to every customer.\n- We feature a 100% uptime SLA for paid plans that only an Anycast architecture can deliver. Other vendors cannot just add this to their platform later. \n- Direct private interconnects keep your traffic away from the public Internet. This should be non-negotiable, but Zscaler does not offer it.\n",
-						"toggleText": "Resilient - Cloudflare",
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": "Is the network resilient enough?",
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "601193b6-6b9f-5f99-b616-ee429f5f7bb6",
-							"altText": null,
-							"title": "Only a better Internet: Cloudflare, Resilient",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2nMX4OCHRGuTQLm1Z9X8hk/db3cdf2839808185de0f13aa0cdeaa4f/Only_a_better_Internet_A.svg"
-								},
-								"description": "Illustration of map marked with locations"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": [
-							{
-								"contentfulId": "1VaNiXiELGHcufWoEUugyY",
-								"title": "Only a better Internet can consistently protect your business",
-								"copy": "Today, roughly 20% of all websites are routed through the Cloudflare network — using the same proxies that deliver Zero Trust for your business. Our end-to-end traffic automation ensures reliable and scalable network connectivity with consistent protection from any location.\n\n- Security should not feel like a puzzle. Every edge service is built to run in every network location, available to every customer.\n- We feature a 100% uptime SLA for paid plans that only an Anycast architecture can deliver. Other vendors cannot just add this to their platform later.\n- Direct private interconnects keep your traffic away from the public Internet. This should be non-negotiable, but Zscaler does not offer it.\n",
-								"toggleText": "Vulnerable - Zscaler",
-								"button": [],
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"link": [],
-								"subheadline": "Is the network resilient enough?",
-								"button1Text": null,
-								"button1Url": null,
-								"button1Color": null,
-								"button2Text": null,
-								"button2Url": null,
-								"button2Color": null,
-								"streamOptions": [
-									"controls"
-								],
-								"streamCaptions": "en",
-								"streamVideoId": null,
-								"streamThumbnails": null,
-								"streamPoster": null,
-								"streamPosterAssetFile": null,
-								"image": null,
-								"imageAssetFile": {
-									"id": "cb3aa8d4-add2-57cb-9cc5-0ffa23a5dc7f",
-									"altText": null,
-									"title": "Only a better Internet: Zscaler, Vulnerable",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/16k0bzVqyfjQboHfQQHmGX/e1244e175eab1d40ad3d52552512b32a/Only_a_better_Internet_B.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"featureList": []
-							}
-						]
-					},
-					{
-						"contentfulId": "44OnVB9d7hlLcW3II9X9K9",
-						"title": "Relentlessly stay ahead of modern business needs to secure your future",
-						"copy": "Our future-proof architecture helps us build and ship very quickly — something we have established a solid reputation around. Check out our blog for proof! Pick a customer-led, agile provider with a lightning-fast rate of change to innovate new networking, security, and application capabilities.\n\n- We have one composable, developer-friendly cloud platform — not multiple fragmented clouds — that is extensible with any future edge service.\n- We achieve rapid, native adoption of new Internet and security standards.\n- Our history of technical prowess and growth speaks for itself, and our foundation provides extreme optionality. \n",
-						"toggleText": "Internet Standards",
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": "Is the pace of innovation fast enough?",
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "bf11f124-2d90-5979-a036-05f787b508ec",
-							"altText": null,
-							"title": "Relentlessly stay ahead: Internet Standards",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5I1apEdeddSAq4jnnnLY4c/e510e19e3e895bb5444bc9a1bfc7d1e2/IPS_IPv6.svg"
-								},
-								"description": "Diagram of IPv6 connections protected by Cloudflare but not Zscaler"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": [
-							{
-								"contentfulId": "3AfdwCBXB8a6FaoGI3NZSx",
-								"title": "Relentlessly stay ahead of modern business needs to secure your future",
-								"copy": "Our future-proof architecture helps us build and ship very quickly — something we have established a solid reputation around. Check out our blog for proof! Pick a customer-led, agile provider with a lightning-fast rate of change to innovate new networking, security, and application capabilities.\n\n- We have one composable, developer-friendly cloud platform — not multiple fragmented clouds — that is extensible with any future edge service.\n- We achieve rapid, native adoption of new Internet and security standards.\n- Our history of technical prowess and growth speaks for itself, and our foundation provides extreme optionality. \n",
-								"toggleText": "Security Standards",
-								"button": [],
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"link": [],
-								"subheadline": "Is the pace of innovation fast enough?",
-								"button1Text": null,
-								"button1Url": null,
-								"button1Color": null,
-								"button2Text": null,
-								"button2Url": null,
-								"button2Color": null,
-								"streamOptions": [
-									"controls"
-								],
-								"streamCaptions": "en",
-								"streamVideoId": null,
-								"streamThumbnails": null,
-								"streamPoster": null,
-								"streamPosterAssetFile": null,
-								"image": null,
-								"imageAssetFile": {
-									"id": "2da30eac-5828-57d3-9bde-e627e080b600",
-									"altText": null,
-									"title": "Relentlessly stay ahead: Security Standards",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XoNlZ6hvhGuAtBZSwbsGH/e5b08bee88eacfe9c22d689f03f6a903/TSS_TLS.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"featureList": []
-							}
-						]
-					},
-					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "3szBZFVlSzKsEHtpVWNaVQ",
-						"title": "Adopt Zero Trust & SASE at your own pace",
-						"titleSize": null,
+						"contentfulId": "4sPjbzh0nUb6kZIsKmJKfm",
+						"title": "Ready to plan for your VPN replacement?",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -3251,51 +3175,46 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "30lgC34TC2UN5dJwDGNOVH",
-							"elementName": "Beat Zscaler Modal [Button] ",
+							"contentfulId": "2xPfqLfLJpEw1TLjijGbI9",
+							"elementName": "Contact us",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Contact us",
+							"url": "#",
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "5tBtXO7Swx0pqLBXFlH1fY",
-								"modalName": "Beat Zscaler Zero Trust",
-								"modalId": "beat-zscaler-zero-trust",
+								"contentfulId": "4RHesdBLxGyBRqY2AB5WGp",
+								"modalName": "VPN replacement - contact us",
+								"modalId": "vpn-replacement-contact-us",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "2ToRbc0xBbh6UFnaETm9F9",
-									"bladeName": "Beat Zscaler Zero Trust 2022",
+									"contentfulId": "1ujDGExdXSfyindmg265xQ",
+									"bladeName": "Zero Trust Ent Plan - Contact us",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Beat Zscaler Cloudflare Zero Trust Inbound Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
 									"marketoFormHeaderText": "Cloudflare Zero Trust",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
+									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+									"showCommentBox": true,
 									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": "Learn more about how Cloudflare compares to Zscaler with this comparison brief.",
-									"marketoFormPdfDownload": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf"
-										},
-										"description": "Zero Trust implementation doesn't have to be so hard. Cloudflare helps you move quickly and nimbly as the future of networking evolves. Simple deployment, network resiliency, and swift innovation provide a stronger foundation for true transformation of networking, security, and applications."
-									},
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
 									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": "Download Now",
-									"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf",
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
 									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": "orange",
+									"marketoFormSubmitButtonText": "Contact us",
+									"marketoFormSubmitButtonColor": "blue",
 									"enableEmailVerification": null,
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": "Ready to explore Cloudflare Zero Trust?",
-								"regularCopy": "Fill out the form below, and a Cloudflare representative will help you evaluate Cloudflare vs. Zscaler.",
+								"title": "Request a VPN replacement discussion",
+								"regularCopy": null,
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
 								"selfServeCopy": null,
@@ -3306,764 +3225,209 @@
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "1c8l7wGZPm8yqfPWC4EeHo",
-						"contentTypeId": "bladePlansMatrix",
-						"hasFilter": true,
-						"htmlId": "htmlIdPlansMatrix",
-						"filterLabel": null,
-						"showInModal": null,
-						"title": null,
-						"modalButtonText": null,
-						"mobileMode": "Tabbed",
-						"sectionPadding": "tile--no-bottom-padding",
-						"showMonthlyVsAnnualToggle": false,
-						"priceToggleDescription": null,
-						"plans": [
+						"contentfulId": "fWKzxTnsVEYvwqwa5oS5W",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare's connectivity cloud enhances access control and visibility",
+						"eyebrowHeading": "WHY CLOUDFLARE",
+						"description": "With Cloudflare's unified platform of cloud-native services, organizations can implement a Zero Trust security model that protects internal access better than VPNs.",
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
 							{
-								"contentTypeId": "planElementPlanMatrixPlan",
-								"contentfulId": "0330BUAdH6ZbmtVmNFPP7",
-								"showDescription": false,
-								"showPriceDescription": false,
-								"plan": {
-									"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-									"contentTypeId": "planElementPlan",
-									"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-									"name": "Cloudflare",
-									"description": null,
-									"pricingDescription": null,
-									"price": null,
-									"currency": null,
-									"customPricingText": null,
-									"monthlyPricingText": null,
-									"annualPricingText": null,
-									"billingCycle": null,
-									"customPricingCta": null,
-									"monthlyPricingCta": null,
-									"annualPricingCta": null
+								"contentTypeId": "feature",
+								"contentfulId": "1grCSL0OtuEhl76S4V5SMQ",
+								"title": "Composable architecture",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Address a full range of security and networking requirements by capitalizing on extensive interoperability and customizable networking.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
+									"altText": "Cloudflare R2 distributed storage",
+									"title": "R2 Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
+										},
+										"description": "Cloud upload icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"learnMoreLink": null
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentTypeId": "planElementPlanMatrixPlan",
-								"contentfulId": "24CkSsZtdHXEZKcA4LoF7Q",
-								"showDescription": false,
-								"showPriceDescription": false,
-								"plan": {
-									"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-									"contentTypeId": "planElementPlan",
-									"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-									"name": "Zscaler",
-									"description": null,
-									"pricingDescription": null,
-									"price": null,
-									"currency": null,
-									"customPricingText": null,
-									"monthlyPricingText": null,
-									"annualPricingText": null,
-									"billingCycle": null,
-									"customPricingCta": null,
-									"monthlyPricingCta": null,
-									"annualPricingCta": null
+								"contentTypeId": "feature",
+								"contentfulId": "PhDoR5noYTBS23X28pnw1",
+								"title": "Performance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deliver better user experiences with a global network that is approximately %{OperationMilliseconds} ms from ~%{GlobalInternetConnectedPercent}% of Internet users. \n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
+									"altText": "Performance intelligent routing blue",
+									"title": "Performance intelligent routing blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yNR9Xrke2khvXTu9Rpdc3/e659935f9bc695024b5be6fb99900dd3/performance-intelligent-routing.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"learnMoreLink": null
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7qzmlKia0ahjvGJ5asIZnx",
+								"title": "Threat intelligence",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Prevent more attacks with intelligence gleaned from proxying ~20% of the web and blocking %{ThreatsBlockedPerDay} billion threats daily.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2O26lWMcJ1qZxkVSHQKCsM",
+								"title": "Unified interface",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Reduce tool sprawl and alert fatigue by uniting every hybrid work security service in one UI.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "3eb2a090-6777-5cfa-ae9f-fba98ba92f39",
+									"altText": "Shield with checkmark icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0K8UzbV8AINKBfgDlRAhK/cc511a44737676ddb0ca216c28d040fe/security-shield-protection-2.svg"
+										},
+										"description": "Shield with checkmark icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
-						"planFeatures": [],
-						"planFeaturesGroup": [
-							{
-								"contentfulId": "2QlWQ6kysJbs0euy6pGGZi",
-								"contentTypeId": "planElementFeaturesGroup",
-								"name": "Deployment Simplicity",
-								"features": [
-									{
-										"contentfulId": "4ZHBhVtEiSd6yyDRORUQlY",
-										"contentTypeId": "planElementFeatures",
-										"name": "On-ramps and services",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "5eJ9bgWtamLjueHwr1gjqp",
-												"textValue": "Composable and work together",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "wT2QwVuZa6vc7F9iUHbbP",
-												"textValue": "Many run separate from others",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "KI4YQgLVh9ugSVb6VKKij",
-										"contentTypeId": "planElementFeatures",
-										"name": "Security and connectivity",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "3du1aFTy3hga3jYmFcLO94",
-												"textValue": "End-to-end: User/workload-to-app plus WAN and apps",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "4q8KrcNHr3NlVDkTpaOB6J",
-												"textValue": "Limited: User/workload-to-app only",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "4JDyr4P5H9YN89Y1SueBxN",
-										"contentTypeId": "planElementFeatures",
-										"name": "Network and control plane",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "9jCJ581ZvOLWIN4XBWUnp",
-												"textValue": "Uniform, one network, one control plane",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "4KYMRUQutTsBQhjLguTJIW",
-												"textValue": "AWS/Azure-augmented network, many control planes",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "6pTeoeydihVmvNFIkA3RPI",
-										"contentTypeId": "planElementFeatures",
-										"name": "Setup requirements",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "1ASdIi58XfxCsxILgneNLg",
-												"textValue": "Often clientless, VM-free software, one-time integrations",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "eABeLWj6lZFYz2XR2WeTz",
-												"textValue": "Often clients, VM sizing logistics, repeated integrations",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									}
-								]
-							},
-							{
-								"contentfulId": "13zCISWSXsyHK6EUDarnN1",
-								"contentTypeId": "planElementFeaturesGroup",
-								"name": "Network Resiliency",
-								"features": [
-									{
-										"contentfulId": "K9VoSECO9kJIJB01vP24Z",
-										"contentTypeId": "planElementFeatures",
-										"name": "Global connectivity",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "23G6pIPyGbcvhGzzqVKOX8",
-												"textValue": "Yes: Anycast architecture",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "1ytqf3jGIfWF2H1iE1PmmA",
-												"textValue": "No: Active/active local termination",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "1W630lBcuI7MIDZp46ccTc",
-										"contentTypeId": "planElementFeatures",
-										"name": "Bypass public Internet",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "18TmnS5riHg4yEil2Uamiu",
-												"textValue": "Yes: Private interconnects per customer to Cloudflare network",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "7uXXyvM4fW6Sr6j8PszxnP",
-												"textValue": "No: Private service VMs bypass Zscaler cloud, not the Internet",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "4JvvGVTqXi1e6rEFRhR5AV",
-										"contentTypeId": "planElementFeatures",
-										"name": "Network location availability",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "5cqeVao59wTEHHB93RmPW1",
-												"textValue": "Every location available to every customer",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "r7XkwwLHTsXUtuO6c3bHn",
-												"textValue": "Only a subset of locations available to every customer",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "14akO21KQ3wMTFimgwBYjL",
-										"contentTypeId": "planElementFeatures",
-										"name": "Service availability",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "3jhutrcbra7lZfm6CKplb8",
-												"textValue": "Every edge service built to run in every network location",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "34XZF6zfcc25uiUG5GGzsb",
-												"textValue": "Each service runs in a subset of network locations",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									}
-								]
-							},
-							{
-								"contentfulId": "5JpDxhVvh5dA4nMSpNO6e",
-								"contentTypeId": "planElementFeaturesGroup",
-								"name": "Innovation Velocity",
-								"features": [
-									{
-										"contentfulId": "4GpitGZlnVTEmk4DicEJAG",
-										"contentTypeId": "planElementFeatures",
-										"name": "Cloud-native architecture",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "2iq2Ccrm5XOCkqj7yioebo",
-												"textValue": "One cloud platform with uniform edge service availability",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "5eeVxypyPxkZnazEnFynO1",
-												"textValue": "Many clouds with fragmented service availability",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "68qd1rmdpoLzh30NgvcQLk",
-										"contentTypeId": "planElementFeatures",
-										"name": "Developer-friendly platform",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "3xYaeLQCDqAoymp89Tj3Vo",
-												"textValue": "Composable and extensible with any future edge service",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "3TqRiAIje4qYCg5P2h4BIF",
-												"textValue": "Bolted on for too long, loosely integrated years later",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "pEfv5HcrWMxzL2yLf3YN6",
-										"contentTypeId": "planElementFeatures",
-										"name": "New Internet and security standards",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "ng16zrlLFihgIrhKLlXTe",
-												"textValue": "Rapidly adopted, often contribute to designing them",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "h3fTI6sIn5eJZYx4dKBPD",
-												"textValue": "Some introduced years later",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									},
-									{
-										"contentfulId": "1VRFwpwFB1Rzspkm7vEKRd",
-										"contentTypeId": "planElementFeatures",
-										"name": "ZTNA and SWG development",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "2WVSPzY5YQhCbmNRnc9vHK",
-												"textValue": "Built in four and two years, respectively",
-												"plan": {
-													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
-													"name": "Cloudflare",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											},
-											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "2mOspzKAb3TFqtoXe4mRd1",
-												"textValue": "Built in six and 14 years, respectively",
-												"plan": {
-													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
-													"name": "Zscaler",
-													"description": null,
-													"pricingDescription": null,
-													"price": null,
-													"currency": null,
-													"customPricingText": null,
-													"monthlyPricingText": null,
-													"annualPricingText": null,
-													"billingCycle": null,
-													"customPricingCta": null,
-													"monthlyPricingCta": null,
-													"annualPricingCta": null
-												}
-											}
-										]
-									}
-								]
-							}
-						]
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
-						"contentfulId": "3dvJvWaFK56QX1RlLXBYpP",
+						"contentfulId": "4PCYmtYIDxYc4jm1c6XWUQ",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 4 columns",
+						"bladeStyle": null,
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1JqHKSE5Vg3l9N5eryIon5",
-								"title": "Comparison Brief: Cloudflare vs. Zscaler",
-								"makeTitleLink": null,
+								"contentfulId": "3f1p2nb0Hpizvz2CWOxtnr",
+								"title": "Implementing Zero Trust for the Workforce",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Share with your teams the details on how Cloudflare stacks up. \n\nWhich better fuels transformation?",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf",
-								"learnMoreText": "Download comparison brief",
+								"description": "Dive into the findings of this ESG survey to find out where most organizations are starting their Zero Trust journey and how they spend time across deployment phases.",
+								"learnMoreUrl": "/lp/esg-zero-trust-considerations-2024/",
+								"learnMoreText": "Get the eBook",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": false,
 								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "b7a076ae-0fdc-5955-9d1d-152814f7a609",
-									"altText": null,
-									"title": "Zscaler vs Cloudflare hero image: transformation",
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YgDfGzkik2bCbrOUlczyY/500067c786292ffd8839eff34032fc1e/Zero-Trust-Exchange.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": ""
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -4074,32 +3438,32 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6KrxfqM5bbcdmaNXeOxRML",
-								"title": "PDF: Cloudflare vs. Zscaler Deep Dive",
-								"makeTitleLink": null,
+								"contentfulId": "5F0RU9BP72NFBaHE3nJYIj",
+								"title": "Securing Cloudflare with Cloudflare One",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "37 comparison criteria are organized into five groups: Internet-native network platform, cloud-native service platform, services to adopt a SASE architecture, services to extend Zero Trust, SSE, SASE, and beyond (the current definitions of these market trends), and network on-ramps.",
-								"learnMoreUrl": "https://cfl.re/cloudflare-vs-zscaler-functional",
-								"learnMoreText": "Download",
+								"description": "See how Cloudflare's Zero Trust journey began with a homegrown solution back in 2015 to streamline internal access without the hassle of a VPN.",
+								"learnMoreUrl": "/case-studies/cloudflare-one/",
+								"learnMoreText": "Read the case study",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "a907e5ae-942b-5453-9798-e46db5cd34c0",
-									"altText": "Cloudflare One Week 2022 - Cloudflare's Network is Faster than Zscaler",
-									"title": "Cloudflare One Week 2022 - Cloudflare's Network is Faster than Zscaler",
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gEUjg8xWmg4vjvAw75NUX/df405ae21e01a242fc14b79b0e6a2807/Cloudflare-s_Network_is_Faster_than_Zscaler_final.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": ""
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -4110,68 +3474,32 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4NDsRz6qJPyYtr4sRNSk2D",
-								"title": "PDF: Cloudflare Zero Trust",
-								"makeTitleLink": null,
+								"contentfulId": "7MMb55btHUkg9Dgb9BC54J",
+								"title": "How to replace your VPN",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare Zero Trust is a security platform that increases visibility, eliminates complexity, and reduces risks as remote and office users connect to applications and the Internet. In a single-pass architecture, traffic is verified, filtered, inspected, and isolated from threats.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oicnCVm9er8tbGgIR3JTV/fa1e9b8ca4c9eb795b4f657b1d98a6bb/Product_Brief__Cloudflare_Zero_Trust__2022_Q3_.pdf",
-								"learnMoreText": "Download",
+								"description": "Walk through a series of modules that help you replace your VPN with Cloudflare, step by step.",
+								"learnMoreUrl": "https://developers.cloudflare.com/learning-paths/replace-vpn/",
+								"learnMoreText": "Get the implementation guide",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "0dd221e8-78f7-5cfa-b0cb-f1c98d71180c",
-									"altText": "A Bridge to Zero Trust",
-									"title": "A Bridge to Zero Trust",
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SLvWl1TOahXYcvTzRwIrz/69bf3d8747c634d0512395b88391e1a3/Bridge_to_Zero_Trust_.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6sA8WbCuvs8ZUKHOaHE97p",
-								"title": "PDF: Cloudflare One",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare's SASE platform, Cloudflare One, is a Zero Trust network-as-a-service built on a single, unified Internet-native network platform. It places identity-based security controls, firewall, WAN-as-a-Service and more close to users everywhere on Earth, helping them quickly and securely connect to any enterprise resource. ",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1apMTNAQ5UJUAR2stqM8Cj/68b9a5c3102550c1183dc7b1b23155de/Cloudflare_One__Product_Brief__2022_Q3_.pdf",
-								"learnMoreText": "Download",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2f5792b4-67f6-5f9e-888c-24904c853abc",
-									"altText": "Welcome to Cloudflare One Week",
-									"title": "Welcome to Cloudflare One Week",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JfeFiYbO67Hv144rhFB6i/0f86a0005b40167d36b791ebe304a7c3/Welcome_to_Cloudflare_One_Week.png"
-										},
-										"description": ""
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -4181,81 +3509,44 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "21yNG145ibtt3hhjaiEgNx",
-						"title": "Why wait and pay to try Zscaler when you can start our free plan in minutes?",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4xuuzbsn4l8pNeSIsGBhN6",
-							"elementName": "Beat Zscaler | Start in minutes | Button 1",
-							"standardText": null,
-							"text": "See how simple it is",
-							"url": "https://dash.cloudflare.com/sign-up/teams",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "5tBtXO7Swx0pqLBXFlH1fY",
-						"modalName": "Beat Zscaler Zero Trust",
-						"modalId": "beat-zscaler-zero-trust",
+						"contentfulId": "4RHesdBLxGyBRqY2AB5WGp",
+						"modalName": "VPN replacement - contact us",
+						"modalId": "vpn-replacement-contact-us",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "2ToRbc0xBbh6UFnaETm9F9",
-							"bladeName": "Beat Zscaler Zero Trust 2022",
+							"contentfulId": "1ujDGExdXSfyindmg265xQ",
+							"bladeName": "Zero Trust Ent Plan - Contact us",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Beat Zscaler Cloudflare Zero Trust Inbound Web Form",
+							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
 							"marketoFormHeaderText": "Cloudflare Zero Trust",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
+							"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+							"showCommentBox": true,
 							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": "Learn more about how Cloudflare compares to Zscaler with this comparison brief.",
-							"marketoFormPdfDownload": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf"
-								},
-								"description": "Zero Trust implementation doesn't have to be so hard. Cloudflare helps you move quickly and nimbly as the future of networking evolves. Simple deployment, network resiliency, and swift innovation provide a stronger foundation for true transformation of networking, security, and applications."
-							},
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
 							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": "Download Now",
-							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf",
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": "orange",
+							"marketoFormSubmitButtonText": "Contact us",
+							"marketoFormSubmitButtonColor": "blue",
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Ready to explore Cloudflare Zero Trust?",
-						"regularCopy": "Fill out the form below, and a Cloudflare representative will help you evaluate Cloudflare vs. Zscaler.",
+						"title": "Request a VPN replacement discussion",
+						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
@@ -4274,8 +3565,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/products/zero-trust/cloudflare-vs-zscaler/",
-			"contentfulId": "5Mwkmp9x2rHpUq54j7pKTs",
+			"pathname": "/products/zero-trust/vpn-replacement/",
+			"contentfulId": "62xMZ1ricakE06Y0AZrMkT",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
