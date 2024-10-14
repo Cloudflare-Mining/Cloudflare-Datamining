@@ -30,15 +30,16 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US",
 				"Lisbon, Portugal",
-				"London, UK"
+				"London, UK",
+				"Singapore",
+				"US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6106366,
-	"updated_at": "2024-10-11T08:29:09-04:00",
+	"updated_at": "2024-10-14T12:43:45-04:00",
 	"requisition_id": null,
 	"title": "Data Center Design Engineer ",
 	"departments": [
@@ -51,13 +52,6 @@
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"parent_id": 48752,
-			"child_ids": [],
-			"location": "Austin, TX, United States"
-		},
-		{
 			"id": 19988,
 			"name": "London, United Kingdom",
 			"parent_id": 74843,
@@ -65,11 +59,25 @@
 			"location": "London, United Kingdom"
 		},
 		{
+			"id": 19992,
+			"name": "Singapore",
+			"parent_id": 74844,
+			"child_ids": [],
+			"location": "Singapore"
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"parent_id": 74843,
 			"child_ids": [],
 			"location": "Lisboa, Lisboa, Portugal"
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"parent_id": 48752,
+			"child_ids": [],
+			"location": null
 		}
 	]
 }
