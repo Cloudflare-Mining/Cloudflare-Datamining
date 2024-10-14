@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-05-04T18:26:59.158Z",
-					"updatedAt": "2024-10-02T10:03:14.343Z"
+					"updatedAt": "2024-10-14T17:31:23.697Z"
 				},
 				"contentfulId": "4yQgbWO9Ldinwbud6TohYm",
 				"contentTypeId": "page",
@@ -2544,8 +2544,8 @@
 				"relatedBlades": [
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "X2RTVnzFhYFnl1RYgIKZH",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span\n            >Cloudflare named in 2024 Gartner® Magic Quadrant™ for SV-SASE.\n        </span>\n        <a\n            class=\"link-helper\"\n            href=\"https://www.cloudflare.com/lp/gartner-magic-quadrant-single-vendor-sase-2024/\"\n        >\n            <strong>Announcement ></strong></a\n        >\n    </div>\n</section>\n",
+						"contentfulId": "4UL2kTPsB5NHjF54e7lo0n",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare extends inline security controls to deliver simple, preventative cloud security. </span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/cloudflare-acquires-kivera/\">\n           <strong>Announcement ></strong>\n        </a>\n    </div>\n</section>\n",
 						"htmlId": null
 					},
 					{
@@ -5240,127 +5240,209 @@
 						"htmlId": "zt-features"
 					},
 					{
-						"contentfulId": "3jWVkM4C542iujwKwJwtfK",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "6W3V1AhGGDY9d3aztUJ7ot",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "CSJv74aRQqSwK04WJBiKS",
-								"title": "The CISO's guide to SASE adoption",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "How to evaluate SASE platforms for high-priority use cases.",
-								"learnMoreUrl": "/lp/ciso-guide-to-sase-adoption/",
-								"learnMoreText": "Get the ebook",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5NkaVP8bRkSLPauAmNlmZ3",
+								"heading": "Ebook",
+								"description": "The CISO's guide to SASE adoption",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6JmCQXEbPBsu4psA024vlj",
+									"elementName": "The CISO's guide - link",
+									"standardText": null,
+									"text": "Get the ebook",
+									"url": "/lp/ciso-guide-to-sase-adoption/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "199a0c46-2ff3-57ee-9cf7-06ffd387d947",
+									"altText": "Explore more ebooks in Cloudflare's Resource Hub",
+									"title": "Explore more ebooks in Cloudflare's Resource Hub",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "5qmpMv2Aagh9v6uAziipu8",
-								"title": "A roadmap to Zero Trust",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare's perspective on how to start — and keep momentum — during Zero Trust adoption.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/zero-trust-roadmap/",
-								"learnMoreText": "Read guide",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5e9dItoYhWT2fy35jdmHkQ",
+								"heading": "Whitepaper",
+								"description": "A step-by-step roadmap to Zero Trust",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7IgkA2qDScNN3aYopNNAcO",
+									"elementName": "roadmap to Zero Trust - link",
+									"standardText": null,
+									"text": "Read the guide",
+									"url": "/lp/zero-trust-roadmap/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "NgoALURwIhZhwfviN5fdl",
-								"title": "SASE reference architecture",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Understand how the components of our SASE platform all fit together.",
-								"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
-								"learnMoreText": "Read reference architecture",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "30lUtcR8YDisKyokHK2CkA",
+								"heading": "Documentation",
+								"description": "Evolve to SASE with Cloudflare's reference architecture",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "52p8ddqT1F1bmuI8azz8Ya",
+									"elementName": "SASE reference architecture - link",
+									"standardText": null,
+									"text": "Read the reference architecture",
+									"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "285e9c62-44a2-564a-8732-458fa4164905",
+									"altText": "Reference Architecture Center",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oOJP0ysU1Riftn71CwDhB/e1790bb38af66a19f4a86632782d6297/BDES-5542_ArchitectureHub_HeroImage_smaller.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "Reference Architecture Center"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1DjXdISmloiSOdupprFfai",
+								"heading": "Product brief",
+								"description": "SASE & SSE Platform (Cloudflare One)",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "blGhFgmnHswhki6fZStRI",
+									"elementName": "Cloudflare One - link",
+									"standardText": null,
+									"text": "Read the solution brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bPZaJAiXoHwgx17L99K8I/ced52f424f35e96412d5e092b6b0478d/SASE-SSE-cloudflare-one-platform-brief-2024-Q2.pdf",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
+									"altText": "Product brief thumbnail",
+									"title": "Product brief thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2wOphfNwqIX8mboGdsHJ77",
+								"heading": "Documentation",
+								"description": "Cloudflare One technical documentation",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3ZzzZn92nIPTkkmqJCZJ87",
+									"elementName": "Cloudflare One technical documentation - Link",
+									"standardText": null,
+									"text": "Read technical docs",
+									"url": "https://developers.cloudflare.com/cloudflare-one/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "d36590f1-ba3f-515e-8f35-dbccbf837f12",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DFk7VPsulJ0IeOoHsZrMc/87b4ac29f690276b70cdbdcf06d6f8fb/Insight_106x182.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5AOVdZS9y7q4zD3VP8YMJv",
+								"heading": "Solution brief",
+								"description": "Quickstart Advisory Professional Services for Zero Trust & SASE",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "ZSd7RLO198L16LD0GzXPQ",
+									"elementName": "Quickstart Advisory link",
+									"standardText": null,
+									"text": "Read the brief",
+									"url": "https://cfl.re/zero-trust-quickstart-solution-brief",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
