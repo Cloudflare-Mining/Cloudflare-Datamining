@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/brand-protection/submit": {
+		"description": "Submit suspicious URL for scanning",
 		"operationId": "phishing-url-scanner-submit-suspicious-url-for-scanning",
 		"parameters": [
 			{
@@ -165,11 +166,13 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -303,11 +306,13 @@
 															},
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -378,9 +383,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/ip-list": {
+		"description": "Get IP Lists",
 		"operationId": "ip-list-get-ip-lists",
 		"parameters": [
 			{
@@ -150,13 +151,15 @@
 														"example": "Malware",
 														"type": "string"
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -298,13 +301,15 @@
 																"example": "Malware",
 																"type": "string"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -375,9 +380,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

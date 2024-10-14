@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/intel/miscategorization": {
+		"description": "Create Miscategorization",
 		"operationId": "miscategorization-create-miscategorization",
 		"parameters": [
 			{
@@ -52,6 +53,7 @@
 							},
 							"ip": {
 								"description": "Provide only if indicator_type is `ipv4` or `ipv6`.",
+								"nullable": true,
 								"type": "string"
 							},
 							"security_adds": {
@@ -79,7 +81,8 @@
 								"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`.",
 								"type": "string"
 							}
-						}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -297,9 +300,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

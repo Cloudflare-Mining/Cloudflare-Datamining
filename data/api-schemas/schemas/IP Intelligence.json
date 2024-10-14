@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/ip": {
+		"description": "Same as summary",
 		"operationId": "ip-intelligence-get-ip-overview",
 		"parameters": [
 			{
@@ -166,7 +167,8 @@
 																"type": "string"
 															},
 															"id": {
-																"example": "autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8"
+																"example": "autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8",
+																"type": "string"
 															},
 															"type": {
 																"description": "Infrastructure type of this ASN.",
@@ -196,7 +198,8 @@
 																"format": "ipv6",
 																"type": "string"
 															}
-														]
+														],
+														"type": "string"
 													},
 													"risk_types": {
 														"example": [
@@ -205,15 +208,32 @@
 																"name": "Phishing",
 																"super_category_id": 21
 															}
-														]
+														],
+														"items": {
+															"properties": {
+																"id": {
+																	"type": "number"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"super_category_id": {
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -357,7 +377,8 @@
 																		"type": "string"
 																	},
 																	"id": {
-																		"example": "autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8"
+																		"example": "autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8",
+																		"type": "string"
 																	},
 																	"type": {
 																		"description": "Infrastructure type of this ASN.",
@@ -387,7 +408,8 @@
 																		"format": "ipv6",
 																		"type": "string"
 																	}
-																]
+																],
+																"type": "string"
 															},
 															"risk_types": {
 																"example": [
@@ -396,15 +418,32 @@
 																		"name": "Phishing",
 																		"super_category_id": 21
 																	}
-																]
+																],
+																"items": {
+																	"properties": {
+																		"id": {
+																			"type": "number"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"super_category_id": {
+																			"type": "number"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -475,9 +514,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

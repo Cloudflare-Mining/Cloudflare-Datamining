@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/dns": {
+		"description": "Get Passive DNS by IP",
 		"operationId": "passive-dns-by-ip-get-passive-dns-by-ip",
 		"parameters": [
 			{
@@ -162,7 +163,8 @@
 																"type": "string"
 															},
 															"hostname": {
-																"description": "Hostname that the IP was observed resolving to."
+																"description": "Hostname that the IP was observed resolving to.",
+																"type": "string"
 															},
 															"last_seen": {
 																"description": "Last seen date of the DNS record during the time period.",
@@ -175,11 +177,13 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -287,7 +291,8 @@
 																		"type": "string"
 																	},
 																	"hostname": {
-																		"description": "Hostname that the IP was observed resolving to."
+																		"description": "Hostname that the IP was observed resolving to.",
+																		"type": "string"
 																	},
 																	"last_seen": {
 																		"description": "Last seen date of the DNS record during the time period.",
@@ -300,11 +305,13 @@
 															},
 															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -375,9 +382,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/brand-protection/url-info": {
+		"description": "Get results for a URL scan",
 		"operationId": "phishing-url-information-get-results-for-a-url-scan",
 		"parameters": [
 			{
@@ -225,11 +226,13 @@
 													"example": "https://www.cloudflare.com",
 													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -412,11 +415,13 @@
 															"example": "https://www.cloudflare.com",
 															"type": "string"
 														}
-													}
+													},
+													"type": "object"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -487,9 +492,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

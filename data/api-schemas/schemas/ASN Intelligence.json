@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/asn/{asn}": {
+		"description": "Get ASN Overview",
 		"operationId": "asn-intelligence-get-asn-overview",
 		"parameters": [
 			{
@@ -101,7 +102,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -186,7 +188,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -257,9 +260,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}
@@ -294,6 +294,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/asn/{asn}/subnets": {
+		"description": "Get ASN Subnets",
 		"operationId": "asn-intelligence-get-asn-subnets",
 		"parameters": [
 			{
@@ -471,9 +472,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

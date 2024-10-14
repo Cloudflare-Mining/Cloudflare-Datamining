@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/domain": {
+		"description": "Get Domain Details",
 		"operationId": "domain-intelligence-get-domain-details",
 		"parameters": [
 			{
@@ -122,14 +123,29 @@
 													"type": "object"
 												},
 												"content_categories": {
-													"description": "Current content categories.",
 													"example": [
 														{
 															"id": 155,
 															"name": "Technology",
 															"super_category_id": 26
 														}
-													]
+													],
+													"items": {
+														"description": "Current content categories.",
+														"properties": {
+															"id": {
+																"type": "integer"
+															},
+															"name": {
+																"type": "string"
+															},
+															"super_category_id": {
+																"type": "integer"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"domain": {
 													"example": "cloudflare.com",
@@ -148,7 +164,8 @@
 															"super_category_id": {
 																"type": "integer"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												},
@@ -169,7 +186,8 @@
 															"super_category_id": {
 																"type": "integer"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												},
@@ -201,13 +219,30 @@
 													"type": "number"
 												},
 												"risk_types": {
-													"example": []
+													"example": [],
+													"items": {
+														"properties": {
+															"id": {
+																"type": "integer"
+															},
+															"name": {
+																"type": "string"
+															},
+															"super_category_id": {
+																"type": "integer"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -314,14 +349,29 @@
 															"type": "object"
 														},
 														"content_categories": {
-															"description": "Current content categories.",
 															"example": [
 																{
 																	"id": 155,
 																	"name": "Technology",
 																	"super_category_id": 26
 																}
-															]
+															],
+															"items": {
+																"description": "Current content categories.",
+																"properties": {
+																	"id": {
+																		"type": "integer"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"super_category_id": {
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
 														},
 														"domain": {
 															"example": "cloudflare.com",
@@ -340,7 +390,8 @@
 																	"super_category_id": {
 																		"type": "integer"
 																	}
-																}
+																},
+																"type": "object"
 															},
 															"type": "array"
 														},
@@ -361,7 +412,8 @@
 																	"super_category_id": {
 																		"type": "integer"
 																	}
-																}
+																},
+																"type": "object"
 															},
 															"type": "array"
 														},
@@ -393,13 +445,30 @@
 															"type": "number"
 														},
 														"risk_types": {
-															"example": []
+															"example": [],
+															"items": {
+																"properties": {
+																	"id": {
+																		"type": "integer"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"super_category_id": {
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
 														}
-													}
+													},
+													"type": "object"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -470,9 +539,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}
@@ -507,6 +573,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/domain/bulk": {
+		"description": "Same as summary",
 		"operationId": "domain-intelligence-get-multiple-domain-details",
 		"parameters": [
 			{
@@ -679,14 +746,29 @@
 														"type": "object"
 													},
 													"content_categories": {
-														"description": "Current content categories.",
 														"example": [
 															{
 																"id": 155,
 																"name": "Technology",
 																"super_category_id": 26
 															}
-														]
+														],
+														"items": {
+															"description": "Current content categories.",
+															"properties": {
+																"id": {
+																	"type": "integer"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"super_category_id": {
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
 													},
 													"domain": {
 														"example": "cloudflare.com",
@@ -705,7 +787,8 @@
 																"super_category_id": {
 																	"type": "integer"
 																}
-															}
+															},
+															"type": "object"
 														},
 														"type": "array"
 													},
@@ -726,7 +809,8 @@
 																"super_category_id": {
 																	"type": "integer"
 																}
-															}
+															},
+															"type": "object"
 														},
 														"type": "array"
 													},
@@ -739,7 +823,22 @@
 														"type": "number"
 													},
 													"risk_types": {
-														"example": []
+														"example": [],
+														"items": {
+															"properties": {
+																"id": {
+																	"type": "integer"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"super_category_id": {
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
 													}
 												}
 											},
@@ -747,7 +846,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -904,14 +1004,29 @@
 																"type": "object"
 															},
 															"content_categories": {
-																"description": "Current content categories.",
 																"example": [
 																	{
 																		"id": 155,
 																		"name": "Technology",
 																		"super_category_id": 26
 																	}
-																]
+																],
+																"items": {
+																	"description": "Current content categories.",
+																	"properties": {
+																		"id": {
+																			"type": "integer"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"super_category_id": {
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
 															},
 															"domain": {
 																"example": "cloudflare.com",
@@ -930,7 +1045,8 @@
 																		"super_category_id": {
 																			"type": "integer"
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																"type": "array"
 															},
@@ -951,7 +1067,8 @@
 																		"super_category_id": {
 																			"type": "integer"
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																"type": "array"
 															},
@@ -964,7 +1081,22 @@
 																"type": "number"
 															},
 															"risk_types": {
-																"example": []
+																"example": [],
+																"items": {
+																	"properties": {
+																		"id": {
+																			"type": "integer"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"super_category_id": {
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
 															}
 														}
 													},
@@ -972,7 +1104,8 @@
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1043,9 +1176,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}

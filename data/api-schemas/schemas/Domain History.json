@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/domain-history": {
+		"description": "Get Domain History",
 		"operationId": "domain-history-get-domain-history",
 		"parameters": [
 			{
@@ -177,13 +178,15 @@
 														"example": "cloudflare.com",
 														"type": "string"
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
 									}
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -345,13 +348,15 @@
 																"example": "cloudflare.com",
 																"type": "string"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -422,9 +427,6 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
 											"example": false,
 											"type": "boolean"
 										}
