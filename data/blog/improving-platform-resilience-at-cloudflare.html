@@ -28,27 +28,10 @@
 	<p>A good solution would not allow only the SRE team to auto-remediate, it would empower the entire company. The key to adding self-healing capability was a generic interface for all teams to self-service and quickly remediate failures at various levels: machine, service, network, or dependencies.</p>
 	<p>A good way to think about auto-remediation is in terms of workflows. A workflow is a sequence of steps to get to a desired outcome. This is not dissimilar to a manual shell script which executes what a human would otherwise do via runbook instructions. Because of this logical fit with workflows, we decided to adopt <a href="https://temporal.io"><u>Temporal</u></a>.&nbsp;</p>
 	<p>Temporal is a durable execution platform which is useful to gracefully manage infrastructure failures such as network outages and transient failures in external service endpoints. This capability meant we only needed to build a way to schedule “workflow” tasks and have Temporal provide reliability guarantees. This allowed us to focus on building out the orchestration system to support the control and flow of workflow execution in our data centers.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="how-does-temporal-work">How does Temporal work?</h2>
-		<a href="https://blog.cloudflare.com/#how-does-temporal-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VirjJuJQOqXpc29cFOS7o/164354305037f5670f6b598cddf34353/Temporal_process.png" alt="BLOG-2498 2" class="kg-image" width="1456" height="1046" loading="lazy">
-	</figure>
-	<p>Before we discuss the system that provides our self-healing functions, let’s explore how the workflow execution engine works, as its native architecture provided numerous benefits that we took advantage of to build a more robust foundation.</p>
-	<p>The most attractive feature Temporal offered us was the ability to write code that has reliability baked in. Some examples of these primitives are automatic retries, timeouts, rollbacks, and queueing. The Temporal Platform consists of the <a href="https://docs.temporal.io/clusters"><u>Temporal Cluster</u></a> and <a href="https://docs.temporal.io/workers"><u>Worker</u></a> processes (application code that contains your custom logic).</p>
-	<p>This architecture allowed us to write our application logic as we normally would, with the added benefits of Temporal. Since Temporal Workers are external to the cluster, we can run tasks anywhere across our global network — a feature that made it easy to build an extensible, easy-to-understand framework for automating tasks.</p>
-	<p>In Temporal terms, control is provided by the basic principles used to provide workflow execution — Workflows and Activities. A Workflow is simply a sequence of Activities, which are functions that ideally do only ONE task, such as making a request to an external service or rebooting a machine.</p>
-	<p>Control of workflow behavior can be done using <a href="https://pkg.go.dev/go.temporal.io/sdk@v1.25.1/internal#ActivityOptions"><u>ActivityOptions</u></a>. This is where you can define timeouts for workflow execution, retry policies, and task queues. Each worker can poll several task queues for both Workflow and Activity tasks. If no worker is polling the task queue in which a Workflow task is declared, nothing happens.</p>
 	<p><a href="https://learn.temporal.io/getting_started/go/first_program_in_go"><u>Temporal’s documentation</u></a> provides a good introduction to writing Temporal workflows.</p>
 	<div class="flex anchor relative">
-		<h2 id="building-on-temporal">Building on Temporal</h2>
-		<a href="https://blog.cloudflare.com/#building-on-temporal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h2 id="building-an-automatic-remediation-system">Building an Automatic Remediation System</h2>
+		<a href="https://blog.cloudflare.com/#building-an-automatic-remediation-system" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
