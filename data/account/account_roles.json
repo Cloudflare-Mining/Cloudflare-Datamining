@@ -994,6 +994,11 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
 			"dex": {
 				"read": true,
 				"edit": false
@@ -1001,11 +1006,6 @@
 			"analytics": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
 			},
 			"access": {
 				"read": true,
@@ -1038,6 +1038,11 @@
 				"read": true,
 				"edit": false
 			},
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"ces_integration": {
 				"read": true,
 				"edit": true
@@ -1069,11 +1074,6 @@
 			"analytics": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"access": {
 				"read": true,

@@ -584,6 +584,22 @@
 		]
 	},
 	{
+		"id": "00ec19a0d4fa4e4aae23b50bf04c0630",
+		"name": "Cloudflare CDS Compute Account Read",
+		"description": "Grants read access to Cloudflare CDS compute account resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "9bf884ba0de445dab37ea4a3e1a2c9f1",
+		"name": "Cloudflare CDS Compute Account Write",
+		"description": "Grants write access to Cloudflare CDS compute account resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "3b376e0aa52c41cbb6afc9cab945afa8",
 		"name": "Cloudflare DEX Read",
 		"description": "Grants read access to Cloudflare DEX",
@@ -1443,6 +1459,14 @@
 		"id": "14b9cf2f410f4c0c9a16bb10a81c0e0b",
 		"name": "Pipelines Read",
 		"description": "Grants read access to Cloudflare Pipelines",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5606e7405dc542949d949d59993d321f",
+		"name": "Pipelines Send",
+		"description": "Grants access to Send Events to Cloudflare Pipelines",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
