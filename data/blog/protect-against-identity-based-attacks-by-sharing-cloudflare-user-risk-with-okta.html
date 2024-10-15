@@ -1,0 +1,101 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MniSPlyYrAaRR7mQtGvJ0/ee1b1732f4fc0d05787b9b0028e26e5a/unnamed.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare One, our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase"><u>secure access service edge (SASE)</u></a> platform, is introducing a new integration with Okta, the <a href="https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management"><u>identity and access management (IAM)</u></a> vendor, to share risk indicators in real-time and simplify how organizations can dynamically manage their security posture in response to changes across their environments.</p>
+	<p>For many organizations, it is becoming increasingly challenging and inefficient to adapt to risks across their growing <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface"><u>attack surface</u></a>. In particular, security teams struggle with multiple siloed tools that fail to share risk data effectively with each other, leading to excessive manual effort to extract signals from the noise. To address this complexity, Cloudflare launched <a href="https://blog.cloudflare.com/unified-risk-posture"><u>risk posture management capabilities</u></a> earlier this year to make it easier for organizations to accomplish three key jobs on one platform: </p>
+	<ol>
+		<li>
+			<p>Evaluating risk posed by people by using first-party <a href="https://www.cloudflare.com/learning/security/what-is-ueba"><u>user entity and behavior analytics (UEBA)</u></a> models</p>
+		</li>
+		<li>
+			<p>Exchanging risk telemetry with best-in-class security tools, and</p>
+		</li>
+		<li>
+			<p>Enforcing risk controls based on those dynamic first- and third-party risk scores.</p>
+		</li>
+	</ol>
+	<p>Today’s announcement builds on these capabilities (particularly job #2) and <a href="https://www.cloudflare.com/partners/technology-partners/okta"><u>our partnership with Okta</u></a> by enabling organizations to share Cloudflare’s real-time <a href="https://blog.cloudflare.com/cf1-user-risk-score"><u>user risk scores</u></a> with Okta, which can then automatically enforce policies based on that user’s risk. In this way, organizations can adapt to evolving risks in less time with less manual effort.</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-user-risk-scoring">Cloudflare’s user risk scoring</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-user-risk-scoring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/cf1-user-risk-score"><u>Introduced earlier this year</u></a>, Cloudflare’s user risk scoring analyzes real-time telemetry of user activities and behaviors and assigns a risk score of high, medium, or low. For example, if Cloudflare detects risky or suspicious activity from a user — such as impossible travel, where a user logs in from multiple geographically dispersed locations within a short time frame, data loss prevention (DLP) detections, or endpoint detections suggesting that the device is infected — the user’s risk score will increase. The activity leading to that scoring is logged for analysis.</p>
+	<p>Cloudflare includes <a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score"><u>predefined risk behaviors</u></a> to help you get started. Administrators can create policies based on specific risk behaviors and adjust the risk level for each behavior based on their company’s tolerance.</p>
+	<div class="flex anchor relative">
+		<h2 id="share-risk-scores-with-okta-and-take-action-automatically">Share risk scores with Okta and take action automatically</h2>
+		<a href="https://blog.cloudflare.com/#share-risk-scores-with-okta-and-take-action-automatically" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Customers that opt in to this new integration will be able to share continually updated Cloudflare user risk scores with <a href="https://www.okta.com/products/identity-threat-protection"><u>Identity Threat Protection with Okta AI</u></a>. If a user is deemed too risky, Okta will automatically take action to mitigate the risk, such as enforcing <a href="https://www.cloudflare.com/en-gb/learning/access-management/what-is-multi-factor-authentication"><u>multi-factor authentication (MFA)</u></a> verification or universally logging the user out from all applications.&nbsp;</p>
+	<p>For example, a user has a low risk score from Cloudflare that was shared with Okta, but after exhibiting “impossible travel” behavior, the user’s risk level is raised to high. Cloudflare sends the updated score to Okta, which triggers a Universal Logout and an MFA challenge if the user attempts to log in again. Access to sensitive systems may be revoked completely until the user is verified.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-continuous-risk-evaluation-and-exchange">How it works: continuous risk evaluation and exchange</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-continuous-risk-evaluation-and-exchange" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79JiNwP0P5bbXpW6dy6ORQ/b0dc91943840b44bbcc8e447af64f392/image1.png" alt="" class="kg-image" width="1999" height="768" loading="lazy">
+	</figure>
+	<p><sup><b><i>Figure 1.</i></b></sup><sup><i> Diagram showing risky behavior by a user, resulting in sign-out.</i></sup></p>
+	<p>We begin by detecting risky behavior from a user (such as an “impossible travel” event between two geographic locations). Instances of risky behavior are called Risk Events. We perform two actions when we observe a Risk Event: logging the event and evaluating whether further action is required. For customers that have enabled <a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#send-risk-score-to-okta"><u>Risk Score Sharing with Okta</u></a>, any change in Risk Score is transmitted to Okta’s Identity Threat Protection (ITP).</p>
+	<p>Upon receiving a new event, Okta evaluates the change in user risk against the organization's policies. These policies may include actions such as re-authenticating the user if they become high risk.</p>
+	<p>When we design new features, we aim for them to be extensible across the industry. For this reason, we chose the <a href="https://openid.net/specs/openid-sharedsignals-framework-1_0.html"><u>OpenID Shared Signals Framework Specification (SSF)</u></a> to be the foundation of our transmission format. By doing this, we are able to leverage current and future providers that support the standard. The core functionality of SSF revolves around sharing <a href="https://www.rfc-editor.org/rfc/rfc8417.html"><u>Security Event Tokens (SETs)</u></a>, a specialized version of a JSON Web Token (JWT). Providers can produce and consume Security Event Tokens, forming a “network” of shared user risk information between providers.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SaWKy4UWPZfa8hf6rHcF8/571a08ddeab08b01b9a38e740ec89644/image2.png" alt="" class="kg-image" width="1999" height="1000" loading="lazy">
+	</figure>
+	<p><sup><b><i>Figure 2.</i></b></sup><sup><i> Diagram showing a Security Event Token being transmitted from Cloudflare to Okta.</i></sup></p>
+	<p>The diagram above (<b>Figure 2</b>) details the process of sharing risk. When sharing Risk Score changes with Okta, we bundle metadata about the risk event and user into the body of a Security Event Token. Following this, the JWT/SET is signed using our private key. This is an important step, as the signature is used to verify the sender's identity (cryptographic authenticity) and that the payload body has not been tampered with (cryptographic integrity). In plain terms, this signature is used by Okta to verify that the event is unaltered and was sent by Cloudflare.</p>
+	<p>Once Okta has verified the authenticity and integrity of the SET token, they may use the risk metadata within the body to execute Identity Threat Protection policies defined by the customer. These policies could include actions such as “if a high risk score is received from Cloudflare, sign out the offending user”.</p>
+	<p>Learn more about the Shared Signals Framework and CAEP in <a href="https://www.okta.com/blog/2024/08/identity-threat-protection-with-okta-ai"><u>Okta’s announcement blog post</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-today">Get started today</h2>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare customers can easily <a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#send-risk-score-to-okta"><u>enable risk score sharing from the Cloudflare One SSO setup page</u></a>. This is available to customers whether you’ve already integrated with Okta or are setting up the integration for the first time. You will also be able to confirm that the feature was enabled in your audit logs.</p>
+	<p>If you’ve already integrated Okta within your Cloudflare One dashboard:</p>
+	<ol>
+		<li>
+			<p>As an admin, navigate to Settings &gt; Authentication and select the Okta login method.</p>
+		</li>
+		<li>
+			<p>Select “send risk score to Okta.”</p>
+		</li>
+	</ol>
+	<p>If you haven’t yet integrated Okta within your Cloudflare One dashboard:</p>
+	<ol>
+		<li>
+			<p>As an admin, navigate to Settings &gt; Authentication and select a new login method.</p>
+		</li>
+		<li>
+			<p>Follow the instructions to add Okta as an SSO.</p>
+		</li>
+		<li>
+			<p>Select “send risk score to Okta.”</p>
+		</li>
+	</ol>
+	<p>Now, whenever a user’s risk score changes within the organization, information is sent to Okta automatically and an audit log is documented.</p>
+	<div class="flex anchor relative">
+		<h2 id="uphold-zero-trust-principles">Uphold Zero Trust principles</h2>
+		<a href="https://blog.cloudflare.com/#uphold-zero-trust-principles" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In conclusion, the ability to incorporate rich context is essential for making accurate and informed access decisions. With vast amounts of data — including user logins, logouts, websites visited, and emails sent — human analysts would struggle to keep pace with modern security challenges. Cloudflare provides context in the form of a risk score, enabling Okta’s risk engine to make more informed policy decisions about users. This sharing of information powers the continuous evaluation required to enforce Zero Trust policies within your organization, ultimately strengthening your organization’s security posture.</p>
+	<p>Not yet a Cloudflare One customer? <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise"><u>Reach out for a consultation</u></a> or contact your account manager.</p>
+</div>
