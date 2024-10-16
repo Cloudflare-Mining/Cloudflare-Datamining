@@ -207,7 +207,7 @@
 		}
 	},
 	"GET /radar/entities/asns/{asn}": {
-		"description": "Get the requested autonomous system information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
+		"description": "Get the requested autonomous system information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"operationId": "radar-get-entities-asn-by-id",
 		"parameters": [
 			{
@@ -630,6 +630,7 @@
 				"schema": {
 					"description": "IP address.",
 					"example": "8.8.8.8",
+					"format": "ip",
 					"type": "string"
 				}
 			},
@@ -847,6 +848,7 @@
 				"schema": {
 					"description": "IP address.",
 					"example": "8.8.8.8",
+					"format": "ip",
 					"type": "string"
 				}
 			},
@@ -1154,7 +1156,7 @@
 		}
 	},
 	"GET /radar/entities/locations/{location}": {
-		"description": "Get the requested location information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
+		"description": "Get the requested location information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
 		"operationId": "radar-get-entities-location-by-alpha2",
 		"parameters": [
 			{

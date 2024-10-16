@@ -3415,7 +3415,7 @@
 		}
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/industry": {
-		"description": "Percentage distribution of attacks by industry used over time.",
+		"description": "Percentage distribution of attacks by industry targeted over time.",
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-industry",
 		"parameters": [
 			{
@@ -4630,7 +4630,7 @@
 		}
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/vertical": {
-		"description": "Percentage distribution of attacks by vertical used over time.",
+		"description": "Percentage distribution of attacks by vertical targeted over time.",
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-vertical",
 		"parameters": [
 			{
