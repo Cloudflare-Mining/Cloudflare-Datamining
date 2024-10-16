@@ -1,0 +1,1049 @@
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/V6WyPxmsBfFJzpukCkiK9/451e680a17c02afe70d0abb6a498f323/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare's <a href="https://www.cloudflare.com/network"><u>network</u></a> spans more than 330 cities in over 120 countries, serving over 60 million HTTP requests per second and 39 million DNS queries per second on average. These numbers will continue to grow, and at an accelerating pace, as will Cloudflare’s infrastructure to support them. While we can continue to scale out by deploying more servers, it is also paramount for us to develop and deploy more performant and more efficient servers.</p>
+	<p>At the heart of each server is the processor (central processing unit, or CPU). Even though many aspects of a server rack can be redesigned to improve the cost to serve a request, CPU remains the biggest lever, as it is typically the primary compute resource in a server, and the primary enabler of new technologies.</p>
+	<p><a href="https://blog.cloudflare.com/gen-12-servers"><u>Cloudflare’s 12th Generation server with AMD EPYC 9684-X (codenamed Genoa-X) is 145% more performant and 63% more efficient</u></a>. These are big numbers, but where do the performance gains come from? Cloudflare’s hardware system engineering team did a sensitivity analysis on three variants of 4th generation AMD EPYC processor to understand the contributing factors.</p>
+	<p>For the 4th generation AMD EPYC Processors, AMD offers three architectural variants:&nbsp;</p>
+	<ol>
+		<li>
+			<p>mainstream classic Zen 4 cores, codenamed Genoa</p>
+		</li>
+		<li>
+			<p>efficiency optimized dense Zen 4c cores, codenamed Bergamo</p>
+		</li>
+		<li>
+			<p>cache optimized Zen 4 cores with 3D V-cache, codenamed Genoa-X</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hb5yDJksMIwbWVQcCzuoC/c085edca54d3820f7e93564791b0289a/image6.png" alt="image6" class="kg-image" width="1999" height="637" loading="lazy">
+
+	</figure>
+	<p><sup>Figure 1 (from left to right): AMD EPYC 9654 (Genoa), AMD EPYC 9754 (Bergamo), AMD EPYC 9684X (Genoa-X)</sup></p>
+	<p>Key features common across the 4th Generation AMD EPYC processors:</p>
+	<ul>
+		<li>
+			<p>Up to 12x Core Complex Dies (CCDs)</p>
+		</li>
+		<li>
+			<p>Each core has a private 1MB L2 cache</p>
+		</li>
+		<li>
+			<p>The CCDs connect to memory, I/O, and each other through an I/O die</p>
+		</li>
+		<li>
+			<p>Configurable Thermal Design Power (cTDP) up to 400W</p>
+		</li>
+		<li>
+			<p>Support up to 12 channels of DDR5-4800 1DPC</p>
+		</li>
+		<li>
+			<p>Support up to 128 lanes PCIe Gen 5</p>
+		</li>
+	</ul>
+	<p>Classic Zen 4 Cores (Genoa):</p>
+	<ul>
+		<li>
+			<p>Each Core Complex (CCX) has 8x Zen 4 Cores (16x Threads)</p>
+		</li>
+		<li>
+			<p>Each CCX has a shared 32 MB L3 cache (4 MB/core)</p>
+		</li>
+		<li>
+			<p>Each CCD has 1x CCX</p>
+		</li>
+	</ul>
+	<p>Dense Zen 4c Cores (Bergamo):</p>
+	<ul>
+		<li>
+			<p>Each CCX has 8x Zen 4c Cores (16x Threads)</p>
+		</li>
+		<li>
+			<p>Each CCX has a shared 16 MB L3 cache (2 MB/core)</p>
+		</li>
+		<li>
+			<p>Each CCD has 2x CCX</p>
+		</li>
+	</ul>
+	<p>Classic Zen 4 Cores with 3D V-cache (Genoa-X):</p>
+	<ul>
+		<li>
+			<p>Each CCX has 8x Zen 4 Cores (16x Threads)</p>
+		</li>
+		<li>
+			<p>Each CCX has a shared 96MB L3 cache (12 MB/core)</p>
+		</li>
+		<li>
+			<p>Each CCD has 1x CCX</p>
+		</li>
+	</ul>
+	<p>For more information on 4th generation AMD EPYC Processors architecture, see: <a href="https://www.amd.com/system/files/documents/4th-gen-epyc-processor-architecture-white-paper.pdf"><u>https://www.amd.com/system/files/documents/4th-gen-epyc-processor-architecture-white-paper.pdf</u></a>&nbsp;</p>
+	<p>The following table is a summary of the specification of the AMD EPYC 7713 CPU in our <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server"><u>Gen 11 server</u></a> against the three CPU candidates, one from each variant of the 4th generation AMD EPYC Processors architecture:</p>
+	<div style="margin-left:-23.25pt;" dir="ltr" align="left">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:20%;" width="130">
+					<col style="width:20%;" width="130">
+					<col style="width:20%;" width="130">
+					<col style="width:20%;" width="130">
+					<col style="width:20%;" width="130">
+				</colgroup>
+				<tbody>
+					<tr style="height:27.75pt;">
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>CPU Model</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><a style="text-decoration:none;" target="_blank" rel="noopener noreferrer" href="https://www.amd.com/en/products/specifications/server-processor.html"><span style="background-color:transparent;color:#1155cc;font-family:Arial,sans-serif;"><span style="-webkit-text-decoration-skip:none;font-style:normal;font-variant:normal;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre-wrap;"><strong><u>AMD EPYC 7713</u></strong></span></span></a></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><a style="text-decoration:none;" target="_blank" rel="noopener noreferrer" href="https://www.amd.com/en/products/specifications/server-processor.html"><span style="background-color:transparent;color:#1155cc;font-family:Arial,sans-serif;"><span style="-webkit-text-decoration-skip:none;font-style:normal;font-variant:normal;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre-wrap;"><strong><u>AMD EPYC 9654</u></strong></span></span></a></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><a style="text-decoration:none;" target="_blank" rel="noopener noreferrer" href="https://www.amd.com/en/products/specifications/server-processor.html"><span style="background-color:transparent;color:#1155cc;font-family:Arial,sans-serif;"><span style="-webkit-text-decoration-skip:none;font-style:normal;font-variant:normal;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre-wrap;"><strong><u>AMD EPYC 9754</u></strong></span></span></a></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><a style="text-decoration:none;" target="_blank" rel="noopener noreferrer" href="https://www.amd.com/en/products/specifications/server-processor.html"><span style="background-color:transparent;color:#1155cc;font-family:Arial,sans-serif;"><span style="-webkit-text-decoration-skip:none;font-style:normal;font-variant:normal;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre-wrap;"><strong><u>AMD EPYC 9684X</u></strong></span></span></a></p>
+						</td>
+					</tr>
+					<tr style="height:30.723876953124996pt;">
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Series</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Milan</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Genoa</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Bergamo</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Genoa-X</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:27.75pt;">
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong># of CPU Cores</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">64</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">96</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>128</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">96</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:48pt;">
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong># of Threads</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">128</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">192</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>256</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">192</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:27.75pt;">
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Base Clock</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.0 GHz</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.4 GHz</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.25 GHz</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.4 GHz</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:48pt;">
+						<td style="background-color:#f6821f;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>All Core Boost Clock</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">~2.7 GHz*</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>3.55 Ghz</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3.1 Ghz</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#36393a;border-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3.42 Ghz</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:48pt;">
+						<td style="background-color:#f6821f;border-bottom-color:#000000;border-bottom-width:0.75pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#36393a;border-top-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Total L3 Cache</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#000000;border-bottom-width:0.75pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#36393a;border-top-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">256 MB</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#000000;border-bottom-width:0.75pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#36393a;border-top-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">384 MB</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#000000;border-bottom-width:0.75pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#36393a;border-top-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">256 MB</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#000000;border-bottom-width:0.75pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#36393a;border-top-width:0.50000025pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>1152 MB</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:48pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:11pt;margin-top:11pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>L3 cache per core</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:11pt;margin-top:11pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4 MB / core</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:11pt;margin-top:11pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4 MB / core</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:11pt;margin-top:11pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2 MB / core</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:11pt;margin-top:11pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>12 MB / core</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:48pt;">
+						<td style="background-color:#f6821f;border-bottom-color:#36393a;border-bottom-width:0.50000025pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#000000;border-top-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Maximum configurable TDP</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#36393a;border-bottom-width:0.50000025pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#000000;border-top-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">240W</span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#36393a;border-bottom-width:0.50000025pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#000000;border-top-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>400W</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#36393a;border-bottom-width:0.50000025pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#000000;border-top-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>400W</strong></span></span></p>
+						</td>
+						<td style="background-color:#ffffff;border-bottom-color:#36393a;border-bottom-width:0.50000025pt;border-left-color:#36393a;border-left-width:0.50000025pt;border-right-color:#36393a;border-right-width:0.50000025pt;border-top-color:#000000;border-top-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:4pt 15pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>400W</strong></span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<p><sup>* AMD EPYC 7713 all core boost clock is based on Cloudflare production data, not the official specification from AMD</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="cf_benchmark">cf_benchmark</h2>
+		<a href="https://blog.cloudflare.com/#cf_benchmark" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Readers may remember that Cloudflare introduced <a href="https://github.com/cloudflare/cf_benchmark"><u>cf_benchmark</u></a> when we evaluated <a href="https://blog.cloudflare.com/arm-takes-wing"><u>Qualcomm's ARM chips</u></a>, using it as our first pass benchmark to shortlist <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu"><u>AMD’s Rome CPU for our Gen 10 servers</u></a> and to evaluate <a href="https://blog.cloudflare.com/arms-race-ampere-altra-takes-on-aws-graviton2"><u>our chosen ARM CPU Ampere Altra Max against AWS Graviton 2</u></a>. Likewise, we ran cf_benchmark against the three candidate CPUs for our 12th Gen servers: AMD EPYC 9654 (Genoa), AMD EPYC 9754 (Bergamo), and AMD EPYC 9684X (Genoa-X). The majority of cf_benchmark workloads are compute bound, and given more cores or higher CPU frequency, they score better. The graph and the table below show the benchmark performance comparison of the three CPU candidates with Genoa 9654 as the baseline, where &gt; 1.00x indicates better performance.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YNQ8YB5XV3fZEVpVFT7lM/2dadd7fda9832716f198dee2d5fbfd22/image5.png" alt="image5" class="kg-image" width="1200" height="742" loading="lazy">
+	</figure>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:25%;" width="179">
+					<col style="width:25%;" width="179">
+					<col style="width:25%;" width="179">
+					<col style="width:25%;" width="179">
+				</colgroup>
+				<tbody>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">&nbsp;</td>
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa 9654 (baseline)</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Bergamo 9754</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa-X 9684X</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>openssl_pki</strong></span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.16x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.01x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>openssl_aead</strong></span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.20x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.01x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>luajit</strong></span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.86x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>brotli</strong></span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.11x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.98x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>gzip</strong></span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.87x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.01x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>go</strong></span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.09x</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<p>Bergamo 9754 with 128 cores scores better in openssl_pki, openssl_aead, brotli, and go benchmark suites, and performs less favorably in luajit and gzip benchmark suites. Genoa-X 9684X (with significantly more L3 cache) doesn’t offer a significant boost in performance for these compute-bound benchmarks.</p>
+	<p>These benchmarks are representative of some of the common workloads Cloudflare runs, and are useful in identifying software scaling issues, system configuration bottlenecks, and the impact of CPU design choices on workload-specific performance. However, the benchmark suite is not an exhaustive list of all workloads Cloudflare runs in production, and in reality, the workloads included in the benchmark suites are almost certainly not the exclusive workload running on the CPU. In short, though benchmark results can be informative, they do not represent a good indication of production performance when a mix of these workloads run on the same processor.</p>
+	<div class="flex anchor relative">
+		<h2 id="performance-simulation">Performance simulation</h2>
+		<a href="https://blog.cloudflare.com/#performance-simulation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To get an early indication of production performance, Cloudflare has an internal performance simulation tool that exercises our software stack to fetch a fixed asset repeatedly. The simulation tool can be configured to fetch a specified fixed-size asset and configured to include or exclude services like WAF or Workers in the request path. Below, we show the simulated performance between the three CPUs for an asset size of 10 KB, where &gt;1.00x indicates better performance.</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:20%;" width="139">
+					<col style="width:20%;" width="139">
+					<col style="width:20%;" width="139">
+					<col style="width:20%;" width="139">
+					<col style="width:20%;" width="139">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">&nbsp;</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Milan 7713</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa 9654</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Bergamo 9754</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa-X 9684X</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Lab simulation performance multiplier</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.20x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.95x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.75x</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<p>Based on these results, Bergamo 9754, which has the highest core count, but smallest L3 cache per core, is least performant among the three candidates, followed by Genoa 9654. The Genoa-X 9684X with the largest L3 cache per core is the most performant. This data suggests that our software stack is very sensitive to L3 cache size, in addition to core count and CPU frequency. This is interesting and worth a deep dive into a sensitivity analysis of our workload against a few (high level) CPU design points, especially core scaling, frequency scaling, and L2/L3 cache sizes scaling.</p>
+	<div class="flex anchor relative">
+		<h2 id="sensitivity-analysis">Sensitivity analysis</h2>
+		<a href="https://blog.cloudflare.com/#sensitivity-analysis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="core-sensitivity">Core sensitivity</h3>
+		<a href="https://blog.cloudflare.com/#core-sensitivity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Number of cores is the headline specification that practically everyone talks about, and one of the easiest improvements CPU vendors can make to increase performance per socket. The AMD Genoa 9654 has 96 cores, 50% more than the 64 cores available on the AMD Milan 7713 CPUs that we used in our Gen 11 servers. Is more always better? Does Cloudflare’s primary workload scale with core count and effectively utilize all available cores?</p>
+	<p>The figure and table below shows the result of a core scaling experiment performed on an AMD Genoa 9654 configured with 96 cores, 80 cores, 64 cores, and 48 cores, which was done by incrementally disabling 2x CCD (8 cores/CCD) at each step. The result is GREAT, as Cloudflare’s simulated primary workload scales linearly with core count on AMD Genoa CPUs.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/f1w9JxhP8aLIoFONMq5tr/b3269fc121b9bfd8f4d9a3394a73c599/image4.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+	</figure>
+	<div style="margin-left:0pt;" dir="ltr" align="left">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:33.33%;" width="229">
+					<col style="width:33.33%;" width="229">
+					<col style="width:33.34%;" width="229">
+				</colgroup>
+				<tbody>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Core count</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Core increase</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Performance increase</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>48</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>64</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.33x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.39x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>80</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.67x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.71x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>96</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.00x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.05x</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h3 id="tdp-sensitivity">TDP sensitivity</h3>
+		<a href="https://blog.cloudflare.com/#tdp-sensitivity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/thermal-design-supporting-gen-12-hardware-cool-efficient-and-reliable"><u>Thermal Design Power (TDP), is the maximum amount of heat generated by a CPU that the cooling system is designed to dissipate</u></a>, but more commonly refers to the power consumption of the processor under the maximum theoretical loads. AMD Genoa 9654’s default TDP is 360W, but can be configured up to 400W TDP. Is more always better? Does Cloudflare continue to see meaningful performance improvement up to 400W, or does performance stagnate at some point?</p>
+	<p>The chart below shows the result of sweeping the TDP of the AMD Genoa 9654 (in power determinism mode) from 240W to 400W. (Note: x-axis step size is not linear).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/216pSnjCDQOLwtRS822ugu/17dc1885d34ae10a8a1cecb6584b7dd7/image3.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+	</figure>
+	<p>Cloudflare’s simulated primary workload continues to see incremental performance improvements up to the maximum configurable 400W, albeit at a less favorable perf/watt ratio.</p>
+	<p>Looking at TDP sensitivity data is a quick and easy way to identify if performance stagnates at some power point, but what does power sensitivity actually measure? There are several factors contributing to CPU power consumption, but let's focus on one of the primary factors: dynamic power consumption. Dynamic power consumption is approximately <i>CV</i><i><sup>2</sup></i><i>f</i>, where C is the switched load capacitance, V is the regulated voltage, and f is the frequency. In modern processors like the AMD Genoa 9654, the CPU dynamically scales its voltage along with frequency, so theoretically, CPU dynamic power is loosely proportional to f<sup>3</sup>. In other words, measuring TDP sensitivity is measuring the frequency sensitivity of a workload. Does the data agree? Yes!</p>
+	<div style="margin-left:0pt;" dir="ltr" align="left">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:33.33%;" width="220">
+					<col style="width:33.33%;" width="251">
+					<col style="width:33.34%;" width="206">
+				</colgroup>
+				<tbody>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>cTDP</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>All core boost frequency (GHz)</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Perf (rps) / baseline</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>240</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.47</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.78x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>280</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.75</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.87x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>320</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.93</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.93x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>340</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3.13</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.97x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>360</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3.3</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>380</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3.4</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.03x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>390</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3.465</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.04x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:9.36pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>400</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3.55</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.05x</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h3 id="frequency-sensitivity">Frequency sensitivity</h3>
+		<a href="https://blog.cloudflare.com/#frequency-sensitivity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Instead of relying on an indirect measure through the TDP, let’s measure frequency sensitivity directly by sweeping the maximum boost frequency.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oobymubOiZrpJjSExQxxo/a02985506ecc803e8b09d7f999b86c55/image2.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+	</figure>
+	<p>At above 3GHz, the data shows that Cloudflare’s primary workload sees roughly 2% incremental improvement for every 0.1GHz all core average frequency increment. We hit the 400W power cap at 3.545GHz. This is notably higher than the typical all core boost frequency that Cloudflare Gen 11 servers with AMD Milan 7713 at 2.7GHz see in production, or at 2.4GHz in our performance simulation, which is amazing!</p>
+	<div class="flex anchor relative">
+		<h3 id="l3-cache-size-sensitivity">L3 cache size sensitivity</h3>
+		<a href="https://blog.cloudflare.com/#l3-cache-size-sensitivity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>What about L3 cache size sensitivity? L3 cache size is one of the primary design choices and major differences between the trio of Genoa, Bergamo, and Genoa-X. Genoa 9654 has 4 MB L3/core, Bergamo 9754 has 2 MB L3/core, and Genoa-X has 12 MB L3/core. L3 cache is the last and largest “memory” bank on-chip before having to access memory on DIMMs outside the chip that would take significantly more CPU cycles.</p>
+	<p>We ran an experiment on the Genoa 9654 to check how performance scales with L3 cache size. L3 cache size per core is reduced through MSR writes (but could also be done using <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/use-intel-resource-director-technology-to-allocate-last-level-cache-llc.htm"><u>Intel RDT</u></a>) and L3 cache per core is increased by disabling physical cores in a CCD (which reduces the number of cores sharing the fixed size 32 MB L3 cache per CCD effectively growing the L3 cache per core). Below is the result of the experiment, where &gt;1.00x indicates better performance:</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:11.11%;" width="218">
+					<col style="width:11.11%;" width="57">
+					<col style="width:11.11%;" width="57">
+					<col style="width:11.11%;" width="57">
+					<col style="width:11.11%;" width="57">
+					<col style="width:11.11%;" width="57">
+					<col style="width:11.11%;" width="57">
+					<col style="width:11.11%;" width="57">
+					<col style="width:11.12%;" width="57">
+				</colgroup>
+				<tbody>
+					<tr style="height:16pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>L3 cache size increase vs baseline 4MB per core</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>0.25x</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>0.5x</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>0.75x</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>1x</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>1.14x</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>1.33x</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>1.60x</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>2.00x</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:16pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>rps/core / baseline</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.67x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.78x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.89x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.00x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.08x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.15x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.25x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.31x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:16pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>L3 cache miss rate per CCD</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">56.04%</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">39.15%</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">30.37%</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">23.55%</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">22.39%</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">19.73%</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">16.94%</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">14.28%</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cjfPuhUHBfABvQ5hJGchb/e470ca9bb45b0c69b5069556ce866647/image7.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+	</figure>
+	<p>Even though the expectation was that the impact of a different L3 cache size gets diminished by the faster DDR5 and larger memory bandwidth, Cloudflare’s simulated primary workload is quite sensitive to L3 cache size. The L3 cache miss rate dropped from 56% with only 1 MB L3 per core, to 14.28% with 8 MB L3/core. Changing the L3 cache size by 25% affects the performance by approximately 11%, and we continue to see performance increase to 2x L3 cache size, though the performance increase starts to diminish when we get to 2x L3 cache per core.</p>
+	<p>Do we see the same behavior when comparing Genoa 9654, Bergamo 9754 and Genoa-X 9684X? We ran an experiment comparing the impact of L3 cache size, controlling for core count and all core boost frequency, and we also saw significant deltas. Halving the L3 cache size from 4 MB/core to 2 MB/core reduces performance by 24%, roughly matching the experiment above. However, increasing the cache 3x from 4 MB/core to 12 MB/core only increases performance by 25%, less than the indication provided by previous experiments. This is likely because the performance gain we saw on experiment result above could be partially attributed to less cache contention due to reduced number of cores based on how we set up the test. Nevertheless, these are significant deltas!</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:25%;" width="175">
+					<col style="width:25%;" width="175">
+					<col style="width:25%;" width="175">
+					<col style="width:25%;" width="175">
+				</colgroup>
+				<tbody>
+					<tr style="height:19.76953125pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>L3/core</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>2MB/core</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>4MB/core</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>12MB/core</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Perf (rps) / baseline</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.76x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.25x</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The table below summarizes how each factor from sensitivity analysis above contributes to the overall performance gain. There are an additional 6% to 14% of unaccounted performance improvement that are contributed by other factors like larger L2 cache, higher memory bandwidth, and miscellaneous CPU architecture changes that improve IPC.</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:20%;" width="386">
+					<col style="width:20%;" width="78">
+					<col style="width:20%;" width="78">
+					<col style="width:20%;" width="78">
+					<col style="width:20%;" width="78">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">&nbsp;</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Milan</strong></span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>7713</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa</strong></span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>9654</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Bergamo</strong></span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>9754</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa-X</strong></span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>9684X</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Lab simulation performance multiplier</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.2x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.95x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.75x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Performance multiplier due to Core scaling</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.5x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.5x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Performance multiplier due to Frequency scaling</strong></span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>(*Note: Milan 7713 all core frequency is ~2.4GHz when running simulated workload at 100% CPU utilization)</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.32x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.21x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.29x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Performance multiplier due to L3 cache size scaling</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">0.76x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.25x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Performance multiplier due to other factors like larger L2 cache, higher memory bandwidth, miscellaneous CPU architecture changes that improve IPC</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.11x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.06x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.14x</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="performance-evaluation-in-production">Performance evaluation in production</h2>
+		<a href="https://blog.cloudflare.com/#performance-evaluation-in-production" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>How do these CPU candidates perform with real-world traffic and an actual production workload mix? The table below summarizes the performance of the three CPUs in lab simulation and in production. Genoa-X 9684X continues to outperform in production.</p>
+	<p>In addition, the Gen 12 server equipped with Genoa-X offered outstanding performance but only consumed 1.5x more power per system than our Gen 11 server with Milan 7713. In other words, we see a 63% increase in performance per watt. Genoa-X 9684X provides the best TCO improvement among the 3 options, and was ultimately chosen as the CPU for our Gen 12 server.</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:20%;" width="299">
+					<col style="width:20%;" width="100">
+					<col style="width:20%;" width="101">
+					<col style="width:20%;" width="112">
+					<col style="width:20%;" width="119">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">&nbsp;</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Milan 7713</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa 9654</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Bergamo 9754</strong></span></span></p>
+						</td>
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Genoa-X 9684X</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Lab simulation performance multiplier</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.2x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.95x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.75x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Production performance multiplier</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.15x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2.45x</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="background-color:#f6821f;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Production performance per watt multiplier</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.33x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.38x</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1.63x</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<p>The Gen 12 server with AMD Genoa-X 9684X is the most powerful and the most power efficient server Cloudflare has built to date. It serves as the underlying platform for all the incredible services that Cloudflare offers to our customers globally, and will help power the growth of Cloudflare infrastructure for the next several years with improved cost structure.&nbsp;</p>
+	<p>Hardware engineers at Cloudflare work closely with our infrastructure engineering partners and externally with our vendors to design and develop world-class servers to best serve our customers.&nbsp;</p>
+	<p><a href="https://www.cloudflare.com/careers/jobs"><u>Come join us</u></a> at Cloudflare to help build a better Internet!</p>
+</div>
