@@ -1,79 +1,79 @@
 {
-	"id": "70339d97bdb34195bbf054b1ebe81f76",
-	"name": "Cloudflare Normalization Ruleset",
 	"description": "Created by the Cloudflare security team, this ruleset provides normalization on the URL path",
+	"id": "70339d97bdb34195bbf054b1ebe81f76",
 	"kind": "managed",
-	"version": "6",
+	"last_updated": "2024-08-01T17:37:11.538019Z",
+	"name": "Cloudflare Normalization Ruleset",
+	"phase": "http_request_sanitize",
 	"rules": [
 		{
-			"id": "60444c0705d4438799584a15cca2cb7d",
-			"version": "4",
 			"action": "rewrite",
+			"action_parameters": {
+				"uri": {
+					"origin": true,
+					"path": {
+						"expression": "normalize_url_path_rfc3986(raw.http.request.uri.path)"
+					}
+				}
+			},
 			"description": "Normalization (RFC-3986) on the URL path, propagating it to the origin",
+			"enabled": false,
+			"id": "60444c0705d4438799584a15cca2cb7d",
 			"last_updated": "2024-08-01T17:37:11.538019Z",
 			"ref": "dac16808c9a549c28a5be86d5529b41f",
-			"enabled": false,
-			"action_parameters": {
-				"uri": {
-					"path": {
-						"expression": "normalize_url_path_rfc3986(raw.http.request.uri.path)"
-					},
-					"origin": true
-				}
-			}
+			"version": "4"
 		},
 		{
-			"id": "20e18610e4a048d6b87430b3cb2d89a3",
-			"version": "4",
 			"action": "rewrite",
+			"action_parameters": {
+				"uri": {
+					"origin": false,
+					"path": {
+						"expression": "normalize_url_path_rfc3986(raw.http.request.uri.path)"
+					}
+				}
+			},
 			"description": "Normalization (RFC-3986) on the URL path, without propagating it to the origin",
+			"enabled": false,
+			"id": "20e18610e4a048d6b87430b3cb2d89a3",
 			"last_updated": "2024-08-01T17:37:11.538019Z",
 			"ref": "cec43bc9b1fe40e9a0d44b3d427fb67b",
-			"enabled": false,
-			"action_parameters": {
-				"uri": {
-					"path": {
-						"expression": "normalize_url_path_rfc3986(raw.http.request.uri.path)"
-					},
-					"origin": false
-				}
-			}
+			"version": "4"
 		},
 		{
-			"id": "b232b534beea4e00a21dcbb7a8a545e9",
-			"version": "6",
 			"action": "rewrite",
+			"action_parameters": {
+				"uri": {
+					"origin": true,
+					"path": {
+						"expression": "normalize_url_path(raw.http.request.uri.path)"
+					}
+				}
+			},
 			"description": "Normalization on the URL path, propagating it to the origin",
+			"enabled": false,
+			"id": "b232b534beea4e00a21dcbb7a8a545e9",
 			"last_updated": "2024-08-01T17:37:11.538019Z",
 			"ref": "bbc8cc06105f4e1da898f54b30be6452",
-			"enabled": false,
-			"action_parameters": {
-				"uri": {
-					"path": {
-						"expression": "normalize_url_path(raw.http.request.uri.path)"
-					},
-					"origin": true
-				}
-			}
+			"version": "6"
 		},
 		{
-			"id": "78723a9e0c7c4c6dbec5684cb766231d",
-			"version": "6",
 			"action": "rewrite",
-			"description": "Normalization on the URL path, without propagating it to the origin",
-			"last_updated": "2024-08-01T17:37:11.538019Z",
-			"ref": "272936dc447b41fe976255ff6b768ec0",
-			"enabled": true,
 			"action_parameters": {
 				"uri": {
+					"origin": false,
 					"path": {
 						"expression": "normalize_url_path(raw.http.request.uri.path)"
-					},
-					"origin": false
+					}
 				}
-			}
+			},
+			"description": "Normalization on the URL path, without propagating it to the origin",
+			"enabled": true,
+			"id": "78723a9e0c7c4c6dbec5684cb766231d",
+			"last_updated": "2024-08-01T17:37:11.538019Z",
+			"ref": "272936dc447b41fe976255ff6b768ec0",
+			"version": "6"
 		}
 	],
-	"last_updated": "2024-08-01T17:37:11.538019Z",
-	"phase": "http_request_sanitize"
+	"version": "6"
 }
