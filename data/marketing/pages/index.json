@@ -2692,7 +2692,20 @@
 								"openInNewTab": true,
 								"locale": "en-US"
 							},
-							"buttonTertiary": null,
+							"buttonTertiary": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "1BnxqNs6ZHCcHaKSxUmeec",
+								"elementName": "Button Orange - Contact sales (link /contact page)",
+								"standardText": null,
+								"text": "Contact sales",
+								"url": "/plans/enterprise/contact/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
 							"sectionPadding": "tile--no-top-padding",
 							"htmlId": "home-hero-full-width-blade"
 						},
@@ -3147,7 +3160,17 @@
 										"brandfolderAsset": null,
 										"brandfolderAssetMobile": null
 									},
-									"elementLink": null,
+									"elementLink": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "7EFrKu7N5PxQhTZvSONRtx",
+										"elementName": "Explore Trusted Apps",
+										"standardText": null,
+										"text": "Explore apps",
+										"url": "/application-services",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
 									"secondaryCta": {
 										"contentTypeId": "elementLink",
 										"contentfulId": "3MbTgNKrHBPEqDcouGTDwz",
@@ -3166,7 +3189,21 @@
 									"contentTypeId": "elementFeaturedSolution",
 									"title": "Developer services",
 									"description": "Easily build and deploy full-stack applications everywhere, thanks to integrated compute, storage, and networking.",
-									"icon": null,
+									"icon": {
+										"id": "7100e660-f839-5d44-b01b-57bb719756e8",
+										"altText": "Developer Services",
+										"title": "Developer Services",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jwF6zz4lTaL25osoXtSIy/76a1cf8bb1e2292f64d4314d702a7de3/Developer_Platform_01.svg"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									},
 									"elementLink": {
 										"contentTypeId": "elementLink",
 										"contentfulId": "5WRfhcw9liLwHkubtmar6M",
@@ -3366,6 +3403,21 @@
 							"title": "Global leaders, including 30% of the Fortune 1000, rely on Cloudflare",
 							"htmlId": "company-Logos",
 							"companyLogos": [
+								{
+									"id": "3e79297d-861e-57b1-a1fa-f060fd8b04b6",
+									"altText": "Broadcom logo",
+									"title": "Broadcom",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tI7zPMdgwOu8KsxmJDy3S/9309834cae3b3c861cf791c446abba0e/featured_logo_broadcom.png"
+										},
+										"description": "Broadcom logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								{
 									"id": "6bab8727-c5b1-51be-a2a6-dd5f7277944f",
 									"altText": "Colgate Palmolive logo",
@@ -3632,6 +3684,36 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tbBFmgYoEQD6Yx5IcPjOr/67854bf21f4a0ece3a4683040b70bc03/featured_logo_pitney_bowes.png"
 										},
 										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "fec1a3df-3c16-56bf-bc49-c7a9a2bcd401",
+									"altText": "IBM logo",
+									"title": "IBM",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdLkPlavqnIjAC2IXGtoV/8f905b918b212c08c2616ef91d114c0d/trustedby-ibm-black.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "33f3f7e2-7590-5ba4-917b-5441d0a183fa",
+									"altText": "Melbourne Airport logo",
+									"title": "Melbourne Airport",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Iha0HosjMDt8uK8upnI57/1150b5042134d9d2ba81fb26881f5a2b/Melbourne.jpeg"
+										},
+										"description": "HP - Customer Logo - Melbourne Airport"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -4190,7 +4272,17 @@
 									"heading": "Insight",
 									"description": "EQT reduces complexity with Cloudflare's connectivity cloud",
 									"category": "Insights",
-									"link": null,
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "29uW5FnjkJulrMXcpYOjAE",
+										"elementName": "Connectivity cloud EQT case study - Link",
+										"standardText": null,
+										"text": "Read case study",
+										"url": "https://www.cloudflare.com/case-studies/eqt/",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
 									"image": {
 										"id": "48d58629-74e8-5f2f-9205-cbe560bdd8e8",
 										"altText": "EQT Logo",
@@ -4599,6 +4691,45 @@
 									"streamThumbnailAssetFile": null
 								}
 							]
+						},
+						{
+							"contentfulId": "1f96hQMI9RqTCIBBn4wHth",
+							"contentTypeId": "bladeLeadGeneration",
+							"title": "Contact a Cloudflare enterprise representative",
+							"description": null,
+							"variant": "full-width",
+							"htmlId": "test-staging-lead-generation",
+							"sectionPadding": null,
+							"backgroundImage": {
+								"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+								"altText": "Cloudflare Orange Background",
+								"title": "Cloudflare Orange Background",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							"primaryCtaButton": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "4rnrXiq1i4wEYx9ZjMU35r",
+								"elementName": "Get in Touch",
+								"standardText": null,
+								"text": "Get in touch",
+								"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
+							"secondaryCtaButton": null
 						}
 					]
 				},
