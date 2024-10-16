@@ -313,31 +313,66 @@
 			"display_name": "Page Shield New Code Change Detection Alert",
 			"type": "scriptmonitor_alert_new_code_change_detections",
 			"description": "Receive an alert whenever a code change is detected in a script getting monitored.",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "zones",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		},
 		{
 			"display_name": "Page Shield New Domain Alert",
 			"type": "scriptmonitor_alert_new_hosts",
 			"description": "Receive an alert whenever your users load a resource from a new domain not previously seen.",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "zones",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		},
 		{
 			"display_name": "Page Shield New Malicious Domain Alert",
 			"type": "scriptmonitor_alert_new_malicious_hosts",
 			"description": "Receive an alert whenever a resource loaded by your users is hosted under a domain reported as malicious.",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "zones",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		},
 		{
 			"display_name": "Page Shield New Malicious Script Alert",
 			"type": "scriptmonitor_alert_new_malicious_scripts",
 			"description": "Receive an alert whenever a JavaScript file loaded by your users is classified as malicious.",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "zones",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		},
 		{
 			"display_name": "Page Shield New Malicious URL Alert",
 			"type": "scriptmonitor_alert_new_malicious_url",
 			"description": "Receive an alert whenever a resource loaded by your users is from a URL reported as malicious.",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "zones",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		},
 		{
 			"display_name": "Page Shield New Resource URL Exceeds Max Length Alert",
@@ -349,7 +384,14 @@
 			"display_name": "Page Shield New Resources Alert",
 			"type": "scriptmonitor_alert_new_resources",
 			"description": "Receive an alert whenever your users load a new resource that has not been previously seen.",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "zones",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		}
 	],
 	"Security Insights": [
