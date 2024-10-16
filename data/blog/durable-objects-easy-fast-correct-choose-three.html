@@ -58,23 +58,110 @@ async function getUniqueNumber() {
 	<p>JavaScript, however, famously does not use threads. Instead, it uses event-driven programming, with callbacks. It's not possible for two pieces of JavaScript code to be running "at the same time" in the same isolate (and Durable Objects promises that no other isolate could possibly be accessing the same storage). Does that mean that race conditions aren't a problem in JavaScript, the way they are in multi-threaded apps?</p>
 	<p>Unfortunately, it does not. The problem is, the code above is an <code>async</code> function, containing two <code>await</code> statements. Each time <code>await</code> is used, execution pauses, waiting for the specified <code>Promise</code> to complete.</p>
 	<p>In the meantime, though, other code can run! For example, the Durable Object might receive two requests at the same time. If each of them calls <code>getUniqueNumber()</code>, then the two calls might be interleaved. Each time one call performs an <code>await</code>, execution may switch to the other call. So, the two calls might end up looking like this:</p>
-	<p>Request 1 timeline</p>
-	<p>Request 2 timeline</p>
-	<pre class="language-javascript"><code class="language-javascript">async function getUniqueNumber() {
-  let val = await this.storage.get("counter");</code></pre>
+	<p></p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">async function getUniqueNumber() {
-  let val = await this.storage.get("counter");</code></pre>
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">  await this.storage.put("counter", val + 1);</code></pre>
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">  await this.storage.put("counter", val + 1);</code></pre>
+		.tg .tg-jf6t {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: middle
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">  return val;
-}</code></pre>
+		.tg .tg-d46s {
+			background-color: #F5F2F0;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">  return val;
-}</code></pre>
+		.tg .tg-jwid {
+			background-color: #F5F2F0;
+			color: #07A;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-jf6t">Request 1 timeline</th>
+					<th class="tg-jf6t">Request 2 timeline</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-jwid"><span style="color:#07A">async</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">function</span><span style="color:black;background-color:initial"> </span><span style="color:#DD4A68">getUniqueNumber</span><span style="color:#999">()</span><span style="color:black;background-color:initial"> </span><span style="color:#999">{</span><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span><span style="color:#07A">let</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">=</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#07A">get</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">);</span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+					<td class="tg-jwid"><span style="color:#07A">async</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">function</span><span style="color:black;background-color:initial"> </span><span style="color:#DD4A68">getUniqueNumber</span><span style="color:#999">()</span><span style="color:black;background-color:initial"> </span><span style="color:#999">{</span><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span><span style="color:#07A">let</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">=</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#07A">get</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">);</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;</span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#DD4A68">put</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">,</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">+</span><span style="color:black;background-color:initial"> </span><span style="color:#905">1</span><span style="color:#999">);</span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial"> </span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;</span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#DD4A68">put</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">,</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">+</span><span style="color:black;background-color:initial"> </span><span style="color:#905">1</span><span style="color:#999">);</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;</span><span style="color:#07A">return</span><span style="color:black;background-color:initial"> val</span><span style="color:#999">;</span><span style="color:black;background-color:initial"> </span><span style="color:#999">}</span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;</span><span style="color:#07A">return</span><span style="color:black;background-color:initial"> val</span><span style="color:#999">;</span><span style="color:black;background-color:initial"> </span><span style="color:#999">}</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<p>There's a big problem here: Both of these two calls will call <code>get("counter")</code> before <i>either</i> of them calls <code>put("counter", val + 1)</code>. That means, both of them will return the same value!</p>
 	<p>This problem is especially bad because it only happens when multiple requests are being handled at the same time -- and even then, only sometimes. It is very hard to test for this kind of problem, and everything might seem just fine when the application is deployed, as long as it isn't getting too much traffic. But one day, when a lot of visitors try to use the same object at the same time, all of a sudden <code>getUniqueNumber()</code> starts returning duplicates!</p>
 	<div class="flex anchor relative">
@@ -200,27 +287,116 @@ async function getUniqueNumber() {
 		<p><b>Input gates:</b> While a storage operation is executing, no events shall be delivered to the object except for storage completion events. Any other events will be deferred until such a time as the object is no longer executing JavaScript code <i>and</i> is no longer waiting for any storage operations. We say that these events are waiting for the "input gate" to open.</p>
 	</blockquote>
 	<p>If we do this, then our storage operations above are no longer an opportunity for concurrency. Our concurrent requests now look like this:</p>
-	<p>Request 1 timeline</p>
-	<p>Request 2 timeline</p>
-	<pre class="language-javascript"><code class="language-javascript">async function getUniqueNumber() {
-  let val = await this.storage.get("counter");</code></pre>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">// Request 2 delivery is blocked because
-// request 1 is waiting for storage.</code></pre>
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">  await this.storage.put("counter", val + 1);</code></pre>
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">// Request 2 delivery is blocked because
-// request 1 is waiting for storage.</code></pre>
+		.tg .tg-tsrn {
+			background-color: #F5F2F0;
+			color: #708090;
+			text-align: left;
+			vertical-align: top
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">  return val;
-}</code></pre>
+		.tg .tg-jf6t {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: middle
+		}
 
-	<pre class="language-javascript"><code class="language-javascript">async function getUniqueNumber() {
-  let val = await this.storage.get("counter");
-  await this.storage.put("counter", val + 1);
-  return val;
-}</code></pre>
+		.tg .tg-d46s {
+			background-color: #F5F2F0;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-jwid {
+			background-color: #F5F2F0;
+			color: #07A;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-jf6t">Request 1 timeline</th>
+					<th class="tg-jf6t">Request 2 timeline</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-jwid"><span style="color:#07A">async</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">function</span><span style="color:black;background-color:initial"> </span><span style="color:#DD4A68">getUniqueNumber</span><span style="color:#999">()</span><span style="color:black;background-color:initial"> </span><span style="color:#999">{</span><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span><span style="color:#07A">let</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">=</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#07A">get</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">);</span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+					<td class="tg-tsrn"><span style="color:slategray">// Request 2 delivery is blocked because</span><span style="color:black;background-color:initial"> </span><span style="color:slategray">// request 1 is waiting for storage.</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;</span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#DD4A68">put</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">,</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">+</span><span style="color:black;background-color:initial"> </span><span style="color:#905">1</span><span style="color:#999">);</span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+					<td class="tg-tsrn"><span style="color:slategray">// Request 2 delivery is blocked because</span><span style="color:black;background-color:initial"> </span><span style="color:slategray">// request 1 is waiting for storage.</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;</span><span style="color:#07A">return</span><span style="color:black;background-color:initial"> val</span><span style="color:#999">;</span><span style="color:black;background-color:initial"> </span><span style="color:#999">}</span></td>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td class="tg-d46s"><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+					<td class="tg-jwid"><span style="color:#07A">async</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">function</span><span style="color:black;background-color:initial"> </span><span style="color:#DD4A68">getUniqueNumber</span><span style="color:#999">()</span><span style="color:black;background-color:initial"> </span><span style="color:#999">{</span><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span><span style="color:#07A">let</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">=</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#07A">get</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">);</span><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span><span style="color:#07A">await</span><span style="color:black;background-color:initial"> </span><span style="color:#07A">this</span><span style="color:#999">.</span><span style="color:black;background-color:initial">storage</span><span style="color:#999">.</span><span style="color:#DD4A68">put</span><span style="color:#999">(</span><span style="color:#690">"counter"</span><span style="color:#999">,</span><span style="color:black;background-color:initial"> val </span><span style="color:#A67F59;background-color:rgba(255, 255, 255, 0.5)">+</span><span style="color:black;background-color:initial"> </span><span style="color:#905">1</span><span style="color:#999">);</span><span style="color:black;background-color:initial">&nbsp;&nbsp;&nbsp;</span><span style="color:#07A">return</span><span style="color:black;background-color:initial"> val</span><span style="color:#999">;</span><span style="color:black;background-color:initial"> </span><span style="color:#999">}</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<p>The two calls return unique numbers, as expected. Hooray! (Unfortunately, we did it by delaying the second request, creating latency and reducing throughput -- but we'll address that in part 3, below.)</p>
 	<p>Note that our rule does not preclude making multiple concurrent requests to storage at the same time. You can still say:</p>
 	<pre class="language-javascript"><code class="language-javascript">let promise1 = this.storage.get("foo");
