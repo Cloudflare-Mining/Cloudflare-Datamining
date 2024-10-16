@@ -241,6 +241,18 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
+												"contentfulId": "1qAsmkjsmiBZKfbsgHG618",
+												"locale": "en-US",
+												"title": "Education",
+												"description": "For academic institutions",
+												"url": "https://www.cloudflare.com/education/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
 												"contentfulId": "3P5hryW8teFIhTBtVHyZ05",
 												"locale": "en-US",
 												"title": "Finance",
@@ -1182,6 +1194,30 @@
 												"navigationLinks": [
 													{
 														"contentTypeId": "elementNavLink",
+														"contentfulId": "2osj84l1r7N8suQkWUpNgy",
+														"locale": "en-US",
+														"title": "Workers Quick Start",
+														"description": null,
+														"url": "https://developers.cloudflare.com/workers/learning/getting-started",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "480rnATGJFF7KIFjD5WVYz",
+														"locale": "en-US",
+														"title": "Workers Pages",
+														"description": null,
+														"url": "https://developers.cloudflare.com/pages/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
 														"contentfulId": "3SyYEpphf1LOsfdptDFwTq",
 														"locale": "en-US",
 														"title": "Sample Workers Projects",
@@ -1211,6 +1247,18 @@
 														"title": "Command-line (Wrangler)",
 														"description": null,
 														"url": "https://developers.cloudflare.com/workers/tooling/wrangler",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "3FCBV0El2HlIgsNVn71GOp",
+														"locale": "en-US",
+														"title": "Runtime",
+														"description": null,
+														"url": "https://developers.cloudflare.com/workers/reference/apis",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": true,
@@ -2348,6 +2396,18 @@
 								"navigationLinks": [
 									{
 										"contentTypeId": "elementNavLink",
+										"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
+										"locale": "en-US",
+										"title": "Community Support",
+										"description": null,
+										"url": "https://community.cloudflare.com/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
 										"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
 										"locale": "en-US",
 										"title": "Help Center",
@@ -2482,6 +2542,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4UL2kTPsB5NHjF54e7lo0n",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudflare extends inline security controls to deliver simple, preventative cloud security. </span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/cloudflare-acquires-kivera/\">\n           <strong>Announcement ></strong>\n        </a>\n    </div>\n</section>\n",
+						"htmlId": null
+					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
