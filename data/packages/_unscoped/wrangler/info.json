@@ -1,10 +1,13 @@
 {
 	"name": "wrangler",
 	"description": "Command-line interface for all things Cloudflare Workers",
-	"version": "3.80.4",
-	"date": "2024-10-11T15:34:07.991Z",
+	"version": "3.80.5",
+	"date": "2024-10-16T12:01:44.488Z",
 	"links": {
-		"npm": "https://www.npmjs.com/package/wrangler"
+		"npm": "https://www.npmjs.com/package/wrangler",
+		"homepage": "https://github.com/cloudflare/workers-sdk#readme",
+		"repository": "https://github.com/cloudflare/workers-sdk",
+		"bugs": "https://github.com/cloudflare/workers-sdk/issues"
 	},
 	"tags": {
 		"pages": {
@@ -35,10 +38,6 @@
 			"version": "0.0.0-d27c287a",
 			"date": "2024-04-04T23:08:52.885Z"
 		},
-		"dispatch-namespaces-dev": {
-			"version": "0.0.0-2ca4eaef5",
-			"date": "2024-10-15T16:18:18.055Z"
-		},
 		"legacy-beta": {
 			"version": "0.0.0-c27d946d8",
 			"date": "2024-10-08T12:30:40.318Z"
@@ -47,17 +46,21 @@
 			"version": "2.21.2",
 			"date": "2024-10-08T12:30:45.631Z"
 		},
-		"latest": {
-			"version": "3.80.4",
-			"date": "2024-10-11T15:34:07.991Z"
-		},
 		"workflows": {
 			"version": "0.0.0-1e55a43a9",
 			"date": "2024-10-15T10:05:12.733Z"
 		},
+		"dispatch-namespaces-dev": {
+			"version": "0.0.0-2ca4eaef5",
+			"date": "2024-10-15T16:18:18.055Z"
+		},
 		"beta": {
-			"version": "0.0.0-0c7b346eb",
-			"date": "2024-10-15T14:43:04.218Z"
+			"version": "0.0.0-e4a8591e7",
+			"date": "2024-10-16T12:06:04.274Z"
+		},
+		"latest": {
+			"version": "3.80.5",
+			"date": "2024-10-16T12:01:44.488Z"
 		}
 	}
 }
