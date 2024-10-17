@@ -555,37 +555,23 @@
 									},
 									{
 										"contentTypeId": "navNavigationItem",
-										"contentfulId": "5vKFd8RBNRTLXaa6aheubN",
+										"contentfulId": "4oL0Xdb9Y4erdV4GCHEswP",
 										"locale": "en-US",
-										"name": "Consumer services",
+										"name": "Get 1.1.1.1",
 										"description": null,
-										"mainLink": null,
-										"navigationLinks": [
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6lfp6NJmhnGjuiIQEcz4Om",
-												"locale": "en-US",
-												"title": "1.1.1.1",
-												"description": "Fast & private way to browse the Internet",
-												"url": "https://one.one.one.one/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5kIH5qKtuPXMa4ISH10hcB",
-												"locale": "en-US",
-												"title": "Domain registration",
-												"description": "Register or transfer a domain",
-												"url": "/products/registrar/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											}
-										],
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4paxgo4Sco4YzkdZiALaSK",
+											"locale": "en-US",
+											"title": "Get 1.1.1.1",
+											"description": null,
+											"url": "https://one.one.one.one/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
 										"hideOnChinaSite": false,
@@ -598,12 +584,12 @@
 										"contentTypeId": "elementNavLink",
 										"contentfulId": "62m7sThVERhLaPdqmxfX5N",
 										"locale": "en-US",
-										"title": "View What's New",
+										"title": "Latest product news",
 										"description": null,
-										"url": "/whats-new",
+										"url": "https://blog.cloudflare.com/tag/product-news/ ",
 										"badges": null,
 										"specialLinkType": "NAV_BOTTOM_LINK",
-										"openInNewWindow": false,
+										"openInNewWindow": true,
 										"isExternalUrl": null
 									},
 									{
