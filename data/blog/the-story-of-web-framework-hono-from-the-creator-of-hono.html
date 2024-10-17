@@ -1,0 +1,391 @@
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wBjFUeRwG8UK5pMTRXVDh/9bb4d7e3c9aa5c4f6d74d6b3926af5b2/image4.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><a href="https://hono.dev"><u>Hono</u></a> is a fast, lightweight web framework that runs anywhere JavaScript does, built with Web Standards. Of course, it runs on Cloudflare Workers.</p>
+	<p>It was three years ago, in December 2021. At that time, I wanted to create applications for Cloudflare Workers, but the code became verbose without using a framework, and couldn't find a framework that suited my needs. <a href="https://itty.dev/itty-router"><u>Itty-router</u></a> was very nice but too simple. <a href="https://github.com/lukeed/worktop"><u>Worktop</u></a> and <a href="https://sunderjs.com"><u>Sunder</u></a> did the same things I wanted to do, but their APIs weren't quite to my liking. I was also interested in creating a router — a program that determines which action is executed based on the HTTP method and URL path of the Request — made of a <a href="https://en.wikipedia.org/wiki/Trie"><u>Trie tree</u></a> structure because it’s fast. So, I started building a web framework with a Trie tree-based router.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eWlTEPSJmX4grfpKi795b/d6596a29931dc0e24602683742916009/image7.png" alt="" class="kg-image" width="954" height="236" loading="lazy">
+	</figure>
+	<p>&nbsp;“<i>While trying to create my applications, I ended up creating my framework for them.”</i> — a classic example of <a href="https://en.wiktionary.org/wiki/yak_shaving"><u>yak shaving</u></a>. However, Hono is now used by many developers, including Cloudflare, which uses Hono in core products. So, this journey into the depths of yak shaving was ultimately meaningful.</p>
+	<div class="flex anchor relative">
+		<h2 id="write-once-run-anywhere">Write once, run anywhere</h2>
+		<a href="https://blog.cloudflare.com/#write-once-run-anywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hono truly runs anywhere — not just on Cloudflare Workers. I’ll discuss why later in the post, but Hono also runs on Deno, Bun, and Node.js. This is because Hono does not depend on external libraries, but uses only the Web Standards API, and each runtime supports Web Standards.</p>
+	<p>It's a delight for developers to know that the same code can run across different runtimes. For instance, the following src/index.ts code will run on Cloudflare Workers, Deno, and Bun.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Hono } from 'hono'
+
+const app = new Hono()
+app.get('/hello', (c) =&gt; c.text('Hello Hono!'))
+
+export default app</code></pre>
+	<p>To run it on Cloudflare Workers, you execute the Wrangler command:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">wrangler dev src/index.ts</code></pre>
+	<p>The same code works on Deno:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">deno serve src/index.ts</code></pre>
+	<p>And it works on Bun too:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">bun run src/index.ts</code></pre>
+	<p>This is only a simple "Hello World" example, but more complex applications with middleware and helpers that are discussed below can be run on Cloudflare Workers or the other runtimes. As proof of this, almost all our test code for Hono itself can run the same way on these runtimes. This is a genuine "<i>write once, run anywhere</i>" experience.</p>
+	<div class="flex anchor relative">
+		<h2 id="who-is-using-hono">Who is using Hono?</h2>
+		<a href="https://blog.cloudflare.com/#who-is-using-hono" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hono is now used by many developers and companies. For example, <a href="https://unkey.dev"><u>Unkey</u></a> deploys their application built with <a href="https://hono.dev/examples/zod-openapi"><u>Hono's OpenAPI feature</u></a> to Cloudflare Workers. The following is a list of companies using Hono, based on my survey "<a href="https://github.com/orgs/honojs/discussions/1510"><u>Who is using Hono in production?</u></a>”.</p>
+	<ul>
+		<li>
+			<p>Cloudflare</p>
+		</li>
+		<li>
+			<p><a href="https://nodecraft.com"><u>Nodecraft</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://www.openstatus.dev"><u>OpenStatus</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://www.unkey.com"><u>Unkey</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://about.goen-s.com"><u>Goens</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://notahotel.com"><u>NOT A HOTEL</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://www.cyberagent.co.jp"><u>CyberAgent</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://www.ai-shift.co.jp"><u>AI shift</u></a></p>
+		</li>
+		<li>
+			<p><a href="http://hanabi.rest"><u>Hanabi.rest</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://baseai.dev"><u>BaseAI</u></a>
+			</p>
+		</li>
+	</ul>
+	<p>There are many, many more companies not listed here. And major web services or libraries, such as <a href="https://www.prisma.io"><u>Prisma</u></a>, <a href="https://resend.com"><u>Resend</u></a>, <a href="https://sdk.vercel.ai"><u>Vercel AI SDK</u></a>, <a href="https://supabase.com"><u>Supabase</u></a>, and <a href="https://upstash.com"><u>Upstash</u></a>, use Hono in their examples. There are also several influencers who like Hono and use it as an alternative to <a href="https://expressjs.com"><u>Express</u></a>.</p>
+	<p>Of course, at Cloudflare, we also use Hono. D1 uses Hono for the internal Web API running on Workers. Workers Logs is based on code from <a href="https://blog.cloudflare.com/cloudflare-acquires-baselime-expands-observability-capabilities"><u>Baselime (acquired by Cloudflare)</u></a> and uses Hono to migrate the applications from their original infrastructure to Cloudflare Workers. All Workers Logs internal or customer-facing APIs are run on Workers using Hono. We also use Hono as part of the internals of many other products, such as KV and Queues.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-are-you-making-a-multi-runtime-framework">Why are you making a “multi-runtime” framework?</h2>
+		<a href="https://blog.cloudflare.com/#why-are-you-making-a-multi-runtime-framework" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You might wonder “<i>Why is an employee of Cloudflare creating a framework that runs everywhere?</i>” Initially, Hono was designed to work exclusively with Cloudflare Workers. However, starting with <a href="https://github.com/honojs/hono/releases/tag/v2.0.0"><u>version 2</u></a>, I added support for Deno and Bun. This was a very wise decision. If Hono had been targeted only at Cloudflare Workers, it might not have attracted as many users. By running on more runtimes, it gains more users, leading to the discovery of bugs and receiving more feedback, which ultimately leads to higher quality software.</p>
+	<div class="flex anchor relative">
+		<h2 id="hono-and-cloudflare-are-a-perfect-combo">Hono and Cloudflare are a perfect combo</h2>
+		<a href="https://blog.cloudflare.com/#hono-and-cloudflare-are-a-perfect-combo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The combination of Hono and Cloudflare offers a delightful developer experience.</p>
+	<p>Many websites, including <a href="https://developers.cloudflare.com"><u>our Cloudflare Docs</u></a>, introduce the following "vanilla" JavaScript as a "Hello World" for Cloudflare Workers:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
+  fetch: () =&gt; {
+    return new Response('Hello World!')
+  }
+}
+</code></pre>
+	<p>This is primitive and good for understanding the Workers principle. However, if you want to create an endpoint that "returns a JSON response for GET requests that come to <code>/books</code>", you need to write something like this:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
+  fetch: (req) =&gt; {
+    const url = new URL(req.url)
+    if (req.method === 'GET' &amp;&amp; url.pathname === '/books') {
+      return Response.json({
+        ok: true
+      })
+    }
+    return Response.json(
+      {
+        ok: false
+      },
+      {
+        status: 404
+      }
+    )
+  }
+}
+</code></pre>
+	<p>If you use Hono, you can write it like the following:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Hono } from 'hono'
+
+const app = new Hono()
+
+app.get('/books', (c) =&gt; {
+  return c.json({
+    ok: true
+  })
+})
+
+export default app</code></pre>
+	<p>It is short. And you can understand that “it handles <code>GET</code> accesses to <code>/books</code>” intuitively.</p>
+	<p>If you want to handle <code>GET</code> requests to <code>/authors/yusuke</code> and get "yusuke" from the path —&nbsp; "yusuke" is variable, you have to add something more complicated. The below is "vanilla" JavaScript example:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">if (req.method === 'GET') {
+  const match = url.pathname.match(/^\/authors\/([^\/]+)/)
+  if (match) {
+    const author = match[1]
+    return Response.json({
+      Author: author
+    })
+  }
+}
+</code></pre>
+	<p>If you use Hono, you don't need <code>if</code> statements. Just add the endpoint definition to the <code>app</code>. Also, you don't need to write a regular expression to get "yusuke". You can get it with the function <code>c.req.param()</code>:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">app.get('/authors/:name', (c) =&gt; {
+  const author = c.req.param('name')
+  return c.json({
+    Author: author
+  })
+})
+</code></pre>
+	<p>One or two routes may be fine, but any more than that and maintenance becomes tricky. Code becomes more complex and bugs are harder to find. Using Hono, the code is very neat.</p>
+	<p>It is also easy to handle bindings to Cloudflare products, such as <a href="https://developers.cloudflare.com/kv"><u>KV</u></a>, <a href="https://developers.cloudflare.com/r2"><u>R2</u></a>, <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>, etc. as Hono uses a "context model". A context is a container that holds the application's state until a request is received, and a response is returned. You can use a context to retrieve a request object, set response headers, and create custom variables. It also holds Cloudflare bindings. For example, if you set up a Cloudflare KV namespace with the name <code>MY_KV</code>, you can access it as follows, with TypeScript type completion.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Hono } from 'hono'
+
+type Env = {
+  Bindings: {
+    MY_KV: KVNamespace
+  }
+}
+
+const app = new Hono&lt;Env&gt;()
+
+app.post('/message', async (c) =&gt; {
+  const message = c.req.query('message') ?? 'Hi'
+  await c.env.MY_KV.put('message', message)
+  return c.text(`message is set`, 201)
+})</code></pre>
+	<p>Hono lets you write code in a simple and intuitive way, but that doesn't mean there are limitations. You can do everything possible with Cloudflare Workers using Hono.</p>
+	<div class="flex anchor relative">
+		<h2 id="add-it-when-you-want-to-use-it">Add it when you want to use it</h2>
+		<a href="https://blog.cloudflare.com/#add-it-when-you-want-to-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hono is tiny. With the smallest preset, <code>hono/tiny</code>, you can write a "Hello World" application in just 12 KB. This is because it uses only the Web Standards API built into the runtime and has minimal functions. In comparison, the bundle size of Express is <a href="https://bundlephobia.com/package/express@4.21.0"><u>579 KB</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Av7EyqZPKagcswI0xgwd1/713fccc1608b7eeb97d2e63b18765737/image1.png" alt="" class="kg-image" width="1460" height="210" loading="lazy">
+	</figure>
+	<p>However, there is much that you can do.</p>
+	<p>You can easily add functions using middleware. For example, it is a bit tedious to implement Basic Authentication from scratch, but with the built-in <a href="https://hono.dev/docs/middleware/builtin/basic-auth"><u>Basic Auth middleware</u></a>, you can apply Basic Authentication to the path <code>/auth/page</code> with just this:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Hono } from 'hono'
+import { basicAuth } from 'hono/basic-auth'
+
+const app = new Hono()
+
+app.use(
+  '/auth/*',
+  basicAuth({
+    username: 'hono',
+    password: 'acoolproject',
+  })
+)
+
+app.get('/auth/page', (c) =&gt; {
+  return c.text('You are authorized')
+})
+</code></pre>
+	<p>Hono's package also includes built-in middleware that allows Bearer and JWT authentication, and easy configuration of CORS, etc. These built-in middleware components do not depend on external libraries, but there is also many 3rd-party middleware that allow the use of external libraries, such as authentication middleware using <a href="https://clerk.com"><u>Clerk</u></a> and <a href="https://authjs.dev"><u>Auth.js</u></a>, and validators using <a href="https://zod.dev"><u>Zod</u></a> and <a href="https://valibot.dev"><u>Valibot</u></a>.</p>
+	<p>There are also a number of built-in helpers, including the <a href="https://hono.dev/docs/helpers/streaming"><u>Streaming helper</u></a>, which is useful for implementing AI. These can be added when you want to use them, and the file size increases only when they are added.</p>
+	<p>In Cloudflare Workers, <a href="https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits"><u>there is a limit to a file size of a Worker</u></a>. Keeping the core small and extending functions with middleware and helpers makes a lot of sense.</p>
+	<div class="flex anchor relative">
+		<h2 id="onion-structure">Onion structure</h2>
+		<a href="https://blog.cloudflare.com/#onion-structure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The important concepts of Hono are ”handler” and "middleware”.</p>
+	<p>A handler is a place to write a function that receives a request and returns a response, as specified by the user. For example, you can write a handler that gets a value of a query parameter, retrieves data from a database, and returns the result in JSON. Middleware can handle the requests that come to the handler and the responses that the handler returns. You can combine middleware with other middleware to build more large and complex applications. It is structured like an onion.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GniuL8WPyoXpvbULJbqDc/c8308c5eb6255ddaacda4b197ed424be/image2.png" alt="" class="kg-image" width="780" height="1200" loading="lazy">
+	</figure>
+	<p>In a remarkably simple way, you can create middleware. For example, a custom logger that logs the request can be written as follows:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">app.use(async (c, next) =&gt; {
+  console.log(`[${c.req.method}] ${c.req.path}`)
+  await next()
+})
+</code></pre>
+	<p>If you want to add a custom header to the response, write the following:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">app.use(async (c, next) =&gt; {
+  await next()
+  c.header('X-Message', 'Hi, this is Hono!')
+})
+</code></pre>
+	<p>It would be interesting to combine this with <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter"><u>HTMLRewriter</u></a>. If an endpoint returns HTML, the middleware that modifies the HTML tags in it can be written as follows:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">app.get('/pages/*', async (c, next) =&gt; {
+  await next()
+
+  class AttributeRewriter {
+    constructor(attributeName) {
+      this.attributeName = attributeName
+    }
+    element(element) {
+      const attribute = element.getAttribute(this.attributeName)
+      if (attribute) {
+        element.setAttribute(this.attributeName, attribute.replace('oldhost', 'newhost'))
+      }
+    }
+  }
+  const rewriter = new HTMLRewriter().on('a', new AttributeRewriter('href'))
+
+  const contentType = c.res.headers.get('Content-Type')
+
+  if (contentType!.startsWith('text/html')) {
+    c.res = rewriter.transform(c.res)
+  }
+})
+</code></pre>
+	<p>There is very little to remember to create middleware. All you have to do is to work with the context, which you should already know.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-rpc-is-like-magic">The RPC is like magic</h2>
+		<a href="https://blog.cloudflare.com/#the-rpc-is-like-magic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hono has a strong type system. One feature that uses this is RPC (Remote Procedure Call). With RPC, you can express server-side API specifications as TypeScript types. When these types are loaded as generics in a client, the paths, arguments, and return types of each API endpoint are inferred. It's like magic.</p>
+	<p>For example, imagine an endpoint for creating a blog post. This endpoint takes a <code>number</code> type <code>id</code> and a <code>string</code> type <code>title</code>. Using <a href="https://zod.dev"><u>Zod</u></a>, one of the validator libraries that support TypeScript inference, you can define the schema like this:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { z } from 'zod'
+
+const schema = z.object({
+  id: z.number(),
+  title: z.string()
+})
+</code></pre>
+	<p>You create a handler that receives this object in JSON format via a POST request to the path <code>/posts</code>. Using <a href="https://github.com/honojs/middleware/tree/main/packages/zod-validator"><u>Zod Validator</u></a>, you check if it matches the schema. The response will have a property called message of type string.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { zValidator } from '@hono/zod-validator'
+
+const app = new Hono().basePath('/v1')
+
+// ...
+
+const routes = app.post('/posts', zValidator('json', schema), (c) =&gt; {
+  const data = c.req.valid('json')
+  return c.json({
+    message: `${data.id.toString()} is ${data.title}`
+  })
+})
+</code></pre>
+	<p>This is a “typical” Hono handler. However, the TypeScript type you can get from the <code>typeof</code> for the <code>routes</code> will contain the information about its Web API specification. In this case, it includes the endpoint for creating blog posts — sending a POST request to the path <code>/posts</code> returns a JSON object.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export type AppType = typeof routes</code></pre>
+	<p>Now, let's create a client. You pass the earlier <code>AppType</code> as generics to a Hono client object.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { hc } from 'hono/client'
+import { AppType } from '.'
+
+const client = hc&lt;AppType&gt;('http://localhost:8787')</code></pre>
+	<p>With this setup, you're ready. It's magic time.</p>
+	<div style="position: relative; padding-top: 69.58762886597938%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5a02ffd617b6543880f82d37e3a6e193/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5a02ffd617b6543880f82d37e3a6e193%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>Code completion works perfectly. When you write client-side code, you no longer need to know the API specifications completely, which also helps eliminate mistakes.</p>
+	<div class="flex anchor relative">
+		<h2 id="server-side-jsx-is-fun">Server-side JSX is fun</h2>
+		<a href="https://blog.cloudflare.com/#server-side-jsx-is-fun" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hono provides built-in JSX, a syntax that allows you to write code in JavaScript that looks like HTML tags. When you hear the term JSX, you may think of React, a front-end UI library. However, Hono's JSX was initially developed to run only on the server side. When we first started developing Hono, we were looking for template engines to render HTML. Most template engines, such as <a href="https://handlebarsjs.com"><u>Handlebars</u></a> and <a href="https://ejs.co"><u>EJS</u></a>, use <code>eval</code> internally and are incompatible with Cloudflare Workers, which does not support it. Then we came up with the idea of using JSX.</p>
+	<p>Hono's JSX is unique in that it treats the tags as a string. So the following strange code actually works.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">console.log((&lt;h1&gt;Hello!&lt;/h1&gt;).toString())</code></pre>
+	<p>There is no need to do <code>renderToString()</code> as in React. If you want to render HTML, just return this as is.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">app.get('/', (c) =&gt; c.html(&lt;h1&gt;Hello&lt;/h1&gt;))</code></pre>
+	<p>Very interesting is the creation of <code>Suspense</code> — a feature in React that allows you to display a fallback UI while waiting for an asynchronous component to load — without any client implementation. The asynchronous components are running in a server-only implementation.</p>
+	<div style="position: relative; padding-top: 45.1505016722408%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/ed29b296092f9ada4999857456ba02d2/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fed29b296092f9ada4999857456ba02d2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>Server-side JSX is a better developer experience than you might imagine. You can use the toolchains for React's JSX in the same way for Hono's JSX, including the ability to complete tags in the editor. They bring mature front-end technology to the server side.</p>
+	<div class="flex anchor relative">
+		<h2 id="testing-is-important">Testing is important</h2>
+		<a href="https://blog.cloudflare.com/#testing-is-important" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Testing is important. Fortunately, you can write tests easily when using Hono.</p>
+	<p>For example, let's write a test for an endpoint. To test for a 200 response status of a request coming to <code>/</code> with the GET method, you can write the following:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">it('should return 200 response', async () =&gt; {
+  const res = await app.request('/')
+  expect(res.status).toBe(200)
+})
+</code></pre>
+	<p>Simple, right? The beauty of this test is that you don't have to bring up the server. The Web Standard API black boxes the server layer. The internal tests of Hono have 20,000 lines of code, but most of them are written in the same style as above, without the server up and running.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="going-to-full-stack">Going to full-stack</h2>
+		<a href="https://blog.cloudflare.com/#going-to-full-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We released a new major <a href="https://github.com/honojs/hono/releases/tag/v4.0.0"><u>version 4</u></a> in February 2024. There are three main features that stand out:</p>
+	<ol>
+		<li>
+			<p>Static site generation</p>
+		</li>
+		<li>
+			<p>Client components</p>
+		</li>
+		<li>
+			<p>File-based routing</p>
+		</li>
+	</ol>
+	<p>With these features, you can create full-stack applications with a user interface in Hono.</p>
+	<p>The introduction of client components allows JSX to work in the client. Now you can add interactions to your pages. Static site generation allows you to create blogs, etc. without having to bundle them into a single JavaScript file. We have also started an experimental project called <a href="https://github.com/honojs/honox"><u>HonoX</u></a>. This is a meta-framework using Hono and Vite that provides file-based routing and a mechanism to hydrate client-side components to server-side generated HTML. It is easier to create larger applications that are a great match for Cloudflare Pages or Workers.</p>
+	<p>In addition to that, plans are underway to run it as a base server for existing full-stack frameworks such as <a href="https://remix.run"><u>Remix</u></a> and <a href="https://qwik.dev"><u>Qwik</u></a>.</p>
+	<p>In contrast to the <a href="https://nextjs.org"><u>Next.js</u></a> framework, which started from the client-side with React, Hono is trying to become a full-stack framework starting from the server-side.</p>
+	<div class="flex anchor relative">
+		<h2 id="hono-conference">Hono Conference</h2>
+		<a href="https://blog.cloudflare.com/#hono-conference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>On June 22, 2024, I held the <a href="https://blog.yusu.ke/hono-conference-2024"><u>"Hono Conference" in Tokyo</u></a>, the first event to consist entirely of Hono-focused talks. One hundred people attended, and the event was a great success.</p>
+	<p>It was my dream to do this event. Now, there are 200 contributors to the <a href="https://github.com/honojs/hono"><code><u>honojs/hono</u></code></a> repository on GitHub. If you include other Hono related repositories, there are many more. Creating "the most invincible framework we could think of" is a lot of fun for contributors and users.</p>
+	<p>Below is a group photo taken at the end of the event. This is my treasure. I want to make the 2nd event a global event.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EKltkDZeAvWzxVtnewOH6/995bceacd2ad37c59885e732e51bae87/image3.jpg" alt="" class="kg-image" width="1999" height="698" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="hono-is-yan">Hono is 炎</h2>
+		<a href="https://blog.cloudflare.com/#hono-is-yan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>I haven't mentioned the origin of the name Hono yet. The name Hono is from the Japanese word for "<i>炎</i>". It is similar to the word "<i>flare</i>". Hono now runs on a variety of runtimes, but I said that it was first created to create Cloud"<i>flare</i>" Workers applications. It is an honor for Cloudflare that it has remained in its name.</p>
+	<p>That is all that the creator of Hono has to say about Hono.</p>
+	<div class="flex anchor relative">
+		<h2 id="just-try-it">Just try it</h2>
+		<a href="https://blog.cloudflare.com/#just-try-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Everyone who has experienced application development with Hono and Cloudflare Workers says "<i>the developer experience is a great experience</i>". If you haven't experienced it yet, just try it.</p>
+	<p>See <a href="https://hono.dev"><u>the Hono website</u></a> for how to get started. If you are interested in reporting issues or contributing, please see <a href="https://github.com/honojs"><u>the GitHub project</u></a>.</p>
+</div>
