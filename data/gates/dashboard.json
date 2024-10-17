@@ -113,7 +113,8 @@
 		"enabled": true,
 		"branches": [
 			"control",
-			"extra-pricing-details"
+			"extra-pricing-details",
+			"down-2024-10-14"
 		]
 	},
 	"argo-checkout-flow-experiment-test-1": {
@@ -311,14 +312,6 @@
 	},
 	"dashboard-change-notifications-starred-zones": {
 		"enabled": true
-	},
-	"dashboard-preview-canary": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"branch-3",
-			"live-a6357515011f24436c20efb423434295e9f1210f"
-		]
 	},
 	"dashboard-search": {
 		"enabled": true
@@ -1459,6 +1452,14 @@
 	"workers-and-pages-config-v2": {
 		"enabled": true
 	},
+	"workers-builds-scm-status-github": {
+		"enabled": false,
+		"branches": [
+			"degraded",
+			"down",
+			"up"
+		]
+	},
 	"workers-for-platforms": {
 		"enabled": true
 	},
@@ -1567,9 +1568,6 @@
 	},
 	"zone-overview-adaptive-node": {
 		"enabled": true
-	},
-	"zone-overview-promo-experiment": {
-		"enabled": false
 	},
 	"zone-versioning-comparison-feature": {
 		"enabled": true
