@@ -1298,6 +1298,14 @@
 	"targeting-test-feature-flag": {
 		"enabled": false
 	},
+	"test-experiment-123": {
+		"enabled": false,
+		"branches": [
+			"a",
+			"b",
+			"incident-2024-10-17"
+		]
+	},
 	"test-test": {
 		"enabled": false,
 		"branches": [
