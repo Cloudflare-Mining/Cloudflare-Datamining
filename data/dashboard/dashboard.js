@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "09ea9224-ada2-5d6a-a349-3bc15f26191d")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "3e7435c0-f123-5671-9e10-092d89ba562f")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -506,8 +506,8 @@
 				}))
 			}
 			var Te = n("../libs/init/initBootstrap.ts"),
-				Pe = n("webpack/sharing/consume/default/react/react"),
-				Ee = n.n(Pe),
+				Oe = n("webpack/sharing/consume/default/react/react"),
+				Ee = n.n(Oe),
 				Re = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
 				Se = n("webpack/sharing/consume/default/react-dom/react-dom"),
 				xe = n("webpack/sharing/consume/default/react-redux/react-redux"),
@@ -520,7 +520,7 @@
 				Ae = n.n(ye),
 				ke = n("../react/utils/translator.tsx"),
 				nt = n("../../../common/intl/intl-react/src/index.ts"),
-				Oe = n("../../../dash/intl/intl-translations/src/index.ts"),
+				Pe = n("../../../dash/intl/intl-translations/src/index.ts"),
 				bt = n("../node_modules/query-string/query-string.js"),
 				lt = n.n(bt),
 				Mt = n("../react/common/actions/userActions.ts"),
@@ -567,7 +567,7 @@
 			}
 			let $e = lt().parse(location.search);
 			const At = P => {
-					const R = (0, Tt.$8)() ? [(0, Oe.Fy)(Oe.if.changes), (0, Oe.Fy)(Oe.if.common), (0, Oe.Fy)(Oe.if.navigation), (0, Oe.Fy)(Oe.if.overview), (0, Oe.Fy)(Oe.if.onboarding), (0, Oe.Fy)(Oe.if.invite), (0, Oe.Fy)(Oe.if.login), (0, Oe.Fy)(Oe.if.dns), (0, Oe.Fy)(Oe.n4.ssl_tls), (0, Oe.Fy)(Oe.if.message_inbox)] : [(0, Oe.Fy)(Oe.if.common), (0, Oe.Fy)(Oe.if.invite), (0, Oe.Fy)(Oe.if.login), (0, Oe.Fy)(Oe.if.onboarding)];
+					const R = (0, Tt.$8)() ? [(0, Pe.Fy)(Pe.if.changes), (0, Pe.Fy)(Pe.if.common), (0, Pe.Fy)(Pe.if.navigation), (0, Pe.Fy)(Pe.if.overview), (0, Pe.Fy)(Pe.if.onboarding), (0, Pe.Fy)(Pe.if.invite), (0, Pe.Fy)(Pe.if.login), (0, Pe.Fy)(Pe.if.dns), (0, Pe.Fy)(Pe.n4.ssl_tls), (0, Pe.Fy)(Pe.if.message_inbox), (0, Pe.Fy)(Pe.if.welcome)] : [(0, Pe.Fy)(Pe.if.common), (0, Pe.Fy)(Pe.if.invite), (0, Pe.Fy)(Pe.if.login), (0, Pe.Fy)(Pe.if.onboarding)];
 					$e.lang ? Bt(P) : q.Z.get(ot.th) && Pt(P, q.Z.get(ot.ly));
 					const Z = async oe => (await Promise.all(R.map(Ce => Ce(oe)))).reduce((Ce, ve) => ut({}, Ce, ve), {});
 					return Ee().createElement(nt.RD.Provider, {
@@ -665,7 +665,7 @@
 				const R = (0, Ke.p4)(pt.PR),
 					Z = (R == null || (P = R.email) === null || P === void 0 ? void 0 : P.endsWith("@cloudflare.com")) ? "cf-internal-employee" : "regular-user",
 					oe = (0, De.Yc)();
-				(0, Pe.useEffect)(() => {
+				(0, Oe.useEffect)(() => {
 					oe({
 						userType: Z
 					})
@@ -687,7 +687,7 @@
 					rt = (0, Ke.p4)(Et.Xu),
 					st = (0, Ke.p4)(Et.uF),
 					Ct = !rt.isRequesting && !!rt.data;
-				(0, Pe.useEffect)(() => {
+				(0, Oe.useEffect)(() => {
 					Z && Ct && st && ve && Z === st.account.id ? oe({
 						accountId: st.account.id,
 						is_ent: je
@@ -699,7 +699,7 @@
 			function Kt() {
 				const P = (0, Ke.p4)(Dt.nA),
 					R = (0, De.Yc)();
-				(0, Pe.useEffect)(() => {
+				(0, Oe.useEffect)(() => {
 					var Z;
 					R({
 						zone_id: P == null ? void 0 : P.id,
@@ -713,7 +713,7 @@
 				Qt = n("../react/app/components/LoadingSuspense.tsx");
 			const Xt = Ee().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(12821), n.e(94012), n.e(13142), n.e(72019), n.e(85403), n.e(5668), n.e(60091), n.e(77216), n.e(60003), n.e(39760), n.e(94923), n.e(60734), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Jt = () => Ee().createElement(Qt.Z, null, Ee().createElement(Xt, null));
-			const qt = () => (Pe.useEffect(() => re, []), null);
+			const qt = () => (Oe.useEffect(() => re, []), null);
 			var en = n("../../../../node_modules/moment/moment.js"),
 				$t = n.n(en);
 			const tn = P => {
@@ -739,13 +739,13 @@
 				},
 				nn = () => {
 					const P = (0, Ke.p4)(me.r);
-					(0, Pe.useEffect)(() => {
+					(0, Oe.useEffect)(() => {
 						const R = tn(P);
 						R !== $t().locale() && $t().locale(R), document.documentElement.lang = P
 					}, [P])
 				},
 				on = () => {
-					(0, Pe.useEffect)(() => {
+					(0, Oe.useEffect)(() => {
 						async function P() {
 							var R, Z;
 							let oe;
@@ -761,8 +761,8 @@
 			const an = () => {
 					var P;
 					const R = (0, Re.useLocation)(),
-						[Z, oe] = (0, Pe.useState)(((P = window) === null || P === void 0 ? void 0 : P.localStorage.getItem("gates_devtools_ui_gates_controller_enabled")) === "true");
-					return (0, Pe.useEffect)(() => {
+						[Z, oe] = (0, Oe.useState)(((P = window) === null || P === void 0 ? void 0 : P.localStorage.getItem("gates_devtools_ui_gates_controller_enabled")) === "true");
+					return (0, Oe.useEffect)(() => {
 						const ue = lt().parse(R.search);
 						if (ue.pt && q.Z.set(rn.sJ, ue.pt), ue == null ? void 0 : ue.devPanel) {
 							var Ce, ve;
@@ -781,7 +781,7 @@
 					const {
 						devPanelEnabled: R
 					} = an();
-					return Ee().createElement(Pe.Suspense, {
+					return Ee().createElement(Oe.Suspense, {
 						fallback: Ee().createElement(qt, null)
 					}, Ee().createElement(Re.Switch, null, !P && !0 && Ee().createElement(Re.Route, {
 						exact: !0,
@@ -804,22 +804,22 @@
 			const zt = Ee().lazy(() => Promise.all([n.e(10008), n.e(94012), n.e(6368), n.e(44264), n.e(33970)]).then(n.bind(n, "../react/AuthOnlyProviders.tsx"))),
 				dn = () => {
 					const P = (0, Tt.$8)(),
-						[R, Z] = (0, Pe.useState)(P ? zt : Ee().Fragment),
-						[oe, ue] = (0, Pe.useState)((0, C.Yc)());
-					(0, Pe.useEffect)(() => {
+						[R, Z] = (0, Oe.useState)(P ? zt : Ee().Fragment),
+						[oe, ue] = (0, Oe.useState)((0, C.Yc)());
+					(0, Oe.useEffect)(() => {
 						(0, C.fF)(() => ue((0, C.Yc)()))
 					}, []);
 					const Ce = ve => {
 						ue(ve), (0, C.C8)(ve)
 					};
-					return (0, Pe.useEffect)(() => {
+					return (0, Oe.useEffect)(() => {
 						Z(P ? zt : Ee().Fragment)
-					}, [P]), (0, Pe.useEffect)(() => {
+					}, [P]), (0, Oe.useEffect)(() => {
 						const ve = () => Ce(localStorage.getItem("dark-mode"));
 						return window.addEventListener("storage", ve), () => {
 							window.removeEventListener("storage", ve)
 						}
-					}, []), Ee().createElement(Pe.Suspense, {
+					}, []), Ee().createElement(Oe.Suspense, {
 						fallback: null
 					}, Ee().createElement(xe.Provider, {
 						store: (0, l.bh)()
@@ -912,10 +912,10 @@
 					n.g.build = fn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "6ec05da4064721a1b045c574c8c54d9ad5317986",
-						dashVersion: "28091515",
+						commit: "aebbd9bf144911ac8fd5425fae746087d4b72ce9",
+						dashVersion: "28121055",
 						env: "production",
-						builtAt: 1729102888911,
+						builtAt: 1729179637899,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -5287,7 +5287,7 @@
 					return Q
 				},
 				GE: function() {
-					return Pe
+					return Oe
 				},
 				Ko: function() {
 					return L
@@ -5597,7 +5597,7 @@
 					return (ee == null ? void 0 : ee.lego_state) ? ee.lego_state : ""
 				},
 				Te = M => _e(M) === "signed",
-				Pe = M => le(M).isRequesting,
+				Oe = M => le(M).isRequesting,
 				Ee = M => {
 					const ee = fe(M);
 					return ee && ee.subscription_type ? ee.subscription_type : ""
@@ -9313,7 +9313,7 @@
 					return de
 				},
 				E8: function() {
-					return Oe
+					return Pe
 				},
 				Fl: function() {
 					return pt
@@ -9349,7 +9349,7 @@
 					return Nt
 				},
 				M9: function() {
-					return Pe
+					return Oe
 				},
 				MR: function() {
 					return N
@@ -10189,7 +10189,7 @@
 				return m == null ? void 0 : m.startsWith("Quote error")
 			}
 
-			function Pe(m) {
+			function Oe(m) {
 				return m == null ? void 0 : m.startsWith("Invalid acknowledgement")
 			}
 
@@ -10249,7 +10249,7 @@
 				return !1
 			}
 
-			function Oe(m) {
+			function Pe(m) {
 				var O;
 				return !1
 			}
@@ -13426,10 +13426,10 @@
 								dashVersion: (0, l.t)()
 							}, at);
 						if (le === "identify") {
-							var Te, Pe;
+							var Te, Oe;
 							const M = {
 								gates: (0, a.T2)(xe) || {},
-								country: (Te = n.g) === null || Te === void 0 || (Pe = Te.bootstrap) === null || Pe === void 0 ? void 0 : Pe.ip_country
+								country: (Te = n.g) === null || Te === void 0 || (Oe = Te.bootstrap) === null || Oe === void 0 ? void 0 : Oe.ip_country
 							};
 							return se(le, fe, d({}, it, M, _e))
 						} else {
@@ -13851,6 +13851,7 @@
 					subcategory: t.eg.any.optional,
 					subscribedToMarketing: t.eg.any.optional,
 					subscriptionValues: t.eg.record(t.eg.string, t.eg.any).optional,
+					subcomponent: t.eg.string.optional,
 					success: t.eg.any.optional,
 					supportLevel: t.eg.any.optional,
 					tab: t.eg.any.optional,
@@ -13958,8 +13959,8 @@
 				})),
 				Ze = (se, le) => {
 					const [fe, _e] = ct(le);
-					let Te, Pe;
-					return (0, t.nM)(ze.decode(se)) && (Te = new S.Uh(se)), _e && _e.length > 0 && (Pe = new S.oV(se, _e)), [fe, Te, Pe]
+					let Te, Oe;
+					return (0, t.nM)(ze.decode(se)) && (Te = new S.Uh(se)), _e && _e.length > 0 && (Oe = new S.oV(se, _e)), [fe, Te, Oe]
 				},
 				ct = se => {
 					const le = Ve.decode(se);
@@ -13975,8 +13976,8 @@
 				},
 				Ge = (se, le) => Object.entries(le).reduce((fe, [_e, Te]) => (se.includes(_e) || (fe[_e] = Te), fe), {}),
 				Ye = se => (le, fe, _e) => {
-					const [Te, Pe, Ee] = Ze(fe, _e);
-					if (Pe) throw Pe;
+					const [Te, Oe, Ee] = Ze(fe, _e);
+					if (Oe) throw Oe;
 					return Ee && console.error(Ee), se(le, fe, Te)
 				};
 			var He = n("../react/utils/zaraz.ts");
@@ -15479,4 +15480,4 @@
 	}
 ]);
 
-//# debugId=09ea9224-ada2-5d6a-a349-3bc15f26191d
+//# debugId=3e7435c0-f123-5671-9e10-092d89ba562f

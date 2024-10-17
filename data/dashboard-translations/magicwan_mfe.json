@@ -230,5 +230,9 @@
 	"account.magic_connectors.onramp.breakoutapps.title": "Breakout traffic",
 	"account.magic_connectors.onramp.breakoutapps.description": "Bypass Magic WAN's IPSec tunnels for specific application traffic. When added, application traffic from this on-ramp routes directly to the Internet.",
 	"account.magic_connectors.onramp.prioritizedapps.title": "Prioritized traffic",
-	"account.magic_connectors.onramp.prioritizedapps.description": "Specify applications for the Magic WAN Connector to prioritize ahead of other traffic."
+	"account.magic_connectors.onramp.prioritizedapps.description": "Specify applications for the Magic WAN Connector to prioritize ahead of other traffic.",
+	"account.magic_connectors.onramp.form.delete_onramp.confirm_title": "Delete %{onrampName} on-ramp",
+	"account.magic_connectors.onramp.form.delete_onramp.confirm_description": "By deleting this on-ramp all WANs, LANs, Tunnels and Routes linked to this on-ramp will also be deleted.",
+	"account.magic_connectors.onramp.form.delete_onramp.confirm_text": "I understand that deleting an on-ramp is permanent.",
+	"account.magic_connectors.onramp.add_page.title": "Add on-ramp"
 }
