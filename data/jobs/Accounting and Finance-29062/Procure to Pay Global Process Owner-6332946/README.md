@@ -65,7 +65,7 @@
 <ul>
 	<li>Bachelor's degree in Business Administration, Accounting, Finance, or Economics</li>
 	<li>8+ years of experience in process management, with a track record of successfully optimizing and standardizing global processes</li>
-	<li>Deep understanding of the procure to pay process and experience working on transformational programs; experience with manufacturing supply chain is a bonus&nbsp;&nbsp;</li>
+	<li>Deep understanding of the procure to pay process and experience working on transformational programs;&nbsp;experience with direct and indirect procurement as well as supply chain management is a bonus&nbsp;&nbsp;</li>
 	<li>Proven ability to lead change initiatives and drive process improvements</li>
 	<li>Excellent communication and stakeholder management skills, with the ability to collaborate with cross-functional teams</li>
 	<li>Strong analytical and problem-solving abilities, with a data-driven approach to decision-making</li>
