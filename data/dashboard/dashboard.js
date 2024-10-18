@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "16d7a95f-c89c-5ad6-8b68-7ccdfd42f028")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "2b0e3109-5b33-5508-bc0c-51499a80a5a6")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -442,7 +442,7 @@
 							})],
 							tracesSampleRate: 0,
 							transport: Xe,
-							beforeSend: Ft => (Qe.e.setEventId(Ft.event_id), Ft)
+							beforeSend: Ut => (Qe.e.setEventId(Ut.event_id), Ut)
 						});
 						const Ht = (0, l.bh)().getState();
 						r.rJ({
@@ -457,7 +457,7 @@
 								isPreviewDeploy: (rt = window) === null || rt === void 0 || (st = rt.build) === null || st === void 0 ? void 0 : st.isPreviewDeploy
 							},
 							utilGates: (0, W.T2)(Ht)
-						}), window.addEventListener("unhandledrejection", function(Ft) {})
+						}), window.addEventListener("unhandledrejection", function(Ut) {})
 					}
 				},
 				B = P => {
@@ -611,7 +611,7 @@
 				}, jt = {
 					setUserCommPreferences: Mt.V_
 				};
-			var xt = (0, Re.withRouter)((0, xe.connect)(Ot, jt)(At));
+			var Ft = (0, Re.withRouter)((0, xe.connect)(Ot, jt)(At));
 			At.propTypes = {
 				history: Ae().object,
 				languagePreference: Ae().string.isRequired,
@@ -619,7 +619,7 @@
 				isAuthenticated: Ae().bool,
 				setUserCommPreferences: Ae().func.isRequired
 			};
-			var Ut = n("../../../../node_modules/@cloudflare/style-provider/es/StyleProvider.js"),
+			var xt = n("../../../../node_modules/@cloudflare/style-provider/es/StyleProvider.js"),
 				m = n("../../../../node_modules/@cloudflare/style-provider/es/createRenderer.js");
 			let O;
 			const ce = ({
@@ -825,9 +825,9 @@
 						store: (0, l.bh)()
 					}, Ee().createElement(Re.Router, {
 						history: N
-					}, Ee().createElement(R, null, Ee().createElement(Ut.Z, {
+					}, Ee().createElement(R, null, Ee().createElement(xt.Z, {
 						renderer: ce()
-					}, Ee().createElement(xt, null, Ee().createElement(Me.Z, {
+					}, Ee().createElement(Ft, null, Ee().createElement(Me.Z, {
 						sentryTag: "Root"
 					}, Ee().createElement(at.J$, {
 						value: {
@@ -912,10 +912,10 @@
 					n.g.build = fn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "bc0fd0762e76069cc7089ec84eedd361329a7d9c",
-						dashVersion: "28164193",
+						commit: "d70eb34471c32cbc43e4a6a935391c691bf4700b",
+						dashVersion: "28174834",
 						env: "production",
-						builtAt: 1729273441574,
+						builtAt: 1729287693819,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -9507,9 +9507,6 @@
 				sg: function() {
 					return ut
 				},
-				sh: function() {
-					return Ut
-				},
 				tB: function() {
 					return E
 				},
@@ -10344,14 +10341,14 @@
 				}
 			}
 
-			function xt(m) {
+			function Ft(m) {
 				var O;
 				return !!((O = m.domainMove) === null || O === void 0 ? void 0 : O.ineligibilityReasons.length)
 			}
 
-			function Ut(m) {
+			function xt(m) {
 				var O;
-				return !!((O = m.domainMove) === null || O === void 0 ? void 0 : O.ineligibilityReasons.includes(r.rQ.DOMAIN_EXISTING_PENDING_REQUEST))
+				return !!((O = m.domainMove) === null || O === void 0 ? void 0 : O.ineligibilityReasons.includes(EDomainMoveIneligibilityReason.DOMAIN_EXISTING_PENDING_REQUEST))
 			}
 		},
 		"../react/pages/home/domain-registration/config.ts": function(z, y, n) {
@@ -15480,4 +15477,4 @@
 	}
 ]);
 
-//# debugId=16d7a95f-c89c-5ad6-8b68-7ccdfd42f028
+//# debugId=2b0e3109-5b33-5508-bc0c-51499a80a5a6
