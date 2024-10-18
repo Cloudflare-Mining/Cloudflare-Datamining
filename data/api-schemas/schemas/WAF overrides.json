@@ -1,12 +1,12 @@
 {
-	"DELETE /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
+	"DELETE /zones/{zone_identifier}/firewall/waf/overrides/{id}": {
 		"deprecated": true,
 		"description": "Deletes an existing URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-overrides-delete-a-waf-override",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "overrides_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the WAF override.",
@@ -18,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -191,14 +191,14 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_id}/firewall/waf/overrides": {
+	"GET /zones/{zone_identifier}/firewall/waf/overrides": {
 		"deprecated": true,
 		"description": "Fetches the URI-based WAF overrides in a zone.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-overrides-list-waf-overrides",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -885,14 +885,14 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
+	"GET /zones/{zone_identifier}/firewall/waf/overrides/{id}": {
 		"deprecated": true,
 		"description": "Fetches the details of a URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-overrides-get-a-waf-override",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "overrides_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the WAF override.",
@@ -904,7 +904,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1502,14 +1502,14 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_id}/firewall/waf/overrides": {
+	"POST /zones/{zone_identifier}/firewall/waf/overrides": {
 		"deprecated": true,
 		"description": "Creates a URI-based WAF override for a zone.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-overrides-create-a-waf-override",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2129,14 +2129,14 @@
 			"pro": false
 		}
 	},
-	"PUT /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
+	"PUT /zones/{zone_identifier}/firewall/waf/overrides/{id}": {
 		"deprecated": true,
 		"description": "Updates an existing URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-overrides-update-waf-override",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "overrides_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the WAF override.",
@@ -2148,7 +2148,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
