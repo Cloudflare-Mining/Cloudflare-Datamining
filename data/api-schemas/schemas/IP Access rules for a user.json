@@ -1,16 +1,17 @@
 {
-	"DELETE /user/firewall/access_rules/rules/{rule_id}": {
+	"DELETE /user/firewall/access_rules/rules/{identifier}": {
 		"description": "Deletes an IP Access rule at the user level.\n\nNote: Deleting a user-level rule will affect all zones owned by the user.",
 		"operationId": "ip-access-rules-for-a-user-delete-an-ip-access-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Unique identifier for a rule",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "The unique identifier of the IP Access rule.",
+					"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1192,18 +1193,19 @@
 			"pro": true
 		}
 	},
-	"PATCH /user/firewall/access_rules/rules/{rule_id}": {
+	"PATCH /user/firewall/access_rules/rules/{identifier}": {
 		"description": "Updates an IP Access rule defined at the user level. You can only update the rule action (`mode` parameter) and notes.",
 		"operationId": "ip-access-rules-for-a-user-update-an-ip-access-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Unique identifier for a rule",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "The unique identifier of the IP Access rule.",
+					"example": "92f17202ed8bd63d69a66b86a49a8f6b",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}

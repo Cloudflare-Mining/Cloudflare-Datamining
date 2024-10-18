@@ -1,22 +1,23 @@
 {
-	"DELETE /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
+	"DELETE /accounts/{account_identifier}/firewall/access_rules/rules/{identifier}": {
 		"description": "Deletes an existing IP Access rule defined at the account level.\n\nNote: This operation will affect all zones in the account.",
 		"operationId": "ip-access-rules-for-an-account-delete-an-ip-access-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Unique identifier for a rule",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "The unique identifier of the resource.",
+					"example": "de677e5818985db1285d0e80225f06e5",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "account_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -361,13 +362,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/firewall/access_rules/rules": {
+	"GET /accounts/{account_identifier}/firewall/access_rules/rules": {
 		"description": "Fetches IP Access rules of an account. These rules apply to all the zones in the account. You can filter the results using several optional parameters.",
 		"operationId": "ip-access-rules-for-an-account-list-ip-access-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "account_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -608,25 +609,6 @@
 									"properties": {
 										"result": {
 											"items": {
-												"additionalProperties": {
-													"allOf": [
-														{
-															"description": "The WAF rule action to apply.",
-															"enum": [
-																"challenge",
-																"block",
-																"simulate",
-																"disable",
-																"default"
-															]
-														}
-													],
-													"example": "default"
-												},
-												"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-												"example": {
-													"100015": "disable"
-												},
 												"type": "object"
 											},
 											"type": "array"
@@ -765,25 +747,6 @@
 											"properties": {
 												"result": {
 													"items": {
-														"additionalProperties": {
-															"allOf": [
-																{
-																	"description": "The WAF rule action to apply.",
-																	"enum": [
-																		"challenge",
-																		"block",
-																		"simulate",
-																		"disable",
-																		"default"
-																	]
-																}
-															],
-															"example": "default"
-														},
-														"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-														"example": {
-															"100015": "disable"
-														},
 														"type": "object"
 													},
 													"type": "array"
@@ -910,24 +873,25 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
+	"GET /accounts/{account_identifier}/firewall/access_rules/rules/{identifier}": {
 		"description": "Fetches the details of an IP Access rule defined at the account level.",
 		"operationId": "ip-access-rules-for-an-account-get-an-ip-access-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Unique identifier for a rule",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "The unique identifier of the resource.",
+					"example": "de677e5818985db1285d0e80225f06e5",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "account_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1042,25 +1006,6 @@
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"allOf": [
-													{
-														"description": "The WAF rule action to apply.",
-														"enum": [
-															"challenge",
-															"block",
-															"simulate",
-															"disable",
-															"default"
-														]
-													}
-												],
-												"example": "default"
-											},
-											"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-											"example": {
-												"100015": "disable"
-											},
 											"type": "object"
 										}
 									},
@@ -1178,25 +1123,6 @@
 										{
 											"properties": {
 												"result": {
-													"additionalProperties": {
-														"allOf": [
-															{
-																"description": "The WAF rule action to apply.",
-																"enum": [
-																	"challenge",
-																	"block",
-																	"simulate",
-																	"disable",
-																	"default"
-																]
-															}
-														],
-														"example": "default"
-													},
-													"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-													"example": {
-														"100015": "disable"
-													},
 													"type": "object"
 												}
 											},
@@ -1321,24 +1247,25 @@
 			"pro": true
 		}
 	},
-	"PATCH /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
+	"PATCH /accounts/{account_identifier}/firewall/access_rules/rules/{identifier}": {
 		"description": "Updates an IP Access rule defined at the account level.\n\nNote: This operation will affect all zones in the account.",
 		"operationId": "ip-access-rules-for-an-account-update-an-ip-access-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Unique identifier for a rule",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"description": "The unique identifier of the resource.",
+					"example": "de677e5818985db1285d0e80225f06e5",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "account_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1669,25 +1596,6 @@
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"allOf": [
-													{
-														"description": "The WAF rule action to apply.",
-														"enum": [
-															"challenge",
-															"block",
-															"simulate",
-															"disable",
-															"default"
-														]
-													}
-												],
-												"example": "default"
-											},
-											"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-											"example": {
-												"100015": "disable"
-											},
 											"type": "object"
 										}
 									},
@@ -1805,25 +1713,6 @@
 										{
 											"properties": {
 												"result": {
-													"additionalProperties": {
-														"allOf": [
-															{
-																"description": "The WAF rule action to apply.",
-																"enum": [
-																	"challenge",
-																	"block",
-																	"simulate",
-																	"disable",
-																	"default"
-																]
-															}
-														],
-														"example": "default"
-													},
-													"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-													"example": {
-														"100015": "disable"
-													},
 													"type": "object"
 												}
 											},
@@ -1947,13 +1836,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/firewall/access_rules/rules": {
+	"POST /accounts/{account_identifier}/firewall/access_rules/rules": {
 		"description": "Creates a new IP Access rule for an account. The rule will apply to all zones in the account.\n\nNote: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
 		"operationId": "ip-access-rules-for-an-account-create-an-ip-access-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "account_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2191,25 +2080,6 @@
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"allOf": [
-													{
-														"description": "The WAF rule action to apply.",
-														"enum": [
-															"challenge",
-															"block",
-															"simulate",
-															"disable",
-															"default"
-														]
-													}
-												],
-												"example": "default"
-											},
-											"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-											"example": {
-												"100015": "disable"
-											},
 											"type": "object"
 										}
 									},
@@ -2327,25 +2197,6 @@
 										{
 											"properties": {
 												"result": {
-													"additionalProperties": {
-														"allOf": [
-															{
-																"description": "The WAF rule action to apply.",
-																"enum": [
-																	"challenge",
-																	"block",
-																	"simulate",
-																	"disable",
-																	"default"
-																]
-															}
-														],
-														"example": "default"
-													},
-													"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
-													"example": {
-														"100015": "disable"
-													},
 													"type": "object"
 												}
 											},
