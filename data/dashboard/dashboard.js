@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "3e7435c0-f123-5671-9e10-092d89ba562f")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "16d7a95f-c89c-5ad6-8b68-7ccdfd42f028")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -772,8 +772,8 @@
 						devPanelEnabled: Z
 					}
 				},
-				sn = Ee().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(12821), n.e(94012), n.e(13142), n.e(72019), n.e(85403), n.e(49665), n.e(91378), n.e(60091), n.e(77216), n.e(60003), n.e(39760), n.e(94923), n.e(60734), n.e(82465), n.e(64124), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				cn = Ee().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(43234), n.e(13142), n.e(49665), n.e(60091), n.e(60734), n.e(69088), n.e(64124), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				sn = Ee().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(12821), n.e(94012), n.e(13142), n.e(72019), n.e(85403), n.e(88474), n.e(91378), n.e(60091), n.e(77216), n.e(60003), n.e(39760), n.e(94923), n.e(60734), n.e(82465), n.e(64124), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				cn = Ee().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(43234), n.e(13142), n.e(88474), n.e(60091), n.e(60734), n.e(69088), n.e(64124), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: P
 				}) => {
@@ -912,10 +912,10 @@
 					n.g.build = fn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "aebbd9bf144911ac8fd5425fae746087d4b72ce9",
-						dashVersion: "28121055",
+						commit: "bc0fd0762e76069cc7089ec84eedd361329a7d9c",
+						dashVersion: "28164193",
 						env: "production",
-						builtAt: 1729179637899,
+						builtAt: 1729273441574,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -15480,4 +15480,4 @@
 	}
 ]);
 
-//# debugId=3e7435c0-f123-5671-9e10-092d89ba562f
+//# debugId=16d7a95f-c89c-5ad6-8b68-7ccdfd42f028
