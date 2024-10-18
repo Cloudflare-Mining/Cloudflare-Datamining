@@ -634,6 +634,7 @@ export interface DurableObjectStorage {
   getCurrentBookmark(): Promise<string>;
   getBookmarkForTime(timestamp: number | Date): Promise<string>;
   onNextSessionRestoreBookmark(bookmark: string): Promise<string>;
+  waitForBookmark(bookmark: string): Promise<void>;
 }
 export interface DurableObjectListOptions {
   start?: string;
@@ -2418,6 +2419,7 @@ export interface TraceItem {
   readonly dispatchNamespace?: string;
   readonly scriptTags?: string[];
   readonly outcome: string;
+  readonly executionModel: string;
   readonly truncated: boolean;
 }
 export interface TraceItemAlarmEventInfo {
@@ -5120,7 +5122,10 @@ export declare namespace Rpc {
   // Types that can be used through `Stub`s
   export type Stubable = RpcTargetBranded | ((...args: any[]) => any);
   // Types that can be passed over RPC
-  type Serializable =
+  // The reason for using a generic type here is to build a serializable subset of structured
+  //   cloneable composite types. This allows types defined with the "interface" keyword to pass the
+  //   serializable check as well. Otherwise, only types defined with the "type" keyword would pass.
+  type Serializable<T> =
     // Structured cloneables
     | void
     | undefined
@@ -5136,11 +5141,14 @@ export declare namespace Rpc {
     | Error
     | RegExp
     // Structured cloneable composites
-    | Map<Serializable, Serializable>
-    | Set<Serializable>
-    | ReadonlyArray<Serializable>
+    | Map<
+        T extends Map<infer U, unknown> ? Serializable<U> : never,
+        T extends Map<unknown, infer U> ? Serializable<U> : never
+      >
+    | Set<T extends Set<infer U> ? Serializable<U> : never>
+    | ReadonlyArray<T extends ReadonlyArray<infer U> ? Serializable<U> : never>
     | {
-        [key: string | number]: Serializable;
+        [K in keyof T]: K extends number | string ? Serializable<T[K]> : never;
       }
     // Special types
     | ReadableStream<Uint8Array>
@@ -5170,7 +5178,7 @@ export declare namespace Rpc {
           : T extends ReadonlyArray<infer V>
             ? ReadonlyArray<Stubify<V>>
             : T extends {
-                  [key: string | number]: unknown;
+                  [key: string | number]: any;
                 }
               ? {
                   [K in keyof T]: Stubify<T[K]>;
@@ -5213,7 +5221,7 @@ export declare namespace Rpc {
   // Intersecting with `(Maybe)Provider` allows pipelining.
   type Result<R> = R extends Stubable
     ? Promise<Stub<R>> & Provider<R>
-    : R extends Serializable
+    : R extends Serializable<R>
       ? Promise<Stubify<R> & MaybeDisposable<R>> & MaybeProvider<R>
       : never;
   // Type for method or property on an RPC interface.
@@ -5545,20 +5553,31 @@ export declare abstract class Workflow {
   public get(id: string): Promise<Instance>;
   /**
    * Create a new instance and return a handle to it. If a provided id exists, an error will be thrown.
-   * @param id Id to create the instance of this Workflow with
-   * @param params The payload to send over to this instance
+   * @param options optional fields to customize the instance creation
    * @returns A promise that resolves with a handle for the Instance
    */
-  public create(id: string, params: object): Promise<Instance>;
+  public create(options?: WorkflowInstanceCreateOptions): Promise<Instance>;
+}
+export interface WorkflowInstanceCreateOptions {
+  /**
+   * Name to create the instance of this Workflow with - it should always be unique
+   */
+  name?: string;
+  /**
+   * The payload to send over to this instance, this is optional since you might need to pass params into the instance
+   */
+  params?: unknown;
 }
 export type InstanceStatus = {
   status:
-    | "queued"
+    | "queued" // means that instance is waiting to be started (see concurrency limits)
     | "running"
     | "paused"
     | "errored"
-    | "terminated"
+    | "terminated" // user terminated the instance while it was running
     | "complete"
+    | "waiting" // instance is hibernating and waiting for sleep or event to finish
+    | "waitingForPause" // instance is finishing the current work to pause
     | "unknown";
   error?: string;
   output?: object;
