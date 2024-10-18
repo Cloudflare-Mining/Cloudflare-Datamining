@@ -1456,6 +1456,14 @@
 		"enabled": true
 	},
 	"workers-builds-scm-status-github": {
+		"enabled": true,
+		"branches": [
+			"degraded",
+			"down",
+			"up"
+		]
+	},
+	"workers-builds-scm-status-gitlab": {
 		"enabled": false,
 		"branches": [
 			"degraded",
