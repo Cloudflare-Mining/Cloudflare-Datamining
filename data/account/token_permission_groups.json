@@ -1184,6 +1184,22 @@
 		]
 	},
 	{
+		"id": "59059f0c977b44f8b1c18e0aaf91c369",
+		"name": "Load Balancers Account Read",
+		"description": "Grants read access to account load balancers and associated resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "419ec42810af4659ade77716dbe47bc6",
+		"name": "Load Balancers Account Write",
+		"description": "Grants write access to account load balancers and associated resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "e9a975f628014f1d85b723993116f7d5",
 		"name": "Load Balancers Read",
 		"description": "Grants read access to load balancers and associated resources",
