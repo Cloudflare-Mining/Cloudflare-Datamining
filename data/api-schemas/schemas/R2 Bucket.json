@@ -37,6 +37,20 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -217,6 +231,20 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -384,6 +412,20 @@
 				"schema": {
 					"description": "Name of the custom domain",
 					"example": "example-domain/custom-domain.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
@@ -569,6 +611,20 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -746,6 +802,20 @@
 					"description": "Account ID",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
@@ -1119,6 +1189,20 @@
 					"description": "Pagination cursor received during the last List Buckets call. R2 buckets are paginated using cursors instead of page numbers.",
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "Lists buckets in the provided jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -1357,6 +1441,20 @@
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -1561,6 +1659,20 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
@@ -1834,6 +1946,20 @@
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -2028,6 +2154,20 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
@@ -2237,6 +2377,20 @@
 					"description": "Account ID",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "Creates the bucket in the provided jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
@@ -2487,6 +2641,20 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
@@ -2981,6 +3149,20 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -3203,6 +3385,20 @@
 				"schema": {
 					"description": "Name of the custom domain",
 					"example": "example-domain/custom-domain.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
@@ -3437,6 +3633,20 @@
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
 					"type": "string"
 				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -3653,6 +3863,20 @@
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
 					"type": "string"
 				}
 			}
