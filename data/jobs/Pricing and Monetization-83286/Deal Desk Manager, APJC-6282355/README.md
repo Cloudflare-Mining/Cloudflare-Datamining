@@ -46,7 +46,6 @@
 	<li>Possess excellent written and oral communication skills</li>
 	<li>Proactive, creative, and results oriented individual</li>
 	<li>Experience selling software is considered a bonus</li>
-	<li>Preference: working knowledge of Japanese language</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
