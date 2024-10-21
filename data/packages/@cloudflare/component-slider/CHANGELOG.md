@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.0.0
+
+### Major Changes
+
+- 2065f694b4: use `globalThis` in place of `global` reference
+
+  Why: For better compatibility with esmodule native JS tooling (vite/esbuild)
+
 ## 3.0.6
 
 ### Patch Changes

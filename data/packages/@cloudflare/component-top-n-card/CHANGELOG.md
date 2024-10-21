@@ -1,5 +1,7 @@
 # Change Log
 
+## 6.0.37
+
 ## 6.0.36
 
 ### Patch Changes

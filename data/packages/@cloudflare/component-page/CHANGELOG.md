@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.3.4
+
+### Patch Changes
+
+- cce55ea371: Add tooltip and aria label
+
 ## 9.3.3
 
 ### Patch Changes
