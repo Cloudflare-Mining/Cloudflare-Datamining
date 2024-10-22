@@ -13,7 +13,7 @@
 <h3><strong>Skills, Knowledge, and Experience</strong></h3>
 <ul>
 	<li>Fluent English speaker is a requirement</li>
-	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
+	<li>5-8 years working within a Technical Support team solving various technical issues&nbsp;</li>
 	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
 	<li>Fundamental understanding how the Internet works (OSI Model)</li>
 	<li>Advanced understanding of internet protocols like TCP and UDP</li>
