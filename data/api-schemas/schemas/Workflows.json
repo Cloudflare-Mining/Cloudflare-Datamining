@@ -706,7 +706,7 @@
 												"type": "string"
 											},
 											"id": {
-												"format": "uuid",
+												"maxLength": 96,
 												"type": "string"
 											},
 											"modified_on": {
@@ -940,7 +940,6 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
 					"type": "string"
 				}
 			},
@@ -2015,7 +2014,6 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
 					"type": "string"
 				}
 			},
@@ -2372,6 +2370,24 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"instance_id": {
+								"maxLength": 96,
+								"type": "string"
+							},
+							"params": {
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -2418,7 +2434,7 @@
 									"items": {
 										"properties": {
 											"id": {
-												"format": "uuid",
+												"maxLength": 96,
 												"type": "string"
 											},
 											"status": {
