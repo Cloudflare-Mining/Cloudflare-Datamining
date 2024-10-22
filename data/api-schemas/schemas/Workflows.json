@@ -1,0 +1,2888 @@
+{
+	"GET /accounts/{account_id}/workflows": {
+		"parameters": [
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 10,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"class_name": {
+												"type": "string"
+											},
+											"created_on": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"instances": {
+												"properties": {
+													"complete": {
+														"type": "number"
+													},
+													"errored": {
+														"type": "number"
+													},
+													"paused": {
+														"type": "number"
+													},
+													"queued": {
+														"type": "number"
+													},
+													"running": {
+														"type": "number"
+													},
+													"terminated": {
+														"type": "number"
+													},
+													"unknown": {
+														"type": "number"
+													},
+													"waitingForPause": {
+														"type": "number"
+													}
+												},
+												"type": "object"
+											},
+											"modified_on": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"script_name": {
+												"type": "string"
+											},
+											"triggered_on": {
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"id",
+											"created_on",
+											"modified_on",
+											"script_name",
+											"class_name",
+											"triggered_on",
+											"instances"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of all Workflows belonging to a account."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List all Workflows",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"class_name": {
+											"type": "string"
+										},
+										"created_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"instances": {
+											"properties": {
+												"complete": {
+													"type": "number"
+												},
+												"errored": {
+													"type": "number"
+												},
+												"paused": {
+													"type": "number"
+												},
+												"queued": {
+													"type": "number"
+												},
+												"running": {
+													"type": "number"
+												},
+												"terminated": {
+													"type": "number"
+												},
+												"unknown": {
+													"type": "number"
+												},
+												"waitingForPause": {
+													"type": "number"
+												}
+											},
+											"type": "object"
+										},
+										"modified_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"script_name": {
+											"type": "string"
+										},
+										"triggered_on": {
+											"format": "date-time",
+											"nullable": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"name",
+										"id",
+										"created_on",
+										"modified_on",
+										"script_name",
+										"class_name",
+										"triggered_on",
+										"instances"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Workflow details"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow has no deployed versions"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Workflow details",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}/instances": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 50,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"queued",
+						"running",
+						"paused",
+						"errored",
+						"terminated",
+						"complete",
+						"waitingForPause",
+						"unknown"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "In ISO 8601 with no timezone offsets and in UTC.",
+				"in": "query",
+				"name": "date_start",
+				"schema": {
+					"description": "In ISO 8601 with no timezone offsets and in UTC.",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "In ISO 8601 with no timezone offsets and in UTC.",
+				"in": "query",
+				"name": "date_end",
+				"schema": {
+					"description": "In ISO 8601 with no timezone offsets and in UTC.",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"created_on": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"modified_on": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"status": {
+												"enum": [
+													"queued",
+													"running",
+													"paused",
+													"errored",
+													"terminated",
+													"complete",
+													"waitingForPause",
+													"unknown"
+												],
+												"type": "string"
+											},
+											"version_id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"workflow_id": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"created_on",
+											"modified_on",
+											"workflow_id",
+											"version_id",
+											"status"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of workflow instances"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow Name not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List of workflow instances",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "instance_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"end": {
+											"format": "date-time",
+											"nullable": true,
+											"type": "string"
+										},
+										"error": {
+											"nullable": true,
+											"properties": {
+												"message": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"message"
+											],
+											"type": "object"
+										},
+										"output": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"params": {
+											"type": "object"
+										},
+										"queued": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"start": {
+											"format": "date-time",
+											"nullable": true,
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"queued",
+												"running",
+												"paused",
+												"errored",
+												"terminated",
+												"complete",
+												"waitingForPause",
+												"unknown"
+											],
+											"type": "string"
+										},
+										"steps": {
+											"items": {
+												"anyOf": [
+													{
+														"properties": {
+															"attempts": {
+																"items": {
+																	"properties": {
+																		"end": {
+																			"format": "date-time",
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"error": {
+																			"nullable": true,
+																			"properties": {
+																				"message": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"name",
+																				"message"
+																			],
+																			"type": "object"
+																		},
+																		"start": {
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		"success": {
+																			"nullable": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"start",
+																		"end",
+																		"success",
+																		"error"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"config": {
+																"properties": {
+																	"retries": {
+																		"properties": {
+																			"backoff": {
+																				"enum": [
+																					"constant",
+																					"linear",
+																					"exponential"
+																				],
+																				"type": "string"
+																			},
+																			"delay": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					}
+																				]
+																			},
+																			"limit": {
+																				"type": "number"
+																			}
+																		},
+																		"required": [
+																			"limit",
+																			"delay"
+																		],
+																		"type": "object"
+																	},
+																	"timeout": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"retries",
+																	"timeout"
+																],
+																"type": "object"
+															},
+															"end": {
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"output": {
+																"type": "object"
+															},
+															"start": {
+																"format": "date-time",
+																"type": "string"
+															},
+															"success": {
+																"nullable": true,
+																"type": "boolean"
+															},
+															"type": {
+																"enum": [
+																	"step"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"start",
+															"end",
+															"attempts",
+															"config",
+															"output",
+															"success",
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"end": {
+																"format": "date-time",
+																"type": "string"
+															},
+															"error": {
+																"nullable": true,
+																"properties": {
+																	"message": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"message"
+																],
+																"type": "object"
+															},
+															"finished": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"start": {
+																"format": "date-time",
+																"type": "string"
+															},
+															"type": {
+																"enum": [
+																	"sleep"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"start",
+															"end",
+															"finished",
+															"type",
+															"error"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"trigger": {
+																"properties": {
+																	"source": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"source"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"termination"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"trigger"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										},
+										"success": {
+											"nullable": true,
+											"type": "boolean"
+										},
+										"trigger": {
+											"properties": {
+												"source": {
+													"enum": [
+														"unknown",
+														"api",
+														"binding",
+														"event",
+														"cron"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"source"
+											],
+											"type": "object"
+										},
+										"versionId": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"params",
+										"trigger",
+										"versionId",
+										"queued",
+										"start",
+										"end",
+										"steps",
+										"success",
+										"error",
+										"status",
+										"output"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get all logs and status from the instance"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Instance not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get logs and status from instance",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 50,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"class_name": {
+											"type": "string"
+										},
+										"created_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"modified_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"workflow_id": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"created_on",
+										"modified_on",
+										"id",
+										"workflow_id",
+										"class_name"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List deployed workflow versions"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List deployed Workflow versions",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "version_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"class_name": {
+											"type": "string"
+										},
+										"created_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"modified_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"workflow_id": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"created_on",
+										"modified_on",
+										"id",
+										"workflow_id",
+										"class_name"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get specific version details"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Version not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Workflow version details",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "instance_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"status": {
+								"description": "Possible actions to apply to instance",
+								"enum": [
+									"resume",
+									"pause",
+									"terminate"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"status"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"status": {
+											"enum": [
+												"queued",
+												"running",
+												"paused",
+												"errored",
+												"terminated",
+												"complete",
+												"waitingForPause",
+												"unknown"
+											],
+											"type": "string"
+										},
+										"timestamp": {
+											"description": "In ISO 8601 with no timezone offsets and in UTC.",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"required": [
+										"status",
+										"timestamp"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Change status of instance - it can be paused, resumed or terminated."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Instance not found"
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Instance not in a terminable state"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Change status of instance",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/workflows/{workflow_name}/instances": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"status": {
+												"enum": [
+													"queued",
+													"running",
+													"paused",
+													"errored",
+													"terminated",
+													"complete",
+													"waitingForPause",
+													"unknown"
+												],
+												"type": "string"
+											},
+											"version_id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"workflow_id": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"workflow_id",
+											"version_id",
+											"status"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create workflow instance. Body is a JSON parsable string that it's passed into the new instance as the event payload."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow Name not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create a new workflow instance",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"class_name": {
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							},
+							"script_name": {
+								"maxLength": 255,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"script_name",
+							"class_name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"class_name": {
+											"type": "string"
+										},
+										"created_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"modified_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"script_name": {
+											"type": "string"
+										},
+										"triggered_on": {
+											"format": "date-time",
+											"nullable": true,
+											"type": "string"
+										},
+										"version_id": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"version_id",
+										"name",
+										"id",
+										"created_on",
+										"modified_on",
+										"script_name",
+										"class_name",
+										"triggered_on"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create/modify a Workflow based on a deployed script with an existing `WorkflowEntrypoint` class. Must be done after deploying the corresponding script."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create/modify Workflow",
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
