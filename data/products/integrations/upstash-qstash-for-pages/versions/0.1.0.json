@@ -1,0 +1,120 @@
+{
+	"alias": "upstash-qstash-for-pages",
+	"assets": [],
+	"category": "workers-messaging",
+	"description": "A task queue/scheduler designed for the serverless.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/upstash/#upstash-qstash",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/05dc79f5-486b-4a50-c6c7-b999a25e5000/public",
+	"install_target": "pages-environment",
+	"name": "Upstash QStash",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Pages Write",
+					"reason": "Needed for adding secrets to your project."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Upstash",
+			"type": "oauth",
+			"provider": "upstash",
+			"client_id": "eRZWzFtAltz5mTn2t0M4EAOnTn4oX8D2",
+			"authorize_url": "https://auth.upstash.com/authorize?audience=upstash-api",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"scope": "offline_access",
+			"submit_action": "submit-upstash-oauth"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this project.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Credential",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "upstashQstashURLSecretName",
+									"required": true,
+									"default_value": "QSTASH_URL"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "https://qstash.upstash.io/v2/publish"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "upstashQstashTokenSecretName",
+									"required": true,
+									"default_value": "QSTASH_TOKEN"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "upstashQstashCurrentSigningKeySecretName",
+									"required": true,
+									"default_value": "QSTASH_CURRENT_SIGNING_KEY"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "upstashQstashNextSigningKeySecretName",
+									"required": true,
+									"default_value": "QSTASH_NEXT_SIGNING_KEY"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [],
+	"uninstall_action": "uninstall",
+	"version": "0.1.0"
+}
