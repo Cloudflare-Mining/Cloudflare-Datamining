@@ -5,35 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: <br><br></strong><span class="collapsed-field-text">Hybrid - Austin, US | Lisbon, Portugal | London, UK<br></span>Remote - US&nbsp;&nbsp;</p>
-<p><strong>About the team</strong></p>
-<p>The mission of the DDoS engineering team at Cloudflare is to make DDoS attacks a thing of the past. We create Internet-scale systems that analyze and mitigate the largest DDoS attacks in the world. Our systems operate across one of the largest networks on the Internet and protect nearly 20% of all websites. Because of our scale and reach, we’re consistently on the front line in the battle against new and emerging threats, and the work we do on this team has an outsized impact in helping Cloudflare build a better Internet.</p>
-<p>Our team is responsible for a large number of different systems. Our tooling and mitigation systems are primarily written in Rust, but we also use Lua, C, and eBPF. Our analytics systems are primarily written in Go, and they leverage Kafka and ClickHouse. All of our analysis and mitigation operates in real-time to process massive amounts of data.</p>
+<h4><strong>Available Locations: Lisbon or Remote Portugal</strong></h4>
+<h4><strong>About the team</strong></h4>
+<p>You will be part of the Network Strategy team within Cloudflare’s Infrastructure Engineering department. The Network Strategy team focuses on building both external and internal relationships that allow for Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners.&nbsp;</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data and Analytics Engineer to join our team to scale our data insights initiatives. You will work with a wide array of data sources about network traffic, performance, and cost. You’ll be responsible for building data pipelines, doing ad-hoc analytics based on the data, and automating our analysis. Important projects include understanding the resource consumption and cost of Cloudflare’s broad product portfolio.</p>
+<p>A candidate will be successful in this role if they’re flexible and able to match the right solution to the right problem. Flexibility is key. Cloudflare is a fast-paced environment and requirements change frequently.</p>
 <p><strong>What you'll do</strong></p>
-<p>Your most important responsibility as a member of the DDoS engineering team is to ensure that Cloudflare and our customers remain available in the face of DDoS attacks. Toward that end, your job will be to help us enhance the automation that detects and blocks attack traffic. Some examples of potential future project work include building continuous profiling systems to understand customer traffic patterns, monitoring the health of customer origins, building new ways to customize detection and mitigation behavior, and enriching analytics to provide customers with more actionable data.</p>
-<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Build and enhance the software that automates DDoS detection and mitigation</li>
-	<li>Analyze data and identify patterns to strengthen our attack detection and mitigation</li>
-	<li>Build and enhance the internal tooling that supports our systems</li>
-	<li>Monitor telemetry to improve performance and ensure system health</li>
-	<li>Communicate your knowledge and expertise of DDoS within the broader organization</li>
-	<li>Provide last-line support for SOC and Escalation Engineers, which can require off-hours availability in extraordinary cases</li>
+	<li>Design and implement data pipelines that take unprocessed data and make it usable for advanced analytics</li>
+	<li>Work closely with other product and engineering teams to ensure our products and services collect the right data for our analytics</li>
+	<li>Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</li>
+	<li>Build tooling, automation, and visualizations around our analytics for consumption by other Cloudflare teams</li>
 </ul>
-<p><strong>Examples of desirable knowledge and experience</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Knowledge of core Internet protocols (IP, TCP, UDP, DNS, TLS, HTTP, HTTP/2, HTTP/3, QUIC)</li>
-	<li>Knowledge of common types of network and application-layer DDoS attacks</li>
-	<li>Knowledge of common web application architectures</li>
-	<li>Experience with Rust, C, Go, or other systems languages</li>
-	<li>Experience building large-scale distributed systems</li>
-	<li>Experience analyzing large time-series datasets, preferably including SQL</li>
-	<li>Experience with the Linux network stack, and specifically eBPF</li>
-	<li>Experience with Prometheus, Grafana, and Kibana</li>
-	<li>Experience with SaltStack and Kubernetes</li>
+	<li>Excellent Python and SQL (one of the interviews will be a code review)</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields, or equivalent experience</li>
+	<li>Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</li>
+	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<p>A higher-education degree is not required for this role.</p>
-<h4><br><br></h4>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Familiarity with Airflow&nbsp;</li>
+	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
