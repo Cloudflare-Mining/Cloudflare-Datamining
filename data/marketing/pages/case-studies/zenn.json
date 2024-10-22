@@ -1,0 +1,79 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/zenn/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Zenn",
+				"contentfulId": "2XVPAVvVBgctTq9wFGUCSR",
+				"nameUrlSlug": "zenn",
+				"metaTags": {
+					"metaTitle": "Zenn & Cloudflare | Customer Story",
+					"metaDescription": "Classmethod protects the Japanese information-sharing platform Zenn from a surge in DDoS attacks while maintaining reliable user experiences and cutting costs",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/574mtGVrmau7CItZNrW78G/6a74a9d51b63ef13a015811ba9b3b9d3/Zenn-social-meta.jpg"
+						},
+						"description": "Zenn social meta"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2024-10-17",
+				"homepageUrl": "https://zenn.dev/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "Classmethod protects the Japanese information-sharing platform Zenn from a surge in DDoS attacks while maintaining reliable user experiences and cutting costs",
+				"longDescription": "## __Classmethod strengthens Zenn blog platform security, maintains reliable performance, and cuts costs with Cloudflare__\n\nBased in Japan, Zenn is an information-sharing platform that hosts technical blogs written by engineers. Driven by a mission of \"rewarding engineers for sharing knowledge,\" Zenn enables engineers to easily contribute their unique insights to the IT community. \n\nZenn is run by Classmethod — a leading cloud integrator and service provider in Japan. \"Our top priority is to deliver a consistent writing experience without compromising performance or disrupting service continuity,\" says Yusuke Wada, an engineer at Classmethod. \n\nUnfortunately, a rise in cyber attacks has threatened those consistent experiences. Classmethod today is focused on strengthening security to enhance platform reliability. The company needs an adaptable platform that can help them respond rapidly to the latest threats and maintain application performance.\n\n\"Writing technical articles is a very labor-intensive task. Solid application performance is critical for the writing experience — and for the reading experience,\" says Wada. \"If performance issues sour the experience during output, it has a direct impact on repeat business. We see sudden increases in load and DDoS attacks as threats to performance.\"\n\n### __Facing a disruptive attack and moving to Cloudflare__\n\nIn February 2024, a DDoS attack disrupted the Zenn platform's services. \"Performance declined, which had a negative impact on both the writing and reading experience,\" says Wada. \"The attack also significantly increased cloud infrastructure costs.\"\n\nThe Classmethod team needed an alternative to the tools available through their cloud provider. \"DDoS defense capabilities were available for the cloud infrastructure, but their high cost made them impractical for us given the scale of our services,\" says Wada. \n\nAfter considering other solutions, the team homed in on Cloudflare, which was top of mind for network security. \"We chose Cloudflare because of the straightforward setup, affordable fixed costs, and low-risk rollout,\" says Wada.\n\nThe presence of multiple Cloudflare data centers in Japan was another plus. Classmethod would be able to use security capabilities running in those data centers without adding latency. \n\n[Successfully addressing threats with Cloudflare security capabilities] - Heading 3\n\nClassmethod rapidly implemented DDoS protection and the Cloudflare Web Application Firewall (WAF). \"The WAF plays a pivotal role for us,\" says Wada. \"The managed rules have reduced most threats. We also consistently apply rate limiting to traffic from the same IP address to reduce the risk of extreme load increases.\"\n\nBecause the Zenn platform is dedicated to engineers in Japan, the Classmethod team decided to restrict all traffic to that country. \"We have created custom rules that block access from outside Japan as a safeguard against DDoS attacks,\" says Wada. \n\nMeanwhile, Classmethod is also protecting traffic within Japan. Cloudflare Tunnel creates an encrypted tunnel between the origin web server and the nearest Cloudflare data center.\n\nIn addition, Cloudflare capabilities help keep spam off the Zenn platform. \"Spam posts were a problem,\" says Wada. \"We were able to use Cloudflare's no-code features to quickly create access blocking rules in the editor to reduce spam.\"\n\n### __Streamlining operational workloads__\n\nThwarting threats is helping to avoid excessive operational workloads for the Classmethod IT team. \"We've seen fewer application performance issues outside the usual access spikes. As a result, we can have fewer team members on call,\" says Wada. \n\nAutomated capabilities are also streamlining typical tasks. \"We usually see about three latency alerts per month. Before rolling out Cloudflare, someone had to spend 30 minutes on every alert ensuring everything was OK,\" says Wada. \"Cloudflare DDoS protection addresses issues automatically, before anyone needs to check them, saving us about 90 minutes of operational time every month.\"\n\n### __Driving down content delivery costs__\n\nAs part of the move to Cloudflare, the Classmethod team is taking advantage of the Cloudflare content delivery network (CDN) to provide responsive, low-latency performance to users. Employing Cloudflare as a CDN is also saving the company money.\n\n\"We had been using the CDN service that was bundled with our cloud provider's load balancer,\" says Wada. \"Our previous CDN cost approximately ¥100,000 per month. With the move to Cloudflare, we are paying just a few thousand yen. That's a huge cost savings for us.\"\n\n### __Maintaining reliable experiences with the latest functionality__\n\nThe Classmethod team can now better maintain reliable, responsive user experiences for the Zenn platform. With extensive Cloudflare documentation, the team also has the information they need to make the most of existing capabilities and take advantage of the latest functionality.\n\nGiven their role in supporting Zenn — a platform for sharing technical information — it's no surprise that the Classmethod team appreciates the strong documentation from Cloudflare. \"Cloudflare regularly updates their comprehensive documentation, which is incredibly helpful. It goes beyond standard manuals and procedures by including security insights and industry trends,\" says Wada. \"The documentation makes things easier for developers and is very useful when explaining key concepts to decision-makers.\"\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Mitigated DDoS attacks and other threats that interrupt services\n\n- Reduced the number of application performance incidents per month\n\n- Eliminated spam posting on the blog platform \n\n- Saved hours of operational work per month with automated DDoS protection\n\n- Achieved significant cost savings by switching to the Cloudflare CDN\n",
+				"relatedCaseStudyLinks": null,
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/application-services/products/waf/"
+					},
+					{
+						"title": "CDN",
+						"url": "/application-services/products/cdn/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Yusuke Wada",
+				"employeeQuoteText": "We chose Cloudflare because of the straightforward setup, affordable fixed costs, and low-risk rollout.",
+				"employeeQuoteJobTitle": "Engineer",
+				"employeeQuoteName2": "Yusuke Wada",
+				"employeeQuoteText2": "Our previous CDN cost approximately ¥100,000 per month. With the move to Cloudflare, we are paying just a few thousand yen. That's a huge cost savings for us.",
+				"employeeQuoteJobTitle2": "Engineer",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qN3yC1Fs80d1GfkKle6qZ/632c6cf1123224dd66358fee6ab51a12/Zenn-logo.png"
+					},
+					"description": "Zenn logo"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2XVPAVvVBgctTq9wFGUCSR",
+			"pathname": "/case-studies/zenn/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"ja-JP"
+			]
+		}
+	}
+}
