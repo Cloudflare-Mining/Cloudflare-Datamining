@@ -1,0 +1,357 @@
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tXffZR8RhNdDz7mqsydir/41a33236f8eac2ca38d4b5ae9c21a77e/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h2 id="introduction">Introduction</h2>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>At Cloudflare, we provide a range of services through our global network of servers, located in <a href="https://www.cloudflare.com/network"><u>330 cities</u></a> worldwide. When you interact with our long-standing <a href="https://www.cloudflare.com/application-services/products"><u>application services</u></a>, or newer services like <a href="https://ai.cloudflare.com/?_gl=1*1vedsr*_gcl_au*NzE0Njc1NTIwLjE3MTkzMzEyODc.*_ga*NTgyMWU1Y2MtYTI2NS00MDA3LTlhZDktYWUxN2U5MDkzYjY3*_ga_SQCRB0TXZW*MTcyMTIzMzM5NC4xNS4xLjE3MjEyMzM1MTguMC4wLjA."><u>Workers AI</u></a>, you’re in contact with one of our fleet of thousands of servers which support those services.</p>
+	<p>These servers which provide Cloudflare services are managed by a Baseboard Management Controller (BMC). The BMC is a special purpose processor&nbsp; — different from the Central Processing Unit (CPU) of a server — whose sole purpose is ensuring a smooth operation of the server.</p>
+	<p>Regardless of the server vendor, each server has this BMC. The BMC runs independently of the CPU and has its own embedded operating system, usually referred to as <a href="https://en.wikipedia.org/wiki/Firmware"><u>firmware</u></a>. At Cloudflare, we customize and deploy a server-specific version of the BMC firmware. The BMC firmware we deploy at Cloudflare is based on the <a href="https://www.openbmc.org"><u>Linux Foundation Project for BMCs, OpenBMC</u></a>. OpenBMC is an open-sourced firmware stack designed to work across a variety of systems including enterprise, telco, and cloud-scale data centers. The open-source nature of OpenBMC gives us greater flexibility and ownership of this critical server subsystem, instead of the closed nature of proprietary firmware. This gives us transparency (which is important to us as a security company) and allows us faster time to develop custom features/fixes for the BMC firmware that we run on our entire fleet.</p>
+	<p>In this blog post, we are going to describe how we customized and extended the OpenBMC firmware to better monitor our servers’ boot-up processes to start more reliably and allow better diagnostics in the event that an issue happens during server boot-up.</p>
+	<div class="flex anchor relative">
+		<h2 id="server-subsystems">Server subsystems</h2>
+		<a href="https://blog.cloudflare.com/#server-subsystems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Server systems consist of multiple complex subsystems that include the processors, memory, storage, networking, power supply, cooling, etc. When booting up the host of a server system, the power state of each subsystem of the server is changed in an asynchronous manner. This is done so that subsystems can initialize simultaneously, thereby improving the efficiency of the boot process. Though started asynchronously, these subsystems may interact with each other at different points of the boot sequence and rely on handshake/synchronization to exchange information. For example, during boot-up, the <a href="https://en.wikipedia.org/wiki/UEFI"><u>UEFI (Universal Extensible Firmware Interface)</u></a>, often referred to as the <a href="https://en.wikipedia.org/wiki/BIOS"><u>BIOS</u></a>, configures the motherboard in a phase known as the Platform Initialization (PI) phase, during which the UEFI collects information from subsystems such as the CPUs, memory, etc. to initialize the motherboard with the right settings.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6csPNEksLXsGgt3dq5xZ0S/3236656dbc01f3085bada5af853c3516/image1.png" alt="" class="kg-image" width="1999" height="978" loading="lazy">
+	</figure>
+	<p><sup><i>Figure 1: Server Boot Process</i></sup></p>
+	<p>When the power state of the subsystems, handshakes, and synchronization are not properly managed, there may be race conditions that would result in failures during the boot process of the host. Cloudflare experienced some of these boot-related failures while rolling out open source firmware (<a href="https://en.wikipedia.org/wiki/OpenBMC"><u>OpenBMC</u></a>) to the Baseboard Management Controllers (BMCs) of our servers.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="baseboard-management-controller-bmc-as-a-manager-of-the-host">Baseboard Management Controller (BMC) as a manager of the host</h2>
+		<a href="https://blog.cloudflare.com/#baseboard-management-controller-bmc-as-a-manager-of-the-host" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A BMC is a specialized microprocessor that is attached to the board of a host (server) to assist with remote management capabilities of the host. Servers usually sit in data centers and are often far away from the administrators, and this creates a challenge to maintain them at scale. This is where a BMC comes in, as the BMC serves as the interface that gives administrators the ability to securely and remotely access the servers and carry out management functions. The BMC does this by exposing various interfaces, including <a href="https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface"><u>Intelligent Platform Management Interface (IPMI)</u></a> and <a href="https://www.dmtf.org/standards/redfish"><u>Redfish</u></a>, for distributed management. In addition, the BMC receives data from various sensors/devices (e.g. temperature, power supply) connected to the server, and also the operating parameters of the server, such as the operating system state, and publishes the values on its IPMI and Redfish interfaces.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33dNmfyjqrbAGvcbZLTa0h/db3e6b79b1010081916ee6498b10c297/image2.png" alt="" class="kg-image" width="1999" height="942" loading="lazy">
+	</figure>
+	<p><sup><i>Figure 2: Block diagram of BMC in a server system.</i></sup></p>
+	<p>At Cloudflare, we use the <a href="https://github.com/openbmc/openbmc"><u>OpenBMC</u></a> project for our Baseboard Management Controller (BMC).</p>
+	<p>Below are examples of management functions carried out on a server through the BMC. The interactions in the examples are done over <a href="https://github.com/ipmitool/ipmitool/wiki"><u>ipmitool</u></a>, a command line utility for interacting with systems that support IPMI.</p>
+	<pre class="language-RUST"><code class="language-RUST"># Check the sensor readings of a server remotely (i.e. over a network)
+$  ipmitool &lt;some authentication&gt; &lt;bmc ip&gt; sdr
+PSU0_CURRENT_IN  | 0.47 Amps         | ok
+PSU0_CURRENT_OUT | 6 Amps            | ok
+PSU0_FAN_0       | 6962 RPM          | ok
+SYS_FAN          | 13034 RPM         | ok
+SYS_FAN1         | 11172 RPM         | ok
+SYS_FAN2         | 11760 RPM         | ok
+CPU_CORE_VR_POUT | 9.03 Watts        | ok
+CPU_POWER        | 76.95 Watts       | ok
+CPU_SOC_VR_POUT  | 12.98 Watts       | ok
+DIMM_1_VR_POUT   | 29.03 Watts       | ok
+DIMM_2_VR_POUT   | 27.97 Watts       | ok
+CPU_CORE_MOSFET  | 40 degrees C      | ok
+CPU_TEMP         | 50 degrees C      | ok
+DIMM_MOSFET_1    | 36 degrees C      | ok
+DIMM_MOSFET_2    | 39 degrees C      | ok
+DIMM_TEMP_A1     | 34 degrees C      | ok
+DIMM_TEMP_B1     | 33 degrees C      | ok
+
+…
+
+# check the power status of a server remotely (i.e. over a network)
+ipmitool &lt;some authentication&gt; &lt;bmc ip&gt; power status
+Chassis Power is off
+
+# power on the server
+ipmitool &lt;some authentication&gt; &lt;bmc ip&gt; power on
+Chassis Power Control: On</code></pre>
+	<p>Switching to OpenBMC firmware for our BMCs gives us more control over the software that powers our infrastructure. This has given us more flexibility, customizations, and an overall better uniform experience for managing our servers. Since OpenBMC is open source, we also leverage community fixes while upstreaming some of our own. Some of the advantages we have experienced with OpenBMC include a faster turnaround time to fixing issues, <a href="https://blog.cloudflare.com/de-de/thermal-design-supporting-gen-12-hardware-cool-efficient-and-reliable"><u>optimizations around thermal cooling</u></a>, <a href="https://blog.cloudflare.com/gen-12-servers"><u>increased power efficiency</u></a> and <a href="https://blog.cloudflare.com/how-we-used-openbmc-to-support-ai-inference-on-gpus-around-the-world"><u>supporting AI inference</u></a>.</p>
+	<p>While developing Cloudflare’s OpenBMC firmware, however, we ran into a number of boot problems.</p>
+	<p><b><i>Host not booting:</i></b> When we send a request over IPMI for a host to power on (as in the example above, power on the server), ipmitool would indicate the power status of the host as ON, but we would not see any power going into the CPU nor any activity on the CPU. While ipmitool was correct about the power going into the chassis as ON, we had no information about the power state of the server from ipmitool, and we initially falsely assumed that since the chassis power was on, the rest of the server components should be ON. The <a href="https://documents.uow.edu.au/~blane/netapp/ontap/sysadmin/monitoring/concept/c_oc_mntr_bmc-sys-event-log.html"><u>System Event Log (SEL)</u></a>, which is responsible for displaying platform-specific events, was not giving us any useful information beyond indicating that the server was in a soft-off state (powered off), working state (operating system is loading and running), or that a “System Restart” of the host was initiated.</p>
+	<pre class="language-RUST"><code class="language-RUST"># System Event Logs (SEL) showing the various power states of the server
+$ ipmitool sel elist | tail -n3
+  4d |  Pre-Init  |0000011021| System ACPI Power State ACPI_STATUS | S5_G2: soft-off | Asserted
+  4e |  Pre-Init  |0000011022| System ACPI Power State ACPI_STATUS | S0_G0: working | Asserted
+  4f |  Pre-Init  |0000011023| System Boot Initiated RESTART_CAUSE | System Restart | Asserted</code></pre>
+	<p>In the System Event Logs shown above, ACPI is the acronym for Advanced Configuration and Power Interface, a standard for power management on computing systems. In the ACPI soft-off state, the host is powered off (the motherboard is on standby power but CPU/host isn’t powered on); according to the <a href="https://uefi.org/sites/default/files/resources/ACPI_Spec_6_5_Aug29.pdf"><u>ACPI specifications</u></a>, this state is called S5_G2. (These states are discussed in more detail below.) In the ACPI working state, the host is booted and in a working state, also known in the ACPI specifications as status S0_G0 (which in our case happened to be false), and the third row indicates the cause of the restart was due to a System Restart. Most of the boot-related SEL events are sent from the UEFI to the BMC. The UEFI has been something of a black box to us, as we rely on our original equipment manufacturers (OEMs) to develop the UEFI firmware for us, and for the generation of servers with this issue, the UEFI firmware did not implement sending the boot progress of the host to the BMC.</p>
+	<p>One discrepancy we observed was the difference in the power status and the power going into the CPU, which we read with a sensor we call CPU_POWER.</p>
+	<pre class="language-RUST"><code class="language-RUST"># Check power status
+$ ipmitool &lt;some authentication&gt; &lt;bmc ip&gt;  power status
+Chassis Power is on
+</code></pre>
+	<p>However, checking the power into the CPU shows that the CPU was not receiving any power.</p>
+	<pre class="language-RUST"><code class="language-RUST"># Check power going into the CPU
+$ ipmitool &lt;some authentication&gt; &lt;bmc ip&gt;  sdr | grep CPU_POWER    
+CPU_POWER        | 0 Watts           | ok</code></pre>
+	<p>The CPU_POWER being at 0 watts contradicts all the previous information that the host was powered up and working, when the host was actually completely shut down.</p>
+	<p><b><i>Missing Memory Modules:</i></b> Our servers would randomly boot up with less memory than expected. Computers can boot up with less memory than installed due to a number of problems, such as a loose connection, hardware problem, or faulty memory. For our case, it happened not to be any of the usual suspects, but instead was due to both the BMC and UEFI trying to simultaneously read from the memory modules, leading to access contentions. Memory modules usually contain a <a href="https://en.wikipedia.org/wiki/Serial_presence_detect"><u>Serial Presence Detect (SPD)</u></a>, which is used by the UEFI to dynamically detect the memory module. This SPD is usually located on an <a href="https://learn.sparkfun.com/tutorials/i2c/all"><u>inter-integrated circuit (i2c)</u></a>, which is a low speed, two write protocol for devices to talk to each other. The BMC also reads the temperature of the memory modules via the i2c. When the server is powered on, amongst other hardware initializations, the UEFI also initializes the memory modules that it can detect via their (i.e. each individual memory modules) Serial Presence Detect (SPD), the BMC could also be trying to access the temperature of the memory module at the same time, over the same i2c protocol. This simultaneous attempted read denies one of the parties access. When the UEFI is denied access to the SPD, it thinks the memory module is not available and skips over it. Below is an example of the related i2c-bus contention logs we saw in the <a href="https://www.freedesktop.org/software/systemd/man/latest/journalctl.html"><u>journal</u></a> of the BMC when the host is booting.</p>
+	<pre class="language-RUST"><code class="language-RUST">kernel: aspeed-i2c-bus 1e78a300.i2c-bus: irq handled != irq. expected 0x00000021, but was 0x00000020</code></pre>
+	<p>The above logs indicate that the i2c address 1e78a300 (which happens to be connected to the serial presence detect of the memory modules) could not properly handle a signal, known as an interrupt request (irq). When this scenario plays out on the UEFI, the UEFI is unable to detect the memory module.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Fe8wb6xqwXkanb8iPv8O2/eaecfe0474576a00cdc25bfeb6fba7a2/image4.png" alt="" class="kg-image" width="624" height="523" loading="lazy">
+	</figure>
+	<p><sup><i>Figure 3: I2C diagram showing I2C interconnection of the server’s memory modules (also known as DIMMs) with the BMC&nbsp;</i></sup></p>
+	<p><a href="https://www.techtarget.com/searchstorage/definition/DIMM"><u>DIMM</u></a> in Figure 3 refers to <a href="https://www.techtarget.com/searchstorage/definition/DIMM"><u>Dual Inline Memory Module</u></a>, which is the type of memory module used in servers.</p>
+	<p><b><i>Thermal telemetry:</i></b> During the boot-up process of some of our servers, some temperature devices, such as the temperature sensors of the memory modules, would show up as failed, thereby causing some of the fans to enter a fail-safe <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation"><u>Pulse Width Modulation (PWM)</u></a> mode. <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation"><u>PWM</u></a> is a technique to encode information delivered to electronic devices by adjusting the frequency of the waveform signal to the device. It is used in this case to control fan speed by adjusting the frequency of the power signal delivered to the fan. When a fan enters a fail-safe mode, PWM is used to set the fan speeds to a preset value, irrespective of what the optimized PWM setting of the fans should be, and this could negatively affect the cooling of the server and power consumption.</p>
+	<div class="flex anchor relative">
+		<h2 id="implementing-host-acpi-state-on-openbmc">Implementing host ACPI state on OpenBMC</h2>
+		<a href="https://blog.cloudflare.com/#implementing-host-acpi-state-on-openbmc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the process of studying the issues we faced relating to the boot-up process of the host, we learned how the power state of the subsystems within the chassis changes. Part of our learnings led us to investigate the Advanced Configuration and Power Interface (ACPI) and how the ACPI state of the host changed during the boot process.</p>
+	<p>Advanced Configuration and Power Interface (ACPI) is an open industry specification for power management used in desktop, mobile, workstation, and server systems. The <a href="https://uefi.org/sites/default/files/resources/ACPI_Spec_6_5_Aug29.pdf"><u>ACPI Specification</u></a> replaces previous power management methodologies such as <a href="https://en.wikipedia.org/wiki/Advanced_Power_Management"><u>Advanced Power Management (APM)</u></a>. ACPI provides the advantages of:</p>
+	<ul>
+		<li>
+			<p>Allowing OS-directed power management (OSPM).</p>
+		</li>
+		<li>
+			<p>Having a standardized and robust interface for power management.</p>
+		</li>
+		<li>
+			<p>Sending system-level events such as when the server power/sleep buttons are pressed&nbsp;</p>
+		</li>
+		<li>
+			<p>Hardware and software support, such as a real-time clock (RTC) to schedule the server to wake up from sleep or to reduce the functionality of the CPU based on RTC ticks when there is a loss of power.</p>
+		</li>
+	</ul>
+	<p>From the perspective of power management, ACPI enables an OS-driven conservation of energy by transitioning components which are not in active use to a lower power state, thereby reducing power consumption and contributing to more efficient power management.</p>
+	<p>The ACPI Specification defines four global “Gx” states, six sleeping “Sx” states, and four “Dx” device power states. These states are defined as follows:</p>
+	<div style="margin-left:0pt;" dir="ltr" align="left">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:25%;" width="64">
+					<col style="width:25%;" width="248">
+					<col style="width:25%;" width="53">
+					<col style="width:25%;" width="259">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Gx</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Name</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Sx</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Description</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">G0</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Working</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">S0</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">The run state. In this state the machine is fully running</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" rowspan="4">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">G1</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" rowspan="4">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Sleeping</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">S1</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.3800000000000001;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">A sleep state where the CPU will suspend activity but retain its contexts.</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">S2</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">A sleep state where memory contexts are held, but CPU contexts are lost. CPU re-initialization is done by firmware.</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">S3</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">A logically deeper sleep state than S2 where CPU re-initialization is done by device. Equates to Suspend to RAM.</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">S4</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">A logically deeper sleep state than S3 in which DRAM is context is not maintained and contexts are saved to disk. Can be implemented by either OS or firmware.&nbsp;</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">G2</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Soft off but PSU still supplies power</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">S5</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">The soft off state. All activity will stop, and all contexts are lost. The Complex Programmable Logic Device (CPLD) responsible for power-up and power-down sequences of various components e.g. CPU, BMC is on standby power, but the CPU/host is off.</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">G3</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Mechanical off</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">&nbsp;</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">PSU does not supply power. The system is safe for disassembly.</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Dx</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Name</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" colspan="2">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Description</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">D0</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Fully powered on</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" colspan="2">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Hardware device is fully functional and operational&nbsp;</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">D1</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Hardware device is partially powered down</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" colspan="2">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Reduced functionality and can be quickly powered back to D0</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">D2</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Hardware device is in a deeper lower power than D1</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" colspan="2">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Much more limited functionality and can only be slowly powered back to D0.</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:21pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">D3</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Hardware device is significantly powered down or off</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" colspan="2">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Device is inactive with perhaps only the ability to be powered back on</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<p>The states that matter to us are:</p>
+	<ul>
+		<li>
+			<p><b>S0_G0_D0:</b> often referred to as the working state. Here we know our host system is running just fine.</p>
+		</li>
+		<li>
+			<p><b>S2_D2: </b>Memory contexts are held, but CPU context is lost. We usually use this state to know when the host’s UEFI is performing platform firmware initialization.</p>
+		</li>
+		<li>
+			<p><b>S5_G2:</b> Often referred to as the soft off state. Here we still have power going into the chassis, however, processor and DRAM context are not maintained, and the operating system power management of the host has no context.</p>
+		</li>
+	</ul>
+	<p>Since the issues we were experiencing were related to the power state changes of the host — when we asked the host to reboot or power on — we needed a way to track the various power state changes of the host as it went from power off to a complete working state. This would give us better management capabilities over the devices that were on the same power domain of the host during the boot process. Fortunately, the OpenBMC community already implemented an <a href="https://github.com/openbmc/google-misc/tree/master/subprojects/acpi-power-state-daemon"><u>ACPI daemon</u></a>, which we extended to serve our needs. We added an ACPI S2_D2 power state, in which memory contexts are held, but CPU context is lost, to the ACPI daemon running on the BMC to enable us to know when the host’s UEFI is performing firmware initialization, and also set up various management tasks for the different ACPI power states.</p>
+	<p>An example of a power management task we carry out using the S0_G0_D0 state is to re-export our Voltage Regulator (VR) sensors on S0_G0_D0 state, as shown with the service file below:</p>
+	<pre class="language-RUST"><code class="language-RUST">cat /lib/systemd/system/Re-export-VR-device.service 
+[Unit]
+Description=RE Export VR Device Process
+Wants=xyz.openbmc_project.EntityManager.service
+After=xyz.openbmc_project.EntityManager.service
+Conflicts=host-s2-state.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'set -a &amp;&amp; source /usr/bin/Re-export-VR-device.sh on'
+SyslogIdentifier=Re-export-VR-device.service
+
+[Install]
+WantedBy=host-s0-state.target
+</code></pre>
+	<p>Having set this up, OpenBMC has a Net Function (ipmiSetACPIState) in <a href="https://github.com/openbmc/phosphor-host-ipmid/tree/master"><u>phosphor-host-ipmid</u></a> that is responsible for setting the ACPIState of the host on the BMC. This command is called by the host using the standard ipmi command with the corresponding NetFn=0x06 and Cmd=0x06.</p>
+	<p>In the event of an immediate power cycle (i.e. host reboots without operating system shutdown), the host is unable to send its S5_G2 state to the BMC. For this case, we created a patch to OpenBMC’s <a href="https://github.com/openbmc/x86-power-control/tree/master"><u>x86-power-control</u></a> to let the BMC become aware that the host has entered the ACPI S5_G2 state (i.e. soft-off). When the host comes out of the power off state, the UEFI performs the Power On Self Test (POST) and sends the S2_D2 to the BMC, and after the UEFI has loaded the OS on the host, it notifies the BMC by sending the ACPI S0_G0_D0 state.</p>
+	<div class="flex anchor relative">
+		<h2 id="fixing-the-issues">Fixing the issues</h2>
+		<a href="https://blog.cloudflare.com/#fixing-the-issues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Going back to the boot-up issues we faced, we discovered that they were mostly caused by devices which were in the same power domain of the CPU, interfering with the UEFI/platform firmware initialization phase. Below is a high level description of the fixes we applied.</p>
+	<p><b><i>Servers not booting</i></b><b>:</b> After identifying the devices that were interfering with the POST stage of the firmware initialization, we used the host ACPI state to control when we set the appropriate power mode state for those devices so as not to cause POST to fail.</p>
+	<p><b><i>Memory modules missing</i></b><b>:</b> During the boot-up process, memory modules (DIMMs) are powered and initialized in S2_D2 ACPI state. During this initialization process, UEFI firmware sends read commands to the Serial Presence Detect (SPD) on the DIMM to retrieve information for DIMM enumeration. At the same time, the BMC could be sending commands to read DIMM temperature sensors. This can cause SMBUS collisions, which could either cause DIMM temperature reading to fail or UEFI DIMM enumeration to fail. The latter case would cause the system to boot up with reduced DIMM capacity, which could be mistaken as a failing DIMM scenario. After we had discovered the race condition issue, we disabled the BMC from reading the DIMM temperature sensors during S2_D2 ACPI state and set a fixed speed for the corresponding fans. This solution allows our UEFI to retrieve all the necessary DIMM subsystems information for enumeration, and our servers now boot up with the correct size of memory.</p>
+	<p><b>Thermal telemetry:</b> In S0_G0 power state, when sensors are not reporting values back to the BMC, the BMC assumes that devices may be overheating and puts the fan controller into fail-safe mode where fan speeds are ramped up to maximum speed. However, in S5_G2 state, some thermal sensors like CPU temperature, NIC temperature, etc. are not powered and not available. Our solution is to set these thermal sensors as non-functional in their exported configuration when in S5_G2 state and during the transition from S5_G2 state to S2_D2 state. Setting the affected devices as non-functional in their configuration, instead of waiting for thermal sensor read commands to error out, prevents the controller from entering the fail-safe mode.</p>
+	<div class="flex anchor relative">
+		<h2 id="moving-forward">Moving forward</h2>
+		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aside from resolving issues, we have seen other benefits from implementing ACPI Power State on our BMC firmware. An example is in the area of our automated firmware regression testing. Various parts of our tests require rebooting/power cycling the servers over a hundred times, during which we monitor the ACPI power state changes of our servers as against using a boolean (running or not running, pingable or not pingable) to assert the status of our servers.</p>
+	<p>Also, it has given us the opportunity to learn more about the complex subsystems in a server system, and the various power modes of the different subsystems. This is an aspect that we are still actively learning about as we look to further optimize various aspects of the boot sequence of our servers.</p>
+	<p>In the course of time, implementing ACPI states is helping us achieve the following:</p>
+	<ul>
+		<li>
+			<p>All components are enabled by end of boot sequence,</p>
+		</li>
+		<li>
+			<p>BIOS and BMC are able to retrieve component information,</p>
+		</li>
+		<li>
+			<p>And the BMC is aware when thermal sensors are in a non-functional state.
+			</p>
+		</li>
+	</ul>
+	<p>For better observability of the boot progress and “last state” of our systems, we have also started the process of adding the BootProgress object of the <a href="https://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_13_0.json"><u>Redfish ComputerSystem Schema</u></a> into our systems. This will give us an opportunity for pre-operating system (OS) boot observability and an easier debug starting point when the UEFI has issues (such as when the server isn’t coming on) during the server platform initialization.</p>
+	<p>With each passing day, Cloudflare’s OpenBMC team, which is made up of folks from different embedded backgrounds, learns about, experiments with, and deploys OpenBMC across our global fleet. This has been made possible by relying on the OpenBMC community’s contribution (as well as upstreaming some of our own contributions), and our interaction with our various vendors, thereby giving us the opportunity to make our systems more reliable, and giving us the ownership and responsibility of the firmware that powers the BMCs that manage our servers. If you are thinking of embracing open-source firmware in your BMC, we hope this blog post written by a team which started deploying OpenBMC less than 18 months ago has inspired you to give it a try.&nbsp;</p>
+	<p>For those who are interested in considering making the jump to open-source firmware, check it out <a href="https://github.com/openbmc/openbmc"><u>here</u></a>!</p>
+</div>
