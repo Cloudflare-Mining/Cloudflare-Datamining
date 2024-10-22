@@ -667,7 +667,7 @@
 	"dns.table.bulk_action.tooltip": "<0>Proxied records</0>: DNS responses are overridden by <1>Cloudflare anycast IPs</1> and HTTP/S traffic is processed per your configuration. A, AAAA, and CNAME records are eligible for proxying. <2>DNS only records</2>: HTTP/S traffic goes directly to and from the origin, because proxying is off or the record type is not eligible for proxying.",
 	"dns.table.bulk_action.modal.delete.title": "Delete DNS records",
 	"dns.table.bulk_action.modal.delete.description": "Are you sure you want to permanently delete **%{total} record**? |||| Are you sure you want to permanently delete **%{total} records**?",
-	"dns.table.bulk_action.modal.delete.challenge": "Type in \"DELETE\" to confirm",
+	"dns.table.bulk_action.modal.delete.challenge.text": "Type in \"%{deleteValue}\" to confirm",
 	"dns.table.bulk_action.modal.edit_proxy.title": "Edit proxy status for %{count} record |||| Edit proxy status for %{count} records",
 	"dns.table.bulk_action.modal.edit_proxy.description": "Only A, AAAA, and CNAME records are eligible to be <0>proxied.</0>",
 	"dns.table.bulk_action.modal.edit_proxy.warning": "The <0>%{ineligible}</0> record you selected is ineligible for proxying and will remain <1>DNS only.</1> ||||The <0>%{ineligible}</0> records you selected are ineligible for proxying and will remain <1>DNS only.</1>",
