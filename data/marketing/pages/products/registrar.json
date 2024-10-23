@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-10-17T17:36:11.906Z",
-					"updatedAt": "2024-10-19T00:04:59.582Z"
+					"updatedAt": "2024-10-23T16:23:56.773Z"
 				},
 				"contentfulId": "2UBOeyq0cEUsYGmCOKS8o4",
 				"contentTypeId": "page",
@@ -1132,127 +1132,143 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "2nbydYxbrHj6F5HFsA8Nze",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "2H5XIQs4jOkEpTbcnsw0PZ",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "1hnOeoOk88dZuoe24hxpM3",
-								"title": "A step-by-step guide to transferring domains to Cloudflare",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how to quickly transfer your existing domain to Cloudflare with our Domain Transfer Checklist.",
-								"learnMoreUrl": "https://blog.cloudflare.com/a-step-by-step-guide-to-transferring-domains-to-cloudflare",
-								"learnMoreText": "Read the blog",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3jMd6op4kwUAdvmAn1skCA",
+								"heading": "Blog",
+								"description": "A step-by-step guide to transferring domains to Cloudflare",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "74r9oKnaFkY4nztR1DUdTo",
+									"elementName": "Registrar Product Page - Resources cards carousel - A step-by-step guide to transferring domains to Cloudflare - Link",
+									"standardText": null,
+									"text": "Read the blog",
+									"url": "https://blog.cloudflare.com/a-step-by-step-guide-to-transferring-domains-to-cloudflare",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "6dKqJl8BaHoPrLK2LcIjOO",
-								"title": "Cloudflare Registrar FAQ",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Get support for common questions related to domain transfers, registrations, billing, and more.\n",
-								"learnMoreUrl": "https://developers.cloudflare.com/registrar/faq/",
-								"learnMoreText": "Read the FAQ",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5hfX5wc94BmHwsyqzQEHK0",
+								"heading": "Documentation",
+								"description": "Cloudflare Registrar FAQ",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "EHifBbl88tf8biZeAlPK4",
+									"elementName": "Registrar Product Page - Resources cards carousel - Cloudflare Registrar FAQ - Link",
+									"standardText": null,
+									"text": "Read the FAQ",
+									"url": "https://developers.cloudflare.com/registrar/faq/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "d01887ba-fc8f-5f4e-888f-075116ae90c8",
+									"altText": "Cloudflare Docs: Certificate Management - thumbnail",
+									"title": "Cloudflare Docs: Certificate Management - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wo5C12Pbus3tUfxoX7VIw/c7814b86f9e379fcddf971da3437b03c/Cloud_CNI_Thumbnail.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "Cloud CNI Thumbnail"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4r6pTc2OQQd3liAmHsrYPo",
-								"title": "Cloudflare Registrar abuse process",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Facing domain hijacking, trademark issues, or other registrar-specific concerns? File a report with Cloudflare.",
-								"learnMoreUrl": "https://www.cloudflare.com/products/registrar/abuse/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3nY5PwLmDvnyfl6RXgPx02",
+								"heading": "Insight",
+								"description": "Cloudflare Registrar abuse process",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6eQE38hAwlc6ltVH2OC8mi",
+									"elementName": "Registrar Product Page - Resources cards carousel - Cloudflare Registrar abuse process - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "/products/registrar/abuse/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
+									"altText": "Cloudflare insights",
+									"title": "Cloudflare insights",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-02-14T21:30:42.000Z",
-					"updatedAt": "2024-09-20T06:31:55.373Z"
+					"updatedAt": "2024-10-23T16:21:49.205Z"
 				},
 				"contentfulId": "5mRG4WhMaD5PvUYp3nOWjj",
 				"contentTypeId": "page",
@@ -685,127 +685,143 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "3rTzTlTYURvbLjQv2apfrL",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "6LxEpkLSgMm2vZVBA5uejv",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7d6Q7AyqR7f19mRZGaULj3",
-								"title": "Deployment docs for Keyless SSL",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how to upload custom certificates to Cloudflare without exposing TLS private keys.",
-								"learnMoreUrl": "https://developers.cloudflare.com/ssl/keyless-ssl/ ",
-								"learnMoreText": "Read more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "68qvl70jHFxJv70oVKqbei",
+								"heading": "Documentation",
+								"description": "Deployment docs for Keyless SSL",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7uKUnFXQ2cn2xxd3Wa93Gy",
+									"elementName": "Keyless SSL - Resources cards carousel - Deployment docs for Keyless SSL - Link",
+									"standardText": null,
+									"text": "Read more",
+									"url": "https://developers.cloudflare.com/ssl/keyless-ssl/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
+									"altText": "Cloudflare insights",
+									"title": "Cloudflare insights",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4LtJb1afogM6CHw3zcv9gu",
-								"title": "TLS in the Enterprise ",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how to automate management of TLS certificates while maintaining customizability for niche enterprise use cases. ",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4120282/",
-								"learnMoreText": "Register here",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "586ze4qwVpq8LgSmxYNkyx",
+								"heading": "Webinar",
+								"description": "TLS in the Enterprise",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7pFLKZjgA4vThu97PjLMah",
+									"elementName": "Keyless SSL - Resources cards carousel - TLS in the Enterprise - Link",
+									"standardText": null,
+									"text": " Register here",
+									"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4120282/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "7fe09ffb-2a5f-5334-93ed-275d4c6af144",
+									"altText": "2024 API Security Trends & Predictions webinar image",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CiOmliYt5Ia50ePLjLAk8/bb956433c650a4dec22a4fc39d17dc6a/Webinar_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "2024 API Security Trends & Predictions"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7gGECNc3FH4TshklFlSE2l",
-								"title": "State of Application Security, 2024",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Read the latest threat trends for web applications and APIs, along with Cloudflare's recommendations for addressing them.",
-								"learnMoreUrl": "https://cfl.re/3KRASrZ ",
-								"learnMoreText": "Read report",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1wPQzQ0mpd6bTHpDqPrCLO",
+								"heading": "Report",
+								"description": "State of Application Security, 2024",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4gNDn3bmHUXn7JFUvAwlos",
+									"elementName": "Keyless SSL - Resources cards carousel - State of Application Security, 2024 - Link",
+									"standardText": null,
+									"text": " Read report",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5naLIMtcpQ1QuuFNKFDyp9/7ba5f021de7118016ffd766ef0b2388d/BDES-5907_State-of-App-Security-2024.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
+									"altText": "Cloudflare insights",
+									"title": "Cloudflare insights",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

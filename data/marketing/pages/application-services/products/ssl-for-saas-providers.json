@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-07-21T21:59:08.098Z",
-					"updatedAt": "2024-10-17T20:09:28.458Z"
+					"updatedAt": "2024-10-23T16:20:34.333Z"
 				},
 				"contentfulId": "4nvosA9owqSSriYZgPe19D",
 				"contentTypeId": "page",
@@ -871,127 +871,143 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "3fc3W91n92g5bcaWu3KkOr",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "43SLOUpsmsWjcz3r6a816p",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "2Vqmi39XO5by7nQ5C8Dm9p",
-								"title": "SaaS application performance, security, and encryption essentials",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare's performance and security solution for SaaS providers protects and accelerates end customer experiences. ",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Y2wwkzRuKe3tjXhD6QyAk/6395ab9a9a106a0ffc2a8d8aaa4f0b4a/Two_Pager_SSL_for_SaaS_Letter_EN-US_200227.pdf",
-								"learnMoreText": "Read the brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "28POzeKc9QKhZr8Xiv5VAH",
+								"heading": "Solution brief",
+								"description": "SaaS application performance, security, and encryption essentials",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7Mn63XmEW4IwmvuxPB2k2d",
+									"elementName": "SSL for SaaS Providers - Resouces cards carousel - SaaS application performance, security, and encryption essentials - Link",
+									"standardText": null,
+									"text": "Read the brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Y2wwkzRuKe3tjXhD6QyAk/6395ab9a9a106a0ffc2a8d8aaa4f0b4a/Two_Pager_SSL_for_SaaS_Letter_EN-US_200227.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "6sbvxhNNatwuIsTmYGIRXw",
-								"title": "Cloudflare for SaaS Providers",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "SaaS providers are frequently targeted by hackers seeking to intercept sensitive customer data in transit – Cloudflare can help.",
-								"learnMoreUrl": "https://cfl.re/cf-for-saas",
-								"learnMoreText": "Read the brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "213hOGP0ugmODyQDkBft5z",
+								"heading": "Product brief",
+								"description": "Cloudflare for SaaS Providers",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "35jqExZzqfbQceNiPS9SkQ",
+									"elementName": "SSL for SaaS Providers - Resouces cards carousel - Cloudflare for SaaS Providers - Link",
+									"standardText": null,
+									"text": "Read the brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ENCeLin6JTZmJJz29oGba/b7471f6ffbae0ee54c35ce5b83e18c9d/Cloudflare_for_SaaS_Product_Brief.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
+									"altText": "Product brief thumbnail",
+									"title": "Product brief thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "CfJFuKa3G8gadSNpCScdR",
-								"title": "Everywhere Security",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Neutralize cyber attacks everywhere, across every stage of the attack lifecycle and for any endpoint, infrastructure, or resource — all with one platform.",
-								"learnMoreUrl": "lp/everywhere-security-ebook/",
-								"learnMoreText": "Read solution brief",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6py4VZzpGOYtVEaQmhMIFQ",
+								"heading": "Solution brief",
+								"description": "Everywhere Security",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3NlenvWBO2lPOTdSxVYFOm",
+									"elementName": "SSL for SaaS Providers - Resouces cards carousel - Everywhere Security - Link",
+									"standardText": null,
+									"text": "Read solution brief",
+									"url": "/lp/everywhere-security-ebook/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

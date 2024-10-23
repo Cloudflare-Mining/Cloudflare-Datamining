@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-12T21:11:27.978Z",
-					"updatedAt": "2024-10-19T00:08:00.648Z"
+					"updatedAt": "2024-10-23T16:22:24.652Z"
 				},
 				"contentfulId": "7DxWgi2iysGyEUEoKa4oKm",
 				"contentTypeId": "page",
@@ -75,7 +75,7 @@
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Get the product brief",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "/lp/waf-product-brief-xy/",
+						"buttonUrl1": "https://cfl.re/3T4s1Ic",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
 						"buttonText2": "Join a live demo",
@@ -3940,127 +3940,143 @@
 						"planFeaturesGroup": []
 					},
 					{
-						"contentfulId": "1ifi6KZpQrVQd90ddcalaB",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "73owwNkKkJFC6OXSBxonGh",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4CBqBCMhbigFAxI4wj4uaq",
-								"title": "Old concept, new threats: Innovations in WAF",
-								"makeTitleLink": false,
-								"titleUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4396186/",
-								"titleSize": null,
-								"description": "It can be hard for any one organization to keep up with the entire attack landscape. Learn how Cloudflare uses AI and machine learning to protect against new zero-days before they reach your digital real estate.",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4396186/",
-								"learnMoreText": "Watch the webinar",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5iOXm3PJRoAWlaXUslLUkW",
+								"heading": "Webinar",
+								"description": "Old concept, new threats: Innovations in WAF",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3thM2VCjA8ueox2SpTOIt6",
+									"elementName": "WAF - Resources cards carousel - Old concept, new threats: Innovations in WAF - Link",
+									"standardText": null,
+									"text": "Watch the webinar",
+									"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4396186/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "7fe09ffb-2a5f-5334-93ed-275d4c6af144",
+									"altText": "2024 API Security Trends & Predictions webinar image",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CiOmliYt5Ia50ePLjLAk8/bb956433c650a4dec22a4fc39d17dc6a/Webinar_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "2024 API Security Trends & Predictions"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4de9TcMwsP2otRLhK5oyrc",
-								"title": "Doing more with less: Cost-effective application security and performance strategies",
-								"makeTitleLink": true,
-								"titleUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/56tYXHy5sHp2HqHy06rkFj/c9b4d337971ccbc603c2f3fdc224fad6/Application_Security_White_Paper.pdf",
-								"titleSize": null,
-								"description": "This paper shares real-life stories of companies that have successfully created efficiencies and cut costs in their application security strategy.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/doing-more-with-less-paper/",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6b64bZpBu3EEgfQQpoIC9a",
+								"heading": "Whitepaper",
+								"description": "Doing more with less: Cost-effective application security and performance strategies",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3MpNO80t5CrNncIJvCqKj7",
+									"elementName": "WAF - Resources cards carousel - Doing more with less: Cost-effective application security and performance strategies - Link",
+									"standardText": null,
+									"text": " Get the whitepaper",
+									"url": "/lp/doing-more-with-less-paper/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "2OHU8jTBvBltLOOFshEZt8",
-								"title": "WAF product brief",
-								"makeTitleLink": true,
-								"titleUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/30FzArZHfdn1KYe4jTZ5DG/80dff4240db6f9c136b66d38f1c9e59c/WAF_product_brief_Fall_2022__1_.pdf",
-								"titleSize": null,
-								"description": "Get the details on how the Cloudflare WAF protects your applications from attackers.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/30FzArZHfdn1KYe4jTZ5DG/80dff4240db6f9c136b66d38f1c9e59c/WAF_product_brief_Fall_2022__1_.pdf",
-								"learnMoreText": "Get the product brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7fSHQ9nqc1ZK6zMqqi2Qmf",
+								"heading": "Product brief",
+								"description": "WAF product brief",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7ablxA3sbTuAI8CVvQaF4J",
+									"elementName": "WAF - Resources cards carousel - WAF product brief - Link",
+									"standardText": null,
+									"text": "Get the product brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/30FzArZHfdn1KYe4jTZ5DG/80dff4240db6f9c136b66d38f1c9e59c/WAF_product_brief_Fall_2022__1_.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
+									"altText": "Product brief thumbnail",
+									"title": "Product brief thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

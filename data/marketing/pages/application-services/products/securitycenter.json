@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-12-09T14:01:16.052Z",
-					"updatedAt": "2024-10-19T03:37:18.312Z"
+					"updatedAt": "2024-10-23T16:20:03.711Z"
 				},
 				"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
 				"contentTypeId": "page",
@@ -828,127 +828,143 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "7x6FkuhjBgoz7W8BTrkVdM",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "1qrG2LHGqCOI400FXsyOK1",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7EM8b2PapxJrKcZX6MYvST",
-								"title": "Cloudflare Security Center",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare Security Center offers attack surface management (ASM) to mitigate security risk — all integrated in the Cloudflare dashboard.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
-								"learnMoreText": "Get the product brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6DDhTQVkVkkBDbJrBZpfoh",
+								"heading": "Product brief",
+								"description": "Cloudflare Security Center",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5SPssYYNOWm5EiNWZ8O00A",
+									"elementName": "Security Center - Resources cards carousel -  Resources card - Cloudflare Security Center - Link",
+									"standardText": null,
+									"text": "Get the product brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k2B8G6YCOFwO33glU9RIw/be9a81ab11fdbcfe3c533ee48acae9c4/BDES-6049_cloudflare_security_center_datasheet_Letter.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
+									"altText": "Product brief thumbnail",
+									"title": "Product brief thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7L67gcikLwxRPcTcx96ibs",
-								"title": "Cloudflare Security Center developer docs",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Get more details on how to activate Security Center, and how it works.",
-								"learnMoreUrl": "https://developers.cloudflare.com/security-center/",
-								"learnMoreText": "Read developer docs",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1AFiecGISnYaOMrUDstIQr",
+								"heading": "Insight",
+								"description": "Cloudflare Security Center developer docs",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4V7YKJo0mLSaQEiwRVOwhs",
+									"elementName": "Security Center - Resources cards carousel - Cloudflare Security Center developer docs - Link",
+									"standardText": null,
+									"text": "Read developer docs",
+									"url": "https://developers.cloudflare.com/security-center/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
+									"altText": "Cloudflare insights",
+									"title": "Cloudflare insights",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "1YTz6xRDFmKKEAcczu9ZeK",
-								"title": "3 challenges of securing and connecting application services",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Learn how a connectivity cloud ensures better security, latency-free connectivity and, business growth compared to traditional architectures.",
-								"learnMoreUrl": "/lp/3-challenges-of-securing-and-connecting-application-services/",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5K3Z9cUuyxoi712zNYNBXN",
+								"heading": null,
+								"description": "3 challenges of securing and connecting application services",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "34k6Dgl7HMiam75Tjm26b2",
+									"elementName": "Security Center - Resources cards carousel - 3 challenges of securing and connecting application services - Link",
+									"standardText": null,
+									"text": " Get the whitepaper",
+									"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-12T21:13:08.521Z",
-					"updatedAt": "2024-05-24T20:53:00.787Z"
+					"updatedAt": "2024-10-23T16:21:14.705Z"
 				},
 				"contentfulId": "2kWtbkqBgoQ8wOYYew688Y",
 				"contentTypeId": "page",
@@ -4622,127 +4622,143 @@
 						"planFeaturesGroup": []
 					},
 					{
-						"contentfulId": "6LU4ju5b0XOyDrbDNXCBAq",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "dgGa9RcNtKB4p1qDhadEx",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "3Im6Ys2dGJSUEvAGGPzGTu",
-								"title": "Doing more with less: Cost-effective application security and performance strategies",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "This paper shares real-life stories of companies that have successfully created efficiencies and cut costs in their application security strategy.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/doing-more-with-less-paper/",
-								"learnMoreText": "Get the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3hY4PknYw71cM8d87JSqpu",
+								"heading": "Whitepaper",
+								"description": "Doing more with less: Cost-effective application security and performance strategies",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6MZgSaioUVXWYZN7VSTGQC",
+									"elementName": "SSL - Resources cards carousel - Doing more with less: Cost-effective application security and performance strategies - Link",
+									"standardText": null,
+									"text": "Get the whitepaper",
+									"url": "/lp/doing-more-with-less-paper/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "6WcQpV9tHbGG8WojX9IPWR",
-								"title": " Mastering the four key areas where TLS must protect business",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Watch this webinar to learn about both TLS fundamentals and emerging use cases where TLS is quickly becoming critical to successful enterprise security postures.",
-								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4120282/ ",
-								"learnMoreText": "Watch the webinar",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2EZMaFVvxoU4pcx1b7RW07",
+								"heading": "Webinar",
+								"description": "Mastering the four key areas where TLS must protect business",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3gPhghRn8C6RMF8lwV5cr7",
+									"elementName": "SSL - Resources cards carousel - Mastering the four key areas where TLS must protect business - Link",
+									"standardText": null,
+									"text": "Watch the webinar",
+									"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4120282/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "7fe09ffb-2a5f-5334-93ed-275d4c6af144",
+									"altText": "2024 API Security Trends & Predictions webinar image",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3CiOmliYt5Ia50ePLjLAk8/bb956433c650a4dec22a4fc39d17dc6a/Webinar_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": "2024 API Security Trends & Predictions"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "3mjnHQLUBY0bIu8Q1gPogM",
-								"title": " Everywhere Security Ebook",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Most IT architectures are too complicated or outdated to enforce security everywhere it should be. Learn how to regain control and converge security in a single platform.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/everywhere-security-ebook/",
-								"learnMoreText": "Get the Ebook",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
-									"altText": "Resources card - Thin top orange line  - image",
-									"title": "Resources card - Thin top orange line  - image",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "bvqgzE6hb8epXJf9YwFCS",
+								"heading": "Ebook",
+								"description": "Everywhere Security Ebook",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "w5L2kGe1Tf4lzJtfDyWxH",
+									"elementName": "SSL - Resources cards carousel - Everywhere Security Ebook - Link",
+									"standardText": null,
+									"text": "Get the Ebook",
+									"url": "/lp/everywhere-security-ebook/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
+									"altText": "Ebook Thumbnail",
+									"title": "Ebook Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

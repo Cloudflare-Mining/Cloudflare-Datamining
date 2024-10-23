@@ -57,7 +57,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-01-21T23:30:29.913Z",
-					"updatedAt": "2024-10-19T01:01:26.280Z"
+					"updatedAt": "2024-10-23T16:22:50.932Z"
 				},
 				"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
 				"contentTypeId": "page",
@@ -810,127 +810,143 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "7zBZws39NKLoNeU7nIiA4G",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "56EFcoFcmAYB7eUjMY8M4O",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "2C5EaVyqfXtRblnMXUdph8",
-								"title": "Waiting Room overview",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "The Cloudflare Waiting Room limits the number of users allowed in the application while placing excess traffic into a virtual queue. Learn more about how it works.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
-								"learnMoreText": "Get product brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1xy0uZEv6a0lYzat455QR8",
+								"heading": "Product brief",
+								"description": "Waiting Room overview",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6lHyUqYV823b2Krz8lgjRK",
+									"elementName": "Waiting Room - Resources cards carousel - Waiting Room overview - Link",
+									"standardText": null,
+									"text": "Get product brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
+									"altText": "Product brief thumbnail",
+									"title": "Product brief thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "HhKzW9gErDFkpelSfqGob",
-								"title": "Cloudflare Waiting Room announcement blog",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "We are very excited to put the power of our Waiting Room into the hands of our customers to ensure they continue to focus on their businesses and customers.",
-								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-waiting-room/",
-								"learnMoreText": "Read blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1W202iozf5OCw1vNUP7kkA",
+								"heading": "Blog",
+								"description": "Cloudflare Waiting Room announcement blog",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3Bf9GbPnTeqLw5LROHGMhe",
+									"elementName": "Waiting Room - Resources cards carousel - Cloudflare Waiting Room announcement blog - Link",
+									"standardText": null,
+									"text": "Read blog post",
+									"url": "https://blog.cloudflare.com/cloudflare-waiting-room/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
+									"altText": "Blog  thumbnail",
+									"title": "Blog  thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "5WOPx4dPwu3Uh877S7Rye8",
-								"title": "Solution brief: Cloudflare for ecommerce",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "With Cloudflare, your ecommerce customers will benefit from fast site performance and low latency across our global network of data centers.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHRb5mLKGbtdXBz0u61cI/60766a4ac2cb7091798f456c4d2496e6/Cloudflare_for_Ecommerce__Brief_.pdf",
-								"learnMoreText": "Get solution brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7bbBVj6Ycc3cPvPcjfUinq",
+								"heading": "Solution brief",
+								"description": "Solution brief: Cloudflare for ecommerce",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "4B2maSAEv49BVHavRxRv9q",
+									"elementName": "Waiting Room - Resources cards carousel - Solution brief: Cloudflare for ecommerce - Link",
+									"standardText": null,
+									"text": "Get solution brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHRb5mLKGbtdXBz0u61cI/60766a4ac2cb7091798f456c4d2496e6/Cloudflare_for_Ecommerce__Brief_.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
