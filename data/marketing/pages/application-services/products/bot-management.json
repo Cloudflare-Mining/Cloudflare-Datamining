@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Product Page - Bot Management ",
+				"pageName": "Product Page - Bot Management",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-03-20T20:46:41.176Z",
-					"updatedAt": "2024-10-16T06:15:10.535Z"
+					"updatedAt": "2024-10-23T16:17:38.483Z"
 				},
 				"contentfulId": "1MFKT7svIM8e8IcqMemoKW",
 				"contentTypeId": "page",
@@ -857,127 +857,143 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "2eALTciVlLYVfGfHxtdu61",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "5uNd1cCoJmLRqzK2y8gNPG",
 						"title": "Resources",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4vUVP00xzsYgIJzZvH1qfh",
-								"title": "Explore bot management in our live application security demo series",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Join Cloudflare's Solution Engineering team for our live weekly series. Discover how Cloudflare's global platform and intelligent network can safeguard your business-critical web applications.\n",
-								"learnMoreUrl": "/lp/app-security-demo-series/",
-								"learnMoreText": "Register now",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2H8H6eQtSsGtEpoTwzcbgv",
+								"heading": "Demo",
+								"description": "Explore bot management in our live application security demo series",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1mad5eUlegnh2tRYqDiZ4d",
+									"elementName": "Bot Management - Resources cards carousel - Explore bot management in our live application security demo series - Link",
+									"standardText": null,
+									"text": "Register now",
+									"url": "/lp/app-security-demo-series/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "47d314ed-fca3-53ee-8a27-cd22b5cc9e35",
 									"altText": null,
-									"title": null,
+									"title": "ABM Generic Insights card image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WSJHSDpKATubWl1mswB7W/841ac9d32923808f5e4ba8220faaeeb0/Insight_99x180.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "109nZ32JLoGd2wpcfREPAr",
-								"title": "4 Strategies for Managing Malicious Bots",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "An estimated 40-50% of total Internet traffic is bot-driven. Learn how to avoid negative business outcomes when these bots turn malicious.\n",
-								"learnMoreUrl": "https://cfl.re/3ZGIsyA",
-								"learnMoreText": "Get the solution brief",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7Iz1MppbPhGX0QciuQg0oM",
+								"heading": "Solution brief",
+								"description": "4 Strategies for Managing Malicious Bots",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5KzEPXhpwsEGP5XMmhOUPS",
+									"elementName": "Bot Management - Resources cards carousel - 4 Strategies for Managing Malicious Bots - Link",
+									"standardText": null,
+									"text": " Get the solution brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zHWIu26DQhcKYYxHpEPIj/4cf7db1104d7c7b6e4c0d3a19c7e4249/BDES-4785-Gaming-Solution-Brief-Bot-Management.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "25JHPhAf2mIz7BlusefLYC",
-								"title": "Better defenses against modern bots",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "43.8% of the traffic flowing through Cloudflare is automated, but just 4.5% is from good bots. See these and other insights in our write-up on defending against bot attacks.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hAcTvteThken5z8VtpeRq/ceb6109cdc9009504eee4315addd4bf0/Best_practices_in_bot_protection_.pdf",
-								"learnMoreText": "Read the report",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5IOOi9bcJkIObW1FEDhAcj",
+								"heading": "Whitepaper",
+								"description": "The Malicious Bot Playbook",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "2Jw4H1ULm2sjMnRnj9qCvs",
+									"elementName": "Bot Management - Resources cards carousel - The Malicious Bot Playbook - Link",
+									"standardText": null,
+									"text": "Read the Whitepaper",
+									"url": "https://cfl.re/3XEmTMs",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},

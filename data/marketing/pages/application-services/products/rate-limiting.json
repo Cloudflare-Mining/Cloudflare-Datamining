@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-12T21:12:29.329Z",
-					"updatedAt": "2024-10-16T06:18:22.108Z"
+					"updatedAt": "2024-10-23T16:19:38.558Z"
 				},
 				"contentfulId": "5F4lTypOvu2UyaIEckg4yy",
 				"contentTypeId": "page",
@@ -892,127 +892,143 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "3bQg3yZWxGFxaSDrv7n0i4",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "4YSeaAMtLH7Hw8QMZw5I5K",
+						"title": "Resouces",
 						"htmlId": null,
-						"copy": null,
-						"title": "Resources ",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"backgroundImage": null,
+						"cards": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "4my7pxxE6Lw1dGvOKkWa3j",
-								"title": "Adopting everywhere security",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Discover a strategy for reducing complexity and confusion, without limiting the ability to innovate.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/everywhere-security-ebook/",
-								"learnMoreText": "Read the ebook",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "7DVBQyU06SgUMUaNOrQ1Sy",
+								"heading": "Ebook",
+								"description": "Adopting everywhere security",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5FWLXMgboKGfe5JMmi7ocX",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - Adopting everywhere security - Link",
+									"standardText": null,
+									"text": "Read the ebook",
+									"url": "/lp/everywhere-security-ebook/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
+									"altText": "Ebook Thumbnail",
+									"title": "Ebook Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "51eNfYFO2Fu2S4GWJ1wynV",
-								"title": "3 challenges of securing and connecting application services",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Understand how a connectivity cloud — designed to connect and secure everything within the IT environment — can help consolidate crucial application services.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/3-challenges-of-securing-and-connecting-application-services/",
-								"learnMoreText": "Read the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6QFCpa4xCz0I3NMlhl9sJ5",
+								"heading": "Whitepaper",
+								"description": "3 challenges of securing and connecting application services",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3hEXrxq3Rvahmu7xTXwNaB",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - 3 challenges of securing and connecting application services - Link",
+									"standardText": null,
+									"text": "Read the whitepaper",
+									"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "3kary4hsulhXNKZy4Iq8LC",
-								"title": "Say bye to the box",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Compare how legacy hardware appliances and edge cloud platforms stack up when defending against modern attacks.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nO5PMlONrGMOuhCEAePEn/7df9d8e130a98825667b6840bccb0131/Say_Bye_to_the_Box_Solution_Brief.pdf",
-								"learnMoreText": "Read the whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1rws2F2BFBRvMjyrXCCbxr",
+								"heading": "Whitepaper",
+								"description": "Say bye to the box",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3iVCRil9B5vFO2veTH1rFX",
+									"elementName": "Cloudflare Rate Limiting - Resources cards carousel - Say bye to the box - Link",
+									"standardText": null,
+									"text": " Read the whitepaper",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nO5PMlONrGMOuhCEAePEn/7df9d8e130a98825667b6840bccb0131/Say_Bye_to_the_Box_Solution_Brief.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "13298e8a-267a-575b-b89a-b871f95f1d9a",
+									"altText": "Whitepaper Thumbnail",
+									"title": "Whitepaper Thumbnail",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZiPjCDWMWnibCFs5nxHBa/75ef0ba1b4484c2da8ab4d3f40437dff/Whitpapper-generic-106x186-300dpi.png"
 										},
-										"description": "Resources card - Thin top orange line  - image"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
+								"heading": "Article",
+								"description": "Website security guide: A 10-step checklist",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
+									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
 								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"image": {
+									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
+									"altText": "theNet article - thumbnail",
+									"title": "theNet article - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							}
 						]
 					},
