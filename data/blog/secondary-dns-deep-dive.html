@@ -145,7 +145,7 @@
 
 	</figure>
 	<p>Figure 1: Secondary DNS Microservice Architecture‌‌</p>
-	<p>Once the zone transferer completes the AXFR/IXFR, it then passes the zone through to our zone builder, and finally gets pushed out to our edge at each of our <a href="https://www.cloudflare.com/en-gb/network">200 locations.</a></p>
+	<p>Once the zone transferer completes the AXFR/IXFR, it then passes the zone through to our zone builder, and finally gets pushed out to our edge at each of our <a href="https://www.cloudflare.com/network">200 locations.</a></p>
 	<p>Although this current architecture worked great in the beginning, it left us open to many vulnerabilities and scalability issues down the road. As our Secondary DNS product became more popular, it was important that we proactively scaled and reduced the technical debt as much as possible. As with many companies in the industry, Cloudflare has recently migrated all of our core data center services to <a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes">Kubernetes</a>, moving away from individually managed apps and Marathon clusters.</p>
 	<p>What this meant for Secondary DNS is that all of our Marathon-based services, as well as our NOTIFY Listener, had to be migrated to Kubernetes. Although this long migration ended up paying off, many difficult challenges arose along the way that required us to come up with unique solutions in order to have a seamless, zero downtime migration.</p>
 	<div class="flex anchor relative">
@@ -360,7 +360,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Although Cloudflare has a <a href="https://www.cloudflare.com/en-gb/network">large global network</a>, as shown above, the zone transferring process does not take place at each of the edge datacenter locations (which would surely overwhelm many primary servers), but rather in our core data centers. In this case, how do we propagate to our edge in seconds? After transferring the zone, there are a couple more steps that need to be taken before the change can be seen at the edge.</p>
+	<p>Although Cloudflare has a <a href="https://www.cloudflare.com/network">large global network</a>, as shown above, the zone transferring process does not take place at each of the edge datacenter locations (which would surely overwhelm many primary servers), but rather in our core data centers. In this case, how do we propagate to our edge in seconds? After transferring the zone, there are a couple more steps that need to be taken before the change can be seen at the edge.</p>
 	<ol>
 		<li>
 			<p>Zone Builder - This interacts with the Zone Transferer to build the zone according to what Cloudflare edge understands. This then writes to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>, our super fast, distributed KV store.</p>
