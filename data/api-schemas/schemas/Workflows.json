@@ -109,6 +109,9 @@
 													"unknown": {
 														"type": "number"
 													},
+													"waiting": {
+														"type": "number"
+													},
 													"waitingForPause": {
 														"type": "number"
 													}
@@ -376,6 +379,9 @@
 												"unknown": {
 													"type": "number"
 												},
+												"waiting": {
+													"type": "number"
+												},
 												"waitingForPause": {
 													"type": "number"
 												}
@@ -635,6 +641,7 @@
 						"terminated",
 						"complete",
 						"waitingForPause",
+						"waiting",
 						"unknown"
 					],
 					"type": "string"
@@ -737,6 +744,7 @@
 													"terminated",
 													"complete",
 													"waitingForPause",
+													"waiting",
 													"unknown"
 												],
 												"type": "string"
@@ -1069,6 +1077,7 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
+												"waiting",
 												"unknown"
 											],
 											"type": "string"
@@ -2135,6 +2144,7 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
+												"waiting",
 												"unknown"
 											],
 											"type": "string"
@@ -2485,6 +2495,7 @@
 													"terminated",
 													"complete",
 													"waitingForPause",
+													"waiting",
 													"unknown"
 												],
 												"type": "string"
