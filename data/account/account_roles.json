@@ -1122,6 +1122,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -1135,10 +1139,6 @@
 				"edit": true
 			},
 			"worker": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": true
 			},
@@ -1742,6 +1742,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -1755,10 +1759,6 @@
 				"edit": false
 			},
 			"worker": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
@@ -1921,6 +1921,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -1934,10 +1938,6 @@
 				"edit": true
 			},
 			"worker": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": true
 			},
