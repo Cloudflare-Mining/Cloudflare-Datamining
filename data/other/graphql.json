@@ -362,6 +362,10 @@
 	},
 	"AccountAiInferenceAdaptive": {
 		"__description": "AI Inference logs with adaptive sampling",
+		"costMetricName1": "Name for cost metric 1",
+		"costMetricName2": "Name for cost metric 2",
+		"costMetricValue1": "Value for cost metric 1",
+		"costMetricValue2": "Value for cost metric 2",
 		"datetime": "The date when inferance was triggered",
 		"errorCode": "Error code",
 		"inferenceTimeMs": "Inference time ms",
@@ -384,6 +388,10 @@
 	},
 	"AccountAiInferenceAdaptiveGroupsDimensions": {
 		"__description": "",
+		"costMetricName1": "Name for cost metric 1",
+		"costMetricName2": "Name for cost metric 2",
+		"costMetricValue1": "Value for cost metric 1",
+		"costMetricValue2": "Value for cost metric 2",
 		"date": "The date when starts the inference",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
@@ -406,6 +414,8 @@
 	},
 	"AccountAiInferenceAdaptiveGroupsSum": {
 		"__description": "",
+		"totalCostMetricValue1": "Total value for cost metric 1",
+		"totalCostMetricValue2": "Total value for cost metric 2",
 		"totalInferenceTimeMs": "Total inference time ms",
 		"totalNeurons": "Total neurons",
 		"totalRequestBytesIn": "Total bytes in per request",
