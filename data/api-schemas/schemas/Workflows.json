@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/workflows": {
+		"operationId": "wor-list-workflows",
 		"parameters": [
 			{
 				"in": "query",
@@ -119,6 +120,9 @@
 												"type": "string"
 											},
 											"name": {
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 												"type": "string"
 											},
 											"script_name": {
@@ -272,13 +276,16 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}": {
+		"operationId": "wor-get-workflow-details",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -380,6 +387,9 @@
 											"type": "string"
 										},
 										"name": {
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 											"type": "string"
 										},
 										"script_name": {
@@ -581,13 +591,16 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances": {
+		"operationId": "wor-list-workflow-instances",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -706,7 +719,9 @@
 												"type": "string"
 											},
 											"id": {
-												"maxLength": 96,
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 												"type": "string"
 											},
 											"modified_on": {
@@ -925,13 +940,16 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
+		"operationId": "wor-describe-workflow-instance",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -940,6 +958,9 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -1486,13 +1507,16 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
+		"operationId": "wor-list-workflow-versions",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -1720,13 +1744,16 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}": {
+		"operationId": "wor-describe-workflow-versions",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -1999,13 +2026,16 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
+		"operationId": "wor-change-status-workflow-instance",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -2014,6 +2044,9 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -2351,13 +2384,16 @@
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances": {
+		"operationId": "wor-create-new-workflow-instance",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -2376,7 +2412,8 @@
 					"schema": {
 						"properties": {
 							"instance_id": {
-								"maxLength": 96,
+								"maxLength": 64,
+								"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 								"type": "string"
 							},
 							"params": {
@@ -2434,7 +2471,9 @@
 									"items": {
 										"properties": {
 											"id": {
-												"maxLength": 96,
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 												"type": "string"
 											},
 											"status": {
@@ -2647,13 +2686,16 @@
 		}
 	},
 	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
+		"operationId": "wor-create-or-modify-workflow",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "workflow_name",
 				"required": true,
 				"schema": {
+					"maxLength": 64,
 					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -2752,6 +2794,9 @@
 											"type": "string"
 										},
 										"name": {
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 											"type": "string"
 										},
 										"script_name": {
