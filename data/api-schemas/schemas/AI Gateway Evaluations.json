@@ -1,0 +1,1486 @@
+{
+	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
+		"operationId": "aig-config-delete-evaluations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"datasets": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"enable": {
+														"type": "boolean"
+													},
+													"filters": {
+														"items": {
+															"properties": {
+																"key": {
+																	"enum": [
+																		"created_at",
+																		"request_content_type",
+																		"response_content_type",
+																		"success",
+																		"cached",
+																		"provider",
+																		"model",
+																		"cost",
+																		"tokens",
+																		"tokens_in",
+																		"tokens_out",
+																		"duration",
+																		"feedback"
+																	],
+																	"type": "string"
+																},
+																"operator": {
+																	"enum": [
+																		"eq",
+																		"contains",
+																		"lt",
+																		"gt"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"items": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"key",
+																"operator",
+																"value"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"gateway_id": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"gateway_id",
+													"name",
+													"filters",
+													"enable",
+													"id",
+													"created_at",
+													"modified_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"processed": {
+											"type": "boolean"
+										},
+										"results": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"evaluation_id": {
+														"type": "string"
+													},
+													"evaluation_type_id": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"result": {
+														"type": "string"
+													},
+													"status": {
+														"type": "number"
+													},
+													"status_description": {
+														"type": "string"
+													},
+													"total_logs": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"evaluation_id",
+													"evaluation_type_id",
+													"result",
+													"total_logs",
+													"status",
+													"status_description",
+													"id",
+													"created_at",
+													"modified_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"total_logs": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"gateway_id",
+										"name",
+										"id",
+										"created_at",
+										"modified_at",
+										"datasets",
+										"results",
+										"processed",
+										"total_logs"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns if the Evaluations was deleted successfully"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Evaluations",
+		"tags": [
+			"AI Gateway Evaluations"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/evaluation-types": {
+		"operationId": "aig-config-list-evaluators",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "0d37909e38d3e99c29fa2cd343ac421a",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"default": "mandatory",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order_by_direction",
+				"schema": {
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
+											"enable": {
+												"type": "boolean"
+											},
+											"id": {
+												"type": "string"
+											},
+											"mandatory": {
+												"type": "boolean"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"mandatory",
+											"description",
+											"enable",
+											"id",
+											"created_at",
+											"modified_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of Evaluators"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Evaluators",
+		"tags": [
+			"AI Gateway Evaluations"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
+		"operationId": "aig-config-list-evaluations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Order By Column Name",
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"description": "Order By Column Name",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Order By Direction",
+				"in": "query",
+				"name": "order_by_direction",
+				"schema": {
+					"default": "asc",
+					"description": "Order By Direction",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "processed",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "total_logs",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"description": "Search by id, name",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search by id, name",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"datasets": {
+												"items": {
+													"properties": {
+														"created_at": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"enable": {
+															"type": "boolean"
+														},
+														"filters": {
+															"items": {
+																"properties": {
+																	"key": {
+																		"enum": [
+																			"created_at",
+																			"request_content_type",
+																			"response_content_type",
+																			"success",
+																			"cached",
+																			"provider",
+																			"model",
+																			"cost",
+																			"tokens",
+																			"tokens_in",
+																			"tokens_out",
+																			"duration",
+																			"feedback"
+																		],
+																		"type": "string"
+																	},
+																	"operator": {
+																		"enum": [
+																			"eq",
+																			"contains",
+																			"lt",
+																			"gt"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"items": {
+																			"anyOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"key",
+																	"operator",
+																	"value"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"gateway_id": {
+															"type": "string"
+														},
+														"id": {
+															"type": "string"
+														},
+														"modified_at": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"gateway_id",
+														"name",
+														"filters",
+														"enable",
+														"id",
+														"created_at",
+														"modified_at"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"gateway_id": {
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"processed": {
+												"type": "boolean"
+											},
+											"results": {
+												"items": {
+													"properties": {
+														"created_at": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"evaluation_id": {
+															"type": "string"
+														},
+														"evaluation_type_id": {
+															"type": "string"
+														},
+														"id": {
+															"type": "string"
+														},
+														"modified_at": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"result": {
+															"type": "string"
+														},
+														"status": {
+															"type": "number"
+														},
+														"status_description": {
+															"type": "string"
+														},
+														"total_logs": {
+															"type": "number"
+														}
+													},
+													"required": [
+														"evaluation_id",
+														"evaluation_type_id",
+														"result",
+														"total_logs",
+														"status",
+														"status_description",
+														"id",
+														"created_at",
+														"modified_at"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"total_logs": {
+												"type": "number"
+											}
+										},
+										"required": [
+											"gateway_id",
+											"name",
+											"id",
+											"created_at",
+											"modified_at",
+											"datasets",
+											"results",
+											"processed",
+											"total_logs"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of Evaluationss"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Evaluationss",
+		"tags": [
+			"AI Gateway Evaluations"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
+		"operationId": "aig-config-fetch-evaluations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"datasets": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"enable": {
+														"type": "boolean"
+													},
+													"filters": {
+														"items": {
+															"properties": {
+																"key": {
+																	"enum": [
+																		"created_at",
+																		"request_content_type",
+																		"response_content_type",
+																		"success",
+																		"cached",
+																		"provider",
+																		"model",
+																		"cost",
+																		"tokens",
+																		"tokens_in",
+																		"tokens_out",
+																		"duration",
+																		"feedback"
+																	],
+																	"type": "string"
+																},
+																"operator": {
+																	"enum": [
+																		"eq",
+																		"contains",
+																		"lt",
+																		"gt"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"items": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"key",
+																"operator",
+																"value"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"gateway_id": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"gateway_id",
+													"name",
+													"filters",
+													"enable",
+													"id",
+													"created_at",
+													"modified_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"processed": {
+											"type": "boolean"
+										},
+										"results": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"evaluation_id": {
+														"type": "string"
+													},
+													"evaluation_type_id": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"result": {
+														"type": "string"
+													},
+													"status": {
+														"type": "number"
+													},
+													"status_description": {
+														"type": "string"
+													},
+													"total_logs": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"evaluation_id",
+													"evaluation_type_id",
+													"result",
+													"total_logs",
+													"status",
+													"status_description",
+													"id",
+													"created_at",
+													"modified_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"total_logs": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"gateway_id",
+										"name",
+										"id",
+										"created_at",
+										"modified_at",
+										"datasets",
+										"results",
+										"processed",
+										"total_logs"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a single Evaluations if found"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Fetch a Evaluations",
+		"tags": [
+			"AI Gateway Evaluations"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
+		"operationId": "aig-config-create-evaluations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"dataset_ids": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"evaluation_type_ids": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"dataset_ids",
+							"evaluation_type_ids"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"datasets": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"enable": {
+														"type": "boolean"
+													},
+													"filters": {
+														"items": {
+															"properties": {
+																"key": {
+																	"enum": [
+																		"created_at",
+																		"request_content_type",
+																		"response_content_type",
+																		"success",
+																		"cached",
+																		"provider",
+																		"model",
+																		"cost",
+																		"tokens",
+																		"tokens_in",
+																		"tokens_out",
+																		"duration",
+																		"feedback"
+																	],
+																	"type": "string"
+																},
+																"operator": {
+																	"enum": [
+																		"eq",
+																		"contains",
+																		"lt",
+																		"gt"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"items": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"key",
+																"operator",
+																"value"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"gateway_id": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"gateway_id",
+													"name",
+													"filters",
+													"enable",
+													"id",
+													"created_at",
+													"modified_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"processed": {
+											"type": "boolean"
+										},
+										"results": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"evaluation_id": {
+														"type": "string"
+													},
+													"evaluation_type_id": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"modified_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"result": {
+														"type": "string"
+													},
+													"status": {
+														"type": "number"
+													},
+													"status_description": {
+														"type": "string"
+													},
+													"total_logs": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"evaluation_id",
+													"evaluation_type_id",
+													"result",
+													"total_logs",
+													"status",
+													"status_description",
+													"id",
+													"created_at",
+													"modified_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"total_logs": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"gateway_id",
+										"name",
+										"id",
+										"created_at",
+										"modified_at",
+										"datasets",
+										"results",
+										"processed",
+										"total_logs"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Evaluations"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Evaluations",
+		"tags": [
+			"AI Gateway Evaluations"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

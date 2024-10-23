@@ -1,0 +1,1351 @@
+{
+	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
+		"operationId": "aig-config-delete-dataset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"filters": {
+											"items": {
+												"properties": {
+													"key": {
+														"enum": [
+															"created_at",
+															"request_content_type",
+															"response_content_type",
+															"success",
+															"cached",
+															"provider",
+															"model",
+															"cost",
+															"tokens",
+															"tokens_in",
+															"tokens_out",
+															"duration",
+															"feedback"
+														],
+														"type": "string"
+													},
+													"operator": {
+														"enum": [
+															"eq",
+															"contains",
+															"lt",
+															"gt"
+														],
+														"type": "string"
+													},
+													"value": {
+														"items": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"key",
+													"operator",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"gateway_id",
+										"name",
+										"filters",
+										"enable",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns if the Dataset was deleted successfully"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Dataset",
+		"tags": [
+			"AI Gateway Datasets"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets": {
+		"operationId": "aig-config-list-dataset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Order By Column Name",
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"description": "Order By Column Name",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Order By Direction",
+				"in": "query",
+				"name": "order_by_direction",
+				"schema": {
+					"default": "asc",
+					"description": "Order By Direction",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "filters",
+				"schema": {
+					"items": {
+						"properties": {
+							"key": {
+								"enum": [
+									"created_at",
+									"request_content_type",
+									"response_content_type",
+									"success",
+									"cached",
+									"provider",
+									"model",
+									"cost",
+									"tokens",
+									"tokens_in",
+									"tokens_out",
+									"duration",
+									"feedback"
+								],
+								"type": "string"
+							},
+							"operator": {
+								"enum": [
+									"eq",
+									"contains",
+									"lt",
+									"gt"
+								],
+								"type": "string"
+							},
+							"value": {
+								"items": {
+									"anyOf": [
+										{
+											"type": "string"
+										},
+										{
+											"type": "number"
+										},
+										{
+											"type": "boolean"
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"key",
+							"operator",
+							"value"
+						],
+						"type": "object"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "enable",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "Search by id, name, filters",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search by id, name, filters",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"enable": {
+												"type": "boolean"
+											},
+											"filters": {
+												"items": {
+													"properties": {
+														"key": {
+															"enum": [
+																"created_at",
+																"request_content_type",
+																"response_content_type",
+																"success",
+																"cached",
+																"provider",
+																"model",
+																"cost",
+																"tokens",
+																"tokens_in",
+																"tokens_out",
+																"duration",
+																"feedback"
+															],
+															"type": "string"
+														},
+														"operator": {
+															"enum": [
+																"eq",
+																"contains",
+																"lt",
+																"gt"
+															],
+															"type": "string"
+														},
+														"value": {
+															"items": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"key",
+														"operator",
+														"value"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"gateway_id": {
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"gateway_id",
+											"name",
+											"filters",
+											"enable",
+											"id",
+											"created_at",
+											"modified_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of Datasets"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Datasets",
+		"tags": [
+			"AI Gateway Datasets"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
+		"operationId": "aig-config-fetch-dataset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"filters": {
+											"items": {
+												"properties": {
+													"key": {
+														"enum": [
+															"created_at",
+															"request_content_type",
+															"response_content_type",
+															"success",
+															"cached",
+															"provider",
+															"model",
+															"cost",
+															"tokens",
+															"tokens_in",
+															"tokens_out",
+															"duration",
+															"feedback"
+														],
+														"type": "string"
+													},
+													"operator": {
+														"enum": [
+															"eq",
+															"contains",
+															"lt",
+															"gt"
+														],
+														"type": "string"
+													},
+													"value": {
+														"items": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"key",
+													"operator",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"gateway_id",
+										"name",
+										"filters",
+										"enable",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a single Dataset if found"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Fetch a Dataset",
+		"tags": [
+			"AI Gateway Datasets"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets": {
+		"operationId": "aig-config-create-dataset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enable": {
+								"type": "boolean"
+							},
+							"filters": {
+								"items": {
+									"properties": {
+										"key": {
+											"enum": [
+												"created_at",
+												"request_content_type",
+												"response_content_type",
+												"success",
+												"cached",
+												"provider",
+												"model",
+												"cost",
+												"tokens",
+												"tokens_in",
+												"tokens_out",
+												"duration",
+												"feedback"
+											],
+											"type": "string"
+										},
+										"operator": {
+											"enum": [
+												"eq",
+												"contains",
+												"lt",
+												"gt"
+											],
+											"type": "string"
+										},
+										"value": {
+											"items": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"key",
+										"operator",
+										"value"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"filters",
+							"enable"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"filters": {
+											"items": {
+												"properties": {
+													"key": {
+														"enum": [
+															"created_at",
+															"request_content_type",
+															"response_content_type",
+															"success",
+															"cached",
+															"provider",
+															"model",
+															"cost",
+															"tokens",
+															"tokens_in",
+															"tokens_out",
+															"duration",
+															"feedback"
+														],
+														"type": "string"
+													},
+													"operator": {
+														"enum": [
+															"eq",
+															"contains",
+															"lt",
+															"gt"
+														],
+														"type": "string"
+													},
+													"value": {
+														"items": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"key",
+													"operator",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"gateway_id",
+										"name",
+										"filters",
+										"enable",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Dataset"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Dataset",
+		"tags": [
+			"AI Gateway Datasets"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
+		"operationId": "aig-config-update-dataset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enable": {
+								"type": "boolean"
+							},
+							"filters": {
+								"items": {
+									"properties": {
+										"key": {
+											"enum": [
+												"created_at",
+												"request_content_type",
+												"response_content_type",
+												"success",
+												"cached",
+												"provider",
+												"model",
+												"cost",
+												"tokens",
+												"tokens_in",
+												"tokens_out",
+												"duration",
+												"feedback"
+											],
+											"type": "string"
+										},
+										"operator": {
+											"enum": [
+												"eq",
+												"contains",
+												"lt",
+												"gt"
+											],
+											"type": "string"
+										},
+										"value": {
+											"items": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"key",
+										"operator",
+										"value"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"filters",
+							"enable"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"enable": {
+											"type": "boolean"
+										},
+										"filters": {
+											"items": {
+												"properties": {
+													"key": {
+														"enum": [
+															"created_at",
+															"request_content_type",
+															"response_content_type",
+															"success",
+															"cached",
+															"provider",
+															"model",
+															"cost",
+															"tokens",
+															"tokens_in",
+															"tokens_out",
+															"duration",
+															"feedback"
+														],
+														"type": "string"
+													},
+													"operator": {
+														"enum": [
+															"eq",
+															"contains",
+															"lt",
+															"gt"
+														],
+														"type": "string"
+													},
+													"value": {
+														"items": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"key",
+													"operator",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"gateway_id",
+										"name",
+										"filters",
+										"enable",
+										"id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated Dataset"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Dataset",
+		"tags": [
+			"AI Gateway Datasets"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
