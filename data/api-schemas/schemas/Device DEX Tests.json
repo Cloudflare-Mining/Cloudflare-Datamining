@@ -30,179 +30,177 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
+											"type": "array"
 										},
-										{
-											"properties": {
-												"result": {
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
 													"items": {},
-													"nullable": true,
 													"type": "array"
+												},
+												{
+													"type": "string"
 												}
-											}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"items": {
-												"properties": {
-													"data": {
-														"description": "The configuration object which contains the details for the WARP client to conduct the test.",
-														"example": {
-															"host": "https://dash.cloudflare.com",
-															"kind": "http",
-															"method": "GET"
-														},
+											"properties": {
+												"dex_tests": {
+													"items": {
 														"properties": {
-															"host": {
-																"description": "The desired endpoint to test.",
-																"example": "https://dash.cloudflare.com",
+															"data": {
+																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																"example": {
+																	"host": "https://dash.cloudflare.com",
+																	"kind": "http",
+																	"method": "GET"
+																},
+																"properties": {
+																	"host": {
+																		"description": "The desired endpoint to test.",
+																		"example": "https://dash.cloudflare.com",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"description": "The type of test.",
+																		"example": "http",
+																		"type": "string"
+																	},
+																	"method": {
+																		"description": "The HTTP request method type.",
+																		"example": "GET",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"description": {
+																"description": "Additional details about the test.",
+																"example": "Checks the dash endpoint every 30 minutes",
 																"type": "string"
 															},
-															"kind": {
-																"description": "The type of test.",
-																"example": "http",
+															"enabled": {
+																"description": "Determines whether or not the test is active.",
+																"example": true,
+																"type": "boolean"
+															},
+															"interval": {
+																"description": "How often the test will run.",
+																"example": "30m",
 																"type": "string"
 															},
-															"method": {
-																"description": "The HTTP request method type.",
-																"example": "GET",
+															"name": {
+																"description": "The name of the DEX test. Must be unique.",
+																"example": "HTTP dash health check",
+																"type": "string"
+															},
+															"target_policies": {
+																"description": "Device settings profiles targeted by this test",
+																"items": {
+																	"properties": {
+																		"default": {
+																			"description": "Whether the profile is the account default",
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The id of the device settings profile",
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The name of the device settings profile",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"targeted": {
+																"type": "boolean"
+															},
+															"test_id": {
+																"description": "The unique identifier for the test.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																"maxLength": 32,
+																"readOnly": true,
 																"type": "string"
 															}
 														},
+														"required": [
+															"name",
+															"interval",
+															"enabled",
+															"data"
+														],
 														"type": "object"
 													},
-													"description": {
-														"description": "Additional details about the test.",
-														"example": "Checks the dash endpoint every 30 minutes",
-														"type": "string"
-													},
-													"enabled": {
-														"description": "Determines whether or not the test is active.",
-														"example": true,
-														"type": "boolean"
-													},
-													"interval": {
-														"description": "How often the test will run.",
-														"example": "30m",
-														"type": "string"
-													},
-													"name": {
-														"description": "The name of the DEX test. Must be unique.",
-														"example": "HTTP dash health check",
-														"type": "string"
-													},
-													"target_policies": {
-														"description": "Device settings profiles targeted by this test",
-														"items": {
-															"properties": {
-																"default": {
-																	"description": "Whether the profile is the account default",
-																	"type": "boolean"
-																},
-																"id": {
-																	"description": "The id of the device settings profile",
-																	"type": "string"
-																},
-																"name": {
-																	"description": "The name of the device settings profile",
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"type": "array"
-													},
-													"targeted": {
-														"type": "boolean"
-													}
-												},
-												"required": [
-													"name",
-													"interval",
-													"enabled",
-													"data"
-												],
-												"type": "object"
+													"type": "array"
+												}
 											},
-											"type": "array"
+											"type": "object"
 										}
 									}
 								}
@@ -382,6 +380,13 @@
 															},
 															"targeted": {
 																"type": "boolean"
+															},
+															"test_id": {
+																"description": "The unique identifier for the test.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
 															}
 														},
 														"required": [
@@ -685,6 +690,13 @@
 													},
 													"targeted": {
 														"type": "boolean"
+													},
+													"test_id": {
+														"description": "The unique identifier for the test.",
+														"example": "372e67954025e0ba6aaa6d586b9e0b59",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
 													}
 												},
 												"required": [
@@ -881,6 +893,13 @@
 														},
 														"targeted": {
 															"type": "boolean"
+														},
+														"test_id": {
+															"description": "The unique identifier for the test.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b59",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -1020,9 +1039,10 @@
 				"name": "dex_test_id",
 				"required": true,
 				"schema": {
-					"description": "API UUID.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
+					"description": "The unique identifier for the test.",
+					"example": "372e67954025e0ba6aaa6d586b9e0b59",
+					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1202,6 +1222,13 @@
 												},
 												"targeted": {
 													"type": "boolean"
+												},
+												"test_id": {
+													"description": "The unique identifier for the test.",
+													"example": "372e67954025e0ba6aaa6d586b9e0b59",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -1396,6 +1423,13 @@
 														},
 														"targeted": {
 															"type": "boolean"
+														},
+														"test_id": {
+															"description": "The unique identifier for the test.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b59",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -1605,6 +1639,13 @@
 							},
 							"targeted": {
 								"type": "boolean"
+							},
+							"test_id": {
+								"description": "The unique identifier for the test.",
+								"example": "372e67954025e0ba6aaa6d586b9e0b59",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1794,6 +1835,13 @@
 												},
 												"targeted": {
 													"type": "boolean"
+												},
+												"test_id": {
+													"description": "The unique identifier for the test.",
+													"example": "372e67954025e0ba6aaa6d586b9e0b59",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -1988,6 +2036,13 @@
 														},
 														"targeted": {
 															"type": "boolean"
+														},
+														"test_id": {
+															"description": "The unique identifier for the test.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b59",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -2205,6 +2260,13 @@
 							},
 							"targeted": {
 								"type": "boolean"
+							},
+							"test_id": {
+								"description": "The unique identifier for the test.",
+								"example": "372e67954025e0ba6aaa6d586b9e0b59",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
 							}
 						},
 						"required": [
@@ -2394,6 +2456,13 @@
 												},
 												"targeted": {
 													"type": "boolean"
+												},
+												"test_id": {
+													"description": "The unique identifier for the test.",
+													"example": "372e67954025e0ba6aaa6d586b9e0b59",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -2588,6 +2657,13 @@
 														},
 														"targeted": {
 															"type": "boolean"
+														},
+														"test_id": {
+															"description": "The unique identifier for the test.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b59",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
