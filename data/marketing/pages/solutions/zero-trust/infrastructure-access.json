@@ -33,7 +33,7 @@
 					"arAR": "No Page for Locale"
 				},
 				"relativePath": "/solutions/zero-trust/infrastructure-access",
-				"topNavOptions": "default",
+				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-10-01T15:02:06.454Z",
-					"updatedAt": "2024-10-21T19:43:32.301Z"
+					"updatedAt": "2024-10-24T20:14:18.398Z"
 				},
 				"contentfulId": "6bF3zGw64UI05BZXbKwdyM",
 				"contentTypeId": "page",
@@ -2553,6 +2553,112 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "70Il4X62A37cPxf97qmEgo",
+						"menuTitle": "SSE & SASE",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/zero-trust",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
+								"linkText": "Products",
+								"page": null,
+								"url": "/zero-trust/products/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
+								"linkText": "Solutions",
+								"page": null,
+								"url": "/zero-trust/solutions/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "1MPnz4oklmxIn6d5MfI1x0",
+								"linkText": "Resources",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "3Ko7yh630HKRG9uuKTmq59",
+										"linkText": "Case studies",
+										"page": null,
+										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "559PiQrQNL0cqxI3bsLn4V",
+										"linkText": "Analyst Reports",
+										"page": null,
+										"url": "/analysts/"
+									},
+									{
+										"contentfulId": "KxYYsyoMmFhVrH8ESEj7c",
+										"linkText": "Product guides",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Solution+%26+Product+Guides"
+									},
+									{
+										"contentfulId": "43R602VwKwyMypE2ZUecIT",
+										"linkText": "Reference architecture",
+										"page": null,
+										"url": "https://developers.cloudflare.com/reference-architecture/"
+									},
+									{
+										"contentfulId": "49bw6FRI2ooFCtnnbDT8sS",
+										"linkText": "Professional Services",
+										"page": null,
+										"url": "https://cfl.re/zero-trust-quickstart-solution-brief"
+									},
+									{
+										"contentfulId": "2GCh1wGIxttSXkyn0ibU3w",
+										"linkText": "Whitepapers",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Whitepaper"
+									},
+									{
+										"contentfulId": "pwITDWH0n5Z1DjX1KLTmg",
+										"linkText": "Webinars",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Webinar"
+									},
+									{
+										"contentfulId": "1awgo4XNStilPgkAKZNekC",
+										"linkText": "Developer docs",
+										"page": null,
+										"url": "https://developers.cloudflare.com/cloudflare-one/"
+									},
+									{
+										"contentfulId": "lY4WcI9MB35bYnyiNMtuU",
+										"linkText": "Industry use case",
+										"page": null,
+										"url": "/industry-solutions/"
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
+						"contentTypeId": "bladePadding",
+						"height": 1,
+						"backgroundColor": "blue5"
+					},
+					{
 						"contentfulId": "4rcuBObf3UtYcsh55a7mY1",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Privileged access to infrastructure with Cloudflare",
@@ -2608,7 +2714,7 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EmrjKK9jTeafE9t8RWuJf/b8a7258c95a2c6c2f30e238dd62f44c2/BDES-6503_Infrastructure_access_spot_illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gJOUWPb8SJz0NVLC46ODT/467571944ed07ef8d956c1aba146a37d/Infra_access_hero_-_no_background.png"
 								},
 								"description": ""
 							},
