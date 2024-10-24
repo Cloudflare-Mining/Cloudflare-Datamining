@@ -919,6 +919,11 @@
 																					"type": "array",
 																					"uniqueItems": true
 																				},
+																				"description": {
+																					"description": "A description that can be used to identify the event notification rule after creation",
+																					"example": "Notifications from source bucket to queue",
+																					"type": "string"
+																				},
 																				"prefix": {
 																					"description": "Notifications will be sent only for objects with this prefix",
 																					"example": "img/",
@@ -940,6 +945,11 @@
 																				"createdAt": {
 																					"description": "Timestamp when the rule was created",
 																					"example": "2024-09-19T21:54:48.405Z",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "A description that can be used to identify the event notification rule after creation",
+																					"example": "Notifications from source bucket to queue",
 																					"type": "string"
 																				},
 																				"ruleId": {
@@ -3192,6 +3202,11 @@
 											},
 											"type": "array",
 											"uniqueItems": true
+										},
+										"description": {
+											"description": "A description that can be used to identify the event notification rule after creation",
+											"example": "Notifications from source bucket to queue",
+											"type": "string"
 										},
 										"prefix": {
 											"description": "Notifications will be sent only for objects with this prefix",
