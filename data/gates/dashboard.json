@@ -12,6 +12,13 @@
 	"2fa-recovery-user-delete": {
 		"enabled": true
 	},
+	"account-home-v3": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"account-logpush": {
 		"enabled": true
 	},
