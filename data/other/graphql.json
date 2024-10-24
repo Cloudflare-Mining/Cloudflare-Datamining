@@ -498,9 +498,17 @@
 		"__description": ""
 	},
 	"AccountCallsTurnUsageAdaptiveGroups": {
-		"__description": "Beta. Aggregated Calls TURN bandwidth usage with adaptive sampling",
+		"__description": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
+		"avg": "",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountCallsTurnUsageAdaptiveGroupsAvg": {
+		"__description": "",
+		"concurrentConnectionsFifteenMinutes": "Average concurrent connections when grouped by datetimeFifteenMinutes",
+		"concurrentConnectionsFiveMinutes": "Average concurrent connections when grouped by datetimeFiveMinutes",
+		"concurrentConnectionsHour": "Average concurrent connections when grouped by datetimeHour",
+		"concurrentConnectionsMinute": "Average concurrent connections when grouped by datetimeMinute"
 	},
 	"AccountCallsTurnUsageAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -7237,7 +7245,7 @@
 		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
 		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Rendering events with adaptive sampling",
 		"callsStatusAdaptive": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
-		"callsTurnUsageAdaptiveGroups": "Beta. Aggregated Calls TURN bandwidth usage with adaptive sampling",
+		"callsTurnUsageAdaptiveGroups": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
 		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
