@@ -1,0 +1,204 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jqMx0fPAknCu1pBfXvSG4/499662b35777f79347cb6ef96bdd97c1/image6.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p><a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues"><u>Cloudflare Queues</u></a> let a developer decouple their Workers into event-driven services. Producer Workers write events to a Queue, and consumer Workers are invoked to take actions on the events. For example, you can use a Queue to decouple an e-commerce website from a service which sends purchase confirmation emails to users. During 2024’s Birthday Week, we <a href="https://blog.cloudflare.com/builder-day-2024-announcements?_gl=1*18s1fwl*_gcl_au*MTgyNDA5NjE5OC4xNzI0MjgzMTQ0*_ga*OTgwZmE0YWUtZWJjMS00NmYxLTllM2QtM2RmY2I4ZjAwNzZk*_ga_SQCRB0TXZW*MTcyODkyOTU2OS4xNi4xLjE3Mjg5Mjk1NzcuNTIuMC4w%2F#queues-is-ga"><u>announced that Cloudflare Queues is now Generally Available</u></a>, with significant performance improvements that enable larger workloads. To accomplish this, we switched to a new architecture for Queues that enabled the following improvements:</p>
+	<ul>
+		<li>
+			<p>Median latency for sending messages has dropped from ~200ms to ~60ms</p>
+		</li>
+		<li>
+			<p>Maximum throughput for each Queue has increased over 10x, from 400 to 5000 messages per second</p>
+		</li>
+		<li>
+			<p>Maximum Consumer concurrency for each Queue has increased from 20 to 250 concurrent invocations</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PvIsHfLwwIkp2LXVUDhmG/99f286f2f89d10b2a7e359d8d66f6dba/image5.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
+	</figure>
+	<p><sup><i>Median latency drops from ~200ms to ~60ms as Queues are migrated to the new architecture</i></sup></p>
+	<p>In this blog post, we'll share details about how we built Queues using Durable Objects and the Cloudflare Developer Platform, and how we migrated from an initial Beta architecture to a geographically-distributed, horizontally-scalable architecture for General Availability.</p>
+	<div class="flex anchor relative">
+		<h3 id="v1-beta-architecture">v1 Beta architecture</h3>
+		<a href="https://blog.cloudflare.com/#v1-beta-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When initially designing Cloudflare Queues, we decided to build something simple that we could get into users' hands quickly. First, we considered leveraging an off-the-shelf messaging system such as Kafka or Pulsar. However, we decided that it would be too challenging to operate these systems at scale with the large number of isolated tenants that we wanted to support.</p>
+	<p>Instead of investing in new infrastructure, we decided to build on top of one of Cloudflare's existing developer platform building blocks: <b>Durable Objects.</b> <a href="https://www.cloudflare.com/developer-platform/durable-objects"><u>Durable Objects</u></a> are a simple, yet powerful building block for coordination and storage in a distributed system. In our initial <i>v1 </i>architecture, each Queue was implemented using a single Durable Object. As shown below, clients would send messages to a Worker running in their region, which would be forwarded to the single Durable Object hosted in the WNAM (Western North America) region. We used a single Durable Object for simplicity, and hosted it in WNAM for proximity to our centralized configuration API service.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yxj5Gut3usYa0mFbRddXU/881f5905f789bc2f910ee1b2dcadac92/image1.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
+	</figure>
+	<p>One of a Queue's main responsibilities is to accept and store incoming messages. Sending a message to a <i>v1</i> Queue used the following flow:</p>
+	<ul>
+		<li>
+			<p>A client sends a POST request containing the message body to the Queues API at <code>/accounts/:accountID/queues/:queueID/messages</code></p>
+		</li>
+		<li>
+			<p>The request is handled by an instance of the <b>Queue Broker Worker</b> in a Cloudflare data center running near the client.</p>
+		</li>
+		<li>
+			<p>The Worker performs authentication, and then uses Durable Objects <code>idFromName</code> API to route the request to the <b>Queue Durable Object</b> for the given <code>queueID</code></p>
+		</li>
+		<li>
+			<p>The Queue Durable Object persists the message to storage before returning a <i>success </i>back to the client.</p>
+		</li>
+	</ul>
+	<p>Durable Objects handled most of the heavy-lifting here: we did not need to set up any new servers, storage, or service discovery infrastructure. To route requests, we simply provided a <code>queueID</code> and the platform handled the rest. To store messages, we used the Durable Object storage API to <code>put</code> each message, and the platform handled reliably storing the data redundantly.</p>
+	<div class="flex anchor relative">
+		<h3 id="consuming-messages">Consuming messages</h3>
+		<a href="https://blog.cloudflare.com/#consuming-messages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The other main responsibility of a Queue is to deliver messages to a Consumer. Delivering messages in a v1 Queue used the following process:</p>
+	<ul>
+		<li>
+			<p>Each Queue Durable Object maintained an <b>alarm </b>that was always set when there were undelivered messages in storage. The alarm guaranteed that the Durable Object would reliably wake up to deliver any messages in storage, even in the presence of failures. The alarm time was configured to fire after the user's selected <i>max wait time</i><b><i>, </i></b>if only a partial batch of messages was available. Whenever one or more full batches were available in storage, the alarm was scheduled to fire immediately.</p>
+		</li>
+		<li>
+			<p>The alarm would wake the Durable Object, which continually looked for batches of messages in storage to deliver.</p>
+		</li>
+		<li>
+			<p>Each batch of messages was sent to a "Dispatcher Worker" that used <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms"><u>Workers for Platforms</u></a> <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/how-workers-for-platforms-works/#dynamic-dispatch-worker"><i><u>dynamic dispatch</u></i></a> to pass the messages to the <code>queue()</code> function defined in a user's Consumer Worker</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vAM17x3nN49JBMGNTblPp/6af391950df5f0fbc14faeccb351e38c/image4.png" alt="" class="kg-image" width="1999" height="942" loading="lazy">
+	</figure>
+	<p>This v1 architecture let us flesh out the initial version of the Queues Beta product and onboard users quickly. Using Durable Objects allowed us to focus on building application logic, instead of complex low-level systems challenges such as global routing and guaranteed durability for storage. Using a separate Durable Object for each Queue allowed us to host an essentially unlimited number of Queues, and provided isolation between them.</p>
+	<p>However, using <i>only</i> one Durable Object per queue had some significant limitations:</p>
+	<ul>
+		<li>
+			<p><b>Latency: </b>we created all of our v1 Queue Durable Objects in Western North America. Messages sent from distant regions incurred significant latency when traversing the globe.</p>
+		</li>
+		<li>
+			<p><b>Throughput: </b>A single Durable Object is not scalable: it is single-threaded and has a fixed capacity for how many requests per second it can process. This is where the previous 400 messages per second limit came from.</p>
+		</li>
+		<li>
+			<p><b>Consumer Concurrency: </b>Due to <a href="https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections"><u>concurrent subrequest limits</u></a>, a single Durable Object was limited in how many concurrent subrequests it could make to our Dispatcher Worker. This limited the number of <code>queue()</code> handler invocations that it could run simultaneously.</p>
+		</li>
+	</ul>
+	<p>To solve these issues, we created a new v2 architecture that horizontally scales across <b>multiple</b> Durable Objects to implement each single high-performance Queue.</p>
+	<div class="flex anchor relative">
+		<h3 id="v2-architecture">v2 Architecture</h3>
+		<a href="https://blog.cloudflare.com/#v2-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the new v2 architecture for Queues, each Queue is implemented using multiple Durable Objects, instead of just one. Instead of a single region, we place <i>Storage Shard </i>Durable Objects in <a href="https://developers.cloudflare.com/durable-objects/reference/data-location/#supported-locations-1"><u>all available regions</u></a> to enable lower latency. Within each region, we create multiple Storage Shards and load balance incoming requests amongst them. Just like that, we’ve multiplied message throughput.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SJTb2UO8tKGrh26ixwLrA/7272e4eaf6f7e85f086a5ae08670387e/image2.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
+	</figure>
+	<p>Sending a message to a v2 Queue uses the following flow:</p>
+	<ul>
+		<li>
+			<p>A client sends a POST request containing the message body to the Queues API at <code>/accounts/:accountID/queues/:queueID/messages</code></p>
+		</li>
+		<li>
+			<p>The request is handled by an instance of the <b>Queue Broker Worker</b> running in a Cloudflare data center near the client.</p>
+		</li>
+		<li>
+			<p>The Worker:</p>
+			<ul>
+				<li>
+					<p>Performs authentication</p>
+				</li>
+				<li>
+					<p>Reads from Workers KV to obtain a <i>Shard Map</i> that lists available storage shards for the given <code>region</code> and <code>queueID</code></p>
+				</li>
+				<li>
+					<p>Picks one of the region's Storage Shards at random, and uses Durable Objects <code>idFromName</code> API to route the request to the chosen shard</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>The Storage Shard persists the message to storage before returning a <i>success </i>back to the client.</p>
+		</li>
+	</ul>
+	<p>In this v2 architecture, messages are stored in the closest available Durable Object storage cluster near the user, greatly reducing latency since messages don't need to be shipped all the way to WNAM. Using multiple shards within each region removes the bottleneck of a single Durable Object, and allows us to scale each Queue horizontally to accept even more messages per second. <a href="https://blog.cloudflare.com/tag/cloudflare-workers-kv"><u>Workers KV</u></a> acts as a fast metadata store: our Worker can quickly look up the shard map to perform load balancing across shards.</p>
+	<p>To improve the <i>Consumer</i> side of v2 Queues, we used a similar "scale out" approach. A single Durable Object can only perform a limited number of concurrent subrequests. In v1 Queues, this limited the number of concurrent subrequests we could make to our Dispatcher Worker. To work around this, we created a new <i>Consumer Shard</i> Durable Object class that we can scale horizontally, enabling us to execute many more concurrent instances of our users' <code>queue()</code> handlers.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ujodUVBegDcWXi6DYJR41/5f31ba4da387df82613a496ff311f65f/image3.png" alt="" class="kg-image" width="1999" height="1243" loading="lazy">
+	</figure>
+	<p>Consumer Durable Objects in v2 Queues use the following approach:</p>
+	<ul>
+		<li>
+			<p>Each Consumer maintains an alarm that guarantees it will wake up to process any pending messages. <i>v2 </i>Consumers are notified by the Queue's <i>Coordinator </i>(introduced below) when there are messages ready for consumption. Upon notification, the Consumer sets an alarm to go off immediately.</p>
+		</li>
+		<li>
+			<p>The Consumer looks at the shard map, which contains information about the storage shards that exist for the Queue, including the number of available messages on each shard.</p>
+		</li>
+		<li>
+			<p>The Consumer picks a random storage shard with available messages, and asks for a batch.</p>
+		</li>
+		<li>
+			<p>The Consumer sends the batch to the Dispatcher Worker, just like for v1 Queues.</p>
+		</li>
+		<li>
+			<p>After processing the messages, the Consumer sends another request to the Storage Shard to either "acknowledge" or "retry" the messages.</p>
+		</li>
+	</ul>
+	<p>This scale-out approach enabled us to work around the subrequest limits of a single Durable Object, and increase the maximum supported concurrency level of a Queue from 20 to 250.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="the-coordinator-and-control-plane">The Coordinator and “Control Plane”</h3>
+		<a href="https://blog.cloudflare.com/#the-coordinator-and-control-plane" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>So far, we have primarily discussed the "Data Plane" of a v2 Queue: how messages are load balanced amongst Storage Shards, and how Consumer Shards read and deliver messages. The other main piece of a v2 Queue is the "Control Plane", which handles creating and managing all the individual Durable Objects in the system. In our v2 architecture, each Queue has a single <i>Coordinator</i> Durable Object that acts as the brain of the Queue. Requests to create a Queue, or change its settings, are sent to the Queue's Coordinator.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lYJs23oJ8ibtGgbuOk9JN/7ffa8073a4391602b67a0c6e134975bc/image7.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
+	</figure>
+	<p>The Coordinator maintains a <i>Shard Map</i> for the Queue, which includes metadata about all the Durable Objects in the Queue (including their region, number of available messages, current estimated load, etc.). The Coordinator periodically writes a fresh copy of the Shard Map into Workers KV, as pictured in step 1 of the diagram. Placing the shard map into Workers KV ensures that it is globally cached and available for our Worker to read quickly, so that it can pick a shard to accept the message.</p>
+	<p>Every shard in the system periodically sends a heartbeat to the Coordinator as shown in steps 2 and 3 of the diagram. Both Storage Shards and Consumer Shards send heartbeats, including information like the number of messages stored locally, and the current load (requests per second) that the shard is handling. The Coordinator uses this information to perform <b><i>autoscaling. </i></b>When it detects that the shards in a particular region are overloaded, it creates additional shards in the region, and adds them to the shard map in Workers KV. Our Worker sees the updated shard map and naturally load balances messages across the freshly added shards. Similarly, the Coordinator looks at the backlog of available messages in the Queue, and decides to add more Consumer shards to increase Consumer throughput when the backlog is growing. Consumer Shards pull messages from Storage Shards for processing as shown in step 4 of the diagram.</p>
+	<p>Switching to a new scalable architecture allowed us to meet our performance goals and take Queues to GA. As a recap, this new architecture delivered these significant improvements:</p>
+	<ul>
+		<li>
+			<p>P50 latency for writing to a Queue has dropped from ~200ms to ~60ms.</p>
+		</li>
+		<li>
+			<p>Maximum throughput for a Queue has increased from 400 to 5000 messages per second.</p>
+		</li>
+		<li>
+			<p>Maximum consumer concurrency has increased from 20 to 250 invocations. </p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-queues">What's next for Queues</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-queues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>We plan on leveraging the performance improvements in the new <a href="https://developers.cloudflare.com/durable-objects"><u>beta version of Durable Objects</u></a> which use SQLite to continue to improve throughput/latency in Queues.</p>
+		</li>
+		<li>
+			<p>We will soon be adding message management features to Queues so that you can take actions to purge messages in a queue, pause consumption of messages, or “redrive”/move messages from one queue to another (for example messages that have been sent to a Dead Letter Queue could be “redriven” or moved back to the original queue).</p>
+		</li>
+		<li>
+			<p>Work to make Queues the "event hub" for the Cloudflare Developer Platform:</p>
+			<ul>
+				<li>
+					<p>Create a low-friction way for events emitted from other Cloudflare services with event schemas to be sent to Queues.</p>
+				</li>
+				<li>
+					<p>Build multi-Consumer support for Queues so that Queues are no longer limited to one Consumer per queue.</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>To start using Queues, head over to our <a href="https://developers.cloudflare.com/queues/get-started"><u>Getting Started</u></a> guide.&nbsp;</p>
+	<p>Do distributed systems like Cloudflare Queues and Durable Objects interest you? Would you like to help build them at Cloudflare? <a href="https://boards.greenhouse.io/embed/job_app?token=5390243&amp;gh_src=b2e516a81us"><u>We're Hiring!</u></a></p>
+</div>

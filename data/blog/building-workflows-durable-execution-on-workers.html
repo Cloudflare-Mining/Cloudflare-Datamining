@@ -1,0 +1,598 @@
+<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Xlle0u2YPZdCmNhVUIiJi/bdc13b0043d9850fb4d68632c063aabf/unnamed.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Workflows, Cloudflare’s durable execution engine that allows you to build reliable, repeatable multi-step applications that scale for you, is now in open beta. Any developer with a free or paid <a href="https://workers.cloudflare.com"><u>Workers</u></a> plan can build and deploy a Workflow right now: no waitlist, no sign-up form, no fake line around-the-block.</p>
+	<p>If you learn by doing, you can create your first Workflow via a single command (or <a href="https://developers.cloudflare.com/workflows/get-started/guide"><u>visit the docs for the full guide)</u></a>:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">npm create cloudflare@latest workflows-starter -- \
+  --template "cloudflare/workflows-starter"</code></pre>
+	<p>Open the <code>src/index.ts</code> file, poke around, start extending it, and deploy it with a quick <code>wrangler deploy</code>.</p>
+	<p>If you want to learn more about how Workflows works, how you can use it to build applications, and how we built it, read on.</p>
+	<div class="flex anchor relative">
+		<h2 id="workflows-durable-execution">Workflows? Durable Execution?</h2>
+		<a href="https://blog.cloudflare.com/#workflows-durable-execution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflows—which we <a href="https://blog.cloudflare.com/data-anywhere-events-pipelines-durable-execution-workflows/#durable-execution"><u>announced back during Developer Week</u></a> earlier this year—is our take on the concept of “Durable Execution”: the ability to build and execute applications that are <i>durable</i> in the face of errors, network issues, upstream API outages, rate limits, and (most importantly) infrastructure failure.</p>
+	<p>As <a href="https://cloudflare.tv/event/xvm4qdgm?startTime=8m5s"><u>over 2.4 million developers</u></a> continue to build applications on top of Cloudflare Workers, R2, and Workers AI, we’ve noticed more developers building multi-step applications and workflows that process user data, transform unstructured data into structured, export metrics, persist state as they progress, and automatically retry &amp; restart. But writing any non-trivial application and making it <i>durable</i> in the face of failure is hard: this is where Workflows comes in. Workflows manages the retries, emitting the metrics, and durably storing the state (without you having to stand up your own database) as the Workflow progresses.</p>
+	<p>What makes Workflows different from other takes on “Durable Execution” is that we manage the underlying compute and storage infrastructure for you. You’re not left managing a compute cluster and hoping it scales both up (on a Monday morning) and down (during quieter periods) to manage costs, or ensuring that you have compute running in the right locations. Workflows is built on Cloudflare Workers — our job is to run your code and operate the infrastructure for you.</p>
+	<p>As an example of how Workflows can help you build durable applications, assume you want to post-process file uploads from your users that were uploaded to an R2 bucket directly via <a href="https://developers.cloudflare.com/r2/api/s3/presigned-urls"><u>a pre-signed URL</u></a>. That post-processing could involve multiple actions: text extraction via a <a href="https://developers.cloudflare.com/workers-ai/models"><u>Workers AI model</u></a>, calls to a third-party API to validate data, updating or querying rows in a database once the file has been processed… the list goes on.</p>
+	<p>But what each of these actions has in common is that it could <i>fail</i>. Maybe that upstream API is unavailable, maybe you get rate-limited, maybe your database is down. Having to write extensive retry logic around each action, manage backoffs, and (importantly) ensure your application doesn’t have to start from scratch when a later <i>step</i> fails is more boilerplate to write and more code to test and debug.</p>
+	<p>What’s a <i>step, </i>you ask? The core building block of every Workflow is the step: an individually retriable component of your application that can optionally emit state. That state is then persisted, even if subsequent steps were to fail. This means that your application doesn’t have to restart, allowing it to not only recover more quickly from failure scenarios, but it can also avoid doing redundant work. You don’t want your application hammering an expensive third-party API (or getting you rate limited) because it’s naively retrying an API call that you don’t have to.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export class MyWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
+	async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
+		const files = await step.do('my first step', async () =&gt; {
+			return {
+				inputParams: event,
+				files: [
+					'doc_7392_rev3.pdf',
+					'report_x29_final.pdf',
+					'memo_2024_05_12.pdf',
+					'file_089_update.pdf',
+					'proj_alpha_v2.pdf',
+					'data_analysis_q2.pdf',
+					'notes_meeting_52.pdf',
+					'summary_fy24_draft.pdf',
+				],
+			};
+		});
+
+		// Other steps...
+	}
+}
+</code></pre>
+	<p>Notably, a Workflow can have hundreds of steps: one of the <a href="https://developers.cloudflare.com/workflows/build/rules-of-workflows"><u>Rules of Workflows</u></a> is to encapsulate every API call or stateful action within your application into its own step. Each step can also define its own retry strategy, automatically backing off, adding a delay and/or (eventually) giving up after a set number of attempts.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">await step.do(
+	'make a call to write that could maybe, just might, fail',
+	// Define a retry strategy
+	{
+		retries: {
+			limit: 5,
+			delay: '5 seconds',
+			backoff: 'exponential',
+		},
+		timeout: '15 minutes',
+	},
+	async () =&gt; {
+		// Do stuff here, with access to the state from our previous steps
+		if (Math.random() &gt; 0.5) {
+			throw new Error('API call to $STORAGE_SYSTEM failed');
+		}
+	},
+);
+</code></pre>
+	<p>To illustrate this further, imagine you have an application that reads text files from an R2 storage bucket, pre-processes the text into chunks, generates text embeddings <a href="https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5"><u>using Workers AI</u></a>, and then inserts those into a vector database (like <a href="https://developers.cloudflare.com/vectorize"><u>Vectorize</u></a>) for semantic search.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7b9m0rPDlGvIiTnhguyvzI/3f27678b141ce600f1f54eb999e9d671/WORKFLOWS.png" alt="" class="kg-image" width="2324" height="1000" loading="lazy">
+	</figure>
+	<p>In the Workflows programming model, each of those is a discrete step, and each can emit state. For example, each of the four actions below can be a discrete <code>step.do</code> call in a Workflow:</p>
+	<ol>
+		<li>
+			<p>Reading the files from storage and emitting the list of filenames</p>
+		</li>
+		<li>
+			<p>Chunking the text and emitting the results</p>
+		</li>
+		<li>
+			<p>Generating text embeddings</p>
+		</li>
+		<li>
+			<p>Upserting them into Vectorize and capturing the result of a test query</p>
+		</li>
+	</ol>
+	<p>You can also start to imagine that some steps, such as chunking text or generating text embeddings, can be broken down into even more steps — a step per file that we chunk, or a step per API call to our text embedding model, so that our application is even more resilient to failure.</p>
+	<p>Steps can be created programmatically or conditionally based on input, allowing you to dynamically create steps based on the number of inputs your application needs to process. You do not need to define all steps ahead of time, and each instance of a Workflow may choose to conditionally create steps on the fly.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-cloudflare-on-cloudflare">Building Cloudflare on Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#building-cloudflare-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As the Cloudflare Developer platform <a href="https://www.cloudflare.com/birthday-week"><u>continues to grow</u></a>, almost all of our own products are built on top of it. Workflows is yet another example of how we built a new product from scratch using nothing but Workers and its vast catalog of features and APIs. This section of the blog has two goals: to explain how we built it, and to demonstrate that anyone can create a complex application or platform with demanding requirements and multiple architectural layers on our stack, too.</p>
+	<p>If you’re wondering how Workflows manages to make durable execution easy, how it persists state, and how it automatically scales: it’s because we built it on Cloudflare Workers, including the brand-new <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>zero-latency SQLite storage we recently introduced to Durable Objects</u></a>.
+	</p>
+	<p>To understand how Workflows uses Workers &amp; Durable Objects, here’s the high-level overview of our architecture:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pknYk0Sshxka3iPbxBCRj/bb8b75986601e38b6b69fe8d849c0cbe/image9.png" alt="" class="kg-image" width="1999" height="895" loading="lazy">
+	</figure>
+	<p>There are three main blocks in this diagram:</p>
+	<p>The user-facing APIs are where the user interacts with the platform, creating and deploying new workflows or instances, controlling them, and accessing their state and activity logs. These operations can be executed through our public <a href="https://developers.cloudflare.com/api"><u>API gateway</u></a> using REST calls, a Worker script using bindings, <a href="https://blog.cloudflare.com/wrangler3"><u>Wrangler</u></a> (Cloudflare's developer platform command line tool), or via the <a href="https://dash.cloudflare.com"><u>Dashboard</u></a> user interface.</p>
+	<p>The managed platform holds the internal configuration APIs running on a Worker implementing a catalog of REST endpoints, the binding shim, which is supported by another dedicated Worker, every account controller, and their correspondent workflow engines, all powered by SQLite-backed Durable Objects. This is where all the magic happens and what we are sharing more details about in this technical blog.</p>
+	<p>Finally, there are the workflow instances, essentially independent clones of the workflow application. Instances are user account-owned and have a one-to-one relationship with a managed engine that powers them. You can run as many instances and engines as you want concurrently.</p>
+	<p>Let's get into more detail…</p>
+	<div class="flex anchor relative">
+		<h3 id="configuration-api-and-binding-shim">Configuration API and Binding Shim</h3>
+		<a href="https://blog.cloudflare.com/#configuration-api-and-binding-shim" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qEGr9M8KwgPS66Ju8mELL/189db9764392c00ae34dd3a44eeb1ed7/image6.png" alt="" class="kg-image" width="1999" height="984" loading="lazy">
+	</figure>
+	<p>The Configuration API and the Binding Shim are two stateless Workers; one receives REST API calls from clients calling our <a href="https://developers.cloudflare.com/api"><u>API Gateway</u></a> directly, using <a href="https://developers.cloudflare.com/workers/wrangler"><u>Wrangler</u></a>, or navigating the <a href="https://dash.cloudflare.com"><u>Dashboard</u></a> UI, and the other is the endpoint for the Workflows <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>binding</u></a>, an efficient and authenticated interface to interact with the Cloudflare Developer Platform resources from a Workers script.</p>
+	<p>The configuration API worker uses <a href="https://hono.dev/docs/getting-started/cloudflare-workers"><u>HonoJS</u></a> and <a href="https://hono.dev/examples/zod-openapi"><u>Zod</u></a> to implement the REST endpoints, which are declared in an <a href="https://swagger.io/specification"><u>OpenAPI</u></a> schema and exported to our API Gateway, thus adding our methods to the Cloudflare API <a href="https://developers.cloudflare.com/api"><u>catalog</u></a>.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { swaggerUI } from '@hono/swagger-ui';
+import { createRoute, OpenAPIHono, z } from '@hono/zod-openapi';
+import { Hono } from 'hono';
+
+...
+
+​​api.openapi(
+  createRoute({
+    method: 'get',
+    path: '/',
+    request: {
+      query: PaginationParams,
+    },
+    responses: {
+      200: {
+        content: {
+          'application/json': {
+             schema: APISchemaSuccess(z.array(WorkflowWithInstancesCountSchema)),
+          },
+        },
+        description: 'List of all Workflows belonging to a account.',
+      },
+    },
+  }),
+  async (ctx) =&gt; {
+    ...
+  },
+);
+
+...
+
+api.route('/:workflow_name', routes.workflows);
+api.route('/:workflow_name/instances', routes.instances);
+api.route('/:workflow_name/versions', routes.versions);</code></pre>
+	<p>These Workers perform two different functions, but they share a large portion of their code and implement similar logic; once the request is authenticated and ready to travel to the next stage, they use the account ID to delegate the operation to a Durable Object called Account Controller.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// env.ACCOUNTS is the Account Controllers Durable Objects namespace
+const accountStubId = c.env.ACCOUNTS.idFromName(accountId.toString());
+const accountStub = c.env.ACCOUNTS.get(accountStubId);</code></pre>
+	<p>As you can see, every account has its own Account Controller Durable Object.</p>
+	<div class="flex anchor relative">
+		<h3 id="account-controllers">Account Controllers</h3>
+		<a href="https://blog.cloudflare.com/#account-controllers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Account Controller is a dedicated persisted database that stores the list of all the account’s workflows, versions, and instances. We scale to millions of account controllers, one per every Cloudflare account using Workflows, by leveraging the power of <a href="https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#sqlite-storage-backend"><u>Durable Objects with SQLite backend</u></a>.</p>
+	<p><a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> (DOs) are single-threaded singletons that run in our data centers and are bound to a stateful storage API, in this case, SQLite. They are also Workers, just a special kind, and have access to all of our other APIs. This makes it easy to build consistent, highly available distributed applications with them.</p>
+	<p>Here’s what we get for free by using one Durable Object per Workflows account:</p>
+	<ul>
+		<li>
+			<p>Sharding based on account boundaries aligns perfectly with the way we manage resources at Cloudflare internally. Also, due to the nature of DOs, there are other things that this model gets us for free: Not that we expect them, but eventual bugs or state inconsistencies during beta are confined to the affected account, and don’t impact everyone.</p>
+		</li>
+		<li>
+			<p>DO instances run close to the end user; Alice is in London and will call the config API through our <a href="https://www.cloudflare.com/en-gb/network"><u>LHR data center</u></a>, while Bob is in Lisbon and will connect to LIS.</p>
+		</li>
+		<li>
+			<p>Because every account is a Worker, we can gradually upgrade them to new versions, starting with the internal users, thus derisking real customers.</p>
+		</li>
+	</ul>
+	<p>Before SQLite, our only option was to use the Durable Object's <a href="https://developers.cloudflare.com/durable-objects/api/storage-api/#get"><u>key-value</u></a> storage API, but having a relational database at our fingertips and being able to create tables and do complex queries is a significant enabler. For example, take a look at how we implement the internal method getWorkflow():</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async function getWorkflow(accountId: number, workflowName: string) {
+  try {
+    const res = this.ctx.storage.transactionSync(() =&gt; {
+      const cursor = Array.from(
+        this.ctx.storage.sql.exec(
+          `
+                    SELECT *,
+                    (SELECT class_name
+                        FROM   versions
+                        WHERE  workflow_id = w.id
+                        ORDER  BY created_on DESC
+                        LIMIT  1) AS class_name
+                    FROM   workflows w
+                    WHERE  w.name = ? 
+                    `,
+          workflowName
+        )
+      )[0] as Workflow;
+
+      return cursor;
+    });
+
+    this.sendAnalytics(accountId, begin, "getWorkflow");
+    return res as Workflow | undefined;
+  } catch (err) {
+    this.sendErrorAnalytics(accountId, begin, "getWorkflow");
+    throw err;
+  }
+}
+</code></pre>
+	<p>The other thing we take advantage of in Workflows is using the recently <a href="https://blog.cloudflare.com/javascript-native-rpc"><u>announced</u></a> JavaScript-native RPC feature when communicating between components.</p>
+	<p>Before <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc"><u>RPC</u></a>, we had to <code>fetch()</code> between components, make HTTP requests, and serialize and deserialize the parameters and the payload. Now, we can async call the remote object's method as if it was local. Not only does this feel more natural and simplify our logic, but it's also more efficient, and we can take advantage of TypeScript type-checking when writing code.</p>
+	<p>This is how the Configuration API would call the Account Controller’s <code>countWorkflows()</code> method before:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const resp = await accountStub.fetch(
+      "https://controller/count-workflows",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify({ accountId }),
+      },
+    );
+
+if (!resp.ok) {
+  return new Response("Internal Server Error", { status: 500 });
+}
+
+const result = await resp.json();
+const total_count = result.total_count;</code></pre>
+	<p>This is how we do it using RPC:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const total_count = await accountStub.countWorkflows(accountId);</code></pre>
+	<p>The other powerful feature of our RPC system is that it supports passing not only <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types"><u>Structured Cloneable</u></a> objects back and forth but also entire classes. More on this later.</p>
+	<p>Let’s move on to Engine.</p>
+	<div class="flex anchor relative">
+		<h3 id="engine-and-instance">Engine and instance</h3>
+		<a href="https://blog.cloudflare.com/#engine-and-instance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Every instance of a workflow runs alongside an Engine instance. The Engine is responsible for starting up the user’s workflow entry point, executing the steps on behalf of the user, handling their results, and tracking the workflow state until completion.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yrKsuF501oRCDujckr3yM/bde40097ec5bedda07793375e53e99b9/image1.png" alt="" class="kg-image" width="1080" height="632" loading="lazy">
+	</figure>
+	<p>When we started thinking about the Engine, we thought about modeling it after a <a href="https://en.wikipedia.org/wiki/Finite-state_machine"><u>state machine</u></a>, and that was what our initial prototypes looked like. However, state machines require an ahead-of-time understanding of the userland code, which implies having a build step before running them. This is costly at scale and introduces additional complexity.</p>
+	<p>A few iterations later, we had another idea. What if we could model the engine as a game loop?</p>
+	<p>Unlike other computer programs, games operate regardless of a user's input. The game loop is essentially a sequence of tasks that implement the game's logic and update the display, typically one loop per video frame. Here’s an example of a game loop in pseudo-code:</p>
+	<pre class="language-Rust"><code class="language-Rust">while (game in running)
+    check for user input
+    move graphics
+    play sounds
+end while</code></pre>
+	<p>Well, an oversimplified version of our Workflow engine would look like this:</p>
+	<pre class="language-Rust"><code class="language-Rust">while (last step not completed)
+    iterate every step
+       use memoized cache as response if the step has run already
+       continue running step or timer if it hasn't finished yet
+end while</code></pre>
+	<p>A workflow is indeed a loop that keeps on going, performing the same sequence of logical tasks until the last step completes.</p>
+	<p>The Engine and the instance run hand-in-hand in a one-to-one relationship. The first is managed, and part of the platform. It uses SQLite and other platform APIs internally, and we can constantly add new features, fix bugs, and deploy new versions, while keeping everything transparent to the end user. The second is the actual account-owned Worker script that declares the Workflow steps.</p>
+	<p>For example, when someone passes a callback into <code>step.do()</code>:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export class MyWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
+  async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
+    step.do('step1', () =&gt; { ... });
+  }
+}</code></pre>
+	<p>We switch execution over to the Engine. Again, this is possible because of the power of JS RPC. Besides passing Structured Cloneable objects back and forth, JS RPC allows us to <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc/#send-functions-as-parameters-of-rpc-methods"><u>create and pass entire application-defined classes</u></a> that extend the built-in RpcTarget. So this is what happens behind the scenes when your Instance calls <code>step.do()</code> (simplified):</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export class Context extends RpcTarget {
+
+  async do&lt;T&gt;(name: string, callback: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
+
+    // First we check we have a cache of this step.do() already
+    const maybeResult = await this.#state.storage.get(name);
+
+    // We return the cache if it exists
+    if (maybeValue) { return maybeValue; }
+
+    // Else we run the user callback
+    return doWrapper(callback);
+  }
+
+}
+</code></pre>
+	<p>Here’s a more complete diagram of the Engine’s <code>step.do()</code> lifecycle:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MymVGS7BxwityCRlWcBOX/136d4dcf0affce04164f87b6bbe8b12a/image5.png" alt="" class="kg-image" width="1999" height="702" loading="lazy">
+	</figure>
+	<p>Again, this diagram only partially represents everything we do in the Engine; things like logging for observability or handling exceptions are missing, and we don't get into the details of how queuing is implemented. However, it gives you a good idea of how the Engine abstracts and handles all the complexities of completing a step under the hood, allowing us to expose a simple-to-use API to end users.</p>
+	<p>Also, it's worth reiterating that every workflow instance is an Engine behind the scenes, and every Engine is an SQLite-backed Durable Object. This ensures that every instance runtime and state are isolated and independent of each other and that we can effortlessly scale to run billions of workflow instances, a solved problem for Durable Objects.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uEoEAtsjNquPCD3F50S9d/006556baf2a0478d1de10e4514843baa/image3.png" alt="" class="kg-image" width="1999" height="853" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="durability">Durability</h3>
+		<a href="https://blog.cloudflare.com/#durability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Durable Execution is all the rage now when we talk about workflow engines, and ours is no exception. Workflows are typically long-lived processes that run multiple functions in sequence where anything can happen. Those functions can time out or fail because of a remote server error or a network issue and need to be retried. A workflow engine ensures that your application runs smoothly and completes regardless of the problems it encounters.</p>
+	<p>Durability means that if and when a workflow fails, the Engine can re-run it, resume from the last recorded step, and deterministically re-calculate the state from all the successful steps' cached responses. This is possible because steps are stateful and idempotent; they produce the same result no matter how many times we run them, thus not causing unintended duplicate effects like sending the same invoice to a customer multiple times.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1R5UfQfNMKI7hB6QXJfCUr/242e85f2b5287394871e916844359bd4/image7.png" alt="" class="kg-image" width="1999" height="1074" loading="lazy">
+	</figure>
+	<p>We ensure durability and handle failures and retries by sharing the same technique we use for a <code>step.sleep()</code> that requires sleeping for days or months: a combination of using <code>scheduler.wait()</code>, a method of the <a href="https://github.com/WICG/scheduling-apis"><u>upcoming WICG Scheduling API</u></a> that we already <a href="https://developers.cloudflare.com/workers/platform/changelog/historical-changelog/#2021-12-10"><u>support</u></a>, and <a href="https://developers.cloudflare.com/durable-objects/api/alarms"><u>Durable Objects alarms</u></a>, which allow you to schedule the Durable Object to be woken up at a time in the future.</p>
+	<p>These two APIs allow us to overcome the lack of guarantees that a Durable Object runs forever, giving us complete control of its lifecycle. Since every state transition through userland code persists in the Engine’s strongly consistent SQLite, we track timestamps when a step begins execution, its attempts (if it needs retries), and its completion.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FSCXRt9fO4EaaBP7hLV8x/a59de27dfbe18f39addd4eb8240b9df9/image10.png" alt="" class="kg-image" width="1800" height="794" loading="lazy">
+	</figure>
+	<p>This means that steps pending if a Durable Object is <a href="https://developers.cloudflare.com/durable-objects/reference/in-memory-state"><u>evicted</u></a> — perhaps due to a two-month-long timer — get rerun on the next lifetime of the Engine (with its cache from the previous lifetime hydrated) that is triggered by an alarm set with the timestamp of the next expected state transition.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="real-life-workflow-step-by-step">Real-life workflow, step by step</h2>
+		<a href="https://blog.cloudflare.com/#real-life-workflow-step-by-step" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let's walk through an example of a real-life application. You run an e-commerce website and would like to send email reminders to your customers for forgotten carts that haven't been checked out in a few days.</p>
+	<p>What would typically have to be a combination of a queue, a cron job, and querying a database table periodically can now simply be a Workflow that we start on every new cart:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import {
+  WorkflowEntrypoint,
+  WorkflowEvent,
+  WorkflowStep,
+} from "cloudflare:workers";
+import { sendEmail } from "./legacy-email-provider";
+
+type Params = {
+  cartId: string;
+};
+
+type Env = {
+  DB: D1Database;
+};
+
+export class Purchase extends WorkflowEntrypoint&lt;Env, Params&gt; {
+  async run(
+    event: WorkflowEvent&lt;Params&gt;,
+    step: WorkflowStep
+  ): Promise&lt;unknown&gt; {
+    await step.sleep("wait for three days", "3 days");
+
+    // Retrieve cart from D1
+    const cart = await step.do("retrieve cart from database", async () =&gt; {
+      const { results } = await this.env.DB.prepare(`SELECT * FROM cart WHERE id = ?`)
+        .bind(event.payload.cartId)
+        .all();
+      return results[0];
+    });
+
+    if (!cart.checkedOut) {
+      await step.do("send an email", async () =&gt; {
+        await sendEmail("reminder", cart);
+      });
+    }
+  }
+}
+</code></pre>
+	<p>This works great. However, sometimes the <code>sendEmail</code> function fails due to an upstream provider erroring out. While <code>step.do</code> automatically retries with a reasonable default configuration, we can define our settings:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">if (cart.isComplete) {
+  await step.do(
+    "send an email",
+    {
+      retries: {
+        limit: 5,
+        delay: "1 min",
+        backoff: "exponential",
+      },
+    },
+    async () =&gt; {
+      await sendEmail("reminder", cart);
+    }
+  );
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="managing-workflows">Managing Workflows</h3>
+		<a href="https://blog.cloudflare.com/#managing-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflows allows us to create and manage workflows using four different interfaces:</p>
+	<ul>
+		<li>
+			<p>Using our REST HTTP API available on <a href="https://developers.cloudflare.com/api"><u>Cloudflare’s API catalog</u></a></p>
+		</li>
+		<li>
+			<p>Using <a href="https://developers.cloudflare.com/workers/wrangler"><u>Wrangler</u></a>, Cloudflare's developer platform command-line tool</p>
+		</li>
+		<li>
+			<p>Programmatically inside a Worker using <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>bindings</u></a></p>
+		</li>
+		<li>
+			<p>Using our Web UI in the <a href="https://dash.cloudflare.com"><u>dashboard</u></a></p>
+		</li>
+	</ul>
+	<p>The HTTP API makes it easy to trigger new instances of workflows from any system, even if it isn’t on Cloudflare, or from the command line. For example:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">curl --request POST \
+  --url https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workflows/purchase-workflow/instances/$CART_INSTANCE_ID \
+  --header 'Authorization: Bearer $ACCOUNT_TOKEN \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"id": "$CART_INSTANCE_ID",
+	"params": {
+		"cartId": "f3bcc11b-2833-41fb-847f-1b19469139d1"
+	}
+  }'</code></pre>
+	<p>Wrangler goes one step further and gives us a friendlier set of commands to interact with workflows with fancy formatted outputs without needing to authenticate with tokens. Type <code>npx wrangler workflows</code> for help, or:</p>
+	<pre class="language-Rust"><code class="language-Rust">npx wrangler workflows trigger purchase-workflow '{ "cartId": "f3bcc11b-2833-41fb-847f-1b19469139d1" }'</code></pre>
+	<p>Furthermore, Workflows has first-party support in wrangler, and you can test your instances locally. A Workflow is similar to a regular<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc"><u> WorkerEntrypoint</u></a> in your Worker, which means that <code>wrangler dev</code> just naturally works.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">❯ npx wrangler dev
+
+ ⛅️ wrangler 3.82.0
+----------------------------
+
+Your worker has access to the following bindings:
+- Workflows:
+  - CART_WORKFLOW: EcommerceCartWorkflow
+⎔ Starting local server...
+[wrangler:inf] Ready on http://localhost:8787
+╭───────────────────────────────────────────────╮
+│  [b] open a browser, [d] open devtools        │
+╰───────────────────────────────────────────────╯
+</code></pre>
+	<p>Workflow APIs are also available as a Worker binding. You can interact with the platform programmatically from another Worker script in the same account without worrying about permissions or authentication. You can even have workflows that call and interact with other workflows.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { WorkerEntrypoint } from "cloudflare:workers";
+
+type Env = { DEMO_WORKFLOW: Workflow };
+export default class extends WorkerEntrypoint&lt;Env&gt; {
+  async fetch() {
+    // Pass in a user defined name for this instance
+    // In this case, we use the same as the cartId
+    const instance = await this.env.DEMO_WORKFLOW.create({
+      id: "f3bcc11b-2833-41fb-847f-1b19469139d1",
+      params: {
+          cartId: "f3bcc11b-2833-41fb-847f-1b19469139d1",
+      }
+    });
+  }
+  async scheduled() {
+    // Restart errored out instances in a cron
+    const instance = await this.env.DEMO_WORKFLOW.get(
+      "f3bcc11b-2833-41fb-847f-1b19469139d1"
+    );
+    const status = await instance.status();
+    if (status.error) {
+      await instance.restart();
+    }
+  }
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="observability">Observability&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#observability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Having good observability and data on often long-lived asynchronous tasks is crucial to understanding how we're doing under normal operation and, more importantly, when things go south, and we need to troubleshoot problems or when we are iterating on code changes.</p>
+	<p>We designed Workflows around the philosophy that there is no such thing as too much logging. You can get all the SQLite data for your workflow and its instances by calling the REST APIs. Here is the output of an instance:</p>
+	<pre class="language-Rust"><code class="language-Rust">{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "status": "running",
+    "params": {},
+    "trigger": { "source": "api" },
+    "versionId": "ae042999-39ff-4d27-bbcd-22e03c7c4d02",
+    "queued": "2024-10-21 17:15:09.350",
+    "start": "2024-10-21 17:15:09.350",
+    "end": null,
+    "success": null,
+    "steps": [
+      {
+        "name": "send email",
+        "start": "2024-10-21 17:15:09.411",
+        "end": "2024-10-21 17:15:09.678",
+        "attempts": [
+          {
+            "start": "2024-10-21 17:15:09.411",
+            "end": "2024-10-21 17:15:09.678",
+            "success": true,
+            "error": null
+          }
+        ],
+        "config": {
+          "retries": { "limit": 5, "delay": 1000, "backoff": "constant" },
+          "timeout": "15 minutes"
+        },
+        "output": "celso@example.com",
+        "success": true,
+        "type": "step"
+      },
+      {
+        "name": "sleep-1",
+        "start": "2024-10-21 17:15:09.763",
+        "end": "2024-10-21 17:17:09.763",
+        "finished": false,
+        "type": "sleep",
+        "error": null
+      }
+    ],
+    "error": null,
+    "output": null
+  }
+}</code></pre>
+	<p>As you can see, this is essentially a dump of the instance engine SQLite in JSON. You have the <b>errors</b>, <b>messages</b>, current <b>status</b>, and what happened with <b>every step</b>, all time stamped to the millisecond.</p>
+	<p>It's one thing to get data about a specific workflow instance, but it's another to zoom out and look at aggregated statistics of all your workflows and instances over time. Workflows data is available through our <a href="https://developers.cloudflare.com/analytics/graphql-api"><u>GraphQL Analytics API</u></a>, so you can query it in aggregate and generate valuable insights and reports. In this example we ask for aggregated analytics about the wall time of all the instances of the “e-commerce-carts” workflow:</p>
+	<pre class="language-Rust"><code class="language-Rust">{
+  viewer {
+    accounts(filter: { accountTag: "febf0b1a15b0ec222a614a1f9ac0f0123" }) {
+      wallTime: workflowsAdaptiveGroups(
+        limit: 10000
+        filter: {
+          datetimeHour_geq: "2024-10-20T12:00:00.000Z"
+          datetimeHour_leq: "2024-10-21T12:00:00.000Z"
+          workflowName: "e-commerce-carts"
+        }
+        orderBy: [count_DESC]
+      ) {
+        count
+        sum {
+          wallTime
+        }
+        dimensions {
+          date: datetimeHour
+        }
+      }
+    }
+  }
+}
+</code></pre>
+	<p>For convenience, you can evidently also use Wrangler to describe a workflow or an instance and get an instant and beautifully formatted response:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">sid ~ npx wrangler workflows instances describe purchase-workflow latest
+
+ ⛅️ wrangler 3.80.4
+
+Workflow Name:         purchase-workflow
+Instance Id:           d4280218-7756-41d2-bccd-8d647b82d7ce
+Version Id:            0c07dbc4-aaf3-44a9-9fd0-29437ed11ff6
+Status:                ✅ Completed
+Trigger:               🌎 API
+Queued:                14/10/2024, 16:25:17
+Success:               ✅ Yes
+Start:                 14/10/2024, 16:25:17
+End:                   14/10/2024, 16:26:17
+Duration:              1 minute
+Last Successful Step:  wait for three days
+Output:                false
+Steps:
+
+  Name:      wait for three days
+  Type:      💤 Sleeping
+  Start:     14/10/2024, 16:25:17
+  End:       17/10/2024, 16:25:17
+  Duration:  3 day</code></pre>
+	<p>And finally, we worked really hard to get you the best dashboard UI experience when navigating Workflows data.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64XUtBwldkSXUTJ5xEJBgo/2aa861583c8c56c19194cb0869a15a2a/image8.png" alt="" class="kg-image" width="1960" height="1360" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="so-how-much-does-it-cost">So, how much does it cost?</h2>
+		<a href="https://blog.cloudflare.com/#so-how-much-does-it-cost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>It’d be painful if we introduced a powerful new way to build Workers applications but made it cost prohibitive.</p>
+	<p>Workflows is <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers"><u>priced</u></a> just like Cloudflare Workers, where we <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero"><u>introduced CPU-based pricing</u></a>: only on active CPU time and requests, not duration (aka: wall time).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11WroT4xt0zPj6bsou4u3X/8f2775569f280107345322cb97603b3e/image4.png" alt="" class="kg-image" width="1600" height="512" loading="lazy">
+	</figure>
+	<p><sup><i>Workers Standard pricing model</i></sup></p>
+	<p>This is especially advantageous when building the long-running, multi-step applications that Workflows enables: if you had to pay while your Workflow was sleeping, waiting on an event, or making a network call to an API, writing the “right” code would be at odds with writing affordable code.</p>
+	<p>There’s also no need to keep a Kubernetes cluster or a group of virtual machines running (and burning a hole in your wallet): we manage the infrastructure, and you only pay for the compute your Workflows consume.&nbsp;&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Today, after months of developing the platform, we are announcing the open beta program, and we couldn't be more excited to see how you will be using Workflows. Looking forward, we want to do things like triggering instances from queue messages and have other ideas, but at the same time, we are certain that your feedback will help us shape the roadmap ahead.</p>
+	<p>We hope that this blog post gets you thinking about how to use Workflows for your next application, but also that it inspires you on what you can build on top of Workers. Workflows as a platform is entirely built on top of Workers, its resources, and APIs. Anyone can do it, too.</p>
+	<p>To chat with the team and other developers building on Workflows, join the #workflows-beta channel on the<a href="https://discord.cloudflare.com"> <u>Cloudflare Developer Discord</u></a>, and keep an eye on the<a href="https://developers.cloudflare.com/workflows/reference/changelog"> <u>Workflows changelog</u></a> during the beta. Otherwise,<a href="https://developers.cloudflare.com/workflows/reference/changelog"> <u>visit the Workflows tutorial</u></a> to get started.</p>
+	<p>If you're an engineer, <a href="https://www.cloudflare.com/en-gb/careers/jobs"><u>look for opportunities</u></a> to work with us and help us improve Workflows or build other products.</p>
+</div>

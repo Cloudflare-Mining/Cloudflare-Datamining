@@ -1,0 +1,186 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/617BMsL3rCnCVbJka70swV/a6e1c03a1ee940a18b3c95c6c3d8642b/_BLOG-2593_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>With the rapid advancements occurring in the AI space, developers face significant challenges in keeping up with the ever-changing landscape. New models and providers are continuously emerging, and understandably, developers want to experiment and test these options to find the best fit for their use cases. This creates the need for a streamlined approach to managing multiple models and providers, as well as a centralized platform to efficiently monitor usage, implement controls, and gather data for optimization.</p>
+	<p><a href="https://developers.cloudflare.com/ai-gateway"><u>AI Gateway</u></a> is specifically designed to address these pain points. Since its launch in <a href="https://blog.cloudflare.com/announcing-ai-gateway"><u>September 2023</u></a>, AI Gateway has empowered developers and organizations by successfully proxying over 2 billion requests in just one year, as we <a href="https://blog.cloudflare.com/workers-ai-bigger-better-faster/#optimizing-ai-workflows-with-ai-gateway"><u>highlighted during September’s Birthday Week</u></a>. With AI Gateway, developers can easily store, analyze, and optimize their AI <a href="https://www.cloudflare.com/learning/ai/inference-vs-training"><u>inference</u></a> requests and responses in real time.</p>
+	<p>With our initial architecture, AI Gateway faced a significant challenge: the logs, those critical trails of data interactions between applications and AI models, could only be retained for 30 minutes. This limitation was not just a minor inconvenience; it posed a substantial barrier for developers and businesses needing to analyze long-term patterns, ensure compliance, or simply debug over more extended periods.</p>
+	<p>In this post, we'll explore the technical challenges and strategic decisions behind extending our log storage capabilities from 30 minutes to being able to store billions of logs indefinitely. We'll discuss the challenges of scale, the intricacies of data management, and how we've engineered a system that not only meets the demands of today, but is also scalable for the future of AI development.</p>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Gateway is built on <a href="https://workers.cloudflare.com"><u>Cloudflare Workers</u></a>, a serverless platform that runs on the Cloudflare network, allowing developers to write small JavaScript functions that can execute at the point of need, near the user, on Cloudflare's vast network of data centers, without worrying about platform scalability.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jV3iKCN771ixU21Hixfpz/18086a52cfe05cd20f1c94bbba21e293/_BLOG-2593_2.png" alt="BLOG-2593 2" class="kg-image" width="1954" height="291" loading="lazy">
+	</figure>
+	<p>Our customers use multiple providers and models and are always looking to optimize the way they do inference. And, of course, in order to evaluate their prompts, performance, cost, and to troubleshoot what’s going on, AI Gateway’s customers need to store requests and responses. New requests show up within 15 seconds and customers can check a request’s cost, duration, number of tokens, and provide their feedback (thumbs up or down).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RBqZXnLJNCaQPbtbzjQmj/70aa2598f9b9294b67db8cd5712a6345/_BLOG-2593_3.png" alt="BLOG-2593 3" class="kg-image" width="1999" height="1080" loading="lazy">
+	</figure>
+	<p>This scales in a way where an account can have multiple gateways and each gateway has its own settings. In our first implementation, a backend worker was responsible for storing Real Time Logs and other background tasks. However, in the rapidly evolving domain of artificial intelligence, where real-time data is as precious as the insights it provides, managing log data efficiently becomes paramount. We recognized that to truly empower our users, we needed to offer a solution where logs weren't just transient records but could be stored permanently. Permanent log storage means developers can now track the performance, security, and operational insights of their AI applications over time, enabling not only immediate troubleshooting but also longitudinal studies of AI behavior, usage trends, and system health.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TcC1ZdyNzT0xwFwme2oBt/a9202691a0a983fa3eafdf6c0ee92f2c/_BLOG-2593_4.png" alt="BLOG-2593 4" class="kg-image" width="1173" height="410" loading="lazy">
+	</figure>
+	<p>The diagram above describes our old architecture, which could only store 30 minutes of data.</p>
+	<p>Tracing the path of a request through the AI Gateway, as depicted in the sequence above:</p>
+	<ol>
+		<li>
+			<p>A developer sends a new inference request, which is first received by our Gateway Worker.</p>
+		</li>
+		<li>
+			<p>The Gateway Worker then performs several checks: it looks for cached results, enforces rate limits, and verifies any other configurations set by the user for their gateway. Provided all conditions are met, it forwards the request to the selected inference provider (in this diagram, OpenAI).</p>
+		</li>
+		<li>
+			<p>The inference provider processes the request and sends back the response.</p>
+		</li>
+		<li>
+			<p>Simultaneously, as the response is relayed back to the developer, the request and response details are also dispatched to our Backend Worker. This worker's role is to manage and store the log of this transaction.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="the-challenge-store-two-billion-logs">The challenge: Store two billion logs</h2>
+		<a href="https://blog.cloudflare.com/#the-challenge-store-two-billion-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="first-step-real-time-logs">First step: real-time logs</h3>
+		<a href="https://blog.cloudflare.com/#first-step-real-time-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Initially, the AI Gateway project stored both request metadata and the actual request bodies in a <a href="https://developers.cloudflare.com/d1"><u>D1 database</u></a>. This approach facilitated rapid development in the project's infancy. However, as customer engagement grew, the D1 database began to fill at an accelerating rate, eventually retaining logs for only 30 minutes at a time.</p>
+	<p>To mitigate this, we first optimized the database schema, which extended the log retention to one hour. However, we soon encountered diminishing returns due to the sheer volume of byte data from the request bodies. Post-launch, it became clear that a more scalable solution was necessary. We decided to migrate the request bodies to R2 storage, significantly alleviating the data load on D1. This adjustment allowed us to incrementally extend log retention to 24 hours.</p>
+	<p>Consequently, D1 functioned primarily as a log index, enabling users to search and filter logs efficiently. When users needed to view details or download a log, these actions were seamlessly proxied through to R2.</p>
+	<p>This dual-system approach provided us with the breathing room to contemplate and develop more sophisticated storage solutions for the future.</p>
+	<div class="flex anchor relative">
+		<h3 id="second-step-persistent-logs-and-durable-object-transactional-storage">Second step: persistent logs and Durable Object transactional storage</h3>
+		<a href="https://blog.cloudflare.com/#second-step-persistent-logs-and-durable-object-transactional-storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As our traffic surged, we encountered a growing number of requests from customers wanting to access and compare older logs.</p>
+	<p>Upon learning that the Durable Objects team was seeking beta testers for their new <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>Durable Objects with SQLite</u></a>, we eagerly signed up.</p>
+	<p>Originally, we considered Durable Objects as the ideal solution for expanding our log storage capacity, which required us to shard the logs by a unique string. Initially, this string was the account ID, but during a mid-development load test, we hit a cap at 10 million logs per Durable Object. This limitation meant that each account could only support up to this number of logs.</p>
+	<p>Given our commitment to the DO migration, we saw an opportunity rather than a constraint. To overcome the 10 million log limit per account, we refined our approach to shard by both account ID and gateway name. This adjustment effectively raised the storage ceiling from 10 million logs per account to 10 million per gateway. With the default setting allowing each account up to 10 gateways, the potential storage for each account skyrocketed to 100 million logs.</p>
+	<p>This strategic pivot not only enabled us to store a significantly larger number of logs. But also enhanced our flexibility in gateway management. Now, when a gateway is deleted, we can simply remove the corresponding Durable Object.</p>
+	<p>Additionally, this sharding method isolates high-volume request scenarios. If one customer's heavy usage slows down log insertion, it only impacts their specific Durable Object, thereby preserving performance for other customers.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Q6degDA3V02dZFVugW2LO/ae121890a3d4493e5c01459c477f32d9/_BLOG-2593_5.png" alt="BLOG-2593 5" class="kg-image" width="1173" height="410" loading="lazy">
+	</figure>
+	<p>Taking a glance at the revised architecture diagram, we replaced the Backend Worker with our newly integrated Durable Object. The rest of the request flow remains unchanged, including the concurrent response to the user and the interaction with the Durable Object, which occurs in the fourth step.</p>
+	<p>Leveraging Cloudflare’s network, our Gateway Worker operates near the user's location, which in turn positions the user's Durable Object close by. This proximity significantly enhances the speed of log insertion and query operations.</p>
+	<div class="flex anchor relative">
+		<h3 id="third-step-managing-thousands-of-durable-objects">Third step: managing thousands of Durable Objects</h3>
+		<a href="https://blog.cloudflare.com/#third-step-managing-thousands-of-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As the number of users and requests on AI Gateway grows, managing each unique Durable Object (DO) becomes increasingly complex. New customers join continuously, and we needed an efficient method to track each DO, ensure users stay within their 10 gateway limit, and manage the storage capacity for free users.</p>
+	<p>To address these challenges, we introduced another layer of control with a new Durable Object we've named the Account Manager. The primary function of the Account Manager is straightforward yet crucial: it keeps user activities in check.</p>
+	<p>Here's how it works: before any Gateway commits a new log to permanent storage, it consults the Account Manager. This check determines whether the gateway is allowed to insert the log based on the user's current usage and entitlements. The Account Manager uses its own SQLite database to verify the total number of rows a user has and their service level. If all checks pass, it signals the Gateway that the log can be inserted. It was paramount to guarantee that this entire validation process occurred in the background, ensuring that the user experience remains seamless and uninterrupted.</p>
+	<p>The Account Manager stays updated by periodically receiving data from each Gateway’s Durable Object. Specifically, after every 1000 inference requests, the Gateway sends an update on its total rows to the Account Manager, which then updates its local records. This system ensures that the Account Manager has the most current data when making its decisions.</p>
+	<p>Additionally, the Account Manager is responsible for monitoring customer entitlements. It tracks whether an account is on a free or paid plan, how many gateways a user is permitted to create, and the log storage capacity allocated to each gateway.&nbsp;</p>
+	<p>Through these mechanisms, the Account Manager not only helps in maintaining system integrity but also ensures fair usage across all users of AI Gateway.</p>
+	<div class="flex anchor relative">
+		<h2 id="ai-evaluations-and-durable-objects-sharding">AI evaluations and Durable Objects sharding</h2>
+		<a href="https://blog.cloudflare.com/#ai-evaluations-and-durable-objects-sharding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As we continue to develop evaluations to fully automatic and, in the future, use Large Language Models (LLMs),&nbsp; we are now taking the first step towards this goal and launching the open beta phase of comprehensive <a href="https://blog.cloudflare.com/workers-ai-bigger-better-faster/#optimizing-ai-workflows-with-ai-gateway"><u>AI evaluations</u></a>, centered on Human-in-the-Loop feedback.</p>
+	<p>This feature empowers users to create bespoke datasets from their application logs, thereby enabling them to score and evaluate the performance, speed, and cost-effectiveness of their models, with a primary focus on LLMs and automated scoring, analyzing the performance of LLMs, providing developers with objective, data-driven insights to refine their models.</p>
+	<p>To do this, developers require a reliable logging mechanism that persists logs from multiple gateways, storing up to 100 million logs in total (10 million logs per gateway, across 10 gateways). This represents a significant volume of data, as each request made through the AI Gateway generates a log entry, with some log entries potentially exceeding 50 MB in size.</p>
+	<p>This necessity leads us to work on the expansion of log storage capabilities. Since log storage is limited to 10 million logs per gateway, in future iterations, we aim to scale this capacity by implementing sharded Durable Objects (DO), allowing multiple Durable Objects per gateway to handle and store logs. This scaling strategy will enable us to store significantly larger volumes of logs, providing richer data for evaluations (using LLMs as a judge or from user input), all through AI Gateway.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FLy2JEfvGFo8P7PCVBZYT/a4d6367341e9fc224dedaad3aa0f02e2/_BLOG-2593_6.png" alt="BLOG-2593 6" class="kg-image" width="954" height="751" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="coming-soon">Coming Soon</h2>
+		<a href="https://blog.cloudflare.com/#coming-soon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are working on improving our existing <a href="https://developers.cloudflare.com/ai-gateway/providers/universal"><u>Universal Endpoint</u></a>, the next step on an enhanced solution that builds on existing fallback mechanisms to offer greater resilience, flexibility, and intelligence in request management.</p>
+	<p>Currently, when a provider encounters an error or is unavailable, our system <a href="https://developers.cloudflare.com/ai-gateway/configuration/fallbacks"><u>falls back</u></a> to an alternative provider to ensure continuity. The improved Universal Endpoint takes this a step further by introducing automatic retry capabilities, allowing failed requests to be reattempted before fallback is triggered. This significantly improves reliability by handling transient errors and increasing the likelihood of successful request fulfillment. It will look something like this:</p>
+	<pre class="language-RUST"><code class="language-RUST">curl --location 'https://aig.example.com/' \
+--header 'CF-AIG-TOKEN: Bearer XXXX' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+    {
+        "id": "0001",
+        "provider": "openai",
+        "endpoint": "chat/completions",
+        "headers": {
+            "Authorization": "Bearer XXXX",
+            "Content-Type": "application/json"
+        },
+        "query": {
+            "model": "gpt-3.5-turbo",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "generate a prompt to create cloudflare random images"
+                }
+            ]
+        },
+        "option": {
+            "retry": 2,
+            "delay": 200,
+            "onComplete": {
+                "provider": "workers-ai",
+                "endpoint": "@cf/stabilityai/stable-diffusion-xl-base-1.0",
+                "headers": {
+                    "Authorization": "Bearer A5UFQkHewHF1-sA3hTVQFaPxRuu5wmS0eJcCS_MC",
+                    "Content-Type": "application/json"
+                },
+                "query": {
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": "&lt;prompt-response id='\''0001'\'' /&gt;"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "provider": "workers-ai",
+        "endpoint": "@cf/stabilityai/stable-diffusion-xl-base-1.0",
+        "headers": {
+            "Authorization": "Bearer XXXXXX",
+            "Content-Type": "application/json"
+        },
+        "query": {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "create a image of a missing cat"
+                }
+            ]
+        }
+    }
+]'
+</code></pre>
+	<p>The request to the improved Universal Endpoint system demonstrates how it handles multiple providers with integrated retry mechanisms and fallback logic. In this example, the first request is sent to a provider like OpenAI, asking it to generate a text-to-image prompt. The “retry” option ensures that transient issues don’t result in immediate failure.</p>
+	<p>The system’s ability to seamlessly switch between providers while applying retry strategies ensures higher reliability and robustness in managing requests. By leveraging fallback logic, the Improved Universal Endpoint can dynamically adapt to provider failures, ensuring that tasks are completed successfully even in complex, multi-step workflows.</p>
+	<p>In addition to retry logic, we will have the ability to inspect requests and responses and make dynamic decisions based on the content of the result. This enables developers to create conditional workflows where the system can adapt its behavior depending on the nature of the response, creating a highly flexible and intelligent decision-making process.</p>
+	<p>If you haven’t yet used AI Gateway, check out our <a href="https://developers.cloudflare.com/ai-gateway"><u>developer documentation</u></a> on how to get started. If you have any questions, reach out on our <a href="https://discord.cloudflare.com"><u>Discord channel</u></a>.</p>
+</div>
