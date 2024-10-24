@@ -15,6 +15,9 @@
 	"account-logpush": {
 		"enabled": true
 	},
+	"account-managed-rules-builder": {
+		"enabled": false
+	},
 	"account-owned-api-tokens": {
 		"enabled": true
 	},
@@ -67,7 +70,7 @@
 		"enabled": true
 	},
 	"allow-ssl-com-universal": {
-		"enabled": false
+		"enabled": true
 	},
 	"api-access": {
 		"enabled": true
@@ -736,9 +739,6 @@
 	},
 	"managed-challenge-ui": {
 		"enabled": true
-	},
-	"managed-rules-react-query-builder": {
-		"enabled": false
 	},
 	"multi-signer-dns": {
 		"enabled": true
