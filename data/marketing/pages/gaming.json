@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-05-23T00:06:50.233Z",
-					"updatedAt": "2024-10-05T04:06:21.349Z"
+					"updatedAt": "2024-10-24T18:26:45.111Z"
 				},
 				"contentfulId": "47XkIFtyajIlX0AFTsxYLA",
 				"contentTypeId": "page",
@@ -68,9 +68,9 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare for Gaming",
 						"titleSize": null,
-						"subtitle": "Secure, accelerate, analyze, and build with Cloudflare",
+						"subtitle": "Deliver responsive, reliable gaming experiences and streamline development everywhere",
 						"subtitleSize": null,
-						"copy": "Delivering excellent real-time experiences at scale to players around the world is a massive challenge. Solve it with Cloudflare — which helps power fast, immersive, and reliable online gaming experiences.\n\nSecure and accelerate your game with Cloudflare's __100% uptime SLA__, __DDoS__ and __bot mitigation__, __traffic acceleration__, __bespoke serverless matchmaking architecture__, and more.  ",
+						"copy": "With a massive global network and unified security platform, Cloudflare can help you sustain engaging, low-latency experiences while protecting servers from disruptive cyber attacks. \nZero Trust capabilities give game developers and other dispersed team members simple, secure ways to access essential resources from anywhere.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Get solution brief",
@@ -91,7 +91,7 @@
 						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": true,
+						"button1OpenInNewTab": false,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
@@ -103,303 +103,61 @@
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pNoSUgJoMSr0b1AoFQrNN/cc6dd91e169291e7d11461c9378bb061/Gaming.png"
-							},
-							"description": "Gaming Controller illustration"
-						},
-						"imageAssetFile": null
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "4U4V4skqzldWfe2SNUoeH3",
-						"quote": "\"Knowing that we don't have to worry about DDoS attacks against our API and gateway servers gives us the peace of mind to focus on improving our product.\"",
-						"quoteAuthor": "Stanislav Vishnevskiy",
-						"quoteTitle": "CTO of Discord",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tQS6UCCSAYysuY4OIc8sY/135f2e4fb4f46ba6364a55f09bc135a4/discord.svg"
-							},
-							"description": null
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "0176f09f-0218-53f4-9938-4270a48071ce",
-							"altText": "discord-logo",
-							"title": "discord-logo",
+							"id": "bfb1ee20-0c79-53fd-b48b-9ff7cbe81ae0",
+							"altText": "Cloudflare for Gaming - Hero illustration",
+							"title": "Cloudflare for Gaming - Hero illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/63zzut2O5y6U4wk8msyMKM/4d501f4b848e5ed36137d983a2f0ec2c/logo-discord-color.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pNoSUgJoMSr0b1AoFQrNN/cc6dd91e169291e7d11461c9378bb061/Gaming.png"
 								},
-								"description": "Discord logo"
+								"description": "Gaming Controller illustration"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
+						}
+					},
+					{
+						"contentfulId": "2Ea8I88o7B6qNxityr2QVj",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Stop attacks, improve player experiences, and drive innovation",
+						"eyebrowHeading": "BENEFITS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "2sseUYOsZPjYkEYycvzU8K",
-								"quote": "\"We were looking at moving our data from one storage provider to another, and it was a total no-brainer to use a service that was part of the Bandwidth Alliance. It really makes sense for anyone looking at any cloud service, especially one that's pushing a lot of traffic.\"",
-								"quoteAuthor": "James Ross",
-								"quoteTitle": "Co-founder & Chief Technology Officer of Nodecraft",
-								"learnMoreText": null,
+								"contentTypeId": "feature",
+								"contentfulId": "1ExVqQxYM9LE1Dh1MABbPP",
+								"title": "Protect game servers",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Strengthen game security while maintaining performance. Low-latency DDoS mitigation safeguards game servers without adding lag.",
 								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "19eee60e-9b81-5466-8417-d6cb5fc15ea4",
-									"altText": "Logo nodecraft gray",
-									"title": "Logo nodecraft gray",
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "cfc36bbf-5dc1-5af6-b7d9-fe3f42f4863f",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 3222,
-										"height": 820,
-										"width": 3991,
-										"filename": "logo_nodecraft_gray.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_nodecraft_gray.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rWTnFvNHNMPsZyyb3rnAy/fac1b1989807cd2692184166f862ca1d/logo-on-white-download.png"
-									},
-									"description": "Nodecraft logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "6dqkuNT4YV3X94NpJ4QPnn",
-								"quote": "\"We wanted to ensure we have a high-quality Cloudflare level of protection to protect our critical communication protocol, and Cloudflare helped us really boost the performance and resiliency of our custom TCP protocols. With other providers, it takes more than 30 seconds to a minute before scrubbing or mitigation takes place. Using Cloudflare, it's much faster.\"",
-								"quoteAuthor": "Ben Burns",
-								"quoteTitle": "Chief Information Officer of Turtle Entertainment",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "e6e9b8f3-a95b-5d21-bf46-d882003be602",
-									"altText": "Turtle Gaming Logo ",
-									"title": "Turtle Gaming Logo ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ax4CNOXpWkZIywnp7pmqS/ab643b966df13d2a3f985dab6f24b734/turtleentertainmentlogo-addedpadding.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y13tTigGFzx34DZk3iS9Y/5b93f092978693108467fdedd27338d4/security-shield-protection-2.svg"
 										},
 										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ax4CNOXpWkZIywnp7pmqS/ab643b966df13d2a3f985dab6f24b734/turtleentertainmentlogo-addedpadding.png"
-									},
-									"description": null
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "1JmycqHSpyZUM9NFVALB0w",
-								"quote": "\"Attacks that would otherwise make our site slow or entirely inaccessible get blocked by Cloudflare. Because of this protection, the 1,600 sites we have on Cloudflare are kept online and our community keeps coming back to enjoy them.\"",
-								"quoteAuthor": "Craig Bradberry",
-								"quoteTitle": "Production Systems Manager of Curse",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "966f4822-f98b-5cd1-aa56-1a2e698548f0",
-									"altText": "curse-logo",
-									"title": "curse-logo",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53G4oZ7T2EMQKAUGOMsoC6/5e5781dc115755720edb9a15c469bca0/curse.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53G4oZ7T2EMQKAUGOMsoC6/5e5781dc115755720edb9a15c469bca0/curse.png"
-									},
-									"description": null
-								}
-							}
-						]
-					},
-					{
-						"contentfulId": "3wkKIhboiJNA6v35nYhJB3",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": null,
-						"description": "Securing gaming and gambling companies against DDoS attacks",
-						"variant": "inline",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "33xxE4xwbGz6FNALlX99JG",
-							"elementName": "CTA button - Report -  /lp/ddos-defense-for-gaming-and-gambling-wp/",
-							"standardText": null,
-							"text": "Read the report",
-							"url": " https://www.cloudflare.com/lp/ddos-defense-for-gaming-and-gambling-wp/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": null
-					},
-					{
-						"contentfulId": "3qbLjFNu8GkP9cvP03MS9i",
-						"title": "Secure your game",
-						"copy": "Gaming companies are often vulnerable to DDoS attacks. Game platforms that rely on custom TCP and UDP communication protocols require even more resources to prevent these attacks.\n\nProtect the uptime, performance, and integrity of your game servers with Cloudflare.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Up4vAQX7hxV3cfYe8tsB1/83136582b585259f1c8eac6f066db006/teams-access-improvement-plan-spot-illustration.svg"
-							},
-							"description": "Illustration of identities in front of a shield"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "50UAVKtmzCUxkaWKr4MDLg",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "NjRoVkZHQNcKCo5q2YUHT",
-								"title": "Spectrum",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Get DDoS protection for all your TCP/UDP applications. Give your custom game applications DDoS protection with fast performance.",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/cloudflare-spectrum/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1W5s21iEz5Zk92rEr9cGr3/729e55fb2d26df7970d1c04d6040ffca/cloudflare-spectrum.svg"
-									},
-									"description": "Orange shield icon"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3xV81aWb0KDnMhXSh9SrLF",
-								"title": "DDoS Protection",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Reduce the risk of lost customers, declining revenues, and degraded brand with better uptime and protection against Layer 7 DDoS attacks.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/ddos/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZReq4dQKyQtuuyM7nuwQd/d610fac39301b72c0b22a397b9f44701/icon-ddos-white.png"
-									},
-									"description": "icon ddos white"
-								},
-								"iconAssetFile": {
-									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
-									"altText": "Security shield ddos protection blue",
-									"title": "Security shield ddos protection blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
-										},
-										"description": "Shield icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -413,32 +171,27 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5wwO8O8k1yXtiisclY1Ydc",
-								"title": "Bot Management",
-								"makeTitleLink": null,
+								"contentfulId": "1D0CySyxR7Lcy1asseqbq7",
+								"title": "Secure the matchmaking process",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Prevent fraudulent account creation and preserve the integrity of your First Person Shooter (FPS) games with Bot Management.",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/bot-management/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
+								"description": "Matching players and servers is critical for multiplayer games. Speed matches and avoid downtime caused by attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/FyOHSaUSRQXVoVfhWWLFH/59ebc7d484dd27bdbeb3d1b058b71726/icon-bot-management-white.png"
-									},
-									"description": "icon bot management white"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "c69e1975-042d-56be-9b49-b7f21ef37a0d",
-									"altText": "Security bots ",
-									"title": "Security bots ",
+									"id": "a2e13743-df8f-5dc4-b0d0-7886c680972f",
+									"altText": null,
+									"title": "Secure distributed remote workforces",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WenQJx3SKmSr8ePtKqX1Z/2a179c561c16d7c48415294b823ca17a/security-bots.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Cy6RUpurh3hxxzkZwh8Ax/e7758d8bd71b19216644a3612915c55a/cloudflare-security-center__1_.png"
 										},
 										"description": ""
 									},
@@ -454,24 +207,752 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5ObJI1vI87pQFImKnKmB2v",
-								"title": "Magic Transit",
-								"makeTitleLink": null,
+								"contentfulId": "6Z1iudC9NwAZqOtOGgxPaU",
+								"title": "Empower global teams ",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "DDoS protection and traffic acceleration for on-premise, cloud-hosted, and hybrid networks — delivered from every Cloudflare data center.",
-								"learnMoreUrl": "https://www.cloudflare.com/network-services/products/magic-transit/",
-								"learnMoreText": "Learn More",
+								"description": "Easily integrate contractors and dispersed team members into development workflows. Provide simple, secure access to resources.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/48te86CvGkIzIlZbdmPMmK/8ba30c6140592c7c02d311a93eec6de6/ddos-attack__1_.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "5e5608a7-a49c-5ad1-a352-11397a4f5b59",
+									"altText": "Cloudflare teams blue",
+									"title": "Cloudflare teams blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rUowiRmy55zvZm02K6KvI/dac03ec369e18a3ceccbeddc2a60fb59/cloudflare-teams.svg"
+										},
+										"description": null
 									},
-									"description": "Magic Transit icon"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "6CtqMPb6alneosAhD77qL5",
+						"contentTypeId": "bladeTabs",
+						"anchorTag": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"heading": "How Cloudflare delivers security and performance for gaming ",
+						"tabPosition": "top",
+						"tabs": [
+							{
+								"contentfulId": "5fSU9lI1Pl5VEa2Oeg0cfv",
+								"contentTypeId": "elementTab",
+								"title": "DDoS mitigation",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "6NTd6AGGbNBqiHFR95qw9E",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "lZACh6eYpxHJtWTur4boM",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Gaming servers are frequent targets of DDoS attacks, which can bring gameplay to a screeching halt. Companies need to defend against disruptive attacks without slowing performance. \n\nThe Cloudflare connectivity cloud offers best-in-class DDoS protection that can identify and mitigate attacks through any of our %{DataCenterCount}+ locations. Avoid game-ending interruptions while maintaining engaging experiences.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "1IuAkYiNaARevIdDrqjeGw",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "34MQIC2LFgiviXldTw3SDv",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "75YNhcgxYiMuCy6JJOMlge",
+								"contentTypeId": "elementTab",
+								"title": "Massive global network",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "7DmhW6ORsmGome0yN6Amn1",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "18jVAvfdGW9s9mF9hf4may",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "When gaming servers are located too far away, players experience slow load times and laggy performance.\n\nCloudflare's massive global network spans more than %{DataCenterCount} cities, operating within %{OperationMilliseconds} milliseconds of %{GlobalInternetConnectedPercent} of the Internet-connected population. Always in close proximity to servers, players can enjoy lightning-fast experiences from anywhere. ",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "4wWfi23YSxniQyldsQTTD2",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "4uQyk1zklwAmjKccRhNglY",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "7MDOvyT9QHb604Y2xhNOe2",
+								"contentTypeId": "elementTab",
+								"title": "In-depth analytics",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "5cW6RcfScl8b2mhUMBPAhe",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "4WcXeo9G9afkE0VBmn0ALA",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Optimize game performance and security by analyzing key metrics and service logs. ",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "unordered-list",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Cloudflare Analytics: ",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Monitor server health, spot latency trends, and understand threats—all in one place.",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Cloudflare Logs: ",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Use HTTP logs to pinpoint issues, adjust configs, and combine with game logs for full visibility.",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Cloudflare Radar: ",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Get insights on emerging threats and trends from aggregated Cloudflare network data.",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Cloudflare Web Analytics: ",
+																					"marks": [
+																						{
+																							"type": "bold"
+																						}
+																					],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Analyze sites privately; view hostnames, URLs, countries—no cookies. Check traffic spikes easily.",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "embedded-entry-inline",
+																	"data": {
+																		"target": {
+																			"sys": {
+																				"id": "5EbXF7OuRMRrOFdgNO36CL",
+																				"type": "Link",
+																				"linkType": "Entry"
+																			},
+																			"related_asset": [],
+																			"entry_elementMarkdown": [],
+																			"entry_assetFile": [],
+																			"entry_button": [],
+																			"entry_elementLink": [
+																				{
+																					"contentTypeId": "elementLink",
+																					"contentfulId": "5EbXF7OuRMRrOFdgNO36CL",
+																					"elementName": "In-depth analytics - Tab content left - Link",
+																					"standardText": null,
+																					"text": "Learn more",
+																					"url": "/application-services/products/analytics/",
+																					"elementModal": null,
+																					"openInNewTab": false,
+																					"locale": "en-US"
+																				}
+																			],
+																			"entry_page": [],
+																			"entry_elementIcon": [],
+																			"entry_bladeTable": [],
+																			"entry_bladeThreeFeatures": [],
+																			"entry_bladeFourFeatures": []
+																		},
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": []
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "5vkWfg5aTLyIqRIzZX2RHc",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "6TzUz6XiFaRrVvXmhZpL8J",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentfulId": "1R19hMaLiqQ144YIoq4Zne",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Save with the Bandwidth Alliance",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "4526a0e7-98ff-58c2-a6a8-10324e3c2948",
+							"altText": "Generic Lead Generation background",
+							"title": "Generic Lead Generation background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GXH7p3scfTG26xKndTZ0Z/fb56c78967ff82b1633b9f5386f1605f/Lead-generation-background-generic.png"
+								},
+								"description": "Lead generation background generic"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "qx80aGmbfN6lp9hiXaLGQ",
+							"elementName": "Save with the Bandwidth Alliance - Enablement - CTA",
+							"standardText": null,
+							"text": "Learn more",
+							"url": "https://www.cloudflare.com/en-gb/bandwidth-alliance/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentTypeId": "bladeCardCarousel",
+						"contentfulId": "7Avvq8NAWLq6X0nFTe836r",
+						"title": "Top use cases for Gaming",
+						"htmlId": null,
+						"backgroundImage": null,
+						"cards": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6viKTiV8il89wWlJAMvkUg",
+								"title": "Accelerate matchmaking",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Match players and servers faster while safeguarding this critical process for multiplayer gaming.",
+								"learnMoreUrl": "https://www.cloudflare.com/en-gb/bandwidth-alliance/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "32001ca5-5e70-541d-8457-1a1e01ef15b6",
+									"altText": "speed performance orange rocket - icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XT9berNmP9XDlptO157K0/096043c3ff5e8ff33ae162ad5641ced7/performance-acceleration-rocket.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -481,24 +962,28 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4KC6zKMrvX817mfi4N9DdO",
-								"title": "API Shield",
-								"makeTitleLink": null,
+								"contentfulId": "3YjnYJRX1HqwI4FiZxbdwi",
+								"title": "Improve game availability",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Keep your APIs secure and productive with API discovery, schema validation, strong authentication, and more. ",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/api-gateway/",
+								"description": "Apply best-in-class DDoS protection from every data center within a massive global network. Prevent disruptive attacks without sacrificing game performance. ",
+								"learnMoreUrl": "/ddos/",
 								"learnMoreText": "Learn more",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CM1OI4g3KJOxwt9qcnhxS/7a14bdfedfd4a626527ae0b972f64307/cloudflare-api.svg"
-									},
-									"description": null
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0f3fa7d6-15c0-5ac1-82a8-7f345d05d1ef",
+									"altText": "Industry gaming - icon",
+									"title": "Industry gaming - icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -508,24 +993,414 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "icEPM78KQOKY2hi8wFxVt",
-								"title": "Zero Trust",
-								"makeTitleLink": null,
+								"contentfulId": "k93vOaVGk6LIugsUd3wBy",
+								"title": "Streamline global collaboration",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Give developers and contractors secure and streamlined access to internal systems.\n",
-								"learnMoreUrl": "https://www.cloudflare.com/zero-trust/",
+								"description": "Give game developers, designers, testers, and other remote team members simple, secure access to essential apps and infrastructure without resorting to VPNs or other legacy tools.",
+								"learnMoreUrl": "https://www.cloudflare.com/zero-trust/solutions/vpn-replacement/",
 								"learnMoreText": "Learn more",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ef0244bd-efac-5180-b4d6-0a467d8337c8",
+									"altText": "Security Network - Illustration",
+									"title": "Security Network",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iYn3M3hngX7sAslSieDlx/48d29ce6b94e646db8f5f513ee2399ad/cloudflare-security-network.svg"
+										},
+										"description": "Security Network"
 									},
-									"description": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "1nU3Jg5RphJTyVZcROIHc4",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nSYBO's Subway Surfers reaches a global audience with help from Cloudflare R2 and Argo Smart Routing\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "mq5pJEu1oeJk155OBuU4s",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5nw1UZnnXcBBy7l8FBWFxM",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Games from SYBO are played around the world. But until recently, growth was constrained by the company's cloud infrastructure. \n\nCloudflare Argo Smart Routing eliminated the challenge of routing traffic between a global user base and the company's servers. Meanwhile, Cloudflare R2 and caching help SYBO deliver engaging experiences with exceptional performance while saving the company money. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "16MVoqV8hmL0m1BVy8L0F9",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"With Cloudflare R2 and caching, we can now serve up to a petabyte of monthly traffic and save around $60,000 each month. Cloudflare substantially expands our ability to experiment and enter new markets.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "28cuh8nUHZcu0OAb6s2D3u",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "28cuh8nUHZcu0OAb6s2D3u",
+															"locale": "en-US",
+															"title": "SYBO logo push righ",
+															"file": {
+																"name": "SYBO-logo-push-right.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/28cuh8nUHZcu0OAb6s2D3u/5f75ca9c856ebcdbba9a6ee3b7e1ec04/SYBO-logo-push-right.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentfulId": "7lHK5rWbesHUUZgFxQUTXZ",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Gaming case studies",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6Dql3Q7opkPZysSV8Qvh6b",
+								"title": "SYBO [Subway Surfer]",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare's connectivity cloud optimizes performance for mobile users and enhances the Subway Surfers gameplay experience.",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/sybo/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "bb4404bd-03e5-5bec-a332-03c5ba99261f",
+									"altText": "SYBO - Case studie - logo",
+									"title": "SYBO - Case studie - logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7I73HYikeaRL2PdJrxBKzs/e6b8cb3f973a76dc9b87346880eda0cb/sybo-logo-small.svg"
+										},
+										"description": "sybo logo small"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "45lfGmC47eUIWJfsHxiczl",
+								"title": "Mynet",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Mynet secures infrastructure and enables seamless remote access with Cloudflare Zero Trust.",
+								"learnMoreUrl": "/case-studies/mynet/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "254faf02-76e0-5352-8d3e-813e974b61f9",
+									"altText": "Mynet Logo",
+									"title": "Mynet Logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fVnhXIBbOiTjaEGe2B6fv/39a9e0c5e865118743bcc5b5c765d3a4/MynetLogo.jpeg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6PilvEWiFhg3K0Co4VTPPF",
+								"title": "Crazy Games ",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "CrazyGames saves on bandwidth while offering global users faster site performance.",
+								"learnMoreUrl": "/case-studies/crazygames/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4d27a93a-0bd3-542f-b75e-93f6bb488b06",
+									"altText": "Crazy games - logo icon",
+									"title": "Crazy games - logo icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xcQJE6oWIYwGigt6ZE8t8/b148ba6bc0a63ca75e63d7e2b9accce2/crazy-games-icon-logo.png"
+										},
+										"description": "Crazy games - logo icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "WJo10wPPHHsQHp1iANE3X",
+								"title": "Curse",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Curse protects and enhances its gaming communities with Cloudflare.",
+								"learnMoreUrl": "/case-studies/curse/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "58e157a2-6291-5113-9cdf-ee007895f725",
+									"altText": "Curse logo",
+									"title": "Curse logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yZDkcGIZm3ZjvbAVXTheq/681e3655ac6cea9198cc4b6fe291bf09/Curse-icon-logo.jpeg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4zMEEjCDeQT8aN5tjtf12m",
+								"title": "Poki",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare makes fast-loading games a quick win for Poki.",
+								"learnMoreUrl": "/case-studies/poki-games-fast-loading-worldwide/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "04cd6419-0937-57f0-93b0-4154ec0f17d8",
+									"altText": "Poki - logo icon",
+									"title": "Poki - logo icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KbZ8j9Mefvev3VoNabheu/9d7695ac35110c8bdeb77a64fcf98c89/poki-icon-logo.png"
+										},
+										"description": "Poki - logo icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "35DyuuqyFvwgUx2qzCibAW",
+								"title": "CCP Games",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "CCP Games combats DDoS and bots with Cloudflare Magic Transit, Spectrum, and Bot Management.",
+								"learnMoreUrl": "/case-studies/ccp-games/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "632831a2-9e9a-57c2-8d16-90722720e6d4",
+									"altText": "ccp games - logo icon",
+									"title": "ccp games - logo icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/jjdreAIYaq1Okia8VS4SA/76667d6203f2141716571d6a77bc7af8/ccp-games-icon-logo.png"
+										},
+										"description": "ccp games - logo icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -537,8 +1412,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "2qStw5aUi0wZcjlHT1vZ93",
-						"title": "Cyber security best practices for online gaming and igaming companies",
+						"contentfulId": "2cqJPcmJ5keFanbuFGZomU",
+						"title": "Learn how serverless technology transforms game development for scale and success",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -553,14 +1428,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "608eo2qZ5jduo2CyMTM4M5",
-							"elementName": "CTA - Cyber security best practices for online gaming and igaming companies",
+							"contentfulId": "QCuKj9jKHC1sHPwo2njpY",
+							"elementName": "Cloudflare for Gaming - Read about PartyKit (enablement) CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "/lp/cyber-security-best-practices-online-gaming/",
+							"text": "Read about PartyKit",
+							"url": "https://workers.cloudflare.com/built-with/projects/partykit",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": false,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -568,56 +1443,14 @@
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "LKuTRifDtAytT35EZyN56",
-						"title": "Accelerate your game",
-						"copy": "Players are likely to be globally distributed, and game servers geographically distant from players — which leads to slow downloads and high ping times. Players are quick to abandon a game if there is noticeable lag or if the game does not respond in real-time.\n\nCloudflare's globally distributed network spans %{DataCenterCount} cities, enabling proximity to players and delivering lightning-fast experiences.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l9YaeWGHigi5dRi9rVAe4/8c8d38fbf02646344452360e9c924ea8/performance-acceleration-spot-illustration__1_.svg"
-							},
-							"description": "Illustration of a speedometer"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "cCouh7OM612AczwMfUtq3",
-						"backgroundColor": "light-blue",
+						"contentfulId": "6PIFTWglO1HiVowUWw0KqB",
+						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
+						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -626,782 +1459,184 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "10DQwJiQm9sUMBtVYRzpuw",
-								"title": "Cloudflare CDN",
-								"makeTitleLink": null,
+								"contentfulId": "53BDyEnvd4d4b6FFZJpCC5",
+								"title": "Cybersecurity best practices for gaming and igaming",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Deliver online game downloads, software updates, and live video to any device — at scale, and with minimal latency — over Cloudflare's global network for a consistent and reliable gamer experience.",
-								"learnMoreUrl": "https://www.cloudflare.com/cdn/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4i0m7LTCaEUattJofraHo4/38b3ae973d5b63f14e21ea0a4eedfb4e/icon-cdn-purple.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": {
-									"id": "096de851-410f-5df1-8f9a-58dd4a411b44",
-									"altText": "Server 3 blue",
-									"title": "Server 3 blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xbnxzBLH0iZJ18futfvJx/42ab33f9795970fb54a118f354e3be47/server-3.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "79I6hVsFzd6hCRjeyKEQ4q",
-								"title": "Argo Smart Routing",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Use Cloudflare's incredible network intelligence and private backbone to deliver traffic to your gamers over the fastest Internet paths and avoid network congestion.",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/argo-smart-routing/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/pl8mANfh2Gy6rRxqhVyDW/a1f8736e19e8b5b58a4a2529201c551d/icon-argo-purple.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": {
-									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
-									"altText": "Performance intelligent routing blue",
-									"title": "Performance intelligent routing blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yNR9Xrke2khvXTu9Rpdc3/e659935f9bc695024b5be6fb99900dd3/performance-intelligent-routing.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "60rMT9WYLLsecXZodt7MTW",
-								"title": "Stream",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Ensure fast video delivery, with shorter video startup times and reduced buffering, no matter where your players are located.",
-								"learnMoreUrl": "https://www.cloudflare.com/products/stream-delivery/",
-								"learnMoreText": "Learn More",
+								"description": "Discover effective strategies for defending your gaming or online betting company from a growing number of cyber attacks",
+								"learnMoreUrl": "/lp/cyber-security-best-practices-online-gaming/",
+								"learnMoreText": "Download the whitepaper",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "08e29c98-f860-5f57-8de5-a2d65dc17f11",
-									"altText": "Cloudflare stream delivery blue",
-									"title": "Cloudflare stream delivery blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uZVCcQ0QrCNctcZMrzPMS/30bd1c225dde4080bc283c1fe63d7e9a/cloudflare-stream-delivery.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "7J0yfMyIGrxPaLVa41uSK8",
-						"title": "Analyze networks and gaming websites",
-						"copy": "You can't improve what you don't measure. Analyze logs from networks, applications, and security services to gain insights on how to improve security and performance for your players.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aNdhgDpXDdkpMYjDDtBEO/141a094867fb0136c1bd634580e3d31c/analytics-hero-illustration.svg"
-							},
-							"description": "Illustration of charts and graphs on a laptop"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1VGu5sTbrEn55JYN8IELJ3",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "72Pc8jVD8SOVRBJLWtCP8K",
-								"title": "Cloudflare Analytics",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Monitor the health of your servers, look at latency trends over time, and better understand the threat landscape, all in one place.",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/analytics/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uKYh4OmNfdU3DndcQOH1X/6cb5302ae315a7e0a0c668b5a54a6183/analytics-bots.svg"
-									},
-									"description": "Orange icon of robot and a chart"
-								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5fDFtLfanHDpuHquDGOLbo",
-								"title": "Cloudflare Logs",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Get detailed logs of your HTTP requests. Use these logs to debug, identify configuration adjustments to improve performance and security, and create custom analytics. Combine request logs with other data sources, such as game server logs, for end-to-end visibility.",
-								"learnMoreUrl": "https://www.cloudflare.com/application-services/products/cloudflare-logs/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/frcF2i75lu5RopYE9cSlY/a504da78027ed77ad5d6b9e591f370b1/analytics-data__1_.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1g13LIhnYgFAqOr2vAT1Bg",
-								"title": "Cloudflare Radar",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Get Internet insights, threats and trends based on aggregated Cloudflare network data.",
-								"learnMoreUrl": "https://radar.cloudflare.com/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "tY1g7NLaL5JrAyFei2kUf",
-								"title": "Web Analytics",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Get analytics for your website without invading your players' privacy. Cloudflare web analytics provides data such as hostnames, URLs or countries  without the use of cookies or \"fingerprinting\". Investigate spikes in traffic by zooming into the relevant time range with a simple click.",
-								"learnMoreUrl": "https://www.cloudflare.com/web-analytics/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FvVxpMRkohhz2SY8Ez4vG/11cf2318c9c567318cb519540b4d9980/cloudflare-web-analytics.png"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "3v3M9tiOLkpIeDo1TDqMql",
-						"title": "Build your game with serverless development",
-						"copy": "Building, scaling, and maintaining infrastructure to protect and accelerate your game platform can be time- and cost-prohibitive.\n\nCloudflare's serverless development platform lets you augment existing applications (e.g. user authentication and authorization mechanisms), add new game features (e.g. bespoke matchmaking), or build entirely new games. \n\n[Cloudflare Workers](https://workers.cloudflare.com/) provides a serverless JavaScript and WASM execution environment that enables you to:\n\n- Quickly build applications without configuring or maintaining servers or containers\n- Easily scale to support spikes in demand\n- Run application logic within milliseconds of your users",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "https://workers.cloudflare.com/",
-						"learnMoreText": "Learn more",
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44O6jl5EqJclphVKiAFBEK/3199b8f64a8f8e986b0efbf09a7c63d7/workers-hero-illustration.svg"
-							},
-							"description": "Illustration of globe surrounded by code"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "5j849T8caGsv7TY5AOE4PF",
-						"quote": "\"Before Spectrum, we had to rely on unstable services & techniques that increased latency, worsening user's experience. Now, we're able to be continually protected without added latency, which makes it the best option for any latency & uptime sensitive service such as online gaming.\"",
-						"quoteAuthor": "Bruce Blair",
-						"quoteTitle": "Chief Technology Officer",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BsB6bRnpTi0gKasKAuKOU/b51eea0d33858fc381a8d432a5e0d5d2/logo-hypixel.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "8f5f44cf-ba56-520e-b5cd-4dcc18017073",
-							"altText": "logo-hypixel",
-							"title": "logo-hypixel",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BsB6bRnpTi0gKasKAuKOU/b51eea0d33858fc381a8d432a5e0d5d2/logo-hypixel.png"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "6FLWnWlyz5ucCRDmKfMmX8",
-								"quote": "\"We wanted to ensure we have a high-quality Cloudflare level of protection to protect our critical communication protocol, and Cloudflare Spectrum helped us really boost the performance and resiliency of our custom TCP protocols. With other providers, it takes more than 30 seconds to a minute before scrubbing or mitigation takes place. Using Spectrum, it's much faster.\"",
-								"quoteAuthor": "Ben Burns",
-								"quoteTitle": "CIO, Turtle Entertainment Online",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
 								"imageAssetFile": {
-									"id": "e6e9b8f3-a95b-5d21-bf46-d882003be602",
-									"altText": "Turtle Gaming Logo ",
-									"title": "Turtle Gaming Logo ",
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ax4CNOXpWkZIywnp7pmqS/ab643b966df13d2a3f985dab6f24b734/turtleentertainmentlogo-addedpadding.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ax4CNOXpWkZIywnp7pmqS/ab643b966df13d2a3f985dab6f24b734/turtleentertainmentlogo-addedpadding.png"
-									},
-									"description": null
-								}
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "VdO2BD7toyRxHR4lPeZEL",
-								"quote": "\"Attacks that would otherwise make our sites slow or entirely inaccessible get blocked by Cloudflare. Because of this protection the 1,600 sites we have on Cloudflare are kept online and our community keeps coming back to enjoy them.\"",
-								"quoteAuthor": "Craig Bradberry ",
-								"quoteTitle": "Production Systems Manager, Curse",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
+								"contentTypeId": "feature",
+								"contentfulId": "4VcCsQkNgaZ6orOfOblMhu",
+								"title": "Cloudflare for gaming",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn more about how to accelerate gaming performance and maintain robust security at scale with Cloudflare. ",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/49LTJaxXMdtHgH3Jg3Zx8o/878b0f87a9d3759fed672186a8b3cfae/Cloudflare_for_Gaming__Brief_.pdf",
+								"learnMoreText": "Get the solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "966f4822-f98b-5cd1-aa56-1a2e698548f0",
-									"altText": "curse-logo",
-									"title": "curse-logo",
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53G4oZ7T2EMQKAUGOMsoC6/5e5781dc115755720edb9a15c469bca0/curse.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53G4oZ7T2EMQKAUGOMsoC6/5e5781dc115755720edb9a15c469bca0/curse.png"
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7HjxCDHsWWu5t391SZS77y",
+								"title": "Cloudflare protects CCP Games from cyber attacks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Read how Cloudflare security capabilities helped this Icelandic gaming company to block DDoS attacks and credential-stuffing bots. ",
+								"learnMoreUrl": "/case-studies/ccp-games/",
+								"learnMoreText": "Read the case study",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
 									},
-									"description": null
-								}
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
 					{
-						"contentfulId": "6NAodMGQGjRBTQlh7jKuco",
-						"title": "Save with the Bandwidth Alliance",
-						"copy": "Is your game platform hosted on a public cloud host provider? \nYou may be eligible to __significantly discounted egress fees__. \n\nThe <a href=\"https://www.cloudflare.com/bandwidth-alliance/\" class=\"white-alternate-link white-alternate-link--semibold white-alternate-link--underline\">Bandwidth Alliance</a> is a group of forward-thinking cloud and networking companies that are committed to discounting or waiving data transfer (also known as bandwidth) fees for shared customers.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "https://www.cloudflare.com/bandwidth-alliance/",
-						"learnMoreText": "Learn More",
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oM1geb53PN7HTrb0dNw76/1447493dc1a7e16665494be3698f443c/bandwidth-alliance-hero-illustration.png"
-							},
-							"description": "Bandwidth Alliance illustration"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2OdWTwuvu7IJsTGt8IrVjT",
+						"title": "Focus on content, we'll handle the tech",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "5EiqtXKLu41HtQ0G4PUSEZ",
-						"quote": "The combination of Cloudflare and Backblaze B2 Cloud Storage saves Nodecraft almost 85% each month on data storage and egress costs versus Amazon S3.",
-						"quoteAuthor": "James Ross",
-						"quoteTitle": "Co-founder and CTO",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "aqua",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76frGoIXJRYG5P9lHkCk8W/1a7c3377c288ef836f3231b0d0274825/GamingIndustriesPage_Nodecraft_Logo.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "4e636039-ecdd-5d82-aad8-171cb81d8d0f",
-							"altText": "GamingIndustriesPage Nodecraft Logo",
-							"title": "GamingIndustriesPage Nodecraft Logo",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76frGoIXJRYG5P9lHkCk8W/1a7c3377c288ef836f3231b0d0274825/GamingIndustriesPage_Nodecraft_Logo.png"
-								},
-								"description": null
-							},
-							"brandfolderAsset": {
-								"size": 3222,
-								"height": 820,
-								"width": 3991,
-								"filename": "logo_nodecraft_gray.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_nodecraft_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "5Y3TO3lEMZXkWSHD8QAO7A",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Xdh7ZHowgxqLzAAatkClu/8e4bf86f56f83a08860c7f38f42be56e/ccp_logo.png"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/31fICwDVcKwuY5JFY0iVgd/5ff6411e14c15cf7fe76d7dc66222011/logo_crazy-games_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tCc90GgkFZxTYsVVE5uWD/9722b789b816eecd1ba1c423d62b601b/logo_curse_trusted-by_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MkWGyXqeUFwzFrJb4Fhr6/dd4557c3e78c88e11d3e10649bcfbabf/logo_discord_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SNw7nCIWODtXLqqEu6N4q/d592abe8e4455ee20e95c7a77b428868/logo_esl_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zH7WYuXoMVF377O0MNaKl/c9ab5b3636b3a92deaee662b4d22cb3e/logo_poki_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MJuS4tEiXg3bxb5YYgKKs/39c8e9b1b6204b2b1ad3c45b18ca398c/logo_sofascore_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/gVLEsZf77nLKIxGYYFTgu/4e0d7d26d7dcd610c0fc939cfed2d6c8/logo_tebex_gray_32px-wrapper.svg"
-								},
-								"description": null
-							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "4c8026d9-8b4a-507e-a2cf-2230a90e9d88",
-								"altText": "Logo ccp games trusted by gray",
-								"title": "Logo ccp games trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 2924,
-									"height": 224,
-									"width": 632,
-									"filename": "logo_ccp-games_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_ccp-games_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "2cca683b-195c-5e49-9ffa-8d2b6bbba101",
-								"altText": "Logo crazy games trusted by gray",
-								"title": "Logo crazy games trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 16869,
-									"height": 812,
-									"width": 2396,
-									"filename": "logo_crazy-games_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_crazy-games_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "56417b6f-e6ca-50bb-9dfc-fb335821c64f",
-								"altText": "Logo curse trusted by gray",
-								"title": "Logo curse trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 7430,
-									"height": 128,
-									"width": 632,
-									"filename": "logo_curse_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_curse_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "114a8b2e-b70c-5cf0-9bf9-a68365513d38",
-								"altText": "Logo discord trusted by gray",
-								"title": "Logo discord trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 4103,
-									"height": 811,
-									"width": 2958,
-									"filename": "logo_discord_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_discord_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "da36b75d-1005-5ce8-8bb3-b6b785d860b1",
-								"altText": "Logo esl trusted by gray",
-								"title": "Logo esl trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 1593,
-									"height": 608,
-									"width": 1960,
-									"filename": "logo_esl_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_esl_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "9f1f09dd-3519-5fc0-99cc-9a233128ee98",
-								"altText": "Logo poki trusted by gray",
-								"title": "Logo poki trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 1675,
-									"height": 608,
-									"width": 1288,
-									"filename": "logo_poki_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_poki_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "e34d6b89-dc30-5b99-bfc2-442a3c74ae5f",
-								"altText": "Logo sofascore trusted by gray",
-								"title": "Logo sofascore trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 5976,
-									"height": 608,
-									"width": 2609,
-									"filename": "logo_sofascore_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_sofascore_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "3a29b169-bb74-5532-96da-7254e698d50b",
-								"altText": "Logo tebex trusted by gray",
-								"title": "Logo tebex trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 1988,
-									"height": 356,
-									"width": 3453,
-									"filename": "logo_tebex_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_tebex_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							}
-						],
-						"logoUrlList": null
-					},
-					{
-						"contentfulId": "63Z2MNctWzClNxZbDCXuyR",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Get started today",
-						"description": null,
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2mfrQ3Os9WlM8kr8YBbNic",
-							"elementName": "Talk to an expert - Primary CTA",
+							"contentfulId": "lDd9qibmEf4rQMhHor7Uw",
+							"elementName": "Gaming - Form Modal -  Talk to an expert - CTA",
 							"standardText": null,
 							"text": "Talk to an expert",
-							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4njReZwsAhK47hjjkSfutJ",
+								"modalName": "Gaming - Form Modal",
+								"modalId": "gaming-form-modal",
+								"modalType": "split-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "1eWjcOhMxXK75gg8RF45za",
+									"bladeName": "Gaming - Marketo Form (1341)",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q1'22-Marketing Inbound-Gaming",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": true,
+									"meta_adRollCustomSegment": "d3ebc904",
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Contact us today",
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Get started with Cloudflare",
+								"regularCopy": null,
+								"splitFormDefaultTab": "enterprise",
+								"selfServeTabText": "Get started",
+								"selfServeCopy": "Speed up and secure your website, app, or API. Sign up with Cloudflare and get started today.",
+								"enterpriseTabText": "Talk to an expert",
+								"enterpriseCopy": "Get enterprise-grade security and performance, 24/7 support, and guaranteed uptime."
+							},
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "wE05uHW5pTTstFfKKV0Wd",
-							"elementName": "Compare plans - Secondary CTA",
-							"standardText": null,
-							"text": "Compare plans",
-							"url": "https://www.cloudflare.com/plans/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						}
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
@@ -1432,7 +1667,7 @@
 							"sendAdRoll": true,
 							"meta_adRollCustomSegment": "d3ebc904",
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonText": "Contact us today",
 							"marketoFormSubmitButtonColor": null,
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
