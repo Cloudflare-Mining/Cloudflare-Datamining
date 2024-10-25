@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "ec35ac8b-24b2-59d5-a6c7-9b02b8dd945a")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "66955412-56eb-5cb2-8f12-a8c8be3ff669")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -426,11 +426,11 @@
 				et = () => {
 					if (Ge && Ve) {
 						var O, R, Z, re, ue, Ce, ve, Ue, ot, it;
-						let At = "production";
-						((O = window) === null || O === void 0 || (R = O.build) === null || R === void 0 ? void 0 : R.isPreviewDeploy) && (At += "-preview"), U.S({
+						let Pt = "production";
+						((O = window) === null || O === void 0 || (R = O.build) === null || R === void 0 ? void 0 : R.isPreviewDeploy) && (Pt += "-preview"), U.S({
 							dsn: Ge,
 							release: (0, Ie.t)(),
-							environment: At,
+							environment: Pt,
 							ignoreErrors: st,
 							allowUrls: Ze,
 							autoSessionTracking: !1,
@@ -442,7 +442,7 @@
 							})],
 							tracesSampleRate: 0,
 							transport: Xe,
-							beforeSend: Ht => (Qe.e.setEventId(Ht.event_id), Ht)
+							beforeSend: Kt => (Qe.e.setEventId(Kt.event_id), Kt)
 						});
 						const Xt = (0, l.bh)().getState();
 						r.rJ({
@@ -457,7 +457,7 @@
 								isPreviewDeploy: (ot = window) === null || ot === void 0 || (it = ot.build) === null || it === void 0 ? void 0 : it.isPreviewDeploy
 							},
 							utilGates: (0, F.T2)(Xt)
-						}), window.addEventListener("unhandledrejection", function(Ht) {})
+						}), window.addEventListener("unhandledrejection", function(Kt) {})
 					}
 				},
 				B = O => {
@@ -521,12 +521,12 @@
 				ke = n("../react/utils/translator.tsx"),
 				tt = n("../../../common/intl/intl-react/src/index.ts"),
 				Pe = n("../../../dash/intl/intl-translations/src/index.ts"),
-				Pt = n("../node_modules/query-string/query-string.js"),
-				ct = n.n(Pt),
+				Ot = n("../node_modules/query-string/query-string.js"),
+				ct = n.n(Ot),
 				Nt = n("../react/common/actions/userActions.ts"),
 				dt = n("../react/common/selectors/userSelectors.ts"),
 				nt = n("../react/utils/i18n.ts"),
-				Ot = n("../react/utils/bootstrap.ts");
+				It = n("../react/utils/bootstrap.ts");
 
 			function lt(O) {
 				for (var R = 1; R < arguments.length; R++) {
@@ -566,9 +566,9 @@
 				return (R === "string" ? String : Number)(O)
 			}
 			let We = ct().parse(location.search);
-			const It = O => {
-					const R = (0, Ot.$8)() ? [(0, Pe.Fy)(Pe.if.changes), (0, Pe.Fy)(Pe.if.common), (0, Pe.Fy)(Pe.if.navigation), (0, Pe.Fy)(Pe.if.overview), (0, Pe.Fy)(Pe.if.onboarding), (0, Pe.Fy)(Pe.if.invite), (0, Pe.Fy)(Pe.if.login), (0, Pe.Fy)(Pe.if.dns), (0, Pe.Fy)(Pe.n4.ssl_tls), (0, Pe.Fy)(Pe.if.message_inbox), (0, Pe.Fy)(Pe.if.welcome)] : [(0, Pe.Fy)(Pe.if.common), (0, Pe.Fy)(Pe.if.invite), (0, Pe.Fy)(Pe.if.login), (0, Pe.Fy)(Pe.if.onboarding)];
-					We.lang ? Ft(O) : q.Z.get(nt.th) && Lt(O, q.Z.get(nt.ly));
+			const Lt = O => {
+					const R = (0, It.$8)() ? [(0, Pe.Fy)(Pe.if.changes), (0, Pe.Fy)(Pe.if.common), (0, Pe.Fy)(Pe.if.navigation), (0, Pe.Fy)(Pe.if.overview), (0, Pe.Fy)(Pe.if.onboarding), (0, Pe.Fy)(Pe.if.invite), (0, Pe.Fy)(Pe.if.login), (0, Pe.Fy)(Pe.if.dns), (0, Pe.Fy)(Pe.n4.ssl_tls), (0, Pe.Fy)(Pe.if.message_inbox), (0, Pe.Fy)(Pe.if.welcome)] : [(0, Pe.Fy)(Pe.if.common), (0, Pe.Fy)(Pe.if.invite), (0, Pe.Fy)(Pe.if.login), (0, Pe.Fy)(Pe.if.onboarding)];
+					We.lang ? Ft(O) : q.Z.get(nt.th) && Dt(O, q.Z.get(nt.ly));
 					const Z = async re => (await Promise.all(R.map(Ce => Ce(re)))).reduce((Ce, ve) => lt({}, Ce, ve), {});
 					return Ee().createElement(tt.RD.Provider, {
 						value: O.languagePreference
@@ -587,10 +587,10 @@
 						});
 						return
 					}
-					q.Z.set(nt.ly, R), delete We.lang, Lt(O, R), O.isAuthenticated || O.history.replace({
+					q.Z.set(nt.ly, R), delete We.lang, Dt(O, R), O.isAuthenticated || O.history.replace({
 						search: ct().stringify(We)
 					})
-				}, Lt = async (O, R) => {
+				}, Dt = async (O, R) => {
 					if (O.isAuthenticated) try {
 						await O.setUserCommPreferences({
 							"language-locale": R
@@ -602,7 +602,7 @@
 					} catch (Z) {
 						q.Z.set(nt.th, !0), console.error(Z)
 					} else q.Z.set(nt.th, !0)
-				}, Dt = O => {
+				}, St = O => {
 					const R = (0, dt.PR)(O);
 					return {
 						isAuthenticated: !!(R && R.id),
@@ -611,8 +611,8 @@
 				}, xt = {
 					setUserCommPreferences: Nt.V_
 				};
-			var gt = (0, Ne.withRouter)((0, $e.connect)(Dt, xt)(It));
-			It.propTypes = {
+			var gt = (0, Ne.withRouter)((0, $e.connect)(St, xt)(Lt));
+			Lt.propTypes = {
 				history: Ae().object,
 				languagePreference: Ae().string.isRequired,
 				children: Ae().node.isRequired,
@@ -621,16 +621,16 @@
 			};
 			var $t = n("../../../../node_modules/@cloudflare/style-provider/es/StyleProvider.js"),
 				Wt = n("../../../../node_modules/@cloudflare/style-provider/es/createRenderer.js");
-			let St;
-			const Kt = ({
+			let ft;
+			const zt = ({
 				selectorPrefix: O = "c_"
-			} = {}) => (St || (St = (0, Wt.Z)({
+			} = {}) => (ft || (ft = (0, Wt.Z)({
 				dev: !1,
 				selectorPrefix: O
-			})), St);
+			})), ft);
 			var wt = n("../react/common/components/ModalManager.tsx"),
-				zt = n("../react/app/components/ErrorBoundary.tsx"),
-				Gt = n("../react/common/actions/notificationsActions.ts");
+				Gt = n("../react/app/components/ErrorBoundary.tsx"),
+				Ht = n("../react/common/actions/notificationsActions.ts");
 			const T = (n.g.bootstrap || {}).data || {};
 			class oe extends Ee().Component {
 				componentDidMount() {
@@ -653,14 +653,14 @@
 				}
 			}
 			var Me = (0, Ne.withRouter)((0, $e.connect)(null, {
-				notifyAdd: Gt.IH
+				notifyAdd: Ht.IH
 			})(oe));
 			oe.propTypes = {
 				notifyAdd: Ae().func.isRequired
 			};
 			var Re = n("../react/app/redux/index.ts");
 
-			function ft() {
+			function Et() {
 				var O;
 				const R = (0, Re.p4)(dt.PR),
 					Z = (R == null || (O = R.email) === null || O === void 0 ? void 0 : O.endsWith("@cloudflare.com")) ? "cf-internal-employee" : "regular-user",
@@ -673,9 +673,9 @@
 			}
 			var pt = n("../react/common/selectors/entitlementsSelectors.ts"),
 				mt = n("../react/common/selectors/accountSelectors.ts");
-			const Et = ["accountId", "is_ent"];
+			const _t = ["accountId", "is_ent"];
 
-			function _t() {
+			function yt() {
 				const O = (0, De.f7)(),
 					R = (0, Ne.useHistory)(),
 					Z = (0, I.uW)(R.location.pathname),
@@ -686,18 +686,18 @@
 					Ue = (0, Re.p4)(pt.p1),
 					ot = (0, Re.p4)(mt.Xu),
 					it = (0, Re.p4)(mt.uF),
-					At = !ot.isRequesting && !!ot.data;
+					Pt = !ot.isRequesting && !!ot.data;
 				(0, Oe.useEffect)(() => {
-					Z && At && it && ve && Z === it.account.id ? re({
+					Z && Pt && it && ve && Z === it.account.id ? re({
 						accountId: it.account.id,
 						is_ent: Ue
-					}) : (!Z || Z in O && O.accountId !== Z) && ue(Et)
-				}, [At, it, re, ue, ve, Ue, Z, O])
+					}) : (!Z || Z in O && O.accountId !== Z) && ue(_t)
+				}, [Pt, it, re, ue, ve, Ue, Z, O])
 			}
-			var yt = n("../react/common/selectors/zoneSelectors.ts");
+			var vt = n("../react/common/selectors/zoneSelectors.ts");
 
-			function vt() {
-				const O = (0, Re.p4)(yt.nA),
+			function ht() {
+				const O = (0, Re.p4)(vt.nA),
 					R = (0, De.Yc)();
 				(0, Oe.useEffect)(() => {
 					var Z;
@@ -707,9 +707,9 @@
 					})
 				}, [O, R])
 			}
-			const ht = () => (ft(), _t(), vt(), null);
-			var Ct = n("../react/app/components/Persistence/index.tsx"),
-				bt = n("../node_modules/@cloudflare/elements/es/index.js"),
+			const Ct = () => (Et(), yt(), ht(), null);
+			var bt = n("../react/app/components/Persistence/index.tsx"),
+				Tt = n("../node_modules/@cloudflare/elements/es/index.js"),
 				Be = n("../react/app/components/LoadingSuspense.tsx");
 			const Mt = Ee().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(12821), n.e(94012), n.e(13142), n.e(72019), n.e(85403), n.e(5668), n.e(60091), n.e(77216), n.e(60003), n.e(39760), n.e(94923), n.e(60734), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Jt = () => Ee().createElement(Be.Z, null, Ee().createElement(Mt, null));
@@ -787,7 +787,7 @@
 						exact: !0,
 						path: ["/", "/login"]
 					}, Ee().createElement(cn, null)), Ee().createElement(Ne.Route, {
-						render: () => Ee().createElement(bt.ZC, {
+						render: () => Ee().createElement(Tt.ZC, {
 							minHeight: "100vh"
 						}, Ee().createElement(sn, null))
 					})), R && Ee().createElement(Jt, null))
@@ -803,7 +803,7 @@
 			});
 			const Yt = Ee().lazy(() => Promise.all([n.e(10008), n.e(94012), n.e(6368), n.e(44264), n.e(33970)]).then(n.bind(n, "../react/AuthOnlyProviders.tsx"))),
 				dn = () => {
-					const O = (0, Ot.$8)(),
+					const O = (0, It.$8)(),
 						[R, Z] = (0, Oe.useState)(O ? Yt : Ee().Fragment),
 						[re, ue] = (0, Oe.useState)((0, C.Yc)());
 					(0, Oe.useEffect)(() => {
@@ -826,14 +826,14 @@
 					}, Ee().createElement(Ne.Router, {
 						history: N
 					}, Ee().createElement(R, null, Ee().createElement($t.Z, {
-						renderer: Kt()
-					}, Ee().createElement(gt, null, Ee().createElement(zt.Z, {
+						renderer: zt()
+					}, Ee().createElement(gt, null, Ee().createElement(Gt.Z, {
 						sentryTag: "Root"
 					}, Ee().createElement(rt.J$, {
 						value: {
 							fetcher: ve => fetch(ve).then(Ue => Ue.json())
 						}
-					}, Ee().createElement(ht, null), Ee().createElement(Me, null), Ee().createElement(Ct.Z_, {
+					}, Ee().createElement(Ct, null), Ee().createElement(Me, null), Ee().createElement(bt.Z_, {
 						onDarkModeChangeCb: Ce
 					}, Ee().createElement(de.ZP, null, Ee().createElement(ln, {
 						userIsAuthed: O
@@ -843,16 +843,16 @@
 					(0, Se.render)(Ee().createElement(dn, null), document.getElementById("react-app"))
 				};
 			var ut = n("../utils/initSparrow.ts"),
-				Tt = n("../utils/zaraz.ts");
+				At = n("../utils/zaraz.ts");
 			const mn = () => {
 					const O = (0, dt.PR)((0, l.bh)().getState());
-					gn(), (0, ut.Ug)(), (0, Tt.bM)(), (O == null ? void 0 : O.id) && se().setUserId(O == null ? void 0 : O.id), (0, ut.yV)(), !(0, ut.Wi)() && (0, ut.IM)(), O ? (0, Tt.yn)(O) : (0, Tt.Ro)()
+					gn(), (0, ut.Ug)(), (0, At.bM)(), (O == null ? void 0 : O.id) && se().setUserId(O == null ? void 0 : O.id), (0, ut.yV)(), !(0, ut.Wi)() && (0, ut.IM)(), O ? (0, At.yn)(O) : (0, At.Ro)()
 				},
 				gn = () => {
 					var O, R;
 					(O = window) === null || O === void 0 || (R = O.OneTrust) === null || R === void 0 || R.OnConsentChanged(() => {
 						const Z = (0, dt.PR)((0, l.bh)().getState());
-						(0, ut.Wi)() ? (se().setEnabled(!0), (Z == null ? void 0 : Z.id) ? (se().setUserId(Z.id), (0, Tt.yn)(Z)) : (0, Tt.Ro)(), (0, ut.yV)()) : (se().setEnabled(!1), (0, ut.IM)())
+						(0, ut.Wi)() ? (se().setEnabled(!0), (Z == null ? void 0 : Z.id) ? (se().setUserId(Z.id), (0, At.yn)(Z)) : (0, At.Ro)(), (0, ut.yV)()) : (se().setEnabled(!1), (0, ut.IM)())
 					})
 				};
 
@@ -912,10 +912,10 @@
 					n.g.build = fn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "e127773c152cb0ee2a89c8c01547490070244204",
-						dashVersion: "28367107",
+						commit: "b8df7df60b049ded13bac760b29b8d68ac9174a6",
+						dashVersion: "28380975",
 						env: "production",
-						builtAt: 1729863091844,
+						builtAt: 1729879976033,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -9360,7 +9360,10 @@
 					return I
 				},
 				NB: function() {
-					return It
+					return Lt
+				},
+				Oe: function() {
+					return zt
 				},
 				Or: function() {
 					return H
@@ -9398,6 +9401,9 @@
 				Sh: function() {
 					return nt
 				},
+				Sl: function() {
+					return ft
+				},
 				TZ: function() {
 					return J
 				},
@@ -9408,7 +9414,7 @@
 					return Se
 				},
 				Uy: function() {
-					return Dt
+					return St
 				},
 				Vw: function() {
 					return Y
@@ -9465,7 +9471,7 @@
 					return et
 				},
 				hV: function() {
-					return Lt
+					return Dt
 				},
 				hk: function() {
 					return C
@@ -9486,7 +9492,7 @@
 					return st
 				},
 				jo: function() {
-					return zt
+					return Gt
 				},
 				k3: function() {
 					return Wt
@@ -9495,10 +9501,10 @@
 					return U
 				},
 				nm: function() {
-					return Ot
+					return It
 				},
 				oW: function() {
-					return Pt
+					return Ot
 				},
 				oc: function() {
 					return A
@@ -9528,7 +9534,7 @@
 					return be
 				},
 				u_: function() {
-					return Gt
+					return Ht
 				},
 				vV: function() {
 					return fe
@@ -9600,7 +9606,7 @@
 			const h = "MMM D, YYYY";
 
 			function C(m, T, oe, he) {
-				var Me, Re, ft, pt, mt, Et, _t, yt, vt, ht, Ct, bt;
+				var Me, Re, Et, pt, mt, _t, yt, vt, ht, Ct, bt, Tt;
 				const Be = m[T.name];
 				return a({
 					name: T.name,
@@ -9636,10 +9642,10 @@
 					createdAt: T.created_at,
 					paymentExpiresAt: f()(T.payment_expires_at).isValid() ? f()(T.payment_expires_at) : f()(T.expires_at).isValid() ? f()(T.expires_at) : "",
 					contactIds: {
-						[r.l2.Administrator]: (Re = T.contacts) === null || Re === void 0 || (ft = Re.administrator) === null || ft === void 0 ? void 0 : ft.id,
+						[r.l2.Administrator]: (Re = T.contacts) === null || Re === void 0 || (Et = Re.administrator) === null || Et === void 0 ? void 0 : Et.id,
 						[r.l2.Billing]: (pt = T.contacts) === null || pt === void 0 || (mt = pt.billing) === null || mt === void 0 ? void 0 : mt.id,
-						[r.l2.Registrant]: (Et = T.contacts) === null || Et === void 0 || (_t = Et.registrant) === null || _t === void 0 ? void 0 : _t.id,
-						[r.l2.Technical]: (yt = T.contacts) === null || yt === void 0 || (vt = yt.technical) === null || vt === void 0 ? void 0 : vt.id
+						[r.l2.Registrant]: (_t = T.contacts) === null || _t === void 0 || (yt = _t.registrant) === null || yt === void 0 ? void 0 : yt.id,
+						[r.l2.Technical]: (vt = T.contacts) === null || vt === void 0 || (ht = vt.technical) === null || ht === void 0 ? void 0 : ht.id
 					},
 					landing: T.landing,
 					whois: T.whois,
@@ -9648,16 +9654,16 @@
 					corChanges: T.cor_changes ? x(Object.assign(a({}, b), T.cor_changes)) : {},
 					registryStatuses: T.registry_statuses ? T.registry_statuses.split(",") : null,
 					domainProtectionServices: {
-						status: (ht = T.domain_protection_services) === null || ht === void 0 ? void 0 : ht.status
+						status: (Ct = T.domain_protection_services) === null || Ct === void 0 ? void 0 : Ct.status
 					},
 					deletion: {
-						isDeletable: T == null || (Ct = T.deletion) === null || Ct === void 0 ? void 0 : Ct.is_deletable
+						isDeletable: T == null || (bt = T.deletion) === null || bt === void 0 ? void 0 : bt.is_deletable
 					},
 					premiumType: T == null ? void 0 : T.premium_type,
 					fees: T == null ? void 0 : T.fees
 				}, T.domain_move && {
 					domainMove: {
-						ineligibilityReasons: (bt = T.domain_move) === null || bt === void 0 ? void 0 : bt.ineligibility_reasons
+						ineligibilityReasons: (Tt = T.domain_move) === null || Tt === void 0 ? void 0 : Tt.ineligibility_reasons
 					}
 				}, T.actionable_metadata && {
 					actionableMetadata: D(T.actionable_metadata)
@@ -9963,7 +9969,7 @@
 				if (m.registrar === "Cloudflare") return [!1, t.keys.cannot_transfer_domain_on_cf];
 				if (m.isAvailable) return [!1, t.keys.cannot_transfer_domain_available];
 				if (!m.transferConditions) return [!1, t.keys.cannot_transfer_domain_transfer_conditions];
-				if (!T && Dt(m == null ? void 0 : m.premiumType)) return [!1, t.keys.cannot_transfer_domain_premium];
+				if (!T && St(m == null ? void 0 : m.premiumType)) return [!1, t.keys.cannot_transfer_domain_premium];
 				if (w(m)) return [!1, t.keys.cannot_transfer_domain_transfer_in_progress];
 				let oe;
 				for (oe in m.transferConditions)
@@ -10283,13 +10289,13 @@
 				return !1
 			}
 
-			function Pt(m) {
+			function Ot(m) {
 				return Object.keys(c.wR).find(T => c.wR[T].toLowerCase() === m.toLowerCase())
 			}
 
 			function ct(m) {
 				var T;
-				const oe = (T = Pt(m)) === null || T === void 0 ? void 0 : T.toLowerCase();
+				const oe = (T = Ot(m)) === null || T === void 0 ? void 0 : T.toLowerCase();
 				return oe ? t.keys.protection_status[oe] : t.keys.protection_status.unknown
 			}
 
@@ -10306,7 +10312,7 @@
 				return (0, p.pu)(m) === "co" ? 5 : 10
 			}
 
-			function Ot(m, T) {
+			function It(m, T) {
 				return T ? 1 : (0, p.pu)(m) === "co" ? 5 : (0, p.pu)(m) === "org" ? 1 : 10
 			}
 
@@ -10330,7 +10336,7 @@
 				return !!(m == null ? void 0 : m.id)
 			}
 
-			function It(m) {
+			function Lt(m) {
 				return m ? ["restorationPending", "restorationAuthFailure", "restorationFailure", "restorationSuccess", "restorationRenewPending", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess", "restorationPendingZoneCreate", "restorationPendingZoneActivate", "restorationFailedZoneCreate", "restorationFailedZoneActivate", "restorationZoneCreateSuccess", "restorationZoneActivateSuccess", "restorationSuccessWithoutReport"].includes(m) : !1
 			}
 
@@ -10338,12 +10344,12 @@
 				return m ? ["restorationAuthFailure", "restorationFailure", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess"].includes(m) : !1
 			}
 
-			function Lt(m) {
+			function Dt(m) {
 				var T;
 				return (m == null ? void 0 : m.lastKnownStatus) ? (T = m.lastKnownStatus) === null || T === void 0 ? void 0 : T.includes("deletionIrredeemable") : !1
 			}
 
-			function Dt(m) {
+			function St(m) {
 				switch (m) {
 					case r.Vs.NonStandard_NonStandard:
 					case r.Vs.NonStandard_Standard:
@@ -10388,14 +10394,14 @@
 				return gt(m) && ((T = m.policies) === null || T === void 0 || (oe = T.suspension) === null || oe === void 0 ? void 0 : oe.parkingReason) === r.qK.TRUST_AND_SAFETY
 			}
 
-			function St(m) {
+			function ft(m) {
 				var T;
 				return !((T = m.domainMove) === null || T === void 0 ? void 0 : T.ineligibilityReasons.length)
 			}
 
-			function Kt(m) {
+			function zt(m) {
 				var T, oe;
-				return !!((T = m.domainMove) === null || T === void 0 || (oe = T.ineligibilityReasons) === null || oe === void 0 ? void 0 : oe.includes(EDomainMoveIneligibilityReason.DOMAIN_EXISTING_PENDING_REQUEST))
+				return !!((T = m.domainMove) === null || T === void 0 || (oe = T.ineligibilityReasons) === null || oe === void 0 ? void 0 : oe.includes(r.rQ.DOMAIN_EXISTING_PENDING_REQUEST))
 			}
 
 			function wt(m) {
@@ -10403,12 +10409,12 @@
 				return (T = m.actionableMetadata) === null || T === void 0 ? void 0 : T.find(oe => oe.type === r.wg.DOMAIN_MOVE)
 			}
 
-			function zt(m) {
+			function Gt(m) {
 				const T = wt(m);
 				return (T == null ? void 0 : T.status) === "pending" && T.accountContext === r._5.GAINING
 			}
 
-			function Gt(m) {
+			function Ht(m) {
 				const T = wt(m);
 				return (T == null ? void 0 : T.status) === "pending" && T.accountContext === r._5.LOSING
 			}
@@ -10420,7 +10426,7 @@
 					return v
 				},
 				Hv: function() {
-					return F
+					return U
 				},
 				JM: function() {
 					return s
@@ -10441,7 +10447,7 @@
 					return p
 				},
 				jk: function() {
-					return pe
+					return F
 				},
 				no: function() {
 					return t
@@ -10493,7 +10499,8 @@
 				Y = (0, e.BC)`/registrar/domains/verify_email`,
 				ae = (0, e.BC)`/sign-up/registrar`,
 				X = (0, e.BC)`${E}/verify-email`,
-				pe = {
+				pe = (0, e.BC)`${i}/${"zoneName"}`,
+				F = {
 					addSite: u,
 					domains: E,
 					domainsActionCenter: A,
@@ -10512,9 +10519,10 @@
 					registrarAccountsVerifyEmail: ne,
 					registrarDomainsVerifyEmail: Y,
 					signup: ae,
-					verifyEmail: X
+					verifyEmail: X,
+					zone: pe
 				},
-				F = {
+				U = {
 					domains: (0, e.BC)`/accounts/${"accountId"}/registrar/domains/${"domainName"}`
 				}
 		},
@@ -15546,4 +15554,4 @@
 	}
 ]);
 
-//# debugId=ec35ac8b-24b2-59d5-a6c7-9b02b8dd945a
+//# debugId=66955412-56eb-5cb2-8f12-a8c8be3ff669
