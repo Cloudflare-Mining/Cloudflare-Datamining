@@ -128,7 +128,7 @@ export default IconComponent;
 If you would like to add new icons to the component library/design system please follow the procedures below to help ensure the icons remain consistent.
 
 ### Repo: product-design
-Follow the link to the `product-design` repository where you will find the original SVG's. Follow the [Icon Guidelines](https://wiki.cfops.it/x/QLcvCQ) for details on how to create, export, and add new icons to [product-design](https://bitbucket.cfdata.org/projects/DESIGN/repos/product-design/browse) and stratus repositories.
+Follow the link to the `product-design` repository where you will find the original SVG's. Follow the [Icon Guidelines](https://wiki.cfops.it/x/QLcvCQ) for details on how to create, export, and add new icons to [product-design](https://gitlab.cfdata.org/cloudflare/design/product-design) and stratus repositories.
 
 ### Repo: component-library
 Once your icon is added to the `product-design` repo under the `/icons/icons-exports/` folder and all instructions are followed it is ready to be converted to our React format in this `component-library` repo. 

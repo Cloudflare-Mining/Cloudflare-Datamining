@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.21.2
+
+### Patch Changes
+
+- 09aaf5e7fb: Updates component-icon documentation
+
 ## 12.21.1
 
 ### Patch Changes
