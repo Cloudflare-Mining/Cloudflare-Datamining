@@ -1,0 +1,219 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24ic7s5StC7EDyqYne4WN6/02f061b0aef358ecc2d5da4150e5b0fc/image2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>With September’s <a href="https://blog.cloudflare.com/builder-day-2024-announcements/#connect-to-private-databases-from-workers"><u>announcement</u></a> of Hyperdrive’s ability to send database traffic from <a href="https://workers.cloudflare.com"><u>Workers</u></a> over <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><u>Cloudflare Tunnels</u></a>, we wanted to dive into the details of what it took to make this happen.</p>
+	<div class="flex anchor relative">
+		<h2 id="hyper-who">Hyper-who?</h2>
+		<a href="https://blog.cloudflare.com/#hyper-who" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Accessing your data from anywhere in Region Earth can be hard. Traditional databases are powerful, familiar, and feature-rich, but your users can be thousands of miles away from your database. This can cause slower connection startup times, slower queries, and connection exhaustion as everything takes longer to accomplish.</p>
+	<p><a href="https://developers.cloudflare.com/workers"><u>Cloudflare Workers</u></a> is an incredibly lightweight runtime, which enables our customers to deploy their applications globally by default and renders the <a href="https://en.wikipedia.org/wiki/Cold_start_(computing)"><u>cold start</u></a> problem almost irrelevant. The trade-off for these light, ephemeral execution contexts is the lack of persistence for things like database connections. Database connections are also notoriously expensive to spin up, with many round trips required between client and server before any query or result bytes can be exchanged.</p>
+	<p><a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed"><u>Hyperdrive</u></a> is designed to make the centralized databases you already have feel like they’re global while keeping connections to those databases hot. We use our <a href="https://www.cloudflare.com/network"><u>global network</u></a> to get faster routes to your database, keep connection pools primed, and cache your most frequently run queries as close to users as possible.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-a-tunnel">Why a Tunnel?</h2>
+		<a href="https://blog.cloudflare.com/#why-a-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For something as sensitive as your database, exposing access to the public Internet can be uncomfortable. It is common to instead host your database on a private network, and allowlist known-safe IP addresses or configure <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling"><u>GRE tunnels</u></a> to permit traffic to it. This is complex, toilsome, and error-prone.&nbsp;</p>
+	<p>On Cloudflare’s <a href="https://www.cloudflare.com/en-gb/developer-platform"><u>Developer Platform</u></a>, we strive for simplicity and ease-of-use. We cannot expect all of our customers to be experts in configuring networking solutions, and so we went in search of a simpler solution. <a href="https://www.cloudflare.com/the-net/top-of-mind-security/customer-zero"><u>Being your own customer</u></a> is rarely a bad choice, and it so happens that Cloudflare offers an excellent option for this scenario: Tunnels.</p>
+	<p><a href="https://www.cloudflare.com/products/tunnel"><u>Cloudflare Tunnel</u></a> is a Zero Trust product that creates a secure connection between your private network and Cloudflare. Exposing services within your private network can be as simple as <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads"><u>running a </u><code><u>cloudflared</u></code><u> binary</u></a>, or deploying a Docker container running the <a href="https://hub.docker.com/r/cloudflare/cloudflared"><code><u>cloudflared</u></code><u> image we distribute</u></a>. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3182f43rbwdH9krF1xhdlC/d22430cdb1efa134031f94fea691c36e/image1.png" alt="" class="kg-image" width="1000" height="180" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="a-custom-handler-and-generic-streams">A custom handler and generic streams</h2>
+		<a href="https://blog.cloudflare.com/#a-custom-handler-and-generic-streams" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Integrating with Tunnels to support sending Postgres directly through them was a bit of a new challenge for us. Most of the time, when we use Tunnels internally (more on that later!), we rely on the excellent job <code>cloudflared</code> does of handling all of the mechanics, and we just treat them as pipes. That wouldn’t work for Hyperdrive, though, so we had to dig into how Tunnels actually ingress traffic to build a solution.</p>
+	<p>Hyperdrive handles Postgres traffic using an entirely custom implementation of the <a href="https://www.postgresql.org/docs/current/protocol.html"><u>Postgres message protocol</u></a>. This is necessary, because we sometimes have to <a href="https://blog.cloudflare.com/postgres-named-prepared-statements-supported-hyperdrive"><u>alter the specific type or content</u></a> of messages sent from client to server, or vice versa. Handling individual bytes gives us the flexibility to implement whatever logic any new feature might need.</p>
+	<p>An additional, perhaps less obvious, benefit of handling Postgres message traffic as just bytes is that we are not bound to the transport layer choices of some <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping"><u>ORM</u></a> or library. One of the nuances of running services in Cloudflare is that we may want to egress traffic over different services or protocols, for a variety of different reasons. In this case, being able to egress traffic via a Tunnel would be pretty challenging if we were stuck with whatever raw TCP socket a library had established for us.</p>
+	<p>The way we accomplish this relies on a mainstay of Rust: <a href="https://doc.rust-lang.org/book/ch10-02-traits.html"><u>traits</u></a> (which are how Rust lets developers apply logic across generic functions and types). In the Rust ecosystem, there are two traits that define the behavior Hyperdrive wants out of its transport layers: <a href="https://docs.rs/tokio/latest/tokio/io/trait.AsyncRead.html"><code><u>AsyncRead</u></code></a> and <a href="https://docs.rs/tokio/latest/tokio/io/trait.AsyncWrite.html"><code><u>AsyncWrite</u></code></a>. There are a couple of others we also need, but we’re going to focus on just these two. These traits enable us to code our entire custom handler against a generic stream of data, without the handler needing to know anything about the underlying protocol used to implement the stream. So, we can pass around a WebSocket connection as a generic I/O stream, wherever it might be needed.</p>
+	<p>As an example, the code to create a generic TCP stream and send a Postgres startup message across it might look like this:</p>
+	<pre class="language-RUST"><code class="language-RUST">/// Send a startup message to a Postgres server, in the role of a PG client.
+/// https://www.postgresql.org/docs/current/protocol-message-formats.html#PROTOCOL-MESSAGE-FORMATS-STARTUPMESSAGE
+pub async fn send_startup&lt;S&gt;(stream: &amp;mut S, user_name: &amp;str, db_name: &amp;str, app_name: &amp;str) -&gt; Result&lt;(), ConnectionError&gt;
+where
+    S: AsyncWrite + Unpin,
+{
+    let protocol_number = 196608 as i32;
+    let user_str = &amp;b"user\0"[..];
+    let user_bytes = user_name.as_bytes();
+    let db_str = &amp;b"database\0"[..];
+    let db_bytes = db_name.as_bytes();
+    let app_str = &amp;b"application_name\0"[..];
+    let app_bytes = app_name.as_bytes();
+    let len = 4 + 4
+        + user_str.len() + user_bytes.len() + 1
+        + db_str.len() + db_bytes.len() + 1
+        + app_str.len() + app_bytes.len() + 1 + 1;
+
+    // Construct a BytesMut of our startup message, then send it
+    let mut startup_message = BytesMut::with_capacity(len as usize);
+    startup_message.put_i32(len as i32);
+    startup_message.put_i32(protocol_number);
+    startup_message.put(user_str);
+    startup_message.put_slice(user_bytes);
+    startup_message.put_u8(0);
+    startup_message.put(db_str);
+    startup_message.put_slice(db_bytes);
+    startup_message.put_u8(0);
+    startup_message.put(app_str);
+    startup_message.put_slice(app_bytes);
+    startup_message.put_u8(0);
+    startup_message.put_u8(0);
+
+    match stream.write_all(&amp;startup_message).await {
+        Ok(_) =&gt; Ok(()),
+        Err(err) =&gt; {
+            error!("Error writing startup to server: {}", err.to_string());
+            ConnectionError::InternalError
+        }
+    }
+}
+
+/// Connect to a TCP socket
+let stream = match TcpStream::connect(("localhost", 5432)).await {
+    Ok(s) =&gt; s,
+    Err(err) =&gt; {
+        error!("Error connecting to address: {}", err.to_string());
+        return ConnectionError::InternalError;
+    }
+};
+let _ = send_startup(&amp;mut stream, "db_user", "my_db").await;</code></pre>
+	<p>With this approach, if we wanted to encrypt the stream using <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/#:~:text=Transport%20Layer%20Security%2C%20or%20TLS,web%20browsers%20loading%20a%20website."><u>TLS</u></a> before we write to it (upgrading our existing <code>TcpStream</code> connection in-place, to an <code>SslStream</code>), we would only have to change the code we use to create the stream, while generating and sending the traffic would remain unchanged. This is because <code>SslStream</code> also implements <code>AsyncWrite</code>!</p>
+	<pre class="language-RUST"><code class="language-RUST">/// We're handwaving the SSL setup here. You're welcome.
+let conn_config = new_tls_client_config()?;
+
+/// Encrypt the TcpStream, returning an SslStream
+let ssl_stream = match tokio_boring::connect(conn_config, domain, stream).await {
+    Ok(s) =&gt; s,
+    Err(err) =&gt; {
+        error!("Error during websocket TLS handshake: {}", err.to_string());
+        return ConnectionError::InternalError;
+    }
+};
+let _ = send_startup(&amp;mut ssl_stream, "db_user", "my_db").await;</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="whence-websocket">Whence WebSocket</h2>
+		<a href="https://blog.cloudflare.com/#whence-websocket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc6455"><u>WebSocket</u></a> is an application layer protocol that enables bidirectional communication between a client and server. Typically, to establish a WebSocket connection, a client initiates an HTTP request and indicates they wish to upgrade the connection to WebSocket via the “Upgrade” header. Then, once the client and server complete the handshake, both parties can send messages over the connection until one of them terminates it.</p>
+	<p>Now, it turns out that the way Cloudflare Tunnels work under the hood is that both ends of the tunnel want to speak WebSocket, and rely on a translation layer to convert all traffic to or from WebSocket. The <code>cloudflared</code> daemon you spin up within your private network handles this for us! For Hyperdrive, however, we did not have a suitable translation layer to send Postgres messages across WebSocket, and had to write one.</p>
+	<p>One of the (many) fantastic things about Rust traits is that the contract they present is very clear. To be <code>AsyncRead</code>, you just need to implement <code>poll_read</code>. To be <code>AsyncWrite</code>, you need to implement only three functions (<code>poll_write</code>, <code>poll_flush</code>, and <code>poll_shutdown</code>). Further, there is excellent support for WebSocket in Rust built on top of the <a href="https://github.com/snapview/tungstenite-rs"><u>tungstenite-rs library</u></a>.</p>
+	<p>Thus, building our custom WebSocket stream such that it can share the same machinery as all our other generic streams just means translating the existing WebSocket support into these poll functions. There are some existing OSS projects that do this, but for multiple reasons we could not use the existing options. The primary reason is that Hyperdrive operates across multiple threads (thanks to the <a href="https://docs.rs/tokio/latest/tokio/runtime/index.html"><u>tokio runtime</u></a>), and so we rely on our connections to also handle <a href="https://doc.rust-lang.org/std/marker/trait.Send.html"><code><u>Send</u></code></a>, <a href="https://doc.rust-lang.org/std/marker/trait.Sync.html"><code><u>Sync</u></code></a>, and <a href="https://doc.rust-lang.org/std/marker/trait.Unpin.html"><code><u>Unpin</u></code></a>. None of the available solutions had all five traits handled. It turns out that most of them went with the paradigm of <a href="https://docs.rs/futures/latest/futures/sink/trait.Sink.html"><code><u>Sink</u></code></a> and <a href="https://docs.rs/futures/latest/futures/stream/trait.Stream.html"><code><u>Stream</u></code></a>, which provide a solid base from which to translate to <code>AsyncRead</code> and <code>AsyncWrite</code>. In fact some of the functions overlap, and can be passed through almost unchanged. For example, <code>poll_flush</code> and <code>poll_shutdown</code> have 1-to-1 analogs, and require almost no engineering effort to convert from <code>Sink</code> to <code>AsyncWrite</code>.</p>
+	<pre class="language-RUST"><code class="language-RUST">/// We use this struct to implement the traits we need on top of a WebSocketStream
+pub struct HyperSocket&lt;S&gt;
+where
+    S: AsyncRead + AsyncWrite + Send + Sync + Unpin,
+{
+    inner: WebSocketStream&lt;S&gt;,
+    read_state: Option&lt;ReadState&gt;,
+    write_err: Option&lt;Error&gt;,
+}
+
+impl&lt;S&gt; AsyncWrite for HyperSocket&lt;S&gt;
+where
+    S: AsyncRead + AsyncWrite + Send + Sync + Unpin,
+{
+    fn poll_flush(mut self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context&lt;'_&gt;) -&gt; Poll&lt;io::Result&lt;()&gt;&gt; {
+        match ready!(Pin::new(&amp;mut self.inner).poll_flush(cx)) {
+            Ok(_) =&gt; Poll::Ready(Ok(())),
+            Err(err) =&gt; Poll::Ready(Err(Error::new(ErrorKind::Other, err))),
+        }
+    }
+
+    fn poll_shutdown(mut self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context&lt;'_&gt;) -&gt; Poll&lt;io::Result&lt;()&gt;&gt; {
+        match ready!(Pin::new(&amp;mut self.inner).poll_close(cx)) {
+            Ok(_) =&gt; Poll::Ready(Ok(())),
+            Err(err) =&gt; Poll::Ready(Err(Error::new(ErrorKind::Other, err))),
+        }
+    }
+}
+</code></pre>
+	<p>With that translation done, we can use an existing WebSocket library to upgrade our <code>SslStream</code> connection to a Cloudflare Tunnel, and wrap the result in our <code>AsyncRead/AsyncWrite</code> implementation. The result can then be used anywhere that our other transport streams would work, without any changes needed to the rest of our codebase!&nbsp;</p>
+	<p>That would look something like this:</p>
+	<pre class="language-RUST"><code class="language-RUST">let websocket = match tokio_tungstenite::client_async(request, ssl_stream).await {
+    Ok(ws) =&gt; Ok(ws),
+    Err(err) =&gt; {
+        error!("Error during websocket conn setup: {}", err.to_string());
+        return ConnectionError::InternalError;
+    }
+};
+let websocket_stream = HyperSocket::new(websocket));
+let _ = send_startup(&amp;mut websocket_stream, "db_user", "my_db").await;</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="access-granted">Access granted</h2>
+		<a href="https://blog.cloudflare.com/#access-granted" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>An observant reader might have noticed that in the code example above we snuck in a variable named request that we passed in when upgrading from an <code>SslStream to a WebSocketStream</code>. This is for multiple reasons. The first reason is that Tunnels are assigned a hostname and use this hostname for routing. The second and more interesting reason is that (as mentioned above) when negotiating an upgrade from HTTP to WebSocket, a request must be sent to the server hosting the ingress side of the Tunnel to <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism"><u>perform the upgrade</u></a>. This is pretty universal, but we also add in an extra piece here.</p>
+	<p>At Cloudflare, we believe that <a href="https://blog.cloudflare.com/secure-by-default-understanding-new-cisa-guide"><u>secure defaults</u></a> and <a href="https://www.cloudflare.com/learning/security/glossary/what-is-defense-in-depth"><u>defense in depth</u></a> are the correct ways to build a better Internet. This is why traffic across Tunnels is encrypted, for example. However, that does not necessarily prevent unwanted traffic from being sent into your Tunnel, and therefore egressing out to your database. While Postgres offers a robust set of <a href="https://www.postgresql.org/docs/current/user-manag.html"><u>access control</u></a> options for protecting your database, wouldn’t it be best if unwanted traffic never got into your private network in the first place?&nbsp;</p>
+	<p>To that end, all <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database"><u>Tunnels set up for use with Hyperdrive</u></a> should have a <a href="https://developers.cloudflare.com/cloudflare-one/applications"><u>Zero Trust Access Application</u></a> configured to protect them. These applications should use a <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-tokens"><u>Service Token</u></a> to authorize connections. When setting up a new Hyperdrive, you have the option to provide the token’s ID and Secret, which will be encrypted and stored alongside the rest of your configuration. These will be presented as part of the WebSocket upgrade request to authorize the connection, allowing your database traffic through while preventing unwanted access.</p>
+	<p>This can be done within the request’s headers, and might look something like this:</p>
+	<pre class="language-RUST"><code class="language-RUST">let ws_url = format!("wss://{}", host);
+let mut request = match ws_url.into_client_request() {
+    Ok(req) =&gt; req,
+    Err(err) =&gt; {
+        error!(
+            "Hostname {} could not be parsed into a valid request URL: {}", 
+            host,
+            err.to_string()
+        );
+        return ConnectionError::InternalError;
+    }
+};
+request.headers_mut().insert(
+    "CF-Access-Client-Id",
+    http::header::HeaderValue::from_str(&amp;client_id).unwrap(),
+);
+request.headers_mut().insert(
+    "CF-Access-Client-Secret",
+    http::header::HeaderValue::from_str(&amp;client_secret).unwrap(),
+);
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="building-for-customer-zero">Building for customer zero</h2>
+		<a href="https://blog.cloudflare.com/#building-for-customer-zero" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you’ve been reading the blog for a long time, some of this might sound a bit familiar.&nbsp; This isn’t the first time that we’ve <a href="https://blog.cloudflare.com/cloudflare-tunnel-for-postgres"><u>sent Postgres traffic across a tunnel</u></a>, it’s something most of us do from our laptops regularly.&nbsp; This works very well for interactive use cases with low traffic volume and a high tolerance for latency, but historically most of our products have not been able to employ the same approach.</p>
+	<p>Cloudflare operates <a href="https://www.cloudflare.com/network"><u>many data centers</u></a> around the world, and most services run in every one of those data centers. There are some tasks, however, that make the most sense to run in a more centralized fashion. These include tasks such as managing control plane operations, or storing configuration state.&nbsp; Nearly every Cloudflare product houses its control plane information in <a href="https://blog.cloudflare.com/performance-isolation-in-a-multi-tenant-database-environment"><u>Postgres clusters</u></a> run centrally in a handful of our data centers, and we use a variety of approaches for accessing that centralized data from elsewhere in our network. For example, many services currently use a push-based model to publish updates to <a href="https://blog.cloudflare.com/moving-quicksilver-into-production"><u>Quicksilver</u></a>, and work through the complexities implied by such a model. This has been a recurring challenge for any team looking to build a new product.</p>
+	<p>Hyperdrive’s entire reason for being is to make it easy to access such central databases from our global network. When we began exploring Tunnel integrations as a feature, many internal teams spoke up immediately and strongly suggested they’d be interested in using it themselves. This was an excellent opportunity for Cloudflare to scratch its own itch, while also getting a lot of traffic on a new feature before releasing it directly to the public. As always, being “customer zero” means that we get fast feedback, more reliability over time, stronger connections between teams, and an overall better suite of products. We jumped at the chance.</p>
+	<p>As we rolled out early versions of Tunnel integration, we worked closely with internal teams to get them access to it, and fixed any rough spots they encountered. We’re pleased to share that this first batch of teams have found great success building new or refactored products on Hyperdrive over Tunnels. For example: if you’ve already tried out <a href="https://blog.cloudflare.com/builder-day-2024-announcements/#continuous-integration-and-delivery"><u>Workers Builds</u></a>, or recently <a href="https://www.cloudflare.com/trust-hub/reporting-abuse"><u>submitted an abuse report</u></a>, you’re among our first users!&nbsp; At the time of this writing, we have several more internal teams working to onboard, and we on the Hyperdrive team are very excited to see all the different ways in which fast and simple connections from Workers to a centralized database can help Cloudflare just as much as they’ve been helping our external customers.</p>
+	<div class="flex anchor relative">
+		<h2 id="outro">Outro</h2>
+		<a href="https://blog.cloudflare.com/#outro" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare is on a mission to make the Internet faster, safer, and more reliable. Hyperdrive was built to make connecting to centralized databases from the Workers runtime as quick and consistent as possible, and this latest development is designed to help all those who want to use Hyperdrive without directly exposing resources within their virtual private clouds (VPCs) on the public web.</p>
+	<p>To this end, we chose to build a solution around our suite of industry-leading <a href="https://developers.cloudflare.com/cloudflare-one"><u>Zero Trust</u></a> tools, and were delighted to find how simple it was to implement in our runtime given the power and extensibility of the Rust <code>trait</code> system.&nbsp;</p>
+	<p>Without waiting for the ink to dry, multiple teams within Cloudflare have adopted this new feature to quickly and easily solve what have historically been complex challenges, and are happily operating it in production today.</p>
+	<p>And now, if you haven't already, try <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database"><u>setting up Hyperdrive across a Tunnel</u></a>, and let us know what you think in the <a href="https://discord.com/channels/595317990191398933/1150557986239021106"><u>Hyperdrive Discord channel</u></a>!</p>
+</div>
