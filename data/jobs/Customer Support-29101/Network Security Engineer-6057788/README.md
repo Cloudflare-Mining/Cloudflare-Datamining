@@ -12,6 +12,9 @@
 <p><span style="font-weight: 400;">Network Security Engineers </span>analyse threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. They will also provide attack reporting beyond Cloudflare’s self-service reports.</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
+	<li style="font-weight: 400;">
+		<div><strong>Ability and willingness to work occasional weekends, holidays, and after hours</strong></div>
+	</li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Monitor and react to alerts to identify attacks</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
