@@ -987,7 +987,6 @@
 			"nodejs_compat": "boolean",
 			"nodejs_compat_v2": "boolean",
 			"nodejs_zlib": "boolean",
-			"python_external_packages": "boolean",
 			"python_workers": "boolean",
 			"queues_json_messages": "boolean",
 			"r2_list_honor_include": "boolean",
@@ -2337,11 +2336,9 @@
 		"__type": "function",
 		"_prototype": "object",
 		"canParse": "function",
-		"createObjectURL": "function",
 		"length": "number",
 		"name": "string",
-		"parse": "function",
-		"revokeObjectURL": "function"
+		"parse": "function"
 	},
 	"URLPattern": {
 		"__proto": "function",
@@ -13156,9 +13153,7 @@
 				"name": "string",
 				"_prototype": "object",
 				"canParse": "function",
-				"parse": "function",
-				"createObjectURL": "function",
-				"revokeObjectURL": "function"
+				"parse": "function"
 			},
 			"URLSearchParams": {
 				"__proto": "function",
@@ -13271,9 +13266,7 @@
 					"name": "string",
 					"_prototype": "object",
 					"canParse": "function",
-					"parse": "function",
-					"createObjectURL": "function",
-					"revokeObjectURL": "function"
+					"parse": "function"
 				},
 				"URLSearchParams": {
 					"__proto": "function",
