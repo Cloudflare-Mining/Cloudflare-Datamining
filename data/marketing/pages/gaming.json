@@ -64,6 +64,67 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentfulId": "1kIWpMnekVp2A8Ib2ZCSMM",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare for Gaming",
+						"titleSize": null,
+						"subtitle": "Deliver responsive, reliable gaming experiences and streamline development everywhere",
+						"subtitleSize": null,
+						"copy": "With a massive global network and unified security platform, Cloudflare can help you sustain engaging, low-latency experiences while protecting servers from disruptive cyber attacks. \nZero Trust capabilities give game developers and other dispersed team members simple, secure ways to access essential resources from anywhere.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Get solution brief",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/49LTJaxXMdtHgH3Jg3Zx8o/878b0f87a9d3759fed672186a8b3cfae/Cloudflare_for_Gaming__Brief_.pdf",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "Talk to an expert",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "gaming-form-modal",
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": false,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "bfb1ee20-0c79-53fd-b48b-9ff7cbe81ae0",
+							"altText": "Cloudflare for Gaming - Hero illustration",
+							"title": "Cloudflare for Gaming - Hero illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pNoSUgJoMSr0b1AoFQrNN/cef9d4a164ad05f8da4aaa0154dbd469/Gaming-controller.png"
+								},
+								"description": "Gaming Controller illustration"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
 						"contentfulId": "2Ea8I88o7B6qNxityr2QVj",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": "Stop attacks, improve player experiences, and drive innovation",
@@ -210,6 +271,39 @@
 										"sectionPadding": "tile--no-top-padding",
 										"columnLayout": "One Third & Two Thirds",
 										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "lZACh6eYpxHJtWTur4boM",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Gaming servers are frequent targets of DDoS attacks, which can bring gameplay to a screeching halt. Companies need to defend against disruptive attacks without slowing performance. \n\nThe Cloudflare connectivity cloud offers best-in-class DDoS protection that can identify and mitigate attacks through any of our %{DataCenterCount}+ locations. Avoid game-ending interruptions while maintaining engaging experiences.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
 											{
 												"contentTypeId": "elementRichText",
 												"contentfulId": "1IuAkYiNaARevIdDrqjeGw",
@@ -940,6 +1034,42 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "k93vOaVGk6LIugsUd3wBy",
+								"title": "Streamline global collaboration",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Give game developers, designers, testers, and other remote team members simple, secure access to essential apps and infrastructure without resorting to VPNs or other legacy tools.",
+								"learnMoreUrl": "https://www.cloudflare.com/zero-trust/solutions/vpn-replacement/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ef0244bd-efac-5180-b4d6-0a467d8337c8",
+									"altText": "Security Network - Illustration",
+									"title": "Security Network",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iYn3M3hngX7sAslSieDlx/48d29ce6b94e646db8f5f513ee2399ad/cloudflare-security-network.svg"
+										},
+										"description": "Security Network"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
@@ -1144,6 +1274,42 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "45lfGmC47eUIWJfsHxiczl",
+								"title": "Mynet",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Mynet secures infrastructure and enables seamless remote access with Cloudflare Zero Trust.",
+								"learnMoreUrl": "/case-studies/mynet/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "254faf02-76e0-5352-8d3e-813e974b61f9",
+									"altText": "Mynet Logo",
+									"title": "Mynet Logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fVnhXIBbOiTjaEGe2B6fv/39a9e0c5e865118743bcc5b5c765d3a4/MynetLogo.jpeg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "6PilvEWiFhg3K0Co4VTPPF",
 								"title": "Crazy Games ",
 								"makeTitleLink": false,
@@ -1335,6 +1501,42 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "53BDyEnvd4d4b6FFZJpCC5",
+								"title": "Cybersecurity best practices for gaming and igaming",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Discover effective strategies for defending your gaming or online betting company from a growing number of cyber attacks",
+								"learnMoreUrl": "/lp/cyber-security-best-practices-online-gaming/",
+								"learnMoreText": "Download the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4VcCsQkNgaZ6orOfOblMhu",
