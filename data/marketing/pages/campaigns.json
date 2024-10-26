@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-01-15T12:29:14.345Z",
-					"updatedAt": "2024-10-22T23:41:20.953Z"
+					"updatedAt": "2024-10-26T02:27:21.301Z"
 				},
 				"contentfulId": "5O6igPpQER2PNmjJaGgUeh",
 				"contentTypeId": "page",
@@ -142,21 +142,7 @@
 							},
 							"description": "Defending Digital Campaigns logo"
 						},
-						"imageAssetFile": {
-							"id": "d355ffe9-9865-5603-9229-c92ac18563d0",
-							"altText": "DDC logo - black",
-							"title": "DDC logo - black",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oYIQidmwP0IppP1bTwdOg/d1b69a90e591def8baf3c2e9bfe5c04c/ddc_logo_black.png"
-								},
-								"description": "Defending Digital Campaigns logo"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
+						"imageAssetFile": null,
 						"imageLinkUrl": null,
 						"logoList": [],
 						"logoListAssetFile": [],
@@ -690,32 +676,7 @@
 						"buttonText": "Submit",
 						"buttonColor": "blue",
 						"htmlId": "campaign-form",
-						"marketoEmbeddedForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "589zND8OSqmyfxtvFdlotW",
-							"bladeName": "Cloudflare for Campaigns - Top-level Site - Embedded Form",
-							"backgroundColor": "blue",
-							"marketoFormId": 1748,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Q1'20 WEB - NAMER - Cloudflare for Campaigns",
-							"marketoFormHeaderText": "Talk to an Expert <span id=\"campaign-form\" style=\"display: block;  position: relative;  top: -200px;  visibility: hidden;\"></span>",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": "Thank you! A Cloudflare representative will be in touch soon.",
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": "white",
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
+						"marketoEmbeddedForm": null,
 						"title": "Solutions for every campaign",
 						"subtitle": null,
 						"copy": "Rely on Cloudflare for Campaigns to meet the needs of your campaign, including securing your candidate's web presence and safeguarding your internal network and data:\n\n- Protect your website from hostile actors with our web application firewall, DDoS mitigation, and custom blocking rules\n\n- Improve site speed and reliability by leveraging the Cloudflare global network, spanning %{DataCenterCount} cities in over %{CountryCount} countries\n- Monitor all traffic passing through your network and secure internal applications with Cloudflare Zero Trust\n\nTalk to a Cloudflare representative today to learn more. ",
