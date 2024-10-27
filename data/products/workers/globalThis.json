@@ -56,6 +56,7 @@
 		"length": "number",
 		"name": "string"
 	},
+	"Atomics": {},
 	"BigInt": {
 		"__proto": "function",
 		"__type": "function",
@@ -128,703 +129,6 @@
 		},
 		"length": "number",
 		"name": "string"
-	},
-	"Buffer": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"asciiSlice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"asciiWrite": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"base64Slice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"base64Write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"base64urlSlice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"base64urlWrite": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"compare": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"copy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"equals": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"fill": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"hexSlice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"hexWrite": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"includes": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"indexOf": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"inspect": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"lastIndexOf": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"latin1Slice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"latin1Write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"offset": "undefined",
-			"readBigInt64BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readBigInt64LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readBigUInt64BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readBigUInt64LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readBigUint64BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readBigUint64LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readDoubleBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readDoubleLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readFloatBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readFloatLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readInt16BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readInt16LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readInt32BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readInt32LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readInt8": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readIntBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readIntLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUInt16BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUInt16LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUInt32BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUInt32LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUInt8": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUIntBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUIntLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUint16BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUint16LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUint32BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUint32LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUint8": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUintBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"readUintLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"slice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"swap16": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"swap32": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"swap64": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"toJSON": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"assign": "undefined",
-					"create": "undefined",
-					"data": "object",
-					"defineProperties": "undefined",
-					"defineProperty": "undefined",
-					"entries": "undefined",
-					"freeze": "undefined",
-					"fromEntries": "undefined",
-					"getOwnPropertyDescriptor": "undefined",
-					"getOwnPropertyDescriptors": "undefined",
-					"getOwnPropertyNames": "undefined",
-					"getOwnPropertySymbols": "undefined",
-					"getPrototypeOf": "undefined",
-					"groupBy": "undefined",
-					"hasOwn": "undefined",
-					"is": "undefined",
-					"isExtensible": "undefined",
-					"isFrozen": "undefined",
-					"isSealed": "undefined",
-					"keys": "undefined",
-					"length": "undefined",
-					"name": "undefined",
-					"preventExtensions": "undefined",
-					"prototype": "undefined",
-					"seal": "undefined",
-					"setPrototypeOf": "undefined",
-					"type": "string",
-					"values": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"toLocaleString": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"toString": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"ucs2Slice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"ucs2Write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"utf8Slice": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"utf8Write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeBigInt64BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeBigInt64LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeBigUInt64BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeBigUInt64LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeBigUint64BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeBigUint64LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeDoubleBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeDoubleLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeFloatBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeFloatLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeInt16BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeInt16LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeInt32BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeInt32LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeInt8": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeIntBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeIntLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUInt16BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUInt16LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUInt32BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUInt32LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUInt8": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUIntBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUIntLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUint16BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUint16LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUint32BE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUint32LE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUint8": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUintBE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"writeUintLE": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			}
-		},
-		"alloc": "function",
-		"allocUnsafe": "function",
-		"allocUnsafeSlow": "function",
-		"byteLength": "function",
-		"compare": "function",
-		"concat": "function",
-		"from": "function",
-		"isBuffer": "function",
-		"isEncoding": "function",
-		"length": "number",
-		"name": "string",
-		"of": "function",
-		"poolSize": "number"
 	},
 	"ByteLengthQueuingStrategy": {
 		"__proto": "function",
@@ -1135,6 +439,13 @@
 			"prototype": "undefined",
 			"stack": "string"
 		},
+		"length": "number",
+		"name": "string"
+	},
+	"DataView": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {},
 		"length": "number",
 		"name": "string"
 	},
@@ -1707,6 +1018,7 @@
 			"supportedLocalesOf": "function"
 		}
 	},
+	"JSON": {},
 	"Map": {
 		"__proto": "function",
 		"__type": "function",
@@ -1837,146 +1149,20 @@
 		"setPrototypeOf": "function",
 		"values": "function"
 	},
-	"Performance": {
+	"Promise": {
 		"__proto": "function",
 		"__type": "function",
-		"_prototype": {
-			"__unenv__": "boolean",
-			"_entries": "object",
-			"_resourceTimingBufferSize": "number",
-			"eventCounts": "object",
-			"length": "undefined",
-			"name": "undefined",
-			"navigation": "function",
-			"onresourcetimingbufferfull": "object",
-			"prototype": "undefined",
-			"timeOrigin": "number",
-			"timing": "function"
-		},
-		"length": "number",
-		"name": "string"
-	},
-	"PerformanceEntry": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"__unenv__": "boolean",
-			"detail": "undefined",
-			"entryType": "string",
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined",
-			"startTime": "number"
-		},
-		"length": "number",
-		"name": "string"
-	},
-	"PerformanceMark": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"__unenv__": "boolean",
-			"detail": "undefined",
-			"entryType": "string",
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined",
-			"startTime": "number"
-		},
-		"length": "number",
-		"name": "string"
-	},
-	"PerformanceMeasure": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"__unenv__": "boolean",
-			"detail": "undefined",
-			"entryType": "string",
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined",
-			"startTime": "number"
-		},
-		"length": "number",
-		"name": "string"
-	},
-	"PerformanceObserver": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"__unenv__": "boolean",
-			"_callback": "undefined",
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined",
-			"supportedEntryTypes": "undefined"
-		},
+		"_prototype": {},
+		"all": "function",
+		"allSettled": "function",
+		"any": "function",
 		"length": "number",
 		"name": "string",
-		"supportedEntryTypes": {
-			"0": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"1": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"2": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"3": {
-				"__proto": "object",
-				"__type": "string"
-			}
-		}
-	},
-	"PerformanceObserverEntryList": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"__unenv__": "boolean",
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined"
-		},
-		"length": "number",
-		"name": "string"
-	},
-	"PerformanceResourceTiming": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"__unenv__": "boolean",
-			"connectEnd": "number",
-			"connectStart": "number",
-			"decodedBodySize": "number",
-			"detail": "undefined",
-			"domainLookupEnd": "number",
-			"domainLookupStart": "number",
-			"encodedBodySize": "number",
-			"entryType": "string",
-			"fetchStart": "number",
-			"initiatorType": "string",
-			"length": "undefined",
-			"name": "string",
-			"nextHopProtocol": "string",
-			"prototype": "undefined",
-			"redirectEnd": "number",
-			"redirectStart": "number",
-			"requestStart": "number",
-			"responseEnd": "number",
-			"responseStart": "number",
-			"secureConnectionStart": "number",
-			"serverTiming": "object",
-			"startTime": "number",
-			"transferSize": "number",
-			"workerStart": "number"
-		},
-		"length": "number",
-		"name": "string"
+		"race": "function",
+		"reject": "function",
+		"resolve": "function",
+		"try": "function",
+		"withResolvers": "function"
 	},
 	"PromiseRejectionEvent": {
 		"__proto": "function",
@@ -2092,6 +1278,17 @@
 		"name": "string"
 	},
 	"Set": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"SharedArrayBuffer": {
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
@@ -2684,17 +1881,6 @@
 			"name": "string"
 		}
 	},
-	"clearImmediate": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"length": "undefined",
-			"name": "undefined",
-			"prototype": "undefined"
-		},
-		"length": "number",
-		"name": "string"
-	},
 	"clearInterval": {
 		"__proto": "function",
 		"__type": "function",
@@ -2708,366 +1894,6 @@
 		"name": "string"
 	},
 	"console": {
-		"Console": {
-			"__proto": "object",
-			"__type": "function",
-			"_prototype": "function",
-			"length": "function",
-			"name": "function"
-		},
-		"_ignoreErrors": "boolean",
-		"_stderr": {
-			"_destroy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"_events": {},
-			"_eventsCount": "number",
-			"_maxListeners": "undefined",
-			"_undestroy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"_writableState": {
-				"afterWriteTickInfo": {},
-				"allBuffers": "boolean",
-				"allNoop": "boolean",
-				"autoDestroy": "boolean",
-				"bufferProcessing": "boolean",
-				"buffered": {},
-				"bufferedIndex": "number",
-				"closeEmitted": "boolean",
-				"closed": "boolean",
-				"constructed": "boolean",
-				"corked": "number",
-				"decodeStrings": "boolean",
-				"defaultEncoding": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"destroyed": "boolean",
-				"emitClose": "boolean",
-				"ended": "boolean",
-				"ending": "boolean",
-				"errorEmitted": "boolean",
-				"errored": {},
-				"finalCalled": "boolean",
-				"finished": "boolean",
-				"getBuffer": {
-					"__proto": "function",
-					"__type": "function",
-					"_prototype": {},
-					"length": "number",
-					"name": "string"
-				},
-				"highWaterMark": "number",
-				"length": "number",
-				"needDrain": "boolean",
-				"objectMode": "boolean",
-				"onwrite": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				},
-				"pendingcb": "number",
-				"prefinished": "boolean",
-				"sync": "boolean",
-				"writecb": {},
-				"writelen": "number",
-				"writing": "boolean"
-			},
-			"_write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"_writev": {},
-			"addListener": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"cork": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"destroy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"emit": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"end": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"getMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"pipe": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"setDefaultEncoding": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"setMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"uncork": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			}
-		},
-		"_stderrErrorHandler": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_stdout": {
-			"_destroy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"_events": {},
-			"_eventsCount": "number",
-			"_maxListeners": "undefined",
-			"_undestroy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"_writableState": {
-				"afterWriteTickInfo": {},
-				"allBuffers": "boolean",
-				"allNoop": "boolean",
-				"autoDestroy": "boolean",
-				"bufferProcessing": "boolean",
-				"buffered": {},
-				"bufferedIndex": "number",
-				"closeEmitted": "boolean",
-				"closed": "boolean",
-				"constructed": "boolean",
-				"corked": "number",
-				"decodeStrings": "boolean",
-				"defaultEncoding": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"destroyed": "boolean",
-				"emitClose": "boolean",
-				"ended": "boolean",
-				"ending": "boolean",
-				"errorEmitted": "boolean",
-				"errored": {},
-				"finalCalled": "boolean",
-				"finished": "boolean",
-				"getBuffer": {
-					"__proto": "function",
-					"__type": "function",
-					"_prototype": {},
-					"length": "number",
-					"name": "string"
-				},
-				"highWaterMark": "number",
-				"length": "number",
-				"needDrain": "boolean",
-				"objectMode": "boolean",
-				"onwrite": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				},
-				"pendingcb": "number",
-				"prefinished": "boolean",
-				"sync": "boolean",
-				"writecb": {},
-				"writelen": "number",
-				"writing": "boolean"
-			},
-			"_write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"_writev": {},
-			"cork": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"destroy": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"emit": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"end": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"getMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"length": "number",
-				"name": "string"
-			},
-			"pipe": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"setDefaultEncoding": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"setMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"uncork": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			},
-			"write": {
-				"__proto": "function",
-				"__type": "function",
-				"_prototype": {},
-				"length": "number",
-				"name": "string"
-			}
-		},
-		"_stdoutErrorHandler": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_times": {
-			"__proto": "object",
-			"__type": "function",
-			"_prototype": "function",
-			"length": "function",
-			"name": "function"
-		},
 		"assert": {
 			"__proto": "function",
 			"__type": "function",
@@ -3351,596 +2177,6 @@
 		},
 		"timeOrigin": "number"
 	},
-	"process": {
-		"_debugEnd": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_debugProcess": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_events": {},
-		"_eventsCount": "number",
-		"_exiting": "boolean",
-		"_fatalException": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_getActiveHandles": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_getActiveRequests": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_kill": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_linkedBinding": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_maxListeners": "number",
-		"_preload_modules": {},
-		"_rawDebug": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_startProfilerIdleNotifier": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_stopProfilerIdleNotifier": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"_tickCallback": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"abort": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"addListener": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"allowedNodeEnvironmentFlags": {},
-		"arch": {
-			"__proto": "object",
-			"__type": "string"
-		},
-		"argv": {},
-		"argv0": {
-			"__proto": "object",
-			"__type": "string"
-		},
-		"assert": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"availableMemory": {
-			"__proto": "function",
-			"__type": "function",
-			"length": "number",
-			"name": "string"
-		},
-		"binding": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"chdir": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"config": {},
-		"constrainedMemory": {
-			"__proto": "function",
-			"__type": "function",
-			"length": "number",
-			"name": "string"
-		},
-		"cpuUsage": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"cwd": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"debugPort": "number",
-		"dlopen": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"domain": {
-			"__proto": "object",
-			"__type": "function",
-			"_prototype": "function",
-			"length": "function",
-			"name": "function"
-		},
-		"emit": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"emitWarning": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"env": {},
-		"eventNames": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"execArgv": {},
-		"execPath": {
-			"__proto": "object",
-			"__type": "string"
-		},
-		"exit": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"exitCode": "number",
-		"features": {
-			"cached_builtins": "undefined",
-			"debug": "undefined",
-			"inspector": "undefined",
-			"ipv6": "undefined",
-			"tls": "undefined",
-			"tls_alpn": "undefined",
-			"tls_ocsp": "undefined",
-			"tls_sni": "undefined",
-			"uv": "undefined"
-		},
-		"getActiveResourcesInfo": {
-			"__proto": "function",
-			"__type": "function",
-			"length": "number",
-			"name": "string"
-		},
-		"getBuiltinModule": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"getMaxListeners": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"getegid": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"geteuid": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"getgid": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"getgroups": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"getuid": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"hasUncaughtExceptionCaptureCallback": {
-			"__proto": "function",
-			"__type": "function",
-			"length": "number",
-			"name": "string"
-		},
-		"hrtime": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"bigint": "function",
-			"length": "number",
-			"name": "string"
-		},
-		"initgroups": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"kill": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"listenerCount": {
-			"__proto": "function",
-			"__type": "function",
-			"length": "number",
-			"name": "string"
-		},
-		"listeners": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"loadEnvFile": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"memoryUsage": {
-			"__proto": "function",
-			"__type": "function",
-			"length": "number",
-			"name": "string",
-			"rss": "function"
-		},
-		"moduleLoadList": {},
-		"nextTick": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"off": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"on": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"once": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"openStdin": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"pid": "number",
-		"platform": {
-			"__proto": "object",
-			"__type": "string"
-		},
-		"ppid": "number",
-		"prependListener": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"prependOnceListener": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"rawListeners": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"reallyExit": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"release": {
-			"headersUrl": "undefined",
-			"lts": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"name": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"sourceUrl": "undefined"
-		},
-		"removeAllListeners": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"removeListener": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"report": {
-			"compact": "undefined",
-			"directory": "undefined",
-			"filename": "undefined",
-			"getReport": {
-				"__proto": "function",
-				"__type": "function",
-				"__unenv__": "boolean",
-				"length": "number",
-				"name": "string"
-			},
-			"reportOnFatalError": "undefined",
-			"reportOnSignal": "undefined",
-			"reportOnUncaughtException": "undefined",
-			"signal": "undefined",
-			"writeReport": {
-				"__proto": "function",
-				"__type": "function",
-				"__unenv__": "boolean",
-				"length": "number",
-				"name": "string"
-			}
-		},
-		"resourceUsage": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"setMaxListeners": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"setSourceMapsEnabled": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"setUncaughtExceptionCaptureCallback": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"setegid": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"seteuid": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"setgid": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"setgroups": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"setuid": {
-			"__proto": "function",
-			"__type": "function",
-			"__unenv__": "boolean",
-			"length": "number",
-			"name": "string"
-		},
-		"sourceMapsEnabled": "boolean",
-		"stderr": {
-			"__proto": "object",
-			"__type": "function",
-			"_prototype": "function",
-			"length": "function",
-			"name": "function"
-		},
-		"stdin": {
-			"__proto": "object",
-			"__type": "function",
-			"_prototype": "function",
-			"length": "function",
-			"name": "function"
-		},
-		"stdout": {
-			"__proto": "object",
-			"__type": "function",
-			"_prototype": "function",
-			"length": "function",
-			"name": "function"
-		},
-		"title": {
-			"__proto": "object",
-			"__type": "string"
-		},
-		"umask": {
-			"__proto": "function",
-			"__type": "function",
-			"_prototype": {},
-			"length": "number",
-			"name": "string"
-		},
-		"uptime": {
-			"__proto": "function",
-			"__type": "function",
-			"length": "number",
-			"name": "string"
-		},
-		"version": {
-			"__proto": "object",
-			"__type": "string"
-		},
-		"versions": {
-			"ares": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"http_parser": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"icu": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"modules": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"node": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"openssl": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"uv": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"v8": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"zlib": {
-				"__proto": "object",
-				"__type": "string"
-			}
-		}
-	},
 	"queueMicrotask": {
 		"__proto": "function",
 		"__type": "function",
@@ -3966,14 +2202,6 @@
 			"length": "number",
 			"name": "string"
 		}
-	},
-	"setImmediate": {
-		"__promisify__": "function",
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {},
-		"length": "number",
-		"name": "string"
 	},
 	"setInterval": {
 		"__proto": "function",
@@ -4377,7 +2605,6 @@
 		"Blob",
 		"Body",
 		"Boolean",
-		"Buffer",
 		"ByteLengthQueuingStrategy",
 		"Cache",
 		"CacheStorage",
@@ -4423,13 +2650,6 @@
 		"Navigator",
 		"Number",
 		"Object",
-		"Performance",
-		"PerformanceEntry",
-		"PerformanceMark",
-		"PerformanceMeasure",
-		"PerformanceObserver",
-		"PerformanceObserverEntryList",
-		"PerformanceResourceTiming",
 		"Promise",
 		"PromiseRejectionEvent",
 		"Proxy",
@@ -4484,7 +2704,6 @@
 		"atob",
 		"btoa",
 		"caches",
-		"clearImmediate",
 		"clearInterval",
 		"clearTimeout",
 		"console",
@@ -4497,7 +2716,6 @@
 		"escape",
 		"eval",
 		"fetch",
-		"global",
 		"globalThis",
 		"isFinite",
 		"isNaN",
@@ -4506,13 +2724,11 @@
 		"parseFloat",
 		"parseInt",
 		"performance",
-		"process",
 		"queueMicrotask",
 		"removeEventListener",
 		"reportError",
 		"scheduler",
 		"self",
-		"setImmediate",
 		"setInterval",
 		"setTimeout",
 		"structuredClone",
@@ -4528,7 +2744,6 @@
 		"BigInt64Array",
 		"BigUint64Array",
 		"Boolean",
-		"Buffer",
 		"Cloudflare",
 		"DataView",
 		"Date",
@@ -4549,13 +2764,6 @@
 		"NaN",
 		"Number",
 		"Object",
-		"Performance",
-		"PerformanceEntry",
-		"PerformanceMark",
-		"PerformanceMeasure",
-		"PerformanceObserver",
-		"PerformanceObserverEntryList",
-		"PerformanceResourceTiming",
 		"Promise",
 		"Proxy",
 		"RangeError",
@@ -4578,7 +2786,6 @@
 		"WeakSet",
 		"WebAssembly",
 		"caches",
-		"clearImmediate",
 		"console",
 		"crypto",
 		"decodeURI",
@@ -4587,7 +2794,6 @@
 		"encodeURIComponent",
 		"escape",
 		"eval",
-		"global",
 		"globalThis",
 		"isFinite",
 		"isNaN",
@@ -4596,10 +2802,8 @@
 		"parseFloat",
 		"parseInt",
 		"performance",
-		"process",
 		"scheduler",
 		"self",
-		"setImmediate",
 		"undefined",
 		"unescape"
 	],
@@ -4815,114 +3019,6 @@
 			}
 		},
 		"async_hooks": {
-			"asyncWrapProviders": {
-				"NONE": "number",
-				"DIRHANDLE": "number",
-				"DNSCHANNEL": "number",
-				"ELDHISTOGRAM": "number",
-				"FILEHANDLE": "number",
-				"FILEHANDLECLOSEREQ": "number",
-				"BLOBREADER": "number",
-				"FSEVENTWRAP": "number",
-				"FSREQCALLBACK": "number",
-				"FSREQPROMISE": "number",
-				"GETADDRINFOREQWRAP": "number",
-				"GETNAMEINFOREQWRAP": "number",
-				"HEAPSNAPSHOT": "number",
-				"HTTP2SESSION": "number",
-				"HTTP2STREAM": "number",
-				"HTTP2PING": "number",
-				"HTTP2SETTINGS": "number",
-				"HTTPINCOMINGMESSAGE": "number",
-				"HTTPCLIENTREQUEST": "number",
-				"JSSTREAM": "number",
-				"JSUDPWRAP": "number",
-				"MESSAGEPORT": "number",
-				"PIPECONNECTWRAP": "number",
-				"PIPESERVERWRAP": "number",
-				"PIPEWRAP": "number",
-				"PROCESSWRAP": "number",
-				"PROMISE": "number",
-				"QUERYWRAP": "number",
-				"QUIC_ENDPOINT": "number",
-				"QUIC_LOGSTREAM": "number",
-				"QUIC_PACKET": "number",
-				"QUIC_SESSION": "number",
-				"QUIC_STREAM": "number",
-				"QUIC_UDP": "number",
-				"SHUTDOWNWRAP": "number",
-				"SIGNALWRAP": "number",
-				"STATWATCHER": "number",
-				"STREAMPIPE": "number",
-				"TCPCONNECTWRAP": "number",
-				"TCPSERVERWRAP": "number",
-				"TCPWRAP": "number",
-				"TTYWRAP": "number",
-				"UDPSENDWRAP": "number",
-				"UDPWRAP": "number",
-				"SIGINTWATCHDOG": "number",
-				"WORKER": "number",
-				"WORKERHEAPSNAPSHOT": "number",
-				"WRITEWRAP": "number",
-				"ZLIB": "number",
-				"CHECKPRIMEREQUEST": "number",
-				"PBKDF2REQUEST": "number",
-				"KEYPAIRGENREQUEST": "number",
-				"KEYGENREQUEST": "number",
-				"KEYEXPORTREQUEST": "number",
-				"CIPHERREQUEST": "number",
-				"DERIVEBITSREQUEST": "number",
-				"HASHREQUEST": "number",
-				"RANDOMBYTESREQUEST": "number",
-				"RANDOMPRIMEREQUEST": "number",
-				"SCRYPTREQUEST": "number",
-				"SIGNREQUEST": "number",
-				"TLSWRAP": "number",
-				"VERIFYREQUEST": "number"
-			},
-			"createHook": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"__unenv__": "boolean",
-					"_enabled": "boolean",
-					"_callbacks": "object",
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"executionAsyncId": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"executionAsyncResource": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"triggerAsyncId": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
 			"AsyncLocalStorage": {
 				"__proto": "function",
 				"__type": "function",
@@ -5790,311 +3886,6 @@
 			}
 		},
 		"crypto": {
-			"Certificate": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"verifySpkac": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"exportPublicKey": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"exportChallenge": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				},
-				"exportChallenge": "function",
-				"exportPublicKey": "function",
-				"verifySpkac": "function"
-			},
-			"Cipher": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"Cipheriv": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"Decipher": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"Decipheriv": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"ECDH": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"Sign": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"Verify": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"X509Certificate": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"constants": {
-				"ALPN_ENABLED": "number",
-				"DH_CHECK_P_NOT_PRIME": "number",
-				"DH_CHECK_P_NOT_SAFE_PRIME": "number",
-				"DH_NOT_SUITABLE_GENERATOR": "number",
-				"DH_UNABLE_TO_CHECK_GENERATOR": "number",
-				"ENGINE_METHOD_ALL": "number",
-				"ENGINE_METHOD_CIPHERS": "number",
-				"ENGINE_METHOD_DH": "number",
-				"ENGINE_METHOD_DIGESTS": "number",
-				"ENGINE_METHOD_DSA": "number",
-				"ENGINE_METHOD_EC": "number",
-				"ENGINE_METHOD_NONE": "number",
-				"ENGINE_METHOD_PKEY_ASN1_METHS": "number",
-				"ENGINE_METHOD_PKEY_METHS": "number",
-				"ENGINE_METHOD_RAND": "number",
-				"ENGINE_METHOD_RSA": "number",
-				"OPENSSL_VERSION_NUMBER": "number",
-				"POINT_CONVERSION_COMPRESSED": "number",
-				"POINT_CONVERSION_HYBRID": "number",
-				"POINT_CONVERSION_UNCOMPRESSED": "number",
-				"RSA_NO_PADDING": "number",
-				"RSA_PKCS1_OAEP_PADDING": "number",
-				"RSA_PKCS1_PADDING": "number",
-				"RSA_PKCS1_PSS_PADDING": "number",
-				"RSA_PSS_SALTLEN_AUTO": "number",
-				"RSA_PSS_SALTLEN_DIGEST": "number",
-				"RSA_PSS_SALTLEN_MAX_SIGN": "number",
-				"RSA_X931_PADDING": "number",
-				"SSL_OP_ALL": "number",
-				"SSL_OP_ALLOW_NO_DHE_KEX": "number",
-				"SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION": "number",
-				"SSL_OP_CIPHER_SERVER_PREFERENCE": "number",
-				"SSL_OP_CISCO_ANYCONNECT": "number",
-				"SSL_OP_COOKIE_EXCHANGE": "number",
-				"SSL_OP_CRYPTOPRO_TLSEXT_BUG": "number",
-				"SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS": "number",
-				"SSL_OP_EPHEMERAL_RSA": "number",
-				"SSL_OP_LEGACY_SERVER_CONNECT": "number",
-				"SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER": "number",
-				"SSL_OP_MICROSOFT_SESS_ID_BUG": "number",
-				"SSL_OP_MSIE_SSLV2_RSA_PADDING": "number",
-				"SSL_OP_NETSCAPE_CA_DN_BUG": "number",
-				"SSL_OP_NETSCAPE_CHALLENGE_BUG": "number",
-				"SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG": "number",
-				"SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG": "number",
-				"SSL_OP_NO_COMPRESSION": "number",
-				"SSL_OP_NO_ENCRYPT_THEN_MAC": "number",
-				"SSL_OP_NO_QUERY_MTU": "number",
-				"SSL_OP_NO_RENEGOTIATION": "number",
-				"SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION": "number",
-				"SSL_OP_NO_SSLv2": "number",
-				"SSL_OP_NO_SSLv3": "number",
-				"SSL_OP_NO_TICKET": "number",
-				"SSL_OP_NO_TLSv1_1": "number",
-				"SSL_OP_NO_TLSv1_2": "number",
-				"SSL_OP_NO_TLSv1_3": "number",
-				"SSL_OP_NO_TLSv1": "number",
-				"SSL_OP_PKCS1_CHECK_1": "number",
-				"SSL_OP_PKCS1_CHECK_2": "number",
-				"SSL_OP_PRIORITIZE_CHACHA": "number",
-				"SSL_OP_SINGLE_DH_USE": "number",
-				"SSL_OP_SINGLE_ECDH_USE": "number",
-				"SSL_OP_SSLEAY_080_CLIENT_DH_BUG": "number",
-				"SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG": "number",
-				"SSL_OP_TLS_BLOCK_PADDING_BUG": "number",
-				"SSL_OP_TLS_D5_BUG": "number",
-				"SSL_OP_TLS_ROLLBACK_BUG": "number",
-				"TLS1_1_VERSION": "number",
-				"TLS1_2_VERSION": "number",
-				"TLS1_3_VERSION": "number",
-				"TLS1_VERSION": "number",
-				"defaultCoreCipherList": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"defaultCipherList": {
-					"__proto": "object",
-					"__type": "string"
-				}
-			},
-			"createCipheriv": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"createDecipheriv": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"createECDH": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"createSign": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"createVerify": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"diffieHellman": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"getCipherInfo": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"hash": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"privateDecrypt": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"privateEncrypt": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"publicDecrypt": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"publicEncrypt": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"scrypt": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"scryptSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"sign": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"verify": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"createCipher": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"createDecipher": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"pseudoRandomBytes": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
 			"DiffieHellman": {
 				"__proto": "function",
 				"__type": "function",
@@ -6208,6 +3999,178 @@
 						"_prototype": {}
 					}
 				}
+			},
+			"createDiffieHellman": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createDiffieHellmanGroup": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getDiffieHellman": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"KeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {},
+				"from": "function"
+			},
+			"PublicKeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"PrivateKeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"SecretKeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKeyPair": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKeyPairSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKeySync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createPrivateKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createPublicKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createSecretKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getRandomValues": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"randomBytes": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomFillSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomFill": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomInt": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomUUID": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"generatePrime": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generatePrimeSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"checkPrime": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"checkPrimeSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			},
 			"Hash": {
 				"__proto": "function",
@@ -7588,42 +5551,6 @@
 				"init": "function",
 				"addAbortListener": "function"
 			},
-			"KeyObject": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {},
-				"from": "function"
-			},
-			"checkPrime": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"checkPrimeSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"createDiffieHellman": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"createDiffieHellmanGroup": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
 			"createHash": {
 				"__proto": "function",
 				"__type": "function",
@@ -7638,63 +5565,74 @@
 				"name": "string",
 				"_prototype": {}
 			},
-			"createPrivateKey": {
+			"getHashes": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"0": "string",
+					"1": "string",
+					"2": "string",
+					"3": "string",
+					"4": "string",
+					"5": "string",
+					"6": "string",
+					"7": "string",
+					"8": "string",
+					"9": "string",
+					"10": "string",
+					"11": "string",
+					"12": "string",
+					"13": "string",
+					"14": "string",
+					"15": "string",
+					"16": "string",
+					"length": "number",
+					"name": "undefined",
+					"prototype": "undefined",
+					"isArray": "undefined",
+					"from": "undefined",
+					"fromAsync": "undefined",
+					"of": "undefined"
+				}
+			},
+			"hkdf": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
 			},
-			"createPublicKey": {
+			"hkdfSync": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
 			},
-			"createSecretKey": {
+			"pbkdf2": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
 			},
-			"generateKey": {
+			"pbkdf2Sync": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
 			},
-			"generateKeyPair": {
+			"scrypt": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
 			},
-			"generateKeyPairSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"generateKeySync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"generatePrime": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"generatePrimeSync": {
+			"scryptSync": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -7754,129 +5692,6 @@
 					"of": "undefined"
 				}
 			},
-			"getDiffieHellman": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"getFips": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"getHashes": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"0": "string",
-					"1": "string",
-					"2": "string",
-					"3": "string",
-					"4": "string",
-					"5": "string",
-					"6": "string",
-					"7": "string",
-					"8": "string",
-					"9": "string",
-					"10": "string",
-					"11": "string",
-					"12": "string",
-					"13": "string",
-					"14": "string",
-					"15": "string",
-					"16": "string",
-					"length": "number",
-					"name": "undefined",
-					"prototype": "undefined",
-					"isArray": "undefined",
-					"from": "undefined",
-					"fromAsync": "undefined",
-					"of": "undefined"
-				}
-			},
-			"getRandomValues": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"hkdf": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"hkdfSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"pbkdf2": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"pbkdf2Sync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"randomBytes": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"randomFill": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"randomFillSync": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"randomInt": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"randomUUID": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
 			"secureHeapUsed": {
 				"__proto": "function",
 				"__type": "function",
@@ -7922,6 +5737,24 @@
 				"name": "string",
 				"_prototype": {}
 			},
+			"timingSafeEqual": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getFips": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
 			"setFips": {
 				"__proto": "function",
 				"__type": "function",
@@ -7929,6 +5762,7 @@
 				"name": "string",
 				"_prototype": {}
 			},
+			"fips": "boolean",
 			"subtle": {
 				"encrypt": {
 					"__proto": "function",
@@ -8009,39 +5843,7 @@
 					"name": "string"
 				}
 			},
-			"timingSafeEqual": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"fips": "boolean",
 			"webcrypto": {
-				"CryptoKey": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {}
-				},
-				"getRandomValues": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				},
-				"randomUUID": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
 				"subtle": {
 					"encrypt": {
 						"__proto": "function",
@@ -8121,7 +5923,68 @@
 						"length": "number",
 						"name": "string"
 					}
+				},
+				"getRandomValues": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"randomUUID": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"DigestStream": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": "object"
 				}
+			},
+			"Certificate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"verifySpkac": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"exportPublicKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"exportChallenge": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				},
+				"exportChallenge": "function",
+				"exportPublicKey": "function",
+				"verifySpkac": "function"
+			},
+			"X509Certificate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			}
 		},
 		"diagnostics_channel": {
@@ -8737,580 +6600,21 @@
 			}
 		},
 		"process": {
-			"_debugEnd": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_debugProcess": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_events": {},
-			"_eventsCount": "number",
-			"_exiting": "boolean",
-			"_fatalException": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_getActiveHandles": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_getActiveRequests": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_kill": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_linkedBinding": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_maxListeners": "number",
-			"_preload_modules": {},
-			"_rawDebug": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_startProfilerIdleNotifier": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_stopProfilerIdleNotifier": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_tickCallback": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"abort": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"addListener": {
+			"nextTick": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
 			},
-			"allowedNodeEnvironmentFlags": {},
-			"arch": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"argv": {},
-			"argv0": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"assert": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"availableMemory": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"binding": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"chdir": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"config": {},
-			"constrainedMemory": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"cpuUsage": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"cwd": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"debugPort": "number",
-			"dlopen": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"domain": {
-				"__proto": "object",
-				"__type": "function",
-				"length": "function",
-				"name": "function",
-				"_prototype": "function"
-			},
-			"emit": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"emitWarning": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"eventNames": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"execArgv": {},
-			"execPath": {
-				"__proto": "object",
-				"__type": "string"
-			},
+			"env": {},
 			"exit": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"exitCode": "number",
-			"features": {
-				"inspector": "undefined",
-				"debug": "undefined",
-				"uv": "undefined",
-				"ipv6": "undefined",
-				"tls_alpn": "undefined",
-				"tls_sni": "undefined",
-				"tls_ocsp": "undefined",
-				"tls": "undefined",
-				"cached_builtins": "undefined"
-			},
-			"getActiveResourcesInfo": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"getMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"getegid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
 				"_prototype": {}
 			},
-			"geteuid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"getgid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"getgroups": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"getuid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"hasUncaughtExceptionCaptureCallback": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"hrtime": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {},
-				"bigint": "function"
-			},
-			"initgroups": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"kill": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"listenerCount": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"listeners": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"loadEnvFile": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"memoryUsage": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"rss": "function"
-			},
-			"moduleLoadList": {},
-			"off": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"on": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"once": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"openStdin": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"pid": "number",
-			"platform": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"ppid": "number",
-			"prependListener": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"prependOnceListener": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"rawListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"reallyExit": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"release": {
-				"name": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"lts": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"sourceUrl": "undefined",
-				"headersUrl": "undefined"
-			},
-			"removeAllListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"removeListener": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"report": {
-				"compact": "undefined",
-				"directory": "undefined",
-				"filename": "undefined",
-				"getReport": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"__unenv__": "boolean"
-				},
-				"reportOnFatalError": "undefined",
-				"reportOnSignal": "undefined",
-				"reportOnUncaughtException": "undefined",
-				"signal": "undefined",
-				"writeReport": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"__unenv__": "boolean"
-				}
-			},
-			"resourceUsage": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"setMaxListeners": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"setSourceMapsEnabled": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"setUncaughtExceptionCaptureCallback": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"setegid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"seteuid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"setgid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"setgroups": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"setuid": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"sourceMapsEnabled": "boolean",
-			"stderr": {
-				"__proto": "object",
-				"__type": "function",
-				"length": "function",
-				"name": "function",
-				"_prototype": "function"
-			},
-			"stdin": {
-				"__proto": "object",
-				"__type": "function",
-				"length": "function",
-				"name": "function",
-				"_prototype": "function"
-			},
-			"stdout": {
-				"__proto": "object",
-				"__type": "function",
-				"length": "function",
-				"name": "function",
-				"_prototype": "function"
-			},
-			"title": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"umask": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"uptime": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"version": {
-				"__proto": "object",
-				"__type": "string"
-			},
-			"versions": {
-				"ares": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"http_parser": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"icu": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"modules": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"node": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"openssl": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"uv": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"v8": {
-					"__proto": "object",
-					"__type": "string"
-				},
-				"zlib": {
-					"__proto": "object",
-					"__type": "string"
-				}
-			},
-			"env": {},
 			"getBuiltinModule": {
 				"__proto": "function",
 				"__type": "function",
@@ -9318,12 +6622,9 @@
 				"name": "string",
 				"_prototype": {}
 			},
-			"nextTick": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
+			"platform": {
+				"__proto": "object",
+				"__type": "string"
 			}
 		},
 		"stream": {
@@ -13191,73 +10492,75 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": {
-					"auth": "object",
-					"hash": "object",
-					"host": "object",
-					"hostname": "object",
-					"href": "object",
-					"path": "object",
-					"pathname": "object",
+					"parse": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"format": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"resolveObject": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"resolve": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"parseHost": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
 					"protocol": "object",
-					"search": "object",
 					"slashes": "object",
+					"auth": "object",
+					"host": "object",
 					"port": "object",
+					"hostname": "object",
+					"hash": "object",
+					"search": "object",
 					"query": "object",
+					"pathname": "object",
+					"path": "object",
+					"href": "object",
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
 				}
 			},
 			"default": {
-				"Url": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"auth": "object",
-						"hash": "object",
-						"host": "object",
-						"hostname": "object",
-						"href": "object",
-						"path": "object",
-						"pathname": "object",
-						"protocol": "object",
-						"search": "object",
-						"slashes": "object",
-						"port": "object",
-						"query": "object",
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"parse": {
+				"domainToASCII": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
 					"name": "string",
 					"_prototype": {}
 				},
-				"resolve": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {}
-				},
-				"resolveObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"format": {
+				"domainToUnicode": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
@@ -13300,14 +10603,7 @@
 						"forEach": "function"
 					}
 				},
-				"domainToASCII": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {}
-				},
-				"domainToUnicode": {
+				"fileURLToPath": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
@@ -13321,12 +10617,16 @@
 					"name": "string",
 					"_prototype": {}
 				},
-				"fileURLToPath": {
+				"toPathIfFileURL": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
 					"name": "string",
-					"_prototype": {}
+					"_prototype": {
+						"length": "undefined",
+						"name": "undefined",
+						"prototype": "undefined"
+					}
 				},
 				"urlToHttpOptions": {
 					"__proto": "function",
@@ -13334,6 +10634,104 @@
 					"length": "number",
 					"name": "string",
 					"_prototype": {}
+				},
+				"format": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": {}
+				},
+				"parse": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": {}
+				},
+				"resolve": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": {}
+				},
+				"resolveObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": {
+						"length": "undefined",
+						"name": "undefined",
+						"prototype": "undefined"
+					}
+				},
+				"Url": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": {
+						"parse": {
+							"__proto": "function",
+							"__type": "function",
+							"length": "number",
+							"name": "string",
+							"_prototype": {}
+						},
+						"format": {
+							"__proto": "function",
+							"__type": "function",
+							"length": "number",
+							"name": "string",
+							"_prototype": {
+								"length": "undefined",
+								"name": "undefined",
+								"prototype": "undefined"
+							}
+						},
+						"resolveObject": {
+							"__proto": "function",
+							"__type": "function",
+							"length": "number",
+							"name": "string",
+							"_prototype": {}
+						},
+						"resolve": {
+							"__proto": "function",
+							"__type": "function",
+							"length": "number",
+							"name": "string",
+							"_prototype": {}
+						},
+						"parseHost": {
+							"__proto": "function",
+							"__type": "function",
+							"length": "number",
+							"name": "string",
+							"_prototype": {
+								"length": "undefined",
+								"name": "undefined",
+								"prototype": "undefined"
+							}
+						},
+						"protocol": "object",
+						"slashes": "object",
+						"auth": "object",
+						"host": "object",
+						"port": "object",
+						"hostname": "object",
+						"hash": "object",
+						"search": "object",
+						"query": "object",
+						"pathname": "object",
+						"path": "object",
+						"href": "object",
+						"length": "undefined",
+						"name": "undefined",
+						"prototype": "undefined"
+					}
 				}
 			},
 			"domainToASCII": {
@@ -13396,6 +10794,17 @@
 					"prototype": "undefined"
 				}
 			},
+			"toPathIfFileURL": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
 			"urlToHttpOptions": {
 				"__proto": "function",
 				"__type": "function",
@@ -13405,644 +10814,6 @@
 			}
 		},
 		"util": {
-			"_errnoException": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"_exceptionWithHostPort": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"getSystemErrorMap": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"getSystemErrorName": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"isArray": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isBoolean": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isBuffer": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isDate": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isDeepStrictEqual": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isError": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isFunction": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isNull": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isNullOrUndefined": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isNumber": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isObject": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isPrimitive": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isRegExp": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isString": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isSymbol": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"isUndefined": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"parseEnv": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"styleText": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"__unenv__": "boolean"
-			},
-			"MIMEParams": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"delete": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"get": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"has": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"set": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"entries": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"keys": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"values": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"toString": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"toJSON": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"length": "undefined",
-					"name": "undefined",
-					"arguments": "undefined",
-					"caller": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"MIMEType": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": "object"
-			},
-			"TextDecoder": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"arguments": "undefined",
-					"caller": "undefined",
-					"prototype": "undefined",
-					"decode": "function",
-					"encoding": "string",
-					"fatal": "boolean",
-					"ignoreBOM": "boolean"
-				}
-			},
-			"TextEncoder": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"arguments": "undefined",
-					"caller": "undefined",
-					"prototype": "undefined",
-					"encode": "function",
-					"encodeInto": "function",
-					"encoding": "string"
-				}
-			},
-			"_extend": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"aborted": {
-				"__proto": "object",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"callbackify": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"debug": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "number",
-					"name": "string",
-					"enabled": "boolean",
-					"prototype": "undefined"
-				}
-			},
-			"debuglog": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "number",
-					"name": "string",
-					"enabled": "boolean",
-					"prototype": "undefined"
-				}
-			},
-			"deprecate": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"format": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"formatWithOptions": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"inherits": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"inspect": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined",
-					"custom": "undefined",
-					"defaultOptions": "undefined",
-					"colors": "undefined",
-					"styles": "undefined"
-				},
-				"custom": "symbol",
-				"defaultOptions": {
-					"showHidden": "boolean",
-					"depth": "number",
-					"colors": "boolean",
-					"customInspect": "boolean",
-					"showProxy": "boolean",
-					"maxArrayLength": "number",
-					"maxStringLength": "number",
-					"breakLength": "number",
-					"compact": "number",
-					"sorted": "boolean",
-					"getters": "boolean",
-					"numericSeparator": "boolean"
-				},
-				"colors": {
-					"reset": {
-						"0": "number",
-						"1": "number"
-					},
-					"bold": {
-						"0": "number",
-						"1": "number"
-					},
-					"dim": {
-						"0": "number",
-						"1": "number"
-					},
-					"italic": {
-						"0": "number",
-						"1": "number"
-					},
-					"underline": {
-						"0": "number",
-						"1": "number"
-					},
-					"blink": {
-						"0": "number",
-						"1": "number"
-					},
-					"inverse": {
-						"0": "number",
-						"1": "number"
-					},
-					"hidden": {
-						"0": "number",
-						"1": "number"
-					},
-					"strikethrough": {
-						"0": "number",
-						"1": "number"
-					},
-					"doubleunderline": {
-						"0": "number",
-						"1": "number"
-					},
-					"black": {
-						"0": "number",
-						"1": "number"
-					},
-					"red": {
-						"0": "number",
-						"1": "number"
-					},
-					"green": {
-						"0": "number",
-						"1": "number"
-					},
-					"yellow": {
-						"0": "number",
-						"1": "number"
-					},
-					"blue": {
-						"0": "number",
-						"1": "number"
-					},
-					"magenta": {
-						"0": "number",
-						"1": "number"
-					},
-					"cyan": {
-						"0": "number",
-						"1": "number"
-					},
-					"white": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgBlack": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgRed": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgGreen": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgYellow": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgBlue": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgMagenta": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgCyan": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgWhite": {
-						"0": "number",
-						"1": "number"
-					},
-					"framed": {
-						"0": "number",
-						"1": "number"
-					},
-					"overlined": {
-						"0": "number",
-						"1": "number"
-					},
-					"gray": {
-						"0": "number",
-						"1": "number"
-					},
-					"redBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"greenBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"yellowBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"blueBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"magentaBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"cyanBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"whiteBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgGray": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgRedBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgGreenBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgYellowBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgBlueBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgMagentaBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgCyanBright": {
-						"0": "number",
-						"1": "number"
-					},
-					"bgWhiteBright": {
-						"0": "number",
-						"1": "number"
-					}
-				},
-				"styles": {
-					"special": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"number": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"bigint": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"boolean": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"undefined": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"null": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"string": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"symbol": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"date": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"name": "undefined",
-					"regexp": {
-						"__proto": "object",
-						"__type": "string"
-					},
-					"module": {
-						"__proto": "object",
-						"__type": "string"
-					}
-				}
-			},
-			"log": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"parseArgs": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"promisify": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {},
-				"custom": "symbol"
-			},
-			"stripVTControlCharacters": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"toUSVString": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"transferableAbortController": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"transferableAbortSignal": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
 			"types": {
 				"isCryptoKey": {
 					"__proto": "function",
@@ -14305,6 +11076,545 @@
 					"__type": "function",
 					"length": "number",
 					"name": "string"
+				}
+			},
+			"callbackify": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"promisify": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {},
+				"custom": "symbol"
+			},
+			"inspect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"custom": "undefined",
+					"defaultOptions": "undefined",
+					"colors": "undefined",
+					"styles": "undefined"
+				},
+				"custom": "symbol",
+				"defaultOptions": {
+					"showHidden": "boolean",
+					"depth": "number",
+					"colors": "boolean",
+					"customInspect": "boolean",
+					"showProxy": "boolean",
+					"maxArrayLength": "number",
+					"maxStringLength": "number",
+					"breakLength": "number",
+					"compact": "number",
+					"sorted": "boolean",
+					"getters": "boolean",
+					"numericSeparator": "boolean"
+				},
+				"colors": {
+					"reset": {
+						"0": "number",
+						"1": "number"
+					},
+					"bold": {
+						"0": "number",
+						"1": "number"
+					},
+					"dim": {
+						"0": "number",
+						"1": "number"
+					},
+					"italic": {
+						"0": "number",
+						"1": "number"
+					},
+					"underline": {
+						"0": "number",
+						"1": "number"
+					},
+					"blink": {
+						"0": "number",
+						"1": "number"
+					},
+					"inverse": {
+						"0": "number",
+						"1": "number"
+					},
+					"hidden": {
+						"0": "number",
+						"1": "number"
+					},
+					"strikethrough": {
+						"0": "number",
+						"1": "number"
+					},
+					"doubleunderline": {
+						"0": "number",
+						"1": "number"
+					},
+					"black": {
+						"0": "number",
+						"1": "number"
+					},
+					"red": {
+						"0": "number",
+						"1": "number"
+					},
+					"green": {
+						"0": "number",
+						"1": "number"
+					},
+					"yellow": {
+						"0": "number",
+						"1": "number"
+					},
+					"blue": {
+						"0": "number",
+						"1": "number"
+					},
+					"magenta": {
+						"0": "number",
+						"1": "number"
+					},
+					"cyan": {
+						"0": "number",
+						"1": "number"
+					},
+					"white": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgBlack": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgRed": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgGreen": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgYellow": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgBlue": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgMagenta": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgCyan": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgWhite": {
+						"0": "number",
+						"1": "number"
+					},
+					"framed": {
+						"0": "number",
+						"1": "number"
+					},
+					"overlined": {
+						"0": "number",
+						"1": "number"
+					},
+					"gray": {
+						"0": "number",
+						"1": "number"
+					},
+					"redBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"greenBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"yellowBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"blueBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"magentaBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"cyanBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"whiteBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgGray": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgRedBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgGreenBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgYellowBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgBlueBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgMagentaBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgCyanBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgWhiteBright": {
+						"0": "number",
+						"1": "number"
+					}
+				},
+				"styles": {
+					"special": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"number": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"bigint": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"boolean": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"undefined": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"null": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"string": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"symbol": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"date": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"name": "undefined",
+					"regexp": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"module": {
+						"__proto": "object",
+						"__type": "string"
+					}
+				}
+			},
+			"format": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"formatWithOptions": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"stripVTControlCharacters": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"inherits": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"_extend": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"MIMEParams": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"delete": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"get": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"has": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"set": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"entries": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"keys": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"values": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"toString": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"toJSON": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"length": "undefined",
+					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"MIMEType": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": "object"
+			},
+			"toUSVString": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"log": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"aborted": {
+				"__proto": "object",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"debuglog": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "number",
+					"name": "string",
+					"enabled": "boolean",
+					"prototype": "undefined"
+				}
+			},
+			"debug": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "number",
+					"name": "string",
+					"enabled": "boolean",
+					"prototype": "undefined"
+				}
+			},
+			"deprecate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"TextEncoder": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
+					"prototype": "undefined",
+					"encode": "function",
+					"encodeInto": "function",
+					"encoding": "string"
+				}
+			},
+			"TextDecoder": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
+					"prototype": "undefined",
+					"decode": "function",
+					"encoding": "string",
+					"fatal": "boolean",
+					"ignoreBOM": "boolean"
+				}
+			},
+			"parseArgs": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"transferableAbortController": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"transferableAbortSignal": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getCallSite": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"0": "object",
+					"1": "object",
+					"length": "number",
+					"name": "undefined",
+					"prototype": "undefined",
+					"isArray": "undefined",
+					"from": "undefined",
+					"fromAsync": "undefined",
+					"of": "undefined"
+				}
+			},
+			"isDeepStrictEqual": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"isArray": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
 				}
 			}
 		},
