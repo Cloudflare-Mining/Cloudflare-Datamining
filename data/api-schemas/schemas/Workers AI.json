@@ -601,6 +601,25 @@
 							},
 							{
 								"properties": {
+									"lang": {
+										"default": "en",
+										"description": "The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified",
+										"type": "string"
+									},
+									"prompt": {
+										"description": "A text description of the image you want to generate",
+										"minLength": 1,
+										"type": "string"
+									}
+								},
+								"required": [
+									"prompt"
+								],
+								"title": "Text To Speech",
+								"type": "object"
+							},
+							{
+								"properties": {
 									"text": {
 										"oneOf": [
 											{
@@ -1170,6 +1189,26 @@
 											"format": "binary",
 											"title": "Text To Image",
 											"type": "string"
+										},
+										{
+											"oneOf": [
+												{
+													"properties": {
+														"audio": {
+															"description": "The generated audio in MP3 format, base64-encoded",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"description": "The generated audio in MP3 format",
+													"format": "binary",
+													"type": "string"
+												}
+											],
+											"title": "Text To Speech",
+											"type": "object"
 										},
 										{
 											"properties": {
