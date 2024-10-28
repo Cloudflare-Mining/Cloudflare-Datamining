@@ -2032,9 +2032,43 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"account_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"created": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
 												"filename": {
-													"description": "Name of LOA document.",
-													"example": "document.pdf",
+													"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
+													"example": "site_loa_doc.pdf",
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier for the uploaded LOA document.",
+													"example": "d933b1530bc56c9953cf8ce166da8004",
+													"maxLength": 32,
+													"nullable": true,
+													"type": "string"
+												},
+												"size_bytes": {
+													"description": "File size of the uploaded LOA document.",
+													"example": 444,
+													"type": "integer"
+												},
+												"verified": {
+													"description": "Whether the LOA has been verified by Cloudflare staff.",
+													"example": true,
+													"type": "boolean"
+												},
+												"verified_at": {
+													"description": "Timestamp of the moment the LOA was marked as validated.",
+													"format": "date-time",
+													"nullable": true,
 													"type": "string"
 												}
 											},
@@ -2124,9 +2158,43 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"account_id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"created": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
 														"filename": {
-															"description": "Name of LOA document.",
-															"example": "document.pdf",
+															"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
+															"example": "site_loa_doc.pdf",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier for the uploaded LOA document.",
+															"example": "d933b1530bc56c9953cf8ce166da8004",
+															"maxLength": 32,
+															"nullable": true,
+															"type": "string"
+														},
+														"size_bytes": {
+															"description": "File size of the uploaded LOA document.",
+															"example": 444,
+															"type": "integer"
+														},
+														"verified": {
+															"description": "Whether the LOA has been verified by Cloudflare staff.",
+															"example": true,
+															"type": "boolean"
+														},
+														"verified_at": {
+															"description": "Timestamp of the moment the LOA was marked as validated.",
+															"format": "date-time",
+															"nullable": true,
 															"type": "string"
 														}
 													},
