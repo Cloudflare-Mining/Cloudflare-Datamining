@@ -378,7 +378,15 @@
 	{
 		"id": "4dc8917b4b40457d88d3035d5dadb054",
 		"name": "AI Gateway Read",
-		"description": "Grants access to reading Ai Gateways",
+		"description": "Grants access to reading AI Gateways",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "644535f4ed854494a59cb289d634b257",
+		"name": "AI Gateway Run",
+		"description": "Grants access to run AI Gateways",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -386,7 +394,7 @@
 	{
 		"id": "6c8a3737f07f46369c1ea1f22138daaf",
 		"name": "AI Gateway Write",
-		"description": "Grants access to reading and editing Ai Gateways",
+		"description": "Grants access to reading and editing AI Gateways",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
