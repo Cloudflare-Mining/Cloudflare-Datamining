@@ -665,7 +665,7 @@
 	"api_shield.schema_validation_v2.validation.header.back_to_settings": "Back to Settings",
 	"api_shield.schema_validation_v2.validation.header.title": "Add validation",
 	"api_shield.schema_validation_v2.validation.header.description": "Provide an API schema in .yml, .yaml, or .json format. Cloudflare will match incoming traffic against the schema and block or log non-compliant traffic.",
-	"api_shield.schema_validation_v2.validation.upload.helper": "Maximum upload size is 5 MB",
+	"api_shield.schema_validation_v2.validation.upload.helper": "Maximum upload size is %{maxSize} MB",
 	"api_shield.schema_validation_v2.validation.set_action.title": "Set action",
 	"api_shield.schema_validation_v2.validation.set_action.description": "For the endpoints protected by this schema, specify what should happen when non-compliant requests to these endpoints are found.",
 	"api_shield.schema_validation_v2.validation.action.default.helper": "Use the zone default action against non-compliant requests. <br/> Default currently set to: <strong>%{defaultMitigationAction}</strong>",
