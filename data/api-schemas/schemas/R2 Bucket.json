@@ -1929,6 +1929,281 @@
 			]
 		}
 	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain_name}": {
+		"description": "Get the configuration for a custom domain on an existing R2 bucket.",
+		"operationId": "r2-get-custom-domain-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the custom domain",
+					"example": "example-domain/custom-domain.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"example": {
+														"domain": "prefix.example-domain.one.com",
+														"enabled": false,
+														"status": {
+															"ownership": "deactivated",
+															"ssl": "pending"
+														},
+														"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd",
+														"zoneName": "example-domain.one.com"
+													},
+													"properties": {
+														"domain": {
+															"description": "Domain name of the custom domain to be added",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether this bucket is publicly accessible at the specified custom domain",
+															"type": "boolean"
+														},
+														"minTLS": {
+															"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
+															"enum": [
+																"1.0",
+																"1.1",
+																"1.2",
+																"1.3"
+															],
+															"type": "string"
+														},
+														"status": {
+															"properties": {
+																"ownership": {
+																	"description": "Ownership status of the domain",
+																	"enum": [
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"blocked",
+																		"error",
+																		"unknown"
+																	],
+																	"type": "string"
+																},
+																"ssl": {
+																	"description": "SSL certificate status",
+																	"enum": [
+																		"initializing",
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"error",
+																		"unknown"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"ssl",
+																"ownership"
+															],
+															"type": "object"
+														},
+														"zoneId": {
+															"description": "Zone ID of the custom domain resides in",
+															"type": "string"
+														},
+														"zoneName": {
+															"description": "Zone that the custom domain resides in",
+															"type": "string"
+														}
+													},
+													"required": [
+														"domain",
+														"status",
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Custom Domain Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Custom Domain Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Custom Domain Settings",
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.list"
+			]
+		}
+	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"description": "Gets state of public access over the bucket's R2-managed (r2.dev) domain.",
 		"operationId": "r2-get-bucket-public-policy",
