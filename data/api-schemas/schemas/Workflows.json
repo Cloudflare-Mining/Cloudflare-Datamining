@@ -2478,46 +2478,43 @@
 									"type": "array"
 								},
 								"result": {
-									"items": {
-										"properties": {
-											"id": {
-												"maxLength": 64,
-												"minLength": 1,
-												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-												"type": "string"
-											},
-											"status": {
-												"enum": [
-													"queued",
-													"running",
-													"paused",
-													"errored",
-													"terminated",
-													"complete",
-													"waitingForPause",
-													"waiting",
-													"unknown"
-												],
-												"type": "string"
-											},
-											"version_id": {
-												"format": "uuid",
-												"type": "string"
-											},
-											"workflow_id": {
-												"format": "uuid",
-												"type": "string"
-											}
+									"properties": {
+										"id": {
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+											"type": "string"
 										},
-										"required": [
-											"id",
-											"workflow_id",
-											"version_id",
-											"status"
-										],
-										"type": "object"
+										"status": {
+											"enum": [
+												"queued",
+												"running",
+												"paused",
+												"errored",
+												"terminated",
+												"complete",
+												"waitingForPause",
+												"waiting",
+												"unknown"
+											],
+											"type": "string"
+										},
+										"version_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"workflow_id": {
+											"format": "uuid",
+											"type": "string"
+										}
 									},
-									"type": "array"
+									"required": [
+										"id",
+										"workflow_id",
+										"version_id",
+										"status"
+									],
+									"type": "object"
 								},
 								"result_info": {
 									"properties": {

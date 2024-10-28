@@ -526,6 +526,14 @@
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																							"type": "string"
 																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
+																							"type": "string"
+																						},
 																						"transform_jsonata": {
 																							"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																							"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -889,6 +897,14 @@
 																						"schema": {
 																							"description": "Which SCIM resource type this mapping applies to.",
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																							"type": "string"
+																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
 																							"type": "string"
 																						},
 																						"transform_jsonata": {
@@ -1435,6 +1451,14 @@
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																							"type": "string"
 																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
+																							"type": "string"
+																						},
 																						"transform_jsonata": {
 																							"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																							"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -1811,6 +1835,14 @@
 																						"schema": {
 																							"description": "Which SCIM resource type this mapping applies to.",
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																							"type": "string"
+																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
 																							"type": "string"
 																						},
 																						"transform_jsonata": {
@@ -2191,6 +2223,14 @@
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																							"type": "string"
 																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
+																							"type": "string"
+																						},
 																						"transform_jsonata": {
 																							"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																							"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -2472,6 +2512,14 @@
 																						"schema": {
 																							"description": "Which SCIM resource type this mapping applies to.",
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																							"type": "string"
+																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
 																							"type": "string"
 																						},
 																						"transform_jsonata": {
@@ -2757,6 +2805,14 @@
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																							"type": "string"
 																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
+																							"type": "string"
+																						},
 																						"transform_jsonata": {
 																							"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																							"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -3038,6 +3094,14 @@
 																						"schema": {
 																							"description": "Which SCIM resource type this mapping applies to.",
 																							"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																							"type": "string"
+																						},
+																						"strictness": {
+																							"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																							"enum": [
+																								"strict",
+																								"passthrough"
+																							],
 																							"type": "string"
 																						},
 																						"transform_jsonata": {
@@ -3512,6 +3576,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -3875,6 +3947,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -4421,6 +4501,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -4797,6 +4885,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -5177,6 +5273,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -5458,6 +5562,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -5743,6 +5855,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -6024,6 +6144,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -6730,6 +6858,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -7093,6 +7229,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -7639,6 +7783,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -8015,6 +8167,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -8395,6 +8555,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -8676,6 +8844,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -8961,6 +9137,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -9242,6 +9426,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -9565,6 +9757,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -9930,6 +10130,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -10476,6 +10684,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -10852,6 +11068,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -11232,6 +11456,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -11513,6 +11745,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -11798,6 +12038,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -12081,6 +12329,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -12329,6 +12585,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -12694,6 +12958,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -13240,6 +13512,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -13616,6 +13896,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -13996,6 +14284,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -14277,6 +14573,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -14562,6 +14866,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -14843,6 +15155,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -15415,6 +15735,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -15778,6 +16106,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -16324,6 +16660,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -16700,6 +17044,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -17080,6 +17432,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -17361,6 +17721,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -17646,6 +18014,14 @@
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																	"type": "string"
 																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
+																	"type": "string"
+																},
 																"transform_jsonata": {
 																	"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																	"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -17927,6 +18303,14 @@
 																"schema": {
 																	"description": "Which SCIM resource type this mapping applies to.",
 																	"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																	"type": "string"
+																},
+																"strictness": {
+																	"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																	"enum": [
+																		"strict",
+																		"passthrough"
+																	],
 																	"type": "string"
 																},
 																"transform_jsonata": {
@@ -18250,6 +18634,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -18615,6 +19007,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -19161,6 +19561,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -19537,6 +19945,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -19917,6 +20333,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -20198,6 +20622,14 @@
 																							"schema": {
 																								"description": "Which SCIM resource type this mapping applies to.",
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																								"type": "string"
+																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
 																								"type": "string"
 																							},
 																							"transform_jsonata": {
@@ -20483,6 +20915,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -20766,6 +21206,14 @@
 																								"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																								"type": "string"
 																							},
+																							"strictness": {
+																								"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																								"enum": [
+																									"strict",
+																									"passthrough"
+																								],
+																								"type": "string"
+																							},
 																							"transform_jsonata": {
 																								"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																								"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -21014,6 +21462,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -21379,6 +21835,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -21925,6 +22389,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -22301,6 +22773,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -22681,6 +23161,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -22962,6 +23450,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
@@ -23247,6 +23743,14 @@
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
 																						"type": "string"
 																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
+																						"type": "string"
+																					},
 																					"transform_jsonata": {
 																						"description": "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.",
 																						"example": "$merge([$, {'userName': $substringBefore($.userName, '@') & '+test@' & $substringAfter($.userName, '@')}])",
@@ -23528,6 +24032,14 @@
 																					"schema": {
 																						"description": "Which SCIM resource type this mapping applies to.",
 																						"example": "urn:ietf:params:scim:schemas:core:2.0:User",
+																						"type": "string"
+																					},
+																					"strictness": {
+																						"description": "The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.",
+																						"enum": [
+																							"strict",
+																							"passthrough"
+																						],
 																						"type": "string"
 																					},
 																					"transform_jsonata": {
