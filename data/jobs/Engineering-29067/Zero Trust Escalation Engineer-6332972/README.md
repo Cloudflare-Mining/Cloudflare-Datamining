@@ -5,27 +5,57 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Team</strong></p>
-<p>The Cloudflare One Engineering Team builds products and technologies that connect and secure organizations infrastructure, networks, devices and users. Our Zero Trust security and Network-as-a-Service products provide highly secure and reliable connectivity to data centers and endpoints and also protect users and systems from security and privacy risks.</p>
-<p>The Zero Trust Clients team provides an important component to both connectivity and security in the Cloudflare One Agent and server side Cloudflare Tunnel. These components truly are the foundation of our entire Zero Trust Security suite.</p>
-<h4>What you'll do</h4>
-<p>The Engineering Director will lead a group of engineering teams building and operating the technologies that power Cloudflare’s Zero Trust client solutions. This role will deliver high quality products that support and drive the Zero Trust solutions by managing all aspects of the group’s organization, planning, and execution. The Engineering Director will manage, mentor, and develop Engineer Managers while building a high functioning engineering team. The Director will also manage relationships and communication with other organizations in Cloudflare, representing the team and advocating for its needs.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>A qualified candidate will be equally skilled with people and technology, able to organize and inspire others while participating in technical discussions and planning.&nbsp;</p>
-<ul>
-	<li>Experience managing engineering managers.</li>
-	<li>Experience managing complex projects with external dependencies</li>
-	<li>Results and metrics driven</li>
-	<li>A strong attention to detail</li>
-	<li>Great communication skills</li>
-	<li>Experience hiring great engineers</li>
-	<li>A kind and generous attitude towards customers and coworkers alike</li>
-</ul>
+<h2>What you’ll do</h2>
+<p>As a member of the Zero Trust Escalation Engineering team, you will play a key role in addressing technical issues experienced by customers and internal users in all layers of our Zero Trust offering (Gateway SWG, Gateway Resolver, ZTNA Access, Infrastructure Access, Browser Isolation, Data Loss Prevention).</p>
 <p>&nbsp;</p>
-<p><strong>Bonus Points</strong></p>
+<p>As the goto person for problem management of the most complex issues, you will collaborate with multiple Zero Trust teams to triage, prioritize, reproduce, evaluate impact, delve into client or server logs and source code, and methodically determine root causes. You will communicate updates and estimated time of resolution to stakeholders, including senior management.</p>
+<p>&nbsp;</p>
+<p>The interconnectedness of our products will require you to use a wide range of advanced troubleshooting strategies and tools to reproduce and solve the most complex problems. You will need to have a broad, in-depth product knowledge and technical understanding, spanning multiple teams within the Zero Trust organization.</p>
+<p>&nbsp;</p>
+<p>In addition to driving issue resolutions, you will contribute to the enhancement of operational efficiency. You will develop tooling, write thorough documentation, refine processes, and identify patterns to elevate the quality and efficiency of our management of issues, as well as our software development process.</p>
+<h2>Examples of desirable skills, knowledge, and experience</h2>
 <ul>
-	<li>Experience with mobile and desktop applications</li>
-	<li>Experience with networking</li>
+	<li>Depth of knowledge in our Zero Trust product portfolio, technologies, and customer use cases</li>
+	<li>Demonstrable experience with network-related software and underlying Internet technologies between L4 and L7 (TCP/UDP, DNS, VPNs, VLANs, proxies, etc.)</li>
+	<li>Experience working with and debugging man-in-the-middle TLS terminating proxies</li>
+	<li>Knowledgeable of DNS over HTTPS (DoH), DNS over TLS (DoT), and related DNS protocols</li>
+	<li>Proven track record in tracking and solving problems within complex and distributed environments, both on desktop and on the edge/in the cloud.</li>
+	<li>Experience capturing and analyzing network data captures to troubleshoot network-related issues (network connectivity, data loss, etc.)</li>
+	<li>Strong experience in writing scripts or actual code, ideally in languages such as Python, Rust, or Go.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $140,000 - $172,000.</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $158,000 - $193,000.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000 - $202,000.</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
