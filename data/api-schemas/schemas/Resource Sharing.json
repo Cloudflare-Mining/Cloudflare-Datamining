@@ -3110,13 +3110,13 @@
 			"pro": false
 		}
 	},
-	"GET /organizations/{organization_identifier}/shares": {
+	"GET /organizations/{organization_id}/shares": {
 		"description": "Lists all organization shares.",
 		"operationId": "organization-shares-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Organization identifier.",
