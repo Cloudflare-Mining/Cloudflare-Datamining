@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.3.6
+
+### Patch Changes
+
+- 3dc96a8751: Move beta tag out of Heading tag
+
 ## 9.3.5
 
 ### Patch Changes
