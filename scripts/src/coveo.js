@@ -43,7 +43,8 @@ async function getCoveoResults(source, filterNoLanguage) {
 		agent,
 	});
 	if (!response.ok) {
-		throw new Error(`Failed to get initial results: ${response.status}`);
+		console.error(`Failed to get initial results: ${response.status}`);
+		return;
 	}
 	const results = await response.json();
 
@@ -114,6 +115,9 @@ const data = [
 ];
 for (const { source, filename, filterNoLanguage } of data) {
 	const results = await getCoveoResults(source, filterNoLanguage);
+	if (!results) {
+		continue;
+	}
 	await fs.writeFile(path.resolve(dir, filename), JSON.stringify(results, null, '\t'));
 }
 
