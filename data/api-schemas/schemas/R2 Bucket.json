@@ -2414,6 +2414,371 @@
 			]
 		}
 	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
+		"description": "Get object lifecycle rules for a bucket",
+		"operationId": "r2-get-bucket-lifecycle-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"rules": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"abortMultipartUploadsTransition": {
+																		"description": "Transition to abort ongoing multipart uploads",
+																		"properties": {
+																			"condition": {
+																				"allOf": [
+																					{
+																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																						"properties": {
+																							"maxAge": {
+																								"type": "integer"
+																							},
+																							"type": {
+																								"enum": [
+																									"Age"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"maxAge"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"conditions": {
+																		"description": "Conditions that apply to all transitions of this rule",
+																		"properties": {
+																			"prefix": {
+																				"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"prefix"
+																		],
+																		"type": "object"
+																	},
+																	"deleteObjectsTransition": {
+																		"description": "Transition to delete objects",
+																		"properties": {
+																			"condition": {
+																				"oneOf": [
+																					{
+																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																						"properties": {
+																							"maxAge": {
+																								"type": "integer"
+																							},
+																							"type": {
+																								"enum": [
+																									"Age"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"maxAge"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"description": "Condition for lifecycle transitions to apply on a specific date",
+																						"properties": {
+																							"date": {
+																								"format": "date",
+																								"type": "string"
+																							},
+																							"type": {
+																								"enum": [
+																									"Date"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"date"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"enabled": {
+																		"description": "Whether or not this rule is in effect",
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Unique identifier for this rule",
+																		"example": "Expire all objects older than 24 hours",
+																		"type": "string"
+																	},
+																	"storageClassTransitions": {
+																		"description": "Transitions to change the storage class of objects",
+																		"items": {
+																			"allOf": [
+																				{
+																					"properties": {
+																						"condition": {
+																							"oneOf": [
+																								{
+																									"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																									"properties": {
+																										"maxAge": {
+																											"type": "integer"
+																										},
+																										"type": {
+																											"enum": [
+																												"Age"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type",
+																										"maxAge"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"description": "Condition for lifecycle transitions to apply on a specific date",
+																									"properties": {
+																										"date": {
+																											"format": "date",
+																											"type": "string"
+																										},
+																										"type": {
+																											"enum": [
+																												"Date"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type",
+																										"date"
+																									],
+																									"type": "object"
+																								}
+																							]
+																						},
+																						"storageClass": {
+																							"enum": [
+																								"InfrequentAccess"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"condition",
+																						"storageClass"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"id",
+																	"conditions",
+																	"enabled"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Object Lifecycle Rules",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Gets configuration for Sippy for an existing R2 bucket.",
 		"operationId": "r2-get-bucket-sippy-config",
@@ -4127,6 +4492,372 @@
 				"com.cloudflare.edge.r2.bucket.write"
 			]
 		}
+	},
+	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
+		"description": "Set the object lifecycle rules for a bucket",
+		"operationId": "r2-put-bucket-lifecycle-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"rules": {
+								"items": {
+									"properties": {
+										"abortMultipartUploadsTransition": {
+											"description": "Transition to abort ongoing multipart uploads",
+											"properties": {
+												"condition": {
+													"allOf": [
+														{
+															"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+															"properties": {
+																"maxAge": {
+																	"type": "integer"
+																},
+																"type": {
+																	"enum": [
+																		"Age"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"maxAge"
+															],
+															"type": "object"
+														}
+													]
+												}
+											},
+											"type": "object"
+										},
+										"conditions": {
+											"description": "Conditions that apply to all transitions of this rule",
+											"properties": {
+												"prefix": {
+													"description": "Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads",
+													"type": "string"
+												}
+											},
+											"required": [
+												"prefix"
+											],
+											"type": "object"
+										},
+										"deleteObjectsTransition": {
+											"description": "Transition to delete objects",
+											"properties": {
+												"condition": {
+													"oneOf": [
+														{
+															"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+															"properties": {
+																"maxAge": {
+																	"type": "integer"
+																},
+																"type": {
+																	"enum": [
+																		"Age"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"maxAge"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Condition for lifecycle transitions to apply on a specific date",
+															"properties": {
+																"date": {
+																	"format": "date",
+																	"type": "string"
+																},
+																"type": {
+																	"enum": [
+																		"Date"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"date"
+															],
+															"type": "object"
+														}
+													]
+												}
+											},
+											"type": "object"
+										},
+										"enabled": {
+											"description": "Whether or not this rule is in effect",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "Unique identifier for this rule",
+											"example": "Expire all objects older than 24 hours",
+											"type": "string"
+										},
+										"storageClassTransitions": {
+											"description": "Transitions to change the storage class of objects",
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"condition": {
+																"oneOf": [
+																	{
+																		"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																		"properties": {
+																			"maxAge": {
+																				"type": "integer"
+																			},
+																			"type": {
+																				"enum": [
+																					"Age"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"maxAge"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "Condition for lifecycle transitions to apply on a specific date",
+																		"properties": {
+																			"date": {
+																				"format": "date",
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"Date"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"date"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"storageClass": {
+																"enum": [
+																	"InfrequentAccess"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"condition",
+															"storageClass"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"conditions",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Put Object Lifecycle Rules",
+		"tags": [
+			"R2 Bucket"
+		]
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Sets configuration for Sippy for an existing R2 bucket.",
