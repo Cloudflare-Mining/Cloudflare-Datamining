@@ -5449,5 +5449,654 @@
 				"#teams:report"
 			]
 		}
+	},
+	"GET /accounts/{accountTag}/devices/{deviceId}/fleet-status/live": {
+		"description": "Get the live status of a latest device given device_id from the device_state table",
+		"operationId": "devices-live-status",
+		"parameters": [
+			{
+				"description": "Unique identifier for account",
+				"in": "path",
+				"name": "accountTag",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Unique identifier for device",
+				"in": "path",
+				"name": "deviceId",
+				"required": true,
+				"schema": {
+					"description": "Device-specific ID, given as UUID v4",
+					"example": "cb49c27f-7f97-49c5-b6f3-f7c01ead0fd7",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Number of minutes before current time",
+				"in": "query",
+				"name": "since_minutes",
+				"required": true,
+				"schema": {
+					"default": 10,
+					"description": "Number of minutes before current time",
+					"example": 10,
+					"maximum": 60,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Number of minutes before current time",
+				"in": "query",
+				"name": "time_now",
+				"schema": {
+					"description": "Current time in ISO format",
+					"example": "2023-10-11T00:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "List of data centers to filter results",
+				"in": "query",
+				"name": "colo",
+				"schema": {
+					"description": "Cloudflare colo",
+					"example": "SJC",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"batteryCharging": {
+											"nullable": true,
+											"type": "boolean"
+										},
+										"batteryCycles": {
+											"format": "int64",
+											"nullable": true,
+											"type": "integer"
+										},
+										"batteryPct": {
+											"format": "float",
+											"nullable": true,
+											"type": "number"
+										},
+										"connectionType": {
+											"nullable": true,
+											"type": "string"
+										},
+										"cpuPct": {
+											"format": "float",
+											"nullable": true,
+											"type": "number"
+										},
+										"cpuPctByApp": {
+											"items": {
+												"items": {
+													"properties": {
+														"cpu_pct": {
+															"format": "float",
+															"type": "number"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"nullable": true,
+											"type": "array"
+										},
+										"deviceIpv4": {
+											"properties": {
+												"address": {
+													"nullable": true,
+													"type": "string"
+												},
+												"asn": {
+													"nullable": true,
+													"type": "integer"
+												},
+												"aso": {
+													"nullable": true,
+													"type": "string"
+												},
+												"location": {
+													"properties": {
+														"city": {
+															"nullable": true,
+															"type": "string"
+														},
+														"country_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"state_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"zip": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"netmask": {
+													"nullable": true,
+													"type": "string"
+												},
+												"version": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"deviceIpv6": {
+											"properties": {
+												"address": {
+													"nullable": true,
+													"type": "string"
+												},
+												"asn": {
+													"nullable": true,
+													"type": "integer"
+												},
+												"aso": {
+													"nullable": true,
+													"type": "string"
+												},
+												"location": {
+													"properties": {
+														"city": {
+															"nullable": true,
+															"type": "string"
+														},
+														"country_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"state_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"zip": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"netmask": {
+													"nullable": true,
+													"type": "string"
+												},
+												"version": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"diskReadBps": {
+											"format": "int64",
+											"nullable": true,
+											"type": "integer"
+										},
+										"diskUsagePct": {
+											"format": "float",
+											"nullable": true,
+											"type": "number"
+										},
+										"diskWriteBps": {
+											"format": "int64",
+											"nullable": true,
+											"type": "integer"
+										},
+										"firewallEnabled": {
+											"nullable": true,
+											"type": "boolean"
+										},
+										"gatewayIpv4": {
+											"properties": {
+												"address": {
+													"nullable": true,
+													"type": "string"
+												},
+												"asn": {
+													"nullable": true,
+													"type": "integer"
+												},
+												"aso": {
+													"nullable": true,
+													"type": "string"
+												},
+												"location": {
+													"properties": {
+														"city": {
+															"nullable": true,
+															"type": "string"
+														},
+														"country_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"state_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"zip": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"netmask": {
+													"nullable": true,
+													"type": "string"
+												},
+												"version": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"gatewayIpv6": {
+											"properties": {
+												"address": {
+													"nullable": true,
+													"type": "string"
+												},
+												"asn": {
+													"nullable": true,
+													"type": "integer"
+												},
+												"aso": {
+													"nullable": true,
+													"type": "string"
+												},
+												"location": {
+													"properties": {
+														"city": {
+															"nullable": true,
+															"type": "string"
+														},
+														"country_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"state_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"zip": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"netmask": {
+													"nullable": true,
+													"type": "string"
+												},
+												"version": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"ispIpv4": {
+											"properties": {
+												"address": {
+													"nullable": true,
+													"type": "string"
+												},
+												"asn": {
+													"nullable": true,
+													"type": "integer"
+												},
+												"aso": {
+													"nullable": true,
+													"type": "string"
+												},
+												"location": {
+													"properties": {
+														"city": {
+															"nullable": true,
+															"type": "string"
+														},
+														"country_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"state_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"zip": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"netmask": {
+													"nullable": true,
+													"type": "string"
+												},
+												"version": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"ispIpv6": {
+											"properties": {
+												"address": {
+													"nullable": true,
+													"type": "string"
+												},
+												"asn": {
+													"nullable": true,
+													"type": "integer"
+												},
+												"aso": {
+													"nullable": true,
+													"type": "string"
+												},
+												"location": {
+													"properties": {
+														"city": {
+															"nullable": true,
+															"type": "string"
+														},
+														"country_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"state_iso": {
+															"nullable": true,
+															"type": "string"
+														},
+														"zip": {
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"netmask": {
+													"nullable": true,
+													"type": "string"
+												},
+												"version": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"networkRcvdBps": {
+											"format": "int64",
+											"nullable": true,
+											"type": "integer"
+										},
+										"networkSentBps": {
+											"format": "int64",
+											"nullable": true,
+											"type": "integer"
+										},
+										"networkSsid": {
+											"nullable": true,
+											"type": "string"
+										},
+										"ramAvailableKb": {
+											"format": "int64",
+											"nullable": true,
+											"type": "integer"
+										},
+										"ramUsedPct": {
+											"format": "float",
+											"nullable": true,
+											"type": "number"
+										},
+										"ramUsedPctByApp": {
+											"items": {
+												"items": {
+													"properties": {
+														"name": {
+															"type": "string"
+														},
+														"ram_used_pct": {
+															"format": "float",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"nullable": true,
+											"type": "array"
+										},
+										"wifiStrengthDbm": {
+											"format": "int64",
+											"nullable": true,
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get the live status of a latest device"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get the live status of a latest device failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Get the live status of a latest device",
+		"tags": [
+			"DEX Synthetic Application Monitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
 	}
 }
