@@ -3360,6 +3360,10 @@
 				{
 					"name": "moduleFallback",
 					"annotations": {}
+				},
+				{
+					"name": "logging",
+					"annotations": {}
 				}
 			]
 		},
@@ -3431,6 +3435,36 @@
 				},
 				{
 					"name": "localDisk",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "entrypoint",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.logging",
+			"fields": [
+				{
+					"name": "none",
+					"annotations": {}
+				},
+				{
+					"name": "toService",
+					"annotations": {}
+				},
+				{
+					"name": "toServices",
 					"annotations": {}
 				}
 			]
@@ -3565,19 +3599,6 @@
 				},
 				{
 					"name": "memoryCache",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": {}
-				},
-				{
-					"name": "entrypoint",
 					"annotations": {}
 				}
 			]
