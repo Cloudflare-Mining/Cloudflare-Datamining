@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "64f7ebbc-c75e-5f47-bb01-2def9206d46e")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "de758df4-5854-5652-bcd5-efb7348da376")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -28,7 +28,7 @@
 			});
 			var e = n("../react/common/selectors/accountSelectors.ts"),
 				o = n("../react/utils/url.ts"),
-				c = n("../node_modules/query-string/query-string.js"),
+				c = n("../../../../node_modules/query-string/query-string.js"),
 				f = n.n(c),
 				s = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				g;
@@ -521,7 +521,7 @@
 				ke = n("../react/utils/translator.tsx"),
 				tt = n("../../../common/intl/intl-react/src/index.ts"),
 				Pe = n("../../../dash/intl/intl-translations/src/index.ts"),
-				Ot = n("../node_modules/query-string/query-string.js"),
+				Ot = n("../../../../node_modules/query-string/query-string.js"),
 				ct = n.n(Ot),
 				Nt = n("../react/common/actions/userActions.ts"),
 				dt = n("../react/common/selectors/userSelectors.ts"),
@@ -771,7 +771,7 @@
 						devPanelEnabled: Z
 					}
 				},
-				sn = Ee().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(12821), n.e(94012), n.e(97999), n.e(72019), n.e(67497), n.e(88474), n.e(77897), n.e(60091), n.e(77216), n.e(60003), n.e(39760), n.e(94923), n.e(60734), n.e(79012), n.e(64124), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				sn = Ee().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(12821), n.e(94012), n.e(97999), n.e(72019), n.e(67497), n.e(88474), n.e(87372), n.e(60091), n.e(77216), n.e(60003), n.e(39760), n.e(94923), n.e(60734), n.e(79012), n.e(64124), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				cn = Ee().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(43234), n.e(97999), n.e(88474), n.e(60091), n.e(60734), n.e(69088), n.e(64124), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: O
@@ -911,10 +911,10 @@
 					n.g.build = fn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "0abc7327745aa16a9cf4f9904f937a5e44fd2a75",
-						dashVersion: "28481214",
+						commit: "51cbc6bf68b54832b21ce8e17f5f641d82baba2a",
+						dashVersion: "28519859",
 						env: "production",
-						builtAt: 1730230177604,
+						builtAt: 1730313190317,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -7130,7 +7130,7 @@
 			});
 			var e = n("../../../../node_modules/lodash-es/upperFirst.js"),
 				o = n("../../../../node_modules/lodash-es/isEmpty.js"),
-				c = n("../node_modules/query-string/query-string.js"),
+				c = n("../../../../node_modules/query-string/query-string.js"),
 				f = n.n(c),
 				s = n("../../../../node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js"),
 				g = n("../react/pages/apps/marketplace/requests/Requester.ts"),
@@ -13315,7 +13315,7 @@
 					return ce
 				}
 			});
-			var e = n("../node_modules/query-string/query-string.js"),
+			var e = n("../../../../node_modules/query-string/query-string.js"),
 				o = n.n(e),
 				c = n("../../../../node_modules/@cloudflare/util-regex/es/index.js"),
 				f = n("../react/pages/stream/routes.ts"),
@@ -15603,4 +15603,4 @@
 	}
 ]);
 
-//# debugId=64f7ebbc-c75e-5f47-bb01-2def9206d46e
+//# debugId=de758df4-5854-5652-bcd5-efb7348da376
