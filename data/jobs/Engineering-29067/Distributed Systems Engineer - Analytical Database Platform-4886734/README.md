@@ -39,7 +39,7 @@
 		<p><span style="font-weight: 400;">3+ years of experience working in software development covering distributed systems, and databases.</span></p>
 	</li>
 	<li style="font-weight: 400;">
-		<p><span style="font-weight: 400;">Strong programming skills (C++ is preferable), as well as a deep understanding of software development best practices and principles.</span></p>
+		<p><span style="font-weight: 400;">Strong programming skills (Golang, python, C++ are preferable), as well as a deep understanding of software development best practices and principles.</span></p>
 	</li>
 	<li style="font-weight: 400;">
 		<p><span style="font-weight: 400;">Strong knowledge of SQL and database internals, including experience with database design, optimization, and performance tuning.</span></p>
