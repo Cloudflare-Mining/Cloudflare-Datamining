@@ -5,31 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations<br></strong><br>Hybrid: Amsterdam, Lisbon or London<br><strong><br>About the Department</strong></p>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>The Workers organization makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the technology that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
-<p><strong>About the Team</strong></p>
-<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the developer platform that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
-<p><strong>What you'll do</strong></p>
-<p>In this role, you'll help design and build <a href="https://developers.cloudflare.com/workers/learning/how-kv-works/">Workers KV</a>, a global low-latency key-value data store for the <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022/">Supercloud</a>. You'll be part of a top-notch engineering team keeping KV running smoothly at global scale while implementing new features, ensuring reliability, and improving performance.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how KV processes and stores data, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available locations: Lisbon or London</strong></p>
+<p><strong>About Cloudflare and Our Team:</strong></p>
+<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a significant portion of Internet traffic. Our team, specifically responsible for Turnstile and Challenge Pages, collaborates closely with a dedicated Product Manager and other engineering teams to develop cutting-edge bot detection and mitigation solutions. Our focus is on enhancing internet security while preserving user privacy and usability. Check out some of <a href="https://blog.cloudflare.com/tag/turnstile/">our articles mentioning Turnstile</a>!</p>
+<p><strong>What You'll Do:</strong></p>
+<p>As a Data Engineer on our team, you'll play a key role in expanding our Turnstile and Challenge products. Your responsibilities will include:</p>
 <ul>
-	<li>2+ years of experience writing high volume production software</li>
-	<li>Interest in (and love for) distributed systems and data</li>
-	<li>Eagerness to learn and share knowledge</li>
-	<li>Excellent oral and written communications skills, especially concisely documenting complex concepts</li>
-	<li>Solid understanding of Go and JavaScript, including asynchronous programming in both</li>
-	<li>Strong systems level programming skills</li>
-	<li>Understanding of security issues and responsibilities</li>
-	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
-	<li>Solid Linux experience</li>
-	<li>Fluent in analyses of data sets such as logs</li>
-	<li>Designing and building APIs</li>
-	<li>A desire for continuous learning and improvement</li>
+	<li><strong>Advanced Bot Detection:</strong> Develop sophisticated bot and human detection capabilities using machine learning and traffic analysis techniques, with a strong emphasis on privacy and security.</li>
+	<li><strong>Full-Stack Development:</strong> Engage in full-stack development—from backend systems and distributed frameworks to client-side logic—to build comprehensive solutions.</li>
+	<li><strong>Scalable and Secure Software:</strong> Build scalable, secure, and privacy-conscious software to accommodate a growing and diverse user base.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Work closely with cross-functional teams to innovate and enhance our security solutions.</li>
+	<li><strong>Research and Development:</strong> Contribute to research efforts, potentially publishing findings in security and privacy conferences.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>About You:</strong></p>
+<p>We're looking for a motivated individual with:</p>
+<ul>
+	<li><strong>Strong Background in Machine Learning and Security:</strong> Expertise in machine learning, distributed systems, and security, particularly in traffic analysis.</li>
+	<li><strong>Data Analysis Experience:</strong> Familiarity with data analysis frameworks like Spark and machine learning libraries such as Scikit-learn and PyTorch.</li>
+	<li><strong>Security-Focused Mindset:</strong> Essential for developing products like Turnstile that prioritize user privacy and security.</li>
+	<li><strong>Experience with Privacy Technologies:</strong> Knowledge of privacy-enhancing technologies and countermeasures.</li>
+	<li><strong>Curiosity and Drive:</strong> A natural sense of curiosity and a self-driven attitude to continuously learn and solve complex problems.</li>
+	<li><strong>Excellent Communication Skills:</strong> Strong problem-solving abilities and the capacity to communicate effectively within a team.</li>
+</ul>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li><strong>Cloud and DevOps Tools:</strong> Experience with cloud platforms like GCP or AWS, Docker, Git, and distributed systems tools such as Terraform and Ansible.</li>
+	<li><strong>Database Knowledge:</strong> Familiarity with PostgreSQL and ClickHouse.</li>
+	<li><strong>Counter-Abuse Experience:</strong> Previous work in counter-abuse, fraud detection, and mitigation.</li>
+	<li><strong>Research Contributions:</strong> Publications or contributions to security and privacy research are highly regarded.</li>
+</ul>
+<p><strong>Working in Our Team:</strong></p>
+<p>You'll be integral to making our products more robust, secure, and stable. Our solutions run across the web on various browsers, requiring continuous testing and adaptability. We value innovation and problem-solving skills—we encourage you to identify challenges and propose effective solutions. Our team meetings focus on addressing these challenges, with an emphasis on delivering both short-term and long-term value to the business.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
