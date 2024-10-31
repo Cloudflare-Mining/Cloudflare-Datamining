@@ -123,8 +123,8 @@ end</code></pre>
 	<p>When the interpreter finds that a given point of the bytecode has been repeated several times, it’s considered a “hot” part of the code, and interprets it once again but this time it records each bytecode it encounters, generating a “code trace” or just “a trace”. At the same time, it generates an “intermediate representation”, or IR, of the code as it’s executed. The IR doesn’t represent the whole of the function or code portion, just the actual options it actually takes.</p>
 	<p>A trace is finished when it hits a loop or a recursion, returns to a lower level than when started, hits a NYI operation, or simply becomes too long. At this point, it can be either compiled into machine language, or aborted if it has reached some code that can’t be correctly translated. If successful, the bytecode is patched with an entry to the machine code, or “mcode”. If aborted, the initial trace point is “penalized” or even “blocklisted” to avoid wasting time trying to compile it again.</p>
 	<div class="flex anchor relative">
-		<h3 id="whats">What’s </h3>
-		<a href="https://blog.cloudflare.com/#whats" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="whats-next">What’s next()?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -143,8 +143,8 @@ end</code></pre>
 	<p>But unfortunately, both the <code>next()</code> and <code>pairs()</code> functions are listed as “not compiled” in the feared <a href="http://wiki.luajit.org/NYI#libraries_base-library">NYI list</a>. That means that any such code runs on the interpreter and is not compiled, unless the code inside is complex enough, and has other inner loops (loops that doesn’t use <code>next()</code> or <code>pairs()</code>, of course). Even in that case, the code would have to fall back to the interpreter at each loop end.</p>
 	<p>This sad news creates a tradeoff: for performance sensitive parts of the code, don’t use the most Lua-like code style. That motivates people to come up with several contortions to be able to use numerical iteration (which is compiled, and very efficient), like replacing any key with a number, storing all the keys in a numbered array, or store both keys and values at even/odd numeric indices.</p>
 	<div class="flex anchor relative">
-		<h3 id="getting">Getting </h3>
-		<a href="https://blog.cloudflare.com/#getting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="getting-next-out-of-the-nyi-list">Getting next() out of the NYI list</h3>
+		<a href="https://blog.cloudflare.com/#getting-next-out-of-the-nyi-list" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -250,8 +250,8 @@ end
 	<p>Now there are two <code>ALOAD</code>s, (and two <code>ASTORE</code>s), one for 'num' and one for 'str'. In other words, the JIT unrolled the loop and found that that made the types constant. <code>=8-O</code></p>
 	<p>Of course, this would happen only on very simple and regular patterns. In general, it's wiser to avoid unpredictable type mixing; but polymorphic code will be optimized for each type that it's actually used with.</p>
 	<div class="flex anchor relative">
-		<h3 id="back-to">Back to </h3>
-		<a href="https://blog.cloudflare.com/#back-to" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="back-to-next">Back to next()</h3>
+		<a href="https://blog.cloudflare.com/#back-to-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

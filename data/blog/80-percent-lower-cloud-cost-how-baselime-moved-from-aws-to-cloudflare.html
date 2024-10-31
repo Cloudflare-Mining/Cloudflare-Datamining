@@ -13,7 +13,7 @@
 		<tbody>
 			<tr>
 				<td>
-					<p><b>Daily Cost</b></p>
+					<p><b>Cost (daily)</b></p>
 				</td>
 				<td>
 					<p><b>Before (AWS)</b></p>
@@ -57,18 +57,29 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Total</p>
+					<p>Total (daily)</p>
 				</td>
 				<td>
 					<p>$1,940</p>
 				</td>
 				<td>
-					<p>$325 (83% cost reduction)</p>
+					<p>$325</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Total (annual)</b></p>
+				</td>
+				<td>
+					<p><b>$708,100</b></p>
+				</td>
+				<td>
+					<p><b>$118,625</b> (83% cost reduction)</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><sup><i>Table 1: Daily Costs Comparison ($USD)</i></sup></p>
+	<p><sub><i>Table 1: AWS vs. Workers Costs Comparison ($USD)</i></sub></p>
 	<p>When we joined Cloudflare, we immediately saw a surge in usage, and within the first week following the announcement, we were processing over a billion events daily and our weekly active users tripled.</p>
 	<p>As the platform grew, so did the challenges of managing real-time observability with new scalability, reliability, and cost considerations. This drove us to rebuild Baselime on the Cloudflare Developer Platform, where we could innovate quickly while reducing operational overhead.</p>
 	<div class="flex anchor relative">
@@ -258,7 +269,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vj3JUrE580W749VX8JMBj/c82477d00fe33fba1ffd8658ef0a1229/image2.png" alt="" class="kg-image" width="1880" height="1164" loading="lazy">
 	</figure>
 	<p><sup><i>Figure 5: Baselime daily Cloudfront cost [note: the gap in data is the result of AWS Cost Explorer losing data when the parent organization of the cloud accounts was changed.]</i></sup></p>
-	<p>If we were a regular Cloudflare customer, we estimate that our daily Cloudflare Workers bill would be around \$25 after the switch, against \$790 on AWS: over 95% cost reduction. These savings are primarily driven by the Workers pricing model, since Workers charge for CPU time, and the receptors are primarily just moving data, and as such, are mostly I/O bound.</p>
+	<p>If we were a regular Cloudflare customer, we estimate that our Cloudflare Workers bill would be around $25/day after the switch, against $790/day on AWS: over 95% cost reduction. These savings are primarily driven by the Workers pricing model, since Workers charge for CPU time, and the receptors are primarily just moving data, and as such, are mostly I/O bound.</p>
 	<div class="flex anchor relative">
 		<h3 id="savings-on-the-clickhouse-cluster">Savings on the ClickHouse cluster</h3>
 		<a href="https://blog.cloudflare.com/#savings-on-the-clickhouse-cluster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -277,7 +288,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aBU0TVUoRTC5GAo3HkS0N/eebb0559ad8d32b56e20f1e5c6121c6f/image6.png" alt="" class="kg-image" width="1810" height="1118" loading="lazy">
 	</figure>
 	<p><sup><i>Figure 7: Baselime daily EC2 cost [note: the gap in data is the result of AWS Cost Explorer losing data when the parent organization of the cloud accounts was changed.]</i></sup></p>
-	<p>If we were a regular Cloudflare customer, we estimate that our daily Workers Analytics Engine cost would be around \$300 after the switch, compared to \$1150 on AWS, a cost reduction of over 70%.</p>
+	<p>If we were a regular Cloudflare customer, we estimate that our Workers Analytics Engine cost would be around $300/day after the switch, compared to $1150/day on AWS, a cost reduction of over 70%.</p>
 	<p>Not only did we significantly reduce costs by migrating to Cloudflare, but we also improved performance across the board. Responses to users are now faster, with real-time event ingestion happening across Cloudflare’s network, closer to our users. Responses to users querying their data are also much faster, thanks to Cloudflare’s deep expertise in operating ClickHouse at scale.</p>
 	<p>Most importantly, we’re no longer bound by limitations in throughput or scale. We launched <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs"><u>Workers Logs</u></a> on September 26, 2024, and our system now handles a much higher volume of events than before, with no sacrifices in speed or reliability.</p>
 	<p>These cost savings are outstanding as is, and do not include the total cost of ownership of those systems. We significantly simplified our systems and our codebase, as the platform is taking care of more for us. We’re paged less, we spend less time monitoring infrastructure, and we can focus on delivering product improvements.</p>

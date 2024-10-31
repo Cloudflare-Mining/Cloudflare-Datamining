@@ -223,8 +223,8 @@ while True:
 	</ul>
 	<p>Actually, we are not calling tcp_set_rcvlowat, which eliminates that one. Next we used bpftrace scripts to figure out if it’s in tcp_clamp_window or tcp_rcv_space_adjust. &nbsp; After bpftracing, the answer is: It’s tcp_clamp_window.</p>
 	<div class="flex anchor relative">
-		<h2 id="summarizing-what-we-know-so-far">Summarizing what we know so far,</h2>
-		<a href="https://blog.cloudflare.com/#summarizing-what-we-know-so-far" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h2 id="summarizing-what-we-know-so-far-part-i">Summarizing what we know so far,part I</h2>
+		<a href="https://blog.cloudflare.com/#summarizing-what-we-know-so-far-part-i" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -259,8 +259,8 @@ while True:
 	<p>Note that this is not <a href="https://lwn.net/Articles/358910">Generic Receive Offload</a> (GRO). &nbsp;This is specific to TCP for packets on the INPUT path. Coalesce is a L4 feature that appends user payload from an incoming packet to an already existing packet, if possible. This saves memory (header space).</p>
 	<p>tcp_rcv_established calls tcp_queue_rcv, which calls tcp_try_coalesce. If the incoming packet can be coalesced, then it will be, and rmem_alloc is raised to reflect that. Here’s the important part: rmem_alloc can and does go above sk_rcvbuf because of the logic in that routine.</p>
 	<div class="flex anchor relative">
-		<h2 id="summarizing-what-we-know-so-far">Summarizing what we know so far,</h2>
-		<a href="https://blog.cloudflare.com/#summarizing-what-we-know-so-far" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h2 id="summarizing-what-we-know-so-far-part-ii">Summarizing what we know so far,part II</h2>
+		<a href="https://blog.cloudflare.com/#summarizing-what-we-know-so-far-part-ii" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

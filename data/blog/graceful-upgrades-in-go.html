@@ -15,8 +15,8 @@
 	<p>We know that HTTP uses TCP under the hood, and that we interface with TCP using the BSD socket API. We have told the OS that we’d like to receive connections on port 80, and the OS has given us a listening socket, on which we call <code>Accept()</code> to wait for new clients.</p>
 	<p>A new client will be refused if the OS doesn’t know of a listening socket for port 80, or nothing is calling <code>Accept()</code> on it. The trick of a graceful upgrade is to make sure that neither of these two things occur while we somehow restart our service. Let’s look at the all the ways we could achieve this, from simple to complex.</p>
 	<div class="flex anchor relative">
-		<h3 id="just">Just </h3>
-		<a href="https://blog.cloudflare.com/#just" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="just-exec">Just Exec()</h3>
+		<a href="https://blog.cloudflare.com/#just-exec" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,8 +49,8 @@ func main() {
 	<p><i>New connections may be dropped if </i><code><i>Accept()</i></code><i> is not called regularly enough</i></p>
 	<p>Specifically, the new binary is going to spend some time after <code>Exec()</code> to initialise, which delays calls to &nbsp;<code>Accept()</code>. This means the backlog of new connections grows until some are dropped. Plain exec is out of the game.</p>
 	<div class="flex anchor relative">
-		<h3 id="listen">Listen()</h3>
-		<a href="https://blog.cloudflare.com/#listen" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="listen-all-the-things">Listen() all the things</h3>
+		<a href="https://blog.cloudflare.com/#listen-all-the-things" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
