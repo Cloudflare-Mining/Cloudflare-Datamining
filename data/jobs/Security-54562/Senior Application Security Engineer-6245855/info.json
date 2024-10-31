@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6347599?gh_jid=6347599",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6245855?gh_jid=6245855",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,9 +10,9 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 2990457,
+	"internal_job_id": 2959809,
 	"location": {
-		"name": "Hybrid"
+		"name": "Hybrid or Remote"
 	},
 	"metadata": [
 		{
@@ -24,7 +24,7 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6350 - Internal Audit",
+			"value": "4700 - Security",
 			"value_type": "single_select"
 		},
 		{
@@ -32,19 +32,21 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"San Francisco, US"
+				"New York, US",
+				"San Francisco, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 6347599,
-	"updated_at": "2024-10-31T12:28:42-04:00",
-	"requisition_id": null,
-	"title": "Senior Manager, IT SOX",
+	"id": 6245855,
+	"updated_at": "2024-10-31T13:28:41-04:00",
+	"requisition_id": "473",
+	"title": "Senior Application Security Engineer",
 	"departments": [
 		{
-			"id": 29062,
-			"name": "Accounting and Finance",
+			"id": 54562,
+			"name": "Security",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -58,9 +60,23 @@
 			"parent_id": 48752
 		},
 		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 19991,
 			"name": "San Francisco, CA",
 			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}
