@@ -5,41 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations:&nbsp;</strong>San Francisco, US</h3>
-<p><strong>About the department</strong></p>
-<p>Cloudflare’s engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
-<p>Cloudflare is a fast growing company and engineering is an ever-evolving function with teams being formed and redefined often. You will interview for an engineering role in the Foundational Engineering team at Cloudflare, which builds and operates many of the fundamental systems powering Cloudflare’s products.</p>
-<p><strong>About the Role</strong></p>
-<p>As an Engineer at Cloudflare you will be involved in designing, building and operating production systems at huge scale. These systems cover the entire path of customer requests, starting with receiving external traffic, routing through our internal reverse proxy network, and egressing that traffic to customer origins or other internal systems.</p>
-<p>You will be working across multiple teams and projects, focussing on the areas most important to Cloudflare at any given time. This will include building maintainable systems, understanding and fixing problems with legacy systems, and measuring and improving performance and reliability.</p>
-<p>Our tech stack is moving quickly towards Rust, Go (golang) and Typescript, but we have legacy systems built with many other technologies.</p>
-<p><strong>Desirable skills, knowledge and experience:</strong></p>
+<h4>Available Locations: Austin, TX OR San Francisco, CA</h4>
+<p><strong>*Based on the candidate's experience, we will consider the level of the role to be Director or Sr. Director*</strong></p>
+<h4>About the department</h4>
+<p>The Corporate Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. This is a highly strategic &amp; visible team that partners closely with our C-Suite and cross-functional business leaders to develop key priorities for the business as well as the financial plan required to deliver on our growth and profitability goals. Members of the Corporate Finance Team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</p>
+<h4>What you'll do</h4>
 <ul>
-	<li>Minimum 10 years professional experience as a Software Developer/Engineer</li>
-	<li>Substantial hands-on systems level programming and troubleshooting experience.</li>
-	<li>Experience operating high performance and huge scale services.</li>
-	<li>Knowledge of Layer 4-7 protocols (examples: gRPC, TCP, UDP, HTTP, QUIC).</li>
-	<li>Knowledge of network load balancing and routing techniques.</li>
-	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
-	<li>Experience analyzing and communicating complex technical requirements and concepts, identifying the highest priority areas, and carving a path to deliver&nbsp;</li>
-	<li>Driving communication and consensus across teams</li>
-	<li>Ability to get things done: implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Strong curiosity, a desire to learn new things, and teach others</li>
-	<li>Cryptography experience, particularly around compliance (eg, FIPS)</li>
-	<li>Knowledge of two or more mainstream programming languages</li>
+	<li>Develop and execute our financial plan to support Cloudflare’s growth and scale objectives.</li>
+	<li>Partner with cross-functional teams to develop and prioritize strategic initiatives that drive revenue growth, cost optimization, and operational efficiency</li>
+	<li>Lead the corporate forecasting and budgeting processes, including Annual Planning as well as monthly and quarterly business reviews</li>
+	<li>Be a thought partner to business leaders helping to resolve competing business priorities and determine optimal investment allocation by function</li>
+	<li>Prepare financial analysis, business insights and presentation materials for regular financial and business updates to the leadership team</li>
+	<li>Partner with accounting to support month-end close, flux review processes, and deliver high-quality financial reporting</li>
+	<li>Contribute to earnings releases, M&amp;A activities and other corporate initiatives in close partnership with our Investor Relations and Corporate Development teams</li>
+	<li>Design, automate, and optimize flexible finance processes to meet the needs of a dynamic and fast-growing business environment</li>
+	<li>Own, refine financial systems roadmap in partnership with our transformation teams</li>
+	<li>Lead, inspire, and develop our team of Corporate Finance and Anaplan COE professionals &nbsp;</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
-	<li>Demonstrable experience with high-quality technical writing</li>
-	<li>Good Linux systems knowledge</li>
-	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>
+	<li>12+ years of progressive experience in Finance, Investment Banking or PE with prior experience in a corporate FP&amp;A function. High growth, public company SaaS experience preferred</li>
+	<li>Demonstrated success in building and leading high performance finance teams</li>
+	<li>Strong executive presence and interpersonal skills with proficiency in distilling complex business information into consumable and actionable takeaways</li>
+	<li>Expert in financial modeling with strong working knowledge of GAAP. Extensive experience architecting integrated models from scratch, in Excel or in other planning applications.</li>
+	<li>Systems thinker. Experience in designing and implementing new systems and tools</li>
+	<li>Demonstrated project management skills with experience improving and streamlining processes, and developing solutions to operational inefficiencies</li>
+	<li>Intellectually curious with problem solving orientation. Strong analytical capabilities and business acumen with ability to apply rigorous logic and sound methods to solve multi-faceted problems. Not satisfied with easy or convenient answers</li>
+	<li>Willingness to play “up and down the stack” diving into the details as well as managing exec level communications</li>
+	<li>High proficiency with financial systems and tools. Anaplan, Netsuite, RevPro, Salesforce and Tableau experience is a plus</li>
+	<li>BA/BS in Finance, Accounting, Economics or quantitative field; MBA or Masters preferred&nbsp;</li>
 </ul>
+<p></p>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.</p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Estimated annual salary of $234<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:137000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span> - $260,000 USD</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $261,000 - $355,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -68,6 +68,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
