@@ -281,74 +281,99 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											],
-											"example": true,
-											"type": "boolean"
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object",
+													"x-stainless-empty-object": true
+												}
+											},
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object",
-											"x-stainless-empty-object": true
+											"properties": {
+												"successful_key_count": {
+													"description": "Number of keys successfully updated",
+													"example": 100,
+													"type": "number"
+												},
+												"unsuccessful_keys": {
+													"description": "Name of the keys that failed to be fully updated",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -360,86 +385,111 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"nullable": true,
+											"type": "object",
+											"x-stainless-empty-object": true
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
+									"type": "object"
 								},
-								"result": {
-									"nullable": true,
-									"type": "object",
-									"x-stainless-empty-object": true
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"successful_key_count": {
+													"description": "Number of keys successfully updated",
+													"example": 100,
+													"type": "number"
+												},
+												"unsuccessful_keys": {
+													"description": "Name of the keys that failed to be fully updated",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -2267,74 +2317,99 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											],
-											"example": true,
-											"type": "boolean"
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object",
+													"x-stainless-empty-object": true
+												}
+											},
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object",
-											"x-stainless-empty-object": true
+											"properties": {
+												"successful_key_count": {
+													"description": "Number of keys successfully updated",
+													"example": 100,
+													"type": "number"
+												},
+												"unsuccessful_keys": {
+													"description": "Name of the keys that failed to be fully updated",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -2346,86 +2421,111 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"nullable": true,
+											"type": "object",
+											"x-stainless-empty-object": true
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
+									"type": "object"
 								},
-								"result": {
-									"nullable": true,
-									"type": "object",
-									"x-stainless-empty-object": true
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"successful_key_count": {
+													"description": "Number of keys successfully updated",
+													"example": 100,
+													"type": "number"
+												},
+												"unsuccessful_keys": {
+													"description": "Name of the keys that failed to be fully updated",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -2787,74 +2887,99 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											],
-											"example": true,
-											"type": "boolean"
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object",
+													"x-stainless-empty-object": true
+												}
+											},
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object",
-											"x-stainless-empty-object": true
+											"properties": {
+												"successful_key_count": {
+													"description": "Number of keys successfully updated",
+													"example": 100,
+													"type": "number"
+												},
+												"unsuccessful_keys": {
+													"description": "Name of the keys that failed to be fully updated",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -2866,86 +2991,111 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"nullable": true,
+											"type": "object",
+											"x-stainless-empty-object": true
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
+									"type": "object"
 								},
-								"result": {
-									"nullable": true,
-									"type": "object",
-									"x-stainless-empty-object": true
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"successful_key_count": {
+													"description": "Number of keys successfully updated",
+													"example": 100,
+													"type": "number"
+												},
+												"unsuccessful_keys": {
+													"description": "Name of the keys that failed to be fully updated",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},

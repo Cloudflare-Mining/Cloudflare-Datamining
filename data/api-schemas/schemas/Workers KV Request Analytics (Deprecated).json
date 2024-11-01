@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/storage/analytics": {
+		"deprecated": true,
 		"description": "Retrieves Workers KV request metrics for the given account.",
 		"operationId": "workers-kv-request-analytics-query-request-analytics",
 		"parameters": [
@@ -757,13 +758,19 @@
 				"api_key": []
 			}
 		],
-		"summary": "Query Request Analytics",
+		"summary": "Query Request Analytics (Deprecated)",
 		"tags": [
-			"Workers KV Request Analytics"
+			"Workers KV Request Analytics (Deprecated)"
 		],
 		"x-api-token-group": [
 			"Workers KV Storage Write",
 			"Workers KV Storage Read"
-		]
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint is deprecated in favor of the GraphQL analytics for Workers KV.",
+			"display": true,
+			"eol": "2025-01-31",
+			"id": "workers_kv_query_request_analytics_deprecation"
+		}
 	}
 }

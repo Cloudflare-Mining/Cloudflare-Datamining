@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/storage/analytics/stored": {
+		"deprecated": true,
 		"description": "Retrieves Workers KV stored data metrics for the given account.",
 		"operationId": "workers-kv-stored-data-analytics-query-stored-data-analytics",
 		"parameters": [
@@ -753,13 +754,19 @@
 				"api_key": []
 			}
 		],
-		"summary": "Query Stored Data Analytics",
+		"summary": "Query Stored Data Analytics (Deprecated)",
 		"tags": [
-			"Workers KV Stored Data Analytics"
+			"Workers KV Stored Data Analytics (Deprecated)"
 		],
 		"x-api-token-group": [
 			"Workers KV Storage Write",
 			"Workers KV Storage Read"
-		]
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint is deprecated in favor of the GraphQL analytics for Workers KV.",
+			"display": true,
+			"eol": "2025-01-31",
+			"id": "workers_kv_query_stored_data_analytics_deprecation"
+		}
 	}
 }
