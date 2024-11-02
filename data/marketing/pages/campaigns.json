@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-01-15T12:29:14.345Z",
-					"updatedAt": "2024-11-02T05:00:10.376Z"
+					"updatedAt": "2024-11-02T05:24:25.256Z"
 				},
 				"contentfulId": "5O6igPpQER2PNmjJaGgUeh",
 				"contentTypeId": "page",
@@ -216,47 +216,6 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "15ciEVxvWQBKuAiJhVDAop",
-								"title": "Block malicious attacks",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Prevent attackers and nation-state actors from bringing your site down, with the same protection leveraged by many of the world's biggest companies.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qyDEBnfSjGjDAj5V6Zo1g/f8c8126789bc16fa0329943b0d414433/security-lock.svg"
-									},
-									"description": "Orange padlock icon"
-								},
-								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
-										},
-										"description": "Padlock icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "26YYoV3Wt0hefRWgMNB11R",
 								"title": "Stay online during peak traffic periods",
 								"makeTitleLink": null,
@@ -310,21 +269,7 @@
 									},
 									"description": null
 								},
-								"iconAssetFile": {
-									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
-									"altText": "Security shield protection orange",
-									"title": "Security shield protection orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -455,28 +400,6 @@
 								"titleUrl": null,
 								"titleSize": null,
 								"description": "24/7/365 uptime support\nIncluding unmetered DDoS mitigation and a dedicated support contact.\n\n__Web Application Firewall__\nIncluding OWASP and proprietary Cloudflare rulesets, and support for custom WAF and Firewall Rules.\n\n__Custom Traffic Blocking__\nBlock specified user agents and regions where problematic traffic is detected.\n\n__Rate Limiting__\nProtect against denial-of-service attacks, brute-force login attempts, and other types of abusive behavior targeting the application layer.\n\n__I'm Under Attack™ mode__\nInstantly deploy protections against a concerted attack, plus Enterprise-level \"I'm Under Attack\" Support.\n\n__Bot Protection__\nThwart automated bots and trigger Captcha challenges to ensure only genuine traffic reaches your site.\n\n__Subdomain Support__\nSimplify the management of Cloudflare performance and security for subdomains.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1xeMcBuIKVbW1HSLtlhDSY",
-								"title": null,
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "__Global CDN__\nLeverage our global network, spanning %{DataCenterCount} cities in over %{CountryCount} countries to deliver millisecond-response times.\n\n__Load Balancing__\nDynamically route traffic to different servers and clouds.\n\n__Cloudflare Rules__\nConfigure Cloudflare settings and trigger specific actions for matching requests. Examples of rule use cases include setting cache expirations, modifying security levels for sections of your site, and forwarding URLs.\n\n__Audit Logs__\nIncluding account-level actions like Login and Logout, as well as configuration changes made through the Cloudflare Dash.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
@@ -680,61 +603,6 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
-					},
-					{
-						"contentTypeId": "bladeSignUpForm",
-						"contentfulId": "17Fk5U3qr5xPTtrkQiOW2H",
-						"bladeName": "Cloudflare for Campaigns - General Form",
-						"formType": "formRight",
-						"formTitle": "Get started",
-						"buttonText": "Submit",
-						"buttonColor": "blue",
-						"htmlId": "campaign-form",
-						"marketoEmbeddedForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "589zND8OSqmyfxtvFdlotW",
-							"bladeName": "Cloudflare for Campaigns - Top-level Site - Embedded Form",
-							"backgroundColor": "blue",
-							"marketoFormId": 1748,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Q1'20 WEB - NAMER - Cloudflare for Campaigns",
-							"marketoFormHeaderText": "Talk to an Expert <span id=\"campaign-form\" style=\"display: block;  position: relative;  top: -200px;  visibility: hidden;\"></span>",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": "Thank you! A Cloudflare representative will be in touch soon.",
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": "white",
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": "Solutions for every campaign",
-						"subtitle": null,
-						"copy": "Rely on Cloudflare for Campaigns to meet the needs of your campaign, including securing your candidate's web presence and safeguarding your internal network and data:\n\n- Protect your website from hostile actors with our web application firewall, DDoS mitigation, and custom blocking rules\n\n- Improve site speed and reliability by leveraging the Cloudflare global network, spanning %{DataCenterCount} cities in over %{CountryCount} countries\n- Monitor all traffic passing through your network and secure internal applications with Cloudflare Zero Trust\n\nTalk to a Cloudflare representative today to learn more. ",
-						"iconList": [],
-						"iconTitleList": null,
-						"iconCopyList": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamOptions": null,
-						"rightSideCopy": null,
-						"rightSideCopyPosition": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"textColor": "white",
-						"extraClass": null,
-						"sectionPadding": null,
-						"customPrivacyPolicy": null,
-						"customPrivacyPolicyText": null,
-						"featureList": null
 					}
 				],
 				"noindex": false,
