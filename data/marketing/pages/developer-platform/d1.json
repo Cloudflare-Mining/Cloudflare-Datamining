@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/waiting-room/",
+	"path": "/developer-platform/d1/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Waiting Room Product Page",
+				"pageName": "Cloudflare D1 Database ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,34 +32,29 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/waiting-room/",
-				"topNavOptions": null,
+				"relativePath": "developer-platform/d1",
+				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Waiting Room",
-					"metaDescription": "Cloudflare Waiting Room lets you direct users to a custom-branded virtual 'waiting room' during traffic surges, improving their experience while they wait.",
+					"metaTitle": "Build a natively serverless SQL database with Cloudflare D1",
+					"metaDescription": "Create a natively serverless SQL database in seconds with D1. With a familiar query language, point-in-time recovery, and cost-effective pricing you are empowered to build the next big thing. ",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GFzCrNZj9bom7quRxQ42J/c5e52810a342575c2f39805b1b866fda/D1_SQLite.png"
 						},
-						"description": null
+						"description": ""
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
-						},
-						"description": null
-					},
+					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2021-01-21T23:30:29.913Z",
-					"updatedAt": "2024-11-02T04:46:04.572Z"
+					"createdAt": "2023-09-28T14:15:51.055Z",
+					"updatedAt": "2024-10-29T22:17:05.346Z"
 				},
-				"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
+				"contentfulId": "1XocSe8FmOosqpYDlsG6hu",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -69,31 +64,34 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "wjLMKvJKE9DVKHu8wOKx9",
+						"contentfulId": "3O9uxhlKbXtomgFTQjl3ct",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Waiting Room ",
-						"titleSize": null,
-						"subtitle": "A virtual waiting room to manage peak traffic",
+						"title": "Cloudflare D1",
+						"titleSize": "medium",
+						"subtitle": "Create serverless SQL databases",
 						"subtitleSize": null,
-						"copy": "Sudden increases in traffic can overwhelm your applications and infrastructure, leading to slow performance or complete disruption to your online presence.\n\nCloudflare Waiting Room allows organizations to route excess users to a custom-branded waiting room, helping preserve the customer experience and protecting origin servers from being overwhelmed with requests. ",
+						"copy": "Create a serverless relational database in seconds with D1. With a familiar SQL query language, point-in-time recovery, and cost-effective pricing, you are empowered to build the next big thing.",
 						"buttonColor": "orange",
-						"buttonColor2": "orange",
+						"buttonColor2": "orange-outline",
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": "Activate in Dash",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Read the product brief",
-						"buttonText2LoggedIn": "Need more than one Waiting Room? ",
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
+						"buttonText2": "View documentation",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://developers.cloudflare.com/d1/get-started/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
@@ -102,7 +100,7 @@
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Medium",
+						"imageSize": null,
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -114,14 +112,14 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "1ca4d18f-d74b-5a65-a81a-cc7cc802ca7b",
-							"altText": "Cloudflare waiting room hero illustration",
-							"title": "Cloudflare waiting room hero illustration",
+							"id": "135d7e71-27bd-5424-b60a-0cc8e0cbcecf",
+							"altText": "Cloudflare D1 Database",
+							"title": "Cloudflare D1 Database",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wyW25sYVxRcl9x8cJVWoG/48d3e6ecc30cdf27a5b633e285799311/cloudflare-waiting-room-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1W5QoaWTrKT8IwoTrV0uU3/d1deb0a1881d756d346b9a7f04aa5f51/D1.png"
 								},
 								"description": ""
 							},
@@ -130,22 +128,22 @@
 						}
 					},
 					{
-						"contentfulId": "2dj2Nnk15m0gWLrut1wJ8R",
+						"contentfulId": "1WwRfKqHXfC0VMVeNUJhqx",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE WAITING ROOM",
+						"eyebrowHeading": "BENEFITS OF D1",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Three Columns",
+						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1kSSkgykb1A8wL5utczOFs",
-								"title": "Stay online",
+								"contentfulId": "7l7ul5KeEPns5nElQMjQVz",
+								"title": "Built-in database solution",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Protect your application from legitimate traffic surges and ensure you are able to scale to meet high demand.",
+								"description": "D1 is built on one of the most widely used SQL query engines in the world, enabling you to use familiar drivers and ORMs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -153,16 +151,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
 										},
-										"description": "Global traffic management icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -176,12 +174,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6vk2Kv0Q93rCVEvVBq9JJR",
-								"title": "Reduce your infrastructure costs",
+								"contentfulId": "50GG50cPWCnESbmjoZKgK7",
+								"title": "Scale infinitely",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Eliminate costs associated with maintaining additional servers and purchasing extra bandwidth to serve peak traffic.",
+								"description": "Our natively serverless architecture enables developers to scale databases, increasing the pace of innovation.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -189,14 +187,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
-									"altText": "Dollar",
-									"title": "Dollar",
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "69K9rz5xFvqJS6SFcpbimR",
+								"title": "Rely on Time Travel",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With always-on Time Travel, easily roll your database back to any specific minute in the last 30 days.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tme9kTrisdGyf3VkBsvv/4096a715634cf9a3807e0a59c9d5dab4/time.svg"
 										},
 										"description": null
 									},
@@ -212,12 +246,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "lSg8VZyBXladyiIzpMwji",
-								"title": "Deliver a consistent brand experience",
+								"contentfulId": "21drkzH2Sh8JvDCo09M0ip",
+								"title": "Benefit from cost-effective pricing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Waiting Room acts as an extension of your brand, ensuring that users get a seamless online experience even while waiting.",
+								"description": "D1 bills on queries you issue and any storage above your plan's limits. You are not billed for hours or capacity units.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -225,16 +259,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
-									"altText": "Yes check blue",
-									"title": "Yes check blue",
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
 										},
-										"description": "Checkmark icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -247,13 +281,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "5C4daK6b9UNQFIOCghUljC",
-						"title": "Create queues to gracefully manage user traffic",
-						"copy": "Waiting Room keeps wait times low by dynamically managing traffic. As soon as a user leaves an application or their cookie expires, a new user is let in.\n\nYou can set activation thresholds based on incoming rate of traffic or total active users. Admit queued visitors using multiple queuing options — first-in-first-out, random, or lottery.",
+						"contentfulId": "2YPiEEYcBsGmTBGSRDboEC",
+						"title": "Support globally distributed applications",
+						"copy": "D1 is built on SQLite, has built-in JSON parsing and querying functions with support for full-text search triggers.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -276,16 +310,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "bad5b234-e6f8-519e-8984-004b66844ac3",
-							"altText": "Illustration depicting users entering an application from the waiting room. ",
-							"title": "Keep Wait Times Low",
+							"id": "ba072b63-a755-5803-a7bf-1ceacbe67810",
+							"altText": " Built on one of the most popular and widely used SQL query engines in the world",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/STFxPFTXo1ekvxrCtw9Ei/8951fdb56aa5833c60856397f8577e90/keep-wait-times-low-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QuIWgeAvGNaoRNSGsPY8H/781f553d51a254c4f71225e39b881d66/Developer_Platform_Solutions.png"
 								},
-								"description": null
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -295,7 +329,7 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
@@ -305,8 +339,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "7MCao4zbqudEFxu9c06PAD",
-						"title": "Learn about strategies for handling traffic spikes and bot attacks",
+						"contentfulId": "WCwV7z5pSScdbKD7bhKZe",
+						"title": "Learn how to increase developer velocity with the Cloudflare's connectivity cloud",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -321,138 +355,19 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "59JA8xyeX50LBTJ3WkIEgS",
-							"elementName": "Waiting Room - Additional offer - CTA",
+							"contentfulId": "7rQSXv4h3SyG7uxYI9jjXr",
+							"elementName": "D1 - Learn more - CTA",
 							"standardText": null,
-							"text": "Watch the webinar",
-							"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4260484/maximizing-cyber-weekend-success-strategies-for-handling-traffic-spikes-and-bot-attacks?partnerref=li-event",
+							"text": "Learn more",
+							"url": "/lp/increase-developer-velocity-with-a-connectivity-cloud/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
 						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "1rbQlyUNsnh6l2RB2gW2og",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "5FVi34e2l3K400yEMX8kKN",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What our customers are saying",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"If we are hosting a game that is very popular, and we end up getting hundreds of thousands more users than anticipated, we know that our infrastructure will have time to scale, thanks to Cloudflare Waiting Room.\"",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "CEO — FanHero",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -644,22 +559,22 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
-						"contentfulId": "79lvOhwPSXxIbpe89d0z8l",
+						"contentfulId": "6r3w6KoFfpBo4ZJCP3Wl11",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Waiting Room ensures that applications remain available and usable even when demand surges to unexpected levels.",
-						"eyebrowHeading": "Top Waiting Room use cases",
+						"title": "Meet all your relational SQL needs and see how incredibly easy it is to build a database.",
+						"eyebrowHeading": "Top D1 use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "20FhjeEEdtnrF0T57eJpsW",
-								"title": "Reduce cart abandonment rate",
+								"contentfulId": "7pjHnwK6Q3jPBcmCskbrtS",
+								"title": "Build and deploy unlimited databases",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Ensure that your online transactions are not impacted by downtime or slow application performance during peak traffic hours.",
+								"description": "Databases are a key part of building full-stack applications. Build infinitely scalable composable databases with D1.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -667,14 +582,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "a27a111c-85d5-596e-b074-e5cd44bf35ce",
-									"altText": "Shop cart blue",
-									"title": "Shop cart blue",
-									"activeAsset": "Brandfolder Asset",
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xeOjnsQHBnFlh6ClUh6Sm/7c7e1c62f0e3d65715268aba5f044bab/shop-cart.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "zcfJS2v7MMmxNPLKf2JK2",
+								"title": "Connect databases with Hyperdrive",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Combine D1 and Workers for globally distributed apps and use Hyperdrive to query databases in legacy clouds.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers ",
+									"title": "Cloudflare workers ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
 										},
 										"description": ""
 									},
@@ -690,12 +641,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "210uyXX61h7Qe7zwsKS5l6",
-								"title": "Holiday traffic and special events",
+								"contentfulId": "1hWROFJopJxSwH7sxeywuF",
+								"title": "Build production-scale applications",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Prevent your infrastructure from becoming overwhelmed when traffic surges during holidays and events.",
+								"description": "With support for up to 10 GB databases and 50,000 databases per account, unlock the ability to build production-scale applications.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -703,52 +654,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "c83156b2-55b7-5045-8877-3e9545d7e4cb",
+									"altText": "Automatic Platform Optimization",
+									"title": "APO Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2B4PkhT3iJxxMZBCF5BC9a/1e5dd87f75bf1efefb452d8819953939/optimization-web.svg"
 										},
-										"description": "Global traffic management icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5a3jvdTgKlkAdsyChwvFdF",
-								"title": "Product launches and limited time sales",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Ensure users can still access and use your website even during periods of extremely high traffic.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
-									"altText": "Pages shield blue",
-									"title": "Pages shield blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
-										},
-										"description": ""
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -766,15 +681,15 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "7is9KWlcBWAciTtxhhnn9h",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "3c5HXfszQHRivcx7hIgbJs",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "4xJuCr1Lop4HwNkubGgl22",
+						"contentfulId": "6gEBQQr2mZXfjWTEyeyCW7",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": "Helping organizations worldwide manage user queues",
-						"description": "Helping organizations worldwide manage user queues",
+						"title": null,
+						"description": "See what global companies are building with Cloudflare",
 						"variant": "inline",
 						"htmlId": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -797,163 +712,147 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "27RMyTPYMUkUbkpvBE2jaN",
-							"elementName": "Case studies (Waiting Room)",
+							"contentfulId": "2ywy2J7P6yB6EJl2ODhI65",
+							"elementName": "View use cases",
 							"standardText": null,
-							"text": "See case studies",
-							"url": "/case-studies/?product=Waiting+Room",
+							"text": "View use cases",
+							"url": "https://developers.cloudflare.com/d1/reference/community-projects/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": false,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"secondaryCtaButton": null
 					},
 					{
-						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "56EFcoFcmAYB7eUjMY8M4O",
-						"title": "Resources",
+						"contentfulId": "6A72Uz1tXuGm2dNikNelhD",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"backgroundImage": null,
-						"cards": [
+						"copy": null,
+						"title": "D1 Resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1xy0uZEv6a0lYzat455QR8",
-								"heading": "Product brief",
-								"description": "Waiting Room overview",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "6lHyUqYV823b2Krz8lgjRK",
-									"elementName": "Waiting Room - Resources cards carousel - Waiting Room overview - Link",
-									"standardText": null,
-									"text": "Get product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
-									"altText": "Product brief thumbnail",
-									"title": "Product brief thumbnail",
+								"contentTypeId": "feature",
+								"contentfulId": "13nxBRjA8X0BbG2ORQR72u",
+								"title": "Get started with D1",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Find out how to create your first database using D1, create a schema, and connect a Cloudflare Worker to your D1 database.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/get-started/",
+								"learnMoreText": "Read documentation",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								}
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1W202iozf5OCw1vNUP7kkA",
-								"heading": "Blog",
-								"description": "Cloudflare Waiting Room announcement blog",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3Bf9GbPnTeqLw5LROHGMhe",
-									"elementName": "Waiting Room - Resources cards carousel - Cloudflare Waiting Room announcement blog - Link",
-									"standardText": null,
-									"text": "Read blog post",
-									"url": "https://blog.cloudflare.com/cloudflare-waiting-room/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
-									"altText": "Blog  thumbnail",
-									"title": "Blog  thumbnail",
+								"contentTypeId": "feature",
+								"contentfulId": "3QNTUc6JYwNucu8APjXmS2",
+								"title": "Interact with your data stored in D1",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare and Prisma make it easier than ever to interact with your data to deploy globally available apps.",
+								"learnMoreUrl": "https://blog.cloudflare.com/prisma-orm-and-d1/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								}
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "7bbBVj6Ycc3cPvPcjfUinq",
-								"heading": "Solution brief",
-								"description": "Solution brief: Cloudflare for ecommerce",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "4B2maSAEv49BVHavRxRv9q",
-									"elementName": "Waiting Room - Resources cards carousel - Solution brief: Cloudflare for ecommerce - Link",
-									"standardText": null,
-									"text": "Get solution brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHRb5mLKGbtdXBz0u61cI/60766a4ac2cb7091798f456c4d2496e6/Cloudflare_for_Ecommerce__Brief_.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
-									"altText": "Solution brief - thumbnail",
-									"title": "Solution brief - thumbnail",
+								"contentTypeId": "feature",
+								"contentfulId": "3DohAvcmuiw4K7GjliWQZv",
+								"title": "Alpha database migration guide",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Find out how to recreate alpha D1 databases on our production-ready system.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/platform/alpha-migration/",
+								"learnMoreText": "View guide",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
-								"heading": "Article",
-								"description": "Website security guide: A 10-step checklist",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
-									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
-									"standardText": "Learn More",
-									"text": null,
-									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
 								},
-								"image": {
-									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
-									"altText": "theNet article - thumbnail",
-									"title": "theNet article - thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "73oQ0zzNth40TNQNfSYLsd",
-						"title": "Get Cloudflare Waiting Room for your enterprise",
+						"contentfulId": "6nhwytOZiBE6CxFRArGVAb",
+						"title": "Get D1 for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -968,53 +867,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
-							"elementName": "Talk to an expert (modal form)",
+							"contentfulId": "3HaMNOup8HZ1mMD7705sWS",
+							"elementName": "Get started - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/sign-up/",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
-								"modalName": "ZT Access Talk to an expert",
-								"modalId": "zt-access-talk-to-an-expert",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "5daBy41JohWg0zdFI6JHW",
-									"bladeName": "ZT Access - Talk to an expert - Marketo",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": false,
+							"buttonModal": null,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1024,7 +884,7 @@
 				],
 				"noindex": false,
 				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1035,8 +895,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/waiting-room/",
-			"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
+			"pathname": "/developer-platform/d1/",
+			"contentfulId": "1XocSe8FmOosqpYDlsG6hu",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",

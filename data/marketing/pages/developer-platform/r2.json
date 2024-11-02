@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/waiting-room/",
+	"path": "/developer-platform/r2/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Waiting Room Product Page",
+				"pageName": "R2 - Product page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,34 +32,29 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/waiting-room/",
-				"topNavOptions": null,
+				"relativePath": "developer-platform/r2",
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare Waiting Room",
-					"metaDescription": "Cloudflare Waiting Room lets you direct users to a custom-branded virtual 'waiting room' during traffic surges, improving their experience while they wait.",
+					"metaTitle": "Cloudflare R2 | Zero Egress Fee Object Storage",
+					"metaDescription": "Cloudflare R2 is an S3-compatible, zero egress-fee, object storage. Move data freely and build the multi-cloud architecture you desire.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						},
-						"description": null
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60bG9LEPCtF3G2tOcCCtCv/5d4f73889734bdb634c57b9c9116961f/waiting_room_product.png"
-						},
-						"description": null
-					},
+					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2021-01-21T23:30:29.913Z",
-					"updatedAt": "2024-11-02T04:46:04.572Z"
+					"createdAt": "2022-05-11T12:04:29.252Z",
+					"updatedAt": "2024-10-30T08:51:56.541Z"
 				},
-				"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
+				"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -69,31 +64,34 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "wjLMKvJKE9DVKHu8wOKx9",
+						"contentfulId": "tbMXbdl947mR3liButqiw",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Waiting Room ",
+						"title": "Cloudflare R2",
 						"titleSize": null,
-						"subtitle": "A virtual waiting room to manage peak traffic",
+						"subtitle": "Global object storage with zero egress fees",
 						"subtitleSize": null,
-						"copy": "Sudden increases in traffic can overwhelm your applications and infrastructure, leading to slow performance or complete disruption to your online presence.\n\nCloudflare Waiting Room allows organizations to route excess users to a custom-branded waiting room, helping preserve the customer experience and protecting origin servers from being overwhelmed with requests. ",
+						"copy": "Powered by our programmable global network, R2 enables you to create flexible, multicloud architectures with S3-compatible object storage.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": "Activate in Dash",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/r2",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Read the product brief",
-						"buttonText2LoggedIn": "Need more than one Waiting Room? ",
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
+						"buttonText2": "View Documentation",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://developers.cloudflare.com/r2/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"includeVideo": true,
+						"streamVideoId": "4f685df2282ecacd8d391de3bb1831db",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
@@ -101,9 +99,14 @@
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							},
+							"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						},
 						"imageSize": "Medium",
-						"imagePosition": null,
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -114,14 +117,14 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "1ca4d18f-d74b-5a65-a81a-cc7cc802ca7b",
-							"altText": "Cloudflare waiting room hero illustration",
-							"title": "Cloudflare waiting room hero illustration",
+							"id": "0522f72b-8363-5743-b2b9-2a025c93b795",
+							"altText": "Illustration of a cloud with various shapes inside it",
+							"title": "R2-Hero",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wyW25sYVxRcl9x8cJVWoG/48d3e6ecc30cdf27a5b633e285799311/cloudflare-waiting-room-hero-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OHya7vfRfEpPYsrvMXi5k/3050708e3d2b8acfffca578bf6d65a39/R2_Open_Beta.png"
 								},
 								"description": ""
 							},
@@ -130,22 +133,22 @@
 						}
 					},
 					{
-						"contentfulId": "2dj2Nnk15m0gWLrut1wJ8R",
+						"contentfulId": "61K6K8GWmy6z9qVfqK22fc",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF CLOUDFLARE WAITING ROOM",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE R2",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1kSSkgykb1A8wL5utczOFs",
-								"title": "Stay online",
+								"contentfulId": "2YHznl0J5cgVAMVZRzYMs0",
+								"title": "S3-compatible object storage",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Protect your application from legitimate traffic surges and ensure you are able to scale to meet high demand.",
+								"description": "Our [S3-compatible API](https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage/) gives you added flexibility — allowing you to access a wide range of S3 tools, libraries, and extensions.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -153,16 +156,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
+									"altText": "Cloudflare R2 distributed storage",
+									"title": "R2 Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
 										},
-										"description": "Global traffic management icon"
+										"description": "Cloud upload icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -176,16 +179,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6vk2Kv0Q93rCVEvVBq9JJR",
-								"title": "Reduce your infrastructure costs",
+								"contentfulId": "1EbJ3JN4ZU7uhSvSwfwxyX",
+								"title": "No egress charges",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Eliminate costs associated with maintaining additional servers and purchasing extra bandwidth to serve peak traffic.",
+								"description": "Our affordable, consistent pricing helps free up resources across your organization — and you never have to pay egress fees for data accessed from R2. [Join our webinar](https://gateway.on24.com/wcc/eh/2153307/lp/4242403/) to learn more.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
@@ -212,12 +215,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "lSg8VZyBXladyiIzpMwji",
-								"title": "Deliver a consistent brand experience",
+								"contentfulId": "384CIJcvqx8DAD6MSjz1vJ",
+								"title": "Easy migration from existing providers",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Waiting Room acts as an extension of your brand, ensuring that users get a seamless online experience even while waiting.",
+								"description": "Our automated migration service helps migrate your objects all at once or over time — whatever aligns with your current needs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -225,16 +228,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
-									"altText": "Yes check blue",
-									"title": "Yes check blue",
+									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
+									"altText": "Durable objects blue",
+									"title": "Durable objects blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
 										},
-										"description": "Checkmark icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -247,13 +250,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "5C4daK6b9UNQFIOCghUljC",
-						"title": "Create queues to gracefully manage user traffic",
-						"copy": "Waiting Room keeps wait times low by dynamically managing traffic. As soon as a user leaves an application or their cookie expires, a new user is let in.\n\nYou can set activation thresholds based on incoming rate of traffic or total active users. Admit queued visitors using multiple queuing options — first-in-first-out, random, or lottery.",
+						"contentfulId": "6KAs90xZejQAeogTx8xZhD",
+						"title": "Avoid vendor lock-in with our global object storage",
+						"copy": "Cloudflare R2 allows you to store large amounts of unstructured data — without the costly egress fees or vendor lock-in associated with other cloud storage providers.\n\nR2 natively integrates with Cloudflare Workers, so you can easily perform authentication, route requests, and deploy edge functions across our network of %{DataCenterCount}+ data centers.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -276,16 +279,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "bad5b234-e6f8-519e-8984-004b66844ac3",
-							"altText": "Illustration depicting users entering an application from the waiting room. ",
-							"title": "Keep Wait Times Low",
+							"id": "f00ca93e-47c1-53aa-8779-72969fcd3725",
+							"altText": "R2 Storage - Multi-Cloud",
+							"title": "R2 Storage - Multi-Cloud",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/STFxPFTXo1ekvxrCtw9Ei/8951fdb56aa5833c60856397f8577e90/keep-wait-times-low-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ltjBPznhikhwxKjfmxHww/31ea411d4bfbc74f5a79702c7e5971da/BDES-4909_-_r2-multi-cloud__1_.svg"
 								},
-								"description": null
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -295,7 +298,7 @@
 						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
@@ -305,8 +308,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "7MCao4zbqudEFxu9c06PAD",
-						"title": "Learn about strategies for handling traffic spikes and bot attacks",
+						"contentfulId": "2GDwg7cZusn3025TBSq2lB",
+						"title": "Reduce cloud spend and avoid hidden costs",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -321,14 +324,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "59JA8xyeX50LBTJ3WkIEgS",
-							"elementName": "Waiting Room - Additional offer - CTA",
+							"contentfulId": "Vk1HHAj1VFGGSrhyWsYJH",
+							"elementName": "Get the ebook",
 							"standardText": null,
-							"text": "Watch the webinar",
-							"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4260484/maximizing-cyber-weekend-success-strategies-for-handling-traffic-spikes-and-bot-attacks?partnerref=li-event",
+							"text": "Get the ebook",
+							"url": "https://www.cloudflare.com/lp/say-goodbye-to-egress-fees/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -337,7 +340,7 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "1rbQlyUNsnh6l2RB2gW2og",
+						"contentfulId": "5MeBo5xxmROj5pBs3UYKjb",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -347,7 +350,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "5FVi34e2l3K400yEMX8kKN",
+								"contentfulId": "6TCH2tz4T0K56QbP9FlgUT",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -399,7 +402,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"If we are hosting a game that is very popular, and we end up getting hundreds of thousands more users than anticipated, we know that our infrastructure will have time to scale, thanks to Cloudflare Waiting Room.\"",
+															"value": "\"After investigating a wide range of alternatives, we went with Cloudflare's R2 storage — and as a result are thrilled that our engine distribution costs have decreased by 98%, while delivering top-notch performance.\"",
 															"marks": [],
 															"content": null
 														}
@@ -443,7 +446,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "CEO — FanHero",
+													"value": "Prisma",
 													"marks": [],
 													"content": null
 												}
@@ -644,22 +647,22 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
-						"contentfulId": "79lvOhwPSXxIbpe89d0z8l",
+						"contentfulId": "5PTEt0bryMnMPtT2ZNruab",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare Waiting Room ensures that applications remain available and usable even when demand surges to unexpected levels.",
-						"eyebrowHeading": "Top Waiting Room use cases",
+						"title": "R2 helps you create portable multicloud architectures, effortlessly move data between cloud providers, and optimize content storage and delivery.",
+						"eyebrowHeading": "Top R2 use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "20FhjeEEdtnrF0T57eJpsW",
-								"title": "Reduce cart abandonment rate",
+								"contentfulId": "6RMJ9ruC8LQkvdlN8CtYoX",
+								"title": "Migrate data from S3 and Google Cloud Storage (GCS)",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Ensure that your online transactions are not impacted by downtime or slow application performance during peak traffic hours.",
+								"description": "Move your data (including training data for AI models) to R2 and take advantage of our zero egress fee policy — whether you are permanently migrating your data or not.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -667,14 +670,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "a27a111c-85d5-596e-b074-e5cd44bf35ce",
-									"altText": "Shop cart blue",
-									"title": "Shop cart blue",
-									"activeAsset": "Brandfolder Asset",
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xeOjnsQHBnFlh6ClUh6Sm/7c7e1c62f0e3d65715268aba5f044bab/shop-cart.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
 										},
 										"description": ""
 									},
@@ -690,12 +693,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "210uyXX61h7Qe7zwsKS5l6",
-								"title": "Holiday traffic and special events",
+								"contentfulId": "6FZL1lm8PZDzqYf6ZsXqoG",
+								"title": "Optimize dynamic content storage and delivery",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Prevent your infrastructure from becoming overwhelmed when traffic surges during holidays and events.",
+								"description": "With our Cache API and Workers, you can significantly extend cache lifetimes for large files and provide low-latency access to assets.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -703,16 +706,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
+									"altText": "Optimization web blue",
+									"title": "Optimization web blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
 										},
-										"description": "Global traffic management icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -726,12 +729,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5a3jvdTgKlkAdsyChwvFdF",
-								"title": "Product launches and limited time sales",
+								"contentfulId": "1e63ADYz8E8wTy3c9MnpiZ",
+								"title": "Build event-driven applications",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Ensure users can still access and use your website even during periods of extremely high traffic.",
+								"description": "<br>\nTrigger workflows that react to changes in your data with event notifications and Queues.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -739,16 +742,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
-									"altText": "Pages shield blue",
-									"title": "Pages shield blue",
+									"id": "85b72606-4e5f-58f1-bdd8-2f22d34e428e",
+									"altText": "Ruleset icon",
+									"title": "Ruleset icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWKT2GPjWBacPIsuSQzfq/051691978b1dcd161745317f724eb2b4/cloudflare-ruleset-engine.svg"
 										},
-										"description": ""
+										"description": "cloudflare ruleset engine icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -766,15 +769,15 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "7is9KWlcBWAciTtxhhnn9h",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "17ht0gKiAF2eZCLP4wtlMf",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "4xJuCr1Lop4HwNkubGgl22",
+						"contentfulId": "2JaU5RorpeTdZM8o5Sm5c7",
 						"contentTypeId": "bladeLeadGeneration",
-						"title": "Helping organizations worldwide manage user queues",
-						"description": "Helping organizations worldwide manage user queues",
+						"title": null,
+						"description": "Trusted by millions of Internet properties",
 						"variant": "inline",
 						"htmlId": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -797,11 +800,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "27RMyTPYMUkUbkpvBE2jaN",
-							"elementName": "Case studies (Waiting Room)",
+							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
+							"elementName": "See case studies (main)",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/?product=Waiting+Room",
+							"url": "/case-studies/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -810,150 +813,268 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "56EFcoFcmAYB7eUjMY8M4O",
-						"title": "Resources",
+						"contentTypeId": "bladeTable",
+						"contentfulId": "23pPRtEM5wpqNzw6az0kBl",
+						"locale": "en-US",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "R2 Pricing",
+						"copy": "R2 charges based on the total volume of data stored and two classes of operations on that data. You pay zero egress fees.\n",
 						"htmlId": null,
-						"backgroundImage": null,
-						"cards": [
+						"columnHeaders": [
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1xy0uZEv6a0lYzat455QR8",
-								"heading": "Product brief",
-								"description": "Waiting Room overview",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "6lHyUqYV823b2Krz8lgjRK",
-									"elementName": "Waiting Room - Resources cards carousel - Waiting Room overview - Link",
-									"standardText": null,
-									"text": "Get product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IydVtIa13olmKwJ1Dv8KW/43dc4e3cc26f9a2578750fab360172be/2_Pager___Layout_A_-_Standard_Cloudflare_-_A4.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
-									"altText": "Product brief thumbnail",
-									"title": "Product brief thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
+								"cellText": "Forever Free",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
 							},
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1W202iozf5OCw1vNUP7kkA",
-								"heading": "Blog",
-								"description": "Cloudflare Waiting Room announcement blog",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3Bf9GbPnTeqLw5LROHGMhe",
-									"elementName": "Waiting Room - Resources cards carousel - Cloudflare Waiting Room announcement blog - Link",
-									"standardText": null,
-									"text": "Read blog post",
-									"url": "https://blog.cloudflare.com/cloudflare-waiting-room/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
+								"cellText": "Monthly Rates",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							}
+						],
+						"groupsInTable": [],
+						"rowsInTable": [
+							{
+								"contentfulId": "XeiULTLR6eFEwr90XrS6e",
+								"rowHeader2": {
+									"contentfulId": "6VK8KAbU0ep1ipABTjgcUz",
+									"cellText": "Storage",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
 								},
-								"image": {
-									"id": "16dda4bb-a521-5d41-82ec-64ef52888d97",
-									"altText": "Blog  thumbnail",
-									"title": "Blog  thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ctAQnKr7LFaJzwd5gbbeu/dffc3ef872495ac11a0250f524a057f3/Blog-thumbnail-generic.png"
-										},
-										"description": null
+								"cellsInRow": [
+									{
+										"contentfulId": "6eqG1DrYVjAedhkmD0W6ba",
+										"cellText": "10 GB / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
 									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
+									{
+										"contentfulId": "6Up7mjsjfGU6tEYFHnaQyv",
+										"cellText": "$0.015 / GB storage",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
 							},
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "7bbBVj6Ycc3cPvPcjfUinq",
-								"heading": "Solution brief",
-								"description": "Solution brief: Cloudflare for ecommerce",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "4B2maSAEv49BVHavRxRv9q",
-									"elementName": "Waiting Room - Resources cards carousel - Solution brief: Cloudflare for ecommerce - Link",
-									"standardText": null,
-									"text": "Get solution brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iHRb5mLKGbtdXBz0u61cI/60766a4ac2cb7091798f456c4d2496e6/Cloudflare_for_Ecommerce__Brief_.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
+								"contentfulId": "5vy1lPqamF3LW9TOCFOeDC",
+								"rowHeader2": {
+									"contentfulId": "6Nkii3Ej3WJRimBQUFJdFV",
+									"cellText": "Class A operations: mutate state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
 								},
-								"image": {
-									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
-									"altText": "Solution brief - thumbnail",
-									"title": "Solution brief - thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
-										},
-										"description": null
+								"cellsInRow": [
+									{
+										"contentfulId": "5LKm6sR7gSNtKw81srtQ1y",
+										"cellText": "1,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
 									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
+									{
+										"contentfulId": "5FuaSVJexUdpifJL1jtyqB",
+										"cellText": "$4.50 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
 							},
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "3sfkG4CseeNqV1QzFLJ0EN",
-								"heading": "Article",
-								"description": "Website security guide: A 10-step checklist",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "lbPDzmYd0aAY1hGAykgM7",
-									"elementName": "Advanced Certificate Manager - Resources card carousel - Website security guide: A 10-step checklist - Link",
-									"standardText": "Learn More",
-									"text": null,
-									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
+								"contentfulId": "SkqRtjtaNpNANpmISzAJS",
+								"rowHeader2": {
+									"contentfulId": "26xTGigHzGlgkHDSmRdQab",
+									"cellText": "Class B operations: read existing state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
 								},
-								"image": {
-									"id": "37200d64-8a19-5b80-a727-74e25737dff6",
-									"altText": "theNet article - thumbnail",
-									"title": "theNet article - thumbnail",
+								"cellsInRow": [
+									{
+										"contentfulId": "4zMhYcGbpHjldEP9F3iOp2",
+										"cellText": "10,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4lFYCbwimsUSDY9dzmTQpq",
+										"cellText": "$0.36 / million ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						],
+						"dataSource": null
+					},
+					{
+						"contentfulId": "3RA2AH9F1dZjNLbiaQrmuG",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5vwg9kkJtjdDHCJPVnEF5y",
+								"title": "Explore the developer's guide to media optimization",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "See how R2 can help you host, store, and deliver rich media experiences — without driving up costs.",
+								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/76OowVPNaxwlbzZC9z5LpN/f8620e467799b0920ebd01fdb222798b/A_Developers_Guide_to_Media_Optimization.pdf",
+								"learnMoreText": "Get the guide",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dsbqlnfwzvlPRvNcV2jTT/124c616468093a4ee6bcd75762121c02/Article_106x182.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
-								}
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "QqbkRdz4nDhCCpGkZSVJI",
+								"title": "Train LLMs on any cloud provider, anywhere in the world",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Building large language models (LLMs) requires robust data storage infrastructure. Cloudflare R2 can help.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-r2-mosaicml-train-llms-anywhere-faster-cheaper",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2U9OHBkBVvbaNPWi3N6VAJ",
+								"title": "Migrate objects on-demand",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Transfer data from other cloud providers to R2 as the data is requested with Sippy.",
+								"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/",
+								"learnMoreText": "View the reference architecture",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "73oQ0zzNth40TNQNfSYLsd",
-						"title": "Get Cloudflare Waiting Room for your enterprise",
+						"contentfulId": "1BBlx7AhoYoQtkxLwIdWKi",
+						"title": "See how much you can save with R2",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -968,53 +1089,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
-							"elementName": "Talk to an expert (modal form)",
+							"contentfulId": "1XNnDmEGSbjWIxvAugKKHG",
+							"elementName": "Calculate your savings - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
+							"text": "Calculate your savings",
+							"url": "https://r2-calculator.cloudflare.com/",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
-								"modalName": "ZT Access Talk to an expert",
-								"modalId": "zt-access-talk-to-an-expert",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "5daBy41JohWg0zdFI6JHW",
-									"bladeName": "ZT Access - Talk to an expert - Marketo",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": false,
+							"buttonModal": null,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1023,8 +1105,49 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "7HKPKdN8NyJuuIz6x0XBYI",
+						"modalName": "R2 Product Page Modal Form",
+						"modalId": "r2-product-page-modal-form",
+						"modalType": "split-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "7uQTdBu6g82MhQrzAgjaJu",
+							"bladeName": "R2 Product Page Marketo Form",
+							"backgroundColor": "white",
+							"marketoFormId": 2733,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[INB] Q3'22 WEB - GBL - R2 web inquiry",
+							"marketoFormHeaderText": "Is R2 right for you?",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": false,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": "Fill out the form below and an R2 specialist will be in touch shortly to discuss your specific needs.",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1035,8 +1158,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/waiting-room/",
-			"contentfulId": "6UobIFQgEGwKBcpU5p2u9D",
+			"pathname": "/developer-platform/r2/",
+			"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
