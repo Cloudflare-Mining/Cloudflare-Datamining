@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.2
+
+### Patch Changes
+
+- 028f888926: Updated Tooltip to support portaling to fix stacking context bug
+
 ## 5.1.1
 
 ### Patch Changes
