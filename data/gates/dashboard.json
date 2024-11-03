@@ -928,6 +928,13 @@
 	"prg-minimal-header-banners": {
 		"enabled": true
 	},
+	"prg-onboarding-zone-plan-billing-to-monthly": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"prg-persistent-cta-upgrade-experiment": {
 		"enabled": true,
 		"branches": [
