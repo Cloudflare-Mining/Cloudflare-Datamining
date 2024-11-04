@@ -2525,7 +2525,7 @@
 																			"condition": {
 																				"allOf": [
 																					{
-																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
 																						"properties": {
 																							"maxAge": {
 																								"type": "integer"
@@ -2567,7 +2567,7 @@
 																			"condition": {
 																				"oneOf": [
 																					{
-																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																						"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
 																						"properties": {
 																							"maxAge": {
 																								"type": "integer"
@@ -2628,7 +2628,7 @@
 																						"condition": {
 																							"oneOf": [
 																								{
-																									"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																									"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
 																									"properties": {
 																										"maxAge": {
 																											"type": "integer"
@@ -4550,7 +4550,7 @@
 												"condition": {
 													"allOf": [
 														{
-															"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
 															"properties": {
 																"maxAge": {
 																	"type": "integer"
@@ -4592,7 +4592,7 @@
 												"condition": {
 													"oneOf": [
 														{
-															"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+															"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
 															"properties": {
 																"maxAge": {
 																	"type": "integer"
@@ -4653,7 +4653,7 @@
 															"condition": {
 																"oneOf": [
 																	{
-																		"description": "Condition for lifecycle transitions to apply after an object reaches an age in days",
+																		"description": "Condition for lifecycle transitions to apply after an object reaches an age in seconds",
 																		"properties": {
 																			"maxAge": {
 																				"type": "integer"
