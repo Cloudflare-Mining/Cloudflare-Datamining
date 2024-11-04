@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Lisbon or Remote Portugal&nbsp;</p>
+<p><strong>Available Locations: </strong>Lisbon&nbsp;</p>
 <p><strong>Role Description</strong></p>
 <p>Network Operations Center ("NOC") Analyst provides premium-level support for Cloudflare's largest and most technically sophisticated customers. The NOC service will focus on monitoring, alerting, and addressing issues related to availability and latency degradation in Layer 7 traffic, as well as handling basic security escalations and offering recommendations to mitigate fundamental attacks. The NOC system will monitor HTTP requests for alert-able conditions, and our NOC team will alert customers about problems as soon as they are found.&nbsp;</p>
 <p>NOC Engineers analyze the alerts, inform the customer of any material impact, and proactively put in motion a remediation path to resolving the degraded service, whether that be by moving traffic through a new route or working with the Systems Reliability Engineering team for a quick product fix or to declare a broader incident. The team also provides reporting and analysis to the customer in regular cadence, beyond any report that would be self-serviceable within the Cloudflare UI.</p>

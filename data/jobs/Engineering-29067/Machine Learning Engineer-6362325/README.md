@@ -5,33 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX and or must be willing to relocate to the area for this role.&nbsp;</strong></p>
-<p><strong>About the Department:</strong></p>
-<p>Cloudflare’s Business Intelligence team plays a critical role in providing the advanced data analytics solution for the company’s business teams. We are responsible for building a centralized cloud data analytics platform using open source technologies that are used by our internal Business Partners and Machine Learning teams. Our goal is to democratize data, support Cloudflare’s critical business needs, and provide reporting and analytics self-service tools to fuel existing and new business critical initiatives.</p>
-<p><strong>About the Role:</strong></p>
-<p>We are looking for a self-motivated Program Manager to join our Business Intelligence team. You will work with our technical leads in driving the AI/ML and GTM roadmaps while maintaining an end-to-end perspective when determining prioritization.&nbsp; This role is solely dedicated to supporting the building of internal data environments or the data products that serve internal data customers. The ideal candidate is process driven but remains flexible and iterative, able to manage internal and external stakeholders, and is able to adapt to quickly evolving situations.&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available locations: Lisbon or London</strong></p>
+<p><strong>About Cloudflare and Our Team:</strong></p>
+<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a significant portion of Internet traffic. Our team, specifically responsible for Turnstile and Challenge Pages, collaborates closely with a dedicated Product Manager and other engineering teams to develop cutting-edge bot detection and mitigation solutions. Our focus is on enhancing internet security while preserving user privacy and usability. Check out some of <a href="https://blog.cloudflare.com/tag/turnstile/">our articles mentioning Turnstile</a>!</p>
+<p><strong>What You'll Do:</strong></p>
+<p>As a Machine Learning Engineer on our team, you'll play a key role in expanding our Turnstile and Challenge products. Your responsibilities will include:</p>
 <ul>
-	<li>Actively partner with BI managers and team members on quarterly planning and roadmap tracking.</li>
-	<li>Engage with various operations teams to plan, track, and manage the execution of programs and initiatives.</li>
-	<li>Develop clear and transparent communication channels to align with business stakeholders and other delivery teams and ensure relevant audiences receive appropriate updates on programs and projects.</li>
-	<li>Support BI managers in requirements gathering, project tracking, meeting alignment, documentation and requisite follow-up.</li>
-	<li>Collaborate with team leads to develop executive reporting materials (e.g., executive steer co, weekly updates, key artifacts, etc.).</li>
-	<li>Facilitate communication between business stakeholders and the development team.</li>
-	<li>Support the management of data sourcing schedules, timelines, and milestones for the implementation and delivery of the projects and programs.</li>
-	<li>Organize daily activities: meetings, reporting, follow-up, to support the ongoing management of programs in flight.</li>
+	<li><strong>Advanced Bot Detection:</strong> Develop sophisticated bot and human detection capabilities using machine learning and traffic analysis techniques, with a strong emphasis on privacy and security.</li>
+	<li><strong>Full-Stack Development:</strong> Engage in full-stack development—from backend systems and distributed frameworks to client-side logic—to build comprehensive solutions.</li>
+	<li><strong>Scalable and Secure Software:</strong> Build scalable, secure, and privacy-conscious software to accommodate a growing and diverse user base.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Work closely with cross-functional teams to innovate and enhance our security solutions.</li>
+	<li><strong>Research and Development:</strong> Contribute to research efforts, potentially publishing findings in security and privacy conferences.</li>
 </ul>
-<p><strong>Required skills, knowledge, and experience:</strong></p>
+<p><strong>About You:</strong></p>
+<p>We're looking for a motivated individual with:</p>
 <ul>
-	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
-	<li>3-5 years experience in planning and prioritization for highly cross functional teams</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</li>
-	<li>Strong competency with project management tools (Confluence, JIRA) and various development methodologies (Agile, Waterfall, Scrum, etc).</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
-	<li>Knowledge of technical program management and a desire for continuous improvement.</li>
-	<li>Cooperative leader who has successfully gained authority with peers by demonstrating empathy, providing support, and motivating others.&nbsp;</li>
-	<li>Role is based in Austin and you will be working with teams in various time zones.&nbsp; Expectation to be able to attend day-long in-office sessions.</li>
+	<li><strong>Strong Background in Machine Learning and Security:</strong> Expertise in machine learning, distributed systems, and security, particularly in traffic analysis.</li>
+	<li><strong>Data Analysis Experience:</strong> Familiarity with data analysis frameworks like Spark and machine learning libraries such as Scikit-learn and PyTorch.</li>
+	<li><strong>Security-Focused Mindset:</strong> Essential for developing products like Turnstile that prioritize user privacy and security.</li>
+	<li><strong>Experience with Privacy Technologies:</strong> Knowledge of privacy-enhancing technologies and countermeasures.</li>
+	<li><strong>Curiosity and Drive:</strong> A natural sense of curiosity and a self-driven attitude to continuously learn and solve complex problems.</li>
+	<li><strong>Excellent Communication Skills:</strong> Strong problem-solving abilities and the capacity to communicate effectively within a team.</li>
 </ul>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li><strong>Cloud and DevOps Tools:</strong> Experience with cloud platforms like GCP or AWS, Docker, Git, and distributed systems tools such as Terraform and Ansible.</li>
+	<li><strong>Database Knowledge:</strong> Familiarity with PostgreSQL and ClickHouse.</li>
+	<li><strong>Counter-Abuse Experience:</strong> Previous work in counter-abuse, fraud detection, and mitigation.</li>
+	<li><strong>Research Contributions:</strong> Publications or contributions to security and privacy research are highly regarded.</li>
+</ul>
+<p><strong>Working in Our Team:</strong></p>
+<p>You'll be integral to making our products more robust, secure, and stable. Our solutions run across the web on various browsers, requiring continuous testing and adaptability. We value innovation and problem-solving skills—we encourage you to identify challenges and propose effective solutions. Our team meetings focus on addressing these challenges, with an emphasis on delivering both short-term and long-term value to the business.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

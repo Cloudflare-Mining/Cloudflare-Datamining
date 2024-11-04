@@ -5,37 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon or London</strong></p>
-<p><strong>About Cloudflare and Our Team:</strong></p>
-<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a significant portion of Internet traffic. Our team, specifically responsible for Turnstile and Challenge Pages, collaborates closely with a dedicated Product Manager and other engineering teams to develop cutting-edge bot detection and mitigation solutions. Our focus is on enhancing internet security while preserving user privacy and usability. Check out some of <a href="https://blog.cloudflare.com/tag/turnstile/">our articles mentioning Turnstile</a>!</p>
-<p><strong>What You'll Do:</strong></p>
-<p>As a Data Engineer on our team, you'll play a key role in expanding our Turnstile and Challenge products. Your responsibilities will include:</p>
+<h4><strong>Location: </strong>London UK or Lisbon PT&nbsp;</h4>
+<h4><strong>About the department</strong></h4>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Do you like solving complex problems? Are you great at helping a team grow to surpass their potential together? Do you enjoy interacting with people at all levels and roles?</p>
+<p>As a <strong>Escalations Engineering Manager</strong> at Cloudflare you will:</p>
+<p><strong>Provide World-Class Support to our Millions of Customers</strong> - You will help the team respond to highly critical and/or complex problems which get escalated beyond the normal customer support processes.&nbsp; You will also be the bridge between our customers, support teams, and engineering teams.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Manage Escalation Engineers</strong> - You will coach the team to excel at their jobs, manage individual and team projects to on-time completion, have regular one-on-ones with everyone on your Escalation Engineering team, encourage professional development, help with training and QA, manage the support hiring process, and keep team morale high.</p>
+<p>&nbsp;</p>
+<p><strong>Help Manage and Improve Tools and Processes - </strong>You will manage and continuously improve our processes for helping customers, managing the team, and working with the rest of the company. They will also help to manage all of our support tools and software.</p>
+<p>&nbsp;</p>
+<p><strong>Work Cross-Functionally With Other Teams</strong> - You will work with other teams to guide projects that help the support team, customers and the company. You will act as the Voice of the Customer to communicate clearly the requests and problems our customers are reporting to the rest of the company through to resolution.</p>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>Advanced Bot Detection:</strong> Develop sophisticated bot and human detection capabilities using machine learning and traffic analysis techniques, with a strong emphasis on privacy and security.</li>
-	<li><strong>Full-Stack Development:</strong> Engage in full-stack development—from backend systems and distributed frameworks to client-side logic—to build comprehensive solutions.</li>
-	<li><strong>Scalable and Secure Software:</strong> Build scalable, secure, and privacy-conscious software to accommodate a growing and diverse user base.</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Work closely with cross-functional teams to innovate and enhance our security solutions.</li>
-	<li><strong>Research and Development:</strong> Contribute to research efforts, potentially publishing findings in security and privacy conferences.</li>
+	<li>Minimum of 3 years of team lead or management experience, with teams of 4 or more people.</li>
+	<li>Experience managing performance and development.</li>
+	<li>Strong experience at hiring, coaching, and training Escalation Engineers.</li>
+	<li>Experience managing a team to meet and exceed their individual, team, and company goals.</li>
+	<li>5 years (or more) of prior technical support experience for SaaS/PaaS enterprise solutions.</li>
+	<li>Fundamental understanding how the Internet works (OSI Model).</li>
+	<li>Knowledge of DNS, SSL/TLS, HTTP, and network related concepts.</li>
+	<li>Familiarity with command line and command line tools including curl, dig, traceroute.</li>
+	<li>Experience providing global support that follows the sun 24x7x365.</li>
+	<li>You have strong communication skills, both verbal and written.</li>
+	<li>Past experience or interest in working at a fast-paced and high-growth company.</li>
+	<li>Ability and willingness to work occasional weekends, holidays, and after hours</li>
 </ul>
-<p><strong>About You:</strong></p>
-<p>We're looking for a motivated individual with:</p>
-<ul>
-	<li><strong>Strong Background in Machine Learning and Security:</strong> Expertise in machine learning, distributed systems, and security, particularly in traffic analysis.</li>
-	<li><strong>Data Analysis Experience:</strong> Familiarity with data analysis frameworks like Spark and machine learning libraries such as Scikit-learn and PyTorch.</li>
-	<li><strong>Security-Focused Mindset:</strong> Essential for developing products like Turnstile that prioritize user privacy and security.</li>
-	<li><strong>Experience with Privacy Technologies:</strong> Knowledge of privacy-enhancing technologies and countermeasures.</li>
-	<li><strong>Curiosity and Drive:</strong> A natural sense of curiosity and a self-driven attitude to continuously learn and solve complex problems.</li>
-	<li><strong>Excellent Communication Skills:</strong> Strong problem-solving abilities and the capacity to communicate effectively within a team.</li>
-</ul>
-<p><strong>Bonus Points:</strong></p>
-<ul>
-	<li><strong>Cloud and DevOps Tools:</strong> Experience with cloud platforms like GCP or AWS, Docker, Git, and distributed systems tools such as Terraform and Ansible.</li>
-	<li><strong>Database Knowledge:</strong> Familiarity with PostgreSQL and ClickHouse.</li>
-	<li><strong>Counter-Abuse Experience:</strong> Previous work in counter-abuse, fraud detection, and mitigation.</li>
-	<li><strong>Research Contributions:</strong> Publications or contributions to security and privacy research are highly regarded.</li>
-</ul>
-<p><strong>Working in Our Team:</strong></p>
-<p>You'll be integral to making our products more robust, secure, and stable. Our solutions run across the web on various browsers, requiring continuous testing and adaptability. We value innovation and problem-solving skills—we encourage you to identify challenges and propose effective solutions. Our team meetings focus on addressing these challenges, with an emphasis on delivering both short-term and long-term value to the business.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
