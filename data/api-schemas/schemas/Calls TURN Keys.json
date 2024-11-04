@@ -101,11 +101,34 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Bearer token",
-											"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
-											"maxLength": 64,
-											"minLength": 64,
-											"type": "string"
+											"properties": {
+												"created": {
+													"description": "The date and time the item was created.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified": {
+													"description": "The date and time the item was last modified.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"default": "",
+													"description": "A short description of Calls app, not shown to end users.",
+													"example": "production-realtime-app",
+													"type": "string"
+												},
+												"uid": {
+													"description": "A Cloudflare-generated unique identifier for a item.",
+													"example": "2a95132c15732412d22c1476fa83f27a",
+													"maxLength": 32,
+													"minLength": 32,
+													"type": "string"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -221,11 +244,34 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "Bearer token",
-												"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
-												"maxLength": 64,
-												"minLength": 64,
-												"type": "string"
+												"properties": {
+													"created": {
+														"description": "The date and time the item was created.",
+														"example": "2014-01-02T02:20:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"modified": {
+														"description": "The date and time the item was last modified.",
+														"example": "2014-01-02T02:20:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"name": {
+														"default": "",
+														"description": "A short description of Calls app, not shown to end users.",
+														"example": "production-realtime-app",
+														"type": "string"
+													},
+													"uid": {
+														"description": "A Cloudflare-generated unique identifier for a item.",
+														"example": "2a95132c15732412d22c1476fa83f27a",
+														"maxLength": 32,
+														"minLength": 32,
+														"type": "string"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -445,11 +491,34 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Bearer token",
-											"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
-											"maxLength": 64,
-											"minLength": 64,
-											"type": "string"
+											"properties": {
+												"created": {
+													"description": "The date and time the item was created.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified": {
+													"description": "The date and time the item was last modified.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"default": "",
+													"description": "A short description of Calls app, not shown to end users.",
+													"example": "production-realtime-app",
+													"type": "string"
+												},
+												"uid": {
+													"description": "A Cloudflare-generated unique identifier for a item.",
+													"example": "2a95132c15732412d22c1476fa83f27a",
+													"maxLength": 32,
+													"minLength": 32,
+													"type": "string"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -778,11 +847,34 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Bearer token",
-											"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
-											"maxLength": 64,
-											"minLength": 64,
-											"type": "string"
+											"properties": {
+												"created": {
+													"description": "The date and time the item was created.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"modified": {
+													"description": "The date and time the item was last modified.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"default": "",
+													"description": "A short description of Calls app, not shown to end users.",
+													"example": "production-realtime-app",
+													"type": "string"
+												},
+												"uid": {
+													"description": "A Cloudflare-generated unique identifier for a item.",
+													"example": "2a95132c15732412d22c1476fa83f27a",
+													"maxLength": 32,
+													"minLength": 32,
+													"type": "string"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
