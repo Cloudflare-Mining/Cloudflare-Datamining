@@ -5812,6 +5812,11 @@
 								"nullable": true,
 								"type": "string"
 							},
+							"integration_id": {
+								"format": "uuid",
+								"nullable": true,
+								"type": "string"
+							},
 							"lookback_hops": {
 								"format": "int32",
 								"maximum": 20,
