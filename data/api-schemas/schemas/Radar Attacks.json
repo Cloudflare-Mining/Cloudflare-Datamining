@@ -8496,20 +8496,16 @@
 											"type": "object"
 										},
 										"summary_0": {
-											"properties": {
-												"Bot": {
-													"example": "14.285714",
+											"additionalProperties": {
+												"items": {
 													"type": "string"
 												},
-												"HTTP Anomaly": {
-													"example": "85.714286",
-													"type": "string"
-												}
+												"type": "array"
 											},
-											"required": [
-												"HTTP Anomaly",
-												"Bot"
-											],
+											"example": {
+												"Bot": "14.285714",
+												"HTTP Anomaly": "85.714286"
+											},
 											"type": "object"
 										}
 									},
@@ -11601,25 +11597,30 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"Bot": {
-													"items": {
-														"example": "0.324198",
-														"type": "string"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"type": "string"
 												},
+												"type": "array"
+											},
+											"example": {
+												"Bot": [
+													"0.324198"
+												],
+												"timestamps": [
+													"2023-10-01T00:00:00Z"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
-														"example": "2023-10-01T00:00:00Z",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"timestamps",
-												"Bot"
+												"timestamps"
 											],
 											"type": "object"
 										}
