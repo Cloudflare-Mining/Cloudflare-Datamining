@@ -1,5 +1,14 @@
 # Change Log
 
+## 8.5.12
+
+### Patch Changes
+
+- 0dccb6d732: feat(@cloudflare/component-button): DESSYS-1848 Add iconProps prop
+  In the Workers and Pages settings pages, we make use of component-button for our action buttons. Each of these buttons' icons have a margin-right specified on them in accordance with the iconPosition prop. If the position is "left" (default), then a margin-right is applied and the reverse it true for right.
+
+  We'd like to able to override that margin and zero it out. This change proposes the introduction of a new prop to component-button: `iconProps` which passes through props to the Icon component from Button.
+
 ## 8.5.11
 
 ## 8.5.10

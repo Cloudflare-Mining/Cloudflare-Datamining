@@ -1,5 +1,13 @@
 # Change Log
 
+## 10.1.22
+
+### Patch Changes
+
+- Updated dependencies [0dccb6d732]
+  - @cloudflare/component-button@8.5.12
+  - @cloudflare/component-link@8.1.13
+
 ## 10.1.21
 
 ## 10.1.20

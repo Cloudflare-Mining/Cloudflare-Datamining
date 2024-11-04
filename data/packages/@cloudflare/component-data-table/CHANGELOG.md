@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.41
+
+### Patch Changes
+
+- Updated dependencies [0dccb6d732]
+  - @cloudflare/component-button@8.5.12
+  - @cloudflare/component-link@8.1.13
+
 ## 6.0.40
 
 ### Patch Changes

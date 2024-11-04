@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.44
+
+### Patch Changes
+
+- @cloudflare/component-legend@6.1.31
+
 ## 4.0.43
 
 ### Patch Changes
