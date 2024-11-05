@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 3916,
+	"version": "2024.10.537.1",
+	"short_version": "",
+	"size": 123584512,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "05388e78dcdcd69b5dbb097e8cdd22d9",
+	"fingerprint": "1f1bdf0d216f03652af4f86418b21f40",
+	"uploaded_at": "2024-11-05T19:51:27.779Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains an exciting new feature along with reliability improvements and general bug fixes. Please take time over the next few weeks to play with the new functionality and let us know what you think on both the community forum and through your account teams.\r\n\r\n\r\n## New Features\r\n- Added the ability for administrators to initiate remote packet capture (PCAP) and warp-diag collection\r\n  \r\n## Changes and improvements\r\n- Improved reliability of connection establishment logic under degraded network conditions\r\n- Improved captive portal detection behavior by forcing captive portal checks outside the tunnel\r\n- Allow the ability to configure tunnel protocol for consumer registrations\r\n- Fixed an issue with the WARP client becoming unresponsive during startup\r\n- Extended diagnostics collection time in warp-diag to ensure logs are captured reliably\r\n\r\n\r\n## Known issues\r\n- DNS resolution may be broken when the following condition are all true:\r\n  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.\r\n  - A custom DNS server address is configured on the primary network adapter.\r\n  - The custom DNS server address on the primary network adapter is changed while WARP is connected.\r\n\r\n  To work around this issue, please reconnect the WARP client by toggling off and back on.\r\n  \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"b437e3f913b351d956e97424165b8e53a76aead4e8b975dccca256db57b9c20e"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
