@@ -52,7 +52,7 @@
 	</div>
 	<p>Today’s edition of the Crypto Week introduces an “opportunistic” solution to this problem, so that under suitable conditions, anyone using <a href="https://blog.torproject.org/new-release-tor-browser-80">Tor Browser 8.0</a> will benefit from improved security and performance when visiting Cloudflare websites without having to face a CAPTCHA. At the same time, this feature enables more fine-grained rate-limiting to prevent malicious traffic, and since the mechanics of the idea described here are not specific to Cloudflare, anyone can <a href="https://github.com/mahrud/caddy-altonions">reuse this method</a> on their own website.</p>
 	<p>Before we continue, if you need a refresher on what Tor is or why we are talking about onions, check out the <a href="https://www.torproject.org/about/overview.html.en">Tor Project</a> website or our own blog post on the <a href="https://blog.cloudflare.com/welcome-hidden-resolver">DNS resolver onion</a> from June.</p>
-	<p>As Matthew mentioned in his blog post, one way to sift through Tor traffic is to use the <a href="https://www.torproject.org/docs/onion-services.html.en">onion service</a> protocol. Onion services are Tor nodes that advertise their public key, encoded as an address with .onion TLD, and use “rendezvous points” to establish connections entirely within the Tor network:</p>
+	<p>As Matthew mentioned in his blog post, one way to sift through Tor traffic is to use the <a href="https://www.torproject.org/docs/onion-services.html.en">onion service</a> protocol. Onion services are Tor nodes that advertise their public key, encoded as an address with .onion <a href="https://www.cloudflare.com/learning/dns/top-level-domain">TLD</a>, and use “rendezvous points” to establish connections entirely within the Tor network:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YwoSQd9m6fwJ4INk44fsz/7aa81a4f71f35f9323ba4173e328d356/Tor-network-example-1.png" alt="" class="kg-image" width="1999" height="575" loading="lazy">
@@ -253,4 +253,5 @@ cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15NmOPYhQ1eUrnNvavD3TX/f3878ea7031dee5fa0b8fcfffb5e6563/Crypto-Week.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
 
 	</figure>
+	<p></p>
 </div>
