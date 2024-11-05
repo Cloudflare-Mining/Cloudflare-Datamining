@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/firewall/ua_rules/{id}": {
+	"DELETE /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"description": "Deletes an existing User Agent Blocking rule.",
 		"operationId": "user-agent-blocking-rules-delete-a-user-agent-blocking-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "ua_rule_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the User Agent Blocking rule.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -414,13 +414,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/firewall/ua_rules": {
+	"GET /zones/{zone_id}/firewall/ua_rules": {
 		"description": "Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters.",
 		"operationId": "user-agent-blocking-rules-list-user-agent-blocking-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -972,13 +972,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/firewall/ua_rules/{id}": {
+	"GET /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"description": "Fetches the details of a User Agent Blocking rule.",
 		"operationId": "user-agent-blocking-rules-get-a-user-agent-blocking-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "ua_rule_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the User Agent Blocking rule.",
@@ -990,7 +990,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1342,13 +1342,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/firewall/ua_rules": {
+	"POST /zones/{zone_id}/firewall/ua_rules": {
 		"description": "Creates a new User Agent Blocking rule in a zone.",
 		"operationId": "user-agent-blocking-rules-create-a-user-agent-blocking-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1818,13 +1818,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/firewall/ua_rules/{id}": {
+	"PUT /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"description": "Updates an existing User Agent Blocking rule.",
 		"operationId": "user-agent-blocking-rules-update-a-user-agent-blocking-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "ua_rule_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the User Agent Blocking rule.",
@@ -1836,7 +1836,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
