@@ -1,12 +1,12 @@
 {
-	"DELETE /zones/{zone_identifier}/filters": {
+	"DELETE /zones/{zone_id}/filters": {
 		"deprecated": true,
 		"description": "Deletes one or more existing filters.",
 		"operationId": "filters-delete-filters",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -508,14 +508,14 @@
 			"pro": true
 		}
 	},
-	"DELETE /zones/{zone_identifier}/filters/{id}": {
+	"DELETE /zones/{zone_id}/filters/{filter_id}": {
 		"deprecated": true,
 		"description": "Deletes an existing filter.",
 		"operationId": "filters-delete-a-filter",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "filter_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the filter.",
@@ -528,7 +528,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -977,14 +977,14 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/filters": {
+	"GET /zones/{zone_id}/filters": {
 		"deprecated": true,
 		"description": "Fetches filters in a zone. You can filter the results using several optional parameters.",
 		"operationId": "filters-list-filters",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1541,14 +1541,14 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/filters/{id}": {
+	"GET /zones/{zone_id}/filters/{filter_id}": {
 		"deprecated": true,
 		"description": "Fetches the details of a filter.",
 		"operationId": "filters-get-a-filter",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "filter_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the filter.",
@@ -1561,7 +1561,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1985,14 +1985,14 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/filters": {
+	"POST /zones/{zone_id}/filters": {
 		"deprecated": true,
 		"description": "Creates one or more filters.",
 		"operationId": "filters-create-filters",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2499,14 +2499,14 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/filters": {
+	"PUT /zones/{zone_id}/filters": {
 		"deprecated": true,
 		"description": "Updates one or more existing filters.",
 		"operationId": "filters-update-filters",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3011,14 +3011,14 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/filters/{id}": {
+	"PUT /zones/{zone_id}/filters/{filter_id}": {
 		"deprecated": true,
 		"description": "Updates an existing filter.",
 		"operationId": "filters-update-a-filter",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "filter_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the filter.",
@@ -3031,7 +3031,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
