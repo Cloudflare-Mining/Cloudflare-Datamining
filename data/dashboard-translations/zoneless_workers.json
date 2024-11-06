@@ -1046,7 +1046,7 @@
 	"zoneless_workers.modals.rename_service.li2": "<0>It might take a few minutes for %{newUrl} to accept requests.</0> Routes and custom domains will still be reachable during this time.",
 	"zoneless_workers.modals.rename_subdomain.li1": "<0>*.%{oldUrl}</0> will immediately stop routing to your Workers and will return errors after renaming.",
 	"zoneless_workers.modals.rename_subdomain.li2": "<0>It might take a few minutes for *.%{newUrl} to accept requests.</0> Routes and custom domains will still be reachable during this time.",
-	"zoneless_workers.modals.rename_service.success_notification": "Your Worker has been renamed to <0>%{url}</0>. It may take a few minutes for your environments to become available.",
+	"zoneless_workers.modals.rename_service.success_notification": "<0>%{oldServiceName}</0> has been renamed to <1>%{url}</1>. It may take a few minutes for <2>%{workersdevdomain}</2> to accept requests.",
 	"zoneless_workers.modals.delete_service.title": "Delete Worker",
 	"zoneless_workers.modals.delete_service.body": "Deleting <0>%{name}</0> is permanent and cannot be undone. Deleting a project also deletes all associated deployments & configurations.",
 	"zoneless_workers.modals.delete_service.li1": "Worker",
