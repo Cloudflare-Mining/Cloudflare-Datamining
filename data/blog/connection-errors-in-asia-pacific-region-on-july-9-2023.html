@@ -34,7 +34,7 @@
 	<p>The domain <code>origin.example</code> needs to be resolved by Cloudflare as part of the upstream or origin DNS resolution. This time, the Cloudflare data center needs to perform an outbound DNS query that looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">$ dig origin.example. +short
 192.0.2.1</code></pre>
-	<p>DNS is a hierarchical protocol, so the recursive DNS resolver, which usually handles DNS resolution for whoever wants to resolve a domain name, needs to talk to several involved nameservers until it finally gets an answer from the authoritative nameservers of the domain (assuming no DNS responses are cached). This is the same process during the external DNS resolution and the origin DNS resolution. Here is an example for the origin DNS resolution:</p>
+	<p>DNS is a hierarchical protocol, so the recursive DNS resolver, which usually handles DNS resolution for whoever wants to resolve a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a>, needs to talk to several involved nameservers until it finally gets an answer from the authoritative nameservers of the domain (assuming no DNS responses are cached). This is the same process during the external DNS resolution and the origin DNS resolution. Here is an example for the origin DNS resolution:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7E1GLN7i8qGi3oB6Zentug/8b55136d3c67a79d0d9c711c428911b4/image6-1.png" alt="" class="kg-image" width="1165" height="863" loading="lazy">

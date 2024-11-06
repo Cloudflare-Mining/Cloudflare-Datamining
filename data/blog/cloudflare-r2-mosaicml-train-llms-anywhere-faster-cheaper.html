@@ -48,7 +48,7 @@ with MDSWriter(out=data_dir, columns=columns, compression=compression) as out:
             'class': np.random.randint(10),
         }
         out.write(sample)</code></pre>
-	<p>After your dataset has been converted, you can upload it to R2. Below we demonstrate this with the <code>awscli</code> command line tool, but you can also use `wrangler `or any S3-compatible tool of your choice. StreamingDataset will also support direct cloud writing to R2 soon!</p>
+	<p>After your dataset has been converted, you can upload it to R2. Below we demonstrate this with the <code>awscli</code> command line tool, but you can also use `wrangler `or any <a href="https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage">S3-compatible tool</a> of your choice. StreamingDataset will also support direct cloud writing to R2 soon!</p>
 	<pre class="language-bash"><code class="language-bash">$ aws s3 cp --recursive path-to-dataset s3://my-bucket/folder --endpoint-url $S3_ENDPOINT_URL</code></pre>
 	<p>Finally, you can read the data into any device that has read access to your R2 bucket. You can fetch individual samples, loop over the dataset, and feed it into a standard PyTorch dataloader.</p>
 	<pre class="language-python"><code class="language-python">from torch.utils.data import DataLoader

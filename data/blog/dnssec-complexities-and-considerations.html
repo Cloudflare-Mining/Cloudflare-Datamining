@@ -10,7 +10,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>DNS is split into smaller pieces called zones. A zone typically starts at a domain name, and contains all records pertaining to the subdomains. Each zone is managed by a single manager. For example, cloudflare.com is a zone containing all DNS records for cloudflare.com and its subdomains (e.g. <a href="https://www.cloudflare.com">www.cloudflare.com</a>, api.cloudflare.com).</p>
+	<p>DNS is split into smaller pieces called zones. A zone typically starts at a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain name</a>, and contains all records pertaining to the subdomains. Each zone is managed by a single manager. For example, cloudflare.com is a zone containing all DNS records for cloudflare.com and its subdomains (e.g. <a href="https://www.cloudflare.com">www.cloudflare.com</a>, api.cloudflare.com).</p>
 	<p>There is no directory service for subdomains in DNS so if you want to know if api.cloudflare.com exists, you have to ask a DNS server and that DNS server will end up asking cloudflare.com whether api.cloudflare.com exists. This is not true with DNSSEC. In some cases, enabling DNSSEC may expose otherwise obscured zone content. Not everyone cares about the secrecy of subdomains, and zone content may already be easily guessable because most sites have a ‘www’ subdomain; however, subdomains are sometimes used as login portals or other services that the site owner wants to keep private. A site owner may not want to reveal that “secretbackdoor.example.com” exists in order to protect that site from attackers.</p>
 	<figure class="kg-card kg-image-card ">
 
