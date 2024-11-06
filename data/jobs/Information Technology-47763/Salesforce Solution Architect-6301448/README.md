@@ -6,24 +6,22 @@
 	</div>
 </div>
 <p><strong>About The Role</strong></p>
-<p>Cloudflare is seeking an experienced Salesforce Solutions Architect to support the Channel &amp; Alliances organization. This is a high impact role for an experienced IT professional who is looking for an opportunity to directly impact Channel strategy and operational execution. In this role you will work closely with Cloudflare’s Partnerships and Alliances organization, Partner Operations, Sales, and Marketing to develop and build out the System solutions to support Partner Sales at Global scale. You will own dedicated workstreams from the technical delivery standpoint to ensure channel sales process development and optimization providing valuable pipeline reporting and an outstanding experience for Cloudflare’s Partners.</p>
-<p>The ideal candidate will have high proficiency in analyzing business requirements and work with technical resources on prioritizing and delivering of system solutions, with a view of making strategic recommendations to support the growth of Cloudflare’s channel ecosystem. You will have an opportunity to help with the transformation and growth of our channel by implementing new routes to market and build the partner systems for our partner business for scale.&nbsp;</p>
-<p>This role is a great fit for you if you are a self-starter, able to thrive in an environment that requires operating with a high degree of autonomy, and are driven by the opportunity to make a significant impact in a high growth, fast paced environment.&nbsp;</p>
+<p>Cloudflare is seeking a Senior Salesforce Solution Architect to drive impactful transformation for the Partner Sales Organization. This high-impact role is suited for a seasoned IT professional with deep expertise in Salesforce architecture who is looking to make a strategic contribution to Cloudflare's Partner strategy and execution. As a senior architect, you’ll play a pivotal role in collaborating with Partner Operations, Sales, and Marketing teams to design and deliver scalable solutions that support Partner Sales on a global level.</p>
+<p>In this position, you will be responsible for leading multiple complex workstreams and overseeing the technical delivery of solutions that enhance and optimize channel sales processes, enable valuable pipeline reporting, and transform the overall experience for Cloudflare’s Partners. You will be instrumental in transforming systems and processes to align with new routes to market and scaling Cloudflare’s channel ecosystem.</p>
+<p>This role is ideal for a strategic leader who is self-motivated, thrives in environments requiring a high degree of autonomy, and is driven by the opportunity to shape high-growth initiatives within a fast-paced organization.</p>
 <p><strong>Job Summary:</strong></p>
-<p>We are seeking an experienced Salesforce Architect specializing in Partner/Channel and Alliances Sales. The ideal candidate will have deep expertise in designing, implementing, and optimizing Salesforce processes that support partner ecosystems, including partner sales, deal registration, quoting, and order management. You will also focus on building a Partner 360 view to give insights into partner influence on deals and provide solutions for business planning and compliance management within the partner portal. You will be instrumental in revamping opportunity paths and integrating upstream and downstream processes to create a seamless experience from deal registration to order fulfillment, including syncing with external Financial systems like NetSuite,Rev Pro,Stripe&nbsp; and Entitlement Systems.</p>
+<p>We are seeking a senior-level Salesforce Architect specializing in Go To Market systems &amp; processes. This role requires advanced expertise in designing, implementing, and optimizing Salesforce processes that support a complex partner ecosystem, including areas such as partner sales, deal registration, quoting, and order management. A significant focus will be placed on building a robust Partner 360 view to provide actionable insights into partner influence, enabling effective business planning and compliance management. You will lead efforts to streamline opportunity paths and integrate upstream and downstream processes, ensuring seamless end-to-end experiences from deal registration to order fulfillment, and syncing with external financial systems like NetSuite, RevPro, Stripe, and Entitlement Systems.</p>
 <p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Lead the architecture, design, and implementation of Salesforce solutions tailored to partner and channel sales models.</li>
-	<li>Revamp and optimize Opportunity Path stages specific to partner deals, aligning processes with business needs.</li>
-	<li>Oversee the setup and integration of Partner Portals, ensuring seamless deal registration, Partner 360 views, and partner management.</li>
-	<li>Design and implement end-to-end processes for partner quoting and order management, including syncing orders to NetSuite.</li>
-</ul>
-<ul>
-	<li>Develop and integrate modules like business planning and compliance management into the partner experience within Salesforce.</li>
-	<li>Collaborate with cross-functional teams including IT, SalesOps, and Finance to streamline upstream and downstream processes.</li>
-	<li>Ensure the Salesforce platform scales with business growth and adapts to new partner/channel sales strategies.</li>
-	<li>Provide technical leadership and mentorship to Salesforce developers and administrators on best practices related to partner sales architecture.</li>
-	<li>Design solutions for data integration, migration, and synchronization between Salesforce and third-party systems like NetSuite.</li>
+	<li>Lead and architect comprehensive Salesforce solutions tailored to partner sales models, with a focus on global scalability and partner impact.</li>
+	<li>Optimize opportunity stages specific to partner deals, continuously aligning systems and processes with business needs.</li>
+	<li>Oversee the setup, configuration, and integration of Partner Portals, facilitating streamlined deal registration, Partner 360 insights, and partner relationship management.</li>
+	<li>Architect end-to-end solutions for partner quoting and order management, including syncing orders with financial systems like NetSuite for accurate and efficient processing.</li>
+	<li>Develop advanced modules within Salesforce for business planning, compliance, and partner engagement to enhance the overall partner experience.</li>
+	<li>Drive cross-functional collaboration with IT, SalesOps, Finance, and other teams to optimize processes that bridge partner, customer, and financial workflows.</li>
+	<li>Ensure scalability of the Salesforce platform to accommodate growth and align with evolving partner and channel sales strategies.</li>
+	<li>Provide strategic technical leadership and mentorship to Salesforce developers and administrators, establishing best practices for partner sales architecture.</li>
+	<li>Design solutions for data integration and synchronization between Salesforce and third-party systems, including NetSuite, to support seamless data flows and reporting.</li>
 </ul>
 <h4>&nbsp;</h4>
 <p><strong>Required Qualifications:</strong></p>
