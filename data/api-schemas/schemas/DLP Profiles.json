@@ -5750,7 +5750,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/profiles/custom": {
-		"description": "Creates a set of DLP custom profiles.",
+		"description": "Creates a DLP custom profile.",
 		"operationId": "dlp-profiles-create-custom-profiles",
 		"parameters": [
 			{
@@ -5766,248 +5766,482 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"profiles": {
-								"items": {
-									"properties": {
-										"allowed_match_count": {
-											"default": 0,
-											"description": "Related DLP policies will trigger when the match count exceeds the number set.",
-											"example": 5,
-											"format": "int32",
-											"maximum": 1000,
-											"minimum": 0,
-											"type": "integer"
-										},
-										"confidence_threshold": {
-											"nullable": true,
-											"type": "string"
-										},
-										"context_awareness": {
-											"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+						"oneOf": [
+							{
+								"deprecated": true,
+								"properties": {
+									"profiles": {
+										"items": {
 											"properties": {
-												"enabled": {
-													"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-													"type": "boolean"
+												"allowed_match_count": {
+													"default": 0,
+													"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+													"example": 5,
+													"format": "int32",
+													"maximum": 1000,
+													"minimum": 0,
+													"type": "integer"
 												},
-												"skip": {
-													"description": "Content types to exclude from context analysis and return all matches.",
+												"confidence_threshold": {
+													"nullable": true,
+													"type": "string"
+												},
+												"context_awareness": {
+													"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 													"properties": {
-														"files": {
-															"description": "If the content type is a file, skip context analysis and return all matches.",
+														"enabled": {
+															"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 															"type": "boolean"
+														},
+														"skip": {
+															"description": "Content types to exclude from context analysis and return all matches.",
+															"properties": {
+																"files": {
+																	"description": "If the content type is a file, skip context analysis and return all matches.",
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"files"
+															],
+															"type": "object"
 														}
 													},
 													"required": [
-														"files"
+														"enabled",
+														"skip"
 													],
 													"type": "object"
-												}
-											},
-											"required": [
-												"enabled",
-												"skip"
-											],
-											"type": "object"
-										},
-										"description": {
-											"description": "The description of the profile",
-											"nullable": true,
-											"type": "string"
-										},
-										"entries": {
-											"items": {
-												"oneOf": [
-													{
-														"properties": {
-															"enabled": {
-																"type": "boolean"
-															},
-															"name": {
-																"type": "string"
-															},
-															"pattern": {
+												},
+												"description": {
+													"description": "The description of the profile",
+													"nullable": true,
+													"type": "string"
+												},
+												"entries": {
+													"items": {
+														"oneOf": [
+															{
 																"properties": {
-																	"regex": {
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"name": {
 																		"type": "string"
 																	},
-																	"validation": {
-																		"allOf": [
-																			{
-																				"enum": [
-																					"luhn"
-																				],
+																	"pattern": {
+																		"properties": {
+																			"regex": {
 																				"type": "string"
+																			},
+																			"validation": {
+																				"allOf": [
+																					{
+																						"enum": [
+																							"luhn"
+																						],
+																						"type": "string"
+																					}
+																				]
 																			}
-																		]
+																		},
+																		"required": [
+																			"regex"
+																		],
+																		"type": "object"
 																	}
 																},
 																"required": [
-																	"regex"
+																	"name",
+																	"pattern",
+																	"enabled"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"words": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"name",
+																	"words",
+																	"enabled"
 																],
 																"type": "object"
 															}
-														},
-														"required": [
-															"name",
-															"pattern",
-															"enabled"
-														],
-														"type": "object"
+														]
 													},
-													{
-														"properties": {
-															"enabled": {
-																"type": "boolean"
+													"type": "array"
+												},
+												"name": {
+													"type": "string"
+												},
+												"ocr_enabled": {
+													"type": "boolean"
+												},
+												"shared_entries": {
+													"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
+													"items": {
+														"discriminator": {
+															"propertyName": "entry_type"
+														},
+														"oneOf": [
+															{
+																"properties": {
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"entry_id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"entry_type": {
+																		"enum": [
+																			"custom"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"entry_id",
+																	"enabled",
+																	"entry_type"
+																],
+																"type": "object"
 															},
-															"name": {
-																"type": "string"
+															{
+																"properties": {
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"entry_id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"entry_type": {
+																		"enum": [
+																			"predefined"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"entry_id",
+																	"enabled",
+																	"entry_type"
+																],
+																"type": "object"
 															},
-															"words": {
-																"items": {
+															{
+																"properties": {
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"entry_id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"entry_type": {
+																		"enum": [
+																			"integration"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"entry_id",
+																	"enabled",
+																	"entry_type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"enabled": {
+																		"type": "boolean"
+																	},
+																	"entry_id": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"entry_type": {
+																		"enum": [
+																			"exact_data"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"entry_id",
+																	"enabled",
+																	"entry_type"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"name",
+												"entries"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"profiles"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"allowed_match_count": {
+										"default": 0,
+										"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+										"example": 5,
+										"format": "int32",
+										"maximum": 1000,
+										"minimum": 0,
+										"type": "integer"
+									},
+									"confidence_threshold": {
+										"nullable": true,
+										"type": "string"
+									},
+									"context_awareness": {
+										"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+										"properties": {
+											"enabled": {
+												"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+												"type": "boolean"
+											},
+											"skip": {
+												"description": "Content types to exclude from context analysis and return all matches.",
+												"properties": {
+													"files": {
+														"description": "If the content type is a file, skip context analysis and return all matches.",
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"files"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"enabled",
+											"skip"
+										],
+										"type": "object"
+									},
+									"description": {
+										"description": "The description of the profile",
+										"nullable": true,
+										"type": "string"
+									},
+									"entries": {
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"name": {
+															"type": "string"
+														},
+														"pattern": {
+															"properties": {
+																"regex": {
 																	"type": "string"
 																},
-																"type": "array"
-															}
-														},
-														"required": [
-															"name",
-															"words",
-															"enabled"
-														],
-														"type": "object"
-													}
-												]
-											},
-											"type": "array"
-										},
-										"name": {
-											"type": "string"
-										},
-										"ocr_enabled": {
-											"type": "boolean"
-										},
-										"shared_entries": {
-											"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
-											"items": {
-												"discriminator": {
-													"propertyName": "entry_type"
+																"validation": {
+																	"allOf": [
+																		{
+																			"enum": [
+																				"luhn"
+																			],
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"regex"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"pattern",
+														"enabled"
+													],
+													"type": "object"
 												},
-												"oneOf": [
-													{
-														"properties": {
-															"enabled": {
-																"type": "boolean"
-															},
-															"entry_id": {
-																"format": "uuid",
-																"type": "string"
-															},
-															"entry_type": {
-																"enum": [
-																	"custom"
-																],
-																"type": "string"
-															}
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
 														},
-														"required": [
-															"entry_id",
-															"enabled",
-															"entry_type"
-														],
-														"type": "object"
+														"name": {
+															"type": "string"
+														},
+														"words": {
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
-													{
-														"properties": {
-															"enabled": {
-																"type": "boolean"
-															},
-															"entry_id": {
-																"format": "uuid",
-																"type": "string"
-															},
-															"entry_type": {
-																"enum": [
-																	"predefined"
-																],
-																"type": "string"
-															}
-														},
-														"required": [
-															"entry_id",
-															"enabled",
-															"entry_type"
-														],
-														"type": "object"
-													},
-													{
-														"properties": {
-															"enabled": {
-																"type": "boolean"
-															},
-															"entry_id": {
-																"format": "uuid",
-																"type": "string"
-															},
-															"entry_type": {
-																"enum": [
-																	"integration"
-																],
-																"type": "string"
-															}
-														},
-														"required": [
-															"entry_id",
-															"enabled",
-															"entry_type"
-														],
-														"type": "object"
-													},
-													{
-														"properties": {
-															"enabled": {
-																"type": "boolean"
-															},
-															"entry_id": {
-																"format": "uuid",
-																"type": "string"
-															},
-															"entry_type": {
-																"enum": [
-																	"exact_data"
-																],
-																"type": "string"
-															}
-														},
-														"required": [
-															"entry_id",
-															"enabled",
-															"entry_type"
-														],
-														"type": "object"
-													}
-												]
-											},
-											"type": "array"
-										}
+													"required": [
+														"name",
+														"words",
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"type": "array"
 									},
-									"required": [
-										"name",
-										"entries"
-									],
-									"type": "object"
+									"name": {
+										"type": "string"
+									},
+									"ocr_enabled": {
+										"type": "boolean"
+									},
+									"shared_entries": {
+										"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
+										"items": {
+											"discriminator": {
+												"propertyName": "entry_type"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"entry_id": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"entry_type": {
+															"enum": [
+																"custom"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"entry_id",
+														"enabled",
+														"entry_type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"entry_id": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"entry_type": {
+															"enum": [
+																"predefined"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"entry_id",
+														"enabled",
+														"entry_type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"entry_id": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"entry_type": {
+															"enum": [
+																"integration"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"entry_id",
+														"enabled",
+														"entry_type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"entry_id": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"entry_type": {
+															"enum": [
+																"exact_data"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"entry_id",
+														"enabled",
+														"entry_type"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"type": "array"
+									}
 								},
-								"type": "array"
+								"required": [
+									"name",
+									"entries"
+								],
+								"type": "object"
 							}
-						},
-						"required": [
-							"profiles"
-						],
-						"type": "object"
+						]
 					}
 				}
 			},
-			"description": "A list of new profiles to create.",
+			"description": "A new profile to create.",
 			"required": true
 		},
 		"responses": {
@@ -6084,1183 +6318,2364 @@
 								{
 									"properties": {
 										"result": {
-											"items": {
-												"discriminator": {
-													"propertyName": "type"
+											"oneOf": [
+												{
+													"discriminator": {
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"allowed_match_count": {
+																			"default": 0,
+																			"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+																			"example": 5,
+																			"format": "int32",
+																			"maximum": 1000,
+																			"minimum": 0,
+																			"type": "integer"
+																		},
+																		"confidence_threshold": {
+																			"allOf": [
+																				{
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"very_high"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"context_awareness": {
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																			"properties": {
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"enabled",
+																				"skip"
+																			],
+																			"type": "object"
+																		},
+																		"created_at": {
+																			"description": "When the profile was created",
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		"description": {
+																			"description": "The description of the profile",
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"entries": {
+																			"items": {
+																				"discriminator": {
+																					"propertyName": "type"
+																				},
+																				"oneOf": [
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"pattern": {
+																										"properties": {
+																											"regex": {
+																												"type": "string"
+																											},
+																											"validation": {
+																												"allOf": [
+																													{
+																														"enum": [
+																															"luhn"
+																														],
+																														"type": "string"
+																													}
+																												]
+																											}
+																										},
+																										"required": [
+																											"regex"
+																										],
+																										"type": "object"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"pattern",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"custom"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Custom Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"confidence": {
+																										"properties": {
+																											"available": {
+																												"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																												"type": "boolean"
+																											}
+																										},
+																										"required": [
+																											"available"
+																										],
+																										"type": "object"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"enabled",
+																									"confidence"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"predefined"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Predefined Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"integration"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Integration Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"secret": {
+																										"type": "boolean"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"enabled",
+																									"secret"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"exact_data"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Exact Data Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"word_list": {}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"word_list",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"word_list"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Word List Entry"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		},
+																		"id": {
+																			"description": "The id of the profile (uuid)",
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The name of the profile",
+																			"type": "string"
+																		},
+																		"ocr_enabled": {
+																			"type": "boolean"
+																		},
+																		"updated_at": {
+																			"description": "When the profile was lasted updated",
+																			"format": "date-time",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"entries",
+																		"created_at",
+																		"updated_at",
+																		"allowed_match_count",
+																		"context_awareness",
+																		"ocr_enabled"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"custom"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Custom Profile"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"allowed_match_count": {
+																			"format": "int32",
+																			"type": "integer"
+																		},
+																		"confidence_threshold": {
+																			"allOf": [
+																				{
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"very_high"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"context_awareness": {
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																			"properties": {
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"enabled",
+																				"skip"
+																			],
+																			"type": "object"
+																		},
+																		"entries": {
+																			"items": {
+																				"discriminator": {
+																					"propertyName": "type"
+																				},
+																				"oneOf": [
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"pattern": {
+																										"properties": {
+																											"regex": {
+																												"type": "string"
+																											},
+																											"validation": {
+																												"allOf": [
+																													{
+																														"enum": [
+																															"luhn"
+																														],
+																														"type": "string"
+																													}
+																												]
+																											}
+																										},
+																										"required": [
+																											"regex"
+																										],
+																										"type": "object"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"pattern",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"custom"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Custom Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"confidence": {
+																										"properties": {
+																											"available": {
+																												"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																												"type": "boolean"
+																											}
+																										},
+																										"required": [
+																											"available"
+																										],
+																										"type": "object"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"enabled",
+																									"confidence"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"predefined"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Predefined Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"integration"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Integration Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"secret": {
+																										"type": "boolean"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"enabled",
+																									"secret"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"exact_data"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Exact Data Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"word_list": {}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"word_list",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"word_list"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Word List Entry"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		},
+																		"id": {
+																			"description": "The id of the predefined profile (uuid)",
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The name of the predefined profile",
+																			"type": "string"
+																		},
+																		"ocr_enabled": {
+																			"type": "boolean"
+																		},
+																		"open_access": {
+																			"description": "Whether this profile can be accessed by anyone",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"entries",
+																		"allowed_match_count"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"predefined"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Predefined Profile"
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"created_at": {
+																			"format": "date-time",
+																			"type": "string"
+																		},
+																		"description": {
+																			"description": "The description of the profile",
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"entries": {
+																			"items": {
+																				"discriminator": {
+																					"propertyName": "type"
+																				},
+																				"oneOf": [
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"pattern": {
+																										"properties": {
+																											"regex": {
+																												"type": "string"
+																											},
+																											"validation": {
+																												"allOf": [
+																													{
+																														"enum": [
+																															"luhn"
+																														],
+																														"type": "string"
+																													}
+																												]
+																											}
+																										},
+																										"required": [
+																											"regex"
+																										],
+																										"type": "object"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"pattern",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"custom"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Custom Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"confidence": {
+																										"properties": {
+																											"available": {
+																												"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																												"type": "boolean"
+																											}
+																										},
+																										"required": [
+																											"available"
+																										],
+																										"type": "object"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"enabled",
+																									"confidence"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"predefined"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Predefined Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"integration"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Integration Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"secret": {
+																										"type": "boolean"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"enabled",
+																									"secret"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"exact_data"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Exact Data Entry"
+																					},
+																					{
+																						"allOf": [
+																							{
+																								"properties": {
+																									"created_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"enabled": {
+																										"type": "boolean"
+																									},
+																									"id": {
+																										"format": "uuid",
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									},
+																									"profile_id": {
+																										"format": "uuid",
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"updated_at": {
+																										"format": "date-time",
+																										"type": "string"
+																									},
+																									"word_list": {}
+																								},
+																								"required": [
+																									"id",
+																									"name",
+																									"created_at",
+																									"updated_at",
+																									"word_list",
+																									"enabled"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"type": {
+																										"enum": [
+																											"word_list"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						],
+																						"title": "Word List Entry"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		},
+																		"id": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"updated_at": {
+																			"format": "date-time",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"entries",
+																		"created_at",
+																		"updated_at"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"integration"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Integration Profile"
+														}
+													]
 												},
-												"oneOf": [
-													{
-														"allOf": [
+												{
+													"deprecated": true,
+													"items": {
+														"discriminator": {
+															"propertyName": "type"
+														},
+														"oneOf": [
 															{
-																"properties": {
-																	"allowed_match_count": {
-																		"default": 0,
-																		"description": "Related DLP policies will trigger when the match count exceeds the number set.",
-																		"example": 5,
-																		"format": "int32",
-																		"maximum": 1000,
-																		"minimum": 0,
-																		"type": "integer"
-																	},
-																	"confidence_threshold": {
-																		"allOf": [
-																			{
-																				"enum": [
-																					"low",
-																					"medium",
-																					"high",
-																					"very_high"
-																				],
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"context_awareness": {
-																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																"allOf": [
+																	{
 																		"properties": {
-																			"enabled": {
-																				"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																				"type": "boolean"
+																			"allowed_match_count": {
+																				"default": 0,
+																				"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+																				"example": 5,
+																				"format": "int32",
+																				"maximum": 1000,
+																				"minimum": 0,
+																				"type": "integer"
 																			},
-																			"skip": {
-																				"description": "Content types to exclude from context analysis and return all matches.",
+																			"confidence_threshold": {
+																				"allOf": [
+																					{
+																						"enum": [
+																							"low",
+																							"medium",
+																							"high",
+																							"very_high"
+																						],
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"context_awareness": {
+																				"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																				"properties": {
-																					"files": {
-																						"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"enabled": {
+																						"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																						"type": "boolean"
+																					},
+																					"skip": {
+																						"description": "Content types to exclude from context analysis and return all matches.",
+																						"properties": {
+																							"files": {
+																								"description": "If the content type is a file, skip context analysis and return all matches.",
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"files"
+																						],
+																						"type": "object"
 																					}
 																				},
 																				"required": [
-																					"files"
+																					"enabled",
+																					"skip"
 																				],
 																				"type": "object"
+																			},
+																			"created_at": {
+																				"description": "When the profile was created",
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "The description of the profile",
+																				"nullable": true,
+																				"type": "string"
+																			},
+																			"entries": {
+																				"items": {
+																					"discriminator": {
+																						"propertyName": "type"
+																					},
+																					"oneOf": [
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"pattern": {
+																											"properties": {
+																												"regex": {
+																													"type": "string"
+																												},
+																												"validation": {
+																													"allOf": [
+																														{
+																															"enum": [
+																																"luhn"
+																															],
+																															"type": "string"
+																														}
+																													]
+																												}
+																											},
+																											"required": [
+																												"regex"
+																											],
+																											"type": "object"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"pattern",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"custom"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Custom Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"confidence": {
+																											"properties": {
+																												"available": {
+																													"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																													"type": "boolean"
+																												}
+																											},
+																											"required": [
+																												"available"
+																											],
+																											"type": "object"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"enabled",
+																										"confidence"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"predefined"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Predefined Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"integration"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Integration Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"secret": {
+																											"type": "boolean"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"enabled",
+																										"secret"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"exact_data"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Exact Data Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"word_list": {}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"word_list",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"word_list"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Word List Entry"
+																						}
+																					]
+																				},
+																				"type": "array"
+																			},
+																			"id": {
+																				"description": "The id of the profile (uuid)",
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"description": "The name of the profile",
+																				"type": "string"
+																			},
+																			"ocr_enabled": {
+																				"type": "boolean"
+																			},
+																			"updated_at": {
+																				"description": "When the profile was lasted updated",
+																				"format": "date-time",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
-																			"enabled",
-																			"skip"
+																			"id",
+																			"name",
+																			"entries",
+																			"created_at",
+																			"updated_at",
+																			"allowed_match_count",
+																			"context_awareness",
+																			"ocr_enabled"
 																		],
 																		"type": "object"
 																	},
-																	"created_at": {
-																		"description": "When the profile was created",
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "The description of the profile",
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"entries": {
-																		"items": {
-																			"discriminator": {
-																				"propertyName": "type"
-																			},
-																			"oneOf": [
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"pattern": {
-																									"properties": {
-																										"regex": {
-																											"type": "string"
-																										},
-																										"validation": {
-																											"allOf": [
-																												{
-																													"enum": [
-																														"luhn"
-																													],
-																													"type": "string"
-																												}
-																											]
-																										}
-																									},
-																									"required": [
-																										"regex"
-																									],
-																									"type": "object"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"pattern",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"custom"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Custom Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"confidence": {
-																									"properties": {
-																										"available": {
-																											"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
-																											"type": "boolean"
-																										}
-																									},
-																									"required": [
-																										"available"
-																									],
-																									"type": "object"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"enabled",
-																								"confidence"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"predefined"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Predefined Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"integration"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Integration Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"secret": {
-																									"type": "boolean"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"enabled",
-																								"secret"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"exact_data"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Exact Data Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"word_list": {}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"word_list",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"word_list"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Word List Entry"
-																				}
-																			]
-																		},
-																		"type": "array"
-																	},
-																	"id": {
-																		"description": "The id of the profile (uuid)",
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "The name of the profile",
-																		"type": "string"
-																	},
-																	"ocr_enabled": {
-																		"type": "boolean"
-																	},
-																	"updated_at": {
-																		"description": "When the profile was lasted updated",
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"entries",
-																	"created_at",
-																	"updated_at",
-																	"allowed_match_count",
-																	"context_awareness",
-																	"ocr_enabled"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"custom"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type"
-																],
-																"type": "object"
-															}
-														],
-														"title": "Custom Profile"
-													},
-													{
-														"allOf": [
-															{
-																"properties": {
-																	"allowed_match_count": {
-																		"format": "int32",
-																		"type": "integer"
-																	},
-																	"confidence_threshold": {
-																		"allOf": [
-																			{
+																	{
+																		"properties": {
+																			"type": {
 																				"enum": [
-																					"low",
-																					"medium",
-																					"high",
-																					"very_high"
+																					"custom"
 																				],
 																				"type": "string"
 																			}
-																		]
-																	},
-																	"context_awareness": {
-																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																],
+																"title": "Custom Profile"
+															},
+															{
+																"allOf": [
+																	{
 																		"properties": {
-																			"enabled": {
-																				"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																				"type": "boolean"
+																			"allowed_match_count": {
+																				"format": "int32",
+																				"type": "integer"
 																			},
-																			"skip": {
-																				"description": "Content types to exclude from context analysis and return all matches.",
+																			"confidence_threshold": {
+																				"allOf": [
+																					{
+																						"enum": [
+																							"low",
+																							"medium",
+																							"high",
+																							"very_high"
+																						],
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"context_awareness": {
+																				"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																				"properties": {
-																					"files": {
-																						"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"enabled": {
+																						"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																						"type": "boolean"
+																					},
+																					"skip": {
+																						"description": "Content types to exclude from context analysis and return all matches.",
+																						"properties": {
+																							"files": {
+																								"description": "If the content type is a file, skip context analysis and return all matches.",
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"files"
+																						],
+																						"type": "object"
 																					}
 																				},
 																				"required": [
-																					"files"
+																					"enabled",
+																					"skip"
 																				],
 																				"type": "object"
+																			},
+																			"entries": {
+																				"items": {
+																					"discriminator": {
+																						"propertyName": "type"
+																					},
+																					"oneOf": [
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"pattern": {
+																											"properties": {
+																												"regex": {
+																													"type": "string"
+																												},
+																												"validation": {
+																													"allOf": [
+																														{
+																															"enum": [
+																																"luhn"
+																															],
+																															"type": "string"
+																														}
+																													]
+																												}
+																											},
+																											"required": [
+																												"regex"
+																											],
+																											"type": "object"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"pattern",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"custom"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Custom Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"confidence": {
+																											"properties": {
+																												"available": {
+																													"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																													"type": "boolean"
+																												}
+																											},
+																											"required": [
+																												"available"
+																											],
+																											"type": "object"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"enabled",
+																										"confidence"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"predefined"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Predefined Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"integration"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Integration Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"secret": {
+																											"type": "boolean"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"enabled",
+																										"secret"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"exact_data"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Exact Data Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"word_list": {}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"word_list",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"word_list"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Word List Entry"
+																						}
+																					]
+																				},
+																				"type": "array"
+																			},
+																			"id": {
+																				"description": "The id of the predefined profile (uuid)",
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"description": "The name of the predefined profile",
+																				"type": "string"
+																			},
+																			"ocr_enabled": {
+																				"type": "boolean"
+																			},
+																			"open_access": {
+																				"description": "Whether this profile can be accessed by anyone",
+																				"type": "boolean"
 																			}
 																		},
 																		"required": [
-																			"enabled",
-																			"skip"
+																			"id",
+																			"name",
+																			"entries",
+																			"allowed_match_count"
 																		],
 																		"type": "object"
 																	},
-																	"entries": {
-																		"items": {
-																			"discriminator": {
-																				"propertyName": "type"
-																			},
-																			"oneOf": [
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"pattern": {
-																									"properties": {
-																										"regex": {
-																											"type": "string"
-																										},
-																										"validation": {
-																											"allOf": [
-																												{
-																													"enum": [
-																														"luhn"
-																													],
-																													"type": "string"
-																												}
-																											]
-																										}
-																									},
-																									"required": [
-																										"regex"
-																									],
-																									"type": "object"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"pattern",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"custom"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Custom Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"confidence": {
-																									"properties": {
-																										"available": {
-																											"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
-																											"type": "boolean"
-																										}
-																									},
-																									"required": [
-																										"available"
-																									],
-																									"type": "object"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"enabled",
-																								"confidence"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"predefined"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Predefined Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"integration"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Integration Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"secret": {
-																									"type": "boolean"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"enabled",
-																								"secret"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"exact_data"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Exact Data Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"word_list": {}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"word_list",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"word_list"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Word List Entry"
-																				}
-																			]
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"predefined"
+																				],
+																				"type": "string"
+																			}
 																		},
-																		"type": "array"
-																	},
-																	"id": {
-																		"description": "The id of the predefined profile (uuid)",
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "The name of the predefined profile",
-																		"type": "string"
-																	},
-																	"ocr_enabled": {
-																		"type": "boolean"
-																	},
-																	"open_access": {
-																		"description": "Whether this profile can be accessed by anyone",
-																		"type": "boolean"
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"entries",
-																	"allowed_match_count"
 																],
-																"type": "object"
+																"title": "Predefined Profile"
 															},
 															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"predefined"
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "The description of the profile",
+																				"nullable": true,
+																				"type": "string"
+																			},
+																			"entries": {
+																				"items": {
+																					"discriminator": {
+																						"propertyName": "type"
+																					},
+																					"oneOf": [
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"pattern": {
+																											"properties": {
+																												"regex": {
+																													"type": "string"
+																												},
+																												"validation": {
+																													"allOf": [
+																														{
+																															"enum": [
+																																"luhn"
+																															],
+																															"type": "string"
+																														}
+																													]
+																												}
+																											},
+																											"required": [
+																												"regex"
+																											],
+																											"type": "object"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"pattern",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"custom"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Custom Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"confidence": {
+																											"properties": {
+																												"available": {
+																													"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
+																													"type": "boolean"
+																												}
+																											},
+																											"required": [
+																												"available"
+																											],
+																											"type": "object"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"enabled",
+																										"confidence"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"predefined"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Predefined Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"integration"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Integration Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"secret": {
+																											"type": "boolean"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"enabled",
+																										"secret"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"exact_data"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Exact Data Entry"
+																						},
+																						{
+																							"allOf": [
+																								{
+																									"properties": {
+																										"created_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"enabled": {
+																											"type": "boolean"
+																										},
+																										"id": {
+																											"format": "uuid",
+																											"type": "string"
+																										},
+																										"name": {
+																											"type": "string"
+																										},
+																										"profile_id": {
+																											"format": "uuid",
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"updated_at": {
+																											"format": "date-time",
+																											"type": "string"
+																										},
+																										"word_list": {}
+																									},
+																									"required": [
+																										"id",
+																										"name",
+																										"created_at",
+																										"updated_at",
+																										"word_list",
+																										"enabled"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"type": {
+																											"enum": [
+																												"word_list"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"title": "Word List Entry"
+																						}
+																					]
+																				},
+																				"type": "array"
+																			},
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"entries",
+																			"created_at",
+																			"updated_at"
 																		],
-																		"type": "string"
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"integration"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"type"
 																],
-																"type": "object"
+																"title": "Integration Profile"
 															}
-														],
-														"title": "Predefined Profile"
+														]
 													},
-													{
-														"allOf": [
-															{
-																"properties": {
-																	"created_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "The description of the profile",
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"entries": {
-																		"items": {
-																			"discriminator": {
-																				"propertyName": "type"
-																			},
-																			"oneOf": [
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"pattern": {
-																									"properties": {
-																										"regex": {
-																											"type": "string"
-																										},
-																										"validation": {
-																											"allOf": [
-																												{
-																													"enum": [
-																														"luhn"
-																													],
-																													"type": "string"
-																												}
-																											]
-																										}
-																									},
-																									"required": [
-																										"regex"
-																									],
-																									"type": "object"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"pattern",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"custom"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Custom Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"confidence": {
-																									"properties": {
-																										"available": {
-																											"description": "Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.\nProfiles that use an entry with `available` set to true can use confidence thresholds",
-																											"type": "boolean"
-																										}
-																									},
-																									"required": [
-																										"available"
-																									],
-																									"type": "object"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"enabled",
-																								"confidence"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"predefined"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Predefined Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"integration"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Integration Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"secret": {
-																									"type": "boolean"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"enabled",
-																								"secret"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"exact_data"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Exact Data Entry"
-																				},
-																				{
-																					"allOf": [
-																						{
-																							"properties": {
-																								"created_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"enabled": {
-																									"type": "boolean"
-																								},
-																								"id": {
-																									"format": "uuid",
-																									"type": "string"
-																								},
-																								"name": {
-																									"type": "string"
-																								},
-																								"profile_id": {
-																									"format": "uuid",
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"updated_at": {
-																									"format": "date-time",
-																									"type": "string"
-																								},
-																								"word_list": {}
-																							},
-																							"required": [
-																								"id",
-																								"name",
-																								"created_at",
-																								"updated_at",
-																								"word_list",
-																								"enabled"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"type": {
-																									"enum": [
-																										"word_list"
-																									],
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"type"
-																							],
-																							"type": "object"
-																						}
-																					],
-																					"title": "Word List Entry"
-																				}
-																			]
-																		},
-																		"type": "array"
-																	},
-																	"id": {
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"type": "string"
-																	},
-																	"updated_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"entries",
-																	"created_at",
-																	"updated_at"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"integration"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type"
-																],
-																"type": "object"
-															}
-														],
-														"title": "Integration Profile"
-													}
-												]
-											},
-											"type": "array"
+													"type": "array"
+												}
+											]
 										}
 									},
 									"type": "object"
@@ -7370,7 +8785,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create custom profiles",
+		"summary": "Create custom profile",
 		"tags": [
 			"DLP Profiles"
 		]
@@ -7444,7 +8859,8 @@
 								"type": "string"
 							},
 							"entries": {
-								"description": "Custom entries from this profile",
+								"deprecated": true,
+								"description": "Custom entries from this profile.\nIf this field is omitted, entries owned by this profile will not be changed.",
 								"items": {
 									"oneOf": [
 										{
@@ -7539,6 +8955,7 @@
 										}
 									]
 								},
+								"nullable": true,
 								"type": "array"
 							},
 							"name": {
@@ -7629,8 +9046,7 @@
 							}
 						},
 						"required": [
-							"name",
-							"entries"
+							"name"
 						],
 						"type": "object"
 					}
