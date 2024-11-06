@@ -1,12 +1,12 @@
 {
-	"DELETE /zones/{zone_id}/firewall/rules": {
+	"DELETE /zones/{zone_identifier}/firewall/rules": {
 		"deprecated": true,
 		"description": "Deletes existing firewall rules.",
 		"operationId": "firewall-rules-delete-firewall-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -717,14 +717,14 @@
 			"pro": true
 		}
 	},
-	"DELETE /zones/{zone_id}/firewall/rules/{rule_id}": {
+	"DELETE /zones/{zone_identifier}/firewall/rules/{id}": {
 		"deprecated": true,
 		"description": "Deletes an existing firewall rule.",
 		"operationId": "firewall-rules-delete-a-firewall-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the firewall rule.",
@@ -736,7 +736,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1399,14 +1399,14 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_id}/firewall/rules": {
+	"GET /zones/{zone_identifier}/firewall/rules": {
 		"deprecated": true,
 		"description": "Fetches firewall rules in a zone. You can filter the results using several optional parameters.",
 		"operationId": "firewall-rules-list-firewall-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2161,14 +2161,14 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_id}/firewall/rules/{rule_id}": {
+	"GET /zones/{zone_identifier}/firewall/rules/{id}": {
 		"deprecated": true,
 		"description": "Fetches the details of a firewall rule.",
 		"operationId": "firewall-rules-get-a-firewall-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the firewall rule.",
@@ -2180,7 +2180,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2849,14 +2849,14 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_id}/firewall/rules": {
+	"PATCH /zones/{zone_identifier}/firewall/rules": {
 		"deprecated": true,
 		"description": "Updates the priority of existing firewall rules.",
 		"operationId": "firewall-rules-update-priority-of-firewall-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3563,14 +3563,14 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_id}/firewall/rules/{rule_id}": {
+	"PATCH /zones/{zone_identifier}/firewall/rules/{id}": {
 		"deprecated": true,
 		"description": "Updates the priority of an existing firewall rule.",
 		"operationId": "firewall-rules-update-priority-of-a-firewall-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the firewall rule.",
@@ -3582,7 +3582,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4299,14 +4299,14 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_id}/firewall/rules": {
+	"POST /zones/{zone_identifier}/firewall/rules": {
 		"deprecated": true,
 		"description": "Create one or more firewall rules.",
 		"operationId": "firewall-rules-create-firewall-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5106,14 +5106,14 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_id}/firewall/rules": {
+	"PUT /zones/{zone_identifier}/firewall/rules": {
 		"deprecated": true,
 		"description": "Updates one or more existing firewall rules.",
 		"operationId": "firewall-rules-update-firewall-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5820,14 +5820,14 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_id}/firewall/rules/{rule_id}": {
+	"PUT /zones/{zone_identifier}/firewall/rules/{id}": {
 		"deprecated": true,
 		"description": "Updates an existing firewall rule.",
 		"operationId": "firewall-rules-update-a-firewall-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the firewall rule.",
@@ -5839,7 +5839,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

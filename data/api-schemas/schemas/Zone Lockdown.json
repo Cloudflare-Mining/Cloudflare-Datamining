@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
+	"DELETE /zones/{zone_identifier}/firewall/lockdowns/{id}": {
 		"description": "Deletes an existing Zone Lockdown rule.",
 		"operationId": "zone-lockdown-delete-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "lock_downs_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -190,13 +190,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_id}/firewall/lockdowns": {
+	"GET /zones/{zone_identifier}/firewall/lockdowns": {
 		"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 		"operationId": "zone-lockdown-list-zone-lockdown-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -984,13 +984,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
+	"GET /zones/{zone_identifier}/firewall/lockdowns/{id}": {
 		"description": "Fetches the details of a Zone Lockdown rule.",
 		"operationId": "zone-lockdown-get-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "lock_downs_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
@@ -1002,7 +1002,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1618,13 +1618,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_id}/firewall/lockdowns": {
+	"POST /zones/{zone_identifier}/firewall/lockdowns": {
 		"description": "Creates a new Zone Lockdown rule.",
 		"operationId": "zone-lockdown-create-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2341,13 +2341,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
+	"PUT /zones/{zone_identifier}/firewall/lockdowns/{id}": {
 		"description": "Updates an existing Zone Lockdown rule.",
 		"operationId": "zone-lockdown-update-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "lock_downs_id",
+				"name": "id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
@@ -2359,7 +2359,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_id",
+				"name": "zone_identifier",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
