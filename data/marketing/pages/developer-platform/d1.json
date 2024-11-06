@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/argo-smart-routing/",
+	"path": "/developer-platform/d1/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Argo Smart Routing - Product Page",
+				"pageName": "Cloudflare D1 Database ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,29 +32,29 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/argo-smart-routing/",
-				"topNavOptions": "default",
+				"relativePath": "developer-platform/d1",
+				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Argo Smart Routing | Accelerate Web Apps",
-					"metaDescription": "Cloudflare Argo Smart Routing accelerates web applications by avoiding network congestion. Learn more about the benefits, use cases, and pricing for Argo.",
+					"metaTitle": "Build a natively serverless SQL database with Cloudflare D1",
+					"metaDescription": "Create a natively serverless SQL database in seconds with D1. With a familiar query language, point-in-time recovery, and cost-effective pricing you are empowered to build the next big thing. ",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GFzCrNZj9bom7quRxQ42J/c5e52810a342575c2f39805b1b866fda/D1_SQLite.png"
 						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						"description": ""
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2018-10-21T07:55:10.587Z",
-					"updatedAt": "2024-11-06T06:14:39.103Z"
+					"createdAt": "2023-09-28T14:15:51.055Z",
+					"updatedAt": "2024-10-29T22:17:05.346Z"
 				},
-				"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
+				"contentfulId": "1XocSe8FmOosqpYDlsG6hu",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,44 +64,43 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "48k0kgRwP6G8aWogY4AsAQ",
+						"contentfulId": "3O9uxhlKbXtomgFTQjl3ct",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Argo Smart Routing",
-						"titleSize": null,
-						"subtitle": "Avoid network congestion and accelerate web apps",
+						"title": "Cloudflare D1",
+						"titleSize": "medium",
+						"subtitle": "Create serverless SQL databases",
 						"subtitleSize": null,
-						"copy": "Network congestion on the Internet can lead to slow load times. Argo Smart Routing detects and routes around real-time network congestion for 30% (on average) faster web app performance.",
-						"buttonColor": "blue",
-						"buttonColor2": "blue-outline",
+						"copy": "Create a serverless relational database in seconds with D1. With a familiar SQL query language, point-in-time recovery, and cost-effective pricing, you are empowered to build the next big thing.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange-outline",
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": "Get started",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get the solution brief",
-						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bJqqMwpO5dcJNfRaYOOHA/56c3f77fe09d05d4ef7d576559515442/Argo_Smart_Routing_Solution_Brief.pdf",
-						"button2ExtraClass": "argo-smart-routing-product-contact-sales",
+						"buttonText2": "View documentation",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://developers.cloudflare.com/d1/get-started/",
+						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": true,
-						"streamVideoId": "f73d95df0053995ff8244c452093ec46",
+						"includeVideo": false,
+						"streamVideoId": null,
 						"streamOptions": [
 							"controls",
-							"muted",
-							"loop"
+							"captions"
 						],
-						"streamCaptions": null,
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": "38s",
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": true,
+						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Large",
+						"imageSize": null,
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -112,25 +111,39 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "135d7e71-27bd-5424-b60a-0cc8e0cbcecf",
+							"altText": "Cloudflare D1 Database",
+							"title": "Cloudflare D1 Database",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1W5QoaWTrKT8IwoTrV0uU3/d1deb0a1881d756d346b9a7f04aa5f51/D1.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "4hdpqT6aKO5LjYeY7zCORz",
+						"contentfulId": "1WwRfKqHXfC0VMVeNUJhqx",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF ARGO SMART ROUTING",
+						"eyebrowHeading": "BENEFITS OF D1",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5jXjPMPuKE7CIuOonVU6eu",
-								"title": "Faster loading times",
+								"contentfulId": "7l7ul5KeEPns5nElQMjQVz",
+								"title": "Built-in database solution",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Deliver web traffic over the quickest network paths available for noticeably faster app performance and an improved user experience.",
+								"description": "D1 is built on one of the most widely used SQL query engines in the world, enabling you to use familiar drivers and ORMs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -138,16 +151,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -161,12 +174,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2CnCqfGF9rwKuQvS0K9zGl",
-								"title": "Increased reliability",
+								"contentfulId": "50GG50cPWCnESbmjoZKgK7",
+								"title": "Scale infinitely",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Route around congestion and use the most reliable paths to increase uptime.",
+								"description": "Our natively serverless architecture enables developers to scale databases, increasing the pace of innovation.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -174,16 +187,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "9a9f45e5-8256-5cff-bb15-7336fb732376",
-									"altText": "Performance 1 blue",
-									"title": "Performance 1 blue",
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Clytt8pBf5fsuPgtVafD7/42d2f39e656cdeebf1d7fa80c979a4c9/performance-1.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 										},
-										"description": "Rotating arrows icon"
+										"description": "icon scale aqua"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -197,12 +210,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5QCG6zH5UJjlEBa23ICcUr",
-								"title": "Reduced costs",
+								"contentfulId": "69K9rz5xFvqJS6SFcpbimR",
+								"title": "Rely on Time Travel",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Minimize content requests to the origin server, reducing latency, server load, and bandwidth usage.",
+								"description": "With always-on Time Travel, easily roll your database back to any specific minute in the last 30 days.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -210,14 +223,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
-									"altText": "Dollar",
-									"title": "Dollar",
+									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tme9kTrisdGyf3VkBsvv/4096a715634cf9a3807e0a59c9d5dab4/time.svg"
 										},
 										"description": null
 									},
@@ -233,12 +246,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "62AS17As4hJfJ5GfX1Lklq",
-								"title": "Integrated security",
+								"contentfulId": "21drkzH2Sh8JvDCo09M0ip",
+								"title": "Benefit from cost-effective pricing",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Encrypt end-to-end traffic across the Cloudflare network, protecting web traffic from attackers.",
+								"description": "D1 bills on queries you issue and any storage above your plan's limits. You are not billed for hours or capacity units.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -246,16 +259,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
 										},
-										"description": "Padlock icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -272,9 +285,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "3v5SKSIMiuOseT2bCrN3ck",
-						"title": "Make web apps faster with intelligent, real-time routing",
-						"copy": "The Cloudflare network routes an average of %{HTTPRequests} million HTTP requests per second, providing a unique view of traffic flow on the Internet. \n\nArgo Smart Routing uses this information to detect the fastest network paths, then intelligently routes customer web traffic on those paths.",
+						"contentfulId": "2YPiEEYcBsGmTBGSRDboEC",
+						"title": "Support globally distributed applications",
+						"copy": "D1 is built on SQLite, has built-in JSON parsing and querying functions with support for full-text search triggers.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -297,16 +310,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "45e9d794-9046-55aa-ba9d-8c25fa485628",
-							"altText": "teams-gateway-speedup-cost-down",
-							"title": "teams-gateway-speedup-cost-down",
+							"id": "ba072b63-a755-5803-a7bf-1ceacbe67810",
+							"altText": " Built on one of the most popular and widely used SQL query engines in the world",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/3668207a185794ca01b719fcc84301ec/teams-gateway-speedup-cost-down-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QuIWgeAvGNaoRNSGsPY8H/781f553d51a254c4f71225e39b881d66/Developer_Platform_Solutions.png"
 								},
-								"description": "Illustration of a rocket ship"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -320,14 +333,14 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "large",
+						"imageSize": "medium",
 						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6I5jafmCgj0TkDDldMlQY3",
-						"title": "Learn how Cloudflare's connectivity cloud  helps accelerate applications",
+						"contentfulId": "WCwV7z5pSScdbKD7bhKZe",
+						"title": "Learn how to increase developer velocity with the Cloudflare's connectivity cloud",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -342,11 +355,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "406jYWHEMGzVf7MRjdXMLz",
-							"elementName": "Get the whitepaper",
+							"contentfulId": "7rQSXv4h3SyG7uxYI9jjXr",
+							"elementName": "D1 - Learn more - CTA",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "https://www.cloudflare.com/lp/3-challenges-of-securing-and-connecting-application-services/",
+							"text": "Learn more",
+							"url": "/lp/increase-developer-velocity-with-a-connectivity-cloud/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -355,125 +368,6 @@
 						"buttonTwo": null,
 						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "6bM3oLbfd2y3Jxalr4woca",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "vNoQvx99WeD6NltNaopC0",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "What our customers are saying",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"We're in a constant search for ways to improve our product experience at Discord… Argo allowed us to cut our load times by an average of 33 milliseconds with no development effort by our team.\"",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "CTO Discord — Stanislav Vishnevskiy",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeFeaturedCompanyLogos",
@@ -665,22 +559,22 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
-						"contentfulId": "5bNZmAM42aiidWZXwAElOn",
+						"contentfulId": "6r3w6KoFfpBo4ZJCP3Wl11",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": null,
-						"eyebrowHeading": "Top Argo Smart Routing use cases",
+						"title": "Meet all your relational SQL needs and see how incredibly easy it is to build a database.",
+						"eyebrowHeading": "Top D1 use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2NixZ1Amu5JDtFjyCT2Bqn",
-								"title": "Top Argo Smart Routing use cases",
+								"contentfulId": "7pjHnwK6Q3jPBcmCskbrtS",
+								"title": "Build and deploy unlimited databases",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Argo Smart Routing helps you speed up your web apps, minimize latency for all content, and reduce cache-miss rates",
+								"description": "Databases are a key part of building full-stack applications. Build infinitely scalable composable databases with D1.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -688,16 +582,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
-									"altText": "Performance routing ",
-									"title": "Performance routing ",
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 										},
-										"description": "Smart routing icon"
+										"description": "icon scale aqua"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -711,12 +605,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "46VGjvrHAYMCB4wrFRZBqN",
-								"title": "Improve web app performance",
+								"contentfulId": "zcfJS2v7MMmxNPLKf2JK2",
+								"title": "Connect databases with Hyperdrive",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Smart routing decisions informed by real-time network conditions ensure content reaches end users as quickly as possible",
+								"description": "Combine D1 and Workers for globally distributed apps and use Hyperdrive to query databases in legacy clouds.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -724,16 +618,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers ",
+									"title": "Cloudflare workers ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -747,12 +641,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4itocEgXv7xlIbKJOuKFbN",
-								"title": "Reduce origin server load",
+								"contentfulId": "1hWROFJopJxSwH7sxeywuF",
+								"title": "Build production-scale applications",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Argo offers tiered caching in order to increase cache hit rates, lowering infrastructure costs\n",
+								"description": "With support for up to 10 GB databases and 50,000 databases per account, unlock the ability to build production-scale applications.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -760,16 +654,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
-									"altText": "Reliability load balancer blue",
-									"title": "Reliability load balancer blue",
+									"id": "c83156b2-55b7-5045-8877-3e9545d7e4cb",
+									"altText": "Automatic Platform Optimization",
+									"title": "APO Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2B4PkhT3iJxxMZBCF5BC9a/1e5dd87f75bf1efefb452d8819953939/optimization-web.svg"
 										},
-										"description": "Load balancer icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -787,15 +681,15 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "3c5HXfszQHRivcx7hIgbJs",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "4U6exMYro96kSje9zN9sjQ",
+						"contentfulId": "6gEBQQr2mZXfjWTEyeyCW7",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "See how global companies are using Argo to accelerate their applications",
+						"description": "See what global companies are building with Cloudflare",
 						"variant": "inline",
 						"htmlId": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -818,25 +712,25 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
-							"elementName": "See case studies",
+							"contentfulId": "2ywy2J7P6yB6EJl2ODhI65",
+							"elementName": "View use cases",
 							"standardText": null,
-							"text": "See case studies",
-							"url": "/case-studies/?product=Bot+Management",
+							"text": "View use cases",
+							"url": "https://developers.cloudflare.com/d1/reference/community-projects/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": false,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "6BJybNrwS1qbDTHBJIxfDe",
+						"contentfulId": "6A72Uz1tXuGm2dNikNelhD",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Web performance resources",
+						"title": "D1 Resources",
 						"subtitle": null,
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -847,16 +741,16 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2nm8WdvAaCOdftAKopIjC0",
-								"title": "How Cloudflare optimizes web content for faster page loads",
+								"contentfulId": "13nxBRjA8X0BbG2ORQR72u",
+								"title": "Get started with D1",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This whitepaper goes into how Cloudflare optimizes your content to ensure your users have a superior customer experience.",
-								"learnMoreUrl": "/lp/how-cloudflare-optimizes-web-content/",
-								"learnMoreText": "Read the whitepaper",
+								"description": "Find out how to create your first database using D1, create a schema, and connect a Cloudflare Worker to your D1 database.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/get-started/",
+								"learnMoreText": "Read documentation",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -883,16 +777,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5nSTmze1WV5y91JR6PncIO",
-								"title": "Learn more about Argo Smart Routing",
+								"contentfulId": "3QNTUc6JYwNucu8APjXmS2",
+								"title": "Interact with your data stored in D1",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Tune in for live weekly application performance demos — hosted by our Solution Engineering team",
-								"learnMoreUrl": "/lp/app-performance-demo-series/",
-								"learnMoreText": "Sign up",
+								"description": "Cloudflare and Prisma make it easier than ever to interact with your data to deploy globally available apps.",
+								"learnMoreUrl": "https://blog.cloudflare.com/prisma-orm-and-d1/",
+								"learnMoreText": "Read the blog",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -919,16 +813,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "16OAVzJXlpyuFrsysopkPW",
-								"title": "Getting faster: Know your website, and know what's slowing it down ",
+								"contentfulId": "3DohAvcmuiw4K7GjliWQZv",
+								"title": "Alpha database migration guide",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This paper examines the various factors that impact web performance, and the steps businesses can take to assess and improve the performance of their web properties.",
-								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1PdxTNFdaTagVJ1zxxTKCX/1310183e51d5f7997fbea47fbe7c3ef6/Getting-faster-website-performance-whitepaper_Q42019.pdf ",
-								"learnMoreText": "Read the whitepaper",
+								"description": "Find out how to recreate alpha D1 databases on our production-ready system.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/platform/alpha-migration/",
+								"learnMoreText": "View guide",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -957,8 +851,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1SgavBEaW4goFbe9M6Pogm",
-						"title": "Get Argo Smart Routing for your enterprise",
+						"contentfulId": "6nhwytOZiBE6CxFRArGVAb",
+						"title": "Get D1 for your enterprise",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -973,53 +867,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "IK4voRN7P7YlczyZYywKY",
-							"elementName": "Talk to an expert",
+							"contentfulId": "3HaMNOup8HZ1mMD7705sWS",
+							"elementName": "Get started - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/sign-up/",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "5WCqmk1IzM81raoSxfOKSV",
-								"modalName": "Enterprise General Sales Inquiry",
-								"modalId": "enterprise-general-sales-inquiry",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "5TLvSjYmTnIb1FOLQW6f9v",
-									"bladeName": "Enterprise General Sales Inquiry",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": false,
+							"buttonModal": null,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1028,49 +883,8 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "3npDNg2Jxa12gSNXVWGUcz",
-						"modalName": "Argo Smart Routing - Product Page: Form Modal ",
-						"modalId": "argo-smart-routing-product-contact-sales",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "2JgJH3pCxXounwBHmtKBLc",
-							"bladeName": "Argo Smart Routing - Product Page: Marketo Form (1341)",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Contact Us Cloudflare Argo Smart Routing",
-							"marketoFormHeaderText": null,
-							"marketoFormDefaultComment": null,
-							"showCommentBox": true,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": "Contact Sales",
-						"regularCopy": "Argo Smart Routing",
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1081,8 +895,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/argo-smart-routing/",
-			"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
+			"pathname": "/developer-platform/d1/",
+			"contentfulId": "1XocSe8FmOosqpYDlsG6hu",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",

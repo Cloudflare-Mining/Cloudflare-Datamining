@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/application-services/products/argo-smart-routing/",
+	"path": "/developer-platform/r2/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Argo Smart Routing - Product Page",
+				"pageName": "R2 - Product page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,14 +32,14 @@
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "application-services/products/argo-smart-routing/",
+				"relativePath": "developer-platform/r2",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Argo Smart Routing | Accelerate Web Apps",
-					"metaDescription": "Cloudflare Argo Smart Routing accelerates web applications by avoiding network congestion. Learn more about the benefits, use cases, and pricing for Argo.",
+					"metaTitle": "Cloudflare R2 | Zero Egress Fee Object Storage",
+					"metaDescription": "Cloudflare R2 is an S3-compatible, zero egress-fee, object storage. Move data freely and build the multi-cloud architecture you desire.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2018-10-21T07:55:10.587Z",
-					"updatedAt": "2024-11-06T06:14:39.103Z"
+					"createdAt": "2022-05-11T12:04:29.252Z",
+					"updatedAt": "2024-10-30T08:51:56.541Z"
 				},
-				"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
+				"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -64,45 +64,49 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "48k0kgRwP6G8aWogY4AsAQ",
+						"contentfulId": "tbMXbdl947mR3liButqiw",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Argo Smart Routing",
+						"title": "Cloudflare R2",
 						"titleSize": null,
-						"subtitle": "Avoid network congestion and accelerate web apps",
+						"subtitle": "Global object storage with zero egress fees",
 						"subtitleSize": null,
-						"copy": "Network congestion on the Internet can lead to slow load times. Argo Smart Routing detects and routes around real-time network congestion for 30% (on average) faster web app performance.",
-						"buttonColor": "blue",
-						"buttonColor2": "blue-outline",
+						"copy": "Powered by our programmable global network, R2 enables you to create flexible, multicloud architectures with S3-compatible object storage.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
 						"buttonText1": "Get started",
-						"buttonText1LoggedIn": "Get started",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/r2",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get the solution brief",
-						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bJqqMwpO5dcJNfRaYOOHA/56c3f77fe09d05d4ef7d576559515442/Argo_Smart_Routing_Solution_Brief.pdf",
-						"button2ExtraClass": "argo-smart-routing-product-contact-sales",
+						"buttonText2": "View Documentation",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://developers.cloudflare.com/r2/",
+						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": true,
-						"streamVideoId": "f73d95df0053995ff8244c452093ec46",
+						"streamVideoId": "4f685df2282ecacd8d391de3bb1831db",
 						"streamOptions": [
 							"controls",
-							"muted",
-							"loop"
+							"captions"
 						],
-						"streamCaptions": null,
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": "38s",
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": true,
+						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Large",
-						"imagePosition": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							},
+							"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						},
+						"imageSize": "Medium",
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -112,25 +116,39 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "0522f72b-8363-5743-b2b9-2a025c93b795",
+							"altText": "Illustration of a cloud with various shapes inside it",
+							"title": "R2-Hero",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OHya7vfRfEpPYsrvMXi5k/3050708e3d2b8acfffca578bf6d65a39/R2_Open_Beta.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "4hdpqT6aKO5LjYeY7zCORz",
+						"contentfulId": "61K6K8GWmy6z9qVfqK22fc",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"eyebrowHeading": "BENEFITS OF ARGO SMART ROUTING",
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE R2",
 						"description": null,
 						"textLayout": "left",
-						"columnsLayout": "Four Columns",
+						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5jXjPMPuKE7CIuOonVU6eu",
-								"title": "Faster loading times",
+								"contentfulId": "2YHznl0J5cgVAMVZRzYMs0",
+								"title": "S3-compatible object storage",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Deliver web traffic over the quickest network paths available for noticeably faster app performance and an improved user experience.",
+								"description": "Our [S3-compatible API](https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage/) gives you added flexibility — allowing you to access a wide range of S3 tools, libraries, and extensions.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -138,16 +156,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
+									"altText": "Cloudflare R2 distributed storage",
+									"title": "R2 Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": "Cloud upload icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -161,52 +179,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2CnCqfGF9rwKuQvS0K9zGl",
-								"title": "Increased reliability",
+								"contentfulId": "1EbJ3JN4ZU7uhSvSwfwxyX",
+								"title": "No egress charges",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Route around congestion and use the most reliable paths to increase uptime.",
+								"description": "Our affordable, consistent pricing helps free up resources across your organization — and you never have to pay egress fees for data accessed from R2. [Join our webinar](https://gateway.on24.com/wcc/eh/2153307/lp/4242403/) to learn more.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "9a9f45e5-8256-5cff-bb15-7336fb732376",
-									"altText": "Performance 1 blue",
-									"title": "Performance 1 blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Clytt8pBf5fsuPgtVafD7/42d2f39e656cdeebf1d7fa80c979a4c9/performance-1.svg"
-										},
-										"description": "Rotating arrows icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5QCG6zH5UJjlEBa23ICcUr",
-								"title": "Reduced costs",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Minimize content requests to the origin server, reducing latency, server load, and bandwidth usage.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
@@ -233,12 +215,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "62AS17As4hJfJ5GfX1Lklq",
-								"title": "Integrated security",
+								"contentfulId": "384CIJcvqx8DAD6MSjz1vJ",
+								"title": "Easy migration from existing providers",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Encrypt end-to-end traffic across the Cloudflare network, protecting web traffic from attackers.",
+								"description": "Our automated migration service helps migrate your objects all at once or over time — whatever aligns with your current needs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -246,16 +228,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
+									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
+									"altText": "Durable objects blue",
+									"title": "Durable objects blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
 										},
-										"description": "Padlock icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -272,9 +254,9 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "3v5SKSIMiuOseT2bCrN3ck",
-						"title": "Make web apps faster with intelligent, real-time routing",
-						"copy": "The Cloudflare network routes an average of %{HTTPRequests} million HTTP requests per second, providing a unique view of traffic flow on the Internet. \n\nArgo Smart Routing uses this information to detect the fastest network paths, then intelligently routes customer web traffic on those paths.",
+						"contentfulId": "6KAs90xZejQAeogTx8xZhD",
+						"title": "Avoid vendor lock-in with our global object storage",
+						"copy": "Cloudflare R2 allows you to store large amounts of unstructured data — without the costly egress fees or vendor lock-in associated with other cloud storage providers.\n\nR2 natively integrates with Cloudflare Workers, so you can easily perform authentication, route requests, and deploy edge functions across our network of %{DataCenterCount}+ data centers.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -297,16 +279,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "45e9d794-9046-55aa-ba9d-8c25fa485628",
-							"altText": "teams-gateway-speedup-cost-down",
-							"title": "teams-gateway-speedup-cost-down",
+							"id": "f00ca93e-47c1-53aa-8779-72969fcd3725",
+							"altText": "R2 Storage - Multi-Cloud",
+							"title": "R2 Storage - Multi-Cloud",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/3668207a185794ca01b719fcc84301ec/teams-gateway-speedup-cost-down-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ltjBPznhikhwxKjfmxHww/31ea411d4bfbc74f5a79702c7e5971da/BDES-4909_-_r2-multi-cloud__1_.svg"
 								},
-								"description": "Illustration of a rocket ship"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -320,14 +302,14 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "large",
+						"imageSize": "medium",
 						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6I5jafmCgj0TkDDldMlQY3",
-						"title": "Learn how Cloudflare's connectivity cloud  helps accelerate applications",
+						"contentfulId": "2GDwg7cZusn3025TBSq2lB",
+						"title": "Reduce cloud spend and avoid hidden costs",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -342,11 +324,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "406jYWHEMGzVf7MRjdXMLz",
-							"elementName": "Get the whitepaper",
+							"contentfulId": "Vk1HHAj1VFGGSrhyWsYJH",
+							"elementName": "Get the ebook",
 							"standardText": null,
-							"text": "Get the whitepaper",
-							"url": "https://www.cloudflare.com/lp/3-challenges-of-securing-and-connecting-application-services/",
+							"text": "Get the ebook",
+							"url": "https://www.cloudflare.com/lp/say-goodbye-to-egress-fees/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -358,7 +340,7 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "6bM3oLbfd2y3Jxalr4woca",
+						"contentfulId": "5MeBo5xxmROj5pBs3UYKjb",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -368,7 +350,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "vNoQvx99WeD6NltNaopC0",
+								"contentfulId": "6TCH2tz4T0K56QbP9FlgUT",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -420,7 +402,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"We're in a constant search for ways to improve our product experience at Discord… Argo allowed us to cut our load times by an average of 33 milliseconds with no development effort by our team.\"",
+															"value": "\"After investigating a wide range of alternatives, we went with Cloudflare's R2 storage — and as a result are thrilled that our engine distribution costs have decreased by 98%, while delivering top-notch performance.\"",
 															"marks": [],
 															"content": null
 														}
@@ -464,7 +446,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "CTO Discord — Stanislav Vishnevskiy",
+													"value": "Prisma",
 													"marks": [],
 													"content": null
 												}
@@ -665,22 +647,22 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
-						"contentfulId": "5bNZmAM42aiidWZXwAElOn",
+						"contentfulId": "5PTEt0bryMnMPtT2ZNruab",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": null,
-						"eyebrowHeading": "Top Argo Smart Routing use cases",
+						"title": "R2 helps you create portable multicloud architectures, effortlessly move data between cloud providers, and optimize content storage and delivery.",
+						"eyebrowHeading": "Top R2 use cases",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2NixZ1Amu5JDtFjyCT2Bqn",
-								"title": "Top Argo Smart Routing use cases",
+								"contentfulId": "6RMJ9ruC8LQkvdlN8CtYoX",
+								"title": "Migrate data from S3 and Google Cloud Storage (GCS)",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Argo Smart Routing helps you speed up your web apps, minimize latency for all content, and reduce cache-miss rates",
+								"description": "Move your data (including training data for AI models) to R2 and take advantage of our zero egress fee policy — whether you are permanently migrating your data or not.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -688,16 +670,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
-									"altText": "Performance routing ",
-									"title": "Performance routing ",
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
 										},
-										"description": "Smart routing icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -711,12 +693,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "46VGjvrHAYMCB4wrFRZBqN",
-								"title": "Improve web app performance",
+								"contentfulId": "6FZL1lm8PZDzqYf6ZsXqoG",
+								"title": "Optimize dynamic content storage and delivery",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Smart routing decisions informed by real-time network conditions ensure content reaches end users as quickly as possible",
+								"description": "With our Cache API and Workers, you can significantly extend cache lifetimes for large files and provide low-latency access to assets.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -724,16 +706,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
+									"altText": "Optimization web blue",
+									"title": "Optimization web blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -747,12 +729,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4itocEgXv7xlIbKJOuKFbN",
-								"title": "Reduce origin server load",
+								"contentfulId": "1e63ADYz8E8wTy3c9MnpiZ",
+								"title": "Build event-driven applications",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Argo offers tiered caching in order to increase cache hit rates, lowering infrastructure costs\n",
+								"description": "<br>\nTrigger workflows that react to changes in your data with event notifications and Queues.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -760,16 +742,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
-									"altText": "Reliability load balancer blue",
-									"title": "Reliability load balancer blue",
+									"id": "85b72606-4e5f-58f1-bdd8-2f22d34e428e",
+									"altText": "Ruleset icon",
+									"title": "Ruleset icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWKT2GPjWBacPIsuSQzfq/051691978b1dcd161745317f724eb2b4/cloudflare-ruleset-engine.svg"
 										},
-										"description": "Load balancer icon"
+										"description": "cloudflare ruleset engine icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -787,15 +769,15 @@
 					},
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
-						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"contentfulId": "17ht0gKiAF2eZCLP4wtlMf",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "4U6exMYro96kSje9zN9sjQ",
+						"contentfulId": "2JaU5RorpeTdZM8o5Sm5c7",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": null,
-						"description": "See how global companies are using Argo to accelerate their applications",
+						"description": "Trusted by millions of Internet properties",
 						"variant": "inline",
 						"htmlId": null,
 						"sectionPadding": "tile--no-top-padding",
@@ -818,11 +800,11 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
-							"elementName": "See case studies",
+							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
+							"elementName": "See case studies (main)",
 							"standardText": null,
 							"text": "See case studies",
-							"url": "/case-studies/?product=Bot+Management",
+							"url": "/case-studies/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
@@ -831,32 +813,166 @@
 						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "6BJybNrwS1qbDTHBJIxfDe",
+						"contentTypeId": "bladeTable",
+						"contentfulId": "23pPRtEM5wpqNzw6az0kBl",
+						"locale": "en-US",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "R2 Pricing",
+						"copy": "R2 charges based on the total volume of data stored and two classes of operations on that data. You pay zero egress fees.\n",
+						"htmlId": null,
+						"columnHeaders": [
+							{
+								"cellText": "Forever Free",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Monthly Rates",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							}
+						],
+						"groupsInTable": [],
+						"rowsInTable": [
+							{
+								"contentfulId": "XeiULTLR6eFEwr90XrS6e",
+								"rowHeader2": {
+									"contentfulId": "6VK8KAbU0ep1ipABTjgcUz",
+									"cellText": "Storage",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6eqG1DrYVjAedhkmD0W6ba",
+										"cellText": "10 GB / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6Up7mjsjfGU6tEYFHnaQyv",
+										"cellText": "$0.015 / GB storage",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "5vy1lPqamF3LW9TOCFOeDC",
+								"rowHeader2": {
+									"contentfulId": "6Nkii3Ej3WJRimBQUFJdFV",
+									"cellText": "Class A operations: mutate state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5LKm6sR7gSNtKw81srtQ1y",
+										"cellText": "1,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5FuaSVJexUdpifJL1jtyqB",
+										"cellText": "$4.50 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "SkqRtjtaNpNANpmISzAJS",
+								"rowHeader2": {
+									"contentfulId": "26xTGigHzGlgkHDSmRdQab",
+									"cellText": "Class B operations: read existing state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4zMhYcGbpHjldEP9F3iOp2",
+										"cellText": "10,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4lFYCbwimsUSDY9dzmTQpq",
+										"cellText": "$0.36 / million ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						],
+						"dataSource": null
+					},
+					{
+						"contentfulId": "3RA2AH9F1dZjNLbiaQrmuG",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Web performance resources",
+						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2nm8WdvAaCOdftAKopIjC0",
-								"title": "How Cloudflare optimizes web content for faster page loads",
+								"contentfulId": "5vwg9kkJtjdDHCJPVnEF5y",
+								"title": "Explore the developer's guide to media optimization",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This whitepaper goes into how Cloudflare optimizes your content to ensure your users have a superior customer experience.",
-								"learnMoreUrl": "/lp/how-cloudflare-optimizes-web-content/",
-								"learnMoreText": "Read the whitepaper",
+								"description": "See how R2 can help you host, store, and deliver rich media experiences — without driving up costs.",
+								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/76OowVPNaxwlbzZC9z5LpN/f8620e467799b0920ebd01fdb222798b/A_Developers_Guide_to_Media_Optimization.pdf",
+								"learnMoreText": "Get the guide",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -883,16 +999,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5nSTmze1WV5y91JR6PncIO",
-								"title": "Learn more about Argo Smart Routing",
+								"contentfulId": "QqbkRdz4nDhCCpGkZSVJI",
+								"title": "Train LLMs on any cloud provider, anywhere in the world",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Tune in for live weekly application performance demos — hosted by our Solution Engineering team",
-								"learnMoreUrl": "/lp/app-performance-demo-series/",
-								"learnMoreText": "Sign up",
+								"description": "Building large language models (LLMs) requires robust data storage infrastructure. Cloudflare R2 can help.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-r2-mosaicml-train-llms-anywhere-faster-cheaper",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -919,16 +1035,16 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "16OAVzJXlpyuFrsysopkPW",
-								"title": "Getting faster: Know your website, and know what's slowing it down ",
+								"contentfulId": "2U9OHBkBVvbaNPWi3N6VAJ",
+								"title": "Migrate objects on-demand",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "This paper examines the various factors that impact web performance, and the steps businesses can take to assess and improve the performance of their web properties.",
-								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1PdxTNFdaTagVJ1zxxTKCX/1310183e51d5f7997fbea47fbe7c3ef6/Getting-faster-website-performance-whitepaper_Q42019.pdf ",
-								"learnMoreText": "Read the whitepaper",
+								"description": "Transfer data from other cloud providers to R2 as the data is requested with Sippy.",
+								"learnMoreUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/",
+								"learnMoreText": "View the reference architecture",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
@@ -957,8 +1073,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1SgavBEaW4goFbe9M6Pogm",
-						"title": "Get Argo Smart Routing for your enterprise",
+						"contentfulId": "1BBlx7AhoYoQtkxLwIdWKi",
+						"title": "See how much you can save with R2",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -973,53 +1089,14 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "IK4voRN7P7YlczyZYywKY",
-							"elementName": "Talk to an expert",
+							"contentfulId": "1XNnDmEGSbjWIxvAugKKHG",
+							"elementName": "Calculate your savings - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+							"text": "Calculate your savings",
+							"url": "https://r2-calculator.cloudflare.com/",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "5WCqmk1IzM81raoSxfOKSV",
-								"modalName": "Enterprise General Sales Inquiry",
-								"modalId": "enterprise-general-sales-inquiry",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "5TLvSjYmTnIb1FOLQW6f9v",
-									"bladeName": "Enterprise General Sales Inquiry",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-									"marketoFormHeaderText": "Talk to an expert",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": null,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": null,
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": false,
+							"buttonModal": null,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
@@ -1031,21 +1108,21 @@
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "3npDNg2Jxa12gSNXVWGUcz",
-						"modalName": "Argo Smart Routing - Product Page: Form Modal ",
-						"modalId": "argo-smart-routing-product-contact-sales",
-						"modalType": "single-form",
+						"contentfulId": "7HKPKdN8NyJuuIz6x0XBYI",
+						"modalName": "R2 Product Page Modal Form",
+						"modalId": "r2-product-page-modal-form",
+						"modalType": "split-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "2JgJH3pCxXounwBHmtKBLc",
-							"bladeName": "Argo Smart Routing - Product Page: Marketo Form (1341)",
+							"contentfulId": "7uQTdBu6g82MhQrzAgjaJu",
+							"bladeName": "R2 Product Page Marketo Form",
 							"backgroundColor": "white",
-							"marketoFormId": 1341,
+							"marketoFormId": 2733,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Contact Us Cloudflare Argo Smart Routing",
-							"marketoFormHeaderText": null,
+							"marketoFormLeadSourceDetail": "[INB] Q3'22 WEB - GBL - R2 web inquiry",
+							"marketoFormHeaderText": "Is R2 right for you?",
 							"marketoFormDefaultComment": null,
-							"showCommentBox": true,
+							"showCommentBox": false,
 							"marketoFormThankYouText": null,
 							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": null,
@@ -1061,8 +1138,8 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Contact Sales",
-						"regularCopy": "Argo Smart Routing",
+						"title": null,
+						"regularCopy": "Fill out the form below and an R2 specialist will be in touch shortly to discuss your specific needs.",
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
@@ -1070,7 +1147,7 @@
 						"enterpriseCopy": null
 					}
 				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1081,8 +1158,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/application-services/products/argo-smart-routing/",
-			"contentfulId": "3dZi7ipIacUoymKoKAW4Yc",
+			"pathname": "/developer-platform/r2/",
+			"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
