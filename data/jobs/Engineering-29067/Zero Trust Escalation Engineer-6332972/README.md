@@ -7,11 +7,8 @@
 </div>
 <h2>What you’ll do</h2>
 <p>As a member of the Zero Trust Escalation Engineering team, you will play a key role in addressing technical issues experienced by customers and internal users in all layers of our Zero Trust offering (Gateway SWG, Gateway Resolver, ZTNA Access, Infrastructure Access, Browser Isolation, Data Loss Prevention).</p>
-<p>&nbsp;</p>
 <p>As the goto person for problem management of the most complex issues, you will collaborate with multiple Zero Trust teams to triage, prioritize, reproduce, evaluate impact, delve into client or server logs and source code, and methodically determine root causes. You will communicate updates and estimated time of resolution to stakeholders, including senior management.</p>
-<p>&nbsp;</p>
 <p>The interconnectedness of our products will require you to use a wide range of advanced troubleshooting strategies and tools to reproduce and solve the most complex problems. You will need to have a broad, in-depth product knowledge and technical understanding, spanning multiple teams within the Zero Trust organization.</p>
-<p>&nbsp;</p>
 <p>In addition to driving issue resolutions, you will contribute to the enhancement of operational efficiency. You will develop tooling, write thorough documentation, refine processes, and identify patterns to elevate the quality and efficiency of our management of issues, as well as our software development process.</p>
 <h2>Examples of desirable skills, knowledge, and experience</h2>
 <ul>
@@ -26,9 +23,9 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $140,000 - $172,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $158,000 - $193,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000 - $202,000.</span></li>
+	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $91,000 - $111,000.</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $105,000 - $129,000.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $111,000 - $135,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
