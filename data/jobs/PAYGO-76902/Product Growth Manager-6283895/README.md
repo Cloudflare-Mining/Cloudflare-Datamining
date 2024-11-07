@@ -5,22 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available: Lisbon, Portugal.</strong></p>
-<p><strong>About the Department</strong></p>
-<p>Security at Cloudflare is a focused team committed to helping secure both Cloudflare and our customers. The Vulnerability Management Team requires a blend of technical proficiency, knowledge of cybersecurity frameworks, stakeholder partnership and regulatory knowledge in order to effectively mitigate security risks across a diverse technology landscape.</p>
-<p><strong>About the Role</strong></p>
-<p>The Vulnerability Management Team oversees the entire lifecycle of a vulnerability, encompassing everything from configuring and maintaining vulnerability scanners to partnering with remediation teams, optimizing and scaling processes. This multifaceted role entails reviewing and triaging vulnerability reports, configuring and managing scanners, developing automated solutions, ensuring compliance adherence, and providing remediation support at scale.&nbsp;</p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is looking for a Product Growth Manager to join our Self-Serve Team. Our team is responsible for driving growth across Cloudflare’s large free and self-serve customer base. To do this, we rely on a data-driven, product-led, experimentation-based approach to help customers to see greater value in and adopt more of Cloudflare’s solutions. You are a self-starter who has an in-depth understanding of key drivers for a customer’s lifecycle which are critical to understanding a customer’s experience and their growth on Cloudflare. In this role you’ll act as a bridge across product, product marketing, channel marketing, design and own go-to-market strategy and execution to drive self-serve growth.&nbsp;</p>
+<p><strong>Locations: San Francisco, Austin, DC &amp; Los Angeles&nbsp;</strong><br><br></p>
+<p><strong>What you’ll do</strong></p>
 <ul>
-	<li>Proficiency in common vulnerability scanning tools, and developing procedures, reports and processes.</li>
-	<li>Strong understanding of cybersecurity best practices and frameworks such as NIST, MITRE, ATT&amp;CK Framework, and OWASP top 10.</li>
-	<li>Experience deploying, operating, tuning scanners for on-premise, cloud environments, applications, endpoints, etc. (e.g. Qualys, Rapid7, etc.)</li>
-	<li>Experience with cloud services and applications (AWS, GCP, Azure).</li>
-	<li>Experience with containerized environments.</li>
-	<li>Proficient at automating vulnerability management at scale using scripting languages (python, go).</li>
-	<li>Ability to work autonomously with a strong sense of urgency, ownership and self drive.</li>
-	<li>Ability to build partnerships and get results across many different stakeholders.</li>
-	<li>Ability to effectively communicate, both verbal and written, to stakeholders regarding remediation, process and feedback.</li>
+	<li>Understand our customers and their lifecycle on Cloudflare deeply to continually refine target personas and identify opportunities for growth.</li>
+	<li>Work closely with product, pricing &amp; monetization, channel marketing, and other teams on GTM strategy for self-serve solutions.&nbsp;</li>
+	<li>Develop messaging and positioning that drives acquisition, activation, and retention of Cloudflare’s self-serve solutions and products.</li>
+	<li>Partner with channel marketing on end-to-end execution of multi-channel campaigns: develop campaign strategy, design experiments, and drive execution of programs to drive measurable conversion and retention of Cloudflare’s suite of products and features.</li>
+	<li>Build and launch data-driven experiments and initiatives in partnership with engineering. This includes guiding the prioritization of resources and work to maximize business impact.</li>
+</ul>
+<p><strong>You have</strong></p>
+<ul>
+	<li>A strong background in a product-led growth, product management, or product marketing role.</li>
+	<li>Extensive experience working cross-functionally with engineering, design, marketing, and product teams on growth initiatives.&nbsp;</li>
+	<li>Strong communication and project management skills, with a track record of maintaining a high velocity of experimentation across channels</li>
+	<li>Strong customer empathy and proven experience understanding what drives customer behavior.</li>
+	<li>A data-driven approach with expert understanding of SaaS acquisition and growth metrics, marketing and product analytics and the ability to use data for discovery, measurement, and optimization.</li>
+	<li>Experience providing product related insights, strategy, positioning, and messaging for digital marketing campaigns across channels (email, paid ads, in-product).</li>
+	<li>Exceptional writing skills for email, web, landing pages, ad copy, and more.</li>
+	<li>Comfortability tackling ambiguous and complex problems from strategy to execution.</li>
+	<li>An ownership mentality with a drive to get work across the finish line and achieve results.</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<ul>
+	<li>4+ years of experience in product marketing or growth marketing at SaaS companies.</li>
+	<li>2+ years of experience in product management or product-led growth for SaaS companies</li>
+	<li>2+ years of experience with CRO, A/B and multivariate testing</li>
+	<li>An outcome-oriented mindset with a track record of driving actual business results (like user growth and revenue).</li>
+	<li>Experience addressing ambiguous problems by analyzing relevant qualitative and quantitative data, identifying possible solutions, and implementing solutions.</li>
+	<li>Proficiency creating product requirement documents and test plans, socializing them, and getting sign off from stakeholders.</li>
+	<li>Experience working with engineering teams is a major plus.</li>
+	<li>Fluency in a variety of tools commonly found in the modern marketing stack like Amplitude, Google Analytics, Iterable, Adobe Target, etc…</li>
+	<li>Obsessive about data and metrics and strong ability to analyze data from various sources (e.g. email, in-product behavior, product usage). Acronyms like CTR, CTOR, CAC, CPA, LTV, CR are not foreign to you.&nbsp;</li>
+	<li>Ability to write SQL is a strong plus.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
