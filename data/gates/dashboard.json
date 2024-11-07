@@ -12,13 +12,6 @@
 	"2fa-recovery-user-delete": {
 		"enabled": true
 	},
-	"account-home-v3": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"account-logpush": {
 		"enabled": true
 	},
@@ -972,6 +965,9 @@
 			"baseline",
 			"experiment"
 		]
+	},
+	"prg-remove-stream-bundle": {
+		"enabled": false
 	},
 	"prg-rotating-banners-experiment": {
 		"enabled": false,
