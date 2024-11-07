@@ -326,6 +326,28 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"aud": {
+													"description": "The Application Audience (AUD) tag. Identifies the application associated with the CA.",
+													"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+													"maxLength": 64,
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the CA.",
+													"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
+													"maxLength": 48,
+													"readOnly": true,
+													"type": "string"
+												},
+												"public_key": {
+													"description": "The public key to add to your SSH server configuration.",
+													"example": "ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}
@@ -805,6 +827,28 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"aud": {
+													"description": "The Application Audience (AUD) tag. Identifies the application associated with the CA.",
+													"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+													"maxLength": 64,
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the CA.",
+													"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
+													"maxLength": 48,
+													"readOnly": true,
+													"type": "string"
+												},
+												"public_key": {
+													"description": "The public key to add to your SSH server configuration.",
+													"example": "ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}

@@ -754,9 +754,13 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "The name of the tag",
-						"example": "engineers",
-						"type": "string"
+						"properties": {
+							"name": {
+								"description": "The name of the tag",
+								"example": "engineers",
+								"type": "string"
+							}
+						}
 					}
 				}
 			}

@@ -381,6 +381,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -510,6 +511,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -627,6 +629,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -725,6 +728,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -823,6 +827,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -921,6 +926,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1033,6 +1039,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1131,6 +1138,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1276,6 +1284,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1388,6 +1397,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1500,6 +1510,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1612,6 +1623,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1755,6 +1767,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -1853,6 +1866,7 @@
 																			},
 																			"secret": {
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"user_deprovision": {
@@ -2166,6 +2180,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -2295,6 +2310,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -2412,6 +2428,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -2510,6 +2527,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -2608,6 +2626,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -2706,6 +2725,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -2818,6 +2838,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -2916,6 +2937,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -3061,6 +3083,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -3173,6 +3196,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -3285,6 +3309,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -3397,6 +3422,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -3540,6 +3566,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -3776,6 +3803,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -3905,6 +3933,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4022,6 +4051,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4120,6 +4150,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4218,6 +4249,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4316,6 +4348,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4428,6 +4461,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4526,6 +4560,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4671,6 +4706,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4783,6 +4819,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -4895,6 +4932,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -5007,6 +5045,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -5150,6 +5189,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -5329,6 +5369,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -5458,6 +5499,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -5575,6 +5617,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -5673,6 +5716,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -5771,6 +5815,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -5869,6 +5914,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -5981,6 +6027,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -6079,6 +6126,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -6224,6 +6272,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -6336,6 +6385,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -6448,6 +6498,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -6560,6 +6611,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -6703,6 +6755,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -6949,6 +7002,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7078,6 +7132,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7195,6 +7250,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7293,6 +7349,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7391,6 +7448,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7489,6 +7547,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7601,6 +7660,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7699,6 +7759,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7844,6 +7905,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -7956,6 +8018,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -8068,6 +8131,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -8180,6 +8244,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -8323,6 +8388,7 @@
 													},
 													"secret": {
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"readOnly": true,
 														"type": "string"
 													},
 													"user_deprovision": {
@@ -8502,6 +8568,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -8631,6 +8698,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -8748,6 +8816,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -8846,6 +8915,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -8944,6 +9014,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9042,6 +9113,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9154,6 +9226,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9252,6 +9325,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9397,6 +9471,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9509,6 +9584,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9621,6 +9697,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9733,6 +9810,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
@@ -9876,6 +9954,7 @@
 																		},
 																		"secret": {
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"user_deprovision": {
