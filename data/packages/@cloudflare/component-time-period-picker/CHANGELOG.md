@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.0
+
+### Minor Changes
+
+- 8047770027: Change TimePeriodPicker date format to MMM D to avoid ordinal formatting
+
 ## 6.0.34
 
 ### Patch Changes

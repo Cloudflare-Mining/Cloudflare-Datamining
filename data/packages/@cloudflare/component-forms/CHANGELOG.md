@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.1.34
+
+### Patch Changes
+
+- Updated dependencies [8047770027]
+  - @cloudflare/component-time-period-picker@6.1.0
+
 ## 6.1.33
 
 ### Patch Changes
