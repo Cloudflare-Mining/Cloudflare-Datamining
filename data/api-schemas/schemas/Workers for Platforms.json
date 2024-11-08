@@ -1128,6 +1128,16 @@
 															"readOnly": true,
 															"type": "string"
 														},
+														"has_assets": {
+															"description": "Whether a Worker contains assets.",
+															"example": false,
+															"type": "boolean"
+														},
+														"has_modules": {
+															"description": "Whether a Worker contains modules.",
+															"example": false,
+															"type": "boolean"
+														},
 														"id": {
 															"description": "The id of the script in the Workers system. Usually the script name.",
 															"example": "my-workers-script",
@@ -3042,10 +3052,10 @@
 													]
 												},
 												"observability": {
-													"description": "Observability settings for the Worker",
+													"description": "Observability settings for the Worker.",
 													"properties": {
 														"enabled": {
-															"description": "Whether observability is enabled for the Worker",
+															"description": "Whether observability is enabled for the Worker.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -4008,10 +4018,10 @@
 										]
 									},
 									"observability": {
-										"description": "Observability settings for the Worker",
+										"description": "Observability settings for the Worker.",
 										"properties": {
 											"enabled": {
-												"description": "Whether observability is enabled for the Worker",
+												"description": "Whether observability is enabled for the Worker.",
 												"example": true,
 												"type": "boolean"
 											},
@@ -4688,10 +4698,10 @@
 													]
 												},
 												"observability": {
-													"description": "Observability settings for the Worker",
+													"description": "Observability settings for the Worker.",
 													"properties": {
 														"enabled": {
-															"description": "Whether observability is enabled for the Worker",
+															"description": "Whether observability is enabled for the Worker.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -5177,6 +5187,43 @@
 									"metadata": {
 										"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
 										"properties": {
+											"assets": {
+												"description": "Configuration for assets within a Worker",
+												"properties": {
+													"config": {
+														"description": "Configuration for assets within a Worker.",
+														"properties": {
+															"html_handling": {
+																"description": "Determines the redirects and rewrites of requests for HTML content.",
+																"enum": [
+																	"auto-trailing-slash",
+																	"force-trailing-slash",
+																	"drop-trailing-slash",
+																	"none"
+																],
+																"example": "auto-trailing-slash",
+																"type": "string"
+															},
+															"not_found_handling": {
+																"description": "Determines the response when a request does not match a static asset, and there is no Worker script.",
+																"enum": [
+																	"none",
+																	"404-page",
+																	"single-page-application"
+																],
+																"example": "404-page",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"jwt": {
+														"description": "Token provided upon successful upload of all files from a registered manifest.",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
 											"bindings": {
 												"description": "List of bindings available to the worker.",
 												"example": [
@@ -5220,6 +5267,11 @@
 													"type": "string"
 												},
 												"type": "array"
+											},
+											"keep_assets": {
+												"description": "Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.",
+												"example": false,
+												"type": "boolean"
 											},
 											"keep_bindings": {
 												"description": "List of binding types to keep from previous_upload.",
@@ -5410,10 +5462,10 @@
 												]
 											},
 											"observability": {
-												"description": "Observability settings for the Worker",
+												"description": "Observability settings for the Worker.",
 												"properties": {
 													"enabled": {
-														"description": "Whether observability is enabled for the Worker",
+														"description": "Whether observability is enabled for the Worker.",
 														"example": true,
 														"type": "boolean"
 													},
@@ -5442,7 +5494,7 @@
 												"type": "object"
 											},
 											"tags": {
-												"description": "List of strings to use as tags for this Worker",
+												"description": "List of strings to use as tags for this Worker.",
 												"items": {
 													"type": "string"
 												},
@@ -5488,7 +5540,7 @@
 												"additionalProperties": {
 													"type": "string"
 												},
-												"description": "Key-value pairs to use as tags for this version of this Worker",
+												"description": "Key-value pairs to use as tags for this version of this Worker.",
 												"type": "object"
 											}
 										},
@@ -5610,6 +5662,16 @@
 																	"example": "ea95132c15732412d22c1476fa83f27a",
 																	"readOnly": true,
 																	"type": "string"
+																},
+																"has_assets": {
+																	"description": "Whether a Worker contains assets.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"has_modules": {
+																	"description": "Whether a Worker contains modules.",
+																	"example": false,
+																	"type": "boolean"
 																},
 																"id": {
 																	"description": "The id of the script in the Workers system. Usually the script name.",
@@ -6055,6 +6117,16 @@
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"readOnly": true,
 													"type": "string"
+												},
+												"has_assets": {
+													"description": "Whether a Worker contains assets.",
+													"example": false,
+													"type": "boolean"
+												},
+												"has_modules": {
+													"description": "Whether a Worker contains modules.",
+													"example": false,
+													"type": "boolean"
 												},
 												"id": {
 													"description": "The id of the script in the Workers system. Usually the script name.",

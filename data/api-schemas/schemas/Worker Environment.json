@@ -274,10 +274,10 @@
 													"type": "boolean"
 												},
 												"observability": {
-													"description": "Observability settings for the Worker",
+													"description": "Observability settings for the Worker.",
 													"properties": {
 														"enabled": {
-															"description": "Whether observability is enabled for the Worker",
+															"description": "Whether observability is enabled for the Worker.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -535,10 +535,10 @@
 												"type": "boolean"
 											},
 											"observability": {
-												"description": "Observability settings for the Worker",
+												"description": "Observability settings for the Worker.",
 												"properties": {
 													"enabled": {
-														"description": "Whether observability is enabled for the Worker",
+														"description": "Whether observability is enabled for the Worker.",
 														"example": true,
 														"type": "boolean"
 													},
@@ -669,10 +669,10 @@
 													"type": "boolean"
 												},
 												"observability": {
-													"description": "Observability settings for the Worker",
+													"description": "Observability settings for the Worker.",
 													"properties": {
 														"enabled": {
-															"description": "Whether observability is enabled for the Worker",
+															"description": "Whether observability is enabled for the Worker.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -997,6 +997,16 @@
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"readOnly": true,
 													"type": "string"
+												},
+												"has_assets": {
+													"description": "Whether a Worker contains assets.",
+													"example": false,
+													"type": "boolean"
+												},
+												"has_modules": {
+													"description": "Whether a Worker contains modules.",
+													"example": false,
+													"type": "boolean"
 												},
 												"id": {
 													"description": "The id of the script in the Workers system. Usually the script name.",
