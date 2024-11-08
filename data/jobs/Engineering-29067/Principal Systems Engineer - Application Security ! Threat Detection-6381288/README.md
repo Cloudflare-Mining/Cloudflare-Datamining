@@ -5,48 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: London, UK<br><br>About the Role</strong></p>
-<p>The&nbsp; Deal Desk Manager will help accelerate revenue growth of our enterprise business by supporting our sales motion to create quality deals. As the deal desk leader for our sales team, you will be responsible for:</p>
+<p><strong>Available Locations: London</strong></p>
+<p><strong>About The Team</strong></p>
+<p>We are a group of around 100 Engineers responsible for Cloudflare’s fast-growing security product portfolio (WAF, Page Shield, Bot detection, API Shield and DDoS protection). Being part of Cloudflare means we work at internet scale and the challenges you’ll face here are unique to our position of being connected to more networks than any other provider worldwide. Working at great scale by default (to an extent not offered by most other employers in big tech) means pushing boundaries well beyond what commodity solutions like Nginx and Kafka provide out of the box. You’ll be working with custom components that have been created in an engineering-driven and pragmatic way - our code is well-tested and documented and uses modern languages like Go and Rust. This gives you confidence that you will spend your time having an impact and not firefighting!</p>
+<p>Application Security is the single biggest contributor to Cloudflare’s annual revenue and has ambitious goals for growth. This means you’d be joining a high-profile part of the business that can really accelerate and support your career. Cloudflare has a strong track record of growing in a thoughtful way and hires carefully so we’re confident that you will enjoy working with your colleagues here!</p>
+<p><strong>About You</strong></p>
+<p>You’re a high-performing Senior Staff or Principal Engineer in a technical leadership role in cyber security. You have a strong background in threat detection and have contributed to industry groups like OWASP and / or conferences like S&amp;P, CCS, USENIX Security or NDSS.&nbsp;</p>
+<p>The scope of this role involves working across multiple teams so you will be excited by both having impact through other Engineers and making deep individual contributions to our codebase - not just one or the other. This is very important!</p>
+<p>Cloudflare’s culture is busy and multifaceted, and people who succeed here are persistent, have a can-do attitude and a genuine willingness to assume good faith in others. This last quality in particular requires them to be empathetic and emotionally intelligent. This role is as senior as it gets for an Engineering IC and this means you will need to take a more than average share of responsibility for the culture that you create around you, so you’ll have experience here and will be willing to accept that responsibility.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Supporting the sales team in structuring and executing large/strategic deals, including bid management for enterprise deals.</li>
-	<li>Manage our enterprise deal approval process to ensure compliance while enabling unique contracting needs and requirements</li>
-	<li>Ensure sales motion reflects a healthy sales discovery process so that deals reflect the customer’s needs</li>
-	<li>Understand an evolving competitive landscape to help create competitive differentiation</li>
-	<li>Provide additional deal desk supporting to other enterprise businesses based on business need</li>
+	<li>Provide expert-level guidance across multiple engineering teams in detecting current and emerging security risks to web applications. Keep up to date with trends in this space and provide leadership to Product and Engineering colleagues.</li>
+	<li>Own an engineering roadmap and work with Engineering Managers and Engineering Directors in getting buy-in from teams and senior stakeholders.</li>
+	<li>Write code following bleeding edge industry best practices and provide leadership in following these. Review RFCs, technical specifications and PRs.</li>
+	<li>Mentor and grow other Engineers.</li>
 </ul>
-<p>If you’re excited by driving growth through global, cross-channel and cross-product initiatives and want to be part of a company that is helping to build a better internet, Cloudflare would love to talk to you.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Required Skills and Experience</strong></p>
 <ul>
-	<li>Collaborate with the sales team in structuring and executing large/strategic deals, liaison with all organizations involved in the agreement process (e.g., finance, legal, order management, product, services/support).</li>
-	<li>Audit and validate data and margins on adhoc deals submitted by the sales team.</li>
-	<li>Perform margin and pricing analysis in order to support business strategy.</li>
-	<li>Manage international pricing matrix, partner margin deals and large deal approvals.</li>
-	<li>Collaborate with internal teams to build, streamline and automate our deal desk processes.</li>
-	<li>Perform monthly and ad-hoc analysis to identify opportunities to improve the business KPIs through continuous improvement&nbsp;</li>
-	<li>Work with teams to develop pricing tools (e.g., TCO calculators, discounting guidelines) and integrate them into Salesforce</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Must be comfortable in a fast-paced sales environment</li>
-	<li>Understand the buying process and negotiating dynamic for enterprise entities</li>
-	<li>Experience working the deal desk/contract management team:</li>
-	<ul>
-		<li>Develop an in-depth understanding of the pricing models</li>
-		<li>Provide support in conjunction with contracts, legal &amp; finance teams</li>
-		<li>Ability to analyze &amp; recommend the best course of action for complex pricing &amp; licensing situations.</li>
-	</ul>
-	<li>Knowledge of Cloud/SaaS services, software and solutions is highly recommended</li>
-	<li>Expert knowledge of Microsoft Excel, SQL&nbsp; and prior experience with modeling and analysis</li>
-	<li>Enjoys engaging with complex, cross-functional teams and individuals</li>
-	<li>Experience with&nbsp;</li>
-	<ul>
-		<li>3+ years of&nbsp; experience&nbsp;</li>
-		<li>3+ years of deal desk experience</li>
-	</ul>
-	<li>Possess excellent written and oral communication skills</li>
-	<li>Proactive, creative, and results oriented individual</li>
-	<li>Experience selling software is considered a bonus</li>
-	<li>Selling software is considered a bonus</li>
+	<li>Extensive experience of cyber security and in particular detecting emerging threats (e.g. OWASP Top Ten).</li>
+	<li>Experience with threat detection based on Machine Learning.</li>
+	<li>Very skilled hands-on writing lean and effective code according to modern best practices. The specific languages and tech stack you’re used to aren’t important as long as you’re open to learning Python, Rust and Clickhouse to an expert level, plus other languages and technologies as required.</li>
+	<li>Skilled deploying and maintaining live software-based services at great scale (e.g. 10m+ requests / second, 100m+ users).</li>
+	<li>Experience leading engineering teams, e.g. as a Tech Lead or in a Systems Architect role.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
