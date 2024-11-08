@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, New York, San Francisco, and Washington DC.</strong></h3>
+<h3><strong>Available Locations: Austin, New York, and Washington DC.</strong></h3>
 <p><strong>About the Department</strong></p>
 <p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application and Product Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application &amp; Product Security team is responsible for keeping our products, and platforms secure.</p>
 <p><strong>What you’ll do</strong></p>
