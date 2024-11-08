@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "69a4d1e3-5143-5283-a410-e1fa3867446d")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "a5d0acaf-7b4c-5e30-b18b-f4a7427e39cf")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -911,10 +911,10 @@
 					t.g.build = fn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "a6c617b98e3973aaeccbead8c2d4d420e92b1bea",
-						dashVersion: "28790011",
+						commit: "5057b96562302832bcad7ddd79ede00fbccb8888",
+						dashVersion: "28800262",
 						env: "production",
-						builtAt: 1731063101185,
+						builtAt: 1731081861843,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -11488,6 +11488,7 @@
 						functionsAnalyticsEngine: "https://developers.cloudflare.com/pages/platform/functions/bindings/#analytics-engine",
 						functionsLimits: "https://developers.cloudflare.com/workers/platform/limits/#worker-limits",
 						functionsGABilling: "https://developers.cloudflare.com/pages/platform/functions/pricing/",
+						workersObservabilityLimits: "https://developers.cloudflare.com/workers/observability/logs/workers-logs/#limits",
 						headers: "https://developers.cloudflare.com/pages/platform/headers",
 						redirects: "https://developers.cloudflare.com/pages/platform/redirects",
 						branchConfig: "https://developers.cloudflare.com/pages/platform/branch-build-controls/#branch-deployment-controls",
@@ -15498,4 +15499,4 @@
 	}
 ]);
 
-//# debugId=69a4d1e3-5143-5283-a410-e1fa3867446d
+//# debugId=a5d0acaf-7b4c-5e30-b18b-f4a7427e39cf
