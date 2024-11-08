@@ -34,10 +34,7 @@
 	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks</li>
 	<li>Prior experience in leading a highly distributed team that is fully remote</li>
 	<li>You have a working knowledge of query language and data analysis tools such as BigQuery, Tableau, etc.</li>
-	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks</li>
-	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor</li>
 	<li>Excellent verbal and written communication skills; Excellent storytelling and presentation skills</li>
-	<li>Self-motivated, results oriented individual with the ability to handle numerous projects concurrently</li>
 	<li>Collaborative, diplomatic, and flexible, able to work effectively cross functionally</li>
 	<li>Technologically savvy, curious, up to date with digital trends and applications</li>
 </ul>
