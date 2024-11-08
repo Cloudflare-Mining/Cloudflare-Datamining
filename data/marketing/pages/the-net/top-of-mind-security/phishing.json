@@ -404,7 +404,7 @@
 						"contentfulId": "jgSYVECxoFdZIpifq3PSP",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -573,6 +573,37 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-4",
 											"data": {
 												"target": null,
@@ -634,6 +665,37 @@
 														"uri": null
 													},
 													"value": "By reconstructing the target database, we found that phishing targets included not only current government officials but also former officials and political associates. Targeted individuals continued to receive phishing emails through their personal email addresses long after they changed jobs. Some individuals had been in the database nearly 10 years by the time of the 2016 attack, and continue to be targeted today.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -864,6 +926,37 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-4",
 											"data": {
 												"target": null,
@@ -935,6 +1028,37 @@
 														"uri": null
 													},
 													"value": " last year using MFA with hardware security keys as part of our multi-layered Zero Trust approach. The attack began when a number of employees received a text message that led them to an authentic-looking Okta login page, which was designed for credential harvesting. The attacker attempted to log in to Cloudflare systems using those stolen credentials along with time-based one-time password (TOTP) codes—the attack required that employees participate in the authentication process. Unfortunately for the attacker, Cloudflare had previously transitioned from TOTP to hard keys.\n\nIf the hard keys hadn't been in place, other security measures would have prevented the attack from reaching its objective but, fortunately, the threat didn't get that far. Our Security Incident Response team quickly blocked access to the domain used for the fake login page and then killed active, compromised sessions using our Zero Trust Network Access service. If the attacker had somehow reached the point of installing malicious software, the endpoint security we use would have stopped the installation. A multi-layered strategy like this one helps to ensure that even if one aspect of an attack is successful, the attack itself won't cause substantial damage.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -1149,6 +1273,37 @@
 															"type": "bold"
 														}
 													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
 													"content": null
 												}
 											]
