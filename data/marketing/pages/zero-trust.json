@@ -882,6 +882,18 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
+												"contentfulId": "6yajw8NLlJvJcyvERx5TBM",
+												"locale": "en-US",
+												"title": "Whitepapers",
+												"description": "Explore our solution whitepapers",
+												"url": "https://www.cloudflare.com/resource-hub/?resourcetype=Whitepaper ",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
 												"contentfulId": "6HSXJwin9ySRdTWNYxDVdr",
 												"locale": "en-US",
 												"title": "Ebooks",
@@ -4359,6 +4371,45 @@
 						]
 					},
 					{
+						"contentfulId": "3mRdV2DHq447niUSmbfeuF",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": "Learn More",
+						"description": "The Buyer's Guide to SASE Use Cases",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7I2GKH2uHw5hsr7FKPlLcI",
+							"elementName": "CTA - /the-net/zero-trust-organization/",
+							"standardText": null,
+							"text": "Get the guide",
+							"url": "/lp/the-buyers-guide-to-sase-use-cases/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
 						"contentTypeId": "bladeCardCarousel",
 						"contentfulId": "xOjJCYwnWYEA261ArOXUy",
 						"title": "Top use cases",
@@ -5222,7 +5273,21 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"image": null
+								"image": {
+									"id": "199a0c46-2ff3-57ee-9cf7-06ffd387d947",
+									"altText": "Explore more ebooks in Cloudflare's Resource Hub",
+									"title": "Explore more ebooks in Cloudflare's Resource Hub",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							},
 							{
 								"contentTypeId": "elementResourceCard",
@@ -5274,7 +5339,21 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"image": null
+								"image": {
+									"id": "285e9c62-44a2-564a-8732-458fa4164905",
+									"altText": "Reference Architecture Center",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oOJP0ysU1Riftn71CwDhB/e1790bb38af66a19f4a86632782d6297/BDES-5542_ArchitectureHub_HeroImage_smaller.svg"
+										},
+										"description": "Reference Architecture Center"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							},
 							{
 								"contentTypeId": "elementResourceCard",
