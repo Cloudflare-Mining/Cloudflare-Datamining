@@ -455,7 +455,7 @@
 		"enabled": true
 	},
 	"dx-account-zone-selector-table-view-v2-security": {
-		"enabled": false
+		"enabled": true
 	},
 	"dx-add-site-copy": {
 		"enabled": true,
@@ -509,12 +509,12 @@
 			"experiment"
 		]
 	},
-	"dx-login-social-auth-updates": {
+	"dx-login-social-authentication-update": {
 		"enabled": false,
 		"branches": [
 			"baseline",
-			"experiment-1",
-			"experiment-2"
+			"social-auth-upfront",
+			"blue-google"
 		]
 	},
 	"dx-message-inbox": {
@@ -592,6 +592,15 @@
 			"baseline",
 			"content-panel",
 			"illustration"
+		]
+	},
+	"dx-signup-social-authentication-updates": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"email-upfront",
+			"hidden-email-blue-google",
+			"hidden-email"
 		]
 	},
 	"dx-transfer-account-domain-sidebar": {
