@@ -5,35 +5,49 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p></p>
-<h4><strong>Job Locations: Remote, Mexico City, MX</strong></h4>
-<p></p>
-<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
-<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
-<h4><strong>About the Department</strong></h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>What You’ll Do</strong></h4>
-<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Zero Trust, Workers, Speed, Images, Stream, CDN and others.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>The Order-to-Cash Accounting A/R Staff processes all facets of Cloudflare’s worldwide Billing and Accounts Receivable (A/R) functions. This role facilitates prompt, correct, and complete billing, collection, and cash application of Cloudflare receivables to support preparation of accurate financial statements, compliance with customer contracts, and optimization of cash flow. Additionally, this position participates in certain regulatory compliance activities including sales tax assessment and reporting, and unclaimed property remittance.</p>
+<p><strong>What You'll Do</strong></p>
 <ul>
-	<li>You have previous experience working as part of a team in a customer-facing role</li>
-	<li>You have experience solving DNS and other networking-related problems</li>
-	<li>You understand how the Internet works</li>
-	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
-	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
-	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
-	<li>You are comfortable communicating through various support channels and always put the customer first</li>
-	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
-	<li>Flexibility to work holidays and rotational weekend shifts</li>
+	<li>Direct preparation and issuance of customer invoices to ensure prompt and accurate billing in compliance with contract terms.</li>
+	<li>Oversee response to billing and A/R inquiries in a manner that cultivates a culture of exemplary customer service both internal and external.</li>
+	<li>Support Order-to-Cash Accounting team by running credit checks and monitoring credit worthiness of new and existing customers.</li>
+	<li>Participate in month-end close processes associated with Accounts Receivable to support timely and accurate preparation and delivery of financial statements.</li>
+	<li>Facilitate cash receipt and application processes to ensure prompt and accurate deposit of all funds and application to customer accounts.</li>
+	<li>Execute process for managing and refunding customer credit balances in a timely manner, partnering with Accounts Payable to escalate or resolve any A/R related unclaimed property issues.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
-	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
-	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
-	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
-	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+	<li>Oversee maintenance of customer account information within Billing System(s) to ensure up-to-date address, terms, tax, and contact information.</li>
+	<li>Collaborate with cross-functional teams on various systems projects including selection, implementation, and upgrades to A/R and Billing systems.</li>
+</ul>
+<ul>
+	<li>Execute policies and procedures for Billing and A/R, driving toward implementation of best practices and business process improvements.</li>
+	<li>Support overall organization’s SOX compliance requirements through adherence to key controls and timely completion of reporting.</li>
+</ul>
+<p><strong>Experience</strong></p>
+<ul>
+	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred.</li>
+	<li>2+ years of experience in Billing and A/R functions in a high volume environment.</li>
+	<li>Exposure to international operations preferred.</li>
+	<li>Experience participating in system evaluation and implementation preferred.</li>
+	<li>Demonstrated effective written, verbal and interpersonal communication skills at all levels of the organization.</li>
+	<li>Creative problem solving skills coupled with good judgment.</li>
+	<li>Effective communication skills, verbal and written, in order to research, prepare and present information to Management, as well as effective communication skills with co-workers.</li>
+	<li>Critical thinking and strong analytical skills.</li>
+	<li>Ability to exercise sound judgment, provide leadership, and take initiative under minimal supervision.</li>
+	<li>Intermediate Microsoft office skills.</li>
+	<li>Comfort in a fast paced work environment, with multiple concurrent projects and priorities.</li>
+	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the ability to multitask on varying projects and initiatives.</li>
+	<li>Very high attention to detail; organized and thorough with a desire for continuous improvement.</li>
+	<li>Stellar work ethic.</li>
+	<li>CPA/CA a plus.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $98,000 - $120,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $111,000 - $135,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $116,000 - $142,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
