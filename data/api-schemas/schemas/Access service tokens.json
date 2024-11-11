@@ -276,6 +276,22 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "The name of the service token.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search for service tokens by other listed query parameters.",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

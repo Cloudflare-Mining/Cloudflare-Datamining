@@ -1908,6 +1908,12 @@
 															{
 																"properties": {
 																	"config": {
+																		"properties": {
+																			"redirect_url": {
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"type": {
