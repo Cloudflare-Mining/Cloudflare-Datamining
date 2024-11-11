@@ -17,50 +17,172 @@
 		</a>
 	</div>
 	<p>When we announced <a href="https://blog.cloudflare.com/cloudflare-one">our vision for Cloudflare One</a>, we emphasized the importance of allowing customers to connect to our network however they want — with hardware devices they’ve already deployed, with any carrier they already have in place, with existing technology standards like IPsec tunnels or more Zero Trust approaches like our lightweight <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">application connector</a>. In hundreds of customer conversations since that launch, we’ve heard you reiterate the importance of this flexibility. You need a platform that meets you where you are today <i>and</i> gives you a smooth path to your future network architecture by acting as a global router with a single control plane for any way you want to connect and manage your network traffic.</p>
-	<p>We’re excited to share that over the past few months, the last pieces of this puzzle have fallen into place, and customers can now use any Cloudflare One on-ramp and off-ramp together to route traffic seamlessly between devices, offices, data centers, cloud properties, and self-hosted or SaaS applications. This includes (new since our last announcement, and rounding out the compatibility matrix below) the ability to route traffic from networks connected with a GRE tunnel, IPsec tunnel, or CNI to applications connected with <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">Cloudflare Tunnel</a>.</p><!--kg-card-begin: html-->
-	<center><b>Fully composable Cloudflare One on-ramps</b></center><!--kg-card-end: html-->
-	<p>From ↓ To →</p>
-	<p>BYOIP</p>
-	<p>WARP client</p>
-	<p>CNI</p>
-	<p>GRE tunnel</p>
-	<p>IPSec tunnel</p>
-	<p>Cloudflare Tunnel</p>
-	<p>BYOIP</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>WARP client</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>CNI</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>GRE tunnel</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>IPSec tunnel</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
-	<p>✅</p>
+	<p>We’re excited to share that over the past few months, the last pieces of this puzzle have fallen into place, and customers can now use any Cloudflare One on-ramp and off-ramp together to route traffic seamlessly between devices, offices, data centers, cloud properties, and self-hosted or SaaS applications. This includes (new since our last announcement, and rounding out the compatibility matrix below) the ability to route traffic from networks connected with a GRE tunnel, IPsec tunnel, or CNI to applications connected with <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">Cloudflare Tunnel</a>.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Fully composable Cloudflare One on-ramps</b></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>From ↓ To →</b></p>
+				</td>
+				<td>
+					<p><b>BYOIP</b></p>
+				</td>
+				<td>
+					<p><b>WARP client</b></p>
+				</td>
+				<td>
+					<p><b>CNI</b></p>
+				</td>
+				<td>
+					<p><b>GRE tunnel</b></p>
+				</td>
+				<td>
+					<p><b>IPSec tunnel</b></p>
+				</td>
+				<td>
+					<p><b>Cloudflare Tunnel</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>BYOIP</b></p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>WARP client</b></p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>CNI</b></p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>GRE tunnel</b></p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>IPSec tunnel</b></p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+				<td>
+					<p>✅</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>This interoperability is key to organizations’ strategy for migrating from legacy network architecture to Zero Trust. You can start by improving performance and enhancing security using technologies that look similar to what you’re used to today, and incrementally upgrade to Zero Trust at a pace that makes sense for your organization.</p>
 	<div class="flex anchor relative">
 		<h3 id="expanded-options-and-easier-management-of-anycast-ipsec-tunnels">Expanded options and easier management of Anycast IPsec tunnels</h3>
