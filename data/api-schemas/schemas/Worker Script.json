@@ -4108,6 +4108,587 @@
 			]
 		}
 	},
+	"POST /accounts/${account_id}/workers/assets/upload": {
+		"description": "Upload assets ahead of creating a Worker version.",
+		"operationId": "worker-assets-upload",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "base64",
+				"required": true,
+				"schema": {
+					"description": "Whether the file contents are base64-encoded. Must be `true`.",
+					"enum": [
+						true
+					],
+					"type": "boolean"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"encoding": {
+						"<any file hash>": {
+							"contentType": "text/html, application/octet-stream, etc."
+						}
+					},
+					"schema": {
+						"properties": {
+							"<any file hash>": {
+								"description": "Base-64 encoded contents of the file. The content type of the file should be included to ensure a valid \"Content-Type\" header is included in asset responses.",
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"jwt": {
+													"description": "A \"completion\" JWT which can be redeemed when creating a Worker version.",
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Assets response"
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"additionalProperties": false,
+											"maxProperties": 0
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Assets response"
+			}
+		},
+		"security": [
+			{
+				"assets_jwt": []
+			}
+		],
+		"summary": "Upload Assets",
+		"tags": [
+			"Worker Script"
+		]
+	},
+	"POST /accounts/${account_id}/workers/scripts/${script_name}/assets-upload-session": {
+		"description": "Start uploading a collection of assets for use in a Worker version.",
+		"operationId": "worker-script-update-create-assets-upload-session",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"manifest": {
+								"additionalProperties": {
+									"properties": {
+										"hash": {
+											"description": "The hash of the file.",
+											"type": "string"
+										},
+										"size": {
+											"description": "The size of the file in bytes.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"description": "A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key.",
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"buckets": {
+													"description": "The requests to make to upload assets.",
+													"items": {
+														"description": "The set of assets to include in each request while uploading.",
+														"items": {
+															"description": "The file hash to include in this bucket.",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"type": "array"
+												},
+												"jwt": {
+													"description": "A JWT to use as authentication for uploading assets.",
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Assets Upload Session response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"buckets": {
+															"description": "The requests to make to upload assets.",
+															"items": {
+																"description": "The set of assets to include in each request while uploading.",
+																"items": {
+																	"description": "The file hash to include in this bucket.",
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"type": "array"
+														},
+														"jwt": {
+															"description": "A JWT to use as authentication for uploading assets.",
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Assets Upload Session response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Assets Upload Session",
+		"tags": [
+			"Worker Script"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.create"
+			]
+		}
+	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}": {
 		"description": "Upload a worker module. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
 		"operationId": "worker-script-upload-worker-module",
