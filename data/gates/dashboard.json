@@ -509,6 +509,14 @@
 			"experiment"
 		]
 	},
+	"dx-login-social-auth-updates": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment-1",
+			"experiment-2"
+		]
+	},
 	"dx-message-inbox": {
 		"enabled": false
 	},
@@ -584,6 +592,15 @@
 			"baseline",
 			"content-panel",
 			"illustration"
+		]
+	},
+	"dx-signup-social-auth-updates": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment-1",
+			"experiment-2",
+			"experiment-3"
 		]
 	},
 	"dx-transfer-account-domain-sidebar": {
