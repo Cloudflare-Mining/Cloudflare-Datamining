@@ -994,6 +994,10 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
+			"cds": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
@@ -1034,6 +1038,10 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"cds": {
+				"read": true,
+				"edit": true
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -1123,6 +1131,14 @@
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
 			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"cds_compute_account": {
+				"read": true,
+				"edit": true
+			},
+			"cds": {
 				"read": true,
 				"edit": true
 			},
@@ -1746,6 +1762,14 @@
 				"read": true,
 				"edit": false
 			},
+			"cds_compute_account": {
+				"read": true,
+				"edit": false
+			},
+			"cds": {
+				"read": true,
+				"edit": false
+			},
 			"ces_submissions": {
 				"read": true,
 				"edit": false
@@ -1922,6 +1946,14 @@
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
 			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"cds_compute_account": {
+				"read": true,
+				"edit": true
+			},
+			"cds": {
 				"read": true,
 				"edit": true
 			},
