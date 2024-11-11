@@ -62,7 +62,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-12-11T05:26:24.364Z",
-					"updatedAt": "2024-10-08T11:40:04.994Z"
+					"updatedAt": "2024-11-11T20:01:57.202Z"
 				},
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
@@ -2589,7 +2589,7 @@
 				"template": {
 					"contentTypeId": "templateBladeList",
 					"contentfulId": "WApgu7YOBxAcLBxsJnoGm",
-					"name": "Homepage - Lightning Strike version - 10/21/2024",
+					"name": "Homepage - Lightning Strike version - 11/11/2024",
 					"relatedBlades": [
 						{
 							"contentTypeId": "bladeFullWidthHero",
@@ -2811,6 +2811,39 @@
 								}
 							},
 							"cards": [
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "7lr7OJ6xftnzy8LKNlKM1T",
+									"heading": "Insight",
+									"description": "Accenture and Cloudflare on developing a blueprint for capitalizing on AI and quantum computing",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "1NEV2QOG5y988k1Od89Kbo",
+										"elementName": "Accenture and Cloudflare link",
+										"standardText": null,
+										"text": "Read more",
+										"url": "/the-net/modern-security-innovations-ai/",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "9312c210-e09e-5616-8901-59215e817f24",
+										"altText": null,
+										"title": null,
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZP0AQ92YBysyPFLsuoKOC/84f7aa80a36755aa94cb56c5e0ae3a55/The-net-Thumbnail_106x182.svg"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
 								{
 									"contentTypeId": "elementResourceCard",
 									"contentfulId": "7mdRGvvaV8WnggLtfuNW5W",
@@ -3055,39 +3088,6 @@
 										"standardText": null,
 										"text": "Read more",
 										"url": "/press-releases/2024/new-cloudflare-report-shows-organizations-struggle-with-outdated-security",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
-									"image": {
-										"id": "6c861e08-c590-54b4-8ffa-fc5eb865a8ca",
-										"altText": "2024 API Security & Management Report press release image",
-										"title": null,
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MwUTWYt0psg5xd55Vkvfo/7822687bbbf2b0738c770e183b7b737a/Press_Release_99x180.svg"
-											},
-											"description": "Illustration of a press release"
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									}
-								},
-								{
-									"contentTypeId": "elementResourceCard",
-									"contentfulId": "3hBKTwj2GTy2nB5JkmQwpB",
-									"heading": "Press",
-									"description": "Cloudflare acquires BastionZero; adds Zero Trust infrastructure access for SASE platform",
-									"category": "None",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "4kp0ClnDS6gc3YDwf00hcM",
-										"elementName": "Bedrock announcement link",
-										"standardText": null,
-										"text": "Read more",
-										"url": "https://www.cloudflare.com/press-releases/2024/cloudflare-acquires-bastionzero-to-add-zero-trust-infrastructure-access/",
 										"elementModal": null,
 										"openInNewTab": false,
 										"locale": "en-US"
@@ -7322,6 +7322,14 @@
 						"url": "/plans/",
 						"title": "Compare plans",
 						"trackingLabel": "Compare plans",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "N2F4KP3flAEB6G73dllnX",
+						"url": "/about-your-website/",
+						"title": "Get a recommendation",
+						"trackingLabel": "get-a-recommendation",
 						"hideOnChinaSite": null
 					},
 					{
