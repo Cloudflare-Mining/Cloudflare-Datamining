@@ -687,6 +687,16 @@
 			"experiment"
 		]
 	},
+	"helpful-headlines-adding-zones": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"helpful",
+			"speed-lead",
+			"question",
+			"security-lead"
+		]
+	},
 	"hide-quick-start-guide": {
 		"enabled": true,
 		"branches": [
@@ -1668,6 +1678,13 @@
 	},
 	"zone-overview-adaptive-node": {
 		"enabled": true
+	},
+	"zone-switcher-redesign-v2": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"zone-versioning-comparison-feature": {
 		"enabled": true
