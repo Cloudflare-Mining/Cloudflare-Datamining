@@ -2218,6 +2218,9 @@
 		"edgeDnsResponseTimeMsP50": "50th percentile DNS Response Time (milliseconds)",
 		"edgeDnsResponseTimeMsP95": "95th percentile DNS Response Time (milliseconds)",
 		"edgeDnsResponseTimeMsP99": "99th percentile DNS Response Time (milliseconds)",
+		"edgeResponseBytesP50": "50th percentile Bytes returned to client",
+		"edgeResponseBytesP95": "95th percentile Bytes returned to client",
+		"edgeResponseBytesP99": "99th percentile Bytes returned to client",
 		"edgeTimeToFirstByteMsP50": "50th percentile Time To First Byte (milliseconds)",
 		"edgeTimeToFirstByteMsP95": "95th percentile Time To First Byte (milliseconds)",
 		"edgeTimeToFirstByteMsP99": "99th percentile Time To First Byte (milliseconds)",
@@ -3128,6 +3131,7 @@
 		"datetime": "The date and time the event was recorded",
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"mconnConnectorID": "Customer connector identifier",
 		"mconnInterfaceName": "Name of connector interface",
 		"mconnInterfaceType": "Interface type LAN, WAN or IPSEC",
 		"mconnSiteID": "Customer site identifier"
@@ -3347,6 +3351,55 @@
 		"responseBodySize": "Sum of Response Body Sizes",
 		"subrequests": "Sum of Subrequests",
 		"wallTime": "Sum of Wall Time"
+	},
+	"AccountPipelinesDeliveryAdaptiveGroups": {
+		"__description": "Beta. Data delivered via Workers Pipelines",
+		"count": "Number of delivery events",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountPipelinesDeliveryAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery operation timestamp, truncated to start of a day",
+		"datetime": "Delivery operation timestamp",
+		"datetimeHour": "Delivery operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Delivery operation timestamp, truncated to start of an minute",
+		"pipelineId": "The pipeline ID"
+	},
+	"AccountPipelinesDeliveryAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesDeliveryAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPipelinesDeliveryAdaptiveGroupsSum": {
+		"__description": "",
+		"deliveredBytes": "Total amount of bytes delivered"
+	},
+	"AccountPipelinesIngestionAdaptiveGroups": {
+		"__description": "Beta. Data ingested via Workers Pipelines",
+		"count": "Number of ingestion events",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountPipelinesIngestionAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Ingestion operation timestamp, truncated to start of a day",
+		"datetime": "Ingestion operation timestamp",
+		"datetimeHour": "Ingestion operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Ingestion operation timestamp, truncated to start of an minute",
+		"pipelineId": "The pipeline ID"
+	},
+	"AccountPipelinesIngestionAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesIngestionAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPipelinesIngestionAdaptiveGroupsSum": {
+		"__description": "",
+		"ingestedBytes": "Total amount of bytes ingested",
+		"ingestedRecords": "Total number of records ingested"
 	},
 	"AccountQueueBacklogAdaptiveGroups": {
 		"__description": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
@@ -3878,6 +3931,8 @@
 		"ohttpMetricsAdaptive": "",
 		"ohttpMetricsAdaptiveGroups": "",
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
+		"pipelinesDeliveryAdaptiveGroups": "",
+		"pipelinesIngestionAdaptiveGroups": "",
 		"queueBacklogAdaptiveGroups": "",
 		"queueConsumerMetricsAdaptiveGroups": "",
 		"queueDelayedBacklogAdaptiveGroups": "",
@@ -6326,6 +6381,9 @@
 		"edgeDnsResponseTimeMsP50": "50th percentile DNS Response Time (milliseconds)",
 		"edgeDnsResponseTimeMsP95": "95th percentile DNS Response Time (milliseconds)",
 		"edgeDnsResponseTimeMsP99": "99th percentile DNS Response Time (milliseconds)",
+		"edgeResponseBytesP50": "50th percentile Bytes returned to client",
+		"edgeResponseBytesP95": "95th percentile Bytes returned to client",
+		"edgeResponseBytesP99": "99th percentile Bytes returned to client",
 		"edgeTimeToFirstByteMsP50": "50th percentile Time To First Byte (milliseconds)",
 		"edgeTimeToFirstByteMsP95": "95th percentile Time To First Byte (milliseconds)",
 		"edgeTimeToFirstByteMsP99": "99th percentile Time To First Byte (milliseconds)",
@@ -6691,6 +6749,7 @@
 		"zarazAnalyticsTrackTrafficSourcesAdaptiveGroups": "",
 		"zarazAnalyticsTriggersAdaptiveGroups": "",
 		"zarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": "",
+		"zarazFetchAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": ""
 	},
@@ -7189,6 +7248,27 @@
 		"clientIdCount": "Minimum number of distinct client IDs",
 		"sessionIdCount": "Minimum number of distinct session IDs"
 	},
+	"ZoneZarazFetchAdaptiveGroups": {
+		"__description": "Aggregated Zaraz External Fetch Logs",
+		"count": "Number of processed external fetch requests",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneZarazFetchAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Date when fetch was called",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"status": "Fetch HTTP status code",
+		"url": "Fetch URL"
+	},
+	"ZoneZarazFetchAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazFetchAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
 		"count": "Number of processed Zaraz Track requests",
@@ -7293,6 +7373,8 @@
 		"ohttpMetricsAdaptive": "oHTTP request metrics with adaptive sampling",
 		"ohttpMetricsAdaptiveGroups": "Aggregated oHTTP request metrics with adaptive sampling",
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
+		"pipelinesDeliveryAdaptiveGroups": "Beta. Data delivered via Workers Pipelines",
+		"pipelinesIngestionAdaptiveGroups": "Beta. Data ingested via Workers Pipelines",
 		"queueBacklogAdaptiveGroups": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
 		"queueDelayedBacklogAdaptiveGroups": "Beta. Queue delayed backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
@@ -7434,6 +7516,7 @@
 		"zarazAnalyticsTrackTrafficSourcesAdaptiveGroups": "Zaraz Analytics Track Traffic Sources",
 		"zarazAnalyticsTriggersAdaptiveGroups": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
 		"zarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": "Zaraz Analytics Triggers Traffic Sources",
+		"zarazFetchAdaptiveGroups": "Aggregated Zaraz External Fetch Logs",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zoneTag": ""
