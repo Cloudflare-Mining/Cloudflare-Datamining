@@ -453,7 +453,8 @@
 																					},
 																					"default_nameservers": {
 																						"default": "cloudflare.standard",
-																						"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
+																						"deprecated": true,
+																						"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																						"enum": [
 																							"cloudflare.standard",
 																							"custom.account",
@@ -469,7 +470,7 @@
 																					"use_account_custom_ns_by_default": {
 																						"default": false,
 																						"deprecated": true,
-																						"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
+																						"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																						"type": "boolean"
 																					}
 																				},
@@ -724,7 +725,7 @@
 																"readOnly": true
 															},
 															"roles": {
-																"description": "List of role names for the user at the account.",
+																"description": "List of role names the membership has for this account.",
 																"items": {
 																	"example": "Account Administrator",
 																	"maxLength": 120,
@@ -893,7 +894,8 @@
 																					},
 																					"default_nameservers": {
 																						"default": "cloudflare.standard",
-																						"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
+																						"deprecated": true,
+																						"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																						"enum": [
 																							"cloudflare.standard",
 																							"custom.account",
@@ -909,7 +911,7 @@
 																					"use_account_custom_ns_by_default": {
 																						"default": false,
 																						"deprecated": true,
-																						"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
+																						"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																						"type": "boolean"
 																					}
 																				},
@@ -1325,7 +1327,7 @@
 																"type": "array"
 															},
 															"roles": {
-																"description": "List of role names for the user at the account.",
+																"description": "List of role names the membership has for this account.",
 																"items": {
 																	"example": "Account Administrator",
 																	"maxLength": 120,
@@ -1593,7 +1595,8 @@
 																		},
 																		"default_nameservers": {
 																			"default": "cloudflare.standard",
-																			"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
+																			"deprecated": true,
+																			"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																			"enum": [
 																				"cloudflare.standard",
 																				"custom.account",
@@ -1609,7 +1612,7 @@
 																		"use_account_custom_ns_by_default": {
 																			"default": false,
 																			"deprecated": true,
-																			"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
+																			"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																			"type": "boolean"
 																		}
 																	},
@@ -2025,7 +2028,7 @@
 													"type": "array"
 												},
 												"roles": {
-													"description": "List of role names for the user at the account.",
+													"description": "List of role names the membership has for this account.",
 													"items": {
 														"example": "Account Administrator",
 														"maxLength": 120,
@@ -2311,7 +2314,8 @@
 																		},
 																		"default_nameservers": {
 																			"default": "cloudflare.standard",
-																			"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
+																			"deprecated": true,
+																			"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																			"enum": [
 																				"cloudflare.standard",
 																				"custom.account",
@@ -2327,7 +2331,7 @@
 																		"use_account_custom_ns_by_default": {
 																			"default": false,
 																			"deprecated": true,
-																			"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
+																			"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).",
 																			"type": "boolean"
 																		}
 																	},
@@ -2743,7 +2747,7 @@
 													"type": "array"
 												},
 												"roles": {
-													"description": "List of role names for the user at the account.",
+													"description": "List of role names the membership has for this account.",
 													"items": {
 														"example": "Account Administrator",
 														"maxLength": 120,
