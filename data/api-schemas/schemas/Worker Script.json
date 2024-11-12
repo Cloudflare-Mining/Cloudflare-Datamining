@@ -3956,159 +3956,7 @@
 			]
 		}
 	},
-	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
-		"description": "Enable or disable the Worker on the workers.dev subdomain.",
-		"operationId": "worker-script-post-subdomain",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "script_name",
-				"required": true,
-				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
-					"example": "this-is_my_script-01",
-					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"enabled": {
-								"description": "Whether the Worker should be available on the workers.dev subdomain.",
-								"example": true,
-								"type": "boolean"
-							}
-						},
-						"type": "object"
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"enabled": {
-									"description": "Whether the Worker is available on the workers.dev subdomain.",
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"type": "object"
-						}
-					}
-				},
-				"description": "Post subdomain response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
-								},
-								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										true
-									],
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Post subdomain response failure"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Post Worker subdomain",
-		"tags": [
-			"Worker Script"
-		],
-		"x-api-token-group": [
-			"Workers Scripts Write"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.script.create"
-			]
-		}
-	},
-	"POST /accounts/${account_id}/workers/assets/upload": {
+	"POST /accounts/{account_id}/workers/assets/upload": {
 		"description": "Upload assets ahead of creating a Worker version.",
 		"operationId": "worker-assets-upload",
 		"parameters": [
@@ -4334,7 +4182,159 @@
 			"Worker Script"
 		]
 	},
-	"POST /accounts/${account_id}/workers/scripts/${script_name}/assets-upload-session": {
+	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
+		"description": "Enable or disable the Worker on the workers.dev subdomain.",
+		"operationId": "worker-script-post-subdomain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"description": "Whether the Worker should be available on the workers.dev subdomain.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"enabled": {
+									"description": "Whether the Worker is available on the workers.dev subdomain.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Post subdomain response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Post subdomain response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Post Worker subdomain",
+		"tags": [
+			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.create"
+			]
+		}
+	},
+	"POST /accounts/{account_id}/workers/scripts/${script_name}/assets-upload-session": {
 		"description": "Start uploading a collection of assets for use in a Worker version.",
 		"operationId": "worker-script-update-create-assets-upload-session",
 		"parameters": [
