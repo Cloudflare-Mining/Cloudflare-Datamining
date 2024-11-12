@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 74,
+	"version": "2024.11.150.0",
+	"short_version": "",
+	"size": 126013440,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "7984a2ac82c3d2a65844c4044c8b382e",
+	"fingerprint": "3d5bcb8398f2e24e16175a23e538dfc8",
+	"uploaded_at": "2024-11-12T00:55:57.293Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains an exciting new feature along with reliability improvements and general bug fixes. Please take time over the next few weeks to play with the new functionality and let us know what you think on both the community forum and through your account teams.\r\n\r\n## Changes and improvements\r\n- Fixed an issue where SSH sessions and other application connections over TCP or UDP could be dropped when using MASQUE and the device's primary network interface changed.\r\n- Fixed an issue to ensure the managed certificate is installed in the trust store if not already there.\r\n- Improved reliability of connection establishment logic under degraded network conditions.\r\n- Improved captive portal detection behavior by forcing captive portal checks outside the tunnel.\r\n- Allow the ability to configure tunnel protocol for consumer registrations.\r\n- Fixed an issue with the WARP client becoming unresponsive during startup.\r\n- Extended diagnostics collection time in warp-diag to ensure logs are captured reliably.\r\n- Fixed an issue that was preventing proper operation of DNS-over-TLS (DoT) for consumer users.\r\n\r\n## Known issues\r\n- DNS resolution may be broken when the following conditions are all true:\r\n  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.\r\n  - A custom DNS server address is configured on the primary network adapter.\r\n  - The custom DNS server address on the primary network adapter is changed while WARP is connected.\r\n\r\n  To work around this issue, please reconnect the WARP client by toggling off and back on.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"74f956745ce0fd41fe316ab96d644c82d4dd7d2a9f49c35d6e60fa4c3f303787"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
