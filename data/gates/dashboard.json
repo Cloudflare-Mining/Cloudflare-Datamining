@@ -954,7 +954,7 @@
 		"enabled": true
 	},
 	"prg-onboarding-zone-plan-billing-to-monthly": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
@@ -1031,6 +1031,13 @@
 		]
 	},
 	"prg-workers-free-plan-cta-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"prg-zone-plan-change-cta-copy": {
 		"enabled": false,
 		"branches": [
 			"baseline",
