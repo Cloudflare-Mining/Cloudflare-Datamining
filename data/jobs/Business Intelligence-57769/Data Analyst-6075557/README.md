@@ -5,42 +5,65 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>&nbsp;<strong>Public Policy at Cloudflare</strong></h4>
-<p>Cloudflare is one of the most dynamic and innovative companies operating on the Internet. At a time when policy and regulation are fundamentally changing the Internet and the way tech companies do business, we believe it is important to engage in discussions with governments to share Cloudflare’s unique approach. Cloudflare’s Public Policy team works on complicated and rapidly evolving policy issues, such as cybersecurity, privacy, intermediary liability, law enforcement access to data, and regulation of cloud services.</p>
-<p>We’re looking for a new team member to create a government relations function within the Cloudflare Public Policy team. As the Director, Global Government Relations &amp; Partnerships, you will help foster and promote our relationships with governments, serving as a liaison between Cloudflare executives and government officials, consistent with Cloudflare’s corporate philosophy. You’ll help us develop and communicate real-world solutions to the challenging cybersecurity and technology problems faced by governments around the world.&nbsp;</p>
-<p>We’re looking for someone who can build and maintain relationships with governments, and has a deep understanding of technology, public sector challenges, and regulatory constraints. The ideal candidate would be able to transition seamlessly from a technical conversation with engineers to a discussion with high-level government officials about how Cloudflare can help governments achieve their short and long-term technology goals.&nbsp;</p>
-<p>Because of the scope, complexity, and diversity of the company’s work, our Public Policy team members must be passionate, talented and able to work collaboratively across multi-functional teams to carry the Cloudflare narrative and promote Cloudflare externally.&nbsp;</p>
-<p>This is a fast-moving work environment with goals that are closely linked to business priorities. We anticipate that issues will include digital transformation, industry certifications, and government partnerships.</p>
-<p><strong>What You’ll Do</strong>&nbsp;&nbsp;</p>
-<p>As Director, Global Government Relations &amp; Partnerships, you’ll help build and execute a government relations plan consistent with the company’s business goals and overall philosophy. This role is ideal for someone who is proactive, energetic, a strategic thinker, a skilled communicator and above all else, someone who has a thirst for knowledge and continued growth, all while working as part of a great team.&nbsp; The Director, Global Government Relations &amp; Partnerships will report to the VP, Global Head of Public Policy.</p>
-<p>As part of the job, you will:&nbsp;</p>
+<p><strong>Locations - </strong>Austin, TX highly preferred Will consider Houston, Dallas and San Antonio. Must relocate to Austin if outside of major Texas cities, near Austin, TX.</p>
+<hr>
+<p><strong>About the Team</strong></p>
+<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
+<p><strong>About the Role</strong></p>
+<p>This role will report to BI Team and work closely with the Finance &amp; BizOps team who is responsible for developing and maintaining key GTM metrics reporting and incubating new initiatives that cover across product, go-to-market and finance. This role will help develop analytics solutions and scale internal data processes. Success in this role comes from marrying a strong data background with acute business acumen and curiosity to deliver highly strategic and compelling insights.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Work closely with other Public Policy team members to build and maintain relationships with key government stakeholders, and find opportunities to engage business and other third party organizations.</li>
-	<li>Liaise with internal teams, including public sector leadership, to collaborate on priorities and provide advice and recommendations on strategic decisions to assist with business objectives.&nbsp;</li>
-	<li>Advance Cloudflare’s business interests by facilitating conversations with government CIOs, CISOs, and other relevant stakeholders.</li>
-	<li>Develop a strategy to build a Public Sector Advisory Council to support strategic business objectives.&nbsp;</li>
-	<li>Identify relevant external events and forums to engage with public sector leaders and expand public sector market access.</li>
-	<li>Manage and direct external consultancies, lobbyists, and trade associations as appropriate to address business needs.</li>
-	<li>Engage with policymakers on authorization and appropriations processes in support of business interests.&nbsp;</li>
-	<li>Develop talking points, policy narratives and presentation materials for use at external events and meetings and for other communication purposes (company blog, position papers etc).</li>
-	<li>Provide timely updates to colleagues from Cloudflare’s Public Policy, Legal, Trust &amp; Safety Teams and other internal stakeholders.</li>
+	<li>Partner closely with internal stakeholders to gain a strong grasp of business, finance, and product analytical needs</li>
+	<li>Fundamental understanding of the data landscape i.e., tooling, tech stack, source systems etc.</li>
+	<li>Work closely with the Data Engineering team to improve the data collection and quality.</li>
+	<li>Design, build and support data or insight solutions to drive decision-making and/or incubate new data capabilities or business programs. Example projects include but not limited to product adoption scoring, product performance reporting, variable billing forecasting, product costing and margin analysis and GTM metrics reporting automation</li>
+	<li>Present the insights in an audience relevant manner, with key takeaways and recommendations being presented in a crisp and concise manner.</li>
+	<li>Deeply embedded in the Finance Biz Ops team and act as a technical advisor to the team in addressing data challenges and scaling solutions / programs from incubation stage to a longer-team high performing state</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>University degree&nbsp;</li>
-	<li>12 + years of experience working with the public sector on tech related issues</li>
-	<li>An existing network of relevant government, academic and industry contacts</li>
-	<li>Good understanding of government procurement and appropriations processes, as well as Cloudflare’s products</li>
-	<li>Track record of supporting sales teams and building strategic partnerships</li>
-	<li>Fluency / an interest in technology&nbsp;</li>
-	<li>Strong communications (written and oral) and interpersonal skills</li>
-	<li>Team player, and a sense of humor</li>
-	<li>Detail oriented, well organized and a sense of initiative</li>
-	<li>The ability to manage multiple issues and engage with a range of teams within Cloudflare</li>
+	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
+	<li>5 + years of data analyst experience with 1+ years of proven industry experience in a large scale environment (PBs scale, globally distributed teams).</li>
+	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
+	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
+	<li>Strong experience in Python, R, SQL, Google BigQuery, Google Looker Studio or Tableau (or any other Big data/Cloud equivalent) etc.</li>
+	<li>Capable of multitasking and thriving in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Capable of working closely with business to ensure data initiatives are aligned with business needs and are of high quality.</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $112,000 - $136,000.</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $129,000 - $136,000.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $135,000 - $165,000.</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
