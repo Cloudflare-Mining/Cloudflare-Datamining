@@ -645,6 +645,7 @@ export interface DurableObjectStorage {
   getBookmarkForTime(timestamp: number | Date): Promise<string>;
   onNextSessionRestoreBookmark(bookmark: string): Promise<string>;
   waitForBookmark(bookmark: string): Promise<void>;
+  ensureReplicas(): void;
 }
 export interface DurableObjectListOptions {
   start?: string;
