@@ -2710,6 +2710,14 @@
 					"annotations": {
 						"compatEnableFlag": "python_external_packages"
 					}
+				},
+				{
+					"name": "noTopLevelAwaitInRequire",
+					"annotations": {
+						"compatDisableFlag": "enable_top_level_await_in_require",
+						"compatEnableDate": "2024-12-02",
+						"compatEnableFlag": "disable_top_level_await_in_require"
+					}
 				}
 			]
 		},
