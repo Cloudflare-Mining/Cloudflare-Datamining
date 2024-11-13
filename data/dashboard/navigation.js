@@ -184,7 +184,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: Z.T
+		hasPermission: F.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -392,7 +392,7 @@ const navigation = {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: I => (0, H.r)(I) && (0, H._)(I) && !(0, e.z1)("storage-and-databases-account-navigation")(I)
+			hasPermission: I => (0, W.r)(I) && (0, W._)(I) && !(0, e.z1)("storage-and-databases-account-navigation")(I)
 		}, {
 			title: "navigation.account.workers.browser_rendering",
 			url: "/workers/browser-rendering"
@@ -429,7 +429,7 @@ const navigation = {
 			title: "navigation.account.workers.pipelines",
 			url: "/workers/pipelines",
 			labels: ["beta"],
-			hasPermission: I => (0, H.r)(I) && (0, H._)(I)
+			hasPermission: I => (0, W.r)(I) && (0, W._)(I)
 		}, {
 			title: "navigation.account.workers.queues",
 			url: "/workers/queues",
@@ -577,7 +577,7 @@ const navigation = {
 			url: "/shared-configurations",
 			testId: "shared-config-link",
 			labels: ["alpha"],
-			hasPermission: I => (0, J.K)(I, "account")
+			hasPermission: I => (0, G.K)(I, "account")
 		}, {
 			title: "navigation.account.mcn",
 			url: "/mcn",
@@ -678,7 +678,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: I => !!(0, w.V)(I)
+			hasPermission: I => !!(0, z.V)(I)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -744,10 +744,10 @@ const navigation = {
 		hasPermission: I => {
 			const Q = (0, g.nA)(I);
 			if ((0, s.yD)(I) || !(0, a.wB)(I, "zone_settings", "spectrum.app") || !Q) return !1;
-			const V = !!((0, u.l8)(I) || (0, g.DQ)(I)),
-				ee = !!(0, g.ZB)(I, "spectrum", "enabled"),
-				K = !!(0, g.Ns)(Q);
-			return ee || V || !K
+			const X = !!((0, u.l8)(I) || (0, g.DQ)(I)),
+				q = !!(0, g.ZB)(I, "spectrum", "enabled"),
+				V = !!(0, g.Ns)(Q);
+			return q || X || !V
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -827,7 +827,7 @@ const navigation = {
 			url: "/security/api-shield",
 			labels: ["new"],
 			navigationType: "version",
-			hasPermission: I => (0, Y.R0)(I),
+			hasPermission: I => (0, re.R0)(I),
 			tabs: p.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
@@ -927,7 +927,7 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["beta"],
 			navigationType: "version",
-			hasPermission: I => (!!(0, z.GM)(I) || !!(0, e.z1)("snippets-enabled")(I)) && (0, a.$n)(I, "waf", "page-rule", "read")
+			hasPermission: I => (!!(0, w.GM)(I) || !!(0, e.z1)("snippets-enabled")(I)) && (0, a.$n)(I, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
@@ -1069,7 +1069,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: I => !!(0, $.GM)(I) && !!(0, e.z1)("zaraz-plans-page-access")(I)
+			hasPermission: I => !!(0, J.GM)(I) && !!(0, e.z1)("zaraz-plans-page-access")(I)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
