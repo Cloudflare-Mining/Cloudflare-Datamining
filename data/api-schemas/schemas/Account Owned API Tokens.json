@@ -1,8 +1,20 @@
 {
-	"DELETE /user/tokens/{token_id}": {
-		"description": "Destroy a token.",
-		"operationId": "user-api-tokens-delete-token",
+	"DELETE /accounts/{account_id}/tokens/{token_id}": {
+		"description": "Destroy an Account Owned API token.",
+		"operationId": "account-api-tokens-delete-token",
 		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
 			{
 				"in": "path",
 				"name": "token_id",
@@ -214,11 +226,11 @@
 		],
 		"summary": "Delete Token",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.token.delete"
+				"com.cloudflare.api.account.token.delete"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -228,10 +240,22 @@
 			"pro": true
 		}
 	},
-	"GET /user/tokens": {
-		"description": "List all access tokens you created.",
-		"operationId": "user-api-tokens-list-tokens",
+	"GET /accounts/{account_id}/tokens": {
+		"description": "List all Account Owned API tokens created for this account.",
+		"operationId": "account-api-tokens-list-tokens",
 		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
 			{
 				"in": "query",
 				"name": "page",
@@ -700,11 +724,11 @@
 		],
 		"summary": "List Tokens",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.token.list"
+				"com.cloudflare.api.account.token.list"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -714,10 +738,22 @@
 			"pro": true
 		}
 	},
-	"GET /user/tokens/{token_id}": {
-		"description": "Get information about a specific token.",
-		"operationId": "user-api-tokens-token-details",
+	"GET /accounts/{account_id}/tokens/{token_id}": {
+		"description": "Get information about a specific Account Owned API token.",
+		"operationId": "account-api-tokens-token-details",
 		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
 			{
 				"in": "path",
 				"name": "token_id",
@@ -1127,11 +1163,11 @@
 		],
 		"summary": "Token Details",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.token.read"
+				"com.cloudflare.api.account.token.read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1141,9 +1177,23 @@
 			"pro": true
 		}
 	},
-	"GET /user/tokens/permission_groups": {
-		"description": "Find all available permission groups for API Tokens",
-		"operationId": "permission-groups-list-permission-groups",
+	"GET /accounts/{account_id}/tokens/permission_groups": {
+		"description": "Find all available permission groups for Account Owned API Tokens",
+		"operationId": "account-api-tokens-list-permission-groups",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"content": {
@@ -1315,7 +1365,7 @@
 						}
 					}
 				},
-				"description": "List Token Permission Groups response"
+				"description": "List Account Owned API Token Permission Groups response"
 			},
 			"4XX": {
 				"content": {
@@ -1406,7 +1456,7 @@
 						}
 					}
 				},
-				"description": "List Token Permission Groups response failure"
+				"description": "List Account Owned API Token Permission Groups response failure"
 			}
 		},
 		"security": [
@@ -1414,13 +1464,13 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Token Permission Groups",
+		"summary": "List Permission Groups",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.token.read"
+				"com.cloudflare.api.account.token.read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1430,9 +1480,23 @@
 			"pro": true
 		}
 	},
-	"GET /user/tokens/verify": {
+	"GET /accounts/{account_id}/tokens/verify": {
 		"description": "Test whether a token works.",
-		"operationId": "user-api-tokens-verify-token",
+		"operationId": "account-api-tokens-verify-token",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"content": {
@@ -1651,7 +1715,7 @@
 		],
 		"summary": "Verify Token",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1660,9 +1724,23 @@
 			"pro": true
 		}
 	},
-	"POST /user/tokens": {
-		"description": "Create a new access token.",
-		"operationId": "user-api-tokens-create-token",
+	"POST /accounts/{account_id}/tokens": {
+		"description": "Create a new Account Owned API token.",
+		"operationId": "account-api-tokens-create-token",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -2264,11 +2342,11 @@
 		],
 		"summary": "Create Token",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.token.create"
+				"com.cloudflare.api.account.token.create"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2278,10 +2356,22 @@
 			"pro": true
 		}
 	},
-	"PUT /user/tokens/{token_id}": {
+	"PUT /accounts/{account_id}/tokens/{token_id}": {
 		"description": "Update an existing token.",
-		"operationId": "user-api-tokens-update-token",
+		"operationId": "account-api-tokens-update-token",
 		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
 			{
 				"in": "path",
 				"name": "token_id",
@@ -2927,11 +3017,11 @@
 		],
 		"summary": "Update Token",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.token.update"
+				"com.cloudflare.api.account.token.update"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2941,10 +3031,22 @@
 			"pro": true
 		}
 	},
-	"PUT /user/tokens/{token_id}/value": {
-		"description": "Roll the token secret.",
-		"operationId": "user-api-tokens-roll-token",
+	"PUT /accounts/{account_id}/tokens/{token_id}/value": {
+		"description": "Roll the Account Owned API token secret.",
+		"operationId": "account-api-tokens-roll-token",
 		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
 			{
 				"in": "path",
 				"name": "token_id",
@@ -3158,11 +3260,11 @@
 		],
 		"summary": "Roll Token",
 		"tags": [
-			"User API Tokens"
+			"Account Owned API Tokens"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.token.update"
+				"com.cloudflare.api.account.token.update"
 			]
 		},
 		"x-cfPlanAvailability": {
