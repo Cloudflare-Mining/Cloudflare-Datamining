@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/domain-history": {
-		"description": "Get Domain History",
+		"description": "Gets historical security threat and content categories currently and previously assigned to a domain.",
 		"operationId": "domain-history-get-domain-history",
 		"parameters": [
 			{

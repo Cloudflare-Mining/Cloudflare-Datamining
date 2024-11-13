@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/dns": {
-		"description": "Get Passive DNS by IP",
+		"description": "Gets a list of all the domains that have resolved to a specific IP address.",
 		"operationId": "passive-dns-by-ip-get-passive-dns-by-ip",
 		"parameters": [
 			{

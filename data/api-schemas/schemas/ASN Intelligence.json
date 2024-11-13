@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/asn/{asn}": {
-		"description": "Get ASN Overview",
+		"description": "Gets an overview of the Autonomous System Number (ASN) and a list of subnets for it.",
 		"operationId": "asn-intelligence-get-asn-overview",
 		"parameters": [
 			{
