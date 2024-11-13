@@ -1,5 +1,11 @@
 # @cloudflare/component-forms-hook-form
 
+## 2.1.0
+
+### Minor Changes
+
+- ac4b6ac98d: Do not pass `ref` from hook to field.
+
 ## 2.0.46
 
 ### Patch Changes
