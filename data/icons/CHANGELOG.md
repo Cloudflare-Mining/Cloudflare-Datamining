@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.21.3
+
+### Patch Changes
+
+- d542df23e4: Added new "caret" icon
+
 ## 12.21.2
 
 ### Patch Changes

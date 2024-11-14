@@ -18,10 +18,15 @@ import Calls from './Calls';
 import Carbon from './Carbon';
 import CaretDoubleLeft from './CaretDoubleLeft';
 import CaretDoubleRight from './CaretDoubleRight';
+import CaretDownStroke from './CaretDownStroke';
 import CaretDown from './CaretDown';
+import CaretLeftStroke from './CaretLeftStroke';
 import CaretLeft from './CaretLeft';
+import CaretRightStroke from './CaretRightStroke';
 import CaretRight from './CaretRight';
+import CaretUpStroke from './CaretUpStroke';
 import CaretUp from './CaretUp';
+import Caret from './Caret';
 import CaseStudy from './CaseStudy';
 import Certificate from './Certificate';
 import Chart from './Chart';
@@ -179,10 +184,6 @@ import Zaraz from './Zaraz';
 import ZeroTrustRiskScoring from './ZeroTrustRiskScoring';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
-import CaretUpStroke from './CaretUpStroke';
-import CaretDownStroke from './CaretDownStroke';
-import CaretRightStroke from './CaretRightStroke';
-import CaretLeftStroke from './CaretLeftStroke';
 export default {
   dlp: Dlp,
   timer: Timer,
@@ -204,14 +205,15 @@ export default {
   carbon: Carbon,
   'caret-double-left': CaretDoubleLeft,
   'caret-double-right': CaretDoubleRight,
-  'caret-down': CaretDown,
   'caret-down-stroke': CaretDownStroke,
-  'caret-left': CaretLeft,
+  'caret-down': CaretDown,
   'caret-left-stroke': CaretLeftStroke,
-  'caret-right': CaretRight,
+  'caret-left': CaretLeft,
   'caret-right-stroke': CaretRightStroke,
-  'caret-up': CaretUp,
+  'caret-right': CaretRight,
   'caret-up-stroke': CaretUpStroke,
+  'caret-up': CaretUp,
+  caret: Caret,
   'case-study': CaseStudy,
   certificate: Certificate,
   chart: Chart,
