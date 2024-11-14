@@ -876,7 +876,7 @@
 						"items": {
 							"properties": {
 								"id": {
-									"description": "Unique domain identifier",
+									"description": "The unique identifier for the domain.",
 									"example": 2400,
 									"format": "int32",
 									"type": "integer"
@@ -962,7 +962,7 @@
 											"items": {
 												"properties": {
 													"id": {
-														"description": "Unique domain identifier",
+														"description": "The unique identifier for the domain.",
 														"example": 2400,
 														"format": "int32",
 														"type": "integer"
@@ -1095,7 +1095,7 @@
 				"name": "domain_id",
 				"required": true,
 				"schema": {
-					"description": "Unique domain identifier",
+					"description": "The unique identifier for the domain.",
 					"example": 2400,
 					"format": "int32",
 					"type": "integer"
@@ -1169,7 +1169,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Unique domain identifier",
+													"description": "The unique identifier for the domain.",
 													"example": 2400,
 													"format": "int32",
 													"type": "integer"
@@ -1190,7 +1190,7 @@
 						}
 					}
 				},
-				"description": "Delete the domain with the provided id"
+				"description": "Deletes the domain with the provided id."
 			},
 			"4XX": {
 				"content": {
@@ -2130,7 +2130,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_patterns": {
-		"description": "List, search, and sort an accounts's email allow patterns.",
+		"description": "Lists, searches, and sorts an account’s email allow patterns.",
 		"operationId": "email_security_list_allow_patterns",
 		"parameters": [
 			{
@@ -2148,7 +2148,7 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
+				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -2159,7 +2159,7 @@
 				}
 			},
 			{
-				"description": "Number of results to display.",
+				"description": "The number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -2462,7 +2462,7 @@
 						}
 					}
 				},
-				"description": "List of allow-patterns for the provided account"
+				"description": "Contains a list of allow patterns for the account."
 			},
 			"4XX": {
 				"content": {
@@ -2855,7 +2855,7 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
+				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -2866,7 +2866,7 @@
 				}
 			},
 			{
-				"description": "Number of results to display.",
+				"description": "The number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -3117,7 +3117,7 @@
 						}
 					}
 				},
-				"description": "List of blocked senders for the provided account"
+				"description": "Contains a list of blocked senders for the account."
 			},
 			"4XX": {
 				"content": {
@@ -3469,7 +3469,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
-		"description": "List, search, and sort an account's email domains.",
+		"description": "Lists, searches, and sorts an account’s email domains.",
 		"operationId": "email_security_list_domains",
 		"parameters": [
 			{
@@ -3487,7 +3487,7 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
+				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -3498,7 +3498,7 @@
 				}
 			},
 			{
-				"description": "Number of results to display.",
+				"description": "The number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -3545,7 +3545,7 @@
 				}
 			},
 			{
-				"description": "If present, the response contains only domains with the provided delivery mode.",
+				"description": "Filters response to domains with the provided delivery mode.",
 				"in": "query",
 				"name": "allowed_delivery_mode",
 				"schema": {
@@ -3564,7 +3564,8 @@
 				}
 			},
 			{
-				"description": "Filter result by the provided domains.\nAllows for multiple occurrences, e.g., `domain=example.com&domain=example.xyz`.",
+				"description": "Filters results by the provided domains, allowing for multiple occurrences.",
+				"example": "domain=example.com&domain=example.xyz",
 				"in": "query",
 				"name": "domain",
 				"schema": {
@@ -3691,7 +3692,7 @@
 														]
 													},
 													"id": {
-														"description": "Unique domain identifier",
+														"description": "The unique identifier for the domain.",
 														"example": 2400,
 														"format": "int32",
 														"type": "integer"
@@ -3772,7 +3773,7 @@
 						}
 					}
 				},
-				"description": "List of domains for the provided account"
+				"description": "Contains a list of domains for the account."
 			},
 			"4XX": {
 				"content": {
@@ -3860,7 +3861,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry": {
-		"description": "List, search, and sort entries in impersonation registry.",
+		"description": "Lists, searches, and sorts entries in the impersonation registry.",
 		"operationId": "email_security_list_display_names",
 		"parameters": [
 			{
@@ -3878,7 +3879,7 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
+				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -3889,7 +3890,7 @@
 				}
 			},
 			{
-				"description": "Number of results to display.",
+				"description": "The number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -4140,7 +4141,7 @@
 						}
 					}
 				},
-				"description": "List of impersonation registry entries for the provided account"
+				"description": "Contains the list of impersonation registry entries for the account."
 			},
 			"4XX": {
 				"content": {
@@ -4491,7 +4492,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains": {
-		"description": "List, search, and sort an account's trusted email domains.",
+		"description": "Lists, searches, and sorts an account’s trusted email domains.",
 		"operationId": "email_security_list_trusted_domains",
 		"parameters": [
 			{
@@ -4509,7 +4510,7 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
+				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -4520,7 +4521,7 @@
 				}
 			},
 			{
-				"description": "Number of results to display.",
+				"description": "The number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -4768,7 +4769,7 @@
 						}
 					}
 				},
-				"description": "List of trusted domains for the provided account"
+				"description": "Contains the list of trusted domains for the account."
 			},
 			"4XX": {
 				"content": {
@@ -5795,7 +5796,7 @@
 				"name": "domain_id",
 				"required": true,
 				"schema": {
-					"description": "Unique domain identifier",
+					"description": "The unique identifier for the domain.",
 					"example": 2400,
 					"format": "int32",
 					"type": "integer"
@@ -5946,7 +5947,7 @@
 													]
 												},
 												"id": {
-													"description": "Unique domain identifier",
+													"description": "The unique identifier for the domain.",
 													"example": 2400,
 													"format": "int32",
 													"type": "integer"
@@ -7085,7 +7086,7 @@
 						}
 					}
 				},
-				"description": "Returns the newly created patterns in the same shape as the request body"
+				"description": "Contains the newly created patterns in the shape of the request body."
 			},
 			"4XX": {
 				"content": {
@@ -7507,7 +7508,7 @@
 						}
 					}
 				},
-				"description": "Returns the newly created patterns in the same shape as the request body"
+				"description": "Contains the newly created patterns in the shape of the request body."
 			},
 			"4XX": {
 				"content": {
@@ -7891,7 +7892,7 @@
 						}
 					}
 				},
-				"description": "Returns the newly created entry in the same shape as the request body"
+				"description": "Contains the new entry in the shape of the request body."
 			},
 			"4XX": {
 				"content": {
@@ -8311,7 +8312,7 @@
 						}
 					}
 				},
-				"description": "Returns the newly created trusted domains in the same shape as the request body"
+				"description": "Contains the new trusted domain in the shape of the request body."
 			},
 			"4XX": {
 				"content": {

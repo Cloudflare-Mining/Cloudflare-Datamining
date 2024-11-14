@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/email-security/investigate": {
-		"description": "This endpoint returns information for each email that matches the search parameter(s).",
+		"description": "Returns information for each email that matches the search parameter(s).",
 		"operationId": "email_security_investigate",
 		"parameters": [
 			{
@@ -38,7 +38,7 @@
 				}
 			},
 			{
-				"description": "Space delimited query term(s).\nThe search is case-insensitive.\n\nThe content of the following email metadata fields are searched:\n* alert_id\n* CC\n* From (envelope_from)\n* From Name\n* final_disposition\n* md5 hash (of any attachment)\n* sha1 hash (of any attachment)\n* sha256 hash (of any attachment)\n* name (of any attachment)\n* Reason\n* Received DateTime (yyyy-mm-ddThh:mm:ss)\n* Sent DateTime (yyyy-mm-ddThh:mm:ss)\n* ReplyTo\n* To (envelope_to)\n* To Name\n* Message-ID\n* smtp_helo_server_ip\n* smtp_previous_hop_ip\n* x_originating_ip\n* Subject",
+				"description": "The space-delimited term used in the query. The search is case-insensitive.\n\nThe content of the following email metadata fields are searched:\n* alert_id\n* CC\n* From (envelope_from)\n* From Name\n* final_disposition\n* md5 hash (of any attachment)\n* sha1 hash (of any attachment)\n* sha256 hash (of any attachment)\n* name (of any attachment)\n* Reason\n* Received DateTime (yyyy-mm-ddThh:mm:ss)\n* Sent DateTime (yyyy-mm-ddThh:mm:ss)\n* ReplyTo\n* To (envelope_to)\n* To Name\n* Message-ID\n* smtp_helo_server_ip\n* smtp_previous_hop_ip\n* x_originating_ip\n* Subject",
 				"example": "bob jones",
 				"in": "query",
 				"name": "query",
@@ -47,7 +47,7 @@
 				}
 			},
 			{
-				"description": "If `false`, the search includes non-detections.",
+				"description": "Determines if the search results will include detections or not.",
 				"in": "query",
 				"name": "detections_only",
 				"schema": {
@@ -56,7 +56,7 @@
 				}
 			},
 			{
-				"description": "Controls whether the message action log in included in the response.",
+				"description": "Determines if the message action log is included in the response.",
 				"in": "query",
 				"name": "action_log",
 				"schema": {
@@ -65,7 +65,7 @@
 				}
 			},
 			{
-				"description": "Filter messages by the provided disposition.",
+				"description": "The dispositions the search filters by.",
 				"in": "query",
 				"name": "final_disposition",
 				"schema": {
@@ -91,7 +91,7 @@
 				}
 			},
 			{
-				"description": "Filter messages by actions applied to them",
+				"description": "The message actions the search filters by.",
 				"in": "query",
 				"name": "message_action",
 				"schema": {
@@ -132,7 +132,7 @@
 				}
 			},
 			{
-				"description": "Filter by the sender domain",
+				"description": "The sender domains the search filters by.",
 				"example": "example.com",
 				"in": "query",
 				"name": "domain",
@@ -149,7 +149,7 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
+				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -160,7 +160,7 @@
 				}
 			},
 			{
-				"description": "Number of results to display.",
+				"description": "The number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -327,7 +327,7 @@
 																"type": "string"
 															},
 															"postfix_id": {
-																"description": "Message identifier",
+																"description": "The identifier of the message.",
 																"example": "4Njp3P0STMz2c02Q",
 																"title": "postfix_id",
 																"type": "string"
@@ -547,7 +547,7 @@
 						}
 					}
 				},
-				"description": "Search results for the provided query"
+				"description": "Contains the search results for the provided query."
 			},
 			"4XX": {
 				"content": {
@@ -660,7 +660,7 @@
 				"name": "postfix_id",
 				"required": true,
 				"schema": {
-					"description": "Message identifier",
+					"description": "The identifier of the message.",
 					"example": "4Njp3P0STMz2c02Q",
 					"title": "postfix_id",
 					"type": "string"
@@ -822,7 +822,7 @@
 															"type": "string"
 														},
 														"postfix_id": {
-															"description": "Message identifier",
+															"description": "The identifier of the message.",
 															"example": "4Njp3P0STMz2c02Q",
 															"title": "postfix_id",
 															"type": "string"
@@ -1004,7 +1004,7 @@
 						}
 					}
 				},
-				"description": "Email message details"
+				"description": "Contains the email message details."
 			},
 			"4XX": {
 				"content": {
@@ -1092,7 +1092,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/detections": {
-		"description": "For emails that have a detection, this endpoint returns detection details\nsuch as threat categories, sender information, and links.",
+		"description": "Returns detection details such as threat categories and sender information for non-benign messages.",
 		"operationId": "email_security_get_message_detections",
 		"parameters": [
 			{
@@ -1114,7 +1114,7 @@
 				"name": "postfix_id",
 				"required": true,
 				"schema": {
-					"description": "Message identifier",
+					"description": "The identifier of the message.",
 					"example": "4Njp3P0STMz2c02Q",
 					"title": "postfix_id",
 					"type": "string"
@@ -1343,12 +1343,12 @@
 												"sender_info": {
 													"properties": {
 														"as_name": {
-															"description": "Name of the autonomous system",
+															"description": "The name of the autonomous system.",
 															"nullable": true,
 															"type": "string"
 														},
 														"as_number": {
-															"description": "Number of the autonomous system",
+															"description": "The number of the autonomous system.",
 															"format": "int64",
 															"nullable": true,
 															"type": "integer"
@@ -1476,7 +1476,7 @@
 						}
 					}
 				},
-				"description": "Email detection details"
+				"description": "Contains the email message details."
 			},
 			"4XX": {
 				"content": {
@@ -1564,7 +1564,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/preview": {
-		"description": "For emails that have a detection, this endpoint returns a preview of the\nmessage body as a base64 encoded PNG image.",
+		"description": "Returns a preview of the message body as a base64 encoded PNG image for non-benign messages.",
 		"operationId": "email_security_get_message_preview",
 		"parameters": [
 			{
@@ -1586,7 +1586,7 @@
 				"name": "postfix_id",
 				"required": true,
 				"schema": {
-					"description": "Message identifier",
+					"description": "The identifier of the message.",
 					"example": "4Njp3P0STMz2c02Q",
 					"title": "postfix_id",
 					"type": "string"
@@ -1663,7 +1663,7 @@
 											},
 											"properties": {
 												"screenshot": {
-													"description": "Base64 encoded PNG image",
+													"description": "A base64 encoded PNG image of the email.",
 													"type": "string"
 												}
 											},
@@ -1682,7 +1682,7 @@
 						}
 					}
 				},
-				"description": "Email preview"
+				"description": "Contains a preview of the email."
 			},
 			"4XX": {
 				"content": {
@@ -1774,7 +1774,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/raw": {
-		"description": "For emails that have a detection, this endpoint returns the raw email\nas an EML file.",
+		"description": "Returns the raw eml of any non-benign message.",
 		"operationId": "email_security_get_message_raw",
 		"parameters": [
 			{
@@ -1796,7 +1796,7 @@
 				"name": "postfix_id",
 				"required": true,
 				"schema": {
-					"description": "Message identifier",
+					"description": "The identifier of the message.",
 					"example": "4Njp3P0STMz2c02Q",
 					"title": "postfix_id",
 					"type": "string"
@@ -1873,7 +1873,7 @@
 											},
 											"properties": {
 												"raw": {
-													"description": "UTF-8 encoded eml file",
+													"description": "A UTF-8 encoded eml file of the email.",
 													"type": "string"
 												}
 											},
@@ -1892,7 +1892,7 @@
 						}
 					}
 				},
-				"description": "Raw email content"
+				"description": "Contains the raw content of the email."
 			},
 			"4XX": {
 				"content": {
@@ -2005,7 +2005,7 @@
 				"name": "postfix_id",
 				"required": true,
 				"schema": {
-					"description": "Message identifier",
+					"description": "The identifier of the message.",
 					"example": "4Njp3P0STMz2c02Q",
 					"title": "postfix_id",
 					"type": "string"
@@ -2155,7 +2155,7 @@
 						}
 					}
 				},
-				"description": "Email trace"
+				"description": "Contains the email trace."
 			},
 			"4XX": {
 				"content": {
@@ -2453,7 +2453,7 @@
 						}
 					}
 				},
-				"description": "PhishGuard reports"
+				"description": "Contains a list of PhishGuard reports."
 			},
 			"4XX": {
 				"content": {
