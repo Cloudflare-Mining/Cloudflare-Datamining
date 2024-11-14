@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/firewall/lockdowns/{id}": {
+	"DELETE /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
 		"description": "Deletes an existing Zone Lockdown rule.",
 		"operationId": "zone-lockdown-delete-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "lock_downs_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -190,13 +190,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/firewall/lockdowns": {
+	"GET /zones/{zone_id}/firewall/lockdowns": {
 		"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 		"operationId": "zone-lockdown-list-zone-lockdown-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -464,42 +464,6 @@
 												"additionalProperties": false,
 												"properties": {
 													"configurations": {
-														"anyOf": [
-															{
-																"properties": {
-																	"target": {
-																		"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																		"enum": [
-																			"ip"
-																		],
-																		"example": "ip"
-																	},
-																	"value": {
-																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																		"example": "198.51.100.4",
-																		"type": "string"
-																	}
-																},
-																"title": "An IP address configuration."
-															},
-															{
-																"properties": {
-																	"target": {
-																		"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																		"enum": [
-																			"ip_range"
-																		],
-																		"example": "ip_range"
-																	},
-																	"value": {
-																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																		"example": "198.51.100.4/16",
-																		"type": "string"
-																	}
-																},
-																"title": "An IP address range configuration."
-															}
-														],
 														"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 														"items": {
 															"anyOf": [
@@ -734,42 +698,6 @@
 														"additionalProperties": false,
 														"properties": {
 															"configurations": {
-																"anyOf": [
-																	{
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																				"enum": [
-																					"ip"
-																				],
-																				"example": "ip"
-																			},
-																			"value": {
-																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"example": "198.51.100.4",
-																				"type": "string"
-																			}
-																		},
-																		"title": "An IP address configuration."
-																	},
-																	{
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																				"enum": [
-																					"ip_range"
-																				],
-																				"example": "ip_range"
-																			},
-																			"value": {
-																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																				"example": "198.51.100.4/16",
-																				"type": "string"
-																			}
-																		},
-																		"title": "An IP address range configuration."
-																	}
-																],
 																"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 																"items": {
 																	"anyOf": [
@@ -984,13 +912,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/firewall/lockdowns/{id}": {
+	"GET /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
 		"description": "Fetches the details of a Zone Lockdown rule.",
 		"operationId": "zone-lockdown-get-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "lock_downs_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
@@ -1002,7 +930,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1121,42 +1049,6 @@
 											"additionalProperties": false,
 											"properties": {
 												"configurations": {
-													"anyOf": [
-														{
-															"properties": {
-																"target": {
-																	"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																	"enum": [
-																		"ip"
-																	],
-																	"example": "ip"
-																},
-																"value": {
-																	"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																	"example": "198.51.100.4",
-																	"type": "string"
-																}
-															},
-															"title": "An IP address configuration."
-														},
-														{
-															"properties": {
-																"target": {
-																	"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																	"enum": [
-																		"ip_range"
-																	],
-																	"example": "ip_range"
-																},
-																"value": {
-																	"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																	"example": "198.51.100.4/16",
-																	"type": "string"
-																}
-															},
-															"title": "An IP address range configuration."
-														}
-													],
 													"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 													"items": {
 														"anyOf": [
@@ -1370,42 +1262,6 @@
 													"additionalProperties": false,
 													"properties": {
 														"configurations": {
-															"anyOf": [
-																{
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																			"enum": [
-																				"ip"
-																			],
-																			"example": "ip"
-																		},
-																		"value": {
-																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																			"example": "198.51.100.4",
-																			"type": "string"
-																		}
-																	},
-																	"title": "An IP address configuration."
-																},
-																{
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																			"enum": [
-																				"ip_range"
-																			],
-																			"example": "ip_range"
-																		},
-																		"value": {
-																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																			"example": "198.51.100.4/16",
-																			"type": "string"
-																		}
-																	},
-																	"title": "An IP address range configuration."
-																}
-															],
 															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 															"items": {
 																"anyOf": [
@@ -1618,13 +1474,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/firewall/lockdowns": {
+	"POST /zones/{zone_id}/firewall/lockdowns": {
 		"description": "Creates a new Zone Lockdown rule.",
 		"operationId": "zone-lockdown-create-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1641,42 +1497,6 @@
 					"schema": {
 						"properties": {
 							"configurations": {
-								"anyOf": [
-									{
-										"properties": {
-											"target": {
-												"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-												"enum": [
-													"ip"
-												],
-												"example": "ip"
-											},
-											"value": {
-												"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-												"example": "198.51.100.4",
-												"type": "string"
-											}
-										},
-										"title": "An IP address configuration."
-									},
-									{
-										"properties": {
-											"target": {
-												"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-												"enum": [
-													"ip_range"
-												],
-												"example": "ip_range"
-											},
-											"value": {
-												"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-												"example": "198.51.100.4/16",
-												"type": "string"
-											}
-										},
-										"title": "An IP address range configuration."
-									}
-								],
 								"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 								"items": {
 									"anyOf": [
@@ -1845,42 +1665,6 @@
 											"additionalProperties": false,
 											"properties": {
 												"configurations": {
-													"anyOf": [
-														{
-															"properties": {
-																"target": {
-																	"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																	"enum": [
-																		"ip"
-																	],
-																	"example": "ip"
-																},
-																"value": {
-																	"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																	"example": "198.51.100.4",
-																	"type": "string"
-																}
-															},
-															"title": "An IP address configuration."
-														},
-														{
-															"properties": {
-																"target": {
-																	"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																	"enum": [
-																		"ip_range"
-																	],
-																	"example": "ip_range"
-																},
-																"value": {
-																	"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																	"example": "198.51.100.4/16",
-																	"type": "string"
-																}
-															},
-															"title": "An IP address range configuration."
-														}
-													],
 													"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 													"items": {
 														"anyOf": [
@@ -2094,42 +1878,6 @@
 													"additionalProperties": false,
 													"properties": {
 														"configurations": {
-															"anyOf": [
-																{
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																			"enum": [
-																				"ip"
-																			],
-																			"example": "ip"
-																		},
-																		"value": {
-																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																			"example": "198.51.100.4",
-																			"type": "string"
-																		}
-																	},
-																	"title": "An IP address configuration."
-																},
-																{
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																			"enum": [
-																				"ip_range"
-																			],
-																			"example": "ip_range"
-																		},
-																		"value": {
-																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																			"example": "198.51.100.4/16",
-																			"type": "string"
-																		}
-																	},
-																	"title": "An IP address range configuration."
-																}
-															],
 															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 															"items": {
 																"anyOf": [
@@ -2341,13 +2089,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/firewall/lockdowns/{id}": {
+	"PUT /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
 		"description": "Updates an existing Zone Lockdown rule.",
 		"operationId": "zone-lockdown-update-a-zone-lockdown-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "lock_downs_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
@@ -2359,7 +2107,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2376,42 +2124,6 @@
 					"schema": {
 						"properties": {
 							"configurations": {
-								"anyOf": [
-									{
-										"properties": {
-											"target": {
-												"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-												"enum": [
-													"ip"
-												],
-												"example": "ip"
-											},
-											"value": {
-												"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-												"example": "198.51.100.4",
-												"type": "string"
-											}
-										},
-										"title": "An IP address configuration."
-									},
-									{
-										"properties": {
-											"target": {
-												"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-												"enum": [
-													"ip_range"
-												],
-												"example": "ip_range"
-											},
-											"value": {
-												"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-												"example": "198.51.100.4/16",
-												"type": "string"
-											}
-										},
-										"title": "An IP address range configuration."
-									}
-								],
 								"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 								"items": {
 									"anyOf": [
@@ -2580,42 +2292,6 @@
 											"additionalProperties": false,
 											"properties": {
 												"configurations": {
-													"anyOf": [
-														{
-															"properties": {
-																"target": {
-																	"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																	"enum": [
-																		"ip"
-																	],
-																	"example": "ip"
-																},
-																"value": {
-																	"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																	"example": "198.51.100.4",
-																	"type": "string"
-																}
-															},
-															"title": "An IP address configuration."
-														},
-														{
-															"properties": {
-																"target": {
-																	"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																	"enum": [
-																		"ip_range"
-																	],
-																	"example": "ip_range"
-																},
-																"value": {
-																	"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																	"example": "198.51.100.4/16",
-																	"type": "string"
-																}
-															},
-															"title": "An IP address range configuration."
-														}
-													],
 													"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 													"items": {
 														"anyOf": [
@@ -2829,42 +2505,6 @@
 													"additionalProperties": false,
 													"properties": {
 														"configurations": {
-															"anyOf": [
-																{
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																			"enum": [
-																				"ip"
-																			],
-																			"example": "ip"
-																		},
-																		"value": {
-																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																			"example": "198.51.100.4",
-																			"type": "string"
-																		}
-																	},
-																	"title": "An IP address configuration."
-																},
-																{
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																			"enum": [
-																				"ip_range"
-																			],
-																			"example": "ip_range"
-																		},
-																		"value": {
-																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																			"example": "198.51.100.4/16",
-																			"type": "string"
-																		}
-																	},
-																	"title": "An IP address range configuration."
-																}
-															],
 															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 															"items": {
 																"anyOf": [
