@@ -238,6 +238,22 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "The name of the group.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search for groups by other listed query parameters.",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

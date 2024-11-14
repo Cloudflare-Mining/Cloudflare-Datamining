@@ -13,6 +13,30 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "The name of the user.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "email",
+				"schema": {
+					"description": "The email of the user.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search for users by other listed query parameters.",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
