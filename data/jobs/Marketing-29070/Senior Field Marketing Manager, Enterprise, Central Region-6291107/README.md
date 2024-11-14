@@ -5,10 +5,9 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
+<p><strong>Locations: Austin, Houston, Dallas, Chicago<br><br>About the Role</strong></p>
 <p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, Central Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.</p>
 <p>You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base.&nbsp; You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas Central Enterprise region.</p>
-<p><strong>Locations: Austin, Houston, Dallas, Chicago</strong></p>
 <p><strong>Responsibilities</strong></p>
 <ul>
 	<li>Build the marketing plan for the region, integrating field events, ABM programs, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.&nbsp;</li>

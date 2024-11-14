@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h4>Available Locations: Austin, TX OR San Francisco, CA</h4>
-<p><strong>*Based on the candidate's experience, we will consider the level of the role to be Director or Sr. Director*</strong></p>
+<p><strong>Level: This is a Director level role</strong></p>
 <h4>About the department</h4>
 <p>The Corporate Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. This is a highly strategic &amp; visible team that partners closely with our C-Suite and cross-functional business leaders to develop key priorities for the business as well as the financial plan required to deliver on our growth and profitability goals. Members of the Corporate Finance Team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</p>
 <h4>What you'll do</h4>
@@ -35,7 +35,7 @@
 	<li>High proficiency with financial systems and tools. Anaplan, Netsuite, RevPro, Salesforce and Tableau experience is a plus</li>
 	<li>BA/BS in Finance, Accounting, Economics or quantitative field; MBA or Masters preferred&nbsp;</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
@@ -68,7 +68,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,47 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Lisbon, Portugal</p>
-<p><strong>Cloudflare is looking for a Senior Business System Analyst (Salesforce Quote to Order)</strong> to join our fast-growing GTM Applications team. In this role, you will work closely with our business stakeholders in Sales, Pricing, Packaging &amp; Finance to deliver a world-class Configure, Price &amp; Quote (CPQ) management experience for our internal users. This role collaborates with Business SMEs, Developers, and Production Support through each stage of the software development lifecycle and demonstrates both existing and new functionality to customer stakeholders.</p>
-<p>As a BSA, you will bring a deep understanding of quoting, configuration, and pricing methodologies, best practices in Salesforce CPQ, and experience leading discovery sessions with stakeholders. You will be responsible for designing, developing, and managing our Salesforce Quote to Order processes and configuration.</p>
-<h3><strong>What You’ll Do:</strong></h3>
+<p><strong>Locations Available - Austin, TX, this position is eligible for being remote in Austin Texas only. If you are not located in Austin, Texas, you MUST be open to relocation.&nbsp;</strong></p>
+<hr>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for a Full Stack Systems Engineer to join our Lisbon team to scale our development efforts on network availability insights initiatives. You will work on building full stack data applications which empowers our Product and Engineering team. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Lead <strong>discovery sessions with stakeholders</strong> to map business processes, prepare flow diagrams, and distill business requirements into actionable solution designs.</li>
-	<li>Design, prototype, build, document, and support solutions for the Salesforce CPQ application.</li>
-	<li>Lead <strong>socialization sessions</strong> with stakeholders to communicate solution designs and ensure alignment.</li>
-	<li>Collaborate with business partners to help shape functional requirements for quoting, configuration, and pricing.</li>
-	<li>Hands-on experience to create and manage Price Rules, Product Rules, Discounting, Product Setup and Configuration, Product Options, Quote Templates, and Advanced Approval Rules, with the ability to design for complex business use cases.</li>
-	<li>Administer Salesforce CPQ declarative configuration, settings, and configurations to onboard new products/bundles/SKU and take ownership of NPI in Salesforce CPQ.</li>
-	<li>Recommend improvements to systems and processes to increase efficiency and automation.</li>
-	<li>Demonstrate leadership and technical expertise by presenting custom solutions based on the Salesforce platform and ecosystem.</li>
-	<li>Perform hands-on technical design, solution architecture, prototyping, proof-of-concepts, and CPQ configuration tasks.</li>
-	<li>Work closely with business partners in the Sales Ops and Commissions teams to define requirements and ensure that solutions deliver best-in-class results and efficient business processes.</li>
-	<li>Manage Sales technology projects and related CPQ impacts: developing requirements, designing functional solutions and prototypes, and testing. Ensure projects are completed on time, within budget, and aligned with scope.</li>
-	<li>Create and maintain detailed technical documentation based on design specifications.</li>
-	<li>Own functional tasks and deliverables, including: testing, training, reporting, support, and continuous improvement for the Salesforce CPQ application.</li>
-	<li>Use and recommend best practices while delivering scalable, high-quality solutions.</li>
+	<li>Design and implement key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
+	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<h3><strong>Bonus Points:</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>Understanding of how Sales data impacts financial systems</strong> like Order Management, Billing, and Revenue.</li>
-	<li><strong>Understanding of Lead to Cash processes</strong> from an end-to-end perspective.</li>
-	<li>Familiarity with <strong>billing systems</strong> such as Stripe, Netsuite, Oracle, etc.</li>
-	<li><strong>Understanding of Salesforce Revenue Cloud</strong> or expertise in Revenue Lifecycle Management.</li>
-	<li>Experience with <strong>Agile methodologies</strong> or <strong>Product-Led Growth (PLG) methodology</strong>.</li>
-	<li>Familiarity with <strong>Channel GTM motions</strong> and <strong>Partner GTM enablement</strong> to support scaling and collaboration.</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Experience with Javascript, Typescript, and React</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<h3><strong>Examples of Desirable Skills, Knowledge, and Experience:</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Bachelor's degree (technical degree preferred).</li>
-	<li>7+ years of experience implementing, configuring, and administering SaaS business systems for a software company, with at least 2 years of Salesforce CPQ experience (Steelbrick).</li>
-	<li>Proficient in the use of Salesforce Data Loader, Workbench, and Excel to support data analysis &amp; quality initiatives.</li>
-	<li>Outstanding testing skills with the ability to identify &amp; execute appropriate depth of testing, including negative tests and integrated test scenarios.</li>
-	<li>Detail-oriented, organized, self-motivated, hard-working, and a great team player with excellent interpersonal skills.</li>
-	<li>Excellent written and verbal communication skills, including experience meeting with and presenting information to senior leadership.</li>
-	<li>Salesforce.com certifications (Administrator, Advanced Administrator, Salesforce CPQ Specialist).</li>
-	<li>Passion for creating a frictionless end-user experience.</li>
-	<li>Proven ability to work creatively and analytically in problem-solving scenarios.</li>
-	<li>Strong knowledge and understanding of the Salesforce.com platform, ecosystem, and best practices.</li>
+	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Familiarity with Google Cloud Platform or something similar</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
