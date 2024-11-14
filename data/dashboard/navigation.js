@@ -184,7 +184,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: F.T
+		hasPermission: Z.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -400,8 +400,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: I => {
-				const Q = (0, v.tJ)(I);
-				return !(0, _.ky)(Q, [L.uD.EnterpriseTrial])
+				const Q = (0, L.tJ)(I);
+				return !(0, _.ky)(Q, [v.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -555,7 +555,6 @@ const navigation = {
 			title: "navigation.account.api_tokens",
 			url: "/api-tokens",
 			testId: "account-homepage-api-tokens",
-			labels: ["beta"],
 			hasPermission: I => (0, a.iY)(I) && !!(0, e.z1)("account-owned-api-tokens")(I)
 		}, {
 			title: "navigation.account.audit_log",
