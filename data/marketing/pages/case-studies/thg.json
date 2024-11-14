@@ -1,0 +1,96 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/thg/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "THG",
+				"contentfulId": "v1pYtQgnjYRvnwOMj9EMh",
+				"nameUrlSlug": "thg",
+				"metaTags": {
+					"metaTitle": "THG & Cloudflare | Customer Story",
+					"metaDescription": "Working with Cloudflare, international ecommerce technology group and brand owner THG reduced complexity and improved performance and deployment times for its internal and customer solutions.  ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eBXSSfG0B3iN4mkmFEIai/a3f2c30536739759e38b57a6ca5f4877/thg_meta.png"
+						},
+						"description": "THG meta image illustration"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2024-11-14",
+				"homepageUrl": "https://www.thg.com/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "Working with Cloudflare, international ecommerce technology group and brand owner THG reduced complexity and improved performance and deployment times for its internal and customer solutions",
+				"longDescription": "## THG modernizes legacy IT infrastructure, reduces complexity, boosts performance, and enhances developer and user efficiency with Cloudflare\n\nGlobal e-commerce retailer THG is focused on innovating how businesses connect to their consumers worldwide. Founded in Manchester in 2004, THG employs over 7,000 people and manages a portfolio of leading digital beauty, health, wellness and sports nutrition brands through its three core businesses: THG Beauty, THG Nutrition, and THG Ingenuity.\n\nTHG Beauty offers more than 1,300 premium beauty brands, THG Nutrition includes the #1 sports nutrition brand (Myprotein), and THG Ingenuity offers an end-to-end e-commerce platform connecting brands with consumers across the globe. Altogether, THG maintains dozens of fulfillment centers, production facilities, and data centers worldwide to serve its growing base of first-party consumers and third-party retailers.\n\n### Challenge: Modernizing ecommerce infrastructure to mitigate complexity and improve global productivity, performance, scalability, and security\n\nOver the past several years, one of THG's priorities has been investing in cloud-native IT to modernize its proprietary technology platform, Ingenuity. Developed by THG, Ingenuity provides a range of direct-to-consumer e-commerce capabilities like site hosting, marketing, fulfillment, and delivery management. This platform not only operates as a standalone business serving third-party brand owners like Coca-Cola, Kraft Heinz, and Homebase, it also forms the digital foundation for THG's own e-commerce operations, underpinning the customer experience and supply chain for THG's other business divisions THG Beauty and THG Nutrition.\n\n\"We want to be international category leaders in the fashion, beauty, and nutrition spaces — that means we need to provide a world-class tech platform for all our customers,\" explains THG's Principal Software Engineer Shaun Hall.\n\nAlongside innovations to its e-commerce capabilities, THG wanted to ensure that its security investments also kept pace. Abraham Ingersoll, THG's Chief Security Officer (CISO), explains:\n\n\"When some of the world's most well-known brands rely on you, it's absolutely critical that your security stays two steps ahead. The less-evolved company is always a target for attack.\"\n\nTo accelerate its modernization and security goals, THG turned to Cloudflare:\n\n- Improve engineer productivity and optimize software development and deployment\n- Enhance the customer experience through accelerated web application performance\n- Improve scalability to  withstand peak retail season and promotional traffic spikes\n- Simplify workforce security by replacing Zscaler with Cloudflare\n\n### Solution: Cloudflare Workers accelerates web application software development and deployment\n\nFor THG, adopting the Cloudflare [developer platform](https://www.cloudflare.com/developer-platform/) to help modernize a problematic, legacy infrastructure was the first order of business. For ecommerce applications, data must remain fresh. Having the ability to render webpages with up-to-date pricing and availability and eliminating the [\"cold start\" shopping problem](https://www.mytotalretail.com/article/the-cold-start-shopper-problem-providing-personalization-in-a-private-world/) is crucial for driving revenue. Before deploying Cloudflare, THG's e-commerce frontend had performance problems — changes took up to 8 hours to deploy and bottlenecks caused by the legacy system affected business agility.\n\nTo improve overall website performance and enhance developer productivity, THG chose [Workers](https://www.cloudflare.com/developer-platform/workers/) — Cloudflare's high-performance, automatically scaling, serverless development environment on the network edge — to provide the foundation for its new platform, THG Altitude. \n\n\"Workers is so good at the cold path — immediately rendering a webpage for a product that's not been visited recently,\" says Hall. \"That helps get our pricing and availability updates through to the customer faster.\" \n\nUsing Workers, THG easily achieved its goal of reducing deployment times from one work day to under ten minutes.\n\n\"Cloudflare Workers smashed our developer productivity and performance concerns. It's great for the business,\" says Hall.\n\n### Ensuring scalability and peak-time performance to handle traffic surges\n\nIn addition to improving developer productivity and day-to-day performance, Workers' scalability and responsiveness to traffic conditions have improved the THG shopping experience, eliminated hours of testing to prepare for seasonal and promotional events, and eased stakeholders' anxiety. \n\n\"Every year we braced for the swarm of Black Friday visitors onto our websites,\" says Hall. \"Now, thanks to the massive scalability of Workers and the Cloudflare global network, we know the system is not going to fall over during peak season — we no longer worry about whether our websites can handle the surges in traffic.\"\n\nHighlighting another benefit of basing its newly built platform on Workers and the Cloudflare developer platform, Hall describes the company's experience migrating one of its luxury fashion websites, [Coggles](https://www.coggles.com/), onto the new platform.\n\n\"After we re-platformed the site onto our Cloudflare-based architecture, we saw a 20% increase in organic traffic from improved search engine rankings,\" says Hall, explaining, \"All traffic is great, but it increased our sales margins because it was organic traffic we did not have to pay for through affiliate programs or paid search.\"\n\n### Cloudflare replaces Zscaler for workforce security to consolidate and reduce operational complexity\n\nAfter these successes, THG recognized opportunities to streamline its IT and security further by consolidating with Cloudflare and began exploring how Cloudflare's [Zero Trust / Security Services Edge (SSE) portfolio](https://www.cloudflare.com/zero-trust/) could secure access for their hybrid workforce across private apps, SaaS apps, and web environments. \n\nPrior to evaluating Cloudflare, THG had been in the process of replacing its traditional [virtual private network (VPN)](https://www.cloudflare.com/learning/access-management/what-is-a-vpn/) with Zscaler to modernize how it secured access. Specifically, THG had been using Zscaler Private Access (ZPA) service to secure access to internal corporate resources and SaaS apps and Zscaler Internet Access (ZIA) service to filter Internet browsing.\n\nBut managing these Zscaler services across two distinct management interfaces was operationally challenging, and THG appreciated that switching to Cloudflare would simplify how their security teams managed policies by having one unified dashboard for Internet and application access. Plus, THG recognized that migrating to Cloudflare would unlock cost and operational efficiencies by consolidating [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) security, application security, and developer services with a single vendor.\n\n\"Although we were familiar with Cloudflare from our application security and development transformation, the Zero Trust portfolio services truly amazed us. Comparing the different features and capabilities of Cloudflare relative to other solutions, it was a no-brainer,\" says Ingersoll. \"By simplifying things with Cloudflare, our third-party partners and internal users receive the same secure, seamless experience we provide consumers on our website.\"\n\nThe migration process was accelerated by [business services and automated tooling](https://blog.cloudflare.com/descaler-program/) Cloudflare built to transfer Zscaler configurations to Cloudflare's environment. For example, the first phase of the project automated migration of several dozens of Internet filtering policies covering 100+ content categories and custom URL lists in [just one week](https://blog.cloudflare.com/descaler-program-update/).\n\nOver time, THG has layered policies based on identity and device posture across a broader range of user groups and environments. For example, according to Ingersoll, \"If a user hasn't installed the latest OS patch or Chrome update, Cloudflare is there to deny access and prompt the correct behavior.\" Today, Cloudflare secures access for THG's entire 7,000+ workforce.\n\n\"Cloudflare provides us with a single-vendor solution that covers our entire attack surface, securing our websites and dealing with threats across the world while protecting our end users,\" says Ingersoll. \"It is a unique, holistic approach that translates into efficiencies in operating our tech stack.\"\n\nTo illustrate these increased efficiencies, Ingersoll cites how using Cloudflare Zero Trust to deploy security policies and secure new applications has streamlined the approvals process, accelerated time to deployment, and compressed THG's time to market for critical projects. \n\n\"To publish an application our engineers used to have to open a bunch of tickets, talk to people, and hurry up and wait,\" he explains. \"Now with our development, security, and delivery all happening through Cloudflare, we have a single, automated approval process that confirms the release has been checked, passed our tests, and that's it.\" \n\nDescribing Cloudflare as a \"complete solution rather than a tool that only does a single thing,\" Ingersoll asserts that the connectivity cloud has completely transformed THG's approach to security, development, user access, and connectivity.\n\n\"When we started our engagement with Cloudflare, we were looking for a partnership that provided value end-to-end, enhancing every aspect of our operations,\" says Ingersoll. \"We made the right choice. Cloudflare has an excellent history of not only promoting technological advances but delivering them. In a year we'll look back and say, 'Wow, I can't believe we ever lived without this.'\" \n",
+				"cloudflareStreamVideoId": "5d930cc91ffe3c84d3d939e118196347",
+				"keyResults": "- 4800% reduction in software deployment times — from 8 hours to ten minutes\n- 20% increase in organic search traffic from Workers-related performance enhancements\n- Simplified and secured end-user access across the organization",
+				"relatedCaseStudyLinks": [
+					{
+						"text": "Conrad Electronic",
+						"url": "/case-studies/conrad-electronic"
+					},
+					{
+						"text": "Porsche Informatik",
+						"url": "/case-studies/porsche-informatik"
+					},
+					{
+						"text": "Delivery Hero",
+						"url": "/case-studies/delivery-hero"
+					}
+				],
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/zero-trust/products/access/"
+					},
+					{
+						"title": "Zero Trust",
+						"url": "/zero-trust/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Abraham Ingersoll",
+				"employeeQuoteText": "Cloudflare provides us with a single-vendor solution that covers our entire attack surface, securing our websites and dealing with threats across the world while protecting our end users. It is a unique, holistic approach that translates into efficiencies in our tool chains and how our people interact.",
+				"employeeQuoteJobTitle": "Chief Security Officer, THG",
+				"employeeQuoteName2": "Shaun Hall",
+				"employeeQuoteText2": "Thanks to the massive scalability of Workers and the Cloudflare global network, we know the system is not going to fall over during peak season — we no longer worry about whether our websites can handle the surges in customer traffic.",
+				"employeeQuoteJobTitle2": "Principal Software Engineer, THG",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mdjTJuk3Dq1Vsd4N0fCev/4442fa9b5151af49dc718eb36774acca/thg_meta__2_.png"
+					},
+					"description": "THG video poster"
+				},
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41L02Mp1noJ3b0JBGEIuLV/3ad5f942c4b639b37e52a2be14869e4b/thg_logo.png"
+					},
+					"description": "THG logo illustration"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "v1pYtQgnjYRvnwOMj9EMh",
+			"pathname": "/case-studies/thg/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
