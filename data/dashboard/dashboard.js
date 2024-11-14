@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "ee195c90-2147-5ecf-9df8-1c142a7b216a")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "bf9bfe15-5c86-537f-95ca-9f72bd30d6fc")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -710,7 +710,7 @@
 			var bt = t("../react/app/components/Persistence/index.tsx"),
 				Tt = t("../node_modules/@cloudflare/elements/es/index.js"),
 				Fe = t("../react/app/components/LoadingSuspense.tsx");
-			const Mt = _e().lazy(() => Promise.all([t.e(85175), t.e(2480), t.e(10008), t.e(39957), t.e(94012), t.e(97999), t.e(72019), t.e(26341), t.e(5668), t.e(60091), t.e(45616), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(40758), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
+			const Mt = _e().lazy(() => Promise.all([t.e(85175), t.e(2480), t.e(10008), t.e(39957), t.e(94012), t.e(97999), t.e(72019), t.e(26341), t.e(5668), t.e(60091), t.e(45616), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(91003), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
 			var en = () => _e().createElement(Fe.Z, null, _e().createElement(Mt, null));
 			const tn = () => (Pe.useEffect(() => se, []), null);
 			var nn = t("../../../../node_modules/moment/moment.js"),
@@ -847,7 +847,7 @@
 					}, [])
 				},
 				gn = "GTM-NDGPDFZ",
-				fn = _e().lazy(() => Promise.all([t.e(85175), t.e(2480), t.e(10008), t.e(39957), t.e(94012), t.e(97999), t.e(72019), t.e(26341), t.e(16339), t.e(91167), t.e(60091), t.e(45616), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(40758), t.e(64124), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
+				fn = _e().lazy(() => Promise.all([t.e(85175), t.e(2480), t.e(10008), t.e(39957), t.e(94012), t.e(97999), t.e(72019), t.e(26341), t.e(16339), t.e(91167), t.e(60091), t.e(45616), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(91003), t.e(64124), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
 				_n = _e().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(85175), t.e(97999), t.e(16339), t.e(60091), t.e(60734), t.e(69088), t.e(64124), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
 			var En = ({
 					userIsAuthed: T
@@ -993,10 +993,10 @@
 					t.g.build = Tn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "7c4de339b1417497c72a995c37965c8f702d7a23",
-						dashVersion: "28961744",
+						commit: "4fdf2162f71b800f332718c0311a3ab2d2210999",
+						dashVersion: "28962404",
 						env: "production",
-						builtAt: 1731581278284,
+						builtAt: 1731582452182,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -7849,1398 +7849,6 @@
 				dmarcReports: "emailSecurityDmarcReports"
 			}
 		},
-		"../react/pages/firewall/analytics/labels.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				AU: function() {
-					return l
-				},
-				Bc: function() {
-					return o
-				},
-				Bt: function() {
-					return e
-				},
-				e_: function() {
-					return _
-				}
-			});
-			const e = {
-					unknown: "firewall.analytics.actions.labels.unknown",
-					allow: "firewall.analytics.actions.labels.allow",
-					bypass: "firewall.analytics.actions.labels.bypass",
-					block: "firewall.analytics.actions.labels.drop",
-					challenge: "firewall.analytics.actions.labels.challenge",
-					jschallenge: "firewall.analytics.actions.labels.jschallenge",
-					rewrite: "firewall.analytics.actions.labels.rewrite",
-					log: "firewall.analytics.actions.labels.log",
-					connection_close: "firewall.analytics.actions.labels.connectionClose",
-					challenge_solved: "firewall.analytics.actions.labels.challenge_solved",
-					challenge_failed: "firewall.analytics.actions.labels.challenge_failed",
-					challenge_bypassed: "firewall.analytics.actions.labels.challenge_bypassed",
-					jschallenge_solved: "firewall.analytics.actions.labels.jschallenge_solved",
-					jschallenge_failed: "firewall.analytics.actions.labels.jschallenge_failed",
-					jschallenge_bypassed: "firewall.analytics.actions.labels.jschallenge_bypassed",
-					managed_challenge: "firewall.analytics.actions.labels.managed_challenge",
-					skip: "firewall.analytics.actions.labels.skip",
-					force_connection_close: "firewall.analytics.actions.labels.force_connection_close"
-				},
-				o = {
-					"Behavioral Analysis": "security_analytics.labels.bot_source.behavioral_analysis",
-					Heuristics: "security_analytics.labels.bot_source.heuristics",
-					"Machine Learning": "security_analytics.labels.bot_source.machine_learning",
-					"Not Computed": "security_analytics.labels.bot_source.not_computed",
-					"JS Fingerprinting": "security_analytics.labels.bot_source.js_fingerprinting",
-					"Verified Bot": "security_analytics.labels.bot_source.verified_bot",
-					"Cloudflare Service": "security_analytics.labels.bot_source.cloudflare_service"
-				},
-				l = {
-					ASN: "asn",
-					COUNTRY: "country",
-					IP: "ip",
-					IP_RANGE: "iprange",
-					SECURITY_LEVEL: "securitylevel",
-					VALIDATION: "validation",
-					ZONE_LOCKDOWN: "zonelockdown",
-					WAF: "waf",
-					UA_BLOCK: "uablock",
-					RATE_LIMIT: "ratelimit",
-					FIREWALL_RULES: "firewallrules",
-					BIC: "bic",
-					HOT: "hot",
-					L7DOS: "l7ddos",
-					BOT_FIGHT_MODE: "botFight",
-					API_SHIELD: "apiShield",
-					API_SHIELD_SCHEMA_VALIDATION: "apiShieldSchemaValidation",
-					API_SHIELD_TOKEN_VALIDATION: "apiShieldTokenValidation",
-					API_SHIELD_SEQUENCE_MITIGATION: "apiShieldSequenceMitigation",
-					FIREWALL_CUSTOM: "firewallCustom",
-					FIREWALL_MANAGED: "firewallManaged",
-					SDD: "sdd",
-					DLP: "dlp",
-					BOT_MANAGEMENT: "botManagement",
-					UNKNOWN: "unknown"
-				},
-				_ = {
-					[l.ASN]: "firewall.analytics.services.labels.asn",
-					[l.COUNTRY]: "firewall.analytics.services.labels.country",
-					[l.IP]: "firewall.analytics.services.labels.ip",
-					[l.IP_RANGE]: "firewall.analytics.services.labels.ipRange",
-					[l.SECURITY_LEVEL]: "firewall.analytics.services.labels.securityLevel",
-					[l.VALIDATION]: "firewall.analytics.services.labels.validation",
-					[l.ZONE_LOCKDOWN]: "firewall.analytics.services.labels.zoneLockdown",
-					[l.WAF]: "firewall.analytics.services.labels.waf",
-					[l.UA_BLOCK]: "firewall.analytics.services.labels.uaBlock",
-					[l.RATE_LIMIT]: "firewall.analytics.services.labels.rateLimit",
-					[l.FIREWALL_RULES]: "firewall.analytics.services.labels.firewallRules",
-					[l.BIC]: "firewall.analytics.services.labels.bic",
-					[l.HOT]: "firewall.analytics.services.labels.hot",
-					[l.UNKNOWN]: "firewall.analytics.services.labels.unknown",
-					[l.L7DOS]: "firewall.analytics.services.labels.l7dos",
-					[l.BOT_FIGHT_MODE]: "firewall.analytics.services.labels.bot_fight_mode",
-					[l.API_SHIELD]: "firewall.analytics.services.labels.apiShield",
-					[l.API_SHIELD_SCHEMA_VALIDATION]: "firewall.analytics.services.labels.apiShieldSchemaValidation",
-					[l.API_SHIELD_TOKEN_VALIDATION]: "firewall.analytics.services.labels.apiShieldTokenValidation",
-					[l.API_SHIELD_SEQUENCE_MITIGATION]: "firewall.analytics.services.labels.apiShieldSequenceMitigation",
-					[l.FIREWALL_CUSTOM]: "firewall.analytics.services.labels.firewallCustom",
-					[l.FIREWALL_MANAGED]: "firewall.analytics.services.labels.firewallManaged",
-					[l.DLP]: "firewall.analytics.services.labels.dlp",
-					[l.BOT_MANAGEMENT]: "firewall.analytics.services.labels.botManagement"
-				}
-		},
-		"../react/pages/firewall/api-shield/tracking.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				Fj: function() {
-					return p
-				},
-				kq: function() {
-					return u
-				},
-				xr: function() {
-					return h
-				}
-			});
-			var e = t("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				o = t.n(e);
-
-			function l(n) {
-				for (var r = 1; r < arguments.length; r++) {
-					var a = arguments[r] != null ? Object(arguments[r]) : {},
-						d = Object.keys(a);
-					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(i) {
-						return Object.getOwnPropertyDescriptor(a, i).enumerable
-					})), d.forEach(function(i) {
-						_(n, i, a[i])
-					})
-				}
-				return n
-			}
-
-			function _(n, r, a) {
-				return r = s(r), r in n ? Object.defineProperty(n, r, {
-					value: a,
-					enumerable: !0,
-					configurable: !0,
-					writable: !0
-				}) : n[r] = a, n
-			}
-
-			function s(n) {
-				var r = f(n, "string");
-				return typeof r == "symbol" ? r : String(r)
-			}
-
-			function f(n, r) {
-				if (typeof n != "object" || n === null) return n;
-				var a = n[Symbol.toPrimitive];
-				if (a !== void 0) {
-					var d = a.call(n, r || "default");
-					if (typeof d != "object") return d;
-					throw new TypeError("@@toPrimitive must return a primitive value.")
-				}
-				return (r === "string" ? String : Number)(n)
-			}
-			let u = function(n) {
-				return n.MAIN = "API Shield", n.SCHEMA_VALIDATION = "Schema Validation", n.JWT_VALIDATION = "JWT Validation", n.SEQUENCE_ANALYTICS = "Sequence Analytics", n.SEQUENCE_RULES = "Sequence Rules", n.ENDPOINT_MANAGEMENT = "Endpoint Management", n.API_DISCOVERY = "API Discovery", n.SETTINGS = "Settings", n
-			}({});
-			const p = {
-					[u.ENDPOINT_MANAGEMENT]: {
-						listOfEndpoints: "view a page of endpoints",
-						deleteEndpoint: "delete an endpoint",
-						detailedMetrics: "view detailed endpoint metrics with recommended rate limits",
-						createEndpoint: "create an endpoint",
-						deployRouting: "deploy routing",
-						deleteRouting: "delete routing"
-					},
-					[u.API_DISCOVERY]: {
-						viewDiscoveredEndpoints: "view a page of discovered endpoints",
-						saveDiscoveredEndpoint: "save discovered endpoints",
-						ignoreOrUnignoreDiscoveredEndpoint: "ignore or unignore discovered endpoints"
-					},
-					[u.SCHEMA_VALIDATION]: {
-						viewSchemasList: "view a list of schemas",
-						viewSchemaAdoption: "view which endpoints have adopted which schemas",
-						addLearnedSchemaByEndpoint: "add a learned schema on a single endpoint",
-						uploadSchema: "upload api schemas to schema validation",
-						addLearnedSchemaByHostname: "add a learned schema by hostname",
-						downloadSchema: "download an existing schema",
-						deleteSchema: "delete an existing schema"
-					},
-					[u.SEQUENCE_ANALYTICS]: {
-						viewSequencesPage: "view a page of sequences"
-					},
-					[u.SEQUENCE_RULES]: {
-						listSequenceRules: "view a list of sequence rules",
-						deleteSequenceRule: "delete a sequence rule",
-						reorderSequenceRule: "reorder a sequence rule",
-						createSequenceRule: "create a sequence rule",
-						editSequenceRule: "edit a sequence rule"
-					},
-					[u.JWT_VALIDATION]: {
-						viewJWTRules: "view a page of jwt rules",
-						addJWTRule: "add a jwt rule",
-						editJWTRule: "edit a jwt rule",
-						deleteJWTRule: "delete a jwt rule",
-						reprioritizeJWTRule: "reprioritize a jwt rule",
-						viewJWTConfigs: "view jwt configs",
-						addJWTConfig: "add a jwt config",
-						editJWTConfig: "edit a jwt config",
-						deleteJWTConfig: "delete a jwt config"
-					},
-					[u.SETTINGS]: {
-						redirectToFirewallRulesTemplate: "redirect to firewall rules",
-						redirectToPages: "redirect to uploaded developer portal on pages",
-						listSessionIdentifiers: "list session identifiers",
-						listRequestsContainingSessionIdentifiers: "list requests containing session identifiers",
-						addOrRemoveSessionIdentifiers: "add or remove session identifiers",
-						listAllFallthroughSettings: "list fallthrough settings",
-						listAllFallthroughSchemas: "list fallthrough schemas",
-						redirectToCustomRules: "redirect to custom rules from create fallthrough template"
-					}
-				},
-				h = ({
-					name: n,
-					category: r = "user journey",
-					product: a = u.MAIN,
-					productName: d,
-					additionalData: i
-				}) => {
-					o().sendEvent(n, l({
-						category: r,
-						product: a,
-						productName: d
-					}, i || {}))
-				}
-		},
-		"../react/pages/firewall/bots/tracking.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				N3: function() {
-					return e
-				},
-				UN: function() {
-					return l
-				},
-				h1: function() {
-					return o
-				}
-			});
-			let e = function(_) {
-					return _.INITIAL_FETCH_SCORES = "view bots scores distribution", _.FETCH_CONFIGURATION = "view bots configuration page", _.INITIAL_FETCH_TIME_SERIES = "view bots time series analytics", _.INITIAL_FETCH_ATTRIBUTES = "view bots attributes", _.UPDATE_SETTINGS = "update bots settings", _.DELETE_RULE = "delete bots ruleset", _.UPDATE_RULE = "update bots ruleset", _.FETCH_RULES = "view bots ruleset", _.CONFIGURE_BOT_MANAGEMENT = "view bots management", _.WAF_RULES_REDIRECT = "redirect waf rules", _
-				}({}),
-				o = function(_) {
-					return _.PROVIDED_TEMPLATE = "provided template link in detection card", _.CONFIGURE_BOT_MANAGEMENT = "configure bot management link", _.USE_TEMPLATE = "use template", _.CREATE_FIREWALL_RULE = "create firewall rule", _.WAF_RULES = "waf rules", _
-				}({});
-			const l = "user journey"
-		},
-		"../react/pages/firewall/page-shield/tracking.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				F: function() {
-					return e
-				}
-			});
-			const e = {
-				CONFIGURE_PAGE_SHIELD: "configure page shield",
-				VIEW_PAGE_SHIELD_SETTINGS: "view page shield settings",
-				VIEW_DETECTED_SCRIPTS: "view detected scripts",
-				VIEW_DETECTED_CONNECTIONS: "view detected connections",
-				VIEW_DETECTED_COOKIES: "view detected cookies",
-				MANAGE_PAGE_SHIELD_POLICY: "manage page shield policy",
-				VIEW_PAGE_SHIELD_POLICIES: "view page shield policies",
-				SHOW_MUTABLE_VERSION_TOOLTIP: "show mutable version warning tooltip",
-				OPEN_MUTABLE_VERSION_TOOLTIP: "open mutable version warning tooltip"
-			}
-		},
-		"../react/pages/firewall/rulesets/tracking.tsx": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				QK: function() {
-					return e
-				},
-				dy: function() {
-					return o
-				},
-				sO: function() {
-					return l
-				},
-				x4: function() {
-					return _
-				}
-			});
-			let e = function(s) {
-				return s.DELETE = "delete", s.CREATE = "create", s.GET = "get", s.UPDATE = "update", s
-			}({});
-			const o = {
-					http_config_settings: "configuration",
-					http_request_dynamic_redirect: "redirect",
-					http_request_cache_settings: "cache",
-					http_request_origin: "origin",
-					http_request_late_transform: "modify request header",
-					http_request_transform: "rewrite url",
-					http_response_headers_transform: "modify response header",
-					http_response_compression: "compression",
-					http_ratelimit: "rate limiting",
-					http_request_firewall_custom: "custom",
-					http_request_firewall_managed: "managed"
-				},
-				l = (s, f) => {
-					var u;
-					return `${f} ${(u=o[s])!==null&&u!==void 0?u:s} rule${f===e.GET?"s":""}`
-				},
-				_ = () => {
-					var s, f;
-					return (s = Object.keys(o)) === null || s === void 0 || (f = s.map(u => {
-						var p;
-						return (p = Object.values(e)) === null || p === void 0 ? void 0 : p.map(h => l(u, h))
-					})) === null || f === void 0 ? void 0 : f.flat()
-				}
-		},
-		"../react/pages/firewall/security-analytics/logs/constants.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				AS: function() {
-					return f
-				},
-				IK: function() {
-					return r
-				},
-				Ki: function() {
-					return l
-				},
-				Lz: function() {
-					return a
-				},
-				nT: function() {
-					return p
-				},
-				o4: function() {
-					return d
-				},
-				oY: function() {
-					return _
-				},
-				qH: function() {
-					return n
-				},
-				x3: function() {
-					return u
-				}
-			});
-			var e = t("../react/pages/firewall/analytics/labels.ts"),
-				o = t("../react/common/constants/analytics/botScoreSrc.ts");
-			const l = ["block", "challenge", "jschallenge", "managedChallenge"],
-				_ = ["miss", "expired", "bypass", "dynamic"],
-				s = i => Object.fromEntries(Object.entries(i).map(([c, g]) => [g, c])),
-				f = {
-					block: "block",
-					challenge: "challenge",
-					jschallenge: "jschallenge",
-					managed_challenge: "managedChallenge"
-				},
-				u = s(f),
-				p = {
-					asn: e.AU.ASN,
-					country: e.AU.COUNTRY,
-					ip: e.AU.IP,
-					ipRange: e.AU.IP_RANGE,
-					securityLevel: e.AU.SECURITY_LEVEL,
-					validation: e.AU.VALIDATION,
-					zoneLockdown: e.AU.ZONE_LOCKDOWN,
-					waf: e.AU.WAF,
-					rateLimit: e.AU.RATE_LIMIT,
-					firewallRules: e.AU.FIREWALL_RULES,
-					bic: e.AU.BIC,
-					hot: e.AU.HOT,
-					unknown: e.AU.UNKNOWN,
-					l7ddos: e.AU.L7DOS,
-					botFight: e.AU.BOT_FIGHT_MODE,
-					apiShield: e.AU.API_SHIELD,
-					apiShieldSchemaValidation: e.AU.API_SHIELD_SCHEMA_VALIDATION,
-					apiShieldTokenValidation: e.AU.API_SHIELD_TOKEN_VALIDATION,
-					firewallCustom: e.AU.FIREWALL_CUSTOM,
-					firewallManaged: e.AU.FIREWALL_MANAGED,
-					dlp: e.AU.DLP,
-					botManagement: e.AU.BOT_MANAGEMENT,
-					uaBlock: e.AU.UA_BLOCK
-				},
-				h = s(p),
-				n = s(o.EG);
-			let r = function(i) {
-				return i.SAMPLED = "sampled", i.RAW = "raw", i
-			}({});
-			const a = "security-analytics-log-explorer";
-			let d = function(i) {
-				return i.CLICK_ADAPTIVE_SAMPLING = 'click on "adaptive sampling"', i.CLICK_TO_LOG_EXPLORER_DESCRIPTION = 'click on "Go to Log Explorer" in the description', i.CLICK_TO_LOG_EXPLORER_BANNER = 'click on "Go to Log Explorer" in the banner"', i.CLICK_SWITCH_TO_RAW_LOGS = 'click on "Switch to raw logs"', i.CLICK_SWITCH_TO_SAMPLED_LOGS = 'click on "Switch back to sampled logs"', i
-			}({})
-		},
-		"../react/pages/firewall/settings/cards/security-txt/helpers.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				$E: function() {
-					return n
-				},
-				Mb: function() {
-					return r
-				},
-				Q4: function() {
-					return d
-				},
-				QF: function() {
-					return h
-				},
-				Wv: function() {
-					return a
-				},
-				vc: function() {
-					return i
-				}
-			});
-			var e = t("../react/pages/firewall/settings/cards/security-txt/types.ts"),
-				o = t("../../../../node_modules/yup/es/index.js"),
-				l = t("../../../../node_modules/@cloudflare/util-http-file/es/index.js"),
-				_ = t("../react/pages/analytics/common/utils/gqlUtils.js");
-
-			function s(c) {
-				for (var g = 1; g < arguments.length; g++) {
-					var v = arguments[g] != null ? Object(arguments[g]) : {},
-						y = Object.keys(v);
-					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(v).filter(function(P) {
-						return Object.getOwnPropertyDescriptor(v, P).enumerable
-					})), y.forEach(function(P) {
-						f(c, P, v[P])
-					})
-				}
-				return c
-			}
-
-			function f(c, g, v) {
-				return g = u(g), g in c ? Object.defineProperty(c, g, {
-					value: v,
-					enumerable: !0,
-					configurable: !0,
-					writable: !0
-				}) : c[g] = v, c
-			}
-
-			function u(c) {
-				var g = p(c, "string");
-				return typeof g == "symbol" ? g : String(g)
-			}
-
-			function p(c, g) {
-				if (typeof c != "object" || c === null) return c;
-				var v = c[Symbol.toPrimitive];
-				if (v !== void 0) {
-					var y = v.call(c, g || "default");
-					if (typeof y != "object") return y;
-					throw new TypeError("@@toPrimitive must return a primitive value.")
-				}
-				return (g === "string" ? String : Number)(c)
-			}
-			const h = {
-					[e.T.ENABLED]: !0,
-					[e.T.CONTACT]: [""],
-					[e.T.EXPIRES]: ""
-				},
-				n = {
-					[e.T.CONTACT]: {
-						label: "security_txt.fields.contact",
-						tooltip: "security_txt.fields.contact.description",
-						placeholder: "security_txt.fields.contact.placeholder"
-					},
-					[e.T.EXPIRES]: {
-						label: "security_txt.fields.expires",
-						tooltip: "security_txt.fields.expires.description",
-						placeholder: "security_txt.fields.expires.placeholder"
-					},
-					[e.T.ENCRYPTION]: {
-						label: "security_txt.fields.encryption",
-						tooltip: "security_txt.fields.encryption.description",
-						placeholder: "security_txt.fields.encryption.placeholder"
-					},
-					[e.T.ACKNOWLEDGMENTS]: {
-						label: "security_txt.fields.acknowledgements",
-						tooltip: "security_txt.fields.acknowledgements.description",
-						placeholder: "security_txt.fields.acknowledgements.placeholder"
-					},
-					[e.T.CANONICAL]: {
-						label: "security_txt.fields.canonical",
-						tooltip: "security_txt.fields.canonical.description",
-						placeholder: "security_txt.fields.canonical.placeholder"
-					},
-					[e.T.POLICY]: {
-						label: "security_txt.fields.policy",
-						tooltip: "security_txt.fields.policy.description",
-						placeholder: "security_txt.fields.policy.placeholder"
-					},
-					[e.T.HIRING]: {
-						label: "security_txt.fields.hiring",
-						tooltip: "security_txt.fields.hiring.description",
-						placeholder: "security_txt.fields.hiring.placeholder"
-					},
-					[e.T.PREFERRED_LANGUAGES]: {
-						label: "security_txt.fields.preferred_languages",
-						tooltip: "security_txt.fields.preferred_languages.description",
-						placeholder: "security_txt.fields.preferred_languages.placeholder"
-					}
-				},
-				r = c => o.Ry({
-					[e.T.CONTACT]: o.IX().of(o.Z_().required(c("common.required")).matches(/^((https:\/\/)|(tel:)|(mailto:))/, c("security_txt.fields.contact.format_error"))),
-					[e.T.EXPIRES]: o.hT().required(c("common.required")).min(new Date, c("security_txt.fields.expires.min_error"))
-				}),
-				a = c => {
-					const g = {};
-					for (const v in c) g[v] = Array.isArray(c[v]) ? c[v].filter(y => !!y) : c[v];
-					return s({}, g, {
-						expires: (0, _.DZ)(c.expires)
-					})
-				},
-				d = (c, g, v) => {
-					const y = [...new Set([e.T.CONTACT, e.T.EXPIRES, ...Object.values(e.T)])],
-						P = Object.entries(c).sort(([S], [A]) => y.indexOf(S) - y.indexOf(A)).filter(([S, A]) => !!n[S] && !!A && (!Array.isArray(A) || !!A.length)).map(([S, A]) => Array.isArray(A) ? A.map(b => `${v(n[S].label)}: ${b}`).join(`
-`) : `${v(n[S].label)}: ${A}`).join(`
-`);
-					(0, l.yH)(`Cloudflare_${g}_security.txt`, P, "text/plain;charset=utf-8")
-				};
-			let i = function(c) {
-				return c.CREATED = "created security.txt", c.ENABLED = "enabled security.txt", c.DISABLED = "disabled security.txt", c.DOWNLOADED = "downloaded security.txt", c.UPDATED = "updated security.txt", c.DELETED = "deleted security.txt", c
-			}({})
-		},
-		"../react/pages/firewall/settings/cards/security-txt/types.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				T: function() {
-					return e
-				}
-			});
-			let e = function(o) {
-				return o.ENABLED = "enabled", o.CONTACT = "contact", o.EXPIRES = "expires", o.ENCRYPTION = "encryption", o.ACKNOWLEDGMENTS = "acknowledgments", o.CANONICAL = "canonical", o.HIRING = "hiring", o.POLICY = "policy", o.PREFERRED_LANGUAGES = "preferred_languages", o
-			}({})
-		},
-		"../react/pages/firewall/settings/labels/api/helpers.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				Mi: function() {
-					return P
-				},
-				hL: function() {
-					return y
-				}
-			});
-			var e = t("../react/app/redux/index.ts"),
-				o = t("../react/common/selectors/zoneSelectors.ts"),
-				l = t("../react/common/utils/useQueryCache.ts"),
-				_ = t("../react/pages/firewall/settings/resources/constants/index.ts"),
-				s = t("../react/common/hooks/useAccountId.ts"),
-				f = t("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http"),
-				u = t("../../../../node_modules/@cloudflare/util-routes/es/index.js");
-			const p = {
-				labels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels`,
-				userLabel: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/user/${"labelName"}`,
-				userLabels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/user`,
-				managedLabel: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/managed/${"labelName"}`,
-				managedLabels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/managed`,
-				operationsLinkedToLabels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/operations/labels`,
-				userLabelOperations: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/user/${"labelName"}/resources/operation`,
-				managedLabelOperations: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/managed/${"labelName"}/resources/operation`
-			};
-			var h = t("../../../../node_modules/lodash/lodash.js"),
-				n = t("../react/pages/firewall/settings/resources/utils/index.ts"),
-				r = t("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js");
-
-			function a(A, b) {
-				if (A == null) return {};
-				var I = d(A, b),
-					F, z;
-				if (Object.getOwnPropertySymbols) {
-					var V = Object.getOwnPropertySymbols(A);
-					for (z = 0; z < V.length; z++) F = V[z], !(b.indexOf(F) >= 0) && (!Object.prototype.propertyIsEnumerable.call(A, F) || (I[F] = A[F]))
-				}
-				return I
-			}
-
-			function d(A, b) {
-				if (A == null) return {};
-				var I = {},
-					F = Object.keys(A),
-					z, V;
-				for (V = 0; V < F.length; V++) z = F[V], !(b.indexOf(z) >= 0) && (I[z] = A[z]);
-				return I
-			}
-
-			function i(A) {
-				for (var b = 1; b < arguments.length; b++) {
-					var I = arguments[b] != null ? Object(arguments[b]) : {},
-						F = Object.keys(I);
-					typeof Object.getOwnPropertySymbols == "function" && F.push.apply(F, Object.getOwnPropertySymbols(I).filter(function(z) {
-						return Object.getOwnPropertyDescriptor(I, z).enumerable
-					})), F.forEach(function(z) {
-						c(A, z, I[z])
-					})
-				}
-				return A
-			}
-
-			function c(A, b, I) {
-				return b = g(b), b in A ? Object.defineProperty(A, b, {
-					value: I,
-					enumerable: !0,
-					configurable: !0,
-					writable: !0
-				}) : A[b] = I, A
-			}
-
-			function g(A) {
-				var b = v(A, "string");
-				return typeof b == "symbol" ? b : String(b)
-			}
-
-			function v(A, b) {
-				if (typeof A != "object" || A === null) return A;
-				var I = A[Symbol.toPrimitive];
-				if (I !== void 0) {
-					var F = I.call(A, b || "default");
-					if (typeof F != "object") return F;
-					throw new TypeError("@@toPrimitive must return a primitive value.")
-				}
-				return (b === "string" ? String : Number)(A)
-			}
-			const y = A => {
-					const b = (0, e.p4)(o.Cu),
-						I = (0, s.F)(),
-						F = S.labels(i({
-							accountId: I,
-							zoneId: b
-						}, A ? i({}, A) : {})),
-						z = (0, l.o)(F);
-					return i({
-						zoneId: b,
-						queryKey: F,
-						batchInvalidateLabels: async () => {
-							await z.batchInvalidate({
-								queryKeysToPredicateInvalidate: [_.IQ.LABELS],
-								refetchActive: !0,
-								refetchInactive: !0
-							})
-						}
-					}, z)
-				},
-				P = {
-					getLabels: async A => {
-						var b, I, F, z;
-						let {
-							zoneId: V,
-							hideErrorAlert: ee = !0
-						} = A, j = a(A, ["zoneId", "hideErrorAlert"]);
-						return (await f.get(p.labels.toUrl({
-							zoneId: V
-						}), {
-							parameters: {
-								page: j == null ? void 0 : j.page,
-								per_page: j == null ? void 0 : j.per_page,
-								with_mapped_resource_counts: j == null ? void 0 : j.with_mapped_resource_counts,
-								filter: j == null || (b = j.filters) === null || b === void 0 ? void 0 : b.search,
-								source: (0, n.sQ)(j == null || (I = j.filters) === null || I === void 0 ? void 0 : I.source),
-								order: j == null || (F = j.sort) === null || F === void 0 ? void 0 : F.id,
-								direction: (j == null ? void 0 : j.sort) ? (j == null || (z = j.sort) === null || z === void 0 ? void 0 : z.desc) ? r.Sr.desc : r.Sr.asc : void 0
-							},
-							hideErrorAlert: ee
-						})).body
-					},
-					getLabel: async A => {
-						let {
-							zoneId: b,
-							labelName: I,
-							hideErrorAlert: F = !0
-						} = A, z = a(A, ["zoneId", "labelName", "hideErrorAlert"]);
-						const V = (0, n.mm)(I) ? p.managedLabel.toUrl({
-							zoneId: b,
-							labelName: I
-						}) : p.userLabel.toUrl({
-							zoneId: b,
-							labelName: I
-						});
-						return (await f.get(V, {
-							parameters: {
-								with_mapped_resource_counts: z == null ? void 0 : z.with_mapped_resource_counts
-							},
-							hideErrorAlert: F
-						})).body
-					},
-					editLabel: async ({
-						zoneId: A,
-						label: b,
-						replace: I
-					}) => {
-						const {
-							name: F
-						} = b, z = a(b, ["name"]);
-						return (await (I ? f.put : f.patch)(p.userLabel.toUrl({
-							zoneId: A,
-							labelName: b.name
-						}), {
-							body: z
-						})).body
-					},
-					deleteLabel: async ({
-						zoneId: A,
-						labelName: b
-					}) => (await f.del(p.userLabel.toUrl({
-						zoneId: A,
-						labelName: b
-					}))).body,
-					createLabel: async A => {
-						let {
-							zoneId: b
-						} = A, I = a(A, ["zoneId"]);
-						const {
-							product: F
-						} = I, z = a(I, ["product"]);
-						return (await f.post(p.userLabels.toUrl({
-							zoneId: b
-						}), {
-							body: [z]
-						})).body
-					},
-					bulkApplyLabelsToOperation: async ({
-						zoneId: A,
-						user: b,
-						managed: I,
-						operationIds: F,
-						replace: z
-					}) => (await (z ? f.put : f.post)(p.operationsLinkedToLabels.toUrl({
-						zoneId: A
-					}), {
-						body: i({}, b ? {
-							user: {
-								labels: b
-							}
-						} : {}, I ? {
-							managed: {
-								labels: I
-							}
-						} : {}, {
-							selector: {
-								include: {
-									operation_ids: F
-								}
-							}
-						})
-					})).body,
-					bulkApplyOperationsToLabel: async ({
-						zoneId: A,
-						labelName: b,
-						operationIds: I
-					}) => {
-						const F = (0, n.mm)(b) ? p.managedLabelOperations.toUrl({
-							zoneId: A,
-							labelName: b
-						}) : p.userLabelOperations.toUrl({
-							zoneId: A,
-							labelName: b
-						});
-						return (await f.put(F, {
-							body: {
-								selector: {
-									include: {
-										operation_ids: I
-									}
-								}
-							}
-						})).body
-					}
-				},
-				S = {
-					labels: A => {
-						let {
-							accountId: b,
-							zoneId: I
-						} = A, F = a(A, ["accountId", "zoneId"]);
-						return [_.IQ.LABELS, b, I, ...(0, h.isEmpty)(F) ? [] : [F]]
-					}
-				}
-		},
-		"../react/pages/firewall/settings/labels/api/hooks/useGetLabel.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				E: function() {
-					return h
-				},
-				V: function() {
-					return n
-				}
-			});
-			var e = t("webpack/sharing/consume/default/react/react"),
-				o = t.n(e),
-				l = t("../../../../node_modules/react-query/es/index.js"),
-				_ = t("../react/pages/firewall/settings/labels/api/helpers.ts");
-
-			function s(r) {
-				for (var a = 1; a < arguments.length; a++) {
-					var d = arguments[a] != null ? Object(arguments[a]) : {},
-						i = Object.keys(d);
-					typeof Object.getOwnPropertySymbols == "function" && i.push.apply(i, Object.getOwnPropertySymbols(d).filter(function(c) {
-						return Object.getOwnPropertyDescriptor(d, c).enumerable
-					})), i.forEach(function(c) {
-						f(r, c, d[c])
-					})
-				}
-				return r
-			}
-
-			function f(r, a, d) {
-				return a = u(a), a in r ? Object.defineProperty(r, a, {
-					value: d,
-					enumerable: !0,
-					configurable: !0,
-					writable: !0
-				}) : r[a] = d, r
-			}
-
-			function u(r) {
-				var a = p(r, "string");
-				return typeof a == "symbol" ? a : String(a)
-			}
-
-			function p(r, a) {
-				if (typeof r != "object" || r === null) return r;
-				var d = r[Symbol.toPrimitive];
-				if (d !== void 0) {
-					var i = d.call(r, a || "default");
-					if (typeof i != "object") return i;
-					throw new TypeError("@@toPrimitive must return a primitive value.")
-				}
-				return (a === "string" ? String : Number)(r)
-			}
-			const h = r => {
-					const {
-						queryKey: a,
-						zoneId: d
-					} = (0, _.hL)(r), {
-						isLoading: i,
-						isError: c,
-						isSuccess: g,
-						data: v,
-						refetch: y,
-						isRefetching: P
-					} = (0, l.useQuery)({
-						queryKey: a,
-						queryFn: () => _.Mi.getLabel(s({
-							zoneId: d
-						}, r)),
-						enabled: !!(r == null ? void 0 : r.labelName)
-					});
-					return {
-						data: v == null ? void 0 : v.result,
-						errors: v == null ? void 0 : v.errors,
-						paginationData: v == null ? void 0 : v.result_info,
-						isLoading: i,
-						isError: c,
-						isSuccess: g,
-						refetch: y,
-						isRefetching: P
-					}
-				},
-				n = r => {
-					const a = (0, l.useQueryClient)(),
-						{
-							queryKey: d,
-							zoneId: i
-						} = (0, _.hL)(r),
-						c = (0, e.useCallback)(async ({
-							labelName: v
-						}) => {
-							if (!v) throw new Error("Error: unable to get label; missing label name");
-							return await _.Mi.getLabel(s({
-								zoneId: i,
-								labelName: v
-							}, r))
-						}, [i, r]);
-					return {
-						getLabel: (0, e.useCallback)(async ({
-							labelName: v
-						}) => await a.fetchQuery(d, () => c({
-							labelName: v
-						}), {
-							staleTime: 0,
-							cacheTime: 0
-						}), [a, d, c])
-					}
-				}
-		},
-		"../react/pages/firewall/settings/resources/constants/constants.tsx": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				DG: function() {
-					return i
-				},
-				GE: function() {
-					return A
-				},
-				IQ: function() {
-					return _
-				},
-				KV: function() {
-					return f
-				},
-				QH: function() {
-					return r
-				},
-				V: function() {
-					return y
-				},
-				W3: function() {
-					return l
-				},
-				_8: function() {
-					return h
-				},
-				_c: function() {
-					return P
-				},
-				aW: function() {
-					return c
-				},
-				gY: function() {
-					return S
-				},
-				jz: function() {
-					return a
-				},
-				n5: function() {
-					return g
-				},
-				pZ: function() {
-					return n
-				},
-				wq: function() {
-					return s
-				},
-				zF: function() {
-					return b
-				}
-			});
-			var e = t("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js"),
-				o = t("../react/pages/firewall/settings/resources/constants/labelsTableProperties.tsx");
-			const l = "all";
-			let _ = function(I) {
-					return I.LABELS = "labels", I
-				}({}),
-				s = function(I) {
-					return I.USER = "user", I.MANAGED = "managed", I
-				}({}),
-				f = function(I) {
-					return I.SOURCE = "source", I
-				}({});
-			const h = {
-				initialPaginationState: {
-					page: 1,
-					perPage: 10
-				},
-				initialSortState: {
-					name: o.o.NAME,
-					direction: e.Sr.asc
-				},
-				initialToolbarState: {
-					search: "",
-					filterValues: {
-						[f.SOURCE]: l
-					}
-				},
-				filters: f,
-				options: {
-					autoFillInitialValues: !0,
-					autoFillFilterValues: !0,
-					autoClearQs: !0
-				}
-			};
-			let n = function(I) {
-				return I.CREATED_LABEL = "createdLabel", I.CREATED_AND_APPLIED_LABEL = "createdAndAppliedLabel", I.DELETED_LABEL = "deletedLabel", I.APPLIED_LABEL = "appliedLabel", I.EDITED_LABEL = "editedLabel", I.EDITED_AND_APPLIED_LABEL = "editedAndAppliedLabel", I
-			}({});
-			const r = "650px",
-				a = {
-					SECURITY_LABEL: "https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/"
-				},
-				d = /^[\x20-\x7E]+$/,
-				i = /^[A-Za-z0-9-]+$/,
-				c = /^cf-/;
-			let g = function(I) {
-				return I.NAME = "name", I.DESCRIPTION = "description", I
-			}({});
-			const v = "all";
-			let y = function(I) {
-				return I.METHOD = "method", I.HOSTNAME = "hostname", I
-			}({});
-			const P = {
-				initialPaginationState: {
-					page: 1,
-					perPage: 5
-				},
-				initialSortState: {
-					name: "method",
-					direction: e.Sr.desc
-				},
-				initialToolbarState: {
-					search: "",
-					filterValues: {
-						[y.METHOD]: v,
-						[y.HOSTNAME]: v
-					}
-				},
-				filters: y
-			};
-			let S = function(I) {
-				return I.TITLE = "title", I.DESCRIPTION = "description", I.SUBMIT = "submit", I
-			}({});
-			const A = 1e3,
-				b = {
-					LIST_TABLE_WRAPPER: "labels.list.main.table.wrapper",
-					LIST_TABLE_CELL_NAME: "labels.list.main.table.cell.name",
-					LIST_TABLE_CELL_CONNECTED: "labels.list.main.table.cell.connected",
-					LIST_TABLE_CELL_TYPE: "labels.list.main.table.cell.type",
-					LIST_TABLE_CELL_APPLY: "labels.list.main.table.cell.apply",
-					LIST_TABLE_CELL_APPLY_BUTTON: "labels.list.main.table.cell.apply.button",
-					LIST_TABLE_CELL_OVERFLOW_MENU: "labels.list.main.table.cell.overflow",
-					LIST_TABLE_DELETE_MODAL_SUBMIT_BUTTON: "labels.list.main.delete_modal.submit_button",
-					LIST_TABLE_DELETE_MODAL_CANCEL_BUTTON: "labels.list.main.delete_modal.cancel_button",
-					LIST_TABLE_DELETE_MODAL_INPUT: "labels.list.main.delete_modal.input",
-					APPLY_HEADER: "labels.apply.header",
-					APPLY_FORM_NAME: "labels.apply.form.name",
-					APPLY_FORM_NAME_DISABLED: "labels.apply.form.name.disabled",
-					APPLY_FORM_DESCRIPTION: "labels.apply.form.description",
-					APPLY_FORM_DESCRIPTION_DISABLED: "labels.apply.form.disabled",
-					APPLY_FORM_SUBMIT_BUTTON: "labels.apply.form.submit.button",
-					OPERATION_DETAILS_OPEN_MODAL_BUTTON: "labels.operation_details.open_modal.button",
-					ENDPOINT_MANAGEMENT_LABELS_CONTAINER: "labels.endpoint_management.table.container",
-					ENDPOINT_MANAGEMENT_LABELS_MORE_LABELS_BUTTON: "labels.endpoint_management.table.more_labels_button",
-					SIDE_MODAL_CONTAINER: "labels.side_modal.container",
-					SIDE_MODAL_OPERATION_CELL: "labels.side_modal.operation_cell",
-					SIDE_MODAL_SEARCH_BAR: "labels.side_modal.search_bar",
-					SIDE_MODAL_SOURCE_LISTBOX: "labels.side_modal.source_listbox",
-					SIDE_MODAL_MANAGED_LABELS_CONTAINER: "labels.side_modal.managed_labels.container",
-					SIDE_MODAL_USER_LABELS_CONTAINER: "labels.side_modal.user_labels.container",
-					SIDE_MODAL_CREATE_LABEL_INACTIVE: "labels.side_modal.create_label.inactive",
-					SIDE_MODAL_CREATE_LABEL_INPUT: "labels.side_modal.create_label.input",
-					SIDE_MODAL_CREATE_LABEL_BUTTON: "labels.side_modal.create_label.button",
-					SIDE_MODAL_SAVE_LABELS_BUTTON: "labels.side_modal.save_labels.button",
-					SIDE_MODAL_CANCEL_BUTTON: "labels.side_modal.cancel.button",
-					SIDE_MODAL_SELECTED_OPERATIONS_COUNT: "labels.side_modal.selected_operations_count",
-					SIDE_MODAL_BULK_OVERWRITE_TOGGLE: "labels.side_modal.bulk.overwrite.toggle"
-				}
-		},
-		"../react/pages/firewall/settings/resources/constants/index.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				gY: function() {
-					return e.gY
-				},
-				aW: function() {
-					return e.aW
-				},
-				W3: function() {
-					return e.W3
-				},
-				jz: function() {
-					return e.jz
-				},
-				EDIT_LABELS_MODAL_FORM_PROPERTIES: function() {
-					return _
-				},
-				n5: function() {
-					return e.n5
-				},
-				IQ: function() {
-					return e.IQ
-				},
-				_c: function() {
-					return e._c
-				},
-				V: function() {
-					return e.V
-				},
-				j8: function() {
-					return l
-				},
-				LABELS_LIST_TOASTS: function() {
-					return e.pZ
-				},
-				_8: function() {
-					return e._8
-				},
-				KV: function() {
-					return e.KV
-				},
-				om: function() {
-					return o.o
-				},
-				zF: function() {
-					return e.zF
-				},
-				LABEL_SOURCES: function() {
-					return e.wq
-				},
-				GE: function() {
-					return e.GE
-				},
-				QH: function() {
-					return e.QH
-				}
-			});
-			var e = t("../react/pages/firewall/settings/resources/constants/constants.tsx"),
-				o = t("../react/pages/firewall/settings/resources/constants/labelsTableProperties.tsx");
-			let l = function(s) {
-					return s.ENDPOINT = "endpoint", s.METHOD = "method", s.OPERATION_ID = "operationId", s
-				}({}),
-				_ = function(s) {
-					return s.NAME = "name", s.SOURCE = "source", s.NEW_LABEL_NAME = "newLabelName", s
-				}({})
-		},
-		"../react/pages/firewall/settings/resources/constants/labelsTableProperties.tsx": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				o: function() {
-					return e
-				}
-			});
-			let e = function(o) {
-				return o.NAME = "name", o.MAPPED_RESOURCES = "mapped_resources.operations", o.SOURCE = "source", o.APPLY = "apply", o
-			}({})
-		},
-		"../react/pages/firewall/settings/resources/utils/index.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				Iv: function() {
-					return s.Iv
-				},
-				ZF: function() {
-					return s.ZF
-				},
-				Vy: function() {
-					return o
-				},
-				mm: function() {
-					return _
-				},
-				m8: function() {
-					return s.m8
-				},
-				sQ: function() {
-					return l
-				},
-				vU: function() {
-					return n
-				},
-				vE: function() {
-					return v
-				},
-				u_: function() {
-					return A
-				},
-				rP: function() {
-					return h
-				}
-			});
-			var e = t("../react/pages/firewall/settings/resources/constants/index.ts");
-			const o = b => (b == null ? void 0 : b.source) === e.LABEL_SOURCES.USER ? "labels.list.table.columns.type.user" : (b == null ? void 0 : b.source) === e.LABEL_SOURCES.MANAGED ? "labels.list.table.columns.type.managed" : "common.unknown",
-				l = b => b === e.W3 ? void 0 : b,
-				_ = b => e.aW.test(b);
-			var s = t("../react/pages/firewall/settings/resources/utils/tracking.ts"),
-				f = t("webpack/sharing/consume/default/react/react"),
-				u = t("../../../../node_modules/lodash/lodash.js"),
-				p = t("../react/pages/firewall/settings/labels/api/hooks/useGetLabel.ts");
-			const h = () => {
-					const [b, I] = (0, f.useState)(!0), [F, z] = (0, f.useState)(!1), [V, ee] = (0, f.useState)(!1), {
-						getLabel: j
-					} = (0, p.V)(), oe = (0, f.useRef)(null), ne = (0, f.useRef)(""), Z = (0, f.useCallback)(async $ => {
-						z(!0);
-						try {
-							const {
-								success: X
-							} = await j({
-								labelName: $
-							});
-							I(!X), ne.current = $
-						} catch {
-							I(!0)
-						} finally {
-							z(!1), ee(!1)
-						}
-					}, [j]), se = (0, f.useCallback)($ => {
-						oe.current || (oe.current = (0, u.debounce)(Z, 400)), ee(!0), oe.current($)
-					}, [Z]), J = (0, f.useCallback)($ => {
-						const {
-							value: X
-						} = $.target;
-						se(X)
-					}, [se]), ie = (0, f.useCallback)(async $ => {
-						(V || $ !== ne.current) && (oe.current && oe.current.cancel(), await Z($))
-					}, [V, Z]);
-					return {
-						isLabelUnique: b,
-						setIsLabelUnique: I,
-						handleInputChange: J,
-						isLoading: F,
-						isCheckPending: V,
-						ensureChecked: ie
-					}
-				},
-				n = ({
-					modalHeaderFixedHeight: b = 62,
-					modalDefaultPaddings: I = 16
-				} = {}) => {
-					const F = (0, f.useRef)(null),
-						z = (0, f.useRef)(null),
-						[V, ee] = (0, f.useState)(0),
-						[j, oe] = (0, f.useState)(0),
-						ne = `calc(100vh - ${V}px - ${j}px - ${I}px)`,
-						[Z, se] = (0, f.useState)("");
-					return (0, f.useEffect)(() => {
-						const J = () => {
-							var ie, $, X, U;
-							const W = F == null || (ie = F.current) === null || ie === void 0 ? void 0 : ie.offsetHeight,
-								Y = z == null || ($ = z.current) === null || $ === void 0 ? void 0 : $.offsetHeight,
-								re = ((X = W) !== null && X !== void 0 ? X : 0) + b,
-								k = (U = Y) !== null && U !== void 0 ? U : 0;
-							ee(re), oe(k)
-						};
-						return J(), window.addEventListener("resize", J), () => window.removeEventListener("resize", J)
-					}, []), {
-						searchTerm: Z,
-						setSearchTerm: se,
-						scrollableSectionMaxHeight: ne,
-						topMenuRef: F,
-						bottomMenuRef: z
-					}
-				};
-			var r = t("../react/common/hooks/useZoneEntitlement.ts"),
-				a = t("../react/common/hooks/useGate.ts");
-			const d = "central_endpoint_list.endpoint_labels_allowed",
-				i = "system-and-user-generated-labels",
-				c = () => !!(0, a.Z)(i),
-				g = () => !!(0, r.Z)(d),
-				v = () => {
-					const b = c(),
-						I = g();
-					return {
-						isLabelsGateOpen: b,
-						hasEndpointLabelsEntitlement: I,
-						hasLabels: b && I
-					}
-				};
-			var y = t("../../../../node_modules/yup/es/index.js"),
-				P = t("../react/utils/translator.tsx"),
-				S = t("../react/pages/firewall/settings/resources/constants/constants.tsx");
-			const A = () => {
-				const {
-					t: b
-				} = (0, P.QT)(), I = y.Z_().required(b("common.field_is_required")).max(24, b("labels.apply.form.name.error.max_characters")).matches(S.DG, b("labels.apply.form.name.error.special_characters")).test("no-cf-prefix", b("labels.apply.form.name.error.cf_forbidden"), V => !S.aW.test(V)), F = {
-					NAMES: {
-						CREATE: "labels-create-form",
-						EDIT: "labels-edit-form",
-						APPLY: "labels-apply-form"
-					},
-					INITIAL_VALUES: {
-						name: "",
-						description: ""
-					},
-					VALIDATION_SCHEMA: V => y.Ry().shape({
-						[S.n5.NAME]: V ? y.Z_() : I,
-						[S.n5.DESCRIPTION]: V ? y.Z_().optional() : y.Z_().max(150, b("labels.apply.form.description.error.max_characters"))
-					})
-				}, z = {
-					NAME: "edit-labels-modal-form",
-					INITIAL_VALUES: {
-						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.NAME]: "",
-						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.SOURCE]: S.W3,
-						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.NEW_LABEL_NAME]: ""
-					},
-					VALIDATION_SCHEMA: () => y.Ry().shape({
-						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.NEW_LABEL_NAME]: I
-					})
-				};
-				return {
-					LABELS_APPLY_FORM: F,
-					EDIT_LABELS_MODAL_FORM: z
-				}
-			}
-		},
-		"../react/pages/firewall/settings/resources/utils/tracking.ts": function(x, E, t) {
-			"use strict";
-			t.d(E, {
-				Iv: function() {
-					return p
-				},
-				QJ: function() {
-					return a
-				},
-				R: function() {
-					return u
-				},
-				Tf: function() {
-					return d
-				},
-				ZF: function() {
-					return h
-				},
-				eC: function() {
-					return r
-				},
-				m8: function() {
-					return i
-				},
-				tR: function() {
-					return n
-				}
-			});
-			var e = t("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
-				o = t.n(e);
-
-			function l(c) {
-				for (var g = 1; g < arguments.length; g++) {
-					var v = arguments[g] != null ? Object(arguments[g]) : {},
-						y = Object.keys(v);
-					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(v).filter(function(P) {
-						return Object.getOwnPropertyDescriptor(v, P).enumerable
-					})), y.forEach(function(P) {
-						_(c, P, v[P])
-					})
-				}
-				return c
-			}
-
-			function _(c, g, v) {
-				return g = s(g), g in c ? Object.defineProperty(c, g, {
-					value: v,
-					enumerable: !0,
-					configurable: !0,
-					writable: !0
-				}) : c[g] = v, c
-			}
-
-			function s(c) {
-				var g = f(c, "string");
-				return typeof g == "symbol" ? g : String(g)
-			}
-
-			function f(c, g) {
-				if (typeof c != "object" || c === null) return c;
-				var v = c[Symbol.toPrimitive];
-				if (v !== void 0) {
-					var y = v.call(c, g || "default");
-					if (typeof y != "object") return y;
-					throw new TypeError("@@toPrimitive must return a primitive value.")
-				}
-				return (g === "string" ? String : Number)(c)
-			}
-			let u = function(c) {
-					return c.LABELS_LIST = "Labels List page", c.LABELS_APPLY = "Labels Apply page", c.LABELS_SIDE_MODAL = "Labels Side Modal", c.LABELS_ENDPOINT_MANAGEMENT = "Endpoint Management page", c.LABELS_OPERATION_DETAILS = "Operation Details page", c
-				}({}),
-				p = function(c) {
-					return c.API_SHIELD = "API Shield", c.SECURITY_SETTINGS = "Security Settings", c
-				}({}),
-				h = function(c) {
-					return c.OPERATIONS_TABLE_TOOLBAR = "Operations table toolbar", c.OPERATIONS_TABLE_OVERFLOW = "Operations table overflow", c.OPERATIONS_TABLE_ROW = "Operations table row", c.OPERATION_DETAILS_PAGE = "Operation details page", c
-				}({}),
-				n = function(c) {
-					return c.UPSERT = "upsert", c.OVERWRITE = "overwrite", c
-				}({}),
-				r = function(c) {
-					return c.SINGLE = "single", c.MULTIPLE = "multiple", c
-				}({}),
-				a = function(c) {
-					return c.DISPLAY_LABELS_LIST_PAGE = "show a list of labels in the settings page", c.DELETE_LABEL = "delete a user label in the settings page", c.FILTER_USER_MANAGED_LABELS = "filter user/managed labels in the settings page", c.CREATE_LABEL_CLICKED = "click create label button in the settings page", c.BULK_APPLY_CLICKED = "click bulk apply button in the settings page", c.CONNECTED_ENDPOINTS_CLICKED = "click connected endpoints link in the settings page", c.DISPLAY_APPLY_LABELS_PAGE = "show the apply labels page", c.CLICK_LABELS_DOCUMENTATION_LINK = "click documentation link in the apply labels page", c.APPLY_OPERATIONS_TO_LABEL = "apply operations to label in the apply labels page", c.OPEN_LABELS_SIDE_MODAL = "open labels side modal", c.APPLY_LABELS_TO_OPERATION = "apply labels to operation(s) in the labels side modal", c.CREATE_NEW_LABEL = "create a new label", c
-				}({});
-			const d = ({
-					name: c,
-					product: g,
-					category: v = "user journey",
-					pageName: y,
-					from: P,
-					write_strategy: S,
-					type: A,
-					target: b
-				}) => {
-					o().sendEvent(c, l({
-						category: v,
-						pageName: y,
-						product: g
-					}, P ? {
-						from: P
-					} : {}, S ? {
-						write_strategy: S
-					} : {}, A ? {
-						type: A
-					} : {}, b ? {
-						target: b
-					} : {}))
-				},
-				i = () => {
-					var c;
-					return (c = Object.values(a)) === null || c === void 0 ? void 0 : c.flat()
-				}
-		},
 		"../react/pages/home/alerts/config.tsx": function(x, E, t) {
 			"use strict";
 			t.d(E, {
@@ -12197,6 +10805,1398 @@
 				CLICK_EXPORT_INSIGHTS: "click export insights"
 			}
 		},
+		"../react/pages/security/analytics/labels.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				AU: function() {
+					return l
+				},
+				Bc: function() {
+					return o
+				},
+				Bt: function() {
+					return e
+				},
+				e_: function() {
+					return _
+				}
+			});
+			const e = {
+					unknown: "firewall.analytics.actions.labels.unknown",
+					allow: "firewall.analytics.actions.labels.allow",
+					bypass: "firewall.analytics.actions.labels.bypass",
+					block: "firewall.analytics.actions.labels.drop",
+					challenge: "firewall.analytics.actions.labels.challenge",
+					jschallenge: "firewall.analytics.actions.labels.jschallenge",
+					rewrite: "firewall.analytics.actions.labels.rewrite",
+					log: "firewall.analytics.actions.labels.log",
+					connection_close: "firewall.analytics.actions.labels.connectionClose",
+					challenge_solved: "firewall.analytics.actions.labels.challenge_solved",
+					challenge_failed: "firewall.analytics.actions.labels.challenge_failed",
+					challenge_bypassed: "firewall.analytics.actions.labels.challenge_bypassed",
+					jschallenge_solved: "firewall.analytics.actions.labels.jschallenge_solved",
+					jschallenge_failed: "firewall.analytics.actions.labels.jschallenge_failed",
+					jschallenge_bypassed: "firewall.analytics.actions.labels.jschallenge_bypassed",
+					managed_challenge: "firewall.analytics.actions.labels.managed_challenge",
+					skip: "firewall.analytics.actions.labels.skip",
+					force_connection_close: "firewall.analytics.actions.labels.force_connection_close"
+				},
+				o = {
+					"Behavioral Analysis": "security_analytics.labels.bot_source.behavioral_analysis",
+					Heuristics: "security_analytics.labels.bot_source.heuristics",
+					"Machine Learning": "security_analytics.labels.bot_source.machine_learning",
+					"Not Computed": "security_analytics.labels.bot_source.not_computed",
+					"JS Fingerprinting": "security_analytics.labels.bot_source.js_fingerprinting",
+					"Verified Bot": "security_analytics.labels.bot_source.verified_bot",
+					"Cloudflare Service": "security_analytics.labels.bot_source.cloudflare_service"
+				},
+				l = {
+					ASN: "asn",
+					COUNTRY: "country",
+					IP: "ip",
+					IP_RANGE: "iprange",
+					SECURITY_LEVEL: "securitylevel",
+					VALIDATION: "validation",
+					ZONE_LOCKDOWN: "zonelockdown",
+					WAF: "waf",
+					UA_BLOCK: "uablock",
+					RATE_LIMIT: "ratelimit",
+					FIREWALL_RULES: "firewallrules",
+					BIC: "bic",
+					HOT: "hot",
+					L7DOS: "l7ddos",
+					BOT_FIGHT_MODE: "botFight",
+					API_SHIELD: "apiShield",
+					API_SHIELD_SCHEMA_VALIDATION: "apiShieldSchemaValidation",
+					API_SHIELD_TOKEN_VALIDATION: "apiShieldTokenValidation",
+					API_SHIELD_SEQUENCE_MITIGATION: "apiShieldSequenceMitigation",
+					FIREWALL_CUSTOM: "firewallCustom",
+					FIREWALL_MANAGED: "firewallManaged",
+					SDD: "sdd",
+					DLP: "dlp",
+					BOT_MANAGEMENT: "botManagement",
+					UNKNOWN: "unknown"
+				},
+				_ = {
+					[l.ASN]: "firewall.analytics.services.labels.asn",
+					[l.COUNTRY]: "firewall.analytics.services.labels.country",
+					[l.IP]: "firewall.analytics.services.labels.ip",
+					[l.IP_RANGE]: "firewall.analytics.services.labels.ipRange",
+					[l.SECURITY_LEVEL]: "firewall.analytics.services.labels.securityLevel",
+					[l.VALIDATION]: "firewall.analytics.services.labels.validation",
+					[l.ZONE_LOCKDOWN]: "firewall.analytics.services.labels.zoneLockdown",
+					[l.WAF]: "firewall.analytics.services.labels.waf",
+					[l.UA_BLOCK]: "firewall.analytics.services.labels.uaBlock",
+					[l.RATE_LIMIT]: "firewall.analytics.services.labels.rateLimit",
+					[l.FIREWALL_RULES]: "firewall.analytics.services.labels.firewallRules",
+					[l.BIC]: "firewall.analytics.services.labels.bic",
+					[l.HOT]: "firewall.analytics.services.labels.hot",
+					[l.UNKNOWN]: "firewall.analytics.services.labels.unknown",
+					[l.L7DOS]: "firewall.analytics.services.labels.l7dos",
+					[l.BOT_FIGHT_MODE]: "firewall.analytics.services.labels.bot_fight_mode",
+					[l.API_SHIELD]: "firewall.analytics.services.labels.apiShield",
+					[l.API_SHIELD_SCHEMA_VALIDATION]: "firewall.analytics.services.labels.apiShieldSchemaValidation",
+					[l.API_SHIELD_TOKEN_VALIDATION]: "firewall.analytics.services.labels.apiShieldTokenValidation",
+					[l.API_SHIELD_SEQUENCE_MITIGATION]: "firewall.analytics.services.labels.apiShieldSequenceMitigation",
+					[l.FIREWALL_CUSTOM]: "firewall.analytics.services.labels.firewallCustom",
+					[l.FIREWALL_MANAGED]: "firewall.analytics.services.labels.firewallManaged",
+					[l.DLP]: "firewall.analytics.services.labels.dlp",
+					[l.BOT_MANAGEMENT]: "firewall.analytics.services.labels.botManagement"
+				}
+		},
+		"../react/pages/security/api-shield/tracking.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				Fj: function() {
+					return p
+				},
+				kq: function() {
+					return u
+				},
+				xr: function() {
+					return h
+				}
+			});
+			var e = t("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
+				o = t.n(e);
+
+			function l(n) {
+				for (var r = 1; r < arguments.length; r++) {
+					var a = arguments[r] != null ? Object(arguments[r]) : {},
+						d = Object.keys(a);
+					typeof Object.getOwnPropertySymbols == "function" && d.push.apply(d, Object.getOwnPropertySymbols(a).filter(function(i) {
+						return Object.getOwnPropertyDescriptor(a, i).enumerable
+					})), d.forEach(function(i) {
+						_(n, i, a[i])
+					})
+				}
+				return n
+			}
+
+			function _(n, r, a) {
+				return r = s(r), r in n ? Object.defineProperty(n, r, {
+					value: a,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : n[r] = a, n
+			}
+
+			function s(n) {
+				var r = f(n, "string");
+				return typeof r == "symbol" ? r : String(r)
+			}
+
+			function f(n, r) {
+				if (typeof n != "object" || n === null) return n;
+				var a = n[Symbol.toPrimitive];
+				if (a !== void 0) {
+					var d = a.call(n, r || "default");
+					if (typeof d != "object") return d;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (r === "string" ? String : Number)(n)
+			}
+			let u = function(n) {
+				return n.MAIN = "API Shield", n.SCHEMA_VALIDATION = "Schema Validation", n.JWT_VALIDATION = "JWT Validation", n.SEQUENCE_ANALYTICS = "Sequence Analytics", n.SEQUENCE_RULES = "Sequence Rules", n.ENDPOINT_MANAGEMENT = "Endpoint Management", n.API_DISCOVERY = "API Discovery", n.SETTINGS = "Settings", n
+			}({});
+			const p = {
+					[u.ENDPOINT_MANAGEMENT]: {
+						listOfEndpoints: "view a page of endpoints",
+						deleteEndpoint: "delete an endpoint",
+						detailedMetrics: "view detailed endpoint metrics with recommended rate limits",
+						createEndpoint: "create an endpoint",
+						deployRouting: "deploy routing",
+						deleteRouting: "delete routing"
+					},
+					[u.API_DISCOVERY]: {
+						viewDiscoveredEndpoints: "view a page of discovered endpoints",
+						saveDiscoveredEndpoint: "save discovered endpoints",
+						ignoreOrUnignoreDiscoveredEndpoint: "ignore or unignore discovered endpoints"
+					},
+					[u.SCHEMA_VALIDATION]: {
+						viewSchemasList: "view a list of schemas",
+						viewSchemaAdoption: "view which endpoints have adopted which schemas",
+						addLearnedSchemaByEndpoint: "add a learned schema on a single endpoint",
+						uploadSchema: "upload api schemas to schema validation",
+						addLearnedSchemaByHostname: "add a learned schema by hostname",
+						downloadSchema: "download an existing schema",
+						deleteSchema: "delete an existing schema"
+					},
+					[u.SEQUENCE_ANALYTICS]: {
+						viewSequencesPage: "view a page of sequences"
+					},
+					[u.SEQUENCE_RULES]: {
+						listSequenceRules: "view a list of sequence rules",
+						deleteSequenceRule: "delete a sequence rule",
+						reorderSequenceRule: "reorder a sequence rule",
+						createSequenceRule: "create a sequence rule",
+						editSequenceRule: "edit a sequence rule"
+					},
+					[u.JWT_VALIDATION]: {
+						viewJWTRules: "view a page of jwt rules",
+						addJWTRule: "add a jwt rule",
+						editJWTRule: "edit a jwt rule",
+						deleteJWTRule: "delete a jwt rule",
+						reprioritizeJWTRule: "reprioritize a jwt rule",
+						viewJWTConfigs: "view jwt configs",
+						addJWTConfig: "add a jwt config",
+						editJWTConfig: "edit a jwt config",
+						deleteJWTConfig: "delete a jwt config"
+					},
+					[u.SETTINGS]: {
+						redirectToFirewallRulesTemplate: "redirect to firewall rules",
+						redirectToPages: "redirect to uploaded developer portal on pages",
+						listSessionIdentifiers: "list session identifiers",
+						listRequestsContainingSessionIdentifiers: "list requests containing session identifiers",
+						addOrRemoveSessionIdentifiers: "add or remove session identifiers",
+						listAllFallthroughSettings: "list fallthrough settings",
+						listAllFallthroughSchemas: "list fallthrough schemas",
+						redirectToCustomRules: "redirect to custom rules from create fallthrough template"
+					}
+				},
+				h = ({
+					name: n,
+					category: r = "user journey",
+					product: a = u.MAIN,
+					productName: d,
+					additionalData: i
+				}) => {
+					o().sendEvent(n, l({
+						category: r,
+						product: a,
+						productName: d
+					}, i || {}))
+				}
+		},
+		"../react/pages/security/bots/tracking.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				N3: function() {
+					return e
+				},
+				UN: function() {
+					return l
+				},
+				h1: function() {
+					return o
+				}
+			});
+			let e = function(_) {
+					return _.INITIAL_FETCH_SCORES = "view bots scores distribution", _.FETCH_CONFIGURATION = "view bots configuration page", _.INITIAL_FETCH_TIME_SERIES = "view bots time series analytics", _.INITIAL_FETCH_ATTRIBUTES = "view bots attributes", _.UPDATE_SETTINGS = "update bots settings", _.DELETE_RULE = "delete bots ruleset", _.UPDATE_RULE = "update bots ruleset", _.FETCH_RULES = "view bots ruleset", _.CONFIGURE_BOT_MANAGEMENT = "view bots management", _.WAF_RULES_REDIRECT = "redirect waf rules", _
+				}({}),
+				o = function(_) {
+					return _.PROVIDED_TEMPLATE = "provided template link in detection card", _.CONFIGURE_BOT_MANAGEMENT = "configure bot management link", _.USE_TEMPLATE = "use template", _.CREATE_FIREWALL_RULE = "create firewall rule", _.WAF_RULES = "waf rules", _
+				}({});
+			const l = "user journey"
+		},
+		"../react/pages/security/page-shield/tracking.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				F: function() {
+					return e
+				}
+			});
+			const e = {
+				CONFIGURE_PAGE_SHIELD: "configure page shield",
+				VIEW_PAGE_SHIELD_SETTINGS: "view page shield settings",
+				VIEW_DETECTED_SCRIPTS: "view detected scripts",
+				VIEW_DETECTED_CONNECTIONS: "view detected connections",
+				VIEW_DETECTED_COOKIES: "view detected cookies",
+				MANAGE_PAGE_SHIELD_POLICY: "manage page shield policy",
+				VIEW_PAGE_SHIELD_POLICIES: "view page shield policies",
+				SHOW_MUTABLE_VERSION_TOOLTIP: "show mutable version warning tooltip",
+				OPEN_MUTABLE_VERSION_TOOLTIP: "open mutable version warning tooltip"
+			}
+		},
+		"../react/pages/security/rulesets/tracking.tsx": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				QK: function() {
+					return e
+				},
+				dy: function() {
+					return o
+				},
+				sO: function() {
+					return l
+				},
+				x4: function() {
+					return _
+				}
+			});
+			let e = function(s) {
+				return s.DELETE = "delete", s.CREATE = "create", s.GET = "get", s.UPDATE = "update", s
+			}({});
+			const o = {
+					http_config_settings: "configuration",
+					http_request_dynamic_redirect: "redirect",
+					http_request_cache_settings: "cache",
+					http_request_origin: "origin",
+					http_request_late_transform: "modify request header",
+					http_request_transform: "rewrite url",
+					http_response_headers_transform: "modify response header",
+					http_response_compression: "compression",
+					http_ratelimit: "rate limiting",
+					http_request_firewall_custom: "custom",
+					http_request_firewall_managed: "managed"
+				},
+				l = (s, f) => {
+					var u;
+					return `${f} ${(u=o[s])!==null&&u!==void 0?u:s} rule${f===e.GET?"s":""}`
+				},
+				_ = () => {
+					var s, f;
+					return (s = Object.keys(o)) === null || s === void 0 || (f = s.map(u => {
+						var p;
+						return (p = Object.values(e)) === null || p === void 0 ? void 0 : p.map(h => l(u, h))
+					})) === null || f === void 0 ? void 0 : f.flat()
+				}
+		},
+		"../react/pages/security/security-analytics/logs/constants.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				AS: function() {
+					return f
+				},
+				IK: function() {
+					return r
+				},
+				Ki: function() {
+					return l
+				},
+				Lz: function() {
+					return a
+				},
+				nT: function() {
+					return p
+				},
+				o4: function() {
+					return d
+				},
+				oY: function() {
+					return _
+				},
+				qH: function() {
+					return n
+				},
+				x3: function() {
+					return u
+				}
+			});
+			var e = t("../react/pages/security/analytics/labels.ts"),
+				o = t("../react/common/constants/analytics/botScoreSrc.ts");
+			const l = ["block", "challenge", "jschallenge", "managedChallenge"],
+				_ = ["miss", "expired", "bypass", "dynamic"],
+				s = i => Object.fromEntries(Object.entries(i).map(([c, g]) => [g, c])),
+				f = {
+					block: "block",
+					challenge: "challenge",
+					jschallenge: "jschallenge",
+					managed_challenge: "managedChallenge"
+				},
+				u = s(f),
+				p = {
+					asn: e.AU.ASN,
+					country: e.AU.COUNTRY,
+					ip: e.AU.IP,
+					ipRange: e.AU.IP_RANGE,
+					securityLevel: e.AU.SECURITY_LEVEL,
+					validation: e.AU.VALIDATION,
+					zoneLockdown: e.AU.ZONE_LOCKDOWN,
+					waf: e.AU.WAF,
+					rateLimit: e.AU.RATE_LIMIT,
+					firewallRules: e.AU.FIREWALL_RULES,
+					bic: e.AU.BIC,
+					hot: e.AU.HOT,
+					unknown: e.AU.UNKNOWN,
+					l7ddos: e.AU.L7DOS,
+					botFight: e.AU.BOT_FIGHT_MODE,
+					apiShield: e.AU.API_SHIELD,
+					apiShieldSchemaValidation: e.AU.API_SHIELD_SCHEMA_VALIDATION,
+					apiShieldTokenValidation: e.AU.API_SHIELD_TOKEN_VALIDATION,
+					firewallCustom: e.AU.FIREWALL_CUSTOM,
+					firewallManaged: e.AU.FIREWALL_MANAGED,
+					dlp: e.AU.DLP,
+					botManagement: e.AU.BOT_MANAGEMENT,
+					uaBlock: e.AU.UA_BLOCK
+				},
+				h = s(p),
+				n = s(o.EG);
+			let r = function(i) {
+				return i.SAMPLED = "sampled", i.RAW = "raw", i
+			}({});
+			const a = "security-analytics-log-explorer";
+			let d = function(i) {
+				return i.CLICK_ADAPTIVE_SAMPLING = 'click on "adaptive sampling"', i.CLICK_TO_LOG_EXPLORER_DESCRIPTION = 'click on "Go to Log Explorer" in the description', i.CLICK_TO_LOG_EXPLORER_BANNER = 'click on "Go to Log Explorer" in the banner"', i.CLICK_SWITCH_TO_RAW_LOGS = 'click on "Switch to raw logs"', i.CLICK_SWITCH_TO_SAMPLED_LOGS = 'click on "Switch back to sampled logs"', i
+			}({})
+		},
+		"../react/pages/security/settings/cards/security-txt/helpers.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				$E: function() {
+					return n
+				},
+				Mb: function() {
+					return r
+				},
+				Q4: function() {
+					return d
+				},
+				QF: function() {
+					return h
+				},
+				Wv: function() {
+					return a
+				},
+				vc: function() {
+					return i
+				}
+			});
+			var e = t("../react/pages/security/settings/cards/security-txt/types.ts"),
+				o = t("../../../../node_modules/yup/es/index.js"),
+				l = t("../../../../node_modules/@cloudflare/util-http-file/es/index.js"),
+				_ = t("../react/pages/analytics/common/utils/gqlUtils.js");
+
+			function s(c) {
+				for (var g = 1; g < arguments.length; g++) {
+					var v = arguments[g] != null ? Object(arguments[g]) : {},
+						y = Object.keys(v);
+					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(v).filter(function(P) {
+						return Object.getOwnPropertyDescriptor(v, P).enumerable
+					})), y.forEach(function(P) {
+						f(c, P, v[P])
+					})
+				}
+				return c
+			}
+
+			function f(c, g, v) {
+				return g = u(g), g in c ? Object.defineProperty(c, g, {
+					value: v,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : c[g] = v, c
+			}
+
+			function u(c) {
+				var g = p(c, "string");
+				return typeof g == "symbol" ? g : String(g)
+			}
+
+			function p(c, g) {
+				if (typeof c != "object" || c === null) return c;
+				var v = c[Symbol.toPrimitive];
+				if (v !== void 0) {
+					var y = v.call(c, g || "default");
+					if (typeof y != "object") return y;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (g === "string" ? String : Number)(c)
+			}
+			const h = {
+					[e.T.ENABLED]: !0,
+					[e.T.CONTACT]: [""],
+					[e.T.EXPIRES]: ""
+				},
+				n = {
+					[e.T.CONTACT]: {
+						label: "security_txt.fields.contact",
+						tooltip: "security_txt.fields.contact.description",
+						placeholder: "security_txt.fields.contact.placeholder"
+					},
+					[e.T.EXPIRES]: {
+						label: "security_txt.fields.expires",
+						tooltip: "security_txt.fields.expires.description",
+						placeholder: "security_txt.fields.expires.placeholder"
+					},
+					[e.T.ENCRYPTION]: {
+						label: "security_txt.fields.encryption",
+						tooltip: "security_txt.fields.encryption.description",
+						placeholder: "security_txt.fields.encryption.placeholder"
+					},
+					[e.T.ACKNOWLEDGMENTS]: {
+						label: "security_txt.fields.acknowledgements",
+						tooltip: "security_txt.fields.acknowledgements.description",
+						placeholder: "security_txt.fields.acknowledgements.placeholder"
+					},
+					[e.T.CANONICAL]: {
+						label: "security_txt.fields.canonical",
+						tooltip: "security_txt.fields.canonical.description",
+						placeholder: "security_txt.fields.canonical.placeholder"
+					},
+					[e.T.POLICY]: {
+						label: "security_txt.fields.policy",
+						tooltip: "security_txt.fields.policy.description",
+						placeholder: "security_txt.fields.policy.placeholder"
+					},
+					[e.T.HIRING]: {
+						label: "security_txt.fields.hiring",
+						tooltip: "security_txt.fields.hiring.description",
+						placeholder: "security_txt.fields.hiring.placeholder"
+					},
+					[e.T.PREFERRED_LANGUAGES]: {
+						label: "security_txt.fields.preferred_languages",
+						tooltip: "security_txt.fields.preferred_languages.description",
+						placeholder: "security_txt.fields.preferred_languages.placeholder"
+					}
+				},
+				r = c => o.Ry({
+					[e.T.CONTACT]: o.IX().of(o.Z_().required(c("common.required")).matches(/^((https:\/\/)|(tel:)|(mailto:))/, c("security_txt.fields.contact.format_error"))),
+					[e.T.EXPIRES]: o.hT().required(c("common.required")).min(new Date, c("security_txt.fields.expires.min_error"))
+				}),
+				a = c => {
+					const g = {};
+					for (const v in c) g[v] = Array.isArray(c[v]) ? c[v].filter(y => !!y) : c[v];
+					return s({}, g, {
+						expires: (0, _.DZ)(c.expires)
+					})
+				},
+				d = (c, g, v) => {
+					const y = [...new Set([e.T.CONTACT, e.T.EXPIRES, ...Object.values(e.T)])],
+						P = Object.entries(c).sort(([S], [A]) => y.indexOf(S) - y.indexOf(A)).filter(([S, A]) => !!n[S] && !!A && (!Array.isArray(A) || !!A.length)).map(([S, A]) => Array.isArray(A) ? A.map(b => `${v(n[S].label)}: ${b}`).join(`
+`) : `${v(n[S].label)}: ${A}`).join(`
+`);
+					(0, l.yH)(`Cloudflare_${g}_security.txt`, P, "text/plain;charset=utf-8")
+				};
+			let i = function(c) {
+				return c.CREATED = "created security.txt", c.ENABLED = "enabled security.txt", c.DISABLED = "disabled security.txt", c.DOWNLOADED = "downloaded security.txt", c.UPDATED = "updated security.txt", c.DELETED = "deleted security.txt", c
+			}({})
+		},
+		"../react/pages/security/settings/cards/security-txt/types.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				T: function() {
+					return e
+				}
+			});
+			let e = function(o) {
+				return o.ENABLED = "enabled", o.CONTACT = "contact", o.EXPIRES = "expires", o.ENCRYPTION = "encryption", o.ACKNOWLEDGMENTS = "acknowledgments", o.CANONICAL = "canonical", o.HIRING = "hiring", o.POLICY = "policy", o.PREFERRED_LANGUAGES = "preferred_languages", o
+			}({})
+		},
+		"../react/pages/security/settings/labels/api/helpers.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				Mi: function() {
+					return P
+				},
+				hL: function() {
+					return y
+				}
+			});
+			var e = t("../react/app/redux/index.ts"),
+				o = t("../react/common/selectors/zoneSelectors.ts"),
+				l = t("../react/common/utils/useQueryCache.ts"),
+				_ = t("../react/pages/security/settings/resources/constants/index.ts"),
+				s = t("../react/common/hooks/useAccountId.ts"),
+				f = t("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http"),
+				u = t("../../../../node_modules/@cloudflare/util-routes/es/index.js");
+			const p = {
+				labels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels`,
+				userLabel: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/user/${"labelName"}`,
+				userLabels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/user`,
+				managedLabel: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/managed/${"labelName"}`,
+				managedLabels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/managed`,
+				operationsLinkedToLabels: (0, u.BC)`/zones/${"zoneId"}/api_gateway/operations/labels`,
+				userLabelOperations: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/user/${"labelName"}/resources/operation`,
+				managedLabelOperations: (0, u.BC)`/zones/${"zoneId"}/api_gateway/labels/managed/${"labelName"}/resources/operation`
+			};
+			var h = t("../../../../node_modules/lodash/lodash.js"),
+				n = t("../react/pages/security/settings/resources/utils/index.ts"),
+				r = t("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js");
+
+			function a(A, b) {
+				if (A == null) return {};
+				var I = d(A, b),
+					F, z;
+				if (Object.getOwnPropertySymbols) {
+					var V = Object.getOwnPropertySymbols(A);
+					for (z = 0; z < V.length; z++) F = V[z], !(b.indexOf(F) >= 0) && (!Object.prototype.propertyIsEnumerable.call(A, F) || (I[F] = A[F]))
+				}
+				return I
+			}
+
+			function d(A, b) {
+				if (A == null) return {};
+				var I = {},
+					F = Object.keys(A),
+					z, V;
+				for (V = 0; V < F.length; V++) z = F[V], !(b.indexOf(z) >= 0) && (I[z] = A[z]);
+				return I
+			}
+
+			function i(A) {
+				for (var b = 1; b < arguments.length; b++) {
+					var I = arguments[b] != null ? Object(arguments[b]) : {},
+						F = Object.keys(I);
+					typeof Object.getOwnPropertySymbols == "function" && F.push.apply(F, Object.getOwnPropertySymbols(I).filter(function(z) {
+						return Object.getOwnPropertyDescriptor(I, z).enumerable
+					})), F.forEach(function(z) {
+						c(A, z, I[z])
+					})
+				}
+				return A
+			}
+
+			function c(A, b, I) {
+				return b = g(b), b in A ? Object.defineProperty(A, b, {
+					value: I,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : A[b] = I, A
+			}
+
+			function g(A) {
+				var b = v(A, "string");
+				return typeof b == "symbol" ? b : String(b)
+			}
+
+			function v(A, b) {
+				if (typeof A != "object" || A === null) return A;
+				var I = A[Symbol.toPrimitive];
+				if (I !== void 0) {
+					var F = I.call(A, b || "default");
+					if (typeof F != "object") return F;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (b === "string" ? String : Number)(A)
+			}
+			const y = A => {
+					const b = (0, e.p4)(o.Cu),
+						I = (0, s.F)(),
+						F = S.labels(i({
+							accountId: I,
+							zoneId: b
+						}, A ? i({}, A) : {})),
+						z = (0, l.o)(F);
+					return i({
+						zoneId: b,
+						queryKey: F,
+						batchInvalidateLabels: async () => {
+							await z.batchInvalidate({
+								queryKeysToPredicateInvalidate: [_.IQ.LABELS],
+								refetchActive: !0,
+								refetchInactive: !0
+							})
+						}
+					}, z)
+				},
+				P = {
+					getLabels: async A => {
+						var b, I, F, z;
+						let {
+							zoneId: V,
+							hideErrorAlert: ee = !0
+						} = A, j = a(A, ["zoneId", "hideErrorAlert"]);
+						return (await f.get(p.labels.toUrl({
+							zoneId: V
+						}), {
+							parameters: {
+								page: j == null ? void 0 : j.page,
+								per_page: j == null ? void 0 : j.per_page,
+								with_mapped_resource_counts: j == null ? void 0 : j.with_mapped_resource_counts,
+								filter: j == null || (b = j.filters) === null || b === void 0 ? void 0 : b.search,
+								source: (0, n.sQ)(j == null || (I = j.filters) === null || I === void 0 ? void 0 : I.source),
+								order: j == null || (F = j.sort) === null || F === void 0 ? void 0 : F.id,
+								direction: (j == null ? void 0 : j.sort) ? (j == null || (z = j.sort) === null || z === void 0 ? void 0 : z.desc) ? r.Sr.desc : r.Sr.asc : void 0
+							},
+							hideErrorAlert: ee
+						})).body
+					},
+					getLabel: async A => {
+						let {
+							zoneId: b,
+							labelName: I,
+							hideErrorAlert: F = !0
+						} = A, z = a(A, ["zoneId", "labelName", "hideErrorAlert"]);
+						const V = (0, n.mm)(I) ? p.managedLabel.toUrl({
+							zoneId: b,
+							labelName: I
+						}) : p.userLabel.toUrl({
+							zoneId: b,
+							labelName: I
+						});
+						return (await f.get(V, {
+							parameters: {
+								with_mapped_resource_counts: z == null ? void 0 : z.with_mapped_resource_counts
+							},
+							hideErrorAlert: F
+						})).body
+					},
+					editLabel: async ({
+						zoneId: A,
+						label: b,
+						replace: I
+					}) => {
+						const {
+							name: F
+						} = b, z = a(b, ["name"]);
+						return (await (I ? f.put : f.patch)(p.userLabel.toUrl({
+							zoneId: A,
+							labelName: b.name
+						}), {
+							body: z
+						})).body
+					},
+					deleteLabel: async ({
+						zoneId: A,
+						labelName: b
+					}) => (await f.del(p.userLabel.toUrl({
+						zoneId: A,
+						labelName: b
+					}))).body,
+					createLabel: async A => {
+						let {
+							zoneId: b
+						} = A, I = a(A, ["zoneId"]);
+						const {
+							product: F
+						} = I, z = a(I, ["product"]);
+						return (await f.post(p.userLabels.toUrl({
+							zoneId: b
+						}), {
+							body: [z]
+						})).body
+					},
+					bulkApplyLabelsToOperation: async ({
+						zoneId: A,
+						user: b,
+						managed: I,
+						operationIds: F,
+						replace: z
+					}) => (await (z ? f.put : f.post)(p.operationsLinkedToLabels.toUrl({
+						zoneId: A
+					}), {
+						body: i({}, b ? {
+							user: {
+								labels: b
+							}
+						} : {}, I ? {
+							managed: {
+								labels: I
+							}
+						} : {}, {
+							selector: {
+								include: {
+									operation_ids: F
+								}
+							}
+						})
+					})).body,
+					bulkApplyOperationsToLabel: async ({
+						zoneId: A,
+						labelName: b,
+						operationIds: I
+					}) => {
+						const F = (0, n.mm)(b) ? p.managedLabelOperations.toUrl({
+							zoneId: A,
+							labelName: b
+						}) : p.userLabelOperations.toUrl({
+							zoneId: A,
+							labelName: b
+						});
+						return (await f.put(F, {
+							body: {
+								selector: {
+									include: {
+										operation_ids: I
+									}
+								}
+							}
+						})).body
+					}
+				},
+				S = {
+					labels: A => {
+						let {
+							accountId: b,
+							zoneId: I
+						} = A, F = a(A, ["accountId", "zoneId"]);
+						return [_.IQ.LABELS, b, I, ...(0, h.isEmpty)(F) ? [] : [F]]
+					}
+				}
+		},
+		"../react/pages/security/settings/labels/api/hooks/useGetLabel.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				E: function() {
+					return h
+				},
+				V: function() {
+					return n
+				}
+			});
+			var e = t("webpack/sharing/consume/default/react/react"),
+				o = t.n(e),
+				l = t("../../../../node_modules/react-query/es/index.js"),
+				_ = t("../react/pages/security/settings/labels/api/helpers.ts");
+
+			function s(r) {
+				for (var a = 1; a < arguments.length; a++) {
+					var d = arguments[a] != null ? Object(arguments[a]) : {},
+						i = Object.keys(d);
+					typeof Object.getOwnPropertySymbols == "function" && i.push.apply(i, Object.getOwnPropertySymbols(d).filter(function(c) {
+						return Object.getOwnPropertyDescriptor(d, c).enumerable
+					})), i.forEach(function(c) {
+						f(r, c, d[c])
+					})
+				}
+				return r
+			}
+
+			function f(r, a, d) {
+				return a = u(a), a in r ? Object.defineProperty(r, a, {
+					value: d,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : r[a] = d, r
+			}
+
+			function u(r) {
+				var a = p(r, "string");
+				return typeof a == "symbol" ? a : String(a)
+			}
+
+			function p(r, a) {
+				if (typeof r != "object" || r === null) return r;
+				var d = r[Symbol.toPrimitive];
+				if (d !== void 0) {
+					var i = d.call(r, a || "default");
+					if (typeof i != "object") return i;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (a === "string" ? String : Number)(r)
+			}
+			const h = r => {
+					const {
+						queryKey: a,
+						zoneId: d
+					} = (0, _.hL)(r), {
+						isLoading: i,
+						isError: c,
+						isSuccess: g,
+						data: v,
+						refetch: y,
+						isRefetching: P
+					} = (0, l.useQuery)({
+						queryKey: a,
+						queryFn: () => _.Mi.getLabel(s({
+							zoneId: d
+						}, r)),
+						enabled: !!(r == null ? void 0 : r.labelName)
+					});
+					return {
+						data: v == null ? void 0 : v.result,
+						errors: v == null ? void 0 : v.errors,
+						paginationData: v == null ? void 0 : v.result_info,
+						isLoading: i,
+						isError: c,
+						isSuccess: g,
+						refetch: y,
+						isRefetching: P
+					}
+				},
+				n = r => {
+					const a = (0, l.useQueryClient)(),
+						{
+							queryKey: d,
+							zoneId: i
+						} = (0, _.hL)(r),
+						c = (0, e.useCallback)(async ({
+							labelName: v
+						}) => {
+							if (!v) throw new Error("Error: unable to get label; missing label name");
+							return await _.Mi.getLabel(s({
+								zoneId: i,
+								labelName: v
+							}, r))
+						}, [i, r]);
+					return {
+						getLabel: (0, e.useCallback)(async ({
+							labelName: v
+						}) => await a.fetchQuery(d, () => c({
+							labelName: v
+						}), {
+							staleTime: 0,
+							cacheTime: 0
+						}), [a, d, c])
+					}
+				}
+		},
+		"../react/pages/security/settings/resources/constants/constants.tsx": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				DG: function() {
+					return i
+				},
+				GE: function() {
+					return A
+				},
+				IQ: function() {
+					return _
+				},
+				KV: function() {
+					return f
+				},
+				QH: function() {
+					return r
+				},
+				V: function() {
+					return y
+				},
+				W3: function() {
+					return l
+				},
+				_8: function() {
+					return h
+				},
+				_c: function() {
+					return P
+				},
+				aW: function() {
+					return c
+				},
+				gY: function() {
+					return S
+				},
+				jz: function() {
+					return a
+				},
+				n5: function() {
+					return g
+				},
+				pZ: function() {
+					return n
+				},
+				wq: function() {
+					return s
+				},
+				zF: function() {
+					return b
+				}
+			});
+			var e = t("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js"),
+				o = t("../react/pages/security/settings/resources/constants/labelsTableProperties.tsx");
+			const l = "all";
+			let _ = function(I) {
+					return I.LABELS = "labels", I
+				}({}),
+				s = function(I) {
+					return I.USER = "user", I.MANAGED = "managed", I
+				}({}),
+				f = function(I) {
+					return I.SOURCE = "source", I
+				}({});
+			const h = {
+				initialPaginationState: {
+					page: 1,
+					perPage: 10
+				},
+				initialSortState: {
+					name: o.o.NAME,
+					direction: e.Sr.asc
+				},
+				initialToolbarState: {
+					search: "",
+					filterValues: {
+						[f.SOURCE]: l
+					}
+				},
+				filters: f,
+				options: {
+					autoFillInitialValues: !0,
+					autoFillFilterValues: !0,
+					autoClearQs: !0
+				}
+			};
+			let n = function(I) {
+				return I.CREATED_LABEL = "createdLabel", I.CREATED_AND_APPLIED_LABEL = "createdAndAppliedLabel", I.DELETED_LABEL = "deletedLabel", I.APPLIED_LABEL = "appliedLabel", I.EDITED_LABEL = "editedLabel", I.EDITED_AND_APPLIED_LABEL = "editedAndAppliedLabel", I
+			}({});
+			const r = "650px",
+				a = {
+					SECURITY_LABEL: "https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/"
+				},
+				d = /^[\x20-\x7E]+$/,
+				i = /^[A-Za-z0-9-]+$/,
+				c = /^cf-/;
+			let g = function(I) {
+				return I.NAME = "name", I.DESCRIPTION = "description", I
+			}({});
+			const v = "all";
+			let y = function(I) {
+				return I.METHOD = "method", I.HOSTNAME = "hostname", I
+			}({});
+			const P = {
+				initialPaginationState: {
+					page: 1,
+					perPage: 5
+				},
+				initialSortState: {
+					name: "method",
+					direction: e.Sr.desc
+				},
+				initialToolbarState: {
+					search: "",
+					filterValues: {
+						[y.METHOD]: v,
+						[y.HOSTNAME]: v
+					}
+				},
+				filters: y
+			};
+			let S = function(I) {
+				return I.TITLE = "title", I.DESCRIPTION = "description", I.SUBMIT = "submit", I
+			}({});
+			const A = 1e3,
+				b = {
+					LIST_TABLE_WRAPPER: "labels.list.main.table.wrapper",
+					LIST_TABLE_CELL_NAME: "labels.list.main.table.cell.name",
+					LIST_TABLE_CELL_CONNECTED: "labels.list.main.table.cell.connected",
+					LIST_TABLE_CELL_TYPE: "labels.list.main.table.cell.type",
+					LIST_TABLE_CELL_APPLY: "labels.list.main.table.cell.apply",
+					LIST_TABLE_CELL_APPLY_BUTTON: "labels.list.main.table.cell.apply.button",
+					LIST_TABLE_CELL_OVERFLOW_MENU: "labels.list.main.table.cell.overflow",
+					LIST_TABLE_DELETE_MODAL_SUBMIT_BUTTON: "labels.list.main.delete_modal.submit_button",
+					LIST_TABLE_DELETE_MODAL_CANCEL_BUTTON: "labels.list.main.delete_modal.cancel_button",
+					LIST_TABLE_DELETE_MODAL_INPUT: "labels.list.main.delete_modal.input",
+					APPLY_HEADER: "labels.apply.header",
+					APPLY_FORM_NAME: "labels.apply.form.name",
+					APPLY_FORM_NAME_DISABLED: "labels.apply.form.name.disabled",
+					APPLY_FORM_DESCRIPTION: "labels.apply.form.description",
+					APPLY_FORM_DESCRIPTION_DISABLED: "labels.apply.form.disabled",
+					APPLY_FORM_SUBMIT_BUTTON: "labels.apply.form.submit.button",
+					OPERATION_DETAILS_OPEN_MODAL_BUTTON: "labels.operation_details.open_modal.button",
+					ENDPOINT_MANAGEMENT_LABELS_CONTAINER: "labels.endpoint_management.table.container",
+					ENDPOINT_MANAGEMENT_LABELS_MORE_LABELS_BUTTON: "labels.endpoint_management.table.more_labels_button",
+					SIDE_MODAL_CONTAINER: "labels.side_modal.container",
+					SIDE_MODAL_OPERATION_CELL: "labels.side_modal.operation_cell",
+					SIDE_MODAL_SEARCH_BAR: "labels.side_modal.search_bar",
+					SIDE_MODAL_SOURCE_LISTBOX: "labels.side_modal.source_listbox",
+					SIDE_MODAL_MANAGED_LABELS_CONTAINER: "labels.side_modal.managed_labels.container",
+					SIDE_MODAL_USER_LABELS_CONTAINER: "labels.side_modal.user_labels.container",
+					SIDE_MODAL_CREATE_LABEL_INACTIVE: "labels.side_modal.create_label.inactive",
+					SIDE_MODAL_CREATE_LABEL_INPUT: "labels.side_modal.create_label.input",
+					SIDE_MODAL_CREATE_LABEL_BUTTON: "labels.side_modal.create_label.button",
+					SIDE_MODAL_SAVE_LABELS_BUTTON: "labels.side_modal.save_labels.button",
+					SIDE_MODAL_CANCEL_BUTTON: "labels.side_modal.cancel.button",
+					SIDE_MODAL_SELECTED_OPERATIONS_COUNT: "labels.side_modal.selected_operations_count",
+					SIDE_MODAL_BULK_OVERWRITE_TOGGLE: "labels.side_modal.bulk.overwrite.toggle"
+				}
+		},
+		"../react/pages/security/settings/resources/constants/index.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				gY: function() {
+					return e.gY
+				},
+				aW: function() {
+					return e.aW
+				},
+				W3: function() {
+					return e.W3
+				},
+				jz: function() {
+					return e.jz
+				},
+				EDIT_LABELS_MODAL_FORM_PROPERTIES: function() {
+					return _
+				},
+				n5: function() {
+					return e.n5
+				},
+				IQ: function() {
+					return e.IQ
+				},
+				_c: function() {
+					return e._c
+				},
+				V: function() {
+					return e.V
+				},
+				j8: function() {
+					return l
+				},
+				LABELS_LIST_TOASTS: function() {
+					return e.pZ
+				},
+				_8: function() {
+					return e._8
+				},
+				KV: function() {
+					return e.KV
+				},
+				om: function() {
+					return o.o
+				},
+				zF: function() {
+					return e.zF
+				},
+				LABEL_SOURCES: function() {
+					return e.wq
+				},
+				GE: function() {
+					return e.GE
+				},
+				QH: function() {
+					return e.QH
+				}
+			});
+			var e = t("../react/pages/security/settings/resources/constants/constants.tsx"),
+				o = t("../react/pages/security/settings/resources/constants/labelsTableProperties.tsx");
+			let l = function(s) {
+					return s.ENDPOINT = "endpoint", s.METHOD = "method", s.OPERATION_ID = "operationId", s
+				}({}),
+				_ = function(s) {
+					return s.NAME = "name", s.SOURCE = "source", s.NEW_LABEL_NAME = "newLabelName", s
+				}({})
+		},
+		"../react/pages/security/settings/resources/constants/labelsTableProperties.tsx": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				o: function() {
+					return e
+				}
+			});
+			let e = function(o) {
+				return o.NAME = "name", o.MAPPED_RESOURCES = "mapped_resources.operations", o.SOURCE = "source", o.APPLY = "apply", o
+			}({})
+		},
+		"../react/pages/security/settings/resources/utils/index.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				Iv: function() {
+					return s.Iv
+				},
+				ZF: function() {
+					return s.ZF
+				},
+				Vy: function() {
+					return o
+				},
+				mm: function() {
+					return _
+				},
+				m8: function() {
+					return s.m8
+				},
+				sQ: function() {
+					return l
+				},
+				vU: function() {
+					return n
+				},
+				vE: function() {
+					return v
+				},
+				u_: function() {
+					return A
+				},
+				rP: function() {
+					return h
+				}
+			});
+			var e = t("../react/pages/security/settings/resources/constants/index.ts");
+			const o = b => (b == null ? void 0 : b.source) === e.LABEL_SOURCES.USER ? "labels.list.table.columns.type.user" : (b == null ? void 0 : b.source) === e.LABEL_SOURCES.MANAGED ? "labels.list.table.columns.type.managed" : "common.unknown",
+				l = b => b === e.W3 ? void 0 : b,
+				_ = b => e.aW.test(b);
+			var s = t("../react/pages/security/settings/resources/utils/tracking.ts"),
+				f = t("webpack/sharing/consume/default/react/react"),
+				u = t("../../../../node_modules/lodash/lodash.js"),
+				p = t("../react/pages/security/settings/labels/api/hooks/useGetLabel.ts");
+			const h = () => {
+					const [b, I] = (0, f.useState)(!0), [F, z] = (0, f.useState)(!1), [V, ee] = (0, f.useState)(!1), {
+						getLabel: j
+					} = (0, p.V)(), oe = (0, f.useRef)(null), ne = (0, f.useRef)(""), Z = (0, f.useCallback)(async $ => {
+						z(!0);
+						try {
+							const {
+								success: X
+							} = await j({
+								labelName: $
+							});
+							I(!X), ne.current = $
+						} catch {
+							I(!0)
+						} finally {
+							z(!1), ee(!1)
+						}
+					}, [j]), se = (0, f.useCallback)($ => {
+						oe.current || (oe.current = (0, u.debounce)(Z, 400)), ee(!0), oe.current($)
+					}, [Z]), J = (0, f.useCallback)($ => {
+						const {
+							value: X
+						} = $.target;
+						se(X)
+					}, [se]), ie = (0, f.useCallback)(async $ => {
+						(V || $ !== ne.current) && (oe.current && oe.current.cancel(), await Z($))
+					}, [V, Z]);
+					return {
+						isLabelUnique: b,
+						setIsLabelUnique: I,
+						handleInputChange: J,
+						isLoading: F,
+						isCheckPending: V,
+						ensureChecked: ie
+					}
+				},
+				n = ({
+					modalHeaderFixedHeight: b = 62,
+					modalDefaultPaddings: I = 16
+				} = {}) => {
+					const F = (0, f.useRef)(null),
+						z = (0, f.useRef)(null),
+						[V, ee] = (0, f.useState)(0),
+						[j, oe] = (0, f.useState)(0),
+						ne = `calc(100vh - ${V}px - ${j}px - ${I}px)`,
+						[Z, se] = (0, f.useState)("");
+					return (0, f.useEffect)(() => {
+						const J = () => {
+							var ie, $, X, U;
+							const W = F == null || (ie = F.current) === null || ie === void 0 ? void 0 : ie.offsetHeight,
+								Y = z == null || ($ = z.current) === null || $ === void 0 ? void 0 : $.offsetHeight,
+								re = ((X = W) !== null && X !== void 0 ? X : 0) + b,
+								k = (U = Y) !== null && U !== void 0 ? U : 0;
+							ee(re), oe(k)
+						};
+						return J(), window.addEventListener("resize", J), () => window.removeEventListener("resize", J)
+					}, []), {
+						searchTerm: Z,
+						setSearchTerm: se,
+						scrollableSectionMaxHeight: ne,
+						topMenuRef: F,
+						bottomMenuRef: z
+					}
+				};
+			var r = t("../react/common/hooks/useZoneEntitlement.ts"),
+				a = t("../react/common/hooks/useGate.ts");
+			const d = "central_endpoint_list.endpoint_labels_allowed",
+				i = "system-and-user-generated-labels",
+				c = () => !!(0, a.Z)(i),
+				g = () => !!(0, r.Z)(d),
+				v = () => {
+					const b = c(),
+						I = g();
+					return {
+						isLabelsGateOpen: b,
+						hasEndpointLabelsEntitlement: I,
+						hasLabels: b && I
+					}
+				};
+			var y = t("../../../../node_modules/yup/es/index.js"),
+				P = t("../react/utils/translator.tsx"),
+				S = t("../react/pages/security/settings/resources/constants/constants.tsx");
+			const A = () => {
+				const {
+					t: b
+				} = (0, P.QT)(), I = y.Z_().required(b("common.field_is_required")).max(24, b("labels.apply.form.name.error.max_characters")).matches(S.DG, b("labels.apply.form.name.error.special_characters")).test("no-cf-prefix", b("labels.apply.form.name.error.cf_forbidden"), V => !S.aW.test(V)), F = {
+					NAMES: {
+						CREATE: "labels-create-form",
+						EDIT: "labels-edit-form",
+						APPLY: "labels-apply-form"
+					},
+					INITIAL_VALUES: {
+						name: "",
+						description: ""
+					},
+					VALIDATION_SCHEMA: V => y.Ry().shape({
+						[S.n5.NAME]: V ? y.Z_() : I,
+						[S.n5.DESCRIPTION]: V ? y.Z_().optional() : y.Z_().max(150, b("labels.apply.form.description.error.max_characters"))
+					})
+				}, z = {
+					NAME: "edit-labels-modal-form",
+					INITIAL_VALUES: {
+						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.NAME]: "",
+						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.SOURCE]: S.W3,
+						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.NEW_LABEL_NAME]: ""
+					},
+					VALIDATION_SCHEMA: () => y.Ry().shape({
+						[e.EDIT_LABELS_MODAL_FORM_PROPERTIES.NEW_LABEL_NAME]: I
+					})
+				};
+				return {
+					LABELS_APPLY_FORM: F,
+					EDIT_LABELS_MODAL_FORM: z
+				}
+			}
+		},
+		"../react/pages/security/settings/resources/utils/tracking.ts": function(x, E, t) {
+			"use strict";
+			t.d(E, {
+				Iv: function() {
+					return p
+				},
+				QJ: function() {
+					return a
+				},
+				R: function() {
+					return u
+				},
+				Tf: function() {
+					return d
+				},
+				ZF: function() {
+					return h
+				},
+				eC: function() {
+					return r
+				},
+				m8: function() {
+					return i
+				},
+				tR: function() {
+					return n
+				}
+			});
+			var e = t("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
+				o = t.n(e);
+
+			function l(c) {
+				for (var g = 1; g < arguments.length; g++) {
+					var v = arguments[g] != null ? Object(arguments[g]) : {},
+						y = Object.keys(v);
+					typeof Object.getOwnPropertySymbols == "function" && y.push.apply(y, Object.getOwnPropertySymbols(v).filter(function(P) {
+						return Object.getOwnPropertyDescriptor(v, P).enumerable
+					})), y.forEach(function(P) {
+						_(c, P, v[P])
+					})
+				}
+				return c
+			}
+
+			function _(c, g, v) {
+				return g = s(g), g in c ? Object.defineProperty(c, g, {
+					value: v,
+					enumerable: !0,
+					configurable: !0,
+					writable: !0
+				}) : c[g] = v, c
+			}
+
+			function s(c) {
+				var g = f(c, "string");
+				return typeof g == "symbol" ? g : String(g)
+			}
+
+			function f(c, g) {
+				if (typeof c != "object" || c === null) return c;
+				var v = c[Symbol.toPrimitive];
+				if (v !== void 0) {
+					var y = v.call(c, g || "default");
+					if (typeof y != "object") return y;
+					throw new TypeError("@@toPrimitive must return a primitive value.")
+				}
+				return (g === "string" ? String : Number)(c)
+			}
+			let u = function(c) {
+					return c.LABELS_LIST = "Labels List page", c.LABELS_APPLY = "Labels Apply page", c.LABELS_SIDE_MODAL = "Labels Side Modal", c.LABELS_ENDPOINT_MANAGEMENT = "Endpoint Management page", c.LABELS_OPERATION_DETAILS = "Operation Details page", c
+				}({}),
+				p = function(c) {
+					return c.API_SHIELD = "API Shield", c.SECURITY_SETTINGS = "Security Settings", c
+				}({}),
+				h = function(c) {
+					return c.OPERATIONS_TABLE_TOOLBAR = "Operations table toolbar", c.OPERATIONS_TABLE_OVERFLOW = "Operations table overflow", c.OPERATIONS_TABLE_ROW = "Operations table row", c.OPERATION_DETAILS_PAGE = "Operation details page", c
+				}({}),
+				n = function(c) {
+					return c.UPSERT = "upsert", c.OVERWRITE = "overwrite", c
+				}({}),
+				r = function(c) {
+					return c.SINGLE = "single", c.MULTIPLE = "multiple", c
+				}({}),
+				a = function(c) {
+					return c.DISPLAY_LABELS_LIST_PAGE = "show a list of labels in the settings page", c.DELETE_LABEL = "delete a user label in the settings page", c.FILTER_USER_MANAGED_LABELS = "filter user/managed labels in the settings page", c.CREATE_LABEL_CLICKED = "click create label button in the settings page", c.BULK_APPLY_CLICKED = "click bulk apply button in the settings page", c.CONNECTED_ENDPOINTS_CLICKED = "click connected endpoints link in the settings page", c.DISPLAY_APPLY_LABELS_PAGE = "show the apply labels page", c.CLICK_LABELS_DOCUMENTATION_LINK = "click documentation link in the apply labels page", c.APPLY_OPERATIONS_TO_LABEL = "apply operations to label in the apply labels page", c.OPEN_LABELS_SIDE_MODAL = "open labels side modal", c.APPLY_LABELS_TO_OPERATION = "apply labels to operation(s) in the labels side modal", c.CREATE_NEW_LABEL = "create a new label", c
+				}({});
+			const d = ({
+					name: c,
+					product: g,
+					category: v = "user journey",
+					pageName: y,
+					from: P,
+					write_strategy: S,
+					type: A,
+					target: b
+				}) => {
+					o().sendEvent(c, l({
+						category: v,
+						pageName: y,
+						product: g
+					}, P ? {
+						from: P
+					} : {}, S ? {
+						write_strategy: S
+					} : {}, A ? {
+						type: A
+					} : {}, b ? {
+						target: b
+					} : {}))
+				},
+				i = () => {
+					var c;
+					return (c = Object.values(a)) === null || c === void 0 ? void 0 : c.flat()
+				}
+		},
 		"../react/pages/shared-config/sparrowEvents.tsx": function(x, E, t) {
 			"use strict";
 			t.d(E, {
@@ -13668,18 +13668,18 @@
 					}
 				};
 			var I = t("../react/common/middleware/sparrow/errors.ts"),
-				F = t("../react/pages/firewall/bots/tracking.ts"),
+				F = t("../react/pages/security/bots/tracking.ts"),
 				z = t("../react/pages/caching/tracking.tsx"),
 				V = t("../react/pages/turnstile/tracking.ts"),
-				ee = t("../react/pages/firewall/settings/resources/utils/index.ts"),
+				ee = t("../react/pages/security/settings/resources/utils/index.ts"),
 				j = t("../react/pages/magic/packet-captures/constants.ts"),
-				oe = t("../react/pages/firewall/page-shield/tracking.ts"),
-				ne = t("../react/pages/firewall/rulesets/tracking.tsx"),
+				oe = t("../react/pages/security/page-shield/tracking.ts"),
+				ne = t("../react/pages/security/rulesets/tracking.tsx"),
 				Z = t("../react/pages/traffic/waiting-rooms/tracking.tsx"),
 				se = t("../react/pages/spectrum/tracking.tsx"),
 				J = t("../react/pages/home/rulesets/ddos/tracking.ts"),
 				ie = t("../react/pages/security-center/tracking.ts"),
-				$ = t("../react/pages/firewall/api-shield/tracking.ts"),
+				$ = t("../react/pages/security/api-shield/tracking.ts"),
 				X = t("../react/pages/home/configurations/lists/tracking.ts"),
 				U = t("../react/pages/traffic/load-balancing/tracking.ts"),
 				W = t("../react/pages/home/alerts/tracking.ts"),
@@ -13687,7 +13687,7 @@
 				re = t("../react/pages/home/configurations/secondary-dns/tracking.ts"),
 				k = t("../react/pages/traffic/argo/tracking.ts"),
 				L = t("../react/pages/magic/network-monitoring/constants.ts"),
-				O = t("../react/pages/firewall/security-analytics/logs/constants.ts"),
+				O = t("../react/pages/security/security-analytics/logs/constants.ts"),
 				R = t("../react/pages/magic/overview/tracking.ts"),
 				M = t("../react/pages/hyperdrive/tracking.ts"),
 				H = t("../react/pages/pipelines/tracking.ts"),
@@ -13697,7 +13697,7 @@
 				Le = t("../react/pages/page-rules/tracking.ts"),
 				De = t("../react/app/components/GlobalHeader/AddProductDropdown/index.tsx"),
 				B = t("../react/pages/shared-config/sparrowEvents.tsx"),
-				de = t("../react/pages/firewall/settings/cards/security-txt/helpers.ts"),
+				de = t("../react/pages/security/settings/cards/security-txt/helpers.ts"),
 				Oe = t("../react/pages/security-center/BlockedContent/constants.ts");
 			const Be = ((ce, ue, ...fe) => n.eg.union([n.eg.literal(ce), n.eg.literal(ue), ...fe.map(Ee => n.eg.literal(Ee))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "account name menu clicked", "account quick action click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "added api shield schema", "Addon Purchase Success", "Advanced Certificate Manager click", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel create database", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel switch ca totalTLS", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "change default action api shield sv", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "Continue adding domain", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click api shield upsell link", "click api shield enable product button", "click api shield feedback link", "click api shield route", "click API snippet drawer", "click back to all policies link", "click block ai bots", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click bot settings", "click cancel downgrade", "click cancel free trial", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create ai gateway", "click create load balancer", "click create project success resource", "click create project success next step", "Click Create Rule", "click create policy form link", "click create token from sidebar", "click create table button", "click database detail tab", "click deflect community TSF (3.0)", "click delete database button", "click delete table button", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click help drawer", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on apply rule ai assistant", "click on close rule ai assistant", "click on edit snippet", "click on content_scanning", "click on exposed_credentials", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on rule ai assistant", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click restore database button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click table insert data button", "click ticket submission form search result", "click ticket submission form suggestion", "click to create api shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", "click update table data row button", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click worker edit code", "click workers plan icon", "click wrangler cli guide link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "click start quick scan", "Click", "close chat window", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "contentful banner dismissed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to review step", "continue to overview", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create application click workers docs", "create application click pages docs", "create application click create with CLI", "create application select workers", "create application select pages", "create default environments", "create database", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create table", "create worker from playground", "create worker select filter", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete api shield route", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete database", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete multiple selected table data rows", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete table", "delete table data row", "delete variant", "deploy api shield portal", "deploy api shield route", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "enable or disable api shield sv", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "execute console tab query", "exit onboarding guide", "expand account select dropdown", "expand directive", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "filter workers and pages", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Follow Trial Offer Link", "Free Long Wait", "get current bookmark id", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "insert table data row", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "Next onboarding guide section", "next page", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open cancel free trial modal", "open configuration switcher sidemodal", "open create database page", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open hostname confirmation modal", "Open Trial Offer Modal", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "projects table click", "prompted to verify email", "promote version", "purchase domain transfer", "purchase images subscription", "Purge cache click", "purge everything from cache", "quick actions basic features modal close", "quick actions basic features modal open", "quick actions basic features activate selections", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "resend verification email", "restore database", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search d1 databases", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select d1 database", "select file", "Select hostname success", "select language", "select mp4 download checkbox", "select automatic deletion checkbox", "select notification type", "select onboarding bundle", "select page rules quantity", "select product", "select r2 plan", "select source", "select storage plan", "select table", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select workers template", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "selected schema api shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set r2 bucket storage class", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "showed api shield flyfishing page", "signed exchanges toggle", "Sign in to Area 1 button click", "Go to Zero Trust Email Security button click", "site configured", "skip onboarding guide section", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "sort workers and pages", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "Stream navigate away from videos page", "Stream Video Upload with link", "Stream video caption uploaded", "Stream video caption deleted", "Stream video caption downloaded", "Stream video caption generating", "Stream video caption regenerating", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "transformations disabled for zone", "transformations enabled for zone", "Trial Offer Displayed", "Trial Started", "Trial Cancelled", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "undo restore database", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "update table data row", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "use multiselect api shield sv", "use overflow api shield sv", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "zones table click", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click application name", "click change compute setting", "click change subdomain", "click discover card call to action", "click discover card view products", "click welcome card call to action", "click welcome card view products", "click create application", "click connect to git", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click setup AE", "click stripe beta select plan support link", "click stripe beta change plan support link", "click rule link", "click button to speed recommendation page", "click trace rule details", "click upload assets", "click worker detail tab", "click workers resource", "click workers manage account members", "click workers manage notifications and alerts", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click feedback link", "click registrar link", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "expand documentation side drawer", "collapse documentation side drawer", "dismiss message", "dismiss all messages", "click message inbox popover", "click message footer action", "clicked sidebar Discord link", "clicked sidebar Community Forum link", ge.QV.clickedDownloadAnalytics, ge.QV.clickedPrintAnalytics, ge.QV.toggledSmartPlacement, "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", Ie.QV.toggledPagesSmartPlacement, Ie.QV.downloadDemoProject, "clicked R2 feedback link", "clicked R2 CLI guide", "clicked Constellation feedback link", F.N3.INITIAL_FETCH_SCORES, F.N3.FETCH_CONFIGURATION, F.N3.INITIAL_FETCH_TIME_SERIES, F.N3.INITIAL_FETCH_ATTRIBUTES, F.N3.UPDATE_SETTINGS, F.N3.DELETE_RULE, F.N3.UPDATE_RULE, F.N3.FETCH_RULES, F.N3.CONFIGURE_BOT_MANAGEMENT, F.N3.WAF_RULES_REDIRECT, J.F.TOGGLE_TCP_PROTECTION, J.F.GET_TCP_PROTECTION_PREFIXES, J.F.CREATE_TCP_PROTECTION_PREFIXES, J.F.CREATE_TCP_PROTECTION_PREFIX, J.F.UPDATE_TCP_PROTECTION_PREFIX, J.F.DELETE_TCP_PROTECTION_PREFIX, J.F.DELETE_TCP_PROTECTION_PREFIXES, J.F.GET_TCP_PROTECTION_ALLOWLIST, J.F.CREATE_TCP_PROTECTION_ALLOWLIST, J.F.UPDATE_TCP_PROTECTION_ALLOWLIST, J.F.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST, J.F.DELETE_TCP_PROTECTION_ALLOWLIST, J.F.GET_SYN_PROTECTION_RULES, J.F.GET_SYN_PROTECTION_RULE, J.F.CREATE_SYN_PROTECTION_RULE, J.F.UPDATE_SYN_PROTECTION_RULE, J.F.DELETE_SYN_PROTECTION_RULE, J.F.GET_TCP_FLOW_PROTECTION_RULES, J.F.GET_TCP_FLOW_PROTECTION_RULE, J.F.CREATE_TCP_FLOW_PROTECTION_RULE, J.F.UPDATE_TCP_FLOW_PROTECTION_RULE, J.F.DELETE_TCP_FLOW_PROTECTION_RULE, J.F.GET_SYN_PROTECTION_FILTERS, J.F.GET_SYN_PROTECTION_FILTER, J.F.CREATE_SYN_PROTECTION_FILTER, J.F.UPDATE_SYN_PROTECTION_FILTER, J.F.DELETE_SYN_PROTECTION_FILTER, J.F.GET_TCP_FLOW_PROTECTION_FILTERS, J.F.GET_TCP_FLOW_PROTECTION_FILTER, J.F.CREATE_TCP_FLOW_PROTECTION_FILTER, J.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, J.F.DELETE_TCP_FLOW_PROTECTION_FILTER, J.F.GET_DNS_PROTECTION_RULES, J.F.GET_DNS_PROTECTION_RULE, J.F.CREATE_DNS_PROTECTION_RULE, J.F.UPDATE_DNS_PROTECTION_RULE, J.F.DELETE_DNS_PROTECTION_RULE, oe.F.MANAGE_PAGE_SHIELD_POLICY, oe.F.CONFIGURE_PAGE_SHIELD, oe.F.VIEW_DETECTED_CONNECTIONS, oe.F.VIEW_DETECTED_SCRIPTS, oe.F.VIEW_PAGE_SHIELD_POLICIES, oe.F.VIEW_PAGE_SHIELD_SETTINGS, oe.F.OPEN_MUTABLE_VERSION_TOOLTIP, oe.F.SHOW_MUTABLE_VERSION_TOOLTIP, X.y.CREATE_LIST, X.y.DELETE_LIST, X.y.ADD_LIST_ITEM, X.y.DELETE_LIST_ITEM, M.KO.PURCHASE_WORKERS_PAID, M.KO.LIST_CONFIGS, M.KO.CREATE_HYPERDRIVE_CONFIG, M.KO.VIEW_CONFIG_DETAILS, M.KO.UPDATE_CACHING_SETTINGS, M.KO.DELETE_HYPERDRIVE_CONFIG, M.KO.CLICK_HYPERDRIVE_DOCUMENTATION, M.KO.CLICK_GET_STARTED_GUIDE, M.KO.CLICK_CONNECTIVITY_GUIDES, M.KO.CLICK_QUICK_LINK, se.N.CNAME, se.N.IP_ADDRESS, se.N.LB, se.N.UPDATE_CNAME, se.N.UPDATE_IP_ADDRESS, se.N.UPDATE_LB, se.N.DISABLE, z.N.TIERED_CACHE, z.N.CACHE_PURGE, z.N.CACHE_ANALYTICS, ...(0, V.P)(), ...(0, ne.x4)(), ...(0, ee.m8)(), Z.N.CREATE, Z.N.EVENTS, Z.N.ANALYTICS, Z.N.UPDATE, Z.N.GENERATE_PREVIEW, ie.R.INITIATE_URL_SCAN, ie.R.LOAD_SCAN_INFO, ie.v.EXPAND_INSIGHT_ROW, ie.v.CLICK_RESOLVE_BUTTON, ie.v.FOLLOW_RESOLVE_URL, ie.v.MANAGE_INSIGHT, ie.v.CLICK_SCAN_NOW, ie.v.CLICK_EXPORT_INSIGHTS, ie.v.BULK_ARCHIVE, $.Fj[$.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, $.Fj[$.kq.ENDPOINT_MANAGEMENT].detailedMetrics, $.Fj[$.kq.ENDPOINT_MANAGEMENT].createEndpoint, $.Fj[$.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, $.Fj[$.kq.ENDPOINT_MANAGEMENT].deployRouting, $.Fj[$.kq.ENDPOINT_MANAGEMENT].deleteRouting, $.Fj[$.kq.API_DISCOVERY].viewDiscoveredEndpoints, $.Fj[$.kq.API_DISCOVERY].saveDiscoveredEndpoint, $.Fj[$.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, $.Fj[$.kq.SCHEMA_VALIDATION].viewSchemasList, $.Fj[$.kq.SCHEMA_VALIDATION].uploadSchema, $.Fj[$.kq.SCHEMA_VALIDATION].viewSchemaAdoption, $.Fj[$.kq.SCHEMA_VALIDATION].downloadSchema, $.Fj[$.kq.SCHEMA_VALIDATION].deleteSchema, $.Fj[$.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, $.Fj[$.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, $.Fj[$.kq.SEQUENCE_ANALYTICS].viewSequencesPage, $.Fj[$.kq.JWT_VALIDATION].viewJWTRules, $.Fj[$.kq.JWT_VALIDATION].addJWTRule, $.Fj[$.kq.JWT_VALIDATION].editJWTRule, $.Fj[$.kq.JWT_VALIDATION].deleteJWTRule, $.Fj[$.kq.JWT_VALIDATION].reprioritizeJWTRule, $.Fj[$.kq.JWT_VALIDATION].viewJWTConfigs, $.Fj[$.kq.JWT_VALIDATION].addJWTConfig, $.Fj[$.kq.JWT_VALIDATION].editJWTConfig, $.Fj[$.kq.JWT_VALIDATION].deleteJWTConfig, $.Fj[$.kq.SETTINGS].redirectToFirewallRulesTemplate, $.Fj[$.kq.SETTINGS].redirectToPages, $.Fj[$.kq.SETTINGS].listSessionIdentifiers, $.Fj[$.kq.SETTINGS].listRequestsContainingSessionIdentifiers, $.Fj[$.kq.SETTINGS].addOrRemoveSessionIdentifiers, $.Fj[$.kq.SETTINGS].redirectToCustomRules, $.Fj[$.kq.SETTINGS].listAllFallthroughSchemas, $.Fj[$.kq.SEQUENCE_RULES].listSequenceRules, $.Fj[$.kq.SEQUENCE_RULES].deleteSequenceRule, $.Fj[$.kq.SEQUENCE_RULES].reorderSequenceRule, $.Fj[$.kq.SEQUENCE_RULES].createSequenceRule, $.Fj[$.kq.SEQUENCE_RULES].editSequenceRule, U.Z.CREATE_AND_DEPLOY, U.Z.ANALYTICS, W.y.SECONDARY_DNS_NOTIFICATION_CREATE, W.y.SECONDARY_DNS_NOTIFICATION_UPDATE, W.y.SECONDARY_DNS_NOTIFICATION_DELETE, Y.U.ZONE_TRANSFER_SUCCESS, Y.U.DNS_RECORD_CREATE, Y.U.DNS_RECORD_UPDATE, Y.U.DNS_RECORD_DELETE, re.Y.PEER_DNS_CREATE, re.Y.PEER_DNS_UPDATE, re.Y.PEER_DNS_DELETE, re.Y.ZONE_TRANSFER_ENABLE, re.Y.ZONE_TRANSFER_DISABLE, k.V.ARGO_ENABLEMENT, k.V.ARGO_GEO_ANALYTICS_FETCH, k.V.ARGO_GLOBAL_ANALYTICS_FETCH, j.X.VIEW_BUCKETS_LIST, j.X.CREATE_BUCKET, j.X.VALIDATE_BUCKET, j.X.DELETE_BUCKET, j.X.VIEW_CAPTURES_LIST, j.X.CREATE_SIMPLE_CAPTURE, j.X.CREATE_FULL_CAPTURE, j.X.VIEW_FULL_CAPTURE, j.X.DOWNLOAD_SIMPLE_CAPTURE, L.bK.VIEW_RULES, L.bK.CREATE_RULE, L.bK.UPDATE_RULE, L.bK.DELETE_RULE, L.bK.VIEW_CONFIGURATION, L.bK.CREATE_CONFIGURATION, L.bK.UPDATE_CONFIGURATION, L.bK.DELETE_CONFIGURATION, R.r8.VIEW_ALERTS, R.r8.VIEW_ALERTS_HISTORY, R.r8.MAGIC_OVERVIEW_ANALYTICS, R.VZ.CREATE_SITE, R.VZ.CREATE_TUNNEL, R.VZ.CREATE_STATIC_ROUTE, O.o4.CLICK_ADAPTIVE_SAMPLING, O.o4.CLICK_TO_LOG_EXPLORER_BANNER, O.o4.CLICK_TO_LOG_EXPLORER_DESCRIPTION, O.o4.CLICK_SWITCH_TO_RAW_LOGS, O.o4.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback", K.U.REGISTER_DOMAIN_SEARCH_SUBMIT, K.U.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN, K.U.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION, K.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE, K.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT, K.U.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED, K.U.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT, K.U.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS, K.U.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD, K.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS, K.U.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS, K.U.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE, K.U.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE, K.U.REGISTER_DOMAIN_CHECKOUT_ERROR, K.U.TRANSFER_DOMAIN_CHANGE_STEP, K.U.RENEW_DOMAIN_COMPLETED, K.U.RESTORE_DOMAIN_INIT, K.U.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL, K.U.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL, K.U.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL, K.U.RESTORE_DOMAIN_FAILURE, K.U.RESTORE_DOMAIN_COMPLETED, K.U.DOMAIN_DELETE_INIT, K.U.DOMAIN_DELETE_COMPLETED, K.U.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS, K.U.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE, K.U.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON, K.U.DOMAIN_DELETE_CONFIRM_DELETE, K.U.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL, K.U.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE, K.U.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL, K.U.DOMAIN_DELETE_WARNING_MODAL_CONTINUE, K.U.DOMAIN_DELETE_CLOSE_WARNING_MODAL, K.U.DOMAIN_MOVE_START_FLOW, K.U.DOMAIN_MOVE_OPEN_DOCS, K.U.DOMAIN_MOVE_CLOSE_FLOW, K.U.DOMAIN_MOVE_PROGRESS_FLOW, K.U.DOMAIN_MOVE_SUBMIT, K.U.DOMAIN_MOVE_INITIATE_SUCCESS, K.U.DOMAIN_MOVE_INITIATE_ERROR, K.U.DOMAIN_MOVE_CANCEL, K.U.DOMAIN_MOVE_CANCEL_SUCCESS, K.U.DOMAIN_MOVE_CANCEL_ERROR, K.U.ACTION_CENTER_NAVIGATE, K.U.ACTION_CENTER_DOMAIN_MOVE_DECISION, K.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS, K.U.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR, H.KO.CLICK_GET_STARTED_GUIDE, H.KO.CLICK_PIPELINE_DOCUMENTATION, H.KO.CLICK_QUICK_LINK, H.KO.CREATE_PIPELINE, H.KO.DELETE_PIPELINE, H.KO.LIST_PIPELINES, H.KO.VIEW_PIPELINE, De.S.EXISTING_DOMAIN, De.S.NEW_DOMAIN, De.S.WAF_RULESET, De.S.WORKERS, De.S.PAGES, De.S.R2, De.S.ACCOUNT_MEMBERS, Le._.TEMPLATE_PRODUCT_SELECTED, Le._.TEMPLATE_SELECTED, Le._.TEMPLATE_SAVE_DRAFT, Le._.TEMPLATE_CANCEL, Le._.TEMPLATE_DEPLOY, B.D.CLICK_GO_BACK_SHARE_MODAL, B.D.CLICK_MENU_ITEM_SHARE, B.D.CLICK_ON_CANCEL_SHARE_MODAL, B.D.CLICK_ON_CLOSE_SHARE_MODAL, B.D.CLICK_ON_CONFIGURE_SHARE_BUTTON, B.D.CLICK_ON_DELETE_RULESET, B.D.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL, B.D.CLICK_ON_EDIT_SHARE_PERMISSION, B.D.CLICK_ON_GO_TO_SOURCE_ACCOUNT, B.D.CLICK_ON_SHARE_BUTTON_SHARE_MODAL, B.D.CLICK_ON_SHARE_TABLE_ROW, de.vc.CREATED, de.vc.ENABLED, de.vc.DISABLED, de.vc.DELETED, de.vc.UPDATED, de.vc.DOWNLOADED, Oe.Gk.REQUEST_REVIEW, Oe.Gk.COPY_URL),
 				Ve = n.eg.exactStrict(n.eg.object({
@@ -15459,4 +15459,4 @@
 	}
 ]);
 
-//# debugId=ee195c90-2147-5ecf-9df8-1c142a7b216a
+//# debugId=bf9bfe15-5c86-537f-95ca-9f72bd30d6fc
