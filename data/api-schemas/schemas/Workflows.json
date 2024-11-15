@@ -725,6 +725,11 @@
 												"format": "date-time",
 												"type": "string"
 											},
+											"ended_on": {
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											},
 											"id": {
 												"maxLength": 64,
 												"minLength": 1,
@@ -733,6 +738,11 @@
 											},
 											"modified_on": {
 												"format": "date-time",
+												"type": "string"
+											},
+											"started_on": {
+												"format": "date-time",
+												"nullable": true,
 												"type": "string"
 											},
 											"status": {
@@ -762,6 +772,8 @@
 											"id",
 											"created_on",
 											"modified_on",
+											"started_on",
+											"ended_on",
 											"workflow_id",
 											"version_id",
 											"status"
