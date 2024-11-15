@@ -4,10 +4,14 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "gateway_id",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			},
@@ -21,9 +25,10 @@
 			},
 			{
 				"in": "path",
-				"name": "gateway_id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -100,6 +105,11 @@
 											"type": "array"
 										},
 										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
 										"id": {
@@ -114,11 +124,11 @@
 										}
 									},
 									"required": [
+										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
-										"id",
 										"created_at",
 										"modified_at"
 									],
@@ -136,7 +146,7 @@
 						}
 					}
 				},
-				"description": "Returns if the Dataset was deleted successfully"
+				"description": "Returns the Object if it was successfully deleted"
 			},
 			"404": {
 				"content": {
@@ -208,18 +218,23 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "gateway_id",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "gateway_id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			},
@@ -238,7 +253,7 @@
 				"schema": {
 					"default": 20,
 					"maximum": 100,
-					"minimum": 5,
+					"minimum": 1,
 					"type": "integer"
 				}
 			},
@@ -267,76 +282,9 @@
 			},
 			{
 				"in": "query",
-				"name": "id",
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
 				"name": "name",
 				"schema": {
 					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "filters",
-				"schema": {
-					"items": {
-						"properties": {
-							"key": {
-								"enum": [
-									"created_at",
-									"request_content_type",
-									"response_content_type",
-									"success",
-									"cached",
-									"provider",
-									"model",
-									"cost",
-									"tokens",
-									"tokens_in",
-									"tokens_out",
-									"duration",
-									"feedback"
-								],
-								"type": "string"
-							},
-							"operator": {
-								"enum": [
-									"eq",
-									"contains",
-									"lt",
-									"gt"
-								],
-								"type": "string"
-							},
-							"value": {
-								"items": {
-									"anyOf": [
-										{
-											"type": "string"
-										},
-										{
-											"type": "number"
-										},
-										{
-											"type": "boolean"
-										}
-									]
-								},
-								"type": "array"
-							}
-						},
-						"required": [
-							"key",
-							"operator",
-							"value"
-						],
-						"type": "object"
-					},
-					"type": "array"
 				}
 			},
 			{
@@ -347,7 +295,6 @@
 				}
 			},
 			{
-				"description": "Search by id, name, filters",
 				"in": "query",
 				"name": "search",
 				"schema": {
@@ -429,6 +376,11 @@
 												"type": "array"
 											},
 											"gateway_id": {
+												"description": "gateway id",
+												"example": "my-gateway",
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string"
 											},
 											"id": {
@@ -443,11 +395,11 @@
 											}
 										},
 										"required": [
+											"id",
 											"gateway_id",
 											"name",
 											"filters",
 											"enable",
-											"id",
 											"created_at",
 											"modified_at"
 										],
@@ -467,7 +419,7 @@
 						}
 					}
 				},
-				"description": "Returns a list of Datasets"
+				"description": "List objects"
 			},
 			"400": {
 				"content": {
@@ -538,10 +490,14 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "gateway_id",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			},
@@ -555,9 +511,10 @@
 			},
 			{
 				"in": "path",
-				"name": "gateway_id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -634,6 +591,11 @@
 											"type": "array"
 										},
 										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
 										"id": {
@@ -648,11 +610,11 @@
 										}
 									},
 									"required": [
+										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
-										"id",
 										"created_at",
 										"modified_at"
 									],
@@ -670,7 +632,7 @@
 						}
 					}
 				},
-				"description": "Returns a single Dataset if found"
+				"description": "Returns a single object if found"
 			},
 			"404": {
 				"content": {
@@ -742,18 +704,23 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "gateway_id",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "gateway_id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -908,6 +875,11 @@
 											"type": "array"
 										},
 										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
 										"id": {
@@ -922,11 +894,11 @@
 										}
 									},
 									"required": [
+										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
-										"id",
 										"created_at",
 										"modified_at"
 									],
@@ -944,7 +916,7 @@
 						}
 					}
 				},
-				"description": "Returns the created Dataset"
+				"description": "Returns the created Object"
 			},
 			"400": {
 				"content": {
@@ -1024,10 +996,14 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "gateway_id",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			},
@@ -1041,9 +1017,10 @@
 			},
 			{
 				"in": "path",
-				"name": "gateway_id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -1198,6 +1175,11 @@
 											"type": "array"
 										},
 										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
 										"id": {
@@ -1212,11 +1194,11 @@
 										}
 									},
 									"required": [
+										"id",
 										"gateway_id",
 										"name",
 										"filters",
 										"enable",
-										"id",
 										"created_at",
 										"modified_at"
 									],
@@ -1234,7 +1216,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated Dataset"
+				"description": "Returns the updated Object"
 			},
 			"400": {
 				"content": {

@@ -4,18 +4,23 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "id",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -87,8 +92,8 @@
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"collect_logs",
 										"cache_ttl",
+										"collect_logs",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
@@ -107,7 +112,7 @@
 						}
 					}
 				},
-				"description": "Returns if the Gateway was deleted successfully"
+				"description": "Returns the Object if it was successfully deleted"
 			},
 			"404": {
 				"content": {
@@ -160,7 +165,7 @@
 		],
 		"summary": "Delete a Gateway",
 		"tags": [
-			"AI Gateway"
+			"AI Gateway Gateways"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -201,7 +206,7 @@
 				"schema": {
 					"default": 20,
 					"maximum": 100,
-					"minimum": 5,
+					"minimum": 1,
 					"type": "integer"
 				}
 			},
@@ -225,18 +230,6 @@
 						"asc",
 						"desc"
 					],
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "id",
-				"schema": {
-					"description": "gateway id",
-					"example": "my-gateway",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			}
@@ -309,8 +302,8 @@
 											"rate_limiting_interval",
 											"rate_limiting_limit",
 											"rate_limiting_technique",
-											"collect_logs",
 											"cache_ttl",
+											"collect_logs",
 											"cache_invalidate_on_update",
 											"created_at",
 											"modified_at"
@@ -331,7 +324,7 @@
 						}
 					}
 				},
-				"description": "Returns a list of Gateways"
+				"description": "List objects"
 			},
 			"400": {
 				"content": {
@@ -383,7 +376,7 @@
 		],
 		"summary": "List Gateways",
 		"tags": [
-			"AI Gateway"
+			"AI Gateway Gateways"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -402,15 +395,6 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
@@ -419,6 +403,15 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -490,8 +483,8 @@
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"collect_logs",
 										"cache_ttl",
+										"collect_logs",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
@@ -510,7 +503,7 @@
 						}
 					}
 				},
-				"description": "Returns a single Gateway if found"
+				"description": "Returns a single object if found"
 			},
 			"404": {
 				"content": {
@@ -563,7 +556,7 @@
 		],
 		"summary": "Fetch a Gateway",
 		"tags": [
-			"AI Gateway"
+			"AI Gateway Gateways"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -722,8 +715,8 @@
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"collect_logs",
 										"cache_ttl",
+										"collect_logs",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
@@ -742,7 +735,7 @@
 						}
 					}
 				},
-				"description": "Returns the created Gateway"
+				"description": "Returns the created Object"
 			},
 			"400": {
 				"content": {
@@ -803,7 +796,7 @@
 		],
 		"summary": "Create a new Gateway",
 		"tags": [
-			"AI Gateway"
+			"AI Gateway Gateways"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -822,15 +815,6 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
 				"name": "id",
 				"required": true,
 				"schema": {
@@ -839,6 +823,15 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -966,8 +959,8 @@
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
-										"collect_logs",
 										"cache_ttl",
+										"collect_logs",
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
@@ -986,7 +979,7 @@
 						}
 					}
 				},
-				"description": "Returns the updated Gateway"
+				"description": "Returns the updated Object"
 			},
 			"400": {
 				"content": {
@@ -1086,7 +1079,7 @@
 		],
 		"summary": "Update a Gateway",
 		"tags": [
-			"AI Gateway"
+			"AI Gateway Gateways"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
