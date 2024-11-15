@@ -106,7 +106,7 @@
 																			"workers/message": {
 																				"description": "Human-readable message about the deployment.",
 																				"example": "Deploy bug fix.",
-																				"maxLength": 50,
+																				"maxLength": 100,
 																				"type": "string"
 																			}
 																		},
@@ -282,7 +282,7 @@
 																					"workers/message": {
 																						"description": "Human-readable message about the deployment.",
 																						"example": "Deploy bug fix.",
-																						"maxLength": 50,
+																						"maxLength": 100,
 																						"type": "string"
 																					}
 																				},
@@ -535,7 +535,7 @@
 											"workers/message": {
 												"description": "Human-readable message about the deployment.",
 												"example": "Deploy bug fix.",
-												"maxLength": 50,
+												"maxLength": 100,
 												"type": "string"
 											}
 										},
@@ -697,7 +697,7 @@
 																"workers/message": {
 																	"description": "Human-readable message about the deployment.",
 																	"example": "Deploy bug fix.",
-																	"maxLength": 50,
+																	"maxLength": 100,
 																	"type": "string"
 																}
 															},
@@ -865,7 +865,7 @@
 																		"workers/message": {
 																			"description": "Human-readable message about the deployment.",
 																			"example": "Deploy bug fix.",
-																			"maxLength": 50,
+																			"maxLength": 100,
 																			"type": "string"
 																		}
 																	},
