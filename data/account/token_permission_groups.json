@@ -904,6 +904,22 @@
 		]
 	},
 	{
+		"id": "95d69e8d6d5144bfb0923667355d9f11",
+		"name": "DNS View Read",
+		"description": "Grants read access to DNS Views",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5b7aedd821a548b9bf5a2acabbce98c7",
+		"name": "DNS View Write",
+		"description": "Grants write access to DNS Views",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "4755a26eedb94da69e1066d98aa820be",
 		"name": "DNS Write",
 		"description": "Grants write access to DNS",
