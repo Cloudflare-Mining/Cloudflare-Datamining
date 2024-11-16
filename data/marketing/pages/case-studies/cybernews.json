@@ -7,7 +7,28 @@
 				"name": "Cybernews",
 				"contentfulId": "43DdeUJavUpDR7BxsGKXJb",
 				"nameUrlSlug": "cybernews",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Cybernews & Cloudflare | Case Study",
+					"metaDescription": "Cybernews uses Cloudflare to protect sensitive data, handle spikes in readership, fend off malicious bots, and implement zero trust security for collaboration with freelancers",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xnNzZFk8GtCK6mLNTwLMK/5bba81b8567cb2983345aec23c593484/cybernews_meta.png"
+						},
+						"description": ""
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xnNzZFk8GtCK6mLNTwLMK/5bba81b8567cb2983345aec23c593484/cybernews_meta.png"
+						},
+						"description": ""
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xnNzZFk8GtCK6mLNTwLMK/5bba81b8567cb2983345aec23c593484/cybernews_meta.png"
+						},
+						"description": ""
+					}
+				},
 				"orderDate": "2023-03-21",
 				"homepageUrl": "https://cybernews.com/",
 				"hideFromCaseStudiesPage": false,
@@ -16,6 +37,10 @@
 				"cloudflareStreamVideoId": null,
 				"keyResults": "- Reduced infrastructure costs and improved user experience from 80-90% content caching\n\n- Decreased latency and server costs due to scripts and applications hosted via Cloudflare Workers and Pages",
 				"relatedCaseStudyLinks": [
+					{
+						"text": "ProPublica",
+						"url": "/case-studies/propublica"
+					},
 					{
 						"text": "TOPdesk",
 						"url": "/case-studies/topdesk"
