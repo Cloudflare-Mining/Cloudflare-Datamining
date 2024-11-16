@@ -5,58 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: San Francisco, CA&nbsp;</h4>
-<h4>About the role</h4>
-<p>Cloudflare is looking for a bright, proactive and detail-oriented Executive Assistant to support the Chief Marketing Officer.</p>
-<p>Your job is to keep our leaders organized, prioritized and productive as we continue to grow. This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA.&nbsp;</p>
 <h4>What you'll do</h4>
+<p>As a member of the Analytics and Reporting (ART) team within CF1 (Zero Trust), you will work alongside other engineers, designers, and product managers to develop and enhance Cloudflare's analytics and reporting capabilities. Your role will involve developing software applications that efficiently handle large-scale data analytics, deliver full-stack solutions that include data ingestion, storage, processing, and visualization layers, contribute to the architecture and continuous improvement of analytics platforms. You will see projects through from conception to deployment, delivering data-driven solutions that empower Cloudflare customers to harness the full potential of Zero Trust.&nbsp;</p>
+<p><strong>Technologies we use:</strong></p>
 <ul>
-	<li>Admin: Provide excellent administrative support for members of the Executive Leadership team exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Including room set-ups, light catering, Audio/Visual set up, attendance tracking and materials distribution. Provide agendas, detailed data, information and resources in preparation for meetings.&nbsp;</li>
-	<li>Calendar: Proactively own and flawlessly execute on calendars, prioritizing with purpose, deflecting with tact, and understanding both the short- and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the leaders are equipped with all the necessary meeting information and manage inbound and outbound requests. If you enjoy “playing Tetris” with different Time Zones and schedules to help people get together, that would be a plus!</li>
-	<li>Travel and Expenses: Plan all aspects of domestic and international travel, optimizing and balancing executives’ time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date. Ensure timely submission of expense reports through Concur.</li>
-	<li>EA Team: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</li>
+	<li>ART core backend and API services are written in Go.</li>
+	<li>We deploy our solutions in Kubernetes environments.</li>
+	<li>We utilize Postgres, Clickhouse, and a number of cloud native data store technologie</li>
+	<li>s.</li>
+	<li>We use HTML, CSS, JavaScript, TypeScript for front-end development.</li>
+	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
+	<li>For service monitoring we use Prometheus and Grafana.</li>
+	<li>For service logging we use Sentry, Elasticsearch and Kibana.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>You have 6+ years experience as an Executive Assistant in a high growth environment, prior experience supporting senior leaders&nbsp;</li>
-	<li>Excellent verbal and written communication skills</li>
-	<li>Working knowledge of Google Suite and major airline carrier’s platforms</li>
-	<li>Exhibits a strong work ethic, professionalism, confidentiality and good judgment</li>
-	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
-	<li>Personable with a can do attitude that sees no task or project to be too small or too big</li>
+	<li>3-5+ years of professional experience building and managing reliable and performant software systems at scale, preferably with some experience in our tech stack.</li>
+	<li>Experience in designing and architecting distributed systems.</li>
+	<li>Experience in designing and implementing REST APIs.</li>
+	<li>Experience in SQL, familiarity with common relational database concepts.</li>
+	<li>Familiarity with the web and technologies such as web browsers, HTTP, JavaScript.</li>
+	<li>Familiarity with Kubernetes, Kafka, Clickhouse.</li>
+	<li>Passion for making the digital world a more secure place.</li>
+	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
+	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+</ul>
+<p><strong>Bonus</strong></p>
+<ul>
+	<li>Previous experience with building enterprise analytics products.</li>
 </ul>
 <p>&nbsp;</p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li>For Bay Area-based hires: Estimated annual salary of $99,000 - $121,000</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li style="font-weight: 400;"><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $137,000 - $167,000.</span></li>
+	<li style="font-weight: 400;"><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000.</span></li>
+	<li style="font-weight: 400;"><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $162,000 - $198,000</span></li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
