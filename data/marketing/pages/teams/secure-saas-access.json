@@ -2743,6 +2743,12 @@
 								"url": null,
 								"subMenuItems": [
 									{
+										"contentfulId": "01FpIoGj85kxmR7udTx60B",
+										"linkText": "Zero Trust interactive demo",
+										"page": null,
+										"url": "/products/zero-trust/interactive-demo"
+									},
+									{
 										"contentfulId": "1gA7cCpxWVP25In2onzmBX",
 										"linkText": "Remote Browser Isolation (RBI) demo",
 										"page": null,
@@ -2819,6 +2825,12 @@
 										"linkText": "Financial services",
 										"page": null,
 										"url": "/case-studies?industry=Financial+Services&usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "1F6lQEkWk6MkXgnM7ssDFt",
+										"linkText": "Ecommerce",
+										"page": null,
+										"url": "/case-studies?industry=eCommerce&usecase=Enable+zero+trust+security+for+workforce"
 									}
 								]
 							},
@@ -2910,6 +2922,12 @@
 										"url": "https://developers.cloudflare.com/cloudflare-one/policies/#zero-trust-policies"
 									},
 									{
+										"contentfulId": "8b5knSylXY8azagwdjV1E",
+										"linkText": "SWG policies",
+										"page": null,
+										"url": "https://developers.cloudflare.com/cloudflare-one/policies/filtering"
+									},
+									{
 										"contentfulId": "4MuBZ3yVF7m9N8O3Q58app",
 										"linkText": "Browser Isolation",
 										"page": null,
@@ -2996,6 +3014,42 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "DsxFergddffnucI54KdWU",
+								"title": "SaaS applications live outside of your team's control",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "SaaS apps are hosted outside of the corporate network, so your IT team has limited control over the way users access those applications and move data in and out of them.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0cfe36ab-abe1-5f77-965c-c24fe0837bdf",
+									"altText": "Cloud multi blue",
+									"title": "Cloud multi blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LJvPVcmM6pKOS3XApXCag/35a5adb3d158b085948ff2c4217c2ff4/cloud-multi.png"
+										},
+										"description": "Cloud multi orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "1jlfbWt3ZD7rdv6HUn4cgk",
 								"title": "Users may share data across the wrong applications",
 								"makeTitleLink": null,
@@ -3031,6 +3085,59 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentfulId": "4XcnOCL2r45Qg7hiCGZk99",
+						"title": "How it works",
+						"copy": "Cloudflare places Zero Trust access (ZTNA), gateway (SWG), and browser (RBI) controls in front of your SaaS applications — without requiring your IT team to configure and operate a dedicated CASB product.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "0351ebf0-81bc-5cb4-a598-872042407d94",
+							"altText": "SaaS application access diagram",
+							"title": "SaaS application access diagram",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/341mBatlArybMZPmwanDYA/e8d7a3daeca6fad183f50e97578105bd/zt-visibility.svg"
+								},
+								"description": "SaaS application access diagram"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "extra-large",
+						"imageTextAlignment": null,
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "kEERVPTNllPVjkRcUel7n",
@@ -3134,6 +3241,59 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "3T8Z5NowrfYQUy8iBhOyej",
+						"title": "Protect data within your corporate applications",
+						"copy": "Easily build and deploy Zero Trust policies to protect the data that lives within your SaaS tenants, while preventing your employees from accessing non-corporate instances of applications.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "edfb3ef1-ef91-5aae-a192-63f8a1d8749e",
+							"altText": "Teams access zero trust spot illustration",
+							"title": "Teams access zero trust spot illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wcDyWKh5GbybJu3JmkP13/005deea71416d0b781734b945b0fb56f/BDES-4917_-_teams-access-zero-trust-spot-illustration.svg"
+								},
+								"description": "Teams access zero trust spot illustration"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"imagePosition": true,
 						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": []
