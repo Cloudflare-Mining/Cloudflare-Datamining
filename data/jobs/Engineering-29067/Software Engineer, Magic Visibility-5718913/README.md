@@ -5,6 +5,19 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>While this job can be worked almost entirely remotely, hiring is focused on the following greater metro areas (~50 miles):<br></strong></p>
+<ul>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>Atlanta, GA</strong></li>
+	<li><strong>Chicago, IL</strong></li>
+	<li><strong>Denver, CO</strong></li>
+	<li><strong>New York City</strong></li>
+	<li><strong>Seattle, WA</strong></li>
+	<li><strong>Washington, DC</strong></li>
+	<li><strong>Mexico City, MX</strong></li>
+	<li><strong>Toronto, CA</strong></li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>About the team</strong></p>
 <p>As a backend software engineer on the Magic Visibility team, you will contribute across a wide range of technologies and systems to deliver new products that provide network visibility and insights to our customers. You will help build and grow a globally distributed network data collector and the pipeline that delivers, processes, and stores the massive stream of data. You will build backend services that analyze this network data and correlate it with a multitude of other data sources within Cloudflare. You will build APIs and integrations with other products such as DDoS mitigation, Magic Transit, and Magic Firewall to enable customers to take action on insights we surface. You will scale all of these technologies to enable access to these products to all Cloudflare customers.</p>
 <p>We’re looking for curious, empathetic engineers who are excited to work across the whole stack of technologies we use at Cloudflare to quickly deliver end-to-end solutions!</p>

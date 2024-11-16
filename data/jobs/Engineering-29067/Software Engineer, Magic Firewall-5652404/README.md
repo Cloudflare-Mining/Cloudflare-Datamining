@@ -5,6 +5,19 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>While this job can be worked almost entirely remotely, hiring is focused on the following greater metro areas (~50 miles):<br></strong></p>
+<ul>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>Atlanta, GA</strong></li>
+	<li><strong>Chicago, IL</strong></li>
+	<li><strong>Denver, CO</strong></li>
+	<li><strong>New York City</strong></li>
+	<li><strong>Seattle, WA</strong></li>
+	<li><strong>Washington, DC</strong></li>
+	<li><strong>Mexico City, MX</strong></li>
+	<li><strong>Toronto, CA</strong></li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>About the team</strong></p>
 <p>Magic Firewall protects global networks of any size with a fast, globally-distributed next generation firewall that's managed through a single pane of glass. Our customers enjoy the ease of management and advanced insights to identify threats and secure their traffic. We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.<br><br>You can read more about what our team works on here:</p>
 <ul>

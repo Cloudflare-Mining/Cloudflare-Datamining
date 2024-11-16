@@ -5,7 +5,20 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the team</strong></p>
+<p><strong>While this job can be worked almost entirely remotely, hiring is focused on the following greater metro areas (~50 miles):<br></strong></p>
+<ul>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>Atlanta, GA</strong></li>
+	<li><strong>Chicago, IL</strong></li>
+	<li><strong>Denver, CO</strong></li>
+	<li><strong>New York City</strong></li>
+	<li><strong>Seattle, WA</strong></li>
+	<li><strong>Washington, DC</strong></li>
+	<li><strong>Mexico City, MX</strong></li>
+	<li><strong>Toronto, CA</strong></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong><br>About the team</strong></p>
 <p>The Magic Cloud Networking team builds an orchestration framework that empowers customers to take public cloud resources (e.g., AWS / Azure / GCP) and securely connect them to Cloudflare’s global data-center footprint. Working with public cloud networking resources provides unique challenges—each cloud models networking very differently, customers can modify resources out-of-band of our orchestration system (“shadow IT operations”), resources can fail in opaque and varied ways outside of our control, etc.. To solve these issues, our orchestration platform must be resilient and scalable, while also affording flexibility to the unique constraints of each cloud. Powering this orchestration framework is a set of Go-based microservices running in our core data-centers, leveraging Cloudflare’s infrastructure excellence.</p>
 <p>We are a team of engineers who obsess over building reliable services which leverage Cloudflare’s unique architecture and global network footprint.</p>
 <p>You can read more about what we work on here:</p>

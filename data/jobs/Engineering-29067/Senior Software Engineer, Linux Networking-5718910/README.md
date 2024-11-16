@@ -5,7 +5,19 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the team</strong></p>
+<p><strong>While this job can be worked almost entirely remotely, hiring is focused on the following greater metro areas (~50 miles):<br></strong></p>
+<ul>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>Atlanta, GA</strong></li>
+	<li><strong>Chicago, IL</strong></li>
+	<li><strong>Denver, CO</strong></li>
+	<li><strong>New York City</strong></li>
+	<li><strong>Seattle, WA</strong></li>
+	<li><strong>Washington, DC</strong></li>
+	<li><strong>Mexico City, MX</strong></li>
+	<li><strong>Toronto, CA</strong></li>
+</ul>
+<p><strong><br>About the team</strong></p>
 <p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks, providing a single pane of glass for network connectivity, visibility, and operating network functions like DoS mitigation, Next-Gen Firewall, IDS/IPS, WAN optimization, and more. We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.</p>
 <p><strong>About the role</strong></p>
 <p>We are hiring engineers of all experience levels across many of our teams. Some of the things our teams work on include:</p>
