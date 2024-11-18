@@ -966,6 +966,10 @@
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
 		],
+		"x-api-token-group": [
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -2207,6 +2211,9 @@
 		"summary": "Upload Certificate",
 		"tags": [
 			"Zone-Level Authenticated Origin Pulls"
+		],
+		"x-api-token-group": [
+			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

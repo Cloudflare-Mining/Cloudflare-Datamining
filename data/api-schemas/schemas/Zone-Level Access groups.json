@@ -219,6 +219,9 @@
 		"summary": "Delete an Access group",
 		"tags": [
 			"Zone-Level Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"GET /zones/{zone_id}/access/groups": {
@@ -1887,6 +1890,10 @@
 		"summary": "List Access groups",
 		"tags": [
 			"Zone-Level Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"GET /zones/{zone_id}/access/groups/{group_id}": {
@@ -3534,6 +3541,10 @@
 		"summary": "Get an Access group",
 		"tags": [
 			"Zone-Level Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
 		]
 	},
 	"POST /zones/{zone_id}/access/groups": {
@@ -6600,6 +6611,9 @@
 		"summary": "Create an Access group",
 		"tags": [
 			"Zone-Level Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	},
 	"PUT /zones/{zone_id}/access/groups/{group_id}": {
@@ -9677,6 +9691,9 @@
 		"summary": "Update an Access group",
 		"tags": [
 			"Zone-Level Access groups"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
 		]
 	}
 }

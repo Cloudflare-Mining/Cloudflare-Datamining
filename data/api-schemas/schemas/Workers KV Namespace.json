@@ -219,6 +219,9 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.namespace.delete"
@@ -498,6 +501,9 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.key.delete"
@@ -734,6 +740,9 @@
 		"summary": "Delete key-value pair",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1048,6 +1057,10 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.namespace.list"
@@ -1289,6 +1302,10 @@
 		"summary": "Get a Namespace",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1577,6 +1594,10 @@
 		"summary": "List a Namespace's Keys",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1973,6 +1994,10 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write",
+			"Workers KV Storage Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.key.read"
@@ -2222,6 +2247,9 @@
 		"summary": "Create a Namespace",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2501,6 +2529,9 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.key.delete"
@@ -2740,6 +2771,9 @@
 		"summary": "Rename a Namespace",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3057,6 +3091,9 @@
 		"tags": [
 			"Workers KV Namespace"
 		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.storage.kv.key.update"
@@ -3338,6 +3375,9 @@
 		"summary": "Write key-value pair with optional metadata",
 		"tags": [
 			"Workers KV Namespace"
+		],
+		"x-api-token-group": [
+			"Workers KV Storage Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

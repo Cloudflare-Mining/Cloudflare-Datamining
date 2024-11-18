@@ -286,6 +286,10 @@
 		"tags": [
 			"Worker Subdomain"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.cron.subdomain.read"
@@ -594,6 +598,9 @@
 		"summary": "Create Subdomain",
 		"tags": [
 			"Worker Subdomain"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

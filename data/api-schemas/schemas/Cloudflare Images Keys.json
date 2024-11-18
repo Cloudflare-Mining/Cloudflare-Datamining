@@ -710,6 +710,10 @@
 		"summary": "List Signing Keys",
 		"tags": [
 			"Cloudflare Images Keys"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
 		]
 	},
 	"PUT /accounts/{account_id}/images/v1/keys/{signing_key_name}": {

@@ -1161,6 +1161,10 @@
 		"summary": "Retrieve information about all operations on a zone",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway Read",
+			"Domain API Gateway Read"
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
@@ -2073,6 +2077,10 @@
 		"summary": "Retrieve operations and features as OpenAPI schemas",
 		"tags": [
 			"API Shield Endpoint Management"
+		],
+		"x-api-token-group": [
+			"Account API Gateway Read",
+			"Domain API Gateway Read"
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/operations": {

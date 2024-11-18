@@ -153,6 +153,9 @@
 		"summary": "Delete app",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	},
 	"GET /accounts/{account_id}/calls/apps": {
@@ -380,6 +383,10 @@
 		"summary": "List apps",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write",
+			"Calls Read"
 		]
 	},
 	"GET /accounts/{account_id}/calls/apps/{app_id}": {
@@ -621,6 +628,10 @@
 		"summary": "Retrieve app details",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write",
+			"Calls Read"
 		]
 	},
 	"POST /accounts/{account_id}/calls/apps": {
@@ -784,6 +795,9 @@
 		"summary": "Create a new app",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	},
 	"PUT /accounts/{account_id}/calls/apps/{app_id}": {
@@ -1043,6 +1057,9 @@
 		"summary": "Edit app details",
 		"tags": [
 			"Calls Apps"
+		],
+		"x-api-token-group": [
+			"Calls Write"
 		]
 	}
 }

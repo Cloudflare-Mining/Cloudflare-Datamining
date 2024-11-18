@@ -373,6 +373,11 @@
 		"tags": [
 			"Worker Versions"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.deployment.list"
@@ -790,6 +795,11 @@
 		"summary": "Get Version Detail",
 		"tags": [
 			"Worker Versions"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1323,6 +1333,9 @@
 		"summary": "Upload Version",
 		"tags": [
 			"Worker Versions"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

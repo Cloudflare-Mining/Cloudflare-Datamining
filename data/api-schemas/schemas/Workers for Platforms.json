@@ -190,6 +190,9 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.delete"
@@ -274,6 +277,9 @@
 		"summary": "Delete Worker",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -492,6 +498,9 @@
 		"summary": "Delete Script Tag",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -721,6 +730,11 @@
 		"summary": "List dispatch namespaces",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -958,6 +972,11 @@
 		"summary": "Get dispatch namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1269,6 +1288,11 @@
 		"summary": "Worker Details",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1930,6 +1954,11 @@
 		"summary": "Get Script Content",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3189,6 +3218,11 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.read"
@@ -3401,6 +3435,11 @@
 		"summary": "Get Script Tags",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4825,6 +4864,9 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.create"
@@ -5067,6 +5109,9 @@
 		"summary": "Create dispatch namespace",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5881,6 +5926,9 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.create"
@@ -6242,6 +6290,9 @@
 		"summary": "Put Script Content",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -6720,6 +6771,9 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.edit"
@@ -6937,6 +6991,9 @@
 		"summary": "Put Script Tag",
 		"tags": [
 			"Workers for Platforms"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

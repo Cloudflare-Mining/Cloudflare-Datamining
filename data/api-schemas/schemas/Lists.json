@@ -333,6 +333,9 @@
 		"tags": [
 			"Lists"
 		],
+		"x-api-token-group": [
+			"Account Rule Lists Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1199,6 +1202,10 @@
 		"tags": [
 			"Lists"
 		],
+		"x-api-token-group": [
+			"Account Rule Lists Write",
+			"Account Rule Lists Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1625,6 +1632,10 @@
 		"summary": "Get a list",
 		"tags": [
 			"Lists"
+		],
+		"x-api-token-group": [
+			"Account Rule Lists Write",
+			"Account Rule Lists Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3934,6 +3945,9 @@
 		"tags": [
 			"Lists"
 		],
+		"x-api-token-group": [
+			"Account Rule Lists Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -4830,6 +4844,9 @@
 		"summary": "Update a list",
 		"tags": [
 			"Lists"
+		],
+		"x-api-token-group": [
+			"Account Rule Lists Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,

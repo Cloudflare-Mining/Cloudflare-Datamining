@@ -279,6 +279,9 @@
 		"tags": [
 			"Worker Routes"
 		],
+		"x-api-token-group": [
+			"Workers Routes Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.route.delete"
@@ -613,6 +616,10 @@
 		"summary": "List Routes",
 		"tags": [
 			"Worker Routes"
+		],
+		"x-api-token-group": [
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -964,6 +971,10 @@
 		"tags": [
 			"Worker Routes"
 		],
+		"x-api-token-group": [
+			"Workers Routes Write",
+			"Workers Routes Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.route.read"
@@ -1257,6 +1268,9 @@
 		"summary": "Create Route",
 		"tags": [
 			"Worker Routes"
+		],
+		"x-api-token-group": [
+			"Workers Routes Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1632,6 +1646,9 @@
 		"summary": "Update Route",
 		"tags": [
 			"Worker Routes"
+		],
+		"x-api-token-group": [
+			"Workers Routes Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -340,6 +340,9 @@
 		"summary": "Delete Load Balancer",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write"
 		]
 	},
 	"GET /zones/{zone_id}/load_balancers": {
@@ -1942,6 +1945,10 @@
 		"summary": "List Load Balancers",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write",
+			"Load Balancers Read"
 		]
 	},
 	"GET /zones/{zone_id}/load_balancers/{load_balancer_id}": {
@@ -3505,6 +3512,10 @@
 		"summary": "Load Balancer Details",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write",
+			"Load Balancers Read"
 		]
 	},
 	"PATCH /zones/{zone_id}/load_balancers/{load_balancer_id}": {
@@ -5669,6 +5680,9 @@
 		"summary": "Patch Load Balancer",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write"
 		]
 	},
 	"POST /zones/{zone_id}/load_balancers": {
@@ -7834,6 +7848,9 @@
 		"summary": "Create Load Balancer",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write"
 		]
 	},
 	"PUT /zones/{zone_id}/load_balancers/{load_balancer_id}": {
@@ -10014,6 +10031,9 @@
 		"summary": "Update Load Balancer",
 		"tags": [
 			"Load Balancers"
+		],
+		"x-api-token-group": [
+			"Load Balancers Write"
 		]
 	}
 }

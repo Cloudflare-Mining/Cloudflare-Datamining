@@ -383,6 +383,9 @@
 		"tags": [
 			"Email Routing settings"
 		],
+		"x-api-token-group": [
+			"Zone Settings Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.zone.email.routing.config.read"
@@ -603,6 +606,9 @@
 		"summary": "Email Routing - DNS settings",
 		"tags": [
 			"Email Routing settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

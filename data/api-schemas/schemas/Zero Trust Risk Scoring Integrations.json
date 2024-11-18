@@ -460,6 +460,10 @@
 		"summary": "List all risk score integrations for the account.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Read",
+			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
@@ -1256,6 +1260,9 @@
 		"summary": "Create new risk score integration.",
 		"tags": [
 			"Zero Trust Risk Scoring Integrations"
+		],
+		"x-api-token-group": [
+			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {

@@ -219,6 +219,9 @@
 		"summary": "Delete signing keys",
 		"tags": [
 			"Stream Signing Keys"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/keys": {
@@ -435,6 +438,10 @@
 		"summary": "List signing keys",
 		"tags": [
 			"Stream Signing Keys"
+		],
+		"x-api-token-group": [
+			"Stream Write",
+			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream/keys": {
@@ -664,6 +671,9 @@
 		"summary": "Create signing keys",
 		"tags": [
 			"Stream Signing Keys"
+		],
+		"x-api-token-group": [
+			"Stream Write"
 		]
 	}
 }

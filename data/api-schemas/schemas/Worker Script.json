@@ -67,6 +67,9 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.delete"
@@ -516,6 +519,11 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.list"
@@ -583,6 +591,11 @@
 		"summary": "Download Worker",
 		"tags": [
 			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -956,6 +969,11 @@
 		"summary": "Get Script Settings",
 		"tags": [
 			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1752,6 +1770,11 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.read"
@@ -1883,6 +1906,11 @@
 		"summary": "Get Worker subdomain",
 		"tags": [
 			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2185,6 +2213,11 @@
 		"summary": "Fetch Usage Model",
 		"tags": [
 			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2498,6 +2531,9 @@
 		"summary": "Patch Script Settings",
 		"tags": [
 			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3911,6 +3947,9 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.create"
@@ -4492,6 +4531,9 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.create"
@@ -4640,6 +4682,9 @@
 		"summary": "Post Worker subdomain",
 		"tags": [
 			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5454,6 +5499,9 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.create"
@@ -5829,6 +5877,9 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.create"
@@ -6145,6 +6196,9 @@
 		"summary": "Update Usage Model",
 		"tags": [
 			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

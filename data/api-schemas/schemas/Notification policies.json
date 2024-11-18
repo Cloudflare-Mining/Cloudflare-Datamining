@@ -324,6 +324,10 @@
 		"summary": "Delete a Notification policy",
 		"tags": [
 			"Notification policies"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
 		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies": {
@@ -1617,6 +1621,13 @@
 		"summary": "List Notification policies",
 		"tags": [
 			"Notification policies"
+		],
+		"x-api-token-group": [
+			"Cloudflare Zero Trust PII Read",
+			"Notifications Write",
+			"Notifications Read",
+			"Account Settings Write",
+			"Account Settings Read"
 		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
@@ -2858,6 +2869,13 @@
 		"summary": "Get a Notification policy",
 		"tags": [
 			"Notification policies"
+		],
+		"x-api-token-group": [
+			"Cloudflare Zero Trust PII Read",
+			"Notifications Write",
+			"Notifications Read",
+			"Account Settings Write",
+			"Account Settings Read"
 		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/policies": {
@@ -3628,6 +3646,10 @@
 		"summary": "Create a Notification policy",
 		"tags": [
 			"Notification policies"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
 		]
 	},
 	"PUT /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
@@ -4404,6 +4426,10 @@
 		"summary": "Update a Notification policy",
 		"tags": [
 			"Notification policies"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
 		]
 	}
 }
