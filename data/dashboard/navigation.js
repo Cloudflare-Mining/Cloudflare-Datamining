@@ -45,7 +45,7 @@ const navigation = {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
-		hasPermission: I => !(0, y.n3)() && !(0, e.z1)("oauth-access-management")(I)
+		hasPermission: I => !(0, h.n3)() && !(0, e.z1)("oauth-access-management")(I)
 	}, {
 		title: "navigation.profile.api_tokens",
 		url: "/api-tokens",
@@ -409,7 +409,7 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: I => (0, a.iY)(I) && (0, B.k)(I)
+		hasPermission: I => (0, a.iY)(I) && (0, R.k)(I)
 	}, {
 		title: "navigation.account.storage_and_databases",
 		url: "/workers/kv/namespaces",
@@ -555,7 +555,7 @@ const navigation = {
 			title: "navigation.account.api_tokens",
 			url: "/api-tokens",
 			testId: "account-homepage-api-tokens",
-			hasPermission: I => (0, a.iY)(I) && !!(0, e.z1)("account-owned-api-tokens")(I)
+			hasPermission: I => (0, a.iY)(I)
 		}, {
 			title: "navigation.account.audit_log",
 			url: "/audit-log",
@@ -744,9 +744,9 @@ const navigation = {
 			const Z = (0, g.nA)(I);
 			if ((0, l.yD)(I) || !(0, a.wB)(I, "zone_settings", "spectrum.app") || !Z) return !1;
 			const Y = !!((0, u.l8)(I) || (0, g.DQ)(I)),
-				ee = !!(0, g.ZB)(I, "spectrum", "enabled"),
+				q = !!(0, g.ZB)(I, "spectrum", "enabled"),
 				K = !!(0, g.Ns)(Z);
-			return ee || Y || !K
+			return q || Y || !K
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -1047,7 +1047,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: h.az
+			tabs: y.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",

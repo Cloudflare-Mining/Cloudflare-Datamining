@@ -47,6 +47,7 @@
 	"/^\\/[a-zA-Z0-9]+\\/domains\\/register\\/checkout$/",
 	"/^\\/a\\/([0-9a-f]{32})/",
 	"/^\\/cdn-cgi($|\\/.*$)/",
+	"/^\\/domainconnect\\/v2\\/domaintemplates\\//i",
 	"/^\\/email-verification-info(\\/)?/",
 	"/^\\/login\\/apple(\\/)?/",
 	"/^\\s*v=DKIM1;/",
