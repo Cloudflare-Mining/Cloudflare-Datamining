@@ -197,7 +197,18 @@ async def do_request(py_request):
 	<p>Thankfully, Joe Marshall recently landed <a href="https://urllib3.readthedocs.io/en/stable/reference/contrib/emscripten.html">a contribution to urllib3</a> that adds Pyodide support in web browsers by:</p>
 	<ol>
 		<li>
-			<p>Checking if blocking with <code>Atomics.wait()</code> is possiblea. If so, start a fetch worker threadb. Delegate the fetch operation to the worker thread and serialize the response into a SharedArrayBufferc. In the Python thread, use Atomics.wait to block for the response in the SharedArrayBuffer</p>
+			<p>Checking if blocking with <code>Atomics.wait()</code> is possible</p>
+			<ol>
+				<li>
+					<p>If so, start a fetch worker thread</p>
+				</li>
+				<li>
+					<p>Delegate the fetch operation to the worker thread and serialize the response into a SharedArrayBuffer</p>
+				</li>
+				<li>
+					<p>In the Python thread, use Atomics.wait to block for the response in the SharedArrayBuffer</p>
+				</li>
+			</ol>
 		</li>
 		<li>
 			<p>If <code>Atomics.wait()</code> doesn’t work, fall back to a synchronous XMLHttpRequest</p>
@@ -212,7 +223,7 @@ async def do_request(py_request):
 			</svg>
 		</a>
 	</div>
-	<p>There is an approach which will allow us to support synchronous requests. WebAssembly has <a href="https://github.com/WebAssembly/js-promise-integration">a stage 3 proposal adding support for stack switching</a>, which <a href="https://v8.dev/blog/jspi">v8 has an implementation of</a>. Pyodide contributors have been working on adding support for stack switching to Pyodide since September of 2022, and it is almost ready.</p>
+	<p>There is an approach which will allow us to support synchronous requests. WebAssembly has <a href="https://github.com/WebAssembly/js-promise-integration">a stage 3 proposal adding support for stack switching</a>, which <a href="https://v8.dev/blog/jspi">v8 has an implementation of</a>. Pyodide contributors have been working on adding support for stack switching to Pyodide since September 2022, and it is almost ready.</p>
 	<p>With this support, Pyodide exposes a function called <code>run_sync</code> which can block for completion of an awaitable:</p>
 	<pre class="language-js"><code class="language-js">from pyodide.ffi import run_sync
 
@@ -252,7 +263,7 @@ def sync_fetch(py_request):
 			</svg>
 		</a>
 	</div>
-	<p>In the example at the start of this post, in local development, we mentioned injecting Pyodide into your Worker. Pyodide itself is 6.4MB — and Python packages can also be quite large.</p>
+	<p>In the example at the start of this post, in local development, we mentioned injecting Pyodide into your Worker. Pyodide itself is 6.4&nbsp;MB — and Python packages can also be quite large.</p>
 	<p>If we simply shoved Pyodide into your Worker and uploaded it to Cloudflare, that’d be quite a large Worker to load into a new isolate — cold starts would be slow. On a fast computer with a good network connection, Pyodide takes about two seconds to initialize in a web browser, one second of network time and one second of cpu time. It wouldn’t be acceptable to initialize it every time you update your code for every isolate your Worker runs in across <a href="https://www.cloudflare.com/network">Cloudflare’s network</a>.</p>
 	<p>Instead, when you run <a href="https://developers.cloudflare.com/workers/wrangler/commands/#deploy">npx wrangler@latest deploy</a>, the following happens:</p>
 	<ol>
