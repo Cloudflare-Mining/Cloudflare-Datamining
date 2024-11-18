@@ -360,6 +360,32 @@
 		"uncachedTokensIn": "Sum of uncached tokens in",
 		"uncachedTokensOut": "Sum of uncached tokens out"
 	},
+	"AccountAiGatewaySizeAdaptiveGroups": {
+		"__description": "AI Gateway Stored Rows",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountAiGatewaySizeAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date when trigger was triggerd",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"gateway": "Gateway name",
+		"logManagement": "Log Management active or not: 1 = active, 0 = not active",
+		"rows": "Number of rows stored in a gateway"
+	},
+	"AccountAiGatewaySizeAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewaySizeAdaptiveGroupsMax": {
+		"__description": "",
+		"rows": "Max of stored rows"
+	},
+	"AccountAiGatewaySizeAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountAiInferenceAdaptive": {
 		"__description": "AI Inference logs with adaptive sampling",
 		"costMetricName1": "Name for cost metric 1",
@@ -3199,6 +3225,8 @@
 		"destinationPort": "Value of the Destination Port header field in the packet",
 		"deviceID": "Device ID of the warp client exporting MNM flows",
 		"ethertype": "Value of the Ethertype header field in the Ethernet packet (2048 for IPv4; 34525 for IPv6)",
+		"ipToS": "Defines the IP Type Of Service (TOS)",
+		"ipToSEncap": "Defines the IP Type Of Service (TOS) for encapsulated traffic",
 		"protocol": "Layer 4 protocol",
 		"protocolString": "Human-readable string representation of the protocol",
 		"routerAddress": "IP of the router that sampled the flows",
@@ -3878,6 +3906,7 @@
 		"aiGatewayCacheAdaptiveGroups": "",
 		"aiGatewayErrorsAdaptiveGroups": "",
 		"aiGatewayRequestsAdaptiveGroups": "",
+		"aiGatewaySizeAdaptiveGroups": "",
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
 		"browserRenderingEventsAdaptive": "",
@@ -5163,7 +5192,7 @@
 	},
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsDimensions": {
 		"__description": "",
-		"apiGatewayMatchedEndpoint": "Id of the matched API endpoint",
+		"apiGatewayMatchedEndpointId": "Id of the matched API endpoint",
 		"apiGatewayMatchedSessionIdentifier": "Array of observed tuples consisting of session identifier types and names. Possible types are header | cookie | jwt",
 		"date": "",
 		"datetime": "",
@@ -5179,6 +5208,37 @@
 		"__description": ""
 	},
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroups": {
+		"__description": "Beta. Aggregated count of Session Identifier matches",
+		"avg": "",
+		"count": "Number of events with Session Identifiers",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroupsDimensions": {
+		"__description": "",
+		"apiGatewayMatchedEndpointId": "Id of the matched API endpoint",
+		"apiGatewayMatchedSessionIdentifierName": "Name of session identifier",
+		"apiGatewayMatchedSessionIdentifierType": "Type of session identifier. Possible values are header | cookie | jwt",
+		"date": "",
+		"datetime": "",
+		"datetimeDay": "",
+		"datetimeFifteenMinutes": "",
+		"datetimeFiveMinutes": "",
+		"datetimeHalfOfHour": "",
+		"datetimeHour": "",
+		"datetimeMinute": "",
+		"responseStatusCode": "HTTP status code returned by edge"
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"ZoneApiRequestSequencesGroups": {
@@ -6708,6 +6768,7 @@
 		"apiGatewayGraphqlQueryAnalyticsGroups": "",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "",
 		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "",
+		"apiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroups": "",
 		"apiRequestSequencesGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveRequestsAdaptiveGroups": "",
@@ -7320,6 +7381,7 @@
 		"aiGatewayCacheAdaptiveGroups": "AI Gateway Cache",
 		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
+		"aiGatewaySizeAdaptiveGroups": "AI Gateway Stored Rows",
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
 		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
@@ -7474,6 +7536,7 @@
 		"apiGatewayGraphqlQueryAnalyticsGroups": "GraphQL query attributes and trends",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
 		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches per endpoint",
+		"apiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
 		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are learned by grouping requests by AuthID. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveRequestsAdaptiveGroups": "Cache Reserve HTTP requests data with adaptive sampling",
