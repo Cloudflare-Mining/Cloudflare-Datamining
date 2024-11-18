@@ -5,32 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Lisbon, Portugal</strong></h4>
-<h4><strong>About the team</strong></h4>
-<p>You will be part of the Network Strategy team within Cloudflare’s Infrastructure Engineering department. The Network Strategy team focuses on building both external and internal relationships that allow for Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners.&nbsp;</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Data and Analytics Engineer to join our team to scale our data insights initiatives. You will work with a wide array of data sources about network traffic, performance, and cost. You’ll be responsible for building data pipelines, doing ad-hoc analytics based on the data, and automating our analysis. Important projects include understanding the resource consumption and cost of Cloudflare’s broad product portfolio.</p>
-<p>A candidate will be successful in this role if they’re flexible and able to match the right solution to the right problem. Flexibility is key. Cloudflare is a fast-paced environment and requirements change frequently.</p>
-<p><strong>What you'll do</strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers highly technical questions via phone, email, and chat. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h3><strong>What You’ll do</strong></h3>
+<p>The Cloudflare Senior Director of Customer Support, EMEA is responsible for delivering a world-class support experience to our customers. This role will report to the VP of Customer Support and work closely with all members of Cloudflare's Support team. As an experienced support leader, you will set strategy, establish priorities, hire and mentor a group of top technical talent, and implement unparalleled support systems and processes to develop a world-class global support team.</p>
+<p>We are looking for an enthusiastic and hands-on customer support and service executive who can rapidly learn the Cloudflare value proposition and work with customers of all sizes to make them successful on our service. In this role you will be the senior executive representing Customer Support in EMEA, both externally with customers and internally between various functions such as sales, solutions engineering, customer success, product and engineering.</p>
+<p>You will oversee the fast-growing EMEA support team (mostly based in Lisbon &amp; London) providing strong leadership and a strategic vision to Support Managers and Technical Support Engineers. With you in place, we are able to provide 24x7 Follow-the-Sun Support by coordinating with counterparts in the AMER and APJC regions. You will recruit and train in the use of industry best practices, established methodologies and documented procedures, all to develop a superior team. As the regional leader, you will continually review operational performance to determine opportunities for improvement.</p>
+<p>Responsibilities will include:</p>
 <ul>
-	<li>Design and implement data pipelines that take unprocessed data and make it usable for advanced analytics</li>
-	<li>Work closely with other product and engineering teams to ensure our products and services collect the right data for our analytics</li>
-	<li>Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</li>
-	<li>Build tooling, automation, and visualizations around our analytics for consumption by other Cloudflare teams</li>
+	<li><span class="im">Able to develop and articulate a strategic vision for providing the world’s best customer support within the region, taking into account geography, languages, and country-specific technical challenges.&nbsp;&nbsp;</span></li>
+	<li>Understands the operational aspects of running a lage, complex, fast-moving support team. This includes the entire lifecycle of a support issue, the various channels of engagement, understanding how issues are triaged based on impact and radius, being able to meet response SLAs, finding the shortest path to issue resolution, escalation handling when needed, and ultimately driving successful outcomes which result in high customer satisfaction.</li>
+	<li><span class="im">Defining, tracking and reporting on key performance indicators to determine support effectiveness and efficiency. Create and present key support metrics to share with the company and executive team, and highlight any points of concern or areas of improvement.</span></li>
+	<li><span class="im">Collaborate with the Product and Engineering teams to resolve complex technical issues, document product bugs and influence our product roadmap.</span></li>
+	<li><span class="im">Act as a liaison between Engineering, Customer Support and Sales on technical issues affecting our customers.</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Excellent Python and SQL (one of the interviews will be a code review)</li>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields, or equivalent experience</li>
-	<li>Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
-	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Familiarity with Airflow&nbsp;</li>
-	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
+	<li>10-15 years experience managing and growing a technical support team</li>
+	<li>Extensive experience managing a global support team</li>
+	<li>Experience managing steady team growth, hiring, and training</li>
+	<li>Experience with workforce management and scheduling software and process</li>
+	<li>Exhibits conﬁdence and an extensive knowledge of emerging industry practices when solving technical and business problems.</li>
+	<li>Communicates with internal and external customers and all levels of management.</li>
+	<li>Eﬀectively communicates technical information to non-technical audiences.</li>
+	<li>Delivers informative, well-organized presentations.</li>
+	<li>Continually seeks opportunities to increase customer satisfaction and deepen customer relationships.</li>
+	<li>Manages customer expectations and escalations eﬀectively.</li>
+	<li>Experience in fostering broad usage of support forums and knowledge repositories.</li>
+	<li>Excellent communication skills, including issue tracking, triaging and crisis management.</li>
+	<li>B.S. in Computer Science or equivalent preferred</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

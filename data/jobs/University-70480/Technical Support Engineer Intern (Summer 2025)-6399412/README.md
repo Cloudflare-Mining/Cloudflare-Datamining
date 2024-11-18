@@ -5,32 +5,85 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Lisbon, Portugal</strong></h4>
-<h4><strong>About the team</strong></h4>
-<p>You will be part of the Network Strategy team within Cloudflare’s Infrastructure Engineering department. The Network Strategy team focuses on building both external and internal relationships that allow for Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners.&nbsp;</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Data and Analytics Engineer to join our team to scale our data insights initiatives. You will work with a wide array of data sources about network traffic, performance, and cost. You’ll be responsible for building data pipelines, doing ad-hoc analytics based on the data, and automating our analysis. Important projects include understanding the resource consumption and cost of Cloudflare’s broad product portfolio.</p>
-<p>A candidate will be successful in this role if they’re flexible and able to match the right solution to the right problem. Flexibility is key. Cloudflare is a fast-paced environment and requirements change frequently.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Location(s) Available: Austin, TX, US</strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<p><strong>What You’ll do</strong></p>
+<p>Do you love solving complex technical problems and interacting with people? As a Technical Support Engineer Intern at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
+<p><strong>Responsibilities&nbsp;</strong></p>
 <ul>
-	<li>Design and implement data pipelines that take unprocessed data and make it usable for advanced analytics</li>
-	<li>Work closely with other product and engineering teams to ensure our products and services collect the right data for our analytics</li>
-	<li>Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</li>
-	<li>Build tooling, automation, and visualizations around our analytics for consumption by other Cloudflare teams</li>
+	<li>
+		<p>Fulfill support requests by communicating with Cloudflare customers via chat, email, phone</p>
+	</li>
+	<li>
+		<p>Collaborate with senior engineers to analyze and troubleshoot customer issues</p>
+	</li>
+	<li>
+		<p>Track support requests using our ticketing system</p>
+	</li>
+	<li>
+		<p>Participate in team meetings to discuss and share feedback</p>
+	</li>
+	<li>
+		<p>Help create and update technical documentation and run books&nbsp;</p>
+	</li>
+	<li>
+		<p>Provide feedback on our product and potential improvements based on customer interactions</p>
+	</li>
+	<li>
+		<p>Support the team in testing new releases and reporting bugs</p>
+	</li>
+	<li>
+		<p>Perform other duties/projects as assigned&nbsp;</p>
+	</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Skills and Requirements</strong></p>
 <ul>
-	<li>Excellent Python and SQL (one of the interviews will be a code review)</li>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields, or equivalent experience</li>
-	<li>Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
-	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
+	<li>
+		<p>Self-driven and capable of learning new technologies/systems/features with some guidance</p>
+	</li>
+	<li>
+		<p>Fundamental understanding of how the Internet works (OSI Model); Cloudflare has a variety of products that presently impact Layers 3, 4 &amp; 7</p>
+	</li>
+	<li>
+		<p>Experience using Linux&nbsp;</p>
+	</li>
+	<li>
+		<p>Experience in command line and tools, including curl, dig, traceroute, openssl and git</p>
+	</li>
+	<li>
+		<p>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</p>
+	</li>
+	<li>
+		<p>Awareness of what DNS, SSL/TLS and HTTP is and how these function</p>
+	</li>
+	<li>
+		<p>Awareness of or experience installing and configuring web servers like Apache, Nginx, and IIS</p>
+	</li>
+	<li>
+		<p>Currently pursuing an undergraduate degree in a Computer Sciences or related field&nbsp;</p>
+	</li>
+	<li>
+		<p>Must be able to work 40 hours a week&nbsp;</p>
+	</li>
+	<li>
+		<p>Must be able to commit to a 12 week program</p>
+	</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Familiarity with Airflow&nbsp;</li>
-	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
+	<li>
+		<p>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</p>
+	</li>
+	<li>
+		<p>You are familiar with Cloudflare and have a site actively using our platform</p>
+	</li>
+</ul>
+<p><strong>Super Bonus Points</strong></p>
+<ul>
+	<li>
+		<p>You are fluent and can troubleshoot in Mandarin, Spanish, and Portuguese</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

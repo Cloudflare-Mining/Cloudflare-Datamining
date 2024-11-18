@@ -9,7 +9,7 @@
 <ul>
 	<li><strong>Austin, TX</strong></li>
 	<li><strong>Atlanta, GA</strong></li>
-	<li><strong>Chicago, IL</strong></li>
+	<li><strong>Champaign, IL</strong></li>
 	<li><strong>Denver, CO</strong></li>
 	<li><strong>New York City</strong></li>
 	<li><strong>Seattle, WA</strong></li>
