@@ -513,7 +513,7 @@
 		]
 	},
 	"dx-login-social-authentication-update": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"social-auth-upfront",
@@ -598,7 +598,7 @@
 		]
 	},
 	"dx-signup-social-authentication-updates": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"email-upfront",
@@ -1305,9 +1305,6 @@
 		"enabled": true
 	},
 	"speed-redesigned-optimization-tab": {
-		"enabled": true
-	},
-	"speed-rum-exclude-bots-banner": {
 		"enabled": true
 	},
 	"speed-rum-exclude-bots-filter": {
