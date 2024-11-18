@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/pagerules/settings": {
+		"deprecated": true,
 		"description": "Returns a list of settings (and their details) that Page Rules can apply to matching requests.",
 		"operationId": "available-page-rules-settings-list-available-page-rules-settings",
 		"parameters": [
@@ -11,7 +12,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -66,20 +66,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -92,8 +78,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -409,473 +394,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"description": "Settings available for the zone.",
-													"example": [
-														{
-															"id": "browser_check",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "browser_cache_ttl",
-															"properties": [
-																{
-																	"max": 31536000,
-																	"min": 1800,
-																	"name": "value",
-																	"suggested_values": [
-																		1800,
-																		3600,
-																		7200,
-																		10800,
-																		14400,
-																		18000,
-																		28800,
-																		43200,
-																		57600,
-																		72000,
-																		86400,
-																		172800,
-																		259200,
-																		345600,
-																		432000,
-																		691200,
-																		1382400,
-																		2073600,
-																		2678400,
-																		5356800,
-																		16070400,
-																		31536000
-																	],
-																	"type": "range"
-																}
-															]
-														},
-														{
-															"id": "browser_check",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "cache_key_fields",
-															"properties": [
-																{
-																	"name": "value",
-																	"properties": [
-																		{
-																			"allowEmpty": true,
-																			"choices": [
-																				"include",
-																				"exclude"
-																			],
-																			"multiple": false,
-																			"name": "query_string",
-																			"type": "select"
-																		},
-																		{
-																			"allowEmpty": true,
-																			"choices": [
-																				"include",
-																				"exclude",
-																				"check_presence"
-																			],
-																			"multiple": true,
-																			"name": "header",
-																			"type": "select"
-																		},
-																		{
-																			"allowEmpty": false,
-																			"choices": [
-																				"resolved"
-																			],
-																			"multiple": true,
-																			"name": "host",
-																			"type": "select"
-																		},
-																		{
-																			"allowEmpty": true,
-																			"choices": [
-																				"include",
-																				"check_presence"
-																			],
-																			"multiple": true,
-																			"name": "cookie",
-																			"type": "select"
-																		},
-																		{
-																			"allowEmpty": false,
-																			"choices": [
-																				"device_type",
-																				"geo",
-																				"lang"
-																			],
-																			"multiple": true,
-																			"name": "user",
-																			"type": "select"
-																		}
-																	],
-																	"type": "object"
-																}
-															]
-														},
-														{
-															"id": "cache_deception_armor",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "cache_level",
-															"properties": [
-																{
-																	"choices": [
-																		"bypass",
-																		"basic",
-																		"simplified",
-																		"aggressive",
-																		"cache_everything"
-																	],
-																	"multiple": false,
-																	"name": "value",
-																	"type": "select"
-																}
-															]
-														},
-														{
-															"id": "cache_ttl_by_status",
-															"properties": [
-																{
-																	"allowEmpty": false,
-																	"name": "value",
-																	"type": "object"
-																}
-															]
-														},
-														{
-															"id": "disable_apps",
-															"properties": []
-														},
-														{
-															"id": "disable_performance",
-															"properties": []
-														},
-														{
-															"id": "disable_security",
-															"properties": []
-														},
-														{
-															"id": "edge_cache_ttl",
-															"properties": [
-																{
-																	"max": 2419200,
-																	"min": 7200,
-																	"name": "value",
-																	"suggested_values": [
-																		7200,
-																		10800,
-																		14400,
-																		18000,
-																		28800,
-																		43200,
-																		57600,
-																		72000,
-																		86400,
-																		172800,
-																		259200,
-																		345600,
-																		432000,
-																		518400,
-																		604800,
-																		1209600,
-																		2419200
-																	],
-																	"type": "range"
-																}
-															]
-														},
-														{
-															"id": "email_obfuscation",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "forwarding_url",
-															"properties": [
-																{
-																	"choices": [
-																		301,
-																		302
-																	],
-																	"multiple": false,
-																	"name": "status_code",
-																	"type": "choice"
-																},
-																{
-																	"name": "url",
-																	"type": "forwardingUrl"
-																}
-															]
-														},
-														{
-															"id": "ip_geolocation",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "explicit_cache_control",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "rocket_loader",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "security_level",
-															"properties": [
-																{
-																	"choices": [
-																		"essentially_off",
-																		"low",
-																		"medium",
-																		"high",
-																		"under_attack"
-																	],
-																	"multiple": false,
-																	"name": "value",
-																	"type": "select"
-																}
-															]
-														},
-														{
-															"id": "server_side_exclude",
-															"properties": [
-																{
-																	"name": "value",
-																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "ssl",
-															"properties": [
-																{
-																	"choices": [
-																		"off",
-																		"flexible",
-																		"full",
-																		"strict"
-																	],
-																	"multiple": false,
-																	"name": "value",
-																	"type": "choice"
-																}
-															]
-														}
-													],
-													"items": {
-														"type": "object"
-													},
-													"type": "array"
-												}
-											}
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -894,17 +494,6 @@
 		"summary": "List available Page Rules settings",
 		"tags": [
 			"Available Page Rules settings"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone:read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
+		]
 	}
 }

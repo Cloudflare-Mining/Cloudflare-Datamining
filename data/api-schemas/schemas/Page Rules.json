@@ -11,7 +11,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -23,7 +22,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -84,20 +82,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -110,8 +94,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -124,7 +107,6 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -146,192 +128,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"properties": {
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id"
-													],
-													"type": "object"
-												}
-											}
+											"type": "array"
 										}
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
 								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
 									],
-									"type": "object"
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -350,18 +228,7 @@
 		"summary": "Delete a Page Rule",
 		"tags": [
 			"Page Rules"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone:edit"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
+		]
 	},
 	"GET /zones/{zone_id}/pagerules": {
 		"description": "Fetches Page Rules in a zone.",
@@ -375,7 +242,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -485,20 +351,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -511,8 +363,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -522,7 +373,7 @@
 											"items": {
 												"properties": {
 													"actions": {
-														"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+														"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
 														"example": [
 															{
 																"id": "browser_check",
@@ -530,36 +381,31 @@
 															}
 														],
 														"items": {
-															"oneOf": [
+															"anyOf": [
 																{
 																	"properties": {
-																		"modified_on": {
-																			"description": "The timestamp of when the override was last modified.",
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"name": {
-																			"description": "The type of route.",
+																		"id": {
+																			"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
 																			"enum": [
-																				"forward_url"
+																				"forwarding_url"
 																			],
-																			"example": "forward_url"
+																			"example": "forwarding_url"
 																		},
 																		"value": {
 																			"properties": {
-																				"type": {
-																					"description": "The response type for the URL redirect.",
+																				"status_code": {
+																					"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
 																					"enum": [
-																						"temporary",
-																						"permanent"
+																						301,
+																						302
 																					],
-																					"example": "temporary"
+																					"example": "temporary",
+																					"type": "integer"
 																				},
 																				"url": {
 																					"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																					"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+																					"maxLength": 1500,
 																					"type": "string"
 																				}
 																			}
@@ -582,7 +428,6 @@
 														"description": "Identifier",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
 														"type": "string"
 													},
 													"modified_on": {
@@ -594,7 +439,7 @@
 													},
 													"priority": {
 														"default": 1,
-														"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+														"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
 														"type": "integer"
 													},
 													"status": {
@@ -709,354 +554,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"properties": {
-															"actions": {
-																"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
-																"example": [
-																	{
-																		"id": "browser_check",
-																		"value": "on"
-																	}
-																],
-																"items": {
-																	"oneOf": [
-																		{
-																			"properties": {
-																				"modified_on": {
-																					"description": "The timestamp of when the override was last modified.",
-																					"example": "2014-01-01T05:20:00.12345Z",
-																					"format": "date-time",
-																					"readOnly": true,
-																					"type": "string"
-																				},
-																				"name": {
-																					"description": "The type of route.",
-																					"enum": [
-																						"forward_url"
-																					],
-																					"example": "forward_url"
-																				},
-																				"value": {
-																					"properties": {
-																						"type": {
-																							"description": "The response type for the URL redirect.",
-																							"enum": [
-																								"temporary",
-																								"permanent"
-																							],
-																							"example": "temporary"
-																						},
-																						"url": {
-																							"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
-																							"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
-																							"type": "string"
-																						}
-																					}
-																				}
-																			},
-																			"type": "object"
-																		}
-																	]
-																},
-																"type": "array"
-															},
-															"created_on": {
-																"description": "The timestamp of when the Page Rule was created.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"modified_on": {
-																"description": "The timestamp of when the Page Rule was last modified.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"priority": {
-																"default": 1,
-																"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
-																"type": "integer"
-															},
-															"status": {
-																"default": "disabled",
-																"description": "The status of the Page Rule.",
-																"enum": [
-																	"active",
-																	"disabled"
-																],
-																"example": "active",
-																"type": "string"
-															},
-															"targets": {
-																"description": "The rule targets to evaluate on each request.",
-																"example": [
-																	{
-																		"constraint": {
-																			"operator": "matches",
-																			"value": "*example.com/images/*"
-																		},
-																		"target": "url"
-																	}
-																],
-																"items": {
-																	"description": "A request condition target.",
-																	"oneOf": [
-																		{
-																			"description": "URL target.",
-																			"properties": {
-																				"constraint": {
-																					"allOf": [
-																						{
-																							"description": "String constraint.",
-																							"properties": {
-																								"operator": {
-																									"default": "contains",
-																									"description": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
-																									"enum": [
-																										"matches",
-																										"contains",
-																										"equals",
-																										"not_equal",
-																										"not_contain"
-																									]
-																								},
-																								"value": {
-																									"description": "The value to apply the operator to.",
-																									"type": "string"
-																								}
-																							},
-																							"required": [
-																								"operator",
-																								"value"
-																							],
-																							"type": "object"
-																						},
-																						{
-																							"properties": {
-																								"value": {
-																									"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
-																									"example": "*example.com/images/*",
-																									"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																									"type": "string"
-																								}
-																							}
-																						}
-																					],
-																					"description": "The constraint of a target.",
-																					"type": "object"
-																				},
-																				"target": {
-																					"description": "A target based on the URL of the request.",
-																					"enum": [
-																						"url"
-																					],
-																					"example": "url"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	],
-																	"required": [
-																		"target",
-																		"constraint"
-																	]
-																},
-																"type": "array"
-															}
-														},
-														"required": [
-															"id",
-															"targets",
-															"actions",
-															"priority",
-															"status",
-															"modified_on",
-															"created_on"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												}
-											}
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1075,18 +654,7 @@
 		"summary": "List Page Rules",
 		"tags": [
 			"Page Rules"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone:read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
+		]
 	},
 	"GET /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Fetches the details of a Page Rule.",
@@ -1100,7 +668,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1112,7 +679,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1169,20 +735,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1195,24 +747,9 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1220,6 +757,173 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"actions": {
+													"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
+													"example": [
+														{
+															"id": "browser_check",
+															"value": "on"
+														}
+													],
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"id": {
+																		"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
+																		"enum": [
+																			"forwarding_url"
+																		],
+																		"example": "forwarding_url"
+																	},
+																	"value": {
+																		"properties": {
+																			"status_code": {
+																				"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
+																				"enum": [
+																					301,
+																					302
+																				],
+																				"example": "temporary",
+																				"type": "integer"
+																			},
+																			"url": {
+																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+																				"maxLength": 1500,
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"created_on": {
+													"description": "The timestamp of when the Page Rule was created.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The timestamp of when the Page Rule was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"priority": {
+													"default": 1,
+													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
+													"type": "integer"
+												},
+												"status": {
+													"default": "disabled",
+													"description": "The status of the Page Rule.",
+													"enum": [
+														"active",
+														"disabled"
+													],
+													"example": "active",
+													"type": "string"
+												},
+												"targets": {
+													"description": "The rule targets to evaluate on each request.",
+													"example": [
+														{
+															"constraint": {
+																"operator": "matches",
+																"value": "*example.com/images/*"
+															},
+															"target": "url"
+														}
+													],
+													"items": {
+														"description": "A request condition target.",
+														"oneOf": [
+															{
+																"description": "URL target.",
+																"properties": {
+																	"constraint": {
+																		"allOf": [
+																			{
+																				"description": "String constraint.",
+																				"properties": {
+																					"operator": {
+																						"default": "contains",
+																						"description": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+																						"enum": [
+																							"matches",
+																							"contains",
+																							"equals",
+																							"not_equal",
+																							"not_contain"
+																						]
+																					},
+																					"value": {
+																						"description": "The value to apply the operator to.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"operator",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"value": {
+																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+																						"example": "*example.com/images/*",
+																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
+																						"type": "string"
+																					}
+																				}
+																			}
+																		],
+																		"description": "The constraint of a target.",
+																		"type": "object"
+																	},
+																	"target": {
+																		"description": "A target based on the URL of the request.",
+																		"enum": [
+																			"url"
+																		],
+																		"example": "url"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"required": [
+															"target",
+															"constraint"
+														]
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"targets",
+												"actions",
+												"priority",
+												"status",
+												"modified_on",
+												"created_on"
+											],
 											"type": "object"
 										}
 									}
@@ -1234,197 +938,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1443,18 +1038,7 @@
 		"summary": "Get a Page Rule",
 		"tags": [
 			"Page Rules"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone:read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
+		]
 	},
 	"PATCH /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Updates one or more fields of an existing Page Rule.",
@@ -1468,7 +1052,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1480,7 +1063,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1491,7 +1073,7 @@
 					"schema": {
 						"properties": {
 							"actions": {
-								"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+								"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
 								"example": [
 									{
 										"id": "browser_check",
@@ -1499,36 +1081,31 @@
 									}
 								],
 								"items": {
-									"oneOf": [
+									"anyOf": [
 										{
 											"properties": {
-												"modified_on": {
-													"description": "The timestamp of when the override was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "The type of route.",
+												"id": {
+													"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
 													"enum": [
-														"forward_url"
+														"forwarding_url"
 													],
-													"example": "forward_url"
+													"example": "forwarding_url"
 												},
 												"value": {
 													"properties": {
-														"type": {
-															"description": "The response type for the URL redirect.",
+														"status_code": {
+															"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
 															"enum": [
-																"temporary",
-																"permanent"
+																301,
+																302
 															],
-															"example": "temporary"
+															"example": "temporary",
+															"type": "integer"
 														},
 														"url": {
 															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+															"maxLength": 1500,
 															"type": "string"
 														}
 													}
@@ -1542,7 +1119,7 @@
 							},
 							"priority": {
 								"default": 1,
-								"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+								"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
 								"type": "integer"
 							},
 							"status": {
@@ -1690,20 +1267,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1716,24 +1279,9 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1741,6 +1289,173 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"actions": {
+													"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
+													"example": [
+														{
+															"id": "browser_check",
+															"value": "on"
+														}
+													],
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"id": {
+																		"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
+																		"enum": [
+																			"forwarding_url"
+																		],
+																		"example": "forwarding_url"
+																	},
+																	"value": {
+																		"properties": {
+																			"status_code": {
+																				"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
+																				"enum": [
+																					301,
+																					302
+																				],
+																				"example": "temporary",
+																				"type": "integer"
+																			},
+																			"url": {
+																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+																				"maxLength": 1500,
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"created_on": {
+													"description": "The timestamp of when the Page Rule was created.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The timestamp of when the Page Rule was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"priority": {
+													"default": 1,
+													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
+													"type": "integer"
+												},
+												"status": {
+													"default": "disabled",
+													"description": "The status of the Page Rule.",
+													"enum": [
+														"active",
+														"disabled"
+													],
+													"example": "active",
+													"type": "string"
+												},
+												"targets": {
+													"description": "The rule targets to evaluate on each request.",
+													"example": [
+														{
+															"constraint": {
+																"operator": "matches",
+																"value": "*example.com/images/*"
+															},
+															"target": "url"
+														}
+													],
+													"items": {
+														"description": "A request condition target.",
+														"oneOf": [
+															{
+																"description": "URL target.",
+																"properties": {
+																	"constraint": {
+																		"allOf": [
+																			{
+																				"description": "String constraint.",
+																				"properties": {
+																					"operator": {
+																						"default": "contains",
+																						"description": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+																						"enum": [
+																							"matches",
+																							"contains",
+																							"equals",
+																							"not_equal",
+																							"not_contain"
+																						]
+																					},
+																					"value": {
+																						"description": "The value to apply the operator to.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"operator",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"value": {
+																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+																						"example": "*example.com/images/*",
+																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
+																						"type": "string"
+																					}
+																				}
+																			}
+																		],
+																		"description": "The constraint of a target.",
+																		"type": "object"
+																	},
+																	"target": {
+																		"description": "A target based on the URL of the request.",
+																		"enum": [
+																			"url"
+																		],
+																		"example": "url"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"required": [
+															"target",
+															"constraint"
+														]
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"targets",
+												"actions",
+												"priority",
+												"status",
+												"modified_on",
+												"created_on"
+											],
 											"type": "object"
 										}
 									}
@@ -1755,197 +1470,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1964,18 +1570,7 @@
 		"summary": "Edit a Page Rule",
 		"tags": [
 			"Page Rules"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone:edit"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
+		]
 	},
 	"POST /zones/{zone_id}/pagerules": {
 		"description": "Creates a new Page Rule.",
@@ -1989,7 +1584,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2000,7 +1594,7 @@
 					"schema": {
 						"properties": {
 							"actions": {
-								"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+								"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
 								"example": [
 									{
 										"id": "browser_check",
@@ -2008,36 +1602,31 @@
 									}
 								],
 								"items": {
-									"oneOf": [
+									"anyOf": [
 										{
 											"properties": {
-												"modified_on": {
-													"description": "The timestamp of when the override was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "The type of route.",
+												"id": {
+													"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
 													"enum": [
-														"forward_url"
+														"forwarding_url"
 													],
-													"example": "forward_url"
+													"example": "forwarding_url"
 												},
 												"value": {
 													"properties": {
-														"type": {
-															"description": "The response type for the URL redirect.",
+														"status_code": {
+															"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
 															"enum": [
-																"temporary",
-																"permanent"
+																301,
+																302
 															],
-															"example": "temporary"
+															"example": "temporary",
+															"type": "integer"
 														},
 														"url": {
 															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+															"maxLength": 1500,
 															"type": "string"
 														}
 													}
@@ -2051,7 +1640,7 @@
 							},
 							"priority": {
 								"default": 1,
-								"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+								"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
 								"type": "integer"
 							},
 							"status": {
@@ -2203,20 +1792,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2229,24 +1804,9 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2254,6 +1814,173 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"actions": {
+													"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
+													"example": [
+														{
+															"id": "browser_check",
+															"value": "on"
+														}
+													],
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"id": {
+																		"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
+																		"enum": [
+																			"forwarding_url"
+																		],
+																		"example": "forwarding_url"
+																	},
+																	"value": {
+																		"properties": {
+																			"status_code": {
+																				"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
+																				"enum": [
+																					301,
+																					302
+																				],
+																				"example": "temporary",
+																				"type": "integer"
+																			},
+																			"url": {
+																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+																				"maxLength": 1500,
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"created_on": {
+													"description": "The timestamp of when the Page Rule was created.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The timestamp of when the Page Rule was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"priority": {
+													"default": 1,
+													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
+													"type": "integer"
+												},
+												"status": {
+													"default": "disabled",
+													"description": "The status of the Page Rule.",
+													"enum": [
+														"active",
+														"disabled"
+													],
+													"example": "active",
+													"type": "string"
+												},
+												"targets": {
+													"description": "The rule targets to evaluate on each request.",
+													"example": [
+														{
+															"constraint": {
+																"operator": "matches",
+																"value": "*example.com/images/*"
+															},
+															"target": "url"
+														}
+													],
+													"items": {
+														"description": "A request condition target.",
+														"oneOf": [
+															{
+																"description": "URL target.",
+																"properties": {
+																	"constraint": {
+																		"allOf": [
+																			{
+																				"description": "String constraint.",
+																				"properties": {
+																					"operator": {
+																						"default": "contains",
+																						"description": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+																						"enum": [
+																							"matches",
+																							"contains",
+																							"equals",
+																							"not_equal",
+																							"not_contain"
+																						]
+																					},
+																					"value": {
+																						"description": "The value to apply the operator to.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"operator",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"value": {
+																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+																						"example": "*example.com/images/*",
+																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
+																						"type": "string"
+																					}
+																				}
+																			}
+																		],
+																		"description": "The constraint of a target.",
+																		"type": "object"
+																	},
+																	"target": {
+																		"description": "A target based on the URL of the request.",
+																		"enum": [
+																			"url"
+																		],
+																		"example": "url"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"required": [
+															"target",
+															"constraint"
+														]
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"targets",
+												"actions",
+												"priority",
+												"status",
+												"modified_on",
+												"created_on"
+											],
 											"type": "object"
 										}
 									}
@@ -2268,197 +1995,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2477,18 +2095,7 @@
 		"summary": "Create a Page Rule",
 		"tags": [
 			"Page Rules"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone:edit"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
+		]
 	},
 	"PUT /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
@@ -2502,7 +2109,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2514,7 +2120,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2525,7 +2130,7 @@
 					"schema": {
 						"properties": {
 							"actions": {
-								"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+								"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
 								"example": [
 									{
 										"id": "browser_check",
@@ -2533,36 +2138,31 @@
 									}
 								],
 								"items": {
-									"oneOf": [
+									"anyOf": [
 										{
 											"properties": {
-												"modified_on": {
-													"description": "The timestamp of when the override was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "The type of route.",
+												"id": {
+													"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
 													"enum": [
-														"forward_url"
+														"forwarding_url"
 													],
-													"example": "forward_url"
+													"example": "forwarding_url"
 												},
 												"value": {
 													"properties": {
-														"type": {
-															"description": "The response type for the URL redirect.",
+														"status_code": {
+															"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
 															"enum": [
-																"temporary",
-																"permanent"
+																301,
+																302
 															],
-															"example": "temporary"
+															"example": "temporary",
+															"type": "integer"
 														},
 														"url": {
 															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+															"maxLength": 1500,
 															"type": "string"
 														}
 													}
@@ -2576,7 +2176,7 @@
 							},
 							"priority": {
 								"default": 1,
-								"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+								"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
 								"type": "integer"
 							},
 							"status": {
@@ -2728,20 +2328,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2754,24 +2340,9 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2779,6 +2350,173 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"actions": {
+													"description": "The set of actions to perform if the targets of this rule match the\nrequest. Actions can redirect to another URL or override settings, but\nnot both.\n",
+													"example": [
+														{
+															"id": "browser_check",
+															"value": "on"
+														}
+													],
+													"items": {
+														"anyOf": [
+															{
+																"properties": {
+																	"id": {
+																		"description": "Redirects one URL to another using an `HTTP 301/302` redirect. Refer\nto [Wildcard matching and referencing](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/).\n",
+																		"enum": [
+																			"forwarding_url"
+																		],
+																		"example": "forwarding_url"
+																	},
+																	"value": {
+																		"properties": {
+																			"status_code": {
+																				"description": "The status code to use for the URL redirect. 301 is a permanent\nredirect. 302 is a temporary redirect.\n",
+																				"enum": [
+																					301,
+																					302
+																				],
+																				"example": "temporary",
+																				"type": "integer"
+																			},
+																			"url": {
+																				"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+																				"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+																				"maxLength": 1500,
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												},
+												"created_on": {
+													"description": "The timestamp of when the Page Rule was created.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The timestamp of when the Page Rule was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"priority": {
+													"default": 1,
+													"description": "The priority of the rule, used to define which Page Rule is processed\nover another. A higher number indicates a higher priority. For example,\nif you have a catch-all Page Rule (rule A: `/images/*`) but want a more\nspecific Page Rule to take precedence (rule B: `/images/special/*`),\nspecify a higher priority for rule B so it overrides rule A.\n",
+													"type": "integer"
+												},
+												"status": {
+													"default": "disabled",
+													"description": "The status of the Page Rule.",
+													"enum": [
+														"active",
+														"disabled"
+													],
+													"example": "active",
+													"type": "string"
+												},
+												"targets": {
+													"description": "The rule targets to evaluate on each request.",
+													"example": [
+														{
+															"constraint": {
+																"operator": "matches",
+																"value": "*example.com/images/*"
+															},
+															"target": "url"
+														}
+													],
+													"items": {
+														"description": "A request condition target.",
+														"oneOf": [
+															{
+																"description": "URL target.",
+																"properties": {
+																	"constraint": {
+																		"allOf": [
+																			{
+																				"description": "String constraint.",
+																				"properties": {
+																					"operator": {
+																						"default": "contains",
+																						"description": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+																						"enum": [
+																							"matches",
+																							"contains",
+																							"equals",
+																							"not_equal",
+																							"not_contain"
+																						]
+																					},
+																					"value": {
+																						"description": "The value to apply the operator to.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"operator",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"value": {
+																						"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+																						"example": "*example.com/images/*",
+																						"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
+																						"type": "string"
+																					}
+																				}
+																			}
+																		],
+																		"description": "The constraint of a target.",
+																		"type": "object"
+																	},
+																	"target": {
+																		"description": "A target based on the URL of the request.",
+																		"enum": [
+																			"url"
+																		],
+																		"example": "url"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"required": [
+															"target",
+															"constraint"
+														]
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"targets",
+												"actions",
+												"priority",
+												"status",
+												"modified_on",
+												"created_on"
+											],
 											"type": "object"
 										}
 									}
@@ -2793,197 +2531,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3002,17 +2631,6 @@
 		"summary": "Update a Page Rule",
 		"tags": [
 			"Page Rules"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone:edit"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
+		]
 	}
 }
