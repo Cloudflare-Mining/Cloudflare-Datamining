@@ -248,9 +248,6 @@
 		"summary": "Delete Spectrum application",
 		"tags": [
 			"Spectrum Applications"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		]
 	},
 	"GET /zones/{zone_id}/spectrum/apps": {
@@ -911,10 +908,6 @@
 		"summary": "List Spectrum applications",
 		"tags": [
 			"Spectrum Applications"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"GET /zones/{zone_id}/spectrum/apps/{app_id}": {
@@ -1509,10 +1502,6 @@
 		"summary": "Get Spectrum application configuration",
 		"tags": [
 			"Spectrum Applications"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
 		]
 	},
 	"POST /zones/{zone_id}/spectrum/apps": {
@@ -2453,9 +2442,6 @@
 		"summary": "Create Spectrum application using a name for the origin",
 		"tags": [
 			"Spectrum Applications"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		]
 	},
 	"PUT /zones/{zone_id}/spectrum/apps/{app_id}": {
@@ -3417,9 +3403,6 @@
 		"summary": "Update Spectrum application configuration using a name for the origin",
 		"tags": [
 			"Spectrum Applications"
-		],
-		"x-api-token-group": [
-			"Zone Settings Write"
 		]
 	}
 }

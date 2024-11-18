@@ -327,10 +327,6 @@
 		"tags": [
 			"Total TLS"
 		],
-		"x-api-token-group": [
-			"SSL and Certificates Write",
-			"SSL and Certificates Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"
@@ -699,9 +695,6 @@
 		"summary": "Enable or Disable Total TLS",
 		"tags": [
 			"Total TLS"
-		],
-		"x-api-token-group": [
-			"SSL and Certificates Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

@@ -536,10 +536,6 @@
 		"summary": "Get all behaviors and associated configuration",
 		"tags": [
 			"Zero Trust Risk Scoring"
-		],
-		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/summary": {
@@ -1297,9 +1293,6 @@
 		"summary": "Update configuration for risk behaviors",
 		"tags": [
 			"Zero Trust Risk Scoring"
-		],
-		"x-api-token-group": [
-			"Teams Write"
 		]
 	}
 }

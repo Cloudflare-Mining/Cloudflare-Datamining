@@ -219,9 +219,6 @@
 		"summary": "Delete watermark profiles",
 		"tags": [
 			"Stream Watermark Profile"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/watermarks": {
@@ -492,10 +489,6 @@
 		"summary": "List watermark profiles",
 		"tags": [
 			"Stream Watermark Profile"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"GET /accounts/{account_id}/stream/watermarks/{identifier}": {
@@ -779,10 +772,6 @@
 		"summary": "Watermark profile details",
 		"tags": [
 			"Stream Watermark Profile"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"POST /accounts/{account_id}/stream/watermarks": {
@@ -1111,9 +1100,6 @@
 		"summary": "Create watermark profiles via basic upload",
 		"tags": [
 			"Stream Watermark Profile"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	}
 }

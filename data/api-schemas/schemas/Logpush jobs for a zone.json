@@ -224,9 +224,6 @@
 		"tags": [
 			"Logpush jobs for a zone"
 		],
-		"x-api-token-group": [
-			"Logs Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -463,10 +460,6 @@
 		"summary": "List fields",
 		"tags": [
 			"Logpush jobs for a zone"
-		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -944,10 +937,6 @@
 		"tags": [
 			"Logpush jobs for a zone"
 		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -1410,10 +1399,6 @@
 		"summary": "List Logpush jobs",
 		"tags": [
 			"Logpush jobs for a zone"
-		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1887,10 +1872,6 @@
 		"summary": "Get Logpush job details",
 		"tags": [
 			"Logpush jobs for a zone"
-		],
-		"x-api-token-group": [
-			"Logs Write",
-			"Logs Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2586,9 +2567,6 @@
 		"tags": [
 			"Logpush jobs for a zone"
 		],
-		"x-api-token-group": [
-			"Logs Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -2838,9 +2816,6 @@
 		"summary": "Get ownership challenge",
 		"tags": [
 			"Logpush jobs for a zone"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3092,9 +3067,6 @@
 		"tags": [
 			"Logpush jobs for a zone"
 		],
-		"x-api-token-group": [
-			"Logs Write"
-		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#logs:edit"
@@ -3336,9 +3308,6 @@
 		"summary": "Check destination exists",
 		"tags": [
 			"Logpush jobs for a zone"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3587,9 +3556,6 @@
 		"summary": "Validate origin",
 		"tags": [
 			"Logpush jobs for a zone"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4273,9 +4239,6 @@
 		"summary": "Update Logpush job",
 		"tags": [
 			"Logpush jobs for a zone"
-		],
-		"x-api-token-group": [
-			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [

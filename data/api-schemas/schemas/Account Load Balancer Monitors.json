@@ -343,9 +343,6 @@
 		"summary": "Delete Monitor",
 		"tags": [
 			"Account Load Balancer Monitors"
-		],
-		"x-api-token-group": [
-			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitors": {
@@ -979,10 +976,6 @@
 		"summary": "List Monitors",
 		"tags": [
 			"Account Load Balancer Monitors"
-		],
-		"x-api-token-group": [
-			"Load Balancing: Monitors and Pools Write",
-			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitors/{monitor_id}": {
@@ -1577,10 +1570,6 @@
 		"summary": "Monitor Details",
 		"tags": [
 			"Account Load Balancer Monitors"
-		],
-		"x-api-token-group": [
-			"Load Balancing: Monitors and Pools Write",
-			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitors/{monitor_id}/references": {
@@ -2369,10 +2358,6 @@
 		"summary": "Preview Result",
 		"tags": [
 			"Account Load Balancer Monitors"
-		],
-		"x-api-token-group": [
-			"Load Balancing: Monitors and Pools Write",
-			"Load Balancing: Monitors and Pools Read"
 		]
 	},
 	"PATCH /accounts/{account_id}/load_balancers/monitors/{monitor_id}": {
@@ -3089,9 +3074,6 @@
 		"summary": "Patch Monitor",
 		"tags": [
 			"Account Load Balancer Monitors"
-		],
-		"x-api-token-group": [
-			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"POST /accounts/{account_id}/load_balancers/monitors": {
@@ -3799,9 +3781,6 @@
 		"summary": "Create Monitor",
 		"tags": [
 			"Account Load Balancer Monitors"
-		],
-		"x-api-token-group": [
-			"Load Balancing: Monitors and Pools Write"
 		]
 	},
 	"POST /accounts/{account_id}/load_balancers/monitors/{monitor_id}/preview": {
@@ -5004,9 +4983,6 @@
 		"summary": "Update Monitor",
 		"tags": [
 			"Account Load Balancer Monitors"
-		],
-		"x-api-token-group": [
-			"Load Balancing: Monitors and Pools Write"
 		]
 	}
 }

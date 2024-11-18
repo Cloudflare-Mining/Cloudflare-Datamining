@@ -208,9 +208,6 @@
 		"summary": "Delete webhooks",
 		"tags": [
 			"Stream Webhook"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	},
 	"GET /accounts/{account_id}/stream/webhook": {
@@ -415,10 +412,6 @@
 		"summary": "View webhooks",
 		"tags": [
 			"Stream Webhook"
-		],
-		"x-api-token-group": [
-			"Stream Write",
-			"Stream Read"
 		]
 	},
 	"PUT /accounts/{account_id}/stream/webhook": {
@@ -643,9 +636,6 @@
 		"summary": "Create webhooks",
 		"tags": [
 			"Stream Webhook"
-		],
-		"x-api-token-group": [
-			"Stream Write"
 		]
 	}
 }

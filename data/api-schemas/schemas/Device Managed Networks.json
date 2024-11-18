@@ -498,9 +498,6 @@
 		"summary": "Delete a device managed network",
 		"tags": [
 			"Device Managed Networks"
-		],
-		"x-api-token-group": [
-			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/networks": {
@@ -985,10 +982,6 @@
 		"summary": "List your device managed networks",
 		"tags": [
 			"Device Managed Networks"
-		],
-		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
 		]
 	},
 	"GET /accounts/{account_id}/devices/networks/{network_id}": {
@@ -1442,10 +1435,6 @@
 		"summary": "Get device managed network details",
 		"tags": [
 			"Device Managed Networks"
-		],
-		"x-api-token-group": [
-			"Teams Read",
-			"Teams Write"
 		]
 	},
 	"POST /accounts/{account_id}/devices/networks": {
@@ -1945,9 +1934,6 @@
 		"summary": "Create a device managed network",
 		"tags": [
 			"Device Managed Networks"
-		],
-		"x-api-token-group": [
-			"Teams Write"
 		]
 	},
 	"PUT /accounts/{account_id}/devices/networks/{network_id}": {
@@ -2453,9 +2439,6 @@
 		"summary": "Update a device managed network",
 		"tags": [
 			"Device Managed Networks"
-		],
-		"x-api-token-group": [
-			"Teams Write"
 		]
 	}
 }
