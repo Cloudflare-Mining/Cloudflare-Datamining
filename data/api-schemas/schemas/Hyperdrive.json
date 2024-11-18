@@ -81,18 +81,7 @@
 													"type": "array"
 												},
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
+													"type": "object"
 												},
 												"success": {
 													"description": "Whether the API call was successful",
@@ -110,22 +99,6 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true,
-													"type": "object"
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -148,201 +121,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true,
-															"type": "object"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"type": "object"
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -441,18 +301,7 @@
 													"type": "array"
 												},
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
+													"type": "object"
 												},
 												"success": {
 													"description": "Whether the API call was successful",
@@ -475,7 +324,6 @@
 											"properties": {
 												"result": {
 													"items": {},
-													"nullable": true,
 													"type": "array"
 												},
 												"result_info": {
@@ -516,88 +364,225 @@
 													{
 														"properties": {
 															"caching": {
-																"properties": {
-																	"disabled": {
-																		"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																		"example": false,
-																		"type": "boolean"
+																"discriminator": {
+																	"mapping": {
+																		"false": "#/components/schemas/hyperdrive-caching-enabled",
+																		"true": "#/components/schemas/hyperdrive-caching-disabled"
 																	},
-																	"max_age": {
-																		"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																		"example": 60,
-																		"type": "integer"
-																	},
-																	"stale_while_revalidate": {
-																		"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-																		"example": 15,
-																		"type": "integer"
-																	}
+																	"propertyName": "disabled"
 																},
+																"oneOf": [
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"disabled": {
+																						"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			}
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"disabled": {
+																						"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"max_age": {
+																						"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+																						"example": 60,
+																						"type": "integer"
+																					},
+																					"stale_while_revalidate": {
+																						"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+																						"example": 15,
+																						"type": "integer"
+																					}
+																				},
+																				"type": "object"
+																			}
+																		],
+																		"type": "object"
+																	}
+																],
 																"type": "object"
+															},
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
 															},
 															"name": {
 																"example": "example-hyperdrive",
 																"type": "string"
 															},
 															"origin": {
-																"properties": {
-																	"access_client_id": {
-																		"description": "The Client ID of the Access token to use when connecting to the origin database",
-																		"example": "0123456789abcdef0123456789abcdef.access",
-																		"type": "string"
-																	},
-																	"database": {
-																		"description": "The name of your origin database.",
-																		"example": "postgres",
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "The host (hostname or IP) of your origin database.",
-																		"example": "database.example.com",
-																		"type": "string"
-																	},
-																	"port": {
-																		"description": "The port (default: 5432 for Postgres) of your origin database.",
-																		"example": "5432",
-																		"type": "integer"
-																	},
-																	"scheme": {
-																		"default": "postgres",
-																		"description": "Specifies the URL scheme used to connect to your origin database.",
-																		"enum": [
-																			"postgres",
-																			"postgresql",
-																			"mysql"
+																"oneOf": [
+																	{
+																		"allOf": [
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"database": {
+																								"description": "The name of your origin database.",
+																								"example": "postgres",
+																								"type": "string"
+																							},
+																							"password": {
+																								"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																								"type": "string",
+																								"writeOnly": true
+																							},
+																							"scheme": {
+																								"description": "Specifies the URL scheme used to connect to your origin database.",
+																								"enum": [
+																									"postgres",
+																									"postgresql"
+																								],
+																								"type": "string"
+																							},
+																							"user": {
+																								"description": "The user of your origin database.",
+																								"example": "postgres",
+																								"type": "string"
+																							}
+																						},
+																						"title": "Connection Options",
+																						"type": "object"
+																					}
+																				],
+																				"required": [
+																					"scheme",
+																					"database",
+																					"user",
+																					"password"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"host": {
+																						"description": "The host (hostname or IP) of your origin database.",
+																						"example": "database.example.com",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "The port (default: 5432 for Postgres) of your origin database.",
+																						"example": "5432",
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"host",
+																					"port"
+																				],
+																				"title": "Public Database",
+																				"type": "object"
+																			}
 																		],
-																		"type": "string"
+																		"title": "Public Database"
 																	},
-																	"user": {
-																		"description": "The user of your origin database.",
-																		"example": "postgres",
-																		"type": "string"
+																	{
+																		"allOf": [
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"database": {
+																								"description": "The name of your origin database.",
+																								"example": "postgres",
+																								"type": "string"
+																							},
+																							"password": {
+																								"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																								"type": "string",
+																								"writeOnly": true
+																							},
+																							"scheme": {
+																								"description": "Specifies the URL scheme used to connect to your origin database.",
+																								"enum": [
+																									"postgres",
+																									"postgresql"
+																								],
+																								"type": "string"
+																							},
+																							"user": {
+																								"description": "The user of your origin database.",
+																								"example": "postgres",
+																								"type": "string"
+																							}
+																						},
+																						"title": "Connection Options",
+																						"type": "object"
+																					}
+																				],
+																				"required": [
+																					"scheme",
+																					"database",
+																					"user",
+																					"password"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"access_client_id": {
+																						"description": "The Client ID of the Access token to use when connecting to the origin database",
+																						"example": "0123456789abcdef0123456789abcdef.access",
+																						"type": "string"
+																					},
+																					"access_client_secret": {
+																						"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+																						"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+																						"type": "string",
+																						"writeOnly": true
+																					},
+																					"host": {
+																						"description": "The host (hostname or IP) of your origin database.",
+																						"example": "database.example.com",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"host",
+																					"access_client_id",
+																					"access_client_secret"
+																				],
+																				"title": "Access-protected Database behind Cloudflare Tunnel",
+																				"type": "object"
+																			}
+																		],
+																		"title": "Access-protected Database behind Cloudflare Tunnel"
 																	}
-																},
-																"required": [
-																	"host",
-																	"scheme",
-																	"database",
-																	"user"
 																],
 																"type": "object"
 															}
 														},
+														"required": [
+															"id",
+															"name",
+															"origin"
+														],
 														"type": "object"
 													}
 												],
-												"properties": {
-													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
-													}
-												},
+												"required": [
+													"caching"
+												],
 												"type": "object"
 											},
 											"type": "array"
@@ -614,201 +599,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true,
-															"type": "object"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"type": "object"
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -920,18 +792,7 @@
 													"type": "array"
 												},
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
+													"type": "object"
 												},
 												"success": {
 													"description": "Whether the API call was successful",
@@ -949,22 +810,6 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true,
-													"type": "object"
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -976,88 +821,225 @@
 												{
 													"properties": {
 														"caching": {
-															"properties": {
-																"disabled": {
-																	"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																	"example": false,
-																	"type": "boolean"
+															"discriminator": {
+																"mapping": {
+																	"false": "#/components/schemas/hyperdrive-caching-enabled",
+																	"true": "#/components/schemas/hyperdrive-caching-disabled"
 																},
-																"max_age": {
-																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																	"example": 60,
-																	"type": "integer"
-																},
-																"stale_while_revalidate": {
-																	"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-																	"example": 15,
-																	"type": "integer"
-																}
+																"propertyName": "disabled"
 															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"max_age": {
+																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+																					"example": 60,
+																					"type": "integer"
+																				},
+																				"stale_while_revalidate": {
+																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+																					"example": 15,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																}
+															],
 															"type": "object"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string"
 														},
 														"origin": {
-															"properties": {
-																"access_client_id": {
-																	"description": "The Client ID of the Access token to use when connecting to the origin database",
-																	"example": "0123456789abcdef0123456789abcdef.access",
-																	"type": "string"
-																},
-																"database": {
-																	"description": "The name of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The host (hostname or IP) of your origin database.",
-																	"example": "database.example.com",
-																	"type": "string"
-																},
-																"port": {
-																	"description": "The port (default: 5432 for Postgres) of your origin database.",
-																	"example": "5432",
-																	"type": "integer"
-																},
-																"scheme": {
-																	"default": "postgres",
-																	"description": "Specifies the URL scheme used to connect to your origin database.",
-																	"enum": [
-																		"postgres",
-																		"postgresql",
-																		"mysql"
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				},
+																				"port": {
+																					"description": "The port (default: 5432 for Postgres) of your origin database.",
+																					"example": "5432",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"port"
+																			],
+																			"title": "Public Database",
+																			"type": "object"
+																		}
 																	],
-																	"type": "string"
+																	"title": "Public Database"
 																},
-																"user": {
-																	"description": "The user of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"access_client_id": {
+																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"example": "0123456789abcdef0123456789abcdef.access",
+																					"type": "string"
+																				},
+																				"access_client_secret": {
+																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"writeOnly": true
+																				},
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"access_client_id",
+																				"access_client_secret"
+																			],
+																			"title": "Access-protected Database behind Cloudflare Tunnel",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Access-protected Database behind Cloudflare Tunnel"
 																}
-															},
-															"required": [
-																"host",
-																"scheme",
-																"database",
-																"user"
 															],
 															"type": "object"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"origin"
+													],
 													"type": "object"
 												}
 											],
-											"properties": {
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												}
-											},
+											"required": [
+												"caching"
+											],
 											"type": "object"
 										}
 									}
@@ -1072,201 +1054,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true,
-															"type": "object"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"type": "object"
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1297,7 +1166,7 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
-		"description": "Patches and returns the specified Hyperdrive configuration. Updates to the origin and caching settings are applied with an all-or-nothing approach.",
+		"description": "Patches and returns the specified Hyperdrive configuration. Custom caching settings are not kept if caching is disabled.",
 		"operationId": "patch-hyperdrive",
 		"parameters": [
 			{
@@ -1329,147 +1198,149 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"allOf": [
-							{
-								"properties": {
-									"caching": {
-										"properties": {
-											"disabled": {
-												"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-												"example": false,
-												"type": "boolean"
-											},
-											"max_age": {
-												"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-												"example": 60,
-												"type": "integer"
-											},
-											"stale_while_revalidate": {
-												"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-												"example": 15,
-												"type": "integer"
-											}
-										},
-										"type": "object"
+						"properties": {
+							"caching": {
+								"discriminator": {
+									"mapping": {
+										"false": "#/components/schemas/hyperdrive-caching-enabled",
+										"true": "#/components/schemas/hyperdrive-caching-disabled"
 									},
-									"name": {
-										"example": "example-hyperdrive",
-										"type": "string"
-									},
-									"origin": {
-										"properties": {
-											"access_client_id": {
-												"description": "The Client ID of the Access token to use when connecting to the origin database",
-												"example": "0123456789abcdef0123456789abcdef.access",
-												"type": "string"
-											},
-											"database": {
-												"description": "The name of your origin database.",
-												"example": "postgres",
-												"type": "string"
-											},
-											"host": {
-												"description": "The host (hostname or IP) of your origin database.",
-												"example": "database.example.com",
-												"type": "string"
-											},
-											"port": {
-												"description": "The port (default: 5432 for Postgres) of your origin database.",
-												"example": "5432",
-												"type": "integer"
-											},
-											"scheme": {
-												"default": "postgres",
-												"description": "Specifies the URL scheme used to connect to your origin database.",
-												"enum": [
-													"postgres",
-													"postgresql",
-													"mysql"
-												],
-												"type": "string"
-											},
-											"user": {
-												"description": "The user of your origin database.",
-												"example": "postgres",
-												"type": "string"
+									"propertyName": "disabled"
+								},
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"disabled": {
+														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
 											}
-										},
-										"required": [
-											"host",
-											"scheme",
-											"database",
-											"user"
 										],
 										"type": "object"
-									}
-								},
-								"type": "object"
-							}
-						],
-						"properties": {
-							"origin": {
-								"allOf": [
+									},
 									{
-										"properties": {
-											"access_client_id": {
-												"description": "The Client ID of the Access token to use when connecting to the origin database",
-												"example": "0123456789abcdef0123456789abcdef.access",
-												"type": "string"
+										"allOf": [
+											{
+												"properties": {
+													"disabled": {
+														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
 											},
-											"database": {
-												"description": "The name of your origin database.",
-												"example": "postgres",
-												"type": "string"
-											},
-											"host": {
-												"description": "The host (hostname or IP) of your origin database.",
-												"example": "database.example.com",
-												"type": "string"
-											},
-											"port": {
-												"description": "The port (default: 5432 for Postgres) of your origin database.",
-												"example": "5432",
-												"type": "integer"
-											},
-											"scheme": {
-												"default": "postgres",
-												"description": "Specifies the URL scheme used to connect to your origin database.",
-												"enum": [
-													"postgres",
-													"postgresql",
-													"mysql"
-												],
-												"type": "string"
-											},
-											"user": {
-												"description": "The user of your origin database.",
-												"example": "postgres",
-												"type": "string"
+											{
+												"properties": {
+													"max_age": {
+														"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+														"example": 60,
+														"type": "integer"
+													},
+													"stale_while_revalidate": {
+														"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+														"example": 15,
+														"type": "integer"
+													}
+												},
+												"type": "object"
 											}
-										},
-										"required": [
-											"host",
-											"scheme",
-											"database",
-											"user"
 										],
 										"type": "object"
 									}
 								],
-								"properties": {
-									"access_client_secret": {
-										"description": "The Client Secret of the Access token to use when connecting to the origin database",
-										"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
-										"type": "string"
+								"type": "object"
+							},
+							"name": {
+								"example": "example-hyperdrive",
+								"type": "string"
+							},
+							"origin": {
+								"anyOf": [
+									{
+										"properties": {
+											"database": {
+												"description": "The name of your origin database.",
+												"example": "postgres",
+												"type": "string"
+											},
+											"password": {
+												"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+												"type": "string",
+												"writeOnly": true
+											},
+											"scheme": {
+												"description": "Specifies the URL scheme used to connect to your origin database.",
+												"enum": [
+													"postgres",
+													"postgresql"
+												],
+												"type": "string"
+											},
+											"user": {
+												"description": "The user of your origin database.",
+												"example": "postgres",
+												"type": "string"
+											}
+										},
+										"title": "Connection Options",
+										"type": "object"
 									},
-									"password": {
-										"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
-										"example": "password1234!",
-										"type": "string"
+									{
+										"oneOf": [
+											{
+												"properties": {
+													"host": {
+														"description": "The host (hostname or IP) of your origin database.",
+														"example": "database.example.com",
+														"type": "string"
+													},
+													"port": {
+														"description": "The port (default: 5432 for Postgres) of your origin database.",
+														"example": "5432",
+														"type": "integer"
+													}
+												},
+												"required": [
+													"host",
+													"port"
+												],
+												"title": "Public Database",
+												"type": "object"
+											},
+											{
+												"properties": {
+													"access_client_id": {
+														"description": "The Client ID of the Access token to use when connecting to the origin database",
+														"example": "0123456789abcdef0123456789abcdef.access",
+														"type": "string"
+													},
+													"access_client_secret": {
+														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+														"type": "string",
+														"writeOnly": true
+													},
+													"host": {
+														"description": "The host (hostname or IP) of your origin database.",
+														"example": "database.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"host",
+													"access_client_id",
+													"access_client_secret"
+												],
+												"title": "Access-protected Database behind Cloudflare Tunnel",
+												"type": "object"
+											}
+										],
+										"title": "Origin Database"
 									}
-								},
-								"required": [
-									"password"
 								],
 								"type": "object"
 							}
@@ -1487,98 +1358,66 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
 											"type": "object"
 										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true,
-													"type": "object"
-												}
-											}
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -1589,88 +1428,225 @@
 												{
 													"properties": {
 														"caching": {
-															"properties": {
-																"disabled": {
-																	"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																	"example": false,
-																	"type": "boolean"
+															"discriminator": {
+																"mapping": {
+																	"false": "#/components/schemas/hyperdrive-caching-enabled",
+																	"true": "#/components/schemas/hyperdrive-caching-disabled"
 																},
-																"max_age": {
-																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																	"example": 60,
-																	"type": "integer"
-																},
-																"stale_while_revalidate": {
-																	"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-																	"example": 15,
-																	"type": "integer"
-																}
+																"propertyName": "disabled"
 															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"max_age": {
+																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+																					"example": 60,
+																					"type": "integer"
+																				},
+																				"stale_while_revalidate": {
+																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+																					"example": 15,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																}
+															],
 															"type": "object"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string"
 														},
 														"origin": {
-															"properties": {
-																"access_client_id": {
-																	"description": "The Client ID of the Access token to use when connecting to the origin database",
-																	"example": "0123456789abcdef0123456789abcdef.access",
-																	"type": "string"
-																},
-																"database": {
-																	"description": "The name of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The host (hostname or IP) of your origin database.",
-																	"example": "database.example.com",
-																	"type": "string"
-																},
-																"port": {
-																	"description": "The port (default: 5432 for Postgres) of your origin database.",
-																	"example": "5432",
-																	"type": "integer"
-																},
-																"scheme": {
-																	"default": "postgres",
-																	"description": "Specifies the URL scheme used to connect to your origin database.",
-																	"enum": [
-																		"postgres",
-																		"postgresql",
-																		"mysql"
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				},
+																				"port": {
+																					"description": "The port (default: 5432 for Postgres) of your origin database.",
+																					"example": "5432",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"port"
+																			],
+																			"title": "Public Database",
+																			"type": "object"
+																		}
 																	],
-																	"type": "string"
+																	"title": "Public Database"
 																},
-																"user": {
-																	"description": "The user of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"access_client_id": {
+																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"example": "0123456789abcdef0123456789abcdef.access",
+																					"type": "string"
+																				},
+																				"access_client_secret": {
+																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"writeOnly": true
+																				},
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"access_client_id",
+																				"access_client_secret"
+																			],
+																			"title": "Access-protected Database behind Cloudflare Tunnel",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Access-protected Database behind Cloudflare Tunnel"
 																}
-															},
-															"required": [
-																"host",
-																"scheme",
-																"database",
-																"user"
 															],
 															"type": "object"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"origin"
+													],
 													"type": "object"
 												}
 											],
-											"properties": {
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												}
-											},
+											"required": [
+												"caching"
+											],
 											"type": "object"
 										}
 									}
@@ -1685,201 +1661,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true,
-															"type": "object"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"type": "object"
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1929,152 +1792,218 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"allOf": [
-							{
-								"properties": {
-									"caching": {
-										"properties": {
-											"disabled": {
-												"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-												"example": false,
-												"type": "boolean"
-											},
-											"max_age": {
-												"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-												"example": 60,
-												"type": "integer"
-											},
-											"stale_while_revalidate": {
-												"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-												"example": 15,
-												"type": "integer"
-											}
-										},
-										"type": "object"
+						"properties": {
+							"caching": {
+								"discriminator": {
+									"mapping": {
+										"false": "#/components/schemas/hyperdrive-caching-enabled",
+										"true": "#/components/schemas/hyperdrive-caching-disabled"
 									},
-									"name": {
-										"example": "example-hyperdrive",
-										"type": "string"
-									},
-									"origin": {
-										"properties": {
-											"access_client_id": {
-												"description": "The Client ID of the Access token to use when connecting to the origin database",
-												"example": "0123456789abcdef0123456789abcdef.access",
-												"type": "string"
-											},
-											"database": {
-												"description": "The name of your origin database.",
-												"example": "postgres",
-												"type": "string"
-											},
-											"host": {
-												"description": "The host (hostname or IP) of your origin database.",
-												"example": "database.example.com",
-												"type": "string"
-											},
-											"port": {
-												"description": "The port (default: 5432 for Postgres) of your origin database.",
-												"example": "5432",
-												"type": "integer"
-											},
-											"scheme": {
-												"default": "postgres",
-												"description": "Specifies the URL scheme used to connect to your origin database.",
-												"enum": [
-													"postgres",
-													"postgresql",
-													"mysql"
-												],
-												"type": "string"
-											},
-											"user": {
-												"description": "The user of your origin database.",
-												"example": "postgres",
-												"type": "string"
+									"propertyName": "disabled"
+								},
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"disabled": {
+														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
 											}
-										},
-										"required": [
-											"host",
-											"scheme",
-											"database",
-											"user"
 										],
 										"type": "object"
-									}
-								},
-								"type": "object"
-							}
-						],
-						"properties": {
-							"origin": {
-								"allOf": [
+									},
 									{
-										"properties": {
-											"access_client_id": {
-												"description": "The Client ID of the Access token to use when connecting to the origin database",
-												"example": "0123456789abcdef0123456789abcdef.access",
-												"type": "string"
+										"allOf": [
+											{
+												"properties": {
+													"disabled": {
+														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
 											},
-											"database": {
-												"description": "The name of your origin database.",
-												"example": "postgres",
-												"type": "string"
-											},
-											"host": {
-												"description": "The host (hostname or IP) of your origin database.",
-												"example": "database.example.com",
-												"type": "string"
-											},
-											"port": {
-												"description": "The port (default: 5432 for Postgres) of your origin database.",
-												"example": "5432",
-												"type": "integer"
-											},
-											"scheme": {
-												"default": "postgres",
-												"description": "Specifies the URL scheme used to connect to your origin database.",
-												"enum": [
-													"postgres",
-													"postgresql",
-													"mysql"
-												],
-												"type": "string"
-											},
-											"user": {
-												"description": "The user of your origin database.",
-												"example": "postgres",
-												"type": "string"
+											{
+												"properties": {
+													"max_age": {
+														"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+														"example": 60,
+														"type": "integer"
+													},
+													"stale_while_revalidate": {
+														"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+														"example": 15,
+														"type": "integer"
+													}
+												},
+												"type": "object"
 											}
-										},
-										"required": [
-											"host",
-											"scheme",
-											"database",
-											"user"
 										],
 										"type": "object"
 									}
 								],
-								"properties": {
-									"access_client_secret": {
-										"description": "The Client Secret of the Access token to use when connecting to the origin database",
-										"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
-										"type": "string"
+								"type": "object"
+							},
+							"id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"name": {
+								"example": "example-hyperdrive",
+								"type": "string"
+							},
+							"origin": {
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"properties": {
+															"database": {
+																"description": "The name of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															},
+															"password": {
+																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																"type": "string",
+																"writeOnly": true
+															},
+															"scheme": {
+																"description": "Specifies the URL scheme used to connect to your origin database.",
+																"enum": [
+																	"postgres",
+																	"postgresql"
+																],
+																"type": "string"
+															},
+															"user": {
+																"description": "The user of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															}
+														},
+														"title": "Connection Options",
+														"type": "object"
+													}
+												],
+												"required": [
+													"scheme",
+													"database",
+													"user",
+													"password"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"host": {
+														"description": "The host (hostname or IP) of your origin database.",
+														"example": "database.example.com",
+														"type": "string"
+													},
+													"port": {
+														"description": "The port (default: 5432 for Postgres) of your origin database.",
+														"example": "5432",
+														"type": "integer"
+													}
+												},
+												"required": [
+													"host",
+													"port"
+												],
+												"title": "Public Database",
+												"type": "object"
+											}
+										],
+										"title": "Public Database"
 									},
-									"password": {
-										"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
-										"example": "password1234!",
-										"type": "string"
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"properties": {
+															"database": {
+																"description": "The name of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															},
+															"password": {
+																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																"type": "string",
+																"writeOnly": true
+															},
+															"scheme": {
+																"description": "Specifies the URL scheme used to connect to your origin database.",
+																"enum": [
+																	"postgres",
+																	"postgresql"
+																],
+																"type": "string"
+															},
+															"user": {
+																"description": "The user of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															}
+														},
+														"title": "Connection Options",
+														"type": "object"
+													}
+												],
+												"required": [
+													"scheme",
+													"database",
+													"user",
+													"password"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"access_client_id": {
+														"description": "The Client ID of the Access token to use when connecting to the origin database",
+														"example": "0123456789abcdef0123456789abcdef.access",
+														"type": "string"
+													},
+													"access_client_secret": {
+														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+														"type": "string",
+														"writeOnly": true
+													},
+													"host": {
+														"description": "The host (hostname or IP) of your origin database.",
+														"example": "database.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"host",
+													"access_client_id",
+													"access_client_secret"
+												],
+												"title": "Access-protected Database behind Cloudflare Tunnel",
+												"type": "object"
+											}
+										],
+										"title": "Access-protected Database behind Cloudflare Tunnel"
 									}
-								},
-								"required": [
-									"password"
 								],
 								"type": "object"
 							}
 						},
 						"required": [
+							"id",
 							"name",
 							"origin"
 						],
@@ -2137,18 +2066,7 @@
 													"type": "array"
 												},
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
+													"type": "object"
 												},
 												"success": {
 													"description": "Whether the API call was successful",
@@ -2166,22 +2084,6 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true,
-													"type": "object"
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2193,88 +2095,225 @@
 												{
 													"properties": {
 														"caching": {
-															"properties": {
-																"disabled": {
-																	"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																	"example": false,
-																	"type": "boolean"
+															"discriminator": {
+																"mapping": {
+																	"false": "#/components/schemas/hyperdrive-caching-enabled",
+																	"true": "#/components/schemas/hyperdrive-caching-disabled"
 																},
-																"max_age": {
-																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																	"example": 60,
-																	"type": "integer"
-																},
-																"stale_while_revalidate": {
-																	"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-																	"example": 15,
-																	"type": "integer"
-																}
+																"propertyName": "disabled"
 															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"max_age": {
+																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+																					"example": 60,
+																					"type": "integer"
+																				},
+																				"stale_while_revalidate": {
+																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+																					"example": 15,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																}
+															],
 															"type": "object"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string"
 														},
 														"origin": {
-															"properties": {
-																"access_client_id": {
-																	"description": "The Client ID of the Access token to use when connecting to the origin database",
-																	"example": "0123456789abcdef0123456789abcdef.access",
-																	"type": "string"
-																},
-																"database": {
-																	"description": "The name of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The host (hostname or IP) of your origin database.",
-																	"example": "database.example.com",
-																	"type": "string"
-																},
-																"port": {
-																	"description": "The port (default: 5432 for Postgres) of your origin database.",
-																	"example": "5432",
-																	"type": "integer"
-																},
-																"scheme": {
-																	"default": "postgres",
-																	"description": "Specifies the URL scheme used to connect to your origin database.",
-																	"enum": [
-																		"postgres",
-																		"postgresql",
-																		"mysql"
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				},
+																				"port": {
+																					"description": "The port (default: 5432 for Postgres) of your origin database.",
+																					"example": "5432",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"port"
+																			],
+																			"title": "Public Database",
+																			"type": "object"
+																		}
 																	],
-																	"type": "string"
+																	"title": "Public Database"
 																},
-																"user": {
-																	"description": "The user of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"access_client_id": {
+																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"example": "0123456789abcdef0123456789abcdef.access",
+																					"type": "string"
+																				},
+																				"access_client_secret": {
+																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"writeOnly": true
+																				},
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"access_client_id",
+																				"access_client_secret"
+																			],
+																			"title": "Access-protected Database behind Cloudflare Tunnel",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Access-protected Database behind Cloudflare Tunnel"
 																}
-															},
-															"required": [
-																"host",
-																"scheme",
-																"database",
-																"user"
 															],
 															"type": "object"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"origin"
+													],
 													"type": "object"
 												}
 											],
-											"properties": {
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												}
-											},
+											"required": [
+												"caching"
+											],
 											"type": "object"
 										}
 									}
@@ -2289,201 +2328,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true,
-															"type": "object"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"type": "object"
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2545,152 +2471,218 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"allOf": [
-							{
-								"properties": {
-									"caching": {
-										"properties": {
-											"disabled": {
-												"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-												"example": false,
-												"type": "boolean"
-											},
-											"max_age": {
-												"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-												"example": 60,
-												"type": "integer"
-											},
-											"stale_while_revalidate": {
-												"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-												"example": 15,
-												"type": "integer"
-											}
-										},
-										"type": "object"
+						"properties": {
+							"caching": {
+								"discriminator": {
+									"mapping": {
+										"false": "#/components/schemas/hyperdrive-caching-enabled",
+										"true": "#/components/schemas/hyperdrive-caching-disabled"
 									},
-									"name": {
-										"example": "example-hyperdrive",
-										"type": "string"
-									},
-									"origin": {
-										"properties": {
-											"access_client_id": {
-												"description": "The Client ID of the Access token to use when connecting to the origin database",
-												"example": "0123456789abcdef0123456789abcdef.access",
-												"type": "string"
-											},
-											"database": {
-												"description": "The name of your origin database.",
-												"example": "postgres",
-												"type": "string"
-											},
-											"host": {
-												"description": "The host (hostname or IP) of your origin database.",
-												"example": "database.example.com",
-												"type": "string"
-											},
-											"port": {
-												"description": "The port (default: 5432 for Postgres) of your origin database.",
-												"example": "5432",
-												"type": "integer"
-											},
-											"scheme": {
-												"default": "postgres",
-												"description": "Specifies the URL scheme used to connect to your origin database.",
-												"enum": [
-													"postgres",
-													"postgresql",
-													"mysql"
-												],
-												"type": "string"
-											},
-											"user": {
-												"description": "The user of your origin database.",
-												"example": "postgres",
-												"type": "string"
+									"propertyName": "disabled"
+								},
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"disabled": {
+														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
 											}
-										},
-										"required": [
-											"host",
-											"scheme",
-											"database",
-											"user"
 										],
 										"type": "object"
-									}
-								},
-								"type": "object"
-							}
-						],
-						"properties": {
-							"origin": {
-								"allOf": [
+									},
 									{
-										"properties": {
-											"access_client_id": {
-												"description": "The Client ID of the Access token to use when connecting to the origin database",
-												"example": "0123456789abcdef0123456789abcdef.access",
-												"type": "string"
+										"allOf": [
+											{
+												"properties": {
+													"disabled": {
+														"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
 											},
-											"database": {
-												"description": "The name of your origin database.",
-												"example": "postgres",
-												"type": "string"
-											},
-											"host": {
-												"description": "The host (hostname or IP) of your origin database.",
-												"example": "database.example.com",
-												"type": "string"
-											},
-											"port": {
-												"description": "The port (default: 5432 for Postgres) of your origin database.",
-												"example": "5432",
-												"type": "integer"
-											},
-											"scheme": {
-												"default": "postgres",
-												"description": "Specifies the URL scheme used to connect to your origin database.",
-												"enum": [
-													"postgres",
-													"postgresql",
-													"mysql"
-												],
-												"type": "string"
-											},
-											"user": {
-												"description": "The user of your origin database.",
-												"example": "postgres",
-												"type": "string"
+											{
+												"properties": {
+													"max_age": {
+														"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+														"example": 60,
+														"type": "integer"
+													},
+													"stale_while_revalidate": {
+														"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+														"example": 15,
+														"type": "integer"
+													}
+												},
+												"type": "object"
 											}
-										},
-										"required": [
-											"host",
-											"scheme",
-											"database",
-											"user"
 										],
 										"type": "object"
 									}
 								],
-								"properties": {
-									"access_client_secret": {
-										"description": "The Client Secret of the Access token to use when connecting to the origin database",
-										"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
-										"type": "string"
+								"type": "object"
+							},
+							"id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"name": {
+								"example": "example-hyperdrive",
+								"type": "string"
+							},
+							"origin": {
+								"oneOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"properties": {
+															"database": {
+																"description": "The name of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															},
+															"password": {
+																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																"type": "string",
+																"writeOnly": true
+															},
+															"scheme": {
+																"description": "Specifies the URL scheme used to connect to your origin database.",
+																"enum": [
+																	"postgres",
+																	"postgresql"
+																],
+																"type": "string"
+															},
+															"user": {
+																"description": "The user of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															}
+														},
+														"title": "Connection Options",
+														"type": "object"
+													}
+												],
+												"required": [
+													"scheme",
+													"database",
+													"user",
+													"password"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"host": {
+														"description": "The host (hostname or IP) of your origin database.",
+														"example": "database.example.com",
+														"type": "string"
+													},
+													"port": {
+														"description": "The port (default: 5432 for Postgres) of your origin database.",
+														"example": "5432",
+														"type": "integer"
+													}
+												},
+												"required": [
+													"host",
+													"port"
+												],
+												"title": "Public Database",
+												"type": "object"
+											}
+										],
+										"title": "Public Database"
 									},
-									"password": {
-										"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
-										"example": "password1234!",
-										"type": "string"
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"properties": {
+															"database": {
+																"description": "The name of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															},
+															"password": {
+																"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																"type": "string",
+																"writeOnly": true
+															},
+															"scheme": {
+																"description": "Specifies the URL scheme used to connect to your origin database.",
+																"enum": [
+																	"postgres",
+																	"postgresql"
+																],
+																"type": "string"
+															},
+															"user": {
+																"description": "The user of your origin database.",
+																"example": "postgres",
+																"type": "string"
+															}
+														},
+														"title": "Connection Options",
+														"type": "object"
+													}
+												],
+												"required": [
+													"scheme",
+													"database",
+													"user",
+													"password"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"access_client_id": {
+														"description": "The Client ID of the Access token to use when connecting to the origin database",
+														"example": "0123456789abcdef0123456789abcdef.access",
+														"type": "string"
+													},
+													"access_client_secret": {
+														"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+														"type": "string",
+														"writeOnly": true
+													},
+													"host": {
+														"description": "The host (hostname or IP) of your origin database.",
+														"example": "database.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"host",
+													"access_client_id",
+													"access_client_secret"
+												],
+												"title": "Access-protected Database behind Cloudflare Tunnel",
+												"type": "object"
+											}
+										],
+										"title": "Access-protected Database behind Cloudflare Tunnel"
 									}
-								},
-								"required": [
-									"password"
 								],
 								"type": "object"
 							}
 						},
 						"required": [
+							"id",
 							"name",
 							"origin"
 						],
@@ -2753,18 +2745,7 @@
 													"type": "array"
 												},
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
+													"type": "object"
 												},
 												"success": {
 													"description": "Whether the API call was successful",
@@ -2782,22 +2763,6 @@
 												"result"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true,
-													"type": "object"
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2809,88 +2774,225 @@
 												{
 													"properties": {
 														"caching": {
-															"properties": {
-																"disabled": {
-																	"description": "When set to true, disables the caching of SQL responses. (Default: false)",
-																	"example": false,
-																	"type": "boolean"
+															"discriminator": {
+																"mapping": {
+																	"false": "#/components/schemas/hyperdrive-caching-enabled",
+																	"true": "#/components/schemas/hyperdrive-caching-disabled"
 																},
-																"max_age": {
-																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																	"example": 60,
-																	"type": "integer"
-																},
-																"stale_while_revalidate": {
-																	"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
-																	"example": 15,
-																	"type": "integer"
-																}
+																"propertyName": "disabled"
 															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"max_age": {
+																					"description": "When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)",
+																					"example": 60,
+																					"type": "integer"
+																				},
+																				"stale_while_revalidate": {
+																					"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)",
+																					"example": 15,
+																					"type": "integer"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																}
+															],
 															"type": "object"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string"
 														},
 														"origin": {
-															"properties": {
-																"access_client_id": {
-																	"description": "The Client ID of the Access token to use when connecting to the origin database",
-																	"example": "0123456789abcdef0123456789abcdef.access",
-																	"type": "string"
-																},
-																"database": {
-																	"description": "The name of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
-																},
-																"host": {
-																	"description": "The host (hostname or IP) of your origin database.",
-																	"example": "database.example.com",
-																	"type": "string"
-																},
-																"port": {
-																	"description": "The port (default: 5432 for Postgres) of your origin database.",
-																	"example": "5432",
-																	"type": "integer"
-																},
-																"scheme": {
-																	"default": "postgres",
-																	"description": "Specifies the URL scheme used to connect to your origin database.",
-																	"enum": [
-																		"postgres",
-																		"postgresql",
-																		"mysql"
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				},
+																				"port": {
+																					"description": "The port (default: 5432 for Postgres) of your origin database.",
+																					"example": "5432",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"port"
+																			],
+																			"title": "Public Database",
+																			"type": "object"
+																		}
 																	],
-																	"type": "string"
+																	"title": "Public Database"
 																},
-																"user": {
-																	"description": "The user of your origin database.",
-																	"example": "postgres",
-																	"type": "string"
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "The name of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						},
+																						"password": {
+																							"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+																							"type": "string",
+																							"writeOnly": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql"
+																							],
+																							"type": "string"
+																						},
+																						"user": {
+																							"description": "The user of your origin database.",
+																							"example": "postgres",
+																							"type": "string"
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"access_client_id": {
+																					"description": "The Client ID of the Access token to use when connecting to the origin database",
+																					"example": "0123456789abcdef0123456789abcdef.access",
+																					"type": "string"
+																				},
+																				"access_client_secret": {
+																					"description": "The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.",
+																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"writeOnly": true
+																				},
+																				"host": {
+																					"description": "The host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"access_client_id",
+																				"access_client_secret"
+																			],
+																			"title": "Access-protected Database behind Cloudflare Tunnel",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Access-protected Database behind Cloudflare Tunnel"
 																}
-															},
-															"required": [
-																"host",
-																"scheme",
-																"database",
-																"user"
 															],
 															"type": "object"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"origin"
+													],
 													"type": "object"
 												}
 											],
-											"properties": {
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												}
-											},
+											"required": [
+												"caching"
+											],
 											"type": "object"
 										}
 									}
@@ -2905,201 +3007,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true,
-															"type": "object"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"type": "object"
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
