@@ -2896,6 +2896,261 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{accountId}/urlscanner/v2/bulk": {
+		"description": "Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish.",
+		"operationId": "urlscanner-create-scan-bulk-v2",
+		"parameters": [
+			{
+				"description": "Account Id.",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account Id.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "List of urls to scan (up to a 100).",
+						"items": {
+							"properties": {
+								"customHeaders": {
+									"additionalProperties": {
+										"type": "string"
+									},
+									"description": "Set custom headers.",
+									"type": "object"
+								},
+								"customagent": {
+									"maxLength": 4096,
+									"type": "string"
+								},
+								"referer": {
+									"maxLength": 4096,
+									"type": "string"
+								},
+								"screenshotsResolutions": {
+									"default": [
+										"desktop"
+									],
+									"description": "Take multiple screenshots targeting different device types.",
+									"items": {
+										"default": "desktop",
+										"description": "Device resolutions.",
+										"enum": [
+											"desktop",
+											"mobile",
+											"tablet"
+										],
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"url": {
+									"example": "https://www.example.com",
+									"type": "string"
+								},
+								"visibility": {
+									"default": "Public",
+									"description": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material.",
+									"enum": [
+										"Public",
+										"Unlisted"
+									],
+									"type": "string"
+								}
+							},
+							"required": [
+								"url"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"api": {
+										"description": "URL to api report.",
+										"type": "string"
+									},
+									"options": {
+										"properties": {
+											"useragent": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"result": {
+										"description": "URL to report.",
+										"type": "string"
+									},
+									"url": {
+										"description": "Submitted URL",
+										"type": "string"
+									},
+									"uuid": {
+										"description": "Scan ID.",
+										"format": "uuid",
+										"type": "string"
+									},
+									"visibility": {
+										"description": "Submitted visibility status.",
+										"example": "Public",
+										"type": "string"
+									}
+								},
+								"required": [
+									"uuid",
+									"result",
+									"api",
+									"visibility",
+									"url"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Scan bulk request accepted successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"status": {
+												"description": "Status code.",
+												"example": 400,
+												"type": "integer"
+											},
+											"title": {
+												"example": "Invalid url",
+												"type": "string"
+											}
+										},
+										"required": [
+											"title",
+											"detail",
+											"status"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"message": {
+									"type": "string"
+								},
+								"status": {
+									"description": "Status code.",
+									"example": 400,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"message",
+								"status",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid input."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"description": {
+									"type": "string"
+								},
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"example": "DNS Error - Could not resolve domain.",
+												"type": "string"
+											},
+											"status": {
+												"type": "object"
+											},
+											"title": {
+												"example": "DNS Error - Could not resolve domain.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"title",
+											"detail",
+											"status"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"message": {
+									"type": "string"
+								},
+								"status": {
+									"type": "object"
+								}
+							},
+							"required": [
+								"message",
+								"status",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Scan request denied: rate limited."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Bulk create URL Scans",
+		"tags": [
+			"URL Scanner (Beta)"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{accountId}/urlscanner/v2/scan": {
 		"description": "Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
 		"operationId": "urlscanner-create-scan-v2",
