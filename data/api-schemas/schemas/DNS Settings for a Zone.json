@@ -107,27 +107,6 @@
 															"example": false,
 															"type": "boolean"
 														},
-														"nameservers": {
-															"description": "Settings determining the nameservers through which the zone should be available.",
-															"properties": {
-																"type": {
-																	"description": "Nameserver type",
-																	"enum": [
-																		"cloudflare.standard",
-																		"cloudflare.standard.random",
-																		"custom.account",
-																		"custom.tenant",
-																		"custom.zone"
-																	],
-																	"example": "cloudflare.standard",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"type"
-															],
-															"type": "object"
-														},
 														"ns_ttl": {
 															"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 															"example": 86400,
@@ -216,6 +195,7 @@
 												{
 													"properties": {
 														"nameservers": {
+															"description": "Settings determining the nameservers through which the zone should be available.",
 															"properties": {
 																"ns_set": {
 																	"description": "Configured nameserver set to be used for this zone",
@@ -223,8 +203,22 @@
 																	"maximum": 5,
 																	"minimum": 1,
 																	"type": "integer"
+																},
+																"type": {
+																	"description": "Nameserver type",
+																	"enum": [
+																		"cloudflare.standard",
+																		"custom.account",
+																		"custom.tenant",
+																		"custom.zone"
+																	],
+																	"example": "cloudflare.standard",
+																	"type": "string"
 																}
 															},
+															"required": [
+																"type"
+															],
 															"type": "object"
 														}
 													},
@@ -334,27 +328,6 @@
 																	"example": false,
 																	"type": "boolean"
 																},
-																"nameservers": {
-																	"description": "Settings determining the nameservers through which the zone should be available.",
-																	"properties": {
-																		"type": {
-																			"description": "Nameserver type",
-																			"enum": [
-																				"cloudflare.standard",
-																				"cloudflare.standard.random",
-																				"custom.account",
-																				"custom.tenant",
-																				"custom.zone"
-																			],
-																			"example": "cloudflare.standard",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"type"
-																	],
-																	"type": "object"
-																},
 																"ns_ttl": {
 																	"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 																	"example": 86400,
@@ -443,6 +416,7 @@
 														{
 															"properties": {
 																"nameservers": {
+																	"description": "Settings determining the nameservers through which the zone should be available.",
 																	"properties": {
 																		"ns_set": {
 																			"description": "Configured nameserver set to be used for this zone",
@@ -450,8 +424,22 @@
 																			"maximum": 5,
 																			"minimum": 1,
 																			"type": "integer"
+																		},
+																		"type": {
+																			"description": "Nameserver type",
+																			"enum": [
+																				"cloudflare.standard",
+																				"custom.account",
+																				"custom.tenant",
+																				"custom.zone"
+																			],
+																			"example": "cloudflare.standard",
+																			"type": "string"
 																		}
 																	},
+																	"required": [
+																		"type"
+																	],
 																	"type": "object"
 																}
 															},
@@ -621,27 +609,6 @@
 										"example": false,
 										"type": "boolean"
 									},
-									"nameservers": {
-										"description": "Settings determining the nameservers through which the zone should be available.",
-										"properties": {
-											"type": {
-												"description": "Nameserver type",
-												"enum": [
-													"cloudflare.standard",
-													"cloudflare.standard.random",
-													"custom.account",
-													"custom.tenant",
-													"custom.zone"
-												],
-												"example": "cloudflare.standard",
-												"type": "string"
-											}
-										},
-										"required": [
-											"type"
-										],
-										"type": "object"
-									},
 									"ns_ttl": {
 										"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 										"example": 86400,
@@ -730,6 +697,7 @@
 							{
 								"properties": {
 									"nameservers": {
+										"description": "Settings determining the nameservers through which the zone should be available.",
 										"properties": {
 											"ns_set": {
 												"description": "Configured nameserver set to be used for this zone",
@@ -737,8 +705,22 @@
 												"maximum": 5,
 												"minimum": 1,
 												"type": "integer"
+											},
+											"type": {
+												"description": "Nameserver type",
+												"enum": [
+													"cloudflare.standard",
+													"custom.account",
+													"custom.tenant",
+													"custom.zone"
+												],
+												"example": "cloudflare.standard",
+												"type": "string"
 											}
 										},
+										"required": [
+											"type"
+										],
 										"type": "object"
 									}
 								},
@@ -842,27 +824,6 @@
 															"example": false,
 															"type": "boolean"
 														},
-														"nameservers": {
-															"description": "Settings determining the nameservers through which the zone should be available.",
-															"properties": {
-																"type": {
-																	"description": "Nameserver type",
-																	"enum": [
-																		"cloudflare.standard",
-																		"cloudflare.standard.random",
-																		"custom.account",
-																		"custom.tenant",
-																		"custom.zone"
-																	],
-																	"example": "cloudflare.standard",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"type"
-															],
-															"type": "object"
-														},
 														"ns_ttl": {
 															"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 															"example": 86400,
@@ -951,6 +912,7 @@
 												{
 													"properties": {
 														"nameservers": {
+															"description": "Settings determining the nameservers through which the zone should be available.",
 															"properties": {
 																"ns_set": {
 																	"description": "Configured nameserver set to be used for this zone",
@@ -958,8 +920,22 @@
 																	"maximum": 5,
 																	"minimum": 1,
 																	"type": "integer"
+																},
+																"type": {
+																	"description": "Nameserver type",
+																	"enum": [
+																		"cloudflare.standard",
+																		"custom.account",
+																		"custom.tenant",
+																		"custom.zone"
+																	],
+																	"example": "cloudflare.standard",
+																	"type": "string"
 																}
 															},
+															"required": [
+																"type"
+															],
 															"type": "object"
 														}
 													},
@@ -1069,27 +1045,6 @@
 																	"example": false,
 																	"type": "boolean"
 																},
-																"nameservers": {
-																	"description": "Settings determining the nameservers through which the zone should be available.",
-																	"properties": {
-																		"type": {
-																			"description": "Nameserver type",
-																			"enum": [
-																				"cloudflare.standard",
-																				"cloudflare.standard.random",
-																				"custom.account",
-																				"custom.tenant",
-																				"custom.zone"
-																			],
-																			"example": "cloudflare.standard",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"type"
-																	],
-																	"type": "object"
-																},
 																"ns_ttl": {
 																	"description": "The time to live (TTL) of the zone's nameserver (NS) records.",
 																	"example": 86400,
@@ -1178,6 +1133,7 @@
 														{
 															"properties": {
 																"nameservers": {
+																	"description": "Settings determining the nameservers through which the zone should be available.",
 																	"properties": {
 																		"ns_set": {
 																			"description": "Configured nameserver set to be used for this zone",
@@ -1185,8 +1141,22 @@
 																			"maximum": 5,
 																			"minimum": 1,
 																			"type": "integer"
+																		},
+																		"type": {
+																			"description": "Nameserver type",
+																			"enum": [
+																				"cloudflare.standard",
+																				"custom.account",
+																				"custom.tenant",
+																				"custom.zone"
+																			],
+																			"example": "cloudflare.standard",
+																			"type": "string"
 																		}
 																	},
+																	"required": [
+																		"type"
+																	],
 																	"type": "object"
 																}
 															},
