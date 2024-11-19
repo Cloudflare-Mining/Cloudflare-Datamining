@@ -307,9 +307,6 @@
 									"properties": {
 										"result": {
 											"items": {
-												"discriminator": {
-													"propertyName": "type"
-												},
 												"oneOf": [
 													{
 														"allOf": [
@@ -376,9 +373,6 @@
 																	},
 																	"entries": {
 																		"items": {
-																			"discriminator": {
-																				"propertyName": "type"
-																			},
 																			"oneOf": [
 																				{
 																					"allOf": [
@@ -777,9 +771,6 @@
 																	},
 																	"entries": {
 																		"items": {
-																			"discriminator": {
-																				"propertyName": "type"
-																			},
 																			"oneOf": [
 																				{
 																					"allOf": [
@@ -1138,9 +1129,6 @@
 																	},
 																	"entries": {
 																		"items": {
-																			"discriminator": {
-																				"propertyName": "type"
-																			},
 																			"oneOf": [
 																				{
 																					"allOf": [
@@ -1693,9 +1681,6 @@
 								{
 									"properties": {
 										"result": {
-											"discriminator": {
-												"propertyName": "type"
-											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -1762,9 +1747,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -2163,9 +2145,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -2524,9 +2503,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -3077,9 +3053,6 @@
 								{
 									"properties": {
 										"result": {
-											"discriminator": {
-												"propertyName": "type"
-											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -3146,9 +3119,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -3547,9 +3517,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -3908,9 +3875,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -4461,9 +4425,6 @@
 								{
 									"properties": {
 										"result": {
-											"discriminator": {
-												"propertyName": "type"
-											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -4530,9 +4491,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -4931,9 +4889,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -5292,9 +5247,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -5893,9 +5845,6 @@
 												"shared_entries": {
 													"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
 													"items": {
-														"discriminator": {
-															"propertyName": "entry_type"
-														},
 														"oneOf": [
 															{
 																"properties": {
@@ -6130,9 +6079,6 @@
 									"shared_entries": {
 										"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
 										"items": {
-											"discriminator": {
-												"propertyName": "entry_type"
-											},
 											"oneOf": [
 												{
 													"properties": {
@@ -6320,9 +6266,6 @@
 										"result": {
 											"oneOf": [
 												{
-													"discriminator": {
-														"propertyName": "type"
-													},
 													"oneOf": [
 														{
 															"allOf": [
@@ -6389,9 +6332,6 @@
 																		},
 																		"entries": {
 																			"items": {
-																				"discriminator": {
-																					"propertyName": "type"
-																				},
 																				"oneOf": [
 																					{
 																						"allOf": [
@@ -6790,9 +6730,6 @@
 																		},
 																		"entries": {
 																			"items": {
-																				"discriminator": {
-																					"propertyName": "type"
-																				},
 																				"oneOf": [
 																					{
 																						"allOf": [
@@ -7151,9 +7088,6 @@
 																		},
 																		"entries": {
 																			"items": {
-																				"discriminator": {
-																					"propertyName": "type"
-																				},
 																				"oneOf": [
 																					{
 																						"allOf": [
@@ -7498,9 +7432,6 @@
 												{
 													"deprecated": true,
 													"items": {
-														"discriminator": {
-															"propertyName": "type"
-														},
 														"oneOf": [
 															{
 																"allOf": [
@@ -7567,9 +7498,6 @@
 																			},
 																			"entries": {
 																				"items": {
-																					"discriminator": {
-																						"propertyName": "type"
-																					},
 																					"oneOf": [
 																						{
 																							"allOf": [
@@ -7968,9 +7896,6 @@
 																			},
 																			"entries": {
 																				"items": {
-																					"discriminator": {
-																						"propertyName": "type"
-																					},
 																					"oneOf": [
 																						{
 																							"allOf": [
@@ -8329,9 +8254,6 @@
 																			},
 																			"entries": {
 																				"items": {
-																					"discriminator": {
-																						"propertyName": "type"
-																					},
 																					"oneOf": [
 																						{
 																							"allOf": [
@@ -8967,9 +8889,6 @@
 							"shared_entries": {
 								"description": "Other entries, e.g. predefined or integration.",
 								"items": {
-									"discriminator": {
-										"propertyName": "entry_type"
-									},
 									"oneOf": [
 										{
 											"properties": {
@@ -9129,9 +9048,6 @@
 								{
 									"properties": {
 										"result": {
-											"discriminator": {
-												"propertyName": "type"
-											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -9198,9 +9114,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -9599,9 +9512,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -9960,9 +9870,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -10587,9 +10494,6 @@
 								{
 									"properties": {
 										"result": {
-											"discriminator": {
-												"propertyName": "type"
-											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -10656,9 +10560,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -11057,9 +10958,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
@@ -11418,9 +11316,6 @@
 																},
 																"entries": {
 																	"items": {
-																		"discriminator": {
-																			"propertyName": "type"
-																		},
 																		"oneOf": [
 																			{
 																				"allOf": [
