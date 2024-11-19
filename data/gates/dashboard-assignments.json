@@ -18,7 +18,7 @@
 		"false": 100
 	},
 	"ai-gateway-auth-gateway": {
-		"false": 100
+		"true": 100
 	},
 	"ai-gateway-prompts": {
 		"false": 100
@@ -624,6 +624,9 @@
 	"tsf-3-chat-queue-count": {
 		"true": 50,
 		"false": 50
+	},
+	"tsf-3-chunked-upload": {
+		"true": 100
 	},
 	"tsf-3-community-deflection": {
 		"branch-2": 100
