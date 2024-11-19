@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, NYC, Lisbon or London</strong></p>
+<p><strong>Available Locations: Austin, NYC, , San Francisco, Lisbon or London (Hybrid)</strong></p>
 <p><strong>About The Role</strong></p>
 <p>Cloudflare’s Privacy Edge is a suite of tools that make it easy for site owners and developers to build privacy into their products, by default. In this role, you’ll be responsible for driving the roadmap for Cloudflare’s privacy-preserving marketing stack – working with the team that built <a href="https://www.cloudflare.com/application-services/products/zaraz/">Zaraz</a> and shaping the analytics tools we build on top of it.&nbsp;</p>
 <p>We expect you to participate and drive the cutting edge of growing industry trends in this space: the deprecation of third party cookies, private ad attribution, and GDPR, for example. A key part of this role is identifying (and shipping) new products that use Cloudflare’s privacy infrastructure and role as a trusted third party to push forward a more private Internet.</p>
