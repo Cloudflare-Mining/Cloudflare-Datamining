@@ -3569,6 +3569,135 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+				"in": "query",
+				"name": "botClass",
+				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
+					"items": {
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for device type.",
+				"in": "query",
+				"name": "deviceType",
+				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
+					"items": {
+						"enum": [
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http protocol.",
+				"in": "query",
+				"name": "httpProtocol",
+				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
+					"items": {
+						"enum": [
+							"HTTP",
+							"HTTPS"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for os name.",
+				"in": "query",
+				"name": "os",
+				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
+					"items": {
+						"enum": [
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for tls version.",
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
