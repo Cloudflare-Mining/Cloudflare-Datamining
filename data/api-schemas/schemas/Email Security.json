@@ -2246,8 +2246,9 @@
 			"Cloud Email Security: Read"
 		]
 	},
-	"GET /accounts/{account_id}/email-security/phishguard/reports": {
-		"operationId": "email_security_get_phishguard_reports",
+	"GET /accounts/{account_id}/email-security/submissions": {
+		"description": "This endpoint returns information for submissions to made to reclassify emails.",
+		"operationId": "email_security_submissions",
 		"parameters": [
 			{
 				"in": "path",
@@ -2264,23 +2265,67 @@
 				}
 			},
 			{
-				"example": "2020-08-01",
+				"description": "The beginning of the search date range.\nDefaults to `now - 30 days`.",
+				"example": "2022-07-25T14:30:00Z",
 				"in": "query",
-				"name": "from_date",
-				"required": true,
+				"name": "start",
 				"schema": {
-					"format": "date",
+					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"example": "2020-09-01",
+				"description": "The end of the search date range.\nDefaults to `now`.",
+				"example": "2022-06-25T14:30:00Z",
 				"in": "query",
-				"name": "to_date",
-				"required": true,
+				"name": "end",
 				"schema": {
-					"format": "date",
+					"format": "date-time",
 					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"allOf": [
+						{
+							"enum": [
+								"TEAM",
+								"USER"
+							],
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "submission_id",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The page number of paginated results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"format": "int32",
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"format": "int32",
+					"minimum": 1,
+					"type": "integer"
 				}
 			}
 		],
@@ -2351,93 +2396,106 @@
 										"result": {
 											"items": {
 												"properties": {
-													"content": {
-														"type": "string"
-													},
-													"disposition": {
-														"enum": [
-															"MALICIOUS",
-															"MALICIOUS-BEC",
-															"SUSPICIOUS",
-															"SPOOF",
-															"SPAM",
-															"BULK",
-															"ENCRYPTED",
-															"EXTERNAL",
-															"UNKNOWN",
-															"NONE"
-														],
-														"type": "string"
-													},
-													"fields": {
-														"properties": {
-															"from": {
+													"original_disposition": {
+														"allOf": [
+															{
+																"enum": [
+																	"MALICIOUS",
+																	"MALICIOUS-BEC",
+																	"SUSPICIOUS",
+																	"SPOOF",
+																	"SPAM",
+																	"BULK",
+																	"ENCRYPTED",
+																	"EXTERNAL",
+																	"UNKNOWN",
+																	"NONE"
+																],
+																"type": "string"
+															},
+															{
 																"nullable": true,
 																"type": "string"
-															},
-															"postfix_id": {
+															}
+														]
+													},
+													"outcome": {
+														"nullable": true,
+														"type": "string"
+													},
+													"outcome_disposition": {
+														"allOf": [
+															{
+																"enum": [
+																	"MALICIOUS",
+																	"MALICIOUS-BEC",
+																	"SUSPICIOUS",
+																	"SPOOF",
+																	"SPAM",
+																	"BULK",
+																	"ENCRYPTED",
+																	"EXTERNAL",
+																	"UNKNOWN",
+																	"NONE"
+																],
 																"type": "string"
 															},
-															"to": {
-																"items": {
-																	"type": "string"
-																},
-																"type": "array"
-															},
-															"ts": {
-																"format": "date-time",
+															{
+																"nullable": true,
 																"type": "string"
 															}
-														},
-														"required": [
-															"to",
-															"ts",
-															"postfix_id"
-														],
-														"type": "object"
+														]
 													},
-													"id": {
-														"format": "int32",
-														"type": "integer"
-													},
-													"priority": {
-														"type": "string"
-													},
-													"tags": {
-														"items": {
-															"properties": {
-																"category": {
-																	"type": "string"
-																},
-																"value": {
-																	"type": "string"
-																}
-															},
-															"required": [
-																"category",
-																"value"
-															],
-															"type": "object"
-														},
+													"requested_by": {
 														"nullable": true,
-														"type": "array"
-													},
-													"title": {
 														"type": "string"
 													},
-													"ts": {
+													"requested_disposition": {
+														"allOf": [
+															{
+																"enum": [
+																	"MALICIOUS",
+																	"MALICIOUS-BEC",
+																	"SUSPICIOUS",
+																	"SPOOF",
+																	"SPAM",
+																	"BULK",
+																	"ENCRYPTED",
+																	"EXTERNAL",
+																	"UNKNOWN",
+																	"NONE"
+																],
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															}
+														]
+													},
+													"requested_ts": {
 														"format": "date-time",
+														"type": "string"
+													},
+													"status": {
+														"nullable": true,
+														"type": "string"
+													},
+													"subject": {
+														"nullable": true,
+														"type": "string"
+													},
+													"submission_id": {
+														"type": "string"
+													},
+													"type": {
+														"nullable": true,
 														"type": "string"
 													}
 												},
 												"required": [
-													"id",
-													"ts",
-													"title",
-													"content",
-													"fields",
-													"priority",
-													"disposition"
+													"submission_id",
+													"requested_ts"
 												],
 												"type": "object"
 											},
@@ -2453,7 +2511,7 @@
 						}
 					}
 				},
-				"description": "Contains a list of PhishGuard reports."
+				"description": ""
 			},
 			"4XX": {
 				"content": {
@@ -2535,7 +2593,1194 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get PhishGuard reports",
+		"summary": "Get reclassify submissions",
+		"tags": [
+			"Email Security"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/move": {
+		"operationId": "email_security_post_message_move",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "postfix_id",
+				"required": true,
+				"schema": {
+					"description": "The identifier of the message.",
+					"example": "4Njp3P0STMz2c02Q",
+					"title": "postfix_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination": {
+								"enum": [
+									"Inbox",
+									"JunkEmail",
+									"DeletedItems",
+									"RecoverableItemsDeletions",
+									"RecoverableItemsPurges"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"destination"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"completed_timestamp": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"destination": {
+														"type": "string"
+													},
+													"item_count": {
+														"format": "int32",
+														"type": "integer"
+													},
+													"message_id": {
+														"type": "string"
+													},
+													"operation": {
+														"type": "string"
+													},
+													"recipient": {
+														"type": "string"
+													},
+													"status": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"destination",
+													"item_count",
+													"completed_timestamp",
+													"message_id",
+													"recipient",
+													"operation",
+													"status"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Move a message",
+		"tags": [
+			"Email Security"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/reclassify": {
+		"operationId": "email_security_post_reclassify",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "postfix_id",
+				"required": true,
+				"schema": {
+					"description": "The identifier of the message.",
+					"example": "4Njp3P0STMz2c02Q",
+					"title": "postfix_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"eml_content": {
+								"description": "Base64 encoded content of the EML file",
+								"nullable": true,
+								"type": "string"
+							},
+							"expected_disposition": {
+								"enum": [
+									"NONE",
+									"BULK",
+									"MALICIOUS",
+									"SPAM",
+									"SPOOF",
+									"SUSPICIOUS"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"expected_disposition"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Change email classfication",
+		"tags": [
+			"Email Security"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/investigate/move": {
+		"operationId": "email_security_post_bulk_message_move",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"destination": {
+								"enum": [
+									"Inbox",
+									"JunkEmail",
+									"DeletedItems",
+									"RecoverableItemsDeletions",
+									"RecoverableItemsPurges"
+								],
+								"type": "string"
+							},
+							"postfix_ids": {
+								"items": {
+									"description": "The identifier of the message.",
+									"example": "4Njp3P0STMz2c02Q",
+									"title": "postfix_id",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"postfix_ids",
+							"destination"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"completed_timestamp": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"destination": {
+														"type": "string"
+													},
+													"item_count": {
+														"format": "int32",
+														"type": "integer"
+													},
+													"message_id": {
+														"type": "string"
+													},
+													"operation": {
+														"type": "string"
+													},
+													"recipient": {
+														"type": "string"
+													},
+													"status": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"destination",
+													"item_count",
+													"completed_timestamp",
+													"message_id",
+													"recipient",
+													"operation",
+													"status"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Move multiple messages",
+		"tags": [
+			"Email Security"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/investigate/preview": {
+		"operationId": "email_security_post_preview",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A list of messages identfied by their `postfix_id`s that should be released.",
+						"items": {
+							"description": "The identifier of the message.",
+							"example": "4Njp3P0STMz2c02Q",
+							"title": "postfix_id",
+							"type": "string"
+						},
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"error": {
+													"nullable": true,
+													"type": "string"
+												},
+												"screenshot": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"screenshot"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Preview for non-detection messages",
+		"tags": [
+			"Email Security"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/investigate/release": {
+		"operationId": "email_security_post_release",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A list of messages identfied by their `postfix_id`s that should be released.",
+						"items": {
+							"description": "The identifier of the message.",
+							"example": "4Njp3P0STMz2c02Q",
+							"title": "postfix_id",
+							"type": "string"
+						},
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"delivered": {
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"failed": {
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"undelivered": {
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"postfix_id": {
+																"description": "The identifier of the message.",
+																"example": "4Njp3P0STMz2c02Q",
+																"title": "postfix_id",
+																"type": "string"
+															}
+														},
+														"required": [
+															"postfix_id"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Release messages from quarantine",
 		"tags": [
 			"Email Security"
 		]

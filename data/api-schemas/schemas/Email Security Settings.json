@@ -1,228 +1,6 @@
 {
-	"DELETE /accounts/{account_id}/email-security/settings/allow_patterns": {
-		"operationId": "email_security_delete_allow_patterns",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"minLength": 32,
-					"readOnly": true,
-					"title": "account_id",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"items": {
-							"properties": {
-								"id": {
-									"example": 2401,
-									"format": "int32",
-									"title": "identifier",
-									"type": "integer"
-								}
-							},
-							"required": [
-								"id"
-							],
-							"type": "object"
-						},
-						"minItems": 1,
-						"type": "array"
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"success": {
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"id": {
-														"example": 2401,
-														"format": "int32",
-														"title": "identifier",
-														"type": "integer"
-													}
-												},
-												"required": [
-													"id"
-												],
-												"type": "object"
-											},
-											"minItems": 1,
-											"type": "array"
-										}
-									},
-									"required": [
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": ""
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors",
-								"messages"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Client Error"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Delete multiple email allow patterns",
-		"tags": [
-			"Email Security Settings"
-		]
-	},
-	"DELETE /accounts/{account_id}/email-security/settings/allow_patterns/{pattern_id}": {
-		"operationId": "email_security_delete_allow_pattern",
+	"DELETE /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
+		"operationId": "email_security_delete_allow_policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -240,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "pattern_id",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"example": 2401,
@@ -420,229 +198,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete an email allow pattern",
-		"tags": [
-			"Email Security Settings"
-		]
-	},
-	"DELETE /accounts/{account_id}/email-security/settings/block_senders": {
-		"operationId": "email_security_delete_blocked_senders",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"minLength": 32,
-					"readOnly": true,
-					"title": "account_id",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"items": {
-							"properties": {
-								"id": {
-									"example": 2402,
-									"format": "int32",
-									"title": "identifier",
-									"type": "integer"
-								}
-							},
-							"required": [
-								"id"
-							],
-							"type": "object"
-						},
-						"minItems": 1,
-						"type": "array"
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"success": {
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"id": {
-														"example": 2402,
-														"format": "int32",
-														"title": "identifier",
-														"type": "integer"
-													}
-												},
-												"required": [
-													"id"
-												],
-												"type": "object"
-											},
-											"minItems": 1,
-											"type": "array"
-										}
-									},
-									"required": [
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": ""
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors",
-								"messages"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Client Error"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Delete multiple blocked email senders",
+		"summary": "Delete an email allow policy",
 		"tags": [
 			"Email Security Settings"
 		]
@@ -1277,228 +833,6 @@
 			"Email Security Settings"
 		]
 	},
-	"DELETE /accounts/{account_id}/email-security/settings/impersonation_registry": {
-		"operationId": "email_security_delete_display_names",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"minLength": 32,
-					"readOnly": true,
-					"title": "account_id",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"items": {
-							"properties": {
-								"id": {
-									"example": 2403,
-									"format": "int32",
-									"title": "identifier",
-									"type": "integer"
-								}
-							},
-							"required": [
-								"id"
-							],
-							"type": "object"
-						},
-						"minItems": 1,
-						"type": "array"
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"success": {
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"id": {
-														"example": 2403,
-														"format": "int32",
-														"title": "identifier",
-														"type": "integer"
-													}
-												},
-												"required": [
-													"id"
-												],
-												"type": "object"
-											},
-											"minItems": 1,
-											"type": "array"
-										}
-									},
-									"required": [
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": ""
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors",
-								"messages"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Client Error"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Delete multiple entries from impersonation registry",
-		"tags": [
-			"Email Security Settings"
-		]
-	},
 	"DELETE /accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}": {
 		"operationId": "email_security_delete_display_name",
 		"parameters": [
@@ -1699,228 +1033,6 @@
 			}
 		],
 		"summary": "Delete an entry from impersonation registry",
-		"tags": [
-			"Email Security Settings"
-		]
-	},
-	"DELETE /accounts/{account_id}/email-security/settings/trusted_domains": {
-		"operationId": "email_security_delete_trusted_domains",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"minLength": 32,
-					"readOnly": true,
-					"title": "account_id",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"items": {
-							"properties": {
-								"id": {
-									"example": 2401,
-									"format": "int32",
-									"title": "identifier",
-									"type": "integer"
-								}
-							},
-							"required": [
-								"id"
-							],
-							"type": "object"
-						},
-						"minItems": 1,
-						"type": "array"
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"success": {
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"id": {
-														"example": 2401,
-														"format": "int32",
-														"title": "identifier",
-														"type": "integer"
-													}
-												},
-												"required": [
-													"id"
-												],
-												"type": "object"
-											},
-											"minItems": 1,
-											"type": "array"
-										}
-									},
-									"required": [
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": ""
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"example": [],
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors",
-								"messages"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Client Error"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Delete multiple trusted email domains",
 		"tags": [
 			"Email Security Settings"
 		]
@@ -2129,9 +1241,9 @@
 			"Email Security Settings"
 		]
 	},
-	"GET /accounts/{account_id}/email-security/settings/allow_patterns": {
-		"description": "Lists, searches, and sorts an account’s email allow patterns.",
-		"operationId": "email_security_list_allow_patterns",
+	"GET /accounts/{account_id}/email-security/settings/allow_policies": {
+		"description": "Lists, searches, and sorts an account’s email allow policies.",
+		"operationId": "email_security_list_allow_policies",
 		"parameters": [
 			{
 				"in": "path",
@@ -2322,29 +1434,48 @@
 														"additionalProperties": false,
 														"example": {
 															"comments": "Trust all messages send from test@example.com",
+															"is_acceptable_sender": false,
+															"is_exempt_recipient": false,
 															"is_recipient": false,
 															"is_regex": false,
 															"is_sender": true,
 															"is_spoof": false,
+															"is_trusted_sender": true,
 															"pattern": "test@example.com",
 															"pattern_type": "EMAIL",
 															"verify_sender": true
 														},
 														"properties": {
 															"comments": {
+																"maxLength": 1024,
 																"nullable": true,
 																"type": "string"
 															},
+															"is_acceptable_sender": {
+																"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+																"type": "boolean"
+															},
+															"is_exempt_recipient": {
+																"description": "Messages to this recipient will bypass all detections.",
+																"type": "boolean"
+															},
 															"is_recipient": {
+																"deprecated": true,
 																"type": "boolean"
 															},
 															"is_regex": {
 																"type": "boolean"
 															},
 															"is_sender": {
+																"deprecated": true,
 																"type": "boolean"
 															},
 															"is_spoof": {
+																"deprecated": true,
+																"type": "boolean"
+															},
+															"is_trusted_sender": {
+																"description": "Messages from this sender will bypass all detections and link following.",
 																"type": "boolean"
 															},
 															"pattern": {
@@ -2361,13 +1492,14 @@
 																"type": "string"
 															},
 															"verify_sender": {
+																"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
 																"type": "boolean"
 															}
 														},
 														"required": [
-															"is_recipient",
-															"is_sender",
-															"is_spoof",
+															"is_exempt_recipient",
+															"is_trusted_sender",
+															"is_acceptable_sender",
 															"pattern",
 															"is_regex",
 															"verify_sender",
@@ -2404,10 +1536,13 @@
 													"comments": "Trust all messages send from test@example.com",
 													"created_at": "2023-11-14T22:13:20Z",
 													"id": 2401,
+													"is_acceptable_sender": false,
+													"is_exempt_recipient": false,
 													"is_recipient": false,
 													"is_regex": false,
 													"is_sender": true,
 													"is_spoof": false,
+													"is_trusted_sender": true,
 													"last_modified": "2023-11-14T22:13:20Z",
 													"pattern": "test@example.com",
 													"pattern_type": "EMAIL",
@@ -2462,7 +1597,7 @@
 						}
 					}
 				},
-				"description": "Contains a list of allow patterns for the account."
+				"description": "Contains a list of allow policies for the account."
 			},
 			"4XX": {
 				"content": {
@@ -2544,13 +1679,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "List email allow patterns",
+		"summary": "List email allow policies",
 		"tags": [
 			"Email Security Settings"
 		]
 	},
-	"GET /accounts/{account_id}/email-security/settings/allow_patterns/{pattern_id}": {
-		"operationId": "email_security_get_allow_pattern",
+	"GET /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
+		"operationId": "email_security_get_allow_policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -2568,7 +1703,7 @@
 			},
 			{
 				"in": "path",
-				"name": "pattern_id",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"example": 2401,
@@ -2648,29 +1783,48 @@
 													"additionalProperties": false,
 													"example": {
 														"comments": "Trust all messages send from test@example.com",
+														"is_acceptable_sender": false,
+														"is_exempt_recipient": false,
 														"is_recipient": false,
 														"is_regex": false,
 														"is_sender": true,
 														"is_spoof": false,
+														"is_trusted_sender": true,
 														"pattern": "test@example.com",
 														"pattern_type": "EMAIL",
 														"verify_sender": true
 													},
 													"properties": {
 														"comments": {
+															"maxLength": 1024,
 															"nullable": true,
 															"type": "string"
 														},
+														"is_acceptable_sender": {
+															"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+															"type": "boolean"
+														},
+														"is_exempt_recipient": {
+															"description": "Messages to this recipient will bypass all detections.",
+															"type": "boolean"
+														},
 														"is_recipient": {
+															"deprecated": true,
 															"type": "boolean"
 														},
 														"is_regex": {
 															"type": "boolean"
 														},
 														"is_sender": {
+															"deprecated": true,
 															"type": "boolean"
 														},
 														"is_spoof": {
+															"deprecated": true,
+															"type": "boolean"
+														},
+														"is_trusted_sender": {
+															"description": "Messages from this sender will bypass all detections and link following.",
 															"type": "boolean"
 														},
 														"pattern": {
@@ -2687,13 +1841,14 @@
 															"type": "string"
 														},
 														"verify_sender": {
+															"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
 															"type": "boolean"
 														}
 													},
 													"required": [
-														"is_recipient",
-														"is_sender",
-														"is_spoof",
+														"is_exempt_recipient",
+														"is_trusted_sender",
+														"is_acceptable_sender",
 														"pattern",
 														"is_regex",
 														"verify_sender",
@@ -2730,10 +1885,13 @@
 												"comments": "Trust all messages send from test@example.com",
 												"created_at": "2023-11-14T22:13:20Z",
 												"id": 2401,
+												"is_acceptable_sender": false,
+												"is_exempt_recipient": false,
 												"is_recipient": false,
 												"is_regex": false,
 												"is_sender": true,
 												"is_spoof": false,
+												"is_trusted_sender": true,
 												"last_modified": "2023-11-14T22:13:20Z",
 												"pattern": "test@example.com",
 												"pattern_type": "EMAIL",
@@ -2832,7 +1990,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get an email allow pattern",
+		"summary": "Get an email allow policy",
 		"tags": [
 			"Email Security Settings"
 		]
@@ -3650,6 +2808,7 @@
 													"domain": "example.com",
 													"folder": "Inbox",
 													"id": 2400,
+													"inbox_provider": "Microsoft",
 													"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
 													"last_modified": "2023-11-14T22:13:20Z",
 													"lookback_hops": 2,
@@ -3696,6 +2855,21 @@
 														"example": 2400,
 														"format": "int32",
 														"type": "integer"
+													},
+													"inbox_provider": {
+														"allOf": [
+															{
+																"enum": [
+																	"Microsoft",
+																	"Google"
+																],
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															}
+														]
 													},
 													"integration_id": {
 														"format": "uuid",
@@ -3856,6 +3030,296 @@
 			}
 		],
 		"summary": "List protected email domains",
+		"tags": [
+			"Email Security Settings"
+		]
+	},
+	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
+		"operationId": "email_security_get_domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the domain.",
+					"example": 2400,
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": {
+												"allowed_delivery_modes": [
+													"API"
+												],
+												"created_at": "2023-11-14T22:13:20Z",
+												"domain": "example.com",
+												"folder": "Inbox",
+												"id": 2400,
+												"inbox_provider": "Microsoft",
+												"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
+												"last_modified": "2023-11-14T22:13:20Z",
+												"lookback_hops": 2,
+												"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8"
+											},
+											"properties": {
+												"allowed_delivery_modes": {
+													"items": {
+														"enum": [
+															"DIRECT",
+															"BCC",
+															"JOURNAL",
+															"API",
+															"RETRO_SCAN"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"domain": {
+													"type": "string"
+												},
+												"folder": {
+													"allOf": [
+														{
+															"enum": [
+																"AllItems",
+																"Inbox"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												},
+												"id": {
+													"description": "The unique identifier for the domain.",
+													"example": 2400,
+													"format": "int32",
+													"type": "integer"
+												},
+												"inbox_provider": {
+													"allOf": [
+														{
+															"enum": [
+																"Microsoft",
+																"Google"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												},
+												"integration_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string"
+												},
+												"last_modified": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"lookback_hops": {
+													"format": "int32",
+													"type": "integer"
+												},
+												"o365_tenant_id": {
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"last_modified",
+												"domain",
+												"allowed_delivery_modes",
+												"lookback_hops"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": ""
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get an email domain",
 		"tags": [
 			"Email Security Settings"
 		]
@@ -5120,8 +4584,8 @@
 			"Email Security Settings"
 		]
 	},
-	"PATCH /accounts/{account_id}/email-security/settings/allow_patterns/{pattern_id}": {
-		"operationId": "email_security_update_allow_pattern",
+	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
+		"operationId": "email_security_update_allow_policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -5139,7 +4603,7 @@
 			},
 			{
 				"in": "path",
-				"name": "pattern_id",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"example": 2401,
@@ -5156,10 +4620,17 @@
 						"additionalProperties": false,
 						"properties": {
 							"comments": {
+								"maxLength": 1024,
 								"nullable": true,
 								"type": "string"
 							},
-							"is_recipient": {
+							"is_acceptable_sender": {
+								"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+								"nullable": true,
+								"type": "boolean"
+							},
+							"is_exempt_recipient": {
+								"description": "Messages to this recipient will bypass all detections.",
 								"nullable": true,
 								"type": "boolean"
 							},
@@ -5167,11 +4638,8 @@
 								"nullable": true,
 								"type": "boolean"
 							},
-							"is_sender": {
-								"nullable": true,
-								"type": "boolean"
-							},
-							"is_spoof": {
+							"is_trusted_sender": {
+								"description": "Messages from this sender will bypass all detections and link following.",
 								"nullable": true,
 								"type": "boolean"
 							},
@@ -5198,6 +4666,7 @@
 								]
 							},
 							"verify_sender": {
+								"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
 								"nullable": true,
 								"type": "boolean"
 							}
@@ -5278,29 +4747,48 @@
 													"additionalProperties": false,
 													"example": {
 														"comments": "Trust all messages send from test@example.com",
+														"is_acceptable_sender": false,
+														"is_exempt_recipient": false,
 														"is_recipient": false,
 														"is_regex": false,
 														"is_sender": true,
 														"is_spoof": false,
+														"is_trusted_sender": true,
 														"pattern": "test@example.com",
 														"pattern_type": "EMAIL",
 														"verify_sender": true
 													},
 													"properties": {
 														"comments": {
+															"maxLength": 1024,
 															"nullable": true,
 															"type": "string"
 														},
+														"is_acceptable_sender": {
+															"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+															"type": "boolean"
+														},
+														"is_exempt_recipient": {
+															"description": "Messages to this recipient will bypass all detections.",
+															"type": "boolean"
+														},
 														"is_recipient": {
+															"deprecated": true,
 															"type": "boolean"
 														},
 														"is_regex": {
 															"type": "boolean"
 														},
 														"is_sender": {
+															"deprecated": true,
 															"type": "boolean"
 														},
 														"is_spoof": {
+															"deprecated": true,
+															"type": "boolean"
+														},
+														"is_trusted_sender": {
+															"description": "Messages from this sender will bypass all detections and link following.",
 															"type": "boolean"
 														},
 														"pattern": {
@@ -5317,13 +4805,14 @@
 															"type": "string"
 														},
 														"verify_sender": {
+															"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
 															"type": "boolean"
 														}
 													},
 													"required": [
-														"is_recipient",
-														"is_sender",
-														"is_spoof",
+														"is_exempt_recipient",
+														"is_trusted_sender",
+														"is_acceptable_sender",
 														"pattern",
 														"is_regex",
 														"verify_sender",
@@ -5360,10 +4849,13 @@
 												"comments": "Trust all messages send from test@example.com",
 												"created_at": "2023-11-14T22:13:20Z",
 												"id": 2401,
+												"is_acceptable_sender": false,
+												"is_exempt_recipient": false,
 												"is_recipient": false,
 												"is_regex": false,
 												"is_sender": true,
 												"is_spoof": false,
+												"is_trusted_sender": true,
 												"last_modified": "2023-11-14T22:13:20Z",
 												"pattern": "test@example.com",
 												"pattern_type": "EMAIL",
@@ -5462,7 +4954,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update an email allow pattern",
+		"summary": "Update an email allow policy",
 		"tags": [
 			"Email Security Settings"
 		]
@@ -5813,6 +5305,17 @@
 								"nullable": true,
 								"type": "string"
 							},
+							"folder": {
+								"allOf": [
+									{
+										"enum": [
+											"AllItems",
+											"Inbox"
+										],
+										"type": "string"
+									}
+								]
+							},
 							"integration_id": {
 								"format": "uuid",
 								"nullable": true,
@@ -5905,6 +5408,7 @@
 												"domain": "example.com",
 												"folder": "Inbox",
 												"id": 2400,
+												"inbox_provider": "Microsoft",
 												"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
 												"last_modified": "2023-11-14T22:13:20Z",
 												"lookback_hops": 2,
@@ -5951,6 +5455,21 @@
 													"example": 2400,
 													"format": "int32",
 													"type": "integer"
+												},
+												"inbox_provider": {
+													"allOf": [
+														{
+															"enum": [
+																"Microsoft",
+																"Google"
+															],
+															"type": "string"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
 												},
 												"integration_id": {
 													"format": "uuid",
@@ -6663,8 +6182,8 @@
 			"Email Security Settings"
 		]
 	},
-	"POST /accounts/{account_id}/email-security/settings/allow_patterns": {
-		"operationId": "email_security_create_allow_pattern",
+	"POST /accounts/{account_id}/email-security/settings/allow_policies": {
+		"operationId": "email_security_create_allow_policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -6685,125 +6204,81 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"oneOf": [
-							{
-								"additionalProperties": false,
-								"example": {
-									"comments": "Trust all messages send from test@example.com",
-									"is_recipient": false,
-									"is_regex": false,
-									"is_sender": true,
-									"is_spoof": false,
-									"pattern": "test@example.com",
-									"pattern_type": "EMAIL",
-									"verify_sender": true
-								},
-								"properties": {
-									"comments": {
-										"nullable": true,
-										"type": "string"
-									},
-									"is_recipient": {
-										"type": "boolean"
-									},
-									"is_regex": {
-										"type": "boolean"
-									},
-									"is_sender": {
-										"type": "boolean"
-									},
-									"is_spoof": {
-										"type": "boolean"
-									},
-									"pattern": {
-										"minLength": 1,
-										"type": "string"
-									},
-									"pattern_type": {
-										"enum": [
-											"EMAIL",
-											"DOMAIN",
-											"IP",
-											"UNKNOWN"
-										],
-										"type": "string"
-									},
-									"verify_sender": {
-										"type": "boolean"
-									}
-								},
-								"required": [
-									"is_recipient",
-									"is_sender",
-									"is_spoof",
-									"pattern",
-									"is_regex",
-									"verify_sender",
-									"pattern_type"
-								],
-								"type": "object"
+						"additionalProperties": false,
+						"example": {
+							"comments": "Trust all messages send from test@example.com",
+							"is_acceptable_sender": false,
+							"is_exempt_recipient": false,
+							"is_recipient": false,
+							"is_regex": false,
+							"is_sender": true,
+							"is_spoof": false,
+							"is_trusted_sender": true,
+							"pattern": "test@example.com",
+							"pattern_type": "EMAIL",
+							"verify_sender": true
+						},
+						"properties": {
+							"comments": {
+								"maxLength": 1024,
+								"nullable": true,
+								"type": "string"
 							},
-							{
-								"items": {
-									"additionalProperties": false,
-									"example": {
-										"comments": "Trust all messages send from test@example.com",
-										"is_recipient": false,
-										"is_regex": false,
-										"is_sender": true,
-										"is_spoof": false,
-										"pattern": "test@example.com",
-										"pattern_type": "EMAIL",
-										"verify_sender": true
-									},
-									"properties": {
-										"comments": {
-											"nullable": true,
-											"type": "string"
-										},
-										"is_recipient": {
-											"type": "boolean"
-										},
-										"is_regex": {
-											"type": "boolean"
-										},
-										"is_sender": {
-											"type": "boolean"
-										},
-										"is_spoof": {
-											"type": "boolean"
-										},
-										"pattern": {
-											"minLength": 1,
-											"type": "string"
-										},
-										"pattern_type": {
-											"enum": [
-												"EMAIL",
-												"DOMAIN",
-												"IP",
-												"UNKNOWN"
-											],
-											"type": "string"
-										},
-										"verify_sender": {
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"is_recipient",
-										"is_sender",
-										"is_spoof",
-										"pattern",
-										"is_regex",
-										"verify_sender",
-										"pattern_type"
-									],
-									"type": "object"
-								},
-								"type": "array"
+							"is_acceptable_sender": {
+								"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+								"type": "boolean"
+							},
+							"is_exempt_recipient": {
+								"description": "Messages to this recipient will bypass all detections.",
+								"type": "boolean"
+							},
+							"is_recipient": {
+								"deprecated": true,
+								"type": "boolean"
+							},
+							"is_regex": {
+								"type": "boolean"
+							},
+							"is_sender": {
+								"deprecated": true,
+								"type": "boolean"
+							},
+							"is_spoof": {
+								"deprecated": true,
+								"type": "boolean"
+							},
+							"is_trusted_sender": {
+								"description": "Messages from this sender will bypass all detections and link following.",
+								"type": "boolean"
+							},
+							"pattern": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"pattern_type": {
+								"enum": [
+									"EMAIL",
+									"DOMAIN",
+									"IP",
+									"UNKNOWN"
+								],
+								"type": "string"
+							},
+							"verify_sender": {
+								"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+								"type": "boolean"
 							}
-						]
+						},
+						"required": [
+							"is_exempt_recipient",
+							"is_trusted_sender",
+							"is_acceptable_sender",
+							"pattern",
+							"is_regex",
+							"verify_sender",
+							"pattern_type"
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -6874,207 +6349,125 @@
 								{
 									"properties": {
 										"result": {
-											"oneOf": [
+											"allOf": [
 												{
-													"allOf": [
-														{
-															"additionalProperties": false,
-															"example": {
-																"comments": "Trust all messages send from test@example.com",
-																"is_recipient": false,
-																"is_regex": false,
-																"is_sender": true,
-																"is_spoof": false,
-																"pattern": "test@example.com",
-																"pattern_type": "EMAIL",
-																"verify_sender": true
-															},
-															"properties": {
-																"comments": {
-																	"nullable": true,
-																	"type": "string"
-																},
-																"is_recipient": {
-																	"type": "boolean"
-																},
-																"is_regex": {
-																	"type": "boolean"
-																},
-																"is_sender": {
-																	"type": "boolean"
-																},
-																"is_spoof": {
-																	"type": "boolean"
-																},
-																"pattern": {
-																	"minLength": 1,
-																	"type": "string"
-																},
-																"pattern_type": {
-																	"enum": [
-																		"EMAIL",
-																		"DOMAIN",
-																		"IP",
-																		"UNKNOWN"
-																	],
-																	"type": "string"
-																},
-																"verify_sender": {
-																	"type": "boolean"
-																}
-															},
-															"required": [
-																"is_recipient",
-																"is_sender",
-																"is_spoof",
-																"pattern",
-																"is_regex",
-																"verify_sender",
-																"pattern_type"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"created_at": {
-																	"format": "date-time",
-																	"type": "string"
-																},
-																"id": {
-																	"example": 2401,
-																	"format": "int32",
-																	"title": "identifier",
-																	"type": "integer"
-																},
-																"last_modified": {
-																	"format": "date-time",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"id",
-																"created_at",
-																"last_modified"
-															],
-															"type": "object"
-														}
-													],
+													"additionalProperties": false,
 													"example": {
 														"comments": "Trust all messages send from test@example.com",
-														"created_at": "2023-11-14T22:13:20Z",
-														"id": 2401,
+														"is_acceptable_sender": false,
+														"is_exempt_recipient": false,
 														"is_recipient": false,
 														"is_regex": false,
 														"is_sender": true,
 														"is_spoof": false,
-														"last_modified": "2023-11-14T22:13:20Z",
+														"is_trusted_sender": true,
 														"pattern": "test@example.com",
 														"pattern_type": "EMAIL",
 														"verify_sender": true
-													}
-												},
-												{
-													"items": {
-														"allOf": [
-															{
-																"additionalProperties": false,
-																"example": {
-																	"comments": "Trust all messages send from test@example.com",
-																	"is_recipient": false,
-																	"is_regex": false,
-																	"is_sender": true,
-																	"is_spoof": false,
-																	"pattern": "test@example.com",
-																	"pattern_type": "EMAIL",
-																	"verify_sender": true
-																},
-																"properties": {
-																	"comments": {
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"is_recipient": {
-																		"type": "boolean"
-																	},
-																	"is_regex": {
-																		"type": "boolean"
-																	},
-																	"is_sender": {
-																		"type": "boolean"
-																	},
-																	"is_spoof": {
-																		"type": "boolean"
-																	},
-																	"pattern": {
-																		"minLength": 1,
-																		"type": "string"
-																	},
-																	"pattern_type": {
-																		"enum": [
-																			"EMAIL",
-																			"DOMAIN",
-																			"IP",
-																			"UNKNOWN"
-																		],
-																		"type": "string"
-																	},
-																	"verify_sender": {
-																		"type": "boolean"
-																	}
-																},
-																"required": [
-																	"is_recipient",
-																	"is_sender",
-																	"is_spoof",
-																	"pattern",
-																	"is_regex",
-																	"verify_sender",
-																	"pattern_type"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"created_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"id": {
-																		"example": 2401,
-																		"format": "int32",
-																		"title": "identifier",
-																		"type": "integer"
-																	},
-																	"last_modified": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"created_at",
-																	"last_modified"
-																],
-																"type": "object"
-															}
-														],
-														"example": {
-															"comments": "Trust all messages send from test@example.com",
-															"created_at": "2023-11-14T22:13:20Z",
-															"id": 2401,
-															"is_recipient": false,
-															"is_regex": false,
-															"is_sender": true,
-															"is_spoof": false,
-															"last_modified": "2023-11-14T22:13:20Z",
-															"pattern": "test@example.com",
-															"pattern_type": "EMAIL",
-															"verify_sender": true
+													},
+													"properties": {
+														"comments": {
+															"maxLength": 1024,
+															"nullable": true,
+															"type": "string"
+														},
+														"is_acceptable_sender": {
+															"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions.\nNote: This will not exempt messages with Malicious or Suspicious dispositions.",
+															"type": "boolean"
+														},
+														"is_exempt_recipient": {
+															"description": "Messages to this recipient will bypass all detections.",
+															"type": "boolean"
+														},
+														"is_recipient": {
+															"deprecated": true,
+															"type": "boolean"
+														},
+														"is_regex": {
+															"type": "boolean"
+														},
+														"is_sender": {
+															"deprecated": true,
+															"type": "boolean"
+														},
+														"is_spoof": {
+															"deprecated": true,
+															"type": "boolean"
+														},
+														"is_trusted_sender": {
+															"description": "Messages from this sender will bypass all detections and link following.",
+															"type": "boolean"
+														},
+														"pattern": {
+															"minLength": 1,
+															"type": "string"
+														},
+														"pattern_type": {
+															"enum": [
+																"EMAIL",
+																"DOMAIN",
+																"IP",
+																"UNKNOWN"
+															],
+															"type": "string"
+														},
+														"verify_sender": {
+															"description": "Enforce DMARC, SPF or DKIM authentication.\nWhen on, Email Security only honors policies that pass authentication.",
+															"type": "boolean"
 														}
 													},
-													"type": "array"
+													"required": [
+														"is_exempt_recipient",
+														"is_trusted_sender",
+														"is_acceptable_sender",
+														"pattern",
+														"is_regex",
+														"verify_sender",
+														"pattern_type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"created_at": {
+															"format": "date-time",
+															"type": "string"
+														},
+														"id": {
+															"example": 2401,
+															"format": "int32",
+															"title": "identifier",
+															"type": "integer"
+														},
+														"last_modified": {
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"created_at",
+														"last_modified"
+													],
+													"type": "object"
 												}
-											]
+											],
+											"example": {
+												"comments": "Trust all messages send from test@example.com",
+												"created_at": "2023-11-14T22:13:20Z",
+												"id": 2401,
+												"is_acceptable_sender": false,
+												"is_exempt_recipient": false,
+												"is_recipient": false,
+												"is_regex": false,
+												"is_sender": true,
+												"is_spoof": false,
+												"is_trusted_sender": true,
+												"last_modified": "2023-11-14T22:13:20Z",
+												"pattern": "test@example.com",
+												"pattern_type": "EMAIL",
+												"verify_sender": true
+											}
 										}
 									},
 									"required": [
@@ -7086,7 +6479,7 @@
 						}
 					}
 				},
-				"description": "Contains the newly created patterns in the shape of the request body."
+				"description": "Contains the newly created policy."
 			},
 			"4XX": {
 				"content": {
@@ -7168,7 +6561,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create an email allow pattern",
+		"summary": "Create an email allow policy",
 		"tags": [
 			"Email Security Settings"
 		]
