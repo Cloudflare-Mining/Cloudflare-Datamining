@@ -410,156 +410,6 @@
 										"items": {
 											"oneOf": [
 												{
-													"description": "Matches a specific email.",
-													"properties": {
-														"email": {
-															"properties": {
-																"email": {
-																	"description": "The email of the user.",
-																	"example": "test@example.com",
-																	"format": "email",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"email"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email"
-													],
-													"title": "Email",
-													"type": "object"
-												},
-												{
-													"description": "Matches an email address from a list.",
-													"properties": {
-														"email_list": {
-															"properties": {
-																"id": {
-																	"description": "The ID of a previously created email list.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"id"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email_list"
-													],
-													"title": "Email list",
-													"type": "object"
-												},
-												{
-													"description": "Match an entire email domain.",
-													"properties": {
-														"email_domain": {
-															"properties": {
-																"domain": {
-																	"description": "The email domain to match.",
-																	"example": "example.com",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"domain"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email_domain"
-													],
-													"title": "Email domain",
-													"type": "object"
-												},
-												{
-													"description": "Matches everyone.",
-													"properties": {
-														"everyone": {
-															"description": "An empty object which matches on all users.",
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"everyone"
-													],
-													"title": "Everyone",
-													"type": "object"
-												},
-												{
-													"description": "Matches an IP address block.",
-													"properties": {
-														"ip": {
-															"properties": {
-																"ip": {
-																	"description": "An IPv4 or IPv6 CIDR block.",
-																	"example": "2400:cb00:21:10a::/64",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"ip"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"ip"
-													],
-													"title": "IP ranges",
-													"type": "object"
-												},
-												{
-													"description": "Matches an IP address from a list.",
-													"properties": {
-														"ip_list": {
-															"properties": {
-																"id": {
-																	"description": "The ID of a previously created IP list.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"id"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"ip_list"
-													],
-													"title": "IP list",
-													"type": "object"
-												},
-												{
-													"description": "Matches any valid client certificate.",
-													"example": {
-														"certificate": {}
-													},
-													"properties": {
-														"certificate": {
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"certificate"
-													],
-													"title": "Valid certificate",
-													"type": "object"
-												},
-												{
 													"description": "Matches an Access group.",
 													"properties": {
 														"group": {
@@ -580,6 +430,80 @@
 														"group"
 													],
 													"title": "Access groups",
+													"type": "object"
+												},
+												{
+													"description": "Matches any valid Access Service Token",
+													"properties": {
+														"any_valid_service_token": {
+															"description": "An empty object which matches on all service tokens.",
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"any_valid_service_token"
+													],
+													"title": "Any Valid Service Token",
+													"type": "object"
+												},
+												{
+													"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
+													"properties": {
+														"auth_context": {
+															"properties": {
+																"ac_id": {
+																	"description": "The ACID of an Authentication context.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The ID of an Authentication context.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your Azure identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"identity_provider_id",
+																"ac_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"auth_context"
+													],
+													"title": "Authentication Context",
+													"type": "object"
+												},
+												{
+													"description": "Enforce different MFA options",
+													"properties": {
+														"auth_method": {
+															"properties": {
+																"auth_method": {
+																	"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
+																	"example": "mfa",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"auth_method"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"title": "Authentication method",
 													"type": "object"
 												},
 												{
@@ -612,6 +536,208 @@
 													"type": "object"
 												},
 												{
+													"description": "Matches any valid client certificate.",
+													"example": {
+														"certificate": {}
+													},
+													"properties": {
+														"certificate": {
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"certificate"
+													],
+													"title": "Valid certificate",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific common name.",
+													"properties": {
+														"common_name": {
+															"properties": {
+																"common_name": {
+																	"description": "The common name to match.",
+																	"example": "james@example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"common_name"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"common_name"
+													],
+													"title": "Common Name",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific country",
+													"properties": {
+														"geo": {
+															"properties": {
+																"country_code": {
+																	"description": "The country code that should be matched.",
+																	"example": "US",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"country_code"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"geo"
+													],
+													"title": "Country",
+													"type": "object"
+												},
+												{
+													"description": "Enforces a device posture rule has run successfully",
+													"properties": {
+														"device_posture": {
+															"properties": {
+																"integration_uid": {
+																	"description": "The ID of a device posture integration.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"integration_uid"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"device_posture"
+													],
+													"title": "Device Posture",
+													"type": "object"
+												},
+												{
+													"description": "Match an entire email domain.",
+													"properties": {
+														"email_domain": {
+															"properties": {
+																"domain": {
+																	"description": "The email domain to match.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"domain"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email_domain"
+													],
+													"title": "Email domain",
+													"type": "object"
+												},
+												{
+													"description": "Matches an email address from a list.",
+													"properties": {
+														"email_list": {
+															"properties": {
+																"id": {
+																	"description": "The ID of a previously created email list.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email_list"
+													],
+													"title": "Email list",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific email.",
+													"properties": {
+														"email": {
+															"properties": {
+																"email": {
+																	"description": "The email of the user.",
+																	"example": "test@example.com",
+																	"format": "email",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"email"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email"
+													],
+													"title": "Email",
+													"type": "object"
+												},
+												{
+													"description": "Matches everyone.",
+													"properties": {
+														"everyone": {
+															"description": "An empty object which matches on all users.",
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"everyone"
+													],
+													"title": "Everyone",
+													"type": "object"
+												},
+												{
+													"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+													"properties": {
+														"external_evaluation": {
+															"properties": {
+																"evaluate_url": {
+																	"description": "The API endpoint containing your business logic.",
+																	"example": "https://eval.example.com",
+																	"type": "string"
+																},
+																"keys_url": {
+																	"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																	"example": "https://eval.example.com/keys",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"evaluate_url",
+																"keys_url"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"external_evaluation"
+													],
+													"title": "External Evaluation",
+													"type": "object"
+												},
+												{
 													"description": "Matches a Github organization.\nRequires a Github identity provider.",
 													"properties": {
 														"github-organization": {
@@ -624,6 +750,11 @@
 																"name": {
 																	"description": "The name of the organization.",
 																	"example": "cloudflare",
+																	"type": "string"
+																},
+																"team": {
+																	"description": "The name of the team",
+																	"example": "api-team",
 																	"type": "string"
 																}
 															},
@@ -667,6 +798,52 @@
 														"gsuite"
 													],
 													"title": "Google Workspace group",
+													"type": "object"
+												},
+												{
+													"description": "Matches an IP address from a list.",
+													"properties": {
+														"ip_list": {
+															"properties": {
+																"id": {
+																	"description": "The ID of a previously created IP list.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"ip_list"
+													],
+													"title": "IP list",
+													"type": "object"
+												},
+												{
+													"description": "Matches an IP address block.",
+													"properties": {
+														"ip": {
+															"properties": {
+																"ip": {
+																	"description": "An IPv4 or IPv6 CIDR block.",
+																	"example": "2400:cb00:21:10a::/64",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"ip"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"ip"
+													],
+													"title": "IP ranges",
 													"type": "object"
 												},
 												{
@@ -754,120 +931,6 @@
 														"service_token"
 													],
 													"title": "Service Token",
-													"type": "object"
-												},
-												{
-													"description": "Matches any valid Access Service Token",
-													"properties": {
-														"any_valid_service_token": {
-															"description": "An empty object which matches on all service tokens.",
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"any_valid_service_token"
-													],
-													"title": "Any Valid Service Token",
-													"type": "object"
-												},
-												{
-													"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
-													"properties": {
-														"external_evaluation": {
-															"properties": {
-																"evaluate_url": {
-																	"description": "The API endpoint containing your business logic.",
-																	"example": "https://eval.example.com",
-																	"type": "string"
-																},
-																"keys_url": {
-																	"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
-																	"example": "https://eval.example.com/keys",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"evaluate_url",
-																"keys_url"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"external_evaluation"
-													],
-													"title": "External Evaluation",
-													"type": "object"
-												},
-												{
-													"description": "Matches a specific country",
-													"properties": {
-														"geo": {
-															"properties": {
-																"country_code": {
-																	"description": "The country code that should be matched.",
-																	"example": "US",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"country_code"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"geo"
-													],
-													"title": "Country",
-													"type": "object"
-												},
-												{
-													"description": "Enforce different MFA options",
-													"properties": {
-														"auth_method": {
-															"properties": {
-																"auth_method": {
-																	"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
-																	"example": "mfa",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"auth_method"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"auth_method"
-													],
-													"title": "Authentication method",
-													"type": "object"
-												},
-												{
-													"description": "Enforces a device posture rule has run successfully",
-													"properties": {
-														"device_posture": {
-															"properties": {
-																"integration_uid": {
-																	"description": "The ID of a device posture integration.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"integration_uid"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"device_posture"
-													],
-													"title": "Device Posture",
 													"type": "object"
 												}
 											],
@@ -886,156 +949,6 @@
 										"items": {
 											"oneOf": [
 												{
-													"description": "Matches a specific email.",
-													"properties": {
-														"email": {
-															"properties": {
-																"email": {
-																	"description": "The email of the user.",
-																	"example": "test@example.com",
-																	"format": "email",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"email"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email"
-													],
-													"title": "Email",
-													"type": "object"
-												},
-												{
-													"description": "Matches an email address from a list.",
-													"properties": {
-														"email_list": {
-															"properties": {
-																"id": {
-																	"description": "The ID of a previously created email list.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"id"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email_list"
-													],
-													"title": "Email list",
-													"type": "object"
-												},
-												{
-													"description": "Match an entire email domain.",
-													"properties": {
-														"email_domain": {
-															"properties": {
-																"domain": {
-																	"description": "The email domain to match.",
-																	"example": "example.com",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"domain"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email_domain"
-													],
-													"title": "Email domain",
-													"type": "object"
-												},
-												{
-													"description": "Matches everyone.",
-													"properties": {
-														"everyone": {
-															"description": "An empty object which matches on all users.",
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"everyone"
-													],
-													"title": "Everyone",
-													"type": "object"
-												},
-												{
-													"description": "Matches an IP address block.",
-													"properties": {
-														"ip": {
-															"properties": {
-																"ip": {
-																	"description": "An IPv4 or IPv6 CIDR block.",
-																	"example": "2400:cb00:21:10a::/64",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"ip"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"ip"
-													],
-													"title": "IP ranges",
-													"type": "object"
-												},
-												{
-													"description": "Matches an IP address from a list.",
-													"properties": {
-														"ip_list": {
-															"properties": {
-																"id": {
-																	"description": "The ID of a previously created IP list.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"id"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"ip_list"
-													],
-													"title": "IP list",
-													"type": "object"
-												},
-												{
-													"description": "Matches any valid client certificate.",
-													"example": {
-														"certificate": {}
-													},
-													"properties": {
-														"certificate": {
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"certificate"
-													],
-													"title": "Valid certificate",
-													"type": "object"
-												},
-												{
 													"description": "Matches an Access group.",
 													"properties": {
 														"group": {
@@ -1056,6 +969,80 @@
 														"group"
 													],
 													"title": "Access groups",
+													"type": "object"
+												},
+												{
+													"description": "Matches any valid Access Service Token",
+													"properties": {
+														"any_valid_service_token": {
+															"description": "An empty object which matches on all service tokens.",
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"any_valid_service_token"
+													],
+													"title": "Any Valid Service Token",
+													"type": "object"
+												},
+												{
+													"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
+													"properties": {
+														"auth_context": {
+															"properties": {
+																"ac_id": {
+																	"description": "The ACID of an Authentication context.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The ID of an Authentication context.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your Azure identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"identity_provider_id",
+																"ac_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"auth_context"
+													],
+													"title": "Authentication Context",
+													"type": "object"
+												},
+												{
+													"description": "Enforce different MFA options",
+													"properties": {
+														"auth_method": {
+															"properties": {
+																"auth_method": {
+																	"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
+																	"example": "mfa",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"auth_method"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"title": "Authentication method",
 													"type": "object"
 												},
 												{
@@ -1088,6 +1075,208 @@
 													"type": "object"
 												},
 												{
+													"description": "Matches any valid client certificate.",
+													"example": {
+														"certificate": {}
+													},
+													"properties": {
+														"certificate": {
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"certificate"
+													],
+													"title": "Valid certificate",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific common name.",
+													"properties": {
+														"common_name": {
+															"properties": {
+																"common_name": {
+																	"description": "The common name to match.",
+																	"example": "james@example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"common_name"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"common_name"
+													],
+													"title": "Common Name",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific country",
+													"properties": {
+														"geo": {
+															"properties": {
+																"country_code": {
+																	"description": "The country code that should be matched.",
+																	"example": "US",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"country_code"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"geo"
+													],
+													"title": "Country",
+													"type": "object"
+												},
+												{
+													"description": "Enforces a device posture rule has run successfully",
+													"properties": {
+														"device_posture": {
+															"properties": {
+																"integration_uid": {
+																	"description": "The ID of a device posture integration.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"integration_uid"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"device_posture"
+													],
+													"title": "Device Posture",
+													"type": "object"
+												},
+												{
+													"description": "Match an entire email domain.",
+													"properties": {
+														"email_domain": {
+															"properties": {
+																"domain": {
+																	"description": "The email domain to match.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"domain"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email_domain"
+													],
+													"title": "Email domain",
+													"type": "object"
+												},
+												{
+													"description": "Matches an email address from a list.",
+													"properties": {
+														"email_list": {
+															"properties": {
+																"id": {
+																	"description": "The ID of a previously created email list.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email_list"
+													],
+													"title": "Email list",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific email.",
+													"properties": {
+														"email": {
+															"properties": {
+																"email": {
+																	"description": "The email of the user.",
+																	"example": "test@example.com",
+																	"format": "email",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"email"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email"
+													],
+													"title": "Email",
+													"type": "object"
+												},
+												{
+													"description": "Matches everyone.",
+													"properties": {
+														"everyone": {
+															"description": "An empty object which matches on all users.",
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"everyone"
+													],
+													"title": "Everyone",
+													"type": "object"
+												},
+												{
+													"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+													"properties": {
+														"external_evaluation": {
+															"properties": {
+																"evaluate_url": {
+																	"description": "The API endpoint containing your business logic.",
+																	"example": "https://eval.example.com",
+																	"type": "string"
+																},
+																"keys_url": {
+																	"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																	"example": "https://eval.example.com/keys",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"evaluate_url",
+																"keys_url"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"external_evaluation"
+													],
+													"title": "External Evaluation",
+													"type": "object"
+												},
+												{
 													"description": "Matches a Github organization.\nRequires a Github identity provider.",
 													"properties": {
 														"github-organization": {
@@ -1100,6 +1289,11 @@
 																"name": {
 																	"description": "The name of the organization.",
 																	"example": "cloudflare",
+																	"type": "string"
+																},
+																"team": {
+																	"description": "The name of the team",
+																	"example": "api-team",
 																	"type": "string"
 																}
 															},
@@ -1143,6 +1337,52 @@
 														"gsuite"
 													],
 													"title": "Google Workspace group",
+													"type": "object"
+												},
+												{
+													"description": "Matches an IP address from a list.",
+													"properties": {
+														"ip_list": {
+															"properties": {
+																"id": {
+																	"description": "The ID of a previously created IP list.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"ip_list"
+													],
+													"title": "IP list",
+													"type": "object"
+												},
+												{
+													"description": "Matches an IP address block.",
+													"properties": {
+														"ip": {
+															"properties": {
+																"ip": {
+																	"description": "An IPv4 or IPv6 CIDR block.",
+																	"example": "2400:cb00:21:10a::/64",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"ip"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"ip"
+													],
+													"title": "IP ranges",
 													"type": "object"
 												},
 												{
@@ -1230,120 +1470,6 @@
 														"service_token"
 													],
 													"title": "Service Token",
-													"type": "object"
-												},
-												{
-													"description": "Matches any valid Access Service Token",
-													"properties": {
-														"any_valid_service_token": {
-															"description": "An empty object which matches on all service tokens.",
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"any_valid_service_token"
-													],
-													"title": "Any Valid Service Token",
-													"type": "object"
-												},
-												{
-													"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
-													"properties": {
-														"external_evaluation": {
-															"properties": {
-																"evaluate_url": {
-																	"description": "The API endpoint containing your business logic.",
-																	"example": "https://eval.example.com",
-																	"type": "string"
-																},
-																"keys_url": {
-																	"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
-																	"example": "https://eval.example.com/keys",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"evaluate_url",
-																"keys_url"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"external_evaluation"
-													],
-													"title": "External Evaluation",
-													"type": "object"
-												},
-												{
-													"description": "Matches a specific country",
-													"properties": {
-														"geo": {
-															"properties": {
-																"country_code": {
-																	"description": "The country code that should be matched.",
-																	"example": "US",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"country_code"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"geo"
-													],
-													"title": "Country",
-													"type": "object"
-												},
-												{
-													"description": "Enforce different MFA options",
-													"properties": {
-														"auth_method": {
-															"properties": {
-																"auth_method": {
-																	"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
-																	"example": "mfa",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"auth_method"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"auth_method"
-													],
-													"title": "Authentication method",
-													"type": "object"
-												},
-												{
-													"description": "Enforces a device posture rule has run successfully",
-													"properties": {
-														"device_posture": {
-															"properties": {
-																"integration_uid": {
-																	"description": "The ID of a device posture integration.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"integration_uid"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"device_posture"
-													],
-													"title": "Device Posture",
 													"type": "object"
 												}
 											],
@@ -1361,156 +1487,6 @@
 										"items": {
 											"oneOf": [
 												{
-													"description": "Matches a specific email.",
-													"properties": {
-														"email": {
-															"properties": {
-																"email": {
-																	"description": "The email of the user.",
-																	"example": "test@example.com",
-																	"format": "email",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"email"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email"
-													],
-													"title": "Email",
-													"type": "object"
-												},
-												{
-													"description": "Matches an email address from a list.",
-													"properties": {
-														"email_list": {
-															"properties": {
-																"id": {
-																	"description": "The ID of a previously created email list.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"id"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email_list"
-													],
-													"title": "Email list",
-													"type": "object"
-												},
-												{
-													"description": "Match an entire email domain.",
-													"properties": {
-														"email_domain": {
-															"properties": {
-																"domain": {
-																	"description": "The email domain to match.",
-																	"example": "example.com",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"domain"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"email_domain"
-													],
-													"title": "Email domain",
-													"type": "object"
-												},
-												{
-													"description": "Matches everyone.",
-													"properties": {
-														"everyone": {
-															"description": "An empty object which matches on all users.",
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"everyone"
-													],
-													"title": "Everyone",
-													"type": "object"
-												},
-												{
-													"description": "Matches an IP address block.",
-													"properties": {
-														"ip": {
-															"properties": {
-																"ip": {
-																	"description": "An IPv4 or IPv6 CIDR block.",
-																	"example": "2400:cb00:21:10a::/64",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"ip"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"ip"
-													],
-													"title": "IP ranges",
-													"type": "object"
-												},
-												{
-													"description": "Matches an IP address from a list.",
-													"properties": {
-														"ip_list": {
-															"properties": {
-																"id": {
-																	"description": "The ID of a previously created IP list.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"id"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"ip_list"
-													],
-													"title": "IP list",
-													"type": "object"
-												},
-												{
-													"description": "Matches any valid client certificate.",
-													"example": {
-														"certificate": {}
-													},
-													"properties": {
-														"certificate": {
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"certificate"
-													],
-													"title": "Valid certificate",
-													"type": "object"
-												},
-												{
 													"description": "Matches an Access group.",
 													"properties": {
 														"group": {
@@ -1531,6 +1507,80 @@
 														"group"
 													],
 													"title": "Access groups",
+													"type": "object"
+												},
+												{
+													"description": "Matches any valid Access Service Token",
+													"properties": {
+														"any_valid_service_token": {
+															"description": "An empty object which matches on all service tokens.",
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"any_valid_service_token"
+													],
+													"title": "Any Valid Service Token",
+													"type": "object"
+												},
+												{
+													"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
+													"properties": {
+														"auth_context": {
+															"properties": {
+																"ac_id": {
+																	"description": "The ACID of an Authentication context.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The ID of an Authentication context.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																},
+																"identity_provider_id": {
+																	"description": "The ID of your Azure identity provider.",
+																	"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"identity_provider_id",
+																"ac_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"auth_context"
+													],
+													"title": "Authentication Context",
+													"type": "object"
+												},
+												{
+													"description": "Enforce different MFA options",
+													"properties": {
+														"auth_method": {
+															"properties": {
+																"auth_method": {
+																	"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
+																	"example": "mfa",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"auth_method"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"title": "Authentication method",
 													"type": "object"
 												},
 												{
@@ -1563,6 +1613,208 @@
 													"type": "object"
 												},
 												{
+													"description": "Matches any valid client certificate.",
+													"example": {
+														"certificate": {}
+													},
+													"properties": {
+														"certificate": {
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"certificate"
+													],
+													"title": "Valid certificate",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific common name.",
+													"properties": {
+														"common_name": {
+															"properties": {
+																"common_name": {
+																	"description": "The common name to match.",
+																	"example": "james@example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"common_name"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"common_name"
+													],
+													"title": "Common Name",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific country",
+													"properties": {
+														"geo": {
+															"properties": {
+																"country_code": {
+																	"description": "The country code that should be matched.",
+																	"example": "US",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"country_code"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"geo"
+													],
+													"title": "Country",
+													"type": "object"
+												},
+												{
+													"description": "Enforces a device posture rule has run successfully",
+													"properties": {
+														"device_posture": {
+															"properties": {
+																"integration_uid": {
+																	"description": "The ID of a device posture integration.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"integration_uid"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"device_posture"
+													],
+													"title": "Device Posture",
+													"type": "object"
+												},
+												{
+													"description": "Match an entire email domain.",
+													"properties": {
+														"email_domain": {
+															"properties": {
+																"domain": {
+																	"description": "The email domain to match.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"domain"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email_domain"
+													],
+													"title": "Email domain",
+													"type": "object"
+												},
+												{
+													"description": "Matches an email address from a list.",
+													"properties": {
+														"email_list": {
+															"properties": {
+																"id": {
+																	"description": "The ID of a previously created email list.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email_list"
+													],
+													"title": "Email list",
+													"type": "object"
+												},
+												{
+													"description": "Matches a specific email.",
+													"properties": {
+														"email": {
+															"properties": {
+																"email": {
+																	"description": "The email of the user.",
+																	"example": "test@example.com",
+																	"format": "email",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"email"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"email"
+													],
+													"title": "Email",
+													"type": "object"
+												},
+												{
+													"description": "Matches everyone.",
+													"properties": {
+														"everyone": {
+															"description": "An empty object which matches on all users.",
+															"example": {},
+															"type": "object",
+															"x-stainless-empty-object": true
+														}
+													},
+													"required": [
+														"everyone"
+													],
+													"title": "Everyone",
+													"type": "object"
+												},
+												{
+													"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+													"properties": {
+														"external_evaluation": {
+															"properties": {
+																"evaluate_url": {
+																	"description": "The API endpoint containing your business logic.",
+																	"example": "https://eval.example.com",
+																	"type": "string"
+																},
+																"keys_url": {
+																	"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																	"example": "https://eval.example.com/keys",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"evaluate_url",
+																"keys_url"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"external_evaluation"
+													],
+													"title": "External Evaluation",
+													"type": "object"
+												},
+												{
 													"description": "Matches a Github organization.\nRequires a Github identity provider.",
 													"properties": {
 														"github-organization": {
@@ -1575,6 +1827,11 @@
 																"name": {
 																	"description": "The name of the organization.",
 																	"example": "cloudflare",
+																	"type": "string"
+																},
+																"team": {
+																	"description": "The name of the team",
+																	"example": "api-team",
 																	"type": "string"
 																}
 															},
@@ -1618,6 +1875,52 @@
 														"gsuite"
 													],
 													"title": "Google Workspace group",
+													"type": "object"
+												},
+												{
+													"description": "Matches an IP address from a list.",
+													"properties": {
+														"ip_list": {
+															"properties": {
+																"id": {
+																	"description": "The ID of a previously created IP list.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"ip_list"
+													],
+													"title": "IP list",
+													"type": "object"
+												},
+												{
+													"description": "Matches an IP address block.",
+													"properties": {
+														"ip": {
+															"properties": {
+																"ip": {
+																	"description": "An IPv4 or IPv6 CIDR block.",
+																	"example": "2400:cb00:21:10a::/64",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"ip"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"ip"
+													],
+													"title": "IP ranges",
 													"type": "object"
 												},
 												{
@@ -1705,120 +2008,6 @@
 														"service_token"
 													],
 													"title": "Service Token",
-													"type": "object"
-												},
-												{
-													"description": "Matches any valid Access Service Token",
-													"properties": {
-														"any_valid_service_token": {
-															"description": "An empty object which matches on all service tokens.",
-															"example": {},
-															"type": "object",
-															"x-stainless-empty-object": true
-														}
-													},
-													"required": [
-														"any_valid_service_token"
-													],
-													"title": "Any Valid Service Token",
-													"type": "object"
-												},
-												{
-													"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
-													"properties": {
-														"external_evaluation": {
-															"properties": {
-																"evaluate_url": {
-																	"description": "The API endpoint containing your business logic.",
-																	"example": "https://eval.example.com",
-																	"type": "string"
-																},
-																"keys_url": {
-																	"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
-																	"example": "https://eval.example.com/keys",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"evaluate_url",
-																"keys_url"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"external_evaluation"
-													],
-													"title": "External Evaluation",
-													"type": "object"
-												},
-												{
-													"description": "Matches a specific country",
-													"properties": {
-														"geo": {
-															"properties": {
-																"country_code": {
-																	"description": "The country code that should be matched.",
-																	"example": "US",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"country_code"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"geo"
-													],
-													"title": "Country",
-													"type": "object"
-												},
-												{
-													"description": "Enforce different MFA options",
-													"properties": {
-														"auth_method": {
-															"properties": {
-																"auth_method": {
-																	"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
-																	"example": "mfa",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"auth_method"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"auth_method"
-													],
-													"title": "Authentication method",
-													"type": "object"
-												},
-												{
-													"description": "Enforces a device posture rule has run successfully",
-													"properties": {
-														"device_posture": {
-															"properties": {
-																"integration_uid": {
-																	"description": "The ID of a device posture integration.",
-																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"integration_uid"
-															],
-															"type": "object"
-														}
-													},
-													"required": [
-														"device_posture"
-													],
-													"title": "Device Posture",
 													"type": "object"
 												}
 											],

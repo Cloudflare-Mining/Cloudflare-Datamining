@@ -15,12 +15,32 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"nullable": true,
+						"properties": {
+							"name": {
+								"description": "Domain of your zone.",
+								"example": "example.net",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
 		"responses": {
 			"200": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
@@ -87,86 +107,178 @@
 									"type": "object"
 								},
 								{
-									"properties": {
-										"result": {
+									"allOf": [
+										{
 											"allOf": [
 												{
 													"properties": {
-														"created": {
-															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
 														},
-														"enabled": {
-															"default": true,
-															"description": "State of the zone settings for Email Routing.",
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
 															"enum": [
-																true,
-																false
+																true
 															],
 															"example": true,
 															"type": "boolean"
-														},
-														"id": {
-															"description": "Email Routing settings identifier.",
-															"example": "75610dab9e69410a82cf7e400a09ecec",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"modified": {
-															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"name": {
-															"description": "Domain of your zone.",
-															"example": "example.net",
-															"readOnly": true,
-															"type": "string"
-														},
-														"skip_wizard": {
-															"default": true,
-															"description": "Flag to check if the user skipped the configuration wizard.",
-															"enum": [
-																true,
-																false
-															],
-															"example": true,
-															"type": "boolean"
-														},
-														"status": {
-															"description": "Show the state of your account, and the type or configuration error.",
-															"enum": [
-																"ready",
-																"unconfigured",
-																"misconfigured",
-																"misconfigured/locked",
-																"unlocked"
-															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
-														},
-														"tag": {
-															"deprecated": true,
-															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
-															"example": "75610dab9e69410a82cf7e400a09ecec",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
 														}
 													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
 													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
 												}
 											],
 											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"description": "List of records needed to enable an Email Routing zone.",
+														"properties": {
+															"content": {
+																"description": "DNS record content.",
+																"example": "route1.mx.cloudflare.net",
+																"type": "string"
+															},
+															"name": {
+																"description": "DNS record name (or @ for the zone apex).",
+																"example": "example.com",
+																"maxLength": 255,
+																"type": "string"
+															},
+															"priority": {
+																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"example": 12,
+																"maximum": 65535,
+																"minimum": 0,
+																"type": "number"
+															},
+															"ttl": {
+																"anyOf": [
+																	{
+																		"example": 3600,
+																		"maximum": 86400,
+																		"minimum": 1,
+																		"type": "number"
+																	},
+																	{
+																		"enum": [
+																			1
+																		],
+																		"type": "number"
+																	}
+																],
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"example": 1,
+																"type": "number"
+															},
+															"type": {
+																"description": "DNS record type.",
+																"enum": [
+																	"A",
+																	"AAAA",
+																	"CNAME",
+																	"HTTPS",
+																	"TXT",
+																	"SRV",
+																	"LOC",
+																	"MX",
+																	"NS",
+																	"CERT",
+																	"DNSKEY",
+																	"DS",
+																	"NAPTR",
+																	"SMIMEA",
+																	"SSHFP",
+																	"SVCB",
+																	"TLSA",
+																	"URI"
+																],
+																"example": "NS",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
 										}
-									}
+									]
 								}
 							]
 						}
@@ -298,13 +410,13 @@
 															"type": "string"
 														},
 														"enabled": {
-															"default": true,
 															"description": "State of the zone settings for Email Routing.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"id": {
@@ -324,17 +436,16 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"readOnly": true,
 															"type": "string"
 														},
 														"skip_wizard": {
-															"default": true,
 															"description": "Flag to check if the user skipped the configuration wizard.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"status": {
@@ -359,6 +470,11 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"enabled"
+													],
 													"type": "object"
 												}
 											],
@@ -412,6 +528,15 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "subdomain",
+				"schema": {
+					"description": "Domain of your zone.",
+					"example": "example.net",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -419,92 +544,258 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
 															},
-															"message": {
-																"type": "string"
-															}
+															"type": "array"
 														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
 															},
-															"message": {
-																"type": "string"
-															}
+															"type": "array"
 														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
 													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
+													"required": [
+														"success",
+														"errors",
+														"messages"
 													],
-													"example": true,
-													"type": "boolean"
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
 											],
 											"type": "object"
 										},
 										{
 											"properties": {
-												"result_info": {
+												"result": {
 													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+														"errors": {
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "string"
+																	},
+																	"missing": {
+																		"description": "List of records needed to enable an Email Routing zone.",
+																		"properties": {
+																			"content": {
+																				"description": "DNS record content.",
+																				"example": "route1.mx.cloudflare.net",
+																				"type": "string"
+																			},
+																			"name": {
+																				"description": "DNS record name (or @ for the zone apex).",
+																				"example": "example.com",
+																				"maxLength": 255,
+																				"type": "string"
+																			},
+																			"priority": {
+																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"example": 12,
+																				"maximum": 65535,
+																				"minimum": 0,
+																				"type": "number"
+																			},
+																			"ttl": {
+																				"anyOf": [
+																					{
+																						"example": 3600,
+																						"maximum": 86400,
+																						"minimum": 1,
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							1
+																						],
+																						"type": "number"
+																					}
+																				],
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"example": 1,
+																				"type": "number"
+																			},
+																			"type": {
+																				"description": "DNS record type.",
+																				"enum": [
+																					"A",
+																					"AAAA",
+																					"CNAME",
+																					"HTTPS",
+																					"TXT",
+																					"SRV",
+																					"LOC",
+																					"MX",
+																					"NS",
+																					"CERT",
+																					"DNSKEY",
+																					"DS",
+																					"NAPTR",
+																					"SMIMEA",
+																					"SSHFP",
+																					"SVCB",
+																					"TLSA",
+																					"URI"
+																				],
+																				"example": "NS",
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
 														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+														"record": {
+															"items": {
+																"description": "List of records needed to enable an Email Routing zone.",
+																"properties": {
+																	"content": {
+																		"description": "DNS record content.",
+																		"example": "route1.mx.cloudflare.net",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "DNS record name (or @ for the zone apex).",
+																		"example": "example.com",
+																		"maxLength": 255,
+																		"type": "string"
+																	},
+																	"priority": {
+																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"example": 12,
+																		"maximum": 65535,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"ttl": {
+																		"anyOf": [
+																			{
+																				"example": 3600,
+																				"maximum": 86400,
+																				"minimum": 1,
+																				"type": "number"
+																			},
+																			{
+																				"enum": [
+																					1
+																				],
+																				"type": "number"
+																			}
+																		],
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"example": 1,
+																		"type": "number"
+																	},
+																	"type": {
+																		"description": "DNS record type.",
+																		"enum": [
+																			"A",
+																			"AAAA",
+																			"CNAME",
+																			"HTTPS",
+																			"TXT",
+																			"SRV",
+																			"LOC",
+																			"MX",
+																			"NS",
+																			"CERT",
+																			"DNSKEY",
+																			"DS",
+																			"NAPTR",
+																			"SMIMEA",
+																			"SSHFP",
+																			"SVCB",
+																			"TLSA",
+																			"URI"
+																		],
+																		"example": "NS",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"type": "object"
@@ -515,80 +806,178 @@
 									"type": "object"
 								},
 								{
-									"properties": {
-										"result": {
-											"items": {
-												"description": "List of records needed to enable an Email Routing zone.",
-												"properties": {
-													"content": {
-														"description": "DNS record content.",
-														"example": "route1.mx.cloudflare.net",
-														"type": "string"
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
 													},
-													"name": {
-														"description": "DNS record name (or @ for the zone apex).",
-														"example": "example.com",
-														"maxLength": 255,
-														"type": "string"
-													},
-													"priority": {
-														"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
-														"example": 12,
-														"maximum": 65535,
-														"minimum": 0,
-														"type": "number"
-													},
-													"ttl": {
-														"anyOf": [
-															{
-																"example": 3600,
-																"maximum": 86400,
-																"minimum": 1,
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"description": "List of records needed to enable an Email Routing zone.",
+														"properties": {
+															"content": {
+																"description": "DNS record content.",
+																"example": "route1.mx.cloudflare.net",
+																"type": "string"
+															},
+															"name": {
+																"description": "DNS record name (or @ for the zone apex).",
+																"example": "example.com",
+																"maxLength": 255,
+																"type": "string"
+															},
+															"priority": {
+																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"example": 12,
+																"maximum": 65535,
+																"minimum": 0,
 																"type": "number"
 															},
-															{
-																"enum": [
-																	1
+															"ttl": {
+																"anyOf": [
+																	{
+																		"example": 3600,
+																		"maximum": 86400,
+																		"minimum": 1,
+																		"type": "number"
+																	},
+																	{
+																		"enum": [
+																			1
+																		],
+																		"type": "number"
+																	}
 																],
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"example": 1,
 																"type": "number"
+															},
+															"type": {
+																"description": "DNS record type.",
+																"enum": [
+																	"A",
+																	"AAAA",
+																	"CNAME",
+																	"HTTPS",
+																	"TXT",
+																	"SRV",
+																	"LOC",
+																	"MX",
+																	"NS",
+																	"CERT",
+																	"DNSKEY",
+																	"DS",
+																	"NAPTR",
+																	"SMIMEA",
+																	"SSHFP",
+																	"SVCB",
+																	"TLSA",
+																	"URI"
+																],
+																"example": "NS",
+																"readOnly": true,
+																"type": "string"
 															}
-														],
-														"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-														"example": 1,
-														"type": "number"
+														},
+														"type": "object"
 													},
-													"type": {
-														"description": "DNS record type.",
-														"enum": [
-															"A",
-															"AAAA",
-															"CNAME",
-															"HTTPS",
-															"TXT",
-															"SRV",
-															"LOC",
-															"MX",
-															"NS",
-															"CERT",
-															"DNSKEY",
-															"DS",
-															"NAPTR",
-															"SMIMEA",
-															"SSHFP",
-															"SVCB",
-															"TLSA",
-															"URI"
-														],
-														"example": "NS",
-														"readOnly": true,
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+													"type": "array"
+												}
+											}
 										}
-									}
+									]
 								}
 							]
 						}
@@ -638,6 +1027,26 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"nullable": true,
+						"properties": {
+							"name": {
+								"description": "Domain of your zone.",
+								"example": "example.net",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -723,13 +1132,13 @@
 															"type": "string"
 														},
 														"enabled": {
-															"default": true,
 															"description": "State of the zone settings for Email Routing.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"id": {
@@ -749,17 +1158,16 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"readOnly": true,
 															"type": "string"
 														},
 														"skip_wizard": {
-															"default": true,
 															"description": "Flag to check if the user skipped the configuration wizard.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"status": {
@@ -784,6 +1192,11 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"enabled"
+													],
 													"type": "object"
 												}
 											],
@@ -928,13 +1341,13 @@
 															"type": "string"
 														},
 														"enabled": {
-															"default": true,
 															"description": "State of the zone settings for Email Routing.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"id": {
@@ -954,17 +1367,16 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"readOnly": true,
 															"type": "string"
 														},
 														"skip_wizard": {
-															"default": true,
 															"description": "Flag to check if the user skipped the configuration wizard.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"status": {
@@ -989,6 +1401,11 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"enabled"
+													],
 													"type": "object"
 												}
 											],
@@ -1041,6 +1458,26 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"nullable": true,
+						"properties": {
+							"name": {
+								"description": "Domain of your zone.",
+								"example": "example.net",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -1126,13 +1563,13 @@
 															"type": "string"
 														},
 														"enabled": {
-															"default": true,
 															"description": "State of the zone settings for Email Routing.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"id": {
@@ -1152,17 +1589,16 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"readOnly": true,
 															"type": "string"
 														},
 														"skip_wizard": {
-															"default": true,
 															"description": "Flag to check if the user skipped the configuration wizard.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"status": {
@@ -1187,6 +1623,11 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"enabled"
+													],
 													"type": "object"
 												}
 											],
@@ -1331,13 +1772,13 @@
 															"type": "string"
 														},
 														"enabled": {
-															"default": true,
 															"description": "State of the zone settings for Email Routing.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"id": {
@@ -1357,17 +1798,16 @@
 														"name": {
 															"description": "Domain of your zone.",
 															"example": "example.net",
-															"readOnly": true,
 															"type": "string"
 														},
 														"skip_wizard": {
-															"default": true,
 															"description": "Flag to check if the user skipped the configuration wizard.",
 															"enum": [
 																true,
 																false
 															],
 															"example": true,
+															"readOnly": true,
 															"type": "boolean"
 														},
 														"status": {
@@ -1392,6 +1832,11 @@
 															"type": "string"
 														}
 													},
+													"required": [
+														"id",
+														"name",
+														"enabled"
+													],
 													"type": "object"
 												}
 											],
