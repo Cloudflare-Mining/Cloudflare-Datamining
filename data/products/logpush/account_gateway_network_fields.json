@@ -3,6 +3,8 @@
 	"Action": "string; Action performed by gateway on the session.",
 	"ApplicationIDs": "array[int]; IDs of the applications that matched the session parameters.",
 	"ApplicationNames": "array[string]; Names of the applications that matched the session parameters.",
+	"CategoryIDs": "array[int]; IDs of the categories that matched the session parameters.",
+	"CategoryNames": "array[string]; Names of the categories that matched the session parameters.",
 	"Datetime": "int or string; The date and time the corresponding network session was made (for example, '2021-07-27T00:01:07Z').",
 	"DestinationIP": "string; Destination IP of the network session.",
 	"DestinationIPContinentCode": "string; Continent code of the destination IP of the network session (for example, 'NA').",
