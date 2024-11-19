@@ -4,6 +4,15 @@
 		"parameters": [
 			{
 				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
 				"name": "gateway_id",
 				"required": true,
 				"schema": {
@@ -20,15 +29,6 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -222,10 +222,10 @@
 										"name",
 										"processed",
 										"total_logs",
-										"datasets",
 										"results",
 										"created_at",
-										"modified_at"
+										"modified_at",
+										"datasets"
 									],
 									"type": "object"
 								},
@@ -517,6 +517,15 @@
 		"parameters": [
 			{
 				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
 				"name": "gateway_id",
 				"required": true,
 				"schema": {
@@ -525,15 +534,6 @@
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			},
@@ -792,10 +792,10 @@
 											"name",
 											"processed",
 											"total_logs",
-											"datasets",
 											"results",
 											"created_at",
-											"modified_at"
+											"modified_at",
+											"datasets"
 										],
 										"type": "object"
 									},
@@ -884,6 +884,15 @@
 		"parameters": [
 			{
 				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
 				"name": "gateway_id",
 				"required": true,
 				"schema": {
@@ -900,15 +909,6 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
 					"type": "string"
 				}
 			}
@@ -1102,10 +1102,10 @@
 										"name",
 										"processed",
 										"total_logs",
-										"datasets",
 										"results",
 										"created_at",
-										"modified_at"
+										"modified_at",
+										"datasets"
 									],
 									"type": "object"
 								},
@@ -1434,10 +1434,10 @@
 										"name",
 										"processed",
 										"total_logs",
-										"datasets",
 										"results",
 										"created_at",
-										"modified_at"
+										"modified_at",
+										"datasets"
 									],
 									"type": "object"
 								},
