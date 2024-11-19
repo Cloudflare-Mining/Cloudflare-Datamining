@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "429e0c8c-8090-5a0d-aac0-87db48fb241f")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "994f4927-44df-5cfd-a268-e4ec84668d51")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -710,7 +710,7 @@
 			var bt = t("../react/app/components/Persistence/index.tsx"),
 				Tt = t("../node_modules/@cloudflare/elements/es/index.js"),
 				Fe = t("../react/app/components/LoadingSuspense.tsx");
-			const Mt = _e().lazy(() => Promise.all([t.e(85175), t.e(2480), t.e(10008), t.e(39957), t.e(94012), t.e(97999), t.e(72019), t.e(26341), t.e(5668), t.e(60091), t.e(45616), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(91003), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
+			const Mt = _e().lazy(() => Promise.all([t.e(42781), t.e(2480), t.e(10008), t.e(31892), t.e(94012), t.e(35820), t.e(72019), t.e(8857), t.e(5668), t.e(60091), t.e(55431), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(91003), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx")));
 			var en = () => _e().createElement(Fe.Z, null, _e().createElement(Mt, null));
 			const tn = () => (Ie.useEffect(() => se, []), null);
 			var nn = t("../../../../node_modules/moment/moment.js"),
@@ -848,8 +848,8 @@
 			};
 			var gn = t("../react/utils/useDomainConnectRedirect.ts");
 			const fn = "GTM-NDGPDFZ",
-				_n = _e().lazy(() => Promise.all([t.e(85175), t.e(2480), t.e(10008), t.e(39957), t.e(94012), t.e(97999), t.e(72019), t.e(26341), t.e(16339), t.e(91167), t.e(60091), t.e(45616), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(91003), t.e(64124), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
-				En = _e().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(85175), t.e(97999), t.e(16339), t.e(60091), t.e(60734), t.e(69088), t.e(64124), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
+				_n = _e().lazy(() => Promise.all([t.e(42781), t.e(2480), t.e(10008), t.e(31892), t.e(94012), t.e(35820), t.e(72019), t.e(8857), t.e(16339), t.e(77208), t.e(60091), t.e(55431), t.e(77216), t.e(39760), t.e(94923), t.e(60734), t.e(91003), t.e(64124), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.jsx"))),
+				En = _e().lazy(() => Promise.all([t.e(83741), t.e(65447), t.e(42781), t.e(35820), t.e(16339), t.e(60091), t.e(60734), t.e(69088), t.e(64124), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx")));
 			var yn = ({
 					userIsAuthed: O
 				}) => {
@@ -994,10 +994,10 @@
 					t.g.build = An({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "51567ec3a2cdf07ac7e662329230e7d55ceb3e27",
-						dashVersion: "29077140",
+						commit: "dde1b3aa56c3bfa6c1f8afdbe46d70cd59f97d98",
+						dashVersion: "29118361",
 						env: "production",
-						builtAt: 1731953182963,
+						builtAt: 1732038527383,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -5257,6 +5257,15 @@
 					a(l => (i instanceof Function && (i = i(l)), f !== void 0 && u.set(f, i, d), i))
 				}]
 			}
+		},
+		"../react/common/hooks/useGate.ts": function(j, E, t) {
+			"use strict";
+			var e = t("../../../../node_modules/@cloudflare/gates-react-redux/dist/index.mjs");
+
+			function o(c) {
+				return (0, e.qf)(c)
+			}
+			E.Z = o
 		},
 		"../react/common/hooks/usePrevious.ts": function(j, E, t) {
 			"use strict";
@@ -15533,4 +15542,4 @@
 	}
 ]);
 
-//# debugId=429e0c8c-8090-5a0d-aac0-87db48fb241f
+//# debugId=994f4927-44df-5cfd-a268-e4ec84668d51
