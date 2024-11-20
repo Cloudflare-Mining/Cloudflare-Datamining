@@ -1612,35 +1612,38 @@
 									"type": "array"
 								},
 								"result": {
-									"properties": {
-										"class_name": {
-											"type": "string"
+									"items": {
+										"properties": {
+											"class_name": {
+												"type": "string"
+											},
+											"created_on": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"modified_on": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"workflow_id": {
+												"format": "uuid",
+												"type": "string"
+											}
 										},
-										"created_on": {
-											"format": "date-time",
-											"type": "string"
-										},
-										"id": {
-											"format": "uuid",
-											"type": "string"
-										},
-										"modified_on": {
-											"format": "date-time",
-											"type": "string"
-										},
-										"workflow_id": {
-											"format": "uuid",
-											"type": "string"
-										}
+										"required": [
+											"created_on",
+											"modified_on",
+											"id",
+											"workflow_id",
+											"class_name"
+										],
+										"type": "object"
 									},
-									"required": [
-										"created_on",
-										"modified_on",
-										"id",
-										"workflow_id",
-										"class_name"
-									],
-									"type": "object"
+									"type": "array"
 								},
 								"result_info": {
 									"properties": {
