@@ -92,6 +92,12 @@
 	"email-security-bcc-journaling-google-integration": {
 		"enabled": true
 	},
+	"email-security-expanded-scanning": {
+		"enabled": true
+	},
+	"email-security-mx-inline": {
+		"enabled": true
+	},
 	"email-security-submission-transparency": {
 		"enabled": true
 	},
@@ -129,7 +135,7 @@
 		"enabled": true
 	},
 	"zt-casb-content-cloud": {
-		"enabled": false
+		"enabled": true
 	},
 	"zt-casb-eng-only": {
 		"enabled": true
@@ -268,6 +274,9 @@
 	},
 	"zt-warp-generic-s2s-integrations": {
 		"enabled": true
+	},
+	"zt-warp-multi-user-device": {
+		"enabled": false
 	},
 	"zt-warp-profile-protocol-support": {
 		"enabled": true
