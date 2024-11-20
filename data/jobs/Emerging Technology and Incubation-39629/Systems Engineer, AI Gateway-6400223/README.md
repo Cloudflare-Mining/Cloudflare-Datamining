@@ -5,33 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available - Austin, TX, this position is eligible for being remote in Austin Texas only. If you are not located in Austin, Texas, you MUST be open to relocation.&nbsp;</strong></p>
-<hr>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for a Full Stack Systems Engineer to join our Lisbon team to scale our development efforts on network availability insights initiatives. You will work on building full stack data applications which empowers our Product and Engineering team. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available locations: Lisbon&nbsp;</strong></p>
+<p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Email Routing, Radar, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
+<p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
+<p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
+<p>We are looking for a Systems Engineer to join our AI Gateway team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features based on what’s technically possible. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>You bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment.</p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Design and implement key features of our internal applications</li>
-	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
-	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
-	<li>Continuously involved in knowledge sharing and mentorship</li>
+	<li>Bachelor's degree in Computer Science, Engineering, or a related field;</li>
+	<li>Proven experience in software development, with a strong focus on TypeScript programming language;</li>
+	<li>Experience with Rust or Go and some understanding of the Cloudflare Workers platform is an added bonus;</li>
+	<li>Solid understanding of systems engineering principles and practices;</li>
+	<li>Experience with version control systems such as Git;</li>
+	<li>Strong problem-solving skills and attention to detail;</li>
+	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
+	<li>Passion for learning and exploring new technologies;</li>
+	<li>Creative thinker with the ability to propose innovative solutions to complex problems;</li>
+	<li>An operational mindset - we don't just write code, we also own it in production;</li>
+	<li>Previous experience working in an Agile environment is a plus;</li>
+	<li>Good understanding of how Browsers and how their underlying technologies work;<br><br></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Bonus Points:</strong></p>
 <ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
-	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Experience with Javascript, Typescript, and React</li>
-	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
-	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
+	<li>Experience building high performance distributed systems;</li>
+	<li>Contributions to large open source projects.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
-	<li>Familiarity with Google Cloud Platform or something similar</li>
-</ul>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

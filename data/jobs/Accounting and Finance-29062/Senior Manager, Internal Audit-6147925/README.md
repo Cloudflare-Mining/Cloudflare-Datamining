@@ -5,76 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations : Austin, TX, Houston, TX, Dallas, TX, San Antonio, TX</h4>
-<h4>About the position</h4>
-<p>At Cloudflare we are committed to excellence and innovation, not just as it relates to products we sell to our customers, but also for our internal processes and systems. We are seeking a highly motivated and experienced Procure to Pay Global Process Owner to join our dynamic team and take ownership of optimizing and standardizing procure to pay business processes, working with business owners, across our global operations with a focus on aligning upstream and downstream processes, change management, process documentation and assisting with identification of optimization opportunities.&nbsp;</p>
-<h4>What you'll do</h4>
-<p>End to End Process Ownership:</p>
+<h4>Available Job Locations: Austin, TX, San Francisco, CA</h4>
+<p><strong>About the Department</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective and independent assurance over Cloudflare’s key business risks to the Audit Committee and Management consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
+<p>We are seeking a highly motivated, strategic, and solution-focused candidate to lead and manage Cloudflare’s operational audit plan to evaluate the effectiveness of risk management, control, and governance processes. The ideal candidate will bring a deep understanding of risk management, business and operations, and best-in-class audit practices. This role will report to the Senior Director, Internal Audit.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Work with key stakeholders to define the end to end procure to pay process taxonomy and owners of various parts of the end to end procure to pay process.</li>
-	<li>Develop deep relationships with key business process owners to develop a holistic procure to pay roadmap.</li>
-	<li>Develop an in-depth understanding of the procure to pay process, including its inputs, outputs, and key performance indicators (KPIs).</li>
-</ul>
-<p>Strategy Alignment:</p>
-<ul>
-	<li>Align the procure to pay process with the organization's strategic goals and objectives through collaboration with business process owners and senior management to ensure that the process supports the overall business strategy.</li>
-</ul>
-<p>Standardization:</p>
-<ul>
-	<li>Work with business owners of various parts of the process to establish and maintain standardized process documentation, including policies, procedures, and guidelines.</li>
-	<li>Promote best practices and minimize process variations across regions and business segments.&nbsp;&nbsp;</li>
-</ul>
-<p>Process Improvement:</p>
-<ul>
-	<li>Continuously analyze the procure to pay process leveraging process mining tools and other knowledge of best practices to identify areas for improvement and optimization.</li>
-	<li>Work with business owners to implement process enhancements to streamline operations, improve efficiency, and reduce costs.</li>
-</ul>
-<p>Change Management:</p>
-<ul>
-	<li>Lead change initiatives related to prioritized procure to pay initiatives, working with cross-functional teams to drive successful process improvements.</li>
-	<li>Manage resistance to change and ensure smooth implementation of process changes.</li>
-</ul>
-<p>Performance Monitoring:</p>
-<ul>
-	<li>Establish and monitor performance metrics and KPIs to assess the effectiveness and efficiency of the end to end procure to pay process.</li>
-	<li>Analyze data and provide regular reports to management and other key stakeholders, identifying areas for improvement and celebrating successes.</li>
-</ul>
-<p>Stakeholder Management:</p>
-<ul>
-	<li>Collaborate with various stakeholders, including senior management, business owners, subject matter experts, and technology teams.</li>
-	<li>Engage with business owners of various parts of the end to end procure to pay process to understand their needs, address concerns, and foster a culture of continuous improvement.</li>
-	<li>Ensure that decisions made related to any single part of the procure to pay process make sense for the process end to end, and ensure that downstream changes are well communicated and addressed.&nbsp;</li>
-</ul>
-<p>Compliance and Risk Management:</p>
-<ul>
-	<li>Ensure that the procure to pay process complies with relevant laws, regulations, and internal policies.</li>
-	<li>Work with legal, compliance, and risk management teams to mitigate risks and implement necessary controls.</li>
-</ul>
-<p>Technology Enablement:</p>
-<ul>
-	<li>Collaborate with IT teams to leverage technology solutions and automation to enhance the end to end procure to pay process.</li>
-	<li>Work with IT and business owners to prioritize system / automation related initiatives.&nbsp;</li>
-	<li>Collaborate with business and IT teams as business requirements are documented to ensure business owners of various parts of the process all work together to form a cohesive end to end solution.&nbsp;</li>
-</ul>
-<p>Training and Communication:</p>
-<ul>
-	<li>Develop and deliver training programs to educate employees about the procure to pay process, its importance, and how to execute it effectively.</li>
-	<li>Facilitate clear and timely communication regarding process changes, updates, and performance to ensure organization-wide awareness and alignment.</li>
+	<li>Design and execute a portfolio of operational audits, with concurrent oversight and execution of multiple projects.&nbsp;</li>
+	<li>Lead integrated audits that address a combination of financial, operational or technology objectives.&nbsp;</li>
+	<li>Conduct risk assessments to identify and prioritize areas for audit focus.</li>
+	<li>Prepare clear, concise and high impact audit reports with actionable recommendations for improvements.</li>
+	<li>Ensure audits are completed on time, within scope, and in accordance with professional and department standards.</li>
+	<li>Communicate audit findings and recommendations to all levels of the company, including senior executives.&nbsp;</li>
+	<li>Act as a trusted advisor to the business, providing insights and recommendations on risk management and control improvements.</li>
+	<li>Leverage data analytics and other innovative tools to improve audit insights and effectiveness.&nbsp;</li>
+	<li>Identify opportunities to enhance the efficiency and effectiveness of internal audit processes and methodologies.</li>
+	<li>Stay current with industry trends, regulatory changes, and best practices in internal auditing.</li>
+	<li>Mentor and provide guidance to internal audit team members, fostering a culture of continuous learning and professional development.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Bachelor's degree in Business Administration, Accounting, Finance, or Economics</li>
-	<li>8+ years of experience in process management, with a track record of successfully optimizing and standardizing global processes</li>
-	<li>Deep understanding of the procure to pay process and experience working on transformational programs;&nbsp;experience with direct and indirect procurement as well as supply chain management is a bonus&nbsp;&nbsp;</li>
-	<li>Proven ability to lead change initiatives and drive process improvements</li>
-	<li>Excellent communication and stakeholder management skills, with the ability to collaborate with cross-functional teams</li>
-	<li>Strong analytical and problem-solving abilities, with a data-driven approach to decision-making</li>
-	<li>Experience in technology enablement, ERP implementation experience in the P2P space is a plus,&nbsp; and familiarity with process automation tools</li>
-	<li>Ability to work in a fast-paced and dynamic environment, adapting to evolving business needs</li>
-	<li>Looking for someone who is a self-starter, willing to bring ideas to the table with proven success in execution … If you are a strategic thinker with a passion for continuous improvement, we encourage you to apply!<br><br></li>
+	<li>8+<strong>&nbsp;</strong>years of&nbsp;experience in internal audit, risk management, or related field with at least 3 years in a leadership role.</li>
+	<li>Strong knowledge and proven track record in applying internal auditing and accounting principles and practices, specifically audit methodologies, risk assessment, sampling techniques, audit documentation and report writing.</li>
+	<li>Excellent analytical, problem-solving, and decision-making skills.</li>
+	<li>Exceptional written and verbal communication skills, with the ability to present complex information clearly and concisely.</li>
+	<li>Proven ability to build and maintain effective working relationships with stakeholders at all levels.</li>
+	<li>High level of integrity, professionalism, and attention to detail.</li>
+	<li>Familiarity with data analytics and continuous auditing techniques.</li>
+	<li>Professional certifications such as: CIA, CPA, CFE, etc.</li>
+</ul>
+<p><strong>Nice-to-have skills</strong></p>
+<ul>
+	<li>Experience in leading or executing SOX testing programs, with a strong understanding of both business process controls and ITGCs.&nbsp;</li>
+	<li>Experience in enterprise risk management activities, participating in programs that would assess, monitor and report on risks across the enterprise, and help shape our annual Internal Audit Plan and approach.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado-based hires: Estimated annual salary of $172,000 - $210,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $195,000 - $239,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $205,000 - $251,000</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -102,6 +73,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
