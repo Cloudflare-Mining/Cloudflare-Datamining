@@ -1818,11 +1818,6 @@
 									"description": "Whether the Worker is available on the workers.dev subdomain.",
 									"example": true,
 									"type": "boolean"
-								},
-								"previews_enabled": {
-									"description": "Whether the Worker's Preview URLs should be available on the workers.dev subdomain.",
-									"example": true,
-									"type": "boolean"
 								}
 							},
 							"type": "object"
@@ -4581,16 +4576,8 @@
 								"description": "Whether the Worker should be available on the workers.dev subdomain.",
 								"example": true,
 								"type": "boolean"
-							},
-							"previews_enabled": {
-								"description": "Whether the Worker's Preview URLs should be available on the workers.dev subdomain.",
-								"example": true,
-								"type": "boolean"
 							}
 						},
-						"required": [
-							"enabled"
-						],
 						"type": "object"
 					}
 				}
@@ -4605,11 +4592,6 @@
 							"properties": {
 								"enabled": {
 									"description": "Whether the Worker is available on the workers.dev subdomain.",
-									"example": true,
-									"type": "boolean"
-								},
-								"previews_enabled": {
-									"description": "Whether the Worker's Preview URLs should be available on the workers.dev subdomain.",
 									"example": true,
 									"type": "boolean"
 								}
