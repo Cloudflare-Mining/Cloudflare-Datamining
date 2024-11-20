@@ -377,6 +377,181 @@
 			]
 		}
 	},
+	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
+		"description": "Delete the CORS policy for a bucket",
+		"operationId": "r2-delete-bucket-cors-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Bucket CORS Policy",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain_name}": {
 		"description": "Remove custom domain registration from an existing R2 bucket",
 		"operationId": "r2-delete-custom-domain",
@@ -1643,6 +1818,257 @@
 				"com.cloudflare.edge.r2.bucket.read"
 			]
 		}
+	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
+		"description": "Get the CORS policy for a bucket",
+		"operationId": "r2-get-bucket-cors-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"rules": {
+													"items": {
+														"properties": {
+															"allowed": {
+																"description": "Object specifying allowed origins, methods and headers for this CORS rule.",
+																"properties": {
+																	"headers": {
+																		"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
+																		"items": {
+																			"example": "x-requested-by",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"methods": {
+																		"description": "Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.",
+																		"items": {
+																			"enum": [
+																				"GET",
+																				"PUT",
+																				"POST",
+																				"DELETE",
+																				"HEAD"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"origins": {
+																		"description": "Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.",
+																		"items": {
+																			"example": "http://localhost:3000",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"methods",
+																	"origins"
+																],
+																"type": "object"
+															},
+															"exposeHeaders": {
+																"description": "Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.",
+																"items": {
+																	"example": "Content-Encoding",
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "Identifier for this rule",
+																"example": "Allow Local Development",
+																"type": "string"
+															},
+															"maxAgeSeconds": {
+																"description": "Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.",
+																"example": 3600,
+																"type": "number"
+															}
+														},
+														"required": [
+															"allowed"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Bucket CORS Policy",
+		"tags": [
+			"R2 Bucket"
+		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"description": "Gets a list of all custom domains registered with an existing R2 bucket.",
@@ -4001,6 +4427,262 @@
 			}
 		],
 		"summary": "Create Event Notification Rule",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
+	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
+		"description": "Set the CORS policy for a bucket",
+		"operationId": "r2-put-bucket-cors-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"default": "default",
+					"description": "The bucket jurisdiction",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"rules": {
+								"items": {
+									"properties": {
+										"allowed": {
+											"description": "Object specifying allowed origins, methods and headers for this CORS rule.",
+											"properties": {
+												"headers": {
+													"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
+													"items": {
+														"example": "x-requested-by",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"methods": {
+													"description": "Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.",
+													"items": {
+														"enum": [
+															"GET",
+															"PUT",
+															"POST",
+															"DELETE",
+															"HEAD"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"origins": {
+													"description": "Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.",
+													"items": {
+														"example": "http://localhost:3000",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"methods",
+												"origins"
+											],
+											"type": "object"
+										},
+										"exposeHeaders": {
+											"description": "Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.",
+											"items": {
+												"example": "Content-Encoding",
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"id": {
+											"description": "Identifier for this rule",
+											"example": "Allow Local Development",
+											"type": "string"
+										},
+										"maxAgeSeconds": {
+											"description": "Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.",
+											"example": 3600,
+											"type": "number"
+										}
+									},
+									"required": [
+										"allowed"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Put Bucket CORS Policy",
 		"tags": [
 			"R2 Bucket"
 		]

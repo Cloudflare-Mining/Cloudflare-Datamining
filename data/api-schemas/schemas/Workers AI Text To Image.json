@@ -19,6 +19,7 @@
 						"properties": {
 							"prompt": {
 								"description": "A text description of the image you want to generate.",
+								"maxLength": 2048,
 								"minLength": 1,
 								"type": "string"
 							},
