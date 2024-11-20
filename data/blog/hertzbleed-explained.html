@@ -204,7 +204,7 @@
 
 	</figure>
 	<p>SIKE bases its security on the difficulty of computing a relationship between two elliptic curves. On the one hand, it’s easy computing this relation (called an <i>isogeny</i>) if the points that generate such isogeny (called <i>the kernel</i> of the isogeny) are known in advance. On the other hand, it’s difficult to know the isogeny given only two elliptic curves, but without knowledge of the kernel points. An attacker has no advantage if the number of possible kernel points to try is large enough to make the search infeasible (computationally intractable) even with the help of a quantum computer.</p>
-	<p>Similarly to other algorithms based on elliptic curves, such as ECDSA or ECDH, the core of SIKE is calculating operations over points on elliptic curves. As usual, points are represented by a pair of coordinates (x,y) which fulfill the elliptic curve equation</p>
+	<p>Similarly to other algorithms based on elliptic curves, such as <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">ECDSA</a> or ECDH, the core of SIKE is calculating operations over points on elliptic curves. As usual, points are represented by a pair of coordinates (x,y) which fulfill the elliptic curve equation</p>
 	<p>$ y^2= x^3 + Ax^2 +x $</p>
 	<p>where A is a parameter identifying different elliptic curves.</p>
 	<p>For performance reasons, SIKE uses one of the fastest elliptic curve models: the <a href="https://youtu.be/abStWnmvJO0?t=2684">Montgomery</a> curves. The special property that makes these curves fast is that it allows working only with the x-coordinate of points. Hence, one can express the x-coordinate as a fraction x = X / Z, without using the y-coordinate at all. This representation simplifies the calculation of point additions, scalar multiplications, and isogenies between curves. Nonetheless, such simplicity does not come for free, and there is a price to be paid.</p>
@@ -295,4 +295,5 @@
 	</div>
 	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/803802d76afc258a95cbfe75146e8155?preload=true&amp;poster=https%3A%2F%2Fcloudflarestream.com%2F803802d76afc258a95cbfe75146e8155%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1m15s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

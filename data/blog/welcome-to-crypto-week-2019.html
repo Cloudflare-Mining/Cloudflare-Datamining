@@ -106,7 +106,7 @@
 	<p>There are many ongoing attempts to add security to DNS, such as:</p>
 	<ul>
 		<li>
-			<p>DNSSEC that <b>adds a chain of digital signatures to DNS responses</b></p>
+			<p><a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">DNSSEC</a> that <b>adds a chain of digital signatures to DNS responses</b></p>
 		</li>
 		<li>
 			<p>DoT/DoH that <b>wraps DNS queries in the TLS encryption protocol</b> (more on that later)</p>
@@ -255,7 +255,7 @@
 	</figure>
 	<ul>
 		<li>
-			<p><b><b>65 bits gets you up to “Pool security” –</b></b> The energy needed to boil the average amount of water in a swimming pool.</p>
+			<p><b>65 bits gets you up to “Pool security” –</b> The energy needed to boil the average amount of water in a swimming pool.</p>
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card ">
@@ -275,7 +275,7 @@
 	</figure>
 	<ul>
 		<li>
-			<p><b><b>114-bits is “Global Security”</b></b><b> –</b> &nbsp;The energy needed to boil all water on Earth.</p>
+			<p><b>114-bits is “Global Security” –</b> &nbsp;The energy needed to boil all water on Earth.</p>
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card ">
@@ -405,7 +405,7 @@
 	</figure>
 	<p>TLS connections are safe against MITM, because the client doesn’t trust the attacker’s certificate</p>
 	<p>While we were all patting ourselves on the back for moving the web to HTTPS, <a href="https://dl.acm.org/citation.cfm?id=3243790">some</a> <a href="https://www.princeton.edu/~pmittal/publications/bgp-tls-usenix18.pdf">researchers</a> managed to find and exploit <b>a weakness in the system: the process for getting HTTPS certificates.</b></p>
-	<p>Certificate Authorities (CAs) use a process called <b>domain control validation (DCV) to ensure that they only issue certificates </b><b><b>to websites owners who legitimately request them</b></b><b>.</b></p>
+	<p>Certificate Authorities (CAs) use a process called <b>domain control validation (DCV) to ensure that they only issue certificates to websites owners who legitimately request them.</b></p>
 	<ul>
 		<li>
 			<p>Some CAs do this validation manually, which is secure, but <b>can’t scale to the total number of websites deployed today.</b></p>
@@ -432,7 +432,7 @@
 			<p>Enables users to access content on the InterPlanetary File System (IPFS), a network structured to <b>reduce the trust placed in any single party.</b></p>
 		</li>
 		<li>
-			<p>Even if a participant of the network is compromised, <b>it can’t be used to distribute </b><b><b>compromised</b></b><b> content</b> because the network is content-addressed.</p>
+			<p>Even if a participant of the network is compromised, <b>it can’t be used to distribute compromised content</b> because the network is content-addressed.</p>
 		</li>
 		<li>
 			<p>However, using content-based addressing is <b>not the only way to distribute trust between multiple independent parties.</b></p>
@@ -491,7 +491,7 @@
 			<p>This is somewhat reminiscent of how IPv6 gained adoption. It started as a niche technology only accessible using IPv4-to-IPv6 translation services.</p>
 		</li>
 		<li>
-			<p>IPv6 adoption has now <a href="https://www.internetsociety.org/resources/2018/state-of-ipv6-deployment-2018">grown so much</a> that it is becoming a requirement for new services. For example, <b><b>Apple</b></b><b> is</b> <a href="https://developer.apple.com/support/ipv6"><b>requiring</b></a> <b>that all apps work in IPv6-only contexts.</b></p>
+			<p>IPv6 adoption has now <a href="https://www.internetsociety.org/resources/2018/state-of-ipv6-deployment-2018">grown so much</a> that it is becoming a requirement for new services. For example, <b>Apple is</b> <a href="https://developer.apple.com/support/ipv6"><b>requiring</b></a> <b>that all apps work in IPv6-only contexts.</b></p>
 		</li>
 	</ul>
 	<p>Eventually, as user-side implementations of distributed web technologies improve, people may move to using the distributed web natively rather than through an HTTP gateway. Or they may not! By leveraging Cloudflare’s global network to <b>give users access to new technologies based on distributed trust, we give these technologies a better chance at gaining adoption.</b></p>

@@ -72,7 +72,7 @@ Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X</code></pre>
 	</ul>
 	<p>The operation outputs the ciphertext (C) and the authentication tag (T). The length of C is identical to that of P, and the length of T is 128 bits (although some applications allow for shorter tags). The tag T is computed over A and C, so if even a single bit of either of them is changed, the decryption process will detect the tampering attempt and refuse to use the data. In TLS, the tag T is attached at the end of the ciphertext C.</p>
 	<p>When decrypting the data, the function will receive A, C and T and compute the authentication tag of the received A and C. It will compare the resulting value to T, and only if both are equal it will output the plaintext P.</p>
-	<p>By supporting the two state of the art AEADs - AES-GCM and ChaCha20-Poly1305, together with ECDSA and ECDH algorithms, CloudFlare is able to provide the fastest, most flexible and most secure TLS experience possible to date on all platforms, be it a PC or a mobile phone.</p>
+	<p>By supporting the two state of the art AEADs - AES-GCM and ChaCha20-Poly1305, together with <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">ECDSA</a> and ECDH algorithms, CloudFlare is able to provide the fastest, most flexible and most secure TLS experience possible to date on all platforms, be it a PC or a mobile phone.</p>
 	<div class="flex anchor relative">
 		<h3 id="bottom-line">Bottom line</h3>
 		<a href="https://blog.cloudflare.com/#bottom-line" aria-hidden="true" class="relative sm:absolute sm:-left-5">
