@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations: US Remote, Austin, TX and San Francisco (Bay Area), CA&nbsp;</strong></p>
+<p><strong>Locations: Austin, TX, San Francisco (Bay Area), CA, Denver, CO, Seattle, WA, New York, NY, and Atlanta, GA</strong></p>
 <p><strong>About the Role</strong></p>
 <p>As the Director of Engineering: Adoption, you will lead the engineering efforts behind Cloudflare's dashboard and<a href="http://cloudflare.com/"> cloudflare.com</a>, and will play a central role in helping Cloudflare grow 5x over the next 5 years. Alongside your Product Management counterparts, your mission is to enhance customer and prospect engagement with our products and the company as a whole. You'll tackle challenges such as:</p>
 <ul>
