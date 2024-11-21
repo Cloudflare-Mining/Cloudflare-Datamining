@@ -1084,7 +1084,38 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "\nData loss prevention (DLP) capabilities are key for identifying and blocking data from leaving your organization — and from being used as input for an unsanctioned AI model. \n\nOrganizations also need tools that can prevent SaaS apps from collecting and using internal data to train the app vendors' external models. For one of the companies where I was the CISO, an app vendor created a policy that said anything users entered into the app could be incorporated into the vendor's large language model (LLM). I understood why the vendor would want to do that: There's no doubt it could help them improve their product. For example, if we were using AI to respond to our internal support tickets, we would want to collect data on the top requests at our company. \n\nStill, we wouldn't want potentially sensitive information to leave our organization through another vendor's app. Using a cloud access security broker (CASB) combined with an AI firewall can help prevent that type of data loss. \n",
+																	"value": "\nData loss prevention (DLP) capabilities are key for identifying and blocking data from ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/security/what-is-data-exfiltration/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "leaving your organization",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " — and from being used as input for an unsanctioned AI model. \n\nOrganizations also need tools that can prevent SaaS apps from collecting and using internal data to train the app vendors' external models. For one of the companies where I was the CISO, an app vendor created a policy that said anything users entered into the app could be incorporated into the vendor's large language model (LLM). I understood why the vendor would want to do that: There's no doubt it could help them improve their product. For example, if we were using AI to respond to our internal support tickets, we would want to collect data on the top requests at our company. \n\nStill, we wouldn't want potentially sensitive information to leave our organization through another vendor's app. Using a cloud access security broker (CASB) combined with an AI firewall can help prevent that type of data loss. \n",
 																	"marks": [],
 																	"content": null
 																}

@@ -1118,7 +1118,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In addition, split-tunnelling VPN traffic means remote devices are no longer protected by perimeter-based defenses, increasing their risk of compromise via phishing attacks and exploitation of unpatched software. If a remote device is compromised, and its VPN connection is enabled, an attacker can pivot and gain access to systems within the enterprise network. And when the user logs directly into a SaaS application, the compromised remote device can attempt to exfiltrate data cached within the web browser.",
+													"value": "In addition, split-tunnelling VPN traffic means remote devices are no longer protected by perimeter-based defenses, increasing their risk of compromise via phishing attacks and exploitation of unpatched software. If a remote device is compromised, and its VPN connection is enabled, an attacker can pivot and gain access to systems within the enterprise network. And when the user logs directly into a SaaS application, the compromised remote device can attempt to ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/security/what-is-data-exfiltration/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "exfiltrate data",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " cached within the web browser.",
 													"marks": [],
 													"content": null
 												}
