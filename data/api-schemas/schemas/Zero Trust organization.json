@@ -982,6 +982,15 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"description": "When set to `true`, all devices associated with the user will be revoked.",
+				"example": true,
+				"in": "query",
+				"name": "devices",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"requestBody": {
@@ -989,10 +998,25 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"devices": {
+								"description": "When set to `true`, all devices associated with the user will be revoked.",
+								"example": true,
+								"type": "boolean"
+							},
 							"email": {
 								"description": "The email of the user to revoke.",
 								"example": "test@example.com",
 								"type": "string"
+							},
+							"user_uid": {
+								"description": "The uuid of the user to revoke.",
+								"example": "699d98642c564d2e855e9661899b7252",
+								"type": "string"
+							},
+							"warp_session_reauth": {
+								"description": "When set to `true`, the user will be required to re-authenticate to WARP for all Gateway policies that enforce a WARP client session duration. When `false`, the user’s WARP session will remain active",
+								"example": true,
+								"type": "boolean"
 							}
 						},
 						"required": [
