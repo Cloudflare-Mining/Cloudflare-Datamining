@@ -81,19 +81,26 @@
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li><strong>Internet Expertise</strong></li>
-	<ul>
-		<li>Understanding of how the Internet works at layers 2 through 7, or mastery in a similarly complex domain.</li>
-	</ul>
-	<li><strong>Hands-On Experience</strong></li>
-	<ul>
-		<li>Experience developing web properties or contributing to open-source projects.</li>
-	</ul>
+	<li><strong>Internet Expertise</strong>
+		<ul>
+			<li>Understanding of how the Internet works at layers 2 through 7, or mastery in a similarly complex domain.</li>
+		</ul>
+	</li>
+	<li><strong>Hands-On Experience</strong>
+		<ul>
+			<li>Experience developing web properties or contributing to open-source projects.</li>
+		</ul>
+	</li>
+	<li><strong>Growth Engineering Experience</strong>
+		<ul>
+			<li>Experience in a Consumer or B2B environment where your focus was on product growth</li>
+		</ul>
+	</li>
 </ul>
 <p><strong>Qualifications</strong></p>
 <ul>
 	<li>Bachelor's or Master's degree in Computer Science, Engineering, or equivalent experience</li>
-	<li>10+ years of experience in software engineering, with at least 5 years in leadership roles.</li>
+	<li>15+ years of experience in software engineering, with at least 8 years in leadership roles.</li>
 	<li>Demonstrated excellence in building public-facing UX in an enterprise setting.</li>
 	<li>Proven track record of driving organizational excellence and making tough decisions when necessary.</li>
 </ul>
