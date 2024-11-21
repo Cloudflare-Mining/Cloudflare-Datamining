@@ -7228,13 +7228,13 @@
 			"Devices"
 		]
 	},
-	"GET /zones/{zone_tag}/devices/policy/certificates": {
+	"GET /zones/{zone_id}/devices/policy/certificates": {
 		"description": "Fetches device certificate provisioning",
 		"operationId": "devices-get-policy-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_tag",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -9220,13 +9220,13 @@
 			"Devices"
 		]
 	},
-	"PATCH /zones/{zone_tag}/devices/policy/certificates": {
+	"PATCH /zones/{zone_id}/devices/policy/certificates": {
 		"description": "Enable Zero Trust Clients to provision a certificate, containing a x509 subject, and referenced by Access device posture policies when the client visits MTLS protected domains. This facilitates device posture without a WARP session.",
 		"operationId": "devices-update-policy-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_tag",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
