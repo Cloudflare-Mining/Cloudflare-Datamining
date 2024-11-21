@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX | New York, NY | San Francisco, CA | Washington DC</strong></h3>
+<h3><strong>Available Locations: Austin, TX | New York, NY</strong></h3>
 <h3><strong>About the Department</strong></h3>
 <p>Media Platform is part of Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization. Media Platform is focused on images, video and Cloudflare TV.</p>
 <h3><strong>What you'll do</strong></h3>
