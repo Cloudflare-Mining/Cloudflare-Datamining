@@ -104,7 +104,10 @@
 			"pages": [
 				{
 					"title": "navigation.account.registrar.manage_domains",
-					"url": "/domains"
+					"url": "/domains",
+					"state": {
+						"forceRenderIfNoDomains": true
+					}
 				},
 				{
 					"title": "navigation.account.registrar.transfer_domains",
@@ -1343,9 +1346,10 @@
 					"url": "/zaraz/history"
 				},
 				{
-					"title": "navigation.zone.zaraz.monitoring",
+					"title": "navigation.zone.zaraz.analytics",
 					"navigationType": "global-settings",
-					"url": "/zaraz/monitoring"
+					"url": "/zaraz/monitoring",
+					"tabs": []
 				},
 				{
 					"title": "navigation.zone.zaraz.settings",
