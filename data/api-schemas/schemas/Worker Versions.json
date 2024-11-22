@@ -858,7 +858,7 @@
 									"annotations": {
 										"properties": {
 											"workers/message": {
-												"description": "Human-readable message about the version.",
+												"description": "Human-readable message about the version. Truncated to 100 bytes.",
 												"example": "Fixed worker code.",
 												"maxLength": 100,
 												"type": "string"

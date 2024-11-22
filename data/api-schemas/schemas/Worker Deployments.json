@@ -104,7 +104,7 @@
 																	"annotations": {
 																		"properties": {
 																			"workers/message": {
-																				"description": "Human-readable message about the deployment.",
+																				"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																				"example": "Deploy bug fix.",
 																				"maxLength": 100,
 																				"type": "string"
@@ -280,7 +280,7 @@
 																			"annotations": {
 																				"properties": {
 																					"workers/message": {
-																						"description": "Human-readable message about the deployment.",
+																						"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																						"example": "Deploy bug fix.",
 																						"maxLength": 100,
 																						"type": "string"
@@ -533,7 +533,7 @@
 									"annotations": {
 										"properties": {
 											"workers/message": {
-												"description": "Human-readable message about the deployment.",
+												"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 												"example": "Deploy bug fix.",
 												"maxLength": 100,
 												"type": "string"
@@ -695,7 +695,7 @@
 														"annotations": {
 															"properties": {
 																"workers/message": {
-																	"description": "Human-readable message about the deployment.",
+																	"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																	"example": "Deploy bug fix.",
 																	"maxLength": 100,
 																	"type": "string"
@@ -863,7 +863,7 @@
 																"annotations": {
 																	"properties": {
 																		"workers/message": {
-																			"description": "Human-readable message about the deployment.",
+																			"description": "Human-readable message about the deployment. Truncated to 100 bytes.",
 																			"example": "Deploy bug fix.",
 																			"maxLength": 100,
 																			"type": "string"
