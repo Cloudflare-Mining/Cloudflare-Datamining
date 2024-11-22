@@ -119,7 +119,7 @@ sys    0m0.012s</code></pre>
 	<p>returns immediately because there are no users with a name starting with <code>a</code>. But</p>
 	<pre class="language-bash"><code class="language-bash">curl -A "Mozilla/5.0', (select sleep(20) from users where substring(name,1,1)='j')) #" http://example.com/insecure.php</code></pre>
 	<p>takes 20 seconds. The attacker can then try two letters, three letters, and so on. The same technique can be used to extract other data from the database.</p>
-	<p>If my web app was a little more sophisticated, say, for example, it was part of a blogging platform that allowed comments, it would be possible to use this vulnerability to dump the contents of an entire database table into a comment. The attacker could return and display the appropriate comment to read the table's contents. That way large amounts of data can be exfiltrated.</p>
+	<p>If my web app was a little more sophisticated, say, for example, it was part of a blogging platform that allowed comments, it would be possible to use this vulnerability to dump the contents of an entire database table into a comment. The attacker could return and display the appropriate comment to read the table's contents. That way large amounts of data can be <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration">exfiltrated</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="securing-my-code">Securing my code</h3>
 		<a href="https://blog.cloudflare.com/#securing-my-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">

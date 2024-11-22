@@ -34,7 +34,7 @@
 	</figure>
 	<p>Something similar to this happens in the Spectre/Meltdown attack. The CPU starts executing a branch of code that it has previously learnt is typically the right code to run. But it’s been tricked by a clever attacker and this time it’s the wrong branch. Worse, the code will access memory that it shouldn’t (perhaps from another program) giving it access to otherwise secret information (such as passwords).</p>
 	<p>When the CPU realizes it’s gone the wrong way it forgets all the erroneous work it’s done (and the fact that it accessed memory it shouldn’t have) and executes the correct branch instead. Even though illegal memory was accessed what it contained has been forgotten by the CPU.</p>
-	<p>The core of Meltdown and Spectre is the ability to exfiltrate information, from this speculatively executed code, concerning the illegally accessed memory through what’s known as a “side channel”.</p>
+	<p>The core of Meltdown and Spectre is the ability to <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration">exfiltrate information</a>, from this speculatively executed code, concerning the illegally accessed memory through what’s known as a “side channel”.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZUYu6jBF8RbxSvwfqXHuv/b5b63df0d68a936d8b4efba2d3acdee2/reactor-core-_0.5x.png" alt="" class="kg-image" width="928" height="326" loading="lazy">
