@@ -12,7 +12,7 @@
 	],
 	"internal_job_id": 2975545,
 	"location": {
-		"name": "Remote"
+		"name": "Hybrid"
 	},
 	"metadata": [
 		{
@@ -31,14 +31,19 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
+				"Austin, US",
+				"Denver, US",
 				"Mexico City, Mexico",
-				"US"
+				"New York, US",
+				"Seattle, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6295440,
-	"updated_at": "2024-11-21T10:18:54-05:00",
+	"updated_at": "2024-11-22T14:53:15-05:00",
 	"requisition_id": null,
 	"title": "Data Center Selection Manager",
 	"departments": [
@@ -51,8 +56,43 @@
 	],
 	"offices": [
 		{
-			"id": 75375,
-			"name": "Remote US",
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
