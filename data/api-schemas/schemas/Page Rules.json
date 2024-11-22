@@ -4,6 +4,7 @@
 		"operationId": "page-rules-delete-a-page-rule",
 		"parameters": [
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "pagerule_id",
 				"required": true,
@@ -15,6 +16,7 @@
 				}
 			},
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
@@ -26,12 +28,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -235,6 +231,7 @@
 		"operationId": "page-rules-list-page-rules",
 		"parameters": [
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
@@ -401,12 +398,23 @@
 																{
 																	"properties": {
 																		"id": {
+																			"description": "Turn on or off Automatic HTTPS Rewrites.",
 																			"enum": [
 																				"automatic_https_rewrites"
 																			],
 																			"type": "string"
+																		},
+																		"value": {
+																			"description": "The status of Automatic HTTPS Rewrites.\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
+																	"title": "Automatic HTTPS Rewrites",
 																	"type": "object"
 																},
 																{
@@ -745,12 +753,21 @@
 																{
 																	"properties": {
 																		"id": {
+																			"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 																			"enum": [
 																				"cache_on_cookie"
 																			],
 																			"type": "string"
+																		},
+																		"value": {
+																			"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+																			"example": "bypass=.*|PHPSESSID=.*",
+																			"maxLength": 150,
+																			"minLength": 1,
+																			"type": "string"
 																		}
 																	},
+																	"title": "Cache on Cookie",
 																	"type": "object"
 																},
 																{
@@ -881,12 +898,23 @@
 																{
 																	"properties": {
 																		"id": {
+																			"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 																			"enum": [
 																				"explicit_cache_control"
 																			],
 																			"type": "string"
+																		},
+																		"value": {
+																			"description": "The status of Origin Cache Control.\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
+																	"title": "Origin Cache Control",
 																	"type": "object"
 																},
 																{
@@ -963,17 +991,13 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The status of adding the IP Geolocation Header.\n",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"example": "on",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The status of adding the IP Geolocation Header.\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
 																	"title": "IP Geolocation Header",
@@ -1001,17 +1025,13 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The status of Mirage.\n",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"example": "on",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The status of Mirage.\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
 																	"title": "Mirage",
@@ -1028,17 +1048,13 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The status of Opportunistic Encryption.\n",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"example": "on",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The status of Opportunistic Encryption.\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
 																	"title": "Opportunistic Encryption",
@@ -1055,17 +1071,13 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The status of Origin Error Page Passthru.\n",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"example": "on",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The status of Origin Error Page Passthru.\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
 																	"title": "Origin Error Page Passthru",
@@ -1082,18 +1094,14 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The level of Polish you want applied to your origin.\n",
-																					"enum": [
-																						"off",
-																						"lossless",
-																						"lossy"
-																					],
-																					"example": "lossless",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The level of Polish you want applied to your origin.\n",
+																			"enum": [
+																				"off",
+																				"lossless",
+																				"lossy"
+																			],
+																			"example": "lossless",
+																			"type": "string"
 																		}
 																	},
 																	"title": "Polish",
@@ -1121,13 +1129,9 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The origin address you want to override with.\n",
-																					"example": "example.com",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The origin address you want to override with.\n",
+																			"example": "example.com",
+																			"type": "string"
 																		}
 																	},
 																	"title": "Resolve Override",
@@ -1246,17 +1250,13 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The status of Query String Sort\n",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"example": "on",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The status of Query String Sort\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
 																	"title": "Query String Sort",
@@ -1272,20 +1272,16 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-																					"enum": [
-																						"off",
-																						"flexible",
-																						"full",
-																						"strict",
-																						"origin_pull"
-																					],
-																					"example": "full",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+																			"enum": [
+																				"off",
+																				"flexible",
+																				"full",
+																				"strict",
+																				"origin_pull"
+																			],
+																			"example": "full",
+																			"type": "string"
 																		}
 																	},
 																	"title": "SSL",
@@ -1302,17 +1298,13 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The status of True Client IP Header.\n",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"example": "on",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The status of True Client IP Header.\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
 																	"title": "True Client IP Header",
@@ -1329,17 +1321,13 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"properties": {
-																				"value": {
-																					"description": "The status of WAF managed rules (previous version).\n",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"example": "on",
-																					"type": "string"
-																				}
-																			}
+																			"description": "The status of WAF managed rules (previous version).\n",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	},
 																	"title": "WAF",
@@ -1593,6 +1581,7 @@
 		"operationId": "page-rules-get-a-page-rule",
 		"parameters": [
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "pagerule_id",
 				"required": true,
@@ -1604,6 +1593,7 @@
 				}
 			},
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
@@ -1719,12 +1709,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Turn on or off Automatic HTTPS Rewrites.",
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Automatic HTTPS Rewrites.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Automatic HTTPS Rewrites",
 																"type": "object"
 															},
 															{
@@ -2063,12 +2064,21 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 																		"enum": [
 																			"cache_on_cookie"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+																		"example": "bypass=.*|PHPSESSID=.*",
+																		"maxLength": 150,
+																		"minLength": 1,
+																		"type": "string"
 																	}
 																},
+																"title": "Cache on Cookie",
 																"type": "object"
 															},
 															{
@@ -2199,12 +2209,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 																		"enum": [
 																			"explicit_cache_control"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Origin Cache Control.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Origin Cache Control",
 																"type": "object"
 															},
 															{
@@ -2281,17 +2302,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of adding the IP Geolocation Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of adding the IP Geolocation Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -2319,17 +2336,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Mirage.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Mirage.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Mirage",
@@ -2346,17 +2359,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Opportunistic Encryption.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Opportunistic Encryption.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -2373,17 +2382,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Origin Error Page Passthru.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Origin Error Page Passthru.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -2400,18 +2405,14 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The level of Polish you want applied to your origin.\n",
-																				"enum": [
-																					"off",
-																					"lossless",
-																					"lossy"
-																				],
-																				"example": "lossless",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The level of Polish you want applied to your origin.\n",
+																		"enum": [
+																			"off",
+																			"lossless",
+																			"lossy"
+																		],
+																		"example": "lossless",
+																		"type": "string"
 																	}
 																},
 																"title": "Polish",
@@ -2439,13 +2440,9 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The origin address you want to override with.\n",
-																				"example": "example.com",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The origin address you want to override with.\n",
+																		"example": "example.com",
+																		"type": "string"
 																	}
 																},
 																"title": "Resolve Override",
@@ -2564,17 +2561,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Query String Sort\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Query String Sort\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Query String Sort",
@@ -2590,20 +2583,16 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-																				"enum": [
-																					"off",
-																					"flexible",
-																					"full",
-																					"strict",
-																					"origin_pull"
-																				],
-																				"example": "full",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+																		"enum": [
+																			"off",
+																			"flexible",
+																			"full",
+																			"strict",
+																			"origin_pull"
+																		],
+																		"example": "full",
+																		"type": "string"
 																	}
 																},
 																"title": "SSL",
@@ -2620,17 +2609,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of True Client IP Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of True Client IP Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "True Client IP Header",
@@ -2647,17 +2632,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of WAF managed rules (previous version).\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of WAF managed rules (previous version).\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "WAF",
@@ -2909,6 +2890,7 @@
 		"operationId": "page-rules-edit-a-page-rule",
 		"parameters": [
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "pagerule_id",
 				"required": true,
@@ -2920,6 +2902,7 @@
 				}
 			},
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
@@ -2965,12 +2948,23 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Turn on or off Automatic HTTPS Rewrites.",
 													"enum": [
 														"automatic_https_rewrites"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The status of Automatic HTTPS Rewrites.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
+											"title": "Automatic HTTPS Rewrites",
 											"type": "object"
 										},
 										{
@@ -3309,12 +3303,21 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 													"enum": [
 														"cache_on_cookie"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+													"example": "bypass=.*|PHPSESSID=.*",
+													"maxLength": 150,
+													"minLength": 1,
+													"type": "string"
 												}
 											},
+											"title": "Cache on Cookie",
 											"type": "object"
 										},
 										{
@@ -3445,12 +3448,23 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 													"enum": [
 														"explicit_cache_control"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The status of Origin Cache Control.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
+											"title": "Origin Cache Control",
 											"type": "object"
 										},
 										{
@@ -3527,17 +3541,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of adding the IP Geolocation Header.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of adding the IP Geolocation Header.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "IP Geolocation Header",
@@ -3565,17 +3575,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Mirage.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Mirage.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Mirage",
@@ -3592,17 +3598,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Opportunistic Encryption.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Opportunistic Encryption.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Opportunistic Encryption",
@@ -3619,17 +3621,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Origin Error Page Passthru.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Origin Error Page Passthru.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Origin Error Page Passthru",
@@ -3646,18 +3644,14 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The level of Polish you want applied to your origin.\n",
-															"enum": [
-																"off",
-																"lossless",
-																"lossy"
-															],
-															"example": "lossless",
-															"type": "string"
-														}
-													}
+													"description": "The level of Polish you want applied to your origin.\n",
+													"enum": [
+														"off",
+														"lossless",
+														"lossy"
+													],
+													"example": "lossless",
+													"type": "string"
 												}
 											},
 											"title": "Polish",
@@ -3685,13 +3679,9 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The origin address you want to override with.\n",
-															"example": "example.com",
-															"type": "string"
-														}
-													}
+													"description": "The origin address you want to override with.\n",
+													"example": "example.com",
+													"type": "string"
 												}
 											},
 											"title": "Resolve Override",
@@ -3810,17 +3800,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Query String Sort\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Query String Sort\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Query String Sort",
@@ -3836,20 +3822,16 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-															"enum": [
-																"off",
-																"flexible",
-																"full",
-																"strict",
-																"origin_pull"
-															],
-															"example": "full",
-															"type": "string"
-														}
-													}
+													"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+													"enum": [
+														"off",
+														"flexible",
+														"full",
+														"strict",
+														"origin_pull"
+													],
+													"example": "full",
+													"type": "string"
 												}
 											},
 											"title": "SSL",
@@ -3866,17 +3848,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of True Client IP Header.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of True Client IP Header.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "True Client IP Header",
@@ -3893,17 +3871,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of WAF managed rules (previous version).\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of WAF managed rules (previous version).\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "WAF",
@@ -4115,12 +4089,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Turn on or off Automatic HTTPS Rewrites.",
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Automatic HTTPS Rewrites.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Automatic HTTPS Rewrites",
 																"type": "object"
 															},
 															{
@@ -4459,12 +4444,21 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 																		"enum": [
 																			"cache_on_cookie"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+																		"example": "bypass=.*|PHPSESSID=.*",
+																		"maxLength": 150,
+																		"minLength": 1,
+																		"type": "string"
 																	}
 																},
+																"title": "Cache on Cookie",
 																"type": "object"
 															},
 															{
@@ -4595,12 +4589,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 																		"enum": [
 																			"explicit_cache_control"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Origin Cache Control.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Origin Cache Control",
 																"type": "object"
 															},
 															{
@@ -4677,17 +4682,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of adding the IP Geolocation Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of adding the IP Geolocation Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -4715,17 +4716,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Mirage.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Mirage.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Mirage",
@@ -4742,17 +4739,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Opportunistic Encryption.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Opportunistic Encryption.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -4769,17 +4762,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Origin Error Page Passthru.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Origin Error Page Passthru.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -4796,18 +4785,14 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The level of Polish you want applied to your origin.\n",
-																				"enum": [
-																					"off",
-																					"lossless",
-																					"lossy"
-																				],
-																				"example": "lossless",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The level of Polish you want applied to your origin.\n",
+																		"enum": [
+																			"off",
+																			"lossless",
+																			"lossy"
+																		],
+																		"example": "lossless",
+																		"type": "string"
 																	}
 																},
 																"title": "Polish",
@@ -4835,13 +4820,9 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The origin address you want to override with.\n",
-																				"example": "example.com",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The origin address you want to override with.\n",
+																		"example": "example.com",
+																		"type": "string"
 																	}
 																},
 																"title": "Resolve Override",
@@ -4960,17 +4941,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Query String Sort\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Query String Sort\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Query String Sort",
@@ -4986,20 +4963,16 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-																				"enum": [
-																					"off",
-																					"flexible",
-																					"full",
-																					"strict",
-																					"origin_pull"
-																				],
-																				"example": "full",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+																		"enum": [
+																			"off",
+																			"flexible",
+																			"full",
+																			"strict",
+																			"origin_pull"
+																		],
+																		"example": "full",
+																		"type": "string"
 																	}
 																},
 																"title": "SSL",
@@ -5016,17 +4989,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of True Client IP Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of True Client IP Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "True Client IP Header",
@@ -5043,17 +5012,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of WAF managed rules (previous version).\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of WAF managed rules (previous version).\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "WAF",
@@ -5305,6 +5270,7 @@
 		"operationId": "page-rules-create-a-page-rule",
 		"parameters": [
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
@@ -5350,12 +5316,23 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Turn on or off Automatic HTTPS Rewrites.",
 													"enum": [
 														"automatic_https_rewrites"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The status of Automatic HTTPS Rewrites.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
+											"title": "Automatic HTTPS Rewrites",
 											"type": "object"
 										},
 										{
@@ -5694,12 +5671,21 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 													"enum": [
 														"cache_on_cookie"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+													"example": "bypass=.*|PHPSESSID=.*",
+													"maxLength": 150,
+													"minLength": 1,
+													"type": "string"
 												}
 											},
+											"title": "Cache on Cookie",
 											"type": "object"
 										},
 										{
@@ -5830,12 +5816,23 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 													"enum": [
 														"explicit_cache_control"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The status of Origin Cache Control.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
+											"title": "Origin Cache Control",
 											"type": "object"
 										},
 										{
@@ -5912,17 +5909,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of adding the IP Geolocation Header.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of adding the IP Geolocation Header.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "IP Geolocation Header",
@@ -5950,17 +5943,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Mirage.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Mirage.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Mirage",
@@ -5977,17 +5966,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Opportunistic Encryption.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Opportunistic Encryption.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Opportunistic Encryption",
@@ -6004,17 +5989,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Origin Error Page Passthru.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Origin Error Page Passthru.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Origin Error Page Passthru",
@@ -6031,18 +6012,14 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The level of Polish you want applied to your origin.\n",
-															"enum": [
-																"off",
-																"lossless",
-																"lossy"
-															],
-															"example": "lossless",
-															"type": "string"
-														}
-													}
+													"description": "The level of Polish you want applied to your origin.\n",
+													"enum": [
+														"off",
+														"lossless",
+														"lossy"
+													],
+													"example": "lossless",
+													"type": "string"
 												}
 											},
 											"title": "Polish",
@@ -6070,13 +6047,9 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The origin address you want to override with.\n",
-															"example": "example.com",
-															"type": "string"
-														}
-													}
+													"description": "The origin address you want to override with.\n",
+													"example": "example.com",
+													"type": "string"
 												}
 											},
 											"title": "Resolve Override",
@@ -6195,17 +6168,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Query String Sort\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Query String Sort\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Query String Sort",
@@ -6221,20 +6190,16 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-															"enum": [
-																"off",
-																"flexible",
-																"full",
-																"strict",
-																"origin_pull"
-															],
-															"example": "full",
-															"type": "string"
-														}
-													}
+													"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+													"enum": [
+														"off",
+														"flexible",
+														"full",
+														"strict",
+														"origin_pull"
+													],
+													"example": "full",
+													"type": "string"
 												}
 											},
 											"title": "SSL",
@@ -6251,17 +6216,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of True Client IP Header.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of True Client IP Header.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "True Client IP Header",
@@ -6278,17 +6239,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of WAF managed rules (previous version).\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of WAF managed rules (previous version).\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "WAF",
@@ -6504,12 +6461,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Turn on or off Automatic HTTPS Rewrites.",
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Automatic HTTPS Rewrites.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Automatic HTTPS Rewrites",
 																"type": "object"
 															},
 															{
@@ -6848,12 +6816,21 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 																		"enum": [
 																			"cache_on_cookie"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+																		"example": "bypass=.*|PHPSESSID=.*",
+																		"maxLength": 150,
+																		"minLength": 1,
+																		"type": "string"
 																	}
 																},
+																"title": "Cache on Cookie",
 																"type": "object"
 															},
 															{
@@ -6984,12 +6961,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 																		"enum": [
 																			"explicit_cache_control"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Origin Cache Control.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Origin Cache Control",
 																"type": "object"
 															},
 															{
@@ -7066,17 +7054,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of adding the IP Geolocation Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of adding the IP Geolocation Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -7104,17 +7088,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Mirage.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Mirage.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Mirage",
@@ -7131,17 +7111,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Opportunistic Encryption.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Opportunistic Encryption.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -7158,17 +7134,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Origin Error Page Passthru.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Origin Error Page Passthru.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -7185,18 +7157,14 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The level of Polish you want applied to your origin.\n",
-																				"enum": [
-																					"off",
-																					"lossless",
-																					"lossy"
-																				],
-																				"example": "lossless",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The level of Polish you want applied to your origin.\n",
+																		"enum": [
+																			"off",
+																			"lossless",
+																			"lossy"
+																		],
+																		"example": "lossless",
+																		"type": "string"
 																	}
 																},
 																"title": "Polish",
@@ -7224,13 +7192,9 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The origin address you want to override with.\n",
-																				"example": "example.com",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The origin address you want to override with.\n",
+																		"example": "example.com",
+																		"type": "string"
 																	}
 																},
 																"title": "Resolve Override",
@@ -7349,17 +7313,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Query String Sort\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Query String Sort\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Query String Sort",
@@ -7375,20 +7335,16 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-																				"enum": [
-																					"off",
-																					"flexible",
-																					"full",
-																					"strict",
-																					"origin_pull"
-																				],
-																				"example": "full",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+																		"enum": [
+																			"off",
+																			"flexible",
+																			"full",
+																			"strict",
+																			"origin_pull"
+																		],
+																		"example": "full",
+																		"type": "string"
 																	}
 																},
 																"title": "SSL",
@@ -7405,17 +7361,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of True Client IP Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of True Client IP Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "True Client IP Header",
@@ -7432,17 +7384,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of WAF managed rules (previous version).\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of WAF managed rules (previous version).\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "WAF",
@@ -7694,6 +7642,7 @@
 		"operationId": "page-rules-update-a-page-rule",
 		"parameters": [
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "pagerule_id",
 				"required": true,
@@ -7705,6 +7654,7 @@
 				}
 			},
 			{
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"in": "path",
 				"name": "zone_id",
 				"required": true,
@@ -7750,12 +7700,23 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Turn on or off Automatic HTTPS Rewrites.",
 													"enum": [
 														"automatic_https_rewrites"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The status of Automatic HTTPS Rewrites.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
+											"title": "Automatic HTTPS Rewrites",
 											"type": "object"
 										},
 										{
@@ -8094,12 +8055,21 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 													"enum": [
 														"cache_on_cookie"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+													"example": "bypass=.*|PHPSESSID=.*",
+													"maxLength": 150,
+													"minLength": 1,
+													"type": "string"
 												}
 											},
+											"title": "Cache on Cookie",
 											"type": "object"
 										},
 										{
@@ -8230,12 +8200,23 @@
 										{
 											"properties": {
 												"id": {
+													"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 													"enum": [
 														"explicit_cache_control"
 													],
 													"type": "string"
+												},
+												"value": {
+													"description": "The status of Origin Cache Control.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
+											"title": "Origin Cache Control",
 											"type": "object"
 										},
 										{
@@ -8312,17 +8293,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of adding the IP Geolocation Header.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of adding the IP Geolocation Header.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "IP Geolocation Header",
@@ -8350,17 +8327,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Mirage.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Mirage.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Mirage",
@@ -8377,17 +8350,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Opportunistic Encryption.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Opportunistic Encryption.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Opportunistic Encryption",
@@ -8404,17 +8373,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Origin Error Page Passthru.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Origin Error Page Passthru.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Origin Error Page Passthru",
@@ -8431,18 +8396,14 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The level of Polish you want applied to your origin.\n",
-															"enum": [
-																"off",
-																"lossless",
-																"lossy"
-															],
-															"example": "lossless",
-															"type": "string"
-														}
-													}
+													"description": "The level of Polish you want applied to your origin.\n",
+													"enum": [
+														"off",
+														"lossless",
+														"lossy"
+													],
+													"example": "lossless",
+													"type": "string"
 												}
 											},
 											"title": "Polish",
@@ -8470,13 +8431,9 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The origin address you want to override with.\n",
-															"example": "example.com",
-															"type": "string"
-														}
-													}
+													"description": "The origin address you want to override with.\n",
+													"example": "example.com",
+													"type": "string"
 												}
 											},
 											"title": "Resolve Override",
@@ -8595,17 +8552,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of Query String Sort\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of Query String Sort\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "Query String Sort",
@@ -8621,20 +8574,16 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-															"enum": [
-																"off",
-																"flexible",
-																"full",
-																"strict",
-																"origin_pull"
-															],
-															"example": "full",
-															"type": "string"
-														}
-													}
+													"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+													"enum": [
+														"off",
+														"flexible",
+														"full",
+														"strict",
+														"origin_pull"
+													],
+													"example": "full",
+													"type": "string"
 												}
 											},
 											"title": "SSL",
@@ -8651,17 +8600,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of True Client IP Header.\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of True Client IP Header.\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "True Client IP Header",
@@ -8678,17 +8623,13 @@
 													"type": "string"
 												},
 												"value": {
-													"properties": {
-														"value": {
-															"description": "The status of WAF managed rules (previous version).\n",
-															"enum": [
-																"on",
-																"off"
-															],
-															"example": "on",
-															"type": "string"
-														}
-													}
+													"description": "The status of WAF managed rules (previous version).\n",
+													"enum": [
+														"on",
+														"off"
+													],
+													"example": "on",
+													"type": "string"
 												}
 											},
 											"title": "WAF",
@@ -8904,12 +8845,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Turn on or off Automatic HTTPS Rewrites.",
 																		"enum": [
 																			"automatic_https_rewrites"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Automatic HTTPS Rewrites.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Automatic HTTPS Rewrites",
 																"type": "object"
 															},
 															{
@@ -9248,12 +9200,21 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Apply the Cache Everything option (Cache Level setting) based on a\nregular expression match against a cookie name.\n",
 																		"enum": [
 																			"cache_on_cookie"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The regular expression to use for matching cookie names in the\nrequest.\n",
+																		"example": "bypass=.*|PHPSESSID=.*",
+																		"maxLength": 150,
+																		"minLength": 1,
+																		"type": "string"
 																	}
 																},
+																"title": "Cache on Cookie",
 																"type": "object"
 															},
 															{
@@ -9384,12 +9345,23 @@
 															{
 																"properties": {
 																	"id": {
+																		"description": "Origin Cache Control is enabled by default for Free, Pro, and\nBusiness domains and disabled by default for Enterprise domains.\n",
 																		"enum": [
 																			"explicit_cache_control"
 																		],
 																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The status of Origin Cache Control.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
+																"title": "Origin Cache Control",
 																"type": "object"
 															},
 															{
@@ -9466,17 +9438,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of adding the IP Geolocation Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of adding the IP Geolocation Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "IP Geolocation Header",
@@ -9504,17 +9472,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Mirage.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Mirage.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Mirage",
@@ -9531,17 +9495,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Opportunistic Encryption.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Opportunistic Encryption.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Opportunistic Encryption",
@@ -9558,17 +9518,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Origin Error Page Passthru.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Origin Error Page Passthru.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Origin Error Page Passthru",
@@ -9585,18 +9541,14 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The level of Polish you want applied to your origin.\n",
-																				"enum": [
-																					"off",
-																					"lossless",
-																					"lossy"
-																				],
-																				"example": "lossless",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The level of Polish you want applied to your origin.\n",
+																		"enum": [
+																			"off",
+																			"lossless",
+																			"lossy"
+																		],
+																		"example": "lossless",
+																		"type": "string"
 																	}
 																},
 																"title": "Polish",
@@ -9624,13 +9576,9 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The origin address you want to override with.\n",
-																				"example": "example.com",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The origin address you want to override with.\n",
+																		"example": "example.com",
+																		"type": "string"
 																	}
 																},
 																"title": "Resolve Override",
@@ -9749,17 +9697,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of Query String Sort\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of Query String Sort\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "Query String Sort",
@@ -9775,20 +9719,16 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
-																				"enum": [
-																					"off",
-																					"flexible",
-																					"full",
-																					"strict",
-																					"origin_pull"
-																				],
-																				"example": "full",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The encryption mode that Cloudflare uses to connect to your origin server.\n",
+																		"enum": [
+																			"off",
+																			"flexible",
+																			"full",
+																			"strict",
+																			"origin_pull"
+																		],
+																		"example": "full",
+																		"type": "string"
 																	}
 																},
 																"title": "SSL",
@@ -9805,17 +9745,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of True Client IP Header.\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of True Client IP Header.\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "True Client IP Header",
@@ -9832,17 +9768,13 @@
 																		"type": "string"
 																	},
 																	"value": {
-																		"properties": {
-																			"value": {
-																				"description": "The status of WAF managed rules (previous version).\n",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"example": "on",
-																				"type": "string"
-																			}
-																		}
+																		"description": "The status of WAF managed rules (previous version).\n",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string"
 																	}
 																},
 																"title": "WAF",
