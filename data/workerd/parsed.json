@@ -2717,6 +2717,14 @@
 						"compatEnableDate": "2024-12-02",
 						"compatEnableFlag": "disable_top_level_await_in_require"
 					}
+				},
+				{
+					"name": "fixupTransformStreamBackpressure",
+					"annotations": {
+						"compatDisableFlag": "original-transform-stream-backpressure",
+						"compatEnableDate": "2024-12-16",
+						"compatEnableFlag": "fixup-transform-stream-backpressure"
+					}
 				}
 			]
 		},
