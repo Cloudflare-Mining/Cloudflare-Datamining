@@ -163,7 +163,21 @@
 									},
 									"description": "icon general information blue"
 								},
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "8982f717-16ac-5248-be9e-72f62a5ba104",
+									"altText": "Info blue",
+									"title": "Info blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/SAs3NRmywD4ydBAsj8z6L/8ecedebe7d84f1abe074fee24bc9bf6b/info.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -585,6 +599,21 @@
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
 									},
 									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
+								"altText": "Logo lending tree trusted by gray",
+								"title": "Logo lending tree trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
+									},
+									"description": null
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
@@ -7346,184 +7375,6 @@
 												"locale": "en-US"
 											},
 											"annualPricingCta": null
-										}
-									},
-									{
-										"contentTypeId": "planElementFeatureValueText",
-										"contentfulId": "1JsW4GZpluGplGBhKcW5bq",
-										"textValue": "Custom Pricing",
-										"plan": {
-											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
-											"contentTypeId": "planElementPlan",
-											"entryTitle": "Application Services - Enterprise Plan",
-											"name": "Enterprise",
-											"description": "For mission-critical applications that are core to your business.",
-											"pricingDescription": "Billed annually",
-											"price": null,
-											"currency": null,
-											"customPricingText": "Custom",
-											"monthlyPricingText": "Custom",
-											"annualPricingText": "Custom",
-											"billingCycle": null,
-											"customPricingCta": {
-												"buttonAssetFile": null,
-												"buttonTextLoggedIn": null,
-												"contentTypeId": "button",
-												"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
-												"elementName": "Enterprise Plan-Talk to an Expert (popup form)",
-												"standardText": null,
-												"text": "Talk to an Expert",
-												"url": "#talk-to-an-expert-enterprise-form-modal",
-												"loggedInUrl": null,
-												"buttonModal": {
-													"contentTypeId": "formModal",
-													"contentfulId": "3woL2JQXfu78rDTE3BrjaC",
-													"modalName": "Plans page - Talk to an Expert - Enterprise form modal",
-													"modalId": "plans-page-talk-to-an-expert-enterprise-form-modal",
-													"modalType": "single-form",
-													"marketoForm": {
-														"contentTypeId": "marketoEmbeddedForm",
-														"contentfulId": "5MjC5W1qncrQr8O9nIXgrX",
-														"bladeName": "Plans Enterprise Contact Us Form (4116)",
-														"backgroundColor": "blue",
-														"marketoFormId": 4116,
-														"marketoFormLeadSource": "Inbound - Web Form",
-														"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-														"marketoFormHeaderText": null,
-														"marketoFormDefaultComment": null,
-														"showCommentBox": true,
-														"marketoFormThankYouText": null,
-														"marketoFormCustomSuccessMessage": null,
-														"marketoFormPdfDownload": null,
-														"marketoFormPdfDownloadI18n": [],
-														"marketoFormAssetDownloadButtonText": null,
-														"marketoFormSuccessRedirectUrl": null,
-														"sendAdRoll": true,
-														"meta_adRollCustomSegment": null,
-														"enableSandbox": null,
-														"marketoFormSubmitButtonText": null,
-														"marketoFormSubmitButtonColor": null,
-														"enableEmailVerification": null,
-														"disableEnterpriseEmailNotification": null,
-														"enableRingout": null
-													},
-													"title": "Talk to an expert about our Enterprise plan",
-													"regularCopy": null,
-													"splitFormDefaultTab": null,
-													"selfServeTabText": null,
-													"selfServeCopy": null,
-													"enterpriseTabText": null,
-													"enterpriseCopy": null
-												},
-												"openInNewTab": false,
-												"locale": "en-US"
-											},
-											"monthlyPricingCta": {
-												"buttonAssetFile": null,
-												"buttonTextLoggedIn": null,
-												"contentTypeId": "button",
-												"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
-												"elementName": "Enterprise Plan-Talk to an Expert (popup form)",
-												"standardText": null,
-												"text": "Talk to an Expert",
-												"url": "#talk-to-an-expert-enterprise-form-modal",
-												"loggedInUrl": null,
-												"buttonModal": {
-													"contentTypeId": "formModal",
-													"contentfulId": "3woL2JQXfu78rDTE3BrjaC",
-													"modalName": "Plans page - Talk to an Expert - Enterprise form modal",
-													"modalId": "plans-page-talk-to-an-expert-enterprise-form-modal",
-													"modalType": "single-form",
-													"marketoForm": {
-														"contentTypeId": "marketoEmbeddedForm",
-														"contentfulId": "5MjC5W1qncrQr8O9nIXgrX",
-														"bladeName": "Plans Enterprise Contact Us Form (4116)",
-														"backgroundColor": "blue",
-														"marketoFormId": 4116,
-														"marketoFormLeadSource": "Inbound - Web Form",
-														"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-														"marketoFormHeaderText": null,
-														"marketoFormDefaultComment": null,
-														"showCommentBox": true,
-														"marketoFormThankYouText": null,
-														"marketoFormCustomSuccessMessage": null,
-														"marketoFormPdfDownload": null,
-														"marketoFormPdfDownloadI18n": [],
-														"marketoFormAssetDownloadButtonText": null,
-														"marketoFormSuccessRedirectUrl": null,
-														"sendAdRoll": true,
-														"meta_adRollCustomSegment": null,
-														"enableSandbox": null,
-														"marketoFormSubmitButtonText": null,
-														"marketoFormSubmitButtonColor": null,
-														"enableEmailVerification": null,
-														"disableEnterpriseEmailNotification": null,
-														"enableRingout": null
-													},
-													"title": "Talk to an expert about our Enterprise plan",
-													"regularCopy": null,
-													"splitFormDefaultTab": null,
-													"selfServeTabText": null,
-													"selfServeCopy": null,
-													"enterpriseTabText": null,
-													"enterpriseCopy": null
-												},
-												"openInNewTab": false,
-												"locale": "en-US"
-											},
-											"annualPricingCta": {
-												"buttonAssetFile": null,
-												"buttonTextLoggedIn": null,
-												"contentTypeId": "button",
-												"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
-												"elementName": "Enterprise Plan-Talk to an Expert (popup form)",
-												"standardText": null,
-												"text": "Talk to an Expert",
-												"url": "#talk-to-an-expert-enterprise-form-modal",
-												"loggedInUrl": null,
-												"buttonModal": {
-													"contentTypeId": "formModal",
-													"contentfulId": "3woL2JQXfu78rDTE3BrjaC",
-													"modalName": "Plans page - Talk to an Expert - Enterprise form modal",
-													"modalId": "plans-page-talk-to-an-expert-enterprise-form-modal",
-													"modalType": "single-form",
-													"marketoForm": {
-														"contentTypeId": "marketoEmbeddedForm",
-														"contentfulId": "5MjC5W1qncrQr8O9nIXgrX",
-														"bladeName": "Plans Enterprise Contact Us Form (4116)",
-														"backgroundColor": "blue",
-														"marketoFormId": 4116,
-														"marketoFormLeadSource": "Inbound - Web Form",
-														"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
-														"marketoFormHeaderText": null,
-														"marketoFormDefaultComment": null,
-														"showCommentBox": true,
-														"marketoFormThankYouText": null,
-														"marketoFormCustomSuccessMessage": null,
-														"marketoFormPdfDownload": null,
-														"marketoFormPdfDownloadI18n": [],
-														"marketoFormAssetDownloadButtonText": null,
-														"marketoFormSuccessRedirectUrl": null,
-														"sendAdRoll": true,
-														"meta_adRollCustomSegment": null,
-														"enableSandbox": null,
-														"marketoFormSubmitButtonText": null,
-														"marketoFormSubmitButtonColor": null,
-														"enableEmailVerification": null,
-														"disableEnterpriseEmailNotification": null,
-														"enableRingout": null
-													},
-													"title": "Talk to an expert about our Enterprise plan",
-													"regularCopy": null,
-													"splitFormDefaultTab": null,
-													"selfServeTabText": null,
-													"selfServeCopy": null,
-													"enterpriseTabText": null,
-													"enterpriseCopy": null
-												},
-												"openInNewTab": false,
-												"locale": "en-US"
-											}
 										}
 									}
 								]
