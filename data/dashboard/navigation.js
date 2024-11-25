@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: I => (0, e.z1)(C.Mr)(I) && (0, Q.z7)(I) && !!(0, Q.z$)(I).length
+		hasPermission: I => (0, e.z1)(C.Mr)(I) && (0, Z.z7)(I) && !!(0, Z.z$)(I).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -192,7 +192,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: Z.T
+		hasPermission: F.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -252,8 +252,8 @@ const navigation = {
 		url: "/network-security/ddos",
 		iconType: "cloudflare-security-network",
 		hasPermission: I => {
-			const F = !!(0, a.Wq)(I) && !!(0, a.fO)(I);
-			return !!(0, a.us)(I) || F
+			const W = !!(0, a.Wq)(I) && !!(0, a.fO)(I);
+			return !!(0, a.us)(I) || W
 		},
 		tabs: s.Dn,
 		pages: [{
@@ -287,8 +287,8 @@ const navigation = {
 		title: "navigation.account.zero_trust",
 		url: () => {
 			const I = (0, i.e1)(),
-				F = "https://one.dash.cloudflare.com";
-			return I ? `${F}/${I}/` : F
+				W = "https://one.dash.cloudflare.com";
+			return I ? `${W}/${I}/` : W
 		},
 		iconType: "cloudflare-zero-trust",
 		labels: I => (0, e.z1)("zt-sidebar")(I) ? [] : ["external-link"],
@@ -408,8 +408,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: I => {
-				const F = (0, L.tJ)(I);
-				return !(0, M.ky)(F, [A.uD.EnterpriseTrial])
+				const W = (0, L.tJ)(I);
+				return !(0, M.ky)(W, [A.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -650,16 +650,16 @@ const navigation = {
 			url: "/analytics/originReachability",
 			navigationType: "global-settings",
 			hasPermission: I => {
-				const F = (0, c.nA)(I);
-				return F ? !!(!(0, l.yD)(I) && !!(0, c.ZB)(I, "origin_reachability_dash", "dash_view") && (0, c.tU)(F, "enterprise") && !!(0, m.Ek)(I, "httpRequestsAdaptiveGroups")) : !1
+				const W = (0, c.nA)(I);
+				return W ? !!(!(0, l.yD)(I) && !!(0, c.ZB)(I, "origin_reachability_dash", "dash_view") && (0, c.tU)(W, "enterprise") && !!(0, m.Ek)(I, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			navigationType: "global-settings",
 			hasPermission: I => {
-				const F = (0, c.nA)(I);
-				return F ? !!(!(0, l.yD)(I) && !!(0, c.ZB)(I, "edge_reachability_dash", "dash_view") && (0, c.tU)(F, "enterprise") && !!(0, m.Ek)(I, "nelReportsAdaptiveGroups")) : !1
+				const W = (0, c.nA)(I);
+				return W ? !!(!(0, l.yD)(I) && !!(0, c.ZB)(I, "edge_reachability_dash", "dash_view") && (0, c.tU)(W, "enterprise") && !!(0, m.Ek)(I, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -749,12 +749,12 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: I => {
-			const F = (0, c.nA)(I);
-			if ((0, l.yD)(I) || !(0, a.wB)(I, "zone_settings", "spectrum.app") || !F) return !1;
+			const W = (0, c.nA)(I);
+			if ((0, l.yD)(I) || !(0, a.wB)(I, "zone_settings", "spectrum.app") || !W) return !1;
 			const K = !!((0, f.l8)(I) || (0, c.DQ)(I)),
 				ee = !!(0, c.ZB)(I, "spectrum", "enabled"),
-				G = !!(0, c.Ns)(F);
-			return ee || K || !G
+				H = !!(0, c.Ns)(W);
+			return ee || K || !H
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -1077,7 +1077,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: I => !!(0, W.GM)(I) && !!(0, e.z1)("zaraz-plans-page-access")(I)
+			hasPermission: I => !!(0, G.GM)(I) && !!(0, e.z1)("zaraz-plans-page-access")(I)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
@@ -1085,8 +1085,8 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "web3",
 		hasPermission: I => {
-			const F = (0, n.uF)(I);
-			return ((F == null ? void 0 : F.roles) || []).includes("Trust and Safety") ? !1 : !(0, l.yD)(I)
+			const W = (0, n.uF)(I);
+			return ((W == null ? void 0 : W.roles) || []).includes("Trust and Safety") ? !1 : !(0, l.yD)(I)
 		}
 	}],
 	zeroTrust: [{
