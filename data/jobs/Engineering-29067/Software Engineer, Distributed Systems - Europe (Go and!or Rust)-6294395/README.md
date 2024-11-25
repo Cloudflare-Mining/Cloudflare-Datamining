@@ -6,8 +6,8 @@
 	</div>
 </div>
 <p><strong>About the Teams</strong></p>
-<p><strong><em>Role location: London, Remote UK, Lisbon, Remote Portugal</em></strong></p>
-<p></p>
+<p><strong><em>Role location: London or Lisbon</em></strong></p>
+<p>&nbsp;</p>
 <p><span style="font-weight: 400;">Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products,&nbsp; help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</span></p>
 <p><span style="font-weight: 400;">Cloudflare is a fast growing company and engineering is an ever-evolving function with teams being formed and redefined often. You will interview for an engineering role at Cloudflare and will have the opportunity to meet with and ultimately select one or more teams.&nbsp; Here are a few examples of the teams that you could be part of.</span></p>
 <p><strong>Application Performance; Application Security; Zero Trust Services; Serverless, Bot Management; DDoS Protection; Network Services / Magic Products; Full Stack / Microservices; Security / Cryptography; Content Delivery; Email Security; API Security; Client / WARP applications; Machine Learning; Threat Intelligence</strong></p>
@@ -39,7 +39,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing and building APIs</span></li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
