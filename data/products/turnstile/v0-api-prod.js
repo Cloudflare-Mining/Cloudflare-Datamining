@@ -538,7 +538,7 @@
 	}
 	var St = function(e, r, n) {
 			var o = wt(r.params, !1),
-				c = "h/".concat("b", "/"),
+				c = "h/".concat("g", "/"),
 				u, g, h = "".concat(o, "/cdn-cgi/challenge-platform/").concat(c, "feedback-reports/").concat(ze(e), "/").concat(r.displayLanguage, "/").concat((u = r.params.theme) !== null && u !== void 0 ? u : r.theme, "/").concat(n);
 			r.wrapper.parentNode || m("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
 			var l = document.createElement("div");
@@ -955,7 +955,7 @@
 					(!s || !v) && m("Widget ".concat(i, " to reset was not found."), 3330), t.params.appearance === X.INTERACTION_ONLY && br(v), t.params.sitekey === null && m("Unexpected Error: Sitekey is null", 3347);
 					var x = v.cloneNode(),
 						w;
-					x.src = Tt(i, t.params.sitekey, t.params, (w = t.rcV) !== null && w !== void 0 ? w : Y, !1, "b", ht(t)), (f = v.parentNode) === null || f === void 0 || f.replaceChild(x, v), Nt(s), t.retryTimeout && window.clearTimeout(t.retryTimeout)
+					x.src = Tt(i, t.params.sitekey, t.params, (w = t.rcV) !== null && w !== void 0 ? w : Y, !1, "g", ht(t)), (f = v.parentNode) === null || f === void 0 || f.replaceChild(x, v), Nt(s), t.retryTimeout && window.clearTimeout(t.retryTimeout)
 				} else m("Widget ".concat(i, " to reset was not found."), 3331)
 			},
 			E = function(a) {
@@ -1091,7 +1091,7 @@
 							isOverrunning: !1
 						})), Ot(y);
 						var Je = y.widgetMap.get(Re);
-						Je || m("Turnstile Initialization Error ", 3606), B.style.display = "none", B.style.border = "none", B.style.overflow = "hidden", B.setAttribute("src", Tt(Re, H, d, Y, !1, "b", ht(Je))), B.onerror = function() {
+						Je || m("Turnstile Initialization Error ", 3606), B.style.display = "none", B.style.border = "none", B.style.overflow = "hidden", B.setAttribute("src", Tt(Re, H, d, Y, !1, "g", ht(Je))), B.onerror = function() {
 							if (G) {
 								G == null || G(String(Xt.code));
 								return
@@ -1152,7 +1152,7 @@
 					switch (d.label) {
 						case 0:
 							if (f = _.params.sitekey, s = Er(), !s) return b("Cannot determine Turnstile's embedded location, aborting clearance redemption."), n(_, a, !1), [2];
-							v = "h/".concat("b", "/"), x = new URL(s), w = "https", A = "", U = "".concat(w, "://").concat(x.host, "/cdn-cgi/challenge-platform/").concat(v, "rc/").concat(t).concat(A), d.label = 1;
+							v = "h/".concat("g", "/"), x = new URL(s), w = "https", A = "", U = "".concat(w, "://").concat(x.host, "/cdn-cgi/challenge-platform/").concat(v, "rc/").concat(t).concat(A), d.label = 1;
 						case 1:
 							return d.trys.push([1, 6, , 7]), [4, fetch(U, {
 								method: "POST",
@@ -1368,7 +1368,7 @@
 								cData: t.cData,
 								chlPageData: t.chlPageData,
 								rcV: t.rcV,
-								ch: "a6e12e96a2d5",
+								ch: "e4025c85ea63",
 								au: y.scriptUrl,
 								url: Er(),
 								retry: t.params.retry,
