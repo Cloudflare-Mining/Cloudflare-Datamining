@@ -2,7 +2,7 @@
 	"description": "Rules maintained by bots team that can run for all plans",
 	"id": "3e677e63d4e9479382576f3fa66279e7",
 	"kind": "managed",
-	"last_updated": "2024-11-13T00:24:24.512812Z",
+	"last_updated": "2024-11-26T17:15:34.314543Z",
 	"name": "Cloudflare Bot Management rules for all plans",
 	"phase": "http_request_sbfm",
 	"rules": [
@@ -11,11 +11,11 @@
 			"description": "Manage AI bots",
 			"enabled": false,
 			"id": "7bd01eeccb6b420fa0be30264603a5cb",
-			"last_updated": "2024-11-13T00:24:24.512812Z",
+			"last_updated": "2024-11-26T17:15:34.314543Z",
 			"ref": "ai-bots-block",
-			"version": "7"
+			"version": "8"
 		}
 	],
 	"source": "firewall_managed",
-	"version": "7"
+	"version": "8"
 }
