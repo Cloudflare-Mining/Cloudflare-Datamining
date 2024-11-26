@@ -539,6 +539,10 @@
 	"AccountCallsTurnUsageAdaptiveGroupsDimensions": {
 		"__description": "",
 		"customIdentifier": "The customIdentifier (provided when credential was generated) that generated traffic",
+		"datacenterCity": "City of the Cloudflare datacenter",
+		"datacenterCode": "IATA airport code of the Cloudflare datacenter",
+		"datacenterCountry": "Country of the Cloudflare datacenter",
+		"datacenterRegion": "Region of the Cloudflare datacenter",
 		"date": "Calls TURN bandwidth metrics date",
 		"datetimeFifteenMinutes": "Calls TURN bandwidth metrics timestamp, truncated to fifteen minutes",
 		"datetimeFiveMinutes": "Calls TURN bandwidth metrics timestamp, truncated to five minutes",
