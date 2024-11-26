@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/shares/{share_identifier}": {
+	"DELETE /accounts/{account_id}/shares/{share_id}": {
 		"description": "Deletion is not immediate, an updated share object with a new status will be returned.",
 		"operationId": "share-delete",
 		"parameters": [
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -319,7 +319,7 @@
 			"pro": false
 		}
 	},
-	"DELETE /accounts/{account_id}/shares/{share_identifier}/recipients/{recipient_identifier}": {
+	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"description": "Deletion is not immediate, an updated share recipient object with a new status will be returned.",
 		"operationId": "share-recipient-delete",
 		"parameters": [
@@ -336,7 +336,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -347,7 +347,7 @@
 			},
 			{
 				"in": "path",
-				"name": "recipient_identifier",
+				"name": "recipient_id",
 				"required": true,
 				"schema": {
 					"description": "Share Recipient identifier tag.",
@@ -624,7 +624,7 @@
 			"pro": false
 		}
 	},
-	"DELETE /accounts/{account_id}/shares/{share_identifier}/resources/{resource_identifier}": {
+	"DELETE /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
 		"description": "Deletion is not immediate, an updated share resource object with a new status will be returned.",
 		"operationId": "share-resource-delete",
 		"parameters": [
@@ -641,7 +641,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -652,7 +652,7 @@
 			},
 			{
 				"in": "path",
-				"name": "resource_identifier",
+				"name": "resource_id",
 				"required": true,
 				"schema": {
 					"description": "Share Resource identifier.",
@@ -757,7 +757,8 @@
 												"resource_type": {
 													"description": "Resource Type.",
 													"enum": [
-														"custom-ruleset"
+														"custom-ruleset",
+														"widget"
 													],
 													"type": "string"
 												},
@@ -1390,7 +1391,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/shares/{share_identifier}": {
+	"GET /accounts/{account_id}/shares/{share_id}": {
 		"description": "Fetches share by ID.",
 		"operationId": "shares-get-by-id",
 		"parameters": [
@@ -1407,7 +1408,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -1710,7 +1711,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/shares/{share_identifier}/recipients": {
+	"GET /accounts/{account_id}/shares/{share_id}/recipients": {
 		"description": "List share recipients by share ID.",
 		"operationId": "share-recipients-list",
 		"parameters": [
@@ -1727,7 +1728,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -2074,7 +2075,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/shares/{share_identifier}/recipients/{recipient_identifier}": {
+	"GET /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"description": "Get share recipient by ID.",
 		"operationId": "share-recipients-get-by-id",
 		"parameters": [
@@ -2091,7 +2092,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -2102,7 +2103,7 @@
 			},
 			{
 				"in": "path",
-				"name": "recipient_identifier",
+				"name": "recipient_id",
 				"required": true,
 				"schema": {
 					"description": "Share Recipient identifier tag.",
@@ -2379,7 +2380,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/shares/{share_identifier}/resources": {
+	"GET /accounts/{account_id}/shares/{share_id}/resources": {
 		"description": "List share resources by share ID.",
 		"operationId": "share-resources-list",
 		"parameters": [
@@ -2396,7 +2397,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -2426,7 +2427,8 @@
 				"schema": {
 					"description": "Resource Type.",
 					"enum": [
-						"custom-ruleset"
+						"custom-ruleset",
+						"widget"
 					],
 					"type": "string"
 				}
@@ -2595,7 +2597,8 @@
 													"resource_type": {
 														"description": "Resource Type.",
 														"enum": [
-															"custom-ruleset"
+															"custom-ruleset",
+															"widget"
 														],
 														"type": "string"
 													},
@@ -2787,7 +2790,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/shares/{share_identifier}/resources/{resource_identifier}": {
+	"GET /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
 		"description": "Get share resource by ID.",
 		"operationId": "share-resources-get-by-id",
 		"parameters": [
@@ -2804,7 +2807,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -2815,7 +2818,7 @@
 			},
 			{
 				"in": "path",
-				"name": "resource_identifier",
+				"name": "resource_id",
 				"required": true,
 				"schema": {
 					"description": "Share Resource identifier.",
@@ -2920,7 +2923,8 @@
 												"resource_type": {
 													"description": "Resource Type.",
 													"enum": [
-														"custom-ruleset"
+														"custom-ruleset",
+														"widget"
 													],
 													"type": "string"
 												},
@@ -3621,7 +3625,8 @@
 										"resource_type": {
 											"description": "Resource Type.",
 											"enum": [
-												"custom-ruleset"
+												"custom-ruleset",
+												"widget"
 											],
 											"type": "string"
 										}
@@ -3941,7 +3946,7 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_id}/shares/{share_identifier}/recipients": {
+	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipient-create",
 		"parameters": [
 			{
@@ -3957,7 +3962,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -4259,7 +4264,7 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_id}/shares/{share_identifier}/resources": {
+	"POST /accounts/{account_id}/shares/{share_id}/resources": {
 		"operationId": "share-resource-create",
 		"parameters": [
 			{
@@ -4275,7 +4280,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -4309,7 +4314,8 @@
 							"resource_type": {
 								"description": "Resource Type.",
 								"enum": [
-									"custom-ruleset"
+									"custom-ruleset",
+									"widget"
 								],
 								"type": "string"
 							}
@@ -4421,7 +4427,8 @@
 												"resource_type": {
 													"description": "Resource Type.",
 													"enum": [
-														"custom-ruleset"
+														"custom-ruleset",
+														"widget"
 													],
 													"type": "string"
 												},
@@ -4611,7 +4618,7 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_id}/shares/{share_identifier}": {
+	"PUT /accounts/{account_id}/shares/{share_id}": {
 		"description": "Updating is not immediate, an updated share object with a new status will be returned.",
 		"operationId": "share-update",
 		"parameters": [
@@ -4628,7 +4635,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -4951,7 +4958,7 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_id}/shares/{share_identifier}/resources/{resource_identifier}": {
+	"PUT /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
 		"description": "Update is not immediate, an updated share resource object with a new status will be returned.",
 		"operationId": "share-resource-update",
 		"parameters": [
@@ -4968,7 +4975,7 @@
 			},
 			{
 				"in": "path",
-				"name": "share_identifier",
+				"name": "share_id",
 				"required": true,
 				"schema": {
 					"description": "Share identifier tag.",
@@ -4979,7 +4986,7 @@
 			},
 			{
 				"in": "path",
-				"name": "resource_identifier",
+				"name": "resource_id",
 				"required": true,
 				"schema": {
 					"description": "Share Resource identifier.",
@@ -5103,7 +5110,8 @@
 												"resource_type": {
 													"description": "Resource Type.",
 													"enum": [
-														"custom-ruleset"
+														"custom-ruleset",
+														"widget"
 													],
 													"type": "string"
 												},
