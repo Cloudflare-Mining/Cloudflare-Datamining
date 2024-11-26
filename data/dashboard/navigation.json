@@ -78,28 +78,33 @@
 			"title": "navigation.account.home",
 			"url": "/home",
 			"iconType": "home",
+			"testId": "sidenav-home-link",
 			"hasPermission": null
 		},
 		{
 			"title": "navigation.account.home",
 			"url": "/",
 			"iconType": "home",
+			"testId": "sidenav-home-link",
 			"hasPermission": null
 		},
 		{
 			"title": "navigation.root.websites",
 			"url": "/websites",
+			"testId": "sidenav-websites-link",
 			"iconType": "internet-browser",
 			"hasPermission": null
 		},
 		{
 			"title": "navigation.account.discover",
 			"url": "/discover",
+			"testId": "sidenav-discover-link",
 			"iconType": "discover"
 		},
 		{
 			"title": "navigation.account.registrar",
 			"url": "/domains",
+			"testId": "sidenav-domains-link",
 			"iconType": "registrar-logo",
 			"pages": [
 				{
@@ -130,6 +135,7 @@
 		{
 			"title": "navigation.common.analytics_and_logs",
 			"url": "/analytics",
+			"testId": "sidenav-analytics-link",
 			"iconType": "chart",
 			"pages": [
 				{
@@ -179,6 +185,7 @@
 			"title": "navigation.account.security_center",
 			"url": "/security-center",
 			"iconType": "product-security-center",
+			"testId": "sidenav-security-center-link",
 			"hasPermission": null,
 			"pages": [
 				{
@@ -254,7 +261,7 @@
 			"title": "navigation.account.request_tracer",
 			"url": "/trace",
 			"iconType": "trace",
-			"testId": "trace-link",
+			"testId": "sidenav-trace-link",
 			"labels": [
 				"beta"
 			],
@@ -272,6 +279,7 @@
 			"title": "navigation.account.waf",
 			"url": "/application-security/waf",
 			"iconType": "cloudflare-security-application",
+			"testId": "sidenav-waf-link",
 			"tabs": []
 		},
 		{
@@ -300,12 +308,14 @@
 			"title": "navigation.account.interconnects",
 			"url": "/interconnects",
 			"iconType": "cloudflare-magic-wan",
+			"testId": "sidenav-interconnects-link",
 			"hasPermission": null
 		},
 		{
 			"title": "navigation.account.magic_transit",
 			"url": "/magic-transit",
 			"iconType": "magic-transit-logo",
+			"testId": "sidenav-magic-transit-link",
 			"hasPermission": null,
 			"pages": [
 				{
@@ -327,6 +337,7 @@
 			"title": "navigation.account.magic_firewall",
 			"url": "/network-security/magic_firewall",
 			"iconType": "magic-firewall",
+			"testId": "sidenav-magic-firewall-link",
 			"hasPermission": null,
 			"tabs": []
 		},
@@ -334,6 +345,7 @@
 			"title": "navigation.account.l3l4.ddos",
 			"url": "/network-security/ddos",
 			"iconType": "cloudflare-security-network",
+			"testId": "sidenav-ddos-link",
 			"hasPermission": null,
 			"tabs": [],
 			"pages": [
@@ -354,6 +366,7 @@
 			"title": "navigation.account.ip_addresses",
 			"url": "/ip-addresses/proxy-ips",
 			"iconType": "network",
+			"testId": "sidenav-ip-addresses-link",
 			"pages": [
 				{
 					"title": "navigation.account.ip_addresses.ip_prefixes",
@@ -377,12 +390,14 @@
 		{
 			"title": "navigation.account.zero_trust",
 			"iconType": "cloudflare-zero-trust",
+			"testId": "sidenav-zero-trust-link",
 			"hasPermission": null
 		},
 		{
 			"title": "navigation.account.magic_wan",
 			"url": "/magic-wan",
 			"iconType": "cloudflare-magic-wan",
+			"testId": "sidenav-magic-wan-link",
 			"hasPermission": null,
 			"pages": [
 				{
@@ -414,9 +429,6 @@
 				{
 					"title": "navigation.account.magic_connectors.cloud_onramp",
 					"url": "/magic-wan/cloud",
-					"labels": [
-						"beta"
-					],
 					"hasPermission": null
 				},
 				{
@@ -439,6 +451,7 @@
 			"iconType": "email-forwarding",
 			"title": "navigation.account.area_one",
 			"url": "/area1",
+			"testId": "sidenav-area-one-link",
 			"pages": [
 				{
 					"url": "/area1",
@@ -556,6 +569,7 @@
 			"title": "navigation.account.storage_and_databases",
 			"url": "/workers/kv/namespaces",
 			"iconType": "d1",
+			"testId": "sidenav-d1-link",
 			"hasPermission": null,
 			"pages": [
 				{
@@ -638,6 +652,7 @@
 			"title": "navigation.account.stream",
 			"url": "/stream",
 			"iconType": "stream",
+			"testId": "sidenav-stream-link",
 			"hasPermission": null,
 			"pages": [
 				{
@@ -712,6 +727,7 @@
 				"beta"
 			],
 			"iconType": "calls",
+			"testId": "sidenav-calls-link",
 			"hasPermission": null
 		},
 		{
@@ -770,9 +786,6 @@
 				{
 					"title": "navigation.account.mcn",
 					"url": "/mcn",
-					"labels": [
-						"beta"
-					],
 					"hasPermission": null,
 					"testId": "sidenav-mcn-pages-link"
 				}
@@ -782,6 +795,7 @@
 			"title": "navigation.account.notifications",
 			"url": "/notifications",
 			"iconType": "notifications",
+			"testId": "sidenav-notifications-link",
 			"hasPermission": null
 		},
 		{
@@ -795,6 +809,7 @@
 			"title": "account.bulk_redirects.title",
 			"url": "/bulk-redirects",
 			"iconType": "filter",
+			"testId": "sidenav-bulk-redirects-link",
 			"hasPermission": null
 		}
 	],
