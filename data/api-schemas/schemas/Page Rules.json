@@ -717,17 +717,6 @@
 																{
 																	"properties": {
 																		"id": {
-																			"enum": [
-																				"cache_key_fields"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
 																			"description": "Apply custom caching based on the option selected.\n",
 																			"enum": [
 																				"cache_level"
@@ -768,39 +757,6 @@
 																		}
 																	},
 																	"title": "Cache on Cookie",
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
-																			"enum": [
-																				"cache_ttl_by_status"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
-																			"enum": [
-																				"ddos_protection"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
-																			"enum": [
-																				"development_mode"
-																			],
-																			"type": "string"
-																		}
-																	},
 																	"type": "object"
 																},
 																{
@@ -972,17 +928,6 @@
 																{
 																	"properties": {
 																		"id": {
-																			"enum": [
-																				"hotlink_protection"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
 																			"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 																			"enum": [
 																				"ip_geolocation"
@@ -1001,17 +946,6 @@
 																		}
 																	},
 																	"title": "IP Geolocation Header",
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
-																			"enum": [
-																				"minify"
-																			],
-																			"type": "string"
-																		}
-																	},
 																	"type": "object"
 																},
 																{
@@ -1105,17 +1039,6 @@
 																		}
 																	},
 																	"title": "Polish",
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
-																			"enum": [
-																				"purge_by_page_rule"
-																			],
-																			"type": "string"
-																		}
-																	},
 																	"type": "object"
 																},
 																{
@@ -1226,17 +1149,6 @@
 																		}
 																	},
 																	"title": "Security Level",
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"id": {
-																			"enum": [
-																				"server_side_exclude"
-																			],
-																			"type": "string"
-																		}
-																	},
 																	"type": "object"
 																},
 																{
@@ -2028,17 +1940,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"cache_key_fields"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Apply custom caching based on the option selected.\n",
 																		"enum": [
 																			"cache_level"
@@ -2079,39 +1980,6 @@
 																	}
 																},
 																"title": "Cache on Cookie",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"cache_ttl_by_status"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"ddos_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"development_mode"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -2283,17 +2151,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"hotlink_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 																		"enum": [
 																			"ip_geolocation"
@@ -2312,17 +2169,6 @@
 																	}
 																},
 																"title": "IP Geolocation Header",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"minify"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -2416,17 +2262,6 @@
 																	}
 																},
 																"title": "Polish",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"purge_by_page_rule"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -2537,17 +2372,6 @@
 																	}
 																},
 																"title": "Security Level",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"server_side_exclude"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -3267,17 +3091,6 @@
 										{
 											"properties": {
 												"id": {
-													"enum": [
-														"cache_key_fields"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
 													"description": "Apply custom caching based on the option selected.\n",
 													"enum": [
 														"cache_level"
@@ -3318,39 +3131,6 @@
 												}
 											},
 											"title": "Cache on Cookie",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"cache_ttl_by_status"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"ddos_protection"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"development_mode"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -3522,17 +3302,6 @@
 										{
 											"properties": {
 												"id": {
-													"enum": [
-														"hotlink_protection"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
 													"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 													"enum": [
 														"ip_geolocation"
@@ -3551,17 +3320,6 @@
 												}
 											},
 											"title": "IP Geolocation Header",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"minify"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -3655,17 +3413,6 @@
 												}
 											},
 											"title": "Polish",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"purge_by_page_rule"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -3776,17 +3523,6 @@
 												}
 											},
 											"title": "Security Level",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"server_side_exclude"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -4408,17 +4144,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"cache_key_fields"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Apply custom caching based on the option selected.\n",
 																		"enum": [
 																			"cache_level"
@@ -4459,39 +4184,6 @@
 																	}
 																},
 																"title": "Cache on Cookie",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"cache_ttl_by_status"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"ddos_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"development_mode"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -4663,17 +4355,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"hotlink_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 																		"enum": [
 																			"ip_geolocation"
@@ -4692,17 +4373,6 @@
 																	}
 																},
 																"title": "IP Geolocation Header",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"minify"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -4796,17 +4466,6 @@
 																	}
 																},
 																"title": "Polish",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"purge_by_page_rule"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -4917,17 +4576,6 @@
 																	}
 																},
 																"title": "Security Level",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"server_side_exclude"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -5635,17 +5283,6 @@
 										{
 											"properties": {
 												"id": {
-													"enum": [
-														"cache_key_fields"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
 													"description": "Apply custom caching based on the option selected.\n",
 													"enum": [
 														"cache_level"
@@ -5686,39 +5323,6 @@
 												}
 											},
 											"title": "Cache on Cookie",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"cache_ttl_by_status"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"ddos_protection"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"development_mode"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -5890,17 +5494,6 @@
 										{
 											"properties": {
 												"id": {
-													"enum": [
-														"hotlink_protection"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
 													"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 													"enum": [
 														"ip_geolocation"
@@ -5919,17 +5512,6 @@
 												}
 											},
 											"title": "IP Geolocation Header",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"minify"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -6023,17 +5605,6 @@
 												}
 											},
 											"title": "Polish",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"purge_by_page_rule"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -6144,17 +5715,6 @@
 												}
 											},
 											"title": "Security Level",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"server_side_exclude"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -6780,17 +6340,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"cache_key_fields"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Apply custom caching based on the option selected.\n",
 																		"enum": [
 																			"cache_level"
@@ -6831,39 +6380,6 @@
 																	}
 																},
 																"title": "Cache on Cookie",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"cache_ttl_by_status"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"ddos_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"development_mode"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -7035,17 +6551,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"hotlink_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 																		"enum": [
 																			"ip_geolocation"
@@ -7064,17 +6569,6 @@
 																	}
 																},
 																"title": "IP Geolocation Header",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"minify"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -7168,17 +6662,6 @@
 																	}
 																},
 																"title": "Polish",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"purge_by_page_rule"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -7289,17 +6772,6 @@
 																	}
 																},
 																"title": "Security Level",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"server_side_exclude"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -8019,17 +7491,6 @@
 										{
 											"properties": {
 												"id": {
-													"enum": [
-														"cache_key_fields"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
 													"description": "Apply custom caching based on the option selected.\n",
 													"enum": [
 														"cache_level"
@@ -8070,39 +7531,6 @@
 												}
 											},
 											"title": "Cache on Cookie",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"cache_ttl_by_status"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"ddos_protection"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"development_mode"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -8274,17 +7702,6 @@
 										{
 											"properties": {
 												"id": {
-													"enum": [
-														"hotlink_protection"
-													],
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
 													"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 													"enum": [
 														"ip_geolocation"
@@ -8303,17 +7720,6 @@
 												}
 											},
 											"title": "IP Geolocation Header",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"minify"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -8407,17 +7813,6 @@
 												}
 											},
 											"title": "Polish",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"purge_by_page_rule"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -8528,17 +7923,6 @@
 												}
 											},
 											"title": "Security Level",
-											"type": "object"
-										},
-										{
-											"properties": {
-												"id": {
-													"enum": [
-														"server_side_exclude"
-													],
-													"type": "string"
-												}
-											},
 											"type": "object"
 										},
 										{
@@ -9164,17 +8548,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"cache_key_fields"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Apply custom caching based on the option selected.\n",
 																		"enum": [
 																			"cache_level"
@@ -9215,39 +8588,6 @@
 																	}
 																},
 																"title": "Cache on Cookie",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"cache_ttl_by_status"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"ddos_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"development_mode"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -9419,17 +8759,6 @@
 															{
 																"properties": {
 																	"id": {
-																		"enum": [
-																			"hotlink_protection"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
 																		"description": "Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor.\n",
 																		"enum": [
 																			"ip_geolocation"
@@ -9448,17 +8777,6 @@
 																	}
 																},
 																"title": "IP Geolocation Header",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"minify"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -9552,17 +8870,6 @@
 																	}
 																},
 																"title": "Polish",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"purge_by_page_rule"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{
@@ -9673,17 +8980,6 @@
 																	}
 																},
 																"title": "Security Level",
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"id": {
-																		"enum": [
-																			"server_side_exclude"
-																		],
-																		"type": "string"
-																	}
-																},
 																"type": "object"
 															},
 															{

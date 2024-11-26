@@ -1,6 +1,6 @@
 {
 	"DELETE /certificates/{certificate_id}": {
-		"description": "Revoke an existing Origin CA certificate by its serial number. Use your Origin CA Key as your User Service Key when calling this endpoint ([see above](#requests)).",
+		"description": "Revoke an existing Origin CA certificate by its serial number. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)).",
 		"operationId": "origin-ca-revoke-certificate",
 		"parameters": [
 			{
@@ -194,7 +194,7 @@
 		}
 	},
 	"GET /certificates": {
-		"description": "List all existing Origin CA certificates for a given zone. Use your Origin CA Key as your User Service Key when calling this endpoint ([see above](#requests)).",
+		"description": "List all existing Origin CA certificates for a given zone. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)).",
 		"operationId": "origin-ca-list-certificates",
 		"parameters": [
 			{
@@ -681,7 +681,7 @@
 		}
 	},
 	"GET /certificates/{certificate_id}": {
-		"description": "Get an existing Origin CA certificate by its serial number. Use your Origin CA Key as your User Service Key when calling this endpoint ([see above](#requests)).",
+		"description": "Get an existing Origin CA certificate by its serial number. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)).",
 		"operationId": "origin-ca-get-certificate",
 		"parameters": [
 			{
@@ -1105,7 +1105,7 @@
 		}
 	},
 	"POST /certificates": {
-		"description": "Create an Origin CA certificate. Use your Origin CA Key as your User Service Key when calling this endpoint ([see above](#requests)).",
+		"description": "Create an Origin CA certificate. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)).",
 		"operationId": "origin-ca-create-certificate",
 		"requestBody": {
 			"content": {

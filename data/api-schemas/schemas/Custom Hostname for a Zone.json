@@ -3573,6 +3573,11 @@
 												"example": "google",
 												"type": "string"
 											},
+											"cloudflare_branding": {
+												"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true",
+												"example": false,
+												"type": "boolean"
+											},
 											"custom_certificate": {
 												"description": "If a custom uploaded certificate is used.",
 												"example": "-----BEGIN CERTIFICATE-----\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\n-----END CERTIFICATE-----\\n",
@@ -5298,6 +5303,11 @@
 												],
 												"example": "google",
 												"type": "string"
+											},
+											"cloudflare_branding": {
+												"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true",
+												"example": false,
+												"type": "boolean"
 											},
 											"custom_certificate": {
 												"description": "If a custom uploaded certificate is used.",

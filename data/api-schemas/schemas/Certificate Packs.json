@@ -1336,7 +1336,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
-		"description": "For a given zone, restart validation for an advanced certificate pack.  This is only a validation operation for a Certificate Pack in a validation_timed_out status.",
+		"description": "For a given zone, restart validation or add cloudflare branding for an advanced certificate pack.  The former is only a validation operation for a Certificate Pack in a validation_timed_out status.",
 		"operationId": "certificate-packs-restart-validation-for-advanced-certificate-manager-certificate-pack",
 		"parameters": [
 			{
@@ -1364,7 +1364,18 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/json": {}
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cloudflare_branding": {
+								"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
+								"example": false,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
 			},
 			"required": true
 		},
@@ -1454,7 +1465,7 @@
 													"type": "string"
 												},
 												"cloudflare_branding": {
-													"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+													"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
 													"example": false,
 													"type": "boolean"
 												},
@@ -1631,7 +1642,7 @@
 															"type": "string"
 														},
 														"cloudflare_branding": {
-															"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+															"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
 															"example": false,
 															"type": "boolean"
 														},
@@ -1814,7 +1825,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Restart Validation for Advanced Certificate Manager Certificate Pack",
+		"summary": "Restart Validation or Update Advanced Certificate Manager Certificate Pack",
 		"tags": [
 			"Certificate Packs"
 		],
@@ -1863,7 +1874,7 @@
 								"type": "string"
 							},
 							"cloudflare_branding": {
-								"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+								"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
 								"example": false,
 								"type": "boolean"
 							},
@@ -2007,7 +2018,7 @@
 													"type": "string"
 												},
 												"cloudflare_branding": {
-													"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+													"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
 													"example": false,
 													"type": "boolean"
 												},
@@ -2184,7 +2195,7 @@
 															"type": "string"
 														},
 														"cloudflare_branding": {
-															"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+															"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
 															"example": false,
 															"type": "boolean"
 														},
