@@ -21,6 +21,7 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
+					"description": "The unique identifier for the allow policy.",
 					"example": 2401,
 					"format": "int32",
 					"title": "identifier",
@@ -95,6 +96,7 @@
 										"result": {
 											"properties": {
 												"id": {
+													"description": "The unique identifier for the allow policy.",
 													"example": 2401,
 													"format": "int32",
 													"title": "identifier",
@@ -1037,7 +1039,7 @@
 			"Email Security Settings"
 		]
 	},
-	"DELETE /accounts/{account_id}/email-security/settings/trusted_domains/{pattern_id}": {
+	"DELETE /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
 		"operationId": "email_security_delete_trusted_domain",
 		"parameters": [
 			{
@@ -1056,9 +1058,10 @@
 			},
 			{
 				"in": "path",
-				"name": "pattern_id",
+				"name": "trusted_domain_id",
 				"required": true,
 				"schema": {
+					"description": "The unique identifier for the trusted domain.",
 					"example": 2401,
 					"format": "int32",
 					"title": "identifier",
@@ -1133,6 +1136,7 @@
 										"result": {
 											"properties": {
 												"id": {
+													"description": "The unique identifier for the trusted domain.",
 													"example": 2401,
 													"format": "int32",
 													"title": "identifier",
@@ -1318,6 +1322,7 @@
 				}
 			},
 			{
+				"deprecated": true,
 				"in": "query",
 				"name": "is_sender",
 				"schema": {
@@ -1326,6 +1331,14 @@
 			},
 			{
 				"in": "query",
+				"name": "is_trusted_sender",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"deprecated": true,
+				"in": "query",
 				"name": "is_recipient",
 				"schema": {
 					"type": "boolean"
@@ -1333,7 +1346,22 @@
 			},
 			{
 				"in": "query",
+				"name": "is_exempt_recipient",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"deprecated": true,
+				"in": "query",
 				"name": "is_spoof",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "is_acceptable_sender",
 				"schema": {
 					"type": "boolean"
 				}
@@ -1479,6 +1507,7 @@
 																"type": "boolean"
 															},
 															"pattern": {
+																"maxLength": 1024,
 																"minLength": 1,
 																"type": "string"
 															},
@@ -1514,6 +1543,7 @@
 																"type": "string"
 															},
 															"id": {
+																"description": "The unique identifier for the allow policy.",
 																"example": 2401,
 																"format": "int32",
 																"title": "identifier",
@@ -1706,6 +1736,7 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
+					"description": "The unique identifier for the allow policy.",
 					"example": 2401,
 					"format": "int32",
 					"title": "identifier",
@@ -1828,6 +1859,7 @@
 															"type": "boolean"
 														},
 														"pattern": {
+															"maxLength": 1024,
 															"minLength": 1,
 															"type": "string"
 														},
@@ -1863,6 +1895,7 @@
 															"type": "string"
 														},
 														"id": {
+															"description": "The unique identifier for the allow policy.",
 															"example": 2401,
 															"format": "int32",
 															"title": "identifier",
@@ -2806,13 +2839,21 @@
 													],
 													"created_at": "2023-11-14T22:13:20Z",
 													"domain": "example.com",
+													"drop_dispositions": [
+														"MALICIOUS",
+														"SPAM"
+													],
 													"folder": "Inbox",
 													"id": 2400,
 													"inbox_provider": "Microsoft",
 													"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
+													"ip_restrictions": [],
 													"last_modified": "2023-11-14T22:13:20Z",
 													"lookback_hops": 2,
-													"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8"
+													"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8",
+													"require_tls_inbound": false,
+													"require_tls_outbound": true,
+													"transport": "example.com"
 												},
 												"properties": {
 													"allowed_delivery_modes": {
@@ -2834,6 +2875,24 @@
 													},
 													"domain": {
 														"type": "string"
+													},
+													"drop_dispositions": {
+														"items": {
+															"enum": [
+																"MALICIOUS",
+																"MALICIOUS-BEC",
+																"SUSPICIOUS",
+																"SPOOF",
+																"SPAM",
+																"BULK",
+																"ENCRYPTED",
+																"EXTERNAL",
+																"UNKNOWN",
+																"NONE"
+															],
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"folder": {
 														"allOf": [
@@ -2876,6 +2935,16 @@
 														"nullable": true,
 														"type": "string"
 													},
+													"ip_restrictions": {
+														"example": [
+															"192.0.2.0/24",
+															"2001:db8::/32"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"last_modified": {
 														"format": "date-time",
 														"type": "string"
@@ -2887,6 +2956,17 @@
 													"o365_tenant_id": {
 														"nullable": true,
 														"type": "string"
+													},
+													"require_tls_inbound": {
+														"nullable": true,
+														"type": "boolean"
+													},
+													"require_tls_outbound": {
+														"nullable": true,
+														"type": "boolean"
+													},
+													"transport": {
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2895,7 +2975,10 @@
 													"last_modified",
 													"domain",
 													"allowed_delivery_modes",
-													"lookback_hops"
+													"lookback_hops",
+													"ip_restrictions",
+													"transport",
+													"drop_dispositions"
 												],
 												"type": "object"
 											},
@@ -3134,13 +3217,21 @@
 												],
 												"created_at": "2023-11-14T22:13:20Z",
 												"domain": "example.com",
+												"drop_dispositions": [
+													"MALICIOUS",
+													"SPAM"
+												],
 												"folder": "Inbox",
 												"id": 2400,
 												"inbox_provider": "Microsoft",
 												"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
+												"ip_restrictions": [],
 												"last_modified": "2023-11-14T22:13:20Z",
 												"lookback_hops": 2,
-												"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8"
+												"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8",
+												"require_tls_inbound": false,
+												"require_tls_outbound": true,
+												"transport": "example.com"
 											},
 											"properties": {
 												"allowed_delivery_modes": {
@@ -3162,6 +3253,24 @@
 												},
 												"domain": {
 													"type": "string"
+												},
+												"drop_dispositions": {
+													"items": {
+														"enum": [
+															"MALICIOUS",
+															"MALICIOUS-BEC",
+															"SUSPICIOUS",
+															"SPOOF",
+															"SPAM",
+															"BULK",
+															"ENCRYPTED",
+															"EXTERNAL",
+															"UNKNOWN",
+															"NONE"
+														],
+														"type": "string"
+													},
+													"type": "array"
 												},
 												"folder": {
 													"allOf": [
@@ -3204,6 +3313,16 @@
 													"nullable": true,
 													"type": "string"
 												},
+												"ip_restrictions": {
+													"example": [
+														"192.0.2.0/24",
+														"2001:db8::/32"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"last_modified": {
 													"format": "date-time",
 													"type": "string"
@@ -3215,6 +3334,17 @@
 												"o365_tenant_id": {
 													"nullable": true,
 													"type": "string"
+												},
+												"require_tls_inbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"require_tls_outbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"transport": {
+													"type": "string"
 												}
 											},
 											"required": [
@@ -3223,7 +3353,10 @@
 												"last_modified",
 												"domain",
 												"allowed_delivery_modes",
-												"lookback_hops"
+												"lookback_hops",
+												"ip_restrictions",
+												"transport",
+												"drop_dispositions"
 											],
 											"type": "object"
 										}
@@ -4124,19 +4257,23 @@
 														},
 														"properties": {
 															"comments": {
+																"maxLength": 1024,
 																"nullable": true,
 																"type": "string"
 															},
 															"is_recent": {
+																"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 																"type": "boolean"
 															},
 															"is_regex": {
 																"type": "boolean"
 															},
 															"is_similarity": {
+																"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 																"type": "boolean"
 															},
 															"pattern": {
+																"maxLength": 1024,
 																"minLength": 1,
 																"type": "string"
 															}
@@ -4156,6 +4293,7 @@
 																"type": "string"
 															},
 															"id": {
+																"description": "The unique identifier for the trusted domain.",
 																"example": 2401,
 																"format": "int32",
 																"title": "identifier",
@@ -4320,7 +4458,7 @@
 			"Email Security Settings"
 		]
 	},
-	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{pattern_id}": {
+	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
 		"operationId": "email_security_get_trusted_domain",
 		"parameters": [
 			{
@@ -4339,9 +4477,10 @@
 			},
 			{
 				"in": "path",
-				"name": "pattern_id",
+				"name": "trusted_domain_id",
 				"required": true,
 				"schema": {
+					"description": "The unique identifier for the trusted domain.",
 					"example": 2401,
 					"format": "int32",
 					"title": "identifier",
@@ -4426,19 +4565,23 @@
 													},
 													"properties": {
 														"comments": {
+															"maxLength": 1024,
 															"nullable": true,
 															"type": "string"
 														},
 														"is_recent": {
+															"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 															"type": "boolean"
 														},
 														"is_regex": {
 															"type": "boolean"
 														},
 														"is_similarity": {
+															"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 															"type": "boolean"
 														},
 														"pattern": {
+															"maxLength": 1024,
 															"minLength": 1,
 															"type": "string"
 														}
@@ -4458,6 +4601,7 @@
 															"type": "string"
 														},
 														"id": {
+															"description": "The unique identifier for the trusted domain.",
 															"example": 2401,
 															"format": "int32",
 															"title": "identifier",
@@ -4606,6 +4750,7 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
+					"description": "The unique identifier for the allow policy.",
 					"example": 2401,
 					"format": "int32",
 					"title": "identifier",
@@ -4644,6 +4789,7 @@
 								"type": "boolean"
 							},
 							"pattern": {
+								"maxLength": 1024,
 								"minLength": 1,
 								"nullable": true,
 								"type": "string"
@@ -4792,6 +4938,7 @@
 															"type": "boolean"
 														},
 														"pattern": {
+															"maxLength": 1024,
 															"minLength": 1,
 															"type": "string"
 														},
@@ -4827,6 +4974,7 @@
 															"type": "string"
 														},
 														"id": {
+															"description": "The unique identifier for the allow policy.",
 															"example": 2401,
 															"format": "int32",
 															"title": "identifier",
@@ -5305,6 +5453,24 @@
 								"nullable": true,
 								"type": "string"
 							},
+							"drop_dispositions": {
+								"items": {
+									"enum": [
+										"MALICIOUS",
+										"MALICIOUS-BEC",
+										"SUSPICIOUS",
+										"SPOOF",
+										"SPAM",
+										"BULK",
+										"ENCRYPTED",
+										"EXTERNAL",
+										"UNKNOWN",
+										"NONE"
+									],
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"folder": {
 								"allOf": [
 									{
@@ -5321,14 +5487,36 @@
 								"nullable": true,
 								"type": "string"
 							},
+							"ip_restrictions": {
+								"example": [
+									"192.0.2.0/24",
+									"2001:db8::/32"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"lookback_hops": {
 								"format": "int32",
 								"maximum": 20,
 								"minimum": 1,
 								"nullable": true,
 								"type": "integer"
+							},
+							"require_tls_inbound": {
+								"type": "boolean"
+							},
+							"require_tls_outbound": {
+								"type": "boolean"
+							},
+							"transport": {
+								"type": "string"
 							}
 						},
+						"required": [
+							"ip_restrictions"
+						],
 						"type": "object"
 					}
 				}
@@ -5406,13 +5594,21 @@
 												],
 												"created_at": "2023-11-14T22:13:20Z",
 												"domain": "example.com",
+												"drop_dispositions": [
+													"MALICIOUS",
+													"SPAM"
+												],
 												"folder": "Inbox",
 												"id": 2400,
 												"inbox_provider": "Microsoft",
 												"integration_id": "a5dbb180-60ea-4578-84bb-d01a5d4e50c3",
+												"ip_restrictions": [],
 												"last_modified": "2023-11-14T22:13:20Z",
 												"lookback_hops": 2,
-												"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8"
+												"o365_tenant_id": "c3c3239d-8858-47df-9618-0e2d9bdf6aa8",
+												"require_tls_inbound": false,
+												"require_tls_outbound": true,
+												"transport": "example.com"
 											},
 											"properties": {
 												"allowed_delivery_modes": {
@@ -5434,6 +5630,24 @@
 												},
 												"domain": {
 													"type": "string"
+												},
+												"drop_dispositions": {
+													"items": {
+														"enum": [
+															"MALICIOUS",
+															"MALICIOUS-BEC",
+															"SUSPICIOUS",
+															"SPOOF",
+															"SPAM",
+															"BULK",
+															"ENCRYPTED",
+															"EXTERNAL",
+															"UNKNOWN",
+															"NONE"
+														],
+														"type": "string"
+													},
+													"type": "array"
 												},
 												"folder": {
 													"allOf": [
@@ -5476,6 +5690,16 @@
 													"nullable": true,
 													"type": "string"
 												},
+												"ip_restrictions": {
+													"example": [
+														"192.0.2.0/24",
+														"2001:db8::/32"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"last_modified": {
 													"format": "date-time",
 													"type": "string"
@@ -5487,6 +5711,17 @@
 												"o365_tenant_id": {
 													"nullable": true,
 													"type": "string"
+												},
+												"require_tls_inbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"require_tls_outbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"transport": {
+													"type": "string"
 												}
 											},
 											"required": [
@@ -5495,7 +5730,10 @@
 												"last_modified",
 												"domain",
 												"allowed_delivery_modes",
-												"lookback_hops"
+												"lookback_hops",
+												"ip_restrictions",
+												"transport",
+												"drop_dispositions"
 											],
 											"type": "object"
 										}
@@ -5884,7 +6122,7 @@
 			"Email Security Settings"
 		]
 	},
-	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{pattern_id}": {
+	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
 		"operationId": "email_security_update_trusted_domain",
 		"parameters": [
 			{
@@ -5903,9 +6141,10 @@
 			},
 			{
 				"in": "path",
-				"name": "pattern_id",
+				"name": "trusted_domain_id",
 				"required": true,
 				"schema": {
+					"description": "The unique identifier for the trusted domain.",
 					"example": 2401,
 					"format": "int32",
 					"title": "identifier",
@@ -5920,10 +6159,12 @@
 						"additionalProperties": false,
 						"properties": {
 							"comments": {
+								"maxLength": 1024,
 								"nullable": true,
 								"type": "string"
 							},
 							"is_recent": {
+								"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 								"nullable": true,
 								"type": "boolean"
 							},
@@ -5932,10 +6173,12 @@
 								"type": "boolean"
 							},
 							"is_similarity": {
+								"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 								"nullable": true,
 								"type": "boolean"
 							},
 							"pattern": {
+								"maxLength": 1024,
 								"minLength": 1,
 								"nullable": true,
 								"type": "string"
@@ -6024,19 +6267,23 @@
 													},
 													"properties": {
 														"comments": {
+															"maxLength": 1024,
 															"nullable": true,
 															"type": "string"
 														},
 														"is_recent": {
+															"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 															"type": "boolean"
 														},
 														"is_regex": {
 															"type": "boolean"
 														},
 														"is_similarity": {
+															"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 															"type": "boolean"
 														},
 														"pattern": {
+															"maxLength": 1024,
 															"minLength": 1,
 															"type": "string"
 														}
@@ -6056,6 +6303,7 @@
 															"type": "string"
 														},
 														"id": {
+															"description": "The unique identifier for the trusted domain.",
 															"example": 2401,
 															"format": "int32",
 															"title": "identifier",
@@ -6252,6 +6500,7 @@
 								"type": "boolean"
 							},
 							"pattern": {
+								"maxLength": 1024,
 								"minLength": 1,
 								"type": "string"
 							},
@@ -6399,6 +6648,7 @@
 															"type": "boolean"
 														},
 														"pattern": {
+															"maxLength": 1024,
 															"minLength": 1,
 															"type": "string"
 														},
@@ -6434,6 +6684,7 @@
 															"type": "string"
 														},
 														"id": {
+															"description": "The unique identifier for the allow policy.",
 															"example": 2401,
 															"format": "int32",
 															"title": "identifier",
@@ -7406,19 +7657,23 @@
 								},
 								"properties": {
 									"comments": {
+										"maxLength": 1024,
 										"nullable": true,
 										"type": "string"
 									},
 									"is_recent": {
+										"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 										"type": "boolean"
 									},
 									"is_regex": {
 										"type": "boolean"
 									},
 									"is_similarity": {
+										"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 										"type": "boolean"
 									},
 									"pattern": {
+										"maxLength": 1024,
 										"minLength": 1,
 										"type": "string"
 									}
@@ -7443,19 +7698,23 @@
 									},
 									"properties": {
 										"comments": {
+											"maxLength": 1024,
 											"nullable": true,
 											"type": "string"
 										},
 										"is_recent": {
+											"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 											"type": "boolean"
 										},
 										"is_regex": {
 											"type": "boolean"
 										},
 										"is_similarity": {
+											"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 											"type": "boolean"
 										},
 										"pattern": {
+											"maxLength": 1024,
 											"minLength": 1,
 											"type": "string"
 										}
@@ -7555,19 +7814,23 @@
 															},
 															"properties": {
 																"comments": {
+																	"maxLength": 1024,
 																	"nullable": true,
 																	"type": "string"
 																},
 																"is_recent": {
+																	"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 																	"type": "boolean"
 																},
 																"is_regex": {
 																	"type": "boolean"
 																},
 																"is_similarity": {
+																	"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 																	"type": "boolean"
 																},
 																"pattern": {
+																	"maxLength": 1024,
 																	"minLength": 1,
 																	"type": "string"
 																}
@@ -7587,6 +7850,7 @@
 																	"type": "string"
 																},
 																"id": {
+																	"description": "The unique identifier for the trusted domain.",
 																	"example": 2401,
 																	"format": "int32",
 																	"title": "identifier",
@@ -7630,19 +7894,23 @@
 																},
 																"properties": {
 																	"comments": {
+																		"maxLength": 1024,
 																		"nullable": true,
 																		"type": "string"
 																	},
 																	"is_recent": {
+																		"description": "Select to prevent recently registered domains from triggering a\nSuspicious or Malicious disposition.",
 																		"type": "boolean"
 																	},
 																	"is_regex": {
 																		"type": "boolean"
 																	},
 																	"is_similarity": {
+																		"description": "Select for partner or other approved domains that have similar\nspelling to your connected domains. Prevents listed domains from\ntriggering a Spoof disposition.",
 																		"type": "boolean"
 																	},
 																	"pattern": {
+																		"maxLength": 1024,
 																		"minLength": 1,
 																		"type": "string"
 																	}
@@ -7662,6 +7930,7 @@
 																		"type": "string"
 																	},
 																	"id": {
+																		"description": "The unique identifier for the trusted domain.",
 																		"example": 2401,
 																		"format": "int32",
 																		"title": "identifier",

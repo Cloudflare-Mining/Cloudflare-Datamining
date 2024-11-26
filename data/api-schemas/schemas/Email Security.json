@@ -3353,14 +3353,18 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "A list of messages identfied by their `postfix_id`s that should be released.",
-						"items": {
-							"description": "The identifier of the message.",
-							"example": "4Njp3P0STMz2c02Q",
-							"title": "postfix_id",
-							"type": "string"
+						"properties": {
+							"postfix_id": {
+								"description": "The identifier of the message.",
+								"example": "4Njp3P0STMz2c02Q",
+								"title": "postfix_id",
+								"type": "string"
+							}
 						},
-						"type": "array"
+						"required": [
+							"postfix_id"
+						],
+						"type": "object"
 					}
 				}
 			},
