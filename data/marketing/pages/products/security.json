@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-21T02:14:48.767Z",
-					"updatedAt": "2024-10-22T00:13:35.469Z"
+					"updatedAt": "2024-11-27T03:31:02.232Z"
 				},
 				"contentfulId": "5XQocMk2MEq2c2cyUcUqcO",
 				"contentTypeId": "page",
@@ -116,47 +116,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "1lbg0Ur592myKSkOee46gc",
-						"quote": "\"Thanks to the great support we received from the Cloudflare team, especially during our peak weeks in May, we've felt more secure that the sites would keep running smooth regardless of amounts of traffic—and they have.\"",
-						"quoteAuthor": "Wouter van Vliet",
-						"quoteTitle": "Project Developer of the Eurovision Song Contest at EBU/EUROVISION",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "mint",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RlX5eQktikM6qs4YgQ8cg/ab080e52541febc607886bb83c176e7d/eurovision.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "0460efce-2c71-5a97-b032-85bf7ec01753",
-							"altText": "Logo eurovision gray",
-							"title": "Logo eurovision gray",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 10747,
-								"height": 1264,
-								"width": 3998,
-								"filename": "logo_eurovision_gray.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_eurovision_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
 						"contentfulId": "lcsJhcJsS4gCIK6KU0C8c",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -211,47 +170,6 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/internet-globe.svg"
 										}
 									},
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6x9lMOPIirdpUUYsKdRAgq",
-								"title": "DNSSEC",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "DNSSEC is the Internet's non-spoofable caller ID. It guarantees a web application's traffic is safely routed to the correct servers so that a site's visitors are not intercepted by a hidden \"man-in-the-middle\" attacker.\n<a href=\"/dns/dnssec/\" class=\"button--text button--gt-after\">Learn More</a>",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qz68utxkMaonmOpYql9pT/2e9ba9390b78d903da0a8fc8eab3275d/icon-DNSSEC-mint.png"
-									},
-									"description": "icon DNSSEC mint"
-								},
-								"iconAssetFile": {
-									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
-									"altText": "Security shield protection orange",
-									"title": "Security shield protection orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageOverlaySuperheader": null,
@@ -340,55 +258,6 @@
 										"filename": "filtering.svg",
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/filtering.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4xr2JEYvPtiTu57nn6WKLE",
-								"title": "SSL / TLS",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Transport Security Layer (TLS) encryption enables HTTPS connections between visitors and origin server(s), preventing man-in-the-middle attacks, packet sniffing, the display of web browser trust warnings, and more.\n<a href=\"/ssl/\" class=\"button--text button--gt-after\">Learn More</a>",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ETQ1pnEAcMLvkRI2CeSIw/173844a1f4010a8664983bf7d2186ca5/icon-dedicated-cert-mint.png"
-									},
-									"description": "icon dedicated cert mint"
-								},
-								"iconAssetFile": {
-									"id": "2c71b7cd-a024-5268-8ab8-367e3f8bdfb5",
-									"altText": "icon-dedicated-cert-mint.png",
-									"title": "icon-dedicated-cert-mint.png",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ETQ1pnEAcMLvkRI2CeSIw/173844a1f4010a8664983bf7d2186ca5/icon-dedicated-cert-mint.png"
-										},
-										"description": "icon dedicated cert mint"
-									},
-									"brandfolderAsset": {
-										"size": 1969,
-										"height": 4000,
-										"width": 2694,
-										"filename": "certificate-manager.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/certificate-manager.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
@@ -566,47 +435,6 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/cloudflare-access.svg"
 										}
 									},
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4lqWc1d47kfqixSM1CjT4v",
-								"title": "Spectrum",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare's Anycast network.\n<a href=\"/products/cloudflare-spectrum/\" class=\"button--text button--gt-after\">Learn More</a>",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xNlYyVmUKxF5sPDdbOkse/dbb1a9b1d0e500350d24b74855268355/icon-Spectrum-mint.png"
-									},
-									"description": "icon spectrum mint"
-								},
-								"iconAssetFile": {
-									"id": "dc0ee946-9622-540c-8a6d-c314b6490868",
-									"altText": "Cloudflare spectrum ",
-									"title": "Cloudflare spectrum ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2T3J8PnA7cR4xTHFkPxUU9/461bac855603fa5ae05e5300feb30082/cloudflare-spectrum.svg"
-										},
-										"description": "Shield icon"
-									},
-									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageOverlaySuperheader": null,
