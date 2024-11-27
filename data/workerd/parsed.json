@@ -212,6 +212,10 @@
 				{
 					"name": "rangeHeader",
 					"annotations": {}
+				},
+				{
+					"name": "ssec",
+					"annotations": {}
 				}
 			]
 		},
@@ -266,6 +270,10 @@
 				},
 				{
 					"name": "storageClass",
+					"annotations": {}
+				},
+				{
+					"name": "ssec",
 					"annotations": {}
 				}
 			]
@@ -369,6 +377,10 @@
 				{
 					"name": "storageClass",
 					"annotations": {}
+				},
+				{
+					"name": "ssec",
+					"annotations": {}
 				}
 			]
 		},
@@ -385,6 +397,10 @@
 				},
 				{
 					"name": "partNumber",
+					"annotations": {}
+				},
+				{
+					"name": "ssec",
 					"annotations": {}
 				}
 			]
@@ -577,6 +593,15 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2SSECOptions",
+			"fields": [
+				{
+					"name": "key",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/api/r2-api.capnp:R2Etag",
 			"fields": [
 				{
@@ -722,6 +747,19 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2SSECResponse",
+			"fields": [
+				{
+					"name": "algorithm",
+					"annotations": {}
+				},
+				{
+					"name": "keyMd5",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/api/r2-api.capnp:R2HeadResponse",
 			"fields": [
 				{
@@ -765,6 +803,10 @@
 				{
 					"name": "storageClass",
 					"annotations": {}
+				},
+				{
+					"name": "ssec",
+					"annotations": {}
 				}
 			]
 		},
@@ -773,6 +815,10 @@
 			"fields": [
 				{
 					"name": "uploadId",
+					"annotations": {}
+				},
+				{
+					"name": "ssec",
 					"annotations": {}
 				}
 			]
