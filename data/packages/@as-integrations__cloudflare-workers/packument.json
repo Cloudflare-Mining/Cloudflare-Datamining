@@ -1,0 +1,276 @@
+{
+	"name": "@as-integrations/cloudflare-workers",
+	"dist-tags": {
+		"latest": "1.0.2"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@as-integrations/cloudflare-workers",
+			"version": "0.1.0",
+			"devDependencies": {
+				"@apollo/server-integration-testsuite": "4.3.0",
+				"@changesets/changelog-github": "0.4.7",
+				"@changesets/cli": "2.25.2",
+				"@cloudflare/workers-types": "4.20221111.1",
+				"@types/jest": "29.2.4",
+				"cspell": "6.17.0",
+				"jest": "29.3.1",
+				"jest-junit": "15.0.0",
+				"prettier": "2.8.1",
+				"ts-jest": "29.0.3",
+				"ts-node": "10.9.1",
+				"typescript": "4.9.4"
+			},
+			"peerDependencies": {
+				"@apollo/server": "^4.3.0",
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-GYOvZiqnnrSVRtsVtc/i+LfxFsOTrgh+7Q9O0VliQydDTDEn9uyKOdayb2NVnEv0eXkf8oRofM7M3FOo1Krb5Q==",
+				"shasum": "1fda156dc87ea52059ebe1a31752a8408e478a63",
+				"tarball": "https://registry.npmjs.org/@as-integrations/cloudflare-workers/-/cloudflare-workers-0.1.0.tgz",
+				"fileCount": 11,
+				"unpackedSize": 14480,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCNj4MxCSjT38eBjueILvf9FJC2GJ2AMzerI+Y8TwnW6QIhAMOza/07ah7gWh1ikGSGo+zZyzaMR6DfeI5LLN1NN4/1"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj42yIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpLQhAAlt00GbP+ZYTH4EYLr+Q8Syyn1o22tHskDFAc1ps/SwX8t0/D\r\nvt446zkWTm/UQJjacMklbSNThJoEhYMMpC7XXzdFPoojgp4UTEZnzKF0Iuwo\r\n4QY5XPMIg/fgpusHM55k/PfIGVWoKmW25+pu9Cqu5+rl7nF1535/faTn7y5R\r\nTlMyXDQKSYssxnKQf+DeGHUVRa9bjcXvTTbuQcCy7ZhxQaAmVm/mTRNq3W6Q\r\nINeftKcQMSXC6aDGTtk10PbPXoenprEPHLK0lOIfx079m+IPOoeImXV0/LEG\r\nCedwUaiEnE+aVdwgnZRk3uaD375dJlLAWU1x2HvH7tvBy0vfUXZeUkONGlkC\r\nuowwqbvZosndLXMo5mrqUEkEIp2ozHBDYw967pluo1f7QFKZX9gavOFtPa6p\r\nfhfKlcawF/HzQa/MA1XpA85yzxoTOP+u+ol7laB5QHv335fYIzTRL11OWsJt\r\nqlCL0DU3gnBFenxaK3o5RQ1e6sYvJd9CX/M2jtekUGiOi9cus7WWSVea0jrO\r\ntUKF67C02GCBdiuXsULxDLzGB/FQrKtfZCIy0BUw8KpAUb06ktEySOfD5T0b\r\nBup2StcOOYMNkO9qgxgBOMwF7ZhWCRC2CJhs3Sj/aknTDuyKA3FF2CrSHPm3\r\nGBPI5vZSSjdo1y/9VWC7RV61dD450IvnvWs=\r\n=hqXt\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14.0"
+			}
+		},
+		"0.1.1": {
+			"name": "@as-integrations/cloudflare-workers",
+			"version": "0.1.1",
+			"devDependencies": {
+				"@apollo/server-integration-testsuite": "4.3.3",
+				"@changesets/changelog-github": "0.4.8",
+				"@changesets/cli": "2.26.0",
+				"@cloudflare/workers-types": "4.20230115.0",
+				"@types/jest": "29.2.4",
+				"cspell": "6.23.1",
+				"jest": "29.4.2",
+				"jest-junit": "15.0.0",
+				"prettier": "2.8.4",
+				"ts-jest": "29.0.5",
+				"ts-node": "10.9.1",
+				"typescript": "4.9.5"
+			},
+			"peerDependencies": {
+				"@apollo/server": "^4.3.0",
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-l0KicZT09yKwyREob2fNqgq20uB+2pMNMJVHVGfy7lgvVyIz66jLQX5CG9wxvt4ovR1gIj3yn4R1WuaJM+56zw==",
+				"shasum": "da33b42fbad580e635f304d06492d353e631f5f8",
+				"tarball": "https://registry.npmjs.org/@as-integrations/cloudflare-workers/-/cloudflare-workers-0.1.1.tgz",
+				"fileCount": 11,
+				"unpackedSize": 14643,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG7OWje6+VcLsqWTtaGflSWM5weso/HtnroE2qyyXlHxAiAirsMdR5txCVqGARyp20+m8Tw6FLGRU9sqoXFrX6mrTA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj7HQkACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpUsRAAg47/2j3pHXJGTrcz2yR4KG/krg6hSOvH3ZahJcY5kKY5kCPl\r\n8MsoK8i7EISwInzMtJv4e0WF6Jj6t2kSAUrnIZBIkiNfAx5+5q65M0zTM+9I\r\nthpvHdOymUcK+Qhrz0cH2AduVcO6FpcC2tdAXk6bPlNQYuCF6Ux8npLagoQT\r\nLSDa7H/PcKT7ue2vRRynpcw3v7fS4MmJxGHOe6xHBNvezaLOQKor9S7EbPQY\r\n4ZNbbPHniZYOP+ieStGLTnfp7cG95yBBZnCTfilc6FflvICwriVhZ57Sq5JE\r\nbiHPmG1zLXzFUZBBqkv7onlEsTzaMHiCurAqPY0snSTXBJGhYwP4q6IxWLHE\r\ncPJdlaNWckbTmtfdxQwztdIv72n35qqU/1eROSyu+7yMAxuo6Iz1GVN/EA4b\r\nBkMJad3Y+YJc6aDXwh8kEPEhYUQtEmqsxteldMdI8M0V1ok4ioT7QgzBfcG1\r\njWCmjFGdlG66aUohsOLu5SDeJdvDMSnY35iq6uuHri4KO0SBiH9I8MBLOVxl\r\nSU06CCNcnty7n8qun7dUYHayALKO0+dM/vhCWA3ui+P275EjSlqtMw5jN/w/\r\nlsbYtz92URyforU85cyClaJN0NBrIw+jK8JSL2Axki5BUiqULRXotmNXo/4U\r\nS0btufVmDasIAPGWbUovUQrESztKlCU+qQE=\r\n=8QEr\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=14.0"
+			}
+		},
+		"0.2.0": {
+			"name": "@as-integrations/cloudflare-workers",
+			"version": "0.2.0",
+			"devDependencies": {
+				"@apollo/server-integration-testsuite": "4.9.4",
+				"@changesets/changelog-github": "0.4.8",
+				"@changesets/cli": "2.26.2",
+				"@cloudflare/workers-types": "4.20231002.0",
+				"@types/jest": "29.5.5",
+				"cspell": "7.3.7",
+				"jest": "29.7.0",
+				"jest-junit": "16.0.0",
+				"prettier": "3.0.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"typescript": "5.2.2"
+			},
+			"peerDependencies": {
+				"@apollo/server": "^4.3.0",
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-yXigx4vq0Qjkupf4hGn5+lvoxznC/eMhpdAUHrQVze42n4VFqcYxLWTNyJeCNnkX8KYJo1PtePL3o3phGHFkhw==",
+				"shasum": "e85ef2cff61909685a22f29273852b21183b6e55",
+				"tarball": "https://registry.npmjs.org/@as-integrations/cloudflare-workers/-/cloudflare-workers-0.2.0.tgz",
+				"fileCount": 11,
+				"unpackedSize": 14599,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCsNHiBZRCAj3ruY9cXRRtOUZjCkuELPKAdJIBW0QERPwIgUhSN4Kp2j159aols7SnQA0LUwsrtadvOA65nLZzPHJA="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.0"
+			}
+		},
+		"1.0.0-alpha": {
+			"name": "@as-integrations/cloudflare-workers",
+			"version": "1.0.0-alpha",
+			"devDependencies": {
+				"@apollo/server-integration-testsuite": "4.10.2",
+				"@changesets/changelog-github": "0.5.0",
+				"@changesets/cli": "2.27.1",
+				"@cloudflare/workers-types": "4.20240320.1",
+				"@types/jest": "29.5.12",
+				"cspell": "8.6.0",
+				"jest": "29.7.0",
+				"jest-junit": "16.0.0",
+				"prettier": "3.2.5",
+				"ts-jest": "29.1.2",
+				"ts-node": "10.9.2",
+				"typescript": "5.4.3"
+			},
+			"peerDependencies": {
+				"@apollo/server": "^4.3.0",
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-lqcRr4Vn5cAbzs1vnwhm6qkyJ4rC5AD1W+3xKd4boU9lyvkkoqMGzrYcxuC2vmR7epqwB913KY/8e9bFq/LsDA==",
+				"shasum": "539bd9348d30c5f081e2209675295b004746809b",
+				"tarball": "https://registry.npmjs.org/@as-integrations/cloudflare-workers/-/cloudflare-workers-1.0.0-alpha.tgz",
+				"fileCount": 11,
+				"unpackedSize": 15027,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCXnOP0kSTmwHf0675Sy8Z7x66WDq74diEovqm7ibigPQIgDRcAHMNmznC9cOAf1QDvckOQNYKDl3nE1z0uExBnByA="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.0"
+			}
+		},
+		"1.0.0": {
+			"name": "@as-integrations/cloudflare-workers",
+			"version": "1.0.0",
+			"devDependencies": {
+				"@apollo/server-integration-testsuite": "4.10.2",
+				"@changesets/changelog-github": "0.5.0",
+				"@changesets/cli": "2.27.1",
+				"@cloudflare/workers-types": "4.20240320.1",
+				"@types/jest": "29.5.12",
+				"cspell": "8.6.0",
+				"jest": "29.7.0",
+				"jest-junit": "16.0.0",
+				"prettier": "3.2.5",
+				"ts-jest": "29.1.2",
+				"ts-node": "10.9.2",
+				"typescript": "5.4.3"
+			},
+			"peerDependencies": {
+				"@apollo/server": "^4.3.0",
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-wVBCO4MDg2cfHFZUL65GbhfwUp0hzwDJLG2TVP44oaUFYL9EdsV8AQHjrN8q3ek2Fb6EGNEleSIwisyA/NwP2g==",
+				"shasum": "be05ead203e202cb0e6835b5b6a45bf83e688a7e",
+				"tarball": "https://registry.npmjs.org/@as-integrations/cloudflare-workers/-/cloudflare-workers-1.0.0.tgz",
+				"fileCount": 11,
+				"unpackedSize": 15060,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCD2hIRml04O+XPQcpoHg2bVoIB+6yJoA1IeLN+iVbGQgIhAM48qcZeTAnPGMr3XHtZ/t5TeyVIjvcmFdkWR9esUw9q"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.0"
+			}
+		},
+		"1.0.1": {
+			"name": "@as-integrations/cloudflare-workers",
+			"version": "1.0.1",
+			"devDependencies": {
+				"@apollo/server-integration-testsuite": "4.10.2",
+				"@changesets/changelog-github": "0.5.0",
+				"@changesets/cli": "2.27.1",
+				"@cloudflare/workers-types": "4.20240320.1",
+				"@types/jest": "29.5.12",
+				"cspell": "8.6.0",
+				"jest": "29.7.0",
+				"jest-junit": "16.0.0",
+				"prettier": "3.2.5",
+				"ts-jest": "29.1.2",
+				"ts-node": "10.9.2",
+				"typescript": "5.4.3"
+			},
+			"peerDependencies": {
+				"@apollo/server": "^4.3.0",
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-e6rDAWz+yFftn/VEYXkXZyd0pm+ebKA+HoHovZGF/2+aTxeGQLAScfoSbfWpO/4ZJ7X+94X+TuxzEnen0bmZ7w==",
+				"shasum": "e0e6a356efcd6bfaed4ebe099653e3dfa7cced01",
+				"tarball": "https://registry.npmjs.org/@as-integrations/cloudflare-workers/-/cloudflare-workers-1.0.1.tgz",
+				"fileCount": 11,
+				"unpackedSize": 15092,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICjH635RFXV1dOMprCKSqO2lsLEx1LJissALvZvqX1H3AiEA897zbuIbmXmNGnNT9SnhYVJefdIq9bQlC1WvfzinlBo="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.0"
+			}
+		},
+		"1.0.2": {
+			"name": "@as-integrations/cloudflare-workers",
+			"version": "1.0.2",
+			"devDependencies": {
+				"@apollo/server-integration-testsuite": "4.10.2",
+				"@changesets/changelog-github": "0.5.0",
+				"@changesets/cli": "2.27.1",
+				"@cloudflare/workers-types": "4.20240320.1",
+				"@types/jest": "29.5.12",
+				"cspell": "8.6.0",
+				"jest": "29.7.0",
+				"jest-junit": "16.0.0",
+				"prettier": "3.2.5",
+				"ts-jest": "29.1.2",
+				"ts-node": "10.9.2",
+				"typescript": "5.4.3"
+			},
+			"peerDependencies": {
+				"@apollo/server": "^4.3.0",
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-53LKpil1D0rDQ6xkKrFdE4VOfDiVPR/6Fbw2Wxjc9r9uK6hnrfhuxDdL1KyH/qVxPnm8le0BQTCYcCqxF7BG4A==",
+				"shasum": "2c8fa80905116baaaea5a74328827facd9f56618",
+				"tarball": "https://registry.npmjs.org/@as-integrations/cloudflare-workers/-/cloudflare-workers-1.0.2.tgz",
+				"fileCount": 11,
+				"unpackedSize": 15159,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDGoUjsyvDZVzhvPGD2C2ACfVjzNWS2kV7zYi1A9OtAoAIhAPaLJWRltF5gMZYzqNKyc1keAPujgUf8CId+njd+nCxO"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.0"
+			}
+		}
+	}
+}

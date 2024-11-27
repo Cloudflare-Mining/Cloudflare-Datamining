@@ -1,0 +1,407 @@
+{
+	"name": "stream-vue",
+	"dist-tags": {
+		"beta": "0.1.0",
+		"latest": "0.5.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "stream-vue",
+			"version": "0.1.0",
+			"dependencies": {},
+			"devDependencies": {},
+			"dist": {
+				"integrity": "sha512-yJdeZS13gHtsR384KXdL9DACgyLGjcSEcBOTWNG/O57KF5Xi1OVTzeN1WnXyRZWRf2uDiV1LDeOYVAPGhPLOYQ==",
+				"shasum": "7f8dc7a5618aadf00d36499e585ccbb92b0731b8",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.1.0.tgz",
+				"fileCount": 1,
+				"unpackedSize": 1133,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfb6DhCRA9TVsSAnZWagAAZWkP/1On970eWm1yF9c46KvP\nrspNXXxDPyl57Qszg4eoISnyQcV4oHN6QHSZrAzksxq/GOEbxalgl9cVRLP3\nQjc5StBa/v2sJXeQx1+zd7aeHvfnphDXmiz3LUrptavfO8zRd/sN54/P0X7r\neypgYott077mDQOPD2h+xO8Cv52AVbP7JpNlU55+zaUfj+8y4kX0cVmsypV0\n8xWAogfm9+6t75yLF/yisJwEJNzYd/US515YgtNsA4bCL2hVEqwkST6Atgid\npLWiKbFBAOQAhOzZJ3wd6DJdo4OEY7g/p7iGq5ePD/b94Ls4/Btfh25SMZ5u\n0JhXrMywCJ16SCMSqLJpp0cW0VWDf0VOydkPH+Mh/fd15zzKSsHmEhJ5se+J\nfVMSaHUMlqlZjBp1D3ASUsn53HJoptiWCoIb14n9Jx2CxBqVvCfF4PLLE2HP\nxg+SAFbVve2wQjwv9k9SCelufRpbWxXRioBW5x6/SFCBXs4yGy+v/ixFg/f/\ngjwH1TVlUtvvVWZyVMxdwEBm+4r3NUOMOAQO0nxQknxzpmy+1ENJNeQLf23f\nQryNnMTrhZMovLIKfa9+SL35sctjZP50+C3UxRGFscJUX7XpK9ICe2nnI32S\nPGg+qOshMOEFvu1pymSnT/sdwmr8CiGELPJlZhOdplbbJU1YX5WwQhYqLr1d\n/pIn\r\n=GqZq\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDV+uWVlr4LsAvg342Lxf2l1N2Pf6jNryGNucGNFy/TiQIgVksTtrdEA+zHL4BAkrVLMPgXMth6R52lysQXykcwyRI="
+					}
+				]
+			}
+		},
+		"0.1.1": {
+			"name": "stream-vue",
+			"version": "0.1.1",
+			"devDependencies": {
+				"@babel/core": "^7.11.6",
+				"@babel/plugin-transform-runtime": "^7.11.5",
+				"@babel/preset-env": "^7.11.5",
+				"@babel/preset-typescript": "^7.10.4",
+				"@babel/runtime": "^7.11.2",
+				"@release-it/conventional-changelog": "^2.0.0",
+				"@siroc/eslint-config": "^0.2.0",
+				"@siroc/jest-preset": "^0.2.0",
+				"@types/jest": "^26.0.14",
+				"@types/jsdom": "^16.2.4",
+				"@types/node": "^14.11.2",
+				"@types/webpack-env": "^1.15.3",
+				"@typescript-eslint/eslint-plugin": "^4.1.1",
+				"@typescript-eslint/parser": "^4.1.1",
+				"@vue/test-utils": "^1.1.0",
+				"codecov": "^3.7.2",
+				"eslint": "^7.9.0",
+				"eslint-config-prettier": "^6.11.0",
+				"eslint-plugin-jest": "^24.0.2",
+				"eslint-plugin-prettier": "^3.1.4",
+				"husky": "^4.3.0",
+				"jest": "^26.4.2",
+				"lint-staged": "^10.4.0",
+				"prettier": "^2.1.2",
+				"release-it": "14.0.3",
+				"siroc": "^0.3.1",
+				"typescript": "^4.0.3",
+				"vue": "2.6.12",
+				"vue-template-compiler": "^2.6.12"
+			},
+			"dist": {
+				"integrity": "sha512-ixLi5REmhVBtMpsPUaI0lo2+vib//n6pOdP6uvnIcftMKPWoW6CW7Hqgx5A+rf+Wa+xrn8tLKtmeL1Gv1gFolQ==",
+				"shasum": "9a2a1a29b970ed5594f935b985e42ac8e19de50c",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.1.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 13584,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfb7VICRA9TVsSAnZWagAATjYP/iyR60Xg1NnfD33EPYHz\nVtJnk3aa1BzKLjtFAxql7gULgRUdoAUaS23zmYSKKFE0/RFb59r6fUe2SvT+\nCi5S/BPJ7/2nyriJJnvvwpTDP0i9TLWBLg7buImYlKo35n0OGj1Nz99jYBPn\nfXbegtf83/HCJMTalsR6Qq6SEk4VtqffUdSjOY7QI2cWcBOwh3CIslZt6Cb6\n3qDmPO5REOyuJz4HwiXdf7IUhcSppLFA3LoDYb0MmEj0lHfBdTXwB4DVNbgS\nrMTBB6TQS5Ms2Vm2NRPt+euDRlpLIC0SIOo6fud4IKyzaYU9poOS8yg7jaJ+\n2DSeFneDoEVKGYzRpZLDlreGf7EmuAKeNlgZHkqaOCV+yk/TjkVFOYUjM4uo\ntd+LxbQQLtBO6qeOYBmvindu9tvRDMQDa2fGwYinznRF6RSp7LkpC0NTzx4X\n3kUudE/fDiRn7kd609Q4YLpUEYL+jj+rFvJWRrEBnGYWnnOQNN/eNIWzkj+4\nnqDa7nriLa8hYIDIChf343SvA/GDaVd/2FUyILxsU20aNUs0NkgtKHSPdHkB\nJp2X2xPfrf+kJsgeLmz0kMG5dSND7k4sORUQXddZDwtBD+TZCCL9dja4yvrW\n08LmOjHmGBGMtCorqLl19K0H8zJm9A4ArPpU8qTod8ZlydNC9ivc51vranEG\nM2aJ\r\n=L5v0\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDrUy9ZAvuSgCIKFU7f8/rnVpWJ8mfW/sbEfKgqoJOnWAiBGKeg3cKE+A1PP9x4LKXgX8qJ20sFzfPlEv6E3Ptd7+g=="
+					}
+				]
+			}
+		},
+		"0.2.0": {
+			"name": "stream-vue",
+			"version": "0.2.0",
+			"devDependencies": {
+				"@babel/core": "^7.11.6",
+				"@babel/plugin-transform-runtime": "^7.11.5",
+				"@babel/preset-env": "^7.11.5",
+				"@babel/preset-typescript": "^7.10.4",
+				"@babel/runtime": "^7.11.2",
+				"@release-it/conventional-changelog": "^2.0.0",
+				"@siroc/eslint-config": "^0.2.0",
+				"@siroc/jest-preset": "^0.2.0",
+				"@types/jest": "^26.0.14",
+				"@types/jsdom": "^16.2.4",
+				"@types/node": "^14.11.2",
+				"@types/webpack-env": "^1.15.3",
+				"@typescript-eslint/eslint-plugin": "^4.1.1",
+				"@typescript-eslint/parser": "^4.1.1",
+				"@vue/test-utils": "^1.1.0",
+				"codecov": "^3.7.2",
+				"eslint": "^7.9.0",
+				"eslint-config-prettier": "^6.11.0",
+				"eslint-plugin-jest": "^24.0.2",
+				"eslint-plugin-prettier": "^3.1.4",
+				"husky": "^4.3.0",
+				"jest": "^26.4.2",
+				"lint-staged": "^10.4.0",
+				"prettier": "^2.1.2",
+				"release-it": "14.0.3",
+				"siroc": "^0.3.1",
+				"typescript": "^4.0.3",
+				"vue": "2.6.12",
+				"vue-template-compiler": "^2.6.12"
+			},
+			"dist": {
+				"integrity": "sha512-R2yr6xOJuIHbDb0M9H4gN1lScNJAcq4LUbHRA4OPxdAUXE24PTx0yCbEIHmTa/ghMl3s32XBUNehMfVWz8VsZw==",
+				"shasum": "2d91ae817ecc858e10bc0a5b1f1475248306db00",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.2.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 23614,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfb8D2CRA9TVsSAnZWagAAH3kP/Aro7lu20k1+PpbbSL5v\nVeDIj9k+g+Us+RJ7iaoszLlxjc5joaPKo/8x1sTsk1+c0yC5iXYUhDcIYnbm\nIPytAwGOgvDOycbLdTlWFpyD7Pan3uLnprNhq2axFAlceHH5HXd202Om7K1R\n6R5jdLoGCP2388vrzb5eOpUviAcBBKlYlEsQir9QLPd93mgTZNVJjRefqNOV\njYi37gZgksvnQYI0s7CNVHHCYI8to/fZocidzP907aSfI8Z0Hqf6igs3wqSW\nNkFGNkrZeq6RF5T4dTKNBG75v4gseIcTmBOAkFfUzOJf+97Lx9EO1uYJrEQi\nWIb9QBNidym/wl4fzXlCEUrFjAYY+ht8nnI8yMIgw+/W+JA6EUlNV+thHY4O\nM8VYqfq8TA1gLfXFLN00cm9HpX3bIftuApP13Kn0fd5vClTslY5MBzdheQOt\n9pTKaH/uTRbgjPLl/btOIjTK8KaSu64FRbHbLn87Pvtn9CirBfmr9/Zs+4yL\nVK5Uj+LAXqmnM6tJxUUs1KlLQDdJHajY9EKOyw9EuW5OQrVyLvs/eeOriikI\ne1lwUo4teZ1Scmdc4KfE+NjUW0dlJUagqFj0Tmi8rnzLl87NwIQL4SpZmSZk\nSXY5n2cqdZtMLngS/JTz4Ie57/D03MF0UFWL4z0zDAJdSbg0EPhbQMCJsadN\n+9BC\r\n=Rspt\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD6vIAyii26wYfyLMR54fCoPzDYbbXDWysOL//rU3Il8gIgDVY+zaZT+XJBTM8Dz3mlgZy0UdRJjCLhSXvy1ieEpi4="
+					}
+				]
+			}
+		},
+		"0.3.0": {
+			"name": "stream-vue",
+			"version": "0.3.0",
+			"devDependencies": {
+				"@babel/core": "^7.11.6",
+				"@babel/plugin-transform-runtime": "^7.11.5",
+				"@babel/preset-env": "^7.11.5",
+				"@babel/preset-typescript": "^7.10.4",
+				"@babel/runtime": "^7.11.2",
+				"@release-it/conventional-changelog": "^2.0.0",
+				"@siroc/eslint-config": "^0.2.0",
+				"@siroc/jest-preset": "^0.2.0",
+				"@types/jest": "^26.0.14",
+				"@types/jsdom": "^16.2.4",
+				"@types/node": "^14.11.2",
+				"@types/webpack-env": "^1.15.3",
+				"@typescript-eslint/eslint-plugin": "^4.1.1",
+				"@typescript-eslint/parser": "^4.1.1",
+				"@vue/test-utils": "^1.1.0",
+				"codecov": "^3.7.2",
+				"eslint": "^7.9.0",
+				"eslint-config-prettier": "^6.11.0",
+				"eslint-plugin-jest": "^24.0.2",
+				"eslint-plugin-prettier": "^3.1.4",
+				"husky": "^4.3.0",
+				"jest": "^26.4.2",
+				"lint-staged": "^10.4.0",
+				"prettier": "^2.1.2",
+				"release-it": "14.0.3",
+				"siroc": "^0.3.1",
+				"typescript": "^4.0.3",
+				"vue": "2.6.12",
+				"vue-template-compiler": "^2.6.12"
+			},
+			"dist": {
+				"integrity": "sha512-c0MIFiQptuWv2LRpkGH5YDPHTIjKzrKft7uhn48VUojeYNrFDbR7eTeZnd0GKnMITaK64SxiiSqiTX8Al2RIuw==",
+				"shasum": "e34975f85ef0e9fd855d0d788ccd9ffc27bb6e2e",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.3.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 25572,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfcGEiCRA9TVsSAnZWagAAe/MQAIebyNm3iO+mox404yLk\nJERXoj1LLmBtmbRDgotyCS34YemgawKM8DzoYmXv9n8t0n2qaxyCLqSvMS1M\nvtxGc2ZtOyi9ZVD87Q8eib++chUEAlsQcrRca0xjt0DLIfE/g2U9REmjt1c7\nKp+2M7TcNyIyod9fZV/4w4+Yv3T3xToUm2KyxERXtsiG+A+2HdWcbjCmra82\n+7g4OJni5gTaF8kqzAvHLaNz8MXNb81I+c3gmUYOEZ+k+iB/797OdUgDC1cx\n7/93AuHdXv5JXBUaJbGlh1og6pX4d+1RY3x0aLi67bA2hdIvy6sRNs8EZDqd\nKaGvfYdp+vigFxB1taeNrnK+tHo9ms4/+BDWUE8jX7FjXnlCQ3zyYWcWiWBD\nMXvE4UxDx82Ax5K7Pe6YpB1fEGGw6MlaFKx4JMFfV0GYHEIODAMMaxqCmM4w\nZIR5LoIbYHwHKq2r21dgU5ATiB7ydPsqKnN3rOasGKUdGgXRYCRgC6LSOYHQ\narveQhD/z260Sq36UHRmYTpQcKwpMiB+wq3rk2jFL6IrVN+64dsweDvZWerr\nd+VwZcL0Eo6/4KttmhdBI55l+aX16DcAkx//T1PrZPQKT+yHWtJ/aDFCd2vM\npm/vGRv6Tgd/I2wDI6RUJWEbz/AG2351H71+BvTim5Ji31IP4XT1D80moynt\nZGzI\r\n=m1Sl\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBX9+5BJxpqalBNhZcEkPw3bQHPPOGvEZETwJtrMLaGSAiEAhMm3h47Jx7PEz5UUMDMvTJTd0vzw+PhidKb3JPgRpKs="
+					}
+				]
+			}
+		},
+		"0.3.1": {
+			"name": "stream-vue",
+			"version": "0.3.1",
+			"devDependencies": {
+				"@babel/core": "^7.11.6",
+				"@babel/plugin-transform-runtime": "^7.11.5",
+				"@babel/preset-env": "^7.11.5",
+				"@babel/preset-typescript": "^7.10.4",
+				"@babel/runtime": "^7.11.2",
+				"@release-it/conventional-changelog": "^2.0.0",
+				"@siroc/eslint-config": "^0.2.0",
+				"@siroc/jest-preset": "^0.2.0",
+				"@types/jest": "^26.0.14",
+				"@types/jsdom": "^16.2.4",
+				"@types/node": "^14.11.2",
+				"@types/webpack-env": "^1.15.3",
+				"@typescript-eslint/eslint-plugin": "^4.1.1",
+				"@typescript-eslint/parser": "^4.1.1",
+				"@vue/test-utils": "^1.1.0",
+				"codecov": "^3.7.2",
+				"eslint": "^7.9.0",
+				"eslint-config-prettier": "^6.11.0",
+				"eslint-plugin-jest": "^24.0.2",
+				"eslint-plugin-prettier": "^3.1.4",
+				"husky": "^4.3.0",
+				"jest": "^26.4.2",
+				"lint-staged": "^10.4.0",
+				"prettier": "^2.1.2",
+				"release-it": "14.0.3",
+				"siroc": "^0.3.1",
+				"typescript": "^4.0.3",
+				"vue": "2.6.12",
+				"vue-template-compiler": "^2.6.12"
+			},
+			"dist": {
+				"integrity": "sha512-eWB1zrlv9cnoO65UgFJVKstQSS0PRaK8edqvcDxMu1ntXweqLC4YBxCmY036TWbOImfuULEjcnfGqZV3qjkW4A==",
+				"shasum": "763c966b76ed463f734af0b9b4a0a025e5c789a3",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.3.1.tgz",
+				"fileCount": 9,
+				"unpackedSize": 26094,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfcGLrCRA9TVsSAnZWagAAw1oP/iQxyUPzALfeaW/qaRMO\nVAnh6ssn/N3H4OoNyriwwB2V3or54P3KWfkjCdrZd/ry/NRpvwGYTzlXsMF9\nNP/b8biDcw1RFGG+8Wgox2kRP2kjHuYLQdalOAzXHo0jKoZfU0XNisWzJnzw\ndCAFgCESV6y8uyDBfK+hxCHS6XMGU3K2IMIEN6KKTzrByM7WKbDEKEgoh6YQ\nfNnnfgKI793XaATy4fjIdmF5SkDiiWc3lM/cFrwIOEBced95oZQG6JaLLEAC\nHXaJSrSf8CGvfZuvySGcR7N5/XpBMdUr/o9l5DfdtH/hVcPIgmZLthiDmlZP\nCgbtZMh0JwAWJlAj5+3OQvCdG05gTgFrVvk2Tlxg2kOK9z+bSt+vpqke9fae\nSWq1ekN6QvDAvdW4/UIU5BgQfetka7UKLwyvDZW6KWzUQv5XB+gb29kH6P23\nsgiqSz33eXoe+jjfKJGvR9MuvhIKdCznAnGRNoVL6x0uJLgKXqFRWVDqCmeT\nu1XpV/TN1jxIKimZkDEdjJ1CxIvnkT5VBlWnOw81TqywKxyr+GwDzhzT9i+h\nJXwIBUwvUA83Irn0b18Wz6lJfdrI/f7WVH9WinKqJmZeftE3EcrMftAkSUUO\n/Lg8D3+ve1AIGqaSSVhvg64EUioFzuctBpFuDf1fagxJX27BtrS+9ANjadYz\nU+r6\r\n=ywzI\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDwr3ttVN+ybWoLWY1u/OYr9DDHH8nktoiCOQHzh3CR4gIhAMcmOF3LrcB6ggyYhrPUtckOLbGHaW/tgLkaggNBOodW"
+					}
+				]
+			}
+		},
+		"0.3.2": {
+			"name": "stream-vue",
+			"version": "0.3.2",
+			"devDependencies": {
+				"@babel/core": "^7.12.10",
+				"@babel/plugin-transform-runtime": "^7.12.10",
+				"@babel/preset-env": "^7.12.11",
+				"@babel/preset-typescript": "^7.12.7",
+				"@babel/runtime": "^7.12.5",
+				"@release-it/conventional-changelog": "^2.0.0",
+				"@siroc/eslint-config": "^0.2.0",
+				"@siroc/jest-preset": "^0.2.0",
+				"@types/jest": "^26.0.20",
+				"@types/jsdom": "^16.2.6",
+				"@types/node": "^14.14.22",
+				"@types/webpack-env": "^1.16.0",
+				"@typescript-eslint/eslint-plugin": "^4.14.0",
+				"@typescript-eslint/parser": "^4.14.0",
+				"@vue/test-utils": "^1.1.2",
+				"codecov": "^3.8.1",
+				"conventional-changelog-conventionalcommits": "^4.5.0",
+				"eslint": "^7.18.0",
+				"eslint-config-prettier": "^7.2.0",
+				"eslint-plugin-jest": "^24.1.3",
+				"eslint-plugin-prettier": "^3.3.1",
+				"husky": "^4.3.8",
+				"jest": "^26.6.3",
+				"lint-staged": "^10.5.3",
+				"prettier": "^2.2.1",
+				"release-it": "14.2.2",
+				"semver": "^7.3.4",
+				"siroc": "^0.6.3",
+				"typescript": "^4.1.3",
+				"vue": "2.6.12",
+				"vue-template-compiler": "^2.6.12"
+			},
+			"dist": {
+				"integrity": "sha512-6oy+eYWMpJ9BV9P/uA/BJFaRayf2XayHofdBaL4vnsc83mVjEP3BJqoAMii+cgiyDISJTFI0/3LRpjO/rXJEPg==",
+				"shasum": "af6ba31b605bfd5165707e7b7b590bc0b380b30b",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.3.2.tgz",
+				"fileCount": 9,
+				"unpackedSize": 26710,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgCKVMCRA9TVsSAnZWagAAwd0P/1qzIx7E522/ff3G35nx\no0fBfaXlxQUrkvsQ6oSD8QjzQnejiA6gtEcqVK41lv3ePwU/lJY13z0JS4eT\nEqsJF2sk97VxYN87J3Y9PTNj8i+hpv384ag5vhKHvn6AP8bPU1MyttcF7FuT\n1SxsRDeLHZA/z3TOtQCZwGuzR9M3XwfDuh9IH5qy5ne+Kfx35t71QFfJ1mT5\nd/tQL8GCu+d/1cAkyu8qPOK+EWiIsACtdml4cijUiOKdHbfmgeZezq19ANUZ\nqPCQBJu2c5iStRFbJf2gP0NAhLaP445BFQXlXlXN/73x37kgvJ/vrVHkfv5o\n/tlgKrE3xbCBgbZqt+uJWb7II4lSICFFX25AkbdW6OjKCG9CLd81j9p8nYVS\nQu2Yf7WY/PCbPkglaYKikSPgVWg0frIS5q2W6X1W0rXCMGhEYqZBVQfwvi3x\nc4n49+fGlT+w7+PkjFdj0u4j5WCVZwGse5FtOjIezLtkVDs5rhASwVaC89S5\niUYxZMPJWNbtbzVe1OhLAmEyA5Oeir/Yb+xalz1Hw7TPz2Vbn9M1TJwkle4b\ni6fxCs5+1lZWPHAETF/IrhakvOyNX/SV851GuMdfJKGXqPrbj2ayS6GB6MKq\nAE44kmLTxx+ZI27P/C2zM38ycdzGUHtMaZVGf5R+9/ipWjd1gdbW0AfWKJYO\nI7BZ\r\n=ormL\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDD5ysu7rQu/e4TFS2vNwNHfBuS1g/BGY1Eztryo4881AIgLwLZpxEUVylxX4vajgwP8AtJPumz0ckTRO5Z1tztzi4="
+					}
+				]
+			}
+		},
+		"0.3.3": {
+			"name": "stream-vue",
+			"version": "0.3.3",
+			"devDependencies": {
+				"@babel/core": "^7.12.10",
+				"@babel/plugin-transform-runtime": "^7.12.10",
+				"@babel/preset-env": "^7.12.11",
+				"@babel/preset-typescript": "^7.12.7",
+				"@babel/runtime": "^7.12.5",
+				"@release-it/conventional-changelog": "^2.0.0",
+				"@siroc/eslint-config": "^0.2.0",
+				"@siroc/jest-preset": "^0.2.0",
+				"@types/jest": "^26.0.20",
+				"@types/jsdom": "^16.2.6",
+				"@types/node": "^14.14.22",
+				"@types/webpack-env": "^1.16.0",
+				"@typescript-eslint/eslint-plugin": "^4.14.0",
+				"@typescript-eslint/parser": "^4.14.0",
+				"@vue/test-utils": "^1.1.2",
+				"codecov": "^3.8.1",
+				"conventional-changelog-conventionalcommits": "^4.5.0",
+				"eslint": "^7.18.0",
+				"eslint-config-prettier": "^7.2.0",
+				"eslint-plugin-jest": "^24.1.3",
+				"eslint-plugin-prettier": "^3.3.1",
+				"husky": "^4.3.8",
+				"jest": "^26.6.3",
+				"lint-staged": "^10.5.3",
+				"prettier": "^2.2.1",
+				"release-it": "14.2.2",
+				"semver": "^7.3.4",
+				"siroc": "^0.6.3",
+				"typescript": "^4.1.3",
+				"vue": "2.6.12",
+				"vue-template-compiler": "^2.6.12"
+			},
+			"dist": {
+				"integrity": "sha512-fMem+m0UuwpxHlUMgrAIL5F/pRmgovfOGoNW/HY30sp0+e/iqwBca5j/pjsO054LBjUJ2ty9K0SV6xDpGPyDGg==",
+				"shasum": "e909f26c5489876f674a66316fd16112d25eae86",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.3.3.tgz",
+				"fileCount": 9,
+				"unpackedSize": 26965,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgCKaJCRA9TVsSAnZWagAABtoP/iLTyP5Gvx7F0fwg8ovW\no4dWCtQpS5k3IRNd2o+rYO04y0TwFgDap+d9mUTurOPeO2OgB3MYNRylnqiy\ncnfxyaeMgnfIeDUCzPXDbJ3Ql85UH1/eURsrUmONcCYT7XzLWK7Z5JOVr9kb\n9Fe2t8SjbPgTBRcAlmDB6wZotC4mH0SnpchfK6/WYglFnSsE00p5m+RAzgDN\nQANc9Jw5ZtIOJqSDl6cv6eAmEm7M9ySqK1zcwx74qpl/eoqxxG7SadldSu6v\na9Td491ZYqaop01rtTHaNHuk7YDdsAD+L9uif4b0nGu3Y+oEfldRJOXCi9HK\nhKc02ZGA7WW+0wCMmhleEkzE54E9R6OJRquZ251hPPIUjaYqIaCq/SxoajdP\nRqCfQo9OvnN9LsvVtItVtxD78tnS9+rGh36Ya/rxy4oxZGa5Bo3l+pQ3r36M\nyWQzd7bigvJ6yXztn4iDckSTt5udaJ+64U4k4jv8TtbkSaZm9P7z3u0tDeVY\nDTz8o1INPF4k7L2Y0/3uV/6y0c2barwEiBV5p+EO9Un0g9CijWJBVhhcoaCO\nSekPC5zo9xmku74z6pnzqBIraIwU1VRyRrHbIJVt2herc7/Vptm1VbSiYlZ3\n2KUdxAgekb8uHdWJi5xlCaYVQUZHwtdRrjOQkYiefBM5wJrtPbhRdQGjfAaP\ngTIj\r\n=/MGs\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFbeFyLMv2V5Qhu5A9ea1cX6Jz3/l9mYNgoQOC19pA4dAiAi1ew9Tt/vl3FpoMvGfsS8xnc1/8VeDloxgm8lX39yWg=="
+					}
+				]
+			}
+		},
+		"0.4.0": {
+			"name": "stream-vue",
+			"version": "0.4.0",
+			"devDependencies": {
+				"@siroc/eslint-config": "^0.2.0",
+				"@types/jsdom": "^21.1.1",
+				"@types/node": "^20.2.5",
+				"@typescript-eslint/eslint-plugin": "^5.59.9",
+				"@typescript-eslint/parser": "^5.59.9",
+				"@vitest/coverage-v8": "^0.32.0",
+				"@vue/test-utils": "^1.3.6",
+				"bumpp": "^9.1.1",
+				"eslint": "^8.42.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.3",
+				"jsdom": "^22.0.0",
+				"lint-staged": "^13.2.2",
+				"prettier": "^2.8.8",
+				"typescript": "^5.1.3",
+				"unbuild": "^1.2.1",
+				"vitest": "^0.32.0",
+				"vue": "2.7.14",
+				"vue-template-compiler": "^2.7.14"
+			},
+			"peerDependencies": {
+				"vue": "^2.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-K2OAA5KPSFjEa67xVOnJ0Rk3Jqwr7DYbPWOx1eGSOMdynpn7d/+XhU9wxmO4AI2vnW0O0jzg0HAoW4uxUpnFqA==",
+				"shasum": "7182f16b1b2a0b590b5520059dc510bce3be2ea1",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.4.0.tgz",
+				"fileCount": 8,
+				"unpackedSize": 30065,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAkVRQpsV0MB8afVkeTBL7cHUXyJnNXzBQCjiqeB6zLJAiEAofvLP2tUAusjqLRKd4TFGP4L1b8ePk7wOur02ivY3o4="
+					}
+				]
+			}
+		},
+		"0.5.0": {
+			"name": "stream-vue",
+			"version": "0.5.0",
+			"devDependencies": {
+				"@antfu/eslint-config": "latest",
+				"@types/jsdom": "^21.1.6",
+				"@types/node": "20.12.12",
+				"@vitejs/plugin-vue": "^5.0.4",
+				"@vitest/coverage-v8": "^1.6.0",
+				"@vue/test-utils": "2.4.6",
+				"bumpp": "^9.4.1",
+				"eslint": "latest",
+				"jsdom": "^24.1.0",
+				"lint-staged": "latest",
+				"simple-git-hooks": "latest",
+				"typescript": "latest",
+				"unbuild": "latest",
+				"vite": "latest",
+				"vitest": "latest",
+				"vue": "3.4.27"
+			},
+			"peerDependencies": {
+				"vue": "^2.7.0 || ^3.4.0"
+			},
+			"dist": {
+				"integrity": "sha512-YMQhBZglj3PIFPd5PmpqBstugfml45Od0z9OH7vMRAH55XR+c/SsNkuRNsrTFWz5+J7EkFZIAZ4Jmd+Rn50QtA==",
+				"shasum": "69e7317724b0c1a7b8619ecd097c8d146f2fa153",
+				"tarball": "https://registry.npmjs.org/stream-vue/-/stream-vue-0.5.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 20366,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCSuy/eMiGjY4R+T/kGrs3xYPJGqe6COxjJkLn0nyVA5QIgE7h9yNayXrS5RmiOWgYsN6p87DkWeosXR4QvLApxWGY="
+					}
+				]
+			}
+		}
+	}
+}

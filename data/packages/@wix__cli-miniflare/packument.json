@@ -1,0 +1,614 @@
+{
+	"name": "@wix/cli-miniflare",
+	"dist-tags": {
+		"latest": "1.0.21"
+	},
+	"versions": {
+		"1.0.3": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.3",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240610.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "d8a6313899e1b376434d6c14484637ea84d4a901",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-3PbpbPFxkAT3QfO57AHFzZspvdyUKeZYqS3qANuZ7Ct8IuF7XY3XR7ApAQ3omP/+luPkGnmF2tnmzXgmFbTpMg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDdQ7jlgmjseiTrABD50qjShkK2FBVrMR3nkopaRUkj2gIgKfKItQFvvSMP/WcH48LYq5UZRGe7gJQfVc+IX0qLjGo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53333
+			}
+		},
+		"1.0.4": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.4",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240610.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "49344ca013908c320116a97fdb2c5c928ba6fbb8",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.4.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-bxla0kMj//u6wnwy+M+lRe4KUoG9oyhVyaxObe9OlGZnr916RepMdKzrnXDT455iW4U7seKR3adwHUPUZZAVxA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDxf7VtvLQlD3sqXNhWtw2dycELTXPR8eBMJ5irUYc10gIgKZLXDlqgx4Jda3BIbvoJH/2B4U4Q3381XVi+6sranaw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53903
+			}
+		},
+		"1.0.5": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.5",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240610.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "746d1658ef0b070b7c54d0d0cddfec6053b46da5",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.5.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-81+xcgW/2il0Hxd8si5OAh5uc/i6buBxp7BQ3eZOnVdcca8TCVunjf6gIdp2i9ZK3R//d3l4DYZGrmO9jMGagw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHOjveHj2wJ0K9PiZWTSHZPnJbfwankncT49lu3PPvayAiEAsTDIGES83JLFz4jZge0l3tYAWspVafPZwdptIY2ED0A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53906
+			}
+		},
+		"1.0.6": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.6",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240610.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "25a05411b9e942d8cda1a1a8010b1d495180ca26",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.6.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-D95/lSKhF1olHSN+65ArXgRjr7+Cq801D87e+DifrWEoP87rTsfR71iXU9T3vG0jIe27BLXt9XF0LsLheFnEdQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDplnP0K7OpdD/2Ao8VDfQMU+je8FO+aGatAG+VlAR26AIhAI9nMIZf7v76v7jUHFIUHbMrkUOSMXcnRP5lg3xk8HgD",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53903
+			}
+		},
+		"1.0.7": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.7",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240610.1"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "d066f5aead044a79bdf49fa2b7d2ebe4e62130b3",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.7.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-m8xUE3Wv03gNvaSTVTDMwrPM2gdPpCq90EXAj1Fv9IDF7Y0bzVXSdv1fTj63CtJx1KPgn8bVfdiTsu0Ql9vvkQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIGNjwiAic4AJt3s90TxfwTKh/iU6Ky+iceLwJwaSjXWpAiBZZ9csC9vmA30wkCKMo02xmb1ZaQ1ESoiI90a86W2Uxg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53903
+			}
+		},
+		"1.0.8": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.8",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240610.1"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "44eab3869739b9ae7739da93359ed9633f777b8e",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.8.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-I31zCqcVXzy7Zzu567129GOAGk8BSs+IzjGexd3C88nu21CZAAanhZCmOCyQ0P/J1DoWXKekQxXwEPa4jUkq/Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDkpdoc4XaPB+iuGP704z5X9gwqRYa7K7EEmATdqNPNlwIgI9Y3cwvzciIVbaz03H0YUsJAD29R5vv/G4d3CJFpdsg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172120
+			}
+		},
+		"1.0.9": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.9",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240610.1"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "3e8bad999a1ca94acb2eb1b8a4ea54acee59f93c",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.9.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-60brwOWDUmpILnXnnPHFthY2qQsrVMhld3dGLX4HlHxI9lGGxrGWd9UYfJNmweLvBhGKoU3/AyXB74+knmS2cg==",
+				"signatures": [
+					{
+						"sig": "MEMCIHtt8QqGk86qaz+bNvg6m6u2h+E5Ja1eOWpZi5lqIGdzAh8DfanZR340d9kJ9ZEQs2e8YeAm0hSTZ/xVT8IMKb0Z",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172174
+			}
+		},
+		"1.0.10": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.10",
+			"dependencies": {
+				"vite": "5.2.10",
+				"miniflare": "^3.20240620.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "504dbf59a29ec06cd8bf6edec4644fb31194bebf",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.10.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-EuKsD+ERHe2o5vOnQPNcAiHfEI7ff0m5T7ynyxNL1sbgV5J+mUNy4iqBfBV5nBKOBiWBcmd6V0kPqfdrrYu/mQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC6C03LkKyw0QE8EMrgojnVNj6+Vkvo5ISGLTpnZjaZuwIgDu1ahqd+0QPsk5Lb5cVHquPTLMY2Ew/GNOvscJmsnHk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172175
+			}
+		},
+		"1.0.11": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.11",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240620.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "552098c9016d39a1bcda2634798b5d2d4cdff24d",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.11.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-IXFpZF9NaokyrozhuUR8gkJwl3UepPg9CDXVY2t8yS/yX7Ju0ZYFaSmDxAA10YVXIOEcfQcj8+Y318iIMfU3zQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIF6gLL/PrBcVQ4Kyr4Q1qeaqm4LAoQJloVKWHyqEvBzTAiEA7ob9jyj+7dF560EcWDj9D9jyn6RJuE+ZejyUQ1nfcuo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172089
+			}
+		},
+		"1.0.12": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.12",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240620.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "d3060a9f3d237e7f1736e4654aef94e3f37675bb",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.12.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-uImkCJSje2NnO2GsZxjCP+4cOuDpIislRO4g2gsH0PiqnfJlThrxY0AFK84P2HTfEGm9dXp7izIToOhc2GgxaA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCNM/LqARccW6XX9BMbnJZ3lAprDwRAK2r024TENDvB/gIhAJKtV7mXCw5uzLEkaMrdnpEYZZWIXhyB6p3z5lRufWmz",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172161
+			}
+		},
+		"1.0.13": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.13",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "2e8461e3fbfd951ad6aac2e0472c7233377dfefc",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.13.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-p31FTD22xwFis9HxtQHcPlBbK8DZrBwO7zjSiCqzLgNbPlvEo3DCbplyhlQfVrRjXCeE6BPd26kAvttyh38jMw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDbUH5hPk6I/i3gQiNk1fdZwW165ys9ti/GBU3XhuufPgIhAJEDoJ6G5mBjZzGfsMk0uIYm6rjF0tlvupYJkps3sgbB",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172161
+			}
+		},
+		"1.0.14": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.14",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "c6f62f57d86e1beef806b1faf337098c52556c09",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.14.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-8/Gr43WTB47QxqmzegeSWnb2yG2gnCvYRcFK0Ku324aaTvvdcifE3hxGSd4awOoWmsfMiL/NDla6ewDAESUDXw==",
+				"signatures": [
+					{
+						"sig": "MEQCIC/4XgCktYC/cIe2KAN8ffrIyybgTjCl/Gh75W5P+VxEAiBSyOohYsNyjGaaEEFCJeEx9uOiV3+WA+zLexAL0TUiRA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172790
+			}
+		},
+		"1.0.15": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.15",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "dceeccdc38d79fed22e939c487fbf08fb0f373bb",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.15.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-iwRf44CPUG4SwZFw7bJJ7KdfDmq169/BG9w3ShmOMwLdIBPSrB2lHcyk7dsnvxBxtNfjq0kNMW6GU+dHdwZENw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDfEUxYRl75mt8BGA0fzlPbNDbbvs7niOXsdXBUWJvs7QIgH+zmf1xJ1uEn4Q/zNASSaxDmuCJ+SjQrpOrNQS8tD0k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172739
+			}
+		},
+		"1.0.16": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.16",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "8f9afc17cb0a4eb767a2aaaf06fd7ca5b9cd23c5",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.16.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-mTMRRDynyzRqSERsde45um9qqESqezETwD0HZk0KXzSPE5sr2xt6lDAcD6zigY2XHCoJrS4961jFng/xYZApdg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDTy4GkeCecK9QgTfYO6RUM5DRXcxDs4m41lvJtEIrZ/gIhAIOBiYb4TvndSj3ho1MQGKEjeq5iS8Lw15xIesPh8v7b",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172734
+			}
+		},
+		"1.0.17": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.17",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-invariant": "0.0.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0"
+			},
+			"dist": {
+				"shasum": "32b5e417b8e034834fdeb68e41f2b5a732b105e4",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.17.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Mf6mKIkLyMYFTOuZqF55BfooMmjQs+aFngV6xq07M3AxiSA9CVCs5xtUd10zXkXx1b9nYcdujnr/cH9OMacl0w==",
+				"signatures": [
+					{
+						"sig": "MEQCIQDS6v+ZvoWfVzz+fPtDP9kSTIUM0EtUqqwbNTCVWGfzjQIfSPI4TFwN29KMjE9hmRulY29OUv6hotsgPwpZ2Vl4gQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172787
+			}
+		},
+		"1.0.18": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.18",
+			"dependencies": {
+				"vite": "5.3.2",
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-invariant": "0.0.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0",
+				"@cloudflare/workers-types": "^4.20240815.0"
+			},
+			"dist": {
+				"shasum": "97a7cd88a54c9195f5fde5934095ab2214e509bc",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.18.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-wRa0itj53QYbPFnMjyy18C4akQwNJ46BxJj00E018y+YBeqAoij+vYY5Wt0f2VyqYtatz8neVSoQ96iOzy7GoA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDwSEbX7LH1kO1u0eZVdGxBh2hnm3iwYZpc6/nzHjInIAIhAOL1HSwE+ZqVOPdPWamG9z8FAIrSbrSaTPqNjAOu2bgz",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 172951
+			}
+		},
+		"1.0.19": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.19",
+			"dependencies": {
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-invariant": "0.0.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0",
+				"@cloudflare/workers-types": "^4.20240815.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.4.2"
+			},
+			"dist": {
+				"shasum": "bfe502e102380200ec6a838a6f5fc339156e862a",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.19.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-v1+lLpIi94JUtjbpvaVM8/vltepB0TvyNLX8q70NldWmHK18xOIxbJdXiPOqdaZmOZ0w38eeTd39TdjsagCwig==",
+				"signatures": [
+					{
+						"sig": "MEUCIHp8ayBklmVvHWA3R7NDobDIgwN6yZUZJC/Oud3zTI18AiEAlITgiKD9LO1QiLutG72wKOm2dbBdWL4ZnS6yWL2O93g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 173304
+			}
+		},
+		"1.0.20": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.20",
+			"dependencies": {
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"minimatch": "^10.0.1",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-invariant": "0.0.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0",
+				"@cloudflare/workers-types": "^4.20240815.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.4.2"
+			},
+			"dist": {
+				"shasum": "475e610518cf959d78dd7b90a2fda41d066821b3",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.20.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-BqX1duHIOvxSX//KGJb+hXuN9sHXVk0B8wuf35HboH/x7+tM04+htW+TjTqGIiWo11BqiFy8gAxmixrEMyNTlw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCZdqur3Jr07V091UGFvr//4+xjwnAXlgHuBf7jZlncRAIhAM8gqq0tHfzHqlBIcsu5nlM4rsqzmiyFhWUvv03Zt8aq",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 225803
+			}
+		},
+		"1.0.21": {
+			"name": "@wix/cli-miniflare",
+			"version": "1.0.21",
+			"dependencies": {
+				"miniflare": "^3.20240701.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "^8.1.0",
+				"lodash": "^4.17.21",
+				"p-retry": "^5.1.2",
+				"variant": "^3.0.0-dev.27",
+				"minimatch": "^10.0.1",
+				"@jest/globals": "^29.7.0",
+				"@wix/cli-invariant": "0.0.0",
+				"@wix/cli-test-overrides": "0.0.0",
+				"@wix/wix-cli-jest-config": "1.0.0",
+				"@cloudflare/workers-types": "^4.20240815.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.4.2"
+			},
+			"dist": {
+				"shasum": "7e5da150725ed8f4317d9ac6b424547a84379044",
+				"tarball": "https://registry.npmjs.org/@wix/cli-miniflare/-/cli-miniflare-1.0.21.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-eKQeZQBmFRIaa+pq862TBClExb6OMg9NSxwsVS/WJiAxnZhEr0c4K9RpDJCbvNaXlL0X80/hSsGrth5mBBb5uw==",
+				"signatures": [
+					{
+						"sig": "MEQCICyRTAbZhbFasHVYzOxIXeoPRxPkkj3n6x46DVNos67KAiAAlb3N1pmp/C/Hash3iVOK15J9lbbjGeZsVektW20kqQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 225803
+			}
+		}
+	}
+}

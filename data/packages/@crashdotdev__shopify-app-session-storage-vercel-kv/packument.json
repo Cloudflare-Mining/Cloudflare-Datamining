@@ -1,0 +1,117 @@
+{
+	"name": "@crashdotdev/shopify-app-session-storage-vercel-kv",
+	"dist-tags": {
+		"latest": "1.0.10"
+	},
+	"versions": {
+		"1.0.8": {
+			"name": "@crashdotdev/shopify-app-session-storage-vercel-kv",
+			"version": "1.0.8",
+			"dependencies": {
+				"@vercel/kv": "^0.2.2",
+				"semver": "^7.5.1",
+				"tslib": "^2.4.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230511.0",
+				"@shopify/eslint-plugin": "^42.1.0",
+				"@shopify/prettier-config": "^1.1.2",
+				"@shopify/shopify-app-session-storage-test-utils": "^0.1.4",
+				"eslint": "^8.40.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"prettier": "^2.8.8",
+				"typescript": "^4.9.5"
+			},
+			"peerDependencies": {
+				"@shopify/shopify-api": "^7.3.1",
+				"@shopify/shopify-app-session-storage": "^1.1.4"
+			},
+			"dist": {
+				"integrity": "sha512-zlNZyFFX2GmQf7E9vEUyCZDmjWXCXy5bmOE6NVLbzcivMJcBaXUyT68dOjOggaVBTPj8JbH7tG4aSAClSNr7kg==",
+				"shasum": "4ff3ac063fa9ebe573f029418b88cd9a2ea6c494",
+				"tarball": "https://registry.npmjs.org/@crashdotdev/shopify-app-session-storage-vercel-kv/-/shopify-app-session-storage-vercel-kv-1.0.8.tgz",
+				"fileCount": 8,
+				"unpackedSize": 18954,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGFfz+C2zWtSZRDg+NUdbs83d8Cbn4lBMfjE8XiFmUppAiEArGPTe0PZDoXmi1Y/50EOAID/PlOR0o28CQcy78wIczU="
+					}
+				]
+			}
+		},
+		"1.0.9": {
+			"name": "@crashdotdev/shopify-app-session-storage-vercel-kv",
+			"version": "1.0.9",
+			"dependencies": {
+				"@vercel/kv": "^0.2.2",
+				"semver": "^7.5.1",
+				"tslib": "^2.4.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230511.0",
+				"@shopify/eslint-plugin": "^42.1.0",
+				"@shopify/prettier-config": "^1.1.2",
+				"@shopify/shopify-app-session-storage-test-utils": "^0.1.4",
+				"eslint": "^8.40.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"prettier": "^2.8.8",
+				"typescript": "^4.9.5"
+			},
+			"peerDependencies": {
+				"@shopify/shopify-api": "^7.3.1",
+				"@shopify/shopify-app-session-storage": "^1.1.4"
+			},
+			"dist": {
+				"integrity": "sha512-jGja7RtBJYclEzVq+c0kfDkFCL8iidUH7hiVqOS+N5FirQMKKrJtzwvl1+F7JZZ+FCo9meh7FNieLUQbTrNG6Q==",
+				"shasum": "3171fdcf26b004f2dda1ee000e14a9658dc2a2db",
+				"tarball": "https://registry.npmjs.org/@crashdotdev/shopify-app-session-storage-vercel-kv/-/shopify-app-session-storage-vercel-kv-1.0.9.tgz",
+				"fileCount": 8,
+				"unpackedSize": 18933,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD6noUzBGIsPC21paFdwa8nc+OcIOZdMQkzQg7N9jEBQgIhAM4F2uS/U57oBl4kCKicxjr6qh6Ud3p4HgKNueGXfG/y"
+					}
+				]
+			}
+		},
+		"1.0.10": {
+			"name": "@crashdotdev/shopify-app-session-storage-vercel-kv",
+			"version": "1.0.10",
+			"dependencies": {
+				"semver": "^7.5.1",
+				"tslib": "^2.4.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230511.0",
+				"@shopify/eslint-plugin": "^42.1.0",
+				"@shopify/prettier-config": "^1.1.2",
+				"@shopify/shopify-app-session-storage-test-utils": "^0.1.4",
+				"@vercel/kv": "^0.2.2",
+				"eslint": "^8.40.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"prettier": "^2.8.8",
+				"typescript": "^4.9.5"
+			},
+			"peerDependencies": {
+				"@shopify/shopify-api": "^7.3.1",
+				"@shopify/shopify-app-session-storage": "^1.1.4",
+				"@vercel/kv": "^0.2.2"
+			},
+			"dist": {
+				"integrity": "sha512-wIBKBlDaQdNuGPFnoC8t958EISCD/i0uzpX6dqcwubEdcwbbKcVp4CNwHrPOKBTuFK+Kp271GGCWJNJgSR39aQ==",
+				"shasum": "3b602c3993d14980138d82f54b692eb41a59aae4",
+				"tarball": "https://registry.npmjs.org/@crashdotdev/shopify-app-session-storage-vercel-kv/-/shopify-app-session-storage-vercel-kv-1.0.10.tgz",
+				"fileCount": 12,
+				"unpackedSize": 28007,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAP14WAdTPj0Bk4bnCu4zkbQVxsQfFapbQiN9+6VY3vVAiAqGQX9EPYpSiGOb/ikqwnQkXBYKnhvD6IeWxc1zbc4fA=="
+					}
+				]
+			}
+		}
+	}
+}

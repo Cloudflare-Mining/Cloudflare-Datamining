@@ -1,0 +1,2463 @@
+{
+	"name": "@jill64/sentry-sveltekit-cloudflare",
+	"dist-tags": {
+		"latest": "1.7.16"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.1.0",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^2.7.0",
+				"@sentry/core": "^7.66.0",
+				"@sentry/utils": "^7.66.0",
+				"@sveltejs/kit": "^1.24.0",
+				"@sentry/svelte": "^7.66.0"
+			},
+			"devDependencies": {
+				"vite": "^4.4.9",
+				"tslib": "^2.6.2",
+				"eslint": "^8.48.0",
+				"svelte": "^4.2.0",
+				"publint": "^0.1.16",
+				"prettier": "^2.8.8",
+				"typescript": "^5.2.2",
+				"svelte-check": "^3.5.1",
+				"@playwright/test": "^1.37.1",
+				"@sveltejs/package": "^2.2.2",
+				"@sentry/vite-plugin": "^2.7.0",
+				"eslint-plugin-svelte": "^2.33.0",
+				"eslint-config-prettier": "^8.10.0",
+				"prettier-plugin-svelte": "^2.10.1",
+				"@typescript-eslint/parser": "^5.62.0",
+				"@sveltejs/adapter-cloudflare": "^2.3.3",
+				"@typescript-eslint/eslint-plugin": "^5.62.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "2329690d903fb561f58f2899dda4e29e9281c2cd",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.1.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-umLZqpo02JAjszfx4/6dHBP0lnEKO9qJNQi+d5s//pSZgBQ4RLopxrhsg7wtj6Al+230dEXL5AzfRyAVC46w+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD4dhhIDdxVe5zpqJjrTdTkjUGpa2AFD+Z3Z+G1ZoBpdwIgSQvjPzOs0ZNau4W2lZT87ZVnlz05Gt+6cyuZJ+hldEU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13061
+			}
+		},
+		"0.1.1": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.1.1",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^2.7.0",
+				"@sentry/core": "^7.66.0",
+				"@sentry/utils": "^7.66.0",
+				"@sveltejs/kit": "^1.24.0",
+				"@sentry/svelte": "^7.66.0"
+			},
+			"devDependencies": {
+				"vite": "^4.4.9",
+				"tslib": "^2.6.2",
+				"eslint": "^8.48.0",
+				"svelte": "^4.2.0",
+				"publint": "^0.1.16",
+				"prettier": "^2.8.8",
+				"typescript": "^5.2.2",
+				"svelte-check": "^3.5.1",
+				"@playwright/test": "^1.37.1",
+				"@sveltejs/package": "^2.2.2",
+				"@sentry/vite-plugin": "^2.7.0",
+				"eslint-plugin-svelte": "^2.33.0",
+				"eslint-config-prettier": "^8.10.0",
+				"prettier-plugin-svelte": "^2.10.1",
+				"@typescript-eslint/parser": "^5.62.0",
+				"@sveltejs/adapter-cloudflare": "^2.3.3",
+				"@typescript-eslint/eslint-plugin": "^5.62.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "14d51b6501c22b7d8c6df3c99d81d7a45ad1f914",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.1.1.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-37i8htN56jH9qWs13AxksoLqrtE1sldsPhBdOQm+YTBpPVg/cjMlsWpbVXid17Hk141nlaxfapTxebES2BMvpA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQClTx/9pnDTu0UnBvM6qPvtTufY0/d1udjOHoxE3AyXPgIhAKE2YJ8RMqUMYwtrpCNx/n/pvc+Cj6/r1Pd+AhsRxsgX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13487
+			}
+		},
+		"0.4.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.0",
+			"devDependencies": {
+				"dotenv": "^16.3.1",
+				"eslint": "^8.48.0",
+				"esm-env": "^1.0.0",
+				"publint": "^0.2.2",
+				"prettier": "^3.0.3",
+				"toucan-js": "^2.7.0",
+				"typescript": "^5.2.2",
+				"@sentry/core": "^7.66.0",
+				"@sentry/utils": "^7.66.0",
+				"@sveltejs/kit": "^1.24.0",
+				"@sentry/svelte": "^7.66.0",
+				"@playwright/test": "^1.37.1",
+				"eslint-plugin-svelte": "^2.33.0",
+				"eslint-config-prettier": "^9.0.0",
+				"prettier-plugin-svelte": "^3.0.3",
+				"@typescript-eslint/parser": "^6.5.0",
+				"@typescript-eslint/eslint-plugin": "^6.5.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "a21c3a9da85a24e42eb081cef00a7e519ed9123b",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-mk4rO7OAiE2YslYBoyIIHTZKmuCF+vpiouIu0xnZ2mjTXOlZ/wUJk1/+mCNGfNHys066/n/Bt/43kKFUt6+JNg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHo2j9YdNmmeWmYzUrM1QWv6ZsYEA0pu7vptvWzJfxCwAiEA1Q8EfxFXEDEdVXz7+KIWNQ3O7NA45py3IOFPFCHaTok=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 316177
+			}
+		},
+		"0.4.1": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.1",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^2.7.0",
+				"@sentry/core": "^7.66.0",
+				"@sentry/utils": "^7.66.0",
+				"@sveltejs/kit": "^1.24.0",
+				"@sentry/svelte": "^7.66.0"
+			},
+			"devDependencies": {
+				"dotenv": "^16.3.1",
+				"eslint": "^8.48.0",
+				"publint": "^0.2.2",
+				"prettier": "^3.0.3",
+				"typescript": "^5.2.2",
+				"@playwright/test": "^1.37.1",
+				"eslint-plugin-svelte": "^2.33.0",
+				"eslint-config-prettier": "^9.0.0",
+				"prettier-plugin-svelte": "^3.0.3",
+				"@typescript-eslint/parser": "^6.5.0",
+				"@typescript-eslint/eslint-plugin": "^6.5.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "20d1eac6b1e7c229040548badd53c854afcf6dd5",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-ewP9bCCpxK5QhgM2TAbiTkOJvU37oveSbhvk8BA0lO+NPiBKUeF0ua16oADgaKxey8jTw84/t0agV8qIfKqxKg==",
+				"signatures": [
+					{
+						"sig": "MEQCIGpEcytHPBceL5DTuXtTUeIluZOyLe7nh7HrR2q4Bum7AiBaznl0XWcHc50X1uYqNnzkhdP1KxCY7c+qjiVcmucYww==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 316265
+			}
+		},
+		"0.4.2": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.2",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^2.7.0",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"dotenv": "^16.3.1",
+				"eslint": "^8.49.0",
+				"publint": "^0.2.2",
+				"prettier": "^3.0.3",
+				"typescript": "^5.2.2",
+				"@playwright/test": "^1.37.1",
+				"eslint-plugin-svelte": "^2.33.0",
+				"eslint-config-prettier": "^9.0.0",
+				"prettier-plugin-svelte": "^3.0.3",
+				"@typescript-eslint/parser": "^6.6.0",
+				"@typescript-eslint/eslint-plugin": "^6.6.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "2857938d363a52cc674c7ee3426e7c85ca094a7c",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.2.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-gRIe94OcqEPIBXCsDxU+2j6Q9tpMDHj3Wq/j9g+KYi8gi9g+WuIapOVFKtde5CIdJdrgVKHUmjw57kKTZigylg==",
+				"signatures": [
+					{
+						"sig": "MEQCIG6N3KekamydRv8kfLdfGwdG6z8/arjK+1gb2F3n1MHYAiAOeg/V0Q+9Htl/WLs0l6QsjcarT7D0HXrk3ZuEArdyeA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 318659
+			}
+		},
+		"0.4.3": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.3",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"dotenv": "^16.3.1",
+				"eslint": "^8.49.0",
+				"publint": "^0.2.2",
+				"prettier": "^3.0.3",
+				"typescript": "^5.2.2",
+				"@playwright/test": "^1.37.1",
+				"eslint-plugin-svelte": "^2.33.0",
+				"eslint-config-prettier": "^9.0.0",
+				"prettier-plugin-svelte": "^3.0.3",
+				"@typescript-eslint/parser": "^6.6.0",
+				"@typescript-eslint/eslint-plugin": "^6.6.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "d1cb8f8fc9933ca95c48fd5fc17271562bb738a6",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.3.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-OqO9kgyTSMcgjX4J9K66O9eYnKhbuT/xj+gJWmLoUEnhki5Dz81woWNfYfDcqJoiK4UcurHqIwY/dRBbbTXU4Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCVSte9UUoXtkdPNrxbZwu6gtDuGjfnsHIog63m0+InHAIhANQt9dE3vkC6xAa7jh0vVYh+b2haQWXMcXBd6Uj50QXb",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308921
+			}
+		},
+		"0.4.5": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.5",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.2",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.2",
+				"@typescript-eslint/eslint-plugin": "6.7.2"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "26c7811b4d070472e7c81ff274d9259da4268181",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.5.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-KrAsPdL5qpTOPduCXbFhiXdpOohkPRP2HjBL+ZLHJ3gD/yXS3LF70U/lvixgTOvMEuHr1bltEPbwcv86KeSTaQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCZ2YdANzrM/xJvrdJg6beZZ21eaVfijcZow54CojgqgwIhAIdwmBGXaR+Mt3Lq6wt4D5K5jhXtiT6TzG+etoTyGS7M",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308267
+			}
+		},
+		"0.4.8": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.8",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.2",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.3",
+				"@typescript-eslint/eslint-plugin": "6.7.3"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "2bb77907e3e016ed892c4a65a7c42857805c15d5",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.8.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-+DqJgGzQ56xtDT3zB/1AM7om77HUcSHfVFuIDGTJjmKcqZ3EgeSDl+DZoa0CL2nR9iFl6iOtGKEe7kAcGoxJiQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIG50YB1SmWmAs7LeooPdILoy/YP/Au/zE1XZyO5O8MTfAiEAqTIdydwm6jiQOQ+smMNDOFkS51GA6c1+EDPJlEY7t/U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308267
+			}
+		},
+		"0.4.9": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.9",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.2",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.3",
+				"@typescript-eslint/eslint-plugin": "6.7.3"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "6a20ee9d454a11987da299bb39f9c0e71cbcf8c0",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.9.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-MB2Jix3pE8MWzqfj7FpweDkQgBP3G/fELIDbhuq/aRVl4RcUo/KIOjt9ACa5VeyNtRM0d+UDQ0ReL86OWGL01w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDnvfg5RZ82UxY/o30fDLcM9uQuIhBcLcoCU/k0tlT8OgIgL23aG2FYy2+hbAvTK93dUM+vgm8tNrxQmmzFX5Jr+aQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308267
+			}
+		},
+		"0.4.10": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.10",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.3",
+				"@typescript-eslint/eslint-plugin": "6.7.3"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "2009687a12a542258f38f3492073b2ecb10dd470",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.10.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-SIs0FbIBBzdGoUJvhK6W0SOVxAlRZjml2Ur0A8LpJcPgmBiEy9+7aDfzf2schDiMuwGDRN4she6TxU3uZuWDBQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCdU2usYG4D4mQI1Q3SsDVDrxmG2loNA9z1idmspK+W0gIhAMMNhCeTdmxgiPysWXgqaYTBD6Ekvy5knNg6Zql2ox68",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.11": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.11",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.3",
+				"@typescript-eslint/eslint-plugin": "6.7.3"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "6726e567dc6dd522a7702b7b9c5dbf11d75a7fc8",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.11.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-kkAeOQO19wXLVqYKezxr54AFKZIX8yYIaiPh2dwD3N8bxNhmUERbMDKDNb25jI3myumd/qruIRZTBE1FJenliw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAnsRY8V+voHMXQVl1fqAUqKIaBf6ctjbKvdgIxFG3NxAiA6B93NPmTFl+ckiLtSPQl/Dio2z/FQM2mW5jcxwdsspA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.12": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.12",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "9a58a788ee0cc440352ff8d35a835580ab5c7e7f",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.12.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-j8paHqLj2zaxiEcmWgxa041LcvH+FF6eg38rOklME/O8W9G3HSlvXJ/TNi07uUMoa6ovA2ixaKb4yoNHF/neiw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCh7DbQubNK7tZpUy66CCi+KR3IaHtGtwl9A1zQN18dQwIgF+0W9xKnpzaN8Y4DyAC1tIotHJ6xVgMRd/2vy0IguwI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.13": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.13",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "b4ef0cd96b95ed66a37bbae88e2dedc36da7ae63",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.13.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-03lv10rXhx0M6PvKXva9a+iOaP3SJb6DTe4yWffw4hF6Sl6b3x8gfpLlYjxrQG60xij6A2Y0/y20Tir17TgAEw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEwhZPI4y+CVSq89umqEQ9p0/p8zoyczB2yT6aTCw4k6AiA4YB5XBzcv5mmDw38MAdFQK1WNJTwMGK6AV+Xxa4pSng==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.14": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.14",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "014e7613c87bcd27605c331a4ce40d287e622a73",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.14.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-VdQOHdb28l8JqTXoGd4ND8PkgMxlmobcLtj/j9B3JHBt+bxV+BuDUwqlOa1CqNxdNNlu4APjI+/alWK/a5vc8A==",
+				"signatures": [
+					{
+						"sig": "MEQCIGuBSpGEJ+ZWFMaJT04BcVkPLaA6MUhHNZJ2zOzFYGXwAiAl7DVIqnV5DrFU1VITLEEH4czRKrPEjoRpVQJgV5kw4g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.15": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.15",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "90ebc0e283edf8aec33e201add4d0132160007fa",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.15.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-41wsRtHRrcNG1SwCXSvLxCADIDX4Va/kDUYSbSC0jGkvuIRbG7T4WvBZ6F4dT0BmKgdVGYZcguWEbafgtt1LyQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIAf4SW1t+m5wufR1Vjt2m/nQ0JLY2issf5ZQAuFcqE7KAiBra2EwRaXHomH+zAA6Iuu76KEWzUxrYRH4WSIJOyVNNA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.16": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.16",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.33.2",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "01dff0f450a2724e63e60736dd0cabc19f9285da",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.16.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-poGiL2NP0CZ90G1qt/ZD645QbyV/od98XruG2CvepOsHDKCSBfQYukDFhvoWHzACDGRHrj8XvNhYTDaYfzHzSw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCOe7gLCKt9TzmMKuomoYXMzArXjWkr71eQZA6GSpLAawIhAL01d/Fy+yx7b4Ce/jD8u6ZMr2/c/BvUtWayDk/11xqa",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.17": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.17",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"eslint": "8.50.0",
+				"publint": "0.2.3",
+				"prettier": "3.0.3",
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "74f1b84a879ac13be309b0320f57023e226e52ed",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.17.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-bDY0J7ABEtoai5jGCLUvlLcB0a0A49yp//sKAqK32PnPdB9bxE8HOh1t+ltUOJtTXYYfzTOh+TvHFDRyhqQBcA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBOWQXwrfkXFOVgG/y7GxF0eYvWKb32LQGng6uIKIlDhAiEA2DYuZ0Tz6MrlXK86Ux2z9sQEM0TUspGuihtwHPRZZgI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 308268
+			}
+		},
+		"0.4.18": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.18",
+			"dependencies": {
+				"esm-env": "^1.0.0",
+				"toucan-js": "^3.2.3",
+				"@sentry/core": "^7.68.0",
+				"@sentry/utils": "^7.68.0",
+				"@sveltejs/kit": "^1.24.1",
+				"@sentry/svelte": "^7.68.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "dd2bb1e1cd87a8592f8fe08f58f7c660eaa90a7c",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.18.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-LEVdLFRBZTDuKMSqRZNCj9OqQKzpN3SVGtyeVpjjECDQGoq1CO2NFoyFwwHB4KUZMP4y9iX2p9sRcVrVSKuEjg==",
+				"signatures": [
+					{
+						"sig": "MEUCIARInWwXz6EIubahMmb86Y4MHhiMx9HkShbEK/N/tGtkAiEAhEjb8AdOmR93NdIEp6t6aihhfnaFRNONXksQqjo2BII=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357357
+			}
+		},
+		"0.4.19": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.19",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.1",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.4",
+				"@typescript-eslint/eslint-plugin": "6.7.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "8c3a9ce97007e29c4f7b4ec001006dd3b425f6cc",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.19.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-HyKGhuex8SH2aanwccE8mrJUQg3A2GnmvxRHNTlZPqxVDdy5UKEOChOx4j2J4YH0ioEfKocC05dOL7aTkdznRg==",
+				"signatures": [
+					{
+						"sig": "MEUCIGC6wzmiRUkHv7iu7D6qjvEHvqyI5ql8EpMQdlLjOkVwAiEA+pNZ7kVvYAIEieWuT+iy7Zw79TSQd52VaFBqkMS+0jc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357351
+			}
+		},
+		"0.4.20": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.20",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.1",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "e72f58e6583c94b70c94ec793d29973cd2298baa",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.20.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-5afvSRpl27SDt0nw85oHCKanShcEuA+rfxBzfH+sp5koEpQG+9uQYeoImn61LEt3aUap4CLPzgX5cEo30UEPMg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBrukolQ9Lkx9BFB2Tddl6svStibDdyUlz0/PxmjOR2IAiBjtaenmiVzzLmxjKtI8LiNtbtrwY3Wtrknby/0bADt+g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357351
+			}
+		},
+		"0.4.21": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.21",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "c698aab42fa831a11a896662ac9449d9cd1ae34e",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.21.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-i3nCF/OP0jFtgFqCB6Cx2aZlx8IqlLkriPGcV/w41H87wWcrIzHjYlTLyqrr/+VOfOjWzyCUuPIOL3GN5rXaOQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIGC8iODcnAsWr1qn6Zqh9pAH8MeMeTAudnvt7si1pyXgAiAgD5+VjiIt8kNoEVzrnc1brgh5nypJ/i+eoAcnXlyOcg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357351
+			}
+		},
+		"0.4.22": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.22",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "c40ff3ffc0c2ad55d3e863c45adc2e06b483418f",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.22.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-OTAv8EUt5Xh64T78V/MnWC6yo0osT3NnLxzeFX67dW+CAutrOwzvQzY+w4THMGVP0gS6/u+7ix2XHwPXH9u58w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCvp1Dmz+CKxJIXZGoKxIjFz5SS4IhcyK7oTW9EpaqYPgIhAIKFaFG0EiZU+Vd2UHL3QCD7m14BqxZjKRKPs726t8LA",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357351
+			}
+		},
+		"0.4.23": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.23",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "f54e682f72090e6a85a6d73dd3d0e2ba00f18161",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.23.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-g2ZZVUSBkMKC+CUHOVlLUPzJMm5HxbL31XXjJfF0lv7Ywi3q3buFen39xmA/5vXTY2hGHa8zVjCJ65hC9o4J6A==",
+				"signatures": [
+					{
+						"sig": "MEQCIEn/+Q2rFXvbXAMk+m1ShyhLuIzjT2D/GVlBpvItvkarAiB6ZcX8vKQZ+duRBMs6rkNEjPxOmwQnsdqbfS3Uxa+nkQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357351
+			}
+		},
+		"0.4.24": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.24",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "c3d21d20b301e56d4a29186202f33e353f3403f7",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.24.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-+MvhqsxbzfMb7Kteh1rHGP28fiaUl6FehnF90kxPWKGcKhJQG1dd3IltmE7kbcqA5v7iK+ySG1miJ9FemZcZtg==",
+				"signatures": [
+					{
+						"sig": "MEUCIG1f6rRHQ4n+evubl5/qxohwj5dL/XTTAD5+i3klWm6DAiEA6e60fqVJ/cRw8CE3uvyJg3Z5s4ZzRMVFhR1BSjA9rEs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357384
+			}
+		},
+		"0.4.25": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.25",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "068f9d31c350cb616a730e8599cb8aee17b75767",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.25.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-zFjY+SZQKwF4y6gMYRS4TU4eIC/nSSNGGWJB17kwUV8QNzK5Av4lU32FzUZ5Jf5d9J+aLp/pgclxFvMR0Rj1Bg==",
+				"signatures": [
+					{
+						"sig": "MEUCIApt8nTraroPcMZyKIfdDXoS35phy1KhhZZx9wDKPtDiAiEAmdJ87DzEC+4+7uygTCTaFxs+EKp9kgR+uorJbyAfVms=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357384
+			}
+		},
+		"0.4.26": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.26",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.38.1",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "0f68a2838de4f433dabb116a6495fb404beff26c",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.26.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-9sbAwAAk+FVInIV/5xJPpgiVkO1gi4/aJQsWdrCuDBbQy1/3I35PBGQSsymQzjbWFrw4je00KZtADTycAI76jA==",
+				"signatures": [
+					{
+						"sig": "MEUCIAsaZjtUAppJlsUgVf0+0hN8DFiwP1CIc/sZvbcQMrYxAiEAitiJ3efzpbNfXgFWneysM5J3C7UdgC8UN7hUXWhjTjI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357384
+			}
+		},
+		"0.4.27": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.27",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.39.0",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "4f626aaa52bdb3328833a24593b1ee5a275ce751",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.27.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-CG27WOVx4rVX9OTJSYKjUyCIWGVVdAMqySuZUFvTsMmdEHinvM5Xl4Vtn5yb20rD2Sr9UK5dGXuN5zPg6WlQ7w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCzBXr4v4YKvVXSnRIS6Evu4d6CMnFYS8xASMQMkWf1eAIhAMgguJT4tvm9TQjBYGgFe6+gC3qJpzvpsXPK5+EfMV1I",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357384
+			}
+		},
+		"0.4.28": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.28",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.73.0",
+				"@sentry/utils": "7.73.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.73.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.39.0",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "d11e0e65c63409714a61caa025f2ba17a58d0129",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.28.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-G6xq2lbHpBTDTxeWqUJHXTpsbbxX4FTt/tFOqEgiV6j5I+Ix8qv6rxbq/z75D64woQYdNSGEWNf1vR8xb77MRw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDAD+jLSxqgR/jTMT3yfW6embLNvMbWsbhONvGj1IJM3wIgAv0qXNjQefzAUDGIyXp0Sl3w6hkbUlDnN/tcH9bL3bQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357384
+			}
+		},
+		"0.4.29": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.29",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.74.0",
+				"@sentry/utils": "7.74.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.74.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.39.0",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "24ad19081e88afa163ba21034044257baf8386f6",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.29.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-mBsb+mzIwtPdz4up17z6Ox7tNq9YtV5dh7EONZdyIYM6JAsUFZJoyttpH7fQqxUcSa2TJtpwZZM3JIH/3rr58A==",
+				"signatures": [
+					{
+						"sig": "MEUCIBCDYCYoXH4UbolD6pr+jqrw72ESxIm5RS8D0Z7xj1DdAiEA//gIPPvrgrNuhh2Eb7YGffqtwILgpOoO8mC0SAYgubQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357412
+			}
+		},
+		"0.4.30": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.30",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.74.0",
+				"@sentry/utils": "7.74.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.74.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.39.0",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "16cd688ca3ab70a263b0af7a51c9cde8d25abbd7",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.30.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-zGfjPJKxGZLuhbu3HC1CuoggoQU25GlDq0pKTT2qD6Uuy6+4B3/i0AHDG90o3/ScU4JeUyMUgXr7pVjBPQJF6A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDhtIsKK+g9Ghp0SdsyymHmZPbQZItSAO/aZmeGxmiAwQIgc/FudfzaQtXw50ZXE65jO5nr6dkFb1KuO1ANp/7v2X0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357479
+			}
+		},
+		"0.4.31": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.31",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.74.0",
+				"@sentry/utils": "7.74.0",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.74.0"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.39.0",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.7.5",
+				"@typescript-eslint/eslint-plugin": "6.7.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "f2ed5a14e1486af884a3a34d55f60048b6c9f5f5",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.31.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-P6rbLF0eLVwlZbbV+J7wpNbgoDIJL9R6fiKyJpYgNzaxztOkEYfo72r8ibgtLbvNX8v4HX+6I07hBuIBU0macA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAE9JE07ov1p0emPbsy0nzNhWoIalyxDODV3RRRxdlZ2AiAAhrZIJlpECmnXtxWaGyfjEmKJ3DLS9iW3vDhk+kvgzA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357479
+			}
+		},
+		"0.4.32": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.4.32",
+			"dependencies": {
+				"esm-env": "1.0.0",
+				"toucan-js": "3.3.0",
+				"@sentry/core": "7.74.1",
+				"@sentry/utils": "7.74.1",
+				"@sveltejs/kit": "1.25.2",
+				"@sentry/svelte": "7.74.1"
+			},
+			"devDependencies": {
+				"typescript": "5.2.2",
+				"@playwright/test": "1.39.0",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.8.0",
+				"@typescript-eslint/eslint-plugin": "6.8.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "9ae2c3323dc04c0610ee366e3eaa599495895190",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.4.32.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-n8SHjoyWoi+tqAzWDCXOT+cAYl7PEC1YYnWRC596VV2GCEnUT0b8m3bbuphXVGZCFOf784Ss7wXDZdsdPOijzQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAbTfgbGY3ybSsb0czW697+MmVP6y7YoIPRFtqV37Z6fAiEAz009rN3qUYX/ZVcG3QXZI16BWnKs2JolT2BhqiEhak0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 357571
+			}
+		},
+		"0.5.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.5.0",
+			"dependencies": {
+				"esm-env": "1.0.0"
+			},
+			"devDependencies": {
+				"toucan-js": "3.3.0",
+				"typescript": "5.2.2",
+				"@sentry/core": "7.74.1",
+				"@sentry/types": "^7.74.1",
+				"@sentry/utils": "7.74.1",
+				"@sveltejs/kit": "1.26.0",
+				"@sentry/svelte": "7.74.1",
+				"@playwright/test": "1.39.0",
+				"eslint-plugin-svelte": "2.34.0",
+				"eslint-config-prettier": "9.0.0",
+				"prettier-plugin-svelte": "3.0.3",
+				"@typescript-eslint/parser": "6.8.0",
+				"@typescript-eslint/eslint-plugin": "6.8.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "fa026af4a61bd81400bd6e53892f9cd6dbeab66c",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.5.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-yikCjVViyxx9sWS4rV4YnsWQi8OpVFtPbpu/NOpULSV/Tais/gu3W0inNjdP5vrmCl9VD7n7zS2ZeOcgo3SaXw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGG7QxQ4c/pSAcMzSFwo+WpsOqcPXHCGYVsbMJBnu7rZAiEAy2BwTkyiYYh1asoxHqCD0idL3G2t1owFk4plVmtlfas=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 360983
+			}
+		},
+		"0.6.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "0.6.0",
+			"dependencies": {
+				"esm-env": "1.0.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"toucan-js": "3.3.0",
+				"typescript": "5.2.2",
+				"@types/node": "20.8.9",
+				"@sentry/core": "7.75.1",
+				"@sentry/types": "7.75.1",
+				"@sentry/utils": "7.75.1",
+				"@sveltejs/kit": "1.27.1",
+				"@sentry/svelte": "7.75.1",
+				"@playwright/test": "1.39.0",
+				"@typescript-eslint/parser": "6.9.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.9.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "58b8bafb2f82c5aa62c22590306bdd6f2f18c8ae",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-0.6.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-RU8Wrnsh5ZJwgsDK/arCWJ9sAmoE5UEN0hftXBAwdgloMHzlovJDArvu2ZuaSUjhKcz7EnA8uQl9TDpfVMQqCg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDLWs6V/o9JTGDwlK2qjTckWKGuaQWRZ93sjBGLRMn+QgIhAOX1kJFWcjqcNduEZKOVc1EInuMw9j1CGLXCRAaIaltD",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 363072
+			}
+		},
+		"1.0.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.0.0",
+			"dependencies": {
+				"esm-env": "1.0.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"toucan-js": "3.3.0",
+				"typescript": "5.2.2",
+				"@types/node": "20.8.9",
+				"@sentry/core": "7.75.1",
+				"@sentry/types": "7.75.1",
+				"@sentry/utils": "7.75.1",
+				"@sveltejs/kit": "1.27.1",
+				"@sentry/svelte": "7.75.1",
+				"@playwright/test": "1.39.0",
+				"@typescript-eslint/parser": "6.9.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.9.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "e10ec99d443731018de4c9ce4de90c7e84b67c03",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.0.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-RB/uSWJyCBuoYsrCa7i9egULJeh0AoNo4+qfsoNO8WaHzA/socYhRmuC5nIJqR8NWJF344N8W9AAuB10GKpUTw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCPsYhW5p1KsV6aXqOhR0m24q/ykFgLzsFkq0bJf6IrGAIhAJdcAGjsG3AmcBwIv6pFzTiM63ToyNTOl0CYdA78U66P",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 363072
+			}
+		},
+		"1.1.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.1.0",
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"toucan-js": "3.3.1",
+				"typescript": "5.2.2",
+				"@types/node": "20.9.0",
+				"@sentry/core": "7.80.1",
+				"@sentry/types": "7.80.1",
+				"@sentry/utils": "7.80.1",
+				"@sveltejs/kit": "1.27.6",
+				"@sentry/svelte": "7.80.1",
+				"@playwright/test": "1.39.0",
+				"@typescript-eslint/parser": "6.11.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.11.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "23cc7b3b737a4213042561ef370a14536e43ca23",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.1.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-Qbcvs1X/t7HbqGZCh35rWytJ+9jK23Vy8pmPp22OQyzt3a7tcMR4WD09bW8Y2JBgBtj4/jXV+kbha2H1xkwDYA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFCJT/grHa9RrScopA1vRI1OcBrodFAoj3XMLTY+UaPGAiBUwmGEtvHPhghrrk7SrzxT05fQe+9xDQr7WgODaRJzMQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 307668
+			}
+		},
+		"1.2.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.2.0",
+			"dependencies": {
+				"toucan-js": "3.3.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"typescript": "5.2.2",
+				"@types/node": "20.9.0",
+				"@sentry/core": "7.80.1",
+				"@sentry/types": "7.80.1",
+				"@sentry/utils": "7.80.1",
+				"@sveltejs/kit": "1.27.6",
+				"@sentry/svelte": "7.80.1",
+				"@playwright/test": "1.39.0",
+				"@typescript-eslint/parser": "6.11.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.11.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "279e27e37ccd448686157f49abbdc23755346179",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.2.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-7BNJyDjPFvERNSCWOodTDo99RlttVs4fEEUQgv7gb8DgIYKfB8pVobaaPSZSnIu4blDAsmkEa2lw7PlJalYo5A==",
+				"signatures": [
+					{
+						"sig": "MEUCIHeineGgW6ya0u5tggUM+UHlk1tyK1XwjTr917JhaSt4AiEAkCRRLY8PqyG3ghqddbyRU5L9fwRUYrNnsS5OHQfRG0E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 238739
+			}
+		},
+		"1.3.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.3.0",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/sveltekit": "7.80.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"typescript": "5.2.2",
+				"@sentry/core": "7.80.1",
+				"@sentry/utils": "7.80.1",
+				"@sveltejs/kit": "1.27.6",
+				"@sentry/svelte": "7.80.1",
+				"@playwright/test": "1.40.0",
+				"@typescript-eslint/parser": "6.11.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.11.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "4f27ab2d67e0c0c529d41de8062e016af40b6c08",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.3.0.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-129HQK5P55Ex0Jg6JNbrUREIvMa/jj0kMOyihsRkMEFxTRgME5YK+Swn1961Cb/qEiro/ahmsHjG2mOS22ssNg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC6n3EoiGFNWeLRLgqIS2FLurfksbD/4VNo5JzWUIbrXgIgKI3pEc6mMqsvy8mXCZ/r/PkblOfeSsZ9z9tRim8el2Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 237693
+			}
+		},
+		"1.3.1": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.3.1",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/sveltekit": "7.80.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"typescript": "5.2.2",
+				"@sentry/core": "7.80.1",
+				"@sentry/utils": "7.80.1",
+				"@sveltejs/kit": "1.27.6",
+				"@sentry/svelte": "7.80.1",
+				"@playwright/test": "1.40.0",
+				"@typescript-eslint/parser": "6.11.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.11.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "c3a6f0d2d707077b81a45abdce10846aa82dad95",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.3.1.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-LsvWchRxFFGbTgElYjOjaKkhgXL502ZmgVn11psfhs5dYcPjj3+n14AeANiuPab8ss//PM7zWmozp+SZzrPfTg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCGIcgYrh/Mvm2ZJCl6MrhytMdCKvtyvRGLzvAM18FNpwIhAMQyBB/e1nOyi1YhUDv4O56zI9meA4DT2HGbzRZI5nJG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 237704
+			}
+		},
+		"1.3.2": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.3.2",
+			"dependencies": {
+				"toucan-js": "3.3.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"typescript": "5.2.2",
+				"@sentry/core": "7.80.1",
+				"@sentry/utils": "7.80.1",
+				"@sveltejs/kit": "1.27.6",
+				"@sentry/svelte": "7.80.1",
+				"@playwright/test": "1.40.0",
+				"@sentry/sveltekit": "7.80.1",
+				"@typescript-eslint/parser": "6.11.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.11.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "97af1d9bbdca70ca927374a72c0ac8b6463a86fc",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.3.2.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-dUH7dzeISOiCXlOiDbVTBB9L6uop5xGvZj1ozQjeg4bovenQmQDd/itAi/QL/hccL7KekCYNk+N9z1Qp/VeTbw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDKs6AdT57IbOzrQYtGfCPaXZl3gXaOAj/CWcoor7nLVwIgMfOw3HPvD6zJ821Zegmisa48/Zrmgbvy8dGM+tAAK9Y=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 237704
+			}
+		},
+		"1.3.3": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.3.3",
+			"dependencies": {
+				"toucan-js": "3.3.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.5",
+				"typescript": "5.2.2",
+				"@sentry/core": "7.80.1",
+				"@sentry/utils": "7.80.1",
+				"@sveltejs/kit": "1.27.6",
+				"@sentry/svelte": "7.80.1",
+				"@playwright/test": "1.40.0",
+				"@sentry/sveltekit": "7.80.1",
+				"@typescript-eslint/parser": "6.11.0",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.11.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "8bd6f476be82e27f314c7f5b80c11e479a4f3df1",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.3.3.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-9aZBpS1iAlAGP6ZEVXeP+a5B0f4P8tKquF2y9LkO+aNJeH7JR5pRgdUxehBVAc9+YUNQXSgR0oKkrpuVwq/buA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCa+e1q27rCR0UUukx3ARN7Fj/D+FWuh1tPM0ZOhme2LQIhAKHgS21dLP2feVZrRMHfeCqFWqo5330kvWfU+q8TQ/1B",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 237544
+			}
+		},
+		"1.4.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.4.0",
+			"dependencies": {
+				"toucan-js": "3.3.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.8",
+				"typescript": "5.3.2",
+				"@sentry/core": "7.84.0",
+				"@sentry/utils": "7.84.0",
+				"@sveltejs/kit": "1.27.6",
+				"@playwright/test": "1.40.1",
+				"@sentry/sveltekit": "7.84.0",
+				"@typescript-eslint/parser": "6.13.1",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.13.1"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "41ce454f02d5e60793605ee82054c0e1649caff8",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.4.0.tgz",
+				"fileCount": 22,
+				"integrity": "sha512-4FPF6pIrsM9FhT3MqDu3NUFd8VHaQrGNZJ4syKBMcdj/QA+gUXtUGgSLwSQBTMi0T1gX0VVP3w7LHuOua7uw9g==",
+				"signatures": [
+					{
+						"sig": "MEUCICf3b2wAOQKeZuvXMX5viMYTmzKcGa1xL29eRYeRGg9WAiEAvilZi560QoRNn9W28Ca/E2pHPntQIjvpKfJqNCQVJbQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 235656
+			}
+		},
+		"1.4.1": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.4.1",
+			"dependencies": {
+				"toucan-js": "3.3.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.8",
+				"typescript": "5.3.2",
+				"@sentry/core": "7.84.0",
+				"@sentry/utils": "7.84.0",
+				"@sveltejs/kit": "1.27.6",
+				"@playwright/test": "1.40.1",
+				"@sentry/sveltekit": "7.84.0",
+				"@typescript-eslint/parser": "6.13.1",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.13.1"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "d462682d03f713a5f66158a396c1a2abdb015a52",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.4.1.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-G2a/DEDJ4JfznwPRT4FiNnsje75xQ6CSLe2fWimoJd0v7BhBziEZg2urn4tlHJnS2tchZpOsdk2vbmTqTVND7A==",
+				"signatures": [
+					{
+						"sig": "MEUCIGcHJQEjjf2WayOQuC8CwbFQQ3mH0XDKIaWe2PwgIdJxAiEA2P3Bk9F6lJTZnEA4uGBrOmrN4PiSIqgovisSy7R2pRs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 478458
+			}
+		},
+		"1.4.2": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.4.2",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/sveltekit": "7.84.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.8",
+				"typescript": "5.3.2",
+				"@sentry/core": "7.84.0",
+				"@sentry/utils": "7.84.0",
+				"@sveltejs/kit": "1.27.6",
+				"@playwright/test": "1.40.1",
+				"@typescript-eslint/parser": "6.13.1",
+				"eslint-plugin-deprecation": "2.0.0",
+				"@typescript-eslint/eslint-plugin": "6.13.1"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "f791cd070212cd2c40074909ad05e786b91a5bec",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.4.2.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-bSd5g4pa/oYy22ynXiPOfzhSs8LJ/xXiIFRyL06E4SEckdgBgUbfkPX06wBRHiI/zEHTXEZO9Y0Tj1ffXvcqEQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCuuFhvqasW0Lkw7SK2XgBXZgtZssnq5beC1b34uLyZfQIgIbRBfCjMr6lDfJm+RxX6Tz5uhyT3YXrAPxSf6lNnTGg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 478458
+			}
+		},
+		"1.5.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.5.0",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/sveltekit": "7.84.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.8",
+				"typescript": "5.3.2",
+				"@sentry/core": "7.84.0",
+				"@sentry/utils": "7.84.0",
+				"@sveltejs/kit": "1.27.6",
+				"@playwright/test": "1.40.1",
+				"@jill64/prettier-config": "0.0.2",
+				"@jill64/eslint-config-ts": "0.1.5",
+				"@jill64/playwright-config": "0.0.1"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^1.0.0"
+			},
+			"dist": {
+				"shasum": "744e014dc4bef207799675f5a4ff52739c547c44",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.5.0.tgz",
+				"fileCount": 34,
+				"integrity": "sha512-v4rZJHHAeEJWoneafwr4+1aiEpcEHbk1Mp3M2WsUY0AN3JHU0TTa2H2eRQFcuF4dam+FQNSdaPXMtpHUo2mk3Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIHoqiF4cZZSalCJfyCxr5wdDO95PBhG91Fszi/dQCTvsAiEAmEc5Qa0bSYAwk5n4wFEkioOqowFn693MYrtkKPx169c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 946374
+			}
+		},
+		"1.6.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.6.0",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/sveltekit": "7.87.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.9",
+				"typescript": "5.3.3",
+				"@sentry/core": "7.87.0",
+				"@sentry/utils": "7.87.0",
+				"@sveltejs/kit": "2.0.0",
+				"@playwright/test": "1.40.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.3",
+				"@jill64/playwright-config": "2.2.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "1588f39ee2662068babeca6025ccacfe80a41ecf",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.6.0.tgz",
+				"fileCount": 34,
+				"integrity": "sha512-T3u9ypOAr/IQMfTAN/b+X3f1lNDRR2YNdaIH3r/QiofFbvvMyVCXrlDon/cB6z8G5J+De67q+ja9K2/XQxdMZw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD/YDDWTqz8DcGWDvI1OSsDBsi4X5aavy4mWpU778e/rwIhAMQCFjczs4Phwa08VwlOOvKAo59JCBvvNNe0iw/HHyOs",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 954827
+			}
+		},
+		"1.6.1": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.6.1",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/sveltekit": "7.88.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.9",
+				"typescript": "5.3.3",
+				"@sentry/core": "7.88.0",
+				"@sentry/utils": "7.88.0",
+				"@sveltejs/kit": "2.0.0",
+				"@playwright/test": "1.40.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.3",
+				"@jill64/playwright-config": "2.2.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": ">=1.0.0"
+			},
+			"dist": {
+				"shasum": "f8e3afe5d60b51b19dbf97247182f2bf50c729a7",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.6.1.tgz",
+				"fileCount": 34,
+				"integrity": "sha512-4fZKD9g1SWmPC9qO8Yd47vqWsqr+gFIpnvPrS4Iwsiffm9lXFLOhBbkbB2giSCXmehNNkw3e1jBZ6CtgORC6Rg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC3/AAaR5FatP5YR3Q8pR/lX9TFPjW+m12d+4TmBUYHNAIgL7ZkYKU8i1aQR6HfV8krSG+v8jkYzSmPjEX3oPP3/Qw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 958360
+			}
+		},
+		"1.6.2": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.6.2",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/sveltekit": "7.88.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.9",
+				"typescript": "5.3.3",
+				"@sentry/core": "7.88.0",
+				"@sentry/utils": "7.88.0",
+				"@sveltejs/kit": "2.0.2",
+				"@playwright/test": "1.40.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.5",
+				"@jill64/playwright-config": "2.2.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": ">=1.0.0"
+			},
+			"dist": {
+				"shasum": "a86c6559a8ef75a3bdceb91c51251eb1c9810b45",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.6.2.tgz",
+				"fileCount": 34,
+				"integrity": "sha512-9Rhhehdw5PX33zSDKSsR/+/3MHHiFP7Rv1ni+lmMo7TidnIY6gcNZxxFp5a/Qf5+85E+PVBfxpL0XuGoiEZHHw==",
+				"signatures": [
+					{
+						"sig": "MEUCIG0p7bBxozCD8mwDt2hp/uoWUwtF0qbWkbp+j7GIk4PzAiEAzpWECPZhC4xRIQQlxeL1kgxU26NJp6yCscnnZg50fK0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 958360
+			}
+		},
+		"1.7.0": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.0",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.89.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.10",
+				"typescript": "5.3.3",
+				"@types/node": "20.10.5",
+				"@sentry/core": "7.89.0",
+				"@sentry/utils": "7.89.0",
+				"@sveltejs/kit": "2.0.4",
+				"@playwright/test": "1.40.1",
+				"@sentry/sveltekit": "7.89.0",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.6",
+				"@jill64/playwright-config": "2.2.1"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "2c3d4c0dd662ec95ac7bcd3fc8502b5269319109",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-SKGp0SrZcdwkIHY79rkKnsGZwwunEaArB39R+CgZjTu1BC8m/ha7lWbQHRbmXNEBE2lR2SeXHYJQcW5s3pn7zg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDaZsZtZOawvPCZDNLqgTvzsfPGXYRnEpKR/vs+x86S7gIhAKLDKKq9jgT0ONqFZu2E2E2BAz2bRCRmWRDlx2/d2SOp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 957520
+			}
+		},
+		"1.7.1": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.1",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.91.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.11",
+				"typescript": "5.3.3",
+				"@types/node": "20.10.7",
+				"@sentry/core": "7.91.0",
+				"@sentry/types": "7.91.0",
+				"@sentry/utils": "7.91.0",
+				"@sveltejs/kit": "2.0.8",
+				"@playwright/test": "1.40.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.11",
+				"@jill64/playwright-config": "2.2.1"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "0c543e5b409fdb8b7af78ec1db018292948ff7a0",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.1.tgz",
+				"fileCount": 41,
+				"integrity": "sha512-dfuxKc8Kf5wHzf5t6vfTdIZdnxU+1vxtQ55A4S7YELys8wZgV9nWBVq3K6Mmh5TLEDG1X2w1Xxzu6VcZiL3rRw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDUU5Xyow/oYYa3X8GNNx/0kwWl7whOvDYA04v7eQOgfQIhAJaDaiUQs36fM2k/pDLAIVR4vTJ6eZCCJVLBt+OESaqy",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 968156
+			}
+		},
+		"1.7.2": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.2",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.91.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.11",
+				"typescript": "5.3.3",
+				"@types/node": "20.11.3",
+				"@sentry/core": "7.91.0",
+				"@sentry/types": "7.91.0",
+				"@sentry/utils": "7.91.0",
+				"@sveltejs/kit": "2.3.2",
+				"@playwright/test": "1.40.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.14",
+				"@jill64/playwright-config": "2.2.2"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "bc7bbd6247d43651f1062a27c82e11d14e14e6f1",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.2.tgz",
+				"fileCount": 41,
+				"integrity": "sha512-K3NyjMelEYLRB2oxSzWTBd14Sg7Pqycmq2Q9iCQgQcxUEzPtemLsbYDhq4YiSnRAAqi9Y4GTWin4WTB/2fJwBw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCMGywMyV+IdJpbh6ae+/FWpgaTHMxlnyhVdPWeUfvR/AIgJO/SG2tQPw65Y6SRi0SUkgagkxksXkUmxubi83lTVfY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 968156
+			}
+		},
+		"1.7.3": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.3",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.91.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.19.11",
+				"typescript": "5.3.3",
+				"@types/node": "20.11.5",
+				"@sentry/core": "7.91.0",
+				"@sentry/types": "7.91.0",
+				"@sentry/utils": "7.91.0",
+				"@sveltejs/kit": "2.4.1",
+				"@playwright/test": "1.41.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.15",
+				"@jill64/playwright-config": "2.2.2"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "81b1839ddbbaad4e20c4019a0dd37e25a6f292de",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.3.tgz",
+				"fileCount": 41,
+				"integrity": "sha512-WxcGnfzaZCytb+wmRZT9LGolVri7YrAZxx7s/Itu5iOXGy4bVPvxR06Kp680toHgLRKspy2hv4Owcj9XBf8gDA==",
+				"signatures": [
+					{
+						"sig": "MEUCIHM8YyX8Q7oDX2yDJvz2hhVIUBtdwUgCQU5NKW1BhqwOAiEA81qJsQeBViYzYeqigt01gfavr/z0twFs8tTr7eD6rBo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 968156
+			}
+		},
+		"1.7.4": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.4",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.91.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.0",
+				"typescript": "5.3.3",
+				"@types/node": "20.11.16",
+				"@sentry/core": "7.91.0",
+				"@sentry/types": "7.91.0",
+				"@sentry/utils": "7.91.0",
+				"@sveltejs/kit": "2.5.0",
+				"@playwright/test": "1.41.2",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.0.16",
+				"@jill64/playwright-config": "2.2.2"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "d7705b120991d2af58b7dcc3ce2cca4becfb1aaf",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.4.tgz",
+				"fileCount": 41,
+				"integrity": "sha512-It2knkJibHOfe0iqaphEvHNypXUyq7xhaGakbSV2YrZwPxtrzDHNYQ56sy7CM2K3oInwf6XGqszMgFC4HKZ6ig==",
+				"signatures": [
+					{
+						"sig": "MEUCICK6V+mcLg8HiNcumaodmrkjImLBotTWPNTPAAr+NUKDAiEAstU8CJBVQsak8v9sfhGHqbe+HvkhaG3qFTA9J9nHek4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 968156
+			}
+		},
+		"1.7.5": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.5",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.101.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.0",
+				"typescript": "5.3.3",
+				"@types/node": "20.11.19",
+				"@sentry/core": "7.101.1",
+				"@sentry/types": "7.101.1",
+				"@sentry/utils": "7.101.1",
+				"@sveltejs/kit": "2.5.0",
+				"@playwright/test": "1.41.2",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.1",
+				"@jill64/playwright-config": "2.2.3"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "9566fd6eefe715badb8878c6705374b9d5d35c47",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.5.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-aP8GyGjFMd/yE8MUnbNiyBZOgEQKbzWAZuK+48/hLWRykEC7dnVVAxEpmoRhGbKcGyDC9oXqIdffgEUqjFQbug==",
+				"signatures": [
+					{
+						"sig": "MEQCIEhDSw8i1cRGHT1S5tm1qND8SAuR2WCLjVrob/m20/AFAiAXoj3e2TWVYrVkAetOa2VH50ad16XZaQ6luSTCc58eNQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1040542
+			}
+		},
+		"1.7.6": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.6",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.102.1"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.1",
+				"typescript": "5.3.3",
+				"@types/node": "20.11.20",
+				"@sentry/core": "7.102.1",
+				"@sentry/types": "7.102.1",
+				"@sentry/utils": "7.102.1",
+				"@sveltejs/kit": "2.5.1",
+				"@playwright/test": "1.41.2",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.6",
+				"@jill64/playwright-config": "2.2.3"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "3ba86f40ab8b3239d0765c50753124aa79f70a04",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.6.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-YC83DVINaf9hIB2kkDqHOEcnOnOFAlMbH8KoVbenaNQc9N82qiH7QpC+hzx032MGTtWtiVXojJypefzW7dOlPA==",
+				"signatures": [
+					{
+						"sig": "MEQCIBHkbAwhMeC7accUiLKArUMglCevYyMtE8qVInxNXShbAiBtlf0ZEZ7KoI2N7FYojj+PEqh6ltg/h6Do/DwGVwWVyg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1040980
+			}
+		},
+		"1.7.7": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.7",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.105.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.1",
+				"typescript": "5.4.2",
+				"@types/node": "20.11.25",
+				"@sentry/core": "7.105.0",
+				"@sentry/types": "7.105.0",
+				"@sentry/utils": "7.105.0",
+				"@sveltejs/kit": "2.5.2",
+				"@playwright/test": "1.42.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.9",
+				"@jill64/playwright-config": "2.2.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "e637676791a48ea4b783ee3202ed8bd0d71a128d",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.7.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-YOxxYQYC9aSXcqwNXqOaHeRV1ETwO+yhTzucRmR/EN8PE0JF3riPyZzPmtIAbpYRkFACbDiSeSnOgh9QddMqRQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIClcHllq4Hk/VMuNeubrmdUZ+QY33aYKJsZ07bTB/5UMAiEA9civQzdcTqh5t6HMh16aEy42eMxkxOpdmo0DJlrBFZ4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1058668
+			}
+		},
+		"1.7.8": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.8",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.107.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.2",
+				"typescript": "5.4.2",
+				"@types/node": "20.11.28",
+				"@sentry/core": "7.107.0",
+				"@sentry/types": "7.107.0",
+				"@sentry/utils": "7.107.0",
+				"@sveltejs/kit": "2.5.4",
+				"@playwright/test": "1.42.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.12",
+				"@jill64/playwright-config": "2.2.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "e6adeb9b57342962edaa617468bb24198ec83771",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.8.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-/p8X/sGJ/coSxF2O6gzy6IMHQx/h32jaXD1GIdNx+qVRpAT6/wr3ZjYdN99r40kJLAvYDHStU3mxcx3mYdEOMA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDBAAoDy9PuAj097FN1YHFTXFc5UAvZq8quRR/HTMExTAIgVfV0GyqhjN6/uWbcFVUMGtJGS43FJ1BEyOqtgY4TaS8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1063581
+			}
+		},
+		"1.7.9": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.9",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.109.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.2",
+				"typescript": "5.4.3",
+				"@types/node": "20.12.2",
+				"@sentry/core": "7.109.0",
+				"@sentry/types": "7.109.0",
+				"@sentry/utils": "7.109.0",
+				"@sveltejs/kit": "2.5.5",
+				"@playwright/test": "1.42.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.14",
+				"@jill64/playwright-config": "2.2.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "aa227f38f664a945aaf9cbcae300e03dc3e4233a",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.9.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-K8QWfqPCYV6pr5+vrK1hEMIOLILoxIkJpJ5s27aSJFHSd9BMM5IPWutYTqCqupMh8Acoh1peFXlPkUxb4m0eIA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDbCsp6ull6S24sOScqP3exDHFGq0Ne9oiq6aTJk4NisgIhAMKTJQTRTu1tYzvWfJzZOgVvk7AINsTxcXn8OECYUXkC",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1070232
+			}
+		},
+		"1.7.10": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.10",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.109.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.2",
+				"typescript": "5.4.4",
+				"@types/node": "20.12.6",
+				"@sentry/core": "7.109.0",
+				"@sentry/types": "7.109.0",
+				"@sentry/utils": "7.109.0",
+				"@sveltejs/kit": "2.5.5",
+				"@playwright/test": "1.43.0",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.17",
+				"@jill64/playwright-config": "2.2.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "49bdc3917c76dabf670ce7489f67d53571a679db",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.10.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-7kMcsdt/JaNQG3xqWwSNyS7wD1HtIPsmY02GHh0NbFyr/RvQs29QFJJB5VhMurDwsHw7SdJSKfP5lQ8Kt6A0nw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAjaJzKJd1IwpiYTYthF+9mZ/0+T+srxtMgB/IbiFLCXAiAIqFbcpwwtCeJHbkJvGXfps7oyL+zkctLVXX7N5Umdsw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1070221
+			}
+		},
+		"1.7.11": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.11",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.111.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.20.2",
+				"typescript": "5.4.5",
+				"@types/node": "20.12.7",
+				"@sentry/core": "7.111.0",
+				"@sentry/types": "7.111.0",
+				"@sentry/utils": "7.111.0",
+				"@sveltejs/kit": "2.5.6",
+				"@playwright/test": "1.43.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.18",
+				"@jill64/playwright-config": "2.2.5"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "b9701f68c609ac8a4e9afd4fa3f27a46947781a3",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.11.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-CoFqwpwzgPNZtnYrCmeMlEmQPItLXckUeHHJ0FFMHNftOrttSoDObCm0djtQETjYLg1MlIWcBYm3KI5eWkqoIA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBgdq7mambkcivSYjJwGWl0+1798wlHeTvCtQ9JIaAv2AiEA79a1CveqhWGiENpqu7ysyf8PAY+qRfr8rVYDpcBY6lU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1073157
+			}
+		},
+		"1.7.12": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.12",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.113.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.21.0",
+				"typescript": "5.4.5",
+				"@types/node": "20.12.10",
+				"@sentry/core": "7.113.0",
+				"@sentry/types": "7.113.0",
+				"@sentry/utils": "7.113.0",
+				"@sveltejs/kit": "2.5.7",
+				"@playwright/test": "1.43.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.20",
+				"@jill64/playwright-config": "2.3.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "78dd96301be68652810cf75b2242280c5d7017fc",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.12.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-QK4p4zw4ydZyNf9Du0/VLqxI/hDHxcHVbO5sYV3mLFdp5xoCE6SwGdZ9FvTiZI52oLOo6PEX11oCrdEm9e5tWg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCKbfOYjxDTFt9abQuNaIrrOTUsfSy4UjuDfXxw5AC4OwIgQ4p1sQ7QWZsSSXJih+GGNiPMRk2xdhTYbX+R3rzFUyY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1074195
+			}
+		},
+		"1.7.13": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.13",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.116.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.21.4",
+				"typescript": "5.4.5",
+				"@types/node": "20.12.12",
+				"@sentry/core": "7.116.0",
+				"@sentry/types": "7.116.0",
+				"@sentry/utils": "7.116.0",
+				"@sveltejs/kit": "2.5.10",
+				"@playwright/test": "1.44.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.21",
+				"@jill64/playwright-config": "2.3.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "ea27fd4987bb5b85fd840221441ceb47d6cfc330",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.13.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-pR9APo1LLT2KQMx70ofrDL4TwWzZke2p0LCv4rJw6USJM/QpzRvE7wqWEVg3xy7kYx8DCXy6evxzsIdwFy/hEQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCSXsCHhMeFFwv89rignxY2Pf3GzuDpg4vsHHKObrBJ9wIhAKAzG+xosxJg1FOtY9IG5YtZCYI6SQFYVd6A07Oq16kW",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1074608
+			}
+		},
+		"1.7.14": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.14",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.116.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.21.5",
+				"typescript": "5.4.5",
+				"@types/node": "20.14.2",
+				"@sentry/core": "7.116.0",
+				"@sentry/types": "7.116.0",
+				"@sentry/utils": "7.116.0",
+				"@sveltejs/kit": "2.5.10",
+				"@playwright/test": "1.44.1",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.24",
+				"@jill64/playwright-config": "2.3.0"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "07cf606ea468c0544a6bd60cd1214dffc99bbf48",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.14.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-JYeA44DHWln3WEs3noj4G1z/dYCU5H2lor2nGS1g5W9uHzs9cJb0P347GS+nFt8jcNGBrx+K4wGCBgaaZgOsPQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCzciuXOwhH1Xug4nLLs8w7eMgwJzNpaoWbkujGFUuYhQIgPflhJKZrTRzkbyvGQb45Ll/KBYxii68g6Or9i11OtE8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1074607
+			}
+		},
+		"1.7.15": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.15",
+			"dependencies": {
+				"toucan-js": "3.3.1",
+				"@sentry/svelte": "7.118.0"
+			},
+			"devDependencies": {
+				"esbuild": "0.21.5",
+				"typescript": "5.5.2",
+				"@types/node": "20.14.8",
+				"@sentry/core": "7.118.0",
+				"@sentry/types": "7.118.0",
+				"@sentry/utils": "7.118.0",
+				"@sveltejs/kit": "2.5.10",
+				"@playwright/test": "1.45.0",
+				"@jill64/prettier-config": "1.0.0",
+				"@jill64/eslint-config-ts": "1.1.27",
+				"@jill64/playwright-config": "2.3.1"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"shasum": "42a821c29feb8a5bb07361bdbf6cbd2aa735367c",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.15.tgz",
+				"fileCount": 42,
+				"integrity": "sha512-9Tbgb9sAFRL6bnucOSd1JJb6smXq744WUrorl5mDhX1/htsfORkpcx0+Wug9sxdQ/PVsdgYgf7GF7NgtxI9Tzw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDZj1biq/fxbWF89VUZNI4457PVKfOdOItavA68j05+OgIhAN+yieSQZMPs3kIEePB120tA+RIyIPz+phg88D96C6PI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1074607
+			}
+		},
+		"1.7.16": {
+			"name": "@jill64/sentry-sveltekit-cloudflare",
+			"version": "1.7.16",
+			"dependencies": {
+				"@sentry/svelte": "7.118.0",
+				"toucan-js": "3.3.1"
+			},
+			"devDependencies": {
+				"@jill64/eslint-config-ts": "1.1.30",
+				"@jill64/playwright-config": "2.4.0",
+				"@jill64/prettier-config": "1.0.0",
+				"@playwright/test": "1.45.3",
+				"@sentry/types": "7.118.0",
+				"@sentry/core": "7.118.0",
+				"@sentry/utils": "7.118.0",
+				"@sveltejs/kit": "2.5.18",
+				"@types/node": "20.14.11",
+				"esbuild": "0.22.0",
+				"typescript": "5.5.4"
+			},
+			"peerDependencies": {
+				"@sveltejs/kit": "1.x || 2.x"
+			},
+			"dist": {
+				"integrity": "sha512-GSSBOPPsnHcpc8D8QoLb7zN9G5kF9CBQLqHd80Nn/sRvvSaFwcYss1aY01SM1qENEwcvMEzj9WFWzHA/zdF77A==",
+				"shasum": "d2269b6c882067837d048061544f6f1bc74e0669",
+				"tarball": "https://registry.npmjs.org/@jill64/sentry-sveltekit-cloudflare/-/sentry-sveltekit-cloudflare-1.7.16.tgz",
+				"fileCount": 42,
+				"unpackedSize": 1074608,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCv1qiTelXIkVZ7yatwHa5fn4pXv5L30R6o4Unkv7gL8QIhAPaf+gzEVkJJBDk8M9Rnc8gO2yyzg+GzR1JzY0tg9ZmL"
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,418 @@
+{
+	"name": "firebase-auth-cloudflare-workers",
+	"dist-tags": {
+		"latest": "2.0.4"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "1.0.0",
+			"dependencies": {},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.14.0",
+				"@types/jest": "^28.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.30.5",
+				"@typescript-eslint/parser": "^5.30.5",
+				"eslint": "^8.19.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-define-config": "^1.5.1",
+				"eslint-import-resolver-typescript": "^3.2.4",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.26.0",
+				"firebase-tools": "^11.2.0",
+				"jest": "^28.1.2",
+				"jest-environment-miniflare": "^2.5.1",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^2.7.1",
+				"ts-jest": "^28.0.5",
+				"typescript": "^4.7.4",
+				"wrangler": "^2.0.16"
+			},
+			"dist": {
+				"shasum": "735eb0808a763598d778885b000a0e8187f05589",
+				"integrity": "sha512-hS4PAskZZ345y9HqSP4PeP7IiFoei5mnAOE0ZwTr6i9dFmUFzYczL0gniFfToD75c60a6moiv0Zu5LYOj7akog==",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-1.0.0.tgz",
+				"fileCount": 43,
+				"unpackedSize": 93307,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDly8FlMVYHnG/8tK6LtUheDqu0d4jQAsTdtIarl7LbagIgfplRDZnT7HaWQyo3voga9vaEJsJW3VLF/SNv24+McXk="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixU5CACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr/UQ//T+2424gsliAEtkp5KACYxummB90xzfaulWaYYnY8Dfu8b2E7\r\n8yjUnI2l28oxTAeFoRAN7Ed5tzB4SgZEaZwofg9qBmXo76dkz870bVKkLe5S\r\nEiUf5Hcyd7qV/9x3ngrA8xlX9oX1M+0X9V/kIYZciV/iXhsNELJNbAtzij47\r\n/+eT832bA4RsoHqDEQMTxjYNCev81AtcGGxox+F1fKdZiFwxO6ZOCUUyvGmx\r\n2f2tdDmolVaJGZJ3/0aZ6bz04lPw73TxdihHktTuetAyQTFgABazBBgT8Hev\r\n5hus+y2l+A7cmvABlsvo2Xnnv77W7QHpAEkHAywpWehZpEJxeZ+Q7FXW2Nh9\r\nq5ZTCrcHDnbmdNA75ZQWeKxF4/ZB+SzJbfD3orB2PIJI0Ds1rwwJ9W8GDMuT\r\nIxQp2U5DGdknMvKmMTrURLXEK3JUgmWPhXouWiMyi0rm9rkGjusaUgbsf52i\r\nuA2AEQetp0AStJC8AkTlPfMEoTqlaERIz+fYWGe3Zt3O6uERa2nMQXVQUPtp\r\n/Dx5PoaUeSm+KN31BGayp7CWTzqOJ+pjNnj/kud7xgRvfBATmHUxJPJ2Ns2K\r\nMp4zPEahJLswhCnm5NU27pcY1au0z0RcDTJpAocGK6f3XFPyZdYg10dqgYvF\r\nQ6tBm5/v7YdaRwNnNpTWFhGyX8AKheVqiOM=\r\n=CY/8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.1": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "1.0.1",
+			"dependencies": {},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.14.0",
+				"@types/jest": "^28.1.3",
+				"@typescript-eslint/eslint-plugin": "^5.30.5",
+				"@typescript-eslint/parser": "^5.30.5",
+				"eslint": "^8.19.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-define-config": "^1.5.1",
+				"eslint-import-resolver-typescript": "^3.2.4",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.26.0",
+				"firebase-tools": "^11.2.0",
+				"jest": "^28.1.2",
+				"jest-environment-miniflare": "^2.5.1",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^2.7.1",
+				"ts-jest": "^28.0.5",
+				"typescript": "^4.7.4",
+				"wrangler": "^2.0.16"
+			},
+			"dist": {
+				"shasum": "1cb374bb69eaf2d95e20bcae4685be3b65823a3d",
+				"integrity": "sha512-gkFTpxnsbpRvLo5HGGgK8KvC+El5RmiIKeQCn3guy9vhdGhRcixXMXJ0VoeNWl1MciOgy94KwyhQ3zPKzF2PYg==",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-1.0.1.tgz",
+				"fileCount": 43,
+				"unpackedSize": 93403,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDBJrD8GY9bpYeZlXMg1vI0uLy7znfV6HjIZoXAZ8c5xgIhAL9mNHSPCTOOEbnv45hCccG5i4NaLvD0A/xyiKjISqYB"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkFmOEACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrxPRAAi27l9A7zqbL6KzSYEgDkiMsCsMHFI09+FagYMYWG1PP3/3qd\r\nti7Ep8E6zebG5jRJcS/MZTg4CI0G7POtR07gr1imNcam8hod+QI3N+ppNtOl\r\nABHzXk1M/KsprmlFsT2PZo9wDdmNA8cwLemWIZBxVRf6+jcm8Pm24xjNJqzc\r\njQH0AOgmlNJsQ1EO/ql7M8l+l/fG80fVsPnBa6YKRJMI0STrHlLUO72IOkXD\r\nk+Es62pvlLTLz+5yUxNiVPor6E89ddS87urNFcgzG49vi201hpx80ziVqgMo\r\nQ0XM8lOihF97/nV7aLuIqkSWjzV3wQOvtpYwgaeGmV7QGYxIOeJlihjsBRQN\r\npo2axo57Mtk2VBltIsKiBNMPD5jK1fm0xkvyj2IxvkGvUySsCr0UR3SNjuuy\r\nqXj/Hka/rjeVJNk81YcWm2wmY6sm/CqFcZcjaT9ypIt6a+dyjKePan8Wc31I\r\nO25Z48p8DVbROQ9LXicuY1H/GFhTq4r56dHiMcBe6t4/X5wqZ8Qa01Tz6VlD\r\n+ccL8s7k27q5Z+Nt4mQ1W/w08YA+ACc59fvINsKSB3DtWoSQDN6IxoEbnMO3\r\ngb7GUJyl2/Kb4pIgWNgTOF/vSV8AAckN4w9dzM1sQmLuhyVhQxxmsp2//FXC\r\n9W88D68IzBMMevtXFDrNK1gSNHF/totLJeU=\r\n=/bqB\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.0": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "1.1.0",
+			"dependencies": {},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20231025.0",
+				"@typescript-eslint/eslint-plugin": "^6.10.0",
+				"@typescript-eslint/parser": "^6.10.0",
+				"eslint": "^8.53.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.0",
+				"firebase-tools": "^12.8.1",
+				"miniflare": "^3.20231025.1",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.0.3",
+				"typescript": "^5.2.2",
+				"vitest": "^0.34.6",
+				"wrangler": "^3.15.0"
+			},
+			"dist": {
+				"shasum": "46737bbcebbfef32a5c9b74bab13bbf24ae78445",
+				"integrity": "sha512-m711lQ/lHN6a9Y+9pRy3QxZZvpNZhdR7UF7c60xgvJBnMeoYjI21LvROE8PlUEge1EEHe7ehYqEnmOX/NNWT8A==",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-1.1.0.tgz",
+				"fileCount": 43,
+				"unpackedSize": 93320,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBks2Fn0Yy/HmACEJids/zia+V84jHDSC0zt3Y0j+6kSAiB1Wney+yEdF0rfxZ65ZJsO5rdk50WmArjsZZ6ou6QM2A=="
+					}
+				]
+			}
+		},
+		"1.2.0": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "1.2.0",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-D/7eV/ULv3MZVqIPcJ0n1haooGKsxkX5J0NFsbcTuY+9UPTdAas8BnJhnTxoaAiMjFgv+Mfag641QrmyG76JBw==",
+				"shasum": "3dbd6d6d4facbefc255819f34d35bb41dcebf23b",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-1.2.0.tgz",
+				"fileCount": 51,
+				"unpackedSize": 152900,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDHUiy1/6YqaefXXzgtTa3nvXrQt7qRhVq/YWtDKFHUlAIgWMEKzY+4WVGIieCYaOoPFlKlRQbnZZKxZY29buvg+uo="
+					}
+				]
+			}
+		},
+		"1.2.1": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "1.2.1",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-IQhPfQHvP8sg/trv5EmjpGXPOMLNPhqt3SkpuQo4Kq0ZUvz5g6MlxhLOIx9L470VAGaYaQZojt0+8RBbkTTP7g==",
+				"shasum": "b324dec47501ea36d727c6dfa0117cb10d5153e0",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-1.2.1.tgz",
+				"fileCount": 54,
+				"unpackedSize": 153161,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGZCpEA2TgWB0Lz9B7AH+l7TSL9I2xVeFD21SiSE0hKuAiApvKhQCmQYL8OyHnao1QceF2+mCLXtLdrYO05Nj+fxgg=="
+					}
+				]
+			}
+		},
+		"1.2.2": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "1.2.2",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-VRPcKYmX/yU81miv9pGrdQRKfy9Wy1C8WOqZGSk0Arm6YWBvaKgGCWNneSXOucqN1OOy6xjdPnS6LJbEm6FxMA==",
+				"shasum": "7afe4a5598e32ad3b92f57990c62fd41011a4412",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-1.2.2.tgz",
+				"fileCount": 54,
+				"unpackedSize": 156293,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFqw0E16CFH2QmS2yDsPABgd6jFStP5OYEPnqzNP7NN+AiEAsNdS5ZbrWRzcU65KTQLI8CBxpUjzmLGfK/PgUpqB9BQ="
+					}
+				]
+			}
+		},
+		"2.0.0": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "2.0.0",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-/UALUDVhoV4iUmgwLT4PDfeSe2d57cd+D1ZSZCOQfzGYL1C1gM9dvXNNpVXVcm3Blw0KwEhtryPXoqlo3KjqEw==",
+				"shasum": "99b7c23c0bde3e3edc5d55496f5e350b0d4603c4",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-2.0.0.tgz",
+				"fileCount": 57,
+				"unpackedSize": 274589,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD6o0sbWIaZAXs0wqHKV3mKiEW4Z4GPOJ5fiL5Wvu6wbwIgAil7lZOZuEBRXgl7YAybq+Yw3z6TYmt2XYYKThBEGvs="
+					}
+				]
+			}
+		},
+		"2.0.1": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "2.0.1",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-jzrm6jkoAhwOC7kw5zGd4pAhrD8GkZvX87/oFgcLwbLVeXMSf8orvppW6ZtHzRYWjpMqFPyX2I9WRX06DPRJBw==",
+				"shasum": "3ec0964f164eeb877856668d6bfe2788e537fbce",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-2.0.1.tgz",
+				"fileCount": 57,
+				"unpackedSize": 275029,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICRs74jNXhx8iajQ6PP5uaGIwLQlHsS2WeH05eI9KFt1AiBd5sOEJlEMmVvG7CNv4DX8A8sb0OnEsC641StyYlOMnw=="
+					}
+				]
+			}
+		},
+		"2.0.2": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "2.0.2",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-6w9mMicdpEL3SG1YdTeM/tyJ75aSpO0CPsD3ebmkUC4aWo+p6UKeLZLll0SoBNay/FHb4nmqKkYMyBZ8LXhDWA==",
+				"shasum": "296f48dd1a7c6e2682a84d3d54956c28a8869904",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-2.0.2.tgz",
+				"fileCount": 57,
+				"unpackedSize": 274973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDlX+1Q1ZyfuLj/FLyXb8iCUszf3RslvmsRh8erhq+gkAIhANnZcYQsBkQd/oBADmBV2UHDjtfFG8F93WjluZACbtzk"
+					}
+				]
+			}
+		},
+		"2.0.3": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "2.0.3",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-d2FvMGKqHJ3dMkwG/AYXiRIx98+FoCZdrGOM2dUozEAWKxSuFjWWxK7eEkfyQNNzZjpTUdPHfLwAZJl5qq180A==",
+				"shasum": "c25ed4e9e8a05257e3a00f2fa3be6baf684d3a5a",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-2.0.3.tgz",
+				"fileCount": 57,
+				"unpackedSize": 274972,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDUgyjXRiSnFpWjju5YswdmuRmMAygbSs5O4cTIjcfwagIgYv63JqAH/YkoHWEx/WX+AlvGC1AYgsjQ9JK54NwGgCo="
+					}
+				]
+			}
+		},
+		"2.0.4": {
+			"name": "firebase-auth-cloudflare-workers",
+			"version": "2.0.4",
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/eslint-plugin": "^6.21.0",
+				"@typescript-eslint/parser": "^6.21.0",
+				"eslint": "^8.56.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-define-config": "^1.24.1",
+				"eslint-import-resolver-typescript": "^3.6.1",
+				"eslint-plugin-eslint-comments": "^3.2.0",
+				"eslint-plugin-import": "^2.29.1",
+				"firebase-tools": "^13.3.0",
+				"hono": "^4.0.4",
+				"miniflare": "^3.20240129.3",
+				"npm-run-all": "^4.1.5",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"undici": "^6.6.2",
+				"vitest": "^1.3.0",
+				"wrangler": "^3.28.3"
+			},
+			"dist": {
+				"integrity": "sha512-cIhOLpDbia4I1mZSOiKO52/HRwk/Jopg9W+dx77NavDUeKuiXl//AWZWv7Din2ZXBhE/Xq0XOXJh7V1Z8EvXPg==",
+				"shasum": "e7692676e73677fe93da13ad1130f113070688bc",
+				"tarball": "https://registry.npmjs.org/firebase-auth-cloudflare-workers/-/firebase-auth-cloudflare-workers-2.0.4.tgz",
+				"fileCount": 57,
+				"unpackedSize": 275748,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIE0g7VQxLkSbNoRgtKaYJ6+KNyrFSMhucxsF6ZIHWzTdAiArbIKh/HVV19aFodT1Z1Xp4eFQGzp7J+FCdhngJdG6Eg=="
+					}
+				]
+			}
+		}
+	}
+}

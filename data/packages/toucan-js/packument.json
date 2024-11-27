@@ -1,0 +1,1604 @@
+{
+	"name": "toucan-js",
+	"dist-tags": {
+		"latest": "4.0.0"
+	},
+	"versions": {
+		"0.0.1-rc.1": {
+			"name": "toucan-js",
+			"version": "0.0.1-rc.1",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"rollup": "^2.3.4",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "be1181143aabd4f7f27ab2c804ee4d6e894dbe09",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.1-rc.1.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-6FsGqGRlb6c5o4ipdUaGLGitsBMPYNu+Nf6CziJintkvhd5hJAOhEpBo3+bTtzzbGrOQhHTt1uwGx4222kOt2w==",
+				"signatures": [
+					{
+						"sig": "MEUCIGus2kSFFOtoZ/LTcwdQeF9yE12CyoIiIZo84X/VCO/BAiEAlm7+60mT0T4lbViXFnLwRlcO9VQlCuUAuyMbuLucNY4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 43919,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJejWQmCRA9TVsSAnZWagAAz/4QAI4/9svojaWgUfUH+6T6\nZ4jveShoElvF14LnIprWwxBFx+GP6bBFI2dWRNM6YmzUQE4JB4FAU9yOgMfa\niCxIicEjiTUpXR9RmXjssQmCQhRwnl7wClpSfWr5OpF58L/z+pNvZQ6TJ9rX\n8CxRl9/to92eWaAfuOzIEdsg4AaNkRPJMdNHa1FOAe6QLcwmgME1Htq4Cf5U\nr53Zath4KWtJl7M3yHa7mXEkm6qFtZ/q78yXl2wVpX0eF1zfb1hz8A82/J7D\ngCnIamRaUZfrcYB4HXJx6qM8Phclzlyt8NAYAMOlYNiGbHgwet/C7POH22ev\n2LNmk3tFys0QQCiPF65uRavKUAxK5tOUQDA69qdas0NfScrAdRjtrN4UiR6G\nM9Yv/uYbhNEMf6dHmTHVhcUwzwqO10NJpXGBr7ZPDulzDFqlIWbrR2YcmUWr\nT2eXY/9YFipH8B5lHpiCd14gqxm7Uwnvxg//n0y5xlTYwrpByDSf7QQhP5Va\nh4pFC2VjmyI05V78GGS8BZ9Wrnl73BWcBqomT+N9OTVcWCsSoh0F3B7vs4L5\n4NarWP2RRvQF795wq1EuxI3jCClS6ZaSy/eURzzNK9XVrhhc0g0g6xQpYcOm\nBBzmJsEY/mgOG2Nl2rM05KgPSk4V00E9lgFi7jPFw93nmub+KDA9iiPckXUf\nJ1KO\r\n=u0Qt\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.1-rc.2": {
+			"name": "toucan-js",
+			"version": "0.0.1-rc.2",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"rollup": "^2.3.4",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "256c8ba3ebb8c24a79ffee5d0750e3e7420d25e5",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.1-rc.2.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-Nuy+GYPsMM+g8Zbro1ParwTmKMnHafG93i9NnuR+aRbl0J8CpXPNK/5G5mBGmC2jshpBIsJU9Gcme9H84UhK7A==",
+				"signatures": [
+					{
+						"sig": "MEQCIQCxTR5AFHqMdXLSxTirAsgole7efV9v+BavqEMj25qYHgIfWEuFE3P6gjI03gRa8wpTFE6l3boJWaKjC2nPpeZEBg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42798,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJejWn/CRA9TVsSAnZWagAA3rIP/2kJrKTdPJITepyB2kfx\nC7U4p3wJUs0ES1x14jSD+kWfqWokAxSAG+C0flKp0x2H1q22yg88z7ovz+DA\nrvc5HG+HH/8GHiM+Pwkf7NkHNvNpl1hsIykUzBJCd/PTw+j8KolwdC537KcZ\n5XAf4iG2QloIXqH1hhko/zvvZEC2Ip9JFapUv8QXrdPXbPfPPqDf/Lzzcu2v\nAfSRi73v1QDbF+mLdvTe6qFHhuMjEqPEx1JzpR5s5Kd6jdsPgtM3vmvrT8vy\nUH65ocNFGJG47/dBPvLUNBzySPRVilUDrVI2m0bHxnTOSJkvnmJojoQ2/wkB\n5SYpZ2XhYf7ZG4b/A7Xw0IMIEsNWGvvseqtTcQxE7sljpdPlyavCzFkeO2UQ\nbE7RDmdKbFuYakKHeBSF1ufEY3/9+h5uLJ0qjqYZ3V3ZhC8m0jQpQFy6gil7\n1JfI3e9oSkY0dcgmMIFnUBCLHbmGYjVHq9TqOIJp0uYwKqcmnxhJa6nxQowR\n36RuWix9aNing1GtS4tzYMhiLLvY9fTvD0lFmfM5S0RjqY52kSEDNQEgZxd+\nISBT4kJ5/eVABb4CIn9SjSQFLuFmhQNexVc51re+vOrvRF1WDHEMhwji35ZL\nAQwsDEY3NNjJqMuP1cHiNYtarkzwuUB8nxwQKWgcuIucjBHsTmmg8ZLjx/cJ\nYld8\r\n=txmR\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.1-rc.3": {
+			"name": "toucan-js",
+			"version": "0.0.1-rc.3",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"rollup": "^2.3.4",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "2ad792b0a82bc7aa3f441efd2da4fcd24c1441b3",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.1-rc.3.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-XlvaOqyBrc/QlZjYGeg9zREERJnR6LjVVvrGpVSn9vVQcW+i752ZsTB9caCtKnFNzwCCzHggZpN3PH1gVPDGkQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDw4YY/8ODsBEn9LwiMTowxss9Jns0NXs6Lk+ZA3OVdEQIhAME3fhk4zfItxZyQFK4PkWqEbbZVlxOlXDTJO2iLCVCI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42850,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJejXF5CRA9TVsSAnZWagAAKTsP/0oGExA5UxEpRfeY7/ag\nFTfUp520awJdKpS+4phN+19ESdJ9mXSLxMR/l+5qxMlfn3ws33hHXolBU+h2\nXJX10sgH1BeGZ70+fRCcRs/yIRJZt1BI2ILVvcSUMRS4ybTFp9nnQ7n4J1bD\nF7SWqMFBAKAltKa/uVKmLUOb2ZdU0EZcDphdTYmw4w1+y+sT7z+IcBqImaTF\nFpqP7z8+3hT1dls6PaQfiEKv+vLguVlnYgKz15ZzAqrQKY79dvJz8E7cAeod\n6hhBYkYQPOxC8qPLstPX19wNsWpbJCdABkhUcF+jd4NKN/tSlLaR1qIn32Dv\noQsayT5rwU/QOZwNIDZld5SaYMPG3eK4X7fC2NPZZ6CD6vWLXMhNdBSABXKQ\nS7cAr2WLnGEufkdDX91KVe3AqLGn8MTcZLMMpUoyaPakBzJNhiVYgUizgRmn\npXpue1NwvjESHr1hk9HR60+qgHnp/kvu8GfO/sNM2oNAaw0o1dlPZkh5lig1\nPaz1t6rmz4m5sg1OCnRiViZXXpvHTiIX+DMsRtjQ84LKANWlr3NvIb3lvAR+\nslPdtKRREZOkJQS4Eep9AXqeonTHozpwH8L02skpzUvmObUVFwmLwZFxjVwy\n12knZ/Gz6+S9FrCQTouLthdsImIqknxs7i39pFx7tIXL5UqGA4C3lvzctY6x\n/+PN\r\n=/Gix\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.1-rc.4": {
+			"name": "toucan-js",
+			"version": "0.0.1-rc.4",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"rollup": "^2.3.4",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "d77692bd7f4d2ec311637999c9c63f03134027cf",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.1-rc.4.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-+/hVVNgE40LH62r5u2GgZH1LBtWQ8XNd9KK9xs2lpcbe3u+B3aREbrhvkE5rbW6yqxukUrb6dp+63hzBwCDA9w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCvWOZv9CD09gtxBOYodu9p69Vrb2nIL5KlzU7gb44fEQIgNL0Yv9LjSLG6TSeBvzvLu+Pg/RvI2Era5+YhSYQ9nXo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44626,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJej3YxCRA9TVsSAnZWagAAKagQAKSDdTs9OwXE4kvCBUoE\nCcZIB0iZNbh8/jlYx/cm7VH9H3kc0x343mOqMK9Nyc7kmKiitTL7pPzhya3I\nbI/pXFN0pjbsqXO3Qs1/VqvAR5fZivRvhFWhnKeTIcsHJyJr0yGo87ljS4ss\nnI+AXq2BlZoJKpYKw4rRAUK/r/g7NTgMTVhOpjwm8+VYMRWyW61AhsV382wj\n1Gbu5j8+9CgrI9v2EznoGKrUYIJT3jLPA1yVVZzhamz5Uz7AM/+6yg28ny2T\n7v9G7cZZrgAJaRdDLcNPM6aY7iizNVOdnIDtHxSm8t2s0PUcha8su7l0raLj\n44HkUftNQBROKvzsnIhIZy+QfuNreqzllaXqXeAEKnQRuqtV5bBZAOw0ugHb\ngQSRcMYgTn23TcW0HUJV7jOmbuK6Qbe67sFBBQZ+OrnNXLsVbj7GoJNjA8Bw\n2NNMs1g73fPjVGw/gRxCfLr5voUIU/hY8k2IaFxD3nDTfX3Csh/V1CJ70uK9\nLAfxIPEOx07UoO7DFCpIDy69gVdyAvpZHpNXdeIzpf8AiRFkwtGJXmlrrU7t\nCQW58jkiF55xrbxOhb3NLXj6ND14rqu5qleziu/rofIgzePoPUmSbvNb4Azg\nGxUqF3TlwTGawqcnpLiXbP9NJ/eTPnZzXZpuYu3bLhF1yDX88xN9VXpP0OWM\n2azt\r\n=tkcw\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.1": {
+			"name": "toucan-js",
+			"version": "0.0.1",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"rollup": "^2.3.4",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "a0679c3500288a7ae7c1eac0baed52cc550e1e94",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.1.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-eLOlk91g039UKJ0k3iHni32Cxg+tA+/Vt1kqwAvhxXhCxv0O1Uhj7OhZiAMblBxTYoGeIGAydTrL0UgytUgBww==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD5f8XIifJiJguFdq+O8mocFOKX7GcNMmMOm+JMLJrx8AIgZqSFaGr9Gxwj78iAPtO/w3vpcXEt/fzdp3vWO8FHpFc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44599,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJekKWGCRA9TVsSAnZWagAAeMUQAIwVIt2oVreWrHUGDYN+\nCOzeObj3mHjgkHc0wE57CXSq+a/PRv84kvUD4nWmDulnem1gDv5UmPVdVSc+\n/GkRSYpWpgAOPR25J9mZ/lGqDfNPD77wAU+o0ulK5+EaJL82U2gOvWRKWKhH\n9Ao29KUZMB46jccpTOAxIO4Y/IBviYEabl19pwMvoNvge/6biJSp3qJ+v+6l\nfTEFeVKtQTbtBtM5J+7PBcN+zRguD++Gpi6J74FUMCJ/AiyWaSvY58vdEK49\nbyCzaSydtW0Mw8hYqi158rpbHXAYsTvYR3ea+ree2ASOYiGImUswQhoaoy5T\nL2ma9M1ex/rJ8BK8w63t8/aqiynN9/Lvnws8Dc2qSixIeWHooTTAqeQ88b2p\n+a+sU8OOV26kLrGHLm93tRg2Z6RgfL3ou8USmMwjtsIxbbfZaX2GtnPx6Ulb\nfe4LH1V1qMtmPej0mvcqIEc+O14ptMMMzPqFauHnxcdU+PKni/qTWtTnbsQd\nEbJS4jIzJeIn+pmBkshjWJdoel8adqssoVvwe2uPybRIa8vGvrBr8OHu5M21\nVWymR+2jcyapHoOYePPo8Si0ExxYi78kaXHV/Bt75BAkMmdpaRImu7b78UkB\nWXcA/JJ9zQobMp4QvjQ1sYXEqZLKcvPPdUWSPw4TPiiUGFlcv6VootceTTvo\n7WBw\r\n=YZGz\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.5": {
+			"name": "toucan-js",
+			"version": "0.0.5",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "ec012bf00671fcaced0b63b504747b0352c898aa",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.5.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-JSL5vW9+WP90DYat1u5Oe9JHYQIOktW3DZjS0hMEJHf3iiZsuwspfoZ3hfKNNe+sPv3qQuvcKEJQH/6C/Q2e7A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC+ZcABcpR94C57S+EcfQ4Bqm13LOwlRRCVqGDom0j/0QIhAJSDKHVsBZRpSotRPNU+UfF4Oi71eN5cShTYUC9NX5QJ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36285,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeknsWCRA9TVsSAnZWagAAeBwP+wX70nYdFuWPbWOQaZaw\nkIbIMd+E6uUdlINXPq1arFLzb+6OJJPdlTYeO9MA8HpCBUeSwxqEibQZW0hn\n317fqS8Sg7HMuW1dD9+u8amZ/2sr1TmsmMJ1K3m8gyljWziVVg2+DYOaKYWf\nD6i8u3teak9Gvt1hPWWyFZI2vftpp/B6Nz+W+Mk/7gmm2fAeR42b2V1Z+mCo\nkZ7jaHsJTaZAq9qplrMPvoeqmtyrRfe+cjPD5AKe+2x+yIPL1lweOi4+Xrsc\nwYxnm4YMYo/7CgT5ByGVr1V41iJ9qtSsLofIki8k60r5qbXpLGi9UXE4QcUR\n5qPb17gtX952VaHT+hR2/rHeuM1GTE4VDxypTo9CnoLTrJ2CfslIEbWn9+zp\nv2SAGIdm236jbwm/dgvtRdJ0Ifk5YeZaRCtJkXGrjYSuKnqiRkmrEjYO2+Mk\nyoZVZbULQ1c0mLiw6h7H29xhmXLf1vODQBoiX1lHzNbVQ2YtE3/xAOWASDRN\nyDP6xkWhJN/xgGlOmQcJNgh7B2GYWLCOInyFweKoK5W+D9+P5+JVcaEjXmx5\nbGGW6hbuSQ34rh+1M+2iLCAKexsOXq37xYgx+zWevmvdPeACkcwc+S79mYLP\nJidKo3IDLBcnrwYgpHZgYl/LTrWTz4zEtTaoJ3YXfTg9JEBJxPD9Xys0KtWl\nmZ1J\r\n=YqYI\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.7": {
+			"name": "toucan-js",
+			"version": "0.0.7",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "f06da7f5639373ddb525e654d16f03266bb6d685",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.7.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-05s1pjzty+rPqOvEVoxhxuoSJf0TdB+BhN783euXXlzrkBmaLasnpsn4vNxTrUjnDMqEDAdMkUKf+yzfPklAxQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCws8VX2LWi9eD93Ia9o5D2mNPMk9un1vr3kZqwhPl1CgIhAPzsHQuroAys7WgiiDIKgnuajN3LNley1akXi6M5C2cD",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36285,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJek1N8CRA9TVsSAnZWagAAZioP/3umoxRb02dcppYLA6Ir\nnR+xXe4Yz4Y0zxHOLQ2L0i6fZfUH9WHGwxX297x4WTjTdlpcvnsFBF7dDYKu\ngzdZwQiYfYfW7LZMfTbwlcBbUcJmE18Yy9h4wC2uTZKuIunN15mePunqJd+o\nrXqAEN1rMdbvr9c/4GCPQhDzL5g5TdcqTx9UtqqjTt/wpCsdMbE2jeVuQGxZ\nWqbTxpu5miSIwCuOzpPhRFMciNniUka5UC5sff8YdIxu/dlrjqzejucWy9V+\nloObgk3es4zik3qfrIB6EPP6B6gYA35AwNqZuTjXTllHeWU3bVK+GRCpKKUv\njTYsT1GPumtZoTx3xCcSqfAqv4cHLrP3Y/PlqmOucsavc1SIpWsIW2VjFRcE\nB+Jil7nu5E5fcyoJyFrk+Pvi4r6pIdgszt4dfQlyco/tv+GzW8IjLWGC8n2j\no3mNKZJp5dist3w4qxpAoslLgE85XUpCpLBoIHFYYRCx4/pTXKS1HXoxh9vD\nzPvg2xyfwAzLJIsJorZHW8dbqZzhXWxGFVH4grjTbEPENdFpZMtwbcVRmf1h\n3igNvOmzbbbFSVBSROhw903X+e4dsNAk5bAccwejnlqiPVaXTDHrBNUNAoXZ\nF8hJ1H3lcXcnkKxU647TT/Y2tmQtr1DflXu72L6uadO56uz1Td4+gsPEysBU\nYsUY\r\n=YKi5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.8": {
+			"name": "toucan-js",
+			"version": "0.0.8",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "a0ff313977d7a6680053597f0872e380e2224c7a",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.8.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-ScVi+uqrDmOsg1ut5TyfmMpJOEhMmTtfggQjKufrljc5kA8agRQzc6BB0CjpnO2d43fi2MZWUpb15Y0g4F/l9w==",
+				"signatures": [
+					{
+						"sig": "MEUCIBUtrGda5cVhVCPvXVjdX45Gmkz8rW/9srVgTz8XJfZrAiEA59q/FTW57Lg0b88nEb5RSsxmo1eJnQkqjBJ+gyCfLQo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36285,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJek1fdCRA9TVsSAnZWagAAuw8P/A+ag/nvQVKunIMM5MYe\nyFDUlFcqbKY2u9H0rbzfObyb9G/UzgZR98KseLK/Ynl105vb49JkSTqOuUa3\nFVIVKg7Kg1L5ije+twwRLWOaKdMBqyhCStl4GN6HuIqC6n14FBBF97FkCk0V\n//+J6S9xRgEceidQQZRO9wqjdgQHH4mrHkvwLNC6eKKEvG+0COLhFBO3KPjo\nSGda8UdG5w9ReXqSTreJiwBIHG1SxGsTS0d+T52MsCxMprH9xV94eAl3q1zM\nmIGPdfFrLIaVPAdmDftpMybJB2qMDAEDZ5lNU8dV5FE9C7QOJ3A/FVpdp3We\nDYPV7EaNenmT8ZA1Gw5tg+krgAIQm159GHkirew0Ls757E5i0Ohj5X9F0tBz\nt3tsLP1T7kGCb9KDtVpdzeI7CGc7m0nzVhcHzsXRDgZFi2eF4GMb97WhU1yM\nrgsMIVfAcT9vzkLWKf8vpindh544wOUOB4+hqAMLZ7eNohuAz9GQe8VF9Y0d\nbu2RGlfE0BoA0yFCuD/DmSSeGW2njYXM0C56ERoeBXue5ajk0dAMaPUjYO9A\ntcUcVJimLERhl7NWWKIwfofZFPH8DyDheGh6e2P0AwMwPAzC+G8GcaOdtdVr\nFCRv1yxVjK1uMDq0S1VLCpFZn3I8x2ohwe632wcYS5QO9psQexFFE/2obpoZ\neyfP\r\n=k2IG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.9": {
+			"name": "toucan-js",
+			"version": "0.0.9",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "7f014fcf17a3d0556d5f280ccb6c396b7e3e8f84",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-0.0.9.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-p7Lhkt0Ttv6R/BJ6QJCePZSPvdRhY7inT46ebn7Jw/6/SY65eH1i2meSWxqugJlXrq+pWGZEpOlZtmUPwWocKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBzYO2LTS87PHV9iy9r+S4mWp5CnO4kYAzuhl3rwFrR2AiEAnhyf7AZlazgiSwgBshLAiqEEHtbXhpJk9o6IdjRRaPY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36285,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJek1mVCRA9TVsSAnZWagAA3NAP/jEhgZ2RddIXanvfBkUt\nEchacwSqraijEnTE+H6KIwZ8pYDVX4F4qZE52o8aZo1eImFtnL1mycgkzgxm\nXkHMX4Wxq+ID1x+EngjWoe5N44BTzWzCNbqFjoo9J3WTel4lzqEX8S41Ul+9\niUJskqt8h1Sek+aOVMxmRq5IlbJ1IMfwwfrdnYX421mpypmpIMve8pAXW27C\nfBZrE5EDZdZqD5vQ2VABlfMaeqz0yvdtIIq8iX2Gs01//5xWF5813wG8gGc/\n8EEmYeUXZdMi5f7Pfm5hQ4V+YWU7kt5ZGKjR0oEh05eqkdNbFSpSdqJJpT9E\nlkpD+KWhuuhgFzCGKAXyq+T6NUoN5b5RZ5xv+45qtSR3ysdsDRpDfNm6OHDb\nWgVXv3Ym7qgkp5KeiLG+1HU0CgT15rpgfsZkX33H0AHLCteV4eqxGIyYG3VG\nQFje/68SmLLaXNWNGm04WAFdJAxeUGuAiAiegmIJYFR1GFb4joUvHOwf+UXa\nIM1TwkkWoTXV58JKMGXbx1ij4ZtKjVf1VWZnnonkOG6TRm5ajQYQKaJW1v+E\n5zjXgROnwQJXSBnhX+A2EuXOKc/TYhCEPfh/4xxF4vJ21yk7X5Xb7obb9N8B\nrb7geu59naWXFNvg9U7rREZcvNwQANcbTiITrllcH9Asb5Nf9ha71aoK/16I\ncgi3\r\n=HKlL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.0": {
+			"name": "toucan-js",
+			"version": "1.0.0",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"service-worker-mock": "^2.0.5",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"@cloudflare/workers-types": "^1.0.7",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "2b47a6c8aa5c68e9bd0aafb519a27afc9d3d6523",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-1.0.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-B6yvb4rPbnTlbKKAuEukw4QdfemDpK6tuWm/gKJwAbmQIdkvawJ5QXJnKdnSwELzjYYOd3pCjMGDwJFQSNVhIA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDmCgbe/BpfLGSeNShmw+IQKZUSwVpnwPljQ2Z3yam73wIhAMQ5mZP0x5scmKlVQg1lLlHkRuo+a8/SRYLx+f+8rQlc",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 41601,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJenPCNCRA9TVsSAnZWagAATYQP/iyQxZDcCA5wuAEM/yJ9\nkZJim0XVuxnDIKBT0n2yOqoUniWapcqqT3pkT1wfqFCQs0SgJx3cWDwU8xP1\nXIzIR38SCLA7ihxVtwuU8o1wl92l8p/nQefiOD3ahknode3KXp9yJYJlvzms\nZFcs2qJsa+QHaQTOqMlKEE6Mdvt3NKi6zstvoGs3aw0EQZ3VW1K3p9z1fTg9\n1Vk+nuLAXZu+6l+bZzbBVxuX1pDjRSBR5ZNaLR1z1BS+rUlVlvh+JL5Xb6uR\nmo1nKSQicLQqrYA5I6mixy0/gMqSXZw7l2nNdi3NsNGwPVQZ+ksuvItkZzsO\nAUx8GAwBItrcLpNjl1kIad7GW09qPkwAokKEI6lJwepOe59Nqk/IQootaoU1\nCl5D8fdzZ0I7xxt/UTpjeNSlUOqCgdL6jhSbxJFlSEYkO8EjvpZ08ZX06k3C\no9uhkqxjmiCL7FkXKHm4lhgjtSL4Q2Tub7YU16kX/0OVWqNuHLUhGufiEFU3\nEHJMBwqGg4H1JXG1AAdbH2G0MnwKqqhZSU064LEftEXKhNxwnNxWAqajiIeB\nLa3TZ0uPkLpjR4syjv51k6kRqlZRPBMorm3mJDcjDstluDQexDsaNgJuYfjU\ne5w6isLGqf0UmTxlavHGi1OKBh396m8tXZkhXu15w2lEzdlOVCHawK17Zs65\nmizH\r\n=B5hY\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.1": {
+			"name": "toucan-js",
+			"version": "1.0.1",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@sentry/core": "^5.15.4",
+				"@sentry/utils": "^5.15.4",
+				"stacktrace-js": "^2.0.2"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"@types/uuid": "^7.0.2",
+				"webpack-cli": "^3.3.11",
+				"@sentry/types": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"service-worker-mock": "^2.0.5",
+				"@types/stacktrace-js": "^2.0.3",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"@cloudflare/workers-types": "^1.0.7",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "8596a63bb69a3e0e1c38fba5f90e80d644444e28",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-1.0.1.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-CRVbeihLhEqa57IfalPkdpRlvC3KeScTtSKSvHNchIAi2aDfw1afVfdLr/1HMw2dzEar99Ly/PJD3XiJDz1brQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIFe0GuyKekbzRm9+aDpswgaf1LNhslodoMQJDP6zuv4pAiEAzXPAwzDDlovVjJTwLJ00zGMyj6dDA1H6uhbPdGQklm4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 43521,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeno9YCRA9TVsSAnZWagAAO2kP+wWdv1maQ0Uaku9BvQTK\nBgHoWaEcTff7l+8KD+25rLiKGRcjZKOyx6Y+INGJnDQR/WXwC8oVTobvMq6i\ntJ4kutVmKgHMzxzqFQg+FJiUstnMvw54Tr+fJ/1qsJ5s2sKbApsNH75LGXfl\n+XSYVeZcD1YqJ0/VOKRRs1/7d6WVlbFvZI4E6pnPFPObUBTCu6K7dfaYhKyM\nP1w9lh+e507JCAKB59fIlY6upTr9xFNC3kG5Pq5wr4hPcwv8fGBO/MTfxuJS\nJNkswXaIaY2/gk9nWKvAVaJ8dtql/C5DzS6k52nIBTDtquR5wVAClr9XMLze\nBhq2mXHGK+rtokkthGhXLRwsP/Lycj2q2d3rRiyKEB8ErdRFQOFgVDVTEmNs\n0TqJgX1JLujfrcQVfveRB2UwQWT0krWj1d30UssZLppegeFYl929Optax5P9\nIIXN4UCddFT8jm19LAqt2KGD8T04a/Qy6mBN3P//r/LNnt5KtSPK0GTMFPli\nNAEX4LzX6fAfFnVG4y2rfjelzQeb5+nRJ51LhzWYtlLY96SGdi6+q/uKRRgP\nQ0keDHrf8zPDY+WBA0J0iVop4GWl1Ib/Bwpb3yUpiA8xCvMzX6ZemPTnSLWc\nbRg/pguodn94yizlOOVX3t0uIDuHDjQsXmhDfhw6ybB5Tc3V4vmH8AaMzzOg\n4k/i\r\n=x6pv\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.0": {
+			"name": "toucan-js",
+			"version": "1.1.0",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@types/uuid": "^7.0.2",
+				"@sentry/core": "^5.15.4",
+				"@sentry/types": "^5.15.4",
+				"@sentry/utils": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"stacktrace-js": "^2.0.2",
+				"@types/stacktrace-js": "^2.0.3",
+				"@cloudflare/workers-types": "^1.0.7"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"webpack-cli": "^3.3.11",
+				"service-worker-mock": "^2.0.5",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "957e5afcf88259836a1771e29bb8910926f7b974",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-1.1.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-LTR9ARZ4uFNz2QfodfNzdzk8Z/JS3t5LUJD0gNiStCa2UqF0ZNKfCnsvFcx5Dc+EhfZTmRyLXTqBAUzsNqlD+g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDDQG9mZPK4VrQNHE9QFL1DGi2Pj0eJs5k5z0dxAmifTAIgbaye9StFYEsiPWU2ZhPjAvryPkVQYUW556JxMv/GB8E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45840,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJergNpCRA9TVsSAnZWagAA9ZQP/j/N6QS5xStcJfY3f7Mf\nxxM+BtaWTdC1Cg6G4qrDoVBPVFPQWyoISFWFCHDQKch2U5PucfyB5TE/mSDB\nRzqwCsFm5qdKSQpjAPIEDdBtdDOckclyv7u5IvcTKFo8Sl3+oEvZvgtrayJW\n0aYuENLDv/t87k/GjCblY/oG7KHoJkyehfQyEImD1sMfrjs/frluUr/hxHb4\nu6az8HjMbzL/wS/h1OOo1pzQzKRulEv1unG5dxzn1QN+Sc2N17R2cu8eOAnI\nmw30WgwKhayrjnXsf/0GmPYIb+QSFKw+x4fZXmnmla0ei6ove9u3hczA+AyS\nAtOI0QrlqWn8RhTywIbAEBArsVzmHhN5ZwPjPSi9CB7WyKmiwO5Ewx/5+ljC\n45i10gbMIBRlXcnmD7nAm5InFkkO/R27BlO+Z7q1z/bc00Pb9icEr/JL3kvv\nW07xU3VSc3GTphOu8QJTjvfnt1XGaRShsNEe01b4Jt+lP66ZXwHWThtU6X3/\nWU90hO5jPXt8iIUucomS1vdP2F2Ap+/QOZqIUyTUvflWQFFqszfrqLZGhlWI\nO7WwQAHEG3Y7Eigrgp7AuHQSRmVznqUWeO+m9WgNdMaKpimycoAz/lWgJKic\nMYdV+zNt6erQ29i+/cXhldRz40/C/O2lZPkNp6eiEnP4JYJ2pZY85P220jEn\njue+\r\n=Igct\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.0": {
+			"name": "toucan-js",
+			"version": "1.2.0",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@types/uuid": "^7.0.2",
+				"@sentry/core": "^5.15.4",
+				"@sentry/types": "^5.15.4",
+				"@sentry/utils": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"stacktrace-js": "^2.0.2",
+				"@types/stacktrace-js": "^2.0.3",
+				"@cloudflare/workers-types": "^1.0.7"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"webpack-cli": "^3.3.11",
+				"service-worker-mock": "^2.0.5",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "a7c4100ab87dc5f5095759674ffbca5f15da54dd",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-1.2.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-l5vlpDKs08J/VNw5boTBq4BT0hl5dISvHjcKC0BKdvPTnrCsWuSvEtfOaBJKWSCFJ0buZ4VH7U1l1karSfYT7w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCmx3msffOcB3DWeD2KaHwGq2ZF6PKH+6z2Nx22uFa3RAIgGdIrizJ/J6Qv734+tKlZRxjhTxOkUybUiGFf7w/0l+Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45580,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfB8I8CRA9TVsSAnZWagAAB14P/jEaaPW91yPOgYr2p8ZT\nz+AAye2VlmGSBFIDRBninnbLgT331RNhwOrWAND1/n/Yg1sQyq9TJ6s2c7qE\nKDYxYjxSRvPW8eBLC/w0BSsZ+mLxeZIkFyNAIoGYjIJiwKwY2Ki5yS5E6Tlh\nIV4dcVTPB8NivyF+xG7qHPFP5Q32ypOOqodHlY5ZGUlqSB/4Yilqd/UaED1c\nSi0gAzHZO8+P9rsPrY36sEGAnnuR6zG/w3FjlN85cZjzvIfLQDNZUVi2DH7P\nDkyLrbNufCpiS+lASFRHxlSmu/8qMl6b3zq89WMVvydDqOymqoHuWGnUxHRl\nM+5XtAgJERiR0xjxGLklH8Hdz6jsFRdvIdEbvmAgOyCNrPUvqx6H66VLV88y\njbbgJtY7LpurSthhFxRE3teSM/hTQ9ksZTrahwfo78snpnSv/41MDmn0kSYO\nK2mlKRE0/Lq6X2aYoYUkyJhmQwJY9E/J/Z063XTaTiU44jHyCGN2ujMj9qaJ\nPWCA9t3X0aZZwZvQ8wCzXCDD0e4oMI0sJbHrmP2/CWwo2x4zF6n+OMLrnVMu\nQp1gIdRlZhaUvDTSf39x4NtxkNDlufAw9SlGaGN7xExNyMKPWUvqBMXNPz8r\nSFzKB+Xq8V3XhaxQYo8a0FQwxijIcCMe6C/y/dytom4EqBlEmOlXcFVPtpuk\nfTmT\r\n=s6HE\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.1": {
+			"name": "toucan-js",
+			"version": "1.2.1",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@types/uuid": "^7.0.2",
+				"@sentry/core": "^5.15.4",
+				"@sentry/types": "^5.15.4",
+				"@sentry/utils": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"stacktrace-js": "^2.0.2",
+				"@types/stacktrace-js": "^2.0.3",
+				"@cloudflare/workers-types": "^1.0.7"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"webpack-cli": "^3.3.11",
+				"service-worker-mock": "^2.0.5",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "89cd31b3b681a92eb0182df5073f26982fe790ba",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-1.2.1.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-feIxl/TZN2vaT0QoNg3pGSDY1uGb/SdWE0aF34OxCn/zqhMoLEYuAZpIc4InmRh3RhCOFrxpsAFobQqFOdQNHQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIEXm7yz6EVLfGzoDgNzlwgdc/w1lJjcwFiEYydIVHxu9AiABmcIW74NQPzYxG2Qjs4UjoHTjonSXBFnNjyirdTthiQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 45672,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfGyfjCRA9TVsSAnZWagAADJ8P/RCwFZtr7jsqWaaCmEPD\nhp6+0Mz0usV2A99I4Q1Tb8sqQel/I/bzEPozZBFMKrnRMhniBY8gF6tfCrrD\nbTVq8x+52xCNVdrpAzdS8x7gxG5WaAhoBiSMIfY4enENVXp3iY6MIgpWq5az\n7Yc84A/CyLD2GkoWJ3On18plqBH2iwnVbTAmWY4o5JqUnyCKX/u7UkzbRhVG\nmg8k8OSjX5D0tJVabhNVBEjnKSPaKX9czw46gB0dXScvcdS2Ii8Qu1yU68fB\n1dpXJKQasB+4Zkt4QyrS0v2qNpYINGNsWiiewhd0aVhswg/XZ+Be/iNljeDf\nWxp6UmIRnpgas7YQocqmKAAbHA3RG6EmSlsad/3CVinelTdx+pXz1yieLKB7\ng7dp69Z5IoegqXmcwa0ZPn54gAVb5KFwg/4cWfGAf2MIBdFmo+QMRmAlUsIy\nYy1TVkQTY0h1iXyYcbuagpnGvJsq+dqJ18+Dn+Ud1Cl2HPC/8QyeoBLTblyr\nh6Pv31NrW2chZ5/905LIHthBVUoORDPb4QDmOLDJKDCLri/e/ubw0rvK6BSB\nR6Ba3+Uv+Uve7lVkWLCpM32rk9HpNVG0LtnTPVWfc5DrBvjCxAT67yyPD+cT\nrzTC/ArmHVv9quOhSmCb1pNAZHG1VJhgieeTsKPoUWVf47Z9rXw0lnZrJbcY\niG11\r\n=K9dR\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.0-rc.1": {
+			"name": "toucan-js",
+			"version": "1.3.0-rc.1",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@types/uuid": "^7.0.2",
+				"@sentry/core": "^5.15.4",
+				"@sentry/types": "^5.15.4",
+				"@sentry/utils": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"stacktrace-js": "^2.0.2",
+				"@types/stacktrace-js": "^2.0.3",
+				"@cloudflare/workers-types": "^1.0.7"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"webpack-cli": "^3.3.11",
+				"service-worker-mock": "^2.0.5",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "236d4a44cc954c77d221778826f81596829437cd",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-1.3.0-rc.1.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-5/wUyQVXkGjR/vftV5nvtAGWW8shqSyl5MBMmZ8Uaqg77SFxeyvZa7/ryljk0v2bLQGJAhgyZmEVRLzwLw507g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD0+a2BIt7TqPOol1pxusbBUae20Hfy/k6ithevrFiVmwIgSg8KQ6faZSQj9UvtwO0gautP4yIAx7JcI1f2zdTIMvc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 48824,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfHQV2CRA9TVsSAnZWagAAdycP/0CwjRTICyFIh2XB9HFK\n1wImj6Nn7mu9CDe7BdNq+PajCVYfMi5F6nieJmSjXmxp5s5gwlnWO+g9+JMi\nHEAZS4gjCpqByEm9g/4P1U4FDDFPrTQ9T+0jC5h1bcYgf01KWHt2+E/a6bWG\ncYr+kbFBhHeGFprfJrWyV2SGHmx/If+WPZl0pyBMsot+aKhEqp+UEgmA3wrZ\n7Ouv/f5+lr/DhtOsIMC6lbBPA0/h9/xZytk9k6ayZ33Ry5Nbgj2y2pFzRj4B\nyyb6d1rrU6mKG9x0kKOqsMuyn/SKP06BCHEH1m9lQ/26Kakeur2B17noGC4i\nEV7ydvC/THLT7QWL72gUAeeBw6p8qzDVwRxg6i94eK8ESVztvmzez1DFHF8q\n3Zd3J7c0BTkerVZCfrE9MFNLjBNY3cFKiRi1GDzlPrQX4AlHtkPY7MtLz8/4\nUk4Z+VUXKY9rTMpCH3ewLy4IvnwZPNfniRVxyHfjsjdQSMq7DMzu9nE5Y2Yt\nSOqWzgjhqpap6CHRnFJTLVoZKK3JqdrDZElMVLC4gMpOjrbo1NH+AP7CwC5l\nwlNpRPmds5Yfyjo6C8bsPDVsw5nuI5kqsq0UAfKtg9PX8qsIGV6nBccQNyGE\nF3TqPlAvHfOe9WGYRio7AyDnW5R0RVW4iHk+Gh8BzNl60gvVV805yttCKpu7\ngPx1\r\n=/pSr\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.0": {
+			"name": "toucan-js",
+			"version": "1.3.0",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@types/uuid": "^7.0.2",
+				"@sentry/core": "^5.15.4",
+				"@sentry/types": "^5.15.4",
+				"@sentry/utils": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"stacktrace-js": "^2.0.2",
+				"@types/stacktrace-js": "^2.0.3",
+				"@cloudflare/workers-types": "^1.0.7"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"webpack-cli": "^3.3.11",
+				"service-worker-mock": "^2.0.5",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "007955112aed48e60efe455d0db01e352625369b",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-1.3.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-f+eWEmY9cwi1MhcoP3BLy6B4HzT9u6Q9OTgLyk9R8rSWhjix1dI1AN025SW1ctTIGu7k0lxM8KNUlVHlpN0cQg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFz74ycGx0VJMYn81m+Fu81YYRiv8VOQPgE9ziRSJLkFAiB1Os7i2ZDVlcLhk2Z5DtNhKokj6k5YnuCxJgJx72Alqw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 52943,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfIFxdCRA9TVsSAnZWagAA5A8P+wWk0Pj/QFw+b1KBBdJ2\nKJy2uklWFCIERG7nASmM63j2V23afxjozM7QpUqcP7ykfoiFf2PRLvqLNJu9\nuG5bZuYEhza/PasMFq/joQi6EpjlX776mQtV/EW3fAmrfh3FaJiYMXJmcjYc\neCWjzdO80Pfs0ZPBp8nJX5r2Ij9Dx4dIYPpn9WNHCUoDJqUEspYxleFYtw91\nWvaYiqTQ4TPL3BjE4tQLzdrKgs12OGlQd5Kru4KkdaZLGNTct19AxG6XXEYO\nanIaH/wkflQbtoq5spge4Artnfjf/rqmlfJH5izo8SQBZ6VVNry5KyiJjIRl\n7HQ8UHRBY786aMuMOdKoa8Ca3b1PGsNDyv9ZaikB8+p2K6PonhpKCPVXEesd\nKB47TOVSlqPmVusqFG6H+MtAxtnJlHyRjNb8sGz46H/8wavR4Q6+Vu6ntfhS\nVizemzYtJFjFlD6t7oTlIRuG4YPDZmbxH7fevW8VqpPAnJdMb04dp7Q25Gb1\nLvWvPX47hxBSWydsGhcTq3LzygiyZdJ94CurlwSZvBSTNU4kVOpvrzGXpP13\nm7LksMOCf6cCaKWsbk8GHGquQopfxTi+cdkhJv0By7eL+J9GUMDxNd1tSJer\nDO5IiLJuwqneOzhn+JGVXrKZDE0OScjuLOzMGhxwNn1a3Rp88UFLzWDex7uf\nqKR0\r\n=1UMA\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.0": {
+			"name": "toucan-js",
+			"version": "2.0.0",
+			"dependencies": {
+				"uuid": "^7.0.3",
+				"cookie": "^0.4.0",
+				"@types/uuid": "^7.0.2",
+				"@sentry/core": "^5.15.4",
+				"@sentry/types": "^5.15.4",
+				"@sentry/utils": "^5.15.4",
+				"@types/cookie": "^0.3.3",
+				"stacktrace-js": "^2.0.2",
+				"@types/stacktrace-js": "^2.0.3",
+				"@cloudflare/workers-types": "^1.0.7"
+			},
+			"devDependencies": {
+				"jest": "^25.3.0",
+				"rollup": "^2.3.4",
+				"ts-jest": "^25.3.1",
+				"webpack": "^4.42.1",
+				"ts-loader": "^6.2.2",
+				"typescript": "^3.8.3",
+				"@types/jest": "^25.2.1",
+				"webpack-cli": "^3.3.11",
+				"service-worker-mock": "^2.0.5",
+				"@rollup/plugin-replace": "^2.3.1",
+				"@rollup/plugin-commonjs": "^11.0.2",
+				"rollup-plugin-typescript2": "^0.27.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@rollup/plugin-node-resolve": "^7.1.1"
+			},
+			"dist": {
+				"shasum": "97d2b12b5ffd5bbbf03e7b180eb4614dff9b4d62",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.0.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-CumjwYTyzfHww+2UUyNI+VrB+i1qlCM/6hmriJKDuoguKyjQjTmvovBgyN8btbHj3KtzsMbKPfjHf97xHLoT+A==",
+				"signatures": [
+					{
+						"sig": "MEUCIFjbk01p5Jz85QHdb45yu6u7ItREHRDdIpoggZUqibF6AiEAgwFUJ2VWisur8SdvtCs9FaN2/YTmJHPuUqU5tEA+OwM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53300,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfKHLnCRA9TVsSAnZWagAAYt4P/RZt6Vi5zvc2Lz3gUxie\n2oq9O5cMZctT9YMRlOIVg47vCj0Pded/SZkmPnMwCtpbx7yURuAkpKYuL97C\nuZSqDGdGkTiPEqZIHAZA9wn+1I9u27azUK6bRhCYAgdlUyyfNI8xtFGqGVXA\nPib7ISJ7gFyaGRspOqJI5y95xAndG6pQjwd2nBIg6/2VChNdOwFva5t8tjyz\nK3X++PO7bPYZH5Zwy05pqhn2gE9o6b2SjSidP3ixT5yBhE5EyV0TmsxsuTup\nr6OlSMtBpuuVt5NQbsToNNgmbUHZILr25QwyQe52FYLJJJxLFhXD7Y0aXDP6\nU/2rc+BtWovev7RwXyPFDiyxl1euzRxaT46RDLs1m6+XcRD4u3oN8vUCBCqn\n4xxoSh8WqWgEdIBA7f2nM/CQ0nyX9p3MkKNg99rp6Z50iP+quAPg7j+pah9V\nismeiNlQCAhsionayZ0GNYpA+vS3mvQnAv0IzXW5SfoD9c4eYZo2VvkT2w+g\nKAQEqfdi8jaUsmfzRHMAp4v7p/+794LvM0Oe2FIEYWrYDwHBnOEs2MAz781r\nvo85cpkxDgFN132gKU+iHjaZ304xEE4CcCxfI1us6IYZKnxTIJRRvMZlUkBr\nev/w2XvITkKg/bVhjFjbc7+VTqgBNx9QfZHWFmWCIR5N8ZzlplBr5ZCO35bk\nltCK\r\n=iNAF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.1.0": {
+			"name": "toucan-js",
+			"version": "2.1.0",
+			"dependencies": {
+				"uuid": "8.3.0",
+				"cookie": "0.4.0",
+				"@types/uuid": "8.0.1",
+				"@sentry/core": "5.20.1",
+				"@sentry/types": "5.20.1",
+				"@sentry/utils": "5.20.1",
+				"@types/cookie": "0.4.0",
+				"stacktrace-js": "2.0.2",
+				"@types/stacktrace-js": "2.0.3"
+			},
+			"devDependencies": {
+				"jest": "26.2.2",
+				"rollup": "2.23.1",
+				"ts-jest": "26.1.4",
+				"typescript": "3.9.7",
+				"@types/jest": "26.0.9",
+				"@types/node": "14.0.27",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "2.3.3",
+				"@rollup/plugin-commonjs": "14.0.0",
+				"@cloudflare/workers-types": "2.0.0",
+				"rollup-plugin-typescript2": "0.27.2",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "8.4.0"
+			},
+			"dist": {
+				"shasum": "93ab6526471092341c1bc228bc9fa2734757965e",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.1.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-0ypG4EYjtibPWQNDLPGOrZYyqcby3YssWGioLwpER2RzLkORylzScdRWfZ3O8o7kb34zBxLAzXAtO3O3mNQgew==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDTXn2ueVBb5xTsGZlQyLja5rTr/RXAOBEjsFXUDgcj9AIhAPZO9Nk+ejY3Ce1lrZ3BhY6wzbfqwESKDLZ6QiAS2bBr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 54569,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfMD7QCRA9TVsSAnZWagAA35sP/RJhzw65Z3HtesQi7suP\nHVEu0d7CsS0VPbCVKp//WiItTgbJdY2+WsfmMEIFeKqQXXJLkuUDBJpHKGyL\na+O2UpnQILu+AHbZd43xkPTotRXDD0oXjnunj7EzrqWu44mTQJfSUlOjtGke\ngLLdvxBg0Wu+QvfQJ2SmD+6EZGMeUsKudXwQuUpnKSExh2qXEqSrOirAzyCD\nzzKI8bXB2i8ZMxNE3SrSOBGtXSjZ+UjcvtHaAucDpSreizveNQt7aN5DRWGK\nmXjOigFTo/kSeOSzih0NPlmtgfuohKbU/jd5YWwwR3bco0qMO8t+rPMp0ZgN\nECHIUoAtFYsl/WlTlDMpCZO2PWUXQ1AIhDDMweer2ipQOlbE/+5dudhOzLv2\ntsKz9G0jJUMMGYrE0enbLJkxS5yYbxc8YAAejEhESSJqJB1UEFlcC6dSjuG9\nC4E5amPHPiR8bt4iwiXquP/xGEA5P4JqWJrMMMRlwS6JnVUw3GMtq/YZm9SU\nRjK+XEIRCog3qu3RAfrPFoEu6Lt17sO/K+9OL4G5aRIw/vpyDkJCvOpJDnwd\n/4EqKYfUKJHq+C9reaFlKLpddLWcl/o1x3tpywa289MaFVVMzGVDi53ORIpH\nU41kof2Qz5kbhqHmjklpsLIZ+i/YIe9sOybBMA+e6QBPYfbQkk/jupBZIYYq\nRjl4\r\n=ThIn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.2.0": {
+			"name": "toucan-js",
+			"version": "2.2.0",
+			"dependencies": {
+				"uuid": "8.3.0",
+				"cookie": "0.4.0",
+				"@types/uuid": "8.0.1",
+				"@sentry/core": "5.20.1",
+				"@sentry/types": "5.20.1",
+				"@sentry/utils": "5.20.1",
+				"@types/cookie": "0.4.0",
+				"stacktrace-js": "2.0.2",
+				"@types/stacktrace-js": "2.0.3"
+			},
+			"devDependencies": {
+				"jest": "26.2.2",
+				"rollup": "2.23.1",
+				"ts-jest": "26.1.4",
+				"typescript": "3.9.7",
+				"@types/jest": "26.0.9",
+				"@types/node": "14.0.27",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "2.3.3",
+				"@rollup/plugin-commonjs": "14.0.0",
+				"@cloudflare/workers-types": "2.0.0",
+				"rollup-plugin-typescript2": "0.27.2",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "8.4.0"
+			},
+			"dist": {
+				"shasum": "1a569cbf087bf401ee3a38b54dd890abe0c7946e",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.2.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-E/xrjnzCTFUOAcaNrpZHD5Ieuj1rm/SmNaHVmzt5kHy8qrrCpP+BG6a06iNi52pDg7mQDR4wrvao3bTt3Trwcw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBXyvLBPen67lRd7xJErYmYztNmDNVCtRde5nAQsL8X1AiEAh3Y4KZ3D0BRafjxH1FzDhdxVjAt+PHD4EJV1TthmFfI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 63394,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfOKjRCRA9TVsSAnZWagAA2bYP/0wV1OC2nLmno4VSPhw2\nAK7B12k+pIMsw8xVB/029mcUH5hmWkvcKsE/syNJx6pCh3PRxLMVVJN4QXqe\nFdD4SqhAooUiVoYubDQfRwPKx/IpXr0b6aGo+zkmB/4YOqX5OZDKzfjYQq8N\nDVloB5VIQaBktENQc56/sAQ06m2yuTmE9nje/UWNMaSAHrXNPH56Ek+Ff64s\ncUEqCFvrVr+lt4hv/5bDqDQwuhC+X/jDD7qvSZdjf5QswTv8OGRbMuaJv61M\nAPOYCwF5HW0Mc7uykGeoQ7fIcZ01wVxnn8ihJMh1pSHHZu0KD8t2eCIwETMj\nSQkCcrBb9tCQxG/0Gc80xP244bLMfF04aeHzM4yzSeJGK9IN9Z99xkf3Nh4K\nFK6X1hfqYxje05h0xLpedDi3bQHzAFGQu7S69ldF5M+FIOXhHG4+UiQZ/Ao2\noL4tlBZjIoWk5StZ1x03o2ZShzSXjDrsUa36sLKoq2qruWJhkKRFfr5TSfeP\n2zOsHLMtAmRz2NhoMraKf7biQJRWj9Jytisx7uRIit0y67Yp5Uy2izYf4RrB\nrTrj/7YPx84IUGXlTNyohUCViBpbR8WV2gTH0SSAhclOnTpkAmky/na1tVoN\nzdu+JHJ8rKJUGhvZ4i4hb5ukmNjMiJEFfTJkzFlO3WTpOIA+iBu7dPVVnASI\n+EOe\r\n=zT5u\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.2.1": {
+			"name": "toucan-js",
+			"version": "2.2.1",
+			"dependencies": {
+				"uuid": "8.3.2",
+				"cookie": "0.4.1",
+				"@types/uuid": "8.3.0",
+				"@sentry/core": "5.29.2",
+				"@sentry/types": "5.29.2",
+				"@sentry/utils": "5.29.2",
+				"@types/cookie": "0.4.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "26.6.3",
+				"rollup": "2.26.1",
+				"ts-jest": "26.4.4",
+				"typescript": "4.1.3",
+				"@types/jest": "26.0.20",
+				"@types/node": "14.14.20",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "2.3.4",
+				"@rollup/plugin-commonjs": "17.0.0",
+				"@cloudflare/workers-types": "2.1.0",
+				"rollup-plugin-typescript2": "0.29.0",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "11.0.1"
+			},
+			"dist": {
+				"shasum": "6dae9b1387cb729c57c2e40a089dd6c6cff108f4",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.2.1.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-0ZfdQatTIuhBTLgVL8l7Mr7xbQGgjVY08uQlxIexVqAqsNjIAaDP2L/rLRdeh1mroBhKFnlHpu0ZsUgdRCw+Lw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFCUPG76JxDxQ7YkhKx7cY4AGCtR83HWTlt/E/KFjPpcAiBs/v3NLS6iM52J1JFhSpzYQzHQ1k92wHlp5BFaqkBg1A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 63439,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf9+k3CRA9TVsSAnZWagAAnxAP/23YD2f9xOerFrZe80Iy\nYQnd16Z5irI6sDJaZMrw+Azo4z4hQzsKSyEK60S+7rOLMolEyJRoXB635ATs\nzjg5nU9hTdeOrP5QvBvBL6nD415DK2o8M4nGmQSCXxHHxNWW0udPOcSHQYE9\n5TZBxPAbC8PJJ8mocVUUu97SrbZJ5clXVyu+qr8bUuigNN1HjJWQZpPbfXeL\nxkaFW6spXLwl1Lf5P6JZxtWiUOUK2R8FcEZPOdzy+OT6TvUQB/x5WwNIeY4z\nYt0Cru4LUbOxiivaFB7jIHe08GvxkO2St97pS0HhZIJDK2Nn9yha00ipaf3y\nl4VRXk7QXJxaRXN7k/VcaP4i0Xct6IKSqvKC+zDkplzBJrNofvArVPbDrke6\nI8zLpRoZ3hmSaEDpc4b5XWsKHWpjV5ombgyCAk4X537qPsCrSdAzvn1eOP04\nBrKdQ3pj3WM5dWpcQK9ru9uF0LJb3/HJhF2YF5NESY+nQcui9NgDNBM2yHLD\nRyn/A5x8C/lz2jc25lUmjFQfrSf2qtrNcAUzz3wRsePKXSQIa2Si2CPEp9CC\njys9SFPS5IHBbMTnAlWsl/tTB00zAC3vGh5IyrgvXr8dU4YzAZSxMOJrOhAO\nGTdbOV1jo2BnWyBpJ9wZ/go8/0WwNeuG1jSEeM4XxaLXvfvL/DMiq7IMHGYp\np+76\r\n=pABs\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.3.0": {
+			"name": "toucan-js",
+			"version": "2.3.0",
+			"dependencies": {
+				"uuid": "8.3.2",
+				"cookie": "0.4.1",
+				"@types/uuid": "8.3.0",
+				"@sentry/core": "5.29.2",
+				"@sentry/types": "5.29.2",
+				"@sentry/utils": "5.29.2",
+				"@types/cookie": "0.4.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "26.6.3",
+				"rollup": "2.26.1",
+				"ts-jest": "26.4.4",
+				"typescript": "4.1.3",
+				"@types/jest": "26.0.20",
+				"@types/node": "14.14.20",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "2.3.4",
+				"@rollup/plugin-commonjs": "17.0.0",
+				"@cloudflare/workers-types": "2.1.0",
+				"rollup-plugin-typescript2": "0.29.0",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "11.0.1"
+			},
+			"dist": {
+				"shasum": "fd4432de45aae9033086ed730146fa37a2127e6a",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.3.0.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-yoY0F1/M2CwJZG+X4EGIAMXuCpzJaDfHGm1PHRyt1M5q7bp7haI1ccpE7FKAdvvguvL9md/vev7+bbuuJ/9HkQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC+ljqPGIu9eRu0lDGT6vn+RqEMfyiAIx6hlkn+rGtTMwIgdX/zz1X6YOJHixgrEDe1zi1NiMQONn32WQ2efyiaF/c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 63983,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgO954CRA9TVsSAnZWagAAFtEP/1BhpYwnRMreQ88mig3M\nWzITG3HtAp5+L4cTjCRYhyAEe1Wx0P7GZvH79/mEZxKmBVn3ZWKtNbWGM1Rc\nQe2593BmvqBiwp7n0ZwNCq6iJCVQo9ZM4OjcKng7ccMSW4hOpMPv7JcBYWvY\nvLpWvaoS8LHAHQhFtGhvkoHLWpOyQYKds0/P5H4sgkLyfOyfrnJgU2JrOePV\nK9v1xVoPNE5NWns4YwwSG6Wsis7+HyBNus3wBOjy9WzYIsHuffItRQMs1naj\n1qLp6tNuixe5rksJZVLDw23FvbrEr9Vu5A7RvsuFyEAbug6czyhEpgOPqzg3\nnTx7g5h5BltZPzuHCdG00ngOlUaqJ924Q4ViXx2LDI+mvpOScD+3cX2WGU0t\nRhIG0hcu/BtAPQksy/2iv7DDV+2U9R7J2sx3ty92HfaH1gnX9ounD9FxReHH\nTN6pVbP8NyzJJ0QVS0abKMGYPUup91NlnCNrxIe9fkXHZuAnipWSZAAU3Skm\ngkGYXjLlNfvSyEgO8ziseqPrjU5yn1GeMQv5jsX1/+0JPqEww84Adv+cAlqd\n+wpc5gQO0+nBAU8TjcxEkkEG9qHZEQ6VmxL2zxDsEf0eZl1PiNcqlZPZ1YMd\nbnMg9qU2UYKBUrE4IRdZqfWD8UYlk3aVJ1ubifUAirhdKqMm6I9GwblQjt6R\nuujj\r\n=OhzV\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.4.0": {
+			"name": "toucan-js",
+			"version": "2.4.0",
+			"dependencies": {
+				"uuid": "8.3.2",
+				"cookie": "0.4.1",
+				"@sentry/hub": "6.2.3",
+				"@types/uuid": "8.3.0",
+				"@sentry/core": "6.2.3",
+				"@sentry/types": "6.2.3",
+				"@sentry/utils": "6.2.3",
+				"@types/cookie": "0.4.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "26.6.3",
+				"rollup": "2.43.1",
+				"ts-jest": "26.5.4",
+				"typescript": "4.2.3",
+				"@types/jest": "26.0.22",
+				"@types/node": "14.14.37",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "2.4.2",
+				"@rollup/plugin-commonjs": "18.0.0",
+				"@cloudflare/workers-types": "2.2.1",
+				"rollup-plugin-typescript2": "0.30.0",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "11.2.1"
+			},
+			"dist": {
+				"shasum": "dc09841e2a3596ec7358d47a15dbe5aa42a6d580",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.4.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-01pheZ8h9k9tilePmYEYIpIxJ8A0NRuHbxTzhLVWmMR93jhYElwk5SSw7iOxyhAFxAdnjFF6NqUyRjpdZgXRWQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHWoYJ3R8f1oKlg1Vv2WSgL0q8WafMrte/A+DuTsCSJDAiB6WWapURMIBXUXs5AhyaavqrA8EoT95m5ML6d73mT/ew==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 72353,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgYZiMCRA9TVsSAnZWagAAVukP/AnBDBchHAp2GRY6agW/\ndD74VOrfZlV+lJSKFNYIrX1hQ5JyARK9km5r+JX+VFuezUuJWexEw7WfD+eD\n6Cui+CCRbywJtt1SuLn4cIHQ44pfu2INAKZdoCWBC/1tWZkbiPDdTlw64/lW\nbabG0cMD9+foh6WuWQLzvQnTpIBn1cp/uk+0szfIu05XIq+UqeA8NeF6IyQv\nPieFyHKKETGMflNi8iP2dYnW/eYIXMv2nopb5SA4DlM9VDvPISS5+N3+1lr9\nX4yf6P1M2pMwVa093f64Kxx067RVBm5dFfW5O+adNJgZc9+WXQjfK+aMtyPB\niWSTn3fZvkjmkNxdFGOpmBI+yNfCZwXDPyJ1T6V2IGONdFRLlJiiFCup2AwH\nAfX63nt6aaq3tevMvEzvbjNGatK4GYHZTn0t0IZgl13pGCk4omHOP40TuVYK\nnTkK3PF1aP/XLcd1LIAOKuFT0+8/y5d9DjJ0gC0IuPyQMeo8Y0pxmRZiE4Td\nOn9TjrEjBicLU1Sm4ttrRHVsbxo+8haSsIHg6pe/xMbsw9OBsgMR4fpLv3m0\nzZat6GKxBq8tXOAA9qT2OsujIAlsY1czkk6RWBJVNnClHW9u1XiXqrjiGiwh\nczdYaaSPQS6XkscKuQ4UhTxmG9GR/z4fNSdF9C5qEKe4lwvSIp0omrX/bvbf\nDgue\r\n=JLub\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.4.1": {
+			"name": "toucan-js",
+			"version": "2.4.1",
+			"dependencies": {
+				"uuid": "8.3.2",
+				"cookie": "0.4.1",
+				"@sentry/hub": "6.2.3",
+				"@types/uuid": "8.3.0",
+				"@sentry/core": "6.2.3",
+				"@sentry/types": "6.2.3",
+				"@sentry/utils": "6.2.3",
+				"@types/cookie": "0.4.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "26.6.3",
+				"rollup": "2.43.1",
+				"ts-jest": "26.5.4",
+				"typescript": "4.2.3",
+				"@types/jest": "26.0.22",
+				"@types/node": "14.14.37",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "2.4.2",
+				"@rollup/plugin-commonjs": "18.0.0",
+				"@cloudflare/workers-types": "2.2.1",
+				"rollup-plugin-typescript2": "0.30.0",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "11.2.1"
+			},
+			"dist": {
+				"shasum": "c8c4883ace699b97975db732f2dd8264d1b7eeeb",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.4.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-r8STTwBw4Ez5pqldubla1MP/4Y+QXNOVnbYz5KnmzQSMRQMcMGHAQEVj0oRCIeUamXrPlNdmzwJ3Xvh202rwRw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDG5qTRsp1eB8ZpdF4iU2rISa+u+Phn0pq03/VBEPW0mAIhAKwbrM8DGRCujcODHVexr3QY9xxrtaTrX0YTdfMjv/h4",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 81940,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgZ2ftCRA9TVsSAnZWagAAr3cP/2/Hrsy47MOYN7RsToW2\nPY9jxOZJDQ3beHJo0t9YlwGk9FAa8Evf/9p0aGmJtPtag4+lxDq/IPFXvhWt\nL9Vx03ZojwLwZEBIXfD8rS0VVmrcHNOClN+pkVIDcTIySkPULz0Lf4U0rupw\nmXdaDvazBRZfFIf/F40hJEUtgWDknzT7EobX7R2V5L6hv+dUXEQg6fEJpjeQ\nTmb2v/5QcrlXaV2vV8ZG9Wi6Y5ZnCL4HZH+tH43ZsvbscPUFMyDDvF5oq2yY\nXeY/QXvw8J03WHZhNvCp/AyVY2fpXF0jKKR+rqqv1VqcasNS6UAJlmku4kRy\nTBne6OYhYe15KRvt2vntI9vpXcxX6YxwKqOV5l/C4Uj6OklMg6jmP3D8dfZc\nekUpBmqu4jsrSQ1pgnDY6sYPtiO1nRhRizT7w1o0FMdpgr7Epxcpgs11drzf\nTwxQ2WW+LvwurGJ60F93+hpTL71U1pPn9NqKt/g1P5F8+QMq9VyBe0uMRWbG\naGv16y/Bb899OrRhQuSDn1RJdqeRCS+KhC8Ga6cMhLFg/b0kzVGxjF6O60Z9\nE+3j/nAMJeNxaOZsFmhKVJOo71KhHxPi+l2rnF7qKTLIFHLwyCXmvOtn+ES3\nyRwbGoZO8Zumls+OrAH2vBwnjnqOz9E3vMLdzgeXek/C/3/xsHxW95DvMqRL\ncFgo\r\n=V4XG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.5.0-beta.1": {
+			"name": "toucan-js",
+			"version": "2.5.0-beta.1",
+			"dependencies": {
+				"uuid": "8.3.2",
+				"cookie": "0.4.1",
+				"@sentry/hub": "6.2.3",
+				"@types/uuid": "8.3.0",
+				"@sentry/core": "6.2.3",
+				"@sentry/types": "6.2.3",
+				"@sentry/utils": "6.2.3",
+				"@types/cookie": "0.4.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "26.6.3",
+				"rollup": "2.43.1",
+				"ts-jest": "26.5.4",
+				"typescript": "4.2.3",
+				"@types/jest": "26.0.22",
+				"@types/node": "14.14.37",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "2.4.2",
+				"@rollup/plugin-commonjs": "18.0.0",
+				"@cloudflare/workers-types": "2.2.1",
+				"rollup-plugin-typescript2": "0.30.0",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "11.2.1"
+			},
+			"dist": {
+				"shasum": "2505c210535d86a43b2501ef86b2d0e4e6dbf4ec",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.5.0-beta.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-zPRPLbKM6UjM11YORI/F3zYuz/56ho6s/dvf51yMEAI5FJR0v1tqdGzt43383euyHmrSfaRXgUbSOvUQQ1oSOA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCj4FhwN3cJQjdQLnip6wQNtvh2ljdX9AZtsN8js7+22gIhALUEyNUol9hlY6dQQ2FQGDVDdSQVKoPjxm8n9VJyEZnO",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 89091,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgjP8pCRA9TVsSAnZWagAAuwkQAIqlYTNsgAJUz2jYHzgZ\n/kN6up+PiZnXhfl9rjvWtrHtJLcLDGMKnlDdhOzPnEAdha+Sb8uXmLicpljw\nSPuV8Qh7QPCUq7uIUHdepcGAp/X1kvbyWiPSdkrJTQVxNQoIBUG8vSzpsVn4\nrHBKL/2KlZd0N7EV2A0qOcs2b7XkA5mJoSzgTN6gy5z1ZQzXZE518S7Y1uSS\nRdMbt7qckiwWi+nkkpnP1b+fqJHOPUShVsYcwI3wSQTxy2bt5ObnFJWw+Zsh\ncOpVWzSu8w9vyaiAhJuhQO/6BpzkbW4kP2B+7WzrENOK1o/rX1Srzz/cmBzg\nU8qxjpKesswvtDFSJsKG1Zq0wrGPYpPVeDGKz6pmXQMTQRKqUFQ9xEP6spt+\nW5oXBHGitzYX3rBYwPAuZH43wLvZBQyqGijnHAMyviUjUWfLCzqbSRd8eTRc\naflfhQlYkuoQ9xeGl2v+EtkSEmO0w+XgaoTREx3nyVapQoYoND+GWOW+x02c\ngxQNlUodpp3oTaQ/b3JSG1UlbKIVZLcrWrFQFaTUpvzvpIZTNcKCJTGzisGV\niXzbAuxAgoUbCNdFvcURkfJchQFpOEl1WCT+1bch8EPVWl87d7HuneONl3oZ\nlGCrxTJBA0fBRY2apN16Kho8+Rz773vZQQ0dKvOrQ4VNjhISUEzHsqW2PJR7\nEFz4\r\n=pwdX\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.5.0": {
+			"name": "toucan-js",
+			"version": "2.5.0",
+			"dependencies": {
+				"uuid": "8.3.2",
+				"cookie": "0.4.1",
+				"@sentry/hub": "6.11.0",
+				"@types/uuid": "8.3.1",
+				"@sentry/core": "6.11.0",
+				"@sentry/types": "6.11.0",
+				"@sentry/utils": "6.11.0",
+				"@types/cookie": "0.4.1",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "27.0.6",
+				"rollup": "2.56.2",
+				"ts-jest": "27.0.4",
+				"prettier": "2.3.2",
+				"typescript": "4.3.5",
+				"@types/jest": "27.0.1",
+				"@types/node": "14.17.5",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "3.0.0",
+				"@rollup/plugin-commonjs": "20.0.0",
+				"@cloudflare/workers-types": "2.2.2",
+				"rollup-plugin-typescript2": "0.30.0",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "13.0.4"
+			},
+			"dist": {
+				"shasum": "049cd46237e34720c20607b0aabb564ea4cc1a51",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.5.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-kGC4aBI5ou0L6jIe+CqYxWjobknU7CTsgQOfHMFadSm8KLh/8f2oKgtqcmRB5Iysvai2/4vJDrFXqX/3K4iAjQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCV5bQEEJ9+/WijdtYb0WQR0lLIP+cqhwpjVlcGqIoe/QIhAIMD3RKvyJMjqfzJ+/h64DHm6HbWltBnKO/Hd84k7ku/",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 92861,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhG2JhCRA9TVsSAnZWagAAMZUP/jlpBXal6rOQSelJlgR9\nH4ew3uFm88mxWgvTBxaVOH38FdGPw1BVFk1+D34ybIURpGUPpwR03guaaFAw\n92cYjrkSZi4mDDPyZ/bBbeXC95zlmAmbQNYSsHti2gNReIcXJVXkBXOFi8de\nFUBBGPySXg9fHn9gm8BMx1iURPBfInK4BJD/iYOIgZ4cvhIsI7pA0AV7Sn4h\nKGCTUr49virMAt6wWJExkrd6qiZ05yYvg9Fy1GKO99oG9lySsCho5YiacdR8\n2CS1FG43P+CXr7vAuW1UR/Hl5WA8V9GzGztwISfDMeRYHH/zLan2NwY1xogi\nU90JsumoqlvTEdLMy0NI2S+iYmrgr7Bx2VWro7p6NNiQf6ceypTZYudb49Lv\ng//Rl3UBFg78AJ0muEFtkyWKT33j/gW0h1QtGVbLOINNgA2Wh73oeTuqlVLO\nPGewPHxT77uX2Wqp9SB6i5Q6FAxbsgoDBZZxGjHnoK9P+ceGyoHjPmH5wwxZ\nRJlVHXOusTyamKBSlkuEeTz3PvDnfMtNT2jElErhPPBr9IBLMxxiESs1GCIV\neVFIVAlt773cQREdquMo2l6roklwEsXi+ql/dgWeHpTdUqn7uhvJnRc8EueI\npp6Y9pijLgTYPtEbRSSuFFxnufF7/3vh4+tYEFzIW+li7yAq6fr+WRU6/fHZ\nfIic\r\n=u/Va\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.6.0": {
+			"name": "toucan-js",
+			"version": "2.6.0",
+			"dependencies": {
+				"uuid": "8.3.2",
+				"cookie": "0.5.0",
+				"@sentry/hub": "6.19.6",
+				"@types/uuid": "8.3.4",
+				"@sentry/core": "6.19.6",
+				"@sentry/types": "6.19.6",
+				"@sentry/utils": "6.19.6",
+				"@types/cookie": "0.5.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "27.0.6",
+				"rollup": "2.70.2",
+				"ts-jest": "27.0.4",
+				"prettier": "2.3.2",
+				"typescript": "4.6.3",
+				"@types/jest": "27.0.1",
+				"@types/node": "14.17.5",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "3.0.0",
+				"@rollup/plugin-commonjs": "20.0.0",
+				"@cloudflare/workers-types": "2.2.2",
+				"rollup-plugin-typescript2": "0.31.2",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "13.0.4"
+			},
+			"dist": {
+				"shasum": "d814ceb48dd1e4b2871aec1cd88eba4b1da6c015",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.6.0.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-gc1rvCuQhGnczs7Z9HLZNLXk2LW0He67DRsTm9bZX041bXJNJfOSQ3Eer1B0njkInMhsvZJh6EOI+Uga9o0jsw==",
+				"signatures": [
+					{
+						"sig": "MEUCICouOCGCIJHz0QZu39K/0pKi68Zh41fv3QzzZgG7fmDoAiEA/9YnGmxK31iDNhqnj1ybdqvvzCYZp+tXX6z2RZHzmS4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 104363,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiXI3/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpsew//f/UO+i2pKwpmVG25qlXjD1QoDe8IRePoQK+Hi3LETr5gaiTS\r\nZ4+SuS4NOMvrrq1UktTNwDn7wcQHixv3xBul5bdcvfXuNiSqsCuah/EFLvnL\r\nfWZiBT0YuFTMAuhlArwfmDnbgt22PpPUKkKMPruPU2AOZ5cH/GfRkV/4ko88\r\nzS38vWBdGEwiYTdR13EEppW8mWWCjF01o5kQMGNatNlvMG79hx2KmcFBf2RD\r\n1suQNwynShAgjWV5OHcnrUc3wyvWcnBXpXXSSCRc6Js9P7dWhhEyKqPQfV5k\r\n91sKRKMz4VKQc2P+zp+CCTw1qkg8Ispo2iDBfA1pWGcYQ1ooYCszYKicqwfq\r\ndzAJ7sHZHnVfA5vQJoSVMLhdgY4TTauTMvYEzZl7O0resXpjLSbmBPbUfrxj\r\n0mCGpvRKaaNeg5F5u3LyWlyzFnPaPk8zLJH+Nt/RiZvCKhto3A8UxQHpiHlA\r\nC3nCHKPmut5i9w4cb7N9IcG+wTWRgjbKtDZnbRr9sOsRMcnic/cykbc4tw8E\r\nJy86qvAd3ZUDowl9yIxEmexwrJt3TLeQ5AZxjT/E9K7VTXz1AwQXnMmtEkr3\r\nd1IrVLdl65MultJLYZAMo89jX8muA9vvG6NwvMNKK4vqyEMMRohffp3wAqYL\r\nAbbRNb763OAJQtN8FvLwjjo7rmscnqlq6Bw=\r\n=5EXL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.6.1": {
+			"name": "toucan-js",
+			"version": "2.6.1",
+			"dependencies": {
+				"cookie": "0.5.0",
+				"@sentry/hub": "6.19.6",
+				"@sentry/core": "6.19.6",
+				"@sentry/types": "6.19.6",
+				"@sentry/utils": "6.19.6",
+				"@types/cookie": "0.5.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "27.0.6",
+				"rollup": "2.70.2",
+				"ts-jest": "27.0.4",
+				"prettier": "2.3.2",
+				"typescript": "4.6.3",
+				"@types/jest": "27.0.1",
+				"@types/node": "14.17.5",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "3.0.0",
+				"@rollup/plugin-commonjs": "20.0.0",
+				"@cloudflare/workers-types": "2.2.2",
+				"rollup-plugin-typescript2": "0.31.2",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "13.0.4"
+			},
+			"dist": {
+				"shasum": "358ce4251da34b72e29d764c823f1407c37a03df",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.6.1.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-G0D6lkfsQBWJhHgSagFCTc0QTWoAVfjouVZXGNv1L/N9YN2r41R0daqzpFHcAwbS4VrOTDgyiXzamfRDdub4sA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFNL65JAgnFFVEy0c6/JPKXNmt8dcP6Y9xoki9WIGqDLAiBrhORjdI8EuyZdnX9eWvMkW8vaW4o3Cr4Dg3rJ9IAb2g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 104284,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJipW9RACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq13g/9FPPeZ8WF/5zmu0MRSjG7HC3aRGwdQNngfeRBELPb50oGpQ3/\r\nFS9EnAzuPil++9umzk5fY8funElQTOp4koYMktkvf1SlkqcXs4n2y/lwiZdI\r\n5015mYPgi7ihZNMw0aj+v9DTR65A3Rorc49dV+vOshg2/5VXzKBRybU29YgL\r\ngJiRQ6h3dKQmvhcu33nI4Xn9veFL1mygV5HWmtUODArOYIJ4bGZz4DNuVuZL\r\nSaVWcihuZfj1Y8/thW7cyqTDuqrnwclJWg17g2YD6Hp0PhkiUnRIgPIYszrq\r\n2kYritDR/dwW8m7YeC48bM+ui5xzBfT9x9Hp3jtmOuGHMxtJD3nM2YY6RDN2\r\nAlcN4K0AazLX0cuRK9Z7mk/Pmzcjag58QaaZ2frUu8VNZ+4MpnbXmgOu7s8v\r\nVu1qivWJf3fdsnZ444eGY0gN8Bxm7jhloznJ16RnXzHeMAU5AcxCm4cz2zML\r\nS3aZWH4gmGm/4t8wcDaWeaM9G0OX4MB2pDZGzqkdHH5RwpeXdu7kYNW1z8tY\r\nHYxPiu+Id+fjfGwqieD05xAIVNfJxswzLunRZT9k8OEbhyvQjdJJqxE5MCjB\r\n2YxjUldHsKLR9xGHu3fr2hsFcLqYjQrFQMDrUzI6LBKW8E+YK8fWmnclXVLO\r\nboGVUk9wttk+pHNUkH1Yrdx4fwU764RvsoM=\r\n=3Prr\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.7.0": {
+			"name": "toucan-js",
+			"version": "2.7.0",
+			"dependencies": {
+				"cookie": "0.5.0",
+				"@sentry/hub": "6.19.6",
+				"@sentry/core": "6.19.6",
+				"@sentry/types": "6.19.6",
+				"@sentry/utils": "6.19.6",
+				"@types/cookie": "0.5.0",
+				"stacktrace-js": "2.0.2"
+			},
+			"devDependencies": {
+				"jest": "27.0.6",
+				"rollup": "2.70.2",
+				"ts-jest": "27.0.4",
+				"prettier": "2.3.2",
+				"typescript": "4.6.3",
+				"@types/jest": "27.0.1",
+				"@types/node": "14.17.5",
+				"service-worker-mock": "2.0.5",
+				"@rollup/plugin-replace": "3.0.0",
+				"@rollup/plugin-commonjs": "20.0.0",
+				"@cloudflare/workers-types": "2.2.2",
+				"rollup-plugin-typescript2": "0.31.2",
+				"@types/service-worker-mock": "2.0.1",
+				"@rollup/plugin-node-resolve": "13.0.4"
+			},
+			"dist": {
+				"shasum": "3d7e39294ed4fff1c9aaddd71ce0fdcd537040a0",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-2.7.0.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-vbvRbFfMLN2Jf9lOkwL1KwIwuCcS/ko0MVACZTYTnbdVlVjsIviwCU0inH0CRcMXCvFAS+uL8z/gSV3y7FpZUQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDSVzksBcqe4IHTyZVQsPcJCJ/qfoNrhY+rsU0vZwP7FAiBDYMHhrTajMQ7yybRphREGD7zxtjNy0/VQjnaJ7p6OKg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 105211,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjMyRbACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqJaQ//R/2go3GAkRgZ43GkDIXc1pW2Sv3heo+rnsOm+EXQ13eySAev\r\nFGTfx5BNfTt3qhat7Trdfu/B29osqpTcDs3miX8KhiMQfptRAZCg+QG/zxk2\r\nOjgWcHZB5HdCnvAiMb2IOgBFK2/BeGFsDnlsBNArrrLjvZrlBcftMgoVvL3S\r\nTstf8UQhwbIVHX6kAtp+2hlcyEkMuU9kCEx/Rk1qEVew0IoYSw6qqC1WH7LT\r\nNCbIw9UBKH8mxC6NhUmxN7HGi+OqX7JtoAjtaQFrPP6ZopZ79+FOS2zNVSb5\r\nfZzs1unMyZ93Sako9tr5OD8HKMQBPT7wbxH9TzBkcZOrnlRbWw76HPTVDdfo\r\nUwkzTDIgmhQFhnNHsxHVP5hz4Uzv+IDNY3e0sCOieWqmb8c3gyIVKGQhjbLo\r\nqDWT38pelFsj77On5zd9N4EC53qwJIH2GLNnOl7Xgon7sKOt+F2ErJyrgbQP\r\njm7QCFNxyjhPxdnGyFbHqnzu3mVKs2aZkTF1hObyyBr3ozMR62EnqEbplyjc\r\nqDWB0zvxjmczRo9Jh+y5bzp/GhPj2PkTrcIVqR3SHvEUxLGXt0eiWlTeFEFc\r\nPwUKluxA//iZ6joAP1VxU+4lIlMivpybOQ2jhq77ZBHvApPIuJSTGzwpSYzA\r\n/9UlKpeD+AnyRC07FwdLZLku+N/UncVq/zA=\r\n=KRUf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.0": {
+			"name": "toucan-js",
+			"version": "3.0.0",
+			"dependencies": {
+				"@sentry/core": "7.23.0",
+				"@sentry/types": "7.23.0",
+				"@sentry/utils": "7.23.0"
+			},
+			"devDependencies": {
+				"jest": "29.2.1",
+				"rollup": "3.5.1",
+				"ts-jest": "29.0.3",
+				"ts-node": "10.9.1",
+				"miniflare": "2.11.0",
+				"@types/jest": "29.2.0",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.1",
+				"@rollup/plugin-commonjs": "23.0.3",
+				"rollup-plugin-typescript2": "0.34.1",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.0.1"
+			},
+			"dist": {
+				"shasum": "bdb755da4530045ed67b8307e17adc0e25fde904",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.0.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-nlEdWcwWgKAshQH1cA9AUFPHiQMIvO25fTb0+Nm8swFS05Iyg/3Z2Z6DwexcKC/JStHrvZRblkNQLXZ7s9ShuQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCB7l73rCg/UbJpjsoiQkGPEayuYe0I40y/TmcbNB1tNgIhAIi09DSWnymIzELGV1uovhtXxB2jPKiqPXLlYM+gIMTY",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67235,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjjvGUACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrRURAAkgFcjRrO+NucaSfWyPXXXl9BvuB4sUR3TCakLCqhPtJMraPR\r\nG+oJrIOyxhr4q4e65J5axVOtbD8WCkJTDYh85Ug44pH5vqyGfphAJcY/NB/P\r\nooq3a2Giqfiq2d/7vHMHYfZvnKgdyRGFBrp0YUyECArNA8tabe3dhxRMofoV\r\n9IqLvHcGbwkvAFhKWAbRKkw2LgtKF0mzI7V7p7B0AVk6Qf8FUxcxTxr6RqCP\r\nHhX2FILKV0r8ANnVGv016Na+9lHtscag1cLq7MJM/pMyzkTvb9bxw7J5lXYp\r\nZedI/AImDujC8fu+4EFeBl2cuvTS7HWSuQk/B6pq7b/ZGxvTclRzUkk+Sl9e\r\nb92N6CCaOkVEqD6Rab+BlHxqJJyBn8/QMOIYK9lJfynAbZ1ULFMZQkf2AA/F\r\nNMXgTVDzsN1Fb+kuEtufkRhoAOsF7nmpOHVHVQfsRZUPtIfeMeXyNCi0QIDn\r\nuEh0OoSCJfPZBksodawVsT2VVNVWFrf2FhhpdYI9hjlPv/HMQkncm8xVGX0k\r\nbpZfXOqCdIsdTnUeCw8eH44nDBeZA791rjGPrJY9DYWWjs60HUgPaUP3vLvX\r\niipJn0sDBgCHJZybMkOQUQw4J1r1K3iWY+yY441rL8hmQ0eaZbsoVis097vo\r\nt34iNgCZ9g/yKp+7tK6z6N+rXtHoIyvUE04=\r\n=KxBO\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.1.0": {
+			"name": "toucan-js",
+			"version": "3.1.0",
+			"dependencies": {
+				"@sentry/core": "7.28.1",
+				"@sentry/types": "7.28.1",
+				"@sentry/utils": "7.28.1"
+			},
+			"devDependencies": {
+				"jest": "29.2.1",
+				"rollup": "3.5.1",
+				"ts-jest": "29.0.3",
+				"ts-node": "10.9.1",
+				"miniflare": "2.11.0",
+				"@types/jest": "29.2.0",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.1",
+				"@rollup/plugin-commonjs": "23.0.3",
+				"rollup-plugin-typescript2": "0.34.1",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.0.1"
+			},
+			"dist": {
+				"shasum": "412cf43c259e702f46427e465adb2f588b7eea85",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.1.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-bRbq/HB+aSfwbsSoCNI6qyPXx2bhsscxSYxnAY63xXv9lIeOLUYfvYdOIBWfAVj9QHNST+X83GQ0lj/llvHpVg==",
+				"signatures": [
+					{
+						"sig": "MEQCID2l30fDX2hqKS6aLzucj6fCMZj+rGa56HSdTGrFSgoEAiAqSfvRnhd1rVZ5dVaWewMgQscVyVfdfvdozz7Uva6kvQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 67300,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjqKIXACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpLwA//bz2Jp3gsTc9PvtQz3l/XTsy6zX5rPNz2MJdajkxn8iipvlRR\r\ni4bCOWr3MlJWl52yrA4HQ3ULywU678Ho1R3YARIk+/YzjsGptCy4wb/sGo0y\r\npXmQfRyJ0F7E1s0wcSVIl4ZWqHgZHtU5jIhRfk4hhbnswLKWrMb3x71mY2nU\r\n1lXTe6GJ16YbtcrauFQ70OZFT+OgGWYvHLrKWIV+A8cJ8XlFjmUqCFvvZcN6\r\nV3Zs9WrH4wwrk5yXVEv0sjEuDs9+NcyukZ8nDng5jUAyfIZrP7erGLUUDcgq\r\nZNFxfhyAwKIQe9UUFC2SOfNxZGsqax7M8EacAGFCcjKP553lABEbuxzcKcUi\r\nDVC/eDEVTKWZjlZqu/KidWZ42EDrwQxwNiM6W9GHeW9fw04ifad7D2/ysYiZ\r\nJZLvfD56j6597is7KlUt5OU5tDrL5vSIHGIoQ7yEZhcgAchn1bn57j61vR83\r\nnU8KjnPTq1GyATjSyh3CdqHstnprbUZsypWuqq5VeiTCGM9GHrl1XMBW9PRy\r\nB0RI6jpXvp0wURdajwzuO9qLTic94Qk6QW1cOqiZ/SSKiicDj1p6PX0v+kBk\r\n3VCXS2jfIZZytfJ76GvFDmLTpQC0IrU38vd1ftIFt5QMoJ3IEjbloQ6meJX4\r\nkRNahSi26DGMzOve3uC8sOlO8Lqlr3maXtY=\r\n=4/Yi\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.2.0": {
+			"name": "toucan-js",
+			"version": "3.2.0",
+			"dependencies": {
+				"@sentry/core": "7.60.0",
+				"@sentry/types": "7.60.0",
+				"@sentry/utils": "7.60.0",
+				"@sentry/integrations": "7.60.0"
+			},
+			"devDependencies": {
+				"jest": "29.6.1",
+				"rollup": "3.26.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"miniflare": "2.14.0",
+				"@types/jest": "29.5.3",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.2",
+				"@rollup/plugin-commonjs": "25.0.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.1.0"
+			},
+			"dist": {
+				"shasum": "3ee57351c54fc5a4cb208c9adf7bcd3f5864b6b4",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.2.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-8zvhoU9moAi/ltwkhu5N5wH/ssmnPrY+HUzGQ6bhx0AnMfkWkGWN9WAlXZZ6OlxAAplvb6tp2hk4e0dLv6aWhg==",
+				"signatures": [
+					{
+						"sig": "MEUCIEoP8s1g0gGkz4ZPdoDJCBtuLBhK4MXVgPKdAgpCv6JOAiEAhaKHVieH8g3ma5mFIm1vqL9hAk2n7Y9wqJpKZSdpiSI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 69613
+			}
+		},
+		"3.2.1": {
+			"name": "toucan-js",
+			"version": "3.2.1",
+			"dependencies": {
+				"@sentry/core": "7.61.0",
+				"@sentry/types": "7.61.0",
+				"@sentry/utils": "7.61.0",
+				"@sentry/integrations": "7.61.0"
+			},
+			"devDependencies": {
+				"jest": "29.6.1",
+				"rollup": "3.26.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"miniflare": "2.14.0",
+				"@types/jest": "29.5.3",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.2",
+				"@rollup/plugin-commonjs": "25.0.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.1.0"
+			},
+			"dist": {
+				"shasum": "67f9c7cfe637f8251521be7a638cc9322cd6720b",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.2.1.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-B90rua7yIKZNGEVFc2gAbz9NQjFbQtcRJRUyTiA45oe4CC9LI+I/0bIklsO1wD46X+SYcOmZj/iWKBodinbZSg==",
+				"signatures": [
+					{
+						"sig": "MEUCIH773HsRHMvCTOrMeskvMulFIMkKc1akA/1sv8JxRr1NAiEAxX1u3PlcAfoqwbNFpa/7vgmhTrYWfXgtj98qtCFmGOw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 69613
+			}
+		},
+		"3.2.2": {
+			"name": "toucan-js",
+			"version": "3.2.2",
+			"dependencies": {
+				"@sentry/core": "7.64.0",
+				"@sentry/types": "7.64.0",
+				"@sentry/utils": "7.64.0",
+				"@sentry/integrations": "7.64.0"
+			},
+			"devDependencies": {
+				"jest": "29.6.1",
+				"rollup": "3.26.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"miniflare": "2.14.0",
+				"@types/jest": "29.5.3",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.2",
+				"@rollup/plugin-commonjs": "25.0.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.1.0"
+			},
+			"dist": {
+				"shasum": "df3e11617e70ee032f8ab32997a5ad0f628e3823",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.2.2.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-FnUvHOS2bv/mimVCzJYyKo9nRFcz8zaPS4FKZ5XZVykRId3rKqP6+VeEjHgxkPM0WG+MoNUZSCfLbMmyoBfhKA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDu2MQf6vWZUhhBJy5roIf/MFervytSA/syOPDYbogiEwIhAJ2JmcCPRaPOgIyUE6DvDABzwiODwC5XMsQqFjtWK38M",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 69613
+			}
+		},
+		"3.2.3": {
+			"name": "toucan-js",
+			"version": "3.2.3",
+			"dependencies": {
+				"@sentry/core": "7.65.0",
+				"@sentry/types": "7.65.0",
+				"@sentry/utils": "7.65.0",
+				"@sentry/integrations": "7.65.0"
+			},
+			"devDependencies": {
+				"jest": "29.6.1",
+				"rollup": "3.26.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"miniflare": "2.14.0",
+				"@types/jest": "29.5.3",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.2",
+				"@rollup/plugin-commonjs": "25.0.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.1.0"
+			},
+			"dist": {
+				"shasum": "b7e89046de0e0f70c129742b86c0914791240ed1",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.2.3.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-5sdXtcJfgFXfvn6R4GwsNriUQp6RVdIeKc/+xkyXZqGw56fY2oP4+TTPY8LtojgRMiDZhvD4nFxIIl/Ctple+Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCv8WfjoPCP/SoGkKxUsDv/UJ47FhpqqKkcnEkWH+TTdAIhAK4UlhBS/ayc4B7RtmC6Fmqp9kYdIz5zW9BgvDFUacCY",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 69613
+			}
+		},
+		"3.3.0": {
+			"name": "toucan-js",
+			"version": "3.3.0",
+			"dependencies": {
+				"@sentry/core": "7.70.0",
+				"@sentry/types": "7.70.0",
+				"@sentry/utils": "7.70.0",
+				"@sentry/integrations": "7.70.0"
+			},
+			"devDependencies": {
+				"jest": "29.6.1",
+				"rollup": "3.26.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"miniflare": "2.14.0",
+				"@types/jest": "29.5.3",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.2",
+				"@rollup/plugin-commonjs": "25.0.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.1.0"
+			},
+			"dist": {
+				"shasum": "d470261b441517435268ad21effb5bae0101d2ee",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.3.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-G3RZpX0SiLXq62UkQQyKuZKkB6yKrnp73Y97lh+cBt/fQLoj9YXJJ5IZ8YZ1Dq5nxGpSale+xpuGfUd4QLKcXA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDCfo1eB+ZZsSamb33BWge/q5LP9x/tco19oIYTdK7uUQIgeu6LBb1oIDihuD/3L4QWvwviy5FHWhHAX7kdy36qQg0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 71527
+			}
+		},
+		"3.3.1": {
+			"name": "toucan-js",
+			"version": "3.3.1",
+			"dependencies": {
+				"@sentry/core": "7.76.0",
+				"@sentry/types": "7.76.0",
+				"@sentry/utils": "7.76.0",
+				"@sentry/integrations": "7.76.0"
+			},
+			"devDependencies": {
+				"jest": "29.6.1",
+				"rollup": "3.26.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"miniflare": "2.14.0",
+				"@types/jest": "29.5.3",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.2",
+				"@rollup/plugin-commonjs": "25.0.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.1.0"
+			},
+			"dist": {
+				"shasum": "e6a2b0f46b1e03cc9269745d8f2fb6ed917b5991",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.3.1.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-9BpkHb/Pzsrtl1ItNq9OEQPnuUHwzce0nV2uG+DYFiQ4fPyiA6mKTBcDwQzcvNkfSER038U+8TzvdkCev+Maww==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDw/KD1HfupdZsRXJk41VAXWoEYtxYgU86tQIPA6WrU3AIgOCIpsHEZvpqaU02OKbVlt+s+xXFFRt69UvJZgy1/BU4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 71445
+			}
+		},
+		"3.4.0": {
+			"name": "toucan-js",
+			"version": "3.4.0",
+			"dependencies": {
+				"@sentry/core": "7.112.2",
+				"@sentry/types": "7.112.2",
+				"@sentry/utils": "7.112.2",
+				"@sentry/integrations": "7.112.2"
+			},
+			"devDependencies": {
+				"jest": "29.6.1",
+				"rollup": "3.26.3",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1",
+				"miniflare": "2.14.0",
+				"@types/jest": "29.5.3",
+				"config-jest": "*",
+				"config-typescript": "*",
+				"eslint-config-base": "*",
+				"@rollup/plugin-replace": "5.0.2",
+				"@rollup/plugin-commonjs": "25.0.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"jest-environment-miniflare": "2.10.0",
+				"@rollup/plugin-node-resolve": "15.1.0"
+			},
+			"dist": {
+				"shasum": "c5feef4960434d751c8e628c805160ce7f5a65d1",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-3.4.0.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-ifqPB5QIBC07gDGhWyMpSFp6Z6cjRLsjxhQ3wZmE6YGDntJZNCage77AIyrVihQLQM6/6T8TQumEJDuWlBw56w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCcWQvl2AN6hMGhEBYED99PRfNxmy/yYk4Fi3TEKx1JJQIgVbJj34DAbehfsSleL7BGXyMRRzQm4j6kIxZiaJEGMhQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 71449
+			}
+		},
+		"4.0.0": {
+			"name": "toucan-js",
+			"version": "4.0.0",
+			"dependencies": {
+				"@sentry/core": "8.9.2",
+				"@sentry/utils": "8.9.2",
+				"@sentry/types": "8.9.2"
+			},
+			"devDependencies": {
+				"@rollup/plugin-commonjs": "25.0.3",
+				"@rollup/plugin-node-resolve": "15.1.0",
+				"@rollup/plugin-replace": "5.0.2",
+				"rollup": "3.26.3",
+				"rollup-plugin-typescript2": "0.35.0",
+				"eslint-config-base": "*",
+				"config-typescript": "*",
+				"config-jest": "*",
+				"@types/jest": "29.5.3",
+				"jest": "29.6.1",
+				"miniflare": "2.14.0",
+				"jest-environment-miniflare": "2.10.0",
+				"ts-jest": "29.1.1",
+				"ts-node": "10.9.1"
+			},
+			"dist": {
+				"integrity": "sha512-FkF7uBztiyjs2WxVt54akH3pFWDcu61RwHsdH2oB0KGailstKEB/xmgMHiE6mft4YCnZi88uM2RPWZVZrA5r1w==",
+				"shasum": "736247f0560aff3c1e9bebcc4ef99a4a43d53ecb",
+				"tarball": "https://registry.npmjs.org/toucan-js/-/toucan-js-4.0.0.tgz",
+				"fileCount": 33,
+				"unpackedSize": 75508,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAnUTpIYVjsSATa3m0QL2As2uPa+tzHJj4KaNK2s+MvsAiEAljqXuSsuRDBdt5z5U2qpakD/5BZuMtidNlYvYBCmThg="
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,161 @@
+{
+	"name": "@libsql/isomorphic-ws",
+	"dist-tags": {
+		"latest": "0.1.5"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "@libsql/isomorphic-ws",
+			"version": "0.0.1",
+			"dependencies": {
+				"ws": "^8.13.0",
+				"@types/ws": "^8.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-ETMn57ZesId6C6szXeQkYFQj4dkvBa96R8VWTaeCdqaQI7IvOTqRUYo9pBFOb1pskMpupLV9OuIr8ibok1jayA==",
+				"shasum": "b10e059bad2549bb38005cb0fea49d43a00eab02",
+				"tarball": "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.0.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 1197,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAnlZ8pGfNK6JKMZa1/KazLhdFO0DP70eUj94R3nmAJ2AiAqyFXFUTkNa3+zs+XM14Y2LVeWtnBb4jbLgqMNlD8/xg=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkJUwlACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr+qw//VVbT8mW6f0fzEEZqzGeDBbNAqHYZwjotXT1WJphoZD8IunTk\r\nCP5JpXkcPShGQCfoXAeew578VGeNRvaqlanZD//XKTOBHDt+3JKm5Yo2Sr5O\r\nhazlNLIM0GfvH6To2h3aNDQfo0gDn0undpSTFvQy6q0TweKsTHcVQWA+Dniy\r\nMydLokWwjio4ico/TI/JXrgO1AJn2a+IyTGHU6KPgm3HdmP02FK3uVP2gcCz\r\nMjW/0abkrgy5/5CG7vhGvvxoXIBN7sefUK0XerYpA9I6rjjjQCGC5Dw0Ruv6\r\naPuFIJLHU2QQKJMIAykKXFLCmatxJiDAqTMbv3YWWqc9g14qJwgEK/8okd/y\r\n5YZdZxH4ZkYX4boFoCRob3ltZ0S8GLLxrSn6h5CA0C475eAWkF4d+s9U1cO4\r\nnN+Xsx0a3fRXMScAUubas7bxJNhj6ed+etGIYBAne+ntpjx9Yo5JPbu9W56k\r\nVn0oLoIO5EvsrJ4fqtfuUAGTHkqofnKJddeZPjcV0CQ5jskf2Dd7B+iwByme\r\nPuk6Ik/k7Jq2oJjhBC/v4OfgRl57jZBgZ8FB4UvyC2JPr4+gtGCC9vkiWDod\r\n6EuHq6Sd35xpx3c0g1wTw1gNBfp9y81FuIicT0u19sQiuRvTG9ukHUEnI9oY\r\nd0jWL+2ALnzRynG8LSaRrk5c8EuPMZY4jpc=\r\n=kBP/\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.2": {
+			"name": "@libsql/isomorphic-ws",
+			"version": "0.0.2",
+			"dependencies": {
+				"ws": "^8.13.0",
+				"@types/ws": "^8.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-J2YgiuKmizdr9R62B44iJCXXo9+OBCLkWPKw1oe1me/UbwUeCMpvWDFCzwt5nUVc6oXYSozaSonrAdgMC9jkeg==",
+				"shasum": "a97486cf3c1ee3e5238489e11f054b99857a0c29",
+				"tarball": "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.0.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 1278,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEx0DWzAadou+f4X+8DuvCxT35w43UEMZLQU8oKjiON1AiB3GNS/Y5Juzo6/lzWy8ewMN3SvecLfFJobKBJWhXVhIA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkJU8xACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoB9w//X1ECY9A08XjrrvMu45wTFo4Rryhg2ulqQZ40+RqJynBwpXVh\r\nNKlZjecVo9DvzgC91LlNHhDiiGqJbcSlFbcGnhhaWu/Hnke65nte5HT1oyQF\r\nf++mHOaiR0FkBVmyiLN2gGcsvrCp1hAgCNVPBEuLRCGUVBI55TuDiLrCkKC3\r\nlTNbzKAm7uGGGDXngsk5cg1B+XcGTgEHhdKaccfsav7B+gKGQgATjrLaqdi9\r\n4XV1Ii1t+buHHvHTfOM5xG7PTHI2EQAY94ANZixTzsPo1f4wm1y1th6TJldE\r\n3K5BSjXy/dufeYuciEQuJA+zBaypaGFkXyM1bwdilMHCaPVMMe9sbRvZ0BTW\r\nreCUTWYxUaeViA328HsmL8y4/0MzmN00ABs9RmkswtM84mp5gPjYrEzqLcry\r\nvKMw0ys1/ObLbOn/Chhh371e/Que3g1VnsIXbR9ImOv7cKhUiiXfmdzNOV1q\r\nJRVi5Ev5EdZ/kbtc6YwOnJl+YMJbk4oRhUS5FI7hTDxS5CjKm7/wLMYQhqtC\r\neJYaM9cgUS+reGR2qqwoILt5oPXxVmduuSNNRrk1YiahW1SWpdOdtFIsMwqI\r\nRNCLIaOEerKP6Qy0UeltbsMO/ILa8U4Zx39eGl+UmhoIsImDOILuXz5ujuLW\r\ngmqOkLrejpH8f+RiOSdTsc2CEZktDTjRKRM=\r\n=E1Jo\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.3": {
+			"name": "@libsql/isomorphic-ws",
+			"version": "0.0.3",
+			"dependencies": {
+				"ws": "^8.13.0",
+				"@types/ws": "^8.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-BgD3s132yOqigsP3QL220gQ/Zi+XcUYLXFEDkAMpIvt4NloVBZno5i6ytqeMHGktH/Odj+as2jlxJ4Ek+jpgcg==",
+				"shasum": "eb45210dac170d541756b83bad0f7e8c817ab316",
+				"tarball": "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.0.3.tgz",
+				"fileCount": 6,
+				"unpackedSize": 1274,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDPFTs8DWi+1SCvS+VIWo7cO3Lu9v9/IIDUTTJ4dIh5KwIhAP8RjsR9spb0FhnTdh1yW+XIjc9EADP2cmA9uI0SCfaq"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkJU+mACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqqAhAAhXaiuMuy/X2YzlioB05eFu4R8nOIOXf+sWdRMyH/+e/vYMzw\r\nkd9swE+UcGMF8WsIujj+kzl0829M7VxLWI4hXSV1MYJErKXBWEUhgu5KHa0P\r\nKUJ4XjP7Fpu2Ab/ngTfiZrC0yCU0n4e9wj/yeAkWfpKpg6/BzIil372BX0Ew\r\nCh283toXHDImUyPDnVBB1TV+I7nay9+RziZsheOFGTwiC6oFuZvwqGNiyq7C\r\n8qhZl5ynG1sGrkneXfLgPymKOJYACSKo3cZSYkVTxpbsdTUOY0paiyhobNH3\r\n4z8tgB2FMn2q2dD1u2qr/D3YkUDmonuya6dT7ECxWdAYMU4eNuPVrl6Y5gWr\r\nJ3ws1ODx/qewjaMAUTHgjnw/Cvl/Hm4kddYZV8Bo1nHJWk/ufskzjaDDsapo\r\nb2xxC3S6wT/OWGQmpZfETJ66TZRc9N2jCiwEYPz20My11BsoZ2s18mWW6WIc\r\nNSUGt16L/MKpx0bEtekiCB2IuIvy32sCDTD5U1DUzmfCp6CXEZbBi1mBy1dx\r\nJa0zyO4cirA/QKMW/i6k+wucCPdaE5yxQQpEo272VJ3f8+y8PGvIZ0SQjo8N\r\n9F6sZKn+0wxBVQRNc3/HVaSpVC4F9QA63YWNaGMjtlQFNcdP2SjyWNCS5ejx\r\n4IL5yQuf0wA+eBKc2QjrD/EI2S9NW9fuv6A=\r\n=wxUy\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.0": {
+			"name": "@libsql/isomorphic-ws",
+			"version": "0.1.0",
+			"dependencies": {
+				"ws": "^8.13.0",
+				"@types/ws": "^8.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-PNOQ4tNFjLV4/v/qaAy0bmAcqMLBECdoSCjqK0yECaKM0XfK+CyDTQKwBeQ3vczL6kMhmJgjSqKXkxjiqJGWYg==",
+				"shasum": "8a59a8115ffeda22d21bdabb377040dba1bea5e0",
+				"tarball": "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.1.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 1708,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDBUe7IQk7G4s3wRHWiNE9UfQvHg2QuCjzi0qq0cwsM+wIhAIWQ+bCYQoEXXbZSqCH/dKUiDvpgN8/v4OlHOP+rtkO1"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkJVJFACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoKmg//ZDGNOf+pODUEFkbvrUcxXUYTk2bqDttd95KgtOYDdnrVgITx\r\nJmAzyoNBVD/ChWRHf4fa0BqjnePUg2MqC4ANK+l22r1t7NTcioLg3fgJc1xm\r\nVBWos42wqY/wXLz2xChOo3meUJhA1gEOzrk0UNrqF7RDLRpIMb4ONIDBDVKq\r\n3h9JISltEo+uX3jNWGKXevyGADcU9D1x67xivP/j7g5LIlMV+njksS6b+LgJ\r\n/6SZW0sFnF0t7SDGVZ6/0WyAvIsGf8tb6Elbjb3ZCyOyxcNAk+WHpB1+8GrN\r\nIDEyXToOLcioyrLqt4bKykAnyvGrSErf8Yax4T9e8x639ZBrcgt2FJCZsU6E\r\nu2RqC6vViPUBqX+oh//Y+Gesn6PykcywCmbIPqVAaQeE/ac+kdLfAvj9Zs6B\r\nLwpr4brrKpj/OlXSylOGnO5WNCjcZeme/L9bYm+WX2U+BkJnNGoj9A7u4zHK\r\npB0WhkvzuEyr9NHnR7FujYD7r/+0omVbYHNqpcMQgz8C9izEoFOYLwtZuZeU\r\n27EirX0LvPmJ6N4SgIdc6u+lbMbickPWyhGRVbYnxCutpYnocoUgmPF3PPxx\r\nQTQzmQSHuWJ8Mb+wnYya7rpnxLR2U9FLLsC6J2CTz+yIjBxfIsverlbILllW\r\nCJruqgdEiCDD/O4+Yf8crcGPmG0tykSblkg=\r\n=R/Q8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.2": {
+			"name": "@libsql/isomorphic-ws",
+			"version": "0.1.2",
+			"dependencies": {
+				"ws": "^8.13.0",
+				"@types/ws": "^8.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-T9BaWf95BtKR3NDIudTza+2fcANZnqBMynadVf5ompLd+y6/j5Jhuj88UjpbwNDXDuYGugalSroNjtKbZXB28g==",
+				"shasum": "0a1b1449b832ddf979af83c741289bbf8d0f8015",
+				"tarball": "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.1.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2342,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCnfhq0Z33RJ+GHg5S+YxpaB85oE8QT01VJYx/LSMOUuQIgf7Y5Py2ffsc1f4dJ63r9xsWwCYOHWATmIsmJ0gYrx5E="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkRkptACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmooVw/+LNwQusfgZ7BSQsuBGli2XmGT8zTHJCkK9y1P9YJRlZ9PM+m7\r\n9a5NTsSd55zSzohwcncMtSC/EPxrSwON56cnAYtc/swKrwagQ00kbSnDLnCP\r\nA0Ah72q8YJeHGs/380C3z1KlHUMfYNXtziCELkzAR3piX7lamyFXkSRpkWJn\r\nA9CA1QDKqdd50VS9/vdbcCk73jZQFlzknHQFCWAquR0v7ZP4lZ0p/IXA6PEi\r\nflDQSNF1s+D9cPWBw9igL5TkulV0mFPMPP9M4Dy0lZrMpm/7fF+tnU5OOTEd\r\nJw/dcQPjdcqL3gGyYp9QU1cEa5Hy4hT3Jul/P83LzKWl/fov6VfPWqMgZpW0\r\n9l/dh56p1eB3OXRZsrt8nRxwjU2cVqlpSjkKrhZVn+ER9d+G9uWpqmyT+voX\r\nGC00aSzS8tvc4MzvsJn8M+unSBFw3szzBzb3HLcjYWIg0fe8paRCmiD5+7Zl\r\nVQ+OLTsEUtuOj+IjahjuYe5gy21jmPYFq+VXrZIP9OFZCBbMntNw+WpLLYte\r\nroixqrHV9/HT5/gvTKWHFrPmcImJXVgrJOfgK3ZpRaq5gwz9pQ+gOAmHNJLA\r\nCfJyZz57PTq4H3MBU4NbsKHFgXWUYHMPDgOKTXBcO1r7gD+88mpMZ7Au8pEt\r\n91Jkrs4PophJLAlu/sDCaZ2bmN6Fpfpj5q4=\r\n=4bz+\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.3": {
+			"name": "@libsql/isomorphic-ws",
+			"version": "0.1.3",
+			"dependencies": {
+				"ws": "^8.13.0",
+				"@types/ws": "^8.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-54dZXgYwWDKsnfWv8GCVYvhn6RDlqFDGAc8EQMd941yvGMsGzo06Gn6Iyjw//nJ1iJO97FbXgoQ1apikoFD/WA==",
+				"shasum": "b66e88af15c44175f8828406aaddc9ed552afbc9",
+				"tarball": "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.1.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2371,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC2n6l0FQ/lIbWRevqCKaqZRxoMYR+TH4Ru48zVWFGC4wIgNR3QMT4Jlko52lJ9ElnHxiRTcoWzN/wWUYcYC4JKC2k="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkRmTPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqwjw/7B5bZ2zcEnuOoyf+LiLCqNgSKLdDRs790e+pdcZIbRFLS2UyB\r\nIuLZuWliKkJyaRZVMSCznGsAwxdd+FyG/sQhXTAJEBfsJ79YzeN+pm6z81dy\r\nIogTOZJEcpInjXirfaMYUEBRmmsZ8d6yP7dzl2HIFup3SWKW05mgf8nXL5Wx\r\n6+a/8j7Ty/WrYv4hS1BF1oxWuVbD/Vc2XORIyhh3cQ5jtbf1opjMjreGpxln\r\nFM3/gbXWKwVfSUTwcWTFQk6BSnl5GWmC1KDqfqTLlPBt6pBg0iGLjR/t+QdQ\r\nCcMQkBHc/7kBXGcKkAKXYE7vTyejfOqM8c4CtyZhOA9XMV/Jm9N214AVOLhP\r\n8wvpfcTBVM5mMfHkx4a0+QjAHmuIJfWAQ/2V2X1tmNIvy7Vt5BWE6i7IPYXR\r\nK7PaLTVPAlMV7fgjBFG3mpa50yD7Pv9F8uJKxDs85LK24KCGsSFhu6tqCQt9\r\n0W9Q4AwuQj2JCz0L+8g7ljREz4H6IAB7QjvufDSZoaNJj2FxOpSYe9P0vLNC\r\nD0ZATjlgu47ASvtYRjtwyIxbqFKZG+Z8Iu6+TSNnkvUU+zOjO9qYspvVgLtT\r\nDXTXKeR+oLl9FYn1HZQJPtYCj6By+xsIdnLW8AMITI7axN5pOI8IDTg+8g1n\r\nXNEnLD/y5YbJqqgcbqJ1gPEY5c07AWXQhOA=\r\n=co1Y\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.5": {
+			"name": "@libsql/isomorphic-ws",
+			"version": "0.1.5",
+			"dependencies": {
+				"ws": "^8.13.0",
+				"@types/ws": "^8.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==",
+				"shasum": "e2d1faf965ba0f3be9301fbf5640164d03c4e606",
+				"tarball": "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.1.5.tgz",
+				"fileCount": 7,
+				"unpackedSize": 2432,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAI9dwJ2CNAx31EPGTGP2W2yOJvhhkfSVFQ7w0uzC+llAiEA1I2c6GLxcYdeZOWa9z/kLyKRIfLhYAIX69+lGq5u8Cw="
+					}
+				]
+			}
+		}
+	}
+}

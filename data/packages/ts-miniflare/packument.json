@@ -1,0 +1,74 @@
+{
+	"name": "ts-miniflare",
+	"dist-tags": {
+		"latest": "0.2.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "ts-miniflare",
+			"version": "0.1.0",
+			"dependencies": {
+				"esbuild": "^0.19.11",
+				"miniflare": "^3.20231218.1"
+			},
+			"devDependencies": {
+				"@stylistic/eslint-plugin": "^1.5.3",
+				"@tsconfig/node-lts": "^20.1.1",
+				"@types/node": "^20.10.6",
+				"@typescript-eslint/eslint-plugin": "^6.18.0",
+				"@typescript-eslint/parser": "^6.18.0",
+				"eslint": "^8.56.0",
+				"typescript": "^5.3.3"
+			},
+			"dist": {
+				"integrity": "sha512-MtQqJAxUawN1EbQ07NxjrDMOhRj02eSZb6G54gamF2QbIAoIuG1n8P4g4IU2NtEHuLazzncLaPR5+lfMPslSEg==",
+				"shasum": "567b911212a48e27a3e9211b3bbcc35a4a4d2add",
+				"tarball": "https://registry.npmjs.org/ts-miniflare/-/ts-miniflare-0.1.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 22978,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDiCBVxmDNtfZtVf8zRYAi0tTyzfONtuYiLKmd/zdY1WAiEA0+hQ5xWpA0CR9t/VIpfEVT20GyjjCkSXk110aVQVdYU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 20.1.0"
+			}
+		},
+		"0.2.0": {
+			"name": "ts-miniflare",
+			"version": "0.2.0",
+			"dependencies": {
+				"esbuild": "^0.19.12",
+				"miniflare": "^3.20240129.0"
+			},
+			"devDependencies": {
+				"@stylistic/eslint-plugin": "^1.5.4",
+				"@tsconfig/node-lts": "^20.1.1",
+				"@types/node": "^20.11.16",
+				"@typescript-eslint/eslint-plugin": "^6.20.0",
+				"@typescript-eslint/parser": "^6.20.0",
+				"eslint": "^8.56.0",
+				"typescript": "^5.3.3"
+			},
+			"dist": {
+				"integrity": "sha512-j8xjafGCyW6MEtj/rtSLLY27MSS0SFPtRVAaPnE4xOdFWdpAe460dVCOdDn6swMGpvIhbyZyBUiKJgyCBpJWsg==",
+				"shasum": "653bf3c08cc7422d69a09a5d4c9667a608d8c3e3",
+				"tarball": "https://registry.npmjs.org/ts-miniflare/-/ts-miniflare-0.2.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 23176,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEsym/MorI8QHWExJisL84B+CA3A7WMQPzoNGXbItV2iAiEA/k3qkQP95UrNKO/elYz10QxhaVcVgDbb7tJu4m3/R5E="
+					}
+				]
+			},
+			"engines": {
+				"node": ">= 20.1.0"
+			}
+		}
+	}
+}

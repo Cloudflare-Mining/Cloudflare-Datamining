@@ -1,0 +1,2580 @@
+{
+	"name": "cloudworker-router",
+	"dist-tags": {
+		"latest": "4.1.5",
+		"beta": "4.0.5"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "cloudworker-router",
+			"version": "0.0.1",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.0.1",
+				"eslint-config-airbnb-base": "13.2.0",
+				"eslint-plugin-import": "2.18.1",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.36.1",
+				"webpack-cli": "3.3.6"
+			},
+			"dist": {
+				"integrity": "sha512-MMFnyBS8JAMXs3uU0e+bjI8Hnj1pCT6kUDSEJ3jC0IHN301JGqEBlcfHSbnDH52wtBFMR7wst5ibKfnXe+E5MQ==",
+				"shasum": "9aa22c605189868076759eacf754be199bdea4a6",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-0.0.1.tgz",
+				"fileCount": 16,
+				"unpackedSize": 20897,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdPDqhCRA9TVsSAnZWagAAdgEP/R/aDVX1nWgkyJ7QgYTM\n48IxJeI1oLLISEpeq7LL9gn6iA4d4E9pFNjhxRxOPrNneuJgYpYItjFr5qO/\n1MVkVyTbujULRqMAD35x5W9hRvztGvPIyF/PcR7uUhAef3wd38540pkXWSGG\nB7L7hSFVROQBLjKZ66TxhrY4pLiPhB+8ODxcqbHwFk/knUT/6/X6XZ7nYl5S\n271aFy2ePineexevldFGRcg2H4DpdYWaAc/W2AKh23TgeVN/+tcz0r37xy7G\n0E9jOXnV+dLvhF5CYVnLjI2E46+XYbNW/7NvsZ3vZx2v18XtgCM8oUoTcBHH\n3xKMCU1/bc3ZNYSKDQCk2QprUGJbt5JJWsKlPGjVC99Q8DCaMbk5CAm1+08I\nL2evqXX8V39ZBAXl66yNuaQ7CwXextNmQSMd6Zean8idL4fYpBrMaaemX1e+\n4a/P/BOl65XH3JQe0g+R43FlgSY+XmnqYuuyEbe5b7661CGxvFIgQwYQhTb/\nW+nnkrnMw504GooW/v5S9Y7XwAyqgFv/215VhKdcfr2i3ZToI7opQ5gfRR0B\nJozioaA1LhxwH9BtBRWRcwIYTAFM1o+ceAJ0SoHayzccrznGEpeWnvARxMW9\nTJ9WqElVxGh2j+R42B5kx2qwxG2/+ACUg29T4TiYzyPI+WVC9p80tPx5sZAC\nmpN0\r\n=miqz\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEz54wT1mIiKU6+t6rZs11A2peAVZGiKV0axbBEa1CghAiA+bOmZ0f6RO6358gwhQlXO8IUPg/q3Y3vNrkemL9JQNg=="
+					}
+				]
+			}
+		},
+		"0.0.2": {
+			"name": "cloudworker-router",
+			"version": "0.0.2",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.0.1",
+				"eslint-config-airbnb-base": "13.2.0",
+				"eslint-plugin-import": "2.18.1",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.36.1",
+				"webpack-cli": "3.3.6"
+			},
+			"dist": {
+				"integrity": "sha512-sUJzy7AkBOV2NVCPsQH9kD/EWqgeePONLHWs+qnUHJQYe9M/nAPnepS9KWUfZBoZYhA9jW5HLlQ1CGEmSk33rA==",
+				"shasum": "36fd399bcc8300a4d2bc6177c4f50135add203f7",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-0.0.2.tgz",
+				"fileCount": 15,
+				"unpackedSize": 20539,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdQJHXCRA9TVsSAnZWagAAKbAP/2L8H3DMQt27Mlp4e+5u\nIsLB9rMZzWc6BAzQIJyNus6sPcJSWCiRaynG5Ce3Lv8taMtXYIMNdePpvqQz\n5uNeN++LZ8Nu52MMddfwrrqINsXHLQxa2M3heT3o7a1EiRdSOGJqKAqNJ+2B\nY7FUiS/g1ccxgBn4hQ5JeZSrJAcCtIXrnve2vPSrv5d24sWM1xRmsdefZCdX\nb23HD2u808OL2tKULeB98k0y59HFWl/w94Zlm0+NN1K0YWLJMa5JsSDEhOEj\nzx54rhpxBczqphnFG0DlUGxHDP9MXFPhAdEidU1Bkev2p/6KWK7fXS8tJpTp\n9TrmGpGq+xkQUZ8pJJJfSIZfhF2C5oir0nRiphiMFx76RmEKO2rShBoitMQ6\nZ1IA5a/E3/eVl340sODYPC5+C0/z9nhhOMx+HpfnSFjWVIYhA84D1dARLqPJ\nkHDZdqRWStdqx0T/HLU3lrJWFLxtqhuSW4S7qLNTCEpud0OPVQaHjuOZkQmM\noZROwtRrOcP3hh3oID0CUbzSLOI3DbqX6JSS51slLr/axLnrY9L2GRnuLhJ2\ntr/DuhD+5iBcDhwuTWdURo07nDwkyNUYAkgEuMacbKPgdDn0jNJG/JuOqVQa\nBacdniZg5EB2kViyNLtSV5tpveRRcJE1s+Gy9YQ/cyC5eQzkSINfPARNwdDD\nJW70\r\n=KTZy\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD8Hnfeeli1Vgic3c+7Y9HFY7HlaPW5NrKYd4eFA4VllQIhAJTyjvvh9obSBxZxC6alJBAkOHoAwb2p1n/u+gY7JlW8"
+					}
+				]
+			}
+		},
+		"0.0.3": {
+			"name": "cloudworker-router",
+			"version": "0.0.3",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.0.1",
+				"eslint-config-airbnb-base": "13.2.0",
+				"eslint-plugin-import": "2.18.1",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.36.1",
+				"webpack-cli": "3.3.6"
+			},
+			"dist": {
+				"integrity": "sha512-rzoVKEF2VizUbK4D7wcUQns+oSPe9FdLSU/h0nNxAU/6s5IEveuSNKKSiVokctlP7UQ7R7RwRpD4wQMAjHa9hg==",
+				"shasum": "2dbd11e7f13811f2267a0ba748ac35cfb9294f87",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-0.0.3.tgz",
+				"fileCount": 15,
+				"unpackedSize": 20543,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdRvj3CRA9TVsSAnZWagAA7M0P/R+8SbR34vtEhfg4/Qji\nj7YoBvYUmXhE7DQnurzdwr29wfgn6dOK0HgUwa7w8p6G8Tc7ZjM9fAkS4Bnj\nRpYzqGIA1FoB3w0CJD+1aaehOoiHzOMT6VODq9EouLOcILnRiidmoWAi6xyp\nr5Wx722MX3jIQK7H9I0kk3/ipyAVp4aKU09a1gZddkJVEzO+F2jv0ywVuIM3\nAB87Tycn9d8X3eORa9XDBGKz3ndtXDv0xyhjxJir2xMb95ANR2sE7SBl5x0s\nbkH4us/5q/51d2m5A8kWnY22Lpay5tZhejRD59qb4w3HRg7ZBSWS/fmfpCEA\n+mDDHJUV1iHtuMrg7nqUsHywEjzWdm16MtrsepTEVu9yzWLpNeMCJkpXqEj6\n8gF815fIYPBQN51hcdKfeRgeKwfs9S8TqcyFqPCAkZXw/NpACC+Fxi1ktVP6\nb1mTHnbcIyjufFUs7Q6mJZmIWfFvkEDX62I0uNkoT56dzIGVOiXZ6gwTDAos\nUEyS4nFzvgRf9kXXBy4iLC37TUTRSLZ/UXbJH7zkmuBkQOY8cp1V52+R+/Hm\n4m4GOWFLmyASYQPkasU7Djv9iY3LG4ynBJyrTu5O/a6PHQkhyH5a6hhNGNAD\nO7FajWYPf2T9q3i+lQL6BQDHvgpJ+FJsOE40X+ijiM5ICLsWOnQfiT9R/zT+\ncA1S\r\n=90mc\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDMD38pKSTDcKDmzXJ7R8Fu2iFj3X9HXqXtF5sRTk6e4QIhAMIUXBsvL4GRWlaXvllOosOQJ8airJItJT7lAqk81gUK"
+					}
+				]
+			}
+		},
+		"1.0.0": {
+			"name": "cloudworker-router",
+			"version": "1.0.0",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.0.1",
+				"eslint-config-airbnb-base": "13.2.0",
+				"eslint-plugin-import": "2.18.1",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.36.1",
+				"webpack-cli": "3.3.6"
+			},
+			"dist": {
+				"integrity": "sha512-fwDtmmk+vFtITe2IcJfUTQ2+MYj+/xMyM31OLhOOkpvAf/TESdPuZbgIqV3s4AOdAyAB3PHuyJVsYuxjqqOnxQ==",
+				"shasum": "1c9e6fc841578b8d8827295c9214eb6cae68e9dc",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.0.0.tgz",
+				"fileCount": 22,
+				"unpackedSize": 388554,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdUT7qCRA9TVsSAnZWagAAbnoP/3hxiqf4GGFBcUcyfw+m\n5gi0re4OC7DvCImM4DUTzLeaLfj1b7mEolbhADJABs4P2wv6ecy+10MNsgqr\n6Thmob7ukecb/i/FQSV+lNenx1THqceKzzGXepc5qHnpHcspch+NIGF3WE3L\nejmXk+U8kBFdVdLAe7u6bqFto2U+YQ/59Kjsf44g3iNWT2z5TXKE7o/3fWHt\nuyvz1CKrdy4dzjFRPmQGscgo3sw2M6+jDvyu91W9lnvbtuLi57Nyn3e8k3Ye\nWakHB/aEfSKYEq+TIsYSMgr4wP9UKks+aWcuiuXTlHBAdGn7pL8y5rW2bumq\nTs7vpRapy/Rc0LFzUhwntpH3JKrXKRznC2B054shp7aoObusnBdGHkHV2+BF\nuNoIW2UBP+NRvNxZAPAJnxjPMvNWAK8Ix4bMVbVbhwV6ntTDxTobdO9gTGqp\n2tPwfvMEw0Dx06qMTH+/CKo7QQ/g44B+OSdIr20wS/PsWRJsRAY9NVlSiD7u\nqKVCU14ZP5SEWdpGhj9x0w9i9eM2bjrBOm8HA5FfHXYEHjRDjf9zrgXzUwBY\nbc7sjaSNRN80Nmd5uKFNi8X03FfVe/MQhJoNGXe5crCye4z+AH1gGoewy+8x\n7ha6reCCLHgJMVDrmsqWwMofNg8gXjpl8OTyLlQDi/TFGupSwFBumQj3Pufs\nexeF\r\n=coqO\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAL3b+DVSN1juGwt84WvfV0Ej4qRQZK3SZwE/Vg+RJeeAiBdwYlwsBgRbeO9gXhG5sq78TrQI+tCBXIGXWfGthWtrQ=="
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "cloudworker-router",
+			"version": "1.1.0",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.2.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.39.2",
+				"webpack-cli": "3.3.7"
+			},
+			"dist": {
+				"integrity": "sha512-gPLw5kqA7vxCQRcZ+ORfb1fV0ZhqUZxEi5ELTfzEmNTvGW4vAlvBOg5WScBpn7obMcxIj3rn7La0/QUZwgxx+w==",
+				"shasum": "6388b22e6158db56dc110a605fca55ff04e99fc7",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.1.0.tgz",
+				"fileCount": 24,
+				"unpackedSize": 389296,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdW8KrCRA9TVsSAnZWagAADV4P/irraUnNQefBP6LhTQ3x\nTQQOiRjj84mJhYpRkfLatcabxcpEdDGT1py0SXDdD2cTP61iEZebju/3XQvQ\npmGyFT2T0PW9GCHc7vm4e3YHOat9gJBEL1avnsoocVeUQSyUWcZmGmjGNowr\noP0JHdi4TyON6Om6yt3EJ1gAZJNxKBrmCRXq5saYjFpRFQf4wy+f9mce2wTZ\n7ngZtnktrrPDW9rh3TXRydsSLWG5cFWOxxrhmjMIi48j86xDR7E+nEaitaLG\nowfYNRcTkl2FKV3m9S4lgy2boGM1MZPUvf/y+W1A/slOlUQhDBM9aUd4A2zy\ny6GHjIRQl/IDG4KVoOyA/vOSSseJFd4nw9ebrr8hSw1SFkPyaK+52ljxpMsl\n6PvUYWvIs10V7hadQHVAHZtUE+Y8bWOM9tHqkYaYiGED6teCSENlfUy7odqV\nC3390UJx7H9o2RotIuOQyKu/DUaZKwo8wqi8CNmqWNvac1Fbmte2k/RKN9K/\nP35IZl88tkkaKuN0ps0f0KPMvNCZvtLd1dpPgvvVeiEBcSRO7knva55Tj0hU\nHtRcNVScQiEZFnZ7AAJM4OvhexsJQRgX1B+I0K4iLBBX1J3zhwY2uZuWvjhg\nJWnHVI51j6o93DH+TrzzpM2rfqwyGoxJZLTZGuqpYmsfPZtPqfDVzY0Bu7re\n6Sxh\r\n=T25q\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHtWiFmVVuA+RJZEkFvwqesYeTxihIMOGBr0XKuC5MnMAiEA9NSV1hFhvjnnYmfZn9LDTvJH/NduHi1V82nCpH0dQdE="
+					}
+				]
+			}
+		},
+		"1.2.0": {
+			"name": "cloudworker-router",
+			"version": "1.2.0",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.2.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.39.2",
+				"webpack-cli": "3.3.7"
+			},
+			"dist": {
+				"integrity": "sha512-vHKnCqiF2y4Mo5sN4JRrx80sHxAFZAgapNpZN4YGk0CgYJ4dneU2gXu3vrS9l99bMZVnitQe9YZQpJD/I8qM2g==",
+				"shasum": "7640946327693e65c29149ec9f07881b3dc1582b",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.2.0.tgz",
+				"fileCount": 23,
+				"unpackedSize": 294285,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdXQFkCRA9TVsSAnZWagAAAhEP/37i3GyAvMsAhI51UBQy\n8Grh76QhDROtOsfSPxLioHb3EBoln69YxYVTg35MiEv4dy1X8Yuf/iTFzlFO\nQzeE0KqZGsMuEdS31YPdVrMvmhZSRwtX4/ysCwc8s61yQma0o4gyAojWoJYE\nYH8DWK1k4oEOat6y9yzQ2tTfqrY6Zu5WJvYAa7O3Rw97nbn68xnyJYeg/CMM\nmp1NWr6GAj5dqO/yRRwYucI3DOQZNmaK4YIK5wnXoiHlrG1RLVZoTEm7tpgj\n4aUjr1Bc2YVFtzonc1srLNhMMfeq0r+PyLE06dYn/YNafjZgxwGKIbeT8ulG\nmOnh2EoK92K+f9MxkEJ8XKY7V1izha+klvVxzmZNFSrsxCqJwmQrMNfnPnxA\nTzZ2upuXAJPsLALtoX1FKponDLMrVqX54qvZJbxuazzF3GOt8FcK8aouCyim\n997vSYOSXCecSt82J0jN6CUUS9W+vVS9l81PXihuARdCdvs8Nxrs7baA4Cya\ndi/rcJmUSnajD11fg7uotmwN4SthegplJ2rhvYgAmvg7TmPQdZUz02fHkHEd\nyIrm1hRJwN8yZRy/N+E4J3Zm2zxbe9x88z74Vt34eAbkaS+5f4FG7AZUD+au\n2a+LwIAJgzMAFOoFsM3fS1zsWgyqO1yxbRvdlDGk2Lv2+fUDZ43sHHjezrA3\nPrSY\r\n=ql99\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCy7JRV5D+Bt89Nspfdgboq+qg5MtFDwQrB3AvUfPeu6wIgL58+XmSfInyZXuNTa0Irk4xPr96g5z9MphwMHNBjqPU="
+					}
+				]
+			}
+		},
+		"1.3.0": {
+			"name": "cloudworker-router",
+			"version": "1.3.0",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.2.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.39.2",
+				"webpack-cli": "3.3.7"
+			},
+			"dist": {
+				"integrity": "sha512-4M8IgV1XIFXbhRH8/6kAeI9ZiWzJ/dAqzOlsz5/UpcP/9NzRxwzrbg+1FZ8863FqglaxLRY/blJIrY3LUEwL0Q==",
+				"shasum": "c60b539a31508d3ab4b1b746dc8cd32a8d587066",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.3.0.tgz",
+				"fileCount": 23,
+				"unpackedSize": 294624,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdXlRXCRA9TVsSAnZWagAAdWQP/ib0U/TcvvWHUZiaDXlq\nBEEyq+qpOY8TnNBIuHRVq7HbQQl+NGjYXoS9U++09N/YCpDjdoPJHNez+3hk\nIQJrmW6RZ127fxD/A9WOfAt2haPASI8pntNq94JCrmj8vJkmsnBTWS1Rqvhh\n+Sn/Sn6sCwxi1wsc21mrB2SHlQ6L7IIIZh77J8F4MxJT6B7ghb0WzVshIXKP\n8iS9LQRhgq/o8ecRc2dQhLkxY47Yh+k6zt2qfg5VBkuKN2+J670rIVPV/5HT\ngUgs/+y2znJ1wdvJehhNPpGXLei8VgrxXdGtLoSTqWNLdgO5oyZOihroaeqK\naqHY2Qp72jXwbG6E3IaRfZLPwq3+J2xbIPZySIWakNQGEomp1EHjcQ2jewbk\n5k5RxzJGj3XlQO/nWzisHfLNNMm8iDyFwsarUhB7Q/D6c58vly1/kraZ9s4g\nbJ3ezVKw+zkYXuYN/V4AqQDqz61cdlwjRl1CUO8knb02q/Ldr1moQffl/9Cv\nZHtVlNkJZfq+nfw1ZUSryV1JMQ21GM5maOTApyS23bMp2hceFCghIPxq+RSh\ngPsFw5dHqNR7li8/WpqQIqnofIVvaUDM5d5se+OPx7JQOYh/TCQHolyqTEh3\nYwZMK8VEETo4+CZvFMlkKzEG+xJv+7DXdankGmvOd8viT0eicQ8Th1DwMzxx\nj3Jq\r\n=6O+5\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDd3ggNC223P94AT//IwwdBKVv9efo1JzK6/puVTzpKpAIhANMkPDSg8pJs2SQStjn7BtRT39uo9nkOUsFwySKaPafK"
+					}
+				]
+			}
+		},
+		"1.3.1": {
+			"name": "cloudworker-router",
+			"version": "1.3.1",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.2.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.0.5",
+				"webpack": "4.39.2",
+				"webpack-cli": "3.3.7"
+			},
+			"dist": {
+				"integrity": "sha512-KKY5/Tstyq/TIIe/nXtggtqXNBW6euw88PYZNy3qDb2bfH0sHMA0AdkakHtSOtRAJCOunD01hj/+DkNZ3kCNVg==",
+				"shasum": "3e4f3e10071be773dd031006280dbef8cd0b9f66",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.3.1.tgz",
+				"fileCount": 23,
+				"unpackedSize": 294916,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdXpj3CRA9TVsSAnZWagAAB38QAIVsDFArAjzoHJRl/S0R\nYdVsl1ne74XqCrY4JQQIeocQKRw1nu6ghPiAgZbmfzfHrT9DtsgpJ7c6BBLH\n21N+RDgEWd8wG74YBDa9VxZRm+mrKxSGt5750OjmVoq0uY+qEHLeTWmTEE6a\nKpaaH1a4W7PUxROSn1wnPTLWcolGrNdP/aZrBqTBIWr5IQPrpHb2tBdjbrGg\n1IdMUld7hNffWJopA3CyKNIb3Jx2NCP4PCLYlOs/LR0JuOwUfVNQnhtVOSKq\nIgL7hMFQMhdKLhlTCnAB2g8sRw8u6/Tqdr/ULuHo04/TqWb2xaAw+QZEjO5S\nvCsmM8qvoveC4PYMhZ9W/iKid28S/+6FLGatoyTPqpbJe+3wopJOmHKJ2UyU\nxGVbNqq8pg4HdsLNZgpFeh83mDiH+lkDLSR9pavbkgViGml495dp7nXlpLN8\nfLrfjHKFor6xcD98wvzQYm3G6rkafEY/BEQ8WIOE1PlHYfO2+hqHqw3OcgNB\nrUPTxhUfdKqvYE/7v1qGT3Ta6PMlAzs7sFrlcr+TOYmYC6IEHil4OJx6ni5D\nzELuVT7rAbhMyXuh/SrJvic+uAb3IVcJ/3RPNoa9tEttzm67LwELi0jxZXpe\nZ91tDnlccG479KQDMM+v+fRp+EYyWUx1b0T7BhUxmw7PTuIdEnnTVgcmC5ce\nkq6G\r\n=XZCc\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDHsyi0k0jwIi0n+UTY9yenrhZ1bcDBif4m+63vdIn5OwIhAJN5DaZLu1poIiTr7CUAEkCZ8qoa+pazK0rz58YjRBQ4"
+					}
+				]
+			}
+		},
+		"1.3.2": {
+			"name": "cloudworker-router",
+			"version": "1.3.2",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.2.1",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.1.0",
+				"webpack": "4.39.2",
+				"webpack-cli": "3.3.7"
+			},
+			"dist": {
+				"integrity": "sha512-+G51MtTKQIUl3nPPiHmWnfpVgQpeQHRVINTWvvfoxNfBYgp7H8BiqA7gBZMC+0h783dAFl4nHwyechkGFQcMEg==",
+				"shasum": "184f183a37f25aa84ee01c328d8d2a6c981c88c5",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.3.2.tgz",
+				"fileCount": 23,
+				"unpackedSize": 291601,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdX6mJCRA9TVsSAnZWagAASjkP/1VL7gSbPsgozuW7GqLI\nUThkE0+WUr+a/nuGJ1FUO3yu3dAGG64xIcPh+x6z45FWyxR6TSSGauk65TZz\nGLL6Uas8hD2iabSyiZF7S6PODF5tBxGxOxuiNYNUzJecHpQwIhAVZl6/eFsQ\nnw9cmEdvDSTqhFUb/cRlfSE47cCKljR9KCfl8JhyBn8T6gKsLgVBbm8e+9Ky\nKTeunPmc/q1XnjutwaJNhmIrkDWqCD2vTS+wxTpKXjk8rXB1ywQtX0+gvJp7\ndVnvB7XJqg7vYVGHyisWEQpds+l8k+wa1icFn9dn53nwtLWhaEdfxQiitPnF\nAy5BdeWdrVcWZO5y6llWbZTPlF6qLn6FuUOe3KHOj6Q9/alqGwsNs7ukLOdE\nFjD/26VZDm0NXuBx35j+H8x+ZR9p4Mus0n4lCdXu7efjvLYHPO9B4KOlX69P\nxKxGwx+C6wDNVsJqhiBZdfBYPAFE/W/ZXj78AT7RAPIlmds1N80fz8dOr10s\niy15t9ryLSxRA7XRm/1wVYVugIZPQ+KkFv7A2tm26SwBURKHr4rhZLe6Vy6d\nqmQMiDLtFAAOKv4BQpn3bObvE/N4SmgihTDg4xK2sHNVdlyfGF2o7KIUBSSL\n7T+PDpRqwdEh6A8C0KWyM8PM64DxLcmXE3azdKMhcyZwZr01nZYmHy8LQT/E\ny1jy\r\n=xhP7\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAMJEhoKwAbCqwBPGUhUdZW5DxO+zbFO1LSZ2OKIEtIqAiAMhHgXGri8jpNzM+EPEuPPyqqJTHu/fMq+6BA0sO3+7A=="
+					}
+				]
+			}
+		},
+		"1.4.0": {
+			"name": "cloudworker-router",
+			"version": "1.4.0",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.2.1",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.1.0",
+				"webpack": "4.39.2",
+				"webpack-cli": "3.3.7"
+			},
+			"dist": {
+				"integrity": "sha512-56wGmB3FbW8zFf6I6Ut0eYWwMjokVzeMKB498s2lGHgG3nc5UW0s+7G6xUFiY+okWO1RbIVK16ukmcUXhOthpg==",
+				"shasum": "32da8b6f32555dc8031281495740d392f2eb0cc0",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.4.0.tgz",
+				"fileCount": 23,
+				"unpackedSize": 294193,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdX7t2CRA9TVsSAnZWagAASY8P/Rd1XyNpRklNe3FCL8IA\n/wT5O3JO95NavGtQ2RzP2QiXtveXAcm6s796hq9W/as9mD+YvSkRwl2wRSb+\nVEHXHjHZgF3L6s+xMjMbdRil+221Fj4PErwOWJVuBWjG1tBCiebiFpXv/OJy\npUIDOxszIQ+qmLscVNyiQUl0DVwj+PaDH8F/eB87OSbx3kkrexRyMpiyMdco\n5KxJlAvgywZV6FEbex4Tlzx1piBfEdwAlaN/NCB2sjeQ/F8pSLqI8/QAyVxg\n3lkevLMCN079FIDMXcyCrnQxTyvIN4I6JQmXObgGVeGM5nCksCKW5z2w1+oz\nDOm7FLvAzoottw3SzmGhqvEhL/xUKh+vgME8Obg1QabEyF2oEavpU7WnEdGW\nBZOZn4noBN0i5qX1l9GHNhvyonNRaaqfDt/6V3XOdstNS6n+IiKbHr7VlXtK\n/oOKqFGdR0Y+o32AAeqsop6+2eN2GkphPe/BYEBD0a5HGDfn56R9Ajx8v2qp\nGIB9WoL3jZJ9xgCLrqVcVoir+NKvkNDFp85Ko7FOErkNBT0SK/UXkxWboNd5\n7PhV6QVX5hvJu0+x4qsDMA4nYToJNMmn+jigLdY64gBy+shHE7H9wcA7T9Yf\nMfoIaeooOcsVDiRgz1+mGK5nRdMILRHAgxUZmnM1b33vVcaFuo14BiL+dfIT\nH4MZ\r\n=SPSe\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCrkU7cbTugcALjT+CRJ13EmcxqMlPvsn+7T8ISDyzQmAIhAKElypkmTLPZzSDawiWo/NIN+0IrUtw1NNwEQbb1iaGp"
+					}
+				]
+			}
+		},
+		"1.4.1": {
+			"name": "cloudworker-router",
+			"version": "1.4.1",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.2.2",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.1.0",
+				"webpack": "4.39.3",
+				"webpack-cli": "3.3.7"
+			},
+			"dist": {
+				"integrity": "sha512-5zVnOaa5iAdDSB25uY4WyCcV2z1h4eRqoEmGUt3ACGkzPYGgHkjWeBPJTSq1Gf8CNUupfR1nm5+bsK7EuB9B5w==",
+				"shasum": "83fa4891b6cb6e7cd60a865cba3d7570b5833287",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.4.1.tgz",
+				"fileCount": 23,
+				"unpackedSize": 294252,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdaO20CRA9TVsSAnZWagAAs8kQAI5/u5swxWQ/0nsCl6ET\nQugYjEzbgDj/uhhYSdl+gedHU51++D8ERtfmjIW+rWahhDigKD/twJ4zZVAY\nfdlUKqCzLWOMt8y0qaCMefgbD06ohAu9dS5/+IhBq4fy4Wa7M87G/XCOJwgC\nsIGkxhVtUkKe5Djt7lqFXoPha7Kk50jWraNSStXdnZQe2H3y046ed4dYkZis\nXlTn6k838Qpe8Qnik69TLC3oRP38kPK0b2wrASE1mOrCE18ZWlaiKeHyTain\n2arWFnHQldu1wm9PQgXgdcdLK1e6FQCZPgYOISq/NY8KTpYlvWl+ebvfXEzi\nxpKsthu+yLdabttCZCQMxz94ga4gX2hFNL5HyZH/P7k+9XkCMUEhJGvNYGaA\n0frtWhXubdQrurpZqLAxTS/ptd/gOG+K3UetWg8VDMKWH24WgfXaoRDbsLQ8\ndZVujMBXvnUEjItkuIwezpI45tiwSRvuc8Tb5BTr/E360DIQWcE0df0nBvc5\niBMnkfWi9zc1/4mQJDNnFFG7azpccfc3GbslknVLFTfxySVMuyy2Mh/Is3nY\n5bFdfkAuXnYmyORn8C9pY5OFBIu0q+mqOkXNzROk9CV7RBxn5OW3WV49ikQt\nHE6UtJfh0DWgmwS38+P1hZdeFV0Lek4EdjJiHLPKyGMHrJnbRYF8p4J6cmUS\nMKLO\r\n=Y1k8\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBg7FmDlj9nV8bgzqMnCfaz6A/noruZMZHU27iOXMtJAAiEA+HhsB2FX8dMAGVo2YKU+EHvkGFA6VoHGuHiZoYbGgio="
+					}
+				]
+			}
+		},
+		"1.5.0": {
+			"name": "cloudworker-router",
+			"version": "1.5.0",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.3.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.1.2",
+				"webpack": "4.39.3",
+				"webpack-cli": "3.3.8"
+			},
+			"dist": {
+				"integrity": "sha512-FPP85beDFQ/qSWp9L+6oQ7syKq34MsCSFGqI0/y3+AngOjpBI4Xx8ePgPLZPnFvGS8xWWvD72tbpmSsNHkDXCA==",
+				"shasum": "87d61d76d4193430fec9e234bc2a47ab26589a0b",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.5.0.tgz",
+				"fileCount": 23,
+				"unpackedSize": 294443,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJddku8CRA9TVsSAnZWagAAK9AP/0+g6kNNOZlJHILxZBF3\nIBT2MaYXYxprqFck/3AWI71Z1fEFh3rldwNoUXv6BtimsrzetEQ7wWL1vDV3\nLqZ73Fc+DV2uaTDiFEFpVn7A3kQQLCQ+YIN4bE8zf6TkoO41+v5KdecS24/U\nmRFNo1MzIApzdd4uIMLd7SKFGEzSEPpbzZSycG+u6c9WOsX5fFhYbTk7CyQW\nf/J2ZgDJV1t2+U4AqcFQzg8pwMp8ys5+PiQbJ4YvuJIXMupFdWi8cstqD12Q\nChrqVE2c8LX9EHm6tUw/Pw+kM0oqfSsnCtj6+cY+cCnU2I2n6y5R9nqiy6RD\n6aUL7w/TNrCnnhnavzR7dN+iX2AuX0blZ4/yui10hmii3hGYKw1Gd09XmBp7\nsWwajlBkr/cfaI2qv/hEZ57eDr/eCqAr6n8THmZUF0CAXXPWzk5MqYo/jJa5\nuPHyQp8+2FsuXshHGuvaNrVdIPo4Q4bHuL4+3wnizTwou2z6lvyrt+m/2/pk\n1Bo9qsaRYoVl7vrsQvGfK1B7+DNA3ZFFwvrZC9dJRVy3VISORJfahQidz/t2\n0RbVUdEkpysjZllBesF3UlHHHpmMBxCtyW4ac32WhZjQGwfRYFJz2KNKosM4\nxNwDeEi3xMJ/0dbfo0xt/SPBsdQq3STmdT0nmQPXoa1wZQ8zKWIRMl5bWl3m\nQ5iv\r\n=NBFA\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHU1akLGAb6GFyPI7DzoOSMEN/48YTecyz7OA8ny79ssAiEAzfXxe3J6JjJSl54xYgagzR+fvDymE9fbY3C1NhHpoZs="
+					}
+				]
+			}
+		},
+		"1.6.0": {
+			"name": "cloudworker-router",
+			"version": "1.6.0",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.3.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.0",
+				"node-cloudworker": "1.1.2",
+				"webpack": "4.39.3",
+				"webpack-cli": "3.3.8"
+			},
+			"dist": {
+				"integrity": "sha512-4l1ZFlZl5wntNk6tu88hpvOQADBho6/8EvLkIL9bnQsPWpNGHZ8bvLQWDd9tWyLYfsF9XXF1gsBuDTovikHRtg==",
+				"shasum": "8a4a177db0d54fffbc4e2b92855ace4ceedf1e39",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.6.0.tgz",
+				"fileCount": 23,
+				"unpackedSize": 294778,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdkcB0CRA9TVsSAnZWagAAS9oP/ifODZjtac7F0Y23GoYr\nvspdlyJLXTy/Zo3XlX/cxXBHMNLNMnNZM+Qa4p6mp+H2lqUSrD84xtyhSZJC\nJ9uQd9c3bgQNxYgYAYW0SWMCeTheEChBcGuZtikMRTL/4+ET/VF6u05R8mQF\n8nFZNCluSS4VYpQQRDAsyV1KlEMGzUcwGiM/QrKQ02GrEBraQCJHlkBYrX2s\nvFTDRz8lJhpOEK9U4fochiZoZa63kVqDz9ObDCQZlUH9D3Zd8SFa2h/F1QO4\n3RqctH3P8l8xQV3ZblHzg/Lke4H3ahO0mY0Q2RNSTKSHkvi6op4AXpx+z9ah\nsUTctxZ7WBsyWWgXxtQfysT3h/zVwbKFKe0VE/NAvvBCTgf+tJgHFrTGeAbJ\n5HX7K/7OmybJZ73dUMyDVE0X05KIzApYVpdXsPRtLHiaUvFUmsWTSl79mWSd\nu9tSrEvvHjuAfrW3AmcfyhdI+lemu6r+ZaTIPqsrhwATOfucp1V6uz8c016y\n15ysASEIn7/pG+hclh4x60JfOaZt+oKJ6fr9VdZdxrUxhjz5JR+qJTk4jDHB\nGszok/wkHz8KOZTA2ICp/kPbpI0jZA0jOQYEHlP/+VfWpH9iMuvBM7vgUR1B\njjPJQBFYkpgC08AvDk4Qn2IO1q5NZBxfCRgPihm8baXgCgCg03aXHtwVd3Sh\ngTnZ\r\n=LTyJ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDzg1bTuV020t2wipU4dYN8qJmeWQFLa7scRUb5ZjXzAgIhALGdUTtM1cG3s4hVtLrsAplF51lqsMybjH6owAhytj/V"
+					}
+				]
+			}
+		},
+		"1.6.1": {
+			"name": "cloudworker-router",
+			"version": "1.6.1",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.5.1",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.1",
+				"node-cloudworker": "1.1.2",
+				"webpack": "4.41.0",
+				"webpack-cli": "3.3.9"
+			},
+			"dist": {
+				"integrity": "sha512-YF3jh8JRreHarYpd0BnwJiHYZqO2ft2qTX6Jej6A780agxwk5gChHHcANC2fR8d71ZIVRdNTG/HII4BqbU04aQ==",
+				"shasum": "43104c4aca46eefbcb7e6e3878bb59bec99e80fc",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.6.1.tgz",
+				"fileCount": 23,
+				"unpackedSize": 295405,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdl0GJCRA9TVsSAnZWagAA/xAP/3NnxbtauHVFbsHiGK5C\nj4a+tJAfEzVZvUyiHHtkHWbN3EiQQXYEKPiRdHnk3wqsE/+hZJJrtcJKmwkj\nIocJhkbmmF1Q0gUPxYijQrPkTdM98qFyMZHaswItp9Mhm7e0Sm+p1W3QdT54\nph5c2lOTteUt+geFvyulc/qTkdoQXo93L9HvIDtowCB++fdbyAjUDgKEYaso\n1U3Z2VRwYFmh5PS5nkAvkJEi8nVN05v7PQg7P6Z79IZTopMvlSWcIWkthsmG\n2MVZOUOeNAkwOoVqRXf/D25Q2XlZhleJ436wUiDb12kg05+gtW/fZbsR0a7O\nR/h+Qm2j7oMH81zFYhjjtaGsF0gnKQv7Q5pDifK+2uL2Bb+PSG8KAgnMZ2MP\n2c8y2MagQAtoulEDmB5hceWbFCGU5Q8ld/f6TDJYxJTVfdkUTA0kJPLy4GkR\ngr13yxTyNHm6yioPv5nwRN97GmvtYNbViE2QxVqG88azxfVG1Vu+L8h24UJz\nm1/QW69an2J9rnXscwoYEw4CQt4s44ywAqVHg3Odqb66ubC4F8s9lovWpcJd\n91Ci0IZ4iZxeYCDH8vRBITrHsfMKqyCoVJenbVHD60ZHzfvkL1fLNyALBwxR\nExGht0h5Po1tgNwU0HMD7tHFjoQmtwtcLmVqvXmXVqf5IVu1r28RqQchaJkP\npT+a\r\n=g/EV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCdvjNnCl8wBcSwFTBtGY2qqRIX39kIP5kraKSEEspitAIhAOsCuoWgugNEBqENRyMhdqdMTRPtQprEDsQnKifcvZr0"
+					}
+				]
+			}
+		},
+		"1.6.2": {
+			"name": "cloudworker-router",
+			"version": "1.6.2",
+			"dependencies": {
+				"lodash.get": "4.4.2"
+			},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.6.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.2",
+				"node-cloudworker": "1.1.2",
+				"webpack": "4.41.2",
+				"webpack-cli": "3.3.9"
+			},
+			"dist": {
+				"integrity": "sha512-QPzqYeAVrTIoHBCfViGQbBzJNje60Ya37ImLy41IXgRI5HWorpdabk6NdldrhlsiPorMMrq24Tns+bh97YKjfw==",
+				"shasum": "3edb5ff8bb5485d87e454bd34ee3707f997a3783",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.6.2.tgz",
+				"fileCount": 24,
+				"unpackedSize": 295549,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJduAQkCRA9TVsSAnZWagAAsfwP/jDiWcEeLqaDmCwv9iiu\nd68Gk5wpK/1Iw4BmubfaAy9I98zNQ4YJA7c4YxsnRjcLfb+3JPUG9RaTbXFC\nakO1RNIP1IDMFM+DwzXak0mfVtZb3Lk/Sxgz85O3uqHd5yivI4OL5qdtMeQD\ngOLgtt3cKTuvjxC/Q2nzjPqIZHKHn2h9b/D/YYcq5xJR4ajRo9b11EbUDpUO\nRXCvqB1v2CI+b7XuCanb3xgLXgE6P4LEXEvK4t40+tzKDmpISwmwbdgHz9zw\nLTIOVxPaxN9cD5+0uBkF0tiTxrPpPAi6btsn9b1KUEsOt16LfNDnz1sUI//m\n6JRaiaXRRiOGJ8BfDtufmhIAQ/qpjivhmtzT4F3FDH5yhp6UxY6rSL4cDYcF\n/KlP24p6NtTFgcAr3/vFZOIVEECOgD9yDc8fYWykKrx5tvQ2AnQrKFtQxzca\nK4ZQSIs8IPaS8YIUyFLrN3UaQpKBAxv6zh9iwakG+Rwr8gpFFXTlJpmejMvG\n0Nd9fUMwpRf1SHXlDtfQQpi/IMFOJokRRVpERgewyk4aIAv0Qyz8HIjylsU3\nwC6n2eL/ewPXTAbL0HbwyelbD4kQBAIXHU1QhIWLxnMT68IiL2PNBGxeEOPY\nP/aJJXVe1cvg7w2aUwdNF7GW17gm+KAkWiCq5/fMk3pcpJi3NXlSKTJV7l1y\n9pa9\r\n=uf0Q\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCPiN3MDCnUaCCX3UFTyq1QzypCo53W13J9HkE0OeWpUwIhAL7EI/KBhezC2csXZPuyCtDUvbYacUbY25egSSN7keNi"
+					}
+				]
+			}
+		},
+		"1.7.0": {
+			"name": "cloudworker-router",
+			"version": "1.7.0",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.7.1",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.18.2",
+				"mocha": "6.2.2",
+				"node-cloudworker": "1.1.3",
+				"webpack": "4.41.2",
+				"webpack-cli": "3.3.10"
+			},
+			"dist": {
+				"integrity": "sha512-P714uJRvCOe8XisJLaWBsMJPUb2oaxmOuqxSrQ7W+zogGV7F/4XLCCVzmJSdB7HaMdk43g/FYyevgzAnqDeLNw==",
+				"shasum": "f460e66a514a32a9464778f4aaa9351357409382",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.7.0.tgz",
+				"fileCount": 24,
+				"unpackedSize": 297344,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd29lTCRA9TVsSAnZWagAASygP/Avsb4h8zIK92goVaY3T\n8YAVFe9t0KdOWRZMNYBptmaO2QHPkV3O1HxqIbbiU0Yb6VTuRWvPtLCeWkHU\nZOst3Ly1wK9h2lY6BEIhGMDpljcgYCbhSXr6wcxFnhQTX6vxIRmoXkjxji+y\nY/sEkJcH8qtmQvBcwXJRcObQXujSgtQeuMTf0jHIp88Q4RsVjEXzgBDG26HP\n3KowUQVJrmCkzyi3wEUwqHjYGXjODO1xz45y61eXEdFwdGiUVPWkS265idzO\nqGYE8jl1APELmhMiscyi+LRIkffd63HQXyvfXdyFa030rBcV3WY+evyvWATZ\nljeetQmtJcHQTvboKbdibjfyWk9lU5OEOOk+QltvcJe45so76zjnPAuic/F4\npljBEZbjcGv8im7RNsxW34fscuF7QRynOMI/VY+YGpTnCITegYVV8MJbiJ7r\nd90gF4IJlN3SCwm94/RZFn+jmI+uMzjdEkR9xM6Lmll8s1oQ70C80LsNSRzv\noi18V1qOUeM3VHP9jnqqzZx0H7N+beESxZscPT7+f0y7TmzcI8T2n57cz/M3\nOFr2IIFa5ge4gjSZ83giTuk6N03+GR64Jmp3vodJZB0ZKtNUx+pkXd9cI2xA\nrdjiF1wnnx+uEMXvpUEMqWgSsIQ+BFPy/pIS333MWE3MR3Yrt6U1Fey8XScr\nK2Tw\r\n=syDk\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDRa/lJolEnKGpSyeNH8GphQDJAiFfTIKlkmLfK8X8YsAIgRUA3MimMCmsrSb3NWfbDUabj3igMP5TNkz4b/gsKpgw="
+					}
+				]
+			}
+		},
+		"1.8.0": {
+			"name": "cloudworker-router",
+			"version": "1.8.0",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.8.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.20.1",
+				"mocha": "7.0.1",
+				"node-cloudworker": "1.1.3",
+				"webpack": "4.41.6",
+				"webpack-cli": "3.3.11"
+			},
+			"dist": {
+				"integrity": "sha512-/bBVQ3rAQ/YHm71N8HashuBgDkvWKutVmqoDKU5o5vRTlD0JHCD2XX3/MnLmLYXrUe5TUnM9AZtRslc9B4W/2w==",
+				"shasum": "5a7c5ef3c7dc2656df79f509ad11fcf4001fc2f2",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.8.0.tgz",
+				"fileCount": 24,
+				"unpackedSize": 298107,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeTb7RCRA9TVsSAnZWagAAIqcP+wdwfV23TMiZE5fatNTP\nN24DgXan0AREXUb3QZdTHhpCMqDWhvs0D0RPYetS/nJwWE+cdEbOLxfQ38E0\nK3TpFnC6wwoy9Fu/rfwBmFTeVNZvg3dWTX8GiMDNqwkw5OpaW1IxkHxQpjz+\nZsANR4Lfg841ztPVl/qWowgwKa0vnhTFlS0h4SZu1V5wgTYSc0XUkDWHyhQn\nJ14WI45XL+aYtyIctGYIUBAwPGWMH+qxlfjzxisdIB+LYOhD5Pd+a0N8oU9B\ni/QYeFv4TnP4WKYNTj38Jghmv953ESSjyXvQyJcNK5jbScf6nEADxDPnSv3T\n1XSTPD6H7aJBrM6oO3POQkO8il7/6/fKYhSeXYTAATZ7lwK3wi/0fzc2vRPx\nQoedYT6qjh4VM3i/gOIpd7vLTsiKJzjU8qWFH51TdwYuJtzTrZsxfyOedUSW\nxm7rvn6wXXnF6xujWb7mz8Xwc8RkBvwPt/b2QJPa6OiLjJFi2byqHTC6UX4a\nq4GDI9fAttPuAY0JuA4r43G9PR8i8RY/HhUbGIMLovGN48IFsgLywulGd0Rx\nH7ElyMOFN4yrSVw4SG6Yud0Vl7byjkPIlFQDHK9/EcVeRA0BSN6zsCslQSIY\nnL+NzZQBAtzXs//WDZ+Pqm1nQFUuZw0YugqhCEQvhizw5O1eJds79Vaa9tT+\nAU3J\r\n=YWEf\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD7/4tcTRhmowtSYVMFw96u9hSzZZrzHOHfvg44MhmfRgIhALyYgHBm7Wo0eqGFVzuH07BX5VPL+hyckF2e2s09N7Mz"
+					}
+				]
+			}
+		},
+		"1.8.1": {
+			"name": "cloudworker-router",
+			"version": "1.8.1",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.8.0",
+				"eslint-config-airbnb-base": "14.0.0",
+				"eslint-plugin-import": "2.20.1",
+				"mocha": "7.0.1",
+				"node-cloudworker": "1.1.3",
+				"webpack": "4.41.6",
+				"webpack-cli": "3.3.11"
+			},
+			"dist": {
+				"integrity": "sha512-+i1n6OmSQsRcbJJ4hvScyKTRCbZnSUwnGmJUkaHg1xIV+Rwv73p7/ihx7OQ+BHcVM4kqADAFrlDlHYczQNTbAQ==",
+				"shasum": "c624b521d6320799d95bbebc1e162ec2de46a27f",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.8.1.tgz",
+				"fileCount": 24,
+				"unpackedSize": 303198,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeTjUtCRA9TVsSAnZWagAAKVEP/i5tiSr47byeVCJ4wFTi\n4YP7VKMCKTB8T4GnMrGaFJtGL6gjEhuVTjJsDbm9ioW+bhM2rLl5XKMqSlLC\nY+TDLRjGTUq5/rSgQoHNLk4RhkAdk1OmWtmazyVqeEMDB1y+gF9kU4ZFiLkZ\nK/HlOLfLpH9tlLGbNXMBImEV5KpG4d33TwM4DGsAXz5/fs9wF3KCxhqeH3FU\nLdzMivkBIuYga5R3RRiPRS4M+04fJn9MoyPT4NWINABSKAqEIcQNAQHf4jKJ\nW83Se8unxWTY3eS6AMKLGWjGix9E/SbNNhUsCbo6zQNueZrRoNO7Nry7tF0Y\nnX5dBY6jgYAmcUSqt7tWC2NHmVqA/oGKwfsaU5gJo9P6Mu8Ha9v27zYlIvwn\n+aHSfU6JFvp1fw4hSZdTysflUWjpP0JcbOHgy8o7frmeDWN77NYrzgqmbJ6e\n5RKyaXxxh68lnNZor9InlGyShjX4TY4UQfTjHuQhcaLP7BaylDt/G4NCNS6q\nSdlDA1AfyLAuwdtgq7Qc9yHfWEUXPdXpXoKny/zwVaGmSi6VdRPeX+m9BcCK\nfOap0c9nWEq9QcyYcCnxw3kunkrbIkNA/T9X7+LcwLh44ZUTwxVjQxGr+yw+\n87AQ0Ov9sSvuJrwhhM2WH9KFcEqesidCBrGjpUaHGcGU1/oby68qFmlf+bTR\n4rYy\r\n=Phd0\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFik3S7IOFsgEgNBwh9yKr9XdlNtO+LaP5VjPqXiQg80AiBgbIK27+lmN5tZlR20yfGMMscn9hisUjsmaiFPPfrKgQ=="
+					}
+				]
+			}
+		},
+		"1.9.0": {
+			"name": "cloudworker-router",
+			"version": "1.9.0",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.8.0",
+				"eslint-config-airbnb-base": "14.1.0",
+				"eslint-plugin-import": "2.20.2",
+				"mocha": "7.1.1",
+				"node-cloudworker": "1.1.3",
+				"webpack": "4.42.1",
+				"webpack-cli": "3.3.11"
+			},
+			"dist": {
+				"integrity": "sha512-nTHIev3Mvo8yALT4T1YbCbv06nDZCmHZTxKOFzDGTJA3ixENGwBOGRSwrOPs4+liNZegY9nzkUX+ZrAnGAptdg==",
+				"shasum": "97ed61c190ac8af7a1dc77b3328ec89a14a84b0a",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.9.0.tgz",
+				"fileCount": 24,
+				"unpackedSize": 403596,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJelD/4CRA9TVsSAnZWagAA7M8P/3LvemO4svifpPUdC4ud\nHdxA2WD2T9OD9BNU5ULfGNWwyeKNucKQ5XChD5Fq/z2NXAhpHRFV4V1ohbUC\nkjcLUCM2Ajc0oSe6gvaz++OqqyJG3p4dTBWqzpDPfX6yIYczbLqA5/hzF8/u\nnXfN5FVVyYyFx7s1tq1oF9b9j/TJsQB4jtLUc3AN2rg+xrH1++J59PWc/8r3\n9qrQwfWlT7BKObBoz5fHG4lSONduc+Gwas63tb21PFvtHDV7GE8ok5mLi7ZR\nqKzmvv4yNfRXhT5FaqqCCvJNNnF87T9Kng2T3Jll4043djlpLVpvUhuwyCBW\n6mfqIhsA66D6uY6few6xxEeRhmHrBfDekz2wI0Vw3RwaneHcjmJVltEnplME\nTMTtyyI9owoBHNaaqbWzWC8Of8uZSIKon/WOIKb8LGjwqxjDdfI7/qjEllSU\n7X291UIE7TdWyAdg+Zbb1bU8f6R3zl5+5ysktG/P97Je5dpmlVAXGzVQYFqc\neLalc6Lp/bc1RH4qcz9aBoWr52LTliAuuif0SvFphI56aDJVusjyvWsN8Bms\nJXB0kq/lSi9UdF8/6S/zL/W2BLizxON1rwN6fyWkHOjZ8tBuwwHP8ZIzN4tn\ndL/j/PHyIKVJEt5Ke6Up2coazSGu6ZSK+LU0/HM7nKic6yUKmo/zThiA13TI\nmLGv\r\n=zp+8\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCRi+mrL6kPwVXrEkXmtGn8iIgDmC6d2LPEXAYaKAkXUQIgOrZO5CbuKu7P1QXShBPRwXF+24GQENBQwEMDopXLc3s="
+					}
+				]
+			}
+		},
+		"1.9.1": {
+			"name": "cloudworker-router",
+			"version": "1.9.1",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.8.0",
+				"eslint-config-airbnb-base": "14.1.0",
+				"eslint-plugin-import": "2.20.2",
+				"mocha": "7.1.1",
+				"node-cloudworker": "1.1.3",
+				"webpack": "4.42.1",
+				"webpack-cli": "3.3.11"
+			},
+			"dist": {
+				"integrity": "sha512-ifXPK5cI8Efy9p94CBXf2AUHk709+oHfBanHNI3ir8NGoWIlxjJ2zMZY/pA9MWN3dfsSQlPGEoDcNZHlcCx7/g==",
+				"shasum": "806e25ea1afc878bf81f212175dd121cc9bcf2f3",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.9.1.tgz",
+				"fileCount": 24,
+				"unpackedSize": 403876,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJenaxzCRA9TVsSAnZWagAAEJ0P/j88j5EjFLfS5Phtrjin\neejDjxcc3uSNGZM99r7sinoTfqiQ7eYKWy2DSWazck0WPPb/3d257E25zHTO\n0D7CL1qd6xHkCqPFbl5+vnNOMR/iWneWYpMR+2rulzJkBDFgOs9DXbZFM3E6\nqFkjBGVWUC1vdqNziAIRMvC8FieCol0MtwBo5tPZ4Yu5bIl1h9roKIeeXPWV\nlTFuEJ+fvSIEtal5O4bJ1lXIwSVqq0O/Ffy8rYjSGjelY2zaswkT1s9lX0OJ\nEVqDkQRw/ZSZTdcYuv/nOZytImMpLSSC7Ka9PJEbY41nnSx541enQDRMw7xj\nFyuhQlvdeOHvNNENZ9WG1nBMLxL/QFKs2PfGk+iokqHF/4ROujms3xo8Xt6E\nixm9iI6NCcSwMhQ9DBB+uA7ODM8LiIotWQPcefSjk/np7A909sPE735l7zgg\nyTWpgmDjgm9PQngCEzgvhUo4On5w+HkTdYM0l8IDrHlAPdf9L7DzVYrDe02Q\n2T27qmsVVWVclBjYh6k9jPLw5i8fDp3kLycBw99V3pFfEc5hqWVv3BXMKftd\nCKPt/VRA5m2ojmSPzfCOJLsBvz3RivS8n0LKV8Bx/HL9XR6GUqv5nJF+Qw6d\nuZAxMnvxyN7C6rMZi+/h3iChiAhC6D+Q2hgpWInKLO/mxmAW9gtDOtxkOcFo\n0m/E\r\n=Db+/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCig5/oZlJS/qBdljJDXfT0muKiMGTDaTHyK14FNwpb+AIgKR/KxEB7dGJTSffnbAdgePE+rB71iNsuwLgdBCSvcfI="
+					}
+				]
+			}
+		},
+		"1.10.0": {
+			"name": "cloudworker-router",
+			"version": "1.10.0",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "6.8.0",
+				"eslint-config-airbnb-base": "14.1.0",
+				"eslint-plugin-import": "2.20.2",
+				"mocha": "7.1.2",
+				"node-cloudworker": "1.1.3",
+				"webpack": "4.43.0",
+				"webpack-cli": "3.3.11"
+			},
+			"dist": {
+				"integrity": "sha512-67y3uEPt7rsQw48JGxzGynpk+l1vMwOp8atd0UumcSZTi/DEQKDMpI9hKb/EkAjzQEbzpL9DH4nqQXdg6hK0Dw==",
+				"shasum": "84379a25c44f0301e9c25eb97fecdf5ad6471558",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.10.0.tgz",
+				"fileCount": 24,
+				"unpackedSize": 405640,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeruhZCRA9TVsSAnZWagAAxekP/2ecBFQA+2KO+V5xko9r\nrM1P/89Su9wtm81n5obm1Py5SYY8hMeITsYKWLuzn8yK+jM4THkZX09Zst7j\nuh7BISG5SJWc3x8iuYzsVyijYLG2qAvnYoujThlohq0m6oZjUwd0Ix0syiAM\nbkmg1nuZdEKQ95sTnwuTZS29cS6wqLAa52iGpIMfWQEXdG3pdrhRxF06Qpq4\nbhL8g4cZXszL9rTh+ZIT1a66UIixZt3xa4ruoFkk63uCtUJLwSifdtURklvL\n3Qp8fKpt9TXbdB89oXZ5mponbjCF4fDEq69coPNzV9X4uJuS3FBaRY7v4ouA\ncT42SFwZZtW19Kwu2kBlqPM08zm+gjyk32rkJLOJGVyBL/f9QjBHytVUtFsj\nfvvbABUx8MCN6GwB4VYDdqQ7Or/7KsZSGDFqRAV3BAVgCc1LRVxPhlO7EX7t\nT1JEYYe1/kfYMYSiGpMCkmUh1SUi22x/YXuiSBvR8okDN0NJVo869BSB38pr\nodiFbi8EpBjqdou0ATe6S8XXHIn4aYrkzAZikbjl5wV2CCTkdG+TPusrRmMT\njzimnQhr54ula1PssnX4oZU13oqZEL5BqFnoVW13MlARlL3rHU3BUDQi6B92\nviXAMjLiD1Dtb8x8P2xUJw1I0P4IM8o1t/Rs018PT9TVutaFB7roabt3zTSG\nWgd3\r\n=jTWL\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBfGrE09gHIIRdUisgIuc/+3xLfff56fzEGMLCKNk4b9AiB7vZhnrk5ZOywFPTYzm+XAdwGsMN3bAarzfkz37IKQqA=="
+					}
+				]
+			}
+		},
+		"1.10.1": {
+			"name": "cloudworker-router",
+			"version": "1.10.1",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "7.4.0",
+				"eslint-config-airbnb-base": "14.2.0",
+				"eslint-plugin-import": "2.22.0",
+				"mocha": "8.0.1",
+				"node-cloudworker": "1.3.1",
+				"webpack": "4.43.0",
+				"webpack-cli": "3.3.12"
+			},
+			"dist": {
+				"integrity": "sha512-nb8OEH7zUYvRt1Xm7gHH8M0cUu1JQIrCSvuO8rX0xKAlScUGdzMyFDU/FbzuyGT07jkwXo4U4n3OJ+Wn9zyrow==",
+				"shasum": "f8b6ebb3826be6ebb95b0cb434b73a3adbcbc34c",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.10.1.tgz",
+				"fileCount": 32,
+				"unpackedSize": 539643,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfBt4cCRA9TVsSAnZWagAAW8QP/1pghsVCu4o+Avy0Yrk0\nl1jcqrxdCZmw07TN3mIjmF22LwGeDdFekvuhuVino07qUjBlCWZssOZvARq2\nRVrikkpLoR3EiW53+2zKFaIYMzrhUlaUTvMwTUfXTHNbiqZJVKukR4kzi6lx\nCNICgG6cniCLT1t4V93FS9Td5kgUNQ159dFXqXyz6XPTrnnL/IW3dz6tahzR\n2vFmNV3/k9dskK33zX7QzZB9ad4+ykju/jOqxYNFAftj8mIdVvRaU8pkJyuk\nEFyPGM9ycm2u6Dj0UtwHx51lhB/Zqu10T8ujtpg8XCMQ4sj3/RYLKjBKSkCM\npQuvv1M+DU/CPBZglszKncEqyY1ldPavTKDafC159im6qiFy+BBD4wrZ8IxE\nohGM94Tg613/TDafqI22gmBcYskY2JUByWrhrrDjvQzspnUuNInL5Xl7nDl6\ntzEC+e6UolBfjcP9qbenNFZDt/w916D7atKmfFNyHU4RbPpnN17f9K+dQgtr\nTjqAFAbbNahydOyg8iIa3btckSerTRYZGQtnOn7z9clE6SFQS+6lvWUoA4hd\nOVf9lH3nR/9DvTA6nph8gzhgvYqrYa5WVE5M6AoKv+XrEUw3P7cE6uOm4h9n\n09zYZ6SjG/ttIpsqJ2rsSLpsaeJ7U52agfyptyvtox5JcthGcuCRZy23xBb9\nVhuZ\r\n=Jsrz\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDqTgcb4S0MMfZCybM64UUckohAxJ6d8Oin567lf960WgIgdoPv0aE9E+PT/U8MVGqhXLuvm/76zalujfzN5YeQVDA="
+					}
+				]
+			}
+		},
+		"1.11.1": {
+			"name": "cloudworker-router",
+			"version": "1.11.1",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "7.7.0",
+				"eslint-config-airbnb-base": "14.2.0",
+				"eslint-plugin-import": "2.22.0",
+				"mocha": "8.1.3",
+				"node-cloudworker": "1.3.3",
+				"webpack": "4.44.1",
+				"webpack-cli": "3.3.12"
+			},
+			"dist": {
+				"integrity": "sha512-PLqDZn3sL+a5Nl5NDFeS35dbH/YeZHWKzYlEoK4Q8ut3HYAFkj515FarvOgGmz/XfYbBNUC7SWo3Fw7ENo9BCw==",
+				"shasum": "04f9d36b74e182e3425b8bab89ff32090414be0e",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.11.1.tgz",
+				"fileCount": 32,
+				"unpackedSize": 539654,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfZjB2CRA9TVsSAnZWagAA4GoP/A8bCSAybfS5yqNaCH8I\nlzQI3PMWq47Qrwz9I5ntM36cglJZV3MZIceR+tsnIGmnonDmg0djtdYJ0dbh\ndnqiAALTLEJCyCxDB3RkfP7UmcAMOv4fsHJLxvfvED3DG1DSSu2zbDECl8kk\nXUgS+IQzpzK+bwPK/mqKx2uP+idGHmnZc/VpoRIsaZVxeBEhpw3r8+kB9nSm\nuW060XmXx/HKBy2G2D9ITFRizi/IStesUtktYkEHjMUovr9EY1mWk5y7lBJk\nCDDseYlBQrbMyu8Nt5aoexBlwkWuI0DaoOVfFFbTp0fNFLFuKM6VF1cNGJaz\n7KTovhXsDpb38CqNwaTvhLSLioQswXtlYQicM5KLn2NgqBP28+AE580dsNAC\nrCdjfxSszxMx2xQBNvKoohJYDRtxZrFLIsfQMsrqwf5l7DuMJwjjF0D03fd3\nVKSiJqc6c8thauF+C/XyUhTfHG3tJLdFdvB34MGMJDjsapMxAk1Fa8sGUPiy\nUw5FXrxS+A0m/3j7R8AXronLc9JzSuvVNNO7+9nQU6ihTKp0dlxmdYMgRFfN\netnzH1uGz2UQd9pUY1/eszjWtgxSMjd4PEEsZD5sVfuLa3h+7/k0C168qHKF\ntjkU6+mYTewb2uxT+2UpGyofI2KZ05XeNP8/x0ucrRQuOLXTHRf3VbrJJCCB\nelhB\r\n=BBJM\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFUEhSWCvW8BxCeTd3N6bbHuEqvGLxFrGeQtOZbr2f8zAiBmQ6hBVrM7+68xk2pzQYGS2Utrcn7GMIpLSgHyJvqDFw=="
+					}
+				]
+			}
+		},
+		"1.11.2": {
+			"name": "cloudworker-router",
+			"version": "1.11.2",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "7.13.0",
+				"eslint-config-airbnb-base": "14.2.1",
+				"eslint-plugin-import": "2.22.1",
+				"mocha": "8.2.1",
+				"node-cloudworker": "1.4.3",
+				"webpack": "5.4.0",
+				"webpack-cli": "4.2.0"
+			},
+			"dist": {
+				"integrity": "sha512-zElLGYx01oT3+j5T9So9auI0OXRTnqb5JtiFGPzDXr5p3kVL8gBbkwkPGpHPEU6tLgedwmjYSQ5y7bjfKsp9eA==",
+				"shasum": "fa369d79522d02482ba55d97adf8c736f634fada",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.11.2.tgz",
+				"fileCount": 31,
+				"unpackedSize": 539870,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfpyXwCRA9TVsSAnZWagAA1XkP/1Qv5wRSotHG8SN7+qB7\nYn8NC8IpboInzKOuWVyuc35WrGmVt46O3dCHL+wSfM97+s+xG65yw1WbGyhb\n2eDRSX/6F3Cs2F5vUJa0XNobzVtd3FYOkEfolGRxP/RAVyDe1z1z2cEur7a0\nl5hcyKYrQ5d9NxgM0GNGODtxOfq2qFFMyPr48y5GG3nNUS9dqBmSq3vpSQHB\nTqqrdM0XQ0jF5KXGRlaHvQJkvCeadqJdpAdHWg0r0kjXigGDVrgZwTECGxim\nVV4fdfWPWnDutNkSH6HdyzVMoEN2ObojfgKddcHShc/jXHP6jXv1+K21deVj\nglLj5cxMQpdSYmNA6tLq6kYEVObN9CJH7Jf6P0d4NM5KVQm7LjGgnyxwtqBd\n2bmWaASohbwT9ZyKGpH60wgYh0KbZpdLWvn0frFTtCOUAAjp4Js0Hi3uvIDR\nFVUAbzknNv9CJ6uY3EkS3xvEjKpQYxDVLhEFGON27h6nHsSXP/Cg5IRgvFpE\n5PyfwiOTqxmEvJFmbiq7sUw0YBAI7w/clTyGeECG4ihb0ygOaWdqX6WOuyxU\nv8rS19XWYMroYd6+zNaHK0p81NJiw2tYvp6M937TdUWXMpgQGxt/17baGt/n\nSmjqPWX3On0Ozk/nMEl/czTSDgB7je7lKWgSeimEQkox85AKc4bMl28PNmkr\nQjtG\r\n=+R5J\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCBp5KIueyjHbDsMenuLTQ7bu3BJW4RPtV4Sg07/CWSHQIhALlcuyz4DGA5SPOS4xkAhSB3Q8Gi0oleaK1ueCjizTeu"
+					}
+				]
+			}
+		},
+		"1.12.0": {
+			"name": "cloudworker-router",
+			"version": "1.12.0",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "7.15.0",
+				"eslint-config-airbnb-base": "14.2.1",
+				"eslint-plugin-import": "2.22.1",
+				"mocha": "8.2.1",
+				"node-cloudworker": "1.4.3",
+				"webpack": "5.10.0",
+				"webpack-cli": "4.2.0"
+			},
+			"dist": {
+				"integrity": "sha512-IoCfHgeZNdNpW1LdmlZhOQQCse8ZVqVhDZyw/vXmkD+pJH/AjBSwqDGtqW9Dyq2vuNcSkBv/pvuQC8DVzP2Hpw==",
+				"shasum": "c765004136a4355f68774be27b7f33bff8b7b6fc",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.12.0.tgz",
+				"fileCount": 31,
+				"unpackedSize": 538005,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfzm8PCRA9TVsSAnZWagAAUhcQAKSVxwDYcd+nYjyewJ16\n2HWc1yKtLPw4byagPUJmSaoK0OFdf2aHdmc1PMZq2IMgo/zUg01C0aZtEW6/\njyz9TwyeZJoElnSzCoElz2kHbdWppmq6wOwF4uQnEexAI8Bh/ShBkM56reBb\nvLsuWY3/H2dLoTGSKm7L37SLlrwAU+YoBDcpbR0WZ/3hvp6Pib6dq+zwatiI\n/EF1Tf/NohaQ0wUuNQ/LekPdOUP4AbCcuZeLMV1tEhtEkGpZBeqza10MGa/E\n++gZy41HNnafP0zwM8VH52g/9kRjAFbLrpriPlAlpbrexV3Yl8v50mZBDnG1\n7AE1Yb25b7rIyo6ykvx++a4R4+52LhDxjsIrFDHch/C4i4hlKF9Xbe//Axx6\nc+/QTpAw83Q1AlayOYBi5+XOj5nT/+TV42MMkcnYVntCf/VsUbySfGf6udsq\nK3H8zVYC/oWxHgTPBnzhg7uSwxWyozr+6g+wHHAJlsrx3t13FAEdANXS5oJc\n+p6jPtVC589WSUJZV5Vvk4RuUB+DymU7/4FaFWD9+uTYl4K8dUK90SoBW/AM\nw6jtnWHOSPJEi3h5YbSSDSMFCWbmUE6pBftfu2VL6e3tkw7sh/m+d/MoYdks\ndDPT8+5UXldXhNgIibMtp7ny6P7QsdT1bngQEAEpH0u+f4mmf8AQF3/kG4VH\nfRpg\r\n=YYnU\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDdiCsuhZ3wCEe9QsHK1B1w6bj88ist7ygBSXKWkCCV0gIgYkiwutam2qzm5IjgsTin9rISKxTPHTKv0EsHgXVI9Qs="
+					}
+				]
+			}
+		},
+		"1.12.1": {
+			"name": "cloudworker-router",
+			"version": "1.12.1",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "7.18.0",
+				"eslint-config-airbnb-base": "14.2.1",
+				"eslint-plugin-import": "2.22.1",
+				"mocha": "8.2.1",
+				"node-cloudworker": "1.4.3",
+				"webpack": "5.16.0",
+				"webpack-cli": "4.4.0"
+			},
+			"dist": {
+				"integrity": "sha512-l+XIqlJ654ftLkpF9g70HLIj10ECDwIofyB9xOuKCiekSO152N9mU8gyE+RhIApWQZgpioDCSJOwwDxSbCZsEA==",
+				"shasum": "87d3f1ec466d8696e87b2d775eaaf99f11680e2e",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.12.1.tgz",
+				"fileCount": 31,
+				"unpackedSize": 445881,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgCTfgCRA9TVsSAnZWagAAjikQAJChgRGjvx5F11V7ohM0\n5jy1OBWxE+Dh9FyOfndkyygyyeNcbwrWa9oi0FDIxBJ+WupX+xoG/gtO4KZs\naO6auHQIfVeD57Ud9jCAtY+2udCN4+H2wwAHuuTn73b9ZB5m9bVuYoQeJg4z\n1AHmA1PvevCSNncCq4Ef1hiNdOuESErNjLqXKbig6mYGx4S9es88/qpskkgs\nJAPmlxj/qWcYFS8I3pTwaUjR0LzLVaZWUvKSnZ9lwz8ihObqGhark/HYv24M\nZgkWmSG61Hk5rK+5Xh+f8vuVgW6r0KHHsALZO6vYOKA9O7LTym+ebpY6Wv6v\nKOzCe2eCindJGgkTD92RauHDDlYOJIqAtSHM5kPq2FSwvG2qlHE11GRXS68U\nxM6CgzsjSe4OBJi2tBSG/Rz6cUF0PYT5Mwu7vpB3IcnJ+ILTTYfxeON5bWuf\nwuY3jK9MerkPc7b05Atepw9PizVGstW4uoa9TiJjG7KWOh5k46oR0pHiUvp2\n7DNqaemZbdbgnwU4D2ZM+a7CsrKbWPqSiuqyfRgYabJSb1iRHewUMCzC73rm\nrMDO35wEkw0LdnKtsEe14R/0WpL9ukwQOMIExjk/6CwLDTfmnQCuW6d2YMw9\nLJ6dmBinrenBcY7FFQ8qH+6IO+xOMoWCtK3/k7hVkUe4CuQ7ajiqYbUpoPoU\nd8My\r\n=uF4q\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDXzqmasAc5EHMEkBzvdIwptWZ3oST5WNXldq18RYutdwIgaRUhySltyjowaYwuwcsKx7p18ZUcTWSAmnHr0n7lmVw="
+					}
+				]
+			}
+		},
+		"1.12.2": {
+			"name": "cloudworker-router",
+			"version": "1.12.2",
+			"dependencies": {},
+			"devDependencies": {
+				"chai": "4.2.0",
+				"eslint": "7.18.0",
+				"eslint-config-airbnb-base": "14.2.1",
+				"eslint-plugin-import": "2.22.1",
+				"mocha": "8.2.1",
+				"node-cloudworker": "1.4.3",
+				"webpack": "5.16.0",
+				"webpack-cli": "4.4.0"
+			},
+			"dist": {
+				"integrity": "sha512-OJAmTQE+fwBBLeOQy7n7RQ6FNmwX9zV1klT+5Bmdwb7vVPohpyZ0OtgPrc+WJzsx7Wc6xgxWE0wgRLYt8TJTcw==",
+				"shasum": "96bd403a6c1485ef7ff1a7fa146e4281ad3db004",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-1.12.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 17415,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgCTkICRA9TVsSAnZWagAA4hsP+gIXT34W/RK4FIxFy0Wk\nv7BUOLi8VpQiuopD7BfRU5yiw5WO9RLcwpRhGhasAzuVskl+7QxB2Q8TS3Hv\n/1Kh0MDbrDp4ctA94viiKRtESsRWGzBA27gYvYONgUrPyikRZib/7pW6s+tX\n0f9i6QThWSJBlqMGMWepAn65oRZgTnPA025yWXylWapqWIKTCns/tY+I2jDv\ni9L1P1Pk5XldK8qBLluEkl2DSAvxRf2AmVMepootKlUY3/ecJw20Nzjalznb\ndcvltHkRN0MvF7A/XgqxLTFpqpz6GI7P8CSoPmPvb7tFmhLXRtCE/B1o5yOO\n3Bblx8yPTeG+PlwnEcWI1Cr2obyCh66kQ+ZplxOx4Hxdk1tCD2Iv4XABUmRi\nUlIXaZ27D60R+vlPxTYqTrA1OLVaZfOMJ1fvL7oIfucglZNpJUh2cOBEL43w\nbsoM4pstdSoCwdueilcisXuyBrNDTNNvJHTodkCKsIQXXstpPLGekZb/smHR\n8VU7wVwZSV+zGZWlkWbU5NJ3TZPq7i4sUn8qOcr3AbdCI+jLl6Gf09Bwkb0n\nTU/m04lEUP4aPUDcdLgHA5kV/9XChMth0sMPZozx4zpYipe4yXrnzxSZlYKk\nkEHOfQH8NmkVm9jUkyioAw2ypGGSQfF9ixDYEmcFjuA1nuM+kjvfpXDhWSDW\njcmg\r\n=vcOr\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCw0yYIT83hVaLQxcajkojkSGSzT6umWBFw/lTbEg9RygIhALv9KD8Q4+wmFVJ8XQ3r2RmQRnnkkcP6yPMpJV7ZQBEe"
+					}
+				]
+			}
+		},
+		"2.0.0-beta.1": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.1",
+			"dependencies": {
+				"tiny-request-router": "^1.2.2"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/service-worker-mock": "^2.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-eEXlB9P4OfEORCsROzjNlXqkkU6Bm66zp6AztoObkp7DXVvp3k/cAgzisZf0Qnu1lNW9XyhrXIRl2NbXVpP+CQ==",
+				"shasum": "02ad077e001af9d90aa0c7f7e420ca1e9a9c2748",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.1.tgz",
+				"fileCount": 9,
+				"unpackedSize": 12052,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiFQzGACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpFdA/+OG6JzfNCLtrNcPasTM8uN+ZTRUAJBRmcenLEyDLvmiFzYOiX\r\njTndxeE82IsFxUNLhMIhWq5HjPN2r08VoYswuMBvC46hNfPJGLHeGOi9Zb/n\r\neRKEUemv8AW6vz/X16xdxRG5ovd/qYSIYb1EjdYXhLsouVnn04sJZMjcdUQM\r\n04L6qRC/ugYTjh78SbJOdlBoXh2zvAEAjDt6KrghH8fDheJn0uGLVc9XAjhb\r\ncE7vUlVPF0hmUSL8Qw9KlvicF4n3mkB4BQ+a4D4mktGaB38V80PM5rlUBTEw\r\n1H9xU3yHxnT4ajgXV27izwBaG3iREtrCOyVrrilvPGnB3Mk1xezKK4Ql/V48\r\nd/LXaU87VtCFrdTo2SwhghbmQVr3Ue0IcEzqcpPLkMEZl2Zi2fosAD7yKe0D\r\n3AuqkXM607ITVcSxqfWpdU4ACRmliLsF645lFVG32X0M/l0Mh8BulQMVnByU\r\nOzVqgzSeaqImVJ4yhf+Z2USnYvL2cvzbPl0SHaMC//lZi5ZBFIcv7vDVGC6h\r\nubwt3kMJd1qCQmSbaaUwC+zG3jfFgKeAk9U54a7Ty+wpCMAs5A+2rQLi08NY\r\nnCJ8h7cVtQaLWsHnYMXvEk55GtOzLgzJSAJ4fHzaKz4qdKyrsF1WcNPkjZZL\r\n6P3mGkukLeBarr+bHMPstRsLCu0Hf3zrYhg=\r\n=lFHx\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICAnk1zRot0MC5Q5awSlbMK2NtpgTRsrqO5qASqi9qIDAiEAujLfqvkQ/W/CVxHc3m0j+OWDNmyRXfaYFmaFq9MXEwE="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.2": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.2",
+			"dependencies": {
+				"tiny-request-router": "^1.2.2"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/service-worker-mock": "^2.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-PP0QHLEsbuuOWoPFGtB3XQDxrLV4suBVMNnyn3qmFazVVuGb5u7gqae7l2uFi2otUDWa0N1TJVTH1tadO4v3Ug==",
+				"shasum": "86f92b2788b7513c4f83ad60282f80a424539a6c",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.2.tgz",
+				"fileCount": 9,
+				"unpackedSize": 12039,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiFRGfACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoS1xAAlSOIIuWntyu8w+eIDCQZK1YhsirZYnaHLGqNr7popCLc0l/U\r\nNy2eV9JQcgcg2MTR3bVD+jM4lkoJYDZeV8lMG3C1OQLUhkFcBa+lgWf3mJzk\r\n/WYALTsffxXhkvLNAZRctVKeW8yegGWcvhBSo7gr0twmGzRRW3CCFww7M79K\r\nJLVBUe5rFJpWtGGo3n7JDb6/lgSh/g9yqdS6YTKw4ZbVFj2HEQZWSm0RlCwL\r\nowFKkqM9EV9oux6n4I0CYFfWsvhOJvy7765dP9JzClL6h5agF3cwZudoAj06\r\n8Hu8ukX2S/ZfHIB9xFBm83aEdu/7u/85VLe+zPzp16lZ7gJC/uCR06Ij5+G2\r\nPyV7FLVU7aHCDnrcTthw6KKH4+jZ5m/E+K8vRt4ApjgCEfOF5vdIDNYxa9w6\r\nc5QV4HNqqYPmggHC/vglTMrVkwQeoKi6Gg+L53K76Mf7Fi8mPsQZ6g21/O5Z\r\nzWyIKYOtS1r8254FNYngAEMvzkX5Oox+1PoBCGSu2rc65onEHbE4eXDLN0D2\r\nF2GNzmjEXWzoXSIchxfw9L+LiV7Fu/OP643o86INknHxWOZaHSxRHYDj2JfS\r\nzay6lnEt9CxUjdIJr4vAG5ErWvcO/5PPUtahMPBlM6hADFobaoeUYYoYAtaT\r\nSaKvOUNHbvtvhCtg0ykQn+69aLb8jBbuuLs=\r\n=8ZWZ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHjdlhzixuON9l5zqDGw8EwnP/9eDENwtC2QlBl6YK2BAiAZSABF7GsxQDScPKVpLRIrLnNoep4x3Lk1p0lRlUUugg=="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.3": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.3",
+			"dependencies": {
+				"tiny-request-router": "^1.2.2"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/service-worker-mock": "^2.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-M8yRXN4Cafa7rLEPW5aXn084rfBtErx7Fk0SL6wXiDpZ8pDssOsI0cmy7X7isu60xrgoEeYLK3/lQHlUJvpuFg==",
+				"shasum": "e9854ba02873fe4e40a883f3bd371095ee6bcab6",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.3.tgz",
+				"fileCount": 9,
+				"unpackedSize": 12433,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiFTviACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmparQ//Y2TP3kwkvrV3rRWsseJF4VSJOwTVt7AlLTUbUhceF8CJPi8Q\r\nEfh3pMu7Tu4UUWc0z82y1ILSBIqs+3JAEPI8RA0yCVbA+qwGYk4mp3asGULw\r\ne/oSw/ESVilbGCNgSqwuNqsT/mBSfJ1gt05FMD084TLXujtd44b+pXU+u1pm\r\nNJqzYD8ZV+aJkysT+Eqbx3hxYC29J21cvnPeYjuf7pKsBwe4l4nQ1JvAgfcd\r\n1KXa+ZOuOx9NwiCmdSnO0BU3FfguR8lzkvUXUbBmR0TM551Q/4JQFtcwW9KZ\r\nxXWqjUEjIGxnylPKldfJH11kk/p33u1X9kMoYk90w+Fvkc5ZnalQBHCoLRW0\r\nIV+LmpOPOFJ7yWxvI7I09KvMdQJqhXKCieT/P3bLda3QfhmTeRMRxic+Ibu0\r\nLaGJoqA/VPPe5TL0DOKOcod86YZaAkLazL4fpgRO0Dq3WTfIYogrHSK6m8Xl\r\nxRA3Cnv6EnOxlm2V1/sGDYOVAb98NcArClWS0hKaL8fXRP14EMihQXBUruka\r\n/3AgiXGhULTdJwJy3hgRm5Oh/ZEgdW9a6eyYjaVqwxtWmnhMRalyTsRCuLvV\r\naxh6HUJvTiv/sfOzn7YvVCmIshUyajiR4gmNivBe8pkON4jMojWHzHjVkdSo\r\nPwJTH8RE7KmaGhOBITcV96qugOV8bJWdcOw=\r\n=Snjx\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEPNyRkvhtqgLrfwqqsQAy6BKfApJo6G2y6Ce5g+rOj3AiAxzvNfYnb24QtprnMyqS6A5kRjxitUK0cr+A0tjVYU2Q=="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.4": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.4",
+			"dependencies": {},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/service-worker-mock": "^2.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-bdLSLZs9ko4MPikvZ606qe5gKt0eYZrwHuLJ0tlIK5DJNeP2kAmeUpZi1GMQtAe9NuxCZ79KTg/k4AA3ut5JOQ==",
+				"shasum": "8651c2a5dd7c5935b5c29939695d55eec5ad5642",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.4.tgz",
+				"fileCount": 12,
+				"unpackedSize": 25587,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiF1nIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq9ew/8DECToMkpU2O144He1yX0F6wMBhwldbYWr77SOmtBTfQ3RP/0\r\n4kXG8uu9hfmDbaS3xFBtY2vdRz7mVK2nAfGjjYtQkx92zSxk+Q3bMzQHSBOj\r\nfAyf2T82eNrs/2wC8VkwV6Rf4Aa1bUIZnjsq950Hz/53/NVvvEREKcu/y7xa\r\npqPFEgna/CsBgi4H+vCTklOMnbkY58jGfz90ZnWd+xzzabre1T3w7stV0uEL\r\nljioGYY8/YOV8VxfmXoWQQU7zKvypcf5WDHXNNg7/c72uUafy2ryc8tcs4LN\r\nbTZaraxKfVeuquoQ1zCOKb8iFsMi0dH5rexmeOigKkI0McI0YmqmmxTA5VTS\r\nXkbpsGkd3WpR0NIssJJlAw9t2vLbOMbLiLvaPdR+uj57l4bDa99ib7NuKNiR\r\np4uFGn4jd9Gau1cLfLQ8dTndBjKNQ6GAnbpkNI4G7NH8S44k1OkBMPWvXBid\r\nLRzkXsthAsPXk1/9lPh46TWU2/lVqkKv/Zs21vE1ZhQRnWN1+cRt12ZmlE7w\r\n2gwLsG3OzvWwzyEdNCmGnA/z5f83h7jc4hDBqCD7/xMTvPnLYmsuu4+idT9t\r\ny6BmuCq+iXRZ09ZT3aObHziuJsZ3lg2Yu5hwsT0u7fLZqQ/S66Qfqpj2NGCc\r\nEVbr5RcK5duyQb67TKIYLY7xr5WymRQr1uo=\r\n=4rt9\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCxK/NOoOgFovaW32OsBUVmxdYu3lEWiwJUqGyRLUu9KAIhAOCfF3iq0lJDp/0xaf0RZ21B3v13RW/dBk91lvja1HAW"
+					}
+				]
+			}
+		},
+		"2.0.0-beta.5": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.5",
+			"dependencies": {},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/service-worker-mock": "^2.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-HgD5HqlfgQiDCw4zNlKu+cQbcWmVnTVhzgjJ2NFG22/BQ7jF9FjIYPOI2jNkMBhd/2S4oAkRBMHPUbtfSQvJHQ==",
+				"shasum": "df1ddd04f0fe1cb924dff684bf93b15c5edfc6c3",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.5.tgz",
+				"fileCount": 12,
+				"unpackedSize": 23150,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiF5ABACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpnRxAAnZEVbniD6FZagf5lz5qZM8TV3NawIdfZcUGnFCxrRV3a+T6u\r\nFBGH0SfOxHB/8URi+ZEdNi8vq5bx47Fyp+UkmOkOlZLvZNAW63IFa6MADWyO\r\ni6W9hnxbm7DaIJWLGKy8wISHUI6pE55poM+InGE5Br9fPCwtVyIs760279g+\r\nZMl9d4DrgN1aAmeJHc9HspY0uh3AyCdcnblFGIN2zcM5n8izGiQk7AYh5Sdy\r\nnjzIN4TfGyUrNTQoaGSv43ZZVSb6kewftrjyIMMzMVDp6Qm2tNG0M/y68cb+\r\nYc+kPn7qJPcl2MgOiuk7rFDn8/uJT87yfZ2LCuThONUylrDU8XHxBy3zLppT\r\n1UoYa1EcMakR88SteYyuPPRFNrHWEMNARh0PdKpOFv6O61dBZcQxWNGPsVZV\r\nsdXmM8/T0HlQi7tLq1GeIhtdrCAJGOGfD+6ZoK+O/zlOcsAkxUZ4ankHQwWM\r\nesDmZAkre4Oc+xIZwCsOPXAWoJx5B4IUmddT7A/F1NFuEWyRH2cGAt+/Q6FH\r\npdztql/1YOeOl8vRX69CyBd3iyk+JoSEohQdTdqsmhnARX1PlB3oAcOFcdj6\r\nuu/274ddYyx0i8aZmwacul7VaiB93x9CQvU/028UiS2a236O4UaGWpqMocjz\r\nwOyfje1BQlbV7DLhd8J8vW+8C+aG8z/Qh40=\r\n=oAJr\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAoc8RHE1AEB8EZXPqjUroQincaL7YHDDi5+/zIw5DhWAiBFdN4Vq0g+tem7GWf8LWwQky6k0EZzxfBAI2L+zD0/Eg=="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.6": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.6",
+			"dependencies": {},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/service-worker-mock": "^2.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-6FbVCAT/dnMVmxYiE/j2EQUlgNrK3Yr4t+QltFBfxjcKRvy0E5wkpAVwgsMjv+CN8n9LwZpVhk/3zUkPfCeY3g==",
+				"shasum": "dd1283addf2030502ee1fd0d58e71942233099b0",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.6.tgz",
+				"fileCount": 12,
+				"unpackedSize": 23083,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiF6IlACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoyrhAAohx3q1y2OgeRJdBhkGYcLT6Kj0qLzP4ieEQmXx4sbiki4cpN\r\nezD41eijqvbfVS+ZMxjeb5fMkYk0N6Cm2is09d5tW3l55MqA+VN1kW5MMmou\r\nDx+RvmLlsQqYRUBjVoPCWGj0fvNwF+Bhc09H74AvgFe5wx/tasfCjcm55zMl\r\nYBwVHLtjRMGZwH8UsQmftNJZ+Yl8BqrxFUgWUQhPB39a/L3Lyns0F5GrvUIy\r\nvIJwiwHE2isOEVQvOYZuL+9q1hV6DyYAjOUQNkvtTsdYW756nVe2vOJm+Ljs\r\nZhlHtHebjN7Q0eBFQeIngUT8K9484trgeS7kBu+8vRiiF9AgMUksdeA6UHW+\r\n36QymnANYMlO1CaB3qDuxlZVM6+I32ihDzQ85NjxMPaGhj95mnOY1cWpZ4MD\r\nF0L2kezY3cVqL3P7H/cCADuACNZHxTinFQHd4990Rq5tnteHFu+yshikVmp6\r\neS50jEHP3O/Qs1TN81QJscn+oGf4npqkSSTuEC8LAlvlQrIbW59P9Sgt6IAm\r\n7qXisuM48eBbURmuHiRYhgrFZaFr3eNS5MHPL80figAv0uQlxRitjzHxe5xo\r\nnyac/Y9cvbbzoiPW48xG7G2bxzBVTOha9M1gsMQUCi1EIFa6FcPE0d1bXbW8\r\n7oSh9G+QIVQyzSMmdo88uf4xyzuFhxDdcqE=\r\n=X/g1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGxY4A6u0DALA1QO0QT2D4rHmE811w/Ta2AATp4mGKrMAiAyi8g95sj/DRTObQ3dvGBVHHVlf5CrOnQvdWEI4KnQ+w=="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.7": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.7",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-nMQzc9aqeYx/aImWdyQruBzeyQd7U7ItqxXwDJ3NJyvKARnESdDHW4KOwyKUQcZCiS+nabPM8j4u3O3b1RGIDQ==",
+				"shasum": "050aa445e7646ff91a39330c4adc3decb98b189f",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.7.tgz",
+				"fileCount": 12,
+				"unpackedSize": 22685,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiF6WPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrm2Q//R1mrDFTST+Xf433YZNE8Umj6F9vRSEJaCPpuFywWAOV1byiv\r\nFCgzQeOdmqHZDE8EzZr9wruA+LrRHopzUwAAUwBGDpJ7D7zWextF0qIjypzT\r\niACzmV7Beyftd9fQu3O7VzO6PEzLTlnNv2tCLGGNBnjO/lGTPD7Z2DNYGkoE\r\nH6mzu+lWOMXnkxTz5tUIsT4f42p+5/7dgvEtv7Z3BQUm2EdXFwcakslUTSki\r\n1PH2goGWabW7Xb+JGb1Y59PaIykHY3eA66a75PRFQL9ZR3PK4CCDaLAYMi44\r\nF+3UsU8U877ioGI1aZXvbvkYdlxu8guW0jrCmngq5x3eAUWzfu0QsDgRvJPF\r\n+p5DoZiA+VigIwHCWYp425G84n9WnWfJWpkL3XY7WfOtgZ+U66qnHR/L/9Bo\r\nWBMLIBdOe5YoPGnfCXjdx4RCeEpWNATu4n+wuc820HR5qe8P0o8ZEZllRXh0\r\nFNRF4yRDXT8a+vXJTBj5Zjt8tBPZ1MhHt3nMKhQTSA0xo+ZRrXY7RMyx/EI3\r\nYGvb5oq9L0p5UsovOL1RQ92Gm80yMQY+gpVYvkf1+xanYWfr6jJoU5roCL0I\r\nIEVUooxftez6fPoqAp3gkD6n1U6bcUSExHdgWEEC5ybv5Rhr2gRzfSLX+WTY\r\nCxlw0L4ybM4ptGzxv/km5mhQu3OZShDlwLY=\r\n=5Tvk\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCsX/9qdpSyDy0rF1geT2bsvvHPU4pwrCvXDsbfv1JFkgIgRgK/1FEVhTHgdHNZm0xj6yNA/OZfX8r67cIR0VZ/f/U="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.8": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.8",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-2Q+6Z8VfdEuEsOSF68S4peK4mjz8+2Z6zAHnzQ0tp+sJZbPXVA20DmeIJggCTajfDynBeazv5uadBxui5cRbwg==",
+				"shasum": "fef09cf54a252db838e7e81c3dd83e8e8e38df8c",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.8.tgz",
+				"fileCount": 12,
+				"unpackedSize": 22682,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiH4O2ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmprFQ/9FpbUHmPLOTvk0yqRMJfdT6IBzrTX5XDf6yIXpfo+ixVi9s/8\r\nMPRhP5eCkBFsW3rXeOnwN5yNdYmOkoMTZkoPf69GpcJDNgdlSpY9xsCH5nBS\r\n7SYmx+Yt34BeoRwbnCcwLEgs3FiZ74++6KRCzfJpQ04cHiMFTD1Aq/MbH1Vs\r\nTtt+Ur++IgKQiqV4CC57dKGFbUpk4rWdMJJE7uMEVnMfb496PE7lFNXXrW+x\r\nGmodNsznSdCErjxd2NfgDu1lYDgqPEO/q/2tAY0dVTjzf05yDevvomRGck+s\r\ntEQ3SK9nHNlbRbcLVjRGUmJP+AZnC26KReiBWjaJphvOrvschOIh5lxdmCPR\r\nAbSP7J/L1izOjiVS/UjYyeEsHzB5IFsW9InpYrgOKm37WlsKMpwAYMiR19bD\r\nYSs4chDAGgDF0LEbaMsrOTRCLMRrallQuEgAOpZm9NoVFVsiRx29ZMcVhT8E\r\n2EdL/UJMn+gOMWcSvXIiscJWRnS54m/fYt0SrafzeiKU8iKniqLtUiE4f2zf\r\ncBsABD06fsiexasVSaTw2Me1Dao54h8qURHrGpAjUZ2uLFGjdrjIKh00IvbA\r\nm+JVDbAcs5Y+zRHGmOSlMwvYWdWmYuhNOezqwnHIWwKl2cY9mAazzNH1cyZa\r\nQBaKIL3CsNFBg497+1VwKHbwJ0fe1uZkG00=\r\n=TWPq\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDIlAIVrfzecv4RP99o+Vb7zMlO80ISouafXLbIcJpyfAiEAuKSxPOO8d/HMIj8ydNcLdbB6Po51voqYrPfKSMkcaTc="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.9": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.9",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-9X5Rfh+ZtEVIbggIXGjAhWNEy/gfiEUtOOGxJPpoiLPxfg2DzxBnSYLLsHyq+Vy7J+9ji6kTqA5g6JDxQsV5MA==",
+				"shasum": "c01eb8230be3cecc8a9175d6b3ee8881b9f16d61",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.9.tgz",
+				"fileCount": 12,
+				"unpackedSize": 22700,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiH7LLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqRcA//THXWFrpUIvTBM6fktOOt5ikd9c10xtjHdN0qlDiQ8cirdx+C\r\nuv1c1DksRW2c4wdCzRc3tKTdUXkZAZ1nWfH4bYvdwD6Y9zWHSWIxfZo2tyrj\r\nBMNw078ugqy7knt3ligdKbd4gs/fEp3d8u7f5ttCScdnl+VVVAYp4ObJ2hh5\r\nlJc+l35qRDIRPll06RPmZ1o3FdIkSVkZ36qzMFZOzbyS40Q4Ii6RrhaAOFzE\r\nGgUFF5SrEKlU+vs5IsfzHCjc4p28WjnQ7R9uzwxrpfzXz+x/FmkZDaQFn8qC\r\nT/6bysWQvbetEW95XDUiL+UbvNJBsy6OkaxCrzxqNSRiEJaKKXdt03D6+sC/\r\nUbx/O0HlT6yNEFw/bNMZvOhI7G0T8oAQKfAyyD00PUR9wwLKuPoJXqaXIT2O\r\n0GEoq0iN2GBiwk4oCq4jQC770G97d8Z/zp57mAtUcdwD4wF+higdN+1sCr7/\r\ny7uS5FI0pQmSrJrL+aR5ed6cxZLhZQVEAB/5wzYeKisw7bgQ2NN0a4hIoNVH\r\nAXCgZOwMoiFCfsncsV5yLP5lAAC32eJQ9IuYqxgMLyqzP7DLfC2rBHJrxwDu\r\nsup2aRB4xb6YRiRtpEQ2sKKtWXAZwbuqegi/hooCyMSzozgzr87Qu2l+QnRJ\r\ni2HQmFuTP/Cq1zSPFohnVb8SvfvA38jsGUw=\r\n=yGwW\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHnwk3qq34sXiMXuO8J0JfWIvJxzuzZRTvsWSUG5B7ezAiEAjYzeT/nl6+WAotHHDxgUrnXYK8kRSt5uPITkNFLT7Ro="
+					}
+				]
+			}
+		},
+		"2.0.0-beta.10": {
+			"name": "cloudworker-router",
+			"version": "2.0.0-beta.10",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.4.0",
+				"@commitlint/cli": "^16.2.1",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.0",
+				"@types/node": "^17.0.19",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.12.1",
+				"@typescript-eslint/parser": "^5.12.1",
+				"eslint": "^8.9.0",
+				"eslint-config-airbnb-typescript": "^16.1.0",
+				"eslint-config-prettier": "^8.4.0",
+				"eslint-plugin-import": "^2.25.4",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"prettier": "^2.5.1",
+				"semantic-release": "^19.0.2",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.3",
+				"ts-loader": "^9.2.6",
+				"ts-node": "^10.5.0",
+				"typescript": "^4.5.5"
+			},
+			"dist": {
+				"integrity": "sha512-UagAoi7gk0jz+aVISNmC7CClUkkjZbhkKWeN+B6MlfpjyQpb1ErwJSa7ZCk+qG0a4PH3wfIducS505DrkDjR5Q==",
+				"shasum": "05472ea01e29274dd47404f1c770724064e3432c",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0-beta.10.tgz",
+				"fileCount": 15,
+				"unpackedSize": 23614,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiJe/wACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpkNQ/+NkkQEZe2aT3GbUqAFpTaIlth9qrARNnvcruGCmgrD6PhEvVe\r\nOFHwwB9MwUp1DRUb2UO0kH3GSxkc1HCi3Q/sMTaY724jgQS61IzwQsk0MKF9\r\nk/9pRz234e/ggQL45EvIxfdEmD/FsN0ePiir/L8moeoHnfIHdZwWhF8ngXAS\r\nvjMVtwdPxGj0fLIRmybY31OKQWC3Ia0fx18JCw2a9TmeM6K/Utr99J9qQ1Ff\r\nT6VF+H+idR3KOM2E2fpRyKNeYHXho+v1GJWjz4lk4q1UjHyNUn6Ids0ymrV2\r\nlfRcnCtx0pNtq9SWTfeZ6u8HEmz/RHYp8V7NakEfdu0EYTJn4irO+shPUi1J\r\nXgIbIiJQ5YAjudUbeXe+Rn3fMbiWvuT7Bb14VRQPLk6BhTtspVFNdKqcxNUr\r\n+ph4dWKLt3+7V8Wqarad3MaFEBvjRBN0leNAhCKjmpkRJPWRtSqDaZOWLidS\r\nNRw2jvwsi39nqrIs78dl/sW7N1O8iy1JQYvaaCgHsbh4N6adlPs/sG8Qa9KJ\r\nInZgiL4ZBOmS+o8dJ9aPZnmZPOCywqvbZ2h4VSCTc1T794qcue1Rw15LqmDZ\r\njItUeL49ckjRsCQTP5D70d7bacXFORAW15V3YqXrROYTHG+Qmx7VEFg0YWpR\r\n62RYbnWdw04bbrWR1mngj7LRhJMGpZGR08o=\r\n=ptEW\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBZ3MmWJJ+iANiUivq6hy843aBdbxNpDhlMlEfwl0mnBAiAjpRAgfochseYTJWQx6QN3G0RZJMvJkiScyhfw8Acz9Q=="
+					}
+				]
+			}
+		},
+		"2.0.0": {
+			"name": "cloudworker-router",
+			"version": "2.0.0",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.5.1",
+				"@commitlint/cli": "^16.2.3",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.1",
+				"@types/node": "^17.0.25",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.20.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"eslint": "^8.13.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"jest-environment-miniflare": "^2.4.0",
+				"prettier": "^2.6.2",
+				"semantic-release": "^19.0.2",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.4",
+				"ts-loader": "^9.2.8",
+				"ts-node": "^10.7.0",
+				"typescript": "^4.6.3"
+			},
+			"dist": {
+				"integrity": "sha512-8DFSdnfvfzID+VJMe829b2uXzMEzfZ4FMWqQNVXGQG5sk4IrX6tsRtjw2TVjv+TDEWMfdXh3LiHZ4uRZoFfdkw==",
+				"shasum": "df4bcfe7efaada1f140029b2cb5042dda89f7ea5",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.0.tgz",
+				"fileCount": 33,
+				"unpackedSize": 40944,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDwYK7ShYXuXIVvcpCU5BIZXfTzviKagPQMv1e4RGxYmAiEAsM7ZO6crXYhs04wio1zgrYgXUge50jTpLumxtQ/jYQg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiaUaIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqUchAAjIvofEPu8POWOnUEtCKksC85rUOnSbgnFm4S8ECb6ByX1u7I\r\nMMjLc+4E6HmdMpqwxxyy7QPx/ws+BuxjHIgTjoCEqFjHG7oa5mRjBW5SXy8n\r\n736VNnlWVQ28wYZmog965Q3h1zILmAw9mZwubRapwZ6AvOm28RrBZvGZV47V\r\nnVx5ZTCTbD25QmBIeL0CtDt5GK1HKaX14x0dJnkIaryqOt8agLQMFwjpVaXv\r\nTazv+U1YoA7p0ANNsGsjxpm3SDe9h5BR0A99mBS30QxTORsbZ+/wyk/m8RNQ\r\nXYZOw22VVCL2Nu06mvLec4dis5VaC44c0zhSATBqD8pro2eZwW2FQGOBH+9J\r\n9VjqoTrHtFgTpG0F7fKE/jGnI0gl2/Nq4nB5x3Pc4LnyU86HLE8xr8xZP1Jw\r\nBA8f8frJyYOYcaJ26mwAU8UlPUAJR8OZhVBaCA0oVeGXFwCWdET6Mg0rbzH5\r\nzhyBSEZ2aHDS2TUDbpKNonghWg7ZJ8PZUn78vH2eNQ8CVtdDciXyMx9HF9cg\r\n+GR6d240usRxM6RB/IqRcDqXb7h2q6tLDiz3ssLlWdqa+Udmh3AGZvZ71C9O\r\nJfiUWgfosRSMgCjWOWg4hDZUKMX61osMFf36iGIU+gy5HnJ6WHm66xf9sgtk\r\nQxkcRpeuo6txhjgzfhKTLmBsQaeAQ4INPrc=\r\n=5VK9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.1": {
+			"name": "cloudworker-router",
+			"version": "2.0.1",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.5.1",
+				"@commitlint/cli": "^16.2.3",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.1",
+				"@types/node": "^17.0.25",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.20.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"eslint": "^8.13.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"jest-environment-miniflare": "^2.4.0",
+				"prettier": "^2.6.2",
+				"semantic-release": "^19.0.2",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.4",
+				"ts-loader": "^9.2.8",
+				"ts-node": "^10.7.0",
+				"typescript": "^4.6.3"
+			},
+			"dist": {
+				"integrity": "sha512-F/vn5EtsnPkxrOPqDDW64r4GeTUjVz40uotdXCi5xoUUv67vLWoTBbpiiVKz+Ephs00lU1CjEmpC769gtWmzrw==",
+				"shasum": "55eea889ce060c1d0dd23af18d6dab2b47b818c3",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.1.tgz",
+				"fileCount": 18,
+				"unpackedSize": 26445,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDofmWRVvgl0BQYG9ztaQcXrS23Vx4QOJRWGlB+8FfoVAiEAuXa0yeQHZ+q9aPuoEkuEdNTFfYSfn6TgNs+Lg8Lyc+4="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJia22KACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpb0xAAmgheU700zbqxYlxbwnprodg+8kcqXbN/q6YGfJyLIVCd9hEF\r\ntY7HB3Ha5BhUN059MHF5FFQkvmwHzdV6lDizU/REEX0QemWxwIrfzk2/WNlE\r\n85ikBWMlLqrXyzBBfFqkkIICesOinFyd2L7UT/hbEa0qt55Tu+yMA3w6ZE7K\r\nfDBVT+t9YzrpQLLg3mcGddOm6k5I8Bywph5BTFrncmMRtIcHVMFRJCozd8QR\r\n6pd+Y3uSLCuGFxyNx7LhylBDtmw++F2ytVW2xZXrmP7u/XjX6dSsjWU+FKP2\r\n6pmbJ64IfleroBpmOUj5iUwebcM1ttZVWJ1BkeSJ2oCleuBccgyzhKWY0p+v\r\nsonvIM4fbiJxLLwehPc3/jrYL5qOUqF7oY4xjl2c08F/Ue2fqQHVHwgOeMls\r\nkGkJ9X3EJdcCmWUaP8nhvGoMlG69teEN82NHEhIv6wL1Ulr8ih4s5zbQS4h3\r\nGxrygdMN9z6EBgLjYbTq6E7YyCdshHbWBcNv9Kfm6dOGE1KmTjwdOUbuWXE8\r\nfg7+CJVsUH7B2aYpYmsHoi//bQ1K7+/y5PR0f3jXOo0kDpMVmW3/dJ1Z3pAz\r\nLFE/jFvNpAjuOvkL7Hz1LnsAFomppYpUdeVOynjZOl7nWnJmfxst2D9e8GoU\r\nQ1xdw0QLBd+njCJKeomFhouugUvkaRELnYM=\r\n=9jrA\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.2": {
+			"name": "cloudworker-router",
+			"version": "2.0.2",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.5.1",
+				"@commitlint/cli": "^16.2.3",
+				"@commitlint/config-conventional": "^16.2.1",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^27.5.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.1",
+				"@types/node": "^17.0.25",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.20.0",
+				"@typescript-eslint/parser": "^5.20.0",
+				"eslint": "^8.13.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"jest-environment-miniflare": "^2.4.0",
+				"prettier": "^2.6.2",
+				"semantic-release": "^19.0.2",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.4",
+				"ts-loader": "^9.2.8",
+				"ts-node": "^10.7.0",
+				"typescript": "^4.6.3"
+			},
+			"dist": {
+				"integrity": "sha512-2h38hR8YqN+6HGK8kTNalI+Vq3/JGggG+TIxYhSYDcXRGTAxyZ+xPCO5FEDPpSKCHR6SVCyenhb41Rjyy2VrZg==",
+				"shasum": "599006ac9d9e97800654dfd9628178c7cce1474e",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.2.tgz",
+				"fileCount": 18,
+				"unpackedSize": 27189,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB8Z18vavahQGg2ZWq37chAn2t7VyuJKjyfMFfLniUzaAiAjJ0ZXs7nyZ8eOpFfEs8j+m8RXvbcvojdqA9Lp/yyzow=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJia2+fACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrFERAAi0wgIFkGBpQtb7extdYd8eYZIzu0+ET9kSPpxJrnJwHzp3Hb\r\nQhlG9arGyI9rl4/ms4WZQ2t7l2QIs9SBj8MW1RMcMzwTG5NFLamqs+yt9tsa\r\nQ4xKe5R8UzYNXWALil7HlzwGaffoQH1x7BWsT8SB4VFbGTrtZoGzAFe5TaPI\r\ncpHaWIWNws5eKsBp+r+p7zDT40cQiPqmX2zG3y7KR1n5+dB/pp1nNVnsIdHU\r\ns6Vwk5xbj95UpO9aCoWYLr9Hpr4DiMsXwF/pq+2V19up0tSqeAgxxBpetFlS\r\nR7mbrLErONhopbahcNm96F8P7ghT8tRSzsKpFhSnwqceKc6v3kFc71FpX+4Q\r\ncmBxqIHw8RPQYYx+4V54vqPokMHZ8cgRa7EycSSS6DlLiU9UjQQ2468ZFXll\r\n3/6lh3JkRauVzkYO3cxrXCaA/sjCC5u7R+OSkizULCTxi7xuAff9IzIFQQki\r\nFd7Zc+Y2KNLQ/HbuwuAiink31OBzm3y6eoitarGBxkLn3+jydGx3phVXZY2h\r\nI8xwO3VoZ6D+axqmicrNBpvCJ5UZYljxYYtcrgaoY7gzsWTjXyg/8+JI34x+\r\n3dvd4pizG901Iextx0ZNLG39Y8eR4EP30nuGwn4Xc6VcWnmcNN7nLDZh22rE\r\nALkrUwzWkk2orwsRi4Z0MubRfCzcGCtqj7o=\r\n=fhvD\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.3": {
+			"name": "cloudworker-router",
+			"version": "2.0.3",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.8.0",
+				"@commitlint/cli": "^16.2.4",
+				"@commitlint/config-conventional": "^16.2.4",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^28.0.2",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.1",
+				"@types/node": "^17.0.30",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.21.0",
+				"@typescript-eslint/parser": "^5.21.0",
+				"eslint": "^8.14.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"jest-environment-miniflare": "^2.4.0",
+				"prettier": "^2.6.2",
+				"semantic-release": "^19.0.2",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.4",
+				"ts-loader": "^9.2.9",
+				"ts-node": "^10.7.0",
+				"typescript": "^4.6.4"
+			},
+			"dist": {
+				"integrity": "sha512-56KA9cVeUVX/IzfgIII0xkbCeQ9V20u/cyLeLmyrcLJOprc5D4oAjNruc3BRQdH+HqONMWRQpVwbcG4wl7CIeg==",
+				"shasum": "5a4e264cc5f0b1d8ae9bf7c68e195ccaedd8d326",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.3.tgz",
+				"fileCount": 18,
+				"unpackedSize": 31878,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIChv1hc+9RrlBukwTV0EDfhRfBYRmXkPrHzB9jENcf1lAiEAwGnemNDLxDmO+iNDOSYb+pnF2JbIRrH7S2D5t+KFCjY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJia3hVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoSbg//WoTiOulIjLoDoSU71z5xcZFQObxbKt7wrz8AmnIYah0xn+MZ\r\nAshIZUN+62ZI5ssAQx6iUMcpNJ4Ay0WNo/wEqWsOe3SOoN1hiM902UOYGN+7\r\nGCGRKkhc75tTbRhCZSpoijl02jNME3K31cw9mtyYmCS2k3npmWIiHZgLHs/Q\r\npo0iTzvr/ZUlLU3hWm1wz223bjVgxVXDKtkmOcY6Z0ztKJILsmc8x0Pbrrug\r\n28bbRYq+45z+yXa1RG11SN/+lOPnJy6uFAFSRLOY4xOJFnLPcpNnI4V2g30D\r\nRVxzsk/eokXJuxXFFd4kk4q/hiIDgij882/Ut+8oF4tDzNOFccsui2mP/l5f\r\nMOOyIFcHguFwEGnhLgww3oOA8o3TiplXQuhmwd0JItE5EPb4OXOM4KLy1taO\r\nrFuq4gMbo+PgDItTpZOROq2D1QtITF57CkZ9UZ/Sn0Qab6sz0tEuZRn652P5\r\nMoxdOj+yYcgPCDpFCUv9c5qJfWgNs4cg+P7JdD8LIzIGDSiFuz2Wv5zg+yQj\r\nf/6SrHKMi5ekaQQ317tQVWwMGHK0g5NROqAxndINan//cJETSYAaWheeoGvU\r\nOpTac9nYKlPJDhHx289JZrMnaeSHI6zncTM3emQDNMoRX+sDoIQbhshIT3XC\r\nw1RR9f3LBi8IFsXz3MHXlGGjnF+JC1STka8=\r\n=jBoF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.4": {
+			"name": "cloudworker-router",
+			"version": "2.0.4",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.8.0",
+				"@commitlint/cli": "^16.2.4",
+				"@commitlint/config-conventional": "^16.2.4",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^28.0.2",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.1",
+				"@types/node": "^17.0.30",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.21.0",
+				"@typescript-eslint/parser": "^5.21.0",
+				"eslint": "^8.14.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"jest-environment-miniflare": "^2.4.0",
+				"prettier": "^2.6.2",
+				"semantic-release": "^19.0.2",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.4",
+				"ts-loader": "^9.2.9",
+				"ts-node": "^10.7.0",
+				"typescript": "^4.6.4"
+			},
+			"dist": {
+				"integrity": "sha512-eNsJuVMuvrnIJEz0aP3GfaFX6Qr8uLBH7E2dUk2BG53PFg5D6qMaY2iCI98KUlvDjw91qORwQDWErfarpupAlQ==",
+				"shasum": "82f667d426610b46f58db1369d093678ca85d087",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.4.tgz",
+				"fileCount": 15,
+				"unpackedSize": 23833,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCS+H7aD427AaYrRMvas2etk6oEf6Zb9aNh1YvJlCGRowIgLgJtefBdXEvXfdu0jINTU2bvlatnS4eR9NzL8gn0lto="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJia3qOACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoYlg/+PiI+aUOHpCYUj+LAUXuTJNmykOEs3C9m1R6qX1vgvEsPSIgB\r\ne+jVKwXENx8neOaZQlHNln9S9wjs76PPURIUCmpUQg1srC3Ir25G7S/6r1qY\r\nxw2F57KLaHe4U6G/N6EvSCome5wZzmnQFJ2/gfhBUht/QK9PdzhmBTkhVK4m\r\ntz/uT9SnaoUkbO43fIMuXV5M+webr3dLIkAVWSDQ7mOVqSjJR8P81s5ZNycD\r\nKnXf/rkp5ycRAN46O+V7Aw2kFFuvwQWC3Zjj5vkIJ16yYQrMrg8G4CT2VMF8\r\nUeV917fgOc9XbpjGi9o5T8nFrmhZLkibbmr9ycnzS4806CTCU9Lhe7GHvu4P\r\nZAFfFPTAekzeK3nYNLO6fjUf4qRbVeNsdyPh39Biswf2gqpzQ4pqn2n28F8v\r\nW6ANC41OyTC7oZVLWEUbQ0wTA3YGAMXrLqRNtrS/PdBQ4YEPVgodsYVi3QDc\r\nsUZwRTvp02Is73UVpNwIRlC1VlRCtUSRby3dPRMyawMqAEjySeHE1nfWsege\r\n8PUGwNpWtcJhE0GU1w9JzVLrt+7ctD3jyx64wudnj/BrcbPlPEyZuwml8Ba9\r\njLxIe3Du7Td6P9bbvuxvdQxqxavOF+QQVfC8DW5Oy7hDP552U0aYxIwIHdKN\r\nhEVp3+4nN4EGFq+XypwbWoqqpofAo0ideeg=\r\n=NkV9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.0.5": {
+			"name": "cloudworker-router",
+			"version": "2.0.5",
+			"dependencies": {
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.8.0",
+				"@commitlint/cli": "^16.2.4",
+				"@commitlint/config-conventional": "^16.2.4",
+				"@commitlint/types": "^16.2.1",
+				"@jest/types": "^28.0.2",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^27.4.1",
+				"@types/node": "^17.0.30",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.21.0",
+				"@typescript-eslint/parser": "^5.21.0",
+				"eslint": "^8.14.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.5.1",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.4",
+				"jest": "^27.5.1",
+				"jest-environment-miniflare": "^2.4.0",
+				"prettier": "^2.6.2",
+				"semantic-release": "^19.0.2",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^27.1.4",
+				"ts-loader": "^9.2.9",
+				"ts-node": "^10.7.0",
+				"typescript": "^4.6.4"
+			},
+			"dist": {
+				"integrity": "sha512-88P/lTpeqQilkpTQePLC8HbwtfCnr+d7iacqq1mTxvr6v33gsLSOpu9RoWlQyzTx/UIfkG2UVbeqG24i0nK1pA==",
+				"shasum": "2f7edb732662728bfdabba6ddc6aeb4970a0ac24",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.0.5.tgz",
+				"fileCount": 18,
+				"unpackedSize": 24309,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHU8ygbvm//6D3EkylIvTo1GvcnBG6NcQ8CguEJB7nXzAiBXs+mjBaUAwbqdajjaaNDhrWWj5Mj4d0fyLpv+ppsOSw=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJia7PUACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpnpg//f96P1XH9NA/D/GQIB0qFaWluJTm4UgxajljUP8qQSjdY3UeA\r\nmzEnXdvAyHsrjMFFjn/EBlF2kfhWqpaddeoN9haTTxRmpg/bL10Vi54J3YxR\r\nYRjCWeaBSA184Zm7Ye33Ak6HPlTODJGwky8u14WraGS3K8xMXp0J8YMRNzL6\r\n27eiQwOe5PLTdGYXSKAwOZf0SgCgt3iIvbAoraAis8p8LGO9OtgQlUHpcriq\r\n8j0ds7Nws2xJcrfKAv8Vl9mTuUsjpoKzPUlFMV5MHLz2Pz1/nhpC3GusyT7W\r\nRI4EpSFDQpWJbBJLiKqgIrBhPxLwW/Tt+HKyGJ0DPho5FEBCEhv4B7F4GNiv\r\nLcvOsvdNpl6an9vlVOX1clJL7h0aOpNRgrPo5d01YcTrtV2IjNEHtQw+qvcg\r\n4qmVrxfslrKWdCT7t6tiynyscvjyg+vcIO7YoBuKAoo4k1O23SyQXx4k8kXe\r\nPE7PqlrYRG40+BhcDT69WSnbxshNwyrdG8K+keCjO0H8wPDGl7tH45PRuVIm\r\nDUy1e+1wfk4W7UYmL4JkrmoYyFPF1FWtx05smDHZcxygfCIgk+0jSK8XfH1L\r\nr4klO3d68AWi3AvgrB5zrh88W+92Qn3a91D0wlgl5z+KtBxL08ZMS23z4Dt6\r\nns7GAd8jV6qTaj2q7dJrchepIWH/tvMn7zk=\r\n=7C49\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.1.0": {
+			"name": "cloudworker-router",
+			"version": "2.1.0",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.14.0",
+				"@commitlint/cli": "^17.0.3",
+				"@commitlint/config-conventional": "^17.0.3",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^28.1.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^28.1.4",
+				"@types/node": "^18.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.30.5",
+				"@typescript-eslint/parser": "^5.30.5",
+				"eslint": "^8.19.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^28.1.2",
+				"jest-environment-miniflare": "^2.5.1",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.3",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^28.0.5",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.8.2",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-I/2eJegSub39DbxQDqf1cLtncFFR60eFEbDfmRBI3QcGsz/HjwPFVzDXhC1WZ9uZ7cnTgNJwGh/FioHXZejbxA==",
+				"shasum": "1ed055be9e459437b12f5542d380e3b92596c7ca",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.1.0.tgz",
+				"fileCount": 18,
+				"unpackedSize": 24453,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICaO7BBL4ZGkS88ZmOOyOtUj/NbvJP5129fmGRMamZh8AiBwMDkAfAVd71/LFO2L9Tcmq4v5qLeslNNVJQJDxel3xw=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixZKTACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrcqA//aKb9o054XCh/WpcPfr9RUbnhN8TuFK9TFJj6d9fwfTPyEOTN\r\nlF/tqie3aiGKxsspFBcLazgwckyo9INzy07CKkrGNrIDL1AnOb0sZ8P6rFNO\r\nCYRuHxv6Dg8oautyCEOhoWlq/C4qHRtvnC7hh7i68ZpwfKnufkUCTD/qqnRD\r\nQ98eORDFhhXrVAbqGe4+o7KLp0UYMnvciCHoWj9aksYS7teVWWM+SnLM9m4l\r\nwvEU9LwSDp7fqJ6NY8C3SuM7PZWu4ORVCm/KcqZiL7y2jyZr4xwdE1uBo9Iq\r\nPTaq0eXzyCVFO2lGz7SyFRmr4PCrf8qBlO+422jo0NP9oIQc3V9bsdlj9Sa0\r\nIq9WtvGjM8GB7Y9UERhl40EMRw6YVRPvmI0dKlbJVedBodIDB1O8KS3HVPgD\r\n2G12njfsKYV3HTr11ebsvcYjBI9a48eFuK3ColCro+sZJ80AxunSskDOCMcK\r\ncTxSR4oJBhYxXbSzCUgzXl750HodwAoPW19jkmvFcmNlpQolpLphhc7Be6L4\r\nW7Sb5e4X+bqSDYbPUDtb6L87FMJqfGZ/fM37hKL/yYr+kDWQ7HIJq6gELPPz\r\nuvfIMIX+rw6VlNDRV5xUF74AobyrpvU1WQ44H4fEGC+ngdIsIedEC2yYseoy\r\n93QswlH1BALuY64tI5qRtDctU/JPA7Mjo9s=\r\n=vgHm\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"2.1.1": {
+			"name": "cloudworker-router",
+			"version": "2.1.1",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.14.0",
+				"@commitlint/cli": "^17.0.3",
+				"@commitlint/config-conventional": "^17.0.3",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^28.1.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^28.1.4",
+				"@types/node": "^18.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.30.5",
+				"@typescript-eslint/parser": "^5.30.5",
+				"eslint": "^8.19.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^28.1.2",
+				"jest-environment-miniflare": "^2.5.1",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.3",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^28.0.5",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.8.2",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-DLyWfbxjHlBbDxRZas6CUtg7Ejo45NzFjkQxboLTvwhf90OtqjvqP/ScoX9WphO18pj5Ntko07HVl3IvXwP+6g==",
+				"shasum": "bfd835972517b010f66aa5783920dfb28d2643fc",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-2.1.1.tgz",
+				"fileCount": 18,
+				"unpackedSize": 24492,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDRGsTrSIqofLScCzsNt7pJu2ucyhozpAC7VmE/ZWUmkAiBJLd4QdATLueqTscaBvm2BVoCHbN8H4fS4us1uWo5qXg=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixZVpACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoE9g//cvIFBZX1oV+9AiWSXuyVut8JsYJjfNodO8EZnbOshKaqvBaF\r\nBvKpxO+ho4yHh7XW1nUItenGRmz6XOVQ2eskgwMWWpH7Rf1cG6MuNs9CulGF\r\nbsNsbrrRssPF199BymGbSG3xyq7PQ/1LfJPyK+lJr+Ill3DDdlK18Rx7FHYf\r\nW9ZxjbQXRXT+W5Qz2Vtf3B60ThPT8raieNKjhElfJc/MnSIoZk3OTY3u3oPl\r\njNWcR7rjtnMzk8ifOjQJDNU5UErnTvq/uocL6pCpMLxW/wr24GNt3579sIMu\r\nKcAQXQqzKibzODzdu47F+lIb+oIG01GGVbuKLhf62xWJYIB+o/Jw6CZkoNYF\r\nNiFdNm0qZL4421UPY+QzHl/lfLJRlPaz7tPHgAfYHs4iXoZRWkgocONXnJ19\r\nYIe2kon/leosuamD2ZMSBNyiHVoFx7WA/iRdaxGVs6jhT//WFuBPIUeLNdZE\r\nmZd+DqgfcjBcgEewWChwTIz22UMsxwGy/GqwV4/lmw54EhN3aw9zs3IBoVVW\r\n8OMa5KmBIgPvmd1djLU1Ofa0B9w/EV6izT56kTniCA7k/hnVdP0Tp4EpZRfK\r\nrBx0m1EHVrdj9qM+onIeejHbulaGkKFoVVCbO15VgQdR9HNmfDzCU+H2xXpO\r\nuChGov4vS/zNsBxKjNnRB5UkLi+TmxIWxzw=\r\n=EuMA\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.0.0": {
+			"name": "cloudworker-router",
+			"version": "3.0.0",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.14.0",
+				"@commitlint/cli": "^17.0.3",
+				"@commitlint/config-conventional": "^17.0.3",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^28.1.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^28.1.4",
+				"@types/node": "^18.0.3",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.30.5",
+				"@typescript-eslint/parser": "^5.30.5",
+				"eslint": "^8.19.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^28.1.2",
+				"jest-environment-miniflare": "^2.5.1",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.3",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^28.0.5",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.8.2",
+				"typescript": "^4.7.4"
+			},
+			"dist": {
+				"integrity": "sha512-Olu5UsQmQZCXjum4yFqcAdatmEN1taW+ad0aZt/uLVHZNb5Ng4Hu6Flb0bptuuwgNz8DmqbCF221yHnj/2h8KQ==",
+				"shasum": "bc3aceb7b05827fe85ca88a5770d6dbb426c697a",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-3.0.0.tgz",
+				"fileCount": 18,
+				"unpackedSize": 25214,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAzTykgsfvp4MDM+SD3NS4lhnZlnczKhMsr9dmgdbQ/BAiEAiReBNjiTWUdgLEhGQw+XajzLrDhRwzN3cm9fVgKlMws="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixqo9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo3Kg/+IWPmCnu5E+sUtPHxys9lgFQkt2YIDSAJTWSNjl7nSNsvDLWY\r\n4NMNp7I8sXv8S9VB4SBEwxeuUH7mnvsX23tXUn52H+8PsuFRkCNkHbM47vpZ\r\nr7MgAq44SDNiomuAnpms4zd5ONlcBdOIopwi7jvVO0BwQhvU0dn0goi5MMBQ\r\n7cPuDLlzAGU6C8B3VWOKQdTk75lMzcc9FfijLsoGjIPZiYyMchiD/Pv/eqdH\r\nT2cYp2bEv14qtTRRcbnMXQHlHG0wliwwuWzgFzLYcxHl5KSO3qemP53V6AcN\r\nrrMhQcxYodFG7NwbGCBvnXxLXFNmBhGaqsuEYjMGPASFIQi5UEdgOOZrxoJC\r\nzoK5r/OTAF5ikzrcTURmYfErJ6oHXtcMquldKhWEGNkkDs+srl2P5N81Dc32\r\nCjzWtLW7eYyUIfdEVEBpkWJ9C2+HvuhO97p68LvdOCHpf7Mh2q7Clz9E48F3\r\nYiMpA8qcgnwGV/bU0IKjzJ8z7LmTx8ulehtDrZ8y0L59u0t1aAw+/aQEkWlB\r\nI0aA4Ul3MfIv4r94iaibN0GAveshCZXYF9KCx/cyus98cArfXovE3LeJ3l5r\r\nnP1q4y230rSyx5U/Z6H1gPDyV0KfOGGpA7w+yTQVTRQDkcMHYx5xQUwIZZaJ\r\n37hWR3VFLOxc5ZXkxBIm2bhLYSbnAIHg5hI=\r\n=4DQl\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"3.1.0": {
+			"name": "cloudworker-router",
+			"version": "3.1.0",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-BWZPhykSbREQ9/6TAmXx4pN8asNzdLHYpDK30P5XIxFdoSJ5FEQD1nxPOrLv4Fylhe4Z3h4G+YmqV4j6Hy9hgg==",
+				"shasum": "0b0da59c48002b4bcbeeae1b32b98cb8c4cf3e74",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-3.1.0.tgz",
+				"fileCount": 18,
+				"unpackedSize": 25160,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD4fKAfxnu3xFGKzPy5QY4EqwcWYM4i4GmJlBAAsupbdQIgMyipAcF44NsIrn6GeWwHgpQmfEUiXLMo6zvhpeZEx6k="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjKCiFACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpcVRAAnhkCboJQm/YgwHX6+SVdDBqJ/oT08eE3cprMYRYhYnOLDko9\r\nGvA+BrtsNgql1cggEirF81Swg0UUi0Yhu/S1L7ZLBG3rY/Zid9DQFfFujiWA\r\nCn0owVy0L/JeRSn2qPIBzG8PhTyM7hEZykmLOu8AsPgS15P9gw5enX8w2h2w\r\nQNgPCEOmddZ5jA/T2e52AOcbWD3GyDo4QfA5tX3EtXTMxPamTKc5PqJn2Sz3\r\nvCS3ZNFt7QlEZ3M5PlHT3UmcA2DiCe6OOyhjTF8o4sGgZalqm5vIw25XkbN6\r\nfjcdNcYW0hhG/J6flnrldvSLqDiAfYGI4c8y6JVxJSXYboPP3Sbrn4dR8dOV\r\njqT5Tm2qGfSTt21Ugyl5qsDN7t/uIMG+vyLkPAa5a3n/qfLkuCxiSrSAVgL3\r\nS9PVL1F9ZVSw2FTHMqH4+en7mC/E/NsUjedRbVcwoGHEPLQO7DKjs97vF+dD\r\nKsBiYL4O+ofLnAr1KykbXrNuqwxTOPUmzNWdfN/10IkcuhTuGQwH+u+3pqiN\r\nCw5rgzqyN8yoe/bgr6uYeDEELMHVSTCPZ59Gir++OBVEIhSiXEgTCKR4W4Ol\r\nJSPm2538QYijZxqUtAmbpljzt7lMBqbjgMxVGSatSKiWcizNKbCfIWJFdVkb\r\n9appU6VMqaj+rxBO5x8Y/PtobsPKS5smfTQ=\r\n=gwrb\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.0": {
+			"name": "cloudworker-router",
+			"version": "4.0.0",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-vC+M3x+pK6EE+xefwEjTMc+aA1da/xdS+dMgxDAlW2J+XWgt5qTK9EWJfHd/Oa832ModYl/rBxI7AnsjBoTGvA==",
+				"shasum": "e9be2592fcdc3ff0b54ec723b637a332ec664adb",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.0.tgz",
+				"fileCount": 18,
+				"unpackedSize": 24470,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCIBcuJTo+fX+MyObuf35N1lnWvlHpMn4Gq9XmIkWrJrQIgbUuXPVxVaA8+YaiAzB3tHoq/+f+UXfeWaI2EJwMZjXQ="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjef86ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqh0g//VDh/bWIx4Qy95U8ZcG4ZByre1P0nc8w57UGwbeOaYGmRZXZ0\r\nx73Tx3+Qe/Yg+HM9reaGIVWNs4jTyuYJpm94l5qZpRch9uIp8e6qr0WiyW/p\r\nR7Ps1rSN5p9U8pSXV7QLbVN6gkTuFLExNNrAiuYKOI0ogqzSH0VT7LHM8/78\r\nUS5L0ge+vsswCp6iekemSAWO1GxV0hl7kN87KWOB8rjn87wHpl0+X8rM+05d\r\nLU1JUaeORH3NpHUZ6G2ATfAxVIPEGWJmc0xrRezHjvlzE7TZGLzfuLenzZFM\r\nwkW2JUJldLc6yX+lx5a6xHFEN1dUDa88Xhqclgu/6PciedO2Jdy1LIgsvoVU\r\nrDDlhQBzTYJD0xxnG4N9/+/MZ09fCyYpwDUDFunLILedeptl2vx+hpwNu9Lp\r\ngaoRAdfPEwGMT10Sp8c0dq0CaP8imdXppmx3JdZ42t25hnSNZXviCaeVYlkn\r\nnVLEDXysqiRdlXy3vCogHShIwKSOThN0RYWgc1LS/EKrvgCa5/ekaI0HkGtP\r\nST3UqQ/wC/Dzq+va8AF26TsumXyUIZMxDew7mbW7mKiwCnKB5/OmT5CgId+T\r\nS0x7CiOSGMp07sPV0mqP1+bxkpTqwbU8/NRMGMqpzMQtOf6LvwyCNGBSMeig\r\nfTupOnGVel3dl/5gVz2a/zcvTOO4cgkjuGs=\r\n=YclE\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.1": {
+			"name": "cloudworker-router",
+			"version": "4.0.1",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-kJEDERmgc2L6HNycOEGRf9DuPYKi8eJlRcGV7ZmyRGIqqRthcrq7Z6GhSp6wskyqH9VrFDWcRe0aeAWnSixKlA==",
+				"shasum": "08c2052c93835193d949f8e338b22be2bdabc920",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.1.tgz",
+				"fileCount": 18,
+				"unpackedSize": 24477,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAo67tpwsDCutvexN0DIpONHmuC0PBlr9o+OnRrWo/f8AiEAvIED/aes0OLeJQYBnFi1l85a5476h0rCqaVAjo9PU3U="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjegDjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoK5g/+NdE1n6Lar9/05MKDIam5fcPwemqIccjgXSPLliG9jYCfaVAR\r\nm+OpS6/JEybNcJUqcf/lbbcps/RnMk7ulg/XwxpPYUlev4v44gnV/z3FwZ9N\r\n/Dh1wJTZv78QLRcgQQe+ROmeEzZkh9KCel/64SU+ODTuTHKVcttf6Ea42yGE\r\nrZOrkhD+tihIDB/OwBYmxT+V/idRqUmbPP08vyS8UhXl9lvO2XdAJ3wl8bPP\r\nkZpkk6OnZlw1QAg/qCW/gfqCF5Lw7TXKkAIMDBhtJ4IqSF4SsNIfM9C7Deb9\r\nzAGadIfkU2kPfIvFZA5sQZok4xI/OFB0+SYpADAthDGvbYwYkWl7hgfp0uuV\r\nVHIrlvzyyo7s/Eivxo2/1ihkaPfB3wzo+AlkcpDky+0975IYETd6TigCJc7I\r\nDX71zRVoVJS5x4D7Qf3FQMCdCE4kP6Q4uuE9lDtqHC2rNUmMwRD3MtWHXlH6\r\nwikcbpf97WlHrMezz/kD+BsXwHVkgI72XB0mMP3LT2Q10Mahhs8njl2Dh2Hq\r\nEazO+hlCirv5PQ7CXrL/0iqpKN2yyu5TZAIXp5/SW+j/I7XW+X0N9MzlGQTE\r\nF1YkiZCNoxCUNydY+0JmCZONJRw4sEq/MTGd3gJtMFiY3odo6pUe5EwhuiQs\r\n2B0IE3DlKk11+d3/hsQ5zZLt+he4vbwASLc=\r\n=T1pU\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.2": {
+			"name": "cloudworker-router",
+			"version": "4.0.2",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-V13wetFAmU7mc+qD79SsDM5MOuNTlOKnvwUwbqCLW84PnuPYpHGXl+ZsxDpPxWLcpl8Hv2otm98+uolpkoey/g==",
+				"shasum": "57c5f7864435e4708ff697c188678dac55be4f2a",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.2.tgz",
+				"fileCount": 18,
+				"unpackedSize": 23353,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDtnMGw3PgZi3uCUwOYGhO+3eWmcDLNxx6rwxix5OwNlgIgDmtcywkeL07q0Jo2mRg813IxZmr6QbQTxwHEvtQ621Q="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjfcjBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoSwA//awqtjv+iG6zZaoCzB90Vlq3pzfIOehGc4ya2Kar2+NKEKuq9\r\n24ZIpg44B2mf7XnKq4+YymRDbWyKnTGDABOxYYc4UpTySNj6QytwKB24cUhe\r\nfPIfaDomiMLGC8tZjfeK4DCQ5J7uVVK/N/gXNLEXFg/Ke4wNnAWFMbNJuDQb\r\nXh46x4NpqI3PGYkhSe1oaT100UncO95FFbLLXmhoYMZjRSImSnvdafxDmDdR\r\n2Kiw6r5lVG8VYaD2hOW0aSn+2QpDzjJEAEAioqNAy/mYIIk2hhIRlLslEzRx\r\n9SF6xI/8Bld8eMFDg+b2gA72B6yRghSPzjU7VapxjIG3pJ+hLtUZJvoCwW59\r\n2SRy74/y9NAJn4g9wyBBEenYL4b4pbcvoqYSg1ZHE8u+ICep3V6M5Umki7LG\r\nKd2yx6ZxwfYWjCdabHzR8P3OLeE67uNDmb5EiphshkROvTN4t5HWhDaSycfS\r\nu7Aauba9EXarGKQE2MT7xtjCQcLs8/y6D7mEe86/7nm82JiKs5EYTQOSO2b8\r\nUqS+kgltth8d5wZqVdZlN7oFbvUA9naWasv6ad6iB3f9gVUANms6M1HvqQyn\r\nG4aoj4uRuIvIQLOBZN1nymG8vWz4hH2Q53sPGzBgYgQGzgbqVNFL0CkuX4m7\r\nAkfhKgZkBnndThKARaPkPacHROgxXWZZ/iA=\r\n=eW2b\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.3": {
+			"name": "cloudworker-router",
+			"version": "4.0.3",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-kpGbqejDiN3RT9hpzsP49r0AAnAVa87Hp5v6v+vqG46v7R42yptGJXxRt2Rlmxo4TB20WragEx7qTBKwlxxt4A==",
+				"shasum": "9145ca54529d4dcfe576b25915d670918cf3350a",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.3.tgz",
+				"fileCount": 27,
+				"unpackedSize": 25030,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICAo67dmMx/+yTryMpjmk6zGh+K68NShdfb4A3NrJHHhAiEApOEjeCCUeTAQMK/+dT0v4zInk2dP8fF//cgYueZIxUg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjf9hwACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqo8w/9GmSSme1E+m9OgpodpKHiYHtZGjnPWz9aN5hV7requT0VWJSw\r\nexkGI4VSKg2rYJkJLL0129Kyole0/dlbOHv3N5AJyg3SbS8kLo6thA8Hy/ok\r\nPvkF0QhaVvXK/PbAJe0iO9agaKH/khtdGANUiNzeJKHLDoIKx0mdlinmK3hw\r\nyS7eg89DXKgRsz+dZY9dr5GP+0bzVz3tZoRVrO1TV4WZHZiJocBcdi3T6R9B\r\ngRMEOyKZLnjMvBDaPpJJH9mPzUCh3QpsF+TdBhNJBklmIrW2i9M/YA8jKdkM\r\nB0COLhFuDXiYqId0VymobVXzfXrEtn7PpsQ+bsx2wtzlmyz2tMDdvZ9LhZes\r\nkLsZCWaCluZmW2jaaghj97Y3pnv8r/K6I2otRrD0iqBVeEQQvIytS4+3pjvs\r\nuRVzCyejUeYKWnubhvjSlPJWRTbKCNTcESHNL8rvIPqEOtkckP/+znsD9iAA\r\nxA/XsN/pQI4alq0/f/iF3ByHdhVOUwehsMuew1nIVKm2eooEKa6eSSBiTEnQ\r\nrHtIIn0ZOyVEsWw8z3cmIuL1LpPZD4jiVvDpbXmgK5axU1oZxyY9B2GviTVP\r\nq4IvxSiRGRxWOCEX9cvJiR+faU/Dqh33p78UeXlaHVVJiWE2oonz9SvXD6YX\r\nWiPreQB7ju1SEWfJaseuBShvbNVZ0uvgP2g=\r\n=gXnn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.4": {
+			"name": "cloudworker-router",
+			"version": "4.0.4",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-KriZprBNY2J56odOPSnjzMyidQSEXYLCHVC8oQO5Swyz7uOaZQsvmxlCNepfc9DmTECVdMaJ9bUJ+gAywnwZow==",
+				"shasum": "b73b62924841d51a6dbb88090939a72206b33fa9",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.4.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27624,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEFME6Uo3Mhm5V2ou3b1ondxhKK5cHuR+WyKv21jD61vAiEAjc0Y9OHRvPSFozOMu2gYxXoytKtwcsCc+aulJD+qG4k="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjgRzdACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpBqRAAi6O2Tb1NQpaJiu/6quZCMVAaG5t34JCFCG/xzpsIvowESYG1\r\nzDXLcomcvsnD1uYYgf9htPjHwlEYtThTOid3jfnXEBgomPIUMT3cFhkT1XmF\r\nPOkEeB/RRqivy6ndQmuEzyDhpo7O82cJZEx7ammWv/nuZyzWYv78xXw4+741\r\ne6F+kSCtbiRmCq6AO2Sx8OFr2m7lJfKNm+TkhGxaBnwNyXac/RcXZ7MF9dp5\r\nh78bEKs/p/DBj9kzFs88c6LF96Zi9VER1z2dsP6ibCl2LT32jhPva3TIc5sI\r\narjeoIp6eIVb27Aia4App5+sDkmssApdYQUEI0Shxrj8b3StVd7v6TMzFvWQ\r\nX2xP8ZGS79UK8HWJVFqkKiLYDINZ/WsaSTGLAbcFDu15fnM2KPRgX7nyzscU\r\nyW1KTl2ysJSWu1kN+9xjp3UnKX/QwwWUXNHfmigxCUPm6mM0CML67sCpbMZ6\r\nVPeIDwfhhCi4oNfab8ebOnR7E11du0ULuvsgAycWPvuUOtfNH5834roBNyY9\r\nOvsQBSyULzWD9AOOp6akmpjtMX+VdU4hRjlWKCApbIzgLkJdsH51iqPliKrb\r\n+Tg6OyNnx7orwqKzcU5dzb7gjSl45LghYxN0+Etv2NnrIvokQhwfWGSure5T\r\nDuYTB+oQu6+4tJt8i9I6CS62PjQYtibBNAc=\r\n=rT5r\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.5": {
+			"name": "cloudworker-router",
+			"version": "4.0.5",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-qhlPh2cknaBZAg957zU2B1LSMQyO8B3MNxAcg45VWq+lTfjWfRqKqaPhRmK4eaJnW7oFgNbBRXtC8aNDJs17fg==",
+				"shasum": "15ecb106cfbc16984f74b4d934fa207e0b1581a6",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.5.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27245,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCfRCHl0uNPtVMe4n66vhWU8fhbCPUptgr6WbvZGBR+SAIgTacAYeDG6HtIhxHeOiG8h59OQrBB7KKjWcNOL6u3TLM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjgR31ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqr7g/9ETHv3/9OsgkoszqjvFPdTLJvDli2cx+Z8nK42HTMo8y77EFL\r\nnK19Hic2w7BmBK8Bh3vAJJ2TZfxQNlNOHHlQRMt2VkbrlcER4YMuDXscm2r0\r\nfthC3YW52alqMp36OG83rKlTTyRacsF2ZhdIvVohVEi3l0l/pGa572YQ6PFZ\r\nQqE1WawnutxCZumMD+YXZiyNkOGQ4QLcy0IAm6okWxCYkWLj5B9vtWjR9X2E\r\nRlaI4yXa9N7zqbkdgW69Gqp1++M+TvYFIgt1fOlrGZ9m3jiGjUA0qu4iRCxx\r\nhb8YiSt2p7l8OvYnice/rQMdKvE8nzKyzqrwALOwFI5aLH4wqM7h7e53Q+Gp\r\nThAw0pTvAFVFpHyAjqujE9kS20UxxAchrXnj136v+r1q6pzfGhbblJ28IjgT\r\n8OcGjVlGQ156LrSDMeS3Fq3gr/LrsKTQARMeO0jb8E52hDTirntITdOxGoqu\r\nPiuU71dIZtnuIfrSjkzhrZ47lxJ6KxT/si8Nj2Jv0q/fVIU1iRbg7wyZtaH8\r\nPqCNpL/d/pFgQzrmhZjt57A8cxuT9+T5eznJ+od3jCYJEc4yTigPcV/LNXNm\r\noNyjevt7Y3GHr+YFAfALNqpCn2qVZ44jh8OqxJd3i3mD+Eg6C7LQltfkQuRR\r\nXmC/1hOoDzavq6Y29IYELoNx1rhQMBCYsi8=\r\n=CZor\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.6": {
+			"name": "cloudworker-router",
+			"version": "4.0.6",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.16.0",
+				"@commitlint/cli": "^17.1.2",
+				"@commitlint/config-conventional": "^17.1.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.0.3",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.0.3",
+				"@types/node": "^18.7.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.37.0",
+				"@typescript-eslint/parser": "^5.37.0",
+				"eslint": "^8.23.1",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.1",
+				"jest": "^29.0.3",
+				"jest-environment-miniflare": "^2.9.0",
+				"prettier": "^2.7.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.1",
+				"ts-loader": "^9.3.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.8.3"
+			},
+			"dist": {
+				"integrity": "sha512-Tm0VGQec5qurCXm0xnMKrpSllbks8hVG3ireAyWeR2KHgM8xOUfq2PAgQbnFUlSXHiAFkoF9Cya36RyQ2BxgDQ==",
+				"shasum": "308f716fda1b0470e5c14fe172a104a4341ed676",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.6.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27258,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIB9yLoW+/7136GYANDCsDCoBjeHKQEyQykd8gwzBVfjjAiEA2jYM5xfLgXoC0og786lwfSw7tM/8wY5jsQFdF195CVA="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjg8iJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmojEA//TSJv02hcu9pu8sOkt+hhkQOBbFs/+cgIKqCNL48SwM5yRVld\r\nE+XQbXCOxpI3HAUg153AlHgkdnXTDBZOgpqmiW+DgxtR20AeYQSnjYS3JZky\r\nyl3oNMLH5N85yoRdP6JiXPNoR98N4xSZzrVtkT7sxqx0miJrQl8lnO/3YrOR\r\nwX3WoHnIQ2OQ+glRrmv519IrTT1kkpk1ALeVIg3UWHZ+McG4ykjytz/hp+aa\r\nnOnIOHPkIgiOE8wT3Z5I3zwno7UB+o7aZSaXIq73NudkJvY6TVF1Xa6Mv4Pv\r\nzRqXAKfX9VK2KZWEuyKPNm/p/MI2DOOBJnfodH/Y9oH4HFWtMF1X1GdEHwBo\r\n49megzeVr5clQQMlG3TsXCt9lMHxeFqdCm5qHJbp0XyPP5Gcu9wLW3Ww6rZV\r\nY+bHfP9UCnMipxuwB8XTSbtOmr2CpmJUEqxXal3YEeAFYEFf/5qKsNy6MsNH\r\nWbfT/739P4XSQHynoymsmeHk6zRMosQmHzcIYAbZkJDIV334Q8Xj88fdlBf2\r\nVMZq9O8LlqZVN6iJeyHhNlTboYztBLaWVlRBtqM5YHvKspAHmmX8+vUzmJOS\r\ncnjHxD2LVLmKY4Nb1By4uwpW2U2fsY7yieKfueJZBTLHeGpJQejmQaxiReor\r\neqOG6+JGH9OszBr4LuzfB0+jc7n0VxIlVEY=\r\n=PQIV\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.7": {
+			"name": "cloudworker-router",
+			"version": "4.0.7",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.3",
+				"@types/node": "^18.11.9",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.44.0",
+				"@typescript-eslint/parser": "^5.44.0",
+				"eslint": "^8.28.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.0",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-eW9F1cQFyF6N09PB8BircikKdPfrl22QD2R7DDw9U2kwRvnOqPF1+TTGcMKG38sY1GyEyFI0biU77I5eeR1GPg==",
+				"shasum": "d81242021d8025b33fdd6e9d839af2dad1af1d15",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.7.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27201,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDR30OqdHDxIO31auzQG0K+sDb9T98ibK71uPBYlDvaTgIgfxJmq4BUVoUj3IZiIpXTF2UhpUO3jRm1XXuLn7sr9mQ="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjg8lmACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrpPg/7BjAUXwQOzqd7WDbjzc0XLE53xhL24h4CeOGdu4YAFV7dYGem\r\nDLGwZIgjmy+llLnoz31nmmIdu+RIEwWaX55e6w7+LYIqvZEAcktHJFNOP8z9\r\n9w3suMnhJQIXMoAGzMdVoyIo4NzvjBm4cBXIzx5qU/B581jb8GK9XDRF0Xzd\r\nqSA2LMtJ6rPOdIjTJTnbT3NXd2OocjpyszEJdntpqm2630AUECpnWJ37zPqf\r\nil5fpUi8YzW/3lWY5yAkXQFkZmso0VxTd9K916Z+EiSPO2/oRmi+N28aazkg\r\n+XF1ZM1fHhbyWOylVE6U5+5+FpREJM1hEPnPnRaIirkfQo4W7duo8MwMdiD1\r\njbh8FoLJOvEz/VqbftCSms87P2jI6fsCAP/2SGGGx+Jojy/RiW/KNXzT01fC\r\nC9n5P2qMY2D7ExJG682FPz+I2iDbpItH9y8WnQy4gRPyXx/ROlOgeD7la+kq\r\njSXXKCFBAFHGcbfx+hDka+JXW+jet+sdIbxgs6pgfWC3lIUcEYkJufIVOwFO\r\nddHZ8jg6Dz8ZMEUAvxOEXt32GJsJh0dS8s0YcI9eKawueBmjxNDGgJyl6TaY\r\n1g0YVhhKTaTixhBr+YxBKOojf9YeMOLvguKmbUWy4zV9veu1slo2jnEr6pyO\r\n3U6lkUdRx2Lfbpa28rYYB2c1a6x9eDT6bSw=\r\n=QV7Y\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.0.8": {
+			"name": "cloudworker-router",
+			"version": "4.0.8",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.3",
+				"@types/node": "^18.11.9",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.44.0",
+				"@typescript-eslint/parser": "^5.44.0",
+				"eslint": "^8.28.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.0",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.1",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-DxbMCH9bKNwMlMhKyxnHf/rFJt4e7KRulu4BCB+P6K5sefwZktrXNpbyIi9pvM9lNNqafekJ3Owi2/L99uQIFQ==",
+				"shasum": "48a20ec2a810ea69ec59baa9e4a30210fba279d5",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.0.8.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27400,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDHfkfpkOiKgfI0O64g6KSNABAsGDrgzYxv2S6+G573SAIhAI4MOD21ieGOWIYR+F96JAPByWe3t/IyVt6+Ci8gxQwL"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjnjPAACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqA4Q//XVlwLGkTZmaV5RxKA8no7F9kBgGfY7z73vvSYdi9XR+3OWuW\r\n38MPVMSTJ+tjy2e+mVFSwtn8/TPZhRH2+g3/hOPtM9DZtpPUg56bquXiCboe\r\nQbGxnR67EVTG67ZAw56m4RJpeHDhoAwF7RcuJaVHGvF0X+6ZR/g1HJReqqp+\r\nFSQIrKoE4rWDUYe+S/LsB1wouf19GJW76LpD8SgqUtB1IPm7sHdPhX7ActFh\r\nI0AqqaHgWFVTaVEpbA55zuZk2E7Go+yBo9jpf0d/9a9Zz/sQ/h7VY0ojaTo+\r\nzwvnC0VXelWRb5LPwpIEWehRM4Bq9E7B0R5tIlJEVcdnW1XEpiRAfWRxjK4o\r\nDJijeTV6iWMuz+VPkMiiE7cFnIKsi+rNyJfSQd5OyHpDBa69byJu14SPVadl\r\ne0tsirWn3BU85BEDQZfswj9ky4kWneGSYTIiMrgukmjPh0BtNzsj4p74RK0q\r\nxNeKWnS9qOMdBgFvMTBPzId7Ln3+CCDqowLDEJwtIJF2qae4u/W6+uw1jem9\r\nGBACdeQ4YxjAkylLI9tS6dc/Lld4SyNrek4siinCO5R3K0I7+7cUlQ7vMG0C\r\nt7nhOchUi4omdHmElw62xfSWhW3hQqO/qjzwEBR3RxlhzZnEJ3R5YeKqMNkF\r\nEoVLDsrugUBnQWohqNcSYNoZE3wqlx4Kd2E=\r\n=KAlG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.0": {
+			"name": "cloudworker-router",
+			"version": "4.1.0",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.4",
+				"@types/node": "^18.11.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.47.1",
+				"@typescript-eslint/parser": "^5.47.1",
+				"eslint": "^8.30.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.2",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-RpzlsSv3FUDCx6r10uOSAtf/yl9jT0GFkBEVjooA+IsdTvaqXw5i5vDvtyWXtKzEzngKQ3CvGGHXbrSs0tnnWA==",
+				"shasum": "cd16c3a99fae60987bc3baaafb53828d4c5f16d1",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.1.0.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27752,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCID7tP7ql7W26RI29Z8b+JkY9Hzh39M2HP6An6Qc4sbw2AiEAk1Ix6MkA9FA7syuZCjj6Pd3bypO8WJY6dVq4DZvy808="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjr1E+ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrRWQ/8CyTgJCxm/BgUAP0+7kXqrd3iPk6ImpZ4KU2AKxvDUxW4Bcag\r\nRt2WnY/qnaDcGDa/Y3glmCpNuogvTG5Dfu+mWYzkjb96wmY4eUbabf61BvzH\r\nqXM8089yA83+ywLg7Vbl3ouuycWYqrNjn+jgIQZIQVbQHYesGfMkBfLuu6yq\r\nE3sCmWc/3u9DRLDGKSrJi5JkWqCQn7yDVFp1jsS0FDyYUrLHfAPlzEsANV3l\r\nNhXptgHpeOUjVjpiPxJ5QWzzIYpNWvarlg2MrgXNUsuUaTY2svyr7vN/oDOl\r\nP6ccCZ2gXmaQzC991+lMrtod3sUZwNK+J93qCuh38KtuVhdsxMDtxCGgK2SN\r\nLDZJyR65bwsenVn0f1k0erBzxjFfatwpWp6akGNc/e/MaU4KP78wjDXDD/qT\r\nVzMETO3PRGD6gVpCK3JcEldWckA7De8EA5Znm2hh1gPABdoVEy60sm5RiE7E\r\nZWM9h//cwMQYQLnCG46Tg/m5viXSi9vsey+mDXndkbjrxqTurfaqXD2ViC/5\r\nZqi+NlAcO/5KV3O8bSSqL0+D42WYoO81KTJexPossjPDEg6CXdIeAv5b7/fu\r\nG9+BH/DIRkfEbtjrcyAuwKRoFWjm0doyV7H/m8jDuWFZcBpP5tE5KBuo7dCQ\r\nEbNSbC0S0FkHc0OFHw/OQ6B11P73rRVYDFg=\r\n=IKIp\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.1": {
+			"name": "cloudworker-router",
+			"version": "4.1.1",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.4",
+				"@types/node": "^18.11.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.47.1",
+				"@typescript-eslint/parser": "^5.47.1",
+				"eslint": "^8.30.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.2",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-XVw0sVyBkxB84UzRUbdyjRrVDCkyjvzHGoNWZ0335h+wvwLQt7tIoH1BO5LRPw5eoBtlJB7KEOU93aTFh4FKYA==",
+				"shasum": "a8da131d9facb3c36be62dd3aa2196bb9fe7b1f3",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.1.1.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27807,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDULUo+4ilos91ZUJyWAGXL8F+q9/r47mlTNxnR+AkLxQIhAJ8aHAj0KlKuDqondqHvCJ888UTEkwfqjaj0iCPj94pT"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj9cllACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmodcg/9EtSabtcnhH0JWdcJUYr01ZSMnFAVMR6/zGF7BXG3ca4mmDkH\r\nH8qAFvLiSVTzB6eZHxfB/8XF6O49vKy7cX2d46FS79glDQpEJd4MmXcAesZX\r\nQN54RDrfnMkkSzEQPBs//p+RNB6xXHxw274xaOQiEiJMnuEaM5WgbRCzWMkB\r\ny+LKhj0SJUVf+Xu4jtloPPfRSZT+Hckeuorz6lQnezgHHzpa1kzxP9bcJ23M\r\nNvTCzAu682VMsbn212F+wqiqnBgDLt4ykkGjIEq1sjk5DgY4c+VtVZ+jIOR8\r\nq5xHb6oUdqQAaV77m3t1YImaHKc8AhsC7NxiaMqQkeKz31b2OA3wPwxhUz0G\r\nwaPXjyPxIRVvtsbZi70lQh4lR5Cyid2mjV61J2kL2rXpAOHw0IcXevgtQM9M\r\now+E1pJ8Dc8GoPQqNqly6+ZfJRFEFBx7ysjMEDe7bySIUZzMlKsg+CaWbse9\r\n4BfUOTrcm0uzUhQhp8czruX8DG9ATOPQHstr+1ED4BiGJ2v/Q3TCcwIECfHI\r\nkI24mL0sFkujjJcdpGRCui5qm4uRUWjgnYiO9SWNbxUN2Mo9uP463dT8Po7H\r\ntx0mo98Y8zTs/Ghmvo/05rlKxWPjQTmjVZYTSfVwrSn9ISVSYgHLWSiLN4hV\r\nx9lldqRRa7EWrGHWg8fW4mr0ywoVnQRhZh0=\r\n=yeEK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.2": {
+			"name": "cloudworker-router",
+			"version": "4.1.2",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.4",
+				"@types/node": "^18.11.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.47.1",
+				"@typescript-eslint/parser": "^5.47.1",
+				"eslint": "^8.30.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.2",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-HQhScYqNhPkWJhyMOWyVDL+wqVBGEwJ+4rtPFqozdn3ivlp7nePEsBtaD3EuUrnqlmBXZkcLn6+AHHUYT8Wnyw==",
+				"shasum": "25d20c6f082c646875fd185a56992ef8edf82bb4",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.1.2.tgz",
+				"fileCount": 33,
+				"unpackedSize": 27881,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCeWcAQcyUCFL8NqVVkUGSdfE44bQQwyLbo58Et6Yo59gIgOPJglXHQlSwXmDoKGL8O8nH46UDvKnimeR59Nf7MFtM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj9cpxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmryjw//eXka10McliybMUS3Z0Notdws+V9oiYhQnww0ukGaNhL0C3Gi\r\n52MiAG4kvrcJpZqSmOrq0hqDVFqObZSnc5OvIKqDjL8KRRqCCEJX0jUphJ/k\r\nNHiP2gW1HOu+MYN7ESRicQQIJ1L/FhUc347B49MYR1fPD1HGPGDujOHvdbO2\r\ng3ZE3UZWWuRoCLsFdAhrl5CZVR9z2F80abuunmviAJ/SaeXWCMCDoZWvgTPS\r\n/z43F1YpyNQRJN/LF5Uq/u/HfUj0Up9ATS/58swPa5FsS7A09ZF9rWrEfs9S\r\nnm+cYEjiFiiQrw+II+EcRDgEiojGVFlrBa1Bpxm4JACCHIrutaWClTaqG0hB\r\njAyFHoRh1OERxxooC8Wkavgr/YuwCWyaqTOSHdKbaxR8yVlfudhUU2V4Erh0\r\nB1NqM5+vqP8mDeMW1j2EeENfGEaYPBDtwSLcDcWDZ13kr8CzSJ6oaI77A1jr\r\nNZQPNKxVALveRe4bcCt5KUT9cDDA/MPK5LsmgJYyJJn01z1JJdW+gIEzVWOf\r\n3ZzLl69WQDcdHJM2VJ4lGoxdPe3msPWbeKtkQZE3aXwxieWsHtaHfxfvQGri\r\nQAq8dAk/VR6wxPJnp7fxcaq0zKDqAC5+opggaSLT7TukoKKzqyw7Tx9kk79Y\r\nu7Tsl01v18xNzzUzdN1DMZsrjGwIhvKyeSk=\r\n=Jm5o\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.3": {
+			"name": "cloudworker-router",
+			"version": "4.1.3",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.4",
+				"@types/node": "^18.11.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.47.1",
+				"@typescript-eslint/parser": "^5.47.1",
+				"eslint": "^8.30.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.2",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-8goDsaDMP+g8i9vDcihRwnBQgHOFS1FRJc16/98i80nGDP24l9wZtlJ3vKF0nrBsBz3aqeVKeGIK5XcVT3ua+g==",
+				"shasum": "347f2e13a507277ed80f2ae283ec630a822a9b7d",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.1.3.tgz",
+				"fileCount": 33,
+				"unpackedSize": 28279,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDQJ7jvVvpqfSTEyJOvOj80KV++snoFDaxvgNHTsEVZywIgDjXPimZDBs5Xtuty2B2jK2b96bUAo4uv1kT6HvvtkwM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj+m6wACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpSkQ//dqtn3q8vb40zKxrS7XcrXBUxuwEi1gS4FZ/yGPFfOY5vD+Ll\r\nEB7JRONViK6KvFyFj96roVTMr5eH0s/0tUFT6+hHU7IMxNg+CoNruu+KRM48\r\nwHKQVYmk8EXmiL2XlsMd9A2uUOwIGkKq3CEVg1T/NwWjbu+5NclFPVNVAx8S\r\nIo7OBtg+1QgPkX1W/OuXnk7IE8G/EWBbLxoMy9sCUCZXNgiSV6Gbxrsdb4Y8\r\ngxvkD9b/cpZTAYliqCceB2IIvr9XPevYixpQoJC+n+LF72DMh45/QTZisJCu\r\nwjBRAso9J0j2CREObRDby7alHeFknpTpExI3NhYDpv082JOHSIr95PrwRf5q\r\nTe9tYYTcgDXbz5gw7Y/eTSQF6x+5AHpd+tBhV/dx2YSxsfx0fbxbJodbC/Q8\r\nA81VeD6/SP89wjBcfWtm8m0uMEodyEHUxN+ysLi4ZckXZ791rFd1/pUCjGDT\r\nWonVTaA4n3Vaii6ETcX0TRlefzuv6rHUjBuNNTq5w4DDMqaA0Kty/AZmSmhR\r\nxwAwlaBOYRDV7blJQ0ybPSd53m/uCRmCYwrwNk/jMsnlCbbzo2ZNnciyxyQ+\r\nvcqZl1GIo6K0QcZnBcoexespcfTLgZr3kCAc13c5ZYsAu8KPAMmEfeJQn6MS\r\naewH45W4r7FII6KfqFcZ92m9OPXT7BzLXAs=\r\n=JDvL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.4": {
+			"name": "cloudworker-router",
+			"version": "4.1.4",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.4",
+				"@types/node": "^18.11.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.47.1",
+				"@typescript-eslint/parser": "^5.47.1",
+				"eslint": "^8.30.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.2",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-4REHDN2l4xStGZ4MS2uGy7ANHObXS9rRA6ZfDtzt7U+/AWNrgR1ecqwxoUmqku6ODRso7iRHXP68Bjno8h8aFA==",
+				"shasum": "2c7a692446bbbc41947631cae8fef4f5a27f1fd5",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.1.4.tgz",
+				"fileCount": 33,
+				"unpackedSize": 28469,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGB6wIaqICSPblnaQibDSgkWT4eLMbPgWhCyYeN/7wWjAiEA3NXTDS9zxnSqZG/+ATdj6xTY+gAUsLtYJhxElBAAUbg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkAe4bACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo9mg/9EZGn9qT3GzXcvo9UmDbpeLWHQdMRqQw9Dm3y8VAd//XGVOU2\r\nygBOe1ylbiS/tuuFvCMww5IsinUXZg0OKo2xDF4tnNSIRyGx1gqPgCju84Ll\r\nBA/jo22vL8ELYRRKhtOnGToMczVOUmjz7ICRHLlpbc347QlXz8zRzmKnxKmu\r\nrZzx4JYvQ1sTuRQ9PKW1ZpZSVFnwZrwe8oogUP3xkGZ2c1qPtnR0yKuGsMSN\r\nlnKPxVCOmIBGPVfyeLyV9sSWORKe0HseVa2au1uWD6gH+K5SMTSYGaEYb/W5\r\n70/3Sl1aEhpRxAP5yJnc/0mfuo3vPtrnMgNr1M4YOuij8ud/W8lUzdF8D03L\r\nAIcB+sNkffsFQUsrjlO3bkRtGUcGzix8RU1vu9wq367rQ4YguuZiByCb4nbT\r\nNVuhE1Mb/ayJYNUNSTn67ehimWQtJI3fd+qoAexpl5QhL2T/O5v52UqMUtp2\r\nZTWcFi5xpRQv13NB9PZMYMGx2Tvq0rm04Ucwb1dgjrm9lHqZI70kNpo7HzLw\r\nreWqfvmiLE/40vsgnP81KeF0kW0dJ3wXe9WkafX1PsEaD9uP5tmIjyRjuzpy\r\nmy1staI33fXHEyTP5lT6D/2t4EeBNtxGP3d/fAvQHHeDJcf4JC7AjRSpTA6W\r\nQULSdjpV0qLZ4ZWumz9eDFMY/P7UahuieZQ=\r\n=7GMw\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.1.5": {
+			"name": "cloudworker-router",
+			"version": "4.1.5",
+			"dependencies": {
+				"path-to-regexp": "^6.2.1"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@commitlint/cli": "^17.3.0",
+				"@commitlint/config-conventional": "^17.3.0",
+				"@commitlint/types": "^17.0.0",
+				"@jest/types": "^29.3.1",
+				"@semantic-release/git": "^10.0.1",
+				"@types/jest": "^29.2.4",
+				"@types/node": "^18.11.18",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.47.1",
+				"@typescript-eslint/parser": "^5.47.1",
+				"eslint": "^8.30.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-import": "^2.26.0",
+				"eslint-plugin-jsx-a11y": "^6.6.1",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.2",
+				"jest": "^29.3.1",
+				"jest-environment-miniflare": "^2.11.0",
+				"prettier": "^2.8.1",
+				"semantic-release": "^19.0.5",
+				"service-worker-mock": "^2.0.5",
+				"source-map-support": "^0.5.21",
+				"ts-jest": "^29.0.3",
+				"ts-loader": "^9.4.2",
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-rCG06NWL3m3KK+uRUTErtRh9Fvcb8VCmugzNCJZiBO4z5weHNixw7QQ81ABhp40b2ikvBVEK2JNrMyAEr2bwjg==",
+				"shasum": "c7fa8a6c40af392842d49b7ec143a13615ca8c88",
+				"tarball": "https://registry.npmjs.org/cloudworker-router/-/cloudworker-router-4.1.5.tgz",
+				"fileCount": 33,
+				"unpackedSize": 28775,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDLYhg3MUMvoCiCba2zNi7j6J1oi1OzCuMYFKNSJ8bKLAIhALGuiiz/Mmdvi3uwaTL+iEH1GLeJ3OQRc9eExKhu28C5"
+					}
+				]
+			}
+		}
+	}
+}

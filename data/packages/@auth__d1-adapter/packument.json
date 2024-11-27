@@ -1,0 +1,1241 @@
+{
+	"name": "@auth/d1-adapter",
+	"dist-tags": {
+		"latest": "1.7.4"
+	},
+	"versions": {
+		"0.2.0": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.0",
+			"dependencies": {
+				"@auth/core": "0.15.0"
+			},
+			"devDependencies": {
+				"jest": "^29.3.0",
+				"@miniflare/d1": "^2.12.2",
+				"@auth/tsconfig": "0.0.0",
+				"better-sqlite3": "^7.0.0",
+				"@auth/adapter-test": "0.0.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "a0450fd4ae9f2a2095a8a9b7d5a58c27ec670e77",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-44I0t7A96+R515NL0t5M4gC4TtX3gIN5/0xBYHP0d8Jyvpzx9kIQSgXQl/qtc+Ac/JyuBu/zZeGWAEeaL838pg==",
+				"signatures": [
+					{
+						"sig": "MEUCICE12tOTN+Ym5nYgdyPLxGepaHS3/2cNKuemMDXWLvWJAiEApWZ6ADzf/ZzejZbphT3nKUvQcNLERutMgXUST+85Q/E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42669
+			}
+		},
+		"0.2.1": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.1",
+			"dependencies": {
+				"@auth/core": "0.16.1"
+			},
+			"devDependencies": {
+				"jest": "^29.3.0",
+				"@miniflare/d1": "^2.12.2",
+				"@auth/tsconfig": "0.0.0",
+				"better-sqlite3": "^8.6.0",
+				"@auth/adapter-test": "0.0.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "5d5a8a4f64029c569362776faf18b1636d74bd1a",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-dh89M6ROXYgfvAm0YCpU6lls5Etaz/0okde0PYdKA4lHgTuVOOBWuLVqzfjCMbvHMmO6PQ7515521kgsjp6nlw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCmcPO4wFXeY57tM9dt06XOykg/yx9X2ztE27lSxK0r5QIgdFQBpZlmcy+3i1NwTfgvwJeqZjXuqFGfPUChCgf5fjg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42632
+			}
+		},
+		"0.2.2": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.2",
+			"dependencies": {
+				"@auth/core": "0.17.0"
+			},
+			"devDependencies": {
+				"jest": "^29.3.0",
+				"@miniflare/d1": "^2.12.2",
+				"@auth/tsconfig": "0.0.0",
+				"better-sqlite3": "^8.6.0",
+				"@auth/adapter-test": "0.0.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "791ea2f39ab835828c19a1a4d91c812454f869f9",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.2.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-9Y5bo3kF7as65lQKrE5sQ6ohrTJhXuEletTCkThq1DSDnpaBUf/37StLr9F9kl9itXn1FNAUFo5ViskGOviXJQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD1ktmjbR0P9uVdZJ5Bi9FGwIDJR4r5F+5a1InG59Z2wwIgIYgjxoP2dQV3u7hRSYU7atmewDKKVUWl7SocwCsKbx0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42632
+			}
+		},
+		"0.2.3": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.3",
+			"dependencies": {
+				"@auth/core": "0.18.0"
+			},
+			"devDependencies": {
+				"jest": "^29.3.0",
+				"@miniflare/d1": "^2.12.2",
+				"@auth/tsconfig": "0.0.0",
+				"better-sqlite3": "^8.6.0",
+				"@auth/adapter-test": "0.0.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "5e6bb62c247d8091ae66e72ca835f54c8481e355",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.3.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-PrUAniJxtPm1K0JBdjKceeM/b+2e8Kv43HEROdGXrqptNy1hG9yEnh2mmg3CMBtNoTQ6rrTqVl7Pxh5fY7WdUw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCd4pUWxoc5MGSgy2rR0CRyOZo2phhQ1pRGPzNfoGYHYQIgAsCbDsDcBfW5/7L+aLdjf8yE4mV8cWeSURALl3dXWZ0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42632
+			}
+		},
+		"0.2.4": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.4",
+			"dependencies": {
+				"@auth/core": "0.18.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "2f795930ed1a1010aa6bfa5b6627c770e62ea784",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.4.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-AEyAdqYFZfJXs2E5SvxvKswPWk/F0OKXxO0aThu9Sq4UYb3hwkKqrmMopJlK2Y1RL8E6DIFPbCmUlPcoNw2sGQ==",
+				"signatures": [
+					{
+						"sig": "MEQCICWVhVuB9nNJXbfmlv0mJGk7iSJhZ3LFxdNdSbJcRlCmAiAtu8SGFrJ98KRqHjz3rdiKuk6AVDNDNHuUr0EEHQ7jCg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42528
+			}
+		},
+		"0.2.5": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.5",
+			"dependencies": {
+				"@auth/core": "0.18.2"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "09060a17d9eb3da9fb09d9d5aeb144e1a83bee1d",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.5.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-HTPKJyDOnr6jSZIPNgsDVkzCYSmdFTJ10zpqqZXoeQeFYRUOIGZCa0H7vRPKYfao5/FYBRL1OiEXLsRBPoQhbQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDiAHJnu0+q5hL9u97OfAHddsXwwuE/5k0nZ64cIA0fPgIgQ8YbJw7ilNLtodnGAMZMwrp1sqf751sNiRq+WKdmRxk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42531
+			}
+		},
+		"0.2.6": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.6",
+			"dependencies": {
+				"@auth/core": "0.18.3"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "51bf0f28df6545cbfa82bab8bbd8b1e4cb5f3899",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.6.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-78vdS9oTBNIchtwYFFb57PcZZeAaa4Ng4NmiG5r1LJMTvYnnvTrjoI54fpYVKtCWYtPU8iiBQg8g1SSIYsnSFw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDiRIr2CFzlJJt8H9YdWqgYgexy6qKIqDn16h1SXLtZ3gIgZdX03g3sV/1XGM+ZhLWvy/ITLPku1uRtj/SZXXhOShw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42531
+			}
+		},
+		"0.2.7": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.7",
+			"dependencies": {
+				"@auth/core": "0.18.4"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "68d4b838c44f5015bc46476060fefd545775eb2c",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.7.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-75WMGxdwNBTjc4bCW3hDXZ265wKiCIHomHPgHMuIP+WUTc4YbNR5beWYhyYNMMpjoI6TG8CrusW9bELTFCUDiw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBo0IbWrxD4xmg8LGwXuhein+2npeQJ/HoXVmMyaCdGpAiEAx9zqWYpkU0r8mb+SoCfctr8nyUa24zXVfbiwbjzP//0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42531
+			}
+		},
+		"0.2.8": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.8",
+			"dependencies": {
+				"@auth/core": "0.18.5"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "795eec1b35f90a6c357965faeb13177f5cb8cd85",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.8.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-SBf7De5v/Y2M23K+71L2PVVNVAAydmK7dzxeaUyg0d9Xpy1G/gW5Y/8gXysBtutOLp3UlSMG97gVigtPKgojaA==",
+				"signatures": [
+					{
+						"sig": "MEQCIEPBb78S7je8fl6jHd+O+QdaVm+ooERaXfivU9VLcuaTAiBR44+SLbgDsc56U95LqfYyK1WZycUusLfuB7n+02314w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42531
+			}
+		},
+		"0.2.9": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.9",
+			"dependencies": {
+				"@auth/core": "0.18.6"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "e8f54b7eb7c99548fb83d6b04a1665e3dd5b96a4",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.9.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-dfW3AIBmedGShCi/XK89ya/xQle77xsBP2uz+fdqlno9reD2AFnVtCiRM2nlSZ9PsXq56XSLSV9MsJDbs66Vvw==",
+				"signatures": [
+					{
+						"sig": "MEQCICZxpN4yih2DtuPVhiw0BXrdpFyko9XcScYEDTYtDI0FAiAnoHlZriE/OUR3EDCDcYEWMcBs/w19ri27ukW6Ods8KQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42521
+			}
+		},
+		"0.2.10": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.10",
+			"dependencies": {
+				"@auth/core": "0.19.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "550d697bc37e533dd731ff58baf52acbd783254b",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.10.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-RbrOu/FfkgbE8mFUYcu+MPBKyiB7JTuuLktQldtfF/rMV39utSTP0vUr8bo+BzjLiwOm7Yg2F9QkYGOwZrpIFg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCdYOa9ChJPYGgCYSzLbdvmaB9D3VRXqmOYKYGBEGk1FwIgVfzA4LDY/bPt+DTZj5b/mSBldkaGzCQdxNsdW943CuA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42522
+			}
+		},
+		"0.2.11": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.11",
+			"dependencies": {
+				"@auth/core": "0.19.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "37a5e9f96077feb120f6d07696d181045fb0f7bb",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.11.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-Pb19qewTXvTsZ3YR1ABeecATpzUFWIfWl7h52E5S5Km/ePhiv7oV7RCRre9xr8BsHrfspvYPPhmFdL5jYaFd0A==",
+				"signatures": [
+					{
+						"sig": "MEQCIHl5KajUgS4kvWgu9ugNGMK8gIBd4ILkgX6V6u7EFfmyAiBrAZTfIqUCUfFoeqrPHoZpNGoladijcPXUbZUFKrGLXQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42834
+			}
+		},
+		"0.2.12": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.12",
+			"dependencies": {
+				"@auth/core": "0.20.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "e7a61a87353a58cb6b5b38fa66dc44af7774ec1f",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.12.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-7vuZv755yJ0x2x8BV+RKdEAeJpLp8fpJHiTFRk/LeSOI+Xfgh3/bM/z01RidSWOwOWizzERUR5cuaQChV4ge3Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIHDHi4ilgf/013A6SbtgYXW9kKZVZPSfB2Y9cNzzIYCNAiEAhwkLis6EhUPAa+nKB9GbfpbmPQnE2WeBbP2GuAuh1WA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42834
+			}
+		},
+		"0.2.13": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.13",
+			"dependencies": {
+				"@auth/core": "0.21.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "5d7bfd872d236b1ffa97a2dcf0768ec4bee783c7",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.13.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-7nDpuCjINXdF/p2EPzrY9hVnhNlJftEC+iIG0V9ikNld88bTWHb7HunroNhk1Vm2rQMvtsevS2kKGAZCRJPsWg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDvSqBk66R8oPjHNQxj0rSZit5nCYIl52R8P1XZw6HycAiBkWzVWUq/75VUiO7fhEd/ED7kssoQ7rDpt7qc8bDzHKg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42834
+			}
+		},
+		"0.2.14": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.14",
+			"dependencies": {
+				"@auth/core": "0.22.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "05c49d60219c4ef89b0d79f64e71042963020798",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.14.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-UdZqajNmLeC3TmgNEdC2+JZKsEPiEZfwdPk43eupwbHO9PU739A7C4zmcHT0RWBRMUVges/YdTorcEMUzagFqQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDRuKwoNL5iBQcMeivriOuLJZ3oWpeHStHeFIxuXAJicwIgRSrH+uXipUehRIWEKm6e8gJllY4fUUzfrYOn1boBu1A=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42834
+			}
+		},
+		"0.2.15": {
+			"name": "@auth/d1-adapter",
+			"version": "0.2.15",
+			"dependencies": {
+				"@auth/core": "0.23.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "d990fc1ebe9fe32dba89e05c894f4b58de5f38b3",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.2.15.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-tWq0wAKUZ3lzegNL4J6qUBuSsdAR2McowoG2HxpFFAHOGPDAhO8JSLGaP0n2/bVbKg3cbG7c1nyUIi/JxuCmwA==",
+				"signatures": [
+					{
+						"sig": "MEQCIC3zrVkaGFhSeqzjfrXcj2EJn17e406g7AFSMF3pAdFRAiBdNpLq2nXlNSTH5+OYhLYirNKrfN1Z3BlZh8Xem2Gd2w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42834
+			}
+		},
+		"0.3.0": {
+			"name": "@auth/d1-adapter",
+			"version": "0.3.0",
+			"dependencies": {
+				"@auth/core": "0.24.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "c57decbfcf3688812d8c6e428663a1f9b9a6bb7c",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.3.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-QoRySo5X+gEkdvtQkLKMU2JcZh96g2s0DNsVIQ76IlKuSI/KLfKGhIn2LgTEb63DSX7GI/+dB1Vm9RvAJMdVQA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCfPqzdqgcc7MJsLDHDMaWWRUWZS1Vb/obAgGkSqCkl5QIhAOChE5W60MZRWxAt07laQUnxhC8dQWv5tCqTWftKAOlg",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.4.0": {
+			"name": "@auth/d1-adapter",
+			"version": "0.4.0",
+			"dependencies": {
+				"@auth/core": "0.25.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "49be9c6a9697e1d4208b858dc9f81fc08233b73b",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.4.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-ujWx25d19B6vdeV5Y/xtWdTOmvHqx9PGTUAZRzVcN3guN77zBSdutFYn0jlczrxviHtLkt17On3EMiRrwN5L/A==",
+				"signatures": [
+					{
+						"sig": "MEQCIBQe8I1AfLfl9cZsKG6PwGqQ17GtLW4buXf7RfphHsGRAiAA6wvg+zfFnzQRHDZOnR3UBQMBckJ3MPR6ePSw40n3/Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.4.1": {
+			"name": "@auth/d1-adapter",
+			"version": "0.4.1",
+			"dependencies": {
+				"@auth/core": "0.25.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "4fd982933cd9a75fe6589205566b47fdf3ade22a",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.4.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-uIWjBJd8xuzZIO6OxdRiC6xtEjqj5F4lpuq8tlY9McpfhSOijPvVt+d88Wfz+oEp3QDc4hH1TKEZYiANz3XQgg==",
+				"signatures": [
+					{
+						"sig": "MEQCIAMAvwaU3GiL0mxpnVpZ1PC9fhrGkA87gM1TRP/MsDEuAiBzCSuk5D01lpxtKzl2pgYl6/kII+TwXrtIZ2z1skMHEA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.5.0": {
+			"name": "@auth/d1-adapter",
+			"version": "0.5.0",
+			"dependencies": {
+				"@auth/core": "0.26.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "211e5dc6586fa7752cb39aaac84e774d7cb78a19",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.5.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-DnaRCizSGDYrcNh0Eu4WKbfZlQFX30O8l1KfwpwzSIZFVI9cm6Fnl28kD8cMYpDaqayeLMhOiO8zhJyEC4fE6g==",
+				"signatures": [
+					{
+						"sig": "MEQCIHDNARyHd8IngQIn7c9e/BSe7l8+c/LztHbsVeoRkJIPAiBWvVRMkcCdDWxIuFSziHak7vP+pZHzNk14Qhn12WiKhQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.5.1": {
+			"name": "@auth/d1-adapter",
+			"version": "0.5.1",
+			"dependencies": {
+				"@auth/core": "0.26.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "102580fb2a170e6470e4177b788311a758fadcaa",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.5.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-dhRxgwDtLOHpGtOZhtTzU34T/NfAVlof5udeB/36iRKjOVUmETRgwTPMt0pexF95ETOP5zvojhzjCXuEJps/Ng==",
+				"signatures": [
+					{
+						"sig": "MEQCIAZgGV5fJGTmkO3p/FC1ZbptbhBrXuwvQAnD/8YJAkTGAiABWBLk12uuYcNWfD1/Y1lp1g/I34pH9pqNE3qmMVt6AA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.5.2": {
+			"name": "@auth/d1-adapter",
+			"version": "0.5.2",
+			"dependencies": {
+				"@auth/core": "0.26.2"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "e5ce1e3f65a78ba6f5ac4d3f9be253ba643092e3",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.5.2.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-72S4aPKLCs31/ee5HD+ZRAc/Fqka9etqADnlDx6Te+AO9x+eMM0WX3Dfdp34L//6sjJ3zk+WevpYo32T39+cGQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICPfKYXM/2RVkfBssczFSrOYBEiXEftLitHKSHeb2//fAiEArlGq4FvTxK/V5VOHIphekPUkBMN/XRRtrcCYUMJ1Ex0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.5.3": {
+			"name": "@auth/d1-adapter",
+			"version": "0.5.3",
+			"dependencies": {
+				"@auth/core": "0.26.3"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "b2dd88927599ddcda85da4d14bf8cca80baa2798",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.5.3.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-4BTVUWU1IlOZCuqraZhilPCBU7HNyxHv2gdpv9o5WNNVjeJVIewZsq4uJIUEq7VEkJHNjuG/R2gmWYvxmoal8g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCK+WE0dalsowz8Y5OCn/GBJyxQ/5/UvlR39bAs2Zop5gIhAMifl7miYIxs7BSs1Q7sdww57p75um7Ij18XaO2E6kgm",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.6.0": {
+			"name": "@auth/d1-adapter",
+			"version": "0.6.0",
+			"dependencies": {
+				"@auth/core": "0.27.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "3cde2bcb4bbbd13b6b008be35f55bfdb38ca7087",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.6.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-WJ2k/SvLWb/FdxS5fWQ1OBHWBAEMArVpAO0oIEmeMk7/1LW+eHqneW+MU7xUD3Zm9WSUt3YmpPz2TlBtyHKcRQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICNePDPHTM9nuP0V5PIEC7NWdaZTbDAyLWHIPj/zR/F2AiEAu1o86R3vSCCoHwVxfkVqR7HnCq3itlkBbJuV16pfO9o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42817
+			}
+		},
+		"0.7.0": {
+			"name": "@auth/d1-adapter",
+			"version": "0.7.0",
+			"dependencies": {
+				"@auth/core": "0.28.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "fbc2b9d3de5b95de5c6417224e63dd252b7934b1",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.7.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-x4Nfi0APvlO+LX97QrM7XeJZgz14SmnRYhBahlFy4aAp+HAejhOSJLblqaRGpFZ4yNY9FNYPoZdI4RbQuvi6gA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDyEoP4mvaP5y7xtOqyuwWvj45YV5ytnGAHRHdY9PynawIhAMQHrrYl8uses23sXbN6GQdWvRm0TwxBGkm2A7i/ep9b",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42828
+			}
+		},
+		"0.7.1": {
+			"name": "@auth/d1-adapter",
+			"version": "0.7.1",
+			"dependencies": {
+				"@auth/core": "0.28.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "b86cc7cf825dff3276a1697a6620f5b31304c29b",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.7.1.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-1+XYCriSqCRhwRo5dOhgt3GBL6N2kO+6nHXhuHk71omJTJoS3DtuOPmxTCZFGqTONR2REzv42fJouR9M9WlpMQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBBgGELcygo73KAznh5EfqbAteic5zj3yjvRZ+9+nRLXAiEAtCafkbyNfGtzSyEPcBQ9Ld59ukvHc1EP1lqtZQt3zhA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42828
+			}
+		},
+		"0.7.2": {
+			"name": "@auth/d1-adapter",
+			"version": "0.7.2",
+			"dependencies": {
+				"@auth/core": "0.28.2"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "cf994a3c55b0dd841115a1f43b38bb0324b7e2cb",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.7.2.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-yAnZ+PxAG4CKdLsdOnivd98cSokQdq7ve/YV8pgPOOio7POqxGfniFRCpHkD9qNsVkrqrGtof/JVeOKnpDoUmg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCCnv9zekkHXnIu4KIvtt2TQSXTIy8Q2ogN4KDIzTm/9QIgdFZqBs3KHMHR0ecusj7Xm4evy8EiZ9V3KqFnFCx9lBg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42828
+			}
+		},
+		"0.8.0": {
+			"name": "@auth/d1-adapter",
+			"version": "0.8.0",
+			"dependencies": {
+				"@auth/core": "0.29.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "319e888fb7b7d77d6911127cc3c6c3e80d15272e",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-0.8.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-j2FXWhRwvNRxN/a8OAckh0RCbVW/jQ9JU6wBoly++o/xSnFUj8LP/+fye5Otq6tPGrI3YUzHxsnHooIt5JgV6Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIB2VrEaNXXLj/QQyQ8PIGweAUt8fHGKhv8vdIX3f75ulAiEA7yBEiMq1USTCHvVoFC8/SBfR+9d5aOybQt8Bi4micpo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42828
+			}
+		},
+		"1.0.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.0.0",
+			"dependencies": {
+				"@auth/core": "0.30.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^8.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "921c9b87b9e7af555a4bf5291de8d1d823c11efc",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.0.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-M4d2jbiXb6HHHhGtuwBSTVPbcr3Ba6Q4tUQhVMy3MgXlYlT0cxIcA1LmzzqIgcnXaUG/7+yicVjidz1SlVSR0Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCSYGOYndiWpcxXcHYzVv7r1EVxADrcQSSCALahYch1oAIhAPXTAPjrjYi5a5cR42g9UUUqXHJ/JGDnby26rnBuviL+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37101
+			}
+		},
+		"1.1.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.1.0",
+			"dependencies": {
+				"@auth/core": "0.31.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "ad7f105d31eed97f487559d1ab4d9107ae69807d",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.1.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-yLkRfVOFhTwGGjlsPwlwhAREVjej5QFqbLM3ESZQHNhQh3kZ5kPAzBXs8yL7mD6PCbzJYB1ojLTKuDHScYXJOA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD6ZyUmXRkrVcw1D28TU2CtlfNZrkspQiAlnLlyxN/gkgIgOnH79ct5MfG2/NYC+d5GnzAzAYokVbo7GZzmp9PeZEA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 37008
+			}
+		},
+		"1.2.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.2.0",
+			"dependencies": {
+				"@auth/core": "0.32.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "599ef6c0270770289a461b635ada04def96623f1",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.2.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-6+pQznwT604C8wyk4/CHHbIlRbIxHz/NAghLCaJd/+cb6+bb+73QPlctDjmz11wzsRJp9Q/XJ+oUx4t9ACWHjw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDyA4KWE1OzW6yDwbLRY4CNT6rZRBRdPKk+J87+t+2H+QIhAPhdgS8xEeGFiuOUv68Unq/kszYv6PSBVr4LTK58uQuc",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36868
+			}
+		},
+		"1.3.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.3.0",
+			"dependencies": {
+				"@auth/core": "0.33.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "fb75d1eee4410a2b1be02f877f2cd9ffead7058a",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.3.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-6PRKPxMRAfDANPKjTa1jKlGEP5WESr5I+n26+JoCYxTJi1KckKEBeYO1I1qSzpTNVUET+AQ1p2KIOFS6VhVoTA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDQbvzSLRB6i+YR4WJkcXYL90xmosr4we/LAmI4tvoQOAiEAzfRcem/EOtA5NNf0xYuv/AOyyfxLmG11D5/Gte/9Wmw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36868
+			}
+		},
+		"1.4.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.4.0",
+			"dependencies": {
+				"@auth/core": "0.34.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "31eac42944c78bd22ebbe1e6f65f9a768381c5e0",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.4.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-VO9w1b8UbQTHvMYzy4YSEEQ81jip7YfgJ4OjHxpR+DwgRyxHApY19kcWtCK8Jd7kceVWDm3GCbmcMuQ1YpE9cw==",
+				"signatures": [
+					{
+						"sig": "MEQCIF07TiKUm1e4Vylon80ymm/V0jgZsGhdOtfn4qrCaDX5AiBk90o9m7nmhLCd+Y83qAud75GsLtU1sbFnNSbQKlul1w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36868
+			}
+		},
+		"1.4.1": {
+			"name": "@auth/d1-adapter",
+			"version": "1.4.1",
+			"dependencies": {
+				"@auth/core": "0.34.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "35fed66abf2850b044d372d52499f49c4f856863",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.4.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-+2Hsp9ePboKOOnEniFH7nIDEFKW/fHUq5tVFBLMnJaiW/1fuYeNMN+y0nRewyqS8LjZ2UgWEMBkckGUEQbAkUg==",
+				"signatures": [
+					{
+						"sig": "MEQCIA9tFATsBqzXnABuZDgLCquPkGW/L9ZmTFE0KJ/a+8PZAiBUQtL/Kdq/4RgZhDyvLu4kjt+g/DLyIyTtG7Q4zJ9fJg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.4.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36868
+			}
+		},
+		"1.4.2": {
+			"name": "@auth/d1-adapter",
+			"version": "1.4.2",
+			"dependencies": {
+				"@auth/core": "0.34.2"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "0cd3e19ae077df394375c1fe8d3ac2348f356a48",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.4.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-JzFOpmFjEA05qC8XdWzNulmBYD7PL1Yas7oPYHDDtFSsTPikl8IfuZHKBHfvFfBc/MeRjWsK2aVQYiJrApfIPg==",
+				"signatures": [
+					{
+						"sig": "MEQCIAMR8QK4bplFSLKg/Y7mpCxq1+xxQ9qBELf7M/j0r0RRAiBSuLbx9KzF/r36dQ4E0TDu6UaBMPkQt6o0+K1Q9frrtw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.4.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36868
+			}
+		},
+		"1.5.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.5.0",
+			"dependencies": {
+				"@auth/core": "0.35.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "06bb6ee70d93a691c1ed238bb48920c4c52be69c",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.5.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-kmrKLwu9p7J2/iGlq6ImIb1KZAy2rnYGFBJNHo7dR8IliteO+tt5saKpTjvqrzA1giR73KYMIWXl2jqvTTVK7w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDYoKmJ+9M1Mu7spQGV0AiasIJFJwaX/yDmpZBQRepZAwIhALN1a+cNtDMEjh0/XQpu+3lMceXYb/ukTIXUTuSi63Ew",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.5.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36624
+			}
+		},
+		"1.5.1": {
+			"name": "@auth/d1-adapter",
+			"version": "1.5.1",
+			"dependencies": {
+				"@auth/core": "0.35.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "69ea35f47049779cae784d3892737753b0283c54",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.5.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-MWy5XCwxgY4ipi0CdidSrDAJljzUE75Xs7OwdDsOt+C/fLJX63++3ochQKyIWxmM9fM6rMnXjAoWvWZYEFtRtw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDTo/W/t5nhtggNXUCkY6qSMWfsi3JeERGSaR7YJDIBBAiEAh2Z3G99RrwQv+uLfuchEUP+plB45eiFMbF9LPKdxHTw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.5.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36624
+			}
+		},
+		"1.5.2": {
+			"name": "@auth/d1-adapter",
+			"version": "1.5.2",
+			"dependencies": {
+				"@auth/core": "0.35.2"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "b293575e789efbcaec7187082a7917571b69b2cc",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.5.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-LpTY4cUSNHwm3qPIOxBoaKv/54pDybKBNhBrQWZChnfHUDhhbati1A/z7zfd3cXCKGIpYitfCqxv+ZV8n0sqDA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCtxs9OudjZd8w2PHFfr0OXtv6oL7fC2AWLu/+8WbIuQgIgXRnUZYmyXKWOPsmcG803yH5ZpTiQaHgdnQS613LgmoU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.5.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36624
+			}
+		},
+		"1.5.3": {
+			"name": "@auth/d1-adapter",
+			"version": "1.5.3",
+			"dependencies": {
+				"@auth/core": "0.35.3"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "ce464017e6b03fd4092229a01777c412d1fc5961",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.5.3.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-vrZp0EAGNyAowfZ/nTZk3aH6r3XGV51TYcHSPRX972siGM0jh6bre0fY/J+WO51DpW0m0xVvWcx+XYwjO9T2jA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDYlpUAKlTvJUDYfTWqP+vNTxQv++mfdBUSa+RG+LPjOQIhAJAisWiFoDt9F2rer7QSNO9eirCJzUidFJSzY9CJ+K6f",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.5.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36624
+			}
+		},
+		"1.6.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.6.0",
+			"dependencies": {
+				"@auth/core": "0.36.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "5f56e7dba5e02f80e7647ab05728bd8e3c6359d7",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.6.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-8E3YgjbQbpnqqsKAFnX92xLRanqzvuDovGqsJj1nzwSe72FijbJ9nIOSemqBnZBllbHPBbyvDjDiBeA6a4fT+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZR/D0wYjHQQTQTpAzUUZ/nk9Jro1ILxGr+iYHczmu3AIgLYH6fX+rdQVIk8hydWM7WRCA1K7gDUr655k33Ksmrac=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.6.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36624
+			}
+		},
+		"1.7.0": {
+			"name": "@auth/d1-adapter",
+			"version": "1.7.0",
+			"dependencies": {
+				"@auth/core": "0.37.0"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "b00be995c9ee81939f03077c3b9d22f592641f56",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.7.0.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-fadO3WVMuM/84r2jDXyt7FcVL8Rn3YKpWp9bSev+4fkA5WvuChLFy8K+TKSGI/IvUz9XAKqLJF6VnJMcS9Gqcw==",
+				"signatures": [
+					{
+						"sig": "MEQCIEmzQ8Iva653JPuRbn+gdQdcGli+mdu2PwcHq7xy67O5AiAmp+HA8cyWeOdQrMMjKJwaBTtkBeO6mnLziyesrS324g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.7.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36660
+			}
+		},
+		"1.7.1": {
+			"name": "@auth/d1-adapter",
+			"version": "1.7.1",
+			"dependencies": {
+				"@auth/core": "0.37.1"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "1434db6ebfeec71d4bc0ccc64082f215ba41c7b9",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.7.1.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-5kKgmvrMGGtV4njCjblQMGRm9Gb/UUowvzKR2MaU0Nc2juH9Q2vbm3qsvwkMT/BLnpPtl/ZlZVCwddqs3X44xw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD1FO7Lrxh+P4Wa8LvJWVDrIE2aGdllwUcu+1UpR/ND0QIhANHiaWwrfiVr+0D2CnLwrPAcC0WKVWuqkYQx6pAL6dBp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.7.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36660
+			}
+		},
+		"1.7.2": {
+			"name": "@auth/d1-adapter",
+			"version": "1.7.2",
+			"dependencies": {
+				"@auth/core": "0.37.2"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "97930f897da7051b80f3da10934f53f5561bd5c8",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.7.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-aVjgnkQt39nsSEe8SoOgfg6E3HQGq95nSumGtFCxI5dv57N2lrpbqgzqo+1nO0+PiJltFXzEVcPE4/W1zDe+Kw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHTQ0/tLJuVFqjpqfbo+Jz5qcnDHBEUqUIjwQqxyJLhFAiEArcwEb4lhRkiJt2b7JcmGBnoYEUvfEyfUAQp8icHLSJE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.7.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36660
+			}
+		},
+		"1.7.3": {
+			"name": "@auth/d1-adapter",
+			"version": "1.7.3",
+			"dependencies": {
+				"@auth/core": "0.37.3"
+			},
+			"devDependencies": {
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0",
+				"@cloudflare/workers-types": "^4.20230321.0"
+			},
+			"dist": {
+				"shasum": "c2af9e0b70ae14dd73a76dc1803cb0d3f89d7cce",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.7.3.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-9k5kpb1rwvE2ppwnk8Rdp950VJ8y3XgndzgPLxUnHkwkg8alV5ZEeVsy6JtVnAXKitgxb5PiebjQf9B0mt92nQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC6+asFbMSgtpcOv5qP9/HxVyeI620zqd2s42jiWRo6nwIgJtrBlcTjd1GPZSWYzdeRAcFryJ9u/g6Hk9rlfhe2Y4U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.7.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36660
+			}
+		},
+		"1.7.4": {
+			"name": "@auth/d1-adapter",
+			"version": "1.7.4",
+			"dependencies": {
+				"@auth/core": "0.37.4"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230321.0",
+				"@miniflare/d1": "^2.12.2",
+				"better-sqlite3": "^9.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-yePJHX2pGqYUj7K23g1ZR46eDVUP1enJkJC+rStBdK/jkO4DT4/E7vcFbLzHLWh+SRRky3M6pICh41L39p2Xyg==",
+				"shasum": "742edf6dec6702dd9c7f18c971036ed0b4274656",
+				"tarball": "https://registry.npmjs.org/@auth/d1-adapter/-/d1-adapter-1.7.4.tgz",
+				"fileCount": 15,
+				"unpackedSize": 36660,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@auth%2fd1-adapter@1.7.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEIWnqPpW4+C1K9EAZxGVJnCXCTNqq7xxlatVnL233GwAiABdqGdQ9F1zfwn8ShYVD9iQwovas+FFblNobTLo5cY8g=="
+					}
+				]
+			}
+		}
+	}
+}

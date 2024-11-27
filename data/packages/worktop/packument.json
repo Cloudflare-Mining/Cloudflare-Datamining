@@ -1,0 +1,1218 @@
+{
+	"name": "worktop",
+	"dist-tags": {
+		"latest": "0.7.3",
+		"next": "0.8.0-next.18"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "worktop",
+			"version": "0.0.0",
+			"dist": {
+				"integrity": "sha512-FERspvDYP4R4yIQxTmoPiT0CU9udkVFDVOoxzcHhITZ7njDvA0l2Ht4oo+HjzAmTZMjgnVOe023kaSD230lamw==",
+				"shasum": "da9266152b6e4c8db4f89b01b1837a8bbba2f540",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.0.0.tgz",
+				"fileCount": 1,
+				"unpackedSize": 44,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeiokfCRA9TVsSAnZWagAAvGIP/0m0Rnb1DSpp0a9trW+j\nciMoq59glDZvqo+/hcKGd/QHbODjpr/QS86aOYznZqIZRjLFy5QxTzvYgPJl\n7ZifhCQUv5ECNRUjtk0+F1oOjzWA+QJdCtmGqCFmUosu5k2rXKYkR4qdXZ23\nC3ybmR5ldBqx4QI3joTHtY67B3rviihv0XgheTBi72f6LP9nHABfY+ErUdMB\n6VCN3xSm7ftVaaWGhLcaNfNuy57g1paZNgtcUNNrprq2BWfABPpX8nzABLkp\n1T+QKN5wlH3xum1MUbp8s00Rs0WbmZwG9ey5spZdSCJlM3k2Tz4MTHBS+m7V\nk9c115ygA9I4cLqywr89er5mratqwayE0v4RI9a0AaYVaN3f53kFimps6c7n\n/Xd1czKjWmF1xK8GDZg9ZR6yaLtt9odH6YXB4oEVy0WDVGIgG9cX1ZoOMxmd\ncqWDcjRZ8KB83x61x78eMhzjYkUE8IYXSTCiPB1ZjNay8SC/uqX+Xj/UtPV+\nqBf/Ijq+P52NJKqPWgIRPDSlBpnmBTxQbysqaFt4RRXZANsVJHniLSBFgYUx\neoykwindkJ4XV4OCmWoebTfI45IskbYF1ZKlEVZaBccgz2hvIrBcn7eR0tVg\nFQVd/zez9hjHZAx975x9zxynCR1b+kaLGIZ3IOiZV5dkB7eIsRM5XIFJKpgj\nCI05\r\n=xeAI\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGy1ToZd07mndcQN5nUHOJdfHFVbCAvST+KSq//9j7JBAiEA5AIMG5X+vXtrqMsLKstRwAoTT/dh+DCyeBMdLOt1gAM="
+					}
+				]
+			}
+		},
+		"0.0.1": {
+			"name": "worktop",
+			"version": "0.0.1",
+			"dependencies": {
+				"regexparam": "1.3.0"
+			},
+			"peerDependencies": {
+				"typescript": "^3.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-dDHDUF7nuUho6SjO29hs6Q0y+KwFqSNJ/LR6WUlX9IGfM90pc3LgILshRhuWWlroOWGxkagFZrNpRVn6y4V3VA==",
+				"shasum": "d02aeb9d00c9b5d9c28e77434bd5d56dd3865c3b",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.0.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 8057,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe4RdpCRA9TVsSAnZWagAAG1wP/25flFPU2DhUM8sIrXae\npBrddTTUPstQl0ojMHvSgKdtVPwY2f54dTq7dgE+NJRJhMxNpwKAWjpMw8j3\nXfYJkE7aieY6JBNrbfH60XZk61a4OhpriIHdyIEz4Rg8EyaMDtGfhigrNPX2\nS/SYbfkHfnD/kqwK9uRNbYEKR5lULnLjb8NrVPEt/eKIZ/9tTe7A/1nmgFap\nLU3S5AJa3A4wMWsYwmGIOW5FLl/t0M37fzXXKM9HyL+uliZxQl/SqtFatEky\nlU1A630Z4gaP6mGlNxvmNliwri/cEOCM7WYjPMoPZIv/Grck+7eV5IPA+Uef\nHIAJgG+hdq4/+UavBsBMZohLg89t03dZnxx7zInobaLCcybCEi94L8+8ZoQ9\nphksAQbQEuqt1tXKcEmo7ZMGSXpcHIBEfvKYezHbtBVs1ujj+LVIpTFK8MZK\niaKOAvcov4jNOIi9XUvCLO4l9ySczUXyAhgsERkWAdkjQxlyCimqvI68AK3N\nFcdMF4MdU3sJL6b8P2SRn8w4PXiATOu81GZjVtx3w+tEJK9PJ9yhee9KnKPZ\nWUNbh+d3y3wI1l6l63scZ9Z2YSssTIyxb884vSzYLpPWPARGkYxKP27SnuMg\nyuErhj6/EWLj5l2ajc8VcmBio/8E56t4U8Vns+XcJ1U3daGpNSmE/fsY21or\naMdN\r\n=1Ci7\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCZQmA3QlNd7f2hdApnkUuGVxqBFlOfs/kUn6zZ9BBNmQIgQLJKHBpQTidQJegIKGwvL3a+fXPAunmt4/mIwTt7Eqs="
+					}
+				]
+			}
+		},
+		"0.0.2": {
+			"name": "worktop",
+			"version": "0.0.2",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"magic-string": "0.25.7",
+				"rollup": "2.38.3",
+				"tsd": "0.14.0",
+				"typescript": "4.1.3"
+			},
+			"dist": {
+				"integrity": "sha512-FL1GxfK0aCEkXfkXLrBQJ70u18j9hQEG75Q/oD3BL5xuEFXMbP0hLuRh25793AFpWSiW1PQYU5+Q4e6iJgItBQ==",
+				"shasum": "b6454b201917842e0bbb1d6d56e29645bf2b23fe",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.0.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 12176,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgGePmCRA9TVsSAnZWagAAMpQQAJgTqY+P/bI7zUswstwv\ncRtiiVQcm3qPuvPcqFwPksqYpx2+pfrZmU2gIfP4unjAeK2X3U892l5RtX7K\nGFeCAzOTrFI/lAOITvTfC8rlqKMLXYw3mIFpq3UKBVxsQm63FEGxjzTfRa7d\n8Jajzmhu+pozakVExQSsxPutGP+KHRoQIbcywbRSnjf/3TaoP36hqD74OgkE\nFCnND7aeh2XuQCayJMRqUUkLrpQqZNea1gvuDgOUzXdB/ouatr/ACyV3wGbl\nxzzCPEDvIgM54zH2rBm2WC6Fi552vj10pikPkQj4KLpB+HJ0M+bzhAgrg3Yq\n/WNwGxp8chaVLlJhPhKe8IDe6MIOUyj6LcwPEpxTx2RzDsU4UcE2B2Dtpc5c\nhAWajiOsCRA0Nk9QJUwKcp5rL8ETaeNn0K/diu/j2iwcMaxVkzCl03BotKRS\na52dTZPkje40/U2KqM2K/SCmt3diLT5sfTeANwOGrlPPjsWV3GPMInpqB/L6\nHgqi7grnfGiNvFRRAJIDOTKkUSzNl2JbgZUVthfNrKrPKeqZ1mp191/uw+Cn\nUn6krhA7V8QSKU4qWSzJYTDbgscoMxKwnOT2+VkS8S0/pMbZdf5dCzNSzYTG\n5jnbaKdPvK1/lUB/U9WwOXdsapRoYY7Gp/5DgqQn+H6dEmoh8nSWy6bj4Hyh\nuelQ\r\n=ttri\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC0eWsZVFY0/DQrUDrFZr+qz3XHPZQvYxouqYIlkAR9uQIgWNW8oa/BL694a8v+AhCkC7gqPN6kIUKyRyR9TWpwXBs="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.0.3": {
+			"name": "worktop",
+			"version": "0.0.3",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"magic-string": "0.25.7",
+				"rollup": "2.38.3",
+				"tsd": "0.14.0",
+				"typescript": "4.1.3"
+			},
+			"dist": {
+				"integrity": "sha512-5Ea3sXc7kBhj7zwKu1E1CjKiX/dQkTUr81LAlKAGodrz9HxYc0FUiGNpfnQ+zBDcZsz2MrFK7izywsI/fN8CVA==",
+				"shasum": "56a0b7296e7e12d6f45d30e3ef742749b1cfb9c3",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.0.3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 12490,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgG0TVCRA9TVsSAnZWagAArwsP/0+WwbKS1B1nUaO4guKg\ngpprotKUG7OFtpl72ODR1wsCCzKbfORSX4xS5JUWyqKwPEiKWcmNPFz0qpdz\nNnNQwQvbLP5OljT4TfS0fRmsd12C4EKJxmschPAIk9ghB5pxEm6WKsjcKhUM\n++5UJrV9pKgzkKGGsJr0EngU4NgSMc52fyPOLE624WQQJJZB427WjJCbYqez\nud7MMwGQEIebX0q6/LPSQH9mgoCEbcNvJxiinC5PyOTzsOXxsHAlP0yUBTM2\nM5UiQV9BdHvHsZt9S5M1BwTj7teZ5mcH1yr8txro+06XBjldFBf4hwQfOVdd\nitZegDL9HErL1551g6IttNcijctB/Ysq7C4z+9sFg4aCD/bxni12UtnjMRym\n4/g6Sqvf8tmN4lm4AZSKQEYvrwo1baMa1ayRDz18y6xjZ+YxTHf5cz6yzlsi\nRMOgGlrj6GTm+LaK5PNa4G7+C/CiCwECQeRgVHso3oC+w1J2qDPJOSnrKZTc\nlqfxuxL4HNAzfsAV6I1uWpUZyJYjtK+6nDCSpDynT2w6gr7l6TgY2m2Ul8Jv\nid09huy5Rs7Pk6PUXr0Sc/4kqshJheA5WDVpCB+ob1d9x9NHd4oprXpEaHLd\nhAvSSHV+7sNA7JaZtKO03B37TyAzOaSB+4SKKboA6PvF8BJ8NRxbcpsVd6o3\nlUdG\r\n=AxPH\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDe1R2TxR6r9uMJM0jDhABe8D93WMVpo0RDTnLq/+XRywIhAMLES+ToKazqgje40m+I9MmXB1/zDM1yTyTNOF33dN1Z"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.0.4": {
+			"name": "worktop",
+			"version": "0.0.4",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"magic-string": "0.25.7",
+				"rollup": "2.38.3",
+				"tsd": "0.14.0",
+				"typescript": "4.1.3"
+			},
+			"dist": {
+				"integrity": "sha512-1sbdMbV81mBzr/RnGGiTwf06wNHK8yPFLQIvfETbPEq7dDXNTnHdTJgfftdla7g4YItYYwUAseZCOIV4hZMvcg==",
+				"shasum": "9d67526766f3d0e0efb629a04bb7fb9f370c6a07",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.0.4.tgz",
+				"fileCount": 8,
+				"unpackedSize": 13237,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgHJqjCRA9TVsSAnZWagAADJ8P/3lH2TTVQSZlo27LTn0b\nlRhtG1eowhi70SS0NVr2+h47f4Cilnct6YczTPa3QW1YBH83sCCKYB4k/yRi\nQu1Z47GPMxMuhP1plGG92sQiXP+0hpLFVnUFVRUGGmc38xrGmyezxRNY0ayv\nOCewWoqtiRLIpD8V1dKUfJfp6WbxA131ddCO6hTydHL/OkChmuu68N9PukRo\nPjQxz3xKzcrVwBLQxAO6fLYChpI13TI4QcAwQ6EcYq3t+mQHaXmZY5rKWjEk\nj0tTuFZrrE3D1xYX0+Y+FpqG5H1GwSyVTV8D5rISowvmswXS6rI2Z+cfAS5r\nQSwjTK7nVBXHbuYkbG7TCIM3jTy9pEF5ZQQxEWaM7u4sYbVg8IPTW4e9zsTY\nrFTPPBO8jnouiJE4FNRNVl3Je7l9Rb/3yeMkJcmdekZaLBWOjLyBQULjrKRN\nBVKf/X+WAsY3ugl3jd+Lv68SqwXqaDKTiCzpV/oLPP3TonC5TunzP1rZnJ2P\n8xD00bwm7Zx7tM1YlxKJ55SFRqaGORIHTmlOEPeS9W/HNmgVOrX2sTqN7clc\nwWg1RuT77WXbvxg1Y25gslAfs/n8Qt4/X7lDolFcxEQkLY0v1Zz0OC2kNu1J\ndltFndW/4KD0roUo/NdoMuqSPdGcUn1MNZCdo7iQRdn6yr72HCtjkcRdaDmp\nYrur\r\n=uUzx\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCDMgRQAfD0El4bqe7E/8QdJ5butqAhDEpb24xm9Uao9gIgHLi8QU4tor5yJngB9ID0fcWmNey/oRRpSt7g6LC1/IU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.0.5": {
+			"name": "worktop",
+			"version": "0.0.5",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-zE8PCwP+qpmUm4o7NyUnmIY0VB3OwvauRxtO8JD3Ful2pFfGkUqfVb4267TLnt3D/cmaHAjjiJvxQQ9qNi8GUw==",
+				"shasum": "18a15c6862a9472fab6b4e07d2807136145351a9",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.0.5.tgz",
+				"fileCount": 12,
+				"unpackedSize": 15979,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgUPwYCRA9TVsSAnZWagAAQiAP/jRW5CNs1mEuWnnqKEgq\nFCx3G3YYUr18XFwBz6/X6GLOnFt9v2tcIeDYgjUsAoO28hvqVcC6J6Llq5bl\ntu4WZOfcR4gVHa2XbIPIai5vUHLmrI/XSI/OGjc/IUVxY3WZ7RvFW3srULpu\ncpYOKyij/UgXntKZIPnoRp12DVpMoCrnOMWcESMEpUXSlLMY8bRO1I4P+KjX\n2l6Q05e4+AlaZ6qM8rzPvPvvXyGDLUpsP06oW6A1ljpll7wufddM25+QuxU2\nNsU3qROV3wDjtonmhKpDfBTwpxK9gCYI/rYYKn+NCbu6fIZdlUCLJCe6Iy7m\nR6RkmdrLibNMgUFSWcHW/H/9x0aZ6LmJk8VyhRRT2QHNuKM4sjpkIydQ5RkO\nBzT8Zz9HTVnJiNjYl0yYb53mUwl4jnRPqfMvOLwQzTQWZrF3YbrcEqSh3Xn5\n3LmMuQ61xn5TVmiCTZHEUzckMkPEbaCg9fCw9PTbO7CbvqEnHJSiHjF1B4rO\nB8gxchXARb6FN2fbv5FH6cLBRxzyZ+ZdY6/Pms6AkJQVott0bXhpEjSrhhW5\ncZS6AqWFXLncqKitmxxzwTiCNCgs0/3FmfR5naOvNBF6GS/IJRdv4it+q11L\nrC4knTXPCcm1vRCCz0K+F/PBi4VSoxQcsTjfJFZcOy4FFk+MHASSQCTYx3bI\nrQCI\r\n=QNPS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCwzPklIj29qmHuG9wZkO3gLe/IrCMGGqdItzWZ0du0IwIgJzvILfkyOjL5KrL24qtF0eKrrgraDskUDF4UvBgsJco="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.1.0": {
+			"name": "worktop",
+			"version": "0.1.0",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-4W+0XJ3IUyEOW5TLMQz6kg/i/QOsfhrrg1T/NVrs5KGiCpxItfY3QK1gogi+nO6SR5GVQwhTIEy5WF+1pcK30A==",
+				"shasum": "2d56001f803ad47a8fd5697d48d483972ddd89a1",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.1.0.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20397,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgUSuyCRA9TVsSAnZWagAAMeUP/1nn1+b5vlZHr40X0GR6\n6Q0GhfmFgWlCeWelOQj5elMhq+uhr/TCWu4O1dIyS6b3EjtOgq1T+cR6oI8o\nI28NrAG214Q+as+jy1uHBOQrC4zr3uw5fG4V7Dvx78O5FywIv0Ux2/u3lnMK\nM9VDvZcOn65ih/vrb0TbpCl1YYbsj4fvorEXg7nG40t6HmXPIjTvlBHLfysI\nDMEH+GdZ0qUlPgryg6eQn+91X4X+EZ2WqQWppLNeHKwor0ef58IawnutrSVV\ncnibF58ZOKkriaust8Ltsphu7IAy8dWIhwwU5fnmF90KRFjFuMLCl2x50Koz\n7mhfNM7aLLxWMSW3M++6Skp4DVOu4rw+nj+BmeNYOChBtFiUg0rnhsLyRXaK\ntiJYS136qd3Tfr2Q4OFVwhSk9m5DgYP1jUK1pIo1YY3e2KbLhja9N+QzfRHE\n9PDs2UU98hk3TaKzSUy5EsbTXYiDqmVI7NM98Ek/XdV0fXeQbs7FduMb5r76\n90p3PCTLOyPKghzvhFqtobIeX3rrN9DNXBtycMym6F5b/hvhYk3dyMb446Iv\nTEKLXu3E9piMWxFvonyhAQmFZPTLOb1RwvusnON5YFie9hbZLsSuGfdjpkd4\nuVBRJFW5j+BViPKmQCDDXXpUOomoFWBVdAdQaGVhQHksp8mtOnmdTd7bYuMl\n+eV6\r\n=sDdH\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCK+2+qVyTgHGGN65jOkaD4rCaN5LxN8tFHo0V2VuprFgIgIWH36G/bpbJ9j2/Kg/wcp6pfxsUVOCdICI5XwGAZaiM="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.2.0": {
+			"name": "worktop",
+			"version": "0.2.0",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-MTKbsh/qlECTd8N6jR7lI8r9FWBZNamNiKzOcq0Qep6fjy0jqGgpwSmSUqSLEvP68IP5wUGq2mJeKD4RkYhp1w==",
+				"shasum": "1414b161d65df687f4777e5cd501d01a29c8910b",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.2.0.tgz",
+				"fileCount": 18,
+				"unpackedSize": 27722,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgWWlACRA9TVsSAnZWagAAlmIP/03gfXgpm79AysbRN6sg\nuAO3JeZ+d5KvlXY4S69uL2IPUJdIHwZOAh/yuQD0BIKohRo0bJ8lm1efH7Sl\nWaoch3z8jEJt9tuZGf4ipxnvjNyBzPN/k/7tTih5qgOd4s8ugAzc2PWF4s7l\nCYzu45tGXaitD8Lent+TAIa/FSAfU1qLpJF2yrVLQi5OiIkIweOP94sw/A/r\n5W+8ty93I5mpIBEW1vZVzPmRtdn8L9IhtlqHLlePUBFU1t/jy/VZdtzQKVfk\nplTDNgn18/RvkI3Tan0Mek71j3yaWsEN8K8uCo02A05FvMET8yYMtZXa7Zhz\noEDztDIM8FziKWfjeGTvrhUl2F23Orrn1Qr8ejjxnixwnqnGb8x//hHGMudC\nv5MpHJ/YOtOD3NK2h8wUfK+BsLv+f7gL+h/EaqmLkrVNP69RV3FFgDFun7r8\nYRL6Lwmi8uukELJg/9EpGMtpcwNil6i8Z7RoZhv6atbSCFTI4FuMPXsBnZG+\nwOFrPUud7vFbQ4bYYjMTauDMtQQ3YFlUYHHvW2CtvN4LrAwfPBQVZSd0aMT2\nAQpvgU1KJR8SgkiXthM2JoyE8iIhvEZ1j5mZVrdrmrD9HZ+hyVwf5tx+QhFu\n5JyrS+ErlX+f4ZnzML/miNnZvbyHIanzlkm+DU6QZL+UJTroj+JsusfX0JSU\nHgwp\r\n=nZyP\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC9IWpn6gAQa3dWu88K4odj0Y6qvhVKwrweCAXyzc9cogIhAMlb+eUZwwGkFrusOGZDldqHbcDMKsjjXSwKhe8lut3y"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.3.0": {
+			"name": "worktop",
+			"version": "0.3.0",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-VfIuK5hsnobbB01HcTSAg5JA2//vU+PVqOuxEN6g1aV9i55U4CCm2cjs4Yi/rUOmLLf84qU9oLxz26shLhhilg==",
+				"shasum": "c05caaf3f5cf0abb53f908638ed0805a9fb6f7bc",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.3.0.tgz",
+				"fileCount": 20,
+				"unpackedSize": 30357,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgYkj1CRA9TVsSAnZWagAAnYoP/jz+RrbBdreB4m+WNsti\nnB1a6SgCXyneOPaTJRcPwX8/i4UEtF/5W245HihBf+8HN7juub3zGR3jTAvv\nmfh61zokOZvRghi2sbvIavHM9mUKYPRJYIGoHF8kXRHtnSUpxw689i2AXEMZ\n19Nol9tukj74fdz5Wlp4EPV0XG/I2eDOI0QODtmsw/X2BCDEvmZSX94Rk8UT\n/jZ9ThRnwE5O/s+9kKVAGjtobyrNFLJRn7oX8c/ucVYmbLetkIg08WeuHIIG\nVrUWmSduqT5K0+mBvG7FvrPBUz+R3D+QDuxWZf9JOpIROVmyGTZ+HS4tjBsF\n+Q4QO+t8+puexprhhmpBtuTdP5vlagOszx0BS+KLE8B8cVJYgU0hAyegb0QF\n0jXUpN5/O1Znsrq2ABaSvodK7y6NGn+/wgyDSLCJ4dPIQnE5tnjmSU528XcW\nXoCLnT16KgHpM4BEkA0tUD3M/cE8l0NVvr3076/P5W0foykCLBzv7P0t+GXe\nh6XU3ADo6e/vMILzEWAcUd2G2WU/whnYBAXJeGawqcGkPBvJxHbKTwiiqjGi\nm8LU/SplYCf6yJ8oVA/4nEcdGmTU4K0TgQBWshHUPng+uBEBho5sqgnWiw/f\n7uOvfVzMyNFioDIdceOaqMDzCUwMvKDYlaj7HaS4BAayaUq47rlqqFdSpweq\nQd8z\r\n=HO47\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDUUuOBn/pdmL7Yz6J3Ei+qHu+64WP19xaXzkoD4U/LSwIgFvy0KUDVN87P6/VrE9t+uDz3ESOSFOyMGXRsIPH8Z+s="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.4.0": {
+			"name": "worktop",
+			"version": "0.4.0",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"esbuild": "0.9.2",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-kKX/ZH8O4DGwoVnpjTTE+qOCz0WxRcUGOudGJHoF/PbzQZ7CNEbUgiYPUf5ZGuCAu8cGdAxiOehkdyVls5U7TA==",
+				"shasum": "24b35f79aa2de08994642722a985b0425b92628a",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.4.0.tgz",
+				"fileCount": 22,
+				"unpackedSize": 34613,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgZpRtCRA9TVsSAnZWagAA5UgP/jd4Ix9LO/srbUPRx45n\nm65cFNVeCUkNHxroXC2mVfDK6iO813UiM+gZGbTmkMGmeSHVBY/AZeBmcHHI\nUWGH3YB6qD8j2tkWywNzpYaDf49YmT/WBgAtxyv1mzVFGETNmTt/tJIgqX5f\nYMatjgo9OIlJXKRXE17rue0Ouy14vAEWirPrkuq2nSdECee/XWTXGQBlNRWX\nI5PIeAjDLOwQN9M379DhK6FdJriMw9NoXVoihRuOJDKL2pKCxx02bPkc0nCv\nrUck3uSbLrWgKdkkagNoITzOzbZ36f7xwqUy78N5GMyYRCSQpbLOjjqbiyrG\nboPffg63K3RG4mjFXx3PISBfjhxYX+yQVwL6fMafK+we306kfgX7ypC5CRdA\nG1ij+xsnZFF4MJ2/MexG3kywuJMVDOKq8AKpENQAZrX9FJyKVFCzgOusxXSG\nq9Zw0uKvBQyAAa+ogWpi9NnQA2LSX3Ae4o8ujqGxGIT0RHmaZdtIRwp2V2Q6\n9EJCESVtstYkIuLQybtMTLTO6qAJZbzEr9h/z1Lt7oNYP4OOT6jwLoDymgMz\nEK2UQvszyt+WIzn2r22STfZXVh99UYbyMOmLY/u9YOeqBi5KqlOcj1DNARro\ncCXeGb5YslyZUzG/vQyEqHFNyq4PS8xaX9ww5ni6vejHBzGmFA+4reMpD3YL\nm6QU\r\n=wELS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC6qKZmcMCIS8UizuNGSf2Y4U5yyvze2CohWBMYV+7BcAIhANHWFDMdHQyOCgMdSxPuRSuohAZQf2EV3AThLmB3Fh7P"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.4.1": {
+			"name": "worktop",
+			"version": "0.4.1",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"esbuild": "0.9.2",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-xMCNX6xqcXdd/hw3qmTtkP0Qg0WZRVGeXi0/ZNWGtjwLUfwxa8vgSH4DIbFdFQg+ojIHcb9OUtUihFj+aaEgsA==",
+				"shasum": "d420c4667d758f179f6310e58619c3b2cbdbf293",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.4.1.tgz",
+				"fileCount": 22,
+				"unpackedSize": 34659,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgZqPHCRA9TVsSAnZWagAAHGoQAIATKQY1pZXF0JIYH/Q7\ns2NcqETQG9Kjxk5i2kfH4lQ+2EDOIcrYNA6YMV5+DSFp0Jxj2J1t3N+yb8sR\n6jXmR8IeS5a3yPYVqrhO4fA4n8/9csw224sODcpjw88ZumwjXMtzHfmESq/4\n4RNHfWxyAz2ws59yA2QTwqI0/D8hxiXdDVhwczzujDkuHaSK0J4nwp19bDW5\nYBwERMIOXDfKlJ6PhdFOnZ7cVnpAcjOmO9s3Q8kBTxEOS78XlFHETDWtz0LB\nJyLMaXz5s3OtI33PbCtUJTPr20cEum9H1sG7u7Y81mEwFI7TAQEcEQlMpACJ\n0JBFXyf71zuEGV2SLebA39eiZor6T98y7bNhKKtsrcClfJCAp/EZJldbC2qt\nii4VgUVaQBRwbQMoanVx0vdHbHF04RyetsaOwaKJkKF3gKSTqb1oj3MNcNWG\n9lvgNH+PjeC45gzusMKTBpBZ0BOQOTTZjEuSjOKyu+xCh3+85C8QykL5EjrK\nHMbhygEG+uUbZXGSCsUvV3nZpYbVtJlE5fPqpqAfWeBm5Q5btK4IaDrCZj8Q\niQ+P6d4rUdtHfgin7+g8NGUAtxZRkqp3m59V16hbhhaTR8KrJVg5VoNNj1Q/\nscI+LvqTdK22qLEn+bbvMBhOB7Yk/6tpqwj5POmuwQgG4RaI/YQQFs+kfeY2\nUE2H\r\n=8TjX\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHv4d1Y2FxWPGhx/DHcry2gesG7W5QNrjo2RevG29UZXAiBJfII+EHGHMSWA3QnzgxJgMrg0ZFBKRXCb0EgyCzMzIQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.4.2": {
+			"name": "worktop",
+			"version": "0.4.2",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"esbuild": "0.9.2",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-oIhFtvQDRHXmTPkjsuyPCj9at3b/FJMjedeaxr9nF4AzkYTbt0aXbSSAdDoa39KSktkJLtW3byEVj3Ujokm9+Q==",
+				"shasum": "2664933770c82b482d8a91befde6aa6dbe03f667",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.4.2.tgz",
+				"fileCount": 22,
+				"unpackedSize": 35078,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgdnRzCRA9TVsSAnZWagAANeMP/iLk/NTWOPg8r9WVZoQC\nZVLukZTg5fnW3eSIjYbMFAYRd44pAmty3uie5lAQmzQEBdYQD59KPj0sXiRB\naSwUh4/NO6THlesX524KXgGXSN6dvGRq31pXMVxoco0oRHnsJb5Qin8Xg8ST\npBiW04KIfN3MyQxHVn9zESq8BsDzas5ce1KMRHFw44PPqXmafjsJiCi+fwXp\nQtGNw2pRSSvN4b1bZfH4R1QOoo/cnvU7OwF3RxO9qz8Hbmwzz2aLdCr6z8BC\n6XEydZ3o++4+INWUR7TZJ4fIuzWXHfbtVKD/x5hU2FECemI16pK98X+y6co3\n/FACF4DovBZaWzO1LkuMbC3gSB70lA85aWIreyoeUG3kqeDo6HwVQojBoNd/\nNHDPdKnokHKeyblL8wC8EtBDTZEBUuePT5OD0AMBAXIFevBRGNp6NpD/scNl\njyx/IVc+n7snCyHJfc8sMPotkrSCWnerC7I7IWeL99wlpk5AdtbyMoVZSQ/u\ny6i/wwtEknSai8E8r4Rqbpa7XeXjbu773ahLYUTvyKbJgV4EpOcqUMxH0/Zr\nPQBEAZQhcIt+toQaaY2S0FUN4/GXpKvEzcGIlXQrmME6etNBij4UGx0qkvEG\nsxcCu7B+4GmMlVBeob76ZCJuuaDzWSGyoUBydSzx2Z+zzHUU5Re/9vnuleDz\nmR53\r\n=IXK1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDsZT67KEW4oMuBNeOz40SQ0BGHr19B0pINqw6a3bm1pQIgZw//gvpWB9ORg1uapWmipIysbedWsjMN6BUNgaLPhKc="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.5.0": {
+			"name": "worktop",
+			"version": "0.5.0",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.34",
+				"esbuild": "0.9.2",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.3",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-y9V/8MAIxIf6/cIh0/Rgfg7+Fzl7gTdFGJ5HbXiHoqjbZp+yJp9+lhshoZKIGzucX+IhZWNHpSaSM7H0gn3qHw==",
+				"shasum": "49b39c26807213ce2d9e5dbe0b01d40832f425b5",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.5.0.tgz",
+				"fileCount": 32,
+				"unpackedSize": 52383,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJggxwyCRA9TVsSAnZWagAAEnoP/id1zN+kBBnKjozvtfNn\nUWtsFMcqby9O++/HDzU7GxhHzrpozfNU+RO8rf1b2MB4KLr5DfX6yuE1VhFb\nWvAgIa+eABnD/Perzf/vrQba18NYtjLIey4GTe0DZHzw8WIjUcwUhzHWbypX\n04hUQC+vd0uq+74U5W1ZVXNz6Ru/j+VsOswgN7P88lAFCRNG+HeKFdcYQcKN\nWpzEobMhtB+I2GwfGcD+1Ht5D6NBH0ZkFLigFUunPtKL68G7q95XoImNBp0u\nqyAE753+pgvOUqiIRFNsIIyDv6bw1KKh4dv8gTzHzlIwapcZz1cTgy2QqxOy\nwLHa3J43ygZC6A8+TQCF1A/Kd1G3KYgjvfDftJGhjZJI7ueQh2ChcC9JjtpE\n2XzDSKh4R3R+GJSKRYRKVuFjb2co9dCzUl6NC1jZcaYZ+Oy1fEr5LlYCLiEs\np0DHlGvYGhZHuuQ0qI/L7ivshTIqOjTkMWaKcz6E5s258nrCIubfJeXzdjML\nsQDw0x+JZdQZbwv7eCdEnGBP8nsl26oph2eZiq1TgQyjpQLMWbCa5jHC5vL6\nYRtpfffgw3td29+Qmto+aPig+8KCa+CDrsGR4dm/g2QhM1mvtp0R2p38OEfP\ngi7mEuztFJ8olGvlT/jj2rDXubZfOEfgqQlQpJo0KyJxojA7kyCdmiOJBXtq\n3HzL\r\n=8xEj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDM6GwwfQXdu07bpwos7UYddcR4tlpadqztYPRXnaiD4AIhAIpFOC3pYnachPomLZjv+WUU0H1LEH+fkbTeC+ZikmO6"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.5.1": {
+			"name": "worktop",
+			"version": "0.5.1",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-FrGS8B6KgKQMqpNDrXM5xW9owc5oqrYbjSC0yX8Jjgr/HUXrK1Xx6yK6JyQtUs3YIp5pgnpd0ECwD7e3QaSBIw==",
+				"shasum": "4418a885b5d6d1bd1ba6dc74b04c01a4de31cfb9",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.5.1.tgz",
+				"fileCount": 32,
+				"unpackedSize": 53937,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJghKvzCRA9TVsSAnZWagAAKMMQAI9qwZ9uqOPmpFiVtW5G\ntRhpsoGYtI3gaHKvfTFX1wTk2bXa92kaxg5B8tgmHO4pY1akZP5s7JFQWiSV\nPurnpHzPb8bJJOs2B71nsG2BxGtOKBCAcNJ4gmSHGmtYnWn/Hi2Ruai3YvMf\nz9k2sXjQwCJDEn+WiaRD2rfJavrVh2srTuy7X4E8gsv1piV0PHeRddZsT5P9\nt0irsjpbXVyHYaW/FGbIXa/Swn+AalFLEBixjZHpdCxmN+rH993weSVxlvbB\n4jBv9q+h8XmDlA1L3hAYVveUrRKj7OaF/8PBfiPTXxsj5i/5BsoYsdOzJvmc\nN7YOFJpHWFSPAC5uOzqe+Fok3IdKlzpEWmlu93Kz2h8BDW1pBsHwCGthbwFD\nPINK+ns2JWEgEOXNxE9c/1IinDqeGGGVMl84A0ydgTqkLaBWSilDLSNXBaPZ\nf9kolsj8xb4HPbXrQunUotJHodz6q5R/gS3BB6AgccI0GblUJ3uu6GnzhhjD\nQ3ifJNS1El9NrxPciWUghjsR4k10uUxT5HfKTvfC7rB0sogOWsGCPVE4RNaK\n/YJ8HUoGjTDtuwJcx3o0tT/v1rBZT7MkKr19tqvYfy3gMGR37fIMutE9vfRc\noRx6qFTWh7oT8byUqrowZJLhRIksNvzdjgF+zg8n//zlgkTLjalLjVQOMj0L\nbblo\r\n=kUbK\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCID5NsNRwME032Rs9F4yUWNSk+jAWZXEgTJPypjCs2MqyAiEA7FJsA+HYpWABubLp2DYp5nX9hlZL9HTcP3qnwBcurVg="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.5.2": {
+			"name": "worktop",
+			"version": "0.5.2",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-9jIkRE/BIX8CO7lyQ6zXAohRHY+Peug77J7N1GXm68gaI9Kjs0TN8qzh+9zKaE1BX5OiImZ4Tgh7wVXqwa3tng==",
+				"shasum": "7584f306dc2cb409ac81afe457b914f6f065156c",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.5.2.tgz",
+				"fileCount": 32,
+				"unpackedSize": 54385,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgh6HNCRA9TVsSAnZWagAA714P+QEtVhar+fUVzjBDqAOe\nFUCvDWIsEXGlwYvsYpeRrcw9cZZEtggOSUwcceai959wL/lHX2X0auQRgfFC\n5HD81BeMJg1GiHMZrx9nBaqjT4pOaWviaAjuiKR0URJOT4346JK7CKbNW+7A\ncWrvmZ2hIJwRikf1QcNpzX8yJCXu7ArKxbjA3FAQnIrkAEgwflOqGHuVt9QS\nrbnbHDBKOj80/Ix6N+CQWoT7YWAUyTq1MWMmdX4z35SQWPMc+4dNFIm+YNKo\nfmJv23iki+9Ur8iIAAu2nCvJfv/41tXEECzZi1BF4uF4m2e318x3Yi2PJ2Z2\n+G7qt85xomjA91VsGoh2fgTevgDLsl8qhlwVpEYUFfai5rqkOLu1n4q8ZuZP\nFKMq3TQ6CMYFn4bQvZKQVHcwUf+VHyPx1X6AVYspHZECv9SUl9AO1Ms9PSJs\nwJ42W37Kxh0qKHGZxQplw5sz0Id4iHdnB3I8fI15IwdC7OGUwvZI2yZE/TUe\n47RBKCrJlgWeL69Pt/ERvpyvNN3CPMs2CbLB2IkVS42dxqtuNx2wu2IFcmCn\nD6Jf3zD9vHqbcCTPqGKrbSyRdHVL8KWK+S+447iT/UMHAArCCPGiSmcfj2OL\npNCfbLePZFJT1Kt/ukTm1RpJSC2+8uzkjGI3UVZkTqCslE/f84rYsXDLfaE3\nW7/C\r\n=9IDp\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDOz7Vy/z+r7NboJAla3pA7ggvW/QZlVQ91Mm56iYHjXwIhAINU897Pztf9OR2dL7MGaTx5QzaHpt8KfbIHejZqclg+"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.6.0": {
+			"name": "worktop",
+			"version": "0.6.0",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-XZBy/oHJXpTB0P/BzV/v8vnwd0Zu+JTZgh5YkXF6yn64KX/fq5ojhjrnqZn9JcR5fuAAWqU5FCAnetuwz8IZ2A==",
+				"shasum": "dd028f3d98f6aa3e5ccf91eccfe34ff0989a7790",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.6.0.tgz",
+				"fileCount": 35,
+				"unpackedSize": 65191,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgkaf4CRA9TVsSAnZWagAAslkP/2S8esB6YddHUh9/8/3l\nucvnUrkZgA8uXfFouEH4u2+/FQbteaHXvyCrIQrd3jDWQwRsxBnv0XFFefxs\ngzEW8tQD5NBkkKnOIkuSohr/pigMmXntft+LEHhYWtFjpiA6q6EJj/J0r3UX\nXa5MYaPvDvISn1+GDi4H5n+VeS5Htd7jGT4AKib8xVQxGgtk+lc3ucCN2o6m\n1eye/YUWfE2xg2AEB0YkOdrSqiXgyOnp5QX6GCcFUWs9PsBsFE24YAyD9fW+\nqiBf5FTSePOcmkJhtcSWykA8suzzrag7qRx8nPfHJZC2s1zVfAEYm7VcB4gS\nLkfv932PkgUROM0sec3UyRqWp242h9/ziWV4RPw+TQtAoXxfJhO9IXspvre/\nPe1pU9kxot/aPv0ghgM90GSAxH8CkeIw5mI1ae6P24+KcnxxawgWQXAiygJF\ngK1tY2P4uRjnK5RqZODs94QRU6gCcu7NsWO4H5DI9M/TUGoC4golqbYZedo9\nx4ZcYJ7gS5SXGnMOu9C8hX9+5KG0Zko0OI3W3wdFqisXNEl0Ec5IVRSRcpN4\n1qRQCOMUk36eGVXwc7IhtvrqaZ2EUiHWqXXVtqwbE0H5+rK1psLOkDSNeIMk\npXgurQgZAC4xR5QOFmIcXpEnZLFUV7frXEovgqr9V+/gT2Z5P+75At6oouuY\nURfb\r\n=JF2s\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDYkcKB0QlMF9YX5xypJEhKdufxBeel7X+b5E3su9zi8wIgKAyEpjxbdkCdcXEDTBOpuI1oqnKE332oSOBx4+g+yZk="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.6.1": {
+			"name": "worktop",
+			"version": "0.6.1",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-NqPp1NtHt8n7F8S3shoiRmq7p4a0+XhBRX23Mty86l9mq/CK8+3jGLGPq8Fnwdxwgs3n5/G6dmfgVcDAPnsdsw==",
+				"shasum": "c3856875bb327204ed11733fb56e42585dc8bef6",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.6.1.tgz",
+				"fileCount": 35,
+				"unpackedSize": 65190,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgkbMDCRA9TVsSAnZWagAAoaoP/RSiHNNYFxiRgByUQVyl\nQQ+V337ON/YfpNhyzyPEDVHEMhmiQpzIZnLaf4fwstvoTsbGo9LYNPWDyLaj\nmO2SbWCX4Q0UjgJJOF9gw99oPpbmA9F428h+hNzxKUdL8qQWTxE4rjrQP842\n8Pb7SzCpnzD1ewsks+2JlwBg15pefRrLCNpa3hS/lep5clvVZrlHmK7lZqQw\nnfzcHSdkALVcxY3h8KI/VjKzTh8G2h5/bWUZ83nEDWBStVA6FSzl1dkKlr5V\nm3Rl/wKIQN1P+VIBU9eDlimCFUQMHVyqbh8hEFd9y3JZTnmIxggHXeiDIOP2\nzNjo20GYdEOpqvtzHWKQwQGmg+d/sOZFer98J1EplEd+p/kmvO2vuPkp+OsU\ngUlPNiqJtcZJbLFgdqTL5X14e2vt4rxgsIb81oznk/ZyB5h6QguKLmUdH9Hd\ne5oWbhzcPNN1gYdy8fHvcvm5rWXGLBwqKUAndRgpqyWZR4EQR07zxaKzdcFH\nHpBiuSsQLmW3ac2Cx5JFlJK1nb+ekQFHSqqIxmbbrrn+wkRopc6xc2pnpU5c\nzHTHh+rENIWp1y2oft3h4Q+XZ3f11+JLcV/lWJvF8ugdxPk4Q8KHNXJWWXUf\nqfgJzT/vyXe8fWRW2aywjo+Mpd5Qsb22LNbp2kWu1v9UADhsm8yvqnvJatml\nQjhY\r\n=kftP\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGrzhobuCE/ALc4FuYgv3MeK4cqMmyXiWgERfSgzOo5RAiB1xyqyNAdqvb0pzyobjHGTvSSrF78fA5LBQQyOAC6zYQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.6.2": {
+			"name": "worktop",
+			"version": "0.6.2",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-IGjCO5Yvi+DCNgPc+8vcddKD2aiSx6PwtzQ0obHPGsAT0XZCgOG2ViXEtIUmA+tAvY42LMD2nXbiJr5I2x8pDA==",
+				"shasum": "fdf5b23cc0a816bf50d5fb5e422351ad64725afc",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.6.2.tgz",
+				"fileCount": 35,
+				"unpackedSize": 65212,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJglHN+CRA9TVsSAnZWagAAUSgP/jDwuQPOpk36EiFJJb1j\ngPSpN+/DZMJgYdx5lOvwgRqiGVDotmkUyYmQs1oqgotlvPNZgYbHPvjfeHzz\n2Fx7Mr45vcjiI1mtojMdCTu2aSnaN6W7tRP93AyO6jrDLp77lcbi4DOMQEj5\nVBJjzfFNgS3C2xhvVbooBcTg5N5xuo0DpvGWBK8vzkV0BIajVzKIb1K0kmf6\nk5yhWjv8N7Uh0av8y4opNx7ima3tBAKZucb+tt7VlUPUtnQRobuGLQF4f+OF\ntXcrDhI4MK9uPPG+LPnyAq5ZcX63RfS/ah/vdG3A7Hxc/eQ4HtdiUmO7yksW\n5N7xxgCxf5yV4yVc1bONgDQpDZhRcQ59lZZb1W+kRNJnKQ/btM5lpZlEHHBl\nHJ1xHm861COt8pUmAHXuepm0wIjbHNxGz6NDAUUVyccni7BPvihgBc72sM/O\nnSdxnPgtloOnzLO49GGTCF6h+j1jtrTVcQaGh0GtU5Wb57pd7BGQ74zr9mGf\nLzfcShCUNjkUxAp7zt9bIWPawIsDlqtNadd9vVSf1fgUA1Ohs/6qezz8zlJx\nL/q+BDJFgFpI7RuIPlBWpoBaSkHFmkvZyBcSUCKAOfrWi/JOQjnjyaOQ+mc+\n7SMKWuBS8nRHzNmmtoR7vR7DohLeKm0OuKnaUmRuiq4m7hWXLf+jYrmJpkGC\nx/M5\r\n=q0Rd\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDfVRwVr4Jg47abob3dtSnyWnChtlC5YWMwl01X33SGjwIgX44C+Z4yNXSeNbdDhPGRLvZiZ11qfMB/vMyZG87mdBQ="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.6.3": {
+			"name": "worktop",
+			"version": "0.6.3",
+			"dependencies": {
+				"regexparam": "^1.3.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-aS1mzrYLbcutY6SBal51FJlZ0t272nDZmxAe93BcYpbD1NQRAAK+gpwy2YOcs+dfY20N6GmfASeTGxOjzjIMZg==",
+				"shasum": "5ab5fd4d5c439d641a7e16c8fa0e3935cb22b2e2",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.6.3.tgz",
+				"fileCount": 35,
+				"unpackedSize": 65080,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgmdNgCRA9TVsSAnZWagAAg0MP/ReBfQ/PFI9s5P9mydrP\ngJnDbqakQB8dSymkIvFZ+Kv289k5MUN5NRZT15VBd7apRfxB2t5vIBd/AhlS\nYoSYdWs/bKeUmG+tSzJIaqC6CHdQnwOB2IVggvkqwPhvyoYkzP13tNnoOrVA\nHsqFwAS7iaxnH2JsYLZZCfmxhF4agrZaxck/8XXieOgneFBuqDG6Mvq/pdnR\nr9rrtOYqKdCy6Sr5Tv/ZxTMCOckAnsHoYC5Ql1+J/3F9NZBac9CR/fHUFgo4\nWehcjqcWPWPeHptrhMMMeV9auhYSPtxkxlzbOfM3kT+M/RMyhY7U0yETkV/M\nrJjTyareYj6xxCmRGy0e0wiU1q8B9UGXTigLn/zcGUGm15sWlubw4D+8leBd\n9v7dFBpNlZRTXyx0B81beIhJLg0hpP1XLER4g+EMD4O/w61jtC/+QxEJxa1b\nGzYQqY6jw9ruroT6T1yWKe6K1J7g6/FdUIDpGFXk6aZiUVaQUGEecc3F2Rzx\n+1YFZFf69GSjZwSF/mji11YJxUsmuo2+PrmzSh0bSsCXRYA2S9xogAST12Kc\nWQI7fb8e1SY/CoeTpCs7kVu2qvLuctV6eNW4W25mD3VHhxOEAuBU7CBXL/3v\ncIhJp1W0ourMfP9lemnrR0fxnkpmc4wORPd4ESA0aETf/722Fg7eYDq2ZuwM\no/YQ\r\n=n8be\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBewuiBqnoDofigZvCTugV0WzsExZwGmVSRKiibZ7l/8AiEA3ZPJI75+PqQxEAqRsXlzJhPXIyv4q7dk8cA8Jk5U1bE="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.7.0": {
+			"name": "worktop",
+			"version": "0.7.0",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-kLLov4ChDvC9OhSDHYX5kWEoo1zt3OZWykXkpmTHsfZ1axFfSRDeD/vZcEKLOngGRMFR7PuYaf4Q94fNFkMeIQ==",
+				"shasum": "d88fd3dcc894715f656d3b80d24433652f455a55",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.7.0.tgz",
+				"fileCount": 35,
+				"unpackedSize": 65016,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgrXotCRA9TVsSAnZWagAAVp4QAJiTqHrmEpLjLf0jlPOV\nzMDf/7IV1D2o4Blw5qi1kKLC4aacrz58PW5SA1mYk270V0db/XtQR125Bg2Y\nP3aF6EmaeovwKgSZI1Xauzu1PoY+6Nr9fIj04dNb8Y4qm0k2g5BpB04molst\n57YWqskZUmy87F9jTkDGhc++2mcehjlJqm8AMLLOujxm6X+zXzIaKxfr+vuw\nJRhUwmIlZyQs/RTiOst/y/POUTPPHskTzvVLIRN6a15FqAfugVNvSK49P6H+\nMhrbXBk7u+REajXW/g3+fr6xdpn27286s6LWlF1/x5qj5xvrFkrifAvLQLeL\nBfUMLnU/J4GOKpIi/8qXGQm6fFgqRNoCWHu9DIy79wBBcqJaMz7CVYPx8Xnu\nMPtYSeHOZ0RNF2mb4ty7FHgVmJfwDjbnkRm/oXJq70zV7cFhVM3X8sRYysy7\nBeied68rpcVTVpCC/x0NqO1D833jCrmcApz9RqF62z3XZVtFBtMN990UW+J/\nYbm8lEvMZDLbTTyStdaw36iflO6WrD9BgtG8ok3ODmqUArJTdTtJ4jyTmuxK\n2v0qJ4vOKHAbmjK5i5u63taJyOokWvoC/ir4EsjFsBr5BUmPUhqILaahkMNd\nIAzmdMUFXx2XNY7g3/uWW/X4wKABupzL/MZiFSZOJ4zBMtNFAwEVItcKZFgh\nN7yT\r\n=Z5nr\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCp2Mj+FnsDUGjjzbvw0JPru/1BF9NMTbyzVvW9dLJ3mQIgQquXVnMt77kTeBUixVkxhhQTrIVjtB5uoRLO9jcIBNk="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.7.1": {
+			"name": "worktop",
+			"version": "0.7.1",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "14.14.41",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.2.4",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-p6QuswBEGO/x7E8C6pAyCLd8bKJBY0Idtca1pBTOSvFz4oFBP3O9GVcmuHEXRtp2Z1PBFoATnVJDcI0Uj0nmJA==",
+				"shasum": "1255e6e84e42ea1e7a17e69d596514237e05dacb",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.7.1.tgz",
+				"fileCount": 35,
+				"unpackedSize": 65025,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg14hWCRA9TVsSAnZWagAAZVUP/RlL8xImAYVZhNVNHCPS\nZr/RGyVUrTK/yz2dhinyy4wbvV+9/wsVLbsbU5YulhepRwlZlR+ZhNKKa4nn\n9jjwf/5vVVDCqdDgpA1naP/W9978nMD90n5GURkVCGembXjmltfl4u6PgQlz\nYh6YBDOygc7qF0+rnoSIsFq3/h3Df1WthNnaNzOUwEIbf0EUCYD9kuMdaI1k\nAB5FNm6gWsxYwJjatu7c1AO4rFyeD3Qn+t5+IGtaw+zI04LlYLoPUuRMZwID\nzeVWL8xkyQZk13MK7qqbBcbFfcfmYFnNdZHF65sifgqZP2Ir/McFXugyEo6P\nTCAXA/ROYAxDm4qF5raZ9rsZ8GSqqVUDyTK9YTbtDz4w9dh5VrJ+PdCZdY+V\nHHhtmQGgQVgzIfg4L3dCa8YkmKek2EcxRM5o3+MZRmEEEc4excgCqTtnZMEV\nchbh54jUSGQOu2Ya2sKIuX5IGGAn0X/F0NiczBVCQs8Zkd/P+TBMQ5S/tO4K\n1M3vwV+a/CS5kvNKzD8oAjpdDTW6hLiab1FO+vIvZxTOT3zZh02Rs/DOoSnP\nr9PAYz8aWihgZA1XtmRH/lypOKykVtcpKQYax8otKX7EXOZph1oM9xWHStta\nWnUvkaJq9QgMMfhEwi3V8B6uwmkNRWyVsINoBno5OXPjdAEdVTpVS/m5MkBx\nGWYa\r\n=QCzj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEzX41hjSVGPxGxZSrBWsb6xNDdIwAtmN2FomU/yPl7hAiEAq/u44OZkHsYQJiTcx6JOLexE0FidSTPEKtU4Rvxoy7w="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.7.2": {
+			"name": "worktop",
+			"version": "0.7.2",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "16.7.10",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.4.2",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-WUtf6uEmC3eNsz/y5usuZkGxRYqev/pEguT0taTtOVEg0ENo+OCQUqCIc6SsX/0Pg9rdZtA+roHRSVDzmxJD8A==",
+				"shasum": "4fac283464625055ffdb50b7e6d64229178a41f8",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.7.2.tgz",
+				"fileCount": 35,
+				"unpackedSize": 64791,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhMvcxCRA9TVsSAnZWagAACBQP/0SBhjMa3WaxjaQnPQMF\nbM0RglaBgqhQdanT4jLlKPKc8/SZic8TlVH+DDP64+YRz9kKvf1PJsSSrmfz\nSD4oC5bDVnSTPMKA54AHj1lIzKYIuXtz0tJJvpZp2aeqZalHJYcpiyDFMJbo\nKTrHjpvvLvfcUcihewAfBEw2PDbZ/FxHcdsURQ0yL7lT5stEvMZ9LoQ0eN1h\n4QqJX/3rWlmd0Wwvih0gAuiXJ78Nz+jZBavzMGmAO3LuK5MaSlfAF/T0LRBx\nhQLbj+8K6E7iGCOuSnZkXn0RVj0PUjqdV6RS3taRHk5m2cNoH4xADIDwJdAU\n6ooAFs4z4jzPMFqbJDN53fkBP/G7R+ynf9XmyM4NN/r7nck5/OA9b5/ekzUn\nMPztcF3AwA6EY5T8kMNUfL/1AX0Qo4PHHNE2Ey/qQTGUcjyQKxzpD56RW1Th\nk+x4nFlsqx04qvuPg+6cCbNTa7XuzR/wVWMzg4ocdpKVx0atyIgM48Xh530a\n/BS/t032AdVw2hjzvAI+Nj0kneeW4ccC0BU6KsNDzSDqlWYZh1grk7DeE5Kp\n4kkG8vXp5e4vnE1CGG6Uk7dRqLcuCHWL+J5ip8nAcyO2O6sBPMS0rKz0efu0\nOV4PftgE8hHjvvut6EZcCvCeH1m5znn4No/EEoUTrfOWqlThoBioBf6x5sm8\nPcj2\r\n=lAsC\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCA5CoMHDpQz+4jyLRs8S3i+LwpJfm9WXJDvZ2EZTX8vwIhAOK47MShbcRrdg1oKxm0qN1WphQW387pcSSaneggONkA"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.7.3": {
+			"name": "worktop",
+			"version": "0.7.3",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "16.7.10",
+				"esbuild": "0.11.14",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.4.2",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-WBHP1hk8pLP7ahAw13fugDWcO0SUAOiCD6DHT/bfLWoCIA/PL9u7GKdudT2nGZ8EGR1APbGCAI6ZzKG1+X+PnQ==",
+				"shasum": "7dbf85f0add229cf261759bf3855820814b99cba",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.7.3.tgz",
+				"fileCount": 36,
+				"unpackedSize": 66102,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhNSYrCRA9TVsSAnZWagAA+SMP/2nr4EvB3t0Kc4k/1WSH\nJbbphl0WUbllp7a8hpwkY1wc1/6gjfjzavm9T4N1US33Tds2MfuDII76LTmg\n3s6bTAyakL0gJN7UvOjdlA4HE/WZ1jU+KzpDEGHhDyZaQ00lRPgXL6MzYiA6\nYOSJyRHnyPYxkmyY6UeA1lYcrVjOSIQj3LvJT43ASrxpWgB6DHW5xd6Zhs3r\nzTXuMPHVhVfCBJTc0X0ZBKl5+5ORoM8dYyIzGx0h7e8cG+XYC94vhPQOpCPA\nCX9gmRZwnuKmIxEGsvO1fndv+6d/m52iLs4my6+5FDkJgdZ+BbWsLKckGcDQ\nB0QKC44ek3nAadYP+upnAPYMA+qcau8gtFo+pxmaha+w3tlU+JzhwhSiSPnI\nU8RZWFBhHuiT6sx8cSKkeh8V0Z39iSMZF0Vslb/CStEcCu9hDqUtrE1DjPvg\nqFQ2oKuDdxqld/u5jpy7QYK68FlJpbjZ54RvxieX8biw+63W8bggBKzdmXq4\n/4bVo7QrZncErIZXbwbH23HqeSUgd4huuir8k3DNE5jeiNX0/gvcuZv6faQn\nkquY28dxsS+Ou7FZ5Anl0nuP/s5dEr+yRaln0z8cQT5MDBw5rSnJhzccALoa\nvhyC3E59E6AeyZYZCbbYZZ9QWeJ1ERXawk9I2X1/3oZV/g9eP3CE0ttqVX2q\nQjAH\r\n=3lxy\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBihWh3Ic7x+BetY+fn6euhb4vSiK+ag5UZ4S45VhMIvAiEAjmiOHSiGhB4werSoQF9KpvSuSYlmjfajcb5BbvK+M1c="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.0": {
+			"name": "worktop",
+			"version": "0.8.0-next.0",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "16.7.10",
+				"esbuild": "0.11.14",
+				"fetchy": "next",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.4.2",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-rvaE0HA8dLwe1EuaJ6s67tjg2d20uxXBvl6mdZurVdaXrWGIxHYtQxUh4ERnWINVtNeD+VKLkGhrpniqUt7Dsw==",
+				"shasum": "d8a0ad9690445f196c95952e2fc03a3fe8616db4",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.0.tgz",
+				"fileCount": 39,
+				"unpackedSize": 75045,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQWuQCRA9TVsSAnZWagAA5SYP/3/IJDUHviAu6BTQhuQo\nB5WbT5fpItZNBKndf93+ZqX6ZxiTWzvhcUQDgyrPb/hHCssa5BWODcDv2oow\nXfhvqC4vnq4dVY9SvTPQcSx06pfgnGrI/in7n1xB6Vh+JiNwgKwRVPzdhNEF\ns1fjW9Gosk585RTz8jcU/Pg4JM6Z9BWJiqyzOX+qOU49Xcw5sk9ezawJFeGi\npTvRvcELu7qiS+pENU2+RrDKyBRTyUwT2FAD+RLxfNSdD3qLdEtLGUrlWbK5\neIs5YvtHx3CzjsYdxvHfNH8zc1GM0+ZbiJ8oc6WJVojBYcHhB9RzaxQuyG/9\nbtiWPgIQn3OXAjU7JWbbRCAedMHRdlhN581viTlWhJDZpnCh6VlyD9JrYxey\n4oGvgUQR9vYpEMSvfxiGc1qWrCI7w4Wr0KAKRq68lZV1M5jsXzZh0kVp/XZ1\nbLqSp0WQ/5biCkFNaToXVve7czh3D0QWfLZfXgYqukU35yyVpgHvoi2fqA1E\nkrsgLPPOS2akQkUhF3pVWIM5VBY9JkvwF8+afLsyNjRbSR5Ka0qG1qBU2WZH\nC9pjxf1ThiSwZ+tIYygK8fZ4PExzbgaQOkykQn7oRsYGXHo/9mLw5mCMr/QW\nO0bRM9r6Hmz0ks5aBz7TOOzF4TG+DjuizpeORUWClU6+BxQMC7WUVxALvYfu\nE5T6\r\n=warE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDEAALdWBgBu37BFqjmbz04Tud04e8Pnivp74YjgC0C3AIgRoxpK0ejoSjJMGKRUew2XZXEisMJYCk0/1m4WZLWbsI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.1": {
+			"name": "worktop",
+			"version": "0.8.0-next.1",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "16.7.10",
+				"esbuild": "0.11.14",
+				"fetchy": "next",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.4.2",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-pJBRL4fqx0meZuCNekaM5IKeH6iXjyrrLh0NJBVvUJUUQYe5aogD9Oe4A0UedSA7X24OwNdr+oPIonH+t3iySQ==",
+				"shasum": "a4dc3dd4301636e0d727dc6c3cbb3744baaaf7ed",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.1.tgz",
+				"fileCount": 42,
+				"unpackedSize": 76849,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQWwBCRA9TVsSAnZWagAAKNEP/0bRPpd1mfqOn6VkPKIr\nCjHziL1Hsee7N1eLAs19Irruvcyke+yAjbFr9IOmllPpVrxrWVy66xWXgYd2\nAa6s4bzDggPE40luySVMeMIZXSqgudL4sVutpbxWM3DZzkOfAliqysFkGLsd\n4qNZiKIf+sUK+6dJ1yTLpqAWby72yy666XEAQAycaa0BHE8MFdDPquOp3407\n+/HHxGzUdeF912biPcVs29ph5avDijsAPM12zkkRnVLmr8mP+2v9YOP7IL1M\nsYH4ZheC+UJCCj6R2+GAtjX/wwDWNbk5lUxGuteM+6Ssn7DmMQKvRGyzq3yC\nRDF9FGTrBn0GP6HxhHA0PhBxtWLYhYM5fim40d8kKwK9DjYRiHFeloLQ4rvk\n2gd1uvl6vjQQAFFq6PNMmVdFMBQNKPlgTAeE8bs9FWatoEwRGs81EZ13K/uM\nRh8HS8oS9mT+1hgNhl59CCRzIBW56Gg7kbZkD/k1Y3ojqoFgqHgzrmQfomE5\n6s7fyYXN2RO8M4+e1RkAJhSM4pa4NF+bVwOY85TFP4FZh3yqc7zxU2YVC9pX\nrDO338QebRTXEPxaDwJKLahnrkWylAspXlDidSLBE+S5E4Dvg0WRu0u0LZ1U\ne+kSxu3/1vAnpikREsUSRt3OpnqO0J0B6GByjMl6jDnzdpZj7XfObxqtUjrz\nmPWM\r\n=oFjF\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCGSzsVrs/Uqyq6qgB8rA2FG2AJWkOZd6vA5MtPoDVL2wIgZE064oQ8Itc80nuWJdim5anUCz6tzIzfznKywyqyUHw="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.2": {
+			"name": "worktop",
+			"version": "0.8.0-next.2",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "16.7.10",
+				"esbuild": "0.11.14",
+				"fetchy": "next",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.4.2",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-04OTocM86F27nC3cSZC8duT5gm+H2qthpBoafQtGySQnMRjbZbf3++e/vSqHbvaZk3mFlXT2UK3Aju7q/ZwPfA==",
+				"shasum": "48ec191355d1da1709b32a5e8c2b438adf9c3c06",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.2.tgz",
+				"fileCount": 48,
+				"unpackedSize": 93299,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQClbs+ezw+7nmukHK3TN4UvKEqxET+fHeoQkSOp1CrhKwIgQ7+xTRxJ6sNmgBz+9m7bZT7q9IczlvZTTHXT4KsZ8tg="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.3": {
+			"name": "worktop",
+			"version": "0.8.0-next.3",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"devDependencies": {
+				"@types/node": "16.7.10",
+				"esbuild": "0.11.14",
+				"fetchy": "next",
+				"is-uuid": "1.0.2",
+				"kleur": "4.1.4",
+				"rewrite-imports": "2.0.3",
+				"typescript": "4.4.2",
+				"uvu": "0.5.1"
+			},
+			"dist": {
+				"integrity": "sha512-/RtZVuOsD5mnygYE162darPTlw3daZxHOCMrRCYyURng98s4zx8ZdBFod6zExK7ivTxB3ICaY6Ox7YwDEU1VJA==",
+				"shasum": "affb16104e350e4b58345374f3cad824541167c3",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.3.tgz",
+				"fileCount": 48,
+				"unpackedSize": 93326,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHI9qk71j3TpP+nE1WKD0GpTOi4KnCt0fgN2w6ZaXNbkAiEAuKFA7Op0v3+MUiftpi8Nat9ruqdPD3CpBp6KlRimap0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.4": {
+			"name": "worktop",
+			"version": "0.8.0-next.4",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-Fw7QGU8tuAbG4D6r2xFdqetGtAm1JYBVnNVDyofNbhz7EXZ1SP78xRLWxrUt786pG4XLRMhoY+A9hueZF0QX3A==",
+				"shasum": "ba806e47ebebef0bc39282feadc322f0bd5a818f",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.4.tgz",
+				"fileCount": 46,
+				"unpackedSize": 77375,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGQcPr8K/GPUye4A7cNPjgC3R/WM63QtcR3tWFGSyxF8AiEApIDc6SdUhyyofbu9VS56Z3HMMDlnjFqqTIXcKYMRX68="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.5": {
+			"name": "worktop",
+			"version": "0.8.0-next.5",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-yeS2PB8PaUvn7WfRkrKmmxTRkVqEdTVEzEXW1YpEVpLqyT5ljz9bmv5Mc33JRuA7p9wcVCuGmmACvQADRPAsmw==",
+				"shasum": "4b5172b39a390f424ebff7a46dbf3e12999c8a18",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.5.tgz",
+				"fileCount": 46,
+				"unpackedSize": 85378,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC+K2dqU48mTPhN95rHCxmDs4rXmWdNzW1QZouKRWlGQgIhAMksdoaewvfPZcxh3MOd4G5Rzu7aH7pO1eeVnbQF45zH"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.6": {
+			"name": "worktop",
+			"version": "0.8.0-next.6",
+			"dependencies": {
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-i/9k4tdeJjKMUAFvk9Kddfh8kwI4o7jwauYqZLezbTyjrcNXzNMycYyklu1vrF9I2KGvZnuDW4WWmWZC72NGqA==",
+				"shasum": "db5aa41aa5f256040ecb5bb73a9cc406d87440dc",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.6.tgz",
+				"fileCount": 46,
+				"unpackedSize": 85460,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDGJm73fit5zAbXy5OxBYD/S4gPktfLQbkCIAkcVlXvcwIgdVYH5TzaZifOftfBIA7b0ta9tr3txB9de5Y6g2trUCk="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.7": {
+			"name": "worktop",
+			"version": "0.8.0-next.7",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-x5IUIhy9sr66WHwUjAoxS5bB7CESHag9RZp0d+tF2H8BzcxofBSdqCTepfqsAOKgxm0Uql3AiQo3O6NPNPqquw==",
+				"shasum": "14a173c2a6bdcc1c7cf4da3b25c4a825e249a202",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.7.tgz",
+				"fileCount": 46,
+				"unpackedSize": 85593,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDWyvcdy7weYC76wsGAw6tA59nwvRSCN7LyQ4Arq4UT8gIgJF1yWpprypPGek1P8Z6JnCLcQw+syAqWU8zVNNQJOtw="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.8": {
+			"name": "worktop",
+			"version": "0.8.0-next.8",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-qy3nBmlS9a5GMxiBXgmtVACx62rpoHGjhnICd3103SyRu/xZp98+/D8BzB/n8H70STIv0jCUiEhyh66yKC1o1A==",
+				"shasum": "3437db5f51bf0e79aadb12bebd75177ba62251d2",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.8.tgz",
+				"fileCount": 49,
+				"unpackedSize": 88056,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIB86t8+KTBlkY44Jl5z/BigIz34/Ld8WL5LM2DiTEJBKAiEA04BDfXy/jjwANE6zfLIoENJ252N0UbjpwIE3rZ63czI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.9": {
+			"name": "worktop",
+			"version": "0.8.0-next.9",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-GyivR1g+3IHkKGV4lF4Wft9gdKiVlwmYGRJLjT7P88cUvecJYhnyn4vF9k3XCHTYXImtYdugxYx0g18S4QYPuw==",
+				"shasum": "0f876dba5ac495722794e16e0be0b123d83f0cf6",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.9.tgz",
+				"fileCount": 49,
+				"unpackedSize": 88139,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhzdsLCRA9TVsSAnZWagAAVsMP+wRAqqFdhuRL3V93E5RD\numlQgWRMk6Ur8pIzhzJVXu2j+J/mLvSmbIX8h+S7drRCXTTgAzFb32o6bLwQ\nvo22V3P3wpYw/2ELfkzxw7oXw3ij9HPr5zvJ9O/9jCrDMB/D3mzFsTRDX5fQ\nl+KrQzAYVEq72evY7/3/4SjgsIYpOAqPqPqX0IGnutSGoKmatN2dGSYHMndY\nFKT08beVu/aowsDxnEuetCLmmwAMVfTs48FXjn7DwPStipojbCw1Cp56Sy1L\n88R92WGo5X4kpsWHDihF+AG7ATuNYbNlWME3xm/VOBMthb8R9S0QO37EsJBL\n5MEJCp2+H8xB+Inkomcc4N8geAPRnzjcBFWk3HjRyxYstiAj7+eL2zUSMBjZ\nmqCPMnTIhWJVrFPuWdGezbxJSo4RqMjpEIo7+XQq8/gJIgB7pV1fJa1tTCGm\n+aWUeQFIMwU5Us+QtSlHvcpCbREzINJNOyP3i6wO9MEtDpnYKUvF/TnFL77y\nnNmYHQh1j9tQdkBnneNE/e50swxr1VSR/BgscRDI/kNPUpCbpH2aW/ni6Ndn\nauuV5BQl1RR2kYp7vZ6jfem+khQNMShxo8Amz2Z9PENZsJOfzADsPF0cyn1/\nU/tfkivedtfzIbXUuVqlcTtItFJasNGE6g5563wFp4VeFg7VmGrhX/HAwHQB\n3LY7\r\n=8W4t\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCNAbomRIW7KBlyYfxmkhvGC0x8O5TKsiluvDcoL/gBywIgNfY9lf2Slq4Rrxs8AOMO3aj2768iKmp+kPSfC5UKn6U="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.10": {
+			"name": "worktop",
+			"version": "0.8.0-next.10",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-IUq+fTF7bO3DhwubXlkIIqWPIrXgLfHg1XHqDJVaRhVN39KcUqR3sH4PqB8Ogjb23fPEskeTeVfTtItgmJSxOA==",
+				"shasum": "2f83d8e41efb440478ec9905caeb1af11deaf438",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.10.tgz",
+				"fileCount": 61,
+				"unpackedSize": 91558,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh3JbeCRA9TVsSAnZWagAAJRcQAI3bgbJWOx9XRz/Tqi9J\npSuloDBdeljXv1UC0jXGX1seeNWssjp6XjOMNnR1hRg3lQgED28+vmVHrFNf\nIqBV118Viv9UXFmy9BktkDyGpoKi3jbU0M2Edz+FGpRNngFDY3Ip8rcHKV5U\nvkRLo1iZ/lVKNs2H6DbvmOueisi1PGd0BqOdHh0DS3S3K4ONA1n7e4FSkQOD\n4C/bGbVgm05eMMndBQ4HoSaAKT30fjIGghAs+Qx2TXbLmRqPMJzvuJog4gLy\npS8VOAbrub5hi9vP9rn5Sg1ge/HzkWBwXD1Zr8qm9SY+e27w10fFCihZVnZ2\n2QQ5V/b2FR1mB3YrudRzYpdIfptMu2MEOoklLnRL6hSFnrUJoTLYJq4TK7nM\nFhr4anRNfhhI/cCZF+ehOlfx035Io5lgewR5PZ+tmC85KOA+97GJZcWNCjTg\nluAS4eBWSfvr+2F+vGxBJEXEyYuBfqWIgDS9UVB3f4/82Zvanav4bMvRne47\nTH4WgBIDpdQ6wbpsnwczlgaucItKZ2cZJ6T5NRxAQSgBGMbvCRF4xF35C8rG\ni35wAayy8zWwDZtARZOs8yCu0EMn9x/rmzJUb8kMpz4zZRI237vhI+J9jFUn\nEbPUgqg77pSSUlHutgY02o2TYlU/IkX+Pg3EWZic39rKtWhd07pP8AVKbN9m\nTYdc\r\n=30AF\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHIpo8QW9oQeSdxanUgo3z46Av1mWxD1oU/cGzoiHGh7AiBZV4wGABFDq+RdVsxJ+MEzUd5aIK24Xt/3c0tzmhuLwQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.11": {
+			"name": "worktop",
+			"version": "0.8.0-next.11",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-e37dFOZD+sWlnXV7L5SJyfK8N7iy3WzS1wo5N+eEYiJNYADQ81EEB/zropBap4K+G2z83W/orTrCMa/jWd0pWw==",
+				"shasum": "482cf2ab71e12fdfd0d3d70a6f08ed4e1af315c0",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.11.tgz",
+				"fileCount": 61,
+				"unpackedSize": 91630,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiAqWoCRA9TVsSAnZWagAAkc4P/jdjGQlf/OQefPoKsMoj\ndLsBtq028hE3VRlcoD0e9khbuBI2UN6c9g8I+xVR2xpZvRF9iGx1P+GHDQRm\nxVNXn4p+UIulbxRuEDWwg7HDhTRnsaw1vP3vdEx2HQ7OIVEFRfTNFQxdEzh5\n/DlXnIHyoPnK5OoUfhBhnu5pvvjdpG1BIiljO07+KNezHPLs9VL7A0Q7157J\nRe/edm3taqadSdoCrIkLGDVgDsRoO+p5K+he8SQePv7J9+v3aY8SbdUuzBVr\nINFq7mX+PjlR3I+j0eEoj1ulmUjGyp0azaq+GV6HAldl+r6boWGd3d+laALh\n//lof41TCZwcbWTrqhV3ZhrZiCpYRQklZYAi1ZZlAuqms1ML+rl0uR3wVAJj\nEX++AYrFzCDwC+j/ti/bHI15qGzDtIjUwlnZDylmcY7KT5VAW1QK0eDZaqBV\nRIDgtxSKFK7qWQc0y12QD4JRynpA0HuwbgbvxkplESof+2GN62lps+Z2N3Ee\nJqtpLtH+3bpphFe/X52SQKs4G5JK9qdLsUOOf+lFEZzVOTZOi0rXZrP7GwCu\nQO2WffvXydFhxnHL4sozIbHm+GLn6YvubFa6q7bRDiagW4Hc6y8z8sWonLYD\nVR7GwDCq8t26sXWkevcsmOdLLJNsNdCOPzFWSy1OGnN4/PtqxpvBJBOgehZk\nwJR3\r\n=HMc0\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFyDr2nSeupUAlb+rV5VBQfYB5pGDQHPpZkDARleQSEqAiAE70m/zYqdnrY8YjC3QClPDu1fC5V06h8RqnqR0ROUJA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.12": {
+			"name": "worktop",
+			"version": "0.8.0-next.12",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-ZXdgI9XOf0uB4IegFoViLdQ0Bf7hish0XMHwuV3nopOXygfLJkwAC5+HyA+sihBMSM2sLLQ5uGnD5aknL8+NQg==",
+				"shasum": "66f835640397de3ef8a64a1a12574912aa9a4614",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.12.tgz",
+				"fileCount": 61,
+				"unpackedSize": 91866,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiHwoPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqu4Q/+OQx1gAXDZG19iYNc9ADEkfd6gVxIz3+8Ar0E8R462y4ZjRQ7\r\nJ8sxBPDkimyk0OGgETvl5j7JX86CkVQ4ufkSmEy7FUMtNo1R93hxegQAH8C7\r\nCa6Akex2ddsqER3l/9oDV5jjVIqpKYQ5+UZm2z7qX6E7Jq9fPUoaAwPQxTup\r\nRlx7GP3XPiFs5fqQQ8rp1DEXI5OetstTw1dHEmuEGE/a2yKcnBhfkU75R/P+\r\nqUu8VmHJrH/efP33ml11aNmswqAkxQom+cHLvbCM76yaQHO/1HMY3/y9yGyi\r\nWKNvA+lXIiXPb561uo5XrkEGFc+0IYsm393MfKPHEfyy/Afn5hKMJ2x/tIuk\r\n+VSdZbtKaVWAZZ2gVy5ebUsv0ESm9JtUcKQFwY3Ny+/6oyffmaZUMGWIGc32\r\nwG8sOEVz1+1b5KCiMmBYpcgsKtDSunszfTeOB/FSxaOeL4W6bfMUuppC712+\r\ndixit6bQjPNknNVXIa1hSJpcpv+6r4B6pi78zgjvF0WxhKPdW+q+bInX7htv\r\nNoAKmwa0PeOKWi0mf/wG8qOauWcs6AwihkiEqIk+3TAHg0WjzSA8EZ28tEQr\r\nlcT6XPNGyfw4qwGwr1scuGD6lsciJac/lZbNzr/qkzV5xHURnc90yDlNnL20\r\n2M1mrtpx3n/mZAhBmV1QZtQuiVlwFQnLWN4=\r\n=LLoS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC5s9G+t3GyJxVwrNLHudn8HfMScvqR9UzbWY9qzu3VSAIhAJXrZZwQ/I7GArE3wRsTWjorbQj4Lw+hjJckNB2UGDYx"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.13": {
+			"name": "worktop",
+			"version": "0.8.0-next.13",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-aLPWSneFtPJr3RAf841orF9GNlVdVkQd2Wj/BbcGHp3whBZoXx6dcwwClA9fezm7muNan4SuT+ZTyMWdoJSCAg==",
+				"shasum": "4768fc61cab2c153c1f6372e7180d9d3f2fac07e",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.13.tgz",
+				"fileCount": 61,
+				"unpackedSize": 86746,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCO5o+LRnFHv3S51X2fBqkROhSL96DKEEAy7cntnJEAVAIgRaLSB7LhCRQOQcld8tr9pDzfZKTUJkKMpi5zMcCvV8o="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiZuHVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrQ1Q//fkM7q7+jTV1T/n8jVTH62D+mdjAUZ2d4b+UOmdHpj0aupKJs\r\n8ODYNG02wFA8usp2NR0wmKJVgyh7BflvcoDdqmrSMvFtEZVV7NEBt1s5aq/Q\r\n4IV7pmcT/RVCMWjgGVgKJsmKd8ZvkR6NF4C3/a9+h1NK2pQ140dZXjyqKaAg\r\n1Ukn8Ov4JKGLd81bbUh2cPd541I9soLF4U6b0DvnYauBkfcgQx6g7WP3kkTn\r\nMl364rfduk9h2fVCRLz+5x7Fu21jvXAqxqaO+VlmDiG0vga1Z8FsU6a+xCW1\r\nIwK2YGtW0R+XQRVoE0CrB7Vpgc8bz6PirJepVywE+HmNQlWikSMlVGWg1TZt\r\nZPdAx4qXhr4fcCbV6pGtEbVL4NdBJfw70qiZmjpd9DSTnRdKO4QvZVB3ltFo\r\nU53VVrCCFKP52r3vGyN4tehvIdyHyTlX+58iPHL1JS08Juus480o5keb6SsQ\r\navGVxm4FexGLpGaoRs9FOO/wVlTsdG+0Dec5Rx0lUxU/NXRiNaXMdfa+xR62\r\nsEVqQcmJUJofRAf2poMcPFA0KP+KOhVXTihuteC8EI1Ovh3rO217M83soqhS\r\nBqPM+e4nNY+lQO2s9svc0E2O4PUF0Xp0jJQ8mDecadE0c90oGScTdYtXdqyE\r\nxdMtU/sl9T/K2cOQikKb2JOWNHUYTcaUlJw=\r\n=yzag\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.14": {
+			"name": "worktop",
+			"version": "0.8.0-next.14",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-RZgqHu1w/JcUdWOE/BUEAzarrUUHh39eWkLdX8XpA6MfgLJF6X5Vl26CV7/wcm4O/UpZvHMGJUtB9eYTqDjc9g==",
+				"shasum": "bbb81a61cd2b40bada91961cf3caaf2c6ba17c1a",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.14.tgz",
+				"fileCount": 61,
+				"unpackedSize": 86710,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBkD5VldDGEH0FT55+eAxs/XLr5eoaa7HqL67kj2IJqCAiAD+/lZig9hZLgRixzXMB9+/JO/Jxr9fGIYqX44s1H8RQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJietwAACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqmuA//a7TaxnEqzmJ3vkkjbjsl2EGSjaKo/jZqqZLCuj3Ol63kbJ2O\r\nfi3Hr9k+PFN1Ml3MTTvDWaOX17eYdz9u0c8QsKtq6xUkCrq1uVZitzLbKpsM\r\nkDZZnfdVWNcTZAOClpM75uIOu65J0a78IGnTe7RIUXEc4x4qmCMjFm7BLmMw\r\n5FEzcXEX1NxcOht5IuI1k5toaxsGj9z8SnXdNm0KTIS25FHuNxitwPL2O2vM\r\nsxxeBjoaMmVv1P7P2kmF59kWwq8ocD6L5WQSXiohUbsm5bEsvGuRkJAL6oq2\r\nVIU7VXRPLqKMuoyTh8kllLV5GWyOxNsmhtzYnx89jR9yGOh7y2sj6mbVqgHB\r\nL/5sY7WIczX79WiP6SsXNmhcWtLsgRfAn4ER6RMoLkklgfCL+j5QnWb2SKix\r\nT5wGNQuSP+Sa7l9LNAvUhCHsmNYR6l8uVQKCy0CqvVc/QmFnuThmwmlSXkwq\r\nbUJA3TH4x4EIVd/sz3RQwiNBWQMu/aLA+Nm8379y+1lWvLglrhZ3/6ovKvsZ\r\ngG8flzkh5FDWIwxknxxZ0Z178pgzJs2l54POpQhVxrrzOCOa96938nkyfN7r\r\ntEbpF9x5dvSCU4s/6bbAUu4jq7XRN2yk8q5d8iRJTVcGNFQYkhZYmCd2Tr2U\r\nsKTzFuRPpT/4aMabIdPIjKsxKtdktE6PcAI=\r\n=SvNn\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.15": {
+			"name": "worktop",
+			"version": "0.8.0-next.15",
+			"dependencies": {
+				"mrmime": "^1.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-0ycNO52P6nVwsjr1y20zuf0nqJatAb8L7MODBfQIxbxndHV5O4s50oZZMHWhJG1RLpHwbK0Epq8aaQK4E2GlgQ==",
+				"shasum": "f91d4a686fe43b813fbfd49bd3d4566dcddd4bd4",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.15.tgz",
+				"fileCount": 61,
+				"unpackedSize": 90463,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD8PAADoK1EJvYCPH3XXgR9kxBx7V5MsjZu9VIYNJD1OwIhAIMX52ACJDj/E+hbTQPsyzU5gRXzM+lMizElZ6qtzIlC"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkPYZaACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoguxAAnyU8ZHZDet1aVGywlXC/nLXX74Qfdim3n1+qFAMe+mWqilzG\r\nOqiHMLN1bzdKvjWkU9D0BR+4+jDqL4T2pT1ShPbd766nytpld1/IgBtzd+yQ\r\nE4hJDMb1hgtVEHR0X2ynOW2ZhJh1RX7f9WKHUm6BG1ImAFtBZGeVrUuh/C6E\r\nnOJdEPQIONuvjj6w5jtme68Ul39ulOBd0Qyl8HjFaLoCE7tqwflSBKWWF2PO\r\n2WS7uefsiWDO66YZi0QGN/Zxv/5yCCdUddVnIL/89ToXgsYD/MvdZtexkyhH\r\n5+yo2E+ibC0orxea6v/8juHtv3lK03qQNCxP+IqxBej5J9jXBmCUnOzISkeA\r\nVEVmm9rBePFnLBa3PBZTqrG4WG7xJdAQbOO0bN4Q1fHO8rXpnNPXycNQ8naG\r\n6aXv5HIK6aO9Oq3YeyVWfHTR4FFzr0eKWolAW8wuK+dbx9qParetAJSwdK0m\r\nmF4v4VK9ob6gy2ki27Ixhd9uZBZo9gPxHNDbPZI4mgexzN+pDDJuu06YX4CC\r\nuJ9Bwy6IPushN9UJVuwPaAb9ziUiSGm55GWWWQjw0KvaPX+xJdaV2b3odaGh\r\nlfjYZuQ3rnH7NVtdBp6snILRLePVdhTPHOIlkJ1knoWyaoFIvEx2Pws97IBx\r\nxDC/ZYRMYIwEjQJS3oK5lnrWOUpp5eLQ0/o=\r\n=eQNL\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.16": {
+			"name": "worktop",
+			"version": "0.8.0-next.16",
+			"dependencies": {
+				"mrmime": "^2.0.0",
+				"regexparam": "^2.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-T/2AQoOONDNvGQUX+gwvFPhpej3BAVy3tA35oS0KfYWMiyvReOLh3WN0Iq67Y0rszuC96KVis9SD1S0H0t4hrw==",
+				"shasum": "d857f32393df44f3375bb67b7359c6d981b09223",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.16.tgz",
+				"fileCount": 61,
+				"unpackedSize": 90463,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDlP6KOaM7cX7rQvV5zF+epVsJ/idqYkBnGvzsYItcMgQIgIkXdEQFSgZ4hRr+Ac9WX6r9ayyCFvK9NKTwDMJmTFrI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.17": {
+			"name": "worktop",
+			"version": "0.8.0-next.17",
+			"dependencies": {
+				"mrmime": "^2.0.0",
+				"regexparam": "^3.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-397EYHpqQyHFxbwrGSSkmlVt35P+Lgt9eOkFV1nFAhRzer33aX3AgBeUv7oHORiHDN5LsO/H5NJppUggVopwGg==",
+				"shasum": "4cf8032a30b3a600112326c8a517d7e2dd1ea3b1",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.17.tgz",
+				"fileCount": 61,
+				"unpackedSize": 90463,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD0kfiWIAxRKrMK069nMhcUyzpKz8uIxUa28cVAbgnyOwIhAPx45SRCGQr+mH3MPFKDrE0LqVR6YXVNofPiPw8aVajX"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.8.0-next.18": {
+			"name": "worktop",
+			"version": "0.8.0-next.18",
+			"dependencies": {
+				"mrmime": "^2.0.0",
+				"regexparam": "^3.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-+TvsA6VAVoMC3XDKR5MoC/qlLqDixEfOBysDEKnPIPou/NvoPWCAuXHXMsswwlvmEuvX56lQjvELLyLuzTKvRw==",
+				"shasum": "546b1ece7b34d01708ac2abec7c1110cd8874bfd",
+				"tarball": "https://registry.npmjs.org/worktop/-/worktop-0.8.0-next.18.tgz",
+				"fileCount": 61,
+				"unpackedSize": 90461,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBGEwnbEiWcj2FpEZO7eJ3w5+16iDRh/9GtzRxAlKeiqAiEA1tvGAR3ApsT4whlR6qtyNnH8YVYIhOWj1nqVtpGw5lI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		}
+	}
+}

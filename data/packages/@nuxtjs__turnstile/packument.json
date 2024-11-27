@@ -1,0 +1,1206 @@
+{
+	"name": "@nuxtjs/turnstile",
+	"dist-tags": {
+		"latest": "0.9.11",
+		"beta": "0.9.11-beta.1"
+	},
+	"versions": {
+		"0.1.2": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.1.2",
+			"dependencies": {
+				"defu": "^6.1.1",
+				"pathe": "^1.0.0",
+				"@nuxt/kit": "^3.0.0"
+			},
+			"devDependencies": {
+				"vue": "3.2.45",
+				"nuxt": "3.0.0",
+				"husky": "8.0.3",
+				"pinst": "3.0.0",
+				"eslint": "8.31.0",
+				"vitest": "0.26.3",
+				"prettier": "2.8.2",
+				"playwright": "1.29.2",
+				"release-it": "15.6.0",
+				"typescript": "4.9.4",
+				"@types/node": "18.11.18",
+				"expect-type": "0.15.0",
+				"lint-staged": "13.1.0",
+				"@nuxt/schema": "3.0.0",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.0.0",
+				"@vitest/coverage-c8": "0.26.3",
+				"@nuxt/module-builder": "0.2.1",
+				"eslint-config-prettier": "8.6.0",
+				"eslint-plugin-prettier": "4.2.1",
+				"@nuxtjs/eslint-config-typescript": "12.0.0",
+				"@release-it/conventional-changelog": "5.1.1",
+				"conventional-changelog-conventionalcommits": "5.0.0"
+			},
+			"dist": {
+				"shasum": "0747891f64c14c439f4cd41a3e4198c095b98b28",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.1.2.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-/qNAdA6XS+ABO3Ib6SomHtKcmIOq2S7ERzvz/GKjFxUAYkfCMqY/1sElTU5/vVuHVl45OSIKKMOalReXf8fOhA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDv1j2Uz7f29Ctcl46XbX7Y8LycbcqBbk5fftb+sEfGqwIgddZe8zNsThSAunzNZcNZjZr7apEHdLk1yfYSuidYD18=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 19994,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjvAgZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqknA//b+gxL14yK4SXdS/XS9RZ/LAMzGgOBx+iiDV2BtBDLTXaGogj\r\ntYXmuDWTTi6QThEPshk6LXi7FUNbhniK3YtCebQ2PVKJiMUd3enzhGubx6FS\r\neY/EFGLDLf5oWQmus/O6tqhgPhtX3eUAYQoflrpia4TTHo4NPSM1Bc6KPsGG\r\nAW2zUypcI1TCG80aRKqGRVRrp2N0cOx5SKgYCCnAkoY897rm++KpFEtB6M23\r\n/ukU3JmyAK0S2jqHHTAfVIbhbqkW1WWmOHcoNeaSE5plgA17FpPoenGOlGYe\r\na+CDw6LF0IIxSwf4tUTYyN5Pp9VkbcEGVqhK2PiMig3+hkgqFyq8WcM9ls6r\r\nWwgsGux/fakDg0X1D9xA8rwFOvYKToCMhIu4lzl/fwV3mqTyGff5aX9Mc7J+\r\nWqZfUzAjwgJMyD1HQ6QkMKjWYv37cXhQ5SHHcF8Ola6tF4gBS7DDeBPRHUF7\r\nEO79zVoWhehsIsS5++ETnYgPFGt/gBA2P5TiHHQbe/1WWygmE6ZHfJgpv1rj\r\nLBFTcttyI2GxE8cUZE2J45CZJflhsi/Pk2jRWWyElICRXLzgkIpxQG0PIYoV\r\nguMGQaLQSE9pOxk43sIMcYLS2z3LT0J59fTfeNnpiDuq04o1a0x2X8MYa5iq\r\nZLeuc2rDOwRL0jBWztuSsgiA+RGJcrO1YIg=\r\n=0A9q\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.3": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.1.3",
+			"dependencies": {
+				"defu": "^6.1.1",
+				"pathe": "^1.0.0",
+				"@nuxt/kit": "^3.1.1"
+			},
+			"devDependencies": {
+				"vue": "3.2.45",
+				"nuxt": "3.1.1",
+				"husky": "8.0.3",
+				"pinst": "3.0.0",
+				"eslint": "8.32.0",
+				"vitest": "0.28.2",
+				"prettier": "2.8.3",
+				"playwright": "1.30.0",
+				"release-it": "15.6.0",
+				"typescript": "4.9.4",
+				"@types/node": "18.11.18",
+				"expect-type": "0.15.0",
+				"lint-staged": "13.1.0",
+				"@nuxt/schema": "3.1.1",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.1.1",
+				"@vitest/coverage-c8": "0.28.2",
+				"@nuxt/module-builder": "0.2.1",
+				"eslint-config-prettier": "8.6.0",
+				"eslint-plugin-prettier": "4.2.1",
+				"@nuxtjs/eslint-config-typescript": "12.0.0",
+				"@release-it/conventional-changelog": "5.1.1",
+				"conventional-changelog-conventionalcommits": "5.0.0"
+			},
+			"dist": {
+				"shasum": "db6a4d27588b974df2742fd2b8665713020aa8b2",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.1.3.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-Ne0mdtD4EXpRwEFXivtJ30zPaz4WgfgrTVcpYOC9c6Z6FsZ0g16wG0qggGWiWvCogeozF6f6DHjNvy64OIq2Jw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGnaPXeSuZrwGMVkNI+CdW4Yo5cWxN5qBZKS/L7+lVAUAiA2AY1xq/pbMQOynutn4sRYMolyCRw98koT9+LhBcQyKg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21062,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj1a1uACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp+bg//Xq3db95RkDTt6NFse+wkyIcMuvFu5vruG2HM+6Iotvujn3d/\r\n8p3xsuohiVWFXynUHE80/p373M4pTxAXV3bSCHHLQ0VjKILFofe6CEdjDNaI\r\n5Dd0Yv7+bcCcwIrBDzSfFqDXgJT4rPpUr9o4eDXMMKAVsDWjG+91EKkJcCh9\r\nYS4dpqUS5bveUiYlxqCjKE3E/+6VqmQkvfAShc1toIVUSr0jA1/dNUIZ5F2Y\r\nCNUceFJ/SZCEvEjOb+YsyaQimLaxl6hNT5BWOwygj2yyfWwdjSQ8JE/wC0jK\r\nCeKvBySvMsS5S61WEiwispg/zZV9222Qu39ofGZvp6P1kG85jXcrCpWw6Zho\r\naUlOpjVuXWWfncE8g1z0vEwIeyXbp1oPMyY0QtwVIvTGRR/WaTzntbECsvBt\r\ne9sOo5+7OLOVwBdRox8v5nFirvh9nILfXItSDklrdOVIaaGZDb5FhgPwW3Ff\r\n+SEEnWpTxiR5BNxbd6tDPWpkONgpuyQ0pTHdlCz9yR2g/ptUjjS70At/CvJJ\r\n4SdJ3bjuw2k6ZtxB14KNkOQT+N1F+X2eKDfj+/2DqyUnilM59u/L6hSpIWhW\r\nvEinEDP9mDu4JVxqAclyxaGq14MkBLmVGUq06b7VuRRqRGUgy76wyZXrOHnR\r\nZjpY9W1nyphRYfgbbeEqO1sa8whvjPSvBFA=\r\n=48O9\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.2.0": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.2.0",
+			"dependencies": {
+				"defu": "^6.1.1",
+				"pathe": "^1.0.0",
+				"@nuxt/kit": "^3.1.1"
+			},
+			"devDependencies": {
+				"vue": "3.2.47",
+				"nuxt": "3.3.2",
+				"bumpp": "^9.1.0",
+				"husky": "8.0.3",
+				"pinst": "3.0.0",
+				"eslint": "8.37.0",
+				"vitest": "0.29.8",
+				"prettier": "2.8.7",
+				"playwright": "1.32.1",
+				"typescript": "5.0.3",
+				"@types/node": "18.15.11",
+				"expect-type": "0.15.0",
+				"lint-staged": "13.2.0",
+				"@nuxt/schema": "3.3.2",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.3.2",
+				"@vitest/coverage-c8": "0.29.8",
+				"@nuxt/module-builder": "0.2.1",
+				"eslint-config-prettier": "8.8.0",
+				"eslint-plugin-prettier": "4.2.1",
+				"@nuxtjs/eslint-config-typescript": "12.0.0",
+				"conventional-changelog-conventionalcommits": "5.0.0"
+			},
+			"dist": {
+				"shasum": "14f7e49e9b1f1110e85c81b43ffea1f61559e051",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.2.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-r5HzLESx5vuZ79cl73I6630vrJv1aH2bl/o+OQVbUgjxzjTj7SJUL2YGbD2hkfdtM+CBh83bpB+8NjrCWTnp1g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQChQ6FRfS4GFdh+xiRpV77za1sascJsnG4XGsk+Mi8koAIhAIOTk/pkyNvk6nNEmL9mvI5XnD+zJkESFMD+eGXUeUWi",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 22106,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkKo62ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrdVRAAoKLq5fXJWphcyKKG0QjtqVMq3V4/kdkeEF09JjycsKGb5MlW\r\nWUe5nMyitwvrDUS5VQksgbcq8jVKp+qnOBTe8zsr+XzTuxM+K1tRIiQpYxKH\r\n3BNva5I26KBL9OUEDmjgmawzIPxnupoCKEYC1nu/CWTLp8Twwyhyt43NnbGw\r\nn0QwiXZ7CfDUB1EPaLdXzAYDNU5F89tpWpQj1sATPSNJnTGTS8uvJyxWAoNH\r\nX4UxxdUze0qPyUOB+T4lgryLP/pPP/eDR5w4SxogO2lsDni02DWP3TO2/0SA\r\neORFJio6JwBAl8O/NsBT8VlENLxHqdJN9s8GOTJrXCttdTTQ3lbxzZog/6GG\r\nv19siR8mNphuEZQwLf4PkFaBZF0RZc9IghgmQpfWnTsZlVqrdQQjUr910nU1\r\n+8MJAEBg4WtFYC1KT17DCn4s9jzrRDM6JvZbHWCVXROfPvaF19NqpsXfx8QY\r\n50M+lapg0fRlKyQ7xxjbSgrfvo9DjeqtSMEAAZv9Pz3F/jwQOxcmNGpH+2Xh\r\no8OymDFI9Jx1OhOUBxKqSnRaXoi7DnXD7xzIQjmmi3mirukleCNUBhSGcaVk\r\n9jW9ZPh6+5LQwLz12Tt+0lHlTqMfhwn7JJiz5EqEAWWbUNFmdr8r61D2dHch\r\nRr8LuN8vIJrACZ3B8QOElaZPB0pvWeLXJt8=\r\n=aEdg\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.3.0": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.3.0",
+			"dependencies": {
+				"defu": "^6.1.1",
+				"pathe": "^1.0.0",
+				"@nuxt/kit": "^3.1.1"
+			},
+			"devDependencies": {
+				"vue": "3.2.47",
+				"nuxt": "3.3.2",
+				"bumpp": "9.1.0",
+				"husky": "8.0.3",
+				"eslint": "8.37.0",
+				"vitest": "0.29.8",
+				"vue-tsc": "1.2.0",
+				"prettier": "2.8.7",
+				"playwright": "1.32.2",
+				"typescript": "5.0.3",
+				"@types/node": "18.15.11",
+				"expect-type": "0.15.0",
+				"lint-staged": "13.2.0",
+				"@nuxt/schema": "3.3.2",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.3.2",
+				"@nuxt/eslint-config": "^0.1.1",
+				"@vitest/coverage-c8": "0.29.8",
+				"@nuxt/module-builder": "0.2.1",
+				"eslint-config-prettier": "8.8.0",
+				"eslint-plugin-prettier": "4.2.1",
+				"conventional-changelog-conventionalcommits": "5.0.0"
+			},
+			"dist": {
+				"shasum": "bd67087b42bcc5b4156e3e770ee921b014e3f2e4",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.3.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-dk86cFKKVAf7tag+5z2Xznit6iiSmAMxViSrAknSuCJqP69fjy+whZPXUxLeYcLVN0+LhwsgPEhQ0nR5YruBnQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIBhZtrgE2ne0cIwoILW32yVTeBM858p7/WpRdctTCIJOAiBZzz8vNLR2YWgzt+4zuF2vQb8NMt3q3APYCy2UNhxocQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 22623,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkLovnACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoJ1hAAigYycJn0GFXSun1t3hW/WQs1BPakQz37aaqrkCKApbLCj7RB\r\n5Tbis/bWgcELL+nfVMjRlkQ6XopA2BIQHY6aO22eeaJPLCGl9kqCx9si1fej\r\ngbaS+Gf+JMVu+hfVU4Y5+amRNDuha1/6QBpdtSHrL4HebguwgRNMCkW3oOrT\r\n3XzaRCETwZmvRBdvXoodJxxO22x1jqb3GmiAz4NfnNdH9nEWY1gukmPqJLLJ\r\n7zA0p5/eB6wr1xCnavoymOIFuBjgOMNFuNJn/6u0Ki1iozke7/avYbV9KBbh\r\n1UhrLsfQX7g1ARA5Qowweyxdw+nN5aDmVDvoRQ8BfRpmmkmWR+oL36T1+ydg\r\ngzX+d2k3Uqg/yWEiipk2cix5D/wSAYvkgwfN/hWHaf3eXB/d0CuVZzPGhrYY\r\nMB+S4x/Bm6OzfW0VhXgI3GAJlGSsD6L23Rv3fEi95ek8rxHxoWI2zbtxz5zu\r\noKMo8xoyje9j6L+RgAdCDVCEWAkfQpbYp7wAn4YUwy12rB7YMDqseRsIH4D+\r\nTvVE14Td418OM71IKT7T4SArSHYqdbCriJ5wN8mHH9k8OLH97AbZxiK6zvSI\r\nw87ZGL4BgpXvzRrR6NGWq7K86wm9ud6mHLDFu93tF3rJB2HMtHTyj5CvvHis\r\nLCGT9cZBH1MoCfOPWZJv85jYw6XQ/pTm288=\r\n=QMiG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.4.0": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.4.0",
+			"dependencies": {
+				"defu": "^6.1.1",
+				"pathe": "^1.0.0",
+				"@nuxt/kit": "^3.1.1"
+			},
+			"devDependencies": {
+				"vue": "3.2.47",
+				"nuxt": "3.3.2",
+				"bumpp": "9.1.0",
+				"husky": "8.0.3",
+				"eslint": "8.40.0",
+				"vitest": "0.31.0",
+				"vue-tsc": "1.6.4",
+				"prettier": "2.8.8",
+				"playwright": "1.33.0",
+				"typescript": "5.0.4",
+				"@types/node": "18.16.6",
+				"expect-type": "0.15.0",
+				"lint-staged": "13.2.2",
+				"@nuxt/schema": "3.3.2",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.3.2",
+				"@nuxt/eslint-config": "0.1.1",
+				"@vitest/coverage-c8": "0.31.0",
+				"@nuxt/module-builder": "0.3.1",
+				"eslint-config-prettier": "8.8.0",
+				"eslint-plugin-prettier": "4.2.1",
+				"conventional-changelog-conventionalcommits": "5.0.0"
+			},
+			"dist": {
+				"shasum": "09d67ad9632fa4f5cfa7c68e78d2b376e0fbac5c",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.4.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-fJxuvDWN2E+Yca0kU+sSI6e0xMSmxnHEEg8mrGq4PPGa0gibpdHfc2egaZHCG1BFrlzr6sE50+NnJu2JDb6Iag==",
+				"signatures": [
+					{
+						"sig": "MEUCIBo59frDba1WbY/+lR/CT+kBgOhwLGl5VIqklHqMtqvwAiEAtZs6EiXdoM9AqwtjKI8Wof5mUuHjRVlxABy2fltuojw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23046
+			}
+		},
+		"0.5.0": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.5.0",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.6.1"
+			},
+			"devDependencies": {
+				"vue": "3.3.4",
+				"nuxt": "3.6.1",
+				"bumpp": "9.1.1",
+				"husky": "8.0.3",
+				"eslint": "8.43.0",
+				"vitest": "0.32.2",
+				"vue-tsc": "1.8.3",
+				"prettier": "2.8.8",
+				"playwright": "1.35.1",
+				"typescript": "5.1.6",
+				"@types/node": "20.3.2",
+				"expect-type": "0.16.0",
+				"lint-staged": "13.2.3",
+				"@nuxt/schema": "3.6.1",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.6.1",
+				"@nuxt/eslint-config": "0.1.1",
+				"@vitest/coverage-v8": "0.32.2",
+				"@nuxt/module-builder": "0.4.0",
+				"eslint-config-prettier": "8.8.0",
+				"eslint-plugin-prettier": "4.2.1",
+				"conventional-changelog-conventionalcommits": "6.1.0"
+			},
+			"dist": {
+				"shasum": "470ff41f0e2fb66ae8c1cc2a3107d956f370792f",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.5.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-EmEnYNDRavdmv9HXnInHVR5nSvjDG92s6pOrxd+ugqImkrnIQJttSd4DPq9UNhwUI/wLUL7z3VclVyQwNT2O7Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCAkl3As923537pQxdAvmoe1j2jDKHlfUSmscfgX3T6fgIgdsYx+FfvdRDfN+BIyRNCFM5l6z1jegS6trP3TtV43hY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23109
+			}
+		},
+		"0.5.1": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.5.1",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.6.1"
+			},
+			"devDependencies": {
+				"vue": "3.3.4",
+				"nuxt": "3.6.5",
+				"bumpp": "9.1.1",
+				"husky": "8.0.3",
+				"eslint": "8.47.0",
+				"vitest": "0.34.1",
+				"vue-tsc": "1.8.8",
+				"prettier": "3.0.1",
+				"playwright": "1.37.0",
+				"typescript": "5.1.6",
+				"@types/node": "20.5.0",
+				"expect-type": "0.16.0",
+				"lint-staged": "14.0.0",
+				"@nuxt/schema": "3.6.5",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.6.5",
+				"@nuxt/eslint-config": "0.1.1",
+				"@vitest/coverage-v8": "0.34.1",
+				"@nuxt/module-builder": "0.4.0",
+				"eslint-config-prettier": "9.0.0",
+				"eslint-plugin-prettier": "5.0.0",
+				"conventional-changelog-conventionalcommits": "6.1.0"
+			},
+			"dist": {
+				"shasum": "cf90ecbdf4099f4e656e36e32a1a5154afa58723",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.5.1.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-nxda2G7YDCCLTvGQdotXk5zfb6LXTN2LVEUwpGcgpgRtJ9vWGwflroCm6dQzCBgPytxpQ0dELbg4Fmq6jAfHJg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCmxWX6Iv+r69e9A2c7E7kahIJwZ+Mka5zZ4jIMYn6GxwIhANXeRSrTO6aas6XCMVI6N8BM7yYemBdnJ2JuAt4ZNcPF",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23100
+			}
+		},
+		"0.6.0": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.6.0",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.6.1"
+			},
+			"devDependencies": {
+				"vue": "3.3.4",
+				"nuxt": "3.6.5",
+				"bumpp": "9.2.0",
+				"husky": "8.0.3",
+				"eslint": "8.47.0",
+				"vitest": "0.34.2",
+				"vue-tsc": "1.8.8",
+				"prettier": "3.0.2",
+				"playwright": "1.37.1",
+				"typescript": "5.1.6",
+				"@types/node": "20.5.1",
+				"expect-type": "0.16.0",
+				"lint-staged": "14.0.0",
+				"@nuxt/schema": "3.6.5",
+				"get-port-please": "3.0.1",
+				"@nuxt/test-utils": "3.6.5",
+				"@nuxt/eslint-config": "0.1.1",
+				"@vitest/coverage-v8": "0.34.2",
+				"@nuxt/module-builder": "0.4.0",
+				"eslint-config-prettier": "9.0.0",
+				"eslint-plugin-prettier": "5.0.0",
+				"conventional-changelog-conventionalcommits": "6.1.0"
+			},
+			"dist": {
+				"shasum": "df2d72acaafe7599ed61546a905cdda461d359ac",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.6.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-dc6YDZMDE8gEWBd3PwQ7gL4mVeDt5wJuybzdrahHnPPg6znb3Pvl0gaCdG3tnodipRtvBW2zIGPSovG3RLlvxg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCR/IASnPJ0i4giisYR/lKlAsNx/IfX+ayoUXYu46nnXAIhAJ0XiERuxWpREye4aW1TZiAebIpdpQMuLtC/PfuyyITI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23877
+			}
+		},
+		"0.6.1": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.6.1",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.7.0"
+			},
+			"devDependencies": {
+				"vue": "3.3.4",
+				"nuxt": "3.7.0",
+				"bumpp": "9.2.0",
+				"husky": "8.0.3",
+				"eslint": "8.48.0",
+				"vitest": "0.34.3",
+				"vue-tsc": "1.8.8",
+				"prettier": "3.0.2",
+				"playwright": "1.37.1",
+				"typescript": "5.1.6",
+				"@types/node": "20.5.7",
+				"expect-type": "0.16.0",
+				"lint-staged": "14.0.1",
+				"@nuxt/schema": "3.7.0",
+				"get-port-please": "3.0.2",
+				"@nuxt/test-utils": "3.7.0",
+				"@nuxt/eslint-config": "0.1.1",
+				"@vitest/coverage-v8": "0.34.3",
+				"@nuxt/module-builder": "0.4.0",
+				"eslint-config-prettier": "9.0.0",
+				"eslint-plugin-prettier": "5.0.0",
+				"conventional-changelog-conventionalcommits": "7.0.1"
+			},
+			"dist": {
+				"shasum": "df1ed481c7bc6718603e7f11856d6aa60e1c7615",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.6.1.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-2wjCl23yAJt8ymBZJiIjFxiHlkF9gCf/Vwv+tfuOtVHVNA2Sz/LnrKF+HeYpE64CUz9/UzuATIV1IBN7BojY6Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIEVTgvVgZc4jhEwgZzONpsVvYZ2syYk4OBZZfxltNxTBAiEAjqsbhAdCHZmiDZW56SH9xEJqtmex3O4WE0npXKYSs28=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23907
+			}
+		},
+		"0.6.2": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.6.2",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.7.0"
+			},
+			"devDependencies": {
+				"vue": "3.3.4",
+				"nuxt": "3.7.0",
+				"bumpp": "9.2.0",
+				"husky": "8.0.3",
+				"eslint": "8.48.0",
+				"vitest": "0.34.3",
+				"vue-tsc": "1.8.8",
+				"prettier": "3.0.2",
+				"playwright": "1.37.1",
+				"typescript": "5.1.6",
+				"@types/node": "20.5.7",
+				"expect-type": "0.16.0",
+				"lint-staged": "14.0.1",
+				"@nuxt/schema": "3.7.0",
+				"get-port-please": "3.0.2",
+				"@nuxt/test-utils": "3.7.0",
+				"@nuxt/eslint-config": "0.1.1",
+				"@vitest/coverage-v8": "0.34.3",
+				"@nuxt/module-builder": "0.4.0",
+				"eslint-config-prettier": "9.0.0",
+				"eslint-plugin-prettier": "5.0.0",
+				"conventional-changelog-conventionalcommits": "7.0.1"
+			},
+			"dist": {
+				"shasum": "4fea3c157d39f5a50abae4cd77c2f56c7ac62ab1",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.6.2.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-axuBPdquQ6h4cHKvmFDRTsxKeY0pItUv2uch1xQCD9ffpLMI0FxMGfWCz88jU1MxyZP0WIbgNVHQ9zrRGvZeyg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDT/UmqtFACO2WmD4AbhjxxWO7056m9aJAe9aBaOMPY7gIhAIJWiNNQfMqR/cilifnF1r1fbehL9hbwaHi3Aoy4vn+l",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23907
+			}
+		},
+		"0.6.3": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.6.3",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.7.0"
+			},
+			"devDependencies": {
+				"vue": "3.3.4",
+				"nuxt": "3.7.0",
+				"bumpp": "9.2.0",
+				"husky": "8.0.3",
+				"eslint": "8.48.0",
+				"vitest": "0.34.3",
+				"vue-tsc": "1.8.8",
+				"prettier": "3.0.2",
+				"playwright": "1.37.1",
+				"typescript": "5.1.6",
+				"@types/node": "20.5.7",
+				"expect-type": "0.16.0",
+				"lint-staged": "14.0.1",
+				"@nuxt/schema": "3.7.0",
+				"get-port-please": "3.0.2",
+				"@nuxt/test-utils": "3.7.0",
+				"@nuxt/eslint-config": "0.1.1",
+				"@vitest/coverage-v8": "0.34.3",
+				"@nuxt/module-builder": "0.4.0",
+				"eslint-config-prettier": "9.0.0",
+				"eslint-plugin-prettier": "5.0.0",
+				"conventional-changelog-conventionalcommits": "7.0.1"
+			},
+			"dist": {
+				"shasum": "9fdef7dbf0a5adedba73ec87005fff2a5196f529",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.6.3.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-POo7J6mlN4apRKQQziyvbBN7IsOtDiDuH0euAWrFv5LUBuBlPcARJMsBhziYWp7hTSGpqS/DHj8/5mrVltQdzg==",
+				"signatures": [
+					{
+						"sig": "MEQCIA6cLs3ozUXzkh+SazdQYnWX6yhxC42cKWsDfPx5PKc4AiA9nbgh6+Ia76e4rcHWP/MwuSDoZOEvPPoeX0AfDLd/gg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 23907
+			}
+		},
+		"0.7.1": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.7.1",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.7.0"
+			},
+			"devDependencies": {
+				"vue": "3.3.12",
+				"nuxt": "3.8.2",
+				"bumpp": "9.4.0",
+				"eslint": "8.57.0",
+				"vitest": "1.0.1",
+				"vue-tsc": "1.8.27",
+				"prettier": "3.2.5",
+				"playwright": "1.37.1",
+				"typescript": "5.1.6",
+				"@types/node": "20.11.30",
+				"expect-type": "0.17.3",
+				"lint-staged": "15.0.2",
+				"@nuxt/schema": "3.8.2",
+				"get-port-please": "3.0.2",
+				"@nuxt/test-utils": "3.8.1",
+				"@nuxt/eslint-config": "0.2.0",
+				"@vitest/coverage-v8": "1.0.1",
+				"@nuxt/module-builder": "0.5.4",
+				"eslint-config-prettier": "9.1.0",
+				"eslint-plugin-prettier": "5.1.3",
+				"conventional-changelog-conventionalcommits": "7.0.2"
+			},
+			"dist": {
+				"shasum": "72f5fea8a6004e270b7777a91cae9799811f3f47",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.7.1.tgz",
+				"fileCount": 20,
+				"integrity": "sha512-CchOZW6CZmdYLjbNk0OniOHkAU5hvpyUbiDimevfl4IMN8GVX5YWTwbhRYclzTtPBNIvp12fjgGN1yLvgDCSgA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDf7o9i9kaJlJwllUImEK/7F4Opzl/r3HnVFH+qOdimuQIgZOqtO06Nq76MbWbaaookscoFLH3TXkm53Gbgb5DZTmg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25996
+			}
+		},
+		"0.8.0": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.8.0",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.7.0"
+			},
+			"devDependencies": {
+				"vue": "3.3.12",
+				"nuxt": "3.8.2",
+				"bumpp": "9.4.0",
+				"eslint": "9.0.0",
+				"vitest": "1.0.1",
+				"vue-tsc": "1.8.27",
+				"playwright": "1.37.1",
+				"typescript": "5.1.6",
+				"@types/node": "20.12.7",
+				"expect-type": "0.17.3",
+				"lint-staged": "15.0.2",
+				"@nuxt/schema": "3.8.2",
+				"get-port-please": "3.0.2",
+				"@nuxt/test-utils": "3.8.1",
+				"@nuxt/eslint-config": "0.3.8",
+				"@vitest/coverage-v8": "1.0.1",
+				"@nuxt/module-builder": "0.5.4",
+				"conventional-changelog-conventionalcommits": "7.0.2"
+			},
+			"dist": {
+				"shasum": "5904fe1f0414705ff1242e1771c9f6ee6615e759",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.8.0.tgz",
+				"fileCount": 20,
+				"integrity": "sha512-m4u/fVKVKF1fz1nH8LYYXY51jGzd1ROfujh0cfiGAYtQtn9D+V3nKdHFG9iHmRtfZxqzbL6z32V0k+6YYD6iig==",
+				"signatures": [
+					{
+						"sig": "MEQCIAiBWLQV56qa+bVcM0+661IfXpIIk7AA4kXQf4bx/4QZAiAhqAKXVLKQraGpHohGrNSeGc2couhVhiKoRg/9zXhe4Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25741
+			}
+		},
+		"0.9.0": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.0",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.11.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.12.2",
+				"bumpp": "9.4.1",
+				"eslint": "9.5.0",
+				"vitest": "1.6.0",
+				"vue-tsc": "2.0.22",
+				"playwright": "1.45.0",
+				"typescript": "5.5.2",
+				"@types/node": "20.14.9",
+				"expect-type": "0.19.0",
+				"lint-staged": "15.2.7",
+				"@nuxt/schema": "3.12.2",
+				"@nuxt/scripts": "0.5.1",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.13.1",
+				"@nuxt/eslint-config": "0.3.13",
+				"@vitest/coverage-v8": "1.6.0",
+				"@nuxt/module-builder": "0.8.0",
+				"@types/cloudflare-turnstile": "0.1.5",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": ">=0.5.1"
+			},
+			"dist": {
+				"shasum": "351e7129dda8aedf52776e074d7173de26333419",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.0.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-krY54K302nl4bRwHQCPccEcSiM1xnkS/zJUxjk9EkQ2g/Z1KfKUseEamwXR81kfbKMRdjetpNw8zbF1Luiit2w==",
+				"signatures": [
+					{
+						"sig": "MEUCIAF9d9yDT3EJNF+51CGibYQ0IMCRkNtxtJNCPyZAzJ9bAiEAomNKsqzJtGLWvn/WZ5PrOv36arTm+lHyW3AlkFU2y+s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24408
+			}
+		},
+		"0.9.1": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.1",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.11.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.12.2",
+				"bumpp": "9.4.1",
+				"eslint": "9.5.0",
+				"vitest": "1.6.0",
+				"vue-tsc": "2.0.24",
+				"playwright": "1.45.0",
+				"typescript": "5.5.2",
+				"@types/node": "20.14.9",
+				"expect-type": "0.19.0",
+				"lint-staged": "15.2.7",
+				"@nuxt/schema": "3.12.2",
+				"@nuxt/scripts": "0.5.1",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.13.1",
+				"@nuxt/eslint-config": "0.3.13",
+				"@vitest/coverage-v8": "1.6.0",
+				"@nuxt/module-builder": "0.8.1",
+				"@types/cloudflare-turnstile": "0.1.5",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": ">=0.5.0 || <0.6.0"
+			},
+			"dist": {
+				"shasum": "426afc28bbe264dd6e8734e47a1f95c54b158a3d",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.1.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-izBq9vuiJpaoL3npu4cSwmiRKp0qby751xodM2Y/lR3KjQrqz6E9DEvTWCjC3WG3qL+5DRq9U4izQ2vsezlO0Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIDtgNOL5KwP063OaDT7W4iorTdmkdMcWCoPaTI6KNSMiAiEAmLlyVpDeHWlIfaIipWc3NpoQ1zU1atX7csTfdnh9cxU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24418
+			}
+		},
+		"0.9.2": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.2",
+			"dependencies": {
+				"defu": "^6.1.2",
+				"pathe": "^1.1.1",
+				"@nuxt/kit": "^3.11.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.12.2",
+				"bumpp": "9.4.1",
+				"eslint": "9.5.0",
+				"vitest": "1.6.0",
+				"vue-tsc": "2.0.24",
+				"playwright": "1.45.0",
+				"typescript": "5.5.2",
+				"@types/node": "20.14.9",
+				"expect-type": "0.19.0",
+				"lint-staged": "15.2.7",
+				"@nuxt/schema": "3.12.2",
+				"@nuxt/scripts": "0.5.1",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.13.1",
+				"@nuxt/eslint-config": "0.3.13",
+				"@vitest/coverage-v8": "1.6.0",
+				"@nuxt/module-builder": "0.8.1",
+				"@types/cloudflare-turnstile": "0.1.5",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.5.0"
+			},
+			"dist": {
+				"shasum": "06e71ebd1326f8793e99b75d7fb35ff3f9b768dd",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.2.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-PkiPTVC5+3rfkcbrn5Ebd2EAZrk2T5TgpDfZ78IhEzvjoZLU2HoisZIy0WwaX2jqB6bFlFAxjJli6YS4ECvrhQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIAqKgeKeK2SZIaZRTgxNuKLP5p8fWshVBrMFVQZzhEOHAiAFqh62S9j4R57t2Go6Fp3gkj1GucnWbt2AOqiHQpGmbg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24407
+			}
+		},
+		"0.9.3": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.3",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.12.3"
+			},
+			"devDependencies": {
+				"nuxt": "3.12.3",
+				"bumpp": "9.4.1",
+				"eslint": "9.7.0",
+				"vitest": "2.0.3",
+				"vue-tsc": "2.0.26",
+				"playwright": "1.45.1",
+				"typescript": "5.5.3",
+				"@types/node": "20.14.10",
+				"expect-type": "0.19.0",
+				"lint-staged": "15.2.7",
+				"@nuxt/schema": "3.12.3",
+				"@nuxt/scripts": "0.6.4",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.13.1",
+				"@nuxt/eslint-config": "0.3.13",
+				"@vitest/coverage-v8": "2.0.3",
+				"@nuxt/module-builder": "0.8.1",
+				"@types/cloudflare-turnstile": "0.2.0",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0"
+			},
+			"dist": {
+				"shasum": "6b7dcd983625350346c7bd017d5a29bde0615eed",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.3.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-AeV6od7p772XMDByJH/eTp1u0bpcsnX8GVsEz6qdWY+czfd7Q7wI+wjOQg24fPT7DrYpWvekz2qNDz3ia0U1Gg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD1QX9KTYD8aqzbcdC5nbeqF9dMKlQ4E9FGucdsOCB5DgIhAMOwQ6KGPgC7OZMwjPpHQzeHS7gRMNVNEf4JcVN0d5EX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24408
+			}
+		},
+		"0.9.4": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.4",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.1"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.1",
+				"bumpp": "9.5.2",
+				"eslint": "9.9.1",
+				"vitest": "2.0.5",
+				"vue-tsc": "2.1.4",
+				"playwright": "1.46.1",
+				"typescript": "5.5.4",
+				"@types/node": "20.16.4",
+				"expect-type": "0.20.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.1",
+				"@nuxt/scripts": "0.8.0",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.1",
+				"@nuxt/eslint-config": "0.5.5",
+				"@vitest/coverage-v8": "2.0.5",
+				"@nuxt/module-builder": "0.8.3",
+				"@types/cloudflare-turnstile": "0.2.1",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0"
+			},
+			"dist": {
+				"shasum": "a1b9136abb9473f0ecea3ee305bb6bb85d66521e",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.4.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-pAgR+NBwmDgTkWT17ItWkrhbKNRFfO+/938XlTjxz3ob3OV3YqkRMEalVdhkOTLMgn7sUOow1q/nOtlBpimYCQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDM+iqnuLIIh9nsf0FyXjB0UXpFT1dO55nZl1lNLt9f8AiA9HrgR9v+4F3Kr/ntiHCaxm2v0rmwGmpYih/lFJjd4QQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24531
+			}
+		},
+		"0.9.5": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.5",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.1"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.2",
+				"bumpp": "9.5.2",
+				"eslint": "9.10.0",
+				"vitest": "2.1.1",
+				"vue-tsc": "2.1.6",
+				"playwright": "1.47.1",
+				"typescript": "5.6.2",
+				"@types/node": "22.5.5",
+				"expect-type": "0.20.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.2",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.2",
+				"@nuxt/eslint-config": "0.5.7",
+				"@vitest/coverage-v8": "2.1.1",
+				"@nuxt/module-builder": "0.8.4",
+				"@types/cloudflare-turnstile": "0.2.2",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"shasum": "666412e5a3dfafa8b40a6d91503edda44d7408d6",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.5.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-GDMu+wuqJMopbE6LU7TF2tC5KhvqrU7SeObI0aZZrIXpxZrrsrfMH0C35fWCUqbqpc6Tg3tDnIgEUZIbx2QoXA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCeVOdkETZUSvjZmkdtXv9OsRwgiuBRo9yxrQeE7z+XUgIhAKW9wUWAiX9AtUy1e87XizE4n8i+2A4nqKfxgb2v/oyP",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24533
+			}
+		},
+		"0.9.6": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.6",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.1"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.2",
+				"bumpp": "9.5.2",
+				"eslint": "9.10.0",
+				"vitest": "2.1.1",
+				"vue-tsc": "2.1.6",
+				"playwright": "1.47.1",
+				"typescript": "5.6.2",
+				"@types/node": "22.5.5",
+				"expect-type": "0.20.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.2",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.2",
+				"@nuxt/eslint-config": "0.5.7",
+				"@vitest/coverage-v8": "2.1.1",
+				"@nuxt/module-builder": "0.8.4",
+				"@types/cloudflare-turnstile": "0.2.2",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"shasum": "2c59da81f8380bf9157074e5d0005409588a9ab9",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.6.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-BP09JCxpwVx5r//+t6onqKwAndTRBu17bkpq14g7rCa+qLFYO6v1EFO65lr+BAupOKWetHXMwi0pWN6dSAteDw==",
+				"signatures": [
+					{
+						"sig": "MEQCIHa9OL4/1jC60nYqOamXGB667j02wPxD666D3ARhKnt/AiB/1XltjHr0FozsSY/fC3bRoIHXqjv4LA9RRJAjYVQyiw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24533
+			}
+		},
+		"0.9.7": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.7",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.1",
+				"@types/cloudflare-turnstile": "0.2.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.2",
+				"bumpp": "9.5.2",
+				"eslint": "9.10.0",
+				"vitest": "2.1.1",
+				"vue-tsc": "2.1.6",
+				"playwright": "1.47.1",
+				"typescript": "5.6.2",
+				"@types/node": "22.5.5",
+				"expect-type": "0.20.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.2",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.2",
+				"@nuxt/eslint-config": "0.5.7",
+				"@vitest/coverage-v8": "2.1.1",
+				"@nuxt/module-builder": "0.8.4",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"shasum": "dafd1839b2a3ec7bc8afaf0620069e551bff363f",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.7.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-ybLY38IeB5gRS/Yml7PyJ6eGOmp9AaQPs5TSLwkgOR81Yg6ScglumzaoWx3ueMu6CVLAsJD/yvWy6WqzIOD3zg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCx9tCfdEhYOfX3UUG082n4sVPhRqJfFHl2n0GxNfga/QIgTz6kEgJRg/Xn8N2ftqVmx/W3wHN2/MYH829bVa8CWWQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24758
+			}
+		},
+		"0.9.8": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.8",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.2",
+				"@types/cloudflare-turnstile": "0.2.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.2",
+				"bumpp": "9.5.2",
+				"eslint": "9.11.0",
+				"vitest": "2.1.1",
+				"vue-tsc": "2.1.6",
+				"playwright": "1.47.2",
+				"typescript": "5.6.2",
+				"@types/node": "22.5.5",
+				"expect-type": "0.20.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.2",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.2",
+				"@nuxt/eslint-config": "0.5.7",
+				"@vitest/coverage-v8": "2.1.1",
+				"@nuxt/module-builder": "0.8.4",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"shasum": "0177e539e0dfe1afbefa921811c9964c693f0fa8",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.8.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-rmnJfkZ6VNvfaeQgrJY3jiOMlDIVLqKVcYAuELvz9wlIANRi3WFDGUeyKgV1PaIT6yX4WZ7l7QduseizTJw14g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDxqMQCXGzalYjOBSfpiGUpBd5fPqM96u22i4vAnR88jAIgFeePjXniJn+v4Ff5nDKfYoCkQDi4SxHekuCVMDw9yqo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24425
+			}
+		},
+		"0.9.9": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.9",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.2",
+				"@types/cloudflare-turnstile": "0.2.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.2",
+				"bumpp": "9.5.2",
+				"eslint": "9.11.0",
+				"vitest": "2.1.1",
+				"vue-tsc": "2.1.6",
+				"playwright": "1.47.2",
+				"typescript": "5.6.2",
+				"@types/node": "22.5.5",
+				"expect-type": "0.20.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.2",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.2",
+				"@nuxt/eslint-config": "0.5.7",
+				"@vitest/coverage-v8": "2.1.1",
+				"@nuxt/module-builder": "0.8.4",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"shasum": "8be3774e84eb407413ca66a2e781618ec67f6e87",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.9.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-aUykAs6yqVSEaHbFGzqsAoSHD1iHW2Cx5kZ3BdZiTdSpB7oM2H6Wk/qn2YWfIheSJY193c4buUKg/NhrgfrNzw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGg7g33tfofsVy1WvgtwGuqym2fAeZbYZdhNR8X7cDmCAiBVL1oJGLfP5W4DV5TjT9hjrh5GEoZJpnApgjP8Glh1jA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24819
+			}
+		},
+		"0.9.10": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.10",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.2",
+				"@types/cloudflare-turnstile": "0.2.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.2",
+				"bumpp": "9.5.2",
+				"eslint": "9.11.0",
+				"vitest": "2.1.1",
+				"vue-tsc": "2.1.6",
+				"playwright": "1.47.2",
+				"typescript": "5.6.2",
+				"@types/node": "22.5.5",
+				"expect-type": "0.20.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.2",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.2",
+				"@nuxt/eslint-config": "0.5.7",
+				"@vitest/coverage-v8": "2.1.1",
+				"@nuxt/module-builder": "0.8.4",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"shasum": "1c7c0640c46306e72c8fdcba8fabda2c34b22eab",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.10.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-VJdr7NXBFaFrQeFCXXtFRmZIjEIbFG/a6Ek4dgQtUaATLHkpug9fdrP02oZKe33MACs4usB9Uk2bDtaFFp/D0A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD6yiafnQWTMwJa2DTuFgum/zhCw4Pl+3ijsZjWTqWfGgIgM9oJBJaVFktY+mAEXYtUncGYvJDNrDX6elcPW84a6X8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24875
+			}
+		},
+		"0.9.11-beta.1": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.11-beta.1",
+			"dependencies": {
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2",
+				"@nuxt/kit": "^3.13.2",
+				"@types/cloudflare-turnstile": "0.2.2"
+			},
+			"devDependencies": {
+				"nuxt": "3.13.2",
+				"bumpp": "9.6.1",
+				"eslint": "9.12.0",
+				"vitest": "2.1.2",
+				"vue-tsc": "2.1.6",
+				"playwright": "1.47.2",
+				"typescript": "5.6.2",
+				"@types/node": "22.7.4",
+				"expect-type": "1.0.0",
+				"lint-staged": "15.2.10",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.4",
+				"get-port-please": "3.1.2",
+				"@nuxt/test-utils": "3.14.2",
+				"@nuxt/eslint-config": "0.5.7",
+				"@vitest/coverage-v8": "2.1.2",
+				"@nuxt/module-builder": "0.8.4",
+				"conventional-changelog-conventionalcommits": "8.0.0"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"shasum": "a19378e2a3b7e73e3c25abb02010f763e6c019f7",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.11-beta.1.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-RVK0QvGEHxKS0LaoEEtY67UYXO8R6bpfDC5Z6UFBzSkrZIgC/mLs9FbBOKZyAGao1MG2bMpSqmytNfTSPuTltQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDEUJhln4qTMgKVD9pwhsM5GuJIy/7m62S5dLpXZUECHAIgOaFXNIDkzttjmSzVhceBnQhD1YdiFvDJO3VRiZSkbxA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 24889
+			}
+		},
+		"0.9.11": {
+			"name": "@nuxtjs/turnstile",
+			"version": "0.9.11",
+			"dependencies": {
+				"@nuxt/kit": "^3.13.2",
+				"@types/cloudflare-turnstile": "0.2.2",
+				"defu": "^6.1.4",
+				"pathe": "^1.1.2"
+			},
+			"devDependencies": {
+				"@nuxt/eslint-config": "0.6.1",
+				"@nuxt/module-builder": "0.8.4",
+				"@nuxt/schema": "3.13.2",
+				"@nuxt/scripts": "0.9.5",
+				"@nuxt/test-utils": "3.14.4",
+				"@types/node": "22.9.0",
+				"@vitest/coverage-v8": "2.1.4",
+				"bumpp": "9.8.1",
+				"conventional-changelog-conventionalcommits": "8.0.0",
+				"eslint": "9.14.0",
+				"expect-type": "1.1.0",
+				"get-port-please": "3.1.2",
+				"lint-staged": "15.2.10",
+				"nuxt": "3.13.2",
+				"playwright": "1.48.2",
+				"typescript": "5.6.3",
+				"vitest": "2.1.4",
+				"vue-tsc": "2.1.10"
+			},
+			"peerDependencies": {
+				"@nuxt/scripts": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-kE2n1UZdpyw6XHVUMi8Ru0TG0RbB/2myN/ssM0oXPDnrAXUxeOA3DHq/9ejIVnu2kxJZsngAQM3cnmuDTIuUFw==",
+				"shasum": "0d479a2aee8c67cc988630a132212f8f962a6285",
+				"tarball": "https://registry.npmjs.org/@nuxtjs/turnstile/-/turnstile-0.9.11.tgz",
+				"fileCount": 21,
+				"unpackedSize": 24887,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAVwI3XgIZ94HoOKO7e4zItK11WWh7snJi8U/uDReyJcAiEAobO8QfQ7EjNTYtMmuALGJR5enpTItdgmHr09ZcSZGWc="
+					}
+				]
+			}
+		}
+	}
+}

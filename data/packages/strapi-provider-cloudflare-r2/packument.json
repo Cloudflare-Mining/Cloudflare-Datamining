@@ -1,0 +1,373 @@
+{
+	"name": "strapi-provider-cloudflare-r2",
+	"dist-tags": {
+		"latest": "0.3.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.1.0",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": "^4.x.x"
+			},
+			"dist": {
+				"shasum": "c62a6a1b332d701a08e707673b5ae5a5f7641540",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.1.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-/cLkWevgzd4ulBbUvD3ZUWK99WtAeZkdjy3Sc7Lro8f0zTo8RE4j78nMFg36XOAoUtfBndf6DfrF7MvQTMcjEg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFqcspHAa+AhnYp2KuPmU9quONypc11nLQTMLL7r/yHxAiB500EaopygLeHuvNcExqYjWeUiwUWGPaz1sdRGgP3Ptg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 16545,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGINrACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqlXA//ePdlUCOnTVt7CqAth+wEDr/lvQ6GVd/9Ipuav6IYt49lmwTK\r\nqnFgivB57Ao2ZHUUQ9vZ2V+RL745ZWx1So+tpbV7dY3n2S4V2hyDMZCEVgaC\r\nPk/5xAWDNtO56CwfWCVRwmxtpYksmOT7SUgRA8DikZzwVddTzZPdziSFoF5T\r\n/sS7tR14/IjTpDU6AVFzA4UdEMXVIIiGabYiEdgUWEA+tT8d2IQIoqbp6EAV\r\nA4boGgBfssyqUxLw0Twe+0zPHQWvsVgsNbA+khofzAUc/h/s3BKiV7VrGgRn\r\nbIgsyjPQE7Mj41M4WIblu3TZBUwUWwfaIJWeVx9oGSP2cfUMk3i4t0wUeC9a\r\nmvNj1gWvRQ4raOWbzkbpTCyo1CdDd0aAO4XkXGr8UuyVeXD2tgvBJMLcw3oK\r\naGBmE0hfCo/fIfjAK1fzYy7ck2+k9YSjogOkKO20Zk/PfNI8fxXb0wCIxJuB\r\n+WmZIjk4KBAKDdDMsiIzfqiP7zr7JhEb5ZTpFVQTz0lAodvvJDEgFofm3IUR\r\nGId/fJx8Pj4phdwXEdLKuutwq4DBgooHA6AH3DC56Udtls2ZGEHQHPXnhQGC\r\nHUC0I7h6Dma55R7YGmKzkQHHDBg7jCew1HxHo9TKR8id37bFEEAt6qhXf0bo\r\nqHNLcq7xDoZlTA+okxB89srK/MuAry5oQ5I=\r\n=huDo\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=18.x.x"
+			}
+		},
+		"0.1.1": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.1.1",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": "^4.x.x"
+			},
+			"dist": {
+				"shasum": "9493933c8404014e58a36c877638573565279e76",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.1.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-w7R3to9SqEU0KKg7+CINzoziH5TalZ+Ejv0r9LNFcYy+12OKwQQOC//Cb4kFOyV01IO6EbT+GNwNYLbVjkvmjw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEujNpkoMVEesHMAceRF2lClb2hZumWJlwOaVtEWpW2CAiEAlcUeCAuP7rNk+iOZrtG+opaAEH6N0ofoiC9StqxfNU4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 9719,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkR2TLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqK2A/8CzfXKWXPaWqntvI9jR9NEPdVnzl5qAOJrk+/dVWGRmWYH+kY\r\n/YagRqAAZLrU9YOi+E5m7aGwamuwbHh/t+RO8owLnMl6nUq5bb7NKo8yEHbV\r\nrFnInX62kaSplDZkv/GICl3pcMNCiWdujul//SlDWB7hZL5wRFFquorQjQfn\r\n4e8vzcFikhddfEuWVTNKG5ZqOhDsHC990/88mGExXjooy0q3AUT/UIKm6JB1\r\n6cJj54oMi0MG0xKs0dcLoo27rSTCTNPeRCPAllxm2/ESn4TqvXjVA/wWZOan\r\nEYWzThHNZAILbbgxxhgP9rXxOukir5RSOPVFu12IBq7xcWIhDYLHvU4fBWhS\r\nLtmdoNZ6E5DC55FCnC51KVlTN1V/Sbtw+bOLpRp7/8aBWhTyHY1lvPz5/bWB\r\nat3v6sAdUxEgIxQue3RoiMLA2lOkh7k5UBDp1eOu/PhzcJWPAaS0CBjCpqoH\r\n1wALvEhGICCzxvHkRMv5xTHwvev244l02vExRvk+1qk6cPtFPDdMk31pGDRZ\r\n1ICtTdiHH+CNG0JNRybmb2YK1VxFcKaGdrgIXC46+6FdoFYgY2ZSVZTSFWmr\r\nsgt6z1HfQI9t6TraID2ybRCICR7ORPajQqW7DLA2BQEQ023RvID4TFTN6k+g\r\nVGUfGCIJgGD77A8FqOaY/PLggajQph5g7oE=\r\n=V7W+\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=18.x.x"
+			}
+		},
+		"0.1.12": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.1.12",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": "^4.x.x"
+			},
+			"dist": {
+				"shasum": "0964b58403e9918b12293ea8c0d31b36bc3fd804",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.1.12.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-uxhHm/xx3xAhVgXKQPNA60OvKEDFretgRuCRBsG1yUvJMoYwQ24+XSN+xcWQcEwF6tnQJnUeMUe3FRSFoR6GJw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCYYg1Nn1jsal3hLo1RU5LxoY0e3qEIUBxprHIyFjsQhAIhAO7vF9yIAxhL4AhHwg1KKWr1g8wxRL/x6ZOzbViSHXGz",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 9888
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=18.x.x"
+			}
+		},
+		"0.1.13": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.1.13",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": "^4.x.x"
+			},
+			"dist": {
+				"shasum": "f3ca5247f276d313b6a9d5c726ef927bfe8b4796",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.1.13.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-rnXzRlS+UHsRI2cwVFvbZjaqSkjUF2uYVFXYMOsKwla2zyWIvYzA2blwoG4wwUbygFmmQGhnJqJv2cpto5tPZA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFY8OsvC2auzG/63vQzOO4uQibaMEO/YNbJr+hbqnHkqAiBlwqrb9D9V0Rh2Asr1+yaPlcYc57UdOtYszhNKDyGrcg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 11517
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=19.x.x"
+			}
+		},
+		"0.1.14": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.1.14",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": "^4.x.x"
+			},
+			"dist": {
+				"shasum": "85187c267b852b488e44877f5e2709229a0d2eaa",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.1.14.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Hgi37zmnOxtPhjj1u46OriQh/PsW32tKTQlWrAA203vecYdFfke0v5EBKiSKLcjYuCpHpVOZ0QN4SPmJKGWM+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIFzU9Zckl45orrm9mtypB6GMiI/d21JN7SAr2rsSNrXRAiEA2CCEco0DXKIVb9LsLpRHmOLnb16mC6cJXclmMt8fr/I=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 13150
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=19.x.x"
+			}
+		},
+		"0.2.0": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.2.0",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": "^4.x.x"
+			},
+			"dist": {
+				"shasum": "472b4c241ee840bf3811ced5b42b6aeb2d36fdde",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.2.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-TwDlAecJrHT4Nb3zkIX9jyj0O3ifiR85u4jIoHYH8rOoA8wyaykeg29sJUj03zIv68s2Ph8CtEFNZm/eygBXAA==",
+				"signatures": [
+					{
+						"sig": "MEQCIBk7wNOVBCCdeIOW6WzOgUuggaOvObdRISuJM005rlphAiBmFxoRQcut35B8ERztBl1LOluHmom9ILRENNQJdmPi5g==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 14011
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=19.x.x"
+			}
+		},
+		"0.2.1": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.2.1",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": "^4.x.x"
+			},
+			"dist": {
+				"shasum": "09b49f8d8d1b1ab6fc370b2a5b695a3dc4473be4",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.2.1.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-lIaZQOe0Tqio9JLrobdgbxvgrkDChCzHWYekmbdFP6ld1ZC9SRpZKREEfwgALM1fvpvZN02u3J1o2OJKNz7pgQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDufaHXHhv5BQANUmETWFGjw1w83BEa3HR6UfROp4MxxAIgcTjOXwMjkbMaYrhxC84L0oXc8038L1dzeC7RDrJZSXk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 14098
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=19.x.x"
+			}
+		},
+		"0.2.2": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.2.2",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": ">=4.0.0"
+			},
+			"dist": {
+				"shasum": "35b84ccb6d9332aa5ba89034bd87eae404aa2152",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.2.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-6dBgOr98D/iweUcKyx8Zuz6AcDIBE5EC4kIrGgNz2OLU2bAdLuuc21JlVRVEOicHbZHxqnKBPq6xFNhiDS/ZKw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDphDcjengU9e7r2Om17Z/k/+CP31/d2iU5XlE4IHv4IgIhAM8M8NSDFRNUdvBAoNn+jWAddqPtxhc/O6XDc59cZtDw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 14099
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=19.x.x"
+			}
+		},
+		"0.2.3": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.2.3",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": ">=4.0.0"
+			},
+			"dist": {
+				"shasum": "f232854769dfca44eab94e3fce442ec3d847c7ee",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.2.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-gTESWnm97WVz9zv346qI/eDPlr2crNGss0OhZAKwF5/ypXwLHOxrODWiNYedI2BaTJU07Fmw4wFmVWeXBiohnA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDk/X2w/NQsFKQd9cgC3XtZpWqKSiA6ZSzpoEXx5WkJKAiEAtwz3+qHR9WLh2Dp/mi9zH9FA97PmiKvckBMPRJBc+nE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 14141
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=19.x.x"
+			}
+		},
+		"0.2.4": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.2.4",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": ">=4.0.0"
+			},
+			"dist": {
+				"shasum": "00fbd52faaa7d268988ad5d29fe291c8742c04b6",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.2.4.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-L9fA9DXAW0YibE0WQrSBTjHzDhJP/eobHgFlYXKHMIr2ueHp3NhCxTcHQoz94C8m9smllnvG0OEiCQzSvdhjcA==",
+				"signatures": [
+					{
+						"sig": "MEQCICt4zSBpMIxdPzBVFgVKNqyAl3kcRLS2lrEtx1tDwRcnAiBVEIYo4smCzJrktnN1j4ENdNFq/AIYwS4wx75uVkmDEw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 14232
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=19.x.x"
+			}
+		},
+		"0.2.5": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.2.5",
+			"dependencies": {
+				"lodash": "4.17.21",
+				"aws-sdk": "2.1287.0"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": ">=4.0.0"
+			},
+			"dist": {
+				"shasum": "ed77d63730507a6737aaa1fb02f0917ffab12410",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.2.5.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-y42ySErRpcsW1JPNP443/wTrxE09BoX4dPv+DVU8E5M6dKgIHgdiz1k5V1nPMRpDAEW1IyKR/IQ7GyGK4WFZUQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCtyEZ5T+8Iv16b2P+UUrmDZJhxMBDK6ym/UqBYFVue1QIgZXHH4NdVLLj2BgmSy+j8D/djgV7Bjid232trrF9+WwY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 14288
+			},
+			"engines": {
+				"npm": ">=6.0.0",
+				"node": ">=14.19.1 <=20.x.x"
+			}
+		},
+		"0.3.0": {
+			"name": "strapi-provider-cloudflare-r2",
+			"version": "0.3.0",
+			"dependencies": {
+				"aws-sdk": "2.1287.0",
+				"lodash": "4.17.21"
+			},
+			"devDependencies": {
+				"semantic-release": "^21.0.7"
+			},
+			"peerDependencies": {
+				"@strapi/strapi": ">=4.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-3azodyrbI+8F1GArr+D7BKGr0CHKbHphBoeezGKjUdUCgKfcQE+Mc+BZyuWC4SuIisBM3Sy7lF0rt79wyK/Lxg==",
+				"shasum": "967026dfc6373700afbcce078ae22ff9df5f1bf0",
+				"tarball": "https://registry.npmjs.org/strapi-provider-cloudflare-r2/-/strapi-provider-cloudflare-r2-0.3.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 14128,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDgU6ZtagJprTbPtf2Ve93+1DfTZ+sdyONFzIHck7rjagIhAL+tLsZZmzOngMNu2pf2gY7mNuu46JYBah0lVxsf7gUC"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=14.19.1",
+				"npm": ">=6.0.0"
+			}
+		}
+	}
+}

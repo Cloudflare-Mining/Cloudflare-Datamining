@@ -1,0 +1,47 @@
+{
+	"name": "slshx-modified",
+	"dist-tags": {
+		"latest": "0.3.0"
+	},
+	"versions": {
+		"0.3.0": {
+			"name": "slshx-modified",
+			"version": "0.3.0",
+			"dependencies": {
+				"discord-api-types": "^0.37.43",
+				"tweetnacl": "^1.0.3"
+			},
+			"devDependencies": {
+				"@ava/typescript": "^4.0.0",
+				"@cloudflare/workers-types": "^3.19.0",
+				"@microsoft/api-extractor": "^7.35.4",
+				"@types/node": "^20.3.1",
+				"@typescript-eslint/eslint-plugin": "^5.59.11",
+				"@typescript-eslint/parser": "^5.59.11",
+				"ava": "^5.3.0",
+				"esbuild": "^0.13.15",
+				"eslint": "^8.42.0",
+				"eslint-config-prettier": "^8.8.0",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-prettier": "^4.2.1",
+				"miniflare": "^2.14.0",
+				"prettier": "^2.8.8",
+				"rimraf": "^3.0.2",
+				"typescript": "^4.9.5"
+			},
+			"dist": {
+				"shasum": "8e22e2c0bfad050196c90e888fc3449fbd1a376a",
+				"integrity": "sha512-OTr4S3fOxiZmNux1XxJGebCtEYZkFT9FAuvJTztgQrJMtLBd3sU3yBy5gwKWMGINOMCDGpR9oP1HJdrwCa6Hdg==",
+				"tarball": "https://registry.npmjs.org/slshx-modified/-/slshx-modified-0.3.0.tgz",
+				"fileCount": 10,
+				"unpackedSize": 630032,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEPjd6DQtPNUIMF/sKwNWiqWY06M3hRy5X7KRIKpY+NJAiEAnOM6tJgNBIbSiGtpJWX0qRZZb09Vs0DOt2BXoFeIxgg="
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,408 @@
+{
+	"name": "@highlight-run/opentelemetry-sdk-workers",
+	"dist-tags": {
+		"latest": "1.0.8"
+	},
+	"versions": {
+		"0.6.2": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "0.6.2",
+			"dependencies": {
+				"tsup": "^7.2.0",
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.6.0",
+				"@opentelemetry/core": "^1.17.0",
+				"@opentelemetry/resources": "^1.17.0",
+				"@opentelemetry/sdk-trace-base": "^1.17.0",
+				"@opentelemetry/otlp-transformer": "^0.43.0",
+				"@opentelemetry/otlp-exporter-base": "^0.43.0",
+				"@opentelemetry/semantic-conventions": "^1.17.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0",
+				"@opentelemetry/instrumentation": "^0.43.0"
+			},
+			"dist": {
+				"shasum": "98d06b7bdb0cb044ef0bfb1bafd16a4c6f24495e",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-0.6.2.tgz",
+				"fileCount": 58,
+				"integrity": "sha512-+4uLGu3lROZqAJ142RHd7V1gSItVD+k6aEoJIoYDsC2fFFjKX32CuOVgTkVST/Pv70MPtAPsHbQzRdsKqEt7ng==",
+				"signatures": [
+					{
+						"sig": "MEQCIDsLlgy88uvWFlYs0uJ4nTk6d76qx+2T7aYhQLepGFHMAiB4swvE+rvurhpZHPG4mV9JGNttIf//YX2/9DkYQdioxA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 907472
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.0": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.0",
+			"dependencies": {
+				"tsup": "^7.2.0",
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.6.0",
+				"@opentelemetry/core": "^1.17.0",
+				"@opentelemetry/resources": "^1.17.0",
+				"@opentelemetry/sdk-trace-base": "^1.17.0",
+				"@opentelemetry/instrumentation": "^0.43.0",
+				"@opentelemetry/otlp-transformer": "^0.43.0",
+				"@opentelemetry/otlp-exporter-base": "^0.43.0",
+				"@opentelemetry/semantic-conventions": "^1.17.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0"
+			},
+			"dist": {
+				"shasum": "2f23ce62473669b0691db565e6e812e7fba00e5d",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.0.tgz",
+				"fileCount": 58,
+				"integrity": "sha512-uiCLJfVTbt0UTCDCpiZU3Hm8QAKt9Q0fQyHDQct/V+U74rQx9+BfZZ7hlgO7IeNGi20p8L6mOLUvjllKIR4d0w==",
+				"signatures": [
+					{
+						"sig": "MEUCIFUDJmVSQh9uGxYHBXwc/WqZQVQVRJZB5zakTpqWSbLAAiEAlePTHKhvMbOqcN1xPIwOhanZQ8oSozsHSL4jFcM5tmE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 907472
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.1": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.1",
+			"dependencies": {
+				"tsup": "^7.2.0",
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.6.0",
+				"@opentelemetry/core": "^1.17.0",
+				"@opentelemetry/resources": "^1.17.0",
+				"@opentelemetry/sdk-trace-base": "^1.17.0",
+				"@opentelemetry/instrumentation": "^0.43.0",
+				"@opentelemetry/otlp-transformer": "^0.43.0",
+				"@opentelemetry/otlp-exporter-base": "^0.43.0",
+				"@opentelemetry/semantic-conventions": "^1.17.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0"
+			},
+			"dist": {
+				"shasum": "8910afa8b06a44f7387c9741811a131503129789",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.1.tgz",
+				"fileCount": 58,
+				"integrity": "sha512-LzwlDJkMcXSZS9rGfU9avRcRkWWDwPDvMpIewCTaa9OpXDG7HWvugU+Bbzmu5DDXYWITXgIEYmo6BS4YtysCpg==",
+				"signatures": [
+					{
+						"sig": "MEQCIE7SJvRd2HLQ9x3CDH3tVFgsMLLtYxjObPmytPB6BdOUAiBcCUnW9ClhtzuL9kFpsmPIk6ZtfDSRXKWcnpSOs8yprA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 907466
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.2": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.2",
+			"dependencies": {
+				"tsup": "^7.2.0",
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.6.0",
+				"@opentelemetry/core": "^1.17.0",
+				"@opentelemetry/resources": "^1.17.0",
+				"@opentelemetry/sdk-trace-base": "^1.17.0",
+				"@opentelemetry/instrumentation": "^0.43.0",
+				"@opentelemetry/otlp-transformer": "^0.43.0",
+				"@opentelemetry/otlp-exporter-base": "^0.43.0",
+				"@opentelemetry/semantic-conventions": "^1.17.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0"
+			},
+			"dist": {
+				"shasum": "484337e41768e144d209e0a18f3dccc79b86b333",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.2.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-F2VKYLjzkU4FMtAlDNM/edIAkk/4Qmpnb1qPpt2+syZO6AyUTLvVQdSweFtDUkcgQU8kcxuhB+a/Y6qcFVUOQg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDpKcfUQ2et00HOKcNBDohW1XFwD7u8qvDJmG8ChGmVcgIgOO9D4geCiOeimcTlck6TYV1lDS07KqvI8Ewhj/CAElg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 305698
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.3": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.3",
+			"dependencies": {
+				"tsup": "^7.2.0",
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.6.0",
+				"@opentelemetry/core": "^1.17.0",
+				"@opentelemetry/resources": "^1.17.0",
+				"@opentelemetry/sdk-trace-base": "^1.17.0",
+				"@opentelemetry/instrumentation": "^0.43.0",
+				"@opentelemetry/otlp-transformer": "^0.43.0",
+				"@opentelemetry/otlp-exporter-base": "^0.43.0",
+				"@opentelemetry/semantic-conventions": "^1.17.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0"
+			},
+			"dist": {
+				"shasum": "af689d4b7cd077c92acc9446a6d00e2a32681516",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.3.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-HX+P3Kky8MBKzKM2mhGxRx6c8U8mbuX0RLTgAVCttxwCUtNvaGrBnYtP4tiN4SADXDqLa/Kl7HRWZXvO5h8jAg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDvZEkziDN/uvY6+H/gVoM/YG04AKdNdDjiwu1f3MhuPQIgTJX/4AZzp8VoZmv2pOTlImbXIHoIr46NzSE14DpQTyg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 315754
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.4": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.4",
+			"dependencies": {
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.6.0",
+				"@opentelemetry/core": "^1.17.0",
+				"@opentelemetry/resources": "^1.17.0",
+				"@opentelemetry/sdk-trace-base": "^1.17.0",
+				"@opentelemetry/instrumentation": "0.44.0",
+				"@opentelemetry/otlp-transformer": "^0.43.0",
+				"@opentelemetry/otlp-exporter-base": "^0.43.0",
+				"@opentelemetry/semantic-conventions": "^1.17.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"tsup": "^7.2.0",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0"
+			},
+			"dist": {
+				"shasum": "b140188a168224bbaae7764cc37212873efb5734",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.4.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-dSLOijmE/OfeoFm7eVpnNXwaiZD33HqwPB+PMoq/cv6QSaVUDieDdWU8sT+qIzOmmIlbtH788LOIUHx6/PPPDw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGg8dU1IDxNu5i4vbUITUQR+yWBc05jDW7YoA8NaEcocAiAh4UfN2S+RGS9OdEwDCLTLTHfPrjFGA4KCLPGUzQXECQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 315841
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.5": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.5",
+			"dependencies": {
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.6.0",
+				"@opentelemetry/core": "^1.17.0",
+				"@opentelemetry/resources": "^1.17.0",
+				"@opentelemetry/sdk-trace-base": "^1.17.0",
+				"@opentelemetry/instrumentation": "0.44.0",
+				"@opentelemetry/otlp-transformer": "^0.43.0",
+				"@opentelemetry/otlp-exporter-base": "^0.43.0",
+				"@opentelemetry/semantic-conventions": "^1.17.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"tsup": "^7.2.0",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0"
+			},
+			"dist": {
+				"shasum": "75c7990b5ad032769cc19f156bd54f06b80316a9",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.5.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-mJO4oq8oK9CjMeH3F5P1fDwQgOXaoES50TYEDpytLa02Z52lbMX1rXlDS6fy6zhjqv+yLnVWwpkn1GTDeukLgg==",
+				"signatures": [
+					{
+						"sig": "MEUCIBMSD1vGV1+U8iMk9TDygcgn6Ety2jb+CSwgxrKKI1gaAiEA0yc58xXgZr+N4XQpGhOv3REzRQ9LzKCq8vUONyv7RNQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 315934
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.6": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.6",
+			"dependencies": {
+				"protobufjs": "^7.2.1",
+				"@opentelemetry/api": "^1.8.0",
+				"@opentelemetry/core": "^1.22.0",
+				"@opentelemetry/resources": "^1.22.0",
+				"@opentelemetry/sdk-trace-base": "^1.22.0",
+				"@opentelemetry/instrumentation": "^0.49.1",
+				"@opentelemetry/otlp-transformer": "^0.49.1",
+				"@opentelemetry/otlp-exporter-base": "^0.49.1",
+				"@opentelemetry/semantic-conventions": "^1.22.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"tsup": "^7.2.0",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.1",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "^4.20230115.0"
+			},
+			"dist": {
+				"shasum": "722370936188f8788a2e5d85b1d6424513f17876",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.6.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-copsCYDGLHteTWqReXFi86CP6VLu4DknDNER6feGHdWq3P1CeO6mm0JvJU6w6fid8XzMIb9mAwtVcbbBIATB0g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCJ5Kw9Phy6PFnCyeUXksBbmV56uwSQhtryFUmQIM+Q8gIhAKETnZzqW+4bVcEiaq3JpxjkuLN7Ox5nwYY19Df/EKvb",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 316073
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.7": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.7",
+			"dependencies": {
+				"protobufjs": "^7.2.6",
+				"@opentelemetry/api": "^1.8.0",
+				"@opentelemetry/core": "^1.22.0",
+				"@opentelemetry/resources": "^1.22.0",
+				"@opentelemetry/sdk-trace-base": "^1.22.0",
+				"@opentelemetry/instrumentation": ">=0.49.1",
+				"@opentelemetry/otlp-transformer": ">=0.49.1",
+				"@opentelemetry/otlp-exporter-base": ">=0.49.1",
+				"@opentelemetry/semantic-conventions": "^1.22.0"
+			},
+			"devDependencies": {
+				"long": "^5.2.1",
+				"tsup": "^7.2.0",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"protobufjs-cli": "^1.1.2",
+				"@types/lodash-es": "^4.17.6",
+				"@cloudflare/workers-types": "4.20230214.0"
+			},
+			"dist": {
+				"shasum": "09ff61067f513f177f0ab6ee4ff00941a7f03cdc",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.7.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-AKK/3kiz00z5tky7y+UcQiimXARYyLps8ZohqKMVvTjqCH9fhzHaVm64y874dESDmpvCCVWtiwxbjW/FlsDD/g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCH4lB8+SBVH/mBtP/Ry2LphxXPzDKMOFoP3ZCp1xE9hwIhANuTUBHl7cJOFBaZzQnSd3IWo5kHKCD6G0dnXwFa/NMv",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 335519
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"1.0.8": {
+			"name": "@highlight-run/opentelemetry-sdk-workers",
+			"version": "1.0.8",
+			"dependencies": {
+				"@opentelemetry/api": "^1.8.0",
+				"@opentelemetry/core": "^1.22.0",
+				"@opentelemetry/instrumentation": ">=0.49.1",
+				"@opentelemetry/otlp-exporter-base": "^0.53.0",
+				"@opentelemetry/otlp-transformer": ">=0.49.1",
+				"@opentelemetry/resources": "^1.22.0",
+				"@opentelemetry/sdk-trace-base": "^1.22.0",
+				"@opentelemetry/semantic-conventions": "^1.22.0",
+				"protobufjs": "^7.2.6"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "4.20230214.0",
+				"@types/lodash-es": "^4.17.6",
+				"diary": "^0.4.3",
+				"lodash-es": "^4.17.21",
+				"long": "^5.2.1",
+				"protobufjs-cli": "^1.1.2",
+				"tsup": "^7.2.0"
+			},
+			"dist": {
+				"shasum": "c61d4aa3e84345a56830de13f00e2071dabaa71d",
+				"integrity": "sha512-MVlJnbjNptsMykWSFONF/+RFOLKTQm4nErc/9AOaJjRyMKYWjwrAgjUNknl7nkFGtOsIAisdvKJ7ISmIuxyTag==",
+				"tarball": "https://registry.npmjs.org/@highlight-run/opentelemetry-sdk-workers/-/opentelemetry-sdk-workers-1.0.8.tgz",
+				"fileCount": 16,
+				"unpackedSize": 335629,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDF1tpNQH08EFxKpSRRpH3EXvPZXt8xXPdRkGHXrevbcAIhAJH8uW7pj2LllB+/fTPzsbEbHYBkJy6svFOgEX1U/SeU"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		}
+	}
+}

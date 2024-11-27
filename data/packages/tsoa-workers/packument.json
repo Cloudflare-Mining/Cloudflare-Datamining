@@ -1,0 +1,596 @@
+{
+	"name": "tsoa-workers",
+	"dist-tags": {
+		"latest": "1.3.6"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "tsoa-workers",
+			"version": "1.0.0",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-W7jKBWn21GhL+N8rU2J5Oao/2db7Opb2kfFbJkrUb13eOxeFW6+ZRzQ5tqPTdFOEtWW/sHlWtp0xqgVqwyh7RQ==",
+				"shasum": "6a43397df59f3f6811869ad2c51dd394f9834e35",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.0.0.tgz",
+				"fileCount": 28,
+				"unpackedSize": 30973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDqHrSrNd9nLGEaRAynbqLxyyD835S8NSxD+LRa3cUXIAiADCnFNZa1tShpN+hykc8ssAGhRgzHQAdRAF6BqqG40RQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjgzcoACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpTzA//RMy0l9jeZ7cUmvQx73GaROHLIGVs35dE4dPDa6jnpf4hPzQh\r\nTa3JdAZ3Bu1oqgTPWkF/ajZ/MFuTjv8OWC3tG64vUDirTAp+10BT8W3TkpvM\r\nGVkNApPrOyO6O7rD8WKQ3fdKHSCDER9MmdLd01obmWUJ4wFEUKaPjQdK59aR\r\n3U8FgVWNqH+puvFvBt48Oufd7F0ePfzg2EvKno1LWXcMzXvnw3roOnYD1hzF\r\n1tgh3v5ReSmNPzH/nYLRJuhlShRa/wgzFUwkPmNnOy71lU5Za/HL3PBlfkjD\r\nx/EC8oM/yNpF6k9aBKesJ+zmR7q8M7HuZwBRHJG6GPBAV7BVCZDbrwCp4wKM\r\nEUhdFlHJELDy4TbjKYn1T8ZVqZ4MmL4aq1c0wYWif0vpamXx+GHBFOYGatW8\r\nZu7H3kUBOFsPFvvb6rBB6uD3MJluYRUofJvWoLreh1FMDA5JzOJx85gDFxyv\r\nQOSKLISWprJ+lkWblRw4wnIbM2IZrrtZ9K+JkUWH+BI4nfuLklYbolPibt58\r\n/OQocaqHdMOyedn57wtrYS+pQVQ7nncCu4fnfiCMuKLu5XQhtdES3eUmLr+J\r\nViaosLHgjmnaWw65/nvDTC9lPvL8/s16kLWbhryegNT5Mo71LlM96Lk2T/AY\r\nZYsfcUWUjRMxFe4dUrk6cV3tVYaxuzg5DvY=\r\n=SRBD\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.0": {
+			"name": "tsoa-workers",
+			"version": "1.1.0",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-VSTIYxM+sEcqbB2FYghWi2qmK55Kozkdm+Q+LYQvezn0rCle2q55Nd9ieqlMUPTyqU768ZLVrJoX/wbvc2UeHw==",
+				"shasum": "177ef7b287049c623e135a73454f02e08322d945",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.0.tgz",
+				"fileCount": 28,
+				"unpackedSize": 30973,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAel0yN2MYHHc0SggRS3yRVKc4eHmSs8mlN9FWQhA8vDAiAXySLVHGn0ad16RH6CdCqmHcj/54SYrftK6DUJJKTIQQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjluWRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmorNA//WjEsxwlySJhDx72qs+54HHPulAKZwE17PvkcWouz6uEL3Nh8\r\nIFKLp0wXbqO53L85H/lh1+aJLiQbfMRWpW5XRTDgBdfQTMo9ahJxO3rcsy+s\r\nIk+O8P+Hmx8fGILni6j+BDZn0pYuR9H0qtuO3STLVq9fG7/RItvx77cBARTU\r\n7zLRehKucSIyLSIXYQ5IE31rdSzRvXPkRnTuo2S9I95lzDIEFLwMreyC46nw\r\nlKRqDbbmmzmL4ZLlXFgE9rIGCGYb5DpYQ+H1q3CF61qAlvu8I02erVJhYsv3\r\nrnKlYFThQ92osEIn3fx1hfonF6m0MnlalFaN6MPJUNc/w8iNcXeKAb1m23bx\r\nfhnLHs6s3R//UF/TxgW7XLxd4TJzgmFEED+l8GNXPDoFxF0tVWn2qmMX6H+l\r\niOpsE3utLAcWpLFa/xWNDM13pLEmKnHlX/D6KsoOfJsq7L5c0mlSRIRFlsUf\r\nngdOXxIogKmHdugBsiH9Y4S1gwmlyMvCiQufTRz/a+zDeUTCIpxDEib9kgJu\r\nQGd5snETN1mX1gIL+3UWNSK2qf/DRodb3uJdPJjYnL5foXQ3ez4CB/fJhIDM\r\nanhq4fHnWikMX3dbR71qzz1ct8j04NxGwbhMzmw9OJaigVS2MoRgSFFqdscI\r\n9vsLacB0OBdjhWWe9I6X/YoW+qTDpmHOYAY=\r\n=bDK8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.1": {
+			"name": "tsoa-workers",
+			"version": "1.1.1",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-Snt3uv69kKUvoP2SO8oOplltkwdsfF05MvYv8rNV0T4vqNh+6pAWLBJvY+eblXPQ3PPRGARvEw5VbODOlWjCdw==",
+				"shasum": "fa7d760978d06afaa511fff40ec751f9d256dc6e",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.1.tgz",
+				"fileCount": 28,
+				"unpackedSize": 34773,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAL7zTq7atMeA+p0W+D92vtDDlCAXWzuwlXdcAF/tmmHAiAyV5lBSZcuj0fFlCuKZDQrQwJcVtS7s4Ayl1aQHQahEQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjlueLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoYVw//Ygx6DQ/ZqVADjhdJHSa/d/FiFtu6kTjk0yMCAooFl8Of9Wre\r\na/RAEfRweBh9Np3fNwXqh2eCtomnyv6RZWFxnkYznyx0BLQUJOFReHHSWSjK\r\nRFXjMHf5S1cMbPk6btiQESm7o5cfE0QGqalgWvfh6bUhsuLJwGSCwJnS7F6O\r\nApLRweH2pMcC1LV9/8GAnfDS094CMi9F7czEGux2LMaaWc2bTupBQ3LZ924x\r\nS/dSBpCs+fiDUZzjydiJK0mHjd8K3JAjlBKAaRSUf2Smh2smVuops8acOAJ2\r\n2PLaxem3dAbCwmJ8HtQ8AYiO7FuFBhpiGiYPf41Rpg/kE2DSc2v55Kmn7q4/\r\nA7SqzEunzuSnPF2+4poMzmUcXgDbQvmNA0ZFxCrW4BjMycT3e7z1ywyAmPuG\r\nggdNglAe0huL3ShhNRlNAQdSX7474OfI8Z0hbnspCilmTqG4FdKk+OsFwUbe\r\nYLV92+nBZ3GaX41BZ7lpq5vDNFrKgAFxwgW+hAU8uPx9h3GXmkNYK3UqKePF\r\n74wEsNROysy1ygx+jFwiX2cumgCcgMYOdypT0momizzZpgJZZvVShHRMtMgd\r\ne/6sAiQDsJ1qTw6tSs8KUhQIwX9RT7jYfUBdiQTJ5npbxUUXI9wxrtizdoke\r\npykXIjbvB5zRU9T/FduabmDebTA5NXIcKaw=\r\n=lWnT\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.2": {
+			"name": "tsoa-workers",
+			"version": "1.1.2",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-wTXXs+Yns1hTho0oJZC3mF3h6Rcc9N9LG2aRzyG18jnNAQvitXgozx9jDTWAFbcLDQYGvbihhxjAxVw8gw4ZUA==",
+				"shasum": "bb7bc5abab1383424fb8214173a0cb36e511740a",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.2.tgz",
+				"fileCount": 28,
+				"unpackedSize": 34773,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDwCXxQgngwi8z0ypdQW11DY/x+bGMJeVa2XXka4qrlcAIhAOpvibLnlVXtcruZZEZ5fV4p3nQwpfsPJ1b9lZX5DO8K"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjl1RQACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoiIA/8CK3ryyD63axRBXfZwlDubohUDLJl6XYVlrRy1Vs+kc9fWhbA\r\ntT8HEaXQsACuwiKn8ZEb0nSbznFqOxYvRktvHRUoR4GaPKnn/EMTu3zHEQkS\r\ny7L2oqCfrBFzy3uRnaBBBKVsXilpNZt5YGkqR7gSaCkTzjH3V3IrS3lOmVJ5\r\nemo/Xhnzl5NuBR52dI49rue43OZY0Vz1dsYCJx8yu1HJppLbcsZi0MsFvXph\r\nl4N4VIu632EbKUmW/v3m9V4Okiv2iJYT9o4HB4/sPkLbFTt5/FWQdBsM2zdI\r\nOaivBquh4VPfIkXvpWx9vlQlgsYzyWKyXY634+pR2o9+/bctUM55aA1lKh6j\r\nsdAeGVapkMqZf5Yx5uQaJYlfJBlHsM1uopT8EAx22BFuJhNoi93Aktv4T+mw\r\n2qoWrcpi7zfO2dQRI3Dtfweu84M7hRb8V/zf+eGvFCL0QlTIY/4DvrU6qkqr\r\n2c6aQxcuIKHIn1HsauOoJp1aF+FGbAnzCYcnx7n2VHrRp4MPFay4YUfXSBQV\r\n7ficG8dT1SaWiJPegHKHHZEUusELMWQdeldUoByX8wvF2H3Zz6WXsFRTgerT\r\nBhB54t7eviX72DQqJQEd8PP7G9LK6kmqL0vVMR9TM+Xtabpq9zCb35BO5AWl\r\nCLlKWaart2XqQhKlG357B0pEXxebTFVknDQ=\r\n=E6C0\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.3": {
+			"name": "tsoa-workers",
+			"version": "1.1.3",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-ozfs0HmW/REJbDwXLQDnOxrzk9FsWTny4N6miIGVGhproJZffytR22aaUCV0PK1ZsQtan1+SiAu+utqQk61fDw==",
+				"shasum": "cd406aae9545b1688063a6a066a4806890daacc7",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.3.tgz",
+				"fileCount": 28,
+				"unpackedSize": 34773,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDgRTZE45rJmLmbUxjXBfZ6cX1smW0VoPRZv7U7kgliMQIhAMmOsXmkOyPJqcNvLnZn4ekHhTtv8H5r6tBbKiUM14hX"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjl180ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrRpw/+OB4BjxVh70ll97kVlihHSvF/PXb2wN4IPzj7ARavHApLuRF0\r\nTQwx+I1TizYxGiw4tOP8fv+7A3SokJzpzbF0aZAD60YkFLxxYp2Na0jxvPZJ\r\n1+Pb0LdMIEEqz/IY0Cb025y7KYLk+fI69wg0OzszXESTvqRQ0nW0S85jRRce\r\nc+fcrg5gEEgrlH9ROEPJXoYf6Fk1Ls5p/a05r6eGw/daK2vyAikWMQejyjRz\r\ncW0e9iXUVp/WxjrtirNr5oAKLW79T1EGaTvI/H65a9HzJlzEu9KUjr/CDiXj\r\nsbI/iSWMTejSgV6GU6nw5OXjADYnteb7+qiDFcvALwuhT4aVYumrMVXVMJ+B\r\nzkFGMxMgDa4E6nOgqZQjfEP3OssBOsg3Q+3IS/UIHNCzgcxHKRkstR+/C+K9\r\nIPADd+TgOYjouk3GCIJazeijgoX8UyKNC44u0jZRgb339kjmdDBs6da3xKRm\r\nkMwXagLJnq12Z6a9j3piLRIeEDHRJzknovJC47jS9kYVcrKNJST6wkiEy5GV\r\nPQ3CaIda+rf6LRNf+sBt32O1jG2hHKzTPNeliyaBeAm0tez26qzGdc8WxR6Y\r\nNHzqRvAosaqxjTY7ies6suRZQgIO1idQdcNk6rNQrnrYJOcfBjnaqWLw68Ez\r\nHs/rfzDyFCeeJF4iJObAtLofmlYKRmTpjD8=\r\n=nvnr\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.4": {
+			"name": "tsoa-workers",
+			"version": "1.1.4",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-rfFz9xt42F/U57h6wsbNAo/L4LbMFnZF3oZR4r0efJAjSce8S+pHuS/bsZTfFMRiOyLARhZjM7Cxbkj0lMG4aA==",
+				"shasum": "ffccb352d1128650c61550460b8d932beb2a940d",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.4.tgz",
+				"fileCount": 28,
+				"unpackedSize": 34820,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDE9zYA3ysnMbc4Sr+viYQCwSWV/B75fFycUgOO0FzeZgIgaxms1gt/73Dld54kprMY8h5BgWoR2Mng6ZJb1dm4qzA="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjl6mPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqthQ//c/Uemm4n30y9e9w3aHHDJ2MMI18WAJfA6Ff80l8AvPHM4Nee\r\nnW5bUVIZCkZEDa09kHk44+nKw/oWf5v4rZB6PyqWXSXxw2sH1V1uyYpqiG2Q\r\nIOMs4/YneX/kcmH+Ymn+oElnBPltOMQu38Qit3ZxjTY5P61Hr2d6IdDyUm1c\r\nCTwiRd2s5ce0hPXZF/HvWmNw6jHPpV0VPaO+0AlHUo8TGfJ7AIYgOyK5+8bc\r\nd1c6+EwQmuZQbWyo9fo+B7UnZBPURlatugtQ+MchJmd5X/SXyEsz791XAYjQ\r\nqXQGubqBT9lUMb5HY8xt1/UJEQIxPW19fbA7s4dnMl9GNj1Kn9wTCKSwfYH3\r\nVVLDbPlvpj8jNWmmPbZqxLvxt3KtT/ctUqOIHokpwEjlxUSLx1n2tH+7EIIw\r\nI0SK3C+Vetc3zJFLeZVUiuXmylD/+DS9Vw8hxIv6qU9UKfGBjP72cUW68hZz\r\nPllezCT44cRKIHWc+tWKgdiqMgiSXNjKBvm7oWc8t4M20s599pL3p97XkaC9\r\nX7yuzaEmhSeMNPi0w2GxRFoyXzl5fpjSDgOO+vvxNvBac6F/k1nNon+nCnYi\r\nCS1owR7oG5dAeTpTxi1VuQrIPUtxengftYtrvxBSzySA6HqVHQN5YM+9tRJn\r\nl7v+4s1T+mYzR+QlxFGPLx4XbZgD23Lisjg=\r\n=XWWi\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.5": {
+			"name": "tsoa-workers",
+			"version": "1.1.5",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-O9+lO2PWRrUZBrPnFEXKCJew9S5POaKA1T0DNmeVngV78uCLhN8bPSfFmPLFXRX8VGhM8HgekTqlpuu+IbfjBg==",
+				"shasum": "19bfeadc29a72d26cc7c7145006e7f02e7e43f95",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.5.tgz",
+				"fileCount": 32,
+				"unpackedSize": 35274,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDD9DuMilu+2NbKOuD2MCiZymLVqQlQmx33kektBwumGwIgcZTbriRiy/hWKtpB4wZIySwXn28jxsMZ4ftC3Rbrze0="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjmQMgACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpAKw//X6UXJKilt6kVXE0NiwKv3UgBVzsCBIPYPY1ZGrduXPfPWoop\r\n5aA83oNf3fIryMVeoWDGltkcNFKVkbYx+4bS1akP7VhOjA2zPqK+noPSsv4j\r\nA4I+ouJQtkRSyrtfazIZAeFwtkB62hfHgBaklhga0jshtcVu0D+TxInglu7K\r\nFPH/aDEfeJyaIpjL5LacqtYsV+lsT1ROzR9z7n+mQxdzQmlSJKobGoKgvO4w\r\nk4dRHYA7Vk77PrxvlR1nJ9NNixTzSlQPBOa0EO0U/w00c8H3j/uHaEmJUHFq\r\nN8sNYLjD4hokRFWZjC/zOQ7CEQmjjG7qcGOW/V11bWUV/hugXYj2XttBedv+\r\nL+CMQr3ZzZZf9Fu81sPYl524g9oRU7SAkeRRYnQYbram4GYTBsbFJ7gTyRpP\r\nsvrTc2OEE9eIXtD9/Clc+J+vlaUld7YsIelK8DsVwtiyrACchVTzCldP6lU3\r\nqmFCBXOc5HupWWJ6GWYaqUZLpjj28RB84sPnXTmkKJnzHLs6ZajMCdUVlCtG\r\nvXDWQC6UEBkJ9r2pZkE/LB5jQqDB+m16vjfSMZkkqEAW5eJANPna30COSaUY\r\ntJEAO1UzReGwH/cBMWJPHoVGrNMdIwHSuPYzikGI5ZFnU/Higi5zfmrFzfcL\r\nUqxeto9kwjYnbk18nd56PKjTHj7/3GQ0akc=\r\n=fNJG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.6": {
+			"name": "tsoa-workers",
+			"version": "1.1.6",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-0dvzPvMDEu6BwiwO7EUNIHonBDBl08mqOBlv0USGJMaRavb3kwx7p1pUgC7odwkSKPtDhQLocVZ+s+nnOz1zVg==",
+				"shasum": "0b7cf594c84c6d498ea6b685ab82ec30ff8429d4",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.6.tgz",
+				"fileCount": 32,
+				"unpackedSize": 35274,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIE1eKjmnD+5C9FkQ18WkzlOO6/BAn1Upkx5RHlJ/RGN7AiEAhahaLEiRyA4WZKOao1amkUa16tWBhVAi5D90CoLaqHE="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjmQR5ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq8vg/8DZD0DZ9nu6hnHhIufHVt6xhWXMY/vcw4EJp3LJJPk3tTZr0n\r\nHbD+YJreCsApurZ/XbsxfQydfD2GTSpyF26aTayJkx591ksIDSHubCYAX196\r\nNk9pEoiw8v4jRVmJgHzV/vZUCpcNOIT+EER8KbCmvl+Remez3c3vo0pylX6n\r\nxP10ZRMfv76Y5Xprz9iyPWeb6vU6pc4TU6F5q6gRX6M0xVQ3JtlZP5zlBLYZ\r\nC4qq6vRx3TTuzaygezPzDOr5hGSRumBqFwo9MRef059T8ALExFyita84L/YU\r\nWXFiEIM9A+PjLkG38wDp9vPfGYxpqvmZ/Z/UFnkwn43dxA/ag43Y2Yl8VjoJ\r\nhHSgscqOHP6iXtnhxyOQcWLdLqLMcMqu+tc7iVCm6dwz7pLpAClQX+KbyfLg\r\nK0hG2MjcksHTqng2OYzZ4OFnJCIdABpdjo/0BxQ75PMOGK6SFQzYKzunDnEj\r\nXGK2pipnRGb1QbpXG/UAJicETlFpoodhbEspQJBLcvhfWaiBGxs4EmskqI8I\r\npTTmy0J92i6VvLAd0sLQ7vI1qia5dyIuFfH0hXkys/i+kd7GfGqUc5oxcq93\r\nf1Nr0QC1ry+ViVFXvQL+WAaYdcT143Uvb0y2PoKqssApRLg2ptfHC9+4nPiT\r\n9YM7DfyLkkViEO8KvyeOr1AP5TLqLBy49YM=\r\n=PJCo\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.7": {
+			"name": "tsoa-workers",
+			"version": "1.1.7",
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-KBh/QSQa3bH2vzHKu1l1io8/Tyk5uKzNDAM3xhgxVzeaUH6AdI/FhFpvjziV6H2OHQtUpo3Whdj4OVozsXFryQ==",
+				"shasum": "8ba8b8b16cf3b999ac5dae2252379896f11e3bec",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.7.tgz",
+				"fileCount": 32,
+				"unpackedSize": 35334,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCrcaRuPPhVZVnUNSbwa4MOIoM7ir/ovRLQVGathQl0WgIhALieiPskyx5ydVhTfMwcm4xLcwN76ayHLT/NgiZSL8ER"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjmQTyACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrTYA/7Bj009Rm47xhTP+dJsmU+rWdDtVERaTzoK8bbhausk2U2gNHV\r\npVR5MO5gP0q0t8mMqtZgIKFXcHtEBAwF/ksQB1c7m0teUwT0CtJsW/jfyDiU\r\nOoUcpng/Wqy4n9Y3mvXSCKXVVFgXzNLWlWsim7nvMlOWBVUUJVp9cC8UJ10B\r\nt/aUX8QckkjEkA3aCgkftqI+1jBRfiSUjt9fj2kcTryDGJSgAThoIprHBAoQ\r\nOnsA3E5CY0dgkGny9lpEGPjkYwZhtYUQ7LqeGcRhJYdOD6/Soyfp5r0NFYmQ\r\nhG5raDbrnWUbIGT9ApQtIxC06qWTNQU38VJnT+Lmqvhp+aDDRbWOxNJ/9yTe\r\nVg4vrUElT5A96zSd0IFm4EFBvzxEJiYb5d71gFkXOINP0z5ePkjOeL1c5BtL\r\noKeY8B9fU1Amh+P2RbRDskIO4kTRZAIyqUmjus0YJOU4ILitIaMFiVMGPNkt\r\n58C7xxOL/ChCnrsxPckNaSJ4DsFmPvz5G6GEylPnACZhcqPs4ilkaehD38ss\r\ns5HznbJDO/+8OdHmxMdWqfqWnpHFcvXmYO26LH1L3ZH+Q+65CnMyn2raGu7d\r\nsyFEr1CJxugPmsGebivRfvoFM0b/z/P+Xl4O89PeNtfTy0JKvX8ngH8wGjmU\r\n0hlOiFLkucoKJQ1LZa8+yeU0s927XZehb6U=\r\n=gOsZ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.8": {
+			"name": "tsoa-workers",
+			"version": "1.1.8",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-5VgJbWlMNvxuFImrqvsWC5LYKmnIJ1Vuh83jJ5M4+2y412y1f4ZEVUYxHHMrKj4aPZsIGiJMWWxPByaC1Cikkg==",
+				"shasum": "c621c64b7cfbfe9f72f4ee1e146dff7675e3dcf9",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.8.tgz",
+				"fileCount": 34,
+				"unpackedSize": 36500,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIH94yb5jQEXBsXJVoOy9ixHbfAuXltP+t7QUYogS4TJ4AiArOM1ffuPLMYb8lm4WgYfv0ynUMZhNPlGyd+lclrkveg=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjnbLNACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrHAA/9GaSZI+9AW6/KJ5aD/KIXbtdr1EwmzNhWbMMuWT7uKJbKZ4xn\r\nvDheDH8YSvUUjjlE5XQRsomQClTRQfwiJlNkxBzWZHh8EAYplgsmgT2AEGqR\r\negdadWYsi3gXoAgO6o5uRIW4WuHxBhhfq1sEcbf6v0AUSvOgrRVyLeFS8+6Q\r\nJ7p2+v5kWGc1/wjZhfMMWsxfZuiiOI+HF0GbQv3QsaQsgdCKBsAx91w5CdWi\r\n/UzPBpG1XPtSgh5DQ3H4QWYqOQ4Y+1ADPXFZpvoM3u+X7iPxIE0Vu8Hbk7uY\r\nAj10Xz6ena3VweNKvibu9sknhABIepQRVDag82pDEhcWT90f7w0j2EqZtkcF\r\nwZ4STTwoHUw/Ksp+mdv3spQHwBPsKSRXVK1B+LlRkWbf2ephqBTtmZGiVEdD\r\nJJ5HYBm1clXl5PoE6sRIAAoae2+5OqqY8NEgnpsG4TgtqkFDvJYzfjeuUTzz\r\nl3kNVabSIlrJxKxirmdMMRkxuKojs5kYuPBUJVACVsvOXilU07er5PLfj/6k\r\nbD0J/KQeUCLbSdkDA3dTYrOnPar8BjTRsrPdysDJVpKlRiiDfi/piLfBtHEw\r\n5GHD4ptJou8xBFEcL8t69ooapjni2bpStQdne7hHLxCmu9wMu74eequicZm7\r\nCJyXFHGsGgoA0A1zEXFmsfhturk4xO3wYsU=\r\n=WAr7\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.9": {
+			"name": "tsoa-workers",
+			"version": "1.1.9",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-BifMG6meRV55ILHtLSwvFS6B2bMlBtrfaau42Xn2mYGtsXuBBp/mKNgC6WPFFwlg8YEmgJcuqkxLIdrijS1Abw==",
+				"shasum": "d4a1cc4909f1e8a7bf1b65ba95e504e2f695bfc7",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.9.tgz",
+				"fileCount": 36,
+				"unpackedSize": 38455,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCQ0eLZBCpiyM6qzpqn+ER+G8IVivVAeQf89Rjowj5x8gIhALw/f4UxAHtBxOvG+am2V5v5b35nqKCRpK2tgNUiNL23"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjnbXLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqxaQ//ZsOi4p/US8sTyl/lQLZWKB4Z5TGqn0tNMfCiL99/O22v2nvt\r\n1l9CF0LEOmLRxQE8RFtwJuqvuXOMtqrbamQoUlHtjj5J8mH4mEEghbYbIyd9\r\nCiUYAuyTyzl537pN3Bok8dBcqIhlwepM9dgFdM7KN7GLnpgJKl6bqum1WyFe\r\nEtnO+nUsnHbkkLmQwALC0FGrvAl2OALV9ZU9v7QCAPyYwaAXCNX79QlpVWb7\r\n0zJvvNSTj+p1a1YtGXqR6K89TYXFwrdPylHydBWLKCxpEbl/JjFFTA/SnwcN\r\n0O4vTd/O7gKvLZ+Rks3gqvN15BVvQL8HHB/H3FwnxyhLGTd4xCs3ZAgtbYfH\r\nauoetAA8d3UuxpCTRKgrV5aaS4zbcfsAi9bkz2nrhSzEvZpL6NRamA8X4F+2\r\nPNnsT0SKEdwFEKj4ekAWVMEZnNTcFHyRSscSbfdYfrNknQUgvB2vBNWbwIwS\r\nIuoGzONZbjll0354wrp97/Py0dIpuirq57AxnvJA3EnRuQrV2XC74YlE1k3R\r\nF9z5+DGWo8sr+yJgpU948pc+UC5EjOpp006wev9Nk4co/5hpI9EubMna2bUl\r\n3sCPnukmyKpl40ZFL9H6Pbp2AbAI8x9GpiHRWp3xBQ5aY+qUUKmxITxOZeXa\r\nQPAfRpT8L6E8NyHEJe+Tn6qj/itKcZU/EB0=\r\n=l78Y\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.10": {
+			"name": "tsoa-workers",
+			"version": "1.1.10",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-dgXKq6bM8PRqoe0EHxoHU4zuwqEyIeKckwc/Jpae6YVHR4Zg6an4DC6h9uzAdQ1FzMVAtMdPJbVntFRDFX6r2A==",
+				"shasum": "8d53d7e67ea4e59c7673530fcad2027e7660c3e3",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.10.tgz",
+				"fileCount": 36,
+				"unpackedSize": 38456,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEtRIu+QG5bDMP4UwGBjDQIfTnXDfRrwIf2bKQTs1LbvAiBM7qc3rDRQLNH51F4jE+vpl3QM2JN6uFOSJ+zTiznFQw=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjnbcnACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpuNA//fxlmhxmO+lwqF6iCKd0ayaL9OsEP9JuHintUqTq61n/GLZDT\r\n7TobqCDck2bmHgfGE8ry0stXMZp88+FnOVmMwnDDoYbqUc9Z3frw9EtS4cts\r\nFfHpafUWHEwv6Go0zbMgBo9dXesCC+hBxlcs7OQ5UsYWHDbq3pc4zYLCY0+3\r\nJRXnLintEzmDq71txYjhpvlk/hl0SwnIFBmVxnhAHnqMiSIlH9OPk/0H1U9H\r\n/O7vmJtbF3GCTtgpFCm6Ur9IqGRvQSEpiZd1gpO/BCIdNzIjyL42H6J6CZKP\r\ny/Io3sq1W6Y0VxP34a0xe02MBRFvYf/vEegt4WLYKhfG/NngOR9rgWYY5luc\r\nISOoyNkgZIClGiNO0pDm8PNmw52ZgquC66S/mZNVJ/r2Y1ZbIEMN2c3GiN3S\r\ndLBLOirPkeMPpslAeSTIznQsjXElNlxgsxNnX8HSztsWOzW8hs+vyQoY/4g1\r\nsaFX7URS+b71rdWDy5WIS0Qpui8FZK6VLtJpIUyQLXu5wx5ug1x4/HgmAUab\r\n/Us/X+FR9M2yibxPw32ArYkYVnQskZwF5m+vytk32kZpTirsnKyk3g+G4dBO\r\nQIsJEud9ePRSV2sTjcXjtO3Gov0bDsNvIoPjW8WQ/luSgBGnf6p/W257ola6\r\nKxTtAf90upVRX+qhxK6jZR2WMSzkklMYZjk=\r\n=N6CM\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.11": {
+			"name": "tsoa-workers",
+			"version": "1.1.11",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-Fa7N+OlMBq9F1MHxvUOTEakhtgTr8lyNyNR7d3bwrNmS1VU4UCyeKMD/CY01Aghn3NsivQ96FhrxwXeV0dJbVA==",
+				"shasum": "519df1fff8a1f3e73b19f8482fe987c523b26bf2",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.11.tgz",
+				"fileCount": 36,
+				"unpackedSize": 38456,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAhHBkVES/JbA/0Fjy32KOhqI4sezsQHsUS7pbluNv51AiAMXwsNGjcehFc6JhWcjTqyLOZPhylCq5wjDmz1V4zoNQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjnhGTACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrFiA/+OoLgbFPIzGdQevxYnNOpC4NE6j2iPZf2tqui7knvHJBiQwyq\r\nVzed2wUyIpHXlV3WrWRUeDVa6vF8OEbczXWUEFBj/rtlz8p31/WhNTkVum6b\r\n6uha1QdcVywhCpm+dHfw2koQcj3bvrcw9wqVrn3nfWa92HTx+R6TRmWmkp2+\r\nOQGBtOG2hIBDqIACpkDvh4gHivo2eLPqM8U/yb12X8uY7BKQK0aKDuAh/mIa\r\n5c+L6gQSH5H6ukeLm1ao34uPiJL7U0XgnP6LkmSnDtoqCyCKxwVEPrUvs3cL\r\nn1rusoadmQy3Q5hHrPbO9WyyoPPbVq1puQqsCcEFeYTfkh4pC2FlhwyV/cgM\r\nrtfnjCo67usPpbUtAfpWcI25OwQS3f2Y4c+d3DuVvVKqmpmm+4UC7Luq5ep9\r\nXzq9BVcFXs+ArXsKaTKNTCslAcycwYVuOIN1IvQ96HWa1ar8OA2DhHLjvF6+\r\n82EyEVb9L0bJqHqnqFZAlSKuzXDrs+8L24zNmvRvDGAUES02naEGnRPz2rLG\r\nt45luB5VCEDl8FIEDdAx6cvcpzburQUdyldNO+8i7AhSDUMFIo83mDdpeB3Z\r\nc+JA4RcNMdNQatSU1EOzm34Jw87n9KHyJnwpqD0BnJ4JYDP14VzcFl1WTmJY\r\nEurB4ifcWhLer4xfvCUbL5LoQgG34asdcZQ=\r\n=WNiP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.1.12": {
+			"name": "tsoa-workers",
+			"version": "1.1.12",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-1GLbVPTFegzli3/P5jFq6s8dmAdhfg78Uo+m1WRj/AunrcoXHWjUTDX8eWOYymEE5ASV9DQNESEgU+gblBl/Nw==",
+				"shasum": "0760d649eef2fce4ad70100c882882ef12c5fb18",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.1.12.tgz",
+				"fileCount": 36,
+				"unpackedSize": 38440,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDYh13hJ10/EBwVdgGZF7SGfFwoP0HpDiEUbH26wXYLtgIhAPNyySZnIJtL3keCpx4olDWEwJnnFg3vxMmKpy2SGun7"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjniBPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr79Q/9ET15FOLai71qg0dPqDibblBWv83PLcnjdgugyXQhwQjvKc7a\r\nFaA28FR25vYG1hooqV35o1CxDwRADKaPAn0Mdh9l16eJYkyjPTScnRBWBkSW\r\nNP3g2Df2d82O3JsSM3y5dJKcZRNwbNB88iVdOWFxidV1LaWMCZMppuCcn/07\r\nQKmtRqVMtXEvHqjbLgZecAVOJ7W9Z6gKL51FY04Eu7BFShCpRqjLEyWv4y+Y\r\norZzgzOUqAd0/zeznWbqDK9G/6gurz/RtVLiNUBycPlTTlDQ7THLqfE/VYBU\r\nWpXQ0zzWi/+YHefFs70qGXRyCHlk2VR4zOgsNwk8Lh0sESXfV7KPhal3oPWA\r\n0akzd7SQH7SwUuNSxJgg1U+VhjhLedho9aODV9bxOFVBfJuwtD4k2EvyNQYp\r\nHKlGVzOxb+9eFKxfHwOaoyphIbKh04SKlfPRjq8IUxDpOQsmg9zBT7CjuPuL\r\nKaiMPnBEzA+6mjmXT5JFd8NMgVmuYZLkNXiHdEkwyU8MHDgjvX5Zc9B6ha+3\r\np0tTlsFb6vnkok4fH5iF0VR8k2zFN4QvHj9MI8RaTpdfgx9uOEQMOVviiscF\r\nkRyvzcmiqFe96UNcgmpe0unukiJaPNznsodQPyCNl2eR/B67m3EnYNrV3WhL\r\nbNPMjoSCRbNMr4XqOMRUbv0XCZk90RKsgwU=\r\n=VmMe\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.0": {
+			"name": "tsoa-workers",
+			"version": "1.2.0",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.3"
+			},
+			"dist": {
+				"integrity": "sha512-4lsvH+Eeg/2RLyM0P8lPo5RtjulgL+RA8QsS5zzTZSj9dqQ25ilFZxhXAaJWfjFgnnNiFzpt7+3fuqQxrqFKGA==",
+				"shasum": "54fa02ae944dead7c357d343e5ae1e5d5d07bca0",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.2.0.tgz",
+				"fileCount": 56,
+				"unpackedSize": 42433,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBH7emMFp0a32/R1iphSo3eMIihVogBPSKxvqzgBtqsFAiAyTjwVY2AI5PcivvdXsUvn3uzABkb1nDbSM5siiaLMJA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjrEHzACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq8WQ/9H9vpn1Vlm0jQwRaFUBS1O9YgGJk6DMK/KDHx5PGlTWIou96x\r\njiAwynSptL3lapaoV79YDotXfzjZgpGpUbdmlpRLeLohEZqgAgVGzHSaP26M\r\nCuSP+hSsnMX1a0SriuXTJFe18rRIZNBx+/hW+aetzEYxZk62HZ2HBBl9C853\r\n3UQS+1hDzmXL8O4hmyoRLcLVhtLnUvpgCoZ3BktlxADJOMs1lB0VY07a8wvp\r\nwBE0z9Yd0GJERd/SMWw9mG6nKSpItkh5gvVwEeDKUxW7QR4XA/K18n9q3V1a\r\noy5ZgeHQhfDcqh3Kkgm4VKON9Y5Bhd9EfJja008JG0NZjnNagXCUjsMF1q7F\r\nX6B4fHvdyFtLrag6GCA2HmPPy5IJysMvQ4p9YiE71Md+qHAveMP8b7ehzvhg\r\niWV10xHvhmFTxZvEceie05XqeNnshAyWeEGGVgAs7YW8jhW+jxdm/nkz0CZm\r\nBOIlq+vjd8ei9YpLZ5E7xl6hBjP8DR1JZa7fzARhHpJdxrqvBVZkKmjBX+RE\r\n/afMrU6LiSuysmEiFTBCVJOsJOlnP2l0CBoowNcF+z3Agn8owPEzZtDGD28k\r\nhEJkdYlq4PkN7MCw7AqtRxTpDD6JBH8FU2jRNbeTc/A/1nmMd1UN/UYUY9Zp\r\nIe41xuDJR5l+7P+pCW1/ftywYcm2LE0fCJU=\r\n=W+Vo\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.1": {
+			"name": "tsoa-workers",
+			"version": "1.2.1",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-0Xtzo/Q9CNQ0PjOuaeVAqT+PM7fovJ38VJ5K5w3T+9kkF/JMWkgnIhGo37YH37V6685OoKoc/OxMJ4sOCQmjlg==",
+				"shasum": "6f5bf8436e73941ec77e55e4a5bd023f42cdeea1",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.2.1.tgz",
+				"fileCount": 56,
+				"unpackedSize": 39632,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCVcdo6RrHn1YT3xBr/GD9Fbj5eS0U5zYDmnhEI7eywSQIgC+JDgi/azDJz2mmY9KzqZ4OlGAgzUJSCzBn7giajIzI="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjrVziACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrWeA//a9R3qohdLBaAdggSuK9XBkjJL6gMadd4smNX6d6/Tv34UjJZ\r\nfQGAJXuVwcGyZpTe27YUZdp7ZfJiKNh68MejVVijADlTs3Tmencr9+ftxbmK\r\nv6HGYF2Ox8tmtcxYvfkyecuno+OjJZrttcOcXyH2rm0FUtQh7Gn4o272WiBN\r\nGG/80CxdDCkMbVSrQd167Gt87iW8oRFSq5z8o9So4jf9TiofmTVev61u15ue\r\nQL2G+U7L3Sck9TsqSyDQTxN7IvHSA2KW7Jea9xkRHLvJWL9+spIFEyiEtDQc\r\nC5dgzf2Nduf6lHmNjgZLYI/8B4pzwFEbRBXflenFpKE2vu5Dxym76MvRjdmv\r\nzQtPMv7YWqg4LGVQ5Yy9hb59Ly96H+VhBxLW17XSKgNeAIKZBVCPVLRpJmLz\r\nEr+abpHwLEZh/6ql4iqYN/js8skokarKDEsGODEOHMZc0D5jXjKctzTubt3w\r\nPlTO2EhiA8ggvbvG+j77MVwrUo6+8iGBvMas3+oJ0ydc+kAb/WCJLUib+zTF\r\nD58DsVFX6NKt1gHZsJUgnyd5A/d4EBl/CT/7WaGB2p2mbzhAvyoQ43BiDyyQ\r\nhbiOYp/GNXsaKGzczTAhHifvg9FEz7GLyGDZk7jc1/SqO610BbhqRyrsAJFM\r\njbh5kFzh6uQhpFH/1gyjgiN29Wm2PVD223k=\r\n=NFwp\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.2": {
+			"name": "tsoa-workers",
+			"version": "1.2.2",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-SeKDdPXPS9N4TrLDE4kWdsfEMtxxL9N35dJq5aSvULP8XVPw8W9S4HcA1d1KVPK/CsYYAAklRZBB3SOaklPwqA==",
+				"shasum": "cf8278156f7cb89e87df91665152d8cc4ef579ca",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.2.2.tgz",
+				"fileCount": 56,
+				"unpackedSize": 39879,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCMtuYsYV1sh2xHSZBsAy8HyoQPWA6FwREAcjgEu7UqnwIhAMxQSPnz20XqNOZhPSrcZLZxr6CcoV0HnETY2aAryRDv"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjsUvMACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq4JRAAoykY4V6rffyFwcgIiFuhLwXWwen31r1TufG2Cr2IKcyATuMT\r\nFUP/DCM7Wu47ynI2cBG6Do4v+jzqsny2kExCfNC4tZYmaAZgbAArEpSkf4tW\r\nnoNebnwdb8W6I5/PdDNHwoBbqNrkUqzu49QLcvJGU6Z/jDd5urebiqmrhZ/n\r\nnklrnyc6b17LJGKgbNVm+YRQb963aXXVTpj6dB2ipECdmDqVj8ndjet2KPnV\r\nElDerOFuugPBIyOIAG9gW8eJOGL6tGHRBeZulB/NSQtxM+aawNyMdAzZ3zHn\r\nvJ2a/HJSwlxpME+XZKBW5oNLcywZH7clqC/eeAW3VvKjeTjmYJLe2Cr+5HtK\r\nRyd5ZMmCz4eF4UYXwGRXe1CnQqTa7pg193ErWrNwlqn1U6p08bdzO82rvm+F\r\nmCli4BYa7iitGOuvQQqOuKhJXo+aYBQb+rEA7at45H5oGc1F8wyQvmbtzUcH\r\nu+HLBVByf40UcYLvDWHOfGth2V5uCjpNXCqO5Tol2G7z2vaIbhpdm8VnZsHs\r\n1SmckOwmtxitBhnATDkaiEaI6UGqAriZT1eL7ngGI4iVLSnvhnrbHXPa6C5O\r\nUFwIUBO+NsiYOv1j8QDMdGrxdOcecFvmUbOsfLQBXSvjFRdvqx7bFpFg9+yi\r\nieHKv1XQdFYyEQyMZT0EwJUu7U2VvPJ4b+Y=\r\n=ukZW\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.3": {
+			"name": "tsoa-workers",
+			"version": "1.2.3",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-rEZL1ACQKLD8RBDngmdKMQ8eMq0li6PiJN7zyhXtf1ee8XJCTMOghIfnQXIgW4jmNy6OYv7+g2VEmXuCjvOYCQ==",
+				"shasum": "f1f1e9a68a44c1569c8676aa376e2885ff0c81d3",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.2.3.tgz",
+				"fileCount": 56,
+				"unpackedSize": 40408,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICn9Z6wHRoaz6yryPBhEYEYKepeTdupneHkHS8Kk9nYpAiEA2ecJ+B6XQk9N3FWgd3Qsr1OHhAT98m5stQWAe2GD2jw="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjsU+SACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqjMg//VItuwMdxVuIc1ea0nELsXElASKLf9Qd97PuZ2pjOdGioS3kR\r\nI9h7YgB/ucE/xJC0+0hhd5V3r2aDnbAHJQKaPqSDiw7RNwbkuaSDEG/gQCy0\r\nNWMYyT9sjaLIrclkFUAnQ1YIhqBTtx03Qavt7wF6UDwjrfIWdZHtEQr2V+uC\r\nJfka+Vk1rV1CmV9VitA4dAzxt3W4/4IqJKz7RcwyDjVwmrxOnx28QC8xQvrO\r\nTMjNxJOri/a8hKKAftVKnfKwLGRa8SG+KkVSC782tCKLmwG33PxKJn4LVyxj\r\npSykqHtXvEi/ApMkstcRkrhpJbML2Ixgb2RT7XaPjKQu5JUUn3vj2vKDb1LW\r\nyEQosOI2w1swgf+DJfUjWUNHsrHPnI2zZ0+UW0+Eq/RQHlp7tKmyZcx/N3Zc\r\npe7I5/64Mt3kyPvhz1NP2+2uvwSPDg8SR1Lz8vmpNm719/XOzFfdDOKsOxwO\r\nHnLW+kxqLqKSFUHGx73yLZ/YKWSyTOFfg2G24IspomML9zB5QdYlzz3lGojh\r\naqdLhj74upRNjpR+UkL4TQGFC5wTHYwFy4hJi+oj73iJCKFdJsqnKC3rOnXC\r\np6tziLkiOM8uDHd9kW0JiSYk4uKbkjrESj6KuayqYgHhCw4/+JbFi4R9jANK\r\nLsECLjGS5XrRdLzikjZMhERGhAqjvR27zU4=\r\n=ROWx\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.4": {
+			"name": "tsoa-workers",
+			"version": "1.2.4",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-WSRY6nIFeLvBLFWFe50RUB8lZDGA+QF0YODh7LnrGtUjDpTVo1P+IcQ77MI6lFaqFoEGGelDbiW9z9HbyUyqtw==",
+				"shasum": "961adc2713c9fa3482b0f611bfb7303827e550b9",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.2.4.tgz",
+				"fileCount": 56,
+				"unpackedSize": 40534,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDcALZKOUArcICOB2fh1rdqr3HExSRJ+5bXH1qlmTYf6gIgNUGGkE1Ux0jfEngKNXGkK+dGwOqXATEFBmc1ubzZprY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjswTXACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpA2Q//Ww5eowH7v0BMNYYsKf+pdaTts8lRfXtmr1V0gXNX0eRUnFnW\r\nshfQeLdSudz9WzCmkqQFIMGnHJsa2V/CoXzUotdJN33C/JttcNq0axX7J0PB\r\nAhcpMqY7Xc19mLs7X8T2o5+eGOflKjl2xg56OlUG48ObPAftI1PpqA3tQ80e\r\n1gMOXIRrBdMTdkSBU/qS0J9enBrcWCW4fAVGUx7IMu47S/+MjgxLmTdvbHJ0\r\n8IEh1Y/+YOc6M46vEWF3ibhgwmRSSOLQg1k9C+/6DU8xU7SIUiBYcacr3tlR\r\na4zRxCouFwmyitax0WDfSyzWaBGKCWGwH4gE+SyutydUiaKroUival+HXVWd\r\nR57O18EtGCZUm3SUF7M+ysSt2HVKHeYaAPnZ3+fqTM56a1P8S2WSg8mdLV30\r\n81q30658Kzh15c+IGgUCHh18GwzcFHp8cxVVbfoG4xA/qFmdAlIw7i2Jjmaq\r\nsOdUQ5xUWu22/hNbIKInU6ixtnG4prbr1m2uQU1YwvJqWTprccpd2wXqKS4E\r\nlUE6ucqHv8oqQx87FQiD201lnhFl20rFNmpPOlwP35IYWQtMaDAQni4RgwQg\r\nkt3eLzBRlgXHEb6F1IUidcDVGDYbpMIxNYGKcJ+zUgCKv1yicQE82U/TJsGu\r\nEqfmnYoM4O0lVmyJBF5V4js1NUyK1RYB22Q=\r\n=oM91\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.0": {
+			"name": "tsoa-workers",
+			"version": "1.3.0",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-AXVcvgRbYeE0nVOFAXt4+jNYPtMxM6vNtpAKqGo8B+OCHxVuqHVhQrndED1pFxH9eZUm+jVDeawoApV8XpTzQQ==",
+				"shasum": "1d4dabfb7663455c1deb1cb6f70fb5112bde5211",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.3.0.tgz",
+				"fileCount": 56,
+				"unpackedSize": 39962,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFWyp/kPwDQU4fmiv7mTuDtgHASv6bWd7CIXtEXffOTTAiBfoHjqD4VMrk6vE+m9ZJLLPxHWvRFHyv87AN1ahNY4dQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjuS1eACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqfow//eH5DX8947kWjdmykr3i/xzlD9lXBRcuAF4WoQQrkSceK7wIS\r\nYewFitapu9ATCap1WOGHhilq3fGZjSS8nxNL9V5yA2EmWuDDUw0swhv3iOOV\r\nnUHmeuluKj2l9IqbEGNjaOV2t6saJ7zc7C1TlmsTrmraMKtcseCIDFu4Hoo6\r\nvYBrT0z9o0iqVBI11rSX70XybZaWjVL05DEsfDS3bL6M5jSMtRgMe0IbetSc\r\nMl/t0Kd577tz5mBu7GekwEMG5REMLC56HdItTbKIhwiTSTYJ0nh9qBeTLZko\r\nYi5J86ttfjtapfoq8tNI2x6nIqKqsUetXQ9dHmUlxy02amjEVNO82n0Fv4XQ\r\nuQeLEbKYagaarVO3YOgD5EbY3yZzFDg5CCei1JbF7GDgF12P3RajGhyRYSJR\r\nqwLSG+McdfbNskdRx2MTCaFIWFVLUq2/sBLFULUQA2rOM7lVYzQlCBy67YVA\r\ncSfdXTRjZrtj7wfiPrEUjohgxYCSilgZ0NdN48uGHR1xeboIKSZ+CL6ksD2m\r\nN6wiQ/qZBF3J4S6dKTXRmlZi08SQJqmZE+1SJmEI8FCYVH/C3rZ48cYuq7tu\r\nMdyNqZQcoMfBx9y2ukuCUJV8TNJYpzIu3th+2leEXSTan78SGWeqtUFOdtmX\r\nHu0bifYoIPFFFdDLp4EQIaEEPLk2ugRJwDA=\r\n=5ijc\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.1": {
+			"name": "tsoa-workers",
+			"version": "1.3.1",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-ANt9dC47erkdMLzP2zfJqbkNjxcnv3NazAMDBm9hj5NZZljxcVGa98ZAHBmzc1WPzgKkT5OTmtx96PNVXq6Gwg==",
+				"shasum": "9d9e2eb5a81a7553723d4f5670ccde17d3f0594e",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.3.1.tgz",
+				"fileCount": 56,
+				"unpackedSize": 37757,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCzp5rRI04MPl1gknw9QQWvul09kadWHjMzn3joWQBP7gIhAJkC7VbT/oXs2aXhrZzuWBB515UezBxzEPdHwsx+6V3w"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjwT9ZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpMIA//czR+3Ayx3HMpkb9j3+Agl2562J2W6fcIuU43jY2x6CgixJbM\r\njUo5DjAeHf+fWEMDsnW18UChq/3j+iI/Co6qtcXc0mgRBxizXAlamBq4K+5Y\r\nCrzuOB00cvz4qg7kBqRsG+EbbJI+M5cX0js0dKQA5QUxw5cI0yrqjB19boaR\r\ncuQrqPQ4VCXRO7Au++XkgBbX4Jc2N8Y3C7faDRuipsmVdKRy9BbCY6kzTZ/C\r\nl7uEVk6yx6FkUAd8Y1WanjulmNMWOQBKmkJWZHPJyC4V9cQ3OmVasstQ9WsM\r\navMkunlHJeM6TOfzpxqvG9ToHMVSQJXj8IIoQkrcVNMhRL85pSuiJwHgVYvW\r\ndbdHVbX2m+z64Wixc7sHYeGmoHeGBeFj8zvnWLir7ndzVDCNJVEnWnt4TlQz\r\noOX+e/pYsfywQVGOqmlWCOCTQdTkjax4LFDEQAZiuo9d65+Tqug748yzi/nF\r\nbDzeqBlKV+wpyU32+GR6rmjduwggAbGVEixjeTpCFM2MvoCa9XCOmDjGVjmz\r\nPCDNsgN3sS3dqgZXz+EauJAJE0WTLQDGTpotS9Xbmp0z1wyyoPrSrxjVxgyZ\r\nzJhcB53S73odn9D+JrMkHTbFujinFFd6ivDeS7mhaRc0uMFc/0Y8FzMxr3AT\r\nzcZ0RBtr9SuUH4kYtQvPCaXGRq4syiD29Jw=\r\n=lRib\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.2": {
+			"name": "tsoa-workers",
+			"version": "1.3.2",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-GKBw2BV1LNDmKrJwtAUfiQDAk19EkIgg8B9c8lxeBVvcSfN1KqWNj0XLopUyPdMW4ncz+MxdN2F+7zSKNuU84A==",
+				"shasum": "04cde6b06372e91add02dd98e09c4a10269acc44",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.3.2.tgz",
+				"fileCount": 56,
+				"unpackedSize": 36241,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIH+Ptlkr/iQJIEia+/hbzhdG4fpelFowStFA0M5rw48pAiEAvGS72hRXfkXTXUPfis16bLvprsNEbGsyj8ZxM2IbvCk="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkALG7ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqbeQ/+NmP0XhVcQIe3hyqlMlCmTy9FfpDdlK6z4OE5W/9egXx4t+lj\r\nWz5qsTof0UVDIMzeb3EVjn/poJGkjb7rR0xYaD4QlPI9J9TWnYBzRtrkukQO\r\noSxpQPVg9DQO7pY4xxA77N47J+eBXIDjNMKB87FsdFDUwIIzjMdZEit6RV8O\r\nguLXDhQRSnu92nx0ztYc0bVMZtx0lp7bK4uIUP9KI3oCtvWJMQJrUhLKLh8b\r\nZ8XTlAxu/DtomlzasJh9knHhbiI6OSVuj1ZqkrWhop4CRNM+dU1AOuZQXGLq\r\nlEbs4xbaWmbOlqHwKLk0e3YR4DSUVzLQbHTTDec5/tK5075iuqVx+7viIrts\r\nw9jwtT2EtnDh85fc1nWc/FX7Mo9KukBPZxOyN+TU6HmuDL6OYggcHloVV39c\r\nU9jwjjloC0dKCM9ujxrnwMv7SVNDf07qD8cCM1+V+GSWULg6VoUur0AkKcy0\r\nVLCQgHviZPQEMI6WKUr7RVj9sYetlu3f90r8QKseepFQo39bIwLQcM3L0I/9\r\nKC0QQ/oFzluw8/lkb+yLbt4PKgSjT0myeF91ifFM321MVxsiIZeG0xoviVhK\r\nR4ciKu6Vwtx3cvUuMILNPDRTQWgVS5Wm5sRLUPx5ZKaxqLmTfrWPFX/Ov+ew\r\ncwJLRb6/OyZcmr5iSwSyx1jLaFMeAZtyrKU=\r\n=NSsq\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.3": {
+			"name": "tsoa-workers",
+			"version": "1.3.3",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-LiPVKon2QykyGfxODe3Lkdxf/kDm5z3VrCpb90rq1Jq+zy1nQMn11ebXUYPOocw5UQfZaPFCV89K9rI+x/kkHA==",
+				"shasum": "f05329d2825c6cdba742803e925dc1df8d09fb34",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.3.3.tgz",
+				"fileCount": 56,
+				"unpackedSize": 36241,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIADOqdoDSAM5ZlV53E9LN3acFY4xbUVxSXD8DoH1E4OOAiEAyqFaUowmtdeQqSQbFOeqUVpaV/JBNZrIc2lNPZ0dmxA="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkC0vxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrvjg//YKopqVpkaEFLLrxEvEraMh2N7nnDGZtFTO8xLrj6zssjxrPz\r\nkwZOnuushtWa7F6d/ubxfWr6f06q4lg8SKQou4UUO91JATznLP/Osq3fUcvU\r\nWgqIIpNoXHabHCHIc7Jagmsr73L+00fC70PrWOQZAI2WLSAA286r8fj584Lk\r\nKmoodAJWIRgh+zhhiiECTGZ/kTR+pXfI1tfDhedQ29jCg8xId4mJv9X2Yi6T\r\nhwSJE8QFhm4l13iEi2qcrm9pxmPhnugmYOUcMeb2ai/L7S8wDYOnvDhuRvnk\r\n6wwq28TRSymduoxH8kE0EoUE2VD+H7q4TuGg6bVyx0V/t2+BMY6m0JUgTjp8\r\nSBVxYKynnOdLKP00q7o4PeejmMIskFGzAJWjldCnZ2VifOlaGB9FIoRgvzoR\r\n0nulgpMxFX5+fNNN0qIl0D+OqRbUPFpoQleilBtXfHmJPthfJopqlp2JcLz/\r\noMD3dnXowtNhpXUuDfzSI9KbtRbuzo7aX5vGi/DDHtzZkBuhlxtS6l9BOweP\r\n/5Ts0WU0eqF6djj9ai3Nlh6g3QBhTabn7gG2moGkSuev8crCRzyUzXniPosb\r\nXpz5JcXYFNExj9x1yiQRERq1O8FkICFlHaeDX2PIzMt9SuG7ONio/MbNyHvA\r\nGj19LWlrjb9ft06XaHS8uRyJdatTZoouoPE=\r\n=l0Q5\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.4": {
+			"name": "tsoa-workers",
+			"version": "1.3.4",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-dikdvs6AbOr49xw0U0ZfeHtwFJv/rmDrP2Syq7hsm9kgwtcQ57KW7+0vNQFhQkNKIBjxWXQEp75Xd4zwhT27Bw==",
+				"shasum": "e0126c6f2322534ec61a530b9478d47684b0314c",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.3.4.tgz",
+				"fileCount": 4,
+				"unpackedSize": 12580,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDtYJlDSJrAkavv6vr9KoUoim2C9k4YG4mvLov2cFk7kAIhAIh3Icjtpz1Hwef5beZjkKSNzoYKoDLqs7mAS8TMlALD"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkC1YwACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmptWRAAhczNQ5ZuPUYx0OvAdJRMj9pKBDZ4dDGvnEaGWzAbB2qgQldM\r\ndi5c4qRx47iSErtPjO7kmFyCwucB5TbHcQzDr1AKZo6YJbd/DG9kASqNL4tv\r\n7AIgXTrTdDUMGB+yrU207pTtjCHMA9HnRY9/gyFUSogmcXJIsEb0yDRNFIGk\r\nTB1rgd88LqHNWLn1Q+Mmu07UJNrB1OLh6Td1HC06HV/SLkZ6bqDq4RWVhkDB\r\nLcYMak55cN9MWY6bEelmSTRpuoh/uxn6Cu8+Ne0dXYOADKdvBZ6vWYFymPK4\r\n9ckxrpYs1+xl8uTa3mnGieWZ63WhZspLRXXwrEzLPXeV8YTJ7L3ZM4exbevf\r\njNma1TNbp9d9kXthploDQ0GBnnjAebRLCOsEyClF9ZMdigbkRX1en1BhFBR0\r\npT+Lq1oNFNdpwChgPd6hbvbtAtQaloEfFzVzFw4JYL5bbm/QmUIT8EfqhzwH\r\nrVcr/K/qH3rqSVUTLhhPrpT3IDRGopKtVoc89TFGEjo89Qs6JbI17oATolDj\r\ngx0WRkg0W0cdAaD7Wn4CDsIlb0UGCngU9a649vWfagn1VbCNT5dbSVhHXBNS\r\nFXUVGBu2uTCxjOR9REEKz5S4orvRDNPzTD3jUyksEG9kOxteAlF8xL35O6ks\r\n7/qIMJE4hUGaWN0MK8AJ/ClT8croUKGp/ws=\r\n=zOcs\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.5": {
+			"name": "tsoa-workers",
+			"version": "1.3.5",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-8aBi8okQXZfVQfx03eaq8FD1yFQGqVA7ehe13Hk/YOdDTu5f9QUOdeLR59XKVwdYWD8i0o77El4B2YIuBw/dzw==",
+				"shasum": "d8856d12750f3e79627ecc7a76277d4a0015855b",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.3.5.tgz",
+				"fileCount": 4,
+				"unpackedSize": 12611,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCID2DM+kVTO+FIKKQydSpPma9IzdtlnJsNUiXa+6uAPt+AiEA16s+/cK99FRHVXtikeo85h9dFn0suOI77Lxhd3f2J/I="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkC1faACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrUSA//ZJdU5hXA6gHCP5ZI6QryLdKkNwnuJ/RJ/Jn+/uy9AKeWiinQ\r\n4bPwZvKUUD9IKZrM9ay5dKX8m/JGVeyKeGDBtSIWeBYATm85dHqg1VQwd5fh\r\noVk7pQBzIDCe2mqy75abf8Y9WYmWpB/3v7Rf8XBoQHGmL7KICZPQYi+SvhXK\r\no7TKBw9shWRutGiGv+bf3kZfLWHimHniXQcebk7H7K5JCnZVcxe8BBryD1u0\r\nUDqpyj+GP4oqUWCq+AZejFzw0QoO09gzKOsGXkuf0SECSJtIN9xQH4ryKCRS\r\nhkFuzE9gURez5l1csZ8zp72GnWm0UKxLaalluFHOfkWadU4XoG+527YKlDd3\r\nQbSoYpEzzsKHPdFP0rNo/M1PFKwsSBW5DYysbNv+wjLEqfdGHU7zf2lGztiL\r\naH5q9FA4layQcFAukVfcZvrF0PWVIqU+Su7G2QKDYcFnfVXqLiMO/coOKY9T\r\nV5XNd2GKKNO8ar0MjZMuGL8BkhIh0n4q2oQeZ6Tmk0o/gcudmgQRkRL8rBva\r\nYUysNlGsFjPejTkOfMe98qTCFuVqV5jW85hmd8SUZTzQF8Qnxbk9KcXT6Pij\r\na17pYNri4Sk4+S4/+fiIacluukHmQGpS7oiZ5tJ44/5tSvHDlTfmX/TNSEOa\r\neUywuzbCyfoMH/aH9xPcQvQV8NlK2U83gGA=\r\n=nDDP\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.3.6": {
+			"name": "tsoa-workers",
+			"version": "1.3.6",
+			"dependencies": {},
+			"devDependencies": {
+				"ts-node": "^10.9.1",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-QxdhsZolzdmNKVMYyf4oKKJiCxWJDo7wZ440wreuIWGVkLoNhg3SBrS3q6ejCWFHSjiTHbi51RA50kg4bvuv7A==",
+				"shasum": "b98cdf316cd9327247a9f8d8b07d89e664987b8b",
+				"tarball": "https://registry.npmjs.org/tsoa-workers/-/tsoa-workers-1.3.6.tgz",
+				"fileCount": 4,
+				"unpackedSize": 12617,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFSb87Q1+RJjNG65TF+l8KE+jF+MWJCWE1xhT1OPAt6PAiEAzZvqChu9FfEECjDRyFmBVRqkN+FVJkPY5qjEYlAuIfs="
+					}
+				]
+			}
+		}
+	}
+}

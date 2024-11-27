@@ -1,0 +1,156 @@
+{
+	"name": "cloudflare-workers-graphql-datasource",
+	"dist-tags": {
+		"latest": "0.1.3"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "cloudflare-workers-graphql-datasource",
+			"version": "0.1.0",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@cloudflare/workers-types": "^4.20221111.1"
+			},
+			"devDependencies": {
+				"@apollo/gateway": "^2.2.1",
+				"@typescript-eslint/eslint-plugin": "^5.45.0",
+				"@typescript-eslint/parser": "^5.45.0",
+				"eslint": "^8.28.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"prettier": "^2.8.0",
+				"rimraf": "^3.0.2",
+				"typescript": "^4.9.3"
+			},
+			"peerDependencies": {
+				"@apollo/gateway": "^2.2.1"
+			},
+			"dist": {
+				"integrity": "sha512-ObIq1awIhyztsVgJvbJsDOjCPyDKGLWRPO0N6pjxouC4Wf65658a89IGDil1tiGQFmQ+l28r1TzshzOeD8vC7Q==",
+				"shasum": "069b901a313b9ede32d18c6f36678f19743053c5",
+				"tarball": "https://registry.npmjs.org/cloudflare-workers-graphql-datasource/-/cloudflare-workers-graphql-datasource-0.1.0.tgz",
+				"fileCount": 18,
+				"unpackedSize": 5045,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBkLtXdIcNul0D/eSbMnaEcWsN/mh/KI3okhsfWAY899AiAqRkefpbg7m7mahIdjAF1gDRJg2jLgmbUSSUCgs5EP3A=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjhRneACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrlCw/+IO42rgodcaDVXGdxUmjUf0mQ+OEJJ+RZwW0A4SBH7njUyiEz\r\noCUuFJy6CXmQ4Bj2JdRjq+yhDblIpQo2TWb2M72XrtQGDkRphOnI8PNVB2n5\r\nztvpJENtXQoZymdZDOEox8vgHtKX0cUZCrZ3S0ew0V7I8oZbS7C4qp1X0T8+\r\nUWPo3pUHPy6rEi5jt8wzMZnjxWJk74tSZ6ErMsqxbrHA2oXdC9wwjhQ1uyBT\r\nEsava4Mvy2KPc0TWAUT+ld9b2JFBzft1FD20ZSoKPD6l0cCs+5458vrwrnW6\r\nOfn03876vP2UuZa2KhWeNIsMJoW3DEWkvMQHN2saW+azM9gtcmZlITWhJKTQ\r\nf1orpRcq2lGTF2A7VR1FCou4pK5lmPBR1Ihl0xZ0kUXXbcw7aaxiWNFTtfJh\r\nGBmf0LkqmeWXehuJtP6hutwBG4C/4TfBLgEOSs5nuq/QOxL5VLsg4rZb8Wsk\r\nrgwzxKdROvzVJl1K/mpb6G+pSZdU5Mcd56MbiAAmHISiCQtizXdiALsJ39ih\r\nGzlLdv4N2k5KrgeUVZAep5raqQ47s51xCoBnmyCF2A5gANMCQqurd9RCjksw\r\naZW7V0gE6wYarpNel7jeCzr/Ck9OxEp5/dx9tBZqyCIsM+JlhTXER144NIe9\r\nbQCWBvSR0W0y6dKcDwrvWTYgYXtxSYgeQ44=\r\n=hnEK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.1": {
+			"name": "cloudflare-workers-graphql-datasource",
+			"version": "0.1.1",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@cloudflare/workers-types": "^4.20221111.1"
+			},
+			"devDependencies": {
+				"@apollo/gateway": "^2.2.1",
+				"@typescript-eslint/eslint-plugin": "^5.45.0",
+				"@typescript-eslint/parser": "^5.45.0",
+				"eslint": "^8.28.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"prettier": "^2.8.0",
+				"rimraf": "^3.0.2",
+				"typescript": "^4.9.3"
+			},
+			"peerDependencies": {
+				"@apollo/gateway": "^2.2.1"
+			},
+			"dist": {
+				"integrity": "sha512-k6/TxLC0pZwy9GJhgI2tCUEMVdqk91/N83CKi8b1VASEL+01VGvHh8buq3mvIbMV1yzXdHNfVURhFxQEz8vSdQ==",
+				"shasum": "e046dae92df94e262f258e1d3d68ed971c38151d",
+				"tarball": "https://registry.npmjs.org/cloudflare-workers-graphql-datasource/-/cloudflare-workers-graphql-datasource-0.1.1.tgz",
+				"fileCount": 18,
+				"unpackedSize": 5505,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCM4fliP57vqgWtnnac51XwkyjkSseUEwJUmedAaK/sEQIgeiJMIFU+HnuG0kZjWuSmgX64DdJzJl7kOmBWVSF7s0U="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjhW67ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpsBw/6AoYMOIxzhJpf86dIcCL+Cr+2xPmV1Q9GoymPIsgOHytaRvRt\r\n10pRPW9KzIkMsV3qp1kHiVnTDlPSl1ptG37JVWYwQFVoxnPI/fnWdOviX+F7\r\nHQCyw+p7NU/zleK7R2l4K+DtzArFMF6W+Ah3Nd+dETFBmLUY/hOK3lZjMq22\r\nH2Zjui1BNzpJa+RPe9oYYgmajWx8eM/6f0L0+L9QTFIN3+JW5z63fYewAT+V\r\nnCIE6nE642vhYNTwKdzq+pi2fwB2v9imiHnRUdMOrZuc5XvgMXGFr/URFPh+\r\nXdiy2AtHd9p6qHIHI/VBUAtZVaY1TSLTF850xtxO3nhDG86Ji6JErabv4+9o\r\nc6QhZAxRsRGGWg/rLrc7QY2c1eZAEBoevZR/fNbG/KtmuqDa+sE5ap5JOwcK\r\nu6LaBY1aSi9fA3eDaLzbnWi7hlaBvE8WkazFSJVXRnXUc8wF8SzYglm51TXB\r\ngyA7mvABtGR/pO9Ip9KIF7dPge2dkz4Eu17i3jPxOb3Eg2XSM5JTP9XCBaWR\r\n9E3zuhr+uGVsNR98hcGFoUP/a4rfjMEKCKWAE4+2bkWnrrExzF4/YCNdccYB\r\nHQwqnR/hl+KGdmcDKJ5ZtI9Om5azbc/U1SN5AJeGDgmyJV7GDihOC5olSDVO\r\nf/xfC42HoqOmy1hXyChEPvY39gEa1j5fL1M=\r\n=xlSx\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.2": {
+			"name": "cloudflare-workers-graphql-datasource",
+			"version": "0.1.2",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@cloudflare/workers-types": "^4.20221111.1"
+			},
+			"devDependencies": {
+				"@apollo/gateway": "^2.2.2",
+				"@typescript-eslint/eslint-plugin": "^5.46.1",
+				"@typescript-eslint/parser": "^5.46.1",
+				"eslint": "^8.29.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"prettier": "^2.8.1",
+				"rimraf": "^3.0.2",
+				"typescript": "^4.9.4"
+			},
+			"peerDependencies": {
+				"@apollo/gateway": "^2.2.2"
+			},
+			"dist": {
+				"integrity": "sha512-OXLjhCiaNgY9CKRBOfapJ5ErUs4p+p9VBMLEgmfx8dWNI25DVQsQyOT4wBbnD4RjrzT8zNNYHikddcXA/B09vw==",
+				"shasum": "11a6af70542b19110811bb4b4e8a8c4d33c10f5e",
+				"tarball": "https://registry.npmjs.org/cloudflare-workers-graphql-datasource/-/cloudflare-workers-graphql-datasource-0.1.2.tgz",
+				"fileCount": 18,
+				"unpackedSize": 6293,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGp0wI1aW/ylGFnoT/tJFwHXh94FXflvDdhl+IMK8RZTAiEAtnLvihvaEDNTTSgLG8F4wOz8lQ4bA2PE1/kD9r2I/n4="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjnIwAACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq4jA/9HWZ38gLsS/dMRiWvGwSdXIIB0yyWTpnHuvzZSN6I68cXEYIs\r\nJYKIO0/JNkg/w/zkrUVuNYz4jLQrHCbQU3B9dchUaaWjkf/djYj6Cwjn4yN+\r\nzmCZPaYGh/5YtOuu4yg8fonb49zeeFcM6XTDFjki5CLJ/moPOEtETt2w4K5o\r\nBrUsDq3I3rrysUXIQkI6eTJXsSOYb5KudyFy4wOD/xhmKZGRNSuqx32DC3FD\r\nDfELrS2reN59JOpCvMFzbbPtwNqhuXeBGvK+H2G65Hhbp19wuOKLXjsR5BjK\r\nY1uqNed1QBPsptXYr4zPFqpym0gkzLpcxx/Xqp9Y2SCs/Y2YKqwyL82f6+Es\r\nu9XD/WHXa9xxBNqyBPHefEsuPfHYAc34QEmsr551/g6izoZGfMOPNMySzo8k\r\nH3KW7j0T0YKpfoEiR0BI18sL8ou2E+WaRT5rD1CZgMu5TMYGPrClr2Cb8kgZ\r\nTxfbGCvDfsl/N/XDM+p96e/oj/gtamczHv8WhX8RBJveACggpYK3/0bqjfWL\r\nMyinckItSHKEEke0yjGBwB1DTZj5se41BzU9bnUAKHSWa09BDwQaY5VWDtLo\r\nldzvXL9aI0r29ERHnk3L/RA6f4Q2eLcwjmhgkPftHK5Cp/cW2/mV9o697lY8\r\n/QD3E3evUOCaj8EjX5/gmSBSgexxq0QtPNI=\r\n=6YrS\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.3": {
+			"name": "cloudflare-workers-graphql-datasource",
+			"version": "0.1.3",
+			"dependencies": {
+				"@apollo/utils.fetcher": "^2.0.0",
+				"@cloudflare/workers-types": "^4.20221111.1"
+			},
+			"devDependencies": {
+				"@apollo/gateway": "^2.2.2",
+				"@typescript-eslint/eslint-plugin": "^5.46.1",
+				"@typescript-eslint/parser": "^5.46.1",
+				"eslint": "^8.29.0",
+				"eslint-config-airbnb-typescript": "^17.0.0",
+				"eslint-config-prettier": "^8.5.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"prettier": "^2.8.1",
+				"rimraf": "^3.0.2",
+				"typescript": "^4.9.4"
+			},
+			"peerDependencies": {
+				"@apollo/gateway": "^2.2.2"
+			},
+			"dist": {
+				"integrity": "sha512-j+l833+k63kFy+H1bFSa5abDo7Nl5nQ5uRvhXc0ur+as8l7laWUO/9dvYLGe8ied0/8Sxmy0kCJYDBJyWgS2cw==",
+				"shasum": "31b673d73fc17f6056f0f51b808e197c3228b329",
+				"tarball": "https://registry.npmjs.org/cloudflare-workers-graphql-datasource/-/cloudflare-workers-graphql-datasource-0.1.3.tgz",
+				"fileCount": 18,
+				"unpackedSize": 6552,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHBHiRzWZRIdl/ph+ffvScwxC6W8cYV862DCCEh0khzsAiAyoa80JwGe3TAI0tYfTMEuiEDJRscR3u47dOYsXll/9g=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjnJIaACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrn9A/8C6t9YeHmOmSq1mymD1MIERfyYfDKxibZFUJXoF7Z3m8SndsA\r\nErBWkrVjOyX6c1kWXZ3Ywq0UBNyn5bVRqwBj570wWmdnRoBzb5qfqZOA20dR\r\nAEJvK6Oeh6qMvQTUTF0rSCr5HlemTufFMrkwJVWCvL06MilYQQoJMvVy5Pcl\r\n1k/4Bjjasho0o1aZTVDkLEeRlQNIiDpVKRsWNJw4sLRlwrR7Om67IIYltgC3\r\nywQ1hM4IX2W0Ae40Pol/cTXpcZgn632c4Er1LbKwSm+dewmTWCtmsK39cdqH\r\nSYkBDgB0HzxM6a1/xiXI1gEFjviS1LUycji7GeLjUrBJsYstYFW8wqdIrJdj\r\nKTKR/h6tg87p1RP7m7llmh6+GxOANA5oV9qihztxE3VCnga9pI4+KjtLPyak\r\n4pziLL/GFCDE1X83Liyh/iYlhQIF0CLxKe5Z1ZkGCQbCSRTsOJvCyauydEua\r\niSYaEEk9OurvA/WX9gMnJBQb0ieCTe3ODDMwmmJpmQ5hlxIN7RfEG9TzN/3S\r\nMRDL2MPhqG9kgNBrwykTv4Rt4ISh4P8FNWg2HXrDGzh0UbDw/1tvbh4tVynh\r\nbnfZfVW+2t+KOsyNimZ4VcG9RTp8XDvkyQAuPiBwfodIf56+5W80zrBbiioq\r\nsM5uO938jrvyen3OqI/JukxccTZb4CZdwNE=\r\n=uLoj\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	}
+}

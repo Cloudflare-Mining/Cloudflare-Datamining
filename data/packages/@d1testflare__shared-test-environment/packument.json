@@ -1,0 +1,44 @@
+{
+	"name": "@d1testflare/shared-test-environment",
+	"dist-tags": {
+		"latest": "2.9.0"
+	},
+	"versions": {
+		"2.9.0": {
+			"name": "@d1testflare/shared-test-environment",
+			"version": "2.9.0",
+			"dependencies": {
+				"@d1testflare/analytics-engine": "2.9.0",
+				"@d1testflare/cache": "2.9.0",
+				"@d1testflare/core": "2.9.0",
+				"@d1testflare/d1": "2.9.0",
+				"@d1testflare/durable-objects": "2.9.0",
+				"@d1testflare/html-rewriter": "2.9.0",
+				"@d1testflare/kv": "2.9.0",
+				"@d1testflare/queues": "2.9.0",
+				"@d1testflare/r2": "2.9.0",
+				"@d1testflare/shared": "2.9.0",
+				"@d1testflare/sites": "2.9.0",
+				"@d1testflare/storage-memory": "2.9.0",
+				"@d1testflare/web-sockets": "2.9.0"
+			},
+			"dist": {
+				"integrity": "sha512-mvUWSxDoyOHvXWSMG/yS8RpFrEDWt6DeeJRvh7KQ47ISMix6gmc8Mm7ZjAa8PsaoJ1W3uwWZfEIb/mqLyUlrqg==",
+				"shasum": "e2cbd4769f8b8ba415f0da11666f2f81b398c6d1",
+				"tarball": "https://registry.npmjs.org/@d1testflare/shared-test-environment/-/shared-test-environment-2.9.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15574,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDUU45qSb6zyWC+byFY7WrtTE49FZKKhlfoKqlb8SKUagIgVN9cx1o7c6eUEh0vQqsE1MnTh+7K4a7uIjq9mhUzsRM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjPIreACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqU3BAAgTkaZzG1KVyzljMmN6nBxkf8BBuKTuZeeNIYYJ7S2VaFz75Y\r\nb1r64wFJTHbt8bix+tZWph3Ob32AM8BaNTfIBCixZTibeD0T0TNbhQwozlQd\r\nXI+iwsbbt4ARTbgWEuxXBkTuhjTFFP8wxWMUsoacMTG+vKTotdgXl2m/Irpb\r\nrxfNCjw2RKKHHw+xOq8nIhVCum5Kfj3mMj6BdHRq0XceZAvVq8r7o7m4007z\r\n0XPcPwUOd5zIgwRkR/DGfefftWXiUBbRzxG+V448V10618lNpxJzFtygNh7J\r\nHDZ4UlXWCV1RVvfG6mPkKRWlGUazSUYwHwthqbI/AZ9K4dM8AuzhVQERKs3S\r\nrii/XJwpi1mJbuiSDVr5DpDyIBAKu0z7kMUu5GwmrETMHXpnV8TGFZ3ROfI/\r\n+LKguyPXtZqlronCcS2VkrRhrQmJsCe70kYSOvKJ4iZ28y2bMa3dy9g7TvZx\r\n1rVEWeCm8dTdYls7IfvbMWI3J6mb7+/bLH4RW18UwzZGWPfk+UKmvj0+Wbmo\r\nI8ThBPsQBPrJvsu0dXgATIc3l3A4aBGMAwuiXS/h3y77JbYUPZPs2PvZP5SQ\r\nJjNX17QgeChXvnhFwocEKeFHzz4SyX6XaXozlhtIT3y4VYgY2YXJaCzYuNeb\r\n7fYiyE+TqdKZtFCukz607ZUp6P+V/MOsRXc=\r\n=UC5s\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		}
+	}
+}

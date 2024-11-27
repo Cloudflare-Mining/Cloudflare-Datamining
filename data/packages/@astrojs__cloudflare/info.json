@@ -1,0 +1,150 @@
+{
+	"name": "@astrojs/cloudflare",
+	"description": "Deploy your site to Cloudflare Workers/Pages",
+	"version": "11.2.0",
+	"date": "2024-10-27T07:41:14.058Z",
+	"links": {
+		"homepage": "https://docs.astro.build/en/guides/integrations-guide/cloudflare/",
+		"repository": "git+https://github.com/withastro/adapters.git",
+		"bugs": "https://github.com/withastro/adapters/issues",
+		"npm": "https://www.npmjs.com/package/@astrojs/cloudflare"
+	},
+	"tags": {
+		"next--rc": {
+			"version": "0.0.0-rc-20220726043527",
+			"date": "2022-07-26T04:36:53.248Z"
+		},
+		"next--imgcache": {
+			"version": "0.0.0-imgcache-20220929145446",
+			"date": "2022-09-29T14:56:21.295Z"
+		},
+		"next--node-standalone": {
+			"version": "0.0.0-node-standalone-20221011210529",
+			"date": "2022-10-11T21:07:27.287Z"
+		},
+		"next--error-overlay": {
+			"version": "0.0.0-error-overlay-20221203190718",
+			"date": "2022-12-03T19:08:46.488Z"
+		},
+		"next--join-base": {
+			"version": "0.0.0-join-base-20221208170900",
+			"date": "2022-12-08T17:10:29.109Z"
+		},
+		"next--content-schemas": {
+			"version": "0.0.0-content-schemas-20221209180144",
+			"date": "2022-12-09T18:03:24.212Z"
+		},
+		"next--content-collections": {
+			"version": "0.0.0-content-collections-20221215161753",
+			"date": "2022-12-15T16:19:42.734Z"
+		},
+		"next--prerender": {
+			"version": "0.0.0-prerender-20221215222121",
+			"date": "2022-12-15T22:22:57.000Z"
+		},
+		"next--fixwin": {
+			"version": "0.0.0-fixwin-20221216184820",
+			"date": "2022-12-16T18:49:52.048Z"
+		},
+		"next--mdx-links": {
+			"version": "0.0.0-mdx-links-20230206172907",
+			"date": "2023-02-06T17:30:43.890Z"
+		},
+		"next--cloudcannon-fix": {
+			"version": "0.0.0-cloudcannon-fix-20230306211609",
+			"date": "2023-03-06T21:18:03.999Z"
+		},
+		"next--experimental-assets": {
+			"version": "0.0.0-experimental-assets-20230307131344",
+			"date": "2023-03-07T13:15:40.631Z"
+		},
+		"next--vercel-json": {
+			"version": "0.0.0-vercel-json-20230313201834",
+			"date": "2023-03-13T20:20:19.392Z"
+		},
+		"next--head-prop": {
+			"version": "0.0.0-head-prop-20230323183456",
+			"date": "2023-03-23T18:37:11.229Z"
+		},
+		"next--vercel-image": {
+			"version": "0.0.0-vercel-image-20230428112211",
+			"date": "2023-04-28T11:24:15.529Z"
+		},
+		"next--outlet": {
+			"version": "0.0.0-outlet-20230516145630",
+			"date": "2023-05-16T14:58:40.753Z"
+		},
+		"next--vercel-edge-middleware": {
+			"version": "0.0.0-vercel-edge-middleware-20230630125718",
+			"date": "2023-06-30T12:58:59.596Z"
+		},
+		"rc": {
+			"version": "7.0.0-rc.3",
+			"date": "2023-08-22T14:21:16.726Z"
+		},
+		"next--sanitize-filenames": {
+			"version": "0.0.0-sanitize-filenames-20230901203435",
+			"date": "2023-09-01T20:36:10.907Z"
+		},
+		"next--vercel-speed-insights": {
+			"version": "0.0.0-vercel-speed-insights-20230912155045",
+			"date": "2023-09-12T15:52:24.408Z"
+		},
+		"experimental--mf-local-cache-patch": {
+			"version": "0.0.0-mf-local-cache-patch-20231028190438",
+			"date": "2023-10-28T19:04:50.711Z"
+		},
+		"experimental--cf-assets": {
+			"version": "0.0.0-cf-assets-20231106123932",
+			"date": "2023-11-06T12:39:43.467Z"
+		},
+		"experimental--404-fix": {
+			"version": "0.0.0-404-fix-20231115224256",
+			"date": "2023-11-15T22:43:06.493Z"
+		},
+		"experimental--dev-toolbar-app": {
+			"version": "0.0.0-dev-toolbar-app-20231214141808",
+			"date": "2023-12-14T14:18:21.649Z"
+		},
+		"experimental--cf-assets-compile": {
+			"version": "0.0.0-cf-assets-compile-20240109151832",
+			"date": "2024-01-09T15:18:43.330Z"
+		},
+		"experimental--cf-10": {
+			"version": "0.0.0-cf-10-20240327073709",
+			"date": "2024-03-27T07:37:22.124Z"
+		},
+		"experimental--cf-10-solid": {
+			"version": "0.0.0-cf-10-solid-20240329084913",
+			"date": "2024-03-29T08:49:23.984Z"
+		},
+		"experimental--cf-10-routes-fix": {
+			"version": "0.0.0-cf-10-routes-fix-20240331183009",
+			"date": "2024-03-31T18:30:19.355Z"
+		},
+		"experimental--cf-no-prerender-chunks": {
+			"version": "0.0.0-cf-no-prerender-chunks-20240412140922",
+			"date": "2024-04-12T14:09:33.244Z"
+		},
+		"experimental--ast": {
+			"version": "0.0.0-ast-20240419160649",
+			"date": "2024-04-19T16:07:00.888Z"
+		},
+		"experimental--cf-deps-chunk": {
+			"version": "0.0.0-cf-deps-chunk-20240508124857",
+			"date": "2024-05-08T12:49:08.876Z"
+		},
+		"experimental--astro-env-spec": {
+			"version": "0.0.0-astro-env-spec-20240617150332",
+			"date": "2024-06-17T15:03:44.839Z"
+		},
+		"beta": {
+			"version": "12.0.0-beta.1",
+			"date": "2024-10-31T09:07:50.792Z"
+		},
+		"latest": {
+			"version": "11.2.0",
+			"date": "2024-10-27T07:41:14.058Z"
+		}
+	}
+}

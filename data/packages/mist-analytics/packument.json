@@ -1,0 +1,304 @@
+{
+	"name": "mist-analytics",
+	"dist-tags": {
+		"latest": "1.0.4"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "mist-analytics",
+			"version": "1.0.0",
+			"dependencies": {
+				"@opentelemetry/api": "^1.0.4",
+				"@opentelemetry/auto-instrumentations-node": "^0.28.0",
+				"@opentelemetry/exporter-jaeger": "^1.1.1",
+				"@opentelemetry/exporter-trace-otlp-http": "^0.27.0",
+				"@opentelemetry/sdk-node": "^0.27.0",
+				"@opentelemetry/tracing": "^0.24.0",
+				"@snowpack/plugin-dotenv": "^2.2.0",
+				"axios": "^0.26.0",
+				"dd-trace": "^2.4.0",
+				"dotenv": "^16.0.0",
+				"miniflare": "^2.3.0",
+				"sirv-cli": "^2.0.0",
+				"websocket": "^1.0.34",
+				"ws": "^8.5.0"
+			},
+			"devDependencies": {
+				"@cloudflare/wrangler": "^1.19.8",
+				"@rollup/plugin-commonjs": "^17.0.0",
+				"@rollup/plugin-node-resolve": "^11.0.0",
+				"@rollup/plugin-replace": "^4.0.0",
+				"axios": "^0.26.0",
+				"chart.js": "^3.7.1",
+				"cors": "^2.8.5",
+				"curl": "^0.1.4",
+				"express": "^4.17.3",
+				"graphql": "^16.3.0",
+				"jest": "^27.5.1",
+				"pg": "^8.7.3",
+				"postgres": "^1.0.2",
+				"rollup": "^2.3.4",
+				"rollup-plugin-css-only": "^3.1.0",
+				"rollup-plugin-livereload": "^2.0.0",
+				"rollup-plugin-polyfill-node": "^0.8.0",
+				"rollup-plugin-svelte": "^7.0.0",
+				"rollup-plugin-terser": "^7.0.0",
+				"sass": "^1.49.9",
+				"svelte": "^3.0.0",
+				"svelte-preprocess": "^4.10.4"
+			},
+			"dist": {
+				"integrity": "sha512-f5yoXGcFAX8FgQek6iM5ZI1xPEy5CsvZtT2g/WCP4PSlbJ7dE6u62kCWQXMKnjrYB7sPDyH0+WvboTBmyC4itQ==",
+				"shasum": "79c3d0558480dbf9768d3b878bf9811255c54b36",
+				"tarball": "https://registry.npmjs.org/mist-analytics/-/mist-analytics-1.0.0.tgz",
+				"fileCount": 29,
+				"unpackedSize": 49145,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiQ2XUACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrz/w//aiMwl3ck/EbByG78+iD3u1/M/jra52FI6yS1j3fHbVGRCjOO\r\nyis4T1Gk1oXljwxLY9kOua+fVs8BncR6wIJGF8o87HPLUSRDr8jbjFKUbLf8\r\nf9j80Fqq7ocY3i7DtgUNwcgnOMl07FQavbc2N+uLPs88EfY8OaZQ9TiR4cGQ\r\neNMFlu2F3guculux7hMYRBJd89vf2hfzLklPekRpz5N/OYhAfuYwwrrI3YzR\r\ncoaCDuUHGgNo78tEMvHHNbI6s9zl3qZNNVSDx5p9V31Q5DmpBBC36DSHxu2S\r\nuA3OX40xFQfmdXmvJ38/Q+Mo1AqcpsHNltklGqQ+VdQKvEnaOGhx1ynjwKNP\r\n/pL8iZOtSwRpmyjcElTFAIn2jjh7TuD8e0IOExm4f+5ZUV/9AFCJqic+uJfX\r\nB0Rjwjr3x58WOa9UiPzD2VUUSTZQ8NCBTyy8LQcFhBjm+dLgibR+UC5Do+/w\r\nT6HMBaFyyxMRU1WTdpq+zoQ07Ia4xpFpVN2YihKSIAY+MlljDoyryZLb/vU4\r\nA/e3gR+bz2FYxLjar81WWHf2C0fPvQrZmV1CmvKMzhxanX2+TPCXo7xRSI9l\r\ni49TG1Bdwgn2tt4IlMAgJv3wRdh+wBGvYZXe62l62AaJeELnREXc1+2nPdhA\r\nTvT95AnegRWGUkRYcZSVN5U63M47tQYLYms=\r\n=2S2b\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDVYpiWcAj7jnaoqlRjcbLuV2oBd9g1vm2Plv8XFa5znQIhALVIJ71V2iph285J5a3HlAPnmy1FZwLVsBRdxwDsVUXz"
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "mist-analytics",
+			"version": "1.0.1",
+			"dependencies": {
+				"@opentelemetry/api": "^1.0.4",
+				"@opentelemetry/auto-instrumentations-node": "^0.28.0",
+				"@opentelemetry/exporter-jaeger": "^1.1.1",
+				"@opentelemetry/exporter-trace-otlp-http": "^0.27.0",
+				"@opentelemetry/sdk-node": "^0.27.0",
+				"@opentelemetry/tracing": "^0.24.0",
+				"@snowpack/plugin-dotenv": "^2.2.0",
+				"axios": "^0.26.0",
+				"dd-trace": "^2.4.0",
+				"dotenv": "^16.0.0",
+				"miniflare": "^2.3.0",
+				"sirv-cli": "^2.0.0",
+				"websocket": "^1.0.34",
+				"ws": "^8.5.0"
+			},
+			"devDependencies": {
+				"@cloudflare/wrangler": "^1.19.8",
+				"@rollup/plugin-commonjs": "^17.0.0",
+				"@rollup/plugin-node-resolve": "^11.0.0",
+				"@rollup/plugin-replace": "^4.0.0",
+				"axios": "^0.26.0",
+				"chart.js": "^3.7.1",
+				"cors": "^2.8.5",
+				"curl": "^0.1.4",
+				"express": "^4.17.3",
+				"graphql": "^16.3.0",
+				"jest": "^27.5.1",
+				"pg": "^8.7.3",
+				"postgres": "^1.0.2",
+				"rollup": "^2.3.4",
+				"rollup-plugin-css-only": "^3.1.0",
+				"rollup-plugin-livereload": "^2.0.0",
+				"rollup-plugin-polyfill-node": "^0.8.0",
+				"rollup-plugin-svelte": "^7.0.0",
+				"rollup-plugin-terser": "^7.0.0",
+				"sass": "^1.49.9",
+				"svelte": "^3.0.0",
+				"svelte-preprocess": "^4.10.4"
+			},
+			"dist": {
+				"integrity": "sha512-eMTKh0N2WC1pb8BH3tMYGSonFHHfMxAPwhJ401uSnluXp7ZOsEHLlBBnMuWaW7inL0e4QyqeBkvjDVdf9r5S0Q==",
+				"shasum": "03e0b925fac09bf2e1dae660d811eefb1194abdd",
+				"tarball": "https://registry.npmjs.org/mist-analytics/-/mist-analytics-1.0.1.tgz",
+				"fileCount": 29,
+				"unpackedSize": 49059,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiQ2cjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrAfQ/+ICcvebs64uuvSPunEwIBrEjjNNxXhZm9otmlm7cBoP/DZH3a\r\nQuWIQBj2v596ZGtrffhevfcn3DUl4wx+piGButkUcnxUfzhqKqKWdGo3CaU3\r\nv4enHrGuqPI6T99oB0tObUGN2devtOGnUOzTbsM+uxn0SvGp2ps99kahyHId\r\nB+FZtKKM+F0sjvdazXh4KhkhPgouDSgvQUfMSf7efNXGIppDGtHQBOjW2Nvv\r\nH8fOSaF/mJ7KDhEfoF7x028AHLdEp22r5Diow6xtCfCh3nMyenOxkcTRw/KF\r\nDG9TMM45shL3Sv7jAnGfD9fm5VUPBkEXpZ/MrUvNZnut6sYU6ustBgFY8UHa\r\n+1mEL7oYz1ywu6czLboXIEdCNXumuWMkK/PHTJPoce8YnVr1BR8CdRjcK6K6\r\n9avZtdYukCIEiOVkmdsRt8l0R5Vf/7V4UhPrF3lCkXkjV+Jsx0tpFrSAIIKn\r\n5J89COCoqsu0AAwojZT8E4WmaHoP/Tk0c63vjh2oAUw6ORe55gneJ8mrw/9s\r\n079xwL0SUnJ9NyQc3GFfBrnJEE0mAlJVo9gSOZjYV8YIsmSUiHohjo+qKJAh\r\nycHY/eI0xrz4G0jjNDVscoPX8LewQrpSbVOdKxl+7oKMoapV/kaJb0Xf+yzS\r\n9IRu2nplwNUpGekbWUcRc8zOr4GKpDoLAAg=\r\n=T4Rr\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDQe74wcHQNvLE3i9nHeb82SmX238Botj26Ay4TQx3psQIhALXu08wXz9/Ac0eZYalAQ0oEt5YsPmL3dgmb1Y7hC7F4"
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "mist-analytics",
+			"version": "1.0.2",
+			"dependencies": {
+				"@opentelemetry/api": "^1.0.4",
+				"@opentelemetry/auto-instrumentations-node": "^0.28.0",
+				"@opentelemetry/exporter-jaeger": "^1.1.1",
+				"@opentelemetry/exporter-trace-otlp-http": "^0.27.0",
+				"@opentelemetry/sdk-node": "^0.27.0",
+				"@opentelemetry/tracing": "^0.24.0",
+				"@snowpack/plugin-dotenv": "^2.2.0",
+				"axios": "^0.26.0",
+				"dd-trace": "^2.4.0",
+				"dotenv": "^16.0.0",
+				"miniflare": "^2.3.0",
+				"sirv-cli": "^2.0.0",
+				"websocket": "^1.0.34",
+				"ws": "^8.5.0"
+			},
+			"devDependencies": {
+				"@cloudflare/wrangler": "^1.19.8",
+				"@rollup/plugin-commonjs": "^17.0.0",
+				"@rollup/plugin-node-resolve": "^11.0.0",
+				"@rollup/plugin-replace": "^4.0.0",
+				"axios": "^0.26.0",
+				"chart.js": "^3.7.1",
+				"cors": "^2.8.5",
+				"curl": "^0.1.4",
+				"express": "^4.17.3",
+				"graphql": "^16.3.0",
+				"pg": "^8.7.3",
+				"postgres": "^1.0.2",
+				"rollup": "^2.3.4",
+				"rollup-plugin-css-only": "^3.1.0",
+				"rollup-plugin-livereload": "^2.0.0",
+				"rollup-plugin-polyfill-node": "^0.8.0",
+				"rollup-plugin-svelte": "^7.0.0",
+				"rollup-plugin-terser": "^7.0.0",
+				"sass": "^1.49.9",
+				"svelte": "^3.0.0",
+				"svelte-preprocess": "^4.10.4"
+			},
+			"dist": {
+				"integrity": "sha512-7R2UkEK9k9rGlxM/Iu8IudbMX3TOVOw+b6UzUvwHPm7GelCunr9yLauaqp/9OsCpQHgwQzETPp+mg/tZL3KbeQ==",
+				"shasum": "6fe4f682645eca057c181174097d58c162dc27ee",
+				"tarball": "https://registry.npmjs.org/mist-analytics/-/mist-analytics-1.0.2.tgz",
+				"fileCount": 29,
+				"unpackedSize": 54225,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDBqHyl2ohTw532eyzXwXnty901+EeHC46Itwfo+X438wIgJKiZsc1KltSAEBFvoTBRZ3L9zXIF3L//OGQf2vIBy0I="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiROl9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpGuA//XZxO6KwIHQ2C1eaPeB1XtAw9dOy1h2d9eApzBaHrODJPZa5L\r\nQ3LEZrB/crgfyJEFgecrbZDQ9/gAxPi5LtisnjEIr3lctbzqHSlfq/iq2eE+\r\nFyi0TTGIr0q0E4fKbVYn4O0h0AN/T9Xoj11ReNk5SfJdOiRYATOzlziqoj33\r\nVzQGO1uo5d0ShoT3GA7mOUehlkYjkjaskVsaLVAkLFE7dJQ3hQtwF2BtpRI9\r\nwsRcgSa7TDzvj5J6X9sAQc2SihMsl/3HMuUDlXMa7wRZ79g0AUEeH9vvcBCg\r\nopFvUaeQgwBUjUCHTN28i91Kb8cIubWaf2QdsMspy+V314LbgIG9bNkqvTfT\r\n08mx87oOb6o1vn5dofwhY24Wx3MdYInJf3wjEn6FVjypD77J9oMh9X0dni1O\r\nWgrJJtzO++dC3AL/N7iAE2nT0sPec8Z7s7pvAdbtdOdxf9t9eFIzgNXtknA+\r\nykyTkolBXK5bH4ScQ0PC9gq0Va+kKmiBGsq41sOGQ6Vf+i6d0GMgvp4XyN2d\r\nMfrps/XXkFltLUW/dZn66raLtK3HFr0k5/D//3HopbiCAGs4AkqWHQy3ly0/\r\n+/F3CEN1fqtZ4fMC5ZWbfv2WLqMjzeJLimOOzzLL/L/wExK4604DU/HXXGCo\r\n5lSpWLBaV3Cv+NFIEtbeLF0n5L04N3t+q8o=\r\n=n9Rs\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.3": {
+			"name": "mist-analytics",
+			"version": "1.0.3",
+			"dependencies": {
+				"@opentelemetry/api": "^1.0.4",
+				"@opentelemetry/auto-instrumentations-node": "^0.28.0",
+				"@opentelemetry/exporter-jaeger": "^1.1.1",
+				"@opentelemetry/exporter-trace-otlp-http": "^0.27.0",
+				"@opentelemetry/sdk-node": "^0.27.0",
+				"@opentelemetry/tracing": "^0.24.0",
+				"@snowpack/plugin-dotenv": "^2.2.0",
+				"axios": "^0.26.0",
+				"dd-trace": "^2.4.0",
+				"dotenv": "^16.0.0",
+				"miniflare": "^2.3.0",
+				"sirv-cli": "^2.0.0",
+				"websocket": "^1.0.34",
+				"ws": "^8.5.0"
+			},
+			"devDependencies": {
+				"@cloudflare/wrangler": "^1.19.8",
+				"@rollup/plugin-commonjs": "^17.0.0",
+				"@rollup/plugin-node-resolve": "^11.0.0",
+				"@rollup/plugin-replace": "^4.0.0",
+				"axios": "^0.26.0",
+				"chart.js": "^3.7.1",
+				"cors": "^2.8.5",
+				"curl": "^0.1.4",
+				"express": "^4.17.3",
+				"graphql": "^16.3.0",
+				"pg": "^8.7.3",
+				"postgres": "^1.0.2",
+				"rollup": "^2.3.4",
+				"rollup-plugin-css-only": "^3.1.0",
+				"rollup-plugin-livereload": "^2.0.0",
+				"rollup-plugin-polyfill-node": "^0.8.0",
+				"rollup-plugin-svelte": "^7.0.0",
+				"rollup-plugin-terser": "^7.0.0",
+				"sass": "^1.49.9",
+				"svelte": "^3.0.0",
+				"svelte-preprocess": "^4.10.4"
+			},
+			"dist": {
+				"integrity": "sha512-uZbPAVHZPjNtG6bgKpI3LcseMHJojGQvn1zij+V2Hy3YlIBhAmTHVl6dG7j5NJuIAxIR+Lu55tiYYLoLMAHgsQ==",
+				"shasum": "c434fc569350f8d185b6c0c2ba93350c9b5152a1",
+				"tarball": "https://registry.npmjs.org/mist-analytics/-/mist-analytics-1.0.3.tgz",
+				"fileCount": 35,
+				"unpackedSize": 68715,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIF71mo8mWjsYqiA0qmIGSp6YWY3EOyCqfyBQQJCKBAdVAiA76C3lH66uu0aibYxvL3oJN2yPtq2lo1esiB2o5RapBA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiRPoUACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp7DA/+Kd5sZluuvIGK66GkW4P6qOMGPnCN122+hYE3J0MSj24D65sO\r\n5yom6YSm9n4e8A6VhPoH4wA+sVR7B3SXaBTENlUecFYLeN7ZzBEGerFXa1f2\r\nURvZPU1PvIgPqjElXzCrN5j+2DSKTpjDdTVVhnXyAv5YJ7tbT3hqQWsyXacD\r\nl4346HLYaBSrR3+Ppf/wC1U2DUKqR+5HHhqDh1Axs5Yh8yOgvt4SVJMUQWZg\r\nCe0syA9CoqFpraeUvMIaOnnyCDM15xnulOLyKNbUuKOorq7l/imGxTCuUJIh\r\nIyGeX12Cd+wGFw1hUqaT4DiQr3XoQj12ElqtlxBcNCmwG1Czh836ojLj5nVo\r\nsarK51gZGa7JxMVDNGEtD7l9Y6s6npjXNvpAOj+chZZl0f4BDIsKuUhyqQbJ\r\nr4F2c0E+PaJW6VTycD2oOK3cjRhjUfsGSHMuso/M1q/4I1LXv+vEadm8md4w\r\nUkY6OWkMbM87+5qICv9dTitRbHtFilUrs3Ubdav7wDVhUEVSkaekcwDbBJrB\r\nl+KqH7RoqyzH08VvxzyVIpCVAUx6K3bWaQFxoeVlFBILT+mRGF1MmKGUc9+9\r\nS7w0SZABDEiPJzC696cMHvIfur4IpBmfDIKB7ov9/bD9lEPoncMXPTg8IR/+\r\nYChuYmhzHShQ/w7QptUFrTaVumfF9BtDOuo=\r\n=LmB+\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.4": {
+			"name": "mist-analytics",
+			"version": "1.0.4",
+			"dependencies": {
+				"@babel/core": "^7.17.8",
+				"@babel/preset-env": "^7.16.11",
+				"@opentelemetry/api": "^1.0.4",
+				"@opentelemetry/auto-instrumentations-node": "^0.28.0",
+				"@opentelemetry/exporter-jaeger": "^1.1.1",
+				"@opentelemetry/exporter-trace-otlp-http": "^0.27.0",
+				"@opentelemetry/sdk-node": "^0.27.0",
+				"@opentelemetry/tracing": "^0.24.0",
+				"@snowpack/plugin-dotenv": "^2.2.0",
+				"axios": "^0.26.0",
+				"dd-trace": "^2.4.0",
+				"dotenv": "^16.0.0",
+				"eslint": "^8.12.0",
+				"jest": "^27.5.1",
+				"miniflare": "^2.3.0",
+				"sinon": "^13.0.1",
+				"sirv-cli": "^2.0.0",
+				"supertest": "^6.2.2",
+				"websocket": "^1.0.34",
+				"ws": "^8.5.0"
+			},
+			"devDependencies": {
+				"@cloudflare/wrangler": "^1.19.8",
+				"@rollup/plugin-commonjs": "^17.0.0",
+				"@rollup/plugin-node-resolve": "^11.0.0",
+				"@rollup/plugin-replace": "^4.0.0",
+				"@testing-library/jest-dom": "^5.16.3",
+				"axios": "^0.26.0",
+				"babel-jest": "^27.5.1",
+				"chart.js": "^3.7.1",
+				"cors": "^2.8.5",
+				"curl": "^0.1.4",
+				"express": "^4.17.3",
+				"graphql": "^16.3.0",
+				"pg": "^8.7.3",
+				"postgres": "^1.0.2",
+				"rollup": "^2.3.4",
+				"rollup-plugin-css-only": "^3.1.0",
+				"rollup-plugin-livereload": "^2.0.0",
+				"rollup-plugin-polyfill-node": "^0.8.0",
+				"rollup-plugin-svelte": "^7.0.0",
+				"rollup-plugin-terser": "^7.0.0",
+				"sass": "^1.49.9",
+				"svelte": "^3.0.0",
+				"svelte-jester": "^2.3.2",
+				"svelte-preprocess": "^4.10.4"
+			},
+			"dist": {
+				"integrity": "sha512-Zmz5/l07AjonWfMVkWoR6HbvJYfmOQ3IvFLuMJhXvSRdQ9etUnRIbdGQVuqqmpkefk4A7kG8Aj0bY/Xm4wbtJg==",
+				"shasum": "2748a763a5500b9c8dbd2227eaadc000d4a4e2ea",
+				"tarball": "https://registry.npmjs.org/mist-analytics/-/mist-analytics-1.0.4.tgz",
+				"fileCount": 38,
+				"unpackedSize": 73194,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDJhmSySzVd0Cl8tg+VTFB3XylRps4QmSlHWg22DehIMQIgL/fEJpXQOQpO9COVHGHV5JAb6rccZcejNjMVHMlobeU="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiRhRWACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp57w/+IlYm6oC6hPWPpyKkHxEA89ZadzffxCEYoQhLsou52rjVdYvv\r\nDOgHvc63HZ/jcOnEZ/1Oy486HsN6v+/z2lFO11twcHbyg+b0zah8I/bWqs4s\r\nYFg9t7Cm9bQnsogJOaf5LNRabCp5WTZ7zoaMujn+9RAJk9lxVIAZ8eYFNGAY\r\nPm3QEoSBSSOM/A1MQwsMwc3DFotPp6/q6q/52mt8NlcoSzJG7uEYek/5e08W\r\ngphxLCiQL/Kn1A+aVgmkm3XFdy7Ij7INjGgzfQ/gZSjQJkB+mjFvoAtuuYUX\r\n0MCZDE6sC/AIJGGsUKhmr8hI8dg/tAz+X2UdF871EQ+5V+eO0AIdpi0h+grY\r\nlTUbXyv42SPiBhr2MFUks+db1a/rGQHr9tnxL7HqH+Gobfu42q3rb+bCTo25\r\n/CjUnRCm6MW4Wr/mMM0YnMVCVmq0LVGTn0EWVyFGJigNsOdza7KwdsBGa7tD\r\n0vPB9oXJW50ZopSHEhquDKpNI7Ov7STMHLk5adhV4nMA8SLZiKUZoVptYIWV\r\nQ3Apxcj7f5VHV/v/ZSKM8KigOjhdOa4/5GfRiQZPNaVuDwAU4deqCdq3ftVv\r\nDbtpQ1REYsGnlL6ThXCouBryMp9X7/L9CQL7VscHOz1Zlz2NCpeuqLTnj1b+\r\ntvbaquMlOiPVbHna0JJ8E/801ou6ifvWVks=\r\n=Vef3\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	}
+}

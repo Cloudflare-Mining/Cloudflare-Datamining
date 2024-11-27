@@ -1,0 +1,380 @@
+{
+	"name": "@torchauth/vite-plugin-wrangler-spa",
+	"dist-tags": {
+		"latest": "2.0.0"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.0",
+			"dependencies": {
+				"vite": "^5.2.10",
+				"wrangler": "3.49.0",
+				"@swc/core": "^1.4.17",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.16.4",
+				"undici": "^6.14.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"dist": {
+				"shasum": "d6d647da2f7043a6b1c1bd7086f4b76186483e1c",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-kVrBkIn1nS5BTBHGOv2K6L4YFiW7fw2BFwcaCuZuML/Wx9XCIuoAtaiyYeOoBDKTfBaHYoOn4Oo/g1A4rz+IQg==",
+				"signatures": [
+					{
+						"sig": "MEUCIEYdlk8GSrtOLoJob9FXIr2MyG/t0CDRGb2aUGVuw7ZQAiEAi8MeZS9IuVqWRpeMHYEPiazx4zd1eLfVd9oSrZW8LLg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 36824
+			}
+		},
+		"1.0.1": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.1",
+			"dependencies": {
+				"vite": "^5.2.10",
+				"wrangler": "3.49.0",
+				"@swc/core": "^1.4.17",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.16.4",
+				"undici": "^6.14.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"dist": {
+				"shasum": "4d56f4a4afa57d99ffb1cfadf8fb00664349935e",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.1.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-kViMLD4Wl/NG/d8Q49nqnZ/vWBtFaAyTnOHRXyjibu7SSpWYu3CdrwsZeHxYoOWRKPpnCcQhAgUIZvGS+9P4JQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCByk6pGxkvHVbVXATVhQa0krL1NEW2+iHTE/ZcXQY/FgIhAI9YG+Z2lwIDWYOYSC4U7z4aoFbLmy+VigG798CNeUfa",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 38368
+			}
+		},
+		"1.0.2": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.2",
+			"dependencies": {
+				"vite": "^5.2.10",
+				"wrangler": "3.49.0",
+				"@swc/core": "^1.4.17",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.16.4",
+				"undici": "^6.14.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"dist": {
+				"shasum": "e98a2d2bd9c035390a637eeb2ea5556266625519",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.2.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-2SPSFMYOZqJrk98H2n4bc1RvmkMAOdFHlmJL0iD1AHO5lR4l5jboY2t3uk9DpglX+YIqrvzJIa1/XULHAzDqHA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGbuIeFjANL965Uw9W1NgWs8bVlBNxW/8J7Eu/0s+hNVAiEAp1ZqfIHL89GiL/W2F2JLmKpUYJ0a3ciS0i67SIkaXz4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 37898
+			}
+		},
+		"1.0.3": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.3",
+			"dependencies": {
+				"vite": "^5.2.10",
+				"wrangler": "^3.52.0",
+				"@swc/core": "^1.4.17",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.16.4",
+				"undici": "^6.14.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"dist": {
+				"shasum": "78f692cbf25eccb63f25650305959ec3b1f31ff2",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.3.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-DHCueu1oBmwtqR696gDDM50woT8f/oJxwEmysnE125/wAJs/ia4Ij7H4peCcnHbw4JkurUXs82FHWQvGUgXVWQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBpwvCbI62a6c4u8NhZ5hX9ATr/nUaPhvIuvRw8pQJHtAiEA/i7d1u8gqWg2jVWNcRXjTDnWEaC/oO6slCm1mzwY7wc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 39603
+			}
+		},
+		"1.0.4": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.4",
+			"dependencies": {
+				"@swc/core": "^1.4.17",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.17.1",
+				"undici": "^6.15.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.0.0",
+				"wrangler": "^3.49.0"
+			},
+			"dist": {
+				"shasum": "0b0cd3f6a5f6486854cada9796ca7805c4ba5ebc",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.4.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-a7cY3KbCdZgzdfq55EZQUXZj/7yrQ5XBF9+R66ud6LYFLKZWOIC7EPeetQWpIaTe4uk+US4nvI7SXN4Au7dV4g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCwLwL+U334MHW/UQl314DYjaKdTcc9MyI0R18KQFBcfgIhANzQ9xjWmU6ow/nT4VUdRdbS7tmDPz7fQpUJVYclpRZQ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 39630
+			}
+		},
+		"1.0.5": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.5",
+			"dependencies": {
+				"@swc/core": "^1.4.17",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.17.1",
+				"undici": "^6.15.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.0.0",
+				"wrangler": "^3.49.0"
+			},
+			"dist": {
+				"shasum": "ed07ddf13145dc09d8c81e23cdd55e38f2166165",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.5.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-tLtSN+6LsHcQU6xfnKh/4EL0zvygifga68RM33dXJCeOZ9VH7OktNxGeX3JxqH8Pc5+YzBcEi1kEowzxY5Smvg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDfUyhHhes/zXV5R3w9hv7Xgunaj/LxNIX6dKc1lL18vQIhAOOvAUobUUN2ocJ0MP46SXbmAlUGlgdZXt9JxQifEmQv",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 42970
+			}
+		},
+		"1.0.6": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.6",
+			"dependencies": {
+				"@swc/core": "^1.6.1",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.17.1",
+				"undici": "^6.15.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.0.0",
+				"wrangler": "^3.49.0"
+			},
+			"dist": {
+				"shasum": "9cfcdd4cae69d4d82a89d5953e8152e6bdd39de9",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.6.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-0oTDqckjsxQzgTkq/ga2gfsOrLOX1q/r1L9qVZKexLiTx2ZgG4mRaWtume0nCWHf+tF+or2v/Li2P6k4IHK3KQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCf1C99pPm30pcYy9b1AyxzyElxWi0dV9qOXwVLBhsAswIhAN/7bfzMmD5omwPllm/k6cE2ab1nAHe2FZWe1jRA6k/p",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 43880
+			}
+		},
+		"1.0.7": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.7",
+			"dependencies": {
+				"@swc/core": "^1.6.1",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.17.1",
+				"undici": "^6.15.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.0.0",
+				"wrangler": "^3.49.0"
+			},
+			"dist": {
+				"shasum": "c7b3ab3e939c57f8395c61e6860c20d3bacce095",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.7.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-u4jxn+9hDxZj2M8511Jg1hF+IR3lrQqOshE/Puywecv4odBZwg0wksDSBAMV/ijB3WeQ1LpHhANrI2v2ixwoOA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDoANUc32cAbE2CUk9I9u3TaBFt+GGv53hzfpmK86hg3gIgCzwHLoGJjAkY3FB/MyCA3Ggoj3JaPocKFn9zQyqQ208=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 43564
+			}
+		},
+		"1.0.8-alpha": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "1.0.8-alpha",
+			"dependencies": {
+				"@swc/core": "^1.6.1",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"rollup": "^4.17.1",
+				"undici": "^6.15.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"rollup-plugin-ts": "^3.4.5",
+				"eslint-config-prettier": "^9.1.0",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.0.0",
+				"wrangler": "^3.49.0"
+			},
+			"dist": {
+				"shasum": "3d3e99cd9447851254544347dbb549f726b32a6f",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-1.0.8-alpha.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-WWuUEJLg/LNRZ8wAzEOsiAd+p2/pU4Il/wD5xd45xXZ8me8/6RY8vCz7n3gvYDfYX3y2Jqm0xURVm6RkxGaWrQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFFQhncvy2Ar9m9nburcKuu0A/qnN0CdkDszf/wrUZCLAiA3XmjVg5KjC6ouBYr7TUsDUxhzLUuSV2CvnHpyBEirqg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30282
+			}
+		},
+		"2.0.0": {
+			"name": "@torchauth/vite-plugin-wrangler-spa",
+			"version": "2.0.0",
+			"dependencies": {
+				"@swc/core": "^1.6.1",
+				"set-cookie-parser": "^2.6.0"
+			},
+			"devDependencies": {
+				"@types/node": "^20.12.7",
+				"@types/set-cookie-parser": "^2.4.7",
+				"@typescript-eslint/eslint-plugin": "^7.2.0",
+				"eslint": "^8.57.0",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
+				"prettier": "^3.2.5",
+				"rollup": "^4.17.1",
+				"rollup-plugin-ts": "^3.4.5",
+				"typescript": "^5.4.5",
+				"undici": "^6.15.0"
+			},
+			"peerDependencies": {
+				"vite": "^5.0.0",
+				"wrangler": "^3.49.0"
+			},
+			"dist": {
+				"integrity": "sha512-9WmzkypCKnA3SlPzsAGyyKz0zDvcCt43I/rtpUK6//km63iqP0/D9OcE0j79+yJyTXCpr3O37oQraQUfgRhBDw==",
+				"shasum": "223bda33bc9b81aff8cd63edcc3fe296b2b42a5e",
+				"tarball": "https://registry.npmjs.org/@torchauth/vite-plugin-wrangler-spa/-/vite-plugin-wrangler-spa-2.0.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 30276,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIH+zjYcJohT0IB/Kjj7mmdqH1BVL2fFsIBri+Gg9FMxFAiA4zkqv61PDlkSfyvrFTdIKMtpRmzAS/uXACnwytYmtfA=="
+					}
+				]
+			}
+		}
+	}
+}

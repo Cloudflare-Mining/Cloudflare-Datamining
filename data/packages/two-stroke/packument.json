@@ -1,0 +1,3233 @@
+{
+	"name": "two-stroke",
+	"dist-tags": {
+		"latest": "4.1.2"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "two-stroke",
+			"version": "1.0.0",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240129.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.28.6",
+				"openapi3-ts": "^4.2.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.8.2",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.2.2",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/parser": "^7.0.1",
+				"@asteasolutions/zod-to-openapi": "^6.3.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.56.0",
+				"vitest": "^1.2.2",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"@types/node": "^20.11.17",
+				"@types/eslint": "^8.56.2"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "655a41efff538089b58a24f8b395f6a270d3ba65",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.0.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-dZYF/fuXAwYNuhNFFRXcIebIXILGLYAMmprELyCc0LrKT7zSVQLO1T8g085kC7NtWbijaJysLcnUDUHKfewnOg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC2qTPY833tnTLfgCZL7XkjTV9CtBLrqeAc7/JBeFNlsQIhANYeVSHE3UxYC/LTO4nntWmgbrwJv/ghISETUQUNmWAY",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 22279
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.1": {
+			"name": "two-stroke",
+			"version": "1.0.1",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240129.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.28.6",
+				"openapi3-ts": "^4.2.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.8.2",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.2.2",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/parser": "^7.0.1",
+				"@asteasolutions/zod-to-openapi": "^6.3.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.56.0",
+				"vitest": "^1.2.2",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"@types/node": "^20.11.17",
+				"@types/eslint": "^8.56.2"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "aa5d012c9b361387d8286488f6559efb541033f5",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.1.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-uahJ3oTdr4IVTDu9TrUQauSZxrQ7zFN4FtaQAcmbg5HVkOJjZ3NFhuXi8IOIkHvzJvDBhu9/O1W7O6cGb/l5bQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD0N2N9mUg1STrfNABI3xNPos2JjgyldX/8e8WUnGoHKgIhAMvibdTIhvI4jXJ2zpAiHY9sHZfdsJl3WTXpPgxVdJ5C",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 22309
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.2": {
+			"name": "two-stroke",
+			"version": "1.0.2",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240129.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.28.6",
+				"openapi3-ts": "^4.2.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.0",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.2.2",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/parser": "^7.0.1",
+				"@asteasolutions/zod-to-openapi": "^6.3.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.56.0",
+				"vitest": "^1.2.2",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"@types/node": "^20.11.17",
+				"@types/eslint": "^8.56.2"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "d864a28dfa253d59239eeeaca1eefcafa56cec03",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.2.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-Ev5O2zg4M/7DuuvgEMovA0iJFadUKmyFfGRSQszg8Q/EoCHIe+TtP43+TVpkOsWUD9B1keDxjdRmdeVa1SjSGg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDd6s4mpbwVUDOzoLiBYTStjs+9H7JVZqqHk8biZRGopwIgXpnMsvZCBtWJp86V9p71X1CMkHcFAwNHQuHXzetfpgo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21786
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.3": {
+			"name": "two-stroke",
+			"version": "1.0.3",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240129.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.28.6",
+				"openapi3-ts": "^4.2.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.0",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.2.2",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/parser": "^7.0.1",
+				"@asteasolutions/zod-to-openapi": "^6.3.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.56.0",
+				"vitest": "^1.2.2",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"@types/node": "^20.11.17",
+				"@types/eslint": "^8.56.2"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "5fba88f541a5d7e4d7f626a15d167bf09ac049fb",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.3.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-OBJg3ZzN/USHUJGvZBsWfIlDYjVHR1xMvGobBgutPr53uJWAP7VWWg/9eg25uma5LDnCZiyC9mMV8y5crZih5g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCDUk6x/qIDrIlbUG7ncXTILZhPnlYLY8KND3ocrXZ4dgIhAJKDVKf1ZseOi7AY9f9QzDa5SAXSzlII7QHUUjkNjb2w",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21834
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.4": {
+			"name": "two-stroke",
+			"version": "1.0.4",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240129.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.28.6",
+				"openapi3-ts": "^4.2.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.0",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.2.2",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/parser": "^7.0.1",
+				"@asteasolutions/zod-to-openapi": "^6.3.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.56.0",
+				"vitest": "^1.2.2",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"@types/node": "^20.11.17",
+				"@types/eslint": "^8.56.2"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "a9a17beefc36ec0a3ac4a3acd93cf077657e12b3",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.4.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-zRFQVgCdOsxg6n4fqo56YzskqC2Nf+bLeZ550ggM/r2jQpSyhAPdaT0kYD/tFT5ErFPUuB9pQCMcOsSJCx54RA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDF8mbzrefbi6VUgjM4bCqlSS+hNOBr72UnmZjpEwR8HAiADDPRx3vwPnbDQ+m5CG/aUQ5EkeQfeDSYlbgKWqL0NUw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21834
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.5": {
+			"name": "two-stroke",
+			"version": "1.0.5",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240129.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.28.6",
+				"openapi3-ts": "^4.2.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.0",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.2.2",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/parser": "^7.0.1",
+				"@asteasolutions/zod-to-openapi": "^6.3.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.56.0",
+				"vitest": "^1.2.2",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"@types/node": "^20.11.17",
+				"@types/eslint": "^8.56.2"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "6a88a733254ccf3121c439ac263c3c8097deb6b1",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.5.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-BQ3xUyH8M43WjmDOBDWQmmfIcPMxsaphvVAqTS83hT4CBmdVS+8A2l6wHYh152p0iDE5E++fBwMUzBfdoJSiGA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDDw+Vip4Tij7gCEc66/0n+kbAaIYR56di0rl8UkLGiIQIhAIha828ZgS4ZJ3l8pK1/C8vw9WSs5Hxr6eeudBN/dz+C",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21852
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.6": {
+			"name": "two-stroke",
+			"version": "1.0.6",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240129.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.28.6",
+				"openapi3-ts": "^4.2.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.0",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.2.2",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240208.0",
+				"@typescript-eslint/parser": "^7.0.1",
+				"@asteasolutions/zod-to-openapi": "^6.3.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.56.0",
+				"vitest": "^1.2.2",
+				"prettier": "^3.2.5",
+				"typescript": "^5.3.3",
+				"@types/node": "^20.11.17",
+				"@types/eslint": "^8.56.2"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "efbb34f4b9ade82fb06276b9ee1fd085d2f9c0be",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.6.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-UQ9RoMFRa2ZQVKrkYt7RRWQWqhjl0drO1xYgmKpNwlX7h5f9TtVUpsHGGWyA68/TO1m9IIFg8goMinf6DLSTZw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBpcOpBe6c1l5E2KG0sSJR8/GOCrK0fjAeP6LPNVI20uAiA17IWX2HWhuU8v/ulm8w7POPGPWDHN4RJoaeTKUO0a3Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 22102
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.7": {
+			"name": "two-stroke",
+			"version": "1.0.7",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.3",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240223.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.30.0",
+				"openapi3-ts": "^4.2.2",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.3.1",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240222.0",
+				"@typescript-eslint/parser": "^7.1.1",
+				"@asteasolutions/zod-to-openapi": "^6.4.0",
+				"@typescript-eslint/eslint-plugin": "^7.1.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.3.1",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.2",
+				"@types/node": "^20.11.25",
+				"@types/eslint": "^8.56.5"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "36b5efad34b64aa3a7a2734ccb9a638d0c7c1e97",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.7.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-o3xdlksbAzaXYKgWk088pf3QEijtShFgOe3DJa+ZaGlJ5ylqpuBE2dUIyNq2A3L85W4yn/zYp6PQImkQxyiHtQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHR4bxy4Jmz/CwhCKbqCi0E/KI6Pfv3Mw+1uNF898knpAiEA4TN2jxZQiT4tQRwmO0Vayh/ImKyxhUb0Jok/Ul2AOgI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25617
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.8": {
+			"name": "two-stroke",
+			"version": "1.0.8",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.3",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240223.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.30.0",
+				"openapi3-ts": "^4.2.2",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.3.1",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240222.0",
+				"@typescript-eslint/parser": "^7.1.1",
+				"@asteasolutions/zod-to-openapi": "^6.4.0",
+				"@typescript-eslint/eslint-plugin": "^7.1.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.3.1",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.2",
+				"@types/node": "^20.11.25",
+				"@types/eslint": "^8.56.5"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "39c24c44fdcedd6b81d4a05374e894941d143813",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.8.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-T+MdusCi3t9JrfG1NkaGeJL+Y6Vi8HnT8ZeAJQ/fzgkc+hwdC411H84zmRxAivYvbydX8AwSiXvaO33F1apjmQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIHUsJwizGJ5lmo8xHcqjQSlk2FSLVANhM19zXDFoWoJ5AiEAjDRjJPF1JEY72CEWDasCuH3jMuQxnL7KeIcre2U+0do=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25630
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.9": {
+			"name": "two-stroke",
+			"version": "1.0.9",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.3",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240223.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.6",
+				"@sentry/cli": "^2.30.0",
+				"openapi3-ts": "^4.2.2",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.3.1",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240222.0",
+				"@typescript-eslint/parser": "^7.1.1",
+				"@asteasolutions/zod-to-openapi": "^6.4.0",
+				"@typescript-eslint/eslint-plugin": "^7.1.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.3.1",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.2",
+				"@types/node": "^20.11.25",
+				"@types/eslint": "^8.56.5"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "36ff6441833a8a730a6cab290251787d848479b5",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.9.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-OkyLyYn9r2ZdFz19xzKC+gbSp92cAcumQdcHILKFhAcQroihUoiiuwr/mOfo0n5xc1BtUanVdmPuhAt3fUIhfw==",
+				"signatures": [
+					{
+						"sig": "MEUCIE2eCfXjTd587gIgOFu+bb1lcys6tjEkpm2yPhwjK8CkAiEAwIwP4RoqIAPYiUN/DcNdw+kZR7K3RLBptwX2YNGgOqg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25729
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.10": {
+			"name": "two-stroke",
+			"version": "1.0.10",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.3",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240223.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.30.0",
+				"openapi3-ts": "^4.2.2",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.3.1",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240222.0",
+				"@typescript-eslint/parser": "^7.1.1",
+				"@asteasolutions/zod-to-openapi": "^6.4.0",
+				"@typescript-eslint/eslint-plugin": "^7.1.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.3.1",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.2",
+				"@types/node": "^20.11.25",
+				"@types/eslint": "^8.56.5"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "f18ffd443a10e885cad80fefc1cce3c94538376b",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.10.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-LWBqxJ2Q9WO0Z/UnVryWGgWhhDrL8AXQ/ATq6NaPQeWbp+IY2J0SsYzBwJt4tUWU31ZFJ2HgKTRYQJCcW+AQzA==",
+				"signatures": [
+					{
+						"sig": "MEQCICOeUKgREJFT8biYkYh+ioIq58ONgGx3f/y2jucGSKojAiAddZGzuTbTcsgfgBwNaLaqb/KaMfZOVbhxMFwnVCIFYA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25730
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.11": {
+			"name": "two-stroke",
+			"version": "1.0.11",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.3",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240223.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.30.0",
+				"openapi3-ts": "^4.2.2",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.3.1",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240222.0",
+				"@typescript-eslint/parser": "^7.1.1",
+				"@asteasolutions/zod-to-openapi": "^6.4.0",
+				"@typescript-eslint/eslint-plugin": "^7.1.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.3.1",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.2",
+				"@types/node": "^20.11.25",
+				"@types/eslint": "^8.56.5"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "fd5361b56a77b5869656012ce8d67f303e2a0605",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.11.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-RzKBnhetublaL+Q11wYX8md96m/qBFZ0cDsBH3IcPe1+sXeN5qtEl3AlUmwjCpxGkY/HkfF30JEozyRSqlJn2A==",
+				"signatures": [
+					{
+						"sig": "MEQCIBfk+Td/iq+jfUsDRoghJVhD+zWHMnOJsnE9QMe6XBbLAiAbrVWlPLjewDui/0DgsG6fUk/6uBwqpuPV3yCiIT/4qA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25696
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.12": {
+			"name": "two-stroke",
+			"version": "1.0.12",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.3",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240223.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.30.0",
+				"openapi3-ts": "^4.2.2",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.4",
+				"@vitest/coverage-v8": "^1.3.1",
+				"@anatine/zod-openapi": "^2.2.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.0",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240222.0",
+				"@typescript-eslint/parser": "^7.1.1",
+				"@asteasolutions/zod-to-openapi": "^6.4.0",
+				"@typescript-eslint/eslint-plugin": "^7.1.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.3.1",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.2",
+				"@types/node": "^20.11.25",
+				"@types/eslint": "^8.56.5"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "08c41f95940e102774c04246e3ca4706bc00cb68",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.12.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-o5l6JIiqqolmjZXXuEBKO+5uL0nNCJEw1LWkMnvV86tey4MKysj2vBuKgIVUNcU85cN70NdjF++cxmIJOAlGtw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCxuhjFVFYRIdq249hUmXUblZFdmVrebUtDF3XBg3lc/gIhAP2bFdsjkM4qESSB4pvyyvTTkk84EQ1KQZqA5twKXOPo",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25702
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.13": {
+			"name": "two-stroke",
+			"version": "1.0.13",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240405.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.0",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.1",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240405.0",
+				"@typescript-eslint/parser": "^7.7.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.7.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.9"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "5402a170f5cbd3680a5adf145d623465a5d8b80e",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.13.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-H+COqRrIXhqEJc2kFI2bwJVYSPwTjqStl/rdyPX45FbQ+K6MkBDibSIWo/BOnu4Al94fwXmvz0Zn6IofuTMDRQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDBIaUFlgUnfg9mSAaGolz0l4P4MiX6AvXahVrE1I77sAiEAttKAL4KoMILSG4ZScQzBZ31QlM8n/Gtfa+9I3SK2ATI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 25701
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.14": {
+			"name": "two-stroke",
+			"version": "1.0.14",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240405.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.0",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.1",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240405.0",
+				"@typescript-eslint/parser": "^7.7.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.7.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.9"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "aa43c09aa1a0a8c8fb5a851fd00800c8133cd925",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.14.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-jgN5P/hTgko9MzGZv29qYo3c4jV2qXfpC0BP+phQNVdRbvpXsfi6h0wphgV0ZtYM3DXr6R0TU7XgPjVTOfCcbQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIHSg7c0QmpRAmLaGGCzsmD4Hhlh7YqTgywPROuiMfBnUAiAL78Bhb7xTPqIAdenr78DaCujZjhXdTvqI/epiBucq0A==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 26920
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.15": {
+			"name": "two-stroke",
+			"version": "1.0.15",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240405.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.0",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.1",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240405.0",
+				"@typescript-eslint/parser": "^7.7.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.7.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.9"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "99e0f29f5b933f42f0159fb1e07ff12ebe37bd36",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.15.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-d/CYcYdaAOZzp1jX9xNOgAxeXLA9cH/sw/Of/TwdjYvdek0rmMkegzm4OVSkoOKxOlaUGmEugeBZVgRsL7wJrw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCVksqwypfI5pINw1k69yptr8IJUIA7mz4faZ4vNkEUUQIhAJldf+XxoyNE0UQEpO6J+6xBJC7q3M5ByBq8lqxOZHrd",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27155
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.16": {
+			"name": "two-stroke",
+			"version": "1.0.16",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240405.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.0",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.1",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240405.0",
+				"@typescript-eslint/parser": "^7.7.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.7.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.9"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "6113e05da38cef2c5566295ccfb8d6552bdb83a9",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.16.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-GM5Fb+uxTeyHz6V6Ty6DHGpZYS8OiXRSp4DSZVxQQnte34QYlB93GmtFjxvo/Q+ymYCsTyiNbePjVb6tNntTgA==",
+				"signatures": [
+					{
+						"sig": "MEUCIE5TJnbOL7GbHNFdcAHCR5wCpJDEFiCsQeuzv7Znzf4WAiEA2Lh+m03GXJQ3kW37j7/Fio6s7o5Q6JLI8+RZ73wYl5I=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 26812
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.17": {
+			"name": "two-stroke",
+			"version": "1.0.17",
+			"dependencies": {
+				"zod": "^3.22.4",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240405.1",
+				"toucan-js": "^3.3.1",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.0",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.3",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.1",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240405.0",
+				"@typescript-eslint/parser": "^7.7.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.7.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.9"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "d6bbcb6ac7afa9b2f71130d8a0072906af07e329",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.17.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-O+umLVrZIL6eogy2fhDYR3z/P8EQFsen9IZk+BbeQUPNKEU9jpSddkeYBmuiTYeA1pYi7u+xOQ5SZKTwRy9rfA==",
+				"signatures": [
+					{
+						"sig": "MEUCID6ynnyNNKFI6ZPpepfeS8dC3Ug5JOAVuSVruzVyhqYlAiEAumtC+mJx0X38Rz/t3OPq83iQ8GnBWaT9+JSYS2oXLTU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 27489
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.18": {
+			"name": "two-stroke",
+			"version": "1.0.18",
+			"dependencies": {
+				"zod": "^3.23.5",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240419.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.0",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.5",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.3",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.2",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240423.0",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.3",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "36b8cd4753689f7839fecad22e070ddf08b1ccbe",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.18.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-Wt7ubIBa6Bfr0b7dAT/hA3jZ4aDm+qpTxJ1JbpCCDDB2sxSRRnV5ndUFIViTfzvPvDu80HtzIueZ6x1XKel5vQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDD+DTsSQB6p6azHw3MuYBwkoAcj9ei14GaTshaSHftxgIgFGhu4PG6BRXROKjR6rx1lGKuk79GXrAvhFHKsdZxv7U=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30360
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.19": {
+			"name": "two-stroke",
+			"version": "1.0.19",
+			"dependencies": {
+				"zod": "^3.23.5",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240419.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.1",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.5",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.3",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.4",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240423.0",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.3",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "8994a9c6c3de19e39c5df00d2325d506b92ebfb5",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.19.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-7AnOdZ6JRsaPJG6CgsqoF2kAMbrg4HBuc0nUQpRUXDDRMsC8COPJHv4dekxk94c1eEYwTOaLrJIWuYmv7U92WQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIC/9aFRGzW9b+c74qHSdoyYZxZi9HDGryJWm7zjPbfYtAiEAzoCAp1zZGgvcAa2wa0Ic3gTy5Y1dvP2JEe26WOKNeFo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30360
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.20": {
+			"name": "two-stroke",
+			"version": "1.0.20",
+			"dependencies": {
+				"zod": "^3.23.5",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240419.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.1",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.5",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.3",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240423.0",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.3",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "c9949c46811457f0324cf8183af3b63f3346cdd0",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.20.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-UQY/1ofnQ8zEQ3Pc8HnpLUPHL+mI19X9yc5Hn84YV9VnMfsg7LkpZSp0QJwzLVw+fcxXWtUNDRvJmHpNf7IDag==",
+				"signatures": [
+					{
+						"sig": "MEUCIBkUReXtPIXGAWhaLw+5TTSkGsKGhZrx+6bJKBPBbdPEAiEApzdLft/g9wiLv3bJwyrxdpokB4bdr3jEFZYk0nW7KlU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30360
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.21": {
+			"name": "two-stroke",
+			"version": "1.0.21",
+			"dependencies": {
+				"zod": "^3.23.5",
+				"jose": "^5.2.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240419.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.1",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.5",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.5.3",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.6",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240423.0",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.5.3",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "6a8355f8c30ad153f07ad4dec01f3ca3f634b482",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.21.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-hBfgUmomoDAeCrjoO2GxqdI+9qgihj3SImJHA7g0zgyOQHh/yfr2utlBRvslzJXuJ3tPXWF08l33seTVlEtKAw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD9twFa6LvGgwQqyF1WG24tZbal3bhj4giTHRWS786EmAIhANtwdOt8ImXrSaQ7MtvhBU/83FcDeVhv+ogax54Ct1Vo",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30360
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.22": {
+			"name": "two-stroke",
+			"version": "1.0.22",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.3.0",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240419.1",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.2",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.5",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.6.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.6",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240502.0",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.6.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.11",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "fc6c40b4d8a492263c868675f1c5b5d755a87db9",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.22.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-yEDldZvPZTBTLgternAWICx1NUwBQdVEVi587xcveDUbBQySQ1siwHU0rKmzqs7Cerc1MOGsYFxz8diWQpLutA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDv/oJwf1A0LcJ9swM0wJ5xTrWk0JCaSMNhpBnMIFiSvAiAfVePvvQizwipWd6OuKjAtyHRnUMp3TZRESbrSHvoFaQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30387
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.23": {
+			"name": "two-stroke",
+			"version": "1.0.23",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.3.0",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.31.2",
+				"openapi3-ts": "^4.3.1",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.5",
+				"openapi-typescript": "^6.7.5",
+				"@vitest/coverage-v8": "^1.6.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.6",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240502.0",
+				"@typescript-eslint/parser": "^7.8.0",
+				"@asteasolutions/zod-to-openapi": "^7.0.0",
+				"@typescript-eslint/eslint-plugin": "^7.8.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.6.0",
+				"prettier": "^3.2.5",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.11",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "1e887a73d927d6ac5c0f93e57a8d86a234402606",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.23.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-p2ymJbIM0SJbxtV+Dn3A7AEwMBIfdpxnC/qzM9ZUgmAJpztLkmyZkTJxlRjlrKL7j0x12+B6kKUHPNv2jazgIw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDPCaJjF0LpxjYOHqv2rOcTVono3nDWdpiIEHfFin693gIhAOzjlz5snkuA7Z1nMn91eyQ5MkyoF6BkX0r8p9XDohiE",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29325
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.24": {
+			"name": "two-stroke",
+			"version": "1.0.24",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.4.0",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240610.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.7",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^1.6.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.7",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240614.0",
+				"@typescript-eslint/parser": "^7.13.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.0",
+				"@typescript-eslint/eslint-plugin": "^7.13.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.6.0",
+				"prettier": "^3.3.2",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.14.2",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "08ef056f22b55dadcc4d5acfae447fb6ea6acdcc",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.24.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-kMfJ16oYqTVXrZvSVlelPe4/AyxOAJSDqVIU728+2GFluvwUHryul0ZJ7IqAIVZ1YjkuO7NBQ1yPkbMZI9PBCw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCZECZNGbiWGUY1ATiUlahW5vDmBrkbptsHTJoNyoCFPgIgK99FOI9SfJ4UvLSljpv9OvNnfcK9p1jn2UwAYVZwbxQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29327
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.25": {
+			"name": "two-stroke",
+			"version": "1.0.25",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.4.0",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240610.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.7",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^1.6.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240614.0",
+				"@typescript-eslint/parser": "^7.13.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.0",
+				"@typescript-eslint/eslint-plugin": "^7.13.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.6.0",
+				"prettier": "^3.3.2",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.14.2",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "c90771e1adf96730a82e53c7ba0cba3fef94dad1",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.25.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-RyzwKpWDaM0kJMflt7eqWl4pfqPhqNZLJq8oiFmeNdDTqufMQX3NkHH43AhkDYJDuKwvDGwL9H6vtDEu/W6UVQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDiaYVxLexliWhtfD/buoQ5xdNMYaMkZbNVQORFpuhLNAiAUFb71HXStOSzHJlGNKcCoCrooA8CdDJqsGKd2WgU67Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29328
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.26": {
+			"name": "two-stroke",
+			"version": "1.0.26",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.4.1",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^3.4.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.9.7",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^1.6.0",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240614.0",
+				"@typescript-eslint/parser": "^7.13.1",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.13.1"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^1.6.0",
+				"prettier": "^3.3.2",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.14.5",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "03a86f5961fe7687beab752a6b5dd5216198e450",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.26.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-65kzmPl7KQ8KY+ER85kT0Vt9tgMEe0bvrQTraKcimZBWcJ/ifXLKvD2btDWc8uuba9cTH2BsLR4yq4GSaG/dag==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDpoDKU4S9sK5gaK0r6bdILCwo0SurzMZSsereiYkLe0QIhAP4vz+WwLRnVcF0QophWGTg7Ci8jG0WVytmVVnTE6tGM",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29329
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.27": {
+			"name": "two-stroke",
+			"version": "1.0.27",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240701.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "7b130ad8e21f22656fa87d50db0b4fa51b0b1eb2",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.27.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-LpdEN54GbYgLf2W0DFUqvZDLiKKOe6qmnDKGe4LL1/LzOJ3coYtITHBrE9msIcE1MX0c6qdxycrgjDylnJmCtw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCXEtKhsfiBft6fD9r+90GK+AR/jMkT1gn0tUXq/bTM5wIgQII+ez6lVYzyaIjpXRg50uNt7ExrX3DNUWzt9ledOAM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29331
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.28": {
+			"name": "two-stroke",
+			"version": "1.0.28",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240701.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "6e507f52ee5c1754d9b300b5a71cd8f674ec4916",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.28.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-rMEII0BL9zMjbwfvvzyKZXrdQxikgX+o2vG1a3t0cbgdMkyiywtnVp0BeflIersoQJ9l5+NxQPCqXXsdoT+BRA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGnBeeYySjm9suyB5fVryMHNqSASCuFOLCnTQ3CEprtAAiAdHK5oS8PFCOgkU8AtkH6pf5+zmLpTWcF3kNjgoOL5MA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29346
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.29": {
+			"name": "two-stroke",
+			"version": "1.0.29",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "1ed389b746ff0935baafb4ae71f11aaf6bab496a",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.29.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-xzK4jci1IE6a3WIqgCMmNB5gQJrXho/+NQBabL/0Z/0182NPzWS2HHgSrLeygpILhbOBuF6j0OOLw6jVJZcoXQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIAuBTATtNiRwCZOrLGMCMv+PDLDZMMtf5YK7CH4Ksc62AiAjHqHw2be6HYnIqoVu/RHqWSRhZp5pnwmOxEY/c7EJ0Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29346
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.30": {
+			"name": "two-stroke",
+			"version": "1.0.30",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240718.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "b93e7fdc5a2d150514b968f0b7673e05e67c18e2",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.30.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-lpNOJvjh043XYgJmM+hIgVfaBCZkg5dsTgJZtoj5PfgebYXbGF7rVbdS8/rRbavXfmh8WPfsPysd447lfKbWAw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFm/RbG1ftFnfV7mLHlTSvNMU1exWtRxCSnPgtlQL6mzAiEAxmqzpSy2iH1qS0Pst0nYbcGz7loV6+pyES0sx8ywoz0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29335
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.31": {
+			"name": "two-stroke",
+			"version": "1.0.31",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "07265f2714d9d3e15e505c035c12a05c966d6565",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.31.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-7LyfTXjQpscdyvuHGOJmySgHu3Yt53W97sdSF0SJKNlXFtLfq9yfHU1F2hQkACVXoSpAlM3o28y9MVbQRMU4qA==",
+				"signatures": [
+					{
+						"sig": "MEQCIGwf1oLoxSlnK71ZlXfL/gw8J+PkZrHT8wtzbt1rfSNKAiAMfOcxu9Ey/3/OpdcBgnykgFE2snEi6ZcRRoXRfxeidg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29335
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.32": {
+			"name": "two-stroke",
+			"version": "1.0.32",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "45cd9563b3eaef364a34e86480b1eb64f6d6b7cf",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.32.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-J/JC++m0DkjKpUD30E1MIY+BL6ne2UpKPKddik7O7B9YRkJdJLn5higzuzh/Jkc10hAoy4poeTs1qjJe0J0Kdw==",
+				"signatures": [
+					{
+						"sig": "MEMCHyPerRSs0fKyd1LbHQ3yduH4VrXXIPCzGtuzGO8RoDYCIFtMQTqkqKSgMdyaSuNlBmCidSdJvkZbqPjBKCIvnYWc",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29695
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.33": {
+			"name": "two-stroke",
+			"version": "1.0.33",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "2af39cdd61948f55de06d397fe46b682bd0317b0",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.33.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-zidge/y5UKtIUbN+i7f/076nukwMLN1Yjgd6wnztme1W8TOET+IPVHrot4dw4VHEoZ5nDwES80Rk2Tj5R9NSDw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBrrmCXoNYNjuGbU/92pyc3p6DPGGexXjgHmDN5VAANaAiB5sDOtqHmaShulDUcShfYKC4YVWrEVT/VkjuQVYhi79Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 29744
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.34": {
+			"name": "two-stroke",
+			"version": "1.0.34",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "135f5d43bce08a055f2dc83de7f94d7e40d4ba38",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.34.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-XYZe3/orXJCaxnCf7oY0Ui1pzrEWNG2hDv9WIZC6dONkarDSMeu9FBA9IB5x8aiF0z4QNrvF9B4ltxEZjkqJzQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCoZCBFDuVxTm2qktDKjtiy9XTGp4oIAAftjKS5c5iEbQIhAJmSDHD+xUS4QttJoTx0YbvmzmOnW8IvRW2LZH2Lswr+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30082
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.0.35": {
+			"name": "two-stroke",
+			"version": "1.0.35",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.32.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.0",
+				"openapi-typescript": "^6.7.6",
+				"@vitest/coverage-v8": "^2.0.1",
+				"@anatine/zod-openapi": "^2.2.5",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.0.10",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240620.0",
+				"@typescript-eslint/parser": "^7.16.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^7.16.0"
+			},
+			"devDependencies": {
+				"eslint": "^8.57.0",
+				"vitest": "^2.0.1",
+				"prettier": "^3.3.2",
+				"typescript": "^5.5.3",
+				"@types/node": "^20.14.10",
+				"@types/eslint": "^8.56.10"
+			},
+			"peerDependencies": {
+				"eslint": ">=8",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "448cb6a46be3d54df33e75467dbccf50911183c0",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.0.35.tgz",
+				"fileCount": 15,
+				"integrity": "sha512-NgI0Hvj1J795HLNmd5gIM7CkOuJSVJd9p6T/yemso++HhuDPIA0Ko+gByw2D+oCqTYJCU6PdMhre6PxyB5vmIw==",
+				"signatures": [
+					{
+						"sig": "MEUCIHxVCE18x4ke1bBEjWXronAFPqpB15ihsZ2r6xI3oJIoAiEA+xH9FdSNdFUvMx532tGX9w7W0+BMPdygLcZNxyzqzjg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30099
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.1.0": {
+			"name": "two-stroke",
+			"version": "1.1.0",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.6.3",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.33.1",
+				"openapi3-ts": "^4.3.3",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.10.6",
+				"openapi-typescript": "^7.3.0",
+				"@vitest/coverage-v8": "^2.0.5",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.1",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240806.0",
+				"@typescript-eslint/parser": "^8.0.1",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^8.0.1"
+			},
+			"devDependencies": {
+				"eslint": "^9.8.0",
+				"vitest": "^2.0.5",
+				"prettier": "^3.3.3",
+				"typescript": "^5.5.4",
+				"@types/node": "^22.1.0",
+				"@types/eslint": "^9.6.0"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "33ebb30af7fb3a14a58a640f3ce218ef1c8f15f2",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.1.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-378nVMq3DkxzqnwMxc697iwzCjJJEVxqWmTAdsPkWevi9xsDxTmcux5RBgLQYqEmZDZ5vQ+yg33/RfNBdb46uA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDvYikcXlnp0hNeejJiTmnLSRfJy+xxLV79rf4Sor8AsAiEAtbXt6MhTed3/c7xwTpg4X6U5tW2pouPVedIRWyBT5L8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30298
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.1.1": {
+			"name": "two-stroke",
+			"version": "1.1.1",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.8.0",
+				"toml": "^3.0.0",
+				"miniflare": "3.20240419.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.34.1",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.0",
+				"openapi-typescript": "^7.3.3",
+				"@vitest/coverage-v8": "^2.0.5",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.2",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240821.1",
+				"@typescript-eslint/parser": "^8.3.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^8.3.0"
+			},
+			"devDependencies": {
+				"eslint": "^9.9.1",
+				"vitest": "^2.0.5",
+				"prettier": "^3.3.3",
+				"typescript": "^5.5.4",
+				"@types/node": "^22.5.2",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "7757acdb7ebbefce11668485af25416ff31009d7",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.1.1.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-UizYh58ZfSANSlij+g0pGo0SORBCzVSt1VfPpaGnbN4HKyNyZAXLTTAEKbaHCDNwC3ZV7T5D7Y0Ecs1zbabeRQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDUHombBc+9U6pRInpy8XRBgCBNkjJfqrCuUzYWOBtwOgIhAL9HjccEYpCOtgeNbOng4Sw+5korfG4HAl9y/fV5fHRp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30298
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.1.3": {
+			"name": "two-stroke",
+			"version": "1.1.3",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.8.0",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240821.1",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.36.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.0",
+				"openapi-typescript": "^7.4.0",
+				"@vitest/coverage-v8": "^2.0.5",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.3",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240903.0",
+				"@typescript-eslint/parser": "^8.4.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.1",
+				"@typescript-eslint/eslint-plugin": "^8.4.0"
+			},
+			"devDependencies": {
+				"eslint": "^9.10.0",
+				"vitest": "^2.0.5",
+				"prettier": "^3.3.3",
+				"typescript": "^5.5.4",
+				"@types/node": "^22.5.4",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "403c272cf03ff10da84b0dde33ad4f957d238ce1",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.1.3.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-MmshAquKuAsxNoh8/KHLoUqOthA27jqsju8qL1nny/RaE4k+MJiqToe3ST96m2zYZQU0OitKuqRpK+wRfCo5vA==",
+				"signatures": [
+					{
+						"sig": "MEQCIH4sNlqB7U76MLxwe8VpJ97/gy8TMCfpVTmpt9Crzl7/AiBdsi7+zctrmTg7V7RRxhTEM4EofbKmcYqjcAjFQcIxxg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30293
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.1.4": {
+			"name": "two-stroke",
+			"version": "1.1.4",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.3",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20240925.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.36.6",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.2",
+				"openapi-typescript": "^7.4.1",
+				"@vitest/coverage-v8": "^2.1.2",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.4",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20240925.0",
+				"@typescript-eslint/parser": "^8.8.0",
+				"@asteasolutions/zod-to-openapi": "^7.1.2",
+				"@typescript-eslint/eslint-plugin": "^8.8.0"
+			},
+			"devDependencies": {
+				"eslint": "^9.11.1",
+				"vitest": "^2.1.2",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.2",
+				"@types/node": "^22.7.4",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "446c7dad10e8a55a9da5453461c746a7b2d5b2e4",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.1.4.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-XMvr+/T7mT6Cf0sGL+LcY5Z6jn1wlIt4zriQ2vqhfbsqH22fSXaG+8OWVn4Fku5tEqggbRUl/93q560K+oB/Fw==",
+				"signatures": [
+					{
+						"sig": "MEUCICKGKyEwr1adN58qb90/xD/n6R1eCFf+kyXjMgKk9C8dAiEAydizI5TwUROq1Qy6C2wv5mFekmPY6q7RzjZjtRma+EE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30293
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.1.5": {
+			"name": "two-stroke",
+			"version": "1.1.5",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20241004.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.37.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.2",
+				"openapi-typescript": "^7.4.1",
+				"@vitest/coverage-v8": "^2.1.3",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241011.0",
+				"@typescript-eslint/parser": "^8.8.1",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@typescript-eslint/eslint-plugin": "^8.8.1"
+			},
+			"devDependencies": {
+				"eslint": "^9.12.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.7.5",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "8ae6013df641e894c7b92e686725b91ba5bbc1f3",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.1.5.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-PKlQnKjXA8uWntsuC4kUJyqPRIV6yF1Bnvp/khUO3B151DYVoE9rv+fVQ6BkmqGJQDIqDs7kp9UiO3GLFRbMwg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFlSABcXUqdxKcTfCV7kiKu119Qm7ANcELax39zuebJzAiEAqh/ZAD4yPpBxgr+NQoaglgaTnn/BuFTlMaZMTUegLgw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30293
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.1.6": {
+			"name": "two-stroke",
+			"version": "1.1.6",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20241004.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.37.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.2",
+				"openapi-typescript": "^7.4.1",
+				"@vitest/coverage-v8": "^2.1.3",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241011.0",
+				"@typescript-eslint/parser": "^8.8.1",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@typescript-eslint/eslint-plugin": "^8.8.1"
+			},
+			"devDependencies": {
+				"eslint": "^9.12.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.7.5",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "6386221c95c96fd97e7765e43ba70ab6fdb1cdec",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.1.6.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-5K6APidRbuR0TR+QbF7UtHcWxhfWM8uIZMh6UTHvofFepmy2IR76p7YyBiOmtaXyk0EQn3b354Bt7l9PQtb5fQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCXq2tbEpbW/1GLrcTwJ7McjsBnJ/3tNJnzaaAFtn/6wQIgUe6Nx/C9MPvebVsgegZzR9VzSmSo6USHdVz2PoVBeHw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30467
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"1.1.7": {
+			"name": "two-stroke",
+			"version": "1.1.7",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20241004.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.37.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.2",
+				"openapi-typescript": "^7.4.1",
+				"@vitest/coverage-v8": "^2.1.3",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241011.0",
+				"@typescript-eslint/parser": "^8.8.1",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@typescript-eslint/eslint-plugin": "^8.8.1"
+			},
+			"devDependencies": {
+				"eslint": "^9.12.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.7.5",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "47ecf404e15945127f0081d3a93b8eac17e9b00b",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-1.1.7.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-1gCw3TWXiILKo250eOAvsQvMgppXXYiJ8Syed4/cb8OTAp1jEd7KofPjeM3/yB1C+6DGwtt+5p9TMMKHTQtW1w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC6JgBezSYlozC/an1rFOEdmA8cCkYSEzJyjOFK1t4xfQIgM5pGhF6YtCGCg9xeKZ/LJKIPgUiE5hkw6C0W4LRBrew=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 30912
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"2.0.0": {
+			"name": "two-stroke",
+			"version": "2.0.0",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20241004.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.37.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.2",
+				"openapi-typescript": "^7.4.1",
+				"@vitest/coverage-v8": "^2.1.3",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241011.0",
+				"@typescript-eslint/parser": "^8.8.1",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@typescript-eslint/eslint-plugin": "^8.8.1"
+			},
+			"devDependencies": {
+				"eslint": "^9.12.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.7.5",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "463dc6e4b43c0fb341db4ffe8c6535dc91695a6c",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-2.0.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-THbaXfjDXcrosHA5t3+rMK7qgVxD4w2A0/HCl4bMGa0mstJ2pRvXfKEfEzMdwRzkuuwLUZp519mGLyHlDzbcFw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFj4n4UPX2yuxclAg5nW/ImF+S+0Ur1CIZ2BVIyjEx/hAiAR/0XjImittyEGioEmUEgqjb5pQQ/iHrvzk84i7coEwg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 32006
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"3.0.0": {
+			"name": "two-stroke",
+			"version": "3.0.0",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.4",
+				"toml": "^3.0.0",
+				"miniflare": "^3.20241004.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.37.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.12.2",
+				"openapi-typescript": "^7.4.1",
+				"@vitest/coverage-v8": "^2.1.3",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241011.0",
+				"@typescript-eslint/parser": "^8.8.1",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@typescript-eslint/eslint-plugin": "^8.8.1"
+			},
+			"devDependencies": {
+				"eslint": "^9.12.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.7.5",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "66c9a3ea2cdd22319a5b14257ab9d3794108a304",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-3.0.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-gGFQcqdIQ1INdopuk98ZNwmBqYSC8ybQqBycO942Ug4Y2zts4KeMmomhR/oS3hSGOhHR2/dbmrFPJOr+zX0xKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDVzSCHSlWSsNlcBCsXaoZQHGRIsDanGB0XutRoS/WsGwIgAitsvN+vRkr4j3eXLr0fM4VlbUXsBh5LU76yiGoUehw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31059
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"4.0.0": {
+			"name": "two-stroke",
+			"version": "4.0.0",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.6",
+				"miniflare": "^3.20241022.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.38.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.13.0",
+				"openapi-typescript": "^7.4.2",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241022.0",
+				"@typescript-eslint/parser": "^8.11.0",
+				"@vitest/coverage-istanbul": "^2.1.3",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.22",
+				"@typescript-eslint/eslint-plugin": "^8.11.0"
+			},
+			"devDependencies": {
+				"eslint": "^9.13.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.8.1",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "0ee69b6e7399be4c8e4bc5d682e9400e807b6f5a",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-4.0.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-TQQ3LosTgLM+Az9+aFMIXCYSKNiukZCWHUUUxE91ToRTO52oZVbyYXl4tZ59/xKYduxViglVnXiWS4fY6q4Oog==",
+				"signatures": [
+					{
+						"sig": "MEUCIE8BN8MnKWDY7rrRq84dZE+uwm5LQ074rC4UCx26rOWWAiEA05NEWT8gvBzNWXpmsBelYtno5VqDl5BeTeD/lz5LpwE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28338
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"4.1.0": {
+			"name": "two-stroke",
+			"version": "4.1.0",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.6",
+				"miniflare": "^3.20241022.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.38.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.13.0",
+				"openapi-typescript": "^7.4.2",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241022.0",
+				"@typescript-eslint/parser": "^8.11.0",
+				"@vitest/coverage-istanbul": "^2.1.3",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.22",
+				"@typescript-eslint/eslint-plugin": "^8.11.0"
+			},
+			"devDependencies": {
+				"eslint": "^9.13.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.8.1",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "82a4d6ec695592595c6500348fca116f95aa2de7",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-4.1.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-Q3sxKlqc0/pY3bebWjGSZWQnOu7Eesqt4iV2SOhgqm++oqa4u1gVGA2JZHMLooH+lqZ9tna28VppDmSPz2iXNA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDnyBthY5WBwGT/Ehnf4G2EFvE6phwbA9xKCsjte7KzAAIgb2s5PoyrbfGcdT8dGYMCPHf9onU5uxJ6nAQayk8uWEI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28673
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"4.1.1": {
+			"name": "two-stroke",
+			"version": "4.1.1",
+			"dependencies": {
+				"zod": "^3.23.8",
+				"jose": "^5.9.6",
+				"miniflare": "^3.20241022.0",
+				"toucan-js": "^4.0.0",
+				"jwk-subtle": "^1.0.7",
+				"@sentry/cli": "^2.38.0",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"openapi-fetch": "^0.13.0",
+				"openapi-typescript": "^7.4.2",
+				"@anatine/zod-openapi": "^2.2.6",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"@cloudflare/workers-types": "^4.20241022.0",
+				"@typescript-eslint/parser": "^8.11.0",
+				"@vitest/coverage-istanbul": "^2.1.3",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.22",
+				"@typescript-eslint/eslint-plugin": "^8.11.0"
+			},
+			"devDependencies": {
+				"eslint": "^9.13.0",
+				"vitest": "^2.1.3",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"@types/node": "^22.8.1",
+				"@types/eslint": "^9.6.1"
+			},
+			"peerDependencies": {
+				"eslint": ">=9",
+				"vitest": ">=1",
+				"prettier": ">=3",
+				"wrangler": ">=3",
+				"typescript": ">=5",
+				"@sentry/cli": ">=2"
+			},
+			"bin": {
+				"dev": "./bin/dev.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"deploy": "./bin/deploy.mjs",
+				"format": "./bin/format.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "bcd70c28964494acbf01c0883cf35160364dc73e",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-4.1.1.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-3ZGIK44CPVOdKB5dXq1I1cuby2owt2M0F2xoMLBWlxMHN0uT1be2bXf4x71pbPl0uMb3Gy5RMQO1Q4veij7U2w==",
+				"signatures": [
+					{
+						"sig": "MEUCIHumcEvIFOBvvTiqBU6C9WcSVhb+aoiP4r39IVRW3/DVAiEAyI1GsFwzpzCDq/ymDBHZaoklmJXDhx75U38QevvzwMY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 28721
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		},
+		"4.1.2": {
+			"name": "two-stroke",
+			"version": "4.1.2",
+			"dependencies": {
+				"@anatine/zod-openapi": "^2.2.6",
+				"@asteasolutions/zod-to-openapi": "^7.2.0",
+				"@cloudflare/vitest-pool-workers": "^0.5.22",
+				"@cloudflare/workers-types": "^4.20241022.0",
+				"@sentry/cli": "^2.38.0",
+				"@typescript-eslint/eslint-plugin": "^8.11.0",
+				"@typescript-eslint/parser": "^8.11.0",
+				"@vitest/coverage-istanbul": "^2.1.3",
+				"eslint-config-prettier": "^9.1.0",
+				"eslint-config-two-stroke": "^1.1.5",
+				"eslint-config-typescript": "^3.0.0",
+				"jose": "^5.9.6",
+				"jwk-subtle": "^1.0.7",
+				"miniflare": "^3.20241022.0",
+				"openapi-fetch": "^0.13.0",
+				"openapi-typescript": "^7.4.2",
+				"openapi3-ts": "^4.4.0",
+				"pbkdf-subtle": "^1.0.0",
+				"toucan-js": "^4.0.0",
+				"zod": "^3.23.8"
+			},
+			"devDependencies": {
+				"@types/eslint": "^9.6.1",
+				"@types/node": "^22.8.1",
+				"eslint": "^9.13.0",
+				"prettier": "^3.3.3",
+				"typescript": "^5.6.3",
+				"vitest": "^2.1.3"
+			},
+			"peerDependencies": {
+				"@sentry/cli": ">=2",
+				"eslint": ">=9",
+				"prettier": ">=3",
+				"typescript": ">=5",
+				"vitest": ">=1",
+				"wrangler": ">=3"
+			},
+			"bin": {
+				"deploy": "./bin/deploy.mjs",
+				"dev": "./bin/dev.mjs",
+				"format": "./bin/format.mjs",
+				"lint": "./bin/lint.mjs",
+				"test": "./bin/test.mjs",
+				"type-check": "./bin/type-check.mjs"
+			},
+			"dist": {
+				"shasum": "398c5210668fc7311a901d8f43459685efd415fd",
+				"integrity": "sha512-GiPIWiqRMQecxTLZ8/GXq+u+eY3ZWVeZ43KmY1kWG1ykEKlAI2SBD6Caiwh+nLAV5U6K34oqMpf8Km63lJnpCg==",
+				"tarball": "https://registry.npmjs.org/two-stroke/-/two-stroke-4.1.2.tgz",
+				"fileCount": 16,
+				"unpackedSize": 28766,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCRX28kb3FqFdO9cVanD6MRdMVt0rhk24AsbX56wgXWngIhALfRU4aU0cY0zX6APhgNgbXZDy94839kjvkV6PuIAq85"
+					}
+				]
+			},
+			"engines": {
+				"node": "^20.10.0"
+			}
+		}
+	}
+}
