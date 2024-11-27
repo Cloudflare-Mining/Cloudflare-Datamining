@@ -2612,7 +2612,7 @@
 	"alerts.events.workers_alert.description": "Receive a daily report of Workers that experience a 25% increase in average CPU time compared to the average of the previous 7 days",
 	"alerts.events.weekly_account_overview.description": "Receive a weekly usage summary containing select information about your Workers account",
 	"alerts.events.secondary_dns_zone_validation_warning.description": "The transferred DNSSEC zone is incorrectly configured.",
-	"alerts.events.clickhouse_alert_fw_anomaly.description": "Spike in all security events. Sent within two hours of the spike in events being detected.",
+	"alerts.events.clickhouse_alert_fw_anomaly.description": "Spike in all security events. Sent within 5 minutes of the spike in events being detected.",
 	"alerts.events.clickhouse_alert_fw_ent_anomaly.description": "Spike in security events with optional service filter. Sent within 5 minutes of the spike in events being detected.",
 	"alerts.events.zone_aop_custom_certificate_expiration_type.description": "Expiration notices for custom uploaded zone-level Authenticated Origin Pulls certificates",
 	"alerts.events.hostname_aop_custom_certificate_expiration_type.description": "Expiration notices for custom uploaded hostname-level Authenticated Origin Pulls certificates",
