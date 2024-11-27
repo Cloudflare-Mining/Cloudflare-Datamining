@@ -578,7 +578,18 @@
 										"locale": "en-US",
 										"name": "Register your domain",
 										"description": null,
-										"mainLink": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6qAZoc0eN1q1EoNP2hbSvr",
+											"locale": "en-US",
+											"title": "Register your domain",
+											"description": null,
+											"url": "/products/registrar/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -591,7 +602,18 @@
 										"locale": "en-US",
 										"name": "Get 1.1.1.1",
 										"description": null,
-										"mainLink": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4paxgo4Sco4YzkdZiALaSK",
+											"locale": "en-US",
+											"title": "Get 1.1.1.1",
+											"description": null,
+											"url": "https://one.one.one.one/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -5380,11 +5402,54 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
+								"contentfulId": "30lUtcR8YDisKyokHK2CkA",
+								"heading": "Documentation",
+								"description": "Evolve to SASE with Cloudflare's reference architecture",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "52p8ddqT1F1bmuI8azz8Ya",
+									"elementName": "SASE reference architecture - link",
+									"standardText": null,
+									"text": "Read the reference architecture",
+									"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "285e9c62-44a2-564a-8732-458fa4164905",
+									"altText": "Reference Architecture Center",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oOJP0ysU1Riftn71CwDhB/e1790bb38af66a19f4a86632782d6297/BDES-5542_ArchitectureHub_HeroImage_smaller.svg"
+										},
+										"description": "Reference Architecture Center"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
 								"contentfulId": "1DjXdISmloiSOdupprFfai",
 								"heading": "Product brief",
 								"description": "SASE & SSE Platform (Cloudflare One)",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "blGhFgmnHswhki6fZStRI",
+									"elementName": "Cloudflare One - link",
+									"standardText": null,
+									"text": "Read the solution brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1bPZaJAiXoHwgx17L99K8I/ced52f424f35e96412d5e092b6b0478d/SASE-SSE-cloudflare-one-platform-brief-2024-Q2.pdf",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
 									"altText": "Product brief thumbnail",
@@ -5407,7 +5472,17 @@
 								"heading": "Documentation",
 								"description": "Cloudflare One technical documentation",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3ZzzZn92nIPTkkmqJCZJ87",
+									"elementName": "Cloudflare One technical documentation - Link",
+									"standardText": null,
+									"text": "Read technical docs",
+									"url": "https://developers.cloudflare.com/cloudflare-one/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "d36590f1-ba3f-515e-8f35-dbccbf837f12",
 									"altText": null,
@@ -5419,6 +5494,39 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DFk7VPsulJ0IeOoHsZrMc/87b4ac29f690276b70cdbdcf06d6f8fb/Insight_106x182.png"
 										},
 										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5AOVdZS9y7q4zD3VP8YMJv",
+								"heading": "Solution brief",
+								"description": "Quickstart Advisory Professional Services for Zero Trust & SASE",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "ZSd7RLO198L16LD0GzXPQ",
+									"elementName": "Quickstart Advisory link",
+									"standardText": null,
+									"text": "Read the brief",
+									"url": "https://cfl.re/zero-trust-quickstart-solution-brief",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null

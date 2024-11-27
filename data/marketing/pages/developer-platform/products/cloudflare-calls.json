@@ -64,6 +64,70 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentfulId": "y3ngqwMEPzwHyVWmfqdGk",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare Calls",
+						"titleSize": null,
+						"subtitle": "Build real-time audio and video apps",
+						"subtitleSize": null,
+						"copy": "Maintain high server reliability for WebRTC services with a managed TURN server and Selective Forwarding Units (SFUs).",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Start building",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://developers.cloudflare.com/calls/",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Large",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "2d5655c6-4adb-507a-9559-0ba13a56b739",
+							"altText": "Cloudflare Calls - Hero image",
+							"title": "Cloudflare Calls - Hero image",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/rs5ElFqxpUEWshCPnje33/a8bde064c48990fe1c498ff7a5f17950/Cloudflare-Calls-Hero-image.png"
+								},
+								"description": "Cloudflare Calls - Hero image"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
 						"contentfulId": "5MrRDnGuIf0cI9KE9keODM",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
@@ -72,6 +136,78 @@
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "792aupG8ERiujaonRtwn2M",
+								"title": "Improve performance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": " Minimize latency when WebRTC is delivered over our Anycast network.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
+									"altText": "Reliability timer blue",
+									"title": "Reliability timer blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
+										},
+										"description": "Stopwatch icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3L5v1d8hEGPxewfvuQRSGQ",
+								"title": "Global scale",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Automatically scale call volume and global WebRTC connections with no regional constraints. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+										},
+										"description": "Orange icon of a globe"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "7bYcPHspNt9K8nqyqZ67tr",
@@ -179,7 +315,20 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5WU2nyvnhh4Hiua7B7LpPn",
+							"elementName": "Cloudflare Calls - Additional offer blade - CTA",
+							"standardText": null,
+							"text": "See reference architecture",
+							"url": "https://developers.cloudflare.com/calls/example-architecture/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
@@ -539,6 +688,15 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "4jvDwkW4TiY6VV7VC5hpS1",
+										"cellText": "Free",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6C7Bf3v4Qsv1r85RlBuHDD",
 										"cellText": "Free",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
