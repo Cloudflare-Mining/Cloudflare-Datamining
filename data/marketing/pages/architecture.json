@@ -415,6 +415,153 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Deploying self-hosted VoIP services for hybrid users",
+													"callToAction": "Learn More",
+													"id": "1d85ec8e-5301-5b37-aa6c-9b95fb617532",
+													"resourceTitle": "Deploying self-hosted VoIP services for hybrid users",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Multi-cloud / Hybrid Cloud Deployments"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Learn how to utilize the Cloudflare WARP Connector to enable self-hosted VoIP services for your remote users.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - DNS filtering for Internet service providers",
+													"callToAction": "Learn More",
+													"id": "34d38c1e-29a9-504f-be6d-db8f40f66584",
+													"resourceTitle": "DNS filtering for Internet service providers",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Cloudflare has a comprehensive secure web gateway for DNS traffic inspection and filtering. Service providers can use this capability to create value added services such as protecting subscribers from accessing malicious domains.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Extend ZTNA with external authorization and serverless computing",
+													"callToAction": "Learn More",
+													"id": "62f8d14c-68ff-5878-a7f8-743d12900bfe",
+													"resourceTitle": "Extend ZTNA with external authorization and serverless computing",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Enable Zero Trust Security for Workforce",
+														"Secure Internet Applications",
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Learn how to extend any Zero Trust Network Access (ZTNA) policy to add custom business logic to tailor authentication and authorization.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Ingesting BigQuery Data into Workers AI",
+													"callToAction": "Learn More",
+													"id": "b6a45036-7526-5800-bfe1-a261a67a9f5f",
+													"resourceTitle": "Ingesting BigQuery Data into Workers AI",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Explore how to integrate Google BigQuery and Cloudflare using Workers. Ingest your data to generate AI content with Workers AI on the spot or in batches. Export results to R2, D1, Workers KV or send it via Email Routing or to an external webhook.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Event notifications for storage",
+													"callToAction": "Learn More",
+													"id": "b962d97e-de42-5f8a-8ea8-a78501f5c2e9",
+													"resourceTitle": "Event notifications for storage",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Automatically trigger Workers and take action when data in your R2 bucket changes.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Bot management",
+													"callToAction": "Learn More",
+													"id": "c43cf679-8475-5a4d-ac03-44eb4b8b420c",
+													"resourceTitle": "Bot management",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "This article highlights Cloudflare's bot management solution and capabilities including traffic flow, layered bot detection engines, using bot score to create granular security policies, and features including detecting good bots and AI bots.",
+													"externalLinkUrl": "https://developers.cloudflare.com//reference-architecture/diagrams/bots/bot-management/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Bring your own IP space to Cloudflare",
+													"callToAction": "Learn More",
+													"id": "fcd1c95d-1492-58ad-8b5b-46c711fc71e8",
+													"resourceTitle": "Bring your own IP space to Cloudflare",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Cloudflare allows customers to bring their existing public IP space to its platform. This flexibility allows customers to connect, accelerate and protect their digital assets while also preserving their network identity to the rest of the world.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - On-demand Object Storage Data Migration",
 													"callToAction": "Learn More",
 													"id": "266d96d8-4812-5054-bb57-4a9e32541720",
@@ -991,6 +1138,27 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Deploying self-hosted VoIP services for hybrid users",
+													"callToAction": "Learn More",
+													"id": "1d85ec8e-5301-5b37-aa6c-9b95fb617532",
+													"resourceTitle": "Deploying self-hosted VoIP services for hybrid users",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Multi-cloud / Hybrid Cloud Deployments"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Learn how to utilize the Cloudflare WARP Connector to enable self-hosted VoIP services for your remote users.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Using a zero trust framework to secure SaaS applications",
 													"callToAction": "Learn More",
 													"id": "2462ac65-f4a2-5a3c-be32-0e6c96a095e3",
@@ -1005,6 +1173,48 @@
 													"industry": null,
 													"description": "Traditional security models struggle to secure SaaS applications which can introduce new security risks like unauthorized access, data breaches and Shadow IT. Learn how Cloudflare's SASE platform can be used to better protect your SaaS applications.",
 													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - DNS filtering for Internet service providers",
+													"callToAction": "Learn More",
+													"id": "34d38c1e-29a9-504f-be6d-db8f40f66584",
+													"resourceTitle": "DNS filtering for Internet service providers",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Cloudflare has a comprehensive secure web gateway for DNS traffic inspection and filtering. Service providers can use this capability to create value added services such as protecting subscribers from accessing malicious domains.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Extend ZTNA with external authorization and serverless computing",
+													"callToAction": "Learn More",
+													"id": "62f8d14c-68ff-5878-a7f8-743d12900bfe",
+													"resourceTitle": "Extend ZTNA with external authorization and serverless computing",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Enable Zero Trust Security for Workforce",
+														"Secure Internet Applications",
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Learn how to extend any Zero Trust Network Access (ZTNA) policy to add custom business logic to tailor authentication and authorization.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/",
 													"hideFromResourceHub": true
 												},
 												{
@@ -1379,6 +1589,27 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Bring your own IP space to Cloudflare",
+													"callToAction": "Learn More",
+													"id": "fcd1c95d-1492-58ad-8b5b-46c711fc71e8",
+													"resourceTitle": "Bring your own IP space to Cloudflare",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Cloudflare allows customers to bring their existing public IP space to its platform. This flexibility allows customers to connect, accelerate and protect their digital assets while also preserving their network identity to the rest of the world.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Protecting ISP and telecommunications networks from DDoS attacks",
 													"callToAction": "Learn More",
 													"id": "564a8f79-a9a2-5026-b803-f968c3281aaa",
@@ -1531,6 +1762,69 @@
 										{
 											"filterItemName": "Workers",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Extend ZTNA with external authorization and serverless computing",
+													"callToAction": "Learn More",
+													"id": "62f8d14c-68ff-5878-a7f8-743d12900bfe",
+													"resourceTitle": "Extend ZTNA with external authorization and serverless computing",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Enable Zero Trust Security for Workforce",
+														"Secure Internet Applications",
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Learn how to extend any Zero Trust Network Access (ZTNA) policy to add custom business logic to tailor authentication and authorization.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Ingesting BigQuery Data into Workers AI",
+													"callToAction": "Learn More",
+													"id": "b6a45036-7526-5800-bfe1-a261a67a9f5f",
+													"resourceTitle": "Ingesting BigQuery Data into Workers AI",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Explore how to integrate Google BigQuery and Cloudflare using Workers. Ingest your data to generate AI content with Workers AI on the spot or in batches. Export results to R2, D1, Workers KV or send it via Email Routing or to an external webhook.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Event notifications for storage",
+													"callToAction": "Learn More",
+													"id": "b962d97e-de42-5f8a-8ea8-a78501f5c2e9",
+													"resourceTitle": "Event notifications for storage",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Automatically trigger Workers and take action when data in your R2 bucket changes.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -1751,6 +2045,27 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Ingesting BigQuery Data into Workers AI",
+													"callToAction": "Learn More",
+													"id": "b6a45036-7526-5800-bfe1-a261a67a9f5f",
+													"resourceTitle": "Ingesting BigQuery Data into Workers AI",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Explore how to integrate Google BigQuery and Cloudflare using Workers. Ingest your data to generate AI content with Workers AI on the spot or in batches. Export results to R2, D1, Workers KV or send it via Email Routing or to an external webhook.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Multi-vendor AI observability and control",
 													"callToAction": "Learn More",
 													"id": "2e7e8bbb-fcd5-5cc9-86ef-ba87043f7c54",
@@ -1871,6 +2186,27 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Ingesting BigQuery Data into Workers AI",
+													"callToAction": "Learn More",
+													"id": "b6a45036-7526-5800-bfe1-a261a67a9f5f",
+													"resourceTitle": "Ingesting BigQuery Data into Workers AI",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Explore how to integrate Google BigQuery and Cloudflare using Workers. Ingest your data to generate AI content with Workers AI on the spot or in batches. Export results to R2, D1, Workers KV or send it via Email Routing or to an external webhook.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Serverless image content management",
 													"callToAction": "Learn More",
 													"id": "ee220c69-4b67-5dfb-b27e-5e11aea7eee1",
@@ -1933,6 +2269,48 @@
 										{
 											"filterItemName": "Object Storage (R2)",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Ingesting BigQuery Data into Workers AI",
+													"callToAction": "Learn More",
+													"id": "b6a45036-7526-5800-bfe1-a261a67a9f5f",
+													"resourceTitle": "Ingesting BigQuery Data into Workers AI",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Explore how to integrate Google BigQuery and Cloudflare using Workers. Ingest your data to generate AI content with Workers AI on the spot or in batches. Export results to R2, D1, Workers KV or send it via Email Routing or to an external webhook.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Event notifications for storage",
+													"callToAction": "Learn More",
+													"id": "b962d97e-de42-5f8a-8ea8-a78501f5c2e9",
+													"resourceTitle": "Event notifications for storage",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Automatically trigger Workers and take action when data in your R2 bucket changes.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -2036,6 +2414,27 @@
 										{
 											"filterItemName": "Serverless SQL (D1)",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Ingesting BigQuery Data into Workers AI",
+													"callToAction": "Learn More",
+													"id": "b6a45036-7526-5800-bfe1-a261a67a9f5f",
+													"resourceTitle": "Ingesting BigQuery Data into Workers AI",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Explore how to integrate Google BigQuery and Cloudflare using Workers. Ingest your data to generate AI content with Workers AI on the spot or in batches. Export results to R2, D1, Workers KV or send it via Email Routing or to an external webhook.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -2544,6 +2943,27 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Bot management",
+													"callToAction": "Learn More",
+													"id": "c43cf679-8475-5a4d-ac03-44eb4b8b420c",
+													"resourceTitle": "Bot management",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "This article highlights Cloudflare's bot management solution and capabilities including traffic flow, layered bot detection engines, using bot score to create granular security policies, and features including detecting good bots and AI bots.",
+													"externalLinkUrl": "https://developers.cloudflare.com//reference-architecture/diagrams/bots/bot-management/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Cloudflare Security Architecture",
 													"callToAction": "Learn More",
 													"id": "54658166-ba2e-5487-9bb5-21124e609e45",
@@ -2587,6 +3007,27 @@
 										{
 											"filterItemName": "DDoS protection",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Bring your own IP space to Cloudflare",
+													"callToAction": "Learn More",
+													"id": "fcd1c95d-1492-58ad-8b5b-46c711fc71e8",
+													"resourceTitle": "Bring your own IP space to Cloudflare",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Cloudflare allows customers to bring their existing public IP space to its platform. This flexibility allows customers to connect, accelerate and protect their digital assets while also preserving their network identity to the rest of the world.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -2880,6 +3321,27 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Bot management",
+													"callToAction": "Learn More",
+													"id": "c43cf679-8475-5a4d-ac03-44eb4b8b420c",
+													"resourceTitle": "Bot management",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "This article highlights Cloudflare's bot management solution and capabilities including traffic flow, layered bot detection engines, using bot score to create granular security policies, and features including detecting good bots and AI bots.",
+													"externalLinkUrl": "https://developers.cloudflare.com//reference-architecture/diagrams/bots/bot-management/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Cloudflare Security Architecture",
 													"callToAction": "Learn More",
 													"id": "54658166-ba2e-5487-9bb5-21124e609e45",
@@ -2919,6 +3381,69 @@
 										{
 											"filterItemName": "Network Modernization",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Deploying self-hosted VoIP services for hybrid users",
+													"callToAction": "Learn More",
+													"id": "1d85ec8e-5301-5b37-aa6c-9b95fb617532",
+													"resourceTitle": "Deploying self-hosted VoIP services for hybrid users",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Multi-cloud / Hybrid Cloud Deployments"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Learn how to utilize the Cloudflare WARP Connector to enable self-hosted VoIP services for your remote users.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - DNS filtering for Internet service providers",
+													"callToAction": "Learn More",
+													"id": "34d38c1e-29a9-504f-be6d-db8f40f66584",
+													"resourceTitle": "DNS filtering for Internet service providers",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Cloudflare has a comprehensive secure web gateway for DNS traffic inspection and filtering. Service providers can use this capability to create value added services such as protecting subscribers from accessing malicious domains.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Bring your own IP space to Cloudflare",
+													"callToAction": "Learn More",
+													"id": "fcd1c95d-1492-58ad-8b5b-46c711fc71e8",
+													"resourceTitle": "Bring your own IP space to Cloudflare",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Cloudflare allows customers to bring their existing public IP space to its platform. This flexibility allows customers to connect, accelerate and protect their digital assets while also preserving their network identity to the rest of the world.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -3068,6 +3593,27 @@
 										{
 											"filterItemName": "App Modernization",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Ingesting BigQuery Data into Workers AI",
+													"callToAction": "Learn More",
+													"id": "b6a45036-7526-5800-bfe1-a261a67a9f5f",
+													"resourceTitle": "Ingesting BigQuery Data into Workers AI",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Explore how to integrate Google BigQuery and Cloudflare using Workers. Ingest your data to generate AI content with Workers AI on the spot or in batches. Export results to R2, D1, Workers KV or send it via Email Routing or to an external webhook.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -3333,6 +3879,27 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Extend ZTNA with external authorization and serverless computing",
+													"callToAction": "Learn More",
+													"id": "62f8d14c-68ff-5878-a7f8-743d12900bfe",
+													"resourceTitle": "Extend ZTNA with external authorization and serverless computing",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Enable Zero Trust Security for Workforce",
+														"Secure Internet Applications",
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Learn how to extend any Zero Trust Network Access (ZTNA) policy to add custom business logic to tailor authentication and authorization.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Network-focused migration from VPN concentrators to Zero Trust Network Access",
 													"callToAction": "Learn More",
 													"id": "bd9d43d5-7c04-5d50-a9de-dcfd147ac400",
@@ -3527,7 +4094,29 @@
 										},
 										{
 											"filterItemName": "Data Storage",
-											"resources": null
+											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Event notifications for storage",
+													"callToAction": "Learn More",
+													"id": "b962d97e-de42-5f8a-8ea8-a78501f5c2e9",
+													"resourceTitle": "Event notifications for storage",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications",
+														"Accelerate Mobile Experiences",
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-11-26",
+													"industry": null,
+													"description": "Automatically trigger Workers and take action when data in your R2 bucket changes.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/",
+													"hideFromResourceHub": true
+												}
+											]
 										}
 									]
 								}
