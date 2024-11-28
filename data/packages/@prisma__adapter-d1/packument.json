@@ -4,8 +4,8 @@
 		"early-access": "5.12.0-dev.21",
 		"patch-dev": "5.21.1-dev.1",
 		"latest": "5.22.0",
-		"dev": "5.23.0-dev.29",
-		"integration": "5.23.0-integration-engines-5-23-0-22-integration-enum-mapped-values-89f945da93fef3a624a4ebfff5ef973e7f2fc01d.2"
+		"dev": "5.23.0-dev.30",
+		"integration": "5.23.0-integration-engines-5-23-0-23-implicit-m2m-id-6a7820e9be60378b1fa68bf5922e06de81baca34.1"
 	},
 	"versions": {
 		"5.9.0-integration-cloudflare-d1.1": {
@@ -38419,13 +38419,71 @@
 			"devDependencies": {},
 			"peerDependencies": {},
 			"dist": {
-				"integrity": "sha512-I0FtkXwGXOT4pSHw7H3/LwcBfnjJoRaYWsHISdr/WUIH1+ON5wMMuVKX0lsF4t2nHaxiVELV0nBlEqPVt1F1IA==",
 				"shasum": "dae1f7e2f047c456a091721cff6575a6abd6f647",
 				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-integration-engines-5-23-0-22-integration-enum-mapped-values-89f945da93fef3a624a4ebfff5ef973e7f2fc01d.2.tgz",
 				"fileCount": 7,
-				"unpackedSize": 41351,
+				"integrity": "sha512-I0FtkXwGXOT4pSHw7H3/LwcBfnjJoRaYWsHISdr/WUIH1+ON5wMMuVKX0lsF4t2nHaxiVELV0nBlEqPVt1F1IA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFe4hiDrT9Nl8qU82h1fqUjbKN3a/epMb9q6Ay90TcMrAiAUoSBZ+3cUXmeJmyGqn+M68Px4TWNc2x/rE5m0Bsko9Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-integration-engines-5-23-0-22-integration-enum-mapped-values-89f945da93fef3a624a4ebfff5ef973e7f2fc01d.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41351
+			}
+		},
+		"5.23.0-integration-engines-5-23-0-23-implicit-m2m-id-6a7820e9be60378b1fa68bf5922e06de81baca34.1": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-integration-engines-5-23-0-23-implicit-m2m-id-6a7820e9be60378b1fa68bf5922e06de81baca34.1",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-integration-engines-5-23-0-23-implicit-m2m-id-6a7820e9be60378b1fa68bf5922e06de81baca34.1"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "5ffef7eefbf49659aceb9dd6098e8f5d8d9be95f",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-integration-engines-5-23-0-23-implicit-m2m-id-6a7820e9be60378b1fa68bf5922e06de81baca34.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-yd3qCRHZTk0bMyktQLs/hjCrE/yDurcX0NJlJii+RKIqurR1opRd77hNJ9hPqzjwqLVHgpKemsAsPXcf+kI7qw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDfmJw06YEl1cbnQp0nJlvaxzHvDogn38aiyaZu7uGCLgIgVzjzNq1ilXvg+x0QopLlHckLgmIQO4b72S9+JnFjCo0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-integration-engines-5-23-0-23-implicit-m2m-id-6a7820e9be60378b1fa68bf5922e06de81baca34.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41321
+			}
+		},
+		"5.23.0-dev.30": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-dev.30",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-dev.30"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"integrity": "sha512-pf9ajvFEVhAA4RuJnt69mLx/JolrrjuIyvc3N6N+IQJXR3gaHRSkJ123pJbG+agOxORDMIXiiQqf/Uu2TqcGoQ==",
+				"shasum": "b57a6e133ff5ed89498fd287030d98a0bc985423",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-dev.30.tgz",
+				"fileCount": 7,
+				"unpackedSize": 41157,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-dev.30",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -38433,7 +38491,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFe4hiDrT9Nl8qU82h1fqUjbKN3a/epMb9q6Ay90TcMrAiAUoSBZ+3cUXmeJmyGqn+M68Px4TWNc2x/rE5m0Bsko9Q=="
+						"sig": "MEUCIEiZ4bIxLxBYAHNcHhbC1ywRVcODOvUOGf3oP8EU89nCAiEAj16fSNJBT90Fj3cvOnJHW+FZFuE4Sc+KJVz7bpyxMuI="
 					}
 				]
 			}
