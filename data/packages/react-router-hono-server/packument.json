@@ -1,0 +1,667 @@
+{
+	"name": "react-router-hono-server",
+	"dist-tags": {
+		"latest": "2.1.2"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "react-router-hono-server",
+			"version": "0.0.1",
+			"dependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.3.5",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.11.0",
+				"@hono/node-server": "^1.12.0",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"dist": {
+				"shasum": "dab423b074944f2d0a76c9bca57c6542321e5f93",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.0.1.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-fFB9hC+U/FS5QFf14bbV3Xd9ICJIqAPACM7oomCly7b/mHPocfYwlygyowxd0WeYufyb7l+aEj+WkFPmD6RRnA==",
+				"signatures": [
+					{
+						"sig": "MEQCIAhbkUCFggE9cbVlGWM/2Uj2dtJj/nPnSs5ylB1HV909AiB4A04n0fkyIfA/TX6yHhiJwvXo86P8nGC9xUhWJFukzQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 18857
+			}
+		},
+		"0.0.2": {
+			"name": "react-router-hono-server",
+			"version": "0.0.2",
+			"dependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.3.5",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.11.0",
+				"@hono/node-server": "^1.12.0",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"dist": {
+				"shasum": "a95ea91d0be09495b7be38b6dda3537caaf7de7f",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.0.2.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-oRrqmqNZLfhuPXxFCRpdzHwKm3NP51DSx+32eUmUyBdm9E8j35+8AL4SMl0SzJhiLOc0+4MODhWWVUwW4ImL5g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDOS+AgBfO034m47FM91i3PtbqCNX2LOLFB6TVD2xI4bwIhAIsLUhmfO3tNWda2pV3cLT77fWqZKp7lKsx0O0t9opEV",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 18991
+			}
+		},
+		"0.0.3": {
+			"name": "react-router-hono-server",
+			"version": "0.0.3",
+			"dependencies": {
+				"hono": "^4.5.3",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.12.0",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "f786ec107af74d1587718e6dbd82a79e66b4aee5",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.0.3.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-tiezWGMfYffRXINFRe+S53zIrzC3SqfA+QJD0Emu2u3kiqKiiVdJ5MPqXlVVKulfmcdShYzR7pYXQcKgreflsA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC5ugZSdidDgoJzDG0VV/0FCT1p2o5DZinC09xNfZ8aNAIgF5hTM5+1LoULKkOWx5MhyRCLQrE5g5Jax34SbtQF28k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 19889
+			}
+		},
+		"0.0.4": {
+			"name": "react-router-hono-server",
+			"version": "0.0.4",
+			"dependencies": {
+				"hono": "^4.5.3",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.12.0",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "3586cc0dd893c210904632e51833067ff25c3bbc",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.0.4.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-PH5bj80Jbw5pTBWidsqrMvzGhfCtN3vocfJ8TVRptUKbVPYD5ClMiV1VsXiqMWER75Bi1CNU5NFFlZwNzs9wBA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCyMLJZ2IxNSl1d4lr65ZDzegDzpha+T7GJP3HcQnoV/AIhAN8/IUgbk1fx2Aze1+JhgJUYjpFT4cth5kAzaCnnCv6V",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 20085
+			}
+		},
+		"0.1.0": {
+			"name": "react-router-hono-server",
+			"version": "0.1.0",
+			"dependencies": {
+				"hono": "^4.5.3",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.12.0",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "3333fad0926012bdeb50aca44b343a219ff2240f",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.1.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-kxEczgoER4ci1XxMtBhcKMGLbScdcH2TFur7kMcBixHrB9CfNX4GkwLFGvact6Z1GxhtHMvTM5af7xFUljOJ2g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC+sD7VJEA0HNisAxchJV66OJpYVavclrlbMjDB+oiJAQIhANV2p/DZ+jaJUypBPeLhaPC9+MjxNONPaci75BUB0lx1",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 20529
+			}
+		},
+		"0.2.0": {
+			"name": "react-router-hono-server",
+			"version": "0.2.0",
+			"dependencies": {
+				"hono": "^4.5.3",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.12.0",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "8ad9014af9be3b788adf2d5bdd12fcfc73c7dd7b",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.2.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-/djpqSnzboo/CMAVHd7LLpU9HBXX8M+OzkOLIL9LH/cWmhd/r03TBcd3J0cslu15rizZG7zay2a/cJ/EO5XeoA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCk0F4IzHFoSBi+Ge73rr48TBRnZfnkcRTdd0UX9u/9BAIhAIQjOeuAcL8LdF4M4AqFO11dxs1dh4sAuM8TvNtQ01jM",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 20116
+			}
+		},
+		"0.3.0": {
+			"name": "react-router-hono-server",
+			"version": "0.3.0",
+			"dependencies": {
+				"hono": "^4.6.5",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.13.2",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "8b9ca8a79a5b2f9a73130024e78dc012ed6b6842",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.3.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-A6xPN5RgdSu8bAQkBefLg9c6UwLFit9WkrqiNpytRg7YsqJZpLb3tzKmMcTvceLwH/te4Cuzlv4DVE0DbHAKLw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFWWNS0NlWDWVT74aex1LxMqP2G2S1dEut7/IIpgB1UOAiBwaecmHA5M/avXLUqatI1uOwnL6zG+aSeE/cAgP7XZJw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 20116
+			}
+		},
+		"0.4.0": {
+			"name": "react-router-hono-server",
+			"version": "0.4.0",
+			"dependencies": {
+				"hono": "^4.6.5",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.13.2",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "2768709f1f2695fed670eec8c5c7ced1c23da59e",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.4.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-vvz+h+SLwZdB7AXdUpSIbWoP5f7603YPjbh1iGT9Sz7qMuSQk8EthXpVrxLPUHaU5a1JHD78ylZzfvQLiCqC8g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD+WRAkTC+21PbO4WUBnRP5iIr9nHtcJa7iKhO4vWoxrwIhAKiQGJ1H2Kaj4uk7idmK39DGht9+lApAJorA0BR0HeLm",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 20137
+			}
+		},
+		"0.5.0": {
+			"name": "react-router-hono-server",
+			"version": "0.5.0",
+			"dependencies": {
+				"hono": "^4.6.5",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.13.2",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "e79a7f846eb9e40ef030dd33009ea933e5553c49",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-0.5.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-bBaqBMPTLYP+oCcbzhuso6iEgXRwKUBVceV7fUJAosSJRqYGw3J6qXDAUTnCsgYjVOvESjJvZEg3XIlW7txrOg==",
+				"signatures": [
+					{
+						"sig": "MEUCIE4lI2nOiMNIk2qGczSISE6Gy3/v406tLFODxcM10WnIAiEA5AvZIMfmJYe7s6VkOm9Cz9BuAPmY3fRggrLeme77BCA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 20150
+			}
+		},
+		"1.0.0": {
+			"name": "react-router-hono-server",
+			"version": "1.0.0",
+			"dependencies": {
+				"hono": "^4.6.5",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.13.2",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "b1cc241d8492337a4ec0efa4a47d963c1a433ff8",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-1.0.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-5S9xki4jVnr7kGVwCxC6je68+Tm6UOrPZS4B2/tmm+8K9acc9ZTWPpY3fdE8C4zKPJCNo8L5aoTZCgXrwrmu1w==",
+				"signatures": [
+					{
+						"sig": "MEQCIE8Mv1nemHvKOGin+LF+HUFbDSaECLydShcTQUFB/Fc/AiBHiXW2e/eaGhRdTpPrZPNStsukwdOBX97YkdyBj1Mvsg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21223
+			}
+		},
+		"1.1.0": {
+			"name": "react-router-hono-server",
+			"version": "1.1.0",
+			"dependencies": {
+				"hono": "^4.6.5",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.13.2",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "b018f16bdb9b15f8db3279e4001bd17692a2e81b",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-1.1.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-sWAqNknJtcow3Mff+UCEpqDWW46g3vpzZR7s0JufrJSWA5qrZP8QBAf3GPlS3rE3b+xq1/sCo18NPoJTi4HR8g==",
+				"signatures": [
+					{
+						"sig": "MEUCIG1LzGpx49Y7ayoFAzmtxt0+1LQfNQMgw9lCm/1pfjFqAiEA7VScD8bRPwpmvYyh3XhAuYs6ur270RL3uN1Zlt3p/QY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21259
+			}
+		},
+		"1.2.0": {
+			"name": "react-router-hono-server",
+			"version": "1.2.0",
+			"dependencies": {
+				"hono": "^4.6.5",
+				"remix-hono": "^0.0.16",
+				"@hono/node-server": "^1.13.2",
+				"@hono/vite-dev-server": "^0.13.1"
+			},
+			"devDependencies": {
+				"tsup": "^8.0.2",
+				"vitest": "^1.5.2",
+				"lefthook": "^1.7.2",
+				"happy-dom": "^14.7.1",
+				"typescript": "^5.4.5",
+				"@types/node": "^20.12.7",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.8.3",
+				"@remix-run/node": "^2.11.1",
+				"@vitest/coverage-v8": "^1.5.2"
+			},
+			"peerDependencies": {
+				"hono": "^4.5.3",
+				"vite": "^5.0.0",
+				"remix-hono": "^0.0.16",
+				"@remix-run/node": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "d69ad7b1137ab9df363c55faf905a2c271e3067f",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-1.2.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-tbdW8pSoqeiW951/yXl9nw30vM4UxpTyCm5j8R8XjP9QUTR2xOVKVH9pjRm+CbhGMEayCc6Y44UFHYfFXGAhow==",
+				"signatures": [
+					{
+						"sig": "MEUCIFpzwOqeVvKeaj+ro0M0YdSqPRj7C0AGsswarnai86p5AiEApTJlOgZ3jcmjo39SIqjNqBoXwdCIzS2Y0FcMJmvyM7E=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 21282
+			}
+		},
+		"2.0.0": {
+			"name": "react-router-hono-server",
+			"version": "2.0.0",
+			"dependencies": {
+				"hono": "^4.6.11",
+				"@hono/node-server": "^1.13.7",
+				"@drizzle-team/brocli": "^0.11.0",
+				"@hono/vite-dev-server": "^0.17.0"
+			},
+			"devDependencies": {
+				"tsup": "^8.3.5",
+				"vitest": "^2.1.5",
+				"lefthook": "^1.8.4",
+				"typescript": "^5.7.2",
+				"@types/node": "^22.9.3",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.9.4",
+				"@vitest/coverage-v8": "^2.1.5"
+			},
+			"peerDependencies": {
+				"vite": "^5.4.0",
+				"react-router": "^7.0.1"
+			},
+			"bin": {
+				"react-router-hono-server": "dist/cli.mjs"
+			},
+			"dist": {
+				"shasum": "c5906a04bf06e2e8dfb33adc52e17894f511cba5",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-2.0.0.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-/8NES9+768c+R418j9+ntRN7DJK0Aa2CdOgSGFGcrBjGr+J5SW/lKPOg6QE0A0IbRFVkRHyLrhepO6Eh0w9OaQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD5XwhjBNWX31kkEQD9IxqxNHdTbxWbaarHaGCy/W8ohwIgTIB0MNGRxT0qtlLc7CEWkn5lunum+Vs19QTvJ0uNvRk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 31101
+			},
+			"engines": {
+				"node": ">=20.0.0"
+			}
+		},
+		"2.1.0": {
+			"name": "react-router-hono-server",
+			"version": "2.1.0",
+			"dependencies": {
+				"hono": "^4.6.11",
+				"@hono/node-server": "^1.13.7",
+				"@drizzle-team/brocli": "^0.11.0",
+				"@hono/vite-dev-server": "^0.17.0"
+			},
+			"devDependencies": {
+				"tsup": "^8.3.5",
+				"vitest": "^2.1.5",
+				"lefthook": "^1.8.4",
+				"miniflare": "^3.20241106.1",
+				"@types/bun": "^1.1.14",
+				"typescript": "^5.7.2",
+				"@types/node": "^22.9.3",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.9.4",
+				"@vitest/coverage-v8": "^2.1.5"
+			},
+			"peerDependencies": {
+				"vite": "^5.4.0",
+				"react-router": "^7.0.1"
+			},
+			"bin": {
+				"react-router-hono-server": "dist/cli.mjs"
+			},
+			"dist": {
+				"shasum": "9df02890de540ae576176eb55b63a5d76ac8d6a8",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-2.1.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-3W0scM/QxyyO8WUoBxH0rATYcgL87JSW9bHR5UFPuSoEcM0Z4jOUZNrMn4DiS8XoJEersYalOyvIVekI8OKXeQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQChWoEPnhgyDWY2uD0LNQZ/KjQkgTJeD4911eMj1b/9ywIgK0canQChky+5PfyDtkTX0sm9JXQykwK85ennnWAdj2g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44086
+			},
+			"engines": {
+				"node": ">=20.0.0"
+			}
+		},
+		"2.1.1": {
+			"name": "react-router-hono-server",
+			"version": "2.1.1",
+			"dependencies": {
+				"hono": "^4.6.11",
+				"@hono/node-server": "^1.13.7",
+				"@drizzle-team/brocli": "^0.11.0",
+				"@hono/vite-dev-server": "^0.17.0"
+			},
+			"devDependencies": {
+				"tsup": "^8.3.5",
+				"vitest": "^2.1.5",
+				"lefthook": "^1.8.4",
+				"miniflare": "^3.20241106.1",
+				"@types/bun": "^1.1.14",
+				"typescript": "^5.7.2",
+				"@types/node": "^22.9.3",
+				"npm-run-all": "^4.1.5",
+				"@biomejs/biome": "^1.9.4",
+				"@vitest/coverage-v8": "^2.1.5"
+			},
+			"peerDependencies": {
+				"vite": "^5.4.0",
+				"react-router": "^7.0.1"
+			},
+			"bin": {
+				"react-router-hono-server": "dist/cli.mjs"
+			},
+			"dist": {
+				"shasum": "c8b1522620956b4f0aa17c8456ee52fa5cda93b1",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-2.1.1.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-gBIsJdfzHUhTQ/ps+7vbB3D3r+abwvuZvZjCnETM5kC6sAuoeCw4IphZYL7nSheEzgzdAxX5Tv+UQwZs1Of40A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCovrX2ZEpsSlQt/A5CLRp/quaba8pzwsVh/hS2bzrXQwIgZwOPsDTmJpdFo9TRFVHkiSt8DCCzb2k0YV0pgBz9uQU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 44082
+			},
+			"engines": {
+				"node": ">=20.0.0"
+			}
+		},
+		"2.1.2": {
+			"name": "react-router-hono-server",
+			"version": "2.1.2",
+			"dependencies": {
+				"@drizzle-team/brocli": "^0.11.0",
+				"@hono/node-server": "^1.13.7",
+				"@hono/vite-dev-server": "^0.17.0",
+				"hono": "^4.6.11"
+			},
+			"devDependencies": {
+				"@biomejs/biome": "^1.9.4",
+				"@types/bun": "^1.1.14",
+				"@types/node": "^22.9.3",
+				"@vitest/coverage-v8": "^2.1.5",
+				"lefthook": "^1.8.4",
+				"npm-run-all": "^4.1.5",
+				"tsup": "^8.3.5",
+				"typescript": "^5.7.2",
+				"vitest": "^2.1.5"
+			},
+			"peerDependencies": {
+				"react-router": "^7.0.1",
+				"vite": "^5.4.0"
+			},
+			"bin": {
+				"react-router-hono-server": "dist/cli.mjs"
+			},
+			"dist": {
+				"integrity": "sha512-/BKsFXhz9mfQ6fm8/SQmrmY9/rlbU9ZgS2ehpkWzX5Sl+Kuc1pFmA2R4tJcS/HLDj2wm1oRWnio0BAQs1yBkPA==",
+				"shasum": "63754f9189952da7f05206eb7a31723aa69b275c",
+				"tarball": "https://registry.npmjs.org/react-router-hono-server/-/react-router-hono-server-2.1.2.tgz",
+				"fileCount": 16,
+				"unpackedSize": 44220,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDUFBXeA5JQFoJ9HkvD7fVucwfKAqYUxLtXoy/+ClFcyQIgbWe00xu3R2gcGEg2oEfWetbxAuvVBG18L62j2uzsOz0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=20.0.0"
+			}
+		}
+	}
+}
