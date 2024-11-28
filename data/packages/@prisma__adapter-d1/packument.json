@@ -4,8 +4,8 @@
 		"early-access": "5.12.0-dev.21",
 		"patch-dev": "5.21.1-dev.1",
 		"latest": "5.22.0",
-		"dev": "5.23.0-dev.31",
-		"integration": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2"
+		"integration": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2",
+		"dev": "5.23.0-dev.32"
 	},
 	"versions": {
 		"5.9.0-integration-cloudflare-d1.1": {
@@ -38622,13 +38622,42 @@
 			"devDependencies": {},
 			"peerDependencies": {},
 			"dist": {
-				"integrity": "sha512-DvTDKmF5kJDadtIglRcPdRSQuHY6Nx2PuRy6ROzqIQtU3ePpEzylZwJZ2UGm8hYjjttH10e10Eqp6A9YpGORFw==",
 				"shasum": "c29f552e25b4ce3099925982ab1706d4420cda7e",
 				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-dev.31.tgz",
 				"fileCount": 7,
-				"unpackedSize": 41157,
+				"integrity": "sha512-DvTDKmF5kJDadtIglRcPdRSQuHY6Nx2PuRy6ROzqIQtU3ePpEzylZwJZ2UGm8hYjjttH10e10Eqp6A9YpGORFw==",
+				"signatures": [
+					{
+						"sig": "MEUCICZ+Pgy3gYGh0wglI9cebsBRpHpxuz9vzYKbAccIn388AiEApFeMOl8I5Q8BvicuJorDmdPKBhnb4LgjYVjekYjnTzw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-dev.31",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41157
+			}
+		},
+		"5.23.0-dev.32": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-dev.32",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-dev.32"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"integrity": "sha512-LBQ96IEgf+mueDN8xReCjNVADhrnWsCgwk7YkwVmAAYEl/VXr+QvUHGxzbVZxcqRbp6Wt96ho/BaFv+tWnHWcA==",
+				"shasum": "3c90f5e856ce94b2bee9a4048c81048e28247aba",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-dev.32.tgz",
+				"fileCount": 7,
+				"unpackedSize": 41157,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-dev.32",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -38636,7 +38665,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCICZ+Pgy3gYGh0wglI9cebsBRpHpxuz9vzYKbAccIn388AiEApFeMOl8I5Q8BvicuJorDmdPKBhnb4LgjYVjekYjnTzw="
+						"sig": "MEUCIQDqvQFaBNS8tHWykV5dRdBRTENsxjyoEbnzACvMPp0dxwIgBiykk1h4RVKGGTy21Q3xP6uZOrzYpF2GhG5sKDGyEZ4="
 					}
 				]
 			}
