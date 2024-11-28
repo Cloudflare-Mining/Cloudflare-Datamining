@@ -228,7 +228,7 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   structuredClone<T>(value: T, options?: StructuredSerializeOptions): T;
   reportError(error: any): void;
   fetch(
-    input: RequestInfo,
+    input: RequestInfo | URL,
     init?: RequestInit<RequestInitCfProperties>,
   ): Promise<Response>;
   self: ServiceWorkerGlobalScope;
@@ -366,7 +366,7 @@ declare function structuredClone<T>(
 declare function reportError(error: any): void;
 /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) */
 declare function fetch(
-  input: RequestInfo,
+  input: RequestInfo | URL,
   init?: RequestInit<RequestInitCfProperties>,
 ): Promise<Response>;
 declare const self: ServiceWorkerGlobalScope;
@@ -964,7 +964,7 @@ declare class Blob {
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/slice) */
   slice(start?: number, end?: number, type?: string): Blob;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/arrayBuffer) */
-  arrayBuffer(): Promise<ArrayBuffer>;
+  arrayBuffer(): Promise<ArrayBuffer | ArrayBufferView>;
   bytes(): Promise<Uint8Array>;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/text) */
   text(): Promise<string>;
@@ -1011,14 +1011,17 @@ declare abstract class CacheStorage {
  */
 declare abstract class Cache {
   /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/cache/#delete) */
-  delete(request: RequestInfo, options?: CacheQueryOptions): Promise<boolean>;
+  delete(
+    request: RequestInfo | URL,
+    options?: CacheQueryOptions,
+  ): Promise<boolean>;
   /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/cache/#match) */
   match(
-    request: RequestInfo,
+    request: RequestInfo | URL,
     options?: CacheQueryOptions,
   ): Promise<Response | undefined>;
   /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/cache/#put) */
-  put(request: RequestInfo, response: Response): Promise<void>;
+  put(request: RequestInfo | URL, response: Response): Promise<void>;
 }
 interface CacheQueryOptions {
   ignoreMethod?: boolean;
@@ -1539,7 +1542,7 @@ declare abstract class Body {
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bodyUsed) */
   get bodyUsed(): boolean;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/arrayBuffer) */
-  arrayBuffer(): Promise<ArrayBuffer>;
+  arrayBuffer(): Promise<ArrayBuffer | ArrayBufferView>;
   bytes(): Promise<Uint8Array>;
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/text) */
   text(): Promise<string>;
@@ -1594,8 +1597,7 @@ interface ResponseInit {
 }
 type RequestInfo<CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>> =
   | Request<CfHostMetadata, Cf>
-  | string
-  | URL;
+  | string;
 /**
  * This Fetch API interface represents a resource request.
  *
@@ -1604,7 +1606,7 @@ type RequestInfo<CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>> =
 declare var Request: {
   prototype: Request;
   new <CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>>(
-    input: RequestInfo<CfProperties>,
+    input: RequestInfo<CfProperties> | URL,
     init?: RequestInit<Cf>,
   ): Request<CfHostMetadata, Cf>;
 };
@@ -1694,7 +1696,7 @@ type Fetcher<
 > = (T extends Rpc.EntrypointBranded
   ? Rpc.Provider<T, Reserved | "fetch" | "connect" | "queue" | "scheduled">
   : unknown) & {
-  fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+  fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
   connect(address: SocketAddress | string, options?: SocketOptions): Socket;
   queue(
     queueName: string,
@@ -1952,6 +1954,7 @@ interface R2MultipartUpload {
   uploadPart(
     partNumber: number,
     value: ReadableStream | (ArrayBuffer | ArrayBufferView) | string | Blob,
+    options?: R2UploadPartOptions,
   ): Promise<R2UploadedPart>;
   abort(): Promise<void>;
   complete(uploadedParts: R2UploadedPart[]): Promise<R2Object>;
@@ -1972,12 +1975,13 @@ declare abstract class R2Object {
   readonly customMetadata?: Record<string, string>;
   readonly range?: R2Range;
   readonly storageClass: string;
+  readonly ssecKeyMd5?: string;
   writeHttpMetadata(headers: Headers): void;
 }
 interface R2ObjectBody extends R2Object {
   get body(): ReadableStream;
   get bodyUsed(): boolean;
-  arrayBuffer(): Promise<ArrayBuffer>;
+  arrayBuffer(): Promise<ArrayBuffer | ArrayBufferView>;
   text(): Promise<string>;
   json<T>(): Promise<T>;
   blob(): Promise<Blob>;
@@ -2004,6 +2008,7 @@ interface R2Conditional {
 interface R2GetOptions {
   onlyIf?: R2Conditional | Headers;
   range?: R2Range | Headers;
+  ssecKey?: ArrayBuffer | string;
 }
 interface R2PutOptions {
   onlyIf?: R2Conditional | Headers;
@@ -2015,11 +2020,13 @@ interface R2PutOptions {
   sha384?: ArrayBuffer | string;
   sha512?: ArrayBuffer | string;
   storageClass?: string;
+  ssecKey?: ArrayBuffer | string;
 }
 interface R2MultipartOptions {
   httpMetadata?: R2HTTPMetadata | Headers;
   customMetadata?: Record<string, string>;
   storageClass?: string;
+  ssecKey?: ArrayBuffer | string;
 }
 interface R2Checksums {
   readonly md5?: ArrayBuffer;
@@ -2056,6 +2063,9 @@ type R2Objects = {
       truncated: false;
     }
 );
+interface R2UploadPartOptions {
+  ssecKey?: ArrayBuffer | string;
+}
 declare abstract class JsRpcProperty {
   then(handler: Function, errorHandler?: Function): any;
   catch(errorHandler: Function): any;
@@ -2884,6 +2894,7 @@ declare abstract class SqlStorageCursor<
   columnNames: string[];
   get rowsRead(): number;
   get rowsWritten(): number;
+  get reusedCachedQueryForTest(): boolean;
   [Symbol.iterator](): IterableIterator<T>;
 }
 interface SqlStorageIngestResult {
@@ -3651,14 +3662,6 @@ declare abstract class BaseAiTranslation {
   inputs: AiTranslationInput;
   postProcessedOutputs: AiTranslationOutput;
 }
-type GatewayOptions = {
-  id: string;
-  cacheKey?: string;
-  cacheTtl?: number;
-  skipCache?: boolean;
-  metadata?: Record<string, number | string | boolean | null | bigint>;
-  collectLog?: boolean;
-};
 type AiOptions = {
   gateway?: GatewayOptions;
   prefix?: string;
@@ -3724,6 +3727,8 @@ type BaseAiImageToTextModels =
   | "@cf/unum/uform-gen2-qwen-500m"
   | "@cf/llava-hf/llava-1.5-7b-hf";
 declare abstract class Ai {
+  public aiGatewayLogId: string | null;
+  public gateway(gatewayId: string): AiGateway;
   run(
     model: BaseAiTextClassificationModels,
     inputs: BaseAiTextClassification["inputs"],
@@ -3774,6 +3779,52 @@ declare abstract class Ai {
     inputs: BaseAiImageToText["inputs"],
     options?: AiOptions,
   ): Promise<BaseAiImageToText["postProcessedOutputs"]>;
+}
+type GatewayOptions = {
+  id: string;
+  cacheKey?: string;
+  cacheTtl?: number;
+  skipCache?: boolean;
+  metadata?: Record<string, number | string | boolean | null | bigint>;
+  collectLog?: boolean;
+};
+type AiGatewayPatchLog = {
+  score?: number | null;
+  feedback?: -1 | 1 | "-1" | "1" | null;
+  metadata?: Record<string, number | string | boolean | null | bigint> | null;
+};
+type AiGatewayLog = {
+  id: string;
+  provider: string;
+  model: string;
+  model_type?: string;
+  path: string;
+  duration: number;
+  request_type?: string;
+  request_content_type?: string;
+  status_code: number;
+  response_content_type?: string;
+  success: boolean;
+  cached: boolean;
+  tokens_in?: number;
+  tokens_out?: number;
+  metadata?: Record<string, number | string | boolean | null | bigint>;
+  step?: number;
+  cost?: number;
+  custom_cost?: boolean;
+  request_size: number;
+  request_head?: string;
+  request_head_complete: boolean;
+  response_size: number;
+  response_head?: string;
+  response_head_complete: boolean;
+  created_at: Date;
+};
+interface AiGatewayInternalError extends Error {}
+interface AiGatewayLogNotFound extends Error {}
+declare abstract class AiGateway {
+  patchLog(logId: string, data: AiGatewayPatchLog): Promise<void>;
+  getLog(logId: string): Promise<AiGatewayLog>;
 }
 interface BasicImageTransformations {
   /**
