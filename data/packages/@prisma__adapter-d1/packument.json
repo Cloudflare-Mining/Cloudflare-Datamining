@@ -4,8 +4,8 @@
 		"early-access": "5.12.0-dev.21",
 		"patch-dev": "5.21.1-dev.1",
 		"latest": "5.22.0",
-		"dev": "5.23.0-dev.30",
-		"integration": "5.23.0-integration-engines-5-23-0-23-implicit-m2m-id-6a7820e9be60378b1fa68bf5922e06de81baca34.1"
+		"dev": "5.23.0-dev.31",
+		"integration": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2"
 	},
 	"versions": {
 		"5.9.0-integration-cloudflare-d1.1": {
@@ -38477,13 +38477,158 @@
 			"devDependencies": {},
 			"peerDependencies": {},
 			"dist": {
-				"integrity": "sha512-pf9ajvFEVhAA4RuJnt69mLx/JolrrjuIyvc3N6N+IQJXR3gaHRSkJ123pJbG+agOxORDMIXiiQqf/Uu2TqcGoQ==",
 				"shasum": "b57a6e133ff5ed89498fd287030d98a0bc985423",
 				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-dev.30.tgz",
 				"fileCount": 7,
-				"unpackedSize": 41157,
+				"integrity": "sha512-pf9ajvFEVhAA4RuJnt69mLx/JolrrjuIyvc3N6N+IQJXR3gaHRSkJ123pJbG+agOxORDMIXiiQqf/Uu2TqcGoQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEiZ4bIxLxBYAHNcHhbC1ywRVcODOvUOGf3oP8EU89nCAiEAj16fSNJBT90Fj3cvOnJHW+FZFuE4Sc+KJVz7bpyxMuI=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-dev.30",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41157
+			}
+		},
+		"5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.1": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.1",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.1"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "2f2620a4790f8d54f6146c6ab22f339b46b947f4",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-eqBMRiKYX4riBweWF5BQZ3lT9DJ/Og7rAzrt0lO3A+eu5PHFuESefOkSIPwfd9cvI4QQ+qMCVpM46UA71JQH4g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD25mX1MuY1SI6yO5NKCk5Et2O+/jslWqXrqES3jc9iCgIgeIpPDCFo4dyMH08n2h+NnCHytPi34ZATEkPNR2KR3C0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41351
+			}
+		},
+		"5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.2": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.2",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.2"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "4e273848596daef7cfb5122a2c0abca433dc52a5",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.2.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-8ovCAJigtQU2e0WqC+Jv8KFJJw559Df7GufcrfIjfjqB2CelCHx+p1mLLrJc6gS+Afn0zKEyv+keHYV9+4/99w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCoP3tTmcVSr4GLT8Q3RW7FPivTjEiKo1nrV5tJ3GlQ3wIhALu1C5RaYuwULJYM6dIxJaf5o4N5/at4ysnY1++ZXaQN",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-integration-engines-5-23-0-24-integration-enum-mapped-values-3481347682d702270b0c3c9e3d557e210154a15a.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41351
+			}
+		},
+		"5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.1": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.1",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.1"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "59695ca89dcaa6133b5f2ae4c75430f2bb5243c3",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-62M9DkuGLgYzRurKj2remdFFRFotxk7hOQd8E+vfSZLkuiQNSTFMfOijPikzMAtA0KEiflu4CQVmV4EdEqiqXA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDsPHKWp9/oisWX+HrYZddWC39qFnLRBO4B+cZOK02/jwIgdDSjSx4e5wZK1Cqr8JFX+csvktLld6ug99FPJ3M2qig=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41351
+			}
+		},
+		"5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"shasum": "1922a344d9e2a0cebd3b7b918ed6dfa83de91995",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-lTdCGz9/znO1MqQCGJHUr+1VhGVTvxVv7q5NDhsYRz1Ce9auISsj182lmLyXcy+ZyYIUk8IYL5cdCN2YRHPUDQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIGje5RYa7B7F1OQZgvq10q3nT3dGxln/pjzIGMGZA3/bAiBT8NdcfAbfMrNTZwnvr999+uuZJ1fgcfYoKbQGGPSLyQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41351
+			}
+		},
+		"5.23.0-dev.31": {
+			"name": "@prisma/adapter-d1",
+			"version": "5.23.0-dev.31",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "5.23.0-dev.31"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"integrity": "sha512-DvTDKmF5kJDadtIglRcPdRSQuHY6Nx2PuRy6ROzqIQtU3ePpEzylZwJZ2UGm8hYjjttH10e10Eqp6A9YpGORFw==",
+				"shasum": "c29f552e25b4ce3099925982ab1706d4420cda7e",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-5.23.0-dev.31.tgz",
+				"fileCount": 7,
+				"unpackedSize": 41157,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@5.23.0-dev.31",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -38491,7 +38636,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIEiZ4bIxLxBYAHNcHhbC1ywRVcODOvUOGf3oP8EU89nCAiEAj16fSNJBT90Fj3cvOnJHW+FZFuE4Sc+KJVz7bpyxMuI="
+						"sig": "MEUCICZ+Pgy3gYGh0wglI9cebsBRpHpxuz9vzYKbAccIn388AiEApFeMOl8I5Q8BvicuJorDmdPKBhnb4LgjYVjekYjnTzw="
 					}
 				]
 			}
