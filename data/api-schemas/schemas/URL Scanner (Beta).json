@@ -127,12 +127,42 @@
 									"description": "Status code.",
 									"example": 404,
 									"type": "integer"
+								},
+								"task": {
+									"properties": {
+										"status": {
+											"example": "Queued",
+											"type": "string"
+										},
+										"time": {
+											"type": "string"
+										},
+										"url": {
+											"type": "string"
+										},
+										"uuid": {
+											"type": "string"
+										},
+										"visibility": {
+											"example": "public",
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"url",
+										"time",
+										"status",
+										"visibility"
+									],
+									"type": "object"
 								}
 							},
 							"required": [
 								"message",
 								"status",
-								"errors"
+								"errors",
+								"task"
 							],
 							"type": "object"
 						}
@@ -583,12 +613,42 @@
 									"description": "Status code.",
 									"example": 404,
 									"type": "integer"
+								},
+								"task": {
+									"properties": {
+										"status": {
+											"example": "Queued",
+											"type": "string"
+										},
+										"time": {
+											"type": "string"
+										},
+										"url": {
+											"type": "string"
+										},
+										"uuid": {
+											"type": "string"
+										},
+										"visibility": {
+											"example": "public",
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"url",
+										"time",
+										"status",
+										"visibility"
+									],
+									"type": "object"
 								}
 							},
 							"required": [
 								"message",
 								"status",
-								"errors"
+								"errors",
+								"task"
 							],
 							"type": "object"
 						}
@@ -2679,12 +2739,42 @@
 									"description": "Status code.",
 									"example": 404,
 									"type": "integer"
+								},
+								"task": {
+									"properties": {
+										"status": {
+											"example": "Queued",
+											"type": "string"
+										},
+										"time": {
+											"type": "string"
+										},
+										"url": {
+											"type": "string"
+										},
+										"uuid": {
+											"type": "string"
+										},
+										"visibility": {
+											"example": "public",
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"url",
+										"time",
+										"status",
+										"visibility"
+									],
+									"type": "object"
 								}
 							},
 							"required": [
 								"message",
 								"status",
-								"errors"
+								"errors",
+								"task"
 							],
 							"type": "object"
 						}
@@ -2859,12 +2949,42 @@
 									"description": "Status code.",
 									"example": 404,
 									"type": "integer"
+								},
+								"task": {
+									"properties": {
+										"status": {
+											"example": "Queued",
+											"type": "string"
+										},
+										"time": {
+											"type": "string"
+										},
+										"url": {
+											"type": "string"
+										},
+										"uuid": {
+											"type": "string"
+										},
+										"visibility": {
+											"example": "public",
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"url",
+										"time",
+										"status",
+										"visibility"
+									],
+									"type": "object"
 								}
 							},
 							"required": [
 								"message",
 								"status",
-								"errors"
+								"errors",
+								"task"
 							],
 							"type": "object"
 						}
@@ -2881,6 +3001,246 @@
 			}
 		],
 		"summary": "Get screenshot",
+		"tags": [
+			"URL Scanner (Beta)"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{accountId}/urlscanner/v2/search": {
+		"description": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'page.domain:microsoft AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2024-01 TO 2024-10]': my scans from 2024 January to 2024 October.<br/>- 'page.domain:(blogspot OR www.blogspot)': Searches for scans whose main domain starts with \"blogspot\" or with \"www.blogspot\"<br/>- 'date:>now-7d AND path:okta-sign-in.min.js: scans from the last 7 days with any request path that ends with \"okta-sign-in.min.js\"<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.",
+		"operationId": "urlscanner-search-scans-v2",
+		"parameters": [
+			{
+				"description": "Account Id.",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account Id.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "size",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 100,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Filter scans",
+				"in": "query",
+				"name": "q",
+				"schema": {
+					"description": "Filter scans",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"results": {
+									"items": {
+										"properties": {
+											"_id": {
+												"example": "9626f773-9ffb-4cfb-89d3-30b120fc8011",
+												"type": "string"
+											},
+											"page": {
+												"properties": {
+													"asn": {
+														"example": "AS15133",
+														"type": "string"
+													},
+													"country": {
+														"example": "US",
+														"type": "string"
+													},
+													"ip": {
+														"example": "93.184.215.14",
+														"type": "string"
+													},
+													"url": {
+														"example": "https://example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"country",
+													"ip",
+													"url",
+													"asn"
+												],
+												"type": "object"
+											},
+											"result": {
+												"example": "https://radar.clouflare.com/scan/9626f773-9ffb-4cfb-89d3-30b120fc8011",
+												"type": "string"
+											},
+											"stats": {
+												"properties": {
+													"dataLength": {
+														"example": 2512,
+														"type": "number"
+													},
+													"requests": {
+														"example": 2,
+														"type": "number"
+													},
+													"uniqCountries": {
+														"example": 1,
+														"type": "number"
+													},
+													"uniqIPs": {
+														"example": 1,
+														"type": "number"
+													}
+												},
+												"required": [
+													"uniqIPs",
+													"uniqCountries",
+													"dataLength",
+													"requests"
+												],
+												"type": "object"
+											},
+											"task": {
+												"properties": {
+													"time": {
+														"example": "2024-09-30T23:54:02.881000+00:00",
+														"type": "string"
+													},
+													"url": {
+														"example": "https://example.com",
+														"type": "string"
+													},
+													"uuid": {
+														"example": "9626f773-9ffb-4cfb-89d3-30b120fc8011",
+														"type": "string"
+													},
+													"visibility": {
+														"example": "public",
+														"type": "string"
+													}
+												},
+												"required": [
+													"visibility",
+													"time",
+													"uuid",
+													"url"
+												],
+												"type": "object"
+											},
+											"verdicts": {
+												"properties": {
+													"malicious": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"malicious"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"task",
+											"stats",
+											"page",
+											"verdicts",
+											"_id",
+											"result"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"results"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Search results"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"status": {
+												"description": "Status code.",
+												"example": 400,
+												"type": "integer"
+											},
+											"title": {
+												"example": "Invalid url",
+												"type": "string"
+											}
+										},
+										"required": [
+											"title",
+											"detail",
+											"status"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"message": {
+									"type": "string"
+								},
+								"status": {
+									"description": "Status code.",
+									"example": 400,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"message",
+								"status",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid input."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Search URL scans",
 		"tags": [
 			"URL Scanner (Beta)"
 		],
