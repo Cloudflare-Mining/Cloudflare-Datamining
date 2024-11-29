@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Cloudflare is seeking a visionary Senior Director of Corporate Events, Programs, and Customer Advocacy to own the strategy, planning, and optimization of our global events and sponsorships, customer advocacy, and community programs. This role is critical in driving Cloudflare's market penetration and recognition as a cloud leader.&nbsp;</p>
+<p>Cloudflare is seeking a visionary Senior Director of Corporate Events, Programs and Customer Advocacy to own the strategy, planning, and optimization of our global events and sponsorships, customer advocacy, and community programs. This role is critical in driving Cloudflare's market penetration and recognition as a cloud leader.&nbsp;</p>
 <p>You will work cross functionally with Product Marketing, Field Marketing, Partner Marketing, Brand Marketing, Sales and Customer Success to drive measurable ROI, brand awareness, pipeline acceleration, and meaningful engagement with customers. On a day-to-day basis, this senior leadership role will be responsible for leading the global events and customer advocacy teams, and executive programs and establishing the roadmap for creating a world-class events and customer advocacy function.&nbsp;&nbsp;</p>
 <p><strong>About the Role:</strong></p>
 <ul>
@@ -19,7 +19,7 @@
 	<li><strong>Metrics and Analytics</strong>: Establish KPIs and metrics to measure the effectiveness of events and field marketing programs. Analyze data to optimize strategies and demonstrate ROI to senior management.</li>
 	<li><strong>Team Leadership</strong>: Lead and mentor a team of events and field marketing professionals, fostering a collaborative and results-driven culture. Provide guidance, support, and professional development opportunities to team members.</li>
 </ul>
-<p><strong><br></strong></p>
+<p><strong>&nbsp;</strong></p>
 <p><strong>About You:</strong></p>
 <ul>
 	<li><strong>Seasoned Functional Leader</strong>: Visionary people leader who will constantly grow the capability and maturity of Corporate Events and Customer functions to meet the needs of a fast-growing B2B SaaS business.&nbsp;</li>
