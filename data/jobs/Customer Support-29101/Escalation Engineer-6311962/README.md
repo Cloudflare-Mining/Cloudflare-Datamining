@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon or Remote Portugal; London or Remote UK</p>
+<p><strong>Available Locations:</strong> Lisbon or London&nbsp;</p>
 <p><strong>About the Department</strong></p>
 <p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
 <p><strong>What you'll do&nbsp;</strong></p>
