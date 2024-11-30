@@ -5,7 +5,7 @@
 		"patch-dev": "5.21.1-dev.1",
 		"integration": "5.23.0-integration-engines-5-23-0-26-integration-enum-mapped-values-caa24ef936c3d4510b1fec91d88f94a5d6df0cdc.2",
 		"latest": "6.0.0",
-		"dev": "6.1.0-dev.2"
+		"dev": "6.1.0-dev.3"
 	},
 	"versions": {
 		"5.9.0-integration-cloudflare-d1.1": {
@@ -38767,13 +38767,42 @@
 			"devDependencies": {},
 			"peerDependencies": {},
 			"dist": {
-				"integrity": "sha512-X8K4vSLXUHG20NeyOPooBShWFvvvx47mccuyOKkQUp5X0pDPxGEf/Ue0OLlVlZP/6mibgTI6DW2m72BgciS0WA==",
 				"shasum": "e2501e7a3dafc28c8a2dc4ba9dcc1460f68ffc02",
 				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-6.1.0-dev.2.tgz",
 				"fileCount": 7,
-				"unpackedSize": 41153,
+				"integrity": "sha512-X8K4vSLXUHG20NeyOPooBShWFvvvx47mccuyOKkQUp5X0pDPxGEf/Ue0OLlVlZP/6mibgTI6DW2m72BgciS0WA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCU8X0yT3qzdYr+5Mno7Ek6Ys0rQU9KetBHyShhKYiT4AIgFcu06SyIJA6ZvHwi/whBLxo2v1vYofn3cBZ7CKl4GGQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@6.1.0-dev.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 41153
+			}
+		},
+		"6.1.0-dev.3": {
+			"name": "@prisma/adapter-d1",
+			"version": "6.1.0-dev.3",
+			"dependencies": {
+				"@cloudflare/workers-types": "4.20240614.0",
+				"@prisma/driver-adapter-utils": "6.1.0-dev.3"
+			},
+			"devDependencies": {},
+			"peerDependencies": {},
+			"dist": {
+				"integrity": "sha512-pSay3B8s88F+a0p+iMCsY+cr6pBSj9JAmn1L6mGt17a1ghXIAtO7FPjZAuuxAxZJbLmv4pdz/7jzZmRQcfWD5w==",
+				"shasum": "20123de47792f2903f7d2fccaf84eb3b6b4f374b",
+				"tarball": "https://registry.npmjs.org/@prisma/adapter-d1/-/adapter-d1-6.1.0-dev.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 41153,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@prisma%2fadapter-d1@6.1.0-dev.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -38781,7 +38810,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCU8X0yT3qzdYr+5Mno7Ek6Ys0rQU9KetBHyShhKYiT4AIgFcu06SyIJA6ZvHwi/whBLxo2v1vYofn3cBZ7CKl4GGQ="
+						"sig": "MEYCIQD33fp1SP9H6zoYXjVUqx3lbLoTgfQpFeN+7kNQfmSwGQIhANiIBs1GkfKp9ZqQgeikKHG7AMP9O8KUcNUum7iPPYIi"
 					}
 				]
 			}
