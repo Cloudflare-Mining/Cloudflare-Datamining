@@ -11,7 +11,7 @@ const packages: any = {
 	'_unscoped': {},
 	'@cfpreview': {},
 };
-for (const [path, module] of Object.entries(importFiles)) {
+for (const [path, getModule] of Object.entries(importFiles)) {
 	const index = path.indexOf('data/packages/');
 	const packageName = path.slice(index + 14, -('info.json'.length + 1));
 
@@ -19,7 +19,7 @@ for (const [path, module] of Object.entries(importFiles)) {
 	const scope = split[0];
 	const name = split.slice(1).join('/');
 
-	const data = await module();
+	const data = await getModule();
 	packages[scope] ??= {};
 	packages[scope][name] = data;
 }

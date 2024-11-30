@@ -32,13 +32,13 @@ const wantedVersionFields = [
 async function run() {
 	console.log('Fetching NPM Data...');
 	const rawData = [
-		...await search('@cloudflare', {
+		...await search('scope:cloudflare', {
 			limit: 1000,
 		}),
-		...await search('@miniflare', {
+		...await search('scope:miniflare', {
 			limit: 1000,
 		}),
-		...await search('@cfpreview', {
+		...await search('scope:@cfpreview', {
 			limit: 1000,
 		}),
 		...await search('maintainer:cf-ci-write', {
@@ -77,18 +77,26 @@ async function run() {
 	const getDataAndWriteFiles = [];
 	for (const packageInfo of rawData) {
 		let name = filenamify(packageInfo.name, { replacement: '__' });
-		if (packageInfo.scope) {
-			const nameWithoutScope = filenamify(packageInfo.name.replace(`@${packageInfo.scope}/`, ''));
-			if (packageInfo.scope === 'unscoped') {
-				name = `_unscoped/${nameWithoutScope}`;
+		// if no scope, extract from name
+		if (!packageInfo.scope) {
+			const scopeMatch = packageInfo.name.match(/^@([^/]+)\//);
+			if (scopeMatch) {
+				packageInfo.scope = scopeMatch[1];
 			} else {
-				name = `@${packageInfo.scope}/${nameWithoutScope}`;
+				packageInfo.scope = 'unscoped';
 			}
+		}
+		const nameWithoutScope = filenamify(packageInfo.name.replace(`@${packageInfo.scope}/`, ''));
+		if (packageInfo.scope === 'unscoped') {
+			name = `_unscoped/${nameWithoutScope}`;
+		} else {
+			name = `@${packageInfo.scope}/${nameWithoutScope}`;
 		}
 		getDataAndWriteFiles.push(async () => {
 			console.log('Processing', name);
 			const extractDir = path.resolve(`../data/packages-extracted/${name}`);
 			await fs.ensureDir(extractDir);
+			await fs.emptyDir(extractDir);
 			await pacote.extract(packageInfo.name, extractDir);
 			const dir = `../data/packages/${name}`;
 			await fs.ensureDir(path.resolve(dir));

@@ -4,10 +4,11 @@ import MainHeading from '../../components/MainHeading.astro';
 import SubHeading from '../../components/SubHeading.astro';
 import Layout from '../../layouts/Layout.astro';
 
+export const prerender = false;
 
 const reqInfo = Astro.request;
 // @ts-expect-error cf is define with cloudflare
-const cfInfo = reqInfo?.cf;
+const cfInfo = reqInfo?.cf ?? {};
 
 const formattedReq = {
 	cf: cfInfo,

@@ -6,10 +6,6 @@ import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
-
-// https://astro.build/config
-
-// https://astro.build/config
 export default defineConfig({
 	site: 'https://cfdata.lol',
 	integrations: [

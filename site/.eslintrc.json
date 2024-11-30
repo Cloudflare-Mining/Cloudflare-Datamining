@@ -6,20 +6,21 @@
 		"plugin:tailwindcss/recommended"
 	],
 	"plugins": [
-		"json",
 		"@typescript-eslint",
+		"json",
 		"tailwindcss"
 	],
 	"rules": {
 		"n/no-unsupported-features/es-syntax": "off",
 		"n/no-missing-import": "off",
 		"n/no-unsupported-features/node-builtins": "off",
-		"@stylistic/no-mixed-operators": "off"
+		"@stylistic/no-mixed-operators": "off",
+		"@typescript-eslint/triple-slash-reference": "off"
 	},
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"allowImportExportEverywhere": true,
-		"ecmaVersion": 2022,
+		"ecmaVersion": 2024,
 		"ecmaFeatures": {
 			"impliedStrict": true
 		},
@@ -31,10 +32,10 @@
 	"overrides": [
 		{
 			"files": ["*.astro"],
-			"parser": "astro-eslint-parser"
+			"parser": "astro-eslint-parser",
+			"parserOptions": {
+       			"parser": "@typescript-eslint/parser"
+			}
 		}
-	],
-	"settings": {
-		"svelte3/typescript": true
-	}
+	]
 }
